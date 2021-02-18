@@ -296,7 +296,7 @@ bool show_file(player_type *creature_ptr, bool show_version, concptr name, concp
             continue;
         }
 
-        prt(format(_("[馬鹿馬鹿蛮怒 %d.%d.%d, %s, %d/%d]", "[Hengband %d.%d.%d, %s, Line %d/%d]"), FAKE_VER_MAJOR - 10, FAKE_VER_MINOR, FAKE_VER_PATCH, caption,
+        prt(format(_("[馬鹿馬鹿蛮怒 %d.%d.%d, %s, %d/%d]", "[Bakabakaband %d.%d.%d, %s, Line %d/%d]"), FAKE_VER_MAJOR - 10, FAKE_VER_MINOR, FAKE_VER_PATCH, caption,
                 line, size),
             0, 0);
 

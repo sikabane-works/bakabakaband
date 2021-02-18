@@ -3,7 +3,7 @@
  * @file main-win.c
  * @brief Windows版固有実装(メインエントリポイント含む)
  * @date 2018/03/16
- * @author Hengband Team
+ * @author Bakabakaband Team
  * @details
  *
  * <h3>概要</h3>
@@ -3520,7 +3520,7 @@ int PASCAL WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine, int nC
     hInstance = hInst;
     if (is_already_running()) {
         MessageBox(
-            NULL, _("馬鹿馬鹿蛮怒はすでに起動しています。", "Hengband is already running."), _("エラー！", "Error"), MB_ICONEXCLAMATION | MB_OK | MB_ICONSTOP);
+            NULL, _("馬鹿馬鹿蛮怒はすでに起動しています。", "Bakabakaband is already running."), _("エラー！", "Error"), MB_ICONEXCLAMATION | MB_OK | MB_ICONSTOP);
         return FALSE;
     }
 

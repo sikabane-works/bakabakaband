@@ -2,7 +2,7 @@
  * @file report.c
  * @brief スコアサーバ転送機能の実装
  * @date 2014/07/14
- * @author Hengband Team
+ * @author Bakabakaband Team
  */
 
 #include "io/report.h"
@@ -191,7 +191,7 @@ static bool http_post(concptr url, BUF *buf)
     curl_easy_setopt(curl, CURLOPT_HTTPHEADER, slist);
 
     char user_agent[64];
-    snprintf(user_agent, sizeof(user_agent), "Hengband %d.%d.%d", FAKE_VER_MAJOR - 10, FAKE_VER_MINOR, FAKE_VER_PATCH);
+    snprintf(user_agent, sizeof(user_agent), "Bakabakaband %d.%d.%d", FAKE_VER_MAJOR - 10, FAKE_VER_MINOR, FAKE_VER_PATCH);
     curl_easy_setopt(curl, CURLOPT_USERAGENT, user_agent);
 
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0);
