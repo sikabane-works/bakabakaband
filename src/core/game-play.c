@@ -326,8 +326,8 @@ static void decide_arena_death(player_type *player_ptr)
 
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     if (!floor_ptr->inside_arena) {
-        if ((current_world_ptr->wizard || cheat_live) && !get_check(_("死にますか? ", "Die? ")))
-            cheat_death(player_ptr);
+        if (!get_check(_("死にますか? ", "Die? ")))
+            cheat_death(player_ptr, cheat_live);
 
         return;
     }
