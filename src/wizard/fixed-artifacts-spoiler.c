@@ -73,7 +73,7 @@ static void print_header(void)
     char buf[180];
     char title[180];
     put_version(title);
-    sprintf(buf, "Artifact Spoilers for Hengband Version %s", title);
+    sprintf(buf, "Artifact Spoilers for Bakabakaband Version %s", title);
     spoiler_underline(buf);
 }
 
