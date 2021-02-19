@@ -44,9 +44,9 @@ concptr screen_dump = NULL;
 #define HTTP_TIMEOUT 30 /*!< デフォルトのタイムアウト時間(秒) / Timeout length (second) */
 
 #ifdef JP
-#define SCORE_PATH "http://mars.kmc.gr.jp/~dis/heng_score/register_score.php" /*!< スコア開示URL */
+#define SCORE_PATH "" /*!< スコア開示URL */
 #else
-#define SCORE_PATH "http://moon.kmc.gr.jp/hengband/hengscore-en/score.cgi" /*!< スコア開示URL */
+#define SCORE_PATH "" /*!< スコア開示URL */
 #endif
 
 /*
