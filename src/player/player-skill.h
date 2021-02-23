@@ -2,11 +2,11 @@
 
 #include "system/angband.h"
 
-#define GINOU_SUDE 0
-#define GINOU_NITOURYU 1
-#define GINOU_RIDING 2
-#define GINOU_SHIELD 3
-#define GINOU_TEMPMAX 4
+#define SKILL_SUDE 0
+#define SKILL_NITOURYU 1
+#define SKILL_RIDING 2
+#define SKILL_SHIELD 3
+#define SKILL_TEMPMAX 4
 
 /* Proficiency level */
 #define EXP_LEVEL_UNSKILLED 0

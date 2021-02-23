@@ -31,7 +31,7 @@
 #define PY_MAX_GOLD 999999999L /*!< プレイヤー所持金の最大値 / Maximum gold */
 #define PY_MAX_LEVEL 50 /*!< プレイヤーレベルの最大値 / Maximum level */
 
-#define GINOU_MAX 10
+#define SKILL_MAX 10
 #define MAX_MANE 16
 
 #define MAGIC_GLOVE_REDUCE_MANA 0x0001
@@ -234,7 +234,7 @@ typedef struct player_type {
 
     SUB_EXP spell_exp[64]; /* Proficiency of spells */
     SUB_EXP weapon_exp[5][64]; /* Proficiency of weapons */
-    SUB_EXP skill_exp[GINOU_MAX]; /* Proficiency of misc. skill */
+    SUB_EXP skill_exp[SKILL_MAX]; /* Proficiency of misc. skill */
 
     MAGIC_NUM1 magic_num1[MAX_SPELLS]; /*!< Array for non-spellbook type magic */
     MAGIC_NUM2 magic_num2[MAX_SPELLS]; /*!< 魔道具術師の取り込み済魔道具使用回数 / Flags for non-spellbook type magics */

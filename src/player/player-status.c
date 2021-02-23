@@ -2295,7 +2295,7 @@ static ARMOUR_CLASS calc_base_ac(player_type *creature_ptr)
 
     if (object_is_armour(creature_ptr, &creature_ptr->inventory_list[INVEN_MAIN_HAND])
         || object_is_armour(creature_ptr, &creature_ptr->inventory_list[INVEN_SUB_HAND])) {
-        ac += creature_ptr->skill_exp[GINOU_SHIELD] * (1 + creature_ptr->lev / 22) / 2000;
+        ac += creature_ptr->skill_exp[SKILL_SHIELD] * (1 + creature_ptr->lev / 22) / 2000;
     }
 
     return ac;
@@ -2627,22 +2627,22 @@ static s16b calc_speed(player_type *creature_ptr)
         SPEED speed = riding_m_ptr->mspeed;
 
         if (riding_m_ptr->mspeed > 110) {
-            pow = 110 + (s16b)((speed - 110) * (creature_ptr->skill_exp[GINOU_RIDING] * 3 + creature_ptr->lev * 160L - 10000L) / (22000L));
+            pow = 110 + (s16b)((speed - 110) * (creature_ptr->skill_exp[SKILL_RIDING] * 3 + creature_ptr->lev * 160L - 10000L) / (22000L));
             if (pow < 110)
                 pow = 110;
         } else {
             pow = speed;
         }
 
-        pow += (creature_ptr->skill_exp[GINOU_RIDING] + creature_ptr->lev * 160L) / 3200;
+        pow += (creature_ptr->skill_exp[SKILL_RIDING] + creature_ptr->lev * 160L) / 3200;
 
         if (monster_fast_remaining(riding_m_ptr))
             pow += 10;
         if (monster_slow_remaining(riding_m_ptr))
             pow -= 10;
 
-        if (creature_ptr->skill_exp[GINOU_RIDING] < RIDING_EXP_SKILLED)
-            j += (creature_ptr->wt * 3 * (RIDING_EXP_SKILLED - creature_ptr->skill_exp[GINOU_RIDING])) / RIDING_EXP_SKILLED;
+        if (creature_ptr->skill_exp[SKILL_RIDING] < RIDING_EXP_SKILLED)
+            j += (creature_ptr->wt * 3 * (RIDING_EXP_SKILLED - creature_ptr->skill_exp[SKILL_RIDING])) / RIDING_EXP_SKILLED;
 
         count = 1500 + riding_r_ptr->level * 25;
         if (j > count)
@@ -2682,7 +2682,7 @@ s16b calc_double_weapon_penalty(player_type *creature_ptr, INVENTORY_IDX slot)
 {
     int penalty = 0;
     if (has_melee_weapon(creature_ptr, INVEN_MAIN_HAND) && has_melee_weapon(creature_ptr, INVEN_SUB_HAND)) {
-        penalty = ((100 - creature_ptr->skill_exp[GINOU_NITOURYU] / 160) - (130 - creature_ptr->inventory_list[slot].weight) / 8);
+        penalty = ((100 - creature_ptr->skill_exp[SKILL_NITOURYU] / 160) - (130 - creature_ptr->inventory_list[slot].weight) / 8);
         if (((creature_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_QUICKTHORN)
             && (creature_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TINYTHORN))
             || ((creature_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_ICINGDEATH)
@@ -2802,7 +2802,7 @@ static s16b calc_riding_bow_penalty(player_type *creature_ptr)
         if (creature_ptr->tval_ammo != TV_ARROW)
             penalty = 5;
     } else {
-        penalty = r_info[floor_ptr->m_list[creature_ptr->riding].r_idx].level - creature_ptr->skill_exp[GINOU_RIDING] / 80;
+        penalty = r_info[floor_ptr->m_list[creature_ptr->riding].r_idx].level - creature_ptr->skill_exp[SKILL_RIDING] / 80;
         penalty += 30;
         if (penalty < 30)
             penalty = 30;
@@ -3097,7 +3097,7 @@ static s16b calc_to_hit(player_type *creature_ptr, INVENTORY_IDX slot, bool is_r
                 break;
             /* fall through */
         case MELEE_TYPE_BAREHAND_TWO:
-            hit += (creature_ptr->skill_exp[GINOU_SUDE] - WEAPON_EXP_BEGINNER) / 200;
+            hit += (creature_ptr->skill_exp[SKILL_SUDE] - WEAPON_EXP_BEGINNER) / 200;
         }
 
         if ((is_martial_arts_mode(creature_ptr) && empty_hands(creature_ptr, FALSE) == (EMPTY_HAND_MAIN | EMPTY_HAND_SUB))
@@ -3147,7 +3147,7 @@ static s16b calc_to_hit(player_type *creature_ptr, INVENTORY_IDX slot, bool is_r
             if ((creature_ptr->pclass == CLASS_BEASTMASTER) || (creature_ptr->pclass == CLASS_CAVALRY)) {
                 penalty = 5;
             } else {
-                penalty = r_info[creature_ptr->current_floor_ptr->m_list[creature_ptr->riding].r_idx].level - creature_ptr->skill_exp[GINOU_RIDING] / 80;
+                penalty = r_info[creature_ptr->current_floor_ptr->m_list[creature_ptr->riding].r_idx].level - creature_ptr->skill_exp[SKILL_RIDING] / 80;
                 penalty += 30;
                 if (penalty < 30)
                     penalty = 30;
