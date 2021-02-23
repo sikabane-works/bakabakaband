@@ -3,7 +3,7 @@
  * @file main-win.c
  * @brief Windows版固有実装(メインエントリポイント含む)
  * @date 2018/03/16
- * @author Hengband Team
+ * @author Bakabakaband Team
  * @details
  *
  * <h3>概要</h3>
@@ -2046,7 +2046,7 @@ static void init_windows(void)
     td = &data[0];
     WIPE(td, term_data);
 #ifdef JP
-    td->s = "変愚蛮怒";
+    td->s = "馬鹿馬鹿蛮怒";
 #else
     td->s = angband_term_name[0];
 #endif
@@ -3565,7 +3565,7 @@ static spoiler_output_status create_debug_spoiler(LPSTR cmd_line)
 
 /*!
  * todo よく見るとhMutexはちゃんと使われていない……？
- * @brief (Windows固有)変愚蛮怒が起動済かどうかのチェック
+ * @brief (Windows固有)馬鹿馬鹿蛮怒が起動済かどうかのチェック
  */
 static bool is_already_running(void)
 {
@@ -3592,7 +3592,7 @@ int PASCAL WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine, int nC
     hInstance = hInst;
     if (is_already_running()) {
         MessageBox(
-            NULL, _("変愚蛮怒はすでに起動しています。", "Hengband is already running."), _("エラー！", "Error"), MB_ICONEXCLAMATION | MB_OK | MB_ICONSTOP);
+            NULL, _("馬鹿馬鹿蛮怒はすでに起動しています。", "Bakabakaband is already running."), _("エラー！", "Error"), MB_ICONEXCLAMATION | MB_OK | MB_ICONSTOP);
         return FALSE;
     }
 
