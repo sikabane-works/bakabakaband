@@ -705,7 +705,7 @@ BIT_FLAGS has_levitation(player_type *creature_ptr)
         result = FLAG_CAUSE_BATTLE_FORM;
     }
 
-    if (creature_ptr->ult_res) {
+    if (creature_ptr->ult_res || creature_ptr->magicdef) {
         result |= 0x01U << FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
@@ -1631,17 +1631,17 @@ bool has_icky_wield_weapon(player_type *creature_ptr, int i)
     object_type *o_ptr = &creature_ptr->inventory_list[INVEN_MAIN_HAND + i];
     object_flags(creature_ptr, o_ptr, flgs);
 
-    bool is_bare_hands = o_ptr->tval == TV_NONE;
+    bool has_no_weapon = (o_ptr->tval == TV_NONE) || (o_ptr->tval == TV_SHIELD);
     if (creature_ptr->pclass == CLASS_PRIEST) {
         bool is_suitable_weapon = has_flag(flgs, TR_BLESSED);
         is_suitable_weapon |= (o_ptr->tval != TV_SWORD) && (o_ptr->tval != TV_POLEARM);
-        return !is_bare_hands && !is_suitable_weapon;
+        return !has_no_weapon && !is_suitable_weapon;
     }
 
     if (creature_ptr->pclass == CLASS_SORCERER) {
         bool is_suitable_weapon = o_ptr->tval == TV_HAFTED;
         is_suitable_weapon &= (o_ptr->sval == SV_WIZSTAFF) || (o_ptr->sval == SV_NAMAKE_HAMMER);
-        return !is_bare_hands && !is_suitable_weapon;
+        return !has_no_weapon && !is_suitable_weapon;
     }
 
     if (has_not_monk_weapon(creature_ptr, i) || has_not_ninja_weapon(creature_ptr, i))
