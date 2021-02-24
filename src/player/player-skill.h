@@ -3,7 +3,7 @@
 #include "system/angband.h"
 
 #define SKILL_MARTIAL_ARTS 0
-#define SKILL_NITOURYU 1
+#define SKILL_DUAL_WIELD 1
 #define SKILL_RIDING 2
 #define SKILL_SHIELD 3
 #define SKILL_TEMPMAX 4

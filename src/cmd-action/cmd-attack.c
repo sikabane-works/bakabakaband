@@ -239,17 +239,17 @@ bool do_cmd_attack(player_type *attacker_ptr, POSITION y, POSITION x, combat_opt
     }
 
     if (can_attack_with_main_hand(attacker_ptr) && can_attack_with_sub_hand(attacker_ptr)) {
-        if ((attacker_ptr->skill_exp[SKILL_NITOURYU] < s_info[attacker_ptr->pclass].s_max[SKILL_NITOURYU])
-            && ((attacker_ptr->skill_exp[SKILL_NITOURYU] - 1000) / 200 < r_ptr->level)) {
-            if (attacker_ptr->skill_exp[SKILL_NITOURYU] < WEAPON_EXP_BEGINNER)
-                attacker_ptr->skill_exp[SKILL_NITOURYU] += 80;
-            else if (attacker_ptr->skill_exp[SKILL_NITOURYU] < WEAPON_EXP_SKILLED)
-                attacker_ptr->skill_exp[SKILL_NITOURYU] += 4;
-            else if (attacker_ptr->skill_exp[SKILL_NITOURYU] < WEAPON_EXP_EXPERT)
-                attacker_ptr->skill_exp[SKILL_NITOURYU] += 1;
-            else if (attacker_ptr->skill_exp[SKILL_NITOURYU] < WEAPON_EXP_MASTER)
+        if ((attacker_ptr->skill_exp[SKILL_DUAL_WIELD] < s_info[attacker_ptr->pclass].s_max[SKILL_DUAL_WIELD])
+            && ((attacker_ptr->skill_exp[SKILL_DUAL_WIELD] - 1000) / 200 < r_ptr->level)) {
+            if (attacker_ptr->skill_exp[SKILL_DUAL_WIELD] < WEAPON_EXP_BEGINNER)
+                attacker_ptr->skill_exp[SKILL_DUAL_WIELD] += 80;
+            else if (attacker_ptr->skill_exp[SKILL_DUAL_WIELD] < WEAPON_EXP_SKILLED)
+                attacker_ptr->skill_exp[SKILL_DUAL_WIELD] += 4;
+            else if (attacker_ptr->skill_exp[SKILL_DUAL_WIELD] < WEAPON_EXP_EXPERT)
+                attacker_ptr->skill_exp[SKILL_DUAL_WIELD] += 1;
+            else if (attacker_ptr->skill_exp[SKILL_DUAL_WIELD] < WEAPON_EXP_MASTER)
                 if (one_in_(3))
-                    attacker_ptr->skill_exp[SKILL_NITOURYU] += 1;
+                    attacker_ptr->skill_exp[SKILL_DUAL_WIELD] += 1;
             attacker_ptr->update |= (PU_BONUS);
         }
     }
