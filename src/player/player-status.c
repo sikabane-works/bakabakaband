@@ -3097,7 +3097,7 @@ static s16b calc_to_hit(player_type *creature_ptr, INVENTORY_IDX slot, bool is_r
                 break;
             /* fall through */
         case MELEE_TYPE_BAREHAND_TWO:
-            hit += (creature_ptr->skill_exp[SKILL_SUDE] - WEAPON_EXP_BEGINNER) / 200;
+            hit += (creature_ptr->skill_exp[SKILL_MARTIAL_ARTS] - WEAPON_EXP_BEGINNER) / 200;
         }
 
         if ((is_martial_arts_mode(creature_ptr) && empty_hands(creature_ptr, FALSE) == (EMPTY_HAND_MAIN | EMPTY_HAND_SUB))

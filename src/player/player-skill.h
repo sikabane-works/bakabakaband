@@ -2,7 +2,7 @@
 
 #include "system/angband.h"
 
-#define SKILL_SUDE 0
+#define SKILL_MARTIAL_ARTS 0
 #define SKILL_NITOURYU 1
 #define SKILL_RIDING 2
 #define SKILL_SHIELD 3
