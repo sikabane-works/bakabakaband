@@ -143,8 +143,8 @@ void do_cmd_knowledge_spell_exp(player_type *creature_ptr)
  */
 void do_cmd_knowledge_skill_exp(player_type *creature_ptr)
 {
-    char skill_name[SKILL_TEMPMAX][20] = { _("マーシャルアーツ", "Martial Arts    "), _("二刀流          ", "Dual Wielding   "),
-        _("乗馬            ", "Riding          "), _("盾              ", "Shield          ") };
+    char skill_name[SKILL_TEMPMAX][20] = { _("マーシャルアーツ", "Martial Arts    "), _("二刀流          ", "Dual Wielding   "), _("乗馬            ", "Riding          "), _("盾              ", "Shield          "), _("短刀              ", "Dagger          "), _("短剣            ", "Short sword     "), _("長剣            ", "Long sword      "), _("大剣            ", "Great sword     "), _("槌矛            ", "Mace            "),
+              _("槍              ", "Spear           ") };
 
     FILE *fff = NULL;
     char file_name[FILE_NAME_SIZE];
