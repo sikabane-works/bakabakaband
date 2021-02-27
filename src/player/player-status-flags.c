@@ -129,13 +129,13 @@ BIT_FLAGS has_infra_vision(player_type *creature_ptr)
         tmp_rp_ptr = &race_info[creature_ptr->prace];
 
     if (tmp_rp_ptr->infra > 0)
-        result |= FLAG_CAUSE_RACE;
+        result |= 0x01U << FLAG_CAUSE_RACE;
 
     if (creature_ptr->muta3 & MUT3_INFRAVIS)
-        result |= FLAG_CAUSE_MUTATION;
+        result |= 0x01U << FLAG_CAUSE_MUTATION;
 
     if (creature_ptr->tim_infra)
-        result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
+        result |= 0x01U << FLAG_CAUSE_MAGIC_TIME_EFFECT;
 
     result |= check_equipment_flags(creature_ptr, TR_INFRA);
     return result;
@@ -723,15 +723,17 @@ BIT_FLAGS has_levitation(player_type *creature_ptr)
     return result;
 }
 
-void has_can_swim(player_type *creature_ptr)
+bool has_can_swim(player_type *creature_ptr)
 {
-    creature_ptr->can_swim = FALSE;
+    bool can_swim = FALSE;
     if (creature_ptr->riding) {
         monster_type *riding_m_ptr = &creature_ptr->current_floor_ptr->m_list[creature_ptr->riding];
         monster_race *riding_r_ptr = &r_info[riding_m_ptr->r_idx];
         if (riding_r_ptr->flags7 & (RF7_CAN_SWIM | RF7_AQUATIC))
-            creature_ptr->can_swim = TRUE;
+            can_swim = TRUE;
     }
+
+    return can_swim;
 }
 
 BIT_FLAGS has_slow_digest(player_type *creature_ptr)
@@ -810,7 +812,7 @@ BIT_FLAGS has_regenerate(player_type *creature_ptr)
     return result;
 }
 
-void has_curses(player_type *creature_ptr)
+void update_curses(player_type *creature_ptr)
 {
     object_type *o_ptr;
     BIT_FLAGS flgs[TR_FLAG_SIZE];
@@ -884,7 +886,7 @@ void has_curses(player_type *creature_ptr)
 
 BIT_FLAGS has_impact(player_type *creature_ptr) { return check_equipment_flags(creature_ptr, TR_IMPACT); }
 
-void has_extra_blow(player_type *creature_ptr)
+void update_extra_blows(player_type *creature_ptr)
 {
     object_type *o_ptr;
     BIT_FLAGS flgs[TR_FLAG_SIZE];
