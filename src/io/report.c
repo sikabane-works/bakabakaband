@@ -191,7 +191,7 @@ static bool http_post(concptr url, BUF *buf)
     curl_easy_setopt(curl, CURLOPT_HTTPHEADER, slist);
 
     char user_agent[64];
-    snprintf(user_agent, sizeof(user_agent), "Bakabakaband %d.%d.%d", FAKE_VER_MAJOR - FAKE_VERSION_MINUS, FAKE_VER_MINOR, FAKE_VER_PATCH);
+    snprintf(user_agent, sizeof(user_agent), "Bakabakaband %d.%d.%d", FAKE_VER_MAJOR - VIEW_VERSION_MINUS, FAKE_VER_MINOR, FAKE_VER_PATCH);
     curl_easy_setopt(curl, CURLOPT_USERAGENT, user_agent);
 
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0);
