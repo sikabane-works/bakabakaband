@@ -142,7 +142,7 @@ static void drop_corpse(player_type *player_ptr, monster_death_type *md_ptr)
  * @param md_ptr モンスター死亡構造体への参照ポインタ
  * @return 何かドロップするなら1以上、何もドロップしないなら0
  */
-static ARTIFACT_IDX get_artifact_index(player_type *player_ptr, monster_death_type *md_ptr)
+static ARTIFACT_IDX drop_artifact_index(player_type *player_ptr, monster_death_type *md_ptr)
 {
     ARTIFACT_IDX a_idx = 0;
     PERCENTAGE chance = 0;
@@ -164,11 +164,13 @@ static ARTIFACT_IDX get_artifact_index(player_type *player_ptr, monster_death_ty
             if (current_world_ptr->character_dungeon)
                 a_ptr->floor_id = player_ptr->floor_id;
 
-            continue;
+            break;
         }
 
-        if (!preserve_mode)
+        if (!preserve_mode) {
             a_ptr->cur_num = 1;
+            break;
+        }
     }
 
     return a_idx;
@@ -201,7 +203,7 @@ static void drop_artifact(player_type *player_ptr, monster_death_type *md_ptr)
     if (!md_ptr->drop_chosen_item)
         return;
 
-    ARTIFACT_IDX a_idx = get_artifact_index(player_ptr, md_ptr);
+    ARTIFACT_IDX a_idx = drop_artifact_index(player_ptr, md_ptr);
     if (((md_ptr->r_ptr->flags7 & RF7_GUARDIAN) == 0) || (d_info[player_ptr->dungeon_idx].final_guardian != md_ptr->m_ptr->r_idx))
         return;
 
@@ -299,7 +301,7 @@ static void on_defeat_last_boss(player_type *player_ptr)
     current_world_ptr->total_winner = TRUE;
     player_ptr->redraw |= PR_TITLE;
     play_music(TERM_XTRA_MUSIC_BASIC, MUSIC_BASIC_FINAL_QUEST_CLEAR);
-    exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("見事に変愚蛮怒の勝利者となった！", "finally became *WINNER* of Hengband!"));
+    exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("見事に馬鹿馬鹿蛮怒の勝利者となった！", "finally became *WINNER* of Bakabakaband!"));
     admire_from_patron(player_ptr);
     msg_print(_("*** おめでとう ***", "*** CONGRATULATIONS ***"));
     msg_print(_("あなたはゲームをコンプリートしました。", "You have won the game!"));

@@ -276,6 +276,9 @@ void do_cmd_debug(player_type *creature_ptr)
 
         player_outfit(creature_ptr);
         break;
+    case 'y':
+        wiz_kill_enemy(creature_ptr);
+        break;
     case 'z':
         wiz_zap_surrounding_monsters(creature_ptr);
         break;
@@ -289,7 +292,7 @@ void do_cmd_debug(player_type *creature_ptr)
         wiz_debug_spell(creature_ptr);
         break;
     case '"':
-        exe_output_spoilers(creature_ptr);
+        exe_output_spoilers();
         break;
     case '?':
         do_cmd_help(creature_ptr);

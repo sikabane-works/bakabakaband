@@ -3,7 +3,7 @@
  * @file main-win.c
  * @brief Windows版固有実装(メインエントリポイント含む)
  * @date 2018/03/16
- * @author Hengband Team
+ * @author Bakabakaband Team
  * @details
  *
  * <h3>概要</h3>
@@ -101,6 +101,7 @@
 #include "dungeon/quest.h"
 #include "floor/floor-base-definitions.h"
 #include "floor/floor-events.h"
+#include "game-option/game-play-options.h"
 #include "game-option/runtime-arguments.h"
 #include "game-option/special-options.h"
 #include "io/files-util.h"
@@ -126,6 +127,8 @@
 #include "util/string-processor.h"
 #include "view/display-map.h"
 #include "view/display-messages.h"
+#include "wizard/spoiler-util.h"
+#include "wizard/wizard-spoiler.h"
 #include "world/world.h"
 
 #ifdef WINDOWS
@@ -224,6 +227,8 @@
 #define IDM_WINDOW_D_HGT_5 275
 #define IDM_WINDOW_D_HGT_6 276
 #define IDM_WINDOW_D_HGT_7 277
+
+#define IDM_WINDOW_KEEP_SUBWINDOWS 280
 
 #define IDM_OPTIONS_NO_GRAPHICS 400
 #define IDM_OPTIONS_OLD_GRAPHICS 401
@@ -444,6 +449,11 @@ static DIBINIT infMask;
  * Flag set once "sound" has been initialized
  */
 static bool can_use_sound = FALSE;
+
+/*
+ * Show sub-windows even when Hengband is not in focus 
+ */
+static bool keep_subwindows = TRUE;
 
 #define SAMPLE_SOUND_MAX 16
 /*
@@ -817,7 +827,22 @@ static void save_prefs(void)
     strcpy(buf, use_bg ? "1" : "0");
     WritePrivateProfileString("Angband", "BackGround", buf, ini_file);
     WritePrivateProfileString("Angband", "BackGroundBitmap", bg_bitmap_file[0] != '\0' ? bg_bitmap_file : "bg.bmp", ini_file);
-    WritePrivateProfileString("Angband", "SaveFile", savefile, ini_file);
+
+    int path_length = strlen(ANGBAND_DIR) - 4; /* \libの4文字分を削除 */
+    char tmp[1024] = "";
+    strncat(tmp, ANGBAND_DIR, path_length);
+
+    int n = strncmp(tmp, savefile, path_length);
+    if (n == 0) {
+        char relative_path[1024] = "";
+        snprintf(relative_path, sizeof(relative_path), ".\\%s", (savefile + path_length));
+        WritePrivateProfileString("Angband", "SaveFile", relative_path, ini_file);
+    } else {
+        WritePrivateProfileString("Angband", "SaveFile", savefile, ini_file);
+    }
+
+    strcpy(buf, keep_subwindows ? "1" : "0");
+    WritePrivateProfileString("Angband", "KeepSubwindows", buf, ini_file);
 
     for (int i = 0; i < MAX_TERM_DATA; ++i) {
         save_prefs_aux(i);
@@ -894,6 +919,17 @@ static void load_prefs(void)
     use_bg = GetPrivateProfileInt("Angband", "BackGround", 0, ini_file);
     GetPrivateProfileString("Angband", "BackGroundBitmap", "bg.bmp", bg_bitmap_file, 1023, ini_file);
     GetPrivateProfileString("Angband", "SaveFile", "", savefile, 1023, ini_file);
+
+    int n = strncmp(".\\", savefile, 2);
+    if (n == 0) {
+        int path_length = strlen(ANGBAND_DIR) - 4; /* \libの4文字分を削除 */
+        char tmp[1024] = "";
+        strncat(tmp, ANGBAND_DIR, path_length);
+        strncat(tmp, savefile + 2, strlen(savefile) - 2 + path_length);
+        strncpy(savefile, tmp, strlen(tmp));
+    }
+
+    keep_subwindows = (GetPrivateProfileInt("Angband", "KeepSubwindows", 0, ini_file) != 0);
     for (int i = 0; i < MAX_TERM_DATA; ++i) {
         load_prefs_aux(i);
     }
@@ -2010,7 +2046,7 @@ static void init_windows(void)
     td = &data[0];
     WIPE(td, term_data);
 #ifdef JP
-    td->s = "変愚蛮怒";
+    td->s = "馬鹿馬鹿蛮怒";
 #else
     td->s = angband_term_name[0];
 #endif
@@ -2225,6 +2261,8 @@ static void setup_menus(void)
             EnableMenuItem(hm, IDM_WINDOW_D_HGT_0 + i, MF_BYCOMMAND | MF_ENABLED);
         }
     }
+    EnableMenuItem(hm, IDM_WINDOW_KEEP_SUBWINDOWS, MF_BYCOMMAND | MF_ENABLED);
+    CheckMenuItem(hm, IDM_WINDOW_KEEP_SUBWINDOWS, (keep_subwindows ? MF_CHECKED : MF_UNCHECKED));
 
     EnableMenuItem(hm, IDM_OPTIONS_NO_GRAPHICS, MF_BYCOMMAND | MF_DISABLED | MF_GRAYED);
     EnableMenuItem(hm, IDM_OPTIONS_OLD_GRAPHICS, MF_BYCOMMAND | MF_DISABLED | MF_GRAYED);
@@ -2563,6 +2601,10 @@ static void process_menus(player_type *player_ptr, WORD wCmd)
         td->tile_hgt -= 1;
         term_getsize(td);
         term_window_resize(td);
+        break;
+    }
+    case IDM_WINDOW_KEEP_SUBWINDOWS: {
+        keep_subwindows = !keep_subwindows;
         break;
     }
     case IDM_OPTIONS_NO_GRAPHICS: {
@@ -3163,6 +3205,15 @@ LRESULT PASCAL AngbandWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
             }
         }
     }
+    case WM_ENABLE: {
+        if (wParam == FALSE && keep_subwindows) {
+            for (int i = 0; i < MAX_TERM_DATA; i++) {
+                if (data[i].visible) {
+                    ShowWindow(data[i].w, SW_SHOW);
+                }
+            }
+        }
+    }
     }
 
     return DefWindowProc(hWnd, uMsg, wParam, lParam);
@@ -3491,8 +3542,30 @@ static void init_stuff(void)
 }
 
 /*!
+ * @brief コマンドラインから全スポイラー出力を行う
+ * Create Spoiler files from Command Line
+ * @return spoiler_output_status
+ */
+static spoiler_output_status create_debug_spoiler(LPSTR cmd_line)
+{
+    char *s, *option;
+    s = cmd_line;
+    if (!*s)
+        return SPOILER_OUTPUT_CANCEL;
+    option = "--output-spoilers";
+
+    if (strncmp(s, option, strlen(option)) != 0)
+        return SPOILER_OUTPUT_CANCEL;
+
+    init_stuff();
+    init_angband(p_ptr, process_autopick_file_command, TRUE);
+
+    return output_all_spoilers();
+}
+
+/*!
  * todo よく見るとhMutexはちゃんと使われていない……？
- * @brief (Windows固有)変愚蛮怒が起動済かどうかのチェック
+ * @brief (Windows固有)馬鹿馬鹿蛮怒が起動済かどうかのチェック
  */
 static bool is_already_running(void)
 {
@@ -3519,8 +3592,25 @@ int PASCAL WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine, int nC
     hInstance = hInst;
     if (is_already_running()) {
         MessageBox(
-            NULL, _("変愚蛮怒はすでに起動しています。", "Hengband is already running."), _("エラー！", "Error"), MB_ICONEXCLAMATION | MB_OK | MB_ICONSTOP);
+            NULL, _("馬鹿馬鹿蛮怒はすでに起動しています。", "Bakabakaband is already running."), _("エラー！", "Error"), MB_ICONEXCLAMATION | MB_OK | MB_ICONSTOP);
         return FALSE;
+    }
+
+    switch (create_debug_spoiler(lpCmdLine)) {
+    case SPOILER_OUTPUT_SUCCESS:
+        fprintf(stdout, "Successfully created a spoiler file.");
+        quit(NULL);
+        return 0;
+    case SPOILER_OUTPUT_FAIL_FOPEN:
+        fprintf(stderr, "Cannot create spoiler file.");
+        quit(NULL);
+        return 0;
+    case SPOILER_OUTPUT_FAIL_FCLOSE:
+        fprintf(stderr, "Cannot close spoiler file.");
+        quit(NULL);
+        return 0;
+    default:
+        break;
     }
 
     if (hPrevInst == NULL) {
@@ -3610,7 +3700,7 @@ int PASCAL WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine, int nC
 
     signals_init();
     term_activate(term_screen);
-    init_angband(p_ptr, process_autopick_file_command);
+    init_angband(p_ptr, process_autopick_file_command, FALSE);
     initialized = TRUE;
     check_for_save_file(p_ptr, lpCmdLine);
     prt(_("[ファイル] メニューの [新規] または [開く] を選択してください。", "[Choose 'New' or 'Open' from the 'File' menu]"), 23, _(8, 17));

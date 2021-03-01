@@ -120,10 +120,14 @@ void display_roff(player_type *player_ptr)
  * @param roff_func 出力処理を行う関数ポインタ
  * @return なし
  */
-void output_monster_spoiler(player_type *player_ptr, MONRACE_IDX r_idx, void (*roff_func)(TERM_COLOR attr, concptr str))
+void output_monster_spoiler(MONRACE_IDX r_idx, void (*roff_func)(TERM_COLOR attr, concptr str))
 {
     hook_c_roff = roff_func;
-    process_monster_lore(player_ptr, r_idx, MONSTER_LORE_DEBUG);
+    player_type dummy;
+
+    dummy.lev = 1;
+    dummy.max_plv = 1;
+    process_monster_lore(&dummy, r_idx, MONSTER_LORE_DEBUG);
 }
 
 static bool display_kill_unique(lore_type *lore_ptr)
@@ -367,14 +371,17 @@ void display_monster_exp(player_type *player_ptr, lore_type *lore_ptr)
 #ifdef JP
     hooked_roff("を倒すことは");
 #endif
-    long exp_integer = (long)lore_ptr->r_ptr->mexp * lore_ptr->r_ptr->level / (player_ptr->max_plv + 2) * 3 / 2;
-    long exp_decimal
-        = ((((long)lore_ptr->r_ptr->mexp * lore_ptr->r_ptr->level % (player_ptr->max_plv + 2) * 3 / 2) * (long)1000 / (player_ptr->max_plv + 2) + 5) / 10);
+
+    int64_t base_exp = lore_ptr->r_ptr->mexp * lore_ptr->r_ptr->level * 3 / 2;
+    int64_t player_factor = player_ptr->max_plv + 2;
+    
+    int64_t exp_integer = base_exp / player_factor;
+    int64_t exp_decimal = ((base_exp % player_factor * 1000 / player_factor) + 5) / 10;
 
 #ifdef JP
-    hooked_roff(format(" %d レベルのキャラクタにとって 約%ld.%02ld ポイントの経験となる。", player_ptr->lev, (long)exp_integer, (long)exp_decimal));
+    hooked_roff(format(" %d レベルのキャラクタにとって 約%ld.%02ld ポイントの経験となる。", player_ptr->lev, exp_integer, exp_decimal));
 #else
-    hooked_roff(format(" is worth about %ld.%02ld point%s", (long)exp_integer, (long)exp_decimal, ((exp_integer == 1) && (exp_decimal == 0)) ? "" : "s"));
+    hooked_roff(format(" is worth about %ld.%02ld point%s", exp_integer, exp_decimal, ((exp_integer == 1) && (exp_decimal == 0)) ? "" : "s"));
 
     char *ordinal;
     ordinal = "th";
@@ -504,7 +511,7 @@ void display_monster_collective(lore_type *lore_ptr)
 void display_monster_launching(player_type *player_ptr, lore_type *lore_ptr)
 {
     if (lore_ptr->flags4 & RF4_ROCKET) {
-        set_damage(player_ptr, lore_ptr->r_idx, (MS_ROCKET), _("ロケット%sを発射する", "shoot a rocket%s"), lore_ptr->tmp_msg[lore_ptr->vn]);
+        set_damage(player_ptr, lore_ptr, (MS_ROCKET), _("ロケット%sを発射する", "shoot a rocket%s"));
         lore_ptr->vp[lore_ptr->vn] = lore_ptr->tmp_msg[lore_ptr->vn];
         lore_ptr->color[lore_ptr->vn++] = TERM_UMBER;
     }
@@ -532,7 +539,7 @@ void display_monster_launching(player_type *player_ptr, lore_type *lore_ptr)
     if (p < 0)
         return;
 
-    if (know_armour(lore_ptr->r_idx))
+    if (know_armour(lore_ptr->r_idx, lore_ptr->know_everything))
         sprintf(lore_ptr->tmp_msg[lore_ptr->vn], _("威力 %dd%d の射撃をする", "fire an arrow (Power:%dd%d)"), lore_ptr->r_ptr->blow[p].d_side,
             lore_ptr->r_ptr->blow[p].d_dice);
     else

@@ -585,14 +585,14 @@ void wiz_zap_floor_monsters(player_type *caster_ptr)
     }
 }
 
-void cheat_death(player_type *creature_ptr)
+void cheat_death(player_type *creature_ptr, bool no_penalty)
 {
     if (creature_ptr->sc)
         creature_ptr->sc = creature_ptr->age = 0;
     creature_ptr->age++;
 
     current_world_ptr->noscore |= 0x0001;
-    msg_print(_("ウィザードモードに念を送り、死を欺いた。", "You invoke wizard mode and cheat death."));
+    msg_print(_("ああ＾～生き返るわぁ＾～", "Ahh~ I'm reviving~."));
     msg_print(NULL);
 
     (void)life_stream(creature_ptr, FALSE, FALSE);
@@ -601,7 +601,16 @@ void cheat_death(player_type *creature_ptr)
     (void)recall_player(creature_ptr, 0);
     reserve_alter_reality(creature_ptr, 0);
 
-    (void)strcpy(creature_ptr->died_from, _("死の欺き", "Cheating death"));
+
+    if(!no_penalty)
+    {
+        creature_ptr->max_max_exp = (creature_ptr->max_max_exp * 6 / (randint1(3) + 6));
+        creature_ptr->max_exp = creature_ptr->max_max_exp;
+        creature_ptr->exp = creature_ptr->max_max_exp;
+        creature_ptr->au /= 2;
+    }
+
+    (void)strcpy(creature_ptr->died_from, _("カッチャマの導き", "Guidunce of the mom"));
     creature_ptr->is_dead = FALSE;
     (void)set_food(creature_ptr, PY_FOOD_MAX - 1);
 

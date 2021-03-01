@@ -42,7 +42,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C00503B6-18FF-42F1-BAC0-6C94EDE62CB2}</ProjectGuid>
+    <ProjectGuid>{91B5F434-C680-49FE-9532-8586F6F6E2E4}</ProjectGuid>
     <RootNamespace>Hengband</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -103,7 +103,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='English-Release|Win32'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WINDOWS;_CRT_SECURE_NO_WARNINGS;WIN32;HAVE_STDINT_H;JP;SJIS;WORLD_SCORE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WINDOWS;_CRT_SECURE_NO_WARNINGS;WIN32;HAVE_STDINT_H;JP;SJIS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <WarningLevel>EnableAllWarnings</WarningLevel>
@@ -148,7 +148,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WINDOWS;_CRT_SECURE_NO_WARNINGS;WIN32;HAVE_STDINT_H;JP;SJIS;WORLD_SCORE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WINDOWS;_CRT_SECURE_NO_WARNINGS;WIN32;HAVE_STDINT_H;JP;SJIS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4244;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
@@ -321,6 +321,7 @@
     <ClCompile Include="..\..\src\io\input-key-requester.c" />
     <ClCompile Include="..\..\src\io\store-key-processor.c" />
     <ClCompile Include="..\..\src\load\info-loader.c" />
+    <ClCompile Include="..\..\src\locale\utf-8.c" />
     <ClCompile Include="..\..\src\main\angband-headers.c" />
     <ClCompile Include="..\..\src\main\game-data-initializer.c" />
     <ClCompile Include="..\..\src\main\info-initializer.c" />
@@ -970,6 +971,7 @@
     <ClInclude Include="..\..\src\io\store-key-processor.h" />
     <ClInclude Include="..\..\src\load\info-loader.h" />
     <ClInclude Include="..\..\src\locale\language-switcher.h" />
+    <ClInclude Include="..\..\src\locale\utf-8.h" />
     <ClInclude Include="..\..\src\main\angband-headers.h" />
     <ClInclude Include="..\..\src\main\game-data-initializer.h" />
     <ClInclude Include="..\..\src\main\info-initializer.h" />

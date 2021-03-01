@@ -20,14 +20,14 @@
  * @param FLG フラグ位置(ビット)
  * @return なし
  */
-#define ADD_BAR_FLAG(FLG) (bar_flags[FLG / 32] |= (1L << (FLG % 32)))
+#define ADD_BAR_FLAG(FLG) (bar_flags[FLG / 32] |= (1UL << (FLG % 32)))
 
 /*!
  * @brief 32ビット変数配列の指定位置のビットフラグが1かどうかを返す。
  * @param FLG フラグ位置(ビット)
  * @return 1ならば0以外を返す
  */
-#define IS_BAR_FLAG(FLG) (bar_flags[FLG / 32] & (1L << (FLG % 32)))
+#define IS_BAR_FLAG(FLG) (bar_flags[FLG / 32] & (1UL << (FLG % 32)))
 
 /*!
  * @brief プレイヤー能力値を描画する / Print character stat in given row, column
@@ -364,16 +364,12 @@ void print_imitation(player_type *player_ptr)
     if (player_ptr->pclass != CLASS_IMITATOR)
         return;
 
-    if (player_ptr->mane_num != 0) {
+    if (player_ptr->mane_num == 0) {
         put_str("    ", row_study, col_study);
         return;
     }
 
-    TERM_COLOR attr;
-    if (player_ptr->new_mane)
-        attr = TERM_L_RED;
-    else
-        attr = TERM_WHITE;
+    TERM_COLOR attr = player_ptr->new_mane ? TERM_L_RED : TERM_WHITE;
     c_put_str(attr, _("まね", "Imit"), row_study, col_study);
 }
 
