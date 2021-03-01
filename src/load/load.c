@@ -326,7 +326,7 @@ bool load_savedata(player_type *player_ptr, bool *new_game)
 
     if (err) {
         msg_format(_("エラー(%s)がバージョン%d.%d.%d 用セーブファイル読み込み中に発生。", "Error (%s) reading %d.%d.%d savefile."), what,
-            (current_world_ptr->z_major > 9) ? current_world_ptr->z_major - 10 : current_world_ptr->z_major, current_world_ptr->z_minor,
+            (current_world_ptr->z_major > 9) ? current_world_ptr->z_major - VIEW_VERSION_MINUS : current_world_ptr->z_major, current_world_ptr->z_minor,
             current_world_ptr->z_patch);
 
         msg_print(NULL);
@@ -339,7 +339,7 @@ bool load_savedata(player_type *player_ptr, bool *new_game)
             msg_print(_("バージョン 2.0.* 用のセーブファイルを変換しました。", "Converted a 2.0.* savefile."));
         } else {
             msg_format(_("バージョン %d.%d.%d 用のセーブ・ファイルを変換しました。", "Converted a %d.%d.%d savefile."),
-                (current_world_ptr->z_major > 9) ? current_world_ptr->z_major - 10 : current_world_ptr->z_major, current_world_ptr->z_minor,
+                (current_world_ptr->z_major > 9) ? current_world_ptr->z_major - VIEW_VERSION_MINUS : current_world_ptr->z_major, current_world_ptr->z_minor,
                 current_world_ptr->z_patch);
         }
 
