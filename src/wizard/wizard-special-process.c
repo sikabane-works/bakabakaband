@@ -588,25 +588,49 @@ void wiz_zap_floor_monsters(player_type *caster_ptr)
 /* @brief 死を欺く仕様(馬鹿馬鹿蛮怒独自実装) */
 void cheat_death(player_type *creature_ptr, bool no_penalty)
 {
-
+    int blank_years;
     if (!no_penalty) {
 
-        int slave_years = damroll(8, 10);
-        creature_ptr->sc /= 2;
-        creature_ptr->age += slave_years;
 
-        creature_ptr->max_max_exp = (creature_ptr->max_max_exp * 6 / (randint1(3) + 6));
-        creature_ptr->max_exp = creature_ptr->max_max_exp;
-        creature_ptr->exp = creature_ptr->max_max_exp;
-        creature_ptr->au /= 2;
+        switch (randint0(3)) {
+        
+        case 0:
+            blank_years = damroll(8, 10);
+            creature_ptr->sc /= 2;
+            creature_ptr->age += blank_years;
 
-        msg_print(_("『ぬわああああん、疲れたなもおおおおん！』", "\"Aaaaaah! I'm hellish tireeeed!\""));
-        msg_format(_("あなたは死んだ罰として＠人墓場でイェンダーの魔法使い共に%d年シゴかれた！",
-            "As a death penalry, you were forced to work like a slave by the wizards of Yendor at the '@' Stigmatic Graveyard for %d years!"), slave_years);
+            creature_ptr->max_max_exp = (creature_ptr->max_max_exp * 6 / (randint1(3) + 6));
+            creature_ptr->max_exp = creature_ptr->max_max_exp;
+            creature_ptr->exp = creature_ptr->max_max_exp;
+            creature_ptr->au /= 2;
+
+            msg_print(_("『ぬわああああん、疲れたなもおおおおん！』", "\"Aaaaaah! I'm hellish tireeeed!\""));
+            msg_format(_("あなたは死んだ罰として＠人墓場でイェンダーの魔法使い共に%d年間奴隷労働を強いられた！",
+                           "As a death penalry, you were forced to work like a slave by the wizards of Yendor at the '@' Stigmatic Graveyard for %d years!"),
+                blank_years);
+            break;
+
+        case 1:
+            blank_years = damroll(2, 10);
+            creature_ptr->sc /= 2;
+            creature_ptr->age += blank_years;
+            msg_print(_("『猿先生何も考えてないと思うよ』", "\"I think that Mr.Sawatari thinks nothing.\""));
+            msg_format(_("あなたは連載%d年の間猿空間に迷い込んでいた！ついでに死んだ設定も忘れ去られていた！",
+                           "You have been lost in the *S*A*R*U* space for %d years! By the way, the dead setting was also forgotten!"),
+                blank_years);
+            break;
+
+        case 2:
+            msg_print(_("『ああ＾～生き返るわぁ＾～』", "\"Ahh~ I'm reviving~.\""));
+            msg_print(_("あなたは偉大なるカッチャマの神なる御言葉で無事蘇生した！", "You revived by a holt word from great mom!"));
+            break;
+
+
+        }
+
     }
 
     current_world_ptr->noscore |= 0x0001;
-    msg_print(_("『ああ＾～生き返るわぁ＾～』", "\"Ahh~ I'm reviving~.\""));
     msg_print(NULL);
 
     (void)life_stream(creature_ptr, FALSE, FALSE);
@@ -616,7 +640,7 @@ void cheat_death(player_type *creature_ptr, bool no_penalty)
     reserve_alter_reality(creature_ptr, 0);
 
 
-    (void)strcpy(creature_ptr->died_from, _("カッチャマの導き", "Guidunce of the mom"));
+    (void)strcpy(creature_ptr->died_from, _("死の導き", "Cheat death"));
     creature_ptr->is_dead = FALSE;
     (void)set_food(creature_ptr, PY_FOOD_MAX - 1);
 
