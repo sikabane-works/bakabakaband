@@ -331,7 +331,6 @@ static void decide_arena_death(player_type *player_ptr)
     if (!floor_ptr->inside_arena) {
         if (!get_check(_("死にますか? ", "Die? ")))
             cheat_death(player_ptr, cheat_live);
-
         return;
     }
 
