@@ -6,7 +6,7 @@
 * during the creation of an object (see "get_obj_num()" in "object.c").
 * Lower values yield better objects more often.
 */
-#define GREAT_OBJ       10
+#define GREAT_OBJ       8
 
 /*!
 * @brief 深層モンスターが生成される(NASTY生成)の基本確率(1/x)
@@ -15,8 +15,8 @@
 * during the creation of a monsters (see "get_mon_num()" in "monster.c").
 * Lower values yield harder monsters more often.
 */
-#define NASTY_MON_BASE     25
-#define NASTY_MON_MAX      3	/*!< 深層モンスターが1フロアに生成される最大数  */
+#define NASTY_MON_BASE     5
+#define NASTY_MON_MAX      10	/*!< 深層モンスターが1フロアに生成される最大数  */
 #define NASTY_MON_PLUS_MAX 25	/*!< 深層モンスターの階層加算最大量 */
 
 #define PENETRATE_INVULNERABILITY 13 /*!< 無敵化が破られる確率(1/x) / 1/x chance of hurting even if invulnerable! */
