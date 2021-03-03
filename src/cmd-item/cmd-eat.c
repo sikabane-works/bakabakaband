@@ -41,6 +41,7 @@
 #include "status/element-resistance.h"
 #include "status/experience.h"
 #include "sv-definition/sv-food-types.h"
+#include "sv-definition/sv-junk-definition.h"
 #include "sv-definition/sv-other-types.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
@@ -71,6 +72,20 @@ void exe_eat_food(player_type *creature_ptr, INVENTORY_IDX item)
 
     /* Object level */
     lev = k_info[o_ptr->k_idx].level;
+
+    if (o_ptr->tval == TV_JUNK) {
+        switch (o_ptr->sval) {
+        case SV_JUNK_FECES:
+            msg_print("ワーォ！貴方は糞を喰った！");
+            if (!(has_resist_pois(creature_ptr) || is_oppose_pois(creature_ptr))) {
+                if (set_poisoned(creature_ptr, creature_ptr->poisoned + randint0(10) + 10)) {
+                    ident = TRUE;
+                }
+            }
+            msg_print("『涙が出るほどうめぇ……』");
+            break;
+        }
+    }
 
     if (o_ptr->tval == TV_FOOD) {
         /* Analyze the food */
@@ -429,7 +444,8 @@ void do_cmd_eat_food(player_type *creature_ptr)
         set_action(creature_ptr, ACTION_NONE);
     }
 
-    item_tester_hook = item_tester_hook_eatable;
+// TODO: オプションで切り替え可能   item_tester_hook = item_tester_hook_eatable;
+    item_tester_hook = NULL;
 
     q = _("どれを食べますか? ", "Eat which item? ");
     s = _("食べ物がない。", "You have nothing to eat.");
