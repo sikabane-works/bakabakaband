@@ -26,22 +26,22 @@
  * @brief 表示上の基本的なブロック単位(垂直方向、PANEL_HGTの倍数で設定すること)
  * Number of grids used to display the dungeon (vertically). Must be a multiple of 11, probably hard-coded to 22.
  */
-#define SCREEN_HGT 22
+#define SCREEN_HGT 11
 
 /*!
  * @brief 表示上の基本的なブロック単位(水平方向、PANEL_WIDの倍数で設定すること)
  * Number of grids used to display the dungeon (horizontally). Must be a multiple of 33, probably hard-coded to 66.
  */
-#define SCREEN_WID 66
+#define SCREEN_WID 11
 
 /*!
  * @brief 表示上のダンジョンの最大垂直サイズ(SCREEN_HGTの3倍が望ましい)
  * Maximum dungeon height in grids, must be a multiple of SCREEN_HGT, probably hard-coded to SCREEN_HGT * 3.
  */
-#define MAX_HGT 66
+#define MAX_HGT 242
 
 /*!
  * @brief 表示上のダンジョンの最大水平サイズ(SCREEN_WIDの3倍が望ましい)
  * Maximum dungeon width in grids, must be a multiple of SCREEN_WID, probably hard-coded to SCREEN_WID * 3.
  */
-#define MAX_WID 198
+#define MAX_WID 242
