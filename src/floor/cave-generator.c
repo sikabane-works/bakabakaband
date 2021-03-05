@@ -81,9 +81,18 @@ static void place_cave_contents(player_type *player_ptr, dun_data_type *dd_ptr, 
     if (dd_ptr->destroyed)
         destroy_level(player_ptr);
 
-    if (has_river_flag(d_ptr) && one_in_(3) && (randint1(floor_ptr->dun_level) > 5))
+    if (has_river_flag(d_ptr) && one_in_(3) && (randint1(floor_ptr->dun_level) > 5)) {
         add_river(floor_ptr, dd_ptr);
 
+        //追加でさらに川を増やす。
+        if(one_in_(4)) {
+            while(!one_in_(3)) {
+                add_river(floor_ptr, dd_ptr);
+            }
+        
+        }
+    }
+ 
     for (int i = 0; i < dd_ptr->cent_n; i++) {
         POSITION ty, tx;
         int pick = rand_range(0, i);
