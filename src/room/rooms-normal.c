@@ -30,9 +30,9 @@ bool build_type1(player_type *player_ptr, dun_data_type *dd_ptr)
     bool curtain = (d_info[floor_ptr->dungeon_idx].flags1 & DF1_CURTAIN) && one_in_((d_info[floor_ptr->dungeon_idx].flags1 & DF1_NO_CAVE) ? 48 : 512);
 
     /* Pick a room size */
-    y1 = randint1(4);
+    y1 = randint1(11);
     x1 = randint1(11);
-    y2 = randint1(3);
+    y2 = randint1(11);
     x2 = randint1(11);
 
     xsize = x1 + x2 + 1;
@@ -201,21 +201,21 @@ bool build_type2(player_type *player_ptr, dun_data_type *dd_ptr)
 
     /* Find and reserve some space in the dungeon.  Get center of room. */
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    if (!find_space(player_ptr, dd_ptr, &yval, &xval, 11, 25))
+    if (!find_space(player_ptr, dd_ptr, &yval, &xval, 25, 25))
         return FALSE;
 
     /* Choose lite or dark */
     light = ((floor_ptr->dun_level <= randint1(25)) && !(d_info[floor_ptr->dungeon_idx].flags1 & DF1_DARKNESS));
 
     /* Determine extents of the first room */
-    y1a = yval - randint1(4);
-    y2a = yval + randint1(3);
+    y1a = yval - randint1(11);
+    y2a = yval + randint1(10);
     x1a = xval - randint1(11);
     x2a = xval + randint1(10);
 
     /* Determine extents of the second room */
-    y1b = yval - randint1(3);
-    y2b = yval + randint1(4);
+    y1b = yval - randint1(10);
+    y2b = yval + randint1(11);
     x1b = xval - randint1(10);
     x2b = xval + randint1(11);
 

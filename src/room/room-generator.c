@@ -93,7 +93,11 @@ bool generate_rooms(player_type *player_ptr, dun_data_type *dd_ptr)
     int area_size = 100 * (floor_ptr->height * floor_ptr->width) / (MAX_HGT * MAX_WID);
     int level_index = MIN(10, div_round(floor_ptr->dun_level, 10));
     s16b room_num[ROOM_T_MAX];
-    int dun_rooms = DUN_ROOMS_MAX * area_size / 100;
+    int dun_rooms = DUN_ROOMS_MAX * area_size * damroll(10, 20) / 12000;
+    if (one_in_(5))
+        dun_rooms /= randint1(4);
+    else if (one_in_(4))
+        dun_rooms *= randint1(4);
     room_info_type *room_info_ptr = room_info_normal;
     for (int i = 0; i < ROOM_T_MAX; i++) {
         if (floor_ptr->dun_level < room_info_ptr[i].min_level)
@@ -219,7 +223,6 @@ bool generate_rooms(player_type *player_ptr, dun_data_type *dd_ptr)
             break;
     }
 
-    /*! @details 部屋生成数が2未満の場合生成失敗を返す */
     if (rooms_built < 2) {
         msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("部屋数が2未満でした。生成を再試行します。", "Number of rooms was under 2. Retry."), rooms_built);
         return FALSE;

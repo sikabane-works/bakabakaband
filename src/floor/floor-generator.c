@@ -345,11 +345,11 @@ static bool level_gen(player_type *player_ptr, concptr *why)
         int level_height;
         int level_width;
         if (d_info[d_idx].flags1 & DF1_SMALLEST) {
-            level_height = 1;
-            level_width = 1;
+            level_height = MIN_HGT_MULTIPLE;
+            level_width = MIN_WID_MULTIPLE;
         } else if (d_info[d_idx].flags1 & DF1_BEGINNER) {
-            level_height = 2;
-            level_width = 2;
+            level_height = MIN_HGT_MULTIPLE * 2;
+            level_width = MIN_WID_MULTIPLE * 2;
         } else {
             level_height = randint1(MAX_HGT / SCREEN_HGT);
             level_width = randint1(MAX_WID / SCREEN_WID);

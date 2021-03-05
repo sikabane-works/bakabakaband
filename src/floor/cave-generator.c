@@ -81,9 +81,18 @@ static void place_cave_contents(player_type *player_ptr, dun_data_type *dd_ptr, 
     if (dd_ptr->destroyed)
         destroy_level(player_ptr);
 
-    if (has_river_flag(d_ptr) && one_in_(3) && (randint1(floor_ptr->dun_level) > 5))
+    if (has_river_flag(d_ptr) && one_in_(3) && (randint1(floor_ptr->dun_level) > 5)) {
         add_river(floor_ptr, dd_ptr);
 
+        //追加でさらに川を増やす。
+        if(one_in_(4)) {
+            while(!one_in_(3)) {
+                add_river(floor_ptr, dd_ptr);
+            }
+        
+        }
+    }
+ 
     for (int i = 0; i < dd_ptr->cent_n; i++) {
         POSITION ty, tx;
         int pick = rand_range(0, i);
@@ -186,6 +195,20 @@ static bool make_one_floor(player_type *player_ptr, dun_data_type *dd_ptr, dunge
     dt_type *dt_ptr = initialize_dt_type(&tmp_dt);
     if (!make_centers(player_ptr, dd_ptr, d_ptr, dt_ptr))
         return FALSE;
+
+    dt_ptr = initialize_dt_type(&tmp_dt);
+    if (!make_centers(player_ptr, dd_ptr, d_ptr, dt_ptr))
+        return FALSE;
+
+    // 通路の過剰生成処理
+    if (one_in_(2)) {
+        int num = randint1(100);
+        for (int i = 0; i < num; i++) {
+            dt_ptr = initialize_dt_type(&tmp_dt);
+            if (!make_centers(player_ptr, dd_ptr, d_ptr, dt_ptr))
+                return FALSE;
+        }
+    }
 
     make_doors(player_ptr, dd_ptr, dt_ptr);
     if (!alloc_stairs(player_ptr, feat_down_stair, rand_range(3, 4), 3)) {
