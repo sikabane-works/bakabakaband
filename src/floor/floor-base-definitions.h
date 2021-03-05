@@ -45,3 +45,9 @@
  * Maximum dungeon width in grids, must be a multiple of SCREEN_WID, probably hard-coded to SCREEN_WID * 3.
  */
 #define MAX_WID 242
+
+/*! @brief 汎用ダンジョン最小縦倍率 */
+#define MIN_HGT_MULTIPLE 4
+
+/*! @brief 汎用ダンジョン最小横倍率 */
+#define MIN_WID_MULTIPLE 4

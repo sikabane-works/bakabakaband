@@ -219,7 +219,6 @@ bool generate_rooms(player_type *player_ptr, dun_data_type *dd_ptr)
             break;
     }
 
-    /*! @details 部屋生成数が2未満の場合生成失敗を返す */
     if (rooms_built < 2) {
         msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("部屋数が2未満でした。生成を再試行します。", "Number of rooms was under 2. Retry."), rooms_built);
         return FALSE;
