@@ -12,6 +12,7 @@
 #include "object-hook/hook-checker.h"
 #include "object-hook/hook-weapon.h"
 #include "object/object-flags.h"
+#include "player/attack-defense-types.h"
 #include "player/mimic-info-table.h"
 #include "player/player-class.h"
 #include "player/player-race-types.h"
@@ -32,12 +33,44 @@
 #include "util/quarks.h"
 #include "util/string-processor.h"
 
-static BIT_FLAGS check_equipment_flags(player_type *creature_ptr, tr_type tr_flag);
+
+static BIT_FLAGS convert_inventory_slot_type_to_flag_cause(inventory_slot_type inventory_slot)
+{
+    switch (inventory_slot) {
+    case INVEN_MAIN_HAND:
+        return FLAG_CAUSE_INVEN_MAIN_HAND;
+    case INVEN_SUB_HAND:
+        return FLAG_CAUSE_INVEN_SUB_HAND;
+    case INVEN_BOW:
+        return FLAG_CAUSE_INVEN_BOW;
+    case INVEN_MAIN_RING:
+        return FLAG_CAUSE_INVEN_MAIN_RING;
+    case INVEN_SUB_RING:
+        return FLAG_CAUSE_INVEN_SUB_RING;
+    case INVEN_NECK:
+        return FLAG_CAUSE_INVEN_NECK;
+    case INVEN_LITE:
+        return FLAG_CAUSE_INVEN_LITE;
+    case INVEN_BODY:
+        return FLAG_CAUSE_INVEN_BODY;
+    case INVEN_OUTER:
+        return FLAG_CAUSE_INVEN_OUTER;
+    case INVEN_HEAD:
+        return FLAG_CAUSE_INVEN_HEAD;
+    case INVEN_ARMS:
+        return FLAG_CAUSE_INVEN_ARMS;
+    case INVEN_FEET:
+        return FLAG_CAUSE_INVEN_FEET;
+
+    default:
+        return 0;
+    }
+}
 
 /*!
  * @brief 装備による所定の特性フラグを得ているかを一括して取得する関数。
  */
-static BIT_FLAGS check_equipment_flags(player_type *creature_ptr, tr_type tr_flag)
+BIT_FLAGS check_equipment_flags(player_type *creature_ptr, tr_type tr_flag)
 {
     object_type *o_ptr;
     BIT_FLAGS flgs[TR_FLAG_SIZE];
@@ -50,8 +83,58 @@ static BIT_FLAGS check_equipment_flags(player_type *creature_ptr, tr_type tr_fla
         object_flags(creature_ptr, o_ptr, flgs);
 
         if (has_flag(flgs, tr_flag))
-            result |= 0x01U << (i - INVEN_MAIN_HAND);
+            set_bits(result, convert_inventory_slot_type_to_flag_cause(i));
     }
+    return result;
+}
+
+BIT_FLAGS player_flags_brand_pois(player_type *creature_ptr)
+{
+    BIT_FLAGS result = check_equipment_flags(creature_ptr, TR_BRAND_POIS);
+
+    if (creature_ptr->special_attack & ATTACK_POIS)
+        set_bits(result, FLAG_CAUSE_MAGIC_TIME_EFFECT);
+
+    return result;
+}
+
+BIT_FLAGS player_flags_brand_acid(player_type *creature_ptr)
+{
+    BIT_FLAGS result = check_equipment_flags(creature_ptr, TR_BRAND_ACID);
+
+    if (creature_ptr->special_attack & ATTACK_ACID)
+        set_bits(result, FLAG_CAUSE_MAGIC_TIME_EFFECT);
+
+    return result;
+}
+
+BIT_FLAGS player_flags_brand_elec(player_type *creature_ptr)
+{
+    BIT_FLAGS result = check_equipment_flags(creature_ptr, TR_BRAND_ELEC);
+
+    if (creature_ptr->special_attack & ATTACK_ELEC)
+        set_bits(result, FLAG_CAUSE_MAGIC_TIME_EFFECT);
+
+    return result;
+}
+
+BIT_FLAGS player_flags_brand_fire(player_type *creature_ptr)
+{
+    BIT_FLAGS result = check_equipment_flags(creature_ptr, TR_BRAND_FIRE);
+
+    if (creature_ptr->special_attack & ATTACK_FIRE)
+        set_bits(result, FLAG_CAUSE_MAGIC_TIME_EFFECT);
+
+    return result;
+}
+
+BIT_FLAGS player_flags_brand_cold(player_type *creature_ptr)
+{
+    BIT_FLAGS result = check_equipment_flags(creature_ptr, TR_BRAND_COLD);
+
+    if (creature_ptr->special_attack & ATTACK_COLD)
+        set_bits(result, FLAG_CAUSE_MAGIC_TIME_EFFECT);
+
     return result;
 }
 
@@ -78,9 +161,9 @@ BIT_FLAGS get_player_flags(player_type *creature_ptr, tr_type tr_flag)
     case TR_MAGIC_MASTERY:
         return has_magic_mastery(creature_ptr);
     case TR_FORCE_WEAPON:
-        return 0;
+        return check_equipment_flags(creature_ptr, tr_flag);
     case TR_STEALTH:
-        return 0;
+        return player_flags_stealth(creature_ptr);
     case TR_SEARCH:
         return 0;
     case TR_INFRA:
@@ -88,45 +171,34 @@ BIT_FLAGS get_player_flags(player_type *creature_ptr, tr_type tr_flag)
     case TR_TUNNEL:
         return 0;
     case TR_SPEED:
-        return 0;
+        return player_flags_speed(creature_ptr);
     case TR_BLOWS:
         return 0;
     case TR_CHAOTIC:
-        return 0;
     case TR_VAMPIRIC:
-        return 0;
     case TR_SLAY_ANIMAL:
-        return 0;
     case TR_SLAY_EVIL:
-        return 0;
     case TR_SLAY_UNDEAD:
-        return 0;
     case TR_SLAY_DEMON:
-        return 0;
     case TR_SLAY_ORC:
-        return 0;
     case TR_SLAY_TROLL:
-        return 0;
     case TR_SLAY_GIANT:
-        return 0;
     case TR_SLAY_DRAGON:
-        return 0;
     case TR_KILL_DRAGON:
-        return 0;
     case TR_VORPAL:
-        return 0;
+        return check_equipment_flags(creature_ptr, tr_flag);
     case TR_IMPACT:
         return has_impact(creature_ptr);
     case TR_BRAND_POIS:
-        return 0;
+        return player_flags_brand_pois(creature_ptr);
     case TR_BRAND_ACID:
-        return 0;
+        return player_flags_brand_acid(creature_ptr);
     case TR_BRAND_ELEC:
-        return 0;
+        return player_flags_brand_elec(creature_ptr);
     case TR_BRAND_FIRE:
-        return 0;
+        return player_flags_brand_fire(creature_ptr);
     case TR_BRAND_COLD:
-        return 0;
+        return player_flags_brand_cold(creature_ptr);
 
     case TR_SUST_STR:
         return has_sustain_str(creature_ptr);
@@ -141,7 +213,7 @@ BIT_FLAGS get_player_flags(player_type *creature_ptr, tr_type tr_flag)
     case TR_SUST_CHR:
         return has_sustain_chr(creature_ptr);
     case TR_RIDING:
-        return 0;
+        return check_equipment_flags(creature_ptr, tr_flag);
     case TR_EASY_SPELL:
         return has_easy_spell(creature_ptr);
     case TR_IM_ACID:
@@ -153,7 +225,7 @@ BIT_FLAGS get_player_flags(player_type *creature_ptr, tr_type tr_flag)
     case TR_IM_COLD:
         return has_immune_cold(creature_ptr);
     case TR_THROW:
-        return 0;
+        return check_equipment_flags(creature_ptr, tr_flag);
     case TR_REFLECT:
         return has_reflect(creature_ptr);
     case TR_FREE_ACT:
@@ -198,7 +270,7 @@ BIT_FLAGS get_player_flags(player_type *creature_ptr, tr_type tr_flag)
     case TR_SH_ELEC:
         return has_sh_elec(creature_ptr);
     case TR_SLAY_HUMAN:
-        return 0;
+        return check_equipment_flags(creature_ptr, tr_flag);
     case TR_SH_COLD:
         return has_sh_cold(creature_ptr);
     case TR_NO_TELE:
@@ -208,13 +280,12 @@ BIT_FLAGS get_player_flags(player_type *creature_ptr, tr_type tr_flag)
     case TR_DEC_MANA:
         return has_dec_mana(creature_ptr);
     case TR_TY_CURSE:
-        return 0;
+        return check_equipment_flags(creature_ptr, tr_flag);
     case TR_WARNING:
         return has_warning(creature_ptr);
     case TR_HIDE_TYPE:
-        return 0;
     case TR_SHOW_MODS:
-        return 0;
+        return check_equipment_flags(creature_ptr, tr_flag);
     case TR_SLAY_GOOD:
         return 0;
     case TR_LEVITATION:
@@ -232,48 +303,30 @@ BIT_FLAGS get_player_flags(player_type *creature_ptr, tr_type tr_flag)
     case TR_XTRA_MIGHT:
         return has_xtra_might(creature_ptr);
     case TR_XTRA_SHOTS:
-        return 0;
     case TR_IGNORE_ACID:
-        return 0;
     case TR_IGNORE_ELEC:
-        return 0;
     case TR_IGNORE_FIRE:
-        return 0;
     case TR_IGNORE_COLD:
-        return 0;
     case TR_ACTIVATE:
-        return 0;
     case TR_DRAIN_EXP:
-        return 0;
     case TR_TELEPORT:
-        return 0;
+        return check_equipment_flags(creature_ptr, tr_flag);
     case TR_AGGRAVATE:
         return 0;
     case TR_BLESSED:
         return has_bless_blade(creature_ptr);
     case TR_ES_ATTACK:
-        return 0;
     case TR_ES_AC:
-        return 0;
     case TR_KILL_GOOD:
-        return 0;
-
     case TR_KILL_ANIMAL:
-        return 0;
     case TR_KILL_EVIL:
-        return 0;
     case TR_KILL_UNDEAD:
-        return 0;
     case TR_KILL_DEMON:
-        return 0;
     case TR_KILL_ORC:
-        return 0;
     case TR_KILL_TROLL:
-        return 0;
     case TR_KILL_GIANT:
-        return 0;
     case TR_KILL_HUMAN:
-        return 0;
+        return check_equipment_flags(creature_ptr, tr_flag);
     case TR_ESP_ANIMAL:
         return has_esp_animal(creature_ptr);
     case TR_ESP_UNDEAD:
@@ -299,50 +352,28 @@ BIT_FLAGS get_player_flags(player_type *creature_ptr, tr_type tr_flag)
     case TR_ESP_UNIQUE:
         return has_esp_unique(creature_ptr);
     case TR_FULL_NAME:
-        return 0;
     case TR_FIXED_FLAVOR:
-        return 0;
     case TR_ADD_L_CURSE:
-        return 0;
     case TR_ADD_H_CURSE:
-        return 0;
     case TR_DRAIN_HP:
-        return 0;
     case TR_DRAIN_MANA:
-        return 0;
     case TR_LITE_2:
-        return 0;
     case TR_LITE_3:
-        return 0;
     case TR_LITE_M1:
-        return 0;
     case TR_LITE_M2:
-        return 0;
     case TR_LITE_M3:
-        return 0;
     case TR_LITE_FUEL:
-        return 0;
-
     case TR_CALL_ANIMAL:
-        return 0;
     case TR_CALL_DEMON:
-        return 0;
     case TR_CALL_DRAGON:
-        return 0;
     case TR_CALL_UNDEAD:
-        return 0;
     case TR_COWARDICE:
-        return 0;
     case TR_LOW_MELEE:
-        return 0;
     case TR_LOW_AC:
-        return 0;
     case TR_LOW_MAGIC:
-        return 0;
     case TR_FAST_DIGEST:
-        return 0;
     case TR_SLOW_REGEN:
-        return 0;
+        return check_equipment_flags(creature_ptr, tr_flag);
     case TR_MIGHTY_THROW:
         return has_mighty_throw(creature_ptr);
     case TR_EASY2_WEAPON:
@@ -360,7 +391,8 @@ BIT_FLAGS get_player_flags(player_type *creature_ptr, tr_type tr_flag)
     case TR_INVULN_ARROW:
         return has_invuln_arrow(creature_ptr);
     case TR_DARK_SOURCE:
-        return 0;
+    case TR_SUPPORTIVE:
+        return check_equipment_flags(creature_ptr, tr_flag);
     }
     return 0;
 }
@@ -560,7 +592,6 @@ BIT_FLAGS has_esp_telepathy(player_type *creature_ptr)
         result |= FLAG_CAUSE_BATTLE_FORM;
     }
 
-
     if (creature_ptr->muta3 & MUT3_ESP) {
         result |= FLAG_CAUSE_MUTATION;
     }
@@ -683,7 +714,7 @@ BIT_FLAGS has_warning(player_type *creature_ptr)
 
         if (has_flag(flgs, TR_WARNING)) {
             if (!o_ptr->inscription || !(angband_strchr(quark_str(o_ptr->inscription), '$')))
-                result |= 0x01U << (i - INVEN_MAIN_HAND);
+                set_bits(result, convert_inventory_slot_type_to_flag_cause(i));
         }
     }
     return result;

@@ -1209,40 +1209,91 @@ static ACTION_SKILL_POWER calc_intra_vision(player_type *creature_ptr)
     return pow;
 }
 
+
 /*!
- * @brief 隠密能力計算
+ * @brief 隠密能力計算 - 種族
  * @param creature_ptr 計算するクリーチャーの参照ポインタ
- * @return 隠密能力
+ * @return 隠密能力の増分
  * @details
- * * 初期値1
- * * 種族/職業/性格による加算
- * * 職業による追加加算
- * * 装備による修正(TR_STEALTHがあれば+pval*1)
- * * 変異MUT3_XTRA_NOISで減算(-3)
- * * 変異MUT3_MOTIONで加算(+1)
- * * 呪術を唱えていると減算(-(詠唱数+1))
- * * セクシーギャルでない影フェアリーがTRC_AGGRAVATE持ちの時、別処理でTRC_AGGRAVATEを無効にする代わりに減算(-3か3未満なら(現在値+2)/2)
- * * 狂戦士化で減算(-7)
- * * 忍者がheavy_armorならば減算(-レベル/10)
- * * 忍者がheavy_armorでなく適正な武器を持っていれば加算(+レベル/10)
- * * 隠密の歌で加算(+99)
- * * 最大30、最低0に補正
+ * * 種族による加算
  */
-static ACTION_SKILL_POWER calc_stealth(player_type *creature_ptr)
+static ACTION_SKILL_POWER calc_player_stealth_by_race(player_type *creature_ptr) 
 {
-    ACTION_SKILL_POWER pow;
     const player_race *tmp_rp_ptr;
 
     if (creature_ptr->mimic_form)
         tmp_rp_ptr = &mimic_info[creature_ptr->mimic_form];
     else
         tmp_rp_ptr = &race_info[creature_ptr->prace];
-    const player_class *c_ptr = &class_info[creature_ptr->pclass];
+
+    return tmp_rp_ptr->r_stl;
+}
+
+
+/*!
+ * @brief 隠密能力計算 - 性格
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 隠密能力の増分
+ * @details
+ * * 性格による加算
+ */
+static ACTION_SKILL_POWER calc_player_stealth_by_personality(player_type *creature_ptr)
+{
     const player_personality *a_ptr = &personality_info[creature_ptr->pseikaku];
 
-    pow = 1 + tmp_rp_ptr->r_stl + c_ptr->c_stl + a_ptr->a_stl;
-    pow += (c_ptr->x_stl * creature_ptr->lev / 10);
+    return a_ptr->a_stl;
+}
 
+/*!
+ * @brief 隠密能力計算 - 職業(基礎値)
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 隠密能力の増分
+ * @details
+ * * 職業による加算
+ */
+static ACTION_SKILL_POWER calc_player_base_stealth_by_class(player_type *creature_ptr)
+{
+    const player_class *c_ptr = &class_info[creature_ptr->pclass];
+    return c_ptr->c_stl + (c_ptr->x_stl * creature_ptr->lev / 10);
+}
+
+
+/*!
+ * @brief 隠密能力計算 - 職業(追加分)
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 隠密能力の増分
+ * @details
+ * * 忍者がheavy_armorならば減算(-レベル/10)
+ * * 忍者がheavy_armorでなく適正な武器を持っていれば加算(+レベル/10)
+ */
+static ACTION_SKILL_POWER calc_player_additional_stealth_by_class(player_type *creature_ptr)
+{
+    ACTION_SKILL_POWER result = 0;
+    
+    if (creature_ptr->pclass == CLASS_NINJA) {
+        if (heavy_armor(creature_ptr)) {
+            result -= (creature_ptr->lev) / 10;
+        } else if ((!creature_ptr->inventory_list[INVEN_MAIN_HAND].k_idx || can_attack_with_main_hand(creature_ptr))
+            && (!creature_ptr->inventory_list[INVEN_SUB_HAND].k_idx || can_attack_with_sub_hand(creature_ptr))) {
+            result += (creature_ptr->lev) / 10;
+        }
+    }
+
+    return result;
+}
+
+
+/*!
+ * @brief 隠密能力計算 - 装備
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 隠密能力の増分
+ * @details
+ * * 装備による修正(TR_STEALTHがあれば+pval*1)
+ */
+static ACTION_SKILL_POWER calc_player_stealth_by_equipment(player_type *creature_ptr)
+{
+
+    ACTION_SKILL_POWER result = 0;
     for (inventory_slot_type i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
         object_type *o_ptr;
         BIT_FLAGS flgs[TR_FLAG_SIZE];
@@ -1251,38 +1302,111 @@ static ACTION_SKILL_POWER calc_stealth(player_type *creature_ptr)
             continue;
         object_flags(creature_ptr, o_ptr, flgs);
         if (has_flag(flgs, TR_STEALTH))
-            pow += o_ptr->pval;
+            result += o_ptr->pval;
     }
+    return result;
+}
 
+
+/*!
+ * @brief 隠密能力計算 - 変異
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 隠密能力の増分
+ * @details
+ * * 変異MUT3_XTRA_NOISで減算(-3)
+ * * 変異MUT3_MOTIONで加算(+1)
+ */
+static ACTION_SKILL_POWER calc_player_stealth_by_mutation(player_type *creature_ptr)
+{
+    ACTION_SKILL_POWER result = 0;
     if (any_bits(creature_ptr->muta3, MUT3_XTRA_NOIS)) {
-        pow -= 3;
+        result -= 3;
     }
     if (any_bits(creature_ptr->muta3, MUT3_MOTION)) {
-        pow += 1;
+        result += 1;
     }
+    return result;
+}
+
+/*!
+ * @brief 隠密能力計算 - 一時効果
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 隠密能力の増分
+ * @details
+ * * 呪術を唱えていると減算(-(詠唱数+1))
+ * * 狂戦士化で減算(-7)
+ * * 隠密の歌で加算(+999)
+ */
+static ACTION_SKILL_POWER calc_player_stealth_by_time_effect(player_type *creature_ptr)
+{
+    ACTION_SKILL_POWER result = 0;
     if (creature_ptr->realm1 == REALM_HEX) {
         if (hex_spelling_any(creature_ptr))
-            pow -= (1 + casting_hex_num(creature_ptr));
+            result -= (1 + casting_hex_num(creature_ptr));
     }
+    if (is_shero(creature_ptr)) {
+        result -= 7;
+    }
+    if (is_time_limit_stealth(creature_ptr))
+        result += 999;
+
+    return result;
+}
+
+/*!
+ * @brief 隠密能力計算 - 影フェアリー反感処理
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 修正後の隠密能力
+ * @details
+ * * セクシーギャルでない影フェアリーがTRC_AGGRAVATE持ちの時、別処理でTRC_AGGRAVATEを無効にする代わりに減算(-3か3未満なら(現在値+2)/2)
+ */
+static ACTION_SKILL_POWER calc_player_stealth_by_s_faiery(player_type *creature_ptr, ACTION_SKILL_POWER pow)
+{
     if (player_aggravate_state(creature_ptr) == AGGRAVATE_S_FAIRY) {
         pow = MIN(pow - 3, (pow + 2) / 2);
     }
+    return pow;
+}
 
-    if (is_shero(creature_ptr)) {
-        pow -= 7;
-    }
 
-    if (creature_ptr->pclass == CLASS_NINJA) {
-        if (heavy_armor(creature_ptr)) {
-            pow -= (creature_ptr->lev) / 10;
-        } else if ((!creature_ptr->inventory_list[INVEN_MAIN_HAND].k_idx || can_attack_with_main_hand(creature_ptr))
-            && (!creature_ptr->inventory_list[INVEN_SUB_HAND].k_idx || can_attack_with_sub_hand(creature_ptr))) {
-            pow += (creature_ptr->lev) / 10;
-        }
-    }
+BIT_FLAGS player_flags_stealth(player_type *creature_ptr)
+{
+    BIT_FLAGS result = check_equipment_flags(creature_ptr, TR_STEALTH);
 
-    if (is_time_limit_stealth(creature_ptr))
-        pow += 99;
+    if (calc_player_additional_stealth_by_class(creature_ptr) != 0)
+        set_bits(result, FLAG_CAUSE_CLASS);
+    
+    if (calc_player_stealth_by_mutation(creature_ptr) != 0)
+        set_bits(result, FLAG_CAUSE_MUTATION);
+
+    if (calc_player_stealth_by_time_effect(creature_ptr) != 0)
+        set_bits(result, FLAG_CAUSE_MAGIC_TIME_EFFECT);
+
+    if (calc_player_stealth_by_s_faiery(creature_ptr, 0) != 0)
+        set_bits(result, FLAG_CAUSE_RACE);
+
+    return result;
+}
+
+/*!
+ * @brief 隠密能力計算
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 隠密能力
+ * @details
+ * * 初期値1
+ * * 最大30、最低0に補正
+ */
+static ACTION_SKILL_POWER calc_stealth(player_type *creature_ptr)
+{
+    ACTION_SKILL_POWER pow = 1;
+    pow += calc_player_base_stealth_by_class(creature_ptr);
+    pow += calc_player_additional_stealth_by_class(creature_ptr);
+    pow += calc_player_stealth_by_race(creature_ptr);
+    pow += calc_player_stealth_by_personality(creature_ptr);
+    pow += calc_player_stealth_by_equipment(creature_ptr);
+    pow += calc_player_stealth_by_mutation(creature_ptr);
+    pow += calc_player_stealth_by_time_effect(creature_ptr);
+    pow = calc_player_stealth_by_s_faiery(creature_ptr, pow); /* Set New Value */
 
     if (pow > 30)
         pow = 30;
@@ -1661,7 +1785,7 @@ static bool is_martial_arts_mode(player_type *creature_ptr)
 
 static bool is_heavy_wield(player_type *creature_ptr, int i)
 {
-    const object_type* o_ptr = &creature_ptr->inventory_list[INVEN_MAIN_HAND + i];
+    const object_type *o_ptr = &creature_ptr->inventory_list[INVEN_MAIN_HAND + i];
 
     return has_melee_weapon(creature_ptr, INVEN_MAIN_HAND + i) && (calc_weapon_weight_limit(creature_ptr) < o_ptr->weight / 10);
 }
@@ -2310,6 +2434,7 @@ static ARMOUR_CLASS calc_base_ac(player_type *creature_ptr)
 static ARMOUR_CLASS calc_to_ac(player_type *creature_ptr, bool is_real_value)
 {
     ARMOUR_CLASS ac = 0;
+    BIT_FLAGS flags[TR_FLAG_SIZE];
     if (creature_ptr->yoiyami)
         return 0;
 
@@ -2338,6 +2463,7 @@ static ARMOUR_CLASS calc_to_ac(player_type *creature_ptr, bool is_real_value)
     for (inventory_slot_type i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
         object_type *o_ptr;
         o_ptr = &creature_ptr->inventory_list[i];
+        object_flags(creature_ptr, o_ptr, flags);
         if (!o_ptr->k_idx)
             continue;
         if (is_real_value || object_is_known(o_ptr))
@@ -2353,7 +2479,7 @@ static ARMOUR_CLASS calc_to_ac(player_type *creature_ptr, bool is_real_value)
             }
         }
 
-        if ((i == INVEN_SUB_HAND) && (o_ptr->tval == TV_SWORD) && ((o_ptr->sval == SV_MAIN_GAUCHE) || (o_ptr->sval == SV_WAKIZASHI))) {
+        if ((i == INVEN_SUB_HAND) && has_flag(flags, TR_SUPPORTIVE)) {
             ac += 5;
         }
     }
@@ -2371,8 +2497,7 @@ static ARMOUR_CLASS calc_to_ac(player_type *creature_ptr, bool is_real_value)
         ac += 10;
     }
 
-    if ((creature_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_ICINGDEATH)
-        && (creature_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TWINKLE)) {
+    if ((creature_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_ICINGDEATH) && (creature_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TWINKLE)) {
         ac += 5;
     }
 
@@ -2466,201 +2591,388 @@ static ARMOUR_CLASS calc_to_ac(player_type *creature_ptr, bool is_real_value)
 }
 
 /*!
- * @brief 速度計算
+ * @brief 速度計算 - 種族
  * @param creature_ptr 計算するクリーチャーの参照ポインタ
- * @return 速度値
+ * @return 速度値の増減分
  * @details
- * * 基礎値110(+-0に対応)
- * * 騎乗していない場合以下の処理
  * ** クラッコンと妖精に加算(+レベル/10)
  * ** 悪魔変化/吸血鬼変化で加算(+3)
  * ** 魔王変化で加算(+5)
+ * ** マーフォークがFF_WATER地形にいれば加算(+2+レベル/10)
+ * ** そうでなく浮遊を持っていないなら減算(-2)
+ */
+static SPEED calc_player_speed_by_race(player_type *creature_ptr)
+{
+    SPEED result = 0;
+
+    if (is_specific_player_race(creature_ptr, RACE_KLACKON) || is_specific_player_race(creature_ptr, RACE_SPRITE))
+        result += (creature_ptr->lev) / 10;
+
+    if (is_specific_player_race(creature_ptr, RACE_MERFOLK)) {
+        floor_type *floor_ptr = creature_ptr->current_floor_ptr;
+        feature_type *f_ptr = &f_info[floor_ptr->grid_array[creature_ptr->y][creature_ptr->x].feat];
+        if (has_flag(f_ptr->flags, FF_WATER)) {
+            result += (2 + creature_ptr->lev / 10);
+        } else if (!creature_ptr->levitation) {
+            result -= 2;
+        }
+    }
+
+    if (creature_ptr->mimic_form) {
+        switch (creature_ptr->mimic_form) {
+        case MIMIC_DEMON:
+            result += 3;
+            break;
+        case MIMIC_DEMON_LORD:
+            result += 5;
+            break;
+        case MIMIC_VAMPIRE:
+            result += 3;
+            break;
+        }
+    }
+    return result;
+}
+
+static SPEED calc_speed_by_secial_weapon_set(player_type *creature_ptr) 
+{
+    SPEED result = 0;
+    if (has_melee_weapon(creature_ptr, INVEN_MAIN_HAND) && has_melee_weapon(creature_ptr, INVEN_SUB_HAND)) {
+        if ((creature_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_QUICKTHORN) && (creature_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TINYTHORN)) {
+            result += 7;
+        }
+
+        if ((creature_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_ICINGDEATH) && (creature_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TWINKLE)) {
+            result += 5;
+        }
+    }
+    return result;
+}
+
+
+/*!
+ * @brief 速度計算 - ACTION
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 速度値の増減分
+ * @details
  * ** 装備品にTR_SPEEDがあれば加算(+pval+1
+ * ** 棘セット装備中ならば加算(+7)
+ * ** アイシングデス-トゥインクル装備中ならば加算(+7)
+ */
+static SPEED calc_player_speed_by_equipment(player_type *creature_ptr)
+{
+    SPEED result = 0;
+    for (inventory_slot_type i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
+        object_type *o_ptr = &creature_ptr->inventory_list[i];
+        BIT_FLAGS flgs[TR_FLAG_SIZE];
+        object_flags(creature_ptr, o_ptr, flgs);
+
+        if (!o_ptr->k_idx)
+            continue;
+        if (has_flag(flgs, TR_SPEED))
+            result += o_ptr->pval;
+    }
+    result += calc_speed_by_secial_weapon_set(creature_ptr);
+
+    return result;
+}
+
+/*!
+ * @brief 速度計算 - ACTION
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 速度値の増減分
+ * @details
  * ** 忍者の装備が重ければ減算(-レベル/10)
  * ** 忍者の装備が適正ならば加算(+3)さらにクラッコン、妖精、いかさま以外なら加算(+レベル/10)
  * ** 錬気術師で装備が重くなくクラッコン、妖精、いかさま以外なら加算(+レベル/10)
  * ** 狂戦士なら加算(+3),レベル20/30/40/50ごとに+1
- * ** いかさまでクラッコン/妖精以外なら加算(+5+レベル/10)
- * ** 加速状態中なら加算(+10)
- * ** 原則状態中なら減算(-10)
- * ** 呪術「衝撃のクローク」で加算(+3)
- * ** 食い過ぎなら減算(-10)
+ */
+static SPEED calc_player_speed_by_class(player_type *creature_ptr)
+{
+    SPEED result = 0;
+
+    if (creature_ptr->pclass == CLASS_NINJA) {
+        if (heavy_armor(creature_ptr)) {
+            result -= (creature_ptr->lev) / 10;
+        } else if ((!creature_ptr->inventory_list[INVEN_MAIN_HAND].k_idx || can_attack_with_main_hand(creature_ptr))
+            && (!creature_ptr->inventory_list[INVEN_SUB_HAND].k_idx || can_attack_with_sub_hand(creature_ptr))) {
+            result += 3;
+            if (!(is_specific_player_race(creature_ptr, RACE_KLACKON) || is_specific_player_race(creature_ptr, RACE_SPRITE)
+                    || (creature_ptr->pseikaku == PERSONALITY_MUNCHKIN)))
+                result += (creature_ptr->lev) / 10;
+        }
+    }
+
+    if ((creature_ptr->pclass == CLASS_MONK || creature_ptr->pclass == CLASS_FORCETRAINER) && !(heavy_armor(creature_ptr))) {
+        if (!(is_specific_player_race(creature_ptr, RACE_KLACKON) || is_specific_player_race(creature_ptr, RACE_SPRITE)
+                || (creature_ptr->pseikaku == PERSONALITY_MUNCHKIN)))
+            result += (creature_ptr->lev) / 10;
+    }
+
+    if (creature_ptr->pclass == CLASS_BERSERKER) {
+        result += 2;
+        if (creature_ptr->lev > 29)
+            result++;
+        if (creature_ptr->lev > 39)
+            result++;
+        if (creature_ptr->lev > 44)
+            result++;
+        if (creature_ptr->lev > 49)
+            result++;
+    }
+    return result;
+}
+
+/*!
+ * @brief 速度計算 - 型
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 速度値の増減分
+ * @details
+ * * 基礎値110(+-0に対応)
  * ** 朱雀の構えなら加算(+10)
+ */
+static SPEED calc_player_speed_by_battleform(player_type *creature_ptr)
+{
+    SPEED result = 0;
+    if (any_bits(creature_ptr->special_defense, KAMAE_SUZAKU))
+        result += 10;
+    return result;
+}
+
+/*!
+ * @brief 速度計算 - 変異
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 速度値の増減分
+ * @details
+ * * 基礎値110(+-0に対応)
  * ** 変異MUT3_XTRA_FATなら減算(-2)
  * ** 変異MUT3_XTRA_LEGなら加算(+3)
  * ** 変異MUT3_SHORT_LEGなら減算(-3)
- * ** マーフォークがFF_WATER地形にいれば加算(+2+レベル/10)
- * ** そうでなく浮遊を持っていないなら減算(-2)
- * ** 棘セット装備中ならば加算(+7)
- * * 騎乗中ならばモンスターの加速に準拠、ただし騎乗技能値とモンスターレベルによるキャップ処理あり
- * * 探索中なら減算(-10)
- * * 光速移動中かこの時点で+99を超えていたら+99にキャップ
- * * -99未満なら-99にキャップ
  */
-static s16b calc_speed(player_type *creature_ptr)
+static SPEED calc_player_speed_by_mutation(player_type *creature_ptr)
 {
-    floor_type *floor_ptr = creature_ptr->current_floor_ptr;
-    feature_type *f_ptr = &f_info[floor_ptr->grid_array[creature_ptr->y][creature_ptr->x].feat];
-
-    s16b pow = 110;
-
-    int j = calc_inventory_weight(creature_ptr);
-    int count;
-
-    if (!creature_ptr->riding) {
-        if (is_specific_player_race(creature_ptr, RACE_KLACKON) || is_specific_player_race(creature_ptr, RACE_SPRITE))
-            pow += (creature_ptr->lev) / 10;
-
-        if (creature_ptr->mimic_form) {
-            switch (creature_ptr->mimic_form) {
-            case MIMIC_DEMON:
-                pow += 3;
-                break;
-            case MIMIC_DEMON_LORD:
-                pow += 5;
-                break;
-            case MIMIC_VAMPIRE:
-                pow += 3;
-                break;
-            }
+    SPEED result = 0;
+    if (creature_ptr->muta3) {
+        if (any_bits(creature_ptr->muta3, MUT3_XTRA_FAT)) {
+            result -= 2;
         }
 
-        for (inventory_slot_type i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
-            object_type *o_ptr = &creature_ptr->inventory_list[i];
-            BIT_FLAGS flgs[TR_FLAG_SIZE];
-            object_flags(creature_ptr, o_ptr, flgs);
-
-            if (!o_ptr->k_idx)
-                continue;
-            if (has_flag(flgs, TR_SPEED))
-                pow += o_ptr->pval;
+        if (any_bits(creature_ptr->muta3, MUT3_XTRA_LEGS)) {
+            result += 3;
         }
 
-        if (creature_ptr->pclass == CLASS_NINJA) {
-            if (heavy_armor(creature_ptr)) {
-                pow -= (creature_ptr->lev) / 10;
-            } else if ((!creature_ptr->inventory_list[INVEN_MAIN_HAND].k_idx || can_attack_with_main_hand(creature_ptr))
-                && (!creature_ptr->inventory_list[INVEN_SUB_HAND].k_idx || can_attack_with_sub_hand(creature_ptr))) {
-                pow += 3;
-                if (!(is_specific_player_race(creature_ptr, RACE_KLACKON) || is_specific_player_race(creature_ptr, RACE_SPRITE)
-                        || (creature_ptr->pseikaku == PERSONALITY_MUNCHKIN)))
-                    pow += (creature_ptr->lev) / 10;
-            }
+        if (any_bits(creature_ptr->muta3, MUT3_SHORT_LEG)) {
+            result -= 3;
         }
+    }
+    return result;
+}
 
-        if ((creature_ptr->pclass == CLASS_MONK || creature_ptr->pclass == CLASS_FORCETRAINER) && !(heavy_armor(creature_ptr))) {
-            if (!(is_specific_player_race(creature_ptr, RACE_KLACKON) || is_specific_player_race(creature_ptr, RACE_SPRITE)
-                    || (creature_ptr->pseikaku == PERSONALITY_MUNCHKIN)))
-                pow += (creature_ptr->lev) / 10;
-        }
+/*!
+ * @brief 速度計算 - 一時的効果
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 速度値の増減分
+ * @details
+ * ** 加速状態中なら加算(+10)
+ * ** 減速状態中なら減算(-10)
+ * ** 呪術「衝撃のクローク」で加算(+3)
+ * ** 食い過ぎなら減算(-10)
+ * ** 光速移動中は+999(最終的に+99になる)
+ */
+static SPEED calc_player_speed_by_time_effect(player_type *creature_ptr)
+{
+    SPEED result = 0;
 
-        if (creature_ptr->pclass == CLASS_BERSERKER) {
-            pow += 2;
-            if (creature_ptr->lev > 29)
-                pow++;
-            if (creature_ptr->lev > 39)
-                pow++;
-            if (creature_ptr->lev > 44)
-                pow++;
-            if (creature_ptr->lev > 49)
-                pow++;
-        }
-
-        if (creature_ptr->pseikaku == PERSONALITY_MUNCHKIN && creature_ptr->prace != RACE_KLACKON && creature_ptr->prace != RACE_SPRITE) {
-            pow += (creature_ptr->lev) / 10 + 5;
-        }
-
-        if (is_fast(creature_ptr)) {
-            pow += 10;
-        }
-
-        if (creature_ptr->slow) {
-            pow -= 10;
-        }
-
-        if (creature_ptr->realm1 == REALM_HEX) {
-            if (hex_spelling(creature_ptr, HEX_SHOCK_CLOAK)) {
-                pow += 3;
-            }
-        }
-
-        if (creature_ptr->food >= PY_FOOD_MAX)
-            pow -= 10;
-
-        if (any_bits(creature_ptr->special_defense, KAMAE_SUZAKU))
-            pow += 10;
-
-        if (creature_ptr->muta3) {
-            if (any_bits(creature_ptr->muta3, MUT3_XTRA_FAT)) {
-                pow -= 2;
-            }
-
-            if (any_bits(creature_ptr->muta3, MUT3_XTRA_LEGS)) {
-                pow += 3;
-            }
-
-            if (any_bits(creature_ptr->muta3, MUT3_SHORT_LEG)) {
-                pow -= 3;
-            }
-        }
-
-        if (creature_ptr->prace == RACE_MERFOLK) {
-            if (has_flag(f_ptr->flags, FF_WATER)) {
-                pow += (2 + creature_ptr->lev / 10);
-            } else if (!creature_ptr->levitation) {
-                pow -= 2;
-            }
-        }
-
-        if (has_melee_weapon(creature_ptr, INVEN_MAIN_HAND) && has_melee_weapon(creature_ptr, INVEN_SUB_HAND)) {
-            if ((creature_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_QUICKTHORN)
-                && (creature_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TINYTHORN)) {
-                pow += 7;
-            }
-
-            if ((creature_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_ICINGDEATH)
-                && (creature_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TWINKLE)) {
-                pow += 5;
-            }
-        }
-
-        count = (int)calc_weight_limit(creature_ptr);
-        if (j > count)
-            pow -= ((j - count) / (count / 5));
-    } else {
-        monster_type *riding_m_ptr = &creature_ptr->current_floor_ptr->m_list[creature_ptr->riding];
-        monster_race *riding_r_ptr = &r_info[riding_m_ptr->r_idx];
-        SPEED speed = riding_m_ptr->mspeed;
-
-        if (riding_m_ptr->mspeed > 110) {
-            pow = 110 + (s16b)((speed - 110) * (creature_ptr->skill_exp[GINOU_RIDING] * 3 + creature_ptr->lev * 160L - 10000L) / (22000L));
-            if (pow < 110)
-                pow = 110;
-        } else {
-            pow = speed;
-        }
-
-        pow += (creature_ptr->skill_exp[GINOU_RIDING] + creature_ptr->lev * 160L) / 3200;
-
-        if (monster_fast_remaining(riding_m_ptr))
-            pow += 10;
-        if (monster_slow_remaining(riding_m_ptr))
-            pow -= 10;
-
-        if (creature_ptr->skill_exp[GINOU_RIDING] < RIDING_EXP_SKILLED)
-            j += (creature_ptr->wt * 3 * (RIDING_EXP_SKILLED - creature_ptr->skill_exp[GINOU_RIDING])) / RIDING_EXP_SKILLED;
-
-        count = 1500 + riding_r_ptr->level * 25;
-        if (j > count)
-            pow -= ((j - count) / (count / 5));
+    if (is_fast(creature_ptr)) {
+        result += 10;
     }
 
+    if (creature_ptr->slow) {
+        result -= 10;
+    }
+
+    if (creature_ptr->realm1 == REALM_HEX) {
+        if (hex_spelling(creature_ptr, HEX_SHOCK_CLOAK)) {
+            result += 3;
+        }
+    }
+
+    if (creature_ptr->food >= PY_FOOD_MAX)
+        result -= 10;
+
+    /* Temporary lightspeed forces to be maximum speed */
+    if (creature_ptr->lightspeed)
+        result += 999;
+
+    return result;
+}
+
+/*!
+ * @brief 速度計算 - 性格
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 速度値の増減分
+ * @details
+ * ** いかさまでクラッコン/妖精以外なら加算(+5+レベル/10)
+ */
+static SPEED calc_player_speed_by_personality(player_type *creature_ptr)
+{
+    SPEED result = 0;
+    if (creature_ptr->pseikaku == PERSONALITY_MUNCHKIN && creature_ptr->prace != RACE_KLACKON && creature_ptr->prace != RACE_SPRITE) {
+        result += (creature_ptr->lev) / 10 + 5;
+    }
+    return result;
+}
+
+/*!
+ * @brief 速度計算 - 重量
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 速度値の増減分
+ * @details
+ * * 所持品の重量による減速処理。乗馬時は別計算。
+ */
+static SPEED calc_player_speed_by_inventory_weight(player_type *creature_ptr)
+{
+    SPEED result = 0;
+
+    int weight = calc_inventory_weight(creature_ptr);
+    int count;
+
+    if (creature_ptr->riding) {
+        monster_type *riding_m_ptr = &creature_ptr->current_floor_ptr->m_list[creature_ptr->riding];
+        monster_race *riding_r_ptr = &r_info[riding_m_ptr->r_idx];
+        count = 1500 + riding_r_ptr->level * 25;
+
+        if (creature_ptr->skill_exp[GINOU_RIDING] < RIDING_EXP_SKILLED) {
+            weight += (creature_ptr->wt * 3 * (RIDING_EXP_SKILLED - creature_ptr->skill_exp[GINOU_RIDING])) / RIDING_EXP_SKILLED;
+        }
+
+        if (weight > count) {
+            result -= ((weight - count) / (count / 5));
+        }
+    } else {
+        count = (int)calc_weight_limit(creature_ptr);
+        if (weight > count) {
+            result -= ((weight - count) / (count / 5));
+        }
+    }
+
+    return result;
+}
+
+/*!
+ * @brief 速度計算 - 乗馬
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 速度値の増減分
+ * @details
+ * * 騎乗中ならばモンスターの加速に準拠、ただし騎乗技能値とモンスターレベルによるキャップ処理あり
+ */
+static SPEED calc_player_speed_by_riding(player_type *creature_ptr)
+{
+    monster_type *riding_m_ptr = &creature_ptr->current_floor_ptr->m_list[creature_ptr->riding];
+    SPEED speed = riding_m_ptr->mspeed;
+    SPEED result = 0;
+
+    if (creature_ptr->riding) {
+        return 0;
+    }
+
+    if (riding_m_ptr->mspeed > 110) {
+        result = (s16b)((speed - 110) * (creature_ptr->skill_exp[GINOU_RIDING] * 3 + creature_ptr->lev * 160L - 10000L) / (22000L));
+        if (result < 0)
+            result = 0;
+    } else {
+        result = speed - 110;
+    }
+
+    result += (creature_ptr->skill_exp[GINOU_RIDING] + creature_ptr->lev * 160L) / 3200;
+
+    if (monster_fast_remaining(riding_m_ptr))
+        result += 10;
+    if (monster_slow_remaining(riding_m_ptr))
+        result -= 10;
+
+    return result;
+}
+
+/*!
+ * @brief 速度計算 - ACTION
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 速度値の増減分
+ * @details
+ * * 探索中なら減算(-10)
+ */
+static SPEED calc_player_speed_by_action(player_type *creature_ptr)
+{
+    SPEED result = 0;
     if (creature_ptr->action == ACTION_SEARCH)
-        pow -= 10;
+        result -= 10;
+    return result;
+}
+
+BIT_FLAGS player_flags_speed(player_type *creature_ptr)
+{
+    BIT_FLAGS result = check_equipment_flags(creature_ptr, TR_SPEED);
+
+    if (calc_speed_by_secial_weapon_set(creature_ptr) != 0)
+        set_bits(result, FLAG_CAUSE_INVEN_MAIN_HAND | FLAG_CAUSE_INVEN_SUB_HAND);
+
+    if (calc_player_speed_by_class(creature_ptr) != 0)
+        set_bits(result, FLAG_CAUSE_CLASS);
+
+    if (calc_player_speed_by_race(creature_ptr) != 0)
+        set_bits(result, FLAG_CAUSE_RACE);
+
+    if (calc_player_speed_by_battleform(creature_ptr) != 0)
+        set_bits(result, FLAG_CAUSE_BATTLE_FORM);
+
+    if (calc_player_speed_by_mutation(creature_ptr) != 0)
+        set_bits(result, FLAG_CAUSE_MUTATION);
+
+    if (calc_player_speed_by_time_effect(creature_ptr) != 0)
+        set_bits(result, FLAG_CAUSE_MAGIC_TIME_EFFECT);
+
+    if (calc_player_speed_by_personality(creature_ptr) != 0)
+        set_bits(result, FLAG_CAUSE_PERSONALITY);
+
+    if (calc_player_speed_by_riding(creature_ptr) != 0)
+        set_bits(result, FLAG_CAUSE_RIDING);
+
+    if (calc_player_speed_by_inventory_weight(creature_ptr) != 0)
+        set_bits(result, FLAG_CAUSE_INVEN_PACK);
+
+    if (calc_player_speed_by_action(creature_ptr) != 0)
+        set_bits(result, FLAG_CAUSE_ACTION);
+
+    return result;
+}
+
+/*!
+ * @brief 速度計算
+ * @param creature_ptr 計算するクリーチャーの参照ポインタ
+ * @return 速度値
+ * @details 上限99、下限-99
+ */
+static SPEED calc_speed(player_type *creature_ptr)
+{
+    SPEED pow = 110;
+
+    if (creature_ptr->riding) {
+        pow += calc_player_speed_by_riding(creature_ptr);
+        pow += calc_player_speed_by_inventory_weight(creature_ptr);
+    } else {
+        pow += calc_player_speed_by_race(creature_ptr);
+        pow += calc_player_speed_by_equipment(creature_ptr);
+        pow += calc_player_speed_by_class(creature_ptr);
+        pow += calc_player_speed_by_personality(creature_ptr);
+        pow += calc_player_speed_by_time_effect(creature_ptr);
+        pow += calc_player_speed_by_battleform(creature_ptr);
+        pow += calc_player_speed_by_mutation(creature_ptr);
+        pow += calc_player_speed_by_inventory_weight(creature_ptr);
+    }
+    pow += calc_player_speed_by_action(creature_ptr);
 
     /* Maximum speed is (+99). (internally it's 110 + 99) */
-    /* Temporary lightspeed forces to be maximum speed */
-    if ((creature_ptr->lightspeed && !creature_ptr->riding) || (pow > 209)) {
+    if ((pow > 209)) {
         pow = 209;
     }
 
@@ -2687,19 +2999,21 @@ static s16b calc_speed(player_type *creature_ptr)
 s16b calc_double_weapon_penalty(player_type *creature_ptr, INVENTORY_IDX slot)
 {
     int penalty = 0;
+    BIT_FLAGS flags[TR_FLAG_SIZE];
+
     if (has_melee_weapon(creature_ptr, INVEN_MAIN_HAND) && has_melee_weapon(creature_ptr, INVEN_SUB_HAND)) {
+        object_flags(creature_ptr, &creature_ptr->inventory_list[INVEN_SUB_HAND], flags);
+
         penalty = ((100 - creature_ptr->skill_exp[GINOU_NITOURYU] / 160) - (130 - creature_ptr->inventory_list[slot].weight) / 8);
-        if (((creature_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_QUICKTHORN)
-            && (creature_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TINYTHORN))
+        if (((creature_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_QUICKTHORN) && (creature_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TINYTHORN))
             || ((creature_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_ICINGDEATH)
-            && (creature_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TWINKLE))) {
+                && (creature_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TWINKLE))) {
             penalty = penalty / 2 - 5;
         }
         if (creature_ptr->easy_2weapon) {
             if (penalty > 0)
                 penalty /= 2;
-        } else if ((creature_ptr->inventory_list[INVEN_SUB_HAND].tval == TV_SWORD)
-            && ((creature_ptr->inventory_list[INVEN_SUB_HAND].sval == SV_MAIN_GAUCHE) || (creature_ptr->inventory_list[INVEN_SUB_HAND].sval == SV_WAKIZASHI))) {
+        } else if (has_flag(flags, TR_SUPPORTIVE)) {
             penalty = MAX(0, penalty - 10);
         }
         if ((creature_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_MUSASI_KATANA)
@@ -3038,7 +3352,7 @@ static s16b calc_to_damage(player_type *creature_ptr, INVENTORY_IDX slot, bool i
 
     if (main_attack_hand(creature_ptr) == calc_hand) {
         if ((is_martial_arts_mode(creature_ptr) && empty_hands(creature_ptr, FALSE) == (EMPTY_HAND_MAIN | EMPTY_HAND_SUB))
-            || !has_disable_two_handed_bonus(creature_ptr, 0)) {
+            || !has_disable_two_handed_bonus(creature_ptr, calc_hand)) {
             int bonus_to_d = 0;
             bonus_to_d = ((int)(adj_str_td[creature_ptr->stat_ind[A_STR]]) - 128) / 2;
             damage += MAX(bonus_to_d, 1);
@@ -3113,7 +3427,7 @@ static s16b calc_to_hit(player_type *creature_ptr, INVENTORY_IDX slot, bool is_r
         }
 
         if ((is_martial_arts_mode(creature_ptr) && empty_hands(creature_ptr, FALSE) == (EMPTY_HAND_MAIN | EMPTY_HAND_SUB))
-            || !has_disable_two_handed_bonus(creature_ptr, 0)) {
+            || !has_disable_two_handed_bonus(creature_ptr, calc_hand)) {
             int bonus_to_h = 0;
             bonus_to_h = ((int)(adj_str_th[creature_ptr->stat_ind[A_STR]]) - 128) + ((int)(adj_dex_th[creature_ptr->stat_ind[A_DEX]]) - 128);
             hit += MAX(bonus_to_h, 1);
@@ -4147,7 +4461,7 @@ static player_hand main_attack_hand(player_type *creature_ptr)
     case MELEE_TYPE_WEAPON_SUB:
         return PLAYER_HAND_SUB;
     case MELEE_TYPE_WEAPON_TWOHAND:
-        return PLAYER_HAND_MAIN;
+        return has_melee_weapon(creature_ptr, INVEN_MAIN_HAND) ? PLAYER_HAND_MAIN : PLAYER_HAND_SUB;
     case MELEE_TYPE_WEAPON_DOUBLE:
         return PLAYER_HAND_MAIN;
     case MELEE_TYPE_SHIELD_DOUBLE:
