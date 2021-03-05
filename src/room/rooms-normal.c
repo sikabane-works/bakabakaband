@@ -201,7 +201,7 @@ bool build_type2(player_type *player_ptr, dun_data_type *dd_ptr)
 
     /* Find and reserve some space in the dungeon.  Get center of room. */
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    if (!find_space(player_ptr, dd_ptr, &yval, &xval, 11, 25))
+    if (!find_space(player_ptr, dd_ptr, &yval, &xval, 25, 25))
         return FALSE;
 
     /* Choose lite or dark */
