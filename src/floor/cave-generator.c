@@ -196,6 +196,20 @@ static bool make_one_floor(player_type *player_ptr, dun_data_type *dd_ptr, dunge
     if (!make_centers(player_ptr, dd_ptr, d_ptr, dt_ptr))
         return FALSE;
 
+    dt_ptr = initialize_dt_type(&tmp_dt);
+    if (!make_centers(player_ptr, dd_ptr, d_ptr, dt_ptr))
+        return FALSE;
+
+    // 通路の過剰生成処理
+    if (one_in_(2)) {
+        int num = randint1(100);
+        for (int i = 0; i < num; i++) {
+            dt_ptr = initialize_dt_type(&tmp_dt);
+            if (!make_centers(player_ptr, dd_ptr, d_ptr, dt_ptr))
+                return FALSE;
+        }
+    }
+
     make_doors(player_ptr, dd_ptr, dt_ptr);
     if (!alloc_stairs(player_ptr, feat_down_stair, rand_range(3, 4), 3)) {
         *dd_ptr->why = _("下り階段生成に失敗", "Failed to generate down stairs.");
