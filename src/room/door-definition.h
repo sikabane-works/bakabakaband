@@ -2,7 +2,7 @@
 
 #include "system/angband.h"
 
-#define DUN_ROOMS_MAX 100 /*!< 部屋生成処理の最大生成数 / Max number rooms */
+#define DUN_ROOMS_MAX 100 /*!< 部屋生成処理の基本比率(ダンジョンのサイズに比例する) / Max number rate of rooms */
 
 /* Maximum locked/jammed doors */
 #define MAX_LJ_DOORS 8
