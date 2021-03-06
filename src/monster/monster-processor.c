@@ -17,6 +17,7 @@
 #include "core/player-update-types.h"
 #include "core/speed-table.h"
 #include "floor/cave.h"
+#include "floor/floor-object.h"
 #include "game-option/play-record-options.h"
 #include "grid/feature.h"
 #include "grid/grid.h"
@@ -50,7 +51,9 @@
 #include "monster/monster-util.h"
 #include "mspell/mspell-attack.h"
 #include "mspell/mspell-judgement.h"
+#include "object/object-generator.h"
 #include "object-enchant/trc-types.h"
+#include "object/object-kind-hook.h"
 #include "pet/pet-fall-off.h"
 #include "player-info/avatar.h"
 #include "player/player-move.h"
@@ -59,10 +62,12 @@
 #include "player/special-defense-types.h"
 #include "spell-realm/spells-hex.h"
 #include "spell/summon-types.h"
+#include "system/object-type-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-type-definition.h"
 #include "target/projection-path-calculator.h"
 #include "view/display-messages.h"
+#include "sv-definition/sv-junk-types.h"
 
 void decide_drop_from_monster(player_type *target_ptr, MONSTER_IDX m_idx, bool is_riding_mon);
 bool process_stealth(player_type *target_ptr, MONSTER_IDX m_idx);
@@ -472,6 +477,17 @@ bool cast_spell(player_type *target_ptr, MONSTER_IDX m_idx, bool aware)
 bool process_monster_fear(player_type *target_ptr, turn_flags *turn_flags_ptr, MONSTER_IDX m_idx)
 {
     monster_type *m_ptr = &target_ptr->current_floor_ptr->m_list[m_idx];
+    GAME_TEXT m_name[MAX_NLEN];
+    monster_desc(target_ptr, m_name, m_ptr, 0);
+
+    if(monster_fear_remaining(m_ptr) && one_in_(9)) {
+        msg_format(_("%^sは恐怖のあまり脱糞した！", "%^s was defecated because of fear!"), m_name);
+        object_type forge;
+        object_type *q_ptr = &forge;
+        object_prep(target_ptr, q_ptr, lookup_kind(TV_JUNK, SV_JUNK_FECES));
+        (void)drop_near(target_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
+    }
+
     bool is_battle_determined = !turn_flags_ptr->do_turn && !turn_flags_ptr->do_move && monster_fear_remaining(m_ptr) && turn_flags_ptr->aware;
     if (!is_battle_determined)
         return FALSE;
@@ -480,8 +496,6 @@ bool process_monster_fear(player_type *target_ptr, turn_flags *turn_flags_ptr, M
     if (!turn_flags_ptr->see_m)
         return TRUE;
 
-    GAME_TEXT m_name[MAX_NLEN];
-    monster_desc(target_ptr, m_name, m_ptr, 0);
     msg_format(_("%^sは戦いを決意した！", "%^s turns to fight!"), m_name);
     return TRUE;
 }
