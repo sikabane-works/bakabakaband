@@ -64,7 +64,7 @@
 #include "system/monster-type-definition.h"
 #include "target/projection-path-calculator.h"
 #include "view/display-messages.h"
-#include "sv-definition/sv-junk-definition.h"
+#include "sv-definition/sv-junk-types.h"
 
 void decide_drop_from_monster(player_type *target_ptr, MONSTER_IDX m_idx, bool is_riding_mon);
 bool process_stealth(player_type *target_ptr, MONSTER_IDX m_idx);

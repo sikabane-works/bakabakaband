@@ -41,7 +41,7 @@
 #include "status/element-resistance.h"
 #include "status/experience.h"
 #include "sv-definition/sv-food-types.h"
-#include "sv-definition/sv-junk-definition.h"
+#include "sv-definition/sv-junk-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
