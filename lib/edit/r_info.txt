@@ -25403,7 +25403,6 @@ S:1_IN_5|SHOOT|HEAL
 D:$
 D:地球が危ない。
 
-
 N:1284:スパルタの戦神『クレイトス』
 E:Kratos, the God of War
 G:p:y
@@ -25418,4 +25417,28 @@ D:彼は天空神にしてオリュンポスの主神であるゼウスの数多
 D:戦神アレスの狂乱に憑かれた挙げ句、妻子を殺めてしまった彼の悲痛と憎悪はやがて神々を惨殺するほどの暴威と化し、
 D:オリュンポスの統べるギリシャ世界に終焉をもたらした。
 
+N:1285:貧弱エルフ
+E:Scruffy looking elf
+G:h:G
+W:2:5:0:5:0:0
+I:110:16:8:10
+B:SHOOT:HURT:1d4
+B:HIT:HURT:1d4
+F:FEMALE|HAS_LITE_1|DROP_60|TAKE_ITEM|OPEN_DOOR|BASH_DOOR|DROP_SKELETON|DROP_CORPSE|GOOD
+S:1_IN_2|SHOOT
+D:やたら様々な化け物の慰み物になっているクッソ哀れなエルフ共だ。好きにしろ。
 
+N:1286:レッサー不潔で醜い哀れな身なりのわめきふらつくキチガイ人間
+E:Lesser mangy-ugry-pitiful looking and aimless raving lunatic human
+G:t:D
+W:0:30:0:0:0:0
+I:105:4:1:40
+B:DROOL
+B:BEG
+B:INSULT
+B:INSULT
+F:ATTR_MULTI|EVIL|WILD_TOWN|WILD_ONLY|RAND_25|FRIENDS|HUMAN|MULTIPLY|STUPID|TAKE_ITEM|OPEN_DOOR|DROP_CORPSE|DROP_SKELETON
+D:$This terrible avatar of social decadence will crush *you* unsparingly!
+D:$Flee while you can!
+D:この恐るべき社会退廃の権化は容赦なく＊あなた＊を押しつぶすだろう。
+D:今のうちに逃げろ！
