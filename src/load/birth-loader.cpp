@@ -31,7 +31,7 @@ void load_quick_start(void)
     rd_s16b(&previous_char.age);
     rd_s16b(&previous_char.ht);
     rd_s16b(&previous_char.wt);
-    rd_s16b(&previous_char.sc);
+    rd_s16b(&previous_char.prestige);
     rd_s32b(&previous_char.au);
 
     for (int i = 0; i < A_MAX; i++)

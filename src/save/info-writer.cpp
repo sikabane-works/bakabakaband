@@ -151,7 +151,7 @@ void save_quick_start(void)
     wr_s16b(previous_char.age);
     wr_s16b(previous_char.ht);
     wr_s16b(previous_char.wt);
-    wr_s16b(previous_char.sc);
+    wr_s16b(previous_char.prestige);
     wr_s32b(previous_char.au);
 
     for (int i = 0; i < A_MAX; i++)

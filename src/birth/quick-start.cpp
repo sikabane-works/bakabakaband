@@ -81,7 +81,7 @@ void save_prev_data(player_type *creature_ptr, birther *birther_ptr)
     birther_ptr->age = creature_ptr->age;
     birther_ptr->ht = creature_ptr->ht;
     birther_ptr->wt = creature_ptr->wt;
-    birther_ptr->sc = creature_ptr->sc;
+    birther_ptr->prestige = creature_ptr->prestige;
     birther_ptr->au = creature_ptr->au;
 
     for (int i = 0; i < A_MAX; i++) {
@@ -123,7 +123,7 @@ void load_prev_data(player_type *creature_ptr, bool swap)
     creature_ptr->age = previous_char.age;
     creature_ptr->ht = previous_char.ht;
     creature_ptr->wt = previous_char.wt;
-    creature_ptr->sc = previous_char.sc;
+    creature_ptr->prestige = previous_char.prestige;
     creature_ptr->au = previous_char.au;
 
     for (int i = 0; i < A_MAX; i++) {
