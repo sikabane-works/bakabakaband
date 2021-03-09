@@ -25362,3 +25362,81 @@ F:IM_FIRE | RES_CHAO | NO_FEAR | NO_CONF | NO_SLEEP
 S:1_IN_6 | BO_FIRE | BA_FIRE | BA_CHAO | TELE_AWAY | MISSILE | CONF
 D:$A high-rank crimson-garbed monk, trained in martial arts.
 D:紅色の法衣を身にまとった、拳法に熟練した高位の修行僧だ。
+
+
+N:1281:プルトニウムのクリーピングコイン
+E:Creeping Plutonium coins
+G:$:v
+W:44:5:0:450:0:0
+I:125:39d10:5:50:10
+B:BITE:POISON:3d4
+B:TOUCH:POISON:3d5
+B:HIT:HURT:1d12
+B:HIT:HURT:1d12
+F:ONLY_GOLD|DROP_90|DROP_2D2|COLD_BLOOD|BASH_DOOR|ANIMAL|IM_POIS|NO_CONF|NO_SLEEP
+D:それはコインの塊で、何千もの小さな足で前にはいずり歩く。
+D:しかし恐ろしい本質はそもそもそこではない！今の内に逃げろ！
+
+N:1282:突撃『アーマージャック』
+E:Armor-Jack, the Charger
+G:p:y
+W:3:4:0:150:0:0
+I:120:10d10:20:0:20
+B:SHOOT:HURT:3d6
+B:HIT:HURT:2d6
+F:UNIQUE|MALE|FORCE_MAXHP|HUMAN|ONLY_ITEM|DROP_1D2|DROP_GOOD|DROP_GREAT|WILD_WOOD|TAKE_ITEM|OPEN_DOOR|BASH_DOOR|EVIL|DROP_SKELETON|DROP_CORPSE|EAT_GIVE_DEX|EAT_LOSE_WIS
+S:1_IN_5|SHOOT|HEAL
+D:$
+D:ダブルスライサーで真っ二つだ！
+
+N:1283:『ゴッドマン』
+E:Godman
+G:p:y
+W:3:4:0:150:0:0
+I:120:10d10:20:0:20
+B:SHOOT:HURT:3d6
+B:HIT:HURT:2d6
+F:UNIQUE|MALE|FORCE_MAXHP|HUMAN|ONLY_ITEM|DROP_1D2|DROP_GOOD|DROP_GREAT|WILD_WOOD|TAKE_ITEM|OPEN_DOOR|BASH_DOOR|EVIL|DROP_SKELETON|DROP_CORPSE|EAT_GIVE_DEX|EAT_LOSE_WIS
+S:1_IN_5|SHOOT|HEAL
+D:$
+D:地球が危ない。
+
+N:1284:スパルタの戦神『クレイトス』
+E:Kratos, the God of War
+G:p:y
+W:59:3:0:35000:0:0
+I:140:50d120:100:0:50
+B:HIT:HURT:25d9
+B:HIT:HURT:25d9
+B:HIT:HURT:25d9
+B:HIT:HURT:25d9
+F:UNIQUE|MALE|NO_FEAR|FORCE_MAXHP|REFLECTING|MOVE_BODY|KILL_WALL|IM_FIRE|IM_ELEC|IM_POIS|IM_ACID|IM_COLD|RES_NETH|RES_WATE|RES_PLAS|RES_NEXU|RES_DISE|RES_WALL|RES_INER|RES_TIME|RES_GRAV|NO_STUN|REGENERATE|NO_CONF|NO_SLEEP|CAN_FLY|BASH_DOOR|POWERFUL|DROP_CORPSE|SELF_LITE_2
+D:彼は天空神にしてオリュンポスの主神であるゼウスの数多き私生児の一人だ。
+D:戦神アレスの狂乱に憑かれた挙げ句、妻子を殺めてしまった彼の悲痛と憎悪はやがて神々を惨殺するほどの暴威と化し、
+D:オリュンポスの統べるギリシャ世界に終焉をもたらした。
+
+N:1285:貧弱エルフ
+E:Scruffy looking elf
+G:h:G
+W:2:5:0:5:0:0
+I:110:16:8:10
+B:SHOOT:HURT:1d4
+B:HIT:HURT:1d4
+F:FEMALE|HAS_LITE_1|DROP_60|TAKE_ITEM|OPEN_DOOR|BASH_DOOR|DROP_SKELETON|DROP_CORPSE|GOOD
+S:1_IN_2|SHOOT
+D:やたら様々な化け物の慰み物になっているクッソ哀れなエルフ共だ。好きにしろ。
+
+N:1286:レッサー不潔で醜い哀れな身なりのわめきふらつくキチガイ人間
+E:Lesser mangy-ugry-pitiful looking and aimless raving lunatic human
+G:t:D
+W:0:30:0:0:0:0
+I:105:4:1:40
+B:DROOL
+B:BEG
+B:INSULT
+B:INSULT
+F:ATTR_MULTI|EVIL|WILD_TOWN|WILD_ONLY|RAND_25|FRIENDS|HUMAN|MULTIPLY|STUPID|TAKE_ITEM|OPEN_DOOR|DROP_CORPSE|DROP_SKELETON
+D:$This terrible avatar of social decadence will crush *you* unsparingly!
+D:$Flee while you can!
+D:この恐るべき社会退廃の権化は容赦なく＊あなた＊を押しつぶすだろう。
+D:今のうちに逃げろ！
