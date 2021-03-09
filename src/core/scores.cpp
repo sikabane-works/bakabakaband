@@ -877,19 +877,15 @@ void kingly(player_type *winner_ptr)
 
 	/* Display a message */
 #ifdef JP
-	put_str("Veni, Vidi, Vici!", cy + 3, cx - 9);
-	put_str("来た、見た、勝った！", cy + 4, cx - 10);
-	put_str(format("偉大なる%s万歳！", sp_ptr->winner), cy + 5, cx - 11);
+	put_str("こんなげーむにまじになっちゃってどうするの", cy + 3, cx - 9);
 #else
-	put_str("Veni, Vidi, Vici!", cy + 3, cx - 9);
-	put_str("I came, I saw, I conquered!", cy + 4, cx - 14);
-	put_str(format("All Hail the Mighty %s!", sp_ptr->winner), cy + 5, cx - 13);
+	put_str("why have you got serious about this game?", cy + 3, cx - 9);
 #endif
 
 	/* If player did Seppuku, that is already written in playrecord */
 	if (!seppuku)
 	{
-		exe_write_diary(winner_ptr, DIARY_DESCRIPTION, 0, _("ダンジョンの探索から引退した。", "retired exploring dungeons."));
+		exe_write_diary(winner_ptr, DIARY_DESCRIPTION, 0, _("クッソ汚いゲームを止めた。", "retired shitty game."));
 		exe_write_diary(winner_ptr, DIARY_GAMESTART, 1, _("-------- ゲームオーバー --------", "--------   Game  Over   --------"));
 		exe_write_diary(winner_ptr, DIARY_DESCRIPTION, 1, "\n\n\n\n");
 	}
