@@ -480,11 +480,19 @@ bool process_monster_fear(player_type *target_ptr, turn_flags *turn_flags_ptr, M
     GAME_TEXT m_name[MAX_NLEN];
     monster_desc(target_ptr, m_name, m_ptr, 0);
 
-    if(monster_fear_remaining(m_ptr) && one_in_(9)) {
+    if(monster_fear_remaining(m_ptr) && one_in_(20)) {
         msg_format(_("%^sは恐怖のあまり脱糞した！", "%^s was defecated because of fear!"), m_name);
         object_type forge;
         object_type *q_ptr = &forge;
         object_prep(target_ptr, q_ptr, lookup_kind(TV_JUNK, SV_JUNK_FECES));
+        (void)drop_near(target_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
+    }
+
+    if (monster_fear_remaining(m_ptr) && one_in_(20)) {
+        msg_format(_("%^sは恐怖のあまり嘔吐した！", "%^s vomited in fear!"), m_name);
+        object_type forge;
+        object_type *q_ptr = &forge;
+        object_prep(target_ptr, q_ptr, lookup_kind(TV_JUNK, SV_JUNK_VOMITTING));
         (void)drop_near(target_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 
