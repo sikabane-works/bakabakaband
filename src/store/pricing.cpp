@@ -33,11 +33,11 @@ PRICE price_item(player_type *player_ptr, object_type *o_ptr, int greed, bool fl
     if (price <= 0)
         return 0L;
 
-    int factor = rgold_adj[ot_ptr->owner_race][player_ptr->prace];
+    int factor = rgold_adj[ot_ptr->owner_race][player_ptr->prace] - MIN(player_ptr->prestige / 10, 30);
     factor += adj_chr_gold[player_ptr->stat_ind[A_CHR]];
     int adjust;
     if (flip) {
-        adjust = 100 + (300 - (greed + factor));
+        adjust = 100 + (3 - (greed + factor));
         if (adjust > 100)
             adjust = 100;
 
