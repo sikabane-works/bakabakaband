@@ -305,6 +305,8 @@ static void generate_area(player_type *player_ptr, POSITION y, POSITION x, bool 
             init_flags = INIT_CREATE_DUNGEON;
 
         parse_fixed_map(player_ptr, "t_info.txt", 0, 0, MAX_HGT, MAX_WID);
+        floor_ptr->width = MAX_WID;
+        floor_ptr->height = MAX_HGT;
         if (!corner && !border)
             player_ptr->visit |= (1UL << (player_ptr->town_num - 1));
     } else {
