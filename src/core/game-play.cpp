@@ -328,12 +328,13 @@ static void init_riding_pet(player_type *player_ptr, bool new_game)
 
 static void decide_arena_death(player_type *player_ptr)
 {
+
     if (!player_ptr->playing || !player_ptr->is_dead)
         return;
 
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     if (!floor_ptr->inside_arena) {
-        if (!get_check(_("死にますか? ", "Die? ")))
+        if (!get_check(_("一から出直しますか? ", "Do you want to start over? ")))
             cheat_death(player_ptr, cheat_live);
         return;
     }

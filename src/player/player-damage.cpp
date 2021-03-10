@@ -408,6 +408,8 @@ int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concp
 
             exe_write_diary(creature_ptr, DIARY_GAMESTART, 1, _("-------- ゲームオーバー --------", "--------   Game  Over   --------"));
             exe_write_diary(creature_ptr, DIARY_DESCRIPTION, 1, "\n\n\n\n");
+            creature_ptr->death_count++;
+
             flush();
             if (get_check_strict(creature_ptr, _("画面を保存しますか？", "Dump the screen? "), CHECK_NO_HISTORY))
                 do_cmd_save_screen(creature_ptr, process_autopick_file_command);

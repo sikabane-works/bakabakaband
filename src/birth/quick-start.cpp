@@ -78,6 +78,7 @@ void save_prev_data(player_type *creature_ptr, birther *birther_ptr)
     birther_ptr->pseikaku = creature_ptr->pseikaku;
     birther_ptr->realm1 = creature_ptr->realm1;
     birther_ptr->realm2 = creature_ptr->realm2;
+    birther_ptr->death_count = creature_ptr->death_count;
     birther_ptr->age = creature_ptr->age;
     birther_ptr->ht = creature_ptr->ht;
     birther_ptr->wt = creature_ptr->wt;
@@ -120,6 +121,7 @@ void load_prev_data(player_type *creature_ptr, bool swap)
     creature_ptr->pseikaku = previous_char.pseikaku;
     creature_ptr->realm1 = previous_char.realm1;
     creature_ptr->realm2 = previous_char.realm2;
+    creature_ptr->death_count = previous_char.death_count;
     creature_ptr->age = previous_char.age;
     creature_ptr->ht = previous_char.ht;
     creature_ptr->wt = previous_char.wt;
