@@ -634,6 +634,13 @@ hengband_SOURCES = \
 	player-attack/blood-sucking-processor.cpp player-attack/blood-sucking-processor.h \
 	player-attack/player-attack.cpp player-attack/player-attack.h \
 	\
+	player-status/player-status-base.h \
+	player-status/player-speed.h \
+	player-status/player-stealth.h \
+	player-status/player-status-base.cpp \
+	player-status/player-speed.cpp \
+	player-status/player-stealth.cpp \
+	\
 	player-info/avatar.h player-info/avatar.cpp \
 	player-info/base-status-info.cpp player-info/base-status-info.h \
 	player-info/base-status-types.h \
@@ -882,7 +889,9 @@ hengband_SOURCES = \
 	wizard/spoiler-table.cpp wizard/spoiler-table.h \
 	wizard/spoiler-util.cpp wizard/spoiler-util.h \
 	wizard/tval-descriptions-table.cpp wizard/tval-descriptions-table.h \
+	wizard/wizard-game-modifier.cpp wizard/wizard-game-modifier.h \
 	wizard/wizard-item-modifier.cpp wizard/wizard-item-modifier.h \
+	wizard/wizard-player-modifier.cpp wizard/wizard-player-modifier.h \
 	wizard/wizard-messages.cpp wizard/wizard-messages.h \
 	wizard/wizard-spells.cpp wizard/wizard-spells.h \
 	wizard/wizard-spoiler.cpp wizard/wizard-spoiler.h\
