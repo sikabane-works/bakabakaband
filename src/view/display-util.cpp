@@ -56,6 +56,7 @@ static struct
 	{29, 14, 21, "強化度"},
 	{29, 16, 21, "次レベル"},
 	{53, 19, -1, "掘削      :" },
+	{29,  8, 21, "死亡回数"},
 };
 #else
 = {
@@ -105,6 +106,7 @@ static struct
 	{29, 14, 21, "Construction"},
 	{29, 16, 21, "Const to Adv"},
 	{53, 19, -1, "Digging    : " },
+    {29, 8, 21,  "Death Count" },
 };
 #endif
 

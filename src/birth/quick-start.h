@@ -13,6 +13,7 @@ typedef struct birther {
     REALM_IDX realm1; /* First magic realm */
     REALM_IDX realm2; /* Second magic realm */
 
+    s32b death_count;
     s16b age;
     s16b ht;
     s16b wt;

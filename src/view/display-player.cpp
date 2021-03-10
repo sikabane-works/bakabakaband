@@ -127,7 +127,8 @@ static void display_phisique(player_type *creature_ptr)
 	display_player_one_line(ENTRY_WEIGHT, format("%d", (int)creature_ptr->wt), TERM_L_BLUE);
 	display_player_one_line(ENTRY_SOCIAL, format("%d", (int)creature_ptr->prestige), TERM_L_BLUE);
 #endif
-	display_player_one_line(ENTRY_ALIGN, format("%s", your_alignment(creature_ptr)), TERM_L_BLUE);
+    display_player_one_line(ENTRY_DEATH_COUNT, format("%d", (int)creature_ptr->death_count), TERM_L_BLUE);
+    display_player_one_line(ENTRY_ALIGN, format("%s", your_alignment(creature_ptr)), TERM_L_BLUE);
 }
 
 

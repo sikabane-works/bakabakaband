@@ -34,6 +34,7 @@ void wr_player(player_type *creature_ptr)
     wr_byte((byte)creature_ptr->hitdie);
     wr_u16b(creature_ptr->expfact);
 
+    wr_s32b(creature_ptr->death_count);
     wr_s16b(creature_ptr->age);
     wr_s16b(creature_ptr->ht);
     wr_s16b(creature_ptr->wt);

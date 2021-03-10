@@ -57,6 +57,7 @@ void rd_base_info(player_type *creature_ptr)
     creature_ptr->hitdie = (DICE_SID)tmp8u;
     rd_u16b(&creature_ptr->expfact);
 
+    rd_s32b(&creature_ptr->death_count);
     rd_s16b(&creature_ptr->age);
     rd_s16b(&creature_ptr->ht);
     rd_s16b(&creature_ptr->wt);

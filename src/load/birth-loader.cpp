@@ -28,6 +28,7 @@ void load_quick_start(void)
     rd_byte(&tmp8u);
     previous_char.realm2 = (REALM_IDX)tmp8u;
 
+    rd_s32b(&previous_char.death_count);
     rd_s16b(&previous_char.age);
     rd_s16b(&previous_char.ht);
     rd_s16b(&previous_char.wt);

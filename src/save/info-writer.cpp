@@ -148,6 +148,7 @@ void save_quick_start(void)
     wr_byte((byte)previous_char.realm1);
     wr_byte((byte)previous_char.realm2);
 
+    wr_s32b(previous_char.death_count);
     wr_s16b(previous_char.age);
     wr_s16b(previous_char.ht);
     wr_s16b(previous_char.wt);
