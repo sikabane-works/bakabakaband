@@ -108,7 +108,7 @@ static void display_magic_realms(player_type *creature_ptr)
 
 
 /*!
- * @ brief 年齢、身長、体重、社会的地位を表示する
+ * @ brief 年齢、身長、体重、威信を表示する
  * @param creature_ptr プレーヤーへの参照ポインタ
  * @return なし
  * @details
@@ -120,12 +120,12 @@ static void display_phisique(player_type *creature_ptr)
 	display_player_one_line(ENTRY_AGE, format("%d才", (int)creature_ptr->age), TERM_L_BLUE);
 	display_player_one_line(ENTRY_HEIGHT, format("%dcm", (int)((creature_ptr->ht * 254) / 100)), TERM_L_BLUE);
 	display_player_one_line(ENTRY_WEIGHT, format("%dkg", (int)((creature_ptr->wt * 4536) / 10000)), TERM_L_BLUE);
-	display_player_one_line(ENTRY_SOCIAL, format("%d  ", (int)creature_ptr->sc), TERM_L_BLUE);
+	display_player_one_line(ENTRY_SOCIAL, format("%d  ", (int)creature_ptr->prestige), TERM_L_BLUE);
 #else
 	display_player_one_line(ENTRY_AGE, format("%d", (int)creature_ptr->age), TERM_L_BLUE);
 	display_player_one_line(ENTRY_HEIGHT, format("%d", (int)creature_ptr->ht), TERM_L_BLUE);
 	display_player_one_line(ENTRY_WEIGHT, format("%d", (int)creature_ptr->wt), TERM_L_BLUE);
-	display_player_one_line(ENTRY_SOCIAL, format("%d", (int)creature_ptr->sc), TERM_L_BLUE);
+	display_player_one_line(ENTRY_SOCIAL, format("%d", (int)creature_ptr->prestige), TERM_L_BLUE);
 #endif
 	display_player_one_line(ENTRY_ALIGN, format("%s", your_alignment(creature_ptr)), TERM_L_BLUE);
 }

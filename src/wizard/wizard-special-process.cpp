@@ -596,7 +596,7 @@ void cheat_death(player_type *creature_ptr, bool no_penalty)
         
         case 0:
             blank_years = damroll(8, 10);
-            creature_ptr->sc /= 2;
+            creature_ptr->prestige /= 2;
             creature_ptr->age += blank_years;
 
             creature_ptr->max_max_exp = (creature_ptr->max_max_exp * 6 / (randint1(3) + 6));
@@ -612,7 +612,7 @@ void cheat_death(player_type *creature_ptr, bool no_penalty)
 
         case 1:
             blank_years = damroll(2, 10);
-            creature_ptr->sc /= 2;
+            creature_ptr->prestige /= 2;
             creature_ptr->age += blank_years;
             msg_print(_("『猿先生何も考えてないと思うよ』", "\"I think that Mr.Sawatari thinks nothing.\""));
             msg_format(_("あなたは連載%d年の間猿空間に迷い込んでいた！ついでに死んだ設定も忘れ去られていた！",

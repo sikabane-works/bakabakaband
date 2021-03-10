@@ -145,7 +145,7 @@ void set_zangband_timed_effects(player_type *creature_ptr)
     creature_ptr->tim_reflect = 0;
     creature_ptr->multishadow = 0;
     creature_ptr->dustrobe = 0;
-    creature_ptr->chaos_patron = ((creature_ptr->age + creature_ptr->sc) % MAX_PATRON);
+    creature_ptr->chaos_patron = ((creature_ptr->age + creature_ptr->prestige) % MAX_PATRON);
     creature_ptr->muta1 = 0;
     creature_ptr->muta2 = 0;
     creature_ptr->muta3 = 0;

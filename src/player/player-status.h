@@ -93,7 +93,7 @@ typedef struct player_type {
     s16b age; /* Characters age */
     s16b ht; /* Height */
     s16b wt; /* Weight */
-    s16b sc; /* Social Class */
+    s16b prestige; /* Social Class */
 
     PRICE au; /* Current Gold */
 

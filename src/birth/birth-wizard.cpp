@@ -351,7 +351,7 @@ static bool decide_body_spec(player_type *creature_ptr, chara_limit_type chara_l
             *accept = FALSE;
         if ((creature_ptr->wt < chara_limit.wtmin) || (creature_ptr->wt > chara_limit.wtmax))
             *accept = FALSE;
-        if ((creature_ptr->sc < chara_limit.scmin) || (creature_ptr->sc > chara_limit.scmax))
+        if ((creature_ptr->prestige < chara_limit.scmin) || (creature_ptr->prestige > chara_limit.scmax))
             *accept = FALSE;
     }
 
@@ -451,7 +451,7 @@ static bool display_auto_roller_result(player_type *creature_ptr, bool prev, cha
 /*
  * @brief オートロールを回して結果を表示し、その数値に決めるかさらに回すか確認する。
  * @param creature_ptr プレーヤーへの参照ポインタ
- * @param chara_limit 社会的地位の要求水準
+ * @param chara_limit 威信の要求水準
  * @detail 2つめの結果以降は、'p'キーで1つ前のロール結果に戻せる。
  */
 static bool display_auto_roller(player_type *creature_ptr, chara_limit_type chara_limit)

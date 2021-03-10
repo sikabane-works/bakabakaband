@@ -2,7 +2,7 @@
 
 #include "system/angband.h"
 
-/*! オートローラの年齢、身長、体重、社会的地位の要求水準 */
+/*! オートローラの年齢、身長、体重、威信の要求水準 */
 typedef struct {
     s16b agemin, agemax;
     s16b htmin, htmax;

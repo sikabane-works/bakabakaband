@@ -444,7 +444,7 @@ static void rd_player_status(player_type *creature_ptr)
     rd_s16b(&creature_ptr->max_plv);
     rd_dungeons(creature_ptr);
     strip_bytes(8);
-    rd_s16b(&creature_ptr->sc);
+    rd_s16b(&creature_ptr->prestige);
     rd_s16b(&creature_ptr->concent);
     rd_bad_status(creature_ptr);
     rd_energy(creature_ptr);

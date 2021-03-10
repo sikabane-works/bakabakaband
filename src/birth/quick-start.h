@@ -16,7 +16,7 @@ typedef struct birther {
     s16b age;
     s16b ht;
     s16b wt;
-    s16b sc;
+    s16b prestige;
 
     PRICE au; /*!< 初期の所持金 */
 
