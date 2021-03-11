@@ -114,7 +114,7 @@ void check_quest_completion(player_type *player_ptr, monster_type *m_ptr)
                 floor_ptr->inside_quest = 0;
             }
 
-            if ((quest_num == QUEST_OBERON) || (quest_num == QUEST_SERPENT))
+            if ((quest_num == QUEST_MELKO))
                 q_ptr->status = QUEST_STATUS_FINISHED;
 
             if (q_ptr->type == QUEST_TYPE_RANDOM) {
