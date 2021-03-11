@@ -126,6 +126,9 @@ void complete_quest(player_type *player_ptr, QUEST_IDX quest_num)
     if (q_ptr->flags & QUEST_FLAG_SILENT)
         return;
 
+    // 威信値アップ
+    player_ptr->prestige += 10 + (q_ptr->level / 2);
+
     play_music(TERM_XTRA_MUSIC_BASIC, MUSIC_BASIC_QUEST_CLEAR);
     msg_print(_("クエストを達成した！", "You just completed your quest!"));
     msg_print(NULL);

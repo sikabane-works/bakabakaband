@@ -17,6 +17,7 @@
 #include "cmd-io/cmd-save.h"
 #include "cmd-visual/cmd-draw.h"
 #include "core/asking-player.h"
+#include "core/player-redraw-types.h"
 #include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
@@ -57,10 +58,12 @@
 #include "player/digestion-processor.h"
 #include "player/patron.h"
 #include "player/player-class.h"
+#include "player/player-race.h"
 #include "player/player-race-types.h"
 #include "player/player-skill.h"
 #include "player/player-status-table.h"
 #include "player/player-status.h"
+#include "player/race-info-table.h"
 #include "spell-kind/spells-detection.h"
 #include "spell-kind/spells-sight.h"
 #include "spell-kind/spells-teleport.h"
@@ -440,6 +443,34 @@ void wiz_learn_items_all(player_type *caster_ptr)
 }
 
 /*!
+ * @brief プレイヤーの種族を変更する
+ * @return なし
+ */
+void wiz_reset_race(player_type *creature_ptr)
+{
+    char ppp[80];
+    sprintf(ppp, "Race (0-%d): ", MAX_RACES - 1);
+
+    char tmp_val[160];
+    sprintf(tmp_val, "%d", creature_ptr->prace);
+
+    if (!get_string(ppp, tmp_val, 2))
+        return;
+
+    int tmp_int = atoi(tmp_val);
+    if (tmp_int < 0 || tmp_int >= MAX_RACES)
+        return;
+
+    creature_ptr->prace = static_cast<player_race_type>(tmp_int);
+    rp_ptr = &race_info[creature_ptr->prace];
+
+    creature_ptr->window_flags |= PW_PLAYER;
+    creature_ptr->update |= PU_BONUS | PU_HP | PU_MANA | PU_SPELLS;
+    creature_ptr->redraw |= PR_BASIC;
+    handle_stuff(creature_ptr);
+}
+
+/*!
  * @brief プレイヤーの職業を変更する
  * @return なし
  * @todo 魔法領域の再選択などがまだ不完全、要実装。
@@ -460,8 +491,10 @@ void wiz_reset_class(player_type *creature_ptr)
         return;
 
     creature_ptr->pclass = static_cast<player_class_type>(tmp_int);
+    cp_ptr = &class_info[creature_ptr->pclass];
     creature_ptr->window_flags |= PW_PLAYER;
     creature_ptr->update |= PU_BONUS | PU_HP | PU_MANA | PU_SPELLS;
+    creature_ptr->redraw |= PR_BASIC;
     handle_stuff(creature_ptr);
 }
 
@@ -596,7 +629,7 @@ void cheat_death(player_type *creature_ptr, bool no_penalty)
         
         case 0:
             blank_years = damroll(8, 10);
-            creature_ptr->sc /= 2;
+            creature_ptr->prestige /= 2;
             creature_ptr->age += blank_years;
 
             creature_ptr->max_max_exp = (creature_ptr->max_max_exp * 6 / (randint1(3) + 6));
@@ -612,7 +645,7 @@ void cheat_death(player_type *creature_ptr, bool no_penalty)
 
         case 1:
             blank_years = damroll(2, 10);
-            creature_ptr->sc /= 2;
+            creature_ptr->prestige /= 2;
             creature_ptr->age += blank_years;
             msg_print(_("『猿先生何も考えてないと思うよ』", "\"I think that Mr.Sawatari thinks nothing.\""));
             msg_format(_("あなたは連載%d年の間猿空間に迷い込んでいた！ついでに死んだ設定も忘れ去られていた！",

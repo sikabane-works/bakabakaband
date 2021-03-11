@@ -300,7 +300,7 @@ static void generate_world(player_type *player_ptr, bool new_game)
 static void init_io(player_type *player_ptr)
 {
     term_xtra(TERM_XTRA_REACT, 0);
-    player_ptr->window_flags |= PW_INVEN | PW_EQUIP | PW_SPELL | PW_PLAYER | PW_MESSAGE | PW_OVERHEAD | PW_DUNGEON | PW_MONSTER | PW_OBJECT;
+    player_ptr->window_flags = PW_ALL;
     handle_stuff(player_ptr);
     if (arg_force_original)
         rogue_like_commands = FALSE;
@@ -328,12 +328,13 @@ static void init_riding_pet(player_type *player_ptr, bool new_game)
 
 static void decide_arena_death(player_type *player_ptr)
 {
+
     if (!player_ptr->playing || !player_ptr->is_dead)
         return;
 
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     if (!floor_ptr->inside_arena) {
-        if (!get_check(_("死にますか? ", "Die? ")))
+        if (!get_check(_("一から出直しますか? ", "Do you want to start over? ")))
             cheat_death(player_ptr, cheat_live);
         return;
     }

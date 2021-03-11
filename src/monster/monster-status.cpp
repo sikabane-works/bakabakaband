@@ -632,6 +632,8 @@ void monster_gain_exp(player_type *target_ptr, MONSTER_IDX m_idx, MONRACE_IDX s_
  * @param note モンスターが倒された際の特別なメッセージ述語
  * @return なし
  * @details
+ * 本関数中のモンスターの死亡処理とmonster_death()との機能的な分割は、こちらがプレイヤーが能動的に殺めた場合であり、
+ * monster_death()はプレイヤー以外の他モンスターの巻き添え、天災などで死んだ場合の共通処理であると考える。
  * <pre>
  * We return TRUE if the monster has been killed (and deleted).
  * We announce monster death (using an optional "death message"
@@ -826,7 +828,11 @@ bool mon_take_hit(player_type *target_ptr, MONSTER_IDX m_idx, HIT_POINT dam, boo
 
             if (one_in_(3))
                 chg_virtue(target_ptr, V_INDIVIDUALISM, -1);
+
+            //とりあえずユニークだったらぶっ殺せばぶっ殺すほど威信（悪名悪徳だろうと）は上がる
+            target_ptr->prestige += 1 + r_ptr->level / 10; 
         }
+
 
         if (m_ptr->r_idx == MON_BEGGAR || m_ptr->r_idx == MON_LEPER) {
             chg_virtue(target_ptr, V_COMPASSION, -1);
