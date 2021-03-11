@@ -397,7 +397,7 @@ int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concp
                     strcpy(buf, _("アリーナ", "in the Arena"));
                 else if (!creature_ptr->current_floor_ptr->dun_level)
                     strcpy(buf, _("地上", "on the surface"));
-                else if (q_idx && (is_fixed_quest_idx(q_idx) && !((q_idx == QUEST_OBERON) || (q_idx == QUEST_SERPENT))))
+                else if (q_idx && (is_fixed_quest_idx(q_idx) && !(q_idx == QUEST_MELKO)))
                     strcpy(buf, _("クエスト", "in a quest"));
                 else
                     sprintf(buf, _("%d階", "level %d"), (int)creature_ptr->current_floor_ptr->dun_level);

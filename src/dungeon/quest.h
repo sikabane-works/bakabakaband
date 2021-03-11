@@ -54,6 +54,7 @@
 #define QUEST_TOWER3 7 /*<! 塔クエスト(第3階層)に割り振るクエストID */
 #define QUEST_OBERON 8 /*<! オベロン打倒クエストに割り振るクエストID */
 #define QUEST_SERPENT 9 /*<! サーペント打倒クエストに割り振るクエストID */
+#define QUEST_MELKO 35 /*<! メル子くん打倒クエストに割り振るクエストID */
 
 /*!
  * @struct quest_type

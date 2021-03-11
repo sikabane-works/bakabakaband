@@ -83,7 +83,7 @@ static QUEST_IDX write_floor(player_type *creature_ptr, concptr *note_level, cha
 		*note_level = _("アリーナ:", "Arena:");
 	else if (!floor_ptr->dun_level)
 		*note_level = _("地上:", "Surface:");
-	else if (q_idx && (is_fixed_quest_idx(q_idx) && !((q_idx == QUEST_OBERON) || (q_idx == QUEST_SERPENT))))
+	else if (q_idx && (is_fixed_quest_idx(q_idx) && !(q_idx == QUEST_MELKO)))
 		*note_level = _("クエスト:", "Quest:");
 	else
 	{
@@ -290,7 +290,7 @@ errr exe_write_diary(player_type *creature_ptr, int type, int num, concptr note)
 	case DIARY_STAIR:
 	{
 		concptr to = q_idx && (is_fixed_quest_idx(q_idx)
-			&& !((q_idx == QUEST_OBERON) || (q_idx == QUEST_SERPENT)))
+			&& !((q_idx == QUEST_MELKO)))
 			? _("地上", "the surface")
 			: !(creature_ptr->current_floor_ptr->dun_level + num)
 			? _("地上", "the surface")

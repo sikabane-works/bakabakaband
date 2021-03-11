@@ -203,13 +203,9 @@ void init_dungeon_quests(player_type *creature_ptr)
     }
 
     init_flags = INIT_ASSIGN;
-    floor_ptr->inside_quest = QUEST_OBERON;
+    floor_ptr->inside_quest = QUEST_MELKO;
     parse_fixed_map(creature_ptr, "q_info.txt", 0, 0, 0, 0);
-    quest[QUEST_OBERON].status = QUEST_STATUS_TAKEN;
-
-    floor_ptr->inside_quest = QUEST_SERPENT;
-    parse_fixed_map(creature_ptr, "q_info.txt", 0, 0, 0, 0);
-    quest[QUEST_SERPENT].status = QUEST_STATUS_TAKEN;
+    quest[QUEST_MELKO].status = QUEST_STATUS_TAKEN;
     floor_ptr->inside_quest = 0;
 }
 
