@@ -25440,3 +25440,63 @@ D:$This terrible avatar of social decadence will crush *you* unsparingly!
 D:$Flee while you can!
 D:この恐るべき社会退廃の権化は容赦なく＊あなた＊を押しつぶすだろう。
 D:今のうちに逃げろ！
+
+N:1287:冥王少女『メル子くん』
+E:Melko, Princeps Abyssal
+G:p:D
+I:131:45d100:100:70:0
+W:50:1:0:30000:0:0
+B:HIT:SHATTER:10d10
+B:HIT:SHATTER:10d10
+B:HIT:LOSE_ALL:5d12
+B:TOUCH:UN_POWER
+F:UNIQUE | FEMALE | 
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | FORCE_DEPTH | SELF_DARK_1 | SELF_DARK_2
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_3D2 | DROP_4D2 
+F:DROP_GREAT | SMART | KILL_WALL | MOVE_BODY | AURA_COLD
+F:REGENERATE | POWERFUL | NO_CONF | NO_SLEEP | NO_FEAR
+F:EVIL | IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_DARK
+S:1_IN_3 | 
+S:BRAIN_SMASH | DISPEL |
+S:BO_MANA | BA_NETH | ANIM_DEAD | BA_DARK
+S:S_MONSTERS | S_UNIQUE | S_HI_UNDEAD | S_HI_DRAGON
+V:150
+D:彼女はメルコールにとって失態極まった、望まざる影の化身だ。
+D:開闢の時代、ポエムで世界を作ろうなどと言い出したイルーヴァタールの無能文系極まる創世デスマーチの
+D:尻ぬぐいと理不尽な責任を背負わされた彼は、シルマリルの物語でも数多くの罵詈雑言を被った。
+D:揚げ句、トゥルカスの暴力に日々散々悩まされ続けた彼はある日、とある迷妄を抱いてしまった。
+D:「いっそ自分が日本化ビームで美少女化でもしていればどれ程方々から手心を加えてもらっていることだろうか」
+D:そのわずかな隙を、メルコールへの歪んだ愛情を抱くゲイのサディストたるアンナタール（サウロン）
+D:は見逃さなかった。彼の策により引きずり出した迷妄の分霊は今や、短気で勝気な十代の少女そのものの
+D:調子でこれまでの鬱憤を晴らそうと鉄獄中層で無鉄砲に暴れまわる始末である。
+D:この暴走少女を速やかに分からせ、哀れに思うならばメルコールの恥を少しでも早く終わらせて差し上げろ。
+
+N:1288:尊師『ストールンマン』
+E:Stolenman,THE *G*U*R*U*
+G:t:o
+I:70:2d8:10:150:12
+W:0:5:0:300:0:0
+B:TOUCH:TIME:1d1
+B:TOUCH:EAT_FOOD:1d1
+R:1288:10d5
+F:FORCE_MAXHP | GOOD
+F:UNIQUE | WEIRD_MIND | STUPID | WILD_TOWN |
+F:OPEN_DOOR | BASH_DOOR | RES_TELE
+D:彼の偉大なる功績は、より多くのオープンソースにGNUの名を冠することだった。
+D:この点において、ブルやジョーブツをも圧倒的に凌いでいる。
+
+N:1289:グヌグ・ハード
+E:GNUG Hard
+G:q:o
+I:11:5d10:25:0:1
+W:0:10:0:250:0:0
+B:DROOL:TIME:1d1
+B:TOUCH:EAT_FOOD:1d1
+F:RAND_25 | RAND_50 | STUPID | EMPTY_MIND | REFLECTING | PREVENT_SUDDEN_MAGIC
+F:BASH_DOOR | GOOD | NONLIVING | IM_ACID | IM_FIRE | IM_COLD | IM_POIS
+F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN
+F:RES_CHAO | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV | RES_TELE
+F:NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP | CAN_FLY
+D:それはひたすら遅く、ペンギンの早さには遠く及ばず、
+D:エクスプローダー程にも世間で役に立っていない。
+

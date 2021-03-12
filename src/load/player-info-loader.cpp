@@ -57,6 +57,7 @@ void rd_base_info(player_type *creature_ptr)
     creature_ptr->hitdie = (DICE_SID)tmp8u;
     rd_u16b(&creature_ptr->expfact);
 
+    rd_s32b(&creature_ptr->death_count);
     rd_s16b(&creature_ptr->age);
     rd_s16b(&creature_ptr->ht);
     rd_s16b(&creature_ptr->wt);
@@ -444,7 +445,7 @@ static void rd_player_status(player_type *creature_ptr)
     rd_s16b(&creature_ptr->max_plv);
     rd_dungeons(creature_ptr);
     strip_bytes(8);
-    rd_s16b(&creature_ptr->sc);
+    rd_s16b(&creature_ptr->prestige);
     rd_s16b(&creature_ptr->concent);
     rd_bad_status(creature_ptr);
     rd_energy(creature_ptr);
