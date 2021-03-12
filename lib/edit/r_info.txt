@@ -23360,7 +23360,7 @@ S:TELE_TO | BO_MANA | BR_MANA | BR_WALL | BR_PLAS | BR_DISI | HEAL | HASTE
 D:$It is the fusion of twin sisters born at the end of the vaunted study of Vajura energy.
 D:$Its outrageous power will destroy a star and eventually become a new myth.
 D:ヴァジュラエネルギーのおぞましい研究の果てに産みだされた双子の姉妹の融合体だ。
-D:その無法図な力は一個の星を滅ぼし、やがて新たな神話の存在となるに足るものだろう。
+D:その無法なる力は一個の星を滅ぼし、やがて新たな神話の存在となるに足るものだろう。
 
 N:1172:緑衣の高位修行僧
 E:High jade monk
@@ -24909,9 +24909,8 @@ F:NO_CONF | NO_STUN | NO_SLEEP | NO_FEAR
 F:ONLY_ITEM | DROP_GOOD | DROP_1D2 | DROP_90
 S:1_IN_3 | BA_ACID
 D:$When many of these dragon insects are united, it becomes a dragon centipede.
-D:$  The part that corresponds to the spinal cord
-D:$ when it was integrated as a dragon centipede
-D:$ has an organ that seems to be the eye.
+D:$  The part that forms the spinal cord when it is integrated into a dragon
+D:$ centipede has an organ that seems to be the eye.
 D:この龍虫が多数合体すると百足龍虫になる。
 D:百足龍虫時の脊髄にあたる部分には眼と思われる器官がついている。
 
@@ -24929,10 +24928,9 @@ F:IM_ACID | IM_POIS | RES_PLAS | RES_DISE | RES_WALL | RES_GRAV | RES_TELE
 F:NO_CONF | NO_STUN | NO_SLEEP | NO_FEAR
 F:ONLY_ITEM | DROP_GOOD | DROP_3D2
 S:1_IN_3 | BA_ACID
-D:$The identity of the giant centipede
-D:$ was a combination of many giant creatures.
-D:$The colony separated from the dragon centipede begins its activity
-D:$ as an independent dragon worm.
+D:$Dragon centipedes are formed from the combination of many insects.
+D:$  Those centipedes can break apart:  each piece becomes an independent
+D:$ dragon worm.
 D:巨大な百足の正体は多数の巨大生物が合体した生物だった。
 D:百足龍虫から分離した群体は独立した龍虫として活動を始める。
 
@@ -24950,9 +24948,9 @@ F:IM_ACID | IM_COLD | IM_POIS | RES_DISE | RES_WALL | RES_GRAV | RES_TELE
 F:NO_CONF | NO_STUN | NO_SLEEP | NO_FEAR
 F:ONLY_ITEM | DROP_GOOD | DROP_4D2 | DROP_2D2
 S:1_IN_3 | BA_ACID
-D:$It is the final evolution of a giant creature,
+D:$It is the final evolution of a dragon insect,
 D:$ a magnificent centipede that is taller and longer than the WTC.
-D:$  It pours acid like a downpour from countless outrages.
+D:$  It pours acid like a downpour from countless protrusions.
 D:巨大生物の最終進化形態、ビルよりも高く長い全長を持つ雄大なムカデだ。
 D:無数の突起から土砂降りのように酸を降り注がせる。
 
@@ -25067,7 +25065,7 @@ F:FORCE_MAXHP | NEVER_MOVE | EMPTY_MIND | CAN_FLY
 F:NO_SLEEP | NO_FEAR | NO_CONF | REFLECTING
 F:IM_ACID | RES_DISE | RES_NEXU | RES_GRAV
 S:1_IN_7 | HOLD | BR_ACID | BR_DISE | BR_NEXU | BR_GRAV
-D:$The boots have the ability of Shiva, the god of destruction.
+D:$These boots have the power of Shiva, the god of destruction.
 D:破壊神シヴァの力を持った革の靴だ。
 
 N:1265:テレサ
@@ -25098,10 +25096,10 @@ F:HURT_LITE | SELF_DARK_1 | NO_FEAR | NO_CONF | NO_SLEEP
 F:DROP_2D2 | DROP_GREAT | ONLY_ITEM
 S:1_IN_3 | DISPEL | BA_ELEC | BA_DARK
 S:SHRIEK | SCARE | BLIND | BLINK | DARKNESS | S_KIN
-D:$Boo's boss, which has the ability to confine objects
-D:$ and people in a picture frame.  It is worth living to scare people.
-D:$  Ever since losing to Luigi, has been obsessed with revenge on him.
-D:$  It is going to add you to one of the picture frame collections.
+D:$It is the boss of the Boos and has the ability to confine objects
+D:$ and people in picture frames.  It enjoys scaring and toying with its
+D:$ opponents.  Ever since losing to Luigi, King Boo has been obsessed with
+D:$ revenge.  It is going to add you to its collection of portraits.
 D:物体や人物を額縁に閉じ込め絵にする能力を持つ、テレサの親玉。
 D:人を怖がらせるのが生きがいである。
 D:緑のひげに敗れて以来、彼への仕返しに執念を燃やしている。
@@ -25118,7 +25116,7 @@ F:ANIMAL | MOVE_BODY | EVIL | FRIENDS
 F:NO_CONF | RES_GRAV | DROP_90
 S:1_IN_8 | BR_GRAV
 D:$What a cute terrestrial raven!
-D:$  They often move around in groups with good behavior.
+D:$  They often move around in well-behaved groups.
 D:かわいい陸行性のカラスだ。よく群れをなして行儀よく動き回っている。
 
 N:1268:『ビッグキューちゃん』
@@ -25132,7 +25130,7 @@ F:UNIQUE | FORCE_MAXHP | ANIMAL | POWERFUL | MOVE_BODY | EVIL
 F:NO_CONF | NO_SLEEP | NO_FEAR | IM_ELEC | RES_GRAV | BASH_DOOR
 F:DROP_GOOD | DROP_2D2 | ONLY_ITEM
 S:1_IN_6 | BA_ELEC | BR_GRAV | TELE_AWAY
-D:$It is very gentle when the head is stepped on,
+D:$It is very gentle when its head is stepped on,
 D:$ but it gets angry when a stake is driven into its ass.
 D:それは頭を踏まれたくらいでは温厚だが、お尻に杭を打ち込まれると激怒する。
 
@@ -25149,13 +25147,13 @@ F:FORCE_MAXHP | CAN_SWIM | COLD_BLOOD | WEIRD_MIND | RIDING
 F:IM_COLD | RES_WATE | RES_INER | RES_TIME | RES_TELE
 F:NO_STUN | NO_FEAR | NO_SLEEP
 S:1_IN_5 | BA_WATE | HASTE | S_UNDEAD
-D:$It is a horse born by sticking four sticks into a cucumber
+D:$It is a horse formed by sticking four sticks into a cucumber
 D:$ that is so huge that people can straddle it.
 D:$  The legs are fast.
-D:$  It should carry the spirits of its ancestors,
-D:$ but since the rider was not found,
-D:$ it carries the appropriate spirits.
-D:$ Juice spouts from the fresh body.
+D:$  It should carry the spirits of the ancestors of its maker,
+D:$ but, since a rider was not found,
+D:$ it looks for another spirit to carry.
+D:$  Juice spouts from the fresh body.
 D:人が跨がれるほど巨大なキュウリに四本の棒を刺すことで誕生した馬だ。足が早い。
 D:先祖の霊を乗せるはずだが、乗り手が見つからなかったため適当な霊を乗せている。
 D:瑞々しい体からは汁が噴き出す。
@@ -25173,13 +25171,13 @@ F:FORCE_MAXHP | CAN_SWIM | COLD_BLOOD | WEIRD_MIND | RIDING | TAKE_ITEM
 F:IM_COLD | RES_WATE | RES_TIME | RES_TELE
 F:NO_STUN | NO_FEAR | NO_SLEEP
 S:1_IN_2 | BA_WATE | BR_INER | SLOW | TELE_TO
-D:$It is a cow born by sticking four sticks into an eggplant
+D:$It is a cow formed by sticking four sticks into an eggplant
 D:$ that is so huge that people can straddle it.
 D:$  The legs are slow.
-D:$  It should carry the spirits of its ancestors,
-D:$ but since the rider is not found,
-D:$ it is trying to carry the appropriate spirits.
-D:$ Juice spouts from the fresh body.
+D:$  It should carry the spirits of the ancestors of its maker,
+D:$ but, since a rider was not found,
+D:$ it looks for another spirit to carry.
+D:$  Juice spouts from the fresh body.
 D:人が跨がれるほど巨大なナスに四本の棒を刺すことで誕生した牛だ。足が遅い。
 D:先祖の霊を乗せるはずだが、
 D:乗り手が見つからないため適当な霊を乗せていこうとしている。
@@ -25364,3 +25362,141 @@ F:IM_FIRE | RES_CHAO | NO_FEAR | NO_CONF | NO_SLEEP
 S:1_IN_6 | BO_FIRE | BA_FIRE | BA_CHAO | TELE_AWAY | MISSILE | CONF
 D:$A high-rank crimson-garbed monk, trained in martial arts.
 D:紅色の法衣を身にまとった、拳法に熟練した高位の修行僧だ。
+
+
+N:1281:プルトニウムのクリーピングコイン
+E:Creeping Plutonium coins
+G:$:v
+W:44:5:0:450:0:0
+I:125:39d10:5:50:10
+B:BITE:POISON:3d4
+B:TOUCH:POISON:3d5
+B:HIT:HURT:1d12
+B:HIT:HURT:1d12
+F:ONLY_GOLD|DROP_90|DROP_2D2|COLD_BLOOD|BASH_DOOR|ANIMAL|IM_POIS|NO_CONF|NO_SLEEP
+D:それはコインの塊で、何千もの小さな足で前にはいずり歩く。
+D:しかし恐ろしい本質はそもそもそこではない！今の内に逃げろ！
+
+N:1282:突撃『アーマージャック』
+E:Armor-Jack, the Charger
+G:p:y
+W:3:4:0:150:0:0
+I:120:10d10:20:0:20
+B:SHOOT:HURT:3d6
+B:HIT:HURT:2d6
+F:UNIQUE|MALE|FORCE_MAXHP|HUMAN|ONLY_ITEM|DROP_1D2|DROP_GOOD|DROP_GREAT|WILD_WOOD|TAKE_ITEM|OPEN_DOOR|BASH_DOOR|EVIL|DROP_SKELETON|DROP_CORPSE|EAT_GIVE_DEX|EAT_LOSE_WIS
+S:1_IN_5|SHOOT|HEAL
+D:$
+D:ダブルスライサーで真っ二つだ！
+
+N:1283:『ゴッドマン』
+E:Godman
+G:p:y
+W:3:4:0:150:0:0
+I:120:10d10:20:0:20
+B:SHOOT:HURT:3d6
+B:HIT:HURT:2d6
+F:UNIQUE|MALE|FORCE_MAXHP|HUMAN|ONLY_ITEM|DROP_1D2|DROP_GOOD|DROP_GREAT|WILD_WOOD|TAKE_ITEM|OPEN_DOOR|BASH_DOOR|EVIL|DROP_SKELETON|DROP_CORPSE|EAT_GIVE_DEX|EAT_LOSE_WIS
+S:1_IN_5|SHOOT|HEAL
+D:$
+D:地球が危ない。
+
+N:1284:スパルタの戦神『クレイトス』
+E:Kratos, the God of War
+G:p:y
+W:59:3:0:35000:0:0
+I:140:50d120:100:0:50
+B:HIT:HURT:25d9
+B:HIT:HURT:25d9
+B:HIT:HURT:25d9
+B:HIT:HURT:25d9
+F:UNIQUE|MALE|NO_FEAR|FORCE_MAXHP|REFLECTING|MOVE_BODY|KILL_WALL|IM_FIRE|IM_ELEC|IM_POIS|IM_ACID|IM_COLD|RES_NETH|RES_WATE|RES_PLAS|RES_NEXU|RES_DISE|RES_WALL|RES_INER|RES_TIME|RES_GRAV|NO_STUN|REGENERATE|NO_CONF|NO_SLEEP|CAN_FLY|BASH_DOOR|POWERFUL|DROP_CORPSE|SELF_LITE_2
+D:彼は天空神にしてオリュンポスの主神であるゼウスの数多き私生児の一人だ。
+D:戦神アレスの狂乱に憑かれた挙げ句、妻子を殺めてしまった彼の悲痛と憎悪はやがて神々を惨殺するほどの暴威と化し、
+D:オリュンポスの統べるギリシャ世界に終焉をもたらした。
+
+N:1285:貧弱エルフ
+E:Scruffy looking elf
+G:h:G
+W:2:5:0:5:0:0
+I:110:2d6:10:0:20
+B:SHOOT:HURT:1d4
+B:HIT:HURT:1d4
+F:FEMALE|HAS_LITE_1|DROP_60|TAKE_ITEM|OPEN_DOOR|BASH_DOOR|DROP_SKELETON|DROP_CORPSE|GOOD
+S:1_IN_2|SHOOT
+D:やたら様々な化け物の慰み物になっているクッソ哀れなエルフ共だ。好きにしろ。
+
+N:1286:レッサー不潔で醜い哀れな身なりのわめきふらつくキチガイ人間
+E:Lesser mangy-ugry-pitiful looking and aimless raving lunatic human
+G:t:D
+W:0:30:0:0:0:0
+I:105:1d3:40:0:20
+B:DROOL
+B:BEG
+B:INSULT
+B:INSULT
+F:ATTR_MULTI|EVIL|WILD_TOWN|WILD_ONLY|RAND_25|FRIENDS|HUMAN|MULTIPLY|STUPID|TAKE_ITEM|OPEN_DOOR|DROP_CORPSE|DROP_SKELETON
+D:$This terrible avatar of social decadence will crush *you* unsparingly!
+D:$Flee while you can!
+D:この恐るべき社会退廃の権化は容赦なく＊あなた＊を押しつぶすだろう。
+D:今のうちに逃げろ！
+
+N:1287:冥王少女『メル子くん』
+E:Melko, Princeps Abyssal
+G:p:D
+I:131:45d100:100:70:0
+W:50:1:0:30000:0:0
+B:HIT:SHATTER:10d10
+B:HIT:SHATTER:10d10
+B:HIT:LOSE_ALL:5d12
+B:TOUCH:UN_POWER
+F:UNIQUE | FEMALE | 
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | FORCE_DEPTH | SELF_DARK_1 | SELF_DARK_2
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_3D2 | DROP_4D2 
+F:DROP_GREAT | SMART | KILL_WALL | MOVE_BODY | AURA_COLD
+F:REGENERATE | POWERFUL | NO_CONF | NO_SLEEP | NO_FEAR
+F:EVIL | IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_DARK
+S:1_IN_3 | 
+S:BRAIN_SMASH | DISPEL |
+S:BO_MANA | BA_NETH | ANIM_DEAD | BA_DARK
+S:S_MONSTERS | S_UNIQUE | S_HI_UNDEAD | S_HI_DRAGON
+V:150
+D:彼女はメルコールにとって失態極まった、望まざる影の化身だ。
+D:開闢の時代、ポエムで世界を作ろうなどと言い出したイルーヴァタールの無能文系極まる創世デスマーチの
+D:尻ぬぐいと理不尽な責任を背負わされた彼は、シルマリルの物語でも数多くの罵詈雑言を被った。
+D:揚げ句、トゥルカスの暴力に日々散々悩まされ続けた彼はある日、とある迷妄を抱いてしまった。
+D:「いっそ自分が日本化ビームで美少女化でもしていればどれ程方々から手心を加えてもらっていることだろうか」
+D:そのわずかな隙を、メルコールへの歪んだ愛情を抱くゲイのサディストたるアンナタール（サウロン）
+D:は見逃さなかった。彼の策により引きずり出した迷妄の分霊は今や、短気で勝気な十代の少女そのものの
+D:調子でこれまでの鬱憤を晴らそうと鉄獄中層で無鉄砲に暴れまわる始末である。
+D:この暴走少女を速やかに分からせ、哀れに思うならばメルコールの恥を少しでも早く終わらせて差し上げろ。
+
+N:1288:尊師『ストールンマン』
+E:Stolenman,THE *G*U*R*U*
+G:t:o
+I:70:2d8:10:150:12
+W:0:5:0:300:0:0
+B:TOUCH:TIME:1d1
+B:TOUCH:EAT_FOOD:1d1
+R:1288:10d5
+F:FORCE_MAXHP | GOOD
+F:UNIQUE | WEIRD_MIND | STUPID | WILD_TOWN |
+F:OPEN_DOOR | BASH_DOOR | RES_TELE
+D:彼の偉大なる功績は、より多くのオープンソースにGNUの名を冠することだった。
+D:この点において、ブルやジョーブツをも圧倒的に凌いでいる。
+
+N:1289:グヌグ・ハード
+E:GNUG Hard
+G:q:o
+I:11:5d10:25:0:1
+W:0:10:0:250:0:0
+B:DROOL:TIME:1d1
+B:TOUCH:EAT_FOOD:1d1
+F:RAND_25 | RAND_50 | STUPID | EMPTY_MIND | REFLECTING | PREVENT_SUDDEN_MAGIC
+F:BASH_DOOR | GOOD | NONLIVING | IM_ACID | IM_FIRE | IM_COLD | IM_POIS
+F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN
+F:RES_CHAO | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV | RES_TELE
+F:NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP | CAN_FLY
+D:それはひたすら遅く、ペンギンの早さには遠く及ばず、
+D:エクスプローダー程にも世間で役に立っていない。
+

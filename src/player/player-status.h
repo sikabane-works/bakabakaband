@@ -8,7 +8,6 @@
 #include "player/player-personalities-types.h"
 #include "player/player-race-types.h"
 #include "spell/spells-util.h"
-
 /*
  * Most of the "player" information goes here.
  *
@@ -52,11 +51,11 @@ enum empty_hand_status {
 };
 
 /*!< Weapon hand status */
-typedef enum player_hand {
+enum player_hand {
     PLAYER_HAND_MAIN = 0x0000,
     PLAYER_HAND_SUB = 0x0001,
     PLAYER_HAND_OTHER = 0x0002
-} player_hand;
+};
 
 /*
  * Player sex constants (hard-coded by save-files, arrays, etc)
@@ -93,7 +92,8 @@ typedef struct player_type {
     s16b age; /* Characters age */
     s16b ht; /* Height */
     s16b wt; /* Weight */
-    s16b sc; /* Social Class */
+    s16b prestige; /* Social Class */
+    s32b death_count; /* 死亡回数 */
 
     PRICE au; /* Current Gold */
 
@@ -367,7 +367,7 @@ typedef struct player_type {
     bool suppress_multi_reward; /*!< 複数レベルアップ時のパトロンからの報酬多重受け取りを防止 */
 
     s16b stat_add[A_MAX]; /* Modifiers to stat values */
-    s16b stat_ind[A_MAX]; /* Indexes into stat tables */
+    s16b stat_index[A_MAX]; /* Indexes into stat tables */
 
     bool hack_mutation;
     bool is_fired;
@@ -481,7 +481,6 @@ extern int calc_weapon_weight_limit(player_type *creature_ptr);
 extern WEIGHT calc_inventory_weight(player_type *creature_ptr);
 
 extern s16b calc_num_fire(player_type *creature_ptr, object_type *o_ptr);
-extern void calc_bonuses(player_type *creature_ptr);
 extern WEIGHT calc_weight_limit(player_type *creature_ptr);
 extern bool has_melee_weapon(player_type *creature_ptr, int i);
 
@@ -510,6 +509,7 @@ bool is_invuln(player_type *creature_ptr);
 bool is_hero(player_type *creature_ptr);
 bool is_shero(player_type *creature_ptr);
 bool is_echizen(player_type *creature_ptr);
+bool is_in_dungeon(player_type *creature_ptr);
 
 /*
  * Player "food" crucial values
