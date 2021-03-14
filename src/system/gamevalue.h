@@ -19,6 +19,8 @@
 #define NASTY_MON_MAX      10	/*!< 深層モンスターが1フロアに生成される最大数  */
 #define NASTY_MON_PLUS_MAX 25	/*!< 深層モンスターの階層加算最大量 */
 
+#define NASTY_GENERATE_RATE 10 /*!< クッソ汚いものが生成される倍率  */
+
 #define PENETRATE_INVULNERABILITY 13 /*!< 無敵化が破られる確率(1/x) / 1/x chance of hurting even if invulnerable! */
 
 #define MAX_TELEPORT_DISTANCE 200 /*!< テレポート最大距離 */
