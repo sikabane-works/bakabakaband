@@ -5861,7 +5861,7 @@ F:OPEN_DOOR | BASH_DOOR |
 F:EVIL | ORC | IM_POIS | RES_DARK
 D:$Another of Morgoth's servants, this orc is strong and cunning.  He is ugly 
 D:$and scarred from many power struggles.
-D:モルゴスの召使いの一人で、力が強くてずる賢いオークだ。彼はやっかいな
+D:メルコールの召使いの一人で、力が強くてずる賢いオークだ。彼はやっかいな
 D:もめごとには近寄ろうとしない。
 
 #J0#
@@ -8073,7 +8073,7 @@ D:$An agent of supernatural being, Thorondor is the lord of eagles.
 D:マンウェに遣わされた偉大な大鷲は人の言葉を話し、
 D:マイアールと同じ魂を持っていると言われる。
 D:ソロンドールは全ての大鷲のうちで最初に現れた者であり、最強かつ最大の王だ。
-D:その巨大な体を前にすればモルゴスの卑小な召使い達は逃げ惑うことしか出来無い。
+D:その巨大な体を前にすればメルコールの卑小な召使い達は逃げ惑うことしか出来無い。
 
 #J0#
 N:469:巨大青アリ
@@ -12981,8 +12981,8 @@ D:（カーター「ゾス＝オムモグ」）
 
 #JZ#
 #JZ#Ｊ・Ｒ・Ｒ・トールキンの「指輪物語」に登場。
-#JZ#かつては人間でしたが、冥王サウロンの指輪を受け取って使用した
-#JZ#ために、サウロンに隷属する幽鬼となってしまいました。 by 久留さん
+#JZ#かつては人間でしたが、冥王アンナタールの指輪を受け取って使用した
+#JZ#ために、アンナタールに隷属する幽鬼となってしまいました。 by 久留さん
 N:696:ナズグル
 E:Nazgul
 G:W:D
@@ -13123,9 +13123,9 @@ F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | MOVE_BODY |
 F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
 F:EVIL | GIANT | MALE
 S:1_IN_5 | HEAL | TELE_TO | S_MONSTERS
-D:$A forty foot tall humanoid that shakes the ground as it walks.  The power 
-D:$radiating from its frame shakes your courage, its hatred inspired by your 
-D:$defiance.
+D:$It is a forty foot tall humanoid that shakes the ground as it walks.  The
+D:$ power radiating from its frame shakes your courage.  Your defiance stokes
+D:$ its rage.
 D: 12 メートルもの身長がある人間型のモンスターで、歩くだけで大地が揺れる。
 D:全身から立ち昇る力のオーラは冒険者の勇気を打ち砕こうとするかのようだ。
 D:冒険者が挑みかかると彼の憎悪は一層燃え上がる。
@@ -13145,9 +13145,8 @@ F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | DROP_CORPSE
 F:OPEN_DOOR | BASH_DOOR | ANIMAL | EVIL | DRAGON
 F:IM_FIRE | IM_POIS | RES_NETH | RES_TELE | NO_CONF | NO_SLEEP | RIDING
 S:1_IN_7 | HOLD | SCARE | BR_FIRE | BR_POIS | BR_NETH
-D:$It's a winged basilisk.
-D:$It is aimed at adventurers in order to show off the evil poison
-D:$ and power that it has stored in its body.
+D:$It's a winged basilisk, eager to show an adventurer like yourself
+D:$ the evil poison and power that is has stored in its body.
 D:翼のあるバジリスクだ。
 D:その身体に蓄えた邪悪な毒と力を見せつけるべく虎視眈々と冒険者を狙っている。
 
@@ -14441,7 +14440,7 @@ S:BRAIN_SMASH | BA_NETH | S_KIN
 D:$Chief messenger between Sauron and Morgoth, she is surely the most deadly 
 D:$of her vampire race.  At first she is charming to meet, but her wings and 
 D:$eyes give away her true form.
-D:サウロンとモルゴスの間を取り持つ使者達の隊長であるスリングウェシルは、
+D:アンナタールとメルコールの間を取り持つ使者達の隊長であるスリングウェシルは、
 D:バンパイア族の中で最も恐るべき存在だ。一見したところ彼女はかわいらしい女性
 D:だが、その羽と瞳を見ればそんな思いはどこかに吹き飛んでしまうだろう。
 
@@ -14920,8 +14919,8 @@ A:2:1:33
 D:$Originally known as the White, Saruman fell prey to Sauron's wiles. He 
 D:$searches forever for the One Ring, to become a mighty Sorcerer-King of the 
 D:$world.
-D:元来、白の者として知られるサルマンは、堕落してサウロンのたくらみに
-D:付き従っている。彼はサウロンを見習うことに余念がなく、
+D:元来、白の者として知られるサルマンは、堕落してアンナタールのたくらみに
+D:付き従っている。彼はアンナタールを見習うことに余念がなく、
 D:オークやトロルを育てている。彼は一つの指輪を探し求めているが、
 D:それは彼がこの世界のソーサラーの王となるために必要だからである。
 
@@ -16257,7 +16256,7 @@ D:そして来たるべき破滅の徴である不気味な緑色の衣を身に
 D:みじめな死を遂げた者を迎えに来る。
 
 #J0#
-N:818:『サウロンの口』
+N:818:『アンナタールの口』
 E:The Mouth of Sauron
 G:p:v
 I:130:70d100:60:100:10
@@ -16279,7 +16278,7 @@ D:$The Mouth of Sauron is a mighty spell caster.  So old that even he cannot
 D:$remember his own name, his power and evil are undeniable.  He believes 
 D:$unshakeably that he is unbeatable and laughs as he weaves his awesome 
 D:$spells.
-D:サウロンの口は強力な魔法使いだ。あまりにも長い年月を生きているので自分の名前
+D:アンナタールの口は強力な魔法使いだ。あまりにも長い年月を生きているので自分の名前
 D:すらも忘れてしまっているが、己の力と邪悪な使命だけは覚えている。彼はこの世界
 D:で自分が最強だという揺るぎがたい信念を持ち、恐ろしげな呪文を唱えながらも余裕
 D:で笑っている。
@@ -16860,7 +16859,7 @@ F:IM_FIRE | NO_CONF | NO_SLEEP | IM_POIS | HURT_COLD | GIANT |
 S:1_IN_5 |
 S:BR_FIRE | BR_PLAS | BLIND | TELE_TO | S_KIN | S_HI_UNDEAD |
 S:HAND_DOOM | TELE_AWAY | S_CYBER | S_DEMON
-A:245:3:100
+A:245:3:50
 A:78:1:100
 D:$Surtur is also one of the most ancient of all creatures. He is a demonic 
 D:$giant of fire, who is destined to set the nine worlds afire with his 
@@ -16946,7 +16945,7 @@ S:SCARE |
 S:S_MONSTERS | S_HOUND
 D:$Draugluin provides Sauron with a fearsome personal guard.  He is an 
 D:$enormous wolf inhabited with a human spirit.  He is chief of all his kind.
-D:ドラウグルインはサウロンの恐るべき専属護衛だ。彼は人間の精神を持った
+D:ドラウグルインはアンナタールの恐るべき専属護衛だ。彼は人間の精神を持った
 D:恐ろしく巨大な狼であり、全ての狼の首領でもある。
 
 #JZ#
@@ -17427,7 +17426,7 @@ D:$Gothmog is the Chief Balrog in Morgoth's personal guard.  He is renowned
 D:$for slaying Ecthelion the Warder of the Gates and he has never been 
 D:$defeated in combat.  With his whip of flame and awesome fiery breath he 
 D:$saved his master from Ungoliant's rage.
-D:ゴスモグはモルゴスの私的守衛隊バルログの隊長だ。彼は門の番人である
+D:ゴスモグはメルコールの私的守衛隊バルログの隊長だ。彼は門の番人である
 D:エクセリオンを倒した功績があり、戦いに一度も負けたことがない。彼は炎のムチ
 D:と凄まじい火炎のブレスで彼の主をウンゴリアントの怒りから守ったのだ。
 
@@ -17477,7 +17476,7 @@ D:『クトゥルー１』、青心社文庫、pp.23-24、pp.55-56)
 # Sauron is no longer a quest monster (in Zangband), just a "normal" one.
 
 #J0#
-N:858:妖術師『サウロン』
+N:858:妖術師『アンナタール』
 E:Sauron, the Sorcerer
 G:p:o
 I:130:105d100:100:160:0
@@ -17499,12 +17498,12 @@ S:BO_ICEE | BO_MANA | BO_PLAS |
 S:BA_MANA | BA_FIRE | BA_WATE | BA_NETH | BA_DARK | 
 S:S_MONSTERS | S_DEMON | S_HI_UNDEAD | S_HI_DRAGON |
 S:HAND_DOOM | ANIM_DEAD | DISPEL | PSY_SPEAR
-A:13:10:100
+A:13:10:10
 A:14:1:100
 D:$Mighty in spells and enchantments,
 D:$he created the One Ring.  His eyes glow with power and his gaze seeks to 
 D:$destroy your soul.  He has many servants, and rarely fights without them.
-D:彼はモルゴスの最も強力な召使で、恐るべき呪文を使いこなす上に高い防御力も持っ
+D:彼はメルコールの最も強力な召使で、恐るべき呪文を使いこなす上に高い防御力も持っ
 D:ている。
 D:一つの指輪を創造したのは彼である。その瞳は力に輝き、冒険者の魂を破壊しようと
 D:狙っている。また彼は多くの手下を従えており、滅多に単独では戦わない。
@@ -17601,18 +17600,18 @@ A:42:1:50
 #J0#(コメント)
 #J0#
 #J0#(都々目)
-#J0#冥王『サウロン』			妖術師『サウロン』
-#J0#暗黒の帝王『モルゴス』			冥王『モルゴス』
+#J0#冥王『アンナタール』			妖術師『アンナタール』
+#J0#暗黒の帝王『メルコール』			冥王『メルコール』
 #J0#
-#J0#＊angbandは基本的に第一紀の話です。モルゴスが存在するのですから。この時
-#J0#『冥王』と言うとモルゴスを指し、サウロンは飽くまで冥王モルゴスの部下に過ぎ
-#J0#ませんでした。モルゴスが滅んだ後、サウロンが『冥王』の名で呼ばれるよう
+#J0#＊angbandは基本的に第一紀の話です。メルコールが存在するのですから。この時
+#J0#『冥王』と言うとメルコールを指し、アンナタールは飽くまで冥王メルコールの部下に過ぎ
+#J0#ませんでした。メルコールが滅んだ後、アンナタールが『冥王』の名で呼ばれるよう
 #J0#になっ
 #J0#た訳です。ですからこの訳はこうすべきですし、シルマリルの物語でもこのように
-#J0#なっています。第一紀(シルマリルの物語)ではサウロンは『妖術師』と書かれてい
+#J0#なっています。第一紀(シルマリルの物語)ではアンナタールは『妖術師』と書かれてい
 #J0#ますし。
 #J0#
-N:861:冥王『モルゴス』
+N:861:冥王『メルコール』
 E:Morgoth, Lord of Darkness
 G:P:D
 I:140:200d100:100:150:0
@@ -18015,7 +18014,7 @@ S:1_IN_8 |
 S:SCARE | BR_POIS | BR_DARK
 D:$Fed with horrid meats and grown to enormous size, this slavering creature 
 D:$seeks livelier prey.
-D:忌まわしい腐肉を食らい巨大な大きさに成長したこのモルゴスの奴隷は
+D:忌まわしい腐肉を食らい巨大な大きさに成長したこのメルコールの奴隷は
 D:常に活きのいい獲物を求めている。
 
 N:878:『ディオ・ブランドー』
@@ -18303,7 +18302,7 @@ S:1_IN_2 |
 S:CAUSE_3 | BO_WATE | BO_MANA
 D:$This body of a once-mighty warrior was so dominated by Sauron's power that
 D:$  he became little more than a mindless undead of evil.
-D:かつて屈強さを誇ったこの戦士の肉体はサウロンの力に完全に支配され、
+D:かつて屈強さを誇ったこの戦士の肉体はアンナタールの力に完全に支配され、
 D:今ではほとんど意思を持たない邪悪なアンデッドに成り下がってしまった。
 
 N:892:ディジニ
@@ -18686,7 +18685,8 @@ F:ONLY_ITEM | DROP_1D2 |
 F:INVISIBLE | OPEN_DOOR | BASH_DOOR | 
 F:IM_ACID | IM_POIS | NO_CONF | NO_SLEEP
 S:1_IN_7 | HEAL | S_SPIDER
-D:$He is constantly training for bears and tigers to sank with a single blow.
+D:$He is constantly training, hoping to be able to kill a bear or tiger with
+D:$ a single blow.
 D:彼はクマであれトラであれ一撃で沈めるべく、絶え間ない特訓を続けている。
 
 N:916:中級修験者
@@ -18728,9 +18728,9 @@ F:INVISIBLE | OPEN_DOOR | BASH_DOOR |
 F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | 
 F:NO_CONF | NO_SLEEP
 S:1_IN_4 | HEAL | S_SPIDER
-D:$He is being at the culmination of martial arts,
-D:$ but he never gives up on himself.
-D:$  He is still not fully manipulating the creatures of nature
+D:$He is a master of the martial arts yet remains driven to improve his
+D:$ technique.
+D:$  He still hasn't fully manipulated the creatures of nature
 D:$ and suffers from that.
 D:$  However, he does not despair and continues steadily step by step.
 D:彼は修験道を極めつつあるが、決して自分に驕ることはない。
@@ -19846,7 +19846,7 @@ D:$A dark elf, mighty in Gondolin, and betrayer of that hidden city to
 D:$Morgoth's wrath.
 D:鍛冶師エオルの息子であり、ゴンドリンの地に行って後は高い地位についたが、
 D:ゴンドリン王女イドリルへの欲望と、彼女を娶ったトゥオルへの憎しみから、
-D:モルゴスの拷問に屈して隠れ王国ゴンドリンの位置を告げてしまった。
+D:メルコールの拷問に屈して隠れ王国ゴンドリンの位置を告げてしまった。
 
 N:978:黄金王『アル=ファラゾン』
 E:Ar-Pharazon the Golden
@@ -19866,7 +19866,7 @@ S:HEAL | HASTE | TELE_AWAY | S_MONSTERS
 D:$Last and proudest king of ancient Numenor.  Corrupted by power and
 D:$avarice, he fell victim to Sauron's wiles, tried to fight the immortals
 D:$themselves, and condemned Numenor to oblivion.
-D:ヌメノール国第25代にして最後の王だ。彼はサウロンを捕えるも、
+D:ヌメノール国第25代にして最後の王だ。彼はアンナタールを捕えるも、
 D:逆にその甘言に誑かされ、至福の地アマンへ兵を向け、
 D:それが結局はヌメノールを滅亡に導くことになる。
 
@@ -20187,7 +20187,7 @@ S:1_IN_6 |
 S:HEAL | BLIND | CONF | CAUSE_2 | MIND_BLAST
 D:$This dwarf became so obsessed by gold that Morgoth tricked him into 
 D:$betraying his friends.
-D:このドワーフはお金に対する欲望が非常に強い。モルゴスはそこにつけ込んで
+D:このドワーフはお金に対する欲望が非常に強い。メルコールはそこにつけ込んで
 D:彼の友人達を誘拐させた。
 
 # 根性がないと開発はできない
@@ -22749,8 +22749,8 @@ B:BITE:HURT:6d3
 F:MALE | WILD_SWAMP | WILD_WASTE
 F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON
 F:ANIMAL | EVIL | DROP_60 | FRIENDS
-D:$A warrior of skaven mess around with the power of chaos
-D:$ and slaughter their prey from one end.
+D:$Skaven warriors carelessly wield the power of chaos and slaughter any prey
+D:$ they see.
 D:スケイヴン族の戦士は混沌の力をいたずらに振り回し、
 D:目についた獲物を片っ端から屠っていく。
 
@@ -23169,7 +23169,7 @@ F:HURT_ROCK | IM_ELEC | RES_PLAS | RES_GRAV
 F:DROP_60 | DROP_1D2 | ONLY_GOLD
 F:NONLIVING | NO_CONF | NO_STUN | NO_SLEEP | NO_FEAR
 S:1_IN_2 | BR_ELEC | BR_PLAS
-D:$ Do NOT get behind this Moai!
+D:$ Stay behind this Moai!
 D:こいつの背後には近寄るな！
 
 N:1160:モアイ
@@ -23182,8 +23182,8 @@ F:FRIENDS | PREVENT_SUDDEN_MAGIC | DROP_90
 F:NONLIVING | NO_CONF | NO_STUN | NO_SLEEP | NO_FEAR
 F:NEVER_MOVE | NEVER_BLOW
 S:1_IN_2 | BR_ELEC | BR_PLAS
-D:$It is Moai who landed in Angband.
-D:$  You can not destroy this ion ring.
+D:$It is a Moai who landed in Angband.
+D:$  You can not destroy the ion rings it spits out.
 D:鉄獄に降り立ったモアイだ。こいつの吐き出すイオンリングは破壊できない。
 
 # 死に際に7/8の確率で自分自身を召喚する
@@ -23321,7 +23321,7 @@ F:IM_COLD | IM_POIS | IM_ACID | IM_ELEC | IM_FIRE | RES_TELE
 S:1_IN_5 | 
 S:S_MONSTERS | SCARE | BA_DARK | BA_NETH | BR_POIS
 D:$This sacred and untouchable female monster is half a nymph
-D:$ and half a snake, becoming the mother of many monsters.
+D:$ and half a snake.  She is the mother of many monsters.
 D:この半分がニンフで半分は蛇の神聖にして手の付けられない女怪は、
 D:数々のモンスターの母となった。
 
@@ -23360,7 +23360,7 @@ S:TELE_TO | BO_MANA | BR_MANA | BR_WALL | BR_PLAS | BR_DISI | HEAL | HASTE
 D:$It is the fusion of twin sisters born at the end of the vaunted study of Vajura energy.
 D:$Its outrageous power will destroy a star and eventually become a new myth.
 D:ヴァジュラエネルギーのおぞましい研究の果てに産みだされた双子の姉妹の融合体だ。
-D:その無法図な力は一個の星を滅ぼし、やがて新たな神話の存在となるに足るものだろう。
+D:その無法なる力は一個の星を滅ぼし、やがて新たな神話の存在となるに足るものだろう。
 
 N:1172:緑衣の高位修行僧
 E:High jade monk
@@ -23461,9 +23461,9 @@ F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | ONLY_ITEM | DROP_4D2
 F:INVISIBLE | OPEN_DOOR | BASH_DOOR
 F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | NO_CONF | NO_SLEEP
 S:1_IN_3 | HEAL | MIND_BLAST | S_SPIDER | S_HOUND
-D:$He is a martial arts' examiner who has trained his body and spirit
+D:$He is a highly skilled martial artist who has trained his body and spirit
 D:$ so that he can teach the next generation.
-D:$His fist can catch the rock's deadline and crush it with a single blow.
+D:$  His fist can find a rock's hidden flaw and crush it with a single blow.
 D:彼は後進を指導できるほどに肉体も精神も鍛え上げた修験者だ。
 D:彼の拳は岩の死線を捉えて一撃で砕くことができる。
 
@@ -23601,7 +23601,7 @@ S:1_IN_2 |
 S:SLOW | CAUSE_4 | DRAIN_MANA | MIND_BLAST | BRAIN_SMASH | FORGET | 
 S:BO_MANA | ANIM_DEAD 
 S:S_UNDEAD
-D:$It is a deviant monster with innumerable eyes with muddy tentacles.
+D:$It is a deviant monster with innumerable eyes on muddy tentacles.
 D:$  It spreads nauseous nasty odors around.
 D:ドロドロした触手に爛れた目が無数についている異形のモンスターだ。
 D:それは吐き気を催す異臭を周囲に撒き散らしている。
@@ -23999,7 +23999,7 @@ F:BASH_DOOR | MOVE_BODY | DRAGON | NO_CONF | NO_SLEEP | RIDING
 S:1_IN_7 | SCARE | BR_FIRE | BA_FIRE
 D:$This dragon is the most loyal subordinate
 D:$ who rushed to the news of the return of Alduin from Oblivion.
-D:$  It lightly turns the town guard into a cinder.
+D:$  Its breath easily turns the town guard into cinders.
 D:このドラゴンはアルドゥイン復活の報を受け、
 D:イの一番に駆けつけた最も忠実な部下だ。
 D:街の衛兵ごときは軽く焼き尽くす。
@@ -24018,7 +24018,7 @@ F:CAN_FLY | IM_COLD | HURT_FIRE
 F:BASH_DOOR | MOVE_BODY | DRAGON | NO_CONF | NO_SLEEP | RIDING
 S:1_IN_7 | SCARE | BR_COLD | BA_COLD
 D:$It is a dragon that has returned from Oblivion.
-D:$  It lightly turns the town guard into an ice statue.
+D:$  It lightly turns the town guard into icy statues.
 D:冥界から舞い戻ってきたドラゴンの一体だ。
 D:街の衛兵ごときは軽く氷像にしてしまう。
 
@@ -24035,8 +24035,7 @@ F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_GOOD | CAN_FLY | FRIENDLY | GOOD
 F:IM_COLD | IM_FIRE | IM_ELEC | RES_SOUN
 F:BASH_DOOR | MOVE_BODY | DRAGON | NO_CONF | NO_SLEEP | RIDING
 S:1_IN_8 | SCARE | BA_ELEC | BR_FIRE | BR_COLD | BR_SOUN
-D:$It has a higher pride than the heavens without leaking to other dragons,
-D:$ and it is a character that can quickly rise to provocation.
+D:$Proud, even when compared to other dragons, Odahviing is easily provoked.
 D:他のドラゴンに漏れず天より高いプライドを持ち、挑発にはすぐ乗るタチだ。
 
 N:1206:声の道に仇なすもの『デルフィン』
@@ -24073,8 +24072,8 @@ F:ONLY_ITEM | DROP_2D2 | DROP_GREAT | CAN_FLY | BASH_DOOR | MOVE_BODY
 F:IM_COLD | IM_FIRE | IM_ELEC | RES_SOUN
 F:NO_CONF | NO_SLEEP | RIDING | DRAGON
 S:1_IN_5 | SCARE | BA_ELEC | BR_FIRE | BR_COLD | BR_SOUN
-D:$This dragon exists to counter the evil kins.
-D:$  It is said that the dragon's power can be obtained
+D:$This dragon exists to counter its evil kin.
+D:$  It is said that this dragon's power can be obtained
 D:$ at the end if strict training is done.
 D:このドラゴンは邪悪なる同族達に対抗するために存在する。
 D:厳しい修行を行えば、その果てにドラゴンの力を手に入れられると伝えられている。
@@ -24094,7 +24093,7 @@ F:CAN_FLY | FRIENDLY | GOOD | IM_COLD | IM_FIRE | IM_ELEC | RES_SOUN
 F:BASH_DOOR | MOVE_BODY | DRAGON | NO_CONF | NO_SLEEP | RIDING
 S:1_IN_7 | SCARE | BR_FIRE | BR_SOUN | BR_NETH
 D:$It is a dragon who has been in Oblivion for so long that
-D:$ it has become difficult to maintain his body in this world.
+D:$ it has become difficult to maintain its body in this world.
 D:$  It fully acknowledges your ability.
 D:あまりにも永い間冥界にい続けたため、
 D:現世で肉体を保つことが困難になったドラゴンだ。
@@ -24115,9 +24114,10 @@ F:IM_COLD | IM_FIRE | IM_ELEC | RES_SOUN
 F:BASH_DOOR | KILL_BODY | DRAGON | NO_CONF | NO_SLEEP | NO_FEAR | RIDING
 S:1_IN_3 | SHRIEK | S_KIN | ANIM_DEAD
 S:BR_ELEC | BR_FIRE | BR_COLD | BR_SOUN | BR_WALL | BR_MANA
-D:$The first dragon created in one of the plural worlds.
-D:$  It eats people's souls, destroys everything and destroys all dimensions.
-D:$  It had been sealed for too long, but was finally released.
+D:$It is the first dragon born in the worlds.
+D:$  It destroyed the last world to usher in this one.
+D:$  Said to eat the souls of the dead to gain power, it has returned after
+D:$ a long absence.
 D:$  Only you can defeat this terrifying dragon!
 D:多元世界の一つにおいて最初に創造されたドラゴンだ。
 D:人の魂を喰らい、次元を消滅させんばかりにあらゆるものを破壊して回っている。
@@ -24138,7 +24138,7 @@ F:IM_FIRE | IM_COLD | IM_ELEC | RES_DARK
 F:NO_SLEEP | NO_CONF | DROP_60
 S:1_IN_5 | SHOOT
 D:$It is one of those who agree with Miraak's corrupt wishes.
-D:$They are relentlessly chasing you as against Miraak's noble will.
+D:$  They relentlessly chase you, seeing you as threat to Miraak's noble will.
 D:ミラークの堕落した願いに賛同している者共の一人だ。
 D:彼らはあなたをミラークの崇高な意志に反する者として執拗に追っている。
 
@@ -24155,7 +24155,7 @@ F:IM_FIRE | IM_COLD | IM_ELEC | RES_DARK
 F:NO_SLEEP | NO_CONF | DROP_60
 S:1_IN_2 | BLINK | CONF | HOLD | BA_POIS | BA_FIRE | BA_COLD | BA_ELEC
 D:$It is one of those who agree with Miraak's corrupt wishes.
-D:$They are relentlessly chasing you as against Miraak's noble will.
+D:$  They relentlessly chase you, seeing you as a threat to Miraak's noble will.
 D:ミラークの堕落した願いに賛同している者共の一人だ。
 D:彼らはあなたをミラークの崇高な意志に反する者として執拗に追っている。
 
@@ -24174,9 +24174,9 @@ F:NO_SLEEP | NO_CONF | BASH_DOOR | KILL_BODY | PASS_WALL
 F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GREAT
 S:1_IN_3 | TELE_TO | TPORT | HEAL | S_KIN | BA_ELEC | BA_FIRE | BA_COLD
 S:BR_SOUN | BR_DISI
-D:$This man can completely absorb the soul of dragons
-D:$ without giving him time to save the power to revive in Mordor nor Oblivion.
-D:$  Will there ever be a dragon who can not hang its head to him?
+D:$This man can completely absorb the soul of a dragon
+D:$ without giving it the chance to revive in Mordor or Oblivion.
+D:$  Will there ever be a dragon who does not hang its head to him?
 D:この男は、冥界で復活する力を蓄える時間すら与えず
 D:ドラゴンの魂を完全に吸収することができる。
 D:彼の前で頭を垂れないドラゴンが果たしてこの世にいるだろうか？
@@ -24195,9 +24195,9 @@ F:DROP_CORPSE | DROP_SKELETON | BASH_DOOR
 F:HURT_LITE | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS
 F:RES_NETH | RES_DARK | RES_SHAR | NO_SLEEP | NO_CONF
 S:1_IN_4 | TPORT | BA_DARK | S_UNDEAD | S_KIN | S_HI_UNDEAD | HEAL
-D:$A terrifying vampire trying to extinguish the sun's rays from this land.
-D:$  For that purpose, he is also a ruthless man
-D:$ who easily throws away the genus.
+D:$He is a terrifying vampire trying to extinguish the sun's rays from this
+D:$ land.  For that purpose, he is also a ruthless man who easily throws away
+D:$ his own family.
 D:太陽の光をこの大地から消しさそろうとしている恐るべき吸血鬼だ。
 D:そのためには眷属をも容易く使い捨てにする、冷酷な男でもある。
 
@@ -24773,9 +24773,9 @@ F:DROP_4D2 | DROP_1D2 | DROP_GOOD | DROP_60 | DROP_90 | ONLY_ITEM |
 F:EVIL | IM_COLD | IM_ACID | IM_ELEC | IM_FIRE
 S:1_IN_4 |
 S:BR_NETH | S_MONSTERS | S_DEMON | S_HOUND | SCARE
-D:$A two-headed hound with snake tail. He is firstborn of Echidna,
-D:$ father of Sphinx and Lion of Namea, 
-D:$ and deity head the male line in clan. Hades' vassals respond to his call.
+D:$Orthus is a two-headed hound with a snake tail. He is the firstborn of
+D:$ Echidna and father of the Sphinx and the Lion of Nemea.
+D:$ Hades' vassals respond to his call.
 D:２つ首と蛇の尾を持つ猟犬だ。彼はエキドナの長子であり、
 D:スフィンクスとネメアのライオンの父たる一族の男系筆頭の魔神だ。
 D:彼が呼びかければハデスの家臣も応える。
@@ -24798,9 +24798,9 @@ S:S_KIN
 R:354:4d7
 R:884:4d7
 R:1250:4d7
-D:$A massive legendary chimera.  She has powerful lion, goat, snake heads.
-D:$ This chaotic female monster is the ancestor of chimera.
-D:$ She's wants to give birth to more powerful offspring by eating you.
+D:$She is a massive legendary chimera with powerful lion, goat and snake heads.
+D:$ This chaotic female monster is the ancestor of the other chimera.
+D:$ She wants to give birth to more powerful offspring by eating you.
 D:巨大な伝説的キメラだ。彼女は力に満ちあふれた牡獅子、山羊、蛇の首を持っている。
 D:このキメラの祖である混沌の女怪はあなたを食べることで
 D:より強力な仔を産もうとしている。
@@ -24859,12 +24859,11 @@ F:UNIQUE | FEMALE | ANIMAL | FORCE_MAXHP | PREVENT_SUDDEN_MAGIC | CAN_FLY | RAND
 F:ONLY_ITEM | DROP_60 | DROP_1D2 | DROP_GOOD | DROP_CORPSE |
 F:BASH_DOOR | IM_ACID | IM_ELEC | HURT_FIRE | WEIRD_MIND | NO_FEAR
 R:1252:5d5
-D:$The Queen of vespoid, featuring a huge abdomen and bright wings.
-D:$  Command the subordinate vespoid
-D:$ with a peculiar flight and attack the intruder.
-D:$  The abdominal sting is also very well developed,
-D:$ and in addition to neurological poisons,
-D:$ it may also inject acidic fluids towards its prey.
+D:$The Queen of vespoids has a huge abdomen and bright wings.
+D:$  Using a peculiar pattern of flight, she commands subordinate vespoids
+D:$ to attack any intruders.
+D:$  Her abdominal stinger is also very well developed and
+D:$ can spray acidic fluids or inject neurological poisons.
 D:巨大な腹部と鮮やかな大羽を特徴とするランゴスタの女王。
 D:配下のランゴスタに特異な飛行で命令を行い、侵入者を襲う。
 D:腹部の毒針も非常に発達しており、神経性の毒の他、
@@ -24887,10 +24886,10 @@ F:DROP_CORPSE | DROP_SKELETON | DROP_1D2 | DROP_GREAT
 F:IM_POIS | RES_DARK | RES_CHAO | SMART | NO_CONF
 S:1_IN_3 | BR_CONF | CAUSE_3 | MIND_BLAST | S_SPIDER
 S:FORGET | SCARE | BLINK | CONF | DARKNESS
-D:$"Don't you want balloon?"
-D:$  An unknown life form that can transform into a fearful one.
-D:$  The appearance of the clown is just one of them.
-D:$  When you are dragged down, you float too.
+D:$"Don't you want a balloon?"
+D:$  It's an unknown life form that can transform into what its victim
+D:$ fears the most.  A clown is just one its forms.
+D:$  When it drags you down, you'll float too.
 D:「風船、欲しいだろう？」
 D:　相手が恐怖心を抱くものに姿を変えることができる未知の生命体だ。
 D:ピエロの姿もその一つに過ぎない。
@@ -24910,9 +24909,8 @@ F:NO_CONF | NO_STUN | NO_SLEEP | NO_FEAR
 F:ONLY_ITEM | DROP_GOOD | DROP_1D2 | DROP_90
 S:1_IN_3 | BA_ACID
 D:$When many of these dragon insects are united, it becomes a dragon centipede.
-D:$  The part that corresponds to the spinal cord
-D:$ when it was integrated as a dragon centipede
-D:$ has an organ that seems to be the eye.
+D:$  The part that forms the spinal cord when it is integrated into a dragon
+D:$ centipede has an organ that seems to be the eye.
 D:この龍虫が多数合体すると百足龍虫になる。
 D:百足龍虫時の脊髄にあたる部分には眼と思われる器官がついている。
 
@@ -24930,10 +24928,9 @@ F:IM_ACID | IM_POIS | RES_PLAS | RES_DISE | RES_WALL | RES_GRAV | RES_TELE
 F:NO_CONF | NO_STUN | NO_SLEEP | NO_FEAR
 F:ONLY_ITEM | DROP_GOOD | DROP_3D2
 S:1_IN_3 | BA_ACID
-D:$The identity of the giant centipede
-D:$ was a combination of many giant creatures.
-D:$The colony separated from the dragon centipede begins its activity
-D:$ as an independent dragon worm.
+D:$Dragon centipedes are formed from the combination of many insects.
+D:$  Those centipedes can break apart:  each piece becomes an independent
+D:$ dragon worm.
 D:巨大な百足の正体は多数の巨大生物が合体した生物だった。
 D:百足龍虫から分離した群体は独立した龍虫として活動を始める。
 
@@ -24951,9 +24948,9 @@ F:IM_ACID | IM_COLD | IM_POIS | RES_DISE | RES_WALL | RES_GRAV | RES_TELE
 F:NO_CONF | NO_STUN | NO_SLEEP | NO_FEAR
 F:ONLY_ITEM | DROP_GOOD | DROP_4D2 | DROP_2D2
 S:1_IN_3 | BA_ACID
-D:$It is the final evolution of a giant creature,
+D:$It is the final evolution of a dragon insect,
 D:$ a magnificent centipede that is taller and longer than the WTC.
-D:$  It pours acid like a downpour from countless outrages.
+D:$  It pours acid like a downpour from countless protrusions.
 D:巨大生物の最終進化形態、ビルよりも高く長い全長を持つ雄大なムカデだ。
 D:無数の突起から土砂降りのように酸を降り注がせる。
 
@@ -25068,7 +25065,7 @@ F:FORCE_MAXHP | NEVER_MOVE | EMPTY_MIND | CAN_FLY
 F:NO_SLEEP | NO_FEAR | NO_CONF | REFLECTING
 F:IM_ACID | RES_DISE | RES_NEXU | RES_GRAV
 S:1_IN_7 | HOLD | BR_ACID | BR_DISE | BR_NEXU | BR_GRAV
-D:$The boots have the ability of Shiva, the god of destruction.
+D:$These boots have the power of Shiva, the god of destruction.
 D:破壊神シヴァの力を持った革の靴だ。
 
 N:1265:テレサ
@@ -25099,10 +25096,10 @@ F:HURT_LITE | SELF_DARK_1 | NO_FEAR | NO_CONF | NO_SLEEP
 F:DROP_2D2 | DROP_GREAT | ONLY_ITEM
 S:1_IN_3 | DISPEL | BA_ELEC | BA_DARK
 S:SHRIEK | SCARE | BLIND | BLINK | DARKNESS | S_KIN
-D:$Boo's boss, which has the ability to confine objects
-D:$ and people in a picture frame.  It is worth living to scare people.
-D:$  Ever since losing to Luigi, has been obsessed with revenge on him.
-D:$  It is going to add you to one of the picture frame collections.
+D:$It is the boss of the Boos and has the ability to confine objects
+D:$ and people in picture frames.  It enjoys scaring and toying with its
+D:$ opponents.  Ever since losing to Luigi, King Boo has been obsessed with
+D:$ revenge.  It is going to add you to its collection of portraits.
 D:物体や人物を額縁に閉じ込め絵にする能力を持つ、テレサの親玉。
 D:人を怖がらせるのが生きがいである。
 D:緑のひげに敗れて以来、彼への仕返しに執念を燃やしている。
@@ -25119,7 +25116,7 @@ F:ANIMAL | MOVE_BODY | EVIL | FRIENDS
 F:NO_CONF | RES_GRAV | DROP_90
 S:1_IN_8 | BR_GRAV
 D:$What a cute terrestrial raven!
-D:$  They often move around in groups with good behavior.
+D:$  They often move around in well-behaved groups.
 D:かわいい陸行性のカラスだ。よく群れをなして行儀よく動き回っている。
 
 N:1268:『ビッグキューちゃん』
@@ -25133,7 +25130,7 @@ F:UNIQUE | FORCE_MAXHP | ANIMAL | POWERFUL | MOVE_BODY | EVIL
 F:NO_CONF | NO_SLEEP | NO_FEAR | IM_ELEC | RES_GRAV | BASH_DOOR
 F:DROP_GOOD | DROP_2D2 | ONLY_ITEM
 S:1_IN_6 | BA_ELEC | BR_GRAV | TELE_AWAY
-D:$It is very gentle when the head is stepped on,
+D:$It is very gentle when its head is stepped on,
 D:$ but it gets angry when a stake is driven into its ass.
 D:それは頭を踏まれたくらいでは温厚だが、お尻に杭を打ち込まれると激怒する。
 
@@ -25150,13 +25147,13 @@ F:FORCE_MAXHP | CAN_SWIM | COLD_BLOOD | WEIRD_MIND | RIDING
 F:IM_COLD | RES_WATE | RES_INER | RES_TIME | RES_TELE
 F:NO_STUN | NO_FEAR | NO_SLEEP
 S:1_IN_5 | BA_WATE | HASTE | S_UNDEAD
-D:$It is a horse born by sticking four sticks into a cucumber
+D:$It is a horse formed by sticking four sticks into a cucumber
 D:$ that is so huge that people can straddle it.
 D:$  The legs are fast.
-D:$  It should carry the spirits of its ancestors,
-D:$ but since the rider was not found,
-D:$ it carries the appropriate spirits.
-D:$ Juice spouts from the fresh body.
+D:$  It should carry the spirits of the ancestors of its maker,
+D:$ but, since a rider was not found,
+D:$ it looks for another spirit to carry.
+D:$  Juice spouts from the fresh body.
 D:人が跨がれるほど巨大なキュウリに四本の棒を刺すことで誕生した馬だ。足が早い。
 D:先祖の霊を乗せるはずだが、乗り手が見つからなかったため適当な霊を乗せている。
 D:瑞々しい体からは汁が噴き出す。
@@ -25174,13 +25171,13 @@ F:FORCE_MAXHP | CAN_SWIM | COLD_BLOOD | WEIRD_MIND | RIDING | TAKE_ITEM
 F:IM_COLD | RES_WATE | RES_TIME | RES_TELE
 F:NO_STUN | NO_FEAR | NO_SLEEP
 S:1_IN_2 | BA_WATE | BR_INER | SLOW | TELE_TO
-D:$It is a cow born by sticking four sticks into an eggplant
+D:$It is a cow formed by sticking four sticks into an eggplant
 D:$ that is so huge that people can straddle it.
 D:$  The legs are slow.
-D:$  It should carry the spirits of its ancestors,
-D:$ but since the rider is not found,
-D:$ it is trying to carry the appropriate spirits.
-D:$ Juice spouts from the fresh body.
+D:$  It should carry the spirits of the ancestors of its maker,
+D:$ but, since a rider was not found,
+D:$ it looks for another spirit to carry.
+D:$  Juice spouts from the fresh body.
 D:人が跨がれるほど巨大なナスに四本の棒を刺すことで誕生した牛だ。足が遅い。
 D:先祖の霊を乗せるはずだが、
 D:乗り手が見つからないため適当な霊を乗せていこうとしている。
@@ -25365,3 +25362,158 @@ F:IM_FIRE | RES_CHAO | NO_FEAR | NO_CONF | NO_SLEEP
 S:1_IN_6 | BO_FIRE | BA_FIRE | BA_CHAO | TELE_AWAY | MISSILE | CONF
 D:$A high-rank crimson-garbed monk, trained in martial arts.
 D:紅色の法衣を身にまとった、拳法に熟練した高位の修行僧だ。
+
+
+N:1281:プルトニウムのクリーピングコイン
+E:Creeping Plutonium coins
+G:$:v
+W:44:5:0:450:0:0
+I:125:39d10:5:50:10
+B:BITE:POISON:3d4
+B:TOUCH:POISON:3d5
+B:HIT:HURT:1d12
+B:HIT:HURT:1d12
+F:ONLY_GOLD|DROP_90|DROP_2D2|COLD_BLOOD|BASH_DOOR|ANIMAL|IM_POIS|NO_CONF|NO_SLEEP
+D:それはコインの塊で、何千もの小さな足で前にはいずり歩く。
+D:しかし恐ろしい本質はそもそもそこではない！今の内に逃げろ！
+
+N:1282:突撃『アーマージャック』
+E:Armor-Jack, the Charger
+G:p:y
+W:3:4:0:150:0:0
+I:120:10d10:20:0:20
+B:SHOOT:HURT:3d6
+B:HIT:HURT:2d6
+F:UNIQUE|MALE|FORCE_MAXHP|HUMAN|ONLY_ITEM|DROP_1D2|DROP_GOOD|DROP_GREAT|WILD_WOOD|TAKE_ITEM|OPEN_DOOR|BASH_DOOR|EVIL|DROP_SKELETON|DROP_CORPSE|EAT_GIVE_DEX|EAT_LOSE_WIS
+S:1_IN_5|SHOOT|HEAL
+D:$
+D:ダブルスライサーで真っ二つだ！
+
+N:1283:『ゴッドマン』
+E:Godman
+G:p:y
+W:3:4:0:150:0:0
+I:120:10d10:20:0:20
+B:SHOOT:HURT:3d6
+B:HIT:HURT:2d6
+F:UNIQUE|MALE|FORCE_MAXHP|HUMAN|ONLY_ITEM|DROP_1D2|DROP_GOOD|DROP_GREAT|WILD_WOOD|TAKE_ITEM|OPEN_DOOR|BASH_DOOR|EVIL|DROP_SKELETON|DROP_CORPSE|EAT_GIVE_DEX|EAT_LOSE_WIS
+S:1_IN_5|SHOOT|HEAL
+D:$
+D:地球が危ない。
+
+N:1284:スパルタの戦神『クレイトス』
+E:Kratos, the God of War
+G:p:y
+W:59:3:0:35000:0:0
+I:140:50d120:100:0:50
+B:HIT:HURT:25d9
+B:HIT:HURT:25d9
+B:HIT:HURT:25d9
+B:HIT:HURT:25d9
+F:UNIQUE|MALE|NO_FEAR|FORCE_MAXHP|REFLECTING|MOVE_BODY|KILL_WALL|IM_FIRE|IM_ELEC|IM_POIS|IM_ACID|IM_COLD|RES_NETH|RES_WATE|RES_PLAS|RES_NEXU|RES_DISE|RES_WALL|RES_INER|RES_TIME|RES_GRAV|NO_STUN|REGENERATE|NO_CONF|NO_SLEEP|CAN_FLY|BASH_DOOR|POWERFUL|DROP_CORPSE|SELF_LITE_2
+D:彼は天空神にしてオリュンポスの主神であるゼウスの数多き私生児の一人だ。
+D:戦神アレスの狂乱に憑かれた挙げ句、妻子を殺めてしまった彼の悲痛と憎悪はやがて神々を惨殺するほどの暴威と化し、
+D:オリュンポスの統べるギリシャ世界に終焉をもたらした。
+
+N:1285:貧弱エルフ
+E:Scruffy looking elf
+G:h:G
+W:2:5:0:5:0:0
+I:110:2d6:10:0:20
+B:SHOOT:HURT:1d4
+B:HIT:HURT:1d4
+F:FEMALE | HAS_LITE_1 | DROP_60 | TAKE_ITEM | OPEN_DOOR | BASH_DOOR
+F:DROP_SKELETON | DROP_CORPSE | GOOD | NASTY
+S:1_IN_2 | SHOOT
+D:やたら様々な化け物の慰み物になっているクッソ哀れなエルフ共だ。好きにしろ。
+
+N:1286:レッサー不潔で醜い哀れな身なりのわめきふらつくキチガイ人間
+E:Lesser mangy-ugry-pitiful looking and aimless raving lunatic human
+G:t:D
+W:0:30:0:0:0:0
+I:100:1d3:40:0:20
+B:DROOL
+B:BEG
+B:INSULT
+B:INSULT
+F:ATTR_MULTI | EVIL | WILD_TOWN | WILD_ONLY| RAND_25 | FRIENDS | HUMAN
+F:MULTIPLY | STUPID | TAKE_ITEM | OPEN_DOOR | DROP_CORPSE | DROP_SKELETON | NASTY
+D:$This terrible avatar of social decadence will crush *you* unsparingly!
+D:$Flee while you can!
+D:この恐るべき社会退廃の権化は容赦なく＊あなた＊を押しつぶすだろう。
+D:今のうちに逃げろ！
+
+N:1287:冥王少女『メル子くん』
+E:Melko, Princeps Abyssal
+G:p:D
+I:131:45d100:100:70:0
+W:50:1:0:30000:0:0
+B:HIT:SHATTER:10d10
+B:HIT:SHATTER:10d10
+B:HIT:LOSE_ALL:5d12
+B:TOUCH:UN_POWER
+F:UNIQUE | FEMALE | 
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | FORCE_DEPTH | SELF_DARK_1 | SELF_DARK_2
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_3D2 | DROP_4D2 
+F:DROP_GREAT | SMART | KILL_WALL | MOVE_BODY | AURA_COLD
+F:REGENERATE | POWERFUL | NO_CONF | NO_SLEEP | NO_FEAR
+F:EVIL | IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_DARK
+S:1_IN_3 | 
+S:BRAIN_SMASH | DISPEL |
+S:BO_MANA | BA_NETH | ANIM_DEAD | BA_DARK
+S:S_MONSTERS | S_UNIQUE | S_HI_UNDEAD | S_HI_DRAGON
+V:150
+D:彼女はメルコールにとって失態極まった、望まざる影の化身だ。
+D:開闢の時代、ポエムで世界を作ろうなどと言い出したイルーヴァタールの無能文系極まる創世デスマーチの
+D:尻ぬぐいと理不尽な責任を背負わされた彼は、シルマリルの物語でも数多くの罵詈雑言を被った。
+D:揚げ句、トゥルカスの暴力に日々散々悩まされ続けた彼はある日、とある迷妄を抱いてしまった。
+D:「いっそ自分が日本化ビームで美少女化でもしていればどれ程方々から手心を加えてもらっていることだろうか」
+D:そのわずかな隙を、メルコールへの歪んだ愛情を抱くゲイのサディストたるアンナタール（サウロン）
+D:は見逃さなかった。彼の策により引きずり出した迷妄の分霊は今や、短気で勝気な十代の少女そのものの
+D:調子でこれまでの鬱憤を晴らそうと鉄獄中層で無鉄砲に暴れまわる始末である。
+D:この暴走少女を速やかに分からせ、哀れに思うならばメルコールの恥を少しでも早く終わらせて差し上げろ。
+
+N:1288:尊師『ストールンマン』
+E:Stolenman,THE *G*U*R*U*
+G:t:o
+I:70:2d8:10:150:12
+W:0:5:0:300:0:0
+B:TOUCH:TIME:1d1
+B:TOUCH:EAT_FOOD:1d1
+R:1288:10d5
+F:FORCE_MAXHP | GOOD
+F:UNIQUE | WEIRD_MIND | STUPID | WILD_TOWN |
+F:OPEN_DOOR | BASH_DOOR | RES_TELE | NASTY
+D:彼の偉大なる功績は、より多くのオープンソースにGNUの名を冠することだった。
+D:この点において、ブルやジョーブツをも圧倒的に凌いでいる。
+
+N:1289:グヌグ・ハード
+E:GNUG Hard
+G:q:o
+I:11:5d10:25:0:1
+W:0:10:0:250:0:0
+B:DROOL:TIME:1d1
+B:TOUCH:EAT_FOOD:1d1
+F:RAND_25 | RAND_50 | STUPID | EMPTY_MIND | REFLECTING | PREVENT_SUDDEN_MAGIC
+F:BASH_DOOR | GOOD | NONLIVING | IM_ACID | IM_FIRE | IM_COLD | IM_POIS
+F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN
+F:RES_CHAO | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV | RES_TELE
+F:NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP | CAN_FLY | NASTY
+D:それはひたすら遅く、ペンギンの早さには遠く及ばず、
+D:エクスプローダー程にも世間で役に立っていない。
+
+#J0#
+N:1290:スローロリスくん
+E:Nycticebus
+G:H:U
+I:112:1d6:8:6:20
+W:1:1:0:3:5:86
+B:BITE:POISON:1d4
+F:RAND_50 | WILD_GRASS |
+F:CAN_SWIM | GOOD
+F:ANIMAL | DROP_CORPSE | EAT_CONF | NASTY
+D:森のおやつとか、オランウータンの餌と嘲っている場合ではないぞ。
+D:このクッソ愛らしい動物は毒を備えている！
+
+
+

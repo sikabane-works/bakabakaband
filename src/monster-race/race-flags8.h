@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-typedef enum race_flags8 {
+enum race_flags8 : uint32_t {
 	RF8_WILD_ONLY = 0x00000001,
     RF8_WILD_TOWN = 0x00000002,
     RF8_XXX8X02 = 0x00000004,
@@ -12,5 +12,6 @@ typedef enum race_flags8 {
     RF8_XXX8X08 = 0x00000100,
     RF8_WILD_MOUNTAIN = 0x00000200,
     RF8_WILD_GRASS = 0x00000400,
+    RF8_NASTY = 0x20000000,
     RF8_WILD_ALL = 0x80000000,
-} race_flags8;
+};

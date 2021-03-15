@@ -1,6 +1,6 @@
 #pragma once
 
-typedef enum fixed_artifact_type {
+enum fixed_artifact_type {
     ART_JUDGE = 3,
     ART_POWER = 13,
     ART_CRIMSON = 16,
@@ -37,4 +37,6 @@ typedef enum fixed_artifact_type {
     ART_HEAVENLY_MAIDEN = 233,
     ART_MILIM = 246,
     ART_ROBINTON = 251,
-} fixed_artifact_type;
+    ART_ICINGDEATH = 259,
+    ART_TWINKLE = 260
+};

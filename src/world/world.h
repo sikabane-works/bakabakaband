@@ -31,14 +31,14 @@ typedef struct world_type {
 	/*
 	 * Savefile version
 	 */
-	byte h_ver_major; /* Savefile version for Hengband 1.1.1 and later */
+	byte h_ver_major; /* Savefile version for Bakabakaband 1.1.1 and later */
 	byte h_ver_minor;
 	byte h_ver_patch;
 	byte h_ver_extra;
 
 	byte sf_extra;		/* Savefile's encoding key */
 
-	byte z_major;           /* Savefile version for Hengband */
+	byte z_major;           /* Savefile version for Bakabakaband */
 	byte z_minor;
 	byte z_patch;
 
@@ -55,7 +55,7 @@ typedef struct world_type {
 	bool character_loaded;		/* The character was loaded from a savefile */
 	bool character_saved;		/* The character was just saved to a savefile */
 
-	bool character_icky;		/* The game is in an icky full screen mode */
+	byte character_icky_depth;	/* The game is in an icky full screen mode */
 	bool character_xtra;		/* The game is in an icky startup mode */
 
 	bool creating_savefile;		/* New savefile is currently created */

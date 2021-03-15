@@ -2,12 +2,12 @@
 
 #include "system/angband.h"
 
-typedef enum mspell_lite_type {
+enum mspell_lite_type {
     DO_SPELL_NONE = 0,
     DO_SPELL_BR_LITE = 1,
     DO_SPELL_BR_DISI = 2,
     DO_SPELL_BA_LITE = 3,
-} mspell_lite_type;
+};
 
 // Monster Spell Attack.
 typedef struct monster_type monster_type;
@@ -24,7 +24,7 @@ typedef struct msa_type {
     POSITION y;
     POSITION x_br_lite;
     POSITION y_br_lite;
-    bool do_spell;
+    mspell_lite_type do_spell;
     bool in_no_magic_dungeon;
     bool success;
     byte mspells[96];
