@@ -992,7 +992,7 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
 
         if (cast) {
             int i;
-            if (!get_check(_("本当に自殺しますか？", "Do you really want to commit suicide? ")))
+            if (!get_check(_("何もかも諦めますか? ", "Do you give up everything? ")))
                 return NULL;
             /* Special Verification for suicide */
             prt(_("確認のため '@' を押して下さい。", "Please verify SUICIDE by typing the '@' sign: "), 0, 0);
