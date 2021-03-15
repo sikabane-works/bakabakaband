@@ -334,9 +334,24 @@ static void decide_arena_death(player_type *player_ptr)
 
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     if (!floor_ptr->inside_arena) {
-        if (!get_check(_("一から出直しますか? ", "Do you want to start over? ")))
-            cheat_death(player_ptr, cheat_live);
-        return;
+
+        while (true) {
+            char i;
+
+            if (!get_check(_("復活せずに何もかも諦めますか? ", "Do you give up everything without resurrection?? "))) {
+                cheat_death(player_ptr, cheat_live);
+                return;
+            }
+
+            /* Special Verification for suicide */
+            prt(_("確認のため '@' を押して下さい。", "Please verify SUICIDE by typing the '@' sign: "), 0, 0);
+
+            flush();
+            i = inkey();
+            prt("", 0, 0);
+            if (i == '@') return;
+
+        }
     }
 
     floor_ptr->inside_arena = FALSE;
