@@ -41,6 +41,9 @@
 #define MIN_M_ALLOC_TD          4 /*!< 街(昼間)の最低住人配置数 / The town starts out with 4 residents during the day */
 #define MIN_M_ALLOC_TN          8 /*!< 街(夜間)の最低住人配置数 / The town starts out with 8 residents during the night */
 
+
+#define DUNGEON_MONSTER_MULTIPLE 5 /*!< ランダムフロアのモンスター生成倍率 */
+
 /*!
 * @brief モンスター増殖の最大数
 * @details
@@ -52,6 +55,8 @@
 #define MAX_REPRO       100
 
 #define MAX_VAMPIRIC_DRAIN 50 /*!< 吸血処理の最大回復HP */
+
+#define DUNGEON_ITEM_FLOOR_DROP_RATE 5 /*!< 床に落ちているアイテム数倍率 */
 
 /*
 * Dungeon generation values
