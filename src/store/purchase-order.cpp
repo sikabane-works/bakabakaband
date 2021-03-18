@@ -31,6 +31,7 @@
 #include "view/display-messages.h"
 #include "view/display-store.h"
 #include "world/world.h"
+#include "io/input-key-acceptor.h"
 
 typedef struct haggle_type {
     object_type *o_ptr;
@@ -63,20 +64,8 @@ static haggle_type *initialize_haggle_type(player_type *player_ptr, haggle_type 
 
 static void settle_haggle_result(haggle_type *haggle_ptr)
 {
-    if (!haggle_ptr->noneed && manual_haggle)
-        return;
-
-    if (haggle_ptr->noneed) {
-        msg_print(_("結局この金額にまとまった。", "You eventually agree upon the price."));
-        msg_print(NULL);
-    } else {
-        msg_print(_("すんなりとこの金額にまとまった。", "You quickly agree upon the price."));
-        msg_print(NULL);
-        haggle_ptr->final_ask += haggle_ptr->final_ask / 10;
-    }
-
     haggle_ptr->cur_ask = haggle_ptr->final_ask;
-    haggle_ptr->pmt = _("最終提示価格", "Final Offer");
+    haggle_ptr->pmt = _("価格", "Price");
     haggle_ptr->final = TRUE;
 }
 
@@ -390,18 +379,8 @@ void store_purchase(player_type *player_ptr)
 
     int choice;
     PRICE price;
-    if (o_ptr->ident & (IDENT_FIXED)) {
-        choice = 0;
-        price = (best * j_ptr->number);
-    } else {
-        GAME_TEXT o_name[MAX_NLEN];
-        describe_flavor(player_ptr, o_name, j_ptr, 0);
-        msg_format(_("%s(%c)を購入する。", "Buying %s (%c)."), o_name, I2A(item));
-        msg_print(NULL);
-        choice = purchase_haggle(player_ptr, j_ptr, &price);
-        if (st_ptr->store_open >= current_world_ptr->game_turn)
-            return;
-    }
+    choice = 0;
+    price = (best * j_ptr->number);
 
     if (choice != 0)
         return;
@@ -413,6 +392,18 @@ void store_purchase(player_type *player_ptr)
         msg_print(_("お金が足りません。", "You do not have enough gold."));
         return;
     }
+    /*
+    msg_print(_("本当に買いますか? [y/n]", "Really purchase?"));
+    while (TRUE) {
+        char i = inkey();
+        prt("", 0, 0);
+        if (i == 'y' || i == 'Y')
+            break;
+        if (i == ESCAPE || i == 'n' || i == 'N')
+            return;
+    }
+    */
+
 
     say_comment_1(player_ptr);
     if (cur_store_num == STORE_BLACK)

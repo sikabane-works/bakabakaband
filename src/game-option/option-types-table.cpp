@@ -202,7 +202,6 @@ const option_type option_info[MAX_OPTION_INFO] = {
         _("トラップ感知範囲外に出る直前に警告する", "Alert when leaving trap detected area") },
 
     /*** Birth Options ***/
-    { &manual_haggle, FALSE, OPT_PAGE_BIRTH, 1, 0, "manual_haggle", _("店で値切り交渉をする", "Manually haggle in stores") },
 
     { &easy_band, FALSE, OPT_PAGE_BIRTH, 6, 31, "easy_band", _("初心者用簡単モード(*)", "Easy Mode (*)") },
 
