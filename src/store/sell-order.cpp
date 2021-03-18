@@ -59,26 +59,10 @@ static bool sell_haggle(player_type *player_ptr, object_type *o_ptr, s32b *price
     s32b purse = (s32b)(ot_ptr->max_cost);
     bool final = FALSE;
     concptr pmt = _("提示金額", "Offer");
-    if (noneed || !manual_haggle || (final_ask >= purse)) {
-        if (!manual_haggle && !noneed) {
-            final_ask -= final_ask / 10;
-        }
-
-        if (final_ask >= purse) {
-            msg_print(_("即座にこの金額にまとまった。", "You instantly agree upon the price."));
-            msg_print(NULL);
-            final_ask = purse;
-        } else if (noneed) {
-            msg_print(_("結局この金額にまとまった。", "You eventually agree upon the price."));
-            msg_print(NULL);
-        } else {
-            msg_print(_("すんなりとこの金額にまとまった。", "You quickly agree upon the price."));
-            msg_print(NULL);
-        }
-
+    if (true) {
         cur_ask = final_ask;
         final = TRUE;
-        pmt = _("最終提示金額", "Final Offer");
+        pmt = _("金額", "Price");
     }
 
     cur_ask *= o_ptr->number;
@@ -256,7 +240,8 @@ void store_sell(player_type *owner_ptr)
         msg_format(_("%s(%c)を売却する。", "Selling %s (%c)."), o_name, index_to_label(item));
         msg_print(NULL);
 
-        choice = sell_haggle(owner_ptr, q_ptr, &price);
+        price = price_item(owner_ptr, o_ptr, ot_ptr->max_inflate, TRUE);
+        choice = 0;
         if (st_ptr->store_open >= current_world_ptr->game_turn)
             return;
 
