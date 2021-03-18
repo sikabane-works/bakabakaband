@@ -61,6 +61,10 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
         info[i++] = _("...ただし装備していなければならない。", "...if it is being worn.");
     }
 
+    if (has_flag(flgs, TR_NASTY)) {
+        info[i++] = _("それは例のアレだ。", "It is .. need I say anything more?");
+    }
+
     if (o_ptr->tval == TV_FIGURINE) {
         info[i++] = _("それは投げた時ペットに変化する。", "It will transform into a pet when thrown.");
     }

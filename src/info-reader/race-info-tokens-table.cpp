@@ -389,7 +389,7 @@ concptr r_info_flags8[NUM_R_FLAGS_8] = {
 	"XXX8X26",
 	"XXX8X27",
 	"XXX8X28",
-	"XXX8X29",
+	"NASTY",
 	"WILD_SWAMP",	/* ToDo: Implement Swamp */
 	"WILD_ALL",
 };

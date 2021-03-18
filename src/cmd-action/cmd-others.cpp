@@ -153,14 +153,24 @@ static void accept_winner_message(player_type *creature_ptr)
  */
 void do_cmd_suicide(player_type *creature_ptr)
 {
+    char i;
     flush();
     if (current_world_ptr->total_winner) {
         if (!get_check_strict(creature_ptr, _("引退しますか? ", "Do you want to retire? "), CHECK_NO_HISTORY))
             return;
     } else {
-        if (!get_check(_("本当に自殺しますか？", "Do you really want to commit suicide? ")))
+        if (!get_check(_("何もかも諦めますか? ", "Do you give up everything? ")))
             return;
     }
+
+    /* Special Verification for suicide */
+    prt(_("確認のため '@' を押して下さい。", "Please verify SUICIDE by typing the '@' sign: "), 0, 0);
+
+    flush();
+    i = inkey();
+    prt("", 0, 0);
+    if (i != '@')
+        return;
 
     if (!decide_suicide())
         return;

@@ -185,6 +185,7 @@ static void make_doors(player_type *player_ptr, dun_data_type *dd_ptr, dt_type *
 
 static bool make_one_floor(player_type *player_ptr, dun_data_type *dd_ptr, dungeon_type *d_ptr)
 {
+    floor_type *floor_ptr = player_ptr->current_floor_ptr;
     if (!generate_rooms(player_ptr, dd_ptr)) {
         *dd_ptr->why = _("部屋群の生成に失敗", "Failed to generate rooms");
         return FALSE;
@@ -211,12 +212,12 @@ static bool make_one_floor(player_type *player_ptr, dun_data_type *dd_ptr, dunge
     }
 
     make_doors(player_ptr, dd_ptr, dt_ptr);
-    if (!alloc_stairs(player_ptr, feat_down_stair, rand_range(3, 4), 3)) {
+    if (!alloc_stairs(player_ptr, feat_down_stair, damroll(MAX(floor_ptr->width * floor_ptr->height / SCREEN_WID / SCREEN_HGT / 20, 1), 3), 3)) {
         *dd_ptr->why = _("下り階段生成に失敗", "Failed to generate down stairs.");
         return FALSE;
     }
 
-    if (!alloc_stairs(player_ptr, feat_up_stair, rand_range(1, 2), 3)) {
+    if (!alloc_stairs(player_ptr, feat_up_stair, damroll(MAX(floor_ptr->width * floor_ptr->height / SCREEN_WID / SCREEN_HGT / 20, 1), 3), 3)) {
         *dd_ptr->why = _("上り階段生成に失敗", "Failed to generate up stairs.");
         return FALSE;
     }
@@ -308,6 +309,7 @@ static void decide_dungeon_data_allocation(player_type *player_ptr, dun_data_typ
     int small_tester = dd_ptr->alloc_monster_num;
     dd_ptr->alloc_monster_num = (dd_ptr->alloc_monster_num * floor_ptr->height) / MAX_HGT;
     dd_ptr->alloc_monster_num = (dd_ptr->alloc_monster_num * floor_ptr->width) / MAX_WID;
+    dd_ptr->alloc_monster_num *= DUNGEON_MONSTER_MULTIPLE;
     dd_ptr->alloc_monster_num += 1;
     if (dd_ptr->alloc_monster_num > small_tester)
         dd_ptr->alloc_monster_num = small_tester;
@@ -330,9 +332,12 @@ static bool allocate_dungeon_data(player_type *player_ptr, dun_data_type *dd_ptr
     if (player_ptr->enter_dungeon && floor_ptr->dun_level > 1)
         floor_ptr->object_level = 1;
 
-    alloc_object(player_ptr, ALLOC_SET_ROOM, ALLOC_TYP_OBJECT, randnor(DUN_AMT_ROOM, 3));
-    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_OBJECT, randnor(DUN_AMT_ITEM, 3));
-    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_GOLD, randnor(DUN_AMT_GOLD, 3));
+ 
+    alloc_object(player_ptr, ALLOC_SET_ROOM, ALLOC_TYP_OBJECT, randnor(DUNGEON_ITEM_FLOOR_DROP_RATE * DUN_AMT_ROOM, 3));
+    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_OBJECT, randnor(DUNGEON_ITEM_FLOOR_DROP_RATE * DUN_AMT_ITEM, 3));
+    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_GOLD, randnor(DUNGEON_ITEM_FLOOR_DROP_RATE* DUN_AMT_GOLD, 3));
+
+
     floor_ptr->object_level = floor_ptr->base_level;
     if (alloc_guardian(player_ptr, TRUE))
         return TRUE;

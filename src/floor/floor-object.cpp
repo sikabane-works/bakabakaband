@@ -23,6 +23,7 @@
 #include "object-enchant/apply-magic.h"
 #include "object-enchant/item-apply-magic.h"
 #include "object-enchant/special-object-flags.h"
+#include "object-enchant/tr-types.h"
 #include "object-hook/hook-checker.h"
 #include "object-hook/hook-enchant.h"
 #include "object/object-generator.h"
@@ -53,9 +54,14 @@
 static errr get_obj_num_prep(void)
 {
     alloc_entry *table = alloc_kind_table;
+    object_kind *k_ptr;
     for (OBJECT_IDX i = 0; i < alloc_kind_size; i++) {
         if (!get_obj_num_hook || (*get_obj_num_hook)(table[i].index)) {
+            k_ptr = &k_info[i];
             table[i].prob2 = table[i].prob1;
+            if (has_flag(k_ptr->flags, TR_NASTY)) {
+                table[i].prob2 *= NASTY_GENERATE_RATE;
+            }
         } else {
             table[i].prob2 = 0;
         }
