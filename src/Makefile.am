@@ -637,9 +637,23 @@ hengband_SOURCES = \
 	player-status/player-status-base.h \
 	player-status/player-speed.h \
 	player-status/player-stealth.h \
+	player-status/player-basic-statistics.h \
+	player-status/player-strength.h \
+	player-status/player-intelligence.h \
+	player-status/player-wisdom.h \
+	player-status/player-dextarity.h \
+	player-status/player-constitution.h \
+	player-status/player-charisma.h \
 	player-status/player-status-base.cpp \
 	player-status/player-speed.cpp \
 	player-status/player-stealth.cpp \
+	player-status/player-basic-statistics.cpp \
+	player-status/player-strength.cpp \
+	player-status/player-intelligence.cpp \
+	player-status/player-wisdom.cpp \
+	player-status/player-dextarity.cpp \
+	player-status/player-constitution.cpp \
+	player-status/player-charisma.cpp \
 	\
 	player-info/avatar.h player-info/avatar.cpp \
 	player-info/base-status-info.cpp player-info/base-status-info.h \
@@ -841,6 +855,7 @@ hengband_SOURCES = \
 	util/angband-files.cpp util/angband-files.h \
 	util/buffer-shaper.cpp util/buffer-shaper.h \
 	util/bit-flags-calculator.h \
+	util/flag-group.h \
 	util/int-char-converter.h \
 	util/object-sort.cpp util/object-sort.h \
 	util/quarks.cpp util/quarks.h \
@@ -909,11 +924,11 @@ EXTRA_hengband_SOURCES = \
 EXTRA_DIST = \
 	gcc-wrap
 
-DEFAULT_INCLUDES = -I$(srcdir) -I$(top_builddir)/src 
+DEFAULT_INCLUDES = -I$(srcdir) -I$(top_builddir)/src
 CFLAGS += $(XFT_CFLAGS) $(libcurl_CFLAGS)
 LIBS += $(XFT_LIBS) $(libcurl_LIBS)
 COMPILE = $(srcdir)/gcc-wrap $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
-	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) 
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CXXCOMPILE = $(srcdir)/gcc-wrap $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 

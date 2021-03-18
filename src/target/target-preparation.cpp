@@ -1,8 +1,12 @@
-﻿#include "target/target-preparation.h"
+﻿#include <utility>
+#include <vector>
+
 #include "floor/cave.h"
 #include "game-option/input-options.h"
 #include "grid/feature.h"
 #include "grid/grid.h"
+#include "monster-race/monster-race.h"
+#include "monster-race/race-flags1.h"
 #include "monster/monster-flag-types.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status.h"
@@ -10,10 +14,13 @@
 #include "system/floor-type-definition.h"
 #include "system/object-type-definition.h"
 #include "target/projection-path-calculator.h"
+#include "target/target-preparation.h"
 #include "target/target-types.h"
 #include "util/bit-flags-calculator.h"
 #include "util/sort.h"
 #include "window/main-window-util.h"
+
+#include <algorithm>
 
 /*
  * Determine is a monster makes a reasonable target
@@ -94,12 +101,16 @@ static bool target_set_accept(player_type *creature_ptr, POSITION y, POSITION x)
     return FALSE;
 }
 
-/*
- * Prepare the "temp" array for "target_set"
+/*!
+ * @brief "interesting" な座標たちを ys, xs に返す。
+ * @param creature_ptr
+ * @param ys y座標たちを格納する配列 (POSITION 型)
+ * @param xs x座標たちを格納する配列 (POSITION 型)
+ * @param mode
  *
- * Return the number of target_able monsters in the set.
+ * ys, xs は処理開始時にクリアされる。
  */
-void target_set_prepare(player_type *creature_ptr, BIT_FLAGS mode)
+void target_set_prepare(player_type *creature_ptr, std::vector<POSITION> &ys, std::vector<POSITION> &xs, const BIT_FLAGS mode)
 {
     POSITION min_hgt, max_hgt, min_wid, max_wid;
     if (mode & TARGET_KILL) {
@@ -114,7 +125,9 @@ void target_set_prepare(player_type *creature_ptr, BIT_FLAGS mode)
         max_wid = panel_col_max;
     }
 
-    tmp_pos.n = 0;
+    ys.clear();
+    xs.clear();
+
     for (POSITION y = min_hgt; y <= max_hgt; y++) {
         for (POSITION x = min_wid; x <= max_wid; x++) {
             grid_type *g_ptr;
@@ -128,32 +141,30 @@ void target_set_prepare(player_type *creature_ptr, BIT_FLAGS mode)
             if ((mode & (TARGET_KILL)) && !target_pet && is_pet(&creature_ptr->current_floor_ptr->m_list[g_ptr->m_idx]))
                 continue;
 
-            tmp_pos.x[tmp_pos.n] = x;
-            tmp_pos.y[tmp_pos.n] = y;
-            tmp_pos.n++;
+            ys.emplace_back(y);
+            xs.emplace_back(x);
         }
     }
 
     if (mode & (TARGET_KILL)) {
-        ang_sort(creature_ptr, tmp_pos.x, tmp_pos.y, tmp_pos.n, ang_sort_comp_distance, ang_sort_swap_position);
+        ang_sort(creature_ptr, xs.data(), ys.data(), size(ys), ang_sort_comp_distance, ang_sort_swap_position);
     } else {
-        ang_sort(creature_ptr, tmp_pos.x, tmp_pos.y, tmp_pos.n, ang_sort_comp_importance, ang_sort_swap_position);
+        ang_sort(creature_ptr, xs.data(), ys.data(), size(ys), ang_sort_comp_importance, ang_sort_swap_position);
     }
 
-    if (creature_ptr->riding == 0 || !target_pet || (tmp_pos.n <= 1) || !(mode & (TARGET_KILL)))
+    // 乗っているモンスターがターゲットリストの先頭にならないようにする調整。
+
+    if (creature_ptr->riding == 0 || !target_pet || (size(ys) <= 1) || !(mode & (TARGET_KILL)))
         return;
 
-    POSITION tmp = tmp_pos.y[0];
-    tmp_pos.y[0] = tmp_pos.y[1];
-    tmp_pos.y[1] = tmp;
-    tmp = tmp_pos.x[0];
-    tmp_pos.x[0] = tmp_pos.x[1];
-    tmp_pos.x[1] = tmp;
+    // 0 番目と 1 番目を入れ替える。
+    std::swap(ys[0], ys[1]);
+    std::swap(xs[0], xs[1]);
 }
 
-void target_sensing_monsters_prepare(player_type *creature_ptr, pos_list *plist)
+void target_sensing_monsters_prepare(player_type *creature_ptr, std::vector<MONSTER_IDX> &monster_list)
 {
-    plist->n = 0;
+    monster_list.clear();
 
     // 幻覚時は正常に感知できない
     if (creature_ptr->image)
@@ -168,10 +179,34 @@ void target_sensing_monsters_prepare(player_type *creature_ptr, pos_list *plist)
         if (is_mimicry(m_ptr) && none_bits(m_ptr->mflag2, (MFLAG2_MARK | MFLAG2_SHOW)) && none_bits(m_ptr->mflag, MFLAG_ESP))
             continue;
 
-        plist->x[plist->n] = m_ptr->fx;
-        plist->y[plist->n] = m_ptr->fy;
-        plist->n++;
+        monster_list.push_back(i);
     }
 
-    ang_sort(creature_ptr, plist->x, plist->y, plist->n, ang_sort_comp_importance, ang_sort_swap_position);
+    auto comp_importance = [floor_ptr = creature_ptr->current_floor_ptr](MONSTER_IDX idx1, MONSTER_IDX idx2) {
+        auto m_ptr1 = &floor_ptr->m_list[idx1];
+        auto m_ptr2 = &floor_ptr->m_list[idx2];
+        auto ap_r_ptr1 = &r_info[m_ptr1->ap_r_idx];
+        auto ap_r_ptr2 = &r_info[m_ptr2->ap_r_idx];
+
+        /* Unique monsters first */
+        if (any_bits(ap_r_ptr1->flags1, RF1_UNIQUE) != any_bits(ap_r_ptr2->flags1, RF1_UNIQUE))
+            return any_bits(ap_r_ptr1->flags1, RF1_UNIQUE);
+
+        /* Shadowers first (あやしい影) */
+        if (any_bits(m_ptr1->mflag2, MFLAG2_KAGE) != any_bits(m_ptr2->mflag2, MFLAG2_KAGE))
+            return any_bits(m_ptr1->mflag2, MFLAG2_KAGE);
+
+        /* Unknown monsters first */
+        if ((ap_r_ptr1->r_tkills == 0) != (ap_r_ptr2->r_tkills == 0))
+            return (ap_r_ptr1->r_tkills == 0);
+
+        /* Higher level monsters first (if known) */
+        if (ap_r_ptr1->r_tkills && ap_r_ptr2->r_tkills && ap_r_ptr1->level != ap_r_ptr2->level)
+            return ap_r_ptr1->level > ap_r_ptr2->level;
+
+        /* Sort by index if all conditions are same */
+        return m_ptr1->ap_r_idx > m_ptr2->ap_r_idx;
+    };
+
+    std::sort(monster_list.begin(), monster_list.end(), comp_importance);
 }

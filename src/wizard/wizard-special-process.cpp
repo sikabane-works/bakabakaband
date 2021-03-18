@@ -187,7 +187,7 @@ void wiz_create_item(player_type *caster_ptr)
     if (!k_idx)
         return;
 
-    if (k_info[k_idx].gen_flags & TRG_INSTA_ART) {
+    if (k_info[k_idx].gen_flags.has(TRG::INSTA_ART)) {
         for (ARTIFACT_IDX i = 1; i < max_a_idx; i++) {
             if ((a_info[i].tval != k_info[k_idx].tval) || (a_info[i].sval != k_info[k_idx].sval))
                 continue;
@@ -406,7 +406,7 @@ void wiz_jump_to_dungeon(player_type *creature_ptr)
 
     creature_ptr->current_floor_ptr->dun_level = command_arg;
     prepare_change_floor_mode(creature_ptr, CFM_RAND_PLACE);
-    if (!creature_ptr->current_floor_ptr->dun_level)
+    if (!is_in_dungeon(creature_ptr))
         creature_ptr->dungeon_idx = 0;
 
     creature_ptr->current_floor_ptr->inside_arena = FALSE;
