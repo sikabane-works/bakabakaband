@@ -48,6 +48,33 @@
 #include "view/object-describer.h"
 
 /*!
+ * @brief ゴミみてえなものを食べたときの効果を発動
+ * @param creature_ptr プレイヤー情報への参照ポインタ
+ * @param o_ptr 食べるオブジェクト
+ * @return 鑑定されるならTRUE、されないならFALSE
+ */
+static bool exe_eat_junk_type_object(player_type *creature_ptr, object_type *o_ptr)
+{
+    if (o_ptr->tval != TV_JUNK)
+        return FALSE;
+
+    if (o_ptr->tval == TV_JUNK) {
+        switch (o_ptr->sval) {
+        case SV_JUNK_FECES:
+            msg_print("ワーォ！貴方は糞を喰った！");
+            msg_print("『涙が出るほどうめぇ……』");
+            if (!(has_resist_pois(creature_ptr) || is_oppose_pois(creature_ptr))) {
+                if (set_poisoned(creature_ptr, creature_ptr->poisoned + randint0(10) + 10)) {
+                    return TRUE;
+                }
+            }
+            break;
+        }
+    }
+    return FALSE;
+}
+
+/*!
  * @brief 食料タイプの食料を食べたときの効果を発動
  * @param creature_ptr プレイヤー情報への参照ポインタ
  * @param o_ptr 食べるオブジェクト
@@ -55,6 +82,7 @@
  */
 bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
 {
+
     if (o_ptr->tval != TV_FOOD)
         return FALSE;
 
@@ -271,7 +299,9 @@ void exe_eat_food(player_type *creature_ptr, INVENTORY_IDX item)
     int lev = k_info[o_ptr->k_idx].level;
 
     /* Identity not known yet */
-    int ident = exe_eat_food_type_object(creature_ptr, o_ptr);
+    int ident;
+    ident = exe_eat_junk_type_object(creature_ptr, o_ptr);
+    ident = exe_eat_food_type_object(creature_ptr, o_ptr);
 
     /*
      * Store what may have to be updated for the inventory (including
