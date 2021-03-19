@@ -380,6 +380,7 @@ void store_purchase(player_type *player_ptr)
     int choice;
     PRICE price;
     choice = 0;
+    char out_val[80];
     price = (best * j_ptr->number);
 
     if (choice != 0)
@@ -392,20 +393,20 @@ void store_purchase(player_type *player_ptr)
         msg_print(_("お金が足りません。", "You do not have enough gold."));
         return;
     }
-    /*
-    msg_print(_("本当に買いますか? [y/n]", "Really purchase?"));
+
+    sprintf(out_val, _("購入価格: $%d [Enter/Escape]", "Purchase price: $%d [Enter/Escape]"), price);
+    put_str(out_val, 0, 0);
     while (TRUE) {
-        char i = inkey();
-        prt("", 0, 0);
-        if (i == 'y' || i == 'Y')
-            break;
-        if (i == ESCAPE || i == 'n' || i == 'N')
+        char k = inkey();
+        if (k == '\r') {
+            break;        
+        }
+        if (k == ESCAPE) {
+            put_str("                                                  ", 0, 0);
             return;
+        }
     }
-    */
 
-
-    say_comment_1(player_ptr);
     if (cur_store_num == STORE_BLACK)
         chg_virtue(player_ptr, V_JUSTICE, -1);
     if ((o_ptr->tval == TV_BOTTLE) && (cur_store_num != STORE_HOME))

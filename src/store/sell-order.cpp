@@ -41,6 +41,8 @@
 #include "view/object-describer.h"
 #include "util/bit-flags-calculator.h"
 #include "world/world.h"
+#include "io/input-key-acceptor.h"
+#include "util/int-char-converter.h"
 
 /*!
  * @brief プレイヤーが売却する時の値切り処理メインルーチン /
@@ -237,13 +239,28 @@ void store_sell(player_type *owner_ptr)
     int choice;
     PRICE price, value, dummy;
     if ((cur_store_num != STORE_HOME) && (cur_store_num != STORE_MUSEUM)) {
+        char out_val[80];
         msg_format(_("%s(%c)を売却する。", "Selling %s (%c)."), o_name, index_to_label(item));
         msg_print(NULL);
 
-        price = price_item(owner_ptr, o_ptr, ot_ptr->max_inflate, TRUE);
+        price = price_item(owner_ptr, o_ptr, ot_ptr->min_inflate, TRUE);
         choice = 0;
+
         if (st_ptr->store_open >= current_world_ptr->game_turn)
             return;
+
+        sprintf(out_val, _("売却価格: $%d [Enter/Escape]", "Selling price: $%d [Enter/Escape]"), price);
+        put_str(out_val, 0, 0);
+        while (TRUE) {
+            char k = inkey();
+            if (k == '\r') {
+                break;
+            }
+            if (k == ESCAPE) {
+                put_str("                                                     ", 0, 0);
+                return;
+            }
+        }
 
         if (choice == 0) {
             say_comment_1(owner_ptr);
