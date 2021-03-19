@@ -418,6 +418,7 @@ hengband_SOURCES = \
 	mind/mind-blue-mage.cpp mind/mind-blue-mage.h \
 	mind/mind-cavalry.cpp mind/mind-cavalry.h \
 	mind/mind-chaos-warrior.cpp mind/mind-chaos-warrior.h \
+	mind/mind-elementalist.cpp mind/mind-elementalist.h \
 	mind/mind-explanations-table.cpp mind/mind-explanations-table.h \
 	mind/mind-force-trainer.cpp mind/mind-force-trainer.h \
 	mind/mind-info.cpp mind/mind-info.h \
@@ -858,6 +859,7 @@ hengband_SOURCES = \
 	util/flag-group.h \
 	util/int-char-converter.h \
 	util/object-sort.cpp util/object-sort.h \
+	util/probability-table.h \
 	util/quarks.cpp util/quarks.h \
 	util/sort.cpp util/sort.h \
 	util/string-processor.cpp util/string-processor.h \
@@ -925,12 +927,12 @@ EXTRA_DIST = \
 	gcc-wrap
 
 DEFAULT_INCLUDES = -I$(srcdir) -I$(top_builddir)/src
-CFLAGS += $(XFT_CFLAGS) $(libcurl_CFLAGS)
+CPPFLAGS += $(XFT_CFLAGS) $(libcurl_CFLAGS)
 LIBS += $(XFT_LIBS) $(libcurl_LIBS)
 COMPILE = $(srcdir)/gcc-wrap $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CXXCOMPILE = $(srcdir)/gcc-wrap $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
-	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CXXFLAGS)
 
 install-exec-hook:
 if SET_GID

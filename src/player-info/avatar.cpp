@@ -325,6 +325,11 @@ void get_virtues(player_type *creature_ptr)
         creature_ptr->vir_types[i++] = V_FAITH;
         creature_ptr->vir_types[i++] = V_UNLIFE;
         break;
+    case CLASS_ELEMENTALIST:
+        creature_ptr->vir_types[i++] = V_NATURE;
+        break;
+    case MAX_CLASS:
+        break;
     };
 
     /* Get one virtue based on race */
@@ -400,6 +405,8 @@ void get_virtues(player_type *creature_ptr)
         break;
     case RACE_BEASTMAN:
         creature_ptr->vir_types[i++] = V_CHANCE;
+        break;
+    case MAX_RACES:
         break;
     }
 
