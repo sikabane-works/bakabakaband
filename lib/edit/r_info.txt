@@ -25587,7 +25587,7 @@ N:1296:種付けおじさん
 E:Seeding uncle 
 G:t:R
 I:109:8d8:10:40:100
-W:4:1:0:20:8:0
+W:4:1:0:20:1298:1400
 B:CRAWL:HURT:1d10
 B:DROOL:HURT:1d10
 F:MALE | DROP_SKELETON | DROP_CORPSE | HAS_LITE_1 | HUMAN |
@@ -25595,4 +25595,31 @@ F:RAND_50 | DROP_90 | WILD_GRASS | WILD_TOWN | WILD_WOOD
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | STUPID
 F:EVIL | NASTY
 D:そこら中のHENTAI次元で働く熱心でクッソ汚いおじさんだ。
+
+N:1297:コモドドラゴン
+E:Komodo dragon
+G:R:s
+I:110:8d7:6:45:1
+W:7:1:0:50:0:0
+B:BITE:POISON:7d7
+F:PREVENT_SUDDEN_MAGIC | 
+F:ANIMAL | CAN_SWIM | DROP_CORPSE |
+D:全長10フィート近くもあり、強靭で猛毒を持った大トカゲだ。
+D:$With a total length of nearly 10 feet, it is a tough and highly poisonous lizard.
+
+N:1298:催眠おじさん
+E:Hypnotic uncle
+G:p:r
+I:109:14d11:20:30:20
+W:20:2:0:50:0:0
+B:CRAWL:HURT:4d10
+B:DROOL:HURT:4d10
+F:MALE | 
+F:PREVENT_SUDDEN_MAGIC | DROP_1D2 | WILD_ALL | HUMAN |
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE | 
+F:EVIL | HAS_LITE_2 | NASTY
+S:1_IN_3 | 
+S:CONF | BLIND | HOLD | SLOW
+D:HENTAI行為をさらに自在に行うために催眠術を身につけたよりクッソ汚いおじさんだ。
+
 
