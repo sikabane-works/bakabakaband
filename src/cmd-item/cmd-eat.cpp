@@ -33,9 +33,11 @@
 #include "player/player-race-types.h"
 #include "player/special-defense-types.h"
 #include "player/player-status-flags.h"
+#include "player/eldritch-horror.h"
 #include "spell-realm/spells-hex.h"
 #include "spell/spells-status.h"
 #include "status/action-setter.h"
+#include "status/buff-setter.h"
 #include "status/bad-status-setter.h"
 #include "status/base-status.h"
 #include "status/element-resistance.h"
@@ -46,6 +48,9 @@
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 #include "view/object-describer.h"
+#include "monster-race/race-flags9.h"
+#include "util/bit-flags-calculator.h"
+#include "status/shape-changer.h"
 
 /*!
  * @brief ゴミみてえなものを食べたときの効果を発動
@@ -71,6 +76,144 @@ static bool exe_eat_junk_type_object(player_type *creature_ptr, object_type *o_p
             break;
         }
     }
+    return FALSE;
+}
+
+/*!
+ * @brief 死体を食べたときの効果を発動
+ * @param creature_ptr プレイヤー情報への参照ポインタ
+ * @param o_ptr 食べるオブジェクト
+ * @return 鑑定されるならTRUE、されないならFALSE
+ */
+static bool exe_eat_corpse_type_object(player_type *creature_ptr, object_type *o_ptr)
+{
+    if (o_ptr->tval != TV_CORPSE)
+        return FALSE;
+
+    monster_race *r_ptr = &r_info[o_ptr->pval];
+
+    if (r_ptr->flags9 & RF9_EAT_BLIND) {
+        set_blind(creature_ptr, creature_ptr->blind + 200 + randint1(200));        
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_CONF) {
+        set_confused(creature_ptr, creature_ptr->confused + 200 + randint1(200));
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_MANA) {
+        restore_mana(creature_ptr, FALSE);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_NEXUS) {
+        do_poly_self(creature_ptr);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_SLEEP) {
+        if (!creature_ptr->free_act)
+            set_paralyzed(creature_ptr, creature_ptr->paralyzed + randint0(10) + 10);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_BERSERKER) {
+        set_shero(creature_ptr, creature_ptr->shero + randint1(10) + 10, FALSE);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_ACIDIC) {
+
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_SPEED) {
+        (void)set_fast(creature_ptr, randint1(20) + 20, FALSE);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_CURE) {
+        true_healing(creature_ptr, 50);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_FIRE_RES) {
+        set_oppose_fire(creature_ptr, randint1(20) + 20, FALSE);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_COLD_RES) {
+        set_oppose_cold(creature_ptr, randint1(20) + 20, FALSE);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_ELEC_RES) {
+        set_oppose_elec(creature_ptr, randint1(20) + 20, FALSE);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_POIS_RES) {
+        set_oppose_pois(creature_ptr, randint1(20) + 20, FALSE);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_INSANITY) {
+        sanity_blast(creature_ptr, NULL, FALSE);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_DRAIN_EXP) {
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_POISONOUS) {
+        if (!(has_resist_pois(creature_ptr) || is_oppose_pois(creature_ptr))) {
+            set_poisoned(creature_ptr, creature_ptr->poisoned + randint0(15) + 10);
+        }
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_GIVE_STR) {
+        do_inc_stat(creature_ptr, A_STR);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_GIVE_INT) {
+        do_inc_stat(creature_ptr, A_INT);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_GIVE_WIS) {
+        do_inc_stat(creature_ptr, A_WIS);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_GIVE_DEX) {
+        do_inc_stat(creature_ptr, A_DEX);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_GIVE_CON) {
+        do_inc_stat(creature_ptr, A_CON);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_GIVE_CHR) {
+        do_inc_stat(creature_ptr, A_CHR);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_LOSE_STR) {
+        do_dec_stat(creature_ptr, A_STR);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_LOSE_INT) {
+        do_dec_stat(creature_ptr, A_INT);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_LOSE_WIS) {
+        do_dec_stat(creature_ptr, A_WIS);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_LOSE_DEX) {
+        do_dec_stat(creature_ptr, A_DEX);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_LOSE_CON) {
+        do_dec_stat(creature_ptr, A_CON);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_LOSE_CHR) {
+        do_dec_stat(creature_ptr, A_CHR);
+    }
+
+    if (r_ptr->flags9 & RF9_EAT_DRAIN_MANA) {
+        creature_ptr->csp -= 30;
+        if (creature_ptr->csp < 0) {
+            creature_ptr->csp = 0;
+            creature_ptr->csp_frac = 0;
+        }
+    }
+
     return FALSE;
 }
 
