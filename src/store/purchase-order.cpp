@@ -50,154 +50,6 @@ typedef struct haggle_type {
     bool cancel;
 } haggle_type;
 
-static haggle_type *initialize_haggle_type(player_type *player_ptr, haggle_type *haggle_ptr, object_type *o_ptr, s32b *price)
-{
-    haggle_ptr->o_ptr = o_ptr;
-    haggle_ptr->price = price;
-    haggle_ptr->cur_ask = price_item(player_ptr, o_ptr, ot_ptr->max_inflate, FALSE);
-    haggle_ptr->final_ask = price_item(player_ptr, o_ptr, ot_ptr->min_inflate, FALSE);
-    haggle_ptr->noneed = noneedtobargain(haggle_ptr->final_ask);
-    haggle_ptr->final = FALSE;
-    haggle_ptr->pmt = _("提示価格", "Asking");
-    return haggle_ptr;
-}
-
-static void settle_haggle_result(haggle_type *haggle_ptr)
-{
-    haggle_ptr->cur_ask = haggle_ptr->final_ask;
-    haggle_ptr->pmt = _("価格", "Price");
-    haggle_ptr->final = TRUE;
-}
-
-static void decide_haggle_offer(player_type *player_ptr, haggle_type *haggle_ptr)
-{
-    haggle_ptr->cur_ask *= haggle_ptr->o_ptr->number;
-    haggle_ptr->final_ask *= haggle_ptr->o_ptr->number;
-    haggle_ptr->min_per = ot_ptr->haggle_per;
-    haggle_ptr->max_per = haggle_ptr->min_per * 3;
-    haggle_ptr->last_offer = object_value(player_ptr, haggle_ptr->o_ptr) * haggle_ptr->o_ptr->number;
-    haggle_ptr->last_offer = haggle_ptr->last_offer * (200 - (int)(ot_ptr->max_inflate)) / 100L;
-    if (haggle_ptr->last_offer <= 0)
-        haggle_ptr->last_offer = 1;
-}
-
-static void initialize_haggle_offer(haggle_type *haggle_ptr)
-{
-    haggle_ptr->offer = 0;
-    allow_inc = FALSE;
-    haggle_ptr->flag = FALSE;
-    haggle_ptr->annoyed = 0;
-    haggle_ptr->cancel = FALSE;
-    *haggle_ptr->price = 0;
-}
-
-static void suggest_haggle_offer(haggle_type *haggle_ptr)
-{
-    bool loop_flag = TRUE;
-    while (!haggle_ptr->flag && loop_flag) {
-        char out_val[160];
-        (void)sprintf(out_val, "%s :  %ld", haggle_ptr->pmt, (long)haggle_ptr->cur_ask);
-        put_str(out_val, 1, 0);
-        haggle_ptr->cancel
-            = receive_offer(_("提示する金額? ", "What do you offer? "), &haggle_ptr->offer, haggle_ptr->last_offer, 1, haggle_ptr->cur_ask, haggle_ptr->final);
-        if (haggle_ptr->cancel) {
-            haggle_ptr->flag = TRUE;
-        } else if (haggle_ptr->offer > haggle_ptr->cur_ask) {
-            say_comment_6();
-            haggle_ptr->offer = haggle_ptr->last_offer;
-        } else if (haggle_ptr->offer == haggle_ptr->cur_ask) {
-            haggle_ptr->flag = TRUE;
-            *haggle_ptr->price = haggle_ptr->offer;
-        } else {
-            loop_flag = FALSE;
-        }
-    }
-}
-
-static void final_haggle_offer(haggle_type *haggle_ptr)
-{
-    haggle_ptr->final = TRUE;
-    haggle_ptr->cur_ask = haggle_ptr->final_ask;
-    haggle_ptr->pmt = _("最終提示価格", "What do you offer? ");
-    haggle_ptr->annoyed++;
-    if (haggle_ptr->annoyed <= 3)
-        return;
-
-    (void)increase_insults();
-    haggle_ptr->cancel = TRUE;
-    haggle_ptr->flag = TRUE;
-}
-
-static void show_last_haggle_offer(haggle_type *haggle_ptr)
-{
-    haggle_ptr->last_offer = haggle_ptr->offer;
-    allow_inc = TRUE;
-    prt("", 1, 0);
-    char out_val[160];
-    (void)sprintf(out_val, _("前回の提示金額: $%ld", "Your last offer: %ld"), (long)haggle_ptr->last_offer);
-    put_str(out_val, 1, 39);
-    say_comment_2(haggle_ptr->cur_ask, haggle_ptr->annoyed);
-}
-
-/*!
- * @brief プレイヤーが購入する時の値切り処理メインルーチン /
- * Haggling routine 				-RAK-
- * @param player_ptr プレーヤーへの参照ポインタ
- * @param o_ptr オブジェクトの構造体参照ポインタ
- * @param price 最終価格を返す参照ポインタ
- * @return プレイヤーの価格に対して店主が不服ならばTRUEを返す /
- * Return TRUE if purchase is NOT successful
- */
-static bool purchase_haggle(player_type *player_ptr, object_type *o_ptr, s32b *price)
-{
-    haggle_type tmp_haggle;
-    haggle_type *haggle_ptr = initialize_haggle_type(player_ptr, &tmp_haggle, o_ptr, price);
-    settle_haggle_result(haggle_ptr);
-    decide_haggle_offer(player_ptr, haggle_ptr);
-    initialize_haggle_offer(haggle_ptr);
-    while (!haggle_ptr->flag) {
-        suggest_haggle_offer(haggle_ptr);
-        if (haggle_ptr->flag)
-            continue;
-
-        s32b x1 = 100 * (haggle_ptr->offer - haggle_ptr->last_offer) / (haggle_ptr->cur_ask - haggle_ptr->last_offer);
-        if (x1 < haggle_ptr->min_per) {
-            if (haggle_insults()) {
-                haggle_ptr->flag = TRUE;
-                haggle_ptr->cancel = TRUE;
-            }
-        } else if (x1 > haggle_ptr->max_per) {
-            x1 = x1 * 3 / 4;
-            if (x1 < haggle_ptr->max_per)
-                x1 = haggle_ptr->max_per;
-        }
-
-        s32b x2 = rand_range(x1 - 2, x1 + 2);
-        s32b x3 = ((haggle_ptr->cur_ask - haggle_ptr->offer) * x2 / 100L) + 1;
-        if (x3 < 0)
-            x3 = 0;
-        haggle_ptr->cur_ask -= x3;
-
-        if (haggle_ptr->cur_ask < haggle_ptr->final_ask)
-            final_haggle_offer(haggle_ptr);
-        else if (haggle_ptr->offer >= haggle_ptr->cur_ask) {
-            haggle_ptr->flag = TRUE;
-            *haggle_ptr->price = haggle_ptr->offer;
-        }
-
-        if (haggle_ptr->flag)
-            continue;
-
-        show_last_haggle_offer(haggle_ptr);
-    }
-
-    if (haggle_ptr->cancel)
-        return TRUE;
-
-    updatebargain(*price, haggle_ptr->final_ask, o_ptr->number);
-    return FALSE;
-}
-
 static bool show_store_select_item(COMMAND_CODE *item, const int i)
 {
     char out_val[160];
@@ -380,6 +232,7 @@ void store_purchase(player_type *player_ptr)
     int choice;
     PRICE price;
     choice = 0;
+    char out_val[80];
     price = (best * j_ptr->number);
 
     if (choice != 0)
@@ -392,20 +245,20 @@ void store_purchase(player_type *player_ptr)
         msg_print(_("お金が足りません。", "You do not have enough gold."));
         return;
     }
-    /*
-    msg_print(_("本当に買いますか? [y/n]", "Really purchase?"));
+
+    sprintf(out_val, _("購入価格: $%d [Enter/Escape]", "Purchase price: $%d [Enter/Escape]"), price);
+    put_str(out_val, 0, 0);
     while (TRUE) {
-        char i = inkey();
-        prt("", 0, 0);
-        if (i == 'y' || i == 'Y')
-            break;
-        if (i == ESCAPE || i == 'n' || i == 'N')
+        char k = inkey();
+        if (k == '\r') {
+            break;        
+        }
+        if (k == ESCAPE) {
+            put_str("                                                  ", 0, 0);
             return;
+        }
     }
-    */
 
-
-    say_comment_1(player_ptr);
     if (cur_store_num == STORE_BLACK)
         chg_virtue(player_ptr, V_JUSTICE, -1);
     if ((o_ptr->tval == TV_BOTTLE) && (cur_store_num != STORE_HOME))

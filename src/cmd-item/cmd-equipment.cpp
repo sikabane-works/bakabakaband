@@ -6,7 +6,7 @@
 #include "core/player-redraw-types.h"
 #include "core/player-update-types.h"
 #include "core/window-redrawer.h"
-#include "dungeon/quest.h" // todo 違和感、何故アイテムを装備するとクエストの成功判定が走るのか？.
+#include "dungeon/quest.h" //!< @todo 違和感、何故アイテムを装備するとクエストの成功判定が走るのか？.
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
 #include "floor/floor-object.h"
@@ -167,6 +167,9 @@ void do_cmd_wield(player_type *creature_ptr)
         }
 
         creature_ptr->select_ring_slot = FALSE;
+        break;
+
+    default:
         break;
     }
 

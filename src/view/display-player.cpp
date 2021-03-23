@@ -13,6 +13,7 @@
 #include "info-reader/fixed-map-parser.h"
 #include "inventory/inventory-slot-types.h"
 #include "knowledge/knowledge-mutations.h"
+#include "mind/mind-elementalist.h"
 #include "mutation/mutation-flag-types.h"
 #include "object/object-info.h"
 #include "object/object-kind.h"
@@ -95,10 +96,13 @@ static void display_player_basic_info(player_type *creature_ptr)
  */
 static void display_magic_realms(player_type *creature_ptr)
 {
-	if (creature_ptr->realm1 == 0) return;
+    if (creature_ptr->realm1 == 0)
+        return;
 
-	char tmp[64];
-	if (creature_ptr->realm2)
+    char tmp[64];
+    if (creature_ptr->pclass == CLASS_ELEMENTALIST)
+            sprintf(tmp, "%s", get_element_title(creature_ptr->realm1));
+	else if (creature_ptr->realm2)
 		sprintf(tmp, "%s, %s", realm_names[creature_ptr->realm1], realm_names[creature_ptr->realm2]);
 	else
 		strcpy(tmp, realm_names[creature_ptr->realm1]);
@@ -345,7 +349,6 @@ void display_player(player_type *creature_ptr, int mode)
 
 
 /*!
- * todo y = 6、x = 0、mode = 0で固定。何とかする
  * @brief プレイヤーの装備一覧をシンボルで並べる
  * Equippy chars
  * @param creature_ptr プレーヤーへの参照ポインタ
@@ -353,6 +356,7 @@ void display_player(player_type *creature_ptr, int mode)
  * @param x 表示するコンソールの列
  * @param mode オプション
  * @return なし
+ * @todo y = 6、x = 0、mode = 0で固定。何とかする
  */
 void display_player_equippy(player_type *creature_ptr, TERM_LEN y, TERM_LEN x, BIT_FLAGS16 mode)
 {
