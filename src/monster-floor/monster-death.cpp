@@ -135,6 +135,12 @@ static void drop_corpse(player_type *player_ptr, monster_death_type *md_ptr)
     apply_magic(player_ptr, q_ptr, floor_ptr->object_level, AM_NO_FIXED_ART);
     q_ptr->pval = md_ptr->m_ptr->r_idx;
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+
+    if (one_in_(RF1_UNIQUE ? 1 : 4)) {
+        object_prep(player_ptr, q_ptr, lookup_kind(TV_CORPSE, SV_SOUL));
+        q_ptr->pval = md_ptr->m_ptr->r_idx;
+        (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);    
+    }
 }
 
 /*!
