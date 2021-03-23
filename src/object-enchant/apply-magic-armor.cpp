@@ -1,8 +1,8 @@
 ﻿/*!
- * todo ちょっと長い。要分割
  * @brief 防具系のアイテムを強化して(恐らく床に)生成する処理
  * @date 2020/06/02
  * @author Hourier
+ * @todo ちょっと長い。要分割
  */
 
 #include "object-enchant/apply-magic-armor.h"
@@ -17,6 +17,7 @@
 #include "sv-definition/sv-armor-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "util/bit-flags-calculator.h"
+#include "view/display-messages.h"
 
 /*!
  * @brief 防具系オブジェクトに生成ランクごとの強化を与えるサブルーチン
@@ -159,7 +160,8 @@ void apply_magic_armor(player_type *owner_ptr, object_type *o_ptr, DEPTH level, 
                         add_flag(o_ptr->art_flags, TR_NO_TELE);
                     break;
                 default:
-                    okay_flag = false;
+                    msg_print(_("エラー：適した呪い鎧エゴがみつかりませんでした.", "Error:Suitable cursed armor ego not found."));
+                    okay_flag = true;
                     break;
                 }
 
