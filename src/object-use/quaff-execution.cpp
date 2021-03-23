@@ -522,7 +522,7 @@ void exe_quaff_potion(player_type *creature_ptr, INVENTORY_IDX item)
             ident = TRUE;
             break;
 
-        case SV_POTION_NEO_TSUYOSHI:
+        case SV_POSTION_MASARU_CHINISE_DYNAMIC:
             (void)set_image(creature_ptr, 0);
             (void)set_tsuyoshi(creature_ptr, creature_ptr->tsuyoshi + randint1(100) + 100, FALSE);
             ident = TRUE;
@@ -535,6 +535,17 @@ void exe_quaff_potion(player_type *creature_ptr, INVENTORY_IDX item)
             (void)set_tsuyoshi(creature_ptr, 0, TRUE);
             if (!has_resist_chaos(creature_ptr)) {
                 (void)set_image(creature_ptr, 50 + randint1(50));
+            }
+            ident = TRUE;
+            break;
+
+        case SV_POTION_NEO_TSUYOSHI:
+            msg_print(_("「新・オクレ兄さん！」", "NEW Brother OKURE!"));
+            msg_print(NULL);
+            creature_ptr->tsuyoshi = 1;
+            (void)set_tsuyoshi(creature_ptr, 0, TRUE);
+            if (!has_resist_chaos(creature_ptr)) {
+                (void)set_image(creature_ptr, 50 + randint1(100));
             }
             ident = TRUE;
             break;
