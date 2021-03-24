@@ -29,6 +29,7 @@ typedef struct lore_type {
     BIT_FLAGS a_ability_flags1;
     BIT_FLAGS a_ability_flags2;
     BIT_FLAGS flags7;
+    BIT_FLAGS flags8;
     BIT_FLAGS flagsr;
     bool reinforce;
     bool know_everything;
