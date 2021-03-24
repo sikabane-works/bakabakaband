@@ -46,6 +46,7 @@ lore_type *initialize_lore_type(lore_type *lore_ptr, MONRACE_IDX r_idx, monster_
     lore_ptr->a_ability_flags1 = (lore_ptr->r_ptr->a_ability_flags1 & lore_ptr->r_ptr->r_flags5);
     lore_ptr->a_ability_flags2 = (lore_ptr->r_ptr->a_ability_flags2 & lore_ptr->r_ptr->r_flags6);
     lore_ptr->flags7 = (lore_ptr->r_ptr->flags7 & lore_ptr->r_ptr->flags7);
+    lore_ptr->flags8 = (lore_ptr->r_ptr->flags8 & lore_ptr->r_ptr->flags8);
     lore_ptr->flagsr = (lore_ptr->r_ptr->flagsr & lore_ptr->r_ptr->r_flagsr);
     lore_ptr->reinforce = FALSE;
     lore_ptr->know_everything = FALSE;

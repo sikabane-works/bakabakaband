@@ -15,6 +15,7 @@
 #include "monster-race/race-flags3.h"
 #include "monster-race/race-flags4.h"
 #include "monster-race/race-flags7.h"
+#include "monster-race/race-flags8.h"
 #include "monster-race/race-indice-types.h"
 #include "mspell/mspell-type.h"
 #include "term/screen-processor.h"
@@ -384,6 +385,9 @@ void display_monster_alignment(lore_type *lore_ptr)
 {
     if (lore_ptr->flags2 & RF2_ELDRITCH_HORROR)
         hook_c_roff(TERM_VIOLET, _("狂気を誘う", " sanity-blasting"));
+
+    if (lore_ptr->flags8 & RF8_NASTY)
+        hook_c_roff(TERM_L_DARK, _("クッソ汚い", " nasty"));
 
     if (lore_ptr->flags3 & RF3_ANIMAL)
         hook_c_roff(TERM_L_GREEN, _("自然界の", " natural"));
