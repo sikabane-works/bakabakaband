@@ -85,12 +85,12 @@ static bool exe_eat_junk_type_object(player_type *creature_ptr, object_type *o_p
  * @param o_ptr 食べるオブジェクト
  * @return 鑑定されるならTRUE、されないならFALSE
  */
-static void exe_eat_soul(player_type* creature_ptr, object_type* o_ptr) {
+static bool exe_eat_soul(player_type* creature_ptr, object_type* o_ptr) {
     if (!(o_ptr->tval == TV_CORPSE && o_ptr->sval == SV_SOUL))
-        return;
+        return FALSE;
 
     if (creature_ptr->prace == RACE_ANDROID)
-        return;
+        return FALSE;
 
     monster_race *r_ptr = &r_info[o_ptr->pval];
     EXP max_exp = r_ptr->level * r_ptr->level * 10;
@@ -103,6 +103,7 @@ static void exe_eat_soul(player_type* creature_ptr, object_type* o_ptr) {
         msg_print(_("更に経験を積んだような気がする。", "You feel more experienced."));
         gain_exp(creature_ptr, ee);
     }
+    return TRUE;
 }
 
 /*!
@@ -240,7 +241,7 @@ static bool exe_eat_corpse_type_object(player_type *creature_ptr, object_type *o
         }
     }
 
-    return FALSE;
+    return TRUE;
 }
 
 /*!
@@ -467,11 +468,17 @@ void exe_eat_food(player_type *creature_ptr, INVENTORY_IDX item)
     /* Object level */
     int lev = k_info[o_ptr->k_idx].level;
 
+    /* 異常なものを喰う判定 */
+    bool ate = false;
+    ate = exe_eat_soul(creature_ptr, o_ptr);
+    ate = exe_eat_corpse_type_object(creature_ptr, o_ptr);
+    ate = exe_eat_junk_type_object(creature_ptr, o_ptr);
+    if (!ate) {
+        msg_print("流石に食べるのを躊躇した。");
+        return;
+    }
     /* Identity not known yet */
     int ident;
-    exe_eat_soul(creature_ptr, o_ptr);
-    exe_eat_corpse_type_object(creature_ptr, o_ptr);
-    ident = exe_eat_junk_type_object(creature_ptr, o_ptr);
     ident = exe_eat_food_type_object(creature_ptr, o_ptr);
 
     /*
