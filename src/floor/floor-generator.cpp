@@ -280,8 +280,18 @@ static bool level_gen(player_type *player_ptr, concptr *why)
             level_height = MIN_HGT_MULTIPLE * 2;
             level_width = MIN_WID_MULTIPLE * 2;
         } else {
-            level_height = randint1(MAX_HGT / SCREEN_HGT);
-            level_width = randint1(MAX_WID / SCREEN_WID);
+            if (one_in_(HUGE_DUNGEON_RATE)) {
+                level_height = randint1(MAX_HGT / SCREEN_HGT);
+                level_width = randint1(MAX_WID / SCREEN_WID);            
+            }
+            else if(one_in_(LARGE_DUNGEON_RATE))
+            {
+                level_height = randint1(MAX_HGT / SCREEN_HGT / 2);
+                level_width = randint1(MAX_WID / SCREEN_WID / 2);
+            } else {
+                level_height = randint1(MAX_HGT / SCREEN_HGT / 3);
+                level_width = randint1(MAX_WID / SCREEN_WID / 3);
+            }
             bool is_first_level_area = TRUE;
             bool is_max_area = (level_height == MAX_HGT / SCREEN_HGT) && (level_width == MAX_WID / SCREEN_WID);
             while (is_first_level_area || is_max_area) {
