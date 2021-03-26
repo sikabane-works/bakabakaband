@@ -15,6 +15,7 @@
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
 #include "monster-race/monster-race.h"
+#include "monster-race/race-flags9.h"
 #include "object-enchant/special-object-flags.h"
 #include "object-hook/hook-expendable.h"
 #include "object/item-tester-hooker.h"
@@ -24,33 +25,32 @@
 #include "object/object-kind-hook.h"
 #include "object/object-kind.h"
 #include "perception/object-perception.h"
-#include "player/attack-defense-types.h"
 #include "player-info/avatar.h"
+#include "player/attack-defense-types.h"
 #include "player/digestion-processor.h"
+#include "player/eldritch-horror.h"
 #include "player/mimic-info-table.h"
 #include "player/player-class.h"
 #include "player/player-damage.h"
 #include "player/player-race-types.h"
-#include "player/special-defense-types.h"
 #include "player/player-status-flags.h"
-#include "player/eldritch-horror.h"
+#include "player/special-defense-types.h"
 #include "spell-realm/spells-hex.h"
 #include "spell/spells-status.h"
 #include "status/action-setter.h"
-#include "status/buff-setter.h"
 #include "status/bad-status-setter.h"
 #include "status/base-status.h"
+#include "status/buff-setter.h"
 #include "status/element-resistance.h"
 #include "status/experience.h"
+#include "status/shape-changer.h"
 #include "sv-definition/sv-food-types.h"
 #include "sv-definition/sv-junk-types.h"
 #include "sv-definition/sv-other-types.h"
+#include "util/bit-flags-calculator.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 #include "view/object-describer.h"
-#include "monster-race/race-flags9.h"
-#include "util/bit-flags-calculator.h"
-#include "status/shape-changer.h"
 
 /*!
  * @brief ゴミみてえなものを食べたときの効果を発動
@@ -63,18 +63,23 @@ static bool exe_eat_junk_type_object(player_type *creature_ptr, object_type *o_p
     if (o_ptr->tval != TV_JUNK)
         return FALSE;
 
-    if (o_ptr->tval == TV_JUNK) {
-        switch (o_ptr->sval) {
-        case SV_JUNK_FECES:
-            msg_print("ワーォ！貴方は糞を喰った！");
-            msg_print("『涙が出るほどうめぇ……』");
-            if (!(has_resist_pois(creature_ptr) || is_oppose_pois(creature_ptr))) {
-                if (set_poisoned(creature_ptr, creature_ptr->poisoned + randint0(10) + 10)) {
-                    return TRUE;
-                }
-            }
-            break;
+    switch (o_ptr->sval) {
+    case SV_JUNK_FECES:
+        msg_print("ワーォ！貴方は糞を喰った！");
+        msg_print("『涙が出るほどうめぇ……』");
+        if (!(has_resist_pois(creature_ptr) || is_oppose_pois(creature_ptr))) {
+            set_poisoned(creature_ptr, creature_ptr->poisoned + randint0(10) + 10);
         }
+        return TRUE;
+        break;
+    case SV_JUNK_VOMITTING:
+        msg_print("ワーォ！貴方はゲロを喰った！");
+        msg_print("『涙が出るほどうめぇ……』");
+        if (!(has_resist_pois(creature_ptr) || is_oppose_pois(creature_ptr))) {
+            set_poisoned(creature_ptr, creature_ptr->poisoned + randint0(10) + 10);
+        }
+        return TRUE;
+        break;
     }
     return FALSE;
 }
@@ -85,7 +90,8 @@ static bool exe_eat_junk_type_object(player_type *creature_ptr, object_type *o_p
  * @param o_ptr 食べるオブジェクト
  * @return 鑑定されるならTRUE、されないならFALSE
  */
-static bool exe_eat_soul(player_type* creature_ptr, object_type* o_ptr) {
+static bool exe_eat_soul(player_type *creature_ptr, object_type *o_ptr)
+{
     if (!(o_ptr->tval == TV_CORPSE && o_ptr->sval == SV_SOUL))
         return FALSE;
 
@@ -120,7 +126,7 @@ static bool exe_eat_corpse_type_object(player_type *creature_ptr, object_type *o
     monster_race *r_ptr = &r_info[o_ptr->pval];
 
     if (r_ptr->flags9 & RF9_EAT_BLIND) {
-        set_blind(creature_ptr, creature_ptr->blind + 200 + randint1(200));        
+        set_blind(creature_ptr, creature_ptr->blind + 200 + randint1(200));
     }
 
     if (r_ptr->flags9 & RF9_EAT_CONF) {
@@ -145,7 +151,6 @@ static bool exe_eat_corpse_type_object(player_type *creature_ptr, object_type *o
     }
 
     if (r_ptr->flags9 & RF9_EAT_ACIDIC) {
-
     }
 
     if (r_ptr->flags9 & RF9_EAT_SPEED) {
@@ -388,7 +393,7 @@ bool exe_eat_charge_of_magic_device(player_type *creature_ptr, object_type *o_pt
         return FALSE;
 
     if (is_specific_player_race(creature_ptr, RACE_SKELETON) || is_specific_player_race(creature_ptr, RACE_GOLEM)
-            || is_specific_player_race(creature_ptr, RACE_ZOMBIE) || is_specific_player_race(creature_ptr, RACE_SPECTRE)) {
+        || is_specific_player_race(creature_ptr, RACE_ZOMBIE) || is_specific_player_race(creature_ptr, RACE_SPECTRE)) {
         concptr staff;
 
         if (o_ptr->tval == TV_STAFF && (item < 0) && (o_ptr->number > 1)) {
@@ -539,7 +544,7 @@ void exe_eat_food(player_type *creature_ptr, INVENTORY_IDX item)
         vary_item(creature_ptr, item, -1);
         return;
     }
-    
+
     if (is_specific_player_race(creature_ptr, RACE_SKELETON)) {
         if (!((o_ptr->sval == SV_FOOD_WAYBREAD) || (o_ptr->sval < SV_FOOD_BISCUIT))) {
             object_type forge;
@@ -587,7 +592,7 @@ void do_cmd_eat_food(player_type *creature_ptr)
         set_action(creature_ptr, ACTION_NONE);
     }
 
-// TODO: オプションで切り替え可能   item_tester_hook = item_tester_hook_eatable;
+    // TODO: オプションで切り替え可能   item_tester_hook = item_tester_hook_eatable;
     item_tester_hook = NULL;
 
     q = _("どれを食べますか? ", "Eat which item? ");
