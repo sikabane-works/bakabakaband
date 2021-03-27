@@ -190,9 +190,9 @@ static bool search_death_cause(player_type *creature_ptr, char *statmsg)
 	if (!floor_ptr->dun_level)
 	{
 #ifdef JP
-		sprintf(statmsg, "…あなたは%sで%sに殺された。", map_name(creature_ptr), creature_ptr->died_from);
+		sprintf(statmsg, "…あなたは%sで%sに殺されて飽きた", map_name(creature_ptr), creature_ptr->died_from);
 #else
-		sprintf(statmsg, "...You were killed by %s in %s.", creature_ptr->died_from, map_name(creature_ptr));
+		sprintf(statmsg, "...You were killed by %s in %s and got tired.", creature_ptr->died_from, map_name(creature_ptr));
 #endif
 		return TRUE;
 	}
@@ -204,9 +204,9 @@ static bool search_death_cause(player_type *creature_ptr, char *statmsg)
 		init_flags = INIT_NAME_ONLY;
 		parse_fixed_map(creature_ptr, "q_info.txt", 0, 0, 0, 0);
 #ifdef JP
-		sprintf(statmsg, "…あなたは、クエスト「%s」で%sに殺された。", quest[floor_ptr->inside_quest].name, creature_ptr->died_from);
+		sprintf(statmsg, "…あなたは、クエスト「%s」で%sに殺されて飽きた。", quest[floor_ptr->inside_quest].name, creature_ptr->died_from);
 #else
-		sprintf(statmsg, "...You were killed by %s in the quest '%s'.", creature_ptr->died_from, quest[floor_ptr->inside_quest].name);
+		sprintf(statmsg, "...You were killed by %s in the quest '%s' and got tired.", creature_ptr->died_from, quest[floor_ptr->inside_quest].name);
 #endif
 		return TRUE;
 	}
@@ -214,7 +214,7 @@ static bool search_death_cause(player_type *creature_ptr, char *statmsg)
 #ifdef JP
 	sprintf(statmsg, "…あなたは、%sの%d階で%sに殺された。", map_name(creature_ptr), (int)floor_ptr->dun_level, creature_ptr->died_from);
 #else
-	sprintf(statmsg, "...You were killed by %s on level %d of %s.", creature_ptr->died_from, floor_ptr->dun_level, map_name(creature_ptr));
+	sprintf(statmsg, "...You were killed by %s on level %d of %s and got tired.", creature_ptr->died_from, floor_ptr->dun_level, map_name(creature_ptr));
 #endif
 
 	return TRUE;

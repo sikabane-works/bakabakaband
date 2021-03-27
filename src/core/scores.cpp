@@ -333,9 +333,9 @@ void display_scores_aux(int from, int to, int note, high_score *score)
 
 				/* Some people die outside of the dungeon */
 				if (!cdun)
-					sprintf(out_val+13, "  地上で%sに殺された", the_score.how);
+					sprintf(out_val+13, "  地上で%sに殺された後飽きた", the_score.how);
 				else
-					sprintf(out_val+13, "  %d階で%sに殺された",
+					sprintf(out_val+13, "  %d階で%sに殺された後飽きた",
 						cdun, the_score.how);
 			}
 
@@ -347,7 +347,7 @@ void display_scores_aux(int from, int to, int note, high_score *score)
 					the_score.how);
 			else
 				sprintf(out_val, 
-					"               Killed by %s on %s %d",
+					"               Killed by %s on %s %d and got tired",
 					the_score.how, "Dungeon Level", cdun);
 
 			/* Append a "maximum level" */
