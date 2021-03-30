@@ -190,9 +190,9 @@ static bool search_death_cause(player_type *creature_ptr, char *statmsg)
 	if (!floor_ptr->dun_level)
 	{
 #ifdef JP
-		sprintf(statmsg, "…あなたは%sで%sに殺された。", map_name(creature_ptr), creature_ptr->died_from);
+		sprintf(statmsg, "…あなたは%sで%sに殺されて飽きた", map_name(creature_ptr), creature_ptr->died_from);
 #else
-		sprintf(statmsg, "...You were killed by %s in %s.", creature_ptr->died_from, map_name(creature_ptr));
+		sprintf(statmsg, "...You were killed by %s in %s and got tired.", creature_ptr->died_from, map_name(creature_ptr));
 #endif
 		return TRUE;
 	}
@@ -204,9 +204,9 @@ static bool search_death_cause(player_type *creature_ptr, char *statmsg)
 		init_flags = INIT_NAME_ONLY;
 		parse_fixed_map(creature_ptr, "q_info.txt", 0, 0, 0, 0);
 #ifdef JP
-		sprintf(statmsg, "…あなたは、クエスト「%s」で%sに殺された。", quest[floor_ptr->inside_quest].name, creature_ptr->died_from);
+		sprintf(statmsg, "…あなたは、クエスト「%s」で%sに殺されて飽きた。", quest[floor_ptr->inside_quest].name, creature_ptr->died_from);
 #else
-		sprintf(statmsg, "...You were killed by %s in the quest '%s'.", creature_ptr->died_from, quest[floor_ptr->inside_quest].name);
+		sprintf(statmsg, "...You were killed by %s in the quest '%s' and got tired.", creature_ptr->died_from, quest[floor_ptr->inside_quest].name);
 #endif
 		return TRUE;
 	}
@@ -214,7 +214,7 @@ static bool search_death_cause(player_type *creature_ptr, char *statmsg)
 #ifdef JP
 	sprintf(statmsg, "…あなたは、%sの%d階で%sに殺された。", map_name(creature_ptr), (int)floor_ptr->dun_level, creature_ptr->died_from);
 #else
-	sprintf(statmsg, "...You were killed by %s on level %d of %s.", creature_ptr->died_from, floor_ptr->dun_level, map_name(creature_ptr));
+	sprintf(statmsg, "...You were killed by %s on level %d of %s and got tired.", creature_ptr->died_from, floor_ptr->dun_level, map_name(creature_ptr));
 #endif
 
 	return TRUE;
@@ -311,7 +311,7 @@ static void display_current_floor(char *statmsg)
  */
 void display_player(player_type *creature_ptr, int mode)
 {
-	if ((creature_ptr->muta1 || creature_ptr->muta2 || creature_ptr->muta3) && display_mutations)
+	if (creature_ptr->muta.any() && display_mutations)
 		mode = (mode % 5);
 	else
 		mode = (mode % 4);
@@ -322,7 +322,7 @@ void display_player(player_type *creature_ptr, int mode)
 	display_player_basic_info(creature_ptr);
 	display_magic_realms(creature_ptr);
 
-	if ((creature_ptr->pclass == CLASS_CHAOS_WARRIOR) || (creature_ptr->muta2 & MUT2_CHAOS_GIFT))
+	if ((creature_ptr->pclass == CLASS_CHAOS_WARRIOR) || (creature_ptr->muta.has(MUTA::CHAOS_GIFT)))
 		display_player_one_line(ENTRY_PATRON, chaos_patrons[creature_ptr->chaos_patron], TERM_L_BLUE);
 
 	display_phisique(creature_ptr);
