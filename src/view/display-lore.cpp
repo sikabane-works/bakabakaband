@@ -18,6 +18,7 @@
 #include "monster-race/race-flags8.h"
 #include "monster-race/race-indice-types.h"
 #include "mspell/mspell-type.h"
+#include "util/bit-flags-calculator.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "view/display-messages.h"
@@ -58,7 +59,7 @@ void roff_top(MONRACE_IDX r_idx)
     }
 #endif
 
-    term_addstr(-1, TERM_WHITE, (r_name + r_ptr->name));
+    term_addstr(-1, TERM_WHITE, (r_ptr->name.c_str()));
 
     term_addstr(-1, TERM_WHITE, " ('");
     term_add_bigch(a1, c1);
@@ -201,6 +202,8 @@ static void display_no_killed(lore_type *lore_ptr)
 static void display_number_of_nazguls(lore_type *lore_ptr)
 {
     if (lore_ptr->mode != MONSTER_LORE_DEBUG && lore_ptr->r_ptr->r_tkills == 0)
+        return;
+    if (!any_bits(lore_ptr->r_ptr->flags7, RF7_NAZGUL))
         return;
 
     int remain = lore_ptr->r_ptr->max_num;
@@ -522,16 +525,16 @@ static void display_monster_escort_contents(lore_type *lore_ptr)
 
         monster_race *rf_ptr = &r_info[lore_ptr->r_ptr->reinforce_id[n]];
         if (rf_ptr->flags1 & RF1_UNIQUE) {
-            hooked_roff(format(_("、%s", ", %s"), r_name + rf_ptr->name));
+            hooked_roff(format(_("、%s", ", %s"), rf_ptr->name.c_str()));
             continue;
         }
 
 #ifdef JP
-        hooked_roff(format("、 %dd%d 体の%s", lore_ptr->r_ptr->reinforce_dd[n], lore_ptr->r_ptr->reinforce_ds[n], r_name + rf_ptr->name));
+        hooked_roff(format("、 %dd%d 体の%s", lore_ptr->r_ptr->reinforce_dd[n], lore_ptr->r_ptr->reinforce_ds[n], rf_ptr->name.c_str()));
 #else
         bool plural = (lore_ptr->r_ptr->reinforce_dd[n] * lore_ptr->r_ptr->reinforce_ds[n] > 1);
         GAME_TEXT name[MAX_NLEN];
-        strcpy(name, r_name + rf_ptr->name);
+        strcpy(name, rf_ptr->name.c_str());
         if (plural)
             plural_aux(name);
         hooked_roff(format(",%dd%d %s", lore_ptr->r_ptr->reinforce_dd[n], lore_ptr->r_ptr->reinforce_ds[n], name));
