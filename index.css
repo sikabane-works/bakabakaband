@@ -53,7 +53,7 @@ body {
 #melko-serif {
 	width: 57%;
     position: absolute;
-    top: -20%;
+    top: 0rem;
     right: -3%;
     z-index: 2;
 }
@@ -96,14 +96,14 @@ h2 {
 
 #ahona
 {
-    width:70%;
+    width:100%;
 }
 
 #title-div
 {
     z-index: 10;
     position: absolute;
-    top: 20rem;
+    top: 28rem;
     width: 43%;
     right: 2%;
 }
@@ -119,6 +119,13 @@ a.button-link:hover		{ color:white;}
     text-decoration: none;
 }
 
+.select-icon
+{
+    position: absolute;
+    width: 6rem;
+    left: -1rem;
+}
+
 .button
 {
     width: 100%;
@@ -127,10 +134,11 @@ a.button-link:hover		{ color:white;}
     background-color: rgba(20,10,0,1.00);
     border: solid 0.5rem;
     margin: 1rem;
-    padding: 1rem 1rem 1rem 5.4rem;
+    padding: 1rem 1rem 1rem 7.4rem;
     border-radius: 5.5rem;
     z-index: 10;
     justify-content: center;
+    flex-direction: column;
 }
 
 .button-small
