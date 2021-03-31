@@ -379,6 +379,7 @@ hengband_SOURCES = \
 	main/info-initializer.cpp main/info-initializer.h \
 	main/init-error-messages-table.cpp main/init-error-messages-table.h \
 	main/music-definitions-table.cpp main/music-definitions-table.h \
+	main/scene-table.cpp main/scene-table.h \
 	main/sound-definitions-table.cpp main/sound-definitions-table.h \
 	main/sound-of-music.cpp main/sound-of-music.h \
 	main/x11-gamma-builder.cpp main/x11-gamma-builder.h \
@@ -418,6 +419,7 @@ hengband_SOURCES = \
 	mind/mind-blue-mage.cpp mind/mind-blue-mage.h \
 	mind/mind-cavalry.cpp mind/mind-cavalry.h \
 	mind/mind-chaos-warrior.cpp mind/mind-chaos-warrior.h \
+	mind/mind-elementalist.cpp mind/mind-elementalist.h \
 	mind/mind-explanations-table.cpp mind/mind-explanations-table.h \
 	mind/mind-force-trainer.cpp mind/mind-force-trainer.h \
 	mind/mind-info.cpp mind/mind-info.h \
@@ -525,6 +527,7 @@ hengband_SOURCES = \
 	mspell/mspell-status.cpp mspell/mspell-status.h \
 	mspell/mspell-particularity.cpp mspell/mspell-particularity.h \
 	mspell/mspell-selector.cpp mspell/mspell-selector.h \
+	mspell/mspell.h \
 	mspell/smart-mspell-util.cpp mspell/smart-mspell-util.h \
 	mspell/specified-summon.cpp mspell/specified-summon.h \
 	mspell/summon-checker.cpp mspell/summon-checker.h \
@@ -711,7 +714,6 @@ hengband_SOURCES = \
 	room/rooms-trap.cpp room/rooms-trap.h \
 	room/rooms-vault.cpp room/rooms-vault.h \
 	room/space-finder.cpp room/space-finder.h \
-	room/pit-nest-kinds-table.cpp room/pit-nest-kinds-table.h \
 	room/treasure-deployment.cpp room/treasure-deployment.h \
 	room/vault-builder.cpp room/vault-builder.h \
 	\
@@ -855,8 +857,10 @@ hengband_SOURCES = \
 	util/angband-files.cpp util/angband-files.h \
 	util/buffer-shaper.cpp util/buffer-shaper.h \
 	util/bit-flags-calculator.h \
+	util/flag-group.h \
 	util/int-char-converter.h \
 	util/object-sort.cpp util/object-sort.h \
+	util/probability-table.h \
 	util/quarks.cpp util/quarks.h \
 	util/sort.cpp util/sort.h \
 	util/string-processor.cpp util/string-processor.h \
@@ -917,22 +921,42 @@ hengband_SOURCES = \
 	world/world-turn-processor.cpp world/world-turn-processor.h
 
 EXTRA_hengband_SOURCES = \
-	angband.ico angband.rc ang_eng.rc maid-x11.cpp main-win.cpp \
-	makefile.bcc makefile.std term/readdib.cpp term/readdib.h wall.bmp
+	angband.ico angband.rc ang_eng.rc ang_jp.rc maid-x11.cpp main-win.cpp \
+	main-win/main-win-bg.cpp main-win/main-win-bg.h \
+	main-win/main-win-define.h \
+	main-win/main-win-file-utils.cpp main-win/main-win-file-utils.h \
+	main-win/main-win-mci.cpp main-win/main-win-mci.h \
+	main-win/main-win-mmsystem.h \
+	main-win/main-win-music.cpp main-win/main-win-music.h \
+	main-win/main-win-sound.cpp main-win/main-win-sound.h \
+	main-win/main-win-tokenizer.cpp main-win/main-win-tokenizer.h \
+	main-win/main-win-windows.h \
+	makefile.bcc makefile.std term/readdib.cpp term/readdib.h wall.bmp \
+	stdafx.cpp stdafx.h
 
 EXTRA_DIST = \
 	gcc-wrap
 
-DEFAULT_INCLUDES = -I$(srcdir) -I$(top_builddir)/src 
-CFLAGS += $(XFT_CFLAGS) $(libcurl_CFLAGS)
+DEFAULT_INCLUDES = -I$(srcdir) -I$(top_builddir)/src
+CPPFLAGS += $(XFT_CFLAGS) $(libcurl_CFLAGS) -include stdafx.h
 LIBS += $(XFT_LIBS) $(libcurl_LIBS)
 COMPILE = $(srcdir)/gcc-wrap $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
-	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) 
-CXXCOMPILE = $(srcdir)/gcc-wrap $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+CXXCOMPILE = $(srcdir)/gcc-wrap $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CXXFLAGS)
+
+stdafx.h.gch: stdafx.h stdafx.cpp Makefile
+	$(CXX) -x c++-header $(CXXFLAGS) $(srcdir)/stdafx.cpp -o $@
+	rm -f stdafx.h.gch.sum
+	md5sum $@ > stdafx.h.gch.sum
+
+$(hengband_SOURCES:.cpp=.$(OBJEXT)): stdafx.h.gch
 
 install-exec-hook:
 if SET_GID
 	chgrp "@GAMEGROUP@" "$(DESTDIR)$(bindir)/hengband"
 	chmod g+s "$(DESTDIR)$(bindir)/hengband"
 endif
+
+clean-local:
+	-rm stdafx.h.gch stdafx.h.gch.sum

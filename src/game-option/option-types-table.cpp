@@ -15,8 +15,7 @@
  * @brief オプションテーブル /
  * Available Options
  */
-const option_type option_info[MAX_OPTION_INFO] = {
-    /*** Input Options ***/
+const std::array<option_type, MAX_OPTION_INFO> option_info = {{ /*** Input Options ***/
     { &rogue_like_commands, FALSE, OPT_PAGE_INPUT, 0, 0, "rogue_like_commands", _("ローグ風キー配置を使用する", "Rogue-like commands") },
 
     { &always_pickup, FALSE, OPT_PAGE_INPUT, 0, 5, "always_pickup", _("常にアイテムを拾う", "Pick things up by default") },
@@ -78,6 +77,8 @@ const option_type option_info[MAX_OPTION_INFO] = {
     { &view_torch_grids, FALSE, OPT_PAGE_MAPSCREEN, 1, 7, "view_torch_grids", _("明かりで照らした場所はそのままにする", "Map remembers all torch-lit grids") },
 
     { &view_unsafe_grids, FALSE, OPT_PAGE_MAPSCREEN, 1, 8, "view_unsafe_grids", _("トラップ感知済みでない場所を表示する", "Map marked by detect traps") },
+
+    { &view_hidden_walls, FALSE, OPT_PAGE_MAPSCREEN, 1, 2, "view_hidden_walls", _("壁の中に囲まれた壁を表示する", "Map walls hidden in other walls") },
 
     { &view_reduce_view, FALSE, OPT_PAGE_MAPSCREEN, 1, 17, "view_reduce_view", _("街では視野を狭くする", "Reduce view-radius in town") },
 
@@ -202,7 +203,6 @@ const option_type option_info[MAX_OPTION_INFO] = {
         _("トラップ感知範囲外に出る直前に警告する", "Alert when leaving trap detected area") },
 
     /*** Birth Options ***/
-    { &manual_haggle, FALSE, OPT_PAGE_BIRTH, 1, 0, "manual_haggle", _("店で値切り交渉をする", "Manually haggle in stores") },
 
     { &easy_band, FALSE, OPT_PAGE_BIRTH, 6, 31, "easy_band", _("初心者用簡単モード(*)", "Easy Mode (*)") },
 
@@ -291,7 +291,7 @@ const option_type option_info[MAX_OPTION_INFO] = {
 
     /*** End of Table ***/
     { NULL, 0, 0, 0, 0, NULL, NULL }
-};
+}};
 
 /*!
  * チートオプションの定義テーブル / Cheating options

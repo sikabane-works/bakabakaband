@@ -242,19 +242,20 @@ s16b PlayerSpeed::battleform_value()
 s16b PlayerSpeed::mutation_value()
 {
     SPEED result = 0;
-    if (this->owner_ptr->muta3) {
-        if (any_bits(this->owner_ptr->muta3, MUT3_XTRA_FAT)) {
-            result -= 2;
-        }
 
-        if (any_bits(this->owner_ptr->muta3, MUT3_XTRA_LEGS)) {
-            result += 3;
-        }
-
-        if (any_bits(this->owner_ptr->muta3, MUT3_SHORT_LEG)) {
-            result -= 3;
-        }
+    const auto &muta = this->owner_ptr->muta;
+    if (muta.has(MUTA::XTRA_FAT)) {
+        result -= 2;
     }
+
+    if (muta.has(MUTA::XTRA_LEGS)) {
+        result += 3;
+    }
+
+    if (muta.has(MUTA::SHORT_LEG)) {
+        result -= 3;
+    }
+
     return result;
 }
 
@@ -369,6 +370,7 @@ s16b PlayerSpeed::set_exception_value(s16b value)
         value = this->default_value;
         value += this->riding_value();
         value += this->inventory_weight_value();
+        value += this->action_value();
     }
     return value;
 }

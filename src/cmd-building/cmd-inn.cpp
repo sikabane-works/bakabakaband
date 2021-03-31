@@ -49,6 +49,7 @@ static bool is_healthy_stay(player_type *customer_ptr)
 }
 
 
+#ifdef JP
 static bool is_player_undead(player_type *customer_ptr)
 {
 	bool is_player_undead = is_specific_player_race(customer_ptr, RACE_SKELETON) ||
@@ -57,6 +58,7 @@ static bool is_player_undead(player_type *customer_ptr)
 		is_specific_player_race(customer_ptr, RACE_SPECTRE);
 	return is_player_undead;
 }
+#endif
 
 
 /*!
@@ -220,7 +222,6 @@ static bool stay_inn(player_type *customer_ptr)
 
 
 /*!
- * todo 悪夢を見る前後に全回復しているが、何か意図がある？
  * @brief 宿屋を利用する
  * @param customer_ptr プレーヤーへの参照ポインタ
  * @param cmd 宿屋の利用施設ID
@@ -232,6 +233,7 @@ static bool stay_inn(player_type *customer_ptr)
  * will not be that useful.  I will keep it in the hopes the player
  * ghost code does become a reality again. Does help to avoid filthy urchins.
  * Resting at night is also a quick way to restock stores -KMW-
+ * @todo 悪夢を見る前後に全回復しているが、何か意図がある？
  */
 bool inn_comm(player_type *customer_ptr, int cmd)
 {
@@ -245,7 +247,7 @@ bool inn_comm(player_type *customer_ptr, int cmd)
 		display_rumor(customer_ptr, TRUE);
 		return TRUE;
 	default:
-		// todo リファクタリング前のコードもTRUEだった、FALSEにすべきでは.
+		//!< @todo リファクタリング前のコードもTRUEだった、FALSEにすべきでは.
 		return TRUE;
 	}
 }

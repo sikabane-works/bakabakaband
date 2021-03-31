@@ -385,19 +385,19 @@ static void update_bonuses(player_type *creature_ptr)
         }
     }
 
-    creature_ptr->stat_add[A_STR] = PlayerStrength(creature_ptr).ModificationValue();
-    creature_ptr->stat_add[A_INT] = PlayerIntelligence(creature_ptr).ModificationValue();
-    creature_ptr->stat_add[A_WIS] = PlayerWisdom(creature_ptr).ModificationValue();
-    creature_ptr->stat_add[A_DEX] = PlayerDextarity(creature_ptr).ModificationValue();
-    creature_ptr->stat_add[A_CON] = PlayerConstitution(creature_ptr).ModificationValue();
-    creature_ptr->stat_add[A_CHR] = PlayerCharisma(creature_ptr).ModificationValue();
+    creature_ptr->stat_add[A_STR] = PlayerStrength(creature_ptr).modification_value();
+    creature_ptr->stat_add[A_INT] = PlayerIntelligence(creature_ptr).modification_value();
+    creature_ptr->stat_add[A_WIS] = PlayerWisdom(creature_ptr).modification_value();
+    creature_ptr->stat_add[A_DEX] = PlayerDextarity(creature_ptr).modification_value();
+    creature_ptr->stat_add[A_CON] = PlayerConstitution(creature_ptr).modification_value();
+    creature_ptr->stat_add[A_CHR] = PlayerCharisma(creature_ptr).modification_value();
 
-    PlayerStrength(creature_ptr).updateValue();
-    PlayerIntelligence(creature_ptr).updateValue();
-    PlayerWisdom(creature_ptr).updateValue();
-    PlayerDextarity(creature_ptr).updateValue();
-    PlayerConstitution(creature_ptr).updateValue();
-    PlayerCharisma(creature_ptr).updateValue();
+    PlayerStrength(creature_ptr).update_value();
+    PlayerIntelligence(creature_ptr).update_value();
+    PlayerWisdom(creature_ptr).update_value();
+    PlayerDextarity(creature_ptr).update_value();
+    PlayerConstitution(creature_ptr).update_value();
+    PlayerCharisma(creature_ptr).update_value();
 
     o_ptr = &creature_ptr->inventory_list[INVEN_BOW];
     if (o_ptr->k_idx) {
@@ -416,9 +416,9 @@ static void update_bonuses(player_type *creature_ptr)
         creature_ptr->to_ds[i] = calc_to_weapon_dice_side(creature_ptr, INVEN_MAIN_HAND + i);
     }
 
-    creature_ptr->pspeed = PlayerSpeed(creature_ptr).getValue();
+    creature_ptr->pspeed = PlayerSpeed(creature_ptr).get_value();
     creature_ptr->see_infra = calc_intra_vision(creature_ptr);
-    creature_ptr->skill_stl = PlayerStealth(creature_ptr).getValue();
+    creature_ptr->skill_stl = PlayerStealth(creature_ptr).get_value();
     creature_ptr->skill_dis = calc_disarming(creature_ptr);
     creature_ptr->skill_dev = calc_device_ability(creature_ptr);
     creature_ptr->skill_sav = calc_saving_throw(creature_ptr);
@@ -519,6 +519,9 @@ static void update_alignment(player_type *creature_ptr)
             break;
         case RACE_BALROG:
             creature_ptr->align -= 200;
+            break;
+
+        default:
             break;
         }
     }
@@ -894,7 +897,8 @@ static void update_max_mana(player_type *creature_ptr)
         return;
 
     int levels;
-    if ((creature_ptr->pclass == CLASS_MINDCRAFTER) || (creature_ptr->pclass == CLASS_MIRROR_MASTER) || (creature_ptr->pclass == CLASS_BLUE_MAGE)) {
+    if ((creature_ptr->pclass == CLASS_MINDCRAFTER) || (creature_ptr->pclass == CLASS_MIRROR_MASTER) || (creature_ptr->pclass == CLASS_BLUE_MAGE)
+        || creature_ptr->pclass == CLASS_ELEMENTALIST) {
         levels = creature_ptr->lev;
     } else {
         if (mp_ptr->spell_first > creature_ptr->lev) {
@@ -957,7 +961,8 @@ static void update_max_mana(player_type *creature_ptr)
     case CLASS_BLUE_MAGE:
     case CLASS_MONK:
     case CLASS_FORCETRAINER:
-    case CLASS_SORCERER: {
+    case CLASS_SORCERER:
+    case CLASS_ELEMENTALIST: {
         if (creature_ptr->inventory_list[INVEN_MAIN_HAND].tval <= TV_SWORD)
             cur_wgt += creature_ptr->inventory_list[INVEN_MAIN_HAND].weight;
         if (creature_ptr->inventory_list[INVEN_SUB_HAND].tval <= TV_SWORD)
@@ -1011,7 +1016,8 @@ static void update_max_mana(player_type *creature_ptr)
         switch (creature_ptr->pclass) {
         case CLASS_MAGE:
         case CLASS_HIGH_MAGE:
-        case CLASS_BLUE_MAGE: {
+        case CLASS_BLUE_MAGE:
+        case CLASS_ELEMENTALIST:  {
             msp -= msp * (cur_wgt - max_wgt) / 600;
             break;
         }
@@ -1180,7 +1186,7 @@ static ACTION_SKILL_POWER calc_intra_vision(player_type *creature_ptr)
 
     pow = tmp_rp_ptr->infra;
 
-    if (any_bits(creature_ptr->muta3, MUT3_INFRAVIS)) {
+    if (creature_ptr->muta.has(MUTA::INFRAVIS)) {
         pow += 3;
     }
 
@@ -1306,7 +1312,7 @@ static ACTION_SKILL_POWER calc_saving_throw(player_type *creature_ptr)
     pow = tmp_rp_ptr->r_sav + c_ptr->c_sav + a_ptr->a_sav;
     pow += ((cp_ptr->x_sav * creature_ptr->lev / 10) + (ap_ptr->a_sav * creature_ptr->lev / 50));
 
-    if (any_bits(creature_ptr->muta3, MUT3_MAGIC_RES))
+    if (creature_ptr->muta.has(MUTA::MAGIC_RES))
         pow += (15 + (creature_ptr->lev / 5));
 
     pow += adj_wis_sav[creature_ptr->stat_index[A_WIS]];
@@ -1366,7 +1372,7 @@ static ACTION_SKILL_POWER calc_search(player_type *creature_ptr)
             pow += (o_ptr->pval * 5);
     }
 
-    if (any_bits(creature_ptr->muta3, MUT3_XTRA_EYES)) {
+    if (creature_ptr->muta.has(MUTA::XTRA_EYES)) {
         pow += 15;
     }
 
@@ -1418,7 +1424,7 @@ static ACTION_SKILL_POWER calc_search_freq(player_type *creature_ptr)
         pow -= 15;
     }
 
-    if (any_bits(creature_ptr->muta3, MUT3_XTRA_EYES)) {
+    if (creature_ptr->muta.has(MUTA::XTRA_EYES)) {
         pow += 15;
     }
 
@@ -1834,15 +1840,15 @@ static ARMOUR_CLASS calc_to_ac(player_type *creature_ptr, bool is_real_value)
         ac += 5;
     }
 
-    if (any_bits(creature_ptr->muta3, MUT3_WART_SKIN)) {
+    if (creature_ptr->muta.has(MUTA::WART_SKIN)) {
         ac += 5;
     }
 
-    if (any_bits(creature_ptr->muta3, MUT3_SCALES)) {
+    if (creature_ptr->muta.has(MUTA::SCALES)) {
         ac += 10;
     }
 
-    if (any_bits(creature_ptr->muta3, MUT3_IRON_SKIN)) {
+    if (creature_ptr->muta.has(MUTA::IRON_SKIN)) {
         ac += 25;
     }
 
@@ -1930,11 +1936,11 @@ static ARMOUR_CLASS calc_to_ac(player_type *creature_ptr, bool is_real_value)
  * @return 二刀流ペナルティ量
  * @details
  * * 二刀流にしていなければ0
- * * 棘セットによる軽減
- * * 源氏エゴによる軽減
- * * マンゴーシュ/脇差を左に装備した場合の軽減
- * * 武蔵セットによる軽減
- * * 竿上武器による増加
+ * * 特別セットによる軽減
+ * * EASY2_WEAPONによる軽減
+ * * SUPPORTIVEを左に装備した場合の軽減
+ * * 武蔵セットによる免除
+ * * 竿状武器による増加
  */
 s16b calc_double_weapon_penalty(player_type *creature_ptr, INVENTORY_IDX slot)
 {
@@ -1950,20 +1956,17 @@ s16b calc_double_weapon_penalty(player_type *creature_ptr, INVENTORY_IDX slot)
                 && (creature_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TWINKLE))) {
             penalty = penalty / 2 - 5;
         }
-        if (creature_ptr->easy_2weapon) {
-            if (penalty > 0)
+
+        for (unsigned int i = FLAG_CAUSE_INVEN_MAIN_HAND; i < FLAG_CAUSE_MAX; i <<= 1)
+            if (penalty > 0 && any_bits(creature_ptr->easy_2weapon, i))
                 penalty /= 2;
-        } else if (has_flag(flags, TR_SUPPORTIVE)) {
+
+        if (has_flag(flags, TR_SUPPORTIVE))
             penalty = MAX(0, penalty - 10);
-        }
+
         if ((creature_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_MUSASI_KATANA)
             && (creature_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_MUSASI_WAKIZASI)) {
             penalty = MIN(0, penalty);
-        } else {
-            if ((creature_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_MUSASI_KATANA) && (penalty > 0))
-                penalty /= 2;
-            if ((creature_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_MUSASI_WAKIZASI) && (penalty > 0))
-                penalty /= 2;
         }
 
         if (creature_ptr->inventory_list[slot].tval == TV_POLEARM)
@@ -1989,6 +1992,9 @@ static bool is_riding_two_hands(player_type *creature_ptr)
             if ((empty_hands(creature_ptr, FALSE) != EMPTY_HAND_NONE) && !has_melee_weapon(creature_ptr, INVEN_MAIN_HAND)
                 && !has_melee_weapon(creature_ptr, INVEN_SUB_HAND))
                 return TRUE;
+
+        default:
+            break;
         }
     }
 
@@ -2303,6 +2309,10 @@ static s16b calc_to_hit(player_type *creature_ptr, INVENTORY_IDX slot, bool is_r
             /* fall through */
         case MELEE_TYPE_BAREHAND_TWO:
             hit += (creature_ptr->skill_exp[GINOU_SUDE] - WEAPON_EXP_BEGINNER) / 200;
+            break;
+
+        default:
+            break;
         }
 
         if ((is_martial_arts_mode(creature_ptr) && empty_hands(creature_ptr, FALSE) == (EMPTY_HAND_MAIN | EMPTY_HAND_SUB))
@@ -2963,7 +2973,7 @@ void check_experience(player_type *creature_ptr)
         if (creature_ptr->lev > creature_ptr->max_plv) {
             creature_ptr->max_plv = creature_ptr->lev;
 
-            if ((creature_ptr->pclass == CLASS_CHAOS_WARRIOR) || any_bits(creature_ptr->muta2, MUT2_CHAOS_GIFT)) {
+            if ((creature_ptr->pclass == CLASS_CHAOS_WARRIOR) || creature_ptr->muta.has(MUTA::CHAOS_GIFT)) {
                 level_reward = TRUE;
             }
             if (creature_ptr->prace == RACE_BEASTMAN) {

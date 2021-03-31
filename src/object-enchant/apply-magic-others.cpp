@@ -1,8 +1,8 @@
 ﻿/*!
- * todo ちょっと長い。要分割
  * @brief 防具系のアイテムを強化して(恐らく床に)生成する処理
  * @date 2020/06/02
  * @author Hourier
+ * @todo ちょっと長い。要分割
  */
 
 #include "object-enchant/apply-magic-others.h"
@@ -159,6 +159,8 @@ void apply_magic_others(player_type *owner_ptr, object_type *o_ptr, int power)
             match = RF9_DROP_SKELETON;
         } else if (o_ptr->sval == SV_CORPSE) {
             match = RF9_DROP_CORPSE;
+        } else {
+            match = RF9_DROP_CORPSE;
         }
 
         get_mon_num_prep(owner_ptr, item_monster_okay, NULL);
@@ -195,7 +197,7 @@ void apply_magic_others(player_type *owner_ptr, object_type *o_ptr, int power)
 
         o_ptr->pval = i;
         if (cheat_peek) {
-            msg_format(_("%sの像", "Statue of %s"), r_name + r_ptr->name);
+            msg_format(_("%sの像", "Statue of %s"), r_ptr->name.c_str());
         }
 
         object_aware(owner_ptr, o_ptr);
@@ -217,5 +219,8 @@ void apply_magic_others(player_type *owner_ptr, object_type *o_ptr, int power)
 
         break;
     }
+
+    default:
+        break;
     }
 }

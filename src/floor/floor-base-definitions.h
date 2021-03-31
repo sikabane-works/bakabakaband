@@ -51,3 +51,9 @@
 
 /*! @brief 汎用ダンジョン最小横倍率 */
 #define MIN_WID_MULTIPLE 4
+
+/*! @brief クソデカダンジョン生成率(1/N) */
+#define HUGE_DUNGEON_RATE 10
+
+/*! @brief 大型ダンジョン生成率(1/N) */
+#define LARGE_DUNGEON_RATE 4

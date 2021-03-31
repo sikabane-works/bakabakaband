@@ -333,9 +333,9 @@ void display_scores_aux(int from, int to, int note, high_score *score)
 
 				/* Some people die outside of the dungeon */
 				if (!cdun)
-					sprintf(out_val+13, "  地上で%sに殺された", the_score.how);
+					sprintf(out_val+13, "  地上で%sに殺された後飽きた", the_score.how);
 				else
-					sprintf(out_val+13, "  %d階で%sに殺された",
+					sprintf(out_val+13, "  %d階で%sに殺された後飽きた",
 						cdun, the_score.how);
 			}
 
@@ -347,7 +347,7 @@ void display_scores_aux(int from, int to, int note, high_score *score)
 					the_score.how);
 			else
 				sprintf(out_val, 
-					"               Killed by %s on %s %d",
+					"               Killed by %s on %s %d and got tired",
 					the_score.how, "Dungeon Level", cdun);
 
 			/* Append a "maximum level" */
@@ -432,11 +432,11 @@ void display_scores(int from, int to)
 
 
 /*!
- * todo プリプロが邪魔していて最初のif文を削除すると到達不能コードが発生する
  * @brief スコアサーバへの転送処理
  * @param current_player_ptr プレーヤーへの参照ポインタ
  * @param do_send 実際に転送ア処置を行うか否か
  * @return 転送が成功したらTRUEを返す
+ * @todo プリプロが邪魔していて最初のif文を削除すると到達不能コードが発生する
  */
 bool send_world_score(player_type *current_player_ptr, bool do_send, void(*update_playtime)(void), display_player_pf display_player)
 {

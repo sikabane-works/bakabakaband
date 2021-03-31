@@ -74,7 +74,6 @@ PRICE kakekin;
 int sel_monster;
 
 bool reinit_wilderness = FALSE;
-MONSTER_IDX today_mon;
 
 /*!
  * @brief 町に関するヘルプを表示する / Display town history
@@ -220,10 +219,13 @@ static void bldg_process_command(player_type *player_ptr, building_type *bldg, i
 		paid = free_level_recall(player_ptr);
 		break;
 
-	case BACT_LOSE_MUTATION:
-		if (player_ptr->muta1 || player_ptr->muta2 || (player_ptr->muta3 & ~MUT3_GOOD_LUCK) ||
-			(player_ptr->pseikaku != PERSONALITY_LUCKY && (player_ptr->muta3 & MUT3_GOOD_LUCK)))
-		{
+	case BACT_LOSE_MUTATION: {
+		auto muta = player_ptr->muta;
+		if (player_ptr->pseikaku == PERSONALITY_LUCKY) {
+			// ラッキーマンの白オーラは突然変異治療の対象外
+			muta.reset(MUTA::GOOD_LUCK);
+		}
+		if (muta.any()) {
 			while (!lose_mutation(player_ptr, 0));
 			paid = TRUE;
 			break;
@@ -232,6 +234,7 @@ static void bldg_process_command(player_type *player_ptr, building_type *bldg, i
 		msg_print(_("治すべき突然変異が無い。", "You have no mutations."));
 		msg_print(NULL);
 		break;
+	}
 
 	case BACT_BATTLE:
 		monster_arena_comm(player_ptr);

@@ -68,7 +68,7 @@ static concptr attr_to_text(monster_race *r_ptr)
     return _("変な色の", "Icky");
 }
 
-spoiler_output_status spoil_mon_desc(concptr fname, bool show_all, race_flags8 RF8_flags)
+spoiler_output_status spoil_mon_desc(concptr fname, std::function<bool(const monster_race *)> filter_monster)
 {
     player_type dummy;
     u16b why = 2;
@@ -103,15 +103,15 @@ spoiler_output_status spoil_mon_desc(concptr fname, bool show_all, race_flags8 R
     int n = 0;
     for (int i = 1; i < max_r_idx; i++) {
         monster_race *r_ptr = &r_info[i];
-        if (r_ptr->name)
+        if (!r_ptr->name.empty())
             who[n++] = (s16b)i;
     }
 
     ang_sort(&dummy, who, &why, n, ang_sort_comp_hook, ang_sort_swap_hook);
     for (int i = 0; i < n; i++) {
         monster_race *r_ptr = &r_info[who[i]];
-        concptr name = (r_name + r_ptr->name);
-        if (!show_all && none_bits(r_ptr->flags8, RF8_flags))
+        concptr name = r_ptr->name.c_str();
+        if (filter_monster && !filter_monster(r_ptr))
             continue;
 
         char name_buf[41];
@@ -158,13 +158,6 @@ spoiler_output_status spoil_mon_desc(concptr fname, bool show_all, race_flags8 R
 }
 
 /*!
- * @brief モンスター簡易情報のスポイラー出力を行うメインルーチン /
- * Create a spoiler file for monsters   -BEN-
- * @param fname 生成ファイル名
- */
-spoiler_output_status spoil_mon_desc_all(concptr fname) { return spoil_mon_desc(fname, TRUE, RF8_WILD_ALL); }
-
-/*!
  * @brief 関数ポインタ用の出力関数 /
  * Hook function used in spoil_mon_info()
  * @param attr 未使用
@@ -204,7 +197,7 @@ spoiler_output_status spoil_mon_info(concptr fname)
     int n = 0;
     for (int i = 1; i < max_r_idx; i++) {
         monster_race *r_ptr = &r_info[i];
-        if (r_ptr->name)
+        if (!r_ptr->name.empty())
             who[n++] = (s16b)i;
     }
 
@@ -222,7 +215,7 @@ spoiler_output_status spoil_mon_info(concptr fname)
 #endif
         }
 
-        sprintf(buf, _("%s/%s  (", "%s%s ("), (r_name + r_ptr->name), _(r_name + r_ptr->E_name, "")); /* ---)--- */
+        sprintf(buf, _("%s/%s  (", "%s%s ("), r_ptr->name.c_str(), _(r_ptr->E_name.c_str(), "")); /* ---)--- */
         spoil_out(buf);
         spoil_out(attr_to_text(r_ptr));
         sprintf(buf, " '%c')\n", r_ptr->d_char);

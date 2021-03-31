@@ -257,6 +257,9 @@ s16b wield_slot(player_type *owner_ptr, object_type *o_ptr)
     case TV_BOOTS: {
         return (INVEN_FEET);
     }
+
+    default:
+        break;
     }
 
     return -1;
@@ -272,6 +275,8 @@ s16b wield_slot(player_type *owner_ptr, object_type *o_ptr)
 bool check_book_realm(player_type *owner_ptr, const tval_type book_tval, const OBJECT_SUBTYPE_VALUE book_sval)
 {
     if (book_tval < TV_LIFE_BOOK)
+        return FALSE;
+    if (owner_ptr->pclass == CLASS_ELEMENTALIST)
         return FALSE;
     if (owner_ptr->pclass == CLASS_SORCERER) {
         return is_magic(tval2realm(book_tval));

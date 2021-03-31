@@ -1,8 +1,8 @@
 ﻿/*!
- * todo 少し長い。要分割
  * @brief ベースアイテムを強化する処理
  * @date 2020/06/03
  * @author Hourier
+ * @todo 少し長い。要分割
  */
 
 #include "object-enchant/apply-magic.h"
@@ -79,7 +79,7 @@ void apply_magic(player_type *owner_ptr, object_type *o_ptr, DEPTH lev, BIT_FLAG
     if (has_good_luck(owner_ptr)) {
         f1 += 5;
         f2 += 2;
-    } else if (owner_ptr->muta3 & MUT3_BAD_LUCK) {
+    } else if (owner_ptr->muta.has(MUTA::BAD_LUCK)) {
         f1 -= 5;
         f2 -= 2;
     }
@@ -124,42 +124,10 @@ void apply_magic(player_type *owner_ptr, object_type *o_ptr, DEPTH lev, BIT_FLAG
     }
 
     if (object_is_fixed_artifact(o_ptr)) {
-        artifact_type *a_ptr = &a_info[o_ptr->name1];
+        artifact_type *a_ptr = apply_artifact(owner_ptr, o_ptr);
         a_ptr->cur_num = 1;
         if (current_world_ptr->character_dungeon)
             a_ptr->floor_id = owner_ptr->floor_id;
-
-        o_ptr->pval = a_ptr->pval;
-        o_ptr->ac = a_ptr->ac;
-        o_ptr->dd = a_ptr->dd;
-        o_ptr->ds = a_ptr->ds;
-        o_ptr->to_a = a_ptr->to_a;
-        o_ptr->to_h = a_ptr->to_h;
-        o_ptr->to_d = a_ptr->to_d;
-        o_ptr->weight = a_ptr->weight;
-        o_ptr->xtra2 = a_ptr->act_idx;
-
-        if (o_ptr->name1 == ART_MILIM) {
-            if (owner_ptr->pseikaku == PERSONALITY_SEXY) {
-                o_ptr->pval = 3;
-            }
-        }
-
-        if (!a_ptr->cost)
-            o_ptr->ident |= (IDENT_BROKEN);
-        if (a_ptr->gen_flags & TRG_CURSED)
-            o_ptr->curse_flags |= (TRC_CURSED);
-        if (a_ptr->gen_flags & TRG_HEAVY_CURSE)
-            o_ptr->curse_flags |= (TRC_HEAVY_CURSE);
-        if (a_ptr->gen_flags & TRG_PERMA_CURSE)
-            o_ptr->curse_flags |= (TRC_PERMA_CURSE);
-        if (a_ptr->gen_flags & (TRG_RANDOM_CURSE0))
-            o_ptr->curse_flags |= get_curse(owner_ptr, 0, o_ptr);
-        if (a_ptr->gen_flags & (TRG_RANDOM_CURSE1))
-            o_ptr->curse_flags |= get_curse(owner_ptr, 1, o_ptr);
-        if (a_ptr->gen_flags & (TRG_RANDOM_CURSE2))
-            o_ptr->curse_flags |= get_curse(owner_ptr, 2, o_ptr);
-
         return;
     }
 
@@ -231,34 +199,34 @@ void apply_magic(player_type *owner_ptr, object_type *o_ptr, DEPTH lev, BIT_FLAG
         if (!e_ptr->cost)
             o_ptr->ident |= (IDENT_BROKEN);
 
-        if (e_ptr->gen_flags & TRG_CURSED)
+        if (e_ptr->gen_flags.has(TRG::CURSED))
             o_ptr->curse_flags |= (TRC_CURSED);
-        if (e_ptr->gen_flags & TRG_HEAVY_CURSE)
+        if (e_ptr->gen_flags.has(TRG::HEAVY_CURSE))
             o_ptr->curse_flags |= (TRC_HEAVY_CURSE);
-        if (e_ptr->gen_flags & TRG_PERMA_CURSE)
+        if (e_ptr->gen_flags.has(TRG::PERMA_CURSE))
             o_ptr->curse_flags |= (TRC_PERMA_CURSE);
-        if (e_ptr->gen_flags & (TRG_RANDOM_CURSE0))
+        if (e_ptr->gen_flags.has(TRG::RANDOM_CURSE0))
             o_ptr->curse_flags |= get_curse(owner_ptr, 0, o_ptr);
-        if (e_ptr->gen_flags & (TRG_RANDOM_CURSE1))
+        if (e_ptr->gen_flags.has(TRG::RANDOM_CURSE1))
             o_ptr->curse_flags |= get_curse(owner_ptr, 1, o_ptr);
-        if (e_ptr->gen_flags & (TRG_RANDOM_CURSE2))
+        if (e_ptr->gen_flags.has(TRG::RANDOM_CURSE2))
             o_ptr->curse_flags |= get_curse(owner_ptr, 2, o_ptr);
 
-        if (e_ptr->gen_flags & (TRG_ONE_SUSTAIN))
+        if (e_ptr->gen_flags.has(TRG::ONE_SUSTAIN))
             one_sustain(o_ptr);
-        if (e_ptr->gen_flags & (TRG_XTRA_POWER))
+        if (e_ptr->gen_flags.has(TRG::XTRA_POWER))
             one_ability(o_ptr);
-        if (e_ptr->gen_flags & (TRG_XTRA_H_RES))
+        if (e_ptr->gen_flags.has(TRG::XTRA_H_RES))
             one_high_resistance(o_ptr);
-        if (e_ptr->gen_flags & (TRG_XTRA_E_RES))
+        if (e_ptr->gen_flags.has(TRG::XTRA_E_RES))
             one_ele_resistance(o_ptr);
-        if (e_ptr->gen_flags & (TRG_XTRA_D_RES))
+        if (e_ptr->gen_flags.has(TRG::XTRA_D_RES))
             one_dragon_ele_resistance(o_ptr);
-        if (e_ptr->gen_flags & (TRG_XTRA_L_RES))
+        if (e_ptr->gen_flags.has(TRG::XTRA_L_RES))
             one_lordly_high_resistance(o_ptr);
-        if (e_ptr->gen_flags & (TRG_XTRA_RES))
+        if (e_ptr->gen_flags.has(TRG::XTRA_RES))
             one_resistance(o_ptr);
-        if (e_ptr->gen_flags & (TRG_XTRA_DICE)) {
+        if (e_ptr->gen_flags.has(TRG::XTRA_DICE)) {
             do {
                 o_ptr->dd++;
             } while (one_in_(o_ptr->dd));
@@ -270,7 +238,9 @@ void apply_magic(player_type *owner_ptr, object_type *o_ptr, DEPTH lev, BIT_FLAG
         if (e_ptr->act_idx)
             o_ptr->xtra2 = (XTRA8)e_ptr->act_idx;
 
-        if ((object_is_cursed(o_ptr) || object_is_broken(o_ptr)) && !(e_ptr->gen_flags & (TRG_POWERFUL))) {
+        bool is_powerful = e_ptr->gen_flags.has(TRG::POWERFUL);
+
+        if ((object_is_cursed(o_ptr) || object_is_broken(o_ptr)) && !is_powerful) {
             if (e_ptr->max_to_h)
                 o_ptr->to_h -= randint1(e_ptr->max_to_h);
             if (e_ptr->max_to_d)
@@ -280,6 +250,15 @@ void apply_magic(player_type *owner_ptr, object_type *o_ptr, DEPTH lev, BIT_FLAG
             if (e_ptr->max_pval)
                 o_ptr->pval -= randint1(e_ptr->max_pval);
         } else {
+            if (is_powerful) {
+                if (e_ptr->max_to_h > 0 && o_ptr->to_h < 0)
+                    o_ptr->to_h = 0 - o_ptr->to_h;
+                if (e_ptr->max_to_d > 0 && o_ptr->to_d < 0)
+                    o_ptr->to_d = 0 - o_ptr->to_d;
+                if (e_ptr->max_to_a > 0 && o_ptr->to_a < 0)
+                    o_ptr->to_a = 0 - o_ptr->to_a;
+            }
+
             o_ptr->to_h += (HIT_PROB)randint1_signed(e_ptr->max_to_h);
             o_ptr->to_d += randint1_signed(e_ptr->max_to_d);
             o_ptr->to_a += (ARMOUR_CLASS)randint1_signed(e_ptr->max_to_a);
@@ -348,17 +327,17 @@ void apply_magic(player_type *owner_ptr, object_type *o_ptr, DEPTH lev, BIT_FLAG
         if (!k_info[o_ptr->k_idx].cost)
             o_ptr->ident |= (IDENT_BROKEN);
 
-        if (k_ptr->gen_flags & (TRG_CURSED))
+        if (k_ptr->gen_flags.has(TRG::CURSED))
             o_ptr->curse_flags |= (TRC_CURSED);
-        if (k_ptr->gen_flags & (TRG_HEAVY_CURSE))
+        if (k_ptr->gen_flags.has(TRG::HEAVY_CURSE))
             o_ptr->curse_flags |= TRC_HEAVY_CURSE;
-        if (k_ptr->gen_flags & (TRG_PERMA_CURSE))
+        if (k_ptr->gen_flags.has(TRG::PERMA_CURSE))
             o_ptr->curse_flags |= TRC_PERMA_CURSE;
-        if (k_ptr->gen_flags & (TRG_RANDOM_CURSE0))
+        if (k_ptr->gen_flags.has(TRG::RANDOM_CURSE0))
             o_ptr->curse_flags |= get_curse(owner_ptr, 0, o_ptr);
-        if (k_ptr->gen_flags & (TRG_RANDOM_CURSE1))
+        if (k_ptr->gen_flags.has(TRG::RANDOM_CURSE1))
             o_ptr->curse_flags |= get_curse(owner_ptr, 1, o_ptr);
-        if (k_ptr->gen_flags & (TRG_RANDOM_CURSE2))
+        if (k_ptr->gen_flags.has(TRG::RANDOM_CURSE2))
             o_ptr->curse_flags |= get_curse(owner_ptr, 2, o_ptr);
     }
 }

@@ -130,15 +130,15 @@ static void show_dead_place(player_type *dead_ptr, char *buf, char *tomb_message
     if (dead_ptr->current_floor_ptr->dun_level == 0) {
         concptr field_name = dead_ptr->town_num ? "街" : "荒野";
         if (streq(dead_ptr->died_from, "途中終了")) {
-            sprintf(tomb_message, "%sで死んだ", field_name);
+            sprintf(tomb_message, "%sで死んで飽きた", field_name);
         } else {
-            sprintf(tomb_message, "に%sで殺された", field_name);
+            sprintf(tomb_message, "に%sで殺されて飽きた", field_name);
         }
     } else {
         if (streq(dead_ptr->died_from, "途中終了")) {
-            sprintf(tomb_message, "地下 %d 階で死んだ", (int)dead_ptr->current_floor_ptr->dun_level);
+            sprintf(tomb_message, "地下 %d 階で死んで飽きた", (int)dead_ptr->current_floor_ptr->dun_level);
         } else {
-            sprintf(tomb_message, "に地下 %d 階で殺された", (int)dead_ptr->current_floor_ptr->dun_level);
+            sprintf(tomb_message, "に地下 %d 階で殺されて飽きた", (int)dead_ptr->current_floor_ptr->dun_level);
         }
     }
 

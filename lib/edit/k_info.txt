@@ -5753,16 +5753,17 @@ F:SLAY_UNDEAD | SLAY_DEMON | SLAY_TROLL | SLAY_GIANT | SLAY_ORC |
 F:BRAND_FIRE | BRAND_ELEC | BRAND_COLD | BRAND_ACID | BRAND_POIS |
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | RIDING
 
-N:595:ネオ・つよしスペシャル:空色の
-E:Neo-Tsuyoshi Special:Sky Blue
+N:595:マサル漢方ダイナミック:空色の
+E:Masaru Chinese Dynamic:Sky Blue
 G:!:B
 I:75:64:0
 W:15:0:4:2000
-A:15/6
+A:15/2
 P:0:1d1:0:0:0
 D:$It cures hallucination and increases your strength and constitution 
 D:$temporarily when you quaff it but your strength and constitution decrease 
 D:$permanently than before when the effect expires.
+F:IGNORE_COLD
 D:それは飲むと幻覚を癒し、一時的に腕力と耐久力が上がるが、効果が切れると
 D:腕力と耐久力の最大値が飲む前よりも下がる。
 
@@ -5795,7 +5796,7 @@ E:Mana:Steel
 G:=:W
 I:45:53:0
 W:80:0:2:30000
-A:65:6
+A:65/6
 F:DEC_MANA
 
 N:600:呪文:大嘗 真吸 回
@@ -6430,7 +6431,7 @@ F:NASTY
 N:673:吐しゃ物
 E:& vomiting~
 G:~:U
-I:3:7:0
+I:3:8:0
 W:0:0:3:0
 A:0/1
 P:0:1d1:0:0:0
@@ -6474,4 +6475,24 @@ W:5:0:200:75
 A:5/3
 P:0:1d1:0:0:0
 F:NASTY
+
+N:678:ネオ・つよしスペシャル:空色の
+E:Neo-Tsuyoshi Special:Sky Blue
+G:!:B
+I:75:67:0
+W:10:0:4:0
+A:10/2
+P:0:1d1:0:0:0
+D:$It decreases your strength and constitution permanently and makes you hallucinate 
+D:$when you quaff it.
+D:それは飲むと腕力と耐久力の最大値が下がり、幻覚に侵される。
+
+N:679:のソウル
+E:Corpse~
+G:*:w
+I:10:2:0
+W:1:0:40:0
+A:1/2
+P:0:1d1:0:0:0
+
 

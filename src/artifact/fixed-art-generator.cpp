@@ -15,6 +15,7 @@
 #include "floor/floor-object.h"
 #include "object-enchant/object-boost.h"
 #include "object-enchant/object-curse.h"
+#include "object-enchant/special-object-flags.h"
 #include "object-enchant/tr-types.h"
 #include "object-enchant/trc-types.h"
 #include "object-enchant/trg-types.h"
@@ -114,13 +115,13 @@ static void random_artifact_resistance(player_type *player_ptr, object_type *o_p
         add_flag(o_ptr->art_flags, TR_AGGRAVATE);
 
     milim_swimsuit(player_ptr, o_ptr);
-    if (a_ptr->gen_flags & TRG_XTRA_POWER)
+    if (a_ptr->gen_flags.has(TRG::XTRA_POWER))
         give_power = TRUE;
 
-    if (a_ptr->gen_flags & TRG_XTRA_H_RES)
+    if (a_ptr->gen_flags.has(TRG::XTRA_H_RES))
         give_resistance = TRUE;
 
-    if (a_ptr->gen_flags & TRG_XTRA_RES_OR_POWER) {
+    if (a_ptr->gen_flags.has(TRG::XTRA_RES_OR_POWER)) {
         if (one_in_(2))
             give_resistance = TRUE;
         else
@@ -132,26 +133,35 @@ static void random_artifact_resistance(player_type *player_ptr, object_type *o_p
 
     if (give_resistance)
         one_high_resistance(o_ptr);
+
+    if (a_ptr->gen_flags.has(TRG::XTRA_DICE)) {
+        do {
+            o_ptr->dd++;
+        } while (one_in_(o_ptr->dd));
+
+        if (o_ptr->dd > 9)
+            o_ptr->dd = 9;
+    }
 }
 
 static void invest_curse_to_fixed_artifact(player_type *player_ptr, artifact_type *a_ptr, object_type *q_ptr)
 {
-    if (a_ptr->gen_flags & TRG_CURSED)
+    if (a_ptr->gen_flags.has(TRG::CURSED))
         q_ptr->curse_flags |= TRC_CURSED;
 
-    if (a_ptr->gen_flags & TRG_HEAVY_CURSE)
+    if (a_ptr->gen_flags.has(TRG::HEAVY_CURSE))
         q_ptr->curse_flags |= TRC_HEAVY_CURSE;
 
-    if (a_ptr->gen_flags & TRG_PERMA_CURSE)
+    if (a_ptr->gen_flags.has(TRG::PERMA_CURSE))
         q_ptr->curse_flags |= TRC_PERMA_CURSE;
 
-    if (a_ptr->gen_flags & TRG_RANDOM_CURSE0)
+    if (a_ptr->gen_flags.has(TRG::RANDOM_CURSE0))
         q_ptr->curse_flags |= get_curse(player_ptr, 0, q_ptr);
 
-    if (a_ptr->gen_flags & TRG_RANDOM_CURSE1)
+    if (a_ptr->gen_flags.has(TRG::RANDOM_CURSE1))
         q_ptr->curse_flags |= get_curse(player_ptr, 1, q_ptr);
 
-    if (a_ptr->gen_flags & TRG_RANDOM_CURSE2)
+    if (a_ptr->gen_flags.has(TRG::RANDOM_CURSE2))
         q_ptr->curse_flags |= get_curse(player_ptr, 2, q_ptr);
 }
 
@@ -170,7 +180,7 @@ static void invest_curse_to_fixed_artifact(player_type *player_ptr, artifact_typ
 bool create_named_art(player_type *player_ptr, ARTIFACT_IDX a_idx, POSITION y, POSITION x)
 {
     artifact_type *a_ptr = &a_info[a_idx];
-    if (!a_ptr->name)
+    if (a_ptr->name.empty())
         return FALSE;
 
     KIND_OBJECT_IDX i = lookup_kind(a_ptr->tval, a_ptr->sval);
@@ -217,16 +227,16 @@ bool make_artifact(player_type *player_ptr, object_type *o_ptr)
 
     for (ARTIFACT_IDX i = 0; i < max_a_idx; i++) {
         artifact_type *a_ptr = &a_info[i];
-        if (!a_ptr->name)
+        if (a_ptr->name.empty())
             continue;
 
         if (a_ptr->cur_num)
             continue;
 
-        if (a_ptr->gen_flags & TRG_QUESTITEM)
+        if (a_ptr->gen_flags.has(TRG::QUESTITEM))
             continue;
 
-        if (a_ptr->gen_flags & TRG_INSTA_ART)
+        if (a_ptr->gen_flags.has(TRG::INSTA_ART))
             continue;
 
         if (a_ptr->tval != o_ptr->tval)
@@ -245,11 +255,54 @@ bool make_artifact(player_type *player_ptr, object_type *o_ptr)
             continue;
 
         o_ptr->name1 = i;
-        random_artifact_resistance(player_ptr, o_ptr, a_ptr);
         return TRUE;
     }
 
     return FALSE;
+}
+
+/*!
+ * @brief make_artifact()で選択した固定アーティファクトをオブジェクトに割り当てる。
+ * @param player_ptr プレーヤーへの参照ポインタ
+ * @param o_ptr 生成に割り当てたいオブジェクトの構造体参照ポインタ
+ * @return 適用したアーティファクト情報への参照ポインタ
+ */
+artifact_type *apply_artifact(player_type *player_ptr, object_type *o_ptr)
+{
+    artifact_type *a_ptr = &a_info[o_ptr->name1];
+    o_ptr->pval = a_ptr->pval;
+    o_ptr->ac = a_ptr->ac;
+    o_ptr->dd = a_ptr->dd;
+    o_ptr->ds = a_ptr->ds;
+    o_ptr->to_a = a_ptr->to_a;
+    o_ptr->to_h = a_ptr->to_h;
+    o_ptr->to_d = a_ptr->to_d;
+    o_ptr->weight = a_ptr->weight;
+    o_ptr->xtra2 = a_ptr->act_idx;
+    random_artifact_resistance(player_ptr, o_ptr, a_ptr);
+
+    if (o_ptr->name1 == ART_MILIM) {
+        if (player_ptr->pseikaku == PERSONALITY_SEXY) {
+            o_ptr->pval = 3;
+        }
+    }
+
+    if (!a_ptr->cost)
+        o_ptr->ident |= (IDENT_BROKEN);
+    if (a_ptr->gen_flags.has(TRG::CURSED))
+        o_ptr->curse_flags |= (TRC_CURSED);
+    if (a_ptr->gen_flags.has(TRG::HEAVY_CURSE))
+        o_ptr->curse_flags |= (TRC_HEAVY_CURSE);
+    if (a_ptr->gen_flags.has(TRG::PERMA_CURSE))
+        o_ptr->curse_flags |= (TRC_PERMA_CURSE);
+    if (a_ptr->gen_flags.has(TRG::RANDOM_CURSE0))
+        o_ptr->curse_flags |= get_curse(player_ptr, 0, o_ptr);
+    if (a_ptr->gen_flags.has(TRG::RANDOM_CURSE1))
+        o_ptr->curse_flags |= get_curse(player_ptr, 1, o_ptr);
+    if (a_ptr->gen_flags.has(TRG::RANDOM_CURSE2))
+        o_ptr->curse_flags |= get_curse(player_ptr, 2, o_ptr);
+
+    return a_ptr;
 }
 
 /*!
@@ -282,15 +335,15 @@ bool make_artifact_special(player_type *player_ptr, object_type *o_ptr)
         artifact_type *a_ptr = &a_info[i];
 
         /*! @note アーティファクト名が空の不正なデータは除外する / Skip "empty" artifacts */
-        if (!a_ptr->name)
+        if (a_ptr->name.empty())
             continue;
 
         /*! @note 既に生成回数がカウントされたアーティファクト、QUESTITEMと非INSTA_ARTは除外 / Cannot make an artifact twice */
         if (a_ptr->cur_num)
             continue;
-        if (a_ptr->gen_flags & TRG_QUESTITEM)
+        if (a_ptr->gen_flags.has(TRG::QUESTITEM))
             continue;
-        if (!(a_ptr->gen_flags & TRG_INSTA_ART))
+        if (!(a_ptr->gen_flags.has(TRG::INSTA_ART)))
             continue;
 
         /*! @note アーティファクト生成階が現在に対して足りない場合は高確率で1/(不足階層*2)を満たさないと生成リストに加えられない /

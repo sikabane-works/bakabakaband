@@ -177,16 +177,17 @@ static void init_world_floor_info(player_type *player_ptr)
     wipe_o_list(floor_ptr);
 }
 
+/*!
+ * @brief フロア情報をゲームロード時に復帰 
+ * @todo 3.0.Xで削除予定
+ * 1.0.9 以前はセーブ前に player_ptr->riding = -1 としていたので、再設定が必要だった。
+ * もう不要だが、以前のセーブファイルとの互換のために残しておく。
+ */
 static void restore_world_floor_info(player_type *player_ptr)
 {
     write_level = FALSE;
     exe_write_diary(player_ptr, DIARY_GAMESTART, 1, _("                            ----ゲーム再開----", "                            --- Restarted Game ---"));
 
-    /*
-     * todo 3.0.Xで削除予定
-     * 1.0.9 以前はセーブ前に player_ptr->riding = -1 としていたので、再設定が必要だった。
-     * もう不要だが、以前のセーブファイルとの互換のために残しておく。
-     */
     if (player_ptr->riding == -1) {
         player_ptr->riding = 0;
         floor_type *floor_ptr = player_ptr->current_floor_ptr;
@@ -334,9 +335,24 @@ static void decide_arena_death(player_type *player_ptr)
 
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     if (!floor_ptr->inside_arena) {
-        if (!get_check(_("一から出直しますか? ", "Do you want to start over? ")))
-            cheat_death(player_ptr, cheat_live);
-        return;
+
+        while (true) {
+            char i;
+
+            if (!get_check(_("復活せずに何もかも諦めますか? ", "Do you give up everything without resurrection?? "))) {
+                cheat_death(player_ptr, cheat_live);
+                return;
+            }
+
+            /* Special Verification for suicide */
+            prt(_("確認のため '@' を押して下さい。", "Please verify SUICIDE by typing the '@' sign: "), 0, 0);
+
+            flush();
+            i = inkey();
+            prt("", 0, 0);
+            if (i == '@') return;
+
+        }
     }
 
     floor_ptr->inside_arena = FALSE;

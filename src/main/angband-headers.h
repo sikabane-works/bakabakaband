@@ -9,28 +9,8 @@ typedef struct angband_header angband_header;
 typedef errr (*parse_info_txt_func)(char *buf, angband_header *head);
 
 struct angband_header {
-    byte v_major; /* Version -- major */
-    byte v_minor; /* Version -- minor */
-    byte v_patch; /* Version -- patch */
-    byte v_extra; /* Version -- extra */
-
-    u16b info_num; /* Number of "info" records */
-    int info_len; /* Size of each "info" record */
-    u16b head_size; /* Size of the "header" in bytes */
-
-    STR_OFFSET info_size; /* Size of the "info" array in bytes */
-    STR_OFFSET name_size; /* Size of the "name" array in bytes */
-    STR_OFFSET text_size; /* Size of the "text" array in bytes */
-    STR_OFFSET tag_size; /* Size of the "tag" array in bytes */
-
-    void *info_ptr;
-    char *name_ptr;
-    char *text_ptr;
-    char *tag_ptr;
-
-    parse_info_txt_func parse_info_txt;
-
-    void (*retouch)(angband_header *head);
+    byte checksum; //!< Checksum of "info" records
+    u16b info_num; //!< このinfoのデータ数
 };
 
 extern angband_header f_head;

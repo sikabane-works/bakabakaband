@@ -10,7 +10,7 @@
 #include "player/race-info-table.h"
 #include "store/pricing.h"
 #include "store/store-util.h"
-#include "store/store.h" // todo 相互依存している、こっちは残す？.
+#include "store/store.h" //!< @todo 相互依存している、こっちは残す？.
 #include "system/object-type-definition.h"
 #include "term/gameterm.h"
 #include "term/screen-processor.h"
@@ -104,15 +104,13 @@ void display_entry(player_type *player_ptr, int pos)
         return;
     }
 
-    if (!manual_haggle) {
-        x = price_item(player_ptr, o_ptr, ot_ptr->min_inflate, FALSE);
-        if (!noneedtobargain(x))
-            x += x / 10;
+    x = price_item(player_ptr, o_ptr, ot_ptr->min_inflate, FALSE);
+    if (!noneedtobargain(x))
+        x += x / 10;
 
-        (void)sprintf(out_val, "%9ld  ", (long)x);
-        put_str(out_val, i + 6, 68);
-        return;
-    }
+    (void)sprintf(out_val, "%9ld  ", (long)x);
+    put_str(out_val, i + 6, 68);
+    return;
 
     x = price_item(player_ptr, o_ptr, ot_ptr->max_inflate, FALSE);
     (void)sprintf(out_val, "%9ld  ", (long)x);
@@ -189,7 +187,7 @@ void display_store(player_type *player_ptr)
         return;
     }
 
-    concptr store_name = (f_name + f_info[cur_store_feat].name);
+    concptr store_name = f_info[cur_store_feat].name.c_str();
     concptr owner_name = (ot_ptr->owner_name);
     concptr race_name = race_info[ot_ptr->owner_race].title;
     char buf[80];

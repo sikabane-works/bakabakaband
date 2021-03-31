@@ -1,5 +1,6 @@
 ﻿#include "permanent-resistances.h"
 #include "inventory/inventory-slot-types.h"
+#include "mind/mind-elementalist.h"
 #include "mutation/mutation-flag-types.h"
 #include "object-enchant/tr-types.h"
 #include "player/player-personalities-types.h"
@@ -113,6 +114,32 @@ static void add_class_flags(player_type *creature_ptr, BIT_FLAGS *flags)
 
         break;
     }
+    case CLASS_ELEMENTALIST:
+        if (has_element_resist(creature_ptr, ElementRealm::FIRE, 1))
+            add_flag(flags, TR_RES_FIRE);
+        if (has_element_resist(creature_ptr, ElementRealm::ICE, 1))
+            add_flag(flags, TR_RES_COLD);
+        if (has_element_resist(creature_ptr, ElementRealm::SKY, 1))
+            add_flag(flags, TR_RES_ELEC);
+        if (has_element_resist(creature_ptr, ElementRealm::SEA, 1))
+            add_flag(flags, TR_RES_ACID);
+        if (has_element_resist(creature_ptr, ElementRealm::DARKNESS, 1))
+            add_flag(flags, TR_RES_DARK);
+        if (has_element_resist(creature_ptr, ElementRealm::DARKNESS, 30))
+            add_flag(flags, TR_RES_NETHER);
+        if (has_element_resist(creature_ptr, ElementRealm::CHAOS, 1))
+            add_flag(flags, TR_RES_CONF);
+        if (has_element_resist(creature_ptr, ElementRealm::CHAOS, 30))
+            add_flag(flags, TR_RES_CHAOS);
+        if (has_element_resist(creature_ptr, ElementRealm::EARTH, 1))
+            add_flag(flags, TR_RES_SHARDS);
+        if (has_element_resist(creature_ptr, ElementRealm::EARTH, 30))
+            add_flag(flags, TR_REFLECT);
+        if (has_element_resist(creature_ptr, ElementRealm::DEATH, 1))
+            add_flag(flags, TR_RES_POIS);
+        if (has_element_resist(creature_ptr, ElementRealm::DEATH, 30))
+            add_flag(flags, TR_RES_DISEN);
+        break;
     default:
         break;
     }
@@ -412,6 +439,10 @@ static void add_race_flags(player_type *creature_ptr, BIT_FLAGS *flags)
         add_flag(flags, TR_HOLD_EXP);
         break;
     }
+    case RACE_MERFOLK: {
+        add_flag(flags, TR_RES_WATER);
+        break;
+    }
     default:
         break;
     }
@@ -426,29 +457,29 @@ static void add_race_flags(player_type *creature_ptr, BIT_FLAGS *flags)
  */
 static void add_mutation_flags(player_type *creature_ptr, BIT_FLAGS *flags)
 {
-    if (creature_ptr->muta3 == 0)
+    if (creature_ptr->muta.none())
         return;
 
-    if (creature_ptr->muta3 & MUT3_FLESH_ROT)
+    if (creature_ptr->muta.has(MUTA::FLESH_ROT))
         remove_flag(flags, TR_REGEN);
-    if ((creature_ptr->muta3 & MUT3_XTRA_FAT) || (creature_ptr->muta3 & MUT3_XTRA_LEGS) || (creature_ptr->muta3 & MUT3_SHORT_LEG))
+    if (creature_ptr->muta.has_any_of({MUTA::XTRA_FAT, MUTA::XTRA_LEGS, MUTA::SHORT_LEG}))
         add_flag(flags, TR_SPEED);
-    if (creature_ptr->muta3 & MUT3_ELEC_TOUC)
+    if (creature_ptr->muta.has(MUTA::ELEC_TOUC))
         add_flag(flags, TR_SH_ELEC);
-    if (creature_ptr->muta3 & MUT3_FIRE_BODY) {
+    if (creature_ptr->muta.has(MUTA::FIRE_BODY)) {
         add_flag(flags, TR_SH_FIRE);
         add_flag(flags, TR_LITE_1);
     }
 
-    if (creature_ptr->muta3 & MUT3_WINGS)
+    if (creature_ptr->muta.has(MUTA::WINGS))
         add_flag(flags, TR_LEVITATION);
-    if (creature_ptr->muta3 & MUT3_FEARLESS)
+    if (creature_ptr->muta.has(MUTA::FEARLESS))
         add_flag(flags, TR_RES_FEAR);
-    if (creature_ptr->muta3 & MUT3_REGEN)
+    if (creature_ptr->muta.has(MUTA::REGEN))
         add_flag(flags, TR_REGEN);
-    if (creature_ptr->muta3 & MUT3_ESP)
+    if (creature_ptr->muta.has(MUTA::ESP))
         add_flag(flags, TR_TELEPATHY);
-    if (creature_ptr->muta3 & MUT3_MOTION)
+    if (creature_ptr->muta.has(MUTA::MOTION))
         add_flag(flags, TR_FREE_ACT);
 }
 

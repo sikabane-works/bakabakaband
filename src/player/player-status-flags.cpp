@@ -2,6 +2,7 @@
 #include "artifact/fixed-art-types.h"
 #include "grid/grid.h"
 #include "inventory/inventory-slot-types.h"
+#include "mind/mind-elementalist.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags2.h"
 #include "monster-race/race-flags7.h"
@@ -149,23 +150,23 @@ BIT_FLAGS get_player_flags(player_type *creature_ptr, tr_type tr_flag)
 {
     switch (tr_flag) {
     case TR_STR:
-        return PlayerStrength(creature_ptr).getAllFlags();
+        return PlayerStrength(creature_ptr).get_all_flags();
     case TR_INT:
-        return PlayerIntelligence(creature_ptr).getAllFlags();
+        return PlayerIntelligence(creature_ptr).get_all_flags();
     case TR_WIS:
-        return PlayerWisdom(creature_ptr).getAllFlags();
+        return PlayerWisdom(creature_ptr).get_all_flags();
     case TR_DEX:
-        return PlayerDextarity(creature_ptr).getAllFlags();
+        return PlayerDextarity(creature_ptr).get_all_flags();
     case TR_CON:
-        return PlayerConstitution(creature_ptr).getAllFlags();
+        return PlayerConstitution(creature_ptr).get_all_flags();
     case TR_CHR:
-        return PlayerCharisma(creature_ptr).getAllFlags();
+        return PlayerCharisma(creature_ptr).get_all_flags();
     case TR_MAGIC_MASTERY:
         return has_magic_mastery(creature_ptr);
     case TR_FORCE_WEAPON:
         return check_equipment_flags(creature_ptr, tr_flag);
     case TR_STEALTH:
-        return PlayerStealth(creature_ptr).getAllFlags();
+        return PlayerStealth(creature_ptr).get_all_flags();
     case TR_SEARCH:
         return 0;
     case TR_INFRA:
@@ -173,7 +174,7 @@ BIT_FLAGS get_player_flags(player_type *creature_ptr, tr_type tr_flag)
     case TR_TUNNEL:
         return 0;
     case TR_SPEED:
-        return PlayerSpeed(creature_ptr).getAllFlags();
+        return PlayerSpeed(creature_ptr).get_all_flags();
     case TR_BLOWS:
         return 0;
     case TR_CHAOTIC:
@@ -266,6 +267,10 @@ BIT_FLAGS get_player_flags(player_type *creature_ptr, tr_type tr_flag)
         return has_resist_chaos(creature_ptr);
     case TR_RES_DISEN:
         return has_resist_disen(creature_ptr);
+    case TR_RES_TIME:
+        return has_resist_time(creature_ptr);
+    case TR_RES_WATER:
+        return has_resist_water(creature_ptr);
 
     case TR_SH_FIRE:
         return has_sh_fire(creature_ptr);
@@ -386,15 +391,14 @@ BIT_FLAGS get_player_flags(player_type *creature_ptr, tr_type tr_flag)
         return has_no_ac(creature_ptr);
     case TR_HEAVY_SPELL:
         return has_heavy_spell(creature_ptr);
-    case TR_RES_TIME:
-        return has_resist_time(creature_ptr);
-    case TR_RES_WATER:
-        return has_resist_water(creature_ptr);
     case TR_INVULN_ARROW:
         return has_invuln_arrow(creature_ptr);
     case TR_DARK_SOURCE:
     case TR_SUPPORTIVE:
         return check_equipment_flags(creature_ptr, tr_flag);
+
+    case TR_FLAG_MAX:
+        break;
     }
     return 0;
 }
@@ -475,7 +479,7 @@ BIT_FLAGS has_infra_vision(player_type *creature_ptr)
     if (tmp_rp_ptr->infra > 0)
         result |= FLAG_CAUSE_RACE;
 
-    if (creature_ptr->muta3 & MUT3_INFRAVIS)
+    if (creature_ptr->muta.has(MUTA::INFRAVIS))
         result |= FLAG_CAUSE_MUTATION;
 
     if (creature_ptr->tim_infra)
@@ -627,7 +631,7 @@ BIT_FLAGS has_esp_telepathy(player_type *creature_ptr)
         result |= FLAG_CAUSE_BATTLE_FORM;
     }
 
-    if (creature_ptr->muta3 & MUT3_ESP) {
+    if (creature_ptr->muta.has(MUTA::ESP)) {
         result |= FLAG_CAUSE_MUTATION;
     }
 
@@ -685,8 +689,15 @@ void check_no_flowed(player_type *creature_ptr)
 
     creature_ptr->no_flowed = FALSE;
 
-    if (has_pass_wall(creature_ptr) && !has_kill_wall(creature_ptr))
+    if (has_pass_wall(creature_ptr) && !has_kill_wall(creature_ptr)) {
         creature_ptr->no_flowed = TRUE;
+        return;
+    }
+
+    if (!creature_ptr->realm1 || creature_ptr->pclass == CLASS_ELEMENTALIST) {
+        creature_ptr->no_flowed = FALSE;
+        return;
+    }
 
     for (int i = 0; i < INVEN_PACK; i++) {
         if ((creature_ptr->inventory_list[i].tval == TV_NATURE_BOOK) && (creature_ptr->inventory_list[i].sval == 2))
@@ -746,6 +757,9 @@ BIT_FLAGS has_reflect(player_type *creature_ptr)
         result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
+    if (has_element_resist(creature_ptr, ElementRealm::EARTH, 30))
+        result |= FLAG_CAUSE_CLASS;
+
     result |= check_equipment_flags(creature_ptr, TR_REFLECT);
     return result;
 }
@@ -790,7 +804,7 @@ BIT_FLAGS has_sh_fire(player_type *creature_ptr)
 {
     BIT_FLAGS result = 0L;
 
-    if (creature_ptr->muta3 & MUT3_FIRE_BODY) {
+    if (creature_ptr->muta.has(MUTA::FIRE_BODY)) {
         result |= FLAG_CAUSE_MUTATION;
     }
 
@@ -814,7 +828,7 @@ BIT_FLAGS has_sh_elec(player_type *creature_ptr)
 {
     BIT_FLAGS result = 0L;
 
-    if (creature_ptr->muta3 & MUT3_ELEC_TOUC)
+    if (creature_ptr->muta.has(MUTA::ELEC_TOUC))
         result |= FLAG_CAUSE_MUTATION;
 
     if (hex_spelling(creature_ptr, HEX_SHOCK_CLOAK) || creature_ptr->ult_res) {
@@ -933,7 +947,7 @@ BIT_FLAGS has_free_act(player_type *creature_ptr)
 {
     BIT_FLAGS result = 0L;
 
-    if (creature_ptr->muta3 & MUT3_MOTION)
+    if (creature_ptr->muta.has(MUTA::MOTION))
         result |= FLAG_CAUSE_MUTATION;
 
     if (is_specific_player_race(creature_ptr, RACE_GNOME) || is_specific_player_race(creature_ptr, RACE_GOLEM)
@@ -1103,7 +1117,7 @@ BIT_FLAGS has_levitation(player_type *creature_ptr)
 {
     BIT_FLAGS result = 0L;
 
-    if (creature_ptr->muta3 & MUT3_WINGS) {
+    if (creature_ptr->muta.has(MUTA::WINGS)) {
         result |= FLAG_CAUSE_MUTATION;
     }
 
@@ -1209,7 +1223,7 @@ BIT_FLAGS has_regenerate(player_type *creature_ptr)
         result |= FLAG_CAUSE_RACE;
     }
 
-    if (creature_ptr->muta3 & MUT3_REGEN)
+    if (creature_ptr->muta.has(MUTA::REGEN))
         result |= FLAG_CAUSE_MUTATION;
 
     if (creature_ptr->special_defense & KATA_MUSOU) {
@@ -1222,7 +1236,7 @@ BIT_FLAGS has_regenerate(player_type *creature_ptr)
 
     result |= check_equipment_flags(creature_ptr, TR_REGEN);
 
-    if (creature_ptr->muta3 & MUT3_FLESH_ROT)
+    if (creature_ptr->muta.has(MUTA::FLESH_ROT))
         result = 0L;
 
     return result;
@@ -1350,6 +1364,9 @@ BIT_FLAGS has_resist_acid(player_type *creature_ptr)
         result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
+    if (has_element_resist(creature_ptr, ElementRealm::SEA, 1))
+        result |= FLAG_CAUSE_CLASS;
+
     result |= has_immune_acid(creature_ptr);
 
     result |= check_equipment_flags(creature_ptr, TR_RES_ACID);
@@ -1359,7 +1376,7 @@ BIT_FLAGS has_resist_acid(player_type *creature_ptr)
 BIT_FLAGS has_vuln_acid(player_type *creature_ptr)
 {
     BIT_FLAGS result = 0L;
-    if (creature_ptr->muta3 & MUT3_VULN_ELEM) {
+    if (creature_ptr->muta.has(MUTA::VULN_ELEM)) {
         result |= FLAG_CAUSE_MUTATION;
     }
 
@@ -1387,6 +1404,9 @@ BIT_FLAGS has_resist_elec(player_type *creature_ptr)
         result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
+    if (has_element_resist(creature_ptr, ElementRealm::SKY, 1))
+        result |= FLAG_CAUSE_CLASS;
+
     result |= check_equipment_flags(creature_ptr, TR_RES_ELEC);
     result |= has_immune_elec(creature_ptr);
     return result;
@@ -1395,7 +1415,7 @@ BIT_FLAGS has_resist_elec(player_type *creature_ptr)
 BIT_FLAGS has_vuln_elec(player_type *creature_ptr)
 {
     BIT_FLAGS result = 0L;
-    if (creature_ptr->muta3 & MUT3_VULN_ELEM) {
+    if (creature_ptr->muta.has(MUTA::VULN_ELEM)) {
         result |= FLAG_CAUSE_MUTATION;
     }
 
@@ -1433,6 +1453,9 @@ BIT_FLAGS has_resist_fire(player_type *creature_ptr)
         result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
+    if (has_element_resist(creature_ptr, ElementRealm::FIRE, 1))
+        result |= FLAG_CAUSE_CLASS;
+
     result |= check_equipment_flags(creature_ptr, TR_RES_FIRE);
     result |= has_immune_fire(creature_ptr);
     return result;
@@ -1441,7 +1464,7 @@ BIT_FLAGS has_resist_fire(player_type *creature_ptr)
 BIT_FLAGS has_vuln_fire(player_type *creature_ptr)
 {
     BIT_FLAGS result = 0L;
-    if (creature_ptr->muta3 & MUT3_VULN_ELEM) {
+    if (creature_ptr->muta.has(MUTA::VULN_ELEM)) {
         result |= FLAG_CAUSE_MUTATION;
     }
 
@@ -1483,6 +1506,9 @@ BIT_FLAGS has_resist_cold(player_type *creature_ptr)
         result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
+    if (has_element_resist(creature_ptr, ElementRealm::ICE, 1))
+        result |= FLAG_CAUSE_CLASS;
+
     result |= check_equipment_flags(creature_ptr, TR_RES_COLD);
     result |= has_immune_cold(creature_ptr);
     return result;
@@ -1491,7 +1517,7 @@ BIT_FLAGS has_resist_cold(player_type *creature_ptr)
 BIT_FLAGS has_vuln_cold(player_type *creature_ptr)
 {
     BIT_FLAGS result = 0L;
-    if (creature_ptr->muta3 & MUT3_VULN_ELEM) {
+    if (creature_ptr->muta.has(MUTA::VULN_ELEM)) {
         result |= FLAG_CAUSE_MUTATION;
     }
 
@@ -1530,6 +1556,9 @@ BIT_FLAGS has_resist_pois(player_type *creature_ptr)
         result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
+    if (has_element_resist(creature_ptr, ElementRealm::DEATH, 1))
+        result |= FLAG_CAUSE_CLASS;
+
     result |= check_equipment_flags(creature_ptr, TR_RES_POIS);
     return result;
 }
@@ -1560,6 +1589,9 @@ BIT_FLAGS has_resist_conf(player_type *creature_ptr)
     if (creature_ptr->special_defense & KATA_MUSOU) {
         result |= FLAG_CAUSE_BATTLE_FORM;
     }
+
+    if (has_element_resist(creature_ptr, ElementRealm::CHAOS, 1))
+        result |= FLAG_CAUSE_CLASS;
 
     result |= check_equipment_flags(creature_ptr, TR_RES_CONF);
     return result;
@@ -1646,6 +1678,9 @@ BIT_FLAGS has_resist_dark(player_type *creature_ptr)
         result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
+    if (has_element_resist(creature_ptr, ElementRealm::DARKNESS, 1))
+        result |= FLAG_CAUSE_CLASS;
+
     result |= check_equipment_flags(creature_ptr, TR_RES_DARK);
     return result;
 }
@@ -1672,6 +1707,9 @@ BIT_FLAGS has_resist_chaos(player_type *creature_ptr)
         result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
+    if (has_element_resist(creature_ptr, ElementRealm::CHAOS, 30))
+        result |= FLAG_CAUSE_CLASS;
+
     result |= check_equipment_flags(creature_ptr, TR_RES_CHAOS);
     return result;
 }
@@ -1695,6 +1733,9 @@ BIT_FLAGS has_resist_disen(player_type *creature_ptr)
         result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
+    if (has_element_resist(creature_ptr, ElementRealm::DEATH, 30))
+        result |= FLAG_CAUSE_CLASS;
+
     result |= check_equipment_flags(creature_ptr, TR_RES_DISEN);
     return result;
 }
@@ -1713,6 +1754,9 @@ BIT_FLAGS has_resist_shard(player_type *creature_ptr)
     if (creature_ptr->ult_res) {
         result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
+
+    if (has_element_resist(creature_ptr, ElementRealm::EARTH, 1))
+        result |= FLAG_CAUSE_CLASS;
 
     result |= check_equipment_flags(creature_ptr, TR_RES_SHARDS);
     return result;
@@ -1782,6 +1826,9 @@ BIT_FLAGS has_resist_neth(player_type *creature_ptr)
         result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
+    if (has_element_resist(creature_ptr, ElementRealm::DARKNESS, 30))
+        result |= FLAG_CAUSE_CLASS;
+
     result |= check_equipment_flags(creature_ptr, TR_RES_NETHER);
     return result;
 }
@@ -1813,7 +1860,7 @@ BIT_FLAGS has_resist_fear(player_type *creature_ptr)
 {
     BIT_FLAGS result = 0L;
 
-    if (creature_ptr->muta3 & MUT3_FEARLESS)
+    if (creature_ptr->muta.has(MUTA::FEARLESS))
         result |= FLAG_CAUSE_MUTATION;
 
     switch (creature_ptr->pclass) {
@@ -1833,6 +1880,9 @@ BIT_FLAGS has_resist_fear(player_type *creature_ptr)
         break;
     case CLASS_NINJA:
         result |= FLAG_CAUSE_CLASS;
+        break;
+
+    default:
         break;
     }
 
@@ -1866,6 +1916,9 @@ BIT_FLAGS has_immune_acid(player_type *creature_ptr)
             result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
+    if (has_element_resist(creature_ptr, ElementRealm::SEA, 30))
+        result |= FLAG_CAUSE_CLASS;
+
     result |= check_equipment_flags(creature_ptr, TR_IM_ACID);
     return result;
 }
@@ -1878,6 +1931,9 @@ BIT_FLAGS has_immune_elec(player_type *creature_ptr)
         if (creature_ptr->special_defense & DEFENSE_ELEC)
             result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
+
+    if (has_element_resist(creature_ptr, ElementRealm::SKY, 30))
+        result |= FLAG_CAUSE_CLASS;
 
     result |= check_equipment_flags(creature_ptr, TR_IM_ELEC);
     return result;
@@ -1892,6 +1948,9 @@ BIT_FLAGS has_immune_fire(player_type *creature_ptr)
             result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
+    if (has_element_resist(creature_ptr, ElementRealm::FIRE, 30))
+        result |= FLAG_CAUSE_CLASS;
+
     result |= check_equipment_flags(creature_ptr, TR_IM_FIRE);
     return result;
 }
@@ -1904,6 +1963,9 @@ BIT_FLAGS has_immune_cold(player_type *creature_ptr)
         if (creature_ptr->special_defense & DEFENSE_COLD)
             result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
+
+    if (has_element_resist(creature_ptr, ElementRealm::ICE, 30))
+        result |= FLAG_CAUSE_CLASS;
 
     result |= check_equipment_flags(creature_ptr, TR_IM_COLD);
     return result;
@@ -2046,8 +2108,9 @@ bool has_disable_two_handed_bonus(player_type *creature_ptr, int i)
     return TRUE;
 }
 
-/*
- * todo 相応しい時にFALSEで相応しくない時にTRUEという負論理は良くない、後で修正する
+/*!
+ * @brief ふさわしくない武器を持っているかどうかを返す。
+ * @todo 相応しい時にFALSEで相応しくない時にTRUEという負論理は良くない、後で修正する
  */
 bool has_icky_wield_weapon(player_type *creature_ptr, int i)
 {
@@ -2110,7 +2173,7 @@ bool has_not_monk_weapon(player_type *creature_ptr, int i)
 
 bool has_good_luck(player_type *creature_ptr)
 {
-    return (creature_ptr->pseikaku == PERSONALITY_LUCKY) || (creature_ptr->muta3 & MUT3_GOOD_LUCK);
+    return (creature_ptr->pseikaku == PERSONALITY_LUCKY) || (creature_ptr->muta.has(MUTA::GOOD_LUCK));
 }
 
 BIT_FLAGS player_aggravate_state(player_type *creature_ptr)

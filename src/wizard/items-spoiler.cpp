@@ -104,8 +104,8 @@ spoiler_output_status spoil_obj_desc(concptr fname)
     fprintf(spoiler_file, "%-37s%8s%7s%5s %40s%9s\n", "-------------------------------------", "------", "---", "---", "----------------", "----");
     int n = 0;
     int group_start = 0;
+    OBJECT_IDX who[200];
     for (int i = 0; TRUE; i++) {
-        OBJECT_IDX who[200];
         if (group_item[i].name) {
             if (n) {
                 for (int s = 0; s < n - 1; s++) {
@@ -152,7 +152,7 @@ spoiler_output_status spoil_obj_desc(concptr fname)
 
         for (int k = 1; k < max_k_idx; k++) {
             object_kind *k_ptr = &k_info[k];
-            if ((k_ptr->tval != group_item[i].tval) || (k_ptr->gen_flags & TRG_INSTA_ART))
+            if ((k_ptr->tval != group_item[i].tval) || k_ptr->gen_flags.has(TRG::INSTA_ART))
                 continue;
 
             who[n++] = (u16b)k;

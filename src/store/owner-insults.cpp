@@ -65,19 +65,6 @@ int haggle_insults(void)
  */
 void updatebargain(PRICE price, PRICE minprice, int num)
 {
-    if (!manual_haggle)
-        return;
-    if ((minprice / num) < 10L)
-        return;
-    if (price == minprice) {
-        if (st_ptr->good_buy < MAX_SHORT) {
-            st_ptr->good_buy++;
-        }
-    } else {
-        if (st_ptr->bad_buy < MAX_SHORT) {
-            st_ptr->bad_buy++;
-        }
-    }
 }
 
 /*!

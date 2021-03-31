@@ -1,7 +1,7 @@
 ﻿#include "view/status-bars-table.h"
 #include "term/term-color-types.h"
 
-stat_bar stat_bars[MAX_STAT_BARS] = { { TERM_YELLOW, _("つ", "Ts"), _("つよし", "Tsuyoshi") }, { TERM_VIOLET, _("幻", "Ha"), _("幻覚", "Halluc") },
+stat_bar stat_bars[MAX_STAT_BARS] = { { TERM_YELLOW, _("マ神", "MG"), _("マ神", "MaGod") }, { TERM_VIOLET, _("幻", "Ha"), _("幻覚", "Halluc") },
     { TERM_L_DARK, _("盲", "Bl"), _("盲目", "Blind") }, { TERM_RED, _("痺", "Pa"), _("麻痺", "Paralyzed") },
     { TERM_VIOLET, _("乱", "Cf"), _("混乱", "Confused") }, { TERM_GREEN, _("毒", "Po"), _("毒", "Poisoned") },
     { TERM_BLUE, _("恐", "Af"), _("恐怖", "Afraid") }, { TERM_L_BLUE, _("浮", "Lv"), _("浮遊", "Levit") }, { TERM_SLATE, _("反", "Rf"), _("反射", "Reflect") },

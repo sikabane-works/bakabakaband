@@ -165,7 +165,7 @@ void quest_discovery(QUEST_IDX q_idx)
         return;
 
     GAME_TEXT name[MAX_NLEN];
-    strcpy(name, (r_name + r_ptr->name));
+    strcpy(name, (r_ptr->name.c_str()));
 
     msg_print(find_quest[rand_range(0, 4)]);
     msg_print(NULL);
@@ -267,7 +267,7 @@ void leave_quest_check(player_type *player_ptr)
         quest[QUEST_TOWER1].complev = player_ptr->lev;
         break;
     case QUEST_TYPE_FIND_ARTIFACT:
-        a_info[q_ptr->k_idx].gen_flags &= ~(TRG_QUESTITEM);
+        a_info[q_ptr->k_idx].gen_flags.reset(TRG::QUESTITEM);
         break;
     case QUEST_TYPE_RANDOM:
         r_info[q_ptr->r_idx].flags1 &= ~(RF1_QUESTOR);

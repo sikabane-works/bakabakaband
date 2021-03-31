@@ -135,7 +135,7 @@ void process_monster_lore(player_type *player_ptr, MONRACE_IDX r_idx, monster_lo
     set_flags1(lore_ptr);
     set_race_flags(lore_ptr);
     display_kill_numbers(lore_ptr);
-    concptr tmp = r_text + lore_ptr->r_ptr->text;
+    concptr tmp = lore_ptr->r_ptr->text.c_str();
     if (tmp[0]) {
         hooked_roff(tmp);
         hooked_roff("\n");
@@ -159,7 +159,7 @@ void process_monster_lore(player_type *player_ptr, MONRACE_IDX r_idx, monster_lo
     display_lore_this(player_ptr, lore_ptr);
     display_monster_aura(lore_ptr);
     if (lore_ptr->flags2 & RF2_REFLECTING)
-        hooked_roff(format(_("%^sは矢の呪文を跳ね返す。", "%^s reflects bolt spells.  "), wd_he[lore_ptr->msex]));
+        hooked_roff(format(_("%^sは矢の呪文を跳ね返す。", "%^s reflects bolt spells.  "), Who::who(lore_ptr->msex)));
 
     display_monster_collective(lore_ptr);
     lore_ptr->vn = 0;

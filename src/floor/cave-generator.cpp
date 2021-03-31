@@ -309,6 +309,7 @@ static void decide_dungeon_data_allocation(player_type *player_ptr, dun_data_typ
     int small_tester = dd_ptr->alloc_monster_num;
     dd_ptr->alloc_monster_num = (dd_ptr->alloc_monster_num * floor_ptr->height) / MAX_HGT;
     dd_ptr->alloc_monster_num = (dd_ptr->alloc_monster_num * floor_ptr->width) / MAX_WID;
+    dd_ptr->alloc_monster_num *= DUNGEON_MONSTER_MULTIPLE;
     dd_ptr->alloc_monster_num += 1;
     if (dd_ptr->alloc_monster_num > small_tester)
         dd_ptr->alloc_monster_num = small_tester;
@@ -331,9 +332,12 @@ static bool allocate_dungeon_data(player_type *player_ptr, dun_data_type *dd_ptr
     if (player_ptr->enter_dungeon && floor_ptr->dun_level > 1)
         floor_ptr->object_level = 1;
 
-    alloc_object(player_ptr, ALLOC_SET_ROOM, ALLOC_TYP_OBJECT, randnor(DUN_AMT_ROOM, 3));
-    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_OBJECT, randnor(DUN_AMT_ITEM, 3));
-    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_GOLD, randnor(DUN_AMT_GOLD, 3));
+ 
+    alloc_object(player_ptr, ALLOC_SET_ROOM, ALLOC_TYP_OBJECT, randnor(DUNGEON_ITEM_FLOOR_DROP_RATE * DUN_AMT_ROOM, 3));
+    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_OBJECT, randnor(DUNGEON_ITEM_FLOOR_DROP_RATE * DUN_AMT_ITEM, 3));
+    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_GOLD, randnor(DUNGEON_ITEM_FLOOR_DROP_RATE* DUN_AMT_GOLD, 3));
+
+
     floor_ptr->object_level = floor_ptr->base_level;
     if (alloc_guardian(player_ptr, TRUE))
         return TRUE;

@@ -153,14 +153,24 @@ static void accept_winner_message(player_type *creature_ptr)
  */
 void do_cmd_suicide(player_type *creature_ptr)
 {
+    char i;
     flush();
     if (current_world_ptr->total_winner) {
         if (!get_check_strict(creature_ptr, _("引退しますか? ", "Do you want to retire? "), CHECK_NO_HISTORY))
             return;
     } else {
-        if (!get_check(_("本当に自殺しますか？", "Do you really want to commit suicide? ")))
+        if (!get_check(_("何もかも諦めますか? ", "Do you give up everything? ")))
             return;
     }
+
+    /* Special Verification for suicide */
+    prt(_("確認のため '@' を押して下さい。", "Please verify SUICIDE by typing the '@' sign: "), 0, 0);
+
+    flush();
+    i = inkey();
+    prt("", 0, 0);
+    if (i != '@')
+        return;
 
     if (!decide_suicide())
         return;
@@ -174,7 +184,8 @@ void do_cmd_suicide(player_type *creature_ptr)
     creature_ptr->is_dead = TRUE;
     creature_ptr->leaving = TRUE;
     if (!current_world_ptr->total_winner) {
-        exe_write_diary(creature_ptr, DIARY_DESCRIPTION, 0, _("ダンジョンの探索に絶望して自殺した。", "gave up all hope to commit suicide."));
+        play_music(TERM_XTRA_MUSIC_BASIC, MUSIC_BASIC_GAMEOVER);
+        exe_write_diary(creature_ptr, DIARY_DESCRIPTION, 0, _("ダンジョンの探索に飽きて自殺した。", "got tired to commit suicide."));
         exe_write_diary(creature_ptr, DIARY_GAMESTART, 1, _("-------- ゲームオーバー --------", "--------   Game  Over   --------"));
         exe_write_diary(creature_ptr, DIARY_DESCRIPTION, 1, "\n\n\n\n");
     }

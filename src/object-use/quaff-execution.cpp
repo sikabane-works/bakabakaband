@@ -1,8 +1,8 @@
 ﻿/*!
- * todo 少し長い。switch/case文と効果処理を分離してもいいかも
  * @brief 薬を飲んだ時の各種効果処理
  * @date 2020/07/04
  * @author Hourier
+ * @todo 少し長い。switch/case文と効果処理を分離してもいいかも
  */
 
 #include "object-use/quaff-execution.h"
@@ -522,7 +522,7 @@ void exe_quaff_potion(player_type *creature_ptr, INVENTORY_IDX item)
             ident = TRUE;
             break;
 
-        case SV_POTION_NEO_TSUYOSHI:
+        case SV_POSTION_MASARU_CHINISE_DYNAMIC:
             (void)set_image(creature_ptr, 0);
             (void)set_tsuyoshi(creature_ptr, creature_ptr->tsuyoshi + randint1(100) + 100, FALSE);
             ident = TRUE;
@@ -539,8 +539,19 @@ void exe_quaff_potion(player_type *creature_ptr, INVENTORY_IDX item)
             ident = TRUE;
             break;
 
+        case SV_POTION_NEO_TSUYOSHI:
+            msg_print(_("「新・オクレ兄さん！」", "NEW Brother OKURE!"));
+            msg_print(NULL);
+            creature_ptr->tsuyoshi = 1;
+            (void)set_tsuyoshi(creature_ptr, 0, TRUE);
+            if (!has_resist_chaos(creature_ptr)) {
+                (void)set_image(creature_ptr, 50 + randint1(100));
+            }
+            ident = TRUE;
+            break;
+
         case SV_POTION_POLYMORPH:
-            if ((creature_ptr->muta1 || creature_ptr->muta2 || creature_ptr->muta3) && one_in_(23)) {
+            if (creature_ptr->muta.any() && one_in_(23)) {
                 lose_all_mutations(creature_ptr);
             } else {
                 do {

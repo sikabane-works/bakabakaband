@@ -6,6 +6,7 @@
 #include "util/bit-flags-calculator.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
+#include <string>
 
 /*!
  * @brief テキストトークンを走査してフラグを一つ得る(エゴ用) /
@@ -23,7 +24,7 @@ static bool grab_one_ego_item_flag(ego_item_type *e_ptr, concptr what)
         }
     }
 
-    if (grab_one_flag(&e_ptr->gen_flags, k_info_gen_flags, what) == 0)
+    if (FlagGroup<TRG>::grab_one_flag(e_ptr->gen_flags, k_info_gen_flags, what))
         return 0;
 
     msg_format(_("未知の名のあるアイテム・フラグ '%s'。", "Unknown ego-item flag '%s'."), what);
@@ -62,8 +63,7 @@ errr parse_e_info(char *buf, angband_header *head)
         error_idx = i;
         e_ptr = &e_info[i];
 #ifdef JP
-        if (!add_name(&e_ptr->name, head, s))
-            return 7;
+        e_ptr->name = std::string(s);
 #endif
     } else if (!e_ptr) {
         return 3;
@@ -77,8 +77,7 @@ errr parse_e_info(char *buf, angband_header *head)
 #else
     else if (buf[0] == 'E') {
         s = buf + 2;
-        if (!add_name(&e_ptr->name, head, s))
-            return 7;
+        e_ptr->name = std::string(s);
     }
 #endif
     else if (buf[0] == 'X') {

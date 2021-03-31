@@ -32,10 +32,6 @@ errr init_info_txt(FILE *fp, char *buf, angband_header *head, parse_info_txt_fun
     error_idx = -1;
     error_line = 0;
 
-    head->name_size = 0;
-    head->text_size = 0;
-    head->tag_size = 0;
-
     errr err;
     while (angband_fgets(fp, buf, 1024) == 0) {
         error_line++;
@@ -52,19 +48,14 @@ errr init_info_txt(FILE *fp, char *buf, angband_header *head, parse_info_txt_fun
         if (buf[0] != 'N' && buf[0] != 'D') {
             int i;
             for (i = 0; buf[i]; i++) {
-                head->v_extra += (byte)buf[i];
-                head->v_extra ^= (1U << (i % 8));
+                head->checksum += (byte)buf[i];
+                head->checksum ^= (1U << (i % 8));
             }
         }
 
         if ((err = (*parse_info_txt_line)(buf, head)) != 0)
             return (err);
     }
-
-    if (head->name_size)
-        head->name_size++;
-    if (head->text_size)
-        head->text_size++;
 
     return 0;
 }
@@ -142,7 +133,7 @@ parse_error_type parse_line_feature(floor_type *floor_ptr, char *buf)
                 ARTIFACT_IDX a_idx = quest[floor_ptr->inside_quest].k_idx;
                 if (a_idx) {
                     artifact_type *a_ptr = &a_info[a_idx];
-                    if (!(a_ptr->gen_flags & TRG_INSTA_ART)) {
+                    if (a_ptr->gen_flags.has_not(TRG::INSTA_ART)) {
                         letter[index].object = lookup_kind(a_ptr->tval, a_ptr->sval);
                     }
                 }

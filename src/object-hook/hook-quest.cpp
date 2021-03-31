@@ -25,7 +25,7 @@ bool object_is_bounty(player_type *player_ptr, object_type *o_ptr)
     if (vanilla_town)
         return FALSE;
 
-    if (player_ptr->today_mon > 0 && (streq(r_name + r_info[o_ptr->pval].name, r_name + r_info[today_mon].name)))
+    if (player_ptr->today_mon > 0 && (streq(r_info[o_ptr->pval].name.c_str(), r_info[current_world_ptr->today_mon].name.c_str())))
         return TRUE;
 
     if (o_ptr->pval == MON_TSUCHINOKO)
@@ -55,7 +55,7 @@ bool object_is_quest_target(QUEST_IDX quest_idx, object_type *o_ptr)
         return FALSE;
 
     artifact_type *a_ptr = &a_info[a_idx];
-    if ((a_ptr->gen_flags & TRG_INSTA_ART) != 0)
+    if (a_ptr->gen_flags.has(TRG::INSTA_ART))
         return FALSE;
 
     return (o_ptr->tval == a_ptr->tval) && (o_ptr->sval == a_ptr->sval);

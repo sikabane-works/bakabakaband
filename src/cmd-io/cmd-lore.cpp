@@ -79,7 +79,7 @@ void do_cmd_query_symbol(player_type *creature_ptr)
             temp[0] = 0;
             return;
         }
-        sprintf(buf, _("名前:%sにマッチ", "Monsters with a name \"%s\""), temp);
+        sprintf(buf, _("名前:%sにマッチ", "Monsters' names with \"%s\""), temp);
     } else if (ident_info[i]) {
         sprintf(buf, "%c - %s.", sym, ident_info[i] + 2);
     } else {
@@ -118,16 +118,16 @@ void do_cmd_query_symbol(player_type *creature_ptr)
             }
 
 #ifdef JP
-            strcpy(temp2, r_name + r_ptr->E_name);
+            strcpy(temp2, r_ptr->E_name.c_str());
 #else
-            strcpy(temp2, r_name + r_ptr->name);
+            strcpy(temp2, r_ptr->name.c_str());
 #endif
             for (xx = 0; temp2[xx] && xx < MAX_MONSTER_NAME; xx++)
                 if (isupper(temp2[xx]))
                     temp2[xx] = (char)tolower(temp2[xx]);
 
 #ifdef JP
-            if (angband_strstr(temp2, temp) || angband_strstr(r_name + r_ptr->name, temp))
+            if (angband_strstr(temp2, temp) || angband_strstr(r_ptr->name.c_str(), temp))
 #else
             if (angband_strstr(temp2, temp))
 #endif
