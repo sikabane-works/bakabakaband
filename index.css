@@ -37,6 +37,10 @@ body {
     min-height: 100vh;
     background-color: #252b25;
     font-family:"メイリオ","Meiryo",Osaka, "ヒラギノ角ゴ Pro W3", Arial, Helvetica, sans-serif;
+    background-image: url("back.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
 }
 
 #melko {
@@ -44,6 +48,14 @@ body {
     position: absolute;
     left: -19%;
     z-index: 0;
+}
+
+#melko-serif {
+	width: 57%;
+    position: absolute;
+    top: -20%;
+    right: -3%;
+    z-index: 2;
 }
 
 h2 {
@@ -82,13 +94,29 @@ h2 {
     align-content: space-between;
 }
 
+#ahona
+{
+    width:70%;
+}
+
 #title-div
 {
     z-index: 10;
     position: absolute;
-    top: 18rem;
+    top: 20rem;
     width: 43%;
     right: 2%;
+}
+
+a.button-link:link 		{ color:white;}
+a.button-link:visited	{ color:white;}
+a.button-link:active	{ color:white;}
+a.button-link:hover		{ color:white;}
+.button-link
+{
+    display: contents;
+    color: white;
+    text-decoration: none;
 }
 
 .button
@@ -99,7 +127,7 @@ h2 {
     background-color: rgba(20,10,0,1.00);
     border: solid 0.5rem;
     margin: 1rem;
-    padding: 2.4rem;
+    padding: 1rem 1rem 1rem 5.4rem;
     border-radius: 5.5rem;
     z-index: 10;
     justify-content: center;
@@ -138,7 +166,7 @@ h2 {
 
 #popup-bg{
     background: rgba(0,0,0,0.8);
-    height: 10000vh;
+    height: 500vh;
     position: absolute;
     width: 100%;
     display: none;
