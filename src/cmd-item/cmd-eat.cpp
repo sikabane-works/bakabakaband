@@ -478,13 +478,14 @@ void exe_eat_food(player_type *creature_ptr, INVENTORY_IDX item)
     ate = exe_eat_soul(creature_ptr, o_ptr);
     ate = exe_eat_corpse_type_object(creature_ptr, o_ptr);
     ate = exe_eat_junk_type_object(creature_ptr, o_ptr);
-    if (!ate) {
-        msg_print("流石に食べるのを躊躇した。");
-        return;
-    }
     /* Identity not known yet */
     int ident;
     ident = exe_eat_food_type_object(creature_ptr, o_ptr);
+
+    if (!ate && o_ptr->tval != TV_FOOD) {
+        msg_print("流石に食べるのを躊躇した。");
+        return;
+    }
 
     /*
      * Store what may have to be updated for the inventory (including
