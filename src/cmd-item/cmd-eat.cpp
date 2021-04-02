@@ -453,7 +453,7 @@ bool exe_eat_charge_of_magic_device(player_type *creature_ptr, object_type *o_pt
 }
 
 /*!
- * @brief 食料を食べるコマンドのサブルーチン
+ * @brief 実際にアイテムを食おうとするコマンドのサブルーチン
  * @param item 食べるオブジェクトの所持品ID
  * @return なし
  */
@@ -473,11 +473,14 @@ void exe_eat_food(player_type *creature_ptr, INVENTORY_IDX item)
     /* Object level */
     int lev = k_info[o_ptr->k_idx].level;
 
-    /* 異常なものを喰う判定 */
+    /* 基本食い物でないものを喰う判定 */
     bool ate = false;
     ate = exe_eat_soul(creature_ptr, o_ptr);
-    ate = exe_eat_corpse_type_object(creature_ptr, o_ptr);
-    ate = exe_eat_junk_type_object(creature_ptr, o_ptr);
+    if (!ate)
+        ate = exe_eat_corpse_type_object(creature_ptr, o_ptr);
+    if (!ate)
+        ate = exe_eat_junk_type_object(creature_ptr, o_ptr);
+
     /* Identity not known yet */
     int ident;
     ident = exe_eat_food_type_object(creature_ptr, o_ptr);
