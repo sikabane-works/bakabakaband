@@ -25879,3 +25879,25 @@ F:UNIQUE | STUPID | WILD_TOWN | CAN_SPEAK | MALE | NASTY | HOMO_SEXUAL
 F:OPEN_DOOR | BASH_DOOR | RES_TELE
 D:聖バビロン学院大学付属病院の精神科から抜け出してきた患者だ。全裸だ。
 
+N:1338:目力先輩
+E:Powerfuleye senior
+G:*:u
+I:117:15d8:100:15:5
+W:28:2:0:300:0:0
+F:NEVER_MOVE | NO_SLEEP | NO_FEAR | NO_CONF | CAN_FLY | NASTY | FRIENDS
+F:IM_COLD | IM_FIRE | IM_POIS | IM_ACID | ONLY_ITEM | DROP_60 | NONLIVING
+S:1_IN_3 |
+S:BR_SOUN
+D:うるせえ！（マジギレ）このクッソ汚い頭部のようなホモの玩具を一刻も早く破壊しろ！
+
+# === Understanding r_info.txt ===
+
+# N: serial number : monster name
+# G: symbol : color
+# I: speed : hit points : vision : armor class : alertness
+# W: depth : rarity : 0 : exp : next_exp : next_mon
+# B: attack method : attack effect : damage
+# S: spell frequency |
+# S: spell type | spell type | etc
+# F: flag | flag | etc
+# D: Description
