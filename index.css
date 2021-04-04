@@ -50,18 +50,19 @@ body {
 }
 
 #melko {
-	width: 100%;
+    width: 100vw;
     position: absolute;
-    left: -19%;
+    left: -21vw;
     z-index: 0;
 }
 
 #melko-serif {
-	width: 57%;
+    width: 60vw;
     position: absolute;
-    top: 0rem;
+    top: -10vw;
     right: -3%;
     z-index: 2;
+    height: 50vw;
 }
 
 h2 {
@@ -70,34 +71,6 @@ h2 {
     font-size: 170%;
     display: block;
     text-align: center;
-}
-
-#top-message {
-    position: absolute;
-    top: 50rem;
-    left: 2%;
-    margin: 1.4rem;
-    padding: 2rem;
-    width: 50%;
-    background-color:rgba(0,0,0,0.85);
-    border: solid 1.0rem;
-    border-radius: 2.5rem;
-    z-index: 10;
-}
-
-#menu-block {
-    position: absolute;
-    top: 50rem;
-    right: 3%;
-    margin: 1.4rem;
-    padding: 1rem;
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    justify-items: baseline;
-    align-items: center;
-    align-content: space-between;
 }
 
 #ahona
@@ -109,10 +82,39 @@ h2 {
 {
     z-index: 10;
     position: absolute;
-    top: 28rem;
-    width: 43%;
-    right: 2%;
+    top: 25vw;
+    width: 60vw;
+    right: -2vw;
 }
+
+#top-message {
+    position: absolute;
+    top: 65vw;
+    left: 2vw;
+    margin: 0.3vw;
+    padding: 1vw;
+    width: 50vw;
+    background-color: rgba(0,0,0,0.85);
+    border: solid 0.5vw;
+    border-radius: 2vw;
+    z-index: 10;
+}
+
+#menu-block {
+    position: absolute;
+    top: 63vw;
+    right: 0vw;
+    margin: 1.5vw;
+    padding: 1vw;
+    width: 42vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: baseline;
+    align-items: center;
+    align-content: space-between;
+}
+
 
 a.button-link:link 		{ color:white;}
 a.button-link:visited	{ color:white;}
