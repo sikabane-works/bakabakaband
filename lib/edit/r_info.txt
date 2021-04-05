@@ -25900,6 +25900,35 @@ S:1_IN_6 |
 S:SHRIEK
 D:真夏の夜の淫夢に欠かせぬ偉大なる助優兄貴だちだ。でもうるせえ！（半ギレ）
 
+N:1340:DBイカ
+E:DB squid
+G:l:r
+I:113:20d10:60:50:80
+W:20:1:0:600:8000:1341
+B:ENGULF:HURT:6d6
+B:ENGULF:POISON:7d6
+F:AQUATIC | STUPID | WEIRD_MIND | IM_POIS | RES_WATE | ANIMAL | NO_CONF
+F:NO_SLEEP | NO_FEAR | DROP_CORPSE | WILD_SHORE | MALE | NASTY | HOMO_SEXUAL
+S:1_IN_4 |
+S:BR_ACID | BR_POIS
+D:ブツブツの鱗をした頭頂部がナニを思わせる怪しいイカのような何かだ。
+
+N:1341:巨大DBイカ
+E:Greater DB squid
+G:l:u
+I:118:50d10:8:80:80
+W:33:3:0:600:0:0
+B:ENGULF:HURT:6d6
+B:ENGULF:POISON:7d6
+B:ENGULF:HURT:6d6
+B:ENGULF:POISON:7d6
+F:AQUATIC | STUPID | WEIRD_MIND | IM_POIS | RES_WATE | ANIMAL | NO_CONF
+F:NO_SLEEP | NO_FEAR | DROP_CORPSE | WILD_SHORE | MALE | NASTY | HOMO_SEXUAL
+F:MOVE_BODY | RIDING | FORCE_MAXHP | WILD_OCEAN |
+S:1_IN_3 |
+S:BR_ACID | BR_POIS
+D:ブツブツの鱗をした頭頂部がナニを思わせる怪しいイカのような何かのさらにでかいのだ。
+D:乗ることはできんでもないが乗るのか、これの上の割れ目に本当に乗るのか？
 
 # === Understanding r_info.txt ===
 
