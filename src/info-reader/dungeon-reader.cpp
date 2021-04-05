@@ -300,6 +300,13 @@ errr parse_d_info(char *buf, angband_header *head)
 
             s = t;
         }
+    } else if (buf[0] == 'R') {
+        int room_id, bias_value;
+        if (2 != sscanf(buf + 2, "%d:%d", &room_id, &bias_value))
+            return 1;
+        if (0 > room_id && room_id <= ROOM_T_MAX)
+            return 1;
+        d_ptr->room_bias.prob[room_id] = bias_value;
     } else {
         return 6;
     }

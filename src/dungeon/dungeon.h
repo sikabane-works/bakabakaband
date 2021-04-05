@@ -2,6 +2,7 @@
 
 #include "system/angband.h"
 #include "grid/feature.h"
+#include "room/room-info-table.h"
 #include <string>
 
 #define DUNGEON_FEAT_PROB_NUM 3
@@ -78,6 +79,7 @@ struct dungeon_type {
 	int tunnel_percent{};
 	int obj_great{};
 	int obj_good{};
+    room_info_type room_bias;
 };
 
 extern DEPTH *max_dlv;
