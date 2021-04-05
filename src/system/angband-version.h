@@ -14,7 +14,6 @@
  * </pre>
  */
 #define FAKE_VERSION_MINUS 10
-
 #define VIEW_VERSION_MINUS 20 /*! < 表記上のバージョンマイナス */
 
 #define FAKE_VER_MAJOR 20 /*!< ゲームのバージョン番号定義(メジャー番号 + 10) */
