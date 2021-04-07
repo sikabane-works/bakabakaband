@@ -355,6 +355,9 @@ bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
     case SV_FOOD_SLIME_MOLD:
         msg_print("これはなんとも形容しがたい味だ。");
         return TRUE;
+    case SV_FOOD_BROWNIW_OF_ALC:
+        msg_print("実際に美味で「しっとりとしていて、それでいてべたつかないスッキリとした甘さ」ではあった。");
+        return TRUE;
     case SV_FOOD_RATION:
         msg_print("これはおいしい。");
         return TRUE;
