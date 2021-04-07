@@ -25930,6 +25930,24 @@ S:BR_ACID | BR_POIS
 D:ブツブツの鱗をした頭頂部がナニを思わせる怪しいイカのような何かのさらにでかいのだ。
 D:乗ることはできんでもないが乗るのか、これの上の割れ目に本当に乗るのか？
 
+N:1342:暴力団員『TNOK』
+E:TNOK, the Gangsters Member
+G:p:o
+I:110:19d12:20:30:20
+W:11:2:0:100:0:0
+B:HIT:HURT:1d10
+B:HIT:HURT:1d10
+B:HIT:HURT:1d10
+B:SHOOT:HURT:2d20
+F:UNIQUE | MALE | EVIL | HAS_LITE_2 | HUMAN | NASTY | HOMO_SEXUAL | YAKUZA
+F:FORCE_MAXHP | CAN_SPEAK | WILD_ALL | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD
+F:OPEN_DOOR | BASH_DOOR
+S:1_IN_5 | SHOOT
+D:『試合を終えて家路へ向かうサッカー部員達。疲れからか、
+D:不幸にも黒塗りの高級車に追突してしまう。後輩をかばいすべての責任を
+D:負った三浦に対し、車の主、暴力団員谷岡が言い渡した示談の条件とは…』
+
 # === Understanding r_info.txt ===
 
 # N: serial number : monster name
