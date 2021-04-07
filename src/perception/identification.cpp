@@ -123,6 +123,10 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
     if (has_flag(flgs, TR_DARK_SOURCE))
         info[i++] = _("それは全く光らない。", "It provides no light.");
 
+    if (has_flag(flgs, TR_INDESTRUCTIBLE)) {
+        info[i++] = _("それは破壊不能だ。", "It is indestructible.");
+    }
+
     POSITION rad = 0;
     if (has_flag(flgs, TR_LITE_1) && !has_flag(flgs, TR_DARK_SOURCE))
         rad += 1;

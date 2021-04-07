@@ -5,15 +5,18 @@
 #include "monster-race/monster-race.h"
 #include "object-enchant/item-feeling.h"
 #include "object-enchant/special-object-flags.h"
+#include "object-enchant/tr-types.h"
 #include "object-hook/hook-checker.h"
 #include "object-hook/hook-enchant.h"
 #include "object/object-kind.h"
+#include "object/object-flags.h"
 #include "perception/object-perception.h"
 #include "player/mimic-info-table.h"
 #include "sv-definition/sv-lite-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "system/object-type-definition.h"
 #include "util/string-processor.h"
+#include "util/bit-flags-calculator.h"
 
 /*!
  * @brief オブジェクトをプレイヤーが食べることができるかを判定する /
@@ -114,9 +117,18 @@ bool object_can_refill_torch(player_type *player_ptr, object_type *o_ptr)
  */
 bool can_player_destroy_object(player_type *player_ptr, object_type *o_ptr)
 {
+    BIT_FLAGS flgs[TR_FLAG_SIZE];
+
+    object_flags(player_ptr, o_ptr, flgs);
+    if (has_flag(flgs, TR_INDESTRUCTIBLE))
+        return FALSE;
+
+
     /* Artifacts cannot be destroyed */
     if (!object_is_artifact(o_ptr))
         return TRUE;
+
+
 
     if (!object_is_known(o_ptr)) {
         byte feel = FEEL_SPECIAL;

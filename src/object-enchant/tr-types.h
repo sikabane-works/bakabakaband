@@ -157,5 +157,6 @@ enum tr_type {
     TR_DARK_SOURCE = 146, 
     TR_SUPPORTIVE = 147,
     TR_NASTY = 148,
-    TR_FLAG_MAX = 149,
+    TR_INDESTRUCTIBLE = 149,
+    TR_FLAG_MAX = 150,
 };
