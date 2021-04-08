@@ -3041,7 +3041,7 @@ N:185:矢筒スロット
 E:Quiver slot
 G:,:U
 I:120:1d1:4:1:0
-W:10:2:0:3:0:0
+W:10:2:0:3:2000:1344
 B:SHOOT:HURT:2d5
 B:SPORE:CONFUSE:1d1
 F:NEVER_MOVE | COLD_BLOOD | MULTIPLY |
@@ -25963,6 +25963,22 @@ F:DROP_SKELETON | DROP_CORPSE
 F:ONLY_ITEM | DROP_1D2 | DROP_GOOD
 F:OPEN_DOOR | BASH_DOOR
 D:七人もの男の尻を破壊した巨根を持つ、連続男性強姦魔だ。
+
+N:1344:歩行バリスタ
+E:Walking ballista
+G:g:U
+I:115:30d15:12:40:10
+W:31:2:0:700:0:0
+B:SHOOT:HURT:10d5
+F:ONLY_ITEM | DROP_2D2 | 
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR 
+F:IM_FIRE | IM_COLD | IM_POIS | 
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+S:1_IN_2
+S:SHOOT
+D:カラデシュと呼ばれる工匠の多い次元世界の住人が趣味で作りだした、
+D:えげつなく強力な兵器だ。魔力があればあるだけ矢を撃ち放つことができる。
+
 
 # === Understanding r_info.txt ===
 
