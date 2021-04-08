@@ -25934,7 +25934,7 @@ N:1342:暴力団員『TNOK』
 E:TNOK, the Gangsters Member
 G:p:o
 I:110:19d12:20:30:20
-W:11:2:0:100:0:0
+W:11:2:0:130:0:0
 B:HIT:HURT:1d10
 B:HIT:HURT:1d10
 B:HIT:HURT:1d10
@@ -25947,6 +25947,22 @@ S:1_IN_5 | SHOOT
 D:『試合を終えて家路へ向かうサッカー部員達。疲れからか、
 D:不幸にも黒塗りの高級車に追突してしまう。後輩をかばいすべての責任を
 D:負った三浦に対し、車の主、暴力団員谷岡が言い渡した示談の条件とは…』
+
+N:1343:男狩り『日高良司』
+E:Ryoji Hidaka, the Man Hunter
+G:p:u
+I:110:10d12:20:40:20
+W:9:3:0:180:0:0
+B:HIT:HURT:1d8
+B:CRUSH:HURT:1d8
+B:HIT:HURT:1d10
+B:CRUSH:HURT:1d10
+F:UNIQUE | MALE | HUMAN | NASTY | HOMO_SEXUAL
+F:FORCE_MAXHP | WILD_ALL | EVIL
+F:DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD
+F:OPEN_DOOR | BASH_DOOR
+D:七人もの男の尻を破壊した巨根を持つ、連続男性強姦魔だ。
 
 # === Understanding r_info.txt ===
 
