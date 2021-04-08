@@ -7,6 +7,7 @@
 #include "floor/cave.h"
 #include "grid/feature-flag-types.h"
 #include "grid/grid.h"
+#include "inventory/inventory-object.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags7.h"
 #include "monster/monster-describer.h"
@@ -45,6 +46,11 @@ void fetch_item(player_type *caster_ptr, DIRECTION dir, WEIGHT wgt, bool require
     if (dir == 5 && target_okay(caster_ptr)) {
         tx = target_col;
         ty = target_row;
+
+        if (!check_get_item(caster_ptr, o_ptr)) {
+            msg_print(_("それを動かすことはできない。", "You can't move it."));
+            return;
+        }
 
         if (distance(caster_ptr->y, caster_ptr->x, ty, tx) > get_max_range(caster_ptr)) {
             msg_print(_("そんなに遠くにある物は取れません！", "You can't fetch something that far away!"));

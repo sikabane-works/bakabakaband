@@ -6,6 +6,7 @@
 #include "inventory/inventory-slot-types.h"
 #include "object-hook/hook-weapon.h"
 #include "object/object-generator.h"
+#include "object/object-flags.h"
 #include "object/object-info.h"
 #include "object/object-mark-types.h"
 #include "object/object-stack.h"
@@ -14,6 +15,9 @@
 #include "util/object-sort.h"
 #include "view/display-messages.h"
 #include "view/object-describer.h"
+#include "object-enchant/tr-types.h"
+#include "system/object-type-definition.h"
+#include "util/bit-flags-calculator.h"
 
 void vary_item(player_type *owner_ptr, INVENTORY_IDX item, ITEM_NUMBER num)
 {
@@ -344,6 +348,17 @@ s16b store_item_to_inventory(player_type *owner_ptr, object_type *o_ptr)
 
     return i;
 }
+
+
+/*!
+ * @brief アイテムが拾えるものかどうか返す。 
+ */
+bool check_get_item(player_type *player_ptr, object_type *o_ptr) {
+    BIT_FLAGS flgs[TR_FLAG_SIZE];
+    object_flags(player_ptr, o_ptr, flgs);
+    return !has_flag(flgs, TR_NEVER_MOVE);
+}
+
 
 /*!
  * @brief アイテムを拾う際にザックから溢れずに済むかを判定する /

@@ -158,5 +158,6 @@ enum tr_type {
     TR_SUPPORTIVE = 147,
     TR_NASTY = 148,
     TR_INDESTRUCTIBLE = 149,
-    TR_FLAG_MAX = 150,
+    TR_NEVER_MOVE = 150,
+    TR_FLAG_MAX = 151,
 };
