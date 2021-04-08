@@ -112,7 +112,7 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
 
     if (o_ptr->tval == TV_STATUE) {
         monster_race *r_ptr = &r_info[o_ptr->pval];
-        if (o_ptr->pval == MON_BULLGATES)
+        if (o_ptr->pval == MON_STOLENMAN)
             info[i++] = _("それは部屋に飾ると恥ずかしい。", "It is shameful.");
         else if (r_ptr->flags2 & (RF2_ELDRITCH_HORROR))
             info[i++] = _("それは部屋に飾ると恐い。", "It is fearful.");
