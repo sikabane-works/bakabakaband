@@ -159,7 +159,9 @@ concptr k_info_flags[NUM_K_FLAGS] = {
     "DARK_SOURCE",
     "SUPPORTIVE",
     "NASTY",
-    "INDESTRUCTIBLE" };
+    "INDESTRUCTIBLE",
+    "NEVER_MOVE"
+ };
 
 /*!
  * オブジェクト生成特性トークンの定義 /

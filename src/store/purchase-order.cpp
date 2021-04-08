@@ -220,6 +220,12 @@ void store_purchase(player_type *player_ptr)
      */
     reduce_charges(j_ptr, o_ptr->number - amt);
     j_ptr->number = amt;
+
+    if (!check_get_item(player_ptr, j_ptr)) {
+        msg_print(_("それを持ち運ぶことはできない。", "You can't carry it."));
+        return;
+    }
+
     if (!check_store_item_to_inventory(player_ptr, j_ptr)) {
         msg_print(_("ザックにそのアイテムを入れる隙間がない。", "You cannot carry that many items."));
         return;
