@@ -126,13 +126,13 @@ void store_sell(player_type *owner_ptr)
         msg_format(_("%s(%c)を売却する。", "Selling %s (%c)."), o_name, index_to_label(item));
         msg_print(NULL);
 
-        price = price_item(owner_ptr, o_ptr, ot_ptr->min_inflate, TRUE);
+        price = price_item(owner_ptr, o_ptr, ot_ptr->min_inflate, TRUE) * q_ptr->number;
         choice = 0;
 
         if (st_ptr->store_open >= current_world_ptr->game_turn)
             return;
 
-        sprintf(out_val, _("売却価格: $%d [Enter/Escape]", "Selling price: $%d [Enter/Escape]"), price);
+        sprintf(out_val, _("売却総額: $%d [Enter/Escape]", "Selling total price: $%d [Enter/Escape]"), price);
         put_str(out_val, 0, 0);
         while (TRUE) {
             char k = inkey();

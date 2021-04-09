@@ -194,9 +194,6 @@ void display_store(player_type *player_ptr)
     sprintf(buf, "%s (%s)", owner_name, race_name);
     put_str(buf, 3, 10);
 
-    sprintf(buf, "%s (%ld)", store_name, (long)(ot_ptr->max_cost));
-    prt(buf, 3, 50);
-
     put_str(_("商品の一覧", "Item Description"), 5, 5);
     if (show_weights)
         put_str(_("  重さ", "Weight"), 5, 60);
