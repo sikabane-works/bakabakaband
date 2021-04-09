@@ -23,7 +23,7 @@ grouper group_item[MAX_GROUPER_ITEM] = { { TV_SHOT, _("射撃物", "Ammo") }, { 
 
     { TV_FIGURINE, _("人形", "Magical Figurines") }, { TV_STATUE, _("像", "Statues") }, { TV_CORPSE, _("死体", "Corpses") },
 
-    { TV_SKELETON, _("その他", "Misc") }, { TV_BOTTLE, NULL }, { TV_JUNK, NULL }, { TV_SPIKE, NULL }, { TV_FLASK, NULL }, { TV_PARCHMENT, NULL },
+    { TV_SKELETON, _("その他", "Misc") }, { TV_BOTTLE, NULL }, { TV_JUNK, NULL }, { TV_SPIKE, NULL }, { TV_FLASK, NULL }, { TV_READING_MATTER, NULL },
 
     { TV_NONE, "" } };
 
