@@ -69,7 +69,7 @@ bool item_tester_hook_readable(player_type *player_ptr, object_type *o_ptr)
     /* Unused */
     (void)player_ptr;
 
-    if ((o_ptr->tval == TV_SCROLL) || (o_ptr->tval == TV_PARCHMENT) || (o_ptr->name1 == ART_GHB) || (o_ptr->name1 == ART_POWER))
+    if ((o_ptr->tval == TV_SCROLL) || (o_ptr->tval == TV_READING_MATTER) || (o_ptr->name1 == ART_GHB) || (o_ptr->name1 == ART_POWER))
         return TRUE;
 
     return FALSE;

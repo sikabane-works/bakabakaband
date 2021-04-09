@@ -482,7 +482,7 @@ void exe_read(player_type *creature_ptr, INVENTORY_IDX item, bool known)
         msg_print(NULL);
         msg_print(_("暗闇の中に繋ぎとめる。」", "and in the darkness bind them.'"));
         used_up = FALSE;
-    } else if (o_ptr->tval == TV_PARCHMENT) {
+    } else if (o_ptr->tval == TV_READING_MATTER) {
         concptr q;
         GAME_TEXT o_name[MAX_NLEN];
         char buf[1024];

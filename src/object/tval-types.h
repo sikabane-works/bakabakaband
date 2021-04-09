@@ -51,7 +51,7 @@ enum tval_type {
     TV_STAFF = 55,
     TV_WAND = 65,
     TV_ROD = 66,
-    TV_PARCHMENT = 69,
+    TV_READING_MATTER = 69,
     TV_SCROLL = 70,
     TV_POTION = 75,
     TV_FLASK = 77,
