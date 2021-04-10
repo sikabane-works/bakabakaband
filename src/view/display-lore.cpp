@@ -401,11 +401,15 @@ void display_monster_alignment(lore_type *lore_ptr)
     if (lore_ptr->flags3 & RF3_GOOD)
         hook_c_roff(TERM_YELLOW, _("善良な", " good"));
 
+    if (lore_ptr->flags8 & RF8_YAKUZA)
+        hook_c_roff(TERM_L_DARK, _("ヤクザな", " yakuza"));
+
     if (lore_ptr->flags3 & RF3_UNDEAD)
         hook_c_roff(TERM_VIOLET, _("アンデッドの", " undead"));
 
     if (lore_ptr->flags3 & RF3_AMBERITE)
         hook_c_roff(TERM_VIOLET, _("アンバーの王族の", " Amberite"));
+
 }
 
 /*!

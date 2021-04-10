@@ -112,9 +112,16 @@ void autopick_pickup_items(player_type *player_ptr, grid_type *g_ptr)
         }
 
         disturb(player_ptr, FALSE, FALSE);
+        GAME_TEXT o_name[MAX_NLEN];
+        describe_flavor(player_ptr, o_name, o_ptr, 0);
+
+        if (!check_get_item(player_ptr, o_ptr)) {
+            msg_format(_("%sを持ち運ぶことはできない。", "You can't carry %s."), o_name);
+            o_ptr->marked |= OM_NOMSG;
+            continue;            
+        }
+
         if (!check_store_item_to_inventory(player_ptr, o_ptr)) {
-            GAME_TEXT o_name[MAX_NLEN];
-            describe_flavor(player_ptr, o_name, o_ptr, 0);
             msg_format(_("ザックには%sを入れる隙間がない。", "You have no room for %s."), o_name);
             o_ptr->marked |= OM_NOMSG;
             continue;
@@ -126,7 +133,6 @@ void autopick_pickup_items(player_type *player_ptr, grid_type *g_ptr)
         }
 
         char out_val[MAX_NLEN + 20];
-        GAME_TEXT o_name[MAX_NLEN];
         if (o_ptr->marked & OM_NO_QUERY) {
             continue;
         }

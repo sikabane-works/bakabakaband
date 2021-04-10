@@ -6117,12 +6117,12 @@ P:0:1d6:0:0:0
 F:SHOW_MODS | BLOWS
 
 #JP#
-N:636:冒険者のための中つ国ガイド
-E:Adventurer's guide to Middle Earth
+N:636:何者かに添削された羊皮紙『冒険者のための中つ国ガイド』
+E:Corrected by someone parchment 'Adventurer's guide to Middle Earth'
 G:?:o
 I:69:0:0
 W:0:0:5:1
-A:0/255
+A:0/3
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
 N:637:[武芸諸譜]
@@ -6495,4 +6495,93 @@ W:1:0:40:0
 A:1/2
 P:0:1d1:0:0:0
 
+N:680:#の糞の像
+E:& Feces Statue~ of #
+G:`:U
+I:9:13:0
+W:10:0:500:0
+A:5/3
+P:0:1d1:0:0:0
+D:それはまさにそびえたつクソだ！
+F:NASTY
 
+N:681:胸まであるゴム長
+E:Chest rubber ~
+G:(:u
+I:36:14:0
+W:10:0:80:200
+A:10/2
+P:6:1d1:0:0:0
+F:NASTY | RES_ELEC
+D:漁師の人との幼い頃の体験というか、淡い恋心とかそういうものが籠っているようだ。
+
+N:682:この世の終わりみたいなパンツ
+E:Underpants reminisced doomsday ~
+G:(:R
+I:36:15:0
+W:10:0:80:200
+A:20/2
+P:1:1d1:0:0:0
+F:NASTY
+D:ピンク色のＯバックとかどう評しろというのか。
+
+N:683:伸縮性のあるボクサー型のパンツ
+E:Elastic Boxer Type Underpants ~
+G:(:w
+I:36:16:0
+W:10:0:80:200
+A:20/2
+P:1:1d1:0:0:0
+F:NASTY
+D:ふたいたいは（適当）
+
+N:684:#の残気
+E:& Stayed aura~ of #
+G:`:W
+I:9:14:0
+W:20:0:0:0
+A:20/2
+P:0:1d1:0:0:0
+D:強き者が、その場に留まっていた時にしばしば残すものらしい。実際は弱き者でも普通に残ったり残らなかったりするようだ。
+F:NEVER_MOVE
+
+N:685:ALCのブラウニー
+E:& Brownie~ of ALC
+G:,:u
+A:5/1
+I:80:40:1500
+W:0:0:2:2
+F:NASTY
+D:「クォクォアはバン・ホーテンのものを使用したのかな？」勝手に海外老舗大手食品会社を幻想入りさせるな。訴訟も辞さない（半）
+
+N:686:人間便器マスク
+E:& Human Toilet Mask~
+G:]:W
+I:32:9:0
+W:10:0:30:100
+A:10/1
+P:3:1d1:0:0:0
+F:NASTY
+D:顔を保護はできるようだが、そこに小便されても知らんぞ。
+
+N:687:永久岩の石碑『やったぜ。 投稿者：変態糞土方』
+E:Parmanent Stone Monument 'I've done. by The Hentai Feces Labor'
+G:?:U
+I:69:1:0
+W:0:0:5:1
+A:0/3
+F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | NEVER_MOVE | INDESTRUCTIBLE
+
+# D - Black        w - White          s - Gray          o - Orange
+# r - Red          g - Green          b - Blue          u - Brown
+# d - Dark Gray    W - Light Gray     v - Violet        y - Yellow
+# R - Light Red    G - Light Green    B - Light Blue    U - Light Brown
+
+
+# N: serial number : & object name~
+# G: symbol : color
+# I: tval : sval : pval
+# W: depth : rarity : weight : cost
+# P: base armor class : base damage : plus to-hit : plus to-dam : plus to-ac
+# A: depth/rarity : depth/rarity : etc
+# F: flag | flag | etc

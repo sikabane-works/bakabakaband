@@ -377,8 +377,9 @@ void switch_tval_description(flavor_type *flavor_ptr)
     case TV_FOOD:
         describe_food(flavor_ptr);
         break;
-    case TV_PARCHMENT:
-        flavor_ptr->basenm = _("羊皮紙 - %", "& Parchment~ - %");
+    case TV_READING_MATTER:
+        describe_food(flavor_ptr);
+        flavor_ptr->basenm = _("%", "& %");
         break;
     case TV_LIFE_BOOK:
         describe_book_life(flavor_ptr);

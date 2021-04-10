@@ -57,3 +57,9 @@
 
 /*! @brief 大型ダンジョン生成率(1/N) */
 #define LARGE_DUNGEON_RATE 4
+
+/*! @brief アリーナ闘技場の横幅 */
+const int ARENA_WID = 33;
+
+/*! @brief アリーナ闘技場の縦幅 */
+const int ARENA_HGT = 33;

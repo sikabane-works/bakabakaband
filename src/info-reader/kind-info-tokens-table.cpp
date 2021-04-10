@@ -158,9 +158,10 @@ concptr k_info_flags[NUM_K_FLAGS] = {
     "INVULN_ARROW",
     "DARK_SOURCE",
     "SUPPORTIVE",
-
-    "NASTY"
-};
+    "NASTY",
+    "INDESTRUCTIBLE",
+    "NEVER_MOVE"
+ };
 
 /*!
  * オブジェクト生成特性トークンの定義 /

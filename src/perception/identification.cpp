@@ -112,7 +112,7 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
 
     if (o_ptr->tval == TV_STATUE) {
         monster_race *r_ptr = &r_info[o_ptr->pval];
-        if (o_ptr->pval == MON_BULLGATES)
+        if (o_ptr->pval == MON_STOLENMAN)
             info[i++] = _("それは部屋に飾ると恥ずかしい。", "It is shameful.");
         else if (r_ptr->flags2 & (RF2_ELDRITCH_HORROR))
             info[i++] = _("それは部屋に飾ると恐い。", "It is fearful.");
@@ -120,8 +120,17 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
             info[i++] = _("それは部屋に飾ると楽しい。", "It is cheerful.");
     }
 
-    if (has_flag(flgs, TR_DARK_SOURCE))
+    if (has_flag(flgs, TR_DARK_SOURCE)) {
         info[i++] = _("それは全く光らない。", "It provides no light.");
+    }
+
+    if (has_flag(flgs, TR_INDESTRUCTIBLE)) {
+        info[i++] = _("それは破壊不能だ。", "It is indestructible.");
+    }
+
+    if (has_flag(flgs, TR_NEVER_MOVE)) {
+        info[i++] = _("それはその場から一切動かすことができない。", "It can't move at all from the spot.");
+    }
 
     POSITION rad = 0;
     if (has_flag(flgs, TR_LITE_1) && !has_flag(flgs, TR_DARK_SOURCE))
