@@ -125,8 +125,6 @@ static void shuffle_store(player_type *player_ptr)
     prt("", 3, 0);
     sprintf(buf, "%s (%s)", ot_ptr->owner_name, race_info[ot_ptr->owner_race].title);
     put_str(buf, 3, 10);
-    sprintf(buf, "%s (%ld)", f_info[cur_store_feat].name.c_str(), (long)(ot_ptr->max_cost));
-    prt(buf, 3, 50);
 }
 
 static void switch_store_stock(player_type *player_ptr, const int i, const COMMAND_CODE item)
@@ -252,7 +250,7 @@ void store_purchase(player_type *player_ptr)
         return;
     }
 
-    sprintf(out_val, _("購入価格: $%d [Enter/Escape]", "Purchase price: $%d [Enter/Escape]"), price);
+    sprintf(out_val, _("購入総額: $%d [Enter/Escape]", "Purchase total price: $%d [Enter/Escape]"), price);
     put_str(out_val, 0, 0);
     while (TRUE) {
         char k = inkey();
