@@ -25979,6 +25979,24 @@ S:SHOOT
 D:カラデシュと呼ばれる工匠の多い次元世界の住人が趣味で作りだした、
 D:えげつなく強力な兵器だ。魔力があればあるだけ矢を撃ち放つことができる。
 
+N:1345:ソロのネクロマンサー『イワナの怪僧』
+E:Monstrous Char Priest, the Solo Necromancer
+G:l:g
+I:120:30d15:20:90:20
+W:28:2:0:230:0:0
+B:CLAW:POISON:4d4
+B:CLAW:POISON:4d4
+B:BITE:HURT:5d4
+F:WILD_SHORE | DROP_CORPSE | UNIQUE
+F:EAT_POISONOUS | NASTY | CAN_SPEAK
+F:DROP_GOOD | DROP_1D2 | DROP_2D2
+F:CAN_SWIM | BASH_DOOR | ELDRITCH_HORROR | RES_TELE
+F:GOOD | EVIL | UNDEAD | IM_COLD | IM_ACID |IM_POIS | RES_WATE
+S:1_IN_3
+S:SCARE | CAUSE_2 | CAUSE_3 | ANIM_DEAD
+D:それは南会津の山奥を流れる水無川の上流、その底無しの淵に住む巨大なイワナの主だった。
+D:クッソ汚い木こりの根流しによって死した今もまだ、不死者となって、
+D:この世を徘徊し続けているようだ。
 
 # === Understanding r_info.txt ===
 
