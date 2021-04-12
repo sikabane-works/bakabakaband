@@ -49,8 +49,14 @@ static bool deal_damege_by_feat(player_type *creature_ptr, grid_type *g_ptr, con
 {
     feature_type *f_ptr = &f_info[g_ptr->feat];
     int damage = 0;
+    bool resist_levitation = (creature_ptr->levitation && !has_flag(f_ptr->flags, FF_CHAOS_TAINTED) && !has_flag(f_ptr->flags, FF_VOID));
 
-    if (has_flag(f_ptr->flags, FF_DEEP)) {
+
+    if (has_flag(f_ptr->flags, FF_CHAOS_TAINTED)) {
+        damage = 12000 + randint0(8000);
+    } else if (has_flag(f_ptr->flags, FF_VOID)) {
+        damage = 18000 + randint0(12000);
+    } else if (has_flag(f_ptr->flags, FF_DEEP)) {
         damage = 6000 + randint0(4000);
     } else if (!creature_ptr->levitation) {
         damage = 3000 + randint0(2000);
@@ -58,7 +64,8 @@ static bool deal_damege_by_feat(player_type *creature_ptr, grid_type *g_ptr, con
 
     damage *= damage_rate(creature_ptr);
     damage /= 100;
-    if (creature_ptr->levitation)
+
+    if (resist_levitation)
         damage /= 5;
 
     damage = damage / 100 + (randint0(100) < (damage % 100));
@@ -66,7 +73,7 @@ static bool deal_damege_by_feat(player_type *creature_ptr, grid_type *g_ptr, con
     if (damage == 0)
         return FALSE;
 
-    if (creature_ptr->levitation) {
+    if (resist_levitation) {
         msg_print(msg_levitation);
 
         take_hit(creature_ptr, DAMAGE_NOESCAPE, damage, format(_("%sの上に浮遊したダメージ", "flying over %s"),
@@ -187,6 +194,16 @@ void process_player_hp_mp(player_type *creature_ptr)
             take_hit(creature_ptr, DAMAGE_NOESCAPE, randint1(creature_ptr->lev), _("溺れ", "drowning"), -1);
             cave_no_regen = TRUE;
         }
+    }
+
+    if (has_flag(f_ptr->flags, FF_CHAOS_TAINTED)) {
+        cave_no_regen = deal_damege_by_feat(creature_ptr, g_ptr, _("に汚染された!", "taints you!"),
+            _("に汚染された!", "taints you"), calc_chaos_damage_rate_rand, NULL);
+    }
+
+    if (has_flag(f_ptr->flags, FF_VOID)) {
+        cave_no_regen = deal_damege_by_feat(creature_ptr, g_ptr, _("に巻き込まれて己の存在が薄れていく!", "erases your existence!"),
+            _("に巻き込まれて己の存在が薄れていく!", "erases your existence!"), calc_void_damage_rate_rand, NULL);
     }
 
     if (creature_ptr->riding) {
