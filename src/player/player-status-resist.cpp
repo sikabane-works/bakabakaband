@@ -315,6 +315,14 @@ PERCENTAGE calc_conf_damage_rate(player_type *creature_ptr, rate_calc_type_mode 
 }
 
 /*!
+ * @brief 混沌属性攻撃に対するダメージ倍率計算(乱数固定)
+ */
+PERCENTAGE calc_chaos_damage_rate_rand(player_type *creature_ptr)
+{
+    return calc_chaos_damage_rate(creature_ptr, CALC_RAND);
+}
+
+/*!
  * @brief 混沌属性攻撃に対するダメージ倍率計算
  */
 PERCENTAGE calc_chaos_damage_rate(player_type *creature_ptr, rate_calc_type_mode mode)
@@ -460,6 +468,14 @@ PERCENTAGE calc_gravity_damage_rate(player_type *creature_ptr, rate_calc_type_mo
         per = (per * 2) / 3;
     }
     return per;
+}
+
+/*!
+ * @brief 虚無攻撃に対するダメージ倍率計算(乱数固定)
+ */
+PERCENTAGE calc_void_damage_rate_rand(player_type *creature_ptr)
+{
+    return calc_void_damage_rate(creature_ptr, CALC_RAND);
 }
 
 /*!

@@ -33,8 +33,8 @@ concptr f_info_flags[NUM_F_FLAGS] = {
     "FLOOR",
     "WALL",
     "PERMANENT",
-    "XXX00",
-    "XXX01",
+    "CHAOS_TAINTED",
+    "VOID",
     "XXX02",
     "HIT_TRAP",
 

@@ -34,6 +34,8 @@ enum feature_flag_type : int {
     FF_FLOOR = 25, /*!< 床のある地形である */
     FF_WALL = 26, /*!< 壁のある地形である */
     FF_PERMANENT = 27, /*!< 絶対に破壊できない永久地形である */
+    FF_CHAOS_TAINTED = 28, /*!< カオスに汚染されている */
+    FF_VOID = 29, /*!< 虚空である */
     FF_HIT_TRAP = 31, /*!< トラップのある地形である(TRAPと常に重複している？) */
     FF_GLOW = 37, /*!< 常に光っている地形である */
     FF_ENSECRET = 38, /*!< 不明(f_info.txt上で利用している地形がない) */
