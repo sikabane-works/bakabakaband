@@ -658,7 +658,7 @@ void wiz_zap_floor_monsters(player_type *caster_ptr)
 /* @brief 死を欺く仕様(馬鹿馬鹿蛮怒独自実装) */
 void cheat_death(player_type *creature_ptr, bool no_penalty)
 {
-    int blank_years;
+    s16b blank_years;
     if (!no_penalty) {
 
 
