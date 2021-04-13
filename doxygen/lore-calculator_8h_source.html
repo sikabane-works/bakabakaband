@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/lore/lore-calculator.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_89a6f1a5ea7a1eb7554fb2222d79246d.html">lore</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">lore-calculator.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="lore-calculator_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="lore-util_8h.html">lore/lore-util.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mspell-type_8h.html">mspell/mspell-type.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lore-calculator_8h.html#a0ffbba966e78bd0b78dd24583a1b034e">dice_to_string</a>(<span class="keywordtype">int</span> base_damage, <span class="keywordtype">int</span> dice_num, <span class="keywordtype">int</span> dice_side, <span class="keywordtype">int</span> dice_mult, <span class="keywordtype">int</span> dice_div, <span class="keywordtype">char</span> *msg);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="lore-calculator_8h.html#aa8d9d4b02e1d1303ec1826bd01097a0a">know_armour</a>(<a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> r_idx, <span class="keyword">const</span> <span class="keywordtype">bool</span> know_everything);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="lore-calculator_8h.html#a728af1b3d8a206c14385a4207a600adc">know_damage</a>(<a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> r_idx, <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lore-calculator_8h.html#a199c17833989c712210dcdc00055a14c">set_damage</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structlore__type.html">lore_type</a> *lore_ptr, <a class="code" href="mspell-type_8h.html#ab0b7e987622aba7577cb335f86509188">monster_spell_type</a> ms_type, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> <a class="code" href="lore-calculator_8h.html#af63b58d7af6eb3e05d0fa6e4a447126c">set_drop_flags</a>(<a class="code" href="structlore__type.html">lore_type</a> *lore_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a7ea47f67338902d35c1e93e00cf86908"><div class="ttname"><a href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a></div><div class="ttdeci">s16b MONRACE_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:109</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="alore-calculator_8h_html_a0ffbba966e78bd0b78dd24583a1b034e"><div class="ttname"><a href="lore-calculator_8h.html#a0ffbba966e78bd0b78dd24583a1b034e">dice_to_string</a></div><div class="ttdeci">void dice_to_string(int base_damage, int dice_num, int dice_side, int dice_mult, int dice_div, char *msg)</div><div class="ttdoc">ダイス目を文字列に変換する</div><div class="ttdef"><b>Definition:</b> lore-calculator.cpp:17</div></div>
+<div class="ttc" id="alore-calculator_8h_html_a199c17833989c712210dcdc00055a14c"><div class="ttname"><a href="lore-calculator_8h.html#a199c17833989c712210dcdc00055a14c">set_damage</a></div><div class="ttdeci">void set_damage(player_type *player_ptr, lore_type *lore_ptr, monster_spell_type ms_type, concptr msg)</div><div class="ttdoc">文字列にモンスターの攻撃力を加える</div><div class="ttdef"><b>Definition:</b> lore-calculator.cpp:112</div></div>
+<div class="ttc" id="alore-calculator_8h_html_a728af1b3d8a206c14385a4207a600adc"><div class="ttname"><a href="lore-calculator_8h.html#a728af1b3d8a206c14385a4207a600adc">know_damage</a></div><div class="ttdeci">bool know_damage(MONRACE_IDX r_idx, int i)</div><div class="ttdoc">モンスターの打撃威力を知ることができるかどうかを返す Determine if the &quot;damage&quot; of the given attack is known</div><div class="ttdef"><b>Definition:</b> lore-calculator.cpp:83</div></div>
+<div class="ttc" id="alore-calculator_8h_html_aa8d9d4b02e1d1303ec1826bd01097a0a"><div class="ttname"><a href="lore-calculator_8h.html#aa8d9d4b02e1d1303ec1826bd01097a0a">know_armour</a></div><div class="ttdeci">bool know_armour(MONRACE_IDX r_idx, const bool know_everything)</div><div class="ttdoc">モンスターのAC情報を得ることができるかを返す / Determine if the &quot;armor&quot; is known</div><div class="ttdef"><b>Definition:</b> lore-calculator.cpp:52</div></div>
+<div class="ttc" id="alore-calculator_8h_html_af63b58d7af6eb3e05d0fa6e4a447126c"><div class="ttname"><a href="lore-calculator_8h.html#af63b58d7af6eb3e05d0fa6e4a447126c">set_drop_flags</a></div><div class="ttdeci">void set_drop_flags(lore_type *lore_ptr)</div><div class="ttdef"><b>Definition:</b> lore-calculator.cpp:131</div></div>
+<div class="ttc" id="alore-util_8h_html"><div class="ttname"><a href="lore-util_8h.html">lore-util.h</a></div></div>
+<div class="ttc" id="amspell-type_8h_html"><div class="ttname"><a href="mspell-type_8h.html">mspell-type.h</a></div></div>
+<div class="ttc" id="amspell-type_8h_html_ab0b7e987622aba7577cb335f86509188"><div class="ttname"><a href="mspell-type_8h.html#ab0b7e987622aba7577cb335f86509188">monster_spell_type</a></div><div class="ttdeci">monster_spell_type</div><div class="ttdef"><b>Definition:</b> mspell-type.h:3</div></div>
+<div class="ttc" id="astructlore__type_html"><div class="ttname"><a href="structlore__type.html">lore_type</a></div><div class="ttdef"><b>Definition:</b> lore-util.h:17</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<map id="process_player_hp_mp" name="process_player_hp_mp">
+<area shape="rect" id="node1" title="10ゲームターンが進行するごとにプレイヤーのHPとMPの増減処理を行う。 / Handle timed damage and regeneration every 10 game turns" alt="" coords="5,1130,161,1157"/>
+<area shape="rect" id="node2" href="$player-status-resist_8cpp.html#a4582efcc5e8b9fb139b2fcc30fcf4abc" title="酸属性攻撃に対するダメージ倍率計算" alt="" coords="231,167,390,194"/>
+<area shape="rect" id="node3" href="$player-status-flags_8cpp.html#a1676b47cc24010b348bc26769fd4bae5" title=" " alt="" coords="694,66,821,93"/>
+<area shape="rect" id="node5" href="$player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="679,801,836,827"/>
+<area shape="rect" id="node8" href="$player-status-resist_8cpp.html#a253e621fb6141bb093cb356f8d8ae5ac" title="混沌属性攻撃に対するダメージ倍率計算(乱数固定)" alt="" coords="209,269,412,295"/>
+<area shape="rect" id="node10" href="$player-status-resist_8cpp.html#a1aa0baf0fc9bfa9ebc8e8fc5045f0622" title="冷気属性攻撃に対するダメージ倍率計算" alt="" coords="231,370,390,397"/>
+<area shape="rect" id="node11" href="$player-status-flags_8cpp.html#a18b109ff35e05d7601188f7df38994cf" title=" " alt="" coords="489,421,602,447"/>
+<area shape="rect" id="node12" href="$player-status-flags_8cpp.html#a1ef7b925805f17575d38db4d7ec565ef" title=" " alt="" coords="694,269,821,295"/>
+<area shape="rect" id="node14" href="$element-resistance_8cpp.html#a4575f3a39880dde6011b3486b4812bd5" title=" " alt="" coords="489,319,601,346"/>
+<area shape="rect" id="node15" href="$player-status-resist_8cpp.html#a8ac8f301f067aa747db2f2d623e78998" title="電撃属性攻撃に対するダメージ倍率計算" alt="" coords="231,623,390,650"/>
+<area shape="rect" id="node16" href="$player-status-flags_8cpp.html#a2ec20a346ee5ea8fb5c8d235ad0148cf" title=" " alt="" coords="694,522,821,549"/>
+<area shape="rect" id="node17" href="$player-status-flags_8cpp.html#a7922f516a1908d8f3c31f64003704ecb" title=" " alt="" coords="489,522,602,549"/>
+<area shape="rect" id="node19" href="$element-resistance_8cpp.html#a9c549b5cefa113e04fd56c1a84d42bc3" title=" " alt="" coords="489,674,601,701"/>
+<area shape="rect" id="node20" href="$player-status-resist_8cpp.html#abd1c3489adf3464ff2bfbbfb58dbf47f" title="火炎属性攻撃に対するダメージ倍率計算" alt="" coords="235,927,387,954"/>
+<area shape="rect" id="node21" href="$player-status-flags_8cpp.html#ade78b9d37026daaaef1f1b904da9ce40" title=" " alt="" coords="492,978,599,1005"/>
+<area shape="rect" id="node22" href="$player-status-flags_8cpp.html#a3c8e37ad1c2ecfdc389e4070fda2c1c0" title=" " alt="" coords="697,1003,817,1030"/>
+<area shape="rect" id="node24" href="$element-resistance_8cpp.html#a2adbd8481ec9c24c47d1a1a106f15d1f" title=" " alt="" coords="493,877,598,903"/>
+<area shape="rect" id="node25" href="$player-status_8cpp.html#a23e950e374e9cc0fbaf49ad00b82977c" title="所持品総重量を計算する" alt="" coords="237,978,385,1005"/>
+<area shape="rect" id="node26" href="$player-status-resist_8cpp.html#aa53895160d561e864885dc3b9c9fd63c" title="虚無攻撃に対するダメージ倍率計算(乱数固定)" alt="" coords="216,725,405,751"/>
+<area shape="rect" id="node28" href="$player-status_8cpp.html#a8a2a6f400fbb8cdafa4731b607116ff2" title="プレイヤーの所持重量制限を計算する / Computes current weight limit." alt="" coords="250,1079,371,1106"/>
+<area shape="rect" id="node29" href="$player-status_8cpp.html#aeedbeda026c3ca2d73b43b5ff7bd4478" title="ペットの維持コスト計算" alt="" coords="249,1181,372,1207"/>
+<area shape="rect" id="node32" href="$hp-mp-processor_8cpp.html#a6ec4006dc046fceb9b3d62332a73b9e9" title="地形によるダメージを与える / Deal damage from feature." alt="" coords="237,1333,385,1359"/>
+<area shape="rect" id="node33" href="$display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="712,1383,803,1410"/>
+<area shape="rect" id="node34" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="884,1485,963,1511"/>
+<area shape="rect" id="node35" href="$player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="511,1485,579,1511"/>
+<area shape="rect" id="node36" href="$player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="705,1535,810,1562"/>
+<area shape="rect" id="node37" href="$player-status_8cpp.html#af6be48df20384df551b88a2466d159fb" title=" " alt="" coords="722,1687,793,1714"/>
+<area shape="rect" id="node38" href="$flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="257,1485,364,1511"/>
+<area shape="rect" id="node39" href="$cmd-pet_8cpp.html#a016f22b29967f438acaee62a94bb05af" title="ペットを開放するコマンドのメインルーチン" alt="" coords="238,1231,383,1258"/>
+<area shape="rect" id="node40" href="$player-status-flags_8cpp.html#a3716d7b8ad214794e5de54641ff0ca5d" title="クリーチャーが壁通過を持っているかを返す。" alt="" coords="257,1586,364,1613"/>
+<area shape="rect" id="node41" href="$player-status-flags_8cpp.html#a539fb94ebe19c2e394dc92ada45c657e" title=" " alt="" coords="257,1637,364,1663"/>
+<area shape="rect" id="node42" href="$player-status-flags_8cpp.html#a82a3c09fa7e9113cb5a952b8cce27cb6" title=" " alt="" coords="489,775,602,802"/>
+<area shape="rect" id="node43" href="$player-status-flags_8cpp.html#a9fa6dce7c556330329fd275daaed4743" title=" " alt="" coords="251,1738,371,1765"/>
+<area shape="rect" id="node44" href="$world_8cpp.html#a1efea6ec2eda36dcce6680466cbae14d" title="ゲーム時間が日中かどうかを返す / Whether daytime or not" alt="" coords="268,1789,353,1815"/>
+<area shape="rect" id="node45" href="$object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="265,1839,356,1866"/>
+<area shape="rect" id="node46" href="$pattern-walk_8cpp.html#ab1af315dceaa594ca567ad1cff7cf226" title="各種パターン地形上の特別な処理 / Returns TRUE if we are on the Pattern..." alt="" coords="261,1890,361,1917"/>
+<area shape="rect" id="node47" href="$hp-mp-regenerator_8cpp.html#a43408c9784c5b4657a1574f151a2eacc" title="プレイヤーのHP自然回復処理 / Regenerate hit points &#45;RAK&#45;" alt="" coords="277,1941,345,1967"/>
+<area shape="rect" id="node48" href="$hp-mp-regenerator_8cpp.html#a4cbb79baabf339624738fcc7a9720dd9" title="プレイヤーのMP自然回復処理 / Regenerate magic regen_amount: PY_REGEN_NORMAL * 2 (if resting) * 2 (if having regen..." alt="" coords="266,1991,355,2018"/>
+<area shape="rect" id="node49" href="$hp-mp-regenerator_8cpp.html#a1786b81719f3a9df426a119f99f269e3" title="プレイヤーのMP自然回復処理(regen_magic()のサブセット) / Regenerate mana points" alt="" coords="267,2042,354,2069"/>
+<area shape="rect" id="node50" href="$bad-status-setter_8cpp.html#a54f9f2a1dc27cd7214dccbdad4a0d2d7" title="毒の継続時間をセットする / Set &quot;poisoned&quot;, notice observable changes" alt="" coords="708,1991,807,2018"/>
+<area shape="rect" id="node4" href="$player-status-flags_8cpp.html#a556c00d2456ffbf9d0c0fa4bb241d79c" title=" " alt="" coords="489,167,602,194"/>
+<area shape="rect" id="node6" href="$player-status-flags_8cpp.html#a6e8a7a079287a8adc5c9c5b8edc7ab57" title=" " alt="" coords="494,117,597,143"/>
+<area shape="rect" id="node7" href="$element-resistance_8cpp.html#a64580bed127b84646a1dc84e9da22950" title=" " alt="" coords="489,218,601,245"/>
+<area shape="rect" id="node9" href="$player-status-resist_8cpp.html#a5ee49112da3413277c505e7c9e2e2753" title="混沌属性攻撃に対するダメージ倍率計算" alt="" coords="460,269,631,295"/>
+<area shape="rect" id="node13" href="$player-status-flags_8cpp.html#af4b16d48c4c26f2bcc1e18f503eadd34" title=" " alt="" coords="494,370,597,397"/>
+<area shape="rect" id="node18" href="$player-status-flags_8cpp.html#aaaac45a147459f6dcef1d53328692296" title=" " alt="" coords="494,623,597,650"/>
+<area shape="rect" id="node23" href="$player-status-flags_8cpp.html#a1c5bf1a571c9b8f65e83a7fe3d777b71" title=" " alt="" coords="497,927,593,954"/>
+<area shape="rect" id="node27" href="$player-status-resist_8cpp.html#ad91de85c228ab5feccee43398411141d" title="虚無攻撃に対するダメージ倍率計算" alt="" coords="467,725,624,751"/>
+<area shape="rect" id="node30" href="$monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="517,1130,574,1157"/>
+<area shape="rect" id="node31" href="$monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="486,1079,605,1106"/>
+</map>

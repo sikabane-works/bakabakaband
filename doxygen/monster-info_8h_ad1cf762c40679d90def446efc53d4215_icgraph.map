@@ -1,0 +1,52 @@
+<map id="monster_can_cross_terrain" name="monster_can_cross_terrain">
+<area shape="rect" id="node1" title="モンスターが地形を踏破できるかどうかを返す Check if monster can cross terrain" alt="" coords="1315,410,1493,437"/>
+<area shape="rect" id="node2" href="$monster-generator_8cpp.html#a5771512eb9a80e12f614653ce4cf36c2" title="ダンジョンの主生成を試みる / Put the Guardian" alt="" coords="1111,182,1216,209"/>
+<area shape="rect" id="node9" href="$floor-streams_8cpp.html#a4c0e9c1836936ded0040dede609df5e0" title="ダンジョンの壁部にストリーマー（地質の変化）を与える / Places &quot;streamers&quot; of rock through dungeon" alt="" coords="1110,106,1217,133"/>
+<area shape="rect" id="node11" href="$grid_8cpp.html#a07eb34fe76bc09e5684d9d5de85be0aa" title="指定されたマスがモンスターのテレポート可能先かどうかを判定する。" alt="" coords="1060,993,1267,1019"/>
+<area shape="rect" id="node22" href="$movement-execution_8cpp.html#a586b9fe6bc207183655cdfb8dcfaf464" title="該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す / Move player in the given direction, with the given &quot;pickup&quot; flag." alt="" coords="860,942,969,969"/>
+<area shape="rect" id="node25" href="$monster-sweep-grid_8cpp.html#a89c8d5047de783b34e52d77b597ab1bf" title="モンスターの移動方向を返す / Choose &quot;logical&quot; directions for monster movement" alt="" coords="625,233,747,259"/>
+<area shape="rect" id="node29" href="$monster-info_8cpp.html#a7560ae7968cd1c5cfe0a084a1b74f474" title="指定された座標の地形をモンスターが踏破できるかどうかを返す Strictly check if monster can enter the grid" alt="" coords="848,385,981,411"/>
+<area shape="rect" id="node37" href="$monster-list_8cpp.html#a0710fed6abc6ff1c3abbfe559dd4d7d5" title="カメレオンの変身対象となるモンスターかどうか判定する / Hack – the index of the summoning monster" alt="" coords="1076,435,1251,462"/>
+<area shape="rect" id="node39" href="$monster-list_8cpp.html#aa0169d2514e9c3f545f7913688b7d16f" title="カメレオンの王の変身対象となるモンスターかどうか判定する / Hack – the index of the summoning monster" alt="" coords="1062,385,1265,411"/>
+<area shape="rect" id="node40" href="$grid_8cpp.html#a5fec66e7c4ce0e8976c9a2d2b8d99b1f" title="プレイヤーが地形踏破可能かを返す" alt="" coords="1103,714,1224,741"/>
+<area shape="rect" id="node47" href="$monster-attack-processor_8cpp.html#add2b2d9c11aa4bf6cd55e177af6bb934" title="モンスターからモンスターへの攻撃処理" alt="" coords="1081,537,1246,579"/>
+<area shape="rect" id="node48" href="$monster-move_8cpp.html#ad952bf31a67518ea50735f5f724b866d" title="モンスターの移動に関するメインルーチン" alt="" coords="821,486,1009,513"/>
+<area shape="rect" id="node49" href="$monster-safety-hiding_8cpp.html#a1c1d9e004feb73cba2d02541f6ebcb31" title="モンスターの逃走・隠匿に関する処理" alt="" coords="1085,233,1242,259"/>
+<area shape="rect" id="node3" href="$monster-generator_8cpp.html#a337e4104356fdcc868464def8b309c5b" title="ダンジョンの初期配置モンスターを生成1回生成する / Attempt to allocate a random monster in the dungeon." alt="" coords="863,131,966,158"/>
+<area shape="rect" id="node4" href="$cave-generator_8cpp.html#a677fcfde8c563a84f490206cdd1d8774" title=" " alt="" coords="609,182,763,209"/>
+<area shape="rect" id="node6" href="$floor-changer_8cpp.html#a4fc5172d58a596bc101d833ae8066b68" title=" " alt="" coords="410,283,549,310"/>
+<area shape="rect" id="node7" href="$world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="633,81,739,107"/>
+<area shape="rect" id="node8" href="$wild_8cpp.html#ad2b39f3334022fd4e424dbc1029c79f4" title="広域マップの生成 / Build the wilderness area outside of the town." alt="" coords="631,30,741,57"/>
+<area shape="rect" id="node5" href="$cave-generator_8cpp.html#a9b7cb506f74a6ee856853b073a165ea3" title="ダンジョン生成のメインルーチン / Generate a new dungeon level" alt="" coords="441,81,517,107"/>
+<area shape="rect" id="node10" href="$cave-generator_8cpp.html#a229db3a471280308208cc3edf1a8f82a" title=" " alt="" coords="843,30,986,57"/>
+<area shape="rect" id="node12" href="$spells-teleport_8cpp.html#a673e0c578a199d0d78f6fc944bcba7fb" title="モンスターのテレポートアウェイ処理 / Teleport a monster, normally up to &quot;dis&quot; grids away." alt="" coords="863,1131,966,1158"/>
+<area shape="rect" id="node21" href="$spells-teleport_8cpp.html#a08f9196fc721f7435e72ecda87be3bb7" title="モンスターを指定された座標付近にテレポートする / Teleport monster next to a grid near the given location" alt="" coords="846,993,983,1019"/>
+<area shape="rect" id="node13" href="$attack-chaos-effect_8cpp.html#a21fb59a1495009a59e82d845df89c1e2" title="カオス武器でのテレポート・アウェイを実行する" alt="" coords="613,1182,759,1209"/>
+<area shape="rect" id="node14" href="$blood-curse_8cpp.html#ac0ecc46e48f607918b001bc2b08b561f" title=" " alt="" coords="608,1233,764,1259"/>
+<area shape="rect" id="node15" href="$spells-floor_8cpp.html#aff6b2287b85d21769fa6b05e3df35eaf" title="*破壊*処理を行う / The spell of destruction" alt="" coords="637,1283,735,1310"/>
+<area shape="rect" id="node16" href="$effect-monster_8cpp.html#a19495042d570d0ed5068d5df3eb7b914" title="モンスターをテレポートさせる" alt="" coords="610,1335,762,1376"/>
+<area shape="rect" id="node17" href="$mspell-floor_8cpp.html#a7fd774bfc7fe0925be7739144479b78b" title="RF6_BLINKの処理。ショート・テレポート。 /" alt="" coords="624,1030,748,1057"/>
+<area shape="rect" id="node18" href="$mspell-special_8cpp.html#a46257436a8241552387fcfce42c8dd8e" title="BシンボルのRF6_SPECIALの処理。投げ落とす攻撃。 /" alt="" coords="607,979,765,1006"/>
+<area shape="rect" id="node19" href="$mspell-floor_8cpp.html#a6ae476c27892227891e08f439b29431b" title="RF6_TELE_AWAYの処理。テレポート・アウェイ。 /" alt="" coords="603,1081,769,1107"/>
+<area shape="rect" id="node20" href="$spells-teleport_8cpp.html#a1b17c743ff014ec38b3f906eb54c8480" title=" " alt="" coords="603,1131,769,1158"/>
+<area shape="rect" id="node23" href="$mind-berserker_8cpp.html#a73db877ef674132d5c3149ed726ccf47" title="怒りの発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;berserker&#39;." alt="" coords="621,815,751,842"/>
+<area shape="rect" id="node24" href="$run-execution_8cpp.html#af168900c990c8f45296e1cdf5780e627" title="継続的なダッシュ処理 / Take one step along the current &quot;run&quot; path" alt="" coords="650,903,722,930"/>
+<area shape="rect" id="node26" href="$monster-direction_8cpp.html#a855dbe8f8c72497d1f3a8abae7ea768b" title="モンスターの移動パターンを決定する" alt="" coords="176,335,356,376"/>
+<area shape="rect" id="node28" href="$monster-direction_8cpp.html#ab50a2a25a308d0b975eddfd7675e7237" title="ペットや友好的なモンスターがフロアから逃げる処理を行う" alt="" coords="404,335,555,376"/>
+<area shape="rect" id="node27" href="$monster-processor_8cpp.html#ae6e21e8e28cd96eb7bc76f452416588a" title="モンスター単体の1ターン行動処理メインルーチン / Process a monster" alt="" coords="5,587,128,614"/>
+<area shape="rect" id="node30" href="$monster-ball_8cpp.html#a352cb43d44bf4d32688b3f44f21ef7b0" title=" " alt="" coords="603,385,769,411"/>
+<area shape="rect" id="node31" href="$floor-changer_8cpp.html#a59e3beb676fdb3338d825f1c71891fda" title=" " alt="" coords="625,435,747,462"/>
+<area shape="rect" id="node32" href="$realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="623,689,749,715"/>
+<area shape="rect" id="node33" href="$monster-generator_8cpp.html#a6475b2ac50800fa644c25e145fb3dda3" title="モンスター1体を目標地点に可能な限り近い位置に生成する / improved version of scatter() for place monster" alt="" coords="639,486,733,513"/>
+<area shape="rect" id="node34" href="$one-monster-placer_8cpp.html#a06b69a037c778b7d072e1f68bc705926" title="モンスターを一体生成する / Attempt to place a monster of the given race at the given location." alt="" coords="619,537,753,563"/>
+<area shape="rect" id="node35" href="$quest-monster-placer_8cpp.html#a6eed80d22a8f62c77e0af1cfb4d70964" title="クエストに関わるモンスターの配置を行う / Place quest monsters" alt="" coords="609,283,763,310"/>
+<area shape="rect" id="node36" href="$monster-safety-hiding_8cpp.html#aed2f2873c24633f6ebb5e0c667f99dc7" title="モンスターが隠れられる地点を走査する" alt="" coords="605,334,767,361"/>
+<area shape="rect" id="node38" href="$monster-list_8cpp.html#ae665a55b0d2be7b41b9d88eaf4b7dbdb" title="モンスターの変身処理" alt="" coords="841,435,989,462"/>
+<area shape="rect" id="node41" href="$pet-util_8cpp.html#a6da87a66edbf955c4c0fb4336d34d60f" title="プレイヤーの騎乗/下馬処理判定" alt="" coords="845,587,984,614"/>
+<area shape="rect" id="node42" href="$grid_8cpp.html#a2bca80ba3e218ae7d93643bdc2b8ec9c" title="指定されたマスにプレイヤーがテレポート可能かどうかを判定する。" alt="" coords="817,739,1012,766"/>
+<area shape="rect" id="node43" href="$shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="881,638,948,665"/>
+<area shape="rect" id="node44" href="$grid_8cpp.html#ad8fe1d0c1bd2a816c0dcb0faf51217ab" title="新規フロアに入りたてのプレイヤーをランダムな場所に配置する / Returns random co&#45;ordinates for player/monster/object" alt="" coords="855,841,974,867"/>
+<area shape="rect" id="node45" href="$mind-ninja_8cpp.html#a0bb9e2fc92fc023955549549df3f24cf" title="入身処理 / &quot;Rush Attack&quot; routine for Samurai or Ninja" alt="" coords="869,537,960,563"/>
+<area shape="rect" id="node46" href="$run-execution_8cpp.html#aac590ff670ba843be6f069f509d63660" title="ダッシュ移動処理中、移動先のマスが既知の壁かどうかを判定する / Hack – Check for a &quot;known wall&quot; (see below)" alt="" coords="879,891,951,918"/>
+<area shape="rect" id="node50" href="$monster-safety-hiding_8cpp.html#ad02a2fbb07710ca90d2bcb3c306a5dc5" title="モンスターが逃げ込める安全な地点を返す / Choose a &quot;safe&quot; location near a monster for it to run toward." alt="" coords="873,233,957,259"/>
+</map>

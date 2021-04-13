@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/dungeon/dungeon.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_55f303817758c0e5b41dc0bbc9cd6c85.html">dungeon</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">dungeon.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="dungeon_8h_source.html">dungeon/dungeon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-options_8h_source.html">game-option/birth-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+dungeon.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="dungeon_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2dungeon_2dungeon_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2dungeon_2dungeon_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2dungeon_2dungeon_8cpp">
+<area shape="rect" title=" " alt="" coords="865,5,1053,61"/>
+<area shape="rect" href="dungeon_8h.html" title=" " alt="" coords="1606,206,1741,233"/>
+<area shape="rect" href="birth-options_8h.html" title=" " alt="" coords="692,117,871,143"/>
+<area shape="rect" href="input-key-acceptor_8h.html" title=" " alt="" coords="513,117,668,143"/>
+<area shape="rect" href="sound-of-music_8h.html" title=" " alt="" coords="1482,295,1635,322"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="1037,109,1187,151"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="651,206,813,233"/>
+<area shape="rect" href="int-char-converter_8h.html" title=" " alt="" coords="1583,117,1737,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="838,206,1005,233"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="427,206,525,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="702,385,831,411"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1098,541,1209,568"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="1711,295,1809,322"/>
+<area shape="rect" title=" " alt="" coords="1837,385,1891,411"/>
+<area shape="rect" title=" " alt="" coords="1552,385,1608,411"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="1191,288,1356,329"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="740,467,831,493"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="855,467,945,493"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="5,467,104,493"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="128,467,227,493"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="251,467,351,493"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="375,467,550,493"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="575,467,716,493"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,467,1116,493"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="1655,385,1812,411"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="1081,199,1226,240"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="931,377,1091,419"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="905,288,1065,329"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a1ecdebcef74092729467110b5eecc64c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad858b43cf9b1e70a02dbeabfd632b70c">DUNGEON_IDX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8cpp.html#a1ecdebcef74092729467110b5eecc64c">choose_dungeon</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> note, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="memdesc:a1ecdebcef74092729467110b5eecc64c"><td class="mdescLeft">&#160;</td><td class="mdescRight">これまでに入ったダンジョンの一覧を表示し、選択させる。  <a href="dungeon_8cpp.html#a1ecdebcef74092729467110b5eecc64c">[詳解]</a><br /></td></tr>
+<tr class="separator:a1ecdebcef74092729467110b5eecc64c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a2397365208db1df4da112742eb7c5f9b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structdungeon__type.html">dungeon_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8cpp.html#a2397365208db1df4da112742eb7c5f9b">d_info</a></td></tr>
+<tr class="separator:a2397365208db1df4da112742eb7c5f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84a278c671bd0ed0812a8a4037144936"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8cpp.html#a84a278c671bd0ed0812a8a4037144936">max_dlv</a></td></tr>
+<tr class="separator:a84a278c671bd0ed0812a8a4037144936"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a1ecdebcef74092729467110b5eecc64c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ecdebcef74092729467110b5eecc64c">&#9670;&nbsp;</a></span>choose_dungeon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad858b43cf9b1e70a02dbeabfd632b70c">DUNGEON_IDX</a> choose_dungeon </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>note</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>これまでに入ったダンジョンの一覧を表示し、選択させる。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">note</td><td>ダンジョンに施す処理記述 </td></tr>
+    <tr><td class="paramname">y</td><td>コンソールY座標 </td></tr>
+    <tr><td class="paramname">x</td><td>コンソールX座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>選択されたダンジョンID </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="dungeon_8cpp_a1ecdebcef74092729467110b5eecc64c_cgraph.png" border="0" usemap="#adungeon_8cpp_a1ecdebcef74092729467110b5eecc64c_cgraph" alt=""/></div>
+<map name="adungeon_8cpp_a1ecdebcef74092729467110b5eecc64c_cgraph" id="adungeon_8cpp_a1ecdebcef74092729467110b5eecc64c_cgraph">
+<area shape="rect" title="これまでに入ったダンジョンの一覧を表示し、選択させる。" alt="" coords="5,777,125,804"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="353,5,395,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="191,701,250,728"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="194,284,247,311"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="175,752,266,779"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="335,828,413,855"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="201,955,240,981"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="175,853,267,880"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="173,904,268,931"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="521,5,570,32"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="504,56,587,83"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="691,309,769,336"/>
+<area shape="rect" href="z-term_8cpp.html#a50f4ddf9b64ef43b1be95eb89e78c263" title=" " alt="" coords="659,5,801,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5d7c0ea368bccad499b9bbdb4ffc53dc" title=" " alt="" coords="661,56,799,83"/>
+<area shape="rect" href="z-term_8cpp.html#a1b660c2d9fa25eb39e501811a0088cd2" title=" " alt="" coords="661,107,799,133"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="343,715,405,741"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="512,740,579,767"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="323,259,425,285"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="496,157,595,184"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="333,461,415,488"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="502,360,589,387"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="316,56,432,83"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="333,309,415,336"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="316,107,432,133"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="316,157,432,184"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="500,208,591,235"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="498,259,593,285"/>
+<area shape="rect" href="macro-util_8cpp.html#a1e9851f9b9e0a0e51628a231ca95fcc1" title=" " alt="" coords="482,461,609,488"/>
+<area shape="rect" href="macro-util_8cpp.html#a7f48a1923076b3b314f1bc58913a2a59" title=" " alt="" coords="480,512,611,539"/>
+<area shape="rect" href="macro-util_8cpp.html#ada693de344c97bc09a586100f25919dd" title=" " alt="" coords="483,563,607,589"/>
+<area shape="rect" href="z-term_8cpp.html#a020ef4815c101960b4fdad94c4e5b59b" title=" " alt="" coords="490,613,601,640"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="dungeon_8cpp_a1ecdebcef74092729467110b5eecc64c_icgraph.png" border="0" usemap="#adungeon_8cpp_a1ecdebcef74092729467110b5eecc64c_icgraph" alt=""/></div>
+<map name="adungeon_8cpp_a1ecdebcef74092729467110b5eecc64c_icgraph" id="adungeon_8cpp_a1ecdebcef74092729467110b5eecc64c_icgraph">
+<area shape="rect" title="これまでに入ったダンジョンの一覧を表示し、選択させる。" alt="" coords="564,325,684,352"/>
+<area shape="rect" href="spells-world_8cpp.html#a17f767372dbdae04de501f8d205742f3" title=" " alt="" coords="403,140,516,167"/>
+<area shape="rect" href="spells-world_8cpp.html#acd1bf8acf03f4392bc78f8c170a23bc7" title="プレイヤーの帰還発動及び中止処理 / Recall the player to town or dungeon" alt="" coords="412,325,507,352"/>
+<area shape="rect" href="spells-world_8cpp.html#aed0db166d220d3154450d18708491e28" title="フロア・リセット処理" alt="" coords="415,579,504,605"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="192,5,355,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="15,5,134,32"/>
+<area shape="rect" href="activation-others_8cpp.html#a318cab58d04b4ec73f9c109d33b1311f" title=" " alt="" coords="207,275,340,301"/>
+<area shape="rect" href="activation-others_8cpp.html#ae4a988da470e3c12dea60d2c55ff517e" title=" " alt="" coords="221,224,325,251"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#af68e01e109fc7fb8b1e131a7131ed4c5" title="鏡魔法の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;Mirror magic&#39;." alt="" coords="213,325,334,352"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="227,376,320,403"/>
+<area shape="rect" href="realm-arcane_8cpp.html#a7832487e3190270957aa0ada40c22dc0" title="秘術領域魔法の各処理を行う" alt="" coords="215,427,331,453"/>
+<area shape="rect" href="realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="227,477,320,504"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="213,528,333,555"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="218,579,329,605"/>
+<area shape="rect" href="mutation-execution_8cpp.html#a0c9c1052c587d71b683d8a700d9ae016" title="突然変異のレイシャル効果実装" alt="" coords="203,56,344,83"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="236,629,311,656"/>
+<area shape="rect" href="cmd-zaprod_8cpp.html#ae9106d1cdcf01f0497ab6cfc5758bf11" title="ロッドの効果を発動する" alt="" coords="234,107,313,133"/>
+<area shape="rect" href="racial-switcher_8cpp.html#ac21c6b6a9eae71ce476478232b11f8e0" title="レイシャルと突然変異の技能処理 / Racial powers (and mutations)" alt="" coords="206,158,341,199"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="15,249,135,276"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a49b73965d0ef306e6cb8a9dc70ed212a" title=" " alt="" coords="9,325,141,352"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="5,376,144,403"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="36,503,113,529"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a2397365208db1df4da112742eb7c5f9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2397365208db1df4da112742eb7c5f9b">&#9670;&nbsp;</a></span>d_info</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structdungeon__type.html">dungeon_type</a>&gt; d_info</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a84a278c671bd0ed0812a8a4037144936"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84a278c671bd0ed0812a8a4037144936">&#9670;&nbsp;</a></span>max_dlv</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a>* max_dlv</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分46秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,1096 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/util/string-processor.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b7878ad5ecbf2506f4125b9d34c97e45.html">util</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">string-processor.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;string_view&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+string-processor.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="string-processor_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2util_2string-processor_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2util_2string-processor_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2util_2string-processor_8h">
+<area shape="rect" title=" " alt="" coords="510,5,699,61"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="377,109,507,136"/>
+<area shape="rect" title=" " alt="" coords="531,109,585,136"/>
+<area shape="rect" title=" " alt="" coords="610,109,695,136"/>
+<area shape="rect" title=" " alt="" coords="719,109,775,136"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="31,184,122,211"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="23,348,165,375"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,184,607,211"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,184,245,211"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,184,367,211"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,184,492,211"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,184,807,211"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="943,184,1090,211"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="169,266,291,293"/>
+<area shape="rect" title=" " alt="" coords="386,266,461,293"/>
+<area shape="rect" title=" " alt="" coords="485,266,567,293"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="592,259,743,300"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="767,259,920,300"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="944,259,1089,300"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1114,259,1287,300"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1311,259,1437,300"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1461,266,1580,293"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1604,266,1715,293"/>
+</map>
+</div>
+</div>
+<p><a href="string-processor_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a466b310a8a7778f9d8e07e87698d4121"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#a466b310a8a7778f9d8e07e87698d4121">MAX_MACRO_MOD</a>&#160;&#160;&#160;12</td></tr>
+<tr class="separator:a466b310a8a7778f9d8e07e87698d4121"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa007c3e0be60a9f6a3cb75e1d79ffadb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#aa007c3e0be60a9f6a3cb75e1d79ffadb">MAX_MACRO_TRIG</a>&#160;&#160;&#160;200</td></tr>
+<tr class="memdesc:aa007c3e0be60a9f6a3cb75e1d79ffadb"><td class="mdescLeft">&#160;</td><td class="mdescRight">登録を許すマクロ（トリガー）の最大数  <a href="string-processor_8h.html#aa007c3e0be60a9f6a3cb75e1d79ffadb">[詳解]</a><br /></td></tr>
+<tr class="separator:aa007c3e0be60a9f6a3cb75e1d79ffadb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:adc590b5d3c6f6e8e87a50271e51296a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#adc590b5d3c6f6e8e87a50271e51296a5">text_to_ascii</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str)</td></tr>
+<tr class="separator:adc590b5d3c6f6e8e87a50271e51296a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad986baa174929d7bd1cd78e722420be3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#ad986baa174929d7bd1cd78e722420be3">ascii_to_text</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str)</td></tr>
+<tr class="separator:ad986baa174929d7bd1cd78e722420be3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3085032d831bd3a5f752bf0823ba462"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#aa3085032d831bd3a5f752bf0823ba462">angband_strcpy</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> src, size_t bufsize)</td></tr>
+<tr class="separator:aa3085032d831bd3a5f752bf0823ba462"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae65e4133109b992019bc6cafcc9b597"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#aae65e4133109b992019bc6cafcc9b597">angband_strcat</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> src, size_t bufsize)</td></tr>
+<tr class="separator:aae65e4133109b992019bc6cafcc9b597"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8184d2eea3bb502c7828b1cf2e15a7a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#ac8184d2eea3bb502c7828b1cf2e15a7a">angband_strstr</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> haystack, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> needle)</td></tr>
+<tr class="separator:ac8184d2eea3bb502c7828b1cf2e15a7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59b52311b27902957bcb2cc2ebd71e5a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#a59b52311b27902957bcb2cc2ebd71e5a">angband_strchr</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> ptr, char ch)</td></tr>
+<tr class="separator:a59b52311b27902957bcb2cc2ebd71e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89dc207c8c9d5dbf55872f0882325859"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#a89dc207c8c9d5dbf55872f0882325859">ltrim</a> (char *p)</td></tr>
+<tr class="memdesc:a89dc207c8c9d5dbf55872f0882325859"><td class="mdescLeft">&#160;</td><td class="mdescRight">左側の空白を除去  <a href="string-processor_8h.html#a89dc207c8c9d5dbf55872f0882325859">[詳解]</a><br /></td></tr>
+<tr class="separator:a89dc207c8c9d5dbf55872f0882325859"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1193ea0400d6ec032ec3a514138a33a6"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#a1193ea0400d6ec032ec3a514138a33a6">rtrim</a> (char *p)</td></tr>
+<tr class="memdesc:a1193ea0400d6ec032ec3a514138a33a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">右側の空白を除去  <a href="string-processor_8h.html#a1193ea0400d6ec032ec3a514138a33a6">[詳解]</a><br /></td></tr>
+<tr class="separator:a1193ea0400d6ec032ec3a514138a33a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59a5f450c1571742a51cf6786d6a28a5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#a59a5f450c1571742a51cf6786d6a28a5">strrncmp</a> (const char *s1, const char *s2, int <a class="el" href="display-util_8cpp.html#afed088663f8704004425cdae2120b9b3">len</a>)</td></tr>
+<tr class="memdesc:a59a5f450c1571742a51cf6786d6a28a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列の後方から一致するかどうか比較する  <a href="string-processor_8h.html#a59a5f450c1571742a51cf6786d6a28a5">[詳解]</a><br /></td></tr>
+<tr class="separator:a59a5f450c1571742a51cf6786d6a28a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1ece90536d1e42869103d0a5ee82996"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#af1ece90536d1e42869103d0a5ee82996">str_trim</a> (std::string_view str)</td></tr>
+<tr class="memdesc:af1ece90536d1e42869103d0a5ee82996"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列の両端の空白を削除する  <a href="string-processor_8h.html#af1ece90536d1e42869103d0a5ee82996">[詳解]</a><br /></td></tr>
+<tr class="separator:af1ece90536d1e42869103d0a5ee82996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae817951aef627358e5486febcea6b60f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#ae817951aef627358e5486febcea6b60f">str_rtrim</a> (std::string_view str)</td></tr>
+<tr class="memdesc:ae817951aef627358e5486febcea6b60f"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列の右端の空白を削除する  <a href="string-processor_8h.html#ae817951aef627358e5486febcea6b60f">[詳解]</a><br /></td></tr>
+<tr class="separator:ae817951aef627358e5486febcea6b60f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2affbd99cc86e8fc0c2921f422426687"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#a2affbd99cc86e8fc0c2921f422426687">str_ltrim</a> (std::string_view str)</td></tr>
+<tr class="memdesc:a2affbd99cc86e8fc0c2921f422426687"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列の左端の空白を削除する  <a href="string-processor_8h.html#a2affbd99cc86e8fc0c2921f422426687">[詳解]</a><br /></td></tr>
+<tr class="separator:a2affbd99cc86e8fc0c2921f422426687"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64d2534e032b94eba4b6728cbfb55870"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#a64d2534e032b94eba4b6728cbfb55870">str_split</a> (std::string_view str, char delim, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> trim=false)</td></tr>
+<tr class="memdesc:a64d2534e032b94eba4b6728cbfb55870"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列を指定した文字で分割する  <a href="string-processor_8h.html#a64d2534e032b94eba4b6728cbfb55870">[詳解]</a><br /></td></tr>
+<tr class="separator:a64d2534e032b94eba4b6728cbfb55870"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1b52908bfa52817010574f74e85918a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#ad1b52908bfa52817010574f74e85918a">str_erase</a> (std::string str, std::string_view erase_chars)</td></tr>
+<tr class="memdesc:ad1b52908bfa52817010574f74e85918a"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列から指定した文字を取り除く  <a href="string-processor_8h.html#ad1b52908bfa52817010574f74e85918a">[詳解]</a><br /></td></tr>
+<tr class="separator:ad1b52908bfa52817010574f74e85918a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a2da0d0b8238638c167302914ab2172e0"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#a2da0d0b8238638c167302914ab2172e0">hexsym</a> [16]</td></tr>
+<tr class="memdesc:a2da0d0b8238638c167302914ab2172e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">10進数から16進数への変換テーブル / Global array for converting numbers to uppercase hecidecimal digit This array can also be used to convert a number to an octal digit  <a href="string-processor_8h.html#a2da0d0b8238638c167302914ab2172e0">[詳解]</a><br /></td></tr>
+<tr class="separator:a2da0d0b8238638c167302914ab2172e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25b2da9c9d7f249474710bb6cc5a8fa9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#a25b2da9c9d7f249474710bb6cc5a8fa9">max_macrotrigger</a></td></tr>
+<tr class="memdesc:a25b2da9c9d7f249474710bb6cc5a8fa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在登録中のマクロ(トリガー)の数  <a href="string-processor_8h.html#a25b2da9c9d7f249474710bb6cc5a8fa9">[詳解]</a><br /></td></tr>
+<tr class="separator:a25b2da9c9d7f249474710bb6cc5a8fa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ed8d6d2afc2064db64535ac08410054"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#a9ed8d6d2afc2064db64535ac08410054">macro_template</a></td></tr>
+<tr class="memdesc:a9ed8d6d2afc2064db64535ac08410054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Angband設定ファイルのT: タグ情報から読み込んだ長いTコードを処理するために利用する文字列ポインタ  <a href="string-processor_8h.html#a9ed8d6d2afc2064db64535ac08410054">[詳解]</a><br /></td></tr>
+<tr class="separator:a9ed8d6d2afc2064db64535ac08410054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac06896ccd3d4732bae4c1b7d187460ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#ac06896ccd3d4732bae4c1b7d187460ed">macro_modifier_chr</a></td></tr>
+<tr class="memdesc:ac06896ccd3d4732bae4c1b7d187460ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">&amp;x# で指定されるマクロトリガーに関する情報を記録する文字列ポインタ  <a href="string-processor_8h.html#ac06896ccd3d4732bae4c1b7d187460ed">[詳解]</a><br /></td></tr>
+<tr class="separator:ac06896ccd3d4732bae4c1b7d187460ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7e38eb9e5f95616649d33ce748948e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#aa7e38eb9e5f95616649d33ce748948e6">macro_modifier_name</a> [<a class="el" href="string-processor_8h.html#a466b310a8a7778f9d8e07e87698d4121">MAX_MACRO_MOD</a>]</td></tr>
+<tr class="memdesc:aa7e38eb9e5f95616649d33ce748948e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">マクロ上で取り扱う特殊キーを文字列上で表現するためのフォーマットを記録した文字列ポインタ配列  <a href="string-processor_8h.html#aa7e38eb9e5f95616649d33ce748948e6">[詳解]</a><br /></td></tr>
+<tr class="separator:aa7e38eb9e5f95616649d33ce748948e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f17299cdbd1c65fd3f5d0c01ebba9d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#a7f17299cdbd1c65fd3f5d0c01ebba9d6">macro_trigger_name</a> [<a class="el" href="string-processor_8h.html#aa007c3e0be60a9f6a3cb75e1d79ffadb">MAX_MACRO_TRIG</a>]</td></tr>
+<tr class="memdesc:a7f17299cdbd1c65fd3f5d0c01ebba9d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">マクロのトリガーコード  <a href="string-processor_8h.html#a7f17299cdbd1c65fd3f5d0c01ebba9d6">[詳解]</a><br /></td></tr>
+<tr class="separator:a7f17299cdbd1c65fd3f5d0c01ebba9d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91a638ee6fb65febd70ec4d114d8ab59"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string-processor_8h.html#a91a638ee6fb65febd70ec4d114d8ab59">macro_trigger_keycode</a> [2][<a class="el" href="string-processor_8h.html#aa007c3e0be60a9f6a3cb75e1d79ffadb">MAX_MACRO_TRIG</a>]</td></tr>
+<tr class="memdesc:a91a638ee6fb65febd70ec4d114d8ab59"><td class="mdescLeft">&#160;</td><td class="mdescRight">マクロの内容  <a href="string-processor_8h.html#a91a638ee6fb65febd70ec4d114d8ab59">[詳解]</a><br /></td></tr>
+<tr class="separator:a91a638ee6fb65febd70ec4d114d8ab59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="a466b310a8a7778f9d8e07e87698d4121"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a466b310a8a7778f9d8e07e87698d4121">&#9670;&nbsp;</a></span>MAX_MACRO_MOD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_MACRO_MOD&#160;&#160;&#160;12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa007c3e0be60a9f6a3cb75e1d79ffadb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa007c3e0be60a9f6a3cb75e1d79ffadb">&#9670;&nbsp;</a></span>MAX_MACRO_TRIG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_MACRO_TRIG&#160;&#160;&#160;200</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>登録を許すマクロ（トリガー）の最大数 </p>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="aae65e4133109b992019bc6cafcc9b597"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae65e4133109b992019bc6cafcc9b597">&#9670;&nbsp;</a></span>angband_strcat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t angband_strcat </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>bufsize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="string-processor_8h_aae65e4133109b992019bc6cafcc9b597_cgraph.png" border="0" usemap="#astring-processor_8h_aae65e4133109b992019bc6cafcc9b597_cgraph" alt=""/></div>
+<map name="astring-processor_8h_aae65e4133109b992019bc6cafcc9b597_cgraph" id="astring-processor_8h_aae65e4133109b992019bc6cafcc9b597_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,116,32"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="164,5,279,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="string-processor_8h_aae65e4133109b992019bc6cafcc9b597_icgraph.png" border="0" usemap="#astring-processor_8h_aae65e4133109b992019bc6cafcc9b597_icgraph" alt=""/></div>
+<map name="astring-processor_8h_aae65e4133109b992019bc6cafcc9b597_icgraph" id="astring-processor_8h_aae65e4133109b992019bc6cafcc9b597_icgraph">
+<area shape="rect" title=" " alt="" coords="1017,601,1128,628"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#ac9859c0a085e4a80b917521a47f65755" title="生い立ちメッセージの内容をバッファに加える。 / Hook function for reading the histpref.prf file." alt="" coords="793,291,969,317"/>
+<area shape="rect" href="asking-player_8cpp.html#a025b21031a6e4922de22b9e961a8358e" title="&lt;" alt="" coords="839,576,924,603"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#a892d0257efeeabd5136e0e224ee0d757" title=" " alt="" coords="810,627,953,653"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a7291829dd16d672b22d99e1e4c33587a" title=" " alt="" coords="808,677,955,704"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="625,56,745,83"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="438,56,534,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="413,5,559,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="632,1095,739,1121"/>
+<area shape="rect" href="player-damage_8cpp.html#a3481d6c6d7162220dcda59d8452cdf4b" title="酸攻撃による装備のAC劣化処理 / Acid has hit the player, attempt to affect some armor." alt="" coords="431,208,541,235"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a53bf0b2e4c1aa52241e31f957a28e240" title="エッセンスを実際に付加する" alt="" coords="437,259,535,285"/>
+<area shape="rect" href="effect-item_8cpp.html#a535ce53ec7f78b19e787e4289d5dec3f" title="汎用的なビーム/ボルト/ボール系によるアイテムオブジェクトへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="443,309,529,336"/>
+<area shape="rect" href="spells-sorcery_8cpp.html#a6cdb24d97057728bc1fa0484c8dfb77d" title="アイテムの価値に応じた錬金術処理 / Turns an object into gold, gain some of its value in a shop" alt="" coords="451,360,521,387"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a7aebf0933710d2f5b0b2cf87e1aa4618" title="アイテムの特定記述内容を返す / Acquire a &quot;basic&quot; description &quot;The Cloak of Death [1,+10]&quot;" alt="" coords="428,411,544,437"/>
+<area shape="rect" href="spells-equipment_8cpp.html#aa03fdf6f0d68dd8464e6b6b8e1d5641a" title="プレイヤーの装備劣化処理 / Apply disenchantment to the player&#39;s stuff" alt="" coords="425,461,547,488"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="437,512,535,539"/>
+<area shape="rect" href="attack-chaos-effect_8cpp.html#aa422cba35675dfe3869ae37fc7cdf17d" title="ゴールデンハンマーによるアイテム奪取処理" alt="" coords="407,563,565,589"/>
+<area shape="rect" href="autopick-destroyer_8cpp.html#a9efe25ff3ad1ac56b5dc6ab7b27eae0a" title=" " alt="" coords="421,765,551,792"/>
+<area shape="rect" href="autopick_8cpp.html#aa84c8c12cf35bd08cc70374c9bf70413" title=" " alt="" coords="192,715,347,741"/>
+<area shape="rect" href="player-inventory_8cpp.html#a9a1c3265a4b625e9f772baa1c55a0a3e" title="プレイヤーがオブジェクト上に乗った際の表示処理 / Player &quot;wants&quot; to pick up an object or gold." alt="" coords="49,664,100,691"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="196,917,343,944"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f" title=" " alt="" coords="5,867,144,893"/>
+<area shape="rect" href="autopick_8cpp.html#a5bc67a4e33234de016dd0bf46e90a051" title=" " alt="" coords="395,867,577,893"/>
+<area shape="rect" href="autopick-entry_8cpp.html#a4f3f90481be8626c7f36c064d773d490" title=" " alt="" coords="417,1881,555,1922"/>
+<area shape="rect" href="mind-priest_8cpp.html#a49724e70edc0ac874b73b87b839eaf35" title="武器の祝福処理 / Bless a weapon" alt="" coords="434,968,538,995"/>
+<area shape="rect" href="spells-object_8cpp.html#a606c388ae9ec39706af972b765edadbe" title="武器へのエゴ付加処理 / Brand the current weapon" alt="" coords="433,1019,539,1045"/>
+<area shape="rect" href="floor-streams_8cpp.html#a4c0e9c1836936ded0040dede609df5e0" title="ダンジョンの壁部にストリーマー（地質の変化）を与える / Places &quot;streamers&quot; of rock through dungeon" alt="" coords="433,1069,539,1096"/>
+<area shape="rect" href="building-recharger_8cpp.html#ac7c07a23630b5e2f83c38746dabef46c" title="魔道具の使用回数を回復させる施設のメインルーチン / Recharge rods, wands and staffs" alt="" coords="425,1120,547,1147"/>
+<area shape="rect" href="cmd-throw_8cpp.html#ab74cb6b4ca4a2cac9b1c48f98d228d6d" title=" " alt="" coords="425,1171,547,1197"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a8b4f2968b15649cb19f6bd5e65962fce" title=" " alt="" coords="403,1221,569,1248"/>
+<area shape="rect" href="spells-status_8cpp.html#a6b3d51cd9befa32b5917f7c8c47626f0" title="装備を脱ぎ捨てて小宇宙を燃やす" alt="" coords="428,1272,544,1299"/>
+<area shape="rect" href="mind-archer_8cpp.html#a5c7ac014262f5236c69ea18c406fee25" title="「弾/矢の製造」処理 / do_cmd_cast calls this function if the player&#39;s class is &#39;archer&#39;." alt="" coords="435,1323,537,1349"/>
+<area shape="rect" href="spells-object_8cpp.html#a6f9410ac86db260e30cb7ce26261aa4d" title="防具呪縛処理 / Curse the players armor" alt="" coords="439,1373,533,1400"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a4477940ab9011d49b882f5206949745c" title=" " alt="" coords="419,1424,553,1451"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a0e8f45a3c8b44eb33491346f328f45fe" title=" " alt="" coords="431,1475,541,1501"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a00b0588d1ba51bc9f98e2076942f95ed" title=" " alt="" coords="429,1525,543,1552"/>
+<area shape="rect" href="object-curse_8cpp.html#a8b5d44a36e5f2d098b175f3f8f08832a" title="装備への呪い付加判定と付加処理" alt="" coords="425,1576,547,1603"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a38e1f36fd17441d50b8be5953d11ddf4" title="呪われている、トランプエゴ等による装備品由来のテレポートを実行する" alt="" coords="434,1627,538,1653"/>
+<area shape="rect" href="spells-object_8cpp.html#a7f937c2e893cc421a808dded72fc4e39" title="武器呪縛処理 / Curse the players weapon" alt="" coords="413,1677,559,1704"/>
+<area shape="rect" href="target-describer_8cpp.html#a8cab30bd50fb30be27531d37b11cef88" title=" " alt="" coords="428,1728,544,1755"/>
+<area shape="rect" href="target-describer_8cpp.html#a394264f8a5060a1a34c85c9b8a9ef2ea" title=" " alt="" coords="411,1779,561,1805"/>
+<area shape="rect" href="target-describer_8cpp.html#aadd4e4da9e34db0569f96630d44a5fd8" title=" " alt="" coords="407,1829,565,1856"/>
+<area shape="rect" href="player-inventory_8cpp.html#a870affd57aaed3be875c174410ecf5d3" title="プレイヤーがオブジェクトを拾った際のメッセージ表示処理 / Helper routine for py_pickup() and py_pickup_floor()." alt="" coords="412,664,560,691"/>
+<area shape="rect" href="spells-floor_8cpp.html#aff6b2287b85d21769fa6b05e3df35eaf" title="*破壊*処理を行う / The spell of destruction" alt="" coords="437,1947,535,1973"/>
+<area shape="rect" href="display-store_8cpp.html#aaec0d94f30a0a3554c4c2e6a6b3e0b33" title="店の商品リストを再表示する / Re&#45;displays a single store entry" alt="" coords="437,1997,535,2024"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#afe4440a2dd846286c0f1f33be0e0d4be" title="装備アイテム一覧を表示する / Choice window &quot;shadow&quot; of the &quot;show_equip()&quot; function" alt="" coords="421,2048,551,2075"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#ae1190cadd5200d38fbfbde5c160bd2bb" title=" " alt="" coords="411,2099,561,2125"/>
+<area shape="rect" href="display-inventory_8cpp.html#a30d21c4509ab13a7a4213ae59f23d0ef" title="所持アイテム一覧を表示する / Choice window &quot;shadow&quot; of the &quot;show_inven()&quot; function" alt="" coords="425,2149,547,2176"/>
+<area shape="rect" href="object-describer_8cpp.html#aedac848caea6b1e0f5ef5fe504fd84e1" title="現在アクティブになっているウィンドウにオブジェクトの詳細を表示する / Hack – display an object kind in the current window" alt="" coords="441,107,531,133"/>
+<area shape="rect" href="rumor_8cpp.html#ac90795303a6239b4a511b424262e743b" title=" " alt="" coords="435,157,537,184"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a59b52311b27902957bcb2cc2ebd71e5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59b52311b27902957bcb2cc2ebd71e5a">&#9670;&nbsp;</a></span>angband_strchr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* angband_strchr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ch</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa3085032d831bd3a5f752bf0823ba462"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3085032d831bd3a5f752bf0823ba462">&#9670;&nbsp;</a></span>angband_strcpy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t angband_strcpy </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>bufsize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="string-processor_8h_aa3085032d831bd3a5f752bf0823ba462_icgraph.png" border="0" usemap="#astring-processor_8h_aa3085032d831bd3a5f752bf0823ba462_icgraph" alt=""/></div>
+<map name="astring-processor_8h_aa3085032d831bd3a5f752bf0823ba462_icgraph" id="astring-processor_8h_aa3085032d831bd3a5f752bf0823ba462_icgraph">
+<area shape="rect" title=" " alt="" coords="609,385,724,412"/>
+<area shape="rect" href="string-processor_8cpp.html#aae65e4133109b992019bc6cafcc9b597" title=" " alt="" coords="441,107,551,133"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="21,157,128,184"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a237b4b6ff1cb50402312e9b60c5c8a55" title=" " alt="" coords="431,259,561,285"/>
+<area shape="rect" href="asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="437,309,555,336"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="253,335,321,361"/>
+<area shape="rect" href="dungeon-reader_8cpp.html#aba702f5acbe7b7b12ce87725277e8953" title="ダンジョン情報(d_info)のパース関数 / Initialize the &quot;d_info&quot; array, by parsing an ascii &quot;template&quot; file" alt="" coords="449,411,543,437"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a1e77dcf108066d1125d6bd67ff0a503a" title="プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map)" alt="" coords="225,461,349,488"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a697c881fefb73b66a129eeeb7e71c131" title="プレイヤーの称号を表示する / Prints &quot;title&quot;, including &quot;wizard&quot; or &quot;winner&quot; as needed." alt="" coords="459,512,533,539"/>
+<area shape="rect" href="monster-info-spoiler_8cpp.html#a0431c6c4039cafdf6df4c80b9b8a6381" title=" " alt="" coords="438,563,554,589"/>
+<area shape="rect" href="scores_8cpp.html#af3bc9911d7f0c3a60be12ca5ea8713b8" title="スコアの過去二十位内ランキングを表示する Enters a players name on a hi&#45;score table, if &quot;legal&quot;, and in any case,..." alt="" coords="453,613,539,640"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#ac9859c0a085e4a80b917521a47f65755" title="生い立ちメッセージの内容をバッファに加える。 / Hook function for reading the histpref.prf file." alt="" coords="199,5,375,32"/>
+<area shape="rect" href="asking-player_8cpp.html#a025b21031a6e4922de22b9e961a8358e" title="&lt;" alt="" coords="245,56,330,83"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#a892d0257efeeabd5136e0e224ee0d757" title=" " alt="" coords="216,107,359,133"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a7291829dd16d672b22d99e1e4c33587a" title=" " alt="" coords="214,157,361,184"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="15,5,135,32"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="29,487,120,513"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="5,575,144,601"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="9,651,140,677"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a08d092c74005708a070e21db6c880ac2" title=" " alt="" coords="192,613,383,640"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac8184d2eea3bb502c7828b1cf2e15a7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8184d2eea3bb502c7828b1cf2e15a7a">&#9670;&nbsp;</a></span>angband_strstr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* angband_strstr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>haystack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>needle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="string-processor_8h_ac8184d2eea3bb502c7828b1cf2e15a7a_icgraph.png" border="0" usemap="#astring-processor_8h_ac8184d2eea3bb502c7828b1cf2e15a7a_icgraph" alt=""/></div>
+<map name="astring-processor_8h_ac8184d2eea3bb502c7828b1cf2e15a7a_icgraph" id="astring-processor_8h_ac8184d2eea3bb502c7828b1cf2e15a7a_icgraph">
+<area shape="rect" title=" " alt="" coords="875,487,983,513"/>
+<area shape="rect" href="autopick-describer_8cpp.html#ad23e206d9360a2578d25d785f066fba1" title=" " alt="" coords="678,259,826,285"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#a8157eacf8e55d2774f5eb4ba08848c42" title="現在までに倒したモンスターを表示するコマンドのメインルーチン /" alt="" coords="459,462,617,503"/>
+<area shape="rect" href="cmd-draw_8cpp.html#a0be48d725590f55212da8df3bfc58c1e" title="メッセージのログを表示するコマンドのメインルーチン Recall the most recent message" alt="" coords="243,411,377,437"/>
+<area shape="rect" href="cmd-lore_8cpp.html#ae1f67e879bad2c6ac1ee0971abd55d5d" title="モンスターの思い出を見るコマンドのメインルーチン Identify a character, allow recall of monsters" alt="" coords="232,360,388,387"/>
+<area shape="rect" href="autopick-matcher_8cpp.html#a24dad2a6a647be39be6b1d9aba964aad" title="床のアイテムが自動拾いに一致するかどうかを調べる関数だけを格納したファイル" alt="" coords="687,208,817,235"/>
+<area shape="rect" href="ego-reader_8cpp.html#a1ecbdfd717463f3c82faba9e63c45b78" title="アイテムエゴ情報(e_info)のパース関数 / Initialize the &quot;e_info&quot; array, by parsing an ascii &quot;template&quot; file" alt="" coords="705,563,799,589"/>
+<area shape="rect" href="english_8cpp.html#a63435f37c56f552317d1055d38faf369" title="英単語、句、説を複数形を変換する / Pluralize a monster name" alt="" coords="711,512,793,539"/>
+<area shape="rect" href="process-name_8cpp.html#a4c201aae855594c36a336de8ad51600f" title="プレイヤーの名前をチェックして修正する Process the player name." alt="" coords="677,613,827,640"/>
+<area shape="rect" href="building-monster_8cpp.html#a830fd649f8119cf8b94ee1d447ba14c0" title="施設でモンスターの情報を知るメインルーチン / research_mon &#45;KMW&#45;" alt="" coords="700,664,804,691"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a623436bfe774691b539a556e8793e14e" title=" " alt="" coords="477,309,599,336"/>
+<area shape="rect" href="show-file_8cpp.html#afdfae0866312023a7bd9aceefdfad6dd" title="ファイル内容の一行をコンソールに出力する Display single line of on&#45;line help file" alt="" coords="687,715,817,741"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="718,765,786,792"/>
+<area shape="rect" href="autopick-describer_8cpp.html#ab8af7c48f7a4f929e9b259eca658c0e6" title=" " alt="" coords="475,259,601,285"/>
+<area shape="rect" href="autopick-drawer_8cpp.html#a1f1a8436f479fb8d0d897dfbbe60288d" title=" " alt="" coords="251,259,369,285"/>
+<area shape="rect" href="autopick-editor-command_8cpp.html#ac32821feb8173c8df9a544bcfac215e9" title="自動拾いエディタ画面でキーを押した時の挙動一式" alt="" coords="20,259,159,285"/>
+<area shape="rect" href="cmd-knowledge_8cpp.html#aa220b38b20d426fe2517d1a4fd738e0c" title=" " alt="" coords="242,461,378,488"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,436,155,463"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,385,173,412"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a8108553a0b971c8d22ad18d214df8fb3" title="自動拾いの検索" alt="" coords="477,107,599,133"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a58a59a6c0789acd4d0fd87e349e49b5c" title=" " alt="" coords="476,208,600,235"/>
+<area shape="rect" href="autopick_8cpp.html#ae7f092144503a2ccb534345fe872d299" title=" " alt="" coords="243,157,377,184"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="237,5,383,32"/>
+<area shape="rect" href="autopick_8cpp.html#aa84c8c12cf35bd08cc70374c9bf70413" title=" " alt="" coords="233,56,387,83"/>
+<area shape="rect" href="display-map_8cpp.html#a9be4d479cc04510dbea7b7c114c617f3" title="指定した座標の地形の表示属性を取得する / Extract the attr/char to display at the given (legal) map location" alt="" coords="273,107,347,133"/>
+<area shape="rect" href="display-lore_8cpp.html#aa3e2e0b81d45ea2d4176ce83367a4acb" title=" " alt="" coords="458,527,618,569"/>
+<area shape="rect" href="knowledge-quests_8cpp.html#a25a090019c28dcf6d21b2a87a4308095" title="Print all active quests" alt="" coords="447,593,629,634"/>
+<area shape="rect" href="spells-sight_8cpp.html#a23bd0b66715a8270f8ab5c5f3686a4ff" title="周辺モンスターを調査する / Probe nearby monsters" alt="" coords="506,659,570,685"/>
+<area shape="rect" href="quest_8cpp.html#ae20df73da95e4dfac9ce588fae49b6f7" title="クエストの導入メッセージを表示する / Discover quest" alt="" coords="481,709,595,736"/>
+<area shape="rect" href="display-lore_8cpp.html#aca858057a8987cd0f91b63e78c1d2e46" title=" " alt="" coords="221,535,399,561"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad986baa174929d7bd1cd78e722420be3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad986baa174929d7bd1cd78e722420be3">&#9670;&nbsp;</a></span>ascii_to_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ascii_to_text </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="string-processor_8h_ad986baa174929d7bd1cd78e722420be3_cgraph.png" border="0" usemap="#astring-processor_8h_ad986baa174929d7bd1cd78e722420be3_cgraph" alt=""/></div>
+<map name="astring-processor_8h_ad986baa174929d7bd1cd78e722420be3_cgraph" id="astring-processor_8h_ad986baa174929d7bd1cd78e722420be3_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,101,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a30bcb33a57e3acb4e69b1f5ace5ddbeb" title=" " alt="" coords="191,5,247,32"/>
+<area shape="rect" href="string-processor_8cpp.html#ab8a3974eb3254a218ae825f56da39fdc" title=" " alt="" coords="192,56,245,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a2c72111e40c3c417f7556f9a4754a982" title=" " alt="" coords="149,107,288,133"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="341,81,452,108"/>
+<area shape="rect" href="string-processor_8cpp.html#a94264f612f38c985e60c62123fd1129d" title=" " alt="" coords="336,132,457,159"/>
+<area shape="rect" href="string-processor_8cpp.html#acebeaa18524cee144c4f6bf2283c5a36" title=" " alt="" coords="505,132,595,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="string-processor_8h_ad986baa174929d7bd1cd78e722420be3_icgraph.png" border="0" usemap="#astring-processor_8h_ad986baa174929d7bd1cd78e722420be3_icgraph" alt=""/></div>
+<map name="astring-processor_8h_ad986baa174929d7bd1cd78e722420be3_icgraph" id="astring-processor_8h_ad986baa174929d7bd1cd78e722420be3_icgraph">
+<area shape="rect" title=" " alt="" coords="1039,198,1135,225"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a88c8fc0fa9dc5204fcedf35b82ec09ce" title="マクロのトリガーキーを取得する / Hack – ask for a &quot;trigger&quot; (see below)" alt="" coords="608,173,747,199"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a73df5fe8058943d380d6b31f9de15728" title="マクロを設定するコマンドのメインルーチン / Interact with &quot;macros&quot;" alt="" coords="229,198,348,225"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a8de8ae79a8ddb8d5a4abcf06f8b989e0" title="マクロのキー表記からアスキーコードを得てターミナルに表示する / Hack – ask for a keymap &quot;trigger&quot; (see below)" alt="" coords="799,21,991,47"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a41533d64d34cff21ac2f08e39073e746" title=" " alt="" coords="844,451,945,478"/>
+<area shape="rect" href="autopick-inserter-killer_8cpp.html#a3c42093b4a2b8631c0e2f8e99f7f7213" title=" " alt="" coords="827,223,962,250"/>
+<area shape="rect" href="autopick-inserter-killer_8cpp.html#ae1cc16004e480bc76ac22f453493e684" title=" " alt="" coords="833,274,957,301"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a0452296a6ddd2bfbb5758565f4b55361" title="キーマップをprefファイルにダンプする / Hack – append all keymaps to the given file" alt="" coords="841,122,948,149"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a13b7a62cca2788a9ba9823d41d1e989c" title="マクロ情報をprefファイルに保存する /" alt="" coords="431,71,529,98"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,477,155,503"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,426,173,453"/>
+<area shape="rect" href="asking-player_8cpp.html#a025b21031a6e4922de22b9e961a8358e" title="&lt;" alt="" coords="635,375,720,402"/>
+<area shape="rect" href="cmd-draw_8cpp.html#a0be48d725590f55212da8df3bfc58c1e" title="メッセージのログを表示するコマンドのメインルーチン Recall the most recent message" alt="" coords="221,426,356,453"/>
+<area shape="rect" href="cmd-autopick_8cpp.html#a8dc56811ab6efa5123eec7f83eb4bb26" title=" " alt="" coords="404,527,556,554"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#ab33f054c7b623777d0e9417255966aea" title="標準オプションを変更するコマンドのメインルーチン / Set or unset various options." alt="" coords="230,477,347,503"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="633,578,722,605"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="641,629,713,655"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a7291829dd16d672b22d99e1e4c33587a" title=" " alt="" coords="604,325,751,351"/>
+<area shape="rect" href="asking-player_8cpp.html#ad5c7efa101f8104fd152aaa10b9be28b" title=" " alt="" coords="451,375,509,402"/>
+<area shape="rect" href="owner-insults_8cpp.html#a01e679ab7d7efcd939a79eb8f3201d07" title="交渉価格を確認と認証の是非を行う / Get a haggle" alt="" coords="437,274,523,301"/>
+<area shape="rect" href="asking-player_8cpp.html#a18ddf190b45e6fbac7a074687008550f" title=" " alt="" coords="433,325,527,351"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a89dc207c8c9d5dbf55872f0882325859"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89dc207c8c9d5dbf55872f0882325859">&#9670;&nbsp;</a></span>ltrim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* ltrim </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>左側の空白を除去 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>char型のポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>除去後のポインタ </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="string-processor_8h_a89dc207c8c9d5dbf55872f0882325859_icgraph.png" border="0" usemap="#astring-processor_8h_a89dc207c8c9d5dbf55872f0882325859_icgraph" alt=""/></div>
+<map name="astring-processor_8h_a89dc207c8c9d5dbf55872f0882325859_icgraph" id="astring-processor_8h_a89dc207c8c9d5dbf55872f0882325859_icgraph">
+<area shape="rect" title="左側の空白を除去" alt="" coords="496,5,543,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#a3bd34825cd5d9e92c7474a31576ac7c0" title="願ったが消えてしまった場合のメッセージ" alt="" coords="329,5,448,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="164,5,281,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1193ea0400d6ec032ec3a514138a33a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1193ea0400d6ec032ec3a514138a33a6">&#9670;&nbsp;</a></span>rtrim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* rtrim </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>右側の空白を除去 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>char型のポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>除去後のポインタ </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="string-processor_8h_a1193ea0400d6ec032ec3a514138a33a6_icgraph.png" border="0" usemap="#astring-processor_8h_a1193ea0400d6ec032ec3a514138a33a6_icgraph" alt=""/></div>
+<map name="astring-processor_8h_a1193ea0400d6ec032ec3a514138a33a6_icgraph" id="astring-processor_8h_a1193ea0400d6ec032ec3a514138a33a6_icgraph">
+<area shape="rect" title="右側の空白を除去" alt="" coords="496,5,544,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#a3bd34825cd5d9e92c7474a31576ac7c0" title="願ったが消えてしまった場合のメッセージ" alt="" coords="329,5,448,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="164,5,281,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad1b52908bfa52817010574f74e85918a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1b52908bfa52817010574f74e85918a">&#9670;&nbsp;</a></span>str_erase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string str_erase </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>erase_chars</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>文字列から指定した文字を取り除く </p>
+<p>文字列 str から文字列 erase_chars に含まれる文字をすべて削除し、 削除した文字列を std::string 型のオブジェクトとして返す。</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>操作の対象とする文字列 </td></tr>
+    <tr><td class="paramname">erase_chars</td><td>削除する文字を指定する文字列 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>std::string 指定した文字をすべて削除した文字列 </dd></dl>
+
+</div>
+</div>
+<a id="a2affbd99cc86e8fc0c2921f422426687"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2affbd99cc86e8fc0c2921f422426687">&#9670;&nbsp;</a></span>str_ltrim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string str_ltrim </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>文字列の左端の空白を削除する </p>
+<p>文字列 str の左端にある空白(スペースおよびタブ)を削除し、 削除した文字列を std::string 型のオブジェクトとして返す。 文字列全体が空白の場合は空文字列を返す。</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>操作の対象とする文字列 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>std::string strの左端の空白を削除した文字列 </dd></dl>
+
+</div>
+</div>
+<a id="ae817951aef627358e5486febcea6b60f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae817951aef627358e5486febcea6b60f">&#9670;&nbsp;</a></span>str_rtrim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string str_rtrim </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>文字列の右端の空白を削除する </p>
+<p>文字列 str の右端にある空白(スペースおよびタブ)を削除し、 削除した文字列を std::string 型のオブジェクトとして返す。 文字列全体が空白の場合は空文字列を返す。</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>操作の対象とする文字列 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>std::string strの右端の空白を削除した文字列 </dd></dl>
+
+</div>
+</div>
+<a id="a64d2534e032b94eba4b6728cbfb55870"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64d2534e032b94eba4b6728cbfb55870">&#9670;&nbsp;</a></span>str_split()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; str_split </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>delim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>trim</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>文字列を指定した文字で分割する </p>
+<p>文字列 str を delim で指定した文字で分割し、分割した文字列を要素とする配列を std::vector&lt;std::string&gt; 型のオブジェクトとして返す。</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>操作の対象とする文字列 </td></tr>
+    <tr><td class="paramname">delim</td><td>文字列を分割する文字 </td></tr>
+    <tr><td class="paramname">trim</td><td>trueの場合、分割した文字列の両端の空白を削除する </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>std::vector&lt;std::string&gt; 分割した文字列を要素とする配列 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="string-processor_8h_a64d2534e032b94eba4b6728cbfb55870_cgraph.png" border="0" usemap="#astring-processor_8h_a64d2534e032b94eba4b6728cbfb55870_cgraph" alt=""/></div>
+<map name="astring-processor_8h_a64d2534e032b94eba4b6728cbfb55870_cgraph" id="astring-processor_8h_a64d2534e032b94eba4b6728cbfb55870_cgraph">
+<area shape="rect" title="文字列を指定した文字で分割する" alt="" coords="5,5,73,32"/>
+<area shape="rect" href="string-processor_8cpp.html#af1ece90536d1e42869103d0a5ee82996" title="文字列の両端の空白を削除する" alt="" coords="121,5,188,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af1ece90536d1e42869103d0a5ee82996"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1ece90536d1e42869103d0a5ee82996">&#9670;&nbsp;</a></span>str_trim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string str_trim </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>文字列の両端の空白を削除する </p>
+<p>文字列 str の両端にある空白(スペースおよびタブ)を削除し、 削除した文字列を std::string 型のオブジェクトとして返す。 文字列全体が空白の場合は空文字列を返す。</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>操作の対象とする文字列 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>std::string strの両端の空白を削除した文字列 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="string-processor_8h_af1ece90536d1e42869103d0a5ee82996_icgraph.png" border="0" usemap="#astring-processor_8h_af1ece90536d1e42869103d0a5ee82996_icgraph" alt=""/></div>
+<map name="astring-processor_8h_af1ece90536d1e42869103d0a5ee82996_icgraph" id="astring-processor_8h_af1ece90536d1e42869103d0a5ee82996_icgraph">
+<area shape="rect" title="文字列の両端の空白を削除する" alt="" coords="121,5,188,32"/>
+<area shape="rect" href="string-processor_8cpp.html#a39213696c221ed4372036d6960245bb1" title="文字列を指定した文字で分割する" alt="" coords="5,5,73,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a59a5f450c1571742a51cf6786d6a28a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59a5f450c1571742a51cf6786d6a28a5">&#9670;&nbsp;</a></span>strrncmp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int strrncmp </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>文字列の後方から一致するかどうか比較する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s1</td><td>比較元文字列ポインタ </td></tr>
+    <tr><td class="paramname">s2</td><td>比較先文字列ポインタ </td></tr>
+    <tr><td class="paramname">len</td><td>比較する長さ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>等しい場合は0、p1が大きい場合は-1、p2が大きい場合は1 @detail strncmpの後方から比較する版 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="string-processor_8h_a59a5f450c1571742a51cf6786d6a28a5_icgraph.png" border="0" usemap="#astring-processor_8h_a59a5f450c1571742a51cf6786d6a28a5_icgraph" alt=""/></div>
+<map name="astring-processor_8h_a59a5f450c1571742a51cf6786d6a28a5_icgraph" id="astring-processor_8h_a59a5f450c1571742a51cf6786d6a28a5_icgraph">
+<area shape="rect" title="文字列の後方から一致するかどうか比較する" alt="" coords="496,5,569,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#a3bd34825cd5d9e92c7474a31576ac7c0" title="願ったが消えてしまった場合のメッセージ" alt="" coords="329,5,448,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="164,5,281,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adc590b5d3c6f6e8e87a50271e51296a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc590b5d3c6f6e8e87a50271e51296a5">&#9670;&nbsp;</a></span>text_to_ascii()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void text_to_ascii </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="string-processor_8h_adc590b5d3c6f6e8e87a50271e51296a5_cgraph.png" border="0" usemap="#astring-processor_8h_adc590b5d3c6f6e8e87a50271e51296a5_cgraph" alt=""/></div>
+<map name="astring-processor_8h_adc590b5d3c6f6e8e87a50271e51296a5_cgraph" id="astring-processor_8h_adc590b5d3c6f6e8e87a50271e51296a5_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,101,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a5e284c55ff4dc5e1c8a295d492de6344" title=" " alt="" coords="190,5,247,32"/>
+<area shape="rect" href="string-processor_8cpp.html#a2f2b867a4f91dce37c063a1fbf2498cf" title=" " alt="" coords="191,56,246,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a2fd70263cb86956a1ce1b92c4cdfcb03" title=" " alt="" coords="149,107,288,133"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="345,81,455,108"/>
+<area shape="rect" href="string-processor_8cpp.html#a06cb74c7993a5a9d6f2dfce3c3cc308c" title=" " alt="" coords="336,132,464,159"/>
+<area shape="rect" href="string-processor_8cpp.html#acebeaa18524cee144c4f6bf2283c5a36" title=" " alt="" coords="512,132,601,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="string-processor_8h_adc590b5d3c6f6e8e87a50271e51296a5_icgraph.png" border="0" usemap="#astring-processor_8h_adc590b5d3c6f6e8e87a50271e51296a5_icgraph" alt=""/></div>
+<map name="astring-processor_8h_adc590b5d3c6f6e8e87a50271e51296a5_icgraph" id="astring-processor_8h_adc590b5d3c6f6e8e87a50271e51296a5_icgraph">
+<area shape="rect" title=" " alt="" coords="1245,81,1341,108"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a73df5fe8058943d380d6b31f9de15728" title="マクロを設定するコマンドのメインルーチン / Interact with &quot;macros&quot;" alt="" coords="726,5,845,32"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#adcf03e6cdb3647e9d4dc3050cc54c330" title="Cトークンの解釈 / Process &quot;C:&lt;str&gt;&quot; – create keymap" alt="" coords="1075,56,1197,83"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="907,107,1027,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#ae76beaa104aba565a996a08b8d759801" title="Pトークンの解釈 / Process &quot;P:&lt;str&gt;&quot; – normal macro" alt="" coords="1075,157,1197,184"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,44,296,71"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,44,664,71"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,44,116,71"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,44,448,71"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="737,69,833,96"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="712,120,859,147"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a2da0d0b8238638c167302914ab2172e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2da0d0b8238638c167302914ab2172e0">&#9670;&nbsp;</a></span>hexsym</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char hexsym[16]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>10進数から16進数への変換テーブル / Global array for converting numbers to uppercase hecidecimal digit This array can also be used to convert a number to an octal digit </p>
+
+</div>
+</div>
+<a id="ac06896ccd3d4732bae4c1b7d187460ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac06896ccd3d4732bae4c1b7d187460ed">&#9670;&nbsp;</a></span>macro_modifier_chr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> macro_modifier_chr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>&amp;x# で指定されるマクロトリガーに関する情報を記録する文字列ポインタ </p>
+
+</div>
+</div>
+<a id="aa7e38eb9e5f95616649d33ce748948e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7e38eb9e5f95616649d33ce748948e6">&#9670;&nbsp;</a></span>macro_modifier_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> macro_modifier_name[<a class="el" href="string-processor_8h.html#a466b310a8a7778f9d8e07e87698d4121">MAX_MACRO_MOD</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>マクロ上で取り扱う特殊キーを文字列上で表現するためのフォーマットを記録した文字列ポインタ配列 </p>
+
+</div>
+</div>
+<a id="a9ed8d6d2afc2064db64535ac08410054"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ed8d6d2afc2064db64535ac08410054">&#9670;&nbsp;</a></span>macro_template</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> macro_template</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Angband設定ファイルのT: タグ情報から読み込んだ長いTコードを処理するために利用する文字列ポインタ </p>
+
+</div>
+</div>
+<a id="a91a638ee6fb65febd70ec4d114d8ab59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91a638ee6fb65febd70ec4d114d8ab59">&#9670;&nbsp;</a></span>macro_trigger_keycode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> macro_trigger_keycode[2][<a class="el" href="string-processor_8h.html#aa007c3e0be60a9f6a3cb75e1d79ffadb">MAX_MACRO_TRIG</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>マクロの内容 </p>
+
+</div>
+</div>
+<a id="a7f17299cdbd1c65fd3f5d0c01ebba9d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f17299cdbd1c65fd3f5d0c01ebba9d6">&#9670;&nbsp;</a></span>macro_trigger_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> macro_trigger_name[<a class="el" href="string-processor_8h.html#aa007c3e0be60a9f6a3cb75e1d79ffadb">MAX_MACRO_TRIG</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>マクロのトリガーコード </p>
+
+</div>
+</div>
+<a id="a25b2da9c9d7f249474710bb6cc5a8fa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25b2da9c9d7f249474710bb6cc5a8fa9">&#9670;&nbsp;</a></span>max_macrotrigger</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int max_macrotrigger</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>現在登録中のマクロ(トリガー)の数 </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分31秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

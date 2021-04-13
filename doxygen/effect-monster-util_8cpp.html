@@ -1,0 +1,414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/effect/effect-monster-util.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dda8561cf3711d1096db62b1f19b56a8.html">effect</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">effect-monster-util.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="effect-monster-util_8h_source.html">effect/effect-monster-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-death_8h_source.html">monster-floor/monster-death.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-info_8h_source.html">monster/monster-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status_8h_source.html">monster/monster-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+effect-monster-util.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-util_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2effect_2effect-monster-util_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2effect_2effect-monster-util_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2effect_2effect-monster-util_8cpp">
+<area shape="rect" title=" " alt="" coords="645,5,833,61"/>
+<area shape="rect" href="effect-monster-util_8h.html" title=" " alt="" coords="39,109,178,151"/>
+<area shape="rect" href="monster-death_8h.html" title=" " alt="" coords="721,109,869,151"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="894,109,1043,151"/>
+<area shape="rect" href="monster-info_8h.html" title=" " alt="" coords="419,295,574,322"/>
+<area shape="rect" href="monster-status_8h.html" title=" " alt="" coords="598,295,768,322"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1481,117,1669,143"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="188,206,266,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="618,385,748,411"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="437,377,582,419"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="230,295,344,322"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="86,295,205,322"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1213,467,1369,508"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="870,474,981,501"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="1089,199,1234,240"/>
+<area shape="rect" title=" " alt="" coords="940,206,996,233"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="1239,377,1399,419"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="1214,288,1374,329"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="944,288,1110,329"/>
+<area shape="rect" title=" " alt="" coords="1134,295,1189,322"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1550,206,1728,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1753,206,1904,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a59696e8403a9a98fbd7b518c5e22317a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-util_8cpp.html#a59696e8403a9a98fbd7b518c5e22317a">substitute_effect_monster</a> (<a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> who, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> r, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam, <a class="el" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a> effect_type, <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> flag, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> see_s_msg)</td></tr>
+<tr class="memdesc:a59696e8403a9a98fbd7b518c5e22317a"><td class="mdescLeft">&#160;</td><td class="mdescRight">effect_monster_type構造体の初期化処理  <a href="effect-monster-util_8cpp.html#a59696e8403a9a98fbd7b518c5e22317a">[詳解]</a><br /></td></tr>
+<tr class="separator:a59696e8403a9a98fbd7b518c5e22317a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4e0ed311cd8006b433e7d0ccc5507bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-util_8cpp.html#ac4e0ed311cd8006b433e7d0ccc5507bb">initialize_effect_monster</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> who, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> r, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam, <a class="el" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a> effect_type, <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> flag, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> see_s_msg)</td></tr>
+<tr class="memdesc:ac4e0ed311cd8006b433e7d0ccc5507bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">effect_monster_type構造体を初期化する  <a href="effect-monster-util_8cpp.html#ac4e0ed311cd8006b433e7d0ccc5507bb">[詳解]</a><br /></td></tr>
+<tr class="separator:ac4e0ed311cd8006b433e7d0ccc5507bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ac4e0ed311cd8006b433e7d0ccc5507bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4e0ed311cd8006b433e7d0ccc5507bb">&#9670;&nbsp;</a></span>initialize_effect_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a>* initialize_effect_monster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>who</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a>&#160;</td>
+          <td class="paramname"><em>dam</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a>&#160;</td>
+          <td class="paramname"><em>effect_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td>
+          <td class="paramname"><em>flag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>see_s_msg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>effect_monster_type構造体を初期化する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">caster_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">em_ptr</td><td>モンスター効果構造体への参照ポインタ </td></tr>
+    <tr><td class="paramname">who</td><td>魔法を発動したモンスター (0ならばプレーヤー) </td></tr>
+    <tr><td class="paramname">r</td><td>効果半径(ビーム/ボルト = 0 / ボール = 1以上) / Radius of explosion (0 = beam/bolt, 1 to 9 = ball) </td></tr>
+    <tr><td class="paramname">y</td><td>目標y座標 / Target y location (or location to travel "towards") </td></tr>
+    <tr><td class="paramname">x</td><td>目標x座標 / Target x location (or location to travel "towards") </td></tr>
+    <tr><td class="paramname">dam</td><td>基本威力 / Base damage roll to apply to affected monsters (or player) </td></tr>
+    <tr><td class="paramname">effect_type</td><td>効果属性 / Type of damage to apply to monsters (and objects) </td></tr>
+    <tr><td class="paramname">flag</td><td>効果フラグ </td></tr>
+    <tr><td class="paramname">see_s_msg</td><td>TRUEならばメッセージを表示する </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-util_8cpp_ac4e0ed311cd8006b433e7d0ccc5507bb_cgraph.png" border="0" usemap="#aeffect-monster-util_8cpp_ac4e0ed311cd8006b433e7d0ccc5507bb_cgraph" alt=""/></div>
+<map name="aeffect-monster-util_8cpp_ac4e0ed311cd8006b433e7d0ccc5507bb_cgraph" id="aeffect-monster-util_8cpp_ac4e0ed311cd8006b433e7d0ccc5507bb_cgraph">
+<area shape="rect" title="effect_monster_type構造体を初期化する" alt="" coords="5,213,167,240"/>
+<area shape="rect" href="monster-death_8cpp.html#a6dfb8c73f9febac2c46be36eb01e7103" title="モンスターを撃破した際の述語メッセージを返す / Return monster death string" alt="" coords="241,87,366,113"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="270,163,337,189"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="215,213,392,240"/>
+<area shape="rect" href="monster-info_8cpp.html#a5aa4423e957eb44637308bdbf765ba78" title=" " alt="" coords="264,264,343,291"/>
+<area shape="rect" href="effect-monster-util_8cpp.html#a59696e8403a9a98fbd7b518c5e22317a" title="effect_monster_type構造体の初期化処理" alt="" coords="218,315,389,341"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a2c78256436f23b50681f5fe147c7f021" title="モンスターが生命体かどうかを返す Is the monster &quot;alive&quot;?" alt="" coords="460,73,564,100"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="440,124,584,151"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="469,225,555,252"/>
+<area shape="rect" href="grid_8cpp.html#ab400c1b998f2aac3e96120a9f4e374dc" title="指定された座標のマスが現在照らされているかを返す。 / Check for &quot;local&quot; illumination" alt="" coords="632,48,795,75"/>
+<area shape="rect" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e" title=" " alt="" coords="843,11,967,37"/>
+<area shape="rect" href="grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="849,73,960,100"/>
+<area shape="rect" href="cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="643,149,783,176"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="672,200,755,227"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="672,251,755,277"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="658,301,769,328"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="658,352,769,379"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="457,276,567,303"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-util_8cpp_ac4e0ed311cd8006b433e7d0ccc5507bb_icgraph.png" border="0" usemap="#aeffect-monster-util_8cpp_ac4e0ed311cd8006b433e7d0ccc5507bb_icgraph" alt=""/></div>
+<map name="aeffect-monster-util_8cpp_ac4e0ed311cd8006b433e7d0ccc5507bb_icgraph" id="aeffect-monster-util_8cpp_ac4e0ed311cd8006b433e7d0ccc5507bb_icgraph">
+<area shape="rect" title="effect_monster_type構造体を初期化する" alt="" coords="1024,53,1185,79"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="869,53,976,79"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#ac5e475bf543027393672734eb9613bf6" title="鏡魔法「封魔結界」の効果処理" alt="" coords="179,318,273,345"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="760,1242,821,1269"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#a6004cda7b8345ef36e0c5ab2d67a86bb" title="鏡魔法「鏡の封印」の効果処理" alt="" coords="175,135,277,162"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#af68e01e109fc7fb8b1e131a7131ed4c5" title="鏡魔法の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;Mirror magic&#39;." alt="" coords="5,375,127,402"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a5f4625552656aee45b62542787f7cd08" title=" " alt="" coords="560,634,677,661"/>
+<area shape="rect" href="activation-others_8cpp.html#a42ed7012ce16db3e2e05111dbcb577d2" title=" " alt="" coords="547,685,691,711"/>
+<area shape="rect" href="spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="557,786,680,813"/>
+<area shape="rect" href="trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="369,811,434,838"/>
+<area shape="rect" href="effect-feature_8cpp.html#ab60eea66f4d858035803d331e84151cc" title="汎用的なビーム/ボルト/ボール系による地形効果処理 / We are called from &quot;project()&quot; to &quot;damage&quot; terrain features" alt="" coords="352,318,451,345"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="354,1827,449,1854"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#ad8d6bd76ccded6edc3d938dddafbea6d" title="死者復活処理(起点より周囲5マス)" alt="" coords="567,1039,670,1066"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="347,1014,456,1041"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="352,1090,451,1117"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="345,1141,457,1167"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a2c3318b5f3aed8ad86d874c1490f86af" title=" " alt="" coords="548,1890,689,1917"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a65fc9979f5efe840339924249b7a8d48" title=" " alt="" coords="548,1941,689,1967"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3715ddccdb53d6a15e7e1d455332abc4" title=" " alt="" coords="551,1991,686,2018"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#ae046ca978cc34c3daa319e1d28eb6e3a" title=" " alt="" coords="532,2043,705,2084"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a8cdb77f4352965d8daaed40feabdd58f" title="モンスターのビーム型魔法処理 /" alt="" coords="591,2109,646,2135"/>
+<area shape="rect" href="blood-curse_8cpp.html#ac0ecc46e48f607918b001bc2b08b561f" title=" " alt="" coords="541,2159,697,2186"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a50c4496847b82cffa5927970c2add403" title="モンスターのボルト型魔法処理 / Cast a bolt at the player Stop if we hit a monster Affect monsters and the player" alt="" coords="597,2210,640,2237"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a60d3d82169ca8120d8716c9994caf9ca" title="モンスターのボール型＆ブレス型魔法処理 / Cast a breath (or ball) attack at the player Pass over any monsters that may be..." alt="" coords="589,2261,648,2287"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#ab738ba0734204e55707411a35acde85c" title="元素魔法呪文を実行する" alt="" coords="334,938,469,965"/>
+<area shape="rect" href="spells-chaos_8cpp.html#af16bb565fa9396a13ad62570b7d0344f" title="カオス魔法「流星群」/トランプ魔法「隕石のカード」の処理としてプレイヤーを中心に隕石落下処理を10+1d10回繰り返す。 / Drop 10+1d10 meteor ball at random pla..." alt="" coords="571,1495,666,1522"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="345,1445,457,1471"/>
+<area shape="rect" href="mind-mindcrafter_8cpp.html#a8da07b1c4907a85709c965d06d9038cb" title="超能力の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;mindcrafter&#39;." alt="" coords="325,1191,477,1218"/>
+<area shape="rect" href="mind-ninja_8cpp.html#ae73c136f3f19a9d9d3691f8894bfad97" title="忍術の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;ninja&#39;." alt="" coords="344,1293,459,1319"/>
+<area shape="rect" href="spells-crusade_8cpp.html#afb7053fa5419ad06ab18be525f1d92af" title="破邪魔法処理" alt="" coords="541,1647,696,1674"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="340,1622,463,1649"/>
+<area shape="rect" href="grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="565,583,673,610"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="338,558,465,585"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="368,673,435,699"/>
+<area shape="rect" href="effect-player_8cpp.html#a15c922eb8fc168c85e08a24a4c37ef35" title="反射・忍者の変わり身などでそもそも当たらない状況を判定する" alt="" coords="541,1749,696,1791"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a15c5dc7b21b8512778dd7d853adc5743" title=" " alt="" coords="537,2311,700,2338"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a0fe944f2b028650d03e1d618168589af" title=" " alt="" coords="529,2362,708,2389"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#abd44e8e6aabaade505734e841a075bc7" title="魔法のルーン生成処理(プレイヤー中心に周囲1マス)" alt="" coords="525,2413,712,2439"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#af6d0cc0cfbba75815d7b4caa7aec3294" title="ドア破壊処理(プレイヤー中心に周囲1マス)" alt="" coords="547,1546,690,1573"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#a5a588aed34a170d84a34d261b0c629ba" title="トラップ解除処理(プレイヤー中心に周囲1マス)" alt="" coords="551,103,687,130"/>
+<area shape="rect" href="spells-pet_8cpp.html#a4d1508b844fb21fa74cec6f11df83464" title="ペット爆破処理 /" alt="" coords="557,154,680,181"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="345,1343,458,1370"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#a68ec743cccdff3a324a099b5ebe908fc" title="ドア生成処理(プレイヤー中心に周囲1マス) / Hooks – affect adjacent grids (radius 1 ball attack)" alt="" coords="569,205,669,231"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#ad9a9630bf73b38fc355e655aa6b5c55d" title="呪術「目には目を」の効果処理" alt="" coords="565,255,672,282"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a9c5b6430a190c4d961f6017a483fdcf2" title="ボール系スペルの発動 / Cast a ball spell" alt="" coords="585,1242,652,1269"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a91b238446e2261ec912dcf94e20cfef8" title="ボール(ハイド)系スペルの発動 / Cast a ball spell" alt="" coords="570,887,667,914"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a5c8a1e75040eba8ec78016b333314529" title="ブラスト系スペルの発動 / Cast a blast spell" alt="" coords="581,1698,656,1725"/>
+<area shape="rect" href="death-crimson_8cpp.html#a9b1ec834a4932f145b1f7a6d663b4a1f" title="クリムゾンを発射する / Fire Crimson, evoluting gun." alt="" coords="573,381,665,407"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a77e27c10511ddfb04afb3b2490bc90c2" title="メテオ系スペルの発動 / Cast a meteor spell" alt="" coords="575,482,662,509"/>
+<area shape="rect" href="spells-launcher_8cpp.html#ad3fd4374e8d9d14d1aa2fedc15be7694" title="ロケット系スペルの発動(詳細な差は確認中) / Cast a ball spell" alt="" coords="577,1394,660,1421"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a59696e8403a9a98fbd7b518c5e22317a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59696e8403a9a98fbd7b518c5e22317a">&#9670;&nbsp;</a></span>substitute_effect_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void substitute_effect_monster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>who</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a>&#160;</td>
+          <td class="paramname"><em>dam</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a>&#160;</td>
+          <td class="paramname"><em>effect_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td>
+          <td class="paramname"><em>flag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>see_s_msg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>effect_monster_type構造体の初期化処理 </p>
+<dl class="section date"><dt>日付</dt><dd>2020/04/29 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier</dd></dl>
+<p><a class="el" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster.">affect_monster()</a> に亘ってきた引数をeffect_monster_type構造体に代入する </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">em_ptr</td><td>モンスター効果構造体への参照ポインタ </td></tr>
+    <tr><td class="paramname">who</td><td>魔法を発動したモンスター (0ならばプレーヤー) </td></tr>
+    <tr><td class="paramname">r</td><td>効果半径(ビーム/ボルト = 0 / ボール = 1以上) / Radius of explosion (0 = beam/bolt, 1 to 9 = ball) </td></tr>
+    <tr><td class="paramname">y</td><td>目標y座標 / Target y location (or location to travel "towards") </td></tr>
+    <tr><td class="paramname">x</td><td>目標x座標 / Target x location (or location to travel "towards") </td></tr>
+    <tr><td class="paramname">dam</td><td>基本威力 / Base damage roll to apply to affected monsters (or player) </td></tr>
+    <tr><td class="paramname">effect_type</td><td>効果属性 / Type of damage to apply to monsters (and objects) </td></tr>
+    <tr><td class="paramname">flag</td><td>効果フラグ </td></tr>
+    <tr><td class="paramname">see_s_msg</td><td>TRUEならばメッセージを表示する </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-util_8cpp_a59696e8403a9a98fbd7b518c5e22317a_icgraph.png" border="0" usemap="#aeffect-monster-util_8cpp_a59696e8403a9a98fbd7b518c5e22317a_icgraph" alt=""/></div>
+<map name="aeffect-monster-util_8cpp_a59696e8403a9a98fbd7b518c5e22317a_icgraph" id="aeffect-monster-util_8cpp_a59696e8403a9a98fbd7b518c5e22317a_icgraph">
+<area shape="rect" title="effect_monster_type構造体の初期化処理" alt="" coords="520,56,691,83"/>
+<area shape="rect" href="effect-monster-util_8cpp.html#ac4e0ed311cd8006b433e7d0ccc5507bb" title="effect_monster_type構造体を初期化する" alt="" coords="311,56,472,83"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="156,56,263,83"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#ac5e475bf543027393672734eb9613bf6" title="鏡魔法「封魔結界」の効果処理" alt="" coords="10,5,103,32"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="26,56,87,83"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#a6004cda7b8345ef36e0c5ab2d67a86bb" title="鏡魔法「鏡の封印」の効果処理" alt="" coords="5,107,108,133"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/birth/birth-select-race.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_84d111bb56536c13b547e5976d232fbf.html">birth</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">birth-select-race.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="birth-select-race_8h_source.html">birth/birth-select-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-util_8h_source.html">birth/birth-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-race_8h_source.html">player/player-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-info-table_8h_source.html">player/race-info-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+birth-select-race.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-race_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2birth_2birth-select-race_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2birth_2birth-select-race_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2birth_2birth-select-race_8cpp">
+<area shape="rect" title=" " alt="" coords="897,5,1085,61"/>
+<area shape="rect" href="birth-select-race_8h.html" title=" " alt="" coords="612,184,727,225"/>
+<area shape="rect" href="birth-util_8h.html" title=" " alt="" coords="722,109,830,136"/>
+<area shape="rect" href="input-key-acceptor_8h.html" title=" " alt="" coords="801,191,956,218"/>
+<area shape="rect" href="player-race_8h.html" title=" " alt="" coords="980,191,1116,218"/>
+<area shape="rect" href="race-info-table_8h.html" title=" " alt="" coords="971,109,1125,136"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="1191,191,1353,218"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="1200,109,1357,136"/>
+<area shape="rect" href="int-char-converter_8h.html" title=" " alt="" coords="1382,109,1535,136"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="699,273,829,300"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="911,348,1001,375"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1025,348,1116,375"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="5,348,104,375"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="128,348,227,375"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="251,348,351,375"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="375,348,550,375"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="575,348,716,375"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="740,348,887,375"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="920,423,1045,464"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:aea0a7e83b37441a18a4526947e11ce9f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-race_8cpp.html#aea0a7e83b37441a18a4526947e11ce9f">enumerate_race_list</a> (char *sym)</td></tr>
+<tr class="separator:aea0a7e83b37441a18a4526947e11ce9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c7c12cf702e1bc749ec39735ef520a5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-race_8cpp.html#a5c7c12cf702e1bc749ec39735ef520a5">display_race_stat</a> (int cs, int *os, char *cur, char *sym)</td></tr>
+<tr class="separator:a5c7c12cf702e1bc749ec39735ef520a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00796fb43a4eafc3a85418928807b63f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-race_8cpp.html#a00796fb43a4eafc3a85418928807b63f">interpret_race_select_key_move</a> (char c, int *cs)</td></tr>
+<tr class="separator:a00796fb43a4eafc3a85418928807b63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60edd4c12d40f3b647091f3c8986aa90"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-race_8cpp.html#a60edd4c12d40f3b647091f3c8986aa90">select_race</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, char *sym, int *k)</td></tr>
+<tr class="separator:a60edd4c12d40f3b647091f3c8986aa90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6197d9114994dd0df968817ffb8f1c60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-race_8cpp.html#a6197d9114994dd0df968817ffb8f1c60">get_player_race</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a6197d9114994dd0df968817ffb8f1c60"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの種族選択を行う / Player race  <a href="birth-select-race_8cpp.html#a6197d9114994dd0df968817ffb8f1c60">[詳解]</a><br /></td></tr>
+<tr class="separator:a6197d9114994dd0df968817ffb8f1c60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a8f63e5df7e3fe44eb3aed708d89b5e75"><td class="memItemLeft" align="right" valign="top">static const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-race_8cpp.html#a8f63e5df7e3fe44eb3aed708d89b5e75">p2</a> = ')'</td></tr>
+<tr class="separator:a8f63e5df7e3fe44eb3aed708d89b5e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a5c7c12cf702e1bc749ec39735ef520a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c7c12cf702e1bc749ec39735ef520a5">&#9670;&nbsp;</a></span>display_race_stat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_race_stat </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>cur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>sym</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-race_8cpp_a5c7c12cf702e1bc749ec39735ef520a5_cgraph.png" border="0" usemap="#abirth-select-race_8cpp_a5c7c12cf702e1bc749ec39735ef520a5_cgraph" alt=""/></div>
+<map name="abirth-select-race_8cpp_a5c7c12cf702e1bc749ec39735ef520a5_cgraph" id="abirth-select-race_8cpp_a5c7c12cf702e1bc749ec39735ef520a5_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,129,57"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="177,5,253,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="184,56,247,83"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="301,31,389,57"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="439,5,530,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="437,56,532,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-race_8cpp_a5c7c12cf702e1bc749ec39735ef520a5_icgraph.png" border="0" usemap="#abirth-select-race_8cpp_a5c7c12cf702e1bc749ec39735ef520a5_icgraph" alt=""/></div>
+<map name="abirth-select-race_8cpp_a5c7c12cf702e1bc749ec39735ef520a5_icgraph" id="abirth-select-race_8cpp_a5c7c12cf702e1bc749ec39735ef520a5_icgraph">
+<area shape="rect" title=" " alt="" coords="505,5,629,32"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a60edd4c12d40f3b647091f3c8986aa90" title=" " alt="" coords="368,5,457,32"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a6197d9114994dd0df968817ffb8f1c60" title="プレイヤーの種族選択を行う / Player race" alt="" coords="205,5,320,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#af9d355caae0e9b8701818a80cb9fd10f" title=" " alt="" coords="5,5,157,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aea0a7e83b37441a18a4526947e11ce9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea0a7e83b37441a18a4526947e11ce9f">&#9670;&nbsp;</a></span>enumerate_race_list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void enumerate_race_list </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>sym</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-race_8cpp_aea0a7e83b37441a18a4526947e11ce9f_cgraph.png" border="0" usemap="#abirth-select-race_8cpp_aea0a7e83b37441a18a4526947e11ce9f_cgraph" alt=""/></div>
+<map name="abirth-select-race_8cpp_aea0a7e83b37441a18a4526947e11ce9f_cgraph" id="abirth-select-race_8cpp_aea0a7e83b37441a18a4526947e11ce9f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="192,31,255,57"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="303,31,391,57"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="441,5,531,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="439,56,533,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-race_8cpp_aea0a7e83b37441a18a4526947e11ce9f_icgraph.png" border="0" usemap="#abirth-select-race_8cpp_aea0a7e83b37441a18a4526947e11ce9f_icgraph" alt=""/></div>
+<map name="abirth-select-race_8cpp_aea0a7e83b37441a18a4526947e11ce9f_icgraph" id="abirth-select-race_8cpp_aea0a7e83b37441a18a4526947e11ce9f_icgraph">
+<area shape="rect" title=" " alt="" coords="589,5,728,32"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a6197d9114994dd0df968817ffb8f1c60" title="プレイヤーの種族選択を行う / Player race" alt="" coords="427,5,541,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#af9d355caae0e9b8701818a80cb9fd10f" title=" " alt="" coords="227,5,379,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="5,5,179,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6197d9114994dd0df968817ffb8f1c60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6197d9114994dd0df968817ffb8f1c60">&#9670;&nbsp;</a></span>get_player_race()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> get_player_race </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーの種族選択を行う / Player race </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-race_8cpp_a6197d9114994dd0df968817ffb8f1c60_cgraph.png" border="0" usemap="#abirth-select-race_8cpp_a6197d9114994dd0df968817ffb8f1c60_cgraph" alt=""/></div>
+<map name="abirth-select-race_8cpp_a6197d9114994dd0df968817ffb8f1c60_cgraph" id="abirth-select-race_8cpp_a6197d9114994dd0df968817ffb8f1c60_cgraph">
+<area shape="rect" title="プレイヤーの種族選択を行う / Player race" alt="" coords="5,157,120,184"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="580,95,656,121"/>
+<area shape="rect" href="screen-processor_8cpp.html#a723cb7a38362add3188d0080fc2934f2" title=" " alt="" coords="196,5,279,32"/>
+<area shape="rect" href="birth-select-race_8cpp.html#aea0a7e83b37441a18a4526947e11ce9f" title=" " alt="" coords="168,157,307,184"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="587,157,649,184"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a60edd4c12d40f3b647091f3c8986aa90" title=" " alt="" coords="193,325,282,352"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="742,95,830,121"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="883,95,974,121"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="881,32,976,59"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="383,5,469,32"/>
+<area shape="rect" href="birth-util_8cpp.html#a11522f9d6a8d4dcb0c7ab5e512a56ce3" title=" " alt="" coords="366,503,486,529"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="759,401,813,428"/>
+<area shape="rect" href="birth-util_8cpp.html#ac653c0197e083ace688c790e576eae22" title="プレイヤー作成を中断して馬鹿馬鹿蛮怒を終了する" alt="" coords="389,604,463,631"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a5c7c12cf702e1bc749ec39735ef520a5" title=" " alt="" coords="364,107,488,133"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a00796fb43a4eafc3a85418928807b63f" title=" " alt="" coords="355,259,497,301"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="765,465,807,492"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#a053bb14d758ca1d9ea84fdedf7e6c01f" title="標準オプションを変更するコマンドのサブルーチン / Interact with some options" alt="" coords="545,427,691,453"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="740,604,832,631"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="739,553,833,580"/>
+<area shape="rect" href="birth-util_8cpp.html#a272bd84ea8cf1a4a13db4d37550aaf16" title="指定されたヘルプファイルを表示する / Show specific help file" alt="" coords="577,579,659,605"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="597,680,639,707"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-race_8cpp_a6197d9114994dd0df968817ffb8f1c60_icgraph.png" border="0" usemap="#abirth-select-race_8cpp_a6197d9114994dd0df968817ffb8f1c60_icgraph" alt=""/></div>
+<map name="abirth-select-race_8cpp_a6197d9114994dd0df968817ffb8f1c60_icgraph" id="abirth-select-race_8cpp_a6197d9114994dd0df968817ffb8f1c60_icgraph">
+<area shape="rect" title="プレイヤーの種族選択を行う / Player race" alt="" coords="608,5,723,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#af9d355caae0e9b8701818a80cb9fd10f" title=" " alt="" coords="408,5,560,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="187,5,360,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="5,5,139,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a00796fb43a4eafc3a85418928807b63f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00796fb43a4eafc3a85418928807b63f">&#9670;&nbsp;</a></span>interpret_race_select_key_move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void interpret_race_select_key_move </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>cs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-race_8cpp_a00796fb43a4eafc3a85418928807b63f_icgraph.png" border="0" usemap="#abirth-select-race_8cpp_a00796fb43a4eafc3a85418928807b63f_icgraph" alt=""/></div>
+<map name="abirth-select-race_8cpp_a00796fb43a4eafc3a85418928807b63f_icgraph" id="abirth-select-race_8cpp_a00796fb43a4eafc3a85418928807b63f_icgraph">
+<area shape="rect" title=" " alt="" coords="505,5,648,47"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a60edd4c12d40f3b647091f3c8986aa90" title=" " alt="" coords="368,13,457,39"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a6197d9114994dd0df968817ffb8f1c60" title="プレイヤーの種族選択を行う / Player race" alt="" coords="205,13,320,39"/>
+<area shape="rect" href="birth-wizard_8cpp.html#af9d355caae0e9b8701818a80cb9fd10f" title=" " alt="" coords="5,13,157,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a60edd4c12d40f3b647091f3c8986aa90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60edd4c12d40f3b647091f3c8986aa90">&#9670;&nbsp;</a></span>select_race()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> select_race </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>sym</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-race_8cpp_a60edd4c12d40f3b647091f3c8986aa90_cgraph.png" border="0" usemap="#abirth-select-race_8cpp_a60edd4c12d40f3b647091f3c8986aa90_cgraph" alt=""/></div>
+<map name="abirth-select-race_8cpp_a60edd4c12d40f3b647091f3c8986aa90_cgraph" id="abirth-select-race_8cpp_a60edd4c12d40f3b647091f3c8986aa90_cgraph">
+<area shape="rect" title=" " alt="" coords="5,512,95,539"/>
+<area shape="rect" href="birth-util_8cpp.html#a11522f9d6a8d4dcb0c7ab5e512a56ce3" title=" " alt="" coords="154,132,274,159"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="557,512,611,539"/>
+<area shape="rect" href="birth-util_8cpp.html#ac653c0197e083ace688c790e576eae22" title="プレイヤー作成を中断して馬鹿馬鹿蛮怒を終了する" alt="" coords="177,487,251,513"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a5c7c12cf702e1bc749ec39735ef520a5" title=" " alt="" coords="152,537,276,564"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="375,588,437,615"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a00796fb43a4eafc3a85418928807b63f" title=" " alt="" coords="143,639,285,681"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="563,157,605,184"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#a053bb14d758ca1d9ea84fdedf7e6c01f" title="標準オプションを変更するコマンドのサブルーチン / Interact with some options" alt="" coords="333,284,479,311"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="538,56,630,83"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="537,5,631,32"/>
+<area shape="rect" href="birth-util_8cpp.html#a272bd84ea8cf1a4a13db4d37550aaf16" title="指定されたヘルプファイルを表示する / Show specific help file" alt="" coords="365,56,447,83"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="706,132,755,159"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="689,183,772,209"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="820,233,897,260"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="705,411,756,437"/>
+<area shape="rect" href="keymap-directory-getter_8cpp.html#aed8fd4908c74fd56c86969ecd593842c" title=" " alt="" coords="527,208,641,235"/>
+<area shape="rect" href="screen-processor_8cpp.html#acb7638639688bd542b5f6b541708c1f3" title=" " alt="" coords="537,259,631,285"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="565,461,603,488"/>
+<area shape="rect" href="show-file_8h.html#a5bd591d95db1838d6d72a17dfc76e98f" title=" " alt="" coords="547,107,621,133"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="553,309,615,336"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="543,411,625,437"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="385,487,427,513"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="368,537,444,564"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-race_8cpp_a60edd4c12d40f3b647091f3c8986aa90_icgraph.png" border="0" usemap="#abirth-select-race_8cpp_a60edd4c12d40f3b647091f3c8986aa90_icgraph" alt=""/></div>
+<map name="abirth-select-race_8cpp_a60edd4c12d40f3b647091f3c8986aa90_icgraph" id="abirth-select-race_8cpp_a60edd4c12d40f3b647091f3c8986aa90_icgraph">
+<area shape="rect" title=" " alt="" coords="589,5,679,32"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a6197d9114994dd0df968817ffb8f1c60" title="プレイヤーの種族選択を行う / Player race" alt="" coords="427,5,541,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#af9d355caae0e9b8701818a80cb9fd10f" title=" " alt="" coords="227,5,379,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="5,5,179,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a8f63e5df7e3fe44eb3aed708d89b5e75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f63e5df7e3fe44eb3aed708d89b5e75">&#9670;&nbsp;</a></span>p2</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char p2 = ')'</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分07秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

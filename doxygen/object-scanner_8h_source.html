@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/floor/object-scanner.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a620f8a6b723e397390ae5ca00f5aa8c.html">floor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">object-scanner.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="object-scanner_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tval-types_8h.html">object/tval-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="object-scanner_8h.html#aa6f0fcf5235014b19ea72a4ea695bc68">    9</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="object-scanner_8h.html#aa6f0fcf5235014b19ea72a4ea695bc68">scan_floor_mode</a> {</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="object-scanner_8h.html#aa6f0fcf5235014b19ea72a4ea695bc68ac32da4c2df4acdf38d70938a4a357ebd">   10</a></span>&#160;    <a class="code" href="object-scanner_8h.html#aa6f0fcf5235014b19ea72a4ea695bc68ac32da4c2df4acdf38d70938a4a357ebd">SCAN_FLOOR_ITEM_TESTER</a> = 1U &lt;&lt; 0, </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="object-scanner_8h.html#aa6f0fcf5235014b19ea72a4ea695bc68a5680b7ac3b623913714ba30a5e1b4201">   11</a></span>&#160;    <a class="code" href="object-scanner_8h.html#aa6f0fcf5235014b19ea72a4ea695bc68a5680b7ac3b623913714ba30a5e1b4201">SCAN_FLOOR_ONLY_MARKED</a> = 1U &lt;&lt; 1, </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="object-scanner_8h.html#aa6f0fcf5235014b19ea72a4ea695bc68ae4cb79586de4353689c478b8720f0e05">   12</a></span>&#160;    <a class="code" href="object-scanner_8h.html#aa6f0fcf5235014b19ea72a4ea695bc68ae4cb79586de4353689c478b8720f0e05">SCAN_FLOOR_AT_MOST_ONE</a> = 1U &lt;&lt; 2, </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;};</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<a class="code" href="h-type_8h.html#a64d1c0cbb82f223cd3ab16d119c71b59">ITEM_NUMBER</a> <a class="code" href="object-scanner_8h.html#a3880ccd016880c10b4d944e481f58d62">scan_floor_items</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="code" href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a> *items, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> mode, <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a> item_tester_tval);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<a class="code" href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a> <a class="code" href="object-scanner_8h.html#a83374b8cd7b99918a7f7d0dcd2b03489">show_floor_items</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <span class="keywordtype">int</span> target_item, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="code" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> *min_width, <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a> item_tester_tval);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a15cc25d6db15644573f14008c0a804eb"><div class="ttname"><a href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a></div><div class="ttdeci">int TERM_LEN</div><div class="ttdoc">コンソール表示座標の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:214</div></div>
+<div class="ttc" id="ah-type_8h_html_a30141f88547728df57f6a10c56fbeb8f"><div class="ttname"><a href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a></div><div class="ttdeci">s16b OBJECT_IDX</div><div class="ttdoc">ゲーム中のアイテムID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:121</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a64d1c0cbb82f223cd3ab16d119c71b59"><div class="ttname"><a href="h-type_8h.html#a64d1c0cbb82f223cd3ab16d119c71b59">ITEM_NUMBER</a></div><div class="ttdeci">s32b ITEM_NUMBER</div><div class="ttdoc">ゲーム中のアイテム数型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:158</div></div>
+<div class="ttc" id="ah-type_8h_html_a9760a9b50f8e3aeeb4b82d0dc9a81c33"><div class="ttname"><a href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a></div><div class="ttdeci">s16b COMMAND_CODE</div><div class="ttdoc">コマンド内容の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:210</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="aobject-scanner_8h_html_a3880ccd016880c10b4d944e481f58d62"><div class="ttname"><a href="object-scanner_8h.html#a3880ccd016880c10b4d944e481f58d62">scan_floor_items</a></div><div class="ttdeci">ITEM_NUMBER scan_floor_items(player_type *owner_ptr, OBJECT_IDX *items, POSITION y, POSITION x, BIT_FLAGS mode, tval_type item_tester_tval)</div><div class="ttdoc">床に落ちているオブジェクトの数を返す / scan floor items</div><div class="ttdef"><b>Definition:</b> object-scanner.cpp:30</div></div>
+<div class="ttc" id="aobject-scanner_8h_html_a83374b8cd7b99918a7f7d0dcd2b03489"><div class="ttname"><a href="object-scanner_8h.html#a83374b8cd7b99918a7f7d0dcd2b03489">show_floor_items</a></div><div class="ttdeci">COMMAND_CODE show_floor_items(player_type *owner_ptr, int target_item, POSITION y, POSITION x, TERM_LEN *min_width, tval_type item_tester_tval)</div><div class="ttdoc">床下に落ちているアイテムの一覧を返す / Display a list of the items on the floor at the given location.</div><div class="ttdef"><b>Definition:</b> object-scanner.cpp:95</div></div>
+<div class="ttc" id="aobject-scanner_8h_html_aa6f0fcf5235014b19ea72a4ea695bc68"><div class="ttname"><a href="object-scanner_8h.html#aa6f0fcf5235014b19ea72a4ea695bc68">scan_floor_mode</a></div><div class="ttdeci">scan_floor_mode</div><div class="ttdoc">scan_floor_items() の動作を指定するフラグたち。</div><div class="ttdef"><b>Definition:</b> object-scanner.h:9</div></div>
+<div class="ttc" id="aobject-scanner_8h_html_aa6f0fcf5235014b19ea72a4ea695bc68a5680b7ac3b623913714ba30a5e1b4201"><div class="ttname"><a href="object-scanner_8h.html#aa6f0fcf5235014b19ea72a4ea695bc68a5680b7ac3b623913714ba30a5e1b4201">SCAN_FLOOR_ONLY_MARKED</a></div><div class="ttdeci">@ SCAN_FLOOR_ONLY_MARKED</div><div class="ttdoc">マークされたアイテムのみを対象とする</div><div class="ttdef"><b>Definition:</b> object-scanner.h:11</div></div>
+<div class="ttc" id="aobject-scanner_8h_html_aa6f0fcf5235014b19ea72a4ea695bc68ac32da4c2df4acdf38d70938a4a357ebd"><div class="ttname"><a href="object-scanner_8h.html#aa6f0fcf5235014b19ea72a4ea695bc68ac32da4c2df4acdf38d70938a4a357ebd">SCAN_FLOOR_ITEM_TESTER</a></div><div class="ttdeci">@ SCAN_FLOOR_ITEM_TESTER</div><div class="ttdoc">item_tester_hook によるフィルタリングを適用する</div><div class="ttdef"><b>Definition:</b> object-scanner.h:10</div></div>
+<div class="ttc" id="aobject-scanner_8h_html_aa6f0fcf5235014b19ea72a4ea695bc68ae4cb79586de4353689c478b8720f0e05"><div class="ttname"><a href="object-scanner_8h.html#aa6f0fcf5235014b19ea72a4ea695bc68ae4cb79586de4353689c478b8720f0e05">SCAN_FLOOR_AT_MOST_ONE</a></div><div class="ttdeci">@ SCAN_FLOOR_AT_MOST_ONE</div><div class="ttdoc">高々1つのアイテムしか取得しない</div><div class="ttdef"><b>Definition:</b> object-scanner.h:12</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="atval-types_8h_html"><div class="ttname"><a href="tval-types_8h.html">tval-types.h</a></div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a></div><div class="ttdeci">tval_type</div><div class="ttdef"><b>Definition:</b> tval-types.h:17</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

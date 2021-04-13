@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/main-win.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">main-win.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Windows版固有実装(メインエントリポイント含む)  
+<a href="#details">[詳解]</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>Windows版固有実装(メインエントリポイント含む) </p>
+<dl class="section date"><dt>日付</dt><dd>2018/03/16 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hengband Team </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000074">todo:</a></b></dt><dd>main関数を含むファイルの割に長過ぎる。main-win-utils.cなどといった形で分割したい </dd></dl>
+<h3>概要</h3>
+<p>Windows98かその前後の頃を起点としたAPI実装。 各種のゲームエンジンは無論、 DirectXといった昨今描画に標準的となったライブラリも用いていない。 タイルの描画処理などについては、現在動作の詳細を検証中。</p>
+<h3>フォーク元の概要</h3>
+<p>Copyright (c) 1997 Ben Harrison, Skirmantas Kligys, and others</p>
+<p>This software may be copied and distributed for educational, research, and not for profit purposes provided that this copyright and statement are included in all such copies. </p>
+<p>This file helps Angband work with Windows computers.</p>
+<p>To use this file, use an appropriate "Makefile" or "Project File", make sure that "WINDOWS" and/or "WIN32" are defined somewhere, and make sure to obtain various extra files as described below.</p>
+<p>The official compilation uses the CodeWarrior Pro compiler, which includes a special project file and precompilable header file. </p>
+<p>The "lib/user/pref-win.prf" file contains keymaps, macro definitions, and/or color redefinitions. </p>
+<p>The "lib/user/font-win.prf" contains attr/char mappings for use with the normal "lib/xtra/font/*.fon" font files. </p>
+<p>The "lib/user/graf-win.prf" contains attr/char mappings for use with the special "lib/xtra/graf/*.bmp" bitmap files, which are activated by a menu item. </p>
+<p>Compiling this file, and using the resulting executable, requires several extra files not distributed with the standard Angband code. In any case, some "*.fon" files (including "8X13.FON" if nothing else) must be placed into "lib/xtra/font/". All of these extra files can be found in the "ext-win" archive. </p>
+<p>The "term_xtra_win_clear()" function should probably do a low-level clear of the current window, and redraw the borders and other things, if only for efficiency. </p>
+<p>A simpler method is needed for selecting the "tile size" for windows. </p>
+<p>The various "warning" messages assume the existance of the "screen.w" window, I think, and only a few calls actually check for its existance, this may be okay since "NULL" means "on top of all windows". (?) The user must never be allowed to "hide" the main window, or the "menubar" will disappear. </p>
+<p>Initial framework (and most code) by Ben Harrison (<a href="#" onclick="location.href='mai'+'lto:'+'ben'+'h@'+'phi'+'al'+'.co'+'m'; return false;">benh@<span style="display: none;">.nosp@m.</span>phia<span style="display: none;">.nosp@m.</span>l.com</a>).</p>
+<p>Original code by Skirmantas Kligys (<a href="#" onclick="location.href='mai'+'lto:'+'kli'+'gy'+'s@s'+'cf'+'.us'+'c.'+'edu'; return false;">kligy<span style="display: none;">.nosp@m.</span>s@sc<span style="display: none;">.nosp@m.</span>f.usc<span style="display: none;">.nosp@m.</span>.edu</a>).</p>
+<p>Additional code by Ross E Becker (<a href="#" onclick="location.href='mai'+'lto:'+'bec'+'ke'+'rr@'+'ci'+'s.o'+'hi'+'o-s'+'ta'+'te.'+'ed'+'u'; return false;">becke<span style="display: none;">.nosp@m.</span>rr@c<span style="display: none;">.nosp@m.</span>is.oh<span style="display: none;">.nosp@m.</span>io-s<span style="display: none;">.nosp@m.</span>tate.<span style="display: none;">.nosp@m.</span>edu</a>), and Chris R. Martin (<a href="#" onclick="location.href='mai'+'lto:'+'crm'+'74'+'79@'+'ta'+'m20'+'00'+'.ta'+'mu'+'.ed'+'u'; return false;">crm74<span style="display: none;">.nosp@m.</span>79@t<span style="display: none;">.nosp@m.</span>am200<span style="display: none;">.nosp@m.</span>0.ta<span style="display: none;">.nosp@m.</span>mu.ed<span style="display: none;">.nosp@m.</span>u</a>). </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分43秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

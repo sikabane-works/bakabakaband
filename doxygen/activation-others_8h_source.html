@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/object-activation/activation-others.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_184218ff5f1ccbad062c2879f7d0960f.html">object-activation</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">activation-others.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="activation-others_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a2dfaba4164bc5edd4fdeb4da68fdaaf3">activate_sunlight</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#ae25c36998aec0a13de46ed8a5dc6898a">activate_confusion</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#ad84ac4657250c6d76a78884befa7965d">activate_banish_evil</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#af39744866d6216c9da194c662604bb70">activate_scare</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a54348d20a769a722e4b26178ab920c8e">activate_aggravation</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> name);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#adda8a7c117f5be36c58eb2c19f6797f8">activate_stone_mud</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a318cab58d04b4ec73f9c109d33b1311f">activate_judgement</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> name);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#ac5dce449590d508e82d78218491a93af">activate_telekinesis</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> name);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a45786afbb26fa3410797d7e4d2f65f4a">activate_unique_detection</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#aaf589c93b230160aeb92af45f51e7b43">activate_dispel_curse</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> name);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a3b7ffc11065e75ac22c6c2adcda9f290">activate_cure_lw</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a42ed7012ce16db3e2e05111dbcb577d2">activate_grand_cross</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a3f520d2531c5cb360f4cacba49405d94">activate_call_chaos</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a73bd7d8510feb60946c788be255a7c61">activate_dispel_evil</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a340a522d81aad159dffbbbad16a2e3f5">activate_dispel_good</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a8126e318689e9238d8d6ad2cad60a786">activate_all_monsters_detection</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#adf4603d2d6a36df4b46bb4453d33be20">activate_all_detection</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#ad27eb98becbd76d05763f920768c14d7">activate_extra_detection</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#acc63e1e0052da01e246464353c716322">activate_fully_identification</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a9e937ae4c62ed8b69006d31b86c62cb3">activate_identification</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a69eef8e8d504b2d8f21e11dc07ed1224">activate_pesticide</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a24a19082312436186ac14be03944530f">activate_whirlwind</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#ac029480297725b0f503c12a3702a3ec0">activate_blinding_light</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> name);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a80e930fa6e69a82ab9af0e28ac09fc07">activate_sleep</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a2c329a26cc07683c9217c658db655fd1">activate_door_destroy</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a9b90dfddb03061f58f3689526fb96528">activate_earthquake</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a187ffe66dfe36a807335df2d8d0db57a">activate_recharge</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a4ff6d68a368bdc90062117e16cb079c7">activate_recharge_extra</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> name);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a40db7b0ca748e4633089ad50b822c5c1">activate_shikofumi</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a8ce30e01dd4005602326639b5e5a34f1">activate_terror</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a178848a723e30785785137bb002375d1">activate_map_light</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#ad733a9ea49b0fbd0d77da0a1ba142513">activate_exploding_rune</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a370b965b7b510398b11e0a7720fafcfe">activate_protection_rune</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a89ea553dd95a6d10b63fae68fcae9fd5">activate_light</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> name);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#ae4a988da470e3c12dea60d2c55ff517e">activate_recall</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a6091aad36902d33e3f199adbf26e1420">activate_tree_creation</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> name);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="activation-others_8h.html#a6f6ddd9f4eedd69de1762170558b57c7">activate_animate_dead</a>(<a class="code" href="structplayer__type.html">player_type</a> *user_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="ttc" id="aactivation-others_8h_html_a178848a723e30785785137bb002375d1"><div class="ttname"><a href="activation-others_8h.html#a178848a723e30785785137bb002375d1">activate_map_light</a></div><div class="ttdeci">bool activate_map_light(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:320</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a187ffe66dfe36a807335df2d8d0db57a"><div class="ttname"><a href="activation-others_8h.html#a187ffe66dfe36a807335df2d8d0db57a">activate_recharge</a></div><div class="ttdeci">bool activate_recharge(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:293</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a24a19082312436186ac14be03944530f"><div class="ttname"><a href="activation-others_8h.html#a24a19082312436186ac14be03944530f">activate_whirlwind</a></div><div class="ttdeci">bool activate_whirlwind(player_type *user_ptr)</div><div class="ttdoc">switch_activation() から個々のスペルへの依存性をなくすためのシンタックスシュガー</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:259</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a2c329a26cc07683c9217c658db655fd1"><div class="ttname"><a href="activation-others_8h.html#a2c329a26cc07683c9217c658db655fd1">activate_door_destroy</a></div><div class="ttdeci">bool activate_door_destroy(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:280</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a2dfaba4164bc5edd4fdeb4da68fdaaf3"><div class="ttname"><a href="activation-others_8h.html#a2dfaba4164bc5edd4fdeb4da68fdaaf3">activate_sunlight</a></div><div class="ttdeci">bool activate_sunlight(player_type *user_ptr)</div><div class="ttdoc">発動処理その他 (肥大化しがちなので適宜まとまりを別ファイルへ分割すること)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:49</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a318cab58d04b4ec73f9c109d33b1311f"><div class="ttname"><a href="activation-others_8h.html#a318cab58d04b4ec73f9c109d33b1311f">activate_judgement</a></div><div class="ttdeci">bool activate_judgement(player_type *user_ptr, concptr name)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:114</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a340a522d81aad159dffbbbad16a2e3f5"><div class="ttname"><a href="activation-others_8h.html#a340a522d81aad159dffbbbad16a2e3f5">activate_dispel_good</a></div><div class="ttdeci">bool activate_dispel_good(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:202</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a370b965b7b510398b11e0a7720fafcfe"><div class="ttname"><a href="activation-others_8h.html#a370b965b7b510398b11e0a7720fafcfe">activate_protection_rune</a></div><div class="ttdeci">bool activate_protection_rune(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:335</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a3b7ffc11065e75ac22c6c2adcda9f290"><div class="ttname"><a href="activation-others_8h.html#a3b7ffc11065e75ac22c6c2adcda9f290">activate_cure_lw</a></div><div class="ttdeci">bool activate_cure_lw(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:174</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a3f520d2531c5cb360f4cacba49405d94"><div class="ttname"><a href="activation-others_8h.html#a3f520d2531c5cb360f4cacba49405d94">activate_call_chaos</a></div><div class="ttdeci">bool activate_call_chaos(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:188</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a40db7b0ca748e4633089ad50b822c5c1"><div class="ttname"><a href="activation-others_8h.html#a40db7b0ca748e4633089ad50b822c5c1">activate_shikofumi</a></div><div class="ttdeci">bool activate_shikofumi(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:305</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a42ed7012ce16db3e2e05111dbcb577d2"><div class="ttname"><a href="activation-others_8h.html#a42ed7012ce16db3e2e05111dbcb577d2">activate_grand_cross</a></div><div class="ttdeci">bool activate_grand_cross(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:181</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a45786afbb26fa3410797d7e4d2f65f4a"><div class="ttname"><a href="activation-others_8h.html#a45786afbb26fa3410797d7e4d2f65f4a">activate_unique_detection</a></div><div class="ttdeci">bool activate_unique_detection(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:145</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a4ff6d68a368bdc90062117e16cb079c7"><div class="ttname"><a href="activation-others_8h.html#a4ff6d68a368bdc90062117e16cb079c7">activate_recharge_extra</a></div><div class="ttdeci">bool activate_recharge_extra(player_type *user_ptr, concptr name)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:299</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a54348d20a769a722e4b26178ab920c8e"><div class="ttname"><a href="activation-others_8h.html#a54348d20a769a722e4b26178ab920c8e">activate_aggravation</a></div><div class="ttdeci">bool activate_aggravation(player_type *user_ptr, object_type *o_ptr, concptr name)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:92</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a6091aad36902d33e3f199adbf26e1420"><div class="ttname"><a href="activation-others_8h.html#a6091aad36902d33e3f199adbf26e1420">activate_tree_creation</a></div><div class="ttdeci">bool activate_tree_creation(player_type *user_ptr, object_type *o_ptr, concptr name)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:355</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a69eef8e8d504b2d8f21e11dc07ed1224"><div class="ttname"><a href="activation-others_8h.html#a69eef8e8d504b2d8f21e11dc07ed1224">activate_pesticide</a></div><div class="ttdeci">bool activate_pesticide(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:247</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a6f6ddd9f4eedd69de1762170558b57c7"><div class="ttname"><a href="activation-others_8h.html#a6f6ddd9f4eedd69de1762170558b57c7">activate_animate_dead</a></div><div class="ttdeci">bool activate_animate_dead(player_type *user_ptr, object_type *o_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:361</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a73bd7d8510feb60946c788be255a7c61"><div class="ttname"><a href="activation-others_8h.html#a73bd7d8510feb60946c788be255a7c61">activate_dispel_evil</a></div><div class="ttdeci">bool activate_dispel_evil(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:195</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a80e930fa6e69a82ab9af0e28ac09fc07"><div class="ttname"><a href="activation-others_8h.html#a80e930fa6e69a82ab9af0e28ac09fc07">activate_sleep</a></div><div class="ttdeci">bool activate_sleep(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:273</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a8126e318689e9238d8d6ad2cad60a786"><div class="ttname"><a href="activation-others_8h.html#a8126e318689e9238d8d6ad2cad60a786">activate_all_monsters_detection</a></div><div class="ttdeci">bool activate_all_monsters_detection(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:209</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a89ea553dd95a6d10b63fae68fcae9fd5"><div class="ttname"><a href="activation-others_8h.html#a89ea553dd95a6d10b63fae68fcae9fd5">activate_light</a></div><div class="ttdeci">bool activate_light(player_type *user_ptr, concptr name)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:342</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a8ce30e01dd4005602326639b5e5a34f1"><div class="ttname"><a href="activation-others_8h.html#a8ce30e01dd4005602326639b5e5a34f1">activate_terror</a></div><div class="ttdeci">bool activate_terror(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:314</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a9b90dfddb03061f58f3689526fb96528"><div class="ttname"><a href="activation-others_8h.html#a9b90dfddb03061f58f3689526fb96528">activate_earthquake</a></div><div class="ttdeci">bool activate_earthquake(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:287</div></div>
+<div class="ttc" id="aactivation-others_8h_html_a9e937ae4c62ed8b69006d31b86c62cb3"><div class="ttname"><a href="activation-others_8h.html#a9e937ae4c62ed8b69006d31b86c62cb3">activate_identification</a></div><div class="ttdeci">bool activate_identification(player_type *user_ptr)</div><div class="ttdoc">switch_activation() から個々のスペルへの依存性をなくすためのシンタックスシュガー</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:245</div></div>
+<div class="ttc" id="aactivation-others_8h_html_aaf589c93b230160aeb92af45f51e7b43"><div class="ttname"><a href="activation-others_8h.html#aaf589c93b230160aeb92af45f51e7b43">activate_dispel_curse</a></div><div class="ttdeci">bool activate_dispel_curse(player_type *user_ptr, concptr name)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:166</div></div>
+<div class="ttc" id="aactivation-others_8h_html_ac029480297725b0f503c12a3702a3ec0"><div class="ttname"><a href="activation-others_8h.html#ac029480297725b0f503c12a3702a3ec0">activate_blinding_light</a></div><div class="ttdeci">bool activate_blinding_light(player_type *user_ptr, concptr name)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:265</div></div>
+<div class="ttc" id="aactivation-others_8h_html_ac5dce449590d508e82d78218491a93af"><div class="ttname"><a href="activation-others_8h.html#ac5dce449590d508e82d78218491a93af">activate_telekinesis</a></div><div class="ttdeci">bool activate_telekinesis(player_type *user_ptr, concptr name)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:134</div></div>
+<div class="ttc" id="aactivation-others_8h_html_acc63e1e0052da01e246464353c716322"><div class="ttname"><a href="activation-others_8h.html#acc63e1e0052da01e246464353c716322">activate_fully_identification</a></div><div class="ttdeci">bool activate_fully_identification(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:233</div></div>
+<div class="ttc" id="aactivation-others_8h_html_ad27eb98becbd76d05763f920768c14d7"><div class="ttname"><a href="activation-others_8h.html#ad27eb98becbd76d05763f920768c14d7">activate_extra_detection</a></div><div class="ttdeci">bool activate_extra_detection(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:224</div></div>
+<div class="ttc" id="aactivation-others_8h_html_ad733a9ea49b0fbd0d77da0a1ba142513"><div class="ttname"><a href="activation-others_8h.html#ad733a9ea49b0fbd0d77da0a1ba142513">activate_exploding_rune</a></div><div class="ttdeci">bool activate_exploding_rune(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:328</div></div>
+<div class="ttc" id="aactivation-others_8h_html_ad84ac4657250c6d76a78884befa7965d"><div class="ttname"><a href="activation-others_8h.html#ad84ac4657250c6d76a78884befa7965d">activate_banish_evil</a></div><div class="ttdeci">bool activate_banish_evil(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:71</div></div>
+<div class="ttc" id="aactivation-others_8h_html_adda8a7c117f5be36c58eb2c19f6797f8"><div class="ttname"><a href="activation-others_8h.html#adda8a7c117f5be36c58eb2c19f6797f8">activate_stone_mud</a></div><div class="ttdeci">bool activate_stone_mud(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:103</div></div>
+<div class="ttc" id="aactivation-others_8h_html_adf4603d2d6a36df4b46bb4453d33be20"><div class="ttname"><a href="activation-others_8h.html#adf4603d2d6a36df4b46bb4453d33be20">activate_all_detection</a></div><div class="ttdeci">bool activate_all_detection(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:216</div></div>
+<div class="ttc" id="aactivation-others_8h_html_ae25c36998aec0a13de46ed8a5dc6898a"><div class="ttname"><a href="activation-others_8h.html#ae25c36998aec0a13de46ed8a5dc6898a">activate_confusion</a></div><div class="ttdeci">bool activate_confusion(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:60</div></div>
+<div class="ttc" id="aactivation-others_8h_html_ae4a988da470e3c12dea60d2c55ff517e"><div class="ttname"><a href="activation-others_8h.html#ae4a988da470e3c12dea60d2c55ff517e">activate_recall</a></div><div class="ttdeci">bool activate_recall(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:349</div></div>
+<div class="ttc" id="aactivation-others_8h_html_af39744866d6216c9da194c662604bb70"><div class="ttname"><a href="activation-others_8h.html#af39744866d6216c9da194c662604bb70">activate_scare</a></div><div class="ttdeci">bool activate_scare(player_type *user_ptr)</div><div class="ttdef"><b>Definition:</b> activation-others.cpp:79</div></div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/monster-attack/monster-attack-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_11905a11fb100707d03e882653e10246.html">monster-attack</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">monster-attack-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="monster-attack-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-attack-effect_8h.html">monster-attack/monster-attack-effect.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-attack-types_8h.html">monster-attack/monster-attack-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-type-definition_8h.html">system/monster-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">/* MONster-Attack-Player、地図のMAPと紛らわしいのでmonapとした */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structmonap__type.html">    9</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmonap__type.html">monap_type</a> {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifdef JP</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">int</span> abbreviate; <span class="comment">// 2回目以降の省略表現フラグ.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structmonap__type.html#a99bc121f10b9c46af6ecef5cc23bb305">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> <a class="code" href="structmonap__type.html#a99bc121f10b9c46af6ecef5cc23bb305">m_idx</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structmonap__type.html#a4b47e289f776ee249a6ee1c1d362fc63">   14</a></span>&#160;    <a class="code" href="structmonster__type.html">monster_type</a> *<a class="code" href="structmonap__type.html#a4b47e289f776ee249a6ee1c1d362fc63">m_ptr</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structmonap__type.html#a376867f37d68cf6bb4749ad4883593ce">   15</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structmonap__type.html#a376867f37d68cf6bb4749ad4883593ce">act</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structmonap__type.html#ac03ccc312a7a02df927d48ad3edccfde">   16</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmonap__type.html#ac03ccc312a7a02df927d48ad3edccfde">do_cut</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structmonap__type.html#a16b04ba8fd2990c8f8ed7d4d3c6e2ace">   17</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmonap__type.html#a16b04ba8fd2990c8f8ed7d4d3c6e2ace">do_stun</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structmonap__type.html#a7cc1f206311cc24552f66f99d690d56f">   18</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmonap__type.html#a7cc1f206311cc24552f66f99d690d56f">touched</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structmonap__type.html#a831c5eb333dd7580d4f0a4a7a87d9ef5">   19</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803">rbm_type</a> <a class="code" href="structmonap__type.html#a831c5eb333dd7580d4f0a4a7a87d9ef5">method</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structmonap__type.html#a380323d0311d7cd9f1d2a462130ff274">   20</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmonap__type.html#a380323d0311d7cd9f1d2a462130ff274">explode</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structmonap__type.html#abedcb5ca0e2a2f0ce7c8663677621f39">   21</a></span>&#160;    <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> <a class="code" href="structmonap__type.html#abedcb5ca0e2a2f0ce7c8663677621f39">rlev</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structmonap__type.html#ab0bdb872903f6b20086cec2833506fca">   22</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structmonap__type.html#ab0bdb872903f6b20086cec2833506fca">m_name</a>[<a class="code" href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a>];</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structmonap__type.html#ab176d84fa1ccfe2a67ec63961d5eb9d2">   23</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmonap__type.html#ab176d84fa1ccfe2a67ec63961d5eb9d2">do_silly_attack</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structmonap__type.html#a19504905ce9821fb416d30e4bde5b5b6">   24</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmonap__type.html#a19504905ce9821fb416d30e4bde5b5b6">d_dice</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structmonap__type.html#a53a14856adc73bdea5526f4c8f0c7753">   25</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmonap__type.html#a53a14856adc73bdea5526f4c8f0c7753">d_side</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structmonap__type.html#a49e4474b63d6217a49e1f9b6eeec4cf5">   26</a></span>&#160;    <a class="code" href="structobject__type.html">object_type</a> *<a class="code" href="structmonap__type.html#a49e4474b63d6217a49e1f9b6eeec4cf5">o_ptr</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structmonap__type.html#a3ad40941b109d757510d4ae4ec166470">   27</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmonap__type.html#a3ad40941b109d757510d4ae4ec166470">obvious</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structmonap__type.html#aa72e2d95973380ab49c330cbe871a048">   28</a></span>&#160;    <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="structmonap__type.html#aa72e2d95973380ab49c330cbe871a048">damage</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structmonap__type.html#aff7ec232f889d02e9e68e4a181c0ad8d">   29</a></span>&#160;    <a class="code" href="monster-attack-effect_8h.html#a8a4aff73f821ef61faba1c4afd2e3429">rbe_type</a> <a class="code" href="structmonap__type.html#aff7ec232f889d02e9e68e4a181c0ad8d">effect</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structmonap__type.html#adbb9f39844e445806b5616feba209ee5">   30</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmonap__type.html#adbb9f39844e445806b5616feba209ee5">blinked</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structmonap__type.html#aefa27553e53880d0053ae30808acfa8d">   31</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structmonap__type.html#aefa27553e53880d0053ae30808acfa8d">o_name</a>[<a class="code" href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a>];</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structmonap__type.html#a2fa92c145260cf0b523cc49d9c3ae83e">   32</a></span>&#160;    <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="structmonap__type.html#a2fa92c145260cf0b523cc49d9c3ae83e">get_damage</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structmonap__type.html#a371cbfbbfdcd8b9bdf97ac2ceb88ff36">   33</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structmonap__type.html#a371cbfbbfdcd8b9bdf97ac2ceb88ff36">ddesc</a>[<a class="code" href="h-type_8h.html#a9506f57397c70d5bb3b8e3a56cbe8b35">MAX_MONSTER_NAME</a>];</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structmonap__type.html#ac12461ef37c840dc59e1938ad427c289">   34</a></span>&#160;    <a class="code" href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a> <a class="code" href="structmonap__type.html#ac12461ef37c840dc59e1938ad427c289">ac</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structmonap__type.html#a9aa4fbaf9c4ff56ba6b15d13bb55ade3">   35</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmonap__type.html#a9aa4fbaf9c4ff56ba6b15d13bb55ade3">alive</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structmonap__type.html#ab4ce030c7d8b1e2436a4e15996b9e9fa">   36</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmonap__type.html#ab4ce030c7d8b1e2436a4e15996b9e9fa">fear</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="monster-attack-util_8h.html#a8e794499c007bc44e64910214dc1e8d2">   37</a></span>&#160;} <a class="code" href="monster-attack-util_8h.html#a8e794499c007bc44e64910214dc1e8d2">monap_type</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<a class="code" href="structmonap__type.html">monap_type</a> *<a class="code" href="monster-attack-util_8h.html#a59508c743e68583917ab26839b05d039">initialize_monap_type</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmonap__type.html">monap_type</a> *monap_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a1c8b80a20fb5396ff07a523b01112c47"><div class="ttname"><a href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a></div><div class="ttdeci">s32b DEPTH</div><div class="ttdoc">ゲーム中の階層レベルの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:194</div></div>
+<div class="ttc" id="ah-type_8h_html_a220932af45570eca82fbc85454205983"><div class="ttname"><a href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a></div><div class="ttdeci">s16b ARMOUR_CLASS</div><div class="ttdoc">ゲーム中の行動アーマークラス型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:161</div></div>
+<div class="ttc" id="ah-type_8h_html_a709af41498f5625eae9f3b73fb6b6f3c"><div class="ttname"><a href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a></div><div class="ttdeci">#define MAX_NLEN</div><div class="ttdoc">Maximum length of object's name</div><div class="ttdef"><b>Definition:</b> h-type.h:58</div></div>
+<div class="ttc" id="ah-type_8h_html_a9506f57397c70d5bb3b8e3a56cbe8b35"><div class="ttname"><a href="h-type_8h.html#a9506f57397c70d5bb3b8e3a56cbe8b35">MAX_MONSTER_NAME</a></div><div class="ttdeci">#define MAX_MONSTER_NAME</div><div class="ttdoc">モンスター名称の最大バイト数 / Max characters of monster's name</div><div class="ttdef"><b>Definition:</b> h-type.h:59</div></div>
+<div class="ttc" id="ah-type_8h_html_ac67a750044882c0fd3760a2eccd56d7c"><div class="ttname"><a href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a></div><div class="ttdeci">char GAME_TEXT</div><div class="ttdoc">ゲーム中のテキスト型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:133</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="ah-type_8h_html_afdb20155266ee801610f13b1589a3df3"><div class="ttname"><a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></div><div class="ttdeci">s32b HIT_POINT</div><div class="ttdoc">HPとその増減量の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:141</div></div>
+<div class="ttc" id="amonster-attack-effect_8h_html"><div class="ttname"><a href="monster-attack-effect_8h.html">monster-attack-effect.h</a></div></div>
+<div class="ttc" id="amonster-attack-effect_8h_html_a8a4aff73f821ef61faba1c4afd2e3429"><div class="ttname"><a href="monster-attack-effect_8h.html#a8a4aff73f821ef61faba1c4afd2e3429">rbe_type</a></div><div class="ttdeci">rbe_type</div><div class="ttdef"><b>Definition:</b> monster-attack-effect.h:9</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html"><div class="ttname"><a href="monster-attack-types_8h.html">monster-attack-types.h</a></div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803">rbm_type</a></div><div class="ttdeci">rbm_type</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:13</div></div>
+<div class="ttc" id="amonster-attack-util_8h_html_a59508c743e68583917ab26839b05d039"><div class="ttname"><a href="monster-attack-util_8h.html#a59508c743e68583917ab26839b05d039">initialize_monap_type</a></div><div class="ttdeci">monap_type * initialize_monap_type(player_type *target_ptr, monap_type *monap_ptr, MONSTER_IDX m_idx)</div><div class="ttdoc">モンスターがプレーヤーへ攻撃する処理に関するユーティリティ</div><div class="ttdef"><b>Definition:</b> monster-attack-util.cpp:10</div></div>
+<div class="ttc" id="amonster-attack-util_8h_html_a8e794499c007bc44e64910214dc1e8d2"><div class="ttname"><a href="monster-attack-util_8h.html#a8e794499c007bc44e64910214dc1e8d2">monap_type</a></div><div class="ttdeci">struct monap_type monap_type</div></div>
+<div class="ttc" id="amonster-type-definition_8h_html"><div class="ttname"><a href="monster-type-definition_8h.html">monster-type-definition.h</a></div></div>
+<div class="ttc" id="astructmonap__type_html"><div class="ttname"><a href="structmonap__type.html">monap_type</a></div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:9</div></div>
+<div class="ttc" id="astructmonap__type_html_a16b04ba8fd2990c8f8ed7d4d3c6e2ace"><div class="ttname"><a href="structmonap__type.html#a16b04ba8fd2990c8f8ed7d4d3c6e2ace">monap_type::do_stun</a></div><div class="ttdeci">int do_stun</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:17</div></div>
+<div class="ttc" id="astructmonap__type_html_a19504905ce9821fb416d30e4bde5b5b6"><div class="ttname"><a href="structmonap__type.html#a19504905ce9821fb416d30e4bde5b5b6">monap_type::d_dice</a></div><div class="ttdeci">int d_dice</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:24</div></div>
+<div class="ttc" id="astructmonap__type_html_a2fa92c145260cf0b523cc49d9c3ae83e"><div class="ttname"><a href="structmonap__type.html#a2fa92c145260cf0b523cc49d9c3ae83e">monap_type::get_damage</a></div><div class="ttdeci">HIT_POINT get_damage</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:32</div></div>
+<div class="ttc" id="astructmonap__type_html_a371cbfbbfdcd8b9bdf97ac2ceb88ff36"><div class="ttname"><a href="structmonap__type.html#a371cbfbbfdcd8b9bdf97ac2ceb88ff36">monap_type::ddesc</a></div><div class="ttdeci">GAME_TEXT ddesc[MAX_MONSTER_NAME]</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:33</div></div>
+<div class="ttc" id="astructmonap__type_html_a376867f37d68cf6bb4749ad4883593ce"><div class="ttname"><a href="structmonap__type.html#a376867f37d68cf6bb4749ad4883593ce">monap_type::act</a></div><div class="ttdeci">concptr act</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:15</div></div>
+<div class="ttc" id="astructmonap__type_html_a380323d0311d7cd9f1d2a462130ff274"><div class="ttname"><a href="structmonap__type.html#a380323d0311d7cd9f1d2a462130ff274">monap_type::explode</a></div><div class="ttdeci">bool explode</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:20</div></div>
+<div class="ttc" id="astructmonap__type_html_a3ad40941b109d757510d4ae4ec166470"><div class="ttname"><a href="structmonap__type.html#a3ad40941b109d757510d4ae4ec166470">monap_type::obvious</a></div><div class="ttdeci">bool obvious</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:27</div></div>
+<div class="ttc" id="astructmonap__type_html_a49e4474b63d6217a49e1f9b6eeec4cf5"><div class="ttname"><a href="structmonap__type.html#a49e4474b63d6217a49e1f9b6eeec4cf5">monap_type::o_ptr</a></div><div class="ttdeci">object_type * o_ptr</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:26</div></div>
+<div class="ttc" id="astructmonap__type_html_a4b47e289f776ee249a6ee1c1d362fc63"><div class="ttname"><a href="structmonap__type.html#a4b47e289f776ee249a6ee1c1d362fc63">monap_type::m_ptr</a></div><div class="ttdeci">monster_type * m_ptr</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:14</div></div>
+<div class="ttc" id="astructmonap__type_html_a53a14856adc73bdea5526f4c8f0c7753"><div class="ttname"><a href="structmonap__type.html#a53a14856adc73bdea5526f4c8f0c7753">monap_type::d_side</a></div><div class="ttdeci">int d_side</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:25</div></div>
+<div class="ttc" id="astructmonap__type_html_a7cc1f206311cc24552f66f99d690d56f"><div class="ttname"><a href="structmonap__type.html#a7cc1f206311cc24552f66f99d690d56f">monap_type::touched</a></div><div class="ttdeci">bool touched</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:18</div></div>
+<div class="ttc" id="astructmonap__type_html_a831c5eb333dd7580d4f0a4a7a87d9ef5"><div class="ttname"><a href="structmonap__type.html#a831c5eb333dd7580d4f0a4a7a87d9ef5">monap_type::method</a></div><div class="ttdeci">rbm_type method</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:19</div></div>
+<div class="ttc" id="astructmonap__type_html_a99bc121f10b9c46af6ecef5cc23bb305"><div class="ttname"><a href="structmonap__type.html#a99bc121f10b9c46af6ecef5cc23bb305">monap_type::m_idx</a></div><div class="ttdeci">MONSTER_IDX m_idx</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:13</div></div>
+<div class="ttc" id="astructmonap__type_html_a9aa4fbaf9c4ff56ba6b15d13bb55ade3"><div class="ttname"><a href="structmonap__type.html#a9aa4fbaf9c4ff56ba6b15d13bb55ade3">monap_type::alive</a></div><div class="ttdeci">bool alive</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:35</div></div>
+<div class="ttc" id="astructmonap__type_html_aa72e2d95973380ab49c330cbe871a048"><div class="ttname"><a href="structmonap__type.html#aa72e2d95973380ab49c330cbe871a048">monap_type::damage</a></div><div class="ttdeci">HIT_POINT damage</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:28</div></div>
+<div class="ttc" id="astructmonap__type_html_ab0bdb872903f6b20086cec2833506fca"><div class="ttname"><a href="structmonap__type.html#ab0bdb872903f6b20086cec2833506fca">monap_type::m_name</a></div><div class="ttdeci">GAME_TEXT m_name[MAX_NLEN]</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:22</div></div>
+<div class="ttc" id="astructmonap__type_html_ab176d84fa1ccfe2a67ec63961d5eb9d2"><div class="ttname"><a href="structmonap__type.html#ab176d84fa1ccfe2a67ec63961d5eb9d2">monap_type::do_silly_attack</a></div><div class="ttdeci">bool do_silly_attack</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:23</div></div>
+<div class="ttc" id="astructmonap__type_html_ab4ce030c7d8b1e2436a4e15996b9e9fa"><div class="ttname"><a href="structmonap__type.html#ab4ce030c7d8b1e2436a4e15996b9e9fa">monap_type::fear</a></div><div class="ttdeci">bool fear</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:36</div></div>
+<div class="ttc" id="astructmonap__type_html_abedcb5ca0e2a2f0ce7c8663677621f39"><div class="ttname"><a href="structmonap__type.html#abedcb5ca0e2a2f0ce7c8663677621f39">monap_type::rlev</a></div><div class="ttdeci">DEPTH rlev</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:21</div></div>
+<div class="ttc" id="astructmonap__type_html_ac03ccc312a7a02df927d48ad3edccfde"><div class="ttname"><a href="structmonap__type.html#ac03ccc312a7a02df927d48ad3edccfde">monap_type::do_cut</a></div><div class="ttdeci">int do_cut</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:16</div></div>
+<div class="ttc" id="astructmonap__type_html_ac12461ef37c840dc59e1938ad427c289"><div class="ttname"><a href="structmonap__type.html#ac12461ef37c840dc59e1938ad427c289">monap_type::ac</a></div><div class="ttdeci">ARMOUR_CLASS ac</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:34</div></div>
+<div class="ttc" id="astructmonap__type_html_adbb9f39844e445806b5616feba209ee5"><div class="ttname"><a href="structmonap__type.html#adbb9f39844e445806b5616feba209ee5">monap_type::blinked</a></div><div class="ttdeci">bool blinked</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:30</div></div>
+<div class="ttc" id="astructmonap__type_html_aefa27553e53880d0053ae30808acfa8d"><div class="ttname"><a href="structmonap__type.html#aefa27553e53880d0053ae30808acfa8d">monap_type::o_name</a></div><div class="ttdeci">GAME_TEXT o_name[MAX_NLEN]</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:31</div></div>
+<div class="ttc" id="astructmonap__type_html_aff7ec232f889d02e9e68e4a181c0ad8d"><div class="ttname"><a href="structmonap__type.html#aff7ec232f889d02e9e68e4a181c0ad8d">monap_type::effect</a></div><div class="ttdeci">rbe_type effect</div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:29</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

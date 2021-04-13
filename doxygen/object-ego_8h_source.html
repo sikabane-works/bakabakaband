@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/object-enchant/object-ego.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7478db7a13e5bc43b9c00ed0e2222476.html">object-enchant</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">object-ego.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="object-ego_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tr-types_8h.html">object-enchant/tr-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="trg-types_8h.html">object-enchant/trg-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="object-type-definition_8h.html">system/object-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="flag-group_8h.html">util/flag-group.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/* Body Armor */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="object-ego_8h.html#acf97d0b31027bee3ed0702ac37aff1df">   14</a></span>&#160;<span class="preprocessor">#define EGO_A_MORGUL            4</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a4600cc689044afb809728086f507fe73">   15</a></span>&#160;<span class="preprocessor">#define EGO_A_DEMON             5</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a16b398be48d5eff6c9a5622e7f117228">   16</a></span>&#160;<span class="preprocessor">#define EGO_DRUID               6</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a18f9d787141f4a24a4340f50734b6703">   17</a></span>&#160;<span class="preprocessor">#define EGO_OLOG                7</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a7a10886d1ae3ac1f714e330a47e73ead">   18</a></span>&#160;<span class="preprocessor">#define EGO_RESISTANCE          8</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a96aad03922182b551eee6893348dedf6">   19</a></span>&#160;<span class="preprocessor">#define EGO_ELVENKIND           9</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="object-ego_8h.html#abd312242ad604f7b6382a39e9c617c7f">   20</a></span>&#160;<span class="preprocessor">#define EGO_DWARVEN             10</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a2a6092e1ebe4716127140612b4884064">   21</a></span>&#160;<span class="preprocessor">#define EGO_PERMANENCE          11</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a993e9bcb6e730cf03279f005d0c396f0">   22</a></span>&#160;<span class="preprocessor">#define EGO_YOIYAMI             12</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ae9cdba289a6ec68386e6d59d271890d1">   23</a></span>&#160;<span class="preprocessor">#define EGO_URUKISH             13</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/* Shields */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a6d9687b6830be1a006d1a3de184dc41d">   26</a></span>&#160;<span class="preprocessor">#define EGO_ENDURE_ACID         16</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a60bc75facd8656622fddf22949c16b8d">   27</a></span>&#160;<span class="preprocessor">#define EGO_ENDURE_ELEC         17</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ae77d8b95d72e49454aabc2839128ccad">   28</a></span>&#160;<span class="preprocessor">#define EGO_ENDURE_FIRE         18</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a0fddf79b91f5aed884d59131d4b87dbb">   29</a></span>&#160;<span class="preprocessor">#define EGO_ENDURE_COLD         19</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a8470897d4da6e72ac300e9c85d58b837">   30</a></span>&#160;<span class="preprocessor">#define EGO_ENDURANCE           20</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a76176f6673f66f76b9654b9910d10bd1">   31</a></span>&#160;<span class="preprocessor">#define EGO_REFLECTION          21</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a0f0d8572a9a36c9a25151807b7631f68">   32</a></span>&#160;<span class="preprocessor">#define EGO_NIGHT_DAY           22</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a466b2bdb030b049f0d4e15a48d7203d3">   33</a></span>&#160;<span class="preprocessor">#define EGO_S_PROTECTION        238</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a65ce89e46f21e0185ad0f18d0eeaed1a">   34</a></span>&#160;<span class="preprocessor">#define EGO_S_DWARVEN           239</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/* Crowns and Helms */</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a2a4abd02e676080200ec732bb71517e4">   37</a></span>&#160;<span class="preprocessor">#define EGO_DARK                23</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="object-ego_8h.html#aca725d31eaac34b97a40efe16c79acfe">   38</a></span>&#160;<span class="preprocessor">#define EGO_BRILLIANCE          24</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a8973b338885cd2d62067fbdcf0f4ede6">   39</a></span>&#160;<span class="preprocessor">#define EGO_H_PROTECTION        25</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="object-ego_8h.html#af22f542a45a3acb3e0f6b8493b58e2c6">   40</a></span>&#160;<span class="preprocessor">#define EGO_H_DEMON             26</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a0070bd6f4044dffcf16ea4fb4b98ccba">   41</a></span>&#160;<span class="preprocessor">#define EGO_MAGI                27</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="object-ego_8h.html#aff43a2556629dc550f59507032138aa5">   42</a></span>&#160;<span class="preprocessor">#define EGO_MIGHT               28</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a91300b876be5269e1fc5ff8ebd8d7079">   43</a></span>&#160;<span class="preprocessor">#define EGO_LORDLINESS          29</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a86a3c6ffbbdb19cc25fd09f1f5334c23">   44</a></span>&#160;<span class="preprocessor">#define EGO_SEEING              30</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ab9a21bcbc30b37784df298ef8ee970e1">   45</a></span>&#160;<span class="preprocessor">#define EGO_INFRAVISION         31</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="object-ego_8h.html#aea349ae650c0621634f784592ad93402">   46</a></span>&#160;<span class="preprocessor">#define EGO_LITE                32</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a7aee36b31f98c831122aa6645405ff9f">   47</a></span>&#160;<span class="preprocessor">#define EGO_TELEPATHY           33</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a2a926e96bd5d0dcbc6d3b1759a0ffbb5">   48</a></span>&#160;<span class="preprocessor">#define EGO_REGENERATION        34</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a3c53bc6028345cba1fcac768699762b7">   49</a></span>&#160;<span class="preprocessor">#define EGO_TELEPORTATION       35</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ac5b08229a6a9c1d90ea34003ae62dd40">   50</a></span>&#160;<span class="preprocessor">#define EGO_FOOL                36</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ab077b187dc41a3c1457f56c460f654c3">   51</a></span>&#160;<span class="preprocessor">#define EGO_BASILISK            37</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="object-ego_8h.html#acf537445ec864b8c9af544499055d350">   52</a></span>&#160;<span class="preprocessor">#define EGO_ANCIENT_CURSE       38</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a9f9d532744bf46d0e38062b2c39f47d3">   53</a></span>&#160;<span class="preprocessor">#define EGO_SICKLINESS          39</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/* Cloaks */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="object-ego_8h.html#aa34d11417ef4e679cbc7de0cd679f223">   56</a></span>&#160;<span class="preprocessor">#define EGO_PROTECTION          40</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a48b3883fd808ca092d9fbae20075e897">   57</a></span>&#160;<span class="preprocessor">#define EGO_STEALTH             41</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="object-ego_8h.html#afa75083ba7e6aedbf6814ce5583f529c">   58</a></span>&#160;<span class="preprocessor">#define EGO_AMAN                42</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a617b071c14ebb3edc5d4603fdb433d64">   59</a></span>&#160;<span class="preprocessor">#define EGO_AURA_FIRE           43</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a2ba2621e2a6f2c3f17debadc5d5f8c04">   60</a></span>&#160;<span class="preprocessor">#define EGO_ENVELOPING          44</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a906e5810e7d388034013a71a843ca2f3">   61</a></span>&#160;<span class="preprocessor">#define EGO_VULNERABILITY       45</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="object-ego_8h.html#af824299640c19e6987bf2f0ae487b1b8">   62</a></span>&#160;<span class="preprocessor">#define EGO_IRRITATION          46</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a38202a156394b709d249bf463bba395a">   63</a></span>&#160;<span class="preprocessor">#define EGO_AURA_ELEC           47</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ae5627de04ebfef36103f44ec1d381322">   64</a></span>&#160;<span class="preprocessor">#define EGO_AURA_COLD          128</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a07c844050a58490de573a0309aa003aa">   65</a></span>&#160;<span class="preprocessor">#define EGO_BAT                129</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a516b5325dfbe825b5a7fbb79fa98932e">   66</a></span>&#160;<span class="preprocessor">#define EGO_NAZGUL             240</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/* Gloves */</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a46f0da14411b8b13c653ac9e3ca81303">   69</a></span>&#160;<span class="preprocessor">#define EGO_FREE_ACTION         48</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="object-ego_8h.html#aac570cd854f431ae4898b49a728e6f93">   70</a></span>&#160;<span class="preprocessor">#define EGO_SLAYING             49</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a24c1a75016dedf25dce7b03806562d10">   71</a></span>&#160;<span class="preprocessor">#define EGO_AGILITY             50</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="object-ego_8h.html#aeb3e743e6eb4179749b013d028189d54">   72</a></span>&#160;<span class="preprocessor">#define EGO_POWER               51</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="object-ego_8h.html#adedb1602e312ee7a4589e842ac99120a">   73</a></span>&#160;<span class="preprocessor">#define EGO_2WEAPON             52</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ae7212fab40d4b3ca9ed3ed385c639181">   74</a></span>&#160;<span class="preprocessor">#define EGO_MAGIC_MASTERY       53</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a055239970da71a737337b93f58add984">   75</a></span>&#160;<span class="preprocessor">#define EGO_WEAKNESS            54</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a2f7a45c1f6b51f445365154d52a06e9b">   76</a></span>&#160;<span class="preprocessor">#define EGO_CLUMSINESS          55</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">/* Boots */</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="object-ego_8h.html#af050e995104581f19c8c78ae63cf19fd">   79</a></span>&#160;<span class="preprocessor">#define EGO_SLOW_DESCENT        56</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a45d164f987b13c886879e9bcde43f452">   80</a></span>&#160;<span class="preprocessor">#define EGO_QUIET               57</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a275e25846e8f741b5ed3d5b7bcdd56f8">   81</a></span>&#160;<span class="preprocessor">#define EGO_MOTION              58</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a07c740e1176367b9076ce87f22f25713">   82</a></span>&#160;<span class="preprocessor">#define EGO_SPEED               59</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ac9589cf689e934c5391f44f446240d67">   83</a></span>&#160;<span class="preprocessor">#define EGO_JUMP                60</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ae16d34602a60666d9aa7167886295005">   84</a></span>&#160;<span class="preprocessor">#define EGO_NOISE               61</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="object-ego_8h.html#afbbc0969e84bae671e690d674109735c">   85</a></span>&#160;<span class="preprocessor">#define EGO_SLOWNESS            62</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a3256e49603a2adcd2df84657067f6ae6">   86</a></span>&#160;<span class="preprocessor">#define EGO_ANNOYANCE           63</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">/* Weapons */</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a43cf4a2a64710f41e6caea381816213d">   89</a></span>&#160;<span class="preprocessor">#define EGO_HA                  64</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a0972cf51cbb533223d83fd46d1746bf5">   90</a></span>&#160;<span class="preprocessor">#define EGO_DF                  65</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a5b892555bd8625244efa512fe648c800">   91</a></span>&#160;<span class="preprocessor">#define EGO_BLESS_BLADE         66</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="object-ego_8h.html#aa575c073532962f6c7d1c198b8e17770">   92</a></span>&#160;<span class="preprocessor">#define EGO_WEST                68</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a2f181347acd5ae8506b4a47af702c5e7">   93</a></span>&#160;<span class="preprocessor">#define EGO_ATTACKS             69</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a80557d8ee5288d9cfe3e5fd17d779989">   94</a></span>&#160;<span class="preprocessor">#define EGO_SLAYING_WEAPON      70</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ae8bcbbeb71ca08e47146f836a205e90d">   95</a></span>&#160;<span class="preprocessor">#define EGO_FORCE_WEAPON        71</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a81dde208ea0cab5817695ed2b330f69f">   96</a></span>&#160;<span class="preprocessor">#define EGO_BRAND_ACID          72</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a743002699d1b80f6cdecc391a2bd9668">   97</a></span>&#160;<span class="preprocessor">#define EGO_BRAND_ELEC          73</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a625a8ad87475fc2474b77350990e23f1">   98</a></span>&#160;<span class="preprocessor">#define EGO_BRAND_FIRE          74</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a7025048eff00aa47b086b6d821b60e3c">   99</a></span>&#160;<span class="preprocessor">#define EGO_BRAND_COLD          75</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a8c014e937736958424a98639bf97b683">  100</a></span>&#160;<span class="preprocessor">#define EGO_BRAND_POIS          76</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a88f4b33152c1953981030320b6c6f198">  101</a></span>&#160;<span class="preprocessor">#define EGO_CHAOTIC             77</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a93b71307000e3ab2f0a577abf347f4ef">  102</a></span>&#160;<span class="preprocessor">#define EGO_SHARPNESS           78</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a3b3e77d39db5dec7f604849ef1de9a76">  103</a></span>&#160;<span class="preprocessor">#define EGO_EARTHQUAKES         79</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a9d44363aa9da6af5f95c1dce21feb7f7">  104</a></span>&#160;<span class="preprocessor">#define EGO_WEIRD               87</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a1a9dc801dae5147199ae50122384050e">  105</a></span>&#160;<span class="preprocessor">#define EGO_KILL_ANIMAL         88</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a5ec1f6e7dfcd3aa22a534a6ea4259bdf">  106</a></span>&#160;<span class="preprocessor">#define EGO_KILL_EVIL           89</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a3d773ec429271413a184a83523c9df92">  107</a></span>&#160;<span class="preprocessor">#define EGO_KILL_UNDEAD         90</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a4855b6cf3753255982e6706da1198fd1">  108</a></span>&#160;<span class="preprocessor">#define EGO_KILL_DEMON          91</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a34d34b8b1a4f1e131519423065e579db">  109</a></span>&#160;<span class="preprocessor">#define EGO_KILL_ORC            92</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a31d704d16c1b65111088478df3b7a5a8">  110</a></span>&#160;<span class="preprocessor">#define EGO_KILL_TROLL          93</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a4295c738a533b39a05b6a86184a84b13">  111</a></span>&#160;<span class="preprocessor">#define EGO_KILL_GIANT          94</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="object-ego_8h.html#aee8cc184f08285c708feb20a442e2cb8">  112</a></span>&#160;<span class="preprocessor">#define EGO_KILL_DRAGON         95</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a869650c34a3756b1814242a1deb11707">  113</a></span>&#160;<span class="preprocessor">#define EGO_VAMPIRIC            96</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a771364d1d956eeec9849642f51a3c6eb">  114</a></span>&#160;<span class="preprocessor">#define EGO_PRISM               97</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a166b43e9c936243e8e28e0bb5eb560f8">  115</a></span>&#160;<span class="preprocessor">#define EGO_TRUMP               98</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="object-ego_8h.html#aba87c128b4ec0f8d8d731e0e86c61f54">  116</a></span>&#160;<span class="preprocessor">#define EGO_PATTERN             99</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="object-ego_8h.html#acbe38395b739fa9dc004f5606b7b464c">  117</a></span>&#160;<span class="preprocessor">#define EGO_DIGGING             100</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="object-ego_8h.html#af349b447ea4b174883fde8e734093433">  118</a></span>&#160;<span class="preprocessor">#define EGO_DEMON               101</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a9317cd81eba3e42957d291b14c5ce6f8">  119</a></span>&#160;<span class="preprocessor">#define EGO_MORGUL              102</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ad17b8783fbe0fd46b733d71ca7d71f63">  120</a></span>&#160;<span class="preprocessor">#define EGO_KILL_HUMAN          103</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">/* Bows */</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a6c4d1684b1c84399fea25836ff822772">  123</a></span>&#160;<span class="preprocessor">#define EGO_ACCURACY            104</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a013adf6c21c2fc8cb26fbc1caab9116c">  124</a></span>&#160;<span class="preprocessor">#define EGO_VELOCITY            105</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a23ade35c0a2dae5257bdf773c5216984">  125</a></span>&#160;<span class="preprocessor">#define EGO_EXTRA_MIGHT         108</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a7b9a6150810c3daecb2f7ff30146f299">  126</a></span>&#160;<span class="preprocessor">#define EGO_EXTRA_SHOTS         109</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">/* Ammo */</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a438a4624eb3d291336d6687284b5292c">  129</a></span>&#160;<span class="preprocessor">#define EGO_HURT_ANIMAL         112</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="object-ego_8h.html#acc8f4fead9b1a3448c7647c73a7d55cd">  130</a></span>&#160;<span class="preprocessor">#define EGO_HURT_EVIL           113</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a64b993f98f6d5bf5bf5272a6f71fdecb">  131</a></span>&#160;<span class="preprocessor">#define EGO_HURT_DRAGON         119</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ab5daf67d8035ca3454a36712e79e0825">  132</a></span>&#160;<span class="preprocessor">#define EGO_SLAYING_BOLT        120</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a16e546d988f9308aabc37c7cfb9c1086">  133</a></span>&#160;<span class="preprocessor">#define EGO_LIGHTNING_BOLT      121</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a097118322c975b496611e11d3863c057">  134</a></span>&#160;<span class="preprocessor">#define EGO_FLAME               122</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a54fb0c562931893bddc44534f4b53038">  135</a></span>&#160;<span class="preprocessor">#define EGO_FROST               123</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ad9fcca4787d73f41ccb7b61acfcae309">  136</a></span>&#160;<span class="preprocessor">#define EGO_WOUNDING            124</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a540f88673d15fe6cadeaaaa0383e9143">  137</a></span>&#160;<span class="preprocessor">#define EGO_BACKBITING          125</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a3a209cd7a87a6a551304c4314378dc0e">  138</a></span>&#160;<span class="preprocessor">#define EGO_SHATTERED           126</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="object-ego_8h.html#acd089990b51ae525f3b77143718b06f0">  139</a></span>&#160;<span class="preprocessor">#define EGO_BLASTED             127</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">/* Lite */</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a30531d324ffd59c4bf609da02ca8a775">  142</a></span>&#160;<span class="preprocessor">#define EGO_LITE_SHINE          140</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a09557b1e58017a6e312a5892581281aa">  143</a></span>&#160;<span class="preprocessor">#define EGO_LITE_ILLUMINATION   141</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a98eef8b002c3418ea7e38b4c4f80dba0">  144</a></span>&#160;<span class="preprocessor">#define EGO_LITE_AURA_FIRE      142</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a8953032cf55f04c214bc1abe1f3d5fb0">  145</a></span>&#160;<span class="preprocessor">#define EGO_LITE_INFRA          143</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="object-ego_8h.html#adbb4c541b72c775fb935d4cbd2845438">  146</a></span>&#160;<span class="preprocessor">#define EGO_LITE_LONG           144</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a97e0acd176c8c71f82e2742d3be4eef6">  147</a></span>&#160;<span class="preprocessor">#define EGO_LITE_DARKNESS       145</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a9344221ff2b04e40cb9274c5cef29719">  148</a></span>&#160;<span class="preprocessor">#define EGO_LITE_EYE            146</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">/* Ring */</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a08d2f79029c9f55e8a493860559ed84e">  151</a></span>&#160;<span class="preprocessor">#define EGO_RING_HERO           150</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ad39da08f72d9b9c0cefe5b417cc13c59">  152</a></span>&#160;<span class="preprocessor">#define EGO_RING_SLAY           151</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a86a594efc6c866a772c9363131e1db4f">  153</a></span>&#160;<span class="preprocessor">#define EGO_RING_SUPER_AC       152</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a812572554f8dc2b11b310516617007b6">  154</a></span>&#160;<span class="preprocessor">#define EGO_RING_MAGIC_MIS      153</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a8b5c71b8aba0ca1eadf32c204530db04">  155</a></span>&#160;<span class="preprocessor">#define EGO_RING_FIRE_BOLT      154</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a4c8afe2d0531016a48288a060f630f63">  156</a></span>&#160;<span class="preprocessor">#define EGO_RING_COLD_BOLT      155</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ac1c4c2f0bc94879dae8d0ea5c28b187f">  157</a></span>&#160;<span class="preprocessor">#define EGO_RING_ELEC_BOLT      156</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a1ed07eea5a7bc39bc13bb5ff88dce957">  158</a></span>&#160;<span class="preprocessor">#define EGO_RING_ACID_BOLT      157</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ac783cc2d3e0acc97d7611d8baf8d93c6">  159</a></span>&#160;<span class="preprocessor">#define EGO_RING_MANA_BOLT      158</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a2820fde65a52db2595eb889467076f87">  160</a></span>&#160;<span class="preprocessor">#define EGO_RING_FIRE_BALL      159</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a07fb2295a656af31a56790ecc538b55f">  161</a></span>&#160;<span class="preprocessor">#define EGO_RING_COLD_BALL      160</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a522d71913c4bb398fdb5fac524964410">  162</a></span>&#160;<span class="preprocessor">#define EGO_RING_ELEC_BALL      161</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a1c01bc4ae39cea497e560ebea42327da">  163</a></span>&#160;<span class="preprocessor">#define EGO_RING_ACID_BALL      162</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a00622015f5a41b61874c32503fbd2e4b">  164</a></span>&#160;<span class="preprocessor">#define EGO_RING_MANA_BALL      163</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a8ff5037b331803475f502319a736d51c">  165</a></span>&#160;<span class="preprocessor">#define EGO_RING_DRAGON_F       164</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ad54adc34cdbc1972407aba697285a900">  166</a></span>&#160;<span class="preprocessor">#define EGO_RING_DRAGON_C       165</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="object-ego_8h.html#aa3f43cf90178623ad39cec499c472d58">  167</a></span>&#160;<span class="preprocessor">#define EGO_RING_D_SPEED        166</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a3003be2aa646585d297a5087fe5abd76">  168</a></span>&#160;<span class="preprocessor">#define EGO_RING_BERSERKER      167</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="object-ego_8h.html#adb95751942c01669585e056e7cfdefa3">  169</a></span>&#160;<span class="preprocessor">#define EGO_RING_HUNTER         168</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ad717b618477b03bc1132e83a365a41ab">  170</a></span>&#160;<span class="preprocessor">#define EGO_RING_THROW          169</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a181d159b4ce8f1c5461dbb0a0c58e747">  171</a></span>&#160;<span class="preprocessor">#define EGO_RING_REGEN          170</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a87dbe801b1629710d5bf94c5e79bbee3">  172</a></span>&#160;<span class="preprocessor">#define EGO_RING_LITE           171</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a6f1466a500b5ac8d59ae7a77586661f1">  173</a></span>&#160;<span class="preprocessor">#define EGO_RING_M_DETECT       172</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a567d8f748457048f2a36f0e4a3d936db">  174</a></span>&#160;<span class="preprocessor">#define EGO_RING_STEALTH        173</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a1125f2bab315359d8ef469302c5f0fda">  175</a></span>&#160;<span class="preprocessor">#define EGO_RING_TELE_AWAY      174</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a23adada3a680e5b11fae787589104833">  176</a></span>&#160;<span class="preprocessor">#define EGO_RING_TO_H           175</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a1976c22173a40f0c9c44b9544c8e43e0">  177</a></span>&#160;<span class="preprocessor">#define EGO_RING_TO_D           176</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a32073ccb9349441008c56c67d94ae2de">  178</a></span>&#160;<span class="preprocessor">#define EGO_RING_RES_LITE       177</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a6c1a1f7d6ee354fae45ea981829dbbcf">  179</a></span>&#160;<span class="preprocessor">#define EGO_RING_RES_DARK       178</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a47609626239d5410bbe987028518d9bd">  180</a></span>&#160;<span class="preprocessor">#define EGO_RING_WIZARD         179</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a8d55b7eb06eda6a448d66203bc91e715">  181</a></span>&#160;<span class="preprocessor">#define EGO_RING_TRUE           180</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a206bc9abf7a5fcffc62989bde2e1dd0f">  182</a></span>&#160;<span class="preprocessor">#define EGO_RING_DRAIN_EXP      181</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a42f27ee83fc038671c65b8eefc221568">  183</a></span>&#160;<span class="preprocessor">#define EGO_RING_NO_MELEE       182</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ac048515918a6f6d60c6ecfb858c6bd16">  184</a></span>&#160;<span class="preprocessor">#define EGO_RING_AGGRAVATE      183</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a29a065b18e9239742ff4ae49bed87962">  185</a></span>&#160;<span class="preprocessor">#define EGO_RING_TY_CURSE       184</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a3a846820af573782eea18d3c47f16fa5">  186</a></span>&#160;<span class="preprocessor">#define EGO_RING_RES_TIME       185</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ace3295019f55e3add151b6ba8b5b7048">  187</a></span>&#160;<span class="preprocessor">#define EGO_RING_TELEPORT       186</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a193b824c811fc2ae01914374ab532967">  188</a></span>&#160;<span class="preprocessor">#define EGO_RING_ALBINO         187</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">/* Amulet */</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a8cbbeb95891f80ed0cbcd80b3557e533">  191</a></span>&#160;<span class="preprocessor">#define EGO_AMU_SLOW_D          210</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="object-ego_8h.html#aba6564d785b6c2c4073c1873b9d6fbce">  192</a></span>&#160;<span class="preprocessor">#define EGO_AMU_INFRA           211</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ada910d66a02e8008c974fe29b35d2453">  193</a></span>&#160;<span class="preprocessor">#define EGO_AMU_SEE_INVIS       212</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a20daa578c5e1b8cce66fd73e112804d2">  194</a></span>&#160;<span class="preprocessor">#define EGO_AMU_HOLD_EXP        213</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a756bdab08fe44d4520c8651cce7f1f9f">  195</a></span>&#160;<span class="preprocessor">#define EGO_AMU_DRAIN_EXP       214</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="object-ego_8h.html#afb59fb610c9263515aa24fa00d6144a8">  196</a></span>&#160;<span class="preprocessor">#define EGO_AMU_FOOL            215</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="object-ego_8h.html#aeb4e29b7a0333182e61c156ec657a335">  197</a></span>&#160;<span class="preprocessor">#define EGO_AMU_AGGRAVATE       216</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a42b69c76d44ef6f0f6de8360532191c7">  198</a></span>&#160;<span class="preprocessor">#define EGO_AMU_TY_CURSE        217</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno"><a class="line" href="object-ego_8h.html#abc33fca9edc765f74b6a0449685c28f1">  199</a></span>&#160;<span class="preprocessor">#define EGO_AMU_AC              218</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="object-ego_8h.html#aa66c784f8923b2577b0095a3ba9484d4">  200</a></span>&#160;<span class="preprocessor">#define EGO_AMU_IDENT           219</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a0cddcba4da55e1bd555badb1288b7bf2">  201</a></span>&#160;<span class="preprocessor">#define EGO_AMU_CHARM           220</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="line" href="object-ego_8h.html#aa31ba825613417858fc8b3197dec146e">  202</a></span>&#160;<span class="preprocessor">#define EGO_AMU_STEALTH         221</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ab6e334e516cfb708ad4f7b6fb118a1b3">  203</a></span>&#160;<span class="preprocessor">#define EGO_AMU_JUMP            222</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="object-ego_8h.html#af03ec32577c199d4d453cb66df10d99c">  204</a></span>&#160;<span class="preprocessor">#define EGO_AMU_TELEPORT        223</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a8b00fb52a68ab2afc50ef949ab82a388">  205</a></span>&#160;<span class="preprocessor">#define EGO_AMU_D_DOOR          224</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a188902ac9ea55a63c73810ddbd9566a6">  206</a></span>&#160;<span class="preprocessor">#define EGO_AMU_DEFENDER        225</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ae3ce4a2ae253eb0925fbda017e3a1b8b">  207</a></span>&#160;<span class="preprocessor">#define EGO_AMU_RES_FIRE        226</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="object-ego_8h.html#adfe65009b4b95d802cfe50b64284d7f5">  208</a></span>&#160;<span class="preprocessor">#define EGO_AMU_RES_FIRE_       227</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a21dd97d23459ec48039e6151b1088f9c">  209</a></span>&#160;<span class="preprocessor">#define EGO_AMU_RES_COLD        228</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a16f2591765126c05e109b82188667617">  210</a></span>&#160;<span class="preprocessor">#define EGO_AMU_RES_COLD_       229</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a3672884b1081ddc6898b68d462813a9d">  211</a></span>&#160;<span class="preprocessor">#define EGO_AMU_RES_ELEC        230</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a709a6947705fabdce2c4b79db65c93b2">  212</a></span>&#160;<span class="preprocessor">#define EGO_AMU_RES_ELEC_       231</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ab92dba5483316dd05afb4f97f3003acc">  213</a></span>&#160;<span class="preprocessor">#define EGO_AMU_RES_ACID        232</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="object-ego_8h.html#ae14c33822623b2b4b672ceeba68325a1">  214</a></span>&#160;<span class="preprocessor">#define EGO_AMU_RES_ACID_       233</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="object-ego_8h.html#aa2872112a6d0beb36c5ad0519cbcf6b0">  215</a></span>&#160;<span class="preprocessor">#define EGO_AMU_LEVITATION      234</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="object-ego_8h.html#af6758ecdfc203ed8e469d1b9f4c7bde3">  216</a></span>&#160;<span class="preprocessor">#define EGO_AMU_GREAT           235</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a1a8f3f3584035ff478f4306d4a925c35">  217</a></span>&#160;<span class="preprocessor">#define EGO_AMU_DETECTION       236</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno"><a class="line" href="object-ego_8h.html#a9d35a1697a60ebc79fb4bd332fbc4a47">  218</a></span>&#160;<span class="preprocessor">#define EGO_AMU_NAIVETY         237</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">// MAX 240</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="structego__generate__type.html">  221</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structego__generate__type.html">ego_generate_type</a> {</div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="structego__generate__type.html#a1494c835d370a25803820efbaa5134b5">  222</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structego__generate__type.html#a1494c835d370a25803820efbaa5134b5">mul</a>{}; <span class="comment">//&lt;! 確率分子</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="structego__generate__type.html#aad232744ba1bc8499a470e512546cc43">  223</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structego__generate__type.html#aad232744ba1bc8499a470e512546cc43">dev</a>{}; <span class="comment">//&lt;! 確率分母</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="structego__generate__type.html#ae35cbdea4b4140382a5d0bd5e128199c">  224</a></span>&#160;    std::vector&lt;tr_type&gt; <a class="code" href="structego__generate__type.html#ae35cbdea4b4140382a5d0bd5e128199c">tr_flags</a>{};</div>
+<div class="line"><a name="l00225"></a><span class="lineno"><a class="line" href="structego__generate__type.html#aa7206cf18acbb58a7a20dfce8e94a205">  225</a></span>&#160;    std::vector&lt;TRG&gt; <a class="code" href="structego__generate__type.html#aa7206cf18acbb58a7a20dfce8e94a205">trg_flags</a>{};</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;};</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment"> * Information about &quot;ego-items&quot;.</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="structego__item__type.html">  231</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structego__item__type.html">ego_item_type</a> {</div>
+<div class="line"><a name="l00232"></a><span class="lineno"><a class="line" href="structego__item__type.html#ae0736cd43085f968758fa82ac719aca7">  232</a></span>&#160;    std::string <a class="code" href="structego__item__type.html#ae0736cd43085f968758fa82ac719aca7">name</a>; </div>
+<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="structego__item__type.html#a93a524b20be6c557d843eba928a58143">  233</a></span>&#160;    std::string <a class="code" href="structego__item__type.html#a93a524b20be6c557d843eba928a58143">text</a>; </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="structego__item__type.html#adedae0545f5d7c828c4b92ef56d5883a">  235</a></span>&#160;    <a class="code" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> <a class="code" href="structego__item__type.html#adedae0545f5d7c828c4b92ef56d5883a">slot</a>{}; </div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="structego__item__type.html#ad508db15535b3b2ea8061cb7842c7ee7">  236</a></span>&#160;    <a class="code" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> <a class="code" href="structego__item__type.html#ad508db15535b3b2ea8061cb7842c7ee7">rating</a>{}; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno"><a class="line" href="structego__item__type.html#a75126708d596ce9c24acf4b3494fd8aa">  238</a></span>&#160;    <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> <a class="code" href="structego__item__type.html#a75126708d596ce9c24acf4b3494fd8aa">level</a>{}; </div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="structego__item__type.html#aa38f1490dc485c607b55f4d0ecc9a8fc">  239</a></span>&#160;    <a class="code" href="h-type_8h.html#a7e713a90f2ba27dc50424d2cc0b543ae">RARITY</a> <a class="code" href="structego__item__type.html#aa38f1490dc485c607b55f4d0ecc9a8fc">rarity</a>{}; <span class="comment">//&lt;! レアリティ</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="structego__item__type.html#a15b6ba7e6a5bd11e0eaf87023f55b5cb">  241</a></span>&#160;    <a class="code" href="h-type_8h.html#a47dfe4960088b41ad87a10ad5120f939">HIT_PROB</a> <a class="code" href="structego__item__type.html#a15b6ba7e6a5bd11e0eaf87023f55b5cb">max_to_h</a>{}; </div>
+<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="structego__item__type.html#a2f8d05755cf053fd7cfce962ee6f1dd0">  242</a></span>&#160;    <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="structego__item__type.html#a2f8d05755cf053fd7cfce962ee6f1dd0">max_to_d</a>{}; </div>
+<div class="line"><a name="l00243"></a><span class="lineno"><a class="line" href="structego__item__type.html#aa3d9b417abc16bf099a754c56b24856a">  243</a></span>&#160;    <a class="code" href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a> <a class="code" href="structego__item__type.html#aa3d9b417abc16bf099a754c56b24856a">max_to_a</a>{}; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno"><a class="line" href="structego__item__type.html#a2500075e1a3ad638eb66ec6ba72f47ca">  245</a></span>&#160;    <a class="code" href="h-type_8h.html#a93e03fb0f06674384e8374479dfcf11b">PARAMETER_VALUE</a> <a class="code" href="structego__item__type.html#a2500075e1a3ad638eb66ec6ba72f47ca">max_pval</a>{}; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno"><a class="line" href="structego__item__type.html#aa87e94c274bfbfbde25385a09b27e882">  247</a></span>&#160;    <a class="code" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> <a class="code" href="structego__item__type.html#aa87e94c274bfbfbde25385a09b27e882">cost</a>{}; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno"><a class="line" href="structego__item__type.html#a8a6175039781abbc02fca63d34b01ab3">  249</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structego__item__type.html#a8a6175039781abbc02fca63d34b01ab3">flags</a>[<a class="code" href="object-type-definition_8h.html#a396c51ddaffe17c1e21a428c41ba294e">TR_FLAG_SIZE</a>]{}; </div>
+<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="structego__item__type.html#a3874dc0e70eb135a595c38273e9c197b">  250</a></span>&#160;    <a class="code" href="class_flag_group.html">FlagGroup&lt;TRG&gt;</a> <a class="code" href="structego__item__type.html#a3874dc0e70eb135a595c38273e9c197b">gen_flags</a>; </div>
+<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="structego__item__type.html#a85c0c8ffdeb21af70c53bc6d4b74fb90">  251</a></span>&#160;    std::vector&lt;ego_generate_type&gt; <a class="code" href="structego__item__type.html#a85c0c8ffdeb21af70c53bc6d4b74fb90">xtra_flags</a>{}; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno"><a class="line" href="structego__item__type.html#a4ecccbc49c2a2e948a86d983cb508ddb">  253</a></span>&#160;    <a class="code" href="h-type_8h.html#a3f634297ff78d56cc39e0f92ea8a65a8">IDX</a> <a class="code" href="structego__item__type.html#a4ecccbc49c2a2e948a86d983cb508ddb">act_idx</a>{}; </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;};</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#ad436c265819d8e3689955f6d5a6c67dc">EGO_IDX</a> <a class="code" href="object-ego_8h.html#a4779eca81d87fdf07a8df7a386c365c5">max_e_idx</a>;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="keyword">extern</span> std::vector&lt;ego_item_type&gt; <a class="code" href="object-ego_8h.html#afed029170e02ee8ab09de96f2f324fc0">e_info</a>;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="keywordtype">byte</span> <a class="code" href="object-ego_8h.html#ab2d834c8e6ce809dfce2c3a3fef269aa">get_random_ego</a>(<span class="keywordtype">byte</span> slot, <span class="keywordtype">bool</span> good);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="keywordtype">void</span> <a class="code" href="object-ego_8h.html#ae52b9f92a7e5067ea20af2fbdc181485">apply_ego</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr, <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> lev);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aclass_flag_group_html"><div class="ttname"><a href="class_flag_group.html">FlagGroup&lt; TRG &gt;</a></div></div>
+<div class="ttc" id="aflag-group_8h_html"><div class="ttname"><a href="flag-group_8h.html">flag-group.h</a></div></div>
+<div class="ttc" id="ah-type_8h_html_a1c8b80a20fb5396ff07a523b01112c47"><div class="ttname"><a href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a></div><div class="ttdeci">s32b DEPTH</div><div class="ttdoc">ゲーム中の階層レベルの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:194</div></div>
+<div class="ttc" id="ah-type_8h_html_a220932af45570eca82fbc85454205983"><div class="ttname"><a href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a></div><div class="ttdeci">s16b ARMOUR_CLASS</div><div class="ttdoc">ゲーム中の行動アーマークラス型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:161</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a3f634297ff78d56cc39e0f92ea8a65a8"><div class="ttname"><a href="h-type_8h.html#a3f634297ff78d56cc39e0f92ea8a65a8">IDX</a></div><div class="ttdeci">s16b IDX</div><div class="ttdoc">ゲーム中のID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:96</div></div>
+<div class="ttc" id="ah-type_8h_html_a47dfe4960088b41ad87a10ad5120f939"><div class="ttname"><a href="h-type_8h.html#a47dfe4960088b41ad87a10ad5120f939">HIT_PROB</a></div><div class="ttdeci">s16b HIT_PROB</div><div class="ttdoc">ゲーム中の装備命中修正値を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:153</div></div>
+<div class="ttc" id="ah-type_8h_html_a592c0b48d60348198260e1f6ffb1897e"><div class="ttname"><a href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a></div><div class="ttdeci">s16b INVENTORY_IDX</div><div class="ttdoc">ゲーム中の所持品ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:120</div></div>
+<div class="ttc" id="ah-type_8h_html_a7e713a90f2ba27dc50424d2cc0b543ae"><div class="ttname"><a href="h-type_8h.html#a7e713a90f2ba27dc50424d2cc0b543ae">RARITY</a></div><div class="ttdeci">byte RARITY</div><div class="ttdoc">ゲーム中の希少度の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:195</div></div>
+<div class="ttc" id="ah-type_8h_html_a93e03fb0f06674384e8374479dfcf11b"><div class="ttname"><a href="h-type_8h.html#a93e03fb0f06674384e8374479dfcf11b">PARAMETER_VALUE</a></div><div class="ttdeci">s16b PARAMETER_VALUE</div><div class="ttdoc">ゲーム中のアイテム能力値の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:182</div></div>
+<div class="ttc" id="ah-type_8h_html_ad436c265819d8e3689955f6d5a6c67dc"><div class="ttname"><a href="h-type_8h.html#ad436c265819d8e3689955f6d5a6c67dc">EGO_IDX</a></div><div class="ttdeci">s16b EGO_IDX</div><div class="ttdoc">アイテムエゴのID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:114</div></div>
+<div class="ttc" id="ah-type_8h_html_aeba8ab2222e118a4540456c55d92a894"><div class="ttname"><a href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a></div><div class="ttdeci">s32b PRICE</div><div class="ttdoc">ゲーム中の金額価値の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:187</div></div>
+<div class="ttc" id="ah-type_8h_html_afdb20155266ee801610f13b1589a3df3"><div class="ttname"><a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></div><div class="ttdeci">s32b HIT_POINT</div><div class="ttdoc">HPとその増減量の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:141</div></div>
+<div class="ttc" id="aobject-ego_8h_html_a4779eca81d87fdf07a8df7a386c365c5"><div class="ttname"><a href="object-ego_8h.html#a4779eca81d87fdf07a8df7a386c365c5">max_e_idx</a></div><div class="ttdeci">EGO_IDX max_e_idx</div><div class="ttdef"><b>Definition:</b> object-ego.cpp:27</div></div>
+<div class="ttc" id="aobject-ego_8h_html_ab2d834c8e6ce809dfce2c3a3fef269aa"><div class="ttname"><a href="object-ego_8h.html#ab2d834c8e6ce809dfce2c3a3fef269aa">get_random_ego</a></div><div class="ttdeci">byte get_random_ego(byte slot, bool good)</div><div class="ttdoc">アイテムのエゴをレア度の重みに合わせてランダムに選択する Choose random ego type</div><div class="ttdef"><b>Definition:</b> object-ego.cpp:36</div></div>
+<div class="ttc" id="aobject-ego_8h_html_ae52b9f92a7e5067ea20af2fbdc181485"><div class="ttname"><a href="object-ego_8h.html#ae52b9f92a7e5067ea20af2fbdc181485">apply_ego</a></div><div class="ttdeci">void apply_ego(player_type *player_ptr, object_type *o_ptr, DEPTH lev)</div><div class="ttdef"><b>Definition:</b> object-ego.cpp:138</div></div>
+<div class="ttc" id="aobject-ego_8h_html_afed029170e02ee8ab09de96f2f324fc0"><div class="ttname"><a href="object-ego_8h.html#afed029170e02ee8ab09de96f2f324fc0">e_info</a></div><div class="ttdeci">std::vector&lt; ego_item_type &gt; e_info</div><div class="ttdoc">エゴアイテムに関する処理</div><div class="ttdef"><b>Definition:</b> object-ego.cpp:22</div></div>
+<div class="ttc" id="aobject-type-definition_8h_html"><div class="ttname"><a href="object-type-definition_8h.html">object-type-definition.h</a></div></div>
+<div class="ttc" id="aobject-type-definition_8h_html_a396c51ddaffe17c1e21a428c41ba294e"><div class="ttname"><a href="object-type-definition_8h.html#a396c51ddaffe17c1e21a428c41ba294e">TR_FLAG_SIZE</a></div><div class="ttdeci">#define TR_FLAG_SIZE</div><div class="ttdef"><b>Definition:</b> object-type-definition.h:6</div></div>
+<div class="ttc" id="astructego__generate__type_html"><div class="ttname"><a href="structego__generate__type.html">ego_generate_type</a></div><div class="ttdef"><b>Definition:</b> object-ego.h:221</div></div>
+<div class="ttc" id="astructego__generate__type_html_a1494c835d370a25803820efbaa5134b5"><div class="ttname"><a href="structego__generate__type.html#a1494c835d370a25803820efbaa5134b5">ego_generate_type::mul</a></div><div class="ttdeci">int mul</div><div class="ttdef"><b>Definition:</b> object-ego.h:222</div></div>
+<div class="ttc" id="astructego__generate__type_html_aa7206cf18acbb58a7a20dfce8e94a205"><div class="ttname"><a href="structego__generate__type.html#aa7206cf18acbb58a7a20dfce8e94a205">ego_generate_type::trg_flags</a></div><div class="ttdeci">std::vector&lt; TRG &gt; trg_flags</div><div class="ttdef"><b>Definition:</b> object-ego.h:225</div></div>
+<div class="ttc" id="astructego__generate__type_html_aad232744ba1bc8499a470e512546cc43"><div class="ttname"><a href="structego__generate__type.html#aad232744ba1bc8499a470e512546cc43">ego_generate_type::dev</a></div><div class="ttdeci">int dev</div><div class="ttdef"><b>Definition:</b> object-ego.h:223</div></div>
+<div class="ttc" id="astructego__generate__type_html_ae35cbdea4b4140382a5d0bd5e128199c"><div class="ttname"><a href="structego__generate__type.html#ae35cbdea4b4140382a5d0bd5e128199c">ego_generate_type::tr_flags</a></div><div class="ttdeci">std::vector&lt; tr_type &gt; tr_flags</div><div class="ttdef"><b>Definition:</b> object-ego.h:224</div></div>
+<div class="ttc" id="astructego__item__type_html"><div class="ttname"><a href="structego__item__type.html">ego_item_type</a></div><div class="ttdef"><b>Definition:</b> object-ego.h:231</div></div>
+<div class="ttc" id="astructego__item__type_html_a15b6ba7e6a5bd11e0eaf87023f55b5cb"><div class="ttname"><a href="structego__item__type.html#a15b6ba7e6a5bd11e0eaf87023f55b5cb">ego_item_type::max_to_h</a></div><div class="ttdeci">HIT_PROB max_to_h</div><div class="ttdoc">最大ボーナス命中修正</div><div class="ttdef"><b>Definition:</b> object-ego.h:241</div></div>
+<div class="ttc" id="astructego__item__type_html_a2500075e1a3ad638eb66ec6ba72f47ca"><div class="ttname"><a href="structego__item__type.html#a2500075e1a3ad638eb66ec6ba72f47ca">ego_item_type::max_pval</a></div><div class="ttdeci">PARAMETER_VALUE max_pval</div><div class="ttdoc">最大pval</div><div class="ttdef"><b>Definition:</b> object-ego.h:245</div></div>
+<div class="ttc" id="astructego__item__type_html_a2f8d05755cf053fd7cfce962ee6f1dd0"><div class="ttname"><a href="structego__item__type.html#a2f8d05755cf053fd7cfce962ee6f1dd0">ego_item_type::max_to_d</a></div><div class="ttdeci">HIT_POINT max_to_d</div><div class="ttdoc">最大ボーナスダメージ修正</div><div class="ttdef"><b>Definition:</b> object-ego.h:242</div></div>
+<div class="ttc" id="astructego__item__type_html_a3874dc0e70eb135a595c38273e9c197b"><div class="ttname"><a href="structego__item__type.html#a3874dc0e70eb135a595c38273e9c197b">ego_item_type::gen_flags</a></div><div class="ttdeci">FlagGroup&lt; TRG &gt; gen_flags</div><div class="ttdoc">生成時適用フラグ</div><div class="ttdef"><b>Definition:</b> object-ego.h:250</div></div>
+<div class="ttc" id="astructego__item__type_html_a4ecccbc49c2a2e948a86d983cb508ddb"><div class="ttname"><a href="structego__item__type.html#a4ecccbc49c2a2e948a86d983cb508ddb">ego_item_type::act_idx</a></div><div class="ttdeci">IDX act_idx</div><div class="ttdoc">発動番号 / Activative ability index</div><div class="ttdef"><b>Definition:</b> object-ego.h:253</div></div>
+<div class="ttc" id="astructego__item__type_html_a75126708d596ce9c24acf4b3494fd8aa"><div class="ttname"><a href="structego__item__type.html#a75126708d596ce9c24acf4b3494fd8aa">ego_item_type::level</a></div><div class="ttdeci">DEPTH level</div><div class="ttdoc">生成レベル</div><div class="ttdef"><b>Definition:</b> object-ego.h:238</div></div>
+<div class="ttc" id="astructego__item__type_html_a85c0c8ffdeb21af70c53bc6d4b74fb90"><div class="ttname"><a href="structego__item__type.html#a85c0c8ffdeb21af70c53bc6d4b74fb90">ego_item_type::xtra_flags</a></div><div class="ttdeci">std::vector&lt; ego_generate_type &gt; xtra_flags</div><div class="ttdoc">追加能力/耐性フラグ</div><div class="ttdef"><b>Definition:</b> object-ego.h:251</div></div>
+<div class="ttc" id="astructego__item__type_html_a8a6175039781abbc02fca63d34b01ab3"><div class="ttname"><a href="structego__item__type.html#a8a6175039781abbc02fca63d34b01ab3">ego_item_type::flags</a></div><div class="ttdeci">BIT_FLAGS flags[TR_FLAG_SIZE]</div><div class="ttdoc">能力/耐性フラグ</div><div class="ttdef"><b>Definition:</b> object-ego.h:249</div></div>
+<div class="ttc" id="astructego__item__type_html_a93a524b20be6c557d843eba928a58143"><div class="ttname"><a href="structego__item__type.html#a93a524b20be6c557d843eba928a58143">ego_item_type::text</a></div><div class="ttdeci">std::string text</div><div class="ttdoc">フレーバーテキスト</div><div class="ttdef"><b>Definition:</b> object-ego.h:233</div></div>
+<div class="ttc" id="astructego__item__type_html_aa38f1490dc485c607b55f4d0ecc9a8fc"><div class="ttname"><a href="structego__item__type.html#aa38f1490dc485c607b55f4d0ecc9a8fc">ego_item_type::rarity</a></div><div class="ttdeci">RARITY rarity</div><div class="ttdef"><b>Definition:</b> object-ego.h:239</div></div>
+<div class="ttc" id="astructego__item__type_html_aa3d9b417abc16bf099a754c56b24856a"><div class="ttname"><a href="structego__item__type.html#aa3d9b417abc16bf099a754c56b24856a">ego_item_type::max_to_a</a></div><div class="ttdeci">ARMOUR_CLASS max_to_a</div><div class="ttdoc">最大ボーナスAC修正</div><div class="ttdef"><b>Definition:</b> object-ego.h:243</div></div>
+<div class="ttc" id="astructego__item__type_html_aa87e94c274bfbfbde25385a09b27e882"><div class="ttname"><a href="structego__item__type.html#aa87e94c274bfbfbde25385a09b27e882">ego_item_type::cost</a></div><div class="ttdeci">PRICE cost</div><div class="ttdoc">コスト</div><div class="ttdef"><b>Definition:</b> object-ego.h:247</div></div>
+<div class="ttc" id="astructego__item__type_html_ad508db15535b3b2ea8061cb7842c7ee7"><div class="ttname"><a href="structego__item__type.html#ad508db15535b3b2ea8061cb7842c7ee7">ego_item_type::rating</a></div><div class="ttdeci">PRICE rating</div><div class="ttdoc">レーティングボーナス(雰囲気に影響) / Rating boost</div><div class="ttdef"><b>Definition:</b> object-ego.h:236</div></div>
+<div class="ttc" id="astructego__item__type_html_adedae0545f5d7c828c4b92ef56d5883a"><div class="ttname"><a href="structego__item__type.html#adedae0545f5d7c828c4b92ef56d5883a">ego_item_type::slot</a></div><div class="ttdeci">INVENTORY_IDX slot</div><div class="ttdoc">装備部位 / Standard slot value</div><div class="ttdef"><b>Definition:</b> object-ego.h:235</div></div>
+<div class="ttc" id="astructego__item__type_html_ae0736cd43085f968758fa82ac719aca7"><div class="ttname"><a href="structego__item__type.html#ae0736cd43085f968758fa82ac719aca7">ego_item_type::name</a></div><div class="ttdeci">std::string name</div><div class="ttdoc">エゴの名前</div><div class="ttdef"><b>Definition:</b> object-ego.h:232</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="atr-types_8h_html"><div class="ttname"><a href="tr-types_8h.html">tr-types.h</a></div></div>
+<div class="ttc" id="atrg-types_8h_html"><div class="ttname"><a href="trg-types_8h.html">trg-types.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

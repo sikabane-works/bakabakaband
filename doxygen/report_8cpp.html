@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/io/report.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html">io</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">report.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="report_8h_source.html">io/report.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-redraw-types_8h_source.html">core/player-redraw-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stuff-handler_8h_source.html">core/stuff-handler.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="turn-compensator_8h_source.html">core/turn-compensator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="visuals-reseter_8h_source.html">core/visuals-reseter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon_8h_source.html">dungeon/dungeon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-options_8h_source.html">game-option/special-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="character-dump_8h_source.html">io-dump/character-dump.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inet_8h_source.html">io/inet.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mind-elementalist_8h_source.html">mind/mind-elementalist.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-class_8h_source.html">player/player-class.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-personality_8h_source.html">player/player-personality.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-race_8h_source.html">player/player-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="realm-names-table_8h_source.html">realm/realm-names-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-version_8h_source.html">system/angband-version.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="system-variables_8h_source.html">system/system-variables.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gameterm_8h_source.html">term/gameterm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-files_8h_source.html">util/angband-files.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+report.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="report_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2io_2report_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2io_2report_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2io_2report_8cpp">
+<area shape="rect" title=" " alt="" coords="1705,5,1913,47"/>
+<area shape="rect" href="report_8h.html" title=" " alt="" coords="2198,191,2278,218"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="2759,102,2898,129"/>
+<area shape="rect" href="player-redraw-types_8h.html" title=" " alt="" coords="3130,95,3258,136"/>
+<area shape="rect" href="stuff-handler_8h.html" title=" " alt="" coords="2923,102,3055,129"/>
+<area shape="rect" href="turn-compensator_8h.html" title=" " alt="" coords="651,102,814,129"/>
+<area shape="rect" href="visuals-reseter_8h.html" title=" " alt="" coords="1041,102,1187,129"/>
+<area shape="rect" href="dungeon_8h.html" title=" " alt="" coords="339,102,473,129"/>
+<area shape="rect" href="special-options_8h.html" title=" " alt="" coords="1211,95,1350,136"/>
+<area shape="rect" href="character-dump_8h.html" title=" " alt="" coords="1374,102,1547,129"/>
+<area shape="rect" href="inet_8h.html" title=" " alt="" coords="1572,102,1640,129"/>
+<area shape="rect" href="input-key-acceptor_8h.html" title=" " alt="" coords="2001,102,2155,129"/>
+<area shape="rect" href="mind-elementalist_8h.html" title=" " alt="" coords="1809,102,1976,129"/>
+<area shape="rect" href="player-class_8h.html" title=" " alt="" coords="2592,102,2735,129"/>
+<area shape="rect" href="player-personality_8h.html" title=" " alt="" coords="5,191,180,218"/>
+<area shape="rect" href="player-race_8h.html" title=" " alt="" coords="2179,102,2315,129"/>
+<area shape="rect" href="realm-names-table_8h.html" title=" " alt="" coords="2851,191,3027,218"/>
+<area shape="rect" href="angband-version_8h.html" title=" " alt="" coords="3282,102,3455,129"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="3553,102,3741,129"/>
+<area shape="rect" href="system-variables_8h.html" title=" " alt="" coords="2391,102,2568,129"/>
+<area shape="rect" href="gameterm_8h.html" title=" " alt="" coords="1664,102,1785,129"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="770,191,933,218"/>
+<area shape="rect" href="angband-files_8h.html" title=" " alt="" coords="957,191,1087,218"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="1112,191,1279,218"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="1303,191,1400,218"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1557,273,1687,300"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1577,348,1667,375"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1691,348,1782,375"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1806,348,1905,375"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="965,348,1063,375"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="1088,348,1188,375"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1212,348,1387,375"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1411,348,1553,375"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1929,348,2075,375"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="2195,423,2340,464"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="726,423,899,464"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1681,430,1792,457"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="357,191,455,218"/>
+<area shape="rect" title=" " alt="" coords="339,273,393,300"/>
+<area shape="rect" title=" " alt="" coords="418,273,474,300"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="479,184,645,225"/>
+<area shape="rect" href="files-util_8h.html" title=" " alt="" coords="1577,191,1667,218"/>
+<area shape="rect" href="spell-types_8h.html" title=" " alt="" coords="1793,191,1920,218"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="2353,191,2480,218"/>
+<area shape="rect" href="realm-types_8h.html" title=" " alt="" coords="2745,273,2883,300"/>
+<area shape="rect" href="technic-info-table_8h.html" title=" " alt="" coords="2657,184,2776,225"/>
+<area shape="rect" href="h-type_8h.html" title="ゲーム中に用いる変数型定義 / Basic &quot;types&quot;." alt="" coords="3275,191,3391,218"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="3595,191,3774,218"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="3799,191,3949,218"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="3415,184,3571,225"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:adb4121f7fe28d275d3a680d9dfe45345"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="report_8cpp.html#adb4121f7fe28d275d3a680d9dfe45345">screen_dump</a> = NULL</td></tr>
+<tr class="separator:adb4121f7fe28d275d3a680d9dfe45345"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">変数詳解</h2>
+<a id="adb4121f7fe28d275d3a680d9dfe45345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb4121f7fe28d275d3a680d9dfe45345">&#9670;&nbsp;</a></span>screen_dump</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> screen_dump = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分33秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/object/object-kind-hook.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_bb043af75e54e1af3032f67529bb720c.html">object</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">object-kind-hook.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="object-kind-hook_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tval-types_8h.html">object/tval-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="object-kind-hook_8h.html#a679b5a26867928f1caafa61fb0d1e197">kind_is_cloak</a>(<a class="code" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="object-kind-hook_8h.html#ae8eb6227693368bbaef99f5404ade0c9">kind_is_polearm</a>(<a class="code" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="object-kind-hook_8h.html#ad2113c3ec0166a291a6fdf3054c7aab3">kind_is_sword</a>(<a class="code" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="object-kind-hook_8h.html#a22ba36a4d9b7853256a2fb7175d4abc3">kind_is_book</a>(<a class="code" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="object-kind-hook_8h.html#a5fbcb4aaee64e77a30bcfccf2568c52a">kind_is_good_book</a>(<a class="code" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="object-kind-hook_8h.html#abe041dede41caf95c0f5992b34400ef3">kind_is_armor</a>(<a class="code" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="object-kind-hook_8h.html#ad73db97c47f650fc701863177147eaa4">kind_is_hafted</a>(<a class="code" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="object-kind-hook_8h.html#a0a385cc9416ddcd81e90f3a10e111195">kind_is_potion</a>(<a class="code" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="object-kind-hook_8h.html#a24165dc468314ac5f0d11700eefe241b">kind_is_boots</a>(<a class="code" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="object-kind-hook_8h.html#a999d195e5c6c1db6e00330af236bf3ed">kind_is_good</a>(<a class="code" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<a class="code" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> <a class="code" href="object-kind-hook_8h.html#a24f8a2426e4fc5128654ec26033312ab">lookup_kind</a>(<a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a> tval, <a class="code" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a> sval);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a4afcd80086918943bed571d0a96b93eb"><div class="ttname"><a href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a></div><div class="ttdeci">s16b KIND_OBJECT_IDX</div><div class="ttdoc">ゲーム中のベースアイテムID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:123</div></div>
+<div class="ttc" id="ah-type_8h_html_ad52e4f96ca473e40e3be6db6f73a13d4"><div class="ttname"><a href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a></div><div class="ttdeci">s32b OBJECT_SUBTYPE_VALUE</div><div class="ttdoc">ゲーム中のアイテム副分類の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:181</div></div>
+<div class="ttc" id="aobject-kind-hook_8h_html_a0a385cc9416ddcd81e90f3a10e111195"><div class="ttname"><a href="object-kind-hook_8h.html#a0a385cc9416ddcd81e90f3a10e111195">kind_is_potion</a></div><div class="ttdeci">bool kind_is_potion(KIND_OBJECT_IDX k_idx)</div><div class="ttdoc">オブジェクトが薬かどうかを判定する / Hack – determine if a template is hafted weapon</div><div class="ttdef"><b>Definition:</b> object-kind-hook.cpp:92</div></div>
+<div class="ttc" id="aobject-kind-hook_8h_html_a22ba36a4d9b7853256a2fb7175d4abc3"><div class="ttname"><a href="object-kind-hook_8h.html#a22ba36a4d9b7853256a2fb7175d4abc3">kind_is_book</a></div><div class="ttdeci">bool kind_is_book(KIND_OBJECT_IDX k_idx)</div><div class="ttdoc">オブジェクトが魔法書かどうかを判定する / Hack – determine if a template is Book</div><div class="ttdef"><b>Definition:</b> object-kind-hook.cpp:52</div></div>
+<div class="ttc" id="aobject-kind-hook_8h_html_a24165dc468314ac5f0d11700eefe241b"><div class="ttname"><a href="object-kind-hook_8h.html#a24165dc468314ac5f0d11700eefe241b">kind_is_boots</a></div><div class="ttdeci">bool kind_is_boots(KIND_OBJECT_IDX k_idx)</div><div class="ttdoc">オブジェクトが靴かどうかを判定する / Hack – determine if a template is hafted weapon</div><div class="ttdef"><b>Definition:</b> object-kind-hook.cpp:100</div></div>
+<div class="ttc" id="aobject-kind-hook_8h_html_a24f8a2426e4fc5128654ec26033312ab"><div class="ttname"><a href="object-kind-hook_8h.html#a24f8a2426e4fc5128654ec26033312ab">lookup_kind</a></div><div class="ttdeci">KIND_OBJECT_IDX lookup_kind(tval_type tval, OBJECT_SUBTYPE_VALUE sval)</div><div class="ttdoc">tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the object_kind with the given tval and sval</div><div class="ttdef"><b>Definition:</b> object-kind-hook.cpp:171</div></div>
+<div class="ttc" id="aobject-kind-hook_8h_html_a5fbcb4aaee64e77a30bcfccf2568c52a"><div class="ttname"><a href="object-kind-hook_8h.html#a5fbcb4aaee64e77a30bcfccf2568c52a">kind_is_good_book</a></div><div class="ttdeci">bool kind_is_good_book(KIND_OBJECT_IDX k_idx)</div><div class="ttdoc">オブジェクトがベースアイテム時点でGOODかどうかを判定する / Hack – determine if a template is Good book</div><div class="ttdef"><b>Definition:</b> object-kind-hook.cpp:64</div></div>
+<div class="ttc" id="aobject-kind-hook_8h_html_a679b5a26867928f1caafa61fb0d1e197"><div class="ttname"><a href="object-kind-hook_8h.html#a679b5a26867928f1caafa61fb0d1e197">kind_is_cloak</a></div><div class="ttdeci">bool kind_is_cloak(KIND_OBJECT_IDX k_idx)</div><div class="ttdoc">オブジェクトがクロークかどうかを判定する / Hack – determine if a template is Cloak</div><div class="ttdef"><b>Definition:</b> object-kind-hook.cpp:24</div></div>
+<div class="ttc" id="aobject-kind-hook_8h_html_a999d195e5c6c1db6e00330af236bf3ed"><div class="ttname"><a href="object-kind-hook_8h.html#a999d195e5c6c1db6e00330af236bf3ed">kind_is_good</a></div><div class="ttdeci">bool kind_is_good(KIND_OBJECT_IDX k_idx)</div><div class="ttdoc">ベースアイテムが上質として扱われるかどうかを返す。 Hack – determine if a template is &quot;good&quot;</div><div class="ttdef"><b>Definition:</b> object-kind-hook.cpp:108</div></div>
+<div class="ttc" id="aobject-kind-hook_8h_html_abe041dede41caf95c0f5992b34400ef3"><div class="ttname"><a href="object-kind-hook_8h.html#abe041dede41caf95c0f5992b34400ef3">kind_is_armor</a></div><div class="ttdeci">bool kind_is_armor(KIND_OBJECT_IDX k_idx)</div><div class="ttdoc">オブジェクトが鎧かどうかを判定する / Hack – determine if a template is Armor</div><div class="ttdef"><b>Definition:</b> object-kind-hook.cpp:76</div></div>
+<div class="ttc" id="aobject-kind-hook_8h_html_ad2113c3ec0166a291a6fdf3054c7aab3"><div class="ttname"><a href="object-kind-hook_8h.html#ad2113c3ec0166a291a6fdf3054c7aab3">kind_is_sword</a></div><div class="ttdeci">bool kind_is_sword(KIND_OBJECT_IDX k_idx)</div><div class="ttdoc">オブジェクトが剣かどうかを判定する / Hack – determine if a template is Sword</div><div class="ttdef"><b>Definition:</b> object-kind-hook.cpp:40</div></div>
+<div class="ttc" id="aobject-kind-hook_8h_html_ad73db97c47f650fc701863177147eaa4"><div class="ttname"><a href="object-kind-hook_8h.html#ad73db97c47f650fc701863177147eaa4">kind_is_hafted</a></div><div class="ttdeci">bool kind_is_hafted(KIND_OBJECT_IDX k_idx)</div><div class="ttdoc">オブジェクトが打撃武器かどうかを判定する / Hack – determine if a template is hafted weapon</div><div class="ttdef"><b>Definition:</b> object-kind-hook.cpp:84</div></div>
+<div class="ttc" id="aobject-kind-hook_8h_html_ae8eb6227693368bbaef99f5404ade0c9"><div class="ttname"><a href="object-kind-hook_8h.html#ae8eb6227693368bbaef99f5404ade0c9">kind_is_polearm</a></div><div class="ttdeci">bool kind_is_polearm(KIND_OBJECT_IDX k_idx)</div><div class="ttdoc">オブジェクトが竿状武器かどうかを判定する / Hack – determine if a template is Polearm</div><div class="ttdef"><b>Definition:</b> object-kind-hook.cpp:32</div></div>
+<div class="ttc" id="atval-types_8h_html"><div class="ttname"><a href="tval-types_8h.html">tval-types.h</a></div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a></div><div class="ttdeci">tval_type</div><div class="ttdef"><b>Definition:</b> tval-types.h:17</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

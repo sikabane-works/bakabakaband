@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/floor/floor-allocation-types.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a620f8a6b723e397390ae5ca00f5aa8c.html">floor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">floor-allocation-types.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="floor-allocation-types_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">/* Dungeon allocation &quot;places&quot; */</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="floor-allocation-types_8h.html#a81f2fb7c5745530a6ec349eb0656331a">    4</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="floor-allocation-types_8h.html#a81f2fb7c5745530a6ec349eb0656331a">dap_type</a> : <span class="keywordtype">int</span> {</div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="floor-allocation-types_8h.html#a81f2fb7c5745530a6ec349eb0656331aa744c4878e46310e987160f12e3ed636e">    5</a></span>&#160;    <a class="code" href="floor-allocation-types_8h.html#a81f2fb7c5745530a6ec349eb0656331aa744c4878e46310e987160f12e3ed636e">ALLOC_SET_CORR</a> = 1, <span class="comment">/* Hallway */</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="floor-allocation-types_8h.html#a81f2fb7c5745530a6ec349eb0656331aa70d53ed01c15721e7fb8a3f1a3736d28">    6</a></span>&#160;    <a class="code" href="floor-allocation-types_8h.html#a81f2fb7c5745530a6ec349eb0656331aa70d53ed01c15721e7fb8a3f1a3736d28">ALLOC_SET_ROOM</a> = 2, <span class="comment">/* Room */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="floor-allocation-types_8h.html#a81f2fb7c5745530a6ec349eb0656331aab451cce69a2c234d8ebc8e2feeaa90be">    7</a></span>&#160;    <a class="code" href="floor-allocation-types_8h.html#a81f2fb7c5745530a6ec349eb0656331aab451cce69a2c234d8ebc8e2feeaa90be">ALLOC_SET_BOTH</a> = 3, <span class="comment">/* Anywhere */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;};</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/* Dungeon allocation &quot;types&quot; */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04">   11</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04">dungeon_allocation_type</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04a0291b6a5234f946103ee5600cfb2e864">   12</a></span>&#160;    <a class="code" href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04a0291b6a5234f946103ee5600cfb2e864">ALLOC_TYP_RUBBLE</a> = 1, <span class="comment">/* Rubble */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04afa0eb31be25f775fd9c8b7c124b117cc">   13</a></span>&#160;    <a class="code" href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04afa0eb31be25f775fd9c8b7c124b117cc">ALLOC_TYP_TRAP</a> = 3, <span class="comment">/* Trap */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04a2e18d0f21007f26a0dbdb563294ae8d4">   14</a></span>&#160;    <a class="code" href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04a2e18d0f21007f26a0dbdb563294ae8d4">ALLOC_TYP_GOLD</a> = 4, <span class="comment">/* Gold */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04a05cd68493c6d63bb967152922e238293">   15</a></span>&#160;    <a class="code" href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04a05cd68493c6d63bb967152922e238293">ALLOC_TYP_OBJECT</a> = 5, <span class="comment">/* Object */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04acc1fd49ab16299bf88020b51a7c05303">   16</a></span>&#160;    <a class="code" href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04acc1fd49ab16299bf88020b51a7c05303">ALLOC_TYP_INVIS</a> = 6, <span class="comment">/* Invisible wall */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
+<div class="ttc" id="afloor-allocation-types_8h_html_a81f2fb7c5745530a6ec349eb0656331a"><div class="ttname"><a href="floor-allocation-types_8h.html#a81f2fb7c5745530a6ec349eb0656331a">dap_type</a></div><div class="ttdeci">dap_type</div><div class="ttdef"><b>Definition:</b> floor-allocation-types.h:4</div></div>
+<div class="ttc" id="afloor-allocation-types_8h_html_a81f2fb7c5745530a6ec349eb0656331aa70d53ed01c15721e7fb8a3f1a3736d28"><div class="ttname"><a href="floor-allocation-types_8h.html#a81f2fb7c5745530a6ec349eb0656331aa70d53ed01c15721e7fb8a3f1a3736d28">ALLOC_SET_ROOM</a></div><div class="ttdeci">@ ALLOC_SET_ROOM</div><div class="ttdef"><b>Definition:</b> floor-allocation-types.h:6</div></div>
+<div class="ttc" id="afloor-allocation-types_8h_html_a81f2fb7c5745530a6ec349eb0656331aa744c4878e46310e987160f12e3ed636e"><div class="ttname"><a href="floor-allocation-types_8h.html#a81f2fb7c5745530a6ec349eb0656331aa744c4878e46310e987160f12e3ed636e">ALLOC_SET_CORR</a></div><div class="ttdeci">@ ALLOC_SET_CORR</div><div class="ttdef"><b>Definition:</b> floor-allocation-types.h:5</div></div>
+<div class="ttc" id="afloor-allocation-types_8h_html_a81f2fb7c5745530a6ec349eb0656331aab451cce69a2c234d8ebc8e2feeaa90be"><div class="ttname"><a href="floor-allocation-types_8h.html#a81f2fb7c5745530a6ec349eb0656331aab451cce69a2c234d8ebc8e2feeaa90be">ALLOC_SET_BOTH</a></div><div class="ttdeci">@ ALLOC_SET_BOTH</div><div class="ttdef"><b>Definition:</b> floor-allocation-types.h:7</div></div>
+<div class="ttc" id="afloor-allocation-types_8h_html_aaee7d3e3d2b00f53894180144e881a04"><div class="ttname"><a href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04">dungeon_allocation_type</a></div><div class="ttdeci">dungeon_allocation_type</div><div class="ttdef"><b>Definition:</b> floor-allocation-types.h:11</div></div>
+<div class="ttc" id="afloor-allocation-types_8h_html_aaee7d3e3d2b00f53894180144e881a04a0291b6a5234f946103ee5600cfb2e864"><div class="ttname"><a href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04a0291b6a5234f946103ee5600cfb2e864">ALLOC_TYP_RUBBLE</a></div><div class="ttdeci">@ ALLOC_TYP_RUBBLE</div><div class="ttdef"><b>Definition:</b> floor-allocation-types.h:12</div></div>
+<div class="ttc" id="afloor-allocation-types_8h_html_aaee7d3e3d2b00f53894180144e881a04a05cd68493c6d63bb967152922e238293"><div class="ttname"><a href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04a05cd68493c6d63bb967152922e238293">ALLOC_TYP_OBJECT</a></div><div class="ttdeci">@ ALLOC_TYP_OBJECT</div><div class="ttdef"><b>Definition:</b> floor-allocation-types.h:15</div></div>
+<div class="ttc" id="afloor-allocation-types_8h_html_aaee7d3e3d2b00f53894180144e881a04a2e18d0f21007f26a0dbdb563294ae8d4"><div class="ttname"><a href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04a2e18d0f21007f26a0dbdb563294ae8d4">ALLOC_TYP_GOLD</a></div><div class="ttdeci">@ ALLOC_TYP_GOLD</div><div class="ttdef"><b>Definition:</b> floor-allocation-types.h:14</div></div>
+<div class="ttc" id="afloor-allocation-types_8h_html_aaee7d3e3d2b00f53894180144e881a04acc1fd49ab16299bf88020b51a7c05303"><div class="ttname"><a href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04acc1fd49ab16299bf88020b51a7c05303">ALLOC_TYP_INVIS</a></div><div class="ttdeci">@ ALLOC_TYP_INVIS</div><div class="ttdef"><b>Definition:</b> floor-allocation-types.h:16</div></div>
+<div class="ttc" id="afloor-allocation-types_8h_html_aaee7d3e3d2b00f53894180144e881a04afa0eb31be25f775fd9c8b7c124b117cc"><div class="ttname"><a href="floor-allocation-types_8h.html#aaee7d3e3d2b00f53894180144e881a04afa0eb31be25f775fd9c8b7c124b117cc">ALLOC_TYP_TRAP</a></div><div class="ttdeci">@ ALLOC_TYP_TRAP</div><div class="ttdef"><b>Definition:</b> floor-allocation-types.h:13</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

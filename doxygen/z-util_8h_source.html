@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/term/z-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f015963f69ae14c534311f2118856536.html">term</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">z-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="z-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* File z-util.h */</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Copyright (c) 1997 Ben Harrison</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * This software may be copied and distributed for educational, research,</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * and not for profit purposes provided that this copyright and statement</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * are included in all such copies.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef INCLUDED_Z_UTIL_H</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define INCLUDED_Z_UTIL_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="h-basic_8h.html">system/h-basic.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * Extremely basic stuff, like global temp and constant variables.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * Also, some very useful low level functions, such as &quot;streq()&quot;.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * All variables and functions in this file are &quot;addressable&quot;.</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/**** Available variables ****/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/* A concptr to the name of the program */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="z-util_8h.html#a6aae9192a532edd484664b54392e8eb2">argv0</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/* Aux functions */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">extern</span> void (*<a class="code" href="z-util_8h.html#aeb38ac66d47ce49ae9c94032297bb6c7">plog_aux</a>)(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">extern</span> void (*<a class="code" href="z-util_8h.html#a246b3e788dde52689382f50d04c2e8d0">quit_aux</a>)(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">extern</span> void (*<a class="code" href="z-util_8h.html#ae6f62ee76f1932e404ab8b1282a92b57">core_aux</a>)(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/**** Available Functions ****/</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/* Test equality, prefix, suffix */</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="z-util_8h.html#ad2f8ba22a81a35a33c5c44642497e75a">streq</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> s, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> t);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="z-util_8h.html#a7f7463689689266c2c7dd1c0b170c7a3">prefix</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> s, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> t);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="z-util_8h.html#a3980d9912e2cdba74a2edcb7c630a505">suffix</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> s, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> t);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/* Print an error message */</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="z-util_8h.html#add3ff125e6340e76d3c307ebaf757660">plog</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/* Exit, with optional message */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="z-util_8h.html#a27cd52099ef49687abff54a5614cc102">quit</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/* Dump core, with optional message */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="z-util_8h.html#a17041e90abc765de8ac405b2ef4f1f03">core</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/* 64-bit integer operations */</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="z-util_8h.html#ad918f8fd1786705d979c7c5afebd4e05">s64b_lshift</a>(<a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>* hi, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a>* lo, <span class="keywordtype">int</span> n);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">void</span> <a class="code" href="z-util_8h.html#aeb5e46fe2b7d6f21bacbdf7d820e6ec0">s64b_rshift</a>(<a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>* hi, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a>* lo, <span class="keywordtype">int</span> n);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="z-util_8h.html#ae586801c59280bb7a22fed3ba66be295">s64b_add</a>(<a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> *A1, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> *A2, <a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> B1, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> B2);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="z-util_8h.html#aa0aa18162a493e42c0eec29ab68d34f1">s64b_sub</a>(<a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> *A1, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> *A2, <a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> B1, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> B2);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="z-util_8h.html#a2fd1240d5ed1bfdbdd8c01695c40c871">s64b_cmp</a>(<a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> A1, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> A2, <a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> B1, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> B2);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="z-util_8h.html#aa6d8906e1b43a675f5f255e5e38b1438">s64b_mul</a>(<a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> *A1, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> *A2, <a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> B1, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> B2);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="z-util_8h.html#ac51f7da3ea2156044fc32bfebcfbac9b">s64b_div</a>(<a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> *A1, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> *A2, <a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> B1, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> B2);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="z-util_8h.html#a0b600a943e2a8730461ba131199334c5">s64b_mod</a>(<a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> *A1, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> *A2, <a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> B1, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> B2);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="z-util_8h.html#a95c8541ef70dbcbf165f9272be00ea17">count_bits</a>(<a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> x);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="z-util_8h.html#a8ded1d651c0ddb5daeaeb60980edf285">mysqrt</a>(<span class="keywordtype">int</span> n);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="ttc" id="ah-basic_8h_html"><div class="ttname"><a href="h-basic_8h.html">h-basic.h</a></div><div class="ttdoc">変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file.</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_af28a46c3af7b537a7cf39e1f7e6bf81c"><div class="ttname"><a href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a></div><div class="ttdeci">signed long s32b</div><div class="ttdef"><b>Definition:</b> h-type.h:92</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="ah-type_8h_html_af7a1de980667931f896ae6a820f0ee80"><div class="ttname"><a href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a></div><div class="ttdeci">unsigned long u32b</div><div class="ttdef"><b>Definition:</b> h-type.h:93</div></div>
+<div class="ttc" id="az-util_8h_html_a0b600a943e2a8730461ba131199334c5"><div class="ttname"><a href="z-util_8h.html#a0b600a943e2a8730461ba131199334c5">s64b_mod</a></div><div class="ttdeci">void s64b_mod(s32b *A1, u32b *A2, s32b B1, u32b B2)</div><div class="ttdef"><b>Definition:</b> z-util.cpp:275</div></div>
+<div class="ttc" id="az-util_8h_html_a17041e90abc765de8ac405b2ef4f1f03"><div class="ttname"><a href="z-util_8h.html#a17041e90abc765de8ac405b2ef4f1f03">core</a></div><div class="ttdeci">void core(concptr str)</div><div class="ttdef"><b>Definition:</b> z-util.cpp:125</div></div>
+<div class="ttc" id="az-util_8h_html_a246b3e788dde52689382f50d04c2e8d0"><div class="ttname"><a href="z-util_8h.html#a246b3e788dde52689382f50d04c2e8d0">quit_aux</a></div><div class="ttdeci">void(* quit_aux)(concptr)</div><div class="ttdef"><b>Definition:</b> z-util.cpp:88</div></div>
+<div class="ttc" id="az-util_8h_html_a27cd52099ef49687abff54a5614cc102"><div class="ttname"><a href="z-util_8h.html#a27cd52099ef49687abff54a5614cc102">quit</a></div><div class="ttdeci">void quit(concptr str)</div><div class="ttdef"><b>Definition:</b> z-util.cpp:96</div></div>
+<div class="ttc" id="az-util_8h_html_a2fd1240d5ed1bfdbdd8c01695c40c871"><div class="ttname"><a href="z-util_8h.html#a2fd1240d5ed1bfdbdd8c01695c40c871">s64b_cmp</a></div><div class="ttdeci">int s64b_cmp(s32b A1, u32b A2, s32b B1, u32b B2)</div><div class="ttdef"><b>Definition:</b> z-util.cpp:218</div></div>
+<div class="ttc" id="az-util_8h_html_a3980d9912e2cdba74a2edcb7c630a505"><div class="ttname"><a href="z-util_8h.html#a3980d9912e2cdba74a2edcb7c630a505">suffix</a></div><div class="ttdeci">bool suffix(concptr s, concptr t)</div><div class="ttdef"><b>Definition:</b> z-util.cpp:34</div></div>
+<div class="ttc" id="az-util_8h_html_a6aae9192a532edd484664b54392e8eb2"><div class="ttname"><a href="z-util_8h.html#a6aae9192a532edd484664b54392e8eb2">argv0</a></div><div class="ttdeci">concptr argv0</div><div class="ttdef"><b>Definition:</b> z-util.cpp:19</div></div>
+<div class="ttc" id="az-util_8h_html_a7f7463689689266c2c7dd1c0b170c7a3"><div class="ttname"><a href="z-util_8h.html#a7f7463689689266c2c7dd1c0b170c7a3">prefix</a></div><div class="ttdeci">bool prefix(concptr s, concptr t)</div><div class="ttdef"><b>Definition:</b> z-util.cpp:50</div></div>
+<div class="ttc" id="az-util_8h_html_a8ded1d651c0ddb5daeaeb60980edf285"><div class="ttname"><a href="z-util_8h.html#a8ded1d651c0ddb5daeaeb60980edf285">mysqrt</a></div><div class="ttdeci">int mysqrt(int n)</div><div class="ttdoc">平方根を切り捨て整数で返す</div><div class="ttdef"><b>Definition:</b> z-util.cpp:307</div></div>
+<div class="ttc" id="az-util_8h_html_a95c8541ef70dbcbf165f9272be00ea17"><div class="ttname"><a href="z-util_8h.html#a95c8541ef70dbcbf165f9272be00ea17">count_bits</a></div><div class="ttdeci">int count_bits(BIT_FLAGS x)</div><div class="ttdoc">符号なし32ビット整数のビット数を返す。</div><div class="ttdef"><b>Definition:</b> z-util.cpp:290</div></div>
+<div class="ttc" id="az-util_8h_html_aa0aa18162a493e42c0eec29ab68d34f1"><div class="ttname"><a href="z-util_8h.html#aa0aa18162a493e42c0eec29ab68d34f1">s64b_sub</a></div><div class="ttdeci">void s64b_sub(s32b *A1, u32b *A2, s32b B1, u32b B2)</div><div class="ttdef"><b>Definition:</b> z-util.cpp:175</div></div>
+<div class="ttc" id="az-util_8h_html_aa6d8906e1b43a675f5f255e5e38b1438"><div class="ttname"><a href="z-util_8h.html#aa6d8906e1b43a675f5f255e5e38b1438">s64b_mul</a></div><div class="ttdeci">void s64b_mul(s32b *A1, u32b *A2, s32b B1, u32b B2)</div><div class="ttdef"><b>Definition:</b> z-util.cpp:198</div></div>
+<div class="ttc" id="az-util_8h_html_ac51f7da3ea2156044fc32bfebcfbac9b"><div class="ttname"><a href="z-util_8h.html#ac51f7da3ea2156044fc32bfebcfbac9b">s64b_div</a></div><div class="ttdeci">void s64b_div(s32b *A1, u32b *A2, s32b B1, u32b B2)</div><div class="ttdef"><b>Definition:</b> z-util.cpp:232</div></div>
+<div class="ttc" id="az-util_8h_html_ad2f8ba22a81a35a33c5c44642497e75a"><div class="ttname"><a href="z-util_8h.html#ad2f8ba22a81a35a33c5c44642497e75a">streq</a></div><div class="ttdeci">bool streq(concptr s, concptr t)</div><div class="ttdef"><b>Definition:</b> z-util.cpp:25</div></div>
+<div class="ttc" id="az-util_8h_html_ad918f8fd1786705d979c7c5afebd4e05"><div class="ttname"><a href="z-util_8h.html#ad918f8fd1786705d979c7c5afebd4e05">s64b_lshift</a></div><div class="ttdeci">void s64b_lshift(s32b *hi, u32b *lo, int n)</div><div class="ttdoc">64bit非負整数を n 回左シフトする。</div><div class="ttdef"><b>Definition:</b> z-util.cpp:145</div></div>
+<div class="ttc" id="az-util_8h_html_add3ff125e6340e76d3c307ebaf757660"><div class="ttname"><a href="z-util_8h.html#add3ff125e6340e76d3c307ebaf757660">plog</a></div><div class="ttdeci">void plog(concptr str)</div><div class="ttdef"><b>Definition:</b> z-util.cpp:74</div></div>
+<div class="ttc" id="az-util_8h_html_ae586801c59280bb7a22fed3ba66be295"><div class="ttname"><a href="z-util_8h.html#ae586801c59280bb7a22fed3ba66be295">s64b_add</a></div><div class="ttdeci">void s64b_add(s32b *A1, u32b *A2, s32b B1, u32b B2)</div><div class="ttdef"><b>Definition:</b> z-util.cpp:162</div></div>
+<div class="ttc" id="az-util_8h_html_ae6f62ee76f1932e404ab8b1282a92b57"><div class="ttname"><a href="z-util_8h.html#ae6f62ee76f1932e404ab8b1282a92b57">core_aux</a></div><div class="ttdeci">void(* core_aux)(concptr)</div><div class="ttdef"><b>Definition:</b> z-util.cpp:119</div></div>
+<div class="ttc" id="az-util_8h_html_aeb38ac66d47ce49ae9c94032297bb6c7"><div class="ttname"><a href="z-util_8h.html#aeb38ac66d47ce49ae9c94032297bb6c7">plog_aux</a></div><div class="ttdeci">void(* plog_aux)(concptr)</div><div class="ttdef"><b>Definition:</b> z-util.cpp:68</div></div>
+<div class="ttc" id="az-util_8h_html_aeb5e46fe2b7d6f21bacbdf7d820e6ec0"><div class="ttname"><a href="z-util_8h.html#aeb5e46fe2b7d6f21bacbdf7d820e6ec0">s64b_rshift</a></div><div class="ttdeci">void s64b_rshift(s32b *hi, u32b *lo, int n)</div><div class="ttdoc">64bit非負整数を n 回右シフトする。</div><div class="ttdef"><b>Definition:</b> z-util.cpp:153</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

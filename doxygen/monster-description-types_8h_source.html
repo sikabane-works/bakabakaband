@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/monster/monster-description-types.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f68a7f142a463f095d22e67af9193b2d.html">monster</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">monster-description-types.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="monster-description-types_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53">    3</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53">monsetr_description_type</a> {</div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a63a0eef38123ffdb5876c9988361a098">    4</a></span>&#160;    <a class="code" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a63a0eef38123ffdb5876c9988361a098">MD_NONE</a> = 0x00000000,</div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a7666db426466c817781cb71a5747d570">    5</a></span>&#160;    <a class="code" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a7666db426466c817781cb71a5747d570">MD_OBJECTIVE</a> = 0x00000001, <span class="comment">/* Objective (or Reflexive) */</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a68df4b845defde83cd8182d2d9705dd8">    6</a></span>&#160;    <a class="code" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a68df4b845defde83cd8182d2d9705dd8">MD_POSSESSIVE</a> = 0x00000002, <span class="comment">/* Possessive (or Reflexive) */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a3cc64a47cfcf1222b6b85abac58c97d9">    7</a></span>&#160;    <a class="code" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a3cc64a47cfcf1222b6b85abac58c97d9">MD_INDEF_HIDDEN</a> = 0x00000004, <span class="comment">/* Use indefinites for hidden monsters (&quot;something&quot;) */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a894adb1908a61b731e2db09ff7fe9578">    8</a></span>&#160;    <a class="code" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a894adb1908a61b731e2db09ff7fe9578">MD_INDEF_VISIBLE</a> = 0x00000008, <span class="comment">/* Use indefinites for visible monsters (&quot;a kobold&quot;) */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a42bcc40824fb866f5eb213eb4226ad1f">    9</a></span>&#160;    <a class="code" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a42bcc40824fb866f5eb213eb4226ad1f">MD_PRON_HIDDEN</a> = 0x00000010, <span class="comment">/* Pronominalize hidden monsters */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53aedbf469ee85ff63386f4ca925d785b64">   10</a></span>&#160;    <a class="code" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53aedbf469ee85ff63386f4ca925d785b64">MD_PRON_VISIBLE</a> = 0x00000020, <span class="comment">/* Pronominalize visible monsters */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53ae3e236e88bb7c865e0f3111487ee7785">   11</a></span>&#160;    <a class="code" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53ae3e236e88bb7c865e0f3111487ee7785">MD_ASSUME_HIDDEN</a> = 0x00000040, <span class="comment">/* Assume the monster is hidden */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a3ec3f34e78dda8af6d86d466609fb960">   12</a></span>&#160;    <a class="code" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a3ec3f34e78dda8af6d86d466609fb960">MD_ASSUME_VISIBLE</a> = 0x00000080, <span class="comment">/* Assume the monster is visible */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a6b611d5a19598535e548e9dd77aef43e">   13</a></span>&#160;    <a class="code" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a6b611d5a19598535e548e9dd77aef43e">MD_TRUE_NAME</a> = 0x00000100, <span class="comment">/* Chameleon&#39;s true name */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53ad99560161f019879d6388af001a8f350">   14</a></span>&#160;    <a class="code" href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53ad99560161f019879d6388af001a8f350">MD_IGNORE_HALLU</a> = 0x00000200, <span class="comment">/* Ignore hallucination, and penetrate shape change */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;};</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="monster-description-types_8h.html#ac3c45a2879f4c10d850750fa538bdb4b">   17</a></span>&#160;<span class="preprocessor">#define MD_WRONGDOER_NAME (MD_IGNORE_HALLU | MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE) </span><span class="comment">/* 加害明記向け */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="amonster-description-types_8h_html_a84f8a8e60a272f06e782cde2a2602b53"><div class="ttname"><a href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53">monsetr_description_type</a></div><div class="ttdeci">monsetr_description_type</div><div class="ttdef"><b>Definition:</b> monster-description-types.h:3</div></div>
+<div class="ttc" id="amonster-description-types_8h_html_a84f8a8e60a272f06e782cde2a2602b53a3cc64a47cfcf1222b6b85abac58c97d9"><div class="ttname"><a href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a3cc64a47cfcf1222b6b85abac58c97d9">MD_INDEF_HIDDEN</a></div><div class="ttdeci">@ MD_INDEF_HIDDEN</div><div class="ttdef"><b>Definition:</b> monster-description-types.h:7</div></div>
+<div class="ttc" id="amonster-description-types_8h_html_a84f8a8e60a272f06e782cde2a2602b53a3ec3f34e78dda8af6d86d466609fb960"><div class="ttname"><a href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a3ec3f34e78dda8af6d86d466609fb960">MD_ASSUME_VISIBLE</a></div><div class="ttdeci">@ MD_ASSUME_VISIBLE</div><div class="ttdef"><b>Definition:</b> monster-description-types.h:12</div></div>
+<div class="ttc" id="amonster-description-types_8h_html_a84f8a8e60a272f06e782cde2a2602b53a42bcc40824fb866f5eb213eb4226ad1f"><div class="ttname"><a href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a42bcc40824fb866f5eb213eb4226ad1f">MD_PRON_HIDDEN</a></div><div class="ttdeci">@ MD_PRON_HIDDEN</div><div class="ttdef"><b>Definition:</b> monster-description-types.h:9</div></div>
+<div class="ttc" id="amonster-description-types_8h_html_a84f8a8e60a272f06e782cde2a2602b53a63a0eef38123ffdb5876c9988361a098"><div class="ttname"><a href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a63a0eef38123ffdb5876c9988361a098">MD_NONE</a></div><div class="ttdeci">@ MD_NONE</div><div class="ttdef"><b>Definition:</b> monster-description-types.h:4</div></div>
+<div class="ttc" id="amonster-description-types_8h_html_a84f8a8e60a272f06e782cde2a2602b53a68df4b845defde83cd8182d2d9705dd8"><div class="ttname"><a href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a68df4b845defde83cd8182d2d9705dd8">MD_POSSESSIVE</a></div><div class="ttdeci">@ MD_POSSESSIVE</div><div class="ttdef"><b>Definition:</b> monster-description-types.h:6</div></div>
+<div class="ttc" id="amonster-description-types_8h_html_a84f8a8e60a272f06e782cde2a2602b53a6b611d5a19598535e548e9dd77aef43e"><div class="ttname"><a href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a6b611d5a19598535e548e9dd77aef43e">MD_TRUE_NAME</a></div><div class="ttdeci">@ MD_TRUE_NAME</div><div class="ttdef"><b>Definition:</b> monster-description-types.h:13</div></div>
+<div class="ttc" id="amonster-description-types_8h_html_a84f8a8e60a272f06e782cde2a2602b53a7666db426466c817781cb71a5747d570"><div class="ttname"><a href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a7666db426466c817781cb71a5747d570">MD_OBJECTIVE</a></div><div class="ttdeci">@ MD_OBJECTIVE</div><div class="ttdef"><b>Definition:</b> monster-description-types.h:5</div></div>
+<div class="ttc" id="amonster-description-types_8h_html_a84f8a8e60a272f06e782cde2a2602b53a894adb1908a61b731e2db09ff7fe9578"><div class="ttname"><a href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53a894adb1908a61b731e2db09ff7fe9578">MD_INDEF_VISIBLE</a></div><div class="ttdeci">@ MD_INDEF_VISIBLE</div><div class="ttdef"><b>Definition:</b> monster-description-types.h:8</div></div>
+<div class="ttc" id="amonster-description-types_8h_html_a84f8a8e60a272f06e782cde2a2602b53ad99560161f019879d6388af001a8f350"><div class="ttname"><a href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53ad99560161f019879d6388af001a8f350">MD_IGNORE_HALLU</a></div><div class="ttdeci">@ MD_IGNORE_HALLU</div><div class="ttdef"><b>Definition:</b> monster-description-types.h:14</div></div>
+<div class="ttc" id="amonster-description-types_8h_html_a84f8a8e60a272f06e782cde2a2602b53ae3e236e88bb7c865e0f3111487ee7785"><div class="ttname"><a href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53ae3e236e88bb7c865e0f3111487ee7785">MD_ASSUME_HIDDEN</a></div><div class="ttdeci">@ MD_ASSUME_HIDDEN</div><div class="ttdef"><b>Definition:</b> monster-description-types.h:11</div></div>
+<div class="ttc" id="amonster-description-types_8h_html_a84f8a8e60a272f06e782cde2a2602b53aedbf469ee85ff63386f4ca925d785b64"><div class="ttname"><a href="monster-description-types_8h.html#a84f8a8e60a272f06e782cde2a2602b53aedbf469ee85ff63386f4ca925d785b64">MD_PRON_VISIBLE</a></div><div class="ttdeci">@ MD_PRON_VISIBLE</div><div class="ttdef"><b>Definition:</b> monster-description-types.h:10</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

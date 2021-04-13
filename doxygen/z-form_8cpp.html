@@ -1,0 +1,766 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/term/z-form.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f015963f69ae14c534311f2118856536.html">term</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">z-form.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="z-form_8h_source.html">term/z-form.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="z-util_8h_source.html">term/z-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="z-virt_8h_source.html">term/z-virt.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+z-form.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-form_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2term_2z-form_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2term_2z-form_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2term_2z-form_8cpp">
+<area shape="rect" title=" " alt="" coords="286,5,474,61"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="212,109,311,136"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="335,109,425,136"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="449,109,540,136"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="311,184,433,211"/>
+<area shape="rect" href="h-config_8h.html" title=" " alt="" coords="5,259,131,285"/>
+<area shape="rect" href="h-system_8h.html" title="馬鹿馬鹿蛮怒用システムヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="155,259,290,285"/>
+<area shape="rect" href="h-type_8h.html" title="ゲーム中に用いる変数型定義 / Basic &quot;types&quot;." alt="" coords="314,259,430,285"/>
+<area shape="rect" href="h-define_8h.html" title="馬鹿馬鹿蛮怒で新しく追加された主要なマクロ定義ヘッダ / Define some simple constants" alt="" coords="455,259,580,285"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="604,259,745,285"/>
+<area shape="rect" title=" " alt="" coords="457,184,532,211"/>
+<area shape="rect" title=" " alt="" coords="556,184,639,211"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:a8064d6e7918911dfb0d5b0487cb73d10"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-form_8cpp.html#a8064d6e7918911dfb0d5b0487cb73d10">vstrnfmt_aux_func</a>) (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> max, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> fmt, <a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> arg)</td></tr>
+<tr class="separator:a8064d6e7918911dfb0d5b0487cb73d10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a6e4ee420fc6aa313dd9bc38dd36ee9b1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-form_8cpp.html#a6e4ee420fc6aa313dd9bc38dd36ee9b1">vstrnfmt_aux_dflt</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> max, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> fmt, <a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> arg)</td></tr>
+<tr class="separator:a6e4ee420fc6aa313dd9bc38dd36ee9b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f77331d7fa81a95f2ec614bb814b535"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535">vstrnfmt</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> max, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> fmt, va_list vp)</td></tr>
+<tr class="separator:a4f77331d7fa81a95f2ec614bb814b535"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82b6d3eda6f002871426b21d61fb731b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b">vformat</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> fmt, va_list vp)</td></tr>
+<tr class="separator:a82b6d3eda6f002871426b21d61fb731b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9aa08e088dfad7c074dda437c146fa2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c">strnfmt</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> max, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> fmt,...)</td></tr>
+<tr class="separator:a9aa08e088dfad7c074dda437c146fa2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca76ca27ded4ee78e1b517a47b2710e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-form_8cpp.html#aca76ca27ded4ee78e1b517a47b2710e2">strfmt</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> fmt,...)</td></tr>
+<tr class="separator:aca76ca27ded4ee78e1b517a47b2710e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b3ead44e52e849795675dab45f815c6"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6">format</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> fmt,...)</td></tr>
+<tr class="separator:a6b3ead44e52e849795675dab45f815c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab471f52481da769a4178a8e8cd67d407"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-form_8cpp.html#ab471f52481da769a4178a8e8cd67d407">plog_fmt</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> fmt,...)</td></tr>
+<tr class="separator:ab471f52481da769a4178a8e8cd67d407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7812191f0df9e7a61fd845892b26ea9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-form_8cpp.html#aa7812191f0df9e7a61fd845892b26ea9">quit_fmt</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> fmt,...)</td></tr>
+<tr class="separator:aa7812191f0df9e7a61fd845892b26ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e81df3da0d7f3bb1df14fc8e4259649"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-form_8cpp.html#a6e81df3da0d7f3bb1df14fc8e4259649">core_fmt</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> fmt,...)</td></tr>
+<tr class="separator:a6e81df3da0d7f3bb1df14fc8e4259649"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:aff78b6ceb51f790ab2a6b773da23dd69"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="z-form_8cpp.html#a8064d6e7918911dfb0d5b0487cb73d10">vstrnfmt_aux_func</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-form_8cpp.html#aff78b6ceb51f790ab2a6b773da23dd69">vstrnfmt_aux</a> = <a class="el" href="z-form_8cpp.html#a6e4ee420fc6aa313dd9bc38dd36ee9b1">vstrnfmt_aux_dflt</a></td></tr>
+<tr class="separator:aff78b6ceb51f790ab2a6b773da23dd69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">型定義詳解</h2>
+<a id="a8064d6e7918911dfb0d5b0487cb73d10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8064d6e7918911dfb0d5b0487cb73d10">&#9670;&nbsp;</a></span>vstrnfmt_aux_func</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>(* vstrnfmt_aux_func) (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> max, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> fmt, <a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> arg)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a6e81df3da0d7f3bb1df14fc8e4259649"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e81df3da0d7f3bb1df14fc8e4259649">&#9670;&nbsp;</a></span>core_fmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void core_fmt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-form_8cpp_a6e81df3da0d7f3bb1df14fc8e4259649_cgraph.png" border="0" usemap="#az-form_8cpp_a6e81df3da0d7f3bb1df14fc8e4259649_cgraph" alt=""/></div>
+<map name="az-form_8cpp_a6e81df3da0d7f3bb1df14fc8e4259649_cgraph" id="az-form_8cpp_a6e81df3da0d7f3bb1df14fc8e4259649_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,77,83"/>
+<area shape="rect" href="z-util_8cpp.html#a17041e90abc765de8ac405b2ef4f1f03" title=" " alt="" coords="133,31,180,57"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="125,81,188,108"/>
+<area shape="rect" href="z-util_8cpp.html#add3ff125e6340e76d3c307ebaf757660" title=" " alt="" coords="351,5,397,32"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="248,31,291,57"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="236,81,303,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6b3ead44e52e849795675dab45f815c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b3ead44e52e849795675dab45f815c6">&#9670;&nbsp;</a></span>format()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* format </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-form_8cpp_a6b3ead44e52e849795675dab45f815c6_cgraph.png" border="0" usemap="#az-form_8cpp_a6b3ead44e52e849795675dab45f815c6_cgraph" alt=""/></div>
+<map name="az-form_8cpp_a6b3ead44e52e849795675dab45f815c6_cgraph" id="az-form_8cpp_a6b3ead44e52e849795675dab45f815c6_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,64,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="112,5,175,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="223,5,289,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab471f52481da769a4178a8e8cd67d407"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab471f52481da769a4178a8e8cd67d407">&#9670;&nbsp;</a></span>plog_fmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void plog_fmt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-form_8cpp_ab471f52481da769a4178a8e8cd67d407_cgraph.png" border="0" usemap="#az-form_8cpp_ab471f52481da769a4178a8e8cd67d407_cgraph" alt=""/></div>
+<map name="az-form_8cpp_ab471f52481da769a4178a8e8cd67d407_cgraph" id="az-form_8cpp_ab471f52481da769a4178a8e8cd67d407_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,76,57"/>
+<area shape="rect" href="z-util_8cpp.html#add3ff125e6340e76d3c307ebaf757660" title=" " alt="" coords="132,5,179,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="124,56,187,83"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="235,56,301,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-form_8cpp_ab471f52481da769a4178a8e8cd67d407_icgraph.png" border="0" usemap="#az-form_8cpp_ab471f52481da769a4178a8e8cd67d407_icgraph" alt=""/></div>
+<map name="az-form_8cpp_ab471f52481da769a4178a8e8cd67d407_icgraph" id="az-form_8cpp_ab471f52481da769a4178a8e8cd67d407_icgraph">
+<area shape="rect" title=" " alt="" coords="548,31,619,57"/>
+<area shape="rect" href="main-win-bg_8cpp.html#a11be51713015c5540693081452f452d7" title=" " alt="" coords="411,5,471,32"/>
+<area shape="rect" href="wild_8cpp.html#a5e02916288c174a471a11e7bb2f1f52d" title="荒野の地勢設定を初期化する / Initialize wilderness array" alt="" coords="383,56,500,83"/>
+<area shape="rect" href="wild_8cpp.html#aebeefda4eb79962726c84cc82aea648e" title="荒野の地勢設定全体を初期化するメインルーチン / Initialize arrays for wilderness terrains" alt="" coords="177,56,335,83"/>
+<area shape="rect" href="feature-reader_8cpp.html#a1cb3920b0bee25867842fc8d19b0064a" title="地形の汎用定義をタグを通じて取得する / Initialize feature variables" alt="" coords="5,56,129,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa7812191f0df9e7a61fd845892b26ea9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7812191f0df9e7a61fd845892b26ea9">&#9670;&nbsp;</a></span>quit_fmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quit_fmt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-form_8cpp_aa7812191f0df9e7a61fd845892b26ea9_cgraph.png" border="0" usemap="#az-form_8cpp_aa7812191f0df9e7a61fd845892b26ea9_cgraph" alt=""/></div>
+<map name="az-form_8cpp_aa7812191f0df9e7a61fd845892b26ea9_cgraph" id="az-form_8cpp_aa7812191f0df9e7a61fd845892b26ea9_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,73,57"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="131,5,174,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="121,56,184,83"/>
+<area shape="rect" href="z-util_8cpp.html#add3ff125e6340e76d3c307ebaf757660" title=" " alt="" coords="242,5,289,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="232,56,299,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-form_8cpp_aa7812191f0df9e7a61fd845892b26ea9_icgraph.png" border="0" usemap="#az-form_8cpp_aa7812191f0df9e7a61fd845892b26ea9_icgraph" alt=""/></div>
+<map name="az-form_8cpp_aa7812191f0df9e7a61fd845892b26ea9_icgraph" id="az-form_8cpp_aa7812191f0df9e7a61fd845892b26ea9_icgraph">
+<area shape="rect" title=" " alt="" coords="757,80,825,107"/>
+<area shape="rect" href="main_8cpp.html#adf7814d4b7010ea2ef8f64ce2ea80bb4" title=" " alt="" coords="587,18,683,44"/>
+<area shape="rect" href="process-name_8cpp.html#a4c201aae855594c36a336de8ad51600f" title="プレイヤーの名前をチェックして修正する Process the player name." alt="" coords="560,106,709,132"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="25,30,75,56"/>
+<area shape="rect" href="quick-start_8cpp.html#a78f6862bff917ca6355c3a41445fc73d" title="クイックスタート処理の問い合わせと実行を行う。/Ask whether the player use Quick Start or not." alt="" coords="378,131,493,158"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="359,182,512,208"/>
+<area shape="rect" href="game-play_8cpp.html#a6dcdab54fa3147bf758cb92b13779d23" title=" " alt="" coords="373,30,497,56"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a06012604ab69cf4f6c5b0e51b89a9657" title="名前と生い立ちを設定する" alt="" coords="373,258,498,284"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="5,207,95,234"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="161,182,293,208"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="143,232,311,259"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="184,30,269,56"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="160,283,293,310"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aca76ca27ded4ee78e1b517a47b2710e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca76ca27ded4ee78e1b517a47b2710e2">&#9670;&nbsp;</a></span>strfmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> strfmt </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-form_8cpp_aca76ca27ded4ee78e1b517a47b2710e2_cgraph.png" border="0" usemap="#az-form_8cpp_aca76ca27ded4ee78e1b517a47b2710e2_cgraph" alt=""/></div>
+<map name="az-form_8cpp_aca76ca27ded4ee78e1b517a47b2710e2_cgraph" id="az-form_8cpp_aca76ca27ded4ee78e1b517a47b2710e2_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,60,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="108,5,175,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-form_8cpp_aca76ca27ded4ee78e1b517a47b2710e2_icgraph.png" border="0" usemap="#az-form_8cpp_aca76ca27ded4ee78e1b517a47b2710e2_icgraph" alt=""/></div>
+<map name="az-form_8cpp_aca76ca27ded4ee78e1b517a47b2710e2_icgraph" id="az-form_8cpp_aca76ca27ded4ee78e1b517a47b2710e2_icgraph">
+<area shape="rect" title=" " alt="" coords="503,5,557,32"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#afd6db5b0176c94a18bdf22e1752bf6de" title=" " alt="" coords="312,5,455,32"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3877284386fd0f7550d1bc35fc17b19c" title=" " alt="" coords="153,5,264,32"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a44fa0c05c2f6b2f7e5ee32d34847472f" title="r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す" alt="" coords="5,5,105,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9aa08e088dfad7c074dda437c146fa2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9aa08e088dfad7c074dda437c146fa2c">&#9670;&nbsp;</a></span>strnfmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> strnfmt </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramname"><em>max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-form_8cpp_a9aa08e088dfad7c074dda437c146fa2c_cgraph.png" border="0" usemap="#az-form_8cpp_a9aa08e088dfad7c074dda437c146fa2c_cgraph" alt=""/></div>
+<map name="az-form_8cpp_a9aa08e088dfad7c074dda437c146fa2c_cgraph" id="az-form_8cpp_a9aa08e088dfad7c074dda437c146fa2c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,68,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="116,5,183,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-form_8cpp_a9aa08e088dfad7c074dda437c146fa2c_icgraph.png" border="0" usemap="#az-form_8cpp_a9aa08e088dfad7c074dda437c146fa2c_icgraph" alt=""/></div>
+<map name="az-form_8cpp_a9aa08e088dfad7c074dda437c146fa2c_icgraph" id="az-form_8cpp_a9aa08e088dfad7c074dda437c146fa2c_icgraph">
+<area shape="rect" title=" " alt="" coords="892,903,955,930"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a53bf0b2e4c1aa52241e31f957a28e240" title="エッセンスを実際に付加する" alt="" coords="689,18,788,44"/>
+<area shape="rect" href="learnt-power-getter_8cpp.html#a680fe74b29dd8d65b0ee7482e4252c0b" title=" " alt="" coords="665,80,813,107"/>
+<area shape="rect" href="cmd-racial_8cpp.html#ae9f89468ec59a1fa9e7204e01296db22" title=" " alt="" coords="656,155,821,182"/>
+<area shape="rect" href="knowledge-quests_8cpp.html#a22e2c4c4c1cf9c3374f50baa4b0b94e2" title=" " alt="" coords="633,246,844,272"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#a053bb14d758ca1d9ea84fdedf7e6c01f" title="標準オプションを変更するコマンドのサブルーチン / Interact with some options" alt="" coords="666,486,811,512"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#afe8f13f8df9a35597d9836a0f29ff60c" title="チートオプションを変更するコマンドのメインルーチン Interact with some options for cheating" alt="" coords="661,624,817,651"/>
+<area shape="rect" href="cmd-pet_8cpp.html#a5393c5248eb883f75cebd459120fb959" title="ペットに関するコマンドリストのメインルーチン / Issue a pet command" alt="" coords="223,624,317,651"/>
+<area shape="rect" href="cmd-racial_8cpp.html#af680948d79d56d5f61bb856637db3ae2" title="レイシャル・パワーコマンドのメインルーチン / Allow user to choose a power (racial / mutation) to activate" alt="" coords="197,675,343,702"/>
+<area shape="rect" href="process-death_8cpp.html#ae28b0711f29637713f74286cb654a4e6" title="自動的にプレイヤーステータスをファイルダンプ出力する" alt="" coords="673,776,804,803"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a1cf8ce6181c605bc9e09247323cb95f2" title="元素魔法呪文を選択して取得" alt="" coords="427,776,561,803"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="670,1080,807,1107"/>
+<area shape="rect" href="cmd-mane_8cpp.html#a9803c7ddf3888e2717d6d2e1d10f3154" title="どのものまねを発動するか選択する処理 / Allow user to choose a imitation." alt="" coords="679,1131,799,1158"/>
+<area shape="rect" href="mind-power-getter_8cpp.html#ae10efe533854f8dec5377db176677dc7" title="使用可能な特殊技能を選択する / Allow user to choose a mindcrafter power." alt="" coords="681,979,797,1006"/>
+<area shape="rect" href="mind-sniper_8cpp.html#a948ccca094f40c437b69212b68a38a64" title="スナイパー技能を選択する" alt="" coords="435,878,553,904"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="457,1080,531,1107"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="698,1384,779,1411"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="695,1182,782,1208"/>
+<area shape="rect" href="angband-files_8cpp.html#ab2f18c39aa3ab9c75fed34e21e784901" title=" " alt="" coords="697,1232,780,1259"/>
+<area shape="rect" href="input-key-requester_8cpp.html#a05bf5c41a8377acfa4b6b2487e55323d" title=" " alt="" coords="674,1283,803,1310"/>
+<area shape="rect" href="cmd-magiceat_8cpp.html#a91c575b4ac80c9d0058cf329b943d063" title="プレイヤーのアイテムに関するコマンドの実装2 / Spell/Prayer commands" alt="" coords="671,1334,806,1360"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="684,928,793,955"/>
+<area shape="rect" href="learnt-power-getter_8cpp.html#ab0e5f6b5dc6557f8e7ea5faadedeebb1" title=" " alt="" coords="669,1435,808,1462"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a1ee36ec07842685feb97d0d9295e4985" title="鍛冶コマンドのメインルーチン" alt="" coords="223,264,317,291"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,878,137,904"/>
+<area shape="rect" href="learnt-power-getter_8cpp.html#a104c604b2254baf3047026e1133f0be2" title=" " alt="" coords="425,56,563,83"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a3f43af76328b48eae224de5dca9f85eb" title=" " alt="" coords="421,108,567,149"/>
+<area shape="rect" href="knowledge-quests_8cpp.html#afbb9fd6f1c678dcd2061419ca6821bf2" title=" " alt="" coords="403,238,585,280"/>
+<area shape="rect" href="knowledge-quests_8cpp.html#a97f40378b594bc406f5d1e8c7666dfd3" title=" " alt="" coords="403,173,585,214"/>
+<area shape="rect" href="birth-util_8cpp.html#a11522f9d6a8d4dcb0c7ab5e512a56ce3" title=" " alt="" coords="434,456,554,483"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a7aa3d3d0ec551fe094cb00fe570c5d36" title="@prief 性別選択画面でヘルプを表示させる" alt="" coords="423,508,565,549"/>
+<area shape="rect" href="birth-wizard_8cpp.html#aef4d1d3d6253c68693db30cb565199c9" title=" " alt="" coords="419,574,569,600"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#ab33f054c7b623777d0e9417255966aea" title="標準オプションを変更するコマンドのメインルーチン / Set or unset various options." alt="" coords="435,624,553,651"/>
+<area shape="rect" href="auto-roller_8cpp.html#a404d4d00738dfae673fa78ce11074172" title="オートローラで得たい年齢、身長、体重、威信の基準を決める。" alt="" coords="435,304,553,331"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a5540256c0f91da73b85f91797757f82d" title="領域選択ループ処理" alt="" coords="428,355,560,382"/>
+<area shape="rect" href="auto-roller_8cpp.html#aff45c5d24c8980e11e4c550ff44c1f76" title="オートローラで得たい能力値の基準を決める。" alt="" coords="441,406,547,432"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a929e3c54bcadf03000ba9a7d3c8f95b5" title="元素魔法コマンドのメインルーチン" alt="" coords="209,726,331,752"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a68bac767c848df8fcbf173047aecb1bf" title="現在プレイヤーが使用可能な元素魔法の一覧表示" alt="" coords="185,776,355,803"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="208,1182,332,1208"/>
+<area shape="rect" href="cmd-mane_8cpp.html#ad41a871cd579e9ccde8f56815c5e7bc3" title="ものまねコマンドのメインルーチン / do_cmd_cast calls this function if the player&#39;s class is &#39;imitator&#39;." alt="" coords="217,1232,323,1259"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a1863aceedcc38f71aec92ed4701a5bbc" title="特殊技能コマンドのメインルーチン /" alt="" coords="443,979,545,1006"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a8b198f6a124bf911b2940ed6369708c0" title="現在プレイヤーが使用可能な特殊技能の一覧表示 /" alt="" coords="419,1030,569,1056"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="220,979,320,1006"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="212,1080,328,1107"/>
+<area shape="rect" href="mind-sniper_8cpp.html#a7900343be25b38e7456331fa4360d66c" title="スナイパー技能コマンドのメインルーチン /" alt="" coords="217,878,323,904"/>
+<area shape="rect" href="mind-sniper_8cpp.html#a4e1d6277cbb616502e7124d599f8dc80" title="スナイパー技能コマンドの表示 /" alt="" coords="193,827,347,854"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="217,1131,323,1158"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="197,1359,343,1386"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a4d5688a3c67109567b11632237aad306" title=" " alt="" coords="428,1384,560,1411"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="448,1435,540,1462"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a82b6d3eda6f002871426b21d61fb731b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82b6d3eda6f002871426b21d61fb731b">&#9670;&nbsp;</a></span>vformat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* vformat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>vp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-form_8cpp_a82b6d3eda6f002871426b21d61fb731b_cgraph.png" border="0" usemap="#az-form_8cpp_a82b6d3eda6f002871426b21d61fb731b_cgraph" alt=""/></div>
+<map name="az-form_8cpp_a82b6d3eda6f002871426b21d61fb731b_cgraph" id="az-form_8cpp_a82b6d3eda6f002871426b21d61fb731b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,68,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="116,5,183,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-form_8cpp_a82b6d3eda6f002871426b21d61fb731b_icgraph.png" border="0" usemap="#az-form_8cpp_a82b6d3eda6f002871426b21d61fb731b_icgraph" alt=""/></div>
+<map name="az-form_8cpp_a82b6d3eda6f002871426b21d61fb731b_icgraph" id="az-form_8cpp_a82b6d3eda6f002871426b21d61fb731b_icgraph">
+<area shape="rect" title=" " alt="" coords="597,1177,660,1204"/>
+<area shape="rect" href="z-form_8cpp.html#a6e81df3da0d7f3bb1df14fc8e4259649" title=" " alt="" coords="477,1101,549,1128"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="484,1152,543,1179"/>
+<area shape="rect" href="z-form_8cpp.html#ab471f52481da769a4178a8e8cd67d407" title=" " alt="" coords="478,1203,549,1229"/>
+<area shape="rect" href="z-form_8cpp.html#aa7812191f0df9e7a61fd845892b26ea9" title=" " alt="" coords="479,1253,547,1280"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a53bf0b2e4c1aa52241e31f957a28e240" title="エッセンスを実際に付加する" alt="" coords="281,5,379,32"/>
+<area shape="rect" href="world-loader_8cpp.html#a1c7047f966d5c17a3db3b8a4beb26bf4" title=" " alt="" coords="263,56,397,83"/>
+<area shape="rect" href="autopick-entry_8cpp.html#a2e248e8ecab84f812f2c47c31b615fc1" title=" " alt="" coords="265,107,395,149"/>
+<area shape="rect" href="building-recharger_8cpp.html#ac7c07a23630b5e2f83c38746dabef46c" title="魔道具の使用回数を回復させる施設のメインルーチン / Recharge rods, wands and staffs" alt="" coords="269,173,391,200"/>
+<area shape="rect" href="building-recharger_8cpp.html#ad461a845e07738b38becb2b5c2b3d0b7" title="魔道具の使用回数を回復させる施設の一括処理向けサブルーチン / Recharge rods, wands and staffs" alt="" coords="259,224,401,251"/>
+<area shape="rect" href="building-quest_8cpp.html#a1097810aa1bdf554c3fc579dccf3dece" title="クエスト処理のメインルーチン / Request a quest from the Lord." alt="" coords="282,275,378,301"/>
+<area shape="rect" href="player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="267,325,393,352"/>
+<area shape="rect" href="dungeon_8cpp.html#a1ecdebcef74092729467110b5eecc64c" title="これまでに入ったダンジョンの一覧を表示し、選択させる。" alt="" coords="270,376,390,403"/>
+<area shape="rect" href="cmd-smith_8cpp.html#aa74e35d5d3495d1c2dea9875c6a678c0" title="付加するエッセンスの大別を選択する" alt="" coords="270,427,390,453"/>
+<area shape="rect" href="cmd-visuals_8cpp.html#a647b7c6d910e77f514a0f672ef77906d" title="キャラクタのビジュアルIDを変更する際の対象指定関数" alt="" coords="269,477,391,504"/>
+<area shape="rect" href="building-craft-weapon_8cpp.html#a2b2951f2d62f18d1a7867d4f1524079e" title="武器匠鑑定1回分（オブジェクト2種）の処理。/ Compare weapons" alt="" coords="265,528,395,555"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#a6ec4006dc046fceb9b3d62332a73b9e9" title="地形によるダメージを与える / Deal damage from feature." alt="" coords="256,579,404,605"/>
+<area shape="rect" href="target-describer_8cpp.html#a42b5b6ff5c62d6e5d761927149042663" title=" " alt="" coords="265,629,395,656"/>
+<area shape="rect" href="autopick-describer_8cpp.html#ad23e206d9360a2578d25d785f066fba1" title=" " alt="" coords="256,680,404,707"/>
+<area shape="rect" href="learnt-power-getter_8cpp.html#af8d079d9bb182ca9728d32488aa08606" title=" " alt="" coords="239,731,421,757"/>
+<area shape="rect" href="target-describer_8cpp.html#a5eb15f1cda128462640eb9ff9e0962e6" title=" " alt="" coords="267,781,393,808"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a0135bfc8c87a849f81899430c2261b73" title="個々のアイテム種別について、未鑑定名/鑑定後の正式な名前を取得する処理" alt="" coords="254,832,406,859"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="255,883,405,909"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a6178cb181a98405f079ec04cad8fc3c6" title=" " alt="" coords="273,933,387,960"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a64a4702bb5ebbc97a880fd3a7f217d71" title=" " alt="" coords="265,985,395,1026"/>
+<area shape="rect" href="poker_8cpp.html#a1df984bbf947c214c7080c064dc059a2" title="ポーカーの手札を表示する" alt="" coords="279,1051,381,1077"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a847c50092bfc5100229cf7b35d75a78b" title="所持しているエッセンス一覧を表示する" alt="" coords="271,1101,389,1128"/>
+<area shape="rect" href="knowledge-features_8cpp.html#add6c2343ef9f4e78cadafcd65bc8ef5d" title=" " alt="" coords="263,1152,397,1179"/>
+<area shape="rect" href="status-first-page_8cpp.html#ad33afbddcfa686e92ebb8cd4a2205675" title="キャラ基本情報及び技能値をメインウィンドウに表示する" alt="" coords="267,1203,393,1229"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a3be8fbd88c38f785f20bf3c8b8cd9f5a" title="武器による命中率とダメージの補正を表示する" alt="" coords="261,1253,399,1280"/>
+<area shape="rect" href="display-lore_8cpp.html#a53dff7ffa1f33b81be47bb80f9cb1932" title=" " alt="" coords="265,1304,395,1331"/>
+<area shape="rect" href="display-lore_8cpp.html#a3112087be96ce8f5dc885c703e0bf46b" title=" " alt="" coords="280,1355,380,1381"/>
+<area shape="rect" href="display-lore-status_8cpp.html#aa72cd75a46cf5ee748215abb18661889" title=" " alt="" coords="246,1405,414,1432"/>
+<area shape="rect" href="display-lore-status_8cpp.html#a078c6de1f34820ced89bec5a6c53ec1a" title=" " alt="" coords="255,1456,405,1483"/>
+<area shape="rect" href="display-lore_8cpp.html#a28b7f4231f57ea66b5910cebc2603313" title=" " alt="" coords="255,1507,405,1533"/>
+<area shape="rect" href="display-lore-attacks_8cpp.html#acf056ea672979c2f1020322f9471f3ec" title="[英語]モンスター打撃の1回分を出力する" alt="" coords="245,1557,415,1584"/>
+<area shape="rect" href="display-lore-attacks_8cpp.html#a63acc7377e65b212ee0a0e3a5a2f5aa6" title="モンスターの思い出に打撃に関する情報を出力する" alt="" coords="251,1608,409,1635"/>
+<area shape="rect" href="display-lore-magics_8cpp.html#a21b50803afcdc69126c4cd1f42539ec6" title=" " alt="" coords="250,1659,410,1685"/>
+<area shape="rect" href="display-lore_8cpp.html#aca858057a8987cd0f91b63e78c1d2e46" title=" " alt="" coords="5,1764,183,1791"/>
+<area shape="rect" href="display-lore-status_8cpp.html#ac6baa59386a2f2d495e85ecc720a1e1d" title=" " alt="" coords="231,1760,429,1787"/>
+<area shape="rect" href="display-lore-drops_8cpp.html#a23fba01696580f64ecf70ba30b45e146" title=" " alt="" coords="255,1877,405,1918"/>
+<area shape="rect" href="display-lore-drops_8cpp.html#a869a6e70b09702913a0419a2d89ac4b6" title=" " alt="" coords="16,1913,172,1940"/>
+<area shape="rect" href="display-lore_8cpp.html#aa3e2e0b81d45ea2d4176ce83367a4acb" title=" " alt="" coords="250,1811,410,1853"/>
+<area shape="rect" href="display-lore-status_8cpp.html#a634167d4834d3116f6990e1d8fa169d4" title=" " alt="" coords="243,1993,417,2020"/>
+<area shape="rect" href="display-lore_8cpp.html#ae7a4189f5935669762bf20f1428f7a96" title="モンスターの経験値の思い出を表示する" alt="" coords="257,2044,403,2071"/>
+<area shape="rect" href="display-lore-status_8cpp.html#a5f384d88f1a900235af15a2a28365e91" title=" " alt="" coords="251,2095,409,2121"/>
+<area shape="rect" href="display-lore-status_8cpp.html#a6f6b022a3585e4f0308ff032d84f7acd" title=" " alt="" coords="237,2145,423,2172"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#aabe5e1c0f473a8c35da8b963aa69a36f" title=" " alt="" coords="259,2196,401,2223"/>
+<area shape="rect" href="display-lore-magics_8cpp.html#ab6c07818cfba80b2ac61cd47a886ca8d" title=" " alt="" coords="251,2247,409,2289"/>
+<area shape="rect" href="display-lore_8cpp.html#a5da09eea7643c939658a2129e2b79bb5" title=" " alt="" coords="235,2313,425,2340"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4f77331d7fa81a95f2ec614bb814b535"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f77331d7fa81a95f2ec614bb814b535">&#9670;&nbsp;</a></span>vstrnfmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> vstrnfmt </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramname"><em>max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>vp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-form_8cpp_a4f77331d7fa81a95f2ec614bb814b535_icgraph.png" border="0" usemap="#az-form_8cpp_a4f77331d7fa81a95f2ec614bb814b535_icgraph" alt=""/></div>
+<map name="az-form_8cpp_a4f77331d7fa81a95f2ec614bb814b535_icgraph" id="az-form_8cpp_a4f77331d7fa81a95f2ec614bb814b535_icgraph">
+<area shape="rect" title=" " alt="" coords="591,1275,657,1301"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aaee18f21e18b381f4513bb961081536e" title="prfファイルのフォーマットに従った内容を出力する / Dump a formatted line, using &quot;vstrnfmt()&quot;." alt="" coords="415,113,536,140"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="430,1199,521,1225"/>
+<area shape="rect" href="wizard-messages_8cpp.html#ac7bcb3c013f80e2b3c78401e7ccb3968" title=" " alt="" coords="408,1300,543,1327"/>
+<area shape="rect" href="z-form_8cpp.html#aca76ca27ded4ee78e1b517a47b2710e2" title=" " alt="" coords="448,1351,503,1377"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="444,1249,507,1276"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="444,1401,507,1428"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a91f761522cc6472f2b8db25265b9e686" title="prfファイルをファイルクローズする / Append foot part and close auto dump." alt="" coords="202,63,326,89"/>
+<area shape="rect" href="cmd-dump_8cpp.html#a17a616fd39ca52c5531a875c2a186ee4" title=" " alt="" coords="7,113,118,140"/>
+<area shape="rect" href="cmd-visuals_8cpp.html#a0826877287cc62ecef1432f586181997" title=" " alt="" coords="5,164,120,191"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a0452296a6ddd2bfbb5758565f4b55361" title="キーマップをprefファイルにダンプする / Hack – append all keymaps to the given file" alt="" coords="9,12,116,39"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a13b7a62cca2788a9ba9823d41d1e989c" title="マクロ情報をprefファイルに保存する /" alt="" coords="14,63,111,89"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a5a737ea245d6b917ff81756f8448f258" title="prfファイルをファイルオープンする / Open file to append auto dump." alt="" coords="203,164,325,191"/>
+<area shape="rect" href="player-damage_8cpp.html#a3481d6c6d7162220dcda59d8452cdf4b" title="酸攻撃による装備のAC劣化処理 / Acid has hit the player, attempt to affect some armor." alt="" coords="209,1376,319,1403"/>
+<area shape="rect" href="activation-resistance_8cpp.html#ae2acd077a4b8141b8104787e38d6e1e8" title="酸属性のボールを放ち、酸の一時耐性を得る。" alt="" coords="202,1427,326,1469"/>
+<area shape="rect" href="activation-others_8cpp.html#a54348d20a769a722e4b26178ab920c8e" title=" " alt="" coords="195,1493,333,1520"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="208,1544,320,1571"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a7e7df95c7d970728f75d8a6e0690a003" title=" " alt="" coords="201,1595,327,1621"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#abf2654610ca985e29f43f0fdd0afab81" title=" " alt="" coords="199,1645,329,1672"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a5f4625552656aee45b62542787f7cd08" title=" " alt="" coords="205,1696,323,1723"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#ae2ed383c43b5bff3246052bf1af7dd1a" title=" " alt="" coords="198,1747,330,1773"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a63ea1d58daa7c70ba6e1d45881e93564" title=" " alt="" coords="199,1797,329,1824"/>
+<area shape="rect" href="activation-others_8cpp.html#ac029480297725b0f503c12a3702a3ec0" title=" " alt="" coords="190,1848,338,1875"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#aa407054b85a5676d9379b2f266a7d973" title=" " alt="" coords="168,1899,360,1925"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#af98a7ac4a983838465dfc1daa3f8751f" title=" " alt="" coords="197,1949,331,1976"/>
+<area shape="rect" href="activation-resistance_8cpp.html#a18ac3c6423f799a1864facd660164b3c" title="冷気属性のボールを放ち、冷気の一時耐性を得る。" alt="" coords="202,2001,326,2042"/>
+<area shape="rect" href="activation-others_8cpp.html#aaf589c93b230160aeb92af45f51e7b43" title=" " alt="" coords="191,2067,337,2093"/>
+<area shape="rect" href="activation-breath_8cpp.html#a88f1ece9019c468eafe34f4de0be2c89" title="発動によるブレスの属性をアイテムの耐性から選択し、実行を処理する。/ Dragon breath activation" alt="" coords="187,2117,341,2144"/>
+<area shape="rect" href="activation-resistance_8cpp.html#ac25a4c8492e7fa1cf043d95d255c30d2" title="電撃属性のボールを放ち、電撃の一時耐性を得る。" alt="" coords="202,266,326,307"/>
+<area shape="rect" href="activation-resistance_8cpp.html#a03798012be1b6f65c3c58b59ef4e664c" title="火炎属性のボールを放ち、火炎の一時耐性を得る。" alt="" coords="205,331,323,373"/>
+<area shape="rect" href="activation-others_8cpp.html#a318cab58d04b4ec73f9c109d33b1311f" title=" " alt="" coords="197,397,331,424"/>
+<area shape="rect" href="activation-others_8cpp.html#a89ea553dd95a6d10b63fae68fcae9fd5" title=" " alt="" coords="215,448,313,475"/>
+<area shape="rect" href="activation-resistance_8cpp.html#abd35f33fc3a6ceec9f2e6877f7573e1d" title="毒属性のボールを放ち、毒の一時耐性を得る" alt="" coords="202,499,326,541"/>
+<area shape="rect" href="activation-others_8cpp.html#a4ff6d68a368bdc90062117e16cb079c7" title=" " alt="" coords="185,565,343,592"/>
+<area shape="rect" href="activation-resistance_8cpp.html#a3ccd0bab1f7ea8ea1592ef151d2d5608" title="酸の一時耐性を得る。" alt="" coords="182,616,346,643"/>
+<area shape="rect" href="activation-resistance_8cpp.html#a1d034cf2262978fb6faab24d70cb81d4" title="冷気の一時耐性を得る。" alt="" coords="182,667,346,693"/>
+<area shape="rect" href="activation-resistance_8cpp.html#ab48f0e9ccf6dcf9f070eac1f0692e97f" title="電撃の一時耐性を得る。" alt="" coords="182,717,346,744"/>
+<area shape="rect" href="activation-resistance_8cpp.html#a364b58a1e494bd2ab0bc816502687aee" title="火炎の一時耐性を得る。" alt="" coords="185,768,343,795"/>
+<area shape="rect" href="activation-resistance_8cpp.html#a7d3d375c3a38cf3c95b46991c1f7f66e" title="毒の一時耐性を得る" alt="" coords="182,819,346,845"/>
+<area shape="rect" href="ring-of-power_8cpp.html#af362564a1ca7f975c5fb6699affcae35" title=" " alt="" coords="188,869,340,896"/>
+<area shape="rect" href="activation-others_8cpp.html#ac5dce449590d508e82d78218491a93af" title=" " alt="" coords="197,920,331,947"/>
+<area shape="rect" href="activation-others_8cpp.html#a6091aad36902d33e3f199adbf26e1420" title=" " alt="" coords="190,971,338,997"/>
+<area shape="rect" href="activation-others_8cpp.html#a45786afbb26fa3410797d7e4d2f65f4a" title=" " alt="" coords="179,1021,349,1048"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a53bf0b2e4c1aa52241e31f957a28e240" title="エッセンスを実際に付加する" alt="" coords="215,2168,313,2195"/>
+<area shape="rect" href="patron_8cpp.html#a1f4961e887f307cfb57a13f2e10be04b" title=" " alt="" coords="196,1072,332,1099"/>
+<area shape="rect" href="effect-feature_8cpp.html#ab60eea66f4d858035803d331e84151cc" title="汎用的なビーム/ボルト/ボール系による地形効果処理 / We are called from &quot;project()&quot; to &quot;damage&quot; terrain features" alt="" coords="215,1123,313,1149"/>
+<area shape="rect" href="effect-item_8cpp.html#a535ce53ec7f78b19e787e4289d5dec3f" title="汎用的なビーム/ボルト/ボール系によるアイテムオブジェクトへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="221,1173,307,1200"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="217,1224,311,1251"/>
+<area shape="rect" href="spells-sorcery_8cpp.html#a6cdb24d97057728bc1fa0484c8dfb77d" title="アイテムの価値に応じた錬金術処理 / Turns an object into gold, gain some of its value in a shop" alt="" coords="229,1275,299,1301"/>
+<area shape="rect" href="monster-generator_8cpp.html#acf1750358f03ad12021678aa270bba5e" title="指定地点に1種類のモンスター種族による群れを生成する" alt="" coords="220,1325,308,1352"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6e4ee420fc6aa313dd9bc38dd36ee9b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e4ee420fc6aa313dd9bc38dd36ee9b1">&#9670;&nbsp;</a></span>vstrnfmt_aux_dflt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> vstrnfmt_aux_dflt </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramname"><em>max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="aff78b6ceb51f790ab2a6b773da23dd69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff78b6ceb51f790ab2a6b773da23dd69">&#9670;&nbsp;</a></span>vstrnfmt_aux</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="z-form_8cpp.html#a8064d6e7918911dfb0d5b0487cb73d10">vstrnfmt_aux_func</a> vstrnfmt_aux = <a class="el" href="z-form_8cpp.html#a6e4ee420fc6aa313dd9bc38dd36ee9b1">vstrnfmt_aux_dflt</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分24秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

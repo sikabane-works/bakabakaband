@@ -1,0 +1,30 @@
+<map id="describe_use" name="describe_use">
+<area shape="rect" id="node1" title="所持/装備オブジェクトIDの現在の扱い方の状態表現を返す / Return a string describing how a given item is being worn." alt="" coords="931,525,1029,552"/>
+<area shape="rect" id="node2" href="$cmd-equipment_8cpp.html#ac5a7ea600612007cbf7d105f433213ab" title="装備するコマンドのメインルーチン / Wield or wear a single item from the pack or floor" alt="" coords="759,56,863,83"/>
+<area shape="rect" id="node7" href="$spells-perception_8cpp.html#ac3df176ff52478263f041532247ea900" title="アイテム鑑定のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="769,487,853,513"/>
+<area shape="rect" id="node27" href="$spells-perception_8cpp.html#a37cf235976cfb937acb8a284ed66593e" title="アイテム*鑑定*のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="765,551,858,577"/>
+<area shape="rect" id="node28" href="$simple-perception_8cpp.html#a39c27f6da7bb8717e01a8312fa0e6347" title="疑似鑑定処理" alt="" coords="740,601,883,628"/>
+<area shape="rect" id="node3" href="$input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,56,296,83"/>
+<area shape="rect" id="node5" href="$store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="524,5,692,32"/>
+<area shape="rect" id="node4" href="$player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,56,116,83"/>
+<area shape="rect" id="node6" href="$cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="358,5,462,32"/>
+<area shape="rect" id="node8" href="$activation-others_8cpp.html#a9e937ae4c62ed8b69006d31b86c62cb3" title="switch_activation() から個々のスペルへの依存性をなくすためのシンタックスシュガー" alt="" coords="535,208,681,235"/>
+<area shape="rect" id="node10" href="$cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="527,832,689,859"/>
+<area shape="rect" id="node12" href="$mind-mindcrafter_8cpp.html#a8da07b1c4907a85709c965d06d9038cb" title="超能力の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;mindcrafter&#39;." alt="" coords="532,157,684,184"/>
+<area shape="rect" id="node14" href="$mind-ninja_8cpp.html#ae73c136f3f19a9d9d3691f8894bfad97" title="忍術の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;ninja&#39;." alt="" coords="551,107,665,133"/>
+<area shape="rect" id="node15" href="$realm-arcane_8cpp.html#a7832487e3190270957aa0ada40c22dc0" title="秘術領域魔法の各処理を行う" alt="" coords="550,309,666,336"/>
+<area shape="rect" id="node17" href="$realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="553,411,663,437"/>
+<area shape="rect" id="node18" href="$realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="545,461,671,488"/>
+<area shape="rect" id="node19" href="$realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="561,512,655,539"/>
+<area shape="rect" id="node20" href="$realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="548,360,668,387"/>
+<area shape="rect" id="node21" href="$cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="549,563,667,589"/>
+<area shape="rect" id="node22" href="$read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="571,613,645,640"/>
+<area shape="rect" id="node23" href="$spells-object_8cpp.html#aaefd631f619a96dbcd29521c0ae6d925" title="知識の石の発動を実行する / Do activation of the stone of lore." alt="" coords="549,259,667,285"/>
+<area shape="rect" id="node24" href="$cmd-zaprod_8cpp.html#ae9106d1cdcf01f0497ab6cfc5758bf11" title="ロッドの効果を発動する" alt="" coords="569,664,647,691"/>
+<area shape="rect" id="node25" href="$cmd-usestaff_8cpp.html#a4a284c2f2988d427dd6baac5fcf99fd6" title="杖の効果を発動する" alt="" coords="566,715,650,741"/>
+<area shape="rect" id="node26" href="$racial-switcher_8cpp.html#ac21c6b6a9eae71ce476478232b11f8e0" title="レイシャルと突然変異の技能処理 / Racial powers (and mutations)" alt="" coords="541,766,675,807"/>
+<area shape="rect" id="node9" href="$activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="350,233,470,260"/>
+<area shape="rect" id="node11" href="$cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="351,647,469,673"/>
+<area shape="rect" id="node13" href="$cmd-mind_8cpp.html#a49b73965d0ef306e6cb8a9dc70ed212a" title=" " alt="" coords="344,132,476,159"/>
+<area shape="rect" id="node16" href="$spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="371,411,449,437"/>
+</map>

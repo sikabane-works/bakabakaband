@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player-status/player-stealth.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b229fbdc4ab0cfad60eb3057c8d9c405.html">player-status</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">player-stealth.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="player-stealth_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player-status-base_8h.html">player-status/player-status-base.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="class_player_stealth.html">    4</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_player_stealth.html">PlayerStealth</a> : <span class="keyword">public</span> <a class="code" href="class_player_status_base.html">PlayerStatusBase</a> {</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">using</span> <a class="code" href="class_player_status_base.html#a036eaac2774544966c2acc44dd51059b">PlayerStatusBase::PlayerStatusBase</a>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_player_stealth.html#a3821ce0eff4865c00f1d03ae3a3b338b">    7</a></span>&#160;    <a class="code" href="class_player_stealth.html#a3821ce0eff4865c00f1d03ae3a3b338b">PlayerStealth</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="class_player_stealth.html#a1c6c001728ee9faa408f3c606395fd26">get_bad_flags</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_player_stealth.html#a6c6da49d04060ec223dfc8d4f18c34d5">set_locals</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_stealth.html#ab376685fa951f52716d6e6dc1beb1e2a">race_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_stealth.html#af59345e8511f51cce110396e9c280f07">class_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_stealth.html#aaaa2d3c817ad8c629d8af014f4360e42">class_base_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_stealth.html#a3bb2d8a98e8607311aabadb73ffe161a">personality_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_stealth.html#a1e6a43637239ae7e86a0b167e0c2f9f4">time_effect_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_stealth.html#af43bf0ec687c920b0e99798af12737e3">mutation_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_stealth.html#a5dbb6ac329438d4754ba5a02cdddd94f">set_exception_value</a>(<a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> value) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_player_stealth.html#ab3b76e92c752a7581975562eb851ccd5">is_aggravated_s_fairy</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
+<div class="ttc" id="aclass_player_status_base_html"><div class="ttname"><a href="class_player_status_base.html">PlayerStatusBase</a></div><div class="ttdef"><b>Definition:</b> player-status-base.h:5</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a036eaac2774544966c2acc44dd51059b"><div class="ttname"><a href="class_player_status_base.html#a036eaac2774544966c2acc44dd51059b">PlayerStatusBase::PlayerStatusBase</a></div><div class="ttdeci">PlayerStatusBase()=delete</div></div>
+<div class="ttc" id="aclass_player_stealth_html"><div class="ttname"><a href="class_player_stealth.html">PlayerStealth</a></div><div class="ttdef"><b>Definition:</b> player-stealth.h:4</div></div>
+<div class="ttc" id="aclass_player_stealth_html_a1c6c001728ee9faa408f3c606395fd26"><div class="ttname"><a href="class_player_stealth.html#a1c6c001728ee9faa408f3c606395fd26">PlayerStealth::get_bad_flags</a></div><div class="ttdeci">BIT_FLAGS get_bad_flags() override</div><div class="ttdoc">隠密マイナスフラグ判定</div><div class="ttdef"><b>Definition:</b> player-stealth.cpp:148</div></div>
+<div class="ttc" id="aclass_player_stealth_html_a1e6a43637239ae7e86a0b167e0c2f9f4"><div class="ttname"><a href="class_player_stealth.html#a1e6a43637239ae7e86a0b167e0c2f9f4">PlayerStealth::time_effect_value</a></div><div class="ttdeci">s16b time_effect_value() override</div><div class="ttdoc">隠密能力計算 - 一時効果</div><div class="ttdef"><b>Definition:</b> player-stealth.cpp:107</div></div>
+<div class="ttc" id="aclass_player_stealth_html_a3821ce0eff4865c00f1d03ae3a3b338b"><div class="ttname"><a href="class_player_stealth.html#a3821ce0eff4865c00f1d03ae3a3b338b">PlayerStealth::PlayerStealth</a></div><div class="ttdeci">PlayerStealth()=delete</div></div>
+<div class="ttc" id="aclass_player_stealth_html_a3bb2d8a98e8607311aabadb73ffe161a"><div class="ttname"><a href="class_player_stealth.html#a3bb2d8a98e8607311aabadb73ffe161a">PlayerStealth::personality_value</a></div><div class="ttdeci">s16b personality_value() override</div><div class="ttdoc">隠密能力計算 - 性格</div><div class="ttdef"><b>Definition:</b> player-stealth.cpp:38</div></div>
+<div class="ttc" id="aclass_player_stealth_html_a5dbb6ac329438d4754ba5a02cdddd94f"><div class="ttname"><a href="class_player_stealth.html#a5dbb6ac329438d4754ba5a02cdddd94f">PlayerStealth::set_exception_value</a></div><div class="ttdeci">s16b set_exception_value(s16b value) override</div><div class="ttdoc">隠密能力計算 - 影フェアリー反感時の例外処理</div><div class="ttdef"><b>Definition:</b> player-stealth.cpp:134</div></div>
+<div class="ttc" id="aclass_player_stealth_html_a6c6da49d04060ec223dfc8d4f18c34d5"><div class="ttname"><a href="class_player_stealth.html#a6c6da49d04060ec223dfc8d4f18c34d5">PlayerStealth::set_locals</a></div><div class="ttdeci">void set_locals() override</div><div class="ttdoc">隠密値の上限と下限の設定</div><div class="ttdef"><b>Definition:</b> player-stealth.cpp:164</div></div>
+<div class="ttc" id="aclass_player_stealth_html_aaaa2d3c817ad8c629d8af014f4360e42"><div class="ttname"><a href="class_player_stealth.html#aaaa2d3c817ad8c629d8af014f4360e42">PlayerStealth::class_base_value</a></div><div class="ttdeci">s16b class_base_value() override</div><div class="ttdoc">隠密能力計算 - 職業(基礎値)</div><div class="ttdef"><b>Definition:</b> player-stealth.cpp:50</div></div>
+<div class="ttc" id="aclass_player_stealth_html_ab376685fa951f52716d6e6dc1beb1e2a"><div class="ttname"><a href="class_player_stealth.html#ab376685fa951f52716d6e6dc1beb1e2a">PlayerStealth::race_value</a></div><div class="ttdeci">s16b race_value() override</div><div class="ttdoc">隠密能力計算 - 種族</div><div class="ttdef"><b>Definition:</b> player-stealth.cpp:20</div></div>
+<div class="ttc" id="aclass_player_stealth_html_ab3b76e92c752a7581975562eb851ccd5"><div class="ttname"><a href="class_player_stealth.html#ab3b76e92c752a7581975562eb851ccd5">PlayerStealth::is_aggravated_s_fairy</a></div><div class="ttdeci">bool is_aggravated_s_fairy()</div><div class="ttdef"><b>Definition:</b> player-stealth.cpp:123</div></div>
+<div class="ttc" id="aclass_player_stealth_html_af43bf0ec687c920b0e99798af12737e3"><div class="ttname"><a href="class_player_stealth.html#af43bf0ec687c920b0e99798af12737e3">PlayerStealth::mutation_value</a></div><div class="ttdeci">s16b mutation_value() override</div><div class="ttdoc">隠密能力計算 - 変異</div><div class="ttdef"><b>Definition:</b> player-stealth.cpp:86</div></div>
+<div class="ttc" id="aclass_player_stealth_html_af59345e8511f51cce110396e9c280f07"><div class="ttname"><a href="class_player_stealth.html#af59345e8511f51cce110396e9c280f07">PlayerStealth::class_value</a></div><div class="ttdeci">s16b class_value() override</div><div class="ttdoc">隠密能力計算 - 職業(追加分)</div><div class="ttdef"><b>Definition:</b> player-stealth.cpp:63</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="aplayer-status-base_8h_html"><div class="ttname"><a href="player-status-base_8h.html">player-status-base.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/melee/melee-switcher.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6d77d0d3b006a67320265fc283939a4a.html">melee</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">melee-switcher.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="melee-switcher_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="melee-util_8h.html">melee/melee-util.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="melee-switcher_8h.html#aeb7d4e03921713c92cc70b1d64b1be6f">    6</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="melee-switcher_8h.html#aeb7d4e03921713c92cc70b1d64b1be6f">be_type</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="melee-switcher_8h.html#aeb7d4e03921713c92cc70b1d64b1be6fae11cc53d6b188a0b48bccdf05c3c780a">    7</a></span>&#160;    <a class="code" href="melee-switcher_8h.html#aeb7d4e03921713c92cc70b1d64b1be6fae11cc53d6b188a0b48bccdf05c3c780a">BLOW_EFFECT_TYPE_NONE</a> = 0,</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="melee-switcher_8h.html#aeb7d4e03921713c92cc70b1d64b1be6fae2054d215c654ffb362fe42a1ea372be">    8</a></span>&#160;    <a class="code" href="melee-switcher_8h.html#aeb7d4e03921713c92cc70b1d64b1be6fae2054d215c654ffb362fe42a1ea372be">BLOW_EFFECT_TYPE_FEAR</a> = 1,</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="melee-switcher_8h.html#aeb7d4e03921713c92cc70b1d64b1be6fa05f4619066612e3e66541cd5e299a9e2">    9</a></span>&#160;    <a class="code" href="melee-switcher_8h.html#aeb7d4e03921713c92cc70b1d64b1be6fa05f4619066612e3e66541cd5e299a9e2">BLOW_EFFECT_TYPE_SLEEP</a> = 2,</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="melee-switcher_8h.html#aeb7d4e03921713c92cc70b1d64b1be6fade7230f08a827da0cc3db37ab3bbb804">   10</a></span>&#160;    <a class="code" href="melee-switcher_8h.html#aeb7d4e03921713c92cc70b1d64b1be6fade7230f08a827da0cc3db37ab3bbb804">BLOW_EFFECT_TYPE_HEAL</a> = 3,</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;};</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="melee-switcher_8h.html#a207ffa791b2fa4032dcaca2782d08030">describe_melee_method</a>(<a class="code" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="code" href="structmam__type.html">mam_type</a> *mam_ptr);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> <a class="code" href="melee-switcher_8h.html#a26526a37b98f5208b627891dcc405fa4">decide_monster_attack_effect</a>(<a class="code" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="code" href="structmam__type.html">mam_type</a> *mam_ptr);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> <a class="code" href="melee-switcher_8h.html#af9388631a17c92baef2c23ce40963c28">describe_monster_missed_monster</a>(<a class="code" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="code" href="structmam__type.html">mam_type</a> *mam_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="amelee-switcher_8h_html_a207ffa791b2fa4032dcaca2782d08030"><div class="ttname"><a href="melee-switcher_8h.html#a207ffa791b2fa4032dcaca2782d08030">describe_melee_method</a></div><div class="ttdeci">void describe_melee_method(player_type *subject_ptr, mam_type *mam_ptr)</div><div class="ttdoc">モンスター同士が乱闘を起こした時の攻撃種別をスイッチングする</div><div class="ttdef"><b>Definition:</b> melee-switcher.cpp:14</div></div>
+<div class="ttc" id="amelee-switcher_8h_html_a26526a37b98f5208b627891dcc405fa4"><div class="ttname"><a href="melee-switcher_8h.html#a26526a37b98f5208b627891dcc405fa4">decide_monster_attack_effect</a></div><div class="ttdeci">void decide_monster_attack_effect(player_type *subject_ptr, mam_type *mam_ptr)</div><div class="ttdef"><b>Definition:</b> melee-switcher.cpp:148</div></div>
+<div class="ttc" id="amelee-switcher_8h_html_aeb7d4e03921713c92cc70b1d64b1be6f"><div class="ttname"><a href="melee-switcher_8h.html#aeb7d4e03921713c92cc70b1d64b1be6f">be_type</a></div><div class="ttdeci">be_type</div><div class="ttdef"><b>Definition:</b> melee-switcher.h:6</div></div>
+<div class="ttc" id="amelee-switcher_8h_html_aeb7d4e03921713c92cc70b1d64b1be6fa05f4619066612e3e66541cd5e299a9e2"><div class="ttname"><a href="melee-switcher_8h.html#aeb7d4e03921713c92cc70b1d64b1be6fa05f4619066612e3e66541cd5e299a9e2">BLOW_EFFECT_TYPE_SLEEP</a></div><div class="ttdeci">@ BLOW_EFFECT_TYPE_SLEEP</div><div class="ttdef"><b>Definition:</b> melee-switcher.h:9</div></div>
+<div class="ttc" id="amelee-switcher_8h_html_aeb7d4e03921713c92cc70b1d64b1be6fade7230f08a827da0cc3db37ab3bbb804"><div class="ttname"><a href="melee-switcher_8h.html#aeb7d4e03921713c92cc70b1d64b1be6fade7230f08a827da0cc3db37ab3bbb804">BLOW_EFFECT_TYPE_HEAL</a></div><div class="ttdeci">@ BLOW_EFFECT_TYPE_HEAL</div><div class="ttdef"><b>Definition:</b> melee-switcher.h:10</div></div>
+<div class="ttc" id="amelee-switcher_8h_html_aeb7d4e03921713c92cc70b1d64b1be6fae11cc53d6b188a0b48bccdf05c3c780a"><div class="ttname"><a href="melee-switcher_8h.html#aeb7d4e03921713c92cc70b1d64b1be6fae11cc53d6b188a0b48bccdf05c3c780a">BLOW_EFFECT_TYPE_NONE</a></div><div class="ttdeci">@ BLOW_EFFECT_TYPE_NONE</div><div class="ttdef"><b>Definition:</b> melee-switcher.h:7</div></div>
+<div class="ttc" id="amelee-switcher_8h_html_aeb7d4e03921713c92cc70b1d64b1be6fae2054d215c654ffb362fe42a1ea372be"><div class="ttname"><a href="melee-switcher_8h.html#aeb7d4e03921713c92cc70b1d64b1be6fae2054d215c654ffb362fe42a1ea372be">BLOW_EFFECT_TYPE_FEAR</a></div><div class="ttdeci">@ BLOW_EFFECT_TYPE_FEAR</div><div class="ttdef"><b>Definition:</b> melee-switcher.h:8</div></div>
+<div class="ttc" id="amelee-switcher_8h_html_af9388631a17c92baef2c23ce40963c28"><div class="ttname"><a href="melee-switcher_8h.html#af9388631a17c92baef2c23ce40963c28">describe_monster_missed_monster</a></div><div class="ttdeci">void describe_monster_missed_monster(player_type *subject_ptr, mam_type *mam_ptr)</div><div class="ttdef"><b>Definition:</b> melee-switcher.cpp:248</div></div>
+<div class="ttc" id="amelee-util_8h_html"><div class="ttname"><a href="melee-util_8h.html">melee-util.h</a></div></div>
+<div class="ttc" id="astructmam__type_html"><div class="ttname"><a href="structmam__type.html">mam_type</a></div><div class="ttdef"><b>Definition:</b> melee-util.h:10</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

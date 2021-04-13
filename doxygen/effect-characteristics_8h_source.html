@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/effect/effect-characteristics.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dda8561cf3711d1096db62b1f19b56a8.html">effect</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">effect-characteristics.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="effect-characteristics_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * project()関数に用いられる、遠隔攻撃特性ビットフラグ / Bit flags for the &quot;project()&quot; function</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2fa">    6</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2fa">effect_characteristics</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa2f9d5b6207cb34b95d5a20ad8e0dcf9d">    7</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa2f9d5b6207cb34b95d5a20ad8e0dcf9d">PROJECT_NONE</a> = 0x0000,</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faaab058a1893cae8e0a97f21b22148fdcd">    8</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faaab058a1893cae8e0a97f21b22148fdcd">PROJECT_JUMP</a> = 0x0001, </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faaa357de5d2029b3f82c171b917b9eb447">    9</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faaa357de5d2029b3f82c171b917b9eb447">PROJECT_BEAM</a> = 0x0002, </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faae6672b3de414c3b7f3ad5dfdf072979a">   10</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faae6672b3de414c3b7f3ad5dfdf072979a">PROJECT_THRU</a> = 0x0004, </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa985cbc7f62408d4699db83cbf8ea8f48">   11</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa985cbc7f62408d4699db83cbf8ea8f48">PROJECT_STOP</a> = 0x0008, </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa74769ccdb511a72455806e02d73d6916">   12</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa74769ccdb511a72455806e02d73d6916">PROJECT_GRID</a> = 0x0010, </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa3745735f1839a0d25846366659132a60">   13</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa3745735f1839a0d25846366659132a60">PROJECT_ITEM</a> = 0x0020, </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa2f86046f853e40c30ccb65a995c6ca2c">   14</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa2f86046f853e40c30ccb65a995c6ca2c">PROJECT_KILL</a> = 0x0040, </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa7fd81045eebe8052bb1b2f6da77bbd3f">   15</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa7fd81045eebe8052bb1b2f6da77bbd3f">PROJECT_HIDE</a> = 0x0080, </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa7454dd71dfda878c23a8bfd8f39e9168">   16</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa7454dd71dfda878c23a8bfd8f39e9168">PROJECT_DISI</a> = 0x0100, </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa4e0c0b9dbbe8edf9a1e53b41771d657b">   17</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa4e0c0b9dbbe8edf9a1e53b41771d657b">PROJECT_PLAYER</a> = 0x0200, </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa07b488a0aeba1dd09e1c133bae0cc50e">   18</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa07b488a0aeba1dd09e1c133bae0cc50e">PROJECT_AIMED</a> = 0x0400, </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faaa64d63af132a6e67c9bf350e81f07b38">   19</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faaa64d63af132a6e67c9bf350e81f07b38">PROJECT_REFLECTABLE</a> = 0x0800, </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa206d8e50ab76314994463373ac4c2cf0">   20</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa206d8e50ab76314994463373ac4c2cf0">PROJECT_NO_HANGEKI</a> = 0x1000, </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa7587e740741e14fb11af04dc1a2ef24b">   21</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa7587e740741e14fb11af04dc1a2ef24b">PROJECT_PATH</a> = 0x2000, </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa4f5d8f522c3498a9a11331da07e31730">   22</a></span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa4f5d8f522c3498a9a11331da07e31730">PROJECT_FAST</a> = 0x4000, </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa4cc5dd3eacfd7c95670e4a11bc66df5c">PROJECT_LOS</a> = 0x8000 </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa4cc5dd3eacfd7c95670e4a11bc66df5c">   24</a></span>&#160;};</div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2fa"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2fa">effect_characteristics</a></div><div class="ttdeci">effect_characteristics</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:6</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faa07b488a0aeba1dd09e1c133bae0cc50e"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa07b488a0aeba1dd09e1c133bae0cc50e">PROJECT_AIMED</a></div><div class="ttdeci">@ PROJECT_AIMED</div><div class="ttdoc">/ Target is only player or monster, so don't affect another.</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:18</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faa206d8e50ab76314994463373ac4c2cf0"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa206d8e50ab76314994463373ac4c2cf0">PROJECT_NO_HANGEKI</a></div><div class="ttdeci">@ PROJECT_NO_HANGEKI</div><div class="ttdoc">反撃させない / Avoid counter attacks of monsters</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:20</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faa2f86046f853e40c30ccb65a995c6ca2c"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa2f86046f853e40c30ccb65a995c6ca2c">PROJECT_KILL</a></div><div class="ttdeci">@ PROJECT_KILL</div><div class="ttdoc">射程内のモンスターに影響を及ぼす / Affect each monster in the &quot;blast area&quot; in some way</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:14</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faa2f9d5b6207cb34b95d5a20ad8e0dcf9d"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa2f9d5b6207cb34b95d5a20ad8e0dcf9d">PROJECT_NONE</a></div><div class="ttdeci">@ PROJECT_NONE</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:7</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faa3745735f1839a0d25846366659132a60"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa3745735f1839a0d25846366659132a60">PROJECT_ITEM</a></div><div class="ttdeci">@ PROJECT_ITEM</div><div class="ttdoc">射程内のアイテムに影響を及ぼす / Affect each object in the &quot;blast area&quot; in some way</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:13</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faa4cc5dd3eacfd7c95670e4a11bc66df5c"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa4cc5dd3eacfd7c95670e4a11bc66df5c">PROJECT_LOS</a></div><div class="ttdeci">@ PROJECT_LOS</div><div class="ttdoc">視線が通っているか(？) / Line of sight</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:23</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faa4e0c0b9dbbe8edf9a1e53b41771d657b"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa4e0c0b9dbbe8edf9a1e53b41771d657b">PROJECT_PLAYER</a></div><div class="ttdeci">@ PROJECT_PLAYER</div><div class="ttdoc">プレーヤー自身をターゲットにする (騎乗中) / Main target is player (used for riding player)</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:17</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faa4f5d8f522c3498a9a11331da07e31730"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa4f5d8f522c3498a9a11331da07e31730">PROJECT_FAST</a></div><div class="ttdeci">@ PROJECT_FAST</div><div class="ttdoc">炸裂するまで画面上に表示しない / Hide &quot;visual&quot; of flying bolts until blast</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:22</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faa7454dd71dfda878c23a8bfd8f39e9168"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa7454dd71dfda878c23a8bfd8f39e9168">PROJECT_DISI</a></div><div class="ttdeci">@ PROJECT_DISI</div><div class="ttdoc">永久壁でない壁を破壊する / Disintegrate non-permanent features</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:16</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faa74769ccdb511a72455806e02d73d6916"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa74769ccdb511a72455806e02d73d6916">PROJECT_GRID</a></div><div class="ttdeci">@ PROJECT_GRID</div><div class="ttdoc">射程内の地形に影響を及ぼす / Affect each grid in the &quot;blast area&quot; in some way</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:12</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faa7587e740741e14fb11af04dc1a2ef24b"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa7587e740741e14fb11af04dc1a2ef24b">PROJECT_PATH</a></div><div class="ttdeci">@ PROJECT_PATH</div><div class="ttdoc">軌跡の表示 / Only used for printing project path</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:21</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faa7fd81045eebe8052bb1b2f6da77bbd3f"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa7fd81045eebe8052bb1b2f6da77bbd3f">PROJECT_HIDE</a></div><div class="ttdeci">@ PROJECT_HIDE</div><div class="ttdoc">画面上にフィードバック表示させない / Disable &quot;visual&quot; feedback from projection</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:15</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faa985cbc7f62408d4699db83cbf8ea8f48"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faa985cbc7f62408d4699db83cbf8ea8f48">PROJECT_STOP</a></div><div class="ttdeci">@ PROJECT_STOP</div><div class="ttdoc">道中にプレイヤーかモンスターがいた時点で到達地点を更新して停止する(壁や森はPROJECT_DISIがない限り最初から貫通しない)</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:11</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faaa357de5d2029b3f82c171b917b9eb447"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faaa357de5d2029b3f82c171b917b9eb447">PROJECT_BEAM</a></div><div class="ttdeci">@ PROJECT_BEAM</div><div class="ttdoc">ビーム範囲を持つ。 / Work as a beam weapon (affect every grid passed through)</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:9</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faaa64d63af132a6e67c9bf350e81f07b38"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faaa64d63af132a6e67c9bf350e81f07b38">PROJECT_REFLECTABLE</a></div><div class="ttdeci">@ PROJECT_REFLECTABLE</div><div class="ttdoc">反射可能(ボルト系魔法に利用) / Refrectable spell attacks (used for &quot;bolts&quot;)</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:19</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faaab058a1893cae8e0a97f21b22148fdcd"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faaab058a1893cae8e0a97f21b22148fdcd">PROJECT_JUMP</a></div><div class="ttdeci">@ PROJECT_JUMP</div><div class="ttdoc">発動者からの軌跡を持たず、指定地点に直接発生する(予め置いたトラップ、上空からの発生などのイメージ) / Jump directly to the target location (this is a ...</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:8</div></div>
+<div class="ttc" id="aeffect-characteristics_8h_html_abc66a2e788fc144284d2f5ca7fc4d2faae6672b3de414c3b7f3ad5dfdf072979a"><div class="ttname"><a href="effect-characteristics_8h.html#abc66a2e788fc144284d2f5ca7fc4d2faae6672b3de414c3b7f3ad5dfdf072979a">PROJECT_THRU</a></div><div class="ttdeci">@ PROJECT_THRU</div><div class="ttdoc">目標地点に到達しても射程と遮蔽の限り引き延ばす。 / Continue &quot;through&quot; the target (used for &quot;bolts&quot;/&quot;beams&quot;)</div><div class="ttdef"><b>Definition:</b> effect-characteristics.h:10</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

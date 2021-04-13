@@ -1,0 +1,32 @@
+<map id="choose_attack_spell" name="choose_attack_spell">
+<area shape="rect" id="node1" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="5,816,147,843"/>
+<area shape="rect" id="node2" href="$mspell-judgement_8cpp.html#ae0ce63fe326ff866098e3cccee96749a" title="モンスターがプレイヤーに魔力消去を与えるべきかを判定するルーチン Check should monster cast dispel spell." alt="" coords="225,259,324,285"/>
+<area shape="rect" id="node3" href="$class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="635,411,745,437"/>
+<area shape="rect" id="node13" href="$player-status_8cpp.html#af6be48df20384df551b88a2466d159fb" title=" " alt="" coords="447,5,518,32"/>
+<area shape="rect" id="node14" href="$monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="403,461,563,488"/>
+<area shape="rect" id="node15" href="$geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="239,563,310,589"/>
+<area shape="rect" id="node16" href="$monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="195,613,355,640"/>
+<area shape="rect" id="node17" href="$mspell-selector_8cpp.html#acf83736e867e377394493a13f5c1bd95" title="ID値が妨害目的に適したモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for annoying the player." alt="" coords="229,664,320,691"/>
+<area shape="rect" id="node19" href="$mspell-selector_8cpp.html#a2f1ed1a2f6f8670d72964a7d46faed1c" title="ID値が攻撃魔法のIDかどうかを返す / Return TRUE if a spell is good for hurting the player (directly)." alt="" coords="229,715,321,741"/>
+<area shape="rect" id="node20" href="$mspell-selector_8cpp.html#aecbf1ef11970f92c5416b4555eddb9d9" title="ID値が魔力消去かどうかを返す / Return TRUE if a spell is good for dispel." alt="" coords="229,765,320,792"/>
+<area shape="rect" id="node21" href="$mspell-selector_8cpp.html#ac5770fc273d5bb7ab1a4d349eaab455a" title="ID値が退避目的に適したモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for escaping." alt="" coords="225,816,324,843"/>
+<area shape="rect" id="node22" href="$mspell-selector_8cpp.html#a1751b99fa6b43814a2e8a76074d03058" title="ID値が加速するモンスター魔法IDかどうかを返す / Return TRUE if a spell hastes." alt="" coords="231,867,319,893"/>
+<area shape="rect" id="node23" href="$mspell-selector_8cpp.html#a23cd3e11073ffbf2f794a1248862bc4d" title="ID値が治癒魔法かどうかを返す / Return TRUE if a spell is good for healing." alt="" coords="235,917,315,944"/>
+<area shape="rect" id="node24" href="$mspell-selector_8cpp.html#a8092a265109a1b089c46a1bab34a20f0" title="ID値が無敵化するモンスター魔法IDかどうかを返す / Return TRUE if a spell makes invulnerable." alt="" coords="225,968,324,995"/>
+<area shape="rect" id="node25" href="$mspell-selector_8cpp.html#ad716017fdb77d4bc128f93e1e3fd7fee" title="ID値が光の剣のモンスター魔法IDかどうかを返す / Return TRUE if a spell psycho&#45;spear." alt="" coords="222,1019,327,1045"/>
+<area shape="rect" id="node26" href="$mspell-selector_8cpp.html#a8b2508a9ae89796b0dc5f29b5eb694cb" title="ID値が死者復活処理かどうかを返す / Return TRUE if a spell is good for annoying the player." alt="" coords="233,1069,317,1096"/>
+<area shape="rect" id="node27" href="$mspell-selector_8cpp.html#a94ee709585dc5af65ab945f21d5a634c" title="ID値が特別効果のモンスター魔法IDかどうかを返す / Return TRUE if a spell special." alt="" coords="226,1120,323,1147"/>
+<area shape="rect" id="node28" href="$mspell-selector_8cpp.html#ad9163de86c83e4257aa18045c03588ef" title="ID値が召喚型のモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for annoying the player." alt="" coords="221,1171,328,1197"/>
+<area shape="rect" id="node29" href="$mspell-selector_8cpp.html#a94d119465c9394ff5df5a4e95ce4407b" title="ID値が戦術的なモンスター魔法IDかどうかを返す / Return TRUE if a spell is good in a tactical situation." alt="" coords="231,1221,319,1248"/>
+<area shape="rect" id="node30" href="$mspell-selector_8cpp.html#af1773c02b32ec69e9b0e8e0a2a192524" title="ID値が時間停止を行うモンスター魔法IDかどうかを返す / Return TRUE if a spell world." alt="" coords="231,1272,318,1299"/>
+<area shape="rect" id="node4" href="$class_flag_group.html#a57a928e50a2473024e69c349bcd62525" title="入力イテレータで指定した範囲のリストに含まれるフラグのいずれかがONかどうかを調べる" alt="" coords="405,411,561,437"/>
+<area shape="rect" id="node5" href="$player-status-flags_8cpp.html#a1676b47cc24010b348bc26769fd4bae5" title=" " alt="" coords="419,259,546,285"/>
+<area shape="rect" id="node8" href="$player-status-flags_8cpp.html#a1ef7b925805f17575d38db4d7ec565ef" title=" " alt="" coords="419,208,546,235"/>
+<area shape="rect" id="node9" href="$player-status-flags_8cpp.html#a2ec20a346ee5ea8fb5c8d235ad0148cf" title=" " alt="" coords="419,309,546,336"/>
+<area shape="rect" id="node10" href="$player-status-flags_8cpp.html#a3c8e37ad1c2ecfdc389e4070fda2c1c0" title=" " alt="" coords="423,157,543,184"/>
+<area shape="rect" id="node11" href="$player-status_8cpp.html#a5dc31dcacd506df65ec4babd972ca7dd" title=" " alt="" coords="453,56,513,83"/>
+<area shape="rect" id="node12" href="$player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="637,56,743,83"/>
+<area shape="rect" id="node6" href="$player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="611,259,769,285"/>
+<area shape="rect" id="node7" href="$mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="623,208,757,235"/>
+<area shape="rect" id="node18" href="$mspell-selector_8cpp.html#abfe3094f6a1c3d58bd3ab805b52ddaf0" title="モンスターが詠唱する魔法を選択する処理" alt="" coords="422,715,543,741"/>
+</map>

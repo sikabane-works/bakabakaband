@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player/player-race.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_975424cdae97a07db69e55371758444e.html">player</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">player-race.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="player-race_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="player-race_8h.html#ae8cfafe3dfc09d1771e1a38655b81041">    1</a></span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * Constant for kinds of mimic</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="player-race_8h.html#a39d5997b5d1285b541c9e163cbcec222">    8</a></span>&#160;<span class="preprocessor">#define MIMIC_NONE       0</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="player-race_8h.html#af4e7e11d0efee0153ace0ad1121defb9">    9</a></span>&#160;<span class="preprocessor">#define MIMIC_DEMON      1</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="player-race_8h.html#a9623a083fdc0bd6171d79cb950ef4177">   10</a></span>&#160;<span class="preprocessor">#define MIMIC_DEMON_LORD 2</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="player-race_8h.html#ab342537fdc1418eddf46cad46a6302cc">   11</a></span>&#160;<span class="preprocessor">#define MIMIC_VAMPIRE    3</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="player-race_8h.html#a55ed1013b0b580d6ea51ef1ec6be7545">   13</a></span>&#160;<span class="preprocessor">#define MIMIC_FLAGS choice</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="player-race_8h.html#a41ba122c9ee90170cbae2b5705b53e3e">   14</a></span>&#160;<span class="preprocessor">#define MIMIC_IS_NONLIVING 0x00000001</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="player-race_8h.html#a9c18656ab64aec50f7c64fd519f29fa9">   15</a></span>&#160;<span class="preprocessor">#define MIMIC_IS_DEMON     0x00000002</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="player-race_8h.html#ae78452fcd176dfb2cbfdc1b766d9de0a">   16</a></span>&#160;<span class="preprocessor">#define MIMIC_IS_UNDEAD    0x00000004</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * Player racial info</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structplayer__race.html">player_race</a> <a class="code" href="structplayer__race.html">player_race</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structplayer__race.html">   24</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplayer__race.html">player_race</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structplayer__race.html#a1c526cd2981d969c89ba6b1faa04c0cc">   26</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structplayer__race.html#a1c526cd2981d969c89ba6b1faa04c0cc">title</a>;          <span class="comment">/* Type of race */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#ifdef JP</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> E_title;        <span class="comment">/* 英語種族 */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structplayer__race.html#a40f2d757d659a9549b43a7da5de88582">   31</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__race.html#a40f2d757d659a9549b43a7da5de88582">r_adj</a>[6];      <span class="comment">/* Racial stat bonuses */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structplayer__race.html#a4e2b7cafb7717e493ec2c0a5ef55635d">   33</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__race.html#a4e2b7cafb7717e493ec2c0a5ef55635d">r_dis</a>;         <span class="comment">/* disarming */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structplayer__race.html#a6344cdd33be679e8a39a7cebaa4e38f9">   34</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__race.html#a6344cdd33be679e8a39a7cebaa4e38f9">r_dev</a>;         <span class="comment">/* magic devices */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structplayer__race.html#a10f8d5752e68114cb96707aeb7798a35">   35</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__race.html#a10f8d5752e68114cb96707aeb7798a35">r_sav</a>;         <span class="comment">/* saving throw */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structplayer__race.html#ac1c3253069a64c323be601b0f1815c79">   36</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__race.html#ac1c3253069a64c323be601b0f1815c79">r_stl</a>;         <span class="comment">/* stealth */</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structplayer__race.html#a7cfaa27d1e6697bebc2d73e2cdd55aeb">   37</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__race.html#a7cfaa27d1e6697bebc2d73e2cdd55aeb">r_srh</a>;         <span class="comment">/* search ability */</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structplayer__race.html#a4fc4a7134b5085033b6b74405d20ecd6">   38</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__race.html#a4fc4a7134b5085033b6b74405d20ecd6">r_fos</a>;         <span class="comment">/* search frequency */</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structplayer__race.html#a5f189182438988d65aa6097d588cd72a">   39</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__race.html#a5f189182438988d65aa6097d588cd72a">r_thn</a>;         <span class="comment">/* combat (normal) */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structplayer__race.html#abdc54977751d6ae485390402298b3c46">   40</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__race.html#abdc54977751d6ae485390402298b3c46">r_thb</a>;         <span class="comment">/* combat (shooting) */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structplayer__race.html#a04a3964fcf27a81396909baa72634895">   42</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__race.html#a04a3964fcf27a81396909baa72634895">r_mhp</a>;         <span class="comment">/* Race hit-dice modifier */</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structplayer__race.html#a7431f04e7fafacda2c9be8f1d03fbc7c">   43</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__race.html#a7431f04e7fafacda2c9be8f1d03fbc7c">r_exp</a>;         <span class="comment">/* Race experience factor */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structplayer__race.html#ad369cd90e865fec9bd2a63461b3960b2">   45</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__race.html#ad369cd90e865fec9bd2a63461b3960b2">b_age</a>;         <span class="comment">/* base age */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structplayer__race.html#a880554f3bf7dcc7a94b250f4dd36c8e8">   46</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__race.html#a880554f3bf7dcc7a94b250f4dd36c8e8">m_age</a>;         <span class="comment">/* mod age */</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structplayer__race.html#ada241bb623a8aca922c633b60bafbbdb">   48</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__race.html#ada241bb623a8aca922c633b60bafbbdb">m_b_ht</a>;        <span class="comment">/* base height (males) */</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structplayer__race.html#ab3f1a9b3d4f98f9f557c445cd952e35a">   49</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__race.html#ab3f1a9b3d4f98f9f557c445cd952e35a">m_m_ht</a>;        <span class="comment">/* mod height (males) */</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structplayer__race.html#a4c75f9b016bdea772e2221980c0b7400">   50</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__race.html#a4c75f9b016bdea772e2221980c0b7400">m_b_wt</a>;        <span class="comment">/* base weight (males) */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="structplayer__race.html#ac2da4118f99e955a8de378e8568e1bf2">   51</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__race.html#ac2da4118f99e955a8de378e8568e1bf2">m_m_wt</a>;        <span class="comment">/* mod weight (males) */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structplayer__race.html#aefe59c799fbc9c1b51efff6f9404905b">   53</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__race.html#aefe59c799fbc9c1b51efff6f9404905b">f_b_ht</a>;        <span class="comment">/* base height (females) */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structplayer__race.html#a36cf958acadfd59087ca62cab1896660">   54</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__race.html#a36cf958acadfd59087ca62cab1896660">f_m_ht</a>;        <span class="comment">/* mod height (females)   */</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structplayer__race.html#a45213e2977f6eee7421e230dbe294785">   55</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__race.html#a45213e2977f6eee7421e230dbe294785">f_b_wt</a>;        <span class="comment">/* base weight (females) */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structplayer__race.html#affe285c5afede5d4698db084e499df34">   56</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__race.html#affe285c5afede5d4698db084e499df34">f_m_wt</a>;        <span class="comment">/* mod weight (females) */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structplayer__race.html#a764cb6726d70f7769e8fe5e8f982bf10">   58</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__race.html#a764cb6726d70f7769e8fe5e8f982bf10">infra</a>;         <span class="comment">/* Infra-vision range */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structplayer__race.html#af4929ce8290d343e0414402fdc2b2164">   60</a></span>&#160;    <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="structplayer__race.html#af4929ce8290d343e0414402fdc2b2164">choice</a>;        <span class="comment">/* Legal class choices */</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/*    byte choice_xtra;   */</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="player-race_8h.html#a57399268085f4682907643780732105f">   64</a></span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structplayer__race.html">player_race</a> *<a class="code" href="player-race_8h.html#a08b5d97c304599e7cce3163f903aba48">rp_ptr</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structplayer__type.html">player_type</a> <a class="code" href="structplayer__type.html">player_type</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<a class="code" href="h-type_8h.html#a956852f26de2bab8053529224e40dd37">SYMBOL_CODE</a> <a class="code" href="player-race_8h.html#a0c26b401291c3745eea07ada7a2893dc">get_summon_symbol_from_player</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="player-race_8h.html#aa21dcdd10c97248e5d6879ca37890bbf">is_specific_player_race</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="player-race-types_8h.html#afd890f7607910d11808132db27cf4009">player_race_type</a> <a class="code" href="structplayer__type.html#ae26c5a61d9a62c4c0e19bf6d009f1f60">prace</a>);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_a956852f26de2bab8053529224e40dd37"><div class="ttname"><a href="h-type_8h.html#a956852f26de2bab8053529224e40dd37">SYMBOL_CODE</a></div><div class="ttdeci">char SYMBOL_CODE</div><div class="ttdoc">キャラの文字の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:216</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="ah-type_8h_html_af7a1de980667931f896ae6a820f0ee80"><div class="ttname"><a href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a></div><div class="ttdeci">unsigned long u32b</div><div class="ttdef"><b>Definition:</b> h-type.h:93</div></div>
+<div class="ttc" id="aplayer-race-types_8h_html_afd890f7607910d11808132db27cf4009"><div class="ttname"><a href="player-race-types_8h.html#afd890f7607910d11808132db27cf4009">player_race_type</a></div><div class="ttdeci">player_race_type</div><div class="ttdef"><b>Definition:</b> player-race-types.h:6</div></div>
+<div class="ttc" id="aplayer-race_8h_html_a08b5d97c304599e7cce3163f903aba48"><div class="ttname"><a href="player-race_8h.html#a08b5d97c304599e7cce3163f903aba48">rp_ptr</a></div><div class="ttdeci">const player_race * rp_ptr</div><div class="ttdef"><b>Definition:</b> player-race.cpp:9</div></div>
+<div class="ttc" id="aplayer-race_8h_html_a0c26b401291c3745eea07ada7a2893dc"><div class="ttname"><a href="player-race_8h.html#a0c26b401291c3745eea07ada7a2893dc">get_summon_symbol_from_player</a></div><div class="ttdeci">SYMBOL_CODE get_summon_symbol_from_player(player_type *creature_ptr)</div><div class="ttdef"><b>Definition:</b> player-race.cpp:11</div></div>
+<div class="ttc" id="aplayer-race_8h_html_aa21dcdd10c97248e5d6879ca37890bbf"><div class="ttname"><a href="player-race_8h.html#aa21dcdd10c97248e5d6879ca37890bbf">is_specific_player_race</a></div><div class="ttdeci">bool is_specific_player_race(player_type *creature_ptr, player_race_type prace)</div><div class="ttdef"><b>Definition:</b> player-race.cpp:121</div></div>
+<div class="ttc" id="astructplayer__race_html"><div class="ttname"><a href="structplayer__race.html">player_race</a></div><div class="ttdef"><b>Definition:</b> player-race.h:25</div></div>
+<div class="ttc" id="astructplayer__race_html_a04a3964fcf27a81396909baa72634895"><div class="ttname"><a href="structplayer__race.html#a04a3964fcf27a81396909baa72634895">player_race::r_mhp</a></div><div class="ttdeci">byte r_mhp</div><div class="ttdef"><b>Definition:</b> player-race.h:42</div></div>
+<div class="ttc" id="astructplayer__race_html_a10f8d5752e68114cb96707aeb7798a35"><div class="ttname"><a href="structplayer__race.html#a10f8d5752e68114cb96707aeb7798a35">player_race::r_sav</a></div><div class="ttdeci">s16b r_sav</div><div class="ttdef"><b>Definition:</b> player-race.h:35</div></div>
+<div class="ttc" id="astructplayer__race_html_a1c526cd2981d969c89ba6b1faa04c0cc"><div class="ttname"><a href="structplayer__race.html#a1c526cd2981d969c89ba6b1faa04c0cc">player_race::title</a></div><div class="ttdeci">concptr title</div><div class="ttdef"><b>Definition:</b> player-race.h:26</div></div>
+<div class="ttc" id="astructplayer__race_html_a36cf958acadfd59087ca62cab1896660"><div class="ttname"><a href="structplayer__race.html#a36cf958acadfd59087ca62cab1896660">player_race::f_m_ht</a></div><div class="ttdeci">byte f_m_ht</div><div class="ttdef"><b>Definition:</b> player-race.h:54</div></div>
+<div class="ttc" id="astructplayer__race_html_a40f2d757d659a9549b43a7da5de88582"><div class="ttname"><a href="structplayer__race.html#a40f2d757d659a9549b43a7da5de88582">player_race::r_adj</a></div><div class="ttdeci">s16b r_adj[6]</div><div class="ttdef"><b>Definition:</b> player-race.h:31</div></div>
+<div class="ttc" id="astructplayer__race_html_a45213e2977f6eee7421e230dbe294785"><div class="ttname"><a href="structplayer__race.html#a45213e2977f6eee7421e230dbe294785">player_race::f_b_wt</a></div><div class="ttdeci">byte f_b_wt</div><div class="ttdef"><b>Definition:</b> player-race.h:55</div></div>
+<div class="ttc" id="astructplayer__race_html_a4c75f9b016bdea772e2221980c0b7400"><div class="ttname"><a href="structplayer__race.html#a4c75f9b016bdea772e2221980c0b7400">player_race::m_b_wt</a></div><div class="ttdeci">byte m_b_wt</div><div class="ttdef"><b>Definition:</b> player-race.h:50</div></div>
+<div class="ttc" id="astructplayer__race_html_a4e2b7cafb7717e493ec2c0a5ef55635d"><div class="ttname"><a href="structplayer__race.html#a4e2b7cafb7717e493ec2c0a5ef55635d">player_race::r_dis</a></div><div class="ttdeci">s16b r_dis</div><div class="ttdef"><b>Definition:</b> player-race.h:33</div></div>
+<div class="ttc" id="astructplayer__race_html_a4fc4a7134b5085033b6b74405d20ecd6"><div class="ttname"><a href="structplayer__race.html#a4fc4a7134b5085033b6b74405d20ecd6">player_race::r_fos</a></div><div class="ttdeci">s16b r_fos</div><div class="ttdef"><b>Definition:</b> player-race.h:38</div></div>
+<div class="ttc" id="astructplayer__race_html_a5f189182438988d65aa6097d588cd72a"><div class="ttname"><a href="structplayer__race.html#a5f189182438988d65aa6097d588cd72a">player_race::r_thn</a></div><div class="ttdeci">s16b r_thn</div><div class="ttdef"><b>Definition:</b> player-race.h:39</div></div>
+<div class="ttc" id="astructplayer__race_html_a6344cdd33be679e8a39a7cebaa4e38f9"><div class="ttname"><a href="structplayer__race.html#a6344cdd33be679e8a39a7cebaa4e38f9">player_race::r_dev</a></div><div class="ttdeci">s16b r_dev</div><div class="ttdef"><b>Definition:</b> player-race.h:34</div></div>
+<div class="ttc" id="astructplayer__race_html_a7431f04e7fafacda2c9be8f1d03fbc7c"><div class="ttname"><a href="structplayer__race.html#a7431f04e7fafacda2c9be8f1d03fbc7c">player_race::r_exp</a></div><div class="ttdeci">byte r_exp</div><div class="ttdef"><b>Definition:</b> player-race.h:43</div></div>
+<div class="ttc" id="astructplayer__race_html_a764cb6726d70f7769e8fe5e8f982bf10"><div class="ttname"><a href="structplayer__race.html#a764cb6726d70f7769e8fe5e8f982bf10">player_race::infra</a></div><div class="ttdeci">byte infra</div><div class="ttdef"><b>Definition:</b> player-race.h:58</div></div>
+<div class="ttc" id="astructplayer__race_html_a7cfaa27d1e6697bebc2d73e2cdd55aeb"><div class="ttname"><a href="structplayer__race.html#a7cfaa27d1e6697bebc2d73e2cdd55aeb">player_race::r_srh</a></div><div class="ttdeci">s16b r_srh</div><div class="ttdef"><b>Definition:</b> player-race.h:37</div></div>
+<div class="ttc" id="astructplayer__race_html_a880554f3bf7dcc7a94b250f4dd36c8e8"><div class="ttname"><a href="structplayer__race.html#a880554f3bf7dcc7a94b250f4dd36c8e8">player_race::m_age</a></div><div class="ttdeci">byte m_age</div><div class="ttdef"><b>Definition:</b> player-race.h:46</div></div>
+<div class="ttc" id="astructplayer__race_html_ab3f1a9b3d4f98f9f557c445cd952e35a"><div class="ttname"><a href="structplayer__race.html#ab3f1a9b3d4f98f9f557c445cd952e35a">player_race::m_m_ht</a></div><div class="ttdeci">byte m_m_ht</div><div class="ttdef"><b>Definition:</b> player-race.h:49</div></div>
+<div class="ttc" id="astructplayer__race_html_abdc54977751d6ae485390402298b3c46"><div class="ttname"><a href="structplayer__race.html#abdc54977751d6ae485390402298b3c46">player_race::r_thb</a></div><div class="ttdeci">s16b r_thb</div><div class="ttdef"><b>Definition:</b> player-race.h:40</div></div>
+<div class="ttc" id="astructplayer__race_html_ac1c3253069a64c323be601b0f1815c79"><div class="ttname"><a href="structplayer__race.html#ac1c3253069a64c323be601b0f1815c79">player_race::r_stl</a></div><div class="ttdeci">s16b r_stl</div><div class="ttdef"><b>Definition:</b> player-race.h:36</div></div>
+<div class="ttc" id="astructplayer__race_html_ac2da4118f99e955a8de378e8568e1bf2"><div class="ttname"><a href="structplayer__race.html#ac2da4118f99e955a8de378e8568e1bf2">player_race::m_m_wt</a></div><div class="ttdeci">byte m_m_wt</div><div class="ttdef"><b>Definition:</b> player-race.h:51</div></div>
+<div class="ttc" id="astructplayer__race_html_ad369cd90e865fec9bd2a63461b3960b2"><div class="ttname"><a href="structplayer__race.html#ad369cd90e865fec9bd2a63461b3960b2">player_race::b_age</a></div><div class="ttdeci">byte b_age</div><div class="ttdef"><b>Definition:</b> player-race.h:45</div></div>
+<div class="ttc" id="astructplayer__race_html_ada241bb623a8aca922c633b60bafbbdb"><div class="ttname"><a href="structplayer__race.html#ada241bb623a8aca922c633b60bafbbdb">player_race::m_b_ht</a></div><div class="ttdeci">byte m_b_ht</div><div class="ttdef"><b>Definition:</b> player-race.h:48</div></div>
+<div class="ttc" id="astructplayer__race_html_aefe59c799fbc9c1b51efff6f9404905b"><div class="ttname"><a href="structplayer__race.html#aefe59c799fbc9c1b51efff6f9404905b">player_race::f_b_ht</a></div><div class="ttdeci">byte f_b_ht</div><div class="ttdef"><b>Definition:</b> player-race.h:53</div></div>
+<div class="ttc" id="astructplayer__race_html_af4929ce8290d343e0414402fdc2b2164"><div class="ttname"><a href="structplayer__race.html#af4929ce8290d343e0414402fdc2b2164">player_race::choice</a></div><div class="ttdeci">u32b choice</div><div class="ttdef"><b>Definition:</b> player-race.h:60</div></div>
+<div class="ttc" id="astructplayer__race_html_affe285c5afede5d4698db084e499df34"><div class="ttname"><a href="structplayer__race.html#affe285c5afede5d4698db084e499df34">player_race::f_m_wt</a></div><div class="ttdeci">byte f_m_wt</div><div class="ttdef"><b>Definition:</b> player-race.h:56</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="astructplayer__type_html_ae26c5a61d9a62c4c0e19bf6d009f1f60"><div class="ttname"><a href="structplayer__type.html#ae26c5a61d9a62c4c0e19bf6d009f1f60">player_type::prace</a></div><div class="ttdeci">player_race_type prace</div><div class="ttdef"><b>Definition:</b> player-status.h:81</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

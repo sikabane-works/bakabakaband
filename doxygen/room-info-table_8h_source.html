@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/room/room-info-table.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f5e46bed6dfb8f23408bb24a4886d7b9.html">room</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">room-info-table.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="room-info-table_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="room-types_8h.html">room/room-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">/* Room type information */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structroom__info__type.html">    7</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structroom__info__type.html">room_info_type</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structroom__info__type.html#a2957775b9ac57f0587654dc3513647d0">    8</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structroom__info__type.html#a2957775b9ac57f0587654dc3513647d0">prob</a>[<a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735af56389788be6b587378f15f6fef2e0f7">ROOM_T_MAX</a>]; <span class="comment">/* Allocation information. */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structroom__info__type.html#a2bf85fa45f5c53a3a626a501c8d5b8b3">    9</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structroom__info__type.html#a2bf85fa45f5c53a3a626a501c8d5b8b3">min_level</a>; <span class="comment">/* Minimum level on which room can appear. */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="room-info-table_8h.html#a557c9916b63f84c544c9491f10930dd9">   10</a></span>&#160;} <a class="code" href="room-info-table_8h.html#a557c9916b63f84c544c9491f10930dd9">room_info_type</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">extern</span> <a class="code" href="structroom__info__type.html">room_info_type</a> <a class="code" href="room-info-table_8h.html#a04cc11dfb75d05f43dac368fd59b9230">room_info_normal</a>[<a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735af56389788be6b587378f15f6fef2e0f7">ROOM_T_MAX</a>];</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">byte</span> <a class="code" href="room-info-table_8h.html#ac4d88dd4531d7b9ee7f051740004fb28">room_build_order</a>[<a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735af56389788be6b587378f15f6fef2e0f7">ROOM_T_MAX</a>];</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="aroom-info-table_8h_html_a04cc11dfb75d05f43dac368fd59b9230"><div class="ttname"><a href="room-info-table_8h.html#a04cc11dfb75d05f43dac368fd59b9230">room_info_normal</a></div><div class="ttdeci">room_info_type room_info_normal[ROOM_T_MAX]</div><div class="ttdoc">各部屋タイプの生成比定義 [from SAngband (originally from OAngband)]   Table of values that control how many times...</div><div class="ttdef"><b>Definition:</b> room-info-table.cpp:19</div></div>
+<div class="ttc" id="aroom-info-table_8h_html_a557c9916b63f84c544c9491f10930dd9"><div class="ttname"><a href="room-info-table_8h.html#a557c9916b63f84c544c9491f10930dd9">room_info_type</a></div><div class="ttdeci">struct room_info_type room_info_type</div></div>
+<div class="ttc" id="aroom-info-table_8h_html_ac4d88dd4531d7b9ee7f051740004fb28"><div class="ttname"><a href="room-info-table_8h.html#ac4d88dd4531d7b9ee7f051740004fb28">room_build_order</a></div><div class="ttdeci">byte room_build_order[ROOM_T_MAX]</div><div class="ttdoc">部屋の生成処理順 / Build rooms in descending order of difficulty.</div><div class="ttdef"><b>Definition:</b> room-info-table.cpp:42</div></div>
+<div class="ttc" id="aroom-types_8h_html"><div class="ttname"><a href="room-types_8h.html">room-types.h</a></div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735af56389788be6b587378f15f6fef2e0f7"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735af56389788be6b587378f15f6fef2e0f7">ROOM_T_MAX</a></div><div class="ttdeci">@ ROOM_T_MAX</div><div class="ttdoc">部屋型ID最大数</div><div class="ttdef"><b>Definition:</b> room-types.h:22</div></div>
+<div class="ttc" id="astructroom__info__type_html"><div class="ttname"><a href="structroom__info__type.html">room_info_type</a></div><div class="ttdef"><b>Definition:</b> room-info-table.h:7</div></div>
+<div class="ttc" id="astructroom__info__type_html_a2957775b9ac57f0587654dc3513647d0"><div class="ttname"><a href="structroom__info__type.html#a2957775b9ac57f0587654dc3513647d0">room_info_type::prob</a></div><div class="ttdeci">s16b prob[ROOM_T_MAX]</div><div class="ttdef"><b>Definition:</b> room-info-table.h:8</div></div>
+<div class="ttc" id="astructroom__info__type_html_a2bf85fa45f5c53a3a626a501c8d5b8b3"><div class="ttname"><a href="structroom__info__type.html#a2bf85fa45f5c53a3a626a501c8d5b8b3">room_info_type::min_level</a></div><div class="ttdeci">byte min_level</div><div class="ttdef"><b>Definition:</b> room-info-table.h:9</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

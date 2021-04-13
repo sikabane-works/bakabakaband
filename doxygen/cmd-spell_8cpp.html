@@ -1,0 +1,1966 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/cmd-action/cmd-spell.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_53ca698ad401df685f027e5f337f5216.html">cmd-action</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">cmd-spell.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="cmd-spell_8h_source.html">cmd-action/cmd-spell.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="action-limited_8h_source.html">action/action-limited.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="autopick-reader-writer_8h_source.html">autopick/autopick-reader-writer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-mind_8h_source.html">cmd-action/cmd-mind.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-dump_8h_source.html">cmd-io/cmd-dump.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-redraw-types_8h_source.html">core/player-redraw-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-update-types_8h_source.html">core/player-update-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stuff-handler_8h_source.html">core/stuff-handler.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="window-redrawer_8h_source.html">core/window-redrawer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-object_8h_source.html">floor/floor-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="disturbance-options_8h_source.html">game-option/disturbance-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-options_8h_source.html">game-option/input-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="text-display-options_8h_source.html">game-option/text-display-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="command-repeater_8h_source.html">io/command-repeater.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-requester_8h_source.html">io/input-key-requester.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="write-diary_8h_source.html">io/write-diary.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-definitions-table_8h_source.html">main/sound-definitions-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-magic_8h_source.html">object-hook/hook-magic.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-tester-hooker_8h_source.html">object/item-tester-hooker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-use-flags_8h_source.html">object/item-use-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="avatar_8h_source.html">player-info/avatar.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="self-info_8h_source.html">player-info/self-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="attack-defense-types_8h_source.html">player/attack-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="eldritch-horror_8h_source.html">player/eldritch-horror.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-class_8h_source.html">player/player-class.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-damage_8h_source.html">player/player-damage.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-realm_8h_source.html">player/player-realm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-skill_8h_source.html">player/player-skill.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status_8h_source.html">player/player-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-defense-types_8h_source.html">player/special-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="realm-names-table_8h_source.html">realm/realm-names-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-random_8h_source.html">spell-kind/spells-random.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-sight_8h_source.html">spell-kind/spells-sight.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-hex_8h_source.html">spell-realm/spells-hex.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="range-calc_8h_source.html">spell/range-calc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spell-info_8h_source.html">spell/spell-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-describer_8h_source.html">spell/spells-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-execution_8h_source.html">spell/spells-execution.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-summon_8h_source.html">spell/spells-summon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="technic-info-table_8h_source.html">spell/technic-info-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="action-setter_8h_source.html">status/action-setter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bad-status-setter_8h_source.html">status/bad-status-setter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="base-status_8h_source.html">status/base-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="experience_8h_source.html">status/experience.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="buffer-shaper_8h_source.html">util/buffer-shaper.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:aeaf3d6da4dcfaa72e963c50b3cb62b25"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#aeaf3d6da4dcfaa72e963c50b3cb62b25">info_string_dice</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str, <a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a> dice, <a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a> sides, int base)</td></tr>
+<tr class="memdesc:aeaf3d6da4dcfaa72e963c50b3cb62b25"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法の効果を「キャプション:ダイス＋定数値」のフォーマットで出力する / Generate dice info string such as "foo 2d10"  <a href="cmd-spell_8cpp.html#aeaf3d6da4dcfaa72e963c50b3cb62b25">[詳解]</a><br /></td></tr>
+<tr class="separator:aeaf3d6da4dcfaa72e963c50b3cb62b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f8bb1e2e9d89f976a13812b836c5f9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#a3f8bb1e2e9d89f976a13812b836c5f9a">info_damage</a> (<a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a> dice, <a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a> sides, int base)</td></tr>
+<tr class="memdesc:a3f8bb1e2e9d89f976a13812b836c5f9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法によるダメージを出力する / Generate damage-dice info string such as "dam 2d10"  <a href="cmd-spell_8cpp.html#a3f8bb1e2e9d89f976a13812b836c5f9a">[詳解]</a><br /></td></tr>
+<tr class="separator:a3f8bb1e2e9d89f976a13812b836c5f9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab76faaaa974c8d183f1111f310491881"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#ab76faaaa974c8d183f1111f310491881">info_duration</a> (int base, <a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a> sides)</td></tr>
+<tr class="memdesc:ab76faaaa974c8d183f1111f310491881"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法の効果時間を出力する / Generate duration info string such as "dur 20+1d20"  <a href="cmd-spell_8cpp.html#ab76faaaa974c8d183f1111f310491881">[詳解]</a><br /></td></tr>
+<tr class="separator:ab76faaaa974c8d183f1111f310491881"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a425a4063acc1e1bb952de80eb772c96d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#a425a4063acc1e1bb952de80eb772c96d">info_range</a> (<a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range)</td></tr>
+<tr class="memdesc:a425a4063acc1e1bb952de80eb772c96d"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法の効果範囲を出力する / Generate range info string such as "range 5"  <a href="cmd-spell_8cpp.html#a425a4063acc1e1bb952de80eb772c96d">[詳解]</a><br /></td></tr>
+<tr class="separator:a425a4063acc1e1bb952de80eb772c96d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3443595b2b8754dd7836ab341deed35"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#ab3443595b2b8754dd7836ab341deed35">info_heal</a> (<a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a> dice, <a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a> sides, int base)</td></tr>
+<tr class="memdesc:ab3443595b2b8754dd7836ab341deed35"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法による回復量を出力する / Generate heal info string such as "heal 2d8"  <a href="cmd-spell_8cpp.html#ab3443595b2b8754dd7836ab341deed35">[詳解]</a><br /></td></tr>
+<tr class="separator:ab3443595b2b8754dd7836ab341deed35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0556cb7ce380535793da85ab99b59b5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#a0556cb7ce380535793da85ab99b59b5f">info_delay</a> (int base, <a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a> sides)</td></tr>
+<tr class="memdesc:a0556cb7ce380535793da85ab99b59b5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法効果発動までの遅延ターンを出力する / Generate delay info string such as "delay 15+1d15"  <a href="cmd-spell_8cpp.html#a0556cb7ce380535793da85ab99b59b5f">[詳解]</a><br /></td></tr>
+<tr class="separator:a0556cb7ce380535793da85ab99b59b5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdf2f9bcb6476242b82511fe3763188d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#abdf2f9bcb6476242b82511fe3763188d">info_multi_damage</a> (<a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam)</td></tr>
+<tr class="memdesc:abdf2f9bcb6476242b82511fe3763188d"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法によるダメージを出力する(固定値＆複数回処理) / Generate multiple-damage info string such as "dam 25 each"  <a href="cmd-spell_8cpp.html#abdf2f9bcb6476242b82511fe3763188d">[詳解]</a><br /></td></tr>
+<tr class="separator:abdf2f9bcb6476242b82511fe3763188d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11dfe15687b07c3011f3647e290d2848"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#a11dfe15687b07c3011f3647e290d2848">info_multi_damage_dice</a> (<a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a> dice, <a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a> sides)</td></tr>
+<tr class="memdesc:a11dfe15687b07c3011f3647e290d2848"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法によるダメージを出力する(ダイスのみ＆複数回処理) / Generate multiple-damage-dice info string such as "dam 5d2 each"  <a href="cmd-spell_8cpp.html#a11dfe15687b07c3011f3647e290d2848">[詳解]</a><br /></td></tr>
+<tr class="separator:a11dfe15687b07c3011f3647e290d2848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e47d86393f65df045ae425fb077117d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#a5e47d86393f65df045ae425fb077117d">info_power</a> (int power)</td></tr>
+<tr class="memdesc:a5e47d86393f65df045ae425fb077117d"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法による一般的な効力値を出力する（固定値） / Generate power info string such as "power 100"  <a href="cmd-spell_8cpp.html#a5e47d86393f65df045ae425fb077117d">[詳解]</a><br /></td></tr>
+<tr class="separator:a5e47d86393f65df045ae425fb077117d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8161687e665e08dbabcb728ada9035b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#a8161687e665e08dbabcb728ada9035b0">info_power_dice</a> (<a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a> dice, <a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a> sides)</td></tr>
+<tr class="memdesc:a8161687e665e08dbabcb728ada9035b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法による一般的な効力値を出力する（ダイス値） / Generate power info string such as "power 100"  <a href="cmd-spell_8cpp.html#a8161687e665e08dbabcb728ada9035b0">[詳解]</a><br /></td></tr>
+<tr class="separator:a8161687e665e08dbabcb728ada9035b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7588e7d4c5b74ae0236d927fa888a30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#ad7588e7d4c5b74ae0236d927fa888a30">info_radius</a> (<a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> rad)</td></tr>
+<tr class="memdesc:ad7588e7d4c5b74ae0236d927fa888a30"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法の効果半径を出力する / Generate radius info string such as "rad 100"  <a href="cmd-spell_8cpp.html#ad7588e7d4c5b74ae0236d927fa888a30">[詳解]</a><br /></td></tr>
+<tr class="separator:ad7588e7d4c5b74ae0236d927fa888a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23998444645294a59ca97e0faff21e66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#a23998444645294a59ca97e0faff21e66">info_weight</a> (<a class="el" href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a> weight)</td></tr>
+<tr class="memdesc:a23998444645294a59ca97e0faff21e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法効果の限界重量を出力する / Generate weight info string such as "max wgt 15"  <a href="cmd-spell_8cpp.html#a23998444645294a59ca97e0faff21e66">[詳解]</a><br /></td></tr>
+<tr class="separator:a23998444645294a59ca97e0faff21e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50d98c140318fd102a45fca4554c180a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#a50d98c140318fd102a45fca4554c180a">spell_okay</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, int spell, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> learned, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> study_pray, int use_realm)</td></tr>
+<tr class="memdesc:a50d98c140318fd102a45fca4554c180a"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法が利用可能かどうかを返す / Determine if a spell is "okay" for the player to cast or study The spell must be legible, not forgotten, and also, to cast, it must be known, and to study, it must not be known.  <a href="cmd-spell_8cpp.html#a50d98c140318fd102a45fca4554c180a">[詳解]</a><br /></td></tr>
+<tr class="separator:a50d98c140318fd102a45fca4554c180a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95f1285450c26787e31109af69860e75"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75">get_spell</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a> *sn, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> prompt, <a class="el" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a> sval, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> learned, <a class="el" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a> use_realm)</td></tr>
+<tr class="memdesc:a95f1285450c26787e31109af69860e75"><td class="mdescLeft">&#160;</td><td class="mdescRight">領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book.  <a href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75">[詳解]</a><br /></td></tr>
+<tr class="separator:a95f1285450c26787e31109af69860e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca17dc4bfea69487469ada97451f3199"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#aca17dc4bfea69487469ada97451f3199">confirm_use_force</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> browse_only)</td></tr>
+<tr class="memdesc:aca17dc4bfea69487469ada97451f3199"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの職業が練気術師の時、領域魔法と練気術を切り換える処理のインターフェイス  <a href="cmd-spell_8cpp.html#aca17dc4bfea69487469ada97451f3199">[詳解]</a><br /></td></tr>
+<tr class="separator:aca17dc4bfea69487469ada97451f3199"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a167b5fa499fd1038cc40e2ece19b6977"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977">do_cmd_browse</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr)</td></tr>
+<tr class="memdesc:a167b5fa499fd1038cc40e2ece19b6977"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book  <a href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977">[詳解]</a><br /></td></tr>
+<tr class="separator:a167b5fa499fd1038cc40e2ece19b6977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06816378fb54efdc970af77a16abe448"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#a06816378fb54efdc970af77a16abe448">change_realm2</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a> next_realm)</td></tr>
+<tr class="memdesc:a06816378fb54efdc970af77a16abe448"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの第二魔法領域を変更する /  <a href="cmd-spell_8cpp.html#a06816378fb54efdc970af77a16abe448">[詳解]</a><br /></td></tr>
+<tr class="separator:a06816378fb54efdc970af77a16abe448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec4b5e44c72d7df1b66edf84ac385308"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308">do_cmd_study</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr)</td></tr>
+<tr class="memdesc:aec4b5e44c72d7df1b66edf84ac385308"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer  <a href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308">[詳解]</a><br /></td></tr>
+<tr class="separator:aec4b5e44c72d7df1b66edf84ac385308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed538f48e17f7a7198da51550fcf54a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6">do_cmd_cast</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr)</td></tr>
+<tr class="memdesc:aed538f48e17f7a7198da51550fcf54a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法を詠唱するコマンドのメインルーチン / Cast a spell  <a href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6">[詳解]</a><br /></td></tr>
+<tr class="separator:aed538f48e17f7a7198da51550fcf54a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:ac7e106d2e07bb3319e7778a450b8be01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#ac7e106d2e07bb3319e7778a450b8be01">KWD_DAM</a> = <a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;損傷:&quot;, &quot;dam &quot;)</td></tr>
+<tr class="memdesc:ac7e106d2e07bb3319e7778a450b8be01"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法のインターフェイスと発動 / Purpose: Do everything for each spell  <a href="cmd-spell_8cpp.html#ac7e106d2e07bb3319e7778a450b8be01">[詳解]</a><br /></td></tr>
+<tr class="separator:ac7e106d2e07bb3319e7778a450b8be01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44fb04f939b674da6b36c50f2f005df0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#a44fb04f939b674da6b36c50f2f005df0">KWD_RANGE</a> = <a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;射程:&quot;, &quot;rng &quot;)</td></tr>
+<tr class="separator:a44fb04f939b674da6b36c50f2f005df0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cff43f901ea7ee6f9d5a584fce299b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#a8cff43f901ea7ee6f9d5a584fce299b9">KWD_DURATION</a> = <a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;期間:&quot;, &quot;dur &quot;)</td></tr>
+<tr class="separator:a8cff43f901ea7ee6f9d5a584fce299b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff513e60b3826bc382a3511da45f5cfa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#aff513e60b3826bc382a3511da45f5cfa">KWD_SPHERE</a> = <a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;範囲:&quot;, &quot;range &quot;)</td></tr>
+<tr class="separator:aff513e60b3826bc382a3511da45f5cfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2695b189aec54a539d618979af9e83be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#a2695b189aec54a539d618979af9e83be">KWD_HEAL</a> = <a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;回復:&quot;, &quot;heal &quot;)</td></tr>
+<tr class="separator:a2695b189aec54a539d618979af9e83be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bf7c05d3553e0a2f2e355030f318efd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#a3bf7c05d3553e0a2f2e355030f318efd">KWD_RANDOM</a> = <a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ランダム&quot;, &quot;random&quot;)</td></tr>
+<tr class="separator:a3bf7c05d3553e0a2f2e355030f318efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8d69087be6352f52d62ffbe03dcfc65"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-spell_8cpp.html#af8d69087be6352f52d62ffbe03dcfc65">fake_spell_flags</a> [4] = { 0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000 }</td></tr>
+<tr class="memdesc:af8d69087be6352f52d62ffbe03dcfc65"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法領域フラグ管理テーブル / Zangband uses this array instead of the spell flags table, as there are 5 realms of magic, each with 4 spellbooks and 8 spells per book &ndash; TY  <a href="cmd-spell_8cpp.html#af8d69087be6352f52d62ffbe03dcfc65">[詳解]</a><br /></td></tr>
+<tr class="separator:af8d69087be6352f52d62ffbe03dcfc65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a06816378fb54efdc970af77a16abe448"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06816378fb54efdc970af77a16abe448">&#9670;&nbsp;</a></span>change_realm2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void change_realm2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a>&#160;</td>
+          <td class="paramname"><em>next_realm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>プレイヤーの第二魔法領域を変更する / </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">caster_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">next_realm</td><td>変更先の魔法領域ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a06816378fb54efdc970af77a16abe448_cgraph.png" border="0" usemap="#acmd-spell_8cpp_a06816378fb54efdc970af77a16abe448_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a06816378fb54efdc970af77a16abe448_cgraph" id="acmd-spell_8cpp_a06816378fb54efdc970af77a16abe448_cgraph">
+<area shape="rect" title="プレイヤーの第二魔法領域を変更する /" alt="" coords="5,304,116,331"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a237b4b6ff1cb50402312e9b60c5c8a55" title=" " alt="" coords="164,177,295,204"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="173,304,285,331"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="184,355,275,381"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="359,101,473,128"/>
+<area shape="rect" href="autopick-initializer_8cpp.html#aa9f8d1ffb810038c44cd694868a1a91d" title=" " alt="" coords="563,5,658,32"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="371,51,461,77"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="571,117,650,144"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#aa8a0b37eb8ed45cd8632c5fad7a3efa6" title=" " alt="" coords="355,304,477,331"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="343,253,489,280"/>
+<area shape="rect" href="autopick-pref-processor_8cpp.html#aa31a42830d1eed102ec91a767c3db6e7" title=" " alt="" coords="537,190,684,231"/>
+<area shape="rect" href="autopick-util_8cpp.html#a8d51638e9bac2c1441ed37fc88c740e5" title=" " alt="" coords="733,41,868,68"/>
+<area shape="rect" href="autopick-entry_8cpp.html#ae01b515228e7fe9be38aad8e8fe7f70f" title=" " alt="" coords="732,127,869,153"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="577,56,644,83"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="581,329,640,356"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a06816378fb54efdc970af77a16abe448_icgraph.png" border="0" usemap="#acmd-spell_8cpp_a06816378fb54efdc970af77a16abe448_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a06816378fb54efdc970af77a16abe448_icgraph" id="acmd-spell_8cpp_a06816378fb54efdc970af77a16abe448_icgraph">
+<area shape="rect" title="プレイヤーの第二魔法領域を変更する /" alt="" coords="717,31,828,57"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="563,31,669,57"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="352,5,515,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="185,5,304,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aca17dc4bfea69487469ada97451f3199"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca17dc4bfea69487469ada97451f3199">&#9670;&nbsp;</a></span>confirm_use_force()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void confirm_use_force </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>browse_only</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>プレイヤーの職業が練気術師の時、領域魔法と練気術を切り換える処理のインターフェイス </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">browse_only</td><td>魔法と技能の閲覧を行うならばTRUE </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>魔道書を一冊も持っていないならTRUEを返す </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_aca17dc4bfea69487469ada97451f3199_cgraph.png" border="0" usemap="#acmd-spell_8cpp_aca17dc4bfea69487469ada97451f3199_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_aca17dc4bfea69487469ada97451f3199_cgraph" id="acmd-spell_8cpp_aca17dc4bfea69487469ada97451f3199_cgraph">
+<area shape="rect" title="プレイヤーの職業が練気術師の時、領域魔法と練気術を切り換える処理のインターフェイス" alt="" coords="5,1247,132,1273"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a1863aceedcc38f71aec92ed4701a5bbc" title="特殊技能コマンドのメインルーチン /" alt="" coords="204,411,307,437"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="859,1145,913,1172"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="867,1228,905,1255"/>
+<area shape="rect" href="command-repeater_8cpp.html#a7d3c94fc9d6f020c659ace3f90900d63" title=" " alt="" coords="659,765,744,792"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="655,1424,748,1451"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a8b198f6a124bf911b2940ed6369708c0" title="現在プレイヤーが使用可能な特殊技能の一覧表示 /" alt="" coords="180,1323,331,1349"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a2f00c43155860825a88b285bdc547e38" title=" " alt="" coords="379,613,585,640"/>
+<area shape="rect" href="action-limited_8cpp.html#ab6e41ead2ec3155cacbd47e788347578" title=" " alt="" coords="817,119,955,145"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a4656cdc0763c2391df953670ea59672e" title=" " alt="" coords="410,563,554,589"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a56bec967f4464d4e9097563b33c54853" title=" " alt="" coords="401,512,563,539"/>
+<area shape="rect" href="mind-power-getter_8cpp.html#ae10efe533854f8dec5377db176677dc7" title="使用可能な特殊技能を選択する / Allow user to choose a mindcrafter power." alt="" coords="424,943,540,969"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a634913dee47d924a057dcaef8262537e" title=" " alt="" coords="419,208,545,235"/>
+<area shape="rect" href="cmd-mind_8cpp.html#aabc979c31c0704f59ff46f8254ddb892" title=" " alt="" coords="413,259,551,285"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a80481f1596dbd7e74ef842e7f5bfb2a8" title=" " alt="" coords="417,31,547,57"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a3d39e19f031f3d2a6c655c32fde41589" title=" " alt="" coords="389,411,575,437"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a9d6a12b58ef41800290bd65d16eaf98c" title=" " alt="" coords="419,360,545,387"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="660,715,743,741"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1003,639,1081,665"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="1129,1095,1216,1121"/>
+<area shape="rect" href="player-status_8cpp.html#af61e52604492724ecb12f4bc74e577aa" title="プレイヤーが防具重量制限のある職業時にペナルティを受ける状態にあるかどうかを返す。" alt="" coords="654,563,749,589"/>
+<area shape="rect" href="mind-force-trainer_8cpp.html#a2713fb7ee9b72c3a39a8e5f5b82d3176" title="練気術師が「練気」で溜めた気の量を返す" alt="" coords="834,664,938,691"/>
+<area shape="rect" href="player-status_8cpp.html#a505fc5be2b6382dbcd3b279e2f2f2be5" title="プレイヤーが現在右手/左手に武器を持っているか判定する /" alt="" coords="633,664,769,691"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="865,360,907,387"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="857,613,915,640"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="665,1120,737,1147"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="841,512,931,539"/>
+<area shape="rect" href="mind-info_8cpp.html#a55b9177a6e0140423a79924023b31293" title="特殊技能の効果情報をまとめたフォーマットを返す" alt="" coords="650,1069,753,1096"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="670,917,733,944"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="655,1323,747,1349"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="654,1373,749,1400"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="670,1019,733,1045"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="1017,360,1067,387"/>
+<area shape="rect" href="cmd-mind_8cpp.html#ac38df59fdf667fa3851ce0eec366f88a" title=" " alt="" coords="636,461,767,488"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="841,259,931,285"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="857,195,915,221"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a49b73965d0ef306e6cb8a9dc70ed212a" title=" " alt="" coords="635,208,767,235"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="663,5,739,32"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a88ff0dbfe9508c6a72fac2bdb1534e4d" title=" " alt="" coords="647,309,756,336"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="667,411,735,437"/>
+<area shape="rect" href="cmd-mind_8cpp.html#aa3fcbee45ddf02a121e9e2a4fe7a0e0e" title=" " alt="" coords="397,1373,567,1400"/>
+<area shape="rect" href="buffer-shaper_8cpp.html#a74f223098d062fe8625ee0809a800315" title=" " alt="" coords="435,1424,529,1451"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_aca17dc4bfea69487469ada97451f3199_icgraph.png" border="0" usemap="#acmd-spell_8cpp_aca17dc4bfea69487469ada97451f3199_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_aca17dc4bfea69487469ada97451f3199_icgraph" id="acmd-spell_8cpp_aca17dc4bfea69487469ada97451f3199_icgraph">
+<area shape="rect" title="プレイヤーの職業が練気術師の時、領域魔法と練気術を切り換える処理のインターフェイス" alt="" coords="895,56,1021,82"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="731,30,847,57"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="739,81,839,108"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,30,296,57"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="515,30,683,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,30,116,57"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="353,30,457,57"/>
+<area shape="rect" href="racial-switcher_8cpp.html#ac21c6b6a9eae71ce476478232b11f8e0" title="レイシャルと突然変異の技能処理 / Racial powers (and mutations)" alt="" coords="531,132,666,174"/>
+<area shape="rect" href="racial-execution_8cpp.html#a7e635e6235b51eda9d29cc9bf0ac79dd" title="レイシャル・パワー発動処理" alt="" coords="344,140,467,166"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a167b5fa499fd1038cc40e2ece19b6977"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a167b5fa499fd1038cc40e2ece19b6977">&#9670;&nbsp;</a></span>do_cmd_browse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_browse </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<pre>
+Note that *all* spells in the book are listed
+
+Note that browsing is allowed while confused or blind,
+and in the dark, primarily to allow browsing in stores.
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a167b5fa499fd1038cc40e2ece19b6977_cgraph.png" border="0" usemap="#acmd-spell_8cpp_a167b5fa499fd1038cc40e2ece19b6977_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a167b5fa499fd1038cc40e2ece19b6977_cgraph" id="acmd-spell_8cpp_a167b5fa499fd1038cc40e2ece19b6977_cgraph">
+<area shape="rect" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,1705,121,1732"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="203,641,310,668"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="879,1046,970,1073"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="1128,1021,1181,1048"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1115,844,1194,870"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="1342,2161,1429,2188"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="1135,1756,1174,1782"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="879,894,971,921"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="877,793,972,820"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aca17dc4bfea69487469ada97451f3199" title="プレイヤーの職業が練気術師の時、領域魔法と練気術を切り換える処理のインターフェイス" alt="" coords="193,1654,320,1681"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a8b198f6a124bf911b2940ed6369708c0" title="現在プレイヤーが使用可能な特殊技能の一覧表示 /" alt="" coords="395,1806,545,1833"/>
+<area shape="rect" href="buffer-shaper_8cpp.html#a74f223098d062fe8625ee0809a800315" title=" " alt="" coords="645,1958,739,1985"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="1116,2110,1193,2137"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="655,1452,729,1478"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="881,2009,969,2036"/>
+<area shape="rect" href="hook-magic_8cpp.html#a07a9755e9e8c7bf56ae3329105af480b" title="オブジェクトがプレイヤーが使用可能な魔道書かどうかを判定する" alt="" coords="392,2224,548,2250"/>
+<area shape="rect" href="stuff-handler_8cpp.html#a5e3afaa56b55c6e8837edeaf8d5355c2" title=" " alt="" coords="195,2212,319,2238"/>
+<area shape="rect" href="player-status_8cpp.html#a13cc3308d8f0b0703dea0e4f5b00e248" title="プレイヤーが魔道書を一冊も持っていないかを判定する" alt="" coords="169,2161,344,2188"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="215,134,298,161"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="434,641,506,668"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="436,590,504,617"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="903,996,946,1022"/>
+<area shape="rect" href="player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="1061,160,1248,186"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7c7bc7aaa4ea1facc9bffef817ae15ef" title=" " alt="" coords="1296,109,1475,136"/>
+<area shape="rect" href="item-getter_8cpp.html#acd17e2a74ae5acb8bfb06fead7ed7d1b" title="オブジェクト選択のモード設定" alt="" coords="599,540,785,566"/>
+<area shape="rect" href="item-getter_8cpp.html#aae1ffe8e95349276ec2eea3c8f1aabaf" title="アイテムにタグ付けがされているかの調査処理 (のはず)" alt="" coords="635,1502,749,1529"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="1125,1958,1184,1985"/>
+<area shape="rect" href="inventory-util_8cpp.html#a8ecee8934da290e32a3d32c076c79c8d" title="選択したアイテムの確認処理のメインルーチン /" alt="" coords="871,236,979,262"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#a608d31e79fc4aba7a4903453f3c78c95" title="オブジェクト選択の汎用関数(床上アイテム用) / Let the user select an item, save its &quot;index&quot;" alt="" coords="641,590,743,617"/>
+<area shape="rect" href="inventory-util_8cpp.html#ac56c08414553f69a101a859aa01220e3" title="プレイヤーの所持/装備オブジェクトが正規のものかを返す / Auxiliary function for &quot;get_item()&quot; – test an index" alt="" coords="871,286,978,313"/>
+<area shape="rect" href="inventory-util_8cpp.html#a6106140a69e84e316a7ee1172c62f4b6" title="所持/装備オブジェクトに選択タグを与える/タグに該当するオブジェクトがあるかを返す / Find the &quot;first&quot; inventory object with the given &quot;tag&quot;." alt="" coords="892,337,957,364"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3be357b2b900b29111c229eb1e975763" title=" " alt="" coords="836,84,1013,110"/>
+<area shape="rect" href="object-info_8cpp.html#a21413bf407071b7e2f68ff548c34b165" title="オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label" alt="" coords="872,692,977,718"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="878,1148,971,1174"/>
+<area shape="rect" href="item-selection-util_8cpp.html#a74d26ed39043ee25aaf6a0ebc08b69c8" title=" " alt="" coords="596,438,788,465"/>
+<area shape="rect" href="command-repeater_8cpp.html#a7d3c94fc9d6f020c659ace3f90900d63" title=" " alt="" coords="882,1654,967,1681"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a1863aceedcc38f71aec92ed4701a5bbc" title="特殊技能コマンドのメインルーチン /" alt="" coords="419,1553,521,1580"/>
+<area shape="rect" href="mind-power-getter_8cpp.html#ae10efe533854f8dec5377db176677dc7" title="使用可能な特殊技能を選択する / Allow user to choose a mindcrafter power." alt="" coords="634,1401,750,1428"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="883,1401,966,1428"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="889,1249,961,1276"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="893,1452,956,1478"/>
+<area shape="rect" href="cmd-mind_8cpp.html#aa3fcbee45ddf02a121e9e2a4fe7a0e0e" title=" " alt="" coords="607,1806,777,1833"/>
+<area shape="rect" href="spell-info_8cpp.html#a83499255de42cbe65adcd9aad90da2ae" title="呪文の消費MPを返す / Modify mana consumption rate using spell exp and dec_mana" alt="" coords="1325,2009,1446,2036"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="879,1198,970,1225"/>
+<area shape="rect" href="spell-info_8cpp.html#a67f843b68ced768115f6f9794c386a55" title="呪文の失敗率計算メインルーチン / Returns spell chance of failure for spell &#45;RAK&#45;" alt="" coords="1105,2060,1204,2086"/>
+<area shape="rect" href="spells-describer_8cpp.html#ac43fa12bda7985968b2ed2786f0157ff" title="領域魔法に応じて技能の名称を返す。" alt="" coords="852,1502,997,1529"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a50d98c140318fd102a45fca4554c180a" title="魔法が利用可能かどうかを返す / Determine if a spell is &quot;okay&quot; for the player to cast or study The spell must be leg..." alt="" coords="883,1553,967,1580"/>
+<area shape="rect" href="player-realm_8cpp.html#a11a8208a38771a1915bc63de183f561a" title=" " alt="" coords="631,2173,753,2200"/>
+<area shape="rect" href="player-realm_8cpp.html#a17a8cc91a8bf571f0d9ab86dfb238429" title=" " alt="" coords="631,2224,753,2250"/>
+<area shape="rect" href="object-info_8cpp.html#a6db41b634f18ba4fcb97bab7cfeac978" title="tval/sval指定のベースアイテムがプレイヤーの使用可能な魔法書かどうかを返す / Hack: Check if a spellbook is one of the realms we can us..." alt="" coords="405,2173,535,2200"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a167b5fa499fd1038cc40e2ece19b6977_icgraph.png" border="0" usemap="#acmd-spell_8cpp_a167b5fa499fd1038cc40e2ece19b6977_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a167b5fa499fd1038cc40e2ece19b6977_icgraph" id="acmd-spell_8cpp_a167b5fa499fd1038cc40e2ece19b6977_icgraph">
+<area shape="rect" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="884,5,1000,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="668,31,836,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="516,31,620,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aed538f48e17f7a7198da51550fcf54a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed538f48e17f7a7198da51550fcf54a6">&#9670;&nbsp;</a></span>do_cmd_cast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_cast </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法を詠唱するコマンドのメインルーチン / Cast a spell </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">caster_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_aed538f48e17f7a7198da51550fcf54a6_cgraph.png" border="0" usemap="#acmd-spell_8cpp_aed538f48e17f7a7198da51550fcf54a6_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_aed538f48e17f7a7198da51550fcf54a6_cgraph" id="acmd-spell_8cpp_aed538f48e17f7a7198da51550fcf54a6_cgraph">
+<area shape="rect" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="5,1475,105,1501"/>
+<area shape="rect" href="spells-sight_8cpp.html#a38649e896637efab6c1c96d71f870948" title="視界内モンスターを怒らせる処理 / Wake up all monsters, and speed up &quot;los&quot; monsters." alt="" coords="382,208,521,235"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="879,740,957,767"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="411,1880,491,1907"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="187,1880,294,1907"/>
+<area shape="rect" href="action-limited_8cpp.html#ab6e41ead2ec3155cacbd47e788347578" title=" " alt="" coords="609,1424,747,1451"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aca17dc4bfea69487469ada97451f3199" title="プレイヤーの職業が練気術師の時、領域魔法と練気術を切り換える処理のインターフェイス" alt="" coords="177,1323,304,1349"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a1863aceedcc38f71aec92ed4701a5bbc" title="特殊技能コマンドのメインルーチン /" alt="" coords="400,1323,503,1349"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="419,284,483,311"/>
+<area shape="rect" href="base-status_8cpp.html#abc8401db064966371a87b64d1a6070cb" title="プレイヤーの基本能力値を減少させる / Decreases a stat by an amount indended to vary from 0 to 100 percent." alt="" coords="205,1829,277,1856"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="413,1627,490,1653"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="427,816,476,843"/>
+<area shape="rect" href="experience_8cpp.html#a526ec6c3a82867a6a0152ffeb12a720d" title=" " alt="" coords="203,1931,278,1957"/>
+<area shape="rect" href="asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="392,765,511,792"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="633,664,723,691"/>
+<area shape="rect" href="player-realm_8cpp.html#a17a8cc91a8bf571f0d9ab86dfb238429" title=" " alt="" coords="180,1981,301,2008"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="203,1475,278,1501"/>
+<area shape="rect" href="spell-info_8cpp.html#a83499255de42cbe65adcd9aad90da2ae" title="呪文の消費MPを返す / Modify mana consumption rate using spell exp and dec_mana" alt="" coords="617,1677,739,1704"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="406,715,497,741"/>
+<area shape="rect" href="spells-describer_8cpp.html#ac43fa12bda7985968b2ed2786f0157ff" title="領域魔法に応じて技能の名称を返す。" alt="" coords="379,1779,524,1805"/>
+<area shape="rect" href="spell-info_8cpp.html#a67f843b68ced768115f6f9794c386a55" title="呪文の失敗率計算メインルーチン / Returns spell chance of failure for spell &#45;RAK&#45;" alt="" coords="402,1677,501,1704"/>
+<area shape="rect" href="spells-hex_8cpp.html#af44c73411a6535870d40b84a4fbc2209" title="プレイヤーの呪術詠唱枠がすでに最大かどうかを返す" alt="" coords="187,2032,294,2059"/>
+<area shape="rect" href="spells-hex_8cpp.html#ab35c57227b5fdac063f315e972f67188" title=" " alt="" coords="404,1221,499,1248"/>
+<area shape="rect" href="experience_8cpp.html#aa46ccb85f9aa6f7844eb67bd8eb28c7a" title=" " alt="" coords="203,2083,278,2109"/>
+<area shape="rect" href="grid_8cpp.html#a90a8ac3022bff7cdeddf03830a82b39d" title="指定された座標をプレイヤー収められていない状態かどうか / Returns true if the player&#39;s grid is dark" alt="" coords="211,2133,271,2160"/>
+<area shape="rect" href="stuff-handler_8cpp.html#a5e3afaa56b55c6e8837edeaf8d5355c2" title=" " alt="" coords="179,2184,303,2211"/>
+<area shape="rect" href="player-status_8cpp.html#a13cc3308d8f0b0703dea0e4f5b00e248" title="プレイヤーが魔道書を一冊も持っていないかを判定する" alt="" coords="153,2235,328,2261"/>
+<area shape="rect" href="eldritch-horror_8cpp.html#a6cef6cacb4d15880ba4cab6ad108810e" title="ELDRITCH_HORRORによるプレイヤーの精神破壊処理" alt="" coords="195,563,287,589"/>
+<area shape="rect" href="bad-status-setter_8cpp.html#a4f18393e08963daf9454f4d2fe543b1c" title="麻痺の継続時間をセットする / Set &quot;paralyzed&quot;, notice observable changes" alt="" coords="400,613,503,640"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="423,1019,480,1045"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="186,1373,295,1400"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="207,917,275,944"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="203,2285,279,2312"/>
+<area shape="rect" href="spells-random_8cpp.html#ad3967ff26aec044a7b9dd0a553073fe3" title="運命の輪、並びにカオス的な効果の発動" alt="" coords="197,259,284,285"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="649,360,707,387"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="829,95,1007,121"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="838,171,998,197"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="619,309,737,336"/>
+<area shape="rect" href="cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="608,5,748,32"/>
+<area shape="rect" href="class_flag_group.html#a021f4c66b2af9456aa41200d81efee90" title="指定したフラグを指定した値にセットする" alt="" coords="624,461,732,488"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="609,56,747,83"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ac81c0952258c31c0bb053742f5d63e0f" title="モンスターの加速状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes" alt="" coords="617,157,739,184"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a8b198f6a124bf911b2940ed6369708c0" title="現在プレイヤーが使用可能な特殊技能の一覧表示 /" alt="" coords="376,1120,527,1147"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="651,1044,705,1071"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="659,1145,697,1172"/>
+<area shape="rect" href="command-repeater_8cpp.html#a7d3c94fc9d6f020c659ace3f90900d63" title=" " alt="" coords="409,1475,494,1501"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="405,1424,498,1451"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a2f00c43155860825a88b285bdc547e38" title=" " alt="" coords="575,1323,781,1349"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a4656cdc0763c2391df953670ea59672e" title=" " alt="" coords="606,1221,750,1248"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a56bec967f4464d4e9097563b33c54853" title=" " alt="" coords="597,1272,759,1299"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_aed538f48e17f7a7198da51550fcf54a6_icgraph.png" border="0" usemap="#acmd-spell_8cpp_aed538f48e17f7a7198da51550fcf54a6_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_aed538f48e17f7a7198da51550fcf54a6_icgraph" id="acmd-spell_8cpp_aed538f48e17f7a7198da51550fcf54a6_icgraph">
+<area shape="rect" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="575,35,675,61"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="393,5,525,32"/>
+<area shape="rect" href="racial-switcher_8cpp.html#ac21c6b6a9eae71ce476478232b11f8e0" title="レイシャルと突然変異の技能処理 / Racial powers (and mutations)" alt="" coords="392,57,527,98"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="227,5,338,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="27,5,151,32"/>
+<area shape="rect" href="racial-execution_8cpp.html#a7e635e6235b51eda9d29cc9bf0ac79dd" title="レイシャル・パワー発動処理" alt="" coords="221,64,344,91"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a5f006f05c6ec58252925013371aa132f" title=" " alt="" coords="5,64,173,91"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aec4b5e44c72d7df1b66edf84ac385308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec4b5e44c72d7df1b66edf84ac385308">&#9670;&nbsp;</a></span>do_cmd_study()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_study </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_aec4b5e44c72d7df1b66edf84ac385308_cgraph.png" border="0" usemap="#acmd-spell_8cpp_aec4b5e44c72d7df1b66edf84ac385308_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_aec4b5e44c72d7df1b66edf84ac385308_cgraph" id="acmd-spell_8cpp_aec4b5e44c72d7df1b66edf84ac385308_cgraph">
+<area shape="rect" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="5,656,112,683"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a06816378fb54efdc970af77a16abe448" title="プレイヤーの第二魔法領域を変更する /" alt="" coords="183,175,293,201"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="585,732,676,759"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="786,808,865,835"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="796,73,855,100"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="391,288,482,315"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="573,403,688,429"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="198,428,278,455"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="185,479,291,505"/>
+<area shape="rect" href="action-limited_8cpp.html#a071fa928301cca389bfefc56eded6e02" title=" " alt="" coords="182,580,294,607"/>
+<area shape="rect" href="action-limited_8cpp.html#ab6e41ead2ec3155cacbd47e788347578" title=" " alt="" coords="562,833,699,860"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="592,1492,669,1519"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="395,884,478,911"/>
+<area shape="rect" href="player-realm_8cpp.html#a11a8208a38771a1915bc63de183f561a" title=" " alt="" coords="376,364,497,391"/>
+<area shape="rect" href="player-realm_8cpp.html#a17a8cc91a8bf571f0d9ab86dfb238429" title=" " alt="" coords="376,465,497,492"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="201,1163,275,1189"/>
+<area shape="rect" href="spells-describer_8cpp.html#ac43fa12bda7985968b2ed2786f0157ff" title="領域魔法に応じて技能の名称を返す。" alt="" coords="364,1543,509,1569"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a50d98c140318fd102a45fca4554c180a" title="魔法が利用可能かどうかを返す / Determine if a spell is &quot;okay&quot; for the player to cast or study The spell must be leg..." alt="" coords="395,1593,479,1620"/>
+<area shape="rect" href="hook-magic_8cpp.html#a07a9755e9e8c7bf56ae3329105af480b" title="オブジェクトがプレイヤーが使用可能な魔道書かどうかを判定する" alt="" coords="160,377,316,404"/>
+<area shape="rect" href="stuff-handler_8cpp.html#a5e3afaa56b55c6e8837edeaf8d5355c2" title=" " alt="" coords="176,1264,300,1291"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="197,681,279,708"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="399,631,475,657"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="209,1695,267,1721"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a237b4b6ff1cb50402312e9b60c5c8a55" title=" " alt="" coords="371,175,502,201"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="575,48,687,75"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="573,200,688,227"/>
+<area shape="rect" href="autopick-initializer_8cpp.html#aa9f8d1ffb810038c44cd694868a1a91d" title=" " alt="" coords="583,149,678,176"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#aa8a0b37eb8ed45cd8632c5fad7a3efa6" title=" " alt="" coords="569,99,692,125"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="557,301,704,328"/>
+<area shape="rect" href="autopick-pref-processor_8cpp.html#aa31a42830d1eed102ec91a767c3db6e7" title=" " alt="" coords="752,269,899,310"/>
+<area shape="rect" href="grid_8cpp.html#a90a8ac3022bff7cdeddf03830a82b39d" title="指定された座標をプレイヤー収められていない状態かどうか / Returns true if the player&#39;s grid is dark" alt="" coords="407,529,467,556"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="415,1391,458,1417"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="595,1207,667,1233"/>
+<area shape="rect" href="spell-info_8cpp.html#a83499255de42cbe65adcd9aad90da2ae" title="呪文の消費MPを返す / Modify mana consumption rate using spell exp and dec_mana" alt="" coords="765,1391,886,1417"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="393,1340,481,1367"/>
+<area shape="rect" href="spell-info_8cpp.html#a67f843b68ced768115f6f9794c386a55" title="呪文の失敗率計算メインルーチン / Returns spell chance of failure for spell &#45;RAK&#45;" alt="" coords="581,1441,680,1468"/>
+<area shape="rect" href="command-repeater_8cpp.html#a7d3c94fc9d6f020c659ace3f90900d63" title=" " alt="" coords="394,1036,479,1063"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="390,1087,483,1113"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="585,916,677,943"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="583,1029,678,1056"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="405,1137,468,1164"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_aec4b5e44c72d7df1b66edf84ac385308_icgraph.png" border="0" usemap="#acmd-spell_8cpp_aec4b5e44c72d7df1b66edf84ac385308_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_aec4b5e44c72d7df1b66edf84ac385308_icgraph" id="acmd-spell_8cpp_aec4b5e44c72d7df1b66edf84ac385308_icgraph">
+<area shape="rect" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="563,31,669,57"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="352,5,515,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="185,5,304,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a95f1285450c26787e31109af69860e75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95f1285450c26787e31109af69860e75">&#9670;&nbsp;</a></span>get_spell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int get_spell </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a> *&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>prompt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a>&#160;</td>
+          <td class="paramname"><em>sval</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>learned</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a>&#160;</td>
+          <td class="paramname"><em>use_realm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>選択した魔法IDを返す参照ポインタ </td></tr>
+    <tr><td class="paramname">prompt</td><td>魔法を利用する際の動詞表記 </td></tr>
+    <tr><td class="paramname">sval</td><td>魔道書のsval </td></tr>
+    <tr><td class="paramname">learned</td><td>閲覧/使用選択ならばTRUE、学習処理ならFALSE </td></tr>
+    <tr><td class="paramname">use_realm</td><td>魔法領域ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd><pre>
+If a valid spell is chosen, saves it in '*sn' and returns TRUE
+If the user hits escape, returns FALSE, and set '*sn' to -1
+If there are no legal choices, returns FALSE, and sets '*sn' to -2
+The "prompt" should be "cast", "recite", or "study"
+The "known" should be TRUE for cast/pray, FALSE for study
+</pre> </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a95f1285450c26787e31109af69860e75_cgraph.png" border="0" usemap="#acmd-spell_8cpp_a95f1285450c26787e31109af69860e75_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a95f1285450c26787e31109af69860e75_cgraph" id="acmd-spell_8cpp_a95f1285450c26787e31109af69860e75_cgraph">
+<area shape="rect" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="5,1171,80,1197"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="510,157,553,184"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="332,1196,409,1223"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="675,1120,757,1147"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="671,563,761,589"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="671,664,761,691"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="495,423,567,449"/>
+<area shape="rect" href="spell-info_8cpp.html#a83499255de42cbe65adcd9aad90da2ae" title="呪文の消費MPを返す / Modify mana consumption rate using spell exp and dec_mana" alt="" coords="471,1880,592,1907"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="157,1196,245,1223"/>
+<area shape="rect" href="spell-info_8cpp.html#a67f843b68ced768115f6f9794c386a55" title="呪文の失敗率計算メインルーチン / Returns spell chance of failure for spell &#45;RAK&#45;" alt="" coords="321,1348,420,1375"/>
+<area shape="rect" href="command-repeater_8cpp.html#a7d3c94fc9d6f020c659ace3f90900d63" title=" " alt="" coords="158,1247,243,1273"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="154,1297,247,1324"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="325,268,417,295"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="323,319,418,345"/>
+<area shape="rect" href="spells-describer_8cpp.html#ac43fa12bda7985968b2ed2786f0157ff" title="領域魔法に応じて技能の名称を返す。" alt="" coords="128,1449,273,1476"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a50d98c140318fd102a45fca4554c180a" title="魔法が利用可能かどうかを返す / Determine if a spell is &quot;okay&quot; for the player to cast or study The spell must be leg..." alt="" coords="159,1500,243,1527"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="169,1551,232,1577"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="691,259,741,285"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="675,107,757,133"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="881,157,959,184"/>
+<area shape="rect" href="z-term_8cpp.html#a50f4ddf9b64ef43b1be95eb89e78c263" title=" " alt="" coords="849,5,991,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5d7c0ea368bccad499b9bbdb4ffc53dc" title=" " alt="" coords="851,56,989,83"/>
+<area shape="rect" href="z-term_8cpp.html#a1b660c2d9fa25eb39e501811a0088cd2" title=" " alt="" coords="851,107,989,133"/>
+<area shape="rect" href="realm-arcane_8cpp.html#a7832487e3190270957aa0ada40c22dc0" title="秘術領域魔法の各処理を行う" alt="" coords="473,1576,589,1603"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="475,1019,587,1045"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="480,588,583,615"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="655,917,777,944"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="655,765,777,792"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="661,1069,771,1096"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="482,1221,581,1248"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="468,639,595,665"/>
+<area shape="rect" href="realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="485,1627,578,1653"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="660,1931,772,1957"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="659,1323,773,1349"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="471,1779,591,1805"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="476,1728,587,1755"/>
+<area shape="rect" href="spells-diceroll_8cpp.html#aba99310cc53a1d33fb596c7499b6b24a" title="一部ボルト魔法のビーム化確率を算出する / Prepare standard probability to become beam for fire_bolt_or_beam()" alt="" coords="869,867,971,893"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="880,1399,960,1425"/>
+<area shape="rect" href="spells-status_8cpp.html#a9d09019685ce462d411c9554fdf8e2a6" title=" " alt="" coords="651,1627,781,1653"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="888,1500,952,1527"/>
+<area shape="rect" href="spells-status_8cpp.html#a1250a8abfd5f99b37bbcd22e7fde8d17" title=" " alt="" coords="643,1576,789,1603"/>
+<area shape="rect" href="spells-beam_8cpp.html#a99a504422347b11f07a57260f980fe2c" title="ドア破壊処理" alt="" coords="871,987,969,1013"/>
+<area shape="rect" href="spells-detection_8cpp.html#a5d096ba459f50401bf2e3d6762b9f297" title="全感知処理 / Detect everything" alt="" coords="677,2083,755,2109"/>
+<area shape="rect" href="spells-detection_8cpp.html#a51a934aa10cafdef351b49ebfb59957f" title="プレイヤー周辺のドアを感知する / Detect all doors on current panel" alt="" coords="871,2032,969,2059"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1051,1272,1129,1299"/>
+<area shape="rect" href="spells-detection_8cpp.html#aead174091d028e380754746d29d8532b" title="不可視のモンスターを感知する / Detect all &quot;invisible&quot; monsters around the player" alt="" coords="845,1931,995,1957"/>
+<area shape="rect" href="spells-detection_8cpp.html#ae2bce83dafe11d685dbec1ff1cc06a11" title="一般のモンスターを感知する / Detect all &quot;normal&quot; monsters on the current panel" alt="" coords="837,1981,1003,2008"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="891,1044,949,1071"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="689,411,743,437"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="697,461,735,488"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a95f1285450c26787e31109af69860e75_icgraph.png" border="0" usemap="#acmd-spell_8cpp_a95f1285450c26787e31109af69860e75_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a95f1285450c26787e31109af69860e75_icgraph" id="acmd-spell_8cpp_a95f1285450c26787e31109af69860e75_icgraph">
+<area shape="rect" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="895,118,969,144"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="731,38,847,64"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="739,118,839,144"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="735,206,842,232"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,88,296,115"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="515,38,683,64"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,88,116,115"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="353,38,457,64"/>
+<area shape="rect" href="racial-switcher_8cpp.html#ac21c6b6a9eae71ce476478232b11f8e0" title="レイシャルと突然変異の技能処理 / Racial powers (and mutations)" alt="" coords="531,140,666,181"/>
+<area shape="rect" href="racial-execution_8cpp.html#a7e635e6235b51eda9d29cc9bf0ac79dd" title="レイシャル・パワー発動処理" alt="" coords="344,147,467,174"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="517,256,680,283"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="346,256,465,283"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3f8bb1e2e9d89f976a13812b836c5f9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f8bb1e2e9d89f976a13812b836c5f9a">&#9670;&nbsp;</a></span>info_damage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> info_damage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a>&#160;</td>
+          <td class="paramname"><em>dice</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a>&#160;</td>
+          <td class="paramname"><em>sides</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>base</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法によるダメージを出力する / Generate damage-dice info string such as "dam 2d10" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dice</td><td>ダイス数 </td></tr>
+    <tr><td class="paramname">sides</td><td>ダイス目 </td></tr>
+    <tr><td class="paramname">base</td><td>固定値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>フォーマットに従い整形された文字列 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a3f8bb1e2e9d89f976a13812b836c5f9a_cgraph.png" border="0" usemap="#acmd-spell_8cpp_a3f8bb1e2e9d89f976a13812b836c5f9a_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a3f8bb1e2e9d89f976a13812b836c5f9a_cgraph" id="acmd-spell_8cpp_a3f8bb1e2e9d89f976a13812b836c5f9a_cgraph">
+<area shape="rect" title="魔法によるダメージを出力する / Generate damage&#45;dice info string such as &quot;dam 2d10&quot;" alt="" coords="5,5,100,32"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aeaf3d6da4dcfaa72e963c50b3cb62b25" title="魔法の効果を「キャプション:ダイス＋定数値」のフォーマットで出力する / Generate dice info string such as &quot;foo 2d10&quot;" alt="" coords="148,5,260,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="308,5,367,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="415,5,477,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a3f8bb1e2e9d89f976a13812b836c5f9a_icgraph.png" border="0" usemap="#acmd-spell_8cpp_a3f8bb1e2e9d89f976a13812b836c5f9a_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a3f8bb1e2e9d89f976a13812b836c5f9a_icgraph" id="acmd-spell_8cpp_a3f8bb1e2e9d89f976a13812b836c5f9a_icgraph">
+<area shape="rect" title="魔法によるダメージを出力する / Generate damage&#45;dice info string such as &quot;dam 2d10&quot;" alt="" coords="884,436,979,463"/>
+<area shape="rect" href="realm-arcane_8cpp.html#a7832487e3190270957aa0ada40c22dc0" title="秘術領域魔法の各処理を行う" alt="" coords="717,360,833,387"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,5,490,32"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="175,917,287,944"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="719,411,831,437"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="713,461,836,488"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="713,512,836,539"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="720,563,829,589"/>
+<area shape="rect" href="realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="728,613,821,640"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="718,259,831,285"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="715,309,835,336"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="588,436,665,463"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,588,274,615"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,867,281,893"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,259,501,285"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,309,121,336"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,651,113,677"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,411,518,437"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,183,293,209"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,512,540,539"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,411,117,437"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,157,509,184"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,360,269,387"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,309,485,336"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,765,491,792"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,651,286,677"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,613,505,640"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,867,488,893"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,56,516,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0556cb7ce380535793da85ab99b59b5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0556cb7ce380535793da85ab99b59b5f">&#9670;&nbsp;</a></span>info_delay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> info_delay </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>base</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a>&#160;</td>
+          <td class="paramname"><em>sides</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法効果発動までの遅延ターンを出力する / Generate delay info string such as "delay 15+1d15" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">base</td><td>固定値 </td></tr>
+    <tr><td class="paramname">sides</td><td>ダイス目 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>フォーマットに従い整形された文字列 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a0556cb7ce380535793da85ab99b59b5f_cgraph.png" border="0" usemap="#acmd-spell_8cpp_a0556cb7ce380535793da85ab99b59b5f_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a0556cb7ce380535793da85ab99b59b5f_cgraph" id="acmd-spell_8cpp_a0556cb7ce380535793da85ab99b59b5f_cgraph">
+<area shape="rect" title="魔法効果発動までの遅延ターンを出力する / Generate delay info string such as &quot;delay 15+1d15&quot;" alt="" coords="5,5,85,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="133,5,192,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="240,5,303,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="351,5,417,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a0556cb7ce380535793da85ab99b59b5f_icgraph.png" border="0" usemap="#acmd-spell_8cpp_a0556cb7ce380535793da85ab99b59b5f_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a0556cb7ce380535793da85ab99b59b5f_icgraph" id="acmd-spell_8cpp_a0556cb7ce380535793da85ab99b59b5f_icgraph">
+<area shape="rect" title="魔法効果発動までの遅延ターンを出力する / Generate delay info string such as &quot;delay 15+1d15&quot;" alt="" coords="881,572,961,599"/>
+<area shape="rect" href="realm-arcane_8cpp.html#a7832487e3190270957aa0ada40c22dc0" title="秘術領域魔法の各処理を行う" alt="" coords="715,648,831,675"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="175,673,287,700"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="717,445,829,472"/>
+<area shape="rect" href="realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="727,496,820,523"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="713,547,833,573"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="718,597,829,624"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="588,521,665,548"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,91,274,117"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,597,281,624"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,724,501,751"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,319,121,345"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,167,113,193"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,775,518,801"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,496,293,523"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,825,540,852"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,395,117,421"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,876,490,903"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,521,509,548"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,319,269,345"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,369,485,396"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,927,491,953"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,167,286,193"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,116,505,143"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,623,488,649"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,167,516,193"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab76faaaa974c8d183f1111f310491881"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab76faaaa974c8d183f1111f310491881">&#9670;&nbsp;</a></span>info_duration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> info_duration </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>base</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a>&#160;</td>
+          <td class="paramname"><em>sides</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法の効果時間を出力する / Generate duration info string such as "dur 20+1d20" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">base</td><td>固定値 </td></tr>
+    <tr><td class="paramname">sides</td><td>ダイス目 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>フォーマットに従い整形された文字列 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_ab76faaaa974c8d183f1111f310491881_cgraph.png" border="0" usemap="#acmd-spell_8cpp_ab76faaaa974c8d183f1111f310491881_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_ab76faaaa974c8d183f1111f310491881_cgraph" id="acmd-spell_8cpp_ab76faaaa974c8d183f1111f310491881_cgraph">
+<area shape="rect" title="魔法の効果時間を出力する / Generate duration info string such as &quot;dur 20+1d20&quot;" alt="" coords="5,5,100,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="148,5,207,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="255,5,317,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="365,5,432,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_ab76faaaa974c8d183f1111f310491881_icgraph.png" border="0" usemap="#acmd-spell_8cpp_ab76faaaa974c8d183f1111f310491881_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_ab76faaaa974c8d183f1111f310491881_icgraph" id="acmd-spell_8cpp_ab76faaaa974c8d183f1111f310491881_icgraph">
+<area shape="rect" title="魔法の効果時間を出力する / Generate duration info string such as &quot;dur 20+1d20&quot;" alt="" coords="884,474,979,501"/>
+<area shape="rect" href="realm-arcane_8cpp.html#a7832487e3190270957aa0ada40c22dc0" title="秘術領域魔法の各処理を行う" alt="" coords="717,271,833,298"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="723,322,826,349"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="713,373,836,399"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="713,423,836,450"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="720,474,829,501"/>
+<area shape="rect" href="realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="728,525,821,551"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="718,575,831,602"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="715,626,835,653"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="719,677,830,703"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="588,474,665,501"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,81,274,107"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,449,281,475"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,525,501,551"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,271,121,298"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,145,113,171"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,575,518,602"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,651,293,678"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,727,540,754"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,347,117,374"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,778,490,805"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,677,509,703"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,221,269,247"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,271,485,298"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,829,491,855"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,145,286,171"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,119,505,146"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,474,488,501"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,879,516,906"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab3443595b2b8754dd7836ab341deed35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3443595b2b8754dd7836ab341deed35">&#9670;&nbsp;</a></span>info_heal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> info_heal </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a>&#160;</td>
+          <td class="paramname"><em>dice</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a>&#160;</td>
+          <td class="paramname"><em>sides</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>base</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法による回復量を出力する / Generate heal info string such as "heal 2d8" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dice</td><td>ダイス数 </td></tr>
+    <tr><td class="paramname">sides</td><td>ダイス目 </td></tr>
+    <tr><td class="paramname">base</td><td>固定値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>フォーマットに従い整形された文字列 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_ab3443595b2b8754dd7836ab341deed35_cgraph.png" border="0" usemap="#acmd-spell_8cpp_ab3443595b2b8754dd7836ab341deed35_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_ab3443595b2b8754dd7836ab341deed35_cgraph" id="acmd-spell_8cpp_ab3443595b2b8754dd7836ab341deed35_cgraph">
+<area shape="rect" title="魔法による回復量を出力する / Generate heal info string such as &quot;heal 2d8&quot;" alt="" coords="5,5,79,32"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aeaf3d6da4dcfaa72e963c50b3cb62b25" title="魔法の効果を「キャプション:ダイス＋定数値」のフォーマットで出力する / Generate dice info string such as &quot;foo 2d10&quot;" alt="" coords="127,5,239,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="287,5,345,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="393,5,456,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_ab3443595b2b8754dd7836ab341deed35_icgraph.png" border="0" usemap="#acmd-spell_8cpp_ab3443595b2b8754dd7836ab341deed35_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_ab3443595b2b8754dd7836ab341deed35_icgraph" id="acmd-spell_8cpp_ab3443595b2b8754dd7836ab341deed35_icgraph">
+<area shape="rect" title="魔法による回復量を出力する / Generate heal info string such as &quot;heal 2d8&quot;" alt="" coords="877,639,951,665"/>
+<area shape="rect" href="realm-arcane_8cpp.html#a7832487e3190270957aa0ada40c22dc0" title="秘術領域魔法の各処理を行う" alt="" coords="713,613,829,640"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,917,490,944"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="175,867,287,893"/>
+<area shape="rect" href="realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="725,664,818,691"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="715,512,828,539"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="716,563,827,589"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="588,537,665,564"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,537,274,564"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,816,281,843"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,208,501,235"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,259,121,285"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,600,113,627"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,360,518,387"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,132,293,159"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,461,540,488"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,360,117,387"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,107,509,133"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,309,269,336"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,259,485,285"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,715,491,741"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,600,286,627"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,563,505,589"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,816,488,843"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,5,516,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abdf2f9bcb6476242b82511fe3763188d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdf2f9bcb6476242b82511fe3763188d">&#9670;&nbsp;</a></span>info_multi_damage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> info_multi_damage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a>&#160;</td>
+          <td class="paramname"><em>dam</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法によるダメージを出力する(固定値＆複数回処理) / Generate multiple-damage info string such as "dam 25 each" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dam</td><td>固定値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>フォーマットに従い整形された文字列 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_abdf2f9bcb6476242b82511fe3763188d_cgraph.png" border="0" usemap="#acmd-spell_8cpp_abdf2f9bcb6476242b82511fe3763188d_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_abdf2f9bcb6476242b82511fe3763188d_cgraph" id="acmd-spell_8cpp_abdf2f9bcb6476242b82511fe3763188d_cgraph">
+<area shape="rect" title="魔法によるダメージを出力する(固定値＆複数回処理) / Generate multiple&#45;damage info string such as &quot;dam 25 each&quot;" alt="" coords="5,5,136,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="184,5,243,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="291,5,353,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="401,5,468,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_abdf2f9bcb6476242b82511fe3763188d_icgraph.png" border="0" usemap="#acmd-spell_8cpp_abdf2f9bcb6476242b82511fe3763188d_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_abdf2f9bcb6476242b82511fe3763188d_icgraph" id="acmd-spell_8cpp_abdf2f9bcb6476242b82511fe3763188d_icgraph">
+<area shape="rect" title="魔法によるダメージを出力する(固定値＆複数回処理) / Generate multiple&#45;damage info string such as &quot;dam 25 each&quot;" alt="" coords="884,474,1015,501"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="719,423,831,450"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="713,474,836,501"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="719,525,830,551"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="588,474,665,501"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,81,274,107"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,449,281,475"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,525,501,551"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,271,121,298"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,145,113,171"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,575,518,602"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,651,293,678"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,727,540,754"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,347,117,374"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,778,490,805"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,677,509,703"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,221,269,247"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,271,485,298"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,829,491,855"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,145,286,171"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,119,505,146"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,474,488,501"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,879,516,906"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a11dfe15687b07c3011f3647e290d2848"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11dfe15687b07c3011f3647e290d2848">&#9670;&nbsp;</a></span>info_multi_damage_dice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> info_multi_damage_dice </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a>&#160;</td>
+          <td class="paramname"><em>dice</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a>&#160;</td>
+          <td class="paramname"><em>sides</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法によるダメージを出力する(ダイスのみ＆複数回処理) / Generate multiple-damage-dice info string such as "dam 5d2 each" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dice</td><td>ダイス数 </td></tr>
+    <tr><td class="paramname">sides</td><td>ダイス目 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>フォーマットに従い整形された文字列 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a11dfe15687b07c3011f3647e290d2848_cgraph.png" border="0" usemap="#acmd-spell_8cpp_a11dfe15687b07c3011f3647e290d2848_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a11dfe15687b07c3011f3647e290d2848_cgraph" id="acmd-spell_8cpp_a11dfe15687b07c3011f3647e290d2848_cgraph">
+<area shape="rect" title="魔法によるダメージを出力する(ダイスのみ＆複数回処理) / Generate multiple&#45;damage&#45;dice info string such as &quot;dam 5d2 each&quot;" alt="" coords="5,5,167,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="215,5,273,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="321,5,384,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="432,5,499,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a11dfe15687b07c3011f3647e290d2848_icgraph.png" border="0" usemap="#acmd-spell_8cpp_a11dfe15687b07c3011f3647e290d2848_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a11dfe15687b07c3011f3647e290d2848_icgraph" id="acmd-spell_8cpp_a11dfe15687b07c3011f3647e290d2848_icgraph">
+<area shape="rect" title="魔法によるダメージを出力する(ダイスのみ＆複数回処理) / Generate multiple&#45;damage&#45;dice info string such as &quot;dam 5d2 each&quot;" alt="" coords="884,474,1045,501"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="713,474,836,501"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="588,474,665,501"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,81,274,107"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,449,281,475"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,525,501,551"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,271,121,298"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,145,113,171"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,575,518,602"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,651,293,678"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,727,540,754"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,347,117,374"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,778,490,805"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,677,509,703"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,221,269,247"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,271,485,298"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,829,491,855"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,145,286,171"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,119,505,146"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,474,488,501"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,879,516,906"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5e47d86393f65df045ae425fb077117d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e47d86393f65df045ae425fb077117d">&#9670;&nbsp;</a></span>info_power()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> info_power </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>power</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法による一般的な効力値を出力する（固定値） / Generate power info string such as "power 100" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">power</td><td>固定値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>フォーマットに従い整形された文字列 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a5e47d86393f65df045ae425fb077117d_cgraph.png" border="0" usemap="#acmd-spell_8cpp_a5e47d86393f65df045ae425fb077117d_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a5e47d86393f65df045ae425fb077117d_cgraph" id="acmd-spell_8cpp_a5e47d86393f65df045ae425fb077117d_cgraph">
+<area shape="rect" title="魔法による一般的な効力値を出力する（固定値） / Generate power info string such as &quot;power 100&quot;" alt="" coords="5,5,88,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="136,5,195,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="243,5,305,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="353,5,420,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a5e47d86393f65df045ae425fb077117d_icgraph.png" border="0" usemap="#acmd-spell_8cpp_a5e47d86393f65df045ae425fb077117d_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a5e47d86393f65df045ae425fb077117d_icgraph" id="acmd-spell_8cpp_a5e47d86393f65df045ae425fb077117d_icgraph">
+<area shape="rect" title="魔法による一般的な効力値を出力する（固定値） / Generate power info string such as &quot;power 100&quot;" alt="" coords="884,436,967,463"/>
+<area shape="rect" href="realm-arcane_8cpp.html#a7832487e3190270957aa0ada40c22dc0" title="秘術領域魔法の各処理を行う" alt="" coords="717,335,833,361"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,5,490,32"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="175,917,287,944"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="719,385,831,412"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="713,436,836,463"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="713,487,836,513"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="720,537,829,564"/>
+<area shape="rect" href="realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="728,588,821,615"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="718,639,831,665"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="715,233,835,260"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="719,284,830,311"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="588,436,665,463"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,588,274,615"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,867,281,893"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,259,501,285"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,309,121,336"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,651,113,677"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,411,518,437"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,183,293,209"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,512,540,539"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,411,117,437"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,157,509,184"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,360,269,387"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,309,485,336"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,765,491,792"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,651,286,677"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,613,505,640"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,867,488,893"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,56,516,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8161687e665e08dbabcb728ada9035b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8161687e665e08dbabcb728ada9035b0">&#9670;&nbsp;</a></span>info_power_dice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> info_power_dice </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a>&#160;</td>
+          <td class="paramname"><em>dice</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a>&#160;</td>
+          <td class="paramname"><em>sides</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法による一般的な効力値を出力する（ダイス値） / Generate power info string such as "power 100" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dice</td><td>ダイス数 </td></tr>
+    <tr><td class="paramname">sides</td><td>ダイス目 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>フォーマットに従い整形された文字列 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a8161687e665e08dbabcb728ada9035b0_cgraph.png" border="0" usemap="#acmd-spell_8cpp_a8161687e665e08dbabcb728ada9035b0_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a8161687e665e08dbabcb728ada9035b0_cgraph" id="acmd-spell_8cpp_a8161687e665e08dbabcb728ada9035b0_cgraph">
+<area shape="rect" title="魔法による一般的な効力値を出力する（ダイス値） / Generate power info string such as &quot;power 100&quot;" alt="" coords="5,5,120,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="168,5,227,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="275,5,337,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="385,5,452,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a8161687e665e08dbabcb728ada9035b0_icgraph.png" border="0" usemap="#acmd-spell_8cpp_a8161687e665e08dbabcb728ada9035b0_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a8161687e665e08dbabcb728ada9035b0_icgraph" id="acmd-spell_8cpp_a8161687e665e08dbabcb728ada9035b0_icgraph">
+<area shape="rect" title="魔法による一般的な効力値を出力する（ダイス値） / Generate power info string such as &quot;power 100&quot;" alt="" coords="873,639,988,665"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="713,639,825,665"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="588,436,665,463"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,220,274,247"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,816,281,843"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,613,501,640"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,411,121,437"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,284,113,311"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,664,518,691"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,639,293,665"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,816,540,843"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,487,117,513"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,5,490,32"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,715,509,741"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,360,269,387"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,411,485,437"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,56,491,83"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,284,286,311"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,259,505,285"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,867,488,893"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,107,516,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad7588e7d4c5b74ae0236d927fa888a30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7588e7d4c5b74ae0236d927fa888a30">&#9670;&nbsp;</a></span>info_radius()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> info_radius </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>rad</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法の効果半径を出力する / Generate radius info string such as "rad 100" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rad</td><td>効果半径 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>フォーマットに従い整形された文字列 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_ad7588e7d4c5b74ae0236d927fa888a30_cgraph.png" border="0" usemap="#acmd-spell_8cpp_ad7588e7d4c5b74ae0236d927fa888a30_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_ad7588e7d4c5b74ae0236d927fa888a30_cgraph" id="acmd-spell_8cpp_ad7588e7d4c5b74ae0236d927fa888a30_cgraph">
+<area shape="rect" title="魔法の効果半径を出力する / Generate radius info string such as &quot;rad 100&quot;" alt="" coords="5,5,89,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="137,5,196,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="244,5,307,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="355,5,421,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_ad7588e7d4c5b74ae0236d927fa888a30_icgraph.png" border="0" usemap="#acmd-spell_8cpp_ad7588e7d4c5b74ae0236d927fa888a30_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_ad7588e7d4c5b74ae0236d927fa888a30_icgraph" id="acmd-spell_8cpp_ad7588e7d4c5b74ae0236d927fa888a30_icgraph">
+<area shape="rect" title="魔法の効果半径を出力する / Generate radius info string such as &quot;rad 100&quot;" alt="" coords="884,572,968,599"/>
+<area shape="rect" href="realm-arcane_8cpp.html#a7832487e3190270957aa0ada40c22dc0" title="秘術領域魔法の各処理を行う" alt="" coords="717,547,833,573"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="175,673,287,700"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="719,597,831,624"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="713,648,836,675"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="713,699,836,725"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="720,749,829,776"/>
+<area shape="rect" href="realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="728,344,821,371"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="718,395,831,421"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="715,445,835,472"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="719,496,830,523"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="588,521,665,548"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,91,274,117"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,597,281,624"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,724,501,751"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,319,121,345"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,167,113,193"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,775,518,801"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,496,293,523"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,825,540,852"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,395,117,421"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,876,490,903"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,521,509,548"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,319,269,345"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,369,485,396"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,927,491,953"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,167,286,193"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,116,505,143"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,623,488,649"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,167,516,193"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a425a4063acc1e1bb952de80eb772c96d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a425a4063acc1e1bb952de80eb772c96d">&#9670;&nbsp;</a></span>info_range()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> info_range </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>range</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法の効果範囲を出力する / Generate range info string such as "range 5" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">range</td><td>効果範囲 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>フォーマットに従い整形された文字列 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a425a4063acc1e1bb952de80eb772c96d_cgraph.png" border="0" usemap="#acmd-spell_8cpp_a425a4063acc1e1bb952de80eb772c96d_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a425a4063acc1e1bb952de80eb772c96d_cgraph" id="acmd-spell_8cpp_a425a4063acc1e1bb952de80eb772c96d_cgraph">
+<area shape="rect" title="魔法の効果範囲を出力する / Generate range info string such as &quot;range 5&quot;" alt="" coords="5,5,87,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="135,5,193,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="241,5,304,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="352,5,419,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a425a4063acc1e1bb952de80eb772c96d_icgraph.png" border="0" usemap="#acmd-spell_8cpp_a425a4063acc1e1bb952de80eb772c96d_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a425a4063acc1e1bb952de80eb772c96d_icgraph" id="acmd-spell_8cpp_a425a4063acc1e1bb952de80eb772c96d_icgraph">
+<area shape="rect" title="魔法の効果範囲を出力する / Generate range info string such as &quot;range 5&quot;" alt="" coords="884,537,965,564"/>
+<area shape="rect" href="realm-arcane_8cpp.html#a7832487e3190270957aa0ada40c22dc0" title="秘術領域魔法の各処理を行う" alt="" coords="717,563,833,589"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,867,490,893"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="719,613,831,640"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="713,411,836,437"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="715,461,835,488"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="719,512,830,539"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="588,487,665,513"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,220,274,247"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,588,281,615"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,664,501,691"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,411,121,437"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,284,113,311"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,715,518,741"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,791,293,817"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,5,540,32"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,487,117,513"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,816,509,843"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,360,269,387"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,411,485,437"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,56,491,83"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,284,286,311"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,259,505,285"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,613,488,640"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,107,516,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aeaf3d6da4dcfaa72e963c50b3cb62b25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaf3d6da4dcfaa72e963c50b3cb62b25">&#9670;&nbsp;</a></span>info_string_dice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> info_string_dice </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a>&#160;</td>
+          <td class="paramname"><em>dice</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a>&#160;</td>
+          <td class="paramname"><em>sides</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>base</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法の効果を「キャプション:ダイス＋定数値」のフォーマットで出力する / Generate dice info string such as "foo 2d10" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>キャプション </td></tr>
+    <tr><td class="paramname">dice</td><td>ダイス数 </td></tr>
+    <tr><td class="paramname">sides</td><td>ダイス目 </td></tr>
+    <tr><td class="paramname">base</td><td>固定値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>フォーマットに従い整形された文字列 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_aeaf3d6da4dcfaa72e963c50b3cb62b25_cgraph.png" border="0" usemap="#acmd-spell_8cpp_aeaf3d6da4dcfaa72e963c50b3cb62b25_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_aeaf3d6da4dcfaa72e963c50b3cb62b25_cgraph" id="acmd-spell_8cpp_aeaf3d6da4dcfaa72e963c50b3cb62b25_cgraph">
+<area shape="rect" title="魔法の効果を「キャプション:ダイス＋定数値」のフォーマットで出力する / Generate dice info string such as &quot;foo 2d10&quot;" alt="" coords="5,5,117,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="165,5,224,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="272,5,335,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="383,5,449,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_aeaf3d6da4dcfaa72e963c50b3cb62b25_icgraph.png" border="0" usemap="#acmd-spell_8cpp_aeaf3d6da4dcfaa72e963c50b3cb62b25_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_aeaf3d6da4dcfaa72e963c50b3cb62b25_icgraph" id="acmd-spell_8cpp_aeaf3d6da4dcfaa72e963c50b3cb62b25_icgraph">
+<area shape="rect" title="魔法の効果を「キャプション:ダイス＋定数値」のフォーマットで出力する / Generate dice info string such as &quot;foo 2d10&quot;" alt="" coords="591,316,703,343"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a3f8bb1e2e9d89f976a13812b836c5f9a" title="魔法によるダメージを出力する / Generate damage&#45;dice info string such as &quot;dam 2d10&quot;" alt="" coords="448,240,543,267"/>
+<area shape="rect" href="cmd-spell_8cpp.html#ab3443595b2b8754dd7836ab341deed35" title="魔法による回復量を出力する / Generate heal info string such as &quot;heal 2d8&quot;" alt="" coords="459,392,532,419"/>
+<area shape="rect" href="realm-arcane_8cpp.html#a7832487e3190270957aa0ada40c22dc0" title="秘術領域魔法の各処理を行う" alt="" coords="281,342,397,368"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="5,266,104,292"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="283,38,395,64"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="277,88,400,115"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="277,139,400,166"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="284,190,393,216"/>
+<area shape="rect" href="realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="292,392,385,419"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="283,443,395,470"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="282,291,395,318"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="279,240,399,267"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="152,266,229,292"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="283,494,394,520"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a23998444645294a59ca97e0faff21e66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23998444645294a59ca97e0faff21e66">&#9670;&nbsp;</a></span>info_weight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> info_weight </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a>&#160;</td>
+          <td class="paramname"><em>weight</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法効果の限界重量を出力する / Generate weight info string such as "max wgt 15" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">weight</td><td>最大重量 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>フォーマットに従い整形された文字列 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a23998444645294a59ca97e0faff21e66_cgraph.png" border="0" usemap="#acmd-spell_8cpp_a23998444645294a59ca97e0faff21e66_cgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a23998444645294a59ca97e0faff21e66_cgraph" id="acmd-spell_8cpp_a23998444645294a59ca97e0faff21e66_cgraph">
+<area shape="rect" title="魔法効果の限界重量を出力する / Generate weight info string such as &quot;max wgt 15&quot;" alt="" coords="5,5,92,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="140,5,199,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="247,5,309,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="357,5,424,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a23998444645294a59ca97e0faff21e66_icgraph.png" border="0" usemap="#acmd-spell_8cpp_a23998444645294a59ca97e0faff21e66_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a23998444645294a59ca97e0faff21e66_icgraph" id="acmd-spell_8cpp_a23998444645294a59ca97e0faff21e66_icgraph">
+<area shape="rect" title="魔法効果の限界重量を出力する / Generate weight info string such as &quot;max wgt 15&quot;" alt="" coords="881,474,968,501"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="713,449,833,475"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="718,499,829,526"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="588,474,665,501"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,81,274,107"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,449,281,475"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,525,501,551"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,271,121,298"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,145,113,171"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,575,518,602"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,651,293,678"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,727,540,754"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,347,117,374"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,778,490,805"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,677,509,703"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,221,269,247"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,271,485,298"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,829,491,855"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,145,286,171"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,119,505,146"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,474,488,501"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,879,516,906"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a50d98c140318fd102a45fca4554c180a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50d98c140318fd102a45fca4554c180a">&#9670;&nbsp;</a></span>spell_okay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> spell_okay </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>spell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>learned</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>study_pray</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>use_realm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>魔法が利用可能かどうかを返す / Determine if a spell is "okay" for the player to cast or study The spell must be legible, not forgotten, and also, to cast, it must be known, and to study, it must not be known. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spell</td><td>呪文ID </td></tr>
+    <tr><td class="paramname">learned</td><td>使用可能な判定ならばTRUE、学習可能かどうかの判定ならばFALSE </td></tr>
+    <tr><td class="paramname">study_pray</td><td>祈りの学習判定目的ならばTRUE </td></tr>
+    <tr><td class="paramname">use_realm</td><td>魔法領域ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>失敗率(%) </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-spell_8cpp_a50d98c140318fd102a45fca4554c180a_icgraph.png" border="0" usemap="#acmd-spell_8cpp_a50d98c140318fd102a45fca4554c180a_icgraph" alt=""/></div>
+<map name="acmd-spell_8cpp_a50d98c140318fd102a45fca4554c180a_icgraph" id="acmd-spell_8cpp_a50d98c140318fd102a45fca4554c180a_icgraph">
+<area shape="rect" title="魔法が利用可能かどうかを返す / Determine if a spell is &quot;okay&quot; for the player to cast or study The spell must be leg..." alt="" coords="855,81,939,108"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="573,56,679,83"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="732,107,807,133"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="355,5,517,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,81,137,108"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="185,5,304,32"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="568,107,684,133"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="576,208,676,235"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="352,157,520,184"/>
+<area shape="rect" href="racial-switcher_8cpp.html#ac21c6b6a9eae71ce476478232b11f8e0" title="レイシャルと突然変異の技能処理 / Racial powers (and mutations)" alt="" coords="369,259,503,301"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="af8d69087be6352f52d62ffbe03dcfc65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8d69087be6352f52d62ffbe03dcfc65">&#9670;&nbsp;</a></span>fake_spell_flags</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> fake_spell_flags[4] = { 0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000 }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法領域フラグ管理テーブル / Zangband uses this array instead of the spell flags table, as there are 5 realms of magic, each with 4 spellbooks and 8 spells per book &ndash; TY </p>
+
+</div>
+</div>
+<a id="ac7e106d2e07bb3319e7778a450b8be01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7e106d2e07bb3319e7778a450b8be01">&#9670;&nbsp;</a></span>KWD_DAM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KWD_DAM = <a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;損傷:&quot;, &quot;dam &quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法のインターフェイスと発動 / Purpose: Do everything for each spell </p>
+<dl class="section date"><dt>日付</dt><dd>2013/12/31 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>2013 Deskull rearranged comment for Doxygen. </dd></dl>
+
+</div>
+</div>
+<a id="a8cff43f901ea7ee6f9d5a584fce299b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cff43f901ea7ee6f9d5a584fce299b9">&#9670;&nbsp;</a></span>KWD_DURATION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KWD_DURATION = <a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;期間:&quot;, &quot;dur &quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2695b189aec54a539d618979af9e83be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2695b189aec54a539d618979af9e83be">&#9670;&nbsp;</a></span>KWD_HEAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KWD_HEAL = <a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;回復:&quot;, &quot;heal &quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3bf7c05d3553e0a2f2e355030f318efd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bf7c05d3553e0a2f2e355030f318efd">&#9670;&nbsp;</a></span>KWD_RANDOM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KWD_RANDOM = <a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ランダム&quot;, &quot;random&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a44fb04f939b674da6b36c50f2f005df0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44fb04f939b674da6b36c50f2f005df0">&#9670;&nbsp;</a></span>KWD_RANGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KWD_RANGE = <a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;射程:&quot;, &quot;rng &quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aff513e60b3826bc382a3511da45f5cfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff513e60b3826bc382a3511da45f5cfa">&#9670;&nbsp;</a></span>KWD_SPHERE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KWD_SPHERE = <a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;範囲:&quot;, &quot;range &quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分24秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

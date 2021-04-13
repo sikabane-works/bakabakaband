@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/store/store.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ce523e85215a280d7642dc7a1cfeecaa.html">store</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">store.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="store_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="store-owners_8h.html">store/store-owners.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="store-util_8h.html">store/store-util.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; <span class="comment">/* Store constants */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="store_8h.html#af1b774ab8a5b7057fc61e9f9abbf9223">    8</a></span>&#160;<span class="preprocessor">#define STORE_INVEN_MAX 24              </span><span class="comment">/* Max number of discrete objs in inven */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="store_8h.html#aed29ef9c7b4eae241a7b8c4a470b3d5b">    9</a></span>&#160;<span class="preprocessor">#define STORE_TURNOVER  12              </span><span class="comment">/* Normal shop turnover, per day */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="store_8h.html#ae6eb2e6ef6890c1761cb43cbaa1b596c">   10</a></span>&#160;<span class="preprocessor">#define STORE_MIN_KEEP  6               </span><span class="comment">/* Min slots to &quot;always&quot; keep full */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="store_8h.html#aa6bdd57ae64a8a096b6e14dcd8282ef9">   11</a></span>&#160;<span class="preprocessor">#define STORE_MAX_KEEP  21              </span><span class="comment">/* Max slots to &quot;always&quot; keep full */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="store_8h.html#ac31944c66d850b3d5d7bb7a6645c8e39">   12</a></span>&#160;<span class="preprocessor">#define STORE_SHUFFLE   21              </span><span class="comment">/* 1/Chance (per day) of an owner changing */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="store_8h.html#ae993c42a18a8503bc366d72525d58efe">   13</a></span>&#160;<span class="preprocessor">#define STORE_TICKS     1000            </span><span class="comment">/* Number of ticks between turnovers */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="store_8h.html#abc6634c56c1d00d64922ea01ef775837">store_top</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="store_8h.html#ab6da6c5358711ba9ea86de3c2ff6cf2e">store_bottom</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="store_8h.html#aa5724f66813ae27c79722547b2e498da">xtra_stock</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structowner__type.html">owner_type</a> *<a class="code" href="store_8h.html#aa97dad1a46ef30f588f5e25c37295983">ot_ptr</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="store_8h.html#a503a6559a6a376ad8eaee318a299dafc">old_town_num</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="store_8h.html#a0bd6e53b7f6dbe79dcd1750c427f16ab">inner_town_num</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="store_8h.html#a7a5b332bb9ea81e8fd66d64be48c50af">cur_store_feat</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="store_8h.html#ac3aea3af53834e396ff4829467773339">allow_inc</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="store_8h.html#afd5a16620bc52d61605df600b0797342">store_get_stock_max</a>(<a class="code" href="store-util_8h.html#ae883fe54f81921ef4b265bdc508b6937">STORE_TYPE_IDX</a> store_idx, <span class="keywordtype">bool</span> powerup = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">void</span> <a class="code" href="store_8h.html#ab1d59efed4587b44cdf1579c606c3e4b">store_shuffle</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <span class="keywordtype">int</span> which);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">void</span> <a class="code" href="store_8h.html#a6a854a65bd5dddbfc17fb317b5fff5f4">store_maintenance</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <span class="keywordtype">int</span> town_num, <span class="keywordtype">int</span> store_num, <span class="keywordtype">int</span> chance);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> <a class="code" href="store_8h.html#a4882fd2b8b1a19aa31bead6730479f2b">store_init</a>(<span class="keywordtype">int</span> town_num, <span class="keywordtype">int</span> store_num);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">void</span> <a class="code" href="store_8h.html#a56e1a5fa57c35a0bd4de81ba53cff40b">store_examine</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">int</span> <a class="code" href="store_8h.html#a25e6fff0c384e9d41fd7a9bdda77a76e">store_check_num</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">int</span> <a class="code" href="store_8h.html#a6be88d985b5b0c97574ed26d55a4c33d">get_stock</a>(<a class="code" href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a> *com_val, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> pmt, <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_a9760a9b50f8e3aeeb4b82d0dc9a81c33"><div class="ttname"><a href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a></div><div class="ttdeci">s16b COMMAND_CODE</div><div class="ttdoc">コマンド内容の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:210</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="astore-owners_8h_html"><div class="ttname"><a href="store-owners_8h.html">store-owners.h</a></div></div>
+<div class="ttc" id="astore-util_8h_html"><div class="ttname"><a href="store-util_8h.html">store-util.h</a></div></div>
+<div class="ttc" id="astore-util_8h_html_ae883fe54f81921ef4b265bdc508b6937"><div class="ttname"><a href="store-util_8h.html#ae883fe54f81921ef4b265bdc508b6937">STORE_TYPE_IDX</a></div><div class="ttdeci">STORE_TYPE_IDX</div><div class="ttdef"><b>Definition:</b> store-util.h:8</div></div>
+<div class="ttc" id="astore_8h_html_a0bd6e53b7f6dbe79dcd1750c427f16ab"><div class="ttname"><a href="store_8h.html#a0bd6e53b7f6dbe79dcd1750c427f16ab">inner_town_num</a></div><div class="ttdeci">s16b inner_town_num</div><div class="ttdef"><b>Definition:</b> store.cpp:42</div></div>
+<div class="ttc" id="astore_8h_html_a25e6fff0c384e9d41fd7a9bdda77a76e"><div class="ttname"><a href="store_8h.html#a25e6fff0c384e9d41fd7a9bdda77a76e">store_check_num</a></div><div class="ttdeci">int store_check_num(object_type *o_ptr)</div><div class="ttdoc">店舗に品を置くスペースがあるかどうかの判定を返す / Check to see if the shop will be carrying too many objects -RAK-</div><div class="ttdef"><b>Definition:</b> store.cpp:102</div></div>
+<div class="ttc" id="astore_8h_html_a4882fd2b8b1a19aa31bead6730479f2b"><div class="ttname"><a href="store_8h.html#a4882fd2b8b1a19aa31bead6730479f2b">store_init</a></div><div class="ttdeci">void store_init(int town_num, int store_num)</div><div class="ttdoc">店舗情報を初期化する / Initialize the stores</div><div class="ttdef"><b>Definition:</b> store.cpp:365</div></div>
+<div class="ttc" id="astore_8h_html_a503a6559a6a376ad8eaee318a299dafc"><div class="ttname"><a href="store_8h.html#a503a6559a6a376ad8eaee318a299dafc">old_town_num</a></div><div class="ttdeci">s16b old_town_num</div><div class="ttdef"><b>Definition:</b> store.cpp:41</div></div>
+<div class="ttc" id="astore_8h_html_a56e1a5fa57c35a0bd4de81ba53cff40b"><div class="ttname"><a href="store_8h.html#a56e1a5fa57c35a0bd4de81ba53cff40b">store_examine</a></div><div class="ttdeci">void store_examine(player_type *player_ptr)</div><div class="ttdoc">店のアイテムを調べるコマンドのメインルーチン / Examine an item in a store -JDL-</div><div class="ttdef"><b>Definition:</b> store.cpp:200</div></div>
+<div class="ttc" id="astore_8h_html_a6a854a65bd5dddbfc17fb317b5fff5f4"><div class="ttname"><a href="store_8h.html#a6a854a65bd5dddbfc17fb317b5fff5f4">store_maintenance</a></div><div class="ttdeci">void store_maintenance(player_type *player_ptr, int town_num, int store_num, int chance)</div><div class="ttdoc">店の品揃えを変化させる / Maintain the inventory at the stores.</div><div class="ttdef"><b>Definition:</b> store.cpp:295</div></div>
+<div class="ttc" id="astore_8h_html_a6be88d985b5b0c97574ed26d55a4c33d"><div class="ttname"><a href="store_8h.html#a6be88d985b5b0c97574ed26d55a4c33d">get_stock</a></div><div class="ttdeci">int get_stock(COMMAND_CODE *com_val, concptr pmt, int i, int j)</div><div class="ttdoc">店舗からアイテムを選択する / Get the ID of a store item and return its value -RAK-</div><div class="ttdef"><b>Definition:</b> store.cpp:150</div></div>
+<div class="ttc" id="astore_8h_html_a7a5b332bb9ea81e8fd66d64be48c50af"><div class="ttname"><a href="store_8h.html#a7a5b332bb9ea81e8fd66d64be48c50af">cur_store_feat</a></div><div class="ttdeci">int cur_store_feat</div><div class="ttdef"><b>Definition:</b> store.cpp:45</div></div>
+<div class="ttc" id="astore_8h_html_aa5724f66813ae27c79722547b2e498da"><div class="ttname"><a href="store_8h.html#aa5724f66813ae27c79722547b2e498da">xtra_stock</a></div><div class="ttdeci">int xtra_stock</div><div class="ttdef"><b>Definition:</b> store.cpp:39</div></div>
+<div class="ttc" id="astore_8h_html_aa97dad1a46ef30f588f5e25c37295983"><div class="ttname"><a href="store_8h.html#aa97dad1a46ef30f588f5e25c37295983">ot_ptr</a></div><div class="ttdeci">const owner_type * ot_ptr</div><div class="ttdef"><b>Definition:</b> store.cpp:40</div></div>
+<div class="ttc" id="astore_8h_html_ab1d59efed4587b44cdf1579c606c3e4b"><div class="ttname"><a href="store_8h.html#ab1d59efed4587b44cdf1579c606c3e4b">store_shuffle</a></div><div class="ttdeci">void store_shuffle(player_type *player_ptr, int which)</div><div class="ttdoc">現在の町の店主を交代させる / Shuffle one of the stores.</div><div class="ttdef"><b>Definition:</b> store.cpp:243</div></div>
+<div class="ttc" id="astore_8h_html_ab6da6c5358711ba9ea86de3c2ff6cf2e"><div class="ttname"><a href="store_8h.html#ab6da6c5358711ba9ea86de3c2ff6cf2e">store_bottom</a></div><div class="ttdeci">int store_bottom</div><div class="ttdef"><b>Definition:</b> store.cpp:38</div></div>
+<div class="ttc" id="astore_8h_html_abc6634c56c1d00d64922ea01ef775837"><div class="ttname"><a href="store_8h.html#abc6634c56c1d00d64922ea01ef775837">store_top</a></div><div class="ttdeci">int store_top</div><div class="ttdoc">店の処理 / Store commands</div><div class="ttdef"><b>Definition:</b> store.cpp:37</div></div>
+<div class="ttc" id="astore_8h_html_ac3aea3af53834e396ff4829467773339"><div class="ttname"><a href="store_8h.html#ac3aea3af53834e396ff4829467773339">allow_inc</a></div><div class="ttdeci">bool allow_inc</div><div class="ttdef"><b>Definition:</b> store.cpp:48</div></div>
+<div class="ttc" id="astore_8h_html_afd5a16620bc52d61605df600b0797342"><div class="ttname"><a href="store_8h.html#afd5a16620bc52d61605df600b0797342">store_get_stock_max</a></div><div class="ttdeci">s16b store_get_stock_max(STORE_TYPE_IDX store_idx, bool powerup=true)</div><div class="ttdoc">店舗の最大スロット数を返す</div><div class="ttdef"><b>Definition:</b> store.cpp:55</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructowner__type_html"><div class="ttname"><a href="structowner__type.html">owner_type</a></div><div class="ttdoc">店主データ構造体</div><div class="ttdef"><b>Definition:</b> store-owners.h:12</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

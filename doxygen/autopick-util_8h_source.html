@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/autopick/autopick-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_609976a57c98df6cb9f80f504e628a46.html">autopick</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">autopick-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="autopick-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="object-type-definition_8h.html">system/object-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="autopick-util_8h.html#a1d1394dad8cb4b0213708082276818b3">    6</a></span>&#160;<span class="preprocessor">#define MAX_LINELEN 1024</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="autopick-util_8h.html#a6b849914642b4f49ec46e8940509edcf">    7</a></span>&#160;<span class="preprocessor">#define MAX_AUTOPICK_DEFAULT 200</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="autopick-util_8h.html#a1109f9dfaa932afcb6cb157e47ac0785">    8</a></span>&#160;<span class="preprocessor">#define MAX_YANK MAX_LINELEN</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="autopick-util_8h.html#a07e2b531c72985b064c431c05dfbc5fc">    9</a></span>&#160;<span class="preprocessor">#define MAX_LINES 3000</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="autopick-util_8h.html#a9dd60badaa08992e83abba4dcfe60380">   11</a></span>&#160;<span class="preprocessor">#define PT_DEFAULT 0</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="autopick-util_8h.html#a0080cc881ebcb9cc770fc26d662dea3e">   12</a></span>&#160;<span class="preprocessor">#define PT_WITH_PNAME 1</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="autopick-util_8h.html#a5f619179f483972878147c8c7f8f6f55">   14</a></span>&#160;<span class="preprocessor">#define MARK_MARK     0x01</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="autopick-util_8h.html#a5f4f670bd34d084bf57b517a3b6ee1fe">   15</a></span>&#160;<span class="preprocessor">#define MARK_BY_SHIFT 0x02</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="autopick-util_8h.html#a9d5fca23dc52236c712fd9199d806f69">   17</a></span>&#160;<span class="preprocessor">#define LSTAT_BYPASS        0x01</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="autopick-util_8h.html#a677fcb7f4f0dfe26d792981545e70eaa">   18</a></span>&#160;<span class="preprocessor">#define LSTAT_EXPRESSION    0x02</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="autopick-util_8h.html#a3731ca000d9a4fd77551a762d652767d">   19</a></span>&#160;<span class="preprocessor">#define LSTAT_AUTOREGISTER  0x04</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structautopick__type.html">   25</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structautopick__type.html#a741cb5fd5cb99afbdc2dd5bf70220cac">   26</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structautopick__type.html#a741cb5fd5cb99afbdc2dd5bf70220cac">name</a>;          </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structautopick__type.html#a54d93eb6249f80789c54020a7c090466">   27</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structautopick__type.html#a54d93eb6249f80789c54020a7c090466">insc</a>;          </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structautopick__type.html#a16b72e7d0bd80a59dcab04f9f27afb63">   28</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> flag[2];       </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structautopick__type.html#a0b02ac035c24d3e7e57264e73f8a1f94">   29</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structautopick__type.html#a0b02ac035c24d3e7e57264e73f8a1f94">action</a>;        </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structautopick__type.html#a1951178dbf6de3b88861295433cc5b70">   30</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structautopick__type.html#a1951178dbf6de3b88861295433cc5b70">dice</a>;          </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structautopick__type.html#ad36e125dd4a1e7cdb94ef987c380a67e">   31</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structautopick__type.html#ad36e125dd4a1e7cdb94ef987c380a67e">bonus</a>;         </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;} <a class="code" href="structautopick__type.html">autopick_type</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> * Struct for yank buffer</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structchain__str.html">   37</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structchain__str.html">chain_str</a> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structchain__str.html#adf87109ae5ebb82c0a1dedf2924cc745">   38</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structchain__str.html">chain_str</a> *<a class="code" href="structchain__str.html#adf87109ae5ebb82c0a1dedf2924cc745">next</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structchain__str.html#ae76b075a6cf51745a83c3a40d01a59f7">   39</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structchain__str.html#ae76b075a6cf51745a83c3a40d01a59f7">s</a>[1];</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="autopick-util_8h.html#a5826171bc834490c7233efd3a930643e">   40</a></span>&#160;} <a class="code" href="autopick-util_8h.html#a5826171bc834490c7233efd3a930643e">chain_str_type</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> * Data struct for text editor</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structtext__body__type.html">   45</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structtext__body__type.html#a79e943c68ac9dbd26403532d59015021">   46</a></span>&#160;    <span class="keywordtype">int</span> wid, <a class="code" href="structtext__body__type.html#a79e943c68ac9dbd26403532d59015021">hgt</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structtext__body__type.html#a183f8aef694861d23942dd33edd260f7">   47</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structtext__body__type.html#a183f8aef694861d23942dd33edd260f7">cx</a>, cy;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structtext__body__type.html#aaf2e2de38336312821a53650391247b8">   48</a></span>&#160;    <span class="keywordtype">int</span> upper, <a class="code" href="structtext__body__type.html#aaf2e2de38336312821a53650391247b8">left</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structtext__body__type.html#aedc6723cd0df49a26e6baa71a65db149">   49</a></span>&#160;    <span class="keywordtype">int</span> old_wid, <a class="code" href="structtext__body__type.html#aedc6723cd0df49a26e6baa71a65db149">old_hgt</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structtext__body__type.html#a22e734d6f422ff5c6b9d6d6a68e71623">   50</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structtext__body__type.html#a22e734d6f422ff5c6b9d6d6a68e71623">old_cy</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="structtext__body__type.html#a79805265df38d85d66cba89764fef38e">   51</a></span>&#160;    <span class="keywordtype">int</span> old_upper, <a class="code" href="structtext__body__type.html#a79805265df38d85d66cba89764fef38e">old_left</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structtext__body__type.html#a11ef5fd97496e3f30308457e78fd2445">   52</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structtext__body__type.html#a11ef5fd97496e3f30308457e78fd2445">mx</a>, my;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structtext__body__type.html#a09166e4bc38fd38aac56e31fc7f9b5c2">   53</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structtext__body__type.html#a09166e4bc38fd38aac56e31fc7f9b5c2">mark</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structtext__body__type.html#aedd82dbd283b04e5761f2594d6c09617">   55</a></span>&#160;    <a class="code" href="structobject__type.html">object_type</a> *<a class="code" href="structtext__body__type.html#aedd82dbd283b04e5761f2594d6c09617">search_o_ptr</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structtext__body__type.html#ae3747e0b027c38a895b50d571e2e99d7">   56</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structtext__body__type.html#ae3747e0b027c38a895b50d571e2e99d7">search_str</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structtext__body__type.html#a86abac2e8ada8695f21b47c9d60360cd">   57</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structtext__body__type.html#a86abac2e8ada8695f21b47c9d60360cd">last_destroyed</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structtext__body__type.html#a011c6ecda1a74635031a12999dd4c29e">   59</a></span>&#160;    <a class="code" href="structchain__str.html">chain_str_type</a> *<a class="code" href="structtext__body__type.html#a011c6ecda1a74635031a12999dd4c29e">yank</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structtext__body__type.html#a6db949d67ac84c9868b49b6a9677213b">   60</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structtext__body__type.html#a6db949d67ac84c9868b49b6a9677213b">yank_eol</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structtext__body__type.html#a8819347a0622cbdcceb5b60a035d3778">   62</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *<a class="code" href="structtext__body__type.html#a8819347a0622cbdcceb5b60a035d3778">lines_list</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structtext__body__type.html#addd6f25d5a0adaffe0d62476e0ad0b0d">   63</a></span>&#160;    <span class="keywordtype">byte</span> states[<a class="code" href="autopick-util_8h.html#a07e2b531c72985b064c431c05dfbc5fc">MAX_LINES</a>];</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="structtext__body__type.html#a5a68ef1e3adcdcfa25eb624260bb18ac">   65</a></span>&#160;    <a class="code" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a> <a class="code" href="structtext__body__type.html#a5a68ef1e3adcdcfa25eb624260bb18ac">dirty_flags</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structtext__body__type.html#a882f3fc6ce38c8c229b67976484c5314">   66</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structtext__body__type.html#a882f3fc6ce38c8c229b67976484c5314">dirty_line</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structtext__body__type.html#a213148ade70094109d49013931c60abd">   67</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structtext__body__type.html#a213148ade70094109d49013931c60abd">filename_mode</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="structtext__body__type.html#a606c67bfd3343e01974878c1fd96ad19">   68</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structtext__body__type.html#a606c67bfd3343e01974878c1fd96ad19">old_com_id</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structtext__body__type.html#a8633243d0e93093ed5d5883f80a549f7">   70</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structtext__body__type.html#a8633243d0e93093ed5d5883f80a549f7">changed</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;} <a class="code" href="structtext__body__type.html">text_body_type</a>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"> *  List for auto-picker/destroyer entries</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="autopick-util_8h.html#a6ad8c7a17edf82468579d0c0a27acc29">max_autopick</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="autopick-util_8h.html#aead7086c9d99430ea26a13c7ec06d7fd">max_max_autopick</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">extern</span> <a class="code" href="structautopick__type.html">autopick_type</a> *<a class="code" href="autopick-util_8h.html#a52d7d0e626473582ea8866aa53e5e554">autopick_list</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">extern</span> <a class="code" href="structobject__type.html">object_type</a> <a class="code" href="autopick-util_8h.html#ada1d87c79cd8785e21b6c4e8a454d828">autopick_last_destroyed_object</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">void</span> <a class="code" href="autopick-util_8h.html#a8d51638e9bac2c1441ed37fc88c740e5">autopick_free_entry</a>(<a class="code" href="structautopick__type.html">autopick_type</a> *entry);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">void</span> <a class="code" href="autopick-util_8h.html#a5d1b172ee175f8ae9b46f2039d83bac5">free_text_lines</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *lines_list);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">int</span> <a class="code" href="autopick-util_8h.html#ad99139c2dc0a2513d0319e74c009e9ef">get_com_id</a>(<span class="keywordtype">char</span> key);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">void</span> <a class="code" href="autopick-util_8h.html#a1dd80fdd8ddb78ff0a4e450460cd8951">auto_inscribe_item</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr, <span class="keywordtype">int</span> idx);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">void</span> <a class="code" href="autopick-util_8h.html#a7dec5b6020c1d39cb763bf1f543a0b30">add_autopick_list</a>(<a class="code" href="structautopick__type.html">autopick_type</a> *entry);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aautopick-util_8h_html_a07e2b531c72985b064c431c05dfbc5fc"><div class="ttname"><a href="autopick-util_8h.html#a07e2b531c72985b064c431c05dfbc5fc">MAX_LINES</a></div><div class="ttdeci">#define MAX_LINES</div><div class="ttdef"><b>Definition:</b> autopick-util.h:9</div></div>
+<div class="ttc" id="aautopick-util_8h_html_a1dd80fdd8ddb78ff0a4e450460cd8951"><div class="ttname"><a href="autopick-util_8h.html#a1dd80fdd8ddb78ff0a4e450460cd8951">auto_inscribe_item</a></div><div class="ttdeci">void auto_inscribe_item(player_type *player_ptr, object_type *o_ptr, int idx)</div><div class="ttdef"><b>Definition:</b> autopick-util.cpp:73</div></div>
+<div class="ttc" id="aautopick-util_8h_html_a52d7d0e626473582ea8866aa53e5e554"><div class="ttname"><a href="autopick-util_8h.html#a52d7d0e626473582ea8866aa53e5e554">autopick_list</a></div><div class="ttdeci">autopick_type * autopick_list</div><div class="ttdoc">自動拾い/破壊設定構造体のポインタ配列</div><div class="ttdef"><b>Definition:</b> autopick-util.cpp:16</div></div>
+<div class="ttc" id="aautopick-util_8h_html_a5826171bc834490c7233efd3a930643e"><div class="ttname"><a href="autopick-util_8h.html#a5826171bc834490c7233efd3a930643e">chain_str_type</a></div><div class="ttdeci">struct chain_str chain_str_type</div></div>
+<div class="ttc" id="aautopick-util_8h_html_a5d1b172ee175f8ae9b46f2039d83bac5"><div class="ttname"><a href="autopick-util_8h.html#a5d1b172ee175f8ae9b46f2039d83bac5">free_text_lines</a></div><div class="ttdeci">void free_text_lines(concptr *lines_list)</div><div class="ttdef"><b>Definition:</b> autopick-util.cpp:41</div></div>
+<div class="ttc" id="aautopick-util_8h_html_a6ad8c7a17edf82468579d0c0a27acc29"><div class="ttname"><a href="autopick-util_8h.html#a6ad8c7a17edf82468579d0c0a27acc29">max_autopick</a></div><div class="ttdeci">int max_autopick</div><div class="ttdoc">現在登録している自動拾い/破壊設定の数</div><div class="ttdef"><b>Definition:</b> autopick-util.cpp:14</div></div>
+<div class="ttc" id="aautopick-util_8h_html_a7dec5b6020c1d39cb763bf1f543a0b30"><div class="ttname"><a href="autopick-util_8h.html#a7dec5b6020c1d39cb763bf1f543a0b30">add_autopick_list</a></div><div class="ttdeci">void add_autopick_list(autopick_type *entry)</div><div class="ttdef"><b>Definition:</b> autopick-util.cpp:88</div></div>
+<div class="ttc" id="aautopick-util_8h_html_a8d51638e9bac2c1441ed37fc88c740e5"><div class="ttname"><a href="autopick-util_8h.html#a8d51638e9bac2c1441ed37fc88c740e5">autopick_free_entry</a></div><div class="ttdeci">void autopick_free_entry(autopick_type *entry)</div><div class="ttdef"><b>Definition:</b> autopick-util.cpp:29</div></div>
+<div class="ttc" id="aautopick-util_8h_html_ad99139c2dc0a2513d0319e74c009e9ef"><div class="ttname"><a href="autopick-util_8h.html#ad99139c2dc0a2513d0319e74c009e9ef">get_com_id</a></div><div class="ttdeci">int get_com_id(char key)</div><div class="ttdef"><b>Definition:</b> autopick-util.cpp:56</div></div>
+<div class="ttc" id="aautopick-util_8h_html_ada1d87c79cd8785e21b6c4e8a454d828"><div class="ttname"><a href="autopick-util_8h.html#ada1d87c79cd8785e21b6c4e8a454d828">autopick_last_destroyed_object</a></div><div class="ttdeci">object_type autopick_last_destroyed_object</div><div class="ttdef"><b>Definition:</b> autopick-util.cpp:24</div></div>
+<div class="ttc" id="aautopick-util_8h_html_aead7086c9d99430ea26a13c7ec06d7fd"><div class="ttname"><a href="autopick-util_8h.html#aead7086c9d99430ea26a13c7ec06d7fd">max_max_autopick</a></div><div class="ttdeci">int max_max_autopick</div><div class="ttdoc">自動拾い/破壊設定の限界数</div><div class="ttdef"><b>Definition:</b> autopick-util.cpp:15</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_ae21ecc67b92c35422853544364e96b42"><div class="ttname"><a href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a></div><div class="ttdeci">unsigned short u16b</div><div class="ttdef"><b>Definition:</b> h-type.h:84</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="aobject-type-definition_8h_html"><div class="ttname"><a href="object-type-definition_8h.html">object-type-definition.h</a></div></div>
+<div class="ttc" id="astructautopick__type_html"><div class="ttname"><a href="structautopick__type.html">autopick_type</a></div><div class="ttdoc">自動拾い/破壊設定データの構造体 / A structure type for entry of auto-picker/destroyer</div><div class="ttdef"><b>Definition:</b> autopick-util.h:25</div></div>
+<div class="ttc" id="astructautopick__type_html_a0b02ac035c24d3e7e57264e73f8a1f94"><div class="ttname"><a href="structautopick__type.html#a0b02ac035c24d3e7e57264e73f8a1f94">autopick_type::action</a></div><div class="ttdeci">byte action</div><div class="ttdoc">対象のアイテムを拾う/破壊/放置するかの指定フラグ / Auto-pickup or Destroy or Leave items</div><div class="ttdef"><b>Definition:</b> autopick-util.h:29</div></div>
+<div class="ttc" id="astructautopick__type_html_a1951178dbf6de3b88861295433cc5b70"><div class="ttname"><a href="structautopick__type.html#a1951178dbf6de3b88861295433cc5b70">autopick_type::dice</a></div><div class="ttdeci">byte dice</div><div class="ttdoc">武器のダイス値基準値 / Weapons which have more than 'dice' dice match</div><div class="ttdef"><b>Definition:</b> autopick-util.h:30</div></div>
+<div class="ttc" id="astructautopick__type_html_a54d93eb6249f80789c54020a7c090466"><div class="ttname"><a href="structautopick__type.html#a54d93eb6249f80789c54020a7c090466">autopick_type::insc</a></div><div class="ttdeci">concptr insc</div><div class="ttdoc">対象となったアイテムに自動で刻む内容 / Items will be auto-inscribed as 'insc'</div><div class="ttdef"><b>Definition:</b> autopick-util.h:27</div></div>
+<div class="ttc" id="astructautopick__type_html_a741cb5fd5cb99afbdc2dd5bf70220cac"><div class="ttname"><a href="structautopick__type.html#a741cb5fd5cb99afbdc2dd5bf70220cac">autopick_type::name</a></div><div class="ttdeci">concptr name</div><div class="ttdoc">自動拾い/破壊定義の名称一致基準 / Items which have 'name' as part of its name match</div><div class="ttdef"><b>Definition:</b> autopick-util.h:26</div></div>
+<div class="ttc" id="astructautopick__type_html_ad36e125dd4a1e7cdb94ef987c380a67e"><div class="ttname"><a href="structautopick__type.html#ad36e125dd4a1e7cdb94ef987c380a67e">autopick_type::bonus</a></div><div class="ttdeci">byte bonus</div><div class="ttdoc">アイテムのボーナス基準値 / Items which have more than 'bonus' magical bonus match</div><div class="ttdef"><b>Definition:</b> autopick-util.h:31</div></div>
+<div class="ttc" id="astructchain__str_html"><div class="ttname"><a href="structchain__str.html">chain_str</a></div><div class="ttdef"><b>Definition:</b> autopick-util.h:37</div></div>
+<div class="ttc" id="astructchain__str_html_adf87109ae5ebb82c0a1dedf2924cc745"><div class="ttname"><a href="structchain__str.html#adf87109ae5ebb82c0a1dedf2924cc745">chain_str::next</a></div><div class="ttdeci">struct chain_str * next</div><div class="ttdef"><b>Definition:</b> autopick-util.h:38</div></div>
+<div class="ttc" id="astructchain__str_html_ae76b075a6cf51745a83c3a40d01a59f7"><div class="ttname"><a href="structchain__str.html#ae76b075a6cf51745a83c3a40d01a59f7">chain_str::s</a></div><div class="ttdeci">char s[1]</div><div class="ttdef"><b>Definition:</b> autopick-util.h:39</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="astructtext__body__type_html"><div class="ttname"><a href="structtext__body__type.html">text_body_type</a></div><div class="ttdef"><b>Definition:</b> autopick-util.h:45</div></div>
+<div class="ttc" id="astructtext__body__type_html_a011c6ecda1a74635031a12999dd4c29e"><div class="ttname"><a href="structtext__body__type.html#a011c6ecda1a74635031a12999dd4c29e">text_body_type::yank</a></div><div class="ttdeci">chain_str_type * yank</div><div class="ttdef"><b>Definition:</b> autopick-util.h:59</div></div>
+<div class="ttc" id="astructtext__body__type_html_a09166e4bc38fd38aac56e31fc7f9b5c2"><div class="ttname"><a href="structtext__body__type.html#a09166e4bc38fd38aac56e31fc7f9b5c2">text_body_type::mark</a></div><div class="ttdeci">byte mark</div><div class="ttdef"><b>Definition:</b> autopick-util.h:53</div></div>
+<div class="ttc" id="astructtext__body__type_html_a11ef5fd97496e3f30308457e78fd2445"><div class="ttname"><a href="structtext__body__type.html#a11ef5fd97496e3f30308457e78fd2445">text_body_type::mx</a></div><div class="ttdeci">int mx</div><div class="ttdef"><b>Definition:</b> autopick-util.h:52</div></div>
+<div class="ttc" id="astructtext__body__type_html_a183f8aef694861d23942dd33edd260f7"><div class="ttname"><a href="structtext__body__type.html#a183f8aef694861d23942dd33edd260f7">text_body_type::cx</a></div><div class="ttdeci">int cx</div><div class="ttdef"><b>Definition:</b> autopick-util.h:47</div></div>
+<div class="ttc" id="astructtext__body__type_html_a213148ade70094109d49013931c60abd"><div class="ttname"><a href="structtext__body__type.html#a213148ade70094109d49013931c60abd">text_body_type::filename_mode</a></div><div class="ttdeci">int filename_mode</div><div class="ttdef"><b>Definition:</b> autopick-util.h:67</div></div>
+<div class="ttc" id="astructtext__body__type_html_a22e734d6f422ff5c6b9d6d6a68e71623"><div class="ttname"><a href="structtext__body__type.html#a22e734d6f422ff5c6b9d6d6a68e71623">text_body_type::old_cy</a></div><div class="ttdeci">int old_cy</div><div class="ttdef"><b>Definition:</b> autopick-util.h:50</div></div>
+<div class="ttc" id="astructtext__body__type_html_a5a68ef1e3adcdcfa25eb624260bb18ac"><div class="ttname"><a href="structtext__body__type.html#a5a68ef1e3adcdcfa25eb624260bb18ac">text_body_type::dirty_flags</a></div><div class="ttdeci">u16b dirty_flags</div><div class="ttdef"><b>Definition:</b> autopick-util.h:65</div></div>
+<div class="ttc" id="astructtext__body__type_html_a606c67bfd3343e01974878c1fd96ad19"><div class="ttname"><a href="structtext__body__type.html#a606c67bfd3343e01974878c1fd96ad19">text_body_type::old_com_id</a></div><div class="ttdeci">int old_com_id</div><div class="ttdef"><b>Definition:</b> autopick-util.h:68</div></div>
+<div class="ttc" id="astructtext__body__type_html_a6db949d67ac84c9868b49b6a9677213b"><div class="ttname"><a href="structtext__body__type.html#a6db949d67ac84c9868b49b6a9677213b">text_body_type::yank_eol</a></div><div class="ttdeci">bool yank_eol</div><div class="ttdef"><b>Definition:</b> autopick-util.h:60</div></div>
+<div class="ttc" id="astructtext__body__type_html_a79805265df38d85d66cba89764fef38e"><div class="ttname"><a href="structtext__body__type.html#a79805265df38d85d66cba89764fef38e">text_body_type::old_left</a></div><div class="ttdeci">int old_left</div><div class="ttdef"><b>Definition:</b> autopick-util.h:51</div></div>
+<div class="ttc" id="astructtext__body__type_html_a79e943c68ac9dbd26403532d59015021"><div class="ttname"><a href="structtext__body__type.html#a79e943c68ac9dbd26403532d59015021">text_body_type::hgt</a></div><div class="ttdeci">int hgt</div><div class="ttdef"><b>Definition:</b> autopick-util.h:46</div></div>
+<div class="ttc" id="astructtext__body__type_html_a8633243d0e93093ed5d5883f80a549f7"><div class="ttname"><a href="structtext__body__type.html#a8633243d0e93093ed5d5883f80a549f7">text_body_type::changed</a></div><div class="ttdeci">bool changed</div><div class="ttdef"><b>Definition:</b> autopick-util.h:70</div></div>
+<div class="ttc" id="astructtext__body__type_html_a86abac2e8ada8695f21b47c9d60360cd"><div class="ttname"><a href="structtext__body__type.html#a86abac2e8ada8695f21b47c9d60360cd">text_body_type::last_destroyed</a></div><div class="ttdeci">concptr last_destroyed</div><div class="ttdef"><b>Definition:</b> autopick-util.h:57</div></div>
+<div class="ttc" id="astructtext__body__type_html_a8819347a0622cbdcceb5b60a035d3778"><div class="ttname"><a href="structtext__body__type.html#a8819347a0622cbdcceb5b60a035d3778">text_body_type::lines_list</a></div><div class="ttdeci">concptr * lines_list</div><div class="ttdef"><b>Definition:</b> autopick-util.h:62</div></div>
+<div class="ttc" id="astructtext__body__type_html_a882f3fc6ce38c8c229b67976484c5314"><div class="ttname"><a href="structtext__body__type.html#a882f3fc6ce38c8c229b67976484c5314">text_body_type::dirty_line</a></div><div class="ttdeci">int dirty_line</div><div class="ttdef"><b>Definition:</b> autopick-util.h:66</div></div>
+<div class="ttc" id="astructtext__body__type_html_aaf2e2de38336312821a53650391247b8"><div class="ttname"><a href="structtext__body__type.html#aaf2e2de38336312821a53650391247b8">text_body_type::left</a></div><div class="ttdeci">int left</div><div class="ttdef"><b>Definition:</b> autopick-util.h:48</div></div>
+<div class="ttc" id="astructtext__body__type_html_ae3747e0b027c38a895b50d571e2e99d7"><div class="ttname"><a href="structtext__body__type.html#ae3747e0b027c38a895b50d571e2e99d7">text_body_type::search_str</a></div><div class="ttdeci">concptr search_str</div><div class="ttdef"><b>Definition:</b> autopick-util.h:56</div></div>
+<div class="ttc" id="astructtext__body__type_html_aedc6723cd0df49a26e6baa71a65db149"><div class="ttname"><a href="structtext__body__type.html#aedc6723cd0df49a26e6baa71a65db149">text_body_type::old_hgt</a></div><div class="ttdeci">int old_hgt</div><div class="ttdef"><b>Definition:</b> autopick-util.h:49</div></div>
+<div class="ttc" id="astructtext__body__type_html_aedd82dbd283b04e5761f2594d6c09617"><div class="ttname"><a href="structtext__body__type.html#aedd82dbd283b04e5761f2594d6c09617">text_body_type::search_o_ptr</a></div><div class="ttdeci">object_type * search_o_ptr</div><div class="ttdef"><b>Definition:</b> autopick-util.h:55</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分50秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

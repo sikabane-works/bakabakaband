@@ -1,0 +1,414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/blue-magic/blue-magic-status.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_0aba8cb0538d7572eed18f9f76c6d907.html">blue-magic</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">blue-magic-status.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="blue-magic-status_8h_source.html">blue-magic/blue-magic-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="blue-magic-util_8h_source.html">blue-magic/blue-magic-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-status_8h_source.html">spell/spells-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="target-getter_8h_source.html">target/target-getter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+blue-magic-status.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="blue-magic-status_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2blue-magic_2blue-magic-status_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2blue-magic_2blue-magic-status_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2blue-magic_2blue-magic-status_8cpp">
+<area shape="rect" title=" " alt="" coords="702,5,901,61"/>
+<area shape="rect" href="blue-magic-status_8h.html" title=" " alt="" coords="725,109,877,151"/>
+<area shape="rect" href="blue-magic-util_8h.html" title=" " alt="" coords="901,109,1053,151"/>
+<area shape="rect" href="spells-status_8h.html" title=" " alt="" coords="1155,117,1293,143"/>
+<area shape="rect" href="target-getter_8h.html" title=" " alt="" coords="370,117,510,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="534,117,701,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="553,206,682,233"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="855,295,945,322"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="5,295,96,322"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="120,295,219,322"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="243,295,341,322"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="366,295,466,322"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="490,295,665,322"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="689,295,831,322"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,295,1116,322"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1417,377,1535,404"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1042,377,1153,404"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1190,199,1335,240"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="1191,288,1335,329"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1359,288,1515,329"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="1540,288,1679,329"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a79a7e039e7fbc25b76810f21ac5bd860"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blue-magic-status_8cpp.html#a79a7e039e7fbc25b76810f21ac5bd860">cast_blue_scare</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structbmc__type.html">bmc_type</a> *bmc_ptr)</td></tr>
+<tr class="separator:a79a7e039e7fbc25b76810f21ac5bd860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a954dfacb71e5ca627cd226926e150056"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blue-magic-status_8cpp.html#a954dfacb71e5ca627cd226926e150056">cast_blue_blind</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structbmc__type.html">bmc_type</a> *bmc_ptr)</td></tr>
+<tr class="separator:a954dfacb71e5ca627cd226926e150056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74103e4c35dd8c45c21f7f2e1f645dc0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blue-magic-status_8cpp.html#a74103e4c35dd8c45c21f7f2e1f645dc0">cast_blue_confusion</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structbmc__type.html">bmc_type</a> *bmc_ptr)</td></tr>
+<tr class="separator:a74103e4c35dd8c45c21f7f2e1f645dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a521ad9148029650af8355885d4787aff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blue-magic-status_8cpp.html#a521ad9148029650af8355885d4787aff">cast_blue_slow</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structbmc__type.html">bmc_type</a> *bmc_ptr)</td></tr>
+<tr class="separator:a521ad9148029650af8355885d4787aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dd33548ee8fefe6c636071c1c532f70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blue-magic-status_8cpp.html#a8dd33548ee8fefe6c636071c1c532f70">cast_blue_sleep</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structbmc__type.html">bmc_type</a> *bmc_ptr)</td></tr>
+<tr class="separator:a8dd33548ee8fefe6c636071c1c532f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a954dfacb71e5ca627cd226926e150056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a954dfacb71e5ca627cd226926e150056">&#9670;&nbsp;</a></span>cast_blue_blind()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> cast_blue_blind </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structbmc__type.html">bmc_type</a> *&#160;</td>
+          <td class="paramname"><em>bmc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="blue-magic-status_8cpp_a954dfacb71e5ca627cd226926e150056_cgraph.png" border="0" usemap="#ablue-magic-status_8cpp_a954dfacb71e5ca627cd226926e150056_cgraph" alt=""/></div>
+<map name="ablue-magic-status_8cpp_a954dfacb71e5ca627cd226926e150056_cgraph" id="ablue-magic-status_8cpp_a954dfacb71e5ca627cd226926e150056_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,117,57"/>
+<area shape="rect" href="spells-status_8cpp.html#a6e1fc6aa98b692b6010e4fbc4712f02e" title="モンスター混乱処理" alt="" coords="165,5,287,32"/>
+<area shape="rect" href="target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="338,56,427,83"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a4b99a360d07e06176267801be00a31af" title="指定方向に飛び道具を飛ばす (フラグ任意指定) / Apply a &quot;project()&quot; in a direction (or at the target)" alt="" coords="335,5,431,32"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="493,5,555,32"/>
+<area shape="rect" href="target-checker_8cpp.html#a43f7c7d2eba452af5bb74b818d0a0eda" title=" " alt="" coords="479,56,569,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="blue-magic-status_8cpp_a954dfacb71e5ca627cd226926e150056_icgraph.png" border="0" usemap="#ablue-magic-status_8cpp_a954dfacb71e5ca627cd226926e150056_icgraph" alt=""/></div>
+<map name="ablue-magic-status_8cpp_a954dfacb71e5ca627cd226926e150056_icgraph" id="ablue-magic-status_8cpp_a954dfacb71e5ca627cd226926e150056_icgraph">
+<area shape="rect" title=" " alt="" coords="593,5,705,32"/>
+<area shape="rect" href="blue-magic-caster_8cpp.html#ac4b080704cd126dae6ee4a201fbc7d62" title=" " alt="" coords="381,5,545,32"/>
+<area shape="rect" href="blue-magic-caster_8cpp.html#a57dc90bad008a63d4d22d31c8f635cb8" title="青魔法の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;blue&#45;mage&#39;." alt="" coords="203,5,333,32"/>
+<area shape="rect" href="mind-blue-mage_8cpp.html#ac9e2994a4c93cbc1c1b19bbf9a6bd370" title="青魔法コマンドのメインルーチン / do_cmd_cast calls this function if the player&#39;s class is &#39;Blue&#45;Mage&#39;." alt="" coords="5,5,155,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a74103e4c35dd8c45c21f7f2e1f645dc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74103e4c35dd8c45c21f7f2e1f645dc0">&#9670;&nbsp;</a></span>cast_blue_confusion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> cast_blue_confusion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structbmc__type.html">bmc_type</a> *&#160;</td>
+          <td class="paramname"><em>bmc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="blue-magic-status_8cpp_a74103e4c35dd8c45c21f7f2e1f645dc0_cgraph.png" border="0" usemap="#ablue-magic-status_8cpp_a74103e4c35dd8c45c21f7f2e1f645dc0_cgraph" alt=""/></div>
+<map name="ablue-magic-status_8cpp_a74103e4c35dd8c45c21f7f2e1f645dc0_cgraph" id="ablue-magic-status_8cpp_a74103e4c35dd8c45c21f7f2e1f645dc0_cgraph">
+<area shape="rect" title=" " alt="" coords="5,77,145,104"/>
+<area shape="rect" href="spells-status_8cpp.html#a6e1fc6aa98b692b6010e4fbc4712f02e" title="モンスター混乱処理" alt="" coords="193,77,315,104"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="645,77,724,104"/>
+<area shape="rect" href="target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="366,27,455,53"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a4b99a360d07e06176267801be00a31af" title="指定方向に飛び道具を飛ばす (フラグ任意指定) / Apply a &quot;project()&quot; in a direction (or at the target)" alt="" coords="363,77,459,104"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="521,77,583,104"/>
+<area shape="rect" href="target-checker_8cpp.html#a43f7c7d2eba452af5bb74b818d0a0eda" title=" " alt="" coords="507,27,597,53"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="blue-magic-status_8cpp_a74103e4c35dd8c45c21f7f2e1f645dc0_icgraph.png" border="0" usemap="#ablue-magic-status_8cpp_a74103e4c35dd8c45c21f7f2e1f645dc0_icgraph" alt=""/></div>
+<map name="ablue-magic-status_8cpp_a74103e4c35dd8c45c21f7f2e1f645dc0_icgraph" id="ablue-magic-status_8cpp_a74103e4c35dd8c45c21f7f2e1f645dc0_icgraph">
+<area shape="rect" title=" " alt="" coords="593,5,733,32"/>
+<area shape="rect" href="blue-magic-caster_8cpp.html#ac4b080704cd126dae6ee4a201fbc7d62" title=" " alt="" coords="381,5,545,32"/>
+<area shape="rect" href="blue-magic-caster_8cpp.html#a57dc90bad008a63d4d22d31c8f635cb8" title="青魔法の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;blue&#45;mage&#39;." alt="" coords="203,5,333,32"/>
+<area shape="rect" href="mind-blue-mage_8cpp.html#ac9e2994a4c93cbc1c1b19bbf9a6bd370" title="青魔法コマンドのメインルーチン / do_cmd_cast calls this function if the player&#39;s class is &#39;Blue&#45;Mage&#39;." alt="" coords="5,5,155,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a79a7e039e7fbc25b76810f21ac5bd860"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79a7e039e7fbc25b76810f21ac5bd860">&#9670;&nbsp;</a></span>cast_blue_scare()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> cast_blue_scare </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structbmc__type.html">bmc_type</a> *&#160;</td>
+          <td class="paramname"><em>bmc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="blue-magic-status_8cpp_a79a7e039e7fbc25b76810f21ac5bd860_cgraph.png" border="0" usemap="#ablue-magic-status_8cpp_a79a7e039e7fbc25b76810f21ac5bd860_cgraph" alt=""/></div>
+<map name="ablue-magic-status_8cpp_a79a7e039e7fbc25b76810f21ac5bd860_cgraph" id="ablue-magic-status_8cpp_a79a7e039e7fbc25b76810f21ac5bd860_cgraph">
+<area shape="rect" title=" " alt="" coords="5,77,123,104"/>
+<area shape="rect" href="spells-status_8cpp.html#aa02a9d57bfca3762f92177fab153ed7f" title="モンスター恐慌処理" alt="" coords="171,77,268,104"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="599,77,677,104"/>
+<area shape="rect" href="target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="319,27,409,53"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a4b99a360d07e06176267801be00a31af" title="指定方向に飛び道具を飛ばす (フラグ任意指定) / Apply a &quot;project()&quot; in a direction (or at the target)" alt="" coords="316,77,412,104"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="475,77,536,104"/>
+<area shape="rect" href="target-checker_8cpp.html#a43f7c7d2eba452af5bb74b818d0a0eda" title=" " alt="" coords="460,27,551,53"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="blue-magic-status_8cpp_a79a7e039e7fbc25b76810f21ac5bd860_icgraph.png" border="0" usemap="#ablue-magic-status_8cpp_a79a7e039e7fbc25b76810f21ac5bd860_icgraph" alt=""/></div>
+<map name="ablue-magic-status_8cpp_a79a7e039e7fbc25b76810f21ac5bd860_icgraph" id="ablue-magic-status_8cpp_a79a7e039e7fbc25b76810f21ac5bd860_icgraph">
+<area shape="rect" title=" " alt="" coords="593,5,711,32"/>
+<area shape="rect" href="blue-magic-caster_8cpp.html#ac4b080704cd126dae6ee4a201fbc7d62" title=" " alt="" coords="381,5,545,32"/>
+<area shape="rect" href="blue-magic-caster_8cpp.html#a57dc90bad008a63d4d22d31c8f635cb8" title="青魔法の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;blue&#45;mage&#39;." alt="" coords="203,5,333,32"/>
+<area shape="rect" href="mind-blue-mage_8cpp.html#ac9e2994a4c93cbc1c1b19bbf9a6bd370" title="青魔法コマンドのメインルーチン / do_cmd_cast calls this function if the player&#39;s class is &#39;Blue&#45;Mage&#39;." alt="" coords="5,5,155,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8dd33548ee8fefe6c636071c1c532f70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dd33548ee8fefe6c636071c1c532f70">&#9670;&nbsp;</a></span>cast_blue_sleep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> cast_blue_sleep </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structbmc__type.html">bmc_type</a> *&#160;</td>
+          <td class="paramname"><em>bmc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="blue-magic-status_8cpp_a8dd33548ee8fefe6c636071c1c532f70_cgraph.png" border="0" usemap="#ablue-magic-status_8cpp_a8dd33548ee8fefe6c636071c1c532f70_cgraph" alt=""/></div>
+<map name="ablue-magic-status_8cpp_a8dd33548ee8fefe6c636071c1c532f70_cgraph" id="ablue-magic-status_8cpp_a8dd33548ee8fefe6c636071c1c532f70_cgraph">
+<area shape="rect" title=" " alt="" coords="5,309,121,336"/>
+<area shape="rect" href="target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="178,284,267,311"/>
+<area shape="rect" href="spells-status_8cpp.html#a8588af408bfd6fc7c3cb8bf7ddbaab0b" title="モンスター催眠処理" alt="" coords="169,335,276,361"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="516,56,559,83"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="345,157,417,184"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="498,208,577,235"/>
+<area shape="rect" href="keymap-directory-getter_8cpp.html#aed8fd4908c74fd56c86969ecd593842c" title=" " alt="" coords="324,309,439,336"/>
+<area shape="rect" href="command-repeater_8cpp.html#a7d3c94fc9d6f020c659ace3f90900d63" title=" " alt="" coords="339,360,424,387"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="335,411,428,437"/>
+<area shape="rect" href="target-checker_8cpp.html#a43f7c7d2eba452af5bb74b818d0a0eda" title=" " alt="" coords="336,461,427,488"/>
+<area shape="rect" href="target-setter_8cpp.html#a64107a1f4c060494cae81c0eed0d5a17" title=" " alt="" coords="341,259,421,285"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="653,5,702,32"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="636,56,719,83"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="767,107,844,133"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="651,157,704,184"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a41533d64d34cff21ac2f08e39073e746" title=" " alt="" coords="487,157,588,184"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="518,259,557,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="blue-magic-status_8cpp_a8dd33548ee8fefe6c636071c1c532f70_icgraph.png" border="0" usemap="#ablue-magic-status_8cpp_a8dd33548ee8fefe6c636071c1c532f70_icgraph" alt=""/></div>
+<map name="ablue-magic-status_8cpp_a8dd33548ee8fefe6c636071c1c532f70_icgraph" id="ablue-magic-status_8cpp_a8dd33548ee8fefe6c636071c1c532f70_icgraph">
+<area shape="rect" title=" " alt="" coords="593,5,709,32"/>
+<area shape="rect" href="blue-magic-caster_8cpp.html#ac4b080704cd126dae6ee4a201fbc7d62" title=" " alt="" coords="381,5,545,32"/>
+<area shape="rect" href="blue-magic-caster_8cpp.html#a57dc90bad008a63d4d22d31c8f635cb8" title="青魔法の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;blue&#45;mage&#39;." alt="" coords="203,5,333,32"/>
+<area shape="rect" href="mind-blue-mage_8cpp.html#ac9e2994a4c93cbc1c1b19bbf9a6bd370" title="青魔法コマンドのメインルーチン / do_cmd_cast calls this function if the player&#39;s class is &#39;Blue&#45;Mage&#39;." alt="" coords="5,5,155,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a521ad9148029650af8355885d4787aff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a521ad9148029650af8355885d4787aff">&#9670;&nbsp;</a></span>cast_blue_slow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> cast_blue_slow </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structbmc__type.html">bmc_type</a> *&#160;</td>
+          <td class="paramname"><em>bmc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="blue-magic-status_8cpp_a521ad9148029650af8355885d4787aff_cgraph.png" border="0" usemap="#ablue-magic-status_8cpp_a521ad9148029650af8355885d4787aff_cgraph" alt=""/></div>
+<map name="ablue-magic-status_8cpp_a521ad9148029650af8355885d4787aff_cgraph" id="ablue-magic-status_8cpp_a521ad9148029650af8355885d4787aff_cgraph">
+<area shape="rect" title=" " alt="" coords="5,309,116,336"/>
+<area shape="rect" href="target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="171,284,260,311"/>
+<area shape="rect" href="spells-status_8cpp.html#ac41f791dc8a0febce36a6e0b4cef1b08" title="モンスター減速処理" alt="" coords="164,335,267,361"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="507,56,549,83"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="336,157,408,184"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="489,208,567,235"/>
+<area shape="rect" href="keymap-directory-getter_8cpp.html#aed8fd4908c74fd56c86969ecd593842c" title=" " alt="" coords="315,309,429,336"/>
+<area shape="rect" href="command-repeater_8cpp.html#a7d3c94fc9d6f020c659ace3f90900d63" title=" " alt="" coords="329,360,415,387"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="325,411,419,437"/>
+<area shape="rect" href="target-checker_8cpp.html#a43f7c7d2eba452af5bb74b818d0a0eda" title=" " alt="" coords="327,461,417,488"/>
+<area shape="rect" href="target-setter_8cpp.html#a64107a1f4c060494cae81c0eed0d5a17" title=" " alt="" coords="332,259,412,285"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="643,5,693,32"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="627,56,709,83"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="757,107,835,133"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="641,157,695,184"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a41533d64d34cff21ac2f08e39073e746" title=" " alt="" coords="477,157,579,184"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="509,259,547,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="blue-magic-status_8cpp_a521ad9148029650af8355885d4787aff_icgraph.png" border="0" usemap="#ablue-magic-status_8cpp_a521ad9148029650af8355885d4787aff_icgraph" alt=""/></div>
+<map name="ablue-magic-status_8cpp_a521ad9148029650af8355885d4787aff_icgraph" id="ablue-magic-status_8cpp_a521ad9148029650af8355885d4787aff_icgraph">
+<area shape="rect" title=" " alt="" coords="593,5,704,32"/>
+<area shape="rect" href="blue-magic-caster_8cpp.html#ac4b080704cd126dae6ee4a201fbc7d62" title=" " alt="" coords="381,5,545,32"/>
+<area shape="rect" href="blue-magic-caster_8cpp.html#a57dc90bad008a63d4d22d31c8f635cb8" title="青魔法の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;blue&#45;mage&#39;." alt="" coords="203,5,333,32"/>
+<area shape="rect" href="mind-blue-mage_8cpp.html#ac9e2994a4c93cbc1c1b19bbf9a6bd370" title="青魔法コマンドのメインルーチン / do_cmd_cast calls this function if the player&#39;s class is &#39;Blue&#45;Mage&#39;." alt="" coords="5,5,155,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分16秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

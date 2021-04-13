@@ -1,0 +1,34 @@
+<map id="do_cmd_spike" name="do_cmd_spike">
+<area shape="rect" id="node1" title="「くさびを打つ」動作コマンドのメインルーチン / Jam a closed door with a spike" alt="" coords="5,1263,112,1289"/>
+<area shape="rect" id="node2" href="$grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="161,781,269,808"/>
+<area shape="rect" id="node9" href="$grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="695,351,805,377"/>
+<area shape="rect" id="node12" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="711,1111,789,1137"/>
+<area shape="rect" id="node26" href="$display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="506,1161,597,1188"/>
+<area shape="rect" id="node27" href="$cmd-attack_8cpp.html#a8e48cd6d2ca0901e5c89e19e30aab0b3" title="プレイヤーの打撃処理メインルーチン" alt="" coords="160,1339,271,1365"/>
+<area shape="rect" id="node28" href="$action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="328,1288,411,1315"/>
+<area shape="rect" id="node29" href="$player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="513,1389,589,1416"/>
+<area shape="rect" id="node30" href="$target-getter_8cpp.html#aa83483a326fa08c6c2ca85fb75d7442f" title=" " alt="" coords="326,1085,413,1112"/>
+<area shape="rect" id="node31" href="$cmd-open-close_8cpp.html#a4e0b145a460cbf1f320af06772a088ad" title="「くさびを打つ」ために必要なオブジェクトを所持しているかどうかの判定を返す / Find the index of some &quot;spikes&quot;, if possible." alt="" coords="176,1491,255,1517"/>
+<area shape="rect" id="node32" href="$inventory-object_8cpp.html#a95bd37f416091df0360f4eec6bd12e49" title=" " alt="" coords="177,1541,254,1568"/>
+<area shape="rect" id="node3" href="$feature_8cpp.html#acad9118499482c605f583af0ef408f10" title=" " alt="" coords="319,680,420,707"/>
+<area shape="rect" id="node16" href="$grid_8cpp.html#a8ea39c3dfc40de144095718ade7e2ec9" title=" " alt="" coords="330,908,409,935"/>
+<area shape="rect" id="node17" href="$object-placer_8cpp.html#a11d171ab728c555217997c19ead857be" title="フロアの指定位置に生成階に応じた財宝オブジェクトの生成を行う。 Places a treasure (Gold or Gems) at given location" alt="" coords="327,249,411,276"/>
+<area shape="rect" id="node23" href="$object-placer_8cpp.html#a803fa4f18318725892a17c7ababf869f" title="フロアの指定位置に生成階に応じたベースアイテムの生成を行う。 Attempt to place an object (normal or good/great) at the given locatio..." alt="" coords="322,325,417,352"/>
+<area shape="rect" id="node24" href="$geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="479,452,623,479"/>
+<area shape="rect" id="node25" href="$effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="339,857,400,884"/>
+<area shape="rect" id="node4" href="$cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="683,705,817,732"/>
+<area shape="rect" id="node5" href="$cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="706,756,794,783"/>
+<area shape="rect" id="node6" href="$grid_8cpp.html#aa76190ea626631d68070030818399df5" title=" " alt="" coords="501,857,601,884"/>
+<area shape="rect" id="node7" href="$grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="516,553,587,580"/>
+<area shape="rect" id="node8" href="$grid_8cpp.html#acfe2dde219c27902b1cbd0e7b6d95357" title=" " alt="" coords="512,351,591,377"/>
+<area shape="rect" id="node10" href="$feature_8cpp.html#a4ef7296980be04521b7a339d930af1e8" title=" " alt="" coords="483,604,620,631"/>
+<area shape="rect" id="node11" href="$mind-ninja_8cpp.html#a52ea1929bb465180b42d7321e65512eb" title="超隠密状態をセットする" alt="" coords="492,807,611,833"/>
+<area shape="rect" id="node13" href="$grid_8cpp.html#aba638b114fae87c0f1068113eb8fc8cf" title="指定された座標の照明状態を更新する / Update &quot;local&quot; illumination" alt="" coords="468,503,635,529"/>
+<area shape="rect" id="node15" href="$monster-update_8cpp.html#a2813cd48be3165ceff9b8c77da15da3f" title="モンスターの各情報を更新する / This function updates the monster record of the given monster" alt="" coords="494,655,609,681"/>
+<area shape="rect" id="node14" href="$cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="709,401,791,428"/>
+<area shape="rect" id="node18" href="$cave_8cpp.html#a414eb0dc404cc94635df4b0f3ad8590c" title=" " alt="" coords="496,148,607,175"/>
+<area shape="rect" id="node19" href="$floor-object_8cpp.html#a7860c1aac3441ade67744785c2f6d6e8" title="生成階に応じた財宝オブジェクトの生成を行う。 Make a treasure object" alt="" coords="509,47,594,73"/>
+<area shape="rect" id="node20" href="$world-object_8cpp.html#aa2c112b391d5b74eb049474cac8d643b" title="グローバルオブジェクト配列から空きを取得する / Acquires and returns the index of a &quot;free&quot; object." alt="" coords="523,249,580,276"/>
+<area shape="rect" id="node21" href="$object-generator_8cpp.html#aa666d0b3f34f2bebf82e976361f59f1c" title="オブジェクトを複製する Wipe an object clean." alt="" coords="505,199,597,225"/>
+<area shape="rect" id="node22" href="$object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="506,300,597,327"/>
+</map>

@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/floor/cave.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a620f8a6b723e397390ae5ca00f5aa8c.html">floor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">cave.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="cave_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="cave_8h.html#a070f8c2865ef77c1f5c78ee780568c31">    1</a></span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">enum</span> <a class="code" href="feature-flag-types_8h.html#ad3281e746dc1738364076980e1aa6dbd">feature_flag_type</a> : int;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structgrid__type.html">grid_type</a> <a class="code" href="structgrid__type.html">grid_type</a>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#a9a8f98687efe06482b7da1823cb40dcb">in_bounds</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#a6e5519e9632a1976322c085788b4dc0d">in_bounds2</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#a4418acad9f4e14a2f633c8432b0fd63c">in_bounds2u</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#af7c0f1301bccdf87c69641a8a0077445">is_cave_empty_bold</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#a3cf58cd899fa73e5890db588e25441fe">is_cave_empty_bold2</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#a2e8f81630ced5a3209bae0d0e79d8821">cave_has_flag_bold</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="code" href="feature-flag-types_8h.html#ad3281e746dc1738364076980e1aa6dbd">feature_flag_type</a> f_idx);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#ad140737a0660acfdbadc377c80a7df1b">player_has_los_bold</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#ac69872aa54de3f8ee80b6f0f933ebbcd">player_bold</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#a9940da0af854b0b88a943373b8b41055">cave_stop_disintegration</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#adc0f94b19918e1965ddd320ae168d551">cave_los_bold</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#a512cd3e2d9d7f5f5ca427d6b4321548e">feat_supports_los</a>(<a class="code" href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a> f_idx);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#addf7d48898d2d31d2dc6d9c3a6454042">cave_los_grid</a>(<a class="code" href="structgrid__type.html">grid_type</a> *grid_ptr);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#a72e9e49e417af9b290323225114db833">cave_has_flag_grid</a>(<a class="code" href="structgrid__type.html">grid_type</a> *grid_ptr, <span class="keywordtype">int</span> feature_flags);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#ae9a5c1edf9fbd3c7be2784c8b75d14bd">cave_clean_bold</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#a414eb0dc404cc94635df4b0f3ad8590c">cave_drop_bold</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="cave_8h.html#af3ebcc730bf3e9662adef8c0a4b49903">pattern_tile</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="acave_8h_html_a2e8f81630ced5a3209bae0d0e79d8821"><div class="ttname"><a href="cave_8h.html#a2e8f81630ced5a3209bae0d0e79d8821">cave_has_flag_bold</a></div><div class="ttdeci">bool cave_has_flag_bold(floor_type *floor_ptr, POSITION y, POSITION x, feature_flag_type f_idx)</div><div class="ttdef"><b>Definition:</b> cave.cpp:63</div></div>
+<div class="ttc" id="acave_8h_html_a3cf58cd899fa73e5890db588e25441fe"><div class="ttname"><a href="cave_8h.html#a3cf58cd899fa73e5890db588e25441fe">is_cave_empty_bold2</a></div><div class="ttdeci">bool is_cave_empty_bold2(player_type *player_ptr, POSITION x, POSITION y)</div><div class="ttdef"><b>Definition:</b> cave.cpp:56</div></div>
+<div class="ttc" id="acave_8h_html_a414eb0dc404cc94635df4b0f3ad8590c"><div class="ttname"><a href="cave_8h.html#a414eb0dc404cc94635df4b0f3ad8590c">cave_drop_bold</a></div><div class="ttdeci">bool cave_drop_bold(floor_type *floor_ptr, POSITION y, POSITION x)</div><div class="ttdef"><b>Definition:</b> cave.cpp:128</div></div>
+<div class="ttc" id="acave_8h_html_a4418acad9f4e14a2f633c8432b0fd63c"><div class="ttname"><a href="cave_8h.html#a4418acad9f4e14a2f633c8432b0fd63c">in_bounds2u</a></div><div class="ttdeci">bool in_bounds2u(floor_type *floor_ptr, POSITION y, POSITION x)</div><div class="ttdef"><b>Definition:</b> cave.cpp:30</div></div>
+<div class="ttc" id="acave_8h_html_a512cd3e2d9d7f5f5ca427d6b4321548e"><div class="ttname"><a href="cave_8h.html#a512cd3e2d9d7f5f5ca427d6b4321548e">feat_supports_los</a></div><div class="ttdeci">bool feat_supports_los(FEAT_IDX f_idx)</div><div class="ttdef"><b>Definition:</b> cave.cpp:102</div></div>
+<div class="ttc" id="acave_8h_html_a6e5519e9632a1976322c085788b4dc0d"><div class="ttname"><a href="cave_8h.html#a6e5519e9632a1976322c085788b4dc0d">in_bounds2</a></div><div class="ttdeci">bool in_bounds2(floor_type *floor_ptr, POSITION y, POSITION x)</div><div class="ttdef"><b>Definition:</b> cave.cpp:24</div></div>
+<div class="ttc" id="acave_8h_html_a72e9e49e417af9b290323225114db833"><div class="ttname"><a href="cave_8h.html#a72e9e49e417af9b290323225114db833">cave_has_flag_grid</a></div><div class="ttdeci">bool cave_has_flag_grid(grid_type *grid_ptr, int feature_flags)</div><div class="ttdef"><b>Definition:</b> cave.cpp:106</div></div>
+<div class="ttc" id="acave_8h_html_a9940da0af854b0b88a943373b8b41055"><div class="ttname"><a href="cave_8h.html#a9940da0af854b0b88a943373b8b41055">cave_stop_disintegration</a></div><div class="ttdeci">bool cave_stop_disintegration(floor_type *floor_ptr, POSITION y, POSITION x)</div><div class="ttdef"><b>Definition:</b> cave.cpp:84</div></div>
+<div class="ttc" id="acave_8h_html_a9a8f98687efe06482b7da1823cb40dcb"><div class="ttname"><a href="cave_8h.html#a9a8f98687efe06482b7da1823cb40dcb">in_bounds</a></div><div class="ttdeci">bool in_bounds(floor_type *floor_ptr, POSITION y, POSITION x)</div><div class="ttdoc">ダンジョンの壁等に関する判定関数の集合</div><div class="ttdef"><b>Definition:</b> cave.cpp:19</div></div>
+<div class="ttc" id="acave_8h_html_ac69872aa54de3f8ee80b6f0f933ebbcd"><div class="ttname"><a href="cave_8h.html#ac69872aa54de3f8ee80b6f0f933ebbcd">player_bold</a></div><div class="ttdeci">bool player_bold(player_type *player_ptr, POSITION y, POSITION x)</div><div class="ttdef"><b>Definition:</b> cave.cpp:79</div></div>
+<div class="ttc" id="acave_8h_html_ad140737a0660acfdbadc377c80a7df1b"><div class="ttname"><a href="cave_8h.html#ad140737a0660acfdbadc377c80a7df1b">player_has_los_bold</a></div><div class="ttdeci">bool player_has_los_bold(player_type *player_ptr, POSITION y, POSITION x)</div><div class="ttdef"><b>Definition:</b> cave.cpp:71</div></div>
+<div class="ttc" id="acave_8h_html_adc0f94b19918e1965ddd320ae168d551"><div class="ttname"><a href="cave_8h.html#adc0f94b19918e1965ddd320ae168d551">cave_los_bold</a></div><div class="ttdeci">bool cave_los_bold(floor_type *floor_ptr, POSITION y, POSITION x)</div><div class="ttdef"><b>Definition:</b> cave.cpp:97</div></div>
+<div class="ttc" id="acave_8h_html_addf7d48898d2d31d2dc6d9c3a6454042"><div class="ttname"><a href="cave_8h.html#addf7d48898d2d31d2dc6d9c3a6454042">cave_los_grid</a></div><div class="ttdeci">bool cave_los_grid(grid_type *grid_ptr)</div><div class="ttdef"><b>Definition:</b> cave.cpp:104</div></div>
+<div class="ttc" id="acave_8h_html_ae9a5c1edf9fbd3c7be2784c8b75d14bd"><div class="ttname"><a href="cave_8h.html#ae9a5c1edf9fbd3c7be2784c8b75d14bd">cave_clean_bold</a></div><div class="ttdeci">bool cave_clean_bold(floor_type *floor_ptr, POSITION y, POSITION x)</div><div class="ttdef"><b>Definition:</b> cave.cpp:116</div></div>
+<div class="ttc" id="acave_8h_html_af3ebcc730bf3e9662adef8c0a4b49903"><div class="ttname"><a href="cave_8h.html#af3ebcc730bf3e9662adef8c0a4b49903">pattern_tile</a></div><div class="ttdeci">bool pattern_tile(floor_type *floor_ptr, POSITION y, POSITION x)</div><div class="ttdef"><b>Definition:</b> cave.cpp:133</div></div>
+<div class="ttc" id="acave_8h_html_af7c0f1301bccdf87c69641a8a0077445"><div class="ttname"><a href="cave_8h.html#af7c0f1301bccdf87c69641a8a0077445">is_cave_empty_bold</a></div><div class="ttdeci">bool is_cave_empty_bold(player_type *player_ptr, POSITION x, POSITION y)</div><div class="ttdef"><b>Definition:</b> cave.cpp:40</div></div>
+<div class="ttc" id="afeature-flag-types_8h_html_ad3281e746dc1738364076980e1aa6dbd"><div class="ttname"><a href="feature-flag-types_8h.html#ad3281e746dc1738364076980e1aa6dbd">feature_flag_type</a></div><div class="ttdeci">feature_flag_type</div><div class="ttdef"><b>Definition:</b> feature-flag-types.h:8</div></div>
+<div class="ttc" id="ah-type_8h_html_a85b58bbae289409cd01a8a413e991f12"><div class="ttname"><a href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a></div><div class="ttdeci">s16b FEAT_IDX</div><div class="ttdoc">ゲーム中の地形ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:99</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="astructfloor__type_html"><div class="ttname"><a href="structfloor__type.html">floor_type</a></div><div class="ttdef"><b>Definition:</b> floor-type-definition.h:10</div></div>
+<div class="ttc" id="astructgrid__type_html"><div class="ttname"><a href="structgrid__type.html">grid_type</a></div><div class="ttdef"><b>Definition:</b> grid.h:53</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/combat/martial-arts-table.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_61f20e49ac5d6763f7282e8c799f7538.html">combat</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">martial-arts-table.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="martial-arts-table_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="martial-arts-table_8h.html#ad2d80d44f21df65f9be19af301451c9a">    5</a></span>&#160;<span class="preprocessor">#define MAX_MA 17 </span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="martial-arts-table_8h.html#a7c05a4cd3b9817d78c531e1f3ba181e2">    6</a></span>&#160;<span class="preprocessor">#define MA_KNEE 1 </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="martial-arts-table_8h.html#aa0f6ef859c0fae2bb9369d128a78bf1b">    7</a></span>&#160;<span class="preprocessor">#define MA_SLOW 2 </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/* For Monk martial arts */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structmartial__arts.html">   10</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmartial__arts.html">martial_arts</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structmartial__arts.html#aeaa48e7656c23f3b0053659dc2217e57">   11</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structmartial__arts.html#aeaa48e7656c23f3b0053659dc2217e57">desc</a>; <span class="comment">/* A verbose attack description */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structmartial__arts.html#ab3a06d248360dc162b7d430c91a59656">   12</a></span>&#160;    <a class="code" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> <a class="code" href="structmartial__arts.html#ab3a06d248360dc162b7d430c91a59656">min_level</a>; <span class="comment">/* Minimum level to use */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structmartial__arts.html#af79e2855669fe514a0e02bab68f8a06d">   13</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmartial__arts.html#af79e2855669fe514a0e02bab68f8a06d">chance</a>; <span class="comment">/* Chance of &#39;success&#39; */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structmartial__arts.html#af705bd0b82b51f1e69b32edeb79c871c">   14</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmartial__arts.html#af705bd0b82b51f1e69b32edeb79c871c">dd</a>; <span class="comment">/* Damage dice */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structmartial__arts.html#add1b38aa5885e6d99aea70131e0f96f2">   15</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmartial__arts.html#add1b38aa5885e6d99aea70131e0f96f2">ds</a>; <span class="comment">/* Damage sides */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structmartial__arts.html#a6b9cf60372d1641ba0b295ea39dfa26c">   16</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmartial__arts.html#a6b9cf60372d1641ba0b295ea39dfa26c">effect</a>; <span class="comment">/* Special effects */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="martial-arts-table_8h.html#a8928f86da3983df02cc35e4d976d67b9">   17</a></span>&#160;} <a class="code" href="martial-arts-table_8h.html#a8928f86da3983df02cc35e4d976d67b9">martial_arts</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structmartial__arts.html">martial_arts</a> <a class="code" href="martial-arts-table_8h.html#aad8c4adc46a1540059d00e962ddb68d5">ma_blows</a>[<a class="code" href="martial-arts-table_8h.html#ad2d80d44f21df65f9be19af301451c9a">MAX_MA</a>];</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a9a1975460009e928d9b53995d07d3623"><div class="ttname"><a href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a></div><div class="ttdeci">s16b PLAYER_LEVEL</div><div class="ttdoc">ゲーム中のプレイヤーレベルの型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:176</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="amartial-arts-table_8h_html_a8928f86da3983df02cc35e4d976d67b9"><div class="ttname"><a href="martial-arts-table_8h.html#a8928f86da3983df02cc35e4d976d67b9">martial_arts</a></div><div class="ttdeci">struct martial_arts martial_arts</div></div>
+<div class="ttc" id="amartial-arts-table_8h_html_aad8c4adc46a1540059d00e962ddb68d5"><div class="ttname"><a href="martial-arts-table_8h.html#aad8c4adc46a1540059d00e962ddb68d5">ma_blows</a></div><div class="ttdeci">const martial_arts ma_blows[MAX_MA]</div><div class="ttdoc">マーシャルアーツ打撃テーブル</div><div class="ttdef"><b>Definition:</b> martial-arts-table.cpp:5</div></div>
+<div class="ttc" id="amartial-arts-table_8h_html_ad2d80d44f21df65f9be19af301451c9a"><div class="ttname"><a href="martial-arts-table_8h.html#ad2d80d44f21df65f9be19af301451c9a">MAX_MA</a></div><div class="ttdeci">#define MAX_MA</div><div class="ttdoc">修行僧マーシャルアーツの技数 / Monk martial arts...</div><div class="ttdef"><b>Definition:</b> martial-arts-table.h:5</div></div>
+<div class="ttc" id="astructmartial__arts_html"><div class="ttname"><a href="structmartial__arts.html">martial_arts</a></div><div class="ttdef"><b>Definition:</b> martial-arts-table.h:10</div></div>
+<div class="ttc" id="astructmartial__arts_html_a6b9cf60372d1641ba0b295ea39dfa26c"><div class="ttname"><a href="structmartial__arts.html#a6b9cf60372d1641ba0b295ea39dfa26c">martial_arts::effect</a></div><div class="ttdeci">int effect</div><div class="ttdef"><b>Definition:</b> martial-arts-table.h:16</div></div>
+<div class="ttc" id="astructmartial__arts_html_ab3a06d248360dc162b7d430c91a59656"><div class="ttname"><a href="structmartial__arts.html#ab3a06d248360dc162b7d430c91a59656">martial_arts::min_level</a></div><div class="ttdeci">PLAYER_LEVEL min_level</div><div class="ttdef"><b>Definition:</b> martial-arts-table.h:12</div></div>
+<div class="ttc" id="astructmartial__arts_html_add1b38aa5885e6d99aea70131e0f96f2"><div class="ttname"><a href="structmartial__arts.html#add1b38aa5885e6d99aea70131e0f96f2">martial_arts::ds</a></div><div class="ttdeci">int ds</div><div class="ttdef"><b>Definition:</b> martial-arts-table.h:15</div></div>
+<div class="ttc" id="astructmartial__arts_html_aeaa48e7656c23f3b0053659dc2217e57"><div class="ttname"><a href="structmartial__arts.html#aeaa48e7656c23f3b0053659dc2217e57">martial_arts::desc</a></div><div class="ttdeci">concptr desc</div><div class="ttdef"><b>Definition:</b> martial-arts-table.h:11</div></div>
+<div class="ttc" id="astructmartial__arts_html_af705bd0b82b51f1e69b32edeb79c871c"><div class="ttname"><a href="structmartial__arts.html#af705bd0b82b51f1e69b32edeb79c871c">martial_arts::dd</a></div><div class="ttdeci">int dd</div><div class="ttdef"><b>Definition:</b> martial-arts-table.h:14</div></div>
+<div class="ttc" id="astructmartial__arts_html_af79e2855669fe514a0e02bab68f8a06d"><div class="ttname"><a href="structmartial__arts.html#af79e2855669fe514a0e02bab68f8a06d">martial_arts::chance</a></div><div class="ttdeci">int chance</div><div class="ttdef"><b>Definition:</b> martial-arts-table.h:13</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

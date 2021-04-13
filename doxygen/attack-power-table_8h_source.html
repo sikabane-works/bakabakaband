@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/combat/attack-power-table.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_61f20e49ac5d6763f7282e8c799f7538.html">combat</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">attack-power-table.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="attack-power-table_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="attack-power-table_8h.html#aecc257b6998d9c70731068cc0a222c02">    5</a></span>&#160;<span class="preprocessor">#define MAX_ADJ_STR 38</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="attack-power-table_8h.html#a4d157c895b1ad5862540ceafa632cfbc">    6</a></span>&#160;<span class="preprocessor">#define MAX_ADJ_DEX 39</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="attack-power-table_8h.html#aed03697aadd04934ce6e2c19c863c96b">monk_ave_damage</a>[<a class="code" href="player-status_8h.html#aa1d3ae54887cba9ecf3831f28038d8f2">PY_MAX_LEVEL</a> + 1][3];</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">byte</span> <a class="code" href="attack-power-table_8h.html#ac86afdaf7fa44d3101cf66412aa3f086">adj_str_blow</a>[<a class="code" href="attack-power-table_8h.html#aecc257b6998d9c70731068cc0a222c02">MAX_ADJ_STR</a>];</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">byte</span> <a class="code" href="attack-power-table_8h.html#a46a40c1d4002ce07deddd975d265954b">adj_dex_blow</a>[<a class="code" href="attack-power-table_8h.html#a4d157c895b1ad5862540ceafa632cfbc">MAX_ADJ_DEX</a>];</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">byte</span> <a class="code" href="attack-power-table_8h.html#a3cedbe3d2ef894019a483e3acb3b064b">blows_table</a>[12][12];</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aattack-power-table_8h_html_a3cedbe3d2ef894019a483e3acb3b064b"><div class="ttname"><a href="attack-power-table_8h.html#a3cedbe3d2ef894019a483e3acb3b064b">blows_table</a></div><div class="ttdeci">const byte blows_table[12][12]</div><div class="ttdoc">腕力、器用さに応じた攻撃回数テーブル / This table is used to help calculate the number of blows the player can make in ...</div><div class="ttdef"><b>Definition:</b> attack-power-table.cpp:199</div></div>
+<div class="ttc" id="aattack-power-table_8h_html_a46a40c1d4002ce07deddd975d265954b"><div class="ttname"><a href="attack-power-table_8h.html#a46a40c1d4002ce07deddd975d265954b">adj_dex_blow</a></div><div class="ttdeci">const byte adj_dex_blow[MAX_ADJ_DEX]</div><div class="ttdoc">器用さによる攻撃回数インデックステーブル Stat Table (DEX) – index into the &quot;blow&quot; table</div><div class="ttdef"><b>Definition:</b> attack-power-table.cpp:109</div></div>
+<div class="ttc" id="aattack-power-table_8h_html_a4d157c895b1ad5862540ceafa632cfbc"><div class="ttname"><a href="attack-power-table_8h.html#a4d157c895b1ad5862540ceafa632cfbc">MAX_ADJ_DEX</a></div><div class="ttdeci">#define MAX_ADJ_DEX</div><div class="ttdef"><b>Definition:</b> attack-power-table.h:6</div></div>
+<div class="ttc" id="aattack-power-table_8h_html_ac86afdaf7fa44d3101cf66412aa3f086"><div class="ttname"><a href="attack-power-table_8h.html#ac86afdaf7fa44d3101cf66412aa3f086">adj_str_blow</a></div><div class="ttdeci">const byte adj_str_blow[MAX_ADJ_STR]</div><div class="ttdoc">腕力による攻撃回数算定値テーブル Stat Table (STR) – help index into the &quot;blow&quot; table</div><div class="ttdef"><b>Definition:</b> attack-power-table.cpp:64</div></div>
+<div class="ttc" id="aattack-power-table_8h_html_aecc257b6998d9c70731068cc0a222c02"><div class="ttname"><a href="attack-power-table_8h.html#aecc257b6998d9c70731068cc0a222c02">MAX_ADJ_STR</a></div><div class="ttdeci">#define MAX_ADJ_STR</div><div class="ttdef"><b>Definition:</b> attack-power-table.h:5</div></div>
+<div class="ttc" id="aattack-power-table_8h_html_aed03697aadd04934ce6e2c19c863c96b"><div class="ttname"><a href="attack-power-table_8h.html#aed03697aadd04934ce6e2c19c863c96b">monk_ave_damage</a></div><div class="ttdeci">const int monk_ave_damage[PY_MAX_LEVEL+1][3]</div><div class="ttdoc">修行僧のターンダメージ算出テーブル</div><div class="ttdef"><b>Definition:</b> attack-power-table.cpp:6</div></div>
+<div class="ttc" id="aplayer-status_8h_html_aa1d3ae54887cba9ecf3831f28038d8f2"><div class="ttname"><a href="player-status_8h.html#aa1d3ae54887cba9ecf3831f28038d8f2">PY_MAX_LEVEL</a></div><div class="ttdeci">#define PY_MAX_LEVEL</div><div class="ttdoc">プレイヤーレベルの最大値 / Maximum level</div><div class="ttdef"><b>Definition:</b> player-status.h:34</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

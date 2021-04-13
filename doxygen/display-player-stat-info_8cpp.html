@@ -1,0 +1,1081 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/view/display-player-stat-info.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b39b5091e8d1d2be4b7fc59d57749634.html">view</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">display-player-stat-info.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="display-player-stat-info_8h_source.html">display-player-stat-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mutation-flag-types_8h_source.html">mutation/mutation-flag-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tr-types_8h_source.html">object-enchant/tr-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flags_8h_source.html">object/object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mimic-info-table_8h_source.html">player/mimic-info-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="permanent-resistances_8h_source.html">player/permanent-resistances.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-class_8h_source.html">player/player-class.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-personality_8h_source.html">player/player-personality.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-race-types_8h_source.html">player/player-race-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status-table_8h_source.html">player/player-status-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+display-player-stat-info.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2view_2display-player-stat-info_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2view_2display-player-stat-info_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2view_2display-player-stat-info_8cpp">
+<area shape="rect" title=" " alt="" coords="1164,5,1369,61"/>
+<area shape="rect" href="display-player-stat-info_8h.html" title=" " alt="" coords="352,199,480,240"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="1438,437,1589,479"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1624,437,1749,479"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="1729,109,1857,151"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="1882,117,2049,143"/>
+<area shape="rect" href="object-flags_8h.html" title=" " alt="" coords="907,117,1045,143"/>
+<area shape="rect" href="mimic-info-table_8h.html" title=" " alt="" coords="491,117,653,143"/>
+<area shape="rect" href="permanent-resistances_8h.html" title=" " alt="" coords="678,117,882,143"/>
+<area shape="rect" href="player-class_8h.html" title=" " alt="" coords="1283,117,1426,143"/>
+<area shape="rect" href="player-personality_8h.html" title=" " alt="" coords="974,206,1149,233"/>
+<area shape="rect" href="player-status-table_8h.html" title=" " alt="" coords="5,199,141,240"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="165,206,328,233"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="2073,117,2231,143"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="2255,117,2414,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="679,288,809,315"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="475,363,565,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="589,363,680,389"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="704,363,803,389"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="827,363,925,389"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="950,363,1050,389"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="110,363,285,389"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="309,363,451,389"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1241,363,1388,389"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="1247,437,1393,479"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1045,437,1219,479"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="765,199,899,240"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="899,288,1026,315"/>
+<area shape="rect" href="player-race_8h.html" title=" " alt="" coords="504,206,640,233"/>
+<area shape="rect" href="realm-types_8h.html" title=" " alt="" coords="1205,288,1342,315"/>
+<area shape="rect" href="technic-info-table_8h.html" title=" " alt="" coords="1173,199,1291,240"/>
+<area shape="rect" title=" " alt="" coords="1469,206,1523,233"/>
+<area shape="rect" title=" " alt="" coords="1548,206,1604,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:abc5af65e597a9379097b6ad6e902b47c"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-stat-info_8cpp.html#abc5af65e597a9379097b6ad6e902b47c">calc_basic_stat</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, int stat_num)</td></tr>
+<tr class="memdesc:abc5af65e597a9379097b6ad6e902b47c"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレーヤーの耐性と能力値を表示する  <a href="display-player-stat-info_8cpp.html#abc5af65e597a9379097b6ad6e902b47c">[詳解]</a><br /></td></tr>
+<tr class="separator:abc5af65e597a9379097b6ad6e902b47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0edbee308d714a6e865d0414cd470cd4"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-stat-info_8cpp.html#a0edbee308d714a6e865d0414cd470cd4">compensate_special_race</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, int stat_num)</td></tr>
+<tr class="memdesc:a0edbee308d714a6e865d0414cd470cd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">特殊な種族の時、腕力等の基礎パラメータを変動させる  <a href="display-player-stat-info_8cpp.html#a0edbee308d714a6e865d0414cd470cd4">[詳解]</a><br /></td></tr>
+<tr class="separator:a0edbee308d714a6e865d0414cd470cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56a5dd6adc1788d1978e921366a6ce41"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-stat-info_8cpp.html#a56a5dd6adc1788d1978e921366a6ce41">display_basic_stat_name</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, int stat_num, int <a class="el" href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a>, int stat_col)</td></tr>
+<tr class="memdesc:a56a5dd6adc1788d1978e921366a6ce41"><td class="mdescLeft">&#160;</td><td class="mdescRight">能力値名を(もし一時的減少なら'x'を付けて)表示する  <a href="display-player-stat-info_8cpp.html#a56a5dd6adc1788d1978e921366a6ce41">[詳解]</a><br /></td></tr>
+<tr class="separator:a56a5dd6adc1788d1978e921366a6ce41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5134e0b5f8c71e5a548362672bcda3c0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-stat-info_8cpp.html#a5134e0b5f8c71e5a548362672bcda3c0">display_basic_stat_value</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, int stat_num, int r_adj, int e_adj, int <a class="el" href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a>, int stat_col, char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:a5134e0b5f8c71e5a548362672bcda3c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">能力値を、基本・種族補正・職業補正・性格補正・装備補正・合計・現在 (一時的減少のみ) の順で表示する  <a href="display-player-stat-info_8cpp.html#a5134e0b5f8c71e5a548362672bcda3c0">[詳解]</a><br /></td></tr>
+<tr class="separator:a5134e0b5f8c71e5a548362672bcda3c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc8064c7e78519e4c012d56ebe180ddf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-stat-info_8cpp.html#adc8064c7e78519e4c012d56ebe180ddf">process_stats</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, int <a class="el" href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a>, int stat_col)</td></tr>
+<tr class="memdesc:adc8064c7e78519e4c012d56ebe180ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">能力値を補正しつつ表示する  <a href="display-player-stat-info_8cpp.html#adc8064c7e78519e4c012d56ebe180ddf">[詳解]</a><br /></td></tr>
+<tr class="separator:adc8064c7e78519e4c012d56ebe180ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8aadd478faad814fa395e0e86bd72083"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-stat-info_8cpp.html#a8aadd478faad814fa395e0e86bd72083">compensate_stat_by_weapon</a> (char *c, <a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> *a, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, int stat, <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> *flags)</td></tr>
+<tr class="memdesc:a8aadd478faad814fa395e0e86bd72083"><td class="mdescLeft">&#160;</td><td class="mdescRight">pval付きの装備に依るステータス補正を表示する  <a href="display-player-stat-info_8cpp.html#a8aadd478faad814fa395e0e86bd72083">[詳解]</a><br /></td></tr>
+<tr class="separator:a8aadd478faad814fa395e0e86bd72083"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac152b4fe054143131ebd53479ad4f645"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-stat-info_8cpp.html#ac152b4fe054143131ebd53479ad4f645">display_equipments_compensation</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> *flags, int <a class="el" href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a>, int *<a class="el" href="display-util_8cpp.html#afb52e720f5f0c483db5861f9e42e924e">col</a>)</td></tr>
+<tr class="memdesc:ac152b4fe054143131ebd53479ad4f645"><td class="mdescLeft">&#160;</td><td class="mdescRight">装備品を走査してpval付きのものをそれと分かるように表示する  <a href="display-player-stat-info_8cpp.html#ac152b4fe054143131ebd53479ad4f645">[詳解]</a><br /></td></tr>
+<tr class="separator:ac152b4fe054143131ebd53479ad4f645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44f2ab8c2b34d47ac39a4554d9160a79"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-stat-info_8cpp.html#a44f2ab8c2b34d47ac39a4554d9160a79">compensation_stat_by_mutation</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, int stat)</td></tr>
+<tr class="memdesc:a44f2ab8c2b34d47ac39a4554d9160a79"><td class="mdescLeft">&#160;</td><td class="mdescRight">各能力値の補正  <a href="display-player-stat-info_8cpp.html#a44f2ab8c2b34d47ac39a4554d9160a79">[詳解]</a><br /></td></tr>
+<tr class="separator:a44f2ab8c2b34d47ac39a4554d9160a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0789c6774fd3a4f9b97f6ca8e978ab31"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-stat-info_8cpp.html#a0789c6774fd3a4f9b97f6ca8e978ab31">change_display_by_mutation</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, int stat, char *c, <a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> *a)</td></tr>
+<tr class="memdesc:a0789c6774fd3a4f9b97f6ca8e978ab31"><td class="mdescLeft">&#160;</td><td class="mdescRight">突然変異 (と、つよしスペシャル)による能力値の補正有無で表示する記号を変える  <a href="display-player-stat-info_8cpp.html#a0789c6774fd3a4f9b97f6ca8e978ab31">[詳解]</a><br /></td></tr>
+<tr class="separator:a0789c6774fd3a4f9b97f6ca8e978ab31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb599b7ce24a26abc3e528ddd7b41cfa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-stat-info_8cpp.html#afb599b7ce24a26abc3e528ddd7b41cfa">display_mutation_compensation</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> *flags, int <a class="el" href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a>, int <a class="el" href="display-util_8cpp.html#afb52e720f5f0c483db5861f9e42e924e">col</a>)</td></tr>
+<tr class="memdesc:afb599b7ce24a26abc3e528ddd7b41cfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">能力値を走査し、突然変異 (と、つよしスペシャル)で補正をかける必要があればかける  <a href="display-player-stat-info_8cpp.html#afb599b7ce24a26abc3e528ddd7b41cfa">[詳解]</a><br /></td></tr>
+<tr class="separator:afb599b7ce24a26abc3e528ddd7b41cfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af23dda5da4c4134bc91e811ea6255929"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-stat-info_8cpp.html#af23dda5da4c4134bc91e811ea6255929">display_player_stat_info</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:af23dda5da4c4134bc91e811ea6255929"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの特性フラグ一覧表示2b / Special display, part 2b  <a href="display-player-stat-info_8cpp.html#af23dda5da4c4134bc91e811ea6255929">[詳解]</a><br /></td></tr>
+<tr class="separator:af23dda5da4c4134bc91e811ea6255929"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="abc5af65e597a9379097b6ad6e902b47c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc5af65e597a9379097b6ad6e902b47c">&#9670;&nbsp;</a></span>calc_basic_stat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int calc_basic_stat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stat_num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>プレーヤーの耐性と能力値を表示する </p>
+<dl class="section date"><dt>日付</dt><dd>2020/02/27 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier</dd></dl>
+<p>ここにこれ以上関数を引っ越してくるのは禁止。何ならここから更に分割していく</p>
+<p>プレーヤーのパラメータ基礎値 (腕力等)を18以下になるようにして返す </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">stat_num</td><td>能力値番号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>基礎値</dd></dl>
+<p>最大が18になるのはD&amp;D由来 </p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_abc5af65e597a9379097b6ad6e902b47c_icgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_abc5af65e597a9379097b6ad6e902b47c_icgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_abc5af65e597a9379097b6ad6e902b47c_icgraph" id="adisplay-player-stat-info_8cpp_abc5af65e597a9379097b6ad6e902b47c_icgraph">
+<area shape="rect" title="プレーヤーの耐性と能力値を表示する" alt="" coords="547,5,660,32"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#adc8064c7e78519e4c012d56ebe180ddf" title="能力値を補正しつつ表示する" alt="" coords="395,5,499,32"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#af23dda5da4c4134bc91e811ea6255929" title="プレイヤーの特性フラグ一覧表示2b / Special display, part 2b" alt="" coords="185,5,347,32"/>
+<area shape="rect" href="display-player_8cpp.html#a5e697054ef593f4033637a2bdfffe272" title="プレーヤーのステータス表示メインルーチン群" alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0789c6774fd3a4f9b97f6ca8e978ab31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0789c6774fd3a4f9b97f6ca8e978ab31">&#9670;&nbsp;</a></span>change_display_by_mutation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void change_display_by_mutation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> *&#160;</td>
+          <td class="paramname"><em>a</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>突然変異 (と、つよしスペシャル)による能力値の補正有無で表示する記号を変える </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">stat</td><td>能力値番号 </td></tr>
+    <tr><td class="paramname">c</td><td>補正後の表示記号 </td></tr>
+    <tr><td class="paramname">a</td><td>表示色 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_a0789c6774fd3a4f9b97f6ca8e978ab31_cgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_a0789c6774fd3a4f9b97f6ca8e978ab31_cgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_a0789c6774fd3a4f9b97f6ca8e978ab31_cgraph" id="adisplay-player-stat-info_8cpp_a0789c6774fd3a4f9b97f6ca8e978ab31_cgraph">
+<area shape="rect" title="突然変異 (と、つよしスペシャル)による能力値の補正有無で表示する記号を変える" alt="" coords="5,13,196,39"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#a44f2ab8c2b34d47ac39a4554d9160a79" title="各能力値の補正" alt="" coords="244,5,397,47"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="445,13,556,39"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_a0789c6774fd3a4f9b97f6ca8e978ab31_icgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_a0789c6774fd3a4f9b97f6ca8e978ab31_icgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_a0789c6774fd3a4f9b97f6ca8e978ab31_icgraph" id="adisplay-player-stat-info_8cpp_a0789c6774fd3a4f9b97f6ca8e978ab31_icgraph">
+<area shape="rect" title="突然変異 (と、つよしスペシャル)による能力値の補正有無で表示する記号を変える" alt="" coords="651,5,841,32"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#afb599b7ce24a26abc3e528ddd7b41cfa" title="能力値を走査し、突然変異 (と、つよしスペシャル)で補正をかける必要があればかける" alt="" coords="395,5,603,32"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#af23dda5da4c4134bc91e811ea6255929" title="プレイヤーの特性フラグ一覧表示2b / Special display, part 2b" alt="" coords="185,5,347,32"/>
+<area shape="rect" href="display-player_8cpp.html#a5e697054ef593f4033637a2bdfffe272" title="プレーヤーのステータス表示メインルーチン群" alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0edbee308d714a6e865d0414cd470cd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0edbee308d714a6e865d0414cd470cd4">&#9670;&nbsp;</a></span>compensate_special_race()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int compensate_special_race </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stat_num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>特殊な種族の時、腕力等の基礎パラメータを変動させる </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">stat_num</td><td>能力値番号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>補正後の基礎パラメータ </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_a0edbee308d714a6e865d0414cd470cd4_cgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_a0edbee308d714a6e865d0414cd470cd4_cgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_a0edbee308d714a6e865d0414cd470cd4_cgraph" id="adisplay-player-stat-info_8cpp_a0edbee308d714a6e865d0414cd470cd4_cgraph">
+<area shape="rect" title="特殊な種族の時、腕力等の基礎パラメータを変動させる" alt="" coords="5,5,179,32"/>
+<area shape="rect" href="player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="227,5,384,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_a0edbee308d714a6e865d0414cd470cd4_icgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_a0edbee308d714a6e865d0414cd470cd4_icgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_a0edbee308d714a6e865d0414cd470cd4_icgraph" id="adisplay-player-stat-info_8cpp_a0edbee308d714a6e865d0414cd470cd4_icgraph">
+<area shape="rect" title="特殊な種族の時、腕力等の基礎パラメータを変動させる" alt="" coords="547,5,720,32"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#adc8064c7e78519e4c012d56ebe180ddf" title="能力値を補正しつつ表示する" alt="" coords="395,5,499,32"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#af23dda5da4c4134bc91e811ea6255929" title="プレイヤーの特性フラグ一覧表示2b / Special display, part 2b" alt="" coords="185,5,347,32"/>
+<area shape="rect" href="display-player_8cpp.html#a5e697054ef593f4033637a2bdfffe272" title="プレーヤーのステータス表示メインルーチン群" alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8aadd478faad814fa395e0e86bd72083"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8aadd478faad814fa395e0e86bd72083">&#9670;&nbsp;</a></span>compensate_stat_by_weapon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void compensate_stat_by_weapon </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> *&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>pval付きの装備に依るステータス補正を表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>補正後の表示記号 </td></tr>
+    <tr><td class="paramname">a</td><td>表示色 </td></tr>
+    <tr><td class="paramname">o_ptr</td><td>装備品への参照ポインタ </td></tr>
+    <tr><td class="paramname">stat</td><td>能力値番号 </td></tr>
+    <tr><td class="paramname">flags</td><td>装備品に立っているフラグ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_a8aadd478faad814fa395e0e86bd72083_icgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_a8aadd478faad814fa395e0e86bd72083_icgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_a8aadd478faad814fa395e0e86bd72083_icgraph" id="adisplay-player-stat-info_8cpp_a8aadd478faad814fa395e0e86bd72083_icgraph">
+<area shape="rect" title="pval付きの装備に依るステータス補正を表示する" alt="" coords="580,5,723,47"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#ac152b4fe054143131ebd53479ad4f645" title="装備品を走査してpval付きのものをそれと分かるように表示する" alt="" coords="395,5,532,47"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#af23dda5da4c4134bc91e811ea6255929" title="プレイヤーの特性フラグ一覧表示2b / Special display, part 2b" alt="" coords="185,13,347,39"/>
+<area shape="rect" href="display-player_8cpp.html#a5e697054ef593f4033637a2bdfffe272" title="プレーヤーのステータス表示メインルーチン群" alt="" coords="5,13,137,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a44f2ab8c2b34d47ac39a4554d9160a79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44f2ab8c2b34d47ac39a4554d9160a79">&#9670;&nbsp;</a></span>compensation_stat_by_mutation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int compensation_stat_by_mutation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>各能力値の補正 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">stat</td><td>能力値番号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_a44f2ab8c2b34d47ac39a4554d9160a79_cgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_a44f2ab8c2b34d47ac39a4554d9160a79_cgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_a44f2ab8c2b34d47ac39a4554d9160a79_cgraph" id="adisplay-player-stat-info_8cpp_a44f2ab8c2b34d47ac39a4554d9160a79_cgraph">
+<area shape="rect" title="各能力値の補正" alt="" coords="5,5,159,47"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="207,13,317,39"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_a44f2ab8c2b34d47ac39a4554d9160a79_icgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_a44f2ab8c2b34d47ac39a4554d9160a79_icgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_a44f2ab8c2b34d47ac39a4554d9160a79_icgraph" id="adisplay-player-stat-info_8cpp_a44f2ab8c2b34d47ac39a4554d9160a79_icgraph">
+<area shape="rect" title="各能力値の補正" alt="" coords="709,5,863,47"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#a0789c6774fd3a4f9b97f6ca8e978ab31" title="突然変異 (と、つよしスペシャル)による能力値の補正有無で表示する記号を変える" alt="" coords="471,13,661,39"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#afb599b7ce24a26abc3e528ddd7b41cfa" title="能力値を走査し、突然変異 (と、つよしスペシャル)で補正をかける必要があればかける" alt="" coords="215,13,423,39"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#af23dda5da4c4134bc91e811ea6255929" title="プレイヤーの特性フラグ一覧表示2b / Special display, part 2b" alt="" coords="5,13,167,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a56a5dd6adc1788d1978e921366a6ce41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56a5dd6adc1788d1978e921366a6ce41">&#9670;&nbsp;</a></span>display_basic_stat_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_basic_stat_name </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stat_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stat_col</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>能力値名を(もし一時的減少なら'x'を付けて)表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">stat_num</td><td>能力値番号 </td></tr>
+    <tr><td class="paramname">row</td><td>行数 </td></tr>
+    <tr><td class="paramname">stat_col</td><td>列数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_a56a5dd6adc1788d1978e921366a6ce41_cgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_a56a5dd6adc1788d1978e921366a6ce41_cgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_a56a5dd6adc1788d1978e921366a6ce41_cgraph" id="adisplay-player-stat-info_8cpp_a56a5dd6adc1788d1978e921366a6ce41_cgraph">
+<area shape="rect" title="能力値名を(もし一時的減少なら&#39;x&#39;を付けて)表示する" alt="" coords="5,31,175,57"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="223,31,299,57"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="347,31,435,57"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="485,5,575,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="483,56,577,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_a56a5dd6adc1788d1978e921366a6ce41_icgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_a56a5dd6adc1788d1978e921366a6ce41_icgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_a56a5dd6adc1788d1978e921366a6ce41_icgraph" id="adisplay-player-stat-info_8cpp_a56a5dd6adc1788d1978e921366a6ce41_icgraph">
+<area shape="rect" title="能力値名を(もし一時的減少なら&#39;x&#39;を付けて)表示する" alt="" coords="547,5,716,32"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#adc8064c7e78519e4c012d56ebe180ddf" title="能力値を補正しつつ表示する" alt="" coords="395,5,499,32"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#af23dda5da4c4134bc91e811ea6255929" title="プレイヤーの特性フラグ一覧表示2b / Special display, part 2b" alt="" coords="185,5,347,32"/>
+<area shape="rect" href="display-player_8cpp.html#a5e697054ef593f4033637a2bdfffe272" title="プレーヤーのステータス表示メインルーチン群" alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5134e0b5f8c71e5a548362672bcda3c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5134e0b5f8c71e5a548362672bcda3c0">&#9670;&nbsp;</a></span>display_basic_stat_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_basic_stat_value </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stat_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>r_adj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>e_adj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stat_col</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>能力値を、基本・種族補正・職業補正・性格補正・装備補正・合計・現在 (一時的減少のみ) の順で表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">stat_num</td><td>能力値番号 </td></tr>
+    <tr><td class="paramname">r_adj</td><td>補正後の基礎パラメータ </td></tr>
+    <tr><td class="paramname">e_adj</td><td>種族補正値 </td></tr>
+    <tr><td class="paramname">row</td><td>行数 </td></tr>
+    <tr><td class="paramname">stat_col</td><td>列数 </td></tr>
+    <tr><td class="paramname">buf</td><td>能力値の数値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_a5134e0b5f8c71e5a548362672bcda3c0_cgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_a5134e0b5f8c71e5a548362672bcda3c0_cgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_a5134e0b5f8c71e5a548362672bcda3c0_cgraph" id="adisplay-player-stat-info_8cpp_a5134e0b5f8c71e5a548362672bcda3c0_cgraph">
+<area shape="rect" title="能力値を、基本・種族補正・職業補正・性格補正・装備補正・合計・現在 (一時的減少のみ) の順で表示する" alt="" coords="5,49,136,90"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="184,31,260,57"/>
+<area shape="rect" href="player-status_8cpp.html#aeff5a61381b15a0da6515408f33a5ce7" title="現在の修正後能力値を3～17及び18/xxx形式に変換する / Converts stat num into a six&#45;char (right justified) string" alt="" coords="187,81,257,108"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="308,31,396,57"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="446,5,537,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="444,56,539,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_a5134e0b5f8c71e5a548362672bcda3c0_icgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_a5134e0b5f8c71e5a548362672bcda3c0_icgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_a5134e0b5f8c71e5a548362672bcda3c0_icgraph" id="adisplay-player-stat-info_8cpp_a5134e0b5f8c71e5a548362672bcda3c0_icgraph">
+<area shape="rect" title="能力値を、基本・種族補正・職業補正・性格補正・装備補正・合計・現在 (一時的減少のみ) の順で表示する" alt="" coords="547,5,677,47"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#adc8064c7e78519e4c012d56ebe180ddf" title="能力値を補正しつつ表示する" alt="" coords="395,13,499,39"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#af23dda5da4c4134bc91e811ea6255929" title="プレイヤーの特性フラグ一覧表示2b / Special display, part 2b" alt="" coords="185,13,347,39"/>
+<area shape="rect" href="display-player_8cpp.html#a5e697054ef593f4033637a2bdfffe272" title="プレーヤーのステータス表示メインルーチン群" alt="" coords="5,13,137,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac152b4fe054143131ebd53479ad4f645"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac152b4fe054143131ebd53479ad4f645">&#9670;&nbsp;</a></span>display_equipments_compensation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_equipments_compensation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> *&#160;</td>
+          <td class="paramname"><em>flags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>col</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>装備品を走査してpval付きのものをそれと分かるように表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">flags</td><td>装備品に立っているフラグ </td></tr>
+    <tr><td class="paramname">row</td><td>行数 </td></tr>
+    <tr><td class="paramname">col</td><td>列数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_ac152b4fe054143131ebd53479ad4f645_cgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_ac152b4fe054143131ebd53479ad4f645_cgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_ac152b4fe054143131ebd53479ad4f645_cgraph" id="adisplay-player-stat-info_8cpp_ac152b4fe054143131ebd53479ad4f645_cgraph">
+<area shape="rect" title="装備品を走査してpval付きのものをそれと分かるように表示する" alt="" coords="5,150,143,191"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#a8aadd478faad814fa395e0e86bd72083" title="pval付きの装備に依るステータス補正を表示する" alt="" coords="191,91,333,133"/>
+<area shape="rect" href="object-flags_8cpp.html#aa8b49202dccde14ed12d3de5e33c2c73" title="オブジェクトの明示されているフラグ類を取得する Obtain the &quot;flags&quot; for an item which are known to the player" alt="" coords="195,157,329,184"/>
+<area shape="rect" href="z-term_8cpp.html#abb85e44f10d01b0cfb7b1bd4b5bc48e5" title=" " alt="" coords="219,309,305,336"/>
+<area shape="rect" href="object-perception_8cpp.html#a377c00bc8a6d66ec30288f1e3be60e9f" title=" " alt="" coords="401,5,516,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="407,56,510,83"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="381,107,536,133"/>
+<area shape="rect" href="object-perception_8cpp.html#ab8b89c67f70a877a7964cca6a2f139eb" title=" " alt="" coords="385,157,533,184"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="399,208,518,235"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="402,259,515,285"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="584,259,799,285"/>
+<area shape="rect" href="z-term_8cpp.html#a2bb133bab8899a7b9118b3b22efcbd34" title=" " alt="" coords="413,309,504,336"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="411,360,506,387"/>
+<area shape="rect" href="z-term_8cpp.html#abe940f88333b917b37fb87f4104bd473" title=" " alt="" coords="630,309,753,336"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_ac152b4fe054143131ebd53479ad4f645_icgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_ac152b4fe054143131ebd53479ad4f645_icgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_ac152b4fe054143131ebd53479ad4f645_icgraph" id="adisplay-player-stat-info_8cpp_ac152b4fe054143131ebd53479ad4f645_icgraph">
+<area shape="rect" title="装備品を走査してpval付きのものをそれと分かるように表示する" alt="" coords="548,5,685,47"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#af23dda5da4c4134bc91e811ea6255929" title="プレイヤーの特性フラグ一覧表示2b / Special display, part 2b" alt="" coords="339,13,500,39"/>
+<area shape="rect" href="display-player_8cpp.html#a5e697054ef593f4033637a2bdfffe272" title="プレーヤーのステータス表示メインルーチン群" alt="" coords="159,13,291,39"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="5,13,111,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afb599b7ce24a26abc3e528ddd7b41cfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb599b7ce24a26abc3e528ddd7b41cfa">&#9670;&nbsp;</a></span>display_mutation_compensation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_mutation_compensation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> *&#160;</td>
+          <td class="paramname"><em>flags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>col</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>能力値を走査し、突然変異 (と、つよしスペシャル)で補正をかける必要があればかける </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">stat</td><td>能力値番号 </td></tr>
+    <tr><td class="paramname">col</td><td>列数 </td></tr>
+    <tr><td class="paramname">row</td><td>行数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_afb599b7ce24a26abc3e528ddd7b41cfa_cgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_afb599b7ce24a26abc3e528ddd7b41cfa_cgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_afb599b7ce24a26abc3e528ddd7b41cfa_cgraph" id="adisplay-player-stat-info_8cpp_afb599b7ce24a26abc3e528ddd7b41cfa_cgraph">
+<area shape="rect" title="能力値を走査し、突然変異 (と、つよしスペシャル)で補正をかける必要があればかける" alt="" coords="5,46,213,73"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#a0789c6774fd3a4f9b97f6ca8e978ab31" title="突然変異 (と、つよしスペシャル)による能力値の補正有無で表示する記号を変える" alt="" coords="261,17,452,43"/>
+<area shape="rect" href="z-term_8cpp.html#abb85e44f10d01b0cfb7b1bd4b5bc48e5" title=" " alt="" coords="313,71,400,98"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#a44f2ab8c2b34d47ac39a4554d9160a79" title="各能力値の補正" alt="" coords="500,5,653,47"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="707,13,818,39"/>
+<area shape="rect" href="z-term_8cpp.html#a2bb133bab8899a7b9118b3b22efcbd34" title=" " alt="" coords="531,71,622,98"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="529,122,624,149"/>
+<area shape="rect" href="z-term_8cpp.html#abe940f88333b917b37fb87f4104bd473" title=" " alt="" coords="701,71,824,98"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_afb599b7ce24a26abc3e528ddd7b41cfa_icgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_afb599b7ce24a26abc3e528ddd7b41cfa_icgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_afb599b7ce24a26abc3e528ddd7b41cfa_icgraph" id="adisplay-player-stat-info_8cpp_afb599b7ce24a26abc3e528ddd7b41cfa_icgraph">
+<area shape="rect" title="能力値を走査し、突然変異 (と、つよしスペシャル)で補正をかける必要があればかける" alt="" coords="548,5,756,32"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#af23dda5da4c4134bc91e811ea6255929" title="プレイヤーの特性フラグ一覧表示2b / Special display, part 2b" alt="" coords="339,5,500,32"/>
+<area shape="rect" href="display-player_8cpp.html#a5e697054ef593f4033637a2bdfffe272" title="プレーヤーのステータス表示メインルーチン群" alt="" coords="159,5,291,32"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="5,5,111,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af23dda5da4c4134bc91e811ea6255929"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af23dda5da4c4134bc91e811ea6255929">&#9670;&nbsp;</a></span>display_player_stat_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_player_stat_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーの特性フラグ一覧表示2b / Special display, part 2b </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<pre>
+How to print out the modifications and sustains.
+Positive mods with no sustain will be light green.
+Positive mods with a sustain will be dark green.
+Sustains (with no modification) will be a dark green 's'.
+Negative mods (from a curse) will be red.
+Huge mods (&gt;9), like from MICoMorgoth, will be a '*'
+No mod, no sustain, will be a slate '.'
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_af23dda5da4c4134bc91e811ea6255929_cgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_af23dda5da4c4134bc91e811ea6255929_cgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_af23dda5da4c4134bc91e811ea6255929_cgraph" id="adisplay-player-stat-info_8cpp_af23dda5da4c4134bc91e811ea6255929_cgraph">
+<area shape="rect" title="プレイヤーの特性フラグ一覧表示2b / Special display, part 2b" alt="" coords="5,629,167,656"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="765,857,841,884"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#ac152b4fe054143131ebd53479ad4f645" title="装備品を走査してpval付きのものをそれと分かるように表示する" alt="" coords="250,323,387,365"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#afb599b7ce24a26abc3e528ddd7b41cfa" title="能力値を走査し、突然変異 (と、つよしスペシャル)で補正をかける必要があればかける" alt="" coords="215,419,423,445"/>
+<area shape="rect" href="permanent-resistances_8cpp.html#acd862b3511027e1b202c0868a6c82192" title="プレイヤーの職業、種族に応じた耐性フラグを返す Prints ratings on certain abilities" alt="" coords="273,629,364,656"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#adc8064c7e78519e4c012d56ebe180ddf" title="能力値を補正しつつ表示する" alt="" coords="267,959,371,985"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="989,756,1077,783"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="1173,756,1263,783"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="1171,545,1265,572"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#a8aadd478faad814fa395e0e86bd72083" title="pval付きの装備に依るステータス補正を表示する" alt="" coords="495,294,637,335"/>
+<area shape="rect" href="object-flags_8cpp.html#aa8b49202dccde14ed12d3de5e33c2c73" title="オブジェクトの明示されているフラグ類を取得する Obtain the &quot;flags&quot; for an item which are known to the player" alt="" coords="499,157,633,184"/>
+<area shape="rect" href="z-term_8cpp.html#abb85e44f10d01b0cfb7b1bd4b5bc48e5" title=" " alt="" coords="523,360,609,387"/>
+<area shape="rect" href="object-perception_8cpp.html#a377c00bc8a6d66ec30288f1e3be60e9f" title=" " alt="" coords="745,56,860,83"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="751,107,854,133"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="725,157,880,184"/>
+<area shape="rect" href="object-perception_8cpp.html#ab8b89c67f70a877a7964cca6a2f139eb" title=" " alt="" coords="729,208,877,235"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="743,259,862,285"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="746,5,859,32"/>
+<area shape="rect" href="z-term_8cpp.html#a2bb133bab8899a7b9118b3b22efcbd34" title=" " alt="" coords="757,309,848,336"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#a0789c6774fd3a4f9b97f6ca8e978ab31" title="突然変異 (と、つよしスペシャル)による能力値の補正有無で表示する記号を変える" alt="" coords="471,419,661,445"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#a44f2ab8c2b34d47ac39a4554d9160a79" title="各能力値の補正" alt="" coords="726,411,879,453"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="978,477,1089,504"/>
+<area shape="rect" href="permanent-resistances_8cpp.html#a6a6cf1ceef153861de26c8a2d7fc956a" title="プレーヤーの職業による耐性フラグを返す" alt="" coords="509,655,623,681"/>
+<area shape="rect" href="permanent-resistances_8cpp.html#ae61d67ee75ea6c326c30e4e4d65ac9c1" title="剣術家の型による耐性フラグを返す" alt="" coords="511,553,621,580"/>
+<area shape="rect" href="permanent-resistances_8cpp.html#a5ddb8dbef913d3076b0561d988f8294e" title="特定の種族に擬態中の耐性フラグを返す" alt="" coords="491,604,641,631"/>
+<area shape="rect" href="permanent-resistances_8cpp.html#a53e9cfb63e825073713f5d117f61595d" title="突然変異による耐性フラグを返す" alt="" coords="499,503,633,529"/>
+<area shape="rect" href="permanent-resistances_8cpp.html#a18fc7e0876089d495068f38223e2bc7f" title="性格による耐性フラグを返す" alt="" coords="493,705,639,732"/>
+<area shape="rect" href="permanent-resistances_8cpp.html#a05d2e91854ca125137278ef27f516f32" title="種族ベースの耐性フラグを返す" alt="" coords="511,756,621,783"/>
+<area shape="rect" href="player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="709,680,896,707"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7c7bc7aaa4ea1facc9bffef817ae15ef" title=" " alt="" coords="944,655,1123,681"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="735,731,870,757"/>
+<area shape="rect" href="player-status_8cpp.html#af61e52604492724ecb12f4bc74e577aa" title="プレイヤーが防具重量制限のある職業時にペナルティを受ける状態にあるかどうかを返す。" alt="" coords="755,781,850,808"/>
+<area shape="rect" href="class_flag_group.html#a57a928e50a2473024e69c349bcd62525" title="入力イテレータで指定した範囲のリストに含まれるフラグのいずれかがONかどうかを調べる" alt="" coords="725,477,881,504"/>
+<area shape="rect" href="class_flag_group.html#ac587dd5228dd00af34c36a02b2a95a10" title="フラグ集合のすべてのフラグがOFFかどうかを調べる" alt="" coords="743,528,862,555"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#abc5af65e597a9379097b6ad6e902b47c" title="プレーヤーの耐性と能力値を表示する" alt="" coords="509,908,623,935"/>
+<area shape="rect" href="player-status_8cpp.html#aeff5a61381b15a0da6515408f33a5ce7" title="現在の修正後能力値を3～17及び18/xxx形式に変換する / Converts stat num into a six&#45;char (right justified) string" alt="" coords="767,1047,838,1073"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#a0edbee308d714a6e865d0414cd470cd4" title="特殊な種族の時、腕力等の基礎パラメータを変動させる" alt="" coords="479,1127,653,1153"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#a56a5dd6adc1788d1978e921366a6ce41" title="能力値名を(もし一時的減少なら&#39;x&#39;を付けて)表示する" alt="" coords="481,959,651,985"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#a5134e0b5f8c71e5a548362672bcda3c0" title="能力値を、基本・種族補正・職業補正・性格補正・装備補正・合計・現在 (一時的減少のみ) の順で表示する" alt="" coords="501,1010,631,1051"/>
+<area shape="rect" href="player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="724,1127,881,1153"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_af23dda5da4c4134bc91e811ea6255929_icgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_af23dda5da4c4134bc91e811ea6255929_icgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_af23dda5da4c4134bc91e811ea6255929_icgraph" id="adisplay-player-stat-info_8cpp_af23dda5da4c4134bc91e811ea6255929_icgraph">
+<area shape="rect" title="プレイヤーの特性フラグ一覧表示2b / Special display, part 2b" alt="" coords="1597,365,1759,391"/>
+<area shape="rect" href="display-player_8cpp.html#a5e697054ef593f4033637a2bdfffe272" title="プレーヤーのステータス表示メインルーチン群" alt="" coords="1417,365,1549,391"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="1264,365,1369,391"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="5,95,97,122"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f" title=" " alt="" coords="1081,619,1212,660"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="312,306,465,333"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a9bb4f751f6b9b31e0154e4ec3502a997" title="プレイヤーのステータス表示をファイルにダンプする" alt="" coords="863,277,1029,303"/>
+<area shape="rect" href="character-dump_8cpp.html#ad9ac4fe2e14196316e97fef3cb8db4e5" title="ダンプ出力のメインルーチン Output the character dump to a file" alt="" coords="660,277,815,303"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="513,197,612,223"/>
+<area shape="rect" href="process-death_8cpp.html#aedfc0764df97dc71148c2201d28d7fd1" title="キャラクタ情報をファイルに書き出す" alt="" coords="325,95,452,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae9c570eb0fbf3c678455e095701f5548" title="死亡、引退時の簡易ステータス表示" alt="" coords="145,95,264,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae28b0711f29637713f74286cb654a4e6" title="自動的にプレイヤーステータスをファイルダンプ出力する" alt="" coords="323,146,454,173"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a163fa3f653b409f46474b92469166058" title="画面番号を指定してダンプする" alt="" coords="1077,299,1216,340"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="1102,685,1191,711"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#a8881e99ad9af11b929f316e7b7618851" title="現在のプレイヤーステータスをサブウィンドウに表示する /" alt="" coords="1108,735,1185,762"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="876,550,1016,577"/>
+<area shape="rect" href="scores_8cpp.html#af49a50cb34bb1e825724246836430c65" title="スコアサーバへの転送処理" alt="" coords="1083,517,1210,543"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="873,467,1019,508"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adc8064c7e78519e4c012d56ebe180ddf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc8064c7e78519e4c012d56ebe180ddf">&#9670;&nbsp;</a></span>process_stats()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void process_stats </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stat_col</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>能力値を補正しつつ表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">row</td><td>行数 </td></tr>
+    <tr><td class="paramname">stat_col</td><td>列数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_adc8064c7e78519e4c012d56ebe180ddf_cgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_adc8064c7e78519e4c012d56ebe180ddf_cgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_adc8064c7e78519e4c012d56ebe180ddf_cgraph" id="adisplay-player-stat-info_8cpp_adc8064c7e78519e4c012d56ebe180ddf_cgraph">
+<area shape="rect" title="能力値を補正しつつ表示する" alt="" coords="5,117,109,144"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="419,88,495,115"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#abc5af65e597a9379097b6ad6e902b47c" title="プレーヤーの耐性と能力値を表示する" alt="" coords="187,37,301,64"/>
+<area shape="rect" href="player-status_8cpp.html#aeff5a61381b15a0da6515408f33a5ce7" title="現在の修正後能力値を3～17及び18/xxx形式に変換する / Converts stat num into a six&#45;char (right justified) string" alt="" coords="422,176,493,203"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#a0edbee308d714a6e865d0414cd470cd4" title="特殊な種族の時、腕力等の基礎パラメータを変動させる" alt="" coords="157,256,331,283"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#a56a5dd6adc1788d1978e921366a6ce41" title="能力値名を(もし一時的減少なら&#39;x&#39;を付けて)表示する" alt="" coords="159,88,329,115"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#a5134e0b5f8c71e5a548362672bcda3c0" title="能力値を、基本・種族補正・職業補正・性格補正・装備補正・合計・現在 (一時的減少のみ) の順で表示する" alt="" coords="179,139,309,181"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="584,88,672,115"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="722,63,813,89"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="720,113,815,140"/>
+<area shape="rect" href="player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="379,256,536,283"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-stat-info_8cpp_adc8064c7e78519e4c012d56ebe180ddf_icgraph.png" border="0" usemap="#adisplay-player-stat-info_8cpp_adc8064c7e78519e4c012d56ebe180ddf_icgraph" alt=""/></div>
+<map name="adisplay-player-stat-info_8cpp_adc8064c7e78519e4c012d56ebe180ddf_icgraph" id="adisplay-player-stat-info_8cpp_adc8064c7e78519e4c012d56ebe180ddf_icgraph">
+<area shape="rect" title="能力値を補正しつつ表示する" alt="" coords="548,5,652,32"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#af23dda5da4c4134bc91e811ea6255929" title="プレイヤーの特性フラグ一覧表示2b / Special display, part 2b" alt="" coords="339,5,500,32"/>
+<area shape="rect" href="display-player_8cpp.html#a5e697054ef593f4033637a2bdfffe272" title="プレーヤーのステータス表示メインルーチン群" alt="" coords="159,5,291,32"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="5,5,111,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分38秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

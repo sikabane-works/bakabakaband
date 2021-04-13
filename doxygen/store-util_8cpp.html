@@ -1,0 +1,742 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/store/store-util.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ce523e85215a280d7642dc7a1cfeecaa.html">store</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">store-util.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="store-util_8h_source.html">store/store-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="apply-magic_8h_source.html">object-enchant/apply-magic.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-apply-magic_8h_source.html">object-enchant/item-apply-magic.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-feeling_8h_source.html">object-enchant/item-feeling.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-object-flags_8h_source.html">object-enchant/special-object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-enchant_8h_source.html">object-hook/hook-enchant.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-generator_8h_source.html">object/object-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind_8h_source.html">object/object-kind.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-value_8h_source.html">object/object-value.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-perception_8h_source.html">perception/object-perception.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-lite-types_8h_source.html">sv-definition/sv-lite-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-scroll-types_8h_source.html">sv-definition/sv-scroll-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world-object_8h_source.html">world/world-object.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+store-util.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="store-util_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2store_2store-util_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2store_2store-util_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2store_2store-util_8cpp">
+<area shape="rect" title=" " alt="" coords="994,5,1182,61"/>
+<area shape="rect" href="store-util_8h.html" title=" " alt="" coords="878,117,994,143"/>
+<area shape="rect" href="apply-magic_8h.html" title=" " alt="" coords="577,199,719,240"/>
+<area shape="rect" href="item-apply-magic_8h.html" title=" " alt="" coords="1341,109,1477,151"/>
+<area shape="rect" href="item-feeling_8h.html" title=" " alt="" coords="1501,109,1637,151"/>
+<area shape="rect" href="special-object-flags_8h.html" title=" " alt="" coords="1661,109,1813,151"/>
+<area shape="rect" href="hook-enchant_8h.html" title=" " alt="" coords="743,206,926,233"/>
+<area shape="rect" href="object-generator_8h.html" title=" " alt="" coords="5,206,171,233"/>
+<area shape="rect" href="object-kind_8h.html" title=" " alt="" coords="1182,117,1317,143"/>
+<area shape="rect" href="object-value_8h.html" title=" " alt="" coords="1018,117,1158,143"/>
+<area shape="rect" href="object-perception_8h.html" title=" " alt="" coords="195,206,391,233"/>
+<area shape="rect" href="sv-lite-types_8h.html" title=" " alt="" coords="1838,109,1965,151"/>
+<area shape="rect" href="sv-scroll-types_8h.html" title=" " alt="" coords="1989,109,2129,151"/>
+<area shape="rect" href="world-object_8h.html" title=" " alt="" coords="416,206,552,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="829,288,958,315"/>
+<area shape="rect" title=" " alt="" coords="1001,206,1057,233"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="988,363,1079,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1103,363,1193,389"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1217,363,1316,389"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="376,363,475,389"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="499,363,599,389"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="623,363,798,389"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="823,363,964,389"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1340,363,1487,389"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1443,437,1554,464"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="1341,199,1467,240"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="1183,199,1316,240"/>
+<area shape="rect" title=" " alt="" coords="1491,206,1546,233"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="1186,288,1313,315"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:ac756067206267580b89796c5fd2b5056"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="store-util_8cpp.html#ac756067206267580b89796c5fd2b5056">store_item_increase</a> (<a class="el" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> item, <a class="el" href="h-type_8h.html#a64d1c0cbb82f223cd3ab16d119c71b59">ITEM_NUMBER</a> num)</td></tr>
+<tr class="memdesc:ac756067206267580b89796c5fd2b5056"><td class="mdescLeft">&#160;</td><td class="mdescRight">店舗のオブジェクト数を増やす / Add the item "o_ptr" to a real stores inventory.  <a href="store-util_8cpp.html#ac756067206267580b89796c5fd2b5056">[詳解]</a><br /></td></tr>
+<tr class="separator:ac756067206267580b89796c5fd2b5056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4714660ff659748c1df580de58dac9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="store-util_8cpp.html#ab4714660ff659748c1df580de58dac9b">store_item_optimize</a> (<a class="el" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> item)</td></tr>
+<tr class="memdesc:ab4714660ff659748c1df580de58dac9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">店舗のオブジェクト数を削除する / Remove a slot if it is empty  <a href="store-util_8cpp.html#ab4714660ff659748c1df580de58dac9b">[詳解]</a><br /></td></tr>
+<tr class="separator:ab4714660ff659748c1df580de58dac9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30683519e123759cfaf4d8159989e99f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="store-util_8cpp.html#a30683519e123759cfaf4d8159989e99f">store_delete</a> (void)</td></tr>
+<tr class="memdesc:a30683519e123759cfaf4d8159989e99f"><td class="mdescLeft">&#160;</td><td class="mdescRight">店舗の品揃え変化のためにアイテムを削除する / Attempt to delete (some of) a random item from the store  <a href="store-util_8cpp.html#a30683519e123759cfaf4d8159989e99f">[詳解]</a><br /></td></tr>
+<tr class="separator:a30683519e123759cfaf4d8159989e99f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab04e61a4a223c750a958e32ba8d62e7f"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; <a class="el" href="h-type_8h.html#a93e03fb0f06674384e8374479dfcf11b">PARAMETER_VALUE</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="store-util_8cpp.html#ab04e61a4a223c750a958e32ba8d62e7f">store_same_magic_device_pvals</a> (<a class="el" href="structobject__type.html">object_type</a> *j_ptr)</td></tr>
+<tr class="memdesc:ab04e61a4a223c750a958e32ba8d62e7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">店舗販売中の杖と魔法棒のpvalのリストを返す  <a href="store-util_8cpp.html#ab04e61a4a223c750a958e32ba8d62e7f">[詳解]</a><br /></td></tr>
+<tr class="separator:ab04e61a4a223c750a958e32ba8d62e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c6ff7c60a8921e01be9591e98517b46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46">store_create</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> fix_k_idx, <a class="el" href="store-util_8h.html#a9166b4efe6da731055593ad870b998dd">black_market_crap_pf</a> <a class="el" href="black-market_8h.html#acffdb9b8f975344f0e9904127bae61f7">black_market_crap</a>, <a class="el" href="store-util_8h.html#a629de03a6197bf14b417400c85c635e6">store_will_buy_pf</a> <a class="el" href="service-checker_8h.html#a3e96fade24af6ab1c689037f314549e0">store_will_buy</a>, <a class="el" href="store-util_8h.html#acd3919036b71550ecbcc0d3f2e04b09f">mass_produce_pf</a> <a class="el" href="service-checker_8h.html#a54ed8fdf61800d7c646e443224d2b6c9">mass_produce</a>)</td></tr>
+<tr class="memdesc:a5c6ff7c60a8921e01be9591e98517b46"><td class="mdescLeft">&#160;</td><td class="mdescRight">店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store  <a href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46">[詳解]</a><br /></td></tr>
+<tr class="separator:a5c6ff7c60a8921e01be9591e98517b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56180b787a48593e25cd16aa81ce9611"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="store-util_8cpp.html#a56180b787a48593e25cd16aa81ce9611">store_object_similar</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr, <a class="el" href="structobject__type.html">object_type</a> *j_ptr)</td></tr>
+<tr class="memdesc:a56180b787a48593e25cd16aa81ce9611"><td class="mdescLeft">&#160;</td><td class="mdescRight">店舗に並べた品を同一品であるかどうか判定する / Determine if a store item can "absorb" another item  <a href="store-util_8cpp.html#a56180b787a48593e25cd16aa81ce9611">[詳解]</a><br /></td></tr>
+<tr class="separator:a56180b787a48593e25cd16aa81ce9611"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3538dbf56af52302c3971e82a00172b6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="store-util_8cpp.html#a3538dbf56af52302c3971e82a00172b6">store_object_absorb</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr, <a class="el" href="structobject__type.html">object_type</a> *j_ptr)</td></tr>
+<tr class="memdesc:a3538dbf56af52302c3971e82a00172b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">店舗に並べた品を重ね合わせできるかどうか判定する / Allow a store item to absorb another item  <a href="store-util_8cpp.html#a3538dbf56af52302c3971e82a00172b6">[詳解]</a><br /></td></tr>
+<tr class="separator:a3538dbf56af52302c3971e82a00172b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b4f3d5bb7321f2da032a0a16a0705b6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="store-util_8cpp.html#a4b4f3d5bb7321f2da032a0a16a0705b6">store_carry</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:a4b4f3d5bb7321f2da032a0a16a0705b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">店舗にオブジェクトを加える / Add the item "o_ptr" to a real stores inventory.  <a href="store-util_8cpp.html#a4b4f3d5bb7321f2da032a0a16a0705b6">[詳解]</a><br /></td></tr>
+<tr class="separator:a4b4f3d5bb7321f2da032a0a16a0705b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:ae5c5dc1047e4e25bec4c8827d5ecd09c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="store-util_8cpp.html#ae5c5dc1047e4e25bec4c8827d5ecd09c">cur_store_num</a> = 0</td></tr>
+<tr class="memdesc:ae5c5dc1047e4e25bec4c8827d5ecd09c"><td class="mdescLeft">&#160;</td><td class="mdescRight">店舗処理関係のユーティリティ  <a href="store-util_8cpp.html#ae5c5dc1047e4e25bec4c8827d5ecd09c">[詳解]</a><br /></td></tr>
+<tr class="separator:ae5c5dc1047e4e25bec4c8827d5ecd09c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae7e88249c205379523be54d89498c00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstore__type.html">store_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="store-util_8cpp.html#aae7e88249c205379523be54d89498c00">st_ptr</a> = NULL</td></tr>
+<tr class="separator:aae7e88249c205379523be54d89498c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a4b4f3d5bb7321f2da032a0a16a0705b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b4f3d5bb7321f2da032a0a16a0705b6">&#9670;&nbsp;</a></span>store_carry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int store_carry </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>店舗にオブジェクトを加える / Add the item "o_ptr" to a real stores inventory. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>加えたいオブジェクトの構造体参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>収めた先のID</dd></dl>
+<pre>
+In all cases, return the slot (or -1) where the object was placed
+Note that this is a hacked up version of "store_item_to_inventory()".
+Also note that it may not correctly "adapt" to "knowledge" bacoming
+known, the player may have to pick stuff up and drop it again.
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="store-util_8cpp_a4b4f3d5bb7321f2da032a0a16a0705b6_cgraph.png" border="0" usemap="#astore-util_8cpp_a4b4f3d5bb7321f2da032a0a16a0705b6_cgraph" alt=""/></div>
+<map name="astore-util_8cpp_a4b4f3d5bb7321f2da032a0a16a0705b6_cgraph" id="astore-util_8cpp_a4b4f3d5bb7321f2da032a0a16a0705b6_cgraph">
+<area shape="rect" title="店舗にオブジェクトを加える / Add the item &quot;o_ptr&quot; to a real stores inventory." alt="" coords="5,284,92,311"/>
+<area shape="rect" href="object-value_8cpp.html#a0147f5032ab01303e47ff00f49648520" title="オブジェクト価格算出のメインルーチン / Return the price of an item including plusses (and charges)" alt="" coords="163,132,256,159"/>
+<area shape="rect" href="store-util_8cpp.html#a3538dbf56af52302c3971e82a00172b6" title="店舗に並べた品を重ね合わせできるかどうか判定する / Allow a store item to absorb another item" alt="" coords="140,335,279,361"/>
+<area shape="rect" href="store-util_8cpp.html#a56180b787a48593e25cd16aa81ce9611" title="店舗に並べた品を同一品であるかどうか判定する / Determine if a store item can &quot;absorb&quot; another item" alt="" coords="140,284,279,311"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="331,107,451,133"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="671,157,791,184"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="331,5,450,32"/>
+<area shape="rect" href="object-value_8cpp.html#afb59e3a93aa528a3a73df60ce054c2f9" title="未鑑定なベースアイテムの基本価格を返す / Return the &quot;value&quot; of an &quot;unknown&quot; item Make a guess at the value of non&#45;aware ..." alt="" coords="327,56,455,83"/>
+<area shape="rect" href="object-value_8cpp.html#a4b43c1e5db9d62cc85dce89c00b8ff3a" title="オブジェクトの真の価格を算出する / Return the value of the flags the object has..." alt="" coords="330,271,451,297"/>
+<area shape="rect" href="object-perception_8cpp.html#a377c00bc8a6d66ec30288f1e3be60e9f" title=" " alt="" coords="505,56,620,83"/>
+<area shape="rect" href="object-value-calc_8cpp.html#a50a71dd33434317049f92e1f4a3f18dd" title="オブジェクトのフラグ類から価格を算出する / Return the value of the flags the object has..." alt="" coords="525,271,600,297"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="685,360,776,387"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="865,259,967,285"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="839,385,993,412"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="503,461,623,488"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="store-util_8cpp_a4b4f3d5bb7321f2da032a0a16a0705b6_icgraph.png" border="0" usemap="#astore-util_8cpp_a4b4f3d5bb7321f2da032a0a16a0705b6_icgraph" alt=""/></div>
+<map name="astore-util_8cpp_a4b4f3d5bb7321f2da032a0a16a0705b6_icgraph" id="astore-util_8cpp_a4b4f3d5bb7321f2da032a0a16a0705b6_icgraph">
+<area shape="rect" title="店舗にオブジェクトを加える / Add the item &quot;o_ptr&quot; to a real stores inventory." alt="" coords="547,31,633,57"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="404,5,499,32"/>
+<area shape="rect" href="sell-order_8cpp.html#a99c896d0a63db27afbf59621f6b7d51f" title="店からの売却処理のメインルーチン / Sell an item to the store (or home)" alt="" coords="412,56,491,83"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="206,5,338,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="21,56,125,83"/>
+<area shape="rect" href="purchase-order_8cpp.html#adfed87bf46b0d23cfb2106925f181097" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="188,56,356,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5c6ff7c60a8921e01be9591e98517b46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c6ff7c60a8921e01be9591e98517b46">&#9670;&nbsp;</a></span>store_create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void store_create </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a>&#160;</td>
+          <td class="paramname"><em>fix_k_idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="store-util_8h.html#a9166b4efe6da731055593ad870b998dd">black_market_crap_pf</a>&#160;</td>
+          <td class="paramname"><em>black_market_crap</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="store-util_8h.html#a629de03a6197bf14b417400c85c635e6">store_will_buy_pf</a>&#160;</td>
+          <td class="paramname"><em>store_will_buy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="store-util_8h.html#acd3919036b71550ecbcc0d3f2e04b09f">mass_produce_pf</a>&#160;</td>
+          <td class="paramname"><em>mass_produce</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<pre>
+This algorithm needs to be rethought.  A lot.
+Currently, "normal" stores use a pre-built array.
+Note -- the "level" given to "obj_get_num()" is a "favored"
+level, that is, there is a much higher chance of getting
+items with a level approaching that of the given level...
+Should we check for "permission" to have the given item?
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="store-util_8cpp_a5c6ff7c60a8921e01be9591e98517b46_cgraph.png" border="0" usemap="#astore-util_8cpp_a5c6ff7c60a8921e01be9591e98517b46_cgraph" alt=""/></div>
+<map name="astore-util_8cpp_a5c6ff7c60a8921e01be9591e98517b46_cgraph" id="astore-util_8cpp_a5c6ff7c60a8921e01be9591e98517b46_cgraph">
+<area shape="rect" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="5,1280,100,1307"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="188,495,283,522"/>
+<area shape="rect" href="object-perception_8cpp.html#a7d25977942886a0b3043ce3c468cf08c" title="オブジェクトを鑑定済にする / Known is true when the &quot;attributes&quot; of an object are &quot;known&quot;." alt="" coords="619,1271,720,1298"/>
+<area shape="rect" href="black-market_8cpp.html#acffdb9b8f975344f0e9904127bae61f7" title="ブラックマーケット用の無価値品の排除判定 / This function will keep &#39;crap&#39; out of the black market." alt="" coords="169,1128,301,1155"/>
+<area shape="rect" href="world-object_8cpp.html#a63121cef2b07ff263642121c289a81e0" title="オブジェクト生成テーブルからアイテムを取得する / Choose an object kind that seems &quot;appropriate&quot; to the given level" alt="" coords="187,1458,283,1484"/>
+<area shape="rect" href="service-checker_8cpp.html#a54ed8fdf61800d7c646e443224d2b6c9" title="安価な消耗品の販売数を増やし、低確率で割引にする / Certain &quot;cheap&quot; objects should be created in &quot;piles&quot;" alt="" coords="182,1204,289,1231"/>
+<area shape="rect" href="object-value_8cpp.html#a0147f5032ab01303e47ff00f49648520" title="オブジェクト価格算出のメインルーチン / Return the price of an item including plusses (and charges)" alt="" coords="407,1255,500,1282"/>
+<area shape="rect" href="object-generator_8cpp.html#a9d4bf7f51bf5056089190534c673d068" title="オブジェクト構造体にベースアイテムを作成する Prepare an object based on an object kind." alt="" coords="625,58,714,84"/>
+<area shape="rect" href="store-util_8cpp.html#a4b4f3d5bb7321f2da032a0a16a0705b6" title="店舗にオブジェクトを加える / Add the item &quot;o_ptr&quot; to a real stores inventory." alt="" coords="192,1407,279,1434"/>
+<area shape="rect" href="store-util_8cpp.html#ab04e61a4a223c750a958e32ba8d62e7f" title="店舗販売中の杖と魔法棒のpvalのリストを返す" alt="" coords="148,1509,323,1550"/>
+<area shape="rect" href="service-checker_8cpp.html#a3e96fade24af6ab1c689037f314549e0" title="オブジェクトが所定の店舗で引き取れるかどうかを返す / Determine if the current store will purchase the given item" alt="" coords="183,1306,287,1332"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#aa6bb6fee0c3e87b70fe7d71ac6b0a283" title="オブジェクトに指定した固定アーティファクトをオブジェクトに割り当てる。" alt="" coords="404,124,503,151"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="837,234,947,260"/>
+<area shape="rect" href="object-curse_8cpp.html#a749ffeeeaa9633e0b6300253e4bc9730" title="アイテムに付加される可能性のある呪いを指定する。" alt="" coords="853,87,931,114"/>
+<area shape="rect" href="object-ego_8cpp.html#ae52b9f92a7e5067ea20af2fbdc181485" title=" " alt="" coords="413,1052,494,1079"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="372,546,535,572"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="386,647,521,674"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="384,900,523,927"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="380,444,527,471"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a658f4e0b1d948165db84b32e9d11b5ff" title=" " alt="" coords="399,343,508,370"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#a1cadf1bc783aab1bd7044762e520cfbd" title="非INSTA_ART型の固定アーティファクトの生成を確率に応じて試行する。 Mega&#45;Hack – Attempt to create one of the &quot;Special Objects&quot;" alt="" coords="403,74,503,100"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="402,1103,505,1130"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="376,495,531,522"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#a366d2d0a6c3b91c22bd598d312b7e774" title="固定アーティファクトオブジェクトに追加能力/耐性を付加する" alt="" coords="597,226,742,268"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#ab1745b03a5b87acd3ab1822e6cccd853" title="固定アーティファクトオブジェクトに呪いフラグを付加する" alt="" coords="596,109,743,150"/>
+<area shape="rect" href="object-boost_8cpp.html#a8f91efd8221f822642748a831d76cde8" title="対象のオブジェクトにランダムな上位耐性を一つ付加する。/ Choose one random high resistance" alt="" coords="821,596,963,623"/>
+<area shape="rect" href="object-ego_8cpp.html#a9eefc5f11e04204df106d65490300efd" title=" " alt="" coords="603,1205,736,1246"/>
+<area shape="rect" href="object-ego_8cpp.html#a49336248c9f29791999fea5815dbe0eb" title=" " alt="" coords="608,1103,731,1130"/>
+<area shape="rect" href="object-ego_8cpp.html#ab380c73138c0ed4ac0741bad2ae5334b" title=" " alt="" coords="584,1154,755,1180"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="609,1372,729,1399"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="609,1052,729,1079"/>
+<area shape="rect" href="object-ego_8cpp.html#afea43c7036e61e39e7750e63465d335c" title="0 および負数に対応した randint1()" alt="" coords="613,1322,726,1348"/>
+<area shape="rect" href="object-boost_8cpp.html#a2d7dbf2cf7cd55f9c36f34b747293485" title="対象のオブジェクトに王者の指輪向けの上位耐性を一つ付加する。/ Choose one random high resistance" alt="" coords="803,799,981,826"/>
+<area shape="rect" href="object-boost_8cpp.html#a606621699d215b70e3bb550147e8e6da" title="オブジェクトにランダムな弱いESPを与える" alt="" coords="615,596,723,623"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="587,546,751,572"/>
+<area shape="rect" href="object-boost_8cpp.html#aac2a8bb6a1fc5c041b8f18f5660f3554" title="上質以上のオブジェクトに与えるための各種ボーナスを正規乱数も加えて算出する。 Help determine an &quot;enchantment bonus&quot; for an object." alt="" coords="632,444,707,471"/>
+<area shape="rect" href="object-boost_8cpp.html#a10830095266d73c5d3c07cb44576cf1e" title="対象のオブジェクトに弱いESPを一つ付加する。/ Choose one lower rank esp" alt="" coords="621,343,718,370"/>
+<area shape="rect" href="object-boost_8cpp.html#a36cf4f62bcad93e649af35c99d4e23cf" title="オブジェクトにランダムな強いESPを与える" alt="" coords="612,698,727,724"/>
+<area shape="rect" href="object-boost_8cpp.html#aebf400e29da27d5f9e627422526f4bb1" title="ドラゴン装備にランダムな耐性を与える" alt="" coords="619,799,719,826"/>
+<area shape="rect" href="object-ego_8cpp.html#ab2d834c8e6ce809dfce2c3a3fef269aa" title="アイテムのエゴをレア度の重みに合わせてランダムに選択する Choose random ego type" alt="" coords="610,850,729,876"/>
+<area shape="rect" href="object-kind-hook_8cpp.html#a24f8a2426e4fc5128654ec26033312ab" title="tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the object_kind with the given tval and sval" alt="" coords="624,748,715,775"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="630,647,709,674"/>
+<area shape="rect" href="monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する" alt="" coords="617,900,721,927"/>
+<area shape="rect" href="monster-util_8cpp.html#ae37ebccef3dd7dacea088110d0388d49" title="モンスター生成テーブルの重み修正" alt="" coords="601,951,737,978"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#acdb2524187c8c89503ce0e2a9f1d03bf" title="モンスターが人形のベースにできるかを返す" alt="" coords="601,1002,737,1028"/>
+<area shape="rect" href="service-checker_8cpp.html#a31b09c1f5b602967559181f03252610e" title=" " alt="" coords="381,1154,526,1180"/>
+<area shape="rect" href="service-checker_8cpp.html#a69839db0ca6572a7a397ad5dcabee740" title=" " alt="" coords="371,1204,536,1231"/>
+<area shape="rect" href="store-util_8cpp.html#a3538dbf56af52302c3971e82a00172b6" title="店舗に並べた品を重ね合わせできるかどうか判定する / Allow a store item to absorb another item" alt="" coords="384,1458,523,1484"/>
+<area shape="rect" href="store-util_8cpp.html#a56180b787a48593e25cd16aa81ce9611" title="店舗に並べた品を同一品であるかどうか判定する / Determine if a store item can &quot;absorb&quot; another item" alt="" coords="384,1407,523,1434"/>
+<area shape="rect" href="service-checker_8cpp.html#a24029eb97354b592b5b2433a0a7f1f17" title=" " alt="" coords="385,1306,522,1332"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="store-util_8cpp_a5c6ff7c60a8921e01be9591e98517b46_icgraph.png" border="0" usemap="#astore-util_8cpp_a5c6ff7c60a8921e01be9591e98517b46_icgraph" alt=""/></div>
+<map name="astore-util_8cpp_a5c6ff7c60a8921e01be9591e98517b46_icgraph" id="astore-util_8cpp_a5c6ff7c60a8921e01be9591e98517b46_icgraph">
+<area shape="rect" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="548,31,643,57"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="368,31,500,57"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="201,5,305,32"/>
+<area shape="rect" href="purchase-order_8cpp.html#adfed87bf46b0d23cfb2106925f181097" title=" " alt="" coords="185,56,320,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,5,137,32"/>
+<area shape="rect" href="purchase-order_8cpp.html#af2598623de85822d1bbcea345f900770" title="店からの購入処理のメインルーチン / Buy an item from a store &#45;RAK&#45;" alt="" coords="16,56,127,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a30683519e123759cfaf4d8159989e99f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30683519e123759cfaf4d8159989e99f">&#9670;&nbsp;</a></span>store_delete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void store_delete </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>店舗の品揃え変化のためにアイテムを削除する / Attempt to delete (some of) a random item from the store </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<pre>
+Hack -- we attempt to "maintain" piles of items when possible.
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="store-util_8cpp_a30683519e123759cfaf4d8159989e99f_cgraph.png" border="0" usemap="#astore-util_8cpp_a30683519e123759cfaf4d8159989e99f_cgraph" alt=""/></div>
+<map name="astore-util_8cpp_a30683519e123759cfaf4d8159989e99f_cgraph" id="astore-util_8cpp_a30683519e123759cfaf4d8159989e99f_cgraph">
+<area shape="rect" title="店舗の品揃え変化のためにアイテムを削除する / Attempt to delete (some of) a random item from the store" alt="" coords="5,31,99,57"/>
+<area shape="rect" href="store-util_8cpp.html#ac756067206267580b89796c5fd2b5056" title="店舗のオブジェクト数を増やす / Add the item &quot;o_ptr&quot; to a real stores inventory." alt="" coords="147,5,285,32"/>
+<area shape="rect" href="store-util_8cpp.html#ab4714660ff659748c1df580de58dac9b" title="店舗のオブジェクト数を削除する / Remove a slot if it is empty" alt="" coords="147,56,285,83"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="333,56,424,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="store-util_8cpp_a30683519e123759cfaf4d8159989e99f_icgraph.png" border="0" usemap="#astore-util_8cpp_a30683519e123759cfaf4d8159989e99f_icgraph" alt=""/></div>
+<map name="astore-util_8cpp_a30683519e123759cfaf4d8159989e99f_icgraph" id="astore-util_8cpp_a30683519e123759cfaf4d8159989e99f_icgraph">
+<area shape="rect" title="店舗の品揃え変化のためにアイテムを削除する / Attempt to delete (some of) a random item from the store" alt="" coords="548,31,641,57"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="368,31,500,57"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="201,5,305,32"/>
+<area shape="rect" href="purchase-order_8cpp.html#adfed87bf46b0d23cfb2106925f181097" title=" " alt="" coords="185,56,320,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,5,137,32"/>
+<area shape="rect" href="purchase-order_8cpp.html#af2598623de85822d1bbcea345f900770" title="店からの購入処理のメインルーチン / Buy an item from a store &#45;RAK&#45;" alt="" coords="16,56,127,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac756067206267580b89796c5fd2b5056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac756067206267580b89796c5fd2b5056">&#9670;&nbsp;</a></span>store_item_increase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void store_item_increase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a>&#160;</td>
+          <td class="paramname"><em>item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a64d1c0cbb82f223cd3ab16d119c71b59">ITEM_NUMBER</a>&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>店舗のオブジェクト数を増やす / Add the item "o_ptr" to a real stores inventory. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>増やしたいアイテムのID </td></tr>
+    <tr><td class="paramname">num</td><td>増やしたい数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<pre>
+Increase, by a given amount, the number of a certain item
+in a certain store. This can result in zero items.
+</pre> <div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="store-util_8cpp_ac756067206267580b89796c5fd2b5056_icgraph.png" border="0" usemap="#astore-util_8cpp_ac756067206267580b89796c5fd2b5056_icgraph" alt=""/></div>
+<map name="astore-util_8cpp_ac756067206267580b89796c5fd2b5056_icgraph" id="astore-util_8cpp_ac756067206267580b89796c5fd2b5056_icgraph">
+<area shape="rect" title="店舗のオブジェクト数を増やす / Add the item &quot;o_ptr&quot; to a real stores inventory." alt="" coords="1083,85,1221,111"/>
+<area shape="rect" href="museum_8cpp.html#adb2d466034ddacb211feda8b5d5b1fe1" title="博物館のアイテムを除去するコマンドのメインルーチン / Remove an item from museum (Originally from TOband)" alt="" coords="731,186,893,213"/>
+<area shape="rect" href="store-util_8cpp.html#a30683519e123759cfaf4d8159989e99f" title="店舗の品揃え変化のためにアイテムを削除する / Attempt to delete (some of) a random item from the store" alt="" coords="941,135,1035,162"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="746,110,878,137"/>
+<area shape="rect" href="purchase-order_8cpp.html#af2598623de85822d1bbcea345f900770" title="店からの購入処理のメインルーチン / Buy an item from a store &#45;RAK&#45;" alt="" coords="373,59,484,86"/>
+<area shape="rect" href="purchase-order_8cpp.html#affce312dc136016253db6b793f1d3c8c" title="家のアイテムを取得する" alt="" coords="532,34,683,61"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="157,85,325,111"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="5,110,109,137"/>
+<area shape="rect" href="purchase-order_8cpp.html#adfed87bf46b0d23cfb2106925f181097" title=" " alt="" coords="540,85,675,111"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab4714660ff659748c1df580de58dac9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4714660ff659748c1df580de58dac9b">&#9670;&nbsp;</a></span>store_item_optimize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void store_item_optimize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a>&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>店舗のオブジェクト数を削除する / Remove a slot if it is empty </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>削除したいアイテムのID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="store-util_8cpp_ab4714660ff659748c1df580de58dac9b_cgraph.png" border="0" usemap="#astore-util_8cpp_ab4714660ff659748c1df580de58dac9b_cgraph" alt=""/></div>
+<map name="astore-util_8cpp_ab4714660ff659748c1df580de58dac9b_cgraph" id="astore-util_8cpp_ab4714660ff659748c1df580de58dac9b_cgraph">
+<area shape="rect" title="店舗のオブジェクト数を削除する / Remove a slot if it is empty" alt="" coords="5,5,144,32"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="192,5,283,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="store-util_8cpp_ab4714660ff659748c1df580de58dac9b_icgraph.png" border="0" usemap="#astore-util_8cpp_ab4714660ff659748c1df580de58dac9b_icgraph" alt=""/></div>
+<map name="astore-util_8cpp_ab4714660ff659748c1df580de58dac9b_icgraph" id="astore-util_8cpp_ab4714660ff659748c1df580de58dac9b_icgraph">
+<area shape="rect" title="店舗のオブジェクト数を削除する / Remove a slot if it is empty" alt="" coords="1083,85,1221,111"/>
+<area shape="rect" href="museum_8cpp.html#adb2d466034ddacb211feda8b5d5b1fe1" title="博物館のアイテムを除去するコマンドのメインルーチン / Remove an item from museum (Originally from TOband)" alt="" coords="731,186,893,213"/>
+<area shape="rect" href="store-util_8cpp.html#a30683519e123759cfaf4d8159989e99f" title="店舗の品揃え変化のためにアイテムを削除する / Attempt to delete (some of) a random item from the store" alt="" coords="941,135,1035,162"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="746,110,878,137"/>
+<area shape="rect" href="purchase-order_8cpp.html#af2598623de85822d1bbcea345f900770" title="店からの購入処理のメインルーチン / Buy an item from a store &#45;RAK&#45;" alt="" coords="373,59,484,86"/>
+<area shape="rect" href="purchase-order_8cpp.html#affce312dc136016253db6b793f1d3c8c" title="家のアイテムを取得する" alt="" coords="532,34,683,61"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="157,85,325,111"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="5,110,109,137"/>
+<area shape="rect" href="purchase-order_8cpp.html#adfed87bf46b0d23cfb2106925f181097" title=" " alt="" coords="540,85,675,111"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3538dbf56af52302c3971e82a00172b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3538dbf56af52302c3971e82a00172b6">&#9670;&nbsp;</a></span>store_object_absorb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void store_object_absorb </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>j_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>店舗に並べた品を重ね合わせできるかどうか判定する / Allow a store item to absorb another item </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>判定するオブジェクト構造体の参照ポインタ1 </td></tr>
+    <tr><td class="paramname">j_ptr</td><td>判定するオブジェクト構造体の参照ポインタ2 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>重ね合わせできるならTRUEを返す</dd></dl>
+<pre>
+See "object_similar()" for the same function for the "player"
+</pre> <div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="store-util_8cpp_a3538dbf56af52302c3971e82a00172b6_icgraph.png" border="0" usemap="#astore-util_8cpp_a3538dbf56af52302c3971e82a00172b6_icgraph" alt=""/></div>
+<map name="astore-util_8cpp_a3538dbf56af52302c3971e82a00172b6_icgraph" id="astore-util_8cpp_a3538dbf56af52302c3971e82a00172b6_icgraph">
+<area shape="rect" title="店舗に並べた品を重ね合わせできるかどうか判定する / Allow a store item to absorb another item" alt="" coords="499,31,637,57"/>
+<area shape="rect" href="store-util_8cpp.html#a4b4f3d5bb7321f2da032a0a16a0705b6" title="店舗にオブジェクトを加える / Add the item &quot;o_ptr&quot; to a real stores inventory." alt="" coords="364,31,451,57"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="221,5,316,32"/>
+<area shape="rect" href="sell-order_8cpp.html#a99c896d0a63db27afbf59621f6b7d51f" title="店からの売却処理のメインルーチン / Sell an item to the store (or home)" alt="" coords="229,56,308,83"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a56180b787a48593e25cd16aa81ce9611"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56180b787a48593e25cd16aa81ce9611">&#9670;&nbsp;</a></span>store_object_similar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> store_object_similar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>j_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>店舗に並べた品を同一品であるかどうか判定する / Determine if a store item can "absorb" another item </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>判定するオブジェクト構造体の参照ポインタ1 </td></tr>
+    <tr><td class="paramname">j_ptr</td><td>判定するオブジェクト構造体の参照ポインタ2 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>同一扱いできるならTRUEを返す</dd></dl>
+<pre>
+See "object_similar()" for the same function for the "player"
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="store-util_8cpp_a56180b787a48593e25cd16aa81ce9611_cgraph.png" border="0" usemap="#astore-util_8cpp_a56180b787a48593e25cd16aa81ce9611_cgraph" alt=""/></div>
+<map name="astore-util_8cpp_a56180b787a48593e25cd16aa81ce9611_cgraph" id="astore-util_8cpp_a56180b787a48593e25cd16aa81ce9611_cgraph">
+<area shape="rect" title="店舗に並べた品を同一品であるかどうか判定する / Determine if a store item can &quot;absorb&quot; another item" alt="" coords="5,5,144,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="192,5,312,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="360,5,515,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="store-util_8cpp_a56180b787a48593e25cd16aa81ce9611_icgraph.png" border="0" usemap="#astore-util_8cpp_a56180b787a48593e25cd16aa81ce9611_icgraph" alt=""/></div>
+<map name="astore-util_8cpp_a56180b787a48593e25cd16aa81ce9611_icgraph" id="astore-util_8cpp_a56180b787a48593e25cd16aa81ce9611_icgraph">
+<area shape="rect" title="店舗に並べた品を同一品であるかどうか判定する / Determine if a store item can &quot;absorb&quot; another item" alt="" coords="689,56,828,83"/>
+<area shape="rect" href="store-util_8cpp.html#a4b4f3d5bb7321f2da032a0a16a0705b6" title="店舗にオブジェクトを加える / Add the item &quot;o_ptr&quot; to a real stores inventory." alt="" coords="535,31,622,57"/>
+<area shape="rect" href="store_8cpp.html#a25e6fff0c384e9d41fd7a9bdda77a76e" title="店舗に品を置くスペースがあるかどうかの判定を返す / Check to see if the shop will be carrying too many objects &#45;RAK&#45;" alt="" coords="516,81,641,108"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="373,5,468,32"/>
+<area shape="rect" href="sell-order_8cpp.html#a99c896d0a63db27afbf59621f6b7d51f" title="店からの売却処理のメインルーチン / Sell an item to the store (or home)" alt="" coords="381,56,460,83"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="175,5,307,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="5,56,109,83"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="157,56,325,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab04e61a4a223c750a958e32ba8d62e7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab04e61a4a223c750a958e32ba8d62e7f">&#9670;&nbsp;</a></span>store_same_magic_device_pvals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::vector&lt;<a class="el" href="h-type_8h.html#a93e03fb0f06674384e8374479dfcf11b">PARAMETER_VALUE</a>&gt; store_same_magic_device_pvals </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>j_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>店舗販売中の杖と魔法棒のpvalのリストを返す </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">j_ptr</td><td>これから売ろうとしているオブジェクト </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>plavリスト(充填数)</dd></dl>
+<p>回数の違う杖と魔法棒がスロットを圧迫するのでスロット数制限をかける </p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="store-util_8cpp_ab04e61a4a223c750a958e32ba8d62e7f_icgraph.png" border="0" usemap="#astore-util_8cpp_ab04e61a4a223c750a958e32ba8d62e7f_icgraph" alt=""/></div>
+<map name="astore-util_8cpp_ab04e61a4a223c750a958e32ba8d62e7f_icgraph" id="astore-util_8cpp_ab04e61a4a223c750a958e32ba8d62e7f_icgraph">
+<area shape="rect" title="店舗販売中の杖と魔法棒のpvalのリストを返す" alt="" coords="511,23,685,65"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="368,31,463,57"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="188,31,320,57"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="21,5,125,32"/>
+<area shape="rect" href="purchase-order_8cpp.html#adfed87bf46b0d23cfb2106925f181097" title=" " alt="" coords="5,56,140,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="ae5c5dc1047e4e25bec4c8827d5ecd09c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5c5dc1047e4e25bec4c8827d5ecd09c">&#9670;&nbsp;</a></span>cur_store_num</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cur_store_num = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>店舗処理関係のユーティリティ </p>
+<dl class="section date"><dt>日付</dt><dd>2020/03/20 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier </dd></dl>
+
+</div>
+</div>
+<a id="aae7e88249c205379523be54d89498c00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae7e88249c205379523be54d89498c00">&#9670;&nbsp;</a></span>st_ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structstore__type.html">store_type</a>* st_ptr = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分16秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

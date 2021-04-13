@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/monster/monster-processor-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f68a7f142a463f095d22e67af9193b2d.html">monster</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">monster-processor-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="monster-processor-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-type-definition_8h.html">system/monster-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="race-ability-flags_8h.html">monster-race/race-ability-flags.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="flag-group_8h.html">util/flag-group.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structturn__flags.html">   14</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structturn__flags.html#ae1c651c2d1396aa47a74f95fe3143aa7">   15</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structturn__flags.html#ae1c651c2d1396aa47a74f95fe3143aa7">see_m</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structturn__flags.html#a4d7c66442bb45b6690131cf6574b6e95">   16</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structturn__flags.html#a4d7c66442bb45b6690131cf6574b6e95">aware</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structturn__flags.html#ab9b0bee099d661627c7cbc4987f0a3c1">   17</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structturn__flags.html#ab9b0bee099d661627c7cbc4987f0a3c1">is_riding_mon</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structturn__flags.html#a4b0759f85e6753a0853065e574952169">   18</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structturn__flags.html#a4b0759f85e6753a0853065e574952169">do_turn</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structturn__flags.html#a953a4b0db185a6f43af8bfc362fcba68">   19</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structturn__flags.html#a953a4b0db185a6f43af8bfc362fcba68">do_move</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structturn__flags.html#af934b476608d147215746f0c1878d8ef">   20</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structturn__flags.html#af934b476608d147215746f0c1878d8ef">do_view</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structturn__flags.html#afe37f3633668c55dc81e5be197633651">   21</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structturn__flags.html#afe37f3633668c55dc81e5be197633651">do_take</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structturn__flags.html#a7a5db9ba11c1af68818014868a3d1880">   22</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structturn__flags.html#a7a5db9ba11c1af68818014868a3d1880">must_alter_to_move</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structturn__flags.html#aafc5faa47820d9f70f8a75b626a800b0">   24</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structturn__flags.html#aafc5faa47820d9f70f8a75b626a800b0">did_open_door</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structturn__flags.html#a8258302fc1fee18d8730fc2c5487c383">   25</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structturn__flags.html#a8258302fc1fee18d8730fc2c5487c383">did_bash_door</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structturn__flags.html#a01c33a08d92ba6014a24ee7fb0869a67">   26</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structturn__flags.html#a01c33a08d92ba6014a24ee7fb0869a67">did_take_item</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structturn__flags.html#a8c783fd3fb90813f26c0809e22d50f95">   27</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structturn__flags.html#a8c783fd3fb90813f26c0809e22d50f95">did_kill_item</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structturn__flags.html#a9363314e8c5c2dbd1590f33ba32276fc">   28</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structturn__flags.html#a9363314e8c5c2dbd1590f33ba32276fc">did_move_body</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structturn__flags.html#a0c3a11f5795528b2df5a180466e3feca">   29</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structturn__flags.html#a0c3a11f5795528b2df5a180466e3feca">did_pass_wall</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structturn__flags.html#a0e291cae1b34e905a2d9e4f7429a683d">   30</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structturn__flags.html#a0e291cae1b34e905a2d9e4f7429a683d">did_kill_wall</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;} <a class="code" href="structturn__flags.html">turn_flags</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structold__race__flags.html">   33</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structold__race__flags.html#a62e8ce9c2b3e6d00e572477d5470f837">   34</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structold__race__flags.html#a62e8ce9c2b3e6d00e572477d5470f837">old_r_flags1</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structold__race__flags.html#a9c108c517b53cac5e90d21a4983454b2">   35</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structold__race__flags.html#a9c108c517b53cac5e90d21a4983454b2">old_r_flags2</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structold__race__flags.html#af629fc4f0ddd606eb2ff85625ce0c69c">   36</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structold__race__flags.html#af629fc4f0ddd606eb2ff85625ce0c69c">old_r_flags3</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structold__race__flags.html#a8a64b8cc837535b80f11c0845ac8c457">   37</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structold__race__flags.html#a8a64b8cc837535b80f11c0845ac8c457">old_r_flagsr</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structold__race__flags.html#a716576d5a55118f5b1009d8962125d4b">   38</a></span>&#160;    <a class="code" href="class_flag_group.html">FlagGroup&lt;RF_ABILITY&gt;</a> <a class="code" href="structold__race__flags.html#a716576d5a55118f5b1009d8962125d4b">old_r_ability_flags</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structold__race__flags.html#a21746bf6f6421907a14e7e1c7b12d680">   40</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structold__race__flags.html#a21746bf6f6421907a14e7e1c7b12d680">old_r_blows0</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structold__race__flags.html#a686ac6d77cbbde81f980b6d60dcfa012">   41</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structold__race__flags.html#a686ac6d77cbbde81f980b6d60dcfa012">old_r_blows1</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structold__race__flags.html#a4e1389a2e26f9b6f35742350ccb397ce">   42</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structold__race__flags.html#a4e1389a2e26f9b6f35742350ccb397ce">old_r_blows2</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structold__race__flags.html#a9c21a9897e0902232b8d85b0dfa3b4b0">   43</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structold__race__flags.html#a9c21a9897e0902232b8d85b0dfa3b4b0">old_r_blows3</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structold__race__flags.html#aff8f359b9d7a28b4506d6fc56b5ed865">   45</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structold__race__flags.html#aff8f359b9d7a28b4506d6fc56b5ed865">old_r_cast_spell</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <a class="code" href="structold__race__flags.html">old_race_flags</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structcoordinate__candidate.html">   48</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structcoordinate__candidate.html#ac749067933d2b87e78cf9fabba6d73d6">   49</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structcoordinate__candidate.html#ac749067933d2b87e78cf9fabba6d73d6">gy</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structcoordinate__candidate.html#a8f3ce952a70f78f7a687cfd71f295be1">   50</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structcoordinate__candidate.html#a8f3ce952a70f78f7a687cfd71f295be1">gx</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="structcoordinate__candidate.html#aa18637ad3265a89076fef92cd258ff93">   51</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structcoordinate__candidate.html#aa18637ad3265a89076fef92cd258ff93">gdis</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;} <a class="code" href="structcoordinate__candidate.html">coordinate_candidate</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<a class="code" href="structturn__flags.html">turn_flags</a> *<a class="code" href="monster-processor-util_8h.html#a346e3743f087198ab4355cd2ca1455c5">init_turn_flags</a>(<a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> riding_idx, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="structturn__flags.html">turn_flags</a> *turn_flags_ptr);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<a class="code" href="structold__race__flags.html">old_race_flags</a> *<a class="code" href="monster-processor-util_8h.html#a10bef904d0d03f30ebbfeb05602e0c67">init_old_race_flags</a>(<a class="code" href="structold__race__flags.html">old_race_flags</a> *old_race_flags_ptr);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<a class="code" href="structcoordinate__candidate.html">coordinate_candidate</a> <a class="code" href="monster-processor-util_8h.html#a164dab835f9c3b8a99f2a6c3ae070edd">init_coordinate_candidate</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-processor-util_8h.html#a5e0edf8e8acb133d4e9728b5f7345fd4">store_enemy_approch_direction</a>(<span class="keywordtype">int</span> *mm, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-processor-util_8h.html#a52a907427830069d85adb3e2d796b3a1">store_moves_val</a>(<span class="keywordtype">int</span> *mm, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> x);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-processor-util_8h.html#a9a30ed7127f8072b86b65f2c2f7da85a">save_old_race_flags</a>(<a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> monster_race_idx, <a class="code" href="structold__race__flags.html">old_race_flags</a> *old_race_flags_ptr);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<a class="code" href="h-type_8h.html#a8ebc6e00318348041703de0484bead54">SPEED</a> <a class="code" href="monster-processor-util_8h.html#a42dc0f64a48a1fbc8283d78916057351">decide_monster_speed</a>(<a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aclass_flag_group_html"><div class="ttname"><a href="class_flag_group.html">FlagGroup&lt; RF_ABILITY &gt;</a></div></div>
+<div class="ttc" id="aflag-group_8h_html"><div class="ttname"><a href="flag-group_8h.html">flag-group.h</a></div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a7ea47f67338902d35c1e93e00cf86908"><div class="ttname"><a href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a></div><div class="ttdeci">s16b MONRACE_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:109</div></div>
+<div class="ttc" id="ah-type_8h_html_a8ebc6e00318348041703de0484bead54"><div class="ttname"><a href="h-type_8h.html#a8ebc6e00318348041703de0484bead54">SPEED</a></div><div class="ttdeci">s16b SPEED</div><div class="ttdoc">ゲーム中の加速値の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:164</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="amonster-processor-util_8h_html_a10bef904d0d03f30ebbfeb05602e0c67"><div class="ttname"><a href="monster-processor-util_8h.html#a10bef904d0d03f30ebbfeb05602e0c67">init_old_race_flags</a></div><div class="ttdeci">old_race_flags * init_old_race_flags(old_race_flags *old_race_flags_ptr)</div><div class="ttdoc">old_race_flags_ptr の初期化</div><div class="ttdef"><b>Definition:</b> monster-processor-util.cpp:42</div></div>
+<div class="ttc" id="amonster-processor-util_8h_html_a164dab835f9c3b8a99f2a6c3ae070edd"><div class="ttname"><a href="monster-processor-util_8h.html#a164dab835f9c3b8a99f2a6c3ae070edd">init_coordinate_candidate</a></div><div class="ttdeci">coordinate_candidate init_coordinate_candidate(void)</div><div class="ttdoc">coordinate_candidate の初期化</div><div class="ttdef"><b>Definition:</b> monster-processor-util.cpp:65</div></div>
+<div class="ttc" id="amonster-processor-util_8h_html_a346e3743f087198ab4355cd2ca1455c5"><div class="ttname"><a href="monster-processor-util_8h.html#a346e3743f087198ab4355cd2ca1455c5">init_turn_flags</a></div><div class="ttdeci">turn_flags * init_turn_flags(MONSTER_IDX riding_idx, MONSTER_IDX m_idx, turn_flags *turn_flags_ptr)</div><div class="ttdoc">monster-processのための構造体群初期化処理と共通性の極めて高い処理</div><div class="ttdef"><b>Definition:</b> monster-processor-util.cpp:21</div></div>
+<div class="ttc" id="amonster-processor-util_8h_html_a42dc0f64a48a1fbc8283d78916057351"><div class="ttname"><a href="monster-processor-util_8h.html#a42dc0f64a48a1fbc8283d78916057351">decide_monster_speed</a></div><div class="ttdeci">SPEED decide_monster_speed(monster_type *m_ptr)</div><div class="ttdoc">モンスターの加速値を決定する</div><div class="ttdef"><b>Definition:</b> monster-processor-util.cpp:357</div></div>
+<div class="ttc" id="amonster-processor-util_8h_html_a52a907427830069d85adb3e2d796b3a1"><div class="ttname"><a href="monster-processor-util_8h.html#a52a907427830069d85adb3e2d796b3a1">store_moves_val</a></div><div class="ttdeci">void store_moves_val(int *mm, int y, int x)</div><div class="ttdoc">get_movable_grid() における移動の方向を保存する</div><div class="ttdef"><b>Definition:</b> monster-processor-util.cpp:142</div></div>
+<div class="ttc" id="amonster-processor-util_8h_html_a5e0edf8e8acb133d4e9728b5f7345fd4"><div class="ttname"><a href="monster-processor-util_8h.html#a5e0edf8e8acb133d4e9728b5f7345fd4">store_enemy_approch_direction</a></div><div class="ttdeci">void store_enemy_approch_direction(int *mm, POSITION y, POSITION x)</div><div class="ttdoc">モンスターの移動方向を保存する</div><div class="ttdef"><b>Definition:</b> monster-processor-util.cpp:81</div></div>
+<div class="ttc" id="amonster-processor-util_8h_html_a9a30ed7127f8072b86b65f2c2f7da85a"><div class="ttname"><a href="monster-processor-util_8h.html#a9a30ed7127f8072b86b65f2c2f7da85a">save_old_race_flags</a></div><div class="ttdeci">void save_old_race_flags(MONRACE_IDX monster_race_idx, old_race_flags *old_race_flags_ptr)</div><div class="ttdoc">古いモンスター情報の保存</div><div class="ttdef"><b>Definition:</b> monster-processor-util.cpp:330</div></div>
+<div class="ttc" id="amonster-type-definition_8h_html"><div class="ttname"><a href="monster-type-definition_8h.html">monster-type-definition.h</a></div></div>
+<div class="ttc" id="arace-ability-flags_8h_html"><div class="ttname"><a href="race-ability-flags_8h.html">race-ability-flags.h</a></div></div>
+<div class="ttc" id="astructcoordinate__candidate_html"><div class="ttname"><a href="structcoordinate__candidate.html">coordinate_candidate</a></div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:48</div></div>
+<div class="ttc" id="astructcoordinate__candidate_html_a8f3ce952a70f78f7a687cfd71f295be1"><div class="ttname"><a href="structcoordinate__candidate.html#a8f3ce952a70f78f7a687cfd71f295be1">coordinate_candidate::gx</a></div><div class="ttdeci">POSITION gx</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:50</div></div>
+<div class="ttc" id="astructcoordinate__candidate_html_aa18637ad3265a89076fef92cd258ff93"><div class="ttname"><a href="structcoordinate__candidate.html#aa18637ad3265a89076fef92cd258ff93">coordinate_candidate::gdis</a></div><div class="ttdeci">POSITION gdis</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:51</div></div>
+<div class="ttc" id="astructcoordinate__candidate_html_ac749067933d2b87e78cf9fabba6d73d6"><div class="ttname"><a href="structcoordinate__candidate.html#ac749067933d2b87e78cf9fabba6d73d6">coordinate_candidate::gy</a></div><div class="ttdeci">POSITION gy</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:49</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructold__race__flags_html"><div class="ttname"><a href="structold__race__flags.html">old_race_flags</a></div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:33</div></div>
+<div class="ttc" id="astructold__race__flags_html_a21746bf6f6421907a14e7e1c7b12d680"><div class="ttname"><a href="structold__race__flags.html#a21746bf6f6421907a14e7e1c7b12d680">old_race_flags::old_r_blows0</a></div><div class="ttdeci">byte old_r_blows0</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:40</div></div>
+<div class="ttc" id="astructold__race__flags_html_a4e1389a2e26f9b6f35742350ccb397ce"><div class="ttname"><a href="structold__race__flags.html#a4e1389a2e26f9b6f35742350ccb397ce">old_race_flags::old_r_blows2</a></div><div class="ttdeci">byte old_r_blows2</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:42</div></div>
+<div class="ttc" id="astructold__race__flags_html_a62e8ce9c2b3e6d00e572477d5470f837"><div class="ttname"><a href="structold__race__flags.html#a62e8ce9c2b3e6d00e572477d5470f837">old_race_flags::old_r_flags1</a></div><div class="ttdeci">BIT_FLAGS old_r_flags1</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:34</div></div>
+<div class="ttc" id="astructold__race__flags_html_a686ac6d77cbbde81f980b6d60dcfa012"><div class="ttname"><a href="structold__race__flags.html#a686ac6d77cbbde81f980b6d60dcfa012">old_race_flags::old_r_blows1</a></div><div class="ttdeci">byte old_r_blows1</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:41</div></div>
+<div class="ttc" id="astructold__race__flags_html_a716576d5a55118f5b1009d8962125d4b"><div class="ttname"><a href="structold__race__flags.html#a716576d5a55118f5b1009d8962125d4b">old_race_flags::old_r_ability_flags</a></div><div class="ttdeci">FlagGroup&lt; RF_ABILITY &gt; old_r_ability_flags</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:38</div></div>
+<div class="ttc" id="astructold__race__flags_html_a8a64b8cc837535b80f11c0845ac8c457"><div class="ttname"><a href="structold__race__flags.html#a8a64b8cc837535b80f11c0845ac8c457">old_race_flags::old_r_flagsr</a></div><div class="ttdeci">BIT_FLAGS old_r_flagsr</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:37</div></div>
+<div class="ttc" id="astructold__race__flags_html_a9c108c517b53cac5e90d21a4983454b2"><div class="ttname"><a href="structold__race__flags.html#a9c108c517b53cac5e90d21a4983454b2">old_race_flags::old_r_flags2</a></div><div class="ttdeci">BIT_FLAGS old_r_flags2</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:35</div></div>
+<div class="ttc" id="astructold__race__flags_html_a9c21a9897e0902232b8d85b0dfa3b4b0"><div class="ttname"><a href="structold__race__flags.html#a9c21a9897e0902232b8d85b0dfa3b4b0">old_race_flags::old_r_blows3</a></div><div class="ttdeci">byte old_r_blows3</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:43</div></div>
+<div class="ttc" id="astructold__race__flags_html_af629fc4f0ddd606eb2ff85625ce0c69c"><div class="ttname"><a href="structold__race__flags.html#af629fc4f0ddd606eb2ff85625ce0c69c">old_race_flags::old_r_flags3</a></div><div class="ttdeci">BIT_FLAGS old_r_flags3</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:36</div></div>
+<div class="ttc" id="astructold__race__flags_html_aff8f359b9d7a28b4506d6fc56b5ed865"><div class="ttname"><a href="structold__race__flags.html#aff8f359b9d7a28b4506d6fc56b5ed865">old_race_flags::old_r_cast_spell</a></div><div class="ttdeci">byte old_r_cast_spell</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:45</div></div>
+<div class="ttc" id="astructturn__flags_html"><div class="ttname"><a href="structturn__flags.html">turn_flags</a></div><div class="ttdoc">monster-processのための構造体群</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:14</div></div>
+<div class="ttc" id="astructturn__flags_html_a01c33a08d92ba6014a24ee7fb0869a67"><div class="ttname"><a href="structturn__flags.html#a01c33a08d92ba6014a24ee7fb0869a67">turn_flags::did_take_item</a></div><div class="ttdeci">bool did_take_item</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:26</div></div>
+<div class="ttc" id="astructturn__flags_html_a0c3a11f5795528b2df5a180466e3feca"><div class="ttname"><a href="structturn__flags.html#a0c3a11f5795528b2df5a180466e3feca">turn_flags::did_pass_wall</a></div><div class="ttdeci">bool did_pass_wall</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:29</div></div>
+<div class="ttc" id="astructturn__flags_html_a0e291cae1b34e905a2d9e4f7429a683d"><div class="ttname"><a href="structturn__flags.html#a0e291cae1b34e905a2d9e4f7429a683d">turn_flags::did_kill_wall</a></div><div class="ttdeci">bool did_kill_wall</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:30</div></div>
+<div class="ttc" id="astructturn__flags_html_a4b0759f85e6753a0853065e574952169"><div class="ttname"><a href="structturn__flags.html#a4b0759f85e6753a0853065e574952169">turn_flags::do_turn</a></div><div class="ttdeci">bool do_turn</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:18</div></div>
+<div class="ttc" id="astructturn__flags_html_a4d7c66442bb45b6690131cf6574b6e95"><div class="ttname"><a href="structturn__flags.html#a4d7c66442bb45b6690131cf6574b6e95">turn_flags::aware</a></div><div class="ttdeci">bool aware</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:16</div></div>
+<div class="ttc" id="astructturn__flags_html_a7a5db9ba11c1af68818014868a3d1880"><div class="ttname"><a href="structturn__flags.html#a7a5db9ba11c1af68818014868a3d1880">turn_flags::must_alter_to_move</a></div><div class="ttdeci">bool must_alter_to_move</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:22</div></div>
+<div class="ttc" id="astructturn__flags_html_a8258302fc1fee18d8730fc2c5487c383"><div class="ttname"><a href="structturn__flags.html#a8258302fc1fee18d8730fc2c5487c383">turn_flags::did_bash_door</a></div><div class="ttdeci">bool did_bash_door</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:25</div></div>
+<div class="ttc" id="astructturn__flags_html_a8c783fd3fb90813f26c0809e22d50f95"><div class="ttname"><a href="structturn__flags.html#a8c783fd3fb90813f26c0809e22d50f95">turn_flags::did_kill_item</a></div><div class="ttdeci">bool did_kill_item</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:27</div></div>
+<div class="ttc" id="astructturn__flags_html_a9363314e8c5c2dbd1590f33ba32276fc"><div class="ttname"><a href="structturn__flags.html#a9363314e8c5c2dbd1590f33ba32276fc">turn_flags::did_move_body</a></div><div class="ttdeci">bool did_move_body</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:28</div></div>
+<div class="ttc" id="astructturn__flags_html_a953a4b0db185a6f43af8bfc362fcba68"><div class="ttname"><a href="structturn__flags.html#a953a4b0db185a6f43af8bfc362fcba68">turn_flags::do_move</a></div><div class="ttdeci">bool do_move</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:19</div></div>
+<div class="ttc" id="astructturn__flags_html_aafc5faa47820d9f70f8a75b626a800b0"><div class="ttname"><a href="structturn__flags.html#aafc5faa47820d9f70f8a75b626a800b0">turn_flags::did_open_door</a></div><div class="ttdeci">bool did_open_door</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:24</div></div>
+<div class="ttc" id="astructturn__flags_html_ab9b0bee099d661627c7cbc4987f0a3c1"><div class="ttname"><a href="structturn__flags.html#ab9b0bee099d661627c7cbc4987f0a3c1">turn_flags::is_riding_mon</a></div><div class="ttdeci">bool is_riding_mon</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:17</div></div>
+<div class="ttc" id="astructturn__flags_html_ae1c651c2d1396aa47a74f95fe3143aa7"><div class="ttname"><a href="structturn__flags.html#ae1c651c2d1396aa47a74f95fe3143aa7">turn_flags::see_m</a></div><div class="ttdeci">bool see_m</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:15</div></div>
+<div class="ttc" id="astructturn__flags_html_af934b476608d147215746f0c1878d8ef"><div class="ttname"><a href="structturn__flags.html#af934b476608d147215746f0c1878d8ef">turn_flags::do_view</a></div><div class="ttdeci">bool do_view</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:20</div></div>
+<div class="ttc" id="astructturn__flags_html_afe37f3633668c55dc81e5be197633651"><div class="ttname"><a href="structturn__flags.html#afe37f3633668c55dc81e5be197633651">turn_flags::do_take</a></div><div class="ttdeci">bool do_take</div><div class="ttdef"><b>Definition:</b> monster-processor-util.h:21</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

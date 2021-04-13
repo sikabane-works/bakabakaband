@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/spell-kind/spells-detection.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_315ff05a33a3f1372a1d1cebc99757c1.html">spell-kind</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">spells-detection.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="spells-detection_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-detection_8h.html#ac7acd54d9ba5a15020c20d627e86056e">detect_traps</a>(<a class="code" href="structplayer__type.html">player_type</a>* caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range, <span class="keywordtype">bool</span> known);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-detection_8h.html#a51a934aa10cafdef351b49ebfb59957f">detect_doors</a>(<a class="code" href="structplayer__type.html">player_type</a>* caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-detection_8h.html#a4317d1e959e1e019d7821518fa277584">detect_stairs</a>(<a class="code" href="structplayer__type.html">player_type</a>* caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-detection_8h.html#aa71f9caef58a5843c72a78e6bd5d3644">detect_treasure</a>(<a class="code" href="structplayer__type.html">player_type</a>* caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-detection_8h.html#a0df33608c0d1169356aac2a2c82757cc">detect_objects_gold</a>(<a class="code" href="structplayer__type.html">player_type</a>* caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-detection_8h.html#a32f8ab71a6a8eac2326db359a4b08073">detect_objects_normal</a>(<a class="code" href="structplayer__type.html">player_type</a>* caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-detection_8h.html#a12061fc0ea9ef046a850606d3e810bcf">detect_objects_magic</a>(<a class="code" href="structplayer__type.html">player_type</a>* caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-detection_8h.html#ae2bce83dafe11d685dbec1ff1cc06a11">detect_monsters_normal</a>(<a class="code" href="structplayer__type.html">player_type</a>* caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-detection_8h.html#aead174091d028e380754746d29d8532b">detect_monsters_invis</a>(<a class="code" href="structplayer__type.html">player_type</a>* caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-detection_8h.html#afac285bd37a07daa4478cc5c22c1ff1b">detect_monsters_evil</a>(<a class="code" href="structplayer__type.html">player_type</a>* caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-detection_8h.html#adf3aa39573a7d442181016fc1384380b">detect_monsters_xxx</a>(<a class="code" href="structplayer__type.html">player_type</a>* caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> match_flag);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-detection_8h.html#ab827b4c1b2aedcf13ffef0fb6d6812a5">detect_monsters_string</a>(<a class="code" href="structplayer__type.html">player_type</a>* caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-detection_8h.html#afc193c45bedcba070d222fdc3f9750e8">detect_monsters_nonliving</a>(<a class="code" href="structplayer__type.html">player_type</a>* caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-detection_8h.html#af05db235de91d3ba3a6cfbe3a864c9f1">detect_monsters_mind</a>(<a class="code" href="structplayer__type.html">player_type</a>* caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-detection_8h.html#a5d096ba459f50401bf2e3d6762b9f297">detect_all</a>(<a class="code" href="structplayer__type.html">player_type</a>* caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> range);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="ah-type_8h_html_af7a1de980667931f896ae6a820f0ee80"><div class="ttname"><a href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a></div><div class="ttdeci">unsigned long u32b</div><div class="ttdef"><b>Definition:</b> h-type.h:93</div></div>
+<div class="ttc" id="aspells-detection_8h_html_a0df33608c0d1169356aac2a2c82757cc"><div class="ttname"><a href="spells-detection_8h.html#a0df33608c0d1169356aac2a2c82757cc">detect_objects_gold</a></div><div class="ttdeci">bool detect_objects_gold(player_type *caster_ptr, POSITION range)</div><div class="ttdoc">プレイヤー周辺のアイテム財宝を感知する / Detect all &quot;gold&quot; objects on the current panel</div><div class="ttdef"><b>Definition:</b> spells-detection.cpp:162</div></div>
+<div class="ttc" id="aspells-detection_8h_html_a12061fc0ea9ef046a850606d3e810bcf"><div class="ttname"><a href="spells-detection_8h.html#a12061fc0ea9ef046a850606d3e810bcf">detect_objects_magic</a></div><div class="ttdeci">bool detect_objects_magic(player_type *caster_ptr, POSITION range)</div><div class="ttdoc">魔法効果のあるのアイテムオブジェクトを感知する / Detect all &quot;magic&quot; objects on the current panel.</div><div class="ttdef"><b>Definition:</b> spells-detection.cpp:265</div></div>
+<div class="ttc" id="aspells-detection_8h_html_a32f8ab71a6a8eac2326db359a4b08073"><div class="ttname"><a href="spells-detection_8h.html#a32f8ab71a6a8eac2326db359a4b08073">detect_objects_normal</a></div><div class="ttdeci">bool detect_objects_normal(player_type *caster_ptr, POSITION range)</div><div class="ttdoc">通常のアイテムオブジェクトを感知する / Detect all &quot;normal&quot; objects on the current panel</div><div class="ttdef"><b>Definition:</b> spells-detection.cpp:210</div></div>
+<div class="ttc" id="aspells-detection_8h_html_a4317d1e959e1e019d7821518fa277584"><div class="ttname"><a href="spells-detection_8h.html#a4317d1e959e1e019d7821518fa277584">detect_stairs</a></div><div class="ttdeci">bool detect_stairs(player_type *caster_ptr, POSITION range)</div><div class="ttdoc">プレイヤー周辺の階段を感知する / Detect all stairs on current panel</div><div class="ttdef"><b>Definition:</b> spells-detection.cpp:125</div></div>
+<div class="ttc" id="aspells-detection_8h_html_a51a934aa10cafdef351b49ebfb59957f"><div class="ttname"><a href="spells-detection_8h.html#a51a934aa10cafdef351b49ebfb59957f">detect_doors</a></div><div class="ttdeci">bool detect_doors(player_type *caster_ptr, POSITION range)</div><div class="ttdoc">プレイヤー周辺のドアを感知する / Detect all doors on current panel</div><div class="ttdef"><b>Definition:</b> spells-detection.cpp:106</div></div>
+<div class="ttc" id="aspells-detection_8h_html_a5d096ba459f50401bf2e3d6762b9f297"><div class="ttname"><a href="spells-detection_8h.html#a5d096ba459f50401bf2e3d6762b9f297">detect_all</a></div><div class="ttdeci">bool detect_all(player_type *caster_ptr, POSITION range)</div><div class="ttdoc">全感知処理 / Detect everything</div><div class="ttdef"><b>Definition:</b> spells-detection.cpp:624</div></div>
+<div class="ttc" id="aspells-detection_8h_html_aa71f9caef58a5843c72a78e6bd5d3644"><div class="ttname"><a href="spells-detection_8h.html#aa71f9caef58a5843c72a78e6bd5d3644">detect_treasure</a></div><div class="ttdeci">bool detect_treasure(player_type *caster_ptr, POSITION range)</div><div class="ttdoc">プレイヤー周辺の地形財宝を感知する / Detect any treasure on the current panel</div><div class="ttdef"><b>Definition:</b> spells-detection.cpp:144</div></div>
+<div class="ttc" id="aspells-detection_8h_html_ab827b4c1b2aedcf13ffef0fb6d6812a5"><div class="ttname"><a href="spells-detection_8h.html#ab827b4c1b2aedcf13ffef0fb6d6812a5">detect_monsters_string</a></div><div class="ttdeci">bool detect_monsters_string(player_type *caster_ptr, POSITION range, concptr)</div><div class="ttdoc">該当シンボルのモンスターを感知する / Detect all (string) monsters on current panel</div><div class="ttdef"><b>Definition:</b> spells-detection.cpp:523</div></div>
+<div class="ttc" id="aspells-detection_8h_html_ac7acd54d9ba5a15020c20d627e86056e"><div class="ttname"><a href="spells-detection_8h.html#ac7acd54d9ba5a15020c20d627e86056e">detect_traps</a></div><div class="ttdeci">bool detect_traps(player_type *caster_ptr, POSITION range, bool known)</div><div class="ttdoc">プレイヤー周辺のトラップを感知する / Detect all traps on current panel</div><div class="ttdef"><b>Definition:</b> spells-detection.cpp:82</div></div>
+<div class="ttc" id="aspells-detection_8h_html_adf3aa39573a7d442181016fc1384380b"><div class="ttname"><a href="spells-detection_8h.html#adf3aa39573a7d442181016fc1384380b">detect_monsters_xxx</a></div><div class="ttdeci">bool detect_monsters_xxx(player_type *caster_ptr, POSITION range, u32b match_flag)</div><div class="ttdoc">flags3に対応するモンスターを感知する / A &quot;generic&quot; detect monsters routine, tagged to flags3</div><div class="ttdef"><b>Definition:</b> spells-detection.cpp:568</div></div>
+<div class="ttc" id="aspells-detection_8h_html_ae2bce83dafe11d685dbec1ff1cc06a11"><div class="ttname"><a href="spells-detection_8h.html#ae2bce83dafe11d685dbec1ff1cc06a11">detect_monsters_normal</a></div><div class="ttdeci">bool detect_monsters_normal(player_type *caster_ptr, POSITION range)</div><div class="ttdoc">一般のモンスターを感知する / Detect all &quot;normal&quot; monsters on the current panel</div><div class="ttdef"><b>Definition:</b> spells-detection.cpp:311</div></div>
+<div class="ttc" id="aspells-detection_8h_html_aead174091d028e380754746d29d8532b"><div class="ttname"><a href="spells-detection_8h.html#aead174091d028e380754746d29d8532b">detect_monsters_invis</a></div><div class="ttdeci">bool detect_monsters_invis(player_type *caster_ptr, POSITION range)</div><div class="ttdoc">不可視のモンスターを感知する / Detect all &quot;invisible&quot; monsters around the player</div><div class="ttdef"><b>Definition:</b> spells-detection.cpp:350</div></div>
+<div class="ttc" id="aspells-detection_8h_html_af05db235de91d3ba3a6cfbe3a864c9f1"><div class="ttname"><a href="spells-detection_8h.html#af05db235de91d3ba3a6cfbe3a864c9f1">detect_monsters_mind</a></div><div class="ttdeci">bool detect_monsters_mind(player_type *caster_ptr, POSITION range)</div><div class="ttdoc">精神のあるモンスターを感知する / Detect all monsters it has mind on current panel</div><div class="ttdef"><b>Definition:</b> spells-detection.cpp:480</div></div>
+<div class="ttc" id="aspells-detection_8h_html_afac285bd37a07daa4478cc5c22c1ff1b"><div class="ttname"><a href="spells-detection_8h.html#afac285bd37a07daa4478cc5c22c1ff1b">detect_monsters_evil</a></div><div class="ttdeci">bool detect_monsters_evil(player_type *caster_ptr, POSITION range)</div><div class="ttdoc">邪悪なモンスターを感知する / Detect all &quot;evil&quot; monsters on current panel</div><div class="ttdef"><b>Definition:</b> spells-detection.cpp:395</div></div>
+<div class="ttc" id="aspells-detection_8h_html_afc193c45bedcba070d222fdc3f9750e8"><div class="ttname"><a href="spells-detection_8h.html#afc193c45bedcba070d222fdc3f9750e8">detect_monsters_nonliving</a></div><div class="ttdeci">bool detect_monsters_nonliving(player_type *caster_ptr, POSITION range)</div><div class="ttdoc">無生命のモンスターを感知する(アンデッド、悪魔系を含む) / Detect all &quot;nonliving&quot;, &quot;undead&quot; or &quot;demonic&quot; monsters on current pane...</div><div class="ttdef"><b>Definition:</b> spells-detection.cpp:440</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

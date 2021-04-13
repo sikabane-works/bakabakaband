@@ -1,0 +1,1215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/wizard/wizard-item-modifier.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e09032bb770e6e0f4355f890c3180c4a.html">wizard</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">wizard-item-modifier.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="wizard-item-modifier_8h_source.html">wizard/wizard-item-modifier.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fixed-art-generator_8h_source.html">artifact/fixed-art-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="random-art-generator_8h_source.html">artifact/random-art-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="show-file_8h_source.html">core/show-file.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-update-types_8h_source.html">core/player-update-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="window-redrawer_8h_source.html">core/window-redrawer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flavor-describer_8h_source.html">flavor/flavor-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flavor-types_8h_source.html">flavor/object-flavor-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-object_8h_source.html">floor/floor-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cheat-options_8h_source.html">game-option/cheat-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="apply-magic_8h_source.html">object-enchant/apply-magic.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-apply-magic_8h_source.html">object-enchant/item-apply-magic.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-ego_8h_source.html">object-enchant/object-ego.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tr-types_8h_source.html">object-enchant/tr-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-enchant_8h_source.html">object-hook/hook-enchant.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-checker_8h_source.html">object-hook/hook-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-use-flags_8h_source.html">object/item-use-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flags_8h_source.html">object/object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-generator_8h_source.html">object/object-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-info_8h_source.html">object/object-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind_8h_source.html">object/object-kind.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind-hook_8h_source.html">object/object-kind-hook.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-value_8h_source.html">object/object-value.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="string-processor_8h_source.html">util/string-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="alloc-entries_8h_source.html">system/alloc-entries.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="artifact-type-definition_8h_source.html">system/artifact-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+wizard-item-modifier.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2wizard_2wizard-item-modifier_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2wizard_2wizard-item-modifier_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2wizard_2wizard-item-modifier_8cpp">
+<area shape="rect" title=" " alt="" coords="2011,5,2199,61"/>
+<area shape="rect" href="wizard-item-modifier_8h.html" title=" " alt="" coords="3063,199,3192,240"/>
+<area shape="rect" href="fixed-art-generator_8h.html" title=" " alt="" coords="5,199,116,240"/>
+<area shape="rect" href="random-art-generator_8h.html" title=" " alt="" coords="192,199,319,240"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="843,206,982,233"/>
+<area shape="rect" href="show-file_8h.html" title=" " alt="" coords="1006,206,1118,233"/>
+<area shape="rect" href="player-update-types_8h.html" title=" " alt="" coords="603,109,732,151"/>
+<area shape="rect" href="window-redrawer_8h.html" title=" " alt="" coords="1142,206,1299,233"/>
+<area shape="rect" href="flavor-describer_8h.html" title=" " alt="" coords="2873,206,3025,233"/>
+<area shape="rect" href="object-flavor-types_8h.html" title=" " alt="" coords="858,109,981,151"/>
+<area shape="rect" href="floor-object_8h.html" title=" " alt="" coords="4559,206,4683,233"/>
+<area shape="rect" href="cheat-options_8h.html" title=" " alt="" coords="3171,117,3358,143"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="1106,109,1234,151"/>
+<area shape="rect" href="input-key-acceptor_8h.html" title=" " alt="" coords="3382,117,3537,143"/>
+<area shape="rect" href="apply-magic_8h.html" title=" " alt="" coords="3561,109,3704,151"/>
+<area shape="rect" href="item-apply-magic_8h.html" title=" " alt="" coords="1485,109,1621,151"/>
+<area shape="rect" href="object-ego_8h.html" title=" " alt="" coords="1866,109,2013,151"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="1529,206,1696,233"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="2529,199,2662,240"/>
+<area shape="rect" title=" " alt="" coords="1931,206,1987,233"/>
+<area shape="rect" href="hook-enchant_8h.html" title=" " alt="" coords="3728,117,3911,143"/>
+<area shape="rect" href="hook-checker_8h.html" title=" " alt="" coords="3935,117,4117,143"/>
+<area shape="rect" href="item-use-flags_8h.html" title=" " alt="" coords="2521,117,2675,143"/>
+<area shape="rect" href="object-flags_8h.html" title=" " alt="" coords="2358,117,2497,143"/>
+<area shape="rect" href="object-generator_8h.html" title=" " alt="" coords="187,117,353,143"/>
+<area shape="rect" href="object-info_8h.html" title=" " alt="" coords="2750,117,2881,143"/>
+<area shape="rect" href="object-kind_8h.html" title=" " alt="" coords="2037,117,2172,143"/>
+<area shape="rect" href="object-kind-hook_8h.html" title=" " alt="" coords="4411,199,4535,240"/>
+<area shape="rect" href="object-value_8h.html" title=" " alt="" coords="2905,117,3045,143"/>
+<area shape="rect" href="string-processor_8h.html" title=" " alt="" coords="1645,117,1791,143"/>
+<area shape="rect" href="alloc-entries_8h.html" title=" " alt="" coords="1259,117,1409,143"/>
+<area shape="rect" href="artifact-type-definition_8h.html" title=" " alt="" coords="2196,109,2333,151"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="4141,117,4329,143"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="343,206,506,233"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="4354,117,4511,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="531,206,697,233"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="4587,117,4745,143"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="721,206,819,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="2376,288,2505,315"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="2338,363,2429,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="2453,363,2543,389"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="4409,288,4536,315"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="2091,199,2217,240"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="2241,206,2352,233"/>
+<area shape="rect" title=" " alt="" coords="2012,206,2067,233"/>
+<area shape="rect" title=" " alt="" coords="1721,206,1806,233"/>
+<area shape="rect" href="alloc-entry-definition_8h.html" title=" " alt="" coords="1324,199,1453,240"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="4033,206,4211,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="4236,206,4387,233"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="3852,199,4008,240"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a115706b1713604c2cf7b3693c36d77b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-item-modifier_8cpp.html#a115706b1713604c2cf7b3693c36d77b7">K_MAX_DEPTH</a>&#160;&#160;&#160;110</td></tr>
+<tr class="memdesc:a115706b1713604c2cf7b3693c36d77b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムの階層毎生成率を表示する最大階  <a href="wizard-item-modifier_8cpp.html#a115706b1713604c2cf7b3693c36d77b7">[詳解]</a><br /></td></tr>
+<tr class="separator:a115706b1713604c2cf7b3693c36d77b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:af9cba80fffaafee4ef65850b512dc0b4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-item-modifier_8cpp.html#af9cba80fffaafee4ef65850b512dc0b4">prt_alloc</a> (<a class="el" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a> tval, <a class="el" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a> sval, <a class="el" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> <a class="el" href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a>, <a class="el" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> <a class="el" href="display-util_8cpp.html#afb52e720f5f0c483db5861f9e42e924e">col</a>)</td></tr>
+<tr class="memdesc:af9cba80fffaafee4ef65850b512dc0b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムの階層毎生成率を表示する / Output a rarity graph for a type of object.  <a href="wizard-item-modifier_8cpp.html#af9cba80fffaafee4ef65850b512dc0b4">[詳解]</a><br /></td></tr>
+<tr class="separator:af9cba80fffaafee4ef65850b512dc0b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4537a521d0e577855afa050cc563358"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-item-modifier_8cpp.html#af4537a521d0e577855afa050cc563358">prt_binary</a> (<a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> flags, const int <a class="el" href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a>, int <a class="el" href="display-util_8cpp.html#afb52e720f5f0c483db5861f9e42e924e">col</a>)</td></tr>
+<tr class="memdesc:af4537a521d0e577855afa050cc563358"><td class="mdescLeft">&#160;</td><td class="mdescRight">32ビット変数のビット配列を並べて描画する / Output a long int in binary format.  <a href="wizard-item-modifier_8cpp.html#af4537a521d0e577855afa050cc563358">[詳解]</a><br /></td></tr>
+<tr class="separator:af4537a521d0e577855afa050cc563358"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa04768b902b2aa50c6153ce94e436d60"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-item-modifier_8cpp.html#aa04768b902b2aa50c6153ce94e436d60">wiz_display_item</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:aa04768b902b2aa50c6153ce94e436d60"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムの詳細ステータスを表示する / Change various "permanent" player variables.  <a href="wizard-item-modifier_8cpp.html#aa04768b902b2aa50c6153ce94e436d60">[詳解]</a><br /></td></tr>
+<tr class="separator:aa04768b902b2aa50c6153ce94e436d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa68f351c86678f7ce149c3afb7697308"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-item-modifier_8cpp.html#aa68f351c86678f7ce149c3afb7697308">wiz_statistics</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:aa68f351c86678f7ce149c3afb7697308"><td class="mdescLeft">&#160;</td><td class="mdescRight">検査対象のアイテムを基準とした生成テストを行う / Try to create an item again.  <a href="wizard-item-modifier_8cpp.html#aa68f351c86678f7ce149c3afb7697308">[詳解]</a><br /></td></tr>
+<tr class="separator:aa68f351c86678f7ce149c3afb7697308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1e72e1ae1887d663ecbb199ceceda40"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40">wiz_reroll_item</a> (<a class="el" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:af1e72e1ae1887d663ecbb199ceceda40"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact.  <a href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40">[詳解]</a><br /></td></tr>
+<tr class="separator:af1e72e1ae1887d663ecbb199ceceda40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada073935bacb9643b02d60c5bdcce98d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-item-modifier_8cpp.html#ada073935bacb9643b02d60c5bdcce98d">wiz_tweak_item</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:ada073935bacb9643b02d60c5bdcce98d"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムの基礎能力値を調整する / Tweak an item  <a href="wizard-item-modifier_8cpp.html#ada073935bacb9643b02d60c5bdcce98d">[詳解]</a><br /></td></tr>
+<tr class="separator:ada073935bacb9643b02d60c5bdcce98d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8512dc72615fe4080c388b40b1e8e805"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-item-modifier_8cpp.html#a8512dc72615fe4080c388b40b1e8e805">wiz_quantity_item</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:a8512dc72615fe4080c388b40b1e8e805"><td class="mdescLeft">&#160;</td><td class="mdescRight">検査対象のアイテムの数を変更する / Change the quantity of a the item  <a href="wizard-item-modifier_8cpp.html#a8512dc72615fe4080c388b40b1e8e805">[詳解]</a><br /></td></tr>
+<tr class="separator:a8512dc72615fe4080c388b40b1e8e805"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2c471bd9278046aca40e7344b6bd574"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-item-modifier_8cpp.html#ae2c471bd9278046aca40e7344b6bd574">wiz_modify_item</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:ae2c471bd9278046aca40e7344b6bd574"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムを弄るデバッグコマンド Play with an item.  <a href="wizard-item-modifier_8cpp.html#ae2c471bd9278046aca40e7344b6bd574">[詳解]</a><br /></td></tr>
+<tr class="separator:ae2c471bd9278046aca40e7344b6bd574"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abae30e3e87db0d6d470ceb411d315336"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-item-modifier_8cpp.html#abae30e3e87db0d6d470ceb411d315336">is_slot_able_to_be_ego</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:abae30e3e87db0d6d470ceb411d315336"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトの装備スロットがエゴが有効なスロットかどうか判定  <a href="wizard-item-modifier_8cpp.html#abae30e3e87db0d6d470ceb411d315336">[詳解]</a><br /></td></tr>
+<tr class="separator:abae30e3e87db0d6d470ceb411d315336"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22ac7dcbd4aa676e12d5caedfce60d8e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-item-modifier_8cpp.html#a22ac7dcbd4aa676e12d5caedfce60d8e">wishing_puff_of_smoke</a> (void)</td></tr>
+<tr class="memdesc:a22ac7dcbd4aa676e12d5caedfce60d8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">願ったが消えてしまった場合のメッセージ  <a href="wizard-item-modifier_8cpp.html#a22ac7dcbd4aa676e12d5caedfce60d8e">[詳解]</a><br /></td></tr>
+<tr class="separator:a22ac7dcbd4aa676e12d5caedfce60d8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bd34825cd5d9e92c7474a31576ac7c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="wizard-item-modifier_8h.html#ab05c947a344af8530cb2212e4bea5f8f">WishResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-item-modifier_8cpp.html#a3bd34825cd5d9e92c7474a31576ac7c0">do_cmd_wishing</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, int prob, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> allow_art, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> allow_ego, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> confirm)</td></tr>
+<tr class="memdesc:a3bd34825cd5d9e92c7474a31576ac7c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">願ったが消えてしまった場合のメッセージ  <a href="wizard-item-modifier_8cpp.html#a3bd34825cd5d9e92c7474a31576ac7c0">[詳解]</a><br /></td></tr>
+<tr class="separator:a3bd34825cd5d9e92c7474a31576ac7c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="a115706b1713604c2cf7b3693c36d77b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a115706b1713604c2cf7b3693c36d77b7">&#9670;&nbsp;</a></span>K_MAX_DEPTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define K_MAX_DEPTH&#160;&#160;&#160;110</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アイテムの階層毎生成率を表示する最大階 </p>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a3bd34825cd5d9e92c7474a31576ac7c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bd34825cd5d9e92c7474a31576ac7c0">&#9670;&nbsp;</a></span>do_cmd_wishing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="wizard-item-modifier_8h.html#ab05c947a344af8530cb2212e4bea5f8f">WishResult</a> do_cmd_wishing </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>prob</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>allow_art</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>allow_ego</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>confirm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>願ったが消えてしまった場合のメッセージ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">caster_ptr</td><td>願ったプレイヤー情報への参照ポインタ </td></tr>
+    <tr><td class="paramname">prob</td><td>★などを願った場合の生成確率 </td></tr>
+    <tr><td class="paramname">art_ok</td><td>アーティファクトの生成を許すならTRUE </td></tr>
+    <tr><td class="paramname">ego_ok</td><td>エゴの生成を許すならTRUE </td></tr>
+    <tr><td class="paramname">confirm</td><td>願わない場合に確認するかどうか </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>願った結果 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_a3bd34825cd5d9e92c7474a31576ac7c0_cgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_a3bd34825cd5d9e92c7474a31576ac7c0_cgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_a3bd34825cd5d9e92c7474a31576ac7c0_cgraph" id="awizard-item-modifier_8cpp_a3bd34825cd5d9e92c7474a31576ac7c0_cgraph">
+<area shape="rect" title="願ったが消えてしまった場合のメッセージ" alt="" coords="5,1344,124,1371"/>
+<area shape="rect" href="object-ego_8cpp.html#ae52b9f92a7e5067ea20af2fbdc181485" title=" " alt="" coords="419,180,501,207"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="843,579,953,605"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="615,224,735,251"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="204,761,299,788"/>
+<area shape="rect" href="object-kind-hook_8cpp.html#a24f8a2426e4fc5128654ec26033312ab" title="tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the object_kind with the given tval and sval" alt="" coords="629,1116,720,1143"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="859,1293,937,1320"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="629,1319,720,1345"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#a0e609c4508abe3e79a3aa921f8f052d4" title="フロアの指定された位置に固定アーティファクトを生成する。 / Create the artifact of the specified number" alt="" coords="188,1065,315,1092"/>
+<area shape="rect" href="floor-object_8cpp.html#a62c807ef0af547704f7d1f6b825abbe5" title="生成済のオブジェクトをフロアの所定の位置に落とす。 Let an object fall to the ground at or near a location." alt="" coords="421,1268,499,1295"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="621,1369,728,1396"/>
+<area shape="rect" href="object-generator_8cpp.html#a9d4bf7f51bf5056089190534c673d068" title="オブジェクト構造体にベースアイテムを作成する Prepare an object based on an object kind." alt="" coords="415,1015,505,1041"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="210,1420,293,1447"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="212,1471,291,1497"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#abae30e3e87db0d6d470ceb411d315336" title="オブジェクトの装備スロットがエゴが有効なスロットかどうか判定" alt="" coords="172,1521,331,1548"/>
+<area shape="rect" href="object-info_8cpp.html#a73ccd17731c578cf0bb290bf1833f4a2" title="オブジェクトの該当装備部位IDを返す / Determine which equipment slot (if any) an item likes" alt="" coords="421,1547,499,1573"/>
+<area shape="rect" href="string-processor_8cpp.html#a89dc207c8c9d5dbf55872f0882325859" title="左側の空白を除去" alt="" coords="228,1623,275,1649"/>
+<area shape="rect" href="string-processor_8cpp.html#a1193ea0400d6ec032ec3a514138a33a6" title="右側の空白を除去" alt="" coords="227,1673,275,1700"/>
+<area shape="rect" href="show-file_8h.html#a8dac28a507a474c96a97f0d7504efd56" title=" " alt="" coords="209,1724,294,1751"/>
+<area shape="rect" href="string-processor_8cpp.html#a59a5f450c1571742a51cf6786d6a28a5" title="文字列の後方から一致するかどうか比較する" alt="" coords="215,1775,288,1801"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#a22ac7dcbd4aa676e12d5caedfce60d8e" title="願ったが消えてしまった場合のメッセージ" alt="" coords="174,1825,329,1852"/>
+<area shape="rect" href="object-ego_8cpp.html#a9eefc5f11e04204df106d65490300efd" title=" " alt="" coords="608,107,741,149"/>
+<area shape="rect" href="object-ego_8cpp.html#a49336248c9f29791999fea5815dbe0eb" title=" " alt="" coords="613,477,736,504"/>
+<area shape="rect" href="object-ego_8cpp.html#ab380c73138c0ed4ac0741bad2ae5334b" title=" " alt="" coords="589,173,760,200"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="615,5,735,32"/>
+<area shape="rect" href="object-ego_8cpp.html#afea43c7036e61e39e7750e63465d335c" title="0 および負数に対応した randint1()" alt="" coords="618,56,731,83"/>
+<area shape="rect" href="class_flag_group.html#a021f4c66b2af9456aa41200d81efee90" title="指定したフラグを指定した値にセットする" alt="" coords="844,21,952,48"/>
+<area shape="rect" href="object-curse_8cpp.html#a749ffeeeaa9633e0b6300253e4bc9730" title="アイテムに付加される可能性のある呪いを指定する。" alt="" coords="859,935,937,961"/>
+<area shape="rect" href="object-boost_8cpp.html#aefdde2a4a73afd110e04009bc5899739" title="対象のオブジェクトに能力を一つ付加する。/ Choose one random ability" alt="" coords="856,477,940,504"/>
+<area shape="rect" href="object-boost_8cpp.html#ac8f042308a449c1aef0075a03bf1fb97" title="対象のオブジェクトにドラゴン装備向け元素耐性を一つ付加する。/ Choose one random element or poison resistance" alt="" coords="808,173,988,200"/>
+<area shape="rect" href="object-boost_8cpp.html#a8479e0ae532aac951da559536560aa68" title="対象のオブジェクトに元素耐性を一つ付加する。/ Choose one random element resistance" alt="" coords="1039,173,1174,200"/>
+<area shape="rect" href="object-boost_8cpp.html#a8f91efd8221f822642748a831d76cde8" title="対象のオブジェクトにランダムな上位耐性を一つ付加する。/ Choose one random high resistance" alt="" coords="1036,364,1177,391"/>
+<area shape="rect" href="object-boost_8cpp.html#a2d7dbf2cf7cd55f9c36f34b747293485" title="対象のオブジェクトに王者の指輪向けの上位耐性を一つ付加する。/ Choose one random high resistance" alt="" coords="809,325,987,352"/>
+<area shape="rect" href="object-boost_8cpp.html#a23afe392286fe299d23316b2f63949ff" title="対象のオブジェクトに耐性を一つ付加する。/ Choose one random resistance" alt="" coords="843,224,953,251"/>
+<area shape="rect" href="object-boost_8cpp.html#ae9691f57156662894cef26bbe4d0058b" title="対象のオブジェクトにランダムな能力維持を一つ付加する。/ Choose one random sustain" alt="" coords="852,123,944,149"/>
+<area shape="rect" href="object-boost_8cpp.html#a10830095266d73c5d3c07cb44576cf1e" title="対象のオブジェクトに弱いESPを一つ付加する。/ Choose one lower rank esp" alt="" coords="1058,440,1155,467"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#aa6bb6fee0c3e87b70fe7d71ac6b0a283" title="オブジェクトに指定した固定アーティファクトをオブジェクトに割り当てる。" alt="" coords="411,913,509,940"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="379,452,541,479"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="393,812,527,839"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="391,863,529,889"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="387,660,533,687"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a658f4e0b1d948165db84b32e9d11b5ff" title=" " alt="" coords="405,543,515,569"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#a1cadf1bc783aab1bd7044762e520cfbd" title="非INSTA_ART型の固定アーティファクトの生成を確率に応じて試行する。 Mega&#45;Hack – Attempt to create one of the &quot;Special Objects&quot;" alt="" coords="410,711,510,737"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="409,761,511,788"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="597,1217,752,1244"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#a366d2d0a6c3b91c22bd598d312b7e774" title="固定アーティファクトオブジェクトに追加能力/耐性を付加する" alt="" coords="602,782,747,823"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#ab1745b03a5b87acd3ab1822e6cccd853" title="固定アーティファクトオブジェクトに呪いフラグを付加する" alt="" coords="601,847,748,889"/>
+<area shape="rect" href="object-boost_8cpp.html#a606621699d215b70e3bb550147e8e6da" title="オブジェクトにランダムな弱いESPを与える" alt="" coords="621,579,729,605"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="593,731,757,757"/>
+<area shape="rect" href="object-boost_8cpp.html#aac2a8bb6a1fc5c041b8f18f5660f3554" title="上質以上のオブジェクトに与えるための各種ボーナスを正規乱数も加えて算出する。 Help determine an &quot;enchantment bonus&quot; for an object." alt="" coords="637,680,712,707"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_a3bd34825cd5d9e92c7474a31576ac7c0_icgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_a3bd34825cd5d9e92c7474a31576ac7c0_icgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_a3bd34825cd5d9e92c7474a31576ac7c0_icgraph" id="awizard-item-modifier_8cpp_a3bd34825cd5d9e92c7474a31576ac7c0_icgraph">
+<area shape="rect" title="願ったが消えてしまった場合のメッセージ" alt="" coords="509,5,628,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="344,5,461,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="185,5,296,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abae30e3e87db0d6d470ceb411d315336"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abae30e3e87db0d6d470ceb411d315336">&#9670;&nbsp;</a></span>is_slot_able_to_be_ego()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int is_slot_able_to_be_ego </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>オブジェクトの装備スロットがエゴが有効なスロットかどうか判定 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_abae30e3e87db0d6d470ceb411d315336_cgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_abae30e3e87db0d6d470ceb411d315336_cgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_abae30e3e87db0d6d470ceb411d315336_cgraph" id="awizard-item-modifier_8cpp_abae30e3e87db0d6d470ceb411d315336_cgraph">
+<area shape="rect" title="オブジェクトの装備スロットがエゴが有効なスロットかどうか判定" alt="" coords="5,5,164,32"/>
+<area shape="rect" href="object-info_8cpp.html#a73ccd17731c578cf0bb290bf1833f4a2" title="オブジェクトの該当装備部位IDを返す / Determine which equipment slot (if any) an item likes" alt="" coords="212,5,291,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_abae30e3e87db0d6d470ceb411d315336_icgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_abae30e3e87db0d6d470ceb411d315336_icgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_abae30e3e87db0d6d470ceb411d315336_icgraph" id="awizard-item-modifier_8cpp_abae30e3e87db0d6d470ceb411d315336_icgraph">
+<area shape="rect" title="オブジェクトの装備スロットがエゴが有効なスロットかどうか判定" alt="" coords="496,5,655,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#a3bd34825cd5d9e92c7474a31576ac7c0" title="願ったが消えてしまった場合のメッセージ" alt="" coords="329,5,448,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="164,5,281,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af9cba80fffaafee4ef65850b512dc0b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9cba80fffaafee4ef65850b512dc0b4">&#9670;&nbsp;</a></span>prt_alloc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void prt_alloc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a>&#160;</td>
+          <td class="paramname"><em>tval</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a>&#160;</td>
+          <td class="paramname"><em>sval</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a>&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a>&#160;</td>
+          <td class="paramname"><em>col</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アイテムの階層毎生成率を表示する / Output a rarity graph for a type of object. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tval</td><td>ベースアイテムの大項目ID </td></tr>
+    <tr><td class="paramname">sval</td><td>ベースアイテムの小項目ID </td></tr>
+    <tr><td class="paramname">row</td><td>表示列 </td></tr>
+    <tr><td class="paramname">col</td><td>表示行 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_af9cba80fffaafee4ef65850b512dc0b4_cgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_af9cba80fffaafee4ef65850b512dc0b4_cgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_af9cba80fffaafee4ef65850b512dc0b4_cgraph" id="awizard-item-modifier_8cpp_af9cba80fffaafee4ef65850b512dc0b4_cgraph">
+<area shape="rect" title="アイテムの階層毎生成率を表示する / Output a rarity graph for a type of object." alt="" coords="5,81,76,108"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="279,31,329,57"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="138,107,197,133"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="148,56,187,83"/>
+<area shape="rect" href="z-term_8cpp.html#abb85e44f10d01b0cfb7b1bd4b5bc48e5" title=" " alt="" coords="124,157,211,184"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="413,5,504,32"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="415,56,502,83"/>
+<area shape="rect" href="z-term_8cpp.html#aed0973004e647060e40c2e8ee2471b89" title=" " alt="" coords="568,5,697,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="585,107,680,133"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="273,107,335,133"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="425,107,492,133"/>
+<area shape="rect" href="z-term_8cpp.html#a2bb133bab8899a7b9118b3b22efcbd34" title=" " alt="" coords="259,208,349,235"/>
+<area shape="rect" href="z-term_8cpp.html#abe940f88333b917b37fb87f4104bd473" title=" " alt="" coords="397,208,520,235"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_af9cba80fffaafee4ef65850b512dc0b4_icgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_af9cba80fffaafee4ef65850b512dc0b4_icgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_af9cba80fffaafee4ef65850b512dc0b4_icgraph" id="awizard-item-modifier_8cpp_af9cba80fffaafee4ef65850b512dc0b4_icgraph">
+<area shape="rect" title="アイテムの階層毎生成率を表示する / Output a rarity graph for a type of object." alt="" coords="669,51,740,78"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#aa04768b902b2aa50c6153ce94e436d60" title="アイテムの詳細ステータスを表示する / Change various &quot;permanent&quot; player variables." alt="" coords="500,51,621,78"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#ae2c471bd9278046aca40e7344b6bd574" title="アイテムを弄るデバッグコマンド Play with an item." alt="" coords="171,51,289,78"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="341,26,449,52"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#aa68f351c86678f7ce149c3afb7697308" title="検査対象のアイテムを基準とした生成テストを行う / Try to create an item again." alt="" coords="344,76,445,103"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#ada073935bacb9643b02d60c5bdcce98d" title="アイテムの基礎能力値を調整する / Tweak an item" alt="" coords="337,127,452,154"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="5,51,123,78"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af4537a521d0e577855afa050cc563358"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4537a521d0e577855afa050cc563358">&#9670;&nbsp;</a></span>prt_binary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void prt_binary </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td>
+          <td class="paramname"><em>flags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>col</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>32ビット変数のビット配列を並べて描画する / Output a long int in binary format. </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_af4537a521d0e577855afa050cc563358_cgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_af4537a521d0e577855afa050cc563358_cgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_af4537a521d0e577855afa050cc563358_cgraph" id="awizard-item-modifier_8cpp_af4537a521d0e577855afa050cc563358_cgraph">
+<area shape="rect" title="32ビット変数のビット配列を並べて描画する / Output a long int in binary format." alt="" coords="5,31,84,57"/>
+<area shape="rect" href="z-term_8cpp.html#abb85e44f10d01b0cfb7b1bd4b5bc48e5" title=" " alt="" coords="132,31,219,57"/>
+<area shape="rect" href="z-term_8cpp.html#a2bb133bab8899a7b9118b3b22efcbd34" title=" " alt="" coords="269,5,359,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="267,56,361,83"/>
+<area shape="rect" href="z-term_8cpp.html#abe940f88333b917b37fb87f4104bd473" title=" " alt="" coords="409,5,532,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_af4537a521d0e577855afa050cc563358_icgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_af4537a521d0e577855afa050cc563358_icgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_af4537a521d0e577855afa050cc563358_icgraph" id="awizard-item-modifier_8cpp_af4537a521d0e577855afa050cc563358_icgraph">
+<area shape="rect" title="32ビット変数のビット配列を並べて描画する / Output a long int in binary format." alt="" coords="669,51,748,78"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#aa04768b902b2aa50c6153ce94e436d60" title="アイテムの詳細ステータスを表示する / Change various &quot;permanent&quot; player variables." alt="" coords="500,51,621,78"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#ae2c471bd9278046aca40e7344b6bd574" title="アイテムを弄るデバッグコマンド Play with an item." alt="" coords="171,51,289,78"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="341,26,449,52"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#aa68f351c86678f7ce149c3afb7697308" title="検査対象のアイテムを基準とした生成テストを行う / Try to create an item again." alt="" coords="344,76,445,103"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#ada073935bacb9643b02d60c5bdcce98d" title="アイテムの基礎能力値を調整する / Tweak an item" alt="" coords="337,127,452,154"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="5,51,123,78"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a22ac7dcbd4aa676e12d5caedfce60d8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22ac7dcbd4aa676e12d5caedfce60d8e">&#9670;&nbsp;</a></span>wishing_puff_of_smoke()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void wishing_puff_of_smoke </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>願ったが消えてしまった場合のメッセージ </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_a22ac7dcbd4aa676e12d5caedfce60d8e_cgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_a22ac7dcbd4aa676e12d5caedfce60d8e_cgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_a22ac7dcbd4aa676e12d5caedfce60d8e_cgraph" id="awizard-item-modifier_8cpp_a22ac7dcbd4aa676e12d5caedfce60d8e_cgraph">
+<area shape="rect" title="願ったが消えてしまった場合のメッセージ" alt="" coords="5,284,160,311"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="208,284,287,311"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="343,56,445,83"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="353,259,435,285"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="536,309,623,336"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="535,360,623,387"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="335,157,453,184"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="347,411,441,437"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="526,5,633,32"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="554,56,605,83"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="558,157,601,184"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="553,208,606,235"/>
+<area shape="rect" href="display-messages_8cpp.html#a8647d1d8cbef5e4db465563838dd2b87" title=" " alt="" coords="501,259,657,285"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="705,132,788,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_a22ac7dcbd4aa676e12d5caedfce60d8e_icgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_a22ac7dcbd4aa676e12d5caedfce60d8e_icgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_a22ac7dcbd4aa676e12d5caedfce60d8e_icgraph" id="awizard-item-modifier_8cpp_a22ac7dcbd4aa676e12d5caedfce60d8e_icgraph">
+<area shape="rect" title="願ったが消えてしまった場合のメッセージ" alt="" coords="496,5,651,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#a3bd34825cd5d9e92c7474a31576ac7c0" title="願ったが消えてしまった場合のメッセージ" alt="" coords="329,5,448,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="164,5,281,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa04768b902b2aa50c6153ce94e436d60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa04768b902b2aa50c6153ce94e436d60">&#9670;&nbsp;</a></span>wiz_display_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void wiz_display_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アイテムの詳細ステータスを表示する / Change various "permanent" player variables. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">o_ptr</td><td>詳細を表示するアイテム情報の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_aa04768b902b2aa50c6153ce94e436d60_cgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_aa04768b902b2aa50c6153ce94e436d60_cgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_aa04768b902b2aa50c6153ce94e436d60_cgraph" id="awizard-item-modifier_8cpp_aa04768b902b2aa50c6153ce94e436d60_cgraph">
+<area shape="rect" title="アイテムの詳細ステータスを表示する / Change various &quot;permanent&quot; player variables." alt="" coords="5,1618,127,1645"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="175,459,281,486"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="785,1530,875,1557"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="595,1505,653,1531"/>
+<area shape="rect" href="object-value_8cpp.html#a4b43c1e5db9d62cc85dce89c00b8ff3a" title="オブジェクトの真の価格を算出する / Return the value of the flags the object has..." alt="" coords="344,1657,465,1683"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="385,1707,424,1734"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af9cba80fffaafee4ef65850b512dc0b4" title="アイテムの階層毎生成率を表示する / Output a rarity graph for a type of object." alt="" coords="193,1719,263,1746"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af4537a521d0e577855afa050cc563358" title="32ビット変数のビット配列を並べて描画する / Output a long int in binary format." alt="" coords="189,1795,267,1822"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="347,409,462,435"/>
+<area shape="rect" href="bow_8cpp.html#ac67fe672b98bb4c3ba89474dce007a50" title="射撃武器に対応する矢/弾薬のベースアイテムIDを返す /" alt="" coords="347,459,462,486"/>
+<area shape="rect" href="flavor-describer_8cpp.html#abffcf700f83741151f4d965b01800395" title=" " alt="" coords="556,1454,692,1481"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a779b5f26ab2e2c1e104583399787dcf1" title=" " alt="" coords="769,54,891,81"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a7ec17cfdde3219bd0e9dfe166181cc9d" title=" " alt="" coords="359,257,451,283"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a81194951a890007868ac1c4352750174" title=" " alt="" coords="333,611,476,638"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a6ad3608e29e2b55a612a9bece5987c6e" title=" " alt="" coords="349,830,460,857"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="330,1185,479,1211"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a040ee8534be2d36b2db2c511158488c0" title=" " alt="" coords="537,307,711,334"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a5f9a02ab4e1253b0cd2270b287b17bee" title="杖や光源等、寿命のあるアイテムの残り回数やターン表記" alt="" coords="337,721,472,747"/>
+<area shape="rect" href="flavor-describer_8cpp.html#af3b92a1eedcea38d55cb313d2ff7fbed" title=" " alt="" coords="549,105,699,131"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a487e2423615ea280fb3f3a339ae2980b" title=" " alt="" coords="356,155,453,182"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#ae75e4fc7cc754cbf43a5ef91d0e1d963" title=" " alt="" coords="329,79,480,106"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#acfcf21e14ba3017d1cc69e6fdff850e9" title="呪いの有無や割引率等を表示する" alt="" coords="528,510,720,537"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#a892d0257efeeabd5136e0e224ee0d757" title=" " alt="" coords="333,307,476,334"/>
+<area shape="rect" href="flavor-util_8cpp.html#ae0f69cdaef63ddd298c7fbe175bf8c21" title=" " alt="" coords="336,358,473,385"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="770,1581,890,1607"/>
+<area shape="rect" href="object-perception_8cpp.html#a28c38c7965d53e8b20d1937245b8970b" title=" " alt="" coords="777,1454,883,1481"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="961,1337,1074,1363"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a8726edfc05ad4884bd9643a4bd2e8eff" title=" " alt="" coords="540,257,708,283"/>
+<area shape="rect" href="flavor-util_8cpp.html#aa1378b4bd2a85f709f6f48dc4f48ecf3" title="対象文字配列に一文字だけをコピーする。" alt="" coords="771,383,889,410"/>
+<area shape="rect" href="flavor-util_8cpp.html#aba21c13bcaaf19811cb5d62824eaa1af" title="対象文字配列に符号なし整数値をコピーする。" alt="" coords="768,181,892,207"/>
+<area shape="rect" href="flavor-util_8cpp.html#a35ea10adb65931a256030363f956a413" title="対象文字配列に符号あり整数値をコピーする。" alt="" coords="773,282,887,309"/>
+<area shape="rect" href="mind-sniper_8cpp.html#a6fd6bafd31f45a4175f2a8907c7fc614" title="スナイパーの集中度によるダメージボーナスを加算する" alt="" coords="555,561,693,603"/>
+<area shape="rect" href="shoot_8cpp.html#afea7a69a70c8e57df24d1d6a4a0153df" title=" " alt="" coords="585,627,663,654"/>
+<area shape="rect" href="shoot_8cpp.html#aa0e832cf3b6da1a0193d110bf0a42be5" title="射撃時クリティカルによるダメージ期待値修正計算（重量依存部分） / critical happens at i / 10000" alt="" coords="549,678,699,705"/>
+<area shape="rect" href="flavor-describer_8cpp.html#ab90ef1eec6a73db724ce2db39327766e" title=" " alt="" coords="553,409,695,435"/>
+<area shape="rect" href="flavor-util_8cpp.html#a9afac279f6c93e8e8856f96113493a8b" title="対象文字配列に文字列をコピーする。" alt="" coords="773,855,887,882"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="771,1095,889,1122"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a0c1fa37fd59818ca44bbe11db43aa593" title="武器/防具/アクセサリアイテムにおける、耐性やスレイ等の表記" alt="" coords="555,830,693,857"/>
+<area shape="rect" href="named-item-describer_8cpp.html#ac7efc2d8a25fc2fd5af3db95e7f3d9b4" title=" " alt="" coords="553,1388,695,1429"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a876c4fc7dc88a1fa3f2b7d6707b10cf8" title=" " alt="" coords="537,1134,711,1161"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a4db5274e8c52834bc7bb6ef880b0d09d" title=" " alt="" coords="536,1033,712,1059"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a4998ed0656a32c2290f80b72b751512d" title=" " alt="" coords="545,931,703,958"/>
+<area shape="rect" href="named-item-describer_8cpp.html#acaa46c6c182761a488d16112c7b3545a" title="銘を表記する" alt="" coords="555,1185,693,1211"/>
+<area shape="rect" href="named-item-describer_8cpp.html#ada4725207c8415750227020605ee0076" title=" " alt="" coords="567,1235,681,1262"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="547,1286,701,1313"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="966,1581,1069,1607"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="940,1657,1095,1683"/>
+<area shape="rect" href="object-value-calc_8cpp.html#a50a71dd33434317049f92e1f4a3f18dd" title="オブジェクトのフラグ類から価格を算出する / Return the value of the flags the object has..." alt="" coords="587,1657,661,1683"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="599,1834,649,1861"/>
+<area shape="rect" href="z-term_8cpp.html#abb85e44f10d01b0cfb7b1bd4b5bc48e5" title=" " alt="" coords="361,1809,448,1835"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_aa04768b902b2aa50c6153ce94e436d60_icgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_aa04768b902b2aa50c6153ce94e436d60_icgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_aa04768b902b2aa50c6153ce94e436d60_icgraph" id="awizard-item-modifier_8cpp_aa04768b902b2aa50c6153ce94e436d60_icgraph">
+<area shape="rect" title="アイテムの詳細ステータスを表示する / Change various &quot;permanent&quot; player variables." alt="" coords="659,51,780,78"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#ae2c471bd9278046aca40e7344b6bd574" title="アイテムを弄るデバッグコマンド Play with an item." alt="" coords="329,51,448,78"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="499,26,607,52"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#aa68f351c86678f7ce149c3afb7697308" title="検査対象のアイテムを基準とした生成テストを行う / Try to create an item again." alt="" coords="503,76,604,103"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#ada073935bacb9643b02d60c5bdcce98d" title="アイテムの基礎能力値を調整する / Tweak an item" alt="" coords="496,127,611,154"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="164,51,281,78"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="5,51,116,78"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae2c471bd9278046aca40e7344b6bd574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2c471bd9278046aca40e7344b6bd574">&#9670;&nbsp;</a></span>wiz_modify_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wiz_modify_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アイテムを弄るデバッグコマンド Play with an item. </p>
+<p>Options include: </p><dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<ul>
+<li>Output statistics (via wiz_roll_item)<br  />
+</li>
+<li>Reroll item (via wiz_reroll_item)<br  />
+</li>
+<li>Change properties (via wiz_tweak_item)<br  />
+</li>
+<li>Change the number of items (via wiz_quantity_item)<br  />
+ </li>
+</ul>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_ae2c471bd9278046aca40e7344b6bd574_cgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_ae2c471bd9278046aca40e7344b6bd574_cgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_ae2c471bd9278046aca40e7344b6bd574_cgraph" id="awizard-item-modifier_8cpp_ae2c471bd9278046aca40e7344b6bd574_cgraph">
+<area shape="rect" title="アイテムを弄るデバッグコマンド Play with an item." alt="" coords="5,1829,124,1856"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="182,829,289,856"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1078,1373,1157,1400"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="841,968,933,994"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="840,1069,935,1096"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="393,1576,465,1602"/>
+<area shape="rect" href="object-generator_8cpp.html#aa666d0b3f34f2bebf82e976361f59f1c" title="オブジェクトを複製する Wipe an object clean." alt="" coords="383,2589,475,2616"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#aa04768b902b2aa50c6153ce94e436d60" title="アイテムの詳細ステータスを表示する / Change various &quot;permanent&quot; player variables." alt="" coords="368,2108,489,2134"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#a8512dc72615fe4080c388b40b1e8e805" title="検査対象のアイテムの数を変更する / Change the quantity of a the item" alt="" coords="172,2006,299,2033"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="181,2386,289,2413"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#aa68f351c86678f7ce149c3afb7697308" title="検査対象のアイテムを基準とした生成テストを行う / Try to create an item again." alt="" coords="185,1829,286,1856"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#ada073935bacb9643b02d60c5bdcce98d" title="アイテムの基礎能力値を調整する / Tweak an item" alt="" coords="178,2108,293,2134"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="393,588,465,614"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="395,829,463,856"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="866,714,909,741"/>
+<area shape="rect" href="player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="1024,486,1211,513"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7c7bc7aaa4ea1facc9bffef817ae15ef" title=" " alt="" coords="1259,424,1437,450"/>
+<area shape="rect" href="item-getter_8cpp.html#acd17e2a74ae5acb8bfb06fead7ed7d1b" title="オブジェクト選択のモード設定" alt="" coords="561,106,748,133"/>
+<area shape="rect" href="item-getter_8cpp.html#aae1ffe8e95349276ec2eea3c8f1aabaf" title="アイテムにタグ付けがされているかの調査処理 (のはず)" alt="" coords="597,157,712,184"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="858,1905,917,1932"/>
+<area shape="rect" href="inventory-util_8cpp.html#a8ecee8934da290e32a3d32c076c79c8d" title="選択したアイテムの確認処理のメインルーチン /" alt="" coords="833,562,941,589"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#a608d31e79fc4aba7a4903453f3c78c95" title="オブジェクト選択の汎用関数(床上アイテム用) / Let the user select an item, save its &quot;index&quot;" alt="" coords="603,613,706,640"/>
+<area shape="rect" href="inventory-util_8cpp.html#ac56c08414553f69a101a859aa01220e3" title="プレイヤーの所持/装備オブジェクトが正規のものかを返す / Auxiliary function for &quot;get_item()&quot; – test an index" alt="" coords="834,410,941,437"/>
+<area shape="rect" href="item-tester-hooker_8cpp.html#ac2523c2f0be8b9c8a2ecce14fd51887c" title="アイテムがitem_tester_hookグローバル関数ポインタの条件を満たしているかを返す汎用関数 Check an item against the item tester info" alt="" coords="1056,410,1179,437"/>
+<area shape="rect" href="inventory-util_8cpp.html#a6106140a69e84e316a7ee1172c62f4b6" title="所持/装備オブジェクトに選択タグを与える/タグに該当するオブジェクトがあるかを返す / Find the &quot;first&quot; inventory object with the given &quot;tag&quot;." alt="" coords="855,461,920,488"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="842,816,933,842"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3be357b2b900b29111c229eb1e975763" title=" " alt="" coords="799,360,976,386"/>
+<area shape="rect" href="object-info_8cpp.html#a21413bf407071b7e2f68ff548c34b165" title="オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label" alt="" coords="835,866,940,893"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="861,1424,914,1450"/>
+<area shape="rect" href="inventory-util_8cpp.html#a3b02f8780c65381593401e83a8189bf8" title="選択アルファベットラベルからプレイヤーの装備オブジェクトIDを返す /" alt="" coords="820,917,955,944"/>
+<area shape="rect" href="inventory-util_8cpp.html#a157c018a9ae0e35bfadcf28c66106a5a" title="選択アルファベットラベルからプレイヤーの所持オブジェクトIDを返す / Convert a label into the index of an item in the &quot;inven&quot;" alt="" coords="825,132,950,158"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="868,1677,907,1704"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="841,309,934,336"/>
+<area shape="rect" href="item-selection-util_8cpp.html#a74d26ed39043ee25aaf6a0ebc08b69c8" title=" " alt="" coords="559,208,751,234"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="1093,841,1142,868"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="1076,1018,1159,1045"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="601,2133,708,2160"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="842,2285,933,2312"/>
+<area shape="rect" href="object-value_8cpp.html#a4b43c1e5db9d62cc85dce89c00b8ff3a" title="オブジェクトの真の価格を算出する / Return the value of the flags the object has..." alt="" coords="594,2285,715,2312"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af9cba80fffaafee4ef65850b512dc0b4" title="アイテムの階層毎生成率を表示する / Output a rarity graph for a type of object." alt="" coords="619,1930,690,1957"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af4537a521d0e577855afa050cc563358" title="32ビット変数のビット配列を並べて描画する / Output a long int in binary format." alt="" coords="615,2184,694,2210"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="1040,2386,1195,2413"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="389,2032,468,2058"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="369,2336,489,2362"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="607,2437,702,2464"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="347,2488,511,2514"/>
+<area shape="rect" href="object-generator_8cpp.html#a9d4bf7f51bf5056089190534c673d068" title="オブジェクト構造体にベースアイテムを作成する Prepare an object based on an object kind." alt="" coords="610,2386,699,2413"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="842,2386,933,2413"/>
+<area shape="rect" href="floor-object_8cpp.html#adbba66fa3bc17cfd4ebeff0ee923a304" title="生成階に応じたベースアイテムの生成を行う。 Attempt to make an object (normal or good/great)" alt="" coords="381,2285,477,2312"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="383,1829,474,1856"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_ae2c471bd9278046aca40e7344b6bd574_icgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_ae2c471bd9278046aca40e7344b6bd574_icgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_ae2c471bd9278046aca40e7344b6bd574_icgraph" id="awizard-item-modifier_8cpp_ae2c471bd9278046aca40e7344b6bd574_icgraph">
+<area shape="rect" title="アイテムを弄るデバッグコマンド Play with an item." alt="" coords="509,5,628,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="344,5,461,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="185,5,296,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8512dc72615fe4080c388b40b1e8e805"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8512dc72615fe4080c388b40b1e8e805">&#9670;&nbsp;</a></span>wiz_quantity_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void wiz_quantity_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>検査対象のアイテムの数を変更する / Change the quantity of a the item </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">caster_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">o_ptr</td><td>変更するアイテム情報構造体の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_a8512dc72615fe4080c388b40b1e8e805_cgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_a8512dc72615fe4080c388b40b1e8e805_cgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_a8512dc72615fe4080c388b40b1e8e805_cgraph" id="awizard-item-modifier_8cpp_a8512dc72615fe4080c388b40b1e8e805_cgraph">
+<area shape="rect" title="検査対象のアイテムの数を変更する / Change the quantity of a the item" alt="" coords="5,81,132,108"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="201,56,279,83"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="180,107,300,133"/>
+<area shape="rect" href="asking-player_8cpp.html#ad5c7efa101f8104fd152aaa10b9be28b" title=" " alt="" coords="359,5,416,32"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="348,56,427,83"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="368,107,407,133"/>
+<area shape="rect" href="asking-player_8cpp.html#a025b21031a6e4922de22b9e961a8358e" title="&lt;" alt="" coords="475,5,560,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_a8512dc72615fe4080c388b40b1e8e805_icgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_a8512dc72615fe4080c388b40b1e8e805_icgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_a8512dc72615fe4080c388b40b1e8e805_icgraph" id="awizard-item-modifier_8cpp_a8512dc72615fe4080c388b40b1e8e805_icgraph">
+<area shape="rect" title="検査対象のアイテムの数を変更する / Change the quantity of a the item" alt="" coords="496,5,623,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#ae2c471bd9278046aca40e7344b6bd574" title="アイテムを弄るデバッグコマンド Play with an item." alt="" coords="329,5,448,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="164,5,281,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af1e72e1ae1887d663ecbb199ceceda40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1e72e1ae1887d663ecbb199ceceda40">&#9670;&nbsp;</a></span>wiz_reroll_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void wiz_reroll_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>owner_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact. </p>
+<p>-Bernd- </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>再生成の対象となるアイテム情報の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_af1e72e1ae1887d663ecbb199ceceda40_cgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_af1e72e1ae1887d663ecbb199ceceda40_cgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_af1e72e1ae1887d663ecbb199ceceda40_cgraph" id="awizard-item-modifier_8cpp_af1e72e1ae1887d663ecbb199ceceda40_cgraph">
+<area shape="rect" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="5,1422,113,1449"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="175,713,269,740"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="545,1068,709,1094"/>
+<area shape="rect" href="object-generator_8cpp.html#aa666d0b3f34f2bebf82e976361f59f1c" title="オブジェクトを複製する Wipe an object clean." alt="" coords="803,1384,895,1410"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="772,1878,927,1905"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="376,1574,448,1601"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="162,1980,282,2006"/>
+<area shape="rect" href="object-generator_8cpp.html#a9d4bf7f51bf5056089190534c673d068" title="オブジェクト構造体にベースアイテムを作成する Prepare an object based on an object kind." alt="" coords="582,58,671,85"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#aa04768b902b2aa50c6153ce94e436d60" title="アイテムの詳細ステータスを表示する / Change various &quot;permanent&quot; player variables." alt="" coords="161,1701,283,1728"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#aa6bb6fee0c3e87b70fe7d71ac6b0a283" title="オブジェクトに指定した固定アーティファクトをオブジェクトに割り当てる。" alt="" coords="363,182,461,209"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="794,117,905,144"/>
+<area shape="rect" href="object-curse_8cpp.html#a749ffeeeaa9633e0b6300253e4bc9730" title="アイテムに付加される可能性のある呪いを指定する。" alt="" coords="810,205,889,232"/>
+<area shape="rect" href="object-ego_8cpp.html#ae52b9f92a7e5067ea20af2fbdc181485" title=" " alt="" coords="371,460,453,486"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="331,713,493,740"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="345,916,479,942"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="343,1194,481,1221"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="339,1042,485,1069"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a658f4e0b1d948165db84b32e9d11b5ff" title=" " alt="" coords="357,26,467,53"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#a1cadf1bc783aab1bd7044762e520cfbd" title="非INSTA_ART型の固定アーティファクトの生成を確率に応じて試行する。 Mega&#45;Hack – Attempt to create one of the &quot;Special Objects&quot;" alt="" coords="362,241,462,268"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="798,1777,901,1804"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#a366d2d0a6c3b91c22bd598d312b7e774" title="固定アーティファクトオブジェクトに追加能力/耐性を付加する" alt="" coords="554,175,699,216"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#ab1745b03a5b87acd3ab1822e6cccd853" title="固定アーティファクトオブジェクトに呪いフラグを付加する" alt="" coords="553,110,700,151"/>
+<area shape="rect" href="object-boost_8cpp.html#a8f91efd8221f822642748a831d76cde8" title="対象のオブジェクトにランダムな上位耐性を一つ付加する。/ Choose one random high resistance" alt="" coords="779,548,920,574"/>
+<area shape="rect" href="object-ego_8cpp.html#a9eefc5f11e04204df106d65490300efd" title=" " alt="" coords="560,343,693,384"/>
+<area shape="rect" href="object-ego_8cpp.html#a49336248c9f29791999fea5815dbe0eb" title=" " alt="" coords="565,241,688,268"/>
+<area shape="rect" href="object-ego_8cpp.html#ab380c73138c0ed4ac0741bad2ae5334b" title=" " alt="" coords="541,510,712,537"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="567,409,687,436"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="567,561,687,588"/>
+<area shape="rect" href="object-ego_8cpp.html#afea43c7036e61e39e7750e63465d335c" title="0 および負数に対応した randint1()" alt="" coords="570,460,683,486"/>
+<area shape="rect" href="object-boost_8cpp.html#a2d7dbf2cf7cd55f9c36f34b747293485" title="対象のオブジェクトに王者の指輪向けの上位耐性を一つ付加する。/ Choose one random high resistance" alt="" coords="760,674,939,701"/>
+<area shape="rect" href="object-boost_8cpp.html#a606621699d215b70e3bb550147e8e6da" title="オブジェクトにランダムな弱いESPを与える" alt="" coords="573,764,681,790"/>
+<area shape="rect" href="object-boost_8cpp.html#aac2a8bb6a1fc5c041b8f18f5660f3554" title="上質以上のオブジェクトに与えるための各種ボーナスを正規乱数も加えて算出する。 Help determine an &quot;enchantment bonus&quot; for an object." alt="" coords="589,1017,664,1044"/>
+<area shape="rect" href="object-boost_8cpp.html#a10830095266d73c5d3c07cb44576cf1e" title="対象のオブジェクトに弱いESPを一つ付加する。/ Choose one lower rank esp" alt="" coords="578,612,675,638"/>
+<area shape="rect" href="object-boost_8cpp.html#a36cf4f62bcad93e649af35c99d4e23cf" title="オブジェクトにランダムな強いESPを与える" alt="" coords="569,865,684,892"/>
+<area shape="rect" href="object-boost_8cpp.html#aebf400e29da27d5f9e627422526f4bb1" title="ドラゴン装備にランダムな耐性を与える" alt="" coords="577,814,677,841"/>
+<area shape="rect" href="object-ego_8cpp.html#ab2d834c8e6ce809dfce2c3a3fef269aa" title="アイテムのエゴをレア度の重みに合わせてランダムに選択する Choose random ego type" alt="" coords="567,1118,686,1145"/>
+<area shape="rect" href="object-kind-hook_8cpp.html#a24f8a2426e4fc5128654ec26033312ab" title="tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the object_kind with the given tval and sval" alt="" coords="581,916,672,942"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="987,1194,1065,1221"/>
+<area shape="rect" href="monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する" alt="" coords="575,1220,679,1246"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="804,1194,895,1221"/>
+<area shape="rect" href="monster-util_8cpp.html#ae37ebccef3dd7dacea088110d0388d49" title="モンスター生成テーブルの重み修正" alt="" coords="559,1270,695,1297"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#acdb2524187c8c89503ce0e2a9f1d03bf" title="モンスターが人形のベースにできるかを返す" alt="" coords="559,1321,695,1348"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f7ad5a9cb44932d39bbf0c31a37c946" title="オブジェクトを＊鑑定＊済にする / The player is now aware of the effects of the given object." alt="" coords="577,1422,676,1449"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="796,1460,903,1486"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="607,1676,646,1702"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="597,1726,656,1753"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="581,1828,672,1854"/>
+<area shape="rect" href="object-value_8cpp.html#a4b43c1e5db9d62cc85dce89c00b8ff3a" title="オブジェクトの真の価格を算出する / Return the value of the flags the object has..." alt="" coords="351,1777,473,1804"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af9cba80fffaafee4ef65850b512dc0b4" title="アイテムの階層毎生成率を表示する / Output a rarity graph for a type of object." alt="" coords="377,1676,447,1702"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af4537a521d0e577855afa050cc563358" title="32ビット変数のビット配列を並べて描画する / Output a long int in binary format." alt="" coords="373,1878,451,1905"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_af1e72e1ae1887d663ecbb199ceceda40_icgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_af1e72e1ae1887d663ecbb199ceceda40_icgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_af1e72e1ae1887d663ecbb199ceceda40_icgraph" id="awizard-item-modifier_8cpp_af1e72e1ae1887d663ecbb199ceceda40_icgraph">
+<area shape="rect" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="496,5,604,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#ae2c471bd9278046aca40e7344b6bd574" title="アイテムを弄るデバッグコマンド Play with an item." alt="" coords="329,5,448,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="164,5,281,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa68f351c86678f7ce149c3afb7697308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa68f351c86678f7ce149c3afb7697308">&#9670;&nbsp;</a></span>wiz_statistics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void wiz_statistics </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>検査対象のアイテムを基準とした生成テストを行う / Try to create an item again. </p>
+<p>Output some statistics. -Bernd- </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">caster_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">o_ptr</td><td>生成テストの基準となるアイテム情報の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし The statistics are correct now. We acquire a clean grid, and then repeatedly place an object in this grid, copying it into an item holder, and then deleting the object. We fiddle with the artifact counter flags to prevent weirdness. We use the items to collect statistics on item creation relative to the initial item. </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_aa68f351c86678f7ce149c3afb7697308_cgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_aa68f351c86678f7ce149c3afb7697308_cgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_aa68f351c86678f7ce149c3afb7697308_cgraph" id="awizard-item-modifier_8cpp_aa68f351c86678f7ce149c3afb7697308_cgraph">
+<area shape="rect" title="検査対象のアイテムを基準とした生成テストを行う / Try to create an item again." alt="" coords="5,613,107,640"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="191,5,240,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="509,804,568,831"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="179,461,251,488"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="512,335,565,361"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="843,107,925,133"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="345,563,424,589"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="519,671,558,697"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="176,613,255,640"/>
+<area shape="rect" href="floor-object_8cpp.html#adbba66fa3bc17cfd4ebeff0ee923a304" title="生成階に応じたベースアイテムの生成を行う。 Attempt to make an object (normal or good/great)" alt="" coords="167,715,263,741"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="170,512,261,539"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="632,1069,787,1096"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="170,917,261,944"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#aa04768b902b2aa50c6153ce94e436d60" title="アイテムの詳細ステータスを表示する / Change various &quot;permanent&quot; player variables." alt="" coords="155,867,276,893"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="678,775,741,801"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="851,669,917,696"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a41533d64d34cff21ac2f08e39073e746" title=" " alt="" coords="334,360,435,387"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="658,107,761,133"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="835,157,933,184"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="981,233,1059,260"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="669,259,750,285"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="841,309,927,336"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="651,360,767,387"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="843,385,925,412"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="651,461,767,488"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="651,512,767,539"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="684,699,735,725"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="331,968,438,995"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="493,1019,584,1045"/>
+<area shape="rect" href="object-value_8cpp.html#a4b43c1e5db9d62cc85dce89c00b8ff3a" title="オブジェクトの真の価格を算出する / Return the value of the flags the object has..." alt="" coords="324,1069,445,1096"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af9cba80fffaafee4ef65850b512dc0b4" title="アイテムの階層毎生成率を表示する / Output a rarity graph for a type of object." alt="" coords="349,816,420,843"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af4537a521d0e577855afa050cc563358" title="32ビット変数のビット配列を並べて描画する / Output a long int in binary format." alt="" coords="345,917,424,944"/>
+<area shape="rect" href="z-term_8cpp.html#abb85e44f10d01b0cfb7b1bd4b5bc48e5" title=" " alt="" coords="495,892,582,919"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_aa68f351c86678f7ce149c3afb7697308_icgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_aa68f351c86678f7ce149c3afb7697308_icgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_aa68f351c86678f7ce149c3afb7697308_icgraph" id="awizard-item-modifier_8cpp_aa68f351c86678f7ce149c3afb7697308_icgraph">
+<area shape="rect" title="検査対象のアイテムを基準とした生成テストを行う / Try to create an item again." alt="" coords="496,5,597,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#ae2c471bd9278046aca40e7344b6bd574" title="アイテムを弄るデバッグコマンド Play with an item." alt="" coords="329,5,448,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="164,5,281,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ada073935bacb9643b02d60c5bdcce98d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada073935bacb9643b02d60c5bdcce98d">&#9670;&nbsp;</a></span>wiz_tweak_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void wiz_tweak_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アイテムの基礎能力値を調整する / Tweak an item </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">o_ptr</td><td>調整するアイテムの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_ada073935bacb9643b02d60c5bdcce98d_cgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_ada073935bacb9643b02d60c5bdcce98d_cgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_ada073935bacb9643b02d60c5bdcce98d_cgraph" id="awizard-item-modifier_8cpp_ada073935bacb9643b02d60c5bdcce98d_cgraph">
+<area shape="rect" title="アイテムの基礎能力値を調整する / Tweak an item" alt="" coords="5,196,120,223"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="189,81,268,108"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="169,196,289,223"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#aa04768b902b2aa50c6153ce94e436d60" title="アイテムの詳細ステータスを表示する / Change various &quot;permanent&quot; player variables." alt="" coords="168,284,289,311"/>
+<area shape="rect" href="asking-player_8cpp.html#ad5c7efa101f8104fd152aaa10b9be28b" title=" " alt="" coords="369,5,427,32"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="359,56,437,83"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="533,157,571,184"/>
+<area shape="rect" href="asking-player_8cpp.html#a025b21031a6e4922de22b9e961a8358e" title="&lt;" alt="" coords="509,5,595,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="645,183,696,209"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="345,411,451,437"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="523,309,581,336"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="507,411,597,437"/>
+<area shape="rect" href="object-value_8cpp.html#a4b43c1e5db9d62cc85dce89c00b8ff3a" title="オブジェクトの真の価格を算出する / Return the value of the flags the object has..." alt="" coords="337,360,459,387"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af9cba80fffaafee4ef65850b512dc0b4" title="アイテムの階層毎生成率を表示する / Output a rarity graph for a type of object." alt="" coords="363,208,433,235"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af4537a521d0e577855afa050cc563358" title="32ビット変数のビット配列を並べて描画する / Output a long int in binary format." alt="" coords="359,259,437,285"/>
+<area shape="rect" href="z-term_8cpp.html#abb85e44f10d01b0cfb7b1bd4b5bc48e5" title=" " alt="" coords="509,259,595,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-item-modifier_8cpp_ada073935bacb9643b02d60c5bdcce98d_icgraph.png" border="0" usemap="#awizard-item-modifier_8cpp_ada073935bacb9643b02d60c5bdcce98d_icgraph" alt=""/></div>
+<map name="awizard-item-modifier_8cpp_ada073935bacb9643b02d60c5bdcce98d_icgraph" id="awizard-item-modifier_8cpp_ada073935bacb9643b02d60c5bdcce98d_icgraph">
+<area shape="rect" title="アイテムの基礎能力値を調整する / Tweak an item" alt="" coords="496,5,611,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#ae2c471bd9278046aca40e7344b6bd574" title="アイテムを弄るデバッグコマンド Play with an item." alt="" coords="329,5,448,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="164,5,281,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分46秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

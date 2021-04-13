@@ -1,0 +1,833 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/cmd-item/cmd-destroy.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1feb516edb48b9003f77be11a320817a.html">cmd-item</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">cmd-destroy.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="cmd-destroy_8h_source.html">cmd-item/cmd-destroy.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="autopick-registry_8h_source.html">autopick/autopick-registry.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="autopick_8h_source.html">autopick/autopick.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stuff-handler_8h_source.html">core/stuff-handler.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="window-redrawer_8h_source.html">core/window-redrawer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flavor-describer_8h_source.html">flavor/flavor-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flavor-types_8h_source.html">flavor/object-flavor-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-object_8h_source.html">floor/floor-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-options_8h_source.html">game-option/input-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-object_8h_source.html">inventory/inventory-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-requester_8h_source.html">io/input-key-requester.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-definitions-table_8h_source.html">main/sound-definitions-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-expendable_8h_source.html">object-hook/hook-expendable.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-magic_8h_source.html">object-hook/hook-magic.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-use-flags_8h_source.html">object/item-use-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-generator_8h_source.html">object/object-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-stack_8h_source.html">object/object-stack.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-value_8h_source.html">object/object-value.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="attack-defense-types_8h_source.html">player/attack-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="avatar_8h_source.html">player-info/avatar.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-defense-types_8h_source.html">player/special-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="racial-android_8h_source.html">racial/racial-android.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="realm-names-table_8h_source.html">realm/realm-names-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="action-setter_8h_source.html">status/action-setter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="experience_8h_source.html">status/experience.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+cmd-destroy.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-destroy_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-item_2cmd-destroy_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-item_2cmd-destroy_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-item_2cmd-destroy_8cpp">
+<area shape="rect" title=" " alt="" coords="1993,5,2184,61"/>
+<area shape="rect" href="cmd-destroy_8h.html" title=" " alt="" coords="3066,295,3229,322"/>
+<area shape="rect" href="autopick-registry_8h.html" title=" " alt="" coords="345,117,528,143"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="205,288,338,329"/>
+<area shape="rect" href="autopick_8h.html" title=" " alt="" coords="571,117,705,143"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="721,295,859,322"/>
+<area shape="rect" href="stuff-handler_8h.html" title=" " alt="" coords="799,206,931,233"/>
+<area shape="rect" href="window-redrawer_8h.html" title=" " alt="" coords="934,295,1091,322"/>
+<area shape="rect" href="flavor-describer_8h.html" title=" " alt="" coords="1006,206,1158,233"/>
+<area shape="rect" href="object-flavor-types_8h.html" title=" " alt="" coords="3046,109,3169,151"/>
+<area shape="rect" href="floor-object_8h.html" title=" " alt="" coords="5,295,129,322"/>
+<area shape="rect" href="input-options_8h.html" title=" " alt="" coords="1167,295,1349,322"/>
+<area shape="rect" href="inventory-object_8h.html" title=" " alt="" coords="1233,199,1361,240"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="3193,109,3321,151"/>
+<area shape="rect" href="input-key-acceptor_8h.html" title=" " alt="" coords="1425,295,1579,322"/>
+<area shape="rect" href="input-key-requester_8h.html" title=" " alt="" coords="1663,117,1821,143"/>
+<area shape="rect" href="sound-definitions-table_8h.html" title=" " alt="" coords="3345,109,3496,151"/>
+<area shape="rect" href="sound-of-music_8h.html" title=" " alt="" coords="1897,117,2051,143"/>
+<area shape="rect" href="hook-expendable_8h.html" title=" " alt="" coords="1435,117,1638,143"/>
+<area shape="rect" href="hook-magic_8h.html" title=" " alt="" coords="1705,206,1875,233"/>
+<area shape="rect" href="item-use-flags_8h.html" title=" " alt="" coords="3520,117,3673,143"/>
+<area shape="rect" href="object-generator_8h.html" title=" " alt="" coords="1950,295,2115,322"/>
+<area shape="rect" href="object-stack_8h.html" title=" " alt="" coords="2081,206,2224,233"/>
+<area shape="rect" href="object-value_8h.html" title=" " alt="" coords="95,206,235,233"/>
+<area shape="rect" href="attack-defense-types_8h.html" title=" " alt="" coords="3698,109,3845,151"/>
+<area shape="rect" href="avatar_8h.html" title=" " alt="" coords="2194,295,2325,322"/>
+<area shape="rect" href="special-defense-types_8h.html" title=" " alt="" coords="3869,109,4020,151"/>
+<area shape="rect" href="racial-android_8h.html" title=" " alt="" coords="2300,206,2445,233"/>
+<area shape="rect" href="realm-names-table_8h.html" title=" " alt="" coords="2606,117,2782,143"/>
+<area shape="rect" href="action-setter_8h.html" title=" " alt="" coords="2403,295,2548,322"/>
+<area shape="rect" href="experience_8h.html" title=" " alt="" coords="2521,206,2657,233"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="2687,295,2850,322"/>
+<area shape="rect" href="int-char-converter_8h.html" title=" " alt="" coords="4044,117,4197,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="2875,295,3041,322"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1437,377,1567,404"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="977,452,1067,479"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1091,452,1182,479"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1206,452,1305,479"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1329,452,1427,479"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="1452,452,1552,479"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1576,452,1751,479"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1775,452,1917,479"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1941,452,2087,479"/>
+<area shape="rect" href="autopick-util_8h.html" title=" " alt="" coords="412,206,568,233"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="107,377,233,404"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="644,206,723,233"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="531,295,646,322"/>
+<area shape="rect" href="keymap-directory-getter_8h.html" title=" " alt="" coords="1487,199,1629,240"/>
+<area shape="rect" title=" " alt="" coords="1950,206,2006,233"/>
+<area shape="rect" href="realm-types_8h.html" title=" " alt="" coords="2732,206,2869,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdestroy__type.html">destroy_type</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:a7654936edf8517a57eda8273eabc1c3b"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structdestroy__type.html">destroy_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-destroy_8cpp.html#a7654936edf8517a57eda8273eabc1c3b">destroy_type</a></td></tr>
+<tr class="separator:a7654936edf8517a57eda8273eabc1c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a7a3423e08d42c9402eaf35d543ba00e0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structdestroy__type.html">destroy_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-destroy_8cpp.html#a7a3423e08d42c9402eaf35d543ba00e0">initialize_destroy_type</a> (<a class="el" href="structdestroy__type.html">destroy_type</a> *destroy_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a7a3423e08d42c9402eaf35d543ba00e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01e3eb9fd0e913ee143723431505103f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f">check_destory_item</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structdestroy__type.html">destroy_type</a> *destroy_ptr)</td></tr>
+<tr class="separator:a01e3eb9fd0e913ee143723431505103f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a113fb407a2ddd9d91c9d66df11b8e70a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-destroy_8cpp.html#a113fb407a2ddd9d91c9d66df11b8e70a">select_destroying_item</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structdestroy__type.html">destroy_type</a> *destroy_ptr)</td></tr>
+<tr class="separator:a113fb407a2ddd9d91c9d66df11b8e70a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a671b3cbd985ce389b8ef5acab5586602"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-destroy_8cpp.html#a671b3cbd985ce389b8ef5acab5586602">decide_magic_book_exp</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structdestroy__type.html">destroy_type</a> *destroy_ptr)</td></tr>
+<tr class="memdesc:a671b3cbd985ce389b8ef5acab5586602"><td class="mdescLeft">&#160;</td><td class="mdescRight">一部職業で高位魔法書の破壊による経験値上昇の判定  <a href="cmd-destroy_8cpp.html#a671b3cbd985ce389b8ef5acab5586602">[詳解]</a><br /></td></tr>
+<tr class="separator:a671b3cbd985ce389b8ef5acab5586602"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab4649745927a7a97c2e0e054e6a3012"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-destroy_8cpp.html#aab4649745927a7a97c2e0e054e6a3012">gain_exp_by_destroying_magic_book</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structdestroy__type.html">destroy_type</a> *destroy_ptr)</td></tr>
+<tr class="separator:aab4649745927a7a97c2e0e054e6a3012"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a565dde4c964fba1b6d2c5ef3c528e33b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-destroy_8cpp.html#a565dde4c964fba1b6d2c5ef3c528e33b">process_destroy_magic_book</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structdestroy__type.html">destroy_type</a> *destroy_ptr)</td></tr>
+<tr class="separator:a565dde4c964fba1b6d2c5ef3c528e33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a556f622d372fc3ee73d810ea58900e6e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-destroy_8cpp.html#a556f622d372fc3ee73d810ea58900e6e">exe_destroy_item</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structdestroy__type.html">destroy_type</a> *destroy_ptr)</td></tr>
+<tr class="separator:a556f622d372fc3ee73d810ea58900e6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace3fa3c633ff433fd6ce004e56316daf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-destroy_8cpp.html#ace3fa3c633ff433fd6ce004e56316daf">do_cmd_destroy</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:ace3fa3c633ff433fd6ce004e56316daf"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムを破壊するコマンドのメインルーチン / Destroy an item  <a href="cmd-destroy_8cpp.html#ace3fa3c633ff433fd6ce004e56316daf">[詳解]</a><br /></td></tr>
+<tr class="separator:ace3fa3c633ff433fd6ce004e56316daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">型定義詳解</h2>
+<a id="a7654936edf8517a57eda8273eabc1c3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7654936edf8517a57eda8273eabc1c3b">&#9670;&nbsp;</a></span>destroy_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structdestroy__type.html">destroy_type</a> <a class="el" href="structdestroy__type.html">destroy_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a01e3eb9fd0e913ee143723431505103f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01e3eb9fd0e913ee143723431505103f">&#9670;&nbsp;</a></span>check_destory_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_destory_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdestroy__type.html">destroy_type</a> *&#160;</td>
+          <td class="paramname"><em>destroy_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-destroy_8cpp_a01e3eb9fd0e913ee143723431505103f_cgraph.png" border="0" usemap="#acmd-destroy_8cpp_a01e3eb9fd0e913ee143723431505103f_cgraph" alt=""/></div>
+<map name="acmd-destroy_8cpp_a01e3eb9fd0e913ee143723431505103f_cgraph" id="acmd-destroy_8cpp_a01e3eb9fd0e913ee143723431505103f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,2003,144,2029"/>
+<area shape="rect" href="autopick_8cpp.html#ae7f092144503a2ccb534345fe872d299" title=" " alt="" coords="198,179,333,205"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="603,229,710,256"/>
+<area shape="rect" href="object-value_8cpp.html#a0147f5032ab01303e47ff00f49648520" title="オブジェクト価格算出のメインルーチン / Return the price of an item including plusses (and charges)" alt="" coords="849,112,942,139"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="856,1927,935,1953"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="1059,1927,1161,1953"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="192,1395,339,1421"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="220,2104,311,2131"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="239,2155,292,2181"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="246,2205,285,2232"/>
+<area shape="rect" href="autopick-destroyer_8cpp.html#a9efe25ff3ad1ac56b5dc6ab7b27eae0a" title=" " alt="" coords="391,179,521,205"/>
+<area shape="rect" href="autopick-util_8cpp.html#a1dd80fdd8ddb78ff0a4e450460cd8951" title=" " alt="" coords="391,77,521,104"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a8108553a0b971c8d22ad18d214df8fb3" title="自動拾いの検索" alt="" coords="395,280,517,307"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="422,128,490,155"/>
+<area shape="rect" href="hook-expendable_8cpp.html#a149d1d797103307eb21cc6cafea39576" title="破壊可能なアイテムかを返す / Determines whether an object can be destroyed, and makes fake inscription." alt="" coords="589,163,724,205"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="626,61,687,88"/>
+<area shape="rect" href="autopick-destroyer_8cpp.html#a7e4c7c11cb092024c7638404dbb7ed77" title=" " alt="" coords="579,112,735,139"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="611,1800,702,1827"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="835,1091,955,1117"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="1051,304,1169,331"/>
+<area shape="rect" href="hook-quest_8cpp.html#a5e010009492b31ea38cbd15c6cb5d3ed" title="オブジェクトが賞金首の報酬対象になるかを返す" alt="" coords="835,483,955,509"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="788,303,1003,329"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="1217,1749,1268,1776"/>
+<area shape="rect" href="show-file_8h.html#a8dac28a507a474c96a97f0d7504efd56" title=" " alt="" coords="614,280,699,307"/>
+<area shape="rect" href="autopick-util_8cpp.html#a7dec5b6020c1d39cb763bf1f543a0b30" title=" " alt="" coords="395,1952,517,1979"/>
+<area shape="rect" href="angband-files_8cpp.html#af8478ae9202a347c7b95688842ff7633" title=" " alt="" coords="603,1445,710,1472"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="841,1496,950,1523"/>
+<area shape="rect" href="autopick-entry_8cpp.html#a4f3f90481be8626c7f36c064d773d490" title=" " alt="" coords="387,729,525,770"/>
+<area shape="rect" href="autopick-entry_8cpp.html#a2e248e8ecab84f812f2c47c31b615fc1" title=" " alt="" coords="391,1227,521,1269"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a4d5688a3c67109567b11632237aad306" title=" " alt="" coords="390,1623,522,1649"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="616,1901,697,1928"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#aa8a0b37eb8ed45cd8632c5fad7a3efa6" title=" " alt="" coords="595,1344,718,1371"/>
+<area shape="rect" href="z-virt_8cpp.html#a70a7941cc921785c30b981487ebb8f17" title="string_make() で割り当てたバッファを解放する。" alt="" coords="415,1496,497,1523"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="601,1040,712,1067"/>
+<area shape="rect" href="object-info_8cpp.html#a6db41b634f18ba4fcb97bab7cfeac978" title="tval/sval指定のベースアイテムがプレイヤーの使用可能な魔法書かどうかを返す / Hack: Check if a spellbook is one of the realms we can us..." alt="" coords="591,533,722,560"/>
+<area shape="rect" href="player-realm_8cpp.html#a11a8208a38771a1915bc63de183f561a" title=" " alt="" coords="835,787,956,813"/>
+<area shape="rect" href="player-realm_8cpp.html#a17a8cc91a8bf571f0d9ab86dfb238429" title=" " alt="" coords="835,533,956,560"/>
+<area shape="rect" href="hook-bow_8cpp.html#a5fd32e52325fed3ac5f46d6e2fcd04e1" title="オブジェクトが矢弾として使用できるかどうかを返す / Check if an object is ammo" alt="" coords="598,584,715,611"/>
+<area shape="rect" href="object-perception_8cpp.html#a377c00bc8a6d66ec30288f1e3be60e9f" title=" " alt="" coords="599,635,714,661"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="605,685,708,712"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a440de5f35a9a07a64dd27fc8074a3948" title="オブジェクトが装備品であるかを返す(object_is_wearableに矢弾を含む) / Equipment including all wearable objects and ammo" alt="" coords="586,736,727,763"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a0e428cd41af0f842e9e73e48a7cfc77d" title="オブジェクトが近接武器として装備できるかを返す / Melee weapons" alt="" coords="573,787,740,813"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a75879cc87f48fafe56f4bc04d3b60b1d" title="オブジェクトがレアアイテムかどうかを返す / Rare weapons/aromors including Blade of Chaos, Dragon armors,..." alt="" coords="605,837,708,864"/>
+<area shape="rect" href="quarks_8cpp.html#a95cf419856c525009b78e5246327f405" title=" " alt="" coords="619,888,695,915"/>
+<area shape="rect" href="z-virt_8cpp.html#a64d699412915544198fd477a26d44f84" title="str の複製を返す。戻り値は使用後に string_free() で解放すること。" alt="" coords="610,1192,703,1219"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="866,1344,925,1371"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="601,1547,713,1573"/>
+<area shape="rect" href="angband-files_8cpp.html#ad6dfef3d6a652bf311e07eb7c1aee550" title=" " alt="" coords="584,1496,729,1523"/>
+<area shape="rect" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="629,1597,684,1624"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="615,1648,698,1675"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-destroy_8cpp_a01e3eb9fd0e913ee143723431505103f_icgraph.png" border="0" usemap="#acmd-destroy_8cpp_a01e3eb9fd0e913ee143723431505103f_icgraph" alt=""/></div>
+<map name="acmd-destroy_8cpp_a01e3eb9fd0e913ee143723431505103f_icgraph" id="acmd-destroy_8cpp_a01e3eb9fd0e913ee143723431505103f_icgraph">
+<area shape="rect" title=" " alt="" coords="592,31,731,57"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a113fb407a2ddd9d91c9d66df11b8e70a" title=" " alt="" coords="388,31,544,57"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#ace3fa3c633ff433fd6ce004e56316daf" title="アイテムを破壊するコマンドのメインルーチン / Destroy an item" alt="" coords="221,31,340,57"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a671b3cbd985ce389b8ef5acab5586602"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a671b3cbd985ce389b8ef5acab5586602">&#9670;&nbsp;</a></span>decide_magic_book_exp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> decide_magic_book_exp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdestroy__type.html">destroy_type</a> *&#160;</td>
+          <td class="paramname"><em>destroy_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>一部職業で高位魔法書の破壊による経験値上昇の判定 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">destory_ptr</td><td>アイテム破壊構造体への参照ポインタ return 魔法書の破壊によって経験値が入るならばTRUE </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-destroy_8cpp_a671b3cbd985ce389b8ef5acab5586602_icgraph.png" border="0" usemap="#acmd-destroy_8cpp_a671b3cbd985ce389b8ef5acab5586602_icgraph" alt=""/></div>
+<map name="acmd-destroy_8cpp_a671b3cbd985ce389b8ef5acab5586602_icgraph" id="acmd-destroy_8cpp_a671b3cbd985ce389b8ef5acab5586602_icgraph">
+<area shape="rect" title="一部職業で高位魔法書の破壊による経験値上昇の判定" alt="" coords="632,13,797,39"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#aab4649745927a7a97c2e0e054e6a3012" title=" " alt="" coords="421,5,584,47"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a565dde4c964fba1b6d2c5ef3c528e33b" title=" " alt="" coords="179,13,373,39"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a556f622d372fc3ee73d810ea58900e6e" title=" " alt="" coords="5,13,131,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ace3fa3c633ff433fd6ce004e56316daf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace3fa3c633ff433fd6ce004e56316daf">&#9670;&nbsp;</a></span>do_cmd_destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_destroy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アイテムを破壊するコマンドのメインルーチン / Destroy an item </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-destroy_8cpp_ace3fa3c633ff433fd6ce004e56316daf_cgraph.png" border="0" usemap="#acmd-destroy_8cpp_ace3fa3c633ff433fd6ce004e56316daf_cgraph" alt=""/></div>
+<map name="acmd-destroy_8cpp_ace3fa3c633ff433fd6ce004e56316daf_cgraph" id="acmd-destroy_8cpp_ace3fa3c633ff433fd6ce004e56316daf_cgraph">
+<area shape="rect" title="アイテムを破壊するコマンドのメインルーチン / Destroy an item" alt="" coords="5,725,124,752"/>
+<area shape="rect" href="hook-expendable_8cpp.html#a149d1d797103307eb21cc6cafea39576" title="破壊可能なアイテムかを返す / Determines whether an object can be destroyed, and makes fake inscription." alt="" coords="406,182,541,223"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="625,669,732,696"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a556f622d372fc3ee73d810ea58900e6e" title=" " alt="" coords="187,472,313,499"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="428,725,519,752"/>
+<area shape="rect" href="player-status_8cpp.html#a66e3d8439c969c25980516bbf58c5cad" title=" " alt="" coords="214,725,286,752"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a7a3423e08d42c9402eaf35d543ba00e0" title=" " alt="" coords="175,776,325,803"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a113fb407a2ddd9d91c9d66df11b8e70a" title=" " alt="" coords="172,675,328,701"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="209,877,291,904"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="435,928,511,955"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="633,193,724,220"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="619,244,739,271"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="619,5,739,32"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="1025,157,1145,184"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="1026,601,1145,628"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="813,259,915,285"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="787,208,941,235"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="1029,411,1142,437"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="807,613,921,640"/>
+<area shape="rect" href="bow_8cpp.html#ac67fe672b98bb4c3ba89474dce007a50" title="射撃武器に対応する矢/弾薬のベースアイテムIDを返す /" alt="" coords="807,664,921,691"/>
+<area shape="rect" href="flavor-describer_8cpp.html#abffcf700f83741151f4d965b01800395" title=" " alt="" coords="796,309,932,336"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a779b5f26ab2e2c1e104583399787dcf1" title=" " alt="" coords="803,411,925,437"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a7ec17cfdde3219bd0e9dfe166181cc9d" title=" " alt="" coords="818,917,910,944"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a81194951a890007868ac1c4352750174" title=" " alt="" coords="793,765,935,792"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a6ad3608e29e2b55a612a9bece5987c6e" title=" " alt="" coords="809,867,919,893"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="789,461,939,488"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a040ee8534be2d36b2db2c511158488c0" title=" " alt="" coords="998,1073,1173,1100"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a5f9a02ab4e1253b0cd2270b287b17bee" title="杖や光源等、寿命のあるアイテムの残り回数やターン表記" alt="" coords="797,1019,931,1045"/>
+<area shape="rect" href="flavor-describer_8cpp.html#af3b92a1eedcea38d55cb313d2ff7fbed" title=" " alt="" coords="1010,871,1161,897"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a487e2423615ea280fb3f3a339ae2980b" title=" " alt="" coords="815,360,913,387"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#ae75e4fc7cc754cbf43a5ef91d0e1d963" title=" " alt="" coords="1010,551,1161,577"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#acfcf21e14ba3017d1cc69e6fdff850e9" title="呪いの有無や割引率等を表示する" alt="" coords="989,1023,1181,1049"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#a892d0257efeeabd5136e0e224ee0d757" title=" " alt="" coords="793,512,935,539"/>
+<area shape="rect" href="flavor-util_8cpp.html#ae0f69cdaef63ddd298c7fbe175bf8c21" title=" " alt="" coords="795,563,933,589"/>
+<area shape="rect" href="object-perception_8cpp.html#a28c38c7965d53e8b20d1937245b8970b" title=" " alt="" coords="1032,309,1139,336"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a8726edfc05ad4884bd9643a4bd2e8eff" title=" " alt="" coords="1001,921,1169,948"/>
+<area shape="rect" href="flavor-util_8cpp.html#aa1378b4bd2a85f709f6f48dc4f48ecf3" title="対象文字配列に一文字だけをコピーする。" alt="" coords="1233,947,1350,973"/>
+<area shape="rect" href="flavor-util_8cpp.html#aba21c13bcaaf19811cb5d62824eaa1af" title="対象文字配列に符号なし整数値をコピーする。" alt="" coords="1229,820,1353,847"/>
+<area shape="rect" href="mind-sniper_8cpp.html#a6fd6bafd31f45a4175f2a8907c7fc614" title="スナイパーの集中度によるダメージボーナスを加算する" alt="" coords="1016,754,1155,795"/>
+<area shape="rect" href="racial-android_8cpp.html#a79575a6f85af0b14d59eff0efe003795" title=" " alt="" coords="412,269,535,296"/>
+<area shape="rect" href="object-generator_8cpp.html#aa666d0b3f34f2bebf82e976361f59f1c" title="オブジェクトを複製する Wipe an object clean." alt="" coords="633,403,725,429"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="639,468,719,495"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a565dde4c964fba1b6d2c5ef3c528e33b" title=" " alt="" coords="376,472,571,499"/>
+<area shape="rect" href="object-stack_8cpp.html#a22139a6c717c89a184b86bf86299d6e1" title="魔法棒やロッドの使用回数を減らす /" alt="" coords="416,573,531,600"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="445,371,502,397"/>
+<area shape="rect" href="inventory-object_8cpp.html#a95bd37f416091df0360f4eec6bd12e49" title=" " alt="" coords="435,523,512,549"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="639,751,718,777"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f" title=" " alt="" coords="404,675,543,701"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="420,827,527,853"/>
+<area shape="rect" href="asking-player_8cpp.html#a18ddf190b45e6fbac7a074687008550f" title=" " alt="" coords="427,776,520,803"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-destroy_8cpp_ace3fa3c633ff433fd6ce004e56316daf_icgraph.png" border="0" usemap="#acmd-destroy_8cpp_ace3fa3c633ff433fd6ce004e56316daf_icgraph" alt=""/></div>
+<map name="acmd-destroy_8cpp_ace3fa3c633ff433fd6ce004e56316daf_icgraph" id="acmd-destroy_8cpp_ace3fa3c633ff433fd6ce004e56316daf_icgraph">
+<area shape="rect" title="アイテムを破壊するコマンドのメインルーチン / Destroy an item" alt="" coords="884,5,1003,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="668,31,836,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="516,31,620,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a556f622d372fc3ee73d810ea58900e6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a556f622d372fc3ee73d810ea58900e6e">&#9670;&nbsp;</a></span>exe_destroy_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void exe_destroy_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdestroy__type.html">destroy_type</a> *&#160;</td>
+          <td class="paramname"><em>destroy_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-destroy_8cpp_a556f622d372fc3ee73d810ea58900e6e_cgraph.png" border="0" usemap="#acmd-destroy_8cpp_a556f622d372fc3ee73d810ea58900e6e_cgraph" alt=""/></div>
+<map name="acmd-destroy_8cpp_a556f622d372fc3ee73d810ea58900e6e_cgraph" id="acmd-destroy_8cpp_a556f622d372fc3ee73d810ea58900e6e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,1213,131,1239"/>
+<area shape="rect" href="racial-android_8cpp.html#a79575a6f85af0b14d59eff0efe003795" title=" " alt="" coords="215,481,337,507"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="1081,727,1171,754"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="1086,651,1166,678"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="707,1342,765,1369"/>
+<area shape="rect" href="object-generator_8cpp.html#aa666d0b3f34f2bebf82e976361f59f1c" title="オブジェクトを複製する Wipe an object clean." alt="" coords="468,1139,560,1166"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a565dde4c964fba1b6d2c5ef3c528e33b" title=" " alt="" coords="179,161,373,187"/>
+<area shape="rect" href="object-stack_8cpp.html#a22139a6c717c89a184b86bf86299d6e1" title="魔法棒やロッドの使用回数を減らす /" alt="" coords="219,1443,333,1470"/>
+<area shape="rect" href="inventory-object_8cpp.html#a95bd37f416091df0360f4eec6bd12e49" title=" " alt="" coords="237,1494,315,1521"/>
+<area shape="rect" href="player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="451,911,577,938"/>
+<area shape="rect" href="player-status_8cpp.html#a505fc5be2b6382dbcd3b279e2f2f2be5" title="プレイヤーが現在右手/左手に武器を持っているか判定する /" alt="" coords="880,633,1016,659"/>
+<area shape="rect" href="object-value-calc_8cpp.html#a50a71dd33434317049f92e1f4a3f18dd" title="オブジェクトのフラグ類から価格を算出する / Return the value of the flags the object has..." alt="" coords="699,278,773,305"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="897,266,999,293"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="871,354,1025,381"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="454,430,574,457"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a3abbd26c216ede60fb3c6e8d519cc7c6" title="オブジェクトが武器や矢弾として使用できるかを返す / Check if an object is weapon (including bows and ammo) Rare weapons/aromor..." alt="" coords="430,582,598,609"/>
+<area shape="rect" href="object-value_8cpp.html#a4b43c1e5db9d62cc85dce89c00b8ff3a" title="オブジェクトの真の価格を算出する / Return the value of the flags the object has..." alt="" coords="453,278,575,305"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="469,481,559,507"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a237b4b6ff1cb50402312e9b60c5c8a55" title=" " alt="" coords="883,582,1013,609"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1221,651,1300,678"/>
+<area shape="rect" href="player-status_8cpp.html#aeff5a61381b15a0da6515408f33a5ce7" title="現在の修正後能力値を3～17及び18/xxx形式に変換する / Converts stat num into a six&#45;char (right justified) string" alt="" coords="701,1089,771,1115"/>
+<area shape="rect" href="base-status_8cpp.html#a343b4d5e7c5756f694b048c57ab043d0" title=" " alt="" coords="903,683,993,710"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="892,1038,1004,1065"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="1097,1038,1155,1065"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="675,785,797,811"/>
+<area shape="rect" href="mutation-investor-remover_8cpp.html#a3f2ae6d11a1293d5aaba45657ea17e0a" title="プレイヤーに突然変異を与える" alt="" coords="897,886,999,913"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="1081,962,1171,989"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="695,1139,777,1166"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="681,1291,791,1318"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="709,835,763,862"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="717,886,755,913"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="1080,1165,1172,1191"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="1079,481,1173,507"/>
+<area shape="rect" href="experience_8cpp.html#a526ec6c3a82867a6a0152ffeb12a720d" title=" " alt="" coords="911,215,985,242"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#aab4649745927a7a97c2e0e054e6a3012" title=" " alt="" coords="655,111,817,152"/>
+<area shape="rect" href="hook-magic_8cpp.html#a31ac2a0e2b29f5da011692567964ae1c" title="オブジェクトが高位の魔法書かどうかを判定する" alt="" coords="421,110,607,137"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a671b3cbd985ce389b8ef5acab5586602" title="一部職業で高位魔法書の破壊による経験値上昇の判定" alt="" coords="865,114,1031,141"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-destroy_8cpp_a556f622d372fc3ee73d810ea58900e6e_icgraph.png" border="0" usemap="#acmd-destroy_8cpp_a556f622d372fc3ee73d810ea58900e6e_icgraph" alt=""/></div>
+<map name="acmd-destroy_8cpp_a556f622d372fc3ee73d810ea58900e6e_icgraph" id="acmd-destroy_8cpp_a556f622d372fc3ee73d810ea58900e6e_icgraph">
+<area shape="rect" title=" " alt="" coords="879,5,1004,32"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#ace3fa3c633ff433fd6ce004e56316daf" title="アイテムを破壊するコマンドのメインルーチン / Destroy an item" alt="" coords="712,5,831,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aab4649745927a7a97c2e0e054e6a3012"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab4649745927a7a97c2e0e054e6a3012">&#9670;&nbsp;</a></span>gain_exp_by_destroying_magic_book()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void gain_exp_by_destroying_magic_book </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdestroy__type.html">destroy_type</a> *&#160;</td>
+          <td class="paramname"><em>destroy_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-destroy_8cpp_aab4649745927a7a97c2e0e054e6a3012_cgraph.png" border="0" usemap="#acmd-destroy_8cpp_aab4649745927a7a97c2e0e054e6a3012_cgraph" alt=""/></div>
+<map name="acmd-destroy_8cpp_aab4649745927a7a97c2e0e054e6a3012_cgraph" id="acmd-destroy_8cpp_aab4649745927a7a97c2e0e054e6a3012_cgraph">
+<area shape="rect" title=" " alt="" coords="5,49,168,90"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a671b3cbd985ce389b8ef5acab5586602" title="一部職業で高位魔法書の破壊による経験値上昇の判定" alt="" coords="216,5,381,32"/>
+<area shape="rect" href="experience_8cpp.html#a526ec6c3a82867a6a0152ffeb12a720d" title=" " alt="" coords="261,56,336,83"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="747,56,825,83"/>
+<area shape="rect" href="experience_8cpp.html#a132a3c54bbf346604465a436da59ca26" title=" " alt="" coords="429,56,524,83"/>
+<area shape="rect" href="player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="572,5,699,32"/>
+<area shape="rect" href="z-util_8cpp.html#ae586801c59280bb7a22fed3ba66be295" title=" " alt="" coords="596,56,675,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-destroy_8cpp_aab4649745927a7a97c2e0e054e6a3012_icgraph.png" border="0" usemap="#acmd-destroy_8cpp_aab4649745927a7a97c2e0e054e6a3012_icgraph" alt=""/></div>
+<map name="acmd-destroy_8cpp_aab4649745927a7a97c2e0e054e6a3012_icgraph" id="acmd-destroy_8cpp_aab4649745927a7a97c2e0e054e6a3012_icgraph">
+<area shape="rect" title=" " alt="" coords="588,5,751,47"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a565dde4c964fba1b6d2c5ef3c528e33b" title=" " alt="" coords="345,13,540,39"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a556f622d372fc3ee73d810ea58900e6e" title=" " alt="" coords="172,13,297,39"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#ace3fa3c633ff433fd6ce004e56316daf" title="アイテムを破壊するコマンドのメインルーチン / Destroy an item" alt="" coords="5,13,124,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7a3423e08d42c9402eaf35d543ba00e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a3423e08d42c9402eaf35d543ba00e0">&#9670;&nbsp;</a></span>initialize_destroy_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="structdestroy__type.html">destroy_type</a>* initialize_destroy_type </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structdestroy__type.html">destroy_type</a> *&#160;</td>
+          <td class="paramname"><em>destroy_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-destroy_8cpp_a7a3423e08d42c9402eaf35d543ba00e0_icgraph.png" border="0" usemap="#acmd-destroy_8cpp_a7a3423e08d42c9402eaf35d543ba00e0_icgraph" alt=""/></div>
+<map name="acmd-destroy_8cpp_a7a3423e08d42c9402eaf35d543ba00e0_icgraph" id="acmd-destroy_8cpp_a7a3423e08d42c9402eaf35d543ba00e0_icgraph">
+<area shape="rect" title=" " alt="" coords="879,5,1029,32"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#ace3fa3c633ff433fd6ce004e56316daf" title="アイテムを破壊するコマンドのメインルーチン / Destroy an item" alt="" coords="712,5,831,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a565dde4c964fba1b6d2c5ef3c528e33b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a565dde4c964fba1b6d2c5ef3c528e33b">&#9670;&nbsp;</a></span>process_destroy_magic_book()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void process_destroy_magic_book </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdestroy__type.html">destroy_type</a> *&#160;</td>
+          <td class="paramname"><em>destroy_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-destroy_8cpp_a565dde4c964fba1b6d2c5ef3c528e33b_cgraph.png" border="0" usemap="#acmd-destroy_8cpp_a565dde4c964fba1b6d2c5ef3c528e33b_cgraph" alt=""/></div>
+<map name="acmd-destroy_8cpp_a565dde4c964fba1b6d2c5ef3c528e33b_cgraph" id="acmd-destroy_8cpp_a565dde4c964fba1b6d2c5ef3c528e33b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,93,200,120"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="301,5,381,32"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#aab4649745927a7a97c2e0e054e6a3012" title=" " alt="" coords="259,57,422,98"/>
+<area shape="rect" href="hook-magic_8cpp.html#a31ac2a0e2b29f5da011692567964ae1c" title="オブジェクトが高位の魔法書かどうかを判定する" alt="" coords="248,123,433,149"/>
+<area shape="rect" href="object-value_8cpp.html#a4b43c1e5db9d62cc85dce89c00b8ff3a" title="オブジェクトの真の価格を算出する / Return the value of the flags the object has..." alt="" coords="280,173,401,200"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a671b3cbd985ce389b8ef5acab5586602" title="一部職業で高位魔法書の破壊による経験値上昇の判定" alt="" coords="481,13,647,40"/>
+<area shape="rect" href="experience_8cpp.html#a526ec6c3a82867a6a0152ffeb12a720d" title=" " alt="" coords="527,64,601,91"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="525,115,603,141"/>
+<area shape="rect" href="experience_8cpp.html#a132a3c54bbf346604465a436da59ca26" title=" " alt="" coords="695,64,789,91"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-destroy_8cpp_a565dde4c964fba1b6d2c5ef3c528e33b_icgraph.png" border="0" usemap="#acmd-destroy_8cpp_a565dde4c964fba1b6d2c5ef3c528e33b_icgraph" alt=""/></div>
+<map name="acmd-destroy_8cpp_a565dde4c964fba1b6d2c5ef3c528e33b_icgraph" id="acmd-destroy_8cpp_a565dde4c964fba1b6d2c5ef3c528e33b_icgraph">
+<area shape="rect" title=" " alt="" coords="561,31,756,57"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a556f622d372fc3ee73d810ea58900e6e" title=" " alt="" coords="388,31,513,57"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#ace3fa3c633ff433fd6ce004e56316daf" title="アイテムを破壊するコマンドのメインルーチン / Destroy an item" alt="" coords="221,31,340,57"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a113fb407a2ddd9d91c9d66df11b8e70a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a113fb407a2ddd9d91c9d66df11b8e70a">&#9670;&nbsp;</a></span>select_destroying_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> select_destroying_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdestroy__type.html">destroy_type</a> *&#160;</td>
+          <td class="paramname"><em>destroy_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-destroy_8cpp_a113fb407a2ddd9d91c9d66df11b8e70a_cgraph.png" border="0" usemap="#acmd-destroy_8cpp_a113fb407a2ddd9d91c9d66df11b8e70a_cgraph" alt=""/></div>
+<map name="acmd-destroy_8cpp_a113fb407a2ddd9d91c9d66df11b8e70a_cgraph" id="acmd-destroy_8cpp_a113fb407a2ddd9d91c9d66df11b8e70a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,335,161,361"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f" title=" " alt="" coords="209,284,348,311"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="225,335,332,361"/>
+<area shape="rect" href="asking-player_8cpp.html#a18ddf190b45e6fbac7a074687008550f" title=" " alt="" coords="232,1253,325,1280"/>
+<area shape="rect" href="autopick_8cpp.html#ae7f092144503a2ccb534345fe872d299" title=" " alt="" coords="402,284,537,311"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="785,360,892,387"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="948,899,1027,925"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="1075,1101,1177,1128"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="396,797,543,824"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="424,5,515,32"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="443,56,496,83"/>
+<area shape="rect" href="object-value_8cpp.html#a0147f5032ab01303e47ff00f49648520" title="オブジェクト価格算出のメインルーチン / Return the price of an item including plusses (and charges)" alt="" coords="423,399,516,425"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="450,1253,489,1280"/>
+<area shape="rect" href="autopick-destroyer_8cpp.html#a9efe25ff3ad1ac56b5dc6ab7b27eae0a" title=" " alt="" coords="595,259,725,285"/>
+<area shape="rect" href="autopick-util_8cpp.html#a1dd80fdd8ddb78ff0a4e450460cd8951" title=" " alt="" coords="595,208,725,235"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a8108553a0b971c8d22ad18d214df8fb3" title="自動拾いの検索" alt="" coords="599,360,721,387"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="626,309,694,336"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="793,516,884,543"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="1225,1127,1276,1153"/>
+<area shape="rect" href="autopick-util_8cpp.html#a7dec5b6020c1d39cb763bf1f543a0b30" title=" " alt="" coords="599,1051,721,1077"/>
+<area shape="rect" href="angband-files_8cpp.html#af8478ae9202a347c7b95688842ff7633" title=" " alt="" coords="785,949,892,976"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="784,1101,893,1128"/>
+<area shape="rect" href="autopick-entry_8cpp.html#a4f3f90481be8626c7f36c064d773d490" title=" " alt="" coords="591,563,729,605"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="779,684,899,711"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="779,571,898,597"/>
+<area shape="rect" href="autopick-entry_8cpp.html#a2e248e8ecab84f812f2c47c31b615fc1" title=" " alt="" coords="595,681,725,722"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a4d5688a3c67109567b11632237aad306" title=" " alt="" coords="594,1000,726,1027"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="798,1152,879,1179"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#aa8a0b37eb8ed45cd8632c5fad7a3efa6" title=" " alt="" coords="777,899,900,925"/>
+<area shape="rect" href="z-virt_8cpp.html#a70a7941cc921785c30b981487ebb8f17" title="string_make() で割り当てたバッファを解放する。" alt="" coords="619,848,701,875"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-destroy_8cpp_a113fb407a2ddd9d91c9d66df11b8e70a_icgraph.png" border="0" usemap="#acmd-destroy_8cpp_a113fb407a2ddd9d91c9d66df11b8e70a_icgraph" alt=""/></div>
+<map name="acmd-destroy_8cpp_a113fb407a2ddd9d91c9d66df11b8e70a_icgraph" id="acmd-destroy_8cpp_a113fb407a2ddd9d91c9d66df11b8e70a_icgraph">
+<area shape="rect" title=" " alt="" coords="879,5,1035,32"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#ace3fa3c633ff433fd6ce004e56316daf" title="アイテムを破壊するコマンドのメインルーチン / Destroy an item" alt="" coords="712,5,831,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分30秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

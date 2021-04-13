@@ -1,0 +1,40 @@
+<map id="reset_concentration" name="reset_concentration">
+<area shape="rect" id="node1" title="スナイパーの集中度リセット" alt="" coords="1099,745,1235,772"/>
+<area shape="rect" id="node2" href="$shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="966,144,1033,171"/>
+<area shape="rect" id="node6" href="$player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,93,116,120"/>
+<area shape="rect" id="node8" href="$bad-status-setter_8cpp.html#ac2bda63c9e8d91a70dea9a38c6f76c16" title="混乱の継続時間をセットする / Set &quot;confused&quot;, notice observable changes" alt="" coords="950,800,1049,827"/>
+<area shape="rect" id="node36" href="$bad-status-setter_8cpp.html#a13b10e09c11dd68125a9575aec35003a" title="幻覚の継続時間をセットする / Set &quot;image&quot;, notice observable changes" alt="" coords="958,1192,1041,1219"/>
+<area shape="rect" id="node37" href="$bad-status-setter_8cpp.html#a4f18393e08963daf9454f4d2fe543b1c" title="麻痺の継続時間をセットする / Set &quot;paralyzed&quot;, notice observable changes" alt="" coords="948,1491,1051,1517"/>
+<area shape="rect" id="node38" href="$bad-status-setter_8cpp.html#ac1bf0ab6dab8b807333530aa20d1cc22" title="朦朧の継続時間をセットする / Set &quot;stun&quot;, notice observable changes" alt="" coords="963,692,1035,719"/>
+<area shape="rect" id="node3" href="$cmd-shoot_8cpp.html#a30d572039212ee44f63d055a45a68f93" title="射撃処理のメインルーチン" alt="" coords="759,93,851,120"/>
+<area shape="rect" id="node7" href="$cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="344,144,440,171"/>
+<area shape="rect" id="node4" href="$mind-sniper_8cpp.html#aa338b11bf292bfe8e26a415d702db76e" title="スナイパー技能の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;snipe&#39;." alt="" coords="513,93,636,120"/>
+<area shape="rect" id="node5" href="$input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,93,296,120"/>
+<area shape="rect" id="node9" href="$cmd-inn_8cpp.html#a7c07bf6c4c77231bc2a405d77437b978" title="体調を元に戻す" alt="" coords="749,363,860,389"/>
+<area shape="rect" id="node11" href="$quaff-execution_8cpp.html#a6b016a5ac43763d9a774e0a93520cdfb" title="薬を飲んだ時の各種効果処理" alt="" coords="776,1323,833,1349"/>
+<area shape="rect" id="node13" href="$monster-attack-switcher_8cpp.html#af1470bac38e1d59b39058aafdfa5e48e" title="混乱ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="734,413,875,440"/>
+<area shape="rect" id="node14" href="$spells-summon_8cpp.html#ae25b9862f324f43e7bd22de4bba02963" title="「悪霊召喚」のランダムな効果を決定して処理する。" alt="" coords="739,515,871,541"/>
+<area shape="rect" id="node15" href="$cmd-mind_8cpp.html#a15c5dc7b21b8512778dd7d853adc5743" title=" " alt="" coords="723,717,886,744"/>
+<area shape="rect" id="node16" href="$spells-status_8cpp.html#ac6cc23e751d903cceebb4c6baf1d61d1" title=" " alt="" coords="733,312,876,339"/>
+<area shape="rect" id="node17" href="$spells-status_8cpp.html#a1250a8abfd5f99b37bbcd22e7fde8d17" title=" " alt="" coords="731,616,878,643"/>
+<area shape="rect" id="node18" href="$cmd-eat_8cpp.html#a4bbdfbcc722fc44aab2b42884ec4c562" title="食料タイプの食料を食べたときの効果を発動" alt="" coords="488,835,661,861"/>
+<area shape="rect" id="node19" href="$effect-monster-charm_8cpp.html#ad3ff412f5a4e5e7ac164459b53871711" title=" " alt="" coords="716,195,893,237"/>
+<area shape="rect" id="node20" href="$effect-monster-psi_8cpp.html#aaec57f687d618997e6acb2f1196099c2" title="モンスターがPsi攻撃をダメージ反射した場合のプレイヤーへの追加効果を発動する" alt="" coords="735,819,874,861"/>
+<area shape="rect" id="node21" href="$effect-player-resist-hurt_8cpp.html#a30c131390e9c98b86d46e5b8f84d9c29" title=" " alt="" coords="736,1272,873,1299"/>
+<area shape="rect" id="node22" href="$effect-player-spirit_8cpp.html#a3d7c6becf0639cca10d2c7cdb1e4f116" title=" " alt="" coords="739,1425,870,1466"/>
+<area shape="rect" id="node23" href="$effect-player-resist-hurt_8cpp.html#a74769e902b7010f27290355c09bc385f" title=" " alt="" coords="736,987,873,1013"/>
+<area shape="rect" id="node24" href="$effect-player-resist-hurt_8cpp.html#a4db391222fac6de9243b6a960dcd838b" title=" " alt="" coords="726,565,883,592"/>
+<area shape="rect" id="node25" href="$effect-player-spirit_8cpp.html#aa77e6c187e55d97852943d3cb3599954" title=" " alt="" coords="739,1038,870,1079"/>
+<area shape="rect" id="node26" href="$effect-player-resist-hurt_8cpp.html#a3c8d385479ee21a1d5a63d07677043be" title="水流属性によるダメージを受ける" alt="" coords="738,261,871,288"/>
+<area shape="rect" id="node27" href="$cmd-eat_8cpp.html#afb5bdcc73085684a1cdebe5403f710e4" title="死体を食べたときの効果を発動" alt="" coords="501,1366,648,1407"/>
+<area shape="rect" id="node28" href="$trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="542,1643,607,1669"/>
+<area shape="rect" id="node29" href="$spells-status_8cpp.html#a3cb2a18d41d25c9c825b16220de7b45d" title=" " alt="" coords="762,1104,847,1131"/>
+<area shape="rect" id="node30" href="$spells-object_8cpp.html#aaefd631f619a96dbcd29521c0ae6d925" title="知識の石の発動を実行する / Do activation of the stone of lore." alt="" coords="746,1491,863,1517"/>
+<area shape="rect" id="node31" href="$mutation-processor_8cpp.html#aac6e6f0b449a92493ac8a184c221d6b4" title="10ゲームターンが進行するごとに突然変異の発動判定を行う処理 / Handle mutation effects once every 10 game turns" alt="" coords="709,1221,900,1248"/>
+<area shape="rect" id="node32" href="$magic-effects-timeout-reducer_8cpp.html#ab3da74b04d4dd1f34442fc82cde68b60" title="10ゲームターンが進行するごとに魔法効果の残りターンを減らしていく処理 / Handle timeout every 10 game turns" alt="" coords="731,1155,879,1197"/>
+<area shape="rect" id="node33" href="$eldritch-horror_8cpp.html#a6cef6cacb4d15880ba4cab6ad108810e" title="ELDRITCH_HORRORによるプレイヤーの精神破壊処理" alt="" coords="759,1693,851,1720"/>
+<area shape="rect" id="node34" href="$mspell-status_8cpp.html#ad66bc381edc2c6c3702f1984f3b9e8f4" title="RF5_CONFの処理。混乱。/" alt="" coords="743,885,866,912"/>
+<area shape="rect" id="node35" href="$spells-status_8cpp.html#a78827593ec05044e1205b65805e78944" title=" " alt="" coords="759,667,851,693"/>
+<area shape="rect" id="node10" href="$cmd-inn_8cpp.html#a75794154e9cd091b741077808704f853" title="宿屋への宿泊実行処理" alt="" coords="539,363,610,389"/>
+<area shape="rect" id="node12" href="$quaff-execution_8cpp.html#a663518dc63d12a75833fcd01acd2f364" title="薬を飲むコマンドのサブルーチン / Quaff a potion (from the pack or the floor)" alt="" coords="515,1104,634,1131"/>
+</map>

@@ -1,0 +1,1456 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/util/angband-files.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b7878ad5ecbf2506f4125b9d34c97e45.html">util</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">angband-files.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="angband-files_8h_source.html">util/angband-files.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="string-processor_8h_source.html">util/string-processor.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+angband-files.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2util_2angband-files_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2util_2angband-files_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2util_2angband-files_8cpp">
+<area shape="rect" title=" " alt="" coords="509,5,715,61"/>
+<area shape="rect" href="angband-files_8h.html" title=" " alt="" coords="465,109,596,136"/>
+<area shape="rect" href="string-processor_8h.html" title=" " alt="" coords="620,109,767,136"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="466,184,595,211"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="5,259,96,285"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="120,259,211,285"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="235,259,333,285"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="357,259,456,285"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="481,259,581,285"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="605,259,779,285"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="804,259,945,285"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,259,1116,285"/>
+<area shape="rect" title=" " alt="" coords="619,184,674,211"/>
+<area shape="rect" title=" " alt="" coords="699,184,784,211"/>
+<area shape="rect" title=" " alt="" coords="808,184,864,211"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a36fa9b2e726512bc17a7a6d3e39002be"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#a36fa9b2e726512bc17a7a6d3e39002be">O_BINARY</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a36fa9b2e726512bc17a7a6d3e39002be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:aa448acdb30934842110462f5dce87dbd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd">path_parse</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, int max, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> file)</td></tr>
+<tr class="separator:aa448acdb30934842110462f5dce87dbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2f18c39aa3ab9c75fed34e21e784901"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#ab2f18c39aa3ab9c75fed34e21e784901">path_temp</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, int max)</td></tr>
+<tr class="separator:ab2f18c39aa3ab9c75fed34e21e784901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed68cacae5a8a2502d31a2ee2a081898"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898">path_build</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, int max, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> path, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> file)</td></tr>
+<tr class="memdesc:aed68cacae5a8a2502d31a2ee2a081898"><td class="mdescLeft">&#160;</td><td class="mdescRight">ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path.  <a href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898">[詳解]</a><br /></td></tr>
+<tr class="separator:aed68cacae5a8a2502d31a2ee2a081898"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a260439804b04cf4df3e5e84ead313306"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306">angband_fopen</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> file, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> mode)</td></tr>
+<tr class="separator:a260439804b04cf4df3e5e84ead313306"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60e39b6af34eb94fb02e6b92499e503f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f">angband_fclose</a> (FILE *fff)</td></tr>
+<tr class="separator:a60e39b6af34eb94fb02e6b92499e503f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6dfef3d6a652bf311e07eb7c1aee550"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#ad6dfef3d6a652bf311e07eb7c1aee550">angband_fopen_temp</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, int max)</td></tr>
+<tr class="separator:ad6dfef3d6a652bf311e07eb7c1aee550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8478ae9202a347c7b95688842ff7633"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#af8478ae9202a347c7b95688842ff7633">angband_fgets</a> (FILE *fff, char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="h-type_8h.html#a323299f19186bb8ebd229f05b34cfc22">huge</a> n)</td></tr>
+<tr class="separator:af8478ae9202a347c7b95688842ff7633"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa00405f6fbeffe2c1ae9526774b9a9b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#aa00405f6fbeffe2c1ae9526774b9a9b7">angband_fputs</a> (FILE *fff, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="h-type_8h.html#a323299f19186bb8ebd229f05b34cfc22">huge</a> n)</td></tr>
+<tr class="separator:aa00405f6fbeffe2c1ae9526774b9a9b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaab27241547fba1e0f4cdcea6cc1891"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891">fd_kill</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> file)</td></tr>
+<tr class="separator:adaab27241547fba1e0f4cdcea6cc1891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15f41fb1a5a8fef0a03f789aabbb6b3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#a15f41fb1a5a8fef0a03f789aabbb6b3b">fd_move</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> file, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> what)</td></tr>
+<tr class="separator:a15f41fb1a5a8fef0a03f789aabbb6b3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a515e59cdd1cd247f9f3b48e5777a765e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#a515e59cdd1cd247f9f3b48e5777a765e">fd_copy</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> file, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> what)</td></tr>
+<tr class="separator:a515e59cdd1cd247f9f3b48e5777a765e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c4108d1fb8217d15fd233d2787ff91d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#a4c4108d1fb8217d15fd233d2787ff91d">fd_make</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> file, <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> mode)</td></tr>
+<tr class="separator:a4c4108d1fb8217d15fd233d2787ff91d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aaa636968ab7a5666dc2d7d779f82ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#a0aaa636968ab7a5666dc2d7d779f82ca">fd_open</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> file, int flags)</td></tr>
+<tr class="separator:a0aaa636968ab7a5666dc2d7d779f82ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4596de25a04220941f707a9407dc6495"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#a4596de25a04220941f707a9407dc6495">fd_lock</a> (int fd, int what)</td></tr>
+<tr class="separator:a4596de25a04220941f707a9407dc6495"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bfbb437b11fcd69bf7a407bdfef886c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#a2bfbb437b11fcd69bf7a407bdfef886c">fd_seek</a> (int fd, <a class="el" href="h-type_8h.html#a323299f19186bb8ebd229f05b34cfc22">huge</a> n)</td></tr>
+<tr class="separator:a2bfbb437b11fcd69bf7a407bdfef886c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c9214cc69e81766683b1d48d31a0892"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#a5c9214cc69e81766683b1d48d31a0892">fd_chop</a> (int fd, <a class="el" href="h-type_8h.html#a323299f19186bb8ebd229f05b34cfc22">huge</a> n)</td></tr>
+<tr class="separator:a5c9214cc69e81766683b1d48d31a0892"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c0152dc880ff428bd0f4c52f479baf5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#a8c0152dc880ff428bd0f4c52f479baf5">fd_read</a> (int fd, char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="h-type_8h.html#a323299f19186bb8ebd229f05b34cfc22">huge</a> n)</td></tr>
+<tr class="separator:a8c0152dc880ff428bd0f4c52f479baf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cec7f01bbb0339e030de218e231fcd4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#a1cec7f01bbb0339e030de218e231fcd4">fd_write</a> (int fd, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="h-type_8h.html#a323299f19186bb8ebd229f05b34cfc22">huge</a> n)</td></tr>
+<tr class="separator:a1cec7f01bbb0339e030de218e231fcd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a186f4266676163ec63ff8413334fb1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="angband-files_8cpp.html#a5a186f4266676163ec63ff8413334fb1">fd_close</a> (int fd)</td></tr>
+<tr class="separator:a5a186f4266676163ec63ff8413334fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="a36fa9b2e726512bc17a7a6d3e39002be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36fa9b2e726512bc17a7a6d3e39002be">&#9670;&nbsp;</a></span>O_BINARY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define O_BINARY&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a60e39b6af34eb94fb02e6b92499e503f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60e39b6af34eb94fb02e6b92499e503f">&#9670;&nbsp;</a></span>angband_fclose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> angband_fclose </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fff</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_a60e39b6af34eb94fb02e6b92499e503f_icgraph.png" border="0" usemap="#aangband-files_8cpp_a60e39b6af34eb94fb02e6b92499e503f_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_a60e39b6af34eb94fb02e6b92499e503f_icgraph" id="aangband-files_8cpp_a60e39b6af34eb94fb02e6b92499e503f_icgraph">
+<area shape="rect" title=" " alt="" coords="491,1187,603,1213"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a4d5688a3c67109567b11632237aad306" title=" " alt="" coords="269,5,401,32"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a91f761522cc6472f2b8db25265b9e686" title="prfファイルをファイルクローズする / Append foot part and close auto dump." alt="" coords="273,56,397,83"/>
+<area shape="rect" href="cmd-diary_8cpp.html#acdcc3303d1101bfd7a0183007248480f" title="ファイル中の全日記記録を消去する /" alt="" coords="264,107,407,133"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a19c446276d6a7514112c7c1101d0540e" title="既知のアイテムとアーティファクトを表示する" alt="" coords="241,157,430,184"/>
+<area shape="rect" href="knowledge-autopick_8cpp.html#aa1fde606cb9bd0bfb880928f8e44a487" title=" " alt="" coords="239,208,431,235"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#ac7c4da72a7fd60dd764d55689855c615" title=" " alt="" coords="244,259,427,285"/>
+<area shape="rect" href="knowledge-features_8cpp.html#a9a42070bab77ab374d6ce8853d366500" title=" " alt="" coords="239,309,431,336"/>
+<area shape="rect" href="knowledge-self_8cpp.html#ab7de2bac473b3a93ad1b8abbee8e22eb" title=" " alt="" coords="5,697,180,724"/>
+<area shape="rect" href="knowledge-inventory_8cpp.html#a9e37ad7e28ba130363460e0669f1d73f" title=" " alt="" coords="238,411,433,437"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#a8157eacf8e55d2774f5eb4ba08848c42" title="現在までに倒したモンスターを表示するコマンドのメインルーチン /" alt="" coords="256,462,415,503"/>
+<area shape="rect" href="knowledge-mutations_8cpp.html#a553a7223b99f30d93202f786b8abbf2c" title="突然変異の一覧を出力する" alt="" coords="235,528,435,555"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#ada2c30c466fe5f583f45d313eb9e76e4" title="現在のペットを表示するコマンドのメインルーチン / Display current pets" alt="" coords="251,579,419,605"/>
+<area shape="rect" href="knowledge-quests_8cpp.html#aaf8f9a69de3634cb4d475442a2879592" title=" " alt="" coords="244,629,427,656"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#a3bca117d34618ee9e62f96f8135fc763" title="スキル情報を表示するコマンドのメインルーチン / Display skill&#45;exp" alt="" coords="238,680,433,707"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="236,731,435,757"/>
+<area shape="rect" href="knowledge-self_8cpp.html#ad8c9d4de6c5e87ff995e2af752929808" title=" " alt="" coords="253,781,418,808"/>
+<area shape="rect" href="knowledge-uniques_8cpp.html#a994bf57159783baea20070fc0dd9a4b5" title="既知の生きているユニークまたは撃破済ユニークの一覧を表示させる" alt="" coords="241,832,429,859"/>
+<area shape="rect" href="knowledge-self_8cpp.html#a4120497dfdeb621df236bfa9bb4a114d" title="自己に関する情報を表示する" alt="" coords="245,883,425,909"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#a5fc7a027e00279739c0e789bedd90374" title="技能の経験を表示する" alt="" coords="228,933,443,960"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#ae0f31a85f5c0065de5a1fd0ef7b5c8c9" title=" " alt="" coords="263,984,408,1011"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a520c0b6c1900e5de2bf19398e0b48e6a" title=" " alt="" coords="19,1889,166,1930"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#aa46b7dd58d4e2cd6fc032da61b18f90a" title="テキスト方式で記念撮影する" alt="" coords="247,1085,423,1112"/>
+<area shape="rect" href="cmd-dump_8cpp.html#a3727a3419e1d878000e50917d19d0b93" title=" " alt="" coords="285,1136,385,1163"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="37,1111,149,1137"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="286,1237,385,1264"/>
+<area shape="rect" href="files-util_8cpp.html#a06656f06eccb3992114a0f3dd1f51ca1" title="ファイルからランダムに行を一つ取得する / Get a random line from a file" alt="" coords="289,1288,381,1315"/>
+<area shape="rect" href="angband-initializer_8cpp.html#aeb43129ef8fbea1c72b20e1513eb9702" title="全ゲームデータ読み込みのメインルーチン /" alt="" coords="288,1339,383,1365"/>
+<area shape="rect" href="info-initializer_8cpp.html#a32ff4402d7495d02bce95c142b7fce16" title="各種設定データをlib/edit/のテキストから読み込み Initialize the &quot;*_info&quot; array" alt="" coords="302,1389,369,1416"/>
+<area shape="rect" href="floor-loader_8cpp.html#a7c391e0a9128864de0d78e70acf21bbd" title="一時保存フロア情報を読み込む / Attempt to load the temporarily saved&#45;floor data" alt="" coords="297,1440,374,1467"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="275,1035,395,1061"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#ae35aca2767aec6057e13994af4e81ae2" title=" " alt="" coords="254,1541,417,1568"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="262,1592,409,1619"/>
+<area shape="rect" href="load_8cpp.html#a9f3adb4871bc426fc462d139f54cdd46" title="セーブファイル読み込み処理 (UIDチェック等含む) / Reading the savefile (including UID check)" alt="" coords="294,1643,377,1669"/>
+<area shape="rect" href="files-util_8cpp.html#a7a5f649ee8fe63baf4c1500fb050c8e2" title="墓のアスキーアートテンプレを読み込む" alt="" coords="283,1693,388,1720"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a10f3e675327b27936d20536ea182c422" title=" " alt="" coords="280,1744,391,1771"/>
+<area shape="rect" href="dump-remover_8cpp.html#a686855fb58524d0802396e8ff051bb7f" title="prefファイルを選択して処理する / Ask for a &quot;user pref line&quot; and process it" alt="" coords="268,1795,403,1821"/>
+<area shape="rect" href="floor-writer_8cpp.html#a159128f33a5ee6ede05b1b1759af3088" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="296,1845,375,1872"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="276,1896,395,1923"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="271,1947,400,1973"/>
+<area shape="rect" href="monster-info-spoiler_8cpp.html#a0431c6c4039cafdf6df4c80b9b8a6381" title=" " alt="" coords="277,1997,393,2024"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a7a8ed25cce52f74bc92acd792f2ee6ea" title="進化ツリーをスポイラー出力するメインルーチン / Print monsters&#39; evolution information to file" alt="" coords="280,2048,391,2075"/>
+<area shape="rect" href="monster-info-spoiler_8cpp.html#aec3c4c4a889e0a9925f97fb32c252959" title="モンスター詳細情報をスポイラー出力するメインルーチン / Create a spoiler file for monsters (&#45;SHAWN&#45;)" alt="" coords="281,2099,389,2125"/>
+<area shape="rect" href="items-spoiler_8cpp.html#a08b109e0b9d7da2dfc3299ff8cbcfd75" title="各ベースアイテムの情報を一行毎に記述する / Create a spoiler file for items" alt="" coords="281,2149,389,2176"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a61530241b7679032c7e32229a5086e90" title="ランダムアーティファクト内容をスポイラー出力するメインルーチン / Create a list file for random artifacts" alt="" coords="263,2200,408,2227"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#aab587c280fc21305bf6ff10c8f95a11e" title="現在のオプション設定をダンプ出力する /" alt="" coords="271,2251,400,2277"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a9255ead0fa9944112be227bec2bdc087" title="HTMLフッタを書き込む" alt="" coords="275,1491,395,1517"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#adf3039d86a72e2218832b06f936ab6db" title=" " alt="" coords="279,2352,391,2379"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="19,5,166,32"/>
+<area shape="rect" href="cmd-dump_8cpp.html#a17a616fd39ca52c5531a875c2a186ee4" title=" " alt="" coords="37,56,148,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af8478ae9202a347c7b95688842ff7633"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8478ae9202a347c7b95688842ff7633">&#9670;&nbsp;</a></span>angband_fgets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> angband_fgets </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a323299f19186bb8ebd229f05b34cfc22">huge</a>&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_af8478ae9202a347c7b95688842ff7633_icgraph.png" border="0" usemap="#aangband-files_8cpp_af8478ae9202a347c7b95688842ff7633_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_af8478ae9202a347c7b95688842ff7633_icgraph" id="aangband-files_8cpp_af8478ae9202a347c7b95688842ff7633_icgraph">
+<area shape="rect" title=" " alt="" coords="1080,1035,1187,1061"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="666,309,813,336"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a4d5688a3c67109567b11632237aad306" title=" " alt="" coords="885,335,1017,361"/>
+<area shape="rect" href="cmd-dump_8cpp.html#a3727a3419e1d878000e50917d19d0b93" title=" " alt="" coords="901,588,1001,615"/>
+<area shape="rect" href="files-util_8cpp.html#a06656f06eccb3992114a0f3dd1f51ca1" title="ファイルからランダムに行を一つ取得する / Get a random line from a file" alt="" coords="905,841,997,868"/>
+<area shape="rect" href="angband-initializer_8cpp.html#aeb43129ef8fbea1c72b20e1513eb9702" title="全ゲームデータ読み込みのメインルーチン /" alt="" coords="903,933,998,960"/>
+<area shape="rect" href="general-parser_8cpp.html#a96e4209594e62bec5a929f380252070c" title="パース関数に基づいてデータファイルからデータを読み取る / Initialize an &quot;*_info&quot; array, by parsing an ascii &quot;template&quot; file" alt="" coords="907,984,995,1011"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="891,1035,1011,1061"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#ae35aca2767aec6057e13994af4e81ae2" title=" " alt="" coords="869,1136,1032,1163"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="877,1187,1024,1213"/>
+<area shape="rect" href="files-util_8cpp.html#a7a5f649ee8fe63baf4c1500fb050c8e2" title="墓のアスキーアートテンプレを読み込む" alt="" coords="898,1237,1003,1264"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#acedfa161c420a2bd8154c3e62db80d23" title="一時ファイルを読み込み、ファイルに書き出す" alt="" coords="883,1288,1018,1315"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a10f3e675327b27936d20536ea182c422" title=" " alt="" coords="895,1085,1006,1112"/>
+<area shape="rect" href="dump-remover_8cpp.html#a686855fb58524d0802396e8ff051bb7f" title="prefファイルを選択して処理する / Ask for a &quot;user pref line&quot; and process it" alt="" coords="883,1339,1018,1365"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f" title=" " alt="" coords="446,5,585,32"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a113fb407a2ddd9d91c9d66df11b8e70a" title=" " alt="" coords="217,5,373,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="673,360,805,387"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="460,56,571,83"/>
+<area shape="rect" href="rumor_8cpp.html#ac90795303a6239b4a511b424262e743b" title=" " alt="" coords="688,1069,791,1096"/>
+<area shape="rect" href="random-art-characteristics_8cpp.html#aebc9c86c39aec9a4871c1e9ce23cce71" title="ランダムアーティファクト生成中、対象のオブジェクトに名前を与える。/ Set name of randomartifact." alt="" coords="231,867,360,893"/>
+<area shape="rect" href="object-flavor_8cpp.html#a3b860a2b9405fc7bc850745454f670c8" title="各種語彙からランダムな名前を作成する / Create a name from random parts." alt="" coords="668,765,811,792"/>
+<area shape="rect" href="object-flavor_8cpp.html#a8584e51c4707fc47051f9c273b20ea7b" title="ランダムなシンダリン銘を作成する / Make random Sindarin name" alt="" coords="662,968,817,995"/>
+<area shape="rect" href="monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="465,157,565,184"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="687,461,791,488"/>
+<area shape="rect" href="monster-move_8cpp.html#a1d446df3c7f8b4b4631677cc8f7b7363" title="モンスターを喋らせたり足音を立てたりする" alt="" coords="439,715,591,741"/>
+<area shape="rect" href="inventory-curse_8cpp.html#ac24b43f7273ffbe0751019a374af7efb" title=" " alt="" coords="657,867,821,893"/>
+<area shape="rect" href="vorpal-weapon_8cpp.html#af866d7fef3a08d83c6cfff80b97f14fa" title="チェンソーのノイズ音を表示する" alt="" coords="661,917,818,944"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="705,1019,773,1045"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="478,1019,553,1045"/>
+<area shape="rect" href="cmd-inn_8cpp.html#a8e693351e0e3a14f48233f3ed3489865" title="宿屋を利用する" alt="" coords="474,1069,557,1096"/>
+<area shape="rect" href="say-comments_8cpp.html#a64f5556499a0454ada8ac97ee7b5bf75" title="取引成功時の店主のメッセージ処理 / ブラックマーケットのときは別のメッセージを出す Successful haggle." alt="" coords="421,1120,609,1147"/>
+<area shape="rect" href="random-art-generator_8cpp.html#afcf25233afaf28cc2edbf1a4ed1cf188" title=" " alt="" coords="5,859,169,901"/>
+<area shape="rect" href="object-flavor_8cpp.html#ac2ef82ebba29d759daaafa97d837713a" title="ランダムな名前をアーティファクト銘として整形する。 / Create a name from random parts with quotes." alt="" coords="458,816,573,843"/>
+<area shape="rect" href="object-flavor_8cpp.html#ad7f12ad1173f73362f0e225ca7fb5d55" title="シンダリン銘をアーティファクト用に整形する。 / Make random Sindarin name with quotes" alt="" coords="452,917,579,944"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="262,157,329,184"/>
+<area shape="rect" href="cmd-attack_8cpp.html#a2b837b0da3ae92adf4b5a3297132736b" title="攻撃コマンド処理" alt="" coords="243,259,347,285"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="468,309,563,336"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a8fc25062bd77e0bfa12c4f211efe4d7c" title="モンスターを怒らせる Anger the monster" alt="" coords="461,259,569,285"/>
+<area shape="rect" href="attack-chaos-effect_8cpp.html#a3ab83784d3f907e0a97026aa6687d0b1" title="カオス武器でのテレポート・アウェイを実行する" alt="" coords="453,360,578,387"/>
+<area shape="rect" href="monster-processor_8cpp.html#a150676b003b8e11b78708a5589c6cf47" title="寝ているモンスターの起床を判定する" alt="" coords="459,411,572,437"/>
+<area shape="rect" href="spells-lite_8cpp.html#af9bb030f4463bc4bb1466f979968d7e8" title="指定した座標全てを照らす。" alt="" coords="443,461,587,488"/>
+<area shape="rect" href="pet-fall-off_8cpp.html#aa35e86a6f8baccbadef0510adf4461a7" title="落馬処理" alt="" coords="446,512,585,539"/>
+<area shape="rect" href="monster-list_8cpp.html#ae665a55b0d2be7b41b9d88eaf4b7dbdb" title="モンスターの変身処理" alt="" coords="441,563,589,589"/>
+<area shape="rect" href="monster-compaction_8cpp.html#a45418160543ab052bb17c17d724acb6b" title="モンスター情報配列を圧縮する / Compact and Reorder the monster list" alt="" coords="449,613,582,640"/>
+<area shape="rect" href="monster-processor_8cpp.html#aeb0812430183b636b7150cc7741176e6" title="モンスターの特殊技能とターン経過処理 (移動等)/ Monster spells and movement for passaging a turn" alt="" coords="426,208,605,235"/>
+<area shape="rect" href="info-initializer_8cpp.html#a32ff4402d7495d02bce95c142b7fce16" title="各種設定データをlib/edit/のテキストから読み込み Initialize the &quot;*_info&quot; array" alt="" coords="706,1120,773,1147"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a07158bc7ae5011b9dbd38ca54792646e" title=" " alt="" coords="675,1171,803,1213"/>
+<area shape="rect" href="process-death_8cpp.html#a6995792183c37e7b9d18101b3f461c37" title="墓石のアスキーアート表示 / Display a &quot;tomb&#45;stone&quot;" alt="" coords="698,1237,781,1264"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a9255ead0fa9944112be227bec2bdc087" title="HTMLフッタを書き込む" alt="" coords="679,1339,799,1365"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a0b611cba8c13dcd7aece434aca8524ac" title="HTMLヘッダを書き込む" alt="" coords="676,1288,803,1315"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a260439804b04cf4df3e5e84ead313306"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a260439804b04cf4df3e5e84ead313306">&#9670;&nbsp;</a></span>angband_fopen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE* angband_fopen </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_a260439804b04cf4df3e5e84ead313306_cgraph.png" border="0" usemap="#aangband-files_8cpp_a260439804b04cf4df3e5e84ead313306_cgraph" alt=""/></div>
+<map name="aangband-files_8cpp_a260439804b04cf4df3e5e84ead313306_cgraph" id="aangband-files_8cpp_a260439804b04cf4df3e5e84ead313306_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,115,32"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="163,5,249,32"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="297,5,360,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="408,5,475,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_a260439804b04cf4df3e5e84ead313306_icgraph.png" border="0" usemap="#aangband-files_8cpp_a260439804b04cf4df3e5e84ead313306_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_a260439804b04cf4df3e5e84ead313306_icgraph" id="aangband-files_8cpp_a260439804b04cf4df3e5e84ead313306_icgraph">
+<area shape="rect" title=" " alt="" coords="885,1127,995,1153"/>
+<area shape="rect" href="angband-files_8cpp.html#ad6dfef3d6a652bf311e07eb7c1aee550" title=" " alt="" coords="677,317,822,344"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a4d5688a3c67109567b11632237aad306" title=" " alt="" coords="452,267,584,293"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="201,5,348,32"/>
+<area shape="rect" href="dump-remover_8cpp.html#a686855fb58524d0802396e8ff051bb7f" title="prefファイルを選択して処理する / Ask for a &quot;user pref line&quot; and process it" alt="" coords="207,528,342,555"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a5a737ea245d6b917ff81756f8448f258" title="prfファイルをファイルオープンする / Open file to append auto dump." alt="" coords="5,553,127,580"/>
+<area shape="rect" href="cmd-diary_8cpp.html#acdcc3303d1101bfd7a0183007248480f" title="ファイル中の全日記記録を消去する /" alt="" coords="678,629,821,656"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#ae0f31a85f5c0065de5a1fd0ef7b5c8c9" title=" " alt="" coords="677,680,822,707"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a520c0b6c1900e5de2bf19398e0b48e6a" title=" " alt="" coords="676,731,823,773"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#aa46b7dd58d4e2cd6fc032da61b18f90a" title="テキスト方式で記念撮影する" alt="" coords="661,797,837,824"/>
+<area shape="rect" href="cmd-dump_8cpp.html#a3727a3419e1d878000e50917d19d0b93" title=" " alt="" coords="699,848,799,875"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="700,899,799,925"/>
+<area shape="rect" href="files-util_8cpp.html#a06656f06eccb3992114a0f3dd1f51ca1" title="ファイルからランダムに行を一つ取得する / Get a random line from a file" alt="" coords="703,949,795,976"/>
+<area shape="rect" href="angband-initializer_8cpp.html#aeb43129ef8fbea1c72b20e1513eb9702" title="全ゲームデータ読み込みのメインルーチン /" alt="" coords="471,949,565,976"/>
+<area shape="rect" href="info-initializer_8cpp.html#a32ff4402d7495d02bce95c142b7fce16" title="各種設定データをlib/edit/のテキストから読み込み Initialize the &quot;*_info&quot; array" alt="" coords="716,1304,783,1331"/>
+<area shape="rect" href="floor-loader_8cpp.html#a7c391e0a9128864de0d78e70acf21bbd" title="一時保存フロア情報を読み込む / Attempt to load the temporarily saved&#45;floor data" alt="" coords="711,1355,788,1381"/>
+<area shape="rect" href="write-diary_8cpp.html#a721a3148877a6d0a8936a10842591e2c" title="日記ファイルを開く" alt="" coords="695,1405,803,1432"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="458,477,578,504"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#ae35aca2767aec6057e13994af4e81ae2" title=" " alt="" coords="668,1507,831,1533"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="676,1608,823,1635"/>
+<area shape="rect" href="load_8cpp.html#a9f3adb4871bc426fc462d139f54cdd46" title="セーブファイル読み込み処理 (UIDチェック等含む) / Reading the savefile (including UID check)" alt="" coords="708,1659,791,1685"/>
+<area shape="rect" href="files-util_8cpp.html#a7a5f649ee8fe63baf4c1500fb050c8e2" title="墓のアスキーアートテンプレを読み込む" alt="" coords="697,1709,802,1736"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a10f3e675327b27936d20536ea182c422" title=" " alt="" coords="694,1557,805,1584"/>
+<area shape="rect" href="floor-writer_8cpp.html#a159128f33a5ee6ede05b1b1759af3088" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="710,1760,789,1787"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="690,1811,809,1837"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="453,1304,583,1331"/>
+<area shape="rect" href="monster-info-spoiler_8cpp.html#a0431c6c4039cafdf6df4c80b9b8a6381" title=" " alt="" coords="691,1152,807,1179"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a7a8ed25cce52f74bc92acd792f2ee6ea" title="進化ツリーをスポイラー出力するメインルーチン / Print monsters&#39; evolution information to file" alt="" coords="463,1101,573,1128"/>
+<area shape="rect" href="monster-info-spoiler_8cpp.html#aec3c4c4a889e0a9925f97fb32c252959" title="モンスター詳細情報をスポイラー出力するメインルーチン / Create a spoiler file for monsters (&#45;SHAWN&#45;)" alt="" coords="464,1253,572,1280"/>
+<area shape="rect" href="items-spoiler_8cpp.html#a08b109e0b9d7da2dfc3299ff8cbcfd75" title="各ベースアイテムの情報を一行毎に記述する / Create a spoiler file for items" alt="" coords="464,1000,572,1027"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a61530241b7679032c7e32229a5086e90" title="ランダムアーティファクト内容をスポイラー出力するメインルーチン / Create a list file for random artifacts" alt="" coords="677,1861,822,1888"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#aab587c280fc21305bf6ff10c8f95a11e" title="現在のオプション設定をダンプ出力する /" alt="" coords="685,1912,814,1939"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#adf3039d86a72e2218832b06f936ab6db" title=" " alt="" coords="462,1456,574,1483"/>
+<area shape="rect" href="dump-util_8cpp.html#a27e645085e01749040cc85a4e9242bff" title="ダンプ用の一時ファイルを開く" alt="" coords="449,317,587,344"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a19c446276d6a7514112c7c1101d0540e" title="既知のアイテムとアーティファクトを表示する" alt="" coords="180,56,369,83"/>
+<area shape="rect" href="knowledge-autopick_8cpp.html#aa1fde606cb9bd0bfb880928f8e44a487" title=" " alt="" coords="179,107,371,133"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#ac7c4da72a7fd60dd764d55689855c615" title=" " alt="" coords="183,157,366,184"/>
+<area shape="rect" href="knowledge-features_8cpp.html#a9a42070bab77ab374d6ce8853d366500" title=" " alt="" coords="179,208,371,235"/>
+<area shape="rect" href="knowledge-self_8cpp.html#ab7de2bac473b3a93ad1b8abbee8e22eb" title=" " alt="" coords="187,477,362,504"/>
+<area shape="rect" href="knowledge-inventory_8cpp.html#a9e37ad7e28ba130363460e0669f1d73f" title=" " alt="" coords="177,259,372,285"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#a8157eacf8e55d2774f5eb4ba08848c42" title="現在までに倒したモンスターを表示するコマンドのメインルーチン /" alt="" coords="195,310,354,351"/>
+<area shape="rect" href="knowledge-mutations_8cpp.html#a553a7223b99f30d93202f786b8abbf2c" title="突然変異の一覧を出力する" alt="" coords="175,376,375,403"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#ada2c30c466fe5f583f45d313eb9e76e4" title="現在のペットを表示するコマンドのメインルーチン / Display current pets" alt="" coords="191,427,359,453"/>
+<area shape="rect" href="main_8cpp.html#a6d912cdfb4d30abf0dc29e59f3cb58b3" title=" " alt="" coords="11,1063,121,1089"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a07158bc7ae5011b9dbd38ca54792646e" title=" " alt="" coords="454,1507,582,1549"/>
+<area shape="rect" href="cmd-autopick_8cpp.html#a8dc56811ab6efa5123eec7f83eb4bb26" title=" " alt="" coords="199,1485,351,1512"/>
+<area shape="rect" href="process-death_8cpp.html#a6995792183c37e7b9d18101b3f461c37" title="墓石のアスキーアート表示 / Display a &quot;tomb&#45;stone&quot;" alt="" coords="477,1709,559,1736"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="205,1177,344,1204"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="209,1101,340,1128"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a08d092c74005708a070e21db6c880ac2" title=" " alt="" coords="423,1152,613,1179"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad6dfef3d6a652bf311e07eb7c1aee550"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6dfef3d6a652bf311e07eb7c1aee550">&#9670;&nbsp;</a></span>angband_fopen_temp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE* angband_fopen_temp </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_ad6dfef3d6a652bf311e07eb7c1aee550_cgraph.png" border="0" usemap="#aangband-files_8cpp_ad6dfef3d6a652bf311e07eb7c1aee550_cgraph" alt=""/></div>
+<map name="aangband-files_8cpp_ad6dfef3d6a652bf311e07eb7c1aee550_cgraph" id="aangband-files_8cpp_ad6dfef3d6a652bf311e07eb7c1aee550_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,151,57"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="199,5,308,32"/>
+<area shape="rect" href="angband-files_8cpp.html#ab2f18c39aa3ab9c75fed34e21e784901" title=" " alt="" coords="358,56,441,83"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="356,5,443,32"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="491,31,553,57"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_ad6dfef3d6a652bf311e07eb7c1aee550_icgraph.png" border="0" usemap="#aangband-files_8cpp_ad6dfef3d6a652bf311e07eb7c1aee550_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_ad6dfef3d6a652bf311e07eb7c1aee550_icgraph" id="aangband-files_8cpp_ad6dfef3d6a652bf311e07eb7c1aee550_icgraph">
+<area shape="rect" title=" " alt="" coords="641,427,787,453"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a4d5688a3c67109567b11632237aad306" title=" " alt="" coords="458,204,590,231"/>
+<area shape="rect" href="dump-util_8cpp.html#a27e645085e01749040cc85a4e9242bff" title="ダンプ用の一時ファイルを開く" alt="" coords="455,452,593,479"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="226,5,373,32"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f" title=" " alt="" coords="5,5,144,32"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a19c446276d6a7514112c7c1101d0540e" title="既知のアイテムとアーティファクトを表示する" alt="" coords="205,56,394,83"/>
+<area shape="rect" href="knowledge-autopick_8cpp.html#aa1fde606cb9bd0bfb880928f8e44a487" title=" " alt="" coords="203,107,395,133"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#ac7c4da72a7fd60dd764d55689855c615" title=" " alt="" coords="208,157,391,184"/>
+<area shape="rect" href="knowledge-features_8cpp.html#a9a42070bab77ab374d6ce8853d366500" title=" " alt="" coords="203,208,395,235"/>
+<area shape="rect" href="knowledge-self_8cpp.html#ab7de2bac473b3a93ad1b8abbee8e22eb" title=" " alt="" coords="212,259,387,285"/>
+<area shape="rect" href="knowledge-inventory_8cpp.html#a9e37ad7e28ba130363460e0669f1d73f" title=" " alt="" coords="202,309,397,336"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#a8157eacf8e55d2774f5eb4ba08848c42" title="現在までに倒したモンスターを表示するコマンドのメインルーチン /" alt="" coords="220,361,379,402"/>
+<area shape="rect" href="knowledge-mutations_8cpp.html#a553a7223b99f30d93202f786b8abbf2c" title="突然変異の一覧を出力する" alt="" coords="199,832,399,859"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#ada2c30c466fe5f583f45d313eb9e76e4" title="現在のペットを表示するコマンドのメインルーチン / Display current pets" alt="" coords="215,427,383,453"/>
+<area shape="rect" href="knowledge-quests_8cpp.html#aaf8f9a69de3634cb4d475442a2879592" title=" " alt="" coords="208,477,391,504"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#a3bca117d34618ee9e62f96f8135fc763" title="スキル情報を表示するコマンドのメインルーチン / Display skill&#45;exp" alt="" coords="202,528,397,555"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="200,579,399,605"/>
+<area shape="rect" href="knowledge-self_8cpp.html#ad8c9d4de6c5e87ff995e2af752929808" title=" " alt="" coords="217,629,382,656"/>
+<area shape="rect" href="knowledge-uniques_8cpp.html#a994bf57159783baea20070fc0dd9a4b5" title="既知の生きているユニークまたは撃破済ユニークの一覧を表示させる" alt="" coords="205,680,393,707"/>
+<area shape="rect" href="knowledge-self_8cpp.html#a4120497dfdeb621df236bfa9bb4a114d" title="自己に関する情報を表示する" alt="" coords="209,731,389,757"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#a5fc7a027e00279739c0e789bedd90374" title="技能の経験を表示する" alt="" coords="192,781,407,808"/>
+<area shape="rect" href="dump-remover_8cpp.html#a686855fb58524d0802396e8ff051bb7f" title="prefファイルを選択して処理する / Ask for a &quot;user pref line&quot; and process it" alt="" coords="232,883,367,909"/>
+<area shape="rect" href="cmd-knowledge_8cpp.html#aa220b38b20d426fe2517d1a4fd738e0c" title=" " alt="" coords="7,452,143,479"/>
+<area shape="rect" href="display-player_8cpp.html#a5e697054ef593f4033637a2bdfffe272" title="プレーヤーのステータス表示メインルーチン群" alt="" coords="9,832,141,859"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a5a737ea245d6b917ff81756f8448f258" title="prfファイルをファイルオープンする / Open file to append auto dump." alt="" coords="14,883,135,909"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa00405f6fbeffe2c1ae9526774b9a9b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa00405f6fbeffe2c1ae9526774b9a9b7">&#9670;&nbsp;</a></span>angband_fputs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> angband_fputs </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a323299f19186bb8ebd229f05b34cfc22">huge</a>&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_aa00405f6fbeffe2c1ae9526774b9a9b7_icgraph.png" border="0" usemap="#aangband-files_8cpp_aa00405f6fbeffe2c1ae9526774b9a9b7_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_aa00405f6fbeffe2c1ae9526774b9a9b7_icgraph" id="aangband-files_8cpp_aa00405f6fbeffe2c1ae9526774b9a9b7_icgraph">
+<area shape="rect" title=" " alt="" coords="711,31,817,57"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#adf3039d86a72e2218832b06f936ab6db" title=" " alt="" coords="551,31,663,57"/>
+<area shape="rect" href="cmd-autopick_8cpp.html#a8dc56811ab6efa5123eec7f83eb4bb26" title=" " alt="" coords="351,31,503,57"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#ab33f054c7b623777d0e9417255966aea" title="標準オプションを変更するコマンドのメインルーチン / Set or unset various options." alt="" coords="185,5,303,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5c9214cc69e81766683b1d48d31a0892"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c9214cc69e81766683b1d48d31a0892">&#9670;&nbsp;</a></span>fd_chop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> fd_chop </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a323299f19186bb8ebd229f05b34cfc22">huge</a>&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5a186f4266676163ec63ff8413334fb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a186f4266676163ec63ff8413334fb1">&#9670;&nbsp;</a></span>fd_close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> fd_close </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_a5a186f4266676163ec63ff8413334fb1_icgraph.png" border="0" usemap="#aangband-files_8cpp_a5a186f4266676163ec63ff8413334fb1_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_a5a186f4266676163ec63ff8413334fb1_icgraph" id="aangband-files_8cpp_a5a186f4266676163ec63ff8413334fb1_icgraph">
+<area shape="rect" title=" " alt="" coords="889,450,960,476"/>
+<area shape="rect" href="floor-save_8cpp.html#a81bbf4dd74f387e0e3d38360ba0a200e" title="保存された階の管理 / management of the saved floor" alt="" coords="685,146,841,172"/>
+<area shape="rect" href="game-closer_8cpp.html#a7cf64dc3aba4c5aa43d6bb2c5397d1e5" title=" " alt="" coords="537,28,619,55"/>
+<area shape="rect" href="files-util_8cpp.html#a25e3e63912a05d70271e55b35d1aaaf7" title="ファイル位置を読み込む" alt="" coords="717,399,810,426"/>
+<area shape="rect" href="load_8cpp.html#ac688b6edacb63309692463886f9d5cbc" title="セーブデータ読み込みのメインルーチン / Attempt to Load a &quot;savefile&quot;" alt="" coords="526,399,630,426"/>
+<area shape="rect" href="files-util_8cpp.html#a1a24b90a72b9344cd7790c0a0d2dc794" title="ファイル位置に書き込む /" alt="" coords="716,348,811,375"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="519,247,637,274"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="139,298,279,324"/>
+<area shape="rect" href="scores_8cpp.html#a649215d7f6928dc9f840e4ae5e144f57" title="スコア表示処理メインルーチン / Hack – Display the scores in a given range and quit." alt="" coords="709,500,818,527"/>
+<area shape="rect" href="angband-files_8cpp.html#a515e59cdd1cd247f9f3b48e5777a765e" title=" " alt="" coords="730,551,797,578"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="714,602,813,628"/>
+<area shape="rect" href="angband-initializer_8cpp.html#aeb43129ef8fbea1c72b20e1513eb9702" title="全ゲームデータ読み込みのメインルーチン /" alt="" coords="716,652,811,679"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a91b7333c3a95aa7a4b255d1d6f8e4afc" title=" " alt="" coords="690,703,837,730"/>
+<area shape="rect" href="scores_8cpp.html#a5865b524046672aef195b80c6aba7405" title="スコアランキングの簡易表示(種族毎)サブルーチン / Race Legends &#45;KMW&#45;" alt="" coords="720,754,807,780"/>
+<area shape="rect" href="floor-writer_8cpp.html#a159128f33a5ee6ede05b1b1759af3088" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="539,196,617,223"/>
+<area shape="rect" href="scores_8cpp.html#a139c95397e8ccc8ebcdd2e342f08174c" title="スコアランキングの簡易表示 / show_highclass &#45; selectively list highscores based on class &#45;KMW&#45;" alt="" coords="706,804,821,831"/>
+<area shape="rect" href="floor-save_8cpp.html#a254d6d82a447c0618d21ba954b1fda89" title="保存フロア配列を初期化する / Initialize saved_floors array." alt="" coords="519,146,637,172"/>
+<area shape="rect" href="game-play_8cpp.html#a6dcdab54fa3147bf758cb92b13779d23" title=" " alt="" coords="147,196,271,223"/>
+<area shape="rect" href="dungeon-loader_8cpp.html#a7500486a4ccc69265cdee7d56ed343d0" title="保存されたフロアを読み込む / Read the dungeon" alt="" coords="354,196,443,223"/>
+<area shape="rect" href="game-play_8cpp.html#af74af5879fc4070fb4521a11d99c9367" title=" " alt="" coords="327,80,471,121"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="5,298,91,324"/>
+<area shape="rect" href="game-closer_8cpp.html#a87d2bc43dd7c1537d1b537a9f776a73b" title="ゲームクローズ時、プレイヤーが死亡しているかのチェックを行い死亡していないならば、確認キー入力とスコア表示、現フロアの初期化を行う。" alt="" coords="351,28,447,55"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="163,87,255,114"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="141,348,276,375"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="353,247,444,274"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a515e59cdd1cd247f9f3b48e5777a765e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a515e59cdd1cd247f9f3b48e5777a765e">&#9670;&nbsp;</a></span>fd_copy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> fd_copy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>what</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_a515e59cdd1cd247f9f3b48e5777a765e_cgraph.png" border="0" usemap="#aangband-files_8cpp_a515e59cdd1cd247f9f3b48e5777a765e_cgraph" alt=""/></div>
+<map name="aangband-files_8cpp_a515e59cdd1cd247f9f3b48e5777a765e_cgraph" id="aangband-files_8cpp_a515e59cdd1cd247f9f3b48e5777a765e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,72,83"/>
+<area shape="rect" href="angband-files_8cpp.html#a5a186f4266676163ec63ff8413334fb1" title=" " alt="" coords="120,5,191,32"/>
+<area shape="rect" href="angband-files_8cpp.html#a0aaa636968ab7a5666dc2d7d779f82ca" title=" " alt="" coords="122,56,189,83"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="239,81,325,108"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="373,81,436,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adaab27241547fba1e0f4cdcea6cc1891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaab27241547fba1e0f4cdcea6cc1891">&#9670;&nbsp;</a></span>fd_kill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> fd_kill </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_adaab27241547fba1e0f4cdcea6cc1891_cgraph.png" border="0" usemap="#aangband-files_8cpp_adaab27241547fba1e0f4cdcea6cc1891_cgraph" alt=""/></div>
+<map name="aangband-files_8cpp_adaab27241547fba1e0f4cdcea6cc1891_cgraph" id="aangband-files_8cpp_adaab27241547fba1e0f4cdcea6cc1891_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,60,32"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="108,5,195,32"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="243,5,305,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="353,5,420,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_adaab27241547fba1e0f4cdcea6cc1891_icgraph.png" border="0" usemap="#aangband-files_8cpp_adaab27241547fba1e0f4cdcea6cc1891_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_adaab27241547fba1e0f4cdcea6cc1891_icgraph" id="aangband-files_8cpp_adaab27241547fba1e0f4cdcea6cc1891_icgraph">
+<area shape="rect" title=" " alt="" coords="837,655,892,681"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a4d5688a3c67109567b11632237aad306" title=" " alt="" coords="616,5,748,32"/>
+<area shape="rect" href="floor-save_8cpp.html#af6a0932b05702c7850af22d11e57b675" title="保存フロア用テンポラリファイルを削除する / Kill temporary files" alt="" coords="607,157,757,184"/>
+<area shape="rect" href="cmd-diary_8cpp.html#acdcc3303d1101bfd7a0183007248480f" title="ファイル中の全日記記録を消去する /" alt="" coords="611,259,753,285"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a19c446276d6a7514112c7c1101d0540e" title="既知のアイテムとアーティファクトを表示する" alt="" coords="587,883,777,909"/>
+<area shape="rect" href="knowledge-autopick_8cpp.html#aa1fde606cb9bd0bfb880928f8e44a487" title=" " alt="" coords="586,933,778,960"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#ac7c4da72a7fd60dd764d55689855c615" title=" " alt="" coords="591,984,773,1011"/>
+<area shape="rect" href="knowledge-features_8cpp.html#a9a42070bab77ab374d6ce8853d366500" title=" " alt="" coords="586,1035,778,1061"/>
+<area shape="rect" href="knowledge-self_8cpp.html#ab7de2bac473b3a93ad1b8abbee8e22eb" title=" " alt="" coords="595,309,769,336"/>
+<area shape="rect" href="knowledge-inventory_8cpp.html#a9e37ad7e28ba130363460e0669f1d73f" title=" " alt="" coords="585,360,779,387"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#a8157eacf8e55d2774f5eb4ba08848c42" title="現在までに倒したモンスターを表示するコマンドのメインルーチン /" alt="" coords="603,411,761,453"/>
+<area shape="rect" href="knowledge-mutations_8cpp.html#a553a7223b99f30d93202f786b8abbf2c" title="突然変異の一覧を出力する" alt="" coords="582,208,782,235"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#ada2c30c466fe5f583f45d313eb9e76e4" title="現在のペットを表示するコマンドのメインルーチン / Display current pets" alt="" coords="598,477,766,504"/>
+<area shape="rect" href="knowledge-quests_8cpp.html#aaf8f9a69de3634cb4d475442a2879592" title=" " alt="" coords="591,528,773,555"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#a3bca117d34618ee9e62f96f8135fc763" title="スキル情報を表示するコマンドのメインルーチン / Display skill&#45;exp" alt="" coords="585,579,779,605"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="583,629,781,656"/>
+<area shape="rect" href="knowledge-self_8cpp.html#ad8c9d4de6c5e87ff995e2af752929808" title=" " alt="" coords="599,680,765,707"/>
+<area shape="rect" href="knowledge-uniques_8cpp.html#a994bf57159783baea20070fc0dd9a4b5" title="既知の生きているユニークまたは撃破済ユニークの一覧を表示させる" alt="" coords="588,731,776,757"/>
+<area shape="rect" href="knowledge-self_8cpp.html#a4120497dfdeb621df236bfa9bb4a114d" title="自己に関する情報を表示する" alt="" coords="592,781,772,808"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#a5fc7a027e00279739c0e789bedd90374" title="技能の経験を表示する" alt="" coords="575,832,789,859"/>
+<area shape="rect" href="floor-save_8cpp.html#a254d6d82a447c0618d21ba954b1fda89" title="保存フロア配列を初期化する / Initialize saved_floors array." alt="" coords="395,1085,512,1112"/>
+<area shape="rect" href="floor-save_8cpp.html#a9ba80d3702988185f84664eedd003a33" title="参照ポインタ先の保存フロアを抹消する / kill a saved floor and get an empty space" alt="" coords="627,1237,737,1264"/>
+<area shape="rect" href="floor-loader_8cpp.html#a7c391e0a9128864de0d78e70acf21bbd" title="一時保存フロア情報を読み込む / Attempt to load the temporarily saved&#45;floor data" alt="" coords="415,1136,492,1163"/>
+<area shape="rect" href="dump-remover_8cpp.html#a686855fb58524d0802396e8ff051bb7f" title="prefファイルを選択して処理する / Ask for a &quot;user pref line&quot; and process it" alt="" coords="615,1288,749,1315"/>
+<area shape="rect" href="floor-writer_8cpp.html#a159128f33a5ee6ede05b1b1759af3088" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="414,1187,493,1213"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="408,56,499,83"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="623,107,741,133"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="380,5,527,32"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f" title=" " alt="" coords="179,5,317,32"/>
+<area shape="rect" href="game-closer_8cpp.html#a7cf64dc3aba4c5aa43d6bb2c5397d1e5" title=" " alt="" coords="413,157,494,184"/>
+<area shape="rect" href="game-closer_8cpp.html#a87d2bc43dd7c1537d1b537a9f776a73b" title="ゲームクローズ時、プレイヤーが死亡しているかのチェックを行い死亡していないならば、確認キー入力とスコア表示、現フロアの初期化を行う。" alt="" coords="200,157,296,184"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="15,132,107,159"/>
+<area shape="rect" href="cmd-diary_8cpp.html#aaf0ccc9b13b97fbe9af4a017265aa384" title="日記コマンド" alt="" coords="402,579,505,605"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="182,579,314,605"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="164,629,332,656"/>
+<area shape="rect" href="cmd-knowledge_8cpp.html#aa220b38b20d426fe2517d1a4fd738e0c" title=" " alt="" coords="385,629,521,656"/>
+<area shape="rect" href="display-player_8cpp.html#a5e697054ef593f4033637a2bdfffe272" title="プレーヤーのステータス表示メインルーチン群" alt="" coords="387,208,519,235"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="195,208,301,235"/>
+<area shape="rect" href="dungeon-loader_8cpp.html#a7500486a4ccc69265cdee7d56ed343d0" title="保存されたフロアを読み込む / Read the dungeon" alt="" coords="203,1111,293,1137"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a092e95632a8987f70d45586dfe3d522f" title=" " alt="" coords="5,1313,116,1340"/>
+<area shape="rect" href="floor-save_8cpp.html#a1b1bb290d8adda7238744b68732dedad" title="新規に利用可能な保存フロアを返す / Initialize new saved floor and get its floor id." alt="" coords="394,1237,513,1264"/>
+<area shape="rect" href="floor-leaver_8cpp.html#aeb5e565fe723a2b95cd96a64957f2a81" title=" " alt="" coords="190,1364,306,1391"/>
+<area shape="rect" href="floor-leaver_8cpp.html#ad9228d1c2498d0c6977f76d351102bc4" title=" " alt="" coords="179,1263,317,1289"/>
+<area shape="rect" href="spells-grid_8cpp.html#acf2eb5e94ece8678894af710d01688f4" title="プレイヤーの手による能動的な階段生成処理 / Create stairs at or move previously created stairs into the player location." alt="" coords="198,1313,298,1340"/>
+<area shape="rect" href="floor-changer_8cpp.html#a0bb1fffcff605332566b68418b49154a" title=" " alt="" coords="202,1212,294,1239"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4596de25a04220941f707a9407dc6495"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4596de25a04220941f707a9407dc6495">&#9670;&nbsp;</a></span>fd_lock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> fd_lock </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>what</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_a4596de25a04220941f707a9407dc6495_icgraph.png" border="0" usemap="#aangband-files_8cpp_a4596de25a04220941f707a9407dc6495_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_a4596de25a04220941f707a9407dc6495_icgraph" id="aangband-files_8cpp_a4596de25a04220941f707a9407dc6495_icgraph">
+<area shape="rect" title=" " alt="" coords="469,81,532,108"/>
+<area shape="rect" href="files-util_8cpp.html#a1a24b90a72b9344cd7790c0a0d2dc794" title="ファイル位置に書き込む /" alt="" coords="327,56,421,83"/>
+<area shape="rect" href="scores_8cpp.html#af3bc9911d7f0c3a60be12ca5ea8713b8" title="スコアの過去二十位内ランキングを表示する Enters a players name on a hi&#45;score table, if &quot;legal&quot;, and in any case,..." alt="" coords="331,107,417,133"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="144,5,279,32"/>
+<area shape="rect" href="load_8cpp.html#ac688b6edacb63309692463886f9d5cbc" title="セーブデータ読み込みのメインルーチン / Attempt to Load a &quot;savefile&quot;" alt="" coords="159,56,263,83"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="152,107,271,133"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="8,31,93,57"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="5,107,96,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4c4108d1fb8217d15fd233d2787ff91d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c4108d1fb8217d15fd233d2787ff91d">&#9670;&nbsp;</a></span>fd_make()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fd_make </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_a4c4108d1fb8217d15fd233d2787ff91d_cgraph.png" border="0" usemap="#aangband-files_8cpp_a4c4108d1fb8217d15fd233d2787ff91d_cgraph" alt=""/></div>
+<map name="aangband-files_8cpp_a4c4108d1fb8217d15fd233d2787ff91d_cgraph" id="aangband-files_8cpp_a4c4108d1fb8217d15fd233d2787ff91d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,76,32"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="124,5,211,32"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="259,5,321,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="369,5,436,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_a4c4108d1fb8217d15fd233d2787ff91d_icgraph.png" border="0" usemap="#aangband-files_8cpp_a4c4108d1fb8217d15fd233d2787ff91d_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_a4c4108d1fb8217d15fd233d2787ff91d_icgraph" id="aangband-files_8cpp_a4c4108d1fb8217d15fd233d2787ff91d_icgraph">
+<area shape="rect" title=" " alt="" coords="521,183,592,209"/>
+<area shape="rect" href="files-util_8cpp.html#a1a24b90a72b9344cd7790c0a0d2dc794" title="ファイル位置に書き込む /" alt="" coords="353,56,447,83"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="152,107,271,133"/>
+<area shape="rect" href="angband-initializer_8cpp.html#aeb43129ef8fbea1c72b20e1513eb9702" title="全ゲームデータ読み込みのメインルーチン /" alt="" coords="353,157,447,184"/>
+<area shape="rect" href="floor-save_8cpp.html#a254d6d82a447c0618d21ba954b1fda89" title="保存フロア配列を初期化する / Initialize saved_floors array." alt="" coords="341,208,459,235"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a91b7333c3a95aa7a4b255d1d6f8e4afc" title=" " alt="" coords="327,259,473,285"/>
+<area shape="rect" href="floor-writer_8cpp.html#a159128f33a5ee6ede05b1b1759af3088" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="361,309,439,336"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="144,5,279,32"/>
+<area shape="rect" href="load_8cpp.html#ac688b6edacb63309692463886f9d5cbc" title="セーブデータ読み込みのメインルーチン / Attempt to Load a &quot;savefile&quot;" alt="" coords="159,56,263,83"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="8,31,93,57"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="5,107,96,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a15f41fb1a5a8fef0a03f789aabbb6b3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15f41fb1a5a8fef0a03f789aabbb6b3b">&#9670;&nbsp;</a></span>fd_move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> fd_move </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>what</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_a15f41fb1a5a8fef0a03f789aabbb6b3b_cgraph.png" border="0" usemap="#aangband-files_8cpp_a15f41fb1a5a8fef0a03f789aabbb6b3b_cgraph" alt=""/></div>
+<map name="aangband-files_8cpp_a15f41fb1a5a8fef0a03f789aabbb6b3b_cgraph" id="aangband-files_8cpp_a15f41fb1a5a8fef0a03f789aabbb6b3b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,75,32"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="123,5,209,32"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="257,5,320,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="368,5,435,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_a15f41fb1a5a8fef0a03f789aabbb6b3b_icgraph.png" border="0" usemap="#aangband-files_8cpp_a15f41fb1a5a8fef0a03f789aabbb6b3b_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_a15f41fb1a5a8fef0a03f789aabbb6b3b_icgraph" id="aangband-files_8cpp_a15f41fb1a5a8fef0a03f789aabbb6b3b_icgraph">
+<area shape="rect" title=" " alt="" coords="921,350,991,377"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="783,350,873,377"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="224,198,316,225"/>
+<area shape="rect" href="cmd-save_8cpp.html#a5f3c9a464d1f438f0a2860a68b31da96" title="セーブするコマンドのメインルーチン Save the game" alt="" coords="591,426,731,453"/>
+<area shape="rect" href="exit-panic_8cpp.html#a0f279185d9f6e778065f70c47157b5c2" title="異常発生時のゲーム緊急終了処理" alt="" coords="601,274,721,301"/>
+<area shape="rect" href="signal-handlers_8cpp.html#a1d7db3880dfb5e325d7f9388f84a90aa" title="OSからのシグナルを受けて強制終了する / Handle signal – abort, kill, etc" alt="" coords="593,325,730,351"/>
+<area shape="rect" href="input-key-requester_8cpp.html#a05bf5c41a8377acfa4b6b2487e55323d" title=" " alt="" coords="597,375,726,402"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="200,730,340,757"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="588,5,735,47"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="627,603,695,630"/>
+<area shape="rect" href="signal-handlers_8cpp.html#acf6a4a9a8cb29ca8bd1c8e232041aecd" title="OSからのシグナルを受けて中断、終了する / Handle signals – simple (interrupt and quit)" alt="" coords="5,198,152,225"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="36,401,121,427"/>
+<area shape="rect" href="activation-teleport_8cpp.html#ab5384bdf29abc3ad27487147449600af" title=" " alt="" coords="407,274,521,301"/>
+<area shape="rect" href="game-closer_8cpp.html#a87d2bc43dd7c1537d1b537a9f776a73b" title="ゲームクローズ時、プレイヤーが死亡しているかのチェックを行い死亡していないならば、確認キー入力とスコア表示、現フロアの初期化を行う。" alt="" coords="416,325,512,351"/>
+<area shape="rect" href="cmd-autopick_8cpp.html#a8dc56811ab6efa5123eec7f83eb4bb26" title=" " alt="" coords="388,527,540,554"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="204,451,336,478"/>
+<area shape="rect" href="cmd-move_8cpp.html#a9d5fbe57b7b1e9058947333e00dee815" title="階段を使って階層を降りる処理 / Go down one level" alt="" coords="401,426,527,453"/>
+<area shape="rect" href="cmd-move_8cpp.html#a16005f2ab8f785b6fb42030270681913" title="階段を使って階層を昇る処理 / Go up one level" alt="" coords="409,477,519,503"/>
+<area shape="rect" href="world-movement-processor_8cpp.html#a597a48dd4ed8e2e51c1a114cb9b125c1" title="10ゲームターンが進行するごとにフロア・リセット/現実変容の残り時間カウントダウンと発動を処理する。 / Handle involuntary movement once every 10 game t..." alt="" coords="397,578,531,605"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="217,629,323,655"/>
+<area shape="rect" href="world-movement-processor_8cpp.html#a9cf11d071cabe6008f72bbb6eed498d5" title="10ゲームターンが進行するごとに帰還の残り時間カウントダウンと発動を処理する。 / Handle involuntary movement once every 10 game turns" alt="" coords="411,629,517,655"/>
+<area shape="rect" href="trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="431,730,497,757"/>
+<area shape="rect" href="pattern-walk_8cpp.html#a745540435a2b0b0a48557231ce3b5cef" title="パターン終点到達時のテレポート処理を行う" alt="" coords="408,122,520,149"/>
+<area shape="rect" href="spells-world_8cpp.html#a7204ab233ffa573046416517da467469" title="プレイヤー及びモンスターをレベルテレポートさせる / Teleport the player one level up or down (random when legal)" alt="" coords="415,173,513,199"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a98b79010bb1266a7ff2f32920ca5f5a2" title="任意のダンジョン及び階層に飛ぶ / Go to any level" alt="" coords="389,223,539,250"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0aaa636968ab7a5666dc2d7d779f82ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aaa636968ab7a5666dc2d7d779f82ca">&#9670;&nbsp;</a></span>fd_open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fd_open </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_a0aaa636968ab7a5666dc2d7d779f82ca_cgraph.png" border="0" usemap="#aangband-files_8cpp_a0aaa636968ab7a5666dc2d7d779f82ca_cgraph" alt=""/></div>
+<map name="aangband-files_8cpp_a0aaa636968ab7a5666dc2d7d779f82ca_cgraph" id="aangband-files_8cpp_a0aaa636968ab7a5666dc2d7d779f82ca_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,72,32"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="120,5,207,32"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="255,5,317,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="365,5,432,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_a0aaa636968ab7a5666dc2d7d779f82ca_icgraph.png" border="0" usemap="#aangband-files_8cpp_a0aaa636968ab7a5666dc2d7d779f82ca_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_a0aaa636968ab7a5666dc2d7d779f82ca_icgraph" id="aangband-files_8cpp_a0aaa636968ab7a5666dc2d7d779f82ca_icgraph">
+<area shape="rect" title=" " alt="" coords="1199,357,1265,384"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="465,79,557,105"/>
+<area shape="rect" href="files-util_8cpp.html#a25e3e63912a05d70271e55b35d1aaaf7" title="ファイル位置を読み込む" alt="" coords="1027,180,1121,207"/>
+<area shape="rect" href="load_8cpp.html#ac688b6edacb63309692463886f9d5cbc" title="セーブデータ読み込みのメインルーチン / Attempt to Load a &quot;savefile&quot;" alt="" coords="838,231,942,257"/>
+<area shape="rect" href="files-util_8cpp.html#a1a24b90a72b9344cd7790c0a0d2dc794" title="ファイル位置に書き込む /" alt="" coords="1027,129,1121,156"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="441,129,581,156"/>
+<area shape="rect" href="scores_8cpp.html#a649215d7f6928dc9f840e4ae5e144f57" title="スコア表示処理メインルーチン / Hack – Display the scores in a given range and quit." alt="" coords="651,281,761,308"/>
+<area shape="rect" href="angband-files_8cpp.html#a515e59cdd1cd247f9f3b48e5777a765e" title=" " alt="" coords="1041,332,1107,359"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="1025,383,1123,409"/>
+<area shape="rect" href="angband-initializer_8cpp.html#aeb43129ef8fbea1c72b20e1513eb9702" title="全ゲームデータ読み込みのメインルーチン /" alt="" coords="104,387,199,413"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a7b3422597b16b0101cc18d18a77fc1e3" title=" " alt="" coords="629,485,783,526"/>
+<area shape="rect" href="record-play-movie_8cpp.html#afbaa13e8bacd60766001eb3f4298003d" title=" " alt="" coords="997,535,1151,577"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a91b7333c3a95aa7a4b255d1d6f8e4afc" title=" " alt="" coords="1001,601,1147,628"/>
+<area shape="rect" href="scores_8cpp.html#a5865b524046672aef195b80c6aba7405" title="スコアランキングの簡易表示(種族毎)サブルーチン / Race Legends &#45;KMW&#45;" alt="" coords="1031,652,1117,679"/>
+<area shape="rect" href="scores_8cpp.html#a139c95397e8ccc8ebcdd2e342f08174c" title="スコアランキングの簡易表示 / show_highclass &#45; selectively list highscores based on class &#45;KMW&#45;" alt="" coords="1017,703,1131,729"/>
+<area shape="rect" href="signal-handlers_8cpp.html#acf6a4a9a8cb29ca8bd1c8e232041aecd" title="OSからのシグナルを受けて中断、終了する / Handle signals – simple (interrupt and quit)" alt="" coords="247,104,393,131"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="277,180,363,207"/>
+<area shape="rect" href="signal-handlers_8cpp.html#a3719a1754f6e317bbb96770b973d453c" title="OSからのシグナルハンドルを初期化する / Prepare to handle the relevant signals" alt="" coords="108,116,195,143"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,281,56,308"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="444,180,579,207"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="831,129,949,156"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="661,129,751,156"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8c0152dc880ff428bd0f4c52f479baf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c0152dc880ff428bd0f4c52f479baf5">&#9670;&nbsp;</a></span>fd_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> fd_read </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a323299f19186bb8ebd229f05b34cfc22">huge</a>&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_a8c0152dc880ff428bd0f4c52f479baf5_icgraph.png" border="0" usemap="#aangband-files_8cpp_a8c0152dc880ff428bd0f4c52f479baf5_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_a8c0152dc880ff428bd0f4c52f479baf5_icgraph" id="aangband-files_8cpp_a8c0152dc880ff428bd0f4c52f479baf5_icgraph">
+<area shape="rect" title=" " alt="" coords="665,56,729,83"/>
+<area shape="rect" href="files-util_8cpp.html#a25e3e63912a05d70271e55b35d1aaaf7" title="ファイル位置を読み込む" alt="" coords="343,31,437,57"/>
+<area shape="rect" href="load_8cpp.html#ac688b6edacb63309692463886f9d5cbc" title="セーブデータ読み込みのメインルーチン / Attempt to Load a &quot;savefile&quot;" alt="" coords="154,5,258,32"/>
+<area shape="rect" href="files-util_8cpp.html#abfccb2761e2d8bb78c0d4e277fd58a71" title="ファイル位置をシーク /" alt="" coords="514,81,610,108"/>
+<area shape="rect" href="scores_8cpp.html#a21d404b1ebb714141bf43689560aa406" title="所定ポインタからスコア情報を読み取る / Read one score from the highscore file" alt="" coords="507,233,617,260"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="5,31,91,57"/>
+<area shape="rect" href="files-util_8cpp.html#a1a24b90a72b9344cd7790c0a0d2dc794" title="ファイル位置に書き込む /" alt="" coords="343,81,437,108"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="139,56,273,83"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="147,107,265,133"/>
+<area shape="rect" href="scores_8cpp.html#ab638b7997049f0c4d7fbeac1f0f0a2d0" title="指定された順位範囲でスコアを並べて表示する / Display the scores in a given range." alt="" coords="321,157,459,184"/>
+<area shape="rect" href="scores_8cpp.html#a47d3bcc091540baeeb0fb0a2d0d02812" title="スコア情報をバッファの末尾に追加する / Actually place an entry into the high score file" alt="" coords="153,259,259,285"/>
+<area shape="rect" href="scores_8cpp.html#afdb7fbba6550e8e882ba3241a8d0473c" title="スコア情報を全て得るまで繰り返し取得する / Just determine where a new score would be placed" alt="" coords="331,208,449,235"/>
+<area shape="rect" href="scores_8cpp.html#a5865b524046672aef195b80c6aba7405" title="スコアランキングの簡易表示(種族毎)サブルーチン / Race Legends &#45;KMW&#45;" alt="" coords="347,309,433,336"/>
+<area shape="rect" href="scores_8cpp.html#a139c95397e8ccc8ebcdd2e342f08174c" title="スコアランキングの簡易表示 / show_highclass &#45; selectively list highscores based on class &#45;KMW&#45;" alt="" coords="333,360,447,387"/>
+<area shape="rect" href="scores_8cpp.html#ac8cf8933c4b99926822c83fb819771cc" title="プレイヤーの現在のスコアをランキングに挟む / Predict the players location, and display it." alt="" coords="156,208,256,235"/>
+<area shape="rect" href="scores_8cpp.html#af3bc9911d7f0c3a60be12ca5ea8713b8" title="スコアの過去二十位内ランキングを表示する Enters a players name on a hi&#45;score table, if &quot;legal&quot;, and in any case,..." alt="" coords="5,208,91,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2bfbb437b11fcd69bf7a407bdfef886c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bfbb437b11fcd69bf7a407bdfef886c">&#9670;&nbsp;</a></span>fd_seek()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> fd_seek </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a323299f19186bb8ebd229f05b34cfc22">huge</a>&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_a2bfbb437b11fcd69bf7a407bdfef886c_icgraph.png" border="0" usemap="#aangband-files_8cpp_a2bfbb437b11fcd69bf7a407bdfef886c_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_a2bfbb437b11fcd69bf7a407bdfef886c_icgraph" id="aangband-files_8cpp_a2bfbb437b11fcd69bf7a407bdfef886c_icgraph">
+<area shape="rect" title=" " alt="" coords="668,157,735,184"/>
+<area shape="rect" href="files-util_8cpp.html#abfccb2761e2d8bb78c0d4e277fd58a71" title="ファイル位置をシーク /" alt="" coords="515,56,611,83"/>
+<area shape="rect" href="scores_8cpp.html#adee3ea2bc90aeda5dafba5b4bf0277f7" title="i番目のスコア情報にバッファ位置をシークする / Seek score &#39;i&#39; in the highscore file" alt="" coords="507,233,620,260"/>
+<area shape="rect" href="files-util_8cpp.html#a25e3e63912a05d70271e55b35d1aaaf7" title="ファイル位置を読み込む" alt="" coords="343,5,437,32"/>
+<area shape="rect" href="files-util_8cpp.html#a1a24b90a72b9344cd7790c0a0d2dc794" title="ファイル位置に書き込む /" alt="" coords="343,56,437,83"/>
+<area shape="rect" href="load_8cpp.html#ac688b6edacb63309692463886f9d5cbc" title="セーブデータ読み込みのメインルーチン / Attempt to Load a &quot;savefile&quot;" alt="" coords="154,5,258,32"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="139,56,273,83"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="147,107,265,133"/>
+<area shape="rect" href="scores_8cpp.html#ab638b7997049f0c4d7fbeac1f0f0a2d0" title="指定された順位範囲でスコアを並べて表示する / Display the scores in a given range." alt="" coords="321,157,459,184"/>
+<area shape="rect" href="scores_8cpp.html#a47d3bcc091540baeeb0fb0a2d0d02812" title="スコア情報をバッファの末尾に追加する / Actually place an entry into the high score file" alt="" coords="153,259,259,285"/>
+<area shape="rect" href="scores_8cpp.html#afdb7fbba6550e8e882ba3241a8d0473c" title="スコア情報を全て得るまで繰り返し取得する / Just determine where a new score would be placed" alt="" coords="331,208,449,235"/>
+<area shape="rect" href="scores_8cpp.html#a5865b524046672aef195b80c6aba7405" title="スコアランキングの簡易表示(種族毎)サブルーチン / Race Legends &#45;KMW&#45;" alt="" coords="347,309,433,336"/>
+<area shape="rect" href="scores_8cpp.html#a139c95397e8ccc8ebcdd2e342f08174c" title="スコアランキングの簡易表示 / show_highclass &#45; selectively list highscores based on class &#45;KMW&#45;" alt="" coords="333,360,447,387"/>
+<area shape="rect" href="scores_8cpp.html#ac8cf8933c4b99926822c83fb819771cc" title="プレイヤーの現在のスコアをランキングに挟む / Predict the players location, and display it." alt="" coords="156,208,256,235"/>
+<area shape="rect" href="scores_8cpp.html#af3bc9911d7f0c3a60be12ca5ea8713b8" title="スコアの過去二十位内ランキングを表示する Enters a players name on a hi&#45;score table, if &quot;legal&quot;, and in any case,..." alt="" coords="5,208,91,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1cec7f01bbb0339e030de218e231fcd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cec7f01bbb0339e030de218e231fcd4">&#9670;&nbsp;</a></span>fd_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> fd_write </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a323299f19186bb8ebd229f05b34cfc22">huge</a>&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_a1cec7f01bbb0339e030de218e231fcd4_icgraph.png" border="0" usemap="#aangband-files_8cpp_a1cec7f01bbb0339e030de218e231fcd4_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_a1cec7f01bbb0339e030de218e231fcd4_icgraph" id="aangband-files_8cpp_a1cec7f01bbb0339e030de218e231fcd4_icgraph">
+<area shape="rect" title=" " alt="" coords="589,132,656,159"/>
+<area shape="rect" href="files-util_8cpp.html#abfccb2761e2d8bb78c0d4e277fd58a71" title="ファイル位置をシーク /" alt="" coords="437,56,533,83"/>
+<area shape="rect" href="files-util_8cpp.html#a1a24b90a72b9344cd7790c0a0d2dc794" title="ファイル位置に書き込む /" alt="" coords="249,56,344,83"/>
+<area shape="rect" href="scores_8cpp.html#a6c2086d2f89a48b8f00d2c6defb7274a" title="所定ポインタへスコア情報を書き込む / Write one score to the highscore file" alt="" coords="429,157,541,184"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a309f294c67e5b6acbb74a760b3235f68" title=" " alt="" coords="436,332,535,359"/>
+<area shape="rect" href="files-util_8cpp.html#a25e3e63912a05d70271e55b35d1aaaf7" title="ファイル位置を読み込む" alt="" coords="250,5,343,32"/>
+<area shape="rect" href="load_8cpp.html#ac688b6edacb63309692463886f9d5cbc" title="セーブデータ読み込みのメインルーチン / Attempt to Load a &quot;savefile&quot;" alt="" coords="33,5,137,32"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="17,56,152,83"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="25,107,144,133"/>
+<area shape="rect" href="scores_8cpp.html#a47d3bcc091540baeeb0fb0a2d0d02812" title="スコア情報をバッファの末尾に追加する / Actually place an entry into the high score file" alt="" coords="243,157,350,184"/>
+<area shape="rect" href="scores_8cpp.html#af3bc9911d7f0c3a60be12ca5ea8713b8" title="スコアの過去二十位内ランキングを表示する Enters a players name on a hi&#45;score table, if &quot;legal&quot;, and in any case,..." alt="" coords="42,157,127,184"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a919e2ae1fa70ce0371b609c38c9889df" title=" " alt="" coords="241,208,352,235"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a562328082a7372dd65d1b2d82e8ad7eb" title=" " alt="" coords="212,259,381,301"/>
+<area shape="rect" href="record-play-movie_8cpp.html#af5df16c35c2909386b79cb3b26be2e06" title=" " alt="" coords="221,325,373,366"/>
+<area shape="rect" href="record-play-movie_8cpp.html#acfbc1ff2a0035481e6f3367b15d38c4c" title=" " alt="" coords="222,390,371,431"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a5a5341330482fe83c44dbfbb5074016f" title=" " alt="" coords="220,455,373,497"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a84194937e449ff47033cf8d4fa478391" title=" " alt="" coords="222,521,371,562"/>
+<area shape="rect" href="record-play-movie_8cpp.html#af327bea8b2122820aaa3b68863d964dd" title=" " alt="" coords="33,208,136,235"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a8470c46a386bf14d6690f7d182a033cb" title=" " alt="" coords="5,397,164,424"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aed68cacae5a8a2502d31a2ee2a081898"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed68cacae5a8a2502d31a2ee2a081898">&#9670;&nbsp;</a></span>path_build()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> path_build </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>file</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>ファイルのフルを返すバッファ </td></tr>
+    <tr><td class="paramname">max</td><td>bufのサイズ </td></tr>
+    <tr><td class="paramname">path</td><td>ファイルパス </td></tr>
+    <tr><td class="paramname">file</td><td>ファイル名 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード(ただし常に0を返す)</dd></dl>
+<p>This requires no special processing on simple machines, except for verifying the size of the filename, but note the ability to bypass the given "path" with certain special file-names.</p>
+<p>Note that the "file" may actually be a "sub-path", including a path and a file.</p>
+<p>Note that this function yields a path which must be "parsed" using the "parse" function above. </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_aed68cacae5a8a2502d31a2ee2a081898_cgraph.png" border="0" usemap="#aangband-files_8cpp_aed68cacae5a8a2502d31a2ee2a081898_cgraph" alt=""/></div>
+<map name="aangband-files_8cpp_aed68cacae5a8a2502d31a2ee2a081898_cgraph" id="aangband-files_8cpp_aed68cacae5a8a2502d31a2ee2a081898_cgraph">
+<area shape="rect" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="5,56,87,83"/>
+<area shape="rect" href="z-util_8cpp.html#a7f7463689689266c2c7dd1c0b170c7a3" title=" " alt="" coords="139,5,193,32"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="141,56,191,83"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="135,107,197,133"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="245,107,312,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_aed68cacae5a8a2502d31a2ee2a081898_icgraph.png" border="0" usemap="#aangband-files_8cpp_aed68cacae5a8a2502d31a2ee2a081898_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_aed68cacae5a8a2502d31a2ee2a081898_icgraph" id="aangband-files_8cpp_aed68cacae5a8a2502d31a2ee2a081898_icgraph">
+<area shape="rect" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="456,1237,537,1264"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="21,31,168,57"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a4d5688a3c67109567b11632237aad306" title=" " alt="" coords="254,5,386,32"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="274,107,366,133"/>
+<area shape="rect" href="files-util_8cpp.html#a25e3e63912a05d70271e55b35d1aaaf7" title="ファイル位置を読み込む" alt="" coords="273,157,367,184"/>
+<area shape="rect" href="files-util_8cpp.html#a1a24b90a72b9344cd7790c0a0d2dc794" title="ファイル位置に書き込む /" alt="" coords="273,208,367,235"/>
+<area shape="rect" href="cmd-diary_8cpp.html#a43fb57cb916100ff12c156b6a232c1c8" title="日記のタイトル表記と内容出力" alt="" coords="271,259,369,285"/>
+<area shape="rect" href="scores_8cpp.html#a649215d7f6928dc9f840e4ae5e144f57" title="スコア表示処理メインルーチン / Hack – Display the scores in a given range and quit." alt="" coords="265,309,375,336"/>
+<area shape="rect" href="cmd-dump_8cpp.html#a17a616fd39ca52c5531a875c2a186ee4" title=" " alt="" coords="39,385,150,412"/>
+<area shape="rect" href="cmd-diary_8cpp.html#acdcc3303d1101bfd7a0183007248480f" title="ファイル中の全日記記録を消去する /" alt="" coords="249,563,391,589"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#ae0f31a85f5c0065de5a1fd0ef7b5c8c9" title=" " alt="" coords="247,613,393,640"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a66d22b87644be0847bb5751f75cf7b55" title="HTML方式で記念撮影する / Save a screen dump to a file" alt="" coords="5,701,184,728"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a520c0b6c1900e5de2bf19398e0b48e6a" title=" " alt="" coords="247,665,393,706"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#aa46b7dd58d4e2cd6fc032da61b18f90a" title="テキスト方式で記念撮影する" alt="" coords="232,781,408,808"/>
+<area shape="rect" href="cmd-dump_8cpp.html#a3727a3419e1d878000e50917d19d0b93" title=" " alt="" coords="270,832,370,859"/>
+<area shape="rect" href="cmd-visuals_8cpp.html#a0826877287cc62ecef1432f586181997" title=" " alt="" coords="37,449,152,476"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="283,883,357,909"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="271,933,369,960"/>
+<area shape="rect" href="main-win-file-utils_8cpp.html#ae3ec9b0c24825a58e5cf2b1fded75884" title="候補リストを順に確認し、存在するファイルのパスを返す。" alt="" coords="273,984,367,1011"/>
+<area shape="rect" href="files-util_8cpp.html#a06656f06eccb3992114a0f3dd1f51ca1" title="ファイルからランダムに行を一つ取得する / Get a random line from a file" alt="" coords="274,1035,366,1061"/>
+<area shape="rect" href="angband-initializer_8cpp.html#aeb43129ef8fbea1c72b20e1513eb9702" title="全ゲームデータ読み込みのメインルーチン /" alt="" coords="47,507,142,533"/>
+<area shape="rect" href="angband-initializer_8cpp.html#aef3fec3b6e40e9a9d5d4bbed2a3a894f" title="各データファイルを読み取るためのパスを取得する Find the default paths to all of our important sub&#45;directories." alt="" coords="269,1085,371,1112"/>
+<area shape="rect" href="info-initializer_8cpp.html#a32ff4402d7495d02bce95c142b7fce16" title="各種設定データをlib/edit/のテキストから読み込み Initialize the &quot;*_info&quot; array" alt="" coords="287,1136,353,1163"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a0452296a6ddd2bfbb5758565f4b55361" title="キーマップをprefファイルにダンプする / Hack – append all keymaps to the given file" alt="" coords="267,1187,373,1213"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a13b7a62cca2788a9ba9823d41d1e989c" title="マクロ情報をprefファイルに保存する /" alt="" coords="271,1237,369,1264"/>
+<area shape="rect" href="write-diary_8cpp.html#a721a3148877a6d0a8936a10842591e2c" title="日記ファイルを開く" alt="" coords="266,1288,374,1315"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="260,1339,380,1365"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="25,1364,165,1391"/>
+<area shape="rect" href="namespacemain__win__music.html#ac3139e31adcbdfbb403c147c1ec8b755" title=" " alt="" coords="245,1441,395,1482"/>
+<area shape="rect" href="main-win-sound_8cpp.html#a3b6a92c8f777299501bed99f24f31f22" title="指定の効果音を鳴らす。" alt="" coords="276,1507,364,1533"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a7b3422597b16b0101cc18d18a77fc1e3" title=" " alt="" coords="243,1558,397,1599"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#ae35aca2767aec6057e13994af4e81ae2" title=" " alt="" coords="239,1624,401,1651"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a91b7333c3a95aa7a4b255d1d6f8e4afc" title=" " alt="" coords="247,1675,393,1701"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="247,1725,393,1752"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="250,1776,390,1803"/>
+<area shape="rect" href="process-name_8cpp.html#a4c201aae855594c36a336de8ad51600f" title="プレイヤーの名前をチェックして修正する Process the player name." alt="" coords="245,1827,395,1853"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="261,461,379,488"/>
+<area shape="rect" href="scores_8cpp.html#a5865b524046672aef195b80c6aba7405" title="スコアランキングの簡易表示(種族毎)サブルーチン / Race Legends &#45;KMW&#45;" alt="" coords="277,1877,363,1904"/>
+<area shape="rect" href="files-util_8cpp.html#a7a5f649ee8fe63baf4c1500fb050c8e2" title="墓のアスキーアートテンプレを読み込む" alt="" coords="267,1928,373,1955"/>
+<area shape="rect" href="class_cfg_reader.html#aef4efdff376b9c7915119902125526e6" title="データの読み込みを行う。" alt="" coords="235,1979,405,2005"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a10f3e675327b27936d20536ea182c422" title=" " alt="" coords="265,2029,375,2056"/>
+<area shape="rect" href="scores_8cpp.html#a139c95397e8ccc8ebcdd2e342f08174c" title="スコアランキングの簡易表示 / show_highclass &#45; selectively list highscores based on class &#45;KMW&#45;" alt="" coords="263,2080,377,2107"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="255,2131,385,2157"/>
+<area shape="rect" href="monster-info-spoiler_8cpp.html#a0431c6c4039cafdf6df4c80b9b8a6381" title=" " alt="" coords="262,2181,378,2208"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a7a8ed25cce52f74bc92acd792f2ee6ea" title="進化ツリーをスポイラー出力するメインルーチン / Print monsters&#39; evolution information to file" alt="" coords="265,2232,375,2259"/>
+<area shape="rect" href="monster-info-spoiler_8cpp.html#aec3c4c4a889e0a9925f97fb32c252959" title="モンスター詳細情報をスポイラー出力するメインルーチン / Create a spoiler file for monsters (&#45;SHAWN&#45;)" alt="" coords="266,2283,374,2309"/>
+<area shape="rect" href="items-spoiler_8cpp.html#a08b109e0b9d7da2dfc3299ff8cbcfd75" title="各ベースアイテムの情報を一行毎に記述する / Create a spoiler file for items" alt="" coords="266,2333,374,2360"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a61530241b7679032c7e32229a5086e90" title="ランダムアーティファクト内容をスポイラー出力するメインルーチン / Create a list file for random artifacts" alt="" coords="247,2384,393,2411"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#aab587c280fc21305bf6ff10c8f95a11e" title="現在のオプション設定をダンプ出力する /" alt="" coords="255,2435,385,2461"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#adf3039d86a72e2218832b06f936ab6db" title=" " alt="" coords="264,2485,376,2512"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa448acdb30934842110462f5dce87dbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa448acdb30934842110462f5dce87dbd">&#9670;&nbsp;</a></span>path_parse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> path_parse </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>file</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_aa448acdb30934842110462f5dce87dbd_cgraph.png" border="0" usemap="#aangband-files_8cpp_aa448acdb30934842110462f5dce87dbd_cgraph" alt=""/></div>
+<map name="aangband-files_8cpp_aa448acdb30934842110462f5dce87dbd_cgraph" id="aangband-files_8cpp_aa448acdb30934842110462f5dce87dbd_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,92,32"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="140,5,203,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="251,5,317,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_aa448acdb30934842110462f5dce87dbd_icgraph.png" border="0" usemap="#aangband-files_8cpp_aa448acdb30934842110462f5dce87dbd_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_aa448acdb30934842110462f5dce87dbd_icgraph" id="aangband-files_8cpp_aa448acdb30934842110462f5dce87dbd_icgraph">
+<area shape="rect" title=" " alt="" coords="828,1414,915,1441"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="671,831,780,858"/>
+<area shape="rect" href="angband-files_8cpp.html#a515e59cdd1cd247f9f3b48e5777a765e" title=" " alt="" coords="489,1389,556,1415"/>
+<area shape="rect" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="698,1819,753,1846"/>
+<area shape="rect" href="angband-files_8cpp.html#a4c4108d1fb8217d15fd233d2787ff91d" title=" " alt="" coords="690,1439,761,1466"/>
+<area shape="rect" href="angband-files_8cpp.html#a15f41fb1a5a8fef0a03f789aabbb6b3b" title=" " alt="" coords="691,1490,760,1517"/>
+<area shape="rect" href="angband-files_8cpp.html#a0aaa636968ab7a5666dc2d7d779f82ca" title=" " alt="" coords="692,1338,759,1365"/>
+<area shape="rect" href="angband-files_8cpp.html#ad6dfef3d6a652bf311e07eb7c1aee550" title=" " alt="" coords="450,882,595,909"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a4d5688a3c67109567b11632237aad306" title=" " alt="" coords="221,907,353,934"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="5,477,152,503"/>
+<area shape="rect" href="cmd-diary_8cpp.html#acdcc3303d1101bfd7a0183007248480f" title="ファイル中の全日記記録を消去する /" alt="" coords="451,1591,594,1618"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#ae0f31a85f5c0065de5a1fd0ef7b5c8c9" title=" " alt="" coords="450,1135,595,1162"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a520c0b6c1900e5de2bf19398e0b48e6a" title=" " alt="" coords="449,5,596,47"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#aa46b7dd58d4e2cd6fc032da61b18f90a" title="テキスト方式で記念撮影する" alt="" coords="435,122,611,149"/>
+<area shape="rect" href="cmd-dump_8cpp.html#a3727a3419e1d878000e50917d19d0b93" title=" " alt="" coords="473,173,573,199"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="473,1287,572,1314"/>
+<area shape="rect" href="files-util_8cpp.html#a06656f06eccb3992114a0f3dd1f51ca1" title="ファイルからランダムに行を一つ取得する / Get a random line from a file" alt="" coords="477,223,569,250"/>
+<area shape="rect" href="angband-initializer_8cpp.html#aeb43129ef8fbea1c72b20e1513eb9702" title="全ゲームデータ読み込みのメインルーチン /" alt="" coords="475,1338,570,1365"/>
+<area shape="rect" href="info-initializer_8cpp.html#a32ff4402d7495d02bce95c142b7fce16" title="各種設定データをlib/edit/のテキストから読み込み Initialize the &quot;*_info&quot; array" alt="" coords="489,274,556,301"/>
+<area shape="rect" href="floor-loader_8cpp.html#a7c391e0a9128864de0d78e70acf21bbd" title="一時保存フロア情報を読み込む / Attempt to load the temporarily saved&#45;floor data" alt="" coords="484,1541,561,1567"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a5a737ea245d6b917ff81756f8448f258" title="prfファイルをファイルオープンする / Open file to append auto dump." alt="" coords="227,1338,348,1365"/>
+<area shape="rect" href="write-diary_8cpp.html#a721a3148877a6d0a8936a10842591e2c" title="日記ファイルを開く" alt="" coords="469,325,577,351"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="463,1237,583,1263"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#ae35aca2767aec6057e13994af4e81ae2" title=" " alt="" coords="441,375,604,402"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="449,426,596,453"/>
+<area shape="rect" href="load_8cpp.html#a9f3adb4871bc426fc462d139f54cdd46" title="セーブファイル読み込み処理 (UIDチェック等含む) / Reading the savefile (including UID check)" alt="" coords="481,477,564,503"/>
+<area shape="rect" href="files-util_8cpp.html#a7a5f649ee8fe63baf4c1500fb050c8e2" title="墓のアスキーアートテンプレを読み込む" alt="" coords="470,527,575,554"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a10f3e675327b27936d20536ea182c422" title=" " alt="" coords="467,578,578,605"/>
+<area shape="rect" href="dump-remover_8cpp.html#a686855fb58524d0802396e8ff051bb7f" title="prefファイルを選択して処理する / Ask for a &quot;user pref line&quot; and process it" alt="" coords="455,1490,590,1517"/>
+<area shape="rect" href="floor-writer_8cpp.html#a159128f33a5ee6ede05b1b1759af3088" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="483,1439,562,1466"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="463,1642,582,1669"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="458,629,587,655"/>
+<area shape="rect" href="monster-info-spoiler_8cpp.html#a0431c6c4039cafdf6df4c80b9b8a6381" title=" " alt="" coords="465,679,581,706"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a7a8ed25cce52f74bc92acd792f2ee6ea" title="進化ツリーをスポイラー出力するメインルーチン / Print monsters&#39; evolution information to file" alt="" coords="467,730,578,757"/>
+<area shape="rect" href="monster-info-spoiler_8cpp.html#aec3c4c4a889e0a9925f97fb32c252959" title="モンスター詳細情報をスポイラー出力するメインルーチン / Create a spoiler file for monsters (&#45;SHAWN&#45;)" alt="" coords="469,781,577,807"/>
+<area shape="rect" href="items-spoiler_8cpp.html#a08b109e0b9d7da2dfc3299ff8cbcfd75" title="各ベースアイテムの情報を一行毎に記述する / Create a spoiler file for items" alt="" coords="469,831,577,858"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a61530241b7679032c7e32229a5086e90" title="ランダムアーティファクト内容をスポイラー出力するメインルーチン / Create a list file for random artifacts" alt="" coords="450,983,595,1010"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#aab587c280fc21305bf6ff10c8f95a11e" title="現在のオプション設定をダンプ出力する /" alt="" coords="458,1034,587,1061"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#adf3039d86a72e2218832b06f936ab6db" title=" " alt="" coords="467,1085,579,1111"/>
+<area shape="rect" href="knowledge-self_8cpp.html#ab7de2bac473b3a93ad1b8abbee8e22eb" title=" " alt="" coords="200,1726,375,1753"/>
+<area shape="rect" href="floor-save_8cpp.html#af6a0932b05702c7850af22d11e57b675" title="保存フロア用テンポラリファイルを削除する / Kill temporary files" alt="" coords="447,1794,598,1821"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a19c446276d6a7514112c7c1101d0540e" title="既知のアイテムとアーティファクトを表示する" alt="" coords="428,1895,617,1922"/>
+<area shape="rect" href="knowledge-autopick_8cpp.html#aa1fde606cb9bd0bfb880928f8e44a487" title=" " alt="" coords="427,1946,619,1973"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#ac7c4da72a7fd60dd764d55689855c615" title=" " alt="" coords="431,1997,614,2023"/>
+<area shape="rect" href="knowledge-features_8cpp.html#a9a42070bab77ab374d6ce8853d366500" title=" " alt="" coords="427,2047,619,2074"/>
+<area shape="rect" href="knowledge-inventory_8cpp.html#a9e37ad7e28ba130363460e0669f1d73f" title=" " alt="" coords="425,2098,620,2125"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#a8157eacf8e55d2774f5eb4ba08848c42" title="現在までに倒したモンスターを表示するコマンドのメインルーチン /" alt="" coords="443,2149,602,2191"/>
+<area shape="rect" href="knowledge-mutations_8cpp.html#a553a7223b99f30d93202f786b8abbf2c" title="突然変異の一覧を出力する" alt="" coords="423,2266,623,2293"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#ada2c30c466fe5f583f45d313eb9e76e4" title="現在のペットを表示するコマンドのメインルーチン / Display current pets" alt="" coords="439,1743,607,1770"/>
+<area shape="rect" href="knowledge-quests_8cpp.html#aaf8f9a69de3634cb4d475442a2879592" title=" " alt="" coords="431,1845,614,1871"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab2f18c39aa3ab9c75fed34e21e784901"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2f18c39aa3ab9c75fed34e21e784901">&#9670;&nbsp;</a></span>path_temp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> path_temp </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_ab2f18c39aa3ab9c75fed34e21e784901_cgraph.png" border="0" usemap="#aangband-files_8cpp_ab2f18c39aa3ab9c75fed34e21e784901_cgraph" alt=""/></div>
+<map name="aangband-files_8cpp_ab2f18c39aa3ab9c75fed34e21e784901_cgraph" id="aangband-files_8cpp_ab2f18c39aa3ab9c75fed34e21e784901_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,88,32"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="136,5,199,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="247,5,313,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="angband-files_8cpp_ab2f18c39aa3ab9c75fed34e21e784901_icgraph.png" border="0" usemap="#aangband-files_8cpp_ab2f18c39aa3ab9c75fed34e21e784901_icgraph" alt=""/></div>
+<map name="aangband-files_8cpp_ab2f18c39aa3ab9c75fed34e21e784901_icgraph" id="aangband-files_8cpp_ab2f18c39aa3ab9c75fed34e21e784901_icgraph">
+<area shape="rect" title=" " alt="" coords="648,427,731,453"/>
+<area shape="rect" href="angband-files_8cpp.html#ad6dfef3d6a652bf311e07eb7c1aee550" title=" " alt="" coords="455,427,600,453"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a4d5688a3c67109567b11632237aad306" title=" " alt="" coords="271,204,403,231"/>
+<area shape="rect" href="dump-util_8cpp.html#a27e645085e01749040cc85a4e9242bff" title="ダンプ用の一時ファイルを開く" alt="" coords="268,452,407,479"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="39,5,186,32"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a19c446276d6a7514112c7c1101d0540e" title="既知のアイテムとアーティファクトを表示する" alt="" coords="18,56,207,83"/>
+<area shape="rect" href="knowledge-autopick_8cpp.html#aa1fde606cb9bd0bfb880928f8e44a487" title=" " alt="" coords="17,107,209,133"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#ac7c4da72a7fd60dd764d55689855c615" title=" " alt="" coords="21,157,204,184"/>
+<area shape="rect" href="knowledge-features_8cpp.html#a9a42070bab77ab374d6ce8853d366500" title=" " alt="" coords="17,208,209,235"/>
+<area shape="rect" href="knowledge-self_8cpp.html#ab7de2bac473b3a93ad1b8abbee8e22eb" title=" " alt="" coords="25,259,200,285"/>
+<area shape="rect" href="knowledge-inventory_8cpp.html#a9e37ad7e28ba130363460e0669f1d73f" title=" " alt="" coords="15,309,210,336"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#a8157eacf8e55d2774f5eb4ba08848c42" title="現在までに倒したモンスターを表示するコマンドのメインルーチン /" alt="" coords="33,361,192,402"/>
+<area shape="rect" href="knowledge-mutations_8cpp.html#a553a7223b99f30d93202f786b8abbf2c" title="突然変異の一覧を出力する" alt="" coords="13,427,213,453"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#ada2c30c466fe5f583f45d313eb9e76e4" title="現在のペットを表示するコマンドのメインルーチン / Display current pets" alt="" coords="29,477,197,504"/>
+<area shape="rect" href="knowledge-quests_8cpp.html#aaf8f9a69de3634cb4d475442a2879592" title=" " alt="" coords="21,528,204,555"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#a3bca117d34618ee9e62f96f8135fc763" title="スキル情報を表示するコマンドのメインルーチン / Display skill&#45;exp" alt="" coords="15,579,210,605"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="13,629,212,656"/>
+<area shape="rect" href="knowledge-self_8cpp.html#ad8c9d4de6c5e87ff995e2af752929808" title=" " alt="" coords="30,680,195,707"/>
+<area shape="rect" href="knowledge-uniques_8cpp.html#a994bf57159783baea20070fc0dd9a4b5" title="既知の生きているユニークまたは撃破済ユニークの一覧を表示させる" alt="" coords="19,731,207,757"/>
+<area shape="rect" href="knowledge-self_8cpp.html#a4120497dfdeb621df236bfa9bb4a114d" title="自己に関する情報を表示する" alt="" coords="23,781,203,808"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#a5fc7a027e00279739c0e789bedd90374" title="技能の経験を表示する" alt="" coords="5,832,220,859"/>
+<area shape="rect" href="dump-remover_8cpp.html#a686855fb58524d0802396e8ff051bb7f" title="prefファイルを選択して処理する / Ask for a &quot;user pref line&quot; and process it" alt="" coords="45,883,180,909"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分29秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

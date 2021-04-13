@@ -1,0 +1,52 @@
+<map id="hit_trap" name="hit_trap">
+<area shape="rect" id="node1" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="5,1387,71,1414"/>
+<area shape="rect" id="node2" href="$player-damage_8cpp.html#a2cc414088296f068951969e2748ba07e" title="酸属性によるプレイヤー損害処理 / Hurt the player with Acid" alt="" coords="373,210,451,237"/>
+<area shape="rect" id="node7" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="912,1362,991,1389"/>
+<area shape="rect" id="node15" href="$player-status_8cpp.html#aa92221918c0f2eccf69aa8084106362a" title=" " alt="" coords="754,298,838,325"/>
+<area shape="rect" id="node17" href="$player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="567,551,635,578"/>
+<area shape="rect" id="node18" href="$disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="765,1514,827,1541"/>
+<area shape="rect" id="node19" href="$write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="740,475,852,502"/>
+<area shape="rect" id="node20" href="$sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="767,1083,825,1110"/>
+<area shape="rect" id="node21" href="$spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="351,1210,473,1237"/>
+<area shape="rect" id="node22" href="$spells-sight_8cpp.html#a38649e896637efab6c1c96d71f870948" title="視界内モンスターを怒らせる処理 / Wake up all monsters, and speed up &quot;los&quot; monsters." alt="" coords="531,1362,670,1389"/>
+<area shape="rect" id="node23" href="$z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="569,1007,633,1034"/>
+<area shape="rect" id="node24" href="$effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="570,1463,631,1490"/>
+<area shape="rect" id="node25" href="$projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="753,1666,839,1693"/>
+<area shape="rect" id="node26" href="$bad-status-setter_8cpp.html#a4f18393e08963daf9454f4d2fe543b1c" title="麻痺の継続時間をセットする / Set &quot;paralyzed&quot;, notice observable changes" alt="" coords="549,1514,652,1541"/>
+<area shape="rect" id="node27" href="$monster-summon_8cpp.html#a6e66d06ca9502871c59a2a58c15708e5" title="モンスターを召喚により配置する / Place a monster (of the specified &quot;type&quot;) near the given location." alt="" coords="539,1109,662,1135"/>
+<area shape="rect" id="node28" href="$spells-teleport_8cpp.html#ab7dc77e5dccd8357b2058d9bcd352cde" title="プレイヤーのテレポート処理メインルーチン" alt="" coords="547,1261,654,1287"/>
+<area shape="rect" id="node29" href="$grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="358,1666,466,1693"/>
+<area shape="rect" id="node30" href="$cmd-save_8cpp.html#a5f3c9a464d1f438f0a2860a68b31da96" title="セーブするコマンドのメインルーチン Save the game" alt="" coords="531,1970,671,1997"/>
+<area shape="rect" id="node31" href="$spells-launcher_8cpp.html#a91b238446e2261ec912dcf94e20cfef8" title="ボール(ハイド)系スペルの発動 / Cast a ball spell" alt="" coords="162,1362,259,1389"/>
+<area shape="rect" id="node32" href="$player-damage_8cpp.html#a1baa0fdc9a8912f4da2d8f1905c2aac7" title="火炎属性によるプレイヤー損害処理 / Hurt the player with Fire" alt="" coords="377,399,447,426"/>
+<area shape="rect" id="node33" href="$player-status-flags_8cpp.html#aaf1b5117f57bfff1e6f316c72534ca3c" title=" " alt="" coords="153,1514,269,1541"/>
+<area shape="rect" id="node34" href="$player-status-flags_8cpp.html#a87e2385dc2ef3915747658a53a9a24d3" title=" " alt="" coords="544,1717,657,1743"/>
+<area shape="rect" id="node35" href="$player-status-flags_8cpp.html#a82a3c09fa7e9113cb5a952b8cce27cb6" title=" " alt="" coords="355,957,469,983"/>
+<area shape="rect" id="node36" href="$trap_8cpp.html#af6166d0bb0447f9f4828ab071bbce3fc" title="ダーツ系トラップ（通常ダメージ＋能力値減少）の判定とプレイヤーの被害処理" alt="" coords="148,501,273,527"/>
+<area shape="rect" id="node38" href="$trap_8cpp.html#a0a60d73695cc5eb57f5de28640917696" title="落とし穴系トラップの判定とプレイヤーの被害処理" alt="" coords="167,906,254,933"/>
+<area shape="rect" id="node39" href="$element-resistance_8cpp.html#a15b3a8e7ece2bbc45ef1d42559bfb0d2" title=" " alt="" coords="356,1007,468,1034"/>
+<area shape="rect" id="node41" href="$bad-status-setter_8cpp.html#a54f9f2a1dc27cd7214dccbdad4a0d2d7" title="毒の継続時間をセットする / Set &quot;poisoned&quot;, notice observable changes" alt="" coords="363,1261,461,1287"/>
+<area shape="rect" id="node42" href="$trap_8cpp.html#a6e8371b9352905d509487312aeca0438" title="ダーツ系トラップ（通常ダメージ＋状態異常）の判定とプレイヤーの被害処理" alt="" coords="135,2224,286,2265"/>
+<area shape="rect" id="node43" href="$trap_8cpp.html#a9ac83feae591934e459f50aea812099b" title="ダーツ系トラップ（通常ダメージ＋減速）の判定とプレイヤーの被害処理" alt="" coords="161,855,260,882"/>
+<area shape="rect" id="node45" href="$cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="170,1970,251,1997"/>
+<area shape="rect" id="node46" href="$feature_8cpp.html#ad0f1f52fc2d5637a690cceaf1635a15b" title="地形が罠持ちであるかの判定を行う。 / Return TRUE if the given feature is a trap" alt="" coords="180,2021,241,2047"/>
+<area shape="rect" id="node47" href="$floor-mode-changer_8cpp.html#ac3d4752c4acfdb1dfe04cdbcd562c1ec" title="フロア切り替え時の処理フラグを追加する / Prepare mode flags of changing floor" alt="" coords="119,2071,303,2098"/>
+<area shape="rect" id="node48" href="$eldritch-horror_8cpp.html#a6cef6cacb4d15880ba4cab6ad108810e" title="ELDRITCH_HORRORによるプレイヤーの精神破壊処理" alt="" coords="366,1514,458,1541"/>
+<area shape="rect" id="node49" href="$bad-status-setter_8cpp.html#ac2bda63c9e8d91a70dea9a38c6f76c16" title="混乱の継続時間をセットする / Set &quot;confused&quot;, notice observable changes" alt="" coords="551,1615,650,1642"/>
+<area shape="rect" id="node50" href="$bad-status-setter_8cpp.html#a36a6161f66d774d69df887fa4f5fd12b" title="盲目の継続時間をセットする / Set &quot;blind&quot;, notice observable changes" alt="" coords="563,1919,638,1946"/>
+<area shape="rect" id="node3" href="$player-damage_8cpp.html#a3481d6c6d7162220dcda59d8452cdf4b" title="酸攻撃による装備のAC劣化処理 / Acid has hit the player, attempt to affect some armor." alt="" coords="546,197,655,223"/>
+<area shape="rect" id="node9" href="$player-status-resist_8cpp.html#a4582efcc5e8b9fb139b2fcc30fcf4abc" title="酸属性攻撃に対するダメージ倍率計算" alt="" coords="521,45,680,71"/>
+<area shape="rect" id="node10" href="$player-status-flags_8cpp.html#a556c00d2456ffbf9d0c0fa4bb241d79c" title=" " alt="" coords="739,19,853,46"/>
+<area shape="rect" id="node11" href="$element-resistance_8cpp.html#a64580bed127b84646a1dc84e9da22950" title=" " alt="" coords="740,95,852,122"/>
+<area shape="rect" id="node12" href="$mind-mirror-master_8cpp.html#aa9b31eb0ea15ceb2b1423b1f807ccd7e" title=" " alt="" coords="728,399,864,426"/>
+<area shape="rect" id="node13" href="$base-status_8cpp.html#a02f02e57ff04a59667b69ae931263500" title=" " alt="" coords="554,602,647,629"/>
+<area shape="rect" id="node14" href="$inventory-damage_8cpp.html#a0f9a7b3868fb0034a4a8f9bfa9e03607" title="アイテムを指定確率で破損させる / Destroys a type of item on a given percent chance" alt="" coords="537,349,664,375"/>
+<area shape="rect" id="node16" href="$object-broken_8cpp.html#a3c15fca73f08707bf88de3c9cd094494" title="アイテムが酸で破損するかどうかを判定する(メインルーチン) / Melt something" alt="" coords="540,146,661,173"/>
+<area shape="rect" id="node4" href="$racial-android_8cpp.html#a79575a6f85af0b14d59eff0efe003795" title=" " alt="" coords="735,197,857,223"/>
+<area shape="rect" id="node5" href="$flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="743,247,849,274"/>
+<area shape="rect" id="node6" href="$display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="751,602,841,629"/>
+<area shape="rect" id="node8" href="$object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="751,146,841,173"/>
+<area shape="rect" id="node37" href="$trap_8cpp.html#a12c3ef855e303faacd9d43dd42468103" title="ダーツ系トラップ（通常ダメージ）の判定とプレイヤーの被害処理" alt="" coords="365,602,459,629"/>
+<area shape="rect" id="node40" href="$bad-status-setter_8cpp.html#a54b8e49e72feff42856edd22be0d0863" title="出血の継続時間をセットする / Set &quot;cut&quot;, notice observable changes" alt="" coords="379,754,445,781"/>
+<area shape="rect" id="node44" href="$bad-status-setter_8cpp.html#a0bc33a623b58388f917651422165fdb4" title="減速の継続時間をセットする / Set &quot;slow&quot;, notice observable changes" alt="" coords="564,957,637,983"/>
+</map>

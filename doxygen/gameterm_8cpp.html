@@ -1,0 +1,735 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/term/gameterm.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f015963f69ae14c534311f2118856536.html">term</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">gameterm.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="gameterm_8h_source.html">term/gameterm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="system-variables_8h_source.html">system/system-variables.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quarks_8h_source.html">util/quarks.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="string-processor_8h_source.html">util/string-processor.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+gameterm.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="gameterm_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2term_2gameterm_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2term_2gameterm_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2term_2gameterm_8cpp">
+<area shape="rect" title=" " alt="" coords="461,5,710,47"/>
+<area shape="rect" href="gameterm_8h.html" title=" " alt="" coords="159,95,281,121"/>
+<area shape="rect" href="system-variables_8h.html" title=" " alt="" coords="305,95,482,121"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="507,95,664,121"/>
+<area shape="rect" href="quarks_8h.html" title=" " alt="" coords="688,95,781,121"/>
+<area shape="rect" href="string-processor_8h.html" title=" " alt="" coords="805,95,952,121"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="466,169,595,196"/>
+<area shape="rect" href="spell-types_8h.html" title=" " alt="" coords="157,169,283,196"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="5,244,96,271"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="120,244,211,271"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="235,244,333,271"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="357,244,456,271"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="481,244,581,271"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="605,244,779,271"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="804,244,945,271"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,244,1116,271"/>
+<area shape="rect" title=" " alt="" coords="757,169,811,196"/>
+<area shape="rect" title=" " alt="" coords="836,169,921,196"/>
+<area shape="rect" title=" " alt="" coords="945,169,1001,196"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:abc8e84b6a0c39dcbe7267db4e1003f2d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#abc8e84b6a0c39dcbe7267db4e1003f2d">PICT</a>(A,  C)&#160;&#160;&#160;((((<a class="el" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a>)(A)) &lt;&lt; 8) | ((<a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>)(C)))</td></tr>
+<tr class="separator:abc8e84b6a0c39dcbe7267db4e1003f2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a7e7a0069db277c2a9b9d6c74ced44c80"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#a7e7a0069db277c2a9b9d6c74ced44c80">mh_attr</a> (int max)</td></tr>
+<tr class="memdesc:a7e7a0069db277c2a9b9d6c74ced44c80"><td class="mdescLeft">&#160;</td><td class="mdescRight">万色表現用にランダムな色を選択する関数 / Get a legal "multi-hued" color for drawing "spells"  <a href="gameterm_8cpp.html#a7e7a0069db277c2a9b9d6c74ced44c80">[詳解]</a><br /></td></tr>
+<tr class="separator:a7e7a0069db277c2a9b9d6c74ced44c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a157eaf36e26be043553a955130614f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#a7a157eaf36e26be043553a955130614f">spell_color</a> (<a class="el" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a> type)</td></tr>
+<tr class="memdesc:a7a157eaf36e26be043553a955130614f"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法属性に応じたエフェクトの色を返す / Return a color to use for the bolt/ball spells  <a href="gameterm_8cpp.html#a7a157eaf36e26be043553a955130614f">[詳解]</a><br /></td></tr>
+<tr class="separator:a7a157eaf36e26be043553a955130614f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2694b4425c6fa76811611a40852ec96e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#a2694b4425c6fa76811611a40852ec96e">bolt_pict</a> (<a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> ny, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> nx, <a class="el" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a> typ)</td></tr>
+<tr class="memdesc:a2694b4425c6fa76811611a40852ec96e"><td class="mdescLeft">&#160;</td><td class="mdescRight">始点から終点にかけた方向毎にボルトのキャラクタを返す / Find the attr/char pair to use for a spell effect  <a href="gameterm_8cpp.html#a2694b4425c6fa76811611a40852ec96e">[詳解]</a><br /></td></tr>
+<tr class="separator:a2694b4425c6fa76811611a40852ec96e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a382b67c15a731d3dd86f08ce9cf2f7c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#a382b67c15a731d3dd86f08ce9cf2f7c9">color_char_to_attr</a> (<a class="el" href="h-type_8h.html#a956852f26de2bab8053529224e40dd37">SYMBOL_CODE</a> c)</td></tr>
+<tr class="memdesc:a382b67c15a731d3dd86f08ce9cf2f7c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">シンボル1文字をカラーIDに変更する / Convert a "color letter" into an "actual" color The colors are: dwsorgbuDWvyRGBU, as shown below  <a href="gameterm_8cpp.html#a382b67c15a731d3dd86f08ce9cf2f7c9">[詳解]</a><br /></td></tr>
+<tr class="separator:a382b67c15a731d3dd86f08ce9cf2f7c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a84e19c58ec8bf309edafb73249b29e18"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#a84e19c58ec8bf309edafb73249b29e18">angband_term_name</a> [8][16]</td></tr>
+<tr class="separator:a84e19c58ec8bf309edafb73249b29e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a518c354955f6ee2ee1931a3b109be584"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#a518c354955f6ee2ee1931a3b109be584">angband_color_table</a> [256][4]</td></tr>
+<tr class="separator:a518c354955f6ee2ee1931a3b109be584"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf0409c3b85a5c8efb5a5c84f2a7c5b8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#acf0409c3b85a5c8efb5a5c84f2a7c5b8">color_names</a> [16]</td></tr>
+<tr class="memdesc:acf0409c3b85a5c8efb5a5c84f2a7c5b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">色名称テーブル / Hack &ndash; the "basic" color names (see "TERM_xxx")  <a href="gameterm_8cpp.html#acf0409c3b85a5c8efb5a5c84f2a7c5b8">[詳解]</a><br /></td></tr>
+<tr class="separator:acf0409c3b85a5c8efb5a5c84f2a7c5b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36bc2490c67a10ef25021414cd92d1ea"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#a36bc2490c67a10ef25021414cd92d1ea">window_flag_desc</a> [32]</td></tr>
+<tr class="memdesc:a36bc2490c67a10ef25021414cd92d1ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">サブウィンドウ名称テーブル  <a href="gameterm_8cpp.html#a36bc2490c67a10ef25021414cd92d1ea">[詳解]</a><br /></td></tr>
+<tr class="separator:a36bc2490c67a10ef25021414cd92d1ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5813566b188b0e854de1ca0112d7dac"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#ae5813566b188b0e854de1ca0112d7dac">ident_info</a> []</td></tr>
+<tr class="memdesc:ae5813566b188b0e854de1ca0112d7dac"><td class="mdescLeft">&#160;</td><td class="mdescRight">シンボル解説テーブル / The table of "symbol info" &ndash; each entry is a string of the form "X:desc" where "X" is the trigger, and "desc" is the "info".  <a href="gameterm_8cpp.html#ae5813566b188b0e854de1ca0112d7dac">[詳解]</a><br /></td></tr>
+<tr class="separator:ae5813566b188b0e854de1ca0112d7dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cb8a8adb1f5c767d19bdbc21919442a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structterm__type.html">term_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#a1cb8a8adb1f5c767d19bdbc21919442a">angband_term</a> [8]</td></tr>
+<tr class="separator:a1cb8a8adb1f5c767d19bdbc21919442a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7839507a597a8a9abafefb8064452845"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#a7839507a597a8a9abafefb8064452845">color_char</a> = &quot;dwsorgbuDWvyRGBU&quot;</td></tr>
+<tr class="memdesc:a7839507a597a8a9abafefb8064452845"><td class="mdescLeft">&#160;</td><td class="mdescRight">スクリーン表示色キャラクタ / Encode the screen colors  <a href="gameterm_8cpp.html#a7839507a597a8a9abafefb8064452845">[詳解]</a><br /></td></tr>
+<tr class="separator:a7839507a597a8a9abafefb8064452845"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b4c0e1c1baf472c912a287cad8a4891"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#a8b4c0e1c1baf472c912a287cad8a4891">misc_to_attr</a> [256]</td></tr>
+<tr class="separator:a8b4c0e1c1baf472c912a287cad8a4891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa76671710c56441731043dbef5cb9ad4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a956852f26de2bab8053529224e40dd37">SYMBOL_CODE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#aa76671710c56441731043dbef5cb9ad4">misc_to_char</a> [256]</td></tr>
+<tr class="separator:aa76671710c56441731043dbef5cb9ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a120628e3842a2071d85957d5ee3b79c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#a120628e3842a2071d85957d5ee3b79c0">tval_to_attr</a> [128]</td></tr>
+<tr class="separator:a120628e3842a2071d85957d5ee3b79c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ee011a373835ef623e21c61f917e046"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gameterm_8cpp.html#a7ee011a373835ef623e21c61f917e046">gf_color</a> [<a class="el" href="spell-types_8h.html#a141c216a179b958a665de1c1e22934a3a20daa87fb5db723d8b1636fbd067e0cf">MAX_GF</a>]</td></tr>
+<tr class="separator:a7ee011a373835ef623e21c61f917e046"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="abc8e84b6a0c39dcbe7267db4e1003f2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc8e84b6a0c39dcbe7267db4e1003f2d">&#9670;&nbsp;</a></span>PICT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PICT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">A, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">C&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;((((<a class="el" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a>)(A)) &lt;&lt; 8) | ((<a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>)(C)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a2694b4425c6fa76811611a40852ec96e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2694b4425c6fa76811611a40852ec96e">&#9670;&nbsp;</a></span>bolt_pict()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a> bolt_pict </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>ny</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>nx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a>&#160;</td>
+          <td class="paramname"><em>typ</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>始点から終点にかけた方向毎にボルトのキャラクタを返す / Find the attr/char pair to use for a spell effect </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">y</td><td>始点Y座標 </td></tr>
+    <tr><td class="paramname">x</td><td>始点X座標 </td></tr>
+    <tr><td class="paramname">ny</td><td>終点Y座標 </td></tr>
+    <tr><td class="paramname">nx</td><td>終点X座標 </td></tr>
+    <tr><td class="paramname">typ</td><td>魔法の効果属性 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>方向キャラID</dd></dl>
+<pre>
+It is moving (or has moved) from (x,y) to (nx,ny).
+If the distance is not "one", we (may) return "*".
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="gameterm_8cpp_a2694b4425c6fa76811611a40852ec96e_cgraph.png" border="0" usemap="#agameterm_8cpp_a2694b4425c6fa76811611a40852ec96e_cgraph" alt=""/></div>
+<map name="agameterm_8cpp_a2694b4425c6fa76811611a40852ec96e_cgraph" id="agameterm_8cpp_a2694b4425c6fa76811611a40852ec96e_cgraph">
+<area shape="rect" title="始点から終点にかけた方向毎にボルトのキャラクタを返す / Find the attr/char pair to use for a spell effect" alt="" coords="5,81,76,108"/>
+<area shape="rect" href="gameterm_8cpp.html#a7a157eaf36e26be043553a955130614f" title="魔法属性に応じたエフェクトの色を返す / Return a color to use for the bolt/ball spells" alt="" coords="124,81,208,108"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="256,5,367,32"/>
+<area shape="rect" href="gameterm_8cpp.html#a7e7a0069db277c2a9b9d6c74ced44c80" title="万色表現用にランダムな色を選択する関数 / Get a legal &quot;multi&#45;hued&quot; color for drawing &quot;spells&quot;" alt="" coords="278,56,345,83"/>
+<area shape="rect" href="quarks_8cpp.html#a95cf419856c525009b78e5246327f405" title=" " alt="" coords="273,107,349,133"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="286,157,337,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="gameterm_8cpp_a2694b4425c6fa76811611a40852ec96e_icgraph.png" border="0" usemap="#agameterm_8cpp_a2694b4425c6fa76811611a40852ec96e_icgraph" alt=""/></div>
+<map name="agameterm_8cpp_a2694b4425c6fa76811611a40852ec96e_icgraph" id="agameterm_8cpp_a2694b4425c6fa76811611a40852ec96e_icgraph">
+<area shape="rect" title="始点から終点にかけた方向毎にボルトのキャラクタを返す / Find the attr/char pair to use for a spell effect" alt="" coords="904,549,975,576"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#ac5e475bf543027393672734eb9613bf6" title="鏡魔法「封魔結界」の効果処理" alt="" coords="199,65,293,92"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="795,1147,856,1173"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#af68e01e109fc7fb8b1e131a7131ed4c5" title="鏡魔法の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;Mirror magic&#39;." alt="" coords="8,733,129,760"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a5f4625552656aee45b62542787f7cd08" title=" " alt="" coords="595,128,712,155"/>
+<area shape="rect" href="activation-others_8cpp.html#a42ed7012ce16db3e2e05111dbcb577d2" title=" " alt="" coords="581,179,725,205"/>
+<area shape="rect" href="spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="592,523,715,549"/>
+<area shape="rect" href="trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="403,559,469,585"/>
+<area shape="rect" href="player-move_8cpp.html#ac637efbeba2a2fca5538ee13812b97bf" title="移動に伴うプレイヤーのステータス変化処理" alt="" coords="180,559,312,585"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="5,1501,132,1528"/>
+<area shape="rect" href="effect-feature_8cpp.html#ab60eea66f4d858035803d331e84151cc" title="汎用的なビーム/ボルト/ボール系による地形効果処理 / We are called from &quot;project()&quot; to &quot;damage&quot; terrain features" alt="" coords="387,65,485,92"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="389,493,483,520"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#ad8d6bd76ccded6edc3d938dddafbea6d" title="死者復活処理(起点より周囲5マス)" alt="" coords="602,725,705,752"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="381,987,491,1013"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="387,725,485,752"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="380,1299,492,1325"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a2c3318b5f3aed8ad86d874c1490f86af" title=" " alt="" coords="583,776,724,803"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a65fc9979f5efe840339924249b7a8d48" title=" " alt="" coords="583,827,724,853"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3715ddccdb53d6a15e7e1d455332abc4" title=" " alt="" coords="586,877,721,904"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#ae046ca978cc34c3daa319e1d28eb6e3a" title=" " alt="" coords="567,929,740,970"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a8cdb77f4352965d8daaed40feabdd58f" title="モンスターのビーム型魔法処理 /" alt="" coords="626,995,681,1021"/>
+<area shape="rect" href="blood-curse_8cpp.html#ac0ecc46e48f607918b001bc2b08b561f" title=" " alt="" coords="575,1045,731,1072"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a50c4496847b82cffa5927970c2add403" title="モンスターのボルト型魔法処理 / Cast a bolt at the player Stop if we hit a monster Affect monsters and the player" alt="" coords="632,1096,675,1123"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a60d3d82169ca8120d8716c9994caf9ca" title="モンスターのボール型＆ブレス型魔法処理 / Cast a breath (or ball) attack at the player Pass over any monsters that may be..." alt="" coords="624,1147,683,1173"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#ab738ba0734204e55707411a35acde85c" title="元素魔法呪文を実行する" alt="" coords="369,1248,503,1275"/>
+<area shape="rect" href="spells-chaos_8cpp.html#af16bb565fa9396a13ad62570b7d0344f" title="カオス魔法「流星群」/トランプ魔法「隕石のカード」の処理としてプレイヤーを中心に隕石落下処理を10+1d10回繰り返す。 / Drop 10+1d10 meteor ball at random pla..." alt="" coords="606,2008,701,2035"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="380,1755,492,1781"/>
+<area shape="rect" href="mind-mindcrafter_8cpp.html#a8da07b1c4907a85709c965d06d9038cb" title="超能力の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;mindcrafter&#39;." alt="" coords="360,1349,512,1376"/>
+<area shape="rect" href="mind-ninja_8cpp.html#ae73c136f3f19a9d9d3691f8894bfad97" title="忍術の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;ninja&#39;." alt="" coords="379,1451,493,1477"/>
+<area shape="rect" href="spells-crusade_8cpp.html#afb7053fa5419ad06ab18be525f1d92af" title="破邪魔法処理" alt="" coords="576,2261,731,2288"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="375,2236,497,2263"/>
+<area shape="rect" href="grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="599,331,707,357"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="403,305,469,332"/>
+<area shape="rect" href="effect-player_8cpp.html#a15c922eb8fc168c85e08a24a4c37ef35" title="反射・忍者の変わり身などでそもそも当たらない状況を判定する" alt="" coords="576,457,731,498"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a15c5dc7b21b8512778dd7d853adc5743" title=" " alt="" coords="572,1704,735,1731"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a0fe944f2b028650d03e1d618168589af" title=" " alt="" coords="564,1755,743,1781"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#abd44e8e6aabaade505734e841a075bc7" title="魔法のルーン生成処理(プレイヤー中心に周囲1マス)" alt="" coords="560,1805,747,1832"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#af6d0cc0cfbba75815d7b4caa7aec3294" title="ドア破壊処理(プレイヤー中心に周囲1マス)" alt="" coords="582,1653,725,1680"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#a5a588aed34a170d84a34d261b0c629ba" title="トラップ解除処理(プレイヤー中心に周囲1マス)" alt="" coords="585,1907,721,1933"/>
+<area shape="rect" href="spells-pet_8cpp.html#a4d1508b844fb21fa74cec6f11df83464" title="ペット爆破処理 /" alt="" coords="592,1957,715,1984"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="379,1501,493,1528"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#a68ec743cccdff3a324a099b5ebe908fc" title="ドア生成処理(プレイヤー中心に周囲1マス) / Hooks – affect adjacent grids (radius 1 ball attack)" alt="" coords="603,2059,703,2085"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#ad9a9630bf73b38fc355e655aa6b5c55d" title="呪術「目には目を」の効果処理" alt="" coords="600,2109,707,2136"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a9c5b6430a190c4d961f6017a483fdcf2" title="ボール系スペルの発動 / Cast a ball spell" alt="" coords="620,1400,687,1427"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a91b238446e2261ec912dcf94e20cfef8" title="ボール(ハイド)系スペルの発動 / Cast a ball spell" alt="" coords="605,1197,702,1224"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a5c8a1e75040eba8ec78016b333314529" title="ブラスト系スペルの発動 / Cast a blast spell" alt="" coords="616,2211,691,2237"/>
+<area shape="rect" href="death-crimson_8cpp.html#a9b1ec834a4932f145b1f7a6d663b4a1f" title="クリムゾンを発射する / Fire Crimson, evoluting gun." alt="" coords="607,2312,699,2339"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a77e27c10511ddfb04afb3b2490bc90c2" title="メテオ系スペルの発動 / Cast a meteor spell" alt="" coords="610,2363,697,2389"/>
+<area shape="rect" href="spells-launcher_8cpp.html#ad3fd4374e8d9d14d1aa2fedc15be7694" title="ロケット系スペルの発動(詳細な差は確認中) / Cast a ball spell" alt="" coords="612,1856,695,1883"/>
+<area shape="rect" href="spells-lite_8cpp.html#a78cee093a3c7190cac79b36c36e200fc" title="プレイヤー位置を中心にLITE_WEAK属性を通じた照明処理を行う / Hack – call light around the player Affect all monsters in the pr..." alt="" coords="618,1552,689,1579"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a382b67c15a731d3dd86f08ce9cf2f7c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a382b67c15a731d3dd86f08ce9cf2f7c9">&#9670;&nbsp;</a></span>color_char_to_attr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> color_char_to_attr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a956852f26de2bab8053529224e40dd37">SYMBOL_CODE</a>&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>シンボル1文字をカラーIDに変更する / Convert a "color letter" into an "actual" color The colors are: dwsorgbuDWvyRGBU, as shown below </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>シンボル文字 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>カラーID </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="gameterm_8cpp_a382b67c15a731d3dd86f08ce9cf2f7c9_icgraph.png" border="0" usemap="#agameterm_8cpp_a382b67c15a731d3dd86f08ce9cf2f7c9_icgraph" alt=""/></div>
+<map name="agameterm_8cpp_a382b67c15a731d3dd86f08ce9cf2f7c9_icgraph" id="agameterm_8cpp_a382b67c15a731d3dd86f08ce9cf2f7c9_icgraph">
+<area shape="rect" title="シンボル1文字をカラーIDに変更する / Convert a &quot;color letter&quot; into an &quot;actual&quot; color The colors are: dwsorgbuDWvyRGBU..." alt="" coords="455,81,581,108"/>
+<area shape="rect" href="feature-reader_8cpp.html#a78ec146518b20cf8e6483f9b685c55e4" title="地形情報(f_info)のパース関数 / Initialize the &quot;f_info&quot; array, by parsing an ascii &quot;template&quot; file" alt="" coords="296,5,387,32"/>
+<area shape="rect" href="kind-reader_8cpp.html#ac894ef42b2bebdb1a219e794f1d23e2f" title="ベースアイテム(k_info)のパース関数 / Initialize the &quot;k_info&quot; array, by parsing an ascii &quot;template&quot; file" alt="" coords="294,56,389,83"/>
+<area shape="rect" href="race-reader_8cpp.html#aaec14a7640f4b8b2b9558b36db697afb" title="モンスター種族情報(r_info)のパース関数 / Initialize the &quot;r_info&quot; array, by parsing an ascii &quot;template&quot; file" alt="" coords="295,107,387,133"/>
+<area shape="rect" href="show-file_8cpp.html#afdfae0866312023a7bd9aceefdfad6dd" title="ファイル内容の一行をコンソールに出力する Display single line of on&#45;line help file" alt="" coords="276,157,407,184"/>
+<area shape="rect" href="info-initializer_8cpp.html#a875359823e54b4c5454228a7b9b58885" title="地形情報読み込みのメインルーチン / Initialize the &quot;f_info&quot; array" alt="" coords="150,5,226,32"/>
+<area shape="rect" href="angband-initializer_8cpp.html#aeb43129ef8fbea1c72b20e1513eb9702" title="全ゲームデータ読み込みのメインルーチン /" alt="" coords="5,56,100,83"/>
+<area shape="rect" href="info-initializer_8cpp.html#a48ac5c3ae431e17e03ae3edcdb732c0a" title="ベースアイテム情報読み込みのメインルーチン / Initialize the &quot;k_info&quot; array" alt="" coords="148,56,228,83"/>
+<area shape="rect" href="info-initializer_8cpp.html#a20aa822617912408066a0abab5beabec" title="モンスター種族情報読み込みのメインルーチン / Initialize the &quot;r_info&quot; array" alt="" coords="149,107,227,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7e7a0069db277c2a9b9d6c74ced44c80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e7a0069db277c2a9b9d6c74ced44c80">&#9670;&nbsp;</a></span>mh_attr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> mh_attr </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>万色表現用にランダムな色を選択する関数 / Get a legal "multi-hued" color for drawing "spells" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">max</td><td>色IDの最大値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>選択した色ID </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="gameterm_8cpp_a7e7a0069db277c2a9b9d6c74ced44c80_icgraph.png" border="0" usemap="#agameterm_8cpp_a7e7a0069db277c2a9b9d6c74ced44c80_icgraph" alt=""/></div>
+<map name="agameterm_8cpp_a7e7a0069db277c2a9b9d6c74ced44c80_icgraph" id="agameterm_8cpp_a7e7a0069db277c2a9b9d6c74ced44c80_icgraph">
+<area shape="rect" title="万色表現用にランダムな色を選択する関数 / Get a legal &quot;multi&#45;hued&quot; color for drawing &quot;spells&quot;" alt="" coords="397,31,464,57"/>
+<area shape="rect" href="gameterm_8cpp.html#a7a157eaf36e26be043553a955130614f" title="魔法属性に応じたエフェクトの色を返す / Return a color to use for the bolt/ball spells" alt="" coords="265,31,349,57"/>
+<area shape="rect" href="gameterm_8cpp.html#a2694b4425c6fa76811611a40852ec96e" title="始点から終点にかけた方向毎にボルトのキャラクタを返す / Find the attr/char pair to use for a spell effect" alt="" coords="147,31,217,57"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#ac5e475bf543027393672734eb9613bf6" title="鏡魔法「封魔結界」の効果処理" alt="" coords="5,5,99,32"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="21,56,83,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7a157eaf36e26be043553a955130614f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a157eaf36e26be043553a955130614f">&#9670;&nbsp;</a></span>spell_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> spell_color </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>魔法属性に応じたエフェクトの色を返す / Return a color to use for the bolt/ball spells </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>魔法属性 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>対応する色ID </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="gameterm_8cpp_a7a157eaf36e26be043553a955130614f_cgraph.png" border="0" usemap="#agameterm_8cpp_a7a157eaf36e26be043553a955130614f_cgraph" alt=""/></div>
+<map name="agameterm_8cpp_a7a157eaf36e26be043553a955130614f_cgraph" id="agameterm_8cpp_a7a157eaf36e26be043553a955130614f_cgraph">
+<area shape="rect" title="魔法属性に応じたエフェクトの色を返す / Return a color to use for the bolt/ball spells" alt="" coords="5,81,89,108"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="137,5,248,32"/>
+<area shape="rect" href="gameterm_8cpp.html#a7e7a0069db277c2a9b9d6c74ced44c80" title="万色表現用にランダムな色を選択する関数 / Get a legal &quot;multi&#45;hued&quot; color for drawing &quot;spells&quot;" alt="" coords="159,56,226,83"/>
+<area shape="rect" href="quarks_8cpp.html#a95cf419856c525009b78e5246327f405" title=" " alt="" coords="155,107,231,133"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="167,157,218,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="gameterm_8cpp_a7a157eaf36e26be043553a955130614f_icgraph.png" border="0" usemap="#agameterm_8cpp_a7a157eaf36e26be043553a955130614f_icgraph" alt=""/></div>
+<map name="agameterm_8cpp_a7a157eaf36e26be043553a955130614f_icgraph" id="agameterm_8cpp_a7a157eaf36e26be043553a955130614f_icgraph">
+<area shape="rect" title="魔法属性に応じたエフェクトの色を返す / Return a color to use for the bolt/ball spells" alt="" coords="979,630,1063,657"/>
+<area shape="rect" href="gameterm_8cpp.html#a2694b4425c6fa76811611a40852ec96e" title="始点から終点にかけた方向毎にボルトのキャラクタを返す / Find the attr/char pair to use for a spell effect" alt="" coords="860,630,931,657"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#ac5e475bf543027393672734eb9613bf6" title="鏡魔法「封魔結界」の効果処理" alt="" coords="175,364,268,390"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="751,1228,812,1254"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#af68e01e109fc7fb8b1e131a7131ed4c5" title="鏡魔法の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;Mirror magic&#39;." alt="" coords="5,961,127,988"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a5f4625552656aee45b62542787f7cd08" title=" " alt="" coords="551,426,668,453"/>
+<area shape="rect" href="activation-others_8cpp.html#a42ed7012ce16db3e2e05111dbcb577d2" title=" " alt="" coords="537,477,681,504"/>
+<area shape="rect" href="spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="548,528,671,554"/>
+<area shape="rect" href="trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="359,604,425,630"/>
+<area shape="rect" href="effect-feature_8cpp.html#ab60eea66f4d858035803d331e84151cc" title="汎用的なビーム/ボルト/ボール系による地形効果処理 / We are called from &quot;project()&quot; to &quot;damage&quot; terrain features" alt="" coords="343,364,441,390"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="345,222,439,249"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#ad8d6bd76ccded6edc3d938dddafbea6d" title="死者復活処理(起点より周囲5マス)" alt="" coords="558,1405,661,1432"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="337,1329,447,1356"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="343,1405,441,1432"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="336,1608,448,1634"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a2c3318b5f3aed8ad86d874c1490f86af" title=" " alt="" coords="539,882,680,909"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a65fc9979f5efe840339924249b7a8d48" title=" " alt="" coords="539,933,680,960"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3715ddccdb53d6a15e7e1d455332abc4" title=" " alt="" coords="542,984,677,1010"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#ae046ca978cc34c3daa319e1d28eb6e3a" title=" " alt="" coords="523,1035,696,1076"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a8cdb77f4352965d8daaed40feabdd58f" title="モンスターのビーム型魔法処理 /" alt="" coords="582,1101,637,1128"/>
+<area shape="rect" href="blood-curse_8cpp.html#ac0ecc46e48f607918b001bc2b08b561f" title=" " alt="" coords="531,1152,687,1178"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a50c4496847b82cffa5927970c2add403" title="モンスターのボルト型魔法処理 / Cast a bolt at the player Stop if we hit a monster Affect monsters and the player" alt="" coords="588,1202,631,1229"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a60d3d82169ca8120d8716c9994caf9ca" title="モンスターのボール型＆ブレス型魔法処理 / Cast a breath (or ball) attack at the player Pass over any monsters that may be..." alt="" coords="580,1253,639,1280"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#ab738ba0734204e55707411a35acde85c" title="元素魔法呪文を実行する" alt="" coords="325,832,459,858"/>
+<area shape="rect" href="spells-chaos_8cpp.html#af16bb565fa9396a13ad62570b7d0344f" title="カオス魔法「流星群」/トランプ魔法「隕石のカード」の処理としてプレイヤーを中心に隕石落下処理を10+1d10回繰り返す。 / Drop 10+1d10 meteor ball at random pla..." alt="" coords="562,2368,657,2394"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="336,2241,448,2268"/>
+<area shape="rect" href="mind-mindcrafter_8cpp.html#a8da07b1c4907a85709c965d06d9038cb" title="超能力の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;mindcrafter&#39;." alt="" coords="316,1456,468,1482"/>
+<area shape="rect" href="mind-ninja_8cpp.html#ae73c136f3f19a9d9d3691f8894bfad97" title="忍術の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;ninja&#39;." alt="" coords="335,1506,449,1533"/>
+<area shape="rect" href="spells-crusade_8cpp.html#afb7053fa5419ad06ab18be525f1d92af" title="破邪魔法処理" alt="" coords="532,1810,687,1837"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="331,1785,453,1812"/>
+<area shape="rect" href="grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="555,629,663,656"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="329,668,455,694"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="359,725,425,752"/>
+<area shape="rect" href="effect-player_8cpp.html#a15c922eb8fc168c85e08a24a4c37ef35" title="反射・忍者の変わり身などでそもそも当たらない状況を判定する" alt="" coords="532,286,687,327"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a15c5dc7b21b8512778dd7d853adc5743" title=" " alt="" coords="528,1861,691,1888"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a0fe944f2b028650d03e1d618168589af" title=" " alt="" coords="520,1912,699,1938"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#abd44e8e6aabaade505734e841a075bc7" title="魔法のルーン生成処理(プレイヤー中心に周囲1マス)" alt="" coords="516,1962,703,1989"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#af6d0cc0cfbba75815d7b4caa7aec3294" title="ドア破壊処理(プレイヤー中心に周囲1マス)" alt="" coords="538,2165,681,2192"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#a5a588aed34a170d84a34d261b0c629ba" title="トラップ解除処理(プレイヤー中心に周囲1マス)" alt="" coords="541,2064,677,2090"/>
+<area shape="rect" href="spells-pet_8cpp.html#a4d1508b844fb21fa74cec6f11df83464" title="ペット爆破処理 /" alt="" coords="548,2114,671,2141"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="335,1658,449,1685"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#a68ec743cccdff3a324a099b5ebe908fc" title="ドア生成処理(プレイヤー中心に周囲1マス) / Hooks – affect adjacent grids (radius 1 ball attack)" alt="" coords="559,2216,659,2242"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#ad9a9630bf73b38fc355e655aa6b5c55d" title="呪術「目には目を」の効果処理" alt="" coords="556,2266,663,2293"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a9c5b6430a190c4d961f6017a483fdcf2" title="ボール系スペルの発動 / Cast a ball spell" alt="" coords="576,1557,643,1584"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a91b238446e2261ec912dcf94e20cfef8" title="ボール(ハイド)系スペルの発動 / Cast a ball spell" alt="" coords="561,781,658,808"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a5c8a1e75040eba8ec78016b333314529" title="ブラスト系スペルの発動 / Cast a blast spell" alt="" coords="572,1760,647,1786"/>
+<area shape="rect" href="death-crimson_8cpp.html#a9b1ec834a4932f145b1f7a6d663b4a1f" title="クリムゾンを発射する / Fire Crimson, evoluting gun." alt="" coords="563,58,655,85"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a77e27c10511ddfb04afb3b2490bc90c2" title="メテオ系スペルの発動 / Cast a meteor spell" alt="" coords="566,160,653,186"/>
+<area shape="rect" href="spells-launcher_8cpp.html#ad3fd4374e8d9d14d1aa2fedc15be7694" title="ロケット系スペルの発動(詳細な差は確認中) / Cast a ball spell" alt="" coords="568,2317,651,2344"/>
+<area shape="rect" href="spells-lite_8cpp.html#a78cee093a3c7190cac79b36c36e200fc" title="プレイヤー位置を中心にLITE_WEAK属性を通じた照明処理を行う / Hack – call light around the player Affect all monsters in the pr..." alt="" coords="574,1709,645,1736"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a518c354955f6ee2ee1931a3b109be584"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a518c354955f6ee2ee1931a3b109be584">&#9670;&nbsp;</a></span>angband_color_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> angband_color_table[256][4]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>初期値:</b><div class="fragment"><div class="line">=</div>
+<div class="line">{</div>
+<div class="line">    {0x00, 0x00, 0x00, 0x00},   </div>
+<div class="line">    {0x00, 0xFF, 0xFF, 0xFF},   </div>
+<div class="line">    {0x00, 0x80, 0x80, 0x80},   </div>
+<div class="line">    {0x00, 0xFF, 0x80, 0x00},   </div>
+<div class="line">    {0x00, 0xC0, 0x00, 0x00},   </div>
+<div class="line">    {0x00, 0x00, 0x80, 0x40},   </div>
+<div class="line">    {0x00, 0x00, 0x00, 0xFF},   </div>
+<div class="line">    {0x00, 0x80, 0x40, 0x00},   </div>
+<div class="line">    {0x00, 0x40, 0x40, 0x40},   </div>
+<div class="line">    {0x00, 0xC0, 0xC0, 0xC0},   </div>
+<div class="line">    {0x00, 0xFF, 0x00, 0xFF},   </div>
+<div class="line">    {0x00, 0xFF, 0xFF, 0x00},   </div>
+<div class="line">    {0x00, 0xFF, 0x00, 0x00},   </div>
+<div class="line">    {0x00, 0x00, 0xFF, 0x00},   </div>
+<div class="line">    {0x00, 0x00, 0xFF, 0xFF},   </div>
+<div class="line">    {0x00, 0xC0, 0x80, 0x40}    </div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1cb8a8adb1f5c767d19bdbc21919442a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cb8a8adb1f5c767d19bdbc21919442a">&#9670;&nbsp;</a></span>angband_term</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structterm__type.html">term_type</a>* angband_term[8]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a84e19c58ec8bf309edafb73249b29e18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84e19c58ec8bf309edafb73249b29e18">&#9670;&nbsp;</a></span>angband_term_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char angband_term_name[8][16]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>初期値:</b><div class="fragment"><div class="line">=</div>
+<div class="line">{</div>
+<div class="line">    <span class="stringliteral">&quot;Bakabakaband&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;Term-1&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;Term-2&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;Term-3&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;Term-4&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;Term-5&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;Term-6&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;Term-7&quot;</span></div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7839507a597a8a9abafefb8064452845"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7839507a597a8a9abafefb8064452845">&#9670;&nbsp;</a></span>color_char</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> color_char = &quot;dwsorgbuDWvyRGBU&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>スクリーン表示色キャラクタ / Encode the screen colors </p>
+
+</div>
+</div>
+<a id="acf0409c3b85a5c8efb5a5c84f2a7c5b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf0409c3b85a5c8efb5a5c84f2a7c5b8">&#9670;&nbsp;</a></span>color_names</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> color_names[16]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>色名称テーブル / Hack &ndash; the "basic" color names (see "TERM_xxx") </p>
+
+</div>
+</div>
+<a id="a7ee011a373835ef623e21c61f917e046"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ee011a373835ef623e21c61f917e046">&#9670;&nbsp;</a></span>gf_color</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> gf_color[<a class="el" href="spell-types_8h.html#a141c216a179b958a665de1c1e22934a3a20daa87fb5db723d8b1636fbd067e0cf">MAX_GF</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae5813566b188b0e854de1ca0112d7dac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5813566b188b0e854de1ca0112d7dac">&#9670;&nbsp;</a></span>ident_info</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> ident_info[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>シンボル解説テーブル / The table of "symbol info" &ndash; each entry is a string of the form "X:desc" where "X" is the trigger, and "desc" is the "info". </p>
+
+</div>
+</div>
+<a id="a8b4c0e1c1baf472c912a287cad8a4891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b4c0e1c1baf472c912a287cad8a4891">&#9670;&nbsp;</a></span>misc_to_attr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> misc_to_attr[256]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa76671710c56441731043dbef5cb9ad4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa76671710c56441731043dbef5cb9ad4">&#9670;&nbsp;</a></span>misc_to_char</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a956852f26de2bab8053529224e40dd37">SYMBOL_CODE</a> misc_to_char[256]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a120628e3842a2071d85957d5ee3b79c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a120628e3842a2071d85957d5ee3b79c0">&#9670;&nbsp;</a></span>tval_to_attr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> tval_to_attr[128]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a36bc2490c67a10ef25021414cd92d1ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36bc2490c67a10ef25021414cd92d1ea">&#9670;&nbsp;</a></span>window_flag_desc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> window_flag_desc[32]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>サブウィンドウ名称テーブル </p>
+<pre>
+Certain "screens" always use the main screen, including News, Birth,
+Dungeon, Tomb-stone, High-scores, Macros, Colors, Visuals, Options.
+
+Later, special flags may allow sub-windows to "steal" stuff from the
+main window, including File dump (help), File dump (artifacts, uniques),
+Character screen, Small scale map, Previous Messages, Store screen, etc.
+
+The "ctrl-i" (tab) command flips the "Display inven/equip" and "Display
+equip/inven" flags for all windows.
+
+The "ctrl-g" command (or pseudo-command) should perhaps grab a snapshot
+of the main screen into any interested windows.
+</pre> 
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分23秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

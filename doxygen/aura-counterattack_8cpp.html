@@ -1,0 +1,772 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/combat/aura-counterattack.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_61f20e49ac5d6763f7282e8c799f7538.html">combat</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">aura-counterattack.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="aura-counterattack_8h_source.html">combat/aura-counterattack.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="effect-characteristics_8h_source.html">effect/effect-characteristics.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="effect-processor_8h_source.html">effect/effect-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags-resistance_8h_source.html">monster-race/race-flags-resistance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags3_8h_source.html">monster-race/race-flags3.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-info_8h_source.html">monster/monster-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status_8h_source.html">monster/monster-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-armor_8h_source.html">object-hook/hook-armor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-checker_8h_source.html">object-hook/hook-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status-flags_8h_source.html">player/player-status-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="realm-hex-numbers_8h_source.html">realm/realm-hex-numbers.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-teleport_8h_source.html">spell-kind/spells-teleport.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-hex_8h_source.html">spell-realm/spells-hex.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spell-types_8h_source.html">spell/spell-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+aura-counterattack.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2combat_2aura-counterattack_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2combat_2aura-counterattack_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2combat_2aura-counterattack_8cpp">
+<area shape="rect" title=" " alt="" coords="1589,5,1777,61"/>
+<area shape="rect" href="aura-counterattack_8h.html" title=" " alt="" coords="1278,117,1466,143"/>
+<area shape="rect" href="effect-characteristics_8h.html" title=" " alt="" coords="2253,117,2441,143"/>
+<area shape="rect" href="effect-processor_8h.html" title=" " alt="" coords="871,206,1031,233"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="717,206,795,233"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="2628,199,2756,240"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="1521,109,1671,151"/>
+<area shape="rect" href="race-flags-resistance_8h.html" title=" " alt="" coords="2465,109,2623,151"/>
+<area shape="rect" href="race-flags3_8h.html" title=" " alt="" coords="2648,117,2824,143"/>
+<area shape="rect" href="monster-info_8h.html" title=" " alt="" coords="1936,295,2091,322"/>
+<area shape="rect" href="monster-status_8h.html" title=" " alt="" coords="2115,295,2285,322"/>
+<area shape="rect" href="hook-armor_8h.html" title=" " alt="" coords="203,295,373,322"/>
+<area shape="rect" href="hook-checker_8h.html" title=" " alt="" coords="254,206,437,233"/>
+<area shape="rect" href="player-status-flags_8h.html" title=" " alt="" coords="2041,109,2177,151"/>
+<area shape="rect" href="realm-hex-numbers_8h.html" title=" " alt="" coords="2849,117,3029,143"/>
+<area shape="rect" href="spells-teleport_8h.html" title=" " alt="" coords="5,295,179,322"/>
+<area shape="rect" href="spells-hex_8h.html" title=" " alt="" coords="499,288,621,329"/>
+<area shape="rect" href="spell-types_8h.html" title=" " alt="" coords="3053,117,3179,143"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1829,117,2017,143"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="508,109,641,151"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="747,295,914,322"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1085,385,1214,411"/>
+<area shape="rect" href="monster-attack-util_8h.html" title=" " alt="" coords="1292,199,1452,240"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1061,474,1152,501"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1176,474,1267,501"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1291,474,1389,501"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1413,474,1512,501"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="1537,474,1637,501"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="697,474,871,501"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="896,474,1037,501"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1661,474,1808,501"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="599,556,718,583"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1958,556,2069,583"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="1448,377,1608,419"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="1331,288,1491,329"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1941,377,2086,419"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="2141,467,2297,508"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="1040,295,1155,322"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="1557,199,1702,240"/>
+<area shape="rect" title=" " alt="" coords="1476,206,1532,233"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="1667,288,1832,329"/>
+<area shape="rect" title=" " alt="" coords="1857,295,1911,322"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="2437,206,2603,233"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="2013,206,2192,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1838,206,1989,233"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="513,206,639,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:adafd6e38f8929f4330bce159ff3fa68d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aura-counterattack_8cpp.html#adafd6e38f8929f4330bce159ff3fa68d">aura_fire_by_monster_attack</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmonap__type.html">monap_type</a> *monap_ptr)</td></tr>
+<tr class="memdesc:adafd6e38f8929f4330bce159ff3fa68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターから直接攻撃を受けた時に、プレーヤーのオーラダメージで反撃する処理  <a href="aura-counterattack_8cpp.html#adafd6e38f8929f4330bce159ff3fa68d">[詳解]</a><br /></td></tr>
+<tr class="separator:adafd6e38f8929f4330bce159ff3fa68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc7247d3c2abaa143da26c173a0fd1c0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aura-counterattack_8cpp.html#abc7247d3c2abaa143da26c173a0fd1c0">aura_elec_by_monster_attack</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmonap__type.html">monap_type</a> *monap_ptr)</td></tr>
+<tr class="separator:abc7247d3c2abaa143da26c173a0fd1c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0315d8e3115f2a3545f6855842f5f0f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aura-counterattack_8cpp.html#ac0315d8e3115f2a3545f6855842f5f0f">aura_cold_by_monster_attack</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmonap__type.html">monap_type</a> *monap_ptr)</td></tr>
+<tr class="separator:ac0315d8e3115f2a3545f6855842f5f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accf184043e29e56a57316a7276548110"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aura-counterattack_8cpp.html#accf184043e29e56a57316a7276548110">aura_shards_by_monster_attack</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmonap__type.html">monap_type</a> *monap_ptr)</td></tr>
+<tr class="separator:accf184043e29e56a57316a7276548110"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a229fd728fcfbf38a0e0c82930bbd6186"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aura-counterattack_8cpp.html#a229fd728fcfbf38a0e0c82930bbd6186">aura_holy_by_monster_attack</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmonap__type.html">monap_type</a> *monap_ptr)</td></tr>
+<tr class="separator:a229fd728fcfbf38a0e0c82930bbd6186"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa62a2d5bd84fc615243e0c161cae1b4a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aura-counterattack_8cpp.html#aa62a2d5bd84fc615243e0c161cae1b4a">aura_force_by_monster_attack</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmonap__type.html">monap_type</a> *monap_ptr)</td></tr>
+<tr class="separator:aa62a2d5bd84fc615243e0c161cae1b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae046ca978cc34c3daa319e1d28eb6e3a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aura-counterattack_8cpp.html#ae046ca978cc34c3daa319e1d28eb6e3a">aura_shadow_by_monster_attack</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmonap__type.html">monap_type</a> *monap_ptr)</td></tr>
+<tr class="separator:ae046ca978cc34c3daa319e1d28eb6e3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ec22302c387ff3016e2d574e564eb6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aura-counterattack_8cpp.html#a0ec22302c387ff3016e2d574e564eb6a">process_aura_counterattack</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmonap__type.html">monap_type</a> *monap_ptr)</td></tr>
+<tr class="separator:a0ec22302c387ff3016e2d574e564eb6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ac0315d8e3115f2a3545f6855842f5f0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0315d8e3115f2a3545f6855842f5f0f">&#9670;&nbsp;</a></span>aura_cold_by_monster_attack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void aura_cold_by_monster_attack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonap__type.html">monap_type</a> *&#160;</td>
+          <td class="paramname"><em>monap_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_ac0315d8e3115f2a3545f6855842f5f0f_cgraph.png" border="0" usemap="#aaura-counterattack_8cpp_ac0315d8e3115f2a3545f6855842f5f0f_cgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_ac0315d8e3115f2a3545f6855842f5f0f_cgraph" id="aaura-counterattack_8cpp_ac0315d8e3115f2a3545f6855842f5f0f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,177,159,219"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="257,58,321,85"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a68b909e93762d63dd13e9c604ee5b3de" title=" " alt="" coords="241,109,336,135"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="207,159,371,186"/>
+<area shape="rect" href="monster-status_8cpp.html#aea5a519fd7a4c7f9c718fdfc1c788c7f" title="モンスターに与えたダメージの修正処理 / Modify the physical damage done to the monster." alt="" coords="223,210,355,237"/>
+<area shape="rect" href="monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="239,311,339,338"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="465,362,555,389"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="431,58,589,85"/>
+<area shape="rect" href="spells-hex_8cpp.html#ab35c57227b5fdac063f315e972f67188" title=" " alt="" coords="463,109,557,135"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="649,5,799,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="679,71,769,98"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="477,159,543,186"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="419,210,601,237"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="685,311,763,338"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="652,147,796,174"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="681,198,767,225"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="855,185,957,211"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="865,286,947,313"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="1014,261,1101,287"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="1013,311,1101,338"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="847,387,965,414"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="859,438,953,465"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_ac0315d8e3115f2a3545f6855842f5f0f_icgraph.png" border="0" usemap="#aaura-counterattack_8cpp_ac0315d8e3115f2a3545f6855842f5f0f_icgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_ac0315d8e3115f2a3545f6855842f5f0f_icgraph" id="aaura-counterattack_8cpp_ac0315d8e3115f2a3545f6855842f5f0f_icgraph">
+<area shape="rect" title=" " alt="" coords="685,5,839,47"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#a0ec22302c387ff3016e2d574e564eb6a" title=" " alt="" coords="451,13,637,39"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a4c501e4155c9fe7c492e1c0fd4c61c3b" title="モンスターから直接攻撃を1回受けた時の処理" alt="" coords="216,13,403,39"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a8676e4ca5747a1ddf4137530318b2c8b" title="モンスターからプレイヤーへの打撃処理本体" alt="" coords="5,13,168,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abc7247d3c2abaa143da26c173a0fd1c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc7247d3c2abaa143da26c173a0fd1c0">&#9670;&nbsp;</a></span>aura_elec_by_monster_attack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void aura_elec_by_monster_attack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonap__type.html">monap_type</a> *&#160;</td>
+          <td class="paramname"><em>monap_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_abc7247d3c2abaa143da26c173a0fd1c0_cgraph.png" border="0" usemap="#aaura-counterattack_8cpp_abc7247d3c2abaa143da26c173a0fd1c0_cgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_abc7247d3c2abaa143da26c173a0fd1c0_cgraph" id="aaura-counterattack_8cpp_abc7247d3c2abaa143da26c173a0fd1c0_cgraph">
+<area shape="rect" title=" " alt="" coords="5,212,159,253"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="257,93,321,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a396bea70a6b86bde49a877c6222455ba" title=" " alt="" coords="241,143,336,170"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="207,346,371,373"/>
+<area shape="rect" href="monster-status_8cpp.html#aea5a519fd7a4c7f9c718fdfc1c788c7f" title="モンスターに与えたダメージの修正処理 / Modify the physical damage done to the monster." alt="" coords="223,295,355,322"/>
+<area shape="rect" href="monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="239,194,339,221"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="465,245,555,271"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="431,42,589,69"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="455,143,565,170"/>
+<area shape="rect" href="spells-hex_8cpp.html#ab35c57227b5fdac063f315e972f67188" title=" " alt="" coords="463,93,557,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="649,5,799,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="679,71,769,98"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="477,346,543,373"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="419,397,601,423"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="685,245,763,271"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="652,321,796,347"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="681,371,767,398"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="855,118,957,145"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="865,219,947,246"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="1014,194,1101,221"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="1013,245,1101,271"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="847,321,965,347"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="859,371,953,398"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_abc7247d3c2abaa143da26c173a0fd1c0_icgraph.png" border="0" usemap="#aaura-counterattack_8cpp_abc7247d3c2abaa143da26c173a0fd1c0_icgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_abc7247d3c2abaa143da26c173a0fd1c0_icgraph" id="aaura-counterattack_8cpp_abc7247d3c2abaa143da26c173a0fd1c0_icgraph">
+<area shape="rect" title=" " alt="" coords="685,5,839,47"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#a0ec22302c387ff3016e2d574e564eb6a" title=" " alt="" coords="451,13,637,39"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a4c501e4155c9fe7c492e1c0fd4c61c3b" title="モンスターから直接攻撃を1回受けた時の処理" alt="" coords="216,13,403,39"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a8676e4ca5747a1ddf4137530318b2c8b" title="モンスターからプレイヤーへの打撃処理本体" alt="" coords="5,13,168,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adafd6e38f8929f4330bce159ff3fa68d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adafd6e38f8929f4330bce159ff3fa68d">&#9670;&nbsp;</a></span>aura_fire_by_monster_attack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void aura_fire_by_monster_attack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonap__type.html">monap_type</a> *&#160;</td>
+          <td class="paramname"><em>monap_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>モンスターから直接攻撃を受けた時に、プレーヤーのオーラダメージで反撃する処理 </p>
+<dl class="section date"><dt>日付</dt><dd>2020/05/31 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_adafd6e38f8929f4330bce159ff3fa68d_cgraph.png" border="0" usemap="#aaura-counterattack_8cpp_adafd6e38f8929f4330bce159ff3fa68d_cgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_adafd6e38f8929f4330bce159ff3fa68d_cgraph" id="aaura-counterattack_8cpp_adafd6e38f8929f4330bce159ff3fa68d_cgraph">
+<area shape="rect" title="モンスターから直接攻撃を受けた時に、プレーヤーのオーラダメージで反撃する処理" alt="" coords="5,212,152,253"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="250,93,314,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a706fb302301e7033dea77d67e2ec2d8f" title=" " alt="" coords="238,143,326,170"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="200,346,364,373"/>
+<area shape="rect" href="monster-status_8cpp.html#aea5a519fd7a4c7f9c718fdfc1c788c7f" title="モンスターに与えたダメージの修正処理 / Modify the physical damage done to the monster." alt="" coords="216,295,348,322"/>
+<area shape="rect" href="monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="232,194,332,221"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="458,245,549,271"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="424,42,583,69"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="448,143,559,170"/>
+<area shape="rect" href="spells-hex_8cpp.html#ab35c57227b5fdac063f315e972f67188" title=" " alt="" coords="456,93,551,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="643,5,792,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="672,71,763,98"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="470,346,537,373"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="412,397,595,423"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="678,245,757,271"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="645,321,789,347"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="675,371,760,398"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="848,118,951,145"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="859,219,940,246"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="1007,194,1094,221"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="1007,245,1095,271"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="840,321,959,347"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="852,371,947,398"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_adafd6e38f8929f4330bce159ff3fa68d_icgraph.png" border="0" usemap="#aaura-counterattack_8cpp_adafd6e38f8929f4330bce159ff3fa68d_icgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_adafd6e38f8929f4330bce159ff3fa68d_icgraph" id="aaura-counterattack_8cpp_adafd6e38f8929f4330bce159ff3fa68d_icgraph">
+<area shape="rect" title="モンスターから直接攻撃を受けた時に、プレーヤーのオーラダメージで反撃する処理" alt="" coords="685,5,832,47"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#a0ec22302c387ff3016e2d574e564eb6a" title=" " alt="" coords="451,13,637,39"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a4c501e4155c9fe7c492e1c0fd4c61c3b" title="モンスターから直接攻撃を1回受けた時の処理" alt="" coords="216,13,403,39"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a8676e4ca5747a1ddf4137530318b2c8b" title="モンスターからプレイヤーへの打撃処理本体" alt="" coords="5,13,168,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa62a2d5bd84fc615243e0c161cae1b4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa62a2d5bd84fc615243e0c161cae1b4a">&#9670;&nbsp;</a></span>aura_force_by_monster_attack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void aura_force_by_monster_attack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonap__type.html">monap_type</a> *&#160;</td>
+          <td class="paramname"><em>monap_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_aa62a2d5bd84fc615243e0c161cae1b4a_cgraph.png" border="0" usemap="#aaura-counterattack_8cpp_aa62a2d5bd84fc615243e0c161cae1b4a_cgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_aa62a2d5bd84fc615243e0c161cae1b4a_cgraph" id="aaura-counterattack_8cpp_aa62a2d5bd84fc615243e0c161cae1b4a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,125,163,166"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="261,31,325,57"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="211,81,375,108"/>
+<area shape="rect" href="monster-status_8cpp.html#aea5a519fd7a4c7f9c718fdfc1c788c7f" title="モンスターに与えたダメージの修正処理 / Modify the physical damage done to the monster." alt="" coords="227,132,359,159"/>
+<area shape="rect" href="monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="243,183,343,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="469,233,559,260"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="481,31,547,57"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="423,81,605,108"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="686,183,765,209"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="653,5,797,32"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="683,56,768,83"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="853,56,956,83"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="864,157,945,184"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="1013,120,1099,147"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="1012,183,1100,209"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="845,259,964,285"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="857,309,952,336"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_aa62a2d5bd84fc615243e0c161cae1b4a_icgraph.png" border="0" usemap="#aaura-counterattack_8cpp_aa62a2d5bd84fc615243e0c161cae1b4a_icgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_aa62a2d5bd84fc615243e0c161cae1b4a_icgraph" id="aaura-counterattack_8cpp_aa62a2d5bd84fc615243e0c161cae1b4a_icgraph">
+<area shape="rect" title=" " alt="" coords="685,5,843,47"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#a0ec22302c387ff3016e2d574e564eb6a" title=" " alt="" coords="451,13,637,39"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a4c501e4155c9fe7c492e1c0fd4c61c3b" title="モンスターから直接攻撃を1回受けた時の処理" alt="" coords="216,13,403,39"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a8676e4ca5747a1ddf4137530318b2c8b" title="モンスターからプレイヤーへの打撃処理本体" alt="" coords="5,13,168,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a229fd728fcfbf38a0e0c82930bbd6186"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a229fd728fcfbf38a0e0c82930bbd6186">&#9670;&nbsp;</a></span>aura_holy_by_monster_attack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void aura_holy_by_monster_attack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonap__type.html">monap_type</a> *&#160;</td>
+          <td class="paramname"><em>monap_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_a229fd728fcfbf38a0e0c82930bbd6186_cgraph.png" border="0" usemap="#aaura-counterattack_8cpp_a229fd728fcfbf38a0e0c82930bbd6186_cgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_a229fd728fcfbf38a0e0c82930bbd6186_cgraph" id="aaura-counterattack_8cpp_a229fd728fcfbf38a0e0c82930bbd6186_cgraph">
+<area shape="rect" title=" " alt="" coords="5,125,159,166"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="257,31,321,57"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="207,81,371,108"/>
+<area shape="rect" href="monster-status_8cpp.html#aea5a519fd7a4c7f9c718fdfc1c788c7f" title="モンスターに与えたダメージの修正処理 / Modify the physical damage done to the monster." alt="" coords="223,132,355,159"/>
+<area shape="rect" href="monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="239,183,339,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="465,233,555,260"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="477,31,543,57"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="419,81,601,108"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="682,183,761,209"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="649,5,793,32"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="679,56,764,83"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="849,56,952,83"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="860,157,941,184"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="1009,120,1095,147"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="1008,183,1096,209"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="841,259,960,285"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="853,309,948,336"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_a229fd728fcfbf38a0e0c82930bbd6186_icgraph.png" border="0" usemap="#aaura-counterattack_8cpp_a229fd728fcfbf38a0e0c82930bbd6186_icgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_a229fd728fcfbf38a0e0c82930bbd6186_icgraph" id="aaura-counterattack_8cpp_a229fd728fcfbf38a0e0c82930bbd6186_icgraph">
+<area shape="rect" title=" " alt="" coords="685,5,839,47"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#a0ec22302c387ff3016e2d574e564eb6a" title=" " alt="" coords="451,13,637,39"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a4c501e4155c9fe7c492e1c0fd4c61c3b" title="モンスターから直接攻撃を1回受けた時の処理" alt="" coords="216,13,403,39"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a8676e4ca5747a1ddf4137530318b2c8b" title="モンスターからプレイヤーへの打撃処理本体" alt="" coords="5,13,168,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae046ca978cc34c3daa319e1d28eb6e3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae046ca978cc34c3daa319e1d28eb6e3a">&#9670;&nbsp;</a></span>aura_shadow_by_monster_attack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void aura_shadow_by_monster_attack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonap__type.html">monap_type</a> *&#160;</td>
+          <td class="paramname"><em>monap_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_ae046ca978cc34c3daa319e1d28eb6e3a_cgraph.png" border="0" usemap="#aaura-counterattack_8cpp_ae046ca978cc34c3daa319e1d28eb6e3a_cgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_ae046ca978cc34c3daa319e1d28eb6e3a_cgraph" id="aaura-counterattack_8cpp_ae046ca978cc34c3daa319e1d28eb6e3a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,277,179,318"/>
+<area shape="rect" href="spells-hex_8cpp.html#ab35c57227b5fdac063f315e972f67188" title=" " alt="" coords="245,81,340,108"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="416,5,580,32"/>
+<area shape="rect" href="monster-status_8cpp.html#aea5a519fd7a4c7f9c718fdfc1c788c7f" title="モンスターに与えたダメージの修正処理 / Modify the physical damage done to the monster." alt="" coords="227,259,359,285"/>
+<area shape="rect" href="monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="243,360,343,387"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="453,360,543,387"/>
+<area shape="rect" href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537" title="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour" alt="" coords="232,411,353,437"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="233,461,353,488"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="262,183,323,209"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="465,157,531,184"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="407,259,589,285"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="670,335,749,361"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="637,69,781,96"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="667,132,752,159"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="837,208,940,235"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="848,309,929,336"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="997,272,1083,299"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="996,335,1084,361"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="829,411,948,437"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="841,461,936,488"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_ae046ca978cc34c3daa319e1d28eb6e3a_icgraph.png" border="0" usemap="#aaura-counterattack_8cpp_ae046ca978cc34c3daa319e1d28eb6e3a_icgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_ae046ca978cc34c3daa319e1d28eb6e3a_icgraph" id="aaura-counterattack_8cpp_ae046ca978cc34c3daa319e1d28eb6e3a_icgraph">
+<area shape="rect" title=" " alt="" coords="685,5,859,47"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#a0ec22302c387ff3016e2d574e564eb6a" title=" " alt="" coords="451,13,637,39"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a4c501e4155c9fe7c492e1c0fd4c61c3b" title="モンスターから直接攻撃を1回受けた時の処理" alt="" coords="216,13,403,39"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a8676e4ca5747a1ddf4137530318b2c8b" title="モンスターからプレイヤーへの打撃処理本体" alt="" coords="5,13,168,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="accf184043e29e56a57316a7276548110"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accf184043e29e56a57316a7276548110">&#9670;&nbsp;</a></span>aura_shards_by_monster_attack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void aura_shards_by_monster_attack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonap__type.html">monap_type</a> *&#160;</td>
+          <td class="paramname"><em>monap_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_accf184043e29e56a57316a7276548110_cgraph.png" border="0" usemap="#aaura-counterattack_8cpp_accf184043e29e56a57316a7276548110_cgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_accf184043e29e56a57316a7276548110_cgraph" id="aaura-counterattack_8cpp_accf184043e29e56a57316a7276548110_cgraph">
+<area shape="rect" title=" " alt="" coords="5,150,173,191"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="271,5,335,32"/>
+<area shape="rect" href="grid_8cpp.html#aa76190ea626631d68070030818399df5" title=" " alt="" coords="253,56,353,83"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="221,107,385,133"/>
+<area shape="rect" href="monster-status_8cpp.html#aea5a519fd7a4c7f9c718fdfc1c788c7f" title="モンスターに与えたダメージの修正処理 / Modify the physical damage done to the monster." alt="" coords="237,157,369,184"/>
+<area shape="rect" href="monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="253,208,353,235"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="479,259,570,285"/>
+<area shape="rect" href="spells-teleport_8cpp.html#ab7dc77e5dccd8357b2058d9bcd352cde" title="プレイヤーのテレポート処理メインルーチン" alt="" coords="250,309,357,336"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="491,56,558,83"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="433,107,616,133"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="697,208,775,235"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="664,31,808,57"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="693,81,779,108"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="864,81,967,108"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="875,183,956,209"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="1023,145,1110,172"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="1023,208,1111,235"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="856,284,975,311"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="868,335,963,361"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_accf184043e29e56a57316a7276548110_icgraph.png" border="0" usemap="#aaura-counterattack_8cpp_accf184043e29e56a57316a7276548110_icgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_accf184043e29e56a57316a7276548110_icgraph" id="aaura-counterattack_8cpp_accf184043e29e56a57316a7276548110_icgraph">
+<area shape="rect" title=" " alt="" coords="685,5,853,47"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#a0ec22302c387ff3016e2d574e564eb6a" title=" " alt="" coords="451,13,637,39"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a4c501e4155c9fe7c492e1c0fd4c61c3b" title="モンスターから直接攻撃を1回受けた時の処理" alt="" coords="216,13,403,39"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a8676e4ca5747a1ddf4137530318b2c8b" title="モンスターからプレイヤーへの打撃処理本体" alt="" coords="5,13,168,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0ec22302c387ff3016e2d574e564eb6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ec22302c387ff3016e2d574e564eb6a">&#9670;&nbsp;</a></span>process_aura_counterattack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void process_aura_counterattack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonap__type.html">monap_type</a> *&#160;</td>
+          <td class="paramname"><em>monap_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_a0ec22302c387ff3016e2d574e564eb6a_cgraph.png" border="0" usemap="#aaura-counterattack_8cpp_a0ec22302c387ff3016e2d574e564eb6a_cgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_a0ec22302c387ff3016e2d574e564eb6a_cgraph" id="aaura-counterattack_8cpp_a0ec22302c387ff3016e2d574e564eb6a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,545,192,572"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#ac0315d8e3115f2a3545f6855842f5f0f" title=" " alt="" coords="250,342,403,383"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#abc7247d3c2abaa143da26c173a0fd1c0" title=" " alt="" coords="250,407,403,449"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#adafd6e38f8929f4330bce159ff3fa68d" title="モンスターから直接攻撃を受けた時に、プレーヤーのオーラダメージで反撃する処理" alt="" coords="253,473,400,514"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#aa62a2d5bd84fc615243e0c161cae1b4a" title=" " alt="" coords="248,603,405,645"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#a229fd728fcfbf38a0e0c82930bbd6186" title=" " alt="" coords="250,538,403,579"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#ae046ca978cc34c3daa319e1d28eb6e3a" title=" " alt="" coords="240,1062,413,1103"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#accf184043e29e56a57316a7276548110" title=" " alt="" coords="243,705,411,746"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="495,461,559,488"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a68b909e93762d63dd13e9c604ee5b3de" title=" " alt="" coords="480,5,575,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="651,765,815,792"/>
+<area shape="rect" href="monster-status_8cpp.html#aea5a519fd7a4c7f9c718fdfc1c788c7f" title="モンスターに与えたダメージの修正処理 / Modify the physical damage done to the monster." alt="" coords="461,512,593,539"/>
+<area shape="rect" href="monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="477,563,577,589"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="687,613,778,640"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="653,56,812,83"/>
+<area shape="rect" href="spells-hex_8cpp.html#ab35c57227b5fdac063f315e972f67188" title=" " alt="" coords="685,107,780,133"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="699,872,766,899"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="641,461,824,488"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="872,588,951,615"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a396bea70a6b86bde49a877c6222455ba" title=" " alt="" coords="480,56,575,83"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a706fb302301e7033dea77d67e2ec2d8f" title=" " alt="" coords="483,107,571,133"/>
+<area shape="rect" href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537" title="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour" alt="" coords="467,1171,588,1197"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="467,1120,587,1147"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="497,1272,558,1299"/>
+<area shape="rect" href="grid_8cpp.html#aa76190ea626631d68070030818399df5" title=" " alt="" coords="683,1031,783,1057"/>
+<area shape="rect" href="spells-teleport_8cpp.html#ab7dc77e5dccd8357b2058d9bcd352cde" title="プレイヤーのテレポート処理メインルーチン" alt="" coords="474,917,581,944"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="aura-counterattack_8cpp_a0ec22302c387ff3016e2d574e564eb6a_icgraph.png" border="0" usemap="#aaura-counterattack_8cpp_a0ec22302c387ff3016e2d574e564eb6a_icgraph" alt=""/></div>
+<map name="aaura-counterattack_8cpp_a0ec22302c387ff3016e2d574e564eb6a_icgraph" id="aaura-counterattack_8cpp_a0ec22302c387ff3016e2d574e564eb6a_icgraph">
+<area shape="rect" title=" " alt="" coords="641,5,828,32"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a4c501e4155c9fe7c492e1c0fd4c61c3b" title="モンスターから直接攻撃を1回受けた時の処理" alt="" coords="407,5,593,32"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a8676e4ca5747a1ddf4137530318b2c8b" title="モンスターからプレイヤーへの打撃処理本体" alt="" coords="196,5,359,32"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#aaa47611f7727c9fefb8075e89e11eeef" title="モンスターからプレイヤーへの打撃処理 / Attack the player via physical attacks." alt="" coords="5,5,148,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分38秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

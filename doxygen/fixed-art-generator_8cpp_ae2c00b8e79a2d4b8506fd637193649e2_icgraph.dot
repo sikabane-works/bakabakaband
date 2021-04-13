@@ -1,0 +1,33 @@
+digraph "invest_curse_to_fixed_artifact"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="invest_curse_to_fixed\l_artifact",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="create_named_art",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$fixed-art-generator_8cpp.html#a0e609c4508abe3e79a3aa921f8f052d4",tooltip="フロアの指定された位置に固定アーティファクトを生成する。 / Create the artifact of the specified number"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="do_cmd_wishing",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$wizard-item-modifier_8cpp.html#a3bd34825cd5d9e92c7474a31576ac7c0",tooltip="願ったが消えてしまった場合のメッセージ"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="exe_cmd_debug",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e",tooltip="デバッグコマンド選択処理への分岐"];
+  Node2 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="drop_artifact_index",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$monster-death_8cpp.html#a24bbcb03067d88964cdf68db9124210b",tooltip="アーティファクトのドロップ判定処理"];
+  Node12 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="drop_artifact",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$monster-death_8cpp.html#aea0de54fa5a454fe0ffe114223355316",tooltip=" "];
+  Node2 -> Node1736 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1736 [label="drop_dungeon_final\l_artifact",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$monster-death_8cpp.html#a92ea67756bf181388e5e4e51207cfa03",tooltip=" "];
+  Node1736 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 -> Node1652 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1652 [label="generate_artifact",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$fixed-map-generator_8cpp.html#af81a0584225771d2ab4a403d68ba1509",tooltip=" "];
+  Node2 -> Node1737 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1737 [label="on_dead_sacred_treasures",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$special-death-switcher_8cpp.html#a8b08f5e5d6aa55d2ec04e54b74566fb6",tooltip=" "];
+  Node1737 -> Node559 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node559 [label="switch_special_death",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$special-death-switcher_8cpp.html#a6ecb03d662c5a6acf294c9426e730cde",tooltip=" "];
+  Node2 -> Node813 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node813 [label="wiz_create_item",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$wizard-special-process_8cpp.html#a3a8736b020ffd037a5337cdebed86b88",tooltip="任意のベースアイテム生成のメインルーチン / Wizard routine for creating objects -RAK-"];
+  Node813 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 -> Node1441 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1441 [label="wiz_create_named_art",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$wizard-special-process_8cpp.html#a7742adeeabc444abfcb20a24a3a61b56",tooltip="指定されたIDの固定アーティファクトを生成する / Create the artifact of the specified number"];
+  Node1441 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

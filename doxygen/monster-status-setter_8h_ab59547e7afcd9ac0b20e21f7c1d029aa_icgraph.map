@@ -1,0 +1,52 @@
+<map id="set_monster_confused" name="set_monster_confused">
+<area shape="rect" id="node1" title="モンスターの混乱状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CONFUSED]&quot;, notice observable changes" alt="" coords="937,1195,1091,1222"/>
+<area shape="rect" id="node2" href="$attack-chaos-effect_8cpp.html#a2aeb017073fba464a53ad377dfb21083" title="カオス武器で攻撃した際の追加効果処理" alt="" coords="731,350,841,377"/>
+<area shape="rect" id="node5" href="$monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="719,738,853,765"/>
+<area shape="rect" id="node33" href="$floor-changer_8cpp.html#ae7751559958500b17c9ce9eb67d3b531" title=" " alt="" coords="438,1347,586,1388"/>
+<area shape="rect" id="node44" href="$effect-monster_8cpp.html#ac1bf6c9cd5404178b6c1a16f4d719eab" title="モンスターの混乱値を蓄積させる" alt="" coords="716,1123,856,1164"/>
+<area shape="rect" id="node46" href="$effect-monster-oldies_8cpp.html#acdfc96230950351ad25f13e6c6921d22" title=" " alt="" coords="721,1188,851,1229"/>
+<area shape="rect" id="node47" href="$monster-status_8cpp.html#a443274a2f1e9d2595a1d600a6579b427" title="モンスターの各種状態値を時間経過により更新するサブルーチン" alt="" coords="683,1254,889,1281"/>
+<area shape="rect" id="node48" href="$player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="731,1305,841,1331"/>
+<area shape="rect" id="node49" href="$mspell-status_8cpp.html#a6cd691e26b693cc27cc782c56459078c" title="RF5_BLINDの処理。盲目。 /" alt="" coords="724,1355,848,1382"/>
+<area shape="rect" id="node50" href="$mspell-status_8cpp.html#ad66bc381edc2c6c3702f1984f3b9e8f4" title="RF5_CONFの処理。混乱。/" alt="" coords="725,1406,847,1433"/>
+<area shape="rect" id="node3" href="$attack-chaos-effect_8cpp.html#aea880734152903201f8af05e5ef8d125" title="カオス武器その他でモンスターのステータスを変化させる" alt="" coords="439,13,585,39"/>
+<area shape="rect" id="node4" href="$player-attack_8cpp.html#a7a5d04133dc8285f590218cfa1f63780" title="プレイヤーの打撃処理サブルーチン / Player attacks a (poor, defenseless) creature &#45;RAK&#45;" alt="" coords="195,5,341,47"/>
+<area shape="rect" id="node6" href="$melee-postprocess_8cpp.html#a4a451de636382e9b7827db0baa28e8de" title="ダメージを受けたモンスターのHPが0未満になった際の処理" alt="" coords="446,231,578,258"/>
+<area shape="rect" id="node7" href="$floor-leaver_8cpp.html#a96b320c18dbf4c4ae9c1e7d2bae92d1d" title=" " alt="" coords="427,333,597,359"/>
+<area shape="rect" id="node8" href="$floor-leaver_8cpp.html#a9473eba7ae635c7cb94c6cf0d7426659" title="フロア移動時のペット保存処理 / Preserve_pets" alt="" coords="221,333,315,359"/>
+<area shape="rect" id="node9" href="$monster-compaction_8cpp.html#a45418160543ab052bb17c17d724acb6b" title="モンスター情報配列を圧縮する / Compact and Reorder the monster list" alt="" coords="445,383,579,410"/>
+<area shape="rect" id="node10" href="$grid_8h.html#a73f3bf1cce90b5f4579ab9e8eaf3c990" title="指定位置に存在するモンスターを削除する / Delete the monster, if any, at a given location" alt="" coords="457,890,567,917"/>
+<area shape="rect" id="node14" href="$mutation-execution_8cpp.html#a0c9c1052c587d71b683d8a700d9ae016" title="突然変異のレイシャル効果実装" alt="" coords="5,687,147,714"/>
+<area shape="rect" id="node20" href="$spells-pet_8cpp.html#a4d1508b844fb21fa74cec6f11df83464" title="ペット爆破処理 /" alt="" coords="451,535,573,562"/>
+<area shape="rect" id="node21" href="$cmd-pet_8cpp.html#a016f22b29967f438acaee62a94bb05af" title="ペットを開放するコマンドのメインルーチン" alt="" coords="439,586,585,613"/>
+<area shape="rect" id="node22" href="$effect-monster_8cpp.html#a66fbd35d5367d63f8dade77eb3f020a9" title="ペットの死亡を処理する" alt="" coords="428,637,596,663"/>
+<area shape="rect" id="node23" href="$effect-monster-charm_8cpp.html#a2a5454454ef807a2f8913dd585cd30d3" title="モンスターボールで捕らえた処理" alt="" coords="430,687,594,714"/>
+<area shape="rect" id="node24" href="$spells-genocide_8cpp.html#a92bd5e26c84fa2eb42514b87bc6f2632" title="モンスターへの単体抹殺処理サブルーチン / Delete a non&#45;unique/non&#45;quest monster" alt="" coords="461,738,563,765"/>
+<area shape="rect" id="node25" href="$effect-monster_8cpp.html#acef771ba4088ad06648538d22f19615e" title="不潔な病人の治療処理" alt="" coords="468,789,556,815"/>
+<area shape="rect" id="node26" href="$monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="462,839,562,866"/>
+<area shape="rect" id="node27" href="$grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="471,1143,553,1170"/>
+<area shape="rect" id="node31" href="$spells-polymorph_8cpp.html#abf6f0e07032268b1b3aff681bda9e043" title="指定座標にいるモンスターを変身させる / Helper function – return a &quot;nearby&quot; race for polymorphing" alt="" coords="444,941,580,967"/>
+<area shape="rect" id="node32" href="$floor-leaver_8cpp.html#aa73f111463184d866eaa0b6224b4f728" title="クエスト・フロア内のモンスター・インベントリ情報を保存する" alt="" coords="463,991,561,1018"/>
+<area shape="rect" id="node35" href="$monster-runaway_8cpp.html#ae8dda2c5c942f1263737b32fd4ac4f25" title="ペットや友好的なモンスターがフロアから逃げる処理を行う" alt="" coords="450,1042,574,1069"/>
+<area shape="rect" id="node36" href="$mspell-special_8cpp.html#a687af24a85011574ed6b0878a26951e8" title="特殊な行動を取るモンスターの具体的な行動定義 (r_infoのSPECIALフラグ)" alt="" coords="389,1093,635,1119"/>
+<area shape="rect" id="node37" href="$floor-leaver_8cpp.html#a8665adb3738f60520d0b3f4cec4aeafc" title=" " alt="" coords="437,282,587,309"/>
+<area shape="rect" id="node38" href="$spells-world_8cpp.html#a7204ab233ffa573046416517da467469" title="プレイヤー及びモンスターをレベルテレポートさせる / Teleport the player one level up or down (random when legal)" alt="" coords="463,1194,561,1221"/>
+<area shape="rect" id="node39" href="$quantum-effect_8cpp.html#a18d880aac6dc2b623b0bacac0bc5e350" title="ユニークでない量子生物を消滅させる" alt="" coords="450,1245,574,1271"/>
+<area shape="rect" id="node40" href="$monster-processor_8cpp.html#a7a235f391a99359f8492015d2afa2d11" title="召喚の親元が消滅した時、子供も消滅させる" alt="" coords="421,1295,603,1322"/>
+<area shape="rect" id="node41" href="$wild_8cpp.html#ad2b39f3334022fd4e424dbc1029c79f4" title="広域マップの生成 / Build the wilderness area outside of the town." alt="" coords="457,63,567,90"/>
+<area shape="rect" id="node42" href="$wizard-special-process_8cpp.html#a9ac11136d7f8c0e65133da9da3d3392d" title="フロアに存在する全モンスターを消去する / Delete all monsters" alt="" coords="431,114,593,141"/>
+<area shape="rect" id="node43" href="$wizard-special-process_8cpp.html#aac26873cfc84c2e6540c702eb92cc9a5" title="プレイヤー近辺の全モンスターを消去する / Delete all nearby monsters" alt="" coords="441,165,583,207"/>
+<area shape="rect" id="node11" href="$floor-streams_8cpp.html#a4c0e9c1836936ded0040dede609df5e0" title="ダンジョンの壁部にストリーマー（地質の変化）を与える / Places &quot;streamers&quot; of rock through dungeon" alt="" coords="215,839,321,866"/>
+<area shape="rect" id="node12" href="$spells-floor_8cpp.html#aff6b2287b85d21769fa6b05e3df35eaf" title="*破壊*処理を行う / The spell of destruction" alt="" coords="219,1042,317,1069"/>
+<area shape="rect" id="node13" href="$earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="225,890,311,917"/>
+<area shape="rect" id="node15" href="$fixed-map-generator_8cpp.html#a240162d8716628b91552ad2ce79944b7" title=" " alt="" coords="219,941,317,967"/>
+<area shape="rect" id="node16" href="$door_8cpp.html#a0da7b4515c9710b9967bf26703d22834" title="鍵のかかったドアを配置する" alt="" coords="203,738,333,765"/>
+<area shape="rect" id="node17" href="$door_8cpp.html#a871ffc3458d3a544d8e5b0d0ca7ac24e" title="所定の位置にさまざまな状態や種類のドアを配置する / Place a random type of door at the given location" alt="" coords="201,991,335,1018"/>
+<area shape="rect" id="node19" href="$door_8cpp.html#a062b9ead56aeca6ac33bc71118a9d735" title="隠しドアを配置する" alt="" coords="204,789,332,815"/>
+<area shape="rect" id="node18" href="$rooms-normal_8cpp.html#a586e8bfce23aa4a1010c917642f6a547" title="タイプ1の部屋…通常可変長方形の部屋を生成する / Type 1 – normal rectangular rooms" alt="" coords="32,1042,120,1069"/>
+<area shape="rect" id="node28" href="$rooms-maze-vault_8cpp.html#a30e3f87bf6e20b98f3dd7e7c9c65d30e" title=" " alt="" coords="207,1143,329,1170"/>
+<area shape="rect" id="node29" href="$rooms-vault_8cpp.html#a6c8bd68179a5d6cce2e8cc35abdedff3" title=" " alt="" coords="205,1194,331,1221"/>
+<area shape="rect" id="node30" href="$rooms-pit-nest_8cpp.html#a374b4e29d2c311751902ed314494ef82" title="タイプ13の部屋…開門トラップpitの生成 / Type 13 – Trapped monster pits" alt="" coords="221,1245,315,1271"/>
+<area shape="rect" id="node34" href="$floor-changer_8cpp.html#a4fc5172d58a596bc101d833ae8066b68" title=" " alt="" coords="199,1354,337,1381"/>
+<area shape="rect" id="node45" href="$effect-monster_8cpp.html#ac953e533f35bc7a23fdef6e6b370b596" title="モンスターへのダメージに応じたメッセージを表示させ、異常状態を与える" alt="" coords="441,1412,583,1453"/>
+</map>

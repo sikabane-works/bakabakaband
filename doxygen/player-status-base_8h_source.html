@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player-status/player-status-base.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b229fbdc4ab0cfad60eb3057c8d9c405.html">player-status</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">player-status-base.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="player-status-base_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player-status-flags_8h.html">player/player-status-flags.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="class_player_status_base.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_player_status_base.html">PlayerStatusBase</a> {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="class_player_status_base.html#a036eaac2774544966c2acc44dd51059b">PlayerStatusBase</a>(<a class="code" href="structplayer__type.html">player_type</a> *<a class="code" href="class_player_status_base.html#ae8c08db466b4009b560f752411aaca66">owner_ptr</a>);</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_player_status_base.html#a036eaac2774544966c2acc44dd51059b">    8</a></span>&#160;    <a class="code" href="class_player_status_base.html#a036eaac2774544966c2acc44dd51059b">PlayerStatusBase</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_player_status_base.html#a1506ef65cc14bb0cc8d31b7d139931c5">    9</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_player_status_base.html#a1506ef65cc14bb0cc8d31b7d139931c5">~PlayerStatusBase</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21">get_value</a>();</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="class_player_status_base.html#a0889bfa2925d2e6b157b6d8fdc9a69df">get_all_flags</a>();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="class_player_status_base.html#a006ec02b2b35eefef6ad1316e755bce0">get_good_flags</a>();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="class_player_status_base.html#ab6668c83e4874f12b03d6742c41f1acc">get_bad_flags</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_player_status_base.html#a0dd504a8adc3fd48584003fa93733f9f">   16</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#a0dd504a8adc3fd48584003fa93733f9f">default_value</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_player_status_base.html#ac42ee1eb4dab652c229ed5a66b70e5d6">   17</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#ac42ee1eb4dab652c229ed5a66b70e5d6">min_value</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_player_status_base.html#acc6850609853cb8db9717c873683e3e1">   18</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#acc6850609853cb8db9717c873683e3e1">max_value</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_player_status_base.html#ae8c08db466b4009b560f752411aaca66">   19</a></span>&#160;    <a class="code" href="structplayer__type.html">player_type</a> *<a class="code" href="class_player_status_base.html#ae8c08db466b4009b560f752411aaca66">owner_ptr</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_player_status_base.html#a5e87ba5470805540831960807cfd5c74">   20</a></span>&#160;    <a class="code" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a> <a class="code" href="class_player_status_base.html#a5e87ba5470805540831960807cfd5c74">tr_flag</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_player_status_base.html#ab21ae8274a29742d0f192b9a5f6820e7">   21</a></span>&#160;    <a class="code" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a> <a class="code" href="class_player_status_base.html#ab21ae8274a29742d0f192b9a5f6820e7">tr_bad_flag</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_player_status_base.html#abc87578ebe9d97b0e3792dda2ee060e8">set_locals</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#af59efe712734a574862eadf89906eb04">race_value</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#a112bfd74f52279c8cd08933daf023f41">class_value</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#a16bbdaa744a14e36c668aeac33163284">class_base_value</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#a6206e6a4f66301e2f05146e922ebb19e">personality_value</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#a14b5898872af8c53c6b81ccc0a74f223">equipments_value</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#a116ad46979a2bb093a215704a4b041de">time_effect_value</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#a645da8385fa599199e6c2ad76581b11e">battleform_value</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#adb3e49505b763e15f400d86a7c9f2232">mutation_value</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#afc037278529faa29f9aa15adfcc390e5">riding_value</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#a37d27cd6c377fa0e15b60c882e47e5d4">inventory_weight_value</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#a1abd0d77566036b1fdc453f4a65f34e4">action_value</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_status_base.html#a3804fda1405e757d554cc617e33977e7">set_exception_value</a>(<a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> value);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="class_player_status_base.html#a1d3a3b9feb434686f2dc7c2a40a0b169">equipments_flags</a>(<a class="code" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a> check_flag);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="class_player_status_base.html#a6e2aa12370128f2226690e2158c237c6">equipments_bad_flags</a>(<a class="code" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a> check_flag);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aclass_player_status_base_html"><div class="ttname"><a href="class_player_status_base.html">PlayerStatusBase</a></div><div class="ttdef"><b>Definition:</b> player-status-base.h:5</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a006ec02b2b35eefef6ad1316e755bce0"><div class="ttname"><a href="class_player_status_base.html#a006ec02b2b35eefef6ad1316e755bce0">PlayerStatusBase::get_good_flags</a></div><div class="ttdeci">virtual BIT_FLAGS get_good_flags()</div><div class="ttdoc">修正値が1以上のところにビットを立てて返す。</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:97</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a036eaac2774544966c2acc44dd51059b"><div class="ttname"><a href="class_player_status_base.html#a036eaac2774544966c2acc44dd51059b">PlayerStatusBase::PlayerStatusBase</a></div><div class="ttdeci">PlayerStatusBase()=delete</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a0889bfa2925d2e6b157b6d8fdc9a69df"><div class="ttname"><a href="class_player_status_base.html#a0889bfa2925d2e6b157b6d8fdc9a69df">PlayerStatusBase::get_all_flags</a></div><div class="ttdeci">virtual BIT_FLAGS get_all_flags()</div><div class="ttdoc">修正値が0でないところにビットを立てて返す。</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:58</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a0dd504a8adc3fd48584003fa93733f9f"><div class="ttname"><a href="class_player_status_base.html#a0dd504a8adc3fd48584003fa93733f9f">PlayerStatusBase::default_value</a></div><div class="ttdeci">s16b default_value</div><div class="ttdef"><b>Definition:</b> player-status-base.h:16</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a112bfd74f52279c8cd08933daf023f41"><div class="ttname"><a href="class_player_status_base.html#a112bfd74f52279c8cd08933daf023f41">PlayerStatusBase::class_value</a></div><div class="ttdeci">virtual s16b class_value()</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:254</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a116ad46979a2bb093a215704a4b041de"><div class="ttname"><a href="class_player_status_base.html#a116ad46979a2bb093a215704a4b041de">PlayerStatusBase::time_effect_value</a></div><div class="ttdeci">virtual s16b time_effect_value()</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:266</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a14b5898872af8c53c6b81ccc0a74f223"><div class="ttname"><a href="class_player_status_base.html#a14b5898872af8c53c6b81ccc0a74f223">PlayerStatusBase::equipments_value</a></div><div class="ttdeci">virtual s16b equipments_value()</div><div class="ttdoc">this-&gt;tr_flagを持つ装備品のpval合計値を返す</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:233</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a1506ef65cc14bb0cc8d31b7d139931c5"><div class="ttname"><a href="class_player_status_base.html#a1506ef65cc14bb0cc8d31b7d139931c5">PlayerStatusBase::~PlayerStatusBase</a></div><div class="ttdeci">virtual ~PlayerStatusBase()=default</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a16bbdaa744a14e36c668aeac33163284"><div class="ttname"><a href="class_player_status_base.html#a16bbdaa744a14e36c668aeac33163284">PlayerStatusBase::class_base_value</a></div><div class="ttdeci">virtual s16b class_base_value()</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:258</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a1abd0d77566036b1fdc453f4a65f34e4"><div class="ttname"><a href="class_player_status_base.html#a1abd0d77566036b1fdc453f4a65f34e4">PlayerStatusBase::action_value</a></div><div class="ttdeci">virtual s16b action_value()</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:286</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a1d3a3b9feb434686f2dc7c2a40a0b169"><div class="ttname"><a href="class_player_status_base.html#a1d3a3b9feb434686f2dc7c2a40a0b169">PlayerStatusBase::equipments_flags</a></div><div class="ttdeci">virtual BIT_FLAGS equipments_flags(tr_type check_flag)</div><div class="ttdoc">判定するflagを持つ装備品に対応するBIT_FLAGSを返す @params check_flag 判定するtr_type</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:185</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a37d27cd6c377fa0e15b60c882e47e5d4"><div class="ttname"><a href="class_player_status_base.html#a37d27cd6c377fa0e15b60c882e47e5d4">PlayerStatusBase::inventory_weight_value</a></div><div class="ttdeci">virtual s16b inventory_weight_value()</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:282</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a3804fda1405e757d554cc617e33977e7"><div class="ttname"><a href="class_player_status_base.html#a3804fda1405e757d554cc617e33977e7">PlayerStatusBase::set_exception_value</a></div><div class="ttdeci">virtual s16b set_exception_value(s16b value)</div><div class="ttdoc">値を直接変更する例外処理。 @params value 単純加算された修正値の合計</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:298</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a5e87ba5470805540831960807cfd5c74"><div class="ttname"><a href="class_player_status_base.html#a5e87ba5470805540831960807cfd5c74">PlayerStatusBase::tr_flag</a></div><div class="ttdeci">tr_type tr_flag</div><div class="ttdef"><b>Definition:</b> player-status-base.h:20</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a6206e6a4f66301e2f05146e922ebb19e"><div class="ttname"><a href="class_player_status_base.html#a6206e6a4f66301e2f05146e922ebb19e">PlayerStatusBase::personality_value</a></div><div class="ttdeci">virtual s16b personality_value()</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:262</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a645da8385fa599199e6c2ad76581b11e"><div class="ttname"><a href="class_player_status_base.html#a645da8385fa599199e6c2ad76581b11e">PlayerStatusBase::battleform_value</a></div><div class="ttdeci">virtual s16b battleform_value()</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:270</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a6e2aa12370128f2226690e2158c237c6"><div class="ttname"><a href="class_player_status_base.html#a6e2aa12370128f2226690e2158c237c6">PlayerStatusBase::equipments_bad_flags</a></div><div class="ttdeci">virtual BIT_FLAGS equipments_bad_flags(tr_type check_flag)</div><div class="ttdoc">判定するflagを持ち、pvalが負の装備品に対応するBIT_FLAGSを返す @params check_flag 判定するtr_type</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:208</div></div>
+<div class="ttc" id="aclass_player_status_base_html_ab21ae8274a29742d0f192b9a5f6820e7"><div class="ttname"><a href="class_player_status_base.html#ab21ae8274a29742d0f192b9a5f6820e7">PlayerStatusBase::tr_bad_flag</a></div><div class="ttdeci">tr_type tr_bad_flag</div><div class="ttdef"><b>Definition:</b> player-status-base.h:21</div></div>
+<div class="ttc" id="aclass_player_status_base_html_ab6668c83e4874f12b03d6742c41f1acc"><div class="ttname"><a href="class_player_status_base.html#ab6668c83e4874f12b03d6742c41f1acc">PlayerStatusBase::get_bad_flags</a></div><div class="ttdeci">virtual BIT_FLAGS get_bad_flags()</div><div class="ttdoc">修正値が-1以下のところにビットを立てて返す。</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:136</div></div>
+<div class="ttc" id="aclass_player_status_base_html_abc87578ebe9d97b0e3792dda2ee060e8"><div class="ttname"><a href="class_player_status_base.html#abc87578ebe9d97b0e3792dda2ee060e8">PlayerStatusBase::set_locals</a></div><div class="ttdeci">virtual void set_locals()</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:171</div></div>
+<div class="ttc" id="aclass_player_status_base_html_abd947fc2d7f6dd57e2c5044d5c7f5e21"><div class="ttname"><a href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21">PlayerStatusBase::get_value</a></div><div class="ttdeci">virtual s16b get_value()</div><div class="ttdoc">該当する値を計算して取得する。</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:26</div></div>
+<div class="ttc" id="aclass_player_status_base_html_ac42ee1eb4dab652c229ed5a66b70e5d6"><div class="ttname"><a href="class_player_status_base.html#ac42ee1eb4dab652c229ed5a66b70e5d6">PlayerStatusBase::min_value</a></div><div class="ttdeci">s16b min_value</div><div class="ttdef"><b>Definition:</b> player-status-base.h:17</div></div>
+<div class="ttc" id="aclass_player_status_base_html_acc6850609853cb8db9717c873683e3e1"><div class="ttname"><a href="class_player_status_base.html#acc6850609853cb8db9717c873683e3e1">PlayerStatusBase::max_value</a></div><div class="ttdeci">s16b max_value</div><div class="ttdef"><b>Definition:</b> player-status-base.h:18</div></div>
+<div class="ttc" id="aclass_player_status_base_html_adb3e49505b763e15f400d86a7c9f2232"><div class="ttname"><a href="class_player_status_base.html#adb3e49505b763e15f400d86a7c9f2232">PlayerStatusBase::mutation_value</a></div><div class="ttdeci">virtual s16b mutation_value()</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:274</div></div>
+<div class="ttc" id="aclass_player_status_base_html_ae8c08db466b4009b560f752411aaca66"><div class="ttname"><a href="class_player_status_base.html#ae8c08db466b4009b560f752411aaca66">PlayerStatusBase::owner_ptr</a></div><div class="ttdeci">player_type * owner_ptr</div><div class="ttdef"><b>Definition:</b> player-status-base.h:19</div></div>
+<div class="ttc" id="aclass_player_status_base_html_af59efe712734a574862eadf89906eb04"><div class="ttname"><a href="class_player_status_base.html#af59efe712734a574862eadf89906eb04">PlayerStatusBase::race_value</a></div><div class="ttdeci">virtual s16b race_value()</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:250</div></div>
+<div class="ttc" id="aclass_player_status_base_html_afc037278529faa29f9aa15adfcc390e5"><div class="ttname"><a href="class_player_status_base.html#afc037278529faa29f9aa15adfcc390e5">PlayerStatusBase::riding_value</a></div><div class="ttdeci">virtual s16b riding_value()</div><div class="ttdef"><b>Definition:</b> player-status-base.cpp:278</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="aplayer-status-flags_8h_html"><div class="ttname"><a href="player-status-flags_8h.html">player-status-flags.h</a></div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="atr-types_8h_html_a269ab2317e91ea335ab19483ab09d4fd"><div class="ttname"><a href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a></div><div class="ttdeci">tr_type</div><div class="ttdef"><b>Definition:</b> tr-types.h:6</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

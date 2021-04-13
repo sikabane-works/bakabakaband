@@ -1,0 +1,28 @@
+<map id="signals_ignore_tstp" name="signals_ignore_tstp">
+<area shape="rect" id="node1" title="OSからのSIGTSTPシグナルを無視する関数 / Ignore SIGTSTP signals (keyboard suspend)" alt="" coords="1001,107,1136,133"/>
+<area shape="rect" id="node2" href="$game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="453,56,545,83"/>
+<area shape="rect" id="node7" href="$cmd-save_8cpp.html#a5f3c9a464d1f438f0a2860a68b31da96" title="セーブするコマンドのメインルーチン Save the game" alt="" coords="813,411,953,437"/>
+<area shape="rect" id="node24" href="$exit-panic_8cpp.html#a0f279185d9f6e778065f70c47157b5c2" title="異常発生時のゲーム緊急終了処理" alt="" coords="823,461,943,488"/>
+<area shape="rect" id="node25" href="$signal-handlers_8cpp.html#a1d7db3880dfb5e325d7f9388f84a90aa" title="OSからのシグナルを受けて強制終了する / Handle signal – abort, kill, etc" alt="" coords="243,5,381,32"/>
+<area shape="rect" id="node26" href="$game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="813,107,953,133"/>
+<area shape="rect" id="node3" href="$signal-handlers_8cpp.html#acf6a4a9a8cb29ca8bd1c8e232041aecd" title="OSからのシグナルを受けて中断、終了する / Handle signals – simple (interrupt and quit)" alt="" coords="239,56,385,83"/>
+<area shape="rect" id="node6" href="$game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="269,107,355,133"/>
+<area shape="rect" id="node4" href="$signal-handlers_8cpp.html#a3719a1754f6e317bbb96770b973d453c" title="OSからのシグナルハンドルを初期化する / Prepare to handle the relevant signals" alt="" coords="104,56,191,83"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,81,56,108"/>
+<area shape="rect" id="node8" href="$activation-teleport_8cpp.html#ab5384bdf29abc3ad27487147449600af" title=" " alt="" coords="632,765,747,792"/>
+<area shape="rect" id="node10" href="$game-closer_8cpp.html#a87d2bc43dd7c1537d1b537a9f776a73b" title="ゲームクローズ時、プレイヤーが死亡しているかのチェックを行い死亡していないならば、確認キー入力とスコア表示、現フロアの初期化を行う。" alt="" coords="641,157,737,184"/>
+<area shape="rect" id="node11" href="$cmd-autopick_8cpp.html#a8dc56811ab6efa5123eec7f83eb4bb26" title=" " alt="" coords="613,664,765,691"/>
+<area shape="rect" id="node13" href="$input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="246,309,378,336"/>
+<area shape="rect" id="node14" href="$cmd-move_8cpp.html#a9d5fbe57b7b1e9058947333e00dee815" title="階段を使って階層を降りる処理 / Go down one level" alt="" coords="436,208,563,235"/>
+<area shape="rect" id="node15" href="$cmd-move_8cpp.html#a16005f2ab8f785b6fb42030270681913" title="階段を使って階層を昇る処理 / Go up one level" alt="" coords="444,259,555,285"/>
+<area shape="rect" id="node16" href="$world-movement-processor_8cpp.html#a597a48dd4ed8e2e51c1a114cb9b125c1" title="10ゲームターンが進行するごとにフロア・リセット/現実変容の残り時間カウントダウンと発動を処理する。 / Handle involuntary movement once every 10 game t..." alt="" coords="622,461,757,488"/>
+<area shape="rect" id="node17" href="$world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="447,411,552,437"/>
+<area shape="rect" id="node18" href="$world-movement-processor_8cpp.html#a9cf11d071cabe6008f72bbb6eed498d5" title="10ゲームターンが進行するごとに帰還の残り時間カウントダウンと発動を処理する。 / Handle involuntary movement once every 10 game turns" alt="" coords="636,360,743,387"/>
+<area shape="rect" id="node19" href="$trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="657,715,722,741"/>
+<area shape="rect" id="node21" href="$pattern-walk_8cpp.html#a745540435a2b0b0a48557231ce3b5cef" title="パターン終点到達時のテレポート処理を行う" alt="" coords="633,512,745,539"/>
+<area shape="rect" id="node22" href="$spells-world_8cpp.html#a7204ab233ffa573046416517da467469" title="プレイヤー及びモンスターをレベルテレポートさせる / Teleport the player one level up or down (random when legal)" alt="" coords="641,563,738,589"/>
+<area shape="rect" id="node23" href="$wizard-special-process_8cpp.html#a98b79010bb1266a7ff2f32920ca5f5a2" title="任意のダンジョン及び階層に飛ぶ / Go to any level" alt="" coords="614,613,765,640"/>
+<area shape="rect" id="node9" href="$activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="439,765,559,792"/>
+<area shape="rect" id="node12" href="$cmd-gameoption_8cpp.html#ab33f054c7b623777d0e9417255966aea" title="標準オプションを変更するコマンドのメインルーチン / Set or unset various options." alt="" coords="441,499,558,525"/>
+<area shape="rect" id="node20" href="$player-move_8cpp.html#ac637efbeba2a2fca5538ee13812b97bf" title="移動に伴うプレイヤーのステータス変化処理" alt="" coords="433,715,565,741"/>
+</map>

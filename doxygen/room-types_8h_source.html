@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/room/room-types.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f5e46bed6dfb8f23408bb24a4886d7b9.html">room</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">room-types.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="room-types_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">/* 部屋型ID / Room types for room_build() */</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735">    4</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735">room_type</a> {</div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735a4426c3fa91ab5cde713f2b50e4014153">    5</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735a4426c3fa91ab5cde713f2b50e4014153">ROOM_T_NORMAL</a> = 0, </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735ab4d168ad4f014a8a9ad8c57c2811d738">    6</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735ab4d168ad4f014a8a9ad8c57c2811d738">ROOM_T_OVERLAP</a> = 1, </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735acaadbc7c488b13f659bc1db22f221361">    7</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735acaadbc7c488b13f659bc1db22f221361">ROOM_T_CROSS</a> = 2, </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735a822c742202297e87e3f14070067ae14d">    8</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735a822c742202297e87e3f14070067ae14d">ROOM_T_INNER_FEAT</a> = 3, </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735a89c2484c14cb3eda0e993d242858649e">    9</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735a89c2484c14cb3eda0e993d242858649e">ROOM_T_NEST</a> = 4, </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735a49bc28a6541e3a42e86a6ce05daf8d28">   10</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735a49bc28a6541e3a42e86a6ce05daf8d28">ROOM_T_PIT</a> = 5, </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735a087a76a230a8614eb1fc48805eb5653b">   11</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735a087a76a230a8614eb1fc48805eb5653b">ROOM_T_LESSER_VAULT</a> = 6, </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735ab5a3bf84c6a9402d0cf0c6fa29074f33">   12</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735ab5a3bf84c6a9402d0cf0c6fa29074f33">ROOM_T_GREATER_VAULT</a> = 7, </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735a85d8093497c4a0f273dbea80848a90c7">   13</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735a85d8093497c4a0f273dbea80848a90c7">ROOM_T_FRACAVE</a> = 8, </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735a0c0f12abe358d660db3aeb59947603e9">   14</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735a0c0f12abe358d660db3aeb59947603e9">ROOM_T_RANDOM_VAULT</a> = 9, </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735a82f96918e0e7754172c9c37113290646">   15</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735a82f96918e0e7754172c9c37113290646">ROOM_T_OVAL</a> = 10, </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735a3a1f62c12c86a799cc026413f9a9426e">   16</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735a3a1f62c12c86a799cc026413f9a9426e">ROOM_T_CRYPT</a> = 11, </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735acefc290f61bb5ad3cb657573ff54b221">   17</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735acefc290f61bb5ad3cb657573ff54b221">ROOM_T_TRAP_PIT</a> = 12, </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735a38dd6cf757d4df8c66d97426fa680831">   18</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735a38dd6cf757d4df8c66d97426fa680831">ROOM_T_TRAP</a> = 13, </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735a2c51ef17b3a0850fd7f8c3625f373473">   19</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735a2c51ef17b3a0850fd7f8c3625f373473">ROOM_T_GLASS</a> = 14, </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735ab23252b45fc982e2ddead0afafa4ff0f">   20</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735ab23252b45fc982e2ddead0afafa4ff0f">ROOM_T_ARCADE</a> = 15, </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735a787103304fa00086a8d6073616ed2dae">   21</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735a787103304fa00086a8d6073616ed2dae">ROOM_T_FIXED</a> = 16, </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="room-types_8h.html#aae691539442d6342294705023ce3a735af56389788be6b587378f15f6fef2e0f7">   22</a></span>&#160;    <a class="code" href="room-types_8h.html#aae691539442d6342294705023ce3a735af56389788be6b587378f15f6fef2e0f7">ROOM_T_MAX</a> = 17, </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735">room_type</a></div><div class="ttdeci">room_type</div><div class="ttdef"><b>Definition:</b> room-types.h:4</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735a087a76a230a8614eb1fc48805eb5653b"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735a087a76a230a8614eb1fc48805eb5653b">ROOM_T_LESSER_VAULT</a></div><div class="ttdeci">@ ROOM_T_LESSER_VAULT</div><div class="ttdoc">部屋型ID:小型VAULT / Lesser vault (33x22)</div><div class="ttdef"><b>Definition:</b> room-types.h:11</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735a0c0f12abe358d660db3aeb59947603e9"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735a0c0f12abe358d660db3aeb59947603e9">ROOM_T_RANDOM_VAULT</a></div><div class="ttdeci">@ ROOM_T_RANDOM_VAULT</div><div class="ttdoc">部屋型ID:ランダムVAULT / Random vault (44x22)</div><div class="ttdef"><b>Definition:</b> room-types.h:14</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735a2c51ef17b3a0850fd7f8c3625f373473"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735a2c51ef17b3a0850fd7f8c3625f373473">ROOM_T_GLASS</a></div><div class="ttdeci">@ ROOM_T_GLASS</div><div class="ttdoc">部屋型ID:ガラス部屋 / Glass room</div><div class="ttdef"><b>Definition:</b> room-types.h:19</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735a38dd6cf757d4df8c66d97426fa680831"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735a38dd6cf757d4df8c66d97426fa680831">ROOM_T_TRAP</a></div><div class="ttdeci">@ ROOM_T_TRAP</div><div class="ttdoc">部屋型ID:トラップ部屋 / Piranha/Armageddon trap room</div><div class="ttdef"><b>Definition:</b> room-types.h:18</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735a3a1f62c12c86a799cc026413f9a9426e"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735a3a1f62c12c86a799cc026413f9a9426e">ROOM_T_CRYPT</a></div><div class="ttdeci">@ ROOM_T_CRYPT</div><div class="ttdoc">部屋型ID:聖堂 / Crypts (22x22)</div><div class="ttdef"><b>Definition:</b> room-types.h:16</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735a4426c3fa91ab5cde713f2b50e4014153"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735a4426c3fa91ab5cde713f2b50e4014153">ROOM_T_NORMAL</a></div><div class="ttdeci">@ ROOM_T_NORMAL</div><div class="ttdoc">部屋型ID:基本長方形 / Simple (33x11)</div><div class="ttdef"><b>Definition:</b> room-types.h:5</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735a49bc28a6541e3a42e86a6ce05daf8d28"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735a49bc28a6541e3a42e86a6ce05daf8d28">ROOM_T_PIT</a></div><div class="ttdeci">@ ROOM_T_PIT</div><div class="ttdoc">部屋型ID:モンスターPIT / Monster pit (33x11)</div><div class="ttdef"><b>Definition:</b> room-types.h:10</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735a787103304fa00086a8d6073616ed2dae"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735a787103304fa00086a8d6073616ed2dae">ROOM_T_FIXED</a></div><div class="ttdeci">@ ROOM_T_FIXED</div><div class="ttdoc">部屋型ID:固定部屋 / Fixed room</div><div class="ttdef"><b>Definition:</b> room-types.h:21</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735a822c742202297e87e3f14070067ae14d"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735a822c742202297e87e3f14070067ae14d">ROOM_T_INNER_FEAT</a></div><div class="ttdeci">@ ROOM_T_INNER_FEAT</div><div class="ttdoc">部屋型ID:二重壁 / Large (33x11)</div><div class="ttdef"><b>Definition:</b> room-types.h:8</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735a82f96918e0e7754172c9c37113290646"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735a82f96918e0e7754172c9c37113290646">ROOM_T_OVAL</a></div><div class="ttdeci">@ ROOM_T_OVAL</div><div class="ttdoc">部屋型ID:円形部屋 / Circular rooms (22x22)</div><div class="ttdef"><b>Definition:</b> room-types.h:15</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735a85d8093497c4a0f273dbea80848a90c7"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735a85d8093497c4a0f273dbea80848a90c7">ROOM_T_FRACAVE</a></div><div class="ttdeci">@ ROOM_T_FRACAVE</div><div class="ttdoc">部屋型ID:フラクタル地形 / Fractal room (42x24)</div><div class="ttdef"><b>Definition:</b> room-types.h:13</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735a89c2484c14cb3eda0e993d242858649e"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735a89c2484c14cb3eda0e993d242858649e">ROOM_T_NEST</a></div><div class="ttdeci">@ ROOM_T_NEST</div><div class="ttdoc">部屋型ID:モンスターNEST / Monster nest (33x11)</div><div class="ttdef"><b>Definition:</b> room-types.h:9</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735ab23252b45fc982e2ddead0afafa4ff0f"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735ab23252b45fc982e2ddead0afafa4ff0f">ROOM_T_ARCADE</a></div><div class="ttdeci">@ ROOM_T_ARCADE</div><div class="ttdoc">部屋型ID:商店 / Arcade</div><div class="ttdef"><b>Definition:</b> room-types.h:20</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735ab4d168ad4f014a8a9ad8c57c2811d738"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735ab4d168ad4f014a8a9ad8c57c2811d738">ROOM_T_OVERLAP</a></div><div class="ttdeci">@ ROOM_T_OVERLAP</div><div class="ttdoc">部屋型ID:長方形二つ重ね / Overlapping (33x11)</div><div class="ttdef"><b>Definition:</b> room-types.h:6</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735ab5a3bf84c6a9402d0cf0c6fa29074f33"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735ab5a3bf84c6a9402d0cf0c6fa29074f33">ROOM_T_GREATER_VAULT</a></div><div class="ttdeci">@ ROOM_T_GREATER_VAULT</div><div class="ttdoc">部屋型ID:大型VAULT / Greater vault (66x44)</div><div class="ttdef"><b>Definition:</b> room-types.h:12</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735acaadbc7c488b13f659bc1db22f221361"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735acaadbc7c488b13f659bc1db22f221361">ROOM_T_CROSS</a></div><div class="ttdeci">@ ROOM_T_CROSS</div><div class="ttdoc">部屋型ID:十字 / Crossed (33x11)</div><div class="ttdef"><b>Definition:</b> room-types.h:7</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735acefc290f61bb5ad3cb657573ff54b221"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735acefc290f61bb5ad3cb657573ff54b221">ROOM_T_TRAP_PIT</a></div><div class="ttdeci">@ ROOM_T_TRAP_PIT</div><div class="ttdoc">部屋型ID:トラップつきモンスターPIT / Trapped monster pit</div><div class="ttdef"><b>Definition:</b> room-types.h:17</div></div>
+<div class="ttc" id="aroom-types_8h_html_aae691539442d6342294705023ce3a735af56389788be6b587378f15f6fef2e0f7"><div class="ttname"><a href="room-types_8h.html#aae691539442d6342294705023ce3a735af56389788be6b587378f15f6fef2e0f7">ROOM_T_MAX</a></div><div class="ttdeci">@ ROOM_T_MAX</div><div class="ttdoc">部屋型ID最大数</div><div class="ttdef"><b>Definition:</b> room-types.h:22</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

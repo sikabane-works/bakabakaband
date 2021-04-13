@@ -1,0 +1,3355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/object-enchant/object-ego.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7478db7a13e5bc43b9c00ed0e2222476.html">object-enchant</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">object-ego.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tr-types_8h_source.html">object-enchant/tr-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="trg-types_8h_source.html">object-enchant/trg-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flag-group_8h_source.html">util/flag-group.h</a>&quot;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+object-ego.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-ego_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object-enchant_2object-ego_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object-enchant_2object-ego_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object-enchant_2object-ego_8h">
+<area shape="rect" title=" " alt="" coords="1046,5,1234,61"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="438,199,567,225"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1496,355,1607,382"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="1056,117,1223,143"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="1247,109,1374,151"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="717,109,850,151"/>
+<area shape="rect" title=" " alt="" coords="1398,117,1452,143"/>
+<area shape="rect" title=" " alt="" coords="1477,117,1533,143"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="32,273,122,300"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="21,437,162,464"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,273,608,300"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,273,245,300"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,273,368,300"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,273,492,300"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,273,807,300"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="834,273,981,300"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="132,355,254,382"/>
+<area shape="rect" title=" " alt="" coords="278,355,353,382"/>
+<area shape="rect" title=" " alt="" coords="377,355,460,382"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="484,348,635,389"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="659,348,812,389"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="836,348,982,389"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1006,348,1180,389"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1204,348,1329,389"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1354,355,1472,382"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="720,199,847,225"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-ego_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object-enchant_2object-ego_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object-enchant_2object-ego_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object-enchant_2object-ego_8hdep">
+<area shape="rect" title=" " alt="" coords="4269,5,4457,61"/>
+<area shape="rect" href="activation-execution_8cpp.html" title=" " alt="" coords="5,109,193,165"/>
+<area shape="rect" href="artifact-info_8cpp.html" title=" " alt="" coords="217,109,405,165"/>
+<area shape="rect" href="autopick-destroyer_8cpp.html" title=" " alt="" coords="429,109,617,165"/>
+<area shape="rect" href="autopick-entry_8cpp.html" title=" " alt="" coords="641,109,829,165"/>
+<area shape="rect" href="inventory-initializer_8cpp.html" title=" " alt="" coords="853,109,1041,165"/>
+<area shape="rect" href="cmd-refill_8cpp.html" title=" " alt="" coords="1065,109,1256,165"/>
+<area shape="rect" href="cmd-smith_8cpp.html" title=" " alt="" coords="1280,109,1471,165"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html" title=" " alt="" coords="1495,109,1683,165"/>
+<area shape="rect" href="flavor-describer_8cpp.html" title=" " alt="" coords="1707,109,1895,165"/>
+<area shape="rect" href="flavor-util_8cpp.html" title=" " alt="" coords="1919,109,2107,165"/>
+<area shape="rect" href="named-item-describer_8cpp.html" title=" " alt="" coords="2131,109,2319,165"/>
+<area shape="rect" href="object-flavor_8cpp.html" title=" " alt="" coords="2343,109,2531,165"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html" title=" " alt="" coords="2555,109,2743,165"/>
+<area shape="rect" href="floor-events_8cpp.html" title=" " alt="" coords="2767,109,2955,165"/>
+<area shape="rect" href="ego-reader_8cpp.html" title=" " alt="" coords="2979,109,3175,165"/>
+<area shape="rect" href="item-loader_8cpp.html" title=" " alt="" coords="3199,109,3389,165"/>
+<area shape="rect" href="load-v1-5-0_8cpp.html" title=" " alt="" coords="3413,109,3601,165"/>
+<area shape="rect" href="info-initializer_8cpp.html" title=" " alt="" coords="3625,109,3813,165"/>
+<area shape="rect" href="mind-chaos-warrior_8cpp.html" title=" " alt="" coords="3837,109,4033,165"/>
+<area shape="rect" href="lite-processor_8cpp.html" title=" " alt="" coords="4057,109,4245,165"/>
+<area shape="rect" href="object-flags_8cpp.html" title=" " alt="" coords="4269,109,4457,165"/>
+<area shape="rect" href="object-info_8cpp.html" title=" " alt="" coords="4481,109,4669,165"/>
+<area shape="rect" href="object-stack_8cpp.html" title=" " alt="" coords="4693,109,4881,165"/>
+<area shape="rect" href="object-value-calc_8cpp.html" title=" " alt="" coords="4905,109,5093,165"/>
+<area shape="rect" href="object-value_8cpp.html" title=" " alt="" coords="5117,109,5305,165"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html" title=" " alt="" coords="5330,109,5565,165"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html" title=" " alt="" coords="5589,109,5797,165"/>
+<area shape="rect" href="apply-magic-others_8cpp.html" title=" " alt="" coords="5821,109,6031,165"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html" title=" " alt="" coords="6055,109,6274,165"/>
+<area shape="rect" href="apply-magic_8cpp.html" title=" " alt="" coords="6299,109,6487,165"/>
+<area shape="rect" href="object-ego_8cpp.html" title=" " alt="" coords="6511,109,6699,165"/>
+<area shape="rect" href="identification_8cpp.html" title=" " alt="" coords="6723,109,6919,165"/>
+<area shape="rect" href="player-status-flags_8cpp.html" title=" " alt="" coords="6943,109,7131,165"/>
+<area shape="rect" href="player-status-resist_8cpp.html" title=" " alt="" coords="7155,109,7343,165"/>
+<area shape="rect" href="player-status_8cpp.html" title=" " alt="" coords="7367,109,7555,165"/>
+<area shape="rect" href="racial-android_8cpp.html" title=" " alt="" coords="7579,109,7767,165"/>
+<area shape="rect" href="torch_8cpp.html" title=" " alt="" coords="7791,109,7979,165"/>
+<area shape="rect" href="spells-object_8cpp.html" title=" " alt="" coords="8003,109,8191,165"/>
+<area shape="rect" href="spells-craft_8cpp.html" title=" " alt="" coords="8215,109,8403,165"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html" title=" " alt="" coords="8427,109,8615,165"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html" title=" " alt="" coords="8639,109,8827,165"/>
+</map>
+</div>
+</div>
+<p><a href="object-ego_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structego__generate__type.html">ego_generate_type</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structego__item__type.html">ego_item_type</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:acf97d0b31027bee3ed0702ac37aff1df"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#acf97d0b31027bee3ed0702ac37aff1df">EGO_A_MORGUL</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:acf97d0b31027bee3ed0702ac37aff1df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4600cc689044afb809728086f507fe73"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a4600cc689044afb809728086f507fe73">EGO_A_DEMON</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a4600cc689044afb809728086f507fe73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16b398be48d5eff6c9a5622e7f117228"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a16b398be48d5eff6c9a5622e7f117228">EGO_DRUID</a>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:a16b398be48d5eff6c9a5622e7f117228"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18f9d787141f4a24a4340f50734b6703"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a18f9d787141f4a24a4340f50734b6703">EGO_OLOG</a>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:a18f9d787141f4a24a4340f50734b6703"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a10886d1ae3ac1f714e330a47e73ead"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a7a10886d1ae3ac1f714e330a47e73ead">EGO_RESISTANCE</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:a7a10886d1ae3ac1f714e330a47e73ead"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96aad03922182b551eee6893348dedf6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a96aad03922182b551eee6893348dedf6">EGO_ELVENKIND</a>&#160;&#160;&#160;9</td></tr>
+<tr class="separator:a96aad03922182b551eee6893348dedf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd312242ad604f7b6382a39e9c617c7f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#abd312242ad604f7b6382a39e9c617c7f">EGO_DWARVEN</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:abd312242ad604f7b6382a39e9c617c7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a6092e1ebe4716127140612b4884064"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a2a6092e1ebe4716127140612b4884064">EGO_PERMANENCE</a>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:a2a6092e1ebe4716127140612b4884064"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a993e9bcb6e730cf03279f005d0c396f0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a993e9bcb6e730cf03279f005d0c396f0">EGO_YOIYAMI</a>&#160;&#160;&#160;12</td></tr>
+<tr class="separator:a993e9bcb6e730cf03279f005d0c396f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9cdba289a6ec68386e6d59d271890d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ae9cdba289a6ec68386e6d59d271890d1">EGO_URUKISH</a>&#160;&#160;&#160;13</td></tr>
+<tr class="separator:ae9cdba289a6ec68386e6d59d271890d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d9687b6830be1a006d1a3de184dc41d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a6d9687b6830be1a006d1a3de184dc41d">EGO_ENDURE_ACID</a>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:a6d9687b6830be1a006d1a3de184dc41d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60bc75facd8656622fddf22949c16b8d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a60bc75facd8656622fddf22949c16b8d">EGO_ENDURE_ELEC</a>&#160;&#160;&#160;17</td></tr>
+<tr class="separator:a60bc75facd8656622fddf22949c16b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae77d8b95d72e49454aabc2839128ccad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ae77d8b95d72e49454aabc2839128ccad">EGO_ENDURE_FIRE</a>&#160;&#160;&#160;18</td></tr>
+<tr class="separator:ae77d8b95d72e49454aabc2839128ccad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fddf79b91f5aed884d59131d4b87dbb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a0fddf79b91f5aed884d59131d4b87dbb">EGO_ENDURE_COLD</a>&#160;&#160;&#160;19</td></tr>
+<tr class="separator:a0fddf79b91f5aed884d59131d4b87dbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8470897d4da6e72ac300e9c85d58b837"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a8470897d4da6e72ac300e9c85d58b837">EGO_ENDURANCE</a>&#160;&#160;&#160;20</td></tr>
+<tr class="separator:a8470897d4da6e72ac300e9c85d58b837"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76176f6673f66f76b9654b9910d10bd1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a76176f6673f66f76b9654b9910d10bd1">EGO_REFLECTION</a>&#160;&#160;&#160;21</td></tr>
+<tr class="separator:a76176f6673f66f76b9654b9910d10bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f0d8572a9a36c9a25151807b7631f68"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a0f0d8572a9a36c9a25151807b7631f68">EGO_NIGHT_DAY</a>&#160;&#160;&#160;22</td></tr>
+<tr class="separator:a0f0d8572a9a36c9a25151807b7631f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a466b2bdb030b049f0d4e15a48d7203d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a466b2bdb030b049f0d4e15a48d7203d3">EGO_S_PROTECTION</a>&#160;&#160;&#160;238</td></tr>
+<tr class="separator:a466b2bdb030b049f0d4e15a48d7203d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65ce89e46f21e0185ad0f18d0eeaed1a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a65ce89e46f21e0185ad0f18d0eeaed1a">EGO_S_DWARVEN</a>&#160;&#160;&#160;239</td></tr>
+<tr class="separator:a65ce89e46f21e0185ad0f18d0eeaed1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a4abd02e676080200ec732bb71517e4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a2a4abd02e676080200ec732bb71517e4">EGO_DARK</a>&#160;&#160;&#160;23</td></tr>
+<tr class="separator:a2a4abd02e676080200ec732bb71517e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca725d31eaac34b97a40efe16c79acfe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#aca725d31eaac34b97a40efe16c79acfe">EGO_BRILLIANCE</a>&#160;&#160;&#160;24</td></tr>
+<tr class="separator:aca725d31eaac34b97a40efe16c79acfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8973b338885cd2d62067fbdcf0f4ede6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a8973b338885cd2d62067fbdcf0f4ede6">EGO_H_PROTECTION</a>&#160;&#160;&#160;25</td></tr>
+<tr class="separator:a8973b338885cd2d62067fbdcf0f4ede6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af22f542a45a3acb3e0f6b8493b58e2c6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#af22f542a45a3acb3e0f6b8493b58e2c6">EGO_H_DEMON</a>&#160;&#160;&#160;26</td></tr>
+<tr class="separator:af22f542a45a3acb3e0f6b8493b58e2c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0070bd6f4044dffcf16ea4fb4b98ccba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a0070bd6f4044dffcf16ea4fb4b98ccba">EGO_MAGI</a>&#160;&#160;&#160;27</td></tr>
+<tr class="separator:a0070bd6f4044dffcf16ea4fb4b98ccba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff43a2556629dc550f59507032138aa5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#aff43a2556629dc550f59507032138aa5">EGO_MIGHT</a>&#160;&#160;&#160;28</td></tr>
+<tr class="separator:aff43a2556629dc550f59507032138aa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91300b876be5269e1fc5ff8ebd8d7079"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a91300b876be5269e1fc5ff8ebd8d7079">EGO_LORDLINESS</a>&#160;&#160;&#160;29</td></tr>
+<tr class="separator:a91300b876be5269e1fc5ff8ebd8d7079"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86a3c6ffbbdb19cc25fd09f1f5334c23"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a86a3c6ffbbdb19cc25fd09f1f5334c23">EGO_SEEING</a>&#160;&#160;&#160;30</td></tr>
+<tr class="separator:a86a3c6ffbbdb19cc25fd09f1f5334c23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9a21bcbc30b37784df298ef8ee970e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ab9a21bcbc30b37784df298ef8ee970e1">EGO_INFRAVISION</a>&#160;&#160;&#160;31</td></tr>
+<tr class="separator:ab9a21bcbc30b37784df298ef8ee970e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea349ae650c0621634f784592ad93402"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#aea349ae650c0621634f784592ad93402">EGO_LITE</a>&#160;&#160;&#160;32</td></tr>
+<tr class="separator:aea349ae650c0621634f784592ad93402"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aee36b31f98c831122aa6645405ff9f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a7aee36b31f98c831122aa6645405ff9f">EGO_TELEPATHY</a>&#160;&#160;&#160;33</td></tr>
+<tr class="separator:a7aee36b31f98c831122aa6645405ff9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a926e96bd5d0dcbc6d3b1759a0ffbb5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a2a926e96bd5d0dcbc6d3b1759a0ffbb5">EGO_REGENERATION</a>&#160;&#160;&#160;34</td></tr>
+<tr class="separator:a2a926e96bd5d0dcbc6d3b1759a0ffbb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c53bc6028345cba1fcac768699762b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a3c53bc6028345cba1fcac768699762b7">EGO_TELEPORTATION</a>&#160;&#160;&#160;35</td></tr>
+<tr class="separator:a3c53bc6028345cba1fcac768699762b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5b08229a6a9c1d90ea34003ae62dd40"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ac5b08229a6a9c1d90ea34003ae62dd40">EGO_FOOL</a>&#160;&#160;&#160;36</td></tr>
+<tr class="separator:ac5b08229a6a9c1d90ea34003ae62dd40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab077b187dc41a3c1457f56c460f654c3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ab077b187dc41a3c1457f56c460f654c3">EGO_BASILISK</a>&#160;&#160;&#160;37</td></tr>
+<tr class="separator:ab077b187dc41a3c1457f56c460f654c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf537445ec864b8c9af544499055d350"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#acf537445ec864b8c9af544499055d350">EGO_ANCIENT_CURSE</a>&#160;&#160;&#160;38</td></tr>
+<tr class="separator:acf537445ec864b8c9af544499055d350"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f9d532744bf46d0e38062b2c39f47d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a9f9d532744bf46d0e38062b2c39f47d3">EGO_SICKLINESS</a>&#160;&#160;&#160;39</td></tr>
+<tr class="separator:a9f9d532744bf46d0e38062b2c39f47d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa34d11417ef4e679cbc7de0cd679f223"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#aa34d11417ef4e679cbc7de0cd679f223">EGO_PROTECTION</a>&#160;&#160;&#160;40</td></tr>
+<tr class="separator:aa34d11417ef4e679cbc7de0cd679f223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48b3883fd808ca092d9fbae20075e897"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a48b3883fd808ca092d9fbae20075e897">EGO_STEALTH</a>&#160;&#160;&#160;41</td></tr>
+<tr class="separator:a48b3883fd808ca092d9fbae20075e897"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa75083ba7e6aedbf6814ce5583f529c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#afa75083ba7e6aedbf6814ce5583f529c">EGO_AMAN</a>&#160;&#160;&#160;42</td></tr>
+<tr class="separator:afa75083ba7e6aedbf6814ce5583f529c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a617b071c14ebb3edc5d4603fdb433d64"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a617b071c14ebb3edc5d4603fdb433d64">EGO_AURA_FIRE</a>&#160;&#160;&#160;43</td></tr>
+<tr class="separator:a617b071c14ebb3edc5d4603fdb433d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ba2621e2a6f2c3f17debadc5d5f8c04"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a2ba2621e2a6f2c3f17debadc5d5f8c04">EGO_ENVELOPING</a>&#160;&#160;&#160;44</td></tr>
+<tr class="separator:a2ba2621e2a6f2c3f17debadc5d5f8c04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a906e5810e7d388034013a71a843ca2f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a906e5810e7d388034013a71a843ca2f3">EGO_VULNERABILITY</a>&#160;&#160;&#160;45</td></tr>
+<tr class="separator:a906e5810e7d388034013a71a843ca2f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af824299640c19e6987bf2f0ae487b1b8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#af824299640c19e6987bf2f0ae487b1b8">EGO_IRRITATION</a>&#160;&#160;&#160;46</td></tr>
+<tr class="separator:af824299640c19e6987bf2f0ae487b1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38202a156394b709d249bf463bba395a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a38202a156394b709d249bf463bba395a">EGO_AURA_ELEC</a>&#160;&#160;&#160;47</td></tr>
+<tr class="separator:a38202a156394b709d249bf463bba395a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5627de04ebfef36103f44ec1d381322"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ae5627de04ebfef36103f44ec1d381322">EGO_AURA_COLD</a>&#160;&#160;&#160;128</td></tr>
+<tr class="separator:ae5627de04ebfef36103f44ec1d381322"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07c844050a58490de573a0309aa003aa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a07c844050a58490de573a0309aa003aa">EGO_BAT</a>&#160;&#160;&#160;129</td></tr>
+<tr class="separator:a07c844050a58490de573a0309aa003aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a516b5325dfbe825b5a7fbb79fa98932e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a516b5325dfbe825b5a7fbb79fa98932e">EGO_NAZGUL</a>&#160;&#160;&#160;240</td></tr>
+<tr class="separator:a516b5325dfbe825b5a7fbb79fa98932e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46f0da14411b8b13c653ac9e3ca81303"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a46f0da14411b8b13c653ac9e3ca81303">EGO_FREE_ACTION</a>&#160;&#160;&#160;48</td></tr>
+<tr class="separator:a46f0da14411b8b13c653ac9e3ca81303"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac570cd854f431ae4898b49a728e6f93"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#aac570cd854f431ae4898b49a728e6f93">EGO_SLAYING</a>&#160;&#160;&#160;49</td></tr>
+<tr class="separator:aac570cd854f431ae4898b49a728e6f93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24c1a75016dedf25dce7b03806562d10"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a24c1a75016dedf25dce7b03806562d10">EGO_AGILITY</a>&#160;&#160;&#160;50</td></tr>
+<tr class="separator:a24c1a75016dedf25dce7b03806562d10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb3e743e6eb4179749b013d028189d54"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#aeb3e743e6eb4179749b013d028189d54">EGO_POWER</a>&#160;&#160;&#160;51</td></tr>
+<tr class="separator:aeb3e743e6eb4179749b013d028189d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adedb1602e312ee7a4589e842ac99120a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#adedb1602e312ee7a4589e842ac99120a">EGO_2WEAPON</a>&#160;&#160;&#160;52</td></tr>
+<tr class="separator:adedb1602e312ee7a4589e842ac99120a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7212fab40d4b3ca9ed3ed385c639181"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ae7212fab40d4b3ca9ed3ed385c639181">EGO_MAGIC_MASTERY</a>&#160;&#160;&#160;53</td></tr>
+<tr class="separator:ae7212fab40d4b3ca9ed3ed385c639181"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a055239970da71a737337b93f58add984"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a055239970da71a737337b93f58add984">EGO_WEAKNESS</a>&#160;&#160;&#160;54</td></tr>
+<tr class="separator:a055239970da71a737337b93f58add984"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f7a45c1f6b51f445365154d52a06e9b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a2f7a45c1f6b51f445365154d52a06e9b">EGO_CLUMSINESS</a>&#160;&#160;&#160;55</td></tr>
+<tr class="separator:a2f7a45c1f6b51f445365154d52a06e9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af050e995104581f19c8c78ae63cf19fd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#af050e995104581f19c8c78ae63cf19fd">EGO_SLOW_DESCENT</a>&#160;&#160;&#160;56</td></tr>
+<tr class="separator:af050e995104581f19c8c78ae63cf19fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45d164f987b13c886879e9bcde43f452"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a45d164f987b13c886879e9bcde43f452">EGO_QUIET</a>&#160;&#160;&#160;57</td></tr>
+<tr class="separator:a45d164f987b13c886879e9bcde43f452"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a275e25846e8f741b5ed3d5b7bcdd56f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a275e25846e8f741b5ed3d5b7bcdd56f8">EGO_MOTION</a>&#160;&#160;&#160;58</td></tr>
+<tr class="separator:a275e25846e8f741b5ed3d5b7bcdd56f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07c740e1176367b9076ce87f22f25713"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a07c740e1176367b9076ce87f22f25713">EGO_SPEED</a>&#160;&#160;&#160;59</td></tr>
+<tr class="separator:a07c740e1176367b9076ce87f22f25713"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9589cf689e934c5391f44f446240d67"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ac9589cf689e934c5391f44f446240d67">EGO_JUMP</a>&#160;&#160;&#160;60</td></tr>
+<tr class="separator:ac9589cf689e934c5391f44f446240d67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae16d34602a60666d9aa7167886295005"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ae16d34602a60666d9aa7167886295005">EGO_NOISE</a>&#160;&#160;&#160;61</td></tr>
+<tr class="separator:ae16d34602a60666d9aa7167886295005"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbbc0969e84bae671e690d674109735c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#afbbc0969e84bae671e690d674109735c">EGO_SLOWNESS</a>&#160;&#160;&#160;62</td></tr>
+<tr class="separator:afbbc0969e84bae671e690d674109735c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3256e49603a2adcd2df84657067f6ae6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a3256e49603a2adcd2df84657067f6ae6">EGO_ANNOYANCE</a>&#160;&#160;&#160;63</td></tr>
+<tr class="separator:a3256e49603a2adcd2df84657067f6ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43cf4a2a64710f41e6caea381816213d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a43cf4a2a64710f41e6caea381816213d">EGO_HA</a>&#160;&#160;&#160;64</td></tr>
+<tr class="separator:a43cf4a2a64710f41e6caea381816213d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0972cf51cbb533223d83fd46d1746bf5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a0972cf51cbb533223d83fd46d1746bf5">EGO_DF</a>&#160;&#160;&#160;65</td></tr>
+<tr class="separator:a0972cf51cbb533223d83fd46d1746bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b892555bd8625244efa512fe648c800"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a5b892555bd8625244efa512fe648c800">EGO_BLESS_BLADE</a>&#160;&#160;&#160;66</td></tr>
+<tr class="separator:a5b892555bd8625244efa512fe648c800"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa575c073532962f6c7d1c198b8e17770"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#aa575c073532962f6c7d1c198b8e17770">EGO_WEST</a>&#160;&#160;&#160;68</td></tr>
+<tr class="separator:aa575c073532962f6c7d1c198b8e17770"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f181347acd5ae8506b4a47af702c5e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a2f181347acd5ae8506b4a47af702c5e7">EGO_ATTACKS</a>&#160;&#160;&#160;69</td></tr>
+<tr class="separator:a2f181347acd5ae8506b4a47af702c5e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80557d8ee5288d9cfe3e5fd17d779989"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a80557d8ee5288d9cfe3e5fd17d779989">EGO_SLAYING_WEAPON</a>&#160;&#160;&#160;70</td></tr>
+<tr class="separator:a80557d8ee5288d9cfe3e5fd17d779989"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8bcbbeb71ca08e47146f836a205e90d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ae8bcbbeb71ca08e47146f836a205e90d">EGO_FORCE_WEAPON</a>&#160;&#160;&#160;71</td></tr>
+<tr class="separator:ae8bcbbeb71ca08e47146f836a205e90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81dde208ea0cab5817695ed2b330f69f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a81dde208ea0cab5817695ed2b330f69f">EGO_BRAND_ACID</a>&#160;&#160;&#160;72</td></tr>
+<tr class="separator:a81dde208ea0cab5817695ed2b330f69f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a743002699d1b80f6cdecc391a2bd9668"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a743002699d1b80f6cdecc391a2bd9668">EGO_BRAND_ELEC</a>&#160;&#160;&#160;73</td></tr>
+<tr class="separator:a743002699d1b80f6cdecc391a2bd9668"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a625a8ad87475fc2474b77350990e23f1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a625a8ad87475fc2474b77350990e23f1">EGO_BRAND_FIRE</a>&#160;&#160;&#160;74</td></tr>
+<tr class="separator:a625a8ad87475fc2474b77350990e23f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7025048eff00aa47b086b6d821b60e3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a7025048eff00aa47b086b6d821b60e3c">EGO_BRAND_COLD</a>&#160;&#160;&#160;75</td></tr>
+<tr class="separator:a7025048eff00aa47b086b6d821b60e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c014e937736958424a98639bf97b683"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a8c014e937736958424a98639bf97b683">EGO_BRAND_POIS</a>&#160;&#160;&#160;76</td></tr>
+<tr class="separator:a8c014e937736958424a98639bf97b683"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88f4b33152c1953981030320b6c6f198"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a88f4b33152c1953981030320b6c6f198">EGO_CHAOTIC</a>&#160;&#160;&#160;77</td></tr>
+<tr class="separator:a88f4b33152c1953981030320b6c6f198"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93b71307000e3ab2f0a577abf347f4ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a93b71307000e3ab2f0a577abf347f4ef">EGO_SHARPNESS</a>&#160;&#160;&#160;78</td></tr>
+<tr class="separator:a93b71307000e3ab2f0a577abf347f4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b3e77d39db5dec7f604849ef1de9a76"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a3b3e77d39db5dec7f604849ef1de9a76">EGO_EARTHQUAKES</a>&#160;&#160;&#160;79</td></tr>
+<tr class="separator:a3b3e77d39db5dec7f604849ef1de9a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d44363aa9da6af5f95c1dce21feb7f7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a9d44363aa9da6af5f95c1dce21feb7f7">EGO_WEIRD</a>&#160;&#160;&#160;87</td></tr>
+<tr class="separator:a9d44363aa9da6af5f95c1dce21feb7f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a9dc801dae5147199ae50122384050e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a1a9dc801dae5147199ae50122384050e">EGO_KILL_ANIMAL</a>&#160;&#160;&#160;88</td></tr>
+<tr class="separator:a1a9dc801dae5147199ae50122384050e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ec1f6e7dfcd3aa22a534a6ea4259bdf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a5ec1f6e7dfcd3aa22a534a6ea4259bdf">EGO_KILL_EVIL</a>&#160;&#160;&#160;89</td></tr>
+<tr class="separator:a5ec1f6e7dfcd3aa22a534a6ea4259bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d773ec429271413a184a83523c9df92"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a3d773ec429271413a184a83523c9df92">EGO_KILL_UNDEAD</a>&#160;&#160;&#160;90</td></tr>
+<tr class="separator:a3d773ec429271413a184a83523c9df92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4855b6cf3753255982e6706da1198fd1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a4855b6cf3753255982e6706da1198fd1">EGO_KILL_DEMON</a>&#160;&#160;&#160;91</td></tr>
+<tr class="separator:a4855b6cf3753255982e6706da1198fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34d34b8b1a4f1e131519423065e579db"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a34d34b8b1a4f1e131519423065e579db">EGO_KILL_ORC</a>&#160;&#160;&#160;92</td></tr>
+<tr class="separator:a34d34b8b1a4f1e131519423065e579db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31d704d16c1b65111088478df3b7a5a8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a31d704d16c1b65111088478df3b7a5a8">EGO_KILL_TROLL</a>&#160;&#160;&#160;93</td></tr>
+<tr class="separator:a31d704d16c1b65111088478df3b7a5a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4295c738a533b39a05b6a86184a84b13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a4295c738a533b39a05b6a86184a84b13">EGO_KILL_GIANT</a>&#160;&#160;&#160;94</td></tr>
+<tr class="separator:a4295c738a533b39a05b6a86184a84b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee8cc184f08285c708feb20a442e2cb8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#aee8cc184f08285c708feb20a442e2cb8">EGO_KILL_DRAGON</a>&#160;&#160;&#160;95</td></tr>
+<tr class="separator:aee8cc184f08285c708feb20a442e2cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a869650c34a3756b1814242a1deb11707"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a869650c34a3756b1814242a1deb11707">EGO_VAMPIRIC</a>&#160;&#160;&#160;96</td></tr>
+<tr class="separator:a869650c34a3756b1814242a1deb11707"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a771364d1d956eeec9849642f51a3c6eb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a771364d1d956eeec9849642f51a3c6eb">EGO_PRISM</a>&#160;&#160;&#160;97</td></tr>
+<tr class="separator:a771364d1d956eeec9849642f51a3c6eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a166b43e9c936243e8e28e0bb5eb560f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a166b43e9c936243e8e28e0bb5eb560f8">EGO_TRUMP</a>&#160;&#160;&#160;98</td></tr>
+<tr class="separator:a166b43e9c936243e8e28e0bb5eb560f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba87c128b4ec0f8d8d731e0e86c61f54"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#aba87c128b4ec0f8d8d731e0e86c61f54">EGO_PATTERN</a>&#160;&#160;&#160;99</td></tr>
+<tr class="separator:aba87c128b4ec0f8d8d731e0e86c61f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbe38395b739fa9dc004f5606b7b464c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#acbe38395b739fa9dc004f5606b7b464c">EGO_DIGGING</a>&#160;&#160;&#160;100</td></tr>
+<tr class="separator:acbe38395b739fa9dc004f5606b7b464c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af349b447ea4b174883fde8e734093433"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#af349b447ea4b174883fde8e734093433">EGO_DEMON</a>&#160;&#160;&#160;101</td></tr>
+<tr class="separator:af349b447ea4b174883fde8e734093433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9317cd81eba3e42957d291b14c5ce6f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a9317cd81eba3e42957d291b14c5ce6f8">EGO_MORGUL</a>&#160;&#160;&#160;102</td></tr>
+<tr class="separator:a9317cd81eba3e42957d291b14c5ce6f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad17b8783fbe0fd46b733d71ca7d71f63"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ad17b8783fbe0fd46b733d71ca7d71f63">EGO_KILL_HUMAN</a>&#160;&#160;&#160;103</td></tr>
+<tr class="separator:ad17b8783fbe0fd46b733d71ca7d71f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c4d1684b1c84399fea25836ff822772"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a6c4d1684b1c84399fea25836ff822772">EGO_ACCURACY</a>&#160;&#160;&#160;104</td></tr>
+<tr class="separator:a6c4d1684b1c84399fea25836ff822772"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a013adf6c21c2fc8cb26fbc1caab9116c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a013adf6c21c2fc8cb26fbc1caab9116c">EGO_VELOCITY</a>&#160;&#160;&#160;105</td></tr>
+<tr class="separator:a013adf6c21c2fc8cb26fbc1caab9116c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23ade35c0a2dae5257bdf773c5216984"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a23ade35c0a2dae5257bdf773c5216984">EGO_EXTRA_MIGHT</a>&#160;&#160;&#160;108</td></tr>
+<tr class="separator:a23ade35c0a2dae5257bdf773c5216984"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b9a6150810c3daecb2f7ff30146f299"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a7b9a6150810c3daecb2f7ff30146f299">EGO_EXTRA_SHOTS</a>&#160;&#160;&#160;109</td></tr>
+<tr class="separator:a7b9a6150810c3daecb2f7ff30146f299"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a438a4624eb3d291336d6687284b5292c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a438a4624eb3d291336d6687284b5292c">EGO_HURT_ANIMAL</a>&#160;&#160;&#160;112</td></tr>
+<tr class="separator:a438a4624eb3d291336d6687284b5292c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc8f4fead9b1a3448c7647c73a7d55cd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#acc8f4fead9b1a3448c7647c73a7d55cd">EGO_HURT_EVIL</a>&#160;&#160;&#160;113</td></tr>
+<tr class="separator:acc8f4fead9b1a3448c7647c73a7d55cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64b993f98f6d5bf5bf5272a6f71fdecb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a64b993f98f6d5bf5bf5272a6f71fdecb">EGO_HURT_DRAGON</a>&#160;&#160;&#160;119</td></tr>
+<tr class="separator:a64b993f98f6d5bf5bf5272a6f71fdecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5daf67d8035ca3454a36712e79e0825"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ab5daf67d8035ca3454a36712e79e0825">EGO_SLAYING_BOLT</a>&#160;&#160;&#160;120</td></tr>
+<tr class="separator:ab5daf67d8035ca3454a36712e79e0825"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16e546d988f9308aabc37c7cfb9c1086"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a16e546d988f9308aabc37c7cfb9c1086">EGO_LIGHTNING_BOLT</a>&#160;&#160;&#160;121</td></tr>
+<tr class="separator:a16e546d988f9308aabc37c7cfb9c1086"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a097118322c975b496611e11d3863c057"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a097118322c975b496611e11d3863c057">EGO_FLAME</a>&#160;&#160;&#160;122</td></tr>
+<tr class="separator:a097118322c975b496611e11d3863c057"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54fb0c562931893bddc44534f4b53038"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a54fb0c562931893bddc44534f4b53038">EGO_FROST</a>&#160;&#160;&#160;123</td></tr>
+<tr class="separator:a54fb0c562931893bddc44534f4b53038"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9fcca4787d73f41ccb7b61acfcae309"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ad9fcca4787d73f41ccb7b61acfcae309">EGO_WOUNDING</a>&#160;&#160;&#160;124</td></tr>
+<tr class="separator:ad9fcca4787d73f41ccb7b61acfcae309"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a540f88673d15fe6cadeaaaa0383e9143"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a540f88673d15fe6cadeaaaa0383e9143">EGO_BACKBITING</a>&#160;&#160;&#160;125</td></tr>
+<tr class="separator:a540f88673d15fe6cadeaaaa0383e9143"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a209cd7a87a6a551304c4314378dc0e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a3a209cd7a87a6a551304c4314378dc0e">EGO_SHATTERED</a>&#160;&#160;&#160;126</td></tr>
+<tr class="separator:a3a209cd7a87a6a551304c4314378dc0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd089990b51ae525f3b77143718b06f0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#acd089990b51ae525f3b77143718b06f0">EGO_BLASTED</a>&#160;&#160;&#160;127</td></tr>
+<tr class="separator:acd089990b51ae525f3b77143718b06f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30531d324ffd59c4bf609da02ca8a775"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a30531d324ffd59c4bf609da02ca8a775">EGO_LITE_SHINE</a>&#160;&#160;&#160;140</td></tr>
+<tr class="separator:a30531d324ffd59c4bf609da02ca8a775"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09557b1e58017a6e312a5892581281aa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a09557b1e58017a6e312a5892581281aa">EGO_LITE_ILLUMINATION</a>&#160;&#160;&#160;141</td></tr>
+<tr class="separator:a09557b1e58017a6e312a5892581281aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98eef8b002c3418ea7e38b4c4f80dba0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a98eef8b002c3418ea7e38b4c4f80dba0">EGO_LITE_AURA_FIRE</a>&#160;&#160;&#160;142</td></tr>
+<tr class="separator:a98eef8b002c3418ea7e38b4c4f80dba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8953032cf55f04c214bc1abe1f3d5fb0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a8953032cf55f04c214bc1abe1f3d5fb0">EGO_LITE_INFRA</a>&#160;&#160;&#160;143</td></tr>
+<tr class="separator:a8953032cf55f04c214bc1abe1f3d5fb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbb4c541b72c775fb935d4cbd2845438"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#adbb4c541b72c775fb935d4cbd2845438">EGO_LITE_LONG</a>&#160;&#160;&#160;144</td></tr>
+<tr class="separator:adbb4c541b72c775fb935d4cbd2845438"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97e0acd176c8c71f82e2742d3be4eef6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a97e0acd176c8c71f82e2742d3be4eef6">EGO_LITE_DARKNESS</a>&#160;&#160;&#160;145</td></tr>
+<tr class="separator:a97e0acd176c8c71f82e2742d3be4eef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9344221ff2b04e40cb9274c5cef29719"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a9344221ff2b04e40cb9274c5cef29719">EGO_LITE_EYE</a>&#160;&#160;&#160;146</td></tr>
+<tr class="separator:a9344221ff2b04e40cb9274c5cef29719"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08d2f79029c9f55e8a493860559ed84e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a08d2f79029c9f55e8a493860559ed84e">EGO_RING_HERO</a>&#160;&#160;&#160;150</td></tr>
+<tr class="separator:a08d2f79029c9f55e8a493860559ed84e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad39da08f72d9b9c0cefe5b417cc13c59"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ad39da08f72d9b9c0cefe5b417cc13c59">EGO_RING_SLAY</a>&#160;&#160;&#160;151</td></tr>
+<tr class="separator:ad39da08f72d9b9c0cefe5b417cc13c59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86a594efc6c866a772c9363131e1db4f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a86a594efc6c866a772c9363131e1db4f">EGO_RING_SUPER_AC</a>&#160;&#160;&#160;152</td></tr>
+<tr class="separator:a86a594efc6c866a772c9363131e1db4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a812572554f8dc2b11b310516617007b6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a812572554f8dc2b11b310516617007b6">EGO_RING_MAGIC_MIS</a>&#160;&#160;&#160;153</td></tr>
+<tr class="separator:a812572554f8dc2b11b310516617007b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b5c71b8aba0ca1eadf32c204530db04"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a8b5c71b8aba0ca1eadf32c204530db04">EGO_RING_FIRE_BOLT</a>&#160;&#160;&#160;154</td></tr>
+<tr class="separator:a8b5c71b8aba0ca1eadf32c204530db04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c8afe2d0531016a48288a060f630f63"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a4c8afe2d0531016a48288a060f630f63">EGO_RING_COLD_BOLT</a>&#160;&#160;&#160;155</td></tr>
+<tr class="separator:a4c8afe2d0531016a48288a060f630f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1c4c2f0bc94879dae8d0ea5c28b187f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ac1c4c2f0bc94879dae8d0ea5c28b187f">EGO_RING_ELEC_BOLT</a>&#160;&#160;&#160;156</td></tr>
+<tr class="separator:ac1c4c2f0bc94879dae8d0ea5c28b187f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ed07eea5a7bc39bc13bb5ff88dce957"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a1ed07eea5a7bc39bc13bb5ff88dce957">EGO_RING_ACID_BOLT</a>&#160;&#160;&#160;157</td></tr>
+<tr class="separator:a1ed07eea5a7bc39bc13bb5ff88dce957"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac783cc2d3e0acc97d7611d8baf8d93c6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ac783cc2d3e0acc97d7611d8baf8d93c6">EGO_RING_MANA_BOLT</a>&#160;&#160;&#160;158</td></tr>
+<tr class="separator:ac783cc2d3e0acc97d7611d8baf8d93c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2820fde65a52db2595eb889467076f87"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a2820fde65a52db2595eb889467076f87">EGO_RING_FIRE_BALL</a>&#160;&#160;&#160;159</td></tr>
+<tr class="separator:a2820fde65a52db2595eb889467076f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07fb2295a656af31a56790ecc538b55f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a07fb2295a656af31a56790ecc538b55f">EGO_RING_COLD_BALL</a>&#160;&#160;&#160;160</td></tr>
+<tr class="separator:a07fb2295a656af31a56790ecc538b55f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a522d71913c4bb398fdb5fac524964410"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a522d71913c4bb398fdb5fac524964410">EGO_RING_ELEC_BALL</a>&#160;&#160;&#160;161</td></tr>
+<tr class="separator:a522d71913c4bb398fdb5fac524964410"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c01bc4ae39cea497e560ebea42327da"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a1c01bc4ae39cea497e560ebea42327da">EGO_RING_ACID_BALL</a>&#160;&#160;&#160;162</td></tr>
+<tr class="separator:a1c01bc4ae39cea497e560ebea42327da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00622015f5a41b61874c32503fbd2e4b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a00622015f5a41b61874c32503fbd2e4b">EGO_RING_MANA_BALL</a>&#160;&#160;&#160;163</td></tr>
+<tr class="separator:a00622015f5a41b61874c32503fbd2e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ff5037b331803475f502319a736d51c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a8ff5037b331803475f502319a736d51c">EGO_RING_DRAGON_F</a>&#160;&#160;&#160;164</td></tr>
+<tr class="separator:a8ff5037b331803475f502319a736d51c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad54adc34cdbc1972407aba697285a900"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ad54adc34cdbc1972407aba697285a900">EGO_RING_DRAGON_C</a>&#160;&#160;&#160;165</td></tr>
+<tr class="separator:ad54adc34cdbc1972407aba697285a900"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3f43cf90178623ad39cec499c472d58"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#aa3f43cf90178623ad39cec499c472d58">EGO_RING_D_SPEED</a>&#160;&#160;&#160;166</td></tr>
+<tr class="separator:aa3f43cf90178623ad39cec499c472d58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3003be2aa646585d297a5087fe5abd76"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a3003be2aa646585d297a5087fe5abd76">EGO_RING_BERSERKER</a>&#160;&#160;&#160;167</td></tr>
+<tr class="separator:a3003be2aa646585d297a5087fe5abd76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb95751942c01669585e056e7cfdefa3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#adb95751942c01669585e056e7cfdefa3">EGO_RING_HUNTER</a>&#160;&#160;&#160;168</td></tr>
+<tr class="separator:adb95751942c01669585e056e7cfdefa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad717b618477b03bc1132e83a365a41ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ad717b618477b03bc1132e83a365a41ab">EGO_RING_THROW</a>&#160;&#160;&#160;169</td></tr>
+<tr class="separator:ad717b618477b03bc1132e83a365a41ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a181d159b4ce8f1c5461dbb0a0c58e747"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a181d159b4ce8f1c5461dbb0a0c58e747">EGO_RING_REGEN</a>&#160;&#160;&#160;170</td></tr>
+<tr class="separator:a181d159b4ce8f1c5461dbb0a0c58e747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87dbe801b1629710d5bf94c5e79bbee3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a87dbe801b1629710d5bf94c5e79bbee3">EGO_RING_LITE</a>&#160;&#160;&#160;171</td></tr>
+<tr class="separator:a87dbe801b1629710d5bf94c5e79bbee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f1466a500b5ac8d59ae7a77586661f1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a6f1466a500b5ac8d59ae7a77586661f1">EGO_RING_M_DETECT</a>&#160;&#160;&#160;172</td></tr>
+<tr class="separator:a6f1466a500b5ac8d59ae7a77586661f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a567d8f748457048f2a36f0e4a3d936db"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a567d8f748457048f2a36f0e4a3d936db">EGO_RING_STEALTH</a>&#160;&#160;&#160;173</td></tr>
+<tr class="separator:a567d8f748457048f2a36f0e4a3d936db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1125f2bab315359d8ef469302c5f0fda"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a1125f2bab315359d8ef469302c5f0fda">EGO_RING_TELE_AWAY</a>&#160;&#160;&#160;174</td></tr>
+<tr class="separator:a1125f2bab315359d8ef469302c5f0fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23adada3a680e5b11fae787589104833"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a23adada3a680e5b11fae787589104833">EGO_RING_TO_H</a>&#160;&#160;&#160;175</td></tr>
+<tr class="separator:a23adada3a680e5b11fae787589104833"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1976c22173a40f0c9c44b9544c8e43e0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a1976c22173a40f0c9c44b9544c8e43e0">EGO_RING_TO_D</a>&#160;&#160;&#160;176</td></tr>
+<tr class="separator:a1976c22173a40f0c9c44b9544c8e43e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32073ccb9349441008c56c67d94ae2de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a32073ccb9349441008c56c67d94ae2de">EGO_RING_RES_LITE</a>&#160;&#160;&#160;177</td></tr>
+<tr class="separator:a32073ccb9349441008c56c67d94ae2de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c1a1f7d6ee354fae45ea981829dbbcf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a6c1a1f7d6ee354fae45ea981829dbbcf">EGO_RING_RES_DARK</a>&#160;&#160;&#160;178</td></tr>
+<tr class="separator:a6c1a1f7d6ee354fae45ea981829dbbcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47609626239d5410bbe987028518d9bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a47609626239d5410bbe987028518d9bd">EGO_RING_WIZARD</a>&#160;&#160;&#160;179</td></tr>
+<tr class="separator:a47609626239d5410bbe987028518d9bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d55b7eb06eda6a448d66203bc91e715"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a8d55b7eb06eda6a448d66203bc91e715">EGO_RING_TRUE</a>&#160;&#160;&#160;180</td></tr>
+<tr class="separator:a8d55b7eb06eda6a448d66203bc91e715"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a206bc9abf7a5fcffc62989bde2e1dd0f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a206bc9abf7a5fcffc62989bde2e1dd0f">EGO_RING_DRAIN_EXP</a>&#160;&#160;&#160;181</td></tr>
+<tr class="separator:a206bc9abf7a5fcffc62989bde2e1dd0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42f27ee83fc038671c65b8eefc221568"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a42f27ee83fc038671c65b8eefc221568">EGO_RING_NO_MELEE</a>&#160;&#160;&#160;182</td></tr>
+<tr class="separator:a42f27ee83fc038671c65b8eefc221568"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac048515918a6f6d60c6ecfb858c6bd16"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ac048515918a6f6d60c6ecfb858c6bd16">EGO_RING_AGGRAVATE</a>&#160;&#160;&#160;183</td></tr>
+<tr class="separator:ac048515918a6f6d60c6ecfb858c6bd16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29a065b18e9239742ff4ae49bed87962"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a29a065b18e9239742ff4ae49bed87962">EGO_RING_TY_CURSE</a>&#160;&#160;&#160;184</td></tr>
+<tr class="separator:a29a065b18e9239742ff4ae49bed87962"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a846820af573782eea18d3c47f16fa5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a3a846820af573782eea18d3c47f16fa5">EGO_RING_RES_TIME</a>&#160;&#160;&#160;185</td></tr>
+<tr class="separator:a3a846820af573782eea18d3c47f16fa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace3295019f55e3add151b6ba8b5b7048"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ace3295019f55e3add151b6ba8b5b7048">EGO_RING_TELEPORT</a>&#160;&#160;&#160;186</td></tr>
+<tr class="separator:ace3295019f55e3add151b6ba8b5b7048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a193b824c811fc2ae01914374ab532967"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a193b824c811fc2ae01914374ab532967">EGO_RING_ALBINO</a>&#160;&#160;&#160;187</td></tr>
+<tr class="separator:a193b824c811fc2ae01914374ab532967"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cbbeb95891f80ed0cbcd80b3557e533"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a8cbbeb95891f80ed0cbcd80b3557e533">EGO_AMU_SLOW_D</a>&#160;&#160;&#160;210</td></tr>
+<tr class="separator:a8cbbeb95891f80ed0cbcd80b3557e533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba6564d785b6c2c4073c1873b9d6fbce"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#aba6564d785b6c2c4073c1873b9d6fbce">EGO_AMU_INFRA</a>&#160;&#160;&#160;211</td></tr>
+<tr class="separator:aba6564d785b6c2c4073c1873b9d6fbce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada910d66a02e8008c974fe29b35d2453"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ada910d66a02e8008c974fe29b35d2453">EGO_AMU_SEE_INVIS</a>&#160;&#160;&#160;212</td></tr>
+<tr class="separator:ada910d66a02e8008c974fe29b35d2453"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20daa578c5e1b8cce66fd73e112804d2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a20daa578c5e1b8cce66fd73e112804d2">EGO_AMU_HOLD_EXP</a>&#160;&#160;&#160;213</td></tr>
+<tr class="separator:a20daa578c5e1b8cce66fd73e112804d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a756bdab08fe44d4520c8651cce7f1f9f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a756bdab08fe44d4520c8651cce7f1f9f">EGO_AMU_DRAIN_EXP</a>&#160;&#160;&#160;214</td></tr>
+<tr class="separator:a756bdab08fe44d4520c8651cce7f1f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb59fb610c9263515aa24fa00d6144a8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#afb59fb610c9263515aa24fa00d6144a8">EGO_AMU_FOOL</a>&#160;&#160;&#160;215</td></tr>
+<tr class="separator:afb59fb610c9263515aa24fa00d6144a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb4e29b7a0333182e61c156ec657a335"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#aeb4e29b7a0333182e61c156ec657a335">EGO_AMU_AGGRAVATE</a>&#160;&#160;&#160;216</td></tr>
+<tr class="separator:aeb4e29b7a0333182e61c156ec657a335"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42b69c76d44ef6f0f6de8360532191c7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a42b69c76d44ef6f0f6de8360532191c7">EGO_AMU_TY_CURSE</a>&#160;&#160;&#160;217</td></tr>
+<tr class="separator:a42b69c76d44ef6f0f6de8360532191c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc33fca9edc765f74b6a0449685c28f1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#abc33fca9edc765f74b6a0449685c28f1">EGO_AMU_AC</a>&#160;&#160;&#160;218</td></tr>
+<tr class="separator:abc33fca9edc765f74b6a0449685c28f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa66c784f8923b2577b0095a3ba9484d4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#aa66c784f8923b2577b0095a3ba9484d4">EGO_AMU_IDENT</a>&#160;&#160;&#160;219</td></tr>
+<tr class="separator:aa66c784f8923b2577b0095a3ba9484d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cddcba4da55e1bd555badb1288b7bf2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a0cddcba4da55e1bd555badb1288b7bf2">EGO_AMU_CHARM</a>&#160;&#160;&#160;220</td></tr>
+<tr class="separator:a0cddcba4da55e1bd555badb1288b7bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa31ba825613417858fc8b3197dec146e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#aa31ba825613417858fc8b3197dec146e">EGO_AMU_STEALTH</a>&#160;&#160;&#160;221</td></tr>
+<tr class="separator:aa31ba825613417858fc8b3197dec146e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6e334e516cfb708ad4f7b6fb118a1b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ab6e334e516cfb708ad4f7b6fb118a1b3">EGO_AMU_JUMP</a>&#160;&#160;&#160;222</td></tr>
+<tr class="separator:ab6e334e516cfb708ad4f7b6fb118a1b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af03ec32577c199d4d453cb66df10d99c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#af03ec32577c199d4d453cb66df10d99c">EGO_AMU_TELEPORT</a>&#160;&#160;&#160;223</td></tr>
+<tr class="separator:af03ec32577c199d4d453cb66df10d99c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b00fb52a68ab2afc50ef949ab82a388"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a8b00fb52a68ab2afc50ef949ab82a388">EGO_AMU_D_DOOR</a>&#160;&#160;&#160;224</td></tr>
+<tr class="separator:a8b00fb52a68ab2afc50ef949ab82a388"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a188902ac9ea55a63c73810ddbd9566a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a188902ac9ea55a63c73810ddbd9566a6">EGO_AMU_DEFENDER</a>&#160;&#160;&#160;225</td></tr>
+<tr class="separator:a188902ac9ea55a63c73810ddbd9566a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3ce4a2ae253eb0925fbda017e3a1b8b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ae3ce4a2ae253eb0925fbda017e3a1b8b">EGO_AMU_RES_FIRE</a>&#160;&#160;&#160;226</td></tr>
+<tr class="separator:ae3ce4a2ae253eb0925fbda017e3a1b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfe65009b4b95d802cfe50b64284d7f5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#adfe65009b4b95d802cfe50b64284d7f5">EGO_AMU_RES_FIRE_</a>&#160;&#160;&#160;227</td></tr>
+<tr class="separator:adfe65009b4b95d802cfe50b64284d7f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21dd97d23459ec48039e6151b1088f9c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a21dd97d23459ec48039e6151b1088f9c">EGO_AMU_RES_COLD</a>&#160;&#160;&#160;228</td></tr>
+<tr class="separator:a21dd97d23459ec48039e6151b1088f9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16f2591765126c05e109b82188667617"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a16f2591765126c05e109b82188667617">EGO_AMU_RES_COLD_</a>&#160;&#160;&#160;229</td></tr>
+<tr class="separator:a16f2591765126c05e109b82188667617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3672884b1081ddc6898b68d462813a9d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a3672884b1081ddc6898b68d462813a9d">EGO_AMU_RES_ELEC</a>&#160;&#160;&#160;230</td></tr>
+<tr class="separator:a3672884b1081ddc6898b68d462813a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a709a6947705fabdce2c4b79db65c93b2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a709a6947705fabdce2c4b79db65c93b2">EGO_AMU_RES_ELEC_</a>&#160;&#160;&#160;231</td></tr>
+<tr class="separator:a709a6947705fabdce2c4b79db65c93b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab92dba5483316dd05afb4f97f3003acc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ab92dba5483316dd05afb4f97f3003acc">EGO_AMU_RES_ACID</a>&#160;&#160;&#160;232</td></tr>
+<tr class="separator:ab92dba5483316dd05afb4f97f3003acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae14c33822623b2b4b672ceeba68325a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ae14c33822623b2b4b672ceeba68325a1">EGO_AMU_RES_ACID_</a>&#160;&#160;&#160;233</td></tr>
+<tr class="separator:ae14c33822623b2b4b672ceeba68325a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2872112a6d0beb36c5ad0519cbcf6b0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#aa2872112a6d0beb36c5ad0519cbcf6b0">EGO_AMU_LEVITATION</a>&#160;&#160;&#160;234</td></tr>
+<tr class="separator:aa2872112a6d0beb36c5ad0519cbcf6b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6758ecdfc203ed8e469d1b9f4c7bde3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#af6758ecdfc203ed8e469d1b9f4c7bde3">EGO_AMU_GREAT</a>&#160;&#160;&#160;235</td></tr>
+<tr class="separator:af6758ecdfc203ed8e469d1b9f4c7bde3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a8f3f3584035ff478f4306d4a925c35"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a1a8f3f3584035ff478f4306d4a925c35">EGO_AMU_DETECTION</a>&#160;&#160;&#160;236</td></tr>
+<tr class="separator:a1a8f3f3584035ff478f4306d4a925c35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d35a1697a60ebc79fb4bd332fbc4a47"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a9d35a1697a60ebc79fb4bd332fbc4a47">EGO_AMU_NAIVETY</a>&#160;&#160;&#160;237</td></tr>
+<tr class="separator:a9d35a1697a60ebc79fb4bd332fbc4a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:ab2d834c8e6ce809dfce2c3a3fef269aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ab2d834c8e6ce809dfce2c3a3fef269aa">get_random_ego</a> (<a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> slot, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> good)</td></tr>
+<tr class="memdesc:ab2d834c8e6ce809dfce2c3a3fef269aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムのエゴをレア度の重みに合わせてランダムに選択する Choose random ego type  <a href="object-ego_8h.html#ab2d834c8e6ce809dfce2c3a3fef269aa">[詳解]</a><br /></td></tr>
+<tr class="separator:ab2d834c8e6ce809dfce2c3a3fef269aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae52b9f92a7e5067ea20af2fbdc181485"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#ae52b9f92a7e5067ea20af2fbdc181485">apply_ego</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, <a class="el" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> lev)</td></tr>
+<tr class="separator:ae52b9f92a7e5067ea20af2fbdc181485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a4779eca81d87fdf07a8df7a386c365c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad436c265819d8e3689955f6d5a6c67dc">EGO_IDX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#a4779eca81d87fdf07a8df7a386c365c5">max_e_idx</a></td></tr>
+<tr class="separator:a4779eca81d87fdf07a8df7a386c365c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afed029170e02ee8ab09de96f2f324fc0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structego__item__type.html">ego_item_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-ego_8h.html#afed029170e02ee8ab09de96f2f324fc0">e_info</a></td></tr>
+<tr class="memdesc:afed029170e02ee8ab09de96f2f324fc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">エゴアイテムに関する処理  <a href="object-ego_8h.html#afed029170e02ee8ab09de96f2f324fc0">[詳解]</a><br /></td></tr>
+<tr class="separator:afed029170e02ee8ab09de96f2f324fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="adedb1602e312ee7a4589e842ac99120a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adedb1602e312ee7a4589e842ac99120a">&#9670;&nbsp;</a></span>EGO_2WEAPON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_2WEAPON&#160;&#160;&#160;52</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4600cc689044afb809728086f507fe73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4600cc689044afb809728086f507fe73">&#9670;&nbsp;</a></span>EGO_A_DEMON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_A_DEMON&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf97d0b31027bee3ed0702ac37aff1df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf97d0b31027bee3ed0702ac37aff1df">&#9670;&nbsp;</a></span>EGO_A_MORGUL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_A_MORGUL&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6c4d1684b1c84399fea25836ff822772"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c4d1684b1c84399fea25836ff822772">&#9670;&nbsp;</a></span>EGO_ACCURACY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_ACCURACY&#160;&#160;&#160;104</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a24c1a75016dedf25dce7b03806562d10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24c1a75016dedf25dce7b03806562d10">&#9670;&nbsp;</a></span>EGO_AGILITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AGILITY&#160;&#160;&#160;50</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afa75083ba7e6aedbf6814ce5583f529c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa75083ba7e6aedbf6814ce5583f529c">&#9670;&nbsp;</a></span>EGO_AMAN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMAN&#160;&#160;&#160;42</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abc33fca9edc765f74b6a0449685c28f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc33fca9edc765f74b6a0449685c28f1">&#9670;&nbsp;</a></span>EGO_AMU_AC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_AC&#160;&#160;&#160;218</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb4e29b7a0333182e61c156ec657a335"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb4e29b7a0333182e61c156ec657a335">&#9670;&nbsp;</a></span>EGO_AMU_AGGRAVATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_AGGRAVATE&#160;&#160;&#160;216</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0cddcba4da55e1bd555badb1288b7bf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cddcba4da55e1bd555badb1288b7bf2">&#9670;&nbsp;</a></span>EGO_AMU_CHARM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_CHARM&#160;&#160;&#160;220</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b00fb52a68ab2afc50ef949ab82a388"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b00fb52a68ab2afc50ef949ab82a388">&#9670;&nbsp;</a></span>EGO_AMU_D_DOOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_D_DOOR&#160;&#160;&#160;224</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a188902ac9ea55a63c73810ddbd9566a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a188902ac9ea55a63c73810ddbd9566a6">&#9670;&nbsp;</a></span>EGO_AMU_DEFENDER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_DEFENDER&#160;&#160;&#160;225</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a8f3f3584035ff478f4306d4a925c35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a8f3f3584035ff478f4306d4a925c35">&#9670;&nbsp;</a></span>EGO_AMU_DETECTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_DETECTION&#160;&#160;&#160;236</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a756bdab08fe44d4520c8651cce7f1f9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a756bdab08fe44d4520c8651cce7f1f9f">&#9670;&nbsp;</a></span>EGO_AMU_DRAIN_EXP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_DRAIN_EXP&#160;&#160;&#160;214</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afb59fb610c9263515aa24fa00d6144a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb59fb610c9263515aa24fa00d6144a8">&#9670;&nbsp;</a></span>EGO_AMU_FOOL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_FOOL&#160;&#160;&#160;215</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af6758ecdfc203ed8e469d1b9f4c7bde3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6758ecdfc203ed8e469d1b9f4c7bde3">&#9670;&nbsp;</a></span>EGO_AMU_GREAT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_GREAT&#160;&#160;&#160;235</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a20daa578c5e1b8cce66fd73e112804d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20daa578c5e1b8cce66fd73e112804d2">&#9670;&nbsp;</a></span>EGO_AMU_HOLD_EXP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_HOLD_EXP&#160;&#160;&#160;213</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa66c784f8923b2577b0095a3ba9484d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa66c784f8923b2577b0095a3ba9484d4">&#9670;&nbsp;</a></span>EGO_AMU_IDENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_IDENT&#160;&#160;&#160;219</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aba6564d785b6c2c4073c1873b9d6fbce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba6564d785b6c2c4073c1873b9d6fbce">&#9670;&nbsp;</a></span>EGO_AMU_INFRA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_INFRA&#160;&#160;&#160;211</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab6e334e516cfb708ad4f7b6fb118a1b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6e334e516cfb708ad4f7b6fb118a1b3">&#9670;&nbsp;</a></span>EGO_AMU_JUMP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_JUMP&#160;&#160;&#160;222</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa2872112a6d0beb36c5ad0519cbcf6b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2872112a6d0beb36c5ad0519cbcf6b0">&#9670;&nbsp;</a></span>EGO_AMU_LEVITATION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_LEVITATION&#160;&#160;&#160;234</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d35a1697a60ebc79fb4bd332fbc4a47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d35a1697a60ebc79fb4bd332fbc4a47">&#9670;&nbsp;</a></span>EGO_AMU_NAIVETY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_NAIVETY&#160;&#160;&#160;237</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab92dba5483316dd05afb4f97f3003acc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab92dba5483316dd05afb4f97f3003acc">&#9670;&nbsp;</a></span>EGO_AMU_RES_ACID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_RES_ACID&#160;&#160;&#160;232</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae14c33822623b2b4b672ceeba68325a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae14c33822623b2b4b672ceeba68325a1">&#9670;&nbsp;</a></span>EGO_AMU_RES_ACID_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_RES_ACID_&#160;&#160;&#160;233</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a21dd97d23459ec48039e6151b1088f9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21dd97d23459ec48039e6151b1088f9c">&#9670;&nbsp;</a></span>EGO_AMU_RES_COLD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_RES_COLD&#160;&#160;&#160;228</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a16f2591765126c05e109b82188667617"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16f2591765126c05e109b82188667617">&#9670;&nbsp;</a></span>EGO_AMU_RES_COLD_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_RES_COLD_&#160;&#160;&#160;229</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3672884b1081ddc6898b68d462813a9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3672884b1081ddc6898b68d462813a9d">&#9670;&nbsp;</a></span>EGO_AMU_RES_ELEC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_RES_ELEC&#160;&#160;&#160;230</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a709a6947705fabdce2c4b79db65c93b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a709a6947705fabdce2c4b79db65c93b2">&#9670;&nbsp;</a></span>EGO_AMU_RES_ELEC_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_RES_ELEC_&#160;&#160;&#160;231</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae3ce4a2ae253eb0925fbda017e3a1b8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3ce4a2ae253eb0925fbda017e3a1b8b">&#9670;&nbsp;</a></span>EGO_AMU_RES_FIRE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_RES_FIRE&#160;&#160;&#160;226</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adfe65009b4b95d802cfe50b64284d7f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfe65009b4b95d802cfe50b64284d7f5">&#9670;&nbsp;</a></span>EGO_AMU_RES_FIRE_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_RES_FIRE_&#160;&#160;&#160;227</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ada910d66a02e8008c974fe29b35d2453"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada910d66a02e8008c974fe29b35d2453">&#9670;&nbsp;</a></span>EGO_AMU_SEE_INVIS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_SEE_INVIS&#160;&#160;&#160;212</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8cbbeb95891f80ed0cbcd80b3557e533"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cbbeb95891f80ed0cbcd80b3557e533">&#9670;&nbsp;</a></span>EGO_AMU_SLOW_D</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_SLOW_D&#160;&#160;&#160;210</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa31ba825613417858fc8b3197dec146e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa31ba825613417858fc8b3197dec146e">&#9670;&nbsp;</a></span>EGO_AMU_STEALTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_STEALTH&#160;&#160;&#160;221</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af03ec32577c199d4d453cb66df10d99c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af03ec32577c199d4d453cb66df10d99c">&#9670;&nbsp;</a></span>EGO_AMU_TELEPORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_TELEPORT&#160;&#160;&#160;223</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42b69c76d44ef6f0f6de8360532191c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42b69c76d44ef6f0f6de8360532191c7">&#9670;&nbsp;</a></span>EGO_AMU_TY_CURSE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AMU_TY_CURSE&#160;&#160;&#160;217</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf537445ec864b8c9af544499055d350"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf537445ec864b8c9af544499055d350">&#9670;&nbsp;</a></span>EGO_ANCIENT_CURSE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_ANCIENT_CURSE&#160;&#160;&#160;38</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3256e49603a2adcd2df84657067f6ae6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3256e49603a2adcd2df84657067f6ae6">&#9670;&nbsp;</a></span>EGO_ANNOYANCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_ANNOYANCE&#160;&#160;&#160;63</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2f181347acd5ae8506b4a47af702c5e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f181347acd5ae8506b4a47af702c5e7">&#9670;&nbsp;</a></span>EGO_ATTACKS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_ATTACKS&#160;&#160;&#160;69</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae5627de04ebfef36103f44ec1d381322"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5627de04ebfef36103f44ec1d381322">&#9670;&nbsp;</a></span>EGO_AURA_COLD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AURA_COLD&#160;&#160;&#160;128</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a38202a156394b709d249bf463bba395a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38202a156394b709d249bf463bba395a">&#9670;&nbsp;</a></span>EGO_AURA_ELEC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AURA_ELEC&#160;&#160;&#160;47</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a617b071c14ebb3edc5d4603fdb433d64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a617b071c14ebb3edc5d4603fdb433d64">&#9670;&nbsp;</a></span>EGO_AURA_FIRE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_AURA_FIRE&#160;&#160;&#160;43</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a540f88673d15fe6cadeaaaa0383e9143"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a540f88673d15fe6cadeaaaa0383e9143">&#9670;&nbsp;</a></span>EGO_BACKBITING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_BACKBITING&#160;&#160;&#160;125</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab077b187dc41a3c1457f56c460f654c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab077b187dc41a3c1457f56c460f654c3">&#9670;&nbsp;</a></span>EGO_BASILISK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_BASILISK&#160;&#160;&#160;37</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a07c844050a58490de573a0309aa003aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07c844050a58490de573a0309aa003aa">&#9670;&nbsp;</a></span>EGO_BAT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_BAT&#160;&#160;&#160;129</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acd089990b51ae525f3b77143718b06f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd089990b51ae525f3b77143718b06f0">&#9670;&nbsp;</a></span>EGO_BLASTED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_BLASTED&#160;&#160;&#160;127</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b892555bd8625244efa512fe648c800"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b892555bd8625244efa512fe648c800">&#9670;&nbsp;</a></span>EGO_BLESS_BLADE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_BLESS_BLADE&#160;&#160;&#160;66</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a81dde208ea0cab5817695ed2b330f69f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81dde208ea0cab5817695ed2b330f69f">&#9670;&nbsp;</a></span>EGO_BRAND_ACID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_BRAND_ACID&#160;&#160;&#160;72</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7025048eff00aa47b086b6d821b60e3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7025048eff00aa47b086b6d821b60e3c">&#9670;&nbsp;</a></span>EGO_BRAND_COLD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_BRAND_COLD&#160;&#160;&#160;75</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a743002699d1b80f6cdecc391a2bd9668"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a743002699d1b80f6cdecc391a2bd9668">&#9670;&nbsp;</a></span>EGO_BRAND_ELEC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_BRAND_ELEC&#160;&#160;&#160;73</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a625a8ad87475fc2474b77350990e23f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a625a8ad87475fc2474b77350990e23f1">&#9670;&nbsp;</a></span>EGO_BRAND_FIRE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_BRAND_FIRE&#160;&#160;&#160;74</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c014e937736958424a98639bf97b683"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c014e937736958424a98639bf97b683">&#9670;&nbsp;</a></span>EGO_BRAND_POIS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_BRAND_POIS&#160;&#160;&#160;76</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aca725d31eaac34b97a40efe16c79acfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca725d31eaac34b97a40efe16c79acfe">&#9670;&nbsp;</a></span>EGO_BRILLIANCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_BRILLIANCE&#160;&#160;&#160;24</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a88f4b33152c1953981030320b6c6f198"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88f4b33152c1953981030320b6c6f198">&#9670;&nbsp;</a></span>EGO_CHAOTIC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_CHAOTIC&#160;&#160;&#160;77</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2f7a45c1f6b51f445365154d52a06e9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f7a45c1f6b51f445365154d52a06e9b">&#9670;&nbsp;</a></span>EGO_CLUMSINESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_CLUMSINESS&#160;&#160;&#160;55</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2a4abd02e676080200ec732bb71517e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a4abd02e676080200ec732bb71517e4">&#9670;&nbsp;</a></span>EGO_DARK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_DARK&#160;&#160;&#160;23</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af349b447ea4b174883fde8e734093433"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af349b447ea4b174883fde8e734093433">&#9670;&nbsp;</a></span>EGO_DEMON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_DEMON&#160;&#160;&#160;101</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0972cf51cbb533223d83fd46d1746bf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0972cf51cbb533223d83fd46d1746bf5">&#9670;&nbsp;</a></span>EGO_DF</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_DF&#160;&#160;&#160;65</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acbe38395b739fa9dc004f5606b7b464c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbe38395b739fa9dc004f5606b7b464c">&#9670;&nbsp;</a></span>EGO_DIGGING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_DIGGING&#160;&#160;&#160;100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a16b398be48d5eff6c9a5622e7f117228"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16b398be48d5eff6c9a5622e7f117228">&#9670;&nbsp;</a></span>EGO_DRUID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_DRUID&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd312242ad604f7b6382a39e9c617c7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd312242ad604f7b6382a39e9c617c7f">&#9670;&nbsp;</a></span>EGO_DWARVEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_DWARVEN&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3b3e77d39db5dec7f604849ef1de9a76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b3e77d39db5dec7f604849ef1de9a76">&#9670;&nbsp;</a></span>EGO_EARTHQUAKES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_EARTHQUAKES&#160;&#160;&#160;79</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a96aad03922182b551eee6893348dedf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96aad03922182b551eee6893348dedf6">&#9670;&nbsp;</a></span>EGO_ELVENKIND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_ELVENKIND&#160;&#160;&#160;9</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8470897d4da6e72ac300e9c85d58b837"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8470897d4da6e72ac300e9c85d58b837">&#9670;&nbsp;</a></span>EGO_ENDURANCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_ENDURANCE&#160;&#160;&#160;20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6d9687b6830be1a006d1a3de184dc41d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d9687b6830be1a006d1a3de184dc41d">&#9670;&nbsp;</a></span>EGO_ENDURE_ACID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_ENDURE_ACID&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0fddf79b91f5aed884d59131d4b87dbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fddf79b91f5aed884d59131d4b87dbb">&#9670;&nbsp;</a></span>EGO_ENDURE_COLD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_ENDURE_COLD&#160;&#160;&#160;19</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a60bc75facd8656622fddf22949c16b8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60bc75facd8656622fddf22949c16b8d">&#9670;&nbsp;</a></span>EGO_ENDURE_ELEC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_ENDURE_ELEC&#160;&#160;&#160;17</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae77d8b95d72e49454aabc2839128ccad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae77d8b95d72e49454aabc2839128ccad">&#9670;&nbsp;</a></span>EGO_ENDURE_FIRE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_ENDURE_FIRE&#160;&#160;&#160;18</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ba2621e2a6f2c3f17debadc5d5f8c04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ba2621e2a6f2c3f17debadc5d5f8c04">&#9670;&nbsp;</a></span>EGO_ENVELOPING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_ENVELOPING&#160;&#160;&#160;44</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23ade35c0a2dae5257bdf773c5216984"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23ade35c0a2dae5257bdf773c5216984">&#9670;&nbsp;</a></span>EGO_EXTRA_MIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_EXTRA_MIGHT&#160;&#160;&#160;108</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b9a6150810c3daecb2f7ff30146f299"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b9a6150810c3daecb2f7ff30146f299">&#9670;&nbsp;</a></span>EGO_EXTRA_SHOTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_EXTRA_SHOTS&#160;&#160;&#160;109</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a097118322c975b496611e11d3863c057"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a097118322c975b496611e11d3863c057">&#9670;&nbsp;</a></span>EGO_FLAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_FLAME&#160;&#160;&#160;122</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac5b08229a6a9c1d90ea34003ae62dd40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5b08229a6a9c1d90ea34003ae62dd40">&#9670;&nbsp;</a></span>EGO_FOOL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_FOOL&#160;&#160;&#160;36</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae8bcbbeb71ca08e47146f836a205e90d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8bcbbeb71ca08e47146f836a205e90d">&#9670;&nbsp;</a></span>EGO_FORCE_WEAPON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_FORCE_WEAPON&#160;&#160;&#160;71</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a46f0da14411b8b13c653ac9e3ca81303"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46f0da14411b8b13c653ac9e3ca81303">&#9670;&nbsp;</a></span>EGO_FREE_ACTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_FREE_ACTION&#160;&#160;&#160;48</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a54fb0c562931893bddc44534f4b53038"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54fb0c562931893bddc44534f4b53038">&#9670;&nbsp;</a></span>EGO_FROST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_FROST&#160;&#160;&#160;123</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af22f542a45a3acb3e0f6b8493b58e2c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af22f542a45a3acb3e0f6b8493b58e2c6">&#9670;&nbsp;</a></span>EGO_H_DEMON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_H_DEMON&#160;&#160;&#160;26</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8973b338885cd2d62067fbdcf0f4ede6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8973b338885cd2d62067fbdcf0f4ede6">&#9670;&nbsp;</a></span>EGO_H_PROTECTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_H_PROTECTION&#160;&#160;&#160;25</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a43cf4a2a64710f41e6caea381816213d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43cf4a2a64710f41e6caea381816213d">&#9670;&nbsp;</a></span>EGO_HA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_HA&#160;&#160;&#160;64</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a438a4624eb3d291336d6687284b5292c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a438a4624eb3d291336d6687284b5292c">&#9670;&nbsp;</a></span>EGO_HURT_ANIMAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_HURT_ANIMAL&#160;&#160;&#160;112</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a64b993f98f6d5bf5bf5272a6f71fdecb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64b993f98f6d5bf5bf5272a6f71fdecb">&#9670;&nbsp;</a></span>EGO_HURT_DRAGON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_HURT_DRAGON&#160;&#160;&#160;119</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acc8f4fead9b1a3448c7647c73a7d55cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc8f4fead9b1a3448c7647c73a7d55cd">&#9670;&nbsp;</a></span>EGO_HURT_EVIL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_HURT_EVIL&#160;&#160;&#160;113</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab9a21bcbc30b37784df298ef8ee970e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9a21bcbc30b37784df298ef8ee970e1">&#9670;&nbsp;</a></span>EGO_INFRAVISION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_INFRAVISION&#160;&#160;&#160;31</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af824299640c19e6987bf2f0ae487b1b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af824299640c19e6987bf2f0ae487b1b8">&#9670;&nbsp;</a></span>EGO_IRRITATION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_IRRITATION&#160;&#160;&#160;46</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac9589cf689e934c5391f44f446240d67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9589cf689e934c5391f44f446240d67">&#9670;&nbsp;</a></span>EGO_JUMP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_JUMP&#160;&#160;&#160;60</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a9dc801dae5147199ae50122384050e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a9dc801dae5147199ae50122384050e">&#9670;&nbsp;</a></span>EGO_KILL_ANIMAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_KILL_ANIMAL&#160;&#160;&#160;88</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4855b6cf3753255982e6706da1198fd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4855b6cf3753255982e6706da1198fd1">&#9670;&nbsp;</a></span>EGO_KILL_DEMON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_KILL_DEMON&#160;&#160;&#160;91</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee8cc184f08285c708feb20a442e2cb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee8cc184f08285c708feb20a442e2cb8">&#9670;&nbsp;</a></span>EGO_KILL_DRAGON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_KILL_DRAGON&#160;&#160;&#160;95</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5ec1f6e7dfcd3aa22a534a6ea4259bdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ec1f6e7dfcd3aa22a534a6ea4259bdf">&#9670;&nbsp;</a></span>EGO_KILL_EVIL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_KILL_EVIL&#160;&#160;&#160;89</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4295c738a533b39a05b6a86184a84b13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4295c738a533b39a05b6a86184a84b13">&#9670;&nbsp;</a></span>EGO_KILL_GIANT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_KILL_GIANT&#160;&#160;&#160;94</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad17b8783fbe0fd46b733d71ca7d71f63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad17b8783fbe0fd46b733d71ca7d71f63">&#9670;&nbsp;</a></span>EGO_KILL_HUMAN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_KILL_HUMAN&#160;&#160;&#160;103</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a34d34b8b1a4f1e131519423065e579db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34d34b8b1a4f1e131519423065e579db">&#9670;&nbsp;</a></span>EGO_KILL_ORC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_KILL_ORC&#160;&#160;&#160;92</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a31d704d16c1b65111088478df3b7a5a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31d704d16c1b65111088478df3b7a5a8">&#9670;&nbsp;</a></span>EGO_KILL_TROLL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_KILL_TROLL&#160;&#160;&#160;93</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3d773ec429271413a184a83523c9df92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d773ec429271413a184a83523c9df92">&#9670;&nbsp;</a></span>EGO_KILL_UNDEAD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_KILL_UNDEAD&#160;&#160;&#160;90</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a16e546d988f9308aabc37c7cfb9c1086"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16e546d988f9308aabc37c7cfb9c1086">&#9670;&nbsp;</a></span>EGO_LIGHTNING_BOLT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_LIGHTNING_BOLT&#160;&#160;&#160;121</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aea349ae650c0621634f784592ad93402"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea349ae650c0621634f784592ad93402">&#9670;&nbsp;</a></span>EGO_LITE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_LITE&#160;&#160;&#160;32</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a98eef8b002c3418ea7e38b4c4f80dba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98eef8b002c3418ea7e38b4c4f80dba0">&#9670;&nbsp;</a></span>EGO_LITE_AURA_FIRE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_LITE_AURA_FIRE&#160;&#160;&#160;142</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a97e0acd176c8c71f82e2742d3be4eef6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97e0acd176c8c71f82e2742d3be4eef6">&#9670;&nbsp;</a></span>EGO_LITE_DARKNESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_LITE_DARKNESS&#160;&#160;&#160;145</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9344221ff2b04e40cb9274c5cef29719"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9344221ff2b04e40cb9274c5cef29719">&#9670;&nbsp;</a></span>EGO_LITE_EYE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_LITE_EYE&#160;&#160;&#160;146</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a09557b1e58017a6e312a5892581281aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09557b1e58017a6e312a5892581281aa">&#9670;&nbsp;</a></span>EGO_LITE_ILLUMINATION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_LITE_ILLUMINATION&#160;&#160;&#160;141</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8953032cf55f04c214bc1abe1f3d5fb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8953032cf55f04c214bc1abe1f3d5fb0">&#9670;&nbsp;</a></span>EGO_LITE_INFRA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_LITE_INFRA&#160;&#160;&#160;143</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adbb4c541b72c775fb935d4cbd2845438"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbb4c541b72c775fb935d4cbd2845438">&#9670;&nbsp;</a></span>EGO_LITE_LONG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_LITE_LONG&#160;&#160;&#160;144</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a30531d324ffd59c4bf609da02ca8a775"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30531d324ffd59c4bf609da02ca8a775">&#9670;&nbsp;</a></span>EGO_LITE_SHINE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_LITE_SHINE&#160;&#160;&#160;140</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a91300b876be5269e1fc5ff8ebd8d7079"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91300b876be5269e1fc5ff8ebd8d7079">&#9670;&nbsp;</a></span>EGO_LORDLINESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_LORDLINESS&#160;&#160;&#160;29</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0070bd6f4044dffcf16ea4fb4b98ccba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0070bd6f4044dffcf16ea4fb4b98ccba">&#9670;&nbsp;</a></span>EGO_MAGI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_MAGI&#160;&#160;&#160;27</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae7212fab40d4b3ca9ed3ed385c639181"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7212fab40d4b3ca9ed3ed385c639181">&#9670;&nbsp;</a></span>EGO_MAGIC_MASTERY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_MAGIC_MASTERY&#160;&#160;&#160;53</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aff43a2556629dc550f59507032138aa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff43a2556629dc550f59507032138aa5">&#9670;&nbsp;</a></span>EGO_MIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_MIGHT&#160;&#160;&#160;28</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9317cd81eba3e42957d291b14c5ce6f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9317cd81eba3e42957d291b14c5ce6f8">&#9670;&nbsp;</a></span>EGO_MORGUL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_MORGUL&#160;&#160;&#160;102</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a275e25846e8f741b5ed3d5b7bcdd56f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a275e25846e8f741b5ed3d5b7bcdd56f8">&#9670;&nbsp;</a></span>EGO_MOTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_MOTION&#160;&#160;&#160;58</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a516b5325dfbe825b5a7fbb79fa98932e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a516b5325dfbe825b5a7fbb79fa98932e">&#9670;&nbsp;</a></span>EGO_NAZGUL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_NAZGUL&#160;&#160;&#160;240</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0f0d8572a9a36c9a25151807b7631f68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f0d8572a9a36c9a25151807b7631f68">&#9670;&nbsp;</a></span>EGO_NIGHT_DAY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_NIGHT_DAY&#160;&#160;&#160;22</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae16d34602a60666d9aa7167886295005"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae16d34602a60666d9aa7167886295005">&#9670;&nbsp;</a></span>EGO_NOISE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_NOISE&#160;&#160;&#160;61</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18f9d787141f4a24a4340f50734b6703"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18f9d787141f4a24a4340f50734b6703">&#9670;&nbsp;</a></span>EGO_OLOG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_OLOG&#160;&#160;&#160;7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aba87c128b4ec0f8d8d731e0e86c61f54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba87c128b4ec0f8d8d731e0e86c61f54">&#9670;&nbsp;</a></span>EGO_PATTERN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_PATTERN&#160;&#160;&#160;99</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2a6092e1ebe4716127140612b4884064"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a6092e1ebe4716127140612b4884064">&#9670;&nbsp;</a></span>EGO_PERMANENCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_PERMANENCE&#160;&#160;&#160;11</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb3e743e6eb4179749b013d028189d54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb3e743e6eb4179749b013d028189d54">&#9670;&nbsp;</a></span>EGO_POWER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_POWER&#160;&#160;&#160;51</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a771364d1d956eeec9849642f51a3c6eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a771364d1d956eeec9849642f51a3c6eb">&#9670;&nbsp;</a></span>EGO_PRISM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_PRISM&#160;&#160;&#160;97</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa34d11417ef4e679cbc7de0cd679f223"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa34d11417ef4e679cbc7de0cd679f223">&#9670;&nbsp;</a></span>EGO_PROTECTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_PROTECTION&#160;&#160;&#160;40</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45d164f987b13c886879e9bcde43f452"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45d164f987b13c886879e9bcde43f452">&#9670;&nbsp;</a></span>EGO_QUIET</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_QUIET&#160;&#160;&#160;57</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76176f6673f66f76b9654b9910d10bd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76176f6673f66f76b9654b9910d10bd1">&#9670;&nbsp;</a></span>EGO_REFLECTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_REFLECTION&#160;&#160;&#160;21</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2a926e96bd5d0dcbc6d3b1759a0ffbb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a926e96bd5d0dcbc6d3b1759a0ffbb5">&#9670;&nbsp;</a></span>EGO_REGENERATION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_REGENERATION&#160;&#160;&#160;34</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7a10886d1ae3ac1f714e330a47e73ead"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a10886d1ae3ac1f714e330a47e73ead">&#9670;&nbsp;</a></span>EGO_RESISTANCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RESISTANCE&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1c01bc4ae39cea497e560ebea42327da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c01bc4ae39cea497e560ebea42327da">&#9670;&nbsp;</a></span>EGO_RING_ACID_BALL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_ACID_BALL&#160;&#160;&#160;162</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1ed07eea5a7bc39bc13bb5ff88dce957"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ed07eea5a7bc39bc13bb5ff88dce957">&#9670;&nbsp;</a></span>EGO_RING_ACID_BOLT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_ACID_BOLT&#160;&#160;&#160;157</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac048515918a6f6d60c6ecfb858c6bd16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac048515918a6f6d60c6ecfb858c6bd16">&#9670;&nbsp;</a></span>EGO_RING_AGGRAVATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_AGGRAVATE&#160;&#160;&#160;183</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a193b824c811fc2ae01914374ab532967"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a193b824c811fc2ae01914374ab532967">&#9670;&nbsp;</a></span>EGO_RING_ALBINO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_ALBINO&#160;&#160;&#160;187</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3003be2aa646585d297a5087fe5abd76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3003be2aa646585d297a5087fe5abd76">&#9670;&nbsp;</a></span>EGO_RING_BERSERKER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_BERSERKER&#160;&#160;&#160;167</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a07fb2295a656af31a56790ecc538b55f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07fb2295a656af31a56790ecc538b55f">&#9670;&nbsp;</a></span>EGO_RING_COLD_BALL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_COLD_BALL&#160;&#160;&#160;160</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4c8afe2d0531016a48288a060f630f63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c8afe2d0531016a48288a060f630f63">&#9670;&nbsp;</a></span>EGO_RING_COLD_BOLT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_COLD_BOLT&#160;&#160;&#160;155</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa3f43cf90178623ad39cec499c472d58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3f43cf90178623ad39cec499c472d58">&#9670;&nbsp;</a></span>EGO_RING_D_SPEED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_D_SPEED&#160;&#160;&#160;166</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad54adc34cdbc1972407aba697285a900"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad54adc34cdbc1972407aba697285a900">&#9670;&nbsp;</a></span>EGO_RING_DRAGON_C</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_DRAGON_C&#160;&#160;&#160;165</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8ff5037b331803475f502319a736d51c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ff5037b331803475f502319a736d51c">&#9670;&nbsp;</a></span>EGO_RING_DRAGON_F</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_DRAGON_F&#160;&#160;&#160;164</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a206bc9abf7a5fcffc62989bde2e1dd0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a206bc9abf7a5fcffc62989bde2e1dd0f">&#9670;&nbsp;</a></span>EGO_RING_DRAIN_EXP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_DRAIN_EXP&#160;&#160;&#160;181</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a522d71913c4bb398fdb5fac524964410"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a522d71913c4bb398fdb5fac524964410">&#9670;&nbsp;</a></span>EGO_RING_ELEC_BALL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_ELEC_BALL&#160;&#160;&#160;161</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac1c4c2f0bc94879dae8d0ea5c28b187f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1c4c2f0bc94879dae8d0ea5c28b187f">&#9670;&nbsp;</a></span>EGO_RING_ELEC_BOLT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_ELEC_BOLT&#160;&#160;&#160;156</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2820fde65a52db2595eb889467076f87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2820fde65a52db2595eb889467076f87">&#9670;&nbsp;</a></span>EGO_RING_FIRE_BALL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_FIRE_BALL&#160;&#160;&#160;159</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b5c71b8aba0ca1eadf32c204530db04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b5c71b8aba0ca1eadf32c204530db04">&#9670;&nbsp;</a></span>EGO_RING_FIRE_BOLT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_FIRE_BOLT&#160;&#160;&#160;154</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a08d2f79029c9f55e8a493860559ed84e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08d2f79029c9f55e8a493860559ed84e">&#9670;&nbsp;</a></span>EGO_RING_HERO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_HERO&#160;&#160;&#160;150</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adb95751942c01669585e056e7cfdefa3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb95751942c01669585e056e7cfdefa3">&#9670;&nbsp;</a></span>EGO_RING_HUNTER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_HUNTER&#160;&#160;&#160;168</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a87dbe801b1629710d5bf94c5e79bbee3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87dbe801b1629710d5bf94c5e79bbee3">&#9670;&nbsp;</a></span>EGO_RING_LITE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_LITE&#160;&#160;&#160;171</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6f1466a500b5ac8d59ae7a77586661f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f1466a500b5ac8d59ae7a77586661f1">&#9670;&nbsp;</a></span>EGO_RING_M_DETECT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_M_DETECT&#160;&#160;&#160;172</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a812572554f8dc2b11b310516617007b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a812572554f8dc2b11b310516617007b6">&#9670;&nbsp;</a></span>EGO_RING_MAGIC_MIS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_MAGIC_MIS&#160;&#160;&#160;153</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a00622015f5a41b61874c32503fbd2e4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00622015f5a41b61874c32503fbd2e4b">&#9670;&nbsp;</a></span>EGO_RING_MANA_BALL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_MANA_BALL&#160;&#160;&#160;163</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac783cc2d3e0acc97d7611d8baf8d93c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac783cc2d3e0acc97d7611d8baf8d93c6">&#9670;&nbsp;</a></span>EGO_RING_MANA_BOLT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_MANA_BOLT&#160;&#160;&#160;158</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42f27ee83fc038671c65b8eefc221568"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42f27ee83fc038671c65b8eefc221568">&#9670;&nbsp;</a></span>EGO_RING_NO_MELEE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_NO_MELEE&#160;&#160;&#160;182</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a181d159b4ce8f1c5461dbb0a0c58e747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a181d159b4ce8f1c5461dbb0a0c58e747">&#9670;&nbsp;</a></span>EGO_RING_REGEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_REGEN&#160;&#160;&#160;170</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6c1a1f7d6ee354fae45ea981829dbbcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c1a1f7d6ee354fae45ea981829dbbcf">&#9670;&nbsp;</a></span>EGO_RING_RES_DARK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_RES_DARK&#160;&#160;&#160;178</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a32073ccb9349441008c56c67d94ae2de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32073ccb9349441008c56c67d94ae2de">&#9670;&nbsp;</a></span>EGO_RING_RES_LITE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_RES_LITE&#160;&#160;&#160;177</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3a846820af573782eea18d3c47f16fa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a846820af573782eea18d3c47f16fa5">&#9670;&nbsp;</a></span>EGO_RING_RES_TIME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_RES_TIME&#160;&#160;&#160;185</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad39da08f72d9b9c0cefe5b417cc13c59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad39da08f72d9b9c0cefe5b417cc13c59">&#9670;&nbsp;</a></span>EGO_RING_SLAY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_SLAY&#160;&#160;&#160;151</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a567d8f748457048f2a36f0e4a3d936db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a567d8f748457048f2a36f0e4a3d936db">&#9670;&nbsp;</a></span>EGO_RING_STEALTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_STEALTH&#160;&#160;&#160;173</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a86a594efc6c866a772c9363131e1db4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86a594efc6c866a772c9363131e1db4f">&#9670;&nbsp;</a></span>EGO_RING_SUPER_AC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_SUPER_AC&#160;&#160;&#160;152</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1125f2bab315359d8ef469302c5f0fda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1125f2bab315359d8ef469302c5f0fda">&#9670;&nbsp;</a></span>EGO_RING_TELE_AWAY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_TELE_AWAY&#160;&#160;&#160;174</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ace3295019f55e3add151b6ba8b5b7048"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace3295019f55e3add151b6ba8b5b7048">&#9670;&nbsp;</a></span>EGO_RING_TELEPORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_TELEPORT&#160;&#160;&#160;186</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad717b618477b03bc1132e83a365a41ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad717b618477b03bc1132e83a365a41ab">&#9670;&nbsp;</a></span>EGO_RING_THROW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_THROW&#160;&#160;&#160;169</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1976c22173a40f0c9c44b9544c8e43e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1976c22173a40f0c9c44b9544c8e43e0">&#9670;&nbsp;</a></span>EGO_RING_TO_D</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_TO_D&#160;&#160;&#160;176</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23adada3a680e5b11fae787589104833"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23adada3a680e5b11fae787589104833">&#9670;&nbsp;</a></span>EGO_RING_TO_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_TO_H&#160;&#160;&#160;175</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8d55b7eb06eda6a448d66203bc91e715"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d55b7eb06eda6a448d66203bc91e715">&#9670;&nbsp;</a></span>EGO_RING_TRUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_TRUE&#160;&#160;&#160;180</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a29a065b18e9239742ff4ae49bed87962"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29a065b18e9239742ff4ae49bed87962">&#9670;&nbsp;</a></span>EGO_RING_TY_CURSE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_TY_CURSE&#160;&#160;&#160;184</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a47609626239d5410bbe987028518d9bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47609626239d5410bbe987028518d9bd">&#9670;&nbsp;</a></span>EGO_RING_WIZARD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_RING_WIZARD&#160;&#160;&#160;179</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a65ce89e46f21e0185ad0f18d0eeaed1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65ce89e46f21e0185ad0f18d0eeaed1a">&#9670;&nbsp;</a></span>EGO_S_DWARVEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_S_DWARVEN&#160;&#160;&#160;239</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a466b2bdb030b049f0d4e15a48d7203d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a466b2bdb030b049f0d4e15a48d7203d3">&#9670;&nbsp;</a></span>EGO_S_PROTECTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_S_PROTECTION&#160;&#160;&#160;238</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a86a3c6ffbbdb19cc25fd09f1f5334c23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86a3c6ffbbdb19cc25fd09f1f5334c23">&#9670;&nbsp;</a></span>EGO_SEEING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_SEEING&#160;&#160;&#160;30</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a93b71307000e3ab2f0a577abf347f4ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93b71307000e3ab2f0a577abf347f4ef">&#9670;&nbsp;</a></span>EGO_SHARPNESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_SHARPNESS&#160;&#160;&#160;78</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3a209cd7a87a6a551304c4314378dc0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a209cd7a87a6a551304c4314378dc0e">&#9670;&nbsp;</a></span>EGO_SHATTERED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_SHATTERED&#160;&#160;&#160;126</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f9d532744bf46d0e38062b2c39f47d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f9d532744bf46d0e38062b2c39f47d3">&#9670;&nbsp;</a></span>EGO_SICKLINESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_SICKLINESS&#160;&#160;&#160;39</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aac570cd854f431ae4898b49a728e6f93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac570cd854f431ae4898b49a728e6f93">&#9670;&nbsp;</a></span>EGO_SLAYING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_SLAYING&#160;&#160;&#160;49</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab5daf67d8035ca3454a36712e79e0825"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5daf67d8035ca3454a36712e79e0825">&#9670;&nbsp;</a></span>EGO_SLAYING_BOLT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_SLAYING_BOLT&#160;&#160;&#160;120</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a80557d8ee5288d9cfe3e5fd17d779989"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80557d8ee5288d9cfe3e5fd17d779989">&#9670;&nbsp;</a></span>EGO_SLAYING_WEAPON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_SLAYING_WEAPON&#160;&#160;&#160;70</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af050e995104581f19c8c78ae63cf19fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af050e995104581f19c8c78ae63cf19fd">&#9670;&nbsp;</a></span>EGO_SLOW_DESCENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_SLOW_DESCENT&#160;&#160;&#160;56</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afbbc0969e84bae671e690d674109735c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbbc0969e84bae671e690d674109735c">&#9670;&nbsp;</a></span>EGO_SLOWNESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_SLOWNESS&#160;&#160;&#160;62</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a07c740e1176367b9076ce87f22f25713"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07c740e1176367b9076ce87f22f25713">&#9670;&nbsp;</a></span>EGO_SPEED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_SPEED&#160;&#160;&#160;59</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a48b3883fd808ca092d9fbae20075e897"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48b3883fd808ca092d9fbae20075e897">&#9670;&nbsp;</a></span>EGO_STEALTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_STEALTH&#160;&#160;&#160;41</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7aee36b31f98c831122aa6645405ff9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7aee36b31f98c831122aa6645405ff9f">&#9670;&nbsp;</a></span>EGO_TELEPATHY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_TELEPATHY&#160;&#160;&#160;33</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3c53bc6028345cba1fcac768699762b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c53bc6028345cba1fcac768699762b7">&#9670;&nbsp;</a></span>EGO_TELEPORTATION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_TELEPORTATION&#160;&#160;&#160;35</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a166b43e9c936243e8e28e0bb5eb560f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a166b43e9c936243e8e28e0bb5eb560f8">&#9670;&nbsp;</a></span>EGO_TRUMP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_TRUMP&#160;&#160;&#160;98</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae9cdba289a6ec68386e6d59d271890d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9cdba289a6ec68386e6d59d271890d1">&#9670;&nbsp;</a></span>EGO_URUKISH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_URUKISH&#160;&#160;&#160;13</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a869650c34a3756b1814242a1deb11707"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a869650c34a3756b1814242a1deb11707">&#9670;&nbsp;</a></span>EGO_VAMPIRIC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_VAMPIRIC&#160;&#160;&#160;96</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a013adf6c21c2fc8cb26fbc1caab9116c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a013adf6c21c2fc8cb26fbc1caab9116c">&#9670;&nbsp;</a></span>EGO_VELOCITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_VELOCITY&#160;&#160;&#160;105</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a906e5810e7d388034013a71a843ca2f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a906e5810e7d388034013a71a843ca2f3">&#9670;&nbsp;</a></span>EGO_VULNERABILITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_VULNERABILITY&#160;&#160;&#160;45</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a055239970da71a737337b93f58add984"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a055239970da71a737337b93f58add984">&#9670;&nbsp;</a></span>EGO_WEAKNESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_WEAKNESS&#160;&#160;&#160;54</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d44363aa9da6af5f95c1dce21feb7f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d44363aa9da6af5f95c1dce21feb7f7">&#9670;&nbsp;</a></span>EGO_WEIRD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_WEIRD&#160;&#160;&#160;87</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa575c073532962f6c7d1c198b8e17770"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa575c073532962f6c7d1c198b8e17770">&#9670;&nbsp;</a></span>EGO_WEST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_WEST&#160;&#160;&#160;68</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad9fcca4787d73f41ccb7b61acfcae309"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9fcca4787d73f41ccb7b61acfcae309">&#9670;&nbsp;</a></span>EGO_WOUNDING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_WOUNDING&#160;&#160;&#160;124</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a993e9bcb6e730cf03279f005d0c396f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a993e9bcb6e730cf03279f005d0c396f0">&#9670;&nbsp;</a></span>EGO_YOIYAMI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EGO_YOIYAMI&#160;&#160;&#160;12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ae52b9f92a7e5067ea20af2fbdc181485"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae52b9f92a7e5067ea20af2fbdc181485">&#9670;&nbsp;</a></span>apply_ego()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void apply_ego </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a>&#160;</td>
+          <td class="paramname"><em>lev</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-ego_8h_ae52b9f92a7e5067ea20af2fbdc181485_cgraph.png" border="0" usemap="#aobject-ego_8h_ae52b9f92a7e5067ea20af2fbdc181485_cgraph" alt=""/></div>
+<map name="aobject-ego_8h_ae52b9f92a7e5067ea20af2fbdc181485_cgraph" id="aobject-ego_8h_ae52b9f92a7e5067ea20af2fbdc181485_cgraph">
+<area shape="rect" title=" " alt="" coords="5,259,87,285"/>
+<area shape="rect" href="object-ego_8cpp.html#a9eefc5f11e04204df106d65490300efd" title=" " alt="" coords="153,19,287,61"/>
+<area shape="rect" href="object-ego_8cpp.html#a49336248c9f29791999fea5815dbe0eb" title=" " alt="" coords="159,107,281,133"/>
+<area shape="rect" href="object-ego_8cpp.html#ab380c73138c0ed4ac0741bad2ae5334b" title=" " alt="" coords="135,233,305,260"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="160,284,280,311"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="160,335,280,361"/>
+<area shape="rect" href="object-ego_8cpp.html#afea43c7036e61e39e7750e63465d335c" title="0 および負数に対応した randint1()" alt="" coords="163,385,277,412"/>
+<area shape="rect" href="class_flag_group.html#a021f4c66b2af9456aa41200d81efee90" title="指定したフラグを指定した値にセットする" alt="" coords="389,5,497,32"/>
+<area shape="rect" href="object-curse_8cpp.html#a749ffeeeaa9633e0b6300253e4bc9730" title="アイテムに付加される可能性のある呪いを指定する。" alt="" coords="404,56,483,83"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="388,107,499,133"/>
+<area shape="rect" href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537" title="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour" alt="" coords="591,81,713,108"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a3c30f6f6fb14bece864e482c0080485c" title="オブジェクトが武器として装備できるかどうかを返す / Check if an object is weapon (including bows and ammo)" alt="" coords="589,31,715,57"/>
+<area shape="rect" href="object-boost_8cpp.html#aefdde2a4a73afd110e04009bc5899739" title="対象のオブジェクトに能力を一つ付加する。/ Choose one random ability" alt="" coords="401,208,485,235"/>
+<area shape="rect" href="object-boost_8cpp.html#ac8f042308a449c1aef0075a03bf1fb97" title="対象のオブジェクトにドラゴン装備向け元素耐性を一つ付加する。/ Choose one random element or poison resistance" alt="" coords="353,411,533,437"/>
+<area shape="rect" href="object-boost_8cpp.html#a8479e0ae532aac951da559536560aa68" title="対象のオブジェクトに元素耐性を一つ付加する。/ Choose one random element resistance" alt="" coords="585,411,719,437"/>
+<area shape="rect" href="object-boost_8cpp.html#a8f91efd8221f822642748a831d76cde8" title="対象のオブジェクトにランダムな上位耐性を一つ付加する。/ Choose one random high resistance" alt="" coords="581,335,723,361"/>
+<area shape="rect" href="object-boost_8cpp.html#a2d7dbf2cf7cd55f9c36f34b747293485" title="対象のオブジェクトに王者の指輪向けの上位耐性を一つ付加する。/ Choose one random high resistance" alt="" coords="354,157,533,184"/>
+<area shape="rect" href="object-boost_8cpp.html#a23afe392286fe299d23316b2f63949ff" title="対象のオブジェクトに耐性を一つ付加する。/ Choose one random resistance" alt="" coords="388,360,499,387"/>
+<area shape="rect" href="object-boost_8cpp.html#ae9691f57156662894cef26bbe4d0058b" title="対象のオブジェクトにランダムな能力維持を一つ付加する。/ Choose one random sustain" alt="" coords="397,259,489,285"/>
+<area shape="rect" href="object-boost_8cpp.html#a10830095266d73c5d3c07cb44576cf1e" title="対象のオブジェクトに弱いESPを一つ付加する。/ Choose one lower rank esp" alt="" coords="603,208,701,235"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-ego_8h_ae52b9f92a7e5067ea20af2fbdc181485_icgraph.png" border="0" usemap="#aobject-ego_8h_ae52b9f92a7e5067ea20af2fbdc181485_icgraph" alt=""/></div>
+<map name="aobject-ego_8h_ae52b9f92a7e5067ea20af2fbdc181485_icgraph" id="aobject-ego_8h_ae52b9f92a7e5067ea20af2fbdc181485_icgraph">
+<area shape="rect" title=" " alt="" coords="715,335,796,361"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="572,360,667,387"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#a3bd34825cd5d9e92c7474a31576ac7c0" title="願ったが消えてしまった場合のメッセージ" alt="" coords="379,5,498,32"/>
+<area shape="rect" href="spells-object_8cpp.html#ab57eadbdf0c4a98fa5ed43800743e2e9" title="誰得ドロップを行う。" alt="" coords="393,56,484,83"/>
+<area shape="rect" href="mind-archer_8cpp.html#a5c7ac014262f5236c69ea18c406fee25" title="「弾/矢の製造」処理 / do_cmd_cast calls this function if the player&#39;s class is &#39;archer&#39;." alt="" coords="388,107,489,133"/>
+<area shape="rect" href="inventory-initializer_8cpp.html#ae23e47e554ecbcd0152fb87ba8638f88" title=" " alt="" coords="371,157,507,184"/>
+<area shape="rect" href="monster-death_8cpp.html#aea0de54fa5a454fe0ffe114223355316" title=" " alt="" coords="392,259,485,285"/>
+<area shape="rect" href="monster-death_8cpp.html#a6ad70c6340e25c826a90a7d1c0804175" title=" " alt="" coords="392,309,485,336"/>
+<area shape="rect" href="bounty_8cpp.html#a6aa3c9347a136a6ff64e84d0dd306057" title="賞金首の引き換え処理 / Get prize" alt="" coords="382,360,495,387"/>
+<area shape="rect" href="floor-object_8cpp.html#adbba66fa3bc17cfd4ebeff0ee923a304" title="生成階に応じたベースアイテムの生成を行う。 Attempt to make an object (normal or good/great)" alt="" coords="391,411,487,437"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a9ae29bdeb891416b7ebcc0928120f940" title=" " alt="" coords="369,461,508,488"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#aeab5aaf4660ee8ea5c91b6c49d3c1a6a" title=" " alt="" coords="370,512,507,539"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a86ca898ccdc86d14979a1311bb8878d0" title=" " alt="" coords="378,563,499,589"/>
+<area shape="rect" href="monster-death_8cpp.html#a630cf8a7d0a3e31b96992334c0220b24" title=" " alt="" coords="353,613,524,640"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#a3ded96400ca064dccf4124b59f3b0588" title=" " alt="" coords="390,664,487,691"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="391,715,486,741"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a3a8736b020ffd037a5337cdebed86b88" title="任意のベースアイテム生成のメインルーチン / Wizard routine for creating objects &#45;RAK&#45;" alt="" coords="180,765,296,792"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="385,208,493,235"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="201,56,275,83"/>
+<area shape="rect" href="racial-switcher_8cpp.html#ac21c6b6a9eae71ce476478232b11f8e0" title="レイシャルと突然変異の技能処理 / Racial powers (and mutations)" alt="" coords="171,107,305,149"/>
+<area shape="rect" href="inventory-initializer_8cpp.html#a4e9f0535c619eb1650e5ef1123051b40" title="種族/職業/性格などに基づき初期所持アイテムを設定するメインセット関数。 / Init players with some belongings" alt="" coords="192,173,284,200"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="5,173,123,200"/>
+<area shape="rect" href="monster-death_8cpp.html#a9c647c2a727aa1c903b9dc31b65f63e6" title="モンスターが死亡した時の処理 / Handle the &quot;death&quot; of a monster." alt="" coords="184,309,292,336"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="172,715,304,741"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab2d834c8e6ce809dfce2c3a3fef269aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2d834c8e6ce809dfce2c3a3fef269aa">&#9670;&nbsp;</a></span>get_random_ego()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> get_random_ego </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td>
+          <td class="paramname"><em>slot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>good</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アイテムのエゴをレア度の重みに合わせてランダムに選択する Choose random ego type </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td>取得したいエゴの装備部位 </td></tr>
+    <tr><td class="paramname">good</td><td>TRUEならば通常のエゴ、FALSEならば呪いのエゴが選択対象となる。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>選択されたエゴ情報のID、万一選択できなかった場合は0が返る。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-ego_8h_ab2d834c8e6ce809dfce2c3a3fef269aa_cgraph.png" border="0" usemap="#aobject-ego_8h_ab2d834c8e6ce809dfce2c3a3fef269aa_cgraph" alt=""/></div>
+<map name="aobject-ego_8h_ab2d834c8e6ce809dfce2c3a3fef269aa_cgraph" id="aobject-ego_8h_ab2d834c8e6ce809dfce2c3a3fef269aa_cgraph">
+<area shape="rect" title="アイテムのエゴをレア度の重みに合わせてランダムに選択する Choose random ego type" alt="" coords="5,61,124,88"/>
+<area shape="rect" href="class_probability_table.html#a9a26ed4b275f0764cadd5497b9dcb0fa" title="確率テーブルの項目が空かどうかを調べる" alt="" coords="413,11,571,37"/>
+<area shape="rect" href="class_probability_table.html#a8ca61661e88333610e5763cf9d69a720" title="確率テーブルに項目を登録する" alt="" coords="172,32,355,59"/>
+<area shape="rect" href="class_flag_group.html#a57a928e50a2473024e69c349bcd62525" title="入力イテレータで指定した範囲のリストに含まれるフラグのいずれかがONかどうかを調べる" alt="" coords="185,149,341,176"/>
+<area shape="rect" href="class_probability_table.html#a70b1f2ebe9b67f5aa8aac2f86178ffc0" title="確率テーブルから項目をランダムに1つ選択する" alt="" coords="190,83,337,125"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="437,149,547,176"/>
+<area shape="rect" href="class_probability_table.html#a365bea78aa7c197450cf845e31e93927" title="現在の確率テーブルのすべての項目の選択確率の合計を取得する" alt="" coords="403,91,581,117"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-ego_8h_ab2d834c8e6ce809dfce2c3a3fef269aa_icgraph.png" border="0" usemap="#aobject-ego_8h_ab2d834c8e6ce809dfce2c3a3fef269aa_icgraph" alt=""/></div>
+<map name="aobject-ego_8h_ab2d834c8e6ce809dfce2c3a3fef269aa_icgraph" id="aobject-ego_8h_ab2d834c8e6ce809dfce2c3a3fef269aa_icgraph">
+<area shape="rect" title="アイテムのエゴをレア度の重みに合わせてランダムに選択する Choose random ego type" alt="" coords="561,385,680,412"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="373,335,507,361"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="371,385,509,412"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="367,436,513,463"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="224,385,319,412"/>
+<area shape="rect" href="spells-object_8cpp.html#ab57eadbdf0c4a98fa5ed43800743e2e9" title="誰得ドロップを行う。" alt="" coords="45,5,136,32"/>
+<area shape="rect" href="mind-archer_8cpp.html#a5c7ac014262f5236c69ea18c406fee25" title="「弾/矢の製造」処理 / do_cmd_cast calls this function if the player&#39;s class is &#39;archer&#39;." alt="" coords="40,56,141,83"/>
+<area shape="rect" href="inventory-initializer_8cpp.html#ae23e47e554ecbcd0152fb87ba8638f88" title=" " alt="" coords="23,107,159,133"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#a3bd34825cd5d9e92c7474a31576ac7c0" title="願ったが消えてしまった場合のメッセージ" alt="" coords="31,157,150,184"/>
+<area shape="rect" href="monster-death_8cpp.html#aea0de54fa5a454fe0ffe114223355316" title=" " alt="" coords="44,208,137,235"/>
+<area shape="rect" href="monster-death_8cpp.html#a6ad70c6340e25c826a90a7d1c0804175" title=" " alt="" coords="44,259,137,285"/>
+<area shape="rect" href="bounty_8cpp.html#a6aa3c9347a136a6ff64e84d0dd306057" title="賞金首の引き換え処理 / Get prize" alt="" coords="34,309,147,336"/>
+<area shape="rect" href="floor-object_8cpp.html#adbba66fa3bc17cfd4ebeff0ee923a304" title="生成階に応じたベースアイテムの生成を行う。 Attempt to make an object (normal or good/great)" alt="" coords="43,360,139,387"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a9ae29bdeb891416b7ebcc0928120f940" title=" " alt="" coords="21,411,160,437"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#aeab5aaf4660ee8ea5c91b6c49d3c1a6a" title=" " alt="" coords="22,461,159,488"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a86ca898ccdc86d14979a1311bb8878d0" title=" " alt="" coords="30,512,151,539"/>
+<area shape="rect" href="monster-death_8cpp.html#a630cf8a7d0a3e31b96992334c0220b24" title=" " alt="" coords="5,563,176,589"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#a3ded96400ca064dccf4124b59f3b0588" title=" " alt="" coords="42,613,139,640"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="43,664,138,691"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a3a8736b020ffd037a5337cdebed86b88" title="任意のベースアイテム生成のメインルーチン / Wizard routine for creating objects &#45;RAK&#45;" alt="" coords="33,715,149,741"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="37,765,145,792"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="afed029170e02ee8ab09de96f2f324fc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afed029170e02ee8ab09de96f2f324fc0">&#9670;&nbsp;</a></span>e_info</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structego__item__type.html">ego_item_type</a>&gt; e_info</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>エゴアイテムに関する処理 </p>
+<dl class="section date"><dt>日付</dt><dd>2019/05/02 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>deskull</dd></dl>
+<p>Ego-Item indexes (see "lib/edit/e_info.txt") </p>
+
+</div>
+</div>
+<a id="a4779eca81d87fdf07a8df7a386c365c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4779eca81d87fdf07a8df7a386c365c5">&#9670;&nbsp;</a></span>max_e_idx</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad436c265819d8e3689955f6d5a6c67dc">EGO_IDX</a> max_e_idx</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時55分47秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

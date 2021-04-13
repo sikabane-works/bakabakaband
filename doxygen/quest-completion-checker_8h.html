@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/dungeon/quest-completion-checker.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_55f303817758c0e5b41dc0bbc9cd6c85.html">dungeon</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">quest-completion-checker.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+quest-completion-checker.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="quest-completion-checker_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2dungeon_2quest-completion-checker_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2dungeon_2quest-completion-checker_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2dungeon_2quest-completion-checker_8h">
+<area shape="rect" title=" " alt="" coords="348,5,536,61"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="377,109,507,136"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="31,184,122,211"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="23,348,165,375"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,184,607,211"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,184,245,211"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,184,367,211"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,184,492,211"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,184,807,211"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="943,184,1090,211"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="169,266,291,293"/>
+<area shape="rect" title=" " alt="" coords="386,266,461,293"/>
+<area shape="rect" title=" " alt="" coords="485,266,567,293"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="592,259,743,300"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="767,259,920,300"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="944,259,1089,300"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1114,259,1287,300"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1311,259,1437,300"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1461,266,1580,293"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1604,266,1715,293"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="quest-completion-checker_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2dungeon_2quest-completion-checker_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2dungeon_2quest-completion-checker_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2dungeon_2quest-completion-checker_8hdep">
+<area shape="rect" title=" " alt="" coords="442,5,630,61"/>
+<area shape="rect" href="quest-completion-checker_8cpp.html" title=" " alt="" coords="5,109,205,165"/>
+<area shape="rect" href="monster-status-setter_8cpp.html" title=" " alt="" coords="230,109,418,165"/>
+<area shape="rect" href="monster-death_8cpp.html" title=" " alt="" coords="442,109,630,165"/>
+<area shape="rect" href="monster-runaway_8cpp.html" title=" " alt="" coords="654,109,842,165"/>
+<area shape="rect" href="spells-world_8cpp.html" title=" " alt="" coords="866,109,1054,165"/>
+</map>
+</div>
+</div>
+<p><a href="quest-completion-checker_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:aa3cb01ad99d0ae3d678914dd09879e66"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structmonster__type.html">monster_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="quest-completion-checker_8h.html#aa3cb01ad99d0ae3d678914dd09879e66">monster_type</a></td></tr>
+<tr class="separator:aa3cb01ad99d0ae3d678914dd09879e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a9e42969ac66783fe5b572f6e444072e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="quest-completion-checker_8h.html#a9e42969ac66783fe5b572f6e444072e7">check_quest_completion</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structmonster__type.html">monster_type</a> *m_ptr)</td></tr>
+<tr class="memdesc:a9e42969ac66783fe5b572f6e444072e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">特定の敵を倒した際にクエスト達成処理 / Check for "Quest" completion when a quest monster is killed or charmed.  <a href="quest-completion-checker_8h.html#a9e42969ac66783fe5b572f6e444072e7">[詳解]</a><br /></td></tr>
+<tr class="separator:a9e42969ac66783fe5b572f6e444072e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">型定義詳解</h2>
+<a id="aa3cb01ad99d0ae3d678914dd09879e66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3cb01ad99d0ae3d678914dd09879e66">&#9670;&nbsp;</a></span>monster_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structmonster__type.html">monster_type</a> <a class="el" href="structmonster__type.html">monster_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a9e42969ac66783fe5b572f6e444072e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e42969ac66783fe5b572f6e444072e7">&#9670;&nbsp;</a></span>check_quest_completion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void check_quest_completion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonster__type.html">monster_type</a> *&#160;</td>
+          <td class="paramname"><em>m_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>特定の敵を倒した際にクエスト達成処理 / Check for "Quest" completion when a quest monster is killed or charmed. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">m_ptr</td><td>撃破したモンスターの構造体参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="quest-completion-checker_8h_a9e42969ac66783fe5b572f6e444072e7_cgraph.png" border="0" usemap="#aquest-completion-checker_8h_a9e42969ac66783fe5b572f6e444072e7_cgraph" alt=""/></div>
+<map name="aquest-completion-checker_8h_a9e42969ac66783fe5b572f6e444072e7_cgraph" id="aquest-completion-checker_8h_a9e42969ac66783fe5b572f6e444072e7_cgraph">
+<area shape="rect" title="特定の敵を倒した際にクエスト達成処理 / Check for &quot;Quest&quot; completion when a quest monster is killed or charmed." alt="" coords="5,673,172,699"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="464,90,599,117"/>
+<area shape="rect" href="feature_8cpp.html#acad9118499482c605f583af0ef408f10" title=" " alt="" coords="259,369,361,395"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="693,558,771,585"/>
+<area shape="rect" href="monster-info_8cpp.html#ad051474143ae51acf70bf275b30ff246" title=" " alt="" coords="693,698,771,725"/>
+<area shape="rect" href="quest_8cpp.html#af5f55968be72b94b441f35b7dd1b954f" title="クエストを達成状態にする /" alt="" coords="253,647,367,674"/>
+<area shape="rect" href="quest-completion-checker_8cpp.html#a52425e0cb6b53f22e2fc823a355a3767" title="現在フロアに残っている敵モンスターの数を返す /" alt="" coords="220,749,400,775"/>
+<area shape="rect" href="floor-object_8cpp.html#a62c807ef0af547704f7d1f6b825abbe5" title="生成済のオブジェクトをフロアの所定の位置に落とす。 Let an object fall to the ground at or near a location." alt="" coords="271,217,349,243"/>
+<area shape="rect" href="floor-object_8cpp.html#adbba66fa3bc17cfd4ebeff0ee923a304" title="生成階に応じたベースアイテムの生成を行う。 Attempt to make an object (normal or good/great)" alt="" coords="262,799,358,826"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="265,850,355,877"/>
+<area shape="rect" href="floor-util_8cpp.html#a2704964f2aa08734888dc95c82b138c4" title=" " alt="" coords="279,901,341,927"/>
+<area shape="rect" href="cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="688,343,776,370"/>
+<area shape="rect" href="grid_8cpp.html#aa76190ea626631d68070030818399df5" title=" " alt="" coords="481,394,581,421"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="496,191,567,218"/>
+<area shape="rect" href="grid_8cpp.html#acfe2dde219c27902b1cbd0e7b6d95357" title=" " alt="" coords="492,141,571,167"/>
+<area shape="rect" href="feature_8cpp.html#a4ef7296980be04521b7a339d930af1e8" title=" " alt="" coords="463,445,600,471"/>
+<area shape="rect" href="mind-ninja_8cpp.html#a52ea1929bb465180b42d7321e65512eb" title="超隠密状態をセットする" alt="" coords="472,343,591,370"/>
+<area shape="rect" href="grid_8cpp.html#aba638b114fae87c0f1068113eb8fc8cf" title="指定された座標の照明状態を更新する / Update &quot;local&quot; illumination" alt="" coords="448,495,615,522"/>
+<area shape="rect" href="monster-update_8cpp.html#a2813cd48be3165ceff9b8c77da15da3f" title="モンスターの各情報を更新する / This function updates the monster record of the given monster" alt="" coords="474,546,589,573"/>
+<area shape="rect" href="player-status_8cpp.html#af6be48df20384df551b88a2466d159fb" title=" " alt="" coords="697,90,767,117"/>
+<area shape="rect" href="display-map_8cpp.html#a9be4d479cc04510dbea7b7c114c617f3" title="指定した座標の地形の表示属性を取得する / Extract the attr/char to display at the given (legal) map location" alt="" coords="695,141,769,167"/>
+<area shape="rect" href="main-window-util_8cpp.html#a34b1aa1feae2690664832deba004ef74" title=" " alt="" coords="685,191,779,218"/>
+<area shape="rect" href="screen-util_8cpp.html#a40da48b19968a0521c68cf9d0195b50c" title=" " alt="" coords="677,242,787,269"/>
+<area shape="rect" href="z-term_8cpp.html#a0d418957c1b2ef703fabda3056a96a3a" title=" " alt="" coords="663,293,801,319"/>
+<area shape="rect" href="grid_8cpp.html#ab400c1b998f2aac3e96120a9f4e374dc" title="指定された座標のマスが現在照らされているかを返す。 / Check for &quot;local&quot; illumination" alt="" coords="849,51,1012,78"/>
+<area shape="rect" href="grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="1060,51,1171,78"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="701,431,763,458"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="quest-completion-checker_8h_a9e42969ac66783fe5b572f6e444072e7_icgraph.png" border="0" usemap="#aquest-completion-checker_8h_a9e42969ac66783fe5b572f6e444072e7_icgraph" alt=""/></div>
+<map name="aquest-completion-checker_8h_a9e42969ac66783fe5b572f6e444072e7_icgraph" id="aquest-completion-checker_8h_a9e42969ac66783fe5b572f6e444072e7_icgraph">
+<area shape="rect" title="特定の敵を倒した際にクエスト達成処理 / Check for &quot;Quest&quot; completion when a quest monster is killed or charmed." alt="" coords="579,163,745,189"/>
+<area shape="rect" href="monster-death_8cpp.html#a9c647c2a727aa1c903b9dc31b65f63e6" title="モンスターが死亡した時の処理 / Handle the &quot;death&quot; of a monster." alt="" coords="415,87,523,113"/>
+<area shape="rect" href="monster-runaway_8cpp.html#ae8dda2c5c942f1263737b32fd4ac4f25" title="ペットや友好的なモンスターがフロアから逃げる処理を行う" alt="" coords="407,137,531,164"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ae5813db3e0193f799be8ecc90597e7b8" title="&lt;" alt="" coords="436,188,501,215"/>
+<area shape="rect" href="spells-world_8cpp.html#a7204ab233ffa573046416517da467469" title="プレイヤー及びモンスターをレベルテレポートさせる / Teleport the player one level up or down (random when legal)" alt="" coords="420,239,517,265"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#a4a451de636382e9b7827db0baa28e8de" title="ダメージを受けたモンスターのHPが0未満になった際の処理" alt="" coords="209,7,341,33"/>
+<area shape="rect" href="effect-monster_8cpp.html#a66fbd35d5367d63f8dade77eb3f020a9" title="ペットの死亡を処理する" alt="" coords="191,61,359,88"/>
+<area shape="rect" href="monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="225,112,325,139"/>
+<area shape="rect" href="quantum-effect_8cpp.html#a18d880aac6dc2b623b0bacac0bc5e350" title="ユニークでない量子生物を消滅させる" alt="" coords="213,163,337,189"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#ad1f0f3b1e09613dd611d055979e16079" title="モンスターが敵モンスターに行う打撃処理 / Hack, based on mon_take_hit..." alt="" coords="8,5,140,32"/>
+<area shape="rect" href="effect-monster_8cpp.html#a1185f1b2d2006ea7c7b6dee096b55b2e" title="モンスターからモンスターへのダメージを処理する / Hurt the monster by damages another monster did." alt="" coords="5,57,143,98"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分46秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

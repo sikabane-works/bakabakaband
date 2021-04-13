@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/birth/auto-roller.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_84d111bb56536c13b547e5976d232fbf.html">birth</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">auto-roller.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="auto-roller_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="structchara__limit__type.html">    6</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structchara__limit__type.html#ac88321123bd698f682682da65c6c6240">    7</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> agemin, <a class="code" href="structchara__limit__type.html#ac88321123bd698f682682da65c6c6240">agemax</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structchara__limit__type.html#a87cc3145da5daa2e17302c75ee4f7e40">    8</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> htmin, <a class="code" href="structchara__limit__type.html#a87cc3145da5daa2e17302c75ee4f7e40">htmax</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structchara__limit__type.html#ad87d3cdb23edc0088f7699f16c5bd580">    9</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> wtmin, <a class="code" href="structchara__limit__type.html#ad87d3cdb23edc0088f7699f16c5bd580">wtmax</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structchara__limit__type.html#a3fc2396740636eaae9635d1668ad4042">   10</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> scmin, <a class="code" href="structchara__limit__type.html#a3fc2396740636eaae9635d1668ad4042">scmax</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;} <a class="code" href="structchara__limit__type.html">chara_limit_type</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="auto-roller_8h.html#aa7583405cb25f161899046ad8ada0822">stat_limit</a>[6];</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="code" href="auto-roller_8h.html#abafc749e7a2f9a4e3c2d857626d6ce1d">auto_round</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="code" href="auto-roller_8h.html#a22c572ae1d79bb465e6f72f7f868446b">auto_upper_round</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="code" href="auto-roller_8h.html#a8a0aba0f33ea30512017dd8eb2ad79c2">autoroll_chance</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="auto-roller_8h.html#aff45c5d24c8980e11e4c550ff44c1f76">get_stat_limits</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="auto-roller_8h.html#abbfd88d0503ee3e08070295983d159f3">initialize_chara_limit</a>(<a class="code" href="structchara__limit__type.html">chara_limit_type</a> *chara_limit_ptr);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="auto-roller_8h.html#a404d4d00738dfae673fa78ce11074172">get_chara_limits</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="structchara__limit__type.html">chara_limit_type</a> *chara_limit_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aauto-roller_8h_html_a22c572ae1d79bb465e6f72f7f868446b"><div class="ttname"><a href="auto-roller_8h.html#a22c572ae1d79bb465e6f72f7f868446b">auto_upper_round</a></div><div class="ttdeci">s32b auto_upper_round</div><div class="ttdef"><b>Definition:</b> auto-roller.cpp:21</div></div>
+<div class="ttc" id="aauto-roller_8h_html_a404d4d00738dfae673fa78ce11074172"><div class="ttname"><a href="auto-roller_8h.html#a404d4d00738dfae673fa78ce11074172">get_chara_limits</a></div><div class="ttdeci">bool get_chara_limits(player_type *creature_ptr, chara_limit_type *chara_limit_ptr)</div><div class="ttdoc">オートローラで得たい年齢、身長、体重、威信の基準を決める。</div><div class="ttdef"><b>Definition:</b> auto-roller.cpp:293</div></div>
+<div class="ttc" id="aauto-roller_8h_html_a8a0aba0f33ea30512017dd8eb2ad79c2"><div class="ttname"><a href="auto-roller_8h.html#a8a0aba0f33ea30512017dd8eb2ad79c2">autoroll_chance</a></div><div class="ttdeci">s32b autoroll_chance</div><div class="ttdoc">オートローラの要求値実現確率</div><div class="ttdef"><b>Definition:</b> auto-roller.cpp:24</div></div>
+<div class="ttc" id="aauto-roller_8h_html_aa7583405cb25f161899046ad8ada0822"><div class="ttname"><a href="auto-roller_8h.html#aa7583405cb25f161899046ad8ada0822">stat_limit</a></div><div class="ttdeci">s16b stat_limit[6]</div><div class="ttdoc">オートローラの能力値的要求水準 / Autoroll limit</div><div class="ttdef"><b>Definition:</b> auto-roller.cpp:17</div></div>
+<div class="ttc" id="aauto-roller_8h_html_abafc749e7a2f9a4e3c2d857626d6ce1d"><div class="ttname"><a href="auto-roller_8h.html#abafc749e7a2f9a4e3c2d857626d6ce1d">auto_round</a></div><div class="ttdeci">s32b auto_round</div><div class="ttdoc">オートローラの試行回数 / Autoroll round</div><div class="ttdef"><b>Definition:</b> auto-roller.cpp:20</div></div>
+<div class="ttc" id="aauto-roller_8h_html_abbfd88d0503ee3e08070295983d159f3"><div class="ttname"><a href="auto-roller_8h.html#abbfd88d0503ee3e08070295983d159f3">initialize_chara_limit</a></div><div class="ttdeci">void initialize_chara_limit(chara_limit_type *chara_limit_ptr)</div><div class="ttdef"><b>Definition:</b> auto-roller.cpp:277</div></div>
+<div class="ttc" id="aauto-roller_8h_html_aff45c5d24c8980e11e4c550ff44c1f76"><div class="ttname"><a href="auto-roller_8h.html#aff45c5d24c8980e11e4c550ff44c1f76">get_stat_limits</a></div><div class="ttdeci">bool get_stat_limits(player_type *creature_ptr)</div><div class="ttdoc">オートローラで得たい能力値の基準を決める。</div><div class="ttdef"><b>Definition:</b> auto-roller.cpp:105</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_af28a46c3af7b537a7cf39e1f7e6bf81c"><div class="ttname"><a href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a></div><div class="ttdeci">signed long s32b</div><div class="ttdef"><b>Definition:</b> h-type.h:92</div></div>
+<div class="ttc" id="astructchara__limit__type_html"><div class="ttname"><a href="structchara__limit__type.html">chara_limit_type</a></div><div class="ttdoc">オートローラの年齢、身長、体重、威信の要求水準</div><div class="ttdef"><b>Definition:</b> auto-roller.h:6</div></div>
+<div class="ttc" id="astructchara__limit__type_html_a3fc2396740636eaae9635d1668ad4042"><div class="ttname"><a href="structchara__limit__type.html#a3fc2396740636eaae9635d1668ad4042">chara_limit_type::scmax</a></div><div class="ttdeci">s16b scmax</div><div class="ttdef"><b>Definition:</b> auto-roller.h:10</div></div>
+<div class="ttc" id="astructchara__limit__type_html_a87cc3145da5daa2e17302c75ee4f7e40"><div class="ttname"><a href="structchara__limit__type.html#a87cc3145da5daa2e17302c75ee4f7e40">chara_limit_type::htmax</a></div><div class="ttdeci">s16b htmax</div><div class="ttdef"><b>Definition:</b> auto-roller.h:8</div></div>
+<div class="ttc" id="astructchara__limit__type_html_ac88321123bd698f682682da65c6c6240"><div class="ttname"><a href="structchara__limit__type.html#ac88321123bd698f682682da65c6c6240">chara_limit_type::agemax</a></div><div class="ttdeci">s16b agemax</div><div class="ttdef"><b>Definition:</b> auto-roller.h:7</div></div>
+<div class="ttc" id="astructchara__limit__type_html_ad87d3cdb23edc0088f7699f16c5bd580"><div class="ttname"><a href="structchara__limit__type.html#ad87d3cdb23edc0088f7699f16c5bd580">chara_limit_type::wtmax</a></div><div class="ttdeci">s16b wtmax</div><div class="ttdef"><b>Definition:</b> auto-roller.h:9</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分50秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

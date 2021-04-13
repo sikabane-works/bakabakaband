@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/action/racial-execution.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_63a79716ac36ae14e4cbc21f08c9941e.html">action</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">racial-execution.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="racial-execution_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="racial-execution_8h.html#a2ca06dccb48862db3df7901b90d266b7">    1</a></span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="racial-execution_8h.html#a2e7391c19a38218260728b5a073ff31d">    5</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="racial-execution_8h.html#a2e7391c19a38218260728b5a073ff31d">racial_level_check_result</a> {</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="racial-execution_8h.html#a2e7391c19a38218260728b5a073ff31daaccf986985ef865256dcc5331d7c60db">    6</a></span>&#160;    <a class="code" href="racial-execution_8h.html#a2e7391c19a38218260728b5a073ff31daaccf986985ef865256dcc5331d7c60db">RACIAL_SUCCESS</a> = 1,</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="racial-execution_8h.html#a2e7391c19a38218260728b5a073ff31da7f461fe704a78a7187e71da773b1ca20">    7</a></span>&#160;    <a class="code" href="racial-execution_8h.html#a2e7391c19a38218260728b5a073ff31da7f461fe704a78a7187e71da773b1ca20">RACIAL_FAILURE</a> = -1,</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="racial-execution_8h.html#a2e7391c19a38218260728b5a073ff31daea80b468d732984c8fd0e832184ce436">    8</a></span>&#160;    <a class="code" href="racial-execution_8h.html#a2e7391c19a38218260728b5a073ff31daea80b468d732984c8fd0e832184ce436">RACIAL_CANCEL</a> = 0,</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;};</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structrpi__type.html">rpi_type</a> <a class="code" href="structrpi__type.html">rpi_type</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<a class="code" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> <a class="code" href="racial-execution_8h.html#a42517efc38cbe17ccba8f987c77cc921">racial_chance</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="structrpi__type.html">rpi_type</a> *rpi_ptr);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<a class="code" href="racial-execution_8h.html#a2e7391c19a38218260728b5a073ff31d">racial_level_check_result</a> <a class="code" href="racial-execution_8h.html#af12f152a7bb1665657b25db7de806eea">check_racial_level</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="structrpi__type.html">rpi_type</a> *rpi_ptr);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="racial-execution_8h.html#a7e635e6235b51eda9d29cc9bf0ac79dd">exe_racial_power</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keyword">const</span> <a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> command);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a7c6a37c6000d234e7e4b733a8c830018"><div class="ttname"><a href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a></div><div class="ttdeci">s32b PERCENTAGE</div><div class="ttdoc">ゲーム中のパーセント表記の型定義(/100倍)</div><div class="ttdef"><b>Definition:</b> h-type.h:200</div></div>
+<div class="ttc" id="ah-type_8h_html_af28a46c3af7b537a7cf39e1f7e6bf81c"><div class="ttname"><a href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a></div><div class="ttdeci">signed long s32b</div><div class="ttdef"><b>Definition:</b> h-type.h:92</div></div>
+<div class="ttc" id="aracial-execution_8h_html_a2e7391c19a38218260728b5a073ff31d"><div class="ttname"><a href="racial-execution_8h.html#a2e7391c19a38218260728b5a073ff31d">racial_level_check_result</a></div><div class="ttdeci">racial_level_check_result</div><div class="ttdef"><b>Definition:</b> racial-execution.h:5</div></div>
+<div class="ttc" id="aracial-execution_8h_html_a2e7391c19a38218260728b5a073ff31da7f461fe704a78a7187e71da773b1ca20"><div class="ttname"><a href="racial-execution_8h.html#a2e7391c19a38218260728b5a073ff31da7f461fe704a78a7187e71da773b1ca20">RACIAL_FAILURE</a></div><div class="ttdeci">@ RACIAL_FAILURE</div><div class="ttdef"><b>Definition:</b> racial-execution.h:7</div></div>
+<div class="ttc" id="aracial-execution_8h_html_a2e7391c19a38218260728b5a073ff31daaccf986985ef865256dcc5331d7c60db"><div class="ttname"><a href="racial-execution_8h.html#a2e7391c19a38218260728b5a073ff31daaccf986985ef865256dcc5331d7c60db">RACIAL_SUCCESS</a></div><div class="ttdeci">@ RACIAL_SUCCESS</div><div class="ttdef"><b>Definition:</b> racial-execution.h:6</div></div>
+<div class="ttc" id="aracial-execution_8h_html_a2e7391c19a38218260728b5a073ff31daea80b468d732984c8fd0e832184ce436"><div class="ttname"><a href="racial-execution_8h.html#a2e7391c19a38218260728b5a073ff31daea80b468d732984c8fd0e832184ce436">RACIAL_CANCEL</a></div><div class="ttdeci">@ RACIAL_CANCEL</div><div class="ttdef"><b>Definition:</b> racial-execution.h:8</div></div>
+<div class="ttc" id="aracial-execution_8h_html_a42517efc38cbe17ccba8f987c77cc921"><div class="ttname"><a href="racial-execution_8h.html#a42517efc38cbe17ccba8f987c77cc921">racial_chance</a></div><div class="ttdeci">PERCENTAGE racial_chance(player_type *creature_ptr, rpi_type *rpi_ptr)</div><div class="ttdoc">レイシャル・パワーの発動成功率を計算する / Returns the chance to activate a racial power/mutation</div><div class="ttdef"><b>Definition:</b> racial-execution.cpp:32</div></div>
+<div class="ttc" id="aracial-execution_8h_html_a7e635e6235b51eda9d29cc9bf0ac79dd"><div class="ttname"><a href="racial-execution_8h.html#a7e635e6235b51eda9d29cc9bf0ac79dd">exe_racial_power</a></div><div class="ttdeci">bool exe_racial_power(player_type *creature_ptr, const s32b command)</div><div class="ttdoc">レイシャル・パワー発動処理</div><div class="ttdef"><b>Definition:</b> racial-execution.cpp:16</div></div>
+<div class="ttc" id="aracial-execution_8h_html_af12f152a7bb1665657b25db7de806eea"><div class="ttname"><a href="racial-execution_8h.html#af12f152a7bb1665657b25db7de806eea">check_racial_level</a></div><div class="ttdeci">racial_level_check_result check_racial_level(player_type *creature_ptr, rpi_type *rpi_ptr)</div><div class="ttdoc">レイシャル・パワーの発動の判定処理</div><div class="ttdef"><b>Definition:</b> racial-execution.cpp:92</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="astructrpi__type_html"><div class="ttname"><a href="structrpi__type.html">rpi_type</a></div><div class="ttdef"><b>Definition:</b> racial-util.h:8</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分50秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/main/angband-headers.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5eb159725f84c66aafd839904a4acdd0.html">main</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">angband-headers.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="angband-headers_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="angband-headers_8h.html#ae5fc28efa613c01be477eb59b0c6d165">    1</a></span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structangband__header.html">angband_header</a> <a class="code" href="structangband__header.html">angband_header</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="angband-headers_8h.html#afa96d741aab523f29c013f42a423fe70">    9</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> (*<a class="code" href="angband-headers_8h.html#afa96d741aab523f29c013f42a423fe70">parse_info_txt_func</a>)(<span class="keywordtype">char</span> *<a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="code" href="structangband__header.html">angband_header</a> *head);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structangband__header.html">   11</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structangband__header.html">angband_header</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structangband__header.html#ace2cedc8cda51e80b0737721e8f26ae0">   12</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structangband__header.html#ace2cedc8cda51e80b0737721e8f26ae0">checksum</a>; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structangband__header.html#a0da76b00bc3e7dab97fedf16a2692234">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a> <a class="code" href="structangband__header.html#a0da76b00bc3e7dab97fedf16a2692234">info_num</a>; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;};</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <a class="code" href="structangband__header.html">angband_header</a> <a class="code" href="angband-headers_8h.html#a99acadd665eb73f6648618c25dc3b97d">f_head</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> <a class="code" href="structangband__header.html">angband_header</a> <a class="code" href="angband-headers_8h.html#adc288d8d9ae83e98a14b9f51077cc3c4">v_head</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <a class="code" href="structangband__header.html">angband_header</a> <a class="code" href="angband-headers_8h.html#ae08fd83ab47b217b3c284bc3c58a4a3d">k_head</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <a class="code" href="structangband__header.html">angband_header</a> <a class="code" href="angband-headers_8h.html#a0862831a4b0f0379463605bbb6b08011">a_head</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <a class="code" href="structangband__header.html">angband_header</a> <a class="code" href="angband-headers_8h.html#a47d3ab306f6a161318220bb66270b4a8">e_head</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">extern</span> <a class="code" href="structangband__header.html">angband_header</a> <a class="code" href="angband-headers_8h.html#a270702f3a568d281aa15f731ec7af54e">r_head</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">extern</span> <a class="code" href="structangband__header.html">angband_header</a> <a class="code" href="angband-headers_8h.html#a92a2b939377518be9a83601976e0485e">d_head</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">extern</span> <a class="code" href="structangband__header.html">angband_header</a> <a class="code" href="angband-headers_8h.html#a2a9d6dcb0d3323b28be6a73ca443fa76">s_head</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">extern</span> <a class="code" href="structangband__header.html">angband_header</a> <a class="code" href="angband-headers_8h.html#a07daed19cc4617360cff6787e167095c">m_head</a>;</div>
+<div class="ttc" id="aangband-headers_8h_html_a07daed19cc4617360cff6787e167095c"><div class="ttname"><a href="angband-headers_8h.html#a07daed19cc4617360cff6787e167095c">m_head</a></div><div class="ttdeci">angband_header m_head</div><div class="ttdoc">プレイヤー職業魔法情報のヘッダ構造体</div><div class="ttdef"><b>Definition:</b> angband-headers.cpp:11</div></div>
+<div class="ttc" id="aangband-headers_8h_html_a0862831a4b0f0379463605bbb6b08011"><div class="ttname"><a href="angband-headers_8h.html#a0862831a4b0f0379463605bbb6b08011">a_head</a></div><div class="ttdeci">angband_header a_head</div><div class="ttdoc">固定アーティファクト情報のヘッダ構造体</div><div class="ttdef"><b>Definition:</b> angband-headers.cpp:6</div></div>
+<div class="ttc" id="aangband-headers_8h_html_a270702f3a568d281aa15f731ec7af54e"><div class="ttname"><a href="angband-headers_8h.html#a270702f3a568d281aa15f731ec7af54e">r_head</a></div><div class="ttdeci">angband_header r_head</div><div class="ttdoc">モンスター種族情報のヘッダ構造体</div><div class="ttdef"><b>Definition:</b> angband-headers.cpp:8</div></div>
+<div class="ttc" id="aangband-headers_8h_html_a2a9d6dcb0d3323b28be6a73ca443fa76"><div class="ttname"><a href="angband-headers_8h.html#a2a9d6dcb0d3323b28be6a73ca443fa76">s_head</a></div><div class="ttdeci">angband_header s_head</div><div class="ttdoc">プレイヤー職業技能情報のヘッダ構造体</div><div class="ttdef"><b>Definition:</b> angband-headers.cpp:10</div></div>
+<div class="ttc" id="aangband-headers_8h_html_a47d3ab306f6a161318220bb66270b4a8"><div class="ttname"><a href="angband-headers_8h.html#a47d3ab306f6a161318220bb66270b4a8">e_head</a></div><div class="ttdeci">angband_header e_head</div><div class="ttdoc">アイテムエゴ情報のヘッダ構造体</div><div class="ttdef"><b>Definition:</b> angband-headers.cpp:7</div></div>
+<div class="ttc" id="aangband-headers_8h_html_a92a2b939377518be9a83601976e0485e"><div class="ttname"><a href="angband-headers_8h.html#a92a2b939377518be9a83601976e0485e">d_head</a></div><div class="ttdeci">angband_header d_head</div><div class="ttdoc">ダンジョン情報のヘッダ構造体</div><div class="ttdef"><b>Definition:</b> angband-headers.cpp:9</div></div>
+<div class="ttc" id="aangband-headers_8h_html_a99acadd665eb73f6648618c25dc3b97d"><div class="ttname"><a href="angband-headers_8h.html#a99acadd665eb73f6648618c25dc3b97d">f_head</a></div><div class="ttdeci">angband_header f_head</div><div class="ttdoc">地形情報のヘッダ構造体</div><div class="ttdef"><b>Definition:</b> angband-headers.cpp:3</div></div>
+<div class="ttc" id="aangband-headers_8h_html_adc288d8d9ae83e98a14b9f51077cc3c4"><div class="ttname"><a href="angband-headers_8h.html#adc288d8d9ae83e98a14b9f51077cc3c4">v_head</a></div><div class="ttdeci">angband_header v_head</div><div class="ttdoc">Vault情報のヘッダ構造体</div><div class="ttdef"><b>Definition:</b> angband-headers.cpp:4</div></div>
+<div class="ttc" id="aangband-headers_8h_html_ae08fd83ab47b217b3c284bc3c58a4a3d"><div class="ttname"><a href="angband-headers_8h.html#ae08fd83ab47b217b3c284bc3c58a4a3d">k_head</a></div><div class="ttdeci">angband_header k_head</div><div class="ttdoc">ペースアイテム情報のヘッダ構造体</div><div class="ttdef"><b>Definition:</b> angband-headers.cpp:5</div></div>
+<div class="ttc" id="aangband-headers_8h_html_afa96d741aab523f29c013f42a423fe70"><div class="ttname"><a href="angband-headers_8h.html#afa96d741aab523f29c013f42a423fe70">parse_info_txt_func</a></div><div class="ttdeci">errr(* parse_info_txt_func)(char *buf, angband_header *head)</div><div class="ttdef"><b>Definition:</b> angband-headers.h:9</div></div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_ad99e8b64263d5831d93bec22e89da527"><div class="ttname"><a href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a></div><div class="ttdeci">int errr</div><div class="ttdoc">エラーコードの定義 / Error codes for function return values</div><div class="ttdef"><b>Definition:</b> h-type.h:53</div></div>
+<div class="ttc" id="ah-type_8h_html_ae21ecc67b92c35422853544364e96b42"><div class="ttname"><a href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a></div><div class="ttdeci">unsigned short u16b</div><div class="ttdef"><b>Definition:</b> h-type.h:84</div></div>
+<div class="ttc" id="arecord-play-movie_8cpp_html_a1fe855c208bc17a51a4d34fefdb2d5b1"><div class="ttname"><a href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a></div><div class="ttdeci">char * buf</div><div class="ttdef"><b>Definition:</b> record-play-movie.cpp:54</div></div>
+<div class="ttc" id="astructangband__header_html"><div class="ttname"><a href="structangband__header.html">angband_header</a></div><div class="ttdef"><b>Definition:</b> angband-headers.h:11</div></div>
+<div class="ttc" id="astructangband__header_html_a0da76b00bc3e7dab97fedf16a2692234"><div class="ttname"><a href="structangband__header.html#a0da76b00bc3e7dab97fedf16a2692234">angband_header::info_num</a></div><div class="ttdeci">u16b info_num</div><div class="ttdoc">このinfoのデータ数</div><div class="ttdef"><b>Definition:</b> angband-headers.h:13</div></div>
+<div class="ttc" id="astructangband__header_html_ace2cedc8cda51e80b0737721e8f26ae0"><div class="ttname"><a href="structangband__header.html#ace2cedc8cda51e80b0737721e8f26ae0">angband_header::checksum</a></div><div class="ttdeci">byte checksum</div><div class="ttdoc">Checksum of &quot;info&quot; records</div><div class="ttdef"><b>Definition:</b> angband-headers.h:12</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

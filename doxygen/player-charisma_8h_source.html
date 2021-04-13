@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player-status/player-charisma.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b229fbdc4ab0cfad60eb3057c8d9c405.html">player-status</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">player-charisma.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="player-charisma_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player-basic-statistics_8h.html">player-status/player-basic-statistics.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="class_player_charisma.html">    4</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_player_charisma.html">PlayerCharisma</a> : <span class="keyword">public</span> <a class="code" href="class_player_basic_statistics.html">PlayerBasicStatistics</a> {</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">using</span> <a class="code" href="class_player_basic_statistics.html#a52900856cb1c5a7bbe1be19cd6797aaf">PlayerBasicStatistics::PlayerBasicStatistics</a>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_player_charisma.html#abfb9dc6b757966d4493b25c6544b32ba">    7</a></span>&#160;    <a class="code" href="class_player_charisma.html#abfb9dc6b757966d4493b25c6544b32ba">PlayerCharisma</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="class_player_charisma.html#ab44363e58fc7ac34ad44c736b11a8b55">get_all_flags</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="class_player_charisma.html#a134039d517fc353892ba3db42a46b781">get_bad_flags</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_player_charisma.html#aad3ab85a4ca3f3568ddf08fff9b3eb98">set_locals</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_charisma.html#a5f0926dd90663e33de265c907f4eb2f9">battleform_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_charisma.html#afea7ddeea1b56a170c9092568623cf8b">mutation_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_charisma.html#ac8a32d015de8a59819d9d7ecd8316761">set_exception_value</a>(<a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> value) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_charisma.html#a69985232bb02c3e0e5d9ae8d1685b766">set_exception_use_status</a>(<a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> value) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
+<div class="ttc" id="aclass_player_basic_statistics_html"><div class="ttname"><a href="class_player_basic_statistics.html">PlayerBasicStatistics</a></div><div class="ttdef"><b>Definition:</b> player-basic-statistics.h:4</div></div>
+<div class="ttc" id="aclass_player_basic_statistics_html_a52900856cb1c5a7bbe1be19cd6797aaf"><div class="ttname"><a href="class_player_basic_statistics.html#a52900856cb1c5a7bbe1be19cd6797aaf">PlayerBasicStatistics::PlayerBasicStatistics</a></div><div class="ttdeci">PlayerBasicStatistics()=delete</div></div>
+<div class="ttc" id="aclass_player_charisma_html"><div class="ttname"><a href="class_player_charisma.html">PlayerCharisma</a></div><div class="ttdef"><b>Definition:</b> player-charisma.h:4</div></div>
+<div class="ttc" id="aclass_player_charisma_html_a134039d517fc353892ba3db42a46b781"><div class="ttname"><a href="class_player_charisma.html#a134039d517fc353892ba3db42a46b781">PlayerCharisma::get_bad_flags</a></div><div class="ttdeci">BIT_FLAGS get_bad_flags() override</div><div class="ttdoc">修正値が-1以下のところにビットを立てて返す。</div><div class="ttdef"><b>Definition:</b> player-charisma.cpp:98</div></div>
+<div class="ttc" id="aclass_player_charisma_html_a5f0926dd90663e33de265c907f4eb2f9"><div class="ttname"><a href="class_player_charisma.html#a5f0926dd90663e33de265c907f4eb2f9">PlayerCharisma::battleform_value</a></div><div class="ttdeci">s16b battleform_value() override</div><div class="ttdoc">魅力補正計算 - 型</div><div class="ttdef"><b>Definition:</b> player-charisma.cpp:29</div></div>
+<div class="ttc" id="aclass_player_charisma_html_a69985232bb02c3e0e5d9ae8d1685b766"><div class="ttname"><a href="class_player_charisma.html#a69985232bb02c3e0e5d9ae8d1685b766">PlayerCharisma::set_exception_use_status</a></div><div class="ttdeci">s16b set_exception_use_status(s16b value) override</div><div class="ttdoc">ステータス現在値更新の例外処理 @params 通常処理されたステータスの値</div><div class="ttdef"><b>Definition:</b> player-charisma.cpp:117</div></div>
+<div class="ttc" id="aclass_player_charisma_html_aad3ab85a4ca3f3568ddf08fff9b3eb98"><div class="ttname"><a href="class_player_charisma.html#aad3ab85a4ca3f3568ddf08fff9b3eb98">PlayerCharisma::set_locals</a></div><div class="ttdeci">void set_locals() override</div><div class="ttdef"><b>Definition:</b> player-charisma.cpp:13</div></div>
+<div class="ttc" id="aclass_player_charisma_html_ab44363e58fc7ac34ad44c736b11a8b55"><div class="ttname"><a href="class_player_charisma.html#ab44363e58fc7ac34ad44c736b11a8b55">PlayerCharisma::get_all_flags</a></div><div class="ttdeci">BIT_FLAGS get_all_flags() override</div><div class="ttdoc">修正値が0でないところにビットを立てて返す。</div><div class="ttdef"><b>Definition:</b> player-charisma.cpp:87</div></div>
+<div class="ttc" id="aclass_player_charisma_html_abfb9dc6b757966d4493b25c6544b32ba"><div class="ttname"><a href="class_player_charisma.html#abfb9dc6b757966d4493b25c6544b32ba">PlayerCharisma::PlayerCharisma</a></div><div class="ttdeci">PlayerCharisma()=delete</div></div>
+<div class="ttc" id="aclass_player_charisma_html_ac8a32d015de8a59819d9d7ecd8316761"><div class="ttname"><a href="class_player_charisma.html#ac8a32d015de8a59819d9d7ecd8316761">PlayerCharisma::set_exception_value</a></div><div class="ttdeci">s16b set_exception_value(s16b value) override</div><div class="ttdoc">値を直接変更する例外処理。 @params value 単純加算された修正値の合計</div><div class="ttdef"><b>Definition:</b> player-charisma.cpp:76</div></div>
+<div class="ttc" id="aclass_player_charisma_html_afea7ddeea1b56a170c9092568623cf8b"><div class="ttname"><a href="class_player_charisma.html#afea7ddeea1b56a170c9092568623cf8b">PlayerCharisma::mutation_value</a></div><div class="ttdeci">s16b mutation_value() override</div><div class="ttdoc">魅力補正計算 - 変異</div><div class="ttdef"><b>Definition:</b> player-charisma.cpp:51</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="aplayer-basic-statistics_8h_html"><div class="ttname"><a href="player-basic-statistics_8h.html">player-basic-statistics.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

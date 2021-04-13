@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/monster-floor/monster-death-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_eac3065c07e21a980d4895fd939fa12a.html">monster-floor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">monster-death-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="monster-death-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="monster-death-util_8h.html#ac391064991fd38d11b4924ddcefc84e2">    1</a></span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmonster__type.html">monster_type</a> <a class="code" href="structmonster__type.html">monster_type</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmonster__race.html">monster_race</a> <a class="code" href="structmonster__race.html">monster_race</a>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structmonster__death__type.html">    7</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmonster__death__type.html">monster_death_type</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structmonster__death__type.html#a0ca574477876d29cbd5430d035b3a02a">    8</a></span>&#160;    <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> <a class="code" href="structmonster__death__type.html#a0ca574477876d29cbd5430d035b3a02a">m_idx</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structmonster__death__type.html#a598138127c3c096f49008affed6c0bc0">    9</a></span>&#160;    <a class="code" href="structmonster__type.html">monster_type</a> *<a class="code" href="structmonster__death__type.html#a598138127c3c096f49008affed6c0bc0">m_ptr</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structmonster__death__type.html#ad07e48bf9c2b9937aea65d0ce3ac9f26">   10</a></span>&#160;    <a class="code" href="structmonster__race.html">monster_race</a> *<a class="code" href="structmonster__death__type.html#ad07e48bf9c2b9937aea65d0ce3ac9f26">r_ptr</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structmonster__death__type.html#a963cac766121250d52dac06ba0044f53">   11</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmonster__death__type.html#a963cac766121250d52dac06ba0044f53">do_gold</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structmonster__death__type.html#a48ac679b96f474658f78af59663b5240">   12</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmonster__death__type.html#a48ac679b96f474658f78af59663b5240">do_item</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structmonster__death__type.html#a95d96528410496a2143eaa9161b6ce5c">   13</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmonster__death__type.html#a95d96528410496a2143eaa9161b6ce5c">cloned</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structmonster__death__type.html#aa88f5b8e202eaceb1fe864ddfdddb88a">   14</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmonster__death__type.html#aa88f5b8e202eaceb1fe864ddfdddb88a">force_coin</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structmonster__death__type.html#a5f531f9856adc72d5a1579ebdc1f5351">   15</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmonster__death__type.html#a5f531f9856adc72d5a1579ebdc1f5351">drop_chosen_item</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structmonster__death__type.html#a43fa74259f5324769082647860f07553">   16</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structmonster__death__type.html#a43fa74259f5324769082647860f07553">md_y</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structmonster__death__type.html#a9246c66c75f7c063d0133f1aa66f676a">   17</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structmonster__death__type.html#a9246c66c75f7c063d0133f1aa66f676a">md_x</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structmonster__death__type.html#ad3f040175b13ed1da4309bad8cf60849">   18</a></span>&#160;    <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="structmonster__death__type.html#ad3f040175b13ed1da4309bad8cf60849">mo_mode</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="monster-death-util_8h.html#a42d802933dd3c9fd1ef17f09f37318f5">   19</a></span>&#160;} <a class="code" href="monster-death-util_8h.html#a42d802933dd3c9fd1ef17f09f37318f5">monster_death_type</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<a class="code" href="structmonster__death__type.html">monster_death_type</a> *<a class="code" href="monster-death-util_8h.html#a8c93f6ec290d5ec7c1da10c621977fe5">initialize_monster_death_type</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structmonster__death__type.html">monster_death_type</a> *md_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <span class="keywordtype">bool</span> drop_item);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="ah-type_8h_html_af7a1de980667931f896ae6a820f0ee80"><div class="ttname"><a href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a></div><div class="ttdeci">unsigned long u32b</div><div class="ttdef"><b>Definition:</b> h-type.h:93</div></div>
+<div class="ttc" id="amonster-death-util_8h_html_a42d802933dd3c9fd1ef17f09f37318f5"><div class="ttname"><a href="monster-death-util_8h.html#a42d802933dd3c9fd1ef17f09f37318f5">monster_death_type</a></div><div class="ttdeci">struct monster_death_type monster_death_type</div></div>
+<div class="ttc" id="amonster-death-util_8h_html_a8c93f6ec290d5ec7c1da10c621977fe5"><div class="ttname"><a href="monster-death-util_8h.html#a8c93f6ec290d5ec7c1da10c621977fe5">initialize_monster_death_type</a></div><div class="ttdeci">monster_death_type * initialize_monster_death_type(player_type *player_ptr, monster_death_type *md_ptr, MONSTER_IDX m_idx, bool drop_item)</div><div class="ttdef"><b>Definition:</b> monster-death-util.cpp:39</div></div>
+<div class="ttc" id="astructmonster__death__type_html"><div class="ttname"><a href="structmonster__death__type.html">monster_death_type</a></div><div class="ttdef"><b>Definition:</b> monster-death-util.h:7</div></div>
+<div class="ttc" id="astructmonster__death__type_html_a0ca574477876d29cbd5430d035b3a02a"><div class="ttname"><a href="structmonster__death__type.html#a0ca574477876d29cbd5430d035b3a02a">monster_death_type::m_idx</a></div><div class="ttdeci">MONSTER_IDX m_idx</div><div class="ttdef"><b>Definition:</b> monster-death-util.h:8</div></div>
+<div class="ttc" id="astructmonster__death__type_html_a43fa74259f5324769082647860f07553"><div class="ttname"><a href="structmonster__death__type.html#a43fa74259f5324769082647860f07553">monster_death_type::md_y</a></div><div class="ttdeci">POSITION md_y</div><div class="ttdef"><b>Definition:</b> monster-death-util.h:16</div></div>
+<div class="ttc" id="astructmonster__death__type_html_a48ac679b96f474658f78af59663b5240"><div class="ttname"><a href="structmonster__death__type.html#a48ac679b96f474658f78af59663b5240">monster_death_type::do_item</a></div><div class="ttdeci">bool do_item</div><div class="ttdef"><b>Definition:</b> monster-death-util.h:12</div></div>
+<div class="ttc" id="astructmonster__death__type_html_a598138127c3c096f49008affed6c0bc0"><div class="ttname"><a href="structmonster__death__type.html#a598138127c3c096f49008affed6c0bc0">monster_death_type::m_ptr</a></div><div class="ttdeci">monster_type * m_ptr</div><div class="ttdef"><b>Definition:</b> monster-death-util.h:9</div></div>
+<div class="ttc" id="astructmonster__death__type_html_a5f531f9856adc72d5a1579ebdc1f5351"><div class="ttname"><a href="structmonster__death__type.html#a5f531f9856adc72d5a1579ebdc1f5351">monster_death_type::drop_chosen_item</a></div><div class="ttdeci">bool drop_chosen_item</div><div class="ttdef"><b>Definition:</b> monster-death-util.h:15</div></div>
+<div class="ttc" id="astructmonster__death__type_html_a9246c66c75f7c063d0133f1aa66f676a"><div class="ttname"><a href="structmonster__death__type.html#a9246c66c75f7c063d0133f1aa66f676a">monster_death_type::md_x</a></div><div class="ttdeci">POSITION md_x</div><div class="ttdef"><b>Definition:</b> monster-death-util.h:17</div></div>
+<div class="ttc" id="astructmonster__death__type_html_a95d96528410496a2143eaa9161b6ce5c"><div class="ttname"><a href="structmonster__death__type.html#a95d96528410496a2143eaa9161b6ce5c">monster_death_type::cloned</a></div><div class="ttdeci">bool cloned</div><div class="ttdef"><b>Definition:</b> monster-death-util.h:13</div></div>
+<div class="ttc" id="astructmonster__death__type_html_a963cac766121250d52dac06ba0044f53"><div class="ttname"><a href="structmonster__death__type.html#a963cac766121250d52dac06ba0044f53">monster_death_type::do_gold</a></div><div class="ttdeci">bool do_gold</div><div class="ttdef"><b>Definition:</b> monster-death-util.h:11</div></div>
+<div class="ttc" id="astructmonster__death__type_html_aa88f5b8e202eaceb1fe864ddfdddb88a"><div class="ttname"><a href="structmonster__death__type.html#aa88f5b8e202eaceb1fe864ddfdddb88a">monster_death_type::force_coin</a></div><div class="ttdeci">int force_coin</div><div class="ttdef"><b>Definition:</b> monster-death-util.h:14</div></div>
+<div class="ttc" id="astructmonster__death__type_html_ad07e48bf9c2b9937aea65d0ce3ac9f26"><div class="ttname"><a href="structmonster__death__type.html#ad07e48bf9c2b9937aea65d0ce3ac9f26">monster_death_type::r_ptr</a></div><div class="ttdeci">monster_race * r_ptr</div><div class="ttdef"><b>Definition:</b> monster-death-util.h:10</div></div>
+<div class="ttc" id="astructmonster__death__type_html_ad3f040175b13ed1da4309bad8cf60849"><div class="ttname"><a href="structmonster__death__type.html#ad3f040175b13ed1da4309bad8cf60849">monster_death_type::mo_mode</a></div><div class="ttdeci">u32b mo_mode</div><div class="ttdef"><b>Definition:</b> monster-death-util.h:18</div></div>
+<div class="ttc" id="astructmonster__race_html"><div class="ttname"><a href="structmonster__race.html">monster_race</a></div><div class="ttdef"><b>Definition:</b> monster-race-definition.h:48</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

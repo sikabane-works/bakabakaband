@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/inventory/pack-overflow.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_8aa3e05b3c778144162028379a6046fd.html">inventory</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">pack-overflow.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="pack-overflow_8h_source.html">inventory/pack-overflow.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="disturbance_8h_source.html">core/disturbance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stuff-handler_8h_source.html">core/stuff-handler.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flavor-describer_8h_source.html">flavor/flavor-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-object_8h_source.html">floor/floor-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-object_8h_source.html">inventory/inventory-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-info_8h_source.html">object/object-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+pack-overflow.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="pack-overflow_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2inventory_2pack-overflow_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2inventory_2pack-overflow_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2inventory_2pack-overflow_8cpp">
+<area shape="rect" title=" " alt="" coords="546,5,734,61"/>
+<area shape="rect" href="pack-overflow_8h.html" title=" " alt="" coords="448,206,613,233"/>
+<area shape="rect" href="disturbance_8h.html" title=" " alt="" coords="70,117,199,143"/>
+<area shape="rect" href="stuff-handler_8h.html" title=" " alt="" coords="294,117,426,143"/>
+<area shape="rect" href="flavor-describer_8h.html" title=" " alt="" coords="451,117,603,143"/>
+<area shape="rect" href="floor-object_8h.html" title=" " alt="" coords="998,206,1122,233"/>
+<area shape="rect" href="inventory-object_8h.html" title=" " alt="" coords="637,199,765,240"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="940,109,1068,151"/>
+<area shape="rect" href="object-info_8h.html" title=" " alt="" coords="735,117,865,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="155,206,322,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="466,288,595,315"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="5,363,96,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="120,363,211,389"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="235,363,333,389"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="357,363,456,389"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="481,363,581,389"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="605,363,779,389"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="804,363,945,389"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,363,1116,389"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="919,288,1046,315"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="840,199,973,240"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a89d1f1d66e5f1efc4eddba0c69c8d3c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pack-overflow_8cpp.html#a89d1f1d66e5f1efc4eddba0c69c8d3c6">pack_overflow</a> (<a class="el" href="structplayer__type.html">player_type</a> *owner_ptr)</td></tr>
+<tr class="memdesc:a89d1f1d66e5f1efc4eddba0c69c8d3c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムの所持種類数が超えた場合にアイテムを床に落とす処理  <a href="pack-overflow_8cpp.html#a89d1f1d66e5f1efc4eddba0c69c8d3c6">[詳解]</a><br /></td></tr>
+<tr class="separator:a89d1f1d66e5f1efc4eddba0c69c8d3c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a89d1f1d66e5f1efc4eddba0c69c8d3c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89d1f1d66e5f1efc4eddba0c69c8d3c6">&#9670;&nbsp;</a></span>pack_overflow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pack_overflow </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>owner_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アイテムの所持種類数が超えた場合にアイテムを床に落とす処理 </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="pack-overflow_8cpp_a89d1f1d66e5f1efc4eddba0c69c8d3c6_cgraph.png" border="0" usemap="#apack-overflow_8cpp_a89d1f1d66e5f1efc4eddba0c69c8d3c6_cgraph" alt=""/></div>
+<map name="apack-overflow_8cpp_a89d1f1d66e5f1efc4eddba0c69c8d3c6_cgraph" id="apack-overflow_8cpp_a89d1f1d66e5f1efc4eddba0c69c8d3c6_cgraph">
+<area shape="rect" title="アイテムの所持種類数が超えた場合にアイテムを床に落とす処理" alt="" coords="5,1607,108,1633"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="313,633,420,660"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="178,583,239,609"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="520,1531,599,1557"/>
+<area shape="rect" href="floor-object_8cpp.html#a62c807ef0af547704f7d1f6b825abbe5" title="生成済のオブジェクトをフロアの所定の位置に落とす。 Let an object fall to the ground at or near a location." alt="" coords="169,1505,248,1532"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="321,1556,412,1583"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="163,1657,254,1684"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="309,1683,424,1709"/>
+<area shape="rect" href="object-info_8cpp.html#a21413bf407071b7e2f68ff548c34b165" title="オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label" alt="" coords="156,1759,261,1785"/>
+<area shape="rect" href="inventory-object_8cpp.html#a95bd37f416091df0360f4eec6bd12e49" title=" " alt="" coords="170,1809,247,1836"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="502,355,617,381"/>
+<area shape="rect" href="bow_8cpp.html#ac67fe672b98bb4c3ba89474dce007a50" title="射撃武器に対応する矢/弾薬のベースアイテムIDを返す /" alt="" coords="502,405,617,432"/>
+<area shape="rect" href="flavor-describer_8cpp.html#abffcf700f83741151f4d965b01800395" title=" " alt="" coords="491,101,627,128"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a779b5f26ab2e2c1e104583399787dcf1" title=" " alt="" coords="498,1041,621,1068"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a7ec17cfdde3219bd0e9dfe166181cc9d" title=" " alt="" coords="513,456,605,483"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a81194951a890007868ac1c4352750174" title=" " alt="" coords="488,659,631,685"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a6ad3608e29e2b55a612a9bece5987c6e" title=" " alt="" coords="504,827,615,853"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="485,1207,634,1233"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a040ee8534be2d36b2db2c511158488c0" title=" " alt="" coords="472,557,647,584"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a5f9a02ab4e1253b0cd2270b287b17bee" title="杖や光源等、寿命のあるアイテムの残り回数やターン表記" alt="" coords="492,915,627,941"/>
+<area shape="rect" href="flavor-describer_8cpp.html#af3b92a1eedcea38d55cb313d2ff7fbed" title=" " alt="" coords="715,253,866,280"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a487e2423615ea280fb3f3a339ae2980b" title=" " alt="" coords="511,1257,608,1284"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#ae75e4fc7cc754cbf43a5ef91d0e1d963" title=" " alt="" coords="484,25,635,52"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#acfcf21e14ba3017d1cc69e6fdff850e9" title="呪いの有無や割引率等を表示する" alt="" coords="695,557,887,584"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#a892d0257efeeabd5136e0e224ee0d757" title=" " alt="" coords="488,253,631,280"/>
+<area shape="rect" href="flavor-util_8cpp.html#ae0f69cdaef63ddd298c7fbe175bf8c21" title=" " alt="" coords="491,304,628,331"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="731,101,851,128"/>
+<area shape="rect" href="object-perception_8cpp.html#a28c38c7965d53e8b20d1937245b8970b" title=" " alt="" coords="737,51,844,77"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="734,1080,847,1107"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a8726edfc05ad4884bd9643a4bd2e8eff" title=" " alt="" coords="707,203,875,229"/>
+<area shape="rect" href="flavor-util_8cpp.html#aa1378b4bd2a85f709f6f48dc4f48ecf3" title="対象文字配列に一文字だけをコピーする。" alt="" coords="938,405,1055,432"/>
+<area shape="rect" href="flavor-util_8cpp.html#aba21c13bcaaf19811cb5d62824eaa1af" title="対象文字配列に符号なし整数値をコピーする。" alt="" coords="935,228,1059,255"/>
+<area shape="rect" href="mind-sniper_8cpp.html#a6fd6bafd31f45a4175f2a8907c7fc614" title="スナイパーの集中度によるダメージボーナスを加算する" alt="" coords="721,710,860,751"/>
+<area shape="rect" href="shoot_8cpp.html#afea7a69a70c8e57df24d1d6a4a0153df" title=" " alt="" coords="752,608,829,635"/>
+<area shape="rect" href="shoot_8cpp.html#aa0e832cf3b6da1a0193d110bf0a42be5" title="射撃時クリティカルによるダメージ期待値修正計算（重量依存部分） / critical happens at i / 10000" alt="" coords="716,659,865,685"/>
+<area shape="rect" href="flavor-describer_8cpp.html#ab90ef1eec6a73db724ce2db39327766e" title=" " alt="" coords="720,456,861,483"/>
+<area shape="rect" href="flavor-util_8cpp.html#a9afac279f6c93e8e8856f96113493a8b" title="対象文字配列に文字列をコピーする。" alt="" coords="939,903,1054,929"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="937,1493,1056,1520"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a0c1fa37fd59818ca44bbe11db43aa593" title="武器/防具/アクセサリアイテムにおける、耐性やスレイ等の表記" alt="" coords="721,827,860,853"/>
+<area shape="rect" href="named-item-describer_8cpp.html#ac7efc2d8a25fc2fd5af3db95e7f3d9b4" title=" " alt="" coords="719,1486,862,1527"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a876c4fc7dc88a1fa3f2b7d6707b10cf8" title=" " alt="" coords="704,928,877,955"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a4db5274e8c52834bc7bb6ef880b0d09d" title=" " alt="" coords="703,1181,879,1208"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a4998ed0656a32c2290f80b72b751512d" title=" " alt="" coords="711,1232,870,1259"/>
+<area shape="rect" href="named-item-describer_8cpp.html#acaa46c6c182761a488d16112c7b3545a" title="銘を表記する" alt="" coords="722,1283,859,1309"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="761,1333,820,1360"/>
+<area shape="rect" href="named-item-describer_8cpp.html#ada4725207c8415750227020605ee0076" title=" " alt="" coords="733,1384,848,1411"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="713,1435,868,1461"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="342,532,391,559"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="325,1455,408,1481"/>
+<area shape="rect" href="target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="322,583,411,609"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="pack-overflow_8cpp_a89d1f1d66e5f1efc4eddba0c69c8d3c6_icgraph.png" border="0" usemap="#apack-overflow_8cpp_a89d1f1d66e5f1efc4eddba0c69c8d3c6_icgraph" alt=""/></div>
+<map name="apack-overflow_8cpp_a89d1f1d66e5f1efc4eddba0c69c8d3c6_icgraph" id="apack-overflow_8cpp_a89d1f1d66e5f1efc4eddba0c69c8d3c6_icgraph">
+<area shape="rect" title="アイテムの所持種類数が超えた場合にアイテムを床に落とす処理" alt="" coords="520,5,623,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="361,5,472,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="189,5,313,32"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="5,5,141,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分27秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

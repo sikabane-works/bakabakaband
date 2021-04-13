@@ -1,0 +1,52 @@
+<map id="cast_mindcrafter_spell" name="cast_mindcrafter_spell">
+<area shape="rect" id="node1" title="超能力の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;mindcrafter&#39;." alt="" coords="5,955,157,981"/>
+<area shape="rect" id="node2" href="$spells-sight_8cpp.html#a5d5a0c7b26048332c2924192d06e42b0" title="チャーム・モンスター効果(プレイヤー視界範囲内) / Charm monsters" alt="" coords="215,397,334,424"/>
+<area shape="rect" id="node7" href="$effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="643,549,704,576"/>
+<area shape="rect" id="node10" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="980,1072,1059,1099"/>
+<area shape="rect" id="node14" href="$avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="435,1259,515,1285"/>
+<area shape="rect" id="node15" href="$z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="243,296,307,323"/>
+<area shape="rect" id="node16" href="$spells-detection_8cpp.html#a5d096ba459f50401bf2e3d6762b9f297" title="全感知処理 / Detect everything" alt="" coords="235,245,314,272"/>
+<area shape="rect" id="node17" href="$spells-detection_8cpp.html#a51a934aa10cafdef351b49ebfb59957f" title="プレイヤー周辺のドアを感知する / Detect all doors on current panel" alt="" coords="426,144,523,171"/>
+<area shape="rect" id="node18" href="$spells-detection_8cpp.html#aead174091d028e380754746d29d8532b" title="不可視のモンスターを感知する / Detect all &quot;invisible&quot; monsters around the player" alt="" coords="399,195,550,221"/>
+<area shape="rect" id="node19" href="$spells-detection_8cpp.html#ae2bce83dafe11d685dbec1ff1cc06a11" title="一般のモンスターを感知する / Detect all &quot;normal&quot; monsters on the current panel" alt="" coords="392,245,557,272"/>
+<area shape="rect" id="node20" href="$spells-detection_8cpp.html#ac7acd54d9ba5a15020c20d627e86056e" title="プレイヤー周辺のトラップを感知する / Detect all traps on current panel" alt="" coords="427,701,522,728"/>
+<area shape="rect" id="node21" href="$spells-fetcher_8cpp.html#a511a98f348296163f1a0bdfd6b9bae3b" title="アイテム引き寄せ処理 / Fetch an item (teleport it right underneath the caster)" alt="" coords="632,499,715,525"/>
+<area shape="rect" id="node23" href="$spells-launcher_8cpp.html#a9c5b6430a190c4d961f6017a483fdcf2" title="ボール系スペルの発動 / Cast a ball spell" alt="" coords="441,600,508,627"/>
+<area shape="rect" id="node24" href="$spells-launcher_8cpp.html#a668ad35122f82691e97074533dbc8b5c" title="ビーム系スペルの発動 / Cast a beam spell." alt="" coords="235,701,314,728"/>
+<area shape="rect" id="node25" href="$target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="430,1816,519,1843"/>
+<area shape="rect" id="node26" href="$hp-mp-processor_8cpp.html#aae3b822ccd5276c3867b9f1af446719d" title=" " alt="" coords="235,1461,314,1488"/>
+<area shape="rect" id="node27" href="$spells-perception_8cpp.html#ac3df176ff52478263f041532247ea900" title="アイテム鑑定のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="631,600,715,627"/>
+<area shape="rect" id="node30" href="$player-status_8cpp.html#a5dc31dcacd506df65ec4babd972ca7dd" title=" " alt="" coords="445,1107,505,1133"/>
+<area shape="rect" id="node31" href="$player-status_8cpp.html#a0dbbaf6ad1cc21536b317efaa5b917f2" title=" " alt="" coords="443,1715,507,1741"/>
+<area shape="rect" id="node32" href="$spells-floor_8cpp.html#a3eef4b1a04f3f28e70b39a6df9462ea7" title=" " alt="" coords="235,1005,314,1032"/>
+<area shape="rect" id="node33" href="$spells-sight_8cpp.html#a072d3502a9c85cb190478b7f685d658e" title="モンスター精神攻撃効果(プレイヤー視界範囲内) / Mindblast monsters" alt="" coords="205,448,344,475"/>
+<area shape="rect" id="node34" href="$mind-mindcrafter_8cpp.html#a32c9502c994c59bed2f6bfbceddfd05f" title="超能力者のサイコメトリー処理/ Forcibly pseudo&#45;identify an object in the inventory (or on the floor)" alt="" coords="625,752,722,779"/>
+<area shape="rect" id="node37" href="$bad-status-setter_8cpp.html#a6152d304ba1b3495baef77a69de9f187" title="恐怖の継続時間をセットする / Set &quot;afraid&quot;, notice observable changes" alt="" coords="235,1309,314,1336"/>
+<area shape="rect" id="node38" href="$buff-setter_8cpp.html#adba19dfd913dcf5feb9f6e0b09c9326d" title="加速の継続時間をセットする / Set &quot;fast&quot;, notice observable changes" alt="" coords="241,1208,309,1235"/>
+<area shape="rect" id="node39" href="$buff-setter_8cpp.html#ac03004c39e900ef70456ab128e303508" title="士気高揚の継続時間をセットする / Set &quot;hero&quot;, notice observable changes" alt="" coords="239,1613,311,1640"/>
+<area shape="rect" id="node40" href="$element-resistance_8cpp.html#acb07baa4e9331416f075d1dcb65c419b" title="一時的酸耐性の継続時間をセットする / Set &quot;oppose_acid&quot;, notice observable changes" alt="" coords="613,1715,733,1741"/>
+<area shape="rect" id="node41" href="$element-resistance_8cpp.html#a4aedfbfb30de8af7f62ac69c8bd30715" title="一時的冷気耐性の継続時間をセットする / Set &quot;oppose_cold&quot;, notice observable changes" alt="" coords="613,955,733,981"/>
+<area shape="rect" id="node42" href="$element-resistance_8cpp.html#a230aa74615595b7d62b452d78397c5b9" title="一時的電撃耐性の継続時間をセットする / Set &quot;oppose_elec&quot;, notice observable changes" alt="" coords="613,1005,733,1032"/>
+<area shape="rect" id="node43" href="$element-resistance_8cpp.html#ae8333840ce64c42c444857fdd00b4dd2" title="一時的火炎耐性の継続時間をセットする / Set &quot;oppose_fire&quot;, notice observable changes" alt="" coords="617,1056,730,1083"/>
+<area shape="rect" id="node44" href="$element-resistance_8cpp.html#a1931c2c7f031edea14439c6ca1f3be83" title="一時的毒耐性の継続時間をセットする / Set &quot;oppose_pois&quot;, notice observable changes" alt="" coords="613,1107,733,1133"/>
+<area shape="rect" id="node45" href="$buff-setter_8cpp.html#a2e5079cffccadd1f26832a8cad9379d5" title="肌石化の継続時間をセットする / Set &quot;shield&quot;, notice observable changes" alt="" coords="633,1157,714,1184"/>
+<area shape="rect" id="node46" href="$bad-status-setter_8cpp.html#ac1bf0ab6dab8b807333530aa20d1cc22" title="朦朧の継続時間をセットする / Set &quot;stun&quot;, notice observable changes" alt="" coords="637,1411,709,1437"/>
+<area shape="rect" id="node47" href="$sight-setter_8cpp.html#a35a114c478c4067cac46cbffb0a3b8da" title="時限ESPの継続時間をセットする / Set &quot;tim_esp&quot;, notice observable changes" alt="" coords="627,1512,720,1539"/>
+<area shape="rect" id="node48" href="$spells-teleport_8cpp.html#ab7dc77e5dccd8357b2058d9bcd352cde" title="プレイヤーのテレポート処理メインルーチン" alt="" coords="221,1765,328,1792"/>
+<area shape="rect" id="node49" href="$spells-status_8cpp.html#a4cf856929d055cc60803bca95fa8ed9a" title=" " alt="" coords="633,1563,713,1589"/>
+<area shape="rect" id="node50" href="$spells-floor_8cpp.html#aa1bf6734f45843faa71627418ea72ff1" title="フロアに影響のある魔法の処理" alt="" coords="242,1867,307,1893"/>
+<area shape="rect" id="node3" href="$spells-sight_8cpp.html#a47482081184d0a1282de835163dc6e62" title="視界内モンスターに魔法効果を与える / Apply a &quot;project()&quot; directly to all viewable monsters" alt="" coords="422,397,527,424"/>
+<area shape="rect" id="node4" href="$class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="605,296,741,323"/>
+<area shape="rect" id="node5" href="$monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="614,245,733,272"/>
+<area shape="rect" id="node6" href="$cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="791,347,931,373"/>
+<area shape="rect" id="node11" href="$projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="818,448,903,475"/>
+<area shape="rect" id="node12" href="$class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="614,347,733,373"/>
+<area shape="rect" id="node13" href="$class_flag_group.html#a021f4c66b2af9456aa41200d81efee90" title="指定したフラグを指定した値にセットする" alt="" coords="619,195,727,221"/>
+<area shape="rect" id="node8" href="$stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="815,1275,906,1301"/>
+<area shape="rect" id="node9" href="$display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="815,549,906,576"/>
+<area shape="rect" id="node22" href="$flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="807,600,914,627"/>
+<area shape="rect" id="node28" href="$autopick_8cpp.html#ae7f092144503a2ccb534345fe872d299" title=" " alt="" coords="793,752,928,779"/>
+<area shape="rect" id="node29" href="$floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="807,701,914,728"/>
+<area shape="rect" id="node35" href="$object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="801,869,920,896"/>
+<area shape="rect" id="node36" href="$simple-perception_8cpp.html#a754f3892a965b82793e6b91c7d9d502c" title="重度擬似鑑定の判断処理 / Return a &quot;feeling&quot; (or NULL) about an item." alt="" coords="789,803,932,845"/>
+</map>

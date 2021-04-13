@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/io/files-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html">io</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">files-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="files-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="files-util_8h.html#a89f694b4856b83c11d1a807c27d302d1">savefile</a>[1024];</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="files-util_8h.html#a957c6d7220f228943a37cda62b92fd0f">savefile_base</a>[40];</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="files-util_8h.html#a7e869415f80abf7e79670147f7d1a9ff">debug_savefile</a>[1024];</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="files-util_8h.html#a4a9d5852bbfa69a90c83d1eed6a943ab">ANGBAND_DIR</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="files-util_8h.html#aef395a6804552f269b28de3de6f673b5">ANGBAND_DIR_APEX</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="files-util_8h.html#a410c271badb55d91ef080253c94e5d99">ANGBAND_DIR_BONE</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="files-util_8h.html#a3d9e5dc3d9853d100b4594a43066312f">ANGBAND_DIR_DATA</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="files-util_8h.html#a2f3a6f2a53aa5e59c3f350019af510d5">ANGBAND_DIR_EDIT</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="files-util_8h.html#aa236eaff86bc89c29d58f97d0deb36c5">ANGBAND_DIR_SCRIPT</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="files-util_8h.html#aab2cbd591a10c8b94a5a507b82bca6e3">ANGBAND_DIR_FILE</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="files-util_8h.html#a15ed360b7985bc930c7aec2af103ea93">ANGBAND_DIR_HELP</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="files-util_8h.html#a8d878df62e8d8ad6e2f8a1350a640eb5">ANGBAND_DIR_INFO</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="files-util_8h.html#af626cb8ee4a12f8f5396ca60465b06b6">ANGBAND_DIR_PREF</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="files-util_8h.html#ac19ce1fee81ec6c158baf479fcc6c2cb">ANGBAND_DIR_SAVE</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="files-util_8h.html#ac6262685c4feda621c8bc9c5778d319d">ANGBAND_DIR_DEBUG_SAVE</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="files-util_8h.html#adc2231c133663221d4e78b7d2a55a496">ANGBAND_DIR_USER</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="files-util_8h.html#a67f888fd10034b943dc725538cfb623b">ANGBAND_DIR_XTRA</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="files-util_8h.html#a74980559fb74b5a8858394d204ccf028">   24</a></span>&#160;<span class="keyword">typedef</span> void(*<a class="code" href="files-util_8h.html#a74980559fb74b5a8858394d204ccf028">display_player_pf</a>)(<a class="code" href="structplayer__type.html">player_type</a>*, int);</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="files-util_8h.html#a10dcfcf49df1782401981cd64d2c3e09">   25</a></span>&#160;<span class="keyword">typedef</span> void(*<a class="code" href="files-util_8h.html#a10dcfcf49df1782401981cd64d2c3e09">update_playtime_pf</a>)(void);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> <a class="code" href="files-util_8h.html#aa774b54a737e0cb637f600b724f3e43c">file_character</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> name, <a class="code" href="files-util_8h.html#a10dcfcf49df1782401981cd64d2c3e09">update_playtime_pf</a> <a class="code" href="world_8cpp.html#a722be27807c99a7258058b2baabee95e">update_playtime</a>, <a class="code" href="files-util_8h.html#a74980559fb74b5a8858394d204ccf028">display_player_pf</a> <a class="code" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271">display_player</a>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> <a class="code" href="files-util_8h.html#a06656f06eccb3992114a0f3dd1f51ca1">get_rnd_line</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> file_name, <span class="keywordtype">int</span> entry, <span class="keywordtype">char</span> *output);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">void</span> <a class="code" href="files-util_8h.html#a7a5f649ee8fe63baf4c1500fb050c8e2">read_dead_file</a>(<span class="keywordtype">char</span>* <a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <span class="keywordtype">size_t</span> buf_size);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#ifdef JP</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> get_rnd_line_jonly(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> file_name, <span class="keywordtype">int</span> entry, <span class="keywordtype">char</span> *output, <span class="keywordtype">int</span> count);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> <a class="code" href="files-util_8h.html#a1a24b90a72b9344cd7790c0a0d2dc794">counts_write</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">int</span> where, <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> count);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="files-util_8h.html#a25e3e63912a05d70271e55b35d1aaaf7">counts_read</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">int</span> where);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="adisplay-player_8cpp_html_a47326bd321e057559d696b8252a26271"><div class="ttname"><a href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271">display_player</a></div><div class="ttdeci">void display_player(player_type *creature_ptr, int mode)</div><div class="ttdoc">プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)</div><div class="ttdef"><b>Definition:</b> display-player.cpp:297</div></div>
+<div class="ttc" id="afiles-util_8h_html_a06656f06eccb3992114a0f3dd1f51ca1"><div class="ttname"><a href="files-util_8h.html#a06656f06eccb3992114a0f3dd1f51ca1">get_rnd_line</a></div><div class="ttdeci">errr get_rnd_line(concptr file_name, int entry, char *output)</div><div class="ttdoc">ファイルからランダムに行を一つ取得する / Get a random line from a file</div><div class="ttdef"><b>Definition:</b> files-util.cpp:100</div></div>
+<div class="ttc" id="afiles-util_8h_html_a10dcfcf49df1782401981cd64d2c3e09"><div class="ttname"><a href="files-util_8h.html#a10dcfcf49df1782401981cd64d2c3e09">update_playtime_pf</a></div><div class="ttdeci">void(* update_playtime_pf)(void)</div><div class="ttdef"><b>Definition:</b> files-util.h:25</div></div>
+<div class="ttc" id="afiles-util_8h_html_a15ed360b7985bc930c7aec2af103ea93"><div class="ttname"><a href="files-util_8h.html#a15ed360b7985bc930c7aec2af103ea93">ANGBAND_DIR_HELP</a></div><div class="ttdeci">concptr ANGBAND_DIR_HELP</div><div class="ttdoc">Help files (normal) for the online help (ascii) These files are portable between platforms</div><div class="ttdef"><b>Definition:</b> files-util.cpp:32</div></div>
+<div class="ttc" id="afiles-util_8h_html_a1a24b90a72b9344cd7790c0a0d2dc794"><div class="ttname"><a href="files-util_8h.html#a1a24b90a72b9344cd7790c0a0d2dc794">counts_write</a></div><div class="ttdeci">errr counts_write(player_type *creature_ptr, int where, u32b count)</div><div class="ttdoc">ファイル位置に書き込む /</div><div class="ttdef"><b>Definition:</b> files-util.cpp:267</div></div>
+<div class="ttc" id="afiles-util_8h_html_a25e3e63912a05d70271e55b35d1aaaf7"><div class="ttname"><a href="files-util_8h.html#a25e3e63912a05d70271e55b35d1aaaf7">counts_read</a></div><div class="ttdeci">u32b counts_read(player_type *creature_ptr, int where)</div><div class="ttdoc">ファイル位置を読み込む</div><div class="ttdef"><b>Definition:</b> files-util.cpp:244</div></div>
+<div class="ttc" id="afiles-util_8h_html_a2f3a6f2a53aa5e59c3f350019af510d5"><div class="ttname"><a href="files-util_8h.html#a2f3a6f2a53aa5e59c3f350019af510d5">ANGBAND_DIR_EDIT</a></div><div class="ttdeci">concptr ANGBAND_DIR_EDIT</div><div class="ttdoc">Textual template files for the &quot;*_info&quot; arrays (ascii) These files are portable between platforms</div><div class="ttdef"><b>Definition:</b> files-util.cpp:29</div></div>
+<div class="ttc" id="afiles-util_8h_html_a3d9e5dc3d9853d100b4594a43066312f"><div class="ttname"><a href="files-util_8h.html#a3d9e5dc3d9853d100b4594a43066312f">ANGBAND_DIR_DATA</a></div><div class="ttdeci">concptr ANGBAND_DIR_DATA</div><div class="ttdoc">Binary image files for the &quot;*_info&quot; arrays (binary) These files are not portable between platforms</div><div class="ttdef"><b>Definition:</b> files-util.cpp:28</div></div>
+<div class="ttc" id="afiles-util_8h_html_a410c271badb55d91ef080253c94e5d99"><div class="ttname"><a href="files-util_8h.html#a410c271badb55d91ef080253c94e5d99">ANGBAND_DIR_BONE</a></div><div class="ttdeci">concptr ANGBAND_DIR_BONE</div><div class="ttdoc">Bone files for player ghosts (ascii) These files are portable between platforms</div><div class="ttdef"><b>Definition:</b> files-util.cpp:27</div></div>
+<div class="ttc" id="afiles-util_8h_html_a4a9d5852bbfa69a90c83d1eed6a943ab"><div class="ttname"><a href="files-util_8h.html#a4a9d5852bbfa69a90c83d1eed6a943ab">ANGBAND_DIR</a></div><div class="ttdeci">concptr ANGBAND_DIR</div><div class="ttdoc">ファイル入出力管理 / Purpose: code dealing with files (and death)</div><div class="ttdef"><b>Definition:</b> files-util.cpp:25</div></div>
+<div class="ttc" id="afiles-util_8h_html_a67f888fd10034b943dc725538cfb623b"><div class="ttname"><a href="files-util_8h.html#a67f888fd10034b943dc725538cfb623b">ANGBAND_DIR_XTRA</a></div><div class="ttdeci">concptr ANGBAND_DIR_XTRA</div><div class="ttdoc">Various extra files (binary) These files are rarely portable between platforms</div><div class="ttdef"><b>Definition:</b> files-util.cpp:38</div></div>
+<div class="ttc" id="afiles-util_8h_html_a74980559fb74b5a8858394d204ccf028"><div class="ttname"><a href="files-util_8h.html#a74980559fb74b5a8858394d204ccf028">display_player_pf</a></div><div class="ttdeci">void(* display_player_pf)(player_type *, int)</div><div class="ttdef"><b>Definition:</b> files-util.h:24</div></div>
+<div class="ttc" id="afiles-util_8h_html_a7a5f649ee8fe63baf4c1500fb050c8e2"><div class="ttname"><a href="files-util_8h.html#a7a5f649ee8fe63baf4c1500fb050c8e2">read_dead_file</a></div><div class="ttdeci">void read_dead_file(char *buf, size_t buf_size)</div><div class="ttdoc">墓のアスキーアートテンプレを読み込む</div><div class="ttdef"><b>Definition:</b> files-util.cpp:306</div></div>
+<div class="ttc" id="afiles-util_8h_html_a7e869415f80abf7e79670147f7d1a9ff"><div class="ttname"><a href="files-util_8h.html#a7e869415f80abf7e79670147f7d1a9ff">debug_savefile</a></div><div class="ttdeci">char debug_savefile[1024]</div><div class="ttdef"><b>Definition:</b> files-util.cpp:46</div></div>
+<div class="ttc" id="afiles-util_8h_html_a89f694b4856b83c11d1a807c27d302d1"><div class="ttname"><a href="files-util_8h.html#a89f694b4856b83c11d1a807c27d302d1">savefile</a></div><div class="ttdeci">char savefile[1024]</div><div class="ttdef"><b>Definition:</b> files-util.cpp:44</div></div>
+<div class="ttc" id="afiles-util_8h_html_a8d878df62e8d8ad6e2f8a1350a640eb5"><div class="ttname"><a href="files-util_8h.html#a8d878df62e8d8ad6e2f8a1350a640eb5">ANGBAND_DIR_INFO</a></div><div class="ttdeci">concptr ANGBAND_DIR_INFO</div><div class="ttdoc">Help files (spoilers) for the online help (ascii) These files are portable between platforms</div><div class="ttdef"><b>Definition:</b> files-util.cpp:33</div></div>
+<div class="ttc" id="afiles-util_8h_html_a957c6d7220f228943a37cda62b92fd0f"><div class="ttname"><a href="files-util_8h.html#a957c6d7220f228943a37cda62b92fd0f">savefile_base</a></div><div class="ttdeci">char savefile_base[40]</div><div class="ttdef"><b>Definition:</b> files-util.cpp:45</div></div>
+<div class="ttc" id="afiles-util_8h_html_aa236eaff86bc89c29d58f97d0deb36c5"><div class="ttname"><a href="files-util_8h.html#aa236eaff86bc89c29d58f97d0deb36c5">ANGBAND_DIR_SCRIPT</a></div><div class="ttdeci">concptr ANGBAND_DIR_SCRIPT</div><div class="ttdoc">Script files These files are portable between platforms.</div><div class="ttdef"><b>Definition:</b> files-util.cpp:30</div></div>
+<div class="ttc" id="afiles-util_8h_html_aa774b54a737e0cb637f600b724f3e43c"><div class="ttname"><a href="files-util_8h.html#aa774b54a737e0cb637f600b724f3e43c">file_character</a></div><div class="ttdeci">errr file_character(player_type *creature_ptr, concptr name, update_playtime_pf update_playtime, display_player_pf display_player)</div><div class="ttdoc">プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file</div><div class="ttdef"><b>Definition:</b> files-util.cpp:58</div></div>
+<div class="ttc" id="afiles-util_8h_html_aab2cbd591a10c8b94a5a507b82bca6e3"><div class="ttname"><a href="files-util_8h.html#aab2cbd591a10c8b94a5a507b82bca6e3">ANGBAND_DIR_FILE</a></div><div class="ttdeci">concptr ANGBAND_DIR_FILE</div><div class="ttdoc">Various extra files (ascii) These files may be portable between platforms</div><div class="ttdef"><b>Definition:</b> files-util.cpp:31</div></div>
+<div class="ttc" id="afiles-util_8h_html_ac19ce1fee81ec6c158baf479fcc6c2cb"><div class="ttname"><a href="files-util_8h.html#ac19ce1fee81ec6c158baf479fcc6c2cb">ANGBAND_DIR_SAVE</a></div><div class="ttdeci">concptr ANGBAND_DIR_SAVE</div><div class="ttdoc">Savefiles for current characters (binary)</div><div class="ttdef"><b>Definition:</b> files-util.cpp:35</div></div>
+<div class="ttc" id="afiles-util_8h_html_ac6262685c4feda621c8bc9c5778d319d"><div class="ttname"><a href="files-util_8h.html#ac6262685c4feda621c8bc9c5778d319d">ANGBAND_DIR_DEBUG_SAVE</a></div><div class="ttdeci">concptr ANGBAND_DIR_DEBUG_SAVE</div><div class="ttdef"><b>Definition:</b> files-util.cpp:36</div></div>
+<div class="ttc" id="afiles-util_8h_html_adc2231c133663221d4e78b7d2a55a496"><div class="ttname"><a href="files-util_8h.html#adc2231c133663221d4e78b7d2a55a496">ANGBAND_DIR_USER</a></div><div class="ttdeci">concptr ANGBAND_DIR_USER</div><div class="ttdoc">User &quot;preference&quot; files (ascii) These files are rarely portable between platforms</div><div class="ttdef"><b>Definition:</b> files-util.cpp:37</div></div>
+<div class="ttc" id="afiles-util_8h_html_aef395a6804552f269b28de3de6f673b5"><div class="ttname"><a href="files-util_8h.html#aef395a6804552f269b28de3de6f673b5">ANGBAND_DIR_APEX</a></div><div class="ttdeci">concptr ANGBAND_DIR_APEX</div><div class="ttdoc">High score files (binary) These files may be portable between platforms</div><div class="ttdef"><b>Definition:</b> files-util.cpp:26</div></div>
+<div class="ttc" id="afiles-util_8h_html_af626cb8ee4a12f8f5396ca60465b06b6"><div class="ttname"><a href="files-util_8h.html#af626cb8ee4a12f8f5396ca60465b06b6">ANGBAND_DIR_PREF</a></div><div class="ttdeci">concptr ANGBAND_DIR_PREF</div><div class="ttdoc">Default user &quot;preference&quot; files (ascii) These files are rarely portable between platforms</div><div class="ttdef"><b>Definition:</b> files-util.cpp:34</div></div>
+<div class="ttc" id="ah-type_8h_html_ad99e8b64263d5831d93bec22e89da527"><div class="ttname"><a href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a></div><div class="ttdeci">int errr</div><div class="ttdoc">エラーコードの定義 / Error codes for function return values</div><div class="ttdef"><b>Definition:</b> h-type.h:53</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="ah-type_8h_html_af7a1de980667931f896ae6a820f0ee80"><div class="ttname"><a href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a></div><div class="ttdeci">unsigned long u32b</div><div class="ttdef"><b>Definition:</b> h-type.h:93</div></div>
+<div class="ttc" id="arecord-play-movie_8cpp_html_a1fe855c208bc17a51a4d34fefdb2d5b1"><div class="ttname"><a href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a></div><div class="ttdeci">char * buf</div><div class="ttdef"><b>Definition:</b> record-play-movie.cpp:54</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="aworld_8cpp_html_a722be27807c99a7258058b2baabee95e"><div class="ttname"><a href="world_8cpp.html#a722be27807c99a7258058b2baabee95e">update_playtime</a></div><div class="ttdeci">void update_playtime(void)</div><div class="ttdoc">実ゲームプレイ時間を更新する</div><div class="ttdef"><b>Definition:</b> world.cpp:53</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

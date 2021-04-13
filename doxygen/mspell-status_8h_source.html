@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/mspell/mspell-status.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d3503302c38a329207825687a87abf53.html">mspell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mspell-status.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="mspell-status_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">struct </span><a class="code" href="struct_monster_spell_result.html">MonsterSpellResult</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> <a class="code" href="mspell-status_8h.html#af786fe11d0c98f4d3fed6ccdf02965e0">spell_badstatus_message</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg1, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg2, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg3, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg4, <span class="keywordtype">bool</span> resist,</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="z-rand_8h.html#a02f0f69af2b8073378e7227c274f924e">saving_throw</a>, <span class="keywordtype">int</span> TARGET_TYPE);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<a class="code" href="struct_monster_spell_result.html">MonsterSpellResult</a> <a class="code" href="mspell-status_8h.html#a1288b02a4c7726f068b75fc178d01817">spell_RF5_DRAIN_MANA</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <span class="keywordtype">int</span> TARGET_TYPE);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<a class="code" href="struct_monster_spell_result.html">MonsterSpellResult</a> <a class="code" href="mspell-status_8h.html#acf7af081a76ea3510b0d5fc034c5c247">spell_RF5_MIND_BLAST</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <span class="keywordtype">int</span> TARGET_TYPE);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<a class="code" href="struct_monster_spell_result.html">MonsterSpellResult</a> <a class="code" href="mspell-status_8h.html#a065e582b50d2b55a6a1971230ecd63b5">spell_RF5_BRAIN_SMASH</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <span class="keywordtype">int</span> TARGET_TYPE);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<a class="code" href="struct_monster_spell_result.html">MonsterSpellResult</a> <a class="code" href="mspell-status_8h.html#a67c298dd694943847c5ae49955477066">spell_RF5_SCARE</a>(<a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <span class="keywordtype">int</span> TARGET_TYPE);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<a class="code" href="struct_monster_spell_result.html">MonsterSpellResult</a> <a class="code" href="mspell-status_8h.html#a6cd691e26b693cc27cc782c56459078c">spell_RF5_BLIND</a>(<a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <span class="keywordtype">int</span> TARGET_TYPE);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<a class="code" href="struct_monster_spell_result.html">MonsterSpellResult</a> <a class="code" href="mspell-status_8h.html#ad66bc381edc2c6c3702f1984f3b9e8f4">spell_RF5_CONF</a>(<a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <span class="keywordtype">int</span> TARGET_TYPE);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<a class="code" href="struct_monster_spell_result.html">MonsterSpellResult</a> <a class="code" href="mspell-status_8h.html#a1002a0d77e0827ef228930141645b839">spell_RF5_HOLD</a>(<a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <span class="keywordtype">int</span> TARGET_TYPE);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<a class="code" href="struct_monster_spell_result.html">MonsterSpellResult</a> <a class="code" href="mspell-status_8h.html#a691bf5871d51fc51de7f7215599d10cf">spell_RF6_HASTE</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <span class="keywordtype">int</span> TARGET_TYPE);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<a class="code" href="struct_monster_spell_result.html">MonsterSpellResult</a> <a class="code" href="mspell-status_8h.html#aa7c79dca484fbcb84b8d2cf719f9933e">spell_RF5_SLOW</a>(<a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <span class="keywordtype">int</span> TARGET_TYPE);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<a class="code" href="struct_monster_spell_result.html">MonsterSpellResult</a> <a class="code" href="mspell-status_8h.html#adc35867d0ab540691e09ce017a97a113">spell_RF6_HEAL</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <span class="keywordtype">int</span> TARGET_TYPE);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<a class="code" href="struct_monster_spell_result.html">MonsterSpellResult</a> <a class="code" href="mspell-status_8h.html#a55d6660a24ee40df1ef7e64795b4e717">spell_RF6_INVULNER</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <span class="keywordtype">int</span> TARGET_TYPE);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<a class="code" href="struct_monster_spell_result.html">MonsterSpellResult</a> <a class="code" href="mspell-status_8h.html#a84f12679d91a5136c73d8105464115ef">spell_RF6_FORGET</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="amspell-status_8h_html_a065e582b50d2b55a6a1971230ecd63b5"><div class="ttname"><a href="mspell-status_8h.html#a065e582b50d2b55a6a1971230ecd63b5">spell_RF5_BRAIN_SMASH</a></div><div class="ttdeci">MonsterSpellResult spell_RF5_BRAIN_SMASH(player_type *target_ptr, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx, int TARGET_TYPE)</div><div class="ttdoc">RF5_BRAIN_SMASHの処理。脳攻撃。 /</div><div class="ttdef"><b>Definition:</b> mspell-status.cpp:185</div></div>
+<div class="ttc" id="amspell-status_8h_html_a1002a0d77e0827ef228930141645b839"><div class="ttname"><a href="mspell-status_8h.html#a1002a0d77e0827ef228930141645b839">spell_RF5_HOLD</a></div><div class="ttdeci">MonsterSpellResult spell_RF5_HOLD(MONSTER_IDX m_idx, player_type *target_ptr, MONSTER_IDX t_idx, int TARGET_TYPE)</div><div class="ttdoc">RF5_HOLDの処理。麻痺。 /</div><div class="ttdef"><b>Definition:</b> mspell-status.cpp:383</div></div>
+<div class="ttc" id="amspell-status_8h_html_a1288b02a4c7726f068b75fc178d01817"><div class="ttname"><a href="mspell-status_8h.html#a1288b02a4c7726f068b75fc178d01817">spell_RF5_DRAIN_MANA</a></div><div class="ttdeci">MonsterSpellResult spell_RF5_DRAIN_MANA(player_type *target_ptr, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx, int TARGET_TYPE)</div><div class="ttdoc">RF5_DRAIN_MANAの処理。魔力吸収。 /</div><div class="ttdef"><b>Definition:</b> mspell-status.cpp:112</div></div>
+<div class="ttc" id="amspell-status_8h_html_a55d6660a24ee40df1ef7e64795b4e717"><div class="ttname"><a href="mspell-status_8h.html#a55d6660a24ee40df1ef7e64795b4e717">spell_RF6_INVULNER</a></div><div class="ttdeci">MonsterSpellResult spell_RF6_INVULNER(player_type *target_ptr, MONSTER_IDX m_idx, MONSTER_IDX t_idx, int TARGET_TYPE)</div><div class="ttdoc">RF6_INVULNERの処理。無敵。 /</div><div class="ttdef"><b>Definition:</b> mspell-status.cpp:585</div></div>
+<div class="ttc" id="amspell-status_8h_html_a67c298dd694943847c5ae49955477066"><div class="ttname"><a href="mspell-status_8h.html#a67c298dd694943847c5ae49955477066">spell_RF5_SCARE</a></div><div class="ttdeci">MonsterSpellResult spell_RF5_SCARE(MONSTER_IDX m_idx, player_type *target_ptr, MONSTER_IDX t_idx, int TARGET_TYPE)</div><div class="ttdoc">RF5_SCAREの処理。恐怖。 /</div><div class="ttdef"><b>Definition:</b> mspell-status.cpp:220</div></div>
+<div class="ttc" id="amspell-status_8h_html_a691bf5871d51fc51de7f7215599d10cf"><div class="ttname"><a href="mspell-status_8h.html#a691bf5871d51fc51de7f7215599d10cf">spell_RF6_HASTE</a></div><div class="ttdeci">MonsterSpellResult spell_RF6_HASTE(player_type *target_ptr, MONSTER_IDX m_idx, MONSTER_IDX t_idx, int TARGET_TYPE)</div><div class="ttdoc">RF6_HASTEの処理。加速。 /</div><div class="ttdef"><b>Definition:</b> mspell-status.cpp:435</div></div>
+<div class="ttc" id="amspell-status_8h_html_a6cd691e26b693cc27cc782c56459078c"><div class="ttname"><a href="mspell-status_8h.html#a6cd691e26b693cc27cc782c56459078c">spell_RF5_BLIND</a></div><div class="ttdeci">MonsterSpellResult spell_RF5_BLIND(MONSTER_IDX m_idx, player_type *target_ptr, MONSTER_IDX t_idx, int TARGET_TYPE)</div><div class="ttdoc">RF5_BLINDの処理。盲目。 /</div><div class="ttdef"><b>Definition:</b> mspell-status.cpp:271</div></div>
+<div class="ttc" id="amspell-status_8h_html_a84f12679d91a5136c73d8105464115ef"><div class="ttname"><a href="mspell-status_8h.html#a84f12679d91a5136c73d8105464115ef">spell_RF6_FORGET</a></div><div class="ttdeci">MonsterSpellResult spell_RF6_FORGET(player_type *target_ptr, MONSTER_IDX m_idx)</div><div class="ttdoc">RF6_FORGETの処理。記憶消去。 /</div><div class="ttdef"><b>Definition:</b> mspell-status.cpp:614</div></div>
+<div class="ttc" id="amspell-status_8h_html_aa7c79dca484fbcb84b8d2cf719f9933e"><div class="ttname"><a href="mspell-status_8h.html#aa7c79dca484fbcb84b8d2cf719f9933e">spell_RF5_SLOW</a></div><div class="ttdeci">MonsterSpellResult spell_RF5_SLOW(MONSTER_IDX m_idx, player_type *target_ptr, MONSTER_IDX t_idx, int TARGET_TYPE)</div><div class="ttdoc">RF5_SLOWの処理。減速。 /</div><div class="ttdef"><b>Definition:</b> mspell-status.cpp:465</div></div>
+<div class="ttc" id="amspell-status_8h_html_acf7af081a76ea3510b0d5fc034c5c247"><div class="ttname"><a href="mspell-status_8h.html#acf7af081a76ea3510b0d5fc034c5c247">spell_RF5_MIND_BLAST</a></div><div class="ttdeci">MonsterSpellResult spell_RF5_MIND_BLAST(player_type *target_ptr, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx, int TARGET_TYPE)</div><div class="ttdoc">RF5_MIND_BLASTの処理。精神攻撃。 /</div><div class="ttdef"><b>Definition:</b> mspell-status.cpp:147</div></div>
+<div class="ttc" id="amspell-status_8h_html_ad66bc381edc2c6c3702f1984f3b9e8f4"><div class="ttname"><a href="mspell-status_8h.html#ad66bc381edc2c6c3702f1984f3b9e8f4">spell_RF5_CONF</a></div><div class="ttdeci">MonsterSpellResult spell_RF5_CONF(MONSTER_IDX m_idx, player_type *target_ptr, MONSTER_IDX t_idx, int TARGET_TYPE)</div><div class="ttdoc">RF5_CONFの処理。混乱。/</div><div class="ttdef"><b>Definition:</b> mspell-status.cpp:331</div></div>
+<div class="ttc" id="amspell-status_8h_html_adc35867d0ab540691e09ce017a97a113"><div class="ttname"><a href="mspell-status_8h.html#adc35867d0ab540691e09ce017a97a113">spell_RF6_HEAL</a></div><div class="ttdeci">MonsterSpellResult spell_RF6_HEAL(player_type *target_ptr, MONSTER_IDX m_idx, MONSTER_IDX t_idx, int TARGET_TYPE)</div><div class="ttdoc">RF6_HEALの処理。治癒。 /</div><div class="ttdef"><b>Definition:</b> mspell-status.cpp:526</div></div>
+<div class="ttc" id="amspell-status_8h_html_af786fe11d0c98f4d3fed6ccdf02965e0"><div class="ttname"><a href="mspell-status_8h.html#af786fe11d0c98f4d3fed6ccdf02965e0">spell_badstatus_message</a></div><div class="ttdeci">void spell_badstatus_message(player_type *target_ptr, MONSTER_IDX m_idx, MONSTER_IDX t_idx, concptr msg1, concptr msg2, concptr msg3, concptr msg4, bool resist, bool saving_throw, int TARGET_TYPE)</div><div class="ttdoc">プレーヤーのステータスを下げるか、モンスター自身のステータスを上げるスペル類の処理</div><div class="ttdef"><b>Definition:</b> mspell-status.cpp:49</div></div>
+<div class="ttc" id="astruct_monster_spell_result_html"><div class="ttname"><a href="struct_monster_spell_result.html">MonsterSpellResult</a></div><div class="ttdoc">モンスターが魔法を使った際の結果。</div><div class="ttdef"><b>Definition:</b> mspell.h:5</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="az-rand_8h_html_a02f0f69af2b8073378e7227c274f924e"><div class="ttname"><a href="z-rand_8h.html#a02f0f69af2b8073378e7227c274f924e">saving_throw</a></div><div class="ttdeci">#define saving_throw(S)</div><div class="ttdef"><b>Definition:</b> z-rand.h:63</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

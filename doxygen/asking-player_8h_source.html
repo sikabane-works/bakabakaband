@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/core/asking-player.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">asking-player.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="asking-player_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * Bit flags for control of get_check_strict()</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="asking-player_8h.html#a4992cb19d0ccee42615d8805a60edf9c">    8</a></span>&#160;<span class="preprocessor">#define CHECK_OKAY_CANCEL 0x01</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="asking-player_8h.html#ac648e895e12ea7608d66eec824b832a1">    9</a></span>&#160;<span class="preprocessor">#define CHECK_NO_ESCAPE 0x02</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="asking-player_8h.html#a2e8a7ea40828db3e34b9892a35afb172">   10</a></span>&#160;<span class="preprocessor">#define CHECK_NO_HISTORY 0x04</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="asking-player_8h.html#afa449662782b65795103d3aa3b16f417">   11</a></span>&#160;<span class="preprocessor">#define CHECK_DEFAULT_Y 0x08</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="asking-player_8h.html#a025b21031a6e4922de22b9e961a8358e">askfor_aux</a>(<span class="keywordtype">char</span> *<a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <span class="keywordtype">int</span> <a class="code" href="display-util_8cpp.html#afed088663f8704004425cdae2120b9b3">len</a>, <span class="keywordtype">bool</span> numpad_cursor);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="asking-player_8h.html#ad5c7efa101f8104fd152aaa10b9be28b">askfor</a>(<span class="keywordtype">char</span> *<a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <span class="keywordtype">int</span> <a class="code" href="display-util_8cpp.html#afed088663f8704004425cdae2120b9b3">len</a>);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="asking-player_8h.html#a50f2637bb42bac00485e175c23b4c572">get_string</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> prompt, <span class="keywordtype">char</span> *<a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <span class="keywordtype">int</span> <a class="code" href="display-util_8cpp.html#afed088663f8704004425cdae2120b9b3">len</a>);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="asking-player_8h.html#aa4ba425d5e56a3b73b8b4fab36ae998f">get_check</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> prompt);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="asking-player_8h.html#afc36c41a52a3ec2fdc8a7cd50df27da6">get_check_strict</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> prompt, <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> mode);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="asking-player_8h.html#a00cb58166e0fbeca1df97f3f4aea57d6">get_com</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> prompt, <span class="keywordtype">char</span> *command, <span class="keywordtype">bool</span> z_escape);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<a class="code" href="h-type_8h.html#a9e3a4164fb177c0c9c9296c739462b13">QUANTITY</a> <a class="code" href="asking-player_8h.html#a18ddf190b45e6fbac7a074687008550f">get_quantity</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> prompt, <a class="code" href="h-type_8h.html#a9e3a4164fb177c0c9c9296c739462b13">QUANTITY</a> max);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> <a class="code" href="asking-player_8h.html#a28b7bdf88cc755ffa6c94bb59d997d1a">pause_line</a>(<span class="keywordtype">int</span> <a class="code" href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a>);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aasking-player_8h_html_a00cb58166e0fbeca1df97f3f4aea57d6"><div class="ttname"><a href="asking-player_8h.html#a00cb58166e0fbeca1df97f3f4aea57d6">get_com</a></div><div class="ttdeci">bool get_com(concptr prompt, char *command, bool z_escape)</div><div class="ttdef"><b>Definition:</b> asking-player.cpp:317</div></div>
+<div class="ttc" id="aasking-player_8h_html_a025b21031a6e4922de22b9e961a8358e"><div class="ttname"><a href="asking-player_8h.html#a025b21031a6e4922de22b9e961a8358e">askfor_aux</a></div><div class="ttdeci">bool askfor_aux(char *buf, int len, bool numpad_cursor)</div><div class="ttdoc">&lt;</div><div class="ttdef"><b>Definition:</b> asking-player.cpp:33</div></div>
+<div class="ttc" id="aasking-player_8h_html_a18ddf190b45e6fbac7a074687008550f"><div class="ttname"><a href="asking-player_8h.html#a18ddf190b45e6fbac7a074687008550f">get_quantity</a></div><div class="ttdeci">QUANTITY get_quantity(concptr prompt, QUANTITY max)</div><div class="ttdef"><b>Definition:</b> asking-player.cpp:340</div></div>
+<div class="ttc" id="aasking-player_8h_html_a28b7bdf88cc755ffa6c94bb59d997d1a"><div class="ttname"><a href="asking-player_8h.html#a28b7bdf88cc755ffa6c94bb59d997d1a">pause_line</a></div><div class="ttdeci">void pause_line(int row)</div><div class="ttdef"><b>Definition:</b> asking-player.cpp:404</div></div>
+<div class="ttc" id="aasking-player_8h_html_a50f2637bb42bac00485e175c23b4c572"><div class="ttname"><a href="asking-player_8h.html#a50f2637bb42bac00485e175c23b4c572">get_string</a></div><div class="ttdeci">bool get_string(concptr prompt, char *buf, int len)</div><div class="ttdef"><b>Definition:</b> asking-player.cpp:210</div></div>
+<div class="ttc" id="aasking-player_8h_html_aa4ba425d5e56a3b73b8b4fab36ae998f"><div class="ttname"><a href="asking-player_8h.html#aa4ba425d5e56a3b73b8b4fab36ae998f">get_check</a></div><div class="ttdeci">bool get_check(concptr prompt)</div><div class="ttdef"><b>Definition:</b> asking-player.cpp:227</div></div>
+<div class="ttc" id="aasking-player_8h_html_ad5c7efa101f8104fd152aaa10b9be28b"><div class="ttname"><a href="asking-player_8h.html#ad5c7efa101f8104fd152aaa10b9be28b">askfor</a></div><div class="ttdeci">bool askfor(char *buf, int len)</div><div class="ttdef"><b>Definition:</b> asking-player.cpp:198</div></div>
+<div class="ttc" id="aasking-player_8h_html_afc36c41a52a3ec2fdc8a7cd50df27da6"><div class="ttname"><a href="asking-player_8h.html#afc36c41a52a3ec2fdc8a7cd50df27da6">get_check_strict</a></div><div class="ttdeci">bool get_check_strict(player_type *player_ptr, concptr prompt, BIT_FLAGS mode)</div><div class="ttdef"><b>Definition:</b> asking-player.cpp:237</div></div>
+<div class="ttc" id="adisplay-util_8cpp_html_af1d3cff2e4538e23400e260bae3dadad"><div class="ttname"><a href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a></div><div class="ttdeci">int row</div><div class="ttdef"><b>Definition:</b> display-util.cpp:7</div></div>
+<div class="ttc" id="adisplay-util_8cpp_html_afed088663f8704004425cdae2120b9b3"><div class="ttname"><a href="display-util_8cpp.html#afed088663f8704004425cdae2120b9b3">len</a></div><div class="ttdeci">int len</div><div class="ttdef"><b>Definition:</b> display-util.cpp:8</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a9e3a4164fb177c0c9c9296c739462b13"><div class="ttname"><a href="h-type_8h.html#a9e3a4164fb177c0c9c9296c739462b13">QUANTITY</a></div><div class="ttdeci">int QUANTITY</div><div class="ttdoc">インターフェース上の指定個数</div><div class="ttdef"><b>Definition:</b> h-type.h:225</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="arecord-play-movie_8cpp_html_a1fe855c208bc17a51a4d34fefdb2d5b1"><div class="ttname"><a href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a></div><div class="ttdeci">char * buf</div><div class="ttdef"><b>Definition:</b> record-play-movie.cpp:54</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

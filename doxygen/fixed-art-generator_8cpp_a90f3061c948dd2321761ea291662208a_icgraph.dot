@@ -1,0 +1,37 @@
+digraph "invest_terror_mask"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="invest_terror_mask",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="固定アーティファクトの生成 / Artifact code"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="random_artifact_resistance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$fixed-art-generator_8cpp.html#a7dffb717d273115938f52fd0f0b71cc8",tooltip="固定アーティファクト生成時の特別なハードコーディング処理を行う。."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="create_named_art",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$fixed-art-generator_8cpp.html#a0e609c4508abe3e79a3aa921f8f052d4",tooltip="フロアの指定された位置に固定アーティファクトを生成する。 / Create the artifact of the specified number"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="do_cmd_wishing",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$wizard-item-modifier_8cpp.html#a3bd34825cd5d9e92c7474a31576ac7c0",tooltip="願ったが消えてしまった場合のメッセージ"];
+  Node3 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="drop_artifact_index",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$monster-death_8cpp.html#a24bbcb03067d88964cdf68db9124210b",tooltip="アーティファクトのドロップ判定処理"];
+  Node3 -> Node1737 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1737 [label="drop_dungeon_final\l_artifact",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$monster-death_8cpp.html#a92ea67756bf181388e5e4e51207cfa03",tooltip=" "];
+  Node3 -> Node1653 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1653 [label="generate_artifact",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$fixed-map-generator_8cpp.html#af81a0584225771d2ab4a403d68ba1509",tooltip=" "];
+  Node3 -> Node1738 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1738 [label="on_dead_sacred_treasures",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$special-death-switcher_8cpp.html#a8b08f5e5d6aa55d2ec04e54b74566fb6",tooltip=" "];
+  Node3 -> Node814 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node814 [label="wiz_create_item",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$wizard-special-process_8cpp.html#a3a8736b020ffd037a5337cdebed86b88",tooltip="任意のベースアイテム生成のメインルーチン / Wizard routine for creating objects -RAK-"];
+  Node3 -> Node1442 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1442 [label="wiz_create_named_art",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$wizard-special-process_8cpp.html#a7742adeeabc444abfcb20a24a3a61b56",tooltip="指定されたIDの固定アーティファクトを生成する / Create the artifact of the specified number"];
+  Node2 -> Node1739 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1739 [label="make_artifact",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$fixed-art-generator_8cpp.html#a1cadf1bc783aab1bd7044762e520cfbd",tooltip="非INSTA_ART型の固定アーティファクトの生成を確率に応じて試行する。 Mega-Hack – Attempt to create one of the \"Special Objects\""];
+  Node1739 -> Node784 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node784 [label="apply_magic",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78",tooltip="生成されたベースアイテムに魔法的な強化を与えるメインルーチン Complete the \"creation\" of an object by applying \"magic\" to the item"];
+  Node784 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node784 -> Node790 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node790 [label="make_object",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$floor-object_8cpp.html#adbba66fa3bc17cfd4ebeff0ee923a304",tooltip="生成階に応じたベースアイテムの生成を行う。 Attempt to make an object (normal or good/great)"];
+  Node784 -> Node814 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 -> Node1740 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1740 [label="make_artifact_special",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$fixed-art-generator_8cpp.html#a2888af04afeda521b655bb0d2eb55f52",tooltip="INSTA_ART型の固定アーティファクトの生成を確率に応じて試行する。 Mega-Hack – Attempt to create one of the \"Special Objects\""];
+  Node1740 -> Node790 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

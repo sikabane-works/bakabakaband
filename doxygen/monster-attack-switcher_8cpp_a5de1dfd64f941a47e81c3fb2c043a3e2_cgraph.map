@@ -1,0 +1,52 @@
+<map id="switch_monster_blow_to_player" name="switch_monster_blow_to_player">
+<area shape="rect" id="node1" title=" " alt="" coords="5,1203,152,1245"/>
+<area shape="rect" id="node2" href="$player-damage_8cpp.html#a2cc414088296f068951969e2748ba07e" title="酸属性によるプレイヤー損害処理 / Hurt the player with Acid" alt="" coords="253,223,331,249"/>
+<area shape="rect" id="node7" href="$mind-mirror-master_8cpp.html#aa9b31eb0ea15ceb2b1423b1f807ccd7e" title=" " alt="" coords="671,907,807,933"/>
+<area shape="rect" id="node10" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="699,1869,778,1896"/>
+<area shape="rect" id="node12" href="$player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="493,907,561,933"/>
+<area shape="rect" id="node13" href="$monster-attack-switcher_8cpp.html#a81625bc9b2711cf2fd7648092a22f3f4" title="盲目ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="235,1515,349,1541"/>
+<area shape="rect" id="node16" href="$monster-update_8cpp.html#a846bbf8dc535543bbf0187e62c46407f" title="SMART(適格に攻撃を行う)モンスターの学習状況を更新する / Learn about an &quot;observed&quot; resistance." alt="" coords="459,1261,595,1288"/>
+<area shape="rect" id="node18" href="$monster-attack-switcher_8cpp.html#af1470bac38e1d59b39058aafdfa5e48e" title="混乱ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="221,1667,363,1693"/>
+<area shape="rect" id="node20" href="$monster-attack-lose_8cpp.html#a256586043cdcaa5da8bc36e86e5151af" title="病気ダメージを計算する (毒耐性があれば、(1d4 + 4) / 9になる。二重耐性なら更に(1d4 + 4) / 9)" alt="" coords="227,1717,357,1744"/>
+<area shape="rect" id="node22" href="$monster-attack-switcher_8cpp.html#a7357fd084a49c97aa52cee63d4a7022b" title="劣化ダメージを計算する (耐性があれば、(1d4 + 4) / 9になる)" alt="" coords="217,1160,367,1187"/>
+<area shape="rect" id="node23" href="$player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="470,1211,585,1237"/>
+<area shape="rect" id="node24" href="$monster-attack-switcher_8cpp.html#a5e4a111ca7aa0de1b565cd7cd59e3cf6" title="経験値吸収ダメージを計算する (経験値保持と地獄耐性があれば、それぞれ&#45;7.5%)" alt="" coords="221,805,363,832"/>
+<area shape="rect" id="node25" href="$monster-attack-switcher_8cpp.html#abdc6254c31e8d0ab7ae81f241f13fd83" title="生命力吸収ダメージを計算する (経験値維持があれば9/10になる)" alt="" coords="223,957,361,984"/>
+<area shape="rect" id="node26" href="$monster-attack-switcher_8cpp.html#aecd1ac6d02516fb34d9908f3de010fb0" title="MPダメージを計算する (消費魔力減少、呪文失敗率減少、魔道具使用能力向上があればそれぞれ&#45;5%)" alt="" coords="215,1363,369,1389"/>
+<area shape="rect" id="node27" href="$monster-attack-switcher_8cpp.html#a33f8479de9ef6e4f898067c86ac0a166" title="恐怖ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="239,1211,345,1237"/>
+<area shape="rect" id="node28" href="$monster-attack-switcher_8cpp.html#a4783d7ee56f3872c63f6249831c04fa6" title=" " alt="" coords="231,1008,353,1035"/>
+<area shape="rect" id="node29" href="$monster-attack-lose_8cpp.html#acce2a567c9f6bf6fc75aaebee2644f84" title="全能力低下ダメージを計算する (維持があれば、1つに付き&#45;3軽減する)" alt="" coords="227,1059,357,1085"/>
+<area shape="rect" id="node30" href="$monster-attack-lose_8cpp.html#a422a426d72ff5675432c3303d87cd3db" title="魅力低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="207,349,377,376"/>
+<area shape="rect" id="node31" href="$monster-attack-lose_8cpp.html#a8a54aec3bd2ee682c78fa34f461e1fa5" title="耐久低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="200,400,384,427"/>
+<area shape="rect" id="node32" href="$monster-attack-lose_8cpp.html#a1507aeb20492fa7fdd43037e55d9d658" title="器用低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="209,501,375,528"/>
+<area shape="rect" id="node33" href="$monster-attack-lose_8cpp.html#ab40ae1afec6b5aead9872ec83b0104f4" title="知能低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="201,552,383,579"/>
+<area shape="rect" id="node34" href="$monster-attack-lose_8cpp.html#af1f3e12f4952d7067bce0a421a85da26" title="腕力低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="210,603,374,629"/>
+<area shape="rect" id="node35" href="$monster-attack-lose_8cpp.html#a6af6a4109a99c377b3d4be211e887b31" title="賢さ低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="211,451,373,477"/>
+<area shape="rect" id="node36" href="$monster-attack-switcher_8cpp.html#aafce94bf9b84d8360a155d328b505cde" title="麻痺ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="223,1261,361,1288"/>
+<area shape="rect" id="node37" href="$monster-attack-switcher_8cpp.html#acef826f9c56e2d18ed1e37256dfcfb10" title="モンスターからプレーヤーへの直接攻撃をその種別において振り分ける" alt="" coords="230,1464,354,1491"/>
+<area shape="rect" id="node38" href="$monster-attack-switcher_8cpp.html#a08dddef2d86c3f6a345004936409b243" title="時間逆転ダメージを計算する (耐性があれば、(1d4 + 4) / 9になる)" alt="" coords="237,907,347,933"/>
+<area shape="rect" id="node39" href="$monster-attack-switcher_8cpp.html#a870a719321bef5e247ec47ac1735a0eb" title="魔道具吸収ダメージを計算する (消費魔力減少、呪文失敗率減少、魔道具使用能力向上があればそれぞれ&#45;7.5%)" alt="" coords="221,1109,363,1136"/>
+<area shape="rect" id="node40" href="$monster-eating_8cpp.html#a2c65a8802b0e049e20e1e4e16827d0b3" title="盗み打撃の時にアイテムが盗まれるかどうかを判定する" alt="" coords="235,1869,349,1896"/>
+<area shape="rect" id="node41" href="$monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="432,2072,623,2099"/>
+<area shape="rect" id="node42" href="$player-damage_8cpp.html#a71b92a6bc674bee26d592cd621fabb89" title="冷気属性によるプレイヤー損害処理 / Hurt the player with Cold" alt="" coords="253,653,331,680"/>
+<area shape="rect" id="node43" href="$earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="249,1768,335,1795"/>
+<area shape="rect" id="node44" href="$player-damage_8cpp.html#a1fdd8fef23ce71cad2865261b7ccfc92" title="電撃属性によるプレイヤー損害処理 / Hurt the player with electricity" alt="" coords="253,704,331,731"/>
+<area shape="rect" id="node45" href="$player-damage_8cpp.html#a1baa0fdc9a8912f4da2d8f1905c2aac7" title="火炎属性によるプレイヤー損害処理 / Hurt the player with Fire" alt="" coords="257,755,327,781"/>
+<area shape="rect" id="node46" href="$monster-eating_8cpp.html#a08d5a6fc131fa58e04e9d2a035eff3bf" title=" " alt="" coords="230,1920,354,1947"/>
+<area shape="rect" id="node47" href="$monster-eating_8cpp.html#aad417fdb3cb0b966068fc3e31def1595" title="プレーヤーのHP/MP、アイテム、お金・明かりの残りターン、充填魔力を盗んだり減少させたりする処理" alt="" coords="465,1971,589,1997"/>
+<area shape="rect" id="node48" href="$monster-eating_8cpp.html#abd3ba551314e9224222e5efc444b04b8" title="アイテム盗み処理" alt="" coords="229,2021,355,2048"/>
+<area shape="rect" id="node49" href="$monster-eating_8cpp.html#ab2265672b83bbe198b37eaef149ef712" title=" " alt="" coords="469,2123,586,2149"/>
+<area shape="rect" id="node50" href="$monster-attack-status_8cpp.html#ad7edda59715dae2868902785faa87ce1" title=" " alt="" coords="456,1413,599,1440"/>
+<area shape="rect" id="node3" href="$player-damage_8cpp.html#a3481d6c6d7162220dcda59d8452cdf4b" title="酸攻撃による装備のAC劣化処理 / Acid has hit the player, attempt to affect some armor." alt="" coords="473,96,582,123"/>
+<area shape="rect" id="node4" href="$player-status-resist_8cpp.html#a4582efcc5e8b9fb139b2fcc30fcf4abc" title="酸属性攻撃に対するダメージ倍率計算" alt="" coords="448,147,607,173"/>
+<area shape="rect" id="node5" href="$player-status-flags_8cpp.html#a556c00d2456ffbf9d0c0fa4bb241d79c" title=" " alt="" coords="682,147,795,173"/>
+<area shape="rect" id="node6" href="$element-resistance_8cpp.html#a64580bed127b84646a1dc84e9da22950" title=" " alt="" coords="683,197,795,224"/>
+<area shape="rect" id="node8" href="$base-status_8cpp.html#a02f02e57ff04a59667b69ae931263500" title=" " alt="" coords="481,501,574,528"/>
+<area shape="rect" id="node9" href="$inventory-damage_8cpp.html#a0f9a7b3868fb0034a4a8f9bfa9e03607" title="アイテムを指定確率で破損させる / Destroys a type of item on a given percent chance" alt="" coords="464,704,591,731"/>
+<area shape="rect" id="node11" href="$object-broken_8cpp.html#a3c15fca73f08707bf88de3c9cd094494" title="アイテムが酸で破損するかどうかを判定する(メインルーチン) / Melt something" alt="" coords="467,45,588,72"/>
+<area shape="rect" id="node14" href="$player-status-flags_8cpp.html#aaf1b5117f57bfff1e6f316c72534ca3c" title=" " alt="" coords="681,1363,797,1389"/>
+<area shape="rect" id="node15" href="$monster-attack-status_8cpp.html#af3f4d4d678bc2ad084720e2d2b513316" title="プレーヤーのステータス (麻痺等)に影響を与えるモンスターの打撃処理" alt="" coords="455,1667,600,1693"/>
+<area shape="rect" id="node17" href="$player-status-flags_8cpp.html#a87e2385dc2ef3915747658a53a9a24d3" title=" " alt="" coords="682,1565,795,1592"/>
+<area shape="rect" id="node19" href="$bad-status-setter_8cpp.html#ac2bda63c9e8d91a70dea9a38c6f76c16" title="混乱の継続時間をセットする / Set &quot;confused&quot;, notice observable changes" alt="" coords="478,1768,577,1795"/>
+<area shape="rect" id="node21" href="$player-status-resist_8cpp.html#a0b398093c77c03f4208e9dbc65cdb78e" title="放射性廃棄物攻撃に対するダメージ倍率計算" alt="" coords="446,1565,609,1592"/>
+</map>

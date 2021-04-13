@@ -1,0 +1,1789 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/cmd-io/cmd-process-screen.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_4b5d45ee7eedcd4a285a27f1d5022af9.html">cmd-io</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">cmd-process-screen.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="cmd-process-screen_8h_source.html">cmd-io/cmd-process-screen.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-draw_8h_source.html">cmd-visual/cmd-draw.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-redraw-types_8h_source.html">core/player-redraw-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stuff-handler_8h_source.html">core/stuff-handler.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="visuals-reseter_8h_source.html">core/visuals-reseter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-options_8h_source.html">game-option/special-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="files-util_8h_source.html">io/files-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gameterm_8h_source.html">term/gameterm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-files_8h_source.html">util/angband-files.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+cmd-process-screen.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-io_2cmd-process-screen_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-io_2cmd-process-screen_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-io_2cmd-process-screen_8cpp">
+<area shape="rect" title=" " alt="" coords="1015,5,1203,61"/>
+<area shape="rect" href="cmd-process-screen_8h.html" title=" " alt="" coords="1127,109,1267,151"/>
+<area shape="rect" href="cmd-draw_8h.html" title=" " alt="" coords="1638,117,1793,143"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="1998,117,2137,143"/>
+<area shape="rect" href="player-redraw-types_8h.html" title=" " alt="" coords="494,109,622,151"/>
+<area shape="rect" href="stuff-handler_8h.html" title=" " alt="" coords="5,117,137,143"/>
+<area shape="rect" href="visuals-reseter_8h.html" title=" " alt="" coords="161,117,307,143"/>
+<area shape="rect" href="special-options_8h.html" title=" " alt="" coords="331,109,470,151"/>
+<area shape="rect" href="files-util_8h.html" title=" " alt="" coords="646,117,737,143"/>
+<area shape="rect" href="input-key-acceptor_8h.html" title=" " alt="" coords="761,117,915,143"/>
+<area shape="rect" href="gameterm_8h.html" title=" " alt="" coords="2161,117,2283,143"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="939,117,1102,143"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="1817,117,1974,143"/>
+<area shape="rect" href="angband-files_8h.html" title=" " alt="" coords="1291,117,1422,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="1447,117,1613,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1044,199,1173,225"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="583,273,674,300"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="698,273,789,300"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="813,273,911,300"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="935,273,1034,300"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="1059,273,1159,300"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1183,273,1357,300"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1382,273,1523,300"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1547,273,1694,300"/>
+<area shape="rect" href="spell-types_8h.html" title=" " alt="" coords="2159,199,2285,225"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:acedfa161c420a2bd8154c3e62db80d23"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#acedfa161c420a2bd8154c3e62db80d23">read_temporary_file</a> (FILE *fff, FILE *tmpfff, char <a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>[], size_t buf_size, int num_tag)</td></tr>
+<tr class="memdesc:acedfa161c420a2bd8154c3e62db80d23"><td class="mdescLeft">&#160;</td><td class="mdescRight">一時ファイルを読み込み、ファイルに書き出す  <a href="cmd-process-screen_8cpp.html#acedfa161c420a2bd8154c3e62db80d23">[詳解]</a><br /></td></tr>
+<tr class="separator:acedfa161c420a2bd8154c3e62db80d23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a949a197d3df075ce804d33bfa751e528"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#a949a197d3df075ce804d33bfa751e528">screen_dump_one_line</a> (int wid, int y, FILE *fff)</td></tr>
+<tr class="memdesc:a949a197d3df075ce804d33bfa751e528"><td class="mdescLeft">&#160;</td><td class="mdescRight">記念撮影を1行ダンプする  <a href="cmd-process-screen_8cpp.html#a949a197d3df075ce804d33bfa751e528">[詳解]</a><br /></td></tr>
+<tr class="separator:a949a197d3df075ce804d33bfa751e528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2365433182e84a4e61fdc2f915049ce"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#aa2365433182e84a4e61fdc2f915049ce">screen_dump_lines</a> (int wid, int hgt, FILE *fff)</td></tr>
+<tr class="memdesc:aa2365433182e84a4e61fdc2f915049ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">記念撮影を行方向にスイープする  <a href="cmd-process-screen_8cpp.html#aa2365433182e84a4e61fdc2f915049ce">[詳解]</a><br /></td></tr>
+<tr class="separator:aa2365433182e84a4e61fdc2f915049ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a849a12805672436426504b9c3445e620"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#a849a12805672436426504b9c3445e620">check_screen_html_can_open</a> (FILE *fff, char *filename, int message)</td></tr>
+<tr class="memdesc:a849a12805672436426504b9c3445e620"><td class="mdescLeft">&#160;</td><td class="mdescRight">ファイルへ書き込めない場合にエラーを表示する  <a href="cmd-process-screen_8cpp.html#a849a12805672436426504b9c3445e620">[詳解]</a><br /></td></tr>
+<tr class="separator:a849a12805672436426504b9c3445e620"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b611cba8c13dcd7aece434aca8524ac"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#a0b611cba8c13dcd7aece434aca8524ac">write_html_header</a> (FILE *tmpfff, FILE *fff, char <a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>[], size_t buf_size)</td></tr>
+<tr class="memdesc:a0b611cba8c13dcd7aece434aca8524ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">HTMLヘッダを書き込む  <a href="cmd-process-screen_8cpp.html#a0b611cba8c13dcd7aece434aca8524ac">[詳解]</a><br /></td></tr>
+<tr class="separator:a0b611cba8c13dcd7aece434aca8524ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9255ead0fa9944112be227bec2bdc087"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#a9255ead0fa9944112be227bec2bdc087">write_html_footer</a> (FILE *tmpfff, FILE *fff, char <a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>[], size_t buf_size)</td></tr>
+<tr class="memdesc:a9255ead0fa9944112be227bec2bdc087"><td class="mdescLeft">&#160;</td><td class="mdescRight">HTMLフッタを書き込む  <a href="cmd-process-screen_8cpp.html#a9255ead0fa9944112be227bec2bdc087">[詳解]</a><br /></td></tr>
+<tr class="separator:a9255ead0fa9944112be227bec2bdc087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a520c0b6c1900e5de2bf19398e0b48e6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#a520c0b6c1900e5de2bf19398e0b48e6a">do_cmd_save_screen_html_aux</a> (char *filename, int message)</td></tr>
+<tr class="separator:a520c0b6c1900e5de2bf19398e0b48e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66d22b87644be0847bb5751f75cf7b55"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#a66d22b87644be0847bb5751f75cf7b55">do_cmd_save_screen_html</a> (void)</td></tr>
+<tr class="memdesc:a66d22b87644be0847bb5751f75cf7b55"><td class="mdescLeft">&#160;</td><td class="mdescRight">HTML方式で記念撮影する / Save a screen dump to a file  <a href="cmd-process-screen_8cpp.html#a66d22b87644be0847bb5751f75cf7b55">[詳解]</a><br /></td></tr>
+<tr class="separator:a66d22b87644be0847bb5751f75cf7b55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab840917c911631855846f17305a6f71d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#ab840917c911631855846f17305a6f71d">ask_html_dump</a> (<a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> *html_dump)</td></tr>
+<tr class="memdesc:ab840917c911631855846f17305a6f71d"><td class="mdescLeft">&#160;</td><td class="mdescRight">記念撮影の方式を問い合わせる  <a href="cmd-process-screen_8cpp.html#ab840917c911631855846f17305a6f71d">[詳解]</a><br /></td></tr>
+<tr class="separator:ab840917c911631855846f17305a6f71d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20b5ea4d446d4bbf2e0898f1493fb18f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#a20b5ea4d446d4bbf2e0898f1493fb18f">check_screen_text_can_open</a> (FILE *fff, char <a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>[])</td></tr>
+<tr class="memdesc:a20b5ea4d446d4bbf2e0898f1493fb18f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ファイルへ書き込めない場合にエラーを表示する  <a href="cmd-process-screen_8cpp.html#a20b5ea4d446d4bbf2e0898f1493fb18f">[詳解]</a><br /></td></tr>
+<tr class="separator:a20b5ea4d446d4bbf2e0898f1493fb18f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa46b7dd58d4e2cd6fc032da61b18f90a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#aa46b7dd58d4e2cd6fc032da61b18f90a">do_cmd_save_screen_text</a> (int wid, int hgt)</td></tr>
+<tr class="memdesc:aa46b7dd58d4e2cd6fc032da61b18f90a"><td class="mdescLeft">&#160;</td><td class="mdescRight">テキスト方式で記念撮影する  <a href="cmd-process-screen_8cpp.html#aa46b7dd58d4e2cd6fc032da61b18f90a">[詳解]</a><br /></td></tr>
+<tr class="separator:aa46b7dd58d4e2cd6fc032da61b18f90a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4bf924cf72ee8c74b44affd9e3594fe"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#ae4bf924cf72ee8c74b44affd9e3594fe">update_use_graphics</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, void(*<a class="el" href="autopick-pref-processor_8h.html#aa31a42830d1eed102ec91a767c3db6e7">process_autopick_file_command</a>)(char *))</td></tr>
+<tr class="memdesc:ae4bf924cf72ee8c74b44affd9e3594fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">記念撮影のためにグラフィック使用をOFFにする  <a href="cmd-process-screen_8cpp.html#ae4bf924cf72ee8c74b44affd9e3594fe">[詳解]</a><br /></td></tr>
+<tr class="separator:ae4bf924cf72ee8c74b44affd9e3594fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f4156d254c4e75492a93a62c6d47d1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#a1f4156d254c4e75492a93a62c6d47d1d">do_cmd_save_screen</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, void(*<a class="el" href="autopick-pref-processor_8h.html#aa31a42830d1eed102ec91a767c3db6e7">process_autopick_file_command</a>)(char *))</td></tr>
+<tr class="separator:a1f4156d254c4e75492a93a62c6d47d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a970b83eb0c4a8776e9996dd6dcb9d14f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#a970b83eb0c4a8776e9996dd6dcb9d14f">draw_white_characters</a> (char <a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>[], FILE *fff, int wid, int hgt)</td></tr>
+<tr class="memdesc:a970b83eb0c4a8776e9996dd6dcb9d14f"><td class="mdescLeft">&#160;</td><td class="mdescRight">白文字だけ画面に描画する  <a href="cmd-process-screen_8cpp.html#a970b83eb0c4a8776e9996dd6dcb9d14f">[詳解]</a><br /></td></tr>
+<tr class="separator:a970b83eb0c4a8776e9996dd6dcb9d14f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30dd3f84a1e073fd386615b0a4775df9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#a30dd3f84a1e073fd386615b0a4775df9">draw_colored_characters</a> (char <a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>[], FILE *fff, int wid, int hgt, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> okay)</td></tr>
+<tr class="memdesc:a30dd3f84a1e073fd386615b0a4775df9"><td class="mdescLeft">&#160;</td><td class="mdescRight">白以外の文字を画面に描画する  <a href="cmd-process-screen_8cpp.html#a30dd3f84a1e073fd386615b0a4775df9">[詳解]</a><br /></td></tr>
+<tr class="separator:a30dd3f84a1e073fd386615b0a4775df9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0f31a85f5c0065de5a1fd0ef7b5c8c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#ae0f31a85f5c0065de5a1fd0ef7b5c8c9">do_cmd_load_screen</a> (void)</td></tr>
+<tr class="separator:ae0f31a85f5c0065de5a1fd0ef7b5c8c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a238980cd2330d3fdc6f31ecb2e265329"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#a238980cd2330d3fdc6f31ecb2e265329">hack</a> [17] = &quot;dwsorgbuDWvyRGBU&quot;</td></tr>
+<tr class="memdesc:a238980cd2330d3fdc6f31ecb2e265329"><td class="mdescLeft">&#160;</td><td class="mdescRight">記念撮影のセーブとロード  <a href="cmd-process-screen_8cpp.html#a238980cd2330d3fdc6f31ecb2e265329">[詳解]</a><br /></td></tr>
+<tr class="separator:a238980cd2330d3fdc6f31ecb2e265329"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5833880a0715aa52a2ccb3ff9fbe8e5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#ad5833880a0715aa52a2ccb3ff9fbe8e5">tags</a> [4] = { &quot;HEADER_START:&quot;, &quot;HEADER_END:&quot;, &quot;FOOTER_START:&quot;, &quot;FOOTER_END:&quot;, }</td></tr>
+<tr class="separator:ad5833880a0715aa52a2ccb3ff9fbe8e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add54e869fc4badf4615cc70076e94e12"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#add54e869fc4badf4615cc70076e94e12">html_head</a> [3] = { &quot;&lt;html&gt;\n&lt;body text=\&quot;#ffffff\&quot; bgcolor=\&quot;#000000\&quot;&gt;\n&quot;, &quot;&lt;pre&gt;&quot;, 0, }</td></tr>
+<tr class="separator:add54e869fc4badf4615cc70076e94e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a354eae3cd4f3e7059441247aeb74d7a2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-process-screen_8cpp.html#a354eae3cd4f3e7059441247aeb74d7a2">html_foot</a> [3] = { &quot;&lt;/pre&gt;\n&quot;, &quot;&lt;/body&gt;\n&lt;/html&gt;\n&quot;, 0, }</td></tr>
+<tr class="separator:a354eae3cd4f3e7059441247aeb74d7a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ab840917c911631855846f17305a6f71d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab840917c911631855846f17305a6f71d">&#9670;&nbsp;</a></span>ask_html_dump()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> ask_html_dump </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> *&#160;</td>
+          <td class="paramname"><em>html_dump</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>記念撮影の方式を問い合わせる </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">html_dump</td><td>HTMLダンプするか否か </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ダンプするならTRUE、キャンセルならFALSE </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_ab840917c911631855846f17305a6f71d_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_ab840917c911631855846f17305a6f71d_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_ab840917c911631855846f17305a6f71d_cgraph" id="acmd-process-screen_8cpp_ab840917c911631855846f17305a6f71d_cgraph">
+<area shape="rect" title="記念撮影の方式を問い合わせる" alt="" coords="5,436,120,463"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="168,411,221,437"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="175,461,214,488"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="276,107,379,133"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="449,5,548,32"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="612,233,689,260"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="287,360,368,387"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="455,512,542,539"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="269,461,385,488"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="286,512,369,539"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="269,563,385,589"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="269,613,385,640"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="453,56,544,83"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="457,107,540,133"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="451,157,546,184"/>
+<area shape="rect" href="macro-util_8cpp.html#a1e9851f9b9e0a0e51628a231ca95fcc1" title=" " alt="" coords="435,309,562,336"/>
+<area shape="rect" href="macro-util_8cpp.html#a7f48a1923076b3b314f1bc58913a2a59" title=" " alt="" coords="433,360,564,387"/>
+<area shape="rect" href="macro-util_8cpp.html#ada693de344c97bc09a586100f25919dd" title=" " alt="" coords="437,411,561,437"/>
+<area shape="rect" href="z-term_8cpp.html#a020ef4815c101960b4fdad94c4e5b59b" title=" " alt="" coords="443,461,554,488"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_ab840917c911631855846f17305a6f71d_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_ab840917c911631855846f17305a6f71d_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_ab840917c911631855846f17305a6f71d_icgraph" id="acmd-process-screen_8cpp_ab840917c911631855846f17305a6f71d_icgraph">
+<area shape="rect" title="記念撮影の方式を問い合わせる" alt="" coords="987,56,1101,83"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a1f4156d254c4e75492a93a62c6d47d1d" title=" " alt="" coords="792,56,939,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,81,296,108"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="576,5,744,32"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="626,1192,694,1219"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,333,116,360"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="384,5,488,32"/>
+<area shape="rect" href="player-damage_8cpp.html#a2cc414088296f068951969e2748ba07e" title="酸属性によるプレイヤー損害処理 / Hurt the player with Acid" alt="" coords="397,609,475,636"/>
+<area shape="rect" href="activation-others_8cpp.html#a318cab58d04b4ec73f9c109d33b1311f" title=" " alt="" coords="369,660,503,687"/>
+<area shape="rect" href="spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="169,559,291,585"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a81625bc9b2711cf2fd7648092a22f3f4" title="盲目ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="379,711,493,737"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#af1470bac38e1d59b39058aafdfa5e48e" title="混乱ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="365,761,507,788"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a256586043cdcaa5da8bc36e86e5151af" title="病気ダメージを計算する (毒耐性があれば、(1d4 + 4) / 9になる。二重耐性なら更に(1d4 + 4) / 9)" alt="" coords="371,812,501,839"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a7357fd084a49c97aa52cee63d4a7022b" title="劣化ダメージを計算する (耐性があれば、(1d4 + 4) / 9になる)" alt="" coords="361,863,511,889"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a5e4a111ca7aa0de1b565cd7cd59e3cf6" title="経験値吸収ダメージを計算する (経験値保持と地獄耐性があれば、それぞれ&#45;7.5%)" alt="" coords="365,913,507,940"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#abdc6254c31e8d0ab7ae81f241f13fd83" title="生命力吸収ダメージを計算する (経験値維持があれば9/10になる)" alt="" coords="367,964,505,991"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a33f8479de9ef6e4f898067c86ac0a166" title="恐怖ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="383,1015,489,1041"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a4783d7ee56f3872c63f6249831c04fa6" title=" " alt="" coords="375,1065,497,1092"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#acce2a567c9f6bf6fc75aaebee2644f84" title="全能力低下ダメージを計算する (維持があれば、1つに付き&#45;3軽減する)" alt="" coords="371,1116,501,1143"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a422a426d72ff5675432c3303d87cd3db" title="魅力低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="351,1167,521,1193"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a8a54aec3bd2ee682c78fa34f461e1fa5" title="耐久低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="344,1217,528,1244"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a1507aeb20492fa7fdd43037e55d9d658" title="器用低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="353,1268,519,1295"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#ab40ae1afec6b5aead9872ec83b0104f4" title="知能低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="345,1319,527,1345"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#af1f3e12f4952d7067bce0a421a85da26" title="腕力低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="354,1369,518,1396"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a6af6a4109a99c377b3d4be211e887b31" title="賢さ低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="355,1420,517,1447"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#aafce94bf9b84d8360a155d328b505cde" title="麻痺ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="367,1471,505,1497"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#acef826f9c56e2d18ed1e37256dfcfb10" title="モンスターからプレーヤーへの直接攻撃をその種別において振り分ける" alt="" coords="374,1521,498,1548"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a08dddef2d86c3f6a345004936409b243" title="時間逆転ダメージを計算する (耐性があれば、(1d4 + 4) / 9になる)" alt="" coords="381,1572,491,1599"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a870a719321bef5e247ec47ac1735a0eb" title="魔道具吸収ダメージを計算する (消費魔力減少、呪文失敗率減少、魔道具使用能力向上があればそれぞれ&#45;7.5%)" alt="" coords="365,1623,507,1649"/>
+<area shape="rect" href="spells-chaos_8cpp.html#a207154409a52e3ce87987b79eec6c59b" title="虚無招来処理 /" alt="" coords="388,1673,484,1700"/>
+<area shape="rect" href="mind-force-trainer_8cpp.html#a08ed4ef4f0eccabdb4a8348948298fb5" title="練気術の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;ForceTrainer&#39;." alt="" coords="378,1724,494,1751"/>
+<area shape="rect" href="chest_8cpp.html#a15fe189e236398690182db36a2c28a9b" title="箱のトラップ処理 / Chests have traps too." alt="" coords="395,1775,477,1801"/>
+<area shape="rect" href="player-damage_8cpp.html#a71b92a6bc674bee26d592cd621fabb89" title="冷気属性によるプレイヤー損害処理 / Hurt the player with Cold" alt="" coords="397,1825,475,1852"/>
+<area shape="rect" href="mind-warrior-mage_8cpp.html#a176e17f833e255bda4a0a4471506904d" title=" " alt="" coords="371,1876,501,1903"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a0e8f45a3c8b44eb33491346f328f45fe" title=" " alt="" coords="381,1927,491,1953"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#a6ec4006dc046fceb9b3d62332a73b9e9" title="地形によるダメージを与える / Deal damage from feature." alt="" coords="362,1977,510,2004"/>
+<area shape="rect" href="quaff-execution_8cpp.html#aecc8c7c369c6ab3004c9e6fe71674961" title="爆発の薬の効果処理 / Fumble ramble" alt="" coords="395,2028,477,2055"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="386,107,486,133"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="375,2079,497,2105"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="381,2129,491,2156"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="167,2205,293,2232"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="173,2268,287,2295"/>
+<area shape="rect" href="shape-changer_8cpp.html#af84e97990b1c8085f7c334b2b4b13f42" title=" " alt="" coords="183,275,277,301"/>
+<area shape="rect" href="shape-changer_8cpp.html#a98b0e9a86e266caed3be4c13c672c5c2" title=" " alt="" coords="377,391,495,417"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="393,2231,479,2257"/>
+<area shape="rect" href="effect-monster-psi_8cpp.html#a58a97fd39c0b01298bea411f89f571a7" title="モンスターのPsi攻撃(GF_PSI_DRAIN)に対する耐性を発動する" alt="" coords="371,209,501,250"/>
+<area shape="rect" href="effect-monster-psi_8cpp.html#a2929ca0b4baf38796f719b916d038e9a" title="モンスターのPsi攻撃に対する耐性を発動する" alt="" coords="371,274,501,315"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a2f218a8278b6d99f537310edefe6f4aa" title=" " alt="" coords="369,340,503,367"/>
+<area shape="rect" href="effect-player-spirit_8cpp.html#a3d7c6becf0639cca10d2c7cdb1e4f116" title=" " alt="" coords="371,442,501,483"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a74769e902b7010f27290355c09bc385f" title=" " alt="" coords="367,508,505,535"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a849a12805672436426504b9c3445e620"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a849a12805672436426504b9c3445e620">&#9670;&nbsp;</a></span>check_screen_html_can_open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_screen_html_can_open </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ファイルへ書き込めない場合にエラーを表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fff</td><td>ダンプファイルへの参照ポインタ </td></tr>
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ファイルへ書き込めるならTRUE、書き込めないならFALSE </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a849a12805672436426504b9c3445e620_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a849a12805672436426504b9c3445e620_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a849a12805672436426504b9c3445e620_cgraph" id="acmd-process-screen_8cpp_a849a12805672436426504b9c3445e620_cgraph">
+<area shape="rect" title="ファイルへ書き込めない場合にエラーを表示する" alt="" coords="5,157,204,184"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="252,183,343,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="391,132,469,159"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="397,183,463,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="525,5,628,32"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="536,107,617,133"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="685,69,771,96"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="684,132,772,159"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="517,208,636,235"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="529,259,624,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a849a12805672436426504b9c3445e620_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a849a12805672436426504b9c3445e620_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a849a12805672436426504b9c3445e620_icgraph" id="acmd-process-screen_8cpp_a849a12805672436426504b9c3445e620_icgraph">
+<area shape="rect" title="ファイルへ書き込めない場合にエラーを表示する" alt="" coords="621,13,820,39"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a520c0b6c1900e5de2bf19398e0b48e6a" title=" " alt="" coords="427,5,573,47"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a66d22b87644be0847bb5751f75cf7b55" title="HTML方式で記念撮影する / Save a screen dump to a file" alt="" coords="200,13,379,39"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a1f4156d254c4e75492a93a62c6d47d1d" title=" " alt="" coords="5,13,152,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a20b5ea4d446d4bbf2e0898f1493fb18f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20b5ea4d446d4bbf2e0898f1493fb18f">&#9670;&nbsp;</a></span>check_screen_text_can_open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_screen_text_can_open </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>buf</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ファイルへ書き込めない場合にエラーを表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fff</td><td>ダンプファイルへの参照ポインタ </td></tr>
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ファイルへ書き込めるならTRUE、書き込めないならFALSE </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a20b5ea4d446d4bbf2e0898f1493fb18f_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a20b5ea4d446d4bbf2e0898f1493fb18f_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a20b5ea4d446d4bbf2e0898f1493fb18f_cgraph" id="acmd-process-screen_8cpp_a20b5ea4d446d4bbf2e0898f1493fb18f_cgraph">
+<area shape="rect" title="ファイルへ書き込めない場合にエラーを表示する" alt="" coords="5,157,200,184"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="248,183,339,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="387,132,465,159"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="393,183,459,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="521,5,624,32"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="532,107,613,133"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="681,69,767,96"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="680,132,768,159"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="513,208,632,235"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="525,259,620,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a20b5ea4d446d4bbf2e0898f1493fb18f_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a20b5ea4d446d4bbf2e0898f1493fb18f_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a20b5ea4d446d4bbf2e0898f1493fb18f_icgraph" id="acmd-process-screen_8cpp_a20b5ea4d446d4bbf2e0898f1493fb18f_icgraph">
+<area shape="rect" title="ファイルへ書き込めない場合にエラーを表示する" alt="" coords="640,56,835,83"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#aa46b7dd58d4e2cd6fc032da61b18f90a" title="テキスト方式で記念撮影する" alt="" coords="416,56,592,83"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a1f4156d254c4e75492a93a62c6d47d1d" title=" " alt="" coords="221,56,368,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="55,107,123,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae0f31a85f5c0065de5a1fd0ef7b5c8c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0f31a85f5c0065de5a1fd0ef7b5c8c9">&#9670;&nbsp;</a></span>do_cmd_load_screen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_load_screen </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_ae0f31a85f5c0065de5a1fd0ef7b5c8c9_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_ae0f31a85f5c0065de5a1fd0ef7b5c8c9_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_ae0f31a85f5c0065de5a1fd0ef7b5c8c9_cgraph" id="acmd-process-screen_8cpp_ae0f31a85f5c0065de5a1fd0ef7b5c8c9_cgraph">
+<area shape="rect" title=" " alt="" coords="5,429,151,456"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="226,5,338,32"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="227,189,337,216"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a30dd3f84a1e073fd386615b0a4775df9" title="白以外の文字を画面に描画する" alt="" coords="199,107,365,133"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a970b83eb0c4a8776e9996dd6dcb9d14f" title="白文字だけ画面に描画する" alt="" coords="205,56,359,83"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="257,303,307,329"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="255,404,309,431"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="237,607,327,633"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="432,683,511,709"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="431,176,512,203"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="263,556,301,583"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="236,455,328,481"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="235,505,329,532"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="241,708,323,735"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="230,759,334,785"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="428,125,515,152"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="611,151,674,177"/>
+<area shape="rect" href="z-term_8cpp.html#a84ddf6b3bb4e2789ab98094472b13f1f" title=" " alt="" coords="430,24,513,51"/>
+<area shape="rect" href="z-term_8cpp.html#a1ce8644c4e096eb9fccd74d55f835023" title=" " alt="" coords="430,75,513,101"/>
+<area shape="rect" href="z-term_8cpp.html#abe940f88333b917b37fb87f4104bd473" title=" " alt="" coords="581,24,704,51"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="420,480,523,507"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="593,531,692,557"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="756,505,833,532"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="431,632,512,659"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="599,581,686,608"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="413,277,529,304"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="430,429,513,456"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="413,328,529,355"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="413,379,529,405"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="597,379,688,405"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="601,480,684,507"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="595,429,690,456"/>
+<area shape="rect" href="macro-util_8cpp.html#a1e9851f9b9e0a0e51628a231ca95fcc1" title=" " alt="" coords="579,784,706,811"/>
+<area shape="rect" href="macro-util_8cpp.html#a7f48a1923076b3b314f1bc58913a2a59" title=" " alt="" coords="577,835,708,861"/>
+<area shape="rect" href="macro-util_8cpp.html#ada693de344c97bc09a586100f25919dd" title=" " alt="" coords="581,683,705,709"/>
+<area shape="rect" href="z-term_8cpp.html#a020ef4815c101960b4fdad94c4e5b59b" title=" " alt="" coords="587,733,698,760"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_ae0f31a85f5c0065de5a1fd0ef7b5c8c9_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_ae0f31a85f5c0065de5a1fd0ef7b5c8c9_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_ae0f31a85f5c0065de5a1fd0ef7b5c8c9_icgraph" id="acmd-process-screen_8cpp_ae0f31a85f5c0065de5a1fd0ef7b5c8c9_icgraph">
+<area shape="rect" title=" " alt="" coords="884,5,1029,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="668,31,836,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="516,31,620,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1f4156d254c4e75492a93a62c6d47d1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f4156d254c4e75492a93a62c6d47d1d">&#9670;&nbsp;</a></span>do_cmd_save_screen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_save_screen </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(char *)&#160;</td>
+          <td class="paramname"><em>process_autopick_file_command</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a1f4156d254c4e75492a93a62c6d47d1d_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a1f4156d254c4e75492a93a62c6d47d1d_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a1f4156d254c4e75492a93a62c6d47d1d_cgraph" id="acmd-process-screen_8cpp_a1f4156d254c4e75492a93a62c6d47d1d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,1044,152,1071"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#ab840917c911631855846f17305a6f71d" title="記念撮影の方式を問い合わせる" alt="" coords="232,1019,347,1045"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="925,335,1016,361"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="731,1120,769,1147"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ae19882bca0152830acd6b12e0c50eeb2" title="画面を再描画するコマンドのメインルーチン Hack – redraw the screen" alt="" coords="458,183,571,209"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a66d22b87644be0847bb5751f75cf7b55" title="HTML方式で記念撮影する / Save a screen dump to a file" alt="" coords="200,1323,379,1349"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="698,1272,802,1299"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#aa46b7dd58d4e2cd6fc032da61b18f90a" title="テキスト方式で記念撮影する" alt="" coords="427,1829,603,1856"/>
+<area shape="rect" href="autopick-pref-processor_8cpp.html#aa31a42830d1eed102ec91a767c3db6e7" title=" " alt="" coords="897,986,1044,1027"/>
+<area shape="rect" href="visuals-reseter_8cpp.html#a0bff15ee0bec53f209d078d49af3470c" title="オブジェクト、地形の表示シンボルなど初期化する / Reset the &quot;visual&quot; lists" alt="" coords="466,968,563,995"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#ae4bf924cf72ee8c74b44affd9e3594fe" title="記念撮影のためにグラフィック使用をOFFにする" alt="" coords="217,917,362,944"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="488,689,541,716"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="699,411,801,437"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="921,487,1020,513"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="1093,563,1170,589"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="709,867,791,893"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="927,664,1014,691"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="692,715,808,741"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="929,563,1012,589"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="692,765,808,792"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="692,816,808,843"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="929,107,1012,133"/>
+<area shape="rect" href="racial-android_8cpp.html#a79575a6f85af0b14d59eff0efe003795" title=" " alt="" coords="689,107,811,133"/>
+<area shape="rect" href="z-term_8cpp.html#af383e8a6342c0f48b32f26496f109591" title=" " alt="" coords="703,5,797,32"/>
+<area shape="rect" href="world_8cpp.html#a722be27807c99a7258058b2baabee95e" title="実ゲームプレイ時間を更新する" alt="" coords="691,157,809,184"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a520c0b6c1900e5de2bf19398e0b48e6a" title=" " alt="" coords="441,1518,588,1559"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1092,1829,1171,1856"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="930,1272,1011,1299"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="475,1171,554,1197"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="915,1576,1027,1603"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="695,1829,805,1856"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a849a12805672436426504b9c3445e620" title="ファイルへ書き込めない場合にエラーを表示する" alt="" coords="651,1728,849,1755"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#aa2365433182e84a4e61fdc2f915049ce" title="記念撮影を行方向にスイープする" alt="" coords="683,1373,817,1400"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="704,1779,796,1805"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="703,1880,797,1907"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a9255ead0fa9944112be227bec2bdc087" title="HTMLフッタを書き込む" alt="" coords="690,1576,810,1603"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a0b611cba8c13dcd7aece434aca8524ac" title="HTMLヘッダを書き込む" alt="" coords="687,1424,813,1451"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="925,1829,1016,1856"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a20b5ea4d446d4bbf2e0898f1493fb18f" title="ファイルへ書き込めない場合にエラーを表示する" alt="" coords="653,1931,847,1957"/>
+<area shape="rect" href="z-term_8cpp.html#a1ce8644c4e096eb9fccd74d55f835023" title=" " alt="" coords="709,2032,791,2059"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="691,1019,809,1045"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a1f4156d254c4e75492a93a62c6d47d1d_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a1f4156d254c4e75492a93a62c6d47d1d_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a1f4156d254c4e75492a93a62c6d47d1d_icgraph" id="acmd-process-screen_8cpp_a1f4156d254c4e75492a93a62c6d47d1d_icgraph">
+<area shape="rect" title=" " alt="" coords="792,39,939,66"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,65,296,91"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="576,39,744,66"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="626,1201,694,1227"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,291,116,318"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="384,39,488,66"/>
+<area shape="rect" href="player-damage_8cpp.html#a2cc414088296f068951969e2748ba07e" title="酸属性によるプレイヤー損害処理 / Hurt the player with Acid" alt="" coords="397,593,475,619"/>
+<area shape="rect" href="activation-others_8cpp.html#a318cab58d04b4ec73f9c109d33b1311f" title=" " alt="" coords="369,643,503,670"/>
+<area shape="rect" href="spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="169,491,291,518"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a81625bc9b2711cf2fd7648092a22f3f4" title="盲目ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="379,694,493,721"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#af1470bac38e1d59b39058aafdfa5e48e" title="混乱ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="365,745,507,771"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a256586043cdcaa5da8bc36e86e5151af" title="病気ダメージを計算する (毒耐性があれば、(1d4 + 4) / 9になる。二重耐性なら更に(1d4 + 4) / 9)" alt="" coords="371,795,501,822"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a7357fd084a49c97aa52cee63d4a7022b" title="劣化ダメージを計算する (耐性があれば、(1d4 + 4) / 9になる)" alt="" coords="361,846,511,873"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a5e4a111ca7aa0de1b565cd7cd59e3cf6" title="経験値吸収ダメージを計算する (経験値保持と地獄耐性があれば、それぞれ&#45;7.5%)" alt="" coords="365,897,507,923"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#abdc6254c31e8d0ab7ae81f241f13fd83" title="生命力吸収ダメージを計算する (経験値維持があれば9/10になる)" alt="" coords="367,947,505,974"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a33f8479de9ef6e4f898067c86ac0a166" title="恐怖ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="383,998,489,1025"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a4783d7ee56f3872c63f6249831c04fa6" title=" " alt="" coords="375,1049,497,1075"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#acce2a567c9f6bf6fc75aaebee2644f84" title="全能力低下ダメージを計算する (維持があれば、1つに付き&#45;3軽減する)" alt="" coords="371,1099,501,1126"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a422a426d72ff5675432c3303d87cd3db" title="魅力低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="351,1150,521,1177"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a8a54aec3bd2ee682c78fa34f461e1fa5" title="耐久低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="344,1201,528,1227"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a1507aeb20492fa7fdd43037e55d9d658" title="器用低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="353,1251,519,1278"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#ab40ae1afec6b5aead9872ec83b0104f4" title="知能低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="345,1302,527,1329"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#af1f3e12f4952d7067bce0a421a85da26" title="腕力低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="354,1353,518,1379"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a6af6a4109a99c377b3d4be211e887b31" title="賢さ低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="355,1403,517,1430"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#aafce94bf9b84d8360a155d328b505cde" title="麻痺ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="367,1454,505,1481"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#acef826f9c56e2d18ed1e37256dfcfb10" title="モンスターからプレーヤーへの直接攻撃をその種別において振り分ける" alt="" coords="374,1505,498,1531"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a08dddef2d86c3f6a345004936409b243" title="時間逆転ダメージを計算する (耐性があれば、(1d4 + 4) / 9になる)" alt="" coords="381,1555,491,1582"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a870a719321bef5e247ec47ac1735a0eb" title="魔道具吸収ダメージを計算する (消費魔力減少、呪文失敗率減少、魔道具使用能力向上があればそれぞれ&#45;7.5%)" alt="" coords="365,1606,507,1633"/>
+<area shape="rect" href="spells-chaos_8cpp.html#a207154409a52e3ce87987b79eec6c59b" title="虚無招来処理 /" alt="" coords="388,1657,484,1683"/>
+<area shape="rect" href="mind-force-trainer_8cpp.html#a08ed4ef4f0eccabdb4a8348948298fb5" title="練気術の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;ForceTrainer&#39;." alt="" coords="378,1707,494,1734"/>
+<area shape="rect" href="chest_8cpp.html#a15fe189e236398690182db36a2c28a9b" title="箱のトラップ処理 / Chests have traps too." alt="" coords="395,1758,477,1785"/>
+<area shape="rect" href="player-damage_8cpp.html#a71b92a6bc674bee26d592cd621fabb89" title="冷気属性によるプレイヤー損害処理 / Hurt the player with Cold" alt="" coords="397,1809,475,1835"/>
+<area shape="rect" href="mind-warrior-mage_8cpp.html#a176e17f833e255bda4a0a4471506904d" title=" " alt="" coords="371,1859,501,1886"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a0e8f45a3c8b44eb33491346f328f45fe" title=" " alt="" coords="381,1910,491,1937"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#a6ec4006dc046fceb9b3d62332a73b9e9" title="地形によるダメージを与える / Deal damage from feature." alt="" coords="362,1961,510,1987"/>
+<area shape="rect" href="quaff-execution_8cpp.html#aecc8c7c369c6ab3004c9e6fe71674961" title="爆発の薬の効果処理 / Fumble ramble" alt="" coords="395,2011,477,2038"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="386,90,486,117"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="375,2062,497,2089"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="381,2113,491,2139"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="167,1353,293,1379"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="173,1809,287,1835"/>
+<area shape="rect" href="shape-changer_8cpp.html#af84e97990b1c8085f7c334b2b4b13f42" title=" " alt="" coords="183,2290,277,2317"/>
+<area shape="rect" href="shape-changer_8cpp.html#a98b0e9a86e266caed3be4c13c672c5c2" title=" " alt="" coords="377,2315,495,2342"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="393,542,479,569"/>
+<area shape="rect" href="effect-monster-psi_8cpp.html#a58a97fd39c0b01298bea411f89f571a7" title="モンスターのPsi攻撃(GF_PSI_DRAIN)に対する耐性を発動する" alt="" coords="371,141,501,183"/>
+<area shape="rect" href="effect-monster-psi_8cpp.html#a2929ca0b4baf38796f719b916d038e9a" title="モンスターのPsi攻撃に対する耐性を発動する" alt="" coords="371,207,501,248"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a2f218a8278b6d99f537310edefe6f4aa" title=" " alt="" coords="369,273,503,299"/>
+<area shape="rect" href="effect-player-spirit_8cpp.html#a3d7c6becf0639cca10d2c7cdb1e4f116" title=" " alt="" coords="371,324,501,365"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a74769e902b7010f27290355c09bc385f" title=" " alt="" coords="367,390,505,417"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a4db391222fac6de9243b6a960dcd838b" title=" " alt="" coords="357,441,515,467"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a66d22b87644be0847bb5751f75cf7b55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66d22b87644be0847bb5751f75cf7b55">&#9670;&nbsp;</a></span>do_cmd_save_screen_html()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void do_cmd_save_screen_html </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>HTML方式で記念撮影する / Save a screen dump to a file </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">なし</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a66d22b87644be0847bb5751f75cf7b55_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a66d22b87644be0847bb5751f75cf7b55_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a66d22b87644be0847bb5751f75cf7b55_cgraph" id="acmd-process-screen_8cpp_a66d22b87644be0847bb5751f75cf7b55_cgraph">
+<area shape="rect" title="HTML方式で記念撮影する / Save a screen dump to a file" alt="" coords="5,436,184,463"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a520c0b6c1900e5de2bf19398e0b48e6a" title=" " alt="" coords="232,277,379,318"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="876,461,955,488"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="485,5,567,32"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="266,613,345,640"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="695,157,807,184"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="471,259,581,285"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a849a12805672436426504b9c3445e620" title="ファイルへ書き込めない場合にエラーを表示する" alt="" coords="427,309,625,336"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#aa2365433182e84a4e61fdc2f915049ce" title="記念撮影を行方向にスイープする" alt="" coords="459,411,593,437"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="705,461,797,488"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="703,512,798,539"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="474,56,578,83"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a9255ead0fa9944112be227bec2bdc087" title="HTMLフッタを書き込む" alt="" coords="466,157,586,184"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a0b611cba8c13dcd7aece434aca8524ac" title="HTMLヘッダを書き込む" alt="" coords="463,107,589,133"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="707,208,794,235"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="705,259,796,285"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a949a197d3df075ce804d33bfa751e528" title="記念撮影を1行ダンプする" alt="" coords="673,411,828,437"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#acedfa161c420a2bd8154c3e62db80d23" title="一時ファイルを読み込み、ファイルに書き出す" alt="" coords="683,107,818,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a66d22b87644be0847bb5751f75cf7b55_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a66d22b87644be0847bb5751f75cf7b55_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a66d22b87644be0847bb5751f75cf7b55_icgraph" id="acmd-process-screen_8cpp_a66d22b87644be0847bb5751f75cf7b55_icgraph">
+<area shape="rect" title="HTML方式で記念撮影する / Save a screen dump to a file" alt="" coords="987,56,1165,83"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a1f4156d254c4e75492a93a62c6d47d1d" title=" " alt="" coords="792,56,939,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,81,296,108"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="576,5,744,32"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="626,1192,694,1219"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,333,116,360"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="384,5,488,32"/>
+<area shape="rect" href="player-damage_8cpp.html#a2cc414088296f068951969e2748ba07e" title="酸属性によるプレイヤー損害処理 / Hurt the player with Acid" alt="" coords="397,609,475,636"/>
+<area shape="rect" href="activation-others_8cpp.html#a318cab58d04b4ec73f9c109d33b1311f" title=" " alt="" coords="369,660,503,687"/>
+<area shape="rect" href="spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="169,559,291,585"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a81625bc9b2711cf2fd7648092a22f3f4" title="盲目ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="379,711,493,737"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#af1470bac38e1d59b39058aafdfa5e48e" title="混乱ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="365,761,507,788"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a256586043cdcaa5da8bc36e86e5151af" title="病気ダメージを計算する (毒耐性があれば、(1d4 + 4) / 9になる。二重耐性なら更に(1d4 + 4) / 9)" alt="" coords="371,812,501,839"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a7357fd084a49c97aa52cee63d4a7022b" title="劣化ダメージを計算する (耐性があれば、(1d4 + 4) / 9になる)" alt="" coords="361,863,511,889"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a5e4a111ca7aa0de1b565cd7cd59e3cf6" title="経験値吸収ダメージを計算する (経験値保持と地獄耐性があれば、それぞれ&#45;7.5%)" alt="" coords="365,913,507,940"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#abdc6254c31e8d0ab7ae81f241f13fd83" title="生命力吸収ダメージを計算する (経験値維持があれば9/10になる)" alt="" coords="367,964,505,991"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a33f8479de9ef6e4f898067c86ac0a166" title="恐怖ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="383,1015,489,1041"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a4783d7ee56f3872c63f6249831c04fa6" title=" " alt="" coords="375,1065,497,1092"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#acce2a567c9f6bf6fc75aaebee2644f84" title="全能力低下ダメージを計算する (維持があれば、1つに付き&#45;3軽減する)" alt="" coords="371,1116,501,1143"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a422a426d72ff5675432c3303d87cd3db" title="魅力低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="351,1167,521,1193"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a8a54aec3bd2ee682c78fa34f461e1fa5" title="耐久低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="344,1217,528,1244"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a1507aeb20492fa7fdd43037e55d9d658" title="器用低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="353,1268,519,1295"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#ab40ae1afec6b5aead9872ec83b0104f4" title="知能低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="345,1319,527,1345"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#af1f3e12f4952d7067bce0a421a85da26" title="腕力低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="354,1369,518,1396"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a6af6a4109a99c377b3d4be211e887b31" title="賢さ低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="355,1420,517,1447"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#aafce94bf9b84d8360a155d328b505cde" title="麻痺ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="367,1471,505,1497"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#acef826f9c56e2d18ed1e37256dfcfb10" title="モンスターからプレーヤーへの直接攻撃をその種別において振り分ける" alt="" coords="374,1521,498,1548"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a08dddef2d86c3f6a345004936409b243" title="時間逆転ダメージを計算する (耐性があれば、(1d4 + 4) / 9になる)" alt="" coords="381,1572,491,1599"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a870a719321bef5e247ec47ac1735a0eb" title="魔道具吸収ダメージを計算する (消費魔力減少、呪文失敗率減少、魔道具使用能力向上があればそれぞれ&#45;7.5%)" alt="" coords="365,1623,507,1649"/>
+<area shape="rect" href="spells-chaos_8cpp.html#a207154409a52e3ce87987b79eec6c59b" title="虚無招来処理 /" alt="" coords="388,1673,484,1700"/>
+<area shape="rect" href="mind-force-trainer_8cpp.html#a08ed4ef4f0eccabdb4a8348948298fb5" title="練気術の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;ForceTrainer&#39;." alt="" coords="378,1724,494,1751"/>
+<area shape="rect" href="chest_8cpp.html#a15fe189e236398690182db36a2c28a9b" title="箱のトラップ処理 / Chests have traps too." alt="" coords="395,1775,477,1801"/>
+<area shape="rect" href="player-damage_8cpp.html#a71b92a6bc674bee26d592cd621fabb89" title="冷気属性によるプレイヤー損害処理 / Hurt the player with Cold" alt="" coords="397,1825,475,1852"/>
+<area shape="rect" href="mind-warrior-mage_8cpp.html#a176e17f833e255bda4a0a4471506904d" title=" " alt="" coords="371,1876,501,1903"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a0e8f45a3c8b44eb33491346f328f45fe" title=" " alt="" coords="381,1927,491,1953"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#a6ec4006dc046fceb9b3d62332a73b9e9" title="地形によるダメージを与える / Deal damage from feature." alt="" coords="362,1977,510,2004"/>
+<area shape="rect" href="quaff-execution_8cpp.html#aecc8c7c369c6ab3004c9e6fe71674961" title="爆発の薬の効果処理 / Fumble ramble" alt="" coords="395,2028,477,2055"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="386,107,486,133"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="375,2079,497,2105"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="381,2129,491,2156"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="167,2205,293,2232"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="173,2268,287,2295"/>
+<area shape="rect" href="shape-changer_8cpp.html#af84e97990b1c8085f7c334b2b4b13f42" title=" " alt="" coords="183,275,277,301"/>
+<area shape="rect" href="shape-changer_8cpp.html#a98b0e9a86e266caed3be4c13c672c5c2" title=" " alt="" coords="377,391,495,417"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="393,2231,479,2257"/>
+<area shape="rect" href="effect-monster-psi_8cpp.html#a58a97fd39c0b01298bea411f89f571a7" title="モンスターのPsi攻撃(GF_PSI_DRAIN)に対する耐性を発動する" alt="" coords="371,209,501,250"/>
+<area shape="rect" href="effect-monster-psi_8cpp.html#a2929ca0b4baf38796f719b916d038e9a" title="モンスターのPsi攻撃に対する耐性を発動する" alt="" coords="371,274,501,315"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a2f218a8278b6d99f537310edefe6f4aa" title=" " alt="" coords="369,340,503,367"/>
+<area shape="rect" href="effect-player-spirit_8cpp.html#a3d7c6becf0639cca10d2c7cdb1e4f116" title=" " alt="" coords="371,442,501,483"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a74769e902b7010f27290355c09bc385f" title=" " alt="" coords="367,508,505,535"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a520c0b6c1900e5de2bf19398e0b48e6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a520c0b6c1900e5de2bf19398e0b48e6a">&#9670;&nbsp;</a></span>do_cmd_save_screen_html_aux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_save_screen_html_aux </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a520c0b6c1900e5de2bf19398e0b48e6a_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a520c0b6c1900e5de2bf19398e0b48e6a_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a520c0b6c1900e5de2bf19398e0b48e6a_cgraph" id="acmd-process-screen_8cpp_a520c0b6c1900e5de2bf19398e0b48e6a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,302,152,343"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="468,385,580,412"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="245,19,354,45"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a849a12805672436426504b9c3445e620" title="ファイルへ書き込めない場合にエラーを表示する" alt="" coords="200,157,399,184"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="663,208,742,235"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="483,56,565,83"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#aa2365433182e84a4e61fdc2f915049ce" title="記念撮影を行方向にスイープする" alt="" coords="232,563,367,589"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="253,208,345,235"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="477,309,571,336"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="247,461,351,488"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a9255ead0fa9944112be227bec2bdc087" title="HTMLフッタを書き込む" alt="" coords="239,411,359,437"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a0b611cba8c13dcd7aece434aca8524ac" title="HTMLヘッダを書き込む" alt="" coords="236,512,363,539"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="481,5,567,32"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="671,56,734,83"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="804,81,871,108"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="479,107,569,133"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a949a197d3df075ce804d33bfa751e528" title="記念撮影を1行ダンプする" alt="" coords="447,563,601,589"/>
+<area shape="rect" href="z-term_8cpp.html#a1ce8644c4e096eb9fccd74d55f835023" title=" " alt="" coords="661,563,744,589"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#acedfa161c420a2bd8154c3e62db80d23" title="一時ファイルを読み込み、ファイルに書き出す" alt="" coords="457,461,591,488"/>
+<area shape="rect" href="angband-files_8cpp.html#af8478ae9202a347c7b95688842ff7633" title=" " alt="" coords="649,461,756,488"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a520c0b6c1900e5de2bf19398e0b48e6a_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a520c0b6c1900e5de2bf19398e0b48e6a_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a520c0b6c1900e5de2bf19398e0b48e6a_icgraph" id="acmd-process-screen_8cpp_a520c0b6c1900e5de2bf19398e0b48e6a_icgraph">
+<area shape="rect" title=" " alt="" coords="643,49,789,90"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a66d22b87644be0847bb5751f75cf7b55" title="HTML方式で記念撮影する / Save a screen dump to a file" alt="" coords="416,56,595,83"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a1f4156d254c4e75492a93a62c6d47d1d" title=" " alt="" coords="221,56,368,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="55,107,123,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa46b7dd58d4e2cd6fc032da61b18f90a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa46b7dd58d4e2cd6fc032da61b18f90a">&#9670;&nbsp;</a></span>do_cmd_save_screen_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> do_cmd_save_screen_text </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>wid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hgt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>テキスト方式で記念撮影する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wid</td><td>幅 </td></tr>
+    <tr><td class="paramname">hgt</td><td>高さ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>記念撮影に成功したらTRUE、ファイルが開けなかったらFALSE </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000015">todo:</a></b></dt><dd>どこかバグっていて、(恐らく初期化されていない)変な文字列まで出力される </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_aa46b7dd58d4e2cd6fc032da61b18f90a_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_aa46b7dd58d4e2cd6fc032da61b18f90a_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_aa46b7dd58d4e2cd6fc032da61b18f90a_cgraph" id="acmd-process-screen_8cpp_aa46b7dd58d4e2cd6fc032da61b18f90a_cgraph">
+<area shape="rect" title="テキスト方式で記念撮影する" alt="" coords="5,183,181,209"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="271,5,383,32"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="272,107,381,133"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a20b5ea4d446d4bbf2e0898f1493fb18f" title="ファイルへ書き込めない場合にエラーを表示する" alt="" coords="229,157,424,184"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="615,208,693,235"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="479,5,560,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="473,259,565,285"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="472,208,567,235"/>
+<area shape="rect" href="z-term_8cpp.html#a1ce8644c4e096eb9fccd74d55f835023" title=" " alt="" coords="285,360,368,387"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="476,56,563,83"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="623,56,685,83"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="741,81,808,108"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="474,107,565,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_aa46b7dd58d4e2cd6fc032da61b18f90a_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_aa46b7dd58d4e2cd6fc032da61b18f90a_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_aa46b7dd58d4e2cd6fc032da61b18f90a_icgraph" id="acmd-process-screen_8cpp_aa46b7dd58d4e2cd6fc032da61b18f90a_icgraph">
+<area shape="rect" title="テキスト方式で記念撮影する" alt="" coords="987,56,1163,83"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a1f4156d254c4e75492a93a62c6d47d1d" title=" " alt="" coords="792,56,939,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,81,296,108"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="576,5,744,32"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="626,1192,694,1219"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,333,116,360"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="384,5,488,32"/>
+<area shape="rect" href="player-damage_8cpp.html#a2cc414088296f068951969e2748ba07e" title="酸属性によるプレイヤー損害処理 / Hurt the player with Acid" alt="" coords="397,609,475,636"/>
+<area shape="rect" href="activation-others_8cpp.html#a318cab58d04b4ec73f9c109d33b1311f" title=" " alt="" coords="369,660,503,687"/>
+<area shape="rect" href="spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="169,559,291,585"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a81625bc9b2711cf2fd7648092a22f3f4" title="盲目ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="379,711,493,737"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#af1470bac38e1d59b39058aafdfa5e48e" title="混乱ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="365,761,507,788"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a256586043cdcaa5da8bc36e86e5151af" title="病気ダメージを計算する (毒耐性があれば、(1d4 + 4) / 9になる。二重耐性なら更に(1d4 + 4) / 9)" alt="" coords="371,812,501,839"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a7357fd084a49c97aa52cee63d4a7022b" title="劣化ダメージを計算する (耐性があれば、(1d4 + 4) / 9になる)" alt="" coords="361,863,511,889"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a5e4a111ca7aa0de1b565cd7cd59e3cf6" title="経験値吸収ダメージを計算する (経験値保持と地獄耐性があれば、それぞれ&#45;7.5%)" alt="" coords="365,913,507,940"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#abdc6254c31e8d0ab7ae81f241f13fd83" title="生命力吸収ダメージを計算する (経験値維持があれば9/10になる)" alt="" coords="367,964,505,991"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a33f8479de9ef6e4f898067c86ac0a166" title="恐怖ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="383,1015,489,1041"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a4783d7ee56f3872c63f6249831c04fa6" title=" " alt="" coords="375,1065,497,1092"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#acce2a567c9f6bf6fc75aaebee2644f84" title="全能力低下ダメージを計算する (維持があれば、1つに付き&#45;3軽減する)" alt="" coords="371,1116,501,1143"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a422a426d72ff5675432c3303d87cd3db" title="魅力低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="351,1167,521,1193"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a8a54aec3bd2ee682c78fa34f461e1fa5" title="耐久低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="344,1217,528,1244"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a1507aeb20492fa7fdd43037e55d9d658" title="器用低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="353,1268,519,1295"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#ab40ae1afec6b5aead9872ec83b0104f4" title="知能低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="345,1319,527,1345"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#af1f3e12f4952d7067bce0a421a85da26" title="腕力低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="354,1369,518,1396"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a6af6a4109a99c377b3d4be211e887b31" title="賢さ低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="355,1420,517,1447"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#aafce94bf9b84d8360a155d328b505cde" title="麻痺ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="367,1471,505,1497"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#acef826f9c56e2d18ed1e37256dfcfb10" title="モンスターからプレーヤーへの直接攻撃をその種別において振り分ける" alt="" coords="374,1521,498,1548"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a08dddef2d86c3f6a345004936409b243" title="時間逆転ダメージを計算する (耐性があれば、(1d4 + 4) / 9になる)" alt="" coords="381,1572,491,1599"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a870a719321bef5e247ec47ac1735a0eb" title="魔道具吸収ダメージを計算する (消費魔力減少、呪文失敗率減少、魔道具使用能力向上があればそれぞれ&#45;7.5%)" alt="" coords="365,1623,507,1649"/>
+<area shape="rect" href="spells-chaos_8cpp.html#a207154409a52e3ce87987b79eec6c59b" title="虚無招来処理 /" alt="" coords="388,1673,484,1700"/>
+<area shape="rect" href="mind-force-trainer_8cpp.html#a08ed4ef4f0eccabdb4a8348948298fb5" title="練気術の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;ForceTrainer&#39;." alt="" coords="378,1724,494,1751"/>
+<area shape="rect" href="chest_8cpp.html#a15fe189e236398690182db36a2c28a9b" title="箱のトラップ処理 / Chests have traps too." alt="" coords="395,1775,477,1801"/>
+<area shape="rect" href="player-damage_8cpp.html#a71b92a6bc674bee26d592cd621fabb89" title="冷気属性によるプレイヤー損害処理 / Hurt the player with Cold" alt="" coords="397,1825,475,1852"/>
+<area shape="rect" href="mind-warrior-mage_8cpp.html#a176e17f833e255bda4a0a4471506904d" title=" " alt="" coords="371,1876,501,1903"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a0e8f45a3c8b44eb33491346f328f45fe" title=" " alt="" coords="381,1927,491,1953"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#a6ec4006dc046fceb9b3d62332a73b9e9" title="地形によるダメージを与える / Deal damage from feature." alt="" coords="362,1977,510,2004"/>
+<area shape="rect" href="quaff-execution_8cpp.html#aecc8c7c369c6ab3004c9e6fe71674961" title="爆発の薬の効果処理 / Fumble ramble" alt="" coords="395,2028,477,2055"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="386,107,486,133"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="375,2079,497,2105"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="381,2129,491,2156"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="167,2205,293,2232"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="173,2268,287,2295"/>
+<area shape="rect" href="shape-changer_8cpp.html#af84e97990b1c8085f7c334b2b4b13f42" title=" " alt="" coords="183,275,277,301"/>
+<area shape="rect" href="shape-changer_8cpp.html#a98b0e9a86e266caed3be4c13c672c5c2" title=" " alt="" coords="377,391,495,417"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="393,2231,479,2257"/>
+<area shape="rect" href="effect-monster-psi_8cpp.html#a58a97fd39c0b01298bea411f89f571a7" title="モンスターのPsi攻撃(GF_PSI_DRAIN)に対する耐性を発動する" alt="" coords="371,209,501,250"/>
+<area shape="rect" href="effect-monster-psi_8cpp.html#a2929ca0b4baf38796f719b916d038e9a" title="モンスターのPsi攻撃に対する耐性を発動する" alt="" coords="371,274,501,315"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a2f218a8278b6d99f537310edefe6f4aa" title=" " alt="" coords="369,340,503,367"/>
+<area shape="rect" href="effect-player-spirit_8cpp.html#a3d7c6becf0639cca10d2c7cdb1e4f116" title=" " alt="" coords="371,442,501,483"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a74769e902b7010f27290355c09bc385f" title=" " alt="" coords="367,508,505,535"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a30dd3f84a1e073fd386615b0a4775df9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30dd3f84a1e073fd386615b0a4775df9">&#9670;&nbsp;</a></span>draw_colored_characters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void draw_colored_characters </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>buf</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>wid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hgt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>okay</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>白以外の文字を画面に描画する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>描画用バッファ </td></tr>
+    <tr><td class="paramname">fff</td><td>記念撮影ファイルへの参照ポインタ </td></tr>
+    <tr><td class="paramname">wid</td><td>幅 </td></tr>
+    <tr><td class="paramname">hgt</td><td>高さ </td></tr>
+    <tr><td class="paramname">白文字が途中で読み込めなくなっていたらTRUE</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000017">todo:</a></b></dt><dd>目的は不明瞭 </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a30dd3f84a1e073fd386615b0a4775df9_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a30dd3f84a1e073fd386615b0a4775df9_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a30dd3f84a1e073fd386615b0a4775df9_cgraph" id="acmd-process-screen_8cpp_a30dd3f84a1e073fd386615b0a4775df9_cgraph">
+<area shape="rect" title="白以外の文字を画面に描画する" alt="" coords="5,31,172,57"/>
+<area shape="rect" href="z-term_8cpp.html#a84ddf6b3bb4e2789ab98094472b13f1f" title=" " alt="" coords="220,5,303,32"/>
+<area shape="rect" href="z-term_8cpp.html#a1ce8644c4e096eb9fccd74d55f835023" title=" " alt="" coords="220,56,303,83"/>
+<area shape="rect" href="z-term_8cpp.html#abe940f88333b917b37fb87f4104bd473" title=" " alt="" coords="351,5,473,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a30dd3f84a1e073fd386615b0a4775df9_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a30dd3f84a1e073fd386615b0a4775df9_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a30dd3f84a1e073fd386615b0a4775df9_icgraph" id="acmd-process-screen_8cpp_a30dd3f84a1e073fd386615b0a4775df9_icgraph">
+<area shape="rect" title="白以外の文字を画面に描画する" alt="" coords="905,5,1072,32"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#ae0f31a85f5c0065de5a1fd0ef7b5c8c9" title=" " alt="" coords="712,5,857,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a970b83eb0c4a8776e9996dd6dcb9d14f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a970b83eb0c4a8776e9996dd6dcb9d14f">&#9670;&nbsp;</a></span>draw_white_characters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> draw_white_characters </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>buf</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>wid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hgt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>白文字だけ画面に描画する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>描画用バッファ </td></tr>
+    <tr><td class="paramname">fff</td><td>記念撮影ファイルへの参照ポインタ </td></tr>
+    <tr><td class="paramname">wid</td><td>幅 </td></tr>
+    <tr><td class="paramname">hgt</td><td>高さ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000016">todo:</a></b></dt><dd>目的は不明瞭 </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>ファイルが読み込めなくなったらFALSEで抜ける </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a970b83eb0c4a8776e9996dd6dcb9d14f_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a970b83eb0c4a8776e9996dd6dcb9d14f_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a970b83eb0c4a8776e9996dd6dcb9d14f_cgraph" id="acmd-process-screen_8cpp_a970b83eb0c4a8776e9996dd6dcb9d14f_cgraph">
+<area shape="rect" title="白文字だけ画面に描画する" alt="" coords="5,5,160,32"/>
+<area shape="rect" href="z-term_8cpp.html#a84ddf6b3bb4e2789ab98094472b13f1f" title=" " alt="" coords="208,5,291,32"/>
+<area shape="rect" href="z-term_8cpp.html#abe940f88333b917b37fb87f4104bd473" title=" " alt="" coords="339,5,461,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a970b83eb0c4a8776e9996dd6dcb9d14f_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a970b83eb0c4a8776e9996dd6dcb9d14f_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a970b83eb0c4a8776e9996dd6dcb9d14f_icgraph" id="acmd-process-screen_8cpp_a970b83eb0c4a8776e9996dd6dcb9d14f_icgraph">
+<area shape="rect" title="白文字だけ画面に描画する" alt="" coords="905,5,1060,32"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#ae0f31a85f5c0065de5a1fd0ef7b5c8c9" title=" " alt="" coords="712,5,857,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acedfa161c420a2bd8154c3e62db80d23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acedfa161c420a2bd8154c3e62db80d23">&#9670;&nbsp;</a></span>read_temporary_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void read_temporary_file </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>tmpfff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>buf</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>buf_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_tag</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>一時ファイルを読み込み、ファイルに書き出す </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fff</td><td>ファイルへの参照ポインタ </td></tr>
+    <tr><td class="paramname">tempfff</td><td>一時ファイルへの参照ポインタ </td></tr>
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+    <tr><td class="paramname">buf_size</td><td>バッファサイズ </td></tr>
+    <tr><td class="paramname">num_tag</td><td>タグ番号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000014">todo:</a></b></dt><dd>io/ 以下に移したいところだが、このファイルの行数も大したことがないので一旦保留 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_acedfa161c420a2bd8154c3e62db80d23_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_acedfa161c420a2bd8154c3e62db80d23_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_acedfa161c420a2bd8154c3e62db80d23_cgraph" id="acmd-process-screen_8cpp_acedfa161c420a2bd8154c3e62db80d23_cgraph">
+<area shape="rect" title="一時ファイルを読み込み、ファイルに書き出す" alt="" coords="5,5,140,32"/>
+<area shape="rect" href="angband-files_8cpp.html#af8478ae9202a347c7b95688842ff7633" title=" " alt="" coords="188,5,295,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_acedfa161c420a2bd8154c3e62db80d23_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_acedfa161c420a2bd8154c3e62db80d23_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_acedfa161c420a2bd8154c3e62db80d23_icgraph" id="acmd-process-screen_8cpp_acedfa161c420a2bd8154c3e62db80d23_icgraph">
+<area shape="rect" title="一時ファイルを読み込み、ファイルに書き出す" alt="" coords="601,31,736,57"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a9255ead0fa9944112be227bec2bdc087" title="HTMLフッタを書き込む" alt="" coords="430,5,550,32"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a0b611cba8c13dcd7aece434aca8524ac" title="HTMLヘッダを書き込む" alt="" coords="427,56,553,83"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a520c0b6c1900e5de2bf19398e0b48e6a" title=" " alt="" coords="232,23,379,65"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a66d22b87644be0847bb5751f75cf7b55" title="HTML方式で記念撮影する / Save a screen dump to a file" alt="" coords="5,31,184,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa2365433182e84a4e61fdc2f915049ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2365433182e84a4e61fdc2f915049ce">&#9670;&nbsp;</a></span>screen_dump_lines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void screen_dump_lines </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>wid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hgt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>記念撮影を行方向にスイープする </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wid</td><td>幅 </td></tr>
+    <tr><td class="paramname">hgt</td><td>高さ </td></tr>
+    <tr><td class="paramname">fff</td><td>記念撮影ファイルへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_aa2365433182e84a4e61fdc2f915049ce_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_aa2365433182e84a4e61fdc2f915049ce_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_aa2365433182e84a4e61fdc2f915049ce_cgraph" id="acmd-process-screen_8cpp_aa2365433182e84a4e61fdc2f915049ce_cgraph">
+<area shape="rect" title="記念撮影を行方向にスイープする" alt="" coords="5,5,140,32"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a949a197d3df075ce804d33bfa751e528" title="記念撮影を1行ダンプする" alt="" coords="188,5,343,32"/>
+<area shape="rect" href="z-term_8cpp.html#a1ce8644c4e096eb9fccd74d55f835023" title=" " alt="" coords="391,5,473,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_aa2365433182e84a4e61fdc2f915049ce_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_aa2365433182e84a4e61fdc2f915049ce_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_aa2365433182e84a4e61fdc2f915049ce_icgraph" id="acmd-process-screen_8cpp_aa2365433182e84a4e61fdc2f915049ce_icgraph">
+<area shape="rect" title="記念撮影を行方向にスイープする" alt="" coords="621,13,756,39"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a520c0b6c1900e5de2bf19398e0b48e6a" title=" " alt="" coords="427,5,573,47"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a66d22b87644be0847bb5751f75cf7b55" title="HTML方式で記念撮影する / Save a screen dump to a file" alt="" coords="200,13,379,39"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a1f4156d254c4e75492a93a62c6d47d1d" title=" " alt="" coords="5,13,152,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a949a197d3df075ce804d33bfa751e528"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a949a197d3df075ce804d33bfa751e528">&#9670;&nbsp;</a></span>screen_dump_one_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void screen_dump_one_line </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>wid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>記念撮影を1行ダンプする </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wid</td><td>幅 </td></tr>
+    <tr><td class="paramname">y</td><td>現在の行位置 </td></tr>
+    <tr><td class="paramname">fff</td><td>記念撮影ファイルへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a949a197d3df075ce804d33bfa751e528_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a949a197d3df075ce804d33bfa751e528_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a949a197d3df075ce804d33bfa751e528_cgraph" id="acmd-process-screen_8cpp_a949a197d3df075ce804d33bfa751e528_cgraph">
+<area shape="rect" title="記念撮影を1行ダンプする" alt="" coords="5,5,160,32"/>
+<area shape="rect" href="z-term_8cpp.html#a1ce8644c4e096eb9fccd74d55f835023" title=" " alt="" coords="208,5,291,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a949a197d3df075ce804d33bfa751e528_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a949a197d3df075ce804d33bfa751e528_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a949a197d3df075ce804d33bfa751e528_icgraph" id="acmd-process-screen_8cpp_a949a197d3df075ce804d33bfa751e528_icgraph">
+<area shape="rect" title="記念撮影を1行ダンプする" alt="" coords="609,13,764,39"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#aa2365433182e84a4e61fdc2f915049ce" title="記念撮影を行方向にスイープする" alt="" coords="427,13,561,39"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a520c0b6c1900e5de2bf19398e0b48e6a" title=" " alt="" coords="232,5,379,47"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a66d22b87644be0847bb5751f75cf7b55" title="HTML方式で記念撮影する / Save a screen dump to a file" alt="" coords="5,13,184,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae4bf924cf72ee8c74b44affd9e3594fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4bf924cf72ee8c74b44affd9e3594fe">&#9670;&nbsp;</a></span>update_use_graphics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> update_use_graphics </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(char *)&#160;</td>
+          <td class="paramname"><em>process_autopick_file_command</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>記念撮影のためにグラフィック使用をOFFにする </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">handle_stuff</td><td>画面更新用の関数ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>記念撮影直前のグラフィックオプション </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_ae4bf924cf72ee8c74b44affd9e3594fe_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_ae4bf924cf72ee8c74b44affd9e3594fe_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_ae4bf924cf72ee8c74b44affd9e3594fe_cgraph" id="acmd-process-screen_8cpp_ae4bf924cf72ee8c74b44affd9e3594fe_cgraph">
+<area shape="rect" title="記念撮影のためにグラフィック使用をOFFにする" alt="" coords="5,723,151,749"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="202,364,293,391"/>
+<area shape="rect" href="autopick-pref-processor_8cpp.html#aa31a42830d1eed102ec91a767c3db6e7" title=" " alt="" coords="344,766,491,807"/>
+<area shape="rect" href="visuals-reseter_8cpp.html#a0bff15ee0bec53f209d078d49af3470c" title="オブジェクト、地形の表示シンボルなど初期化する / Reset the &quot;visual&quot; lists" alt="" coords="199,723,296,749"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="372,715,463,741"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="748,81,843,108"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="360,5,475,32"/>
+<area shape="rect" href="display-player_8cpp.html#a9fe8f180d0c7988d9f70e24d800817e0" title="プレイヤーの装備一覧をシンボルで並べる Equippy chars" alt="" coords="539,157,696,184"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#ac998ca123dae0422c7e40ef406cff479" title="モンスターの体力ゲージを表示する" alt="" coords="744,259,847,285"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="578,107,657,133"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a7d5ec7c1181db9b693f537dd9e0d41e7" title="プレイヤーのACを表示する / Prints current AC" alt="" coords="761,309,829,336"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a6181c8a6ad32547a234b2058e6b0e525" title="プレイヤーの負傷状態を表示する" alt="" coords="759,867,831,893"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a5bfa2237dc983925953f84a885559d79" title="現在のフロアの深さを表示する / Prints depth in stat area" alt="" coords="752,360,839,387"/>
+<area shape="rect" href="window-redrawer_8cpp.html#a41d833bdfe7715316bb530e140248670" title="現在のマップ名を描画する / Print dungeon" alt="" coords="566,1323,669,1349"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a18af94b5af464f3967f0ed8a20dac1d0" title="プレイヤーの経験値を表示する / Display the experience" alt="" coords="758,411,833,437"/>
+<area shape="rect" href="main-window-util_8cpp.html#a74f5abdff68634c310ce9e4bf83e9f33" title="画面左の能力値表示を行うために指定位置から13キャラ分を空白消去後指定のメッセージを明るい青で描画する / Print character info at given row,..." alt="" coords="895,461,972,488"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a1e77dcf108066d1125d6bd67ff0a503a" title="プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map)" alt="" coords="555,512,679,539"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a2885d18ebf873971cb460b26b1cd9465" title="プレイヤーの所持金を表示する / Prints current gold" alt="" coords="756,563,835,589"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a5805711d6d76e93f028e594309a70b2a" title="プレイヤーのHPを表示する / Prints Cur/Max hit points" alt="" coords="761,613,829,640"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a9141d6c0e7c5ab59266e2b03c2f9be83" title="プレイヤーのレベルを表示する / Prints level" alt="" coords="756,664,835,691"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a6740c9df10edfa479b29c3fa64a2e67e" title="プレイヤーのMPを表示する / Prints players max/cur spell points" alt="" coords="761,715,829,741"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a09f789316ff276b64a076c8f06382900" title="プレイヤー能力値を描画する / Print character stat in given row, column" alt="" coords="757,816,833,843"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a697c881fefb73b66a129eeeb7e71c131" title="プレイヤーの称号を表示する / Prints &quot;title&quot;, including &quot;wizard&quot; or &quot;winner&quot; as needed." alt="" coords="758,461,833,488"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#ac1f738b7a5ba34c408d778f0c00afa64" title="プレイヤーのステータスを一括表示する（下部分） / Display extra info (mostly below map)" alt="" coords="556,1069,679,1096"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#aebd5d1f389eff327860385b1090b4605" title="プレイヤーの空腹状態を表示する / Prints status of hunger" alt="" coords="749,917,842,944"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a6e9ce49dc68f15e20ab91ed3ced188e5" title="プレイヤーのものまね可能状態を表示する" alt="" coords="744,968,847,995"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a3e7fa200db1ee53f89cbd62db2cf93ce" title="プレイヤーの行動速度を表示する / Prints the speed_value of a character." alt="" coords="751,1019,840,1045"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a771dc00b6a1e33e839d8933154efa9aa" title="プレイヤーの行動状態を表示する / Prints Searching, Resting, Paralysis, or &#39;count&#39; status" alt="" coords="754,1095,837,1121"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a0dcb16a35f4ec657370c5b16febc8d88" title="下部に状態表示を行う / Show status bar" alt="" coords="750,1159,841,1185"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a4c797de7671346c3c777a2037406f63d" title="プレイヤーの呪文学習可能状態を表示する" alt="" coords="752,1221,839,1248"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a0efdfaa19c5817c94b672d0a95f7b4dc" title="プレイヤーの朦朧状態を表示する" alt="" coords="756,1272,835,1299"/>
+<area shape="rect" href="main-window-util_8cpp.html#a939591bb7cb9347fbb114ffd9ae7cc8e" title=" " alt="" coords="578,1373,657,1400"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#ae997244cfd06fde0444730af2862038b" title="ゲーム時刻を表示する / Print time" alt="" coords="578,1424,657,1451"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="576,765,659,792"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_ae4bf924cf72ee8c74b44affd9e3594fe_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_ae4bf924cf72ee8c74b44affd9e3594fe_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_ae4bf924cf72ee8c74b44affd9e3594fe_icgraph" id="acmd-process-screen_8cpp_ae4bf924cf72ee8c74b44affd9e3594fe_icgraph">
+<area shape="rect" title="記念撮影のためにグラフィック使用をOFFにする" alt="" coords="987,56,1132,83"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a1f4156d254c4e75492a93a62c6d47d1d" title=" " alt="" coords="792,56,939,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,81,296,108"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="576,5,744,32"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="626,1192,694,1219"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,333,116,360"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="384,5,488,32"/>
+<area shape="rect" href="player-damage_8cpp.html#a2cc414088296f068951969e2748ba07e" title="酸属性によるプレイヤー損害処理 / Hurt the player with Acid" alt="" coords="397,609,475,636"/>
+<area shape="rect" href="activation-others_8cpp.html#a318cab58d04b4ec73f9c109d33b1311f" title=" " alt="" coords="369,660,503,687"/>
+<area shape="rect" href="spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="169,559,291,585"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a81625bc9b2711cf2fd7648092a22f3f4" title="盲目ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="379,711,493,737"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#af1470bac38e1d59b39058aafdfa5e48e" title="混乱ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="365,761,507,788"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a256586043cdcaa5da8bc36e86e5151af" title="病気ダメージを計算する (毒耐性があれば、(1d4 + 4) / 9になる。二重耐性なら更に(1d4 + 4) / 9)" alt="" coords="371,812,501,839"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a7357fd084a49c97aa52cee63d4a7022b" title="劣化ダメージを計算する (耐性があれば、(1d4 + 4) / 9になる)" alt="" coords="361,863,511,889"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a5e4a111ca7aa0de1b565cd7cd59e3cf6" title="経験値吸収ダメージを計算する (経験値保持と地獄耐性があれば、それぞれ&#45;7.5%)" alt="" coords="365,913,507,940"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#abdc6254c31e8d0ab7ae81f241f13fd83" title="生命力吸収ダメージを計算する (経験値維持があれば9/10になる)" alt="" coords="367,964,505,991"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a33f8479de9ef6e4f898067c86ac0a166" title="恐怖ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="383,1015,489,1041"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a4783d7ee56f3872c63f6249831c04fa6" title=" " alt="" coords="375,1065,497,1092"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#acce2a567c9f6bf6fc75aaebee2644f84" title="全能力低下ダメージを計算する (維持があれば、1つに付き&#45;3軽減する)" alt="" coords="371,1116,501,1143"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a422a426d72ff5675432c3303d87cd3db" title="魅力低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="351,1167,521,1193"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a8a54aec3bd2ee682c78fa34f461e1fa5" title="耐久低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="344,1217,528,1244"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a1507aeb20492fa7fdd43037e55d9d658" title="器用低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="353,1268,519,1295"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#ab40ae1afec6b5aead9872ec83b0104f4" title="知能低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="345,1319,527,1345"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#af1f3e12f4952d7067bce0a421a85da26" title="腕力低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="354,1369,518,1396"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a6af6a4109a99c377b3d4be211e887b31" title="賢さ低下ダメージを計算する (維持があれば、(1d4 + 4) / 9になる)" alt="" coords="355,1420,517,1447"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#aafce94bf9b84d8360a155d328b505cde" title="麻痺ダメージを計算する (耐性があれば、(1d4 + 3) / 8になる)" alt="" coords="367,1471,505,1497"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#acef826f9c56e2d18ed1e37256dfcfb10" title="モンスターからプレーヤーへの直接攻撃をその種別において振り分ける" alt="" coords="374,1521,498,1548"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a08dddef2d86c3f6a345004936409b243" title="時間逆転ダメージを計算する (耐性があれば、(1d4 + 4) / 9になる)" alt="" coords="381,1572,491,1599"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a870a719321bef5e247ec47ac1735a0eb" title="魔道具吸収ダメージを計算する (消費魔力減少、呪文失敗率減少、魔道具使用能力向上があればそれぞれ&#45;7.5%)" alt="" coords="365,1623,507,1649"/>
+<area shape="rect" href="spells-chaos_8cpp.html#a207154409a52e3ce87987b79eec6c59b" title="虚無招来処理 /" alt="" coords="388,1673,484,1700"/>
+<area shape="rect" href="mind-force-trainer_8cpp.html#a08ed4ef4f0eccabdb4a8348948298fb5" title="練気術の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;ForceTrainer&#39;." alt="" coords="378,1724,494,1751"/>
+<area shape="rect" href="chest_8cpp.html#a15fe189e236398690182db36a2c28a9b" title="箱のトラップ処理 / Chests have traps too." alt="" coords="395,1775,477,1801"/>
+<area shape="rect" href="player-damage_8cpp.html#a71b92a6bc674bee26d592cd621fabb89" title="冷気属性によるプレイヤー損害処理 / Hurt the player with Cold" alt="" coords="397,1825,475,1852"/>
+<area shape="rect" href="mind-warrior-mage_8cpp.html#a176e17f833e255bda4a0a4471506904d" title=" " alt="" coords="371,1876,501,1903"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a0e8f45a3c8b44eb33491346f328f45fe" title=" " alt="" coords="381,1927,491,1953"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#a6ec4006dc046fceb9b3d62332a73b9e9" title="地形によるダメージを与える / Deal damage from feature." alt="" coords="362,1977,510,2004"/>
+<area shape="rect" href="quaff-execution_8cpp.html#aecc8c7c369c6ab3004c9e6fe71674961" title="爆発の薬の効果処理 / Fumble ramble" alt="" coords="395,2028,477,2055"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="386,107,486,133"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="375,2079,497,2105"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="381,2129,491,2156"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="167,2205,293,2232"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="173,2268,287,2295"/>
+<area shape="rect" href="shape-changer_8cpp.html#af84e97990b1c8085f7c334b2b4b13f42" title=" " alt="" coords="183,275,277,301"/>
+<area shape="rect" href="shape-changer_8cpp.html#a98b0e9a86e266caed3be4c13c672c5c2" title=" " alt="" coords="377,391,495,417"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="393,2231,479,2257"/>
+<area shape="rect" href="effect-monster-psi_8cpp.html#a58a97fd39c0b01298bea411f89f571a7" title="モンスターのPsi攻撃(GF_PSI_DRAIN)に対する耐性を発動する" alt="" coords="371,209,501,250"/>
+<area shape="rect" href="effect-monster-psi_8cpp.html#a2929ca0b4baf38796f719b916d038e9a" title="モンスターのPsi攻撃に対する耐性を発動する" alt="" coords="371,274,501,315"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a2f218a8278b6d99f537310edefe6f4aa" title=" " alt="" coords="369,340,503,367"/>
+<area shape="rect" href="effect-player-spirit_8cpp.html#a3d7c6becf0639cca10d2c7cdb1e4f116" title=" " alt="" coords="371,442,501,483"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a74769e902b7010f27290355c09bc385f" title=" " alt="" coords="367,508,505,535"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9255ead0fa9944112be227bec2bdc087"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9255ead0fa9944112be227bec2bdc087">&#9670;&nbsp;</a></span>write_html_footer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void write_html_footer </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>tmpfff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>buf</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>buf_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>HTMLフッタを書き込む </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tmpfff</td><td>一時ファイルへの参照ポインタ </td></tr>
+    <tr><td class="paramname">fff</td><td>記念撮影ファイルへの参照ポインタ </td></tr>
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+    <tr><td class="paramname">buf_size</td><td>バッファサイズ </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a9255ead0fa9944112be227bec2bdc087_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a9255ead0fa9944112be227bec2bdc087_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a9255ead0fa9944112be227bec2bdc087_cgraph" id="acmd-process-screen_8cpp_a9255ead0fa9944112be227bec2bdc087_cgraph">
+<area shape="rect" title="HTMLフッタを書き込む" alt="" coords="5,31,125,57"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="185,5,297,32"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#acedfa161c420a2bd8154c3e62db80d23" title="一時ファイルを読み込み、ファイルに書き出す" alt="" coords="173,56,308,83"/>
+<area shape="rect" href="angband-files_8cpp.html#af8478ae9202a347c7b95688842ff7633" title=" " alt="" coords="356,56,463,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a9255ead0fa9944112be227bec2bdc087_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a9255ead0fa9944112be227bec2bdc087_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a9255ead0fa9944112be227bec2bdc087_icgraph" id="acmd-process-screen_8cpp_a9255ead0fa9944112be227bec2bdc087_icgraph">
+<area shape="rect" title="HTMLフッタを書き込む" alt="" coords="621,13,741,39"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a520c0b6c1900e5de2bf19398e0b48e6a" title=" " alt="" coords="427,5,573,47"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a66d22b87644be0847bb5751f75cf7b55" title="HTML方式で記念撮影する / Save a screen dump to a file" alt="" coords="200,13,379,39"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a1f4156d254c4e75492a93a62c6d47d1d" title=" " alt="" coords="5,13,152,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0b611cba8c13dcd7aece434aca8524ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b611cba8c13dcd7aece434aca8524ac">&#9670;&nbsp;</a></span>write_html_header()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void write_html_header </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>tmpfff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>buf</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>buf_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>HTMLヘッダを書き込む </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tmpfff</td><td>一時ファイルへの参照ポインタ </td></tr>
+    <tr><td class="paramname">fff</td><td>記念撮影ファイルへの参照ポインタ </td></tr>
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+    <tr><td class="paramname">buf_size</td><td>バッファサイズ </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a0b611cba8c13dcd7aece434aca8524ac_cgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a0b611cba8c13dcd7aece434aca8524ac_cgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a0b611cba8c13dcd7aece434aca8524ac_cgraph" id="acmd-process-screen_8cpp_a0b611cba8c13dcd7aece434aca8524ac_cgraph">
+<area shape="rect" title="HTMLヘッダを書き込む" alt="" coords="5,5,132,32"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#acedfa161c420a2bd8154c3e62db80d23" title="一時ファイルを読み込み、ファイルに書き出す" alt="" coords="180,5,315,32"/>
+<area shape="rect" href="angband-files_8cpp.html#af8478ae9202a347c7b95688842ff7633" title=" " alt="" coords="363,5,469,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-process-screen_8cpp_a0b611cba8c13dcd7aece434aca8524ac_icgraph.png" border="0" usemap="#acmd-process-screen_8cpp_a0b611cba8c13dcd7aece434aca8524ac_icgraph" alt=""/></div>
+<map name="acmd-process-screen_8cpp_a0b611cba8c13dcd7aece434aca8524ac_icgraph" id="acmd-process-screen_8cpp_a0b611cba8c13dcd7aece434aca8524ac_icgraph">
+<area shape="rect" title="HTMLヘッダを書き込む" alt="" coords="621,13,748,39"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a520c0b6c1900e5de2bf19398e0b48e6a" title=" " alt="" coords="427,5,573,47"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a66d22b87644be0847bb5751f75cf7b55" title="HTML方式で記念撮影する / Save a screen dump to a file" alt="" coords="200,13,379,39"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a1f4156d254c4e75492a93a62c6d47d1d" title=" " alt="" coords="5,13,152,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a238980cd2330d3fdc6f31ecb2e265329"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a238980cd2330d3fdc6f31ecb2e265329">&#9670;&nbsp;</a></span>hack</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char hack[17] = &quot;dwsorgbuDWvyRGBU&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>記念撮影のセーブとロード </p>
+<dl class="section date"><dt>日付</dt><dd>2020/04/22 @Author Hourier </dd></dl>
+
+</div>
+</div>
+<a id="a354eae3cd4f3e7059441247aeb74d7a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a354eae3cd4f3e7059441247aeb74d7a2">&#9670;&nbsp;</a></span>html_foot</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> html_foot[3] = { &quot;&lt;/pre&gt;\n&quot;, &quot;&lt;/body&gt;\n&lt;/html&gt;\n&quot;, 0, }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add54e869fc4badf4615cc70076e94e12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add54e869fc4badf4615cc70076e94e12">&#9670;&nbsp;</a></span>html_head</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> html_head[3] = { &quot;&lt;html&gt;\n&lt;body text=\&quot;#ffffff\&quot; bgcolor=\&quot;#000000\&quot;&gt;\n&quot;, &quot;&lt;pre&gt;&quot;, 0, }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad5833880a0715aa52a2ccb3ff9fbe8e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5833880a0715aa52a2ccb3ff9fbe8e5">&#9670;&nbsp;</a></span>tags</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> tags[4] = { &quot;HEADER_START:&quot;, &quot;HEADER_END:&quot;, &quot;FOOTER_START:&quot;, &quot;FOOTER_END:&quot;, }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分29秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

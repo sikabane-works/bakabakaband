@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/flavor/flag-inscriptions-table.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_00a0f7706b31e0c6052c2f42eab1294e.html">flavor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">flag-inscriptions-table.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="flag-inscriptions-table_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="flag-inscriptions-table_8h.html#a5b15c5718aed1ac42a0180848bb87436">    6</a></span>&#160;<span class="preprocessor">#define MAX_GAME_INSCRIPTIONS 10</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structflag__insc__table.html">    9</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structflag__insc__table.html">flag_insc_table</a> {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifdef JP</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> japanese;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structflag__insc__table.html#a439514aeffef5e95ac7d4d5ee1b82629">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structflag__insc__table.html#a439514aeffef5e95ac7d4d5ee1b82629">english</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structflag__insc__table.html#a9319dd0cd5cc1d5c1e22a6dcf4d9590b">   14</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structflag__insc__table.html#a9319dd0cd5cc1d5c1e22a6dcf4d9590b">flag</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structflag__insc__table.html#aa6dfa55bb3d918b2d7aeaf571afce501">   15</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structflag__insc__table.html#aa6dfa55bb3d918b2d7aeaf571afce501">except_flag</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="flag-inscriptions-table_8h.html#a8eb320313319432827b65bcd04bf38d1">   16</a></span>&#160;} <a class="code" href="flag-inscriptions-table_8h.html#a8eb320313319432827b65bcd04bf38d1">flag_insc_table</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="flag-inscriptions-table_8h.html#a0975e73761edc40bba342e2b63ca3180">game_inscriptions</a>[<a class="code" href="flag-inscriptions-table_8h.html#a5b15c5718aed1ac42a0180848bb87436">MAX_GAME_INSCRIPTIONS</a>];</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> std::vector&lt;flag_insc_table&gt;<a class="code" href="flag-inscriptions-table_8h.html#a8c66df0052c491a71fe3f30d186c364a">flag_insc_plus</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">extern</span> std::vector&lt;flag_insc_table&gt;<a class="code" href="flag-inscriptions-table_8h.html#a61ccf3c5a3968ca5ca60a09e9c250b12">flag_insc_immune</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">extern</span> std::vector&lt;flag_insc_table&gt;<a class="code" href="flag-inscriptions-table_8h.html#ad20c91bd8e8590b9509b821601c12061">flag_insc_resistance</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">extern</span> std::vector&lt;flag_insc_table&gt;<a class="code" href="flag-inscriptions-table_8h.html#a8d07b31ed585e7613c2d4ff4abf56b01">flag_insc_misc</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">extern</span> std::vector&lt;flag_insc_table&gt;<a class="code" href="flag-inscriptions-table_8h.html#ab4f602e64c790998f9602e7cd56de512">flag_insc_aura</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">extern</span> std::vector&lt;flag_insc_table&gt;<a class="code" href="flag-inscriptions-table_8h.html#a2065118600984d82186b40ba1f5491a6">flag_insc_brand</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span> std::vector&lt;flag_insc_table&gt;<a class="code" href="flag-inscriptions-table_8h.html#a8e7f199e0d77f7fd6366f796a65a373b">flag_insc_kill</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> std::vector&lt;flag_insc_table&gt;<a class="code" href="flag-inscriptions-table_8h.html#a6327ed4e17d67dea724c6b37bd23823f">flag_insc_slay</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">extern</span> std::vector&lt;flag_insc_table&gt;<a class="code" href="flag-inscriptions-table_8h.html#ac620c7746fcec4cff2d4c2ce7bc16124">flag_insc_esp1</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">extern</span> std::vector&lt;flag_insc_table&gt;<a class="code" href="flag-inscriptions-table_8h.html#af85b522bbfcf65d5b58b41583f37e297">flag_insc_esp2</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">extern</span> std::vector&lt;flag_insc_table&gt;<a class="code" href="flag-inscriptions-table_8h.html#ae2010a02eb0570a8a5afe74d19b86b5a">flag_insc_sust</a>;</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aflag-inscriptions-table_8h_html_a0975e73761edc40bba342e2b63ca3180"><div class="ttname"><a href="flag-inscriptions-table_8h.html#a0975e73761edc40bba342e2b63ca3180">game_inscriptions</a></div><div class="ttdeci">const concptr game_inscriptions[MAX_GAME_INSCRIPTIONS]</div><div class="ttdoc">アイテムの価値記述テーブル</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.cpp:5</div></div>
+<div class="ttc" id="aflag-inscriptions-table_8h_html_a2065118600984d82186b40ba1f5491a6"><div class="ttname"><a href="flag-inscriptions-table_8h.html#a2065118600984d82186b40ba1f5491a6">flag_insc_brand</a></div><div class="ttdeci">std::vector&lt; flag_insc_table &gt; flag_insc_brand</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.cpp:133</div></div>
+<div class="ttc" id="aflag-inscriptions-table_8h_html_a5b15c5718aed1ac42a0180848bb87436"><div class="ttname"><a href="flag-inscriptions-table_8h.html#a5b15c5718aed1ac42a0180848bb87436">MAX_GAME_INSCRIPTIONS</a></div><div class="ttdeci">#define MAX_GAME_INSCRIPTIONS</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.h:6</div></div>
+<div class="ttc" id="aflag-inscriptions-table_8h_html_a61ccf3c5a3968ca5ca60a09e9c250b12"><div class="ttname"><a href="flag-inscriptions-table_8h.html#a61ccf3c5a3968ca5ca60a09e9c250b12">flag_insc_immune</a></div><div class="ttdeci">std::vector&lt; flag_insc_table &gt; flag_insc_immune</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.cpp:106</div></div>
+<div class="ttc" id="aflag-inscriptions-table_8h_html_a6327ed4e17d67dea724c6b37bd23823f"><div class="ttname"><a href="flag-inscriptions-table_8h.html#a6327ed4e17d67dea724c6b37bd23823f">flag_insc_slay</a></div><div class="ttdeci">std::vector&lt; flag_insc_table &gt; flag_insc_slay</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.cpp:145</div></div>
+<div class="ttc" id="aflag-inscriptions-table_8h_html_a8c66df0052c491a71fe3f30d186c364a"><div class="ttname"><a href="flag-inscriptions-table_8h.html#a8c66df0052c491a71fe3f30d186c364a">flag_insc_plus</a></div><div class="ttdeci">std::vector&lt; flag_insc_table &gt; flag_insc_plus</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.cpp:99</div></div>
+<div class="ttc" id="aflag-inscriptions-table_8h_html_a8d07b31ed585e7613c2d4ff4abf56b01"><div class="ttname"><a href="flag-inscriptions-table_8h.html#a8d07b31ed585e7613c2d4ff4abf56b01">flag_insc_misc</a></div><div class="ttdeci">std::vector&lt; flag_insc_table &gt; flag_insc_misc</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.cpp:118</div></div>
+<div class="ttc" id="aflag-inscriptions-table_8h_html_a8e7f199e0d77f7fd6366f796a65a373b"><div class="ttname"><a href="flag-inscriptions-table_8h.html#a8e7f199e0d77f7fd6366f796a65a373b">flag_insc_kill</a></div><div class="ttdeci">std::vector&lt; flag_insc_table &gt; flag_insc_kill</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.cpp:139</div></div>
+<div class="ttc" id="aflag-inscriptions-table_8h_html_a8eb320313319432827b65bcd04bf38d1"><div class="ttname"><a href="flag-inscriptions-table_8h.html#a8eb320313319432827b65bcd04bf38d1">flag_insc_table</a></div><div class="ttdeci">struct flag_insc_table flag_insc_table</div><div class="ttdoc">オブジェクトの特性表示記号テーブルの構造体 / Structs and tables for Auto Inscription for flags</div></div>
+<div class="ttc" id="aflag-inscriptions-table_8h_html_ab4f602e64c790998f9602e7cd56de512"><div class="ttname"><a href="flag-inscriptions-table_8h.html#ab4f602e64c790998f9602e7cd56de512">flag_insc_aura</a></div><div class="ttdeci">std::vector&lt; flag_insc_table &gt; flag_insc_aura</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.cpp:128</div></div>
+<div class="ttc" id="aflag-inscriptions-table_8h_html_ac620c7746fcec4cff2d4c2ce7bc16124"><div class="ttname"><a href="flag-inscriptions-table_8h.html#ac620c7746fcec4cff2d4c2ce7bc16124">flag_insc_esp1</a></div><div class="ttdeci">std::vector&lt; flag_insc_table &gt; flag_insc_esp1</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.cpp:151</div></div>
+<div class="ttc" id="aflag-inscriptions-table_8h_html_ad20c91bd8e8590b9509b821601c12061"><div class="ttname"><a href="flag-inscriptions-table_8h.html#ad20c91bd8e8590b9509b821601c12061">flag_insc_resistance</a></div><div class="ttdeci">std::vector&lt; flag_insc_table &gt; flag_insc_resistance</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.cpp:110</div></div>
+<div class="ttc" id="aflag-inscriptions-table_8h_html_ae2010a02eb0570a8a5afe74d19b86b5a"><div class="ttname"><a href="flag-inscriptions-table_8h.html#ae2010a02eb0570a8a5afe74d19b86b5a">flag_insc_sust</a></div><div class="ttdeci">std::vector&lt; flag_insc_table &gt; flag_insc_sust</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.cpp:161</div></div>
+<div class="ttc" id="aflag-inscriptions-table_8h_html_af85b522bbfcf65d5b58b41583f37e297"><div class="ttname"><a href="flag-inscriptions-table_8h.html#af85b522bbfcf65d5b58b41583f37e297">flag_insc_esp2</a></div><div class="ttdeci">std::vector&lt; flag_insc_table &gt; flag_insc_esp2</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.cpp:156</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="astructflag__insc__table_html"><div class="ttname"><a href="structflag__insc__table.html">flag_insc_table</a></div><div class="ttdoc">オブジェクトの特性表示記号テーブルの構造体 / Structs and tables for Auto Inscription for flags</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.h:9</div></div>
+<div class="ttc" id="astructflag__insc__table_html_a439514aeffef5e95ac7d4d5ee1b82629"><div class="ttname"><a href="structflag__insc__table.html#a439514aeffef5e95ac7d4d5ee1b82629">flag_insc_table::english</a></div><div class="ttdeci">concptr english</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.h:13</div></div>
+<div class="ttc" id="astructflag__insc__table_html_a9319dd0cd5cc1d5c1e22a6dcf4d9590b"><div class="ttname"><a href="structflag__insc__table.html#a9319dd0cd5cc1d5c1e22a6dcf4d9590b">flag_insc_table::flag</a></div><div class="ttdeci">int flag</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.h:14</div></div>
+<div class="ttc" id="astructflag__insc__table_html_aa6dfa55bb3d918b2d7aeaf571afce501"><div class="ttname"><a href="structflag__insc__table.html#aa6dfa55bb3d918b2d7aeaf571afce501">flag_insc_table::except_flag</a></div><div class="ttdeci">int except_flag</div><div class="ttdef"><b>Definition:</b> flag-inscriptions-table.h:15</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

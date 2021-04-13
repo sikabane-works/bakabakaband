@@ -1,0 +1,30 @@
+<map id="exe_affect_monster_postprocess" name="exe_affect_monster_postprocess">
+<area shape="rect" id="node1" title="モンスター効果の後処理 (ペット関係、記念撮影、グローバル変数更新)" alt="" coords="5,226,140,267"/>
+<area shape="rect" id="node2" href="$effect-monster_8cpp.html#a0a84539a44ea3f6c5b601476c3959084" title="魔法効果がペットに及んだ時の処理" alt="" coords="188,107,379,133"/>
+<area shape="rect" id="node8" href="$effect-monster_8cpp.html#a44e4e9cc6b37d99f672d368d4b9af90f" title="魔法効果が騎乗モンスターに及んだ時の処理" alt="" coords="207,291,359,333"/>
+<area shape="rect" id="node9" href="$effect-monster_8cpp.html#a74e111b8616d79dedb3c631e58fb0f1a" title="写真を撮った時の処理" alt="" coords="205,226,361,267"/>
+<area shape="rect" id="node3" href="$monster-info_8cpp.html#a310dca2e8b756213922ce91ffff3dbd0" title=" " alt="" coords="432,5,512,32"/>
+<area shape="rect" id="node5" href="$monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="443,56,501,83"/>
+<area shape="rect" id="node6" href="$cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="581,132,669,159"/>
+<area shape="rect" id="node7" href="$monster-move_8cpp.html#a1eb609718fff1dbf879719647d38d8d7" title="モンスターの目標地点をセットする / Set the target of counter attack" alt="" coords="432,107,512,133"/>
+<area shape="rect" id="node4" href="$class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="570,56,681,83"/>
+<area shape="rect" id="node10" href="$floor-object_8cpp.html#a62c807ef0af547704f7d1f6b825abbe5" title="生成済のオブジェクトをフロアの所定の位置に落とす。 Let an object fall to the ground at or near a location." alt="" coords="433,512,511,539"/>
+<area shape="rect" id="node27" href="$object-kind-hook_8cpp.html#a24f8a2426e4fc5128654ec26033312ab" title="tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the object_kind with the given tval and sval" alt="" coords="427,259,517,285"/>
+<area shape="rect" id="node28" href="$object-generator_8cpp.html#a9d4bf7f51bf5056089190534c673d068" title="オブジェクト構造体にベースアイテムを作成する Prepare an object based on an object kind." alt="" coords="427,208,517,235"/>
+<area shape="rect" id="node11" href="$cave_8cpp.html#a414eb0dc404cc94635df4b0f3ad8590c" title=" " alt="" coords="570,487,681,513"/>
+<area shape="rect" id="node12" href="$flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="572,537,679,564"/>
+<area shape="rect" id="node13" href="$cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="585,588,666,615"/>
+<area shape="rect" id="node14" href="$grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="590,639,661,665"/>
+<area shape="rect" id="node15" href="$display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="580,943,671,969"/>
+<area shape="rect" id="node16" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="771,892,850,919"/>
+<area shape="rect" id="node17" href="$grid_8cpp.html#acfe2dde219c27902b1cbd0e7b6d95357" title=" " alt="" coords="586,841,665,868"/>
+<area shape="rect" id="node18" href="$world-object_8cpp.html#aa2c112b391d5b74eb049474cac8d643b" title="グローバルオブジェクト配列から空きを取得する / Acquires and returns the index of a &quot;free&quot; object." alt="" coords="597,791,654,817"/>
+<area shape="rect" id="node19" href="$object-stack_8cpp.html#a4575bae0b59ee267d46732987a195aa8" title="両オブジェクトをスロットに重ね合わせる。 Allow one item to &quot;absorb&quot; another, assuming they are similar" alt="" coords="574,689,677,716"/>
+<area shape="rect" id="node20" href="$object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="751,715,870,741"/>
+<area shape="rect" id="node21" href="$object-generator_8cpp.html#aa666d0b3f34f2bebf82e976361f59f1c" title="オブジェクトを複製する Wipe an object clean." alt="" coords="579,183,671,209"/>
+<area shape="rect" id="node22" href="$hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="565,233,685,260"/>
+<area shape="rect" id="node23" href="$hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="733,259,888,285"/>
+<area shape="rect" id="node24" href="$object-stack_8cpp.html#af0b5aa377553696b3185a0157d962260" title="両オブジェクトをスロットに重ねることができるかどうかを返す。 Determine if an item can absorb a second item." alt="" coords="574,335,677,361"/>
+<area shape="rect" id="node25" href="$projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="583,385,668,412"/>
+<area shape="rect" id="node26" href="$sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="597,436,654,463"/>
+</map>

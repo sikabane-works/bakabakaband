@@ -1,0 +1,52 @@
+<map id="do_life_spell" name="do_life_spell">
+<area shape="rect" id="node1" title="生命領域魔法の各処理を行う" alt="" coords="5,1077,99,1104"/>
+<area shape="rect" id="node2" href="$spells-sight_8cpp.html#a5d5a0c7b26048332c2924192d06e42b0" title="チャーム・モンスター効果(プレイヤー視界範囲内) / Charm monsters" alt="" coords="179,216,297,243"/>
+<area shape="rect" id="node9" href="$spells-neighbor_8cpp.html#abd44e8e6aabaade505734e841a075bc7" title="魔法のルーン生成処理(プレイヤー中心に周囲1マス)" alt="" coords="377,64,564,91"/>
+<area shape="rect" id="node10" href="$spells-grid_8cpp.html#a7ac822d645ff4090ab55543a3711e3d0" title="守りのルーン設置処理 / Leave a &quot;rune of protection&quot; which prevents monster movement" alt="" coords="147,368,329,395"/>
+<area shape="rect" id="node11" href="$spells-status_8cpp.html#ac6cc23e751d903cceebb4c6baf1d61d1" title=" " alt="" coords="167,419,309,445"/>
+<area shape="rect" id="node12" href="$bad-status-setter_8cpp.html#a54f9f2a1dc27cd7214dccbdad4a0d2d7" title="毒の継続時間をセットする / Set &quot;poisoned&quot;, notice observable changes" alt="" coords="421,444,520,471"/>
+<area shape="rect" id="node13" href="$spells-status_8cpp.html#a9d09019685ce462d411c9554fdf8e2a6" title=" " alt="" coords="173,571,303,597"/>
+<area shape="rect" id="node14" href="$z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="439,571,503,597"/>
+<area shape="rect" id="node15" href="$spells-status_8cpp.html#a1250a8abfd5f99b37bbcd22e7fde8d17" title=" " alt="" coords="165,621,311,648"/>
+<area shape="rect" id="node16" href="$spells-detection_8cpp.html#a5d096ba459f50401bf2e3d6762b9f297" title="全感知処理 / Detect everything" alt="" coords="199,773,277,800"/>
+<area shape="rect" id="node17" href="$spells-detection_8cpp.html#a51a934aa10cafdef351b49ebfb59957f" title="プレイヤー周辺のドアを感知する / Detect all doors on current panel" alt="" coords="422,672,519,699"/>
+<area shape="rect" id="node18" href="$spells-detection_8cpp.html#a4317d1e959e1e019d7821518fa277584" title="プレイヤー周辺の階段を感知する / Detect all stairs on current panel" alt="" coords="422,723,519,749"/>
+<area shape="rect" id="node19" href="$spells-detection_8cpp.html#ac7acd54d9ba5a15020c20d627e86056e" title="プレイヤー周辺のトラップを感知する / Detect all traps on current panel" alt="" coords="423,799,518,825"/>
+<area shape="rect" id="node20" href="$spells-sight_8cpp.html#a199916bfeeab7d62c6b8b9682cebd440" title="視界内のアンデッド・モンスターにダメージを与える処理 / Dispel undead monsters" alt="" coords="185,267,291,293"/>
+<area shape="rect" id="node21" href="$spells-launcher_8cpp.html#a91b238446e2261ec912dcf94e20cfef8" title="ボール(ハイド)系スペルの発動 / Cast a ball spell" alt="" coords="422,115,519,141"/>
+<area shape="rect" id="node22" href="$target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="193,875,283,901"/>
+<area shape="rect" id="node23" href="$spells-perception_8cpp.html#ac3df176ff52478263f041532247ea900" title="アイテム鑑定のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="196,925,280,952"/>
+<area shape="rect" id="node24" href="$spells-perception_8cpp.html#a37cf235976cfb937acb8a284ed66593e" title="アイテム*鑑定*のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="191,976,285,1003"/>
+<area shape="rect" id="node25" href="$cmd-spell_8cpp.html#a3f8bb1e2e9d89f976a13812b836c5f9a" title="魔法によるダメージを出力する / Generate damage&#45;dice info string such as &quot;dam 2d10&quot;" alt="" coords="191,1027,285,1053"/>
+<area shape="rect" id="node26" href="$cmd-spell_8cpp.html#a0556cb7ce380535793da85ab99b59b5f" title="魔法効果発動までの遅延ターンを出力する / Generate delay info string such as &quot;delay 15+1d15&quot;" alt="" coords="198,1077,278,1104"/>
+<area shape="rect" id="node27" href="$cmd-spell_8cpp.html#ab76faaaa974c8d183f1111f310491881" title="魔法の効果時間を出力する / Generate duration info string such as &quot;dur 20+1d20&quot;" alt="" coords="191,1128,285,1155"/>
+<area shape="rect" id="node28" href="$cmd-spell_8cpp.html#ab3443595b2b8754dd7836ab341deed35" title="魔法による回復量を出力する / Generate heal info string such as &quot;heal 2d8&quot;" alt="" coords="201,1179,275,1205"/>
+<area shape="rect" id="node29" href="$cmd-spell_8cpp.html#a5e47d86393f65df045ae425fb077117d" title="魔法による一般的な効力値を出力する（固定値） / Generate power info string such as &quot;power 100&quot;" alt="" coords="197,1229,279,1256"/>
+<area shape="rect" id="node30" href="$cmd-spell_8cpp.html#ad7588e7d4c5b74ae0236d927fa888a30" title="魔法の効果半径を出力する / Generate radius info string such as &quot;rad 100&quot;" alt="" coords="196,1280,280,1307"/>
+<area shape="rect" id="node31" href="$spells-lite_8cpp.html#a78cee093a3c7190cac79b36c36e200fc" title="プレイヤー位置を中心にLITE_WEAK属性を通じた照明処理を行う / Hack – call light around the player Affect all monsters in the pr..." alt="" coords="435,13,506,40"/>
+<area shape="rect" id="node32" href="$spells-floor_8cpp.html#a3eef4b1a04f3f28e70b39a6df9462ea7" title=" " alt="" coords="199,1331,277,1357"/>
+<area shape="rect" id="node33" href="$spells-genocide_8cpp.html#a8a4d5f5f4362455d0f31424f73776804" title="アンデッド・モンスターへの周辺抹殺処理ルーチン / Delete all nearby (non&#45;unique) undead" alt="" coords="389,317,552,344"/>
+<area shape="rect" id="node34" href="$spells-world_8cpp.html#acd1bf8acf03f4392bc78f8c170a23bc7" title="プレイヤーの帰還発動及び中止処理 / Recall the player to town or dungeon" alt="" coords="191,1381,285,1408"/>
+<area shape="rect" id="node35" href="$spells-curse-removal_8cpp.html#ace8f36076f28a206c071d1acd1897f53" title="装備の重い呪い解呪処理 / Remove all curses" alt="" coords="177,1432,299,1459"/>
+<area shape="rect" id="node36" href="$spells-curse-removal_8cpp.html#a9d41605d95fe0d25a37eb2b53cb59123" title="装備の軽い呪い解呪処理 / Remove most curses" alt="" coords="187,1483,289,1509"/>
+<area shape="rect" id="node37" href="$spells-world_8cpp.html#aed175aad906d080f4b31b993089f62ba" title="現実変容処理" alt="" coords="169,1533,307,1560"/>
+<area shape="rect" id="node38" href="$spells-status_8cpp.html#a538945aa4c8a1a39852b9c7ecd276b21" title=" " alt="" coords="175,1584,301,1611"/>
+<area shape="rect" id="node39" href="$experience_8cpp.html#a530d12101ed829b4f6ff94c9f9964cfd" title=" " alt="" coords="191,1635,285,1661"/>
+<area shape="rect" id="node40" href="$buff-setter_8cpp.html#a0f33ce24a83a1573ead35a6ce0913b85" title="祝福の継続時間をセットする / Set &quot;blessed&quot;, notice observable changes" alt="" coords="192,1685,284,1712"/>
+<area shape="rect" id="node41" href="$buff-setter_8cpp.html#adba19dfd913dcf5feb9f6e0b09c9326d" title="加速の継続時間をセットする / Set &quot;fast&quot;, notice observable changes" alt="" coords="204,1736,272,1763"/>
+<area shape="rect" id="node42" href="$digestion-processor_8cpp.html#a6d19789daca41118040cb2abdfdcc17c" title="空腹状態をセットする / Set &quot;food&quot;, notice observable changes" alt="" coords="203,1787,273,1813"/>
+<area shape="rect" id="node43" href="$element-resistance_8cpp.html#acb07baa4e9331416f075d1dcb65c419b" title="一時的酸耐性の継続時間をセットする / Set &quot;oppose_acid&quot;, notice observable changes" alt="" coords="178,1837,298,1864"/>
+<area shape="rect" id="node44" href="$element-resistance_8cpp.html#a4aedfbfb30de8af7f62ac69c8bd30715" title="一時的冷気耐性の継続時間をセットする / Set &quot;oppose_cold&quot;, notice observable changes" alt="" coords="178,1888,298,1915"/>
+<area shape="rect" id="node45" href="$element-resistance_8cpp.html#a230aa74615595b7d62b452d78397c5b9" title="一時的電撃耐性の継続時間をセットする / Set &quot;oppose_elec&quot;, notice observable changes" alt="" coords="178,1939,298,1965"/>
+<area shape="rect" id="node46" href="$element-resistance_8cpp.html#ae8333840ce64c42c444857fdd00b4dd2" title="一時的火炎耐性の継続時間をセットする / Set &quot;oppose_fire&quot;, notice observable changes" alt="" coords="181,1989,295,2016"/>
+<area shape="rect" id="node47" href="$element-resistance_8cpp.html#a1931c2c7f031edea14439c6ca1f3be83" title="一時的毒耐性の継続時間をセットする / Set &quot;oppose_pois&quot;, notice observable changes" alt="" coords="178,2040,298,2067"/>
+<area shape="rect" id="node48" href="$temporary-resistance_8cpp.html#aed81b3711a2d5f20e96944f42f46539e" title=" " alt="" coords="179,2091,297,2117"/>
+<area shape="rect" id="node49" href="$spells-sight_8cpp.html#ae98bff55b3fde93a870613af3522feab" title="視界内のアンデッド・モンスターを恐怖させる処理 / Turn undead" alt="" coords="191,165,285,192"/>
+<area shape="rect" id="node50" href="$spells-floor_8cpp.html#aa1bf6734f45843faa71627418ea72ff1" title="フロアに影響のある魔法の処理" alt="" coords="205,2141,271,2168"/>
+<area shape="rect" id="node3" href="$spells-sight_8cpp.html#a47482081184d0a1282de835163dc6e62" title="視界内モンスターに魔法効果を与える / Apply a &quot;project()&quot; directly to all viewable monsters" alt="" coords="418,216,523,243"/>
+<area shape="rect" id="node4" href="$class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="612,216,748,243"/>
+<area shape="rect" id="node5" href="$monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="621,317,739,344"/>
+<area shape="rect" id="node6" href="$cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="796,140,936,167"/>
+<area shape="rect" id="node7" href="$effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="649,115,711,141"/>
+<area shape="rect" id="node8" href="$projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="823,216,909,243"/>
+</map>

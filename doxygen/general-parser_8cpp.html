@@ -1,0 +1,413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/info-reader/general-parser.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_529b8da86662ab841593409a3db5f3bb.html">info-reader</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">general-parser.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="general-parser_8h_source.html">info-reader/general-parser.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quest_8h_source.html">dungeon/quest.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="feature_8h_source.html">grid/feature.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="feature-reader_8h_source.html">info-reader/feature-reader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="parse-error-types_8h_source.html">info-reader/parse-error-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="random-grid-effect-types_8h_source.html">info-reader/random-grid-effect-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tokenizer_8h_source.html">io/tokenizer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-headers_8h_source.html">main/angband-headers.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="trg-types_8h_source.html">object-enchant/trg-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind-hook_8h_source.html">object/object-kind-hook.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="realm-types_8h_source.html">realm/realm-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="artifact-type-definition_8h_source.html">system/artifact-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="building-type-definition_8h_source.html">system/building-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="system-variables_8h_source.html">system/system-variables.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-files_8h_source.html">util/angband-files.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="string-processor_8h_source.html">util/string-processor.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+general-parser.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="general-parser_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2info-reader_2general-parser_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2info-reader_2general-parser_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2info-reader_2general-parser_8cpp">
+<area shape="rect" title=" " alt="" coords="1385,5,1581,61"/>
+<area shape="rect" href="general-parser_8h.html" title=" " alt="" coords="1819,199,1947,240"/>
+<area shape="rect" href="quest_8h.html" title=" " alt="" coords="442,117,561,143"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="1127,117,1225,143"/>
+<area shape="rect" href="feature-reader_8h.html" title=" " alt="" coords="1420,109,1545,151"/>
+<area shape="rect" href="parse-error-types_8h.html" title=" " alt="" coords="802,109,950,151"/>
+<area shape="rect" href="random-grid-effect-types_8h.html" title=" " alt="" coords="974,109,1103,151"/>
+<area shape="rect" href="tokenizer_8h.html" title=" " alt="" coords="1570,117,1670,143"/>
+<area shape="rect" href="angband-headers_8h.html" title=" " alt="" coords="1694,117,1858,143"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="641,199,767,240"/>
+<area shape="rect" href="object-kind-hook_8h.html" title=" " alt="" coords="283,199,407,240"/>
+<area shape="rect" href="realm-types_8h.html" title=" " alt="" coords="2549,295,2686,322"/>
+<area shape="rect" href="artifact-type-definition_8h.html" title=" " alt="" coords="641,109,778,151"/>
+<area shape="rect" href="building-type-definition_8h.html" title=" " alt="" coords="2451,199,2594,240"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="2135,117,2323,143"/>
+<area shape="rect" href="system-variables_8h.html" title=" " alt="" coords="1934,117,2111,143"/>
+<area shape="rect" href="angband-files_8h.html" title=" " alt="" coords="2348,117,2479,143"/>
+<area shape="rect" href="string-processor_8h.html" title=" " alt="" coords="1249,117,1396,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1565,295,1694,322"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="2068,377,2159,404"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1219,377,1309,404"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1333,377,1432,404"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1456,377,1555,404"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="1579,377,1679,404"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1703,377,1878,404"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1903,377,2044,404"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="2183,377,2329,404"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="2210,452,2355,493"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="2407,452,2532,493"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="750,459,861,486"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="114,199,259,240"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="432,199,565,240"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="5,288,149,329"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="387,288,543,329"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="224,288,363,329"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="567,295,694,322"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="1024,206,1181,233"/>
+<area shape="rect" title=" " alt="" coords="894,206,949,233"/>
+<area shape="rect" title=" " alt="" coords="1205,206,1261,233"/>
+<area shape="rect" href="info-reader-util_8h.html" title=" " alt="" coords="1445,199,1592,240"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="2021,206,2200,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="2225,206,2375,233"/>
+<area shape="rect" title=" " alt="" coords="1336,206,1421,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a96e4209594e62bec5a929f380252070c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="general-parser_8cpp.html#a96e4209594e62bec5a929f380252070c">init_info_txt</a> (FILE *fp, char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="structangband__header.html">angband_header</a> *head, <a class="el" href="angband-headers_8h.html#afa96d741aab523f29c013f42a423fe70">parse_info_txt_func</a> parse_info_txt_line)</td></tr>
+<tr class="memdesc:a96e4209594e62bec5a929f380252070c"><td class="mdescLeft">&#160;</td><td class="mdescRight">パース関数に基づいてデータファイルからデータを読み取る / Initialize an "*_info" array, by parsing an ascii "template" file  <a href="general-parser_8cpp.html#a96e4209594e62bec5a929f380252070c">[詳解]</a><br /></td></tr>
+<tr class="separator:a96e4209594e62bec5a929f380252070c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28dc0c306a8a3470513e70613befd73c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="parse-error-types_8h.html#a0910e3ed68e027a6e5d590d1520c1697">parse_error_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="general-parser_8cpp.html#a28dc0c306a8a3470513e70613befd73c">parse_line_feature</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:a28dc0c306a8a3470513e70613befd73c"><td class="mdescLeft">&#160;</td><td class="mdescRight">地形情報の「F:」情報をパースする Process "F:&lt;letter&gt;:&lt;terrain&gt;:&lt;cave_info&gt;:&lt;monster&gt;:&lt;object&gt;:&lt;ego&gt;:&lt;artifact&gt;:&lt;trap&gt;:&lt;special&gt;" &ndash; info for dungeon grid  <a href="general-parser_8cpp.html#a28dc0c306a8a3470513e70613befd73c">[詳解]</a><br /></td></tr>
+<tr class="separator:a28dc0c306a8a3470513e70613befd73c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7365eeb41a50984801069e5ceac540f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="parse-error-types_8h.html#a0910e3ed68e027a6e5d590d1520c1697">parse_error_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="general-parser_8cpp.html#aa7365eeb41a50984801069e5ceac540f">parse_line_building</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:aa7365eeb41a50984801069e5ceac540f"><td class="mdescLeft">&#160;</td><td class="mdescRight">地形情報の「B:」情報をパースする Process "B:&lt;Index&gt;:&lt;Command&gt;:..." &ndash; Building definition  <a href="general-parser_8cpp.html#aa7365eeb41a50984801069e5ceac540f">[詳解]</a><br /></td></tr>
+<tr class="separator:aa7365eeb41a50984801069e5ceac540f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:ad20065d2367d2f8c9e70940a029c3744"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structdungeon__grid.html">dungeon_grid</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="general-parser_8cpp.html#ad20065d2367d2f8c9e70940a029c3744">letter</a> [255]</td></tr>
+<tr class="separator:ad20065d2367d2f8c9e70940a029c3744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a96e4209594e62bec5a929f380252070c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96e4209594e62bec5a929f380252070c">&#9670;&nbsp;</a></span>init_info_txt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> init_info_txt </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structangband__header.html">angband_header</a> *&#160;</td>
+          <td class="paramname"><em>head</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="angband-headers_8h.html#afa96d741aab523f29c013f42a423fe70">parse_info_txt_func</a>&#160;</td>
+          <td class="paramname"><em>parse_info_txt_line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>パース関数に基づいてデータファイルからデータを読み取る / Initialize an "*_info" array, by parsing an ascii "template" file </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fp</td><td>読み取りに使うファイルポインタ </td></tr>
+    <tr><td class="paramname">buf</td><td>読み取りに使うバッファ領域 </td></tr>
+    <tr><td class="paramname">head</td><td>ヘッダ構造体 </td></tr>
+    <tr><td class="paramname">parse_info_txt_line</td><td>パース関数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="general-parser_8cpp_a96e4209594e62bec5a929f380252070c_cgraph.png" border="0" usemap="#ageneral-parser_8cpp_a96e4209594e62bec5a929f380252070c_cgraph" alt=""/></div>
+<map name="ageneral-parser_8cpp_a96e4209594e62bec5a929f380252070c_cgraph" id="ageneral-parser_8cpp_a96e4209594e62bec5a929f380252070c_cgraph">
+<area shape="rect" title="パース関数に基づいてデータファイルからデータを読み取る / Initialize an &quot;*_info&quot; array, by parsing an ascii &quot;template&quot; file" alt="" coords="5,5,93,32"/>
+<area shape="rect" href="angband-files_8cpp.html#af8478ae9202a347c7b95688842ff7633" title=" " alt="" coords="141,5,248,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="general-parser_8cpp_a96e4209594e62bec5a929f380252070c_icgraph.png" border="0" usemap="#ageneral-parser_8cpp_a96e4209594e62bec5a929f380252070c_icgraph" alt=""/></div>
+<map name="ageneral-parser_8cpp_a96e4209594e62bec5a929f380252070c_icgraph" id="ageneral-parser_8cpp_a96e4209594e62bec5a929f380252070c_icgraph">
+<area shape="rect" title="パース関数に基づいてデータファイルからデータを読み取る / Initialize an &quot;*_info&quot; array, by parsing an ascii &quot;template&quot; file" alt="" coords="395,208,483,235"/>
+<area shape="rect" href="info-initializer_8cpp.html#a32ff4402d7495d02bce95c142b7fce16" title="各種設定データをlib/edit/のテキストから読み込み Initialize the &quot;*_info&quot; array" alt="" coords="280,208,347,235"/>
+<area shape="rect" href="info-initializer_8cpp.html#a72058950b1c69cad45fb7630146dd902" title="固定アーティファクト情報読み込みのメインルーチン / Initialize the &quot;a_info&quot; array" alt="" coords="150,5,230,32"/>
+<area shape="rect" href="info-initializer_8cpp.html#a9401aef7490ccc8d9fcd2d4199963b37" title="ダンジョン情報読み込みのメインルーチン / Initialize the &quot;d_info&quot; array" alt="" coords="150,56,230,83"/>
+<area shape="rect" href="info-initializer_8cpp.html#a6e0fbbf31f7cef50bedcd966914aea0a" title="固定アーティファクト情報読み込みのメインルーチン / Initialize the &quot;e_info&quot; array" alt="" coords="150,107,230,133"/>
+<area shape="rect" href="info-initializer_8cpp.html#a875359823e54b4c5454228a7b9b58885" title="地形情報読み込みのメインルーチン / Initialize the &quot;f_info&quot; array" alt="" coords="152,157,228,184"/>
+<area shape="rect" href="info-initializer_8cpp.html#a48ac5c3ae431e17e03ae3edcdb732c0a" title="ベースアイテム情報読み込みのメインルーチン / Initialize the &quot;k_info&quot; array" alt="" coords="150,208,230,235"/>
+<area shape="rect" href="info-initializer_8cpp.html#a1027caa5e437389bc25372fb52a68e17" title="職業魔法情報読み込みのメインルーチン / Initialize the &quot;m_info&quot; array" alt="" coords="148,259,232,285"/>
+<area shape="rect" href="info-initializer_8cpp.html#a20aa822617912408066a0abab5beabec" title="モンスター種族情報読み込みのメインルーチン / Initialize the &quot;r_info&quot; array" alt="" coords="151,309,229,336"/>
+<area shape="rect" href="info-initializer_8cpp.html#a7877d64cbf19be55b7f9a7730de4c209" title="職業技能情報読み込みのメインルーチン / Initialize the &quot;s_info&quot; array" alt="" coords="150,360,230,387"/>
+<area shape="rect" href="info-initializer_8cpp.html#a0e28689c8aee4101e545b6f3d762c658" title="Vault情報読み込みのメインルーチン / Initialize the &quot;v_info&quot; array" alt="" coords="151,411,229,437"/>
+<area shape="rect" href="angband-initializer_8cpp.html#aeb43129ef8fbea1c72b20e1513eb9702" title="全ゲームデータ読み込みのメインルーチン /" alt="" coords="5,208,100,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa7365eeb41a50984801069e5ceac540f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7365eeb41a50984801069e5ceac540f">&#9670;&nbsp;</a></span>parse_line_building()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="parse-error-types_8h.html#a0910e3ed68e027a6e5d590d1520c1697">parse_error_type</a> parse_line_building </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>地形情報の「B:」情報をパースする Process "B:&lt;Index&gt;:&lt;Command&gt;:..." &ndash; Building definition </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>解析文字列 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="general-parser_8cpp_aa7365eeb41a50984801069e5ceac540f_cgraph.png" border="0" usemap="#ageneral-parser_8cpp_aa7365eeb41a50984801069e5ceac540f_cgraph" alt=""/></div>
+<map name="ageneral-parser_8cpp_aa7365eeb41a50984801069e5ceac540f_cgraph" id="ageneral-parser_8cpp_aa7365eeb41a50984801069e5ceac540f_cgraph">
+<area shape="rect" title="地形情報の「B:」情報をパースする Process &quot;B:&lt;Index&gt;:&lt;Command&gt;:...&quot; – Building definition" alt="" coords="5,31,137,57"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="185,5,296,32"/>
+<area shape="rect" href="tokenizer_8cpp.html#a15c2327bd72981ff5538a732e1fe2d3b" title="各種データテキストをトークン単位に分解する / Extract the first few &quot;tokens&quot; from a buffer" alt="" coords="205,56,276,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="general-parser_8cpp_aa7365eeb41a50984801069e5ceac540f_icgraph.png" border="0" usemap="#ageneral-parser_8cpp_aa7365eeb41a50984801069e5ceac540f_icgraph" alt=""/></div>
+<map name="ageneral-parser_8cpp_aa7365eeb41a50984801069e5ceac540f_icgraph" id="ageneral-parser_8cpp_aa7365eeb41a50984801069e5ceac540f_icgraph">
+<area shape="rect" title="地形情報の「B:」情報をパースする Process &quot;B:&lt;Index&gt;:&lt;Command&gt;:...&quot; – Building definition" alt="" coords="804,503,936,529"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#abf28dd4c313dd9d7d0f5ae6f2fe13ed7" title="固定マップ (クエスト＆街＆広域マップ)をフロアに生成する Parse a sub&#45;file of the &quot;extra info&quot;" alt="" coords="617,495,756,537"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="449,503,569,529"/>
+<area shape="rect" href="display-player_8cpp.html#a2ef59570e7557be50e6383f35598dcf5" title="クエストフロアで生きている場合、クエスト名をバッファに詰める" alt="" coords="219,5,373,32"/>
+<area shape="rect" href="target-describer_8cpp.html#a42b5b6ff5c62d6e5d761927149042663" title=" " alt="" coords="231,56,361,83"/>
+<area shape="rect" href="cmd-move_8cpp.html#a9d5fbe57b7b1e9058947333e00dee815" title="階段を使って階層を降りる処理 / Go down one level" alt="" coords="11,120,137,147"/>
+<area shape="rect" href="cmd-move_8cpp.html#a16005f2ab8f785b6fb42030270681913" title="階段を使って階層を昇る処理 / Go up one level" alt="" coords="19,196,129,223"/>
+<area shape="rect" href="knowledge-self_8cpp.html#ab7de2bac473b3a93ad1b8abbee8e22eb" title=" " alt="" coords="209,309,383,336"/>
+<area shape="rect" href="knowledge-quests_8cpp.html#a22e2c4c4c1cf9c3374f50baa4b0b94e2" title=" " alt="" coords="191,360,401,387"/>
+<area shape="rect" href="knowledge-quests_8cpp.html#a25a090019c28dcf6d21b2a87a4308095" title="Print all active quests" alt="" coords="205,411,387,453"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="240,157,352,184"/>
+<area shape="rect" href="floor-generator_8cpp.html#afa77bd7cd83eaa3080e80033d6f1c20b" title="固定マップクエストのフロア生成 / Generate a quest level" alt="" coords="5,259,143,285"/>
+<area shape="rect" href="wild_8cpp.html#a32062d69058538387b0e1a4329f1054f" title="荒野フロア生成のメインルーチン / Load a town or generate a terrain level using &quot;plasma&quot; fractals." alt="" coords="244,528,348,555"/>
+<area shape="rect" href="wild_8cpp.html#ad2b39f3334022fd4e424dbc1029c79f4" title="広域マップの生成 / Build the wilderness area outside of the town." alt="" coords="19,503,129,529"/>
+<area shape="rect" href="game-play_8cpp.html#a0a9c08bcb4379e5a3a118ded5ecd4948" title=" " alt="" coords="226,579,366,605"/>
+<area shape="rect" href="building-quest_8cpp.html#acf9f109729b5f46806a05ebc2b560823" title="クエスト情報を処理しつつ取得する。/ Process and get quest information" alt="" coords="247,629,345,656"/>
+<area shape="rect" href="game-play-initializer_8cpp.html#a00b1426ed21af0def3a084bbb4e06231" title="ダンジョン内部のクエストを初期化する / Initialize random quests and final quests" alt="" coords="225,680,367,707"/>
+<area shape="rect" href="info-initializer_8cpp.html#aff9534c18634fea0305911a4440eccef" title="基本情報読み込みのメインルーチン / Initialize misc." alt="" coords="259,731,333,757"/>
+<area shape="rect" href="display-player_8cpp.html#a5f57627489015e526373738ab0317a4b" title="ゲームオーバーの原因を探る (生きていたら何もしない)" alt="" coords="225,781,367,808"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="226,832,366,859"/>
+<area shape="rect" href="load-zangband_8cpp.html#a4f944b89580428c6fb2e3acb6cbc515a" title=" " alt="" coords="225,883,367,909"/>
+<area shape="rect" href="wild_8cpp.html#a23a94f3898758c39d5b3d102d9a8d076" title="広域マップの生成(簡易処理版) / Build the wilderness area." alt="" coords="221,933,371,960"/>
+<area shape="rect" href="wizard-game-modifier_8cpp.html#a1088e2beb34a501f0746cad6b0683177" title="ゲーム属性を変更するデバッグコマンド" alt="" coords="238,984,354,1011"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a28dc0c306a8a3470513e70613befd73c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28dc0c306a8a3470513e70613befd73c">&#9670;&nbsp;</a></span>parse_line_feature()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="parse-error-types_8h.html#a0910e3ed68e027a6e5d590d1520c1697">parse_error_type</a> parse_line_feature </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>地形情報の「F:」情報をパースする Process "F:&lt;letter&gt;:&lt;terrain&gt;:&lt;cave_info&gt;:&lt;monster&gt;:&lt;object&gt;:&lt;ego&gt;:&lt;artifact&gt;:&lt;trap&gt;:&lt;special&gt;" &ndash; info for dungeon grid </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">floor_ptr</td><td>現在フロアへの参照ポインタ </td></tr>
+    <tr><td class="paramname">buf</td><td>解析文字列 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="general-parser_8cpp_a28dc0c306a8a3470513e70613befd73c_cgraph.png" border="0" usemap="#ageneral-parser_8cpp_a28dc0c306a8a3470513e70613befd73c_cgraph" alt=""/></div>
+<map name="ageneral-parser_8cpp_a28dc0c306a8a3470513e70613befd73c_cgraph" id="ageneral-parser_8cpp_a28dc0c306a8a3470513e70613befd73c_cgraph">
+<area shape="rect" title="地形情報の「F:」情報をパースする Process &quot;F:&lt;letter&gt;:&lt;terrain&gt;:&lt;cave_info&gt;:&lt;monster&gt;:&lt;object&gt;:&lt;ego&gt;:&lt;artifact&gt;:&lt;trap..." alt="" coords="5,81,132,108"/>
+<area shape="rect" href="feature-reader_8cpp.html#a21773b15c44f6d21c32a7338bee0b5c1" title="地形タグからIDを得る / Convert a fake tag to a real feat index" alt="" coords="195,5,301,32"/>
+<area shape="rect" href="class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="180,56,316,83"/>
+<area shape="rect" href="object-kind-hook_8cpp.html#a24f8a2426e4fc5128654ec26033312ab" title="tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the object_kind with the given tval and sval" alt="" coords="203,107,293,133"/>
+<area shape="rect" href="tokenizer_8cpp.html#a15c2327bd72981ff5538a732e1fe2d3b" title="各種データテキストをトークン単位に分解する / Extract the first few &quot;tokens&quot; from a buffer" alt="" coords="213,157,283,184"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="394,5,445,32"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="364,56,475,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="general-parser_8cpp_a28dc0c306a8a3470513e70613befd73c_icgraph.png" border="0" usemap="#ageneral-parser_8cpp_a28dc0c306a8a3470513e70613befd73c_icgraph" alt=""/></div>
+<map name="ageneral-parser_8cpp_a28dc0c306a8a3470513e70613befd73c_icgraph" id="ageneral-parser_8cpp_a28dc0c306a8a3470513e70613befd73c_icgraph">
+<area shape="rect" title="地形情報の「F:」情報をパースする Process &quot;F:&lt;letter&gt;:&lt;terrain&gt;:&lt;cave_info&gt;:&lt;monster&gt;:&lt;object&gt;:&lt;ego&gt;:&lt;artifact&gt;:&lt;trap..." alt="" coords="804,503,931,529"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#abf28dd4c313dd9d7d0f5ae6f2fe13ed7" title="固定マップ (クエスト＆街＆広域マップ)をフロアに生成する Parse a sub&#45;file of the &quot;extra info&quot;" alt="" coords="617,495,756,537"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="449,503,569,529"/>
+<area shape="rect" href="display-player_8cpp.html#a2ef59570e7557be50e6383f35598dcf5" title="クエストフロアで生きている場合、クエスト名をバッファに詰める" alt="" coords="219,5,373,32"/>
+<area shape="rect" href="target-describer_8cpp.html#a42b5b6ff5c62d6e5d761927149042663" title=" " alt="" coords="231,56,361,83"/>
+<area shape="rect" href="cmd-move_8cpp.html#a9d5fbe57b7b1e9058947333e00dee815" title="階段を使って階層を降りる処理 / Go down one level" alt="" coords="11,120,137,147"/>
+<area shape="rect" href="cmd-move_8cpp.html#a16005f2ab8f785b6fb42030270681913" title="階段を使って階層を昇る処理 / Go up one level" alt="" coords="19,196,129,223"/>
+<area shape="rect" href="knowledge-self_8cpp.html#ab7de2bac473b3a93ad1b8abbee8e22eb" title=" " alt="" coords="209,309,383,336"/>
+<area shape="rect" href="knowledge-quests_8cpp.html#a22e2c4c4c1cf9c3374f50baa4b0b94e2" title=" " alt="" coords="191,360,401,387"/>
+<area shape="rect" href="knowledge-quests_8cpp.html#a25a090019c28dcf6d21b2a87a4308095" title="Print all active quests" alt="" coords="205,411,387,453"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="240,157,352,184"/>
+<area shape="rect" href="floor-generator_8cpp.html#afa77bd7cd83eaa3080e80033d6f1c20b" title="固定マップクエストのフロア生成 / Generate a quest level" alt="" coords="5,259,143,285"/>
+<area shape="rect" href="wild_8cpp.html#a32062d69058538387b0e1a4329f1054f" title="荒野フロア生成のメインルーチン / Load a town or generate a terrain level using &quot;plasma&quot; fractals." alt="" coords="244,528,348,555"/>
+<area shape="rect" href="wild_8cpp.html#ad2b39f3334022fd4e424dbc1029c79f4" title="広域マップの生成 / Build the wilderness area outside of the town." alt="" coords="19,503,129,529"/>
+<area shape="rect" href="game-play_8cpp.html#a0a9c08bcb4379e5a3a118ded5ecd4948" title=" " alt="" coords="226,579,366,605"/>
+<area shape="rect" href="building-quest_8cpp.html#acf9f109729b5f46806a05ebc2b560823" title="クエスト情報を処理しつつ取得する。/ Process and get quest information" alt="" coords="247,629,345,656"/>
+<area shape="rect" href="game-play-initializer_8cpp.html#a00b1426ed21af0def3a084bbb4e06231" title="ダンジョン内部のクエストを初期化する / Initialize random quests and final quests" alt="" coords="225,680,367,707"/>
+<area shape="rect" href="info-initializer_8cpp.html#aff9534c18634fea0305911a4440eccef" title="基本情報読み込みのメインルーチン / Initialize misc." alt="" coords="259,731,333,757"/>
+<area shape="rect" href="display-player_8cpp.html#a5f57627489015e526373738ab0317a4b" title="ゲームオーバーの原因を探る (生きていたら何もしない)" alt="" coords="225,781,367,808"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="226,832,366,859"/>
+<area shape="rect" href="load-zangband_8cpp.html#a4f944b89580428c6fb2e3acb6cbc515a" title=" " alt="" coords="225,883,367,909"/>
+<area shape="rect" href="wild_8cpp.html#a23a94f3898758c39d5b3d102d9a8d076" title="広域マップの生成(簡易処理版) / Build the wilderness area." alt="" coords="221,933,371,960"/>
+<area shape="rect" href="wizard-game-modifier_8cpp.html#a1088e2beb34a501f0746cad6b0683177" title="ゲーム属性を変更するデバッグコマンド" alt="" coords="238,984,354,1011"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="ad20065d2367d2f8c9e70940a029c3744"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad20065d2367d2f8c9e70940a029c3744">&#9670;&nbsp;</a></span>letter</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structdungeon__grid.html">dungeon_grid</a> letter[255]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分22秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

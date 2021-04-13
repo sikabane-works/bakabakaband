@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/util/bit-flags-calculator.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b7878ad5ecbf2506f4125b9d34c97e45.html">util</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">bit-flags-calculator.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="bit-flags-calculator_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="bit-flags-calculator_8h.html#aaa2a941df50f210264fc858d1d019e5d">    3</a></span>&#160;<span class="preprocessor">#define reset_bits(FLAG, INDEX) ((FLAG) &amp;= ~(INDEX))</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="bit-flags-calculator_8h.html#aaf324fb34f69c2b45e260fe31325d9d7">    4</a></span>&#160;<span class="preprocessor">#define set_bits(FLAG, INDEX) ((FLAG) |= (INDEX))</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="bit-flags-calculator_8h.html#ac277c32e182c59bd941eec6d3a770911">    5</a></span>&#160;<span class="preprocessor">#define any_bits(FLAG, INDEX) (((FLAG) &amp; (INDEX)) != 0)</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="bit-flags-calculator_8h.html#a03909bce77228491e030b3283aa9cb55">    6</a></span>&#160;<span class="preprocessor">#define all_bits(FLAG, INDEX) (((FLAG) &amp; (INDEX)) == (INDEX))</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="bit-flags-calculator_8h.html#a3d0f1190f3b3318f7f39e7b56ba97a64">    7</a></span>&#160;<span class="preprocessor">#define none_bits(FLAG, INDEX) (((FLAG) &amp; (INDEX)) == 0)</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="bit-flags-calculator_8h.html#ab3858867081454147c51182173743965">    8</a></span>&#160;<span class="preprocessor">#define has_flag(ARRAY, INDEX) !!((ARRAY)[(INDEX) / 32] &amp; (1UL &lt;&lt; ((INDEX) % 32)))</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="bit-flags-calculator_8h.html#ab4b368b9bbb33ee22ce7c7d721e497de">    9</a></span>&#160;<span class="preprocessor">#define add_flag(ARRAY, INDEX) ((ARRAY)[(INDEX) / 32] |= (1UL &lt;&lt; ((INDEX) % 32)))</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="bit-flags-calculator_8h.html#ad3e196ac38d6bc3f7b9eb2563406d7ee">   10</a></span>&#160;<span class="preprocessor">#define remove_flag(ARRAY, INDEX) ((ARRAY)[(INDEX) / 32] &amp;= ~(1UL &lt;&lt; ((INDEX) % 32)))</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="bit-flags-calculator_8h.html#a9d6714a5f63d45ac57d7e34767d55c76">   11</a></span>&#160;<span class="preprocessor">#define is_pval_flag(INDEX) ((TR_STR &lt;= (INDEX) &amp;&amp; (INDEX) &lt;= TR_MAGIC_MASTERY) || (TR_STEALTH &lt;= (INDEX) &amp;&amp; (INDEX) &lt;= TR_BLOWS))</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="bit-flags-calculator_8h.html#a05cc045a741cf3cda2d47c27f8d21887">   12</a></span>&#160;<span class="preprocessor">#define has_pval_flags(ARRAY) !!((ARRAY)[0] &amp; (0x00003f7f))</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

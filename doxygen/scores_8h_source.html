@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/core/scores.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">scores.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="scores_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="files-util_8h.html">io/files-util.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * Semi-Portable High Score List Entry (128 bytes) -- BEN</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * All fields listed below are null terminated ascii strings.</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * In addition, the &quot;number&quot; fields are right justified, and</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * space padded, to the full available length (minus the &quot;null&quot;).</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * Note that &quot;string comparisons&quot; are thus valid on &quot;pts&quot;.</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structhigh__score.html">   16</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structhigh__score.html">high_score</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structhigh__score.html#a4705f48c5f666966d6d2f078382f3908">   18</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#a4705f48c5f666966d6d2f078382f3908">what</a>[8];      <span class="comment">/* Version info (string) */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structhigh__score.html#aa6b310116650cb48a16981ead24c1e52">   19</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#aa6b310116650cb48a16981ead24c1e52">pts</a>[10];      <span class="comment">/* Total Score (number) */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structhigh__score.html#aedb6a245dd28cb32d498b92ea9c9f95a">   20</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#aedb6a245dd28cb32d498b92ea9c9f95a">gold</a>[10];     <span class="comment">/* Total Gold (number) */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structhigh__score.html#ad40be9eb1bbb294de067848dc5d9941b">   21</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#ad40be9eb1bbb294de067848dc5d9941b">turns</a>[10];        <span class="comment">/* Turns Taken (number) */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structhigh__score.html#a12fa3038943203125ca07c7a8e9be039">   22</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#a12fa3038943203125ca07c7a8e9be039">day</a>[10];      <span class="comment">/* Time stamp (string) */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structhigh__score.html#aa972f0d8b9908fc9f113ac2269dc6ed6">   23</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#aa972f0d8b9908fc9f113ac2269dc6ed6">who</a>[16];      <span class="comment">/* Player Name (string) */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structhigh__score.html#a4b1b2dda76cfdcebaf5d464f89167f82">   24</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#a4b1b2dda76cfdcebaf5d464f89167f82">uid</a>[8];       <span class="comment">/* Player UID (number) */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structhigh__score.html#a547501f300cd23ae712af5505a3387c4">   25</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#a547501f300cd23ae712af5505a3387c4">sex</a>[2];       <span class="comment">/* Player Sex (string) */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structhigh__score.html#a4400ddbfc61b9eed0726e90a932d4e6a">   26</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#a4400ddbfc61b9eed0726e90a932d4e6a">p_r</a>[3];       <span class="comment">/* Player Race (number) */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structhigh__score.html#afab26eca1905ca087e9af5d33c103b94">   27</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#afab26eca1905ca087e9af5d33c103b94">p_c</a>[3];       <span class="comment">/* Player Class (number) */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structhigh__score.html#a13f09ca9bc516d37f412e12b48893abb">   28</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#a13f09ca9bc516d37f412e12b48893abb">p_a</a>[3];       <span class="comment">/* Player Seikaku (number) */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structhigh__score.html#ad8e4deb7f8413e1180ca1c93e600d679">   30</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#ad8e4deb7f8413e1180ca1c93e600d679">cur_lev</a>[4];       <span class="comment">/* Current Player Level (number) */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structhigh__score.html#a3f79503afee7af48c08826cf8b2be205">   31</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#a3f79503afee7af48c08826cf8b2be205">cur_dun</a>[4];       <span class="comment">/* Current Dungeon Level (number) */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structhigh__score.html#ac9035b0661357e6307a22e1d517c1a87">   32</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#ac9035b0661357e6307a22e1d517c1a87">max_lev</a>[4];       <span class="comment">/* Max Player Level (number) */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structhigh__score.html#aedf5eca033dd65707f91b648975ee9a2">   33</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#aedf5eca033dd65707f91b648975ee9a2">max_dun</a>[4];       <span class="comment">/* Max Dungeon Level (number) */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structhigh__score.html#a41486493458fd3980ccbe91b4442ffaf">   35</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structhigh__score.html#a41486493458fd3980ccbe91b4442ffaf">how</a>[40];      <span class="comment">/* Method of death (string) */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="scores_8h.html#aec4f67bd6849928be0e1e73865f78094">   36</a></span>&#160;} <a class="code" href="scores_8h.html#aec4f67bd6849928be0e1e73865f78094">high_score</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="scores_8h.html#add7a232f3ad37ffbc5923cd379da9603">   38</a></span>&#160;<span class="preprocessor">#define MAX_HISCORES    999 </span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="scores_8h.html#ac9cc236113303957603deb8a25df5983">highscore_fd</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scores_8h.html#ab638b7997049f0c4d7fbeac1f0f0a2d0">display_scores_aux</a>(<span class="keywordtype">int</span> from, <span class="keywordtype">int</span> to, <span class="keywordtype">int</span> note, <a class="code" href="structhigh__score.html">high_score</a> *score);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scores_8h.html#a649215d7f6928dc9f840e4ae5e144f57">display_scores</a>(<span class="keywordtype">int</span> from, <span class="keywordtype">int</span> to);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scores_8h.html#a646d1119b381e0191fe2109589649b2b">kingly</a>(<a class="code" href="structplayer__type.html">player_type</a> *winner_ptr);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="scores_8h.html#af49a50cb34bb1e825724246836430c65">send_world_score</a>(<a class="code" href="structplayer__type.html">player_type</a> *current_player_ptr, <span class="keywordtype">bool</span> do_send, <span class="keywordtype">void</span>(*<a class="code" href="world_8cpp.html#a722be27807c99a7258058b2baabee95e">update_playtime</a>)(<span class="keywordtype">void</span>), <a class="code" href="files-util_8h.html#a74980559fb74b5a8858394d204ccf028">display_player_pf</a> <a class="code" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271">display_player</a>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> <a class="code" href="scores_8h.html#af3bc9911d7f0c3a60be12ca5ea8713b8">top_twenty</a>(<a class="code" href="structplayer__type.html">player_type</a> *current_player_ptr);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> <a class="code" href="scores_8h.html#ac8cf8933c4b99926822c83fb819771cc">predict_score</a>(<a class="code" href="structplayer__type.html">player_type</a> *current_player_ptr);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scores_8h.html#adaa05ba4002447461e61abd06996ed3d">race_legends</a>(<a class="code" href="structplayer__type.html">player_type</a> *current_player_ptr);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scores_8h.html#a5865b524046672aef195b80c6aba7405">race_score</a>(<a class="code" href="structplayer__type.html">player_type</a> *current_player_ptr, <span class="keywordtype">int</span> race_num);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scores_8h.html#a139c95397e8ccc8ebcdd2e342f08174c">show_highclass</a>(<a class="code" href="structplayer__type.html">player_type</a> *current_player_ptr);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="scores_8h.html#ac992753447accdb78088d7d04620a733">check_score</a>(<a class="code" href="structplayer__type.html">player_type</a> *current_player_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="adisplay-player_8cpp_html_a47326bd321e057559d696b8252a26271"><div class="ttname"><a href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271">display_player</a></div><div class="ttdeci">void display_player(player_type *creature_ptr, int mode)</div><div class="ttdoc">プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)</div><div class="ttdef"><b>Definition:</b> display-player.cpp:297</div></div>
+<div class="ttc" id="afiles-util_8h_html"><div class="ttname"><a href="files-util_8h.html">files-util.h</a></div></div>
+<div class="ttc" id="afiles-util_8h_html_a74980559fb74b5a8858394d204ccf028"><div class="ttname"><a href="files-util_8h.html#a74980559fb74b5a8858394d204ccf028">display_player_pf</a></div><div class="ttdeci">void(* display_player_pf)(player_type *, int)</div><div class="ttdef"><b>Definition:</b> files-util.h:24</div></div>
+<div class="ttc" id="ah-type_8h_html_ac67a750044882c0fd3760a2eccd56d7c"><div class="ttname"><a href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a></div><div class="ttdeci">char GAME_TEXT</div><div class="ttdoc">ゲーム中のテキスト型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:133</div></div>
+<div class="ttc" id="ah-type_8h_html_ad99e8b64263d5831d93bec22e89da527"><div class="ttname"><a href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a></div><div class="ttdeci">int errr</div><div class="ttdoc">エラーコードの定義 / Error codes for function return values</div><div class="ttdef"><b>Definition:</b> h-type.h:53</div></div>
+<div class="ttc" id="ascores_8h_html_a139c95397e8ccc8ebcdd2e342f08174c"><div class="ttname"><a href="scores_8h.html#a139c95397e8ccc8ebcdd2e342f08174c">show_highclass</a></div><div class="ttdeci">void show_highclass(player_type *current_player_ptr)</div><div class="ttdoc">スコアランキングの簡易表示 / show_highclass - selectively list highscores based on class -KMW-</div><div class="ttdef"><b>Definition:</b> scores.cpp:662</div></div>
+<div class="ttc" id="ascores_8h_html_a5865b524046672aef195b80c6aba7405"><div class="ttname"><a href="scores_8h.html#a5865b524046672aef195b80c6aba7405">race_score</a></div><div class="ttdeci">void race_score(player_type *current_player_ptr, int race_num)</div><div class="ttdoc">スコアランキングの簡易表示(種族毎)サブルーチン / Race Legends -KMW-</div><div class="ttdef"><b>Definition:</b> scores.cpp:734</div></div>
+<div class="ttc" id="ascores_8h_html_a646d1119b381e0191fe2109589649b2b"><div class="ttname"><a href="scores_8h.html#a646d1119b381e0191fe2109589649b2b">kingly</a></div><div class="ttdeci">void kingly(player_type *winner_ptr)</div><div class="ttdoc">勝利者用の引退演出処理 / Change the player into a King! -RAK-</div><div class="ttdef"><b>Definition:</b> scores.cpp:836</div></div>
+<div class="ttc" id="ascores_8h_html_a649215d7f6928dc9f840e4ae5e144f57"><div class="ttname"><a href="scores_8h.html#a649215d7f6928dc9f840e4ae5e144f57">display_scores</a></div><div class="ttdeci">void display_scores(int from, int to)</div><div class="ttdoc">スコア表示処理メインルーチン / Hack – Display the scores in a given range and quit.</div><div class="ttdef"><b>Definition:</b> scores.cpp:408</div></div>
+<div class="ttc" id="ascores_8h_html_ab638b7997049f0c4d7fbeac1f0f0a2d0"><div class="ttname"><a href="scores_8h.html#ab638b7997049f0c4d7fbeac1f0f0a2d0">display_scores_aux</a></div><div class="ttdeci">void display_scores_aux(int from, int to, int note, high_score *score)</div><div class="ttdoc">指定された順位範囲でスコアを並べて表示する / Display the scores in a given range.</div><div class="ttdef"><b>Definition:</b> scores.cpp:169</div></div>
+<div class="ttc" id="ascores_8h_html_ac8cf8933c4b99926822c83fb819771cc"><div class="ttname"><a href="scores_8h.html#ac8cf8933c4b99926822c83fb819771cc">predict_score</a></div><div class="ttdeci">errr predict_score(player_type *current_player_ptr)</div><div class="ttdoc">プレイヤーの現在のスコアをランキングに挟む / Predict the players location, and display it.</div><div class="ttdef"><b>Definition:</b> scores.cpp:589</div></div>
+<div class="ttc" id="ascores_8h_html_ac992753447accdb78088d7d04620a733"><div class="ttname"><a href="scores_8h.html#ac992753447accdb78088d7d04620a733">check_score</a></div><div class="ttdeci">bool check_score(player_type *current_player_ptr)</div><div class="ttdoc">スコアファイル出力 Display some character info</div><div class="ttdef"><b>Definition:</b> scores.cpp:906</div></div>
+<div class="ttc" id="ascores_8h_html_ac9cc236113303957603deb8a25df5983"><div class="ttname"><a href="scores_8h.html#ac9cc236113303957603deb8a25df5983">highscore_fd</a></div><div class="ttdeci">int highscore_fd</div><div class="ttdef"><b>Definition:</b> scores.cpp:46</div></div>
+<div class="ttc" id="ascores_8h_html_adaa05ba4002447461e61abd06996ed3d"><div class="ttname"><a href="scores_8h.html#adaa05ba4002447461e61abd06996ed3d">race_legends</a></div><div class="ttdeci">void race_legends(player_type *current_player_ptr)</div><div class="ttdoc">スコアランキングの簡易表示(種族毎)メインルーチン / Race Legends -KMW-</div><div class="ttdef"><b>Definition:</b> scores.cpp:818</div></div>
+<div class="ttc" id="ascores_8h_html_aec4f67bd6849928be0e1e73865f78094"><div class="ttname"><a href="scores_8h.html#aec4f67bd6849928be0e1e73865f78094">high_score</a></div><div class="ttdeci">struct high_score high_score</div></div>
+<div class="ttc" id="ascores_8h_html_af3bc9911d7f0c3a60be12ca5ea8713b8"><div class="ttname"><a href="scores_8h.html#af3bc9911d7f0c3a60be12ca5ea8713b8">top_twenty</a></div><div class="ttdeci">errr top_twenty(player_type *current_player_ptr)</div><div class="ttdoc">スコアの過去二十位内ランキングを表示する Enters a players name on a hi-score table, if &quot;legal&quot;, and in any case,...</div><div class="ttdef"><b>Definition:</b> scores.cpp:483</div></div>
+<div class="ttc" id="ascores_8h_html_af49a50cb34bb1e825724246836430c65"><div class="ttname"><a href="scores_8h.html#af49a50cb34bb1e825724246836430c65">send_world_score</a></div><div class="ttdeci">bool send_world_score(player_type *current_player_ptr, bool do_send, void(*update_playtime)(void), display_player_pf display_player)</div><div class="ttdoc">スコアサーバへの転送処理</div><div class="ttdef"><b>Definition:</b> scores.cpp:441</div></div>
+<div class="ttc" id="astructhigh__score_html"><div class="ttname"><a href="structhigh__score.html">high_score</a></div><div class="ttdef"><b>Definition:</b> scores.h:17</div></div>
+<div class="ttc" id="astructhigh__score_html_a12fa3038943203125ca07c7a8e9be039"><div class="ttname"><a href="structhigh__score.html#a12fa3038943203125ca07c7a8e9be039">high_score::day</a></div><div class="ttdeci">GAME_TEXT day[10]</div><div class="ttdef"><b>Definition:</b> scores.h:22</div></div>
+<div class="ttc" id="astructhigh__score_html_a13f09ca9bc516d37f412e12b48893abb"><div class="ttname"><a href="structhigh__score.html#a13f09ca9bc516d37f412e12b48893abb">high_score::p_a</a></div><div class="ttdeci">GAME_TEXT p_a[3]</div><div class="ttdef"><b>Definition:</b> scores.h:28</div></div>
+<div class="ttc" id="astructhigh__score_html_a3f79503afee7af48c08826cf8b2be205"><div class="ttname"><a href="structhigh__score.html#a3f79503afee7af48c08826cf8b2be205">high_score::cur_dun</a></div><div class="ttdeci">GAME_TEXT cur_dun[4]</div><div class="ttdef"><b>Definition:</b> scores.h:31</div></div>
+<div class="ttc" id="astructhigh__score_html_a41486493458fd3980ccbe91b4442ffaf"><div class="ttname"><a href="structhigh__score.html#a41486493458fd3980ccbe91b4442ffaf">high_score::how</a></div><div class="ttdeci">GAME_TEXT how[40]</div><div class="ttdef"><b>Definition:</b> scores.h:35</div></div>
+<div class="ttc" id="astructhigh__score_html_a4400ddbfc61b9eed0726e90a932d4e6a"><div class="ttname"><a href="structhigh__score.html#a4400ddbfc61b9eed0726e90a932d4e6a">high_score::p_r</a></div><div class="ttdeci">GAME_TEXT p_r[3]</div><div class="ttdef"><b>Definition:</b> scores.h:26</div></div>
+<div class="ttc" id="astructhigh__score_html_a4705f48c5f666966d6d2f078382f3908"><div class="ttname"><a href="structhigh__score.html#a4705f48c5f666966d6d2f078382f3908">high_score::what</a></div><div class="ttdeci">GAME_TEXT what[8]</div><div class="ttdef"><b>Definition:</b> scores.h:18</div></div>
+<div class="ttc" id="astructhigh__score_html_a4b1b2dda76cfdcebaf5d464f89167f82"><div class="ttname"><a href="structhigh__score.html#a4b1b2dda76cfdcebaf5d464f89167f82">high_score::uid</a></div><div class="ttdeci">GAME_TEXT uid[8]</div><div class="ttdef"><b>Definition:</b> scores.h:24</div></div>
+<div class="ttc" id="astructhigh__score_html_a547501f300cd23ae712af5505a3387c4"><div class="ttname"><a href="structhigh__score.html#a547501f300cd23ae712af5505a3387c4">high_score::sex</a></div><div class="ttdeci">GAME_TEXT sex[2]</div><div class="ttdef"><b>Definition:</b> scores.h:25</div></div>
+<div class="ttc" id="astructhigh__score_html_aa6b310116650cb48a16981ead24c1e52"><div class="ttname"><a href="structhigh__score.html#aa6b310116650cb48a16981ead24c1e52">high_score::pts</a></div><div class="ttdeci">GAME_TEXT pts[10]</div><div class="ttdef"><b>Definition:</b> scores.h:19</div></div>
+<div class="ttc" id="astructhigh__score_html_aa972f0d8b9908fc9f113ac2269dc6ed6"><div class="ttname"><a href="structhigh__score.html#aa972f0d8b9908fc9f113ac2269dc6ed6">high_score::who</a></div><div class="ttdeci">GAME_TEXT who[16]</div><div class="ttdef"><b>Definition:</b> scores.h:23</div></div>
+<div class="ttc" id="astructhigh__score_html_ac9035b0661357e6307a22e1d517c1a87"><div class="ttname"><a href="structhigh__score.html#ac9035b0661357e6307a22e1d517c1a87">high_score::max_lev</a></div><div class="ttdeci">GAME_TEXT max_lev[4]</div><div class="ttdef"><b>Definition:</b> scores.h:32</div></div>
+<div class="ttc" id="astructhigh__score_html_ad40be9eb1bbb294de067848dc5d9941b"><div class="ttname"><a href="structhigh__score.html#ad40be9eb1bbb294de067848dc5d9941b">high_score::turns</a></div><div class="ttdeci">GAME_TEXT turns[10]</div><div class="ttdef"><b>Definition:</b> scores.h:21</div></div>
+<div class="ttc" id="astructhigh__score_html_ad8e4deb7f8413e1180ca1c93e600d679"><div class="ttname"><a href="structhigh__score.html#ad8e4deb7f8413e1180ca1c93e600d679">high_score::cur_lev</a></div><div class="ttdeci">GAME_TEXT cur_lev[4]</div><div class="ttdef"><b>Definition:</b> scores.h:30</div></div>
+<div class="ttc" id="astructhigh__score_html_aedb6a245dd28cb32d498b92ea9c9f95a"><div class="ttname"><a href="structhigh__score.html#aedb6a245dd28cb32d498b92ea9c9f95a">high_score::gold</a></div><div class="ttdeci">GAME_TEXT gold[10]</div><div class="ttdef"><b>Definition:</b> scores.h:20</div></div>
+<div class="ttc" id="astructhigh__score_html_aedf5eca033dd65707f91b648975ee9a2"><div class="ttname"><a href="structhigh__score.html#aedf5eca033dd65707f91b648975ee9a2">high_score::max_dun</a></div><div class="ttdeci">GAME_TEXT max_dun[4]</div><div class="ttdef"><b>Definition:</b> scores.h:33</div></div>
+<div class="ttc" id="astructhigh__score_html_afab26eca1905ca087e9af5d33c103b94"><div class="ttname"><a href="structhigh__score.html#afab26eca1905ca087e9af5d33c103b94">high_score::p_c</a></div><div class="ttdeci">GAME_TEXT p_c[3]</div><div class="ttdef"><b>Definition:</b> scores.h:27</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="aworld_8cpp_html_a722be27807c99a7258058b2baabee95e"><div class="ttname"><a href="world_8cpp.html#a722be27807c99a7258058b2baabee95e">update_playtime</a></div><div class="ttdeci">void update_playtime(void)</div><div class="ttdoc">実ゲームプレイ時間を更新する</div><div class="ttdef"><b>Definition:</b> world.cpp:53</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

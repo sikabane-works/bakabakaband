@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/monster/monster-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f68a7f142a463f095d22e67af9193b2d.html">monster</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">monster-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="monster-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">    5</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> (*<a class="code" href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">monsterrace_hook_type</a>)(<a class="code" href="structplayer__type.html">player_type</a> *, <a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a>);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> <a class="code" href="monster-util_8h.html#ad4d04e142ecbea24d66693385c2bcf4a">hack_m_idx</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> <a class="code" href="monster-util_8h.html#a9e715a3f9b4cbb96737347f9b0ca01ba">hack_m_idx_ii</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="monster-util_8h.html#ad6f10d6b800c27bcdaeb7b2f7a5f5eda">chameleon_change_m_idx</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">enum</span> <a class="code" href="summon-types_8h.html#a89c2c6b840344f16466ff955a555bf64">summon_type</a> : int;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">extern</span> <a class="code" href="summon-types_8h.html#a89c2c6b840344f16466ff955a555bf64">summon_type</a> <a class="code" href="monster-util_8cpp.html#ab3430ec409bb5b43681b8c0b2a8ee010">summon_specific_type</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<a class="code" href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">monsterrace_hook_type</a> <a class="code" href="monster-util_8h.html#a0143e2894ebbb4c7c10407c05864d541">get_monster_hook</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<a class="code" href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">monsterrace_hook_type</a> <a class="code" href="monster-util_8h.html#a9fc01fd90dd6a66966721b7c06902394">get_monster_hook2</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> <a class="code" href="monster-util_8h.html#af107ab42bf5d9ca42109bbc2f53b3698">get_mon_num_prep</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">monsterrace_hook_type</a> hook1, <a class="code" href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">monsterrace_hook_type</a> hook2);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> <a class="code" href="monster-util_8h.html#a119044a0722d084a4fa94a064a6923d8">get_mon_num_prep_bounty</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a7ea47f67338902d35c1e93e00cf86908"><div class="ttname"><a href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a></div><div class="ttdeci">s16b MONRACE_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:109</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="ah-type_8h_html_ad5c9d4ba3dc37783a528b0925dc981a0"><div class="ttname"><a href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a></div><div class="ttdeci">char bool</div><div class="ttdoc">bool型をcharとして定義 / Note that a bool is smaller than a full &quot;int&quot; / Simple True/False type</div><div class="ttdef"><b>Definition:</b> h-type.h:70</div></div>
+<div class="ttc" id="ah-type_8h_html_ad99e8b64263d5831d93bec22e89da527"><div class="ttname"><a href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a></div><div class="ttdeci">int errr</div><div class="ttdoc">エラーコードの定義 / Error codes for function return values</div><div class="ttdef"><b>Definition:</b> h-type.h:53</div></div>
+<div class="ttc" id="amonster-util_8cpp_html_ab3430ec409bb5b43681b8c0b2a8ee010"><div class="ttname"><a href="monster-util_8cpp.html#ab3430ec409bb5b43681b8c0b2a8ee010">summon_specific_type</a></div><div class="ttdeci">summon_type summon_specific_type</div><div class="ttdoc">召喚条件を指定するグローバル変数 / Hack – the &quot;type&quot; of the current &quot;summon specific&quot;</div><div class="ttdef"><b>Definition:</b> monster-util.cpp:43</div></div>
+<div class="ttc" id="amonster-util_8h_html_a0143e2894ebbb4c7c10407c05864d541"><div class="ttname"><a href="monster-util_8h.html#a0143e2894ebbb4c7c10407c05864d541">get_monster_hook</a></div><div class="ttdeci">enum summon_type int summon_type summon_specific_type monsterrace_hook_type get_monster_hook(player_type *player_ptr)</div><div class="ttdoc">プレイヤーの現在の広域マップ座標から得た地勢を元にモンスターの生成条件関数を返す</div><div class="ttdef"><b>Definition:</b> monster-util.cpp:239</div></div>
+<div class="ttc" id="amonster-util_8h_html_a119044a0722d084a4fa94a064a6923d8"><div class="ttname"><a href="monster-util_8h.html#a119044a0722d084a4fa94a064a6923d8">get_mon_num_prep_bounty</a></div><div class="ttdeci">errr get_mon_num_prep_bounty(player_type *player_ptr)</div><div class="ttdoc">モンスター生成テーブルの重み修正(賞金首選定用)</div><div class="ttdef"><b>Definition:</b> monster-util.cpp:405</div></div>
+<div class="ttc" id="amonster-util_8h_html_a2d58871776d9969de52bddf9633fd5f6"><div class="ttname"><a href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">monsterrace_hook_type</a></div><div class="ttdeci">bool(* monsterrace_hook_type)(player_type *, MONRACE_IDX)</div><div class="ttdef"><b>Definition:</b> monster-util.h:5</div></div>
+<div class="ttc" id="amonster-util_8h_html_a9e715a3f9b4cbb96737347f9b0ca01ba"><div class="ttname"><a href="monster-util_8h.html#a9e715a3f9b4cbb96737347f9b0ca01ba">hack_m_idx_ii</a></div><div class="ttdeci">MONSTER_IDX hack_m_idx_ii</div><div class="ttdef"><b>Definition:</b> monster-util.cpp:29</div></div>
+<div class="ttc" id="amonster-util_8h_html_a9fc01fd90dd6a66966721b7c06902394"><div class="ttname"><a href="monster-util_8h.html#a9fc01fd90dd6a66966721b7c06902394">get_monster_hook2</a></div><div class="ttdeci">monsterrace_hook_type get_monster_hook2(player_type *player_ptr, POSITION y, POSITION x)</div><div class="ttdoc">指定された広域マップ座標の地勢を元にモンスターの生成条件関数を返す</div><div class="ttdef"><b>Definition:</b> monster-util.cpp:273</div></div>
+<div class="ttc" id="amonster-util_8h_html_ad4d04e142ecbea24d66693385c2bcf4a"><div class="ttname"><a href="monster-util_8h.html#ad4d04e142ecbea24d66693385c2bcf4a">hack_m_idx</a></div><div class="ttdeci">MONSTER_IDX hack_m_idx</div><div class="ttdef"><b>Definition:</b> monster-util.cpp:28</div></div>
+<div class="ttc" id="amonster-util_8h_html_ad6f10d6b800c27bcdaeb7b2f7a5f5eda"><div class="ttname"><a href="monster-util_8h.html#ad6f10d6b800c27bcdaeb7b2f7a5f5eda">chameleon_change_m_idx</a></div><div class="ttdeci">int chameleon_change_m_idx</div><div class="ttdoc">カメレオンの変身先モンスターIDを受け渡すためのグローバル変数</div><div class="ttdef"><b>Definition:</b> monster-util.cpp:36</div></div>
+<div class="ttc" id="amonster-util_8h_html_af107ab42bf5d9ca42109bbc2f53b3698"><div class="ttname"><a href="monster-util_8h.html#af107ab42bf5d9ca42109bbc2f53b3698">get_mon_num_prep</a></div><div class="ttdeci">errr get_mon_num_prep(player_type *player_ptr, monsterrace_hook_type hook1, monsterrace_hook_type hook2)</div><div class="ttdoc">モンスター生成テーブルの重み修正</div><div class="ttdef"><b>Definition:</b> monster-util.cpp:394</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="asummon-types_8h_html_a89c2c6b840344f16466ff955a555bf64"><div class="ttname"><a href="summon-types_8h.html#a89c2c6b840344f16466ff955a555bf64">summon_type</a></div><div class="ttdeci">summon_type</div><div class="ttdef"><b>Definition:</b> summon-types.h:4</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

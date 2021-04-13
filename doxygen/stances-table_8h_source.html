@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/mind/stances-table.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6b47a62d84e364abcbfd077d968b76f4.html">mind</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">stances-table.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="stances-table_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="special-defense-types_8h.html">player/special-defense-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="structblow__stance.html">    6</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structblow__stance.html">blow_stance</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structblow__stance.html#a2e3fc520eacca212747d42a4152581b7">    7</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structblow__stance.html#a2e3fc520eacca212747d42a4152581b7">desc</a>; <span class="comment">/* A verbose stance description */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structblow__stance.html#a81fb82c920c5e0a91a5c7686199380d2">    8</a></span>&#160;    <a class="code" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> <a class="code" href="structblow__stance.html#a81fb82c920c5e0a91a5c7686199380d2">min_level</a>; <span class="comment">/* Minimum level to use */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structblow__stance.html#a6b474e76a7daf2c22cb7e28c3432a051">    9</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structblow__stance.html#a6b474e76a7daf2c22cb7e28c3432a051">info</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="stances-table_8h.html#a2801fee3f38f997bdaea2171c84c1b4a">   10</a></span>&#160;} <a class="code" href="stances-table_8h.html#a2801fee3f38f997bdaea2171c84c1b4a">blow_stance</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structblow__stance.html">blow_stance</a> <a class="code" href="stances-table_8h.html#aa0149decc81be29ebd606de7337dd587">monk_stances</a>[<a class="code" href="special-defense-types_8h.html#a1aae81437f4842873431acbe4ee69dce">MAX_KAMAE</a>];</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structblow__stance.html">blow_stance</a> <a class="code" href="stances-table_8h.html#ae59be2390e65040ad9e7a6e1033d2636">samurai_stances</a>[<a class="code" href="special-defense-types_8h.html#a48d774e0bf3006842b5fb7895e548abe">MAX_KATA</a>];</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a9a1975460009e928d9b53995d07d3623"><div class="ttname"><a href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a></div><div class="ttdeci">s16b PLAYER_LEVEL</div><div class="ttdoc">ゲーム中のプレイヤーレベルの型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:176</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="aspecial-defense-types_8h_html"><div class="ttname"><a href="special-defense-types_8h.html">special-defense-types.h</a></div></div>
+<div class="ttc" id="aspecial-defense-types_8h_html_a1aae81437f4842873431acbe4ee69dce"><div class="ttname"><a href="special-defense-types_8h.html#a1aae81437f4842873431acbe4ee69dce">MAX_KAMAE</a></div><div class="ttdeci">#define MAX_KAMAE</div><div class="ttdoc">修行僧の構え最大数</div><div class="ttdef"><b>Definition:</b> special-defense-types.h:21</div></div>
+<div class="ttc" id="aspecial-defense-types_8h_html_a48d774e0bf3006842b5fb7895e548abe"><div class="ttname"><a href="special-defense-types_8h.html#a48d774e0bf3006842b5fb7895e548abe">MAX_KATA</a></div><div class="ttdeci">#define MAX_KATA</div><div class="ttdoc">修行僧の型最大数</div><div class="ttdef"><b>Definition:</b> special-defense-types.h:24</div></div>
+<div class="ttc" id="astances-table_8h_html_a2801fee3f38f997bdaea2171c84c1b4a"><div class="ttname"><a href="stances-table_8h.html#a2801fee3f38f997bdaea2171c84c1b4a">blow_stance</a></div><div class="ttdeci">struct blow_stance blow_stance</div></div>
+<div class="ttc" id="astances-table_8h_html_aa0149decc81be29ebd606de7337dd587"><div class="ttname"><a href="stances-table_8h.html#aa0149decc81be29ebd606de7337dd587">monk_stances</a></div><div class="ttdeci">const blow_stance monk_stances[MAX_KAMAE]</div><div class="ttdoc">修行僧の構え能力テーブル</div><div class="ttdef"><b>Definition:</b> stances-table.cpp:6</div></div>
+<div class="ttc" id="astances-table_8h_html_ae59be2390e65040ad9e7a6e1033d2636"><div class="ttname"><a href="stances-table_8h.html#ae59be2390e65040ad9e7a6e1033d2636">samurai_stances</a></div><div class="ttdeci">const blow_stance samurai_stances[MAX_KATA]</div><div class="ttdoc">剣術家の構え能力テーブル</div><div class="ttdef"><b>Definition:</b> stances-table.cpp:16</div></div>
+<div class="ttc" id="astructblow__stance_html"><div class="ttname"><a href="structblow__stance.html">blow_stance</a></div><div class="ttdef"><b>Definition:</b> stances-table.h:6</div></div>
+<div class="ttc" id="astructblow__stance_html_a2e3fc520eacca212747d42a4152581b7"><div class="ttname"><a href="structblow__stance.html#a2e3fc520eacca212747d42a4152581b7">blow_stance::desc</a></div><div class="ttdeci">concptr desc</div><div class="ttdef"><b>Definition:</b> stances-table.h:7</div></div>
+<div class="ttc" id="astructblow__stance_html_a6b474e76a7daf2c22cb7e28c3432a051"><div class="ttname"><a href="structblow__stance.html#a6b474e76a7daf2c22cb7e28c3432a051">blow_stance::info</a></div><div class="ttdeci">concptr info</div><div class="ttdef"><b>Definition:</b> stances-table.h:9</div></div>
+<div class="ttc" id="astructblow__stance_html_a81fb82c920c5e0a91a5c7686199380d2"><div class="ttname"><a href="structblow__stance.html#a81fb82c920c5e0a91a5c7686199380d2">blow_stance::min_level</a></div><div class="ttdeci">PLAYER_LEVEL min_level</div><div class="ttdef"><b>Definition:</b> stances-table.h:8</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

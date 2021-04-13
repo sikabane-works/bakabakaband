@@ -1,0 +1,1257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/artifact/random-art-generator.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d3b18051860347e70f1c3b4c6b45900c.html">artifact</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">random-art-generator.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="random-art-generator_8h_source.html">artifact/random-art-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="random-art-activation_8h_source.html">artifact/random-art-activation.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="random-art-bias-types_8h_source.html">artifact/random-art-bias-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="random-art-characteristics_8h_source.html">artifact/random-art-characteristics.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="random-art-misc_8h_source.html">artifact/random-art-misc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="random-art-pval-investor_8h_source.html">artifact/random-art-pval-investor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="random-art-resistance_8h_source.html">artifact/random-art-resistance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="random-art-slay_8h_source.html">artifact/random-art-slay.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="window-redrawer_8h_source.html">core/window-redrawer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flavor_8h_source.html">flavor/object-flavor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cheat-types_8h_source.html">game-option/cheat-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-object-flags_8h_source.html">object-enchant/special-object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tr-types_8h_source.html">object-enchant/tr-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-armor_8h_source.html">object-hook/hook-armor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-checker_8h_source.html">object-hook/hook-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-weapon_8h_source.html">object-hook/hook-weapon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flags_8h_source.html">object/object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind-hook_8h_source.html">object/object-kind-hook.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind_8h_source.html">object/object-kind.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-value-calc_8h_source.html">object/object-value-calc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="identification_8h_source.html">perception/identification.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-perception_8h_source.html">perception/object-perception.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="avatar_8h_source.html">player-info/avatar.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-weapon-types_8h_source.html">sv-definition/sv-weapon-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quarks_8h_source.html">util/quarks.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="artifact-bias-table_8h_source.html">wizard/artifact-bias-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="wizard-messages_8h_source.html">wizard/wizard-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+random-art-generator.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2artifact_2random-art-generator_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2artifact_2random-art-generator_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2artifact_2random-art-generator_8cpp">
+<area shape="rect" title=" " alt="" coords="1615,5,1803,61"/>
+<area shape="rect" href="random-art-generator_8h.html" title=" " alt="" coords="1320,199,1447,240"/>
+<area shape="rect" href="random-art-activation_8h.html" title=" " alt="" coords="2297,109,2424,151"/>
+<area shape="rect" href="random-art-bias-types_8h.html" title=" " alt="" coords="3224,199,3351,240"/>
+<area shape="rect" href="random-art-characteristics_8h.html" title=" " alt="" coords="5,109,132,151"/>
+<area shape="rect" href="random-art-misc_8h.html" title=" " alt="" coords="327,109,453,151"/>
+<area shape="rect" href="random-art-pval-investor_8h.html" title=" " alt="" coords="481,109,608,151"/>
+<area shape="rect" href="random-art-resistance_8h.html" title=" " alt="" coords="635,109,761,151"/>
+<area shape="rect" href="random-art-slay_8h.html" title=" " alt="" coords="787,109,913,151"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="938,117,1077,143"/>
+<area shape="rect" href="window-redrawer_8h.html" title=" " alt="" coords="1101,117,1258,143"/>
+<area shape="rect" href="object-flavor_8h.html" title=" " alt="" coords="1283,117,1417,143"/>
+<area shape="rect" href="cheat-types_8h.html" title=" " alt="" coords="3046,117,3222,143"/>
+<area shape="rect" href="special-object-flags_8h.html" title=" " alt="" coords="3246,109,3398,151"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="3423,117,3589,143"/>
+<area shape="rect" href="hook-armor_8h.html" title=" " alt="" coords="716,206,885,233"/>
+<area shape="rect" href="hook-checker_8h.html" title=" " alt="" coords="909,206,1092,233"/>
+<area shape="rect" href="hook-weapon_8h.html" title=" " alt="" coords="1116,206,1296,233"/>
+<area shape="rect" href="object-flags_8h.html" title=" " alt="" coords="2467,117,2606,143"/>
+<area shape="rect" href="object-kind-hook_8h.html" title=" " alt="" coords="3375,199,3499,240"/>
+<area shape="rect" href="object-kind_8h.html" title=" " alt="" coords="2631,117,2765,143"/>
+<area shape="rect" href="object-value-calc_8h.html" title=" " alt="" coords="1471,199,1600,240"/>
+<area shape="rect" href="identification_8h.html" title=" " alt="" coords="1624,206,1793,233"/>
+<area shape="rect" href="object-perception_8h.html" title=" " alt="" coords="1817,206,2013,233"/>
+<area shape="rect" href="avatar_8h.html" title=" " alt="" coords="2038,206,2169,233"/>
+<area shape="rect" href="sv-weapon-types_8h.html" title=" " alt="" coords="3613,109,3767,151"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="3791,117,3949,143"/>
+<area shape="rect" href="quarks_8h.html" title=" " alt="" coords="2193,206,2286,233"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="2311,206,2477,233"/>
+<area shape="rect" href="artifact-bias-table_8h.html" title=" " alt="" coords="2790,109,2921,151"/>
+<area shape="rect" href="wizard-messages_8h.html" title=" " alt="" coords="40,206,215,233"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="239,206,336,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1319,288,1448,315"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1478,363,1569,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1593,363,1683,389"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1707,363,1806,389"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="866,363,965,389"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="989,363,1089,389"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1113,363,1288,389"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1313,363,1454,389"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1830,363,1977,389"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="2489,437,2600,464"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="2603,199,2737,240"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="3299,288,3425,315"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="2892,199,3019,240"/>
+<area shape="rect" title=" " alt="" coords="3043,206,3097,233"/>
+<area shape="rect" title=" " alt="" coords="2811,206,2867,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a9853c171174df70f4c84704660825821"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-generator_8cpp.html#a9853c171174df70f4c84704660825821">weakening_artifact</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:a9853c171174df70f4c84704660825821"><td class="mdescLeft">&#160;</td><td class="mdescRight">ランダムアーティファクトの生成 / Artifact code  <a href="random-art-generator_8cpp.html#a9853c171174df70f4c84704660825821">[詳解]</a><br /></td></tr>
+<tr class="separator:a9853c171174df70f4c84704660825821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c88fcb9b17ee7c9a50756845fa988fc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-generator_8cpp.html#a7c88fcb9b17ee7c9a50756845fa988fc">set_artifact_bias</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, int *warrior_artifact_bias)</td></tr>
+<tr class="separator:a7c88fcb9b17ee7c9a50756845fa988fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c99f1102329ff237322131dbacab93a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-generator_8cpp.html#a3c99f1102329ff237322131dbacab93a">decide_warrior_bias</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, const <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> a_scroll)</td></tr>
+<tr class="separator:a3c99f1102329ff237322131dbacab93a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa62a1e8b857b47aec053b06dc4eaac53"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-generator_8cpp.html#aa62a1e8b857b47aec053b06dc4eaac53">decide_random_art_cursed</a> (const <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> a_scroll, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:aa62a1e8b857b47aec053b06dc4eaac53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a450dacc800ff540bfc915c5d4c3d3ff5"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-generator_8cpp.html#a450dacc800ff540bfc915c5d4c3d3ff5">decide_random_art_power</a> (const <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> a_cursed)</td></tr>
+<tr class="separator:a450dacc800ff540bfc915c5d4c3d3ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4850d68a618eedf8e66ff48ec9a2bfc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc">invest_powers</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, int *powers, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> *has_pval, const <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> a_cursed)</td></tr>
+<tr class="separator:ae4850d68a618eedf8e66ff48ec9a2bfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b930cc060445030fcc0cc8856f5c0f4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-generator_8cpp.html#a6b930cc060445030fcc0cc8856f5c0f4">strengthen_pval</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a6b930cc060445030fcc0cc8856f5c0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade524ee005c4ca22985476c2f0e3f301"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-generator_8cpp.html#ade524ee005c4ca22985476c2f0e3f301">invest_positive_modified_value</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:ade524ee005c4ca22985476c2f0e3f301"><td class="mdescLeft">&#160;</td><td class="mdescRight">防具ならばAC修正、武具なら殺戮修正を付与する  <a href="random-art-generator_8cpp.html#ade524ee005c4ca22985476c2f0e3f301">[詳解]</a><br /></td></tr>
+<tr class="separator:ade524ee005c4ca22985476c2f0e3f301"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3bb4d9fcbd68f6c12f4f2e9fe847705"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-generator_8cpp.html#af3bb4d9fcbd68f6c12f4f2e9fe847705">invest_negative_modified_value</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:af3bb4d9fcbd68f6c12f4f2e9fe847705"><td class="mdescLeft">&#160;</td><td class="mdescRight">防具のAC修正が高すぎた場合に弱化させる  <a href="random-art-generator_8cpp.html#af3bb4d9fcbd68f6c12f4f2e9fe847705">[詳解]</a><br /></td></tr>
+<tr class="separator:af3bb4d9fcbd68f6c12f4f2e9fe847705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad983f04406c1a8c749f9b5be03069fc3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-generator_8cpp.html#ad983f04406c1a8c749f9b5be03069fc3">reset_flags_poison_needle</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:ad983f04406c1a8c749f9b5be03069fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a638779c2b21633020a07e53a487aa4b5"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-generator_8cpp.html#a638779c2b21633020a07e53a487aa4b5">decide_random_art_power_level</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr, const <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> a_cursed, const int total_flags)</td></tr>
+<tr class="separator:a638779c2b21633020a07e53a487aa4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcf25233afaf28cc2edbf1a4ed1cf188"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-generator_8cpp.html#afcf25233afaf28cc2edbf1a4ed1cf188">name_unnatural_random_artifact</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, const <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> a_scroll, const int power_level, <a class="el" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> *new_name)</td></tr>
+<tr class="separator:afcf25233afaf28cc2edbf1a4ed1cf188"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3366ce62b9cdd818cac97f460bcb040"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-generator_8cpp.html#ae3366ce62b9cdd818cac97f460bcb040">generate_unnatural_random_artifact</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, const <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> a_scroll, const int power_level, const int max_powers, const int total_flags)</td></tr>
+<tr class="separator:ae3366ce62b9cdd818cac97f460bcb040"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb52d39747a1ce3ca1745b3fbe78ff72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72">become_random_artifact</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> a_scroll)</td></tr>
+<tr class="memdesc:acb52d39747a1ce3ca1745b3fbe78ff72"><td class="mdescLeft">&#160;</td><td class="mdescRight">ランダムアーティファクト生成のメインルーチン  <a href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72">[詳解]</a><br /></td></tr>
+<tr class="separator:acb52d39747a1ce3ca1745b3fbe78ff72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="acb52d39747a1ce3ca1745b3fbe78ff72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb52d39747a1ce3ca1745b3fbe78ff72">&#9670;&nbsp;</a></span>become_random_artifact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> become_random_artifact </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>a_scroll</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ランダムアーティファクト生成のメインルーチン </p>
+<p>既に生成が済んでいるオブジェクトの構造体を、アーティファクトとして強化する。 </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">o_ptr</td><td>対象のオブジェクト構造体ポインタ </td></tr>
+    <tr><td class="paramname">a_scroll</td><td>アーティファクト生成の巻物上の処理。呪いのアーティファクトが生成対象外となる。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>常にTRUE(1)を返す </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_acb52d39747a1ce3ca1745b3fbe78ff72_cgraph.png" border="0" usemap="#arandom-art-generator_8cpp_acb52d39747a1ce3ca1745b3fbe78ff72_cgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_acb52d39747a1ce3ca1745b3fbe78ff72_cgraph" id="arandom-art-generator_8cpp_acb52d39747a1ce3ca1745b3fbe78ff72_cgraph">
+<area shape="rect" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="5,857,169,884"/>
+<area shape="rect" href="random-art-characteristics_8cpp.html#a211fe150e803afebccd1623b5e32db28" title="ランダムアーティファクト生成中、対象のオブジェクトを呪いのアーティファクトにする経過処理。/ generation process of cursed artifact." alt="" coords="257,56,357,83"/>
+<area shape="rect" href="random-art-generator_8cpp.html#aa62a1e8b857b47aec053b06dc4eaac53" title=" " alt="" coords="217,157,396,184"/>
+<area shape="rect" href="random-art-generator_8cpp.html#a450dacc800ff540bfc915c5d4c3d3ff5" title=" " alt="" coords="220,1143,393,1169"/>
+<area shape="rect" href="random-art-generator_8cpp.html#a638779c2b21633020a07e53a487aa4b5" title=" " alt="" coords="220,1077,393,1118"/>
+<area shape="rect" href="random-art-generator_8cpp.html#a3c99f1102329ff237322131dbacab93a" title=" " alt="" coords="239,1249,375,1276"/>
+<area shape="rect" href="object-value-calc_8cpp.html#a50a71dd33434317049f92e1f4a3f18dd" title="オブジェクトのフラグ類から価格を算出する / Return the value of the flags the object has..." alt="" coords="269,233,344,260"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae3366ce62b9cdd818cac97f460bcb040" title=" " alt="" coords="241,678,373,719"/>
+<area shape="rect" href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537" title="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour" alt="" coords="710,832,831,859"/>
+<area shape="rect" href="random-art-activation_8cpp.html#a3b30fd6bff34fedb84da90dc8494ad7f" title="ランダムアーティファクト生成中、対象のオブジェクトにバイアスに依存した発動を与える。/ Add one activaton of randam artifact depend on bias." alt="" coords="233,1557,380,1584"/>
+<area shape="rect" href="random-art-characteristics_8cpp.html#a3f36c428ea3338d804a93f7030e40e94" title=" " alt="" coords="217,461,396,488"/>
+<area shape="rect" href="random-art-generator_8cpp.html#af3bb4d9fcbd68f6c12f4f2e9fe847705" title="防具のAC修正が高すぎた場合に弱化させる" alt="" coords="225,766,389,807"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ade524ee005c4ca22985476c2f0e3f301" title="防具ならばAC修正、武具なら殺戮修正を付与する" alt="" coords="461,883,621,925"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="255,1025,358,1052"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ad983f04406c1a8c749f9b5be03069fc3" title=" " alt="" coords="241,1609,372,1650"/>
+<area shape="rect" href="random-art-generator_8cpp.html#a6b930cc060445030fcc0cc8856f5c0f4" title=" " alt="" coords="251,1675,363,1701"/>
+<area shape="rect" href="random-art-generator_8cpp.html#a9853c171174df70f4c84704660825821" title="ランダムアーティファクトの生成 / Artifact code" alt="" coords="242,537,371,564"/>
+<area shape="rect" href="random-art-characteristics_8cpp.html#aabdb9319fe14e9e94419396b9d1f2b38" title=" " alt="" coords="476,5,607,32"/>
+<area shape="rect" href="random-art-characteristics_8cpp.html#a2811c8230d9ea85b61c58a0401c0421b" title=" " alt="" coords="484,56,599,83"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="481,107,601,133"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a3abbd26c216ede60fb3c6e8d519cc7c6" title="オブジェクトが武器や矢弾として使用できるかを返す / Check if an object is weapon (including bows and ammo) Rare weapons/aromor..." alt="" coords="687,1101,855,1128"/>
+<area shape="rect" href="random-art-generator_8cpp.html#a7c88fcb9b17ee7c9a50756845fa988fc" title=" " alt="" coords="483,1304,600,1331"/>
+<area shape="rect" href="artifact-info_8cpp.html#a545193ad600698cdfc665e311beee97c" title="オブジェクトから発動効果構造体のポインタを取得する。" alt="" coords="476,208,607,235"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="929,208,1031,235"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="903,259,1057,285"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="725,335,816,361"/>
+<area shape="rect" href="artifact-info_8cpp.html#a937fce3b10509fe08c9881591860d553" title="オブジェクトから能力発動IDを取得する。" alt="" coords="713,208,828,235"/>
+<area shape="rect" href="wizard-messages_8cpp.html#ac7bcb3c013f80e2b3c78401e7ccb3968" title=" " alt="" coords="703,537,838,564"/>
+<area shape="rect" href="random-art-generator_8cpp.html#afcf25233afaf28cc2edbf1a4ed1cf188" title=" " alt="" coords="459,715,623,757"/>
+<area shape="rect" href="quarks_8cpp.html#a6fada8d9acfd20a42a8a9887484a1802" title=" " alt="" coords="729,693,812,720"/>
+<area shape="rect" href="random-art-activation_8cpp.html#a395ed36ea293cad3b193bb86f524365b" title=" " alt="" coords="462,1557,621,1584"/>
+<area shape="rect" href="random-art-activation_8cpp.html#acaf1092ba4e7472b91a4969ba8ae2b42" title=" " alt="" coords="468,1608,615,1635"/>
+<area shape="rect" href="random-art-activation_8cpp.html#a1b8a20f136c606db242a35d17244db81" title=" " alt="" coords="468,1659,615,1685"/>
+<area shape="rect" href="random-art-activation_8cpp.html#ac5fa517d47a19ce4f7747c8f60048b9f" title=" " alt="" coords="471,1709,611,1736"/>
+<area shape="rect" href="random-art-activation_8cpp.html#a6c64b0e913b01f52034fa2b84ad22ea1" title=" " alt="" coords="470,1760,613,1787"/>
+<area shape="rect" href="random-art-activation_8cpp.html#aa3f67f8f2e97a3e9a7de6198cba355ec" title=" " alt="" coords="464,1811,619,1837"/>
+<area shape="rect" href="random-art-activation_8cpp.html#ab3a52cb889f4ec8cab0b8086072d9c08" title=" " alt="" coords="444,1861,639,1888"/>
+<area shape="rect" href="random-art-activation_8cpp.html#a71183d28c12e059d792c7a0ba3f5da76" title=" " alt="" coords="464,1912,619,1939"/>
+<area shape="rect" href="random-art-activation_8cpp.html#a78192b09dd591c1ab2ad7f3060326eae" title=" " alt="" coords="462,1355,621,1381"/>
+<area shape="rect" href="random-art-activation_8cpp.html#a02480972e3c11194ee4c93f16eadab30" title=" " alt="" coords="464,1405,619,1432"/>
+<area shape="rect" href="random-art-activation_8cpp.html#a089c27666eb656938389fe36578941bf" title=" " alt="" coords="461,1456,622,1483"/>
+<area shape="rect" href="object-boost_8cpp.html#a269c4fe143b21f650e450f5ca2563ea6" title="対象のオブジェクトに発動を一つ付加する。/ Choose one random activation" alt="" coords="489,1507,593,1533"/>
+<area shape="rect" href="random-art-characteristics_8cpp.html#a7a105399d3076e794ce3bbd51752b0b8" title=" " alt="" coords="468,461,615,488"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="502,1101,581,1128"/>
+<area shape="rect" href="random-art-misc_8cpp.html#a65c1614ea205865bd67c8172e68a98ab" title="ランダムアーティファクト生成中、対象のオブジェクトにその他特性を付加する。/ Add one misc flag on generation of randam artifact." alt="" coords="491,949,591,976"/>
+<area shape="rect" href="random-art-pval-investor_8cpp.html#a14dadcde1cc42ccf57f0cd5992b5a919" title="ランダムアーティファクト生成中、対象のオブジェクトにpval能力を付加する。/ Add one pval on generation of randam artifact." alt="" coords="493,1203,589,1229"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="475,1152,607,1179"/>
+<area shape="rect" href="random-art-slay_8cpp.html#abc28ad52fe145d45501b621d73a1745c" title="ランダムアーティファクト生成中、対象のオブジェクトにスレイ効果を付加する。/ Add one slaying on generation of randam artifact." alt="" coords="493,1051,589,1077"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="509,512,573,539"/>
+<area shape="rect" href="object-kind-hook_8cpp.html#a24f8a2426e4fc5128654ec26033312ab" title="tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the object_kind with the given tval and sval" alt="" coords="496,563,587,589"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_acb52d39747a1ce3ca1745b3fbe78ff72_icgraph.png" border="0" usemap="#arandom-art-generator_8cpp_acb52d39747a1ce3ca1745b3fbe78ff72_icgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_acb52d39747a1ce3ca1745b3fbe78ff72_icgraph" id="arandom-art-generator_8cpp_acb52d39747a1ce3ca1745b3fbe78ff72_icgraph">
+<area shape="rect" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="577,487,741,513"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="367,360,529,387"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="37,765,145,792"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="381,411,515,437"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="379,461,517,488"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="375,512,521,539"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="399,613,497,640"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="224,411,319,437"/>
+<area shape="rect" href="spells-object_8cpp.html#ab57eadbdf0c4a98fa5ed43800743e2e9" title="誰得ドロップを行う。" alt="" coords="45,5,136,32"/>
+<area shape="rect" href="mind-archer_8cpp.html#a5c7ac014262f5236c69ea18c406fee25" title="「弾/矢の製造」処理 / do_cmd_cast calls this function if the player&#39;s class is &#39;archer&#39;." alt="" coords="40,56,141,83"/>
+<area shape="rect" href="inventory-initializer_8cpp.html#ae23e47e554ecbcd0152fb87ba8638f88" title=" " alt="" coords="23,107,159,133"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#a3bd34825cd5d9e92c7474a31576ac7c0" title="願ったが消えてしまった場合のメッセージ" alt="" coords="31,157,150,184"/>
+<area shape="rect" href="monster-death_8cpp.html#aea0de54fa5a454fe0ffe114223355316" title=" " alt="" coords="44,208,137,235"/>
+<area shape="rect" href="monster-death_8cpp.html#a6ad70c6340e25c826a90a7d1c0804175" title=" " alt="" coords="44,259,137,285"/>
+<area shape="rect" href="bounty_8cpp.html#a6aa3c9347a136a6ff64e84d0dd306057" title="賞金首の引き換え処理 / Get prize" alt="" coords="34,309,147,336"/>
+<area shape="rect" href="floor-object_8cpp.html#adbba66fa3bc17cfd4ebeff0ee923a304" title="生成階に応じたベースアイテムの生成を行う。 Attempt to make an object (normal or good/great)" alt="" coords="43,360,139,387"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a9ae29bdeb891416b7ebcc0928120f940" title=" " alt="" coords="21,411,160,437"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#aeab5aaf4660ee8ea5c91b6c49d3c1a6a" title=" " alt="" coords="22,461,159,488"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a86ca898ccdc86d14979a1311bb8878d0" title=" " alt="" coords="30,512,151,539"/>
+<area shape="rect" href="monster-death_8cpp.html#a630cf8a7d0a3e31b96992334c0220b24" title=" " alt="" coords="5,563,176,589"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#a3ded96400ca064dccf4124b59f3b0588" title=" " alt="" coords="42,613,139,640"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="43,664,138,691"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a3a8736b020ffd037a5337cdebed86b88" title="任意のベースアイテム生成のメインルーチン / Wizard routine for creating objects &#45;RAK&#45;" alt="" coords="33,715,149,741"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa62a1e8b857b47aec053b06dc4eaac53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa62a1e8b857b47aec053b06dc4eaac53">&#9670;&nbsp;</a></span>decide_random_art_cursed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> decide_random_art_cursed </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>a_scroll</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_aa62a1e8b857b47aec053b06dc4eaac53_cgraph.png" border="0" usemap="#arandom-art-generator_8cpp_aa62a1e8b857b47aec053b06dc4eaac53_cgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_aa62a1e8b857b47aec053b06dc4eaac53_cgraph" id="arandom-art-generator_8cpp_aa62a1e8b857b47aec053b06dc4eaac53_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,184,32"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="232,5,352,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_aa62a1e8b857b47aec053b06dc4eaac53_icgraph.png" border="0" usemap="#arandom-art-generator_8cpp_aa62a1e8b857b47aec053b06dc4eaac53_icgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_aa62a1e8b857b47aec053b06dc4eaac53_icgraph" id="arandom-art-generator_8cpp_aa62a1e8b857b47aec053b06dc4eaac53_icgraph">
+<area shape="rect" title=" " alt="" coords="727,132,905,159"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="515,132,679,159"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="304,5,467,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="5,157,113,184"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="318,56,453,83"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="316,107,455,133"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="312,157,459,184"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="336,259,435,285"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="161,107,256,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a450dacc800ff540bfc915c5d4c3d3ff5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a450dacc800ff540bfc915c5d4c3d3ff5">&#9670;&nbsp;</a></span>decide_random_art_power()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int decide_random_art_power </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>a_cursed</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_a450dacc800ff540bfc915c5d4c3d3ff5_icgraph.png" border="0" usemap="#arandom-art-generator_8cpp_a450dacc800ff540bfc915c5d4c3d3ff5_icgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_a450dacc800ff540bfc915c5d4c3d3ff5_icgraph" id="arandom-art-generator_8cpp_a450dacc800ff540bfc915c5d4c3d3ff5_icgraph">
+<area shape="rect" title=" " alt="" coords="727,132,900,159"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="515,132,679,159"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="304,5,467,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="5,157,113,184"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="318,56,453,83"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="316,107,455,133"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="312,157,459,184"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="336,259,435,285"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="161,107,256,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a638779c2b21633020a07e53a487aa4b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a638779c2b21633020a07e53a487aa4b5">&#9670;&nbsp;</a></span>decide_random_art_power_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int decide_random_art_power_level </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>a_cursed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>total_flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_a638779c2b21633020a07e53a487aa4b5_cgraph.png" border="0" usemap="#arandom-art-generator_8cpp_a638779c2b21633020a07e53a487aa4b5_cgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_a638779c2b21633020a07e53a487aa4b5_cgraph" id="arandom-art-generator_8cpp_a638779c2b21633020a07e53a487aa4b5_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,179,47"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a3abbd26c216ede60fb3c6e8d519cc7c6" title="オブジェクトが武器や矢弾として使用できるかを返す / Check if an object is weapon (including bows and ammo) Rare weapons/aromor..." alt="" coords="227,13,395,39"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_a638779c2b21633020a07e53a487aa4b5_icgraph.png" border="0" usemap="#arandom-art-generator_8cpp_a638779c2b21633020a07e53a487aa4b5_icgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_a638779c2b21633020a07e53a487aa4b5_icgraph" id="arandom-art-generator_8cpp_a638779c2b21633020a07e53a487aa4b5_icgraph">
+<area shape="rect" title=" " alt="" coords="727,125,900,166"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="515,132,679,159"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="304,5,467,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="5,157,113,184"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="318,56,453,83"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="316,107,455,133"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="312,157,459,184"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="336,259,435,285"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="161,107,256,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3c99f1102329ff237322131dbacab93a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c99f1102329ff237322131dbacab93a">&#9670;&nbsp;</a></span>decide_warrior_bias()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void decide_warrior_bias </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>a_scroll</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_a3c99f1102329ff237322131dbacab93a_cgraph.png" border="0" usemap="#arandom-art-generator_8cpp_a3c99f1102329ff237322131dbacab93a_cgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_a3c99f1102329ff237322131dbacab93a_cgraph" id="arandom-art-generator_8cpp_a3c99f1102329ff237322131dbacab93a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,141,32"/>
+<area shape="rect" href="random-art-generator_8cpp.html#a7c88fcb9b17ee7c9a50756845fa988fc" title=" " alt="" coords="189,5,307,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_a3c99f1102329ff237322131dbacab93a_icgraph.png" border="0" usemap="#arandom-art-generator_8cpp_a3c99f1102329ff237322131dbacab93a_icgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_a3c99f1102329ff237322131dbacab93a_icgraph" id="arandom-art-generator_8cpp_a3c99f1102329ff237322131dbacab93a_icgraph">
+<area shape="rect" title=" " alt="" coords="727,132,863,159"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="515,132,679,159"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="304,5,467,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="5,157,113,184"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="318,56,453,83"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="316,107,455,133"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="312,157,459,184"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="336,259,435,285"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="161,107,256,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae3366ce62b9cdd818cac97f460bcb040"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3366ce62b9cdd818cac97f460bcb040">&#9670;&nbsp;</a></span>generate_unnatural_random_artifact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void generate_unnatural_random_artifact </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>a_scroll</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>power_level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>max_powers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>total_flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_ae3366ce62b9cdd818cac97f460bcb040_cgraph.png" border="0" usemap="#arandom-art-generator_8cpp_ae3366ce62b9cdd818cac97f460bcb040_cgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_ae3366ce62b9cdd818cac97f460bcb040_cgraph" id="arandom-art-generator_8cpp_ae3366ce62b9cdd818cac97f460bcb040_cgraph">
+<area shape="rect" title=" " alt="" coords="5,327,137,369"/>
+<area shape="rect" href="wizard-messages_8cpp.html#ac7bcb3c013f80e2b3c78401e7ccb3968" title=" " alt="" coords="200,56,335,83"/>
+<area shape="rect" href="random-art-generator_8cpp.html#afcf25233afaf28cc2edbf1a4ed1cf188" title=" " alt="" coords="185,327,349,369"/>
+<area shape="rect" href="quarks_8cpp.html#a6fada8d9acfd20a42a8a9887484a1802" title=" " alt="" coords="421,563,503,589"/>
+<area shape="rect" href="wizard-messages_8cpp.html#a834c486f88fc21479dfb3532191cc06d" title=" " alt="" coords="401,56,523,83"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="429,5,495,32"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="602,81,714,108"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="619,132,697,159"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="422,208,502,235"/>
+<area shape="rect" href="random-art-characteristics_8cpp.html#aebc9c86c39aec9a4871c1e9ce23cce71" title="ランダムアーティファクト生成中、対象のオブジェクトに名前を与える。/ Set name of randomartifact." alt="" coords="397,360,527,387"/>
+<area shape="rect" href="object-flavor_8cpp.html#a3b860a2b9405fc7bc850745454f670c8" title="各種語彙からランダムな名前を作成する / Create a name from random parts." alt="" coords="795,284,938,311"/>
+<area shape="rect" href="object-flavor_8cpp.html#a8584e51c4707fc47051f9c273b20ea7b" title="ランダムなシンダリン銘を作成する / Make random Sindarin name" alt="" coords="789,436,944,463"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="423,259,501,285"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f7ad5a9cb44932d39bbf0c31a37c946" title="オブジェクトを＊鑑定＊済にする / The player is now aware of the effects of the given object." alt="" coords="413,107,511,133"/>
+<area shape="rect" href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537" title="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour" alt="" coords="401,461,523,488"/>
+<area shape="rect" href="object-perception_8cpp.html#a7d25977942886a0b3043ce3c468cf08c" title="オブジェクトを鑑定済にする / Known is true when the &quot;attributes&quot; of an object are &quot;known&quot;." alt="" coords="411,512,513,539"/>
+<area shape="rect" href="identification_8cpp.html#a055287a06fa0fbaee3ce11ef22031084" title="オブジェクトの*鑑定*内容を詳述して表示する / Describe a &quot;fully identified&quot; item" alt="" coords="411,157,513,184"/>
+<area shape="rect" href="random-art-characteristics_8cpp.html#ad839088620d202fb19fce69eec2a2c8f" title="ランダムアーティファクトの名前リストをオブジェクト種別と生成パワーに応じて選択する" alt="" coords="575,335,741,361"/>
+<area shape="rect" href="files-util_8cpp.html#a06656f06eccb3992114a0f3dd1f51ca1" title="ファイルからランダムに行を一つ取得する / Get a random line from a file" alt="" coords="992,385,1084,412"/>
+<area shape="rect" href="object-flavor_8cpp.html#ac2ef82ebba29d759daaafa97d837713a" title="ランダムな名前をアーティファクト銘として整形する。 / Create a name from random parts with quotes." alt="" coords="601,284,715,311"/>
+<area shape="rect" href="object-flavor_8cpp.html#ad7f12ad1173f73362f0e225ca7fb5d55" title="シンダリン銘をアーティファクト用に整形する。 / Make random Sindarin name with quotes" alt="" coords="595,436,721,463"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_ae3366ce62b9cdd818cac97f460bcb040_icgraph.png" border="0" usemap="#arandom-art-generator_8cpp_ae3366ce62b9cdd818cac97f460bcb040_icgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_ae3366ce62b9cdd818cac97f460bcb040_icgraph" id="arandom-art-generator_8cpp_ae3366ce62b9cdd818cac97f460bcb040_icgraph">
+<area shape="rect" title=" " alt="" coords="727,125,859,166"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="515,132,679,159"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="304,5,467,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="5,157,113,184"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="318,56,453,83"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="316,107,455,133"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="312,157,459,184"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="336,259,435,285"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="161,107,256,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af3bb4d9fcbd68f6c12f4f2e9fe847705"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3bb4d9fcbd68f6c12f4f2e9fe847705">&#9670;&nbsp;</a></span>invest_negative_modified_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void invest_negative_modified_value </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>防具のAC修正が高すぎた場合に弱化させる </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">o_ptr</td><td>ランダムアーティファクトを示すアイテムへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_af3bb4d9fcbd68f6c12f4f2e9fe847705_cgraph.png" border="0" usemap="#arandom-art-generator_8cpp_af3bb4d9fcbd68f6c12f4f2e9fe847705_cgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_af3bb4d9fcbd68f6c12f4f2e9fe847705_cgraph" id="arandom-art-generator_8cpp_af3bb4d9fcbd68f6c12f4f2e9fe847705_cgraph">
+<area shape="rect" title="防具のAC修正が高すぎた場合に弱化させる" alt="" coords="5,5,169,47"/>
+<area shape="rect" href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537" title="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour" alt="" coords="217,13,339,39"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_af3bb4d9fcbd68f6c12f4f2e9fe847705_icgraph.png" border="0" usemap="#arandom-art-generator_8cpp_af3bb4d9fcbd68f6c12f4f2e9fe847705_icgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_af3bb4d9fcbd68f6c12f4f2e9fe847705_icgraph" id="arandom-art-generator_8cpp_af3bb4d9fcbd68f6c12f4f2e9fe847705_icgraph">
+<area shape="rect" title="防具のAC修正が高すぎた場合に弱化させる" alt="" coords="727,125,891,166"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="515,132,679,159"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="304,5,467,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="5,157,113,184"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="318,56,453,83"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="316,107,455,133"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="312,157,459,184"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="336,259,435,285"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="161,107,256,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ade524ee005c4ca22985476c2f0e3f301"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade524ee005c4ca22985476c2f0e3f301">&#9670;&nbsp;</a></span>invest_positive_modified_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void invest_positive_modified_value </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>防具ならばAC修正、武具なら殺戮修正を付与する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">o_ptr</td><td>ランダムアーティファクトを示すアイテムへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_ade524ee005c4ca22985476c2f0e3f301_cgraph.png" border="0" usemap="#arandom-art-generator_8cpp_ade524ee005c4ca22985476c2f0e3f301_cgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_ade524ee005c4ca22985476c2f0e3f301_cgraph" id="arandom-art-generator_8cpp_ade524ee005c4ca22985476c2f0e3f301_cgraph">
+<area shape="rect" title="防具ならばAC修正、武具なら殺戮修正を付与する" alt="" coords="5,23,165,65"/>
+<area shape="rect" href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537" title="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour" alt="" coords="237,5,358,32"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a3abbd26c216ede60fb3c6e8d519cc7c6" title="オブジェクトが武器や矢弾として使用できるかを返す / Check if an object is weapon (including bows and ammo) Rare weapons/aromor..." alt="" coords="213,56,381,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_ade524ee005c4ca22985476c2f0e3f301_icgraph.png" border="0" usemap="#arandom-art-generator_8cpp_ade524ee005c4ca22985476c2f0e3f301_icgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_ade524ee005c4ca22985476c2f0e3f301_icgraph" id="arandom-art-generator_8cpp_ade524ee005c4ca22985476c2f0e3f301_icgraph">
+<area shape="rect" title="防具ならばAC修正、武具なら殺戮修正を付与する" alt="" coords="727,125,887,166"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="515,132,679,159"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="304,5,467,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="5,157,113,184"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="318,56,453,83"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="316,107,455,133"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="312,157,459,184"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="336,259,435,285"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="161,107,256,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae4850d68a618eedf8e66ff48ec9a2bfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4850d68a618eedf8e66ff48ec9a2bfc">&#9670;&nbsp;</a></span>invest_powers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void invest_powers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>powers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> *&#160;</td>
+          <td class="paramname"><em>has_pval</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>a_cursed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_ae4850d68a618eedf8e66ff48ec9a2bfc_cgraph.png" border="0" usemap="#arandom-art-generator_8cpp_ae4850d68a618eedf8e66ff48ec9a2bfc_cgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_ae4850d68a618eedf8e66ff48ec9a2bfc_cgraph" id="arandom-art-generator_8cpp_ae4850d68a618eedf8e66ff48ec9a2bfc_cgraph">
+<area shape="rect" title=" " alt="" coords="5,588,108,615"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="183,309,261,336"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a3abbd26c216ede60fb3c6e8d519cc7c6" title="オブジェクトが武器や矢弾として使用できるかを返す / Check if an object is weapon (including bows and ammo) Rare weapons/aromor..." alt="" coords="361,461,529,488"/>
+<area shape="rect" href="random-art-misc_8cpp.html#a65c1614ea205865bd67c8172e68a98ab" title="ランダムアーティファクト生成中、対象のオブジェクトにその他特性を付加する。/ Add one misc flag on generation of randam artifact." alt="" coords="172,689,272,716"/>
+<area shape="rect" href="random-art-pval-investor_8cpp.html#a14dadcde1cc42ccf57f0cd5992b5a919" title="ランダムアーティファクト生成中、対象のオブジェクトにpval能力を付加する。/ Add one pval on generation of randam artifact." alt="" coords="174,537,270,564"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="156,1069,288,1096"/>
+<area shape="rect" href="random-art-slay_8cpp.html#abc28ad52fe145d45501b621d73a1745c" title="ランダムアーティファクト生成中、対象のオブジェクトにスレイ効果を付加する。/ Add one slaying on generation of randam artifact." alt="" coords="174,1373,270,1400"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="393,56,496,83"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="404,259,485,285"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="658,309,745,336"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="657,360,745,387"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="642,107,761,133"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="397,411,492,437"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="648,56,755,83"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="676,5,727,32"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="680,259,723,285"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="675,157,728,184"/>
+<area shape="rect" href="display-messages_8cpp.html#a8647d1d8cbef5e4db465563838dd2b87" title=" " alt="" coords="623,208,779,235"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="849,183,932,209"/>
+<area shape="rect" href="random-art-misc_8cpp.html#a28a92d1b28368eade13be7aef82723c5" title=" " alt="" coords="373,765,516,792"/>
+<area shape="rect" href="random-art-misc_8cpp.html#a72692b8b11f21f85732e1b78b69ccbe3" title=" " alt="" coords="366,816,523,843"/>
+<area shape="rect" href="random-art-misc_8cpp.html#a8ea0541ccb38f37574320fcbcf0da555" title=" " alt="" coords="363,613,526,640"/>
+<area shape="rect" href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537" title="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour" alt="" coords="384,664,505,691"/>
+<area shape="rect" href="random-art-misc_8cpp.html#a20d3409ebad2889b89b20a74a085a745" title="アーティファクトのバイアス値に基づいて特性を付与する" alt="" coords="382,715,507,741"/>
+<area shape="rect" href="random-art-misc_8cpp.html#a03b1cb70fbbae81e68f76990eea88908" title=" " alt="" coords="601,588,801,615"/>
+<area shape="rect" href="random-art-misc_8cpp.html#a65a9516542840f98c2fbefb1f15e8d1b" title=" " alt="" coords="635,791,767,817"/>
+<area shape="rect" href="random-art-misc_8cpp.html#a17da7c5a2871f076303fad4e44a55f73" title=" " alt="" coords="626,841,777,868"/>
+<area shape="rect" href="random-art-misc_8cpp.html#ad81d0d98d0443339a7b0d64debeba7af" title=" " alt="" coords="619,892,783,919"/>
+<area shape="rect" href="random-art-misc_8cpp.html#a30379cc07e49b2c91a169e93312bb1c1" title=" " alt="" coords="628,943,775,969"/>
+<area shape="rect" href="random-art-misc_8cpp.html#a514fd2d676f141e6f410ada29a586800" title=" " alt="" coords="620,993,783,1020"/>
+<area shape="rect" href="random-art-misc_8cpp.html#a1e16cbfc89734325da4dda9af26df261" title=" " alt="" coords="635,639,768,665"/>
+<area shape="rect" href="random-art-misc_8cpp.html#a07329cc6caedd73c57426d7372b6903b" title=" " alt="" coords="629,689,773,716"/>
+<area shape="rect" href="random-art-misc_8cpp.html#a2664f5d100bf25710cefe0f9421dd77e" title=" " alt="" coords="631,740,772,767"/>
+<area shape="rect" href="random-art-pval-investor_8cpp.html#a47bf0aa71642f64ec5e5d6a95a3f682d" title=" " alt="" coords="336,512,553,539"/>
+<area shape="rect" href="random-art-pval-investor_8cpp.html#afa76ffe655489598e07efe38500c4777" title=" " alt="" coords="363,563,526,589"/>
+<area shape="rect" href="random-art-pval-investor_8cpp.html#ad6287c2d460f1484ea9b5d65be44a6a3" title=" " alt="" coords="612,436,791,463"/>
+<area shape="rect" href="random-art-pval-investor_8cpp.html#a34d7b892545c13675507a7c5778408eb" title=" " alt="" coords="605,487,797,513"/>
+<area shape="rect" href="random-art-pval-investor_8cpp.html#a62d63868ca9896cbb5ba0bcc63ea1400" title=" " alt="" coords="614,537,789,564"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a131bc7308805bc74d98efa65fbb2564a" title=" " alt="" coords="393,1272,496,1299"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="375,1323,514,1349"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="359,867,530,893"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="359,917,530,944"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="363,968,527,995"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="375,1019,514,1045"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="375,1069,514,1096"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="379,1120,511,1147"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="361,1171,528,1197"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="345,1221,544,1248"/>
+<area shape="rect" href="random-art-slay_8cpp.html#aaecb4e2e93f07e5a134d49e89b6ac213" title=" " alt="" coords="371,1373,519,1400"/>
+<area shape="rect" href="random-art-slay_8cpp.html#aa07c93a17f7aeb3e69f830e514ccabe0" title=" " alt="" coords="363,1424,526,1451"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_ae4850d68a618eedf8e66ff48ec9a2bfc_icgraph.png" border="0" usemap="#arandom-art-generator_8cpp_ae4850d68a618eedf8e66ff48ec9a2bfc_icgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_ae4850d68a618eedf8e66ff48ec9a2bfc_icgraph" id="arandom-art-generator_8cpp_ae4850d68a618eedf8e66ff48ec9a2bfc_icgraph">
+<area shape="rect" title=" " alt="" coords="727,132,829,159"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="515,132,679,159"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="304,5,467,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="5,157,113,184"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="318,56,453,83"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="316,107,455,133"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="312,157,459,184"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="336,259,435,285"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="161,107,256,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afcf25233afaf28cc2edbf1a4ed1cf188"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcf25233afaf28cc2edbf1a4ed1cf188">&#9670;&nbsp;</a></span>name_unnatural_random_artifact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void name_unnatural_random_artifact </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>a_scroll</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>power_level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> *&#160;</td>
+          <td class="paramname"><em>new_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_afcf25233afaf28cc2edbf1a4ed1cf188_cgraph.png" border="0" usemap="#arandom-art-generator_8cpp_afcf25233afaf28cc2edbf1a4ed1cf188_cgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_afcf25233afaf28cc2edbf1a4ed1cf188_cgraph" id="arandom-art-generator_8cpp_afcf25233afaf28cc2edbf1a4ed1cf188_cgraph">
+<area shape="rect" title=" " alt="" coords="5,378,169,419"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="242,5,322,32"/>
+<area shape="rect" href="random-art-characteristics_8cpp.html#aebc9c86c39aec9a4871c1e9ce23cce71" title="ランダムアーティファクト生成中、対象のオブジェクトに名前を与える。/ Set name of randomartifact." alt="" coords="217,208,347,235"/>
+<area shape="rect" href="object-flavor_8cpp.html#a3b860a2b9405fc7bc850745454f670c8" title="各種語彙からランダムな名前を作成する / Create a name from random parts." alt="" coords="615,107,758,133"/>
+<area shape="rect" href="object-flavor_8cpp.html#a8584e51c4707fc47051f9c273b20ea7b" title="ランダムなシンダリン銘を作成する / Make random Sindarin name" alt="" coords="609,259,764,285"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="243,360,321,387"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f7ad5a9cb44932d39bbf0c31a37c946" title="オブジェクトを＊鑑定＊済にする / The player is now aware of the effects of the given object." alt="" coords="233,411,331,437"/>
+<area shape="rect" href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537" title="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour" alt="" coords="221,461,343,488"/>
+<area shape="rect" href="object-perception_8cpp.html#a7d25977942886a0b3043ce3c468cf08c" title="オブジェクトを鑑定済にする / Known is true when the &quot;attributes&quot; of an object are &quot;known&quot;." alt="" coords="231,512,333,539"/>
+<area shape="rect" href="quarks_8cpp.html#a6fada8d9acfd20a42a8a9887484a1802" title=" " alt="" coords="241,563,323,589"/>
+<area shape="rect" href="identification_8cpp.html#a055287a06fa0fbaee3ce11ef22031084" title="オブジェクトの*鑑定*内容を詳述して表示する / Describe a &quot;fully identified&quot; item" alt="" coords="231,613,333,640"/>
+<area shape="rect" href="random-art-characteristics_8cpp.html#ad839088620d202fb19fce69eec2a2c8f" title="ランダムアーティファクトの名前リストをオブジェクト種別と生成パワーに応じて選択する" alt="" coords="395,157,561,184"/>
+<area shape="rect" href="files-util_8cpp.html#a06656f06eccb3992114a0f3dd1f51ca1" title="ファイルからランダムに行を一つ取得する / Get a random line from a file" alt="" coords="812,208,904,235"/>
+<area shape="rect" href="object-flavor_8cpp.html#ac2ef82ebba29d759daaafa97d837713a" title="ランダムな名前をアーティファクト銘として整形する。 / Create a name from random parts with quotes." alt="" coords="421,107,535,133"/>
+<area shape="rect" href="object-flavor_8cpp.html#ad7f12ad1173f73362f0e225ca7fb5d55" title="シンダリン銘をアーティファクト用に整形する。 / Make random Sindarin name with quotes" alt="" coords="415,259,541,285"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="952,107,1064,133"/>
+<area shape="rect" href="angband-files_8cpp.html#af8478ae9202a347c7b95688842ff7633" title=" " alt="" coords="955,157,1061,184"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="953,208,1063,235"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="963,259,1053,285"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="967,309,1049,336"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_afcf25233afaf28cc2edbf1a4ed1cf188_icgraph.png" border="0" usemap="#arandom-art-generator_8cpp_afcf25233afaf28cc2edbf1a4ed1cf188_icgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_afcf25233afaf28cc2edbf1a4ed1cf188_icgraph" id="arandom-art-generator_8cpp_afcf25233afaf28cc2edbf1a4ed1cf188_icgraph">
+<area shape="rect" title=" " alt="" coords="608,125,772,166"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae3366ce62b9cdd818cac97f460bcb040" title=" " alt="" coords="428,125,560,166"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="216,132,380,159"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="5,5,168,32"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="19,56,154,83"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="17,107,156,133"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="13,157,160,184"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="37,208,136,235"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="33,259,141,285"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad983f04406c1a8c749f9b5be03069fc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad983f04406c1a8c749f9b5be03069fc3">&#9670;&nbsp;</a></span>reset_flags_poison_needle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void reset_flags_poison_needle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_ad983f04406c1a8c749f9b5be03069fc3_icgraph.png" border="0" usemap="#arandom-art-generator_8cpp_ad983f04406c1a8c749f9b5be03069fc3_icgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_ad983f04406c1a8c749f9b5be03069fc3_icgraph" id="arandom-art-generator_8cpp_ad983f04406c1a8c749f9b5be03069fc3_icgraph">
+<area shape="rect" title=" " alt="" coords="727,125,857,166"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="515,132,679,159"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="304,5,467,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="5,157,113,184"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="318,56,453,83"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="316,107,455,133"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="312,157,459,184"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="336,259,435,285"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="161,107,256,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7c88fcb9b17ee7c9a50756845fa988fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c88fcb9b17ee7c9a50756845fa988fc">&#9670;&nbsp;</a></span>set_artifact_bias()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_artifact_bias </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>warrior_artifact_bias</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_a7c88fcb9b17ee7c9a50756845fa988fc_icgraph.png" border="0" usemap="#arandom-art-generator_8cpp_a7c88fcb9b17ee7c9a50756845fa988fc_icgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_a7c88fcb9b17ee7c9a50756845fa988fc_icgraph" id="arandom-art-generator_8cpp_a7c88fcb9b17ee7c9a50756845fa988fc_icgraph">
+<area shape="rect" title=" " alt="" coords="612,132,729,159"/>
+<area shape="rect" href="random-art-generator_8cpp.html#a3c99f1102329ff237322131dbacab93a" title=" " alt="" coords="428,132,564,159"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="216,132,380,159"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="5,5,168,32"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="19,56,154,83"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="17,107,156,133"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="13,157,160,184"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="37,208,136,235"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="33,259,141,285"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6b930cc060445030fcc0cc8856f5c0f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b930cc060445030fcc0cc8856f5c0f4">&#9670;&nbsp;</a></span>strengthen_pval()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void strengthen_pval </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_a6b930cc060445030fcc0cc8856f5c0f4_icgraph.png" border="0" usemap="#arandom-art-generator_8cpp_a6b930cc060445030fcc0cc8856f5c0f4_icgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_a6b930cc060445030fcc0cc8856f5c0f4_icgraph" id="arandom-art-generator_8cpp_a6b930cc060445030fcc0cc8856f5c0f4_icgraph">
+<area shape="rect" title=" " alt="" coords="727,132,839,159"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="515,132,679,159"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="304,5,467,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="5,157,113,184"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="318,56,453,83"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="316,107,455,133"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="312,157,459,184"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="336,259,435,285"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="161,107,256,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9853c171174df70f4c84704660825821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9853c171174df70f4c84704660825821">&#9670;&nbsp;</a></span>weakening_artifact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> weakening_artifact </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ランダムアーティファクトの生成 / Artifact code </p>
+<dl class="section date"><dt>日付</dt><dd>2020/07/14 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_a9853c171174df70f4c84704660825821_cgraph.png" border="0" usemap="#arandom-art-generator_8cpp_a9853c171174df70f4c84704660825821_cgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_a9853c171174df70f4c84704660825821_cgraph" id="arandom-art-generator_8cpp_a9853c171174df70f4c84704660825821_cgraph">
+<area shape="rect" title="ランダムアーティファクトの生成 / Artifact code" alt="" coords="5,56,135,83"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="196,5,260,32"/>
+<area shape="rect" href="object-kind-hook_8cpp.html#a24f8a2426e4fc5128654ec26033312ab" title="tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the object_kind with the given tval and sval" alt="" coords="183,56,273,83"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="183,107,273,133"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="347,56,450,83"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="321,107,476,133"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="342,157,455,184"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="524,157,739,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-generator_8cpp_a9853c171174df70f4c84704660825821_icgraph.png" border="0" usemap="#arandom-art-generator_8cpp_a9853c171174df70f4c84704660825821_icgraph" alt=""/></div>
+<map name="arandom-art-generator_8cpp_a9853c171174df70f4c84704660825821_icgraph" id="arandom-art-generator_8cpp_a9853c171174df70f4c84704660825821_icgraph">
+<area shape="rect" title="ランダムアーティファクトの生成 / Artifact code" alt="" coords="727,132,856,159"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="515,132,679,159"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="304,5,467,32"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="5,157,113,184"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="318,56,453,83"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="316,107,455,133"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="312,157,459,184"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="336,259,435,285"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="161,107,256,133"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分00秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

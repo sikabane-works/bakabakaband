@@ -1,0 +1,589 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/cmd-io/cmd-macro.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_4b5d45ee7eedcd4a285a27f1d5022af9.html">cmd-io</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">cmd-macro.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="cmd-macro_8h_source.html">cmd-io/cmd-macro.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-gameoption_8h_source.html">cmd-io/cmd-gameoption.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="macro-util_8h_source.html">cmd-io/macro-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-options_8h_source.html">game-option/input-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="files-util_8h_source.html">io/files-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-requester_8h_source.html">io/input-key-requester.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="read-pref-file_8h_source.html">io/read-pref-file.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-files_8h_source.html">util/angband-files.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="string-processor_8h_source.html">util/string-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+cmd-macro.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-macro_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-io_2cmd-macro_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-io_2cmd-macro_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-io_2cmd-macro_8cpp">
+<area shape="rect" title=" " alt="" coords="1267,5,1455,61"/>
+<area shape="rect" href="cmd-macro_8h.html" title=" " alt="" coords="549,109,690,136"/>
+<area shape="rect" href="cmd-gameoption_8h.html" title=" " alt="" coords="5,109,177,136"/>
+<area shape="rect" href="macro-util_8h.html" title=" " alt="" coords="714,109,847,136"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="871,109,1010,136"/>
+<area shape="rect" href="input-options_8h.html" title=" " alt="" coords="1035,109,1217,136"/>
+<area shape="rect" href="files-util_8h.html" title=" " alt="" coords="1242,109,1333,136"/>
+<area shape="rect" href="input-key-acceptor_8h.html" title=" " alt="" coords="1357,109,1511,136"/>
+<area shape="rect" href="input-key-requester_8h.html" title=" " alt="" coords="1864,109,2023,136"/>
+<area shape="rect" href="read-pref-file_8h.html" title=" " alt="" coords="1535,109,1653,136"/>
+<area shape="rect" href="sound-of-music_8h.html" title=" " alt="" coords="2047,109,2200,136"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="1677,109,1839,136"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="2395,109,2553,136"/>
+<area shape="rect" href="angband-files_8h.html" title=" " alt="" coords="202,109,333,136"/>
+<area shape="rect" href="int-char-converter_8h.html" title=" " alt="" coords="2577,109,2731,136"/>
+<area shape="rect" href="string-processor_8h.html" title=" " alt="" coords="2225,109,2371,136"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="357,109,524,136"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1141,191,1271,218"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="681,273,771,300"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="795,273,886,300"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="910,273,1009,300"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1033,273,1131,300"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="1156,273,1256,300"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1280,273,1455,300"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1479,273,1621,300"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1645,273,1791,300"/>
+<area shape="rect" href="game-option-types_8h.html" title=" " alt="" coords="21,184,161,225"/>
+<area shape="rect" href="keymap-directory-getter_8h.html" title=" " alt="" coords="1872,184,2015,225"/>
+<area shape="rect" title=" " alt="" coords="2119,191,2175,218"/>
+<area shape="rect" title=" " alt="" coords="2247,191,2301,218"/>
+<area shape="rect" title=" " alt="" coords="2326,191,2411,218"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a13b7a62cca2788a9ba9823d41d1e989c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-macro_8cpp.html#a13b7a62cca2788a9ba9823d41d1e989c">macro_dump</a> (FILE **fpp, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> fname)</td></tr>
+<tr class="memdesc:a13b7a62cca2788a9ba9823d41d1e989c"><td class="mdescLeft">&#160;</td><td class="mdescRight">マクロ情報をprefファイルに保存する /  <a href="cmd-macro_8cpp.html#a13b7a62cca2788a9ba9823d41d1e989c">[詳解]</a><br /></td></tr>
+<tr class="separator:a13b7a62cca2788a9ba9823d41d1e989c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88c8fc0fa9dc5204fcedf35b82ec09ce"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-macro_8cpp.html#a88c8fc0fa9dc5204fcedf35b82ec09ce">do_cmd_macro_aux</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:a88c8fc0fa9dc5204fcedf35b82ec09ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">マクロのトリガーキーを取得する / Hack &ndash; ask for a "trigger" (see below)  <a href="cmd-macro_8cpp.html#a88c8fc0fa9dc5204fcedf35b82ec09ce">[詳解]</a><br /></td></tr>
+<tr class="separator:a88c8fc0fa9dc5204fcedf35b82ec09ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8de8ae79a8ddb8d5a4abcf06f8b989e0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-macro_8cpp.html#a8de8ae79a8ddb8d5a4abcf06f8b989e0">do_cmd_macro_aux_keymap</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:a8de8ae79a8ddb8d5a4abcf06f8b989e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">マクロのキー表記からアスキーコードを得てターミナルに表示する / Hack &ndash; ask for a keymap "trigger" (see below)  <a href="cmd-macro_8cpp.html#a8de8ae79a8ddb8d5a4abcf06f8b989e0">[詳解]</a><br /></td></tr>
+<tr class="separator:a8de8ae79a8ddb8d5a4abcf06f8b989e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0452296a6ddd2bfbb5758565f4b55361"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-macro_8cpp.html#a0452296a6ddd2bfbb5758565f4b55361">keymap_dump</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> fname)</td></tr>
+<tr class="memdesc:a0452296a6ddd2bfbb5758565f4b55361"><td class="mdescLeft">&#160;</td><td class="mdescRight">キーマップをprefファイルにダンプする / Hack &ndash; append all keymaps to the given file  <a href="cmd-macro_8cpp.html#a0452296a6ddd2bfbb5758565f4b55361">[詳解]</a><br /></td></tr>
+<tr class="separator:a0452296a6ddd2bfbb5758565f4b55361"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73df5fe8058943d380d6b31f9de15728"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-macro_8cpp.html#a73df5fe8058943d380d6b31f9de15728">do_cmd_macros</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, void(*<a class="el" href="autopick-pref-processor_8h.html#aa31a42830d1eed102ec91a767c3db6e7">process_autopick_file_command</a>)(char *))</td></tr>
+<tr class="memdesc:a73df5fe8058943d380d6b31f9de15728"><td class="mdescLeft">&#160;</td><td class="mdescRight">マクロを設定するコマンドのメインルーチン / Interact with "macros"  <a href="cmd-macro_8cpp.html#a73df5fe8058943d380d6b31f9de15728">[詳解]</a><br /></td></tr>
+<tr class="separator:a73df5fe8058943d380d6b31f9de15728"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a88c8fc0fa9dc5204fcedf35b82ec09ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88c8fc0fa9dc5204fcedf35b82ec09ce">&#9670;&nbsp;</a></span>do_cmd_macro_aux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void do_cmd_macro_aux </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>マクロのトリガーキーを取得する / Hack &ndash; ask for a "trigger" (see below) </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>キー表記を保管するバッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<pre>
+Note the complex use of the "inkey()" function from "util.c".
+
+Note that both "flush()" calls are extremely important.
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-macro_8cpp_a88c8fc0fa9dc5204fcedf35b82ec09ce_cgraph.png" border="0" usemap="#acmd-macro_8cpp_a88c8fc0fa9dc5204fcedf35b82ec09ce_cgraph" alt=""/></div>
+<map name="acmd-macro_8cpp_a88c8fc0fa9dc5204fcedf35b82ec09ce_cgraph" id="acmd-macro_8cpp_a88c8fc0fa9dc5204fcedf35b82ec09ce_cgraph">
+<area shape="rect" title="マクロのトリガーキーを取得する / Hack – ask for a &quot;trigger&quot; (see below)" alt="" coords="5,487,144,513"/>
+<area shape="rect" href="string-processor_8cpp.html#ad986baa174929d7bd1cd78e722420be3" title=" " alt="" coords="192,81,288,108"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="215,461,265,488"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="213,512,267,539"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="195,563,285,589"/>
+<area shape="rect" href="string-processor_8cpp.html#a30bcb33a57e3acb4e69b1f5ace5ddbeb" title=" " alt="" coords="377,5,433,32"/>
+<area shape="rect" href="string-processor_8cpp.html#ab8a3974eb3254a218ae825f56da39fdc" title=" " alt="" coords="379,56,432,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a2c72111e40c3c417f7556f9a4754a982" title=" " alt="" coords="336,107,475,133"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="533,56,643,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a94264f612f38c985e60c62123fd1129d" title=" " alt="" coords="527,107,649,133"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="354,259,457,285"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="539,157,637,184"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="701,385,779,412"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="365,487,446,513"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="545,664,631,691"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="347,588,463,615"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="364,639,447,665"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="347,689,463,716"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="347,740,463,767"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="543,208,633,235"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="547,259,629,285"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="541,309,635,336"/>
+<area shape="rect" href="macro-util_8cpp.html#a1e9851f9b9e0a0e51628a231ca95fcc1" title=" " alt="" coords="525,461,651,488"/>
+<area shape="rect" href="macro-util_8cpp.html#a7f48a1923076b3b314f1bc58913a2a59" title=" " alt="" coords="523,512,653,539"/>
+<area shape="rect" href="macro-util_8cpp.html#ada693de344c97bc09a586100f25919dd" title=" " alt="" coords="526,563,650,589"/>
+<area shape="rect" href="z-term_8cpp.html#a020ef4815c101960b4fdad94c4e5b59b" title=" " alt="" coords="533,613,643,640"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-macro_8cpp_a88c8fc0fa9dc5204fcedf35b82ec09ce_icgraph.png" border="0" usemap="#acmd-macro_8cpp_a88c8fc0fa9dc5204fcedf35b82ec09ce_icgraph" alt=""/></div>
+<map name="acmd-macro_8cpp_a88c8fc0fa9dc5204fcedf35b82ec09ce_icgraph" id="acmd-macro_8cpp_a88c8fc0fa9dc5204fcedf35b82ec09ce_icgraph">
+<area shape="rect" title="マクロのトリガーキーを取得する / Hack – ask for a &quot;trigger&quot; (see below)" alt="" coords="879,5,1017,32"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a73df5fe8058943d380d6b31f9de15728" title="マクロを設定するコマンドのメインルーチン / Interact with &quot;macros&quot;" alt="" coords="712,5,831,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8de8ae79a8ddb8d5a4abcf06f8b989e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8de8ae79a8ddb8d5a4abcf06f8b989e0">&#9670;&nbsp;</a></span>do_cmd_macro_aux_keymap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void do_cmd_macro_aux_keymap </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>マクロのキー表記からアスキーコードを得てターミナルに表示する / Hack &ndash; ask for a keymap "trigger" (see below) </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>キー表記を取得するバッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<pre>
+Note that both "flush()" calls are extremely important.  This may
+no longer be true, since "util.c" is much simpler now.
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-macro_8cpp_a8de8ae79a8ddb8d5a4abcf06f8b989e0_cgraph.png" border="0" usemap="#acmd-macro_8cpp_a8de8ae79a8ddb8d5a4abcf06f8b989e0_cgraph" alt=""/></div>
+<map name="acmd-macro_8cpp_a8de8ae79a8ddb8d5a4abcf06f8b989e0_cgraph" id="acmd-macro_8cpp_a8de8ae79a8ddb8d5a4abcf06f8b989e0_cgraph">
+<area shape="rect" title="マクロのキー表記からアスキーコードを得てターミナルに表示する / Hack – ask for a keymap &quot;trigger&quot; (see below)" alt="" coords="5,487,197,513"/>
+<area shape="rect" href="string-processor_8cpp.html#ad986baa174929d7bd1cd78e722420be3" title=" " alt="" coords="245,81,341,108"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="269,461,318,488"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="267,512,320,539"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="248,563,339,589"/>
+<area shape="rect" href="string-processor_8cpp.html#a30bcb33a57e3acb4e69b1f5ace5ddbeb" title=" " alt="" coords="431,5,487,32"/>
+<area shape="rect" href="string-processor_8cpp.html#ab8a3974eb3254a218ae825f56da39fdc" title=" " alt="" coords="432,56,485,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a2c72111e40c3c417f7556f9a4754a982" title=" " alt="" coords="389,107,528,133"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="586,56,697,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a94264f612f38c985e60c62123fd1129d" title=" " alt="" coords="581,107,702,133"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="407,259,510,285"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="592,157,691,184"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="755,385,832,412"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="418,487,499,513"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="598,664,685,691"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="401,588,517,615"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="417,639,500,665"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="401,689,517,716"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="401,740,517,767"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="596,208,687,235"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="600,259,683,285"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="594,309,689,336"/>
+<area shape="rect" href="macro-util_8cpp.html#a1e9851f9b9e0a0e51628a231ca95fcc1" title=" " alt="" coords="578,461,705,488"/>
+<area shape="rect" href="macro-util_8cpp.html#a7f48a1923076b3b314f1bc58913a2a59" title=" " alt="" coords="576,512,707,539"/>
+<area shape="rect" href="macro-util_8cpp.html#ada693de344c97bc09a586100f25919dd" title=" " alt="" coords="579,563,703,589"/>
+<area shape="rect" href="z-term_8cpp.html#a020ef4815c101960b4fdad94c4e5b59b" title=" " alt="" coords="586,613,697,640"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-macro_8cpp_a8de8ae79a8ddb8d5a4abcf06f8b989e0_icgraph.png" border="0" usemap="#acmd-macro_8cpp_a8de8ae79a8ddb8d5a4abcf06f8b989e0_icgraph" alt=""/></div>
+<map name="acmd-macro_8cpp_a8de8ae79a8ddb8d5a4abcf06f8b989e0_icgraph" id="acmd-macro_8cpp_a8de8ae79a8ddb8d5a4abcf06f8b989e0_icgraph">
+<area shape="rect" title="マクロのキー表記からアスキーコードを得てターミナルに表示する / Hack – ask for a keymap &quot;trigger&quot; (see below)" alt="" coords="879,5,1071,32"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a73df5fe8058943d380d6b31f9de15728" title="マクロを設定するコマンドのメインルーチン / Interact with &quot;macros&quot;" alt="" coords="712,5,831,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a73df5fe8058943d380d6b31f9de15728"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73df5fe8058943d380d6b31f9de15728">&#9670;&nbsp;</a></span>do_cmd_macros()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_macros </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(char *)&#160;</td>
+          <td class="paramname"><em>process_autopick_file_command</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>マクロを設定するコマンドのメインルーチン / Interact with "macros" </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<pre>
+Note that the macro "action" must be defined before the trigger.
+
+Could use some helpful instructions on this page.
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-macro_8cpp_a73df5fe8058943d380d6b31f9de15728_cgraph.png" border="0" usemap="#acmd-macro_8cpp_a73df5fe8058943d380d6b31f9de15728_cgraph" alt=""/></div>
+<map name="acmd-macro_8cpp_a73df5fe8058943d380d6b31f9de15728_cgraph" id="acmd-macro_8cpp_a73df5fe8058943d380d6b31f9de15728_cgraph">
+<area shape="rect" title="マクロを設定するコマンドのメインルーチン / Interact with &quot;macros&quot;" alt="" coords="5,1007,124,1033"/>
+<area shape="rect" href="string-processor_8cpp.html#ad986baa174929d7bd1cd78e722420be3" title=" " alt="" coords="781,323,877,349"/>
+<area shape="rect" href="asking-player_8cpp.html#ad5c7efa101f8104fd152aaa10b9be28b" title=" " alt="" coords="203,449,260,476"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="608,19,651,45"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="803,221,856,248"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="804,728,855,755"/>
+<area shape="rect" href="screen-processor_8cpp.html#a723cb7a38362add3188d0080fc2934f2" title=" " alt="" coords="788,981,871,1008"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a88c8fc0fa9dc5204fcedf35b82ec09ce" title="マクロのトリガーキーを取得する / Hack – ask for a &quot;trigger&quot; (see below)" alt="" coords="560,69,699,96"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a8de8ae79a8ddb8d5a4abcf06f8b989e0" title="マクロのキー表記からアスキーコードを得てターミナルに表示する / Hack – ask for a keymap &quot;trigger&quot; (see below)" alt="" coords="533,120,725,147"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a0452296a6ddd2bfbb5758565f4b55361" title="キーマップをprefファイルにダンプする / Hack – append all keymaps to the given file" alt="" coords="178,1145,285,1172"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="584,1083,675,1109"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="790,905,869,932"/>
+<area shape="rect" href="macro-util_8cpp.html#a83a8d20b3c9823bf29eaf62e357efaa1" title=" " alt="" coords="188,1453,275,1480"/>
+<area shape="rect" href="macro-util_8cpp.html#aac69ffdbe07a5a454163ab233fd04fbf" title=" " alt="" coords="350,1453,474,1480"/>
+<area shape="rect" href="z-virt_8cpp.html#a70a7941cc921785c30b981487ebb8f17" title="string_make() で割り当てたバッファを解放する。" alt="" coords="371,1504,453,1531"/>
+<area shape="rect" href="z-virt_8cpp.html#a64d699412915544198fd477a26d44f84" title="str の複製を返す。戻り値は使用後に string_free() で解放すること。" alt="" coords="365,1555,459,1581"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a13b7a62cca2788a9ba9823d41d1e989c" title="マクロ情報をprefファイルに保存する /" alt="" coords="183,1221,280,1248"/>
+<area shape="rect" href="display-messages_8cpp.html#afbb518f5a63c89412c4d73b7862ded1c" title=" " alt="" coords="188,981,275,1008"/>
+<area shape="rect" href="autopick-pref-processor_8cpp.html#aa31a42830d1eed102ec91a767c3db6e7" title=" " alt="" coords="339,1387,485,1429"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="172,1301,291,1328"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="212,627,251,653"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="583,829,675,856"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="365,880,459,907"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="190,1605,273,1632"/>
+<area shape="rect" href="string-processor_8cpp.html#adc590b5d3c6f6e8e87a50271e51296a5" title=" " alt="" coords="183,1656,279,1683"/>
+<area shape="rect" href="string-processor_8cpp.html#a30bcb33a57e3acb4e69b1f5ace5ddbeb" title=" " alt="" coords="975,272,1031,299"/>
+<area shape="rect" href="string-processor_8cpp.html#ab8a3974eb3254a218ae825f56da39fdc" title=" " alt="" coords="976,323,1029,349"/>
+<area shape="rect" href="string-processor_8cpp.html#a2c72111e40c3c417f7556f9a4754a982" title=" " alt="" coords="933,69,1072,96"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="1125,44,1236,71"/>
+<area shape="rect" href="string-processor_8cpp.html#a94264f612f38c985e60c62123fd1129d" title=" " alt="" coords="1120,95,1241,121"/>
+<area shape="rect" href="asking-player_8cpp.html#a025b21031a6e4922de22b9e961a8358e" title="&lt;" alt="" coords="369,373,455,400"/>
+<area shape="rect" href="string-processor_8cpp.html#aae65e4133109b992019bc6cafcc9b597" title=" " alt="" coords="574,272,685,299"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a41533d64d34cff21ac2f08e39073e746" title=" " alt="" coords="579,323,680,349"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="959,728,1046,755"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="1133,475,1228,501"/>
+<area shape="rect" href="z-term_8cpp.html#a69b4c93489dbf2b7555f66384c2b20c2" title=" " alt="" coords="584,373,675,400"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="959,424,1047,451"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="805,69,854,96"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="1135,272,1226,299"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aaee18f21e18b381f4513bb961081536e" title="prfファイルのフォーマットに従った内容を出力する / Dump a formatted line, using &quot;vstrnfmt()&quot;." alt="" coords="569,1285,690,1312"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a91f761522cc6472f2b8db25265b9e686" title="prfファイルをファイルクローズする / Append foot part and close auto dump." alt="" coords="350,1285,474,1312"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a5a737ea245d6b917ff81756f8448f258" title="prfファイルをファイルオープンする / Open file to append auto dump." alt="" coords="351,1133,473,1160"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="371,1336,453,1363"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="796,1108,863,1135"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="773,1285,885,1312"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="775,1184,884,1211"/>
+<area shape="rect" href="dump-remover_8cpp.html#a686855fb58524d0802396e8ff051bb7f" title="prefファイルを選択して処理する / Ask for a &quot;user pref line&quot; and process it" alt="" coords="562,1235,697,1261"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-macro_8cpp_a73df5fe8058943d380d6b31f9de15728_icgraph.png" border="0" usemap="#acmd-macro_8cpp_a73df5fe8058943d380d6b31f9de15728_icgraph" alt=""/></div>
+<map name="acmd-macro_8cpp_a73df5fe8058943d380d6b31f9de15728_icgraph" id="acmd-macro_8cpp_a73df5fe8058943d380d6b31f9de15728_icgraph">
+<area shape="rect" title="マクロを設定するコマンドのメインルーチン / Interact with &quot;macros&quot;" alt="" coords="884,5,1003,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="668,31,836,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="516,31,620,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0452296a6ddd2bfbb5758565f4b55361"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0452296a6ddd2bfbb5758565f4b55361">&#9670;&nbsp;</a></span>keymap_dump()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> keymap_dump </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>fname</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>キーマップをprefファイルにダンプする / Hack &ndash; append all keymaps to the given file </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fname</td><td>ファイルネーム </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-macro_8cpp_a0452296a6ddd2bfbb5758565f4b55361_cgraph.png" border="0" usemap="#acmd-macro_8cpp_a0452296a6ddd2bfbb5758565f4b55361_cgraph" alt=""/></div>
+<map name="acmd-macro_8cpp_a0452296a6ddd2bfbb5758565f4b55361_cgraph" id="acmd-macro_8cpp_a0452296a6ddd2bfbb5758565f4b55361_cgraph">
+<area shape="rect" title="キーマップをprefファイルにダンプする / Hack – append all keymaps to the given file" alt="" coords="5,208,112,235"/>
+<area shape="rect" href="string-processor_8cpp.html#ad986baa174929d7bd1cd78e722420be3" title=" " alt="" coords="174,81,270,108"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aaee18f21e18b381f4513bb961081536e" title="prfファイルのフォーマットに従った内容を出力する / Dump a formatted line, using &quot;vstrnfmt()&quot;." alt="" coords="341,157,462,184"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a91f761522cc6472f2b8db25265b9e686" title="prfファイルをファイルクローズする / Append foot part and close auto dump." alt="" coords="160,208,284,235"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a5a737ea245d6b917ff81756f8448f258" title="prfファイルをファイルオープンする / Open file to append auto dump." alt="" coords="161,259,283,285"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="181,309,263,336"/>
+<area shape="rect" href="string-processor_8cpp.html#a30bcb33a57e3acb4e69b1f5ace5ddbeb" title=" " alt="" coords="373,5,429,32"/>
+<area shape="rect" href="string-processor_8cpp.html#ab8a3974eb3254a218ae825f56da39fdc" title=" " alt="" coords="375,56,428,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a2c72111e40c3c417f7556f9a4754a982" title=" " alt="" coords="332,107,471,133"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="533,56,643,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a94264f612f38c985e60c62123fd1129d" title=" " alt="" coords="527,107,649,133"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="850,221,917,248"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="532,208,644,235"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="533,461,643,488"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="705,284,796,311"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="844,360,923,387"/>
+<area shape="rect" href="dump-remover_8cpp.html#a686855fb58524d0802396e8ff051bb7f" title="prefファイルを選択して処理する / Ask for a &quot;user pref line&quot; and process it" alt="" coords="334,335,469,361"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="707,436,794,463"/>
+<area shape="rect" href="angband-files_8cpp.html#af8478ae9202a347c7b95688842ff7633" title=" " alt="" coords="535,309,641,336"/>
+<area shape="rect" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="561,411,615,437"/>
+<area shape="rect" href="dump-util_8cpp.html#a27e645085e01749040cc85a4e9242bff" title="ダンプ用の一時ファイルを開く" alt="" coords="519,360,657,387"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-macro_8cpp_a0452296a6ddd2bfbb5758565f4b55361_icgraph.png" border="0" usemap="#acmd-macro_8cpp_a0452296a6ddd2bfbb5758565f4b55361_icgraph" alt=""/></div>
+<map name="acmd-macro_8cpp_a0452296a6ddd2bfbb5758565f4b55361_icgraph" id="acmd-macro_8cpp_a0452296a6ddd2bfbb5758565f4b55361_icgraph">
+<area shape="rect" title="キーマップをprefファイルにダンプする / Hack – append all keymaps to the given file" alt="" coords="879,5,985,32"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a73df5fe8058943d380d6b31f9de15728" title="マクロを設定するコマンドのメインルーチン / Interact with &quot;macros&quot;" alt="" coords="712,5,831,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a13b7a62cca2788a9ba9823d41d1e989c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13b7a62cca2788a9ba9823d41d1e989c">&#9670;&nbsp;</a></span>macro_dump()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void macro_dump </td>
+          <td>(</td>
+          <td class="paramtype">FILE **&#160;</td>
+          <td class="paramname"><em>fpp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>fname</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>マクロ情報をprefファイルに保存する / </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fname</td><td>ファイル名 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-macro_8cpp_a13b7a62cca2788a9ba9823d41d1e989c_cgraph.png" border="0" usemap="#acmd-macro_8cpp_a13b7a62cca2788a9ba9823d41d1e989c_cgraph" alt=""/></div>
+<map name="acmd-macro_8cpp_a13b7a62cca2788a9ba9823d41d1e989c_cgraph" id="acmd-macro_8cpp_a13b7a62cca2788a9ba9823d41d1e989c_cgraph">
+<area shape="rect" title="マクロ情報をprefファイルに保存する /" alt="" coords="5,208,103,235"/>
+<area shape="rect" href="string-processor_8cpp.html#ad986baa174929d7bd1cd78e722420be3" title=" " alt="" coords="165,81,261,108"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aaee18f21e18b381f4513bb961081536e" title="prfファイルのフォーマットに従った内容を出力する / Dump a formatted line, using &quot;vstrnfmt()&quot;." alt="" coords="331,157,453,184"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a91f761522cc6472f2b8db25265b9e686" title="prfファイルをファイルクローズする / Append foot part and close auto dump." alt="" coords="151,208,275,235"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a5a737ea245d6b917ff81756f8448f258" title="prfファイルをファイルオープンする / Open file to append auto dump." alt="" coords="152,259,273,285"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="172,309,253,336"/>
+<area shape="rect" href="string-processor_8cpp.html#a30bcb33a57e3acb4e69b1f5ace5ddbeb" title=" " alt="" coords="364,5,420,32"/>
+<area shape="rect" href="string-processor_8cpp.html#ab8a3974eb3254a218ae825f56da39fdc" title=" " alt="" coords="365,56,419,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a2c72111e40c3c417f7556f9a4754a982" title=" " alt="" coords="323,107,461,133"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="523,56,634,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a94264f612f38c985e60c62123fd1129d" title=" " alt="" coords="518,107,639,133"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="841,221,907,248"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="523,208,635,235"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="524,461,633,488"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="696,284,787,311"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="835,360,913,387"/>
+<area shape="rect" href="dump-remover_8cpp.html#a686855fb58524d0802396e8ff051bb7f" title="prefファイルを選択して処理する / Ask for a &quot;user pref line&quot; and process it" alt="" coords="325,335,459,361"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="698,436,785,463"/>
+<area shape="rect" href="angband-files_8cpp.html#af8478ae9202a347c7b95688842ff7633" title=" " alt="" coords="525,309,632,336"/>
+<area shape="rect" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="551,411,606,437"/>
+<area shape="rect" href="dump-util_8cpp.html#a27e645085e01749040cc85a4e9242bff" title="ダンプ用の一時ファイルを開く" alt="" coords="509,360,648,387"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-macro_8cpp_a13b7a62cca2788a9ba9823d41d1e989c_icgraph.png" border="0" usemap="#acmd-macro_8cpp_a13b7a62cca2788a9ba9823d41d1e989c_icgraph" alt=""/></div>
+<map name="acmd-macro_8cpp_a13b7a62cca2788a9ba9823d41d1e989c_icgraph" id="acmd-macro_8cpp_a13b7a62cca2788a9ba9823d41d1e989c_icgraph">
+<area shape="rect" title="マクロ情報をprefファイルに保存する /" alt="" coords="879,5,976,32"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a73df5fe8058943d380d6b31f9de15728" title="マクロを設定するコマンドのメインルーチン / Interact with &quot;macros&quot;" alt="" coords="712,5,831,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分28秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

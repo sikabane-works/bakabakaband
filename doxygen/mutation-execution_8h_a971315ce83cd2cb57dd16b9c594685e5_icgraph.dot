@@ -1,0 +1,14 @@
+digraph "exe_mutation_power"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="exe_mutation_power",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="突然変異のレイシャル効果実装"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="check_cast_racial_power",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cmd-racial_8cpp.html#a5f006f05c6ec58252925013371aa132f",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="do_cmd_racial_power",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cmd-racial_8cpp.html#af680948d79d56d5f61bb856637db3ae2",tooltip="レイシャル・パワーコマンドのメインルーチン / Allow user to choose a power (racial / mutation) to activate"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="process_command",height=0.2,width=0.4,color="red", fillcolor="white", style="filled",URL="$input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e",tooltip="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give \"Warning\" on illegal commands."];
+}

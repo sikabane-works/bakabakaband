@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/target/target-types.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_8c5bca25a498c7ed0874b721ecc37dfa.html">target</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">target-types.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="target-types_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">/* target_set用関数の利用用途フラグ / Bit flags for the &quot;target_set&quot; function */</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aa">    4</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aa">target_type</a> : uint8_t {</div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aaa6779939f70a49409a917554ff17ff586">    5</a></span>&#160;    <a class="code" href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aaa6779939f70a49409a917554ff17ff586">TARGET_KILL</a> = 0x01, </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aaa4ca48c8f0b56c8654c6346da3c33d3ef">    6</a></span>&#160;    <a class="code" href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aaa4ca48c8f0b56c8654c6346da3c33d3ef">TARGET_LOOK</a> = 0x02, </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aaa7654b4a4b8ad448ae8df2a2ddc63740f">    7</a></span>&#160;    <a class="code" href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aaa7654b4a4b8ad448ae8df2a2ddc63740f">TARGET_XTRA</a> = 0x04, </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aaad74d6a5b6387c7f65132a90147fb55dc">    8</a></span>&#160;    <a class="code" href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aaad74d6a5b6387c7f65132a90147fb55dc">TARGET_GRID</a> = 0x08, </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;};</div>
+<div class="ttc" id="atarget-types_8h_html_ac8519e4328195cadef4f848c21a6d8aa"><div class="ttname"><a href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aa">target_type</a></div><div class="ttdeci">target_type</div><div class="ttdef"><b>Definition:</b> target-types.h:4</div></div>
+<div class="ttc" id="atarget-types_8h_html_ac8519e4328195cadef4f848c21a6d8aaa4ca48c8f0b56c8654c6346da3c33d3ef"><div class="ttname"><a href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aaa4ca48c8f0b56c8654c6346da3c33d3ef">TARGET_LOOK</a></div><div class="ttdeci">@ TARGET_LOOK</div><div class="ttdoc">&quot;L&quot;ookコマンド向けの既存情報確認向け(全ての有為な情報をクエリ対象) / Describe grid fully</div><div class="ttdef"><b>Definition:</b> target-types.h:6</div></div>
+<div class="ttc" id="atarget-types_8h_html_ac8519e4328195cadef4f848c21a6d8aaa6779939f70a49409a917554ff17ff586"><div class="ttname"><a href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aaa6779939f70a49409a917554ff17ff586">TARGET_KILL</a></div><div class="ttdeci">@ TARGET_KILL</div><div class="ttdoc">モンスターへの狙いをつける(視界内モンスターのみクエリ対象) / Target monsters</div><div class="ttdef"><b>Definition:</b> target-types.h:5</div></div>
+<div class="ttc" id="atarget-types_8h_html_ac8519e4328195cadef4f848c21a6d8aaa7654b4a4b8ad448ae8df2a2ddc63740f"><div class="ttname"><a href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aaa7654b4a4b8ad448ae8df2a2ddc63740f">TARGET_XTRA</a></div><div class="ttdeci">@ TARGET_XTRA</div><div class="ttdoc">現在未使用 / Currently unused flag</div><div class="ttdef"><b>Definition:</b> target-types.h:7</div></div>
+<div class="ttc" id="atarget-types_8h_html_ac8519e4328195cadef4f848c21a6d8aaad74d6a5b6387c7f65132a90147fb55dc"><div class="ttname"><a href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aaad74d6a5b6387c7f65132a90147fb55dc">TARGET_GRID</a></div><div class="ttdeci">@ TARGET_GRID</div><div class="ttdoc">全てのマス対象にする(現在未使用) / Select from all grids</div><div class="ttdef"><b>Definition:</b> target-types.h:8</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/main-win/main-win-cfg-reader.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1212ae1f54c3420b88187b66047c04a6.html">main-win</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">main-win-cfg-reader.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Windows版固有実装(.cfgファイル処理)  
+<a href="#details">[詳解]</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="main-win-cfg-reader_8h_source.html">main-win/main-win-cfg-reader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="main-win-define_8h_source.html">main-win/main-win-define.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="main-win-file-utils_8h_source.html">main-win/main-win-file-utils.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="main-win-tokenizer_8h_source.html">main-win/main-win-tokenizer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="main-win-windows_8h_source.html">main-win/main-win-windows.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="z-term_8h_source.html">term/z-term.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-files_8h_source.html">util/angband-files.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-definitions-table_8h_source.html">main/sound-definitions-table.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+main-win-cfg-reader.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-win-cfg-reader_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2main-win_2main-win-cfg-reader_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2main-win_2main-win-cfg-reader_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2main-win_2main-win-cfg-reader_8cpp">
+<area shape="rect" title="Windows版固有実装(.cfgファイル処理)" alt="" coords="1067,5,1255,61"/>
+<area shape="rect" href="main-win-cfg-reader_8h.html" title=" " alt="" coords="1173,109,1323,151"/>
+<area shape="rect" href="main-win-define_8h.html" title=" " alt="" coords="1347,117,1525,143"/>
+<area shape="rect" href="main-win-file-utils_8h.html" title=" " alt="" coords="1001,109,1149,151"/>
+<area shape="rect" href="main-win-tokenizer_8h.html" title=" " alt="" coords="841,348,1037,375"/>
+<area shape="rect" href="main-win-windows_8h.html" title=" " alt="" coords="1549,117,1741,143"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="770,117,870,143"/>
+<area shape="rect" href="angband-files_8h.html" title=" " alt="" coords="541,117,672,143"/>
+<area shape="rect" href="sound-definitions-table_8h.html" title=" " alt="" coords="1766,109,1917,151"/>
+<area shape="rect" href="h-type_8h.html" title="ゲーム中に用いる変数型定義 / Basic &quot;types&quot;." alt="" coords="949,423,1065,449"/>
+<area shape="rect" title=" " alt="" coords="1437,199,1501,225"/>
+<area shape="rect" title=" " alt="" coords="1285,199,1341,225"/>
+<area shape="rect" title=" " alt="" coords="1366,199,1413,225"/>
+<area shape="rect" title=" " alt="" coords="1113,199,1210,225"/>
+<area shape="rect" title=" " alt="" coords="982,199,1037,225"/>
+<area shape="rect" title=" " alt="" coords="1604,199,1687,225"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="505,199,634,225"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="631,348,753,375"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="765,273,856,300"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="275,423,416,449"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="405,273,496,300"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="520,273,619,300"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="643,273,741,300"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="35,273,210,300"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="235,273,381,300"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a82743e3343eacf1b8ba333e6d198b654"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-win-cfg-reader_8cpp.html#a82743e3343eacf1b8ba333e6d198b654">SAMPLE_MAX</a>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:a82743e3343eacf1b8ba333e6d198b654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a9092532f4bbb9ff3f48bec3319ec901b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="main-win-cfg-reader_8h.html#a0d2b82d8ab22ada7dedd673ea4283b61">cfg_key</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-win-cfg-reader_8cpp.html#a9092532f4bbb9ff3f48bec3319ec901b">make_cfg_key</a> (int type, int val)</td></tr>
+<tr class="memdesc:a9092532f4bbb9ff3f48bec3319ec901b"><td class="mdescLeft">&#160;</td><td class="mdescRight">マップのキーを生成する  <a href="main-win-cfg-reader_8cpp.html#a9092532f4bbb9ff3f48bec3319ec901b">[詳解]</a><br /></td></tr>
+<tr class="separator:a9092532f4bbb9ff3f48bec3319ec901b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a501c5f70a930c36f921124211b1e143c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="main-win-cfg-reader_8h.html#a80fe2634ca44e127e07998de2c05eb83">cfg_values</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-win-cfg-reader_8cpp.html#a501c5f70a930c36f921124211b1e143c">get_map_value</a> (<a class="el" href="main-win-cfg-reader_8h.html#a2463f46a1aca553d1debdd18ddee37dd">cfg_map</a> *map, int key1_type, int key2_val)</td></tr>
+<tr class="memdesc:a501c5f70a930c36f921124211b1e143c"><td class="mdescLeft">&#160;</td><td class="mdescRight">マップのキーに対応する値を取得する  <a href="main-win-cfg-reader_8cpp.html#a501c5f70a930c36f921124211b1e143c">[詳解]</a><br /></td></tr>
+<tr class="separator:a501c5f70a930c36f921124211b1e143c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>Windows版固有実装(.cfgファイル処理) </p>
+</div><h2 class="groupheader">マクロ定義詳解</h2>
+<a id="a82743e3343eacf1b8ba333e6d198b654"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82743e3343eacf1b8ba333e6d198b654">&#9670;&nbsp;</a></span>SAMPLE_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SAMPLE_MAX&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a501c5f70a930c36f921124211b1e143c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a501c5f70a930c36f921124211b1e143c">&#9670;&nbsp;</a></span>get_map_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="main-win-cfg-reader_8h.html#a80fe2634ca44e127e07998de2c05eb83">cfg_values</a>* get_map_value </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="main-win-cfg-reader_8h.html#a2463f46a1aca553d1debdd18ddee37dd">cfg_map</a> *&#160;</td>
+          <td class="paramname"><em>map</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>key1_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>key2_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>マップのキーに対応する値を取得する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key1_type</td><td>the "actions" value of "term_xtra()". see:<a class="el" href="z-term_8h.html">z-term.h</a> TERM_XTRA_xxxxx </td></tr>
+    <tr><td class="paramname">key2_val</td><td>the 2nd parameter of "term_xtra()" </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>キーに対応する値を返す。登録されていない場合はNULLを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-win-cfg-reader_8cpp_a501c5f70a930c36f921124211b1e143c_cgraph.png" border="0" usemap="#amain-win-cfg-reader_8cpp_a501c5f70a930c36f921124211b1e143c_cgraph" alt=""/></div>
+<map name="amain-win-cfg-reader_8cpp_a501c5f70a930c36f921124211b1e143c_cgraph" id="amain-win-cfg-reader_8cpp_a501c5f70a930c36f921124211b1e143c_cgraph">
+<area shape="rect" title="マップのキーに対応する値を取得する" alt="" coords="5,5,113,32"/>
+<area shape="rect" href="main-win-cfg-reader_8cpp.html#a9092532f4bbb9ff3f48bec3319ec901b" title="マップのキーを生成する" alt="" coords="161,5,268,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-win-cfg-reader_8cpp_a501c5f70a930c36f921124211b1e143c_icgraph.png" border="0" usemap="#amain-win-cfg-reader_8cpp_a501c5f70a930c36f921124211b1e143c_icgraph" alt=""/></div>
+<map name="amain-win-cfg-reader_8cpp_a501c5f70a930c36f921124211b1e143c_icgraph" id="amain-win-cfg-reader_8cpp_a501c5f70a930c36f921124211b1e143c_icgraph">
+<area shape="rect" title="マップのキーに対応する値を取得する" alt="" coords="577,42,685,69"/>
+<area shape="rect" href="class_cfg_data.html#adb9e684d17b28446502c69d3a2c34602" title="登録されている中からランダムに選択する" alt="" coords="403,42,529,69"/>
+<area shape="rect" href="namespacemain__win__music.html#ac3139e31adcbdfbb403c147c1ec8b755" title=" " alt="" coords="204,5,355,47"/>
+<area shape="rect" href="main-win-sound_8cpp.html#a3b6a92c8f777299501bed99f24f31f22" title="指定の効果音を鳴らす。" alt="" coords="235,71,323,98"/>
+<area shape="rect" href="namespacemain__win__music.html#afe634c58baf1af998d6722f34104ccd0" title=" " alt="" coords="5,5,156,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9092532f4bbb9ff3f48bec3319ec901b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9092532f4bbb9ff3f48bec3319ec901b">&#9670;&nbsp;</a></span>make_cfg_key()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="main-win-cfg-reader_8h.html#a0d2b82d8ab22ada7dedd673ea4283b61">cfg_key</a> make_cfg_key </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>マップのキーを生成する </p>
+<p>typeを上位16ビット, valを下位16ビットに設定した値をマップのキーとする。 </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>the "actions" value of "term_xtra()". see:<a class="el" href="z-term_8h.html">z-term.h</a> TERM_XTRA_xxxxx </td></tr>
+    <tr><td class="paramname">val</td><td>the 2nd parameter of "term_xtra()" </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>生成したキーを返す </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-win-cfg-reader_8cpp_a9092532f4bbb9ff3f48bec3319ec901b_icgraph.png" border="0" usemap="#amain-win-cfg-reader_8cpp_a9092532f4bbb9ff3f48bec3319ec901b_icgraph" alt=""/></div>
+<map name="amain-win-cfg-reader_8cpp_a9092532f4bbb9ff3f48bec3319ec901b_icgraph" id="amain-win-cfg-reader_8cpp_a9092532f4bbb9ff3f48bec3319ec901b_icgraph">
+<area shape="rect" title="マップのキーを生成する" alt="" coords="596,101,703,127"/>
+<area shape="rect" href="main-win-cfg-reader_8cpp.html#a501c5f70a930c36f921124211b1e143c" title="マップのキーに対応する値を取得する" alt="" coords="431,46,539,73"/>
+<area shape="rect" href="class_cfg_data.html#a10815a8a6e488a5387e663c335b4cb14" title=" " alt="" coords="423,101,548,127"/>
+<area shape="rect" href="class_cfg_data.html#a6172a440f88bc9e92970b7c31d3471ac" title=" " alt="" coords="431,155,539,182"/>
+<area shape="rect" href="class_cfg_data.html#adb9e684d17b28446502c69d3a2c34602" title="登録されている中からランダムに選択する" alt="" coords="226,42,353,69"/>
+<area shape="rect" href="namespacemain__win__music.html#ac3139e31adcbdfbb403c147c1ec8b755" title=" " alt="" coords="5,5,156,47"/>
+<area shape="rect" href="main-win-sound_8cpp.html#a3b6a92c8f777299501bed99f24f31f22" title="指定の効果音を鳴らす。" alt="" coords="37,71,125,98"/>
+<area shape="rect" href="namespacemain__win__music.html#a6841366a28cac1d68f95343cde9ac0b1" title="BGMの設定を読み込む。" alt="" coords="214,93,365,135"/>
+<area shape="rect" href="class_cfg_reader.html#aef4efdff376b9c7915119902125526e6" title="データの読み込みを行う。" alt="" coords="204,159,375,186"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分43秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

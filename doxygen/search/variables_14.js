@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['u_5fmode_20783',['u_mode',['../structbmc__type.html#a64ebbddb6e848ad3b05501ff0c6f11f4',1,'bmc_type']]],
+  ['ugbldg_20784',['ugbldg',['../rooms-city_8cpp.html#a9d2bcbf3d8d7abc508b893f09060af41',1,'rooms-city.cpp']]],
+  ['uid_20785',['uid',['../structhigh__score.html#a4b1b2dda76cfdcebaf5d464f89167f82',1,'high_score']]],
+  ['ult_5fres_20786',['ult_res',['../structplayer__type.html#a3e7324173347844a2100505c69e3c668',1,'player_type']]],
+  ['unused_5fflag_20787',['unused_flag',['../structterm__type.html#a53c634376fb1069c813f328cc4f6f4b6',1,'term_type']]],
+  ['update_20788',['update',['../structplayer__type.html#a5a34857799e14505ae946035ac1e69da',1,'player_type']]],
+  ['upper_20789',['upper',['../structtext__body__type.html#aa445ff59e0be4d2a56ef928861ee1607',1,'text_body_type']]],
+  ['upper_5ffloor_5fid_20790',['upper_floor_id',['../structsaved__floor__type.html#a22b600ff033a3af56f78651eb61b947d',1,'saved_floor_type']]],
+  ['use_5fbigtile_20791',['use_bigtile',['../special-options_8cpp.html#a9ce2e84008c31e3834a05b40d449cdcd',1,'use_bigtile():&#160;special-options.cpp'],['../special-options_8h.html#a9ce2e84008c31e3834a05b40d449cdcd',1,'use_bigtile():&#160;special-options.cpp']]],
+  ['use_5fcommand_20792',['use_command',['../input-options_8cpp.html#ad80c8feb6dc918adb335dc4ddf3602e9',1,'use_command():&#160;input-options.cpp'],['../input-options_8h.html#ad80c8feb6dc918adb335dc4ddf3602e9',1,'use_command():&#160;input-options.cpp']]],
+  ['use_5fgraphics_20793',['use_graphics',['../special-options_8cpp.html#a7758f785be8137d0c72a15c7ec617f91',1,'use_graphics():&#160;special-options.cpp'],['../special-options_8h.html#a7758f785be8137d0c72a15c7ec617f91',1,'use_graphics():&#160;special-options.cpp']]],
+  ['use_5fmenu_20794',['use_menu',['../input-key-requester_8cpp.html#a134da4102380d76881c0b3fd04be5841',1,'use_menu():&#160;input-key-requester.cpp'],['../input-key-requester_8h.html#a134da4102380d76881c0b3fd04be5841',1,'use_menu():&#160;input-key-requester.cpp']]],
+  ['use_5fmind_20795',['use_mind',['../structcm__type.html#a34cbfc7cb82816a0c8192c3d3820269c',1,'cm_type']]],
+  ['use_5fmusic_20796',['use_music',['../special-options_8cpp.html#abf28c90deaaad934b09aa9272d75bcaa',1,'use_music():&#160;special-options.cpp'],['../special-options_8h.html#abf28c90deaaad934b09aa9272d75bcaa',1,'use_music():&#160;special-options.cpp']]],
+  ['use_5fold_5ftarget_20797',['use_old_target',['../input-options_8cpp.html#ab2dfcf5dc04cc69d59ec0c63febd34b4',1,'use_old_target():&#160;input-options.cpp'],['../input-options_8h.html#ab2dfcf5dc04cc69d59ec0c63febd34b4',1,'use_old_target():&#160;input-options.cpp']]],
+  ['use_5fsound_20798',['use_sound',['../special-options_8cpp.html#ac5c2e975e50c55139dc60c009b4bb4d6',1,'use_sound():&#160;special-options.cpp'],['../special-options_8h.html#ac5c2e975e50c55139dc60c009b4bb4d6',1,'use_sound():&#160;special-options.cpp']]],
+  ['use_5fstat_20799',['use_stat',['../structmonster__power.html#a635046406db80b0f9f50f2c6a95aa9a3',1,'monster_power']]],
+  ['used_20800',['used',['../structnest__mon__info__type.html#a34327d80964810c496b68ecdcb475444',1,'nest_mon_info_type']]],
+  ['user_20801',['user',['../structterm__type.html#a1b052306d541c194cb1ab4d65c78c757',1,'term_type']]],
+  ['user_5fflag_20802',['user_flag',['../structterm__type.html#a0308bd58b694e49d6634e4617195603d',1,'term_type']]],
+  ['user_5fhook_20803',['user_hook',['../structterm__type.html#a4f83433a042ec3448e93ff1209934384',1,'term_type']]]
+];

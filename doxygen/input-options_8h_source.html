@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/game-option/input-options.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_75d1aa6e715a0a2a957f68c14f483856.html">game-option</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">input-options.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="input-options_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#ad13920c55e6d8db1432e5f1a6d800cdb">rogue_like_commands</a>; <span class="comment">/* Rogue-like commands */</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#a9f44f2966d5ab98ec48d30cdb74d82a4">always_pickup</a>; <span class="comment">/* Pick things up by default */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#a09157ad9b44808a5d82cbf393f75e6b9">carry_query_flag</a>; <span class="comment">/* Prompt before picking things up */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#acd6087c776ffaefc64cb70a32c48a285">quick_messages</a>; <span class="comment">/* Activate quick messages */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#a5b07a001098e4a6c59aa5e6a3be026a8">auto_more</a>; <span class="comment">/* Automatically clear &#39;-more-&#39; prompts */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#a54a459dd2655c8b4d533d44231d1855a">skip_more</a>; <span class="comment">/* Automatically skip &#39;-more-&#39; prompts every time */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#aff141920f7e065e99cc40a99ee5c0a91">command_menu</a>; <span class="comment">/* Enable command selection menu */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#a1723174a3ed70dead2dcc22330c4c3f6">other_query_flag</a>; <span class="comment">/* Prompt for floor item selection */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#ab2dfcf5dc04cc69d59ec0c63febd34b4">use_old_target</a>; <span class="comment">/* Use old target by default */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#abe6b099180791027fff39c8d5379d05a">always_repeat</a>; <span class="comment">/* Repeat obvious commands */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#a493a7bbd41f787342277237575b0d727">confirm_destroy</a>; <span class="comment">/* Prompt for destruction of known worthless items */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#ad982f03daebda3c0f90dc1add2876a8e">confirm_wear</a>; <span class="comment">/* Confirm to wear/wield known cursed items */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#af7d58d8a3e5733327cfcfa143188cdf4">confirm_quest</a>; <span class="comment">/* Prompt before exiting a quest level */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#af0611c90876700a6d19aafecc4f092d7">target_pet</a>; <span class="comment">/* Allow targetting pets */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#a7daa9db393eb7c606a37f09442b07935">easy_open</a>; <span class="comment">/* Automatically open doors */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#a5e75fd85e70fddbd2d643274d3901d36">easy_disarm</a>; <span class="comment">/* Automatically disarm traps */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#abde0c0f7c4e0109379df18afef8da1ee">easy_floor</a>; <span class="comment">/* Display floor stacks in a list */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#ad80c8feb6dc918adb335dc4ddf3602e9">use_command</a>; <span class="comment">/* Allow unified use command */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#a5a87e12fadfd38206dd1eef71018e16d">over_exert</a>; <span class="comment">/* Allow casting spells when short of mana */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-options_8h.html#ad7161efc5cb78b44fc04c388cf737f3f">numpad_as_cursorkey</a>; <span class="comment">/* Use numpad keys as cursor key in editor mode */</span></div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ainput-options_8h_html_a09157ad9b44808a5d82cbf393f75e6b9"><div class="ttname"><a href="input-options_8h.html#a09157ad9b44808a5d82cbf393f75e6b9">carry_query_flag</a></div><div class="ttdeci">bool carry_query_flag</div><div class="ttdef"><b>Definition:</b> input-options.cpp:5</div></div>
+<div class="ttc" id="ainput-options_8h_html_a1723174a3ed70dead2dcc22330c4c3f6"><div class="ttname"><a href="input-options_8h.html#a1723174a3ed70dead2dcc22330c4c3f6">other_query_flag</a></div><div class="ttdeci">bool other_query_flag</div><div class="ttdef"><b>Definition:</b> input-options.cpp:10</div></div>
+<div class="ttc" id="ainput-options_8h_html_a493a7bbd41f787342277237575b0d727"><div class="ttname"><a href="input-options_8h.html#a493a7bbd41f787342277237575b0d727">confirm_destroy</a></div><div class="ttdeci">bool confirm_destroy</div><div class="ttdef"><b>Definition:</b> input-options.cpp:13</div></div>
+<div class="ttc" id="ainput-options_8h_html_a54a459dd2655c8b4d533d44231d1855a"><div class="ttname"><a href="input-options_8h.html#a54a459dd2655c8b4d533d44231d1855a">skip_more</a></div><div class="ttdeci">bool skip_more</div><div class="ttdef"><b>Definition:</b> input-options.cpp:8</div></div>
+<div class="ttc" id="ainput-options_8h_html_a5a87e12fadfd38206dd1eef71018e16d"><div class="ttname"><a href="input-options_8h.html#a5a87e12fadfd38206dd1eef71018e16d">over_exert</a></div><div class="ttdeci">bool over_exert</div><div class="ttdef"><b>Definition:</b> input-options.cpp:21</div></div>
+<div class="ttc" id="ainput-options_8h_html_a5b07a001098e4a6c59aa5e6a3be026a8"><div class="ttname"><a href="input-options_8h.html#a5b07a001098e4a6c59aa5e6a3be026a8">auto_more</a></div><div class="ttdeci">bool auto_more</div><div class="ttdef"><b>Definition:</b> input-options.cpp:7</div></div>
+<div class="ttc" id="ainput-options_8h_html_a5e75fd85e70fddbd2d643274d3901d36"><div class="ttname"><a href="input-options_8h.html#a5e75fd85e70fddbd2d643274d3901d36">easy_disarm</a></div><div class="ttdeci">bool easy_disarm</div><div class="ttdef"><b>Definition:</b> input-options.cpp:18</div></div>
+<div class="ttc" id="ainput-options_8h_html_a7daa9db393eb7c606a37f09442b07935"><div class="ttname"><a href="input-options_8h.html#a7daa9db393eb7c606a37f09442b07935">easy_open</a></div><div class="ttdeci">bool easy_open</div><div class="ttdef"><b>Definition:</b> input-options.cpp:17</div></div>
+<div class="ttc" id="ainput-options_8h_html_a9f44f2966d5ab98ec48d30cdb74d82a4"><div class="ttname"><a href="input-options_8h.html#a9f44f2966d5ab98ec48d30cdb74d82a4">always_pickup</a></div><div class="ttdeci">bool always_pickup</div><div class="ttdef"><b>Definition:</b> input-options.cpp:4</div></div>
+<div class="ttc" id="ainput-options_8h_html_ab2dfcf5dc04cc69d59ec0c63febd34b4"><div class="ttname"><a href="input-options_8h.html#ab2dfcf5dc04cc69d59ec0c63febd34b4">use_old_target</a></div><div class="ttdeci">bool use_old_target</div><div class="ttdef"><b>Definition:</b> input-options.cpp:11</div></div>
+<div class="ttc" id="ainput-options_8h_html_abde0c0f7c4e0109379df18afef8da1ee"><div class="ttname"><a href="input-options_8h.html#abde0c0f7c4e0109379df18afef8da1ee">easy_floor</a></div><div class="ttdeci">bool easy_floor</div><div class="ttdef"><b>Definition:</b> input-options.cpp:19</div></div>
+<div class="ttc" id="ainput-options_8h_html_abe6b099180791027fff39c8d5379d05a"><div class="ttname"><a href="input-options_8h.html#abe6b099180791027fff39c8d5379d05a">always_repeat</a></div><div class="ttdeci">bool always_repeat</div><div class="ttdef"><b>Definition:</b> input-options.cpp:12</div></div>
+<div class="ttc" id="ainput-options_8h_html_acd6087c776ffaefc64cb70a32c48a285"><div class="ttname"><a href="input-options_8h.html#acd6087c776ffaefc64cb70a32c48a285">quick_messages</a></div><div class="ttdeci">bool quick_messages</div><div class="ttdef"><b>Definition:</b> input-options.cpp:6</div></div>
+<div class="ttc" id="ainput-options_8h_html_ad13920c55e6d8db1432e5f1a6d800cdb"><div class="ttname"><a href="input-options_8h.html#ad13920c55e6d8db1432e5f1a6d800cdb">rogue_like_commands</a></div><div class="ttdeci">bool rogue_like_commands</div><div class="ttdef"><b>Definition:</b> input-options.cpp:3</div></div>
+<div class="ttc" id="ainput-options_8h_html_ad7161efc5cb78b44fc04c388cf737f3f"><div class="ttname"><a href="input-options_8h.html#ad7161efc5cb78b44fc04c388cf737f3f">numpad_as_cursorkey</a></div><div class="ttdeci">bool numpad_as_cursorkey</div><div class="ttdef"><b>Definition:</b> input-options.cpp:22</div></div>
+<div class="ttc" id="ainput-options_8h_html_ad80c8feb6dc918adb335dc4ddf3602e9"><div class="ttname"><a href="input-options_8h.html#ad80c8feb6dc918adb335dc4ddf3602e9">use_command</a></div><div class="ttdeci">bool use_command</div><div class="ttdef"><b>Definition:</b> input-options.cpp:20</div></div>
+<div class="ttc" id="ainput-options_8h_html_ad982f03daebda3c0f90dc1add2876a8e"><div class="ttname"><a href="input-options_8h.html#ad982f03daebda3c0f90dc1add2876a8e">confirm_wear</a></div><div class="ttdeci">bool confirm_wear</div><div class="ttdef"><b>Definition:</b> input-options.cpp:14</div></div>
+<div class="ttc" id="ainput-options_8h_html_af0611c90876700a6d19aafecc4f092d7"><div class="ttname"><a href="input-options_8h.html#af0611c90876700a6d19aafecc4f092d7">target_pet</a></div><div class="ttdeci">bool target_pet</div><div class="ttdef"><b>Definition:</b> input-options.cpp:16</div></div>
+<div class="ttc" id="ainput-options_8h_html_af7d58d8a3e5733327cfcfa143188cdf4"><div class="ttname"><a href="input-options_8h.html#af7d58d8a3e5733327cfcfa143188cdf4">confirm_quest</a></div><div class="ttdeci">bool confirm_quest</div><div class="ttdef"><b>Definition:</b> input-options.cpp:15</div></div>
+<div class="ttc" id="ainput-options_8h_html_aff141920f7e065e99cc40a99ee5c0a91"><div class="ttname"><a href="input-options_8h.html#aff141920f7e065e99cc40a99ee5c0a91">command_menu</a></div><div class="ttdeci">bool command_menu</div><div class="ttdef"><b>Definition:</b> input-options.cpp:9</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

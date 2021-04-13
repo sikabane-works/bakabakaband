@@ -1,0 +1,1561 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/system/gamevalue.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d501334aeb1b78ad67cd3c72c37b1e87.html">system</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a>  </div>
+  <div class="headertitle">
+<div class="title">gamevalue.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="gamevalue_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2system_2gamevalue_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2system_2gamevalue_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2system_2gamevalue_8hdep">
+<area shape="rect" title=" " alt="" coords="4745,5,4933,61"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="4640,109,4828,165"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="4852,109,5040,165"/>
+<area shape="rect" href="action-limited_8h.html" title=" " alt="" coords="5,213,193,269"/>
+<area shape="rect" href="activation-execution_8h.html" title=" " alt="" coords="217,213,405,269"/>
+<area shape="rect" href="movement-execution_8h.html" title=" " alt="" coords="429,213,617,269"/>
+<area shape="rect" href="mutation-execution_8h.html" title=" " alt="" coords="641,213,829,269"/>
+<area shape="rect" href="open-close-execution_8h.html" title=" " alt="" coords="853,213,1041,269"/>
+<area shape="rect" href="open-util_8h.html" title=" " alt="" coords="1065,213,1253,269"/>
+<area shape="rect" href="racial-execution_8h.html" title=" " alt="" coords="1277,213,1465,269"/>
+<area shape="rect" href="run-execution_8h.html" title=" " alt="" coords="1489,213,1677,269"/>
+<area shape="rect" href="throw-util_8h.html" title=" " alt="" coords="1701,213,1889,269"/>
+<area shape="rect" href="travel-execution_8h.html" title=" " alt="" coords="1913,213,2101,269"/>
+<area shape="rect" href="tunnel-execution_8h.html" title=" " alt="" coords="2125,213,2313,269"/>
+<area shape="rect" href="weapon-shield_8h.html" title=" " alt="" coords="2337,213,2525,269"/>
+<area shape="rect" href="artifact-info_8h.html" title=" " alt="" coords="2549,213,2737,269"/>
+<area shape="rect" href="fixed-art-generator_8h.html" title=" " alt="" coords="2761,213,2949,269"/>
+<area shape="rect" href="random-art-activation_8h.html" title=" " alt="" coords="2973,213,3161,269"/>
+<area shape="rect" href="random-art-characteristics_8h.html" title=" " alt="" coords="3185,213,3373,269"/>
+<area shape="rect" href="random-art-generator_8h.html" title=" " alt="" coords="3397,213,3585,269"/>
+<area shape="rect" href="random-art-misc_8h.html" title=" " alt="" coords="3609,213,3797,269"/>
+<area shape="rect" href="random-art-pval-investor_8h.html" title=" " alt="" coords="3821,213,4009,269"/>
+<area shape="rect" href="random-art-resistance_8h.html" title=" " alt="" coords="4033,213,4221,269"/>
+<area shape="rect" href="random-art-slay_8h.html" title=" " alt="" coords="4245,213,4433,269"/>
+<area shape="rect" href="autopick-command-menu_8cpp.html" title=" " alt="" coords="3882,317,4079,373"/>
+<area shape="rect" href="autopick-describer_8cpp.html" title=" " alt="" coords="5543,213,5731,269"/>
+<area shape="rect" href="autopick-destroyer_8h.html" title=" " alt="" coords="5755,213,5943,269"/>
+<area shape="rect" href="autopick-drawer_8h.html" title=" " alt="" coords="4155,317,4343,373"/>
+<area shape="rect" href="autopick-editor-command_8h.html" title=" " alt="" coords="4367,317,4555,373"/>
+<area shape="rect" href="autopick-editor-util_8h.html" title=" " alt="" coords="4579,317,4767,373"/>
+<area shape="rect" href="autopick-entry_8h.html" title=" " alt="" coords="4843,317,5031,373"/>
+<area shape="rect" href="autopick-initializer_8cpp.html" title=" " alt="" coords="4711,421,4899,477"/>
+<area shape="rect" href="autopick-pref-processor_8cpp.html" title=" " alt="" coords="4975,421,5163,477"/>
+<area shape="rect" href="autopick-finder_8h.html" title=" " alt="" coords="5107,317,5295,373"/>
+<area shape="rect" href="autopick-inserter-killer_8h.html" title=" " alt="" coords="5319,317,5507,373"/>
+<area shape="rect" href="autopick-matcher_8h.html" title=" " alt="" coords="5531,317,5719,373"/>
+<area shape="rect" href="autopick-menu-data-table_8h.html" title=" " alt="" coords="4457,213,4645,269"/>
+<area shape="rect" href="autopick-reader-writer_8h.html" title=" " alt="" coords="5743,317,5931,373"/>
+<area shape="rect" href="autopick-registry_8h.html" title=" " alt="" coords="5955,317,6143,373"/>
+<area shape="rect" href="autopick-util_8h.html" title=" " alt="" coords="4975,213,5163,269"/>
+<area shape="rect" href="autopick_8h.html" title=" " alt="" coords="6167,317,6355,373"/>
+<area shape="rect" href="auto-roller_8h.html" title=" " alt="" coords="5967,213,6155,269"/>
+<area shape="rect" href="birth-body-spec_8h.html" title=" " alt="" coords="6179,213,6367,269"/>
+<area shape="rect" href="birth-explanations-table_8h.html" title=" " alt="" coords="6391,213,6579,269"/>
+<area shape="rect" href="birth-select-class_8h.html" title=" " alt="" coords="6603,213,6791,269"/>
+<area shape="rect" href="birth-select-personality_8h.html" title=" " alt="" coords="6815,213,7003,269"/>
+<area shape="rect" href="birth-select-race_8h.html" title=" " alt="" coords="7027,213,7215,269"/>
+<area shape="rect" href="birth-select-realm_8h.html" title=" " alt="" coords="7239,213,7427,269"/>
+<area shape="rect" href="birth-stat_8h.html" title=" " alt="" coords="7451,213,7639,269"/>
+<area shape="rect" href="birth-util_8h.html" title=" " alt="" coords="7663,213,7851,269"/>
+</map>
+</div>
+</div>
+<p><a href="gamevalue_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a3ab3dc98fa2d5274a83f74be49f6d1f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a3ab3dc98fa2d5274a83f74be49f6d1f6">GREAT_OBJ</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memdesc:a3ab3dc98fa2d5274a83f74be49f6d1f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">ベースアイテム生成階層が加算される確率  <a href="gamevalue_8h.html#a3ab3dc98fa2d5274a83f74be49f6d1f6">[詳解]</a><br /></td></tr>
+<tr class="separator:a3ab3dc98fa2d5274a83f74be49f6d1f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb49446a7ac155f334da451aba59abe3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#aeb49446a7ac155f334da451aba59abe3">NASTY_MON_BASE</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memdesc:aeb49446a7ac155f334da451aba59abe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">深層モンスターが生成される(NASTY生成)の基本確率(1/x)  <a href="gamevalue_8h.html#aeb49446a7ac155f334da451aba59abe3">[詳解]</a><br /></td></tr>
+<tr class="separator:aeb49446a7ac155f334da451aba59abe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b91c35503d0c1cdeda395c3118c6fba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a7b91c35503d0c1cdeda395c3118c6fba">NASTY_MON_MAX</a>&#160;&#160;&#160;10</td></tr>
+<tr class="memdesc:a7b91c35503d0c1cdeda395c3118c6fba"><td class="mdescLeft">&#160;</td><td class="mdescRight">深層モンスターが1フロアに生成される最大数 <br  />
+  <a href="gamevalue_8h.html#a7b91c35503d0c1cdeda395c3118c6fba">[詳解]</a><br /></td></tr>
+<tr class="separator:a7b91c35503d0c1cdeda395c3118c6fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c7d8bbac0d0d7332cad2e330e14474d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a8c7d8bbac0d0d7332cad2e330e14474d">NASTY_MON_PLUS_MAX</a>&#160;&#160;&#160;25</td></tr>
+<tr class="memdesc:a8c7d8bbac0d0d7332cad2e330e14474d"><td class="mdescLeft">&#160;</td><td class="mdescRight">深層モンスターの階層加算最大量  <a href="gamevalue_8h.html#a8c7d8bbac0d0d7332cad2e330e14474d">[詳解]</a><br /></td></tr>
+<tr class="separator:a8c7d8bbac0d0d7332cad2e330e14474d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9990d922d8afa47af5c305657362060"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ab9990d922d8afa47af5c305657362060">NASTY_GENERATE_RATE</a>&#160;&#160;&#160;10</td></tr>
+<tr class="memdesc:ab9990d922d8afa47af5c305657362060"><td class="mdescLeft">&#160;</td><td class="mdescRight">クッソ汚いものが生成される倍率 <br  />
+  <a href="gamevalue_8h.html#ab9990d922d8afa47af5c305657362060">[詳解]</a><br /></td></tr>
+<tr class="separator:ab9990d922d8afa47af5c305657362060"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac56313a4599b4f089a41b5bc95fca416"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ac56313a4599b4f089a41b5bc95fca416">PENETRATE_INVULNERABILITY</a>&#160;&#160;&#160;13</td></tr>
+<tr class="memdesc:ac56313a4599b4f089a41b5bc95fca416"><td class="mdescLeft">&#160;</td><td class="mdescRight">無敵化が破られる確率(1/x) / 1/x chance of hurting even if invulnerable!  <a href="gamevalue_8h.html#ac56313a4599b4f089a41b5bc95fca416">[詳解]</a><br /></td></tr>
+<tr class="separator:ac56313a4599b4f089a41b5bc95fca416"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23790b99771050d85adbc8e9b21529ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a23790b99771050d85adbc8e9b21529ff">MAX_TELEPORT_DISTANCE</a>&#160;&#160;&#160;200</td></tr>
+<tr class="memdesc:a23790b99771050d85adbc8e9b21529ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">テレポート最大距離  <a href="gamevalue_8h.html#a23790b99771050d85adbc8e9b21529ff">[詳解]</a><br /></td></tr>
+<tr class="separator:a23790b99771050d85adbc8e9b21529ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada39f69faca0627747026c7a13621a89"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ada39f69faca0627747026c7a13621a89">FUEL_TORCH</a>&#160;&#160;&#160;5000</td></tr>
+<tr class="memdesc:ada39f69faca0627747026c7a13621a89"><td class="mdescLeft">&#160;</td><td class="mdescRight">松明の基本寿命値 / Maximum amount of fuel in a torch  <a href="gamevalue_8h.html#ada39f69faca0627747026c7a13621a89">[詳解]</a><br /></td></tr>
+<tr class="separator:ada39f69faca0627747026c7a13621a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6929becf65c6121663183d74d9305901"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a6929becf65c6121663183d74d9305901">FUEL_LAMP</a>&#160;&#160;&#160;15000</td></tr>
+<tr class="memdesc:a6929becf65c6121663183d74d9305901"><td class="mdescLeft">&#160;</td><td class="mdescRight">ランタンの基本寿命値 / Maximum amount of fuel in a lantern  <a href="gamevalue_8h.html#a6929becf65c6121663183d74d9305901">[詳解]</a><br /></td></tr>
+<tr class="separator:a6929becf65c6121663183d74d9305901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab80d911dd5b565283384076e22d4c7ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ab80d911dd5b565283384076e22d4c7ef">MAX_SIGHT</a>&#160;&#160;&#160;20</td></tr>
+<tr class="memdesc:ab80d911dd5b565283384076e22d4c7ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの最大視界範囲(マス) / Maximum view distance  <a href="gamevalue_8h.html#ab80d911dd5b565283384076e22d4c7ef">[詳解]</a><br /></td></tr>
+<tr class="separator:ab80d911dd5b565283384076e22d4c7ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15185408a8dcb9cc20355e046ad390c2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a15185408a8dcb9cc20355e046ad390c2">AAF_LIMIT</a>&#160;&#160;&#160;100</td></tr>
+<tr class="memdesc:a15185408a8dcb9cc20355e046ad390c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターの限界感知範囲(マス) Limit of sensing radius  <a href="gamevalue_8h.html#a15185408a8dcb9cc20355e046ad390c2">[詳解]</a><br /></td></tr>
+<tr class="separator:a15185408a8dcb9cc20355e046ad390c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afeab20bff169a2c82f7ac501ef0dd842"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#afeab20bff169a2c82f7ac501ef0dd842">MIN_M_ALLOC_TD</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memdesc:afeab20bff169a2c82f7ac501ef0dd842"><td class="mdescLeft">&#160;</td><td class="mdescRight">街(昼間)の最低住人配置数 / The town starts out with 4 residents during the day  <a href="gamevalue_8h.html#afeab20bff169a2c82f7ac501ef0dd842">[詳解]</a><br /></td></tr>
+<tr class="separator:afeab20bff169a2c82f7ac501ef0dd842"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9f07462d7754b64bc54a8de1803ce9a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ae9f07462d7754b64bc54a8de1803ce9a">MIN_M_ALLOC_TN</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memdesc:ae9f07462d7754b64bc54a8de1803ce9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">街(夜間)の最低住人配置数 / The town starts out with 8 residents during the night  <a href="gamevalue_8h.html#ae9f07462d7754b64bc54a8de1803ce9a">[詳解]</a><br /></td></tr>
+<tr class="separator:ae9f07462d7754b64bc54a8de1803ce9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ae0373b14898c175e467bfc6d3c8549"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a0ae0373b14898c175e467bfc6d3c8549">DUNGEON_MONSTER_MULTIPLE</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memdesc:a0ae0373b14898c175e467bfc6d3c8549"><td class="mdescLeft">&#160;</td><td class="mdescRight">ランダムフロアのモンスター生成倍率  <a href="gamevalue_8h.html#a0ae0373b14898c175e467bfc6d3c8549">[詳解]</a><br /></td></tr>
+<tr class="separator:a0ae0373b14898c175e467bfc6d3c8549"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae743e5f67538583e9fd942e7cddbb1a3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ae743e5f67538583e9fd942e7cddbb1a3">MAX_REPRO</a>&#160;&#160;&#160;100</td></tr>
+<tr class="memdesc:ae743e5f67538583e9fd942e7cddbb1a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスター増殖の最大数  <a href="gamevalue_8h.html#ae743e5f67538583e9fd942e7cddbb1a3">[詳解]</a><br /></td></tr>
+<tr class="separator:ae743e5f67538583e9fd942e7cddbb1a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae63ed221711f86cc8a54b0aef3929d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#aae63ed221711f86cc8a54b0aef3929d3">MAX_VAMPIRIC_DRAIN</a>&#160;&#160;&#160;50</td></tr>
+<tr class="memdesc:aae63ed221711f86cc8a54b0aef3929d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">吸血処理の最大回復HP  <a href="gamevalue_8h.html#aae63ed221711f86cc8a54b0aef3929d3">[詳解]</a><br /></td></tr>
+<tr class="separator:aae63ed221711f86cc8a54b0aef3929d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a748df0bec09ee517d74c3262909f26ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a748df0bec09ee517d74c3262909f26ef">DUNGEON_ITEM_FLOOR_DROP_RATE</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memdesc:a748df0bec09ee517d74c3262909f26ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">床に落ちているアイテム数倍率  <a href="gamevalue_8h.html#a748df0bec09ee517d74c3262909f26ef">[詳解]</a><br /></td></tr>
+<tr class="separator:a748df0bec09ee517d74c3262909f26ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a886776efe3675211408c958202625c9c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a886776efe3675211408c958202625c9c">DUN_UNUSUAL</a>&#160;&#160;&#160;250</td></tr>
+<tr class="memdesc:a886776efe3675211408c958202625c9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">通常ではない部屋が生成される基本確率(レベル/定数) / Level/chance of unusual room (was 200)  <a href="gamevalue_8h.html#a886776efe3675211408c958202625c9c">[詳解]</a><br /></td></tr>
+<tr class="separator:a886776efe3675211408c958202625c9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4100d0b62a50df44e53fb04e632d4eb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ad4100d0b62a50df44e53fb04e632d4eb">DUN_DEST</a>&#160;&#160;&#160;18</td></tr>
+<tr class="memdesc:ad4100d0b62a50df44e53fb04e632d4eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">破壊地形がフロアに発生する基本確率(1/定数) / 1/chance of having a destroyed level  <a href="gamevalue_8h.html#ad4100d0b62a50df44e53fb04e632d4eb">[詳解]</a><br /></td></tr>
+<tr class="separator:ad4100d0b62a50df44e53fb04e632d4eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed96556aae1426307f74229637325070"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#aed96556aae1426307f74229637325070">SMALL_LEVEL</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memdesc:aed96556aae1426307f74229637325070"><td class="mdescLeft">&#160;</td><td class="mdescRight">小さいフロアの生成される基本確率(1/定数) / 1/chance of smaller size (3)  <a href="gamevalue_8h.html#aed96556aae1426307f74229637325070">[詳解]</a><br /></td></tr>
+<tr class="separator:aed96556aae1426307f74229637325070"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedf87ce52717b4dad99354b09ff152b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#aedf87ce52717b4dad99354b09ff152b1">EMPTY_LEVEL</a>&#160;&#160;&#160;24</td></tr>
+<tr class="memdesc:aedf87ce52717b4dad99354b09ff152b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">アリーナレベル(外壁のないフロア)の生成される基本確率(1/定数) / 1/chance of being 'empty' (15)  <a href="gamevalue_8h.html#aedf87ce52717b4dad99354b09ff152b1">[詳解]</a><br /></td></tr>
+<tr class="separator:aedf87ce52717b4dad99354b09ff152b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48cec97e3ec299a5c8ed1cff1536788d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a48cec97e3ec299a5c8ed1cff1536788d">LAKE_LEVEL</a>&#160;&#160;&#160;24</td></tr>
+<tr class="memdesc:a48cec97e3ec299a5c8ed1cff1536788d"><td class="mdescLeft">&#160;</td><td class="mdescRight">川や湖のあるフロアの生成される確率(1/定数) / 1/chance of being a lake on the level  <a href="gamevalue_8h.html#a48cec97e3ec299a5c8ed1cff1536788d">[詳解]</a><br /></td></tr>
+<tr class="separator:a48cec97e3ec299a5c8ed1cff1536788d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2070224ab2969e66cd6f0309eb1b5ce7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a2070224ab2969e66cd6f0309eb1b5ce7">DARK_EMPTY</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memdesc:a2070224ab2969e66cd6f0309eb1b5ce7"><td class="mdescLeft">&#160;</td><td class="mdescRight">フロア全体が暗い可能性の基本確率(1/定数) / 1/chance of on_defeat_arena_monster level NOT being lit (2)  <a href="gamevalue_8h.html#a2070224ab2969e66cd6f0309eb1b5ce7">[詳解]</a><br /></td></tr>
+<tr class="separator:a2070224ab2969e66cd6f0309eb1b5ce7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0b0e87ce7684ef733f1ddf6abcaad7f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ac0b0e87ce7684ef733f1ddf6abcaad7f">DUN_CAVERN</a>&#160;&#160;&#160;20</td></tr>
+<tr class="memdesc:ac0b0e87ce7684ef733f1ddf6abcaad7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">洞窟状のダンジョンが生成される基本確率(1/定数) / 1/chance of having a cavern level  <a href="gamevalue_8h.html#ac0b0e87ce7684ef733f1ddf6abcaad7f">[詳解]</a><br /></td></tr>
+<tr class="separator:ac0b0e87ce7684ef733f1ddf6abcaad7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4261f27f9ad6ded6178aa459163eae3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a4261f27f9ad6ded6178aa459163eae3c">DUN_TUN_RND_MIN</a>&#160;&#160;&#160;5 /* Chance of random direction (was 10) */</td></tr>
+<tr class="separator:a4261f27f9ad6ded6178aa459163eae3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ba75b761646425d6dfaf3134bcc9f57"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a5ba75b761646425d6dfaf3134bcc9f57">DUN_TUN_RND_MAX</a>&#160;&#160;&#160;20</td></tr>
+<tr class="separator:a5ba75b761646425d6dfaf3134bcc9f57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d6c42e5a4af145e7cd0633f52d4bb79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a7d6c42e5a4af145e7cd0633f52d4bb79">DUN_TUN_CHG_MIN</a>&#160;&#160;&#160;20 /* Chance of changing direction (was 30) */</td></tr>
+<tr class="separator:a7d6c42e5a4af145e7cd0633f52d4bb79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b44464c816f319faa536ae9e8a3d689"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a5b44464c816f319faa536ae9e8a3d689">DUN_TUN_CHG_MAX</a>&#160;&#160;&#160;60</td></tr>
+<tr class="separator:a5b44464c816f319faa536ae9e8a3d689"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba7b8f694d035de4d93c81906e2a49ba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#aba7b8f694d035de4d93c81906e2a49ba">DUN_TUN_CON_MIN</a>&#160;&#160;&#160;10 /* Chance of extra tunneling (was 15) */</td></tr>
+<tr class="separator:aba7b8f694d035de4d93c81906e2a49ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe56f19c44ea1e60cf51b16c7a9d6f56"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#afe56f19c44ea1e60cf51b16c7a9d6f56">DUN_TUN_CON_MAX</a>&#160;&#160;&#160;40</td></tr>
+<tr class="separator:afe56f19c44ea1e60cf51b16c7a9d6f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86892a90e546336bea369f2903d7bc20"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a86892a90e546336bea369f2903d7bc20">DUN_TUN_PEN_MIN</a>&#160;&#160;&#160;30 /* Chance of doors at room entrances (was 25) */</td></tr>
+<tr class="separator:a86892a90e546336bea369f2903d7bc20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add8ad0eed035dfe62025e535b0533c9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#add8ad0eed035dfe62025e535b0533c9e">DUN_TUN_PEN_MAX</a>&#160;&#160;&#160;70</td></tr>
+<tr class="separator:add8ad0eed035dfe62025e535b0533c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0ea7e379bd7b4c358c19825edcfac8a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ad0ea7e379bd7b4c358c19825edcfac8a">DUN_TUN_JCT_MIN</a>&#160;&#160;&#160;60 /* Chance of doors at tunnel junctions (was 90) */</td></tr>
+<tr class="separator:ad0ea7e379bd7b4c358c19825edcfac8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad40c5edff32160dafdf6207ff3ebf525"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ad40c5edff32160dafdf6207ff3ebf525">DUN_TUN_JCT_MAX</a>&#160;&#160;&#160;90</td></tr>
+<tr class="separator:ad40c5edff32160dafdf6207ff3ebf525"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcf9b963c8b8c83c83e18a7f87d2e26a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#abcf9b963c8b8c83c83e18a7f87d2e26a">DUN_STR_DEN</a>&#160;&#160;&#160;5	/* Density of streamers */</td></tr>
+<tr class="separator:abcf9b963c8b8c83c83e18a7f87d2e26a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf871f052f1e3d43db8abbff7a6ae8ee"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#adf871f052f1e3d43db8abbff7a6ae8ee">DUN_STR_RNG</a>&#160;&#160;&#160;5	/* Width of streamers */</td></tr>
+<tr class="separator:adf871f052f1e3d43db8abbff7a6ae8ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34300ae89bae10028b4db73ccf4cdd15"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a34300ae89bae10028b4db73ccf4cdd15">DUN_STR_MAG</a>&#160;&#160;&#160;6	/* Number of magma streamers */</td></tr>
+<tr class="separator:a34300ae89bae10028b4db73ccf4cdd15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c7f85d7c169cbeae11ed1294a26cf06"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a5c7f85d7c169cbeae11ed1294a26cf06">DUN_STR_MC</a>&#160;&#160;&#160;30	/* 1/chance of treasure per magma */</td></tr>
+<tr class="separator:a5c7f85d7c169cbeae11ed1294a26cf06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb6f1abcc35248698777807b8f44cfa8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#acb6f1abcc35248698777807b8f44cfa8">DUN_STR_QUA</a>&#160;&#160;&#160;4	/* Number of quartz streamers */</td></tr>
+<tr class="separator:acb6f1abcc35248698777807b8f44cfa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26d53b023f090a9adf63197ced71e174"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a26d53b023f090a9adf63197ced71e174">DUN_STR_QC</a>&#160;&#160;&#160;15	/* 1/chance of treasure per quartz */</td></tr>
+<tr class="separator:a26d53b023f090a9adf63197ced71e174"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad28162790ed1797aa8f2e68cd46b82d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ad28162790ed1797aa8f2e68cd46b82d1">DUN_STR_WLW</a>&#160;&#160;&#160;1	/* Width of lava &amp; water streamers -KMW- */</td></tr>
+<tr class="separator:ad28162790ed1797aa8f2e68cd46b82d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a586dd914ec2b8bbc35d2f1fd117a7b7c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a586dd914ec2b8bbc35d2f1fd117a7b7c">DUN_STR_DWLW</a>&#160;&#160;&#160;8	/* Density of water &amp; lava streams -KMW- */</td></tr>
+<tr class="separator:a586dd914ec2b8bbc35d2f1fd117a7b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afddaf5756a9f3bfda43f2bafa6b0e48c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#afddaf5756a9f3bfda43f2bafa6b0e48c">DUN_MOS_DEN</a>&#160;&#160;&#160;2	/* Density of moss streamers */</td></tr>
+<tr class="separator:afddaf5756a9f3bfda43f2bafa6b0e48c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa10083b21a2632c24ab37a9727ba4094"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#aa10083b21a2632c24ab37a9727ba4094">DUN_MOS_RNG</a>&#160;&#160;&#160;10	/* Width of moss streamers */</td></tr>
+<tr class="separator:aa10083b21a2632c24ab37a9727ba4094"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3415a5302fcc8061520ab892d57f7c74"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a3415a5302fcc8061520ab892d57f7c74">DUN_STR_MOS</a>&#160;&#160;&#160;2	/* Number of moss streamers */</td></tr>
+<tr class="separator:a3415a5302fcc8061520ab892d57f7c74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac655fed868fd94580707223878e54b2c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ac655fed868fd94580707223878e54b2c">DUN_WAT_DEN</a>&#160;&#160;&#160;15	/* Density of rivers */</td></tr>
+<tr class="separator:ac655fed868fd94580707223878e54b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15d59d1738e3e98a16b2a8b03bcc6665"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a15d59d1738e3e98a16b2a8b03bcc6665">DUN_WAT_RNG</a>&#160;&#160;&#160;2	/* Width of rivers */</td></tr>
+<tr class="separator:a15d59d1738e3e98a16b2a8b03bcc6665"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a755fd130668a584f27f3e9b401f4d9e4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a755fd130668a584f27f3e9b401f4d9e4">DUN_STR_WAT</a>&#160;&#160;&#160;3	/* Max number of rivers */</td></tr>
+<tr class="separator:a755fd130668a584f27f3e9b401f4d9e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae92e1b1bd9d0409cc071deb3e5babeee"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ae92e1b1bd9d0409cc071deb3e5babeee">DUN_WAT_CHG</a>&#160;&#160;&#160;50	/* 1 in 50 chance of junction in river */</td></tr>
+<tr class="separator:ae92e1b1bd9d0409cc071deb3e5babeee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ff0f9dabef88fac80ad81a4d2d4b25d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a5ff0f9dabef88fac80ad81a4d2d4b25d">DUN_AMT_ROOM</a>&#160;&#160;&#160;9	/* Amount of objects for rooms */</td></tr>
+<tr class="separator:a5ff0f9dabef88fac80ad81a4d2d4b25d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26d3af7b91ee561a0529ff0d4630e8d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a26d3af7b91ee561a0529ff0d4630e8d8">DUN_AMT_ITEM</a>&#160;&#160;&#160;3	/* Amount of objects for rooms/corridors */</td></tr>
+<tr class="separator:a26d3af7b91ee561a0529ff0d4630e8d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66ae37b014002f8e2ce7a12ada8adafc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a66ae37b014002f8e2ce7a12ada8adafc">DUN_AMT_GOLD</a>&#160;&#160;&#160;3	/* Amount of treasure for rooms/corridors */</td></tr>
+<tr class="separator:a66ae37b014002f8e2ce7a12ada8adafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7224cb0018777f5a5ea8223797582f4b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a7224cb0018777f5a5ea8223797582f4b">DUN_AMT_INVIS</a>&#160;&#160;&#160;3	/* Amount of invisible walls for rooms/corridors */</td></tr>
+<tr class="separator:a7224cb0018777f5a5ea8223797582f4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac59b1241c228ff862ac2d39588f7135"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#aac59b1241c228ff862ac2d39588f7135">SINDARIN_NAME</a>&#160;&#160;&#160;10</td></tr>
+<tr class="memdesc:aac59b1241c228ff862ac2d39588f7135"><td class="mdescLeft">&#160;</td><td class="mdescRight">ランダムアーティファクトにシンダリン銘をつける確率  <a href="gamevalue_8h.html#aac59b1241c228ff862ac2d39588f7135">[詳解]</a><br /></td></tr>
+<tr class="separator:aac59b1241c228ff862ac2d39588f7135"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a365f59d0a13d10d6ac11c23c50bf8476"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a365f59d0a13d10d6ac11c23c50bf8476">TABLE_NAME</a>&#160;&#160;&#160;20</td></tr>
+<tr class="memdesc:a365f59d0a13d10d6ac11c23c50bf8476"><td class="mdescLeft">&#160;</td><td class="mdescRight">ランダムアーティファクトに漢字銘をつける確率(正確には TABLE_NAME - SINDARIN_NAME %)となる  <a href="gamevalue_8h.html#a365f59d0a13d10d6ac11c23c50bf8476">[詳解]</a><br /></td></tr>
+<tr class="separator:a365f59d0a13d10d6ac11c23c50bf8476"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba3698b7b99f1aacf8e5df4bb302b221"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#aba3698b7b99f1aacf8e5df4bb302b221">A_CURSED</a>&#160;&#160;&#160;13</td></tr>
+<tr class="memdesc:aba3698b7b99f1aacf8e5df4bb302b221"><td class="mdescLeft">&#160;</td><td class="mdescRight">1/nの確率で生成の巻物以外のランダムアーティファクトが呪いつきになる。  <a href="gamevalue_8h.html#aba3698b7b99f1aacf8e5df4bb302b221">[詳解]</a><br /></td></tr>
+<tr class="separator:aba3698b7b99f1aacf8e5df4bb302b221"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac58195cf4f3adfe71d5dc0ce48671c36"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ac58195cf4f3adfe71d5dc0ce48671c36">WEIRD_LUCK</a>&#160;&#160;&#160;12</td></tr>
+<tr class="memdesc:ac58195cf4f3adfe71d5dc0ce48671c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">1/nの確率でrandom_resistance()の処理中バイアス外の耐性がつき、become_random_artifactで4を超えるpvalが許可される。  <a href="gamevalue_8h.html#ac58195cf4f3adfe71d5dc0ce48671c36">[詳解]</a><br /></td></tr>
+<tr class="separator:ac58195cf4f3adfe71d5dc0ce48671c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af642d72dde703cc47d5a5ed0fd964f44"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#af642d72dde703cc47d5a5ed0fd964f44">SWORDFISH_LUCK</a>&#160;&#160;&#160;6</td></tr>
+<tr class="memdesc:af642d72dde703cc47d5a5ed0fd964f44"><td class="mdescLeft">&#160;</td><td class="mdescRight">1/nの確率で一定以上のスレイダメージを超える武器のスレイ喪失が回避される。  <a href="gamevalue_8h.html#af642d72dde703cc47d5a5ed0fd964f44">[詳解]</a><br /></td></tr>
+<tr class="separator:af642d72dde703cc47d5a5ed0fd964f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6231fe0036c747a6d3cb042a643068b2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a6231fe0036c747a6d3cb042a643068b2">BIAS_LUCK</a>&#160;&#160;&#160;20</td></tr>
+<tr class="memdesc:a6231fe0036c747a6d3cb042a643068b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">1/nの確率でrandom_resistance()で付加する元素耐性が免疫になる  <a href="gamevalue_8h.html#a6231fe0036c747a6d3cb042a643068b2">[詳解]</a><br /></td></tr>
+<tr class="separator:a6231fe0036c747a6d3cb042a643068b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a005ddcd576df1ac4ecd6b8c7fe340d45"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a005ddcd576df1ac4ecd6b8c7fe340d45">IM_LUCK</a>&#160;&#160;&#160;7</td></tr>
+<tr class="memdesc:a005ddcd576df1ac4ecd6b8c7fe340d45"><td class="mdescLeft">&#160;</td><td class="mdescRight">1/nの確率でrandom_resistance()で複数免疫の除去処理が免除される  <a href="gamevalue_8h.html#a005ddcd576df1ac4ecd6b8c7fe340d45">[詳解]</a><br /></td></tr>
+<tr class="separator:a005ddcd576df1ac4ecd6b8c7fe340d45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad363834f7a16d55d5acf8f065fd98161"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ad363834f7a16d55d5acf8f065fd98161">ACTIVATION_CHANCE</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memdesc:ad363834f7a16d55d5acf8f065fd98161"><td class="mdescLeft">&#160;</td><td class="mdescRight">1/nの確率でランダムアーティファクトに発動が付加される。ただし防具はさらに1/2  <a href="gamevalue_8h.html#ad363834f7a16d55d5acf8f065fd98161">[詳解]</a><br /></td></tr>
+<tr class="separator:ad363834f7a16d55d5acf8f065fd98161"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32c19c04432813e0b22bc14e9ff51401"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a32c19c04432813e0b22bc14e9ff51401">TY_CURSE_CHANCE</a>&#160;&#160;&#160;200</td></tr>
+<tr class="memdesc:a32c19c04432813e0b22bc14e9ff51401"><td class="mdescLeft">&#160;</td><td class="mdescRight">太古の怨念の1ターン毎の発動確率(1/n)  <a href="gamevalue_8h.html#a32c19c04432813e0b22bc14e9ff51401">[詳解]</a><br /></td></tr>
+<tr class="separator:a32c19c04432813e0b22bc14e9ff51401"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad71897b955d271184ff9b83ca584a66c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ad71897b955d271184ff9b83ca584a66c">CHAINSWORD_NOISE</a>&#160;&#160;&#160;100</td></tr>
+<tr class="memdesc:ad71897b955d271184ff9b83ca584a66c"><td class="mdescLeft">&#160;</td><td class="mdescRight">チェンソーの1ターン毎の発動確率(1/n)  <a href="gamevalue_8h.html#ad71897b955d271184ff9b83ca584a66c">[詳解]</a><br /></td></tr>
+<tr class="separator:ad71897b955d271184ff9b83ca584a66c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac204ce14e46c546c41da47872a58c346"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ac204ce14e46c546c41da47872a58c346">SPEAK_CHANCE</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:ac204ce14e46c546c41da47872a58c346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44b0117eaae1b348346e60da720521d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a44b0117eaae1b348346e60da720521d1">GRINDNOISE</a>&#160;&#160;&#160;20</td></tr>
+<tr class="separator:a44b0117eaae1b348346e60da720521d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae74a06043d574d4abade11d60f026073"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ae74a06043d574d4abade11d60f026073">CYBERNOISE</a>&#160;&#160;&#160;20</td></tr>
+<tr class="separator:ae74a06043d574d4abade11d60f026073"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95989cc5ea4f85340eff2b6526d0fa8c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a95989cc5ea4f85340eff2b6526d0fa8c">GROUP_MAX</a>&#160;&#160;&#160;32</td></tr>
+<tr class="memdesc:a95989cc5ea4f85340eff2b6526d0fa8c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="monster-generator_8cpp.html#a7f34ce3e6f1935352c4d961a5cc5a8b6" title="モンスターを目標地点に集団生成する / Attempt to place a &quot;group&quot; of monsters around the given location">place_monster_group()</a> 関数によるモンスターのGROUP生成時の配置最大数 / Maximum size of a group of monsters  <a href="gamevalue_8h.html#a95989cc5ea4f85340eff2b6526d0fa8c">[詳解]</a><br /></td></tr>
+<tr class="separator:a95989cc5ea4f85340eff2b6526d0fa8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37010e25746b111cb60669336bdaf7ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a37010e25746b111cb60669336bdaf7ff">HURT_CHANCE</a>&#160;&#160;&#160;16</td></tr>
+<tr class="memdesc:a37010e25746b111cb60669336bdaf7ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">属性攻撃を受けた際に能力値低下を起こす確率(1/X) / 1/x chance of reducing stats (for elemental attacks)  <a href="gamevalue_8h.html#a37010e25746b111cb60669336bdaf7ff">[詳解]</a><br /></td></tr>
+<tr class="separator:a37010e25746b111cb60669336bdaf7ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cf273782efbc8e8af825aa9e127e5d4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a1cf273782efbc8e8af825aa9e127e5d4">TOWN_DAWN</a>&#160;&#160;&#160;10000</td></tr>
+<tr class="memdesc:a1cf273782efbc8e8af825aa9e127e5d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">1日分のターン / Number of ticks from dawn to dawn XXX  <a href="gamevalue_8h.html#a1cf273782efbc8e8af825aa9e127e5d4">[詳解]</a><br /></td></tr>
+<tr class="separator:a1cf273782efbc8e8af825aa9e127e5d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54ff7b95f80937a84b6140deafc17a1b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a54ff7b95f80937a84b6140deafc17a1b">TURNS_PER_TICK</a>&#160;&#160;&#160;10L</td></tr>
+<tr class="memdesc:a54ff7b95f80937a84b6140deafc17a1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">時間経過処理を行うターン数の刻み / Number of energy-gain-turns per ticks  <a href="gamevalue_8h.html#a54ff7b95f80937a84b6140deafc17a1b">[詳解]</a><br /></td></tr>
+<tr class="separator:a54ff7b95f80937a84b6140deafc17a1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3bcc88a6f33f4426f94d4ccfc66e7ba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ab3bcc88a6f33f4426f94d4ccfc66e7ba">INN_DUNGEON_TURN_ADJ</a>&#160;&#160;&#160;10</td></tr>
+<tr class="memdesc:ab3bcc88a6f33f4426f94d4ccfc66e7ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">宿屋で時間をつぶした場合に増える dungeon_turn の倍率  <a href="gamevalue_8h.html#ab3bcc88a6f33f4426f94d4ccfc66e7ba">[詳解]</a><br /></td></tr>
+<tr class="separator:ab3bcc88a6f33f4426f94d4ccfc66e7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01f08d46080872b9f4284873b7f9dee4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a01f08d46080872b9f4284873b7f9dee4">MAX_DAYS</a>&#160;&#160;&#160;20000</td></tr>
+<tr class="memdesc:a01f08d46080872b9f4284873b7f9dee4"><td class="mdescLeft">&#160;</td><td class="mdescRight">内部処理中で保持される最大日数 / Maximum days  <a href="gamevalue_8h.html#a01f08d46080872b9f4284873b7f9dee4">[詳解]</a><br /></td></tr>
+<tr class="separator:a01f08d46080872b9f4284873b7f9dee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af339a1af788bc794cdc397de714a757e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#af339a1af788bc794cdc397de714a757e">BREAK_RUNE_PROTECTION</a>&#160;&#160;&#160;550</td></tr>
+<tr class="memdesc:af339a1af788bc794cdc397de714a757e"><td class="mdescLeft">&#160;</td><td class="mdescRight">守りのルーンの強靭度 / Rune of protection resistance  <a href="gamevalue_8h.html#af339a1af788bc794cdc397de714a757e">[詳解]</a><br /></td></tr>
+<tr class="separator:af339a1af788bc794cdc397de714a757e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafef1ea6900521d4879a797a94435cd3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#aafef1ea6900521d4879a797a94435cd3">BREAK_RUNE_EXPLOSION</a>&#160;&#160;&#160;299</td></tr>
+<tr class="memdesc:aafef1ea6900521d4879a797a94435cd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">爆発のルーンの発動しやすさ / For explosive runes  <a href="gamevalue_8h.html#aafef1ea6900521d4879a797a94435cd3">[詳解]</a><br /></td></tr>
+<tr class="separator:aafef1ea6900521d4879a797a94435cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac410585710ac7de2c8dcb7552a16eb7e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#ac410585710ac7de2c8dcb7552a16eb7e">BTH_PLUS_ADJ</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memdesc:ac410585710ac7de2c8dcb7552a16eb7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">武器経験値及びプレイヤーの打撃/射撃能力に応じた修正値倍率 / Adjust BTH per plus-to-hit  <a href="gamevalue_8h.html#ac410585710ac7de2c8dcb7552a16eb7e">[詳解]</a><br /></td></tr>
+<tr class="separator:ac410585710ac7de2c8dcb7552a16eb7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3290a68cabb39e129a86e2e0554e3c71"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a3290a68cabb39e129a86e2e0554e3c71">MON_MULT_ADJ</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memdesc:a3290a68cabb39e129a86e2e0554e3c71"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターの増殖しにくさの基本倍率 / High value slows multiplication  <a href="gamevalue_8h.html#a3290a68cabb39e129a86e2e0554e3c71">[詳解]</a><br /></td></tr>
+<tr class="separator:a3290a68cabb39e129a86e2e0554e3c71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b86497a0bf4f6d260776ddcfc41e32c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a8b86497a0bf4f6d260776ddcfc41e32c">MON_SUMMON_ADJ</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:a8b86497a0bf4f6d260776ddcfc41e32c"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在未使用 Adjust level of summoned creatures  <a href="gamevalue_8h.html#a8b86497a0bf4f6d260776ddcfc41e32c">[詳解]</a><br /></td></tr>
+<tr class="separator:a8b86497a0bf4f6d260776ddcfc41e32c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78f62b276a917d451b3d9bdc52846cf3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a78f62b276a917d451b3d9bdc52846cf3">MON_DRAIN_LIFE</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:a78f62b276a917d451b3d9bdc52846cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターの打撃によるプレイヤーの経験値吸収基本倍率(%) / Percent of player exp drained per hit  <a href="gamevalue_8h.html#a78f62b276a917d451b3d9bdc52846cf3">[詳解]</a><br /></td></tr>
+<tr class="separator:a78f62b276a917d451b3d9bdc52846cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61cdd59c422245c7b6f8fabd5dd92793"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gamevalue_8h.html#a61cdd59c422245c7b6f8fabd5dd92793">USE_DEVICE</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memdesc:a61cdd59c422245c7b6f8fabd5dd92793"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔道具の最低失敗基準値 x&gt; Harder devices x&lt; Easier devices <br  />
+  <a href="gamevalue_8h.html#a61cdd59c422245c7b6f8fabd5dd92793">[詳解]</a><br /></td></tr>
+<tr class="separator:a61cdd59c422245c7b6f8fabd5dd92793"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="aba3698b7b99f1aacf8e5df4bb302b221"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba3698b7b99f1aacf8e5df4bb302b221">&#9670;&nbsp;</a></span>A_CURSED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define A_CURSED&#160;&#160;&#160;13</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>1/nの確率で生成の巻物以外のランダムアーティファクトが呪いつきになる。 </p>
+
+</div>
+</div>
+<a id="a15185408a8dcb9cc20355e046ad390c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15185408a8dcb9cc20355e046ad390c2">&#9670;&nbsp;</a></span>AAF_LIMIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AAF_LIMIT&#160;&#160;&#160;100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターの限界感知範囲(マス) Limit of sensing radius </p>
+
+</div>
+</div>
+<a id="ad363834f7a16d55d5acf8f065fd98161"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad363834f7a16d55d5acf8f065fd98161">&#9670;&nbsp;</a></span>ACTIVATION_CHANCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ACTIVATION_CHANCE&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>1/nの確率でランダムアーティファクトに発動が付加される。ただし防具はさらに1/2 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>Bias luck needs to be higher than weird luck, since it is usually tested several times... </dd></dl>
+
+</div>
+</div>
+<a id="a6231fe0036c747a6d3cb042a643068b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6231fe0036c747a6d3cb042a643068b2">&#9670;&nbsp;</a></span>BIAS_LUCK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BIAS_LUCK&#160;&#160;&#160;20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>1/nの確率でrandom_resistance()で付加する元素耐性が免疫になる </p>
+
+</div>
+</div>
+<a id="aafef1ea6900521d4879a797a94435cd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafef1ea6900521d4879a797a94435cd3">&#9670;&nbsp;</a></span>BREAK_RUNE_EXPLOSION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BREAK_RUNE_EXPLOSION&#160;&#160;&#160;299</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>爆発のルーンの発動しやすさ / For explosive runes </p>
+
+</div>
+</div>
+<a id="af339a1af788bc794cdc397de714a757e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af339a1af788bc794cdc397de714a757e">&#9670;&nbsp;</a></span>BREAK_RUNE_PROTECTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BREAK_RUNE_PROTECTION&#160;&#160;&#160;550</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>守りのルーンの強靭度 / Rune of protection resistance </p>
+
+</div>
+</div>
+<a id="ac410585710ac7de2c8dcb7552a16eb7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac410585710ac7de2c8dcb7552a16eb7e">&#9670;&nbsp;</a></span>BTH_PLUS_ADJ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BTH_PLUS_ADJ&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>武器経験値及びプレイヤーの打撃/射撃能力に応じた修正値倍率 / Adjust BTH per plus-to-hit </p>
+
+</div>
+</div>
+<a id="ad71897b955d271184ff9b83ca584a66c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad71897b955d271184ff9b83ca584a66c">&#9670;&nbsp;</a></span>CHAINSWORD_NOISE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CHAINSWORD_NOISE&#160;&#160;&#160;100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>チェンソーの1ターン毎の発動確率(1/n) </p>
+
+</div>
+</div>
+<a id="ae74a06043d574d4abade11d60f026073"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae74a06043d574d4abade11d60f026073">&#9670;&nbsp;</a></span>CYBERNOISE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CYBERNOISE&#160;&#160;&#160;20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2070224ab2969e66cd6f0309eb1b5ce7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2070224ab2969e66cd6f0309eb1b5ce7">&#9670;&nbsp;</a></span>DARK_EMPTY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DARK_EMPTY&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>フロア全体が暗い可能性の基本確率(1/定数) / 1/chance of on_defeat_arena_monster level NOT being lit (2) </p>
+
+</div>
+</div>
+<a id="a66ae37b014002f8e2ce7a12ada8adafc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66ae37b014002f8e2ce7a12ada8adafc">&#9670;&nbsp;</a></span>DUN_AMT_GOLD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_AMT_GOLD&#160;&#160;&#160;3	/* Amount of treasure for rooms/corridors */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7224cb0018777f5a5ea8223797582f4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7224cb0018777f5a5ea8223797582f4b">&#9670;&nbsp;</a></span>DUN_AMT_INVIS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_AMT_INVIS&#160;&#160;&#160;3	/* Amount of invisible walls for rooms/corridors */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a26d3af7b91ee561a0529ff0d4630e8d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26d3af7b91ee561a0529ff0d4630e8d8">&#9670;&nbsp;</a></span>DUN_AMT_ITEM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_AMT_ITEM&#160;&#160;&#160;3	/* Amount of objects for rooms/corridors */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5ff0f9dabef88fac80ad81a4d2d4b25d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ff0f9dabef88fac80ad81a4d2d4b25d">&#9670;&nbsp;</a></span>DUN_AMT_ROOM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_AMT_ROOM&#160;&#160;&#160;9	/* Amount of objects for rooms */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac0b0e87ce7684ef733f1ddf6abcaad7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0b0e87ce7684ef733f1ddf6abcaad7f">&#9670;&nbsp;</a></span>DUN_CAVERN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_CAVERN&#160;&#160;&#160;20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>洞窟状のダンジョンが生成される基本確率(1/定数) / 1/chance of having a cavern level </p>
+
+</div>
+</div>
+<a id="ad4100d0b62a50df44e53fb04e632d4eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4100d0b62a50df44e53fb04e632d4eb">&#9670;&nbsp;</a></span>DUN_DEST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_DEST&#160;&#160;&#160;18</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>破壊地形がフロアに発生する基本確率(1/定数) / 1/chance of having a destroyed level </p>
+
+</div>
+</div>
+<a id="afddaf5756a9f3bfda43f2bafa6b0e48c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afddaf5756a9f3bfda43f2bafa6b0e48c">&#9670;&nbsp;</a></span>DUN_MOS_DEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_MOS_DEN&#160;&#160;&#160;2	/* Density of moss streamers */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa10083b21a2632c24ab37a9727ba4094"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa10083b21a2632c24ab37a9727ba4094">&#9670;&nbsp;</a></span>DUN_MOS_RNG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_MOS_RNG&#160;&#160;&#160;10	/* Width of moss streamers */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abcf9b963c8b8c83c83e18a7f87d2e26a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcf9b963c8b8c83c83e18a7f87d2e26a">&#9670;&nbsp;</a></span>DUN_STR_DEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_STR_DEN&#160;&#160;&#160;5	/* Density of streamers */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a586dd914ec2b8bbc35d2f1fd117a7b7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a586dd914ec2b8bbc35d2f1fd117a7b7c">&#9670;&nbsp;</a></span>DUN_STR_DWLW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_STR_DWLW&#160;&#160;&#160;8	/* Density of water &amp; lava streams -KMW- */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a34300ae89bae10028b4db73ccf4cdd15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34300ae89bae10028b4db73ccf4cdd15">&#9670;&nbsp;</a></span>DUN_STR_MAG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_STR_MAG&#160;&#160;&#160;6	/* Number of magma streamers */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5c7f85d7c169cbeae11ed1294a26cf06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c7f85d7c169cbeae11ed1294a26cf06">&#9670;&nbsp;</a></span>DUN_STR_MC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_STR_MC&#160;&#160;&#160;30	/* 1/chance of treasure per magma */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3415a5302fcc8061520ab892d57f7c74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3415a5302fcc8061520ab892d57f7c74">&#9670;&nbsp;</a></span>DUN_STR_MOS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_STR_MOS&#160;&#160;&#160;2	/* Number of moss streamers */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a26d53b023f090a9adf63197ced71e174"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26d53b023f090a9adf63197ced71e174">&#9670;&nbsp;</a></span>DUN_STR_QC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_STR_QC&#160;&#160;&#160;15	/* 1/chance of treasure per quartz */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acb6f1abcc35248698777807b8f44cfa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb6f1abcc35248698777807b8f44cfa8">&#9670;&nbsp;</a></span>DUN_STR_QUA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_STR_QUA&#160;&#160;&#160;4	/* Number of quartz streamers */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf871f052f1e3d43db8abbff7a6ae8ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf871f052f1e3d43db8abbff7a6ae8ee">&#9670;&nbsp;</a></span>DUN_STR_RNG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_STR_RNG&#160;&#160;&#160;5	/* Width of streamers */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a755fd130668a584f27f3e9b401f4d9e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a755fd130668a584f27f3e9b401f4d9e4">&#9670;&nbsp;</a></span>DUN_STR_WAT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_STR_WAT&#160;&#160;&#160;3	/* Max number of rivers */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad28162790ed1797aa8f2e68cd46b82d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad28162790ed1797aa8f2e68cd46b82d1">&#9670;&nbsp;</a></span>DUN_STR_WLW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_STR_WLW&#160;&#160;&#160;1	/* Width of lava &amp; water streamers -KMW- */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b44464c816f319faa536ae9e8a3d689"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b44464c816f319faa536ae9e8a3d689">&#9670;&nbsp;</a></span>DUN_TUN_CHG_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_TUN_CHG_MAX&#160;&#160;&#160;60</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7d6c42e5a4af145e7cd0633f52d4bb79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d6c42e5a4af145e7cd0633f52d4bb79">&#9670;&nbsp;</a></span>DUN_TUN_CHG_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_TUN_CHG_MIN&#160;&#160;&#160;20 /* Chance of changing direction (was 30) */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afe56f19c44ea1e60cf51b16c7a9d6f56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe56f19c44ea1e60cf51b16c7a9d6f56">&#9670;&nbsp;</a></span>DUN_TUN_CON_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_TUN_CON_MAX&#160;&#160;&#160;40</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aba7b8f694d035de4d93c81906e2a49ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba7b8f694d035de4d93c81906e2a49ba">&#9670;&nbsp;</a></span>DUN_TUN_CON_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_TUN_CON_MIN&#160;&#160;&#160;10 /* Chance of extra tunneling (was 15) */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad40c5edff32160dafdf6207ff3ebf525"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad40c5edff32160dafdf6207ff3ebf525">&#9670;&nbsp;</a></span>DUN_TUN_JCT_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_TUN_JCT_MAX&#160;&#160;&#160;90</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0ea7e379bd7b4c358c19825edcfac8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0ea7e379bd7b4c358c19825edcfac8a">&#9670;&nbsp;</a></span>DUN_TUN_JCT_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_TUN_JCT_MIN&#160;&#160;&#160;60 /* Chance of doors at tunnel junctions (was 90) */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add8ad0eed035dfe62025e535b0533c9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add8ad0eed035dfe62025e535b0533c9e">&#9670;&nbsp;</a></span>DUN_TUN_PEN_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_TUN_PEN_MAX&#160;&#160;&#160;70</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a86892a90e546336bea369f2903d7bc20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86892a90e546336bea369f2903d7bc20">&#9670;&nbsp;</a></span>DUN_TUN_PEN_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_TUN_PEN_MIN&#160;&#160;&#160;30 /* Chance of doors at room entrances (was 25) */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5ba75b761646425d6dfaf3134bcc9f57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ba75b761646425d6dfaf3134bcc9f57">&#9670;&nbsp;</a></span>DUN_TUN_RND_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_TUN_RND_MAX&#160;&#160;&#160;20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4261f27f9ad6ded6178aa459163eae3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4261f27f9ad6ded6178aa459163eae3c">&#9670;&nbsp;</a></span>DUN_TUN_RND_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_TUN_RND_MIN&#160;&#160;&#160;5 /* Chance of random direction (was 10) */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a886776efe3675211408c958202625c9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a886776efe3675211408c958202625c9c">&#9670;&nbsp;</a></span>DUN_UNUSUAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_UNUSUAL&#160;&#160;&#160;250</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>通常ではない部屋が生成される基本確率(レベル/定数) / Level/chance of unusual room (was 200) </p>
+
+</div>
+</div>
+<a id="ae92e1b1bd9d0409cc071deb3e5babeee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae92e1b1bd9d0409cc071deb3e5babeee">&#9670;&nbsp;</a></span>DUN_WAT_CHG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_WAT_CHG&#160;&#160;&#160;50	/* 1 in 50 chance of junction in river */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac655fed868fd94580707223878e54b2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac655fed868fd94580707223878e54b2c">&#9670;&nbsp;</a></span>DUN_WAT_DEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_WAT_DEN&#160;&#160;&#160;15	/* Density of rivers */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a15d59d1738e3e98a16b2a8b03bcc6665"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15d59d1738e3e98a16b2a8b03bcc6665">&#9670;&nbsp;</a></span>DUN_WAT_RNG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUN_WAT_RNG&#160;&#160;&#160;2	/* Width of rivers */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a748df0bec09ee517d74c3262909f26ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a748df0bec09ee517d74c3262909f26ef">&#9670;&nbsp;</a></span>DUNGEON_ITEM_FLOOR_DROP_RATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_ITEM_FLOOR_DROP_RATE&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>床に落ちているアイテム数倍率 </p>
+
+</div>
+</div>
+<a id="a0ae0373b14898c175e467bfc6d3c8549"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ae0373b14898c175e467bfc6d3c8549">&#9670;&nbsp;</a></span>DUNGEON_MONSTER_MULTIPLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_MONSTER_MULTIPLE&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ランダムフロアのモンスター生成倍率 </p>
+
+</div>
+</div>
+<a id="aedf87ce52717b4dad99354b09ff152b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedf87ce52717b4dad99354b09ff152b1">&#9670;&nbsp;</a></span>EMPTY_LEVEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EMPTY_LEVEL&#160;&#160;&#160;24</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アリーナレベル(外壁のないフロア)の生成される基本確率(1/定数) / 1/chance of being 'empty' (15) </p>
+
+</div>
+</div>
+<a id="a6929becf65c6121663183d74d9305901"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6929becf65c6121663183d74d9305901">&#9670;&nbsp;</a></span>FUEL_LAMP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FUEL_LAMP&#160;&#160;&#160;15000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ランタンの基本寿命値 / Maximum amount of fuel in a lantern </p>
+
+</div>
+</div>
+<a id="ada39f69faca0627747026c7a13621a89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada39f69faca0627747026c7a13621a89">&#9670;&nbsp;</a></span>FUEL_TORCH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FUEL_TORCH&#160;&#160;&#160;5000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>松明の基本寿命値 / Maximum amount of fuel in a torch </p>
+
+</div>
+</div>
+<a id="a3ab3dc98fa2d5274a83f74be49f6d1f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ab3dc98fa2d5274a83f74be49f6d1f6">&#9670;&nbsp;</a></span>GREAT_OBJ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GREAT_OBJ&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ベースアイテム生成階層が加算される確率 </p>
+<p>There is a 1/10 (10%) chance of inflating the requested object_level during the creation of an object (see "get_obj_num()" in "object.c"). Lower values yield better objects more often. </p>
+
+</div>
+</div>
+<a id="a44b0117eaae1b348346e60da720521d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44b0117eaae1b348346e60da720521d1">&#9670;&nbsp;</a></span>GRINDNOISE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GRINDNOISE&#160;&#160;&#160;20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a95989cc5ea4f85340eff2b6526d0fa8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95989cc5ea4f85340eff2b6526d0fa8c">&#9670;&nbsp;</a></span>GROUP_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GROUP_MAX&#160;&#160;&#160;32</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="monster-generator_8cpp.html#a7f34ce3e6f1935352c4d961a5cc5a8b6" title="モンスターを目標地点に集団生成する / Attempt to place a &quot;group&quot; of monsters around the given location">place_monster_group()</a> 関数によるモンスターのGROUP生成時の配置最大数 / Maximum size of a group of monsters </p>
+
+</div>
+</div>
+<a id="a37010e25746b111cb60669336bdaf7ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37010e25746b111cb60669336bdaf7ff">&#9670;&nbsp;</a></span>HURT_CHANCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HURT_CHANCE&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>属性攻撃を受けた際に能力値低下を起こす確率(1/X) / 1/x chance of reducing stats (for elemental attacks) </p>
+
+</div>
+</div>
+<a id="a005ddcd576df1ac4ecd6b8c7fe340d45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a005ddcd576df1ac4ecd6b8c7fe340d45">&#9670;&nbsp;</a></span>IM_LUCK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IM_LUCK&#160;&#160;&#160;7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>1/nの確率でrandom_resistance()で複数免疫の除去処理が免除される </p>
+
+</div>
+</div>
+<a id="ab3bcc88a6f33f4426f94d4ccfc66e7ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3bcc88a6f33f4426f94d4ccfc66e7ba">&#9670;&nbsp;</a></span>INN_DUNGEON_TURN_ADJ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INN_DUNGEON_TURN_ADJ&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>宿屋で時間をつぶした場合に増える dungeon_turn の倍率 </p>
+
+</div>
+</div>
+<a id="a48cec97e3ec299a5c8ed1cff1536788d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48cec97e3ec299a5c8ed1cff1536788d">&#9670;&nbsp;</a></span>LAKE_LEVEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LAKE_LEVEL&#160;&#160;&#160;24</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>川や湖のあるフロアの生成される確率(1/定数) / 1/chance of being a lake on the level </p>
+
+</div>
+</div>
+<a id="a01f08d46080872b9f4284873b7f9dee4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01f08d46080872b9f4284873b7f9dee4">&#9670;&nbsp;</a></span>MAX_DAYS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_DAYS&#160;&#160;&#160;20000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>内部処理中で保持される最大日数 / Maximum days </p>
+
+</div>
+</div>
+<a id="ae743e5f67538583e9fd942e7cddbb1a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae743e5f67538583e9fd942e7cddbb1a3">&#9670;&nbsp;</a></span>MAX_REPRO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_REPRO&#160;&#160;&#160;100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスター増殖の最大数 </p>
+<p>A monster can only "multiply" (reproduce) if there are fewer than 100 monsters on the level capable of such spontaneous reproduction. This is a hack which prevents the "m_list[]" array from exploding due to reproducing monsters. Messy, but necessary. </p>
+
+</div>
+</div>
+<a id="ab80d911dd5b565283384076e22d4c7ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab80d911dd5b565283384076e22d4c7ef">&#9670;&nbsp;</a></span>MAX_SIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_SIGHT&#160;&#160;&#160;20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーの最大視界範囲(マス) / Maximum view distance </p>
+
+</div>
+</div>
+<a id="a23790b99771050d85adbc8e9b21529ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23790b99771050d85adbc8e9b21529ff">&#9670;&nbsp;</a></span>MAX_TELEPORT_DISTANCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_TELEPORT_DISTANCE&#160;&#160;&#160;200</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>テレポート最大距離 </p>
+
+</div>
+</div>
+<a id="aae63ed221711f86cc8a54b0aef3929d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae63ed221711f86cc8a54b0aef3929d3">&#9670;&nbsp;</a></span>MAX_VAMPIRIC_DRAIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_VAMPIRIC_DRAIN&#160;&#160;&#160;50</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>吸血処理の最大回復HP </p>
+
+</div>
+</div>
+<a id="afeab20bff169a2c82f7ac501ef0dd842"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afeab20bff169a2c82f7ac501ef0dd842">&#9670;&nbsp;</a></span>MIN_M_ALLOC_TD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MIN_M_ALLOC_TD&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>街(昼間)の最低住人配置数 / The town starts out with 4 residents during the day </p>
+
+</div>
+</div>
+<a id="ae9f07462d7754b64bc54a8de1803ce9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9f07462d7754b64bc54a8de1803ce9a">&#9670;&nbsp;</a></span>MIN_M_ALLOC_TN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MIN_M_ALLOC_TN&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>街(夜間)の最低住人配置数 / The town starts out with 8 residents during the night </p>
+
+</div>
+</div>
+<a id="a78f62b276a917d451b3d9bdc52846cf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78f62b276a917d451b3d9bdc52846cf3">&#9670;&nbsp;</a></span>MON_DRAIN_LIFE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MON_DRAIN_LIFE&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターの打撃によるプレイヤーの経験値吸収基本倍率(%) / Percent of player exp drained per hit </p>
+
+</div>
+</div>
+<a id="a3290a68cabb39e129a86e2e0554e3c71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3290a68cabb39e129a86e2e0554e3c71">&#9670;&nbsp;</a></span>MON_MULT_ADJ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MON_MULT_ADJ&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターの増殖しにくさの基本倍率 / High value slows multiplication </p>
+
+</div>
+</div>
+<a id="a8b86497a0bf4f6d260776ddcfc41e32c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b86497a0bf4f6d260776ddcfc41e32c">&#9670;&nbsp;</a></span>MON_SUMMON_ADJ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MON_SUMMON_ADJ&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>現在未使用 Adjust level of summoned creatures </p>
+
+</div>
+</div>
+<a id="ab9990d922d8afa47af5c305657362060"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9990d922d8afa47af5c305657362060">&#9670;&nbsp;</a></span>NASTY_GENERATE_RATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NASTY_GENERATE_RATE&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>クッソ汚いものが生成される倍率 <br  />
+ </p>
+
+</div>
+</div>
+<a id="aeb49446a7ac155f334da451aba59abe3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb49446a7ac155f334da451aba59abe3">&#9670;&nbsp;</a></span>NASTY_MON_BASE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NASTY_MON_BASE&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>深層モンスターが生成される(NASTY生成)の基本確率(1/x) </p>
+<p>There is a 1/25 (4%) chance of inflating the requested monster_level during the creation of a monsters (see "get_mon_num()" in "monster.c"). Lower values yield harder monsters more often. </p>
+
+</div>
+</div>
+<a id="a7b91c35503d0c1cdeda395c3118c6fba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b91c35503d0c1cdeda395c3118c6fba">&#9670;&nbsp;</a></span>NASTY_MON_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NASTY_MON_MAX&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>深層モンスターが1フロアに生成される最大数 <br  />
+ </p>
+
+</div>
+</div>
+<a id="a8c7d8bbac0d0d7332cad2e330e14474d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c7d8bbac0d0d7332cad2e330e14474d">&#9670;&nbsp;</a></span>NASTY_MON_PLUS_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NASTY_MON_PLUS_MAX&#160;&#160;&#160;25</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>深層モンスターの階層加算最大量 </p>
+
+</div>
+</div>
+<a id="ac56313a4599b4f089a41b5bc95fca416"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac56313a4599b4f089a41b5bc95fca416">&#9670;&nbsp;</a></span>PENETRATE_INVULNERABILITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PENETRATE_INVULNERABILITY&#160;&#160;&#160;13</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>無敵化が破られる確率(1/x) / 1/x chance of hurting even if invulnerable! </p>
+
+</div>
+</div>
+<a id="aac59b1241c228ff862ac2d39588f7135"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac59b1241c228ff862ac2d39588f7135">&#9670;&nbsp;</a></span>SINDARIN_NAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SINDARIN_NAME&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ランダムアーティファクトにシンダリン銘をつける確率 </p>
+
+</div>
+</div>
+<a id="aed96556aae1426307f74229637325070"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed96556aae1426307f74229637325070">&#9670;&nbsp;</a></span>SMALL_LEVEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SMALL_LEVEL&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>小さいフロアの生成される基本確率(1/定数) / 1/chance of smaller size (3) </p>
+
+</div>
+</div>
+<a id="ac204ce14e46c546c41da47872a58c346"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac204ce14e46c546c41da47872a58c346">&#9670;&nbsp;</a></span>SPEAK_CHANCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SPEAK_CHANCE&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af642d72dde703cc47d5a5ed0fd964f44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af642d72dde703cc47d5a5ed0fd964f44">&#9670;&nbsp;</a></span>SWORDFISH_LUCK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SWORDFISH_LUCK&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>1/nの確率で一定以上のスレイダメージを超える武器のスレイ喪失が回避される。 </p>
+
+</div>
+</div>
+<a id="a365f59d0a13d10d6ac11c23c50bf8476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a365f59d0a13d10d6ac11c23c50bf8476">&#9670;&nbsp;</a></span>TABLE_NAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TABLE_NAME&#160;&#160;&#160;20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ランダムアーティファクトに漢字銘をつける確率(正確には TABLE_NAME - SINDARIN_NAME %)となる </p>
+
+</div>
+</div>
+<a id="a1cf273782efbc8e8af825aa9e127e5d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cf273782efbc8e8af825aa9e127e5d4">&#9670;&nbsp;</a></span>TOWN_DAWN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TOWN_DAWN&#160;&#160;&#160;10000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>1日分のターン / Number of ticks from dawn to dawn XXX </p>
+
+</div>
+</div>
+<a id="a54ff7b95f80937a84b6140deafc17a1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54ff7b95f80937a84b6140deafc17a1b">&#9670;&nbsp;</a></span>TURNS_PER_TICK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TURNS_PER_TICK&#160;&#160;&#160;10L</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>時間経過処理を行うターン数の刻み / Number of energy-gain-turns per ticks </p>
+
+</div>
+</div>
+<a id="a32c19c04432813e0b22bc14e9ff51401"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32c19c04432813e0b22bc14e9ff51401">&#9670;&nbsp;</a></span>TY_CURSE_CHANCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TY_CURSE_CHANCE&#160;&#160;&#160;200</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>太古の怨念の1ターン毎の発動確率(1/n) </p>
+
+</div>
+</div>
+<a id="a61cdd59c422245c7b6f8fabd5dd92793"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61cdd59c422245c7b6f8fabd5dd92793">&#9670;&nbsp;</a></span>USE_DEVICE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USE_DEVICE&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔道具の最低失敗基準値 x&gt; Harder devices x&lt; Easier devices <br  />
+ </p>
+
+</div>
+</div>
+<a id="ac58195cf4f3adfe71d5dc0ce48671c36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac58195cf4f3adfe71d5dc0ce48671c36">&#9670;&nbsp;</a></span>WEIRD_LUCK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WEIRD_LUCK&#160;&#160;&#160;12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>1/nの確率でrandom_resistance()の処理中バイアス外の耐性がつき、become_random_artifactで4を超えるpvalが許可される。 </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分17秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

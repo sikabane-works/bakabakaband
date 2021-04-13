@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/object-hook/hook-armor.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_8bb31b59ca59df56bca4016a9e010a5e.html">object-hook</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">hook-armor.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="hook-armor_8h_source.html">object-hook/hook-armor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-checker_8h_source.html">object-hook/hook-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-info_8h_source.html">object/object-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-armor-types_8h_source.html">sv-definition/sv-armor-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+hook-armor.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="hook-armor_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object-hook_2hook-armor_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object-hook_2hook-armor_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object-hook_2hook-armor_8cpp">
+<area shape="rect" title=" " alt="" coords="473,5,661,61"/>
+<area shape="rect" href="hook-armor_8h.html" title=" " alt="" coords="205,206,374,233"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="351,109,479,151"/>
+<area shape="rect" href="hook-checker_8h.html" title=" " alt="" coords="398,206,581,233"/>
+<area shape="rect" href="object-info_8h.html" title=" " alt="" coords="553,117,684,143"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="656,199,789,240"/>
+<area shape="rect" href="sv-armor-types_8h.html" title=" " alt="" coords="759,109,902,151"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="466,288,595,315"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="5,363,96,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="120,363,211,389"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="235,363,333,389"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="357,363,456,389"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="481,363,581,389"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="605,363,779,389"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="804,363,945,389"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,363,1116,389"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="659,288,786,315"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:adf0b018f9d38a4775c08937b86f74b40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hook-armor_8cpp.html#adf0b018f9d38a4775c08937b86f74b40">item_tester_hook_wear</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:adf0b018f9d38a4775c08937b86f74b40"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトを防具として装備できるかの判定 / The "wearable" tester  <a href="hook-armor_8cpp.html#adf0b018f9d38a4775c08937b86f74b40">[詳解]</a><br /></td></tr>
+<tr class="separator:adf0b018f9d38a4775c08937b86f74b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2c028a0e35a5c014a2ba37c4a529601"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hook-armor_8cpp.html#ab2c028a0e35a5c014a2ba37c4a529601">item_tester_hook_cursed</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:ab2c028a0e35a5c014a2ba37c4a529601"><td class="mdescLeft">&#160;</td><td class="mdescRight">呪術領域の各処理に使える呪われた装備かどうかを返す。 / An "item_tester_hook" for offer  <a href="hook-armor_8cpp.html#ab2c028a0e35a5c014a2ba37c4a529601">[詳解]</a><br /></td></tr>
+<tr class="separator:ab2c028a0e35a5c014a2ba37c4a529601"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a678629dc55495987f60d45872e53a537"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537">object_is_armour</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:a678629dc55495987f60d45872e53a537"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour  <a href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537">[詳解]</a><br /></td></tr>
+<tr class="separator:a678629dc55495987f60d45872e53a537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ab2c028a0e35a5c014a2ba37c4a529601"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2c028a0e35a5c014a2ba37c4a529601">&#9670;&nbsp;</a></span>item_tester_hook_cursed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> item_tester_hook_cursed </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>呪術領域の各処理に使える呪われた装備かどうかを返す。 / An "item_tester_hook" for offer </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>オブジェクト構造体の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>使える装備ならばTRUEを返す </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="hook-armor_8cpp_ab2c028a0e35a5c014a2ba37c4a529601_cgraph.png" border="0" usemap="#ahook-armor_8cpp_ab2c028a0e35a5c014a2ba37c4a529601_cgraph" alt=""/></div>
+<map name="ahook-armor_8cpp_ab2c028a0e35a5c014a2ba37c4a529601_cgraph" id="ahook-armor_8cpp_ab2c028a0e35a5c014a2ba37c4a529601_cgraph">
+<area shape="rect" title="呪術領域の各処理に使える呪われた装備かどうかを返す。 / An &quot;item_tester_hook&quot; for offer" alt="" coords="5,5,173,32"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="221,5,341,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="hook-armor_8cpp_ab2c028a0e35a5c014a2ba37c4a529601_icgraph.png" border="0" usemap="#ahook-armor_8cpp_ab2c028a0e35a5c014a2ba37c4a529601_icgraph" alt=""/></div>
+<map name="ahook-armor_8cpp_ab2c028a0e35a5c014a2ba37c4a529601_icgraph" id="ahook-armor_8cpp_ab2c028a0e35a5c014a2ba37c4a529601_icgraph">
+<area shape="rect" title="呪術領域の各処理に使える呪われた装備かどうかを返す。 / An &quot;item_tester_hook&quot; for offer" alt="" coords="860,410,1028,437"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="713,410,812,437"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="588,410,665,437"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,30,274,57"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,435,281,462"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,511,501,538"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,258,121,285"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,157,113,183"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,562,518,589"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,638,293,665"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,714,540,741"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,334,117,361"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,613,509,639"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,207,269,234"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,258,485,285"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,765,491,791"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,106,286,133"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,55,505,82"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,410,488,437"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,815,516,842"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adf0b018f9d38a4775c08937b86f74b40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf0b018f9d38a4775c08937b86f74b40">&#9670;&nbsp;</a></span>item_tester_hook_wear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> item_tester_hook_wear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>オブジェクトを防具として装備できるかの判定 / The "wearable" tester </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>判定するオブジェクトの構造体参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>オブジェクトが防具として装備できるならTRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="hook-armor_8cpp_adf0b018f9d38a4775c08937b86f74b40_cgraph.png" border="0" usemap="#ahook-armor_8cpp_adf0b018f9d38a4775c08937b86f74b40_cgraph" alt=""/></div>
+<map name="ahook-armor_8cpp_adf0b018f9d38a4775c08937b86f74b40_cgraph" id="ahook-armor_8cpp_adf0b018f9d38a4775c08937b86f74b40_cgraph">
+<area shape="rect" title="オブジェクトを防具として装備できるかの判定 / The &quot;wearable&quot; tester" alt="" coords="5,5,161,32"/>
+<area shape="rect" href="object-info_8cpp.html#a73ccd17731c578cf0bb290bf1833f4a2" title="オブジェクトの該当装備部位IDを返す / Determine which equipment slot (if any) an item likes" alt="" coords="209,5,288,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="hook-armor_8cpp_adf0b018f9d38a4775c08937b86f74b40_icgraph.png" border="0" usemap="#ahook-armor_8cpp_adf0b018f9d38a4775c08937b86f74b40_icgraph" alt=""/></div>
+<map name="ahook-armor_8cpp_adf0b018f9d38a4775c08937b86f74b40_icgraph" id="ahook-armor_8cpp_adf0b018f9d38a4775c08937b86f74b40_icgraph">
+<area shape="rect" title="オブジェクトを防具として装備できるかの判定 / The &quot;wearable&quot; tester" alt="" coords="864,5,1020,32"/>
+<area shape="rect" href="cmd-equipment_8cpp.html#ac5a7ea600612007cbf7d105f433213ab" title="装備するコマンドのメインルーチン / Wield or wear a single item from the pack or floor" alt="" coords="712,5,816,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a678629dc55495987f60d45872e53a537"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a678629dc55495987f60d45872e53a537">&#9670;&nbsp;</a></span>object_is_armour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> object_is_armour </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>対象のオブジェクト構造体ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>矢弾として使えるならばTRUEを返す </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="hook-armor_8cpp_a678629dc55495987f60d45872e53a537_icgraph.png" border="0" usemap="#ahook-armor_8cpp_a678629dc55495987f60d45872e53a537_icgraph" alt=""/></div>
+<map name="ahook-armor_8cpp_a678629dc55495987f60d45872e53a537_icgraph" id="ahook-armor_8cpp_a678629dc55495987f60d45872e53a537_icgraph">
+<area shape="rect" title="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour" alt="" coords="931,1009,1052,1036"/>
+<area shape="rect" href="player-damage_8cpp.html#a3481d6c6d7162220dcda59d8452cdf4b" title="酸攻撃による装備のAC劣化処理 / Acid has hit the player, attempt to affect some armor." alt="" coords="721,56,830,83"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a53bf0b2e4c1aa52241e31f957a28e240" title="エッセンスを実際に付加する" alt="" coords="259,1085,358,1112"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#ae046ca978cc34c3daa319e1d28eb6e3a" title=" " alt="" coords="689,1429,862,1470"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="227,233,391,260"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="5,1435,168,1461"/>
+<area shape="rect" href="player-status_8cpp.html#a3ab6132dfd3fce5b14cfdf05b81bf828" title=" " alt="" coords="724,1495,827,1521"/>
+<area shape="rect" href="player-status_8cpp.html#aa57bdcb684bd82fec049ec9d543ebdb1" title=" " alt="" coords="733,1545,818,1572"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="485,731,584,757"/>
+<area shape="rect" href="spells-object_8cpp.html#ac16ead42e822331e4ce782ea6b433891" title="装備修正強化処理のメインルーチン / Enchant an item (in the inventory or on the floor)" alt="" coords="724,1596,827,1623"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#afaf2f5455f471a31dc691521348a6a2f" title=" " alt="" coords="718,1647,833,1673"/>
+<area shape="rect" href="object-curse_8cpp.html#a749ffeeeaa9633e0b6300253e4bc9730" title="アイテムに付加される可能性のある呪いを指定する。" alt="" coords="736,556,815,583"/>
+<area shape="rect" href="random-art-generator_8cpp.html#af3bb4d9fcbd68f6c12f4f2e9fe847705" title="防具のAC修正が高すぎた場合に弱化させる" alt="" coords="693,187,857,229"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ade524ee005c4ca22985476c2f0e3f301" title="防具ならばAC修正、武具なら殺戮修正を付与する" alt="" coords="695,310,855,351"/>
+<area shape="rect" href="autopick-matcher_8cpp.html#a24dad2a6a647be39be6b1d9aba964aad" title="床のアイテムが自動拾いに一致するかどうかを調べる関数だけを格納したファイル" alt="" coords="710,1701,841,1728"/>
+<area shape="rect" href="random-art-generator_8cpp.html#afcf25233afaf28cc2edbf1a4ed1cf188" title=" " alt="" coords="693,1753,857,1794"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="668,1136,883,1163"/>
+<area shape="rect" href="random-art-misc_8cpp.html#a65c1614ea205865bd67c8172e68a98ab" title="ランダムアーティファクト生成中、対象のオブジェクトにその他特性を付加する。/ Add one misc flag on generation of randam artifact." alt="" coords="725,491,825,517"/>
+<area shape="rect" href="spells-nature_8cpp.html#a96d8f436a13def034a20187477259b79" title="防具の錆止め防止処理" alt="" coords="273,832,345,859"/>
+<area shape="rect" href="player-damage_8cpp.html#a2cc414088296f068951969e2748ba07e" title="酸属性によるプレイヤー損害処理 / Hurt the player with Acid" alt="" coords="495,56,574,83"/>
+<area shape="rect" href="trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="276,5,341,32"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="235,56,382,83"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a5de1dfd64f941a47e81c3fb2c043a3e2" title=" " alt="" coords="235,107,382,149"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="37,516,136,543"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="33,309,141,336"/>
+<area shape="rect" href="player-status_8cpp.html#a7ad432f906fa9311634f48b302a51952" title="プレイヤーの全ステータスを更新する / Calculate the players current &quot;state&quot;, taking into account not only race/class in..." alt="" coords="476,1588,593,1615"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a6eaee5f452406fa42a3b8a227b787bd6" title="一部の打撃種別の場合のみ、避けた旨のメッセージ表示と盾技能スキル向上を行う" alt="" coords="452,1639,617,1681"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="261,309,356,336"/>
+<area shape="rect" href="object-curse_8cpp.html#a8b5d44a36e5f2d098b175f3f8f08832a" title="装備への呪い付加判定と付加処理" alt="" coords="474,461,595,488"/>
+<area shape="rect" href="object-ego_8cpp.html#a49336248c9f29791999fea5815dbe0eb" title=" " alt="" coords="473,512,596,539"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#ab1745b03a5b87acd3ab1822e6cccd853" title="固定アーティファクトオブジェクトに呪いフラグを付加する" alt="" coords="461,563,608,605"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#a72bb110e55e917ff2eda3b4b7f2ee5b3" title="固定アーティファクトの生成 / Artifact code" alt="" coords="469,629,600,656"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a8046cd0ba42b59d94281319546c9028a" title=" " alt="" coords="466,680,603,707"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a475e4d9654f2d2645206248e0e8e2d59" title=" " alt="" coords="469,411,601,437"/>
+<area shape="rect" href="object-generator_8cpp.html#a9d4bf7f51bf5056089190534c673d068" title="オブジェクト構造体にベースアイテムを作成する Prepare an object based on an object kind." alt="" coords="490,360,579,387"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="30,832,143,859"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a797b62fcd176848c22caea6a89c96911" title="エッセンスの抽出処理" alt="" coords="255,600,362,627"/>
+<area shape="rect" href="spells-enchant_8cpp.html#a5af6fe9747dee32bac3e500a02712ee1" title="アイテム凡庸化のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="254,499,363,525"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a8108553a0b971c8d22ad18d214df8fb3" title="自動拾いの検索" alt="" coords="473,1705,596,1732"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a58a59a6c0789acd4d0fd87e349e49b5c" title=" " alt="" coords="473,1756,597,1783"/>
+<area shape="rect" href="spells-equipment_8cpp.html#aa03fdf6f0d68dd8464e6b6b8e1d5641a" title="プレイヤーの装備劣化処理 / Apply disenchantment to the player&#39;s stuff" alt="" coords="473,1035,596,1061"/>
+<area shape="rect" href="autopick-entry_8cpp.html#a4f3f90481be8626c7f36c064d773d490" title=" " alt="" coords="465,1187,604,1229"/>
+<area shape="rect" href="spells-perception_8cpp.html#ac3df176ff52478263f041532247ea900" title="アイテム鑑定のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="267,1435,351,1461"/>
+<area shape="rect" href="spells-perception_8cpp.html#a37cf235976cfb937acb8a284ed66593e" title="アイテム*鑑定*のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="262,1355,355,1381"/>
+<area shape="rect" href="autopick-destroyer_8cpp.html#a7e4c7c11cb092024c7638404dbb7ed77" title=" " alt="" coords="457,1319,613,1345"/>
+<area shape="rect" href="hook-perception_8cpp.html#a21af8fc3f3539e99620759f2b95ad21f" title="アイテムが*鑑定*済みの武器防具かを判定する /" alt="" coords="449,1253,620,1294"/>
+<area shape="rect" href="hook-perception_8cpp.html#a0f82616fb3efe1f55343f15424106b22" title="アイテムが鑑定済みの武器防具かを判定する /" alt="" coords="449,1471,620,1513"/>
+<area shape="rect" href="hook-perception_8cpp.html#a9380299c755c258c249313a2274236ec" title="アイテムが並の価値のアイテムかどうか判定する / Check if an object is nameless weapon or armour" alt="" coords="216,665,401,706"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="478,1085,591,1112"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="483,259,586,285"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時55分47秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

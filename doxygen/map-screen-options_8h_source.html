@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/game-option/map-screen-options.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_75d1aa6e715a0a2a957f68c14f483856.html">game-option</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">map-screen-options.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="map-screen-options_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#ac3661652b3febbf321700834466ddcc1">center_player</a>; <span class="comment">/* Center map while walking (*slow*) */</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#a690d1fb1e709637b4c184a81da2f7d0e">center_running</a>; <span class="comment">/* Centering even while running */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#a64c2f91656b85a14912009a48ff60789">view_yellow_lite</a>; <span class="comment">/* Use special colors for torch-lit grids */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#ae4d227547ebc62a82de846f935755164">view_bright_lite</a>; <span class="comment">/* Use special colors for &#39;viewable&#39; grids */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#a423ab2c1c8f49531fc1a48db1a647f0d">view_granite_lite</a>; <span class="comment">/* Use special colors for wall grids (slow) */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#a31f00db697413df55cab506eec54569c">view_special_lite</a>; <span class="comment">/* Use special colors for floor grids (slow) */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#ad30dc25d497c029fb4c2095fb9e0c728">view_perma_grids</a>; <span class="comment">/* Map remembers all perma-lit grids */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#af3359f55d5a3d2b64d0167ef28ca093f">view_torch_grids</a>; <span class="comment">/* Map remembers all torch-lit grids */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#a5c047d241d0a64cc4c3bbd89d7f99fd4">view_unsafe_grids</a>; <span class="comment">/* Map marked by detect traps */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#af7786d66457a1c4b2a027e5baa75a9eb">view_reduce_view</a>; <span class="comment">/* Reduce view-radius in town */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#a3e5f27f1e9146ea55c57161e7411490e">view_hidden_walls</a>; <span class="comment">/* Map walls hidden in other walls. */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#a48921f3a61e1b7f7a424b8b1793b6f3b">view_unsafe_walls</a>; <span class="comment">/* Map hidden walls not marked by detect traps. */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#a7ef6913c632126d6c18184bce3d913c7">fresh_before</a>; <span class="comment">/* Flush output while continuous command */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#abf62f28b0c735b8b17b0b7cfbd4f1ed7">fresh_after</a>; <span class="comment">/* Flush output after monster&#39;s move */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#a55a11f717f02e93641fbb9dee7437838">fresh_once</a>; <span class="comment">/* Flush output only once per key input */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#a41c8b4547e4df6918f0bce55e92fc29a">fresh_message</a>; <span class="comment">/* Flush output after every message */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#a81c05c74d1c9a28bf8e9f96180f759a5">hilite_player</a>; <span class="comment">/* Hilite the player with the cursor */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="map-screen-options_8h.html#a22a2f55f3aed656df0ddfaabfbc225a5">display_path</a>; <span class="comment">/* Display actual path before shooting */</span></div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_a22a2f55f3aed656df0ddfaabfbc225a5"><div class="ttname"><a href="map-screen-options_8h.html#a22a2f55f3aed656df0ddfaabfbc225a5">display_path</a></div><div class="ttdeci">bool display_path</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:20</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_a31f00db697413df55cab506eec54569c"><div class="ttname"><a href="map-screen-options_8h.html#a31f00db697413df55cab506eec54569c">view_special_lite</a></div><div class="ttdeci">bool view_special_lite</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:8</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_a3e5f27f1e9146ea55c57161e7411490e"><div class="ttname"><a href="map-screen-options_8h.html#a3e5f27f1e9146ea55c57161e7411490e">view_hidden_walls</a></div><div class="ttdeci">bool view_hidden_walls</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:13</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_a41c8b4547e4df6918f0bce55e92fc29a"><div class="ttname"><a href="map-screen-options_8h.html#a41c8b4547e4df6918f0bce55e92fc29a">fresh_message</a></div><div class="ttdeci">bool fresh_message</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:18</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_a423ab2c1c8f49531fc1a48db1a647f0d"><div class="ttname"><a href="map-screen-options_8h.html#a423ab2c1c8f49531fc1a48db1a647f0d">view_granite_lite</a></div><div class="ttdeci">bool view_granite_lite</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:7</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_a48921f3a61e1b7f7a424b8b1793b6f3b"><div class="ttname"><a href="map-screen-options_8h.html#a48921f3a61e1b7f7a424b8b1793b6f3b">view_unsafe_walls</a></div><div class="ttdeci">bool view_unsafe_walls</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:14</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_a55a11f717f02e93641fbb9dee7437838"><div class="ttname"><a href="map-screen-options_8h.html#a55a11f717f02e93641fbb9dee7437838">fresh_once</a></div><div class="ttdeci">bool fresh_once</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:17</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_a5c047d241d0a64cc4c3bbd89d7f99fd4"><div class="ttname"><a href="map-screen-options_8h.html#a5c047d241d0a64cc4c3bbd89d7f99fd4">view_unsafe_grids</a></div><div class="ttdeci">bool view_unsafe_grids</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:11</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_a64c2f91656b85a14912009a48ff60789"><div class="ttname"><a href="map-screen-options_8h.html#a64c2f91656b85a14912009a48ff60789">view_yellow_lite</a></div><div class="ttdeci">bool view_yellow_lite</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:5</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_a690d1fb1e709637b4c184a81da2f7d0e"><div class="ttname"><a href="map-screen-options_8h.html#a690d1fb1e709637b4c184a81da2f7d0e">center_running</a></div><div class="ttdeci">bool center_running</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:4</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_a7ef6913c632126d6c18184bce3d913c7"><div class="ttname"><a href="map-screen-options_8h.html#a7ef6913c632126d6c18184bce3d913c7">fresh_before</a></div><div class="ttdeci">bool fresh_before</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:15</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_a81c05c74d1c9a28bf8e9f96180f759a5"><div class="ttname"><a href="map-screen-options_8h.html#a81c05c74d1c9a28bf8e9f96180f759a5">hilite_player</a></div><div class="ttdeci">bool hilite_player</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:19</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_abf62f28b0c735b8b17b0b7cfbd4f1ed7"><div class="ttname"><a href="map-screen-options_8h.html#abf62f28b0c735b8b17b0b7cfbd4f1ed7">fresh_after</a></div><div class="ttdeci">bool fresh_after</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:16</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_ac3661652b3febbf321700834466ddcc1"><div class="ttname"><a href="map-screen-options_8h.html#ac3661652b3febbf321700834466ddcc1">center_player</a></div><div class="ttdeci">bool center_player</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:3</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_ad30dc25d497c029fb4c2095fb9e0c728"><div class="ttname"><a href="map-screen-options_8h.html#ad30dc25d497c029fb4c2095fb9e0c728">view_perma_grids</a></div><div class="ttdeci">bool view_perma_grids</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:9</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_ae4d227547ebc62a82de846f935755164"><div class="ttname"><a href="map-screen-options_8h.html#ae4d227547ebc62a82de846f935755164">view_bright_lite</a></div><div class="ttdeci">bool view_bright_lite</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:6</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_af3359f55d5a3d2b64d0167ef28ca093f"><div class="ttname"><a href="map-screen-options_8h.html#af3359f55d5a3d2b64d0167ef28ca093f">view_torch_grids</a></div><div class="ttdeci">bool view_torch_grids</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:10</div></div>
+<div class="ttc" id="amap-screen-options_8h_html_af7786d66457a1c4b2a027e5baa75a9eb"><div class="ttname"><a href="map-screen-options_8h.html#af7786d66457a1c4b2a027e5baa75a9eb">view_reduce_view</a></div><div class="ttdeci">bool view_reduce_view</div><div class="ttdef"><b>Definition:</b> map-screen-options.cpp:12</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

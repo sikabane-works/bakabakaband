@@ -1,0 +1,49 @@
+<map id="do_cmd_attack" name="do_cmd_attack">
+<area shape="rect" id="node1" title="プレイヤーの打撃処理メインルーチン" alt="" coords="1375,727,1485,753"/>
+<area shape="rect" id="node2" href="$mind-berserker_8cpp.html#a73db877ef674132d5c3149ed726ccf47" title="怒りの発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;berserker&#39;." alt="" coords="989,372,1120,399"/>
+<area shape="rect" id="node5" href="$cmd-open-close_8cpp.html#a5a74463d27e5f0d96dd1c49ab85d850c" title="「打ち破る」動作コマンドのメインルーチン / Bash open a door, success based on character strength" alt="" coords="1003,460,1106,487"/>
+<area shape="rect" id="node7" href="$cmd-open-close_8cpp.html#a6945001a0c01e0ef531db77445d1246f" title="「閉じる」コマンドのメインルーチン / Close an open door." alt="" coords="822,259,929,285"/>
+<area shape="rect" id="node8" href="$cmd-open-close_8cpp.html#af905b3420d1017dc794ab89a9d6d0c42" title="箱、床のトラップ解除処理双方の統合メインルーチン / Disarms a trap, or chest" alt="" coords="997,600,1112,627"/>
+<area shape="rect" id="node9" href="$cmd-open-close_8cpp.html#a4da6ce664a625f0aa47bcbee0627fc5f" title="「開ける」コマンドのメインルーチン / Open a closed/locked/jammed door or a closed/locked chest." alt="" coords="824,524,927,551"/>
+<area shape="rect" id="node10" href="$cmd-pet_8cpp.html#a28f35d22f806bfd883341a2cc735003a" title="ペットから騎乗/下馬するコマンドのメインルーチン /" alt="" coords="399,1311,506,1337"/>
+<area shape="rect" id="node14" href="$cmd-open-close_8cpp.html#ae9a608d582edd6d821e9ba557bcc1a1e" title="「くさびを打つ」動作コマンドのメインルーチン / Jam a closed door with a spike" alt="" coords="399,56,506,83"/>
+<area shape="rect" id="node16" href="$cmd-tunnel_8cpp.html#a6c5ca83f853694de1a4f4c4eafae85e2" title="「掘る」動作コマンドのメインルーチン / Tunnels through &quot;walls&quot; (including rubble and closed doors)" alt="" coords="999,144,1110,171"/>
+<area shape="rect" id="node17" href="$realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="991,816,1118,843"/>
+<area shape="rect" id="node37" href="$monk-attack_8cpp.html#affb3013a6705f2f1cc0ffb9f20790ff6" title=" " alt="" coords="824,1475,927,1501"/>
+<area shape="rect" id="node38" href="$mutation-techniques_8cpp.html#a3e245c95b31e183f9b215fd4f91b88d9" title="突然変異でのみ得ることができる特殊能力処理" alt="" coords="1211,752,1283,779"/>
+<area shape="rect" id="node39" href="$cmd-others_8cpp.html#a815a7a5e204c0455b946a163f5012bc0" title=" " alt="" coords="1210,803,1285,829"/>
+<area shape="rect" id="node40" href="$movement-execution_8cpp.html#a586b9fe6bc207183655cdfb8dcfaf464" title="該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す / Move player in the given direction, with the given &quot;pickup&quot; flag." alt="" coords="1193,347,1302,373"/>
+<area shape="rect" id="node41" href="$mind-warrior_8cpp.html#afc4f182d772ec45fd47cf9a74e7fe12c" title="戦士と盗賊における、ヒット＆アウェイのレイシャルパワー/突然変異" alt="" coords="1004,1107,1105,1133"/>
+<area shape="rect" id="node42" href="$monster-attack-player_8cpp.html#aaa47611f7727c9fefb8075e89e11eeef" title="モンスターからプレイヤーへの打撃処理 / Attack the player via physical attacks." alt="" coords="1176,1031,1319,1057"/>
+<area shape="rect" id="node43" href="$player-attack_8cpp.html#a55754960d00a6d79d985245b3495865c" title="皆殺し(全方向攻撃)処理" alt="" coords="1208,397,1287,424"/>
+<area shape="rect" id="node44" href="$mind-samurai_8cpp.html#aa2d1d23953fe1eb69ff6aef1ba627a7c" title="無想による反撃処理" alt="" coords="1174,1132,1321,1159"/>
+<area shape="rect" id="node45" href="$mind-ninja_8cpp.html#a0bb9e2fc92fc023955549549df3f24cf" title="入身処理 / &quot;Rush Attack&quot; routine for Samurai or Ninja" alt="" coords="1202,853,1293,880"/>
+<area shape="rect" id="node46" href="$effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="1168,1233,1327,1260"/>
+<area shape="rect" id="node47" href="$mind-warrior_8cpp.html#a33ba0cd439f851f5e7490b803c73adb4" title="剣の舞い" alt="" coords="821,1424,929,1451"/>
+<area shape="rect" id="node3" href="$cmd-mind_8cpp.html#a49b73965d0ef306e6cb8a9dc70ed212a" title=" " alt="" coords="809,157,941,184"/>
+<area shape="rect" id="node4" href="$cmd-mind_8cpp.html#aabc979c31c0704f59ff46f8254ddb892" title=" " alt="" coords="593,157,731,184"/>
+<area shape="rect" id="node6" href="$input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="7,360,139,387"/>
+<area shape="rect" id="node11" href="$cmd-pet_8cpp.html#a5393c5248eb883f75cebd459120fb959" title="ペットに関するコマンドリストのメインルーチン / Issue a pet command" alt="" coords="219,1180,312,1207"/>
+<area shape="rect" id="node12" href="$mind-cavalry_8cpp.html#a2c94a0c69d66a21e3316df5b6366850f" title="騎兵のレイシャルパワー処理" alt="" coords="238,1311,293,1337"/>
+<area shape="rect" id="node13" href="$racial-switcher_8cpp.html#ac21c6b6a9eae71ce476478232b11f8e0" title="レイシャルと突然変異の技能処理 / Racial powers (and mutations)" alt="" coords="5,1303,140,1345"/>
+<area shape="rect" id="node15" href="$cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="217,5,313,32"/>
+<area shape="rect" id="node18" href="$spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="837,816,914,843"/>
+<area shape="rect" id="node19" href="$spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="410,943,495,969"/>
+<area shape="rect" id="node20" href="$spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="403,1177,502,1204"/>
+<area shape="rect" id="node21" href="$display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="601,1069,723,1096"/>
+<area shape="rect" id="node22" href="$cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="207,487,323,513"/>
+<area shape="rect" id="node23" href="$cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="215,867,315,893"/>
+<area shape="rect" id="node24" href="$cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="188,683,343,709"/>
+<area shape="rect" id="node25" href="$cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="391,613,515,640"/>
+<area shape="rect" id="node26" href="$knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="563,1272,761,1299"/>
+<area shape="rect" id="node27" href="$cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="212,411,319,437"/>
+<area shape="rect" id="node28" href="$realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="613,765,711,792"/>
+<area shape="rect" id="node29" href="$cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="593,613,731,640"/>
+<area shape="rect" id="node30" href="$cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="415,512,490,539"/>
+<area shape="rect" id="node31" href="$spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="618,461,706,488"/>
+<area shape="rect" id="node32" href="$spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="612,816,712,843"/>
+<area shape="rect" id="node33" href="$spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="398,1051,507,1077"/>
+<area shape="rect" id="node34" href="$spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="597,1019,727,1045"/>
+<area shape="rect" id="node35" href="$player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="615,1221,709,1248"/>
+<area shape="rect" id="node36" href="$player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="587,968,737,995"/>
+</map>

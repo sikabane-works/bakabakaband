@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/status/bad-status-setter.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3b5a16ca9d597ec3bd11cf60fc07b716.html">status</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">bad-status-setter.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="bad-status-setter_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="bad-status-setter_8h.html#a36a6161f66d774d69df887fa4f5fd12b">set_blind</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="bad-status-setter_8h.html#ac2bda63c9e8d91a70dea9a38c6f76c16">set_confused</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="bad-status-setter_8h.html#a54f9f2a1dc27cd7214dccbdad4a0d2d7">set_poisoned</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="bad-status-setter_8h.html#a6152d304ba1b3495baef77a69de9f187">set_afraid</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="bad-status-setter_8h.html#a4f18393e08963daf9454f4d2fe543b1c">set_paralyzed</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="bad-status-setter_8h.html#a13b10e09c11dd68125a9575aec35003a">set_image</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="bad-status-setter_8h.html#a0bc33a623b58388f917651422165fdb4">set_slow</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <span class="keywordtype">bool</span> do_dec);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="bad-status-setter_8h.html#ac1bf0ab6dab8b807333530aa20d1cc22">set_stun</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="bad-status-setter_8h.html#a54b8e49e72feff42856edd22be0d0863">set_cut</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="abad-status-setter_8h_html_a0bc33a623b58388f917651422165fdb4"><div class="ttname"><a href="bad-status-setter_8h.html#a0bc33a623b58388f917651422165fdb4">set_slow</a></div><div class="ttdeci">bool set_slow(player_type *creature_ptr, TIME_EFFECT v, bool do_dec)</div><div class="ttdoc">減速の継続時間をセットする / Set &quot;slow&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> bad-status-setter.cpp:335</div></div>
+<div class="ttc" id="abad-status-setter_8h_html_a13b10e09c11dd68125a9575aec35003a"><div class="ttname"><a href="bad-status-setter_8h.html#a13b10e09c11dd68125a9575aec35003a">set_image</a></div><div class="ttdeci">bool set_image(player_type *creature_ptr, TIME_EFFECT v)</div><div class="ttdoc">幻覚の継続時間をセットする / Set &quot;image&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> bad-status-setter.cpp:284</div></div>
+<div class="ttc" id="abad-status-setter_8h_html_a36a6161f66d774d69df887fa4f5fd12b"><div class="ttname"><a href="bad-status-setter_8h.html#a36a6161f66d774d69df887fa4f5fd12b">set_blind</a></div><div class="ttdeci">bool set_blind(player_type *creature_ptr, TIME_EFFECT v)</div><div class="ttdoc">盲目の継続時間をセットする / Set &quot;blind&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> bad-status-setter.cpp:29</div></div>
+<div class="ttc" id="abad-status-setter_8h_html_a4f18393e08963daf9454f4d2fe543b1c"><div class="ttname"><a href="bad-status-setter_8h.html#a4f18393e08963daf9454f4d2fe543b1c">set_paralyzed</a></div><div class="ttdeci">bool set_paralyzed(player_type *creature_ptr, TIME_EFFECT v)</div><div class="ttdoc">麻痺の継続時間をセットする / Set &quot;paralyzed&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> bad-status-setter.cpp:239</div></div>
+<div class="ttc" id="abad-status-setter_8h_html_a54b8e49e72feff42856edd22be0d0863"><div class="ttname"><a href="bad-status-setter_8h.html#a54b8e49e72feff42856edd22be0d0863">set_cut</a></div><div class="ttdeci">bool set_cut(player_type *creature_ptr, TIME_EFFECT v)</div><div class="ttdoc">出血の継続時間をセットする / Set &quot;cut&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> bad-status-setter.cpp:482</div></div>
+<div class="ttc" id="abad-status-setter_8h_html_a54f9f2a1dc27cd7214dccbdad4a0d2d7"><div class="ttname"><a href="bad-status-setter_8h.html#a54f9f2a1dc27cd7214dccbdad4a0d2d7">set_poisoned</a></div><div class="ttdeci">bool set_poisoned(player_type *creature_ptr, TIME_EFFECT v)</div><div class="ttdoc">毒の継続時間をセットする / Set &quot;poisoned&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> bad-status-setter.cpp:152</div></div>
+<div class="ttc" id="abad-status-setter_8h_html_a6152d304ba1b3495baef77a69de9f187"><div class="ttname"><a href="bad-status-setter_8h.html#a6152d304ba1b3495baef77a69de9f187">set_afraid</a></div><div class="ttdeci">bool set_afraid(player_type *creature_ptr, TIME_EFFECT v)</div><div class="ttdoc">恐怖の継続時間をセットする / Set &quot;afraid&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> bad-status-setter.cpp:189</div></div>
+<div class="ttc" id="abad-status-setter_8h_html_ac1bf0ab6dab8b807333530aa20d1cc22"><div class="ttname"><a href="bad-status-setter_8h.html#ac1bf0ab6dab8b807333530aa20d1cc22">set_stun</a></div><div class="ttdeci">bool set_stun(player_type *creature_ptr, TIME_EFFECT v)</div><div class="ttdoc">朦朧の継続時間をセットする / Set &quot;stun&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> bad-status-setter.cpp:376</div></div>
+<div class="ttc" id="abad-status-setter_8h_html_ac2bda63c9e8d91a70dea9a38c6f76c16"><div class="ttname"><a href="bad-status-setter_8h.html#ac2bda63c9e8d91a70dea9a38c6f76c16">set_confused</a></div><div class="ttdeci">bool set_confused(player_type *creature_ptr, TIME_EFFECT v)</div><div class="ttdoc">混乱の継続時間をセットする / Set &quot;confused&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> bad-status-setter.cpp:81</div></div>
+<div class="ttc" id="ah-type_8h_html_aba20657d0771ac9353e9e43605c12a94"><div class="ttname"><a href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a></div><div class="ttdeci">s16b TIME_EFFECT</div><div class="ttdoc">ゲーム中の時限期間の型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:162</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

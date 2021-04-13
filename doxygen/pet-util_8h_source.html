@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/pet/pet-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_611919c52a01e6d4d9da2adfdbc5b5f7.html">pet</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">pet-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="pet-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2de">    3</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2de">pet_command</a> {</div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea0ed059fc56798c12b68661d1eefcd21c">    4</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea0ed059fc56798c12b68661d1eefcd21c">PET_DISMISS</a> = 1, </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea1e2d20182e33ed8c05ad46cdc4f7e555">    5</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea1e2d20182e33ed8c05ad46cdc4f7e555">PET_TARGET</a> = 2, </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea9dd3bacbe5167cf0f66b73e19c1db616">    6</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea9dd3bacbe5167cf0f66b73e19c1db616">PET_STAY_CLOSE</a> = 3, </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2deaf6f5c5cc3b48a569bfd30c3802bbad7f">    7</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2deaf6f5c5cc3b48a569bfd30c3802bbad7f">PET_FOLLOW_ME</a> = 4, </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea6242b57435fca10fca8f4b7d86630b5c">    8</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea6242b57435fca10fca8f4b7d86630b5c">PET_SEEK_AND_DESTROY</a> = 5, </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea1e8f033fc1a5fba7eb35e9612ae72638">    9</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea1e8f033fc1a5fba7eb35e9612ae72638">PET_ALLOW_SPACE</a> = 6, </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2deaf043fe69f7d09b79d3bd12a78677252a">   10</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2deaf043fe69f7d09b79d3bd12a78677252a">PET_STAY_AWAY</a> = 7, </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2deaec736244054b7fb0f34f8073e6a1f81f">   11</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2deaec736244054b7fb0f34f8073e6a1f81f">PET_OPEN_DOORS</a> = 8, </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2deaabe11afe3f103232d5196f8907003eb8">   12</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2deaabe11afe3f103232d5196f8907003eb8">PET_TAKE_ITEMS</a> = 9, </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea1ef9da7bf4205dba35cc9988b2ddbecb">   13</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea1ef9da7bf4205dba35cc9988b2ddbecb">PET_TELEPORT</a> = 10, </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dead4d0bfb524dab22de993abb7dcaebd1f">   14</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dead4d0bfb524dab22de993abb7dcaebd1f">PET_ATTACK_SPELL</a> = 11, </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea198d2d0f40acca4eac654f07f65fbf7d">   15</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea198d2d0f40acca4eac654f07f65fbf7d">PET_SUMMON_SPELL</a> = 12, </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea7b4f5ee4252a9553a6cf09904b9212e5">   16</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea7b4f5ee4252a9553a6cf09904b9212e5">PET_BALL_SPELL</a> = 13, </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea3d077c3b233b484e8adf7b94867fb0ff">   17</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea3d077c3b233b484e8adf7b94867fb0ff">PET_RIDING</a> = 14, </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea19c919eca9dd2576d626a228608e3155">   18</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea19c919eca9dd2576d626a228608e3155">PET_NAME</a> = 15, </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2deadf7519fe09e51d145b2dcac0c9c68c7b">   19</a></span>&#160;    <a class="code" href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2deadf7519fe09e51d145b2dcac0c9c68c7b">PET_TWO_HANDS</a> = 16, </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeaf">   22</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeaf">pet_follow_distance</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa89ec3ef2fd2f00eb571dc2557288a738">   23</a></span>&#160;    <a class="code" href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa89ec3ef2fd2f00eb571dc2557288a738">PET_CLOSE_DIST</a> = 1, </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa8ea5ee7aafab973d6a1fba1d2cc389da">   24</a></span>&#160;    <a class="code" href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa8ea5ee7aafab973d6a1fba1d2cc389da">PET_FOLLOW_DIST</a> = 6, </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa84e8884179b8ece8a03e58ebb971a004">   25</a></span>&#160;    <a class="code" href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa84e8884179b8ece8a03e58ebb971a004">PET_SEEK_DIST</a> = 10, </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa82c60ff07b4e9cc38683a1900b794254">   26</a></span>&#160;    <a class="code" href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa82c60ff07b4e9cc38683a1900b794254">PET_DESTROY_DIST</a> = 255, </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa6a8e1b2d0a79cee887640d69058b0e46">   27</a></span>&#160;    <a class="code" href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa6a8e1b2d0a79cee887640d69058b0e46">PET_SPACE_DIST</a> = -10, </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa85dd2a11dcc201d98ffd78259ffd364a">   28</a></span>&#160;    <a class="code" href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa85dd2a11dcc201d98ffd78259ffd364a">PET_AWAY_DIST</a> = -25, </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cd">   31</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cd">pet_permission</a> {</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cdaa4a818452fe7f124a24848774c31a740">   32</a></span>&#160;    <a class="code" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cdaa4a818452fe7f124a24848774c31a740">PF_OPEN_DOORS</a> = 0x0001, </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cda67ad76899ebdb0331e7dba0d06de4a6e">   33</a></span>&#160;    <a class="code" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cda67ad76899ebdb0331e7dba0d06de4a6e">PF_PICKUP_ITEMS</a> = 0x0002, </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cdae0a6c81beeb9da12066dc2ecbb1002f4">   34</a></span>&#160;    <a class="code" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cdae0a6c81beeb9da12066dc2ecbb1002f4">PF_TELEPORT</a> = 0x0004, </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cdacd051e2c3d5a436b5442c6d507683ca9">   35</a></span>&#160;    <a class="code" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cdacd051e2c3d5a436b5442c6d507683ca9">PF_ATTACK_SPELL</a> = 0x0008, </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cda85e033a481cffe2857411ef841ea649f">   36</a></span>&#160;    <a class="code" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cda85e033a481cffe2857411ef841ea649f">PF_SUMMON_SPELL</a> = 0x0010, </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cda1f2fb4aaee724cc19f4bcef118f44930">   37</a></span>&#160;    <a class="code" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cda1f2fb4aaee724cc19f4bcef118f44930">PF_BALL_SPELL</a> = 0x0020, </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cdaa816be1dd7fb65cb4b6c7ff15e35e96f">   38</a></span>&#160;    <a class="code" href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cdaa816be1dd7fb65cb4b6c7ff15e35e96f">PF_TWO_HANDS</a> = 0x0040, </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="grid_8h.html">grid/grid.h</a>&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="pet-util_8h.html#a6da87a66edbf955c4c0fb4336d34d60f">can_player_ride_pet</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="structgrid__type.html">grid_type</a> *g_ptr, <span class="keywordtype">bool</span> now_riding);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="agrid_8h_html"><div class="ttname"><a href="grid_8h.html">grid.h</a></div><div class="ttdoc">ダンジョンの生成処理の基幹部分ヘッダーファイル</div></div>
+<div class="ttc" id="apet-util_8h_html_a3f886dc8df379741a56d5254cfc877cd"><div class="ttname"><a href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cd">pet_permission</a></div><div class="ttdeci">pet_permission</div><div class="ttdef"><b>Definition:</b> pet-util.h:31</div></div>
+<div class="ttc" id="apet-util_8h_html_a3f886dc8df379741a56d5254cfc877cda1f2fb4aaee724cc19f4bcef118f44930"><div class="ttname"><a href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cda1f2fb4aaee724cc19f4bcef118f44930">PF_BALL_SPELL</a></div><div class="ttdeci">@ PF_BALL_SPELL</div><div class="ttdoc">ペットの行動許可…ボール魔法でプレイヤーを巻き込んでよい</div><div class="ttdef"><b>Definition:</b> pet-util.h:37</div></div>
+<div class="ttc" id="apet-util_8h_html_a3f886dc8df379741a56d5254cfc877cda67ad76899ebdb0331e7dba0d06de4a6e"><div class="ttname"><a href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cda67ad76899ebdb0331e7dba0d06de4a6e">PF_PICKUP_ITEMS</a></div><div class="ttdeci">@ PF_PICKUP_ITEMS</div><div class="ttdoc">ペットの行動許可…アイテムを拾ってよい</div><div class="ttdef"><b>Definition:</b> pet-util.h:33</div></div>
+<div class="ttc" id="apet-util_8h_html_a3f886dc8df379741a56d5254cfc877cda85e033a481cffe2857411ef841ea649f"><div class="ttname"><a href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cda85e033a481cffe2857411ef841ea649f">PF_SUMMON_SPELL</a></div><div class="ttdeci">@ PF_SUMMON_SPELL</div><div class="ttdoc">ペットの行動許可…召喚魔法を使ってよい</div><div class="ttdef"><b>Definition:</b> pet-util.h:36</div></div>
+<div class="ttc" id="apet-util_8h_html_a3f886dc8df379741a56d5254cfc877cdaa4a818452fe7f124a24848774c31a740"><div class="ttname"><a href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cdaa4a818452fe7f124a24848774c31a740">PF_OPEN_DOORS</a></div><div class="ttdeci">@ PF_OPEN_DOORS</div><div class="ttdoc">ペットの行動許可…ドアを開けてよい</div><div class="ttdef"><b>Definition:</b> pet-util.h:32</div></div>
+<div class="ttc" id="apet-util_8h_html_a3f886dc8df379741a56d5254cfc877cdaa816be1dd7fb65cb4b6c7ff15e35e96f"><div class="ttname"><a href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cdaa816be1dd7fb65cb4b6c7ff15e35e96f">PF_TWO_HANDS</a></div><div class="ttdeci">@ PF_TWO_HANDS</div><div class="ttdoc">プレイヤーの騎乗フラグ…武器を片手で持つ</div><div class="ttdef"><b>Definition:</b> pet-util.h:38</div></div>
+<div class="ttc" id="apet-util_8h_html_a3f886dc8df379741a56d5254cfc877cdacd051e2c3d5a436b5442c6d507683ca9"><div class="ttname"><a href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cdacd051e2c3d5a436b5442c6d507683ca9">PF_ATTACK_SPELL</a></div><div class="ttdeci">@ PF_ATTACK_SPELL</div><div class="ttdoc">ペットの行動許可…攻撃魔法を使ってよい</div><div class="ttdef"><b>Definition:</b> pet-util.h:35</div></div>
+<div class="ttc" id="apet-util_8h_html_a3f886dc8df379741a56d5254cfc877cdae0a6c81beeb9da12066dc2ecbb1002f4"><div class="ttname"><a href="pet-util_8h.html#a3f886dc8df379741a56d5254cfc877cdae0a6c81beeb9da12066dc2ecbb1002f4">PF_TELEPORT</a></div><div class="ttdeci">@ PF_TELEPORT</div><div class="ttdoc">ペットの行動許可…テレポート魔法を使ってよい</div><div class="ttdef"><b>Definition:</b> pet-util.h:34</div></div>
+<div class="ttc" id="apet-util_8h_html_a6da87a66edbf955c4c0fb4336d34d60f"><div class="ttname"><a href="pet-util_8h.html#a6da87a66edbf955c4c0fb4336d34d60f">can_player_ride_pet</a></div><div class="ttdeci">bool can_player_ride_pet(player_type *creature_ptr, grid_type *g_ptr, bool now_riding)</div><div class="ttdoc">プレイヤーの騎乗/下馬処理判定</div><div class="ttdef"><b>Definition:</b> pet-util.cpp:13</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2de"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2de">pet_command</a></div><div class="ttdeci">pet_command</div><div class="ttdef"><b>Definition:</b> pet-util.h:3</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2dea0ed059fc56798c12b68661d1eefcd21c"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea0ed059fc56798c12b68661d1eefcd21c">PET_DISMISS</a></div><div class="ttdeci">@ PET_DISMISS</div><div class="ttdoc">ペットに関するコマンド: ペットを離す</div><div class="ttdef"><b>Definition:</b> pet-util.h:4</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2dea198d2d0f40acca4eac654f07f65fbf7d"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea198d2d0f40acca4eac654f07f65fbf7d">PET_SUMMON_SPELL</a></div><div class="ttdeci">@ PET_SUMMON_SPELL</div><div class="ttdoc">ペットに関するコマンド: 召喚魔法の許可</div><div class="ttdef"><b>Definition:</b> pet-util.h:15</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2dea19c919eca9dd2576d626a228608e3155"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea19c919eca9dd2576d626a228608e3155">PET_NAME</a></div><div class="ttdeci">@ PET_NAME</div><div class="ttdoc">ペットに関するコマンド: ペットに名前をつける</div><div class="ttdef"><b>Definition:</b> pet-util.h:18</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2dea1e2d20182e33ed8c05ad46cdc4f7e555"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea1e2d20182e33ed8c05ad46cdc4f7e555">PET_TARGET</a></div><div class="ttdeci">@ PET_TARGET</div><div class="ttdoc">ペットに関するコマンド: ペットのターゲットを指定</div><div class="ttdef"><b>Definition:</b> pet-util.h:5</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2dea1e8f033fc1a5fba7eb35e9612ae72638"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea1e8f033fc1a5fba7eb35e9612ae72638">PET_ALLOW_SPACE</a></div><div class="ttdeci">@ PET_ALLOW_SPACE</div><div class="ttdoc">ペットに関するコマンド: 少し離れていろ</div><div class="ttdef"><b>Definition:</b> pet-util.h:9</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2dea1ef9da7bf4205dba35cc9988b2ddbecb"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea1ef9da7bf4205dba35cc9988b2ddbecb">PET_TELEPORT</a></div><div class="ttdeci">@ PET_TELEPORT</div><div class="ttdoc">ペットに関するコマンド: テレポートの許可</div><div class="ttdef"><b>Definition:</b> pet-util.h:13</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2dea3d077c3b233b484e8adf7b94867fb0ff"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea3d077c3b233b484e8adf7b94867fb0ff">PET_RIDING</a></div><div class="ttdeci">@ PET_RIDING</div><div class="ttdoc">ペットに関するコマンド: ペットに乗る</div><div class="ttdef"><b>Definition:</b> pet-util.h:17</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2dea6242b57435fca10fca8f4b7d86630b5c"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea6242b57435fca10fca8f4b7d86630b5c">PET_SEEK_AND_DESTROY</a></div><div class="ttdeci">@ PET_SEEK_AND_DESTROY</div><div class="ttdoc">ペットに関するコマンド: 敵を見つけて倒せ</div><div class="ttdef"><b>Definition:</b> pet-util.h:8</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2dea7b4f5ee4252a9553a6cf09904b9212e5"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea7b4f5ee4252a9553a6cf09904b9212e5">PET_BALL_SPELL</a></div><div class="ttdeci">@ PET_BALL_SPELL</div><div class="ttdoc">ペットに関するコマンド: プレイヤーを魔法に巻き込む許可</div><div class="ttdef"><b>Definition:</b> pet-util.h:16</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2dea9dd3bacbe5167cf0f66b73e19c1db616"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dea9dd3bacbe5167cf0f66b73e19c1db616">PET_STAY_CLOSE</a></div><div class="ttdeci">@ PET_STAY_CLOSE</div><div class="ttdoc">ペットに関するコマンド: 近くにいろ</div><div class="ttdef"><b>Definition:</b> pet-util.h:6</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2deaabe11afe3f103232d5196f8907003eb8"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2deaabe11afe3f103232d5196f8907003eb8">PET_TAKE_ITEMS</a></div><div class="ttdeci">@ PET_TAKE_ITEMS</div><div class="ttdoc">ペットに関するコマンド: アイテム取得の許可</div><div class="ttdef"><b>Definition:</b> pet-util.h:12</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2dead4d0bfb524dab22de993abb7dcaebd1f"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2dead4d0bfb524dab22de993abb7dcaebd1f">PET_ATTACK_SPELL</a></div><div class="ttdeci">@ PET_ATTACK_SPELL</div><div class="ttdoc">ペットに関するコマンド: 攻撃魔法の許可</div><div class="ttdef"><b>Definition:</b> pet-util.h:14</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2deadf7519fe09e51d145b2dcac0c9c68c7b"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2deadf7519fe09e51d145b2dcac0c9c68c7b">PET_TWO_HANDS</a></div><div class="ttdeci">@ PET_TWO_HANDS</div><div class="ttdoc">ペットに関するコマンド: 騎乗中に両手で武器を使うかどうか</div><div class="ttdef"><b>Definition:</b> pet-util.h:19</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2deaec736244054b7fb0f34f8073e6a1f81f"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2deaec736244054b7fb0f34f8073e6a1f81f">PET_OPEN_DOORS</a></div><div class="ttdeci">@ PET_OPEN_DOORS</div><div class="ttdoc">ペットに関するコマンド: ドア解放の許可</div><div class="ttdef"><b>Definition:</b> pet-util.h:11</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2deaf043fe69f7d09b79d3bd12a78677252a"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2deaf043fe69f7d09b79d3bd12a78677252a">PET_STAY_AWAY</a></div><div class="ttdeci">@ PET_STAY_AWAY</div><div class="ttdoc">ペットに関するコマンド: 離れていろ</div><div class="ttdef"><b>Definition:</b> pet-util.h:10</div></div>
+<div class="ttc" id="apet-util_8h_html_aba51a74c1152f8bbc1a5a3bbbdc9f2deaf6f5c5cc3b48a569bfd30c3802bbad7f"><div class="ttname"><a href="pet-util_8h.html#aba51a74c1152f8bbc1a5a3bbbdc9f2deaf6f5c5cc3b48a569bfd30c3802bbad7f">PET_FOLLOW_ME</a></div><div class="ttdeci">@ PET_FOLLOW_ME</div><div class="ttdoc">ペットに関するコマンド: ついて来い</div><div class="ttdef"><b>Definition:</b> pet-util.h:7</div></div>
+<div class="ttc" id="apet-util_8h_html_ae5a36b3c9d8239be992db2e3c78fbeaf"><div class="ttname"><a href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeaf">pet_follow_distance</a></div><div class="ttdeci">pet_follow_distance</div><div class="ttdef"><b>Definition:</b> pet-util.h:22</div></div>
+<div class="ttc" id="apet-util_8h_html_ae5a36b3c9d8239be992db2e3c78fbeafa6a8e1b2d0a79cee887640d69058b0e46"><div class="ttname"><a href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa6a8e1b2d0a79cee887640d69058b0e46">PET_SPACE_DIST</a></div><div class="ttdeci">@ PET_SPACE_DIST</div><div class="ttdoc">ペットの行動範囲…少し離れていろ</div><div class="ttdef"><b>Definition:</b> pet-util.h:27</div></div>
+<div class="ttc" id="apet-util_8h_html_ae5a36b3c9d8239be992db2e3c78fbeafa82c60ff07b4e9cc38683a1900b794254"><div class="ttname"><a href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa82c60ff07b4e9cc38683a1900b794254">PET_DESTROY_DIST</a></div><div class="ttdeci">@ PET_DESTROY_DIST</div><div class="ttdoc">ペットの行動範囲…敵を見つけて倒せ</div><div class="ttdef"><b>Definition:</b> pet-util.h:26</div></div>
+<div class="ttc" id="apet-util_8h_html_ae5a36b3c9d8239be992db2e3c78fbeafa84e8884179b8ece8a03e58ebb971a004"><div class="ttname"><a href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa84e8884179b8ece8a03e58ebb971a004">PET_SEEK_DIST</a></div><div class="ttdeci">@ PET_SEEK_DIST</div><div class="ttdoc">ペットの行動範囲…特になし?</div><div class="ttdef"><b>Definition:</b> pet-util.h:25</div></div>
+<div class="ttc" id="apet-util_8h_html_ae5a36b3c9d8239be992db2e3c78fbeafa85dd2a11dcc201d98ffd78259ffd364a"><div class="ttname"><a href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa85dd2a11dcc201d98ffd78259ffd364a">PET_AWAY_DIST</a></div><div class="ttdeci">@ PET_AWAY_DIST</div><div class="ttdoc">ペットの行動範囲…離れていろ</div><div class="ttdef"><b>Definition:</b> pet-util.h:28</div></div>
+<div class="ttc" id="apet-util_8h_html_ae5a36b3c9d8239be992db2e3c78fbeafa89ec3ef2fd2f00eb571dc2557288a738"><div class="ttname"><a href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa89ec3ef2fd2f00eb571dc2557288a738">PET_CLOSE_DIST</a></div><div class="ttdeci">@ PET_CLOSE_DIST</div><div class="ttdoc">ペットの行動範囲…近くにいろ</div><div class="ttdef"><b>Definition:</b> pet-util.h:23</div></div>
+<div class="ttc" id="apet-util_8h_html_ae5a36b3c9d8239be992db2e3c78fbeafa8ea5ee7aafab973d6a1fba1d2cc389da"><div class="ttname"><a href="pet-util_8h.html#ae5a36b3c9d8239be992db2e3c78fbeafa8ea5ee7aafab973d6a1fba1d2cc389da">PET_FOLLOW_DIST</a></div><div class="ttdeci">@ PET_FOLLOW_DIST</div><div class="ttdoc">ペットの行動範囲…ついて来い</div><div class="ttdef"><b>Definition:</b> pet-util.h:24</div></div>
+<div class="ttc" id="astructgrid__type_html"><div class="ttname"><a href="structgrid__type.html">grid_type</a></div><div class="ttdef"><b>Definition:</b> grid.h:53</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,1088 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/view/display-player-middle.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b39b5091e8d1d2be4b7fc59d57749634.html">view</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">display-player-middle.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="display-player-middle_8h_source.html">view/display-player-middle.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="shoot_8h_source.html">combat/shoot.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-options_8h_source.html">game-option/birth-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-options_8h_source.html">game-option/special-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stances-table_8h_source.html">mind/stances-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status_8h_source.html">monster/monster-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-object-flags_8h_source.html">object-enchant/special-object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-perception_8h_source.html">perception/object-perception.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="attack-defense-types_8h_source.html">player/attack-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-race-types_8h_source.html">player/player-race-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-skill_8h_source.html">player/player-skill.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status-flags_8h_source.html">player/player-status-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status-table_8h_source.html">player/player-status-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-bow-types_8h_source.html">sv-definition/sv-bow-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-util_8h_source.html">view/display-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="status-first-page_8h_source.html">view/status-first-page.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+display-player-middle.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2view_2display-player-middle_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2view_2display-player-middle_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2view_2display-player-middle_8cpp">
+<area shape="rect" title=" " alt="" coords="1663,5,1868,61"/>
+<area shape="rect" href="display-player-middle_8h.html" title=" " alt="" coords="453,109,584,151"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="2161,377,2287,419"/>
+<area shape="rect" href="shoot_8h.html" title=" " alt="" coords="1875,117,1987,143"/>
+<area shape="rect" href="birth-options_8h.html" title=" " alt="" coords="608,117,787,143"/>
+<area shape="rect" href="special-options_8h.html" title=" " alt="" coords="811,109,949,151"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="2620,199,2748,240"/>
+<area shape="rect" href="stances-table_8h.html" title=" " alt="" coords="1355,117,1498,143"/>
+<area shape="rect" href="monster-status_8h.html" title=" " alt="" coords="1680,117,1851,143"/>
+<area shape="rect" href="special-object-flags_8h.html" title=" " alt="" coords="2655,109,2807,151"/>
+<area shape="rect" href="object-perception_8h.html" title=" " alt="" coords="974,117,1170,143"/>
+<area shape="rect" href="attack-defense-types_8h.html" title=" " alt="" coords="2831,109,2977,151"/>
+<area shape="rect" href="player-skill_8h.html" title=" " alt="" coords="2011,117,2146,143"/>
+<area shape="rect" href="player-status-flags_8h.html" title=" " alt="" coords="2393,109,2529,151"/>
+<area shape="rect" href="player-status-table_8h.html" title=" " alt="" coords="1195,109,1331,151"/>
+<area shape="rect" href="sv-bow-types_8h.html" title=" " alt="" coords="3002,109,3134,151"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="2170,117,2358,143"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="1523,109,1656,151"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="3159,117,3316,143"/>
+<area shape="rect" href="display-util_8h.html" title=" " alt="" coords="5,117,128,143"/>
+<area shape="rect" href="status-first-page_8h.html" title=" " alt="" coords="152,117,307,143"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="331,117,429,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1067,206,1197,233"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="853,295,944,322"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="968,295,1059,322"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1083,295,1181,322"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1205,295,1304,322"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="1329,295,1429,322"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="489,295,663,322"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="688,295,829,322"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1504,295,1651,322"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1466,385,1577,411"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1619,199,1765,240"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="1837,288,1981,329"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="2033,288,2189,329"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="1675,288,1813,329"/>
+<area shape="rect" href="special-defense-types_8h.html" title=" " alt="" coords="1294,199,1445,240"/>
+<area shape="rect" title=" " alt="" coords="1789,206,1843,233"/>
+<area shape="rect" title=" " alt="" coords="1868,206,1924,233"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="2378,206,2545,233"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="2175,206,2353,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1949,206,2099,233"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="1469,206,1595,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:aec99cbc87b4fb2bdc1027bea047a6a5d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-middle_8cpp.html#aec99cbc87b4fb2bdc1027bea047a6a5d">display_player_melee_bonus</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, int hand, int hand_entry)</td></tr>
+<tr class="memdesc:aec99cbc87b4fb2bdc1027bea047a6a5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの打撃能力修正を表示する  <a href="display-player-middle_8cpp.html#aec99cbc87b4fb2bdc1027bea047a6a5d">[詳解]</a><br /></td></tr>
+<tr class="separator:aec99cbc87b4fb2bdc1027bea047a6a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a538780db09c90ba4cb815863867bcbaa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-middle_8cpp.html#a538780db09c90ba4cb815863867bcbaa">display_sub_hand</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a538780db09c90ba4cb815863867bcbaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">右手に比べて左手の表示ルーチンが複雑なので分離  <a href="display-player-middle_8cpp.html#a538780db09c90ba4cb815863867bcbaa">[詳解]</a><br /></td></tr>
+<tr class="separator:a538780db09c90ba4cb815863867bcbaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3be8fbd88c38f785f20bf3c8b8cd9f5a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-middle_8cpp.html#a3be8fbd88c38f785f20bf3c8b8cd9f5a">display_hit_damage</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a3be8fbd88c38f785f20bf3c8b8cd9f5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">武器による命中率とダメージの補正を表示する  <a href="display-player-middle_8cpp.html#a3be8fbd88c38f785f20bf3c8b8cd9f5a">[詳解]</a><br /></td></tr>
+<tr class="separator:a3be8fbd88c38f785f20bf3c8b8cd9f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ffa845f60ebb5dd97e54815fc0db6c8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-middle_8cpp.html#a7ffa845f60ebb5dd97e54815fc0db6c8">display_shoot_magnification</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a7ffa845f60ebb5dd97e54815fc0db6c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">射撃武器倍率を表示する  <a href="display-player-middle_8cpp.html#a7ffa845f60ebb5dd97e54815fc0db6c8">[詳解]</a><br /></td></tr>
+<tr class="separator:a7ffa845f60ebb5dd97e54815fc0db6c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03b3ad6ef8154aa27eeac2377064a99d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-middle_8cpp.html#a03b3ad6ef8154aa27eeac2377064a99d">decide_speed_color</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, const int base_speed)</td></tr>
+<tr class="memdesc:a03b3ad6ef8154aa27eeac2377064a99d"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレーヤーの速度から表示色を決める  <a href="display-player-middle_8cpp.html#a03b3ad6ef8154aa27eeac2377064a99d">[詳解]</a><br /></td></tr>
+<tr class="separator:a03b3ad6ef8154aa27eeac2377064a99d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97590407fe4f931d279f82aa651a5d8b"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-middle_8cpp.html#a97590407fe4f931d279f82aa651a5d8b">calc_temporary_speed</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a97590407fe4f931d279f82aa651a5d8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">何らかの効果による一時的な速度変化を計算する  <a href="display-player-middle_8cpp.html#a97590407fe4f931d279f82aa651a5d8b">[詳解]</a><br /></td></tr>
+<tr class="separator:a97590407fe4f931d279f82aa651a5d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9656f4b5a37842d7767cb6f28c6c235"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-middle_8cpp.html#ac9656f4b5a37842d7767cb6f28c6c235">display_player_speed</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> attr, int base_speed, int tmp_speed)</td></tr>
+<tr class="memdesc:ac9656f4b5a37842d7767cb6f28c6c235"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレーヤーの最終的な速度を表示する  <a href="display-player-middle_8cpp.html#ac9656f4b5a37842d7767cb6f28c6c235">[詳解]</a><br /></td></tr>
+<tr class="separator:ac9656f4b5a37842d7767cb6f28c6c235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38d8ca5122dcd25400ffd0760a7efa43"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-middle_8cpp.html#a38d8ca5122dcd25400ffd0760a7efa43">display_player_exp</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a38d8ca5122dcd25400ffd0760a7efa43"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレーヤーの現在経験値・最大経験値・次のレベルまでに必要な経験値を表示する  <a href="display-player-middle_8cpp.html#a38d8ca5122dcd25400ffd0760a7efa43">[詳解]</a><br /></td></tr>
+<tr class="separator:a38d8ca5122dcd25400ffd0760a7efa43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01863ae506d3ffd2a46a367b6885cce6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-middle_8cpp.html#a01863ae506d3ffd2a46a367b6885cce6">display_playtime_in_game</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a01863ae506d3ffd2a46a367b6885cce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム内の経過時間を表示する  <a href="display-player-middle_8cpp.html#a01863ae506d3ffd2a46a367b6885cce6">[詳解]</a><br /></td></tr>
+<tr class="separator:a01863ae506d3ffd2a46a367b6885cce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c432186b0be13c7d8d198607d85dd8e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-middle_8cpp.html#a5c432186b0be13c7d8d198607d85dd8e">display_real_playtime</a> (void)</td></tr>
+<tr class="memdesc:a5c432186b0be13c7d8d198607d85dd8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">現実世界におけるプレイ時間を表示する  <a href="display-player-middle_8cpp.html#a5c432186b0be13c7d8d198607d85dd8e">[詳解]</a><br /></td></tr>
+<tr class="separator:a5c432186b0be13c7d8d198607d85dd8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a829dd2517519fca14718f1bf3bfb5990"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-player-middle_8cpp.html#a829dd2517519fca14718f1bf3bfb5990">display_player_middle</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a829dd2517519fca14718f1bf3bfb5990"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーステータス表示の中央部分を表示するサブルーチン  <a href="display-player-middle_8cpp.html#a829dd2517519fca14718f1bf3bfb5990">[詳解]</a><br /></td></tr>
+<tr class="separator:a829dd2517519fca14718f1bf3bfb5990"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a97590407fe4f931d279f82aa651a5d8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97590407fe4f931d279f82aa651a5d8b">&#9670;&nbsp;</a></span>calc_temporary_speed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int calc_temporary_speed </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>何らかの効果による一時的な速度変化を計算する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>プレーヤーの速度 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a97590407fe4f931d279f82aa651a5d8b_cgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a97590407fe4f931d279f82aa651a5d8b_cgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a97590407fe4f931d279f82aa651a5d8b_cgraph" id="adisplay-player-middle_8cpp_a97590407fe4f931d279f82aa651a5d8b_cgraph">
+<area shape="rect" title="何らかの効果による一時的な速度変化を計算する" alt="" coords="5,56,159,83"/>
+<area shape="rect" href="player-status_8cpp.html#a5dc31dcacd506df65ec4babd972ca7dd" title=" " alt="" coords="259,5,319,32"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="209,56,369,83"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="207,107,372,133"/>
+<area shape="rect" href="player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="420,5,525,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a97590407fe4f931d279f82aa651a5d8b_icgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a97590407fe4f931d279f82aa651a5d8b_icgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a97590407fe4f931d279f82aa651a5d8b_icgraph" id="adisplay-player-middle_8cpp_a97590407fe4f931d279f82aa651a5d8b_icgraph">
+<area shape="rect" title="何らかの効果による一時的な速度変化を計算する" alt="" coords="1616,365,1769,391"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a829dd2517519fca14718f1bf3bfb5990" title="プレイヤーステータス表示の中央部分を表示するサブルーチン" alt="" coords="1417,365,1568,391"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="1264,365,1369,391"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="5,95,97,122"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f" title=" " alt="" coords="1081,619,1212,660"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="312,306,465,333"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a9bb4f751f6b9b31e0154e4ec3502a997" title="プレイヤーのステータス表示をファイルにダンプする" alt="" coords="863,277,1029,303"/>
+<area shape="rect" href="character-dump_8cpp.html#ad9ac4fe2e14196316e97fef3cb8db4e5" title="ダンプ出力のメインルーチン Output the character dump to a file" alt="" coords="660,277,815,303"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="513,197,612,223"/>
+<area shape="rect" href="process-death_8cpp.html#aedfc0764df97dc71148c2201d28d7fd1" title="キャラクタ情報をファイルに書き出す" alt="" coords="325,95,452,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae9c570eb0fbf3c678455e095701f5548" title="死亡、引退時の簡易ステータス表示" alt="" coords="145,95,264,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae28b0711f29637713f74286cb654a4e6" title="自動的にプレイヤーステータスをファイルダンプ出力する" alt="" coords="323,146,454,173"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a163fa3f653b409f46474b92469166058" title="画面番号を指定してダンプする" alt="" coords="1077,299,1216,340"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="1102,685,1191,711"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#a8881e99ad9af11b929f316e7b7618851" title="現在のプレイヤーステータスをサブウィンドウに表示する /" alt="" coords="1108,735,1185,762"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="876,550,1016,577"/>
+<area shape="rect" href="scores_8cpp.html#af49a50cb34bb1e825724246836430c65" title="スコアサーバへの転送処理" alt="" coords="1083,517,1210,543"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="873,467,1019,508"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a03b3ad6ef8154aa27eeac2377064a99d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03b3ad6ef8154aa27eeac2377064a99d">&#9670;&nbsp;</a></span>decide_speed_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> decide_speed_color </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>base_speed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>プレーヤーの速度から表示色を決める </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">base_speed</td><td>プレーヤーの速度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a03b3ad6ef8154aa27eeac2377064a99d_icgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a03b3ad6ef8154aa27eeac2377064a99d_icgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a03b3ad6ef8154aa27eeac2377064a99d_icgraph" id="adisplay-player-middle_8cpp_a03b3ad6ef8154aa27eeac2377064a99d_icgraph">
+<area shape="rect" title="プレーヤーの速度から表示色を決める" alt="" coords="1616,365,1753,391"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a829dd2517519fca14718f1bf3bfb5990" title="プレイヤーステータス表示の中央部分を表示するサブルーチン" alt="" coords="1417,365,1568,391"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="1264,365,1369,391"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="5,95,97,122"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f" title=" " alt="" coords="1081,619,1212,660"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="312,306,465,333"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a9bb4f751f6b9b31e0154e4ec3502a997" title="プレイヤーのステータス表示をファイルにダンプする" alt="" coords="863,277,1029,303"/>
+<area shape="rect" href="character-dump_8cpp.html#ad9ac4fe2e14196316e97fef3cb8db4e5" title="ダンプ出力のメインルーチン Output the character dump to a file" alt="" coords="660,277,815,303"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="513,197,612,223"/>
+<area shape="rect" href="process-death_8cpp.html#aedfc0764df97dc71148c2201d28d7fd1" title="キャラクタ情報をファイルに書き出す" alt="" coords="325,95,452,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae9c570eb0fbf3c678455e095701f5548" title="死亡、引退時の簡易ステータス表示" alt="" coords="145,95,264,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae28b0711f29637713f74286cb654a4e6" title="自動的にプレイヤーステータスをファイルダンプ出力する" alt="" coords="323,146,454,173"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a163fa3f653b409f46474b92469166058" title="画面番号を指定してダンプする" alt="" coords="1077,299,1216,340"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="1102,685,1191,711"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#a8881e99ad9af11b929f316e7b7618851" title="現在のプレイヤーステータスをサブウィンドウに表示する /" alt="" coords="1108,735,1185,762"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="876,550,1016,577"/>
+<area shape="rect" href="scores_8cpp.html#af49a50cb34bb1e825724246836430c65" title="スコアサーバへの転送処理" alt="" coords="1083,517,1210,543"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="873,467,1019,508"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3be8fbd88c38f785f20bf3c8b8cd9f5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3be8fbd88c38f785f20bf3c8b8cd9f5a">&#9670;&nbsp;</a></span>display_hit_damage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_hit_damage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>武器による命中率とダメージの補正を表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a3be8fbd88c38f785f20bf3c8b8cd9f5a_cgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a3be8fbd88c38f785f20bf3c8b8cd9f5a_cgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a3be8fbd88c38f785f20bf3c8b8cd9f5a_cgraph" id="adisplay-player-middle_8cpp_a3be8fbd88c38f785f20bf3c8b8cd9f5a_cgraph">
+<area shape="rect" title="武器による命中率とダメージの補正を表示する" alt="" coords="5,107,143,133"/>
+<area shape="rect" href="display-util_8cpp.html#a93793a2ac3c90903c7062b3997b8e873" title="プレイヤーのステータス1種を出力する" alt="" coords="191,56,351,83"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="241,107,300,133"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="211,157,330,184"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="399,56,487,83"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="537,5,627,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="535,56,629,83"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="411,107,474,133"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="549,107,615,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a3be8fbd88c38f785f20bf3c8b8cd9f5a_icgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a3be8fbd88c38f785f20bf3c8b8cd9f5a_icgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a3be8fbd88c38f785f20bf3c8b8cd9f5a_icgraph" id="adisplay-player-middle_8cpp_a3be8fbd88c38f785f20bf3c8b8cd9f5a_icgraph">
+<area shape="rect" title="武器による命中率とダメージの補正を表示する" alt="" coords="1616,365,1753,391"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a829dd2517519fca14718f1bf3bfb5990" title="プレイヤーステータス表示の中央部分を表示するサブルーチン" alt="" coords="1417,365,1568,391"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="1264,365,1369,391"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="5,95,97,122"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f" title=" " alt="" coords="1081,619,1212,660"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="312,306,465,333"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a9bb4f751f6b9b31e0154e4ec3502a997" title="プレイヤーのステータス表示をファイルにダンプする" alt="" coords="863,277,1029,303"/>
+<area shape="rect" href="character-dump_8cpp.html#ad9ac4fe2e14196316e97fef3cb8db4e5" title="ダンプ出力のメインルーチン Output the character dump to a file" alt="" coords="660,277,815,303"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="513,197,612,223"/>
+<area shape="rect" href="process-death_8cpp.html#aedfc0764df97dc71148c2201d28d7fd1" title="キャラクタ情報をファイルに書き出す" alt="" coords="325,95,452,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae9c570eb0fbf3c678455e095701f5548" title="死亡、引退時の簡易ステータス表示" alt="" coords="145,95,264,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae28b0711f29637713f74286cb654a4e6" title="自動的にプレイヤーステータスをファイルダンプ出力する" alt="" coords="323,146,454,173"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a163fa3f653b409f46474b92469166058" title="画面番号を指定してダンプする" alt="" coords="1077,299,1216,340"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="1102,685,1191,711"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#a8881e99ad9af11b929f316e7b7618851" title="現在のプレイヤーステータスをサブウィンドウに表示する /" alt="" coords="1108,735,1185,762"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="876,550,1016,577"/>
+<area shape="rect" href="scores_8cpp.html#af49a50cb34bb1e825724246836430c65" title="スコアサーバへの転送処理" alt="" coords="1083,517,1210,543"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="873,467,1019,508"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a38d8ca5122dcd25400ffd0760a7efa43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38d8ca5122dcd25400ffd0760a7efa43">&#9670;&nbsp;</a></span>display_player_exp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_player_exp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>プレーヤーの現在経験値・最大経験値・次のレベルまでに必要な経験値を表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a38d8ca5122dcd25400ffd0760a7efa43_cgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a38d8ca5122dcd25400ffd0760a7efa43_cgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a38d8ca5122dcd25400ffd0760a7efa43_cgraph" id="adisplay-player-middle_8cpp_a38d8ca5122dcd25400ffd0760a7efa43_cgraph">
+<area shape="rect" title="プレーヤーの現在経験値・最大経験値・次のレベルまでに必要な経験値を表示する" alt="" coords="5,81,139,108"/>
+<area shape="rect" href="display-util_8cpp.html#a93793a2ac3c90903c7062b3997b8e873" title="プレイヤーのステータス1種を出力する" alt="" coords="187,56,347,83"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="237,107,296,133"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="395,56,483,83"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="533,5,623,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="531,56,625,83"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="407,107,470,133"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="545,107,611,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a38d8ca5122dcd25400ffd0760a7efa43_icgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a38d8ca5122dcd25400ffd0760a7efa43_icgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a38d8ca5122dcd25400ffd0760a7efa43_icgraph" id="adisplay-player-middle_8cpp_a38d8ca5122dcd25400ffd0760a7efa43_icgraph">
+<area shape="rect" title="プレーヤーの現在経験値・最大経験値・次のレベルまでに必要な経験値を表示する" alt="" coords="1616,365,1749,391"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a829dd2517519fca14718f1bf3bfb5990" title="プレイヤーステータス表示の中央部分を表示するサブルーチン" alt="" coords="1417,365,1568,391"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="1264,365,1369,391"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="5,95,97,122"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f" title=" " alt="" coords="1081,619,1212,660"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="312,306,465,333"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a9bb4f751f6b9b31e0154e4ec3502a997" title="プレイヤーのステータス表示をファイルにダンプする" alt="" coords="863,277,1029,303"/>
+<area shape="rect" href="character-dump_8cpp.html#ad9ac4fe2e14196316e97fef3cb8db4e5" title="ダンプ出力のメインルーチン Output the character dump to a file" alt="" coords="660,277,815,303"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="513,197,612,223"/>
+<area shape="rect" href="process-death_8cpp.html#aedfc0764df97dc71148c2201d28d7fd1" title="キャラクタ情報をファイルに書き出す" alt="" coords="325,95,452,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae9c570eb0fbf3c678455e095701f5548" title="死亡、引退時の簡易ステータス表示" alt="" coords="145,95,264,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae28b0711f29637713f74286cb654a4e6" title="自動的にプレイヤーステータスをファイルダンプ出力する" alt="" coords="323,146,454,173"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a163fa3f653b409f46474b92469166058" title="画面番号を指定してダンプする" alt="" coords="1077,299,1216,340"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="1102,685,1191,711"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#a8881e99ad9af11b929f316e7b7618851" title="現在のプレイヤーステータスをサブウィンドウに表示する /" alt="" coords="1108,735,1185,762"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="876,550,1016,577"/>
+<area shape="rect" href="scores_8cpp.html#af49a50cb34bb1e825724246836430c65" title="スコアサーバへの転送処理" alt="" coords="1083,517,1210,543"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="873,467,1019,508"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aec99cbc87b4fb2bdc1027bea047a6a5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec99cbc87b4fb2bdc1027bea047a6a5d">&#9670;&nbsp;</a></span>display_player_melee_bonus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_player_melee_bonus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hand</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hand_entry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>プレイヤーの打撃能力修正を表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">hand</td><td>武器の装備部位ID </td></tr>
+    <tr><td class="paramname">hand_entry</td><td>項目ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_aec99cbc87b4fb2bdc1027bea047a6a5d_cgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_aec99cbc87b4fb2bdc1027bea047a6a5d_cgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_aec99cbc87b4fb2bdc1027bea047a6a5d_cgraph" id="adisplay-player-middle_8cpp_aec99cbc87b4fb2bdc1027bea047a6a5d_cgraph">
+<area shape="rect" title="プレイヤーの打撃能力修正を表示する" alt="" coords="5,150,152,191"/>
+<area shape="rect" href="display-util_8cpp.html#a93793a2ac3c90903c7062b3997b8e873" title="プレイヤーのステータス1種を出力する" alt="" coords="209,56,369,83"/>
+<area shape="rect" href="player-status_8cpp.html#a505fc5be2b6382dbcd3b279e2f2f2be5" title="プレイヤーが現在右手/左手に武器を持っているか判定する /" alt="" coords="900,269,1036,296"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3be357b2b900b29111c229eb1e975763" title=" " alt="" coords="200,208,377,235"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="229,259,348,285"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="475,56,563,83"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="704,56,795,83"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="702,5,797,32"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a0e428cd41af0f842e9e73e48a7cfc77d" title="オブジェクトが近接武器として装備できるかを返す / Melee weapons" alt="" coords="1097,309,1264,336"/>
+<area shape="rect" href="player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="425,259,612,285"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7c7bc7aaa4ea1facc9bffef817ae15ef" title=" " alt="" coords="660,309,839,336"/>
+<area shape="rect" href="player-status_8cpp.html#a71651ca05a739cebea95603a32776907" title="プレイヤーの現在開いている手の状態を返す" alt="" coords="699,183,799,209"/>
+<area shape="rect" href="player-status_8cpp.html#ae4d3f0d6a480760876ff778b3f349546" title=" " alt="" coords="436,208,601,235"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a33693ed23357e9335a244f44ac3128b2" title="オブジェクトが両手持ち可能な武器かを返す / Check if an object is melee weapon and allows wielding with two&#45;hands" alt="" coords="887,331,1049,373"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_aec99cbc87b4fb2bdc1027bea047a6a5d_icgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_aec99cbc87b4fb2bdc1027bea047a6a5d_icgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_aec99cbc87b4fb2bdc1027bea047a6a5d_icgraph" id="adisplay-player-middle_8cpp_aec99cbc87b4fb2bdc1027bea047a6a5d_icgraph">
+<area shape="rect" title="プレイヤーの打撃能力修正を表示する" alt="" coords="1791,357,1937,399"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a829dd2517519fca14718f1bf3bfb5990" title="プレイヤーステータス表示の中央部分を表示するサブルーチン" alt="" coords="1417,365,1568,391"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a538780db09c90ba4cb815863867bcbaa" title="右手に比べて左手の表示ルーチンが複雑なので分離" alt="" coords="1616,390,1743,417"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="1264,365,1369,391"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="5,95,97,122"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f" title=" " alt="" coords="1081,619,1212,660"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="312,306,465,333"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a9bb4f751f6b9b31e0154e4ec3502a997" title="プレイヤーのステータス表示をファイルにダンプする" alt="" coords="863,277,1029,303"/>
+<area shape="rect" href="character-dump_8cpp.html#ad9ac4fe2e14196316e97fef3cb8db4e5" title="ダンプ出力のメインルーチン Output the character dump to a file" alt="" coords="660,277,815,303"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="513,197,612,223"/>
+<area shape="rect" href="process-death_8cpp.html#aedfc0764df97dc71148c2201d28d7fd1" title="キャラクタ情報をファイルに書き出す" alt="" coords="325,95,452,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae9c570eb0fbf3c678455e095701f5548" title="死亡、引退時の簡易ステータス表示" alt="" coords="145,95,264,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae28b0711f29637713f74286cb654a4e6" title="自動的にプレイヤーステータスをファイルダンプ出力する" alt="" coords="323,146,454,173"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a163fa3f653b409f46474b92469166058" title="画面番号を指定してダンプする" alt="" coords="1077,299,1216,340"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="1102,685,1191,711"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#a8881e99ad9af11b929f316e7b7618851" title="現在のプレイヤーステータスをサブウィンドウに表示する /" alt="" coords="1108,735,1185,762"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="876,550,1016,577"/>
+<area shape="rect" href="scores_8cpp.html#af49a50cb34bb1e825724246836430c65" title="スコアサーバへの転送処理" alt="" coords="1083,517,1210,543"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="873,467,1019,508"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a829dd2517519fca14718f1bf3bfb5990"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a829dd2517519fca14718f1bf3bfb5990">&#9670;&nbsp;</a></span>display_player_middle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_player_middle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーステータス表示の中央部分を表示するサブルーチン </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ Prints the following information on the screen. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a829dd2517519fca14718f1bf3bfb5990_cgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a829dd2517519fca14718f1bf3bfb5990_cgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a829dd2517519fca14718f1bf3bfb5990_cgraph" id="adisplay-player-middle_8cpp_a829dd2517519fca14718f1bf3bfb5990_cgraph">
+<area shape="rect" title="プレイヤーステータス表示の中央部分を表示するサブルーチン" alt="" coords="5,731,156,757"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a97590407fe4f931d279f82aa651a5d8b" title="何らかの効果による一時的な速度変化を計算する" alt="" coords="220,81,373,108"/>
+<area shape="rect" href="player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="876,208,1063,235"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a03b3ad6ef8154aa27eeac2377064a99d" title="プレーヤーの速度から表示色を決める" alt="" coords="228,1035,365,1061"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a3be8fbd88c38f785f20bf3c8b8cd9f5a" title="武器による命中率とダメージの補正を表示する" alt="" coords="228,680,365,707"/>
+<area shape="rect" href="display-util_8cpp.html#a93793a2ac3c90903c7062b3997b8e873" title="プレイヤーのステータス1種を出力する" alt="" coords="659,731,819,757"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="491,883,549,909"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a38d8ca5122dcd25400ffd0760a7efa43" title="プレーヤーの現在経験値・最大経験値・次のレベルまでに必要な経験値を表示する" alt="" coords="230,781,363,808"/>
+<area shape="rect" href="display-player-middle_8cpp.html#aec99cbc87b4fb2bdc1027bea047a6a5d" title="プレイヤーの打撃能力修正を表示する" alt="" coords="447,361,593,402"/>
+<area shape="rect" href="display-player-middle_8cpp.html#ac9656f4b5a37842d7767cb6f28c6c235" title="プレーヤーの最終的な速度を表示する" alt="" coords="223,883,370,909"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a01863ae506d3ffd2a46a367b6885cce6" title="ゲーム内の経過時間を表示する" alt="" coords="209,731,384,757"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a5c432186b0be13c7d8d198607d85dd8e" title="現実世界におけるプレイ時間を表示する" alt="" coords="223,933,370,960"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a7ffa845f60ebb5dd97e54815fc0db6c8" title="射撃武器倍率を表示する" alt="" coords="204,984,389,1011"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a538780db09c90ba4cb815863867bcbaa" title="右手に比べて左手の表示ルーチンが複雑なので分離" alt="" coords="233,503,360,529"/>
+<area shape="rect" href="player-status_8cpp.html#a5dc31dcacd506df65ec4babd972ca7dd" title=" " alt="" coords="490,56,550,83"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="440,107,600,133"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="437,5,603,32"/>
+<area shape="rect" href="player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="687,56,792,83"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7c7bc7aaa4ea1facc9bffef817ae15ef" title=" " alt="" coords="1111,401,1289,428"/>
+<area shape="rect" href="player-status_8cpp.html#a505fc5be2b6382dbcd3b279e2f2f2be5" title="プレイヤーが現在右手/左手に武器を持っているか判定する /" alt="" coords="1337,208,1473,235"/>
+<area shape="rect" href="player-status_8cpp.html#a71651ca05a739cebea95603a32776907" title="プレイヤーの現在開いている手の状態を返す" alt="" coords="1150,325,1250,352"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="680,477,799,504"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="925,731,1013,757"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="708,883,771,909"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3be357b2b900b29111c229eb1e975763" title=" " alt="" coords="651,347,828,373"/>
+<area shape="rect" href="player-status_8cpp.html#ae4d3f0d6a480760876ff778b3f349546" title=" " alt="" coords="887,376,1052,403"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a33693ed23357e9335a244f44ac3128b2" title="オブジェクトが両手持ち可能な武器かを返す / Check if an object is melee weapon and allows wielding with two&#45;hands" alt="" coords="888,259,1051,301"/>
+<area shape="rect" href="world_8cpp.html#a3da5b82e6bb95498402f78c954a628d0" title="現在の日数、時刻を返す / Extract day, hour, min" alt="" coords="445,781,595,808"/>
+<area shape="rect" href="shoot_8cpp.html#afea7a69a70c8e57df24d1d6a4a0153df" title=" " alt="" coords="481,1085,559,1112"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a829dd2517519fca14718f1bf3bfb5990_icgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a829dd2517519fca14718f1bf3bfb5990_icgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a829dd2517519fca14718f1bf3bfb5990_icgraph" id="adisplay-player-middle_8cpp_a829dd2517519fca14718f1bf3bfb5990_icgraph">
+<area shape="rect" title="プレイヤーステータス表示の中央部分を表示するサブルーチン" alt="" coords="1661,365,1812,392"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="1508,365,1613,392"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="200,248,292,274"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f" title=" " alt="" coords="1325,619,1456,660"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="556,369,709,396"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a9bb4f751f6b9b31e0154e4ec3502a997" title="プレイヤーのステータス表示をファイルにダンプする" alt="" coords="1107,248,1273,274"/>
+<area shape="rect" href="character-dump_8cpp.html#ad9ac4fe2e14196316e97fef3cb8db4e5" title="ダンプ出力のメインルーチン Output the character dump to a file" alt="" coords="904,222,1059,249"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="757,222,856,249"/>
+<area shape="rect" href="process-death_8cpp.html#aedfc0764df97dc71148c2201d28d7fd1" title="キャラクタ情報をファイルに書き出す" alt="" coords="569,248,696,274"/>
+<area shape="rect" href="process-death_8cpp.html#ae9c570eb0fbf3c678455e095701f5548" title="死亡、引退時の簡易ステータス表示" alt="" coords="365,222,483,249"/>
+<area shape="rect" href="process-death_8cpp.html#ae28b0711f29637713f74286cb654a4e6" title="自動的にプレイヤーステータスをファイルダンプ出力する" alt="" coords="567,197,698,224"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a163fa3f653b409f46474b92469166058" title="画面番号を指定してダンプする" alt="" coords="1321,299,1460,340"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="1346,685,1435,712"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#a8881e99ad9af11b929f316e7b7618851" title="現在のプレイヤーステータスをサブウィンドウに表示する /" alt="" coords="1352,736,1429,762"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="1120,533,1260,560"/>
+<area shape="rect" href="scores_8cpp.html#af49a50cb34bb1e825724246836430c65" title="スコアサーバへの転送処理" alt="" coords="1327,517,1454,544"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="1117,467,1263,508"/>
+<area shape="rect" href="signal-handlers_8cpp.html#acf6a4a9a8cb29ca8bd1c8e232041aecd" title="OSからのシグナルを受けて中断、終了する / Handle signals – simple (interrupt and quit)" alt="" coords="5,248,152,274"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="36,374,121,401"/>
+<area shape="rect" href="birth-wizard_8cpp.html#afdfed098d39f68b6df65e34ca2e77fb2" title=" " alt="" coords="1125,626,1255,653"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="358,344,490,370"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="340,394,508,421"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a06012604ab69cf4f6c5b0e51b89a9657" title="名前と生い立ちを設定する" alt="" coords="1127,685,1253,712"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="1143,736,1237,762"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac9656f4b5a37842d7767cb6f28c6c235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9656f4b5a37842d7767cb6f28c6c235">&#9670;&nbsp;</a></span>display_player_speed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_player_speed </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a>&#160;</td>
+          <td class="paramname"><em>attr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>base_speed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tmp_speed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>プレーヤーの最終的な速度を表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">attr</td><td>表示色 </td></tr>
+    <tr><td class="paramname">base_speed</td><td>プレーヤーの素の速度 </td></tr>
+    <tr><td class="paramname">tmp_speed</td><td>アイテム等で一時的に変化した速度量 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_ac9656f4b5a37842d7767cb6f28c6c235_cgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_ac9656f4b5a37842d7767cb6f28c6c235_cgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_ac9656f4b5a37842d7767cb6f28c6c235_cgraph" id="adisplay-player-middle_8cpp_ac9656f4b5a37842d7767cb6f28c6c235_cgraph">
+<area shape="rect" title="プレーヤーの最終的な速度を表示する" alt="" coords="5,81,152,108"/>
+<area shape="rect" href="display-util_8cpp.html#a93793a2ac3c90903c7062b3997b8e873" title="プレイヤーのステータス1種を出力する" alt="" coords="200,56,360,83"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="251,107,309,133"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="408,56,496,83"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="546,5,637,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="544,56,639,83"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="421,107,483,133"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="558,107,625,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_ac9656f4b5a37842d7767cb6f28c6c235_icgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_ac9656f4b5a37842d7767cb6f28c6c235_icgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_ac9656f4b5a37842d7767cb6f28c6c235_icgraph" id="adisplay-player-middle_8cpp_ac9656f4b5a37842d7767cb6f28c6c235_icgraph">
+<area shape="rect" title="プレーヤーの最終的な速度を表示する" alt="" coords="1616,365,1763,391"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a829dd2517519fca14718f1bf3bfb5990" title="プレイヤーステータス表示の中央部分を表示するサブルーチン" alt="" coords="1417,365,1568,391"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="1264,365,1369,391"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="5,95,97,122"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f" title=" " alt="" coords="1081,619,1212,660"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="312,306,465,333"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a9bb4f751f6b9b31e0154e4ec3502a997" title="プレイヤーのステータス表示をファイルにダンプする" alt="" coords="863,277,1029,303"/>
+<area shape="rect" href="character-dump_8cpp.html#ad9ac4fe2e14196316e97fef3cb8db4e5" title="ダンプ出力のメインルーチン Output the character dump to a file" alt="" coords="660,277,815,303"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="513,197,612,223"/>
+<area shape="rect" href="process-death_8cpp.html#aedfc0764df97dc71148c2201d28d7fd1" title="キャラクタ情報をファイルに書き出す" alt="" coords="325,95,452,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae9c570eb0fbf3c678455e095701f5548" title="死亡、引退時の簡易ステータス表示" alt="" coords="145,95,264,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae28b0711f29637713f74286cb654a4e6" title="自動的にプレイヤーステータスをファイルダンプ出力する" alt="" coords="323,146,454,173"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a163fa3f653b409f46474b92469166058" title="画面番号を指定してダンプする" alt="" coords="1077,299,1216,340"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="1102,685,1191,711"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#a8881e99ad9af11b929f316e7b7618851" title="現在のプレイヤーステータスをサブウィンドウに表示する /" alt="" coords="1108,735,1185,762"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="876,550,1016,577"/>
+<area shape="rect" href="scores_8cpp.html#af49a50cb34bb1e825724246836430c65" title="スコアサーバへの転送処理" alt="" coords="1083,517,1210,543"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="873,467,1019,508"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a01863ae506d3ffd2a46a367b6885cce6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01863ae506d3ffd2a46a367b6885cce6">&#9670;&nbsp;</a></span>display_playtime_in_game()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_playtime_in_game </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ゲーム内の経過時間を表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a01863ae506d3ffd2a46a367b6885cce6_cgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a01863ae506d3ffd2a46a367b6885cce6_cgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a01863ae506d3ffd2a46a367b6885cce6_cgraph" id="adisplay-player-middle_8cpp_a01863ae506d3ffd2a46a367b6885cce6_cgraph">
+<area shape="rect" title="ゲーム内の経過時間を表示する" alt="" coords="5,81,180,108"/>
+<area shape="rect" href="display-util_8cpp.html#a93793a2ac3c90903c7062b3997b8e873" title="プレイヤーのステータス1種を出力する" alt="" coords="228,31,388,57"/>
+<area shape="rect" href="world_8cpp.html#a3da5b82e6bb95498402f78c954a628d0" title="現在の日数、時刻を返す / Extract day, hour, min" alt="" coords="233,81,383,108"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="279,132,337,159"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="436,31,524,57"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="574,5,665,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="572,56,667,83"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="449,132,511,159"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="586,132,653,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a01863ae506d3ffd2a46a367b6885cce6_icgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a01863ae506d3ffd2a46a367b6885cce6_icgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a01863ae506d3ffd2a46a367b6885cce6_icgraph" id="adisplay-player-middle_8cpp_a01863ae506d3ffd2a46a367b6885cce6_icgraph">
+<area shape="rect" title="ゲーム内の経過時間を表示する" alt="" coords="1616,365,1791,391"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a829dd2517519fca14718f1bf3bfb5990" title="プレイヤーステータス表示の中央部分を表示するサブルーチン" alt="" coords="1417,365,1568,391"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="1264,365,1369,391"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="5,95,97,122"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f" title=" " alt="" coords="1081,619,1212,660"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="312,306,465,333"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a9bb4f751f6b9b31e0154e4ec3502a997" title="プレイヤーのステータス表示をファイルにダンプする" alt="" coords="863,277,1029,303"/>
+<area shape="rect" href="character-dump_8cpp.html#ad9ac4fe2e14196316e97fef3cb8db4e5" title="ダンプ出力のメインルーチン Output the character dump to a file" alt="" coords="660,277,815,303"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="513,197,612,223"/>
+<area shape="rect" href="process-death_8cpp.html#aedfc0764df97dc71148c2201d28d7fd1" title="キャラクタ情報をファイルに書き出す" alt="" coords="325,95,452,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae9c570eb0fbf3c678455e095701f5548" title="死亡、引退時の簡易ステータス表示" alt="" coords="145,95,264,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae28b0711f29637713f74286cb654a4e6" title="自動的にプレイヤーステータスをファイルダンプ出力する" alt="" coords="323,146,454,173"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a163fa3f653b409f46474b92469166058" title="画面番号を指定してダンプする" alt="" coords="1077,299,1216,340"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="1102,685,1191,711"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#a8881e99ad9af11b929f316e7b7618851" title="現在のプレイヤーステータスをサブウィンドウに表示する /" alt="" coords="1108,735,1185,762"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="876,550,1016,577"/>
+<area shape="rect" href="scores_8cpp.html#af49a50cb34bb1e825724246836430c65" title="スコアサーバへの転送処理" alt="" coords="1083,517,1210,543"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="873,467,1019,508"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5c432186b0be13c7d8d198607d85dd8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c432186b0be13c7d8d198607d85dd8e">&#9670;&nbsp;</a></span>display_real_playtime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_real_playtime </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>現実世界におけるプレイ時間を表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">なし</td><td></td></tr>
+    <tr><td class="paramname">なし</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a5c432186b0be13c7d8d198607d85dd8e_cgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a5c432186b0be13c7d8d198607d85dd8e_cgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a5c432186b0be13c7d8d198607d85dd8e_cgraph" id="adisplay-player-middle_8cpp_a5c432186b0be13c7d8d198607d85dd8e_cgraph">
+<area shape="rect" title="現実世界におけるプレイ時間を表示する" alt="" coords="5,81,152,108"/>
+<area shape="rect" href="display-util_8cpp.html#a93793a2ac3c90903c7062b3997b8e873" title="プレイヤーのステータス1種を出力する" alt="" coords="200,56,360,83"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="251,107,309,133"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="408,56,496,83"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="546,5,637,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="544,56,639,83"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="421,107,483,133"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="558,107,625,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a5c432186b0be13c7d8d198607d85dd8e_icgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a5c432186b0be13c7d8d198607d85dd8e_icgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a5c432186b0be13c7d8d198607d85dd8e_icgraph" id="adisplay-player-middle_8cpp_a5c432186b0be13c7d8d198607d85dd8e_icgraph">
+<area shape="rect" title="現実世界におけるプレイ時間を表示する" alt="" coords="1616,365,1763,391"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a829dd2517519fca14718f1bf3bfb5990" title="プレイヤーステータス表示の中央部分を表示するサブルーチン" alt="" coords="1417,365,1568,391"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="1264,365,1369,391"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="5,95,97,122"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f" title=" " alt="" coords="1081,619,1212,660"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="312,306,465,333"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a9bb4f751f6b9b31e0154e4ec3502a997" title="プレイヤーのステータス表示をファイルにダンプする" alt="" coords="863,277,1029,303"/>
+<area shape="rect" href="character-dump_8cpp.html#ad9ac4fe2e14196316e97fef3cb8db4e5" title="ダンプ出力のメインルーチン Output the character dump to a file" alt="" coords="660,277,815,303"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="513,197,612,223"/>
+<area shape="rect" href="process-death_8cpp.html#aedfc0764df97dc71148c2201d28d7fd1" title="キャラクタ情報をファイルに書き出す" alt="" coords="325,95,452,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae9c570eb0fbf3c678455e095701f5548" title="死亡、引退時の簡易ステータス表示" alt="" coords="145,95,264,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae28b0711f29637713f74286cb654a4e6" title="自動的にプレイヤーステータスをファイルダンプ出力する" alt="" coords="323,146,454,173"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a163fa3f653b409f46474b92469166058" title="画面番号を指定してダンプする" alt="" coords="1077,299,1216,340"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="1102,685,1191,711"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#a8881e99ad9af11b929f316e7b7618851" title="現在のプレイヤーステータスをサブウィンドウに表示する /" alt="" coords="1108,735,1185,762"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="876,550,1016,577"/>
+<area shape="rect" href="scores_8cpp.html#af49a50cb34bb1e825724246836430c65" title="スコアサーバへの転送処理" alt="" coords="1083,517,1210,543"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="873,467,1019,508"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7ffa845f60ebb5dd97e54815fc0db6c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ffa845f60ebb5dd97e54815fc0db6c8">&#9670;&nbsp;</a></span>display_shoot_magnification()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_shoot_magnification </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>射撃武器倍率を表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a7ffa845f60ebb5dd97e54815fc0db6c8_cgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a7ffa845f60ebb5dd97e54815fc0db6c8_cgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a7ffa845f60ebb5dd97e54815fc0db6c8_cgraph" id="adisplay-player-middle_8cpp_a7ffa845f60ebb5dd97e54815fc0db6c8_cgraph">
+<area shape="rect" title="射撃武器倍率を表示する" alt="" coords="5,56,191,83"/>
+<area shape="rect" href="shoot_8cpp.html#afea7a69a70c8e57df24d1d6a4a0153df" title=" " alt="" coords="280,5,357,32"/>
+<area shape="rect" href="display-util_8cpp.html#a93793a2ac3c90903c7062b3997b8e873" title="プレイヤーのステータス1種を出力する" alt="" coords="239,56,399,83"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="289,107,348,133"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="447,56,535,83"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="585,5,675,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="583,56,677,83"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="459,107,522,133"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="597,107,663,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a7ffa845f60ebb5dd97e54815fc0db6c8_icgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a7ffa845f60ebb5dd97e54815fc0db6c8_icgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a7ffa845f60ebb5dd97e54815fc0db6c8_icgraph" id="adisplay-player-middle_8cpp_a7ffa845f60ebb5dd97e54815fc0db6c8_icgraph">
+<area shape="rect" title="射撃武器倍率を表示する" alt="" coords="1616,365,1801,391"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a829dd2517519fca14718f1bf3bfb5990" title="プレイヤーステータス表示の中央部分を表示するサブルーチン" alt="" coords="1417,365,1568,391"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="1264,365,1369,391"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="5,95,97,122"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f" title=" " alt="" coords="1081,619,1212,660"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="312,306,465,333"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a9bb4f751f6b9b31e0154e4ec3502a997" title="プレイヤーのステータス表示をファイルにダンプする" alt="" coords="863,277,1029,303"/>
+<area shape="rect" href="character-dump_8cpp.html#ad9ac4fe2e14196316e97fef3cb8db4e5" title="ダンプ出力のメインルーチン Output the character dump to a file" alt="" coords="660,277,815,303"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="513,197,612,223"/>
+<area shape="rect" href="process-death_8cpp.html#aedfc0764df97dc71148c2201d28d7fd1" title="キャラクタ情報をファイルに書き出す" alt="" coords="325,95,452,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae9c570eb0fbf3c678455e095701f5548" title="死亡、引退時の簡易ステータス表示" alt="" coords="145,95,264,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae28b0711f29637713f74286cb654a4e6" title="自動的にプレイヤーステータスをファイルダンプ出力する" alt="" coords="323,146,454,173"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a163fa3f653b409f46474b92469166058" title="画面番号を指定してダンプする" alt="" coords="1077,299,1216,340"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="1102,685,1191,711"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#a8881e99ad9af11b929f316e7b7618851" title="現在のプレイヤーステータスをサブウィンドウに表示する /" alt="" coords="1108,735,1185,762"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="876,550,1016,577"/>
+<area shape="rect" href="scores_8cpp.html#af49a50cb34bb1e825724246836430c65" title="スコアサーバへの転送処理" alt="" coords="1083,517,1210,543"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="873,467,1019,508"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a538780db09c90ba4cb815863867bcbaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a538780db09c90ba4cb815863867bcbaa">&#9670;&nbsp;</a></span>display_sub_hand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_sub_hand </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>右手に比べて左手の表示ルーチンが複雑なので分離 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a538780db09c90ba4cb815863867bcbaa_cgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a538780db09c90ba4cb815863867bcbaa_cgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a538780db09c90ba4cb815863867bcbaa_cgraph" id="adisplay-player-middle_8cpp_a538780db09c90ba4cb815863867bcbaa_cgraph">
+<area shape="rect" title="右手に比べて左手の表示ルーチンが複雑なので分離" alt="" coords="5,320,132,347"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7c7bc7aaa4ea1facc9bffef817ae15ef" title=" " alt="" coords="835,164,1013,191"/>
+<area shape="rect" href="display-player-middle_8cpp.html#aec99cbc87b4fb2bdc1027bea047a6a5d" title="プレイヤーの打撃能力修正を表示する" alt="" coords="180,208,327,249"/>
+<area shape="rect" href="display-util_8cpp.html#a93793a2ac3c90903c7062b3997b8e873" title="プレイヤーのステータス1種を出力する" alt="" coords="383,320,543,347"/>
+<area shape="rect" href="player-status_8cpp.html#a71651ca05a739cebea95603a32776907" title="プレイヤーの現在開いている手の状態を返す" alt="" coords="874,316,974,343"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="224,468,283,495"/>
+<area shape="rect" href="player-status_8cpp.html#a505fc5be2b6382dbcd3b279e2f2f2be5" title="プレイヤーが現在右手/左手に武器を持っているか判定する /" alt="" coords="1075,175,1211,202"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a0e428cd41af0f842e9e73e48a7cfc77d" title="オブジェクトが近接武器として装備できるかを返す / Melee weapons" alt="" coords="1272,215,1439,242"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3be357b2b900b29111c229eb1e975763" title=" " alt="" coords="375,215,552,242"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="404,38,523,64"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="649,367,737,394"/>
+<area shape="rect" href="player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="600,215,787,242"/>
+<area shape="rect" href="player-status_8cpp.html#ae4d3f0d6a480760876ff778b3f349546" title=" " alt="" coords="611,114,776,140"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a33693ed23357e9335a244f44ac3128b2" title="オブジェクトが両手持ち可能な武器かを返す / Check if an object is melee weapon and allows wielding with two&#45;hands" alt="" coords="1061,237,1224,278"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="432,468,495,495"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="660,468,727,495"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-player-middle_8cpp_a538780db09c90ba4cb815863867bcbaa_icgraph.png" border="0" usemap="#adisplay-player-middle_8cpp_a538780db09c90ba4cb815863867bcbaa_icgraph" alt=""/></div>
+<map name="adisplay-player-middle_8cpp_a538780db09c90ba4cb815863867bcbaa_icgraph" id="adisplay-player-middle_8cpp_a538780db09c90ba4cb815863867bcbaa_icgraph">
+<area shape="rect" title="右手に比べて左手の表示ルーチンが複雑なので分離" alt="" coords="1616,365,1743,391"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a829dd2517519fca14718f1bf3bfb5990" title="プレイヤーステータス表示の中央部分を表示するサブルーチン" alt="" coords="1417,365,1568,391"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="1264,365,1369,391"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="5,95,97,122"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f" title=" " alt="" coords="1081,619,1212,660"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="312,306,465,333"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a9bb4f751f6b9b31e0154e4ec3502a997" title="プレイヤーのステータス表示をファイルにダンプする" alt="" coords="863,277,1029,303"/>
+<area shape="rect" href="character-dump_8cpp.html#ad9ac4fe2e14196316e97fef3cb8db4e5" title="ダンプ出力のメインルーチン Output the character dump to a file" alt="" coords="660,277,815,303"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="513,197,612,223"/>
+<area shape="rect" href="process-death_8cpp.html#aedfc0764df97dc71148c2201d28d7fd1" title="キャラクタ情報をファイルに書き出す" alt="" coords="325,95,452,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae9c570eb0fbf3c678455e095701f5548" title="死亡、引退時の簡易ステータス表示" alt="" coords="145,95,264,122"/>
+<area shape="rect" href="process-death_8cpp.html#ae28b0711f29637713f74286cb654a4e6" title="自動的にプレイヤーステータスをファイルダンプ出力する" alt="" coords="323,146,454,173"/>
+<area shape="rect" href="player-status-dump_8cpp.html#a163fa3f653b409f46474b92469166058" title="画面番号を指定してダンプする" alt="" coords="1077,299,1216,340"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="1102,685,1191,711"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#a8881e99ad9af11b929f316e7b7618851" title="現在のプレイヤーステータスをサブウィンドウに表示する /" alt="" coords="1108,735,1185,762"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="876,550,1016,577"/>
+<area shape="rect" href="scores_8cpp.html#af49a50cb34bb1e825724246836430c65" title="スコアサーバへの転送処理" alt="" coords="1083,517,1210,543"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="873,467,1019,508"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分37秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

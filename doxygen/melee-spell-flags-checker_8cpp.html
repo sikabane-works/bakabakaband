@@ -1,0 +1,1362 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/melee/melee-spell-flags-checker.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6d77d0d3b006a67320265fc283939a4a.html">melee</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">melee-spell-flags-checker.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="melee-spell-flags-checker_8h_source.html">melee/melee-spell-flags-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon-flag-types_8h_source.html">dungeon/dungeon-flag-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon_8h_source.html">dungeon/dungeon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="effect-characteristics_8h_source.html">effect/effect-characteristics.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="line-of-sight_8h_source.html">floor/line-of-sight.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="melee-spell-util_8h_source.html">melee/melee-spell-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-move_8h_source.html">monster-floor/monster-move.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-ability-mask_8h_source.html">monster-race/race-ability-mask.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags2_8h_source.html">monster-race/race-flags2.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags3_8h_source.html">monster-race/race-flags3.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags7_8h_source.html">monster-race/race-flags7.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-indice-types_8h_source.html">monster-race/race-indice-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-info_8h_source.html">monster/monster-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status_8h_source.html">monster/monster-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mspell-checker_8h_source.html">mspell/mspell-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mspell-judgement_8h_source.html">mspell/mspell-judgement.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mspell-util_8h_source.html">mspell/mspell-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="pet-util_8h_source.html">pet/pet-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-world_8h_source.html">spell-kind/spells-world.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spell-types_8h_source.html">spell/spell-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="projection-path-calculator_8h_source.html">target/projection-path-calculator.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+melee-spell-flags-checker.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2melee_2melee-spell-flags-checker_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2melee_2melee-spell-flags-checker_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2melee_2melee-spell-flags-checker_8cpp">
+<area shape="rect" title=" " alt="" coords="1791,5,1990,61"/>
+<area shape="rect" href="melee-spell-flags-checker_8h.html" title=" " alt="" coords="2630,199,2789,240"/>
+<area shape="rect" href="dungeon-flag-types_8h.html" title=" " alt="" coords="487,109,635,151"/>
+<area shape="rect" href="dungeon_8h.html" title=" " alt="" coords="150,206,285,233"/>
+<area shape="rect" href="effect-characteristics_8h.html" title=" " alt="" coords="711,117,899,143"/>
+<area shape="rect" href="line-of-sight_8h.html" title=" " alt="" coords="2497,117,2623,143"/>
+<area shape="rect" href="melee-spell-util_8h.html" title=" " alt="" coords="651,295,810,322"/>
+<area shape="rect" href="monster-move_8h.html" title=" " alt="" coords="1145,199,1293,240"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="1019,109,1168,151"/>
+<area shape="rect" href="race-ability-mask_8h.html" title=" " alt="" coords="411,288,576,329"/>
+<area shape="rect" href="race-flags2_8h.html" title=" " alt="" coords="1403,117,1579,143"/>
+<area shape="rect" href="race-flags3_8h.html" title=" " alt="" coords="1603,117,1779,143"/>
+<area shape="rect" href="race-flags7_8h.html" title=" " alt="" coords="1803,117,1979,143"/>
+<area shape="rect" href="race-indice-types_8h.html" title=" " alt="" coords="2003,109,2168,151"/>
+<area shape="rect" href="monster-info_8h.html" title=" " alt="" coords="1715,295,1869,322"/>
+<area shape="rect" href="monster-status_8h.html" title=" " alt="" coords="1944,295,2115,322"/>
+<area shape="rect" href="mspell-checker_8h.html" title=" " alt="" coords="1528,295,1691,322"/>
+<area shape="rect" href="mspell-judgement_8h.html" title=" " alt="" coords="3067,295,3245,322"/>
+<area shape="rect" href="mspell-util_8h.html" title=" " alt="" coords="1999,206,2134,233"/>
+<area shape="rect" href="pet-util_8h.html" title=" " alt="" coords="2158,206,2253,233"/>
+<area shape="rect" href="spells-world_8h.html" title=" " alt="" coords="2277,206,2437,233"/>
+<area shape="rect" href="spell-types_8h.html" title=" " alt="" coords="2647,117,2774,143"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="2847,117,3035,143"/>
+<area shape="rect" href="projection-path-calculator_8h.html" title=" " alt="" coords="2461,199,2605,240"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1965,385,2094,411"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="2684,474,2775,501"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1835,474,1925,501"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1949,474,2048,501"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="2072,474,2171,501"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="2195,474,2295,501"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="2319,474,2494,501"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="2519,474,2660,501"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1483,474,1629,501"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="774,556,885,583"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="137,295,234,322"/>
+<area shape="rect" title=" " alt="" coords="35,385,90,411"/>
+<area shape="rect" title=" " alt="" coords="296,385,352,411"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="531,377,696,419"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="115,385,272,411"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1317,377,1462,419"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="1152,467,1296,508"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1654,467,1810,508"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="1320,467,1459,508"/>
+<area shape="rect" href="monster-processor-util_8h.html" title=" " alt="" coords="936,288,1117,329"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="975,199,1121,240"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="867,377,1027,419"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="1141,288,1301,329"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="2190,295,2269,322"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="3091,206,3269,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="2915,206,3066,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a2596875d83f2c766214953e84dee0b1a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#a2596875d83f2c766214953e84dee0b1a">decide_melee_spell_target</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:a2596875d83f2c766214953e84dee0b1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13ed081e052ac5f4df4633d50cde791d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#a13ed081e052ac5f4df4633d50cde791d">decide_indirection_melee_spell</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:a13ed081e052ac5f4df4633d50cde791d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82086712604898c0d2c750a83b55a1cf"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#a82086712604898c0d2c750a83b55a1cf">check_melee_spell_projection</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:a82086712604898c0d2c750a83b55a1cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe96114bfbbe6b0fa4b01281b1d7a7c0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#abe96114bfbbe6b0fa4b01281b1d7a7c0">check_darkness</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:abe96114bfbbe6b0fa4b01281b1d7a7c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22a59bbbb98cc400dd5370013ae9ec10"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#a22a59bbbb98cc400dd5370013ae9ec10">check_stupid</a> (<a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:a22a59bbbb98cc400dd5370013ae9ec10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc83e9be0a1b79ba9ba2b680b3ac348b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#abc83e9be0a1b79ba9ba2b680b3ac348b">check_arena</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:abc83e9be0a1b79ba9ba2b680b3ac348b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc5ab2de8a94ef9db572fa52a1d349b9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#afc5ab2de8a94ef9db572fa52a1d349b9">check_melee_spell_distance</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:afc5ab2de8a94ef9db572fa52a1d349b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0bd64326e0f88fe597563d959b2de84"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#ac0bd64326e0f88fe597563d959b2de84">check_melee_spell_rocket</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:ac0bd64326e0f88fe597563d959b2de84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e0800d73307e9647c7110b61fa504d1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#a7e0800d73307e9647c7110b61fa504d1">check_melee_spell_beam</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:a7e0800d73307e9647c7110b61fa504d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addad41b5490f0e5440142f98ca58a0f9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#addad41b5490f0e5440142f98ca58a0f9">check_melee_spell_breath</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:addad41b5490f0e5440142f98ca58a0f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3dbb6185fc1fdfee245c1f3007b1ce3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#af3dbb6185fc1fdfee245c1f3007b1ce3">check_melee_spell_special</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:af3dbb6185fc1fdfee245c1f3007b1ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8e60f9496ff5564f44eb3d5fdea87ee"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#ab8e60f9496ff5564f44eb3d5fdea87ee">check_riding</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:ab8e60f9496ff5564f44eb3d5fdea87ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8558f34c01633de68b995225193b6d05"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#a8558f34c01633de68b995225193b6d05">check_pet</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:a8558f34c01633de68b995225193b6d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99d3aaa6f05f111ace289f0d99759700"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#a99d3aaa6f05f111ace289f0d99759700">check_non_stupid</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:a99d3aaa6f05f111ace289f0d99759700"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a652a63e74bc7c3d1d520670df86adb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#a1a652a63e74bc7c3d1d520670df86adb">check_smart</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:a1a652a63e74bc7c3d1d520670df86adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8776806b52dd39ee7b2ac5f5619f1724"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#a8776806b52dd39ee7b2ac5f5619f1724">set_melee_spell_set</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:a8776806b52dd39ee7b2ac5f5619f1724"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ea460c5c2e7019ba87d7308f7f7598b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b">check_melee_spell_set</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr)</td></tr>
+<tr class="separator:a1ea460c5c2e7019ba87d7308f7f7598b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="abc83e9be0a1b79ba9ba2b680b3ac348b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc83e9be0a1b79ba9ba2b680b3ac348b">&#9670;&nbsp;</a></span>check_arena()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void check_arena </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_abc83e9be0a1b79ba9ba2b680b3ac348b_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_abc83e9be0a1b79ba9ba2b680b3ac348b_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_abc83e9be0a1b79ba9ba2b680b3ac348b_cgraph" id="amelee-spell-flags-checker_8cpp_abc83e9be0a1b79ba9ba2b680b3ac348b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,101,32"/>
+<area shape="rect" href="class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="149,5,268,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_abc83e9be0a1b79ba9ba2b680b3ac348b_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_abc83e9be0a1b79ba9ba2b680b3ac348b_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_abc83e9be0a1b79ba9ba2b680b3ac348b_icgraph" id="amelee-spell-flags-checker_8cpp_abc83e9be0a1b79ba9ba2b680b3ac348b_icgraph">
+<area shape="rect" title=" " alt="" coords="524,5,620,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="317,5,476,32"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="135,5,269,32"/>
+<area shape="rect" href="monster-processor_8cpp.html#aaa5ef8ac387ca2823430b86040541c79" title="モンスターに魔法を試行させる" alt="" coords="5,5,87,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abe96114bfbbe6b0fa4b01281b1d7a7c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe96114bfbbe6b0fa4b01281b1d7a7c0">&#9670;&nbsp;</a></span>check_darkness()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void check_darkness </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_abe96114bfbbe6b0fa4b01281b1d7a7c0_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_abe96114bfbbe6b0fa4b01281b1d7a7c0_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_abe96114bfbbe6b0fa4b01281b1d7a7c0_cgraph" id="amelee-spell-flags-checker_8cpp_abe96114bfbbe6b0fa4b01281b1d7a7c0_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,123,83"/>
+<area shape="rect" href="class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="337,5,473,32"/>
+<area shape="rect" href="monster-info_8cpp.html#ad051474143ae51acf70bf275b30ff246" title=" " alt="" coords="191,56,269,83"/>
+<area shape="rect" href="class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="171,107,289,133"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="521,56,632,83"/>
+<area shape="rect" href="monster-info_8cpp.html#a310dca2e8b756213922ce91ffff3dbd0" title=" " alt="" coords="365,56,445,83"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="377,107,434,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_abe96114bfbbe6b0fa4b01281b1d7a7c0_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_abe96114bfbbe6b0fa4b01281b1d7a7c0_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_abe96114bfbbe6b0fa4b01281b1d7a7c0_icgraph" id="amelee-spell-flags-checker_8cpp_abe96114bfbbe6b0fa4b01281b1d7a7c0_icgraph">
+<area shape="rect" title=" " alt="" coords="524,5,641,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="317,5,476,32"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="135,5,269,32"/>
+<area shape="rect" href="monster-processor_8cpp.html#aaa5ef8ac387ca2823430b86040541c79" title="モンスターに魔法を試行させる" alt="" coords="5,5,87,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7e0800d73307e9647c7110b61fa504d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e0800d73307e9647c7110b61fa504d1">&#9670;&nbsp;</a></span>check_melee_spell_beam()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void check_melee_spell_beam </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a7e0800d73307e9647c7110b61fa504d1_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a7e0800d73307e9647c7110b61fa504d1_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a7e0800d73307e9647c7110b61fa504d1_cgraph" id="amelee-spell-flags-checker_8cpp_a7e0800d73307e9647c7110b61fa504d1_cgraph">
+<area shape="rect" title=" " alt="" coords="5,571,177,597"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a265a95d04381b6b6ac4e54b2d3803aa7" title="モンスター魔法の実装(対モンスター処理) / Monster spells (attack monster)" alt="" coords="260,335,353,361"/>
+<area shape="rect" href="class_flag_group.html#af6327bd9a9e463469a9aa5daaad3346a" title="入力イテレータで指定した範囲のリストに含まれるフラグがすべてOFFかどうかを調べる" alt="" coords="225,571,388,597"/>
+<area shape="rect" href="class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="247,621,366,648"/>
+<area shape="rect" href="monster-info_8cpp.html#a923e88d938d90100c5b241388a5183af" title="モンスターの属性の基づいた敵対関係の有無を返す Check if two monsters are enemies" alt="" coords="443,107,539,133"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="864,157,921,184"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="450,259,533,285"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="450,309,533,336"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="436,360,547,387"/>
+<area shape="rect" href="cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="849,461,937,488"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="436,537,547,564"/>
+<area shape="rect" href="monster-info_8cpp.html#a073e460f5aae349ba48c690993b27211" title="モンスターの属性の基づいた敵対関係の有無を返す（サブルーチン） Check if this monster has &quot;hostile&quot; alignment (aux)" alt="" coords="613,5,749,32"/>
+<area shape="rect" href="class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="825,81,961,108"/>
+<area shape="rect" href="monster-info_8cpp.html#ad051474143ae51acf70bf275b30ff246" title=" " alt="" coords="642,107,719,133"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="1019,157,1129,184"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a30ef387a791d4e4e8de0c441056943e0" title=" " alt="" coords="595,461,767,488"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a967933565c13f95ea0500a0fd24d8021" title=" " alt="" coords="605,512,757,539"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a32a097212154ab56f1a529ee83ff2559" title=" " alt="" coords="603,563,759,589"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a291b34765c99fa0567ca24a7e9eea0a3" title=" " alt="" coords="615,614,747,655"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a3b3cbd8d5e3729549be74e6e65721adb" title=" " alt="" coords="643,680,718,707"/>
+<area shape="rect" href="class_flag_group.html#a57a928e50a2473024e69c349bcd62525" title="入力イテレータで指定した範囲のリストに含まれるフラグのいずれかがONかどうかを調べる" alt="" coords="815,647,971,673"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a7e0800d73307e9647c7110b61fa504d1_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a7e0800d73307e9647c7110b61fa504d1_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a7e0800d73307e9647c7110b61fa504d1_icgraph" id="amelee-spell-flags-checker_8cpp_a7e0800d73307e9647c7110b61fa504d1_icgraph">
+<area shape="rect" title=" " alt="" coords="525,5,697,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a8558f34c01633de68b995225193b6d05" title=" " alt="" coords="395,5,477,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="188,5,347,32"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="addad41b5490f0e5440142f98ca58a0f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addad41b5490f0e5440142f98ca58a0f9">&#9670;&nbsp;</a></span>check_melee_spell_breath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void check_melee_spell_breath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_addad41b5490f0e5440142f98ca58a0f9_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_addad41b5490f0e5440142f98ca58a0f9_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_addad41b5490f0e5440142f98ca58a0f9_cgraph" id="amelee-spell-flags-checker_8cpp_addad41b5490f0e5440142f98ca58a0f9_cgraph">
+<area shape="rect" title=" " alt="" coords="5,762,181,789"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a18d1785b5416dd0102f17af5a5e64339" title="モンスターが敵対モンスターに直接ブレスを当てることが可能かを判定する / Determine if a breath will hit the target." alt="" coords="262,357,359,383"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="666,762,777,789"/>
+<area shape="rect" href="class_flag_group.html#af6327bd9a9e463469a9aa5daaad3346a" title="入力イテレータで指定した範囲のリストに含まれるフラグがすべてOFFかどうかを調べる" alt="" coords="229,737,392,763"/>
+<area shape="rect" href="class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="251,838,370,865"/>
+<area shape="rect" href="range-calc_8cpp.html#aa0bea06a5600ef01a6952378a83a60f8" title=" " alt="" coords="468,382,568,409"/>
+<area shape="rect" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="686,281,757,307"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="887,331,970,358"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="887,534,970,561"/>
+<area shape="rect" href="range-calc_8cpp.html#a583d3a676864745468096ddfc9da8ddf" title=" " alt="" coords="644,483,799,510"/>
+<area shape="rect" href="cave_8cpp.html#a9940da0af854b0b88a943373b8b41055" title=" " alt="" coords="847,230,1011,257"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="1059,129,1193,155"/>
+<area shape="rect" href="line-of-sight_8cpp.html#adff83a1e8c9d47236408737740652a4b" title="LOS(Line Of Sight / 視線が通っているか)の判定を行う。" alt="" coords="702,129,741,155"/>
+<area shape="rect" href="cave_8cpp.html#adc0f94b19918e1965ddd320ae168d551" title=" " alt="" coords="877,103,980,130"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="679,585,764,611"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="873,610,984,637"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="873,686,984,713"/>
+<area shape="rect" href="cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="474,281,562,307"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="681,382,762,409"/>
+<area shape="rect" href="class_flag_group.html#a57a928e50a2473024e69c349bcd62525" title="入力イテレータで指定した範囲のリストに含まれるフラグのいずれかがONかどうかを調べる" alt="" coords="440,737,596,763"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_addad41b5490f0e5440142f98ca58a0f9_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_addad41b5490f0e5440142f98ca58a0f9_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_addad41b5490f0e5440142f98ca58a0f9_icgraph" id="amelee-spell-flags-checker_8cpp_addad41b5490f0e5440142f98ca58a0f9_icgraph">
+<area shape="rect" title=" " alt="" coords="525,5,701,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a8558f34c01633de68b995225193b6d05" title=" " alt="" coords="395,5,477,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="188,5,347,32"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afc5ab2de8a94ef9db572fa52a1d349b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc5ab2de8a94ef9db572fa52a1d349b9">&#9670;&nbsp;</a></span>check_melee_spell_distance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void check_melee_spell_distance </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_afc5ab2de8a94ef9db572fa52a1d349b9_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_afc5ab2de8a94ef9db572fa52a1d349b9_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_afc5ab2de8a94ef9db572fa52a1d349b9_cgraph" id="amelee-spell-flags-checker_8cpp_afc5ab2de8a94ef9db572fa52a1d349b9_cgraph">
+<area shape="rect" title=" " alt="" coords="5,207,195,234"/>
+<area shape="rect" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="285,55,356,82"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a874c3947f23540371fe5a100ec89a22b" title="モンスターが特殊能力の目標地点を決める処理 / Get the actual center point of ball spells (rad &gt; 1) (originally from TOband)" alt="" coords="260,106,381,132"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="447,258,557,284"/>
+<area shape="rect" href="class_flag_group.html#a57a928e50a2473024e69c349bcd62525" title="入力イテレータで指定した範囲のリストに含まれるフラグのいずれかがONかどうかを調べる" alt="" coords="243,207,399,234"/>
+<area shape="rect" href="line-of-sight_8cpp.html#adff83a1e8c9d47236408737740652a4b" title="LOS(Line Of Sight / 視線が通っているか)の判定を行う。" alt="" coords="483,316,521,343"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="278,156,363,183"/>
+<area shape="rect" href="class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="261,359,380,386"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="825,102,960,128"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="461,207,543,234"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="461,55,543,82"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="447,106,557,132"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="447,156,557,183"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a30ef387a791d4e4e8de0c441056943e0" title=" " alt="" coords="605,106,777,132"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a967933565c13f95ea0500a0fd24d8021" title=" " alt="" coords="615,156,767,183"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a32a097212154ab56f1a529ee83ff2559" title=" " alt="" coords="613,207,769,234"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a291b34765c99fa0567ca24a7e9eea0a3" title=" " alt="" coords="625,258,757,300"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a3b3cbd8d5e3729549be74e6e65721adb" title=" " alt="" coords="654,55,729,82"/>
+<area shape="rect" href="cave_8cpp.html#adc0f94b19918e1965ddd320ae168d551" title=" " alt="" coords="841,211,944,238"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_afc5ab2de8a94ef9db572fa52a1d349b9_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_afc5ab2de8a94ef9db572fa52a1d349b9_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_afc5ab2de8a94ef9db572fa52a1d349b9_icgraph" id="amelee-spell-flags-checker_8cpp_afc5ab2de8a94ef9db572fa52a1d349b9_icgraph">
+<area shape="rect" title=" " alt="" coords="525,5,715,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a8558f34c01633de68b995225193b6d05" title=" " alt="" coords="395,5,477,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="188,5,347,32"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a82086712604898c0d2c750a83b55a1cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82086712604898c0d2c750a83b55a1cf">&#9670;&nbsp;</a></span>check_melee_spell_projection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_melee_spell_projection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a82086712604898c0d2c750a83b55a1cf_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a82086712604898c0d2c750a83b55a1cf_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a82086712604898c0d2c750a83b55a1cf_cgraph" id="amelee-spell-flags-checker_8cpp_a82086712604898c0d2c750a83b55a1cf_cgraph">
+<area shape="rect" title=" " alt="" coords="5,183,201,209"/>
+<area shape="rect" href="monster-info_8cpp.html#a923e88d938d90100c5b241388a5183af" title="モンスターの属性の基づいた敵対関係の有無を返す Check if two monsters are enemies" alt="" coords="261,107,357,133"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="249,183,368,209"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="266,259,351,285"/>
+<area shape="rect" href="monster-info_8cpp.html#a073e460f5aae349ba48c690993b27211" title="モンスターの属性の基づいた敵対関係の有無を返す（サブルーチン） Check if this monster has &quot;hostile&quot; alignment (aux)" alt="" coords="416,5,552,32"/>
+<area shape="rect" href="class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="416,56,552,83"/>
+<area shape="rect" href="monster-info_8cpp.html#ad051474143ae51acf70bf275b30ff246" title=" " alt="" coords="445,107,523,133"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="657,157,715,184"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="820,107,931,133"/>
+<area shape="rect" href="monster-info_8cpp.html#a310dca2e8b756213922ce91ffff3dbd0" title=" " alt="" coords="646,107,726,133"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="443,208,525,235"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="443,259,525,285"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="429,309,539,336"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="429,360,539,387"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a30ef387a791d4e4e8de0c441056943e0" title=" " alt="" coords="600,259,772,285"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a967933565c13f95ea0500a0fd24d8021" title=" " alt="" coords="610,309,762,336"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a32a097212154ab56f1a529ee83ff2559" title=" " alt="" coords="608,360,764,387"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a291b34765c99fa0567ca24a7e9eea0a3" title=" " alt="" coords="620,411,752,453"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a3b3cbd8d5e3729549be74e6e65721adb" title=" " alt="" coords="649,477,723,504"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a82086712604898c0d2c750a83b55a1cf_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a82086712604898c0d2c750a83b55a1cf_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a82086712604898c0d2c750a83b55a1cf_icgraph" id="amelee-spell-flags-checker_8cpp_a82086712604898c0d2c750a83b55a1cf_icgraph">
+<area shape="rect" title=" " alt="" coords="524,5,720,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="317,5,476,32"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="135,5,269,32"/>
+<area shape="rect" href="monster-processor_8cpp.html#aaa5ef8ac387ca2823430b86040541c79" title="モンスターに魔法を試行させる" alt="" coords="5,5,87,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac0bd64326e0f88fe597563d959b2de84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0bd64326e0f88fe597563d959b2de84">&#9670;&nbsp;</a></span>check_melee_spell_rocket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void check_melee_spell_rocket </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_ac0bd64326e0f88fe597563d959b2de84_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_ac0bd64326e0f88fe597563d959b2de84_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_ac0bd64326e0f88fe597563d959b2de84_cgraph" id="amelee-spell-flags-checker_8cpp_ac0bd64326e0f88fe597563d959b2de84_cgraph">
+<area shape="rect" title=" " alt="" coords="5,223,181,250"/>
+<area shape="rect" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="262,122,333,148"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a874c3947f23540371fe5a100ec89a22b" title="モンスターが特殊能力の目標地点を決める処理 / Get the actual center point of ball spells (rad &gt; 1) (originally from TOband)" alt="" coords="237,172,358,199"/>
+<area shape="rect" href="class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="229,274,365,300"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="255,223,340,250"/>
+<area shape="rect" href="class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="238,324,357,351"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="792,92,927,119"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="427,172,510,199"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="427,223,510,250"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="413,274,524,300"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="413,122,524,148"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a30ef387a791d4e4e8de0c441056943e0" title=" " alt="" coords="572,252,744,279"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a967933565c13f95ea0500a0fd24d8021" title=" " alt="" coords="582,202,734,228"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a32a097212154ab56f1a529ee83ff2559" title=" " alt="" coords="580,34,736,60"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a291b34765c99fa0567ca24a7e9eea0a3" title=" " alt="" coords="592,85,724,126"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a3b3cbd8d5e3729549be74e6e65721adb" title=" " alt="" coords="621,151,695,178"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="413,324,524,351"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_ac0bd64326e0f88fe597563d959b2de84_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_ac0bd64326e0f88fe597563d959b2de84_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_ac0bd64326e0f88fe597563d959b2de84_icgraph" id="amelee-spell-flags-checker_8cpp_ac0bd64326e0f88fe597563d959b2de84_icgraph">
+<area shape="rect" title=" " alt="" coords="525,5,701,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a8558f34c01633de68b995225193b6d05" title=" " alt="" coords="395,5,477,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="188,5,347,32"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1ea460c5c2e7019ba87d7308f7f7598b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ea460c5c2e7019ba87d7308f7f7598b">&#9670;&nbsp;</a></span>check_melee_spell_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_melee_spell_set </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a1ea460c5c2e7019ba87d7308f7f7598b_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a1ea460c5c2e7019ba87d7308f7f7598b_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a1ea460c5c2e7019ba87d7308f7f7598b_cgraph" id="amelee-spell-flags-checker_8cpp_a1ea460c5c2e7019ba87d7308f7f7598b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,827,164,854"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#abc83e9be0a1b79ba9ba2b680b3ac348b" title=" " alt="" coords="262,118,358,144"/>
+<area shape="rect" href="class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="725,346,844,372"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#abe96114bfbbe6b0fa4b01281b1d7a7c0" title=" " alt="" coords="492,523,609,550"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="1132,548,1243,575"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a82086712604898c0d2c750a83b55a1cf" title=" " alt="" coords="212,1064,408,1091"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a99d3aaa6f05f111ace289f0d99759700" title=" " alt="" coords="247,798,373,824"/>
+<area shape="rect" href="line-of-sight_8cpp.html#adff83a1e8c9d47236408737740652a4b" title="LOS(Line Of Sight / 視線が通っているか)の判定を行う。" alt="" coords="765,1131,804,1158"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a8558f34c01633de68b995225193b6d05" title=" " alt="" coords="269,472,351,499"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#ab8e60f9496ff5564f44eb3d5fdea87ee" title=" " alt="" coords="263,168,357,195"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1a652a63e74bc7c3d1d520670df86adb" title=" " alt="" coords="502,67,599,94"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a22a59bbbb98cc400dd5370013ae9ec10" title=" " alt="" coords="261,1182,359,1208"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a13ed081e052ac5f4df4633d50cde791d" title=" " alt="" coords="247,870,373,912"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a2596875d83f2c766214953e84dee0b1a" title=" " alt="" coords="242,1116,378,1157"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="215,1232,405,1259"/>
+<area shape="rect" href="monster-move_8cpp.html#add899c0f49d2829497cd1c0b4082a06d" title="モンスターの目標地点をリセットする / Reset the target of counter attack" alt="" coords="265,1283,355,1310"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a8776806b52dd39ee7b2ac5f5619f1724" title=" " alt="" coords="239,1334,381,1360"/>
+<area shape="rect" href="class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="717,472,853,499"/>
+<area shape="rect" href="monster-info_8cpp.html#ad051474143ae51acf70bf275b30ff246" title=" " alt="" coords="746,979,823,1006"/>
+<area shape="rect" href="monster-info_8cpp.html#a310dca2e8b756213922ce91ffff3dbd0" title=" " alt="" coords="964,903,1044,930"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="975,979,1033,1006"/>
+<area shape="rect" href="monster-info_8cpp.html#a923e88d938d90100c5b241388a5183af" title="モンスターの属性の基づいた敵対関係の有無を返す Check if two monsters are enemies" alt="" coords="503,878,599,904"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="491,1131,610,1158"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="742,1182,827,1208"/>
+<area shape="rect" href="monster-info_8cpp.html#a073e460f5aae349ba48c690993b27211" title="モンスターの属性の基づいた敵対関係の有無を返す（サブルーチン） Check if this monster has &quot;hostile&quot; alignment (aux)" alt="" coords="936,1287,1072,1314"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="963,1182,1045,1208"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="963,1232,1045,1259"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="949,1080,1059,1107"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="949,1131,1059,1158"/>
+<area shape="rect" href="mspell-checker_8cpp.html#ad7f823f0d59ae8876db5e23cc77f8b46" title="モンスターにとってボルト型魔法が有効な状態かを返す / Determine if a bolt spell will hit the player." alt="" coords="742,1080,827,1107"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a9e0d787332a185312feb60c799be6b7f" title="モンスターが敵モンスターに魔力消去を使うかどうかを返す / Check should monster cast dispel spell at other monster." alt="" coords="475,827,627,854"/>
+<area shape="rect" href="class_flag_group.html#a57a928e50a2473024e69c349bcd62525" title="入力イテレータで指定した範囲のリストに含まれるフラグのいずれかがONかどうかを調べる" alt="" coords="926,650,1082,676"/>
+<area shape="rect" href="mspell-checker_8cpp.html#ae10739c91db6102c1cbaa631acd622d9" title="モンスターにとって死者復活を行うべき状態かどうかを返す / Determine if there is a space near the player in which a summoned creat..." alt="" coords="498,979,603,1006"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a7d6635349783f11ffc8768b9db716753" title="モンスター魔法の実装 / Monster spells (attack player)" alt="" coords="487,776,614,803"/>
+<area shape="rect" href="cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="960,1030,1048,1056"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#ae0ce63fe326ff866098e3cccee96749a" title="モンスターがプレイヤーに魔力消去を与えるべきかを判定するルーチン Check should monster cast dispel spell." alt="" coords="735,827,834,854"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="924,840,1084,867"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="693,878,876,904"/>
+<area shape="rect" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="749,726,820,752"/>
+<area shape="rect" href="monster-info_8cpp.html#a67f70b6b798ee7cda82e05e8b6236166" title="モンスターがプレイヤーに対して敵意を抱くかどうかを返す Check if this monster race has &quot;hostile&quot; alignment" alt="" coords="713,1284,856,1325"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="744,776,825,803"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a7e0800d73307e9647c7110b61fa504d1" title=" " alt="" coords="465,320,637,347"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#addad41b5490f0e5440142f98ca58a0f9" title=" " alt="" coords="463,422,639,448"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#afc5ab2de8a94ef9db572fa52a1d349b9" title=" " alt="" coords="456,675,645,702"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#ac0bd64326e0f88fe597563d959b2de84" title=" " alt="" coords="463,574,639,600"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#af3dbb6185fc1fdfee245c1f3007b1ce3" title=" " alt="" coords="460,472,641,499"/>
+<area shape="rect" href="spells-world_8cpp.html#a5e6a62e9d4ac29fde298ca3199c468d7" title="テレポート・レベルが効かないモンスターであるかどうかを判定する" alt="" coords="696,118,873,144"/>
+<area shape="rect" href="monster-move_8cpp.html#a1eb609718fff1dbf879719647d38d8d7" title="モンスターの目標地点をセットする / Set the target of counter attack" alt="" coords="511,1283,591,1310"/>
+<area shape="rect" href="class_flag_group.html#a49274d6d31a6d379444e7bcb3effef6a" title=" " alt="" coords="479,1334,622,1360"/>
+<area shape="rect" href="class_flag_group.html#ac587dd5228dd00af34c36a02b2a95a10" title="フラグ集合のすべてのフラグがOFFかどうかを調べる" alt="" coords="491,1384,610,1411"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a1ea460c5c2e7019ba87d7308f7f7598b_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a1ea460c5c2e7019ba87d7308f7f7598b_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a1ea460c5c2e7019ba87d7308f7f7598b_icgraph" id="amelee-spell-flags-checker_8cpp_a1ea460c5c2e7019ba87d7308f7f7598b_icgraph">
+<area shape="rect" title=" " alt="" coords="488,5,647,32"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="305,5,440,32"/>
+<area shape="rect" href="monster-processor_8cpp.html#aaa5ef8ac387ca2823430b86040541c79" title="モンスターに魔法を試行させる" alt="" coords="176,5,257,32"/>
+<area shape="rect" href="monster-processor_8cpp.html#ae6e21e8e28cd96eb7bc76f452416588a" title="モンスター単体の1ターン行動処理メインルーチン / Process a monster" alt="" coords="5,5,128,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af3dbb6185fc1fdfee245c1f3007b1ce3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3dbb6185fc1fdfee245c1f3007b1ce3">&#9670;&nbsp;</a></span>check_melee_spell_special()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void check_melee_spell_special </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_af3dbb6185fc1fdfee245c1f3007b1ce3_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_af3dbb6185fc1fdfee245c1f3007b1ce3_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_af3dbb6185fc1fdfee245c1f3007b1ce3_cgraph" id="amelee-spell-flags-checker_8cpp_af3dbb6185fc1fdfee245c1f3007b1ce3_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,187,57"/>
+<area shape="rect" href="class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="235,5,371,32"/>
+<area shape="rect" href="class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="243,56,362,83"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="419,5,529,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_af3dbb6185fc1fdfee245c1f3007b1ce3_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_af3dbb6185fc1fdfee245c1f3007b1ce3_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_af3dbb6185fc1fdfee245c1f3007b1ce3_icgraph" id="amelee-spell-flags-checker_8cpp_af3dbb6185fc1fdfee245c1f3007b1ce3_icgraph">
+<area shape="rect" title=" " alt="" coords="525,5,707,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a8558f34c01633de68b995225193b6d05" title=" " alt="" coords="395,5,477,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="188,5,347,32"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a99d3aaa6f05f111ace289f0d99759700"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99d3aaa6f05f111ace289f0d99759700">&#9670;&nbsp;</a></span>check_non_stupid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void check_non_stupid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a99d3aaa6f05f111ace289f0d99759700_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a99d3aaa6f05f111ace289f0d99759700_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a99d3aaa6f05f111ace289f0d99759700_cgraph" id="amelee-spell-flags-checker_8cpp_a99d3aaa6f05f111ace289f0d99759700_cgraph">
+<area shape="rect" title=" " alt="" coords="5,574,132,601"/>
+<area shape="rect" href="mspell-checker_8cpp.html#ad7f823f0d59ae8876db5e23cc77f8b46" title="モンスターにとってボルト型魔法が有効な状態かを返す / Determine if a bolt spell will hit the player." alt="" coords="429,739,514,766"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="849,55,960,82"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a9e0d787332a185312feb60c799be6b7f" title="モンスターが敵モンスターに魔力消去を使うかどうかを返す / Check should monster cast dispel spell at other monster." alt="" coords="180,482,332,509"/>
+<area shape="rect" href="class_flag_group.html#a57a928e50a2473024e69c349bcd62525" title="入力イテレータで指定した範囲のリストに含まれるフラグのいずれかがONかどうかを調べる" alt="" coords="613,30,769,57"/>
+<area shape="rect" href="mspell-checker_8cpp.html#ae10739c91db6102c1cbaa631acd622d9" title="モンスターにとって死者復活を行うべき状態かどうかを返す / Determine if there is a space near the player in which a summoned creat..." alt="" coords="203,625,309,651"/>
+<area shape="rect" href="class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="197,675,315,702"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a7d6635349783f11ffc8768b9db716753" title="モンスター魔法の実装 / Monster spells (attack player)" alt="" coords="193,907,319,934"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="649,739,732,766"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="649,841,732,867"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="635,790,746,817"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="662,638,719,665"/>
+<area shape="rect" href="cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="1062,790,1150,817"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="635,891,746,918"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a30ef387a791d4e4e8de0c441056943e0" title=" " alt="" coords="819,958,991,985"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a967933565c13f95ea0500a0fd24d8021" title=" " alt="" coords="829,790,981,817"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a32a097212154ab56f1a529ee83ff2559" title=" " alt="" coords="827,739,983,766"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a291b34765c99fa0567ca24a7e9eea0a3" title=" " alt="" coords="839,841,971,883"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a3b3cbd8d5e3729549be74e6e65721adb" title=" " alt="" coords="867,907,942,934"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="1039,1009,1173,1035"/>
+<area shape="rect" href="cave_8cpp.html#adc0f94b19918e1965ddd320ae168d551" title=" " alt="" coords="1055,663,1157,690"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="1065,899,1147,926"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#ae0ce63fe326ff866098e3cccee96749a" title="モンスターがプレイヤーに魔力消去を与えるべきかを判定するルーチン Check should monster cast dispel spell." alt="" coords="422,283,521,310"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="611,486,771,513"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="380,507,563,534"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a1676b47cc24010b348bc26769fd4bae5" title=" " alt="" coords="627,131,754,158"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a1ef7b925805f17575d38db4d7ec565ef" title=" " alt="" coords="627,182,754,209"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a2ec20a346ee5ea8fb5c8d235ad0148cf" title=" " alt="" coords="627,233,754,259"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3c8e37ad1c2ecfdc389e4070fda2c1c0" title=" " alt="" coords="631,385,751,411"/>
+<area shape="rect" href="player-status_8cpp.html#a5dc31dcacd506df65ec4babd972ca7dd" title=" " alt="" coords="661,283,721,310"/>
+<area shape="rect" href="player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="852,334,957,361"/>
+<area shape="rect" href="player-status_8cpp.html#af6be48df20384df551b88a2466d159fb" title=" " alt="" coords="655,334,726,361"/>
+<area shape="rect" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="436,790,507,817"/>
+<area shape="rect" href="line-of-sight_8cpp.html#adff83a1e8c9d47236408737740652a4b" title="LOS(Line Of Sight / 視線が通っているか)の判定を行う。" alt="" coords="452,625,491,651"/>
+<area shape="rect" href="monster-info_8cpp.html#a67f70b6b798ee7cda82e05e8b6236166" title="モンスターがプレイヤーに対して敵意を抱くかどうかを返す Check if this monster race has &quot;hostile&quot; alignment" alt="" coords="400,559,543,600"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="429,841,514,867"/>
+<area shape="rect" href="monster-info_8cpp.html#a073e460f5aae349ba48c690993b27211" title="モンスターの属性の基づいた敵対関係の有無を返す（サブルーチン） Check if this monster has &quot;hostile&quot; alignment (aux)" alt="" coords="623,537,759,563"/>
+<area shape="rect" href="cave_8cpp.html#abf1b6aff1aa303afd2b72225c7abbcee" title=" " alt="" coords="835,1009,974,1035"/>
+<area shape="rect" href="cave_8cpp.html#af3ebcc730bf3e9662adef8c0a4b49903" title=" " alt="" coords="428,1110,515,1137"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a99d3aaa6f05f111ace289f0d99759700_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a99d3aaa6f05f111ace289f0d99759700_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a99d3aaa6f05f111ace289f0d99759700_icgraph" id="amelee-spell-flags-checker_8cpp_a99d3aaa6f05f111ace289f0d99759700_icgraph">
+<area shape="rect" title=" " alt="" coords="524,5,651,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="317,5,476,32"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="135,5,269,32"/>
+<area shape="rect" href="monster-processor_8cpp.html#aaa5ef8ac387ca2823430b86040541c79" title="モンスターに魔法を試行させる" alt="" coords="5,5,87,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8558f34c01633de68b995225193b6d05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8558f34c01633de68b995225193b6d05">&#9670;&nbsp;</a></span>check_pet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void check_pet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a8558f34c01633de68b995225193b6d05_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a8558f34c01633de68b995225193b6d05_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a8558f34c01633de68b995225193b6d05_cgraph" id="amelee-spell-flags-checker_8cpp_a8558f34c01633de68b995225193b6d05_cgraph">
+<area shape="rect" title=" " alt="" coords="5,1066,88,1093"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a7e0800d73307e9647c7110b61fa504d1" title=" " alt="" coords="138,1041,310,1067"/>
+<area shape="rect" href="class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="827,1193,945,1219"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#addad41b5490f0e5440142f98ca58a0f9" title=" " alt="" coords="136,1142,312,1169"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#afc5ab2de8a94ef9db572fa52a1d349b9" title=" " alt="" coords="571,686,760,713"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#ac0bd64326e0f88fe597563d959b2de84" title=" " alt="" coords="577,787,753,814"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#af3dbb6185fc1fdfee245c1f3007b1ce3" title=" " alt="" coords="575,1142,756,1169"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a265a95d04381b6b6ac4e54b2d3803aa7" title="モンスター魔法の実装(対モンスター処理) / Monster spells (attack monster)" alt="" coords="395,902,488,929"/>
+<area shape="rect" href="class_flag_group.html#af6327bd9a9e463469a9aa5daaad3346a" title="入力イテレータで指定した範囲のリストに含まれるフラグがすべてOFFかどうかを調べる" alt="" coords="360,1041,523,1067"/>
+<area shape="rect" href="monster-info_8cpp.html#a923e88d938d90100c5b241388a5183af" title="モンスターの属性の基づいた敵対関係の有無を返す Check if two monsters are enemies" alt="" coords="617,1091,713,1118"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="857,1091,915,1118"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="1053,382,1135,409"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="1053,534,1135,561"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="1039,635,1149,662"/>
+<area shape="rect" href="cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="621,737,709,763"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="1039,813,1149,839"/>
+<area shape="rect" href="class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="818,1142,954,1169"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="1039,1091,1149,1118"/>
+<area shape="rect" href="class_flag_group.html#a57a928e50a2473024e69c349bcd62525" title="入力イテレータで指定した範囲のリストに含まれるフラグのいずれかがONかどうかを調べる" alt="" coords="808,1041,964,1067"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a18d1785b5416dd0102f17af5a5e64339" title="モンスターが敵対モンスターに直接ブレスを当てることが可能かを判定する / Determine if a breath will hit the target." alt="" coords="393,407,490,434"/>
+<area shape="rect" href="range-calc_8cpp.html#aa0bea06a5600ef01a6952378a83a60f8" title=" " alt="" coords="615,331,715,358"/>
+<area shape="rect" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="851,686,921,713"/>
+<area shape="rect" href="range-calc_8cpp.html#a583d3a676864745468096ddfc9da8ddf" title=" " alt="" coords="809,129,963,155"/>
+<area shape="rect" href="cave_8cpp.html#a9940da0af854b0b88a943373b8b41055" title=" " alt="" coords="1012,103,1176,130"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="1224,103,1359,130"/>
+<area shape="rect" href="line-of-sight_8cpp.html#adff83a1e8c9d47236408737740652a4b" title="LOS(Line Of Sight / 視線が通っているか)の判定を行う。" alt="" coords="867,230,905,257"/>
+<area shape="rect" href="cave_8cpp.html#adc0f94b19918e1965ddd320ae168d551" title=" " alt="" coords="1043,205,1145,231"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="843,585,929,611"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a874c3947f23540371fe5a100ec89a22b" title="モンスターが特殊能力の目標地点を決める処理 / Get the actual center point of ball spells (rad &gt; 1) (originally from TOband)" alt="" coords="825,737,947,763"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a8558f34c01633de68b995225193b6d05_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a8558f34c01633de68b995225193b6d05_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a8558f34c01633de68b995225193b6d05_icgraph" id="amelee-spell-flags-checker_8cpp_a8558f34c01633de68b995225193b6d05_icgraph">
+<area shape="rect" title=" " alt="" coords="524,5,607,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="317,5,476,32"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="135,5,269,32"/>
+<area shape="rect" href="monster-processor_8cpp.html#aaa5ef8ac387ca2823430b86040541c79" title="モンスターに魔法を試行させる" alt="" coords="5,5,87,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab8e60f9496ff5564f44eb3d5fdea87ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8e60f9496ff5564f44eb3d5fdea87ee">&#9670;&nbsp;</a></span>check_riding()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void check_riding </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_ab8e60f9496ff5564f44eb3d5fdea87ee_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_ab8e60f9496ff5564f44eb3d5fdea87ee_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_ab8e60f9496ff5564f44eb3d5fdea87ee_cgraph" id="amelee-spell-flags-checker_8cpp_ab8e60f9496ff5564f44eb3d5fdea87ee_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,100,32"/>
+<area shape="rect" href="class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="148,5,267,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_ab8e60f9496ff5564f44eb3d5fdea87ee_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_ab8e60f9496ff5564f44eb3d5fdea87ee_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_ab8e60f9496ff5564f44eb3d5fdea87ee_icgraph" id="amelee-spell-flags-checker_8cpp_ab8e60f9496ff5564f44eb3d5fdea87ee_icgraph">
+<area shape="rect" title=" " alt="" coords="524,5,619,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="317,5,476,32"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="135,5,269,32"/>
+<area shape="rect" href="monster-processor_8cpp.html#aaa5ef8ac387ca2823430b86040541c79" title="モンスターに魔法を試行させる" alt="" coords="5,5,87,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1a652a63e74bc7c3d1d520670df86adb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a652a63e74bc7c3d1d520670df86adb">&#9670;&nbsp;</a></span>check_smart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void check_smart </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a1a652a63e74bc7c3d1d520670df86adb_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a1a652a63e74bc7c3d1d520670df86adb_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a1a652a63e74bc7c3d1d520670df86adb_cgraph" id="amelee-spell-flags-checker_8cpp_a1a652a63e74bc7c3d1d520670df86adb_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,103,83"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="184,5,295,32"/>
+<area shape="rect" href="spells-world_8cpp.html#a5e6a62e9d4ac29fde298ca3199c468d7" title="テレポート・レベルが効かないモンスターであるかどうかを判定する" alt="" coords="151,56,328,83"/>
+<area shape="rect" href="class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="180,107,299,133"/>
+<area shape="rect" href="quest_8cpp.html#a5b6b24bb1f79322d67d0cc51368d3ad3" title="新しく入ったダンジョンの階層に固定されている一般のクエストを探し出しIDを返す。 / Hack – Check if a level is a &quot;quest&quot; level" alt="" coords="376,31,480,57"/>
+<area shape="rect" href="quest_8cpp.html#abab5512f0df1872d981afddd7ca8481f" title="新しく入ったダンジョンの階層に固定されているランダムクエストを探し出しIDを返す。" alt="" coords="528,56,683,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a1a652a63e74bc7c3d1d520670df86adb_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a1a652a63e74bc7c3d1d520670df86adb_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a1a652a63e74bc7c3d1d520670df86adb_icgraph" id="amelee-spell-flags-checker_8cpp_a1a652a63e74bc7c3d1d520670df86adb_icgraph">
+<area shape="rect" title=" " alt="" coords="524,5,621,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="317,5,476,32"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="135,5,269,32"/>
+<area shape="rect" href="monster-processor_8cpp.html#aaa5ef8ac387ca2823430b86040541c79" title="モンスターに魔法を試行させる" alt="" coords="5,5,87,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a22a59bbbb98cc400dd5370013ae9ec10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22a59bbbb98cc400dd5370013ae9ec10">&#9670;&nbsp;</a></span>check_stupid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void check_stupid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a22a59bbbb98cc400dd5370013ae9ec10_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a22a59bbbb98cc400dd5370013ae9ec10_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a22a59bbbb98cc400dd5370013ae9ec10_icgraph" id="amelee-spell-flags-checker_8cpp_a22a59bbbb98cc400dd5370013ae9ec10_icgraph">
+<area shape="rect" title=" " alt="" coords="524,5,623,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="317,5,476,32"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="135,5,269,32"/>
+<area shape="rect" href="monster-processor_8cpp.html#aaa5ef8ac387ca2823430b86040541c79" title="モンスターに魔法を試行させる" alt="" coords="5,5,87,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a13ed081e052ac5f4df4633d50cde791d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13ed081e052ac5f4df4633d50cde791d">&#9670;&nbsp;</a></span>decide_indirection_melee_spell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void decide_indirection_melee_spell </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a13ed081e052ac5f4df4633d50cde791d_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a13ed081e052ac5f4df4633d50cde791d_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a13ed081e052ac5f4df4633d50cde791d_cgraph" id="amelee-spell-flags-checker_8cpp_a13ed081e052ac5f4df4633d50cde791d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,175,132,217"/>
+<area shape="rect" href="monster-info_8cpp.html#a923e88d938d90100c5b241388a5183af" title="モンスターの属性の基づいた敵対関係の有無を返す Check if two monsters are enemies" alt="" coords="180,107,276,133"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="185,259,271,285"/>
+<area shape="rect" href="monster-info_8cpp.html#a073e460f5aae349ba48c690993b27211" title="モンスターの属性の基づいた敵対関係の有無を返す（サブルーチン） Check if this monster has &quot;hostile&quot; alignment (aux)" alt="" coords="324,5,460,32"/>
+<area shape="rect" href="class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="324,56,460,83"/>
+<area shape="rect" href="monster-info_8cpp.html#ad051474143ae51acf70bf275b30ff246" title=" " alt="" coords="353,107,431,133"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="565,157,623,184"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="728,107,839,133"/>
+<area shape="rect" href="monster-info_8cpp.html#a310dca2e8b756213922ce91ffff3dbd0" title=" " alt="" coords="554,107,634,133"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="351,208,433,235"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="351,259,433,285"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="337,309,447,336"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="337,360,447,387"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a30ef387a791d4e4e8de0c441056943e0" title=" " alt="" coords="508,259,680,285"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a967933565c13f95ea0500a0fd24d8021" title=" " alt="" coords="518,309,670,336"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a32a097212154ab56f1a529ee83ff2559" title=" " alt="" coords="516,360,672,387"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a291b34765c99fa0567ca24a7e9eea0a3" title=" " alt="" coords="528,411,660,453"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a3b3cbd8d5e3729549be74e6e65721adb" title=" " alt="" coords="557,477,631,504"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a13ed081e052ac5f4df4633d50cde791d_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a13ed081e052ac5f4df4633d50cde791d_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a13ed081e052ac5f4df4633d50cde791d_icgraph" id="amelee-spell-flags-checker_8cpp_a13ed081e052ac5f4df4633d50cde791d_icgraph">
+<area shape="rect" title=" " alt="" coords="524,5,651,47"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="317,13,476,39"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="135,13,269,39"/>
+<area shape="rect" href="monster-processor_8cpp.html#aaa5ef8ac387ca2823430b86040541c79" title="モンスターに魔法を試行させる" alt="" coords="5,13,87,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2596875d83f2c766214953e84dee0b1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2596875d83f2c766214953e84dee0b1a">&#9670;&nbsp;</a></span>decide_melee_spell_target()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void decide_melee_spell_target </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a2596875d83f2c766214953e84dee0b1a_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a2596875d83f2c766214953e84dee0b1a_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a2596875d83f2c766214953e84dee0b1a_cgraph" id="amelee-spell-flags-checker_8cpp_a2596875d83f2c766214953e84dee0b1a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,74,141,115"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="189,81,275,108"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="337,5,419,32"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="337,56,419,83"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="323,107,433,133"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="323,157,433,184"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a30ef387a791d4e4e8de0c441056943e0" title=" " alt="" coords="481,56,653,83"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a967933565c13f95ea0500a0fd24d8021" title=" " alt="" coords="491,107,643,133"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a32a097212154ab56f1a529ee83ff2559" title=" " alt="" coords="489,157,645,184"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a291b34765c99fa0567ca24a7e9eea0a3" title=" " alt="" coords="501,209,633,250"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a3b3cbd8d5e3729549be74e6e65721adb" title=" " alt="" coords="530,275,605,301"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a2596875d83f2c766214953e84dee0b1a_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a2596875d83f2c766214953e84dee0b1a_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a2596875d83f2c766214953e84dee0b1a_icgraph" id="amelee-spell-flags-checker_8cpp_a2596875d83f2c766214953e84dee0b1a_icgraph">
+<area shape="rect" title=" " alt="" coords="524,5,660,47"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="317,13,476,39"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="135,13,269,39"/>
+<area shape="rect" href="monster-processor_8cpp.html#aaa5ef8ac387ca2823430b86040541c79" title="モンスターに魔法を試行させる" alt="" coords="5,13,87,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8776806b52dd39ee7b2ac5f5619f1724"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8776806b52dd39ee7b2ac5f5619f1724">&#9670;&nbsp;</a></span>set_melee_spell_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> set_melee_spell_set </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmelee__spell__type.html">melee_spell_type</a> *&#160;</td>
+          <td class="paramname"><em>ms_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a8776806b52dd39ee7b2ac5f5619f1724_cgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a8776806b52dd39ee7b2ac5f5619f1724_cgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a8776806b52dd39ee7b2ac5f5619f1724_cgraph" id="amelee-spell-flags-checker_8cpp_a8776806b52dd39ee7b2ac5f5619f1724_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,147,57"/>
+<area shape="rect" href="class_flag_group.html#a49274d6d31a6d379444e7bcb3effef6a" title=" " alt="" coords="195,5,337,32"/>
+<area shape="rect" href="class_flag_group.html#ac587dd5228dd00af34c36a02b2a95a10" title="フラグ集合のすべてのフラグがOFFかどうかを調べる" alt="" coords="207,56,325,83"/>
+<area shape="rect" href="class_flag_group.html#a1c4d1520ec28b61031ac76584ac9607d" title="フラグ集合に含まれるフラグの種類数を返す" alt="" coords="385,5,500,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="melee-spell-flags-checker_8cpp_a8776806b52dd39ee7b2ac5f5619f1724_icgraph.png" border="0" usemap="#amelee-spell-flags-checker_8cpp_a8776806b52dd39ee7b2ac5f5619f1724_icgraph" alt=""/></div>
+<map name="amelee-spell-flags-checker_8cpp_a8776806b52dd39ee7b2ac5f5619f1724_icgraph" id="amelee-spell-flags-checker_8cpp_a8776806b52dd39ee7b2ac5f5619f1724_icgraph">
+<area shape="rect" title=" " alt="" coords="524,5,665,32"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="317,5,476,32"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="135,5,269,32"/>
+<area shape="rect" href="monster-processor_8cpp.html#aaa5ef8ac387ca2823430b86040541c79" title="モンスターに魔法を試行させる" alt="" coords="5,5,87,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分49秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

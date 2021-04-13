@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/system/building-type-definition.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d501334aeb1b78ad67cd3c72c37b1e87.html">system</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">building-type-definition.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="building-type-definition_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">/* 人畜無害なenumヘッダを先に読み込む */</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tval-types_8h.html">object/tval-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player-classes-types_8h.html">player/player-classes-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player-race-types_8h.html">player/player-race-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="realm-types_8h.html">realm/realm-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="building-type-definition_8h.html#ad12e56da6ea4dc433e983d2665d75a25">   10</a></span>&#160;<span class="preprocessor">#define MAX_BLDG 32 </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structarena__type.html">   15</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structarena__type.html">arena_type</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structarena__type.html#a3603dc71e534452d9034614cb0566b9f">   16</a></span>&#160;    <a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> <a class="code" href="structarena__type.html#a3603dc71e534452d9034614cb0566b9f">r_idx</a>; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structarena__type.html#aec749f10c327d5d4c2f7d0ab95b3ce2e">   17</a></span>&#160;    <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a> <a class="code" href="structarena__type.html#aec749f10c327d5d4c2f7d0ab95b3ce2e">tval</a>; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structarena__type.html#a8f1e695d5cf3467e80af82aceac436dd">   18</a></span>&#160;    <a class="code" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a> <a class="code" href="structarena__type.html#a8f1e695d5cf3467e80af82aceac436dd">sval</a>; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="building-type-definition_8h.html#a4b6de7fd053a1a3dff06876264941d1d">   19</a></span>&#160;} <a class="code" href="building-type-definition_8h.html#a4b6de7fd053a1a3dff06876264941d1d">arena_type</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structbuilding__type.html">   21</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structbuilding__type.html">building_type</a> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structbuilding__type.html#a3d7b9ebef551140545924c87b1bdf1fd">   22</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structbuilding__type.html#a3d7b9ebef551140545924c87b1bdf1fd">name</a>[20]; <span class="comment">/* proprietor name */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structbuilding__type.html#afdfd80395e3f8f7dd1d0ad8ff726dc64">   23</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structbuilding__type.html#afdfd80395e3f8f7dd1d0ad8ff726dc64">owner_name</a>[20]; <span class="comment">/* proprietor name */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structbuilding__type.html#aa815ec2ef0a73fe38ff67b40435d65a4">   24</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structbuilding__type.html#aa815ec2ef0a73fe38ff67b40435d65a4">owner_race</a>[20]; <span class="comment">/* proprietor race */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structbuilding__type.html#a12a5a50ed32e08d967825825e0872934">   26</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structbuilding__type.html#a12a5a50ed32e08d967825825e0872934">act_names</a>[8][30]; <span class="comment">/* action names */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structbuilding__type.html#a6dcb6c4ba053e312045940ca7d2faaec">   27</a></span>&#160;    <a class="code" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> <a class="code" href="structbuilding__type.html#a6dcb6c4ba053e312045940ca7d2faaec">member_costs</a>[8]; <span class="comment">/* Costs for class members of building */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structbuilding__type.html#a40a68ef98f77f1b4f8c5d6fa5d184919">   28</a></span>&#160;    <a class="code" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> <a class="code" href="structbuilding__type.html#a40a68ef98f77f1b4f8c5d6fa5d184919">other_costs</a>[8]; <span class="comment">/* Costs for nonguild members */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structbuilding__type.html#a4adf743cd07fc7140d2360da35b10305">   29</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structbuilding__type.html#a4adf743cd07fc7140d2360da35b10305">letters</a>[8]; <span class="comment">/* action letters */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structbuilding__type.html#accc1d037b585d36560a423a613e2036c">   30</a></span>&#160;    <a class="code" href="h-type_8h.html#a8185d62afce2ae79b207f9300e96b14f">BACT_IDX</a> <a class="code" href="structbuilding__type.html#accc1d037b585d36560a423a613e2036c">actions</a>[8]; <span class="comment">/* action codes */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structbuilding__type.html#a00a9697802cd4ca8b0dde9cc405c830b">   31</a></span>&#160;    <a class="code" href="h-type_8h.html#acdb549772010fb5de924e126357ee3f3">BACT_RESTRICT_IDX</a> <a class="code" href="structbuilding__type.html#a00a9697802cd4ca8b0dde9cc405c830b">action_restr</a>[8]; <span class="comment">/* action restrictions */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structbuilding__type.html#ae3400bc689a28a2d71e2b9164547c278">   33</a></span>&#160;    <a class="code" href="player-classes-types_8h.html#addabd864452eb307e7fc8dcf6ea2fc72">player_class_type</a> <a class="code" href="structbuilding__type.html#ae3400bc689a28a2d71e2b9164547c278">member_class</a>[<a class="code" href="player-classes-types_8h.html#addabd864452eb307e7fc8dcf6ea2fc72ac2b6af85e26de699ea41ae2565361e7b">MAX_CLASS</a>]; <span class="comment">/* which classes are part of guild */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structbuilding__type.html#adad62a23c93fc4c61ec291bedc7413d4">   34</a></span>&#160;    <a class="code" href="player-race-types_8h.html#afd890f7607910d11808132db27cf4009">player_race_type</a> <a class="code" href="structbuilding__type.html#adad62a23c93fc4c61ec291bedc7413d4">member_race</a>[<a class="code" href="player-race-types_8h.html#afd890f7607910d11808132db27cf4009afd8d71f4b3c7ad755e145f30730cc282">MAX_RACES</a>]; <span class="comment">/* which classes are part of guild */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structbuilding__type.html#a048929960015e5a7b3421517d323e92e">   35</a></span>&#160;    <a class="code" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a> <a class="code" href="structbuilding__type.html#a048929960015e5a7b3421517d323e92e">member_realm</a>[<a class="code" href="realm-types_8h.html#a13eedab443f376324788b409e0fa962ea7a599c125fad36b302272b21784f7aa3">MAX_MAGIC</a> + 1]; <span class="comment">/* which realms are part of guild */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="building-type-definition_8h.html#a127d0407b5c4553c4c8c5ab0ac7e8630">   36</a></span>&#160;} <a class="code" href="building-type-definition_8h.html#a127d0407b5c4553c4c8c5ab0ac7e8630">building_type</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">extern</span> <a class="code" href="structbuilding__type.html">building_type</a> <a class="code" href="building-type-definition_8h.html#a3d9398d099c8180c556a5c1762d3ed8c">building</a>[<a class="code" href="building-type-definition_8h.html#ad12e56da6ea4dc433e983d2665d75a25">MAX_BLDG</a>];</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> <a class="code" href="building-type-definition_8h.html#ac6a70fc7476d9161703667bb2893fdac">battle_mon</a>[4];</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="abuilding-type-definition_8h_html_a127d0407b5c4553c4c8c5ab0ac7e8630"><div class="ttname"><a href="building-type-definition_8h.html#a127d0407b5c4553c4c8c5ab0ac7e8630">building_type</a></div><div class="ttdeci">struct building_type building_type</div></div>
+<div class="ttc" id="abuilding-type-definition_8h_html_a3d9398d099c8180c556a5c1762d3ed8c"><div class="ttname"><a href="building-type-definition_8h.html#a3d9398d099c8180c556a5c1762d3ed8c">building</a></div><div class="ttdeci">building_type building[MAX_BLDG]</div><div class="ttdef"><b>Definition:</b> building-type-definition.cpp:3</div></div>
+<div class="ttc" id="abuilding-type-definition_8h_html_a4b6de7fd053a1a3dff06876264941d1d"><div class="ttname"><a href="building-type-definition_8h.html#a4b6de7fd053a1a3dff06876264941d1d">arena_type</a></div><div class="ttdeci">struct arena_type arena_type</div><div class="ttdoc">闘技場のモンスターエントリー構造体 / A structure type for on_defeat_arena_monster entry</div></div>
+<div class="ttc" id="abuilding-type-definition_8h_html_ac6a70fc7476d9161703667bb2893fdac"><div class="ttname"><a href="building-type-definition_8h.html#ac6a70fc7476d9161703667bb2893fdac">battle_mon</a></div><div class="ttdeci">MONRACE_IDX battle_mon[4]</div><div class="ttdef"><b>Definition:</b> building-type-definition.cpp:4</div></div>
+<div class="ttc" id="abuilding-type-definition_8h_html_ad12e56da6ea4dc433e983d2665d75a25"><div class="ttname"><a href="building-type-definition_8h.html#ad12e56da6ea4dc433e983d2665d75a25">MAX_BLDG</a></div><div class="ttdeci">#define MAX_BLDG</div><div class="ttdoc">施設の種類最大数 / Number of buildings</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:10</div></div>
+<div class="ttc" id="ah-type_8h_html_a557f0599108d7e2a11e3495c819c6d6b"><div class="ttname"><a href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a></div><div class="ttdeci">s16b REALM_IDX</div><div class="ttdoc">ゲーム中の魔法領域ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:112</div></div>
+<div class="ttc" id="ah-type_8h_html_a7ea47f67338902d35c1e93e00cf86908"><div class="ttname"><a href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a></div><div class="ttdeci">s16b MONRACE_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:109</div></div>
+<div class="ttc" id="ah-type_8h_html_a8185d62afce2ae79b207f9300e96b14f"><div class="ttname"><a href="h-type_8h.html#a8185d62afce2ae79b207f9300e96b14f">BACT_IDX</a></div><div class="ttdeci">s16b BACT_IDX</div><div class="ttdoc">町の施設処理のID定義</div><div class="ttdef"><b>Definition:</b> h-type.h:106</div></div>
+<div class="ttc" id="ah-type_8h_html_ac67a750044882c0fd3760a2eccd56d7c"><div class="ttname"><a href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a></div><div class="ttdeci">char GAME_TEXT</div><div class="ttdoc">ゲーム中のテキスト型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:133</div></div>
+<div class="ttc" id="ah-type_8h_html_acdb549772010fb5de924e126357ee3f3"><div class="ttname"><a href="h-type_8h.html#acdb549772010fb5de924e126357ee3f3">BACT_RESTRICT_IDX</a></div><div class="ttdeci">s16b BACT_RESTRICT_IDX</div><div class="ttdoc">町の施設処理の規制処理ID定義</div><div class="ttdef"><b>Definition:</b> h-type.h:107</div></div>
+<div class="ttc" id="ah-type_8h_html_ad52e4f96ca473e40e3be6db6f73a13d4"><div class="ttname"><a href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a></div><div class="ttdeci">s32b OBJECT_SUBTYPE_VALUE</div><div class="ttdoc">ゲーム中のアイテム副分類の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:181</div></div>
+<div class="ttc" id="ah-type_8h_html_aeba8ab2222e118a4540456c55d92a894"><div class="ttname"><a href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a></div><div class="ttdeci">s32b PRICE</div><div class="ttdoc">ゲーム中の金額価値の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:187</div></div>
+<div class="ttc" id="aplayer-classes-types_8h_html"><div class="ttname"><a href="player-classes-types_8h.html">player-classes-types.h</a></div></div>
+<div class="ttc" id="aplayer-classes-types_8h_html_addabd864452eb307e7fc8dcf6ea2fc72"><div class="ttname"><a href="player-classes-types_8h.html#addabd864452eb307e7fc8dcf6ea2fc72">player_class_type</a></div><div class="ttdeci">player_class_type</div><div class="ttdef"><b>Definition:</b> player-classes-types.h:3</div></div>
+<div class="ttc" id="aplayer-classes-types_8h_html_addabd864452eb307e7fc8dcf6ea2fc72ac2b6af85e26de699ea41ae2565361e7b"><div class="ttname"><a href="player-classes-types_8h.html#addabd864452eb307e7fc8dcf6ea2fc72ac2b6af85e26de699ea41ae2565361e7b">MAX_CLASS</a></div><div class="ttdeci">@ MAX_CLASS</div><div class="ttdoc">職業の最大定義数 Maximum number of player &quot;class&quot; types (see &quot;table.c&quot;, etc)</div><div class="ttdef"><b>Definition:</b> player-classes-types.h:33</div></div>
+<div class="ttc" id="aplayer-race-types_8h_html"><div class="ttname"><a href="player-race-types_8h.html">player-race-types.h</a></div></div>
+<div class="ttc" id="aplayer-race-types_8h_html_afd890f7607910d11808132db27cf4009"><div class="ttname"><a href="player-race-types_8h.html#afd890f7607910d11808132db27cf4009">player_race_type</a></div><div class="ttdeci">player_race_type</div><div class="ttdef"><b>Definition:</b> player-race-types.h:6</div></div>
+<div class="ttc" id="aplayer-race-types_8h_html_afd890f7607910d11808132db27cf4009afd8d71f4b3c7ad755e145f30730cc282"><div class="ttname"><a href="player-race-types_8h.html#afd890f7607910d11808132db27cf4009afd8d71f4b3c7ad755e145f30730cc282">MAX_RACES</a></div><div class="ttdeci">@ MAX_RACES</div><div class="ttdef"><b>Definition:</b> player-race-types.h:45</div></div>
+<div class="ttc" id="arealm-types_8h_html"><div class="ttname"><a href="realm-types_8h.html">realm-types.h</a></div></div>
+<div class="ttc" id="arealm-types_8h_html_a13eedab443f376324788b409e0fa962ea7a599c125fad36b302272b21784f7aa3"><div class="ttname"><a href="realm-types_8h.html#a13eedab443f376324788b409e0fa962ea7a599c125fad36b302272b21784f7aa3">MAX_MAGIC</a></div><div class="ttdeci">@ MAX_MAGIC</div><div class="ttdef"><b>Definition:</b> realm-types.h:15</div></div>
+<div class="ttc" id="astructarena__type_html"><div class="ttname"><a href="structarena__type.html">arena_type</a></div><div class="ttdoc">闘技場のモンスターエントリー構造体 / A structure type for on_defeat_arena_monster entry</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:15</div></div>
+<div class="ttc" id="astructarena__type_html_a3603dc71e534452d9034614cb0566b9f"><div class="ttname"><a href="structarena__type.html#a3603dc71e534452d9034614cb0566b9f">arena_type::r_idx</a></div><div class="ttdeci">MONRACE_IDX r_idx</div><div class="ttdoc">闘技場のモンスター種族ID(0ならば表彰式) / Monster (0 means victory prizing)</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:16</div></div>
+<div class="ttc" id="astructarena__type_html_a8f1e695d5cf3467e80af82aceac436dd"><div class="ttname"><a href="structarena__type.html#a8f1e695d5cf3467e80af82aceac436dd">arena_type::sval</a></div><div class="ttdeci">OBJECT_SUBTYPE_VALUE sval</div><div class="ttdoc">モンスター打倒後に得られるアイテムの小カテゴリID / sval of prize</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:18</div></div>
+<div class="ttc" id="astructarena__type_html_aec749f10c327d5d4c2f7d0ab95b3ce2e"><div class="ttname"><a href="structarena__type.html#aec749f10c327d5d4c2f7d0ab95b3ce2e">arena_type::tval</a></div><div class="ttdeci">tval_type tval</div><div class="ttdoc">モンスター打倒後に得られるアイテムの大カテゴリID / tval of prize (0 means no prize)</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:17</div></div>
+<div class="ttc" id="astructbuilding__type_html"><div class="ttname"><a href="structbuilding__type.html">building_type</a></div><div class="ttdef"><b>Definition:</b> building-type-definition.h:21</div></div>
+<div class="ttc" id="astructbuilding__type_html_a00a9697802cd4ca8b0dde9cc405c830b"><div class="ttname"><a href="structbuilding__type.html#a00a9697802cd4ca8b0dde9cc405c830b">building_type::action_restr</a></div><div class="ttdeci">BACT_RESTRICT_IDX action_restr[8]</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:31</div></div>
+<div class="ttc" id="astructbuilding__type_html_a048929960015e5a7b3421517d323e92e"><div class="ttname"><a href="structbuilding__type.html#a048929960015e5a7b3421517d323e92e">building_type::member_realm</a></div><div class="ttdeci">REALM_IDX member_realm[MAX_MAGIC+1]</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:35</div></div>
+<div class="ttc" id="astructbuilding__type_html_a12a5a50ed32e08d967825825e0872934"><div class="ttname"><a href="structbuilding__type.html#a12a5a50ed32e08d967825825e0872934">building_type::act_names</a></div><div class="ttdeci">GAME_TEXT act_names[8][30]</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:26</div></div>
+<div class="ttc" id="astructbuilding__type_html_a3d7b9ebef551140545924c87b1bdf1fd"><div class="ttname"><a href="structbuilding__type.html#a3d7b9ebef551140545924c87b1bdf1fd">building_type::name</a></div><div class="ttdeci">GAME_TEXT name[20]</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:22</div></div>
+<div class="ttc" id="astructbuilding__type_html_a40a68ef98f77f1b4f8c5d6fa5d184919"><div class="ttname"><a href="structbuilding__type.html#a40a68ef98f77f1b4f8c5d6fa5d184919">building_type::other_costs</a></div><div class="ttdeci">PRICE other_costs[8]</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:28</div></div>
+<div class="ttc" id="astructbuilding__type_html_a4adf743cd07fc7140d2360da35b10305"><div class="ttname"><a href="structbuilding__type.html#a4adf743cd07fc7140d2360da35b10305">building_type::letters</a></div><div class="ttdeci">char letters[8]</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:29</div></div>
+<div class="ttc" id="astructbuilding__type_html_a6dcb6c4ba053e312045940ca7d2faaec"><div class="ttname"><a href="structbuilding__type.html#a6dcb6c4ba053e312045940ca7d2faaec">building_type::member_costs</a></div><div class="ttdeci">PRICE member_costs[8]</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:27</div></div>
+<div class="ttc" id="astructbuilding__type_html_aa815ec2ef0a73fe38ff67b40435d65a4"><div class="ttname"><a href="structbuilding__type.html#aa815ec2ef0a73fe38ff67b40435d65a4">building_type::owner_race</a></div><div class="ttdeci">GAME_TEXT owner_race[20]</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:24</div></div>
+<div class="ttc" id="astructbuilding__type_html_accc1d037b585d36560a423a613e2036c"><div class="ttname"><a href="structbuilding__type.html#accc1d037b585d36560a423a613e2036c">building_type::actions</a></div><div class="ttdeci">BACT_IDX actions[8]</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:30</div></div>
+<div class="ttc" id="astructbuilding__type_html_adad62a23c93fc4c61ec291bedc7413d4"><div class="ttname"><a href="structbuilding__type.html#adad62a23c93fc4c61ec291bedc7413d4">building_type::member_race</a></div><div class="ttdeci">player_race_type member_race[MAX_RACES]</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:34</div></div>
+<div class="ttc" id="astructbuilding__type_html_ae3400bc689a28a2d71e2b9164547c278"><div class="ttname"><a href="structbuilding__type.html#ae3400bc689a28a2d71e2b9164547c278">building_type::member_class</a></div><div class="ttdeci">player_class_type member_class[MAX_CLASS]</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:33</div></div>
+<div class="ttc" id="astructbuilding__type_html_afdfd80395e3f8f7dd1d0ad8ff726dc64"><div class="ttname"><a href="structbuilding__type.html#afdfd80395e3f8f7dd1d0ad8ff726dc64">building_type::owner_name</a></div><div class="ttdeci">GAME_TEXT owner_name[20]</div><div class="ttdef"><b>Definition:</b> building-type-definition.h:23</div></div>
+<div class="ttc" id="atval-types_8h_html"><div class="ttname"><a href="tval-types_8h.html">tval-types.h</a></div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a></div><div class="ttdeci">tval_type</div><div class="ttdef"><b>Definition:</b> tval-types.h:17</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

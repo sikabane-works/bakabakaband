@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/game-option/game-play-options.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_75d1aa6e715a0a2a957f68c14f483856.html">game-option</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">game-play-options.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="game-play-options_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="game-play-options_8h.html#a26c0d4cd0bbe346124f478d87259472f">stack_force_notes</a>; <span class="comment">/* Merge inscriptions when stacking */</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="game-play-options_8h.html#a3b8771c00e9696b42054332b9e4adb4e">stack_force_costs</a>; <span class="comment">/* Merge discounts when stacking */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="game-play-options_8h.html#a83e45ddc5db76d7541b260c88af9f0be">expand_list</a>; <span class="comment">/* Expand the power of the list commands */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="game-play-options_8h.html#a061b5176a701e1a2581d8a8f1a52f19b">small_levels</a>; <span class="comment">/* Allow unusually small dungeon levels */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="game-play-options_8h.html#ae6f419a5a1f10a74de7108715d46bc51">always_small_levels</a>; <span class="comment">/* Always create unusually small dungeon levels */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="game-play-options_8h.html#a905636cb56c5ed2308bc033be8e5a3f4">empty_levels</a>; <span class="comment">/* Allow empty &#39;on_defeat_arena_monster&#39; levels */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="game-play-options_8h.html#a79dd68e7ba69449731163c03aed4084e">bound_walls_perm</a>; <span class="comment">/* Boundary walls become &#39;permanent wall&#39; */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="game-play-options_8h.html#a82b99dd6f5544da2644d7fcd0a60cf2f">last_words</a>; <span class="comment">/* Leave last words when your character dies */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="game-play-options_8h.html#a400c22e4751ec540c1dbe7b3901f6461">auto_dump</a>; <span class="comment">/* Dump a character record automatically */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="game-play-options_8h.html#af001f8f60a6720634c03e71f0bc59723">auto_debug_save</a>; <span class="comment">/* Dump a debug savedata every key input */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="game-play-options_8h.html#aaf9572ce70a81d73c415b1a522ad6ef7">send_score</a>; <span class="comment">/* Send score dump to the world score server */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="game-play-options_8h.html#a677a8d3211835e504b80c66ad15025f6">allow_debug_opts</a>; <span class="comment">/* Allow use of debug/cheat options */</span></div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="agame-play-options_8h_html_a061b5176a701e1a2581d8a8f1a52f19b"><div class="ttname"><a href="game-play-options_8h.html#a061b5176a701e1a2581d8a8f1a52f19b">small_levels</a></div><div class="ttdeci">bool small_levels</div><div class="ttdef"><b>Definition:</b> game-play-options.cpp:6</div></div>
+<div class="ttc" id="agame-play-options_8h_html_a26c0d4cd0bbe346124f478d87259472f"><div class="ttname"><a href="game-play-options_8h.html#a26c0d4cd0bbe346124f478d87259472f">stack_force_notes</a></div><div class="ttdeci">bool stack_force_notes</div><div class="ttdef"><b>Definition:</b> game-play-options.cpp:3</div></div>
+<div class="ttc" id="agame-play-options_8h_html_a3b8771c00e9696b42054332b9e4adb4e"><div class="ttname"><a href="game-play-options_8h.html#a3b8771c00e9696b42054332b9e4adb4e">stack_force_costs</a></div><div class="ttdeci">bool stack_force_costs</div><div class="ttdef"><b>Definition:</b> game-play-options.cpp:4</div></div>
+<div class="ttc" id="agame-play-options_8h_html_a400c22e4751ec540c1dbe7b3901f6461"><div class="ttname"><a href="game-play-options_8h.html#a400c22e4751ec540c1dbe7b3901f6461">auto_dump</a></div><div class="ttdeci">bool auto_dump</div><div class="ttdef"><b>Definition:</b> game-play-options.cpp:11</div></div>
+<div class="ttc" id="agame-play-options_8h_html_a677a8d3211835e504b80c66ad15025f6"><div class="ttname"><a href="game-play-options_8h.html#a677a8d3211835e504b80c66ad15025f6">allow_debug_opts</a></div><div class="ttdeci">bool allow_debug_opts</div><div class="ttdef"><b>Definition:</b> game-play-options.cpp:14</div></div>
+<div class="ttc" id="agame-play-options_8h_html_a79dd68e7ba69449731163c03aed4084e"><div class="ttname"><a href="game-play-options_8h.html#a79dd68e7ba69449731163c03aed4084e">bound_walls_perm</a></div><div class="ttdeci">bool bound_walls_perm</div><div class="ttdef"><b>Definition:</b> game-play-options.cpp:9</div></div>
+<div class="ttc" id="agame-play-options_8h_html_a82b99dd6f5544da2644d7fcd0a60cf2f"><div class="ttname"><a href="game-play-options_8h.html#a82b99dd6f5544da2644d7fcd0a60cf2f">last_words</a></div><div class="ttdeci">bool last_words</div><div class="ttdef"><b>Definition:</b> game-play-options.cpp:10</div></div>
+<div class="ttc" id="agame-play-options_8h_html_a83e45ddc5db76d7541b260c88af9f0be"><div class="ttname"><a href="game-play-options_8h.html#a83e45ddc5db76d7541b260c88af9f0be">expand_list</a></div><div class="ttdeci">bool expand_list</div><div class="ttdef"><b>Definition:</b> game-play-options.cpp:5</div></div>
+<div class="ttc" id="agame-play-options_8h_html_a905636cb56c5ed2308bc033be8e5a3f4"><div class="ttname"><a href="game-play-options_8h.html#a905636cb56c5ed2308bc033be8e5a3f4">empty_levels</a></div><div class="ttdeci">bool empty_levels</div><div class="ttdef"><b>Definition:</b> game-play-options.cpp:8</div></div>
+<div class="ttc" id="agame-play-options_8h_html_aaf9572ce70a81d73c415b1a522ad6ef7"><div class="ttname"><a href="game-play-options_8h.html#aaf9572ce70a81d73c415b1a522ad6ef7">send_score</a></div><div class="ttdeci">bool send_score</div><div class="ttdef"><b>Definition:</b> game-play-options.cpp:13</div></div>
+<div class="ttc" id="agame-play-options_8h_html_ae6f419a5a1f10a74de7108715d46bc51"><div class="ttname"><a href="game-play-options_8h.html#ae6f419a5a1f10a74de7108715d46bc51">always_small_levels</a></div><div class="ttdeci">bool always_small_levels</div><div class="ttdef"><b>Definition:</b> game-play-options.cpp:7</div></div>
+<div class="ttc" id="agame-play-options_8h_html_af001f8f60a6720634c03e71f0bc59723"><div class="ttname"><a href="game-play-options_8h.html#af001f8f60a6720634c03e71f0bc59723">auto_debug_save</a></div><div class="ttdeci">bool auto_debug_save</div><div class="ttdef"><b>Definition:</b> game-play-options.cpp:12</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

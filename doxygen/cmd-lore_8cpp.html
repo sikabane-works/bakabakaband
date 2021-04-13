@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/cmd-io/cmd-lore.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_4b5d45ee7eedcd4a285a27f1d5022af9.html">cmd-io</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">cmd-lore.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="cmd-lore_8h_source.html">cmd-io/cmd-lore.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stuff-handler_8h_source.html">core/stuff-handler.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cheat-options_8h_source.html">game-option/cheat-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="game-play-options_8h_source.html">game-option/game-play-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags1_8h_source.html">monster-race/race-flags1.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags7_8h_source.html">monster-race/race-flags7.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gameterm_8h_source.html">term/gameterm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sort_8h_source.html">util/sort.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="string-processor_8h_source.html">util/string-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-lore_8h_source.html">view/display-lore.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+cmd-lore.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-lore_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-io_2cmd-lore_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-io_2cmd-lore_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-io_2cmd-lore_8cpp">
+<area shape="rect" title=" " alt="" coords="798,5,986,61"/>
+<area shape="rect" href="cmd-lore_8h.html" title=" " alt="" coords="145,370,271,397"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="243,191,381,218"/>
+<area shape="rect" href="stuff-handler_8h.html" title=" " alt="" coords="350,370,482,397"/>
+<area shape="rect" href="cheat-options_8h.html" title=" " alt="" coords="679,281,865,307"/>
+<area shape="rect" href="game-play-options_8h.html" title=" " alt="" coords="1192,184,1349,225"/>
+<area shape="rect" href="input-key-acceptor_8h.html" title=" " alt="" coords="1836,370,1991,397"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="848,184,997,225"/>
+<area shape="rect" href="race-flags1_8h.html" title=" " alt="" coords="704,109,880,136"/>
+<area shape="rect" href="race-flags7_8h.html" title=" " alt="" coords="904,109,1080,136"/>
+<area shape="rect" href="gameterm_8h.html" title=" " alt="" coords="457,109,578,136"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="5,281,168,307"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="1205,109,1363,136"/>
+<area shape="rect" href="int-char-converter_8h.html" title=" " alt="" coords="1387,109,1541,136"/>
+<area shape="rect" href="sort_8h.html" title=" " alt="" coords="658,191,734,218"/>
+<area shape="rect" href="string-processor_8h.html" title=" " alt="" coords="1021,191,1168,218"/>
+<area shape="rect" href="display-lore_8h.html" title=" " alt="" coords="1617,109,1743,136"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="903,459,1033,486"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1245,541,1336,568"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1360,541,1451,568"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="511,541,609,568"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="633,541,732,568"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="757,541,857,568"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="881,541,1055,568"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1080,541,1221,568"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1475,541,1621,568"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="2023,616,2134,643"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="1539,273,1685,315"/>
+<area shape="rect" title=" " alt="" coords="940,281,996,307"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="1767,452,1927,493"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="1652,363,1812,404"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="1412,363,1577,404"/>
+<area shape="rect" title=" " alt="" coords="1333,370,1387,397"/>
+<area shape="rect" href="spell-types_8h.html" title=" " alt="" coords="507,191,634,218"/>
+<area shape="rect" title=" " alt="" coords="1071,281,1156,307"/>
+<area shape="rect" href="lore-util_8h.html" title=" " alt="" coords="1562,191,1662,218"/>
+<area shape="rect" title=" " alt="" coords="1709,281,1819,307"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:ae1f67e879bad2c6ac1ee0971abd55d5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-lore_8cpp.html#ae1f67e879bad2c6ac1ee0971abd55d5d">do_cmd_query_symbol</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:ae1f67e879bad2c6ac1ee0971abd55d5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターの思い出を見るコマンドのメインルーチン Identify a character, allow recall of monsters  <a href="cmd-lore_8cpp.html#ae1f67e879bad2c6ac1ee0971abd55d5d">[詳解]</a><br /></td></tr>
+<tr class="separator:ae1f67e879bad2c6ac1ee0971abd55d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ae1f67e879bad2c6ac1ee0971abd55d5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1f67e879bad2c6ac1ee0971abd55d5d">&#9670;&nbsp;</a></span>do_cmd_query_symbol()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_query_symbol </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターの思い出を見るコマンドのメインルーチン Identify a character, allow recall of monsters </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<pre>
+Several "special" responses recall "multiple" monsters:
+  ^A (all monsters)
+  ^U (all unique monsters)
+  ^N (all non-unique monsters)
+
+The responses may be sorted in several ways, see below.
+
+Note that the player ghosts are ignored.
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-lore_8cpp_ae1f67e879bad2c6ac1ee0971abd55d5d_cgraph.png" border="0" usemap="#acmd-lore_8cpp_ae1f67e879bad2c6ac1ee0971abd55d5d_cgraph" alt=""/></div>
+<map name="acmd-lore_8cpp_ae1f67e879bad2c6ac1ee0971abd55d5d_cgraph" id="acmd-lore_8cpp_ae1f67e879bad2c6ac1ee0971abd55d5d_cgraph">
+<area shape="rect" title="モンスターの思い出を見るコマンドのメインルーチン Identify a character, allow recall of monsters" alt="" coords="5,385,161,412"/>
+<area shape="rect" href="sort_8cpp.html#ab407e67d890db0c6e9b33de4c90b5b84" title=" " alt="" coords="247,5,319,32"/>
+<area shape="rect" href="sort_8cpp.html#af37a4dbba98c62b99a41b8ce5b32d83e" title="モンスター種族情報を特定の基準によりソートするための比較処理 Sorting hook – Comp function – see below" alt="" coords="209,56,356,83"/>
+<area shape="rect" href="sort_8cpp.html#a626a506e850eb194e7894b988ba05d10" title="モンスター種族情報を特定の基準によりソートするためのスワップ処理 Sorting hook – Swap function – see below" alt="" coords="211,107,355,133"/>
+<area shape="rect" href="string-processor_8cpp.html#ac8184d2eea3bb502c7828b1cf2e15a7a" title=" " alt="" coords="229,157,337,184"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="247,309,319,336"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="572,385,625,412"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="860,208,951,235"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="435,461,474,488"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="243,461,322,488"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ab4c472d001cbdcb0c412ec4735b185d8" title=" " alt="" coords="214,563,351,589"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="251,613,314,640"/>
+<area shape="rect" href="display-lore_8cpp.html#ac2ff31f4a59f18b6dcd9b38e123b60a1" title="モンスター情報のヘッダを記述する Hack – Display the &quot;name&quot; and &quot;attr/chars&quot; of a monster race" alt="" coords="423,715,487,741"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="553,740,644,767"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="237,360,329,387"/>
+<area shape="rect" href="display-lore_8cpp.html#a9a19b136c0c0d88ac9bf1c3822dba2c4" title="モンスター情報の表示と共に画面を一時消去するサブルーチン / Hack – describe the given monster race at the top of the screen" alt="" coords="240,664,325,691"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="235,411,330,437"/>
+<area shape="rect" href="sort_8cpp.html#a99d218f2e03679f2f8418b8d1540f8cf" title=" " alt="" coords="405,5,505,32"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a41533d64d34cff21ac2f08e39073e746" title=" " alt="" coords="404,309,505,336"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="415,411,494,437"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="699,461,801,488"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="856,512,955,539"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="1003,563,1080,589"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="709,664,791,691"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="862,613,949,640"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="692,309,808,336"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="864,563,947,589"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="692,360,808,387"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="692,411,808,437"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-lore_8cpp_ae1f67e879bad2c6ac1ee0971abd55d5d_icgraph.png" border="0" usemap="#acmd-lore_8cpp_ae1f67e879bad2c6ac1ee0971abd55d5d_icgraph" alt=""/></div>
+<map name="acmd-lore_8cpp_ae1f67e879bad2c6ac1ee0971abd55d5d_icgraph" id="acmd-lore_8cpp_ae1f67e879bad2c6ac1ee0971abd55d5d_icgraph">
+<area shape="rect" title="モンスターの思い出を見るコマンドのメインルーチン Identify a character, allow recall of monsters" alt="" coords="884,5,1040,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="668,31,836,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="516,31,620,57"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分28秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

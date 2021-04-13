@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/cmd-building/cmd-building.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_78c77147beee81c7a815654fd35bbdc5.html">cmd-building</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">cmd-building.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="cmd-building_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tval-types_8h.html">object/tval-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// clang-format off</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="cmd-building_8h.html#a8e31b08c521bf6ebe666911181ebdb0e">    7</a></span>&#160;<span class="preprocessor">#define BUILDING_NON_MEMBER 0 </span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="cmd-building_8h.html#a31510c57c5fc5c41f4b887fb3ce12cb3">    8</a></span>&#160;<span class="preprocessor">#define BUILDING_MEMBER     1 </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="cmd-building_8h.html#acd0c2bc51bddb97cbf6da6026a23fb0d">    9</a></span>&#160;<span class="preprocessor">#define BUILDING_OWNER      2 </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// clang-format on</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * Arena constants</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="cmd-building_8h.html#a1f23bfed4ef8458ae925e21f0f68d9a9">   15</a></span>&#160;<span class="preprocessor">#define ARENA_DEFEATED_OLD_VER (-(MAX_SHORT)) </span><span class="comment">/*&lt;! 旧バージョンの闘技場敗北定義 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="cmd-building_8h.html#a57a32e51774f394fc4f26d2f206aeed6">reinit_wilderness</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="cmd-building_8h.html#a0392b994175ddbc4db9271b357aeec11">mon_odds</a>[4];</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="cmd-building_8h.html#ae12d21a4ce2c0a48e9236cf54423900e">battle_odds</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> <a class="code" href="cmd-building_8h.html#ac568ebc72239aa6c8aad18bbe611e6bd">kakekin</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="cmd-building_8h.html#a16b6e30949b047793a9c503a199eb83d">sel_monster</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">void</span> <a class="code" href="cmd-building_8h.html#a0a8153fe4f368c0698316c3593bcc645">do_cmd_building</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="acmd-building_8h_html_a0392b994175ddbc4db9271b357aeec11"><div class="ttname"><a href="cmd-building_8h.html#a0392b994175ddbc4db9271b357aeec11">mon_odds</a></div><div class="ttdeci">u32b mon_odds[4]</div><div class="ttdoc">町の施設処理 / Building commands</div><div class="ttdef"><b>Definition:</b> cmd-building.cpp:71</div></div>
+<div class="ttc" id="acmd-building_8h_html_a0a8153fe4f368c0698316c3593bcc645"><div class="ttname"><a href="cmd-building_8h.html#a0a8153fe4f368c0698316c3593bcc645">do_cmd_building</a></div><div class="ttdeci">void do_cmd_building(player_type *player_ptr)</div><div class="ttdoc">施設入り口にプレイヤーが乗った際の処理 / Do building commands</div><div class="ttdef"><b>Definition:</b> cmd-building.cpp:306</div></div>
+<div class="ttc" id="acmd-building_8h_html_a16b6e30949b047793a9c503a199eb83d"><div class="ttname"><a href="cmd-building_8h.html#a16b6e30949b047793a9c503a199eb83d">sel_monster</a></div><div class="ttdeci">int sel_monster</div><div class="ttdef"><b>Definition:</b> cmd-building.cpp:74</div></div>
+<div class="ttc" id="acmd-building_8h_html_a57a32e51774f394fc4f26d2f206aeed6"><div class="ttname"><a href="cmd-building_8h.html#a57a32e51774f394fc4f26d2f206aeed6">reinit_wilderness</a></div><div class="ttdeci">bool reinit_wilderness</div><div class="ttdef"><b>Definition:</b> cmd-building.cpp:76</div></div>
+<div class="ttc" id="acmd-building_8h_html_ac568ebc72239aa6c8aad18bbe611e6bd"><div class="ttname"><a href="cmd-building_8h.html#ac568ebc72239aa6c8aad18bbe611e6bd">kakekin</a></div><div class="ttdeci">PRICE kakekin</div><div class="ttdef"><b>Definition:</b> cmd-building.cpp:73</div></div>
+<div class="ttc" id="acmd-building_8h_html_ae12d21a4ce2c0a48e9236cf54423900e"><div class="ttname"><a href="cmd-building_8h.html#ae12d21a4ce2c0a48e9236cf54423900e">battle_odds</a></div><div class="ttdeci">int battle_odds</div><div class="ttdef"><b>Definition:</b> cmd-building.cpp:72</div></div>
+<div class="ttc" id="ah-type_8h_html_aeba8ab2222e118a4540456c55d92a894"><div class="ttname"><a href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a></div><div class="ttdeci">s32b PRICE</div><div class="ttdoc">ゲーム中の金額価値の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:187</div></div>
+<div class="ttc" id="ah-type_8h_html_af7a1de980667931f896ae6a820f0ee80"><div class="ttname"><a href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a></div><div class="ttdeci">unsigned long u32b</div><div class="ttdef"><b>Definition:</b> h-type.h:93</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="atval-types_8h_html"><div class="ttname"><a href="tval-types_8h.html">tval-types.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

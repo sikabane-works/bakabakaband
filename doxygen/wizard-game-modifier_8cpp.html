@@ -1,0 +1,486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/wizard/wizard-game-modifier.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e09032bb770e6e0f4355f890c3180c4a.html">wizard</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">wizard-game-modifier.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="wizard-game-modifier_8h_source.html">wizard/wizard-game-modifier.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quest_8h_source.html">dungeon/quest.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fixed-map-parser_8h_source.html">info-reader/fixed-map-parser.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-requester_8h_source.html">io/input-key-requester.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="arena_8h_source.html">market/arena.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags1_8h_source.html">monster-race/race-flags1.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags7_8h_source.html">monster-race/race-flags7.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="self-info_8h_source.html">player-info/self-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="system-variables_8h_source.html">system/system-variables.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="wizard-special-process_8h_source.html">wizard/wizard-special-process.h</a>&quot;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+wizard-game-modifier.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-game-modifier_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2wizard_2wizard-game-modifier_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2wizard_2wizard-game-modifier_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2wizard_2wizard-game-modifier_8cpp">
+<area shape="rect" title=" " alt="" coords="1238,5,1426,61"/>
+<area shape="rect" href="wizard-game-modifier_8h.html" title=" " alt="" coords="5,199,141,240"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="1209,117,1348,143"/>
+<area shape="rect" href="quest_8h.html" title=" " alt="" coords="1331,206,1450,233"/>
+<area shape="rect" href="fixed-map-parser_8h.html" title=" " alt="" coords="186,199,329,240"/>
+<area shape="rect" href="input-key-requester_8h.html" title=" " alt="" coords="733,117,891,143"/>
+<area shape="rect" href="arena_8h.html" title=" " alt="" coords="513,117,623,143"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="1423,109,1572,151"/>
+<area shape="rect" title=" " alt="" coords="2266,295,2321,322"/>
+<area shape="rect" title=" " alt="" coords="1648,206,1704,233"/>
+<area shape="rect" href="race-flags1_8h.html" title=" " alt="" coords="1911,117,2087,143"/>
+<area shape="rect" href="race-flags7_8h.html" title=" " alt="" coords="2111,117,2287,143"/>
+<area shape="rect" href="self-info_8h.html" title=" " alt="" coords="586,295,726,322"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1647,117,1835,143"/>
+<area shape="rect" href="system-variables_8h.html" title=" " alt="" coords="353,206,530,233"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="801,295,964,322"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="2311,117,2470,143"/>
+<area shape="rect" href="int-char-converter_8h.html" title=" " alt="" coords="2494,117,2647,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="967,206,1134,233"/>
+<area shape="rect" href="wizard-special-process_8h.html" title=" " alt="" coords="1039,288,1185,329"/>
+<area shape="rect" title=" " alt="" coords="2672,117,2741,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="937,385,1066,411"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="476,467,567,493"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="591,467,681,493"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="705,467,804,493"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="828,467,927,493"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="951,467,1051,493"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1075,467,1250,493"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1275,467,1416,493"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1440,467,1587,493"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1771,541,1882,568"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1754,288,1899,329"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="1361,288,1495,329"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="1864,377,2008,419"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="2034,377,2190,419"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="1467,377,1605,419"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="1315,385,1442,411"/>
+<area shape="rect" href="info-reader-util_8h.html" title=" " alt="" coords="313,288,460,329"/>
+<area shape="rect" href="parse-error-types_8h.html" title=" " alt="" coords="90,288,238,329"/>
+<area shape="rect" href="keymap-directory-getter_8h.html" title=" " alt="" coords="749,199,891,240"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="1478,199,1623,240"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="1629,377,1789,419"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="1569,288,1729,329"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="1924,288,2089,329"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1955,206,2133,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1779,206,1930,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a1088e2beb34a501f0746cad6b0683177"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-game-modifier_8cpp.html#a1088e2beb34a501f0746cad6b0683177">wiz_enter_quest</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a1088e2beb34a501f0746cad6b0683177"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム属性を変更するデバッグコマンド  <a href="wizard-game-modifier_8cpp.html#a1088e2beb34a501f0746cad6b0683177">[詳解]</a><br /></td></tr>
+<tr class="separator:a1088e2beb34a501f0746cad6b0683177"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a418f88b3289066487f169e8635890fde"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-game-modifier_8cpp.html#a418f88b3289066487f169e8635890fde">wiz_complete_quest</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a418f88b3289066487f169e8635890fde"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定したクエストを完了させる  <a href="wizard-game-modifier_8cpp.html#a418f88b3289066487f169e8635890fde">[詳解]</a><br /></td></tr>
+<tr class="separator:a418f88b3289066487f169e8635890fde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f57ac6803d3be0974911db384afe4e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-game-modifier_8cpp.html#a3f57ac6803d3be0974911db384afe4e4">wiz_restore_monster_max_num</a> ()</td></tr>
+<tr class="separator:a3f57ac6803d3be0974911db384afe4e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08c2be000100ad40ccd6fa7c24e3ca47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-game-modifier_8cpp.html#a08c2be000100ad40ccd6fa7c24e3ca47">display_wizard_game_modifier_menu</a> ()</td></tr>
+<tr class="memdesc:a08c2be000100ad40ccd6fa7c24e3ca47"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム設定コマンドの一覧を表示する  <a href="wizard-game-modifier_8cpp.html#a08c2be000100ad40ccd6fa7c24e3ca47">[詳解]</a><br /></td></tr>
+<tr class="separator:a08c2be000100ad40ccd6fa7c24e3ca47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab52386239ade01255206c41e2c9094b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-game-modifier_8cpp.html#ab52386239ade01255206c41e2c9094b8">wizard_game_modifier</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:ab52386239ade01255206c41e2c9094b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム設定コマンドの入力を受け付ける  <a href="wizard-game-modifier_8cpp.html#ab52386239ade01255206c41e2c9094b8">[詳解]</a><br /></td></tr>
+<tr class="separator:ab52386239ade01255206c41e2c9094b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a770fba6de1f5fdc8ef6dbcdd10bcd18d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wizard-game-modifier_8cpp.html#a770fba6de1f5fdc8ef6dbcdd10bcd18d">wizard_game_modifier_menu_table</a></td></tr>
+<tr class="memdesc:a770fba6de1f5fdc8ef6dbcdd10bcd18d"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム設定コマンド一覧表  <a href="wizard-game-modifier_8cpp.html#a770fba6de1f5fdc8ef6dbcdd10bcd18d">[詳解]</a><br /></td></tr>
+<tr class="separator:a770fba6de1f5fdc8ef6dbcdd10bcd18d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a08c2be000100ad40ccd6fa7c24e3ca47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08c2be000100ad40ccd6fa7c24e3ca47">&#9670;&nbsp;</a></span>display_wizard_game_modifier_menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_wizard_game_modifier_menu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム設定コマンドの一覧を表示する </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-game-modifier_8cpp_a08c2be000100ad40ccd6fa7c24e3ca47_cgraph.png" border="0" usemap="#awizard-game-modifier_8cpp_a08c2be000100ad40ccd6fa7c24e3ca47_cgraph" alt=""/></div>
+<map name="awizard-game-modifier_8cpp_a08c2be000100ad40ccd6fa7c24e3ca47_cgraph" id="awizard-game-modifier_8cpp_a08c2be000100ad40ccd6fa7c24e3ca47_cgraph">
+<area shape="rect" title="ゲーム設定コマンドの一覧を表示する" alt="" coords="5,23,152,65"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="200,5,263,32"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="311,56,398,83"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="311,5,399,32"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="449,5,539,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="447,56,541,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-game-modifier_8cpp_a08c2be000100ad40ccd6fa7c24e3ca47_icgraph.png" border="0" usemap="#awizard-game-modifier_8cpp_a08c2be000100ad40ccd6fa7c24e3ca47_icgraph" alt=""/></div>
+<map name="awizard-game-modifier_8cpp_a08c2be000100ad40ccd6fa7c24e3ca47_icgraph" id="awizard-game-modifier_8cpp_a08c2be000100ad40ccd6fa7c24e3ca47_icgraph">
+<area shape="rect" title="ゲーム設定コマンドの一覧を表示する" alt="" coords="528,5,675,47"/>
+<area shape="rect" href="wizard-game-modifier_8cpp.html#ab52386239ade01255206c41e2c9094b8" title="ゲーム設定コマンドの入力を受け付ける" alt="" coords="329,13,480,39"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="164,13,281,39"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="5,13,116,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a418f88b3289066487f169e8635890fde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a418f88b3289066487f169e8635890fde">&#9670;&nbsp;</a></span>wiz_complete_quest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wiz_complete_quest </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>指定したクエストを完了させる </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">プレイヤーの情報へのポインタ</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-game-modifier_8cpp_a418f88b3289066487f169e8635890fde_cgraph.png" border="0" usemap="#awizard-game-modifier_8cpp_a418f88b3289066487f169e8635890fde_cgraph" alt=""/></div>
+<map name="awizard-game-modifier_8cpp_a418f88b3289066487f169e8635890fde_cgraph" id="awizard-game-modifier_8cpp_a418f88b3289066487f169e8635890fde_cgraph">
+<area shape="rect" title="指定したクエストを完了させる" alt="" coords="5,565,145,592"/>
+<area shape="rect" href="quest_8cpp.html#af5f55968be72b94b441f35b7dd1b954f" title="クエストを達成状態にする /" alt="" coords="193,514,308,541"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="737,464,815,490"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="359,236,471,262"/>
+<area shape="rect" href="sound-of-music_8cpp.html#afbe4cbf7966050b5a6f68487a7d492ef" title="Hack – Play a music" alt="" coords="371,514,459,541"/>
+<area shape="rect" href="world_8cpp.html#a722be27807c99a7258058b2baabee95e" title="実ゲームプレイ時間を更新する" alt="" coords="356,565,473,592"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="720,152,832,178"/>
+<area shape="rect" href="world_8cpp.html#a3da5b82e6bb95498402f78c954a628d0" title="現在の日数、時刻を返す / Extract day, hour, min" alt="" coords="521,42,672,69"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="567,93,626,120"/>
+<area shape="rect" href="write-diary_8cpp.html#a9dd20d3a7be882e5dcb9d8ebd74539e0" title="Return suffix of ordinal number" alt="" coords="529,144,664,186"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="544,210,649,237"/>
+<area shape="rect" href="write-diary_8cpp.html#a721a3148877a6d0a8936a10842591e2c" title="日記ファイルを開く" alt="" coords="543,261,651,288"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="537,312,657,338"/>
+<area shape="rect" href="write-diary_8cpp.html#a0bc11216e7a5445c14b3c0df826641bf" title="ペットに関する日記を追加する" alt="" coords="542,362,651,389"/>
+<area shape="rect" href="write-diary_8cpp.html#af2cab656963fc78e9b465c77c6353382" title="フロア情報を日記に追加する" alt="" coords="557,413,637,440"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-game-modifier_8cpp_a418f88b3289066487f169e8635890fde_icgraph.png" border="0" usemap="#awizard-game-modifier_8cpp_a418f88b3289066487f169e8635890fde_icgraph" alt=""/></div>
+<map name="awizard-game-modifier_8cpp_a418f88b3289066487f169e8635890fde_icgraph" id="awizard-game-modifier_8cpp_a418f88b3289066487f169e8635890fde_icgraph">
+<area shape="rect" title="指定したクエストを完了させる" alt="" coords="528,5,668,32"/>
+<area shape="rect" href="wizard-game-modifier_8cpp.html#ab52386239ade01255206c41e2c9094b8" title="ゲーム設定コマンドの入力を受け付ける" alt="" coords="329,5,480,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="164,5,281,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1088e2beb34a501f0746cad6b0683177"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1088e2beb34a501f0746cad6b0683177">&#9670;&nbsp;</a></span>wiz_enter_quest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wiz_enter_quest </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム属性を変更するデバッグコマンド </p>
+<p>指定したクエストに突入する</p>
+<dl class="section date"><dt>日付</dt><dd>2021/03/07</dd></dl>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">プレイヤーの情報へのポインタ</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-game-modifier_8cpp_a1088e2beb34a501f0746cad6b0683177_cgraph.png" border="0" usemap="#awizard-game-modifier_8cpp_a1088e2beb34a501f0746cad6b0683177_cgraph" alt=""/></div>
+<map name="awizard-game-modifier_8cpp_a1088e2beb34a501f0746cad6b0683177_cgraph" id="awizard-game-modifier_8cpp_a1088e2beb34a501f0746cad6b0683177_cgraph">
+<area shape="rect" title="ゲーム属性を変更するデバッグコマンド" alt="" coords="5,81,121,108"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="190,56,269,83"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="169,107,289,133"/>
+<area shape="rect" href="asking-player_8cpp.html#ad5c7efa101f8104fd152aaa10b9be28b" title=" " alt="" coords="348,5,405,32"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="337,107,416,133"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="357,56,396,83"/>
+<area shape="rect" href="asking-player_8cpp.html#a025b21031a6e4922de22b9e961a8358e" title="&lt;" alt="" coords="464,5,549,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-game-modifier_8cpp_a1088e2beb34a501f0746cad6b0683177_icgraph.png" border="0" usemap="#awizard-game-modifier_8cpp_a1088e2beb34a501f0746cad6b0683177_icgraph" alt=""/></div>
+<map name="awizard-game-modifier_8cpp_a1088e2beb34a501f0746cad6b0683177_icgraph" id="awizard-game-modifier_8cpp_a1088e2beb34a501f0746cad6b0683177_icgraph">
+<area shape="rect" title="ゲーム属性を変更するデバッグコマンド" alt="" coords="528,5,644,32"/>
+<area shape="rect" href="wizard-game-modifier_8cpp.html#ab52386239ade01255206c41e2c9094b8" title="ゲーム設定コマンドの入力を受け付ける" alt="" coords="329,5,480,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="164,5,281,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3f57ac6803d3be0974911db384afe4e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f57ac6803d3be0974911db384afe4e4">&#9670;&nbsp;</a></span>wiz_restore_monster_max_num()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wiz_restore_monster_max_num </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-game-modifier_8cpp_a3f57ac6803d3be0974911db384afe4e4_cgraph.png" border="0" usemap="#awizard-game-modifier_8cpp_a3f57ac6803d3be0974911db384afe4e4_cgraph" alt=""/></div>
+<map name="awizard-game-modifier_8cpp_a3f57ac6803d3be0974911db384afe4e4_cgraph" id="awizard-game-modifier_8cpp_a3f57ac6803d3be0974911db384afe4e4_cgraph">
+<area shape="rect" title=" " alt="" coords="5,74,148,115"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="196,56,275,83"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="323,107,401,133"/>
+<area shape="rect" href="asking-player_8cpp.html#ad5c7efa101f8104fd152aaa10b9be28b" title=" " alt="" coords="333,5,391,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="343,56,381,83"/>
+<area shape="rect" href="asking-player_8cpp.html#a025b21031a6e4922de22b9e961a8358e" title="&lt;" alt="" coords="449,5,535,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-game-modifier_8cpp_a3f57ac6803d3be0974911db384afe4e4_icgraph.png" border="0" usemap="#awizard-game-modifier_8cpp_a3f57ac6803d3be0974911db384afe4e4_icgraph" alt=""/></div>
+<map name="awizard-game-modifier_8cpp_a3f57ac6803d3be0974911db384afe4e4_icgraph" id="awizard-game-modifier_8cpp_a3f57ac6803d3be0974911db384afe4e4_icgraph">
+<area shape="rect" title=" " alt="" coords="528,5,671,47"/>
+<area shape="rect" href="wizard-game-modifier_8cpp.html#ab52386239ade01255206c41e2c9094b8" title="ゲーム設定コマンドの入力を受け付ける" alt="" coords="329,13,480,39"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="164,13,281,39"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="5,13,116,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab52386239ade01255206c41e2c9094b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab52386239ade01255206c41e2c9094b8">&#9670;&nbsp;</a></span>wizard_game_modifier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wizard_game_modifier </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム設定コマンドの入力を受け付ける </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレイヤーの情報へのポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-game-modifier_8cpp_ab52386239ade01255206c41e2c9094b8_cgraph.png" border="0" usemap="#awizard-game-modifier_8cpp_ab52386239ade01255206c41e2c9094b8_cgraph" alt=""/></div>
+<map name="awizard-game-modifier_8cpp_ab52386239ade01255206c41e2c9094b8_cgraph" id="awizard-game-modifier_8cpp_ab52386239ade01255206c41e2c9094b8_cgraph">
+<area shape="rect" title="ゲーム設定コマンドの入力を受け付ける" alt="" coords="5,270,156,297"/>
+<area shape="rect" href="wizard-game-modifier_8cpp.html#a08c2be000100ad40ccd6fa7c24e3ca47" title="ゲーム設定コマンドの一覧を表示する" alt="" coords="446,5,593,47"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="259,477,331,503"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="249,81,341,107"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="247,143,342,170"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a84af4013cc193546ec04f0023f477a88" title="プレイ日数を変更する / Set gametime." alt="" coords="243,387,347,414"/>
+<area shape="rect" href="arena_8cpp.html#a8f76d0f962bd2705b72a72823e77f9e1" title="モンスター闘技場に参加するモンスターを更新する。" alt="" coords="204,705,385,731"/>
+<area shape="rect" href="wizard-game-modifier_8cpp.html#a418f88b3289066487f169e8635890fde" title="指定したクエストを完了させる" alt="" coords="225,219,365,246"/>
+<area shape="rect" href="wizard-game-modifier_8cpp.html#a1088e2beb34a501f0746cad6b0683177" title="ゲーム属性を変更するデバッグコマンド" alt="" coords="237,270,353,297"/>
+<area shape="rect" href="wizard-game-modifier_8cpp.html#a3f57ac6803d3be0974911db384afe4e4" title=" " alt="" coords="223,321,366,363"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="703,118,766,145"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="879,173,965,199"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="878,223,966,250"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="1030,223,1125,250"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="708,527,761,554"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a41533d64d34cff21ac2f08e39073e746" title=" " alt="" coords="469,527,570,554"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="695,223,774,250"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="715,426,754,453"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="871,299,973,326"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="1028,350,1127,377"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="1175,603,1252,630"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="881,654,963,681"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="1034,705,1121,731"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="864,451,980,478"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="1036,477,1119,503"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="864,502,980,529"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="864,553,980,579"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="480,375,559,402"/>
+<area shape="rect" href="z-util_8cpp.html#a95c8541ef70dbcbf165f9272be00ea17" title="符号なし32ビット整数のビット数を返す。" alt="" coords="478,679,561,706"/>
+<area shape="rect" href="monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する" alt="" coords="467,730,571,757"/>
+<area shape="rect" href="monster-util_8cpp.html#ae37ebccef3dd7dacea088110d0388d49" title="モンスター生成テーブルの重み修正" alt="" coords="451,781,587,807"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="464,831,575,858"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a41922bde47068a06d0e270afb04189b3" title="モンスター闘技場に参加できるモンスターの判定" alt="" coords="433,629,605,655"/>
+<area shape="rect" href="class_flag_group.html#af6327bd9a9e463469a9aa5daaad3346a" title="入力イテレータで指定した範囲のリストに含まれるフラグがすべてOFFかどうかを調べる" alt="" coords="653,629,816,655"/>
+<area shape="rect" href="quest_8cpp.html#af5f55968be72b94b441f35b7dd1b954f" title="クエストを達成状態にする /" alt="" coords="462,173,577,199"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="459,274,579,301"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="wizard-game-modifier_8cpp_ab52386239ade01255206c41e2c9094b8_icgraph.png" border="0" usemap="#awizard-game-modifier_8cpp_ab52386239ade01255206c41e2c9094b8_icgraph" alt=""/></div>
+<map name="awizard-game-modifier_8cpp_ab52386239ade01255206c41e2c9094b8_icgraph" id="awizard-game-modifier_8cpp_ab52386239ade01255206c41e2c9094b8_icgraph">
+<area shape="rect" title="ゲーム設定コマンドの入力を受け付ける" alt="" coords="509,5,660,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="344,5,461,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="185,5,296,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a770fba6de1f5fdc8ef6dbcdd10bcd18d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a770fba6de1f5fdc8ef6dbcdd10bcd18d">&#9670;&nbsp;</a></span>wizard_game_modifier_menu_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::vector&lt;std::string&gt; &gt; wizard_game_modifier_menu_table</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>初期値:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    { <span class="stringliteral">&quot;t&quot;</span>, <a class="code" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(<span class="stringliteral">&quot;プレイ時間変更&quot;</span>, <span class="stringliteral">&quot;Modify played time&quot;</span>) },</div>
+<div class="line">    { <span class="stringliteral">&quot;q&quot;</span>, <a class="code" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(<span class="stringliteral">&quot;現在のクエストを完了&quot;</span>, <span class="stringliteral">&quot;Complete current quest&quot;</span>) },</div>
+<div class="line">    { <span class="stringliteral">&quot;Q&quot;</span>, <a class="code" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(<span class="stringliteral">&quot;クエストに突入&quot;</span>, <span class="stringliteral">&quot;Enter quest&quot;</span>) },</div>
+<div class="line">    { <span class="stringliteral">&quot;u&quot;</span>, <a class="code" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(<span class="stringliteral">&quot;ユニーク/ナズグルの生存数を復元&quot;</span>, <span class="stringliteral">&quot;Restore living info of unique/nazgul&quot;</span>) },</div>
+<div class="line">    { <span class="stringliteral">&quot;g&quot;</span>, <a class="code" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(<span class="stringliteral">&quot;モンスター闘技場出場者更新&quot;</span>, <span class="stringliteral">&quot;Update gambling monster&quot;</span>) },</div>
+<div class="line">}</div>
+<div class="ttc" id="alanguage-switcher_8h_html_a0717cbb874ae2e9d9fed2b931f4c8cd9"><div class="ttname"><a href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a></div><div class="ttdeci">#define _(JAPANESE, ENGLISH)</div><div class="ttdef"><b>Definition:</b> language-switcher.h:6</div></div>
+</div><!-- fragment -->
+<p>ゲーム設定コマンド一覧表 </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分45秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,726 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/main/scene-table-floor.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5eb159725f84c66aafd839904a4acdd0.html">main</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">scene-table-floor.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="scene-table-floor_8h_source.html">main/scene-table-floor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quest_8h_source.html">dungeon/quest.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="music-definitions-table_8h_source.html">main/music-definitions-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+scene-table-floor.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-floor_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2main_2scene-table-floor_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2main_2scene-table-floor_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2main_2scene-table-floor_8cpp">
+<area shape="rect" title=" " alt="" coords="758,5,960,61"/>
+<area shape="rect" href="scene-table-floor_8h.html" title=" " alt="" coords="98,117,258,143"/>
+<area shape="rect" href="quest_8h.html" title=" " alt="" coords="594,199,713,225"/>
+<area shape="rect" href="music-definitions-table_8h.html" title=" " alt="" coords="1012,109,1162,151"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="800,117,988,143"/>
+<area shape="rect" href="scene-table_8h.html" title=" " alt="" coords="112,199,244,225"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="169,370,298,397"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="160,281,307,307"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="332,273,477,315"/>
+<area shape="rect" title=" " alt="" coords="30,281,86,307"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="336,370,446,397"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="710,273,856,315"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="552,273,686,315"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="622,363,766,404"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="953,363,1109,404"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="790,363,928,404"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="470,370,597,397"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="931,199,1110,225"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1134,199,1285,225"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:af85acf48760e7d46c03028b1a0d12e69"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-floor_8cpp.html#af85acf48760e7d46c03028b1a0d12e69">scene_feel_func</a> = <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>(*)(<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:af85acf48760e7d46c03028b1a0d12e69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a3dd1cbae627b5269220813f93ff3d3ab"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-floor_8cpp.html#a3dd1cbae627b5269220813f93ff3d3ab">scene_basic</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:a3dd1cbae627b5269220813f93ff3d3ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af03ab90c03a2a8bb53a7e3c8f4a49351"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-floor_8cpp.html#af03ab90c03a2a8bb53a7e3c8f4a49351">scene_quest</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:af03ab90c03a2a8bb53a7e3c8f4a49351"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5eb87bf221e8f2e6514238e2b6dca50a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-floor_8cpp.html#a5eb87bf221e8f2e6514238e2b6dca50a">scene_quest_basic</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:a5eb87bf221e8f2e6514238e2b6dca50a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d47f7c5b2f4c82d48a48fef7583354d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-floor_8cpp.html#a8d47f7c5b2f4c82d48a48fef7583354d">scene_town</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:a8d47f7c5b2f4c82d48a48fef7583354d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab36bd89d66ae11ec07ffe9b78218195a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-floor_8cpp.html#ab36bd89d66ae11ec07ffe9b78218195a">scene_town_basic</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:ab36bd89d66ae11ec07ffe9b78218195a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72e95950bb66bbbf7eae5f50831db4ce"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-floor_8cpp.html#a72e95950bb66bbbf7eae5f50831db4ce">scene_field</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:a72e95950bb66bbbf7eae5f50831db4ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ee64050f55bdfbaf071619c49a43a35"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-floor_8cpp.html#a3ee64050f55bdfbaf071619c49a43a35">scene_dungeon_feeling</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:a3ee64050f55bdfbaf071619c49a43a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50807cbbc87ca8984b3e01c3f8ee2cea"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-floor_8cpp.html#a50807cbbc87ca8984b3e01c3f8ee2cea">scene_dungeon</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:a50807cbbc87ca8984b3e01c3f8ee2cea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3987fc3271d0b8cbd6d91afdb90af0be"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-floor_8cpp.html#a3987fc3271d0b8cbd6d91afdb90af0be">scene_dungeon_basic</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:a3987fc3271d0b8cbd6d91afdb90af0be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0367e0685ad281a741e9445551175c69"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-floor_8cpp.html#a0367e0685ad281a741e9445551175c69">scene_mute</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:a0367e0685ad281a741e9445551175c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fa72dcc761894fc89e761a1a13b831e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-floor_8cpp.html#a1fa72dcc761894fc89e761a1a13b831e">get_scene_floor_count</a> ()</td></tr>
+<tr class="separator:a1fa72dcc761894fc89e761a1a13b831e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14a9389b4b9f316ff5178b920e235cf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-floor_8cpp.html#a14a9389b4b9f316ff5178b920e235cf3">refresh_scene_floor</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="scene-table_8h.html#a01ac995b44079698b7be5c68127d1bab">scene_type_list</a> &amp;list, int from_index)</td></tr>
+<tr class="memdesc:a14a9389b4b9f316ff5178b920e235cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在の条件でフロアのBGM選曲をリストに設定する。  <a href="scene-table-floor_8cpp.html#a14a9389b4b9f316ff5178b920e235cf3">[詳解]</a><br /></td></tr>
+<tr class="separator:a14a9389b4b9f316ff5178b920e235cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:aec73aa6be6dffb860a5f5244c8fe9b10"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="scene-table-floor_8cpp.html#af85acf48760e7d46c03028b1a0d12e69">scene_feel_func</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-floor_8cpp.html#aec73aa6be6dffb860a5f5244c8fe9b10">scene_floor_def_list</a></td></tr>
+<tr class="memdesc:aec73aa6be6dffb860a5f5244c8fe9b10"><td class="mdescLeft">&#160;</td><td class="mdescRight">シチュエーション選択のフォールバック設定。 先頭から適用する（先にある方を優先する）。  <a href="scene-table-floor_8cpp.html#aec73aa6be6dffb860a5f5244c8fe9b10">[詳解]</a><br /></td></tr>
+<tr class="separator:aec73aa6be6dffb860a5f5244c8fe9b10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">型定義詳解</h2>
+<a id="af85acf48760e7d46c03028b1a0d12e69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af85acf48760e7d46c03028b1a0d12e69">&#9670;&nbsp;</a></span>scene_feel_func</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="scene-table-floor_8cpp.html#af85acf48760e7d46c03028b1a0d12e69">scene_feel_func</a> =  <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> (*)(<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a1fa72dcc761894fc89e761a1a13b831e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fa72dcc761894fc89e761a1a13b831e">&#9670;&nbsp;</a></span>get_scene_floor_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int get_scene_floor_count </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-floor_8cpp_a1fa72dcc761894fc89e761a1a13b831e_icgraph.png" border="0" usemap="#ascene-table-floor_8cpp_a1fa72dcc761894fc89e761a1a13b831e_icgraph" alt=""/></div>
+<map name="ascene-table-floor_8cpp_a1fa72dcc761894fc89e761a1a13b831e_icgraph" id="ascene-table-floor_8cpp_a1fa72dcc761894fc89e761a1a13b831e_icgraph">
+<area shape="rect" title=" " alt="" coords="564,31,716,57"/>
+<area shape="rect" href="scene-table_8cpp.html#ab291878e89c27f055af0769ecacbc5d3" title=" " alt="" coords="393,31,516,57"/>
+<area shape="rect" href="scene-table_8cpp.html#a124ea0bc4b16c41e87d9565e549db003" title="現在のフロアに合ったBGM選曲" alt="" coords="207,31,345,57"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a8338cee7fe8e72ac6b7a1563f7fc4fa3" title="シチュエーションに合ったBGM選曲" alt="" coords="17,5,147,32"/>
+<area shape="rect" href="sound-of-music_8cpp.html#ab7c5caf65cf56f1185b64556f227c29e" title="モンスターBGM選曲" alt="" coords="5,56,159,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a14a9389b4b9f316ff5178b920e235cf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14a9389b4b9f316ff5178b920e235cf3">&#9670;&nbsp;</a></span>refresh_scene_floor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void refresh_scene_floor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="scene-table_8h.html#a01ac995b44079698b7be5c68127d1bab">scene_type_list</a> &amp;&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>from_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>現在の条件でフロアのBGM選曲をリストに設定する。 </p>
+<p>リストのfrom_indexの位置から、get_scene_floor_count()で得られる個数分設定する。 </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">list</td><td>BGM選曲リスト </td></tr>
+    <tr><td class="paramname">from_index</td><td>リストの更新開始位置 </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-floor_8cpp_a14a9389b4b9f316ff5178b920e235cf3_icgraph.png" border="0" usemap="#ascene-table-floor_8cpp_a14a9389b4b9f316ff5178b920e235cf3_icgraph" alt=""/></div>
+<map name="ascene-table-floor_8cpp_a14a9389b4b9f316ff5178b920e235cf3_icgraph" id="ascene-table-floor_8cpp_a14a9389b4b9f316ff5178b920e235cf3_icgraph">
+<area shape="rect" title="現在の条件でフロアのBGM選曲をリストに設定する。" alt="" coords="603,233,737,260"/>
+<area shape="rect" href="scene-table_8cpp.html#a124ea0bc4b16c41e87d9565e549db003" title="現在のフロアに合ったBGM選曲" alt="" coords="416,233,555,260"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a8338cee7fe8e72ac6b7a1563f7fc4fa3" title="シチュエーションに合ったBGM選曲" alt="" coords="226,157,357,184"/>
+<area shape="rect" href="sound-of-music_8cpp.html#ab7c5caf65cf56f1185b64556f227c29e" title="モンスターBGM選曲" alt="" coords="215,259,368,285"/>
+<area shape="rect" href="floor-changer_8cpp.html#a4afd67249aab7d45d58b80275710be49" title="フロアの切り替え処理 / Enter new floor." alt="" coords="39,5,133,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="27,56,145,83"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="34,107,138,133"/>
+<area shape="rect" href="game-play_8cpp.html#a0a9c08bcb4379e5a3a118ded5ecd4948" title=" " alt="" coords="16,157,156,184"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="43,208,129,235"/>
+<area shape="rect" href="floor-events_8cpp.html#a10ddc8e3a83cc30f6451f427b55eb838" title="ダンジョンの雰囲気を更新し、変化があった場合メッセージを表示する / Update dungeon feeling, and announce it if changed" alt="" coords="5,259,167,285"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#aac55726426e95271a6ed54fb73e5787c" title="出現中モンスターのリストをサブウィンドウに表示する / Hack – display monster list in sub&#45;windows" alt="" coords="29,309,143,336"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3dd1cbae627b5269220813f93ff3d3ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dd1cbae627b5269220813f93ff3d3ab">&#9670;&nbsp;</a></span>scene_basic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> scene_basic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structscene__type.html">scene_type</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a50807cbbc87ca8984b3e01c3f8ee2cea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50807cbbc87ca8984b3e01c3f8ee2cea">&#9670;&nbsp;</a></span>scene_dungeon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> scene_dungeon </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structscene__type.html">scene_type</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3987fc3271d0b8cbd6d91afdb90af0be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3987fc3271d0b8cbd6d91afdb90af0be">&#9670;&nbsp;</a></span>scene_dungeon_basic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> scene_dungeon_basic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structscene__type.html">scene_type</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-floor_8cpp_a3987fc3271d0b8cbd6d91afdb90af0be_cgraph.png" border="0" usemap="#ascene-table-floor_8cpp_a3987fc3271d0b8cbd6d91afdb90af0be_cgraph" alt=""/></div>
+<map name="ascene-table-floor_8cpp_a3987fc3271d0b8cbd6d91afdb90af0be_cgraph" id="ascene-table-floor_8cpp_a3987fc3271d0b8cbd6d91afdb90af0be_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,156,32"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="204,5,309,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3ee64050f55bdfbaf071619c49a43a35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ee64050f55bdfbaf071619c49a43a35">&#9670;&nbsp;</a></span>scene_dungeon_feeling()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> scene_dungeon_feeling </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structscene__type.html">scene_type</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a72e95950bb66bbbf7eae5f50831db4ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72e95950bb66bbbf7eae5f50831db4ce">&#9670;&nbsp;</a></span>scene_field()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> scene_field </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structscene__type.html">scene_type</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-floor_8cpp_a72e95950bb66bbbf7eae5f50831db4ce_cgraph.png" border="0" usemap="#ascene-table-floor_8cpp_a72e95950bb66bbbf7eae5f50831db4ce_cgraph" alt=""/></div>
+<map name="ascene-table-floor_8cpp_a72e95950bb66bbbf7eae5f50831db4ce_cgraph" id="ascene-table-floor_8cpp_a72e95950bb66bbbf7eae5f50831db4ce_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,92,32"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="140,5,245,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0367e0685ad281a741e9445551175c69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0367e0685ad281a741e9445551175c69">&#9670;&nbsp;</a></span>scene_mute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> scene_mute </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structscene__type.html">scene_type</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af03ab90c03a2a8bb53a7e3c8f4a49351"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af03ab90c03a2a8bb53a7e3c8f4a49351">&#9670;&nbsp;</a></span>scene_quest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> scene_quest </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structscene__type.html">scene_type</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-floor_8cpp_af03ab90c03a2a8bb53a7e3c8f4a49351_cgraph.png" border="0" usemap="#ascene-table-floor_8cpp_af03ab90c03a2a8bb53a7e3c8f4a49351_cgraph" alt=""/></div>
+<map name="ascene-table-floor_8cpp_af03ab90c03a2a8bb53a7e3c8f4a49351_cgraph" id="ascene-table-floor_8cpp_af03ab90c03a2a8bb53a7e3c8f4a49351_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,101,32"/>
+<area shape="rect" href="quest_8cpp.html#a5b6b24bb1f79322d67d0cc51368d3ad3" title="新しく入ったダンジョンの階層に固定されている一般のクエストを探し出しIDを返す。 / Hack – Check if a level is a &quot;quest&quot; level" alt="" coords="149,5,253,32"/>
+<area shape="rect" href="quest_8cpp.html#abab5512f0df1872d981afddd7ca8481f" title="新しく入ったダンジョンの階層に固定されているランダムクエストを探し出しIDを返す。" alt="" coords="301,5,456,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5eb87bf221e8f2e6514238e2b6dca50a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5eb87bf221e8f2e6514238e2b6dca50a">&#9670;&nbsp;</a></span>scene_quest_basic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> scene_quest_basic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structscene__type.html">scene_type</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-floor_8cpp_a5eb87bf221e8f2e6514238e2b6dca50a_cgraph.png" border="0" usemap="#ascene-table-floor_8cpp_a5eb87bf221e8f2e6514238e2b6dca50a_cgraph" alt=""/></div>
+<map name="ascene-table-floor_8cpp_a5eb87bf221e8f2e6514238e2b6dca50a_cgraph" id="ascene-table-floor_8cpp_a5eb87bf221e8f2e6514238e2b6dca50a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="quest_8cpp.html#a5b6b24bb1f79322d67d0cc51368d3ad3" title="新しく入ったダンジョンの階層に固定されている一般のクエストを探し出しIDを返す。 / Hack – Check if a level is a &quot;quest&quot; level" alt="" coords="188,5,292,32"/>
+<area shape="rect" href="quest_8cpp.html#abab5512f0df1872d981afddd7ca8481f" title="新しく入ったダンジョンの階層に固定されているランダムクエストを探し出しIDを返す。" alt="" coords="340,5,495,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8d47f7c5b2f4c82d48a48fef7583354d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d47f7c5b2f4c82d48a48fef7583354d">&#9670;&nbsp;</a></span>scene_town()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> scene_town </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structscene__type.html">scene_type</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-floor_8cpp_a8d47f7c5b2f4c82d48a48fef7583354d_cgraph.png" border="0" usemap="#ascene-table-floor_8cpp_a8d47f7c5b2f4c82d48a48fef7583354d_cgraph" alt=""/></div>
+<map name="ascene-table-floor_8cpp_a8d47f7c5b2f4c82d48a48fef7583354d_cgraph" id="ascene-table-floor_8cpp_a8d47f7c5b2f4c82d48a48fef7583354d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,96,32"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="144,5,249,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab36bd89d66ae11ec07ffe9b78218195a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab36bd89d66ae11ec07ffe9b78218195a">&#9670;&nbsp;</a></span>scene_town_basic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> scene_town_basic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structscene__type.html">scene_type</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-floor_8cpp_ab36bd89d66ae11ec07ffe9b78218195a_cgraph.png" border="0" usemap="#ascene-table-floor_8cpp_ab36bd89d66ae11ec07ffe9b78218195a_cgraph" alt=""/></div>
+<map name="ascene-table-floor_8cpp_ab36bd89d66ae11ec07ffe9b78218195a_cgraph" id="ascene-table-floor_8cpp_ab36bd89d66ae11ec07ffe9b78218195a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,135,32"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="183,5,288,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="aec73aa6be6dffb860a5f5244c8fe9b10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec73aa6be6dffb860a5f5244c8fe9b10">&#9670;&nbsp;</a></span>scene_floor_def_list</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="scene-table-floor_8cpp.html#af85acf48760e7d46c03028b1a0d12e69">scene_feel_func</a>&gt; scene_floor_def_list</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>初期値:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    </div>
+<div class="line">    <a class="code" href="scene-table-floor_8cpp.html#a3dd1cbae627b5269220813f93ff3d3ab">scene_basic</a>,</div>
+<div class="line">    </div>
+<div class="line">    <a class="code" href="scene-table-floor_8cpp.html#af03ab90c03a2a8bb53a7e3c8f4a49351">scene_quest</a>,</div>
+<div class="line">    </div>
+<div class="line">    <a class="code" href="scene-table-floor_8cpp.html#a5eb87bf221e8f2e6514238e2b6dca50a">scene_quest_basic</a>,</div>
+<div class="line">    </div>
+<div class="line">    <a class="code" href="scene-table-floor_8cpp.html#a8d47f7c5b2f4c82d48a48fef7583354d">scene_town</a>,</div>
+<div class="line">    </div>
+<div class="line">    <a class="code" href="scene-table-floor_8cpp.html#ab36bd89d66ae11ec07ffe9b78218195a">scene_town_basic</a>,</div>
+<div class="line">    </div>
+<div class="line">    <a class="code" href="scene-table-floor_8cpp.html#a72e95950bb66bbbf7eae5f50831db4ce">scene_field</a>,</div>
+<div class="line">    </div>
+<div class="line">    <a class="code" href="scene-table-floor_8cpp.html#a3ee64050f55bdfbaf071619c49a43a35">scene_dungeon_feeling</a>,</div>
+<div class="line">    </div>
+<div class="line">    <a class="code" href="scene-table-floor_8cpp.html#a50807cbbc87ca8984b3e01c3f8ee2cea">scene_dungeon</a>,</div>
+<div class="line">    </div>
+<div class="line">    <a class="code" href="scene-table-floor_8cpp.html#a3987fc3271d0b8cbd6d91afdb90af0be">scene_dungeon_basic</a>,</div>
+<div class="line">    </div>
+<div class="line">    <a class="code" href="scene-table-floor_8cpp.html#a0367e0685ad281a741e9445551175c69">scene_mute</a></div>
+<div class="line">}</div>
+<div class="ttc" id="ascene-table-floor_8cpp_html_a0367e0685ad281a741e9445551175c69"><div class="ttname"><a href="scene-table-floor_8cpp.html#a0367e0685ad281a741e9445551175c69">scene_mute</a></div><div class="ttdeci">static bool scene_mute(player_type *player_ptr, scene_type *value)</div><div class="ttdef"><b>Definition:</b> scene-table-floor.cpp:138</div></div>
+<div class="ttc" id="ascene-table-floor_8cpp_html_a3987fc3271d0b8cbd6d91afdb90af0be"><div class="ttname"><a href="scene-table-floor_8cpp.html#a3987fc3271d0b8cbd6d91afdb90af0be">scene_dungeon_basic</a></div><div class="ttdeci">static bool scene_dungeon_basic(player_type *player_ptr, scene_type *value)</div><div class="ttdef"><b>Definition:</b> scene-table-floor.cpp:121</div></div>
+<div class="ttc" id="ascene-table-floor_8cpp_html_a3dd1cbae627b5269220813f93ff3d3ab"><div class="ttname"><a href="scene-table-floor_8cpp.html#a3dd1cbae627b5269220813f93ff3d3ab">scene_basic</a></div><div class="ttdeci">static bool scene_basic(player_type *player_ptr, scene_type *value)</div><div class="ttdef"><b>Definition:</b> scene-table-floor.cpp:8</div></div>
+<div class="ttc" id="ascene-table-floor_8cpp_html_a3ee64050f55bdfbaf071619c49a43a35"><div class="ttname"><a href="scene-table-floor_8cpp.html#a3ee64050f55bdfbaf071619c49a43a35">scene_dungeon_feeling</a></div><div class="ttdeci">static bool scene_dungeon_feeling(player_type *player_ptr, scene_type *value)</div><div class="ttdef"><b>Definition:</b> scene-table-floor.cpp:97</div></div>
+<div class="ttc" id="ascene-table-floor_8cpp_html_a50807cbbc87ca8984b3e01c3f8ee2cea"><div class="ttname"><a href="scene-table-floor_8cpp.html#a50807cbbc87ca8984b3e01c3f8ee2cea">scene_dungeon</a></div><div class="ttdeci">static bool scene_dungeon(player_type *player_ptr, scene_type *value)</div><div class="ttdef"><b>Definition:</b> scene-table-floor.cpp:111</div></div>
+<div class="ttc" id="ascene-table-floor_8cpp_html_a5eb87bf221e8f2e6514238e2b6dca50a"><div class="ttname"><a href="scene-table-floor_8cpp.html#a5eb87bf221e8f2e6514238e2b6dca50a">scene_quest_basic</a></div><div class="ttdeci">static bool scene_quest_basic(player_type *player_ptr, scene_type *value)</div><div class="ttdef"><b>Definition:</b> scene-table-floor.cpp:49</div></div>
+<div class="ttc" id="ascene-table-floor_8cpp_html_a72e95950bb66bbbf7eae5f50831db4ce"><div class="ttname"><a href="scene-table-floor_8cpp.html#a72e95950bb66bbbf7eae5f50831db4ce">scene_field</a></div><div class="ttdeci">static bool scene_field(player_type *player_ptr, scene_type *value)</div><div class="ttdef"><b>Definition:</b> scene-table-floor.cpp:81</div></div>
+<div class="ttc" id="ascene-table-floor_8cpp_html_a8d47f7c5b2f4c82d48a48fef7583354d"><div class="ttname"><a href="scene-table-floor_8cpp.html#a8d47f7c5b2f4c82d48a48fef7583354d">scene_town</a></div><div class="ttdeci">static bool scene_town(player_type *player_ptr, scene_type *value)</div><div class="ttdef"><b>Definition:</b> scene-table-floor.cpp:61</div></div>
+<div class="ttc" id="ascene-table-floor_8cpp_html_ab36bd89d66ae11ec07ffe9b78218195a"><div class="ttname"><a href="scene-table-floor_8cpp.html#ab36bd89d66ae11ec07ffe9b78218195a">scene_town_basic</a></div><div class="ttdeci">static bool scene_town_basic(player_type *player_ptr, scene_type *value)</div><div class="ttdef"><b>Definition:</b> scene-table-floor.cpp:71</div></div>
+<div class="ttc" id="ascene-table-floor_8cpp_html_af03ab90c03a2a8bb53a7e3c8f4a49351"><div class="ttname"><a href="scene-table-floor_8cpp.html#af03ab90c03a2a8bb53a7e3c8f4a49351">scene_quest</a></div><div class="ttdeci">static bool scene_quest(player_type *player_ptr, scene_type *value)</div><div class="ttdef"><b>Definition:</b> scene-table-floor.cpp:37</div></div>
+</div><!-- fragment -->
+<p>シチュエーション選択のフォールバック設定。 先頭から適用する（先にある方を優先する）。 </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分45秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<map id="is_in_dungeon" name="is_in_dungeon">
+<area shape="rect" id="node1" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="848,1781,953,1807"/>
+<area shape="rect" id="node2" href="$action-limited_8cpp.html#a7c7cde3f3a0985e2a688ac6a49a389e5" title="魔法系コマンドが制限されているかを返す。" alt="" coords="669,501,780,527"/>
+<area shape="rect" id="node4" href="$cmd-dump_8cpp.html#a0e36c7f1b2a636325fc21408cf4faa82" title=" " alt="" coords="669,83,781,110"/>
+<area shape="rect" id="node8" href="$cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="238,177,342,203"/>
+<area shape="rect" id="node10" href="$cmd-move_8cpp.html#a9d5fbe57b7b1e9058947333e00dee815" title="階段を使って階層を降りる処理 / Go down one level" alt="" coords="454,235,581,262"/>
+<area shape="rect" id="node11" href="$cmd-move_8cpp.html#a16005f2ab8f785b6fb42030270681913" title="階段を使って階層を昇る処理 / Go up one level" alt="" coords="462,286,573,313"/>
+<area shape="rect" id="node12" href="$write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="669,1021,781,1047"/>
+<area shape="rect" id="node26" href="$hp-mp-processor_8cpp.html#afc8eefd59cfc7a8bd571c9ed53344350" title="10ゲームターンが進行するごとにプレイヤーのHPとMPの増減処理を行う。 / Handle timed damage and regeneration every 10 game turns" alt="" coords="212,1705,368,1731"/>
+<area shape="rect" id="node36" href="$spells-world_8cpp.html#acd1bf8acf03f4392bc78f8c170a23bc7" title="プレイヤーの帰還発動及び中止処理 / Recall the player to town or dungeon" alt="" coords="470,438,565,465"/>
+<area shape="rect" id="node37" href="$player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="483,1755,551,1782"/>
+<area shape="rect" id="node38" href="$mutation-processor_8cpp.html#aac6e6f0b449a92493ac8a184c221d6b4" title="10ゲームターンが進行するごとに突然変異の発動判定を行う処理 / Handle mutation effects once every 10 game turns" alt="" coords="195,1806,385,1833"/>
+<area shape="rect" id="node39" href="$spells-world_8cpp.html#a7204ab233ffa573046416517da467469" title="プレイヤー及びモンスターをレベルテレポートさせる / Teleport the player one level up or down (random when legal)" alt="" coords="469,1603,566,1630"/>
+<area shape="rect" id="node40" href="$wizard-special-process_8cpp.html#a98b79010bb1266a7ff2f32920ca5f5a2" title="任意のダンジョン及び階層に飛ぶ / Go to any level" alt="" coords="442,1654,593,1681"/>
+<area shape="rect" id="node41" href="$floor-leaver_8cpp.html#a7789976a5aa4459d0f0e4919ff25cadc" title=" " alt="" coords="660,1857,789,1883"/>
+<area shape="rect" id="node42" href="$floor-leaver_8cpp.html#ab6a4cfca99345098d8c69b7c99a5b808" title=" " alt="" coords="681,1907,769,1934"/>
+<area shape="rect" id="node43" href="$monster-race-hook_8cpp.html#a39910322f5a34bc0a256b77235af7181" title="モンスターがダンジョンに出現するかどうかを返す" alt="" coords="655,1958,794,1985"/>
+<area shape="rect" id="node44" href="$grid_8cpp.html#ad8fe1d0c1bd2a816c0dcb0faf51217ab" title="新規フロアに入りたてのプレイヤーをランダムな場所に配置する / Returns random co&#45;ordinates for player/monster/object" alt="" coords="665,2009,784,2035"/>
+<area shape="rect" id="node45" href="$player-processor_8cpp.html#ad50905dec80d40f76bc1809bf3dfe74c" title=" " alt="" coords="669,2059,781,2086"/>
+<area shape="rect" id="node46" href="$player-info-loader_8cpp.html#a6b1a7b04b3f2d4fa2a76d00e3edb6fca" title=" " alt="" coords="689,2110,761,2137"/>
+<area shape="rect" id="node47" href="$scene-table-floor_8cpp.html#a3987fc3271d0b8cbd6d91afdb90af0be" title=" " alt="" coords="649,2161,800,2187"/>
+<area shape="rect" id="node48" href="$scene-table-floor_8cpp.html#a72e95950bb66bbbf7eae5f50831db4ce" title=" " alt="" coords="681,2211,768,2238"/>
+<area shape="rect" id="node49" href="$scene-table-floor_8cpp.html#a8d47f7c5b2f4c82d48a48fef7583354d" title=" " alt="" coords="679,2262,770,2289"/>
+<area shape="rect" id="node50" href="$scene-table-floor_8cpp.html#ab36bd89d66ae11ec07ffe9b78218195a" title=" " alt="" coords="660,2313,789,2339"/>
+<area shape="rect" id="node3" href="$racial-switcher_8cpp.html#ac21c6b6a9eae71ce476478232b11f8e0" title="レイシャルと突然変異の技能処理 / Racial powers (and mutations)" alt="" coords="223,329,357,371"/>
+<area shape="rect" id="node5" href="$input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="10,337,142,363"/>
+<area shape="rect" id="node6" href="$dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="228,641,352,667"/>
+<area shape="rect" id="node7" href="$store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="433,83,601,110"/>
+<area shape="rect" id="node9" href="$floor-events_8cpp.html#a10ddc8e3a83cc30f6451f427b55eb838" title="ダンジョンの雰囲気を更新し、変化があった場合メッセージを表示する / Update dungeon feeling, and announce it if changed" alt="" coords="437,33,598,59"/>
+<area shape="rect" id="node13" href="$cmd-diary_8cpp.html#ad3b3f71679a5c20d579d937f328eedec" title="日記に任意の内容を表記するコマンドのメインルーチン /" alt="" coords="462,995,573,1022"/>
+<area shape="rect" id="node14" href="$spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="468,1097,567,1123"/>
+<area shape="rect" id="node15" href="$cmd-spell_8cpp.html#a06816378fb54efdc970af77a16abe448" title="プレイヤーの第二魔法領域を変更する /" alt="" coords="462,1198,573,1225"/>
+<area shape="rect" id="node16" href="$wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="243,497,337,523"/>
+<area shape="rect" id="node17" href="$player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="454,1249,581,1275"/>
+<area shape="rect" id="node18" href="$monster-compaction_8cpp.html#a45418160543ab052bb17c17d724acb6b" title="モンスター情報配列を圧縮する / Compact and Reorder the monster list" alt="" coords="451,641,584,667"/>
+<area shape="rect" id="node19" href="$quest_8cpp.html#af5f55968be72b94b441f35b7dd1b954f" title="クエストを達成状態にする /" alt="" coords="460,1299,575,1326"/>
+<area shape="rect" id="node20" href="$spells-floor_8cpp.html#aff6b2287b85d21769fa6b05e3df35eaf" title="*破壊*処理を行う / The spell of destruction" alt="" coords="469,1350,566,1377"/>
+<area shape="rect" id="node21" href="$spells-pet_8cpp.html#a4d1508b844fb21fa74cec6f11df83464" title="ペット爆破処理 /" alt="" coords="456,1401,579,1427"/>
+<area shape="rect" id="node22" href="$cmd-inn_8cpp.html#a9c8211758052721468258a60da01fe52" title="リフレッシュ結果を画面に表示する" alt="" coords="450,1451,585,1478"/>
+<area shape="rect" id="node23" href="$cmd-diary_8cpp.html#a219354a819fc8ab8f38ce398529060dd" title="最後に取得したアイテムの情報を日記に追加するメインルーチン /" alt="" coords="457,1502,578,1529"/>
+<area shape="rect" id="node24" href="$cmd-gameoption_8cpp.html#afe8f13f8df9a35597d9836a0f29ff60c" title="チートオプションを変更するコマンドのメインルーチン Interact with some options for cheating" alt="" coords="439,590,595,617"/>
+<area shape="rect" id="node25" href="$cmd-pet_8cpp.html#a016f22b29967f438acaee62a94bb05af" title="ペットを開放するコマンドのメインルーチン" alt="" coords="445,1553,590,1579"/>
+<area shape="rect" id="node27" href="$cmd-save_8cpp.html#a746a79f0cb8c293cdc24c30714688f14" title="セーブ後にゲーム中断フラグを立てる/ Save the game and exit" alt="" coords="211,395,369,422"/>
+<area shape="rect" id="node28" href="$cmd-others_8cpp.html#a36b86b1102ea5e0b063d70e03eed74d5" title="自殺するコマンドのメインルーチン commit suicide" alt="" coords="232,547,348,574"/>
+<area shape="rect" id="node29" href="$cmd-pet_8cpp.html#a36411b7dcbb42b8a9b6e2fa234f40505" title="ペットに名前をつけるコマンドのメインルーチン" alt="" coords="467,691,567,718"/>
+<area shape="rect" id="node30" href="$earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="247,1147,333,1174"/>
+<area shape="rect" id="node31" href="$mutation-execution_8cpp.html#a0c9c1052c587d71b683d8a700d9ae016" title="突然変異のレイシャル効果実装" alt="" coords="5,1097,147,1123"/>
+<area shape="rect" id="node32" href="$input-key-processor_8cpp.html#a2fbf83fada8559a5b40e87272e7537c7" title="デバッグコマンドへの導入処理 / Verify use of &quot;debug&quot; commands" alt="" coords="224,793,356,819"/>
+<area shape="rect" id="node33" href="$input-key-processor_8cpp.html#a90bac3b9c386d417c39098c98871595f" title="キー入力に応じてゲーム内コマンドを実行する" alt="" coords="223,894,357,921"/>
+<area shape="rect" id="node34" href="$world-movement-processor_8cpp.html#a9cf11d071cabe6008f72bbb6eed498d5" title="10ゲームターンが進行するごとに帰還の残り時間カウントダウンと発動を処理する。 / Handle involuntary movement once every 10 game turns" alt="" coords="464,742,571,769"/>
+<area shape="rect" id="node35" href="$spells-world_8cpp.html#a17f767372dbdae04de501f8d205742f3" title=" " alt="" coords="461,793,574,819"/>
+</map>

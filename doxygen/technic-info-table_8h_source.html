@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/spell/technic-info-table.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b288867d93d6ddd637031b6cda0e8b43.html">spell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">technic-info-table.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="technic-info-table_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="realm-types_8h.html">realm/realm-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="technic-info-table_8h.html#acbcc843abcbd1e479a942e53fb19a6a5">    6</a></span>&#160;<span class="preprocessor">#define NUM_TECHNIC (MAX_REALM - MIN_TECHNIC + 1)</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * The &quot;name&quot; of spell &#39;N&#39; is stored as spell_names[X][N],</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * where X is 0 for mage-spells and 1 for priest-spells.</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structmagic__type.html">   12</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmagic__type.html">magic_type</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structmagic__type.html#a2668ef56b20c565177f3bb30c10e7d5e">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> <a class="code" href="structmagic__type.html#a2668ef56b20c565177f3bb30c10e7d5e">slevel</a>;    <span class="comment">/* Required level (to learn) */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structmagic__type.html#ab072d45fb614511f726349e06471ec10">   14</a></span>&#160;    <a class="code" href="h-type_8h.html#a7448a47304a3bec61dd90b4078037cef">MANA_POINT</a> <a class="code" href="structmagic__type.html#ab072d45fb614511f726349e06471ec10">smana</a>;       <span class="comment">/* Required mana (to cast) */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structmagic__type.html#a9c8673572899066e3c949be66c71d62d">   15</a></span>&#160;    <a class="code" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> <a class="code" href="structmagic__type.html#a9c8673572899066e3c949be66c71d62d">sfail</a>;       <span class="comment">/* Minimum chance of failure */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structmagic__type.html#a4c098e7f47bf4b3a0391fe61953d5294">   16</a></span>&#160;    <a class="code" href="h-type_8h.html#a4eab974608c90fb1be94a113865965be">EXP</a> <a class="code" href="structmagic__type.html#a4c098e7f47bf4b3a0391fe61953d5294">sexp</a>;               <span class="comment">/* Encoded experience bonus */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="technic-info-table_8h.html#a1b6c6622c10026a592b0c4d21e64aa48">   17</a></span>&#160;} <a class="code" href="technic-info-table_8h.html#a1b6c6622c10026a592b0c4d21e64aa48">magic_type</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structmagic__type.html">magic_type</a> <a class="code" href="technic-info-table_8h.html#a4d06cc4e09645a5c5384afcb5d66c2d1">technic_info</a>[<a class="code" href="technic-info-table_8h.html#acbcc843abcbd1e479a942e53fb19a6a5">NUM_TECHNIC</a>][32];</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a4eab974608c90fb1be94a113865965be"><div class="ttname"><a href="h-type_8h.html#a4eab974608c90fb1be94a113865965be">EXP</a></div><div class="ttdeci">s32b EXP</div><div class="ttdoc">ゲーム中の主経験値の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:178</div></div>
+<div class="ttc" id="ah-type_8h_html_a7448a47304a3bec61dd90b4078037cef"><div class="ttname"><a href="h-type_8h.html#a7448a47304a3bec61dd90b4078037cef">MANA_POINT</a></div><div class="ttdeci">s32b MANA_POINT</div><div class="ttdoc">ゲーム中のMP型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:149</div></div>
+<div class="ttc" id="ah-type_8h_html_a7c6a37c6000d234e7e4b733a8c830018"><div class="ttname"><a href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a></div><div class="ttdeci">s32b PERCENTAGE</div><div class="ttdoc">ゲーム中のパーセント表記の型定義(/100倍)</div><div class="ttdef"><b>Definition:</b> h-type.h:200</div></div>
+<div class="ttc" id="ah-type_8h_html_a9a1975460009e928d9b53995d07d3623"><div class="ttname"><a href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a></div><div class="ttdeci">s16b PLAYER_LEVEL</div><div class="ttdoc">ゲーム中のプレイヤーレベルの型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:176</div></div>
+<div class="ttc" id="arealm-types_8h_html"><div class="ttname"><a href="realm-types_8h.html">realm-types.h</a></div></div>
+<div class="ttc" id="astructmagic__type_html"><div class="ttname"><a href="structmagic__type.html">magic_type</a></div><div class="ttdef"><b>Definition:</b> technic-info-table.h:12</div></div>
+<div class="ttc" id="astructmagic__type_html_a2668ef56b20c565177f3bb30c10e7d5e"><div class="ttname"><a href="structmagic__type.html#a2668ef56b20c565177f3bb30c10e7d5e">magic_type::slevel</a></div><div class="ttdeci">PLAYER_LEVEL slevel</div><div class="ttdef"><b>Definition:</b> technic-info-table.h:13</div></div>
+<div class="ttc" id="astructmagic__type_html_a4c098e7f47bf4b3a0391fe61953d5294"><div class="ttname"><a href="structmagic__type.html#a4c098e7f47bf4b3a0391fe61953d5294">magic_type::sexp</a></div><div class="ttdeci">EXP sexp</div><div class="ttdef"><b>Definition:</b> technic-info-table.h:16</div></div>
+<div class="ttc" id="astructmagic__type_html_a9c8673572899066e3c949be66c71d62d"><div class="ttname"><a href="structmagic__type.html#a9c8673572899066e3c949be66c71d62d">magic_type::sfail</a></div><div class="ttdeci">PERCENTAGE sfail</div><div class="ttdef"><b>Definition:</b> technic-info-table.h:15</div></div>
+<div class="ttc" id="astructmagic__type_html_ab072d45fb614511f726349e06471ec10"><div class="ttname"><a href="structmagic__type.html#ab072d45fb614511f726349e06471ec10">magic_type::smana</a></div><div class="ttdeci">MANA_POINT smana</div><div class="ttdef"><b>Definition:</b> technic-info-table.h:14</div></div>
+<div class="ttc" id="atechnic-info-table_8h_html_a1b6c6622c10026a592b0c4d21e64aa48"><div class="ttname"><a href="technic-info-table_8h.html#a1b6c6622c10026a592b0c4d21e64aa48">magic_type</a></div><div class="ttdeci">struct magic_type magic_type</div></div>
+<div class="ttc" id="atechnic-info-table_8h_html_a4d06cc4e09645a5c5384afcb5d66c2d1"><div class="ttname"><a href="technic-info-table_8h.html#a4d06cc4e09645a5c5384afcb5d66c2d1">technic_info</a></div><div class="ttdeci">const magic_type technic_info[NUM_TECHNIC][32]</div><div class="ttdoc">歌、剣術、呪術領域情報テーブル</div><div class="ttdef"><b>Definition:</b> technic-info-table.cpp:6</div></div>
+<div class="ttc" id="atechnic-info-table_8h_html_acbcc843abcbd1e479a942e53fb19a6a5"><div class="ttname"><a href="technic-info-table_8h.html#acbcc843abcbd1e479a942e53fb19a6a5">NUM_TECHNIC</a></div><div class="ttdeci">#define NUM_TECHNIC</div><div class="ttdef"><b>Definition:</b> technic-info-table.h:6</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/perception/simple-perception.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_346c2aea098094a6f11a0f66feef12e0.html">perception</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">simple-perception.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="simple-perception_8h_source.html">perception/simple-perception.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="autopick_8h_source.html">autopick/autopick.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="disturbance_8h_source.html">core/disturbance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-update-types_8h_source.html">core/player-update-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="window-redrawer_8h_source.html">core/window-redrawer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flag-inscriptions-table_8h_source.html">flavor/flag-inscriptions-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flavor-describer_8h_source.html">flavor/flavor-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flavor-types_8h_source.html">flavor/object-flavor-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="auto-destruction-options_8h_source.html">game-option/auto-destruction-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="disturbance-options_8h_source.html">game-option/disturbance-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-describer_8h_source.html">inventory/inventory-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mutation-flag-types_8h_source.html">mutation/mutation-flag-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-object-flags_8h_source.html">object-enchant/special-object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-checker_8h_source.html">object-hook/hook-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-enchant_8h_source.html">object-hook/hook-enchant.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-info_8h_source.html">object/object-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-perception_8h_source.html">perception/object-perception.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="avatar_8h_source.html">player-info/avatar.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status-flags_8h_source.html">player/player-status-flags.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+simple-perception.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="simple-perception_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2perception_2simple-perception_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2perception_2simple-perception_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2perception_2simple-perception_8cpp">
+<area shape="rect" title=" " alt="" coords="1359,5,1555,61"/>
+<area shape="rect" href="simple-perception_8h.html" title=" " alt="" coords="920,117,1119,143"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="1623,527,1774,568"/>
+<area shape="rect" href="autopick_8h.html" title=" " alt="" coords="122,117,256,143"/>
+<area shape="rect" href="disturbance_8h.html" title=" " alt="" coords="363,117,492,143"/>
+<area shape="rect" href="player-update-types_8h.html" title=" " alt="" coords="2247,109,2376,151"/>
+<area shape="rect" href="window-redrawer_8h.html" title=" " alt="" coords="517,117,674,143"/>
+<area shape="rect" href="flag-inscriptions-table_8h.html" title=" " alt="" coords="699,109,844,151"/>
+<area shape="rect" href="flavor-describer_8h.html" title=" " alt="" coords="684,295,836,322"/>
+<area shape="rect" href="object-flavor-types_8h.html" title=" " alt="" coords="2401,109,2524,151"/>
+<area shape="rect" href="auto-destruction-options_8h.html" title=" " alt="" coords="1026,199,1216,240"/>
+<area shape="rect" href="disturbance-options_8h.html" title=" " alt="" coords="962,288,1126,329"/>
+<area shape="rect" href="inventory-describer_8h.html" title=" " alt="" coords="1292,199,1420,240"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="2081,199,2209,240"/>
+<area shape="rect" href="special-object-flags_8h.html" title=" " alt="" coords="2548,109,2700,151"/>
+<area shape="rect" href="hook-checker_8h.html" title=" " alt="" coords="1202,295,1384,322"/>
+<area shape="rect" href="hook-enchant_8h.html" title=" " alt="" coords="1408,295,1591,322"/>
+<area shape="rect" href="object-info_8h.html" title=" " alt="" coords="377,206,508,233"/>
+<area shape="rect" href="object-perception_8h.html" title=" " alt="" coords="1615,295,1811,322"/>
+<area shape="rect" href="avatar_8h.html" title=" " alt="" coords="1836,295,1966,322"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="1991,295,2158,322"/>
+<area shape="rect" href="player-status-flags_8h.html" title=" " alt="" coords="1820,109,1956,151"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="751,377,880,404"/>
+<area shape="rect" href="item-feeling_8h.html" title=" " alt="" coords="814,199,950,240"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="910,452,1001,479"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1025,452,1116,479"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1140,452,1238,479"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="298,452,397,479"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="422,452,522,479"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="546,452,720,479"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="745,452,886,479"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1262,452,1409,479"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="914,534,1032,561"/>
+<area shape="rect" href="autopick-util_8h.html" title=" " alt="" coords="196,206,352,233"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="42,206,120,233"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="324,288,457,329"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="24,295,138,322"/>
+<area shape="rect" title=" " alt="" coords="684,206,740,233"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="1890,206,2056,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a39c27f6da7bb8717e01a8312fa0e6347"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simple-perception_8cpp.html#a39c27f6da7bb8717e01a8312fa0e6347">sense_inventory_aux</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> slot, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> heavy)</td></tr>
+<tr class="memdesc:a39c27f6da7bb8717e01a8312fa0e6347"><td class="mdescLeft">&#160;</td><td class="mdescRight">疑似鑑定処理  <a href="simple-perception_8cpp.html#a39c27f6da7bb8717e01a8312fa0e6347">[詳解]</a><br /></td></tr>
+<tr class="separator:a39c27f6da7bb8717e01a8312fa0e6347"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fe147809288def2c16773c0e89fc033"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simple-perception_8cpp.html#a0fe147809288def2c16773c0e89fc033">sense_inventory1</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a0fe147809288def2c16773c0e89fc033"><td class="mdescLeft">&#160;</td><td class="mdescRight">1プレイヤーターン毎に武器、防具の擬似鑑定が行われるかを判定する。  <a href="simple-perception_8cpp.html#a0fe147809288def2c16773c0e89fc033">[詳解]</a><br /></td></tr>
+<tr class="separator:a0fe147809288def2c16773c0e89fc033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d7694f1e0812a7f9137285efacf9506"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simple-perception_8cpp.html#a3d7694f1e0812a7f9137285efacf9506">sense_inventory2</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a3d7694f1e0812a7f9137285efacf9506"><td class="mdescLeft">&#160;</td><td class="mdescRight">1プレイヤーターン毎に武器、防具以外の擬似鑑定が行われるかを判定する。  <a href="simple-perception_8cpp.html#a3d7694f1e0812a7f9137285efacf9506">[詳解]</a><br /></td></tr>
+<tr class="separator:a3d7694f1e0812a7f9137285efacf9506"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a754f3892a965b82793e6b91c7d9d502c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498">item_feel_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simple-perception_8cpp.html#a754f3892a965b82793e6b91c7d9d502c">pseudo_value_check_heavy</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:a754f3892a965b82793e6b91c7d9d502c"><td class="mdescLeft">&#160;</td><td class="mdescRight">重度擬似鑑定の判断処理 / Return a "feeling" (or NULL) about an item.  <a href="simple-perception_8cpp.html#a754f3892a965b82793e6b91c7d9d502c">[詳解]</a><br /></td></tr>
+<tr class="separator:a754f3892a965b82793e6b91c7d9d502c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46a68459597c9de4ac631f4fd085c4a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498">item_feel_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="simple-perception_8cpp.html#a46a68459597c9de4ac631f4fd085c4a6">pseudo_value_check_light</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:a46a68459597c9de4ac631f4fd085c4a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">軽度擬似鑑定の判断処理 / Return a "feeling" (or NULL) about an item.  <a href="simple-perception_8cpp.html#a46a68459597c9de4ac631f4fd085c4a6">[詳解]</a><br /></td></tr>
+<tr class="separator:a46a68459597c9de4ac631f4fd085c4a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a754f3892a965b82793e6b91c7d9d502c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a754f3892a965b82793e6b91c7d9d502c">&#9670;&nbsp;</a></span>pseudo_value_check_heavy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498">item_feel_type</a> pseudo_value_check_heavy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重度擬似鑑定の判断処理 / Return a "feeling" (or NULL) about an item. </p>
+<p>Method 1 (Heavy). </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>擬似鑑定を行うオブジェクトの参照ポインタ。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>擬似鑑定結果のIDを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="simple-perception_8cpp_a754f3892a965b82793e6b91c7d9d502c_cgraph.png" border="0" usemap="#asimple-perception_8cpp_a754f3892a965b82793e6b91c7d9d502c_cgraph" alt=""/></div>
+<map name="asimple-perception_8cpp_a754f3892a965b82793e6b91c7d9d502c_cgraph" id="asimple-perception_8cpp_a754f3892a965b82793e6b91c7d9d502c_cgraph">
+<area shape="rect" title="重度擬似鑑定の判断処理 / Return a &quot;feeling&quot; (or NULL) about an item." alt="" coords="5,74,148,115"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="196,5,316,32"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="196,56,316,83"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="196,107,316,133"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="205,157,307,184"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="364,5,519,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="simple-perception_8cpp_a754f3892a965b82793e6b91c7d9d502c_icgraph.png" border="0" usemap="#asimple-perception_8cpp_a754f3892a965b82793e6b91c7d9d502c_icgraph" alt=""/></div>
+<map name="asimple-perception_8cpp_a754f3892a965b82793e6b91c7d9d502c_icgraph" id="asimple-perception_8cpp_a754f3892a965b82793e6b91c7d9d502c_icgraph">
+<area shape="rect" title="重度擬似鑑定の判断処理 / Return a &quot;feeling&quot; (or NULL) about an item." alt="" coords="600,74,743,115"/>
+<area shape="rect" href="mind-mindcrafter_8cpp.html#a32c9502c994c59bed2f6bfbceddfd05f" title="超能力者のサイコメトリー処理/ Forcibly pseudo&#45;identify an object in the inventory (or on the floor)" alt="" coords="432,56,529,83"/>
+<area shape="rect" href="simple-perception_8cpp.html#a39c27f6da7bb8717e01a8312fa0e6347" title="疑似鑑定処理" alt="" coords="409,107,552,133"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#ab738ba0734204e55707411a35acde85c" title="元素魔法呪文を実行する" alt="" coords="218,5,353,32"/>
+<area shape="rect" href="mind-mindcrafter_8cpp.html#a8da07b1c4907a85709c965d06d9038cb" title="超能力の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;mindcrafter&#39;." alt="" coords="209,56,361,83"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a90d73fb2b3347c19d770e69407dd6c3b" title="元素魔法呪文の詠唱を試み、成功なら詠唱し、失敗ならファンブルする" alt="" coords="5,5,161,32"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a49b73965d0ef306e6cb8a9dc70ed212a" title=" " alt="" coords="17,56,149,83"/>
+<area shape="rect" href="simple-perception_8cpp.html#a0fe147809288def2c16773c0e89fc033" title="1プレイヤーターン毎に武器、防具の擬似鑑定が行われるかを判定する。" alt="" coords="224,107,347,133"/>
+<area shape="rect" href="simple-perception_8cpp.html#a3d7694f1e0812a7f9137285efacf9506" title="1プレイヤーターン毎に武器、防具以外の擬似鑑定が行われるかを判定する。" alt="" coords="224,157,347,184"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="31,132,136,159"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a46a68459597c9de4ac631f4fd085c4a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46a68459597c9de4ac631f4fd085c4a6">&#9670;&nbsp;</a></span>pseudo_value_check_light()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498">item_feel_type</a> pseudo_value_check_light </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>軽度擬似鑑定の判断処理 / Return a "feeling" (or NULL) about an item. </p>
+<p>Method 2 (Light). </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>擬似鑑定を行うオブジェクトの参照ポインタ。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>擬似鑑定結果のIDを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="simple-perception_8cpp_a46a68459597c9de4ac631f4fd085c4a6_cgraph.png" border="0" usemap="#asimple-perception_8cpp_a46a68459597c9de4ac631f4fd085c4a6_cgraph" alt=""/></div>
+<map name="asimple-perception_8cpp_a46a68459597c9de4ac631f4fd085c4a6_cgraph" id="asimple-perception_8cpp_a46a68459597c9de4ac631f4fd085c4a6_cgraph">
+<area shape="rect" title="軽度擬似鑑定の判断処理 / Return a &quot;feeling&quot; (or NULL) about an item." alt="" coords="5,74,148,115"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="196,5,316,32"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="196,56,316,83"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="196,107,316,133"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="205,157,307,184"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="364,5,519,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="simple-perception_8cpp_a46a68459597c9de4ac631f4fd085c4a6_icgraph.png" border="0" usemap="#asimple-perception_8cpp_a46a68459597c9de4ac631f4fd085c4a6_icgraph" alt=""/></div>
+<map name="asimple-perception_8cpp_a46a68459597c9de4ac631f4fd085c4a6_icgraph" id="asimple-perception_8cpp_a46a68459597c9de4ac631f4fd085c4a6_icgraph">
+<area shape="rect" title="軽度擬似鑑定の判断処理 / Return a &quot;feeling&quot; (or NULL) about an item." alt="" coords="520,23,663,65"/>
+<area shape="rect" href="simple-perception_8cpp.html#a39c27f6da7bb8717e01a8312fa0e6347" title="疑似鑑定処理" alt="" coords="329,31,472,57"/>
+<area shape="rect" href="simple-perception_8cpp.html#a0fe147809288def2c16773c0e89fc033" title="1プレイヤーターン毎に武器、防具の擬似鑑定が行われるかを判定する。" alt="" coords="159,5,281,32"/>
+<area shape="rect" href="simple-perception_8cpp.html#a3d7694f1e0812a7f9137285efacf9506" title="1プレイヤーターン毎に武器、防具以外の擬似鑑定が行われるかを判定する。" alt="" coords="159,56,281,83"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="5,31,111,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0fe147809288def2c16773c0e89fc033"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fe147809288def2c16773c0e89fc033">&#9670;&nbsp;</a></span>sense_inventory1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sense_inventory1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>1プレイヤーターン毎に武器、防具の擬似鑑定が行われるかを判定する。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<p>Sense the inventory<br  />
+<br  />
+ Class 0 = Warrior --&gt; fast and heavy<br  />
+ Class 1 = Mage --&gt; slow and light<br  />
+ Class 2 = Priest --&gt; fast but light<br  />
+ Class 3 = Rogue --&gt; okay and heavy<br  />
+ Class 4 = Ranger --&gt; slow but heavy (changed!)<br  />
+ Class 5 = Paladin --&gt; slow but heavy<br  />
+</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="simple-perception_8cpp_a0fe147809288def2c16773c0e89fc033_cgraph.png" border="0" usemap="#asimple-perception_8cpp_a0fe147809288def2c16773c0e89fc033_cgraph" alt=""/></div>
+<map name="asimple-perception_8cpp_a0fe147809288def2c16773c0e89fc033_cgraph" id="asimple-perception_8cpp_a0fe147809288def2c16773c0e89fc033_cgraph">
+<area shape="rect" title="1プレイヤーターン毎に武器、防具の擬似鑑定が行われるかを判定する。" alt="" coords="5,56,128,83"/>
+<area shape="rect" href="avatar_8cpp.html#a0765c8ac8ec8795f5177062841d047cf" title="該当の徳がプレイヤーに指定されているか否かに応じつつ、大小を比較する。" alt="" coords="193,5,302,32"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a658f4e0b1d948165db84b32e9d11b5ff" title=" " alt="" coords="193,56,302,83"/>
+<area shape="rect" href="simple-perception_8cpp.html#a39c27f6da7bb8717e01a8312fa0e6347" title="疑似鑑定処理" alt="" coords="176,281,319,308"/>
+<area shape="rect" href="avatar_8cpp.html#a9f77c7a74f4dd1df02cd6e40b532f2ed" title="プレイヤーの指定の徳が何番目のスロットに登録されているかを返す。 / Aux function" alt="" coords="387,5,489,32"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="383,56,493,83"/>
+<area shape="rect" href="autopick_8cpp.html#ae7f092144503a2ccb534345fe872d299" title=" " alt="" coords="371,441,505,468"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="736,492,843,519"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="759,555,820,581"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="744,631,835,657"/>
+<area shape="rect" href="inventory-describer_8cpp.html#a961afa2c407f428dd215a0b6f353be67" title="所持/装備オブジェクトIDの現在の扱い方の状態表現を返す / Return a string describing how a given item is being worn." alt="" coords="389,695,487,721"/>
+<area shape="rect" href="object-info_8cpp.html#a21413bf407071b7e2f68ff548c34b165" title="オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label" alt="" coords="385,107,491,133"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="379,157,497,184"/>
+<area shape="rect" href="simple-perception_8cpp.html#a754f3892a965b82793e6b91c7d9d502c" title="重度擬似鑑定の判断処理 / Return a &quot;feeling&quot; (or NULL) about an item." alt="" coords="367,274,509,315"/>
+<area shape="rect" href="simple-perception_8cpp.html#a46a68459597c9de4ac631f4fd085c4a6" title="軽度擬似鑑定の判断処理 / Return a &quot;feeling&quot; (or NULL) about an item." alt="" coords="367,209,509,250"/>
+<area shape="rect" href="autopick-destroyer_8cpp.html#a9efe25ff3ad1ac56b5dc6ab7b27eae0a" title=" " alt="" coords="558,543,687,569"/>
+<area shape="rect" href="autopick-util_8cpp.html#a1dd80fdd8ddb78ff0a4e450460cd8951" title=" " alt="" coords="557,391,688,417"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a8108553a0b971c8d22ad18d214df8fb3" title="自動拾いの検索" alt="" coords="561,492,684,519"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="589,441,657,468"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="563,137,683,164"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="563,188,683,215"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="563,239,683,265"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="571,289,674,316"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="simple-perception_8cpp_a0fe147809288def2c16773c0e89fc033_icgraph.png" border="0" usemap="#asimple-perception_8cpp_a0fe147809288def2c16773c0e89fc033_icgraph" alt=""/></div>
+<map name="asimple-perception_8cpp_a0fe147809288def2c16773c0e89fc033_icgraph" id="asimple-perception_8cpp_a0fe147809288def2c16773c0e89fc033_icgraph">
+<area shape="rect" title="1プレイヤーターン毎に武器、防具の擬似鑑定が行われるかを判定する。" alt="" coords="515,5,637,32"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="361,5,467,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="189,5,313,32"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="5,5,141,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3d7694f1e0812a7f9137285efacf9506"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d7694f1e0812a7f9137285efacf9506">&#9670;&nbsp;</a></span>sense_inventory2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sense_inventory2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>1プレイヤーターン毎に武器、防具以外の擬似鑑定が行われるかを判定する。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="simple-perception_8cpp_a3d7694f1e0812a7f9137285efacf9506_cgraph.png" border="0" usemap="#asimple-perception_8cpp_a3d7694f1e0812a7f9137285efacf9506_cgraph" alt=""/></div>
+<map name="asimple-perception_8cpp_a3d7694f1e0812a7f9137285efacf9506_cgraph" id="asimple-perception_8cpp_a3d7694f1e0812a7f9137285efacf9506_cgraph">
+<area shape="rect" title="1プレイヤーターン毎に武器、防具以外の擬似鑑定が行われるかを判定する。" alt="" coords="5,362,128,389"/>
+<area shape="rect" href="simple-perception_8cpp.html#a39c27f6da7bb8717e01a8312fa0e6347" title="疑似鑑定処理" alt="" coords="176,362,319,389"/>
+<area shape="rect" href="autopick_8cpp.html#ae7f092144503a2ccb534345fe872d299" title=" " alt="" coords="371,134,505,161"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="736,134,843,161"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="759,210,820,237"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="744,261,835,287"/>
+<area shape="rect" href="inventory-describer_8cpp.html#a961afa2c407f428dd215a0b6f353be67" title="所持/装備オブジェクトIDの現在の扱い方の状態表現を返す / Return a string describing how a given item is being worn." alt="" coords="389,337,487,363"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="383,387,493,414"/>
+<area shape="rect" href="object-info_8cpp.html#a21413bf407071b7e2f68ff548c34b165" title="オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label" alt="" coords="385,438,491,465"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="379,489,497,515"/>
+<area shape="rect" href="simple-perception_8cpp.html#a754f3892a965b82793e6b91c7d9d502c" title="重度擬似鑑定の判断処理 / Return a &quot;feeling&quot; (or NULL) about an item." alt="" coords="367,540,509,581"/>
+<area shape="rect" href="simple-perception_8cpp.html#a46a68459597c9de4ac631f4fd085c4a6" title="軽度擬似鑑定の判断処理 / Return a &quot;feeling&quot; (or NULL) about an item." alt="" coords="367,605,509,647"/>
+<area shape="rect" href="autopick-destroyer_8cpp.html#a9efe25ff3ad1ac56b5dc6ab7b27eae0a" title=" " alt="" coords="558,185,687,211"/>
+<area shape="rect" href="autopick-util_8cpp.html#a1dd80fdd8ddb78ff0a4e450460cd8951" title=" " alt="" coords="557,33,688,59"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a8108553a0b971c8d22ad18d214df8fb3" title="自動拾いの検索" alt="" coords="561,134,684,161"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="589,83,657,110"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="563,503,683,530"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="563,554,683,581"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="563,605,683,631"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="571,655,674,682"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="simple-perception_8cpp_a3d7694f1e0812a7f9137285efacf9506_icgraph.png" border="0" usemap="#asimple-perception_8cpp_a3d7694f1e0812a7f9137285efacf9506_icgraph" alt=""/></div>
+<map name="asimple-perception_8cpp_a3d7694f1e0812a7f9137285efacf9506_icgraph" id="asimple-perception_8cpp_a3d7694f1e0812a7f9137285efacf9506_icgraph">
+<area shape="rect" title="1プレイヤーターン毎に武器、防具以外の擬似鑑定が行われるかを判定する。" alt="" coords="515,5,637,32"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="361,5,467,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="189,5,313,32"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="5,5,141,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a39c27f6da7bb8717e01a8312fa0e6347"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39c27f6da7bb8717e01a8312fa0e6347">&#9670;&nbsp;</a></span>sense_inventory_aux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void sense_inventory_aux </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a>&#160;</td>
+          <td class="paramname"><em>slot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>heavy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>疑似鑑定処理 </p>
+<dl class="section date"><dt>日付</dt><dd>2020/05/15 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier</dd></dl>
+<p>擬似鑑定を実際に行い判定を反映する </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td>擬似鑑定を行うプレイヤーの所持リストID </td></tr>
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">heavy</td><td>重度の擬似鑑定を行うならばTRUE </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="simple-perception_8cpp_a39c27f6da7bb8717e01a8312fa0e6347_cgraph.png" border="0" usemap="#asimple-perception_8cpp_a39c27f6da7bb8717e01a8312fa0e6347_cgraph" alt=""/></div>
+<map name="asimple-perception_8cpp_a39c27f6da7bb8717e01a8312fa0e6347_cgraph" id="asimple-perception_8cpp_a39c27f6da7bb8717e01a8312fa0e6347_cgraph">
+<area shape="rect" title="疑似鑑定処理" alt="" coords="5,373,148,399"/>
+<area shape="rect" href="autopick_8cpp.html#ae7f092144503a2ccb534345fe872d299" title=" " alt="" coords="196,246,331,273"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="762,327,881,354"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="582,137,689,163"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="605,313,666,339"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="590,381,681,407"/>
+<area shape="rect" href="inventory-describer_8cpp.html#a961afa2c407f428dd215a0b6f353be67" title="所持/装備オブジェクトIDの現在の扱い方の状態表現を返す / Return a string describing how a given item is being worn." alt="" coords="214,499,313,526"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="208,550,319,577"/>
+<area shape="rect" href="object-info_8cpp.html#a21413bf407071b7e2f68ff548c34b165" title="オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label" alt="" coords="211,601,316,627"/>
+<area shape="rect" href="simple-perception_8cpp.html#a754f3892a965b82793e6b91c7d9d502c" title="重度擬似鑑定の判断処理 / Return a &quot;feeling&quot; (or NULL) about an item." alt="" coords="564,5,707,47"/>
+<area shape="rect" href="simple-perception_8cpp.html#a46a68459597c9de4ac631f4fd085c4a6" title="軽度擬似鑑定の判断処理 / Return a &quot;feeling&quot; (or NULL) about an item." alt="" coords="564,71,707,112"/>
+<area shape="rect" href="autopick-destroyer_8cpp.html#a9efe25ff3ad1ac56b5dc6ab7b27eae0a" title=" " alt="" coords="379,246,509,273"/>
+<area shape="rect" href="autopick-util_8cpp.html#a1dd80fdd8ddb78ff0a4e450460cd8951" title=" " alt="" coords="379,297,509,323"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a8108553a0b971c8d22ad18d214df8fb3" title="自動拾いの検索" alt="" coords="383,145,505,171"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="410,195,478,222"/>
+<area shape="rect" href="hook-expendable_8cpp.html#a149d1d797103307eb21cc6cafea39576" title="破壊可能なアイテムかを返す / Determines whether an object can be destroyed, and makes fake inscription." alt="" coords="568,188,703,229"/>
+<area shape="rect" href="autopick-destroyer_8cpp.html#a7e4c7c11cb092024c7638404dbb7ed77" title=" " alt="" coords="557,254,713,281"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="761,165,881,191"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="761,63,881,90"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="761,114,881,141"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="770,13,873,39"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="simple-perception_8cpp_a39c27f6da7bb8717e01a8312fa0e6347_icgraph.png" border="0" usemap="#asimple-perception_8cpp_a39c27f6da7bb8717e01a8312fa0e6347_icgraph" alt=""/></div>
+<map name="asimple-perception_8cpp_a39c27f6da7bb8717e01a8312fa0e6347_icgraph" id="asimple-perception_8cpp_a39c27f6da7bb8717e01a8312fa0e6347_icgraph">
+<area shape="rect" title="疑似鑑定処理" alt="" coords="501,31,644,57"/>
+<area shape="rect" href="simple-perception_8cpp.html#a0fe147809288def2c16773c0e89fc033" title="1プレイヤーターン毎に武器、防具の擬似鑑定が行われるかを判定する。" alt="" coords="331,5,453,32"/>
+<area shape="rect" href="simple-perception_8cpp.html#a3d7694f1e0812a7f9137285efacf9506" title="1プレイヤーターン毎に武器、防具以外の擬似鑑定が行われるかを判定する。" alt="" coords="331,56,453,83"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="177,31,283,57"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,31,129,57"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時55分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

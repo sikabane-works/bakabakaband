@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/melee/melee-spell-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6d77d0d3b006a67320265fc283939a4a.html">melee</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">melee-spell-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="melee-spell-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-type-definition_8h.html">system/monster-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="race-ability-flags_8h.html">monster-race/race-ability-flags.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="flag-group_8h.html">util/flag-group.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html">   10</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmelee__spell__type.html">melee_spell_type</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#adf56899a7a0213d75bfece84ebc056de">   11</a></span>&#160;    <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> <a class="code" href="structmelee__spell__type.html#adf56899a7a0213d75bfece84ebc056de">m_idx</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#a9385345f8af5adbef226d3f0657ef366">   12</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structmelee__spell__type.html#a9385345f8af5adbef226d3f0657ef366">y</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#a11a9d534fb254365d54c30a20c3206a1">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structmelee__spell__type.html#a11a9d534fb254365d54c30a20c3206a1">x</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#a9a34a8bf876fdf30f111097c713194b9">   14</a></span>&#160;    <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> <a class="code" href="structmelee__spell__type.html#a9a34a8bf876fdf30f111097c713194b9">target_idx</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#acbfcb7f7cebc766ad3326307d6f1c0f8">   15</a></span>&#160;    <a class="code" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> <a class="code" href="structmelee__spell__type.html#acbfcb7f7cebc766ad3326307d6f1c0f8">thrown_spell</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#a4a579832737579d348cb7ced1955532d">   16</a></span>&#160;    <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="structmelee__spell__type.html#a4a579832737579d348cb7ced1955532d">dam</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#a40783aaef1e5ec26ec7c32fff64cc464">   17</a></span>&#160;    std::vector&lt;RF_ABILITY&gt; <a class="code" href="structmelee__spell__type.html#a40783aaef1e5ec26ec7c32fff64cc464">spells</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#a33396a07674ffbfa5db538e5cbe1f4af">   18</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structmelee__spell__type.html#a33396a07674ffbfa5db538e5cbe1f4af">m_name</a>[160];</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifdef JP</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#a232b0a2b3fb196d43e211bac7a2112c9">   21</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structmelee__spell__type.html#a232b0a2b3fb196d43e211bac7a2112c9">m_poss</a>[160];</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#a10e4494227601fa5b313fce403a2a75a">   24</a></span>&#160;    <a class="code" href="structmonster__type.html">monster_type</a> *<a class="code" href="structmelee__spell__type.html#a10e4494227601fa5b313fce403a2a75a">m_ptr</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#a93d618dfeaf119379100079b75f8ba70">   25</a></span>&#160;    <a class="code" href="structmonster__type.html">monster_type</a> *<a class="code" href="structmelee__spell__type.html#a93d618dfeaf119379100079b75f8ba70">t_ptr</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#afed1918a62bbb7f98cddd618a43a9a44">   26</a></span>&#160;    <a class="code" href="structmonster__race.html">monster_race</a> *<a class="code" href="structmelee__spell__type.html#afed1918a62bbb7f98cddd618a43a9a44">r_ptr</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#a49ad7cf687566d1b8af0699d2d4c957a">   27</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmelee__spell__type.html#a49ad7cf687566d1b8af0699d2d4c957a">see_m</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#a388fcbd08f89380f8b3d343d70d1c297">   28</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmelee__spell__type.html#a388fcbd08f89380f8b3d343d70d1c297">maneable</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#a7cc065caeb0d5ec2496fbf24d9ce7d2b">   29</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmelee__spell__type.html#a7cc065caeb0d5ec2496fbf24d9ce7d2b">pet</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#ae869292b9b419fcd725245e544efbf73">   30</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmelee__spell__type.html#ae869292b9b419fcd725245e544efbf73">in_no_magic_dungeon</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#a85f5cd487b4921304cdfcd8bf9d0c824">   31</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmelee__spell__type.html#a85f5cd487b4921304cdfcd8bf9d0c824">can_remember</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structmelee__spell__type.html#a78d9c8d29135a4e589a12e76ca57e4da">   32</a></span>&#160;    <a class="code" href="class_flag_group.html">FlagGroup&lt;RF_ABILITY&gt;</a> <a class="code" href="structmelee__spell__type.html#a78d9c8d29135a4e589a12e76ca57e4da">ability_flags</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="melee-spell-util_8h.html#a8dd434aa28f04713aa69310f8980d931">   33</a></span>&#160;} <a class="code" href="melee-spell-util_8h.html#a8dd434aa28f04713aa69310f8980d931">melee_spell_type</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<a class="code" href="structmelee__spell__type.html">melee_spell_type</a> *<a class="code" href="melee-spell-util_8h.html#a5a1ff731218e4523e52c99b88d26b03d">initialize_melee_spell_type</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmelee__spell__type.html">melee_spell_type</a> *ms_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aclass_flag_group_html"><div class="ttname"><a href="class_flag_group.html">FlagGroup&lt; RF_ABILITY &gt;</a></div></div>
+<div class="ttc" id="aflag-group_8h_html"><div class="ttname"><a href="flag-group_8h.html">flag-group.h</a></div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_ac67a750044882c0fd3760a2eccd56d7c"><div class="ttname"><a href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a></div><div class="ttdeci">char GAME_TEXT</div><div class="ttdoc">ゲーム中のテキスト型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:133</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="ah-type_8h_html_afdb20155266ee801610f13b1589a3df3"><div class="ttname"><a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></div><div class="ttdeci">s32b HIT_POINT</div><div class="ttdoc">HPとその増減量の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:141</div></div>
+<div class="ttc" id="amelee-spell-util_8h_html_a5a1ff731218e4523e52c99b88d26b03d"><div class="ttname"><a href="melee-spell-util_8h.html#a5a1ff731218e4523e52c99b88d26b03d">initialize_melee_spell_type</a></div><div class="ttdeci">melee_spell_type * initialize_melee_spell_type(player_type *target_ptr, melee_spell_type *ms_ptr, MONSTER_IDX m_idx)</div><div class="ttdef"><b>Definition:</b> melee-spell-util.cpp:11</div></div>
+<div class="ttc" id="amelee-spell-util_8h_html_a8dd434aa28f04713aa69310f8980d931"><div class="ttname"><a href="melee-spell-util_8h.html#a8dd434aa28f04713aa69310f8980d931">melee_spell_type</a></div><div class="ttdeci">struct melee_spell_type melee_spell_type</div></div>
+<div class="ttc" id="amonster-type-definition_8h_html"><div class="ttname"><a href="monster-type-definition_8h.html">monster-type-definition.h</a></div></div>
+<div class="ttc" id="arace-ability-flags_8h_html"><div class="ttname"><a href="race-ability-flags_8h.html">race-ability-flags.h</a></div></div>
+<div class="ttc" id="arace-ability-flags_8h_html_acbcf656bb21b1f961b30ca0f24fcb5aa"><div class="ttname"><a href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a></div><div class="ttdeci">RF_ABILITY</div><div class="ttdef"><b>Definition:</b> race-ability-flags.h:3</div></div>
+<div class="ttc" id="astructmelee__spell__type_html"><div class="ttname"><a href="structmelee__spell__type.html">melee_spell_type</a></div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:10</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_a10e4494227601fa5b313fce403a2a75a"><div class="ttname"><a href="structmelee__spell__type.html#a10e4494227601fa5b313fce403a2a75a">melee_spell_type::m_ptr</a></div><div class="ttdeci">monster_type * m_ptr</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:24</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_a11a9d534fb254365d54c30a20c3206a1"><div class="ttname"><a href="structmelee__spell__type.html#a11a9d534fb254365d54c30a20c3206a1">melee_spell_type::x</a></div><div class="ttdeci">POSITION x</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:13</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_a232b0a2b3fb196d43e211bac7a2112c9"><div class="ttname"><a href="structmelee__spell__type.html#a232b0a2b3fb196d43e211bac7a2112c9">melee_spell_type::m_poss</a></div><div class="ttdeci">char m_poss[160]</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:21</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_a33396a07674ffbfa5db538e5cbe1f4af"><div class="ttname"><a href="structmelee__spell__type.html#a33396a07674ffbfa5db538e5cbe1f4af">melee_spell_type::m_name</a></div><div class="ttdeci">GAME_TEXT m_name[160]</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:18</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_a388fcbd08f89380f8b3d343d70d1c297"><div class="ttname"><a href="structmelee__spell__type.html#a388fcbd08f89380f8b3d343d70d1c297">melee_spell_type::maneable</a></div><div class="ttdeci">bool maneable</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:28</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_a40783aaef1e5ec26ec7c32fff64cc464"><div class="ttname"><a href="structmelee__spell__type.html#a40783aaef1e5ec26ec7c32fff64cc464">melee_spell_type::spells</a></div><div class="ttdeci">std::vector&lt; RF_ABILITY &gt; spells</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:17</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_a49ad7cf687566d1b8af0699d2d4c957a"><div class="ttname"><a href="structmelee__spell__type.html#a49ad7cf687566d1b8af0699d2d4c957a">melee_spell_type::see_m</a></div><div class="ttdeci">bool see_m</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:27</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_a4a579832737579d348cb7ced1955532d"><div class="ttname"><a href="structmelee__spell__type.html#a4a579832737579d348cb7ced1955532d">melee_spell_type::dam</a></div><div class="ttdeci">HIT_POINT dam</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:16</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_a78d9c8d29135a4e589a12e76ca57e4da"><div class="ttname"><a href="structmelee__spell__type.html#a78d9c8d29135a4e589a12e76ca57e4da">melee_spell_type::ability_flags</a></div><div class="ttdeci">FlagGroup&lt; RF_ABILITY &gt; ability_flags</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:32</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_a7cc065caeb0d5ec2496fbf24d9ce7d2b"><div class="ttname"><a href="structmelee__spell__type.html#a7cc065caeb0d5ec2496fbf24d9ce7d2b">melee_spell_type::pet</a></div><div class="ttdeci">bool pet</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:29</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_a85f5cd487b4921304cdfcd8bf9d0c824"><div class="ttname"><a href="structmelee__spell__type.html#a85f5cd487b4921304cdfcd8bf9d0c824">melee_spell_type::can_remember</a></div><div class="ttdeci">bool can_remember</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:31</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_a9385345f8af5adbef226d3f0657ef366"><div class="ttname"><a href="structmelee__spell__type.html#a9385345f8af5adbef226d3f0657ef366">melee_spell_type::y</a></div><div class="ttdeci">POSITION y</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:12</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_a93d618dfeaf119379100079b75f8ba70"><div class="ttname"><a href="structmelee__spell__type.html#a93d618dfeaf119379100079b75f8ba70">melee_spell_type::t_ptr</a></div><div class="ttdeci">monster_type * t_ptr</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:25</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_a9a34a8bf876fdf30f111097c713194b9"><div class="ttname"><a href="structmelee__spell__type.html#a9a34a8bf876fdf30f111097c713194b9">melee_spell_type::target_idx</a></div><div class="ttdeci">MONSTER_IDX target_idx</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:14</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_acbfcb7f7cebc766ad3326307d6f1c0f8"><div class="ttname"><a href="structmelee__spell__type.html#acbfcb7f7cebc766ad3326307d6f1c0f8">melee_spell_type::thrown_spell</a></div><div class="ttdeci">RF_ABILITY thrown_spell</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:15</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_adf56899a7a0213d75bfece84ebc056de"><div class="ttname"><a href="structmelee__spell__type.html#adf56899a7a0213d75bfece84ebc056de">melee_spell_type::m_idx</a></div><div class="ttdeci">MONSTER_IDX m_idx</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:11</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_ae869292b9b419fcd725245e544efbf73"><div class="ttname"><a href="structmelee__spell__type.html#ae869292b9b419fcd725245e544efbf73">melee_spell_type::in_no_magic_dungeon</a></div><div class="ttdeci">bool in_no_magic_dungeon</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:30</div></div>
+<div class="ttc" id="astructmelee__spell__type_html_afed1918a62bbb7f98cddd618a43a9a44"><div class="ttname"><a href="structmelee__spell__type.html#afed1918a62bbb7f98cddd618a43a9a44">melee_spell_type::r_ptr</a></div><div class="ttdeci">monster_race * r_ptr</div><div class="ttdef"><b>Definition:</b> melee-spell-util.h:26</div></div>
+<div class="ttc" id="astructmonster__race_html"><div class="ttname"><a href="structmonster__race.html">monster_race</a></div><div class="ttdef"><b>Definition:</b> monster-race-definition.h:48</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

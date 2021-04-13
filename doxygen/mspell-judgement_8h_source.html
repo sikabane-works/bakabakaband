@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/mspell/mspell-judgement.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d3503302c38a329207825687a87abf53.html">mspell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mspell-judgement.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="mspell-judgement_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="mspell-judgement_8h.html#aa3cb01ad99d0ae3d678914dd09879e66">    1</a></span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmonster__type.html">monster_type</a> <a class="code" href="structmonster__type.html">monster_type</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="mspell-judgement_8h.html#a265a95d04381b6b6ac4e54b2d3803aa7">direct_beam</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y2, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x2, <a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="mspell-judgement_8h.html#a18d1785b5416dd0102f17af5a5e64339">breath_direct</a>(<a class="code" href="structplayer__type.html">player_type</a> *master_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y2, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x2, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> rad, <a class="code" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a> typ, <span class="keywordtype">bool</span> is_friend);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">void</span> <a class="code" href="mspell-judgement_8h.html#a874c3947f23540371fe5a100ec89a22b">get_project_point</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> sy, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> sx, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *ty, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *tx, <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> flg);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="mspell-judgement_8h.html#a9e0d787332a185312feb60c799be6b7f">dispel_check_monster</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="mspell-judgement_8h.html#ae0ce63fe326ff866098e3cccee96749a">dispel_check</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a6e67d15477d3778e515c59e04e25a390"><div class="ttname"><a href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a></div><div class="ttdeci">int EFFECT_ID</div><div class="ttdoc">効果属性ID</div><div class="ttdef"><b>Definition:</b> h-type.h:227</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="amspell-judgement_8h_html_a18d1785b5416dd0102f17af5a5e64339"><div class="ttname"><a href="mspell-judgement_8h.html#a18d1785b5416dd0102f17af5a5e64339">breath_direct</a></div><div class="ttdeci">bool breath_direct(player_type *master_ptr, POSITION y1, POSITION x1, POSITION y2, POSITION x2, POSITION rad, EFFECT_ID typ, bool is_friend)</div><div class="ttdoc">モンスターが敵対モンスターに直接ブレスを当てることが可能かを判定する / Determine if a breath will hit the target.</div><div class="ttdef"><b>Definition:</b> mspell-judgement.cpp:86</div></div>
+<div class="ttc" id="amspell-judgement_8h_html_a265a95d04381b6b6ac4e54b2d3803aa7"><div class="ttname"><a href="mspell-judgement_8h.html#a265a95d04381b6b6ac4e54b2d3803aa7">direct_beam</a></div><div class="ttdeci">bool direct_beam(player_type *target_ptr, POSITION y1, POSITION x1, POSITION y2, POSITION x2, monster_type *m_ptr)</div><div class="ttdoc">モンスター魔法の実装(対モンスター処理) / Monster spells (attack monster)</div><div class="ttdef"><b>Definition:</b> mspell-judgement.cpp:44</div></div>
+<div class="ttc" id="amspell-judgement_8h_html_a874c3947f23540371fe5a100ec89a22b"><div class="ttname"><a href="mspell-judgement_8h.html#a874c3947f23540371fe5a100ec89a22b">get_project_point</a></div><div class="ttdeci">void get_project_point(player_type *target_ptr, POSITION sy, POSITION sx, POSITION *ty, POSITION *tx, BIT_FLAGS flg)</div><div class="ttdoc">モンスターが特殊能力の目標地点を決める処理 / Get the actual center point of ball spells (rad &gt; 1) (originally from TOband)</div><div class="ttdef"><b>Definition:</b> mspell-judgement.cpp:182</div></div>
+<div class="ttc" id="amspell-judgement_8h_html_a9e0d787332a185312feb60c799be6b7f"><div class="ttname"><a href="mspell-judgement_8h.html#a9e0d787332a185312feb60c799be6b7f">dispel_check_monster</a></div><div class="ttdeci">bool dispel_check_monster(player_type *target_ptr, MONSTER_IDX m_idx, MONSTER_IDX t_idx)</div><div class="ttdoc">モンスターが敵モンスターに魔力消去を使うかどうかを返す / Check should monster cast dispel spell at other monster.</div><div class="ttdef"><b>Definition:</b> mspell-judgement.cpp:207</div></div>
+<div class="ttc" id="amspell-judgement_8h_html_ae0ce63fe326ff866098e3cccee96749a"><div class="ttname"><a href="mspell-judgement_8h.html#ae0ce63fe326ff866098e3cccee96749a">dispel_check</a></div><div class="ttdeci">bool dispel_check(player_type *creature_ptr, MONSTER_IDX m_idx)</div><div class="ttdoc">モンスターがプレイヤーに魔力消去を与えるべきかを判定するルーチン Check should monster cast dispel spell.</div><div class="ttdef"><b>Definition:</b> mspell-judgement.cpp:228</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<map id="spell_RF4_DISPEL" name="spell_RF4_DISPEL">
+<area shape="rect" id="node1" title="RF4_DISPELの処理。魔力消去。 /" alt="" coords="5,1196,139,1223"/>
+<area shape="rect" id="node2" href="$monster-status_8cpp.html#a8741b73b5117adbb98d24486378f48ec" title="モンスターへの魔力消去処理" alt="" coords="187,183,340,209"/>
+<area shape="rect" id="node5" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="749,1221,828,1248"/>
+<area shape="rect" id="node9" href="$mspell-dispel_8cpp.html#a09256f06bfc5fa758d6fee6d4df9082a" title="プレイヤーに魔力消去効果を与える。" alt="" coords="214,1196,313,1223"/>
+<area shape="rect" id="node47" href="$player-status_8cpp.html#aa92221918c0f2eccf69aa8084106362a" title=" " alt="" coords="221,1247,305,1273"/>
+<area shape="rect" id="node48" href="$struct_monster_spell_result.html#ab2e9d6bf123480851bb704325d5c0dd3" title=" " alt="" coords="196,1298,331,1339"/>
+<area shape="rect" id="node49" href="$mspell-util_8cpp.html#ad6654d9a9e80032792e6700447b1f043" title="モンスターが呪文行使する際のメッセージを処理する汎用関数。盲目時と通常時のメッセージを切り替える。 /" alt="" coords="196,1364,331,1391"/>
+<area shape="rect" id="node50" href="$monster-info_8cpp.html#a09d78bdc9ae711c4a1ffbfe84c24ddd3" title="モンスターIDを取り、モンスター名をm_nameに代入する /" alt="" coords="209,5,317,32"/>
+<area shape="rect" id="node3" href="$monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="408,5,512,32"/>
+<area shape="rect" id="node4" href="$display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="595,309,686,336"/>
+<area shape="rect" id="node6" href="$monster-status-setter_8cpp.html#ac81c0952258c31c0bb053742f5d63e0f" title="モンスターの加速状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes" alt="" coords="399,157,521,184"/>
+<area shape="rect" id="node7" href="$monster-status-setter_8cpp.html#a0f21d1420ce64b3a07b8d58396edbdfd" title="モンスターの無敵状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes" alt="" coords="388,208,532,235"/>
+<area shape="rect" id="node8" href="$monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="397,259,523,285"/>
+<area shape="rect" id="node10" href="$spells-hex_8cpp.html#a1fe803ed2313c7c276285c2803e83ed3" title=" " alt="" coords="399,2235,521,2261"/>
+<area shape="rect" id="node11" href="$buff-setter_8cpp.html#a0f33ce24a83a1573ead35a6ce0913b85" title="祝福の継続時間をセットする / Set &quot;blessed&quot;, notice observable changes" alt="" coords="595,512,687,539"/>
+<area shape="rect" id="node12" href="$mind-mirror-master_8cpp.html#acec9c009e234276fc239aff80321da24" title="一時的破片のオーラの継続時間をセットする / Set &quot;dustrobe&quot;, notice observable changes" alt="" coords="592,563,689,589"/>
+<area shape="rect" id="node13" href="$spells-craft_8cpp.html#ae508ac758e87085087294d74eee79577" title="一時的元素スレイの継続時間をセットする / Set a temporary elemental brand." alt="" coords="407,360,513,387"/>
+<area shape="rect" id="node14" href="$spells-craft_8cpp.html#a5a5576a116bfb66798891db92d7c5aa6" title="一時的元素免疫の継続時間をセットする / Set a temporary elemental brand." alt="" coords="401,411,519,437"/>
+<area shape="rect" id="node15" href="$buff-setter_8cpp.html#adba19dfd913dcf5feb9f6e0b09c9326d" title="加速の継続時間をセットする / Set &quot;fast&quot;, notice observable changes" alt="" coords="607,613,675,640"/>
+<area shape="rect" id="node16" href="$buff-setter_8cpp.html#ac03004c39e900ef70456ab128e303508" title="士気高揚の継続時間をセットする / Set &quot;hero&quot;, notice observable changes" alt="" coords="605,664,677,691"/>
+<area shape="rect" id="node17" href="$body-improvement_8cpp.html#adf21e33ab92a268526ac8b12df0bdf93" title="無傷球の継続時間をセットする / Set &quot;invuln&quot;, notice observable changes" alt="" coords="601,715,680,741"/>
+<area shape="rect" id="node18" href="$mind-force-trainer_8cpp.html#a7a46e1ffce4f8aa4b0818750fe6e4790" title="光速移動の継続時間をセットする / Set &quot;lightspeed&quot;, notice observable changes" alt="" coords="587,765,694,792"/>
+<area shape="rect" id="node19" href="$buff-setter_8cpp.html#aa0477bb92baf3702a88dbd2c86e52afe" title="魔法の鎧の継続時間をセットする / Set &quot;magicdef&quot;, notice observable changes" alt="" coords="591,816,690,843"/>
+<area shape="rect" id="node20" href="$buff-setter_8cpp.html#a93ff8d516629853e66fcca03f1cb4205" title="変身効果の継続時間と変身先をセットする / Set &quot;tim_mimic&quot;, and &quot;mimic_form&quot;, notice observable changes" alt="" coords="419,867,501,893"/>
+<area shape="rect" id="node21" href="$element-resistance_8cpp.html#ae8333840ce64c42c444857fdd00b4dd2" title="一時的火炎耐性の継続時間をセットする / Set &quot;oppose_fire&quot;, notice observable changes" alt="" coords="584,917,697,944"/>
+<area shape="rect" id="node22" href="$mind-mirror-master_8cpp.html#af3a765b1ff03bd22c2a5b8eec61710c1" title=" " alt="" coords="581,968,700,995"/>
+<area shape="rect" id="node23" href="$element-resistance_8cpp.html#acb07baa4e9331416f075d1dcb65c419b" title="一時的酸耐性の継続時間をセットする / Set &quot;oppose_acid&quot;, notice observable changes" alt="" coords="581,1019,701,1045"/>
+<area shape="rect" id="node24" href="$element-resistance_8cpp.html#a4aedfbfb30de8af7f62ac69c8bd30715" title="一時的冷気耐性の継続時間をセットする / Set &quot;oppose_cold&quot;, notice observable changes" alt="" coords="581,1069,701,1096"/>
+<area shape="rect" id="node25" href="$element-resistance_8cpp.html#a230aa74615595b7d62b452d78397c5b9" title="一時的電撃耐性の継続時間をセットする / Set &quot;oppose_elec&quot;, notice observable changes" alt="" coords="581,1120,701,1147"/>
+<area shape="rect" id="node26" href="$element-resistance_8cpp.html#a1931c2c7f031edea14439c6ca1f3be83" title="一時的毒耐性の継続時間をセットする / Set &quot;oppose_pois&quot;, notice observable changes" alt="" coords="581,1171,701,1197"/>
+<area shape="rect" id="node27" href="$body-improvement_8cpp.html#ab64052544885d04bf67cdfa0684eba2c" title="一時的壁抜けの継続時間をセットする / Set &quot;tim_pass_wall&quot;, notice observable changes" alt="" coords="589,1221,693,1248"/>
+<area shape="rect" id="node28" href="$body-improvement_8cpp.html#aa321170a88e8ba4b0c97178cfe994e33" title="対邪悪結界の継続時間をセットする / Set &quot;protevil&quot;, notice observable changes" alt="" coords="417,1272,503,1299"/>
+<area shape="rect" id="node29" href="$mind-magic-resistance_8cpp.html#a03606e56c1f6018342e1bea3e6eb0ed9" title="連奇術師の耐魔法防御 / 鏡使いの水鏡の盾 の継続時間をセットする / Set &quot;resist_magic&quot;, notice observable changes" alt="" coords="580,1323,701,1349"/>
+<area shape="rect" id="node30" href="$buff-setter_8cpp.html#ab1b21b8906921e646ee19865602c7ca6" title="狂戦士化の継続時間をセットする / Set &quot;shero&quot;, notice observable changes" alt="" coords="601,1373,680,1400"/>
+<area shape="rect" id="node31" href="$buff-setter_8cpp.html#a2e5079cffccadd1f26832a8cad9379d5" title="肌石化の継続時間をセットする / Set &quot;shield&quot;, notice observable changes" alt="" coords="600,1424,681,1451"/>
+<area shape="rect" id="node32" href="$bad-status-setter_8cpp.html#a0bc33a623b58388f917651422165fdb4" title="減速の継続時間をセットする / Set &quot;slow&quot;, notice observable changes" alt="" coords="604,1475,677,1501"/>
+<area shape="rect" id="node33" href="$sight-setter_8cpp.html#a35a114c478c4067cac46cbffb0a3b8da" title="時限ESPの継続時間をセットする / Set &quot;tim_esp&quot;, notice observable changes" alt="" coords="594,1525,687,1552"/>
+<area shape="rect" id="node34" href="$spells-crusade_8cpp.html#a8960bfab1176946a83807a76eac412b0" title="目には目をの残り時間をセットする / Set &quot;tim_eyeeye&quot;, notice observable changes" alt="" coords="583,1576,698,1603"/>
+<area shape="rect" id="node35" href="$sight-setter_8cpp.html#a18cc38340a86c2a369e20fb484223f2b" title="時限赤外線視力の継続時間をセットする / Set &quot;tim_infra&quot;, notice observable changes" alt="" coords="412,1627,508,1653"/>
+<area shape="rect" id="node36" href="$sight-setter_8cpp.html#a8eb8e86733011f183f60f19351e473f6" title="時限透明視の継続時間をセットする / Set &quot;tim_invis&quot;, notice observable changes" alt="" coords="411,1677,509,1704"/>
+<area shape="rect" id="node37" href="$temporary-resistance_8cpp.html#a6fb840d675242357f9a8435c3afffda8" title="一時的浮遊の継続時間をセットする / Set &quot;tim_levitation&quot;, notice observable changes" alt="" coords="399,1728,521,1755"/>
+<area shape="rect" id="node38" href="$body-improvement_8cpp.html#ab402f74c3fe2cb17caf5ea9ddf43c5dd" title="一時的反射の継続時間をセットする / Set &quot;tim_reflect&quot;, notice observable changes" alt="" coords="407,1779,513,1805"/>
+<area shape="rect" id="node39" href="$body-improvement_8cpp.html#a2fdac5bb151dee6f744a24b44bd35150" title="時限急回復の継続時間をセットする / Set &quot;tim_regen&quot;, notice observable changes" alt="" coords="408,1829,512,1856"/>
+<area shape="rect" id="node40" href="$temporary-resistance_8cpp.html#a9f75ea7d8ce87142587be5d2dc1365c8" title=" " alt="" coords="393,1880,527,1907"/>
+<area shape="rect" id="node41" href="$temporary-resistance_8cpp.html#a464371f022c272929abffbebfa1f900b" title=" " alt="" coords="399,1931,521,1957"/>
+<area shape="rect" id="node42" href="$spells-demon_8cpp.html#a7da6a688f3a5b4f5306415e1773eaee4" title="一時的火炎のオーラの継続時間をセットする / Set &quot;tim_sh_fire&quot;, notice observable changes" alt="" coords="405,1981,515,2008"/>
+<area shape="rect" id="node43" href="$mind-force-trainer_8cpp.html#a27e17941f7acadc7c4a81d312bb0c74f" title="一時的闘気のオーラの継続時間をセットする / Set &quot;tim_sh_touki&quot;, notice observable changes" alt="" coords="399,2032,521,2059"/>
+<area shape="rect" id="node44" href="$spells-crusade_8cpp.html#a9e9906d0d40b4da4ab0008b30493b43f" title="一時的聖なるのオーラの継続時間をセットする / Set &quot;tim_sh_holy&quot;, notice observable changes" alt="" coords="401,2083,519,2109"/>
+<area shape="rect" id="node45" href="$spells-song_8cpp.html#a54b6106afc868dceabbb6ccfe1669511" title="隠遁の歌の継続時間をセットする / Set &quot;tim_stealth&quot;, notice observable changes" alt="" coords="405,2133,515,2160"/>
+<area shape="rect" id="node46" href="$buff-setter_8cpp.html#a036b09158d78c04e7fbe74a5f4c6f7cb" title="オクレ兄さんの継続時間をセットする / Set &quot;tsuyoshi&quot;, notice observable changes" alt="" coords="412,2184,508,2211"/>
+</map>

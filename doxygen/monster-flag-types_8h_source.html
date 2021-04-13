@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/monster/monster-flag-types.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f68a7f142a463f095d22e67af9193b2d.html">monster</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">monster-flag-types.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="monster-flag-types_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bc">    3</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bc">MFLAG</a> {</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    <a class="code" href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bca5824b315fdbb0f42abfe1bb03f78c270">VIEW</a> = 0, <span class="comment">/* Monster is in line of sight */</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <a class="code" href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bca38fa19b0a5d0c15d7741d03bb59d29e7">LOS</a> = 1, <span class="comment">/* Monster is marked for project_all_los(caster_ptr, ) */</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <a class="code" href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bca3e30ce90c5b1d89ae09b7d4c73d8e172">ESP</a> = 2, <span class="comment">/* Monster is being sensed by ESP */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bca19fc538eb480c4d3637226e3f7dcfb2f">ETF</a> = 3, <span class="comment">/* Monster is entering the field. */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bcadb33f801ba44028afef6d9eaaf8b24ca">BORN</a> = 4, <span class="comment">/* Monster is still being born */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bcae21f9ac1b4d493d5a25b9dacd1df017f">PREVENT_MAGIC</a> = 5, <span class="comment">/* Monster is still being no-magic */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bcacbae3b137e8f8a96cf77c317c1bcfdf4">SANITY_BLAST</a> = 6, <span class="comment">/* Monster gives sanity blast effects to player */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="mind-elementalist_8cpp.html#adc7e877d6db7c880a3da6036861f1ab1a26a4b44a837bf97b972628509912b4a5">MAX</a>,</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;};</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192">   14</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192">MFLAG2</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192a28176e6d79e8413b033cb09671260bae">KAGE</a> = 0, <span class="comment">/* Monster is kage */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192a53216b630d1cdebf3c85acd6b836ad90">NOPET</a> = 1, <span class="comment">/* Cannot make monster pet */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192a7c336d8e04cc5da45bf4e45378bb2a5f">NOGENO</a> = 2, <span class="comment">/* Cannot genocide */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192ab69c39b54530b0c4b67395362fd19954">CHAMELEON</a> = 3, <span class="comment">/* Monster is chameleon */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192a345bacfdccd074f5af514f793c116607">NOFLOW</a> = 4, <span class="comment">/* Monster is in no_flow_by_smell mode */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192ac34fbad9a5e2a1d0c8f7cf8d226808b9">SHOW</a> = 5, <span class="comment">/* Monster is recently memorized */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192a2e3a1c682dc09f36610ab89f6535e5fe">MARK</a> = 6, <span class="comment">/* Monster is currently memorized */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192af6a34a956d1ce0a552bf4731b9f9d9c0">FRIENDLY</a> = 7, </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192ac52e47040347f6f55900e8318909b3c5">PET</a> = 8, </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192ad37bc685eebf3977e5d242630202adc5">CLONED</a> = 9, </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="mind-elementalist_8cpp.html#adc7e877d6db7c880a3da6036861f1ab1a26a4b44a837bf97b972628509912b4a5">MAX</a>,</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
+<div class="ttc" id="amind-elementalist_8cpp_html_adc7e877d6db7c880a3da6036861f1ab1a26a4b44a837bf97b972628509912b4a5"><div class="ttname"><a href="mind-elementalist_8cpp.html#adc7e877d6db7c880a3da6036861f1ab1a26a4b44a837bf97b972628509912b4a5">ElementSpells::MAX</a></div><div class="ttdeci">@ MAX</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_abee0e3b35ec91e2e2effd62ad8194192"><div class="ttname"><a href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192">MFLAG2</a></div><div class="ttdeci">MFLAG2</div><div class="ttdef"><b>Definition:</b> monster-flag-types.h:14</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_abee0e3b35ec91e2e2effd62ad8194192a28176e6d79e8413b033cb09671260bae"><div class="ttname"><a href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192a28176e6d79e8413b033cb09671260bae">MFLAG2::KAGE</a></div><div class="ttdeci">@ KAGE</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_abee0e3b35ec91e2e2effd62ad8194192a2e3a1c682dc09f36610ab89f6535e5fe"><div class="ttname"><a href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192a2e3a1c682dc09f36610ab89f6535e5fe">MFLAG2::MARK</a></div><div class="ttdeci">@ MARK</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_abee0e3b35ec91e2e2effd62ad8194192a345bacfdccd074f5af514f793c116607"><div class="ttname"><a href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192a345bacfdccd074f5af514f793c116607">MFLAG2::NOFLOW</a></div><div class="ttdeci">@ NOFLOW</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_abee0e3b35ec91e2e2effd62ad8194192a53216b630d1cdebf3c85acd6b836ad90"><div class="ttname"><a href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192a53216b630d1cdebf3c85acd6b836ad90">MFLAG2::NOPET</a></div><div class="ttdeci">@ NOPET</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_abee0e3b35ec91e2e2effd62ad8194192a7c336d8e04cc5da45bf4e45378bb2a5f"><div class="ttname"><a href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192a7c336d8e04cc5da45bf4e45378bb2a5f">MFLAG2::NOGENO</a></div><div class="ttdeci">@ NOGENO</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_abee0e3b35ec91e2e2effd62ad8194192ab69c39b54530b0c4b67395362fd19954"><div class="ttname"><a href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192ab69c39b54530b0c4b67395362fd19954">MFLAG2::CHAMELEON</a></div><div class="ttdeci">@ CHAMELEON</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_abee0e3b35ec91e2e2effd62ad8194192ac34fbad9a5e2a1d0c8f7cf8d226808b9"><div class="ttname"><a href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192ac34fbad9a5e2a1d0c8f7cf8d226808b9">MFLAG2::SHOW</a></div><div class="ttdeci">@ SHOW</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_abee0e3b35ec91e2e2effd62ad8194192ac52e47040347f6f55900e8318909b3c5"><div class="ttname"><a href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192ac52e47040347f6f55900e8318909b3c5">MFLAG2::PET</a></div><div class="ttdeci">@ PET</div><div class="ttdoc">ペットである / Pet</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_abee0e3b35ec91e2e2effd62ad8194192ad37bc685eebf3977e5d242630202adc5"><div class="ttname"><a href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192ad37bc685eebf3977e5d242630202adc5">MFLAG2::CLONED</a></div><div class="ttdeci">@ CLONED</div><div class="ttdoc">クローンである / Cloned</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_abee0e3b35ec91e2e2effd62ad8194192af6a34a956d1ce0a552bf4731b9f9d9c0"><div class="ttname"><a href="monster-flag-types_8h.html#abee0e3b35ec91e2e2effd62ad8194192af6a34a956d1ce0a552bf4731b9f9d9c0">MFLAG2::FRIENDLY</a></div><div class="ttdeci">@ FRIENDLY</div><div class="ttdoc">友好的である / Friendly</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_ad015bf19e83f95922799d2bf1029c3bc"><div class="ttname"><a href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bc">MFLAG</a></div><div class="ttdeci">MFLAG</div><div class="ttdef"><b>Definition:</b> monster-flag-types.h:3</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_ad015bf19e83f95922799d2bf1029c3bca19fc538eb480c4d3637226e3f7dcfb2f"><div class="ttname"><a href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bca19fc538eb480c4d3637226e3f7dcfb2f">MFLAG::ETF</a></div><div class="ttdeci">@ ETF</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_ad015bf19e83f95922799d2bf1029c3bca38fa19b0a5d0c15d7741d03bb59d29e7"><div class="ttname"><a href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bca38fa19b0a5d0c15d7741d03bb59d29e7">MFLAG::LOS</a></div><div class="ttdeci">@ LOS</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_ad015bf19e83f95922799d2bf1029c3bca3e30ce90c5b1d89ae09b7d4c73d8e172"><div class="ttname"><a href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bca3e30ce90c5b1d89ae09b7d4c73d8e172">MFLAG::ESP</a></div><div class="ttdeci">@ ESP</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_ad015bf19e83f95922799d2bf1029c3bca5824b315fdbb0f42abfe1bb03f78c270"><div class="ttname"><a href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bca5824b315fdbb0f42abfe1bb03f78c270">MFLAG::VIEW</a></div><div class="ttdeci">@ VIEW</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_ad015bf19e83f95922799d2bf1029c3bcacbae3b137e8f8a96cf77c317c1bcfdf4"><div class="ttname"><a href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bcacbae3b137e8f8a96cf77c317c1bcfdf4">MFLAG::SANITY_BLAST</a></div><div class="ttdeci">@ SANITY_BLAST</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_ad015bf19e83f95922799d2bf1029c3bcadb33f801ba44028afef6d9eaaf8b24ca"><div class="ttname"><a href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bcadb33f801ba44028afef6d9eaaf8b24ca">MFLAG::BORN</a></div><div class="ttdeci">@ BORN</div></div>
+<div class="ttc" id="amonster-flag-types_8h_html_ad015bf19e83f95922799d2bf1029c3bcae21f9ac1b4d493d5a25b9dacd1df017f"><div class="ttname"><a href="monster-flag-types_8h.html#ad015bf19e83f95922799d2bf1029c3bcae21f9ac1b4d493d5a25b9dacd1df017f">MFLAG::PREVENT_MAGIC</a></div><div class="ttdeci">@ PREVENT_MAGIC</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

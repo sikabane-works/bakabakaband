@@ -1,0 +1,700 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/spell-kind/spells-genocide.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_315ff05a33a3f1372a1d1cebc99757c1.html">spell-kind</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">spells-genocide.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="spells-genocide_8h_source.html">spell-kind/spells-genocide.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-redraw-types_8h_source.html">core/player-redraw-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stuff-handler_8h_source.html">core/stuff-handler.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="window-redrawer_8h_source.html">core/window-redrawer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quest_8h_source.html">dungeon/quest.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="map-screen-options_8h_source.html">game-option/map-screen-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="play-record-options_8h_source.html">game-option/play-record-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-options_8h_source.html">game-option/special-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cursor_8h_source.html">io/cursor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="write-diary_8h_source.html">io/write-diary.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-remover_8h_source.html">monster-floor/monster-remover.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags1_8h_source.html">monster-race/race-flags1.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags3_8h_source.html">monster-race/race-flags3.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags7_8h_source.html">monster-race/race-flags7.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-describer_8h_source.html">monster/monster-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-description-types_8h_source.html">monster/monster-description-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-flag-types_8h_source.html">monster/monster-flag-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-info_8h_source.html">monster/monster-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status-setter_8h_source.html">monster/monster-status-setter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status_8h_source.html">monster/monster-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="avatar_8h_source.html">player-info/avatar.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-damage_8h_source.html">player/player-damage.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+spells-genocide.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-genocide_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2spell-kind_2spells-genocide_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2spell-kind_2spells-genocide_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2spell-kind_2spells-genocide_8cpp">
+<area shape="rect" title=" " alt="" coords="1788,5,1976,61"/>
+<area shape="rect" href="spells-genocide_8h.html" title=" " alt="" coords="979,206,1162,233"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="1813,117,1952,143"/>
+<area shape="rect" href="player-redraw-types_8h.html" title=" " alt="" coords="3045,109,3173,151"/>
+<area shape="rect" href="stuff-handler_8h.html" title=" " alt="" coords="772,117,904,143"/>
+<area shape="rect" href="window-redrawer_8h.html" title=" " alt="" coords="1632,117,1789,143"/>
+<area shape="rect" href="quest_8h.html" title=" " alt="" coords="627,117,746,143"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="2390,377,2534,419"/>
+<area shape="rect" href="map-screen-options_8h.html" title=" " alt="" coords="1093,109,1258,151"/>
+<area shape="rect" href="play-record-options_8h.html" title=" " alt="" coords="1283,109,1444,151"/>
+<area shape="rect" href="special-options_8h.html" title=" " alt="" coords="1469,109,1608,151"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="1976,117,2055,143"/>
+<area shape="rect" href="cursor_8h.html" title=" " alt="" coords="68,117,150,143"/>
+<area shape="rect" href="write-diary_8h.html" title=" " alt="" coords="26,206,133,233"/>
+<area shape="rect" href="monster-remover_8h.html" title=" " alt="" coords="158,199,306,240"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="2658,109,2808,151"/>
+<area shape="rect" href="race-flags1_8h.html" title=" " alt="" coords="3197,117,3373,143"/>
+<area shape="rect" href="race-flags3_8h.html" title=" " alt="" coords="3397,117,3573,143"/>
+<area shape="rect" href="race-flags7_8h.html" title=" " alt="" coords="3597,117,3773,143"/>
+<area shape="rect" href="monster-describer_8h.html" title=" " alt="" coords="2247,206,2435,233"/>
+<area shape="rect" href="monster-description-types_8h.html" title=" " alt="" coords="3797,109,3984,151"/>
+<area shape="rect" href="monster-info_8h.html" title=" " alt="" coords="2460,206,2614,233"/>
+<area shape="rect" href="monster-status-setter_8h.html" title=" " alt="" coords="330,199,490,240"/>
+<area shape="rect" href="monster-status_8h.html" title=" " alt="" coords="1870,206,2041,233"/>
+<area shape="rect" href="avatar_8h.html" title=" " alt="" coords="824,206,954,233"/>
+<area shape="rect" href="player-damage_8h.html" title=" " alt="" coords="2065,206,2222,233"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="2832,117,3020,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="1186,206,1352,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1322,295,1451,322"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1481,385,1572,411"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1596,385,1686,411"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1710,385,1809,411"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="698,385,797,411"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="992,385,1092,411"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1116,385,1291,411"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1316,385,1457,411"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="821,385,968,411"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1311,467,1430,493"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="2058,467,2168,493"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="2094,288,2239,329"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="514,199,648,240"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="2652,377,2808,419"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="2150,377,2289,419"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="518,295,644,322"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="1681,206,1796,233"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="2820,199,2966,240"/>
+<area shape="rect" title=" " alt="" coords="2740,206,2796,233"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="2696,288,2856,329"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="3041,206,3220,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="3244,206,3395,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a92bd5e26c84fa2eb42514b87bc6f2632"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-genocide_8cpp.html#a92bd5e26c84fa2eb42514b87bc6f2632">genocide_aux</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, int power, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> player_cast, int dam_side, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> spell_name)</td></tr>
+<tr class="memdesc:a92bd5e26c84fa2eb42514b87bc6f2632"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターへの単体抹殺処理サブルーチン / Delete a non-unique/non-quest monster  <a href="spells-genocide_8cpp.html#a92bd5e26c84fa2eb42514b87bc6f2632">[詳解]</a><br /></td></tr>
+<tr class="separator:a92bd5e26c84fa2eb42514b87bc6f2632"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6c9224600da04c8ce3dc98bf986715e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-genocide_8cpp.html#af6c9224600da04c8ce3dc98bf986715e">symbol_genocide</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, int power, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> player_cast)</td></tr>
+<tr class="memdesc:af6c9224600da04c8ce3dc98bf986715e"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターへのシンボル抹殺処理ルーチン / Delete all non-unique/non-quest monsters of a given "type" from the level  <a href="spells-genocide_8cpp.html#af6c9224600da04c8ce3dc98bf986715e">[詳解]</a><br /></td></tr>
+<tr class="separator:af6c9224600da04c8ce3dc98bf986715e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdf758f4c6b51dbbf56cfe6cfc0fd36b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-genocide_8cpp.html#abdf758f4c6b51dbbf56cfe6cfc0fd36b">mass_genocide</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, int power, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> player_cast)</td></tr>
+<tr class="memdesc:abdf758f4c6b51dbbf56cfe6cfc0fd36b"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターへの周辺抹殺処理ルーチン / Delete all nearby (non-unique) monsters  <a href="spells-genocide_8cpp.html#abdf758f4c6b51dbbf56cfe6cfc0fd36b">[詳解]</a><br /></td></tr>
+<tr class="separator:abdf758f4c6b51dbbf56cfe6cfc0fd36b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a4d5f5f4362455d0f31424f73776804"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-genocide_8cpp.html#a8a4d5f5f4362455d0f31424f73776804">mass_genocide_undead</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, int power, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> player_cast)</td></tr>
+<tr class="memdesc:a8a4d5f5f4362455d0f31424f73776804"><td class="mdescLeft">&#160;</td><td class="mdescRight">アンデッド・モンスターへの周辺抹殺処理ルーチン / Delete all nearby (non-unique) undead  <a href="spells-genocide_8cpp.html#a8a4d5f5f4362455d0f31424f73776804">[詳解]</a><br /></td></tr>
+<tr class="separator:a8a4d5f5f4362455d0f31424f73776804"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a92bd5e26c84fa2eb42514b87bc6f2632"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92bd5e26c84fa2eb42514b87bc6f2632">&#9670;&nbsp;</a></span>genocide_aux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> genocide_aux </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>m_idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>power</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>player_cast</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dam_side</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>spell_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターへの単体抹殺処理サブルーチン / Delete a non-unique/non-quest monster </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m_idx</td><td>抹殺するモンスターID </td></tr>
+    <tr><td class="paramname">power</td><td>抹殺の威力 </td></tr>
+    <tr><td class="paramname">player_cast</td><td>プレイヤーの魔法によるものならば TRUE </td></tr>
+    <tr><td class="paramname">dam_side</td><td>プレイヤーへの負担ダメージ量(1d(dam_side)) </td></tr>
+    <tr><td class="paramname">spell_name</td><td>抹殺効果を起こした魔法の名前 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>効力があった場合TRUEを返す </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-genocide_8cpp_a92bd5e26c84fa2eb42514b87bc6f2632_cgraph.png" border="0" usemap="#aspells-genocide_8cpp_a92bd5e26c84fa2eb42514b87bc6f2632_cgraph" alt=""/></div>
+<map name="aspells-genocide_8cpp_a92bd5e26c84fa2eb42514b87bc6f2632_cgraph" id="aspells-genocide_8cpp_a92bd5e26c84fa2eb42514b87bc6f2632_cgraph">
+<area shape="rect" title="モンスターへの単体抹殺処理サブルーチン / Delete a non&#45;unique/non&#45;quest monster" alt="" coords="5,1453,108,1480"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="160,541,295,568"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="555,896,732,923"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="354,845,493,872"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="367,1656,479,1683"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="614,1504,673,1531"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="821,1681,911,1708"/>
+<area shape="rect" href="quest_8cpp.html#abab5512f0df1872d981afddd7ca8481f" title="新しく入ったダンジョンの階層に固定されているランダムクエストを探し出しIDを返す。" alt="" coords="993,1791,1148,1817"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="378,1352,469,1379"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="588,1124,699,1151"/>
+<area shape="rect" href="monster-info_8cpp.html#a310dca2e8b756213922ce91ffff3dbd0" title=" " alt="" coords="187,1200,267,1227"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="395,1099,452,1125"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="194,1555,261,1581"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="175,1048,279,1075"/>
+<area shape="rect" href="cursor_8cpp.html#a151487f34072b34d7043e0d994da71c5" title=" " alt="" coords="156,1656,299,1683"/>
+<area shape="rect" href="class_flag_group.html#a021f4c66b2af9456aa41200d81efee90" title="指定したフラグを指定した値にセットする" alt="" coords="173,1707,281,1733"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#aecb5672ce45dbe9124ea2e502352dffe" title="モンスターを敵に回す Makes the monster hostile towards the player" alt="" coords="185,1757,270,1784"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="193,1453,261,1480"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="186,2077,269,2104"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="385,2052,462,2079"/>
+<area shape="rect" href="floor-object_8cpp.html#af338285652093066df1fda01f9b4fed2" title="オブジェクトを削除する / Delete a dungeon object" alt="" coords="362,85,485,112"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="608,136,679,163"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ad491b75a9a598cb361c671e23737d1fb" title=" " alt="" coords="377,288,470,315"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="548,339,739,365"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="563,389,723,416"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="563,516,723,543"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="552,769,735,796"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="561,199,726,225"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="551,275,736,301"/>
+<area shape="rect" href="monster-info_8cpp.html#a3228fe93eae0423e4bea1d418088d3c3" title="モンスターの真の種族を返す / Extract monster race pointer of a monster&#39;s true form" alt="" coords="385,947,461,973"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ab59547e7afcd9ac0b20e21f7c1d029aa" title="モンスターの混乱状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CONFUSED]&quot;, notice observable changes" alt="" coords="347,592,500,619"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ac81c0952258c31c0bb053742f5d63e0f" title="モンスターの加速状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes" alt="" coords="362,643,485,669"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a0f21d1420ce64b3a07b8d58396edbdfd" title="モンスターの無敵状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes" alt="" coords="351,744,495,771"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a9e49c39d8a53ae6e809e8c3662c97411" title="モンスターの恐慌状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_MONFEAR]&quot;, notice observable changes" alt="" coords="350,693,497,720"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="360,491,487,517"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a04c7c898df8f01472c8979c7a08b0925" title="モンスターの朦朧状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_STUNNED]&quot;, notice observable changes" alt="" coords="350,541,497,568"/>
+<area shape="rect" href="floor-object_8cpp.html#a7018087455117fe19ab6cce1095c88a3" title="床上、モンスター所持でスタックされたアイテムを削除しスタックを補完する / Excise a dungeon object from any stacks" alt="" coords="580,35,707,61"/>
+<area shape="rect" href="hook-checker_8cpp.html#ac4cc92b3d4f6e42f4c5a1e729382ee6e" title=" " alt="" coords="787,9,945,36"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="598,85,689,112"/>
+<area shape="rect" href="monster-status_8cpp.html#af5149aae69ef6e936f6c691c691cd95a" title="モンスターの時限ステータスリストを追加する" alt="" coords="600,668,687,695"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#acd89fe746188ecd270865d3bd1a3a4ae" title="モンスターの時限ステータスリストを削除" alt="" coords="590,617,697,644"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="810,1900,922,1927"/>
+<area shape="rect" href="world_8cpp.html#a3da5b82e6bb95498402f78c954a628d0" title="現在の日数、時刻を返す / Extract day, hour, min" alt="" coords="568,1757,719,1784"/>
+<area shape="rect" href="write-diary_8cpp.html#a9dd20d3a7be882e5dcb9d8ebd74539e0" title="Return suffix of ordinal number" alt="" coords="576,1809,711,1850"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="591,1555,696,1581"/>
+<area shape="rect" href="write-diary_8cpp.html#a721a3148877a6d0a8936a10842591e2c" title="日記ファイルを開く" alt="" coords="589,1707,697,1733"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="583,1875,703,1901"/>
+<area shape="rect" href="write-diary_8cpp.html#a0bc11216e7a5445c14b3c0df826641bf" title="ペットに関する日記を追加する" alt="" coords="589,1656,698,1683"/>
+<area shape="rect" href="write-diary_8cpp.html#af2cab656963fc78e9b465c77c6353382" title="フロア情報を日記に追加する" alt="" coords="603,1605,683,1632"/>
+<area shape="rect" href="quest_8cpp.html#a5b6b24bb1f79322d67d0cc51368d3ad3" title="新しく入ったダンジョンの階層に固定されている一般のクエストを探し出しIDを返す。 / Hack – Check if a level is a &quot;quest&quot; level" alt="" coords="814,1605,918,1632"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-genocide_8cpp_a92bd5e26c84fa2eb42514b87bc6f2632_icgraph.png" border="0" usemap="#aspells-genocide_8cpp_a92bd5e26c84fa2eb42514b87bc6f2632_icgraph" alt=""/></div>
+<map name="aspells-genocide_8cpp_a92bd5e26c84fa2eb42514b87bc6f2632_icgraph" id="aspells-genocide_8cpp_a92bd5e26c84fa2eb42514b87bc6f2632_icgraph">
+<area shape="rect" title="モンスターへの単体抹殺処理サブルーチン / Delete a non&#45;unique/non&#45;quest monster" alt="" coords="619,126,721,153"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a8751848779b10883d6efeb0f2800010c" title="元素魔法の単体抹殺の効果を発動する" alt="" coords="400,60,571,101"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#a7ea75ee620127ae931a682d8f77079e4" title=" " alt="" coords="402,9,569,35"/>
+<area shape="rect" href="spells-genocide_8cpp.html#abdf758f4c6b51dbbf56cfe6cfc0fd36b" title="モンスターへの周辺抹殺処理ルーチン / Delete all nearby (non&#45;unique) monsters" alt="" coords="429,126,542,153"/>
+<area shape="rect" href="spells-genocide_8cpp.html#a8a4d5f5f4362455d0f31424f73776804" title="アンデッド・モンスターへの周辺抹殺処理ルーチン / Delete all nearby (non&#45;unique) undead" alt="" coords="404,245,567,271"/>
+<area shape="rect" href="spells-genocide_8cpp.html#af6c9224600da04c8ce3dc98bf986715e" title="モンスターへのシンボル抹殺処理ルーチン / Delete all non&#45;unique/non&#45;quest monsters of a given &quot;type&quot; from the level" alt="" coords="424,177,547,203"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,13,349,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="5,5,140,47"/>
+<area shape="rect" href="activation-genocide_8cpp.html#a9f6fe15c90f8bf01920df5496299cc9f" title=" " alt="" coords="188,71,352,98"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="215,122,325,149"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="233,173,307,199"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="209,223,331,250"/>
+<area shape="rect" href="realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="223,274,317,301"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abdf758f4c6b51dbbf56cfe6cfc0fd36b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdf758f4c6b51dbbf56cfe6cfc0fd36b">&#9670;&nbsp;</a></span>mass_genocide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> mass_genocide </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>power</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>player_cast</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターへの周辺抹殺処理ルーチン / Delete all nearby (non-unique) monsters </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">power</td><td>抹殺の威力 </td></tr>
+    <tr><td class="paramname">player_cast</td><td>プレイヤーの魔法によるものならば TRUE </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>効力があった場合TRUEを返す </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-genocide_8cpp_abdf758f4c6b51dbbf56cfe6cfc0fd36b_cgraph.png" border="0" usemap="#aspells-genocide_8cpp_abdf758f4c6b51dbbf56cfe6cfc0fd36b_cgraph" alt=""/></div>
+<map name="aspells-genocide_8cpp_abdf758f4c6b51dbbf56cfe6cfc0fd36b_cgraph" id="aspells-genocide_8cpp_abdf758f4c6b51dbbf56cfe6cfc0fd36b_cgraph">
+<area shape="rect" title="モンスターへの周辺抹殺処理ルーチン / Delete all nearby (non&#45;unique) monsters" alt="" coords="5,1668,119,1695"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="573,1617,653,1644"/>
+<area shape="rect" href="spells-genocide_8cpp.html#a92bd5e26c84fa2eb42514b87bc6f2632" title="モンスターへの単体抹殺処理サブルーチン / Delete a non&#45;unique/non&#45;quest monster" alt="" coords="175,1044,277,1071"/>
+<area shape="rect" href="quest_8cpp.html#abab5512f0df1872d981afddd7ca8481f" title="新しく入ったダンジョンの階層に固定されているランダムクエストを探し出しIDを返す。" alt="" coords="333,1643,488,1669"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="167,1744,285,1771"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="343,613,478,640"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="744,867,921,893"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="543,867,682,893"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="557,1424,669,1451"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="803,1145,862,1172"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="987,1541,1077,1568"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="567,1323,658,1349"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="777,1077,888,1104"/>
+<area shape="rect" href="monster-info_8cpp.html#a310dca2e8b756213922ce91ffff3dbd0" title=" " alt="" coords="371,1120,451,1147"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="584,1019,641,1045"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="377,309,444,336"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="359,1069,463,1096"/>
+<area shape="rect" href="cursor_8cpp.html#a151487f34072b34d7043e0d994da71c5" title=" " alt="" coords="339,411,482,437"/>
+<area shape="rect" href="class_flag_group.html#a021f4c66b2af9456aa41200d81efee90" title="指定したフラグを指定した値にセットする" alt="" coords="357,461,465,488"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#aecb5672ce45dbe9124ea2e502352dffe" title="モンスターを敵に回す Makes the monster hostile towards the player" alt="" coords="368,512,453,539"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="377,1424,445,1451"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="369,360,452,387"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="574,5,651,32"/>
+<area shape="rect" href="floor-object_8cpp.html#af338285652093066df1fda01f9b4fed2" title="オブジェクトを削除する / Delete a dungeon object" alt="" coords="551,56,674,83"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="797,81,868,108"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ad491b75a9a598cb361c671e23737d1fb" title=" " alt="" coords="566,309,659,336"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="737,183,928,209"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="753,309,913,336"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="753,436,913,463"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="741,537,924,564"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="750,639,915,665"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="740,740,925,767"/>
+<area shape="rect" href="monster-info_8cpp.html#a3228fe93eae0423e4bea1d418088d3c3" title="モンスターの真の種族を返す / Extract monster race pointer of a monster&#39;s true form" alt="" coords="575,917,651,944"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ab59547e7afcd9ac0b20e21f7c1d029aa" title="モンスターの混乱状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CONFUSED]&quot;, notice observable changes" alt="" coords="536,208,689,235"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ac81c0952258c31c0bb053742f5d63e0f" title="モンスターの加速状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes" alt="" coords="551,360,674,387"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a0f21d1420ce64b3a07b8d58396edbdfd" title="モンスターの無敵状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes" alt="" coords="541,563,685,589"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a9e49c39d8a53ae6e809e8c3662c97411" title="モンスターの恐慌状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_MONFEAR]&quot;, notice observable changes" alt="" coords="539,461,686,488"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="549,664,676,691"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a04c7c898df8f01472c8979c7a08b0925" title="モンスターの朦朧状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_STUNNED]&quot;, notice observable changes" alt="" coords="539,765,686,792"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="976,1305,1088,1332"/>
+<area shape="rect" href="world_8cpp.html#a3da5b82e6bb95498402f78c954a628d0" title="現在の日数、時刻を返す / Extract day, hour, min" alt="" coords="757,1247,908,1273"/>
+<area shape="rect" href="write-diary_8cpp.html#a9dd20d3a7be882e5dcb9d8ebd74539e0" title="Return suffix of ordinal number" alt="" coords="765,1298,900,1339"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="780,1567,885,1593"/>
+<area shape="rect" href="write-diary_8cpp.html#a721a3148877a6d0a8936a10842591e2c" title="日記ファイルを開く" alt="" coords="779,1465,887,1492"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="773,1415,893,1441"/>
+<area shape="rect" href="write-diary_8cpp.html#a0bc11216e7a5445c14b3c0df826641bf" title="ペットに関する日記を追加する" alt="" coords="778,1364,887,1391"/>
+<area shape="rect" href="write-diary_8cpp.html#af2cab656963fc78e9b465c77c6353382" title="フロア情報を日記に追加する" alt="" coords="793,1516,873,1543"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-genocide_8cpp_abdf758f4c6b51dbbf56cfe6cfc0fd36b_icgraph.png" border="0" usemap="#aspells-genocide_8cpp_abdf758f4c6b51dbbf56cfe6cfc0fd36b_icgraph" alt=""/></div>
+<map name="aspells-genocide_8cpp_abdf758f4c6b51dbbf56cfe6cfc0fd36b_icgraph" id="aspells-genocide_8cpp_abdf758f4c6b51dbbf56cfe6cfc0fd36b_icgraph">
+<area shape="rect" title="モンスターへの周辺抹殺処理ルーチン / Delete all nearby (non&#45;unique) monsters" alt="" coords="968,132,1081,159"/>
+<area shape="rect" href="activation-genocide_8cpp.html#a9f6fe15c90f8bf01920df5496299cc9f" title=" " alt="" coords="756,44,920,71"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="783,157,893,184"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="194,360,269,387"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="777,208,899,235"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="588,31,708,57"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="385,5,497,32"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="609,487,687,513"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,233,274,260"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,487,281,513"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,816,501,843"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,613,121,640"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,424,113,451"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,867,518,893"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,943,293,969"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,208,540,235"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,715,117,741"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,259,490,285"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,968,509,995"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,664,269,691"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,613,485,640"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,309,491,336"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,424,286,451"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,360,505,387"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,411,488,437"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,664,516,691"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8a4d5f5f4362455d0f31424f73776804"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a4d5f5f4362455d0f31424f73776804">&#9670;&nbsp;</a></span>mass_genocide_undead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> mass_genocide_undead </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>power</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>player_cast</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アンデッド・モンスターへの周辺抹殺処理ルーチン / Delete all nearby (non-unique) undead </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">power</td><td>抹殺の威力 </td></tr>
+    <tr><td class="paramname">player_cast</td><td>プレイヤーの魔法によるものならば TRUE </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>効力があった場合TRUEを返す </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-genocide_8cpp_a8a4d5f5f4362455d0f31424f73776804_cgraph.png" border="0" usemap="#aspells-genocide_8cpp_a8a4d5f5f4362455d0f31424f73776804_cgraph" alt=""/></div>
+<map name="aspells-genocide_8cpp_a8a4d5f5f4362455d0f31424f73776804_cgraph" id="aspells-genocide_8cpp_a8a4d5f5f4362455d0f31424f73776804_cgraph">
+<area shape="rect" title="アンデッド・モンスターへの周辺抹殺処理ルーチン / Delete all nearby (non&#45;unique) undead" alt="" coords="5,1668,168,1695"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="622,1617,702,1644"/>
+<area shape="rect" href="spells-genocide_8cpp.html#a92bd5e26c84fa2eb42514b87bc6f2632" title="モンスターへの単体抹殺処理サブルーチン / Delete a non&#45;unique/non&#45;quest monster" alt="" coords="224,1044,327,1071"/>
+<area shape="rect" href="quest_8cpp.html#abab5512f0df1872d981afddd7ca8481f" title="新しく入ったダンジョンの階層に固定されているランダムクエストを探し出しIDを返す。" alt="" coords="383,1643,537,1669"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="216,1744,335,1771"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="393,613,527,640"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="793,867,971,893"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="593,867,731,893"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="606,1424,718,1451"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="853,1145,911,1172"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="1036,1541,1127,1568"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="617,1323,707,1349"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="827,1077,937,1104"/>
+<area shape="rect" href="monster-info_8cpp.html#a310dca2e8b756213922ce91ffff3dbd0" title=" " alt="" coords="420,1120,500,1147"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="633,1019,691,1045"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="427,309,493,336"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="408,1069,512,1096"/>
+<area shape="rect" href="cursor_8cpp.html#a151487f34072b34d7043e0d994da71c5" title=" " alt="" coords="389,411,531,437"/>
+<area shape="rect" href="class_flag_group.html#a021f4c66b2af9456aa41200d81efee90" title="指定したフラグを指定した値にセットする" alt="" coords="406,461,514,488"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#aecb5672ce45dbe9124ea2e502352dffe" title="モンスターを敵に回す Makes the monster hostile towards the player" alt="" coords="417,512,503,539"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="426,1424,494,1451"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="419,360,501,387"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="623,5,701,32"/>
+<area shape="rect" href="floor-object_8cpp.html#af338285652093066df1fda01f9b4fed2" title="オブジェクトを削除する / Delete a dungeon object" alt="" coords="601,56,723,83"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="847,81,917,108"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ad491b75a9a598cb361c671e23737d1fb" title=" " alt="" coords="615,309,709,336"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="787,183,977,209"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="802,309,962,336"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="802,436,962,463"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="791,537,973,564"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="799,639,965,665"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="789,740,975,767"/>
+<area shape="rect" href="monster-info_8cpp.html#a3228fe93eae0423e4bea1d418088d3c3" title="モンスターの真の種族を返す / Extract monster race pointer of a monster&#39;s true form" alt="" coords="624,917,700,944"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ab59547e7afcd9ac0b20e21f7c1d029aa" title="モンスターの混乱状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CONFUSED]&quot;, notice observable changes" alt="" coords="585,208,739,235"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ac81c0952258c31c0bb053742f5d63e0f" title="モンスターの加速状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes" alt="" coords="601,360,723,387"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a0f21d1420ce64b3a07b8d58396edbdfd" title="モンスターの無敵状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes" alt="" coords="590,563,734,589"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a9e49c39d8a53ae6e809e8c3662c97411" title="モンスターの恐慌状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_MONFEAR]&quot;, notice observable changes" alt="" coords="589,461,735,488"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="599,664,725,691"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a04c7c898df8f01472c8979c7a08b0925" title="モンスターの朦朧状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_STUNNED]&quot;, notice observable changes" alt="" coords="589,765,735,792"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="1025,1305,1137,1332"/>
+<area shape="rect" href="world_8cpp.html#a3da5b82e6bb95498402f78c954a628d0" title="現在の日数、時刻を返す / Extract day, hour, min" alt="" coords="807,1247,957,1273"/>
+<area shape="rect" href="write-diary_8cpp.html#a9dd20d3a7be882e5dcb9d8ebd74539e0" title="Return suffix of ordinal number" alt="" coords="815,1298,949,1339"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="829,1567,935,1593"/>
+<area shape="rect" href="write-diary_8cpp.html#a721a3148877a6d0a8936a10842591e2c" title="日記ファイルを開く" alt="" coords="828,1465,936,1492"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="822,1415,942,1441"/>
+<area shape="rect" href="write-diary_8cpp.html#a0bc11216e7a5445c14b3c0df826641bf" title="ペットに関する日記を追加する" alt="" coords="827,1364,937,1391"/>
+<area shape="rect" href="write-diary_8cpp.html#af2cab656963fc78e9b465c77c6353382" title="フロア情報を日記に追加する" alt="" coords="842,1516,922,1543"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-genocide_8cpp_a8a4d5f5f4362455d0f31424f73776804_icgraph.png" border="0" usemap="#aspells-genocide_8cpp_a8a4d5f5f4362455d0f31424f73776804_icgraph" alt=""/></div>
+<map name="aspells-genocide_8cpp_a8a4d5f5f4362455d0f31424f73776804_icgraph" id="aspells-genocide_8cpp_a8a4d5f5f4362455d0f31424f73776804_icgraph">
+<area shape="rect" title="アンデッド・モンスターへの周辺抹殺処理ルーチン / Delete all nearby (non&#45;unique) undead" alt="" coords="855,474,1017,501"/>
+<area shape="rect" href="realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="713,474,807,501"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="588,474,665,501"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,81,274,107"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,449,281,475"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,525,501,551"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,271,121,298"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,145,113,171"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,575,518,602"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,651,293,678"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,727,540,754"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,347,117,374"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,778,490,805"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,677,509,703"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,221,269,247"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,271,485,298"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,829,491,855"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,145,286,171"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,119,505,146"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,474,488,501"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,879,516,906"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af6c9224600da04c8ce3dc98bf986715e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6c9224600da04c8ce3dc98bf986715e">&#9670;&nbsp;</a></span>symbol_genocide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> symbol_genocide </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>power</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>player_cast</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターへのシンボル抹殺処理ルーチン / Delete all non-unique/non-quest monsters of a given "type" from the level </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">power</td><td>抹殺の威力 </td></tr>
+    <tr><td class="paramname">player_cast</td><td>プレイヤーの魔法によるものならば TRUE </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>効力があった場合TRUEを返す </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-genocide_8cpp_af6c9224600da04c8ce3dc98bf986715e_cgraph.png" border="0" usemap="#aspells-genocide_8cpp_af6c9224600da04c8ce3dc98bf986715e_cgraph" alt=""/></div>
+<map name="aspells-genocide_8cpp_af6c9224600da04c8ce3dc98bf986715e_cgraph" id="aspells-genocide_8cpp_af6c9224600da04c8ce3dc98bf986715e_cgraph">
+<area shape="rect" title="モンスターへのシンボル抹殺処理ルーチン / Delete all non&#45;unique/non&#45;quest monsters of a given &quot;type&quot; from the level" alt="" coords="5,717,128,744"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="582,363,662,389"/>
+<area shape="rect" href="spells-genocide_8cpp.html#a92bd5e26c84fa2eb42514b87bc6f2632" title="モンスターへの単体抹殺処理サブルーチン / Delete a non&#45;unique/non&#45;quest monster" alt="" coords="184,1021,287,1048"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1145,363,1224,389"/>
+<area shape="rect" href="quest_8cpp.html#abab5512f0df1872d981afddd7ca8481f" title="新しく入ったダンジョンの階層に固定されているランダムクエストを探し出しIDを返す。" alt="" coords="343,2085,497,2112"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="1005,152,1077,179"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="176,1123,295,1149"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="353,1376,487,1403"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="753,1933,931,1960"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="553,1933,691,1960"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="566,413,678,440"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="813,667,871,693"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="996,413,1087,440"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="577,667,667,693"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="787,945,897,972"/>
+<area shape="rect" href="monster-info_8cpp.html#a310dca2e8b756213922ce91ffff3dbd0" title=" " alt="" coords="380,1021,460,1048"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="593,869,651,896"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="387,1427,453,1453"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="368,920,472,947"/>
+<area shape="rect" href="cursor_8cpp.html#a151487f34072b34d7043e0d994da71c5" title=" " alt="" coords="349,1477,491,1504"/>
+<area shape="rect" href="class_flag_group.html#a021f4c66b2af9456aa41200d81efee90" title="指定したフラグを指定した値にセットする" alt="" coords="366,1528,474,1555"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#aecb5672ce45dbe9124ea2e502352dffe" title="モンスターを敵に回す Makes the monster hostile towards the player" alt="" coords="377,1579,463,1605"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="386,553,454,580"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="379,2035,461,2061"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="583,2035,661,2061"/>
+<area shape="rect" href="floor-object_8cpp.html#af338285652093066df1fda01f9b4fed2" title="オブジェクトを削除する / Delete a dungeon object" alt="" coords="561,1528,683,1555"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="807,1503,877,1529"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ad491b75a9a598cb361c671e23737d1fb" title=" " alt="" coords="575,1325,669,1352"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="747,1249,937,1276"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="762,1604,922,1631"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="762,1705,922,1732"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="751,1807,933,1833"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="759,1148,925,1175"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="749,1401,935,1428"/>
+<area shape="rect" href="monster-info_8cpp.html#a3228fe93eae0423e4bea1d418088d3c3" title="モンスターの真の種族を返す / Extract monster race pointer of a monster&#39;s true form" alt="" coords="584,1072,660,1099"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ab59547e7afcd9ac0b20e21f7c1d029aa" title="モンスターの混乱状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CONFUSED]&quot;, notice observable changes" alt="" coords="545,1275,699,1301"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ac81c0952258c31c0bb053742f5d63e0f" title="モンスターの加速状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes" alt="" coords="561,1629,683,1656"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a0f21d1420ce64b3a07b8d58396edbdfd" title="モンスターの無敵状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes" alt="" coords="550,1832,694,1859"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a9e49c39d8a53ae6e809e8c3662c97411" title="モンスターの恐慌状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_MONFEAR]&quot;, notice observable changes" alt="" coords="549,1731,695,1757"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="559,1173,685,1200"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a04c7c898df8f01472c8979c7a08b0925" title="モンスターの朦朧状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_STUNNED]&quot;, notice observable changes" alt="" coords="549,1427,695,1453"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="985,257,1097,284"/>
+<area shape="rect" href="world_8cpp.html#a3da5b82e6bb95498402f78c954a628d0" title="現在の日数、時刻を返す / Extract day, hour, min" alt="" coords="767,312,917,339"/>
+<area shape="rect" href="write-diary_8cpp.html#a9dd20d3a7be882e5dcb9d8ebd74539e0" title="Return suffix of ordinal number" alt="" coords="775,145,909,186"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="789,464,895,491"/>
+<area shape="rect" href="write-diary_8cpp.html#a721a3148877a6d0a8936a10842591e2c" title="日記ファイルを開く" alt="" coords="788,413,896,440"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="782,363,902,389"/>
+<area shape="rect" href="write-diary_8cpp.html#a0bc11216e7a5445c14b3c0df826641bf" title="ペットに関する日記を追加する" alt="" coords="787,211,897,237"/>
+<area shape="rect" href="write-diary_8cpp.html#af2cab656963fc78e9b465c77c6353382" title="フロア情報を日記に追加する" alt="" coords="802,261,882,288"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-genocide_8cpp_af6c9224600da04c8ce3dc98bf986715e_icgraph.png" border="0" usemap="#aspells-genocide_8cpp_af6c9224600da04c8ce3dc98bf986715e_icgraph" alt=""/></div>
+<map name="aspells-genocide_8cpp_af6c9224600da04c8ce3dc98bf986715e_icgraph" id="aspells-genocide_8cpp_af6c9224600da04c8ce3dc98bf986715e_icgraph">
+<area shape="rect" title="モンスターへのシンボル抹殺処理ルーチン / Delete all non&#45;unique/non&#45;quest monsters of a given &quot;type&quot; from the level" alt="" coords="513,157,636,184"/>
+<area shape="rect" href="activation-genocide_8cpp.html#aff77b03351ad8c7d1ebad68bd47b61eb" title=" " alt="" coords="337,5,462,32"/>
+<area shape="rect" href="spells-summon_8cpp.html#ae25b9862f324f43e7bd22de4bba02963" title="「悪霊召喚」のランダムな効果を決定して処理する。" alt="" coords="333,56,465,83"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="171,81,280,108"/>
+<area shape="rect" href="spells-random_8cpp.html#a37a969b807fd2f1ce9399ed7851424c7" title="「ワンダー」のランダムな効果を決定して処理する。" alt="" coords="352,157,447,184"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="362,208,437,235"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="338,259,461,285"/>
+<area shape="rect" href="cmd-usestaff_8cpp.html#a4a284c2f2988d427dd6baac5fcf99fd6" title="杖の効果を発動する" alt="" coords="357,309,441,336"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="165,5,285,32"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="5,5,117,32"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="23,81,100,108"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時56分33秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

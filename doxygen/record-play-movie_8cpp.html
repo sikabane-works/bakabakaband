@@ -1,0 +1,1799 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/io/record-play-movie.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html">io</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">record-play-movie.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="record-play-movie_8h_source.html">io/record-play-movie.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-dump_8h_source.html">cmd-io/cmd-dump.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-draw_8h_source.html">cmd-visual/cmd-draw.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="files-util_8h_source.html">io/files-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inet_8h_source.html">io/inet.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="signal-handlers_8h_source.html">io/signal-handlers.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gameterm_8h_source.html">term/gameterm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-files_8h_source.html">util/angband-files.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="h-basic_8h_source.html">system/h-basic.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+record-play-movie.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2io_2record-play-movie_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2io_2record-play-movie_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2io_2record-play-movie_8cpp">
+<area shape="rect" title=" " alt="" coords="592,5,780,61"/>
+<area shape="rect" href="record-play-movie_8h.html" title=" " alt="" coords="1124,109,1272,136"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="345,333,468,360"/>
+<area shape="rect" href="cmd-dump_8h.html" title=" " alt="" coords="1296,109,1434,136"/>
+<area shape="rect" href="cmd-draw_8h.html" title=" " alt="" coords="70,109,225,136"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="249,109,388,136"/>
+<area shape="rect" href="files-util_8h.html" title=" " alt="" coords="412,109,502,136"/>
+<area shape="rect" href="inet_8h.html" title=" " alt="" coords="527,109,595,136"/>
+<area shape="rect" href="signal-handlers_8h.html" title=" " alt="" coords="619,109,754,136"/>
+<area shape="rect" href="gameterm_8h.html" title=" " alt="" coords="1458,109,1579,136"/>
+<area shape="rect" href="angband-files_8h.html" title=" " alt="" coords="778,109,909,136"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="934,109,1100,136"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="622,184,751,211"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="361,259,452,285"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="685,408,826,435"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="246,259,337,285"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="476,259,574,285"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="969,259,1068,285"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="122,259,222,285"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="599,259,774,285"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="798,259,945,285"/>
+<area shape="rect" href="spell-types_8h.html" title=" " alt="" coords="1455,184,1582,211"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a86225387eed551c8051f3d3642b67a3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a86225387eed551c8051f3d3642b67a3c">RINGBUF_SIZE</a>&#160;&#160;&#160;1024 * 1024</td></tr>
+<tr class="memdesc:a86225387eed551c8051f3d3642b67a3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">録画・再生機能  <a href="record-play-movie_8cpp.html#a86225387eed551c8051f3d3642b67a3c">[詳解]</a><br /></td></tr>
+<tr class="separator:a86225387eed551c8051f3d3642b67a3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a664d8f41affbf74d8cefb1ff4d791ba1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a664d8f41affbf74d8cefb1ff4d791ba1">FRESH_QUEUE_SIZE</a>&#160;&#160;&#160;4096</td></tr>
+<tr class="separator:a664d8f41affbf74d8cefb1ff4d791ba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef72fe86b7c60b1a86920496456edeac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#aef72fe86b7c60b1a86920496456edeac">WAIT</a>&#160;&#160;&#160;100 * 1000 /* ブラウズ側のウエイト(us単位) */</td></tr>
+<tr class="separator:aef72fe86b7c60b1a86920496456edeac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a22cd54ef97b948bcce8b681c7ef95f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a3a22cd54ef97b948bcce8b681c7ef95f">DEFAULT_DELAY</a>&#160;&#160;&#160;50</td></tr>
+<tr class="separator:a3a22cd54ef97b948bcce8b681c7ef95f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf152fa567a54073a800111f253446e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#acf152fa567a54073a800111f253446e7">RECVBUF_SIZE</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="separator:acf152fa567a54073a800111f253446e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a4070ea2e1dd995b3df8eaf7b2c74e65b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a4070ea2e1dd995b3df8eaf7b2c74e65b">disable_chuukei_server</a> (void)</td></tr>
+<tr class="separator:a4070ea2e1dd995b3df8eaf7b2c74e65b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5b83c77629f2dc83cd986645b0a89d2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#ad5b83c77629f2dc83cd986645b0a89d2">init_buffer</a> (void)</td></tr>
+<tr class="separator:ad5b83c77629f2dc83cd986645b0a89d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34fd506e8b822a3caafca798ab160c2b"><td class="memItemLeft" align="right" valign="top">static long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a34fd506e8b822a3caafca798ab160c2b">get_current_time</a> (void)</td></tr>
+<tr class="separator:a34fd506e8b822a3caafca798ab160c2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a309f294c67e5b6acbb74a760b3235f68"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a309f294c67e5b6acbb74a760b3235f68">insert_ringbuf</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="separator:a309f294c67e5b6acbb74a760b3235f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3847ac1a21e10246a64631746ba0b27"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#ae3847ac1a21e10246a64631746ba0b27">string_is_repeat</a> (char *str, int <a class="el" href="display-util_8cpp.html#afed088663f8704004425cdae2120b9b3">len</a>)</td></tr>
+<tr class="separator:ae3847ac1a21e10246a64631746ba0b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfbc1ff2a0035481e6f3367b15d38c4c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#acfbc1ff2a0035481e6f3367b15d38c4c">send_text_to_chuukei_server</a> (<a class="el" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> x, <a class="el" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> y, int <a class="el" href="display-util_8cpp.html#afed088663f8704004425cdae2120b9b3">len</a>, <a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> <a class="el" href="display-util_8cpp.html#afb52e720f5f0c483db5861f9e42e924e">col</a>, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str)</td></tr>
+<tr class="separator:acfbc1ff2a0035481e6f3367b15d38c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a5341330482fe83c44dbfbb5074016f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a5a5341330482fe83c44dbfbb5074016f">send_wipe_to_chuukei_server</a> (int x, int y, int <a class="el" href="display-util_8cpp.html#afed088663f8704004425cdae2120b9b3">len</a>)</td></tr>
+<tr class="separator:a5a5341330482fe83c44dbfbb5074016f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84194937e449ff47033cf8d4fa478391"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a84194937e449ff47033cf8d4fa478391">send_xtra_to_chuukei_server</a> (int n, int v)</td></tr>
+<tr class="separator:a84194937e449ff47033cf8d4fa478391"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5df16c35c2909386b79cb3b26be2e06"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#af5df16c35c2909386b79cb3b26be2e06">send_curs_to_chuukei_server</a> (int x, int y)</td></tr>
+<tr class="separator:af5df16c35c2909386b79cb3b26be2e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a562328082a7372dd65d1b2d82e8ad7eb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a562328082a7372dd65d1b2d82e8ad7eb">send_bigcurs_to_chuukei_server</a> (int x, int y)</td></tr>
+<tr class="separator:a562328082a7372dd65d1b2d82e8ad7eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8470c46a386bf14d6690f7d182a033cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a8470c46a386bf14d6690f7d182a033cb">prepare_chuukei_hooks</a> (void)</td></tr>
+<tr class="separator:a8470c46a386bf14d6690f7d182a033cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91b7333c3a95aa7a4b255d1d6f8e4afc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a91b7333c3a95aa7a4b255d1d6f8e4afc">prepare_movie_hooks</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="separator:a91b7333c3a95aa7a4b255d1d6f8e4afc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62a66ea20896d7f37983cfd89ce1007c"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a62a66ea20896d7f37983cfd89ce1007c">handle_movie_timestamp_data</a> (int timestamp)</td></tr>
+<tr class="separator:a62a66ea20896d7f37983cfd89ce1007c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a919e2ae1fa70ce0371b609c38c9889df"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a919e2ae1fa70ce0371b609c38c9889df">read_movie_file</a> (void)</td></tr>
+<tr class="separator:a919e2ae1fa70ce0371b609c38c9889df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6e65fe87260420bbcd437210413a110"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#ab6e65fe87260420bbcd437210413a110">win2unix</a> (int <a class="el" href="display-util_8cpp.html#afb52e720f5f0c483db5861f9e42e924e">col</a>, char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="separator:ab6e65fe87260420bbcd437210413a110"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56fb0cda2dad524bbde9e7326c0c6ce9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a56fb0cda2dad524bbde9e7326c0c6ce9">get_nextbuf</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="separator:a56fb0cda2dad524bbde9e7326c0c6ce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7a66b7ac6b53492fa88569055eb9199"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#ab7a66b7ac6b53492fa88569055eb9199">update_term_size</a> (int x, int y, int <a class="el" href="display-util_8cpp.html#afed088663f8704004425cdae2120b9b3">len</a>)</td></tr>
+<tr class="separator:ab7a66b7ac6b53492fa88569055eb9199"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0932f875b5188b11f2715644fcad77f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#ab0932f875b5188b11f2715644fcad77f">flush_ringbuf_client</a> (void)</td></tr>
+<tr class="separator:ab0932f875b5188b11f2715644fcad77f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbaa13e8bacd60766001eb3f4298003d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#afbaa13e8bacd60766001eb3f4298003d">prepare_browse_movie_without_path_build</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> filename)</td></tr>
+<tr class="separator:afbaa13e8bacd60766001eb3f4298003d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af327bea8b2122820aaa3b68863d964dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#af327bea8b2122820aaa3b68863d964dd">browse_movie</a> (void)</td></tr>
+<tr class="separator:af327bea8b2122820aaa3b68863d964dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b3422597b16b0101cc18d18a77fc1e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a7b3422597b16b0101cc18d18a77fc1e3">prepare_browse_movie_with_path_build</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> filename)</td></tr>
+<tr class="separator:a7b3422597b16b0101cc18d18a77fc1e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a5854fca939cda00dfc3d489dedd4a1e8"><td class="memItemLeft" align="right" valign="top">static long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a5854fca939cda00dfc3d489dedd4a1e8">epoch_time</a></td></tr>
+<tr class="separator:a5854fca939cda00dfc3d489dedd4a1e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fe66acaf898ba8fa7a67bee8412fb58"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a6fe66acaf898ba8fa7a67bee8412fb58">browse_delay</a></td></tr>
+<tr class="separator:a6fe66acaf898ba8fa7a67bee8412fb58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a504683b05083bfc7f07c6fd7f22136c2"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a504683b05083bfc7f07c6fd7f22136c2">movie_fd</a></td></tr>
+<tr class="separator:a504683b05083bfc7f07c6fd7f22136c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3abf0e1cfcd611e79e195d5cc5cc9432"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a3abf0e1cfcd611e79e195d5cc5cc9432">movie_mode</a></td></tr>
+<tr class="separator:a3abf0e1cfcd611e79e195d5cc5cc9432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04caede1e052c881a902c3c8b39a7865"><td class="memItemLeft" >struct {</td></tr>
+<tr class="memitem:ab2f1bc90771346425e5cb61000a2c5db"><td class="memItemLeft" >&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="record-play-movie_8cpp.html#a01d7c0cf4e4bc61d2d50c52cb84f4054">time</a> [<a class="el" href="record-play-movie_8cpp.html#a664d8f41affbf74d8cefb1ff4d791ba1">FRESH_QUEUE_SIZE</a>]</td></tr>
+<tr class="separator:ab2f1bc90771346425e5cb61000a2c5db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0121ff8d383dd05404093e258ef22f96"><td class="memItemLeft" >&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="record-play-movie_8cpp.html#a142a1b51e133e50c0a72b175958ac412">next</a></td></tr>
+<tr class="separator:a0121ff8d383dd05404093e258ef22f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae464cdfa9b02b217ea26a15cfdc74b08"><td class="memItemLeft" >&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="record-play-movie_8cpp.html#aff39d864a6594bc5f4a5e365282e00fe">tail</a></td></tr>
+<tr class="separator:ae464cdfa9b02b217ea26a15cfdc74b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04caede1e052c881a902c3c8b39a7865"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a04caede1e052c881a902c3c8b39a7865">fresh_queue</a></td></tr>
+<tr class="separator:a04caede1e052c881a902c3c8b39a7865"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0a9366f175f9898886dec7c50c11b41"><td class="memItemLeft" >struct {</td></tr>
+<tr class="memitem:aa493aef19d6a17305a6e020b8fdac718"><td class="memItemLeft" >&#160;&#160;&#160;char *&#160;&#160;&#160;<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a></td></tr>
+<tr class="separator:aa493aef19d6a17305a6e020b8fdac718"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c4bd5e2ac4661f041befa796ce89d79"><td class="memItemLeft" >&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="record-play-movie_8cpp.html#a3496f242546b044c11260cc76bde4b8b">wptr</a></td></tr>
+<tr class="separator:a2c4bd5e2ac4661f041befa796ce89d79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99c739a0158664369b4b624e6f45d896"><td class="memItemLeft" >&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="record-play-movie_8cpp.html#ab6cc3c9e173f41bc2ae9b4b723f641df">rptr</a></td></tr>
+<tr class="separator:a99c739a0158664369b4b624e6f45d896"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95971c39b5a85421b1599ea2cf76a731"><td class="memItemLeft" >&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="record-play-movie_8cpp.html#a7da79056532998c4e37002ac8d9728a6">inlen</a></td></tr>
+<tr class="separator:a95971c39b5a85421b1599ea2cf76a731"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0a9366f175f9898886dec7c50c11b41"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#ae0a9366f175f9898886dec7c50c11b41">ring</a></td></tr>
+<tr class="separator:ae0a9366f175f9898886dec7c50c11b41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af02c149b779a803f9efefb66d56c5802"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#af02c149b779a803f9efefb66d56c5802">old_xtra_hook</a> )(int n, int v)</td></tr>
+<tr class="separator:af02c149b779a803f9efefb66d56c5802"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82b22c442fbe65fae96cad8b4750c048"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a82b22c442fbe65fae96cad8b4750c048">old_curs_hook</a> )(int x, int y)</td></tr>
+<tr class="separator:a82b22c442fbe65fae96cad8b4750c048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d37a6a4f1f011c784f45ac0595be61b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a9d37a6a4f1f011c784f45ac0595be61b">old_bigcurs_hook</a> )(int x, int y)</td></tr>
+<tr class="separator:a9d37a6a4f1f011c784f45ac0595be61b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af90e236c61a3cae572a94eab6c1bdf2b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#af90e236c61a3cae572a94eab6c1bdf2b">old_wipe_hook</a> )(int x, int y, int n)</td></tr>
+<tr class="separator:af90e236c61a3cae572a94eab6c1bdf2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23336fb9ea687f6edb2c7bea50675fee"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record-play-movie_8cpp.html#a23336fb9ea687f6edb2c7bea50675fee">old_text_hook</a> )(int x, int y, int n, <a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> a, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> s)</td></tr>
+<tr class="separator:a23336fb9ea687f6edb2c7bea50675fee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="a3a22cd54ef97b948bcce8b681c7ef95f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a22cd54ef97b948bcce8b681c7ef95f">&#9670;&nbsp;</a></span>DEFAULT_DELAY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEFAULT_DELAY&#160;&#160;&#160;50</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a664d8f41affbf74d8cefb1ff4d791ba1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a664d8f41affbf74d8cefb1ff4d791ba1">&#9670;&nbsp;</a></span>FRESH_QUEUE_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FRESH_QUEUE_SIZE&#160;&#160;&#160;4096</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf152fa567a54073a800111f253446e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf152fa567a54073a800111f253446e7">&#9670;&nbsp;</a></span>RECVBUF_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RECVBUF_SIZE&#160;&#160;&#160;1024</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a86225387eed551c8051f3d3642b67a3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86225387eed551c8051f3d3642b67a3c">&#9670;&nbsp;</a></span>RINGBUF_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RINGBUF_SIZE&#160;&#160;&#160;1024 * 1024</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>録画・再生機能 </p>
+<dl class="section date"><dt>日付</dt><dd>2014/01/02 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>2014 Deskull rearranged comment for Doxygen. </dd></dl>
+
+</div>
+</div>
+<a id="aef72fe86b7c60b1a86920496456edeac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef72fe86b7c60b1a86920496456edeac">&#9670;&nbsp;</a></span>WAIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WAIT&#160;&#160;&#160;100 * 1000 /* ブラウズ側のウエイト(us単位) */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="af327bea8b2122820aaa3b68863d964dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af327bea8b2122820aaa3b68863d964dd">&#9670;&nbsp;</a></span>browse_movie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void browse_movie </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_af327bea8b2122820aaa3b68863d964dd_cgraph.png" border="0" usemap="#arecord-play-movie_8cpp_af327bea8b2122820aaa3b68863d964dd_cgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_af327bea8b2122820aaa3b68863d964dd_cgraph" id="arecord-play-movie_8cpp_af327bea8b2122820aaa3b68863d964dd_cgraph">
+<area shape="rect" title=" " alt="" coords="5,284,108,311"/>
+<area shape="rect" href="record-play-movie_8cpp.html#ab0932f875b5188b11f2715644fcad77f" title=" " alt="" coords="156,152,288,179"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="395,208,477,235"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a919e2ae1fa70ce0371b609c38c9889df" title=" " alt="" coords="167,284,277,311"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="181,411,263,437"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="397,512,475,539"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a34fd506e8b822a3caafca798ab160c2b" title=" " alt="" coords="584,208,703,235"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a56fb0cda2dad524bbde9e7326c0c6ce9" title=" " alt="" coords="391,5,481,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#ab7a66b7ac6b53492fa88569055eb9199" title=" " alt="" coords="373,56,499,83"/>
+<area shape="rect" href="record-play-movie_8cpp.html#ab6e65fe87260420bbcd437210413a110" title=" " alt="" coords="400,107,472,133"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="591,31,695,57"/>
+<area shape="rect" href="z-term_8cpp.html#af92e48ab7bfee170ad61dc2479ba2076" title=" " alt="" coords="598,81,689,108"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a62a66ea20896d7f37983cfd89ce1007c" title=" " alt="" coords="336,259,536,285"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a309f294c67e5b6acbb74a760b3235f68" title=" " alt="" coords="387,309,485,336"/>
+<area shape="rect" href="angband-files_8cpp.html#a1cec7f01bbb0339e030de218e231fcd4" title=" " alt="" coords="610,309,677,336"/>
+<area shape="rect" href="z-term_8cpp.html#a50f4ddf9b64ef43b1be95eb89e78c263" title=" " alt="" coords="365,461,507,488"/>
+<area shape="rect" href="z-term_8cpp.html#a5d7c0ea368bccad499b9bbdb4ffc53dc" title=" " alt="" coords="367,360,505,387"/>
+<area shape="rect" href="z-term_8cpp.html#a1b660c2d9fa25eb39e501811a0088cd2" title=" " alt="" coords="367,411,505,437"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_af327bea8b2122820aaa3b68863d964dd_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_af327bea8b2122820aaa3b68863d964dd_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_af327bea8b2122820aaa3b68863d964dd_icgraph" id="arecord-play-movie_8cpp_af327bea8b2122820aaa3b68863d964dd_icgraph">
+<area shape="rect" title=" " alt="" coords="237,5,340,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="104,5,189,32"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4070ea2e1dd995b3df8eaf7b2c74e65b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4070ea2e1dd995b3df8eaf7b2c74e65b">&#9670;&nbsp;</a></span>disable_chuukei_server()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void disable_chuukei_server </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a4070ea2e1dd995b3df8eaf7b2c74e65b_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a4070ea2e1dd995b3df8eaf7b2c74e65b_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a4070ea2e1dd995b3df8eaf7b2c74e65b_icgraph" id="arecord-play-movie_8cpp_a4070ea2e1dd995b3df8eaf7b2c74e65b_icgraph">
+<area shape="rect" title=" " alt="" coords="567,31,723,57"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a91b7333c3a95aa7a4b255d1d6f8e4afc" title=" " alt="" coords="372,31,519,57"/>
+<area shape="rect" href="cmd-diary_8cpp.html#aaf0ccc9b13b97fbe9af4a017265aa384" title="日記コマンド" alt="" coords="221,56,324,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab0932f875b5188b11f2715644fcad77f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0932f875b5188b11f2715644fcad77f">&#9670;&nbsp;</a></span>flush_ringbuf_client()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> flush_ringbuf_client </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_ab0932f875b5188b11f2715644fcad77f_cgraph.png" border="0" usemap="#arecord-play-movie_8cpp_ab0932f875b5188b11f2715644fcad77f_cgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_ab0932f875b5188b11f2715644fcad77f_cgraph" id="arecord-play-movie_8cpp_ab0932f875b5188b11f2715644fcad77f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,107,137,133"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a34fd506e8b822a3caafca798ab160c2b" title=" " alt="" coords="189,5,307,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a56fb0cda2dad524bbde9e7326c0c6ce9" title=" " alt="" coords="203,56,293,83"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="207,107,289,133"/>
+<area shape="rect" href="record-play-movie_8cpp.html#ab7a66b7ac6b53492fa88569055eb9199" title=" " alt="" coords="185,157,311,184"/>
+<area shape="rect" href="record-play-movie_8cpp.html#ab6e65fe87260420bbcd437210413a110" title=" " alt="" coords="212,208,284,235"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="359,132,463,159"/>
+<area shape="rect" href="z-term_8cpp.html#af92e48ab7bfee170ad61dc2479ba2076" title=" " alt="" coords="365,183,456,209"/>
+<area shape="rect" href="z-term_8cpp.html#a2dfb6aeed9bb8ede4ccfbdccd6ecef6c" title=" " alt="" coords="511,132,620,159"/>
+<area shape="rect" href="z-term_8cpp.html#ae3132bb5bbbde16a9b2e585f71085a6a" title=" " alt="" coords="516,183,615,209"/>
+<area shape="rect" href="z-term_8cpp.html#a9a4241914cfd1d385821031706c2d24e" title=" " alt="" coords="511,233,620,260"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_ab0932f875b5188b11f2715644fcad77f_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_ab0932f875b5188b11f2715644fcad77f_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_ab0932f875b5188b11f2715644fcad77f_icgraph" id="arecord-play-movie_8cpp_ab0932f875b5188b11f2715644fcad77f_icgraph">
+<area shape="rect" title=" " alt="" coords="388,5,520,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#af327bea8b2122820aaa3b68863d964dd" title=" " alt="" coords="237,5,340,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="104,5,189,32"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a34fd506e8b822a3caafca798ab160c2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34fd506e8b822a3caafca798ab160c2b">&#9670;&nbsp;</a></span>get_current_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static long get_current_time </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a34fd506e8b822a3caafca798ab160c2b_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a34fd506e8b822a3caafca798ab160c2b_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a34fd506e8b822a3caafca798ab160c2b_icgraph" id="arecord-play-movie_8cpp_a34fd506e8b822a3caafca798ab160c2b_icgraph">
+<area shape="rect" title=" " alt="" coords="788,56,907,83"/>
+<area shape="rect" href="record-play-movie_8cpp.html#ab0932f875b5188b11f2715644fcad77f" title=" " alt="" coords="347,5,479,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a62a66ea20896d7f37983cfd89ce1007c" title=" " alt="" coords="540,56,740,83"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a84194937e449ff47033cf8d4fa478391" title=" " alt="" coords="565,107,715,149"/>
+<area shape="rect" href="record-play-movie_8cpp.html#af327bea8b2122820aaa3b68863d964dd" title=" " alt="" coords="161,31,263,57"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="5,31,91,57"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a919e2ae1fa70ce0371b609c38c9889df" title=" " alt="" coords="357,56,468,83"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a8470c46a386bf14d6690f7d182a033cb" title=" " alt="" coords="333,115,492,141"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a91b7333c3a95aa7a4b255d1d6f8e4afc" title=" " alt="" coords="139,115,285,141"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a56fb0cda2dad524bbde9e7326c0c6ce9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56fb0cda2dad524bbde9e7326c0c6ce9">&#9670;&nbsp;</a></span>get_nextbuf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> get_nextbuf </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a56fb0cda2dad524bbde9e7326c0c6ce9_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a56fb0cda2dad524bbde9e7326c0c6ce9_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a56fb0cda2dad524bbde9e7326c0c6ce9_icgraph" id="arecord-play-movie_8cpp_a56fb0cda2dad524bbde9e7326c0c6ce9_icgraph">
+<area shape="rect" title=" " alt="" coords="469,5,559,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#ab0932f875b5188b11f2715644fcad77f" title=" " alt="" coords="289,5,421,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#af327bea8b2122820aaa3b68863d964dd" title=" " alt="" coords="139,5,241,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="5,5,91,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a62a66ea20896d7f37983cfd89ce1007c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62a66ea20896d7f37983cfd89ce1007c">&#9670;&nbsp;</a></span>handle_movie_timestamp_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int handle_movie_timestamp_data </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timestamp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a62a66ea20896d7f37983cfd89ce1007c_cgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a62a66ea20896d7f37983cfd89ce1007c_cgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a62a66ea20896d7f37983cfd89ce1007c_cgraph" id="arecord-play-movie_8cpp_a62a66ea20896d7f37983cfd89ce1007c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,205,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a34fd506e8b822a3caafca798ab160c2b" title=" " alt="" coords="253,5,372,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a62a66ea20896d7f37983cfd89ce1007c_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a62a66ea20896d7f37983cfd89ce1007c_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a62a66ea20896d7f37983cfd89ce1007c_icgraph" id="arecord-play-movie_8cpp_a62a66ea20896d7f37983cfd89ce1007c_icgraph">
+<area shape="rect" title=" " alt="" coords="448,5,648,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a919e2ae1fa70ce0371b609c38c9889df" title=" " alt="" coords="289,5,400,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#af327bea8b2122820aaa3b68863d964dd" title=" " alt="" coords="139,5,241,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="5,5,91,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad5b83c77629f2dc83cd986645b0a89d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5b83c77629f2dc83cd986645b0a89d2">&#9670;&nbsp;</a></span>init_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> init_buffer </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_ad5b83c77629f2dc83cd986645b0a89d2_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_ad5b83c77629f2dc83cd986645b0a89d2_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_ad5b83c77629f2dc83cd986645b0a89d2_icgraph" id="arecord-play-movie_8cpp_ad5b83c77629f2dc83cd986645b0a89d2_icgraph">
+<area shape="rect" title=" " alt="" coords="305,46,383,73"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a7b3422597b16b0101cc18d18a77fc1e3" title=" " alt="" coords="104,5,257,47"/>
+<area shape="rect" href="record-play-movie_8cpp.html#afbaa13e8bacd60766001eb3f4298003d" title=" " alt="" coords="104,71,257,112"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,56,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a309f294c67e5b6acbb74a760b3235f68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a309f294c67e5b6acbb74a760b3235f68">&#9670;&nbsp;</a></span>insert_ringbuf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> insert_ringbuf </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a309f294c67e5b6acbb74a760b3235f68_cgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a309f294c67e5b6acbb74a760b3235f68_cgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a309f294c67e5b6acbb74a760b3235f68_cgraph" id="arecord-play-movie_8cpp_a309f294c67e5b6acbb74a760b3235f68_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,104,32"/>
+<area shape="rect" href="angband-files_8cpp.html#a1cec7f01bbb0339e030de218e231fcd4" title=" " alt="" coords="152,5,219,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a309f294c67e5b6acbb74a760b3235f68_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a309f294c67e5b6acbb74a760b3235f68_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a309f294c67e5b6acbb74a760b3235f68_icgraph" id="arecord-play-movie_8cpp_a309f294c67e5b6acbb74a760b3235f68_icgraph">
+<area shape="rect" title=" " alt="" coords="624,163,723,189"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a919e2ae1fa70ce0371b609c38c9889df" title=" " alt="" coords="436,5,547,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a562328082a7372dd65d1b2d82e8ad7eb" title=" " alt="" coords="407,57,576,98"/>
+<area shape="rect" href="record-play-movie_8cpp.html#af5df16c35c2909386b79cb3b26be2e06" title=" " alt="" coords="415,122,567,163"/>
+<area shape="rect" href="record-play-movie_8cpp.html#acfbc1ff2a0035481e6f3367b15d38c4c" title=" " alt="" coords="417,187,566,229"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a5a5341330482fe83c44dbfbb5074016f" title=" " alt="" coords="415,253,568,294"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a84194937e449ff47033cf8d4fa478391" title=" " alt="" coords="417,318,566,359"/>
+<area shape="rect" href="record-play-movie_8cpp.html#af327bea8b2122820aaa3b68863d964dd" title=" " alt="" coords="228,5,331,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="36,5,121,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a8470c46a386bf14d6690f7d182a033cb" title=" " alt="" coords="200,195,359,221"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a91b7333c3a95aa7a4b255d1d6f8e4afc" title=" " alt="" coords="5,195,152,221"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7b3422597b16b0101cc18d18a77fc1e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b3422597b16b0101cc18d18a77fc1e3">&#9670;&nbsp;</a></span>prepare_browse_movie_with_path_build()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prepare_browse_movie_with_path_build </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a7b3422597b16b0101cc18d18a77fc1e3_cgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a7b3422597b16b0101cc18d18a77fc1e3_cgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a7b3422597b16b0101cc18d18a77fc1e3_cgraph" id="arecord-play-movie_8cpp_a7b3422597b16b0101cc18d18a77fc1e3_cgraph">
+<area shape="rect" title=" " alt="" coords="5,49,159,90"/>
+<area shape="rect" href="angband-files_8cpp.html#a0aaa636968ab7a5666dc2d7d779f82ca" title=" " alt="" coords="214,5,281,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#ad5b83c77629f2dc83cd986645b0a89d2" title=" " alt="" coords="209,56,286,83"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="207,107,288,133"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="336,5,423,32"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="471,31,533,57"/>
+<area shape="rect" href="z-util_8cpp.html#a7f7463689689266c2c7dd1c0b170c7a3" title=" " alt="" coords="353,107,406,133"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="354,157,405,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a7b3422597b16b0101cc18d18a77fc1e3_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a7b3422597b16b0101cc18d18a77fc1e3_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a7b3422597b16b0101cc18d18a77fc1e3_icgraph" id="arecord-play-movie_8cpp_a7b3422597b16b0101cc18d18a77fc1e3_icgraph">
+<area shape="rect" title=" " alt="" coords="104,5,257,47"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,56,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afbaa13e8bacd60766001eb3f4298003d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbaa13e8bacd60766001eb3f4298003d">&#9670;&nbsp;</a></span>prepare_browse_movie_without_path_build()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prepare_browse_movie_without_path_build </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_afbaa13e8bacd60766001eb3f4298003d_cgraph.png" border="0" usemap="#arecord-play-movie_8cpp_afbaa13e8bacd60766001eb3f4298003d_cgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_afbaa13e8bacd60766001eb3f4298003d_cgraph" id="arecord-play-movie_8cpp_afbaa13e8bacd60766001eb3f4298003d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,23,159,65"/>
+<area shape="rect" href="angband-files_8cpp.html#a0aaa636968ab7a5666dc2d7d779f82ca" title=" " alt="" coords="212,5,279,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#ad5b83c77629f2dc83cd986645b0a89d2" title=" " alt="" coords="207,56,284,83"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="332,5,419,32"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="467,5,529,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8470c46a386bf14d6690f7d182a033cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8470c46a386bf14d6690f7d182a033cb">&#9670;&nbsp;</a></span>prepare_chuukei_hooks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prepare_chuukei_hooks </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a8470c46a386bf14d6690f7d182a033cb_cgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a8470c46a386bf14d6690f7d182a033cb_cgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a8470c46a386bf14d6690f7d182a033cb_cgraph" id="arecord-play-movie_8cpp_a8470c46a386bf14d6690f7d182a033cb_cgraph">
+<area shape="rect" title=" " alt="" coords="5,143,164,170"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a562328082a7372dd65d1b2d82e8ad7eb" title=" " alt="" coords="212,5,381,47"/>
+<area shape="rect" href="record-play-movie_8cpp.html#af5df16c35c2909386b79cb3b26be2e06" title=" " alt="" coords="221,71,373,112"/>
+<area shape="rect" href="record-play-movie_8cpp.html#acfbc1ff2a0035481e6f3367b15d38c4c" title=" " alt="" coords="222,201,371,243"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a5a5341330482fe83c44dbfbb5074016f" title=" " alt="" coords="220,136,373,177"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a84194937e449ff47033cf8d4fa478391" title=" " alt="" coords="222,267,371,308"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a309f294c67e5b6acbb74a760b3235f68" title=" " alt="" coords="439,143,538,170"/>
+<area shape="rect" href="angband-files_8cpp.html#a1cec7f01bbb0339e030de218e231fcd4" title=" " alt="" coords="596,143,663,170"/>
+<area shape="rect" href="record-play-movie_8cpp.html#ae3847ac1a21e10246a64631746ba0b27" title=" " alt="" coords="431,209,546,235"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a34fd506e8b822a3caafca798ab160c2b" title=" " alt="" coords="429,274,548,301"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a8470c46a386bf14d6690f7d182a033cb_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a8470c46a386bf14d6690f7d182a033cb_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a8470c46a386bf14d6690f7d182a033cb_icgraph" id="arecord-play-movie_8cpp_a8470c46a386bf14d6690f7d182a033cb_icgraph">
+<area shape="rect" title=" " alt="" coords="567,31,725,57"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a91b7333c3a95aa7a4b255d1d6f8e4afc" title=" " alt="" coords="372,31,519,57"/>
+<area shape="rect" href="cmd-diary_8cpp.html#aaf0ccc9b13b97fbe9af4a017265aa384" title="日記コマンド" alt="" coords="221,56,324,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a91b7333c3a95aa7a4b255d1d6f8e4afc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91b7333c3a95aa7a4b255d1d6f8e4afc">&#9670;&nbsp;</a></span>prepare_movie_hooks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prepare_movie_hooks </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a91b7333c3a95aa7a4b255d1d6f8e4afc_cgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a91b7333c3a95aa7a4b255d1d6f8e4afc_cgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a91b7333c3a95aa7a4b255d1d6f8e4afc_cgraph" id="arecord-play-movie_8cpp_a91b7333c3a95aa7a4b255d1d6f8e4afc_cgraph">
+<area shape="rect" title=" " alt="" coords="5,639,152,665"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a4070ea2e1dd995b3df8eaf7b2c74e65b" title=" " alt="" coords="201,5,357,32"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ae19882bca0152830acd6b12e0c50eeb2" title="画面を再描画するコマンドのメインルーチン Hack – redraw the screen" alt="" coords="223,613,336,640"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="859,69,941,96"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="861,208,939,235"/>
+<area shape="rect" href="angband-files_8cpp.html#a5a186f4266676163ec63ff8413334fb1" title=" " alt="" coords="244,664,315,691"/>
+<area shape="rect" href="angband-files_8cpp.html#a4c4108d1fb8217d15fd233d2787ff91d" title=" " alt="" coords="244,715,315,741"/>
+<area shape="rect" href="angband-files_8cpp.html#a0aaa636968ab7a5666dc2d7d779f82ca" title=" " alt="" coords="246,765,313,792"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="240,461,319,488"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="239,816,320,843"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a8470c46a386bf14d6690f7d182a033cb" title=" " alt="" coords="200,1073,359,1100"/>
+<area shape="rect" href="racial-android_8cpp.html#a79575a6f85af0b14d59eff0efe003795" title=" " alt="" coords="430,512,553,539"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="855,132,945,159"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="442,765,541,792"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="861,816,939,843"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="667,867,749,893"/>
+<area shape="rect" href="z-term_8cpp.html#af383e8a6342c0f48b32f26496f109591" title=" " alt="" coords="445,867,538,893"/>
+<area shape="rect" href="world_8cpp.html#a722be27807c99a7258058b2baabee95e" title="実ゲームプレイ時間を更新する" alt="" coords="433,917,550,944"/>
+<area shape="rect" href="player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="645,157,771,184"/>
+<area shape="rect" href="object-value-calc_8cpp.html#a50a71dd33434317049f92e1f4a3f18dd" title="オブジェクトのフラグ類から価格を算出する / Return the value of the flags the object has..." alt="" coords="863,360,937,387"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="1034,360,1137,387"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="1008,487,1163,513"/>
+<area shape="rect" href="player-status_8cpp.html#a505fc5be2b6382dbcd3b279e2f2f2be5" title="プレイヤーが現在右手/左手に武器を持っているか判定する /" alt="" coords="640,563,776,589"/>
+<area shape="rect" href="object-generator_8cpp.html#aa666d0b3f34f2bebf82e976361f59f1c" title="オブジェクトを複製する Wipe an object clean." alt="" coords="662,613,754,640"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="840,563,960,589"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a3abbd26c216ede60fb3c6e8d519cc7c6" title="オブジェクトが武器や矢弾として使用できるかを返す / Check if an object is weapon (including bows and ammo) Rare weapons/aromor..." alt="" coords="624,664,792,691"/>
+<area shape="rect" href="object-value_8cpp.html#a4b43c1e5db9d62cc85dce89c00b8ff3a" title="オブジェクトの真の価格を算出する / Return the value of the flags the object has..." alt="" coords="647,411,769,437"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="663,715,753,741"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a562328082a7372dd65d1b2d82e8ad7eb" title=" " alt="" coords="407,969,576,1010"/>
+<area shape="rect" href="record-play-movie_8cpp.html#af5df16c35c2909386b79cb3b26be2e06" title=" " alt="" coords="415,1034,567,1075"/>
+<area shape="rect" href="record-play-movie_8cpp.html#acfbc1ff2a0035481e6f3367b15d38c4c" title=" " alt="" coords="417,1165,566,1206"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a5a5341330482fe83c44dbfbb5074016f" title=" " alt="" coords="415,1099,568,1141"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a84194937e449ff47033cf8d4fa478391" title=" " alt="" coords="417,1230,566,1271"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a309f294c67e5b6acbb74a760b3235f68" title=" " alt="" coords="659,1107,757,1133"/>
+<area shape="rect" href="record-play-movie_8cpp.html#ae3847ac1a21e10246a64631746ba0b27" title=" " alt="" coords="651,1172,765,1199"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a34fd506e8b822a3caafca798ab160c2b" title=" " alt="" coords="649,1237,767,1264"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a91b7333c3a95aa7a4b255d1d6f8e4afc_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a91b7333c3a95aa7a4b255d1d6f8e4afc_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a91b7333c3a95aa7a4b255d1d6f8e4afc_icgraph" id="arecord-play-movie_8cpp_a91b7333c3a95aa7a4b255d1d6f8e4afc_icgraph">
+<area shape="rect" title=" " alt="" coords="863,55,1009,82"/>
+<area shape="rect" href="cmd-diary_8cpp.html#aaf0ccc9b13b97fbe9af4a017265aa384" title="日記コマンド" alt="" coords="712,30,815,57"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,30,296,57"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,30,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,30,116,57"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,30,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a919e2ae1fa70ce0371b609c38c9889df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a919e2ae1fa70ce0371b609c38c9889df">&#9670;&nbsp;</a></span>read_movie_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int read_movie_file </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a919e2ae1fa70ce0371b609c38c9889df_cgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a919e2ae1fa70ce0371b609c38c9889df_cgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a919e2ae1fa70ce0371b609c38c9889df_cgraph" id="arecord-play-movie_8cpp_a919e2ae1fa70ce0371b609c38c9889df_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,116,57"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a62a66ea20896d7f37983cfd89ce1007c" title=" " alt="" coords="164,5,364,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a309f294c67e5b6acbb74a760b3235f68" title=" " alt="" coords="215,56,313,83"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a34fd506e8b822a3caafca798ab160c2b" title=" " alt="" coords="412,5,531,32"/>
+<area shape="rect" href="angband-files_8cpp.html#a1cec7f01bbb0339e030de218e231fcd4" title=" " alt="" coords="438,56,505,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a919e2ae1fa70ce0371b609c38c9889df_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a919e2ae1fa70ce0371b609c38c9889df_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a919e2ae1fa70ce0371b609c38c9889df_icgraph" id="arecord-play-movie_8cpp_a919e2ae1fa70ce0371b609c38c9889df_icgraph">
+<area shape="rect" title=" " alt="" coords="388,5,499,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#af327bea8b2122820aaa3b68863d964dd" title=" " alt="" coords="237,5,340,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="104,5,189,32"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a562328082a7372dd65d1b2d82e8ad7eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a562328082a7372dd65d1b2d82e8ad7eb">&#9670;&nbsp;</a></span>send_bigcurs_to_chuukei_server()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> send_bigcurs_to_chuukei_server </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a562328082a7372dd65d1b2d82e8ad7eb_cgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a562328082a7372dd65d1b2d82e8ad7eb_cgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a562328082a7372dd65d1b2d82e8ad7eb_cgraph" id="arecord-play-movie_8cpp_a562328082a7372dd65d1b2d82e8ad7eb_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,175,47"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a309f294c67e5b6acbb74a760b3235f68" title=" " alt="" coords="223,13,321,39"/>
+<area shape="rect" href="angband-files_8cpp.html#a1cec7f01bbb0339e030de218e231fcd4" title=" " alt="" coords="369,13,436,39"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a562328082a7372dd65d1b2d82e8ad7eb_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a562328082a7372dd65d1b2d82e8ad7eb_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a562328082a7372dd65d1b2d82e8ad7eb_icgraph" id="arecord-play-movie_8cpp_a562328082a7372dd65d1b2d82e8ad7eb_icgraph">
+<area shape="rect" title=" " alt="" coords="737,23,907,65"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a8470c46a386bf14d6690f7d182a033cb" title=" " alt="" coords="531,31,689,57"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a91b7333c3a95aa7a4b255d1d6f8e4afc" title=" " alt="" coords="336,31,483,57"/>
+<area shape="rect" href="cmd-diary_8cpp.html#aaf0ccc9b13b97fbe9af4a017265aa384" title="日記コマンド" alt="" coords="185,5,288,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af5df16c35c2909386b79cb3b26be2e06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5df16c35c2909386b79cb3b26be2e06">&#9670;&nbsp;</a></span>send_curs_to_chuukei_server()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> send_curs_to_chuukei_server </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_af5df16c35c2909386b79cb3b26be2e06_cgraph.png" border="0" usemap="#arecord-play-movie_8cpp_af5df16c35c2909386b79cb3b26be2e06_cgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_af5df16c35c2909386b79cb3b26be2e06_cgraph" id="arecord-play-movie_8cpp_af5df16c35c2909386b79cb3b26be2e06_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,157,47"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a309f294c67e5b6acbb74a760b3235f68" title=" " alt="" coords="205,13,304,39"/>
+<area shape="rect" href="angband-files_8cpp.html#a1cec7f01bbb0339e030de218e231fcd4" title=" " alt="" coords="352,13,419,39"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_af5df16c35c2909386b79cb3b26be2e06_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_af5df16c35c2909386b79cb3b26be2e06_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_af5df16c35c2909386b79cb3b26be2e06_icgraph" id="arecord-play-movie_8cpp_af5df16c35c2909386b79cb3b26be2e06_icgraph">
+<area shape="rect" title=" " alt="" coords="737,23,889,65"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a8470c46a386bf14d6690f7d182a033cb" title=" " alt="" coords="531,31,689,57"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a91b7333c3a95aa7a4b255d1d6f8e4afc" title=" " alt="" coords="336,31,483,57"/>
+<area shape="rect" href="cmd-diary_8cpp.html#aaf0ccc9b13b97fbe9af4a017265aa384" title="日記コマンド" alt="" coords="185,5,288,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acfbc1ff2a0035481e6f3367b15d38c4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfbc1ff2a0035481e6f3367b15d38c4c">&#9670;&nbsp;</a></span>send_text_to_chuukei_server()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> send_text_to_chuukei_server </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a>&#160;</td>
+          <td class="paramname"><em>col</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_acfbc1ff2a0035481e6f3367b15d38c4c_cgraph.png" border="0" usemap="#arecord-play-movie_8cpp_acfbc1ff2a0035481e6f3367b15d38c4c_cgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_acfbc1ff2a0035481e6f3367b15d38c4c_cgraph" id="arecord-play-movie_8cpp_acfbc1ff2a0035481e6f3367b15d38c4c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,23,155,65"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a309f294c67e5b6acbb74a760b3235f68" title=" " alt="" coords="211,5,309,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#ae3847ac1a21e10246a64631746ba0b27" title=" " alt="" coords="203,56,317,83"/>
+<area shape="rect" href="angband-files_8cpp.html#a1cec7f01bbb0339e030de218e231fcd4" title=" " alt="" coords="365,5,432,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_acfbc1ff2a0035481e6f3367b15d38c4c_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_acfbc1ff2a0035481e6f3367b15d38c4c_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_acfbc1ff2a0035481e6f3367b15d38c4c_icgraph" id="arecord-play-movie_8cpp_acfbc1ff2a0035481e6f3367b15d38c4c_icgraph">
+<area shape="rect" title=" " alt="" coords="737,23,887,65"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a8470c46a386bf14d6690f7d182a033cb" title=" " alt="" coords="531,31,689,57"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a91b7333c3a95aa7a4b255d1d6f8e4afc" title=" " alt="" coords="336,31,483,57"/>
+<area shape="rect" href="cmd-diary_8cpp.html#aaf0ccc9b13b97fbe9af4a017265aa384" title="日記コマンド" alt="" coords="185,5,288,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5a5341330482fe83c44dbfbb5074016f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a5341330482fe83c44dbfbb5074016f">&#9670;&nbsp;</a></span>send_wipe_to_chuukei_server()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> send_wipe_to_chuukei_server </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a5a5341330482fe83c44dbfbb5074016f_cgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a5a5341330482fe83c44dbfbb5074016f_cgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a5a5341330482fe83c44dbfbb5074016f_cgraph" id="arecord-play-movie_8cpp_a5a5341330482fe83c44dbfbb5074016f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,159,47"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a309f294c67e5b6acbb74a760b3235f68" title=" " alt="" coords="207,13,305,39"/>
+<area shape="rect" href="angband-files_8cpp.html#a1cec7f01bbb0339e030de218e231fcd4" title=" " alt="" coords="353,13,420,39"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a5a5341330482fe83c44dbfbb5074016f_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a5a5341330482fe83c44dbfbb5074016f_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a5a5341330482fe83c44dbfbb5074016f_icgraph" id="arecord-play-movie_8cpp_a5a5341330482fe83c44dbfbb5074016f_icgraph">
+<area shape="rect" title=" " alt="" coords="737,23,891,65"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a8470c46a386bf14d6690f7d182a033cb" title=" " alt="" coords="531,31,689,57"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a91b7333c3a95aa7a4b255d1d6f8e4afc" title=" " alt="" coords="336,31,483,57"/>
+<area shape="rect" href="cmd-diary_8cpp.html#aaf0ccc9b13b97fbe9af4a017265aa384" title="日記コマンド" alt="" coords="185,5,288,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a84194937e449ff47033cf8d4fa478391"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84194937e449ff47033cf8d4fa478391">&#9670;&nbsp;</a></span>send_xtra_to_chuukei_server()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> send_xtra_to_chuukei_server </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a84194937e449ff47033cf8d4fa478391_cgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a84194937e449ff47033cf8d4fa478391_cgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a84194937e449ff47033cf8d4fa478391_cgraph" id="arecord-play-movie_8cpp_a84194937e449ff47033cf8d4fa478391_cgraph">
+<area shape="rect" title=" " alt="" coords="5,23,155,65"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a34fd506e8b822a3caafca798ab160c2b" title=" " alt="" coords="203,5,321,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a309f294c67e5b6acbb74a760b3235f68" title=" " alt="" coords="213,56,311,83"/>
+<area shape="rect" href="angband-files_8cpp.html#a1cec7f01bbb0339e030de218e231fcd4" title=" " alt="" coords="369,56,436,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_a84194937e449ff47033cf8d4fa478391_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_a84194937e449ff47033cf8d4fa478391_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_a84194937e449ff47033cf8d4fa478391_icgraph" id="arecord-play-movie_8cpp_a84194937e449ff47033cf8d4fa478391_icgraph">
+<area shape="rect" title=" " alt="" coords="737,23,887,65"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a8470c46a386bf14d6690f7d182a033cb" title=" " alt="" coords="531,31,689,57"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a91b7333c3a95aa7a4b255d1d6f8e4afc" title=" " alt="" coords="336,31,483,57"/>
+<area shape="rect" href="cmd-diary_8cpp.html#aaf0ccc9b13b97fbe9af4a017265aa384" title="日記コマンド" alt="" coords="185,5,288,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae3847ac1a21e10246a64631746ba0b27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3847ac1a21e10246a64631746ba0b27">&#9670;&nbsp;</a></span>string_is_repeat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> string_is_repeat </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_ae3847ac1a21e10246a64631746ba0b27_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_ae3847ac1a21e10246a64631746ba0b27_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_ae3847ac1a21e10246a64631746ba0b27_icgraph" id="arecord-play-movie_8cpp_ae3847ac1a21e10246a64631746ba0b27_icgraph">
+<area shape="rect" title=" " alt="" coords="604,13,719,39"/>
+<area shape="rect" href="record-play-movie_8cpp.html#acfbc1ff2a0035481e6f3367b15d38c4c" title=" " alt="" coords="407,5,556,47"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a8470c46a386bf14d6690f7d182a033cb" title=" " alt="" coords="200,13,359,39"/>
+<area shape="rect" href="record-play-movie_8cpp.html#a91b7333c3a95aa7a4b255d1d6f8e4afc" title=" " alt="" coords="5,13,152,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab7a66b7ac6b53492fa88569055eb9199"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7a66b7ac6b53492fa88569055eb9199">&#9670;&nbsp;</a></span>update_term_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void update_term_size </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_ab7a66b7ac6b53492fa88569055eb9199_cgraph.png" border="0" usemap="#arecord-play-movie_8cpp_ab7a66b7ac6b53492fa88569055eb9199_cgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_ab7a66b7ac6b53492fa88569055eb9199_cgraph" id="arecord-play-movie_8cpp_ab7a66b7ac6b53492fa88569055eb9199_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,131,57"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="179,5,283,32"/>
+<area shape="rect" href="z-term_8cpp.html#af92e48ab7bfee170ad61dc2479ba2076" title=" " alt="" coords="185,56,276,83"/>
+<area shape="rect" href="z-term_8cpp.html#a2dfb6aeed9bb8ede4ccfbdccd6ecef6c" title=" " alt="" coords="331,5,440,32"/>
+<area shape="rect" href="z-term_8cpp.html#ae3132bb5bbbde16a9b2e585f71085a6a" title=" " alt="" coords="336,56,435,83"/>
+<area shape="rect" href="z-term_8cpp.html#a9a4241914cfd1d385821031706c2d24e" title=" " alt="" coords="331,107,440,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_ab7a66b7ac6b53492fa88569055eb9199_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_ab7a66b7ac6b53492fa88569055eb9199_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_ab7a66b7ac6b53492fa88569055eb9199_icgraph" id="arecord-play-movie_8cpp_ab7a66b7ac6b53492fa88569055eb9199_icgraph">
+<area shape="rect" title=" " alt="" coords="469,5,595,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#ab0932f875b5188b11f2715644fcad77f" title=" " alt="" coords="289,5,421,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#af327bea8b2122820aaa3b68863d964dd" title=" " alt="" coords="139,5,241,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="5,5,91,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab6e65fe87260420bbcd437210413a110"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6e65fe87260420bbcd437210413a110">&#9670;&nbsp;</a></span>win2unix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void win2unix </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>col</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="record-play-movie_8cpp_ab6e65fe87260420bbcd437210413a110_icgraph.png" border="0" usemap="#arecord-play-movie_8cpp_ab6e65fe87260420bbcd437210413a110_icgraph" alt=""/></div>
+<map name="arecord-play-movie_8cpp_ab6e65fe87260420bbcd437210413a110_icgraph" id="arecord-play-movie_8cpp_ab6e65fe87260420bbcd437210413a110_icgraph">
+<area shape="rect" title=" " alt="" coords="469,5,541,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#ab0932f875b5188b11f2715644fcad77f" title=" " alt="" coords="289,5,421,32"/>
+<area shape="rect" href="record-play-movie_8cpp.html#af327bea8b2122820aaa3b68863d964dd" title=" " alt="" coords="139,5,241,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="5,5,91,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a6fe66acaf898ba8fa7a67bee8412fb58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fe66acaf898ba8fa7a67bee8412fb58">&#9670;&nbsp;</a></span>browse_delay</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int browse_delay</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1fe855c208bc17a51a4d34fefdb2d5b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fe855c208bc17a51a4d34fefdb2d5b1">&#9670;&nbsp;</a></span>buf</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* buf</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5854fca939cda00dfc3d489dedd4a1e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5854fca939cda00dfc3d489dedd4a1e8">&#9670;&nbsp;</a></span>epoch_time</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long epoch_time</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a04caede1e052c881a902c3c8b39a7865"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04caede1e052c881a902c3c8b39a7865">&#9670;&nbsp;</a></span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct { ... }  fresh_queue</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7da79056532998c4e37002ac8d9728a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7da79056532998c4e37002ac8d9728a6">&#9670;&nbsp;</a></span>inlen</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int inlen</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a504683b05083bfc7f07c6fd7f22136c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a504683b05083bfc7f07c6fd7f22136c2">&#9670;&nbsp;</a></span>movie_fd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int movie_fd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3abf0e1cfcd611e79e195d5cc5cc9432"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3abf0e1cfcd611e79e195d5cc5cc9432">&#9670;&nbsp;</a></span>movie_mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int movie_mode</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a142a1b51e133e50c0a72b175958ac412"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a142a1b51e133e50c0a72b175958ac412">&#9670;&nbsp;</a></span>next</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int next</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d37a6a4f1f011c784f45ac0595be61b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d37a6a4f1f011c784f45ac0595be61b">&#9670;&nbsp;</a></span>old_bigcurs_hook</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>(* old_bigcurs_hook) (int x, int y) </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a82b22c442fbe65fae96cad8b4750c048"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82b22c442fbe65fae96cad8b4750c048">&#9670;&nbsp;</a></span>old_curs_hook</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>(* old_curs_hook) (int x, int y) </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23336fb9ea687f6edb2c7bea50675fee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23336fb9ea687f6edb2c7bea50675fee">&#9670;&nbsp;</a></span>old_text_hook</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>(* old_text_hook) (int x, int y, int n, <a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> a, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> s) </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a>&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af90e236c61a3cae572a94eab6c1bdf2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af90e236c61a3cae572a94eab6c1bdf2b">&#9670;&nbsp;</a></span>old_wipe_hook</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>(* old_wipe_hook) (int x, int y, int n) </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af02c149b779a803f9efefb66d56c5802"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af02c149b779a803f9efefb66d56c5802">&#9670;&nbsp;</a></span>old_xtra_hook</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>(* old_xtra_hook) (int n, int v) </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae0a9366f175f9898886dec7c50c11b41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0a9366f175f9898886dec7c50c11b41">&#9670;&nbsp;</a></span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct { ... }  ring</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab6cc3c9e173f41bc2ae9b4b723f641df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6cc3c9e173f41bc2ae9b4b723f641df">&#9670;&nbsp;</a></span>rptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aff39d864a6594bc5f4a5e365282e00fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff39d864a6594bc5f4a5e365282e00fe">&#9670;&nbsp;</a></span>tail</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tail</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a01d7c0cf4e4bc61d2d50c52cb84f4054"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01d7c0cf4e4bc61d2d50c52cb84f4054">&#9670;&nbsp;</a></span>time</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int time[<a class="el" href="record-play-movie_8cpp.html#a664d8f41affbf74d8cefb1ff4d791ba1">FRESH_QUEUE_SIZE</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3496f242546b044c11260cc76bde4b8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3496f242546b044c11260cc76bde4b8b">&#9670;&nbsp;</a></span>wptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分33秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

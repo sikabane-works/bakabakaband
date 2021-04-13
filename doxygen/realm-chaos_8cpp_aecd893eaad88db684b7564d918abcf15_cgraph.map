@@ -1,0 +1,52 @@
+<map id="do_chaos_spell" name="do_chaos_spell">
+<area shape="rect" id="node1" title="カオス領域魔法の各処理を行う" alt="" coords="5,1364,117,1391"/>
+<area shape="rect" id="node2" href="$spells-diceroll_8cpp.html#aba99310cc53a1d33fb596c7499b6b24a" title="一部ボルト魔法のビーム化確率を算出する / Prepare standard probability to become beam for fire_bolt_or_beam()" alt="" coords="367,1339,469,1365"/>
+<area shape="rect" id="node3" href="$spells-object_8cpp.html#a606c388ae9ec39706af972b765edadbe" title="武器へのエゴ付加処理 / Brand the current weapon" alt="" coords="365,325,471,352"/>
+<area shape="rect" id="node14" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="942,1085,1021,1112"/>
+<area shape="rect" id="node17" href="$spells-random_8cpp.html#a030dd637743b27f0e319a9423a46715a" title="ダイス目により様々な効果を及ぼす魔法の処理" alt="" coords="195,781,279,808"/>
+<area shape="rect" id="node18" href="$spells-launcher_8cpp.html#a9c5b6430a190c4d961f6017a483fdcf2" title="ボール系スペルの発動 / Cast a ball spell" alt="" coords="385,832,451,859"/>
+<area shape="rect" id="node19" href="$effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="571,731,632,757"/>
+<area shape="rect" id="node20" href="$spells-launcher_8cpp.html#a668ad35122f82691e97074533dbc8b5c" title="ビーム系スペルの発動 / Cast a beam spell." alt="" coords="562,883,641,909"/>
+<area shape="rect" id="node21" href="$target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="373,528,463,555"/>
+<area shape="rect" id="node22" href="$spells-chaos_8cpp.html#a207154409a52e3ce87987b79eec6c59b" title="虚無招来処理 /" alt="" coords="189,1187,285,1213"/>
+<area shape="rect" id="node24" href="$spells-floor_8cpp.html#aff6b2287b85d21769fa6b05e3df35eaf" title="*破壊*処理を行う / The spell of destruction" alt="" coords="369,1288,467,1315"/>
+<area shape="rect" id="node27" href="$z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="572,2200,631,2227"/>
+<area shape="rect" id="node29" href="$spells-chaos_8cpp.html#af16bb565fa9396a13ad62570b7d0344f" title="カオス魔法「流星群」/トランプ魔法「隕石のカード」の処理としてプレイヤーを中心に隕石落下処理を10+1d10回繰り返す。 / Drop 10+1d10 meteor ball at random pla..." alt="" coords="189,579,284,605"/>
+<area shape="rect" id="node30" href="$spells-summon_8cpp.html#a0b96271dbb96d4458f4ee08778c11d29" title=" " alt="" coords="723,2048,873,2075"/>
+<area shape="rect" id="node31" href="$spells-random_8cpp.html#a37a969b807fd2f1ce9399ed7851424c7" title="「ワンダー」のランダムな効果を決定して処理する。" alt="" coords="189,1389,284,1416"/>
+<area shape="rect" id="node33" href="$z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="386,1795,450,1821"/>
+<area shape="rect" id="node34" href="$spells-launcher_8cpp.html#a1e7a3734d8ba41c7cc45621f4917a99b" title="確率に応じたボルト系/ビーム系スペルの発動 / Cast a bolt spell, or rarely, a beam spell." alt="" coords="356,984,480,1011"/>
+<area shape="rect" id="node35" href="$spells-status_8cpp.html#a7d03a8fb9016f6481a5402da0d886070" title="チェンジモンスター処理" alt="" coords="368,1693,468,1720"/>
+<area shape="rect" id="node36" href="$spells-neighbor_8cpp.html#af6d0cc0cfbba75815d7b4caa7aec3294" title="ドア破壊処理(プレイヤー中心に周囲1マス)" alt="" coords="165,629,308,656"/>
+<area shape="rect" id="node37" href="$shape-changer_8cpp.html#af84e97990b1c8085f7c334b2b4b13f42" title=" " alt="" coords="189,1567,284,1593"/>
+<area shape="rect" id="node38" href="$spells-launcher_8cpp.html#ad3fd4374e8d9d14d1aa2fedc15be7694" title="ロケット系スペルの発動(詳細な差は確認中) / Cast a ball spell" alt="" coords="377,731,459,757"/>
+<area shape="rect" id="node39" href="$asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="195,1617,278,1644"/>
+<area shape="rect" id="node40" href="$cmd-spell_8cpp.html#a3f8bb1e2e9d89f976a13812b836c5f9a" title="魔法によるダメージを出力する / Generate damage&#45;dice info string such as &quot;dam 2d10&quot;" alt="" coords="189,1668,284,1695"/>
+<area shape="rect" id="node41" href="$cmd-spell_8cpp.html#a0556cb7ce380535793da85ab99b59b5f" title="魔法効果発動までの遅延ターンを出力する / Generate delay info string such as &quot;delay 15+1d15&quot;" alt="" coords="197,2149,277,2176"/>
+<area shape="rect" id="node42" href="$cmd-spell_8cpp.html#abdf2f9bcb6476242b82511fe3763188d" title="魔法によるダメージを出力する(固定値＆複数回処理) / Generate multiple&#45;damage info string such as &quot;dam 25 each&quot;" alt="" coords="171,2200,302,2227"/>
+<area shape="rect" id="node43" href="$cmd-spell_8cpp.html#a5e47d86393f65df045ae425fb077117d" title="魔法による一般的な効力値を出力する（固定値） / Generate power info string such as &quot;power 100&quot;" alt="" coords="195,2301,278,2328"/>
+<area shape="rect" id="node44" href="$cmd-spell_8cpp.html#ad7588e7d4c5b74ae0236d927fa888a30" title="魔法の効果半径を出力する / Generate radius info string such as &quot;rad 100&quot;" alt="" coords="195,2352,279,2379"/>
+<area shape="rect" id="node45" href="$cmd-spell_8cpp.html#a425a4063acc1e1bb952de80eb772c96d" title="魔法の効果範囲を出力する / Generate range info string such as &quot;range 5&quot;" alt="" coords="196,2099,277,2125"/>
+<area shape="rect" id="node46" href="$player-realm_8cpp.html#aca735d2c754a04b4e011003532982c92" title=" " alt="" coords="361,1947,475,1973"/>
+<area shape="rect" id="node47" href="$spells-lite_8cpp.html#a78cee093a3c7190cac79b36c36e200fc" title="プレイヤー位置を中心にLITE_WEAK属性を通じた照明処理を行う / Hack – call light around the player Affect all monsters in the pr..." alt="" coords="383,477,453,504"/>
+<area shape="rect" id="node48" href="$magic-item-recharger_8cpp.html#a9b2e285ff33f0ea5da68af05b3495d24" title="魔法効果の実装/ Spell code (part 3)" alt="" coords="201,1491,273,1517"/>
+<area shape="rect" id="node49" href="$spells-world_8cpp.html#aed175aad906d080f4b31b993089f62ba" title="現実変容処理" alt="" coords="729,427,867,453"/>
+<area shape="rect" id="node50" href="$spells-teleport_8cpp.html#ab7dc77e5dccd8357b2058d9bcd352cde" title="プレイヤーのテレポート処理メインルーチン" alt="" coords="183,2403,290,2429"/>
+<area shape="rect" id="node4" href="$racial-android_8cpp.html#a79575a6f85af0b14d59eff0efe003795" title=" " alt="" coords="737,216,859,243"/>
+<area shape="rect" id="node5" href="$hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="921,107,1041,133"/>
+<area shape="rect" id="node6" href="$hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="930,271,1033,297"/>
+<area shape="rect" id="node7" href="$avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="561,1592,641,1619"/>
+<area shape="rect" id="node8" href="$floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="548,680,655,707"/>
+<area shape="rect" id="node9" href="$flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="548,1339,655,1365"/>
+<area shape="rect" id="node10" href="$spells-object_8cpp.html#ad9996ed8fe4b0182a32c3b30b4bd2911" title="装備修正強化処理 / Enchants a plus onto an item." alt="" coords="567,107,635,133"/>
+<area shape="rect" id="node11" href="$screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="577,1389,626,1416"/>
+<area shape="rect" id="node12" href="$object-boost_8cpp.html#aac2a8bb6a1fc5c041b8f18f5660f3554" title="上質以上のオブジェクトに与えるための各種ボーナスを正規乱数も加えて算出する。 Help determine an &quot;enchantment bonus&quot; for an object." alt="" coords="564,5,639,32"/>
+<area shape="rect" id="node13" href="$display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="753,1136,843,1163"/>
+<area shape="rect" id="node15" href="$hook-weapon_8cpp.html#a00ad5aac8cc8b32eff8498c7da83abf3" title="オブジェクトが強化可能な近接武器であるかを返す / Check if an object is melee weapon and allows enchantment" alt="" coords="528,158,675,199"/>
+<area shape="rect" id="node16" href="$hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="541,224,661,251"/>
+<area shape="rect" id="node23" href="$cave_8cpp.html#a72e9e49e417af9b290323225114db833" title=" " alt="" coords="536,1187,667,1213"/>
+<area shape="rect" id="node25" href="$feature_8cpp.html#ab6f2d85244b993c3996dafd0eac6056e" title=" " alt="" coords="362,933,474,960"/>
+<area shape="rect" id="node26" href="$player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="384,1541,452,1568"/>
+<area shape="rect" id="node28" href="$spells-chaos_8cpp.html#a1d38f84e89b08d70240e36068453c821" title="虚無招来によるフロア中の全壁除去処理 / Vanish all walls in this floor" alt="" coords="544,1085,659,1112"/>
+<area shape="rect" id="node32" href="$spells-status_8cpp.html#a840889ad867fc7501fbe2756eda5f021" title="クローンモンスター処理" alt="" coords="365,1389,471,1416"/>
+</map>

@@ -1,0 +1,39 @@
+<map id="get_movable_grid" name="get_movable_grid">
+<area shape="rect" id="node1" title="モンスターの移動方向を返す / Choose &quot;logical&quot; directions for monster movement" alt="" coords="5,552,128,579"/>
+<area shape="rect" id="node2" href="$monster-info_8cpp.html#a923e88d938d90100c5b241388a5183af" title="モンスターの属性の基づいた敵対関係の有無を返す Check if two monsters are enemies" alt="" coords="407,96,503,123"/>
+<area shape="rect" id="node5" href="$class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="1037,197,1148,224"/>
+<area shape="rect" id="node6" href="$monster-info_8cpp.html#ad051474143ae51acf70bf275b30ff246" title=" " alt="" coords="639,45,717,72"/>
+<area shape="rect" id="node8" href="$monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="871,197,929,224"/>
+<area shape="rect" id="node9" href="$monster-safety-hiding_8cpp.html#adbca7d14e6e8478178ff0b1027ad6578" title="モンスターが隠れ潜める地点を返す / Choose a good hiding place near a monster for it to run toward." alt="" coords="205,400,288,427"/>
+<area shape="rect" id="node16" href="$monster-info_8cpp.html#a7560ae7968cd1c5cfe0a084a1b74f474" title="指定された座標の地形をモンスターが踏破できるかどうかを返す Strictly check if monster can enter the grid" alt="" coords="611,400,745,427"/>
+<area shape="rect" id="node17" href="$monster-info_8cpp.html#ad1cf762c40679d90def446efc53d4215" title="モンスターが地形を踏破できるかどうかを返す Check if monster can cross terrain" alt="" coords="811,603,989,629"/>
+<area shape="rect" id="node18" href="$player-status-flags_8cpp.html#a3716d7b8ad214794e5de54641ff0ca5d" title="クリーチャーが壁通過を持っているかを返す。" alt="" coords="1039,907,1146,933"/>
+<area shape="rect" id="node19" href="$projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="635,603,721,629"/>
+<area shape="rect" id="node20" href="$monster-safety-hiding_8cpp.html#ad02a2fbb07710ca90d2bcb3c306a5dc5" title="モンスターが逃げ込める安全な地点を返す / Choose a &quot;safe&quot; location near a monster for it to run toward." alt="" coords="205,501,289,528"/>
+<area shape="rect" id="node22" href="$grid_8cpp.html#abad516e4de73c446e873a949b5f71061" title=" " alt="" coords="643,1059,713,1085"/>
+<area shape="rect" id="node24" href="$grid_8cpp.html#a56bcdab3aae347558429f4331ab30a61" title=" " alt="" coords="641,1008,715,1035"/>
+<area shape="rect" id="node25" href="$cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="634,1185,722,1212"/>
+<area shape="rect" id="node26" href="$line-of-sight_8cpp.html#adff83a1e8c9d47236408737740652a4b" title="LOS(Line Of Sight / 視線が通っているか)の判定を行う。" alt="" coords="227,451,266,477"/>
+<area shape="rect" id="node28" href="$monster-sweep-grid_8cpp.html#aba594ae6e799914937de3df694b84980" title="モンスターの移動方向を走査する処理" alt="" coords="198,197,295,224"/>
+<area shape="rect" id="node30" href="$class_flag_group.html#ac587dd5228dd00af34c36a02b2a95a10" title="フラグ集合のすべてのフラグがOFFかどうかを調べる" alt="" coords="187,1160,306,1187"/>
+<area shape="rect" id="node31" href="$monster-processor-util_8cpp.html#a52a907427830069d85adb3e2d796b3a1" title="get_movable_grid() における移動の方向を保存する" alt="" coords="188,1211,305,1237"/>
+<area shape="rect" id="node32" href="$monster-sweep-grid_8cpp.html#a616c02dc6ef1e1be8644ccbbec06a4d0" title="モンスターがプレイヤーに向けて接近することが可能なマスを走査する / Choose the &quot;best&quot; direction for &quot;flowing&quot;" alt="" coords="176,831,317,857"/>
+<area shape="rect" id="node37" href="$monster-sweep-grid_8cpp.html#a104958ef51d0a02313782e93458dd071" title="モンスターがプレイヤーから逃走することが可能なマスを走査する / Provide a location to flee to, but give the player a wide berth." alt="" coords="365,1160,545,1187"/>
+<area shape="rect" id="node3" href="$monster-info_8cpp.html#a073e460f5aae349ba48c690993b27211" title="モンスターの属性の基づいた敵対関係の有無を返す（サブルーチン） Check if this monster has &quot;hostile&quot; alignment (aux)" alt="" coords="610,96,746,123"/>
+<area shape="rect" id="node4" href="$class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="610,299,746,325"/>
+<area shape="rect" id="node7" href="$monster-info_8cpp.html#a310dca2e8b756213922ce91ffff3dbd0" title=" " alt="" coords="860,96,940,123"/>
+<area shape="rect" id="node10" href="$monster-processor-util_8cpp.html#a164dab835f9c3b8a99f2a6c3ae070edd" title="coordinate_candidate の初期化" alt="" coords="593,451,763,477"/>
+<area shape="rect" id="node11" href="$monster-safety-hiding_8cpp.html#aed2f2873c24633f6ebb5e0c667f99dc7" title="モンスターが隠れられる地点を走査する" alt="" coords="374,400,537,427"/>
+<area shape="rect" id="node12" href="$mspell-checker_8cpp.html#ad7f823f0d59ae8876db5e23cc77f8b46" title="モンスターにとってボルト型魔法が有効な状態かを返す / Determine if a bolt spell will hit the player." alt="" coords="635,349,721,376"/>
+<area shape="rect" id="node14" href="$geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="643,704,713,731"/>
+<area shape="rect" id="node15" href="$cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="637,501,719,528"/>
+<area shape="rect" id="node13" href="$cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="856,400,944,427"/>
+<area shape="rect" id="node21" href="$monster-safety-hiding_8cpp.html#a1c1d9e004feb73cba2d02541f6ebcb31" title="モンスターの逃走・隠匿に関する処理" alt="" coords="377,501,534,528"/>
+<area shape="rect" id="node23" href="$grid_8cpp.html#aed3a106a0e5adf1345c59271b0efe2c8" title=" " alt="" coords="835,1033,965,1060"/>
+<area shape="rect" id="node27" href="$cave_8cpp.html#adc0f94b19918e1965ddd320ae168d551" title=" " alt="" coords="404,451,507,477"/>
+<area shape="rect" id="node29" href="$monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="375,147,535,173"/>
+<area shape="rect" id="node33" href="$class_flag_group.html#a57a928e50a2473024e69c349bcd62525" title="入力イテレータで指定した範囲のリストに含まれるフラグのいずれかがONかどうかを調べる" alt="" coords="822,704,978,731"/>
+<area shape="rect" id="node34" href="$cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="385,856,525,883"/>
+<area shape="rect" id="node35" href="$monster-sweep-grid_8cpp.html#ac2c9d6b31d61645f0fdb4228484c7b23" title="モンスターがプレイヤーに向けて遠距離攻撃を行うことが可能なマスを走査する / Search spell castable grid" alt="" coords="367,907,543,933"/>
+<area shape="rect" id="node36" href="$feature_8cpp.html#a6b436ce4e0a21fa512563ecd2ec6da42" title="地形が閉じたドアであるかの判定を行う。 / Return TRUE if the given grid is a closed door" alt="" coords="623,907,733,933"/>
+</map>

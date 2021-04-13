@@ -1,0 +1,1364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/floor/floor-leaver.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a620f8a6b723e397390ae5ca00f5aa8c.html">floor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">floor-leaver.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="floor-leaver_8h_source.html">floor/floor-leaver.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-building_8h_source.html">cmd-building/cmd-building.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon_8h_source.html">dungeon/dungeon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quest_8h_source.html">dungeon/quest.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cave_8h_source.html">floor/cave.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-events_8h_source.html">floor/floor-events.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-mode-changer_8h_source.html">floor/floor-mode-changer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-save-util_8h_source.html">floor/floor-save-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-save_8h_source.html">floor/floor-save.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="line-of-sight_8h_source.html">floor/line-of-sight.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-options_8h_source.html">game-option/birth-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="play-record-options_8h_source.html">game-option/play-record-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="feature_8h_source.html">grid/feature.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="write-diary_8h_source.html">io/write-diary.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mind-mirror-master_8h_source.html">mind/mind-mirror-master.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mind-ninja_8h_source.html">mind/mind-ninja.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-lite_8h_source.html">monster-floor/monster-lite.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-remover_8h_source.html">monster-floor/monster-remover.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags1_8h_source.html">monster-race/race-flags1.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags7_8h_source.html">monster-race/race-flags7.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-describer_8h_source.html">monster/monster-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-description-types_8h_source.html">monster/monster-description-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-info_8h_source.html">monster/monster-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status_8h_source.html">monster/monster-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-checker_8h_source.html">object-hook/hook-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-enchant_8h_source.html">object-hook/hook-enchant.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="pet-util_8h_source.html">pet/pet-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-defense-types_8h_source.html">player/special-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-writer_8h_source.html">save/floor-writer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="artifact-type-definition_8h_source.html">system/artifact-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-type-definition_8h_source.html">system/monster-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="projection-path-calculator_8h_source.html">target/projection-path-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+floor-leaver.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2floor-leaver_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2floor-leaver_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2floor-leaver_8cpp">
+<area shape="rect" title=" " alt="" coords="2040,5,2228,61"/>
+<area shape="rect" href="floor-leaver_8h.html" title=" " alt="" coords="1237,295,1359,322"/>
+<area shape="rect" href="cmd-building_8h.html" title=" " alt="" coords="821,295,1004,322"/>
+<area shape="rect" href="dungeon_8h.html" title=" " alt="" coords="241,206,376,233"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="123,295,220,322"/>
+<area shape="rect" href="quest_8h.html" title=" " alt="" coords="949,206,1068,233"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1653,288,1799,329"/>
+<area shape="rect" href="cave_8h.html" title=" " alt="" coords="1909,117,1996,143"/>
+<area shape="rect" href="floor-events_8h.html" title=" " alt="" coords="2020,117,2147,143"/>
+<area shape="rect" href="floor-mode-changer_8h.html" title=" " alt="" coords="2222,117,2393,143"/>
+<area shape="rect" href="floor-save-util_8h.html" title=" " alt="" coords="2042,206,2178,233"/>
+<area shape="rect" href="floor-save_8h.html" title=" " alt="" coords="2817,117,2931,143"/>
+<area shape="rect" href="line-of-sight_8h.html" title=" " alt="" coords="3167,117,3293,143"/>
+<area shape="rect" href="birth-options_8h.html" title=" " alt="" coords="3318,117,3497,143"/>
+<area shape="rect" href="play-record-options_8h.html" title=" " alt="" coords="3245,288,3407,329"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="1655,109,1783,151"/>
+<area shape="rect" href="write-diary_8h.html" title=" " alt="" coords="3491,206,3598,233"/>
+<area shape="rect" href="mind-mirror-master_8h.html" title=" " alt="" coords="3539,295,3713,322"/>
+<area shape="rect" href="mind-ninja_8h.html" title=" " alt="" coords="1251,117,1375,143"/>
+<area shape="rect" href="monster-lite_8h.html" title=" " alt="" coords="3707,199,3855,240"/>
+<area shape="rect" href="monster-remover_8h.html" title=" " alt="" coords="3824,288,3972,329"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="470,199,619,240"/>
+<area shape="rect" href="race-flags1_8h.html" title=" " alt="" coords="2417,117,2593,143"/>
+<area shape="rect" href="race-flags7_8h.html" title=" " alt="" coords="2617,117,2793,143"/>
+<area shape="rect" href="monster-describer_8h.html" title=" " alt="" coords="1456,206,1644,233"/>
+<area shape="rect" href="monster-description-types_8h.html" title=" " alt="" coords="2955,109,3142,151"/>
+<area shape="rect" href="monster-info_8h.html" title=" " alt="" coords="1669,206,1823,233"/>
+<area shape="rect" href="monster-status_8h.html" title=" " alt="" coords="1847,206,2018,233"/>
+<area shape="rect" href="hook-checker_8h.html" title=" " alt="" coords="4040,206,4223,233"/>
+<area shape="rect" href="hook-enchant_8h.html" title=" " alt="" coords="4143,295,4325,322"/>
+<area shape="rect" href="pet-util_8h.html" title=" " alt="" coords="2441,206,2536,233"/>
+<area shape="rect" href="special-defense-types_8h.html" title=" " alt="" coords="3673,109,3824,151"/>
+<area shape="rect" href="floor-writer_8h.html" title=" " alt="" coords="4449,206,4571,233"/>
+<area shape="rect" href="artifact-type-definition_8h.html" title=" " alt="" coords="691,199,828,240"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="3951,117,4139,143"/>
+<area shape="rect" href="projection-path-calculator_8h.html" title=" " alt="" coords="1383,288,1527,329"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="4215,117,4373,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="2027,295,2193,322"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="2217,295,2315,322"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="2123,385,2252,411"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="940,385,1067,411"/>
+<area shape="rect" title=" " alt="" coords="279,385,333,411"/>
+<area shape="rect" title=" " alt="" coords="10,385,66,411"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="374,377,539,419"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="572,385,683,411"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="93,385,250,411"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="1029,288,1162,329"/>
+<area shape="rect" href="player-attack-util_8h.html" title=" " alt="" coords="1245,199,1381,240"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="2441,295,2520,322"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="448,288,593,329"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a96b320c18dbf4c4ae9c1e7d2bae92d1d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#a96b320c18dbf4c4ae9c1e7d2bae92d1d">check_riding_preservation</a> (<a class="el" href="structplayer__type.html">player_type</a> *master_ptr)</td></tr>
+<tr class="separator:a96b320c18dbf4c4ae9c1e7d2bae92d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a966fa20c8558fa0beff9bf3f87e2a138"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#a966fa20c8558fa0beff9bf3f87e2a138">check_pet_preservation_conditions</a> (<a class="el" href="structplayer__type.html">player_type</a> *master_ptr, <a class="el" href="structmonster__type.html">monster_type</a> *m_ptr)</td></tr>
+<tr class="separator:a966fa20c8558fa0beff9bf3f87e2a138"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8665adb3738f60520d0b3f4cec4aeafc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#a8665adb3738f60520d0b3f4cec4aeafc">sweep_preserving_pet</a> (<a class="el" href="structplayer__type.html">player_type</a> *master_ptr)</td></tr>
+<tr class="separator:a8665adb3738f60520d0b3f4cec4aeafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a952eb26a646bbf22a40fe4152eb89b71"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#a952eb26a646bbf22a40fe4152eb89b71">record_pet_diary</a> (<a class="el" href="structplayer__type.html">player_type</a> *master_ptr)</td></tr>
+<tr class="separator:a952eb26a646bbf22a40fe4152eb89b71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9473eba7ae635c7cb94c6cf0d7426659"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#a9473eba7ae635c7cb94c6cf0d7426659">preserve_pet</a> (<a class="el" href="structplayer__type.html">player_type</a> *master_ptr)</td></tr>
+<tr class="memdesc:a9473eba7ae635c7cb94c6cf0d7426659"><td class="mdescLeft">&#160;</td><td class="mdescRight">フロア移動時のペット保存処理 / Preserve_pets  <a href="floor-leaver_8cpp.html#a9473eba7ae635c7cb94c6cf0d7426659">[詳解]</a><br /></td></tr>
+<tr class="separator:a9473eba7ae635c7cb94c6cf0d7426659"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d04d22831a2ddfaf8722bc0e8b75c78"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#a8d04d22831a2ddfaf8722bc0e8b75c78">locate_connected_stairs</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="el" href="structsaved__floor__type.html">saved_floor_type</a> *sf_ptr, <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> floor_mode)</td></tr>
+<tr class="memdesc:a8d04d22831a2ddfaf8722bc0e8b75c78"><td class="mdescLeft">&#160;</td><td class="mdescRight">新フロアに移動元フロアに繋がる階段を配置する / Virtually teleport onto the stairs that is connecting between two floors.  <a href="floor-leaver_8cpp.html#a8d04d22831a2ddfaf8722bc0e8b75c78">[詳解]</a><br /></td></tr>
+<tr class="separator:a8d04d22831a2ddfaf8722bc0e8b75c78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a920239f7451f5ae817d2e496d88065e2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#a920239f7451f5ae817d2e496d88065e2">get_out_monster</a> (<a class="el" href="structplayer__type.html">player_type</a> *protected_ptr)</td></tr>
+<tr class="memdesc:a920239f7451f5ae817d2e496d88065e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">フロア移動時、プレイヤーの移動先モンスターが既にいた場合ランダムな近隣に移動させる / When a monster is at a place where player will return,  <a href="floor-leaver_8cpp.html#a920239f7451f5ae817d2e496d88065e2">[詳解]</a><br /></td></tr>
+<tr class="separator:a920239f7451f5ae817d2e496d88065e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa73f111463184d866eaa0b6224b4f728"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#aa73f111463184d866eaa0b6224b4f728">preserve_info</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:aa73f111463184d866eaa0b6224b4f728"><td class="mdescLeft">&#160;</td><td class="mdescRight">クエスト・フロア内のモンスター・インベントリ情報を保存する  <a href="floor-leaver_8cpp.html#aa73f111463184d866eaa0b6224b4f728">[詳解]</a><br /></td></tr>
+<tr class="separator:aa73f111463184d866eaa0b6224b4f728"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eca827b62c8655e7f8ca858e80859e8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#a0eca827b62c8655e7f8ca858e80859e8">set_grid_by_leaving_floor</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structgrid__type.html">grid_type</a> **g_ptr)</td></tr>
+<tr class="separator:a0eca827b62c8655e7f8ca858e80859e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6a4cfca99345098d8c69b7c99a5b808"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#ab6a4cfca99345098d8c69b7c99a5b808">jump_floors</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:ab6a4cfca99345098d8c69b7c99a5b808"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7789976a5aa4459d0f0e4919ff25cadc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#a7789976a5aa4459d0f0e4919ff25cadc">exit_to_wilderness</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a7789976a5aa4459d0f0e4919ff25cadc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb5e565fe723a2b95cd96a64957f2a81"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#aeb5e565fe723a2b95cd96a64957f2a81">kill_saved_floors</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structsaved__floor__type.html">saved_floor_type</a> *sf_ptr)</td></tr>
+<tr class="separator:aeb5e565fe723a2b95cd96a64957f2a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9228d1c2498d0c6977f76d351102bc4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#ad9228d1c2498d0c6977f76d351102bc4">refresh_new_floor_id</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structgrid__type.html">grid_type</a> *g_ptr)</td></tr>
+<tr class="separator:ad9228d1c2498d0c6977f76d351102bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2de870c49bf41555e31caf517451147c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#a2de870c49bf41555e31caf517451147c">update_upper_lower_or_floor_id</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structsaved__floor__type.html">saved_floor_type</a> *sf_ptr)</td></tr>
+<tr class="separator:a2de870c49bf41555e31caf517451147c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a092e95632a8987f70d45586dfe3d522f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#a092e95632a8987f70d45586dfe3d522f">exe_leave_floor</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structsaved__floor__type.html">saved_floor_type</a> *sf_ptr)</td></tr>
+<tr class="separator:a092e95632a8987f70d45586dfe3d522f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af59b8dd9802b17c547ced83c5b40dffc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc">leave_floor</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:af59b8dd9802b17c547ced83c5b40dffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor, and prepare to enter next floor.  <a href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc">[詳解]</a><br /></td></tr>
+<tr class="separator:af59b8dd9802b17c547ced83c5b40dffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a966fa20c8558fa0beff9bf3f87e2a138"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a966fa20c8558fa0beff9bf3f87e2a138">&#9670;&nbsp;</a></span>check_pet_preservation_conditions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_pet_preservation_conditions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>master_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonster__type.html">monster_type</a> *&#160;</td>
+          <td class="paramname"><em>m_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a966fa20c8558fa0beff9bf3f87e2a138_cgraph.png" border="0" usemap="#afloor-leaver_8cpp_a966fa20c8558fa0beff9bf3f87e2a138_cgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a966fa20c8558fa0beff9bf3f87e2a138_cgraph" id="afloor-leaver_8cpp_a966fa20c8558fa0beff9bf3f87e2a138_cgraph">
+<area shape="rect" title=" " alt="" coords="5,150,164,191"/>
+<area shape="rect" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="272,5,343,32"/>
+<area shape="rect" href="line-of-sight_8cpp.html#adff83a1e8c9d47236408737740652a4b" title="LOS(Line Of Sight / 視線が通っているか)の判定を行う。" alt="" coords="487,141,525,168"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="212,107,403,133"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="219,157,396,184"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="215,208,400,235"/>
+<area shape="rect" href="cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="237,259,377,285"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="265,309,350,336"/>
+<area shape="rect" href="cave_8cpp.html#adc0f94b19918e1965ddd320ae168d551" title=" " alt="" coords="829,225,932,252"/>
+<area shape="rect" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e" title=" " alt="" coords="980,225,1104,252"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="465,208,547,235"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="465,259,547,285"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="451,309,561,336"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="451,360,561,387"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a30ef387a791d4e4e8de0c441056943e0" title=" " alt="" coords="609,237,781,264"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a967933565c13f95ea0500a0fd24d8021" title=" " alt="" coords="619,288,771,315"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a32a097212154ab56f1a529ee83ff2559" title=" " alt="" coords="617,339,773,365"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a291b34765c99fa0567ca24a7e9eea0a3" title=" " alt="" coords="629,390,761,431"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a3b3cbd8d5e3729549be74e6e65721adb" title=" " alt="" coords="658,456,733,483"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a966fa20c8558fa0beff9bf3f87e2a138_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_a966fa20c8558fa0beff9bf3f87e2a138_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a966fa20c8558fa0beff9bf3f87e2a138_icgraph" id="afloor-leaver_8cpp_a966fa20c8558fa0beff9bf3f87e2a138_icgraph">
+<area shape="rect" title=" " alt="" coords="476,5,635,47"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a8665adb3738f60520d0b3f4cec4aeafc" title=" " alt="" coords="279,13,428,39"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a9473eba7ae635c7cb94c6cf0d7426659" title="フロア移動時のペット保存処理 / Preserve_pets" alt="" coords="136,13,231,39"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="5,13,88,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a96b320c18dbf4c4ae9c1e7d2bae92d1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96b320c18dbf4c4ae9c1e7d2bae92d1d">&#9670;&nbsp;</a></span>check_riding_preservation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void check_riding_preservation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>master_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a96b320c18dbf4c4ae9c1e7d2bae92d1d_cgraph.png" border="0" usemap="#afloor-leaver_8cpp_a96b320c18dbf4c4ae9c1e7d2bae92d1d_cgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a96b320c18dbf4c4ae9c1e7d2bae92d1d_cgraph" id="afloor-leaver_8cpp_a96b320c18dbf4c4ae9c1e7d2bae92d1d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,516,176,543"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="224,516,359,543"/>
+<area shape="rect" href="floor-object_8cpp.html#af338285652093066df1fda01f9b4fed2" title="オブジェクトを削除する / Delete a dungeon object" alt="" coords="422,85,545,112"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="668,136,739,163"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ad491b75a9a598cb361c671e23737d1fb" title=" " alt="" coords="437,187,530,213"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="608,237,799,264"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="615,339,792,365"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="623,579,783,605"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="623,744,783,771"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="612,668,795,695"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="621,845,786,872"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="611,896,796,923"/>
+<area shape="rect" href="monster-info_8cpp.html#a3228fe93eae0423e4bea1d418088d3c3" title="モンスターの真の種族を返す / Extract monster race pointer of a monster&#39;s true form" alt="" coords="445,947,521,973"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ab59547e7afcd9ac0b20e21f7c1d029aa" title="モンスターの混乱状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CONFUSED]&quot;, notice observable changes" alt="" coords="407,339,560,365"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="414,389,553,416"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ac81c0952258c31c0bb053742f5d63e0f" title="モンスターの加速状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes" alt="" coords="422,440,545,467"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a0f21d1420ce64b3a07b8d58396edbdfd" title="モンスターの無敵状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes" alt="" coords="411,491,555,517"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a9e49c39d8a53ae6e809e8c3662c97411" title="モンスターの恐慌状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_MONFEAR]&quot;, notice observable changes" alt="" coords="410,541,557,568"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="420,592,547,619"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a04c7c898df8f01472c8979c7a08b0925" title="モンスターの朦朧状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_STUNNED]&quot;, notice observable changes" alt="" coords="410,643,557,669"/>
+<area shape="rect" href="floor-object_8cpp.html#a7018087455117fe19ab6cce1095c88a3" title="床上、モンスター所持でスタックされたアイテムを削除しスタックを補完する / Excise a dungeon object from any stacks" alt="" coords="640,35,767,61"/>
+<area shape="rect" href="hook-checker_8cpp.html#ac4cc92b3d4f6e42f4c5a1e729382ee6e" title=" " alt="" coords="847,9,1005,36"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="658,85,749,112"/>
+<area shape="rect" href="monster-info_8cpp.html#a5aa4423e957eb44637308bdbf765ba78" title=" " alt="" coords="664,947,743,973"/>
+<area shape="rect" href="monster-status_8cpp.html#af5149aae69ef6e936f6c691c691cd95a" title="モンスターの時限ステータスリストを追加する" alt="" coords="660,465,747,492"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#acd89fe746188ecd270865d3bd1a3a4ae" title="モンスターの時限ステータスリストを削除" alt="" coords="650,516,757,543"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a96b320c18dbf4c4ae9c1e7d2bae92d1d_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_a96b320c18dbf4c4ae9c1e7d2bae92d1d_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a96b320c18dbf4c4ae9c1e7d2bae92d1d_icgraph" id="afloor-leaver_8cpp_a96b320c18dbf4c4ae9c1e7d2bae92d1d_icgraph">
+<area shape="rect" title=" " alt="" coords="637,56,808,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a9473eba7ae635c7cb94c6cf0d7426659" title="フロア移動時のペット保存処理 / Preserve_pets" alt="" coords="495,56,589,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="364,56,447,83"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="207,5,301,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="192,107,316,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a092e95632a8987f70d45586dfe3d522f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a092e95632a8987f70d45586dfe3d522f">&#9670;&nbsp;</a></span>exe_leave_floor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void exe_leave_floor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsaved__floor__type.html">saved_floor_type</a> *&#160;</td>
+          <td class="paramname"><em>sf_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a092e95632a8987f70d45586dfe3d522f_cgraph.png" border="0" usemap="#afloor-leaver_8cpp_a092e95632a8987f70d45586dfe3d522f_cgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a092e95632a8987f70d45586dfe3d522f_cgraph" id="afloor-leaver_8cpp_a092e95632a8987f70d45586dfe3d522f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,339,116,365"/>
+<area shape="rect" href="monster-lite_8cpp.html#a75ee5b3b7870c752f4e98b25ba59eaaf" title="画面切り替え等でモンスターの灯りを消去する" alt="" coords="180,5,287,32"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a7789976a5aa4459d0f0e4919ff25cadc" title=" " alt="" coords="169,56,298,83"/>
+<area shape="rect" href="floor-events_8cpp.html#aad0bd5ca092d96aec22ced472c90e083" title=" " alt="" coords="194,157,273,184"/>
+<area shape="rect" href="floor-events_8cpp.html#abacf8f89e9bdb853927c5f55377cca6c" title=" " alt="" coords="191,208,276,235"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a920239f7451f5ae817d2e496d88065e2" title="フロア移動時、プレイヤーの移動先モンスターが既にいた場合ランダムな近隣に移動させる / When a monster is at a place where player will return," alt="" coords="174,259,293,285"/>
+<area shape="rect" href="floor-save_8cpp.html#a236b93956898407a6e8110c8f4c16bfe" title="保存フロアIDから参照ポインタを得る / Get a pointer for an item of the saved_floors array." alt="" coords="403,368,482,395"/>
+<area shape="rect" href="floor-leaver_8cpp.html#ab6a4cfca99345098d8c69b7c99a5b808" title=" " alt="" coords="189,107,277,133"/>
+<area shape="rect" href="floor-save_8cpp.html#a9ba80d3702988185f84664eedd003a33" title="参照ポインタ先の保存フロアを抹消する / kill a saved floor and get an empty space" alt="" coords="597,528,707,555"/>
+<area shape="rect" href="floor-leaver_8cpp.html#aeb5e565fe723a2b95cd96a64957f2a81" title=" " alt="" coords="175,528,291,555"/>
+<area shape="rect" href="floor-mode-changer_8cpp.html#ac3d4752c4acfdb1dfe04cdbcd562c1ec" title="フロア切り替え時の処理フラグを追加する / Prepare mode flags of changing floor" alt="" coords="351,423,535,449"/>
+<area shape="rect" href="floor-leaver_8cpp.html#ad9228d1c2498d0c6977f76d351102bc4" title=" " alt="" coords="164,579,303,605"/>
+<area shape="rect" href="floor-writer_8cpp.html#a159128f33a5ee6ede05b1b1759af3088" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="613,680,691,707"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a0eca827b62c8655e7f8ca858e80859e8" title=" " alt="" coords="166,361,301,402"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a2de870c49bf41555e31caf517451147c" title=" " alt="" coords="165,731,302,773"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="390,60,495,87"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="402,165,483,192"/>
+<area shape="rect" href="cave_8cpp.html#abf1b6aff1aa303afd2b72225c7abbcee" title=" " alt="" coords="373,267,512,293"/>
+<area shape="rect" href="grid_8cpp.html#a42dd322b30c143370ad535de2b11f7cc" title=" " alt="" coords="365,317,520,344"/>
+<area shape="rect" href="grid_8cpp.html#ac3da6975f25ee500f82ed6105e9a069c" title=" " alt="" coords="365,115,521,141"/>
+<area shape="rect" href="cave_8cpp.html#af3ebcc730bf3e9662adef8c0a4b49903" title=" " alt="" coords="399,216,486,243"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="585,216,719,243"/>
+<area shape="rect" href="cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="608,267,696,293"/>
+<area shape="rect" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="802,579,857,605"/>
+<area shape="rect" href="uid-checker_8cpp.html#a59c71c10d8af1998dee4791396cb9d1d" title="ファイルのドロップパーミッションチェック / Hack – drop permissions" alt="" coords="769,528,889,555"/>
+<area shape="rect" href="uid-checker_8cpp.html#a10816f3dfe2970e4b4c89e5362304f83" title="ファイルのグラブパーミッションチェック / Hack – grab permissions" alt="" coords="769,477,889,504"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="961,629,1047,656"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="983,503,1025,529"/>
+<area shape="rect" href="grid_8cpp.html#a1c4651449540dbd7801118d1319ea0b3" title="マス構造体のspecial要素を利用する地形かどうかを判定するマクロ / Is this feature has special meaning (except floor_id) with g_ptr..." alt="" coords="379,629,506,656"/>
+<area shape="rect" href="floor-save_8cpp.html#a1b1bb290d8adda7238744b68732dedad" title="新規に利用可能な保存フロアを返す / Initialize new saved floor and get its floor id." alt="" coords="383,579,502,605"/>
+<area shape="rect" href="floor-save_8cpp.html#ad8af48d62d3847c325bce42a1d966a4d" title=" " alt="" coords="583,579,721,605"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="773,832,885,859"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="775,680,884,707"/>
+<area shape="rect" href="angband-files_8cpp.html#a5a186f4266676163ec63ff8413334fb1" title=" " alt="" coords="794,731,865,757"/>
+<area shape="rect" href="angband-files_8cpp.html#a4c4108d1fb8217d15fd233d2787ff91d" title=" " alt="" coords="794,629,865,656"/>
+<area shape="rect" href="floor-writer_8cpp.html#a11937fb0136a154a63265b4d3e946b7c" title="ゲームプレイ中のフロア一時保存出力処理サブルーチン / Actually write a temporary saved floor file" alt="" coords="776,781,883,808"/>
+<area shape="rect" href="monster-compaction_8cpp.html#a45418160543ab052bb17c17d724acb6b" title="モンスター情報配列を圧縮する / Compact and Reorder the monster list" alt="" coords="937,883,1071,909"/>
+<area shape="rect" href="object-compressor_8cpp.html#a1ede50288749e158368e8fefdd4d960b" title="グローバルオブジェクト配列から優先度の低いものを削除し、データを圧縮する。 / Compact and Reorder the object list." alt="" coords="943,680,1065,707"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="1237,781,1304,808"/>
+<area shape="rect" href="floor-writer_8cpp.html#a0ca3769fc9944271112a5fe1e063665e" title="保存フロアの書き込み / Actually write a saved floor data using effectively compressed format." alt="" coords="951,781,1057,808"/>
+<area shape="rect" href="save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="1119,832,1189,859"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a092e95632a8987f70d45586dfe3d522f_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_a092e95632a8987f70d45586dfe3d522f_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a092e95632a8987f70d45586dfe3d522f_icgraph" id="afloor-leaver_8cpp_a092e95632a8987f70d45586dfe3d522f_icgraph">
+<area shape="rect" title=" " alt="" coords="648,56,759,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="517,56,600,83"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="376,5,469,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="189,56,328,83"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="197,107,321,133"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="5,81,141,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7789976a5aa4459d0f0e4919ff25cadc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7789976a5aa4459d0f0e4919ff25cadc">&#9670;&nbsp;</a></span>exit_to_wilderness()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void exit_to_wilderness </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a7789976a5aa4459d0f0e4919ff25cadc_cgraph.png" border="0" usemap="#afloor-leaver_8cpp_a7789976a5aa4459d0f0e4919ff25cadc_cgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a7789976a5aa4459d0f0e4919ff25cadc_cgraph" id="afloor-leaver_8cpp_a7789976a5aa4459d0f0e4919ff25cadc_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,135,32"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="183,5,288,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a7789976a5aa4459d0f0e4919ff25cadc_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_a7789976a5aa4459d0f0e4919ff25cadc_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a7789976a5aa4459d0f0e4919ff25cadc_icgraph" id="afloor-leaver_8cpp_a7789976a5aa4459d0f0e4919ff25cadc_icgraph">
+<area shape="rect" title=" " alt="" coords="653,56,783,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a092e95632a8987f70d45586dfe3d522f" title=" " alt="" coords="495,56,605,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="364,56,447,83"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="207,5,301,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="192,107,316,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a920239f7451f5ae817d2e496d88065e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a920239f7451f5ae817d2e496d88065e2">&#9670;&nbsp;</a></span>get_out_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void get_out_monster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>protected_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>フロア移動時、プレイヤーの移動先モンスターが既にいた場合ランダムな近隣に移動させる / When a monster is at a place where player will return, </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a920239f7451f5ae817d2e496d88065e2_cgraph.png" border="0" usemap="#afloor-leaver_8cpp_a920239f7451f5ae817d2e496d88065e2_cgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a920239f7451f5ae817d2e496d88065e2_cgraph" id="afloor-leaver_8cpp_a920239f7451f5ae817d2e496d88065e2_cgraph">
+<area shape="rect" title="フロア移動時、プレイヤーの移動先モンスターが既にいた場合ランダムな近隣に移動させる / When a monster is at a place where player will return," alt="" coords="5,107,124,133"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="209,5,291,32"/>
+<area shape="rect" href="cave_8cpp.html#abf1b6aff1aa303afd2b72225c7abbcee" title=" " alt="" coords="181,56,319,83"/>
+<area shape="rect" href="grid_8cpp.html#a42dd322b30c143370ad535de2b11f7cc" title=" " alt="" coords="173,107,327,133"/>
+<area shape="rect" href="grid_8cpp.html#ac3da6975f25ee500f82ed6105e9a069c" title=" " alt="" coords="172,157,328,184"/>
+<area shape="rect" href="cave_8cpp.html#af3ebcc730bf3e9662adef8c0a4b49903" title=" " alt="" coords="207,208,293,235"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="376,157,511,184"/>
+<area shape="rect" href="cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="399,56,487,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a920239f7451f5ae817d2e496d88065e2_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_a920239f7451f5ae817d2e496d88065e2_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a920239f7451f5ae817d2e496d88065e2_icgraph" id="afloor-leaver_8cpp_a920239f7451f5ae817d2e496d88065e2_icgraph">
+<area shape="rect" title="フロア移動時、プレイヤーの移動先モンスターが既にいた場合ランダムな近隣に移動させる / When a monster is at a place where player will return," alt="" coords="653,56,772,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a092e95632a8987f70d45586dfe3d522f" title=" " alt="" coords="495,56,605,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="364,56,447,83"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="207,5,301,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="192,107,316,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab6a4cfca99345098d8c69b7c99a5b808"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6a4cfca99345098d8c69b7c99a5b808">&#9670;&nbsp;</a></span>jump_floors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void jump_floors </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_ab6a4cfca99345098d8c69b7c99a5b808_cgraph.png" border="0" usemap="#afloor-leaver_8cpp_ab6a4cfca99345098d8c69b7c99a5b808_cgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_ab6a4cfca99345098d8c69b7c99a5b808_cgraph" id="afloor-leaver_8cpp_ab6a4cfca99345098d8c69b7c99a5b808_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,93,32"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="141,5,247,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_ab6a4cfca99345098d8c69b7c99a5b808_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_ab6a4cfca99345098d8c69b7c99a5b808_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_ab6a4cfca99345098d8c69b7c99a5b808_icgraph" id="afloor-leaver_8cpp_ab6a4cfca99345098d8c69b7c99a5b808_icgraph">
+<area shape="rect" title=" " alt="" coords="653,56,741,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a092e95632a8987f70d45586dfe3d522f" title=" " alt="" coords="495,56,605,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="364,56,447,83"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="207,5,301,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="192,107,316,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aeb5e565fe723a2b95cd96a64957f2a81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb5e565fe723a2b95cd96a64957f2a81">&#9670;&nbsp;</a></span>kill_saved_floors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void kill_saved_floors </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsaved__floor__type.html">saved_floor_type</a> *&#160;</td>
+          <td class="paramname"><em>sf_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_aeb5e565fe723a2b95cd96a64957f2a81_cgraph.png" border="0" usemap="#afloor-leaver_8cpp_aeb5e565fe723a2b95cd96a64957f2a81_cgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_aeb5e565fe723a2b95cd96a64957f2a81_cgraph" id="afloor-leaver_8cpp_aeb5e565fe723a2b95cd96a64957f2a81_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,121,83"/>
+<area shape="rect" href="floor-save_8cpp.html#a9ba80d3702988185f84664eedd003a33" title="参照ポインタ先の保存フロアを抹消する / kill a saved floor and get an empty space" alt="" coords="169,56,279,83"/>
+<area shape="rect" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="359,5,414,32"/>
+<area shape="rect" href="uid-checker_8cpp.html#a59c71c10d8af1998dee4791396cb9d1d" title="ファイルのドロップパーミッションチェック / Hack – drop permissions" alt="" coords="327,56,447,83"/>
+<area shape="rect" href="uid-checker_8cpp.html#a10816f3dfe2970e4b4c89e5362304f83" title="ファイルのグラブパーミッションチェック / Hack – grab permissions" alt="" coords="327,107,447,133"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="495,5,581,32"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="517,81,559,108"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_aeb5e565fe723a2b95cd96a64957f2a81_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_aeb5e565fe723a2b95cd96a64957f2a81_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_aeb5e565fe723a2b95cd96a64957f2a81_icgraph" id="afloor-leaver_8cpp_aeb5e565fe723a2b95cd96a64957f2a81_icgraph">
+<area shape="rect" title=" " alt="" coords="653,56,769,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a092e95632a8987f70d45586dfe3d522f" title=" " alt="" coords="495,56,605,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="364,56,447,83"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="207,5,301,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="192,107,316,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af59b8dd9802b17c547ced83c5b40dffc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af59b8dd9802b17c547ced83c5b40dffc">&#9670;&nbsp;</a></span>leave_floor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void leave_floor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor, and prepare to enter next floor. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_af59b8dd9802b17c547ced83c5b40dffc_cgraph.png" border="0" usemap="#afloor-leaver_8cpp_af59b8dd9802b17c547ced83c5b40dffc_cgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_af59b8dd9802b17c547ced83c5b40dffc_cgraph" id="afloor-leaver_8cpp_af59b8dd9802b17c547ced83c5b40dffc_cgraph">
+<area shape="rect" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="5,1056,88,1083"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a092e95632a8987f70d45586dfe3d522f" title=" " alt="" coords="146,423,257,449"/>
+<area shape="rect" href="floor-save_8cpp.html#a236b93956898407a6e8110c8f4c16bfe" title="保存フロアIDから参照ポインタを得る / Get a pointer for an item of the saved_floors array." alt="" coords="586,37,665,64"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a8d04d22831a2ddfaf8722bc0e8b75c78" title="新フロアに移動元フロアに繋がる階段を配置する / Virtually teleport onto the stairs that is connecting between two floors." alt="" coords="319,625,481,652"/>
+<area shape="rect" href="floor-leaver_8cpp.html#aa73f111463184d866eaa0b6224b4f728" title="クエスト・フロア内のモンスター・インベントリ情報を保存する" alt="" coords="351,1056,449,1083"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a9473eba7ae635c7cb94c6cf0d7426659" title="フロア移動時のペット保存処理 / Preserve_pets" alt="" coords="154,1233,249,1260"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#a7384ee81de2ae33bf3b608404094becd" title="全鏡の消去 / Remove all mirrors in this floor" alt="" coords="136,1461,267,1488"/>
+<area shape="rect" href="mind-ninja_8cpp.html#a52ea1929bb465180b42d7321e65512eb" title="超隠密状態をセットする" alt="" coords="142,1512,261,1539"/>
+<area shape="rect" href="monster-lite_8cpp.html#a75ee5b3b7870c752f4e98b25ba59eaaf" title="画面切り替え等でモンスターの灯りを消去する" alt="" coords="347,473,453,500"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a7789976a5aa4459d0f0e4919ff25cadc" title=" " alt="" coords="335,321,465,348"/>
+<area shape="rect" href="floor-events_8cpp.html#aad0bd5ca092d96aec22ced472c90e083" title=" " alt="" coords="361,88,439,115"/>
+<area shape="rect" href="floor-events_8cpp.html#abacf8f89e9bdb853927c5f55377cca6c" title=" " alt="" coords="357,139,443,165"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a920239f7451f5ae817d2e496d88065e2" title="フロア移動時、プレイヤーの移動先モンスターが既にいた場合ランダムな近隣に移動させる / When a monster is at a place where player will return," alt="" coords="341,803,459,829"/>
+<area shape="rect" href="floor-leaver_8cpp.html#ab6a4cfca99345098d8c69b7c99a5b808" title=" " alt="" coords="356,372,444,399"/>
+<area shape="rect" href="floor-save_8cpp.html#a9ba80d3702988185f84664eedd003a33" title="参照ポインタ先の保存フロアを抹消する / kill a saved floor and get an empty space" alt="" coords="765,625,875,652"/>
+<area shape="rect" href="floor-leaver_8cpp.html#aeb5e565fe723a2b95cd96a64957f2a81" title=" " alt="" coords="342,524,458,551"/>
+<area shape="rect" href="floor-mode-changer_8cpp.html#ac3d4752c4acfdb1dfe04cdbcd562c1ec" title="フロア切り替え時の処理フラグを追加する / Prepare mode flags of changing floor" alt="" coords="533,423,717,449"/>
+<area shape="rect" href="floor-leaver_8cpp.html#ad9228d1c2498d0c6977f76d351102bc4" title=" " alt="" coords="331,676,469,703"/>
+<area shape="rect" href="floor-writer_8cpp.html#a159128f33a5ee6ede05b1b1759af3088" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="781,777,859,804"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a0eca827b62c8655e7f8ca858e80859e8" title=" " alt="" coords="333,255,467,297"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a2de870c49bf41555e31caf517451147c" title=" " alt="" coords="331,190,469,231"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="573,347,678,373"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="585,828,666,855"/>
+<area shape="rect" href="cave_8cpp.html#abf1b6aff1aa303afd2b72225c7abbcee" title=" " alt="" coords="556,879,695,905"/>
+<area shape="rect" href="grid_8cpp.html#a42dd322b30c143370ad535de2b11f7cc" title=" " alt="" coords="548,929,703,956"/>
+<area shape="rect" href="grid_8cpp.html#ac3da6975f25ee500f82ed6105e9a069c" title=" " alt="" coords="547,727,703,753"/>
+<area shape="rect" href="cave_8cpp.html#af3ebcc730bf3e9662adef8c0a4b49903" title=" " alt="" coords="582,777,669,804"/>
+<area shape="rect" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="955,600,1010,627"/>
+<area shape="rect" href="uid-checker_8cpp.html#a59c71c10d8af1998dee4791396cb9d1d" title="ファイルのドロップパーミッションチェック / Hack – drop permissions" alt="" coords="923,651,1043,677"/>
+<area shape="rect" href="uid-checker_8cpp.html#a10816f3dfe2970e4b4c89e5362304f83" title="ファイルのグラブパーミッションチェック / Hack – grab permissions" alt="" coords="923,701,1043,728"/>
+<area shape="rect" href="grid_8cpp.html#a1c4651449540dbd7801118d1319ea0b3" title="マス構造体のspecial要素を利用する地形かどうかを判定するマクロ / Is this feature has special meaning (except floor_id) with g_ptr..." alt="" coords="562,625,689,652"/>
+<area shape="rect" href="floor-save_8cpp.html#a1b1bb290d8adda7238744b68732dedad" title="新規に利用可能な保存フロアを返す / Initialize new saved floor and get its floor id." alt="" coords="566,676,685,703"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="927,853,1039,880"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="928,904,1037,931"/>
+<area shape="rect" href="angband-files_8cpp.html#a5a186f4266676163ec63ff8413334fb1" title=" " alt="" coords="947,752,1018,779"/>
+<area shape="rect" href="angband-files_8cpp.html#a4c4108d1fb8217d15fd233d2787ff91d" title=" " alt="" coords="947,803,1018,829"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="558,1183,693,1209"/>
+<area shape="rect" href="monster-info_8cpp.html#a3228fe93eae0423e4bea1d418088d3c3" title="モンスターの真の種族を返す / Extract monster race pointer of a monster&#39;s true form" alt="" coords="782,1183,858,1209"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="566,1233,685,1260"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="548,1081,703,1108"/>
+<area shape="rect" href="hook-checker_8cpp.html#a41a37b8108a515afc4462557128c9a92" title=" " alt="" coords="572,1031,679,1057"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a96b320c18dbf4c4ae9c1e7d2bae92d1d" title=" " alt="" coords="315,1107,485,1133"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="592,1365,659,1392"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="573,1296,677,1323"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="580,1423,671,1449"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a952eb26a646bbf22a40fe4152eb89b71" title=" " alt="" coords="341,1259,459,1285"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a8665adb3738f60520d0b3f4cec4aeafc" title=" " alt="" coords="325,1208,475,1235"/>
+<area shape="rect" href="grid_8cpp.html#aa76190ea626631d68070030818399df5" title=" " alt="" coords="575,1487,675,1513"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="369,1461,431,1488"/>
+<area shape="rect" href="grid_8cpp.html#a858d5a7b3ea7a6f1fb3de4736496f94e" title=" " alt="" coords="574,1549,677,1576"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_af59b8dd9802b17c547ced83c5b40dffc_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_af59b8dd9802b17c547ced83c5b40dffc_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_af59b8dd9802b17c547ced83c5b40dffc_icgraph" id="afloor-leaver_8cpp_af59b8dd9802b17c547ced83c5b40dffc_icgraph">
+<area shape="rect" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="517,56,600,83"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="376,5,469,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="189,56,328,83"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="197,107,321,133"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="5,81,141,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8d04d22831a2ddfaf8722bc0e8b75c78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d04d22831a2ddfaf8722bc0e8b75c78">&#9670;&nbsp;</a></span>locate_connected_stairs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void locate_connected_stairs </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsaved__floor__type.html">saved_floor_type</a> *&#160;</td>
+          <td class="paramname"><em>sf_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td>
+          <td class="paramname"><em>floor_mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>新フロアに移動元フロアに繋がる階段を配置する / Virtually teleport onto the stairs that is connecting between two floors. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sf_ptr</td><td>移動元の保存フロア構造体参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a8d04d22831a2ddfaf8722bc0e8b75c78_cgraph.png" border="0" usemap="#afloor-leaver_8cpp_a8d04d22831a2ddfaf8722bc0e8b75c78_cgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a8d04d22831a2ddfaf8722bc0e8b75c78_cgraph" id="afloor-leaver_8cpp_a8d04d22831a2ddfaf8722bc0e8b75c78_cgraph">
+<area shape="rect" title="新フロアに移動元フロアに繋がる階段を配置する / Virtually teleport onto the stairs that is connecting between two floors." alt="" coords="5,31,168,57"/>
+<area shape="rect" href="grid_8cpp.html#a1c4651449540dbd7801118d1319ea0b3" title="マス構造体のspecial要素を利用する地形かどうかを判定するマクロ / Is this feature has special meaning (except floor_id) with g_ptr..." alt="" coords="245,5,371,32"/>
+<area shape="rect" href="floor-mode-changer_8cpp.html#ac3d4752c4acfdb1dfe04cdbcd562c1ec" title="フロア切り替え時の処理フラグを追加する / Prepare mode flags of changing floor" alt="" coords="216,56,400,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a8d04d22831a2ddfaf8722bc0e8b75c78_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_a8d04d22831a2ddfaf8722bc0e8b75c78_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a8d04d22831a2ddfaf8722bc0e8b75c78_icgraph" id="afloor-leaver_8cpp_a8d04d22831a2ddfaf8722bc0e8b75c78_icgraph">
+<area shape="rect" title="新フロアに移動元フロアに繋がる階段を配置する / Virtually teleport onto the stairs that is connecting between two floors." alt="" coords="648,56,811,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="517,56,600,83"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="376,5,469,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="189,56,328,83"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="197,107,321,133"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="5,81,141,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa73f111463184d866eaa0b6224b4f728"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa73f111463184d866eaa0b6224b4f728">&#9670;&nbsp;</a></span>preserve_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void preserve_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>クエスト・フロア内のモンスター・インベントリ情報を保存する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_aa73f111463184d866eaa0b6224b4f728_cgraph.png" border="0" usemap="#afloor-leaver_8cpp_aa73f111463184d866eaa0b6224b4f728_cgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_aa73f111463184d866eaa0b6224b4f728_cgraph" id="afloor-leaver_8cpp_aa73f111463184d866eaa0b6224b4f728_cgraph">
+<area shape="rect" title="クエスト・フロア内のモンスター・インベントリ情報を保存する" alt="" coords="5,841,103,868"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="161,563,295,589"/>
+<area shape="rect" href="monster-info_8cpp.html#a3228fe93eae0423e4bea1d418088d3c3" title="モンスターの真の種族を返す / Extract monster race pointer of a monster&#39;s true form" alt="" coords="392,968,468,995"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="169,841,287,868"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="151,892,305,919"/>
+<area shape="rect" href="hook-checker_8cpp.html#a41a37b8108a515afc4462557128c9a92" title=" " alt="" coords="175,943,281,969"/>
+<area shape="rect" href="floor-object_8cpp.html#af338285652093066df1fda01f9b4fed2" title="オブジェクトを削除する / Delete a dungeon object" alt="" coords="369,107,491,133"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="615,157,685,184"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ad491b75a9a598cb361c671e23737d1fb" title=" " alt="" coords="383,309,477,336"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="555,220,745,247"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="561,296,739,323"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="570,703,730,729"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="570,917,730,944"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="559,791,741,817"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="567,360,733,387"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="557,471,743,497"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ab59547e7afcd9ac0b20e21f7c1d029aa" title="モンスターの混乱状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CONFUSED]&quot;, notice observable changes" alt="" coords="353,461,507,488"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="361,512,499,539"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ac81c0952258c31c0bb053742f5d63e0f" title="モンスターの加速状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes" alt="" coords="369,664,491,691"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a0f21d1420ce64b3a07b8d58396edbdfd" title="モンスターの無敵状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes" alt="" coords="358,715,502,741"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a9e49c39d8a53ae6e809e8c3662c97411" title="モンスターの恐慌状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_MONFEAR]&quot;, notice observable changes" alt="" coords="357,765,503,792"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="367,563,493,589"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a04c7c898df8f01472c8979c7a08b0925" title="モンスターの朦朧状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_STUNNED]&quot;, notice observable changes" alt="" coords="357,613,503,640"/>
+<area shape="rect" href="floor-object_8cpp.html#a7018087455117fe19ab6cce1095c88a3" title="床上、モンスター所持でスタックされたアイテムを削除しスタックを補完する / Excise a dungeon object from any stacks" alt="" coords="587,107,713,133"/>
+<area shape="rect" href="hook-checker_8cpp.html#ac4cc92b3d4f6e42f4c5a1e729382ee6e" title=" " alt="" coords="793,81,952,108"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="605,5,695,32"/>
+<area shape="rect" href="monster-info_8cpp.html#a5aa4423e957eb44637308bdbf765ba78" title=" " alt="" coords="611,968,689,995"/>
+<area shape="rect" href="monster-status_8cpp.html#af5149aae69ef6e936f6c691c691cd95a" title="モンスターの時限ステータスリストを追加する" alt="" coords="607,581,693,608"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#acd89fe746188ecd270865d3bd1a3a4ae" title="モンスターの時限ステータスリストを削除" alt="" coords="597,632,703,659"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_aa73f111463184d866eaa0b6224b4f728_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_aa73f111463184d866eaa0b6224b4f728_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_aa73f111463184d866eaa0b6224b4f728_icgraph" id="afloor-leaver_8cpp_aa73f111463184d866eaa0b6224b4f728_icgraph">
+<area shape="rect" title="クエスト・フロア内のモンスター・インベントリ情報を保存する" alt="" coords="648,56,745,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="517,56,600,83"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="376,5,469,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="189,56,328,83"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="197,107,321,133"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="5,81,141,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9473eba7ae635c7cb94c6cf0d7426659"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9473eba7ae635c7cb94c6cf0d7426659">&#9670;&nbsp;</a></span>preserve_pet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void preserve_pet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>master_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>フロア移動時のペット保存処理 / Preserve_pets </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">master_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a9473eba7ae635c7cb94c6cf0d7426659_cgraph.png" border="0" usemap="#afloor-leaver_8cpp_a9473eba7ae635c7cb94c6cf0d7426659_cgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a9473eba7ae635c7cb94c6cf0d7426659_cgraph" id="afloor-leaver_8cpp_a9473eba7ae635c7cb94c6cf0d7426659_cgraph">
+<area shape="rect" title="フロア移動時のペット保存処理 / Preserve_pets" alt="" coords="5,1008,100,1034"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a96b320c18dbf4c4ae9c1e7d2bae92d1d" title=" " alt="" coords="148,578,319,605"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="367,510,501,537"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="401,957,467,984"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="382,1178,486,1205"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="806,1489,897,1516"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a952eb26a646bbf22a40fe4152eb89b71" title=" " alt="" coords="174,1109,293,1136"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a8665adb3738f60520d0b3f4cec4aeafc" title=" " alt="" coords="159,1008,308,1034"/>
+<area shape="rect" href="floor-object_8cpp.html#af338285652093066df1fda01f9b4fed2" title="オブジェクトを削除する / Delete a dungeon object" alt="" coords="567,409,690,436"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="816,434,887,461"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ad491b75a9a598cb361c671e23737d1fb" title=" " alt="" coords="582,561,675,588"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="756,612,947,638"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="763,713,940,740"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="771,789,931,816"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="771,29,931,56"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="760,130,943,157"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="769,232,934,258"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="759,358,944,385"/>
+<area shape="rect" href="monster-info_8cpp.html#a3228fe93eae0423e4bea1d418088d3c3" title="モンスターの真の種族を返す / Extract monster race pointer of a monster&#39;s true form" alt="" coords="591,982,667,1009"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ab59547e7afcd9ac0b20e21f7c1d029aa" title="モンスターの混乱状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CONFUSED]&quot;, notice observable changes" alt="" coords="552,510,705,537"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="559,713,698,740"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ac81c0952258c31c0bb053742f5d63e0f" title="モンスターの加速状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes" alt="" coords="567,764,690,790"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a0f21d1420ce64b3a07b8d58396edbdfd" title="モンスターの無敵状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes" alt="" coords="557,156,701,182"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a9e49c39d8a53ae6e809e8c3662c97411" title="モンスターの恐慌状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_MONFEAR]&quot;, notice observable changes" alt="" coords="555,54,702,81"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="565,257,692,284"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a04c7c898df8f01472c8979c7a08b0925" title="モンスターの朦朧状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_STUNNED]&quot;, notice observable changes" alt="" coords="555,358,702,385"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="557,1033,701,1060"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="809,874,894,901"/>
+<area shape="rect" href="grid_8cpp.html#ab400c1b998f2aac3e96120a9f4e374dc" title="指定された座標のマスが現在照らされているかを返す。 / Check for &quot;local&quot; illumination" alt="" coords="770,1033,933,1060"/>
+<area shape="rect" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e" title=" " alt="" coords="995,1081,1119,1108"/>
+<area shape="rect" href="grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="1001,1030,1112,1057"/>
+<area shape="rect" href="cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="781,929,921,956"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="1015,798,1098,825"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="1015,849,1098,876"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="1001,900,1112,926"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="1001,950,1112,977"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="599,1388,658,1414"/>
+<area shape="rect" href="files-util_8cpp.html#a06656f06eccb3992114a0f3dd1f51ca1" title="ファイルからランダムに行を一つ取得する / Get a random line from a file" alt="" coords="583,1337,675,1364"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="796,1134,907,1161"/>
+<area shape="rect" href="english_8cpp.html#a1183a616ba1590738914bbd4e6524917" title=" " alt="" coords="587,1185,671,1212"/>
+<area shape="rect" href="monster-info_8cpp.html#aee375b2cef10419aee76d699c91d4007" title=" " alt="" coords="578,1236,679,1262"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="600,1084,657,1110"/>
+<area shape="rect" href="quarks_8cpp.html#a95cf419856c525009b78e5246327f405" title=" " alt="" coords="591,1286,667,1313"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="795,1438,907,1465"/>
+<area shape="rect" href="angband-files_8cpp.html#af8478ae9202a347c7b95688842ff7633" title=" " alt="" coords="798,1286,905,1313"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="797,1337,906,1364"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="811,1388,892,1414"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="378,1388,490,1414"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="375,1058,493,1085"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a966fa20c8558fa0beff9bf3f87e2a138" title=" " alt="" coords="549,866,708,907"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a9473eba7ae635c7cb94c6cf0d7426659_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_a9473eba7ae635c7cb94c6cf0d7426659_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a9473eba7ae635c7cb94c6cf0d7426659_icgraph" id="afloor-leaver_8cpp_a9473eba7ae635c7cb94c6cf0d7426659_icgraph">
+<area shape="rect" title="フロア移動時のペット保存処理 / Preserve_pets" alt="" coords="648,56,743,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="517,56,600,83"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="376,5,469,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="189,56,328,83"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="197,107,321,133"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="5,81,141,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a952eb26a646bbf22a40fe4152eb89b71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a952eb26a646bbf22a40fe4152eb89b71">&#9670;&nbsp;</a></span>record_pet_diary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void record_pet_diary </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>master_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a952eb26a646bbf22a40fe4152eb89b71_cgraph.png" border="0" usemap="#afloor-leaver_8cpp_a952eb26a646bbf22a40fe4152eb89b71_cgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a952eb26a646bbf22a40fe4152eb89b71_cgraph" id="afloor-leaver_8cpp_a952eb26a646bbf22a40fe4152eb89b71_cgraph">
+<area shape="rect" title=" " alt="" coords="5,452,124,479"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="175,249,287,276"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="385,477,443,504"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="179,427,283,453"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="172,528,291,555"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="537,315,649,341"/>
+<area shape="rect" href="world_8cpp.html#a3da5b82e6bb95498402f78c954a628d0" title="現在の日数、時刻を返す / Extract day, hour, min" alt="" coords="339,56,489,83"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="385,427,443,453"/>
+<area shape="rect" href="write-diary_8cpp.html#a9dd20d3a7be882e5dcb9d8ebd74539e0" title="Return suffix of ordinal number" alt="" coords="347,107,481,149"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="361,173,467,200"/>
+<area shape="rect" href="write-diary_8cpp.html#a721a3148877a6d0a8936a10842591e2c" title="日記ファイルを開く" alt="" coords="360,5,468,32"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="354,275,474,301"/>
+<area shape="rect" href="write-diary_8cpp.html#a0bc11216e7a5445c14b3c0df826641bf" title="ペットに関する日記を追加する" alt="" coords="359,224,469,251"/>
+<area shape="rect" href="write-diary_8cpp.html#af2cab656963fc78e9b465c77c6353382" title="フロア情報を日記に追加する" alt="" coords="374,376,454,403"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="562,427,625,453"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="539,180,648,207"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="548,16,639,43"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="553,88,634,115"/>
+<area shape="rect" href="quest_8cpp.html#a5b6b24bb1f79322d67d0cc51368d3ad3" title="新しく入ったダンジョンの階層に固定されている一般のクエストを探し出しIDを返す。 / Hack – Check if a level is a &quot;quest&quot; level" alt="" coords="541,376,645,403"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a952eb26a646bbf22a40fe4152eb89b71_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_a952eb26a646bbf22a40fe4152eb89b71_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a952eb26a646bbf22a40fe4152eb89b71_icgraph" id="afloor-leaver_8cpp_a952eb26a646bbf22a40fe4152eb89b71_icgraph">
+<area shape="rect" title=" " alt="" coords="637,56,756,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a9473eba7ae635c7cb94c6cf0d7426659" title="フロア移動時のペット保存処理 / Preserve_pets" alt="" coords="495,56,589,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="364,56,447,83"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="207,5,301,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="192,107,316,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad9228d1c2498d0c6977f76d351102bc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9228d1c2498d0c6977f76d351102bc4">&#9670;&nbsp;</a></span>refresh_new_floor_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void refresh_new_floor_id </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgrid__type.html">grid_type</a> *&#160;</td>
+          <td class="paramname"><em>g_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_ad9228d1c2498d0c6977f76d351102bc4_cgraph.png" border="0" usemap="#afloor-leaver_8cpp_ad9228d1c2498d0c6977f76d351102bc4_cgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_ad9228d1c2498d0c6977f76d351102bc4_cgraph" id="afloor-leaver_8cpp_ad9228d1c2498d0c6977f76d351102bc4_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="grid_8cpp.html#a1c4651449540dbd7801118d1319ea0b3" title="マス構造体のspecial要素を利用する地形かどうかを判定するマクロ / Is this feature has special meaning (except floor_id) with g_ptr..." alt="" coords="192,5,319,32"/>
+<area shape="rect" href="floor-save_8cpp.html#a1b1bb290d8adda7238744b68732dedad" title="新規に利用可能な保存フロアを返す / Initialize new saved floor and get its floor id." alt="" coords="196,56,315,83"/>
+<area shape="rect" href="floor-save_8cpp.html#ad8af48d62d3847c325bce42a1d966a4d" title=" " alt="" coords="367,31,505,57"/>
+<area shape="rect" href="floor-save_8cpp.html#a9ba80d3702988185f84664eedd003a33" title="参照ポインタ先の保存フロアを抹消する / kill a saved floor and get an empty space" alt="" coords="381,81,491,108"/>
+<area shape="rect" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="586,31,641,57"/>
+<area shape="rect" href="uid-checker_8cpp.html#a59c71c10d8af1998dee4791396cb9d1d" title="ファイルのドロップパーミッションチェック / Hack – drop permissions" alt="" coords="553,81,673,108"/>
+<area shape="rect" href="uid-checker_8cpp.html#a10816f3dfe2970e4b4c89e5362304f83" title="ファイルのグラブパーミッションチェック / Hack – grab permissions" alt="" coords="553,132,673,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_ad9228d1c2498d0c6977f76d351102bc4_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_ad9228d1c2498d0c6977f76d351102bc4_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_ad9228d1c2498d0c6977f76d351102bc4_icgraph" id="afloor-leaver_8cpp_ad9228d1c2498d0c6977f76d351102bc4_icgraph">
+<area shape="rect" title=" " alt="" coords="653,56,792,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a092e95632a8987f70d45586dfe3d522f" title=" " alt="" coords="495,56,605,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="364,56,447,83"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="207,5,301,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="192,107,316,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0eca827b62c8655e7f8ca858e80859e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eca827b62c8655e7f8ca858e80859e8">&#9670;&nbsp;</a></span>set_grid_by_leaving_floor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_grid_by_leaving_floor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgrid__type.html">grid_type</a> **&#160;</td>
+          <td class="paramname"><em>g_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a0eca827b62c8655e7f8ca858e80859e8_cgraph.png" border="0" usemap="#afloor-leaver_8cpp_a0eca827b62c8655e7f8ca858e80859e8_cgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a0eca827b62c8655e7f8ca858e80859e8_cgraph" id="afloor-leaver_8cpp_a0eca827b62c8655e7f8ca858e80859e8_cgraph">
+<area shape="rect" title=" " alt="" coords="5,23,140,65"/>
+<area shape="rect" href="floor-save_8cpp.html#a236b93956898407a6e8110c8f4c16bfe" title="保存フロアIDから参照ポインタを得る / Get a pointer for an item of the saved_floors array." alt="" coords="241,5,319,32"/>
+<area shape="rect" href="floor-mode-changer_8cpp.html#ac3d4752c4acfdb1dfe04cdbcd562c1ec" title="フロア切り替え時の処理フラグを追加する / Prepare mode flags of changing floor" alt="" coords="188,56,372,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a0eca827b62c8655e7f8ca858e80859e8_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_a0eca827b62c8655e7f8ca858e80859e8_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a0eca827b62c8655e7f8ca858e80859e8_icgraph" id="afloor-leaver_8cpp_a0eca827b62c8655e7f8ca858e80859e8_icgraph">
+<area shape="rect" title=" " alt="" coords="653,49,788,90"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a092e95632a8987f70d45586dfe3d522f" title=" " alt="" coords="495,56,605,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="364,56,447,83"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="207,5,301,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="192,107,316,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8665adb3738f60520d0b3f4cec4aeafc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8665adb3738f60520d0b3f4cec4aeafc">&#9670;&nbsp;</a></span>sweep_preserving_pet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void sweep_preserving_pet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>master_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a8665adb3738f60520d0b3f4cec4aeafc_cgraph.png" border="0" usemap="#afloor-leaver_8cpp_a8665adb3738f60520d0b3f4cec4aeafc_cgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a8665adb3738f60520d0b3f4cec4aeafc_cgraph" id="afloor-leaver_8cpp_a8665adb3738f60520d0b3f4cec4aeafc_cgraph">
+<area shape="rect" title=" " alt="" coords="5,613,155,640"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a966fa20c8558fa0beff9bf3f87e2a138" title=" " alt="" coords="385,142,544,183"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="203,639,337,665"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="241,385,299,412"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="211,689,329,716"/>
+<area shape="rect" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="652,157,723,184"/>
+<area shape="rect" href="line-of-sight_8cpp.html#adff83a1e8c9d47236408737740652a4b" title="LOS(Line Of Sight / 視線が通っているか)の判定を行う。" alt="" coords="668,5,707,32"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="592,309,783,336"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="599,360,776,387"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="595,411,780,437"/>
+<area shape="rect" href="cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="617,56,757,83"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="645,107,730,133"/>
+<area shape="rect" href="cave_8cpp.html#adc0f94b19918e1965ddd320ae168d551" title=" " alt="" coords="859,5,961,32"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="869,208,951,235"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="869,56,951,83"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="855,107,965,133"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="855,157,965,184"/>
+<area shape="rect" href="floor-object_8cpp.html#af338285652093066df1fda01f9b4fed2" title="オブジェクトを削除する / Delete a dungeon object" alt="" coords="403,1069,526,1096"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="652,1120,723,1147"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ad491b75a9a598cb361c671e23737d1fb" title=" " alt="" coords="418,259,511,285"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="607,667,767,693"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="607,772,767,799"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="596,719,779,745"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="605,829,770,856"/>
+<area shape="rect" href="monster-info_8cpp.html#a3228fe93eae0423e4bea1d418088d3c3" title="モンスターの真の種族を返す / Extract monster race pointer of a monster&#39;s true form" alt="" coords="427,1019,503,1045"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ab59547e7afcd9ac0b20e21f7c1d029aa" title="モンスターの混乱状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CONFUSED]&quot;, notice observable changes" alt="" coords="388,461,541,488"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="395,512,534,539"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ac81c0952258c31c0bb053742f5d63e0f" title="モンスターの加速状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes" alt="" coords="403,613,526,640"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a0f21d1420ce64b3a07b8d58396edbdfd" title="モンスターの無敵状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes" alt="" coords="393,664,537,691"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a9e49c39d8a53ae6e809e8c3662c97411" title="モンスターの恐慌状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_MONFEAR]&quot;, notice observable changes" alt="" coords="391,715,538,741"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="401,765,528,792"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a04c7c898df8f01472c8979c7a08b0925" title="モンスターの朦朧状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_STUNNED]&quot;, notice observable changes" alt="" coords="391,563,538,589"/>
+<area shape="rect" href="floor-object_8cpp.html#a7018087455117fe19ab6cce1095c88a3" title="床上、モンスター所持でスタックされたアイテムを削除しスタックを補完する / Excise a dungeon object from any stacks" alt="" coords="624,1019,751,1045"/>
+<area shape="rect" href="hook-checker_8cpp.html#ac4cc92b3d4f6e42f4c5a1e729382ee6e" title=" " alt="" coords="831,1044,989,1071"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="642,968,733,995"/>
+<area shape="rect" href="monster-info_8cpp.html#a5aa4423e957eb44637308bdbf765ba78" title=" " alt="" coords="648,892,727,919"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="855,576,965,603"/>
+<area shape="rect" href="monster-status_8cpp.html#af5149aae69ef6e936f6c691c691cd95a" title="モンスターの時限ステータスリストを追加する" alt="" coords="644,564,731,591"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#acd89fe746188ecd270865d3bd1a3a4ae" title="モンスターの時限ステータスリストを削除" alt="" coords="634,615,741,641"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a8665adb3738f60520d0b3f4cec4aeafc_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_a8665adb3738f60520d0b3f4cec4aeafc_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a8665adb3738f60520d0b3f4cec4aeafc_icgraph" id="afloor-leaver_8cpp_a8665adb3738f60520d0b3f4cec4aeafc_icgraph">
+<area shape="rect" title=" " alt="" coords="637,56,787,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a9473eba7ae635c7cb94c6cf0d7426659" title="フロア移動時のペット保存処理 / Preserve_pets" alt="" coords="495,56,589,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="364,56,447,83"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="207,5,301,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="192,107,316,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2de870c49bf41555e31caf517451147c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2de870c49bf41555e31caf517451147c">&#9670;&nbsp;</a></span>update_upper_lower_or_floor_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void update_upper_lower_or_floor_id </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsaved__floor__type.html">saved_floor_type</a> *&#160;</td>
+          <td class="paramname"><em>sf_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-leaver_8cpp_a2de870c49bf41555e31caf517451147c_icgraph.png" border="0" usemap="#afloor-leaver_8cpp_a2de870c49bf41555e31caf517451147c_icgraph" alt=""/></div>
+<map name="afloor-leaver_8cpp_a2de870c49bf41555e31caf517451147c_icgraph" id="afloor-leaver_8cpp_a2de870c49bf41555e31caf517451147c_icgraph">
+<area shape="rect" title=" " alt="" coords="653,49,791,90"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a092e95632a8987f70d45586dfe3d522f" title=" " alt="" coords="495,56,605,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="364,56,447,83"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="207,5,301,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="192,107,316,133"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分12秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

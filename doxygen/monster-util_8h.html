@@ -1,0 +1,603 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/monster/monster-util.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f68a7f142a463f095d22e67af9193b2d.html">monster</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">monster-util.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+monster-util.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-util_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2monster_2monster-util_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2monster_2monster-util_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2monster_2monster-util_8h">
+<area shape="rect" title=" " alt="" coords="348,5,536,61"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="377,109,507,136"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="31,184,122,211"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="23,348,165,375"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,184,607,211"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,184,245,211"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,184,367,211"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,184,492,211"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,184,807,211"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="943,184,1090,211"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="169,266,291,293"/>
+<area shape="rect" title=" " alt="" coords="386,266,461,293"/>
+<area shape="rect" title=" " alt="" coords="485,266,567,293"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="592,259,743,300"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="767,259,920,300"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="944,259,1089,300"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1114,259,1287,300"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1311,259,1437,300"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1461,266,1580,293"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1604,266,1715,293"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-util_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2monster_2monster-util_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2monster_2monster-util_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2monster_2monster-util_8hdep">
+<area shape="rect" title=" " alt="" coords="3017,5,3205,61"/>
+<area shape="rect" href="activation-execution_8cpp.html" title=" " alt="" coords="5,109,193,165"/>
+<area shape="rect" href="inventory-initializer_8cpp.html" title=" " alt="" coords="217,109,405,165"/>
+<area shape="rect" href="game-play_8cpp.html" title=" " alt="" coords="430,109,627,165"/>
+<area shape="rect" href="player-processor_8cpp.html" title=" " alt="" coords="651,109,851,165"/>
+<area shape="rect" href="dungeon-processor_8cpp.html" title=" " alt="" coords="876,109,1064,165"/>
+<area shape="rect" href="quest_8cpp.html" title=" " alt="" coords="1088,109,1276,165"/>
+<area shape="rect" href="cave-generator_8cpp.html" title=" " alt="" coords="1300,109,1488,165"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html" title=" " alt="" coords="1512,109,1700,165"/>
+<area shape="rect" href="floor-generator_8cpp.html" title=" " alt="" coords="1724,109,1912,165"/>
+<area shape="rect" href="wild_8cpp.html" title=" " alt="" coords="1936,109,2124,165"/>
+<area shape="rect" href="trap_8cpp.html" title=" " alt="" coords="2149,117,2357,158"/>
+<area shape="rect" href="arena_8cpp.html" title=" " alt="" coords="2381,109,2569,165"/>
+<area shape="rect" href="bounty_8cpp.html" title=" " alt="" coords="2593,109,2781,165"/>
+<area shape="rect" href="monster-list_8cpp.html" title=" " alt="" coords="2805,109,2993,165"/>
+<area shape="rect" href="monster-processor_8cpp.html" title=" " alt="" coords="3017,109,3205,165"/>
+<area shape="rect" href="monster-status-setter_8cpp.html" title=" " alt="" coords="3229,109,3417,165"/>
+<area shape="rect" href="monster-util_8cpp.html" title=" " alt="" coords="3441,109,3629,165"/>
+<area shape="rect" href="monster-generator_8cpp.html" title=" " alt="" coords="3653,109,3841,165"/>
+<area shape="rect" href="monster-summon_8cpp.html" title=" " alt="" coords="3865,109,4053,165"/>
+<area shape="rect" href="one-monster-placer_8cpp.html" title=" " alt="" coords="4077,109,4268,165"/>
+<area shape="rect" href="monster-race-hook_8cpp.html" title=" " alt="" coords="4292,109,4480,165"/>
+<area shape="rect" href="mspell-special_8cpp.html" title=" " alt="" coords="4504,109,4692,165"/>
+<area shape="rect" href="summon-checker_8cpp.html" title=" " alt="" coords="4716,109,4904,165"/>
+<area shape="rect" href="apply-magic-others_8cpp.html" title=" " alt="" coords="4929,109,5139,165"/>
+<area shape="rect" href="eldritch-horror_8cpp.html" title=" " alt="" coords="5164,109,5352,165"/>
+<area shape="rect" href="rooms-pit-nest_8cpp.html" title=" " alt="" coords="5377,109,5582,165"/>
+<area shape="rect" href="rooms-special_8cpp.html" title=" " alt="" coords="5606,109,5811,165"/>
+<area shape="rect" href="monster-ball_8cpp.html" title=" " alt="" coords="5836,109,6024,165"/>
+<area shape="rect" href="spells-polymorph_8cpp.html" title=" " alt="" coords="6048,109,6236,165"/>
+</map>
+</div>
+</div>
+<p><a href="monster-util_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:a2d58871776d9969de52bddf9633fd5f6"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">monsterrace_hook_type</a>) (<a class="el" href="structplayer__type.html">player_type</a> *, <a class="el" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a>)</td></tr>
+<tr class="separator:a2d58871776d9969de52bddf9633fd5f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a0143e2894ebbb4c7c10407c05864d541"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="summon-types_8h.html#a89c2c6b840344f16466ff955a555bf64">summon_type</a> int <a class="el" href="summon-types_8h.html#a89c2c6b840344f16466ff955a555bf64">summon_type</a> <a class="el" href="monster-util_8cpp.html#ab3430ec409bb5b43681b8c0b2a8ee010">summon_specific_type</a> <a class="el" href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">monsterrace_hook_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-util_8h.html#a0143e2894ebbb4c7c10407c05864d541">get_monster_hook</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="memdesc:a0143e2894ebbb4c7c10407c05864d541"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの現在の広域マップ座標から得た地勢を元にモンスターの生成条件関数を返す  <a href="monster-util_8h.html#a0143e2894ebbb4c7c10407c05864d541">[詳解]</a><br /></td></tr>
+<tr class="separator:a0143e2894ebbb4c7c10407c05864d541"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fc01fd90dd6a66966721b7c06902394"><td class="memItemLeft" align="right" valign="top"><a class="el" href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">monsterrace_hook_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-util_8h.html#a9fc01fd90dd6a66966721b7c06902394">get_monster_hook2</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="memdesc:a9fc01fd90dd6a66966721b7c06902394"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定された広域マップ座標の地勢を元にモンスターの生成条件関数を返す  <a href="monster-util_8h.html#a9fc01fd90dd6a66966721b7c06902394">[詳解]</a><br /></td></tr>
+<tr class="separator:a9fc01fd90dd6a66966721b7c06902394"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af107ab42bf5d9ca42109bbc2f53b3698"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-util_8h.html#af107ab42bf5d9ca42109bbc2f53b3698">get_mon_num_prep</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">monsterrace_hook_type</a> hook1, <a class="el" href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">monsterrace_hook_type</a> hook2)</td></tr>
+<tr class="memdesc:af107ab42bf5d9ca42109bbc2f53b3698"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスター生成テーブルの重み修正  <a href="monster-util_8h.html#af107ab42bf5d9ca42109bbc2f53b3698">[詳解]</a><br /></td></tr>
+<tr class="separator:af107ab42bf5d9ca42109bbc2f53b3698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a119044a0722d084a4fa94a064a6923d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-util_8h.html#a119044a0722d084a4fa94a064a6923d8">get_mon_num_prep_bounty</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="memdesc:a119044a0722d084a4fa94a064a6923d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスター生成テーブルの重み修正(賞金首選定用)  <a href="monster-util_8h.html#a119044a0722d084a4fa94a064a6923d8">[詳解]</a><br /></td></tr>
+<tr class="separator:a119044a0722d084a4fa94a064a6923d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:ad4d04e142ecbea24d66693385c2bcf4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-util_8h.html#ad4d04e142ecbea24d66693385c2bcf4a">hack_m_idx</a></td></tr>
+<tr class="separator:ad4d04e142ecbea24d66693385c2bcf4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e715a3f9b4cbb96737347f9b0ca01ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-util_8h.html#a9e715a3f9b4cbb96737347f9b0ca01ba">hack_m_idx_ii</a></td></tr>
+<tr class="separator:a9e715a3f9b4cbb96737347f9b0ca01ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6f10d6b800c27bcdaeb7b2f7a5f5eda"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-util_8h.html#ad6f10d6b800c27bcdaeb7b2f7a5f5eda">chameleon_change_m_idx</a></td></tr>
+<tr class="memdesc:ad6f10d6b800c27bcdaeb7b2f7a5f5eda"><td class="mdescLeft">&#160;</td><td class="mdescRight">カメレオンの変身先モンスターIDを受け渡すためのグローバル変数  <a href="monster-util_8h.html#ad6f10d6b800c27bcdaeb7b2f7a5f5eda">[詳解]</a><br /></td></tr>
+<tr class="separator:ad6f10d6b800c27bcdaeb7b2f7a5f5eda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">型定義詳解</h2>
+<a id="a2d58871776d9969de52bddf9633fd5f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d58871776d9969de52bddf9633fd5f6">&#9670;&nbsp;</a></span>monsterrace_hook_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>(* monsterrace_hook_type) (<a class="el" href="structplayer__type.html">player_type</a> *, <a class="el" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="af107ab42bf5d9ca42109bbc2f53b3698"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af107ab42bf5d9ca42109bbc2f53b3698">&#9670;&nbsp;</a></span>get_mon_num_prep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> get_mon_num_prep </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">monsterrace_hook_type</a>&#160;</td>
+          <td class="paramname"><em>hook1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">monsterrace_hook_type</a>&#160;</td>
+          <td class="paramname"><em>hook2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスター生成テーブルの重み修正 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td></td></tr>
+    <tr><td class="paramname">hook1</td><td>生成制約関数1 (NULL の場合、制約なし) </td></tr>
+    <tr><td class="paramname">hook2</td><td>生成制約関数2 (NULL の場合、制約なし) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>常に 0</dd></dl>
+<p><a class="el" href="monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する">get_mon_num()</a> を呼ぶ前に <a class="el" href="monster-util_8cpp.html#ae37ebccef3dd7dacea088110d0388d49" title="モンスター生成テーブルの重み修正">get_mon_num_prep()</a> 系関数のいずれかを呼ぶこと。 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-util_8h_af107ab42bf5d9ca42109bbc2f53b3698_cgraph.png" border="0" usemap="#amonster-util_8h_af107ab42bf5d9ca42109bbc2f53b3698_cgraph" alt=""/></div>
+<map name="amonster-util_8h_af107ab42bf5d9ca42109bbc2f53b3698_cgraph" id="amonster-util_8h_af107ab42bf5d9ca42109bbc2f53b3698_cgraph">
+<area shape="rect" title="モンスター生成テーブルの重み修正" alt="" coords="5,107,141,133"/>
+<area shape="rect" href="monster-util_8cpp.html#af18242b02cd87d93e75b543d398cbbf2" title="モンスター生成テーブルの重みを指定条件に従って変更する。" alt="" coords="189,107,347,133"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="417,56,507,83"/>
+<area shape="rect" href="monster-util_8cpp.html#aa95bd63b3ca8cb534bbcc8fbc6517610" title="指定されたモンスター種族がダンジョンの制限にかかるかどうかをチェックする / Some dungeon types restrict the possible monsters." alt="" coords="395,150,529,191"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="619,5,698,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="625,56,692,83"/>
+<area shape="rect" href="class_flag_group.html#a85a4dd28bb671ffe973b1fd50a0be4d7" title="フラグ集合のいずれかのフラグがONかどうかを調べる" alt="" coords="603,107,714,133"/>
+<area shape="rect" href="class_flag_group.html#a806f557d9a55d4fd21e0c43492066b11" title="入力イテレータで指定した範囲のリストに含まれるフラグがすべてONかどうかを調べる" alt="" coords="585,157,733,184"/>
+<area shape="rect" href="class_flag_group.html#a57a928e50a2473024e69c349bcd62525" title="入力イテレータで指定した範囲のリストに含まれるフラグのいずれかがONかどうかを調べる" alt="" coords="788,233,944,260"/>
+<area shape="rect" href="class_flag_group.html#af6327bd9a9e463469a9aa5daaad3346a" title="入力イテレータで指定した範囲のリストに含まれるフラグがすべてOFFかどうかを調べる" alt="" coords="577,259,740,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-util_8h_af107ab42bf5d9ca42109bbc2f53b3698_icgraph.png" border="0" usemap="#amonster-util_8h_af107ab42bf5d9ca42109bbc2f53b3698_icgraph" alt=""/></div>
+<map name="amonster-util_8h_af107ab42bf5d9ca42109bbc2f53b3698_icgraph" id="amonster-util_8h_af107ab42bf5d9ca42109bbc2f53b3698_icgraph">
+<area shape="rect" title="モンスター生成テーブルの重み修正" alt="" coords="1177,955,1313,981"/>
+<area shape="rect" href="monster-generator_8cpp.html#acf1750358f03ad12021678aa270bba5e" title="指定地点に1種類のモンスター種族による群れを生成する" alt="" coords="603,904,691,931"/>
+<area shape="rect" href="cave-generator_8cpp.html#a9b7cb506f74a6ee856853b073a165ea3" title="ダンジョン生成のメインルーチン / Generate a new dungeon level" alt="" coords="5,575,81,601"/>
+<area shape="rect" href="wild_8cpp.html#ad2b39f3334022fd4e424dbc1029c79f4" title="広域マップの生成 / Build the wilderness area outside of the town." alt="" coords="151,1056,262,1083"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="971,448,1109,475"/>
+<area shape="rect" href="inventory-initializer_8cpp.html#ae23e47e554ecbcd0152fb87ba8638f88" title=" " alt="" coords="579,43,715,69"/>
+<area shape="rect" href="rooms-pit-nest_8cpp.html#a374b4e29d2c311751902ed314494ef82" title="タイプ13の部屋…開門トラップpitの生成 / Type 13 – Trapped monster pits" alt="" coords="794,701,889,728"/>
+<area shape="rect" href="rooms-special_8cpp.html#a06f16c514e2a57fdf3fac3b902aa2650" title="タイプ15の部屋…ガラス部屋の生成 / Type 15 – glass rooms" alt="" coords="794,752,889,779"/>
+<area shape="rect" href="rooms-pit-nest_8cpp.html#ad3758d34c04bf3a6abb40261f6b85540" title="タイプ5の部屋…nestを生成する / Type 5 – Monster nests" alt="" coords="797,803,885,829"/>
+<area shape="rect" href="rooms-pit-nest_8cpp.html#a3e3435cd95a7c287bee760de7feafe84" title="タイプ6の部屋…pitを生成する / Type 6 – Monster pits" alt="" coords="797,955,885,981"/>
+<area shape="rect" href="monster-list_8cpp.html#ae665a55b0d2be7b41b9d88eaf4b7dbdb" title="モンスターの変身処理" alt="" coords="966,904,1114,931"/>
+<area shape="rect" href="quest_8cpp.html#a11dcbb9d5b4df77d2d42877afecd26de" title="ランダムクエストの討伐ユニークを決める / Determine the random quest uniques" alt="" coords="951,955,1129,981"/>
+<area shape="rect" href="floor-generator_8cpp.html#afa77bd7cd83eaa3080e80033d6f1c20b" title="固定マップクエストのフロア生成 / Generate a quest level" alt="" coords="971,1005,1109,1032"/>
+<area shape="rect" href="one-monster-placer_8cpp.html#ac675d2269f8f47a012edb38478b6107e" title="モンスターの表層IDを設定する / Set initial racial appearance of a monster" alt="" coords="971,1056,1109,1083"/>
+<area shape="rect" href="monster-generator_8cpp.html#ae384acae95b077cd4fa9b1bbb573f083" title="一般的なモンスター生成処理のメインルーチン / Attempt to place a monster of the given race at the given location" alt="" coords="788,1056,895,1083"/>
+<area shape="rect" href="monster-generator_8cpp.html#a75f22366aa0266c858e15d023f9bb91b" title="一般的なモンスター生成処理のサブルーチン / Attempt to place a monster of the given race at the given location" alt="" coords="973,853,1107,880"/>
+<area shape="rect" href="player-processor_8cpp.html#ad50905dec80d40f76bc1809bf3dfe74c" title=" " alt="" coords="785,1005,897,1032"/>
+<area shape="rect" href="monster-summon_8cpp.html#a6e66d06ca9502871c59a2a58c15708e5" title="モンスターを召喚により配置する / Place a monster (of the specified &quot;type&quot;) near the given location." alt="" coords="780,1107,903,1133"/>
+<area shape="rect" href="eldritch-horror_8cpp.html#a6cef6cacb4d15880ba4cab6ad108810e" title="ELDRITCH_HORRORによるプレイヤーの精神破壊処理" alt="" coords="994,1309,1086,1336"/>
+<area shape="rect" href="arena_8cpp.html#a8f76d0f962bd2705b72a72823e77f9e1" title="モンスター闘技場に参加するモンスターを更新する。" alt="" coords="332,1335,513,1361"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a4e7bf3a31fe42d15d501c158a73315c7" title="pit/nestの基準となる単種モンスターを決める /" alt="" coords="981,1411,1099,1437"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a67b465e74ca1e0ed82c0bbc7f4ce2e02" title="pit/nestの基準となるモンスターシンボルを決める /" alt="" coords="975,1461,1105,1488"/>
+<area shape="rect" href="monster-generator_8cpp.html#a337e4104356fdcc868464def8b309c5b" title="ダンジョンの初期配置モンスターを生成1回生成する / Attempt to allocate a random monster in the dungeon." alt="" coords="371,1107,474,1133"/>
+<area shape="rect" href="wizard-spells_8cpp.html#af5919ee18af8d65ec16792a43282675b" title="ウィザードモード用モンスターの群れ生成 / Summon a horde of monsters" alt="" coords="354,904,491,931"/>
+<area shape="rect" href="cave-generator_8cpp.html#a677fcfde8c563a84f490206cdd1d8774" title=" " alt="" coords="129,1157,284,1184"/>
+<area shape="rect" href="floor-changer_8cpp.html#a4fc5172d58a596bc101d833ae8066b68" title=" " alt="" coords="137,1107,276,1133"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="154,1259,259,1285"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="148,752,265,779"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="794,448,889,475"/>
+<area shape="rect" href="spells-object_8cpp.html#ab57eadbdf0c4a98fa5ed43800743e2e9" title="誰得ドロップを行う。" alt="" coords="601,651,692,677"/>
+<area shape="rect" href="mind-archer_8cpp.html#a5c7ac014262f5236c69ea18c406fee25" title="「弾/矢の製造」処理 / do_cmd_cast calls this function if the player&#39;s class is &#39;archer&#39;." alt="" coords="596,701,697,728"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#a3bd34825cd5d9e92c7474a31576ac7c0" title="願ったが消えてしまった場合のメッセージ" alt="" coords="363,625,482,652"/>
+<area shape="rect" href="monster-death_8cpp.html#aea0de54fa5a454fe0ffe114223355316" title=" " alt="" coords="600,93,693,120"/>
+<area shape="rect" href="monster-death_8cpp.html#a6ad70c6340e25c826a90a7d1c0804175" title=" " alt="" coords="600,144,693,171"/>
+<area shape="rect" href="bounty_8cpp.html#a6aa3c9347a136a6ff64e84d0dd306057" title="賞金首の引き換え処理 / Get prize" alt="" coords="590,195,703,221"/>
+<area shape="rect" href="floor-object_8cpp.html#adbba66fa3bc17cfd4ebeff0ee923a304" title="生成階に応じたベースアイテムの生成を行う。 Attempt to make an object (normal or good/great)" alt="" coords="599,245,695,272"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a9ae29bdeb891416b7ebcc0928120f940" title=" " alt="" coords="577,296,716,323"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#aeab5aaf4660ee8ea5c91b6c49d3c1a6a" title=" " alt="" coords="578,347,715,373"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a86ca898ccdc86d14979a1311bb8878d0" title=" " alt="" coords="586,397,707,424"/>
+<area shape="rect" href="monster-death_8cpp.html#a630cf8a7d0a3e31b96992334c0220b24" title=" " alt="" coords="561,448,732,475"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#a3ded96400ca064dccf4124b59f3b0588" title=" " alt="" coords="598,853,695,880"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="599,499,694,525"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a3a8736b020ffd037a5337cdebed86b88" title="任意のベースアイテム生成のメインルーチン / Wizard routine for creating objects &#45;RAK&#45;" alt="" coords="365,752,481,779"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="593,600,701,627"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a119044a0722d084a4fa94a064a6923d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a119044a0722d084a4fa94a064a6923d8">&#9670;&nbsp;</a></span>get_mon_num_prep_bounty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> get_mon_num_prep_bounty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスター生成テーブルの重み修正(賞金首選定用) </p>
+<dl class="section return"><dt>戻り値</dt><dd>常に 0</dd></dl>
+<p><a class="el" href="monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する">get_mon_num()</a> を呼ぶ前に get_mon_num_prep 系関数のいずれかを呼ぶこと。 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-util_8h_a119044a0722d084a4fa94a064a6923d8_cgraph.png" border="0" usemap="#amonster-util_8h_a119044a0722d084a4fa94a064a6923d8_cgraph" alt=""/></div>
+<map name="amonster-util_8h_a119044a0722d084a4fa94a064a6923d8_cgraph" id="amonster-util_8h_a119044a0722d084a4fa94a064a6923d8_cgraph">
+<area shape="rect" title="モンスター生成テーブルの重み修正(賞金首選定用)" alt="" coords="5,107,188,133"/>
+<area shape="rect" href="monster-util_8cpp.html#af18242b02cd87d93e75b543d398cbbf2" title="モンスター生成テーブルの重みを指定条件に従って変更する。" alt="" coords="236,107,393,133"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="463,56,554,83"/>
+<area shape="rect" href="monster-util_8cpp.html#aa95bd63b3ca8cb534bbcc8fbc6517610" title="指定されたモンスター種族がダンジョンの制限にかかるかどうかをチェックする / Some dungeon types restrict the possible monsters." alt="" coords="441,150,576,191"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="666,5,745,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="672,56,739,83"/>
+<area shape="rect" href="class_flag_group.html#a85a4dd28bb671ffe973b1fd50a0be4d7" title="フラグ集合のいずれかのフラグがONかどうかを調べる" alt="" coords="650,107,761,133"/>
+<area shape="rect" href="class_flag_group.html#a806f557d9a55d4fd21e0c43492066b11" title="入力イテレータで指定した範囲のリストに含まれるフラグがすべてONかどうかを調べる" alt="" coords="631,157,779,184"/>
+<area shape="rect" href="class_flag_group.html#a57a928e50a2473024e69c349bcd62525" title="入力イテレータで指定した範囲のリストに含まれるフラグのいずれかがONかどうかを調べる" alt="" coords="835,233,991,260"/>
+<area shape="rect" href="class_flag_group.html#af6327bd9a9e463469a9aa5daaad3346a" title="入力イテレータで指定した範囲のリストに含まれるフラグがすべてOFFかどうかを調べる" alt="" coords="624,259,787,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-util_8h_a119044a0722d084a4fa94a064a6923d8_icgraph.png" border="0" usemap="#amonster-util_8h_a119044a0722d084a4fa94a064a6923d8_icgraph" alt=""/></div>
+<map name="amonster-util_8h_a119044a0722d084a4fa94a064a6923d8_icgraph" id="amonster-util_8h_a119044a0722d084a4fa94a064a6923d8_icgraph">
+<area shape="rect" title="モンスター生成テーブルの重み修正(賞金首選定用)" alt="" coords="637,97,820,123"/>
+<area shape="rect" href="bounty_8cpp.html#a2f618d420b0b8cc1f3a970226abc33bd" title="賞金首となるユニークを確定する / Determine bounty uniques" alt="" coords="412,71,589,98"/>
+<area shape="rect" href="bounty_8cpp.html#a44a22a03177d5ed8ec96a36eced9bd20" title="今日の賞金首を確定する / Determine today&#39;s bounty monster" alt="" coords="421,122,580,149"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="222,71,357,98"/>
+<area shape="rect" href="load-zangband_8cpp.html#af8ad08c0b31741b60455810f2e6840c2" title=" " alt="" coords="215,5,364,47"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="43,71,129,98"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a34d0ca3e33cf6837d9432e08fd5c964b" title=" " alt="" coords="21,13,151,39"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="237,223,342,250"/>
+<area shape="rect" href="world-loader_8cpp.html#aa075bb0c47076d0b68f05676a80374da" title=" " alt="" coords="241,122,338,149"/>
+<area shape="rect" href="cmd-inn_8cpp.html#a75794154e9cd091b741077808704f853" title="宿屋への宿泊実行処理" alt="" coords="254,173,325,199"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="24,223,148,250"/>
+<area shape="rect" href="world-loader_8cpp.html#a41923212d938658a4e113ec1b6e1936f" title=" " alt="" coords="5,122,167,149"/>
+<area shape="rect" href="cmd-inn_8cpp.html#a8e693351e0e3a14f48233f3ed3489865" title="宿屋を利用する" alt="" coords="45,173,127,199"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0143e2894ebbb4c7c10407c05864d541"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0143e2894ebbb4c7c10407c05864d541">&#9670;&nbsp;</a></span>get_monster_hook()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="summon-types_8h.html#a89c2c6b840344f16466ff955a555bf64">summon_type</a> int <a class="el" href="summon-types_8h.html#a89c2c6b840344f16466ff955a555bf64">summon_type</a> <a class="el" href="monster-util_8cpp.html#ab3430ec409bb5b43681b8c0b2a8ee010">summon_specific_type</a> <a class="el" href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">monsterrace_hook_type</a> get_monster_hook </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーの現在の広域マップ座標から得た地勢を元にモンスターの生成条件関数を返す </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>地勢にあったモンスターの生成条件関数 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-util_8h_a0143e2894ebbb4c7c10407c05864d541_cgraph.png" border="0" usemap="#amonster-util_8h_a0143e2894ebbb4c7c10407c05864d541_cgraph" alt=""/></div>
+<map name="amonster-util_8h_a0143e2894ebbb4c7c10407c05864d541_cgraph" id="amonster-util_8h_a0143e2894ebbb4c7c10407c05864d541_cgraph">
+<area shape="rect" title="プレイヤーの現在の広域マップ座標から得た地勢を元にモンスターの生成条件関数を返す" alt="" coords="5,208,135,235"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a39910322f5a34bc0a256b77235af7181" title="モンスターがダンジョンに出現するかどうかを返す" alt="" coords="185,5,323,32"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a0cf41053ade6910fc9403386ff9f8ec9" title="モンスターが草原に出現するかどうかを返す" alt="" coords="193,56,315,83"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a73128b07a20ccc36cb4d63fb78263e2f" title="モンスターが山地に出現するかどうかを返す" alt="" coords="183,107,325,133"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#ad64caa4aa75d0058feeb9d8a6db58040" title="モンスターが海洋に出現するかどうかを返す" alt="" coords="192,157,316,184"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a96dfd435647b6d487f493591cb070097" title="モンスターが海岸に出現するかどうかを返す" alt="" coords="193,208,315,235"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a26a85576931d44661ee5e048b575d042" title="モンスターが町に出現するかどうかを返す" alt="" coords="196,259,312,285"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#aac08013e9a4881c34e2b9a5c45e3f887" title="モンスターが火山に出現するかどうかを返す" alt="" coords="188,309,320,336"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#afe701dd31836b52c1fe77020e3048a53" title="モンスターが荒地に出現するかどうかを返す" alt="" coords="193,360,315,387"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a4297b08bb043f65b0cfd68b24d016161" title="モンスターが森林に出現するかどうかを返す" alt="" coords="195,411,313,437"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="373,5,479,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-util_8h_a0143e2894ebbb4c7c10407c05864d541_icgraph.png" border="0" usemap="#amonster-util_8h_a0143e2894ebbb4c7c10407c05864d541_icgraph" alt=""/></div>
+<map name="amonster-util_8h_a0143e2894ebbb4c7c10407c05864d541_icgraph" id="amonster-util_8h_a0143e2894ebbb4c7c10407c05864d541_icgraph">
+<area shape="rect" title="プレイヤーの現在の広域マップ座標から得た地勢を元にモンスターの生成条件関数を返す" alt="" coords="787,227,916,253"/>
+<area shape="rect" href="monster-generator_8cpp.html#acf1750358f03ad12021678aa270bba5e" title="指定地点に1種類のモンスター種族による群れを生成する" alt="" coords="607,227,695,253"/>
+<area shape="rect" href="cave-generator_8cpp.html#a9b7cb506f74a6ee856853b073a165ea3" title="ダンジョン生成のメインルーチン / Generate a new dungeon level" alt="" coords="19,24,95,51"/>
+<area shape="rect" href="wild_8cpp.html#ad2b39f3334022fd4e424dbc1029c79f4" title="広域マップの生成 / Build the wilderness area outside of the town." alt="" coords="183,176,293,203"/>
+<area shape="rect" href="floor-generator_8cpp.html#afa77bd7cd83eaa3080e80033d6f1c20b" title="固定マップクエストのフロア生成 / Generate a quest level" alt="" coords="373,277,511,304"/>
+<area shape="rect" href="monster-list_8cpp.html#a0710fed6abc6ff1c3abbfe559dd4d7d5" title="カメレオンの変身対象となるモンスターかどうか判定する / Hack – the index of the summoning monster" alt="" coords="564,353,739,380"/>
+<area shape="rect" href="one-monster-placer_8cpp.html#ad62d3f2fc0fd6706486db54b936337e4" title="たぬきの変身対象となるモンスターかどうか判定する / Hook for Tanuki" alt="" coords="578,429,725,456"/>
+<area shape="rect" href="monster-generator_8cpp.html#ae384acae95b077cd4fa9b1bbb573f083" title="一般的なモンスター生成処理のメインルーチン / Attempt to place a monster of the given race at the given location" alt="" coords="598,125,705,152"/>
+<area shape="rect" href="monster-generator_8cpp.html#a337e4104356fdcc868464def8b309c5b" title="ダンジョンの初期配置モンスターを生成1回生成する / Attempt to allocate a random monster in the dungeon." alt="" coords="391,125,493,152"/>
+<area shape="rect" href="wizard-spells_8cpp.html#af5919ee18af8d65ec16792a43282675b" title="ウィザードモード用モンスターの群れ生成 / Summon a horde of monsters" alt="" coords="373,227,511,253"/>
+<area shape="rect" href="cave-generator_8cpp.html#a677fcfde8c563a84f490206cdd1d8774" title=" " alt="" coords="161,75,315,101"/>
+<area shape="rect" href="floor-changer_8cpp.html#a4fc5172d58a596bc101d833ae8066b68" title=" " alt="" coords="169,24,307,51"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="185,125,291,152"/>
+<area shape="rect" href="floor-generator_8cpp.html#ac118aa928b4521013e62c16a0bc6b28f" title="ダンジョンのランダムフロアを生成する / Generates a random dungeon level &#45;RAK&#45; @parama player_ptr プレーヤーへの参照ポインタ" alt="" coords="5,227,108,253"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="179,227,297,253"/>
+<area shape="rect" href="monster-list_8cpp.html#ae665a55b0d2be7b41b9d88eaf4b7dbdb" title="モンスターの変身処理" alt="" coords="368,379,516,405"/>
+<area shape="rect" href="effect-monster-charm_8cpp.html#a2a5454454ef807a2f8913dd585cd30d3" title="モンスターボールで捕らえた処理" alt="" coords="156,328,320,355"/>
+<area shape="rect" href="monster-death_8cpp.html#a9c647c2a727aa1c903b9dc31b65f63e6" title="モンスターが死亡した時の処理 / Handle the &quot;death&quot; of a monster." alt="" coords="184,379,292,405"/>
+<area shape="rect" href="one-monster-placer_8cpp.html#a06b69a037c778b7d072e1f68bc705926" title="モンスターを一体生成する / Attempt to place a monster of the given race at the given location." alt="" coords="171,480,305,507"/>
+<area shape="rect" href="monster-processor_8cpp.html#ae6e21e8e28cd96eb7bc76f452416588a" title="モンスター単体の1ターン行動処理メインルーチン / Process a monster" alt="" coords="177,429,299,456"/>
+<area shape="rect" href="one-monster-placer_8cpp.html#ac675d2269f8f47a012edb38478b6107e" title="モンスターの表層IDを設定する / Set initial racial appearance of a monster" alt="" coords="373,455,511,481"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9fc01fd90dd6a66966721b7c06902394"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fc01fd90dd6a66966721b7c06902394">&#9670;&nbsp;</a></span>get_monster_hook2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="monster-util_8h.html#a2d58871776d9969de52bddf9633fd5f6">monsterrace_hook_type</a> get_monster_hook2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>指定された広域マップ座標の地勢を元にモンスターの生成条件関数を返す </p>
+<dl class="section return"><dt>戻り値</dt><dd>地勢にあったモンスターの生成条件関数 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-util_8h_a9fc01fd90dd6a66966721b7c06902394_cgraph.png" border="0" usemap="#amonster-util_8h_a9fc01fd90dd6a66966721b7c06902394_cgraph" alt=""/></div>
+<map name="amonster-util_8h_a9fc01fd90dd6a66966721b7c06902394_cgraph" id="amonster-util_8h_a9fc01fd90dd6a66966721b7c06902394_cgraph">
+<area shape="rect" title="指定された広域マップ座標の地勢を元にモンスターの生成条件関数を返す" alt="" coords="5,81,141,108"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a491f414066b5f068965d851bb2ff7628" title="モンスターが深い水地形に出現するかどうかを返す" alt="" coords="197,5,352,32"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#ae0aa948d2e63e18296ef9b17009a16dc" title="モンスターが通常の床地形に出現するかどうかを返す" alt="" coords="218,56,331,83"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a76cac86f713ed8ff8b9c10e4f85715ab" title="モンスターが溶岩地形に出現するかどうかを返す" alt="" coords="219,107,330,133"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a45995433cb0cbe8b84f49cdca20cc994" title="モンスターが浅い水地形に出現するかどうかを返す" alt="" coords="189,157,360,184"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a39910322f5a34bc0a256b77235af7181" title="モンスターがダンジョンに出現するかどうかを返す" alt="" coords="408,107,547,133"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="595,107,700,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-util_8h_a9fc01fd90dd6a66966721b7c06902394_icgraph.png" border="0" usemap="#amonster-util_8h_a9fc01fd90dd6a66966721b7c06902394_icgraph" alt=""/></div>
+<map name="amonster-util_8h_a9fc01fd90dd6a66966721b7c06902394_icgraph" id="amonster-util_8h_a9fc01fd90dd6a66966721b7c06902394_icgraph">
+<area shape="rect" title="指定された広域マップ座標の地勢を元にモンスターの生成条件関数を返す" alt="" coords="912,221,1048,248"/>
+<area shape="rect" href="monster-generator_8cpp.html#acf1750358f03ad12021678aa270bba5e" title="指定地点に1種類のモンスター種族による群れを生成する" alt="" coords="412,5,500,32"/>
+<area shape="rect" href="monster-generator_8cpp.html#ae384acae95b077cd4fa9b1bbb573f083" title="一般的なモンスター生成処理のメインルーチン / Attempt to place a monster of the given race at the given location" alt="" coords="567,411,673,437"/>
+<area shape="rect" href="monster-generator_8cpp.html#a75f22366aa0266c858e15d023f9bb91b" title="一般的なモンスター生成処理のサブルーチン / Attempt to place a monster of the given race at the given location" alt="" coords="729,247,864,273"/>
+<area shape="rect" href="monster-summon_8cpp.html#a6e66d06ca9502871c59a2a58c15708e5" title="モンスターを召喚により配置する / Place a monster (of the specified &quot;type&quot;) near the given location." alt="" coords="559,196,681,223"/>
+<area shape="rect" href="monster-generator_8cpp.html#a337e4104356fdcc868464def8b309c5b" title="ダンジョンの初期配置モンスターを生成1回生成する / Attempt to allocate a random monster in the dungeon." alt="" coords="229,208,332,235"/>
+<area shape="rect" href="wizard-spells_8cpp.html#af5919ee18af8d65ec16792a43282675b" title="ウィザードモード用モンスターの群れ生成 / Summon a horde of monsters" alt="" coords="212,56,349,83"/>
+<area shape="rect" href="cave-generator_8cpp.html#a677fcfde8c563a84f490206cdd1d8774" title=" " alt="" coords="5,119,160,145"/>
+<area shape="rect" href="floor-changer_8cpp.html#a4fc5172d58a596bc101d833ae8066b68" title=" " alt="" coords="13,183,152,209"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="30,247,135,273"/>
+<area shape="rect" href="wild_8cpp.html#ad2b39f3334022fd4e424dbc1029c79f4" title="広域マップの生成 / Build the wilderness area outside of the town." alt="" coords="27,297,138,324"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="24,56,141,83"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a6701b31a195109db285669bb4ff352d4" title="Vaultをフロアに配置する / Hack – fill in &quot;vault&quot; rooms" alt="" coords="415,604,497,631"/>
+<area shape="rect" href="treasure-deployment_8cpp.html#ab1a32c89c0fa8a2239925974c026c1bb" title="部屋にアイテム・モンスター・罠を配置する処理" alt="" coords="412,883,500,909"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#a3ded96400ca064dccf4124b59f3b0588" title=" " alt="" coords="407,411,505,437"/>
+<area shape="rect" href="vault-builder_8cpp.html#a90eb7bba8a6822db1505a25b34ce5b19" title="特殊な部屋地形向けにモンスターを配置する / Place some sleeping monsters near the given location" alt="" coords="401,469,511,496"/>
+<area shape="rect" href="rooms-vault_8cpp.html#af87b72a44a465c3a0456061e3ac7e47f" title="タイプ17の部屋…v_info.txtより固定特殊部屋を生成する / Type 17 – fixed special room (see &quot;v_info.txt&quot;)" alt="" coords="233,579,328,605"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a17ca0646a861d1ad35250031be7c2ac7" title="タイプ7の部屋…v_info.txtより小型vaultを生成する / Type 7 – simple vaults (see &quot;v_info.txt&quot;)" alt="" coords="237,629,325,656"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a47c214974df28e1e344ed5be2be4858a" title="タイプ8の部屋…v_info.txtより大型vaultを生成する / Type 8 – greater vaults (see &quot;v_info.txt&quot;)" alt="" coords="237,680,325,707"/>
+<area shape="rect" href="rooms-vault_8cpp.html#ae59c2509f35031c4baba4acfa48a54db" title=" " alt="" coords="217,832,344,859"/>
+<area shape="rect" href="rooms-vault_8cpp.html#aca383401adac57f6b0e95cc7a98a1ac4" title=" " alt="" coords="219,883,343,909"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a631964515a11098731531dcd26c3c051" title=" " alt="" coords="223,933,338,960"/>
+<area shape="rect" href="rooms-vault_8cpp.html#ab0e47ed9bd018aa796ae255ddc96f1a2" title=" " alt="" coords="208,984,353,1011"/>
+<area shape="rect" href="rooms-maze-vault_8cpp.html#a30e3f87bf6e20b98f3dd7e7c9c65d30e" title=" " alt="" coords="220,1035,341,1061"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a6c8bd68179a5d6cce2e8cc35abdedff3" title=" " alt="" coords="217,1085,344,1112"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a8be4ffd91c2f3558ad915b87b6a8be58" title=" " alt="" coords="221,731,340,757"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a59cb2292250b9d13b29fe4becf25ba84" title=" " alt="" coords="219,781,342,808"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#abf28dd4c313dd9d7d0f5ae6f2fe13ed7" title="固定マップ (クエスト＆街＆広域マップ)をフロアに生成する Parse a sub&#45;file of the &quot;extra info&quot;" alt="" coords="211,361,350,402"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a44d5e2c5c7ccd315f5e08f1ff2f935f7" title="タイプ12の部屋…ドーム型部屋の生成 / Type 12 – Build crypt room." alt="" coords="233,477,328,504"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a51dae11ee04d63f0275ba51d98e85929" title="タイプ3の部屋…十字型の部屋を生成する / Type 3 – Cross shaped rooms" alt="" coords="237,528,325,555"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a2f8e9286a1a69a7231e18e15ef037893" title="タイプ4の部屋…固定サイズの二重構造部屋を生成する / Type 4 – Large room with inner features" alt="" coords="237,427,325,453"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="ad6f10d6b800c27bcdaeb7b2f7a5f5eda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6f10d6b800c27bcdaeb7b2f7a5f5eda">&#9670;&nbsp;</a></span>chameleon_change_m_idx</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int chameleon_change_m_idx</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>カメレオンの変身先モンスターIDを受け渡すためのグローバル変数 </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000085">todo:</a></b></dt><dd>変数渡しの問題などもあるができればchameleon_change_m_idxのグローバル変数を除去し、関数引き渡しに移行すること </dd></dl>
+
+</div>
+</div>
+<a id="ad4d04e142ecbea24d66693385c2bcf4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4d04e142ecbea24d66693385c2bcf4a">&#9670;&nbsp;</a></span>hack_m_idx</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> hack_m_idx</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9e715a3f9b4cbb96737347f9b0ca01ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e715a3f9b4cbb96737347f9b0ca01ba">&#9670;&nbsp;</a></span>hack_m_idx_ii</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> hack_m_idx_ii</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時55分19秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/cmd-visual/cmd-visuals.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3ea632244ffb0a68f4dce9ba39cb9bd8.html">cmd-visual</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">cmd-visuals.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="cmd-visuals_8h_source.html">cmd-visual/cmd-visuals.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-draw_8h_source.html">cmd-visual/cmd-draw.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="visuals-reseter_8h_source.html">core/visuals-reseter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flavor-describer_8h_source.html">flavor/flavor-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flavor-types_8h_source.html">flavor/object-flavor-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flavor_8h_source.html">flavor/object-flavor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-options_8h_source.html">game-option/special-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="files-util_8h_source.html">io/files-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="read-pref-file_8h_source.html">io/read-pref-file.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="knowledge-features_8h_source.html">knowledge/knowledge-features.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="knowledge-items_8h_source.html">knowledge/knowledge-items.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="knowledge-monsters_8h_source.html">knowledge/knowledge-monsters.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lighting-level-table_8h_source.html">knowledge/lighting-level-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-generator_8h_source.html">object/object-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind_8h_source.html">object/object-kind.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-files_8h_source.html">util/angband-files.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+cmd-visuals.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-visuals_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-visual_2cmd-visuals_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-visual_2cmd-visuals_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-visual_2cmd-visuals_8cpp">
+<area shape="rect" title=" " alt="" coords="1193,5,1390,61"/>
+<area shape="rect" href="cmd-visuals_8h.html" title=" " alt="" coords="5,206,172,233"/>
+<area shape="rect" href="cmd-draw_8h.html" title=" " alt="" coords="39,117,194,143"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="218,117,357,143"/>
+<area shape="rect" href="visuals-reseter_8h.html" title=" " alt="" coords="381,117,527,143"/>
+<area shape="rect" href="flavor-describer_8h.html" title=" " alt="" coords="551,117,703,143"/>
+<area shape="rect" href="object-flavor-types_8h.html" title=" " alt="" coords="2221,109,2343,151"/>
+<area shape="rect" href="object-flavor_8h.html" title=" " alt="" coords="728,117,863,143"/>
+<area shape="rect" href="special-options_8h.html" title=" " alt="" coords="887,109,1026,151"/>
+<area shape="rect" href="files-util_8h.html" title=" " alt="" coords="771,295,862,322"/>
+<area shape="rect" href="input-key-acceptor_8h.html" title=" " alt="" coords="817,206,971,233"/>
+<area shape="rect" href="read-pref-file_8h.html" title=" " alt="" coords="962,295,1079,322"/>
+<area shape="rect" href="knowledge-features_8h.html" title=" " alt="" coords="1047,199,1195,240"/>
+<area shape="rect" href="knowledge-items_8h.html" title=" " alt="" coords="1159,288,1307,329"/>
+<area shape="rect" href="knowledge-monsters_8h.html" title=" " alt="" coords="1271,199,1419,240"/>
+<area shape="rect" href="lighting-level-table_8h.html" title=" " alt="" coords="1393,109,1521,151"/>
+<area shape="rect" href="sound-of-music_8h.html" title=" " alt="" coords="1616,206,1769,233"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="1997,109,2146,151"/>
+<area shape="rect" href="object-generator_8h.html" title=" " alt="" coords="1715,295,1881,322"/>
+<area shape="rect" href="object-kind_8h.html" title=" " alt="" coords="2792,206,2927,233"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="1845,206,2007,233"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="2367,117,2525,143"/>
+<area shape="rect" href="angband-files_8h.html" title=" " alt="" coords="2031,206,2162,233"/>
+<area shape="rect" href="int-char-converter_8h.html" title=" " alt="" coords="2549,117,2703,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="2187,206,2353,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1305,385,1435,411"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1818,467,1909,493"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1933,467,2023,493"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="913,467,1011,493"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1035,467,1134,493"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="1159,467,1259,493"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1283,467,1457,493"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1482,467,1623,493"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1647,467,1794,493"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="2145,541,2256,568"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="1495,206,1592,233"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="1433,295,1590,322"/>
+<area shape="rect" title=" " alt="" coords="2239,295,2293,322"/>
+<area shape="rect" title=" " alt="" coords="2006,295,2062,322"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="2480,199,2625,240"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="2427,377,2587,419"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="2369,288,2529,329"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="2603,288,2769,329"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="3001,288,3128,329"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="2793,288,2926,329"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="2796,385,2923,411"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a647b7c6d910e77f514a0f672ef77906d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-visuals_8cpp.html#a647b7c6d910e77f514a0f672ef77906d">cmd_visuals_aux</a> (int i, <a class="el" href="h-type_8h.html#a3f634297ff78d56cc39e0f92ea8a65a8">IDX</a> *num, <a class="el" href="h-type_8h.html#a3f634297ff78d56cc39e0f92ea8a65a8">IDX</a> max)</td></tr>
+<tr class="memdesc:a647b7c6d910e77f514a0f672ef77906d"><td class="mdescLeft">&#160;</td><td class="mdescRight">キャラクタのビジュアルIDを変更する際の対象指定関数  <a href="cmd-visuals_8cpp.html#a647b7c6d910e77f514a0f672ef77906d">[詳解]</a><br /></td></tr>
+<tr class="separator:a647b7c6d910e77f514a0f672ef77906d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1590e7595489c4330ce8387e0118652a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-visuals_8cpp.html#a1590e7595489c4330ce8387e0118652a">print_visuals_menu</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> choice_msg)</td></tr>
+<tr class="memdesc:a1590e7595489c4330ce8387e0118652a"><td class="mdescLeft">&#160;</td><td class="mdescRight">キャラクタの変更メニュー表示  <a href="cmd-visuals_8cpp.html#a1590e7595489c4330ce8387e0118652a">[詳解]</a><br /></td></tr>
+<tr class="separator:a1590e7595489c4330ce8387e0118652a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0826877287cc62ecef1432f586181997"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-visuals_8cpp.html#a0826877287cc62ecef1432f586181997">do_cmd_visuals</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, void(*<a class="el" href="autopick-pref-processor_8h.html#aa31a42830d1eed102ec91a767c3db6e7">process_autopick_file_command</a>)(char *))</td></tr>
+<tr class="separator:a0826877287cc62ecef1432f586181997"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a647b7c6d910e77f514a0f672ef77906d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a647b7c6d910e77f514a0f672ef77906d">&#9670;&nbsp;</a></span>cmd_visuals_aux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> cmd_visuals_aux </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a3f634297ff78d56cc39e0f92ea8a65a8">IDX</a> *&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a3f634297ff78d56cc39e0f92ea8a65a8">IDX</a>&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>キャラクタのビジュアルIDを変更する際の対象指定関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>指定対象となるキャラクタコード </td></tr>
+    <tr><td class="paramname">num</td><td>指定されたビジュアルIDを返す参照ポインタ </td></tr>
+    <tr><td class="paramname">max</td><td>ビジュアルIDの最大数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>指定が実際に行われた場合TRUE、キャンセルされた場合FALSE </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-visuals_8cpp_a647b7c6d910e77f514a0f672ef77906d_cgraph.png" border="0" usemap="#acmd-visuals_8cpp_a647b7c6d910e77f514a0f672ef77906d_cgraph" alt=""/></div>
+<map name="acmd-visuals_8cpp_a647b7c6d910e77f514a0f672ef77906d_cgraph" id="acmd-visuals_8cpp_a647b7c6d910e77f514a0f672ef77906d_cgraph">
+<area shape="rect" title="キャラクタのビジュアルIDを変更する際の対象指定関数" alt="" coords="5,56,127,83"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="185,19,243,45"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="175,81,253,108"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="309,5,372,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="437,5,504,32"/>
+<area shape="rect" href="asking-player_8cpp.html#ad5c7efa101f8104fd152aaa10b9be28b" title=" " alt="" coords="312,56,369,83"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="301,107,380,133"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="321,157,360,184"/>
+<area shape="rect" href="asking-player_8cpp.html#a025b21031a6e4922de22b9e961a8358e" title="&lt;" alt="" coords="428,56,513,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-visuals_8cpp_a647b7c6d910e77f514a0f672ef77906d_icgraph.png" border="0" usemap="#acmd-visuals_8cpp_a647b7c6d910e77f514a0f672ef77906d_icgraph" alt=""/></div>
+<map name="acmd-visuals_8cpp_a647b7c6d910e77f514a0f672ef77906d_icgraph" id="acmd-visuals_8cpp_a647b7c6d910e77f514a0f672ef77906d_icgraph">
+<area shape="rect" title="キャラクタのビジュアルIDを変更する際の対象指定関数" alt="" coords="875,5,996,32"/>
+<area shape="rect" href="cmd-visuals_8cpp.html#a0826877287cc62ecef1432f586181997" title=" " alt="" coords="712,5,827,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0826877287cc62ecef1432f586181997"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0826877287cc62ecef1432f586181997">&#9670;&nbsp;</a></span>do_cmd_visuals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_visuals </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(char *)&#160;</td>
+          <td class="paramname"><em>process_autopick_file_command</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-visuals_8cpp_a0826877287cc62ecef1432f586181997_cgraph.png" border="0" usemap="#acmd-visuals_8cpp_a0826877287cc62ecef1432f586181997_cgraph" alt=""/></div>
+<map name="acmd-visuals_8cpp_a0826877287cc62ecef1432f586181997_cgraph" id="acmd-visuals_8cpp_a0826877287cc62ecef1432f586181997_cgraph">
+<area shape="rect" title=" " alt="" coords="5,712,120,738"/>
+<area shape="rect" href="feature_8cpp.html#a3fa9506b1b119cd5adfb70afd8c4af0c" title="調査中" alt="" coords="601,358,728,399"/>
+<area shape="rect" href="asking-player_8cpp.html#ad5c7efa101f8104fd152aaa10b9be28b" title=" " alt="" coords="636,424,693,450"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="1001,132,1044,158"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="996,1437,1049,1464"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="979,368,1067,394"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aaee18f21e18b381f4513bb961081536e" title="prfファイルのフォーマットに従った内容を出力する / Dump a formatted line, using &quot;vstrnfmt()&quot;." alt="" coords="378,104,499,130"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a91f761522cc6472f2b8db25265b9e686" title="prfファイルをファイルクローズする / Append foot part and close auto dump." alt="" coords="168,205,292,232"/>
+<area shape="rect" href="cmd-visuals_8cpp.html#a647b7c6d910e77f514a0f672ef77906d" title="キャラクタのビジュアルIDを変更する際の対象指定関数" alt="" coords="169,610,291,637"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="832,804,891,830"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="625,306,704,333"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="645,626,684,653"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="177,560,283,586"/>
+<area shape="rect" href="knowledge-features_8cpp.html#aef0641f25a72f20f98906ea5c565d0ae" title=" " alt="" coords="344,981,533,1008"/>
+<area shape="rect" href="z-term_8cpp.html#a0d418957c1b2ef703fabda3056a96a3a" title=" " alt="" coords="792,1614,931,1641"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#a3ba32fc8df87acb37ad0757bdc3a0388" title="Display known monsters." alt="" coords="340,1589,537,1616"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a6cc60a9c8d1e600f6618e93dde225137" title="Display known objects" alt="" coords="346,1260,531,1286"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ae19882bca0152830acd6b12e0c50eeb2" title="画面を再描画するコマンドのメインルーチン Hack – redraw the screen" alt="" coords="173,1189,287,1216"/>
+<area shape="rect" href="display-messages_8cpp.html#afbb518f5a63c89412c4d73b7862ded1c" title=" " alt="" coords="187,256,273,282"/>
+<area shape="rect" href="object-generator_8cpp.html#a9d4bf7f51bf5056089190534c673d068" title="オブジェクト構造体にベースアイテムを作成する Prepare an object based on an object kind." alt="" coords="185,914,275,941"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a5a737ea245d6b917ff81756f8448f258" title="prfファイルをファイルオープンする / Open file to append auto dump." alt="" coords="169,154,291,181"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="624,2157,705,2184"/>
+<area shape="rect" href="cmd-visuals_8cpp.html#a1590e7595489c4330ce8387e0118652a" title="キャラクタの変更メニュー表示" alt="" coords="373,661,505,688"/>
+<area shape="rect" href="autopick-pref-processor_8cpp.html#aa31a42830d1eed102ec91a767c3db6e7" title=" " alt="" coords="591,2230,738,2271"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="379,2186,498,2213"/>
+<area shape="rect" href="visuals-reseter_8cpp.html#a0bff15ee0bec53f209d078d49af3470c" title="オブジェクト、地形の表示シンボルなど初期化する / Reset the &quot;visual&quot; lists" alt="" coords="181,2237,279,2264"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="184,306,276,333"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="391,357,486,384"/>
+<area shape="rect" href="object-flavor_8cpp.html#a8c1d8d6de0a909aafcf1011eafe6b5f6" title="nameバッファ内からベースアイテム名を返す / Strip an &quot;object name&quot; into a buffer" alt="" coords="187,2338,273,2365"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="189,2389,271,2416"/>
+<area shape="rect" href="feature_8cpp.html#a0192277195524a937816615c320982b4" title=" " alt="" coords="800,365,923,392"/>
+<area shape="rect" href="asking-player_8cpp.html#a025b21031a6e4922de22b9e961a8358e" title="&lt;" alt="" coords="819,424,904,450"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="1115,956,1209,982"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="631,104,698,130"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="383,205,495,232"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="399,560,478,586"/>
+<area shape="rect" href="dump-util_8cpp.html#a12e8ac53f67f19633407777b426395da" title=" " alt="" coords="609,1336,720,1362"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="809,1361,913,1388"/>
+<area shape="rect" href="screen-processor_8cpp.html#a723cb7a38362add3188d0080fc2934f2" title=" " alt="" coords="623,1184,706,1210"/>
+<area shape="rect" href="knowledge-features_8cpp.html#aa0db79643a35f45aab63583e4eb95b0e" title="地形に関する情報を表示する" alt="" coords="608,778,721,805"/>
+<area shape="rect" href="knowledge-features_8cpp.html#add6c2343ef9f4e78cadafcd65bc8ef5d" title=" " alt="" coords="598,930,731,957"/>
+<area shape="rect" href="z-term_8cpp.html#abb85e44f10d01b0cfb7b1bd4b5bc48e5" title=" " alt="" coords="818,956,905,982"/>
+<area shape="rect" href="dump-util_8cpp.html#a393b33b23177c136d261b558a75b565a" title="モンスター情報リスト中のグループを表示する / Display the object groups." alt="" coords="601,1285,728,1312"/>
+<area shape="rect" href="dump-util_8cpp.html#a5a3865ea879d25b1812777cae414a57f" title=" " alt="" coords="601,1538,728,1565"/>
+<area shape="rect" href="dump-util_8cpp.html#a35b516526e05f369bf47c402ff24ce10" title=" " alt="" coords="585,1488,744,1514"/>
+<area shape="rect" href="dump-util_8cpp.html#a3c134e36279bfbbb0333da1705b57525" title=" " alt="" coords="586,1133,743,1160"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#a3524aae2abec2febee9365e483332bf0" title="既知のモンスターに関する情報を表示する" alt="" coords="604,1893,725,1920"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#aabe5e1c0f473a8c35da8b963aa69a36f" title=" " alt="" coords="594,1690,735,1717"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="619,1589,710,1616"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ab4c472d001cbdcb0c412ec4735b185d8" title=" " alt="" coords="596,1944,733,1970"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-visuals_8cpp_a0826877287cc62ecef1432f586181997_icgraph.png" border="0" usemap="#acmd-visuals_8cpp_a0826877287cc62ecef1432f586181997_icgraph" alt=""/></div>
+<map name="acmd-visuals_8cpp_a0826877287cc62ecef1432f586181997_icgraph" id="acmd-visuals_8cpp_a0826877287cc62ecef1432f586181997_icgraph">
+<area shape="rect" title=" " alt="" coords="884,5,999,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="668,31,836,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="516,31,620,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1590e7595489c4330ce8387e0118652a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1590e7595489c4330ce8387e0118652a">&#9670;&nbsp;</a></span>print_visuals_menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void print_visuals_menu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>choice_msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>キャラクタの変更メニュー表示 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">choice_msg</td><td>選択メッセージ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-visuals_8cpp_a1590e7595489c4330ce8387e0118652a_cgraph.png" border="0" usemap="#acmd-visuals_8cpp_a1590e7595489c4330ce8387e0118652a_cgraph" alt=""/></div>
+<map name="acmd-visuals_8cpp_a1590e7595489c4330ce8387e0118652a_cgraph" id="acmd-visuals_8cpp_a1590e7595489c4330ce8387e0118652a_cgraph">
+<area shape="rect" title="キャラクタの変更メニュー表示" alt="" coords="5,31,137,57"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="185,5,244,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="195,56,234,83"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="292,5,355,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="415,5,481,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="298,56,349,83"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="403,56,493,83"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="405,107,491,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-visuals_8cpp_a1590e7595489c4330ce8387e0118652a_icgraph.png" border="0" usemap="#acmd-visuals_8cpp_a1590e7595489c4330ce8387e0118652a_icgraph" alt=""/></div>
+<map name="acmd-visuals_8cpp_a1590e7595489c4330ce8387e0118652a_icgraph" id="acmd-visuals_8cpp_a1590e7595489c4330ce8387e0118652a_icgraph">
+<area shape="rect" title="キャラクタの変更メニュー表示" alt="" coords="875,5,1007,32"/>
+<area shape="rect" href="cmd-visuals_8cpp.html#a0826877287cc62ecef1432f586181997" title=" " alt="" coords="712,5,827,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分37秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<map id="banish_monsters" name="banish_monsters">
+<area shape="rect" id="node1" title="モンスター追放効果(プレイヤー視界範囲内) / Banish all monsters" alt="" coords="5,2184,127,2211"/>
+<area shape="rect" id="node2" href="$spells-sight_8cpp.html#a47482081184d0a1282de835163dc6e62" title="視界内モンスターに魔法効果を与える / Apply a &quot;project()&quot; directly to all viewable monsters" alt="" coords="175,2184,280,2211"/>
+<area shape="rect" id="node3" href="$class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="328,5,464,32"/>
+<area shape="rect" id="node5" href="$monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="337,2235,455,2261"/>
+<area shape="rect" id="node6" href="$cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="939,259,1079,285"/>
+<area shape="rect" id="node7" href="$effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="365,1145,427,1172"/>
+<area shape="rect" id="node34" href="$projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="759,1576,844,1603"/>
+<area shape="rect" id="node49" href="$class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="337,2285,455,2312"/>
+<area shape="rect" id="node50" href="$class_flag_group.html#a021f4c66b2af9456aa41200d81efee90" title="指定したフラグを指定した値にセットする" alt="" coords="342,2336,450,2363"/>
+<area shape="rect" id="node4" href="$class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="953,31,1064,57"/>
+<area shape="rect" id="node8" href="$effect-feature_8cpp.html#ab60eea66f4d858035803d331e84151cc" title="汎用的なビーム/ボルト/ボール系による地形効果処理 / We are called from &quot;project()&quot; to &quot;damage&quot; terrain features" alt="" coords="545,765,643,792"/>
+<area shape="rect" id="node9" href="$cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="1162,765,1250,792"/>
+<area shape="rect" id="node10" href="$grid_8cpp.html#aa76190ea626631d68070030818399df5" title=" " alt="" coords="751,1221,851,1248"/>
+<area shape="rect" id="node11" href="$grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="973,841,1044,868"/>
+<area shape="rect" id="node12" href="$screen-util_8cpp.html#a40da48b19968a0521c68cf9d0195b50c" title=" " alt="" coords="1151,1120,1261,1147"/>
+<area shape="rect" id="node13" href="$display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="756,411,847,437"/>
+<area shape="rect" id="node14" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="969,487,1048,513"/>
+<area shape="rect" id="node15" href="$cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="757,917,845,944"/>
+<area shape="rect" id="node16" href="$geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="729,664,873,691"/>
+<area shape="rect" id="node17" href="$grid_8cpp.html#a858d5a7b3ea7a6f1fb3de4736496f94e" title=" " alt="" coords="750,867,853,893"/>
+<area shape="rect" id="node18" href="$sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="773,968,830,995"/>
+<area shape="rect" id="node19" href="$effect-item_8cpp.html#a535ce53ec7f78b19e787e4289d5dec3f" title="汎用的なビーム/ボルト/ボール系によるアイテムオブジェクトへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="551,461,637,488"/>
+<area shape="rect" id="node20" href="$effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="748,1019,855,1045"/>
+<area shape="rect" id="node21" href="$effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="547,360,641,387"/>
+<area shape="rect" id="node22" href="$monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="749,157,853,184"/>
+<area shape="rect" id="node23" href="$gameterm_8cpp.html#a2694b4425c6fa76811611a40852ec96e" title="始点から終点にかけた方向毎にボルトのキャラクタを返す / Find the attr/char pair to use for a spell effect" alt="" coords="559,1880,629,1907"/>
+<area shape="rect" id="node24" href="$mspell-checker_8cpp.html#a60d3d82169ca8120d8716c9994caf9ca" title="モンスターのボール型＆ブレス型魔法処理 / Cast a breath (or ball) attack at the player Pass over any monsters that may be..." alt="" coords="565,1931,623,1957"/>
+<area shape="rect" id="node25" href="$range-calc_8cpp.html#aa0bea06a5600ef01a6952378a83a60f8" title=" " alt="" coords="544,1525,644,1552"/>
+<area shape="rect" id="node26" href="$geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="766,1323,837,1349"/>
+<area shape="rect" id="node27" href="$projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="967,1373,1050,1400"/>
+<area shape="rect" id="node28" href="$projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="967,1525,1050,1552"/>
+<area shape="rect" id="node29" href="$range-calc_8cpp.html#a583d3a676864745468096ddfc9da8ddf" title=" " alt="" coords="724,1728,879,1755"/>
+<area shape="rect" id="node30" href="$cave_8cpp.html#a9940da0af854b0b88a943373b8b41055" title=" " alt="" coords="927,1779,1091,1805"/>
+<area shape="rect" id="node31" href="$cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="1139,2007,1273,2033"/>
+<area shape="rect" id="node32" href="$line-of-sight_8cpp.html#adff83a1e8c9d47236408737740652a4b" title="LOS(Line Of Sight / 視線が通っているか)の判定を行う。" alt="" coords="782,1829,821,1856"/>
+<area shape="rect" id="node33" href="$cave_8cpp.html#adc0f94b19918e1965ddd320ae168d551" title=" " alt="" coords="957,1981,1060,2008"/>
+<area shape="rect" id="node35" href="$projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="953,1588,1064,1615"/>
+<area shape="rect" id="node36" href="$projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="953,1664,1064,1691"/>
+<area shape="rect" id="node37" href="$range-calc_8cpp.html#ad9ea657b3eeae32f13efaac44b3baab4" title="魔法による距離やエリアの計算" alt="" coords="550,1373,638,1400"/>
+<area shape="rect" id="node38" href="$stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="756,512,847,539"/>
+<area shape="rect" id="node39" href="$stuff-handler_8cpp.html#ad491b75a9a598cb361c671e23737d1fb" title=" " alt="" coords="547,1981,641,2008"/>
+<area shape="rect" id="node40" href="$cave_8cpp.html#a4418acad9f4e14a2f633c8432b0fd63c" title=" " alt="" coords="547,2032,641,2059"/>
+<area shape="rect" id="node41" href="$monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="512,2083,676,2109"/>
+<area shape="rect" id="node42" href="$geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="561,1475,627,1501"/>
+<area shape="rect" id="node43" href="$stuff-handler_8cpp.html#ab4c472d001cbdcb0c412ec4735b185d8" title=" " alt="" coords="525,208,663,235"/>
+<area shape="rect" id="node44" href="$cursor_8cpp.html#a151487f34072b34d7043e0d994da71c5" title=" " alt="" coords="523,259,665,285"/>
+<area shape="rect" id="node45" href="$effect-processor_8cpp.html#a73d909789a46740834748c383a2e7711" title="配置した鏡リストの次を取得する / Get another mirror." alt="" coords="551,1171,637,1197"/>
+<area shape="rect" id="node46" href="$grid_8cpp.html#a1940ae47e3f96bbdbbf20b65f8644788" title=" " alt="" coords="975,1120,1043,1147"/>
+<area shape="rect" id="node47" href="$pet-fall-off_8cpp.html#a6cccefbe31f9c2f308dfe3a3a2266647" title="プレイヤーの落馬判定処理" alt="" coords="519,563,669,589"/>
+<area shape="rect" id="node48" href="$z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="553,309,635,336"/>
+</map>

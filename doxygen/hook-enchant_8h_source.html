@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/object-hook/hook-enchant.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_8bb31b59ca59df56bca4016a9e010a5e.html">object-hook</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">hook-enchant.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="hook-enchant_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-enchant_8h.html#ab62a52b266c59b0680f82c5cb6586a4c">object_is_fixed_artifact</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-enchant_8h.html#a282029d5fd1b80cb49135d5aa042eb3b">object_is_ego</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-enchant_8h.html#a75879cc87f48fafe56f4bc04d3b60b1d">object_is_rare</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-enchant_8h.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e">object_is_artifact</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-enchant_8h.html#a1cd52eb9c4cad275d12f040a2c9e7fae">object_is_random_artifact</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-enchant_8h.html#a4c57d869f2831012a54d4cc096820260">object_is_nameless</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ahook-enchant_8h_html_a1cd52eb9c4cad275d12f040a2c9e7fae"><div class="ttname"><a href="hook-enchant_8h.html#a1cd52eb9c4cad275d12f040a2c9e7fae">object_is_random_artifact</a></div><div class="ttdeci">bool object_is_random_artifact(object_type *o_ptr)</div><div class="ttdoc">オブジェクトがランダムアーティファクトかを返す / Check if an object is random artifact</div><div class="ttdef"><b>Definition:</b> hook-enchant.cpp:87</div></div>
+<div class="ttc" id="ahook-enchant_8h_html_a282029d5fd1b80cb49135d5aa042eb3b"><div class="ttname"><a href="hook-enchant_8h.html#a282029d5fd1b80cb49135d5aa042eb3b">object_is_ego</a></div><div class="ttdeci">bool object_is_ego(object_type *o_ptr)</div><div class="ttdef"><b>Definition:</b> hook-enchant.cpp:111</div></div>
+<div class="ttc" id="ahook-enchant_8h_html_a4c57d869f2831012a54d4cc096820260"><div class="ttname"><a href="hook-enchant_8h.html#a4c57d869f2831012a54d4cc096820260">object_is_nameless</a></div><div class="ttdeci">bool object_is_nameless(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトが通常のアイテム(アーティファクト、エゴ、鍛冶師エッセンス付加いずれでもない)かを返す / Check if an object is neither artifact,...</div><div class="ttdef"><b>Definition:</b> hook-enchant.cpp:95</div></div>
+<div class="ttc" id="ahook-enchant_8h_html_a6d1c8e8f9f75fbbf3d0cd8867a08245e"><div class="ttname"><a href="hook-enchant_8h.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e">object_is_artifact</a></div><div class="ttdeci">bool object_is_artifact(object_type *o_ptr)</div><div class="ttdoc">オブジェクトがアーティファクトかを返す / Check if an object is artifact</div><div class="ttdef"><b>Definition:</b> hook-enchant.cpp:79</div></div>
+<div class="ttc" id="ahook-enchant_8h_html_a75879cc87f48fafe56f4bc04d3b60b1d"><div class="ttname"><a href="hook-enchant_8h.html#a75879cc87f48fafe56f4bc04d3b60b1d">object_is_rare</a></div><div class="ttdeci">bool object_is_rare(object_type *o_ptr)</div><div class="ttdoc">オブジェクトがレアアイテムかどうかを返す / Rare weapons/aromors including Blade of Chaos, Dragon armors,...</div><div class="ttdef"><b>Definition:</b> hook-enchant.cpp:14</div></div>
+<div class="ttc" id="ahook-enchant_8h_html_ab62a52b266c59b0680f82c5cb6586a4c"><div class="ttname"><a href="hook-enchant_8h.html#ab62a52b266c59b0680f82c5cb6586a4c">object_is_fixed_artifact</a></div><div class="ttdeci">bool object_is_fixed_artifact(object_type *o_ptr)</div><div class="ttdef"><b>Definition:</b> hook-enchant.cpp:106</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

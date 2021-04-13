@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player-attack/player-attack-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_49e106c26cc6da899ea81a53d6f4086e.html">player-attack</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">player-attack-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="player-attack-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="combat-options-type_8h.html">combat/combat-options-type.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="martial-arts-table_8h.html">combat/martial-arts-table.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="grid_8h.html">grid/grid.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="object-type-definition_8h.html">system/object-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-type-definition_8h.html">system/monster-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1">   10</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1">chaotic_effect</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1ae11d26835a51a1cbe703cc64489abab4">   11</a></span>&#160;    <a class="code" href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1ae11d26835a51a1cbe703cc64489abab4">CE_NONE</a> = 0,</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1a23f794bce62c82f549613a500f351ec2">   12</a></span>&#160;    <a class="code" href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1a23f794bce62c82f549613a500f351ec2">CE_VAMPIRIC</a> = 1,</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1a75cd920e3f86e3e7be65c7aeba14089a">   13</a></span>&#160;    <a class="code" href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1a75cd920e3f86e3e7be65c7aeba14089a">CE_QUAKE</a> = 2,</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1a922bcca47083a529ddfe73c0007ff5e8">   14</a></span>&#160;    <a class="code" href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1a922bcca47083a529ddfe73c0007ff5e8">CE_CONFUSION</a> = 3,</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1a8ecc0a73e294b4754e5a7d0c5dcdec4a">   15</a></span>&#160;    <a class="code" href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1a8ecc0a73e294b4754e5a7d0c5dcdec4a">CE_TELE_AWAY</a> = 4,</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1a4970303af247dc70ca5e1d09c6089ce8">   16</a></span>&#160;    <a class="code" href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1a4970303af247dc70ca5e1d09c6089ce8">CE_POLYMORPH</a> = 5,</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html">   19</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structplayer__attack__type.html">player_attack_type</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#a1f0064f8828f50cacf87ecda9b1b6e80">   20</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__attack__type.html#a1f0064f8828f50cacf87ecda9b1b6e80">hand</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#adcbac96a021b5bba9586ddeb1490fc0c">   21</a></span>&#160;    <a class="code" href="combat-options-type_8h.html#a08b26f22e5ba508ebbda637151a369a0">combat_options</a> <a class="code" href="structplayer__attack__type.html#adcbac96a021b5bba9586ddeb1490fc0c">mode</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#aeafcb6af283ac80a333a4975dbd60f6f">   22</a></span>&#160;    <a class="code" href="structmonster__type.html">monster_type</a> *<a class="code" href="structplayer__attack__type.html#aeafcb6af283ac80a333a4975dbd60f6f">m_ptr</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#a4f5ffdf0c76a012f8ffe620b6029687a">   23</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structplayer__attack__type.html#a4f5ffdf0c76a012f8ffe620b6029687a">backstab</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#ae3450a9bca25b196e500412d0548f64a">   24</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structplayer__attack__type.html#ae3450a9bca25b196e500412d0548f64a">surprise_attack</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#aadb0958ad18a15f07a83ed87f3383e33">   25</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structplayer__attack__type.html#aadb0958ad18a15f07a83ed87f3383e33">stab_fleeing</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#a6c44597c6aa4d69e4382c9e65a2129f7">   26</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structplayer__attack__type.html#a6c44597c6aa4d69e4382c9e65a2129f7">monk_attack</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#acfa7ee3c586c544231f879d32c59e550">   27</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structplayer__attack__type.html#acfa7ee3c586c544231f879d32c59e550">num_blow</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#a2f12fb9b199bf7881f9f39400acd2ab5">   28</a></span>&#160;    <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="structplayer__attack__type.html#a2f12fb9b199bf7881f9f39400acd2ab5">attack_damage</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#afe312a9bda449346b98e39342a26a162">   29</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structplayer__attack__type.html#afe312a9bda449346b98e39342a26a162">m_name</a>[<a class="code" href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a>];</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#ad0209e020d63fada5e08a11c021582cb">   30</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structplayer__attack__type.html#ad0209e020d63fada5e08a11c021582cb">flags</a>[<a class="code" href="object-type-definition_8h.html#a396c51ddaffe17c1e21a428c41ba294e">TR_FLAG_SIZE</a>];</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#a8d322f3b6c4ece0b58f06c85e9ed98b9">   31</a></span>&#160;    <a class="code" href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1">chaotic_effect</a> <a class="code" href="structplayer__attack__type.html#a8d322f3b6c4ece0b58f06c85e9ed98b9">chaos_effect</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#a171bbb184de870a7a690a0eff249a4ff">   32</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structplayer__attack__type.html#a171bbb184de870a7a690a0eff249a4ff">can_drain</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#afe35a24e575bf4851c27683802bc54c8">   33</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="structmartial__arts.html">martial_arts</a> *<a class="code" href="structplayer__attack__type.html#afe35a24e575bf4851c27683802bc54c8">ma_ptr</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#ad3805ac529a9eac032cb291de428ae38">   34</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structplayer__attack__type.html#ad3805ac529a9eac032cb291de428ae38">drain_result</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#a23306f925f73c2520b3d0877840533bb">   35</a></span>&#160;    <a class="code" href="structgrid__type.html">grid_type</a> *<a class="code" href="structplayer__attack__type.html#a23306f925f73c2520b3d0877840533bb">g_ptr</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#a883dd109fa40d0ea39cc3154c02470e2">   36</a></span>&#160;    <span class="keywordtype">bool</span> *<a class="code" href="structplayer__attack__type.html#a883dd109fa40d0ea39cc3154c02470e2">fear</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#a4dd8d0df18221e21f32520b7166c9945">   37</a></span>&#160;    <span class="keywordtype">bool</span> *<a class="code" href="structplayer__attack__type.html#a4dd8d0df18221e21f32520b7166c9945">mdeath</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#a76ee2718c216287b05c9b205493e5c63">   38</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structplayer__attack__type.html#a76ee2718c216287b05c9b205493e5c63">drain_left</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structplayer__attack__type.html#a9706b92c38c849afd50867fa1316c364">   39</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structplayer__attack__type.html#a9706b92c38c849afd50867fa1316c364">weak</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="player-attack-util_8h.html#a07dd83e2dba39d621fe1e4bef971a40c">   40</a></span>&#160;} <a class="code" href="player-attack-util_8h.html#a07dd83e2dba39d621fe1e4bef971a40c">player_attack_type</a>;</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="acombat-options-type_8h_html"><div class="ttname"><a href="combat-options-type_8h.html">combat-options-type.h</a></div></div>
+<div class="ttc" id="acombat-options-type_8h_html_a08b26f22e5ba508ebbda637151a369a0"><div class="ttname"><a href="combat-options-type_8h.html#a08b26f22e5ba508ebbda637151a369a0">combat_options</a></div><div class="ttdeci">combat_options</div><div class="ttdef"><b>Definition:</b> combat-options-type.h:3</div></div>
+<div class="ttc" id="agrid_8h_html"><div class="ttname"><a href="grid_8h.html">grid.h</a></div><div class="ttdoc">ダンジョンの生成処理の基幹部分ヘッダーファイル</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a709af41498f5625eae9f3b73fb6b6f3c"><div class="ttname"><a href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a></div><div class="ttdeci">#define MAX_NLEN</div><div class="ttdoc">Maximum length of object's name</div><div class="ttdef"><b>Definition:</b> h-type.h:58</div></div>
+<div class="ttc" id="ah-type_8h_html_ac67a750044882c0fd3760a2eccd56d7c"><div class="ttname"><a href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a></div><div class="ttdeci">char GAME_TEXT</div><div class="ttdoc">ゲーム中のテキスト型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:133</div></div>
+<div class="ttc" id="ah-type_8h_html_afdb20155266ee801610f13b1589a3df3"><div class="ttname"><a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></div><div class="ttdeci">s32b HIT_POINT</div><div class="ttdoc">HPとその増減量の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:141</div></div>
+<div class="ttc" id="amartial-arts-table_8h_html"><div class="ttname"><a href="martial-arts-table_8h.html">martial-arts-table.h</a></div></div>
+<div class="ttc" id="amonster-type-definition_8h_html"><div class="ttname"><a href="monster-type-definition_8h.html">monster-type-definition.h</a></div></div>
+<div class="ttc" id="aobject-type-definition_8h_html"><div class="ttname"><a href="object-type-definition_8h.html">object-type-definition.h</a></div></div>
+<div class="ttc" id="aobject-type-definition_8h_html_a396c51ddaffe17c1e21a428c41ba294e"><div class="ttname"><a href="object-type-definition_8h.html#a396c51ddaffe17c1e21a428c41ba294e">TR_FLAG_SIZE</a></div><div class="ttdeci">#define TR_FLAG_SIZE</div><div class="ttdef"><b>Definition:</b> object-type-definition.h:6</div></div>
+<div class="ttc" id="aplayer-attack-util_8h_html_a07dd83e2dba39d621fe1e4bef971a40c"><div class="ttname"><a href="player-attack-util_8h.html#a07dd83e2dba39d621fe1e4bef971a40c">player_attack_type</a></div><div class="ttdeci">struct player_attack_type player_attack_type</div></div>
+<div class="ttc" id="aplayer-attack-util_8h_html_a3cc81ab246c4b1aed7fdd8d8590fd3a1"><div class="ttname"><a href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1">chaotic_effect</a></div><div class="ttdeci">chaotic_effect</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:10</div></div>
+<div class="ttc" id="aplayer-attack-util_8h_html_a3cc81ab246c4b1aed7fdd8d8590fd3a1a23f794bce62c82f549613a500f351ec2"><div class="ttname"><a href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1a23f794bce62c82f549613a500f351ec2">CE_VAMPIRIC</a></div><div class="ttdeci">@ CE_VAMPIRIC</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:12</div></div>
+<div class="ttc" id="aplayer-attack-util_8h_html_a3cc81ab246c4b1aed7fdd8d8590fd3a1a4970303af247dc70ca5e1d09c6089ce8"><div class="ttname"><a href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1a4970303af247dc70ca5e1d09c6089ce8">CE_POLYMORPH</a></div><div class="ttdeci">@ CE_POLYMORPH</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:16</div></div>
+<div class="ttc" id="aplayer-attack-util_8h_html_a3cc81ab246c4b1aed7fdd8d8590fd3a1a75cd920e3f86e3e7be65c7aeba14089a"><div class="ttname"><a href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1a75cd920e3f86e3e7be65c7aeba14089a">CE_QUAKE</a></div><div class="ttdeci">@ CE_QUAKE</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:13</div></div>
+<div class="ttc" id="aplayer-attack-util_8h_html_a3cc81ab246c4b1aed7fdd8d8590fd3a1a8ecc0a73e294b4754e5a7d0c5dcdec4a"><div class="ttname"><a href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1a8ecc0a73e294b4754e5a7d0c5dcdec4a">CE_TELE_AWAY</a></div><div class="ttdeci">@ CE_TELE_AWAY</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:15</div></div>
+<div class="ttc" id="aplayer-attack-util_8h_html_a3cc81ab246c4b1aed7fdd8d8590fd3a1a922bcca47083a529ddfe73c0007ff5e8"><div class="ttname"><a href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1a922bcca47083a529ddfe73c0007ff5e8">CE_CONFUSION</a></div><div class="ttdeci">@ CE_CONFUSION</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:14</div></div>
+<div class="ttc" id="aplayer-attack-util_8h_html_a3cc81ab246c4b1aed7fdd8d8590fd3a1ae11d26835a51a1cbe703cc64489abab4"><div class="ttname"><a href="player-attack-util_8h.html#a3cc81ab246c4b1aed7fdd8d8590fd3a1ae11d26835a51a1cbe703cc64489abab4">CE_NONE</a></div><div class="ttdeci">@ CE_NONE</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:11</div></div>
+<div class="ttc" id="astructgrid__type_html"><div class="ttname"><a href="structgrid__type.html">grid_type</a></div><div class="ttdef"><b>Definition:</b> grid.h:53</div></div>
+<div class="ttc" id="astructmartial__arts_html"><div class="ttname"><a href="structmartial__arts.html">martial_arts</a></div><div class="ttdef"><b>Definition:</b> martial-arts-table.h:10</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructplayer__attack__type_html"><div class="ttname"><a href="structplayer__attack__type.html">player_attack_type</a></div><div class="ttdef"><b>Definition:</b> player-attack-util.h:19</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_a171bbb184de870a7a690a0eff249a4ff"><div class="ttname"><a href="structplayer__attack__type.html#a171bbb184de870a7a690a0eff249a4ff">player_attack_type::can_drain</a></div><div class="ttdeci">bool can_drain</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:32</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_a1f0064f8828f50cacf87ecda9b1b6e80"><div class="ttname"><a href="structplayer__attack__type.html#a1f0064f8828f50cacf87ecda9b1b6e80">player_attack_type::hand</a></div><div class="ttdeci">s16b hand</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:20</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_a23306f925f73c2520b3d0877840533bb"><div class="ttname"><a href="structplayer__attack__type.html#a23306f925f73c2520b3d0877840533bb">player_attack_type::g_ptr</a></div><div class="ttdeci">grid_type * g_ptr</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:35</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_a2f12fb9b199bf7881f9f39400acd2ab5"><div class="ttname"><a href="structplayer__attack__type.html#a2f12fb9b199bf7881f9f39400acd2ab5">player_attack_type::attack_damage</a></div><div class="ttdeci">HIT_POINT attack_damage</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:28</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_a4dd8d0df18221e21f32520b7166c9945"><div class="ttname"><a href="structplayer__attack__type.html#a4dd8d0df18221e21f32520b7166c9945">player_attack_type::mdeath</a></div><div class="ttdeci">bool * mdeath</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:37</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_a4f5ffdf0c76a012f8ffe620b6029687a"><div class="ttname"><a href="structplayer__attack__type.html#a4f5ffdf0c76a012f8ffe620b6029687a">player_attack_type::backstab</a></div><div class="ttdeci">bool backstab</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:23</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_a6c44597c6aa4d69e4382c9e65a2129f7"><div class="ttname"><a href="structplayer__attack__type.html#a6c44597c6aa4d69e4382c9e65a2129f7">player_attack_type::monk_attack</a></div><div class="ttdeci">bool monk_attack</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:26</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_a76ee2718c216287b05c9b205493e5c63"><div class="ttname"><a href="structplayer__attack__type.html#a76ee2718c216287b05c9b205493e5c63">player_attack_type::drain_left</a></div><div class="ttdeci">int drain_left</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:38</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_a883dd109fa40d0ea39cc3154c02470e2"><div class="ttname"><a href="structplayer__attack__type.html#a883dd109fa40d0ea39cc3154c02470e2">player_attack_type::fear</a></div><div class="ttdeci">bool * fear</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:36</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_a8d322f3b6c4ece0b58f06c85e9ed98b9"><div class="ttname"><a href="structplayer__attack__type.html#a8d322f3b6c4ece0b58f06c85e9ed98b9">player_attack_type::chaos_effect</a></div><div class="ttdeci">chaotic_effect chaos_effect</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:31</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_a9706b92c38c849afd50867fa1316c364"><div class="ttname"><a href="structplayer__attack__type.html#a9706b92c38c849afd50867fa1316c364">player_attack_type::weak</a></div><div class="ttdeci">bool weak</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:39</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_aadb0958ad18a15f07a83ed87f3383e33"><div class="ttname"><a href="structplayer__attack__type.html#aadb0958ad18a15f07a83ed87f3383e33">player_attack_type::stab_fleeing</a></div><div class="ttdeci">bool stab_fleeing</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:25</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_acfa7ee3c586c544231f879d32c59e550"><div class="ttname"><a href="structplayer__attack__type.html#acfa7ee3c586c544231f879d32c59e550">player_attack_type::num_blow</a></div><div class="ttdeci">int num_blow</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:27</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_ad0209e020d63fada5e08a11c021582cb"><div class="ttname"><a href="structplayer__attack__type.html#ad0209e020d63fada5e08a11c021582cb">player_attack_type::flags</a></div><div class="ttdeci">BIT_FLAGS flags[TR_FLAG_SIZE]</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:30</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_ad3805ac529a9eac032cb291de428ae38"><div class="ttname"><a href="structplayer__attack__type.html#ad3805ac529a9eac032cb291de428ae38">player_attack_type::drain_result</a></div><div class="ttdeci">int drain_result</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:34</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_adcbac96a021b5bba9586ddeb1490fc0c"><div class="ttname"><a href="structplayer__attack__type.html#adcbac96a021b5bba9586ddeb1490fc0c">player_attack_type::mode</a></div><div class="ttdeci">combat_options mode</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:21</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_ae3450a9bca25b196e500412d0548f64a"><div class="ttname"><a href="structplayer__attack__type.html#ae3450a9bca25b196e500412d0548f64a">player_attack_type::surprise_attack</a></div><div class="ttdeci">bool surprise_attack</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:24</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_aeafcb6af283ac80a333a4975dbd60f6f"><div class="ttname"><a href="structplayer__attack__type.html#aeafcb6af283ac80a333a4975dbd60f6f">player_attack_type::m_ptr</a></div><div class="ttdeci">monster_type * m_ptr</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:22</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_afe312a9bda449346b98e39342a26a162"><div class="ttname"><a href="structplayer__attack__type.html#afe312a9bda449346b98e39342a26a162">player_attack_type::m_name</a></div><div class="ttdeci">GAME_TEXT m_name[MAX_NLEN]</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:29</div></div>
+<div class="ttc" id="astructplayer__attack__type_html_afe35a24e575bf4851c27683802bc54c8"><div class="ttname"><a href="structplayer__attack__type.html#afe35a24e575bf4851c27683802bc54c8">player_attack_type::ma_ptr</a></div><div class="ttdeci">const martial_arts * ma_ptr</div><div class="ttdef"><b>Definition:</b> player-attack-util.h:33</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,766 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/mspell/mspell-util.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d3503302c38a329207825687a87abf53.html">mspell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">mspell-util.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="mspell-util_8h_source.html">mspell/mspell-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="disturbance_8h_source.html">core/disturbance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-info_8h_source.html">monster/monster-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+mspell-util.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-util_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2mspell_2mspell-util_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2mspell_2mspell-util_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2mspell_2mspell-util_8cpp">
+<area shape="rect" title=" " alt="" coords="903,5,1091,61"/>
+<area shape="rect" href="mspell-util_8h.html" title=" " alt="" coords="766,184,901,211"/>
+<area shape="rect" href="disturbance_8h.html" title=" " alt="" coords="601,109,730,136"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="997,109,1075,136"/>
+<area shape="rect" href="monster-info_8h.html" title=" " alt="" coords="1167,184,1321,211"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1383,109,1571,136"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="754,109,921,136"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="633,266,762,293"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="5,355,96,382"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="120,355,211,382"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="235,355,333,382"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="357,355,456,382"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="481,355,581,382"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="605,355,779,382"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="804,355,945,382"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,355,1116,382"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1038,437,1157,464"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="977,184,1092,211"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1171,259,1317,300"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1325,348,1481,389"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1572,184,1751,211"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1346,184,1497,211"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a0bdfd9b55b743eb4f82ef3582403f0eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-util_8cpp.html#a0bdfd9b55b743eb4f82ef3582403f0eb">see_monster</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx)</td></tr>
+<tr class="memdesc:a0bdfd9b55b743eb4f82ef3582403f0eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーがモンスターを見ることができるかの判定 /  <a href="mspell-util_8cpp.html#a0bdfd9b55b743eb4f82ef3582403f0eb">[詳解]</a><br /></td></tr>
+<tr class="separator:a0bdfd9b55b743eb4f82ef3582403f0eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1126379f8bb880004fbe53665b7f4383"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-util_8cpp.html#a1126379f8bb880004fbe53665b7f4383">monster_near_player</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx)</td></tr>
+<tr class="memdesc:a1126379f8bb880004fbe53665b7f4383"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスター2体がプレイヤーの近くに居るかの判定 /  <a href="mspell-util_8cpp.html#a1126379f8bb880004fbe53665b7f4383">[詳解]</a><br /></td></tr>
+<tr class="separator:a1126379f8bb880004fbe53665b7f4383"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d1fe40d21640ab21cdaba03bb3e70dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-util_8cpp.html#a6d1fe40d21640ab21cdaba03bb3e70dc">monspell_message_base</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg1, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg2, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg3, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg4, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> msg_flag_aux, int TARGET_TYPE)</td></tr>
+<tr class="memdesc:a6d1fe40d21640ab21cdaba03bb3e70dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターが呪文行使する際のメッセージを処理する汎用関数 /  <a href="mspell-util_8cpp.html#a6d1fe40d21640ab21cdaba03bb3e70dc">[詳解]</a><br /></td></tr>
+<tr class="separator:a6d1fe40d21640ab21cdaba03bb3e70dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6654d9a9e80032792e6700447b1f043"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-util_8cpp.html#ad6654d9a9e80032792e6700447b1f043">monspell_message</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg1, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg2, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg3, int TARGET_TYPE)</td></tr>
+<tr class="memdesc:ad6654d9a9e80032792e6700447b1f043"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターが呪文行使する際のメッセージを処理する汎用関数。盲目時と通常時のメッセージを切り替える。 /  <a href="mspell-util_8cpp.html#ad6654d9a9e80032792e6700447b1f043">[詳解]</a><br /></td></tr>
+<tr class="separator:ad6654d9a9e80032792e6700447b1f043"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd0e92379b3e97682814158868808448"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-util_8cpp.html#abd0e92379b3e97682814158868808448">simple_monspell_message</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg1, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg2, int TARGET_TYPE)</td></tr>
+<tr class="memdesc:abd0e92379b3e97682814158868808448"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターが呪文行使する際のメッセージを処理する汎用関数。対モンスターと対プレイヤーのメッセージを切り替える。 /  <a href="mspell-util_8cpp.html#abd0e92379b3e97682814158868808448">[詳解]</a><br /></td></tr>
+<tr class="separator:abd0e92379b3e97682814158868808448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ad6654d9a9e80032792e6700447b1f043"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6654d9a9e80032792e6700447b1f043">&#9670;&nbsp;</a></span>monspell_message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void monspell_message </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>m_idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>t_idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>msg1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>msg2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>msg3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>TARGET_TYPE</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターが呪文行使する際のメッセージを処理する汎用関数。盲目時と通常時のメッセージを切り替える。 / </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">m_idx</td><td>呪文を唱えるモンスターID </td></tr>
+    <tr><td class="paramname">t_idx</td><td>呪文を受けるモンスターID。プレイヤーの場合はdummyで0とする。 </td></tr>
+    <tr><td class="paramname">msg1</td><td>プレイヤーが盲目状態のメッセージ </td></tr>
+    <tr><td class="paramname">msg2</td><td>プレイヤーが盲目でなく、プレイヤーを対象とする場合のメッセージ </td></tr>
+    <tr><td class="paramname">msg3</td><td>プレイヤーが盲目でなく、モンスター対象とする場合のメッセージ </td></tr>
+    <tr><td class="paramname">TARGET_TYPE</td><td>プレイヤーを対象とする場合MONSTER_TO_PLAYER、モンスターを対象とする場合MONSTER_TO_MONSTER </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-util_8cpp_ad6654d9a9e80032792e6700447b1f043_cgraph.png" border="0" usemap="#amspell-util_8cpp_ad6654d9a9e80032792e6700447b1f043_cgraph" alt=""/></div>
+<map name="amspell-util_8cpp_ad6654d9a9e80032792e6700447b1f043_cgraph" id="amspell-util_8cpp_ad6654d9a9e80032792e6700447b1f043_cgraph">
+<area shape="rect" title="モンスターが呪文行使する際のメッセージを処理する汎用関数。盲目時と通常時のメッセージを切り替える。 /" alt="" coords="5,183,140,209"/>
+<area shape="rect" href="mspell-util_8cpp.html#a6d1fe40d21640ab21cdaba03bb3e70dc" title="モンスターが呪文行使する際のメッセージを処理する汎用関数 /" alt="" coords="188,183,357,209"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="446,81,507,108"/>
+<area shape="rect" href="monster-info_8cpp.html#a09d78bdc9ae711c4a1ffbfe84c24ddd3" title="モンスターIDを取り、モンスター名をm_nameに代入する /" alt="" coords="423,132,531,159"/>
+<area shape="rect" href="mspell-util_8cpp.html#a1126379f8bb880004fbe53665b7f4383" title="モンスター2体がプレイヤーの近くに居るかの判定 /" alt="" coords="405,183,548,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="431,233,522,260"/>
+<area shape="rect" href="mspell-util_8cpp.html#a0bdfd9b55b743eb4f82ef3582403f0eb" title="プレイヤーがモンスターを見ることができるかの判定 /" alt="" coords="428,284,525,311"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="616,5,665,32"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="599,56,682,83"/>
+<area shape="rect" href="target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="596,107,685,133"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="607,284,674,311"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-util_8cpp_ad6654d9a9e80032792e6700447b1f043_icgraph.png" border="0" usemap="#amspell-util_8cpp_ad6654d9a9e80032792e6700447b1f043_icgraph" alt=""/></div>
+<map name="amspell-util_8cpp_ad6654d9a9e80032792e6700447b1f043_icgraph" id="amspell-util_8cpp_ad6654d9a9e80032792e6700447b1f043_icgraph">
+<area shape="rect" title="モンスターが呪文行使する際のメッセージを処理する汎用関数。盲目時と通常時のメッセージを切り替える。 /" alt="" coords="716,1120,851,1147"/>
+<area shape="rect" href="mspell-summon_8cpp.html#ac11493557de32115985e3bd6b33bf485" title=" " alt="" coords="471,5,655,32"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a4cab35909a2d28fd5b89851b99eb841a" title="RF4_BA_CHAOの処理。純ログルス。 /" alt="" coords="245,56,395,83"/>
+<area shape="rect" href="mspell-ball_8cpp.html#afc0ae75c9c3bddad516ad2ed491d5873" title="RF4_BA_NUKEの処理。放射能球。 /" alt="" coords="246,107,394,133"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#ad33fead4cf76dc5c5ed3c259376d8728" title="RF4_DISPELの処理。魔力消去。 /" alt="" coords="253,157,387,184"/>
+<area shape="rect" href="mspell-particularity_8cpp.html#aa32b6c70c3d0a32f05b5a805d26c1a20" title="ボルトでもボールでもブレスでもなく、ダメージを与える特殊なスペルの実行 / Performing special spells that take damage, not bolts,..." alt="" coords="250,208,390,235"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a2a33967959fab29ed1ca6f4efc56621c" title="RF4_SHOOTの処理。射撃。 /" alt="" coords="254,259,386,285"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a704f22efdade02d68769dedbcada3183" title="RF5_BA_ACIDの処理。アシッド・ボール。 /" alt="" coords="249,309,391,336"/>
+<area shape="rect" href="mspell-ball_8cpp.html#adadc6afa34b816d6083f024698d3195d" title="RF5_BA_COLDの処理。アイス・ボール。 /" alt="" coords="247,360,393,387"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a8739ceb3fcadeec4268f250096fcc228" title="RF5_BA_DARKの処理。暗黒の嵐。 /" alt="" coords="246,411,394,437"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a74e0ddb4aecb85dfc19131212a63a808" title="RF5_BA_ELECの処理。サンダー・ボール。 /" alt="" coords="247,461,393,488"/>
+<area shape="rect" href="mspell-ball_8cpp.html#ad784777e6fcd6cfac335bc7a8cc94d7d" title="RF5_BA_FIREの処理。ファイア・ボール。 /" alt="" coords="249,512,391,539"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a46fb58e9da67621cc1ce61d2044af544" title="RF5_BA_LITEの処理。スターバースト。 /" alt="" coords="251,563,389,589"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a21e7763aaf71afd7be257beaa67400f5" title="RF5_BA_MANAの処理。魔力の嵐。 /" alt="" coords="245,613,395,640"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a7b49254d4ee1158c645ab4db3ccc244b" title="RF5_BA_NETHの処理。地獄球。 /" alt="" coords="247,664,393,691"/>
+<area shape="rect" href="mspell-ball_8cpp.html#afd6ce33c706536a81121e722658b5977" title="RF5_BA_POISの処理。悪臭雲。 /" alt="" coords="249,715,391,741"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a4c6a0a6ce55f8492bc6ce74f015198d7" title="RF5_BA_WATEの処理。ウォーター・ボール。 /" alt="" coords="245,765,395,792"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#af3ec58ae8c1d15496d80d140bf559c91" title="RF5_BO_ACIDの処理。アシッド・ボルト。 /" alt="" coords="249,816,391,843"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a44651cfde740e7f0734d125de340db58" title="RF5_BO_COLDの処理。アイス・ボルト。 /" alt="" coords="246,867,394,893"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a29360836e9779699f21303312daa5c89" title="RF5_BO_ELECの処理。サンダー・ボルト。 /" alt="" coords="247,917,393,944"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a80cc33802eb2b0af013752800276679d" title="RF5_BO_FIREの処理。ファイア・ボルト。 /" alt="" coords="249,968,391,995"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a7f2fff6d262f8acaebfb04bebfb0d32b" title="RF5_BO_ICEEの処理。極寒の矢。 /" alt="" coords="249,1019,391,1045"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a4241d3774245ced3952f7327d2d178e0" title="RF5_BO_MANAの処理。魔力の矢。 /" alt="" coords="245,1069,395,1096"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#afca04de2d43b0d9088189300981984ed" title="RF5_BO_NETHの処理。地獄の矢。 /" alt="" coords="247,1120,393,1147"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a6a260cd8e63258f4dd42713c2bc242ae" title="RF5_BO_PLASの処理。プラズマ・ボルト。 /" alt="" coords="247,1171,393,1197"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a0c41de1cd50a241bc5599d376eac8b05" title="RF5_BO_WATEの処理。ウォーター・ボルト。 /" alt="" coords="245,1221,395,1248"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#afebdf70d4c0f4a9983cb9efa2024e18b" title="RF5_MISSILEの処理。マジック・ミサイル。 /" alt="" coords="251,1272,389,1299"/>
+<area shape="rect" href="mspell-floor_8cpp.html#acfd69c3cc851b4d76300b197389a7ce7" title="RF6_DARKNESSの処理。暗闇or閃光。 /" alt="" coords="241,1323,399,1349"/>
+<area shape="rect" href="mspell-particularity_8cpp.html#ad1286da1bd69c5af93e78a88531a9a77" title="RF6_PSY_SPEARの処理。光の剣。 /" alt="" coords="237,1373,403,1400"/>
+<area shape="rect" href="mspell-floor_8cpp.html#ad6339ccc8a772877e1b29f7b39effb84" title="RF6_RAISE_DEADの処理。死者復活。 /" alt="" coords="235,1424,405,1451"/>
+<area shape="rect" href="mspell-summon_8cpp.html#afb27bf6403ccfccf5ce73a6786916785" title="RF6_S_AMBERITESの処理。アンバーの王族召喚。 /" alt="" coords="231,1475,409,1501"/>
+<area shape="rect" href="mspell-summon_8cpp.html#af2d0aa3ee5b6506aa3b7c74a72219d4c" title="RF6_S_ANGELの処理。天使一体召喚。 /" alt="" coords="247,1525,393,1552"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a7f08ff9c6131d9ed4295914ca40dfcd7" title="RF6_S_ANTの処理。アリ召喚。 /" alt="" coords="256,1576,384,1603"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a295ec0aa628fb49fb87a1ead361facf4" title="RF6_S_CYBERの処理。サイバー・デーモン召喚。 /" alt="" coords="246,1627,394,1653"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a17c2aae3013c84f9a99fbb19c35b2a20" title="RF6_S_DEMONの処理。デーモン一体召喚。 /" alt="" coords="245,1677,395,1704"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a637311638022888bfdf584842837382d" title="RF6_S_DRAGONの処理。ドラゴン一体召喚。 /" alt="" coords="241,1728,399,1755"/>
+<area shape="rect" href="mspell-summon_8cpp.html#aa5cfe99c4d5c26f3d7ec456ea1d36b5a" title="RF6_S_HI_DRAGONの処理。古代ドラゴン召喚。 /" alt="" coords="231,1779,409,1805"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a461d5698041d3a0da868e6cb701881d4" title="RF6_S_HI_UNDEADの処理。強力なアンデッド召喚。 /" alt="" coords="232,1829,408,1856"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a4f2354df841eec759b7cd10d928d8156" title="RF6_S_HOUNDの処理。ハウンド召喚。 /" alt="" coords="245,1880,395,1907"/>
+<area shape="rect" href="mspell-summon_8cpp.html#af60e7e4b7077f30d1bd15a0f5a798c7e" title="RF6_S_HYDRAの処理。ヒドラ召喚。 /" alt="" coords="246,1931,394,1957"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a289fdbd44323eaa181b011f95d71f328" title="RF6_S_MONSTERの処理。モンスター一体召喚。 /" alt="" coords="237,1981,403,2008"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a12b34a03ad176e8b1c04101c947c7324" title="RF6_S_MONSTERSの処理。モンスター複数召喚。 /" alt="" coords="232,2032,408,2059"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a1d196afe2b8671613558e10bfa1572b0" title="RF6_S_SPIDERの処理。クモ召喚。 /" alt="" coords="245,2083,395,2109"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a9d99193ff4304395b5a0b67383fde00d" title="RF6_S_UNDEADの処理。アンデッド一体召喚。 /" alt="" coords="241,2133,399,2160"/>
+<area shape="rect" href="mspell-summon_8cpp.html#af3fbe1acb2decbf36234a10028d0019d" title="RF6_S_UNIQUEの処理。ユニーク・モンスター召喚。 /" alt="" coords="244,2184,396,2211"/>
+<area shape="rect" href="mspell-special_8cpp.html#a2714f0dce16faed574ccbffee0e1cb40" title="ロレントのRF6_SPECIALの処理。手榴弾の召喚。 /" alt="" coords="457,2235,668,2261"/>
+<area shape="rect" href="mspell-summon_8cpp.html#abde6433211c2ca886c1417d5b9f445d0" title="RF6_S_KINの処理。救援召喚。使用するモンスターの種類により、実処理に分岐させる。 /" alt="" coords="258,5,382,32"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a50f2be9467ee2c4cff879e3d4e9c66b6" title=" " alt="" coords="5,1095,183,1121"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a6df5fae2d3026a687f76997a8b41d0e7" title=" " alt="" coords="11,1145,177,1172"/>
+<area shape="rect" href="mspell-special_8cpp.html#a85d772bd7d52f4e29aaf156988729ada" title="RF6_SPECIALの処理。モンスターの種類によって実処理に振り分ける。 /" alt="" coords="249,2235,391,2261"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6d1fe40d21640ab21cdaba03bb3e70dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d1fe40d21640ab21cdaba03bb3e70dc">&#9670;&nbsp;</a></span>monspell_message_base()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void monspell_message_base </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>m_idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>t_idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>msg1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>msg2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>msg3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>msg4</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>msg_flag_aux</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>TARGET_TYPE</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターが呪文行使する際のメッセージを処理する汎用関数 / </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">m_idx</td><td>呪文を唱えるモンスターID </td></tr>
+    <tr><td class="paramname">t_idx</td><td>呪文を受けるモンスターID。プレイヤーの場合はdummyで0とする。 </td></tr>
+    <tr><td class="paramname">msg1</td><td>msg_flagがTRUEで、プレイヤーを対象とする場合のメッセージ </td></tr>
+    <tr><td class="paramname">msg2</td><td>msg_flagがTRUEで、モンスターを対象とする場合のメッセージ </td></tr>
+    <tr><td class="paramname">msg3</td><td>msg_flagがFALSEで、プレイヤーを対象とする場合のメッセージ </td></tr>
+    <tr><td class="paramname">msg4</td><td>msg_flagがFALSEで、モンスターを対象とする場合のメッセージ </td></tr>
+    <tr><td class="paramname">msg_flag_aux</td><td>メッセージを分岐するためのフラグ </td></tr>
+    <tr><td class="paramname">TARGET_TYPE</td><td>プレイヤーを対象とする場合MONSTER_TO_PLAYER、モンスターを対象とする場合MONSTER_TO_MONSTER </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-util_8cpp_a6d1fe40d21640ab21cdaba03bb3e70dc_cgraph.png" border="0" usemap="#amspell-util_8cpp_a6d1fe40d21640ab21cdaba03bb3e70dc_cgraph" alt=""/></div>
+<map name="amspell-util_8cpp_a6d1fe40d21640ab21cdaba03bb3e70dc_cgraph" id="amspell-util_8cpp_a6d1fe40d21640ab21cdaba03bb3e70dc_cgraph">
+<area shape="rect" title="モンスターが呪文行使する際のメッセージを処理する汎用関数 /" alt="" coords="5,165,175,191"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="263,63,325,90"/>
+<area shape="rect" href="monster-info_8cpp.html#a09d78bdc9ae711c4a1ffbfe84c24ddd3" title="モンスターIDを取り、モンスター名をm_nameに代入する /" alt="" coords="240,114,348,141"/>
+<area shape="rect" href="mspell-util_8cpp.html#a1126379f8bb880004fbe53665b7f4383" title="モンスター2体がプレイヤーの近くに居るかの判定 /" alt="" coords="223,165,365,191"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="560,203,651,230"/>
+<area shape="rect" href="mspell-util_8cpp.html#a0bdfd9b55b743eb4f82ef3582403f0eb" title="プレイヤーがモンスターを見ることができるかの判定 /" alt="" coords="245,266,343,293"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="433,13,483,39"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="417,63,499,90"/>
+<area shape="rect" href="target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="413,114,503,141"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="708,26,787,53"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="551,26,660,53"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="558,77,653,103"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="567,127,643,154"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="425,266,491,293"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-util_8cpp_a6d1fe40d21640ab21cdaba03bb3e70dc_icgraph.png" border="0" usemap="#amspell-util_8cpp_a6d1fe40d21640ab21cdaba03bb3e70dc_icgraph" alt=""/></div>
+<map name="amspell-util_8cpp_a6d1fe40d21640ab21cdaba03bb3e70dc_icgraph" id="amspell-util_8cpp_a6d1fe40d21640ab21cdaba03bb3e70dc_icgraph">
+<area shape="rect" title="モンスターが呪文行使する際のメッセージを処理する汎用関数 /" alt="" coords="464,1196,633,1223"/>
+<area shape="rect" href="mspell-util_8cpp.html#ad6654d9a9e80032792e6700447b1f043" title="モンスターが呪文行使する際のメッセージを処理する汎用関数。盲目時と通常時のメッセージを切り替える。 /" alt="" coords="259,1095,394,1121"/>
+<area shape="rect" href="mspell-util_8cpp.html#abd0e92379b3e97682814158868808448" title="モンスターが呪文行使する際のメッセージを処理する汎用関数。対モンスターと対プレイヤーのメッセージを切り替える。 /" alt="" coords="237,1145,416,1172"/>
+<area shape="rect" href="mspell-status_8cpp.html#a691bf5871d51fc51de7f7215599d10cf" title="RF6_HASTEの処理。加速。 /" alt="" coords="261,1196,392,1223"/>
+<area shape="rect" href="mspell-status_8cpp.html#adc35867d0ab540691e09ce017a97a113" title="RF6_HEALの処理。治癒。 /" alt="" coords="266,1247,387,1273"/>
+<area shape="rect" href="mspell-status_8cpp.html#a55d6660a24ee40df1ef7e64795b4e717" title="RF6_INVULNERの処理。無敵。 /" alt="" coords="251,1297,402,1324"/>
+<area shape="rect" href="mspell-summon_8cpp.html#ac11493557de32115985e3bd6b33bf485" title=" " alt="" coords="5,5,189,32"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a4cab35909a2d28fd5b89851b99eb841a" title="RF4_BA_CHAOの処理。純ログルス。 /" alt="" coords="23,56,172,83"/>
+<area shape="rect" href="mspell-ball_8cpp.html#afc0ae75c9c3bddad516ad2ed491d5873" title="RF4_BA_NUKEの処理。放射能球。 /" alt="" coords="23,107,171,133"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#ad33fead4cf76dc5c5ed3c259376d8728" title="RF4_DISPELの処理。魔力消去。 /" alt="" coords="31,157,164,184"/>
+<area shape="rect" href="mspell-particularity_8cpp.html#aa32b6c70c3d0a32f05b5a805d26c1a20" title="ボルトでもボールでもブレスでもなく、ダメージを与える特殊なスペルの実行 / Performing special spells that take damage, not bolts,..." alt="" coords="27,208,167,235"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a2a33967959fab29ed1ca6f4efc56621c" title="RF4_SHOOTの処理。射撃。 /" alt="" coords="31,259,163,285"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a704f22efdade02d68769dedbcada3183" title="RF5_BA_ACIDの処理。アシッド・ボール。 /" alt="" coords="26,309,169,336"/>
+<area shape="rect" href="mspell-ball_8cpp.html#adadc6afa34b816d6083f024698d3195d" title="RF5_BA_COLDの処理。アイス・ボール。 /" alt="" coords="24,360,171,387"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a8739ceb3fcadeec4268f250096fcc228" title="RF5_BA_DARKの処理。暗黒の嵐。 /" alt="" coords="23,411,171,437"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a74e0ddb4aecb85dfc19131212a63a808" title="RF5_BA_ELECの処理。サンダー・ボール。 /" alt="" coords="24,461,171,488"/>
+<area shape="rect" href="mspell-ball_8cpp.html#ad784777e6fcd6cfac335bc7a8cc94d7d" title="RF5_BA_FIREの処理。ファイア・ボール。 /" alt="" coords="27,512,168,539"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a46fb58e9da67621cc1ce61d2044af544" title="RF5_BA_LITEの処理。スターバースト。 /" alt="" coords="28,563,167,589"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a21e7763aaf71afd7be257beaa67400f5" title="RF5_BA_MANAの処理。魔力の嵐。 /" alt="" coords="22,613,173,640"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a7b49254d4ee1158c645ab4db3ccc244b" title="RF5_BA_NETHの処理。地獄球。 /" alt="" coords="24,664,171,691"/>
+<area shape="rect" href="mspell-ball_8cpp.html#afd6ce33c706536a81121e722658b5977" title="RF5_BA_POISの処理。悪臭雲。 /" alt="" coords="26,715,169,741"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a4c6a0a6ce55f8492bc6ce74f015198d7" title="RF5_BA_WATEの処理。ウォーター・ボール。 /" alt="" coords="22,765,173,792"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#af3ec58ae8c1d15496d80d140bf559c91" title="RF5_BO_ACIDの処理。アシッド・ボルト。 /" alt="" coords="26,816,169,843"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a44651cfde740e7f0734d125de340db58" title="RF5_BO_COLDの処理。アイス・ボルト。 /" alt="" coords="23,867,171,893"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a29360836e9779699f21303312daa5c89" title="RF5_BO_ELECの処理。サンダー・ボルト。 /" alt="" coords="24,917,171,944"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a80cc33802eb2b0af013752800276679d" title="RF5_BO_FIREの処理。ファイア・ボルト。 /" alt="" coords="26,968,169,995"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a7f2fff6d262f8acaebfb04bebfb0d32b" title="RF5_BO_ICEEの処理。極寒の矢。 /" alt="" coords="26,1019,169,1045"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a4241d3774245ced3952f7327d2d178e0" title="RF5_BO_MANAの処理。魔力の矢。 /" alt="" coords="22,1069,173,1096"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#afca04de2d43b0d9088189300981984ed" title="RF5_BO_NETHの処理。地獄の矢。 /" alt="" coords="24,1120,171,1147"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a6a260cd8e63258f4dd42713c2bc242ae" title="RF5_BO_PLASの処理。プラズマ・ボルト。 /" alt="" coords="24,1171,171,1197"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a0c41de1cd50a241bc5599d376eac8b05" title="RF5_BO_WATEの処理。ウォーター・ボルト。 /" alt="" coords="22,1221,173,1248"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#afebdf70d4c0f4a9983cb9efa2024e18b" title="RF5_MISSILEの処理。マジック・ミサイル。 /" alt="" coords="28,1272,167,1299"/>
+<area shape="rect" href="mspell-floor_8cpp.html#acfd69c3cc851b4d76300b197389a7ce7" title="RF6_DARKNESSの処理。暗闇or閃光。 /" alt="" coords="18,1323,177,1349"/>
+<area shape="rect" href="mspell-particularity_8cpp.html#ad1286da1bd69c5af93e78a88531a9a77" title="RF6_PSY_SPEARの処理。光の剣。 /" alt="" coords="14,1373,181,1400"/>
+<area shape="rect" href="mspell-floor_8cpp.html#ad6339ccc8a772877e1b29f7b39effb84" title="RF6_RAISE_DEADの処理。死者復活。 /" alt="" coords="13,1424,182,1451"/>
+<area shape="rect" href="mspell-summon_8cpp.html#afb27bf6403ccfccf5ce73a6786916785" title="RF6_S_AMBERITESの処理。アンバーの王族召喚。 /" alt="" coords="8,1475,187,1501"/>
+<area shape="rect" href="mspell-summon_8cpp.html#af2d0aa3ee5b6506aa3b7c74a72219d4c" title="RF6_S_ANGELの処理。天使一体召喚。 /" alt="" coords="24,1525,171,1552"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a7f08ff9c6131d9ed4295914ca40dfcd7" title="RF6_S_ANTの処理。アリ召喚。 /" alt="" coords="33,1576,161,1603"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a295ec0aa628fb49fb87a1ead361facf4" title="RF6_S_CYBERの処理。サイバー・デーモン召喚。 /" alt="" coords="23,1627,171,1653"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a17c2aae3013c84f9a99fbb19c35b2a20" title="RF6_S_DEMONの処理。デーモン一体召喚。 /" alt="" coords="22,1677,173,1704"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a637311638022888bfdf584842837382d" title="RF6_S_DRAGONの処理。ドラゴン一体召喚。 /" alt="" coords="18,1728,177,1755"/>
+<area shape="rect" href="mspell-summon_8cpp.html#aa5cfe99c4d5c26f3d7ec456ea1d36b5a" title="RF6_S_HI_DRAGONの処理。古代ドラゴン召喚。 /" alt="" coords="8,1779,187,1805"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a461d5698041d3a0da868e6cb701881d4" title="RF6_S_HI_UNDEADの処理。強力なアンデッド召喚。 /" alt="" coords="9,1829,185,1856"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a4f2354df841eec759b7cd10d928d8156" title="RF6_S_HOUNDの処理。ハウンド召喚。 /" alt="" coords="23,1880,172,1907"/>
+<area shape="rect" href="mspell-summon_8cpp.html#af60e7e4b7077f30d1bd15a0f5a798c7e" title="RF6_S_HYDRAの処理。ヒドラ召喚。 /" alt="" coords="23,1931,171,1957"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a289fdbd44323eaa181b011f95d71f328" title="RF6_S_MONSTERの処理。モンスター一体召喚。 /" alt="" coords="14,1981,181,2008"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a12b34a03ad176e8b1c04101c947c7324" title="RF6_S_MONSTERSの処理。モンスター複数召喚。 /" alt="" coords="9,2032,185,2059"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a1d196afe2b8671613558e10bfa1572b0" title="RF6_S_SPIDERの処理。クモ召喚。 /" alt="" coords="22,2083,173,2109"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a9d99193ff4304395b5a0b67383fde00d" title="RF6_S_UNDEADの処理。アンデッド一体召喚。 /" alt="" coords="19,2133,176,2160"/>
+<area shape="rect" href="mspell-summon_8cpp.html#af3fbe1acb2decbf36234a10028d0019d" title="RF6_S_UNIQUEの処理。ユニーク・モンスター召喚。 /" alt="" coords="21,2184,173,2211"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1126379f8bb880004fbe53665b7f4383"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1126379f8bb880004fbe53665b7f4383">&#9670;&nbsp;</a></span>monster_near_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> monster_near_player </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>m_idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>t_idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスター2体がプレイヤーの近くに居るかの判定 / </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">floor_ptr</td><td>現在フロアへの参照ポインタ </td></tr>
+    <tr><td class="paramname">m_idx</td><td>モンスターID一体目 </td></tr>
+    <tr><td class="paramname">t_idx</td><td>モンスターID二体目 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>モンスター2体のどちらかがプレイヤーの近くに居ればTRUE、どちらも遠ければFALSEを返す。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-util_8cpp_a1126379f8bb880004fbe53665b7f4383_icgraph.png" border="0" usemap="#amspell-util_8cpp_a1126379f8bb880004fbe53665b7f4383_icgraph" alt=""/></div>
+<map name="amspell-util_8cpp_a1126379f8bb880004fbe53665b7f4383_icgraph" id="amspell-util_8cpp_a1126379f8bb880004fbe53665b7f4383_icgraph">
+<area shape="rect" title="モンスター2体がプレイヤーの近くに居るかの判定 /" alt="" coords="1121,1977,1264,2004"/>
+<area shape="rect" href="mspell-util_8cpp.html#a6d1fe40d21640ab21cdaba03bb3e70dc" title="モンスターが呪文行使する際のメッセージを処理する汎用関数 /" alt="" coords="904,331,1073,357"/>
+<area shape="rect" href="mspell-summon_8cpp.html#abde6433211c2ca886c1417d5b9f445d0" title="RF6_S_KINの処理。救援召喚。使用するモンスターの種類により、実処理に分岐させる。 /" alt="" coords="252,103,376,129"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a4c6a0a6ce55f8492bc6ce74f015198d7" title="RF5_BA_WATEの処理。ウォーター・ボール。 /" alt="" coords="462,2053,613,2080"/>
+<area shape="rect" href="mspell-summon_8cpp.html#afb27bf6403ccfccf5ce73a6786916785" title="RF6_S_AMBERITESの処理。アンバーの王族召喚。 /" alt="" coords="448,407,627,433"/>
+<area shape="rect" href="mspell-summon_8cpp.html#af2d0aa3ee5b6506aa3b7c74a72219d4c" title="RF6_S_ANGELの処理。天使一体召喚。 /" alt="" coords="464,1091,611,1117"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a7f08ff9c6131d9ed4295914ca40dfcd7" title="RF6_S_ANTの処理。アリ召喚。 /" alt="" coords="473,2357,601,2384"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a295ec0aa628fb49fb87a1ead361facf4" title="RF6_S_CYBERの処理。サイバー・デーモン召喚。 /" alt="" coords="463,1901,611,1928"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a17c2aae3013c84f9a99fbb19c35b2a20" title="RF6_S_DEMONの処理。デーモン一体召喚。 /" alt="" coords="462,2256,613,2283"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a637311638022888bfdf584842837382d" title="RF6_S_DRAGONの処理。ドラゴン一体召喚。 /" alt="" coords="458,2104,617,2131"/>
+<area shape="rect" href="mspell-summon_8cpp.html#aa5cfe99c4d5c26f3d7ec456ea1d36b5a" title="RF6_S_HI_DRAGONの処理。古代ドラゴン召喚。 /" alt="" coords="448,1040,627,1067"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a461d5698041d3a0da868e6cb701881d4" title="RF6_S_HI_UNDEADの処理。強力なアンデッド召喚。 /" alt="" coords="449,2205,625,2232"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a4f2354df841eec759b7cd10d928d8156" title="RF6_S_HOUNDの処理。ハウンド召喚。 /" alt="" coords="463,2003,612,2029"/>
+<area shape="rect" href="mspell-summon_8cpp.html#af60e7e4b7077f30d1bd15a0f5a798c7e" title="RF6_S_HYDRAの処理。ヒドラ召喚。 /" alt="" coords="463,2307,611,2333"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a289fdbd44323eaa181b011f95d71f328" title="RF6_S_MONSTERの処理。モンスター一体召喚。 /" alt="" coords="454,745,621,772"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a12b34a03ad176e8b1c04101c947c7324" title="RF6_S_MONSTERSの処理。モンスター複数召喚。 /" alt="" coords="449,989,625,1016"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a1d196afe2b8671613558e10bfa1572b0" title="RF6_S_SPIDERの処理。クモ召喚。 /" alt="" coords="462,2155,613,2181"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a9d99193ff4304395b5a0b67383fde00d" title="RF6_S_UNDEADの処理。アンデッド一体召喚。 /" alt="" coords="459,1952,616,1979"/>
+<area shape="rect" href="mspell-summon_8cpp.html#af3fbe1acb2decbf36234a10028d0019d" title="RF6_S_UNIQUEの処理。ユニーク・モンスター召喚。 /" alt="" coords="461,939,613,965"/>
+<area shape="rect" href="mspell-status_8cpp.html#af786fe11d0c98f4d3fed6ccdf02965e0" title="プレーヤーのステータスを下げるか、モンスター自身のステータスを上げるスペル類の処理" alt="" coords="451,2408,624,2435"/>
+<area shape="rect" href="mspell-breath_8cpp.html#a582e3df29a03e6ac31dc403c431cc2a9" title="RF4_BR_*の処理。各種ブレス。 /" alt="" coords="245,2484,383,2511"/>
+<area shape="rect" href="mspell-util_8cpp.html#ad6654d9a9e80032792e6700447b1f043" title="モンスターが呪文行使する際のメッセージを処理する汎用関数。盲目時と通常時のメッセージを切り替える。 /" alt="" coords="699,1547,834,1573"/>
+<area shape="rect" href="mspell-util_8cpp.html#abd0e92379b3e97682814158868808448" title="モンスターが呪文行使する際のメッセージを処理する汎用関数。対モンスターと対プレイヤーのメッセージを切り替える。 /" alt="" coords="677,356,856,383"/>
+<area shape="rect" href="mspell-status_8cpp.html#a691bf5871d51fc51de7f7215599d10cf" title="RF6_HASTEの処理。加速。 /" alt="" coords="249,52,379,79"/>
+<area shape="rect" href="mspell-status_8cpp.html#adc35867d0ab540691e09ce017a97a113" title="RF6_HEALの処理。治癒。 /" alt="" coords="253,305,375,332"/>
+<area shape="rect" href="mspell-status_8cpp.html#a55d6660a24ee40df1ef7e64795b4e717" title="RF6_INVULNERの処理。無敵。 /" alt="" coords="239,153,389,180"/>
+<area shape="rect" href="mspell-summon_8cpp.html#ac11493557de32115985e3bd6b33bf485" title=" " alt="" coords="445,647,629,673"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a4cab35909a2d28fd5b89851b99eb841a" title="RF4_BA_CHAOの処理。純ログルス。 /" alt="" coords="239,1572,389,1599"/>
+<area shape="rect" href="mspell-ball_8cpp.html#afc0ae75c9c3bddad516ad2ed491d5873" title="RF4_BA_NUKEの処理。放射能球。 /" alt="" coords="240,1623,388,1649"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#ad33fead4cf76dc5c5ed3c259376d8728" title="RF4_DISPELの処理。魔力消去。 /" alt="" coords="247,1673,381,1700"/>
+<area shape="rect" href="mspell-particularity_8cpp.html#aa32b6c70c3d0a32f05b5a805d26c1a20" title="ボルトでもボールでもブレスでもなく、ダメージを与える特殊なスペルの実行 / Performing special spells that take damage, not bolts,..." alt="" coords="244,1724,384,1751"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#a2a33967959fab29ed1ca6f4efc56621c" title="RF4_SHOOTの処理。射撃。 /" alt="" coords="248,1775,380,1801"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a704f22efdade02d68769dedbcada3183" title="RF5_BA_ACIDの処理。アシッド・ボール。 /" alt="" coords="243,1825,385,1852"/>
+<area shape="rect" href="mspell-ball_8cpp.html#adadc6afa34b816d6083f024698d3195d" title="RF5_BA_COLDの処理。アイス・ボール。 /" alt="" coords="241,1876,387,1903"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a8739ceb3fcadeec4268f250096fcc228" title="RF5_BA_DARKの処理。暗黒の嵐。 /" alt="" coords="240,1927,388,1953"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a74e0ddb4aecb85dfc19131212a63a808" title="RF5_BA_ELECの処理。サンダー・ボール。 /" alt="" coords="241,1977,387,2004"/>
+<area shape="rect" href="mspell-ball_8cpp.html#ad784777e6fcd6cfac335bc7a8cc94d7d" title="RF5_BA_FIREの処理。ファイア・ボール。 /" alt="" coords="243,2028,385,2055"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a46fb58e9da67621cc1ce61d2044af544" title="RF5_BA_LITEの処理。スターバースト。 /" alt="" coords="245,609,383,636"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a21e7763aaf71afd7be257beaa67400f5" title="RF5_BA_MANAの処理。魔力の嵐。 /" alt="" coords="239,660,389,687"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a7b49254d4ee1158c645ab4db3ccc244b" title="RF5_BA_NETHの処理。地獄球。 /" alt="" coords="241,1420,387,1447"/>
+<area shape="rect" href="mspell-ball_8cpp.html#afd6ce33c706536a81121e722658b5977" title="RF5_BA_POISの処理。悪臭雲。 /" alt="" coords="243,1471,385,1497"/>
+<area shape="rect" href="mspell-bolt_8cpp.html#af3ec58ae8c1d15496d80d140bf559c91" title="RF5_BO_ACIDの処理。アシッド・ボルト。 /" alt="" coords="243,1521,385,1548"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a50f2be9467ee2c4cff879e3d4e9c66b6" title=" " alt="" coords="5,1141,183,1168"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a6df5fae2d3026a687f76997a8b41d0e7" title=" " alt="" coords="11,1851,177,1877"/>
+<area shape="rect" href="mspell-status_8cpp.html#a6cd691e26b693cc27cc782c56459078c" title="RF5_BLINDの処理。盲目。 /" alt="" coords="252,2332,376,2359"/>
+<area shape="rect" href="mspell-status_8cpp.html#ad66bc381edc2c6c3702f1984f3b9e8f4" title="RF5_CONFの処理。混乱。/" alt="" coords="253,2383,375,2409"/>
+<area shape="rect" href="mspell-status_8cpp.html#a1002a0d77e0827ef228930141645b839" title="RF5_HOLDの処理。麻痺。 /" alt="" coords="253,2433,375,2460"/>
+<area shape="rect" href="mspell-status_8cpp.html#a67c298dd694943847c5ae49955477066" title="RF5_SCAREの処理。恐怖。 /" alt="" coords="248,2180,380,2207"/>
+<area shape="rect" href="mspell-status_8cpp.html#aa7c79dca484fbcb84b8d2cf719f9933e" title="RF5_SLOWの処理。減速。 /" alt="" coords="251,2231,377,2257"/>
+<area shape="rect" href="mspell-floor_8cpp.html#af54cab39b70fb9fa251c6600291c7865" title="RF6_TELE_LEVELの処理。テレポート・レベル。 /" alt="" coords="231,2281,397,2308"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0bdfd9b55b743eb4f82ef3582403f0eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bdfd9b55b743eb4f82ef3582403f0eb">&#9670;&nbsp;</a></span>see_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> see_monster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>m_idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーがモンスターを見ることができるかの判定 / </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">floor_ptr</td><td>現在フロアへの参照ポインタ </td></tr>
+    <tr><td class="paramname">m_idx</td><td>モンスターID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>プレイヤーがモンスターを見ることができるならTRUE、そうでなければFALSEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-util_8cpp_a0bdfd9b55b743eb4f82ef3582403f0eb_cgraph.png" border="0" usemap="#amspell-util_8cpp_a0bdfd9b55b743eb4f82ef3582403f0eb_cgraph" alt=""/></div>
+<map name="amspell-util_8cpp_a0bdfd9b55b743eb4f82ef3582403f0eb_cgraph" id="amspell-util_8cpp_a0bdfd9b55b743eb4f82ef3582403f0eb_cgraph">
+<area shape="rect" title="プレイヤーがモンスターを見ることができるかの判定 /" alt="" coords="5,169,103,196"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="151,169,217,196"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="265,93,409,120"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="295,245,380,272"/>
+<area shape="rect" href="grid_8cpp.html#ab400c1b998f2aac3e96120a9f4e374dc" title="指定された座標のマスが現在照らされているかを返す。 / Check for &quot;local&quot; illumination" alt="" coords="457,43,620,69"/>
+<area shape="rect" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e" title=" " alt="" coords="668,5,792,32"/>
+<area shape="rect" href="grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="675,68,785,95"/>
+<area shape="rect" href="cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="469,144,609,171"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="497,195,580,221"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="497,245,580,272"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="483,296,594,323"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="483,347,594,373"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-util_8cpp_a0bdfd9b55b743eb4f82ef3582403f0eb_icgraph.png" border="0" usemap="#amspell-util_8cpp_a0bdfd9b55b743eb4f82ef3582403f0eb_icgraph" alt=""/></div>
+<map name="amspell-util_8cpp_a0bdfd9b55b743eb4f82ef3582403f0eb_icgraph" id="amspell-util_8cpp_a0bdfd9b55b743eb4f82ef3582403f0eb_icgraph">
+<area shape="rect" title="プレイヤーがモンスターを見ることができるかの判定 /" alt="" coords="1091,1428,1188,1455"/>
+<area shape="rect" href="mspell-summon_8cpp.html#ac11493557de32115985e3bd6b33bf485" title=" " alt="" coords="459,525,643,552"/>
+<area shape="rect" href="mspell-summon_8cpp.html#abde6433211c2ca886c1417d5b9f445d0" title="RF6_S_KINの処理。救援召喚。使用するモンスターの種類により、実処理に分岐させる。 /" alt="" coords="259,5,383,32"/>
+<area shape="rect" href="mspell-util_8cpp.html#a6d1fe40d21640ab21cdaba03bb3e70dc" title="モンスターが呪文行使する際のメッセージを処理する汎用関数 /" alt="" coords="873,1981,1043,2008"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a4c6a0a6ce55f8492bc6ce74f015198d7" title="RF5_BA_WATEの処理。ウォーター・ボール。 /" alt="" coords="475,576,626,603"/>
+<area shape="rect" href="mspell-floor_8cpp.html#acfd69c3cc851b4d76300b197389a7ce7" title="RF6_DARKNESSの処理。暗闇or閃光。 /" alt="" coords="471,627,630,653"/>
+<area shape="rect" href="mspell-summon_8cpp.html#afb27bf6403ccfccf5ce73a6786916785" title="RF6_S_AMBERITESの処理。アンバーの王族召喚。 /" alt="" coords="461,677,640,704"/>
+<area shape="rect" href="mspell-summon_8cpp.html#af2d0aa3ee5b6506aa3b7c74a72219d4c" title="RF6_S_ANGELの処理。天使一体召喚。 /" alt="" coords="477,728,624,755"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a7f08ff9c6131d9ed4295914ca40dfcd7" title="RF6_S_ANTの処理。アリ召喚。 /" alt="" coords="487,779,615,805"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a295ec0aa628fb49fb87a1ead361facf4" title="RF6_S_CYBERの処理。サイバー・デーモン召喚。 /" alt="" coords="477,829,625,856"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a17c2aae3013c84f9a99fbb19c35b2a20" title="RF6_S_DEMONの処理。デーモン一体召喚。 /" alt="" coords="475,880,626,907"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a637311638022888bfdf584842837382d" title="RF6_S_DRAGONの処理。ドラゴン一体召喚。 /" alt="" coords="471,931,630,957"/>
+<area shape="rect" href="mspell-summon_8cpp.html#aa5cfe99c4d5c26f3d7ec456ea1d36b5a" title="RF6_S_HI_DRAGONの処理。古代ドラゴン召喚。 /" alt="" coords="461,981,640,1008"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a461d5698041d3a0da868e6cb701881d4" title="RF6_S_HI_UNDEADの処理。強力なアンデッド召喚。 /" alt="" coords="463,1032,639,1059"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a4f2354df841eec759b7cd10d928d8156" title="RF6_S_HOUNDの処理。ハウンド召喚。 /" alt="" coords="476,1095,625,1121"/>
+<area shape="rect" href="mspell-summon_8cpp.html#af60e7e4b7077f30d1bd15a0f5a798c7e" title="RF6_S_HYDRAの処理。ヒドラ召喚。 /" alt="" coords="477,1196,625,1223"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a289fdbd44323eaa181b011f95d71f328" title="RF6_S_MONSTERの処理。モンスター一体召喚。 /" alt="" coords="467,1297,634,1324"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a12b34a03ad176e8b1c04101c947c7324" title="RF6_S_MONSTERSの処理。モンスター複数召喚。 /" alt="" coords="463,1385,639,1412"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a1d196afe2b8671613558e10bfa1572b0" title="RF6_S_SPIDERの処理。クモ召喚。 /" alt="" coords="475,1468,626,1495"/>
+<area shape="rect" href="mspell-summon_8cpp.html#a9d99193ff4304395b5a0b67383fde00d" title="RF6_S_UNDEADの処理。アンデッド一体召喚。 /" alt="" coords="472,1532,629,1559"/>
+<area shape="rect" href="mspell-summon_8cpp.html#af3fbe1acb2decbf36234a10028d0019d" title="RF6_S_UNIQUEの処理。ユニーク・モンスター召喚。 /" alt="" coords="475,1608,627,1635"/>
+<area shape="rect" href="mspell-floor_8cpp.html#a6ae476c27892227891e08f439b29431b" title="RF6_TELE_AWAYの処理。テレポート・アウェイ。 /" alt="" coords="237,1779,404,1805"/>
+<area shape="rect" href="mspell-floor_8cpp.html#adf9e83a7fbbdaacc53506e24bbdecdac" title="RF6_TELE_TOの処理。テレポート・バック。 /" alt="" coords="249,1829,392,1856"/>
+<area shape="rect" href="mspell-status_8cpp.html#a691bf5871d51fc51de7f7215599d10cf" title="RF6_HASTEの処理。加速。 /" alt="" coords="693,2032,823,2059"/>
+<area shape="rect" href="mspell-status_8cpp.html#adc35867d0ab540691e09ce017a97a113" title="RF6_HEALの処理。治癒。 /" alt="" coords="697,2108,819,2135"/>
+<area shape="rect" href="mspell-status_8cpp.html#af786fe11d0c98f4d3fed6ccdf02965e0" title="プレーヤーのステータスを下げるか、モンスター自身のステータスを上げるスペル類の処理" alt="" coords="464,2336,637,2363"/>
+<area shape="rect" href="mspell-breath_8cpp.html#a582e3df29a03e6ac31dc403c431cc2a9" title="RF4_BR_*の処理。各種ブレス。 /" alt="" coords="251,2539,390,2565"/>
+<area shape="rect" href="mspell-status_8cpp.html#a065e582b50d2b55a6a1971230ecd63b5" title="RF5_BRAIN_SMASHの処理。脳攻撃。 /" alt="" coords="231,2589,411,2616"/>
+<area shape="rect" href="mspell-curse_8cpp.html#a7623a3e7ab88fdfe4121ba213b832f86" title="RF5_CAUSE_* の処理関数" alt="" coords="485,2691,617,2717"/>
+<area shape="rect" href="mspell-status_8cpp.html#a1288b02a4c7726f068b75fc178d01817" title="RF5_DRAIN_MANAの処理。魔力吸収。 /" alt="" coords="235,2843,406,2869"/>
+<area shape="rect" href="mspell-status_8cpp.html#acf7af081a76ea3510b0d5fc034c5c247" title="RF5_MIND_BLASTの処理。精神攻撃。 /" alt="" coords="237,2893,404,2920"/>
+<area shape="rect" href="mspell-floor_8cpp.html#a7fd774bfc7fe0925be7739144479b78b" title="RF6_BLINKの処理。ショート・テレポート。 /" alt="" coords="259,2944,383,2971"/>
+<area shape="rect" href="mspell-floor_8cpp.html#a7f54be10a285af6e7e6d26fd08986027" title="RF6_TPORTの処理。テレポート。 /" alt="" coords="256,2995,385,3021"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a50f2be9467ee2c4cff879e3d4e9c66b6" title=" " alt="" coords="5,1855,183,1881"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a6df5fae2d3026a687f76997a8b41d0e7" title=" " alt="" coords="11,1905,177,1932"/>
+<area shape="rect" href="mspell-util_8cpp.html#ad6654d9a9e80032792e6700447b1f043" title="モンスターが呪文行使する際のメッセージを処理する汎用関数。盲目時と通常時のメッセージを切り替える。 /" alt="" coords="691,1083,825,1109"/>
+<area shape="rect" href="mspell-util_8cpp.html#abd0e92379b3e97682814158868808448" title="モンスターが呪文行使する際のメッセージを処理する汎用関数。対モンスターと対プレイヤーのメッセージを切り替える。 /" alt="" coords="461,1829,640,1856"/>
+<area shape="rect" href="mspell-status_8cpp.html#a55d6660a24ee40df1ef7e64795b4e717" title="RF6_INVULNERの処理。無敵。 /" alt="" coords="245,1981,396,2008"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a4cab35909a2d28fd5b89851b99eb841a" title="RF4_BA_CHAOの処理。純ログルス。 /" alt="" coords="246,1880,395,1907"/>
+<area shape="rect" href="mspell-ball_8cpp.html#afc0ae75c9c3bddad516ad2ed491d5873" title="RF4_BA_NUKEの処理。放射能球。 /" alt="" coords="247,1931,395,1957"/>
+<area shape="rect" href="mspell-status_8cpp.html#a6cd691e26b693cc27cc782c56459078c" title="RF5_BLINDの処理。盲目。 /" alt="" coords="259,2488,383,2515"/>
+<area shape="rect" href="mspell-status_8cpp.html#ad66bc381edc2c6c3702f1984f3b9e8f4" title="RF5_CONFの処理。混乱。/" alt="" coords="259,2235,382,2261"/>
+<area shape="rect" href="mspell-status_8cpp.html#a1002a0d77e0827ef228930141645b839" title="RF5_HOLDの処理。麻痺。 /" alt="" coords="259,2285,382,2312"/>
+<area shape="rect" href="mspell-status_8cpp.html#a67c298dd694943847c5ae49955477066" title="RF5_SCAREの処理。恐怖。 /" alt="" coords="255,2336,387,2363"/>
+<area shape="rect" href="mspell-status_8cpp.html#aa7c79dca484fbcb84b8d2cf719f9933e" title="RF5_SLOWの処理。減速。 /" alt="" coords="257,2387,384,2413"/>
+<area shape="rect" href="mspell-floor_8cpp.html#af54cab39b70fb9fa251c6600291c7865" title="RF6_TELE_LEVELの処理。テレポート・レベル。 /" alt="" coords="237,2437,404,2464"/>
+<area shape="rect" href="mspell-curse_8cpp.html#abc6169960bbb390dd068f105aaa8a69c" title="RF5_CAUSE_1の処理。軽傷の呪い。 /" alt="" coords="247,2691,394,2717"/>
+<area shape="rect" href="mspell-curse_8cpp.html#a0df8a9819927d780946d0f807dd66acc" title="RF5_CAUSE_2の処理。重傷の呪い。 /" alt="" coords="247,2741,394,2768"/>
+<area shape="rect" href="mspell-curse_8cpp.html#a82013e854648b8cff6095c81e1d4c50b" title="RF5_CAUSE_3の処理。致命傷の呪い。 /" alt="" coords="247,2792,394,2819"/>
+<area shape="rect" href="mspell-curse_8cpp.html#a0a4fac1bc580f0f73d87dc3e8781faa2" title="RF5_CAUSE_4の処理。秘孔を突く。 /" alt="" coords="247,2640,394,2667"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abd0e92379b3e97682814158868808448"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd0e92379b3e97682814158868808448">&#9670;&nbsp;</a></span>simple_monspell_message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void simple_monspell_message </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>m_idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>t_idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>msg1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>msg2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>TARGET_TYPE</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターが呪文行使する際のメッセージを処理する汎用関数。対モンスターと対プレイヤーのメッセージを切り替える。 / </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">m_idx</td><td>呪文を唱えるモンスターID </td></tr>
+    <tr><td class="paramname">t_idx</td><td>呪文を受けるモンスターID。プレイヤーの場合はdummyで0とする。 </td></tr>
+    <tr><td class="paramname">msg1</td><td>プレイヤーを対象とする場合のメッセージ </td></tr>
+    <tr><td class="paramname">msg2</td><td>モンスター対象とする場合のメッセージ </td></tr>
+    <tr><td class="paramname">TARGET_TYPE</td><td>プレイヤーを対象とする場合MONSTER_TO_PLAYER、モンスターを対象とする場合MONSTER_TO_MONSTER </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-util_8cpp_abd0e92379b3e97682814158868808448_cgraph.png" border="0" usemap="#amspell-util_8cpp_abd0e92379b3e97682814158868808448_cgraph" alt=""/></div>
+<map name="amspell-util_8cpp_abd0e92379b3e97682814158868808448_cgraph" id="amspell-util_8cpp_abd0e92379b3e97682814158868808448_cgraph">
+<area shape="rect" title="モンスターが呪文行使する際のメッセージを処理する汎用関数。対モンスターと対プレイヤーのメッセージを切り替える。 /" alt="" coords="5,183,184,209"/>
+<area shape="rect" href="mspell-util_8cpp.html#a6d1fe40d21640ab21cdaba03bb3e70dc" title="モンスターが呪文行使する際のメッセージを処理する汎用関数 /" alt="" coords="232,183,401,209"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="490,81,551,108"/>
+<area shape="rect" href="monster-info_8cpp.html#a09d78bdc9ae711c4a1ffbfe84c24ddd3" title="モンスターIDを取り、モンスター名をm_nameに代入する /" alt="" coords="467,132,575,159"/>
+<area shape="rect" href="mspell-util_8cpp.html#a1126379f8bb880004fbe53665b7f4383" title="モンスター2体がプレイヤーの近くに居るかの判定 /" alt="" coords="449,183,592,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="475,233,566,260"/>
+<area shape="rect" href="mspell-util_8cpp.html#a0bdfd9b55b743eb4f82ef3582403f0eb" title="プレイヤーがモンスターを見ることができるかの判定 /" alt="" coords="472,284,569,311"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="660,5,709,32"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="643,56,726,83"/>
+<area shape="rect" href="target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="640,107,729,133"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="651,284,718,311"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-util_8cpp_abd0e92379b3e97682814158868808448_icgraph.png" border="0" usemap="#amspell-util_8cpp_abd0e92379b3e97682814158868808448_icgraph" alt=""/></div>
+<map name="amspell-util_8cpp_abd0e92379b3e97682814158868808448_icgraph" id="amspell-util_8cpp_abd0e92379b3e97682814158868808448_icgraph">
+<area shape="rect" title="モンスターが呪文行使する際のメッセージを処理する汎用関数。対モンスターと対プレイヤーのメッセージを切り替える。 /" alt="" coords="851,132,1029,159"/>
+<area shape="rect" href="mspell-floor_8cpp.html#a2f87072f65456b8536f59bf0badedb85" title="フロアの一定範囲に効果を及ぼす (悲鳴、テレポート等)スペルの効果" alt="" coords="443,5,578,32"/>
+<area shape="rect" href="mspell-particularity_8cpp.html#ae09cca33184e52d71d4f09f7e13df9be" title="RF6_HAND_DOOMの処理。破滅の手。 /" alt="" coords="425,56,596,83"/>
+<area shape="rect" href="mspell-special_8cpp.html#a46257436a8241552387fcfce42c8dd8e" title="BシンボルのRF6_SPECIALの処理。投げ落とす攻撃。 /" alt="" coords="644,107,803,133"/>
+<area shape="rect" href="mspell-floor_8cpp.html#a6ae476c27892227891e08f439b29431b" title="RF6_TELE_AWAYの処理。テレポート・アウェイ。 /" alt="" coords="427,157,594,184"/>
+<area shape="rect" href="mspell-floor_8cpp.html#adf9e83a7fbbdaacc53506e24bbdecdac" title="RF6_TELE_TOの処理。テレポート・バック。 /" alt="" coords="439,208,582,235"/>
+<area shape="rect" href="specified-summon_8cpp.html#a59c964e2954cf9a5b2482798a2b93a2a" title="ダンジョンの主召喚の処理。 /" alt="" coords="659,259,787,285"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a50f2be9467ee2c4cff879e3d4e9c66b6" title=" " alt="" coords="200,107,377,133"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a6df5fae2d3026a687f76997a8b41d0e7" title=" " alt="" coords="206,157,371,184"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#aa072f68a0af2110601c62abe434911fc" title="モンスターからモンスターへの魔法使用。ラーニング処理も行う。" alt="" coords="5,107,152,133"/>
+<area shape="rect" href="mspell-special_8cpp.html#a85d772bd7d52f4e29aaf156988729ada" title="RF6_SPECIALの処理。モンスターの種類によって実処理に振り分ける。 /" alt="" coords="439,107,582,133"/>
+<area shape="rect" href="mspell-summon_8cpp.html#abde6433211c2ca886c1417d5b9f445d0" title="RF6_S_KINの処理。救援召喚。使用するモンスターの種類により、実処理に分岐させる。 /" alt="" coords="449,259,573,285"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時55分30秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

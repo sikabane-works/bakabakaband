@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/io/write-diary.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html">io</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">write-diary.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="write-diary_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a27526f09235e85ec8aa12d92f9c869bd">    5</a></span>&#160;<span class="preprocessor">#define DIARY_DIALY             0</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a20ce6c06300f5fff584ed07f919b34d9">    6</a></span>&#160;<span class="preprocessor">#define DIARY_DESCRIPTION       1</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a9efb1918c4b00e245f9c178b65268bf3">    7</a></span>&#160;<span class="preprocessor">#define DIARY_ART               2</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a1827b9353b4562e078a2f1b78f050856">    8</a></span>&#160;<span class="preprocessor">#define DIARY_UNIQUE            3</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a725e46e881ea5bbfabdf0a4b017d877d">    9</a></span>&#160;<span class="preprocessor">#define DIARY_FIX_QUEST_C       4</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="write-diary_8h.html#ae5fa9521550779741ba01858893d24bc">   10</a></span>&#160;<span class="preprocessor">#define DIARY_FIX_QUEST_F       5</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a5584480a4fb867bfae9d682ed177175b">   11</a></span>&#160;<span class="preprocessor">#define DIARY_RAND_QUEST_C      6</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a094a1ea6d43a6bbbb25c17a59f7d1880">   12</a></span>&#160;<span class="preprocessor">#define DIARY_RAND_QUEST_F      7</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="write-diary_8h.html#afd4e48b6754c3c5542aad3b9da9e9f96">   13</a></span>&#160;<span class="preprocessor">#define DIARY_MAXDEAPTH         8</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a046d1b9882e14c0c8274c0828530eb06">   14</a></span>&#160;<span class="preprocessor">#define DIARY_TRUMP             9</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a366ce54a236db9994abe321ebc09b374">   15</a></span>&#160;<span class="preprocessor">#define DIARY_STAIR             10</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="write-diary_8h.html#ae737c7c411b4a420f7e3b7d859715528">   16</a></span>&#160;<span class="preprocessor">#define DIARY_RECALL            11</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="write-diary_8h.html#addd42f915b27833472e396f5ef756ffb">   17</a></span>&#160;<span class="preprocessor">#define DIARY_TO_QUEST          12</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="write-diary_8h.html#ae2fa674e0eada5e8065dcd23580eadc2">   18</a></span>&#160;<span class="preprocessor">#define DIARY_TELEPORT_LEVEL    13</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="write-diary_8h.html#ad0441b513dfb964af7254ee38d880e05">   19</a></span>&#160;<span class="preprocessor">#define DIARY_BUY               14</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="write-diary_8h.html#ab32e7d76b946b4f137089642d4025cff">   20</a></span>&#160;<span class="preprocessor">#define DIARY_SELL              15</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a2b1a68e6cd1a20d5b2aaa81c19177f38">   21</a></span>&#160;<span class="preprocessor">#define DIARY_ARENA             16</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="write-diary_8h.html#aa8aa46e082e6ed37772e71b2ef5d6e1c">   22</a></span>&#160;<span class="preprocessor">#define DIARY_FOUND             17</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a8f42034cfbba503fd8629180393c36b3">   23</a></span>&#160;<span class="preprocessor">#define DIARY_LEVELUP           18</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a8edbeed30b6495dfa28cf1b924a3f1be">   24</a></span>&#160;<span class="preprocessor">#define DIARY_GAMESTART         19</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a1f8c397285424692a9219570f8104bc0">   25</a></span>&#160;<span class="preprocessor">#define DIARY_WIZ_TELE          20</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a2141589493ab2500218a3363b8805371">   26</a></span>&#160;<span class="preprocessor">#define DIARY_NAMED_PET         21</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="write-diary_8h.html#ae0926d066de535b921d25e750c5474ab">   27</a></span>&#160;<span class="preprocessor">#define DIARY_PAT_TELE          22</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a8138b5c079ed94ac62d6daba03fa84ec">   28</a></span>&#160;<span class="preprocessor">#define DIARY_ART_SCROLL        23</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a76d2ec8ff3df4bfe0fe04e0684dfd23e">   29</a></span>&#160;<span class="preprocessor">#define DIARY_WIZARD_LOG        24</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="write-diary_8h.html#aa4eaee91005e632c3ced7726f9764ed4">   31</a></span>&#160;<span class="preprocessor">#define RECORD_NAMED_PET_NAME        0</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a6b4ddc41ae6081b90100efe1e7f4aa39">   32</a></span>&#160;<span class="preprocessor">#define RECORD_NAMED_PET_UNNAME      1</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="write-diary_8h.html#afc9fbd778ce1b787cde685f31e391dd0">   33</a></span>&#160;<span class="preprocessor">#define RECORD_NAMED_PET_DISMISS     2</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a8fd333498eded64fe739ab3087894c56">   34</a></span>&#160;<span class="preprocessor">#define RECORD_NAMED_PET_DEATH       3</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a16a23aa553fe08af631daf9c4dbfd536">   35</a></span>&#160;<span class="preprocessor">#define RECORD_NAMED_PET_MOVED       4</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a9bb79e18aa859d0be77d118610e180d7">   36</a></span>&#160;<span class="preprocessor">#define RECORD_NAMED_PET_LOST_SIGHT  5</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="write-diary_8h.html#aa8f5999ebef668ff0910492bd42c4039">   37</a></span>&#160;<span class="preprocessor">#define RECORD_NAMED_PET_DESTROY     6</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a40e2662dfe06d0156d36ad59a3e6a7e7">   38</a></span>&#160;<span class="preprocessor">#define RECORD_NAMED_PET_EARTHQUAKE  7</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a9e25655d5bbdda96f9a7e32d84dc5125">   39</a></span>&#160;<span class="preprocessor">#define RECORD_NAMED_PET_GENOCIDE    8</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="write-diary_8h.html#abccccfecfc2ead9b6f1faa2dc33ca318">   40</a></span>&#160;<span class="preprocessor">#define RECORD_NAMED_PET_WIZ_ZAP     9</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="write-diary_8h.html#aab6f1c9e1b18124dc4d214507bee364a">   41</a></span>&#160;<span class="preprocessor">#define RECORD_NAMED_PET_TELE_LEVEL  10</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="write-diary_8h.html#aa90702aba677bddf7d08e0faa11cca57">   42</a></span>&#160;<span class="preprocessor">#define RECORD_NAMED_PET_BLAST       11</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a7ed34f6b08deb1d5db5bfabf3b3c522b">   43</a></span>&#160;<span class="preprocessor">#define RECORD_NAMED_PET_HEAL_LEPER  12</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="write-diary_8h.html#abe1a8e0d21a88a9b082ce6cabab06cc4">   44</a></span>&#160;<span class="preprocessor">#define RECORD_NAMED_PET_COMPACT     13</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="write-diary_8h.html#a26fb9c57cc79acf4e45a2250f537a639">   45</a></span>&#160;<span class="preprocessor">#define RECORD_NAMED_PET_LOSE_PARENT 14</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="write-diary_8h.html#a18df1ba779b75c15f1e5c740de377578">write_level</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#ifdef JP</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="write-diary_8h.html#a9dd20d3a7be882e5dcb9d8ebd74539e0">get_ordinal_number_suffix</a>(<span class="keywordtype">int</span> num);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> <a class="code" href="write-diary_8h.html#a22a7081309e37aa6eed6270bae811b79">exe_write_diary</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">int</span> type, <span class="keywordtype">int</span> num, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> note);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_ad99e8b64263d5831d93bec22e89da527"><div class="ttname"><a href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a></div><div class="ttdeci">int errr</div><div class="ttdoc">エラーコードの定義 / Error codes for function return values</div><div class="ttdef"><b>Definition:</b> h-type.h:53</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="awrite-diary_8h_html_a18df1ba779b75c15f1e5c740de377578"><div class="ttname"><a href="write-diary_8h.html#a18df1ba779b75c15f1e5c740de377578">write_level</a></div><div class="ttdeci">bool write_level</div><div class="ttdoc">日記へのメッセージ追加処理</div><div class="ttdef"><b>Definition:</b> write-diary.cpp:20</div></div>
+<div class="ttc" id="awrite-diary_8h_html_a22a7081309e37aa6eed6270bae811b79"><div class="ttname"><a href="write-diary_8h.html#a22a7081309e37aa6eed6270bae811b79">exe_write_diary</a></div><div class="ttdeci">errr exe_write_diary(player_type *creature_ptr, int type, int num, concptr note)</div><div class="ttdoc">日記にメッセージを追加する / Take note to the diary.</div><div class="ttdef"><b>Definition:</b> write-diary.cpp:172</div></div>
+<div class="ttc" id="awrite-diary_8h_html_a9dd20d3a7be882e5dcb9d8ebd74539e0"><div class="ttname"><a href="write-diary_8h.html#a9dd20d3a7be882e5dcb9d8ebd74539e0">get_ordinal_number_suffix</a></div><div class="ttdeci">concptr get_ordinal_number_suffix(int num)</div><div class="ttdoc">Return suffix of ordinal number</div><div class="ttdef"><b>Definition:</b> write-diary.cpp:29</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

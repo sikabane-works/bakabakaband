@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/dungeon/dungeon.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_55f303817758c0e5b41dc0bbc9cd6c85.html">dungeon</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">dungeon.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="dungeon_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="dungeon_8h.html#a0ac81fb885456a8265e3458f49c33d38">    1</a></span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="feature_8h.html">grid/feature.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="race-ability-flags_8h.html">monster-race/race-ability-flags.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="flag-group_8h.html">util/flag-group.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="dungeon_8h.html#aabe510033c90952e5a76000a657b2897">   12</a></span>&#160;<span class="preprocessor">#define DUNGEON_FEAT_PROB_NUM 3</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="dungeon_8h.html#a5ef522aa0ac169502a6223572e4bcbf1">   14</a></span>&#160;<span class="preprocessor">#define DUNGEON_ANGBAND  1</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="dungeon_8h.html#a81ae1d114dea57fcf80a086cd7a1e9c1">   15</a></span>&#160;<span class="preprocessor">#define DUNGEON_GALGALS  2</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="dungeon_8h.html#ab0bacdf64bb1258e4eaba7f97d48e924">   16</a></span>&#160;<span class="preprocessor">#define DUNGEON_ORC      3</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="dungeon_8h.html#acb89bd77304fc1290e54f1971ab673e5">   17</a></span>&#160;<span class="preprocessor">#define DUNGEON_MAZE     4</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="dungeon_8h.html#aeb1113423bb50ac33935febb8adc040c">   18</a></span>&#160;<span class="preprocessor">#define DUNGEON_DRAGON   5</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="dungeon_8h.html#a4401c88c490c015a63371cefe66c703a">   19</a></span>&#160;<span class="preprocessor">#define DUNGEON_GRAVE    6</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="dungeon_8h.html#a591b0edef3d2e3c63b201111777c96c8">   20</a></span>&#160;<span class="preprocessor">#define DUNGEON_WOOD     7</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="dungeon_8h.html#a30199aa51f54a052e93fc742aebedb22">   21</a></span>&#160;<span class="preprocessor">#define DUNGEON_VOLCANO  8</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="dungeon_8h.html#a9e47f3f950e6b2bc7bc89b2c1b53e069">   22</a></span>&#160;<span class="preprocessor">#define DUNGEON_HELL     9</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="dungeon_8h.html#a708284e01c6976e6853b25549178a5b9">   23</a></span>&#160;<span class="preprocessor">#define DUNGEON_HEAVEN   10</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="dungeon_8h.html#ad2eb4c8af02a45149ef9e88ab37d9b0c">   24</a></span>&#160;<span class="preprocessor">#define DUNGEON_OCEAN    11</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="dungeon_8h.html#afb53692722eea7240b91575a202b496e">   25</a></span>&#160;<span class="preprocessor">#define DUNGEON_CASTLE   12</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="dungeon_8h.html#a1f6811828e0bb2da7bd9d0256094bbe1">   26</a></span>&#160;<span class="preprocessor">#define DUNGEON_CTH      13</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="dungeon_8h.html#a768b3e257e56c81c5dcdc721aa8c3bc1">   27</a></span>&#160;<span class="preprocessor">#define DUNGEON_MOUNTAIN 14</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="dungeon_8h.html#a33ce1c594eb3104b9269063c3d23fda8">   28</a></span>&#160;<span class="preprocessor">#define DUNGEON_GOLD     15</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="dungeon_8h.html#a54d398b94f128c12888b280667ca6a94">   29</a></span>&#160;<span class="preprocessor">#define DUNGEON_NO_MAGIC 16</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="dungeon_8h.html#a607f86f9ae229d0daaa557400bbff8a6">   30</a></span>&#160;<span class="preprocessor">#define DUNGEON_NO_MELEE 17</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="dungeon_8h.html#aee3015f2d6b3024ae4e98bc2da5e4676">   31</a></span>&#160;<span class="preprocessor">#define DUNGEON_CHAMELEON 18</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="dungeon_8h.html#a4eb7685dc00deebfbe6ae0cada1eadd5">   32</a></span>&#160;<span class="preprocessor">#define DUNGEON_DARKNESS 19</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/* A structure for the != dungeon types */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structdungeon__type.html">dungeon_type</a> <a class="code" href="structdungeon__type.html">dungeon_type</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structdungeon__type.html">   36</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structdungeon__type.html">dungeon_type</a> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a778f9a442e364227e84c2fff9870fac0">   38</a></span>&#160;    std::string <a class="code" href="structdungeon__type.html#a778f9a442e364227e84c2fff9870fac0">name</a>; <span class="comment">/* Name */</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structdungeon__type.html#ac6447b6d65717295a61b9cf77bf8fcd3">   39</a></span>&#160;    std::string <a class="code" href="structdungeon__type.html#ac6447b6d65717295a61b9cf77bf8fcd3">text</a>; <span class="comment">/* Description */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a9a0580e890421326b0e81fdb97a72be6">   41</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structdungeon__type.html#a9a0580e890421326b0e81fdb97a72be6">dy</a>{};</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structdungeon__type.html#affe0e4e4635949d96ec38d9ec662e5ec">   42</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structdungeon__type.html#affe0e4e4635949d96ec38d9ec662e5ec">dx</a>{};</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structdungeon__type.html#acf1c5eefdfc88186306ae9fddf7c1275">   44</a></span>&#160;    <a class="code" href="structfeat__prob.html">feat_prob</a> <a class="code" href="structdungeon__type.html#acf1c5eefdfc88186306ae9fddf7c1275">floor</a>[<a class="code" href="dungeon_8h.html#aabe510033c90952e5a76000a657b2897">DUNGEON_FEAT_PROB_NUM</a>]{}; <span class="comment">/* Floor probability */</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a99f5252a1bce25e1592d63c7bbf41447">   45</a></span>&#160;    <a class="code" href="structfeat__prob.html">feat_prob</a> <a class="code" href="structdungeon__type.html#a99f5252a1bce25e1592d63c7bbf41447">fill</a>[<a class="code" href="dungeon_8h.html#aabe510033c90952e5a76000a657b2897">DUNGEON_FEAT_PROB_NUM</a>]{};  <span class="comment">/* Cave wall probability */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structdungeon__type.html#ab29788935913e215b89d43356dc7fa17">   46</a></span>&#160;    <a class="code" href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a> <a class="code" href="structdungeon__type.html#ab29788935913e215b89d43356dc7fa17">outer_wall</a>{};                        <span class="comment">/* Outer wall tile */</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a8ef5b4b479e736acc16f40712755435d">   47</a></span>&#160;    <a class="code" href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a> <a class="code" href="structdungeon__type.html#a8ef5b4b479e736acc16f40712755435d">inner_wall</a>{};                        <span class="comment">/* Inner wall tile */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a203b8331e0dc243833fe9adb07cb912b">   48</a></span>&#160;    <a class="code" href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a> <a class="code" href="structdungeon__type.html#a203b8331e0dc243833fe9adb07cb912b">stream1</a>{};                           <span class="comment">/* stream tile */</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a48ee9cd62526a6680efc2342193c40f2">   49</a></span>&#160;    <a class="code" href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a> <a class="code" href="structdungeon__type.html#a48ee9cd62526a6680efc2342193c40f2">stream2</a>{};                           <span class="comment">/* stream tile */</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a8b7c6ffb668fa3d75e560ce8458aeeb5">   51</a></span>&#160;    <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> <a class="code" href="structdungeon__type.html#a8b7c6ffb668fa3d75e560ce8458aeeb5">mindepth</a>{};         <span class="comment">/* Minimal depth */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structdungeon__type.html#ad817eec778e805913fa70358eba2223f">   52</a></span>&#160;    <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> <a class="code" href="structdungeon__type.html#ad817eec778e805913fa70358eba2223f">maxdepth</a>{};         <span class="comment">/* Maximal depth */</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a921280fea7ee1dde6b08364a7de128bc">   53</a></span>&#160;    <a class="code" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> <a class="code" href="structdungeon__type.html#a921280fea7ee1dde6b08364a7de128bc">min_plev</a>{};         <span class="comment">/* Minimal plev needed to enter -- it&#39;s an anti-cheating mesure */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a6411c434112de296fe7b62560998955f">   54</a></span>&#160;    <a class="code" href="h-type_8h.html#aedded897f998957063f6aa0bb52c18c9">BIT_FLAGS16</a> <a class="code" href="structdungeon__type.html#a6411c434112de296fe7b62560998955f">pit</a>{};</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a7a276d3914bd5e97efba82945b633297">   55</a></span>&#160;    <a class="code" href="h-type_8h.html#aedded897f998957063f6aa0bb52c18c9">BIT_FLAGS16</a> <a class="code" href="structdungeon__type.html#a7a276d3914bd5e97efba82945b633297">nest</a>{};</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structdungeon__type.html#adfd3b29a4ae242dee5d4f2940ff45ea9">   56</a></span>&#160;    <a class="code" href="h-type_8h.html#ab3dcd9674923d3dbc3fa7c294cb4a68d">BIT_FLAGS8</a> <a class="code" href="structdungeon__type.html#adfd3b29a4ae242dee5d4f2940ff45ea9">mode</a>{}; <span class="comment">/* Mode of combinaison of the monster flags */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a78d19fa38d8ae901d2754c137550db13">   58</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdungeon__type.html#a78d19fa38d8ae901d2754c137550db13">min_m_alloc_level</a>{};    <span class="comment">/* Minimal number of monsters per level */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structdungeon__type.html#acf24a1b5b33d3cc2d4f33a3f17cd0f81">   59</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdungeon__type.html#acf24a1b5b33d3cc2d4f33a3f17cd0f81">max_m_alloc_chance</a>{};   <span class="comment">/* There is a 1/max_m_alloc_chance chance per round of creating a new monster */</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structdungeon__type.html#ac29183a924077b9d26f5446e2ae2db80">   61</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structdungeon__type.html#ac29183a924077b9d26f5446e2ae2db80">flags1</a>{};     <span class="comment">/* Flags 1 */</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a3946f31272285f9a333749d1c49d473e">   63</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structdungeon__type.html#a3946f31272285f9a333749d1c49d473e">mflags1</a>{};        <span class="comment">/* The monster flags that are allowed */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a529325e5454d9954ba8439eecdefc754">   64</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structdungeon__type.html#a529325e5454d9954ba8439eecdefc754">mflags2</a>{};</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="structdungeon__type.html#ae35810b183323121d67710ed687cea08">   65</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structdungeon__type.html#ae35810b183323121d67710ed687cea08">mflags3</a>{};</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a3fc3c7f835d304b29251ff1bd22b0600">   66</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structdungeon__type.html#a3fc3c7f835d304b29251ff1bd22b0600">mflags7</a>{};</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a267a2342df32c984cf9869fd2ea58677">   67</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structdungeon__type.html#a267a2342df32c984cf9869fd2ea58677">mflags8</a>{};</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a4b248bbc6dd1c0ea04a949435b06ae8a">   68</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structdungeon__type.html#a4b248bbc6dd1c0ea04a949435b06ae8a">mflags9</a>{};</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a3f7485d784a5b8a86ca86ac0f5a7ac37">   69</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structdungeon__type.html#a3f7485d784a5b8a86ca86ac0f5a7ac37">mflagsr</a>{};</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="structdungeon__type.html#acfbfb62364988bc5103fc667db916c4c">   71</a></span>&#160;    <a class="code" href="class_flag_group.html">FlagGroup&lt;RF_ABILITY&gt;</a> <a class="code" href="structdungeon__type.html#acfbfb62364988bc5103fc667db916c4c">m_ability_flags</a>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a52bb1b3dcbff041604fa057d5bd85dbe">   73</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structdungeon__type.html#a52bb1b3dcbff041604fa057d5bd85dbe">r_char</a>[5]{};       <span class="comment">/* Monster race allowed */</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a33557b90aa81aaffe1f3733e19f52960">   74</a></span>&#160;    <a class="code" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> <a class="code" href="structdungeon__type.html#a33557b90aa81aaffe1f3733e19f52960">final_object</a>{}; <span class="comment">/* The object you&#39;ll find at the bottom */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="structdungeon__type.html#ab975547499949929c16e4372c9df5808">   75</a></span>&#160;    <a class="code" href="h-type_8h.html#a4fc040f8a9ad313d0ce50224ff8841a0">ARTIFACT_IDX</a> <a class="code" href="structdungeon__type.html#ab975547499949929c16e4372c9df5808">final_artifact</a>{};  <span class="comment">/* The artifact you&#39;ll find at the bottom */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a26cc5833fb16af21a7e3d5bb65a73d23">   76</a></span>&#160;    <a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> <a class="code" href="structdungeon__type.html#a26cc5833fb16af21a7e3d5bb65a73d23">final_guardian</a>{};   <span class="comment">/* The artifact&#39;s guardian. If an artifact is specified, then it&#39;s NEEDED */</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a354b252850067c2ae96b8992cd0b0bc5">   78</a></span>&#160;    <a class="code" href="h-type_8h.html#a22dfcdd3424b7ae6a31bcba8b0989a22">PROB</a> <a class="code" href="structdungeon__type.html#a354b252850067c2ae96b8992cd0b0bc5">special_div</a>{}; <span class="comment">/* % of monsters affected by the flags/races allowed, to add some variety */</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a1df8424b51884935bbe71520160eaf34">   79</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdungeon__type.html#a1df8424b51884935bbe71520160eaf34">tunnel_percent</a>{};</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a4e971c6aa23258c60764be093dafea52">   80</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdungeon__type.html#a4e971c6aa23258c60764be093dafea52">obj_great</a>{};</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structdungeon__type.html#a1f27997cfcc0ab1c597e65e7281f2d1b">   81</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdungeon__type.html#a1f27997cfcc0ab1c597e65e7281f2d1b">obj_good</a>{};</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;};</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> *<a class="code" href="dungeon_8h.html#a84a278c671bd0ed0812a8a4037144936">max_dlv</a>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">extern</span> std::vector&lt;dungeon_type&gt; <a class="code" href="dungeon_8h.html#a2397365208db1df4da112742eb7c5f9b">d_info</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#ad858b43cf9b1e70a02dbeabfd632b70c">DUNGEON_IDX</a> <a class="code" href="dungeon_8h.html#a1ecdebcef74092729467110b5eecc64c">choose_dungeon</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> note, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aclass_flag_group_html"><div class="ttname"><a href="class_flag_group.html">FlagGroup&lt; RF_ABILITY &gt;</a></div></div>
+<div class="ttc" id="adungeon_8h_html_a1ecdebcef74092729467110b5eecc64c"><div class="ttname"><a href="dungeon_8h.html#a1ecdebcef74092729467110b5eecc64c">choose_dungeon</a></div><div class="ttdeci">DUNGEON_IDX choose_dungeon(concptr note, POSITION y, POSITION x)</div><div class="ttdoc">これまでに入ったダンジョンの一覧を表示し、選択させる。</div><div class="ttdef"><b>Definition:</b> dungeon.cpp:29</div></div>
+<div class="ttc" id="adungeon_8h_html_a2397365208db1df4da112742eb7c5f9b"><div class="ttname"><a href="dungeon_8h.html#a2397365208db1df4da112742eb7c5f9b">d_info</a></div><div class="ttdeci">std::vector&lt; dungeon_type &gt; d_info</div><div class="ttdef"><b>Definition:</b> dungeon.cpp:14</div></div>
+<div class="ttc" id="adungeon_8h_html_a84a278c671bd0ed0812a8a4037144936"><div class="ttname"><a href="dungeon_8h.html#a84a278c671bd0ed0812a8a4037144936">max_dlv</a></div><div class="ttdeci">DEPTH * max_dlv</div><div class="ttdef"><b>Definition:</b> dungeon.cpp:19</div></div>
+<div class="ttc" id="adungeon_8h_html_aabe510033c90952e5a76000a657b2897"><div class="ttname"><a href="dungeon_8h.html#aabe510033c90952e5a76000a657b2897">DUNGEON_FEAT_PROB_NUM</a></div><div class="ttdeci">#define DUNGEON_FEAT_PROB_NUM</div><div class="ttdef"><b>Definition:</b> dungeon.h:12</div></div>
+<div class="ttc" id="afeature_8h_html"><div class="ttname"><a href="feature_8h.html">feature.h</a></div></div>
+<div class="ttc" id="aflag-group_8h_html"><div class="ttname"><a href="flag-group_8h.html">flag-group.h</a></div></div>
+<div class="ttc" id="ah-type_8h_html_a1c8b80a20fb5396ff07a523b01112c47"><div class="ttname"><a href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a></div><div class="ttdeci">s32b DEPTH</div><div class="ttdoc">ゲーム中の階層レベルの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:194</div></div>
+<div class="ttc" id="ah-type_8h_html_a22dfcdd3424b7ae6a31bcba8b0989a22"><div class="ttname"><a href="h-type_8h.html#a22dfcdd3424b7ae6a31bcba8b0989a22">PROB</a></div><div class="ttdeci">s16b PROB</div><div class="ttdoc">確率の重みの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:222</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a4afcd80086918943bed571d0a96b93eb"><div class="ttname"><a href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a></div><div class="ttdeci">s16b KIND_OBJECT_IDX</div><div class="ttdoc">ゲーム中のベースアイテムID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:123</div></div>
+<div class="ttc" id="ah-type_8h_html_a4fc040f8a9ad313d0ce50224ff8841a0"><div class="ttname"><a href="h-type_8h.html#a4fc040f8a9ad313d0ce50224ff8841a0">ARTIFACT_IDX</a></div><div class="ttdeci">s16b ARTIFACT_IDX</div><div class="ttdoc">ゲーム中のアーティファクトID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:113</div></div>
+<div class="ttc" id="ah-type_8h_html_a7ea47f67338902d35c1e93e00cf86908"><div class="ttname"><a href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a></div><div class="ttdeci">s16b MONRACE_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:109</div></div>
+<div class="ttc" id="ah-type_8h_html_a85b58bbae289409cd01a8a413e991f12"><div class="ttname"><a href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a></div><div class="ttdeci">s16b FEAT_IDX</div><div class="ttdoc">ゲーム中の地形ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:99</div></div>
+<div class="ttc" id="ah-type_8h_html_a9a1975460009e928d9b53995d07d3623"><div class="ttname"><a href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a></div><div class="ttdeci">s16b PLAYER_LEVEL</div><div class="ttdoc">ゲーム中のプレイヤーレベルの型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:176</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_ab3dcd9674923d3dbc3fa7c294cb4a68d"><div class="ttname"><a href="h-type_8h.html#ab3dcd9674923d3dbc3fa7c294cb4a68d">BIT_FLAGS8</a></div><div class="ttdeci">byte BIT_FLAGS8</div><div class="ttdoc">8ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:205</div></div>
+<div class="ttc" id="ah-type_8h_html_ad858b43cf9b1e70a02dbeabfd632b70c"><div class="ttname"><a href="h-type_8h.html#ad858b43cf9b1e70a02dbeabfd632b70c">DUNGEON_IDX</a></div><div class="ttdeci">s16b DUNGEON_IDX</div><div class="ttdoc">ゲーム中のダンジョンID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:111</div></div>
+<div class="ttc" id="ah-type_8h_html_aedded897f998957063f6aa0bb52c18c9"><div class="ttname"><a href="h-type_8h.html#aedded897f998957063f6aa0bb52c18c9">BIT_FLAGS16</a></div><div class="ttdeci">u16b BIT_FLAGS16</div><div class="ttdoc">16ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:204</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="arace-ability-flags_8h_html"><div class="ttname"><a href="race-ability-flags_8h.html">race-ability-flags.h</a></div></div>
+<div class="ttc" id="astructdungeon__type_html"><div class="ttname"><a href="structdungeon__type.html">dungeon_type</a></div><div class="ttdef"><b>Definition:</b> dungeon.h:36</div></div>
+<div class="ttc" id="astructdungeon__type_html_a1df8424b51884935bbe71520160eaf34"><div class="ttname"><a href="structdungeon__type.html#a1df8424b51884935bbe71520160eaf34">dungeon_type::tunnel_percent</a></div><div class="ttdeci">int tunnel_percent</div><div class="ttdef"><b>Definition:</b> dungeon.h:79</div></div>
+<div class="ttc" id="astructdungeon__type_html_a1f27997cfcc0ab1c597e65e7281f2d1b"><div class="ttname"><a href="structdungeon__type.html#a1f27997cfcc0ab1c597e65e7281f2d1b">dungeon_type::obj_good</a></div><div class="ttdeci">int obj_good</div><div class="ttdef"><b>Definition:</b> dungeon.h:81</div></div>
+<div class="ttc" id="astructdungeon__type_html_a203b8331e0dc243833fe9adb07cb912b"><div class="ttname"><a href="structdungeon__type.html#a203b8331e0dc243833fe9adb07cb912b">dungeon_type::stream1</a></div><div class="ttdeci">FEAT_IDX stream1</div><div class="ttdef"><b>Definition:</b> dungeon.h:48</div></div>
+<div class="ttc" id="astructdungeon__type_html_a267a2342df32c984cf9869fd2ea58677"><div class="ttname"><a href="structdungeon__type.html#a267a2342df32c984cf9869fd2ea58677">dungeon_type::mflags8</a></div><div class="ttdeci">BIT_FLAGS mflags8</div><div class="ttdef"><b>Definition:</b> dungeon.h:67</div></div>
+<div class="ttc" id="astructdungeon__type_html_a26cc5833fb16af21a7e3d5bb65a73d23"><div class="ttname"><a href="structdungeon__type.html#a26cc5833fb16af21a7e3d5bb65a73d23">dungeon_type::final_guardian</a></div><div class="ttdeci">MONRACE_IDX final_guardian</div><div class="ttdef"><b>Definition:</b> dungeon.h:76</div></div>
+<div class="ttc" id="astructdungeon__type_html_a33557b90aa81aaffe1f3733e19f52960"><div class="ttname"><a href="structdungeon__type.html#a33557b90aa81aaffe1f3733e19f52960">dungeon_type::final_object</a></div><div class="ttdeci">KIND_OBJECT_IDX final_object</div><div class="ttdef"><b>Definition:</b> dungeon.h:74</div></div>
+<div class="ttc" id="astructdungeon__type_html_a354b252850067c2ae96b8992cd0b0bc5"><div class="ttname"><a href="structdungeon__type.html#a354b252850067c2ae96b8992cd0b0bc5">dungeon_type::special_div</a></div><div class="ttdeci">PROB special_div</div><div class="ttdef"><b>Definition:</b> dungeon.h:78</div></div>
+<div class="ttc" id="astructdungeon__type_html_a3946f31272285f9a333749d1c49d473e"><div class="ttname"><a href="structdungeon__type.html#a3946f31272285f9a333749d1c49d473e">dungeon_type::mflags1</a></div><div class="ttdeci">BIT_FLAGS mflags1</div><div class="ttdef"><b>Definition:</b> dungeon.h:63</div></div>
+<div class="ttc" id="astructdungeon__type_html_a3f7485d784a5b8a86ca86ac0f5a7ac37"><div class="ttname"><a href="structdungeon__type.html#a3f7485d784a5b8a86ca86ac0f5a7ac37">dungeon_type::mflagsr</a></div><div class="ttdeci">BIT_FLAGS mflagsr</div><div class="ttdef"><b>Definition:</b> dungeon.h:69</div></div>
+<div class="ttc" id="astructdungeon__type_html_a3fc3c7f835d304b29251ff1bd22b0600"><div class="ttname"><a href="structdungeon__type.html#a3fc3c7f835d304b29251ff1bd22b0600">dungeon_type::mflags7</a></div><div class="ttdeci">BIT_FLAGS mflags7</div><div class="ttdef"><b>Definition:</b> dungeon.h:66</div></div>
+<div class="ttc" id="astructdungeon__type_html_a48ee9cd62526a6680efc2342193c40f2"><div class="ttname"><a href="structdungeon__type.html#a48ee9cd62526a6680efc2342193c40f2">dungeon_type::stream2</a></div><div class="ttdeci">FEAT_IDX stream2</div><div class="ttdef"><b>Definition:</b> dungeon.h:49</div></div>
+<div class="ttc" id="astructdungeon__type_html_a4b248bbc6dd1c0ea04a949435b06ae8a"><div class="ttname"><a href="structdungeon__type.html#a4b248bbc6dd1c0ea04a949435b06ae8a">dungeon_type::mflags9</a></div><div class="ttdeci">BIT_FLAGS mflags9</div><div class="ttdef"><b>Definition:</b> dungeon.h:68</div></div>
+<div class="ttc" id="astructdungeon__type_html_a4e971c6aa23258c60764be093dafea52"><div class="ttname"><a href="structdungeon__type.html#a4e971c6aa23258c60764be093dafea52">dungeon_type::obj_great</a></div><div class="ttdeci">int obj_great</div><div class="ttdef"><b>Definition:</b> dungeon.h:80</div></div>
+<div class="ttc" id="astructdungeon__type_html_a529325e5454d9954ba8439eecdefc754"><div class="ttname"><a href="structdungeon__type.html#a529325e5454d9954ba8439eecdefc754">dungeon_type::mflags2</a></div><div class="ttdeci">BIT_FLAGS mflags2</div><div class="ttdef"><b>Definition:</b> dungeon.h:64</div></div>
+<div class="ttc" id="astructdungeon__type_html_a52bb1b3dcbff041604fa057d5bd85dbe"><div class="ttname"><a href="structdungeon__type.html#a52bb1b3dcbff041604fa057d5bd85dbe">dungeon_type::r_char</a></div><div class="ttdeci">char r_char[5]</div><div class="ttdef"><b>Definition:</b> dungeon.h:73</div></div>
+<div class="ttc" id="astructdungeon__type_html_a6411c434112de296fe7b62560998955f"><div class="ttname"><a href="structdungeon__type.html#a6411c434112de296fe7b62560998955f">dungeon_type::pit</a></div><div class="ttdeci">BIT_FLAGS16 pit</div><div class="ttdef"><b>Definition:</b> dungeon.h:54</div></div>
+<div class="ttc" id="astructdungeon__type_html_a778f9a442e364227e84c2fff9870fac0"><div class="ttname"><a href="structdungeon__type.html#a778f9a442e364227e84c2fff9870fac0">dungeon_type::name</a></div><div class="ttdeci">std::string name</div><div class="ttdef"><b>Definition:</b> dungeon.h:38</div></div>
+<div class="ttc" id="astructdungeon__type_html_a78d19fa38d8ae901d2754c137550db13"><div class="ttname"><a href="structdungeon__type.html#a78d19fa38d8ae901d2754c137550db13">dungeon_type::min_m_alloc_level</a></div><div class="ttdeci">int min_m_alloc_level</div><div class="ttdef"><b>Definition:</b> dungeon.h:58</div></div>
+<div class="ttc" id="astructdungeon__type_html_a7a276d3914bd5e97efba82945b633297"><div class="ttname"><a href="structdungeon__type.html#a7a276d3914bd5e97efba82945b633297">dungeon_type::nest</a></div><div class="ttdeci">BIT_FLAGS16 nest</div><div class="ttdef"><b>Definition:</b> dungeon.h:55</div></div>
+<div class="ttc" id="astructdungeon__type_html_a8b7c6ffb668fa3d75e560ce8458aeeb5"><div class="ttname"><a href="structdungeon__type.html#a8b7c6ffb668fa3d75e560ce8458aeeb5">dungeon_type::mindepth</a></div><div class="ttdeci">DEPTH mindepth</div><div class="ttdef"><b>Definition:</b> dungeon.h:51</div></div>
+<div class="ttc" id="astructdungeon__type_html_a8ef5b4b479e736acc16f40712755435d"><div class="ttname"><a href="structdungeon__type.html#a8ef5b4b479e736acc16f40712755435d">dungeon_type::inner_wall</a></div><div class="ttdeci">FEAT_IDX inner_wall</div><div class="ttdef"><b>Definition:</b> dungeon.h:47</div></div>
+<div class="ttc" id="astructdungeon__type_html_a921280fea7ee1dde6b08364a7de128bc"><div class="ttname"><a href="structdungeon__type.html#a921280fea7ee1dde6b08364a7de128bc">dungeon_type::min_plev</a></div><div class="ttdeci">PLAYER_LEVEL min_plev</div><div class="ttdef"><b>Definition:</b> dungeon.h:53</div></div>
+<div class="ttc" id="astructdungeon__type_html_a99f5252a1bce25e1592d63c7bbf41447"><div class="ttname"><a href="structdungeon__type.html#a99f5252a1bce25e1592d63c7bbf41447">dungeon_type::fill</a></div><div class="ttdeci">feat_prob fill[DUNGEON_FEAT_PROB_NUM]</div><div class="ttdef"><b>Definition:</b> dungeon.h:45</div></div>
+<div class="ttc" id="astructdungeon__type_html_a9a0580e890421326b0e81fdb97a72be6"><div class="ttname"><a href="structdungeon__type.html#a9a0580e890421326b0e81fdb97a72be6">dungeon_type::dy</a></div><div class="ttdeci">POSITION dy</div><div class="ttdef"><b>Definition:</b> dungeon.h:41</div></div>
+<div class="ttc" id="astructdungeon__type_html_ab29788935913e215b89d43356dc7fa17"><div class="ttname"><a href="structdungeon__type.html#ab29788935913e215b89d43356dc7fa17">dungeon_type::outer_wall</a></div><div class="ttdeci">FEAT_IDX outer_wall</div><div class="ttdef"><b>Definition:</b> dungeon.h:46</div></div>
+<div class="ttc" id="astructdungeon__type_html_ab975547499949929c16e4372c9df5808"><div class="ttname"><a href="structdungeon__type.html#ab975547499949929c16e4372c9df5808">dungeon_type::final_artifact</a></div><div class="ttdeci">ARTIFACT_IDX final_artifact</div><div class="ttdef"><b>Definition:</b> dungeon.h:75</div></div>
+<div class="ttc" id="astructdungeon__type_html_ac29183a924077b9d26f5446e2ae2db80"><div class="ttname"><a href="structdungeon__type.html#ac29183a924077b9d26f5446e2ae2db80">dungeon_type::flags1</a></div><div class="ttdeci">BIT_FLAGS flags1</div><div class="ttdef"><b>Definition:</b> dungeon.h:61</div></div>
+<div class="ttc" id="astructdungeon__type_html_ac6447b6d65717295a61b9cf77bf8fcd3"><div class="ttname"><a href="structdungeon__type.html#ac6447b6d65717295a61b9cf77bf8fcd3">dungeon_type::text</a></div><div class="ttdeci">std::string text</div><div class="ttdef"><b>Definition:</b> dungeon.h:39</div></div>
+<div class="ttc" id="astructdungeon__type_html_acf1c5eefdfc88186306ae9fddf7c1275"><div class="ttname"><a href="structdungeon__type.html#acf1c5eefdfc88186306ae9fddf7c1275">dungeon_type::floor</a></div><div class="ttdeci">feat_prob floor[DUNGEON_FEAT_PROB_NUM]</div><div class="ttdef"><b>Definition:</b> dungeon.h:44</div></div>
+<div class="ttc" id="astructdungeon__type_html_acf24a1b5b33d3cc2d4f33a3f17cd0f81"><div class="ttname"><a href="structdungeon__type.html#acf24a1b5b33d3cc2d4f33a3f17cd0f81">dungeon_type::max_m_alloc_chance</a></div><div class="ttdeci">int max_m_alloc_chance</div><div class="ttdef"><b>Definition:</b> dungeon.h:59</div></div>
+<div class="ttc" id="astructdungeon__type_html_acfbfb62364988bc5103fc667db916c4c"><div class="ttname"><a href="structdungeon__type.html#acfbfb62364988bc5103fc667db916c4c">dungeon_type::m_ability_flags</a></div><div class="ttdeci">FlagGroup&lt; RF_ABILITY &gt; m_ability_flags</div><div class="ttdef"><b>Definition:</b> dungeon.h:71</div></div>
+<div class="ttc" id="astructdungeon__type_html_ad817eec778e805913fa70358eba2223f"><div class="ttname"><a href="structdungeon__type.html#ad817eec778e805913fa70358eba2223f">dungeon_type::maxdepth</a></div><div class="ttdeci">DEPTH maxdepth</div><div class="ttdef"><b>Definition:</b> dungeon.h:52</div></div>
+<div class="ttc" id="astructdungeon__type_html_adfd3b29a4ae242dee5d4f2940ff45ea9"><div class="ttname"><a href="structdungeon__type.html#adfd3b29a4ae242dee5d4f2940ff45ea9">dungeon_type::mode</a></div><div class="ttdeci">BIT_FLAGS8 mode</div><div class="ttdef"><b>Definition:</b> dungeon.h:56</div></div>
+<div class="ttc" id="astructdungeon__type_html_ae35810b183323121d67710ed687cea08"><div class="ttname"><a href="structdungeon__type.html#ae35810b183323121d67710ed687cea08">dungeon_type::mflags3</a></div><div class="ttdeci">BIT_FLAGS mflags3</div><div class="ttdef"><b>Definition:</b> dungeon.h:65</div></div>
+<div class="ttc" id="astructdungeon__type_html_affe0e4e4635949d96ec38d9ec662e5ec"><div class="ttname"><a href="structdungeon__type.html#affe0e4e4635949d96ec38d9ec662e5ec">dungeon_type::dx</a></div><div class="ttdeci">POSITION dx</div><div class="ttdef"><b>Definition:</b> dungeon.h:42</div></div>
+<div class="ttc" id="astructfeat__prob_html"><div class="ttname"><a href="structfeat__prob.html">feat_prob</a></div><div class="ttdef"><b>Definition:</b> feature.h:31</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

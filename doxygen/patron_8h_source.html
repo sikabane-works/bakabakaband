@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player/patron.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_975424cdae97a07db69e55371758444e.html">player</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">patron.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="patron_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="patron_8h.html#a3527f50d2b14efad0b85179cbb8768b3">    5</a></span>&#160;<span class="preprocessor">#define MAX_PATRON 16 </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">/* カオスパトロンからの報酬種別定義 / Chaos Warrior: Reward types: */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="patron_8h.html#aa93d9260586defcf639a276863b486ba">    8</a></span>&#160;<span class="preprocessor">#define REW_POLY_SLF    1   </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="patron_8h.html#a4db54bca706426c8bf9ce46302c02f93">    9</a></span>&#160;<span class="preprocessor">#define REW_GAIN_EXP    2   </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="patron_8h.html#a9e36b225871ff5fa324ee39671f37c39">   10</a></span>&#160;<span class="preprocessor">#define REW_LOSE_EXP    3   </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="patron_8h.html#a5507f559f39febc23df412d06e9bb523">   11</a></span>&#160;<span class="preprocessor">#define REW_GOOD_OBJ    4   </span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="patron_8h.html#a5f1bd44a925c201a396491fbefd93892">   12</a></span>&#160;<span class="preprocessor">#define REW_GREA_OBJ    5   </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="patron_8h.html#a46f209d75f7c5f61cf95d428ac69b9d0">   13</a></span>&#160;<span class="preprocessor">#define REW_CHAOS_WP    6   </span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="patron_8h.html#aef9553ec10e6c06c05a70f906f932ccd">   14</a></span>&#160;<span class="preprocessor">#define REW_GOOD_OBS    7   </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="patron_8h.html#a2ee21ee95cd4d65c8ae9763da0d9cdb5">   15</a></span>&#160;<span class="preprocessor">#define REW_GREA_OBS    8   </span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="patron_8h.html#a0a7b1b2c6f2510e0e1308fa810961f15">   16</a></span>&#160;<span class="preprocessor">#define REW_TY_CURSE    9   </span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="patron_8h.html#a68f330a6dd5b5873777dc8f8d8dddd39">   17</a></span>&#160;<span class="preprocessor">#define REW_SUMMON_M    10  </span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="patron_8h.html#ac7bb79c72e06926a56dff78754d16fb3">   18</a></span>&#160;<span class="preprocessor">#define REW_H_SUMMON    11  </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="patron_8h.html#aae96465d058a1fb3e8ceca792b3f6601">   19</a></span>&#160;<span class="preprocessor">#define REW_DO_HAVOC    12  </span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="patron_8h.html#a8045e7462ba23d771e9c4361c59cf460">   20</a></span>&#160;<span class="preprocessor">#define REW_GAIN_ABL    13  </span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="patron_8h.html#a50965fdfc3eabe5548ebca6cda5c40e7">   21</a></span>&#160;<span class="preprocessor">#define REW_LOSE_ABL    14  </span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="patron_8h.html#a585b06c26a4302709980e1c1afe5faa9">   22</a></span>&#160;<span class="preprocessor">#define REW_RUIN_ABL    15  </span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="patron_8h.html#ac1a0c036df6b144f66f9bbb65419bb39">   23</a></span>&#160;<span class="preprocessor">#define REW_AUGM_ABL    16  </span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="patron_8h.html#a95866655c30a2fd328146f09e58ac6b3">   24</a></span>&#160;<span class="preprocessor">#define REW_POLY_WND    17  </span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="patron_8h.html#ac5d9c7a0ffa72d53aa338a0aebf6d00f">   25</a></span>&#160;<span class="preprocessor">#define REW_HEAL_FUL    18  </span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="patron_8h.html#af1390546b23f2eb3e792fba918016633">   26</a></span>&#160;<span class="preprocessor">#define REW_HURT_LOT    19  </span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="patron_8h.html#af39c9f162c0c5e4075f3a5f3f180ff38">   27</a></span>&#160;<span class="preprocessor">#define REW_CURSE_WP    20  </span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="patron_8h.html#a08b097c865d282a7793accd55ea0badd">   28</a></span>&#160;<span class="preprocessor">#define REW_CURSE_AR    21  </span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="patron_8h.html#a6d2ee26871713fe732f38e5ba39c5eb9">   29</a></span>&#160;<span class="preprocessor">#define REW_PISS_OFF    22  </span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="patron_8h.html#a5a8fc547c551b4ef6ad0a366bdfcd10b">   30</a></span>&#160;<span class="preprocessor">#define REW_WRATH       23  </span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="patron_8h.html#aa294cac42f66473822eb2cb8aace561c">   31</a></span>&#160;<span class="preprocessor">#define REW_DESTRUCT    24  </span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="patron_8h.html#aa7656e89c274b4239cf7f66d93510e5e">   32</a></span>&#160;<span class="preprocessor">#define REW_GENOCIDE    25  </span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="patron_8h.html#a5376c2a9e80a79c10d0fcca2ae42f393">   33</a></span>&#160;<span class="preprocessor">#define REW_MASS_GEN    26  </span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="patron_8h.html#a82fa7b5f68486bea198023c24136ef86">   34</a></span>&#160;<span class="preprocessor">#define REW_DISPEL_C    27  </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="patron_8h.html#a53611e0712780780c057f8ac4c401c12">   35</a></span>&#160;<span class="preprocessor">#define REW_UNUSED_1    28  </span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="patron_8h.html#ac782b8da8cceb92a2bb0ed1989893ae3">   36</a></span>&#160;<span class="preprocessor">#define REW_UNUSED_2    29  </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="patron_8h.html#a3f5befc9b17815679c42442355df2acd">   37</a></span>&#160;<span class="preprocessor">#define REW_UNUSED_3    30  </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="patron_8h.html#a26b9e23655ec0e6b75414e46db43ef04">   38</a></span>&#160;<span class="preprocessor">#define REW_UNUSED_4    31  </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="patron_8h.html#ac946081996a741077be5fcd23d2e5d19">   39</a></span>&#160;<span class="preprocessor">#define REW_UNUSED_5    32  </span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="patron_8h.html#a7525bd69231202a4612cb869eaf60781">   40</a></span>&#160;<span class="preprocessor">#define REW_IGNORE      33  </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="patron_8h.html#abd4b745b3576e12b851771db4399c5ff">   41</a></span>&#160;<span class="preprocessor">#define REW_SER_UNDE    34  </span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="patron_8h.html#a82115e11033f3cee69f28a63632803f9">   42</a></span>&#160;<span class="preprocessor">#define REW_SER_DEMO    35  </span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="patron_8h.html#a740d480fc7051b864400431e95f83015">   43</a></span>&#160;<span class="preprocessor">#define REW_SER_MONS    36  </span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="patron_8h.html#a7078f96229d9f134144622e7294b0d99">chaos_patrons</a>[<a class="code" href="patron_8h.html#a3527f50d2b14efad0b85179cbb8768b3">MAX_PATRON</a>];</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> <a class="code" href="patron_8h.html#aa88913d1d92e73030e3d918eddc78457">gain_level_reward</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">int</span> chosen_reward);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> <a class="code" href="patron_8h.html#a1f4961e887f307cfb57a13f2e10be04b">admire_from_patron</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="apatron_8h_html_a1f4961e887f307cfb57a13f2e10be04b"><div class="ttname"><a href="patron_8h.html#a1f4961e887f307cfb57a13f2e10be04b">admire_from_patron</a></div><div class="ttdeci">void admire_from_patron(player_type *creature_ptr)</div><div class="ttdef"><b>Definition:</b> patron.cpp:572</div></div>
+<div class="ttc" id="apatron_8h_html_a3527f50d2b14efad0b85179cbb8768b3"><div class="ttname"><a href="patron_8h.html#a3527f50d2b14efad0b85179cbb8768b3">MAX_PATRON</a></div><div class="ttdeci">#define MAX_PATRON</div><div class="ttdoc">カオスパトロンの最大定義数 / The number of &quot;patrons&quot; available (for Chaos Warriors)</div><div class="ttdef"><b>Definition:</b> patron.h:5</div></div>
+<div class="ttc" id="apatron_8h_html_a7078f96229d9f134144622e7294b0d99"><div class="ttname"><a href="patron_8h.html#a7078f96229d9f134144622e7294b0d99">chaos_patrons</a></div><div class="ttdeci">const concptr chaos_patrons[MAX_PATRON]</div><div class="ttdef"><b>Definition:</b> patron.cpp:49</div></div>
+<div class="ttc" id="apatron_8h_html_aa88913d1d92e73030e3d918eddc78457"><div class="ttname"><a href="patron_8h.html#aa88913d1d92e73030e3d918eddc78457">gain_level_reward</a></div><div class="ttdeci">void gain_level_reward(player_type *creature_ptr, int chosen_reward)</div><div class="ttdef"><b>Definition:</b> patron.cpp:152</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

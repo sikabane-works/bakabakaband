@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/window/main-window-row-column.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c7f79d9fead0a70cab4af348b59fbdf1.html">window</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">main-window-row-column.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="main-window-row-column_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Some screen locations for various display routines</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Currently, row 8 and 15 are the only &quot;blank&quot; rows.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * That leaves a &quot;border&quot; around the &quot;stat&quot; values.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a4f2c8451c9e0cf653ae2c4a8c85f078d">    9</a></span>&#160;<span class="preprocessor">#define ROW_RACE 1</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#aad0fde811187f19777ed516b7520e12f">   10</a></span>&#160;<span class="preprocessor">#define COL_RACE 0 </span><span class="comment">/* &lt;race name&gt; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a66182927a8759b069490859d0eca7aa7">   12</a></span>&#160;<span class="preprocessor">#define ROW_TITLE 2</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a9a6e0a333faaa5efeb3393e3db962352">   13</a></span>&#160;<span class="preprocessor">#define COL_TITLE 0 </span><span class="comment">/* &lt;title&gt; or &lt;mode&gt; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#aed4ddce2e5b06c09421d7eb7b308b31e">   15</a></span>&#160;<span class="preprocessor">#define ROW_DAY 21</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#ac41f1a236992751b6a2fb1253ee778e9">   16</a></span>&#160;<span class="preprocessor">#define COL_DAY 0 </span><span class="comment">/* day */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a985ed2e8d1a77bcd4f15bfe3eebc7730">   18</a></span>&#160;<span class="preprocessor">#define ROW_DUNGEON 22</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#ac9c6b52ea6ef0609f922ad000e5e20eb">   19</a></span>&#160;<span class="preprocessor">#define COL_DUNGEON 0 </span><span class="comment">/* dungeon */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#afc4aee50aa76a873634759c851bf677a">   21</a></span>&#160;<span class="preprocessor">#define ROW_LEVEL 3</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#afa6bfd5c7d670592fc28697e116ac1e5">   22</a></span>&#160;<span class="preprocessor">#define COL_LEVEL 0 </span><span class="comment">/* &quot;LEVEL xxxxxx&quot; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#aa3ad4d87d439f39cc999c19a46adcc27">   24</a></span>&#160;<span class="preprocessor">#define ROW_EXP 4</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#aeec2d43d6dc20833a4ab6e7e8cad7ee1">   25</a></span>&#160;<span class="preprocessor">#define COL_EXP 0 </span><span class="comment">/* &quot;EXP xxxxxxxx&quot; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a50c7e3aaa3382847262bc74e2c21625a">   27</a></span>&#160;<span class="preprocessor">#define ROW_GOLD 5</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a057fcf1184575ae5b2ef299a529a1c65">   28</a></span>&#160;<span class="preprocessor">#define COL_GOLD 0 </span><span class="comment">/* &quot;AU xxxxxxxxx&quot; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a91f258463a64a9ffddbe1d86715d3068">   30</a></span>&#160;<span class="preprocessor">#define ROW_EQUIPPY 6</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a02efdfc015c17ec7e2de7faba38be2bd">   31</a></span>&#160;<span class="preprocessor">#define COL_EQUIPPY 0 </span><span class="comment">/* equippy chars */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#ae410d48a095b8a8f0ba1c89db0c9acf5">   33</a></span>&#160;<span class="preprocessor">#define ROW_STAT 7</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a1c60aba7a0c2a7651b90f3b013c5930c">   34</a></span>&#160;<span class="preprocessor">#define COL_STAT 0 </span><span class="comment">/* &quot;xxx   xxxxxx&quot; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a39d14d602e9d0710faf4983b9703e5ee">   36</a></span>&#160;<span class="preprocessor">#define ROW_AC 13</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a8ad3c75fc1df5177aeccc11f1c24d66d">   37</a></span>&#160;<span class="preprocessor">#define COL_AC 0 </span><span class="comment">/* &quot;Cur AC xxxxx&quot; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#aede16d80ed9d54f6d88c47007c7240be">   39</a></span>&#160;<span class="preprocessor">#define ROW_HPMP 14</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a49526007f2ded0a514e5009d299cd5dd">   40</a></span>&#160;<span class="preprocessor">#define COL_HPMP 0</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#ab14845bf205dc75d0997054787ed6290">   42</a></span>&#160;<span class="preprocessor">#define ROW_CURHP 14</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a2282e55a4e481d22f4622916fbc1dfc5">   43</a></span>&#160;<span class="preprocessor">#define COL_CURHP 0 </span><span class="comment">/* &quot;Cur HP xxxxx&quot; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a33ebf55dbdbb39e24e24c0917694e15a">   45</a></span>&#160;<span class="preprocessor">#define ROW_CURSP 15</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#ac05825467918c8bd72f20a7a3b9d7948">   46</a></span>&#160;<span class="preprocessor">#define COL_CURSP 0 </span><span class="comment">/* &quot;Cur SP xxxxx&quot; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a7911c07a18800fccf5262b59c48d523f">   48</a></span>&#160;<span class="preprocessor">#define ROW_RIDING_INFO 16</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a2ad4eb0966620b4c95bf54b32911a78b">   49</a></span>&#160;<span class="preprocessor">#define COL_RIDING_INFO 0 </span><span class="comment">/* &quot;xxxxxxxxxxxx&quot; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a6e66084e1bb73ab347adacdfbc133506">   51</a></span>&#160;<span class="preprocessor">#define ROW_INFO 17</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a42bd20aa3447eb7f38d5a0eeb046b5f6">   52</a></span>&#160;<span class="preprocessor">#define COL_INFO 0 </span><span class="comment">/* &quot;xxxxxxxxxxxx&quot; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a44ff0bd8b1ea3d340fe1a268b4d9dba2">   54</a></span>&#160;<span class="preprocessor">#define ROW_CUT 18</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a3fca87ddbcb983f177a81f343b777363">   55</a></span>&#160;<span class="preprocessor">#define COL_CUT 0 </span><span class="comment">/* &lt;cut&gt; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a9d17e617e2257aec3e0a34edd74900b5">   57</a></span>&#160;<span class="preprocessor">#define ROW_STUN 19</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a72ac0b79c9a8cc20d8137234d69c857f">   58</a></span>&#160;<span class="preprocessor">#define COL_STUN 0 </span><span class="comment">/* &lt;stun&gt; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a42f5c981bb6a8ac07a30216c5f567af3">   60</a></span>&#160;<span class="preprocessor">#define ROW_HUNGRY 20</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#ac9b76ed58c08ce030c896bd13b567190">   61</a></span>&#160;<span class="preprocessor">#define COL_HUNGRY 0 </span><span class="comment">/* &quot;Weak&quot; / &quot;Hungry&quot; / &quot;Full&quot; / &quot;Gorged&quot; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#ac665c0bd5a20d5d10b4bba2ae89ae217">   63</a></span>&#160;<span class="preprocessor">#define ROW_STATE 20</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#abc2113b9c84edc6d05ca29ca3d8420bc">   64</a></span>&#160;<span class="preprocessor">#define COL_STATE 7 </span><span class="comment">/* &lt;state&gt; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#abbaeef2e9a8eb467448945bb6e8b927f">   66</a></span>&#160;<span class="preprocessor">#define ROW_SPEED (-1)</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#aa29ba52b385daf4bb7818b4f5b65d082">   67</a></span>&#160;<span class="preprocessor">#define COL_SPEED (-24) </span><span class="comment">/* &quot;Slow (-NN)&quot; or &quot;Fast (+NN)&quot; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a8a58058e797f3c4ed2acfb068c663488">   69</a></span>&#160;<span class="preprocessor">#define ROW_STUDY (-1)</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a2f9636d5aa85afb5630b54c9af57da5c">   70</a></span>&#160;<span class="preprocessor">#define COL_STUDY (-13) </span><span class="comment">/* &quot;Study&quot; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#ac14a9239ce185bcda7b6d777a6780fca">   72</a></span>&#160;<span class="preprocessor">#define ROW_DEPTH (-1)</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a65177c96f2af0782731c4b7af51ef39b">   73</a></span>&#160;<span class="preprocessor">#define COL_DEPTH (-8) </span><span class="comment">/* &quot;Lev NNN&quot; / &quot;NNNN ft&quot; */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#af54aa86ee0c5e1408d9a12373c1e33e1">   75</a></span>&#160;<span class="preprocessor">#define ROW_STATBAR (-1)</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a4eab4e2a829f9f18575f8c7ab93c666d">   76</a></span>&#160;<span class="preprocessor">#define COL_STATBAR 0</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="main-window-row-column_8h.html#a8f4a07713e5e366d105bf46ac1209361">   77</a></span>&#160;<span class="preprocessor">#define MAX_COL_STATBAR (-26)</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

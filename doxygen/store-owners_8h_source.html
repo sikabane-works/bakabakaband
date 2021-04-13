@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/store/store-owners.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ce523e85215a280d7642dc7a1cfeecaa.html">store</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">store-owners.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="store-owners_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="store-owners_8h.html#ad824199a7c2c485c909ac45e2a10ae50">    6</a></span>&#160;<span class="preprocessor">#define MAX_STORES      10 </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="store-owners_8h.html#a700a718d31a5585f983043b83ec12bc4">    7</a></span>&#160;<span class="preprocessor">#define MAX_OWNERS      32 </span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structowner__type.html">   12</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structowner__type.html">owner_type</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structowner__type.html#ad1361f3ab913d8520371a4d4099940fa">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structowner__type.html#ad1361f3ab913d8520371a4d4099940fa">owner_name</a>; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structowner__type.html#ac5ebf440658ff51d118c276e82059ecb">   14</a></span>&#160;    <a class="code" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> <a class="code" href="structowner__type.html#ac5ebf440658ff51d118c276e82059ecb">max_cost</a>; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structowner__type.html#aa0f57e42fba1e213c0638bcaaa9fcdd2">   15</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structowner__type.html#aa0f57e42fba1e213c0638bcaaa9fcdd2">inflate</a>; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structowner__type.html#a41a721c998cc1155f9aa2b3d2fa156dd">   16</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structowner__type.html#a41a721c998cc1155f9aa2b3d2fa156dd">owner_race</a>; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structowner__type.html">owner_type</a> <a class="code" href="store-owners_8h.html#a708805f9d9fa2b4f97f335dd3de679b9">owners</a>[<a class="code" href="store-owners_8h.html#ad824199a7c2c485c909ac45e2a10ae50">MAX_STORES</a>][<a class="code" href="store-owners_8h.html#a700a718d31a5585f983043b83ec12bc4">MAX_OWNERS</a>];</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_aeba8ab2222e118a4540456c55d92a894"><div class="ttname"><a href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a></div><div class="ttdeci">s32b PRICE</div><div class="ttdoc">ゲーム中の金額価値の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:187</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="astore-owners_8h_html_a700a718d31a5585f983043b83ec12bc4"><div class="ttname"><a href="store-owners_8h.html#a700a718d31a5585f983043b83ec12bc4">MAX_OWNERS</a></div><div class="ttdeci">#define MAX_OWNERS</div><div class="ttdoc">各店舗毎の店主定義最大数 / Total number of owners per store (see &quot;store.c&quot;, etc)</div><div class="ttdef"><b>Definition:</b> store-owners.h:7</div></div>
+<div class="ttc" id="astore-owners_8h_html_a708805f9d9fa2b4f97f335dd3de679b9"><div class="ttname"><a href="store-owners_8h.html#a708805f9d9fa2b4f97f335dd3de679b9">owners</a></div><div class="ttdeci">const owner_type owners[MAX_STORES][MAX_OWNERS]</div><div class="ttdef"><b>Definition:</b> store-owners.cpp:7</div></div>
+<div class="ttc" id="astore-owners_8h_html_ad824199a7c2c485c909ac45e2a10ae50"><div class="ttname"><a href="store-owners_8h.html#ad824199a7c2c485c909ac45e2a10ae50">MAX_STORES</a></div><div class="ttdeci">#define MAX_STORES</div><div class="ttdoc">店舗の種類最大数 / Total number of stores (see &quot;store.c&quot;, etc)</div><div class="ttdef"><b>Definition:</b> store-owners.h:6</div></div>
+<div class="ttc" id="astructowner__type_html"><div class="ttname"><a href="structowner__type.html">owner_type</a></div><div class="ttdoc">店主データ構造体</div><div class="ttdef"><b>Definition:</b> store-owners.h:12</div></div>
+<div class="ttc" id="astructowner__type_html_a41a721c998cc1155f9aa2b3d2fa156dd"><div class="ttname"><a href="structowner__type.html#a41a721c998cc1155f9aa2b3d2fa156dd">owner_type::owner_race</a></div><div class="ttdeci">byte owner_race</div><div class="ttdoc">店主種族 / Owner race</div><div class="ttdef"><b>Definition:</b> store-owners.h:16</div></div>
+<div class="ttc" id="astructowner__type_html_aa0f57e42fba1e213c0638bcaaa9fcdd2"><div class="ttname"><a href="structowner__type.html#aa0f57e42fba1e213c0638bcaaa9fcdd2">owner_type::inflate</a></div><div class="ttdeci">byte inflate</div><div class="ttdoc">価格上乗せ率 / Inflation</div><div class="ttdef"><b>Definition:</b> store-owners.h:15</div></div>
+<div class="ttc" id="astructowner__type_html_ac5ebf440658ff51d118c276e82059ecb"><div class="ttname"><a href="structowner__type.html#ac5ebf440658ff51d118c276e82059ecb">owner_type::max_cost</a></div><div class="ttdeci">PRICE max_cost</div><div class="ttdoc">買取上限 / Purse limit</div><div class="ttdef"><b>Definition:</b> store-owners.h:14</div></div>
+<div class="ttc" id="astructowner__type_html_ad1361f3ab913d8520371a4d4099940fa"><div class="ttname"><a href="structowner__type.html#ad1361f3ab913d8520371a4d4099940fa">owner_type::owner_name</a></div><div class="ttdeci">concptr owner_name</div><div class="ttdoc">名前 / Name</div><div class="ttdef"><b>Definition:</b> store-owners.h:13</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

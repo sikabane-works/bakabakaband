@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/system/artifact-type-definition.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d501334aeb1b78ad67cd3c72c37b1e87.html">system</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">artifact-type-definition.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="artifact-type-definition_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="trg-types_8h.html">object-enchant/trg-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="object-type-definition_8h.html">system/object-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="flag-group_8h.html">util/flag-group.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structartifact__type.html">   20</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structartifact__type.html">artifact_type</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structartifact__type.html#a45ae333d845fec5dcae23f47055d4ca9">   21</a></span>&#160;    std::string <a class="code" href="structartifact__type.html#a45ae333d845fec5dcae23f47055d4ca9">name</a>;           </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structartifact__type.html#a51565fabd7a1d472f4d04d05c432894b">   22</a></span>&#160;    std::string <a class="code" href="structartifact__type.html#a51565fabd7a1d472f4d04d05c432894b">text</a>; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structartifact__type.html#ad54f9cc6304ba16446ddad8a469d277b">   23</a></span>&#160;    <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a> <a class="code" href="structartifact__type.html#ad54f9cc6304ba16446ddad8a469d277b">tval</a>{};       </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structartifact__type.html#abb59335840927ff8bc973d14821fdc26">   24</a></span>&#160;    <a class="code" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a> <a class="code" href="structartifact__type.html#abb59335840927ff8bc973d14821fdc26">sval</a>{};    </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structartifact__type.html#a9cfa2df80901ba66253447f4f7f6f65c">   25</a></span>&#160;    <a class="code" href="h-type_8h.html#a93e03fb0f06674384e8374479dfcf11b">PARAMETER_VALUE</a> <a class="code" href="structartifact__type.html#a9cfa2df80901ba66253447f4f7f6f65c">pval</a>{}; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structartifact__type.html#a5505d0a4a17c7349048732a1ec783c78">   26</a></span>&#160;    <a class="code" href="h-type_8h.html#a47dfe4960088b41ad87a10ad5120f939">HIT_PROB</a> <a class="code" href="structartifact__type.html#a5505d0a4a17c7349048732a1ec783c78">to_h</a>{};            </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structartifact__type.html#a0b8bfccf1eb2c2d9d0c347b03c8153fc">   27</a></span>&#160;    <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="structartifact__type.html#a0b8bfccf1eb2c2d9d0c347b03c8153fc">to_d</a>{};       </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structartifact__type.html#a3ca056248db49c5176c994f6869b2721">   28</a></span>&#160;    <a class="code" href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a> <a class="code" href="structartifact__type.html#a3ca056248db49c5176c994f6869b2721">to_a</a>{};            </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structartifact__type.html#a11772f44919f39d3ccd5c1ed23743c2c">   29</a></span>&#160;    <a class="code" href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a> <a class="code" href="structartifact__type.html#a11772f44919f39d3ccd5c1ed23743c2c">ac</a>{};          </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structartifact__type.html#ab98e72d527f1bf532a6eb6efeb7f2f0a">   30</a></span>&#160;    <a class="code" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a> <a class="code" href="structartifact__type.html#ab98e72d527f1bf532a6eb6efeb7f2f0a">dd</a>{};</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structartifact__type.html#a0df5c342bb6019ae3f3fb5d78126d5f4">   31</a></span>&#160;    <a class="code" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a> <a class="code" href="structartifact__type.html#a0df5c342bb6019ae3f3fb5d78126d5f4">ds</a>{};  </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structartifact__type.html#a1afa558c92522cc800e552f965ac3839">   32</a></span>&#160;    <a class="code" href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a> <a class="code" href="structartifact__type.html#a1afa558c92522cc800e552f965ac3839">weight</a>{};        </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structartifact__type.html#ac767bcc0831d0ce69fb28c69e68745d1">   33</a></span>&#160;    <a class="code" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> <a class="code" href="structartifact__type.html#ac767bcc0831d0ce69fb28c69e68745d1">cost</a>{};           </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structartifact__type.html#a804fda7578db035da4c0fdb676b48b24">   34</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structartifact__type.html#a804fda7578db035da4c0fdb676b48b24">flags</a>[<a class="code" href="object-type-definition_8h.html#a396c51ddaffe17c1e21a428c41ba294e">TR_FLAG_SIZE</a>]{};       </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structartifact__type.html#a9474877945b17998050dba91cd4a89b0">   35</a></span>&#160;    <a class="code" href="class_flag_group.html">FlagGroup&lt;TRG&gt;</a> <a class="code" href="structartifact__type.html#a9474877945b17998050dba91cd4a89b0">gen_flags</a>;       </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structartifact__type.html#a43ac210f26213fada831b6a24b76f17b">   36</a></span>&#160;    <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> <a class="code" href="structartifact__type.html#a43ac210f26213fada831b6a24b76f17b">level</a>{};      </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structartifact__type.html#a6aeec8084fd240798a753a12fc0324c2">   37</a></span>&#160;    <a class="code" href="h-type_8h.html#a7e713a90f2ba27dc50424d2cc0b543ae">RARITY</a> <a class="code" href="structartifact__type.html#a6aeec8084fd240798a753a12fc0324c2">rarity</a>{};        </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structartifact__type.html#a67fd172ed3891614a62e87c7a46d25e7">   38</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structartifact__type.html#a67fd172ed3891614a62e87c7a46d25e7">cur_num</a>{};     </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structartifact__type.html#ade7d4f3f14baee506d8988204129c675">   39</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structartifact__type.html#ade7d4f3f14baee506d8988204129c675">max_num</a>{};     </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structartifact__type.html#ad2cc19312cacf3cb740ac2c5f258f1ec">   40</a></span>&#160;    <a class="code" href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a> <a class="code" href="structartifact__type.html#ad2cc19312cacf3cb740ac2c5f258f1ec">floor_id</a>{};      </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structartifact__type.html#a6e6ec74bf97d335fde627bf593a1cfc9">   41</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structartifact__type.html#a6e6ec74bf97d335fde627bf593a1cfc9">act_idx</a>{};     </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="artifact-type-definition_8h.html#ad9315f87fd5ec48fefaca678903fbfcf">   42</a></span>&#160;} <a class="code" href="artifact-type-definition_8h.html#ad9315f87fd5ec48fefaca678903fbfcf">artifact_type</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">extern</span> std::vector&lt;artifact_type&gt; <a class="code" href="artifact-type-definition_8h.html#a7dd75bb4839913e4f97bd01ee9842c78">a_info</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a4fc040f8a9ad313d0ce50224ff8841a0">ARTIFACT_IDX</a> <a class="code" href="artifact-type-definition_8h.html#a4f01fa9bcbc1637df92f1b6a29b56b70">max_a_idx</a>;</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aartifact-type-definition_8h_html_a4f01fa9bcbc1637df92f1b6a29b56b70"><div class="ttname"><a href="artifact-type-definition_8h.html#a4f01fa9bcbc1637df92f1b6a29b56b70">max_a_idx</a></div><div class="ttdeci">ARTIFACT_IDX max_a_idx</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.cpp:11</div></div>
+<div class="ttc" id="aartifact-type-definition_8h_html_a7dd75bb4839913e4f97bd01ee9842c78"><div class="ttname"><a href="artifact-type-definition_8h.html#a7dd75bb4839913e4f97bd01ee9842c78">a_info</a></div><div class="ttdeci">std::vector&lt; artifact_type &gt; a_info</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.cpp:6</div></div>
+<div class="ttc" id="aartifact-type-definition_8h_html_ad9315f87fd5ec48fefaca678903fbfcf"><div class="ttname"><a href="artifact-type-definition_8h.html#ad9315f87fd5ec48fefaca678903fbfcf">artifact_type</a></div><div class="ttdeci">struct artifact_type artifact_type</div></div>
+<div class="ttc" id="aclass_flag_group_html"><div class="ttname"><a href="class_flag_group.html">FlagGroup&lt; TRG &gt;</a></div></div>
+<div class="ttc" id="aflag-group_8h_html"><div class="ttname"><a href="flag-group_8h.html">flag-group.h</a></div></div>
+<div class="ttc" id="ah-type_8h_html_a1c8b80a20fb5396ff07a523b01112c47"><div class="ttname"><a href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a></div><div class="ttdeci">s32b DEPTH</div><div class="ttdoc">ゲーム中の階層レベルの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:194</div></div>
+<div class="ttc" id="ah-type_8h_html_a220932af45570eca82fbc85454205983"><div class="ttname"><a href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a></div><div class="ttdeci">s16b ARMOUR_CLASS</div><div class="ttdoc">ゲーム中の行動アーマークラス型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:161</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a47dfe4960088b41ad87a10ad5120f939"><div class="ttname"><a href="h-type_8h.html#a47dfe4960088b41ad87a10ad5120f939">HIT_PROB</a></div><div class="ttdeci">s16b HIT_PROB</div><div class="ttdoc">ゲーム中の装備命中修正値を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:153</div></div>
+<div class="ttc" id="ah-type_8h_html_a4fc040f8a9ad313d0ce50224ff8841a0"><div class="ttname"><a href="h-type_8h.html#a4fc040f8a9ad313d0ce50224ff8841a0">ARTIFACT_IDX</a></div><div class="ttdeci">s16b ARTIFACT_IDX</div><div class="ttdoc">ゲーム中のアーティファクトID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:113</div></div>
+<div class="ttc" id="ah-type_8h_html_a7e713a90f2ba27dc50424d2cc0b543ae"><div class="ttname"><a href="h-type_8h.html#a7e713a90f2ba27dc50424d2cc0b543ae">RARITY</a></div><div class="ttdeci">byte RARITY</div><div class="ttdoc">ゲーム中の希少度の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:195</div></div>
+<div class="ttc" id="ah-type_8h_html_a93e03fb0f06674384e8374479dfcf11b"><div class="ttname"><a href="h-type_8h.html#a93e03fb0f06674384e8374479dfcf11b">PARAMETER_VALUE</a></div><div class="ttdeci">s16b PARAMETER_VALUE</div><div class="ttdoc">ゲーム中のアイテム能力値の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:182</div></div>
+<div class="ttc" id="ah-type_8h_html_ab31578f84064b0779ae4f18997f3fdbf"><div class="ttname"><a href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a></div><div class="ttdeci">s32b WEIGHT</div><div class="ttdoc">ゲーム中の重量の型定義(ポンド)</div><div class="ttdef"><b>Definition:</b> h-type.h:183</div></div>
+<div class="ttc" id="ah-type_8h_html_abd34196d60f0f739ccfb2d8fb3eedc26"><div class="ttname"><a href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a></div><div class="ttdeci">int DICE_NUMBER</div><div class="ttdoc">ゲーム中のダイス数の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:185</div></div>
+<div class="ttc" id="ah-type_8h_html_ad52e4f96ca473e40e3be6db6f73a13d4"><div class="ttname"><a href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a></div><div class="ttdeci">s32b OBJECT_SUBTYPE_VALUE</div><div class="ttdoc">ゲーム中のアイテム副分類の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:181</div></div>
+<div class="ttc" id="ah-type_8h_html_adc9bfdf1fe589edec2328018c5fd91e4"><div class="ttname"><a href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a></div><div class="ttdeci">int DICE_SID</div><div class="ttdoc">ゲーム中のダイス面の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:186</div></div>
+<div class="ttc" id="ah-type_8h_html_aeba8ab2222e118a4540456c55d92a894"><div class="ttname"><a href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a></div><div class="ttdeci">s32b PRICE</div><div class="ttdoc">ゲーム中の金額価値の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:187</div></div>
+<div class="ttc" id="ah-type_8h_html_afdb20155266ee801610f13b1589a3df3"><div class="ttname"><a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></div><div class="ttdeci">s32b HIT_POINT</div><div class="ttdoc">HPとその増減量の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:141</div></div>
+<div class="ttc" id="ah-type_8h_html_afef75ce8b6b6a38fed9a8ed936b5ea5c"><div class="ttname"><a href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a></div><div class="ttdeci">s16b FLOOR_IDX</div><div class="ttdoc">ゲーム中のフロアID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:100</div></div>
+<div class="ttc" id="aobject-type-definition_8h_html"><div class="ttname"><a href="object-type-definition_8h.html">object-type-definition.h</a></div></div>
+<div class="ttc" id="aobject-type-definition_8h_html_a396c51ddaffe17c1e21a428c41ba294e"><div class="ttname"><a href="object-type-definition_8h.html#a396c51ddaffe17c1e21a428c41ba294e">TR_FLAG_SIZE</a></div><div class="ttdeci">#define TR_FLAG_SIZE</div><div class="ttdef"><b>Definition:</b> object-type-definition.h:6</div></div>
+<div class="ttc" id="astructartifact__type_html"><div class="ttname"><a href="structartifact__type.html">artifact_type</a></div><div class="ttdoc">固定アーティファクト情報の構造体 / Artifact structure.</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:20</div></div>
+<div class="ttc" id="astructartifact__type_html_a0b8bfccf1eb2c2d9d0c347b03c8153fc"><div class="ttname"><a href="structartifact__type.html#a0b8bfccf1eb2c2d9d0c347b03c8153fc">artifact_type::to_d</a></div><div class="ttdeci">HIT_POINT to_d</div><div class="ttdoc">ダメージボーナス値 / Bonus to damage</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:27</div></div>
+<div class="ttc" id="astructartifact__type_html_a0df5c342bb6019ae3f3fb5d78126d5f4"><div class="ttname"><a href="structartifact__type.html#a0df5c342bb6019ae3f3fb5d78126d5f4">artifact_type::ds</a></div><div class="ttdeci">DICE_SID ds</div><div class="ttdoc">ダイス値 / Damage when hits</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:31</div></div>
+<div class="ttc" id="astructartifact__type_html_a11772f44919f39d3ccd5c1ed23743c2c"><div class="ttname"><a href="structartifact__type.html#a11772f44919f39d3ccd5c1ed23743c2c">artifact_type::ac</a></div><div class="ttdeci">ARMOUR_CLASS ac</div><div class="ttdoc">上書きベースAC値 / Base armor</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:29</div></div>
+<div class="ttc" id="astructartifact__type_html_a1afa558c92522cc800e552f965ac3839"><div class="ttname"><a href="structartifact__type.html#a1afa558c92522cc800e552f965ac3839">artifact_type::weight</a></div><div class="ttdeci">WEIGHT weight</div><div class="ttdoc">重量 / Weight</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:32</div></div>
+<div class="ttc" id="astructartifact__type_html_a3ca056248db49c5176c994f6869b2721"><div class="ttname"><a href="structartifact__type.html#a3ca056248db49c5176c994f6869b2721">artifact_type::to_a</a></div><div class="ttdeci">ARMOUR_CLASS to_a</div><div class="ttdoc">ACボーナス値 / Bonus to armor</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:28</div></div>
+<div class="ttc" id="astructartifact__type_html_a43ac210f26213fada831b6a24b76f17b"><div class="ttname"><a href="structartifact__type.html#a43ac210f26213fada831b6a24b76f17b">artifact_type::level</a></div><div class="ttdeci">DEPTH level</div><div class="ttdoc">アイテム生成フラグ / flags for generate</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:36</div></div>
+<div class="ttc" id="astructartifact__type_html_a45ae333d845fec5dcae23f47055d4ca9"><div class="ttname"><a href="structartifact__type.html#a45ae333d845fec5dcae23f47055d4ca9">artifact_type::name</a></div><div class="ttdeci">std::string name</div><div class="ttdoc">アーティファクト名(headerオフセット参照) / Name (offset)</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:21</div></div>
+<div class="ttc" id="astructartifact__type_html_a51565fabd7a1d472f4d04d05c432894b"><div class="ttname"><a href="structartifact__type.html#a51565fabd7a1d472f4d04d05c432894b">artifact_type::text</a></div><div class="ttdeci">std::string text</div><div class="ttdoc">アーティファクト解説(headerオフセット参照) / Text (offset)</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:22</div></div>
+<div class="ttc" id="astructartifact__type_html_a5505d0a4a17c7349048732a1ec783c78"><div class="ttname"><a href="structartifact__type.html#a5505d0a4a17c7349048732a1ec783c78">artifact_type::to_h</a></div><div class="ttdeci">HIT_PROB to_h</div><div class="ttdoc">命中ボーナス値 / Bonus to hit</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:26</div></div>
+<div class="ttc" id="astructartifact__type_html_a67fd172ed3891614a62e87c7a46d25e7"><div class="ttname"><a href="structartifact__type.html#a67fd172ed3891614a62e87c7a46d25e7">artifact_type::cur_num</a></div><div class="ttdeci">byte cur_num</div><div class="ttdoc">レアリティ / Artifact rarity</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:38</div></div>
+<div class="ttc" id="astructartifact__type_html_a6aeec8084fd240798a753a12fc0324c2"><div class="ttname"><a href="structartifact__type.html#a6aeec8084fd240798a753a12fc0324c2">artifact_type::rarity</a></div><div class="ttdeci">RARITY rarity</div><div class="ttdoc">基本生成階 / Artifact level</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:37</div></div>
+<div class="ttc" id="astructartifact__type_html_a6e6ec74bf97d335fde627bf593a1cfc9"><div class="ttname"><a href="structartifact__type.html#a6e6ec74bf97d335fde627bf593a1cfc9">artifact_type::act_idx</a></div><div class="ttdeci">byte act_idx</div><div class="ttdoc">アイテムを落としたフロアのID / Leaved on this location last time</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:41</div></div>
+<div class="ttc" id="astructartifact__type_html_a804fda7578db035da4c0fdb676b48b24"><div class="ttname"><a href="structartifact__type.html#a804fda7578db035da4c0fdb676b48b24">artifact_type::flags</a></div><div class="ttdeci">BIT_FLAGS flags[TR_FLAG_SIZE]</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:34</div></div>
+<div class="ttc" id="astructartifact__type_html_a9474877945b17998050dba91cd4a89b0"><div class="ttname"><a href="structartifact__type.html#a9474877945b17998050dba91cd4a89b0">artifact_type::gen_flags</a></div><div class="ttdeci">FlagGroup&lt; TRG &gt; gen_flags</div><div class="ttdoc">アイテムフラグ / Artifact Flags</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:35</div></div>
+<div class="ttc" id="astructartifact__type_html_a9cfa2df80901ba66253447f4f7f6f65c"><div class="ttname"><a href="structartifact__type.html#a9cfa2df80901ba66253447f4f7f6f65c">artifact_type::pval</a></div><div class="ttdeci">PARAMETER_VALUE pval</div><div class="ttdoc">pval修正値 / Artifact extra info</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:25</div></div>
+<div class="ttc" id="astructartifact__type_html_ab98e72d527f1bf532a6eb6efeb7f2f0a"><div class="ttname"><a href="structartifact__type.html#ab98e72d527f1bf532a6eb6efeb7f2f0a">artifact_type::dd</a></div><div class="ttdeci">DICE_NUMBER dd</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:30</div></div>
+<div class="ttc" id="astructartifact__type_html_abb59335840927ff8bc973d14821fdc26"><div class="ttname"><a href="structartifact__type.html#abb59335840927ff8bc973d14821fdc26">artifact_type::sval</a></div><div class="ttdeci">OBJECT_SUBTYPE_VALUE sval</div><div class="ttdoc">ベースアイテム小項目ID / Artifact sub type</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:24</div></div>
+<div class="ttc" id="astructartifact__type_html_ac767bcc0831d0ce69fb28c69e68745d1"><div class="ttname"><a href="structartifact__type.html#ac767bcc0831d0ce69fb28c69e68745d1">artifact_type::cost</a></div><div class="ttdeci">PRICE cost</div><div class="ttdoc">基本価格 / Artifact &quot;cost&quot;</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:33</div></div>
+<div class="ttc" id="astructartifact__type_html_ad2cc19312cacf3cb740ac2c5f258f1ec"><div class="ttname"><a href="structartifact__type.html#ad2cc19312cacf3cb740ac2c5f258f1ec">artifact_type::floor_id</a></div><div class="ttdeci">FLOOR_IDX floor_id</div><div class="ttdoc">(未使用)最大生成数 / Unused (should be &quot;1&quot;)</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:40</div></div>
+<div class="ttc" id="astructartifact__type_html_ad54f9cc6304ba16446ddad8a469d277b"><div class="ttname"><a href="structartifact__type.html#ad54f9cc6304ba16446ddad8a469d277b">artifact_type::tval</a></div><div class="ttdeci">tval_type tval</div><div class="ttdoc">ベースアイテム大項目ID / Artifact type</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:23</div></div>
+<div class="ttc" id="astructartifact__type_html_ade7d4f3f14baee506d8988204129c675"><div class="ttname"><a href="structartifact__type.html#ade7d4f3f14baee506d8988204129c675">artifact_type::max_num</a></div><div class="ttdeci">byte max_num</div><div class="ttdoc">現在の生成数 / Number created (0 or 1)</div><div class="ttdef"><b>Definition:</b> artifact-type-definition.h:39</div></div>
+<div class="ttc" id="atrg-types_8h_html"><div class="ttname"><a href="trg-types_8h.html">trg-types.h</a></div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a></div><div class="ttdeci">tval_type</div><div class="ttdef"><b>Definition:</b> tval-types.h:17</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

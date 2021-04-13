@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/flavor/object-flavor-types.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_00a0f7706b31e0c6052c2f42eab1294e.html">flavor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">object-flavor-types.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="object-flavor-types_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0a">    3</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0a">object_description_type</a> {</div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aa1a7a9543615c68516422ab87d9107452">    4</a></span>&#160;    <a class="code" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aa1a7a9543615c68516422ab87d9107452">OD_NAME_ONLY</a> = 0x00000001, <span class="comment">/* Omit values, pval, inscription */</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aa6c2b0c6f2d896d4dae0f932862750fea">    5</a></span>&#160;    <a class="code" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aa6c2b0c6f2d896d4dae0f932862750fea">OD_NAME_AND_ENCHANT</a> = 0x00000002, <span class="comment">/* Omit pval, inscription */</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aabea031deac71e442001c53df328c9053">    6</a></span>&#160;    <a class="code" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aabea031deac71e442001c53df328c9053">OD_OMIT_INSCRIPTION</a> = 0x00000004, <span class="comment">/* Omit inscription */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aa24971c44e57ad4078db0ca12fca4d116">    7</a></span>&#160;    <a class="code" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aa24971c44e57ad4078db0ca12fca4d116">OD_OMIT_PREFIX</a> = 0x00000008, <span class="comment">/* Omit numeric prefix */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aaeb34fd2abe86bfff74b6d792e484b8a7">    8</a></span>&#160;    <a class="code" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aaeb34fd2abe86bfff74b6d792e484b8a7">OD_NO_PLURAL</a> = 0x00000010, <span class="comment">/* Don&#39;t use plural */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aad7b11cf62f0cbaae6caef96a184d3871">    9</a></span>&#160;    <a class="code" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aad7b11cf62f0cbaae6caef96a184d3871">OD_STORE</a> = 0x00000020, <span class="comment">/* Assume to be aware and known */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aac02e27c1f1d46557cf247b889a0b4ae7">   10</a></span>&#160;    <a class="code" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aac02e27c1f1d46557cf247b889a0b4ae7">OD_NO_FLAVOR</a> = 0x00000040, <span class="comment">/* Allow to hidden flavor */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aa225e8f9edaefc3a843dfc9bc40719893">   11</a></span>&#160;    <a class="code" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aa225e8f9edaefc3a843dfc9bc40719893">OD_FORCE_FLAVOR</a> = 0x00000080, <span class="comment">/* Get un-shuffled flavor name */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aa4293091b73d326c998b5ad434abc8bab">   12</a></span>&#160;    <a class="code" href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aa4293091b73d326c998b5ad434abc8bab">OD_DEBUG</a> = 0x10000000, <span class="comment">/* Print for DEBUG */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;};</div>
+<div class="ttc" id="aobject-flavor-types_8h_html_a2027304167bf3d92b6e0692e0fb2fe0a"><div class="ttname"><a href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0a">object_description_type</a></div><div class="ttdeci">object_description_type</div><div class="ttdef"><b>Definition:</b> object-flavor-types.h:3</div></div>
+<div class="ttc" id="aobject-flavor-types_8h_html_a2027304167bf3d92b6e0692e0fb2fe0aa1a7a9543615c68516422ab87d9107452"><div class="ttname"><a href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aa1a7a9543615c68516422ab87d9107452">OD_NAME_ONLY</a></div><div class="ttdeci">@ OD_NAME_ONLY</div><div class="ttdef"><b>Definition:</b> object-flavor-types.h:4</div></div>
+<div class="ttc" id="aobject-flavor-types_8h_html_a2027304167bf3d92b6e0692e0fb2fe0aa225e8f9edaefc3a843dfc9bc40719893"><div class="ttname"><a href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aa225e8f9edaefc3a843dfc9bc40719893">OD_FORCE_FLAVOR</a></div><div class="ttdeci">@ OD_FORCE_FLAVOR</div><div class="ttdef"><b>Definition:</b> object-flavor-types.h:11</div></div>
+<div class="ttc" id="aobject-flavor-types_8h_html_a2027304167bf3d92b6e0692e0fb2fe0aa24971c44e57ad4078db0ca12fca4d116"><div class="ttname"><a href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aa24971c44e57ad4078db0ca12fca4d116">OD_OMIT_PREFIX</a></div><div class="ttdeci">@ OD_OMIT_PREFIX</div><div class="ttdef"><b>Definition:</b> object-flavor-types.h:7</div></div>
+<div class="ttc" id="aobject-flavor-types_8h_html_a2027304167bf3d92b6e0692e0fb2fe0aa4293091b73d326c998b5ad434abc8bab"><div class="ttname"><a href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aa4293091b73d326c998b5ad434abc8bab">OD_DEBUG</a></div><div class="ttdeci">@ OD_DEBUG</div><div class="ttdef"><b>Definition:</b> object-flavor-types.h:12</div></div>
+<div class="ttc" id="aobject-flavor-types_8h_html_a2027304167bf3d92b6e0692e0fb2fe0aa6c2b0c6f2d896d4dae0f932862750fea"><div class="ttname"><a href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aa6c2b0c6f2d896d4dae0f932862750fea">OD_NAME_AND_ENCHANT</a></div><div class="ttdeci">@ OD_NAME_AND_ENCHANT</div><div class="ttdef"><b>Definition:</b> object-flavor-types.h:5</div></div>
+<div class="ttc" id="aobject-flavor-types_8h_html_a2027304167bf3d92b6e0692e0fb2fe0aabea031deac71e442001c53df328c9053"><div class="ttname"><a href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aabea031deac71e442001c53df328c9053">OD_OMIT_INSCRIPTION</a></div><div class="ttdeci">@ OD_OMIT_INSCRIPTION</div><div class="ttdef"><b>Definition:</b> object-flavor-types.h:6</div></div>
+<div class="ttc" id="aobject-flavor-types_8h_html_a2027304167bf3d92b6e0692e0fb2fe0aac02e27c1f1d46557cf247b889a0b4ae7"><div class="ttname"><a href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aac02e27c1f1d46557cf247b889a0b4ae7">OD_NO_FLAVOR</a></div><div class="ttdeci">@ OD_NO_FLAVOR</div><div class="ttdef"><b>Definition:</b> object-flavor-types.h:10</div></div>
+<div class="ttc" id="aobject-flavor-types_8h_html_a2027304167bf3d92b6e0692e0fb2fe0aad7b11cf62f0cbaae6caef96a184d3871"><div class="ttname"><a href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aad7b11cf62f0cbaae6caef96a184d3871">OD_STORE</a></div><div class="ttdeci">@ OD_STORE</div><div class="ttdef"><b>Definition:</b> object-flavor-types.h:9</div></div>
+<div class="ttc" id="aobject-flavor-types_8h_html_a2027304167bf3d92b6e0692e0fb2fe0aaeb34fd2abe86bfff74b6d792e484b8a7"><div class="ttname"><a href="object-flavor-types_8h.html#a2027304167bf3d92b6e0692e0fb2fe0aaeb34fd2abe86bfff74b6d792e484b8a7">OD_NO_PLURAL</a></div><div class="ttdeci">@ OD_NO_PLURAL</div><div class="ttdef"><b>Definition:</b> object-flavor-types.h:8</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

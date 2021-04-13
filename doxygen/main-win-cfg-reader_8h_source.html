@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/main-win/main-win-cfg-reader.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1212ae1f54c3420b88187b66047c04a6.html">main-win</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">main-win-cfg-reader.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="main-win-cfg-reader_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="h-type_8h.html">system/h-type.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;initializer_list&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="main-win-cfg-reader_8h.html#a0d2b82d8ab22ada7dedd673ea4283b61">   10</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="main-win-cfg-reader_8h.html#a0d2b82d8ab22ada7dedd673ea4283b61">cfg_key</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="main-win-cfg-reader_8h.html#a80fe2634ca44e127e07998de2c05eb83">   11</a></span>&#160;<span class="keyword">using</span> <a class="code" href="main-win-cfg-reader_8h.html#a80fe2634ca44e127e07998de2c05eb83">cfg_values</a> = std::vector&lt;concptr&gt;;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="main-win-cfg-reader_8h.html#a2463f46a1aca553d1debdd18ddee37dd">   12</a></span>&#160;<span class="keyword">using</span> <a class="code" href="main-win-cfg-reader_8h.html#a2463f46a1aca553d1debdd18ddee37dd">cfg_map</a> = std::unordered_map&lt;cfg_key, cfg_values *&gt;;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="main-win-cfg-reader_8h.html#a4aa0ee9b307f728707f6a88c9b1cf628">   13</a></span>&#160;<span class="keyword">using</span> <a class="code" href="main-win-cfg-reader_8h.html#a4aa0ee9b307f728707f6a88c9b1cf628">key_name_func</a> = <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> (*)(int, <span class="keywordtype">char</span> *);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structcfg__section.html">   24</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structcfg__section.html">cfg_section</a> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structcfg__section.html#aaade318bbea49980ac2c635af224ba3f">   27</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structcfg__section.html#aaade318bbea49980ac2c635af224ba3f">section_name</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structcfg__section.html#a37bcdd955d2f0b09e98d0ea15e7afae3">   29</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structcfg__section.html#a37bcdd955d2f0b09e98d0ea15e7afae3">action_type</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structcfg__section.html#ad5b45ca1a64a92b54d5ff0ad915eb696">   34</a></span>&#160;    <a class="code" href="main-win-cfg-reader_8h.html#a4aa0ee9b307f728707f6a88c9b1cf628">key_name_func</a> <a class="code" href="structcfg__section.html#ad5b45ca1a64a92b54d5ff0ad915eb696">key_at</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structcfg__section.html#a55d2546e72716811d465d021c2cc16f7">   36</a></span>&#160;    <span class="keywordtype">bool</span> *<a class="code" href="structcfg__section.html#a55d2546e72716811d465d021c2cc16f7">has_data</a> = NULL;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_cfg_data.html">   39</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_cfg_data.html">CfgData</a> {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_cfg_data.html#aaca6b59cf92afc2b42401025b8c67342">   41</a></span>&#160;    <a class="code" href="class_cfg_data.html#aaca6b59cf92afc2b42401025b8c67342">CfgData</a>()</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="class_cfg_data.html#a950ccf9ac6dc39e9dfc3eae16ac4eed9">map</a> = <span class="keyword">new</span> <a class="code" href="main-win-cfg-reader_8h.html#a2463f46a1aca553d1debdd18ddee37dd">cfg_map</a>();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_cfg_data.html#afe5ecd3e34fde9952cfee027098b947b">   45</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_cfg_data.html#afe5ecd3e34fde9952cfee027098b947b">~CfgData</a>()</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">delete</span> <a class="code" href="class_cfg_data.html#a950ccf9ac6dc39e9dfc3eae16ac4eed9">map</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="class_cfg_data.html#adb9e684d17b28446502c69d3a2c34602">get_rand</a>(<span class="keywordtype">int</span> key1_type, <span class="keywordtype">int</span> key2_val);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_cfg_data.html#a10815a8a6e488a5387e663c335b4cb14">has_key</a>(<span class="keywordtype">int</span> key1_type, <span class="keywordtype">int</span> key2_val);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_cfg_data.html#a6172a440f88bc9e92970b7c31d3471ac">insert</a>(<span class="keywordtype">int</span> key1_type, <span class="keywordtype">int</span> key2_val, <a class="code" href="main-win-cfg-reader_8h.html#a80fe2634ca44e127e07998de2c05eb83">cfg_values</a> *value);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_cfg_data.html#a950ccf9ac6dc39e9dfc3eae16ac4eed9">   54</a></span>&#160;    <a class="code" href="main-win-cfg-reader_8h.html#a2463f46a1aca553d1debdd18ddee37dd">cfg_map</a> *<a class="code" href="class_cfg_data.html#a950ccf9ac6dc39e9dfc3eae16ac4eed9">map</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_cfg_reader.html">   57</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_cfg_reader.html">CfgReader</a> {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="class_cfg_reader.html#a4464374117d07a73b06185c8fa9fcca1">CfgReader</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="class_cfg_reader.html#a1d49658d94d747660c53e8585cb34d43">dir</a>, std::initializer_list&lt;concptr&gt; files);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="class_cfg_data.html">CfgData</a> *<a class="code" href="class_cfg_reader.html#aef4efdff376b9c7915119902125526e6">read_sections</a>(std::initializer_list&lt;cfg_section&gt; sections);</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_cfg_reader.html#a123de953a315c9b5c7ad1b924c70fce0">   61</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="class_cfg_reader.html#a123de953a315c9b5c7ad1b924c70fce0">get_cfg_path</a>()</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_cfg_reader.html#a23a5f03ec6cdee1757b15f21417623ce">cfg_path</a>.c_str();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_cfg_reader.html#a1d49658d94d747660c53e8585cb34d43">   67</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="class_cfg_reader.html#a1d49658d94d747660c53e8585cb34d43">dir</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_cfg_reader.html#a23a5f03ec6cdee1757b15f21417623ce">   68</a></span>&#160;    std::string <a class="code" href="class_cfg_reader.html#a23a5f03ec6cdee1757b15f21417623ce">cfg_path</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;};</div>
+<div class="ttc" id="aclass_cfg_data_html"><div class="ttname"><a href="class_cfg_data.html">CfgData</a></div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:39</div></div>
+<div class="ttc" id="aclass_cfg_data_html_a10815a8a6e488a5387e663c335b4cb14"><div class="ttname"><a href="class_cfg_data.html#a10815a8a6e488a5387e663c335b4cb14">CfgData::has_key</a></div><div class="ttdeci">bool has_key(int key1_type, int key2_val)</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.cpp:64</div></div>
+<div class="ttc" id="aclass_cfg_data_html_a6172a440f88bc9e92970b7c31d3471ac"><div class="ttname"><a href="class_cfg_data.html#a6172a440f88bc9e92970b7c31d3471ac">CfgData::insert</a></div><div class="ttdeci">void insert(int key1_type, int key2_val, cfg_values *value)</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.cpp:70</div></div>
+<div class="ttc" id="aclass_cfg_data_html_a950ccf9ac6dc39e9dfc3eae16ac4eed9"><div class="ttname"><a href="class_cfg_data.html#a950ccf9ac6dc39e9dfc3eae16ac4eed9">CfgData::map</a></div><div class="ttdeci">cfg_map * map</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:54</div></div>
+<div class="ttc" id="aclass_cfg_data_html_aaca6b59cf92afc2b42401025b8c67342"><div class="ttname"><a href="class_cfg_data.html#aaca6b59cf92afc2b42401025b8c67342">CfgData::CfgData</a></div><div class="ttdeci">CfgData()</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:41</div></div>
+<div class="ttc" id="aclass_cfg_data_html_adb9e684d17b28446502c69d3a2c34602"><div class="ttname"><a href="class_cfg_data.html#adb9e684d17b28446502c69d3a2c34602">CfgData::get_rand</a></div><div class="ttdeci">concptr get_rand(int key1_type, int key2_val)</div><div class="ttdoc">登録されている中からランダムに選択する</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.cpp:54</div></div>
+<div class="ttc" id="aclass_cfg_data_html_afe5ecd3e34fde9952cfee027098b947b"><div class="ttname"><a href="class_cfg_data.html#afe5ecd3e34fde9952cfee027098b947b">CfgData::~CfgData</a></div><div class="ttdeci">virtual ~CfgData()</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:45</div></div>
+<div class="ttc" id="aclass_cfg_reader_html"><div class="ttname"><a href="class_cfg_reader.html">CfgReader</a></div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:57</div></div>
+<div class="ttc" id="aclass_cfg_reader_html_a123de953a315c9b5c7ad1b924c70fce0"><div class="ttname"><a href="class_cfg_reader.html#a123de953a315c9b5c7ad1b924c70fce0">CfgReader::get_cfg_path</a></div><div class="ttdeci">concptr get_cfg_path()</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:61</div></div>
+<div class="ttc" id="aclass_cfg_reader_html_a1d49658d94d747660c53e8585cb34d43"><div class="ttname"><a href="class_cfg_reader.html#a1d49658d94d747660c53e8585cb34d43">CfgReader::dir</a></div><div class="ttdeci">concptr dir</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:67</div></div>
+<div class="ttc" id="aclass_cfg_reader_html_a23a5f03ec6cdee1757b15f21417623ce"><div class="ttname"><a href="class_cfg_reader.html#a23a5f03ec6cdee1757b15f21417623ce">CfgReader::cfg_path</a></div><div class="ttdeci">std::string cfg_path</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:68</div></div>
+<div class="ttc" id="aclass_cfg_reader_html_a4464374117d07a73b06185c8fa9fcca1"><div class="ttname"><a href="class_cfg_reader.html#a4464374117d07a73b06185c8fa9fcca1">CfgReader::CfgReader</a></div><div class="ttdeci">CfgReader(concptr dir, std::initializer_list&lt; concptr &gt; files)</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.cpp:79</div></div>
+<div class="ttc" id="aclass_cfg_reader_html_aef4efdff376b9c7915119902125526e6"><div class="ttname"><a href="class_cfg_reader.html#aef4efdff376b9c7915119902125526e6">CfgReader::read_sections</a></div><div class="ttdeci">CfgData * read_sections(std::initializer_list&lt; cfg_section &gt; sections)</div><div class="ttdoc">データの読み込みを行う。</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.cpp:90</div></div>
+<div class="ttc" id="ah-type_8h_html"><div class="ttname"><a href="h-type_8h.html">h-type.h</a></div><div class="ttdoc">ゲーム中に用いる変数型定義 / Basic &quot;types&quot;.</div></div>
+<div class="ttc" id="ah-type_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> h-type.h:73</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="amain-win-cfg-reader_8h_html_a0d2b82d8ab22ada7dedd673ea4283b61"><div class="ttname"><a href="main-win-cfg-reader_8h.html#a0d2b82d8ab22ada7dedd673ea4283b61">cfg_key</a></div><div class="ttdeci">uint cfg_key</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:10</div></div>
+<div class="ttc" id="amain-win-cfg-reader_8h_html_a2463f46a1aca553d1debdd18ddee37dd"><div class="ttname"><a href="main-win-cfg-reader_8h.html#a2463f46a1aca553d1debdd18ddee37dd">cfg_map</a></div><div class="ttdeci">std::unordered_map&lt; cfg_key, cfg_values * &gt; cfg_map</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:12</div></div>
+<div class="ttc" id="amain-win-cfg-reader_8h_html_a4aa0ee9b307f728707f6a88c9b1cf628"><div class="ttname"><a href="main-win-cfg-reader_8h.html#a4aa0ee9b307f728707f6a88c9b1cf628">key_name_func</a></div><div class="ttdeci">concptr(*)(int, char *) key_name_func</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:13</div></div>
+<div class="ttc" id="amain-win-cfg-reader_8h_html_a80fe2634ca44e127e07998de2c05eb83"><div class="ttname"><a href="main-win-cfg-reader_8h.html#a80fe2634ca44e127e07998de2c05eb83">cfg_values</a></div><div class="ttdeci">std::vector&lt; concptr &gt; cfg_values</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:11</div></div>
+<div class="ttc" id="astructcfg__section_html"><div class="ttname"><a href="structcfg__section.html">cfg_section</a></div><div class="ttdoc">.cfgファイルの読み取り対象とCfgData格納先のキー指定</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:24</div></div>
+<div class="ttc" id="astructcfg__section_html_a37bcdd955d2f0b09e98d0ea15e7afae3"><div class="ttname"><a href="structcfg__section.html#a37bcdd955d2f0b09e98d0ea15e7afae3">cfg_section::action_type</a></div><div class="ttdeci">int action_type</div><div class="ttdoc">the &quot;actions&quot; value of &quot;term_xtra()&quot;. see:z-term.h TERM_XTRA_xxxxx</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:29</div></div>
+<div class="ttc" id="astructcfg__section_html_a55d2546e72716811d465d021c2cc16f7"><div class="ttname"><a href="structcfg__section.html#a55d2546e72716811d465d021c2cc16f7">cfg_section::has_data</a></div><div class="ttdeci">bool * has_data</div><div class="ttdoc">1つでもデータを読み込めた場合にtrueを設定する。（NULLの場合を除く）</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:36</div></div>
+<div class="ttc" id="astructcfg__section_html_aaade318bbea49980ac2c635af224ba3f"><div class="ttname"><a href="structcfg__section.html#aaade318bbea49980ac2c635af224ba3f">cfg_section::section_name</a></div><div class="ttdeci">concptr section_name</div><div class="ttdoc">The name of the section in cfg file</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:27</div></div>
+<div class="ttc" id="astructcfg__section_html_ad5b45ca1a64a92b54d5ff0ad915eb696"><div class="ttname"><a href="structcfg__section.html#ad5b45ca1a64a92b54d5ff0ad915eb696">cfg_section::key_at</a></div><div class="ttdeci">key_name_func key_at</div><div class="ttdoc">Returns a reference to the name of the key at a specified action-val* in the section.</div><div class="ttdef"><b>Definition:</b> main-win-cfg-reader.h:34</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

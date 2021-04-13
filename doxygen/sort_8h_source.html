@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/util/sort.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b7878ad5ecbf2506f4125b9d34c97e45.html">util</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">sort.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="sort_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sort_8h.html#ab407e67d890db0c6e9b33de4c90b5b84">ang_sort</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> n, <span class="keywordtype">bool</span> (*ang_sort_comp)(<a class="code" href="structplayer__type.html">player_type</a> *, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>),</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keywordtype">void</span> (*ang_sort_swap)(<a class="code" href="structplayer__type.html">player_type</a> *, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>));</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="sort_8h.html#a7264cefd93e240e1500b9b8d752971d8">ang_sort_comp_distance</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="sort_8h.html#afc710ac46e37c8c60aff62ec391b2c70">ang_sort_comp_importance</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sort_8h.html#a381d61fe52a30bdd54c9db0fdf39d740">ang_sort_swap_position</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="sort_8h.html#af753b9f33ae879f347cb3fb879c398bc">ang_sort_art_comp</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sort_8h.html#a61fadaca2425f2d051a8d8f94f858cea">ang_sort_art_swap</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="sort_8h.html#a734b7b3a2d38ef11372200f435826a6b">ang_sort_comp_quest_num</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sort_8h.html#a3db772498125ec079b79db518524730b">ang_sort_swap_quest_num</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="sort_8h.html#a0be5ac60bc38ac90d009e07b6df01f72">ang_sort_comp_pet</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="sort_8h.html#af37a4dbba98c62b99a41b8ce5b32d83e">ang_sort_comp_hook</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sort_8h.html#a626a506e850eb194e7894b988ba05d10">ang_sort_swap_hook</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="sort_8h.html#aee575e7335b7294ef70bd1c373bb419e">ang_sort_comp_monster_level</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="sort_8h.html#a9b7c0d7755974c5b01735e0831fb22a9">ang_sort_comp_pet_dismiss</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="sort_8h.html#a8dc1104938e0c7b0ba64848f23b22e57">ang_sort_comp_cave_temp</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sort_8h.html#aa889e98eb6a078b89abe852c21f98315">ang_sort_swap_cave_temp</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="sort_8h.html#a17a36172928f2364a7a1651ef8b9d9c2">ang_sort_comp_evol_tree</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">void</span> <a class="code" href="sort_8h.html#aaa844acd126b74cc2be2fd719c1f5515">ang_sort_swap_evol_tree</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> u, <a class="code" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a> v, <span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a6ff70012dce98a61c680a920f660c210"><div class="ttname"><a href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a></div><div class="ttdeci">void * vptr</div><div class="ttdoc">void型ポインタ定義 / A standard pointer (to &quot;void&quot; because ANSI C says so)</div><div class="ttdef"><b>Definition:</b> h-type.h:44</div></div>
+<div class="ttc" id="asort_8h_html_a0be5ac60bc38ac90d009e07b6df01f72"><div class="ttname"><a href="sort_8h.html#a0be5ac60bc38ac90d009e07b6df01f72">ang_sort_comp_pet</a></div><div class="ttdeci">bool ang_sort_comp_pet(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdoc">ペット入りモンスターボールをソートするための比較関数</div><div class="ttdef"><b>Definition:</b> sort.cpp:338</div></div>
+<div class="ttc" id="asort_8h_html_a17a36172928f2364a7a1651ef8b9d9c2"><div class="ttname"><a href="sort_8h.html#a17a36172928f2364a7a1651ef8b9d9c2">ang_sort_comp_evol_tree</a></div><div class="ttdeci">bool ang_sort_comp_evol_tree(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdoc">進化ツリーをソートするためモンスター種族の判定関数 / Sorting hook – Comp function</div><div class="ttdef"><b>Definition:</b> sort.cpp:633</div></div>
+<div class="ttc" id="asort_8h_html_a381d61fe52a30bdd54c9db0fdf39d740"><div class="ttname"><a href="sort_8h.html#a381d61fe52a30bdd54c9db0fdf39d740">ang_sort_swap_position</a></div><div class="ttdeci">void ang_sort_swap_position(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdef"><b>Definition:</b> sort.cpp:206</div></div>
+<div class="ttc" id="asort_8h_html_a3db772498125ec079b79db518524730b"><div class="ttname"><a href="sort_8h.html#a3db772498125ec079b79db518524730b">ang_sort_swap_quest_num</a></div><div class="ttdeci">void ang_sort_swap_quest_num(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdef"><b>Definition:</b> sort.cpp:318</div></div>
+<div class="ttc" id="asort_8h_html_a61fadaca2425f2d051a8d8f94f858cea"><div class="ttname"><a href="sort_8h.html#a61fadaca2425f2d051a8d8f94f858cea">ang_sort_art_swap</a></div><div class="ttdeci">void ang_sort_art_swap(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdef"><b>Definition:</b> sort.cpp:294</div></div>
+<div class="ttc" id="asort_8h_html_a626a506e850eb194e7894b988ba05d10"><div class="ttname"><a href="sort_8h.html#a626a506e850eb194e7894b988ba05d10">ang_sort_swap_hook</a></div><div class="ttdeci">void ang_sort_swap_hook(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdoc">モンスター種族情報を特定の基準によりソートするためのスワップ処理 Sorting hook – Swap function – see below</div><div class="ttdef"><b>Definition:</b> sort.cpp:472</div></div>
+<div class="ttc" id="asort_8h_html_a7264cefd93e240e1500b9b8d752971d8"><div class="ttname"><a href="sort_8h.html#a7264cefd93e240e1500b9b8d752971d8">ang_sort_comp_distance</a></div><div class="ttdeci">bool ang_sort_comp_distance(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdef"><b>Definition:</b> sort.cpp:76</div></div>
+<div class="ttc" id="asort_8h_html_a734b7b3a2d38ef11372200f435826a6b"><div class="ttname"><a href="sort_8h.html#a734b7b3a2d38ef11372200f435826a6b">ang_sort_comp_quest_num</a></div><div class="ttdeci">bool ang_sort_comp_quest_num(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdef"><b>Definition:</b> sort.cpp:306</div></div>
+<div class="ttc" id="asort_8h_html_a8dc1104938e0c7b0ba64848f23b22e57"><div class="ttname"><a href="sort_8h.html#a8dc1104938e0c7b0ba64848f23b22e57">ang_sort_comp_cave_temp</a></div><div class="ttdeci">bool ang_sort_comp_cave_temp(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdoc">フロア保存時のgrid情報テンプレートをソートするための比較処理</div><div class="ttdef"><b>Definition:</b> sort.cpp:588</div></div>
+<div class="ttc" id="asort_8h_html_a9b7c0d7755974c5b01735e0831fb22a9"><div class="ttname"><a href="sort_8h.html#a9b7c0d7755974c5b01735e0831fb22a9">ang_sort_comp_pet_dismiss</a></div><div class="ttdeci">bool ang_sort_comp_pet_dismiss(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdoc">ペットになっているモンスターをソートするための比較処理</div><div class="ttdef"><b>Definition:</b> sort.cpp:526</div></div>
+<div class="ttc" id="asort_8h_html_aa889e98eb6a078b89abe852c21f98315"><div class="ttname"><a href="sort_8h.html#aa889e98eb6a078b89abe852c21f98315">ang_sort_swap_cave_temp</a></div><div class="ttdeci">void ang_sort_swap_cave_temp(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdoc">フロア保存時のgrid情報テンプレートをソートするためのスワップ処理 / Sorting hook – Swap function</div><div class="ttdef"><b>Definition:</b> sort.cpp:610</div></div>
+<div class="ttc" id="asort_8h_html_aaa844acd126b74cc2be2fd719c1f5515"><div class="ttname"><a href="sort_8h.html#aaa844acd126b74cc2be2fd719c1f5515">ang_sort_swap_evol_tree</a></div><div class="ttdeci">void ang_sort_swap_evol_tree(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdoc">進化ツリーをソートするため木構造のスワップ関数 / Sorting hook – Swap function</div><div class="ttdef"><b>Definition:</b> sort.cpp:680</div></div>
+<div class="ttc" id="asort_8h_html_ab407e67d890db0c6e9b33de4c90b5b84"><div class="ttname"><a href="sort_8h.html#ab407e67d890db0c6e9b33de4c90b5b84">ang_sort</a></div><div class="ttdeci">void ang_sort(player_type *player_ptr, vptr u, vptr v, int n, bool(*ang_sort_comp)(player_type *, vptr, vptr, int, int), void(*ang_sort_swap)(player_type *, vptr, vptr, int, int))</div><div class="ttdef"><b>Definition:</b> sort.cpp:64</div></div>
+<div class="ttc" id="asort_8h_html_aee575e7335b7294ef70bd1c373bb419e"><div class="ttname"><a href="sort_8h.html#aee575e7335b7294ef70bd1c373bb419e">ang_sort_comp_monster_level</a></div><div class="ttdeci">bool ang_sort_comp_monster_level(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdef"><b>Definition:</b> sort.cpp:489</div></div>
+<div class="ttc" id="asort_8h_html_af37a4dbba98c62b99a41b8ce5b32d83e"><div class="ttname"><a href="sort_8h.html#af37a4dbba98c62b99a41b8ce5b32d83e">ang_sort_comp_hook</a></div><div class="ttdeci">bool ang_sort_comp_hook(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdoc">モンスター種族情報を特定の基準によりソートするための比較処理 Sorting hook – Comp function – see below</div><div class="ttdef"><b>Definition:</b> sort.cpp:391</div></div>
+<div class="ttc" id="asort_8h_html_af753b9f33ae879f347cb3fb879c398bc"><div class="ttname"><a href="sort_8h.html#af753b9f33ae879f347cb3fb879c398bc">ang_sort_art_comp</a></div><div class="ttdeci">bool ang_sort_art_comp(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdef"><b>Definition:</b> sort.cpp:229</div></div>
+<div class="ttc" id="asort_8h_html_afc710ac46e37c8c60aff62ec391b2c70"><div class="ttname"><a href="sort_8h.html#afc710ac46e37c8c60aff62ec391b2c70">ang_sort_comp_importance</a></div><div class="ttdeci">bool ang_sort_comp_importance(player_type *player_ptr, vptr u, vptr v, int a, int b)</div><div class="ttdef"><b>Definition:</b> sort.cpp:113</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

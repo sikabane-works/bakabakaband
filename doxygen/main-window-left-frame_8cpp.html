@@ -1,0 +1,762 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/window/main-window-left-frame.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c7f79d9fead0a70cab4af348b59fbdf1.html">window</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">main-window-left-frame.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="main-window-left-frame_8h_source.html">window/main-window-left-frame.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-options_8h_source.html">game-option/special-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="text-display-options_8h_source.html">game-option/text-display-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="arena-info-table_8h_source.html">market/arena-info-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status_8h_source.html">monster/monster-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mimic-info-table_8h_source.html">player/mimic-info-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-class_8h_source.html">player/player-class.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status-table_8h_source.html">player/player-status-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="string-processor_8h_source.html">util/string-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="main-window-row-column_8h_source.html">window/main-window-row-column.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="main-window-stat-poster_8h_source.html">window/main-window-stat-poster.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="main-window-util_8h_source.html">window/main-window-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+main-window-left-frame.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2window_2main-window-left-frame_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2window_2main-window-left-frame_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2window_2main-window-left-frame_8cpp">
+<area shape="rect" title=" " alt="" coords="1777,5,1965,61"/>
+<area shape="rect" href="main-window-left-frame_8h.html" title=" " alt="" coords="1159,199,1301,240"/>
+<area shape="rect" href="special-options_8h.html" title=" " alt="" coords="1427,109,1566,151"/>
+<area shape="rect" href="text-display-options_8h.html" title=" " alt="" coords="2652,109,2816,151"/>
+<area shape="rect" href="arena-info-table_8h.html" title=" " alt="" coords="2297,206,2462,233"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="890,109,1039,151"/>
+<area shape="rect" href="monster-status_8h.html" title=" " alt="" coords="467,117,638,143"/>
+<area shape="rect" href="mimic-info-table_8h.html" title=" " alt="" coords="1078,117,1241,143"/>
+<area shape="rect" href="player-class_8h.html" title=" " alt="" coords="2660,206,2803,233"/>
+<area shape="rect" href="player-status-table_8h.html" title=" " alt="" coords="1803,109,1939,151"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1591,117,1779,143"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="1963,117,2126,143"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="2201,117,2358,143"/>
+<area shape="rect" href="string-processor_8h.html" title=" " alt="" coords="1377,206,1523,233"/>
+<area shape="rect" href="main-window-row-column_8h.html" title=" " alt="" coords="2433,109,2576,151"/>
+<area shape="rect" href="main-window-stat-poster_8h.html" title=" " alt="" coords="1268,288,1411,329"/>
+<area shape="rect" href="main-window-util_8h.html" title=" " alt="" coords="2129,199,2272,240"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="2487,206,2584,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1961,385,2091,411"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1967,467,2058,493"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="2082,467,2173,493"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="2197,467,2295,493"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="2319,467,2418,493"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="1479,467,1579,493"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1603,467,1777,493"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1802,467,1943,493"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="2442,467,2589,493"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="2553,541,2699,583"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="2775,541,2901,583"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="548,549,659,575"/>
+<area shape="rect" href="building-type-definition_8h.html" title=" " alt="" coords="2769,288,2912,329"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="2928,385,3055,411"/>
+<area shape="rect" href="realm-types_8h.html" title=" " alt="" coords="2664,385,2801,411"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="777,199,923,240"/>
+<area shape="rect" title=" " alt="" coords="1674,295,1730,322"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="666,377,826,419"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="691,288,851,329"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="875,288,1041,329"/>
+<area shape="rect" title=" " alt="" coords="1435,295,1489,322"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="192,199,337,240"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="27,288,171,329"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="359,288,515,329"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="195,288,334,329"/>
+<area shape="rect" href="player-race_8h.html" title=" " alt="" coords="998,206,1134,233"/>
+<area shape="rect" href="technic-info-table_8h.html" title=" " alt="" coords="2524,288,2643,329"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1649,206,1827,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1852,206,2003,233"/>
+<area shape="rect" title=" " alt="" coords="1565,295,1650,322"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a697c881fefb73b66a129eeeb7e71c131"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-window-left-frame_8cpp.html#a697c881fefb73b66a129eeeb7e71c131">print_title</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a697c881fefb73b66a129eeeb7e71c131"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの称号を表示する / Prints "title", including "wizard" or "winner" as needed.  <a href="main-window-left-frame_8cpp.html#a697c881fefb73b66a129eeeb7e71c131">[詳解]</a><br /></td></tr>
+<tr class="separator:a697c881fefb73b66a129eeeb7e71c131"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9141d6c0e7c5ab59266e2b03c2f9be83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-window-left-frame_8cpp.html#a9141d6c0e7c5ab59266e2b03c2f9be83">print_level</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a9141d6c0e7c5ab59266e2b03c2f9be83"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーのレベルを表示する / Prints level  <a href="main-window-left-frame_8cpp.html#a9141d6c0e7c5ab59266e2b03c2f9be83">[詳解]</a><br /></td></tr>
+<tr class="separator:a9141d6c0e7c5ab59266e2b03c2f9be83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18af94b5af464f3967f0ed8a20dac1d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-window-left-frame_8cpp.html#a18af94b5af464f3967f0ed8a20dac1d0">print_exp</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a18af94b5af464f3967f0ed8a20dac1d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの経験値を表示する / Display the experience  <a href="main-window-left-frame_8cpp.html#a18af94b5af464f3967f0ed8a20dac1d0">[詳解]</a><br /></td></tr>
+<tr class="separator:a18af94b5af464f3967f0ed8a20dac1d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d5ec7c1181db9b693f537dd9e0d41e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-window-left-frame_8cpp.html#a7d5ec7c1181db9b693f537dd9e0d41e7">print_ac</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a7d5ec7c1181db9b693f537dd9e0d41e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーのACを表示する / Prints current AC  <a href="main-window-left-frame_8cpp.html#a7d5ec7c1181db9b693f537dd9e0d41e7">[詳解]</a><br /></td></tr>
+<tr class="separator:a7d5ec7c1181db9b693f537dd9e0d41e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5805711d6d76e93f028e594309a70b2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-window-left-frame_8cpp.html#a5805711d6d76e93f028e594309a70b2a">print_hp</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a5805711d6d76e93f028e594309a70b2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーのHPを表示する / Prints Cur/Max hit points  <a href="main-window-left-frame_8cpp.html#a5805711d6d76e93f028e594309a70b2a">[詳解]</a><br /></td></tr>
+<tr class="separator:a5805711d6d76e93f028e594309a70b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6740c9df10edfa479b29c3fa64a2e67e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-window-left-frame_8cpp.html#a6740c9df10edfa479b29c3fa64a2e67e">print_sp</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a6740c9df10edfa479b29c3fa64a2e67e"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーのMPを表示する / Prints players max/cur spell points  <a href="main-window-left-frame_8cpp.html#a6740c9df10edfa479b29c3fa64a2e67e">[詳解]</a><br /></td></tr>
+<tr class="separator:a6740c9df10edfa479b29c3fa64a2e67e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2885d18ebf873971cb460b26b1cd9465"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-window-left-frame_8cpp.html#a2885d18ebf873971cb460b26b1cd9465">print_gold</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a2885d18ebf873971cb460b26b1cd9465"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの所持金を表示する / Prints current gold  <a href="main-window-left-frame_8cpp.html#a2885d18ebf873971cb460b26b1cd9465">[詳解]</a><br /></td></tr>
+<tr class="separator:a2885d18ebf873971cb460b26b1cd9465"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bfa2237dc983925953f84a885559d79"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-window-left-frame_8cpp.html#a5bfa2237dc983925953f84a885559d79">print_depth</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a5bfa2237dc983925953f84a885559d79"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在のフロアの深さを表示する / Prints depth in stat area  <a href="main-window-left-frame_8cpp.html#a5bfa2237dc983925953f84a885559d79">[詳解]</a><br /></td></tr>
+<tr class="separator:a5bfa2237dc983925953f84a885559d79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e77dcf108066d1125d6bd67ff0a503a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-window-left-frame_8cpp.html#a1e77dcf108066d1125d6bd67ff0a503a">print_frame_basic</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a1e77dcf108066d1125d6bd67ff0a503a"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map)  <a href="main-window-left-frame_8cpp.html#a1e77dcf108066d1125d6bd67ff0a503a">[詳解]</a><br /></td></tr>
+<tr class="separator:a1e77dcf108066d1125d6bd67ff0a503a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac998ca123dae0422c7e40ef406cff479"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-window-left-frame_8cpp.html#ac998ca123dae0422c7e40ef406cff479">health_redraw</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> riding)</td></tr>
+<tr class="memdesc:ac998ca123dae0422c7e40ef406cff479"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターの体力ゲージを表示する  <a href="main-window-left-frame_8cpp.html#ac998ca123dae0422c7e40ef406cff479">[詳解]</a><br /></td></tr>
+<tr class="separator:ac998ca123dae0422c7e40ef406cff479"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ac998ca123dae0422c7e40ef406cff479"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac998ca123dae0422c7e40ef406cff479">&#9670;&nbsp;</a></span>health_redraw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void health_redraw </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>riding</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターの体力ゲージを表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">riding</td><td>TRUEならば騎乗中のモンスターの体力、FALSEならターゲットモンスターの体力を表示する。表示位置は固定。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<pre>
+Redraw the "monster health bar" -DRS-
+Rather extensive modifications by   -BEN-
+
+The "monster health bar" provides visual feedback on the "health"
+of the monster currently being "tracked".  There are several ways
+to "track" a monster, including targetting it, attacking it, and
+affecting it (and nobody else) with a ranged attack.
+
+Display the monster health bar (affectionately known as the
+"health-o-meter").  Clear health bar if nothing is being tracked.
+Auto-track current target monster when bored.  Note that the
+health-bar stops tracking any monster that "disappears".
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_ac998ca123dae0422c7e40ef406cff479_cgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_ac998ca123dae0422c7e40ef406cff479_cgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_ac998ca123dae0422c7e40ef406cff479_cgraph" id="amain-window-left-frame_8cpp_ac998ca123dae0422c7e40ef406cff479_cgraph">
+<area shape="rect" title="モンスターの体力ゲージを表示する" alt="" coords="5,132,108,159"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="218,5,277,32"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="159,56,336,83"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="167,107,327,133"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="156,157,339,184"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="204,208,291,235"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="203,259,291,285"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="403,5,465,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="561,5,627,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="387,208,481,235"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="389,259,479,285"/>
+<area shape="rect" href="z-term_8cpp.html#aed0973004e647060e40c2e8ee2471b89" title=" " alt="" coords="529,259,659,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_ac998ca123dae0422c7e40ef406cff479_icgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_ac998ca123dae0422c7e40ef406cff479_icgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_ac998ca123dae0422c7e40ef406cff479_icgraph" id="amain-window-left-frame_8cpp_ac998ca123dae0422c7e40ef406cff479_icgraph">
+<area shape="rect" title="モンスターの体力ゲージを表示する" alt="" coords="455,31,557,57"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a1e77dcf108066d1125d6bd67ff0a503a" title="プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map)" alt="" coords="283,5,407,32"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="144,31,235,57"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="5,31,96,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7d5ec7c1181db9b693f537dd9e0d41e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d5ec7c1181db9b693f537dd9e0d41e7">&#9670;&nbsp;</a></span>print_ac()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_ac </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーのACを表示する / Prints current AC </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a7d5ec7c1181db9b693f537dd9e0d41e7_cgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a7d5ec7c1181db9b693f537dd9e0d41e7_cgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a7d5ec7c1181db9b693f537dd9e0d41e7_cgraph" id="amain-window-left-frame_8cpp_a7d5ec7c1181db9b693f537dd9e0d41e7_cgraph">
+<area shape="rect" title="プレイヤーのACを表示する / Prints current AC" alt="" coords="5,31,73,57"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="121,5,197,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="128,56,191,83"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="245,31,333,57"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="383,5,474,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="381,56,476,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a7d5ec7c1181db9b693f537dd9e0d41e7_icgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a7d5ec7c1181db9b693f537dd9e0d41e7_icgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a7d5ec7c1181db9b693f537dd9e0d41e7_icgraph" id="amain-window-left-frame_8cpp_a7d5ec7c1181db9b693f537dd9e0d41e7_icgraph">
+<area shape="rect" title="プレイヤーのACを表示する / Prints current AC" alt="" coords="455,31,523,57"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a1e77dcf108066d1125d6bd67ff0a503a" title="プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map)" alt="" coords="283,5,407,32"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="144,31,235,57"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="5,31,96,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5bfa2237dc983925953f84a885559d79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bfa2237dc983925953f84a885559d79">&#9670;&nbsp;</a></span>print_depth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_depth </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>現在のフロアの深さを表示する / Prints depth in stat area </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a5bfa2237dc983925953f84a885559d79_cgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a5bfa2237dc983925953f84a885559d79_cgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a5bfa2237dc983925953f84a885559d79_cgraph" id="amain-window-left-frame_8cpp_a5bfa2237dc983925953f84a885559d79_cgraph">
+<area shape="rect" title="現在のフロアの深さを表示する / Prints depth in stat area" alt="" coords="5,107,92,133"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="144,56,195,83"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="563,56,667,83"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="140,157,199,184"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="247,5,337,32"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="249,56,335,83"/>
+<area shape="rect" href="z-term_8cpp.html#aed0973004e647060e40c2e8ee2471b89" title=" " alt="" coords="385,5,515,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="403,56,497,83"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="261,157,323,184"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="417,157,483,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a5bfa2237dc983925953f84a885559d79_icgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a5bfa2237dc983925953f84a885559d79_icgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a5bfa2237dc983925953f84a885559d79_icgraph" id="amain-window-left-frame_8cpp_a5bfa2237dc983925953f84a885559d79_icgraph">
+<area shape="rect" title="現在のフロアの深さを表示する / Prints depth in stat area" alt="" coords="455,31,541,57"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a1e77dcf108066d1125d6bd67ff0a503a" title="プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map)" alt="" coords="283,5,407,32"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="144,31,235,57"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="5,31,96,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a18af94b5af464f3967f0ed8a20dac1d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18af94b5af464f3967f0ed8a20dac1d0">&#9670;&nbsp;</a></span>print_exp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_exp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーの経験値を表示する / Display the experience </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a18af94b5af464f3967f0ed8a20dac1d0_cgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a18af94b5af464f3967f0ed8a20dac1d0_cgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a18af94b5af464f3967f0ed8a20dac1d0_cgraph" id="amain-window-left-frame_8cpp_a18af94b5af464f3967f0ed8a20dac1d0_cgraph">
+<area shape="rect" title="プレイヤーの経験値を表示する / Display the experience" alt="" coords="5,31,80,57"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="128,5,204,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="135,56,197,83"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="252,31,340,57"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="390,5,481,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="388,56,483,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a18af94b5af464f3967f0ed8a20dac1d0_icgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a18af94b5af464f3967f0ed8a20dac1d0_icgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a18af94b5af464f3967f0ed8a20dac1d0_icgraph" id="amain-window-left-frame_8cpp_a18af94b5af464f3967f0ed8a20dac1d0_icgraph">
+<area shape="rect" title="プレイヤーの経験値を表示する / Display the experience" alt="" coords="455,31,529,57"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a1e77dcf108066d1125d6bd67ff0a503a" title="プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map)" alt="" coords="283,5,407,32"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="144,31,235,57"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="5,31,96,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1e77dcf108066d1125d6bd67ff0a503a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e77dcf108066d1125d6bd67ff0a503a">&#9670;&nbsp;</a></span>print_frame_basic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_frame_basic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map) </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a1e77dcf108066d1125d6bd67ff0a503a_cgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a1e77dcf108066d1125d6bd67ff0a503a_cgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a1e77dcf108066d1125d6bd67ff0a503a_cgraph" id="amain-window-left-frame_8cpp_a1e77dcf108066d1125d6bd67ff0a503a_cgraph">
+<area shape="rect" title="プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map)" alt="" coords="5,385,129,412"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="300,259,415,285"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#ac998ca123dae0422c7e40ef406cff479" title="モンスターの体力ゲージを表示する" alt="" coords="306,107,409,133"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a7d5ec7c1181db9b693f537dd9e0d41e7" title="プレイヤーのACを表示する / Prints current AC" alt="" coords="323,613,391,640"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a5bfa2237dc983925953f84a885559d79" title="現在のフロアの深さを表示する / Prints depth in stat area" alt="" coords="314,208,401,235"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a18af94b5af464f3967f0ed8a20dac1d0" title="プレイヤーの経験値を表示する / Display the experience" alt="" coords="320,360,395,387"/>
+<area shape="rect" href="main-window-util_8cpp.html#a74f5abdff68634c310ce9e4bf83e9f33" title="画面左の能力値表示を行うために指定位置から13キャラ分を空白消去後指定のメッセージを明るい青で描画する / Print character info at given row,..." alt="" coords="319,309,396,336"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a2885d18ebf873971cb460b26b1cd9465" title="プレイヤーの所持金を表示する / Prints current gold" alt="" coords="318,411,397,437"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a5805711d6d76e93f028e594309a70b2a" title="プレイヤーのHPを表示する / Prints Cur/Max hit points" alt="" coords="323,461,391,488"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a9141d6c0e7c5ab59266e2b03c2f9be83" title="プレイヤーのレベルを表示する / Prints level" alt="" coords="318,512,397,539"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a6740c9df10edfa479b29c3fa64a2e67e" title="プレイヤーのMPを表示する / Prints players max/cur spell points" alt="" coords="323,563,391,589"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a09f789316ff276b64a076c8f06382900" title="プレイヤー能力値を描画する / Print character stat in given row, column" alt="" coords="319,664,395,691"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a697c881fefb73b66a129eeeb7e71c131" title="プレイヤーの称号を表示する / Prints &quot;title&quot;, including &quot;wizard&quot; or &quot;winner&quot; as needed." alt="" coords="177,259,252,285"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="525,208,583,235"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="465,56,643,83"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="474,107,634,133"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="463,5,645,32"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="694,259,781,285"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="693,360,781,387"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="706,208,769,235"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="829,272,924,299"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="831,335,922,361"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="516,461,592,488"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="523,512,585,539"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="529,259,579,285"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="502,360,606,387"/>
+<area shape="rect" href="player-status_8cpp.html#aeff5a61381b15a0da6515408f33a5ce7" title="現在の修正後能力値を3～17及び18/xxx形式に変換する / Converts stat num into a six&#45;char (right justified) string" alt="" coords="519,664,589,691"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a1e77dcf108066d1125d6bd67ff0a503a_icgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a1e77dcf108066d1125d6bd67ff0a503a_icgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a1e77dcf108066d1125d6bd67ff0a503a_icgraph" id="amain-window-left-frame_8cpp_a1e77dcf108066d1125d6bd67ff0a503a_icgraph">
+<area shape="rect" title="プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map)" alt="" coords="905,1171,1029,1197"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="767,1171,857,1197"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="628,1171,719,1197"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="430,5,533,32"/>
+<area shape="rect" href="pet-util_8cpp.html#a6da87a66edbf955c4c0fb4336d34d60f" title="プレイヤーの騎乗/下馬処理判定" alt="" coords="412,56,551,83"/>
+<area shape="rect" href="player-inventory_8cpp.html#a9a1c3265a4b625e9f772baa1c55a0a3e" title="プレイヤーがオブジェクト上に乗った際の表示処理 / Player &quot;wants&quot; to pick up an object or gold." alt="" coords="456,107,507,133"/>
+<area shape="rect" href="cursor_8cpp.html#a32ea13a872e058d5f3236a496b71462a" title="フォーカスを当てるべきマップ描画の基準座標を指定する（サブルーチン）" alt="" coords="430,157,533,184"/>
+<area shape="rect" href="cmd-floor_8cpp.html#acd79a6cf02eda3f886024b7b48c31e73" title="位置を確認するコマンドのメインルーチン Allow the player to examine other sectors on the map" alt="" coords="187,183,297,209"/>
+<area shape="rect" href="shape-changer_8cpp.html#a7e5697a071fe31476a758edba5057d36" title=" " alt="" coords="5,335,101,361"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a06816378fb54efdc970af77a16abe448" title="プレイヤーの第二魔法領域を変更する /" alt="" coords="426,411,537,437"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="189,461,295,488"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f" title=" " alt="" coords="412,715,551,741"/>
+<area shape="rect" href="player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="179,309,305,336"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="435,765,527,792"/>
+<area shape="rect" href="building-craft-weapon_8cpp.html#a2b2951f2d62f18d1a7867d4f1524079e" title="武器匠鑑定1回分（オブジェクト2種）の処理。/ Compare weapons" alt="" coords="416,816,547,843"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a523d2aaf1b1c03fd9ff5fdfdaa9d49f5" title=" " alt="" coords="429,867,534,893"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a6cc60a9c8d1e600f6618e93dde225137" title="Display known objects" alt="" coords="149,892,335,919"/>
+<area shape="rect" href="target-describer_8cpp.html#a385f9390a5aeeb71e53958c351bbe287" title=" " alt="" coords="432,968,531,995"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="184,537,300,564"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="422,1019,541,1045"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="192,613,292,640"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#a3ba32fc8df87acb37ad0757bdc3a0388" title="Display known monsters." alt="" coords="383,1069,580,1096"/>
+<area shape="rect" href="cmd-floor_8cpp.html#ad1856d6353df054753f18b12ae7b319c" title="周囲を見渡すコマンドのメインルーチン Look command" alt="" coords="432,1120,531,1147"/>
+<area shape="rect" href="cmd-pet_8cpp.html#a5393c5248eb883f75cebd459120fb959" title="ペットに関するコマンドリストのメインルーチン / Issue a pet command" alt="" coords="195,1196,289,1223"/>
+<area shape="rect" href="cmd-pet_8cpp.html#a016f22b29967f438acaee62a94bb05af" title="ペットを開放するコマンドのメインルーチン" alt="" coords="409,1171,554,1197"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="405,1272,558,1299"/>
+<area shape="rect" href="cmd-lore_8cpp.html#ae1f67e879bad2c6ac1ee0971abd55d5d" title="モンスターの思い出を見るコマンドのメインルーチン Identify a character, allow recall of monsters" alt="" coords="403,1323,559,1349"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ae19882bca0152830acd6b12e0c50eeb2" title="画面を再描画するコマンドのメインルーチン Hack – redraw the screen" alt="" coords="425,1373,538,1400"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a1f4156d254c4e75492a93a62c6d47d1d" title=" " alt="" coords="169,1399,315,1425"/>
+<area shape="rect" href="cmd-move_8cpp.html#a1ca5da27fdf6b4625bbac49754cd7ce8" title="「休む」動作コマンドのメインルーチン / Resting allows a player to safely restore his hp &#45;RAK&#45;" alt="" coords="433,1475,530,1501"/>
+<area shape="rect" href="cmd-save_8cpp.html#a5f3c9a464d1f438f0a2860a68b31da96" title="セーブするコマンドのメインルーチン Save the game" alt="" coords="411,1525,551,1552"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="429,1576,533,1603"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="179,1652,305,1679"/>
+<area shape="rect" href="monk-attack_8cpp.html#affb3013a6705f2f1cc0ffb9f20790ff6" title=" " alt="" coords="430,1728,533,1755"/>
+<area shape="rect" href="bounty_8cpp.html#a6aa3c9347a136a6ff64e84d0dd306057" title="賞金首の引き換え処理 / Get prize" alt="" coords="425,1779,538,1805"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="448,1829,515,1856"/>
+<area shape="rect" href="mutation-investor-remover_8cpp.html#a3f2ae6d11a1293d5aaba45657ea17e0a" title="プレイヤーに突然変異を与える" alt="" coords="430,309,533,336"/>
+<area shape="rect" href="spells-genocide_8cpp.html#a92bd5e26c84fa2eb42514b87bc6f2632" title="モンスターへの単体抹殺処理サブルーチン / Delete a non&#45;unique/non&#45;quest monster" alt="" coords="430,1880,533,1907"/>
+<area shape="rect" href="asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="422,613,541,640"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a1cf8ce6181c605bc9e09247323cb95f2" title="元素魔法呪文を選択して取得" alt="" coords="414,1931,549,1957"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="413,1981,550,2008"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="206,2057,278,2084"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#a608d31e79fc4aba7a4903453f3c78c95" title="オブジェクト選択の汎用関数(床上アイテム用) / Let the user select an item, save its &quot;index&quot;" alt="" coords="430,2032,533,2059"/>
+<area shape="rect" href="learnt-power-getter_8cpp.html#a4b2de56dc35d14f2c36ac65ad283a869" title="使用可能な青魔法を選択する / Allow user to choose a imitation." alt="" coords="416,2133,547,2160"/>
+<area shape="rect" href="cmd-mane_8cpp.html#a9803c7ddf3888e2717d6d2e1d10f3154" title="どのものまねを発動するか選択する処理 / Allow user to choose a imitation." alt="" coords="421,2184,541,2211"/>
+<area shape="rect" href="mind-power-getter_8cpp.html#ae10efe533854f8dec5377db176677dc7" title="使用可能な特殊技能を選択する / Allow user to choose a mindcrafter power." alt="" coords="423,2235,539,2261"/>
+<area shape="rect" href="mind-sniper_8cpp.html#a948ccca094f40c437b69212b68a38a64" title="スナイパー技能を選択する" alt="" coords="422,2285,541,2312"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="444,563,519,589"/>
+<area shape="rect" href="spells-perception_8cpp.html#a37cf235976cfb937acb8a284ed66593e" title="アイテム*鑑定*のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="435,1627,528,1653"/>
+<area shape="rect" href="game-play_8cpp.html#a53468da3638d07a5ccad46906253259c" title=" " alt="" coords="453,2336,509,2363"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2885d18ebf873971cb460b26b1cd9465"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2885d18ebf873971cb460b26b1cd9465">&#9670;&nbsp;</a></span>print_gold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_gold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーの所持金を表示する / Prints current gold </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a2885d18ebf873971cb460b26b1cd9465_cgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a2885d18ebf873971cb460b26b1cd9465_cgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a2885d18ebf873971cb460b26b1cd9465_cgraph" id="amain-window-left-frame_8cpp_a2885d18ebf873971cb460b26b1cd9465_cgraph">
+<area shape="rect" title="プレイヤーの所持金を表示する / Prints current gold" alt="" coords="5,31,84,57"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="132,5,208,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="139,56,201,83"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="256,31,344,57"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="394,5,485,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="392,56,487,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a2885d18ebf873971cb460b26b1cd9465_icgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a2885d18ebf873971cb460b26b1cd9465_icgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a2885d18ebf873971cb460b26b1cd9465_icgraph" id="amain-window-left-frame_8cpp_a2885d18ebf873971cb460b26b1cd9465_icgraph">
+<area shape="rect" title="プレイヤーの所持金を表示する / Prints current gold" alt="" coords="455,31,533,57"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a1e77dcf108066d1125d6bd67ff0a503a" title="プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map)" alt="" coords="283,5,407,32"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="144,31,235,57"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="5,31,96,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5805711d6d76e93f028e594309a70b2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5805711d6d76e93f028e594309a70b2a">&#9670;&nbsp;</a></span>print_hp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_hp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーのHPを表示する / Prints Cur/Max hit points </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a5805711d6d76e93f028e594309a70b2a_cgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a5805711d6d76e93f028e594309a70b2a_cgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a5805711d6d76e93f028e594309a70b2a_cgraph" id="amain-window-left-frame_8cpp_a5805711d6d76e93f028e594309a70b2a_cgraph">
+<area shape="rect" title="プレイヤーのHPを表示する / Prints Cur/Max hit points" alt="" coords="5,31,73,57"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="121,5,197,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="128,56,191,83"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="245,31,333,57"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="383,5,474,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="381,56,476,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a5805711d6d76e93f028e594309a70b2a_icgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a5805711d6d76e93f028e594309a70b2a_icgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a5805711d6d76e93f028e594309a70b2a_icgraph" id="amain-window-left-frame_8cpp_a5805711d6d76e93f028e594309a70b2a_icgraph">
+<area shape="rect" title="プレイヤーのHPを表示する / Prints Cur/Max hit points" alt="" coords="455,31,523,57"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a1e77dcf108066d1125d6bd67ff0a503a" title="プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map)" alt="" coords="283,5,407,32"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="144,31,235,57"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="5,31,96,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9141d6c0e7c5ab59266e2b03c2f9be83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9141d6c0e7c5ab59266e2b03c2f9be83">&#9670;&nbsp;</a></span>print_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_level </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーのレベルを表示する / Prints level </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a9141d6c0e7c5ab59266e2b03c2f9be83_cgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a9141d6c0e7c5ab59266e2b03c2f9be83_cgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a9141d6c0e7c5ab59266e2b03c2f9be83_cgraph" id="amain-window-left-frame_8cpp_a9141d6c0e7c5ab59266e2b03c2f9be83_cgraph">
+<area shape="rect" title="プレイヤーのレベルを表示する / Prints level" alt="" coords="5,31,84,57"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="132,5,208,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="139,56,201,83"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="256,31,344,57"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="394,5,485,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="392,56,487,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a9141d6c0e7c5ab59266e2b03c2f9be83_icgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a9141d6c0e7c5ab59266e2b03c2f9be83_icgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a9141d6c0e7c5ab59266e2b03c2f9be83_icgraph" id="amain-window-left-frame_8cpp_a9141d6c0e7c5ab59266e2b03c2f9be83_icgraph">
+<area shape="rect" title="プレイヤーのレベルを表示する / Prints level" alt="" coords="455,31,533,57"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a1e77dcf108066d1125d6bd67ff0a503a" title="プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map)" alt="" coords="283,5,407,32"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="144,31,235,57"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="5,31,96,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6740c9df10edfa479b29c3fa64a2e67e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6740c9df10edfa479b29c3fa64a2e67e">&#9670;&nbsp;</a></span>print_sp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_sp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーのMPを表示する / Prints players max/cur spell points </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a6740c9df10edfa479b29c3fa64a2e67e_cgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a6740c9df10edfa479b29c3fa64a2e67e_cgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a6740c9df10edfa479b29c3fa64a2e67e_cgraph" id="amain-window-left-frame_8cpp_a6740c9df10edfa479b29c3fa64a2e67e_cgraph">
+<area shape="rect" title="プレイヤーのMPを表示する / Prints players max/cur spell points" alt="" coords="5,31,73,57"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="121,5,197,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="128,56,191,83"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="245,31,333,57"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="383,5,474,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="381,56,476,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a6740c9df10edfa479b29c3fa64a2e67e_icgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a6740c9df10edfa479b29c3fa64a2e67e_icgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a6740c9df10edfa479b29c3fa64a2e67e_icgraph" id="amain-window-left-frame_8cpp_a6740c9df10edfa479b29c3fa64a2e67e_icgraph">
+<area shape="rect" title="プレイヤーのMPを表示する / Prints players max/cur spell points" alt="" coords="455,31,523,57"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a1e77dcf108066d1125d6bd67ff0a503a" title="プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map)" alt="" coords="283,5,407,32"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="144,31,235,57"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="5,31,96,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a697c881fefb73b66a129eeeb7e71c131"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a697c881fefb73b66a129eeeb7e71c131">&#9670;&nbsp;</a></span>print_title()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_title </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーの称号を表示する / Prints "title", including "wizard" or "winner" as needed. </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a697c881fefb73b66a129eeeb7e71c131_cgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a697c881fefb73b66a129eeeb7e71c131_cgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a697c881fefb73b66a129eeeb7e71c131_cgraph" id="amain-window-left-frame_8cpp_a697c881fefb73b66a129eeeb7e71c131_cgraph">
+<area shape="rect" title="プレイヤーの称号を表示する / Prints &quot;title&quot;, including &quot;wizard&quot; or &quot;winner&quot; as needed." alt="" coords="5,31,80,57"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="128,5,243,32"/>
+<area shape="rect" href="main-window-util_8cpp.html#a74f5abdff68634c310ce9e4bf83e9f33" title="画面左の能力値表示を行うために指定位置から13キャラ分を空白消去後指定のメッセージを明るい青で描画する / Print character info at given row,..." alt="" coords="147,56,224,83"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="291,56,367,83"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="415,56,503,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-window-left-frame_8cpp_a697c881fefb73b66a129eeeb7e71c131_icgraph.png" border="0" usemap="#amain-window-left-frame_8cpp_a697c881fefb73b66a129eeeb7e71c131_icgraph" alt=""/></div>
+<map name="amain-window-left-frame_8cpp_a697c881fefb73b66a129eeeb7e71c131_icgraph" id="amain-window-left-frame_8cpp_a697c881fefb73b66a129eeeb7e71c131_icgraph">
+<area shape="rect" title="プレイヤーの称号を表示する / Prints &quot;title&quot;, including &quot;wizard&quot; or &quot;winner&quot; as needed." alt="" coords="455,31,529,57"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a1e77dcf108066d1125d6bd67ff0a503a" title="プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map)" alt="" coords="283,5,407,32"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="144,31,235,57"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="5,31,96,57"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分43秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/inventory/item-selection-util.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_8aa3e05b3c778144162028379a6046fd.html">inventory</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">item-selection-util.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="tval-types_8h_source.html">object/tval-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+item-selection-util.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="item-selection-util_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2inventory_2item-selection-util_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2inventory_2item-selection-util_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2inventory_2item-selection-util_8h">
+<area shape="rect" title=" " alt="" coords="272,5,460,61"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="227,109,353,136"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="377,109,507,136"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="31,184,122,211"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="23,348,165,375"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,184,607,211"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,184,245,211"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,184,367,211"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,184,492,211"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,184,807,211"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="943,184,1090,211"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="169,266,291,293"/>
+<area shape="rect" title=" " alt="" coords="386,266,461,293"/>
+<area shape="rect" title=" " alt="" coords="485,266,567,293"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="592,259,743,300"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="767,259,920,300"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="944,259,1089,300"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1114,259,1287,300"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1311,259,1437,300"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1461,266,1580,293"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1604,266,1715,293"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="item-selection-util_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2inventory_2item-selection-util_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2inventory_2item-selection-util_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2inventory_2item-selection-util_8hdep">
+<area shape="rect" title=" " alt="" coords="217,5,405,61"/>
+<area shape="rect" href="floor-item-getter_8cpp.html" title=" " alt="" coords="5,109,193,165"/>
+<area shape="rect" href="item-getter_8cpp.html" title=" " alt="" coords="217,109,405,165"/>
+<area shape="rect" href="item-selection-util_8cpp.html" title=" " alt="" coords="429,109,617,165"/>
+</map>
+</div>
+</div>
+<p><a href="item-selection-util_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfis__type.html">fis_type</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structitem__selection__type.html">item_selection_type</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:ac07e94d9b934e06736f0ebf5aed260e5"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structfis__type.html">fis_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item-selection-util_8h.html#ac07e94d9b934e06736f0ebf5aed260e5">fis_type</a></td></tr>
+<tr class="separator:ac07e94d9b934e06736f0ebf5aed260e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1942186434b8496ef08ad704d04c7370"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structitem__selection__type.html">item_selection_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item-selection-util_8h.html#a1942186434b8496ef08ad704d04c7370">item_selection_type</a></td></tr>
+<tr class="separator:a1942186434b8496ef08ad704d04c7370"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a1b4c7582ab7c4f7906f755ef28532eb7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structfis__type.html">fis_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item-selection-util_8h.html#a1b4c7582ab7c4f7906f755ef28532eb7">initialize_fis_type</a> (<a class="el" href="structfis__type.html">fis_type</a> *fis_ptr, <a class="el" href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a> *cp, <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> mode, <a class="el" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a> tval)</td></tr>
+<tr class="separator:a1b4c7582ab7c4f7906f755ef28532eb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74d26ed39043ee25aaf6a0ebc08b69c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structitem__selection__type.html">item_selection_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item-selection-util_8h.html#a74d26ed39043ee25aaf6a0ebc08b69c8">initialize_item_selection_type</a> (<a class="el" href="structitem__selection__type.html">item_selection_type</a> *item_selection_ptr, <a class="el" href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a> *cp, <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> mode, <a class="el" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a> tval)</td></tr>
+<tr class="separator:a74d26ed39043ee25aaf6a0ebc08b69c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">型定義詳解</h2>
+<a id="ac07e94d9b934e06736f0ebf5aed260e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac07e94d9b934e06736f0ebf5aed260e5">&#9670;&nbsp;</a></span>fis_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structfis__type.html">fis_type</a> <a class="el" href="structfis__type.html">fis_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1942186434b8496ef08ad704d04c7370"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1942186434b8496ef08ad704d04c7370">&#9670;&nbsp;</a></span>item_selection_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structitem__selection__type.html">item_selection_type</a> <a class="el" href="structitem__selection__type.html">item_selection_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a1b4c7582ab7c4f7906f755ef28532eb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b4c7582ab7c4f7906f755ef28532eb7">&#9670;&nbsp;</a></span>initialize_fis_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structfis__type.html">fis_type</a>* initialize_fis_type </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfis__type.html">fis_type</a> *&#160;</td>
+          <td class="paramname"><em>fis_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a> *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a>&#160;</td>
+          <td class="paramname"><em>tval</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="item-selection-util_8h_a1b4c7582ab7c4f7906f755ef28532eb7_icgraph.png" border="0" usemap="#aitem-selection-util_8h_a1b4c7582ab7c4f7906f755ef28532eb7_icgraph" alt=""/></div>
+<map name="aitem-selection-util_8h_a1b4c7582ab7c4f7906f755ef28532eb7_icgraph" id="aitem-selection-util_8h_a1b4c7582ab7c4f7906f755ef28532eb7_icgraph">
+<area shape="rect" title=" " alt="" coords="431,5,552,32"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#a608d31e79fc4aba7a4903453f3c78c95" title="オブジェクト選択の汎用関数(床上アイテム用) / Let the user select an item, save its &quot;index&quot;" alt="" coords="280,5,383,32"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="160,5,232,32"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a74d26ed39043ee25aaf6a0ebc08b69c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74d26ed39043ee25aaf6a0ebc08b69c8">&#9670;&nbsp;</a></span>initialize_item_selection_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structitem__selection__type.html">item_selection_type</a>* initialize_item_selection_type </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structitem__selection__type.html">item_selection_type</a> *&#160;</td>
+          <td class="paramname"><em>item_selection_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a> *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a>&#160;</td>
+          <td class="paramname"><em>tval</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="item-selection-util_8h_a74d26ed39043ee25aaf6a0ebc08b69c8_icgraph.png" border="0" usemap="#aitem-selection-util_8h_a74d26ed39043ee25aaf6a0ebc08b69c8_icgraph" alt=""/></div>
+<map name="aitem-selection-util_8h_a74d26ed39043ee25aaf6a0ebc08b69c8_icgraph" id="aitem-selection-util_8h_a74d26ed39043ee25aaf6a0ebc08b69c8_icgraph">
+<area shape="rect" title=" " alt="" coords="672,1187,864,1213"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="552,1187,624,1213"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="397,1187,504,1213"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a53bf0b2e4c1aa52241e31f957a28e240" title="エッセンスを実際に付加する" alt="" coords="217,5,315,32"/>
+<area shape="rect" href="spells-sorcery_8cpp.html#a6cdb24d97057728bc1fa0484c8dfb77d" title="アイテムの価値に応じた錬金術処理 / Turns an object into gold, gain some of its value in a shop" alt="" coords="231,56,301,83"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="217,107,315,133"/>
+<area shape="rect" href="mind-priest_8cpp.html#a49724e70edc0ac874b73b87b839eaf35" title="武器の祝福処理 / Bless a weapon" alt="" coords="214,157,318,184"/>
+<area shape="rect" href="spells-object_8cpp.html#a606c388ae9ec39706af972b765edadbe" title="武器へのエゴ付加処理 / Brand the current weapon" alt="" coords="213,208,319,235"/>
+<area shape="rect" href="building-recharger_8cpp.html#ac7c07a23630b5e2f83c38746dabef46c" title="魔道具の使用回数を回復させる施設のメインルーチン / Recharge rods, wands and staffs" alt="" coords="205,259,327,285"/>
+<area shape="rect" href="spells-summon_8cpp.html#a9fed6d127284194f2a61e5fc07171536" title="悪魔領域のグレーターデーモン召喚を処理する / Daemon spell Summon Greater Demon" alt="" coords="191,310,341,351"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a5a0ec0d1f0e7717d7af880216a6a45fb" title=" " alt="" coords="183,376,349,403"/>
+<area shape="rect" href="cmd-throw_8cpp.html#af27017e9333851bd721490af0fc4ad60" title=" " alt="" coords="5,401,135,428"/>
+<area shape="rect" href="building-craft-weapon_8cpp.html#a2b2951f2d62f18d1a7867d4f1524079e" title="武器匠鑑定1回分（オブジェクト2種）の処理。/ Compare weapons" alt="" coords="201,477,331,504"/>
+<area shape="rect" href="mind-archer_8cpp.html#a5c7ac014262f5236c69ea18c406fee25" title="「弾/矢の製造」処理 / do_cmd_cast calls this function if the player&#39;s class is &#39;archer&#39;." alt="" coords="215,528,317,555"/>
+<area shape="rect" href="cmd-item_8cpp.html#a415fb2b959d0aee88a1799fa8f38b18e" title="装備を発動するコマンドのメインルーチン /" alt="" coords="207,579,325,605"/>
+<area shape="rect" href="cmd-zapwand_8cpp.html#a46222579960ecc4a885aef38dced388d" title="魔法棒を使うコマンドのメインルーチン /" alt="" coords="199,629,333,656"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="208,680,324,707"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="216,731,316,757"/>
+<area shape="rect" href="cmd-item_8cpp.html#a5c64a709c024d5bf297243ccb7dc090d" title="アイテムを落とすコマンドのメインルーチン / Drop an item" alt="" coords="216,781,316,808"/>
+<area shape="rect" href="cmd-eat_8cpp.html#a7935eda3156ff639e9a0aeffc530902f" title="食料を食べるコマンドのメインルーチン / Eat some food (from the pack or floor)" alt="" coords="204,832,328,859"/>
+<area shape="rect" href="cmd-shoot_8cpp.html#a30d572039212ee44f63d055a45a68f93" title="射撃処理のメインルーチン" alt="" coords="220,883,312,909"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="189,933,343,960"/>
+<area shape="rect" href="cmd-item_8cpp.html#af46524a03899d48bc4eab853368db03f" title="アイテムの銘を刻むコマンドのメインルーチン Inscribe an object with a comment" alt="" coords="206,984,326,1011"/>
+<area shape="rect" href="cmd-item_8cpp.html#a08dcb1c3fde4e72fd96c62b5575627dd" title="アイテムを調査するコマンドのメインルーチン / Observe an item which has been identify&#45;ed" alt="" coords="207,1035,325,1061"/>
+<area shape="rect" href="cmd-quaff_8cpp.html#ab90506a5f63dc9ea978acddd5759c265" title="プレイヤーの飲むコマンド実装" alt="" coords="194,1085,338,1112"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="21,1111,119,1137"/>
+<area shape="rect" href="cmd-read_8cpp.html#a8a5fffa71d510f2bf92c8fc1ceaf7ded" title="プレイヤーの読むコマンド実装" alt="" coords="197,1187,335,1213"/>
+<area shape="rect" href="cmd-refill_8cpp.html#aeb37b1302642adfa1b2854e8eea8a8fd" title="ランタンに燃料を加えるコマンドのメインルーチン Refill the players lamp (from the pack or floor)" alt="" coords="199,1237,333,1264"/>
+<area shape="rect" href="cmd-refill_8cpp.html#a89b54c85af13eba86fdb22084505ed84" title="松明を束ねるコマンドのメインルーチン Refuel the players torch (from the pack or floor)" alt="" coords="199,1288,333,1315"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="213,1339,319,1365"/>
+<area shape="rect" href="cmd-equipment_8cpp.html#a98b30607be0d5815930989687eed824a" title="装備を外すコマンドのメインルーチン / Take off an item" alt="" coords="209,1389,323,1416"/>
+<area shape="rect" href="cmd-item_8cpp.html#a30efa59b31bf679025117857ece92c52" title="アイテムの銘を消すコマンドのメインルーチン Remove the inscription from an object XXX Mention item (when done)?" alt="" coords="199,1440,333,1467"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="218,1491,314,1517"/>
+<area shape="rect" href="cmd-usestaff_8cpp.html#ae473edf5924b4550f63236d266fe92df" title="杖を使うコマンドのメインルーチン /" alt="" coords="203,1541,329,1568"/>
+<area shape="rect" href="cmd-equipment_8cpp.html#ac5a7ea600612007cbf7d105f433213ab" title="装備するコマンドのメインルーチン / Wield or wear a single item from the pack or floor" alt="" coords="214,1592,318,1619"/>
+<area shape="rect" href="cmd-zaprod_8cpp.html#a651d6a7277acb4e5210567653dba2940" title="ロッドを使うコマンドのメインルーチン /" alt="" coords="205,1643,327,1669"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a797b62fcd176848c22caea6a89c96911" title="エッセンスの抽出処理" alt="" coords="213,1693,319,1720"/>
+<area shape="rect" href="mind-mage_8cpp.html#aa5ccfdbf3aa06956f929153e9aa24790" title="魔力喰い処理" alt="" coords="225,1744,307,1771"/>
+<area shape="rect" href="building-enchanter_8cpp.html#a8a6a2b03080d33a6ad2753593b965f48" title="アイテムの強化を行う。 / Enchant item" alt="" coords="216,1795,316,1821"/>
+<area shape="rect" href="spells-object_8cpp.html#ac16ead42e822331e4ce782ea6b433891" title="装備修正強化処理のメインルーチン / Enchant an item (in the inventory or on the floor)" alt="" coords="215,1845,317,1872"/>
+<area shape="rect" href="autopick-entry_8cpp.html#a1354860469ab185d1b919a3d0d0cd1e1" title=" " alt="" coords="197,1897,335,1938"/>
+<area shape="rect" href="cmd-smith_8cpp.html#af097a4d1a6d82fc80c9bbdcb97476067" title="エッセンスを消去する" alt="" coords="211,1963,321,1989"/>
+<area shape="rect" href="autopick-finder_8cpp.html#ad8c3f314888e68dc65c5e71eee07881f" title=" " alt="" coords="191,2013,341,2040"/>
+<area shape="rect" href="spells-perception_8cpp.html#ac3df176ff52478263f041532247ea900" title="アイテム鑑定のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="224,2064,308,2091"/>
+<area shape="rect" href="spells-perception_8cpp.html#a37cf235976cfb937acb8a284ed66593e" title="アイテム*鑑定*のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="219,2115,313,2141"/>
+<area shape="rect" href="mind-magic-eater_8cpp.html#afecb1541d8669a623590898baf50165d" title="魔道具術師の魔力取り込み処理" alt="" coords="195,2165,337,2192"/>
+<area shape="rect" href="spells-enchant_8cpp.html#a5af6fe9747dee32bac3e500a02712ee1" title="アイテム凡庸化のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="211,2216,321,2243"/>
+<area shape="rect" href="mind-mindcrafter_8cpp.html#a32c9502c994c59bed2f6bfbceddfd05f" title="超能力者のサイコメトリー処理/ Forcibly pseudo&#45;identify an object in the inventory (or on the floor)" alt="" coords="217,2267,315,2293"/>
+<area shape="rect" href="spells-craft_8cpp.html#a74e833f8a77b66d14eeab2fc6a32988f" title="盾磨き処理 / pulish shield" alt="" coords="217,2317,315,2344"/>
+<area shape="rect" href="player-inventory_8cpp.html#a0369be409cebf0e568902cf2b254d4f2" title="床上のアイテムを拾う選択用サブルーチン" alt="" coords="196,2368,336,2395"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分26秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

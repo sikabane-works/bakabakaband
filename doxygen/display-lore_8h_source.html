@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/view/display-lore.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b39b5091e8d1d2be4b7fc59d57749634.html">view</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">display-lore.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="display-lore_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="lore-util_8h.html">lore/lore-util.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#ac2ff31f4a59f18b6dcd9b38e123b60a1">roff_top</a>(<a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> r_idx);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#a9a19b136c0c0d88ac9bf1c3822dba2c4">screen_roff</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> r_idx, <a class="code" href="lore-util_8h.html#a1659fb6692775cc89e77a771f2acb063">monster_lore_mode</a> mode);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#a9be33b7a9bfa9fff9e9bff01d3546f79">display_roff</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#af82243a5afd4413a4ce4b901c984f490">output_monster_spoiler</a>(<a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> r_idx, <span class="keywordtype">void</span> (*<a class="code" href="monster-info-spoiler_8cpp.html#ad9c8a4f8679a0250c34b6a8f1c248fda">roff_func</a>)(<a class="code" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> attr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str));</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#a7494d9c522ce9746c9d8acf5592a5ddc">display_kill_numbers</a>(<a class="code" href="structlore__type.html">lore_type</a> *lore_ptr);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="display-lore_8h.html#a98b70f34810b9205de5b2a0dea36d114">display_where_to_appear</a>(<a class="code" href="structlore__type.html">lore_type</a> *lore_ptr);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#a02f773a3482becfc17d01f12206fdb06">display_random_move</a>(<a class="code" href="structlore__type.html">lore_type</a> *lore_ptr);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#a182c97e301b8c804c67cab55836a0aaf">display_monster_move</a>(<a class="code" href="structlore__type.html">lore_type</a> *lore_ptr);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#a5da09eea7643c939658a2129e2b79bb5">display_monster_never_move</a>(<a class="code" href="structlore__type.html">lore_type</a> *lore_ptr);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#a73c6c773eb2d638f8e8718a26f9ed3b9">display_monster_kind</a>(<a class="code" href="structlore__type.html">lore_type</a> *lore_ptr);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#ac32c8bb53cab35a67097818d150e27f5">display_monster_alignment</a>(<a class="code" href="structlore__type.html">lore_type</a> *lore_ptr);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#ae7a4189f5935669762bf20f1428f7a96">display_monster_exp</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structlore__type.html">lore_type</a> *lore_ptr);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#a28b7f4231f57ea66b5910cebc2603313">display_monster_aura</a>(<a class="code" href="structlore__type.html">lore_type</a> *lore_ptr);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#a75046bb34e7741a51191180ed10dd417">display_lore_this</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structlore__type.html">lore_type</a> *lore_ptr);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#aca858057a8987cd0f91b63e78c1d2e46">display_monster_collective</a>(<a class="code" href="structlore__type.html">lore_type</a> *lore_ptr);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#a3d8b04fbfcee314cfcd83b59e4af70c3">display_monster_launching</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structlore__type.html">lore_type</a> *lore_ptr);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#a4c6593094cbc7ce4f19d8f7a3cb6ca49">display_monster_sometimes</a>(<a class="code" href="structlore__type.html">lore_type</a> *lore_ptr);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-lore_8h.html#acf20f2bccfdbfe697a86bef7461a84a0">display_monster_guardian</a>(<a class="code" href="structlore__type.html">lore_type</a> *lore_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_a02f773a3482becfc17d01f12206fdb06"><div class="ttname"><a href="display-lore_8h.html#a02f773a3482becfc17d01f12206fdb06">display_random_move</a></div><div class="ttdeci">void display_random_move(lore_type *lore_ptr)</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:320</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_a182c97e301b8c804c67cab55836a0aaf"><div class="ttname"><a href="display-lore_8h.html#a182c97e301b8c804c67cab55836a0aaf">display_monster_move</a></div><div class="ttdeci">void display_monster_move(lore_type *lore_ptr)</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:281</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_a28b7f4231f57ea66b5910cebc2603313"><div class="ttname"><a href="display-lore_8h.html#a28b7f4231f57ea66b5910cebc2603313">display_monster_aura</a></div><div class="ttdeci">void display_monster_aura(lore_type *lore_ptr)</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:468</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_a3d8b04fbfcee314cfcd83b59e4af70c3"><div class="ttname"><a href="display-lore_8h.html#a3d8b04fbfcee314cfcd83b59e4af70c3">display_monster_launching</a></div><div class="ttdeci">void display_monster_launching(player_type *player_ptr, lore_type *lore_ptr)</div><div class="ttdoc">モンスターの発射に関する情報を表示するルーチン / Display monster launching information</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:571</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_a4c6593094cbc7ce4f19d8f7a3cb6ca49"><div class="ttname"><a href="display-lore_8h.html#a4c6593094cbc7ce4f19d8f7a3cb6ca49">display_monster_sometimes</a></div><div class="ttdeci">void display_monster_sometimes(lore_type *lore_ptr)</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:612</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_a5da09eea7643c939658a2129e2b79bb5"><div class="ttname"><a href="display-lore_8h.html#a5da09eea7643c939658a2129e2b79bb5">display_monster_never_move</a></div><div class="ttdeci">void display_monster_never_move(lore_type *lore_ptr)</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:338</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_a73c6c773eb2d638f8e8718a26f9ed3b9"><div class="ttname"><a href="display-lore_8h.html#a73c6c773eb2d638f8e8718a26f9ed3b9">display_monster_kind</a></div><div class="ttdeci">void display_monster_kind(lore_type *lore_ptr)</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:353</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_a7494d9c522ce9746c9d8acf5592a5ddc"><div class="ttname"><a href="display-lore_8h.html#a7494d9c522ce9746c9d8acf5592a5ddc">display_kill_numbers</a></div><div class="ttdeci">void display_kill_numbers(lore_type *lore_ptr)</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:226</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_a75046bb34e7741a51191180ed10dd417"><div class="ttname"><a href="display-lore_8h.html#a75046bb34e7741a51191180ed10dd417">display_lore_this</a></div><div class="ttdeci">void display_lore_this(player_type *player_ptr, lore_type *lore_ptr)</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:487</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_a98b70f34810b9205de5b2a0dea36d114"><div class="ttname"><a href="display-lore_8h.html#a98b70f34810b9205de5b2a0dea36d114">display_where_to_appear</a></div><div class="ttdeci">bool display_where_to_appear(lore_type *lore_ptr)</div><div class="ttdoc">どこに出没するかを表示する</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:249</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_a9a19b136c0c0d88ac9bf1c3822dba2c4"><div class="ttname"><a href="display-lore_8h.html#a9a19b136c0c0d88ac9bf1c3822dba2c4">screen_roff</a></div><div class="ttdeci">void screen_roff(player_type *player_ptr, MONRACE_IDX r_idx, monster_lore_mode mode)</div><div class="ttdoc">モンスター情報の表示と共に画面を一時消去するサブルーチン / Hack – describe the given monster race at the top of the screen</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:88</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_a9be33b7a9bfa9fff9e9bff01d3546f79"><div class="ttname"><a href="display-lore_8h.html#a9be33b7a9bfa9fff9e9bff01d3546f79">display_roff</a></div><div class="ttdeci">void display_roff(player_type *player_ptr)</div><div class="ttdoc">モンスター情報の現在のウィンドウに表示する / Hack – describe the given monster race in the current &quot;term&quot; window</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:103</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_ac2ff31f4a59f18b6dcd9b38e123b60a1"><div class="ttname"><a href="display-lore_8h.html#ac2ff31f4a59f18b6dcd9b38e123b60a1">roff_top</a></div><div class="ttdeci">void roff_top(MONRACE_IDX r_idx)</div><div class="ttdoc">モンスター情報のヘッダを記述する Hack – Display the &quot;name&quot; and &quot;attr/chars&quot; of a monster race</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:42</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_ac32c8bb53cab35a67097818d150e27f5"><div class="ttname"><a href="display-lore_8h.html#ac32c8bb53cab35a67097818d150e27f5">display_monster_alignment</a></div><div class="ttdeci">void display_monster_alignment(lore_type *lore_ptr)</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:386</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_aca858057a8987cd0f91b63e78c1d2e46"><div class="ttname"><a href="display-lore_8h.html#aca858057a8987cd0f91b63e78c1d2e46">display_monster_collective</a></div><div class="ttdeci">void display_monster_collective(lore_type *lore_ptr)</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:550</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_acf20f2bccfdbfe697a86bef7461a84a0"><div class="ttname"><a href="display-lore_8h.html#acf20f2bccfdbfe697a86bef7461a84a0">display_monster_guardian</a></div><div class="ttdeci">void display_monster_guardian(lore_type *lore_ptr)</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:642</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_ae7a4189f5935669762bf20f1428f7a96"><div class="ttname"><a href="display-lore_8h.html#ae7a4189f5935669762bf20f1428f7a96">display_monster_exp</a></div><div class="ttdeci">void display_monster_exp(player_type *player_ptr, lore_type *lore_ptr)</div><div class="ttdoc">モンスターの経験値の思い出を表示する</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:419</div></div>
+<div class="ttc" id="adisplay-lore_8h_html_af82243a5afd4413a4ce4b901c984f490"><div class="ttname"><a href="display-lore_8h.html#af82243a5afd4413a4ce4b901c984f490">output_monster_spoiler</a></div><div class="ttdeci">void output_monster_spoiler(MONRACE_IDX r_idx, void(*roff_func)(TERM_COLOR attr, concptr str))</div><div class="ttdoc">モンスター詳細情報を自動スポイラー向けに出力する / Hack – output description of the given monster race</div><div class="ttdef"><b>Definition:</b> display-lore.cpp:124</div></div>
+<div class="ttc" id="ah-type_8h_html_a7ea47f67338902d35c1e93e00cf86908"><div class="ttname"><a href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a></div><div class="ttdeci">s16b MONRACE_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:109</div></div>
+<div class="ttc" id="ah-type_8h_html_aadcf8cee15fbcb7d92dd27e9eda42de1"><div class="ttname"><a href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a></div><div class="ttdeci">byte TERM_COLOR</div><div class="ttdoc">テキスト表示色の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:215</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="alore-util_8h_html"><div class="ttname"><a href="lore-util_8h.html">lore-util.h</a></div></div>
+<div class="ttc" id="alore-util_8h_html_a1659fb6692775cc89e77a771f2acb063"><div class="ttname"><a href="lore-util_8h.html#a1659fb6692775cc89e77a771f2acb063">monster_lore_mode</a></div><div class="ttdeci">monster_lore_mode</div><div class="ttdef"><b>Definition:</b> lore-util.h:58</div></div>
+<div class="ttc" id="amonster-info-spoiler_8cpp_html_ad9c8a4f8679a0250c34b6a8f1c248fda"><div class="ttname"><a href="monster-info-spoiler_8cpp.html#ad9c8a4f8679a0250c34b6a8f1c248fda">roff_func</a></div><div class="ttdeci">static void roff_func(TERM_COLOR attr, concptr str)</div><div class="ttdoc">関数ポインタ用の出力関数 / Hook function used in spoil_mon_info()</div><div class="ttdef"><b>Definition:</b> monster-info-spoiler.cpp:167</div></div>
+<div class="ttc" id="astructlore__type_html"><div class="ttname"><a href="structlore__type.html">lore_type</a></div><div class="ttdef"><b>Definition:</b> lore-util.h:17</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

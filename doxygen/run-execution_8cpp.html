@@ -1,0 +1,781 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/action/run-execution.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_63a79716ac36ae14e4cbc21f08c9941e.html">action</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">run-execution.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="run-execution_8h_source.html">action/run-execution.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="movement-execution_8h_source.html">action/movement-execution.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="disturbance_8h_source.html">core/disturbance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cave_8h_source.html">floor/cave.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-util_8h_source.html">floor/floor-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="disturbance-options_8h_source.html">game-option/disturbance-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="feature_8h_source.html">grid/feature.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-definitions-table_8h_source.html">main/sound-definitions-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-mark-types_8h_source.html">object/object-mark-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status-flags_8h_source.html">player/player-status-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+run-execution.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="run-execution_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2action_2run-execution_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2action_2run-execution_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2action_2run-execution_8cpp">
+<area shape="rect" title=" " alt="" coords="1129,5,1317,61"/>
+<area shape="rect" href="run-execution_8h.html" title=" " alt="" coords="347,206,497,233"/>
+<area shape="rect" href="movement-execution_8h.html" title=" " alt="" coords="513,117,704,143"/>
+<area shape="rect" href="disturbance_8h.html" title=" " alt="" coords="1336,117,1465,143"/>
+<area shape="rect" href="cave_8h.html" title=" " alt="" coords="5,117,92,143"/>
+<area shape="rect" href="floor-util_8h.html" title=" " alt="" coords="27,206,134,233"/>
+<area shape="rect" href="disturbance-options_8h.html" title=" " alt="" coords="159,199,323,240"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="780,117,877,143"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="1509,117,1588,143"/>
+<area shape="rect" href="sound-definitions-table_8h.html" title=" " alt="" coords="2068,109,2219,151"/>
+<area shape="rect" href="sound-of-music_8h.html" title=" " alt="" coords="901,117,1055,143"/>
+<area shape="rect" href="object-mark-types_8h.html" title=" " alt="" coords="2243,109,2372,151"/>
+<area shape="rect" href="player-status-flags_8h.html" title=" " alt="" coords="1907,109,2043,151"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1695,117,1883,143"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="1079,109,1213,151"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="2396,117,2555,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="1217,206,1384,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="900,295,1029,322"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1217,385,1307,411"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1331,385,1422,411"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="482,385,581,411"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="605,385,703,411"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="728,385,828,411"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="852,385,1027,411"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1051,385,1193,411"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1446,385,1593,411"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1545,467,1664,493"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="623,206,781,233"/>
+<area shape="rect" title=" " alt="" coords="805,206,860,233"/>
+<area shape="rect" title=" " alt="" coords="885,206,941,233"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="1510,206,1625,233"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1507,288,1652,329"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1871,377,2027,419"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="2371,199,2499,240"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="2180,206,2347,233"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1699,206,1878,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1903,206,2053,233"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="1067,206,1193,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:aac590ff670ba843be6f069f509d63660"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="run-execution_8cpp.html#aac590ff670ba843be6f069f509d63660">see_wall</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="memdesc:aac590ff670ba843be6f069f509d63660"><td class="mdescLeft">&#160;</td><td class="mdescRight">ダッシュ移動処理中、移動先のマスが既知の壁かどうかを判定する / Hack &ndash; Check for a "known wall" (see below)  <a href="run-execution_8cpp.html#aac590ff670ba843be6f069f509d63660">[詳解]</a><br /></td></tr>
+<tr class="separator:aac590ff670ba843be6f069f509d63660"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f4e9537b99f54a1b1a44ac3cdbd5e79"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="run-execution_8cpp.html#a1f4e9537b99f54a1b1a44ac3cdbd5e79">run_init</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir)</td></tr>
+<tr class="memdesc:a1f4e9537b99f54a1b1a44ac3cdbd5e79"><td class="mdescLeft">&#160;</td><td class="mdescRight">ダッシュ処理の導入 / Initialize the running algorithm for a new direction.  <a href="run-execution_8cpp.html#a1f4e9537b99f54a1b1a44ac3cdbd5e79">[詳解]</a><br /></td></tr>
+<tr class="separator:a1f4e9537b99f54a1b1a44ac3cdbd5e79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88e3dfe2e13cb1f22b67737858764e87"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="run-execution_8cpp.html#a88e3dfe2e13cb1f22b67737858764e87">see_nothing</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="memdesc:a88e3dfe2e13cb1f22b67737858764e87"><td class="mdescLeft">&#160;</td><td class="mdescRight">ダッシュ移動処理中、移動先のマスか未知の地形かどうかを判定する / Hack &ndash; Check for an "unknown corner" (see below)  <a href="run-execution_8cpp.html#a88e3dfe2e13cb1f22b67737858764e87">[詳解]</a><br /></td></tr>
+<tr class="separator:a88e3dfe2e13cb1f22b67737858764e87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeac02d164c33a1f84c3cfbf42e1d6c9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="run-execution_8cpp.html#abeac02d164c33a1f84c3cfbf42e1d6c9">run_test</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:abeac02d164c33a1f84c3cfbf42e1d6c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">ダッシュ移動が継続できるかどうかの判定 / Update the current "run" path  <a href="run-execution_8cpp.html#abeac02d164c33a1f84c3cfbf42e1d6c9">[詳解]</a><br /></td></tr>
+<tr class="separator:abeac02d164c33a1f84c3cfbf42e1d6c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af168900c990c8f45296e1cdf5780e627"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="run-execution_8cpp.html#af168900c990c8f45296e1cdf5780e627">run_step</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir)</td></tr>
+<tr class="memdesc:af168900c990c8f45296e1cdf5780e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">継続的なダッシュ処理 / Take one step along the current "run" path  <a href="run-execution_8cpp.html#af168900c990c8f45296e1cdf5780e627">[詳解]</a><br /></td></tr>
+<tr class="separator:af168900c990c8f45296e1cdf5780e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:aa70b2b2ab39bd192995f9a875f1e96e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="run-execution_8cpp.html#aa70b2b2ab39bd192995f9a875f1e96e1">ignore_avoid_run</a></td></tr>
+<tr class="separator:aa70b2b2ab39bd192995f9a875f1e96e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae386127a51c93a9d05c2fc832982d294"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="run-execution_8cpp.html#ae386127a51c93a9d05c2fc832982d294">cycle</a> [<a class="el" href="run-execution_8h.html#abfa3e2ee11ccb3a271125660e77aff44">MAX_RUN_CYCLES</a>] = { 1, 2, 3, 6, 9, 8, 7, 4, 1, 2, 3, 6, 9, 8, 7, 4, 1 }</td></tr>
+<tr class="separator:ae386127a51c93a9d05c2fc832982d294"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13dbb8b875a206763e37f4e0627d020c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="run-execution_8cpp.html#a13dbb8b875a206763e37f4e0627d020c">chome</a> [<a class="el" href="run-execution_8h.html#a9e6713306c8a22d33b4a8cb783087c2a">MAX_RUN_CHOME</a>] = { 0, 8, 9, 10, 7, 0, 11, 6, 5, 4 }</td></tr>
+<tr class="separator:a13dbb8b875a206763e37f4e0627d020c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacfb8805d87c072b406efe669efbce6f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="run-execution_8cpp.html#aacfb8805d87c072b406efe669efbce6f">find_current</a></td></tr>
+<tr class="separator:aacfb8805d87c072b406efe669efbce6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8302b447a1ad41caaa7853d4c46d1bf0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="run-execution_8cpp.html#a8302b447a1ad41caaa7853d4c46d1bf0">find_prevdir</a></td></tr>
+<tr class="separator:a8302b447a1ad41caaa7853d4c46d1bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a886d27aa73e5f26f137b5a48a8c95ac9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="run-execution_8cpp.html#a886d27aa73e5f26f137b5a48a8c95ac9">find_openarea</a></td></tr>
+<tr class="separator:a886d27aa73e5f26f137b5a48a8c95ac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81e5711f93e455a4c62bdcd85a4fdcd0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="run-execution_8cpp.html#a81e5711f93e455a4c62bdcd85a4fdcd0">find_breakright</a></td></tr>
+<tr class="separator:a81e5711f93e455a4c62bdcd85a4fdcd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4604c23e1b0ad6736da2e696e9b08e6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="run-execution_8cpp.html#ac4604c23e1b0ad6736da2e696e9b08e6">find_breakleft</a></td></tr>
+<tr class="separator:ac4604c23e1b0ad6736da2e696e9b08e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a1f4e9537b99f54a1b1a44ac3cdbd5e79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f4e9537b99f54a1b1a44ac3cdbd5e79">&#9670;&nbsp;</a></span>run_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void run_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a>&#160;</td>
+          <td class="paramname"><em>dir</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ダッシュ処理の導入 / Initialize the running algorithm for a new direction. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">dir</td><td>導入の移動先</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Diagonal Corridor &ndash; allow diaginal entry into corridors.<br  />
+<br  />
+ Blunt Corridor &ndash; If there is a wall two spaces ahead and<br  />
+ we seem to be in a corridor, then force a turn into the side<br  />
+ corridor, must be moving straight into a corridor here. ???<br  />
+<br  />
+ Diagonal Corridor Blunt Corridor (?)<br  />
+ # # #<br  />
+ #x# @x#<br  />
+ @@p. p<br  />
+</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="run-execution_8cpp_a1f4e9537b99f54a1b1a44ac3cdbd5e79_cgraph.png" border="0" usemap="#arun-execution_8cpp_a1f4e9537b99f54a1b1a44ac3cdbd5e79_cgraph" alt=""/></div>
+<map name="arun-execution_8cpp_a1f4e9537b99f54a1b1a44ac3cdbd5e79_cgraph" id="arun-execution_8cpp_a1f4e9537b99f54a1b1a44ac3cdbd5e79_cgraph">
+<area shape="rect" title="ダッシュ処理の導入 / Initialize the running algorithm for a new direction." alt="" coords="5,31,69,57"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="117,5,252,32"/>
+<area shape="rect" href="run-execution_8cpp.html#aac590ff670ba843be6f069f509d63660" title="ダッシュ移動処理中、移動先のマスが既知の壁かどうかを判定する / Hack – Check for a &quot;known wall&quot; (see below)" alt="" coords="149,56,221,83"/>
+<area shape="rect" href="grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="305,5,416,32"/>
+<area shape="rect" href="cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="317,56,405,83"/>
+<area shape="rect" href="grid_8cpp.html#a5fec66e7c4ce0e8976c9a2d2b8d99b1f" title="プレイヤーが地形踏破可能かを返す" alt="" coords="300,107,421,133"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3716d7b8ad214794e5de54641ff0ca5d" title="クリーチャーが壁通過を持っているかを返す。" alt="" coords="696,107,803,133"/>
+<area shape="rect" href="monster-info_8cpp.html#ad1cf762c40679d90def446efc53d4215" title="モンスターが地形を踏破できるかどうかを返す Check if monster can cross terrain" alt="" coords="469,132,648,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="run-execution_8cpp_a1f4e9537b99f54a1b1a44ac3cdbd5e79_icgraph.png" border="0" usemap="#arun-execution_8cpp_a1f4e9537b99f54a1b1a44ac3cdbd5e79_icgraph" alt=""/></div>
+<map name="arun-execution_8cpp_a1f4e9537b99f54a1b1a44ac3cdbd5e79_icgraph" id="arun-execution_8cpp_a1f4e9537b99f54a1b1a44ac3cdbd5e79_icgraph">
+<area shape="rect" title="ダッシュ処理の導入 / Initialize the running algorithm for a new direction." alt="" coords="605,31,669,57"/>
+<area shape="rect" href="run-execution_8cpp.html#af168900c990c8f45296e1cdf5780e627" title="継続的なダッシュ処理 / Take one step along the current &quot;run&quot; path" alt="" coords="485,31,557,57"/>
+<area shape="rect" href="cmd-move_8cpp.html#af37fcf2891ab1245c2faa79a1dfa6625" title="「走る」動作コマンドのメインルーチン / Start running." alt="" coords="344,5,437,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,31,116,57"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af168900c990c8f45296e1cdf5780e627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af168900c990c8f45296e1cdf5780e627">&#9670;&nbsp;</a></span>run_step()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void run_step </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a>&#160;</td>
+          <td class="paramname"><em>dir</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>継続的なダッシュ処理 / Take one step along the current "run" path </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">dir</td><td>移動を試みる方向ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="run-execution_8cpp_af168900c990c8f45296e1cdf5780e627_cgraph.png" border="0" usemap="#arun-execution_8cpp_af168900c990c8f45296e1cdf5780e627_cgraph" alt=""/></div>
+<map name="arun-execution_8cpp_af168900c990c8f45296e1cdf5780e627_cgraph" id="arun-execution_8cpp_af168900c990c8f45296e1cdf5780e627_cgraph">
+<area shape="rect" title="継続的なダッシュ処理 / Take one step along the current &quot;run&quot; path" alt="" coords="5,1360,77,1387"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="559,955,621,981"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1131,904,1209,931"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="955,549,1031,576"/>
+<area shape="rect" href="movement-execution_8cpp.html#a586b9fe6bc207183655cdfb8dcfaf464" title="該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す / Move player in the given direction, with the given &quot;pickup&quot; flag." alt="" coords="125,904,235,931"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="561,1309,619,1336"/>
+<area shape="rect" href="cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="546,1563,634,1589"/>
+<area shape="rect" href="run-execution_8cpp.html#a1f4e9537b99f54a1b1a44ac3cdbd5e79" title="ダッシュ処理の導入 / Initialize the running algorithm for a new direction." alt="" coords="343,1917,407,1944"/>
+<area shape="rect" href="run-execution_8cpp.html#aac590ff670ba843be6f069f509d63660" title="ダッシュ移動処理中、移動先のマスが既知の壁かどうかを判定する / Hack – Check for a &quot;known wall&quot; (see below)" alt="" coords="554,1968,626,1995"/>
+<area shape="rect" href="run-execution_8cpp.html#abeac02d164c33a1f84c3cfbf42e1d6c9" title="ダッシュ移動が継続できるかどうかの判定 / Update the current &quot;run&quot; path" alt="" coords="341,2095,410,2121"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="759,904,809,931"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="743,853,825,880"/>
+<area shape="rect" href="target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="739,955,829,981"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="939,904,1048,931"/>
+<area shape="rect" href="movement-execution_8cpp.html#a5e0cf57d0aba1d2d223741018447ee37" title="Determine if a &quot;boundary&quot; grid is &quot;floor mimic&quot;" alt="" coords="322,1056,429,1083"/>
+<area shape="rect" href="grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="536,1259,644,1285"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="712,1765,856,1792"/>
+<area shape="rect" href="grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="938,1765,1049,1792"/>
+<area shape="rect" href="cmd-attack_8cpp.html#a8e48cd6d2ca0901e5c89e19e30aab0b3" title="プレイヤーの打撃処理メインルーチン" alt="" coords="320,549,431,576"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="729,245,839,272"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ad491b75a9a598cb361c671e23737d1fb" title=" " alt="" coords="543,347,637,373"/>
+<area shape="rect" href="monster-info_8cpp.html#ad051474143ae51acf70bf275b30ff246" title=" " alt="" coords="551,752,629,779"/>
+<area shape="rect" href="player-status_8cpp.html#acf19de25dd53f8896f4260fd49b00e74" title=" " alt="" coords="555,397,625,424"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="538,245,642,272"/>
+<area shape="rect" href="english_8cpp.html#a1183a616ba1590738914bbd4e6524917" title=" " alt="" coords="742,296,826,323"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ab4c472d001cbdcb0c412ec4735b185d8" title=" " alt="" coords="521,448,659,475"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="545,803,635,829"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="521,701,659,728"/>
+<area shape="rect" href="open-close-execution_8cpp.html#ae4c38ee9a960b05377ffd1e939af8514" title="移動処理による簡易な「開く」処理 / easy_open_door –" alt="" coords="317,1208,434,1235"/>
+<area shape="rect" href="feature_8cpp.html#a6b436ce4e0a21fa512563ecd2ec6da42" title="地形が閉じたドアであるかの判定を行う。 / Return TRUE if the given grid is a closed door" alt="" coords="535,1056,645,1083"/>
+<area shape="rect" href="open-close-execution_8cpp.html#ad1cd5c9c791561ebb1f78caf1bb3bef3" title="箱のトラップを解除するコマンドのサブルーチン / Perform the basic &quot;disarm&quot; command" alt="" coords="331,904,420,931"/>
+<area shape="rect" href="player-status_8cpp.html#a66e3d8439c969c25980516bbf58c5cad" title=" " alt="" coords="554,1512,626,1539"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a4ba5778ce8edcd5f8a8b517a30491f58" title="クリーチャーが壁破壊進行を持っているかを返す。" alt="" coords="328,347,423,373"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="555,1816,625,1843"/>
+<area shape="rect" href="monster-info_8cpp.html#ad1cf762c40679d90def446efc53d4215" title="モンスターが地形を踏破できるかどうかを返す Check if monster can cross terrain" alt="" coords="904,1613,1083,1640"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="295,651,455,677"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="283,701,468,728"/>
+<area shape="rect" href="player-move_8cpp.html#ac637efbeba2a2fca5538ee13812b97bf" title="移動に伴うプレイヤーのステータス変化処理" alt="" coords="309,1424,441,1451"/>
+<area shape="rect" href="pattern-walk_8cpp.html#a04f44d20c6c81300e62fb0db4f7e5bcb" title="パターンによる移動制限処理" alt="" coords="330,1107,421,1133"/>
+<area shape="rect" href="grid_8cpp.html#a5fec66e7c4ce0e8976c9a2d2b8d99b1f" title="プレイヤーが地形踏破可能かを返す" alt="" coords="723,1664,845,1691"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="316,853,435,880"/>
+<area shape="rect" href="player-move_8cpp.html#a4f9afc4c9b94e386c8dff3bdf9607218" title="該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す" alt="" coords="304,1867,447,1893"/>
+<area shape="rect" href="cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="740,1917,828,1944"/>
+<area shape="rect" href="player-status_8cpp.html#af6be48df20384df551b88a2466d159fb" title=" " alt="" coords="749,2044,819,2071"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3c8e37ad1c2ecfdc389e4070fda2c1c0" title=" " alt="" coords="530,1917,650,1944"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="523,1867,657,1893"/>
+<area shape="rect" href="player-status_8cpp.html#a23e950e374e9cc0fbaf49ad00b82977c" title="所持品総重量を計算する" alt="" coords="516,2120,664,2147"/>
+<area shape="rect" href="player-status_8cpp.html#a8a2a6f400fbb8cdafa4731b607116ff2" title="プレイヤーの所持重量制限を計算する / Computes current weight limit." alt="" coords="529,2171,651,2197"/>
+<area shape="rect" href="main-win-file-utils_8cpp.html#a3520ac2d7dddc8ca8b9a5faa37dd796b" title=" " alt="" coords="551,2221,629,2248"/>
+<area shape="rect" href="run-execution_8cpp.html#a88e3dfe2e13cb1f22b67737858764e87" title="ダッシュ移動処理中、移動先のマスか未知の地形かどうかを判定する / Hack – Check for an &quot;unknown corner&quot; (see below)" alt="" coords="544,2019,636,2045"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="run-execution_8cpp_af168900c990c8f45296e1cdf5780e627_icgraph.png" border="0" usemap="#arun-execution_8cpp_af168900c990c8f45296e1cdf5780e627_icgraph" alt=""/></div>
+<map name="arun-execution_8cpp_af168900c990c8f45296e1cdf5780e627_icgraph" id="arun-execution_8cpp_af168900c990c8f45296e1cdf5780e627_icgraph">
+<area shape="rect" title="継続的なダッシュ処理 / Take one step along the current &quot;run&quot; path" alt="" coords="485,31,557,57"/>
+<area shape="rect" href="cmd-move_8cpp.html#af37fcf2891ab1245c2faa79a1dfa6625" title="「走る」動作コマンドのメインルーチン / Start running." alt="" coords="344,5,437,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,31,116,57"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abeac02d164c33a1f84c3cfbf42e1d6c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abeac02d164c33a1f84c3cfbf42e1d6c9">&#9670;&nbsp;</a></span>run_test()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> run_test </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ダッシュ移動が継続できるかどうかの判定 / Update the current "run" path </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>立ち止まるべき条件が満たされたらTRUE ダッシュ移動が継続できるならばTRUEを返す。 Return TRUE if the running should be stopped </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="run-execution_8cpp_abeac02d164c33a1f84c3cfbf42e1d6c9_cgraph.png" border="0" usemap="#arun-execution_8cpp_abeac02d164c33a1f84c3cfbf42e1d6c9_cgraph" alt=""/></div>
+<map name="arun-execution_8cpp_abeac02d164c33a1f84c3cfbf42e1d6c9_cgraph" id="arun-execution_8cpp_abeac02d164c33a1f84c3cfbf42e1d6c9_cgraph">
+<area shape="rect" title="ダッシュ移動が継続できるかどうかの判定 / Update the current &quot;run&quot; path" alt="" coords="5,208,75,235"/>
+<area shape="rect" href="player-status_8cpp.html#a23e950e374e9cc0fbaf49ad00b82977c" title="所持品総重量を計算する" alt="" coords="123,5,271,32"/>
+<area shape="rect" href="player-status_8cpp.html#a8a2a6f400fbb8cdafa4731b607116ff2" title="プレイヤーの所持重量制限を計算する / Computes current weight limit." alt="" coords="136,56,257,83"/>
+<area shape="rect" href="main-win-file-utils_8cpp.html#a3520ac2d7dddc8ca8b9a5faa37dd796b" title=" " alt="" coords="157,107,236,133"/>
+<area shape="rect" href="grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="548,208,659,235"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3c8e37ad1c2ecfdc389e4070fda2c1c0" title=" " alt="" coords="137,309,257,336"/>
+<area shape="rect" href="player-status_8cpp.html#af6be48df20384df551b88a2466d159fb" title=" " alt="" coords="161,385,232,412"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="157,563,236,589"/>
+<area shape="rect" href="run-execution_8cpp.html#a88e3dfe2e13cb1f22b67737858764e87" title="ダッシュ移動処理中、移動先のマスか未知の地形かどうかを判定する / Hack – Check for an &quot;unknown corner&quot; (see below)" alt="" coords="151,208,243,235"/>
+<area shape="rect" href="run-execution_8cpp.html#aac590ff670ba843be6f069f509d63660" title="ダッシュ移動処理中、移動先のマスが既知の壁かどうかを判定する / Hack – Check for a &quot;known wall&quot; (see below)" alt="" coords="161,157,233,184"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="319,309,477,336"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="331,360,465,387"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="529,281,678,322"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="558,347,649,373"/>
+<area shape="rect" href="player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="345,411,451,437"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="347,715,449,741"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="357,563,439,589"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="560,461,647,488"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="559,512,647,539"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="339,791,457,817"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="351,613,445,640"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="550,765,657,792"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="578,715,629,741"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="582,563,625,589"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="577,664,630,691"/>
+<area shape="rect" href="display-messages_8cpp.html#a8647d1d8cbef5e4db465563838dd2b87" title=" " alt="" coords="525,613,681,640"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="729,689,812,716"/>
+<area shape="rect" href="cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="354,157,442,184"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="326,208,470,235"/>
+<area shape="rect" href="grid_8cpp.html#a5fec66e7c4ce0e8976c9a2d2b8d99b1f" title="プレイヤーが地形踏破可能かを返す" alt="" coords="337,107,459,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="run-execution_8cpp_abeac02d164c33a1f84c3cfbf42e1d6c9_icgraph.png" border="0" usemap="#arun-execution_8cpp_abeac02d164c33a1f84c3cfbf42e1d6c9_icgraph" alt=""/></div>
+<map name="arun-execution_8cpp_abeac02d164c33a1f84c3cfbf42e1d6c9_icgraph" id="arun-execution_8cpp_abeac02d164c33a1f84c3cfbf42e1d6c9_icgraph">
+<area shape="rect" title="ダッシュ移動が継続できるかどうかの判定 / Update the current &quot;run&quot; path" alt="" coords="605,31,675,57"/>
+<area shape="rect" href="run-execution_8cpp.html#af168900c990c8f45296e1cdf5780e627" title="継続的なダッシュ処理 / Take one step along the current &quot;run&quot; path" alt="" coords="485,31,557,57"/>
+<area shape="rect" href="cmd-move_8cpp.html#af37fcf2891ab1245c2faa79a1dfa6625" title="「走る」動作コマンドのメインルーチン / Start running." alt="" coords="344,5,437,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,31,116,57"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a88e3dfe2e13cb1f22b67737858764e87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88e3dfe2e13cb1f22b67737858764e87">&#9670;&nbsp;</a></span>see_nothing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> see_nothing </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a>&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ダッシュ移動処理中、移動先のマスか未知の地形かどうかを判定する / Hack &ndash; Check for an "unknown corner" (see below) </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">dir</td><td>想定する移動方向ID </td></tr>
+    <tr><td class="paramname">y</td><td>移動元のY座標 </td></tr>
+    <tr><td class="paramname">x</td><td>移動元のX座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>移動先が未知の地形ならばTRUE </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="run-execution_8cpp_a88e3dfe2e13cb1f22b67737858764e87_cgraph.png" border="0" usemap="#arun-execution_8cpp_a88e3dfe2e13cb1f22b67737858764e87_cgraph" alt=""/></div>
+<map name="arun-execution_8cpp_a88e3dfe2e13cb1f22b67737858764e87_cgraph" id="arun-execution_8cpp_a88e3dfe2e13cb1f22b67737858764e87_cgraph">
+<area shape="rect" title="ダッシュ移動処理中、移動先のマスか未知の地形かどうかを判定する / Hack – Check for an &quot;unknown corner&quot; (see below)" alt="" coords="5,31,97,58"/>
+<area shape="rect" href="cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="173,6,261,32"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="145,56,289,83"/>
+<area shape="rect" href="grid_8cpp.html#ab400c1b998f2aac3e96120a9f4e374dc" title="指定された座標のマスが現在照らされているかを返す。 / Check for &quot;local&quot; illumination" alt="" coords="337,31,500,58"/>
+<area shape="rect" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e" title=" " alt="" coords="548,6,672,32"/>
+<area shape="rect" href="grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="555,56,665,83"/>
+<area shape="rect" href="cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="349,132,489,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="run-execution_8cpp_a88e3dfe2e13cb1f22b67737858764e87_icgraph.png" border="0" usemap="#arun-execution_8cpp_a88e3dfe2e13cb1f22b67737858764e87_icgraph" alt=""/></div>
+<map name="arun-execution_8cpp_a88e3dfe2e13cb1f22b67737858764e87_icgraph" id="arun-execution_8cpp_a88e3dfe2e13cb1f22b67737858764e87_icgraph">
+<area shape="rect" title="ダッシュ移動処理中、移動先のマスか未知の地形かどうかを判定する / Hack – Check for an &quot;unknown corner&quot; (see below)" alt="" coords="401,31,493,57"/>
+<area shape="rect" href="run-execution_8cpp.html#abeac02d164c33a1f84c3cfbf42e1d6c9" title="ダッシュ移動が継続できるかどうかの判定 / Update the current &quot;run&quot; path" alt="" coords="284,31,353,57"/>
+<area shape="rect" href="run-execution_8cpp.html#af168900c990c8f45296e1cdf5780e627" title="継続的なダッシュ処理 / Take one step along the current &quot;run&quot; path" alt="" coords="164,31,236,57"/>
+<area shape="rect" href="cmd-move_8cpp.html#af37fcf2891ab1245c2faa79a1dfa6625" title="「走る」動作コマンドのメインルーチン / Start running." alt="" coords="14,5,107,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,56,116,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aac590ff670ba843be6f069f509d63660"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac590ff670ba843be6f069f509d63660">&#9670;&nbsp;</a></span>see_wall()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> see_wall </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a>&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ダッシュ移動処理中、移動先のマスが既知の壁かどうかを判定する / Hack &ndash; Check for a "known wall" (see below) </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">dir</td><td>想定する移動方向ID </td></tr>
+    <tr><td class="paramname">y</td><td>移動元のY座標 </td></tr>
+    <tr><td class="paramname">x</td><td>移動元のX座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>移動先が既知の壁ならばTRUE </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="run-execution_8cpp_aac590ff670ba843be6f069f509d63660_cgraph.png" border="0" usemap="#arun-execution_8cpp_aac590ff670ba843be6f069f509d63660_cgraph" alt=""/></div>
+<map name="arun-execution_8cpp_aac590ff670ba843be6f069f509d63660_cgraph" id="arun-execution_8cpp_aac590ff670ba843be6f069f509d63660_cgraph">
+<area shape="rect" title="ダッシュ移動処理中、移動先のマスが既知の壁かどうかを判定する / Hack – Check for a &quot;known wall&quot; (see below)" alt="" coords="5,56,77,83"/>
+<area shape="rect" href="grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="131,5,241,32"/>
+<area shape="rect" href="cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="142,56,230,83"/>
+<area shape="rect" href="grid_8cpp.html#a5fec66e7c4ce0e8976c9a2d2b8d99b1f" title="プレイヤーが地形踏破可能かを返す" alt="" coords="125,107,247,133"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3716d7b8ad214794e5de54641ff0ca5d" title="クリーチャーが壁通過を持っているかを返す。" alt="" coords="521,107,628,133"/>
+<area shape="rect" href="monster-info_8cpp.html#ad1cf762c40679d90def446efc53d4215" title="モンスターが地形を踏破できるかどうかを返す Check if monster can cross terrain" alt="" coords="295,132,473,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="run-execution_8cpp_aac590ff670ba843be6f069f509d63660_icgraph.png" border="0" usemap="#arun-execution_8cpp_aac590ff670ba843be6f069f509d63660_icgraph" alt=""/></div>
+<map name="arun-execution_8cpp_aac590ff670ba843be6f069f509d63660_icgraph" id="arun-execution_8cpp_aac590ff670ba843be6f069f509d63660_icgraph">
+<area shape="rect" title="ダッシュ移動処理中、移動先のマスが既知の壁かどうかを判定する / Hack – Check for a &quot;known wall&quot; (see below)" alt="" coords="401,56,473,83"/>
+<area shape="rect" href="run-execution_8cpp.html#a1f4e9537b99f54a1b1a44ac3cdbd5e79" title="ダッシュ処理の導入 / Initialize the running algorithm for a new direction." alt="" coords="287,5,351,32"/>
+<area shape="rect" href="run-execution_8cpp.html#af168900c990c8f45296e1cdf5780e627" title="継続的なダッシュ処理 / Take one step along the current &quot;run&quot; path" alt="" coords="164,56,236,83"/>
+<area shape="rect" href="run-execution_8cpp.html#abeac02d164c33a1f84c3cfbf42e1d6c9" title="ダッシュ移動が継続できるかどうかの判定 / Update the current &quot;run&quot; path" alt="" coords="284,107,353,133"/>
+<area shape="rect" href="cmd-move_8cpp.html#af37fcf2891ab1245c2faa79a1dfa6625" title="「走る」動作コマンドのメインルーチン / Start running." alt="" coords="14,31,107,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,81,116,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a13dbb8b875a206763e37f4e0627d020c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13dbb8b875a206763e37f4e0627d020c">&#9670;&nbsp;</a></span>chome</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> chome[<a class="el" href="run-execution_8h.html#a9e6713306c8a22d33b4a8cb783087c2a">MAX_RUN_CHOME</a>] = { 0, 8, 9, 10, 7, 0, 11, 6, 5, 4 }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae386127a51c93a9d05c2fc832982d294"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae386127a51c93a9d05c2fc832982d294">&#9670;&nbsp;</a></span>cycle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> cycle[<a class="el" href="run-execution_8h.html#abfa3e2ee11ccb3a271125660e77aff44">MAX_RUN_CYCLES</a>] = { 1, 2, 3, 6, 9, 8, 7, 4, 1, 2, 3, 6, 9, 8, 7, 4, 1 }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac4604c23e1b0ad6736da2e696e9b08e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4604c23e1b0ad6736da2e696e9b08e6">&#9670;&nbsp;</a></span>find_breakleft</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> find_breakleft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a81e5711f93e455a4c62bdcd85a4fdcd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81e5711f93e455a4c62bdcd85a4fdcd0">&#9670;&nbsp;</a></span>find_breakright</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> find_breakright</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aacfb8805d87c072b406efe669efbce6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacfb8805d87c072b406efe669efbce6f">&#9670;&nbsp;</a></span>find_current</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> find_current</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a886d27aa73e5f26f137b5a48a8c95ac9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a886d27aa73e5f26f137b5a48a8c95ac9">&#9670;&nbsp;</a></span>find_openarea</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> find_openarea</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8302b447a1ad41caaa7853d4c46d1bf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8302b447a1ad41caaa7853d4c46d1bf0">&#9670;&nbsp;</a></span>find_prevdir</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> find_prevdir</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa70b2b2ab39bd192995f9a875f1e96e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa70b2b2ab39bd192995f9a875f1e96e1">&#9670;&nbsp;</a></span>ignore_avoid_run</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> ignore_avoid_run</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分58秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

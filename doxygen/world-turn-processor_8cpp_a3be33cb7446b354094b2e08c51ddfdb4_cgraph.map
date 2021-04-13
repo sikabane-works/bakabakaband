@@ -1,0 +1,52 @@
+<map id="process_world" name="process_world">
+<area shape="rect" id="node1" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="5,1360,111,1387"/>
+<area shape="rect" id="node2" href="$monster-generator_8cpp.html#a337e4104356fdcc868464def8b309c5b" title="ダンジョンの初期配置モンスターを生成1回生成する / Attempt to allocate a random monster in the dungeon." alt="" coords="203,245,305,272"/>
+<area shape="rect" id="node8" href="$display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="1121,524,1211,551"/>
+<area shape="rect" id="node9" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1291,929,1369,956"/>
+<area shape="rect" id="node10" href="$monster-summon_8cpp.html#a6e66d06ca9502871c59a2a58c15708e5" title="モンスターを召喚により配置する / Place a monster (of the specified &quot;type&quot;) near the given location." alt="" coords="659,448,781,475"/>
+<area shape="rect" id="node13" href="$wild_8cpp.html#a50c95b33e216b6cd860ddc2ac319c510" title="荒野から広域マップへの切り替え処理 / Initialize arrays for wilderness terrains" alt="" coords="188,1588,320,1615"/>
+<area shape="rect" id="node19" href="$player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="451,1816,527,1843"/>
+<area shape="rect" id="node20" href="$floor-events_8cpp.html#a3edd731b459d1183fe27fe82f0d11519" title=" " alt="" coords="213,828,295,855"/>
+<area shape="rect" id="node23" href="$disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="689,1208,751,1235"/>
+<area shape="rect" id="node25" href="$bounty_8cpp.html#a44a22a03177d5ed8ec96a36eced9bd20" title="今日の賞金首を確定する / Determine today&#39;s bounty monster" alt="" coords="641,600,799,627"/>
+<area shape="rect" id="node27" href="$cmd-save_8cpp.html#a5f3c9a464d1f438f0a2860a68b31da96" title="セーブするコマンドのメインルーチン Save the game" alt="" coords="419,1107,559,1133"/>
+<area shape="rect" id="node29" href="$write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="433,2019,545,2045"/>
+<area shape="rect" id="node30" href="$world_8cpp.html#a3da5b82e6bb95498402f78c954a628d0" title="現在の日数、時刻を返す / Extract day, hour, min" alt="" coords="645,2044,795,2071"/>
+<area shape="rect" id="node31" href="$inventory-curse_8cpp.html#a15e87169136684b61a2a317bf3c6e0d5" title="10ゲームターンが進行するごとに装備効果の発動判定を行う処理 / Handle curse effects once every 10 game turns" alt="" coords="1089,694,1243,735"/>
+<area shape="rect" id="node32" href="$world-movement-processor_8cpp.html#a597a48dd4ed8e2e51c1a114cb9b125c1" title="10ゲームターンが進行するごとにフロア・リセット/現実変容の残り時間カウントダウンと発動を処理する。 / Handle involuntary movement once every 10 game t..." alt="" coords="187,1157,321,1184"/>
+<area shape="rect" id="node33" href="$floor-mode-changer_8cpp.html#ac3d4752c4acfdb1dfe04cdbcd562c1ec" title="フロア切り替え時の処理フラグを追加する / Prepare mode flags of changing floor" alt="" coords="397,1867,581,1893"/>
+<area shape="rect" id="node34" href="$world-movement-processor_8cpp.html#a9cf11d071cabe6008f72bbb6eed498d5" title="10ゲームターンが進行するごとに帰還の残り時間カウントダウンと発動を処理する。 / Handle involuntary movement once every 10 game turns" alt="" coords="201,1791,307,1817"/>
+<area shape="rect" id="node35" href="$monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="202,1639,306,1665"/>
+<area shape="rect" id="node36" href="$floor-events_8cpp.html#ac255446499e40c7b84ac4fc6fb016f37" title=" " alt="" coords="214,929,294,956"/>
+<area shape="rect" id="node37" href="$monster-status_8cpp.html#a61f7a158553d0911c699a0f8532578ec" title="全モンスターの各種状態値を時間経過により更新するメインルーチン" alt="" coords="165,1943,343,1969"/>
+<area shape="rect" id="node38" href="$hp-mp-processor_8cpp.html#afc8eefd59cfc7a8bd571c9ed53344350" title="10ゲームターンが進行するごとにプレイヤーのHPとMPの増減処理を行う。 / Handle timed damage and regeneration every 10 game turns" alt="" coords="872,651,1028,677"/>
+<area shape="rect" id="node39" href="$mutation-processor_8cpp.html#aac6e6f0b449a92493ac8a184c221d6b4" title="10ゲームターンが進行するごとに突然変異の発動判定を行う処理 / Handle mutation effects once every 10 game turns" alt="" coords="159,1411,349,1437"/>
+<area shape="rect" id="node40" href="$store_8cpp.html#ab1d59efed4587b44cdf1579c606c3e4b" title="現在の町の店主を交代させる / Shuffle one of the stores." alt="" coords="442,1309,537,1336"/>
+<area shape="rect" id="node41" href="$recharge-processor_8cpp.html#add5026b607899e0c233b041c00449391" title="10ゲームターンが進行するごとに魔道具の自然充填を行う処理 / Handle recharging objects once every 10 game turns" alt="" coords="177,1993,331,2020"/>
+<area shape="rect" id="node42" href="$lite-processor_8cpp.html#a16fb62011b30f21554e561a9a87a5f81" title="10ゲームターンが進行する毎に光源の寿命を減らす処理 / Handle burning fuel every 10 game turns" alt="" coords="200,2044,308,2071"/>
+<area shape="rect" id="node43" href="$magic-effects-timeout-reducer_8cpp.html#ab3da74b04d4dd1f34442fc82cde68b60" title="10ゲームターンが進行するごとに魔法効果の残りターンを減らしていく処理 / Handle timeout every 10 game turns" alt="" coords="180,2095,328,2137"/>
+<area shape="rect" id="node44" href="$hp-mp-regenerator_8cpp.html#afd49f60612cbe412e72cfe4067d8816f" title="30ゲームターン毎のボール中モンスターのHP自然回復処理 / Regenerate the captured monsters (once per 30 game turns)" alt="" coords="184,2161,324,2202"/>
+<area shape="rect" id="node45" href="$hp-mp-regenerator_8cpp.html#a94770c7dddfe10f9f174e619e9504a45" title="100ゲームターン毎のモンスターのHP自然回復処理 / Regenerate the monsters (once per 100 game turns)" alt="" coords="182,1487,326,1513"/>
+<area shape="rect" id="node46" href="$simple-perception_8cpp.html#a0fe147809288def2c16773c0e89fc033" title="1プレイヤーターン毎に武器、防具の擬似鑑定が行われるかを判定する。" alt="" coords="193,2227,315,2253"/>
+<area shape="rect" id="node47" href="$simple-perception_8cpp.html#a3d7694f1e0812a7f9137285efacf9506" title="1プレイヤーターン毎に武器、防具以外の擬似鑑定が行われるかを判定する。" alt="" coords="193,2277,315,2304"/>
+<area shape="rect" id="node48" href="$digestion-processor_8cpp.html#a9cc59992d58ca87e9d1953df73acf94e" title="10ゲームターンが進行するごとにプレイヤーの腹を減らす" alt="" coords="440,1005,539,1032"/>
+<area shape="rect" id="node49" href="$floor-events_8cpp.html#a10ddc8e3a83cc30f6451f427b55eb838" title="ダンジョンの雰囲気を更新し、変化があった場合メッセージを表示する / Update dungeon feeling, and announce it if changed" alt="" coords="173,1271,335,1297"/>
+<area shape="rect" id="node50" href="$arena_8cpp.html#a8f76d0f962bd2705b72a72823e77f9e1" title="モンスター闘技場に参加するモンスターを更新する。" alt="" coords="629,499,811,525"/>
+<area shape="rect" id="node3" href="$monster-generator_8cpp.html#a5771512eb9a80e12f614653ce4cf36c2" title="ダンジョンの主生成を試みる / Put the Guardian" alt="" coords="437,195,542,221"/>
+<area shape="rect" id="node4" href="$cave_8cpp.html#aad3aa7818b160a3bd79fdb3ca2584bbf" title=" " alt="" coords="647,93,793,120"/>
+<area shape="rect" id="node5" href="$cave_8cpp.html#abf1b6aff1aa303afd2b72225c7abbcee" title=" " alt="" coords="881,68,1019,95"/>
+<area shape="rect" id="node6" href="$monster-generator_8cpp.html#acf1750358f03ad12021678aa270bba5e" title="指定地点に1種類のモンスター種族による群れを生成する" alt="" coords="445,296,533,323"/>
+<area shape="rect" id="node11" href="$geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="454,144,525,171"/>
+<area shape="rect" id="node12" href="$monster-generator_8cpp.html#ae384acae95b077cd4fa9b1bbb573f083" title="一般的なモンスター生成処理のメインルーチン / Attempt to place a monster of the given race at the given location" alt="" coords="667,397,773,424"/>
+<area shape="rect" id="node7" href="$monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する" alt="" coords="898,448,1002,475"/>
+<area shape="rect" id="node14" href="$spells-hex_8cpp.html#a1fe803ed2313c7c276285c2803e83ed3" title=" " alt="" coords="428,1613,551,1640"/>
+<area shape="rect" id="node15" href="$monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="461,1765,518,1792"/>
+<area shape="rect" id="node16" href="$monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="401,1664,578,1691"/>
+<area shape="rect" id="node17" href="$monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="430,1512,549,1539"/>
+<area shape="rect" id="node18" href="$spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="425,1563,554,1589"/>
+<area shape="rect" id="node21" href="$grid_8cpp.html#acfe2dde219c27902b1cbd0e7b6d95357" title=" " alt="" coords="450,803,529,829"/>
+<area shape="rect" id="node22" href="$mind-ninja_8cpp.html#a52ea1929bb465180b42d7321e65512eb" title="超隠密状態をセットする" alt="" coords="430,904,549,931"/>
+<area shape="rect" id="node24" href="$screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="925,1309,975,1336"/>
+<area shape="rect" id="node26" href="$monster-util_8cpp.html#a119044a0722d084a4fa94a064a6923d8" title="モンスター生成テーブルの重み修正(賞金首選定用)" alt="" coords="859,600,1041,627"/>
+<area shape="rect" id="node28" href="$stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="675,1157,765,1184"/>
+</map>

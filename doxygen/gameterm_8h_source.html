@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/term/gameterm.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f015963f69ae14c534311f2118856536.html">term</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">gameterm.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="gameterm_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="spell-types_8h.html">spell/spell-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * Convert a &quot;pict&quot; (P) into an &quot;attr&quot; (A)</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="gameterm_8h.html#a0679908730b0f48391b83b4b3f7c08fa">    9</a></span>&#160;<span class="preprocessor">#define PICT_A(P) \</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">    ((byte)((P) &gt;&gt; 8))</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * Convert a &quot;pict&quot; (P) into an &quot;char&quot; (C)</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="gameterm_8h.html#aba0942df3237c41b11ee42e7f76f67c1">   15</a></span>&#160;<span class="preprocessor">#define PICT_C(P) \</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">    ((char)((byte)(P)))</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="gameterm_8h.html#acf0409c3b85a5c8efb5a5c84f2a7c5b8">color_names</a>[16];</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="gameterm_8h.html#a36bc2490c67a10ef25021414cd92d1ea">window_flag_desc</a>[32];</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="gameterm_8h.html#ae5813566b188b0e854de1ca0112d7dac">ident_info</a>[];</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">extern</span> <a class="code" href="structterm__type.html">term_type</a> *<a class="code" href="gameterm_8h.html#a1cb8a8adb1f5c767d19bdbc21919442a">angband_term</a>[8];</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="gameterm_8h.html#a671758f7e161dcab64a97df40c7eaf45">   23</a></span>&#160;<span class="preprocessor">#define term_screen (angband_term[0])</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> <a class="code" href="gameterm_8h.html#a8b4c0e1c1baf472c912a287cad8a4891">misc_to_attr</a>[256];</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a956852f26de2bab8053529224e40dd37">SYMBOL_CODE</a> <a class="code" href="gameterm_8h.html#aa76671710c56441731043dbef5cb9ad4">misc_to_char</a>[256];</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> <a class="code" href="gameterm_8h.html#a120628e3842a2071d85957d5ee3b79c0">tval_to_attr</a>[128];</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="gameterm_8h.html#a84e19c58ec8bf309edafb73249b29e18">angband_term_name</a>[8][16];</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">byte</span> <a class="code" href="gameterm_8h.html#a518c354955f6ee2ee1931a3b109be584">angband_color_table</a>[256][4];</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> <a class="code" href="gameterm_8h.html#a7ee011a373835ef623e21c61f917e046">gf_color</a>[<a class="code" href="spell-types_8h.html#a141c216a179b958a665de1c1e22934a3a20daa87fb5db723d8b1636fbd067e0cf">MAX_GF</a>];</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> <a class="code" href="gameterm_8h.html#a382b67c15a731d3dd86f08ce9cf2f7c9">color_char_to_attr</a>(<a class="code" href="h-type_8h.html#a956852f26de2bab8053529224e40dd37">SYMBOL_CODE</a> c);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<a class="code" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a> <a class="code" href="gameterm_8h.html#a2694b4425c6fa76811611a40852ec96e">bolt_pict</a>(<a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> ny, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> nx, <a class="code" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a> typ);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="agameterm_8h_html_a120628e3842a2071d85957d5ee3b79c0"><div class="ttname"><a href="gameterm_8h.html#a120628e3842a2071d85957d5ee3b79c0">tval_to_attr</a></div><div class="ttdeci">TERM_COLOR tval_to_attr[128]</div><div class="ttdef"><b>Definition:</b> gameterm.cpp:374</div></div>
+<div class="ttc" id="agameterm_8h_html_a1cb8a8adb1f5c767d19bdbc21919442a"><div class="ttname"><a href="gameterm_8h.html#a1cb8a8adb1f5c767d19bdbc21919442a">angband_term</a></div><div class="ttdeci">term_type * angband_term[8]</div><div class="ttdef"><b>Definition:</b> gameterm.cpp:355</div></div>
+<div class="ttc" id="agameterm_8h_html_a2694b4425c6fa76811611a40852ec96e"><div class="ttname"><a href="gameterm_8h.html#a2694b4425c6fa76811611a40852ec96e">bolt_pict</a></div><div class="ttdeci">u16b bolt_pict(POSITION y, POSITION x, POSITION ny, POSITION nx, EFFECT_ID typ)</div><div class="ttdoc">始点から終点にかけた方向毎にボルトのキャラクタを返す / Find the attr/char pair to use for a spell effect</div><div class="ttdef"><b>Definition:</b> gameterm.cpp:528</div></div>
+<div class="ttc" id="agameterm_8h_html_a36bc2490c67a10ef25021414cd92d1ea"><div class="ttname"><a href="gameterm_8h.html#a36bc2490c67a10ef25021414cd92d1ea">window_flag_desc</a></div><div class="ttdeci">const concptr window_flag_desc[32]</div><div class="ttdoc">サブウィンドウ名称テーブル</div><div class="ttdef"><b>Definition:</b> gameterm.cpp:112</div></div>
+<div class="ttc" id="agameterm_8h_html_a382b67c15a731d3dd86f08ce9cf2f7c9"><div class="ttname"><a href="gameterm_8h.html#a382b67c15a731d3dd86f08ce9cf2f7c9">color_char_to_attr</a></div><div class="ttdeci">TERM_COLOR color_char_to_attr(SYMBOL_CODE c)</div><div class="ttdoc">シンボル1文字をカラーIDに変更する / Convert a &quot;color letter&quot; into an &quot;actual&quot; color The colors are: dwsorgbuDWvyRGBU...</div><div class="ttdef"><b>Definition:</b> gameterm.cpp:576</div></div>
+<div class="ttc" id="agameterm_8h_html_a518c354955f6ee2ee1931a3b109be584"><div class="ttname"><a href="gameterm_8h.html#a518c354955f6ee2ee1931a3b109be584">angband_color_table</a></div><div class="ttdeci">byte angband_color_table[256][4]</div><div class="ttdef"><b>Definition:</b> gameterm.cpp:30</div></div>
+<div class="ttc" id="agameterm_8h_html_a7ee011a373835ef623e21c61f917e046"><div class="ttname"><a href="gameterm_8h.html#a7ee011a373835ef623e21c61f917e046">gf_color</a></div><div class="ttdeci">TERM_COLOR gf_color[MAX_GF]</div><div class="ttdef"><b>Definition:</b> gameterm.cpp:379</div></div>
+<div class="ttc" id="agameterm_8h_html_a84e19c58ec8bf309edafb73249b29e18"><div class="ttname"><a href="gameterm_8h.html#a84e19c58ec8bf309edafb73249b29e18">angband_term_name</a></div><div class="ttdeci">const char angband_term_name[8][16]</div><div class="ttdef"><b>Definition:</b> gameterm.cpp:15</div></div>
+<div class="ttc" id="agameterm_8h_html_a8b4c0e1c1baf472c912a287cad8a4891"><div class="ttname"><a href="gameterm_8h.html#a8b4c0e1c1baf472c912a287cad8a4891">misc_to_attr</a></div><div class="ttdeci">TERM_COLOR misc_to_attr[256]</div><div class="ttdef"><b>Definition:</b> gameterm.cpp:367</div></div>
+<div class="ttc" id="agameterm_8h_html_aa76671710c56441731043dbef5cb9ad4"><div class="ttname"><a href="gameterm_8h.html#aa76671710c56441731043dbef5cb9ad4">misc_to_char</a></div><div class="ttdeci">SYMBOL_CODE misc_to_char[256]</div><div class="ttdef"><b>Definition:</b> gameterm.cpp:368</div></div>
+<div class="ttc" id="agameterm_8h_html_acf0409c3b85a5c8efb5a5c84f2a7c5b8"><div class="ttname"><a href="gameterm_8h.html#acf0409c3b85a5c8efb5a5c84f2a7c5b8">color_names</a></div><div class="ttdeci">const concptr color_names[16]</div><div class="ttdoc">色名称テーブル / Hack – the &quot;basic&quot; color names (see &quot;TERM_xxx&quot;)</div><div class="ttdef"><b>Definition:</b> gameterm.cpp:53</div></div>
+<div class="ttc" id="agameterm_8h_html_ae5813566b188b0e854de1ca0112d7dac"><div class="ttname"><a href="gameterm_8h.html#ae5813566b188b0e854de1ca0112d7dac">ident_info</a></div><div class="ttdeci">const concptr ident_info[]</div><div class="ttdoc">シンボル解説テーブル / The table of &quot;symbol info&quot; – each entry is a string of the form &quot;X:desc&quot; where &quot;X&quot; is th...</div><div class="ttdef"><b>Definition:</b> gameterm.cpp:153</div></div>
+<div class="ttc" id="ah-type_8h_html_a6e67d15477d3778e515c59e04e25a390"><div class="ttname"><a href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a></div><div class="ttdeci">int EFFECT_ID</div><div class="ttdoc">効果属性ID</div><div class="ttdef"><b>Definition:</b> h-type.h:227</div></div>
+<div class="ttc" id="ah-type_8h_html_a956852f26de2bab8053529224e40dd37"><div class="ttname"><a href="h-type_8h.html#a956852f26de2bab8053529224e40dd37">SYMBOL_CODE</a></div><div class="ttdeci">char SYMBOL_CODE</div><div class="ttdoc">キャラの文字の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:216</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_aadcf8cee15fbcb7d92dd27e9eda42de1"><div class="ttname"><a href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a></div><div class="ttdeci">byte TERM_COLOR</div><div class="ttdoc">テキスト表示色の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:215</div></div>
+<div class="ttc" id="ah-type_8h_html_ae21ecc67b92c35422853544364e96b42"><div class="ttname"><a href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a></div><div class="ttdeci">unsigned short u16b</div><div class="ttdef"><b>Definition:</b> h-type.h:84</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="aspell-types_8h_html"><div class="ttname"><a href="spell-types_8h.html">spell-types.h</a></div></div>
+<div class="ttc" id="aspell-types_8h_html_a141c216a179b958a665de1c1e22934a3a20daa87fb5db723d8b1636fbd067e0cf"><div class="ttname"><a href="spell-types_8h.html#a141c216a179b958a665de1c1e22934a3a20daa87fb5db723d8b1636fbd067e0cf">MAX_GF</a></div><div class="ttdeci">@ MAX_GF</div><div class="ttdoc">欠番を無視した最大サイズ (直上の値+1)</div><div class="ttdef"><b>Definition:</b> spell-types.h:108</div></div>
+<div class="ttc" id="astructterm__type_html"><div class="ttname"><a href="structterm__type.html">term_type</a></div><div class="ttdef"><b>Definition:</b> z-term.h:41</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

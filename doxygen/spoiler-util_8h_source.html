@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/wizard/spoiler-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e09032bb770e6e0f4355f890c3180c4a.html">wizard</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">spoiler-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="spoiler-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="spoiler-table_8h.html">wizard/spoiler-table.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">/* MAX_LINE_LEN specifies when a line should wrap. */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="spoiler-util_8h.html#a09a3b394b8602092d58347b791158062">    7</a></span>&#160;<span class="preprocessor">#define MAX_LINE_LEN 75</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/* Given an array, determine how many elements are in the array */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="spoiler-util_8h.html#a77e1cf58f43662cf47979a9fcc0b2e6f">   10</a></span>&#160;<span class="preprocessor">#define N_ELEMENTS(a) (sizeof(a) / sizeof((a)[0]))</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">/* A special type used just for deailing with pvals */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structpval__info__type.html">   13</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structpval__info__type.html">pval_info_type</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structpval__info__type.html#a7ad31834bb5206b81f89d80e45a5bd8e">   14</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structpval__info__type.html#a7ad31834bb5206b81f89d80e45a5bd8e">pval_desc</a>[12]; <span class="comment">/* This will contain a string such as &quot;+2&quot;, &quot;-10&quot;, etc. */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="comment">/* A list of various player traits affected by an object&#39;s pval such as stats, speed, stealth, etc. */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structpval__info__type.html#a59db8912e70ef44e4774085ff5f3a1e2">   17</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structpval__info__type.html#a59db8912e70ef44e4774085ff5f3a1e2">pval_affects</a>[<a class="code" href="spoiler-util_8h.html#a77e1cf58f43662cf47979a9fcc0b2e6f">N_ELEMENTS</a>(<a class="code" href="spoiler-table_8cpp.html#aedc88ca9d2a4ba19e5bdd915de3cd519">stat_flags_desc</a>) - 1 + <a class="code" href="spoiler-util_8h.html#a77e1cf58f43662cf47979a9fcc0b2e6f">N_ELEMENTS</a>(<a class="code" href="spoiler-table_8cpp.html#a5ee724c901ae634d8c4f5316aca38f63">pval_flags1_desc</a>) + 1];</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="spoiler-util_8h.html#ae5d0864b0a5367c35421c817524eb4fb">   18</a></span>&#160;} <a class="code" href="spoiler-util_8h.html#ae5d0864b0a5367c35421c817524eb4fb">pval_info_type</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structobj__desc__list.html">   20</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structobj__desc__list.html">obj_desc_list</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structobj__desc__list.html#a29c69ed85e96c7a4e9d4ea455225a620">   21</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structobj__desc__list.html#a29c69ed85e96c7a4e9d4ea455225a620">description</a>[<a class="code" href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a>]; <span class="comment">/* &quot;The Longsword Dragonsmiter (6d4) (+20, +25)&quot; */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structobj__desc__list.html#ae72008d378a86b2419e67204fa549e36">   22</a></span>&#160;    <a class="code" href="structpval__info__type.html">pval_info_type</a> <a class="code" href="structobj__desc__list.html#ae72008d378a86b2419e67204fa549e36">pval_info</a>; <span class="comment">/* Description of what is affected by an object&#39;s pval */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structobj__desc__list.html#a3d1530ca2a5bf0e59f9011b0e37109a0">   23</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structobj__desc__list.html#a3d1530ca2a5bf0e59f9011b0e37109a0">slays</a>[<a class="code" href="spoiler-util_8h.html#a77e1cf58f43662cf47979a9fcc0b2e6f">N_ELEMENTS</a>(<a class="code" href="spoiler-table_8cpp.html#a3c44bf944a487ecd269d933906fbf448">slay_flags_desc</a>) + 1]; <span class="comment">/* A list of an object&#39;s slaying preferences */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structobj__desc__list.html#aa8030b5f039704f9a71066b6ffb2e243">   24</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structobj__desc__list.html#aa8030b5f039704f9a71066b6ffb2e243">brands</a>[<a class="code" href="spoiler-util_8h.html#a77e1cf58f43662cf47979a9fcc0b2e6f">N_ELEMENTS</a>(<a class="code" href="spoiler-table_8cpp.html#ae04f6c49988bbf36f6b1284c87e7eae1">brand_flags_desc</a>) + 1]; <span class="comment">/* A list if an object&#39;s elemental brands */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structobj__desc__list.html#aed7984dcc39c8c4532eafd4f1f179676">   25</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structobj__desc__list.html#aed7984dcc39c8c4532eafd4f1f179676">immunities</a>[<a class="code" href="spoiler-util_8h.html#a77e1cf58f43662cf47979a9fcc0b2e6f">N_ELEMENTS</a>(<a class="code" href="spoiler-table_8cpp.html#aa87a84b01ec6c60c7b63617d7c60c10e">immune_flags_desc</a>) + 1]; <span class="comment">/* A list of immunities granted by an object */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structobj__desc__list.html#a047089d7baabb46155c91224f12c2805">   26</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structobj__desc__list.html#a047089d7baabb46155c91224f12c2805">resistances</a>[<a class="code" href="spoiler-util_8h.html#a77e1cf58f43662cf47979a9fcc0b2e6f">N_ELEMENTS</a>(<a class="code" href="spoiler-table_8cpp.html#a4550e650fa472271a815c7b365e55ba9">resist_flags_desc</a>) + 1]; <span class="comment">/* A list of resistances granted by an object */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structobj__desc__list.html#abcda030269b084e8aa84b441a5c235b4">   27</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structobj__desc__list.html#abcda030269b084e8aa84b441a5c235b4">sustains</a>[<a class="code" href="spoiler-util_8h.html#a77e1cf58f43662cf47979a9fcc0b2e6f">N_ELEMENTS</a>(<a class="code" href="spoiler-table_8cpp.html#a999d939c8cc33b3396793e4f01efd628">sustain_flags_desc</a>) - 1 + 1]; <span class="comment">/* A list of stats sustained by an object */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">/* A list of various magical qualities an object may have */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structobj__desc__list.html#a1142f346f8bf957c031a3bd72f94be1e">   30</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structobj__desc__list.html#a1142f346f8bf957c031a3bd72f94be1e">misc_magic</a>[<a class="code" href="spoiler-util_8h.html#a77e1cf58f43662cf47979a9fcc0b2e6f">N_ELEMENTS</a>(<a class="code" href="spoiler-table_8cpp.html#a23ffff5beb16150051dfcd04117615b5">misc_flags2_desc</a>) + <a class="code" href="spoiler-util_8h.html#a77e1cf58f43662cf47979a9fcc0b2e6f">N_ELEMENTS</a>(<a class="code" href="spoiler-table_8cpp.html#a35937b988542ee767749118edc4da251">misc_flags3_desc</a>) + 1 <span class="comment">/* Permanent Light */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        + 1 <span class="comment">/* TY curse */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        + 1 <span class="comment">/* type of curse */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        + 1]; <span class="comment">/* sentinel NULL */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structobj__desc__list.html#a1609d6d867359c55d070fe462052b8fd">   35</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structobj__desc__list.html#a1609d6d867359c55d070fe462052b8fd">addition</a>[80]; <span class="comment">/* Additional ability or resistance */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structobj__desc__list.html#ac885a363ffff715c45ad89be6a418c7d">   36</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structobj__desc__list.html#ac885a363ffff715c45ad89be6a418c7d">activation</a>; <span class="comment">/* A string describing an artifact&#39;s activation */</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structobj__desc__list.html#a3b81ca37b48e903bc39ebab0f80fbf0c">   37</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structobj__desc__list.html#a3b81ca37b48e903bc39ebab0f80fbf0c">misc_desc</a>[80]; <span class="comment">/* &quot;Level 20, Rarity 30, 3.0 lbs, 20000 Gold&quot; */</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="spoiler-util_8h.html#a2c4cb0f7c37fd533f152722075382d84">   38</a></span>&#160;} <a class="code" href="spoiler-util_8h.html#a2c4cb0f7c37fd533f152722075382d84">obj_desc_list</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="spoiler-util_8h.html#abd2a0dd389af9cb16d6b6c431434c4ab">item_separator</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="spoiler-util_8h.html#acc639e5b7fa34901210fc747d349d57d">list_separator</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="spoiler-util_8h.html#ad745153b3ac1ad7783316edd744d8fa3">max_evolution_depth</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="spoiler-util_8h.html#a9710c86125010159d9564a89e533b5d9">spoiler_indent</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">extern</span> FILE *<a class="code" href="spoiler-util_8h.html#a1b0c1fcc332035e364a413e26b159406">spoiler_file</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spoiler-util_8h.html#a069868bef509d5bcbc1c2a4c0c464cc2">spoiler_blanklines</a>(<span class="keywordtype">int</span> n);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spoiler-util_8h.html#a110c69c3b8581a9083fd49a6b035e7f6">spoiler_underline</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spoiler-util_8h.html#a90e4683677774db822d58706a1936b1b">spoil_out</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24">   50</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24">spoiler_output_status</a> {</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24ad3e3af35eb997534f7bfdc3858d07bd0">   51</a></span>&#160;    <a class="code" href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24ad3e3af35eb997534f7bfdc3858d07bd0">SPOILER_OUTPUT_CANCEL</a>,</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24ab0577c565f6d1b827e4d5cd40b83431f">   52</a></span>&#160;    <a class="code" href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24ab0577c565f6d1b827e4d5cd40b83431f">SPOILER_OUTPUT_SUCCESS</a>,</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24ac8341362b7c0a246b4f04b292a6f0266">   53</a></span>&#160;    <a class="code" href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24ac8341362b7c0a246b4f04b292a6f0266">SPOILER_OUTPUT_FAIL_FOPEN</a>,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24a57d23400da56bfb63310019ea9911710">SPOILER_OUTPUT_FAIL_FCLOSE</a></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24a57d23400da56bfb63310019ea9911710">   55</a></span>&#160;};</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a709af41498f5625eae9f3b73fb6b6f3c"><div class="ttname"><a href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a></div><div class="ttdeci">#define MAX_NLEN</div><div class="ttdoc">Maximum length of object's name</div><div class="ttdef"><b>Definition:</b> h-type.h:58</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="aspoiler-table_8cpp_html_a23ffff5beb16150051dfcd04117615b5"><div class="ttname"><a href="spoiler-table_8cpp.html#a23ffff5beb16150051dfcd04117615b5">misc_flags2_desc</a></div><div class="ttdeci">const flag_desc misc_flags2_desc[]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:141</div></div>
+<div class="ttc" id="aspoiler-table_8cpp_html_a35937b988542ee767749118edc4da251"><div class="ttname"><a href="spoiler-table_8cpp.html#a35937b988542ee767749118edc4da251">misc_flags3_desc</a></div><div class="ttdeci">const flag_desc misc_flags3_desc[MAX_MISC3_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:149</div></div>
+<div class="ttc" id="aspoiler-table_8cpp_html_a3c44bf944a487ecd269d933906fbf448"><div class="ttname"><a href="spoiler-table_8cpp.html#a3c44bf944a487ecd269d933906fbf448">slay_flags_desc</a></div><div class="ttdeci">flag_desc slay_flags_desc[MAX_SLAY_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:66</div></div>
+<div class="ttc" id="aspoiler-table_8cpp_html_a4550e650fa472271a815c7b365e55ba9"><div class="ttname"><a href="spoiler-table_8cpp.html#a4550e650fa472271a815c7b365e55ba9">resist_flags_desc</a></div><div class="ttdeci">const flag_desc resist_flags_desc[MAX_RESISTANCE_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:101</div></div>
+<div class="ttc" id="aspoiler-table_8cpp_html_a5ee724c901ae634d8c4f5316aca38f63"><div class="ttname"><a href="spoiler-table_8cpp.html#a5ee724c901ae634d8c4f5316aca38f63">pval_flags1_desc</a></div><div class="ttdeci">flag_desc pval_flags1_desc[MAX_PVAL_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:62</div></div>
+<div class="ttc" id="aspoiler-table_8cpp_html_a999d939c8cc33b3396793e4f01efd628"><div class="ttname"><a href="spoiler-table_8cpp.html#a999d939c8cc33b3396793e4f01efd628">sustain_flags_desc</a></div><div class="ttdeci">const flag_desc sustain_flags_desc[MAX_SUSTAINER_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:131</div></div>
+<div class="ttc" id="aspoiler-table_8cpp_html_aa87a84b01ec6c60c7b63617d7c60c10e"><div class="ttname"><a href="spoiler-table_8cpp.html#aa87a84b01ec6c60c7b63617d7c60c10e">immune_flags_desc</a></div><div class="ttdeci">const flag_desc immune_flags_desc[MAX_IMMUNITY_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:123</div></div>
+<div class="ttc" id="aspoiler-table_8cpp_html_ae04f6c49988bbf36f6b1284c87e7eae1"><div class="ttname"><a href="spoiler-table_8cpp.html#ae04f6c49988bbf36f6b1284c87e7eae1">brand_flags_desc</a></div><div class="ttdeci">flag_desc brand_flags_desc[MAX_BRAND_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:88</div></div>
+<div class="ttc" id="aspoiler-table_8cpp_html_aedc88ca9d2a4ba19e5bdd915de3cd519"><div class="ttname"><a href="spoiler-table_8cpp.html#aedc88ca9d2a4ba19e5bdd915de3cd519">stat_flags_desc</a></div><div class="ttdeci">flag_desc stat_flags_desc[MAX_STAT_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:58</div></div>
+<div class="ttc" id="aspoiler-table_8h_html"><div class="ttname"><a href="spoiler-table_8h.html">spoiler-table.h</a></div></div>
+<div class="ttc" id="aspoiler-util_8h_html_a069868bef509d5bcbc1c2a4c0c464cc2"><div class="ttname"><a href="spoiler-util_8h.html#a069868bef509d5bcbc1c2a4c0c464cc2">spoiler_blanklines</a></div><div class="ttdeci">void spoiler_blanklines(int n)</div><div class="ttdoc">ファイルポインタ先に改行を複数出力する / Write out ‘n’ blank lines to the spoiler file</div><div class="ttdef"><b>Definition:</b> spoiler-util.cpp:30</div></div>
+<div class="ttc" id="aspoiler-util_8h_html_a110c69c3b8581a9083fd49a6b035e7f6"><div class="ttname"><a href="spoiler-util_8h.html#a110c69c3b8581a9083fd49a6b035e7f6">spoiler_underline</a></div><div class="ttdeci">void spoiler_underline(concptr str)</div><div class="ttdoc">ファイルポインタ先に複数のハイフンで装飾した文字列を出力する / Write a line to the spoiler file and then &quot;underline&quot; it with hypens</div><div class="ttdef"><b>Definition:</b> spoiler-util.cpp:38</div></div>
+<div class="ttc" id="aspoiler-util_8h_html_a1b0c1fcc332035e364a413e26b159406"><div class="ttname"><a href="spoiler-util_8h.html#a1b0c1fcc332035e364a413e26b159406">spoiler_file</a></div><div class="ttdeci">FILE * spoiler_file</div><div class="ttdef"><b>Definition:</b> spoiler-util.cpp:9</div></div>
+<div class="ttc" id="aspoiler-util_8h_html_a2c4cb0f7c37fd533f152722075382d84"><div class="ttname"><a href="spoiler-util_8h.html#a2c4cb0f7c37fd533f152722075382d84">obj_desc_list</a></div><div class="ttdeci">struct obj_desc_list obj_desc_list</div></div>
+<div class="ttc" id="aspoiler-util_8h_html_a65babe7f20d4de9fe0339f9beae6bd24"><div class="ttname"><a href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24">spoiler_output_status</a></div><div class="ttdeci">spoiler_output_status</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:50</div></div>
+<div class="ttc" id="aspoiler-util_8h_html_a65babe7f20d4de9fe0339f9beae6bd24a57d23400da56bfb63310019ea9911710"><div class="ttname"><a href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24a57d23400da56bfb63310019ea9911710">SPOILER_OUTPUT_FAIL_FCLOSE</a></div><div class="ttdeci">@ SPOILER_OUTPUT_FAIL_FCLOSE</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:54</div></div>
+<div class="ttc" id="aspoiler-util_8h_html_a65babe7f20d4de9fe0339f9beae6bd24ab0577c565f6d1b827e4d5cd40b83431f"><div class="ttname"><a href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24ab0577c565f6d1b827e4d5cd40b83431f">SPOILER_OUTPUT_SUCCESS</a></div><div class="ttdeci">@ SPOILER_OUTPUT_SUCCESS</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:52</div></div>
+<div class="ttc" id="aspoiler-util_8h_html_a65babe7f20d4de9fe0339f9beae6bd24ac8341362b7c0a246b4f04b292a6f0266"><div class="ttname"><a href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24ac8341362b7c0a246b4f04b292a6f0266">SPOILER_OUTPUT_FAIL_FOPEN</a></div><div class="ttdeci">@ SPOILER_OUTPUT_FAIL_FOPEN</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:53</div></div>
+<div class="ttc" id="aspoiler-util_8h_html_a65babe7f20d4de9fe0339f9beae6bd24ad3e3af35eb997534f7bfdc3858d07bd0"><div class="ttname"><a href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24ad3e3af35eb997534f7bfdc3858d07bd0">SPOILER_OUTPUT_CANCEL</a></div><div class="ttdeci">@ SPOILER_OUTPUT_CANCEL</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:51</div></div>
+<div class="ttc" id="aspoiler-util_8h_html_a77e1cf58f43662cf47979a9fcc0b2e6f"><div class="ttname"><a href="spoiler-util_8h.html#a77e1cf58f43662cf47979a9fcc0b2e6f">N_ELEMENTS</a></div><div class="ttdeci">#define N_ELEMENTS(a)</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:10</div></div>
+<div class="ttc" id="aspoiler-util_8h_html_a90e4683677774db822d58706a1936b1b"><div class="ttname"><a href="spoiler-util_8h.html#a90e4683677774db822d58706a1936b1b">spoil_out</a></div><div class="ttdeci">void spoil_out(concptr str)</div><div class="ttdoc">文字列をファイルポインタに出力する / Buffer text to the given file.</div><div class="ttdef"><b>Definition:</b> spoiler-util.cpp:52</div></div>
+<div class="ttc" id="aspoiler-util_8h_html_a9710c86125010159d9564a89e533b5d9"><div class="ttname"><a href="spoiler-util_8h.html#a9710c86125010159d9564a89e533b5d9">spoiler_indent</a></div><div class="ttdeci">concptr spoiler_indent</div><div class="ttdef"><b>Definition:</b> spoiler-util.cpp:6</div></div>
+<div class="ttc" id="aspoiler-util_8h_html_abd2a0dd389af9cb16d6b6c431434c4ab"><div class="ttname"><a href="spoiler-util_8h.html#abd2a0dd389af9cb16d6b6c431434c4ab">item_separator</a></div><div class="ttdeci">const char item_separator</div><div class="ttdef"><b>Definition:</b> spoiler-util.cpp:3</div></div>
+<div class="ttc" id="aspoiler-util_8h_html_acc639e5b7fa34901210fc747d349d57d"><div class="ttname"><a href="spoiler-util_8h.html#acc639e5b7fa34901210fc747d349d57d">list_separator</a></div><div class="ttdeci">const char list_separator</div><div class="ttdef"><b>Definition:</b> spoiler-util.cpp:4</div></div>
+<div class="ttc" id="aspoiler-util_8h_html_ad745153b3ac1ad7783316edd744d8fa3"><div class="ttname"><a href="spoiler-util_8h.html#ad745153b3ac1ad7783316edd744d8fa3">max_evolution_depth</a></div><div class="ttdeci">const int max_evolution_depth</div><div class="ttdef"><b>Definition:</b> spoiler-util.cpp:5</div></div>
+<div class="ttc" id="aspoiler-util_8h_html_ae5d0864b0a5367c35421c817524eb4fb"><div class="ttname"><a href="spoiler-util_8h.html#ae5d0864b0a5367c35421c817524eb4fb">pval_info_type</a></div><div class="ttdeci">struct pval_info_type pval_info_type</div></div>
+<div class="ttc" id="astructobj__desc__list_html"><div class="ttname"><a href="structobj__desc__list.html">obj_desc_list</a></div><div class="ttdef"><b>Definition:</b> spoiler-util.h:20</div></div>
+<div class="ttc" id="astructobj__desc__list_html_a047089d7baabb46155c91224f12c2805"><div class="ttname"><a href="structobj__desc__list.html#a047089d7baabb46155c91224f12c2805">obj_desc_list::resistances</a></div><div class="ttdeci">concptr resistances[N_ELEMENTS(resist_flags_desc)+1]</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:26</div></div>
+<div class="ttc" id="astructobj__desc__list_html_a1142f346f8bf957c031a3bd72f94be1e"><div class="ttname"><a href="structobj__desc__list.html#a1142f346f8bf957c031a3bd72f94be1e">obj_desc_list::misc_magic</a></div><div class="ttdeci">concptr misc_magic[N_ELEMENTS(misc_flags2_desc)+N_ELEMENTS(misc_flags3_desc)+1+1+1+1]</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:33</div></div>
+<div class="ttc" id="astructobj__desc__list_html_a1609d6d867359c55d070fe462052b8fd"><div class="ttname"><a href="structobj__desc__list.html#a1609d6d867359c55d070fe462052b8fd">obj_desc_list::addition</a></div><div class="ttdeci">char addition[80]</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:35</div></div>
+<div class="ttc" id="astructobj__desc__list_html_a29c69ed85e96c7a4e9d4ea455225a620"><div class="ttname"><a href="structobj__desc__list.html#a29c69ed85e96c7a4e9d4ea455225a620">obj_desc_list::description</a></div><div class="ttdeci">char description[MAX_NLEN]</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:21</div></div>
+<div class="ttc" id="astructobj__desc__list_html_a3b81ca37b48e903bc39ebab0f80fbf0c"><div class="ttname"><a href="structobj__desc__list.html#a3b81ca37b48e903bc39ebab0f80fbf0c">obj_desc_list::misc_desc</a></div><div class="ttdeci">char misc_desc[80]</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:37</div></div>
+<div class="ttc" id="astructobj__desc__list_html_a3d1530ca2a5bf0e59f9011b0e37109a0"><div class="ttname"><a href="structobj__desc__list.html#a3d1530ca2a5bf0e59f9011b0e37109a0">obj_desc_list::slays</a></div><div class="ttdeci">concptr slays[N_ELEMENTS(slay_flags_desc)+1]</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:23</div></div>
+<div class="ttc" id="astructobj__desc__list_html_aa8030b5f039704f9a71066b6ffb2e243"><div class="ttname"><a href="structobj__desc__list.html#aa8030b5f039704f9a71066b6ffb2e243">obj_desc_list::brands</a></div><div class="ttdeci">concptr brands[N_ELEMENTS(brand_flags_desc)+1]</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:24</div></div>
+<div class="ttc" id="astructobj__desc__list_html_abcda030269b084e8aa84b441a5c235b4"><div class="ttname"><a href="structobj__desc__list.html#abcda030269b084e8aa84b441a5c235b4">obj_desc_list::sustains</a></div><div class="ttdeci">concptr sustains[N_ELEMENTS(sustain_flags_desc) - 1+1]</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:27</div></div>
+<div class="ttc" id="astructobj__desc__list_html_ac885a363ffff715c45ad89be6a418c7d"><div class="ttname"><a href="structobj__desc__list.html#ac885a363ffff715c45ad89be6a418c7d">obj_desc_list::activation</a></div><div class="ttdeci">concptr activation</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:36</div></div>
+<div class="ttc" id="astructobj__desc__list_html_ae72008d378a86b2419e67204fa549e36"><div class="ttname"><a href="structobj__desc__list.html#ae72008d378a86b2419e67204fa549e36">obj_desc_list::pval_info</a></div><div class="ttdeci">pval_info_type pval_info</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:22</div></div>
+<div class="ttc" id="astructobj__desc__list_html_aed7984dcc39c8c4532eafd4f1f179676"><div class="ttname"><a href="structobj__desc__list.html#aed7984dcc39c8c4532eafd4f1f179676">obj_desc_list::immunities</a></div><div class="ttdeci">concptr immunities[N_ELEMENTS(immune_flags_desc)+1]</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:25</div></div>
+<div class="ttc" id="astructpval__info__type_html"><div class="ttname"><a href="structpval__info__type.html">pval_info_type</a></div><div class="ttdef"><b>Definition:</b> spoiler-util.h:13</div></div>
+<div class="ttc" id="astructpval__info__type_html_a59db8912e70ef44e4774085ff5f3a1e2"><div class="ttname"><a href="structpval__info__type.html#a59db8912e70ef44e4774085ff5f3a1e2">pval_info_type::pval_affects</a></div><div class="ttdeci">concptr pval_affects[N_ELEMENTS(stat_flags_desc) - 1+N_ELEMENTS(pval_flags1_desc)+1]</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:17</div></div>
+<div class="ttc" id="astructpval__info__type_html_a7ad31834bb5206b81f89d80e45a5bd8e"><div class="ttname"><a href="structpval__info__type.html#a7ad31834bb5206b81f89d80e45a5bd8e">pval_info_type::pval_desc</a></div><div class="ttdeci">char pval_desc[12]</div><div class="ttdef"><b>Definition:</b> spoiler-util.h:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

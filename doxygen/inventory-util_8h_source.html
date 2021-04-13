@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/inventory/inventory-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_8aa3e05b3c778144162028379a6046fd.html">inventory</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">inventory-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="inventory-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tval-types_8h.html">object/tval-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="inventory-util_8h.html#ae3fc87faaf4020de3a0a7911818f0f18">is_ring_slot</a>(<span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="inventory-util_8h.html#a4e55630826215fa1f7960b2ea356bb1e">get_tag_floor</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="code" href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a> *cp, <span class="keywordtype">char</span> tag, <a class="code" href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a> floor_list[], <a class="code" href="h-type_8h.html#a64d1c0cbb82f223cd3ab16d119c71b59">ITEM_NUMBER</a> floor_num);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="inventory-util_8h.html#a6106140a69e84e316a7ee1172c62f4b6">get_tag</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="code" href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a> *cp, <span class="keywordtype">char</span> tag, <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> mode, <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a> tval);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="inventory-util_8h.html#ac56c08414553f69a101a859aa01220e3">get_item_okay</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="code" href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a> i, <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a> item_tester_tval);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="inventory-util_8h.html#a8ecee8934da290e32a3d32c076c79c8d">get_item_allow</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="code" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> item);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<a class="code" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> <a class="code" href="inventory-util_8h.html#a3b02f8780c65381593401e83a8189bf8">label_to_equipment</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <span class="keywordtype">int</span> c);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<a class="code" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> <a class="code" href="inventory-util_8h.html#a157c018a9ae0e35bfadcf28c66106a5a">label_to_inventory</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <span class="keywordtype">int</span> c);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="inventory-util_8h.html#abe55b4fa8f67c4788feaab1f7289a715">verify</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> prompt, <a class="code" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> item);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> <a class="code" href="inventory-util_8h.html#a6d13cb3bdefa7599f5c8d5e58be4e07d">prepare_label_string</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <span class="keywordtype">char</span> *label, <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> mode, <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a> tval);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a30141f88547728df57f6a10c56fbeb8f"><div class="ttname"><a href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a></div><div class="ttdeci">s16b OBJECT_IDX</div><div class="ttdoc">ゲーム中のアイテムID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:121</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a592c0b48d60348198260e1f6ffb1897e"><div class="ttname"><a href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a></div><div class="ttdeci">s16b INVENTORY_IDX</div><div class="ttdoc">ゲーム中の所持品ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:120</div></div>
+<div class="ttc" id="ah-type_8h_html_a64d1c0cbb82f223cd3ab16d119c71b59"><div class="ttname"><a href="h-type_8h.html#a64d1c0cbb82f223cd3ab16d119c71b59">ITEM_NUMBER</a></div><div class="ttdeci">s32b ITEM_NUMBER</div><div class="ttdoc">ゲーム中のアイテム数型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:158</div></div>
+<div class="ttc" id="ah-type_8h_html_a9760a9b50f8e3aeeb4b82d0dc9a81c33"><div class="ttname"><a href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a></div><div class="ttdeci">s16b COMMAND_CODE</div><div class="ttdoc">コマンド内容の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:210</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="ah-type_8h_html_afef75ce8b6b6a38fed9a8ed936b5ea5c"><div class="ttname"><a href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a></div><div class="ttdeci">s16b FLOOR_IDX</div><div class="ttdoc">ゲーム中のフロアID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:100</div></div>
+<div class="ttc" id="ainventory-util_8h_html_a157c018a9ae0e35bfadcf28c66106a5a"><div class="ttname"><a href="inventory-util_8h.html#a157c018a9ae0e35bfadcf28c66106a5a">label_to_inventory</a></div><div class="ttdeci">INVENTORY_IDX label_to_inventory(player_type *owner_ptr, int c)</div><div class="ttdoc">選択アルファベットラベルからプレイヤーの所持オブジェクトIDを返す / Convert a label into the index of an item in the &quot;inven&quot;</div><div class="ttdef"><b>Definition:</b> inventory-util.cpp:244</div></div>
+<div class="ttc" id="ainventory-util_8h_html_a3b02f8780c65381593401e83a8189bf8"><div class="ttname"><a href="inventory-util_8h.html#a3b02f8780c65381593401e83a8189bf8">label_to_equipment</a></div><div class="ttdeci">INVENTORY_IDX label_to_equipment(player_type *owner_ptr, int c)</div><div class="ttdoc">選択アルファベットラベルからプレイヤーの装備オブジェクトIDを返す /</div><div class="ttdef"><b>Definition:</b> inventory-util.cpp:220</div></div>
+<div class="ttc" id="ainventory-util_8h_html_a4e55630826215fa1f7960b2ea356bb1e"><div class="ttname"><a href="inventory-util_8h.html#a4e55630826215fa1f7960b2ea356bb1e">get_tag_floor</a></div><div class="ttdeci">bool get_tag_floor(floor_type *floor_ptr, COMMAND_CODE *cp, char tag, FLOOR_IDX floor_list[], ITEM_NUMBER floor_num)</div><div class="ttdoc">床オブジェクトに選択タグを与える/タグに該当するオブジェクトがあるかを返す / Find the &quot;first&quot; inventory object with the given &quot;tag&quot;.</div><div class="ttdef"><b>Definition:</b> inventory-util.cpp:44</div></div>
+<div class="ttc" id="ainventory-util_8h_html_a6106140a69e84e316a7ee1172c62f4b6"><div class="ttname"><a href="inventory-util_8h.html#a6106140a69e84e316a7ee1172c62f4b6">get_tag</a></div><div class="ttdeci">bool get_tag(player_type *owner_ptr, COMMAND_CODE *cp, char tag, BIT_FLAGS mode, tval_type tval)</div><div class="ttdoc">所持/装備オブジェクトに選択タグを与える/タグに該当するオブジェクトがあるかを返す / Find the &quot;first&quot; inventory object with the given &quot;tag&quot;.</div><div class="ttdef"><b>Definition:</b> inventory-util.cpp:101</div></div>
+<div class="ttc" id="ainventory-util_8h_html_a6d13cb3bdefa7599f5c8d5e58be4e07d"><div class="ttname"><a href="inventory-util_8h.html#a6d13cb3bdefa7599f5c8d5e58be4e07d">prepare_label_string</a></div><div class="ttdeci">void prepare_label_string(player_type *owner_ptr, char *label, BIT_FLAGS mode, tval_type tval)</div><div class="ttdoc">タグIDにあわせてタグアルファベットのリストを返す / Move around label characters with correspond tags</div><div class="ttdef"><b>Definition:</b> inventory-util.cpp:286</div></div>
+<div class="ttc" id="ainventory-util_8h_html_a8ecee8934da290e32a3d32c076c79c8d"><div class="ttname"><a href="inventory-util_8h.html#a8ecee8934da290e32a3d32c076c79c8d">get_item_allow</a></div><div class="ttdeci">bool get_item_allow(player_type *owner_ptr, INVENTORY_IDX item)</div><div class="ttdoc">選択したアイテムの確認処理のメインルーチン /</div><div class="ttdef"><b>Definition:</b> inventory-util.cpp:188</div></div>
+<div class="ttc" id="ainventory-util_8h_html_abe55b4fa8f67c4788feaab1f7289a715"><div class="ttname"><a href="inventory-util_8h.html#abe55b4fa8f67c4788feaab1f7289a715">verify</a></div><div class="ttdeci">bool verify(player_type *owner_ptr, concptr prompt, INVENTORY_IDX item)</div><div class="ttdoc">選択したアイテムの確認処理の補助 / Verify the choice of an item.</div><div class="ttdef"><b>Definition:</b> inventory-util.cpp:263</div></div>
+<div class="ttc" id="ainventory-util_8h_html_ac56c08414553f69a101a859aa01220e3"><div class="ttname"><a href="inventory-util_8h.html#ac56c08414553f69a101a859aa01220e3">get_item_okay</a></div><div class="ttdeci">bool get_item_okay(player_type *owner_ptr, OBJECT_IDX i, tval_type item_tester_tval)</div><div class="ttdoc">プレイヤーの所持/装備オブジェクトが正規のものかを返す / Auxiliary function for &quot;get_item()&quot; – test an index</div><div class="ttdef"><b>Definition:</b> inventory-util.cpp:169</div></div>
+<div class="ttc" id="ainventory-util_8h_html_ae3fc87faaf4020de3a0a7911818f0f18"><div class="ttname"><a href="inventory-util_8h.html#ae3fc87faaf4020de3a0a7911818f0f18">is_ring_slot</a></div><div class="ttdeci">bool is_ring_slot(int i)</div><div class="ttdoc">インベントリ関係のユーティリティ</div><div class="ttdef"><b>Definition:</b> inventory-util.cpp:26</div></div>
+<div class="ttc" id="astructfloor__type_html"><div class="ttname"><a href="structfloor__type.html">floor_type</a></div><div class="ttdef"><b>Definition:</b> floor-type-definition.h:10</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="atval-types_8h_html"><div class="ttname"><a href="tval-types_8h.html">tval-types.h</a></div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a></div><div class="ttdeci">tval_type</div><div class="ttdef"><b>Definition:</b> tval-types.h:17</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

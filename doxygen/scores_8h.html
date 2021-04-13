@@ -1,0 +1,1040 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/core/scores.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">scores.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="files-util_8h_source.html">io/files-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+scores.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2core_2scores_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2core_2scores_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2core_2scores_8h">
+<area shape="rect" title=" " alt="" coords="423,5,638,47"/>
+<area shape="rect" href="files-util_8h.html" title=" " alt="" coords="444,95,535,121"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="466,169,595,196"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="5,244,96,271"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="120,244,211,271"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="235,244,333,271"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="357,244,456,271"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="481,244,581,271"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="605,244,779,271"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="804,244,945,271"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,244,1116,271"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2core_2scores_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2core_2scores_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2core_2scores_8hdep">
+<area shape="rect" title=" " alt="" coords="452,5,667,47"/>
+<area shape="rect" href="cmd-building_8cpp.html" title=" " alt="" coords="5,95,215,151"/>
+<area shape="rect" href="game-closer_8cpp.html" title=" " alt="" coords="239,95,437,151"/>
+<area shape="rect" href="game-play_8cpp.html" title=" " alt="" coords="461,95,658,151"/>
+<area shape="rect" href="scores_8cpp.html" title=" " alt="" coords="682,102,911,143"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="935,102,1125,143"/>
+</map>
+</div>
+</div>
+<p><a href="scores_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhigh__score.html">high_score</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:add7a232f3ad37ffbc5923cd379da9603"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scores_8h.html#add7a232f3ad37ffbc5923cd379da9603">MAX_HISCORES</a>&#160;&#160;&#160;999</td></tr>
+<tr class="memdesc:add7a232f3ad37ffbc5923cd379da9603"><td class="mdescLeft">&#160;</td><td class="mdescRight">スコア情報保存の最大数 / Maximum number of high scores in the high score file  <a href="scores_8h.html#add7a232f3ad37ffbc5923cd379da9603">[詳解]</a><br /></td></tr>
+<tr class="separator:add7a232f3ad37ffbc5923cd379da9603"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:aec4f67bd6849928be0e1e73865f78094"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structhigh__score.html">high_score</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scores_8h.html#aec4f67bd6849928be0e1e73865f78094">high_score</a></td></tr>
+<tr class="separator:aec4f67bd6849928be0e1e73865f78094"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:ab638b7997049f0c4d7fbeac1f0f0a2d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scores_8h.html#ab638b7997049f0c4d7fbeac1f0f0a2d0">display_scores_aux</a> (int from, int to, int note, <a class="el" href="structhigh__score.html">high_score</a> *score)</td></tr>
+<tr class="memdesc:ab638b7997049f0c4d7fbeac1f0f0a2d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定された順位範囲でスコアを並べて表示する / Display the scores in a given range.  <a href="scores_8h.html#ab638b7997049f0c4d7fbeac1f0f0a2d0">[詳解]</a><br /></td></tr>
+<tr class="separator:ab638b7997049f0c4d7fbeac1f0f0a2d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a649215d7f6928dc9f840e4ae5e144f57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scores_8h.html#a649215d7f6928dc9f840e4ae5e144f57">display_scores</a> (int from, int to)</td></tr>
+<tr class="memdesc:a649215d7f6928dc9f840e4ae5e144f57"><td class="mdescLeft">&#160;</td><td class="mdescRight">スコア表示処理メインルーチン / Hack &ndash; Display the scores in a given range and quit.  <a href="scores_8h.html#a649215d7f6928dc9f840e4ae5e144f57">[詳解]</a><br /></td></tr>
+<tr class="separator:a649215d7f6928dc9f840e4ae5e144f57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a646d1119b381e0191fe2109589649b2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scores_8h.html#a646d1119b381e0191fe2109589649b2b">kingly</a> (<a class="el" href="structplayer__type.html">player_type</a> *winner_ptr)</td></tr>
+<tr class="memdesc:a646d1119b381e0191fe2109589649b2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">勝利者用の引退演出処理 / Change the player into a King! -RAK-  <a href="scores_8h.html#a646d1119b381e0191fe2109589649b2b">[詳解]</a><br /></td></tr>
+<tr class="separator:a646d1119b381e0191fe2109589649b2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af49a50cb34bb1e825724246836430c65"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scores_8h.html#af49a50cb34bb1e825724246836430c65">send_world_score</a> (<a class="el" href="structplayer__type.html">player_type</a> *current_player_ptr, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> do_send, void(*<a class="el" href="world_8h.html#a722be27807c99a7258058b2baabee95e">update_playtime</a>)(void), <a class="el" href="files-util_8h.html#a74980559fb74b5a8858394d204ccf028">display_player_pf</a> <a class="el" href="display-player_8h.html#a47326bd321e057559d696b8252a26271">display_player</a>)</td></tr>
+<tr class="memdesc:af49a50cb34bb1e825724246836430c65"><td class="mdescLeft">&#160;</td><td class="mdescRight">スコアサーバへの転送処理  <a href="scores_8h.html#af49a50cb34bb1e825724246836430c65">[詳解]</a><br /></td></tr>
+<tr class="separator:af49a50cb34bb1e825724246836430c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3bc9911d7f0c3a60be12ca5ea8713b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scores_8h.html#af3bc9911d7f0c3a60be12ca5ea8713b8">top_twenty</a> (<a class="el" href="structplayer__type.html">player_type</a> *current_player_ptr)</td></tr>
+<tr class="memdesc:af3bc9911d7f0c3a60be12ca5ea8713b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">スコアの過去二十位内ランキングを表示する Enters a players name on a hi-score table, if "legal", and in any case, displays some relevant portion of the high score list.  <a href="scores_8h.html#af3bc9911d7f0c3a60be12ca5ea8713b8">[詳解]</a><br /></td></tr>
+<tr class="separator:af3bc9911d7f0c3a60be12ca5ea8713b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8cf8933c4b99926822c83fb819771cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scores_8h.html#ac8cf8933c4b99926822c83fb819771cc">predict_score</a> (<a class="el" href="structplayer__type.html">player_type</a> *current_player_ptr)</td></tr>
+<tr class="memdesc:ac8cf8933c4b99926822c83fb819771cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの現在のスコアをランキングに挟む / Predict the players location, and display it.  <a href="scores_8h.html#ac8cf8933c4b99926822c83fb819771cc">[詳解]</a><br /></td></tr>
+<tr class="separator:ac8cf8933c4b99926822c83fb819771cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaa05ba4002447461e61abd06996ed3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scores_8h.html#adaa05ba4002447461e61abd06996ed3d">race_legends</a> (<a class="el" href="structplayer__type.html">player_type</a> *current_player_ptr)</td></tr>
+<tr class="memdesc:adaa05ba4002447461e61abd06996ed3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">スコアランキングの簡易表示(種族毎)メインルーチン / Race Legends -KMW-  <a href="scores_8h.html#adaa05ba4002447461e61abd06996ed3d">[詳解]</a><br /></td></tr>
+<tr class="separator:adaa05ba4002447461e61abd06996ed3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5865b524046672aef195b80c6aba7405"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scores_8h.html#a5865b524046672aef195b80c6aba7405">race_score</a> (<a class="el" href="structplayer__type.html">player_type</a> *current_player_ptr, int race_num)</td></tr>
+<tr class="memdesc:a5865b524046672aef195b80c6aba7405"><td class="mdescLeft">&#160;</td><td class="mdescRight">スコアランキングの簡易表示(種族毎)サブルーチン / Race Legends -KMW-  <a href="scores_8h.html#a5865b524046672aef195b80c6aba7405">[詳解]</a><br /></td></tr>
+<tr class="separator:a5865b524046672aef195b80c6aba7405"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a139c95397e8ccc8ebcdd2e342f08174c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scores_8h.html#a139c95397e8ccc8ebcdd2e342f08174c">show_highclass</a> (<a class="el" href="structplayer__type.html">player_type</a> *current_player_ptr)</td></tr>
+<tr class="memdesc:a139c95397e8ccc8ebcdd2e342f08174c"><td class="mdescLeft">&#160;</td><td class="mdescRight">スコアランキングの簡易表示 / show_highclass - selectively list highscores based on class -KMW-  <a href="scores_8h.html#a139c95397e8ccc8ebcdd2e342f08174c">[詳解]</a><br /></td></tr>
+<tr class="separator:a139c95397e8ccc8ebcdd2e342f08174c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac992753447accdb78088d7d04620a733"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scores_8h.html#ac992753447accdb78088d7d04620a733">check_score</a> (<a class="el" href="structplayer__type.html">player_type</a> *current_player_ptr)</td></tr>
+<tr class="memdesc:ac992753447accdb78088d7d04620a733"><td class="mdescLeft">&#160;</td><td class="mdescRight">スコアファイル出力 Display some character info  <a href="scores_8h.html#ac992753447accdb78088d7d04620a733">[詳解]</a><br /></td></tr>
+<tr class="separator:ac992753447accdb78088d7d04620a733"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:ac9cc236113303957603deb8a25df5983"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scores_8h.html#ac9cc236113303957603deb8a25df5983">highscore_fd</a></td></tr>
+<tr class="separator:ac9cc236113303957603deb8a25df5983"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="add7a232f3ad37ffbc5923cd379da9603"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add7a232f3ad37ffbc5923cd379da9603">&#9670;&nbsp;</a></span>MAX_HISCORES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_HISCORES&#160;&#160;&#160;999</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>スコア情報保存の最大数 / Maximum number of high scores in the high score file </p>
+
+</div>
+</div>
+<h2 class="groupheader">型定義詳解</h2>
+<a id="aec4f67bd6849928be0e1e73865f78094"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec4f67bd6849928be0e1e73865f78094">&#9670;&nbsp;</a></span>high_score</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structhigh__score.html">high_score</a> <a class="el" href="structhigh__score.html">high_score</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ac992753447accdb78088d7d04620a733"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac992753447accdb78088d7d04620a733">&#9670;&nbsp;</a></span>check_score()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_score </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>current_player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>スコアファイル出力 Display some character info </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_ac992753447accdb78088d7d04620a733_cgraph.png" border="0" usemap="#ascores_8h_ac992753447accdb78088d7d04620a733_cgraph" alt=""/></div>
+<map name="ascores_8h_ac992753447accdb78088d7d04620a733_cgraph" id="ascores_8h_ac992753447accdb78088d7d04620a733_cgraph">
+<area shape="rect" title="スコアファイル出力 Display some character info" alt="" coords="5,157,101,184"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="151,157,230,184"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="499,5,550,32"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="149,208,232,235"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="288,56,391,83"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="299,259,380,285"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="481,360,568,387"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="481,157,569,184"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="280,107,399,133"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="292,157,387,184"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="471,56,578,83"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="503,208,546,235"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="498,259,551,285"/>
+<area shape="rect" href="display-messages_8cpp.html#a8647d1d8cbef5e4db465563838dd2b87" title=" " alt="" coords="447,309,603,336"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="651,157,733,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_ac992753447accdb78088d7d04620a733_icgraph.png" border="0" usemap="#ascores_8h_ac992753447accdb78088d7d04620a733_icgraph" alt=""/></div>
+<map name="ascores_8h_ac992753447accdb78088d7d04620a733_icgraph" id="ascores_8h_ac992753447accdb78088d7d04620a733_icgraph">
+<area shape="rect" title="スコアファイル出力 Display some character info" alt="" coords="573,31,669,57"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="433,31,525,57"/>
+<area shape="rect" href="signal-handlers_8cpp.html#acf6a4a9a8cb29ca8bd1c8e232041aecd" title="OSからのシグナルを受けて中断、終了する / Handle signals – simple (interrupt and quit)" alt="" coords="239,5,385,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="105,56,190,83"/>
+<area shape="rect" href="signal-handlers_8cpp.html#a3719a1754f6e317bbb96770b973d453c" title="OSからのシグナルハンドルを初期化する / Prepare to handle the relevant signals" alt="" coords="104,5,191,32"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,56,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a649215d7f6928dc9f840e4ae5e144f57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a649215d7f6928dc9f840e4ae5e144f57">&#9670;&nbsp;</a></span>display_scores()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_scores </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>to</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>スコア表示処理メインルーチン / Hack &ndash; Display the scores in a given range and quit. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">from</td><td>順位先頭 </td></tr>
+    <tr><td class="paramname">to</td><td>順位末尾 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<pre>
+This function is only called from "main.c" when the user asks
+to see the "high scores".
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_a649215d7f6928dc9f840e4ae5e144f57_cgraph.png" border="0" usemap="#ascores_8h_a649215d7f6928dc9f840e4ae5e144f57_cgraph" alt=""/></div>
+<map name="ascores_8h_a649215d7f6928dc9f840e4ae5e144f57_cgraph" id="ascores_8h_a649215d7f6928dc9f840e4ae5e144f57_cgraph">
+<area shape="rect" title="スコア表示処理メインルーチン / Hack – Display the scores in a given range and quit." alt="" coords="5,664,115,691"/>
+<area shape="rect" href="scores_8cpp.html#ab638b7997049f0c4d7fbeac1f0f0a2d0" title="指定された順位範囲でスコアを並べて表示する / Display the scores in a given range." alt="" coords="163,436,300,463"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="363,639,446,665"/>
+<area shape="rect" href="angband-files_8cpp.html#a5a186f4266676163ec63ff8413334fb1" title=" " alt="" coords="196,689,267,716"/>
+<area shape="rect" href="angband-files_8cpp.html#a0aaa636968ab7a5666dc2d7d779f82ca" title=" " alt="" coords="198,740,265,767"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="191,588,272,615"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="210,791,253,817"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="367,487,443,513"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="375,28,434,55"/>
+<area shape="rect" href="scores_8cpp.html#a21d404b1ebb714141bf43689560aa406" title="所定ポインタからスコア情報を読み取る / Read one score from the highscore file" alt="" coords="349,101,460,128"/>
+<area shape="rect" href="scores_8cpp.html#adee3ea2bc90aeda5dafba5b4bf0277f7" title="i番目のスコア情報にバッファ位置をシークする / Seek score &#39;i&#39; in the highscore file" alt="" coords="348,196,461,223"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="378,335,431,361"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="385,385,424,412"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="373,537,436,564"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="379,588,430,615"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="353,436,457,463"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="523,613,611,640"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="536,5,599,32"/>
+<area shape="rect" href="angband-files_8cpp.html#a8c0152dc880ff428bd0f4c52f479baf5" title=" " alt="" coords="535,56,599,83"/>
+<area shape="rect" href="angband-files_8cpp.html#a2bfbb437b11fcd69bf7a407bdfef886c" title=" " alt="" coords="534,107,601,133"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="516,259,619,285"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="673,309,772,336"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="820,360,897,387"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="527,360,608,387"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="679,411,766,437"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="509,512,625,539"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="681,461,764,488"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="509,563,625,589"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="509,157,625,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_a649215d7f6928dc9f840e4ae5e144f57_icgraph.png" border="0" usemap="#ascores_8h_a649215d7f6928dc9f840e4ae5e144f57_icgraph" alt=""/></div>
+<map name="ascores_8h_a649215d7f6928dc9f840e4ae5e144f57_icgraph" id="ascores_8h_a649215d7f6928dc9f840e4ae5e144f57_icgraph">
+<area shape="rect" title="スコア表示処理メインルーチン / Hack – Display the scores in a given range and quit." alt="" coords="104,5,213,32"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab638b7997049f0c4d7fbeac1f0f0a2d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab638b7997049f0c4d7fbeac1f0f0a2d0">&#9670;&nbsp;</a></span>display_scores_aux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_scores_aux </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>note</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhigh__score.html">high_score</a> *&#160;</td>
+          <td class="paramname"><em>score</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>指定された順位範囲でスコアを並べて表示する / Display the scores in a given range. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">from</td><td>順位先頭 </td></tr>
+    <tr><td class="paramname">to</td><td>順位末尾 </td></tr>
+    <tr><td class="paramname">note</td><td>黄色表示でハイライトする順位 </td></tr>
+    <tr><td class="paramname">score</td><td>スコア配列参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<pre>
+Assumes the high score list is already open.
+Only five entries per line, too much info.
+
+Mega-Hack -- allow "fake" entry at the given position.
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_ab638b7997049f0c4d7fbeac1f0f0a2d0_cgraph.png" border="0" usemap="#ascores_8h_ab638b7997049f0c4d7fbeac1f0f0a2d0_cgraph" alt=""/></div>
+<map name="ascores_8h_ab638b7997049f0c4d7fbeac1f0f0a2d0_cgraph" id="ascores_8h_ab638b7997049f0c4d7fbeac1f0f0a2d0_cgraph">
+<area shape="rect" title="指定された順位範囲でスコアを並べて表示する / Display the scores in a given range." alt="" coords="5,329,143,356"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="209,221,285,248"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="218,9,277,36"/>
+<area shape="rect" href="scores_8cpp.html#a21d404b1ebb714141bf43689560aa406" title="所定ポインタからスコア情報を読み取る / Read one score from the highscore file" alt="" coords="192,63,303,89"/>
+<area shape="rect" href="scores_8cpp.html#adee3ea2bc90aeda5dafba5b4bf0277f7" title="i番目のスコア情報にバッファ位置をシークする / Seek score &#39;i&#39; in the highscore file" alt="" coords="191,120,304,147"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="221,360,274,387"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="708,812,759,839"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="228,411,267,437"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="216,297,279,324"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="206,913,289,940"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="195,964,299,991"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="366,157,454,184"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="536,157,627,184"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="534,211,629,237"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="379,5,441,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="548,5,615,32"/>
+<area shape="rect" href="angband-files_8cpp.html#a8c0152dc880ff428bd0f4c52f479baf5" title=" " alt="" coords="378,56,442,83"/>
+<area shape="rect" href="angband-files_8cpp.html#a2bfbb437b11fcd69bf7a407bdfef886c" title=" " alt="" coords="377,107,443,133"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="359,309,461,336"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="532,268,631,295"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="695,483,772,509"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="369,660,451,687"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="538,559,625,585"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="352,259,468,285"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="369,512,451,539"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="352,360,468,387"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="352,411,468,437"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="536,319,627,345"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="540,381,623,408"/>
+<area shape="rect" href="macro-util_8cpp.html#a1e9851f9b9e0a0e51628a231ca95fcc1" title=" " alt="" coords="518,812,645,839"/>
+<area shape="rect" href="macro-util_8cpp.html#a7f48a1923076b3b314f1bc58913a2a59" title=" " alt="" coords="516,761,647,788"/>
+<area shape="rect" href="macro-util_8cpp.html#ada693de344c97bc09a586100f25919dd" title=" " alt="" coords="519,660,643,687"/>
+<area shape="rect" href="z-term_8cpp.html#a020ef4815c101960b4fdad94c4e5b59b" title=" " alt="" coords="526,711,637,737"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_ab638b7997049f0c4d7fbeac1f0f0a2d0_icgraph.png" border="0" usemap="#ascores_8h_ab638b7997049f0c4d7fbeac1f0f0a2d0_icgraph" alt=""/></div>
+<map name="ascores_8h_ab638b7997049f0c4d7fbeac1f0f0a2d0_icgraph" id="ascores_8h_ab638b7997049f0c4d7fbeac1f0f0a2d0_icgraph">
+<area shape="rect" title="指定された順位範囲でスコアを並べて表示する / Display the scores in a given range." alt="" coords="936,69,1073,96"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="480,95,572,121"/>
+<area shape="rect" href="scores_8cpp.html#a649215d7f6928dc9f840e4ae5e144f57" title="スコア表示処理メインルーチン / Hack – Display the scores in a given range and quit." alt="" coords="104,5,213,32"/>
+<area shape="rect" href="scores_8cpp.html#ac8cf8933c4b99926822c83fb819771cc" title="プレイヤーの現在のスコアをランキングに挟む / Predict the players location, and display it." alt="" coords="788,44,888,71"/>
+<area shape="rect" href="scores_8cpp.html#af3bc9911d7f0c3a60be12ca5ea8713b8" title="スコアの過去二十位内ランキングを表示する Enters a players name on a hi&#45;score table, if &quot;legal&quot;, and in any case,..." alt="" coords="649,145,735,172"/>
+<area shape="rect" href="signal-handlers_8cpp.html#acf6a4a9a8cb29ca8bd1c8e232041aecd" title="OSからのシグナルを受けて中断、終了する / Handle signals – simple (interrupt and quit)" alt="" coords="261,69,408,96"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="292,120,377,147"/>
+<area shape="rect" href="signal-handlers_8cpp.html#a3719a1754f6e317bbb96770b973d453c" title="OSからのシグナルハンドルを初期化する / Prepare to handle the relevant signals" alt="" coords="115,69,202,96"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,69,56,96"/>
+<area shape="rect" href="game-closer_8cpp.html#a87d2bc43dd7c1537d1b537a9f776a73b" title="ゲームクローズ時、プレイヤーが死亡しているかのチェックを行い死亡していないならば、確認キー入力とスコア表示、現フロアの初期化を行う。" alt="" coords="644,44,740,71"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="456,145,596,172"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a646d1119b381e0191fe2109589649b2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a646d1119b381e0191fe2109589649b2b">&#9670;&nbsp;</a></span>kingly()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kingly </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>winner_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>勝利者用の引退演出処理 / Change the player into a King! -RAK- </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_a646d1119b381e0191fe2109589649b2b_cgraph.png" border="0" usemap="#ascores_8h_a646d1119b381e0191fe2109589649b2b_cgraph" alt=""/></div>
+<map name="ascores_8h_a646d1119b381e0191fe2109589649b2b_cgraph" id="ascores_8h_a646d1119b381e0191fe2109589649b2b_cgraph">
+<area shape="rect" title="勝利者用の引退演出処理 / Change the player into a King! &#45;RAK&#45;" alt="" coords="5,629,61,655"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="109,249,221,275"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="628,426,679,453"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="141,578,190,605"/>
+<area shape="rect" href="asking-player_8cpp.html#a28b7bdf88cc755ffa6c94bb59d997d1a" title=" " alt="" coords="123,629,207,655"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="313,679,376,706"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="124,730,207,757"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="113,781,217,807"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="468,274,580,301"/>
+<area shape="rect" href="world_8cpp.html#a3da5b82e6bb95498402f78c954a628d0" title="現在の日数、時刻を返す / Extract day, hour, min" alt="" coords="269,325,420,351"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="315,223,374,250"/>
+<area shape="rect" href="write-diary_8cpp.html#a9dd20d3a7be882e5dcb9d8ebd74539e0" title="Return suffix of ordinal number" alt="" coords="277,5,412,47"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="292,71,397,98"/>
+<area shape="rect" href="write-diary_8cpp.html#a721a3148877a6d0a8936a10842591e2c" title="日記ファイルを開く" alt="" coords="291,426,399,453"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="285,375,405,402"/>
+<area shape="rect" href="write-diary_8cpp.html#a0bc11216e7a5445c14b3c0df826641bf" title="ペットに関する日記を追加する" alt="" coords="290,122,399,149"/>
+<area shape="rect" href="write-diary_8cpp.html#af2cab656963fc78e9b465c77c6353382" title="フロア情報を日記に追加する" alt="" coords="305,173,385,199"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="493,223,555,250"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="469,477,579,503"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="479,375,569,402"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="483,426,565,453"/>
+<area shape="rect" href="quest_8cpp.html#a5b6b24bb1f79322d67d0cc51368d3ad3" title="新しく入ったダンジョンの階層に固定されている一般のクエストを探し出しIDを返す。 / Hack – Check if a level is a &quot;quest&quot; level" alt="" coords="472,173,576,199"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="318,629,371,655"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="325,578,364,605"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_a646d1119b381e0191fe2109589649b2b_icgraph.png" border="0" usemap="#ascores_8h_a646d1119b381e0191fe2109589649b2b_icgraph" alt=""/></div>
+<map name="ascores_8h_a646d1119b381e0191fe2109589649b2b_icgraph" id="ascores_8h_a646d1119b381e0191fe2109589649b2b_icgraph">
+<area shape="rect" title="勝利者用の引退演出処理 / Change the player into a King! &#45;RAK&#45;" alt="" coords="573,31,629,57"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="433,31,525,57"/>
+<area shape="rect" href="signal-handlers_8cpp.html#acf6a4a9a8cb29ca8bd1c8e232041aecd" title="OSからのシグナルを受けて中断、終了する / Handle signals – simple (interrupt and quit)" alt="" coords="239,5,385,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="105,56,190,83"/>
+<area shape="rect" href="signal-handlers_8cpp.html#a3719a1754f6e317bbb96770b973d453c" title="OSからのシグナルハンドルを初期化する / Prepare to handle the relevant signals" alt="" coords="104,5,191,32"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,56,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac8cf8933c4b99926822c83fb819771cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8cf8933c4b99926822c83fb819771cc">&#9670;&nbsp;</a></span>predict_score()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> predict_score </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>current_player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーの現在のスコアをランキングに挟む / Predict the players location, and display it. </p>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_ac8cf8933c4b99926822c83fb819771cc_cgraph.png" border="0" usemap="#ascores_8h_ac8cf8933c4b99926822c83fb819771cc_cgraph" alt=""/></div>
+<map name="ascores_8h_ac8cf8933c4b99926822c83fb819771cc_cgraph" id="ascores_8h_ac8cf8933c4b99926822c83fb819771cc_cgraph">
+<area shape="rect" title="プレイヤーの現在のスコアをランキングに挟む / Predict the players location, and display it." alt="" coords="5,309,105,336"/>
+<area shape="rect" href="player-status_8cpp.html#a243ef43b96c60d2556df03404d7c82c6" title="スコアを計算する / Hack – Calculates the total number of points earned &#45;JWT&#45;" alt="" coords="179,157,265,184"/>
+<area shape="rect" href="scores_8cpp.html#ab638b7997049f0c4d7fbeac1f0f0a2d0" title="指定された順位範囲でスコアを並べて表示する / Display the scores in a given range." alt="" coords="153,309,291,336"/>
+<area shape="rect" href="scores_8cpp.html#afdb7fbba6550e8e882ba3241a8d0473c" title="スコア情報を全て得るまで繰り返し取得する / Just determine where a new score would be placed" alt="" coords="163,208,281,235"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="183,360,261,387"/>
+<area shape="rect" href="turn-compensator_8cpp.html#a56227c29ab78f7e7a649ff1c35e7919b" title="ゲームターンからの実時間換算を行うための補正をかける" alt="" coords="186,411,258,437"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="357,360,433,387"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="366,208,425,235"/>
+<area shape="rect" href="scores_8cpp.html#a21d404b1ebb714141bf43689560aa406" title="所定ポインタからスコア情報を読み取る / Read one score from the highscore file" alt="" coords="340,157,451,184"/>
+<area shape="rect" href="scores_8cpp.html#adee3ea2bc90aeda5dafba5b4bf0277f7" title="i番目のスコア情報にバッファ位置をシークする / Seek score &#39;i&#39; in the highscore file" alt="" coords="339,107,452,133"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="369,309,422,336"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="376,411,415,437"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="364,512,427,539"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="370,461,421,488"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="354,563,437,589"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="343,259,447,285"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="514,613,602,640"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="527,107,589,133"/>
+<area shape="rect" href="angband-files_8cpp.html#a8c0152dc880ff428bd0f4c52f479baf5" title=" " alt="" coords="526,56,590,83"/>
+<area shape="rect" href="angband-files_8cpp.html#a2bfbb437b11fcd69bf7a407bdfef886c" title=" " alt="" coords="525,5,591,32"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="507,309,609,336"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="664,309,763,336"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="811,411,888,437"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="517,411,599,437"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="670,461,757,488"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="500,512,616,539"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="672,537,755,564"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="500,157,616,184"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="500,208,616,235"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_ac8cf8933c4b99926822c83fb819771cc_icgraph.png" border="0" usemap="#ascores_8h_ac8cf8933c4b99926822c83fb819771cc_icgraph" alt=""/></div>
+<map name="ascores_8h_ac8cf8933c4b99926822c83fb819771cc_icgraph" id="ascores_8h_ac8cf8933c4b99926822c83fb819771cc_icgraph">
+<area shape="rect" title="プレイヤーの現在のスコアをランキングに挟む / Predict the players location, and display it." alt="" coords="484,31,584,57"/>
+<area shape="rect" href="game-closer_8cpp.html#a87d2bc43dd7c1537d1b537a9f776a73b" title="ゲームクローズ時、プレイヤーが死亡しているかのチェックを行い死亡していないならば、確認キー入力とスコア表示、現フロアの初期化を行う。" alt="" coords="340,31,436,57"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="200,31,292,57"/>
+<area shape="rect" href="signal-handlers_8cpp.html#acf6a4a9a8cb29ca8bd1c8e232041aecd" title="OSからのシグナルを受けて中断、終了する / Handle signals – simple (interrupt and quit)" alt="" coords="5,5,152,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="36,56,121,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adaa05ba4002447461e61abd06996ed3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaa05ba4002447461e61abd06996ed3d">&#9670;&nbsp;</a></span>race_legends()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void race_legends </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>current_player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>スコアランキングの簡易表示(種族毎)メインルーチン / Race Legends -KMW- </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_adaa05ba4002447461e61abd06996ed3d_cgraph.png" border="0" usemap="#ascores_8h_adaa05ba4002447461e61abd06996ed3d_cgraph" alt=""/></div>
+<map name="ascores_8h_adaa05ba4002447461e61abd06996ed3d_cgraph" id="ascores_8h_adaa05ba4002447461e61abd06996ed3d_cgraph">
+<area shape="rect" title="スコアランキングの簡易表示(種族毎)メインルーチン / Race Legends &#45;KMW&#45;" alt="" coords="5,252,104,279"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="304,164,383,191"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="324,252,363,279"/>
+<area shape="rect" href="scores_8cpp.html#a5865b524046672aef195b80c6aba7405" title="スコアランキングの簡易表示(種族毎)サブルーチン / Race Legends &#45;KMW&#45;" alt="" coords="152,328,239,355"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="456,259,559,285"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="467,157,548,184"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="649,259,736,285"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="649,56,737,83"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="448,5,567,32"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="460,107,555,133"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="639,309,746,336"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="667,360,718,387"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="671,107,714,133"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="666,157,719,184"/>
+<area shape="rect" href="display-messages_8cpp.html#a8647d1d8cbef5e4db465563838dd2b87" title=" " alt="" coords="615,208,771,235"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="819,56,901,83"/>
+<area shape="rect" href="angband-files_8cpp.html#a5a186f4266676163ec63ff8413334fb1" title=" " alt="" coords="308,404,379,431"/>
+<area shape="rect" href="angband-files_8cpp.html#a0aaa636968ab7a5666dc2d7d779f82ca" title=" " alt="" coords="310,455,377,481"/>
+<area shape="rect" href="scores_8cpp.html#a21d404b1ebb714141bf43689560aa406" title="所定ポインタからスコア情報を読み取る / Read one score from the highscore file" alt="" coords="288,505,399,532"/>
+<area shape="rect" href="scores_8cpp.html#adee3ea2bc90aeda5dafba5b4bf0277f7" title="i番目のスコア情報にバッファ位置をシークする / Seek score &#39;i&#39; in the highscore file" alt="" coords="287,303,400,329"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="467,360,548,387"/>
+<area shape="rect" href="angband-files_8cpp.html#a8c0152dc880ff428bd0f4c52f479baf5" title=" " alt="" coords="475,505,539,532"/>
+<area shape="rect" href="angband-files_8cpp.html#a2bfbb437b11fcd69bf7a407bdfef886c" title=" " alt="" coords="474,309,541,336"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_adaa05ba4002447461e61abd06996ed3d_icgraph.png" border="0" usemap="#ascores_8h_adaa05ba4002447461e61abd06996ed3d_icgraph" alt=""/></div>
+<map name="ascores_8h_adaa05ba4002447461e61abd06996ed3d_icgraph" id="ascores_8h_adaa05ba4002447461e61abd06996ed3d_icgraph">
+<area shape="rect" title="スコアランキングの簡易表示(種族毎)メインルーチン / Race Legends &#45;KMW&#45;" alt="" coords="563,5,661,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="352,5,515,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="185,5,304,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5865b524046672aef195b80c6aba7405"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5865b524046672aef195b80c6aba7405">&#9670;&nbsp;</a></span>race_score()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void race_score </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>current_player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>race_num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>スコアランキングの簡易表示(種族毎)サブルーチン / Race Legends -KMW- </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">race_num</td><td>種族ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_a5865b524046672aef195b80c6aba7405_cgraph.png" border="0" usemap="#ascores_8h_a5865b524046672aef195b80c6aba7405_cgraph" alt=""/></div>
+<map name="ascores_8h_a5865b524046672aef195b80c6aba7405_cgraph" id="ascores_8h_a5865b524046672aef195b80c6aba7405_cgraph">
+<area shape="rect" title="スコアランキングの簡易表示(種族毎)サブルーチン / Race Legends &#45;KMW&#45;" alt="" coords="5,157,92,184"/>
+<area shape="rect" href="angband-files_8cpp.html#a5a186f4266676163ec63ff8413334fb1" title=" " alt="" coords="161,5,232,32"/>
+<area shape="rect" href="angband-files_8cpp.html#a0aaa636968ab7a5666dc2d7d779f82ca" title=" " alt="" coords="163,56,230,83"/>
+<area shape="rect" href="scores_8cpp.html#a21d404b1ebb714141bf43689560aa406" title="所定ポインタからスコア情報を読み取る / Read one score from the highscore file" alt="" coords="141,107,252,133"/>
+<area shape="rect" href="scores_8cpp.html#adee3ea2bc90aeda5dafba5b4bf0277f7" title="i番目のスコア情報にバッファ位置をシークする / Seek score &#39;i&#39; in the highscore file" alt="" coords="140,157,253,184"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="157,335,236,361"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="320,208,401,235"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="177,385,216,412"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="317,56,404,83"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="515,107,577,133"/>
+<area shape="rect" href="angband-files_8cpp.html#a8c0152dc880ff428bd0f4c52f479baf5" title=" " alt="" coords="329,107,393,133"/>
+<area shape="rect" href="angband-files_8cpp.html#a2bfbb437b11fcd69bf7a407bdfef886c" title=" " alt="" coords="327,157,394,184"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="309,259,412,285"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="320,411,401,437"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="503,309,589,336"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="502,512,590,539"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="301,551,420,577"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="313,360,408,387"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="493,259,599,285"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="521,208,571,235"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="525,360,567,387"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="519,411,573,437"/>
+<area shape="rect" href="display-messages_8cpp.html#a8647d1d8cbef5e4db465563838dd2b87" title=" " alt="" coords="468,461,624,488"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="672,461,755,488"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_a5865b524046672aef195b80c6aba7405_icgraph.png" border="0" usemap="#ascores_8h_a5865b524046672aef195b80c6aba7405_icgraph" alt=""/></div>
+<map name="ascores_8h_a5865b524046672aef195b80c6aba7405_icgraph" id="ascores_8h_a5865b524046672aef195b80c6aba7405_icgraph">
+<area shape="rect" title="スコアランキングの簡易表示(種族毎)サブルーチン / Race Legends &#45;KMW&#45;" alt="" coords="529,5,616,32"/>
+<area shape="rect" href="scores_8cpp.html#adaa05ba4002447461e61abd06996ed3d" title="スコアランキングの簡易表示(種族毎)メインルーチン / Race Legends &#45;KMW&#45;" alt="" coords="383,5,481,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="172,5,335,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="5,5,124,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af49a50cb34bb1e825724246836430c65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af49a50cb34bb1e825724246836430c65">&#9670;&nbsp;</a></span>send_world_score()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> send_world_score </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>current_player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>do_send</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(void)&#160;</td>
+          <td class="paramname"><em>update_playtime</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="files-util_8h.html#a74980559fb74b5a8858394d204ccf028">display_player_pf</a>&#160;</td>
+          <td class="paramname"><em>display_player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>スコアサーバへの転送処理 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">current_player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">do_send</td><td>実際に転送ア処置を行うか否か </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>転送が成功したらTRUEを返す </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000024">todo:</a></b></dt><dd>プリプロが邪魔していて最初のif文を削除すると到達不能コードが発生する </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_af49a50cb34bb1e825724246836430c65_cgraph.png" border="0" usemap="#ascores_8h_af49a50cb34bb1e825724246836430c65_cgraph" alt=""/></div>
+<map name="ascores_8h_af49a50cb34bb1e825724246836430c65_cgraph" id="ascores_8h_af49a50cb34bb1e825724246836430c65_cgraph">
+<area shape="rect" title="スコアサーバへの転送処理" alt="" coords="5,1589,132,1615"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="187,753,292,779"/>
+<area shape="rect" href="asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="180,1639,299,1666"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="396,1639,449,1666"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="383,1513,462,1539"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="403,1690,442,1717"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="193,1487,285,1514"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="192,1538,287,1565"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="198,1741,281,1767"/>
+<area shape="rect" href="world_8cpp.html#a722be27807c99a7258058b2baabee95e" title="実ゲームプレイ時間を更新する" alt="" coords="181,1791,298,1818"/>
+<area shape="rect" href="class_flag_group.html#a85a4dd28bb671ffe973b1fd50a0be4d7" title="フラグ集合のいずれかのフラグがONかどうかを調べる" alt="" coords="367,246,478,273"/>
+<area shape="rect" href="screen-processor_8cpp.html#a723cb7a38362add3188d0080fc2934f2" title=" " alt="" coords="381,1462,464,1489"/>
+<area shape="rect" href="display-player_8cpp.html#aaee4f2ef5be5ff2730b5c33cd3abcfeb" title="現在いるフロアを、または死んでいたらどこでどう死んだかをバッファに詰める" alt="" coords="353,1133,492,1159"/>
+<area shape="rect" href="display-player_8cpp.html#a1bdb389744310331940e29af30840133" title="今いる、または死亡した場所を表示する" alt="" coords="352,1259,493,1286"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="849,1386,911,1413"/>
+<area shape="rect" href="display-player_8cpp.html#a0ef97a250df984851fc8da77b03efa7f" title="魔法領域を表示する" alt="" coords="347,347,498,374"/>
+<area shape="rect" href="display-util_8cpp.html#a93793a2ac3c90903c7062b3997b8e873" title="プレイヤーのステータス1種を出力する" alt="" coords="1013,499,1173,526"/>
+<area shape="rect" href="display-player_8cpp.html#a70fd99a5acd7bdf8ecbb0ca5bd2c06a9" title="@ brief 年齢、身長、体重、威信を表示する" alt="" coords="363,474,482,501"/>
+<area shape="rect" href="display-player_8cpp.html#ac1c5dd5acc0c426608055edb73550f96" title="名前、性別、種族、職業を表示する" alt="" coords="795,145,965,171"/>
+<area shape="rect" href="display-player_8cpp.html#a5e697054ef593f4033637a2bdfffe272" title="プレーヤーのステータス表示メインルーチン群" alt="" coords="357,1589,489,1615"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a829dd2517519fca14718f1bf3bfb5990" title="プレイヤーステータス表示の中央部分を表示するサブルーチン" alt="" coords="347,753,498,779"/>
+<area shape="rect" href="display-player_8cpp.html#a1514de610e5f67886716738fc150fdee" title="能力値を (減少していたら色を変えて)表示する" alt="" coords="576,1411,717,1438"/>
+<area shape="rect" href="status-first-page_8cpp.html#a982a10d3afa348525bad0d2d64110ed5" title="プレイヤーステータスの1ページ目各種詳細をまとめて表示する Prints ratings on certain abilities" alt="" coords="347,145,499,171"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="367,195,478,222"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="603,1462,690,1489"/>
+<area shape="rect" href="display-player_8cpp.html#a2ef59570e7557be50e6383f35598dcf5" title="クエストフロアで生きている場合、クエスト名をバッファに詰める" alt="" coords="569,1107,724,1134"/>
+<area shape="rect" href="floor-util_8cpp.html#a07021e31377daf075675327389b73831" title="現在のマップ名を返す /" alt="" coords="837,1183,923,1210"/>
+<area shape="rect" href="display-player_8cpp.html#a5f57627489015e526373738ab0317a4b" title="ゲームオーバーの原因を探る (生きていたら何もしない)" alt="" coords="575,1209,718,1235"/>
+<area shape="rect" href="buffer-shaper_8cpp.html#a74f223098d062fe8625ee0809a800315" title=" " alt="" coords="599,1259,694,1286"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a7938bd6931e341c09bf755674a0203c8" title="元素魔法の領域名を返す" alt="" coords="586,246,707,273"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="851,603,909,630"/>
+<area shape="rect" href="player-status_8cpp.html#a9274f7ed1a8752514bd93bd8027a4954" title="クリーチャーの抽象的善悪アライメントの表記を返す。 / Return alignment title" alt="" coords="591,398,702,425"/>
+<area shape="rect" href="display-player_8cpp.html#a9fe8f180d0c7988d9f70e24d800817e0" title="プレイヤーの装備一覧をシンボルで並べる Equippy chars" alt="" coords="801,1731,959,1758"/>
+<area shape="rect" href="display-characteristic_8cpp.html#a98bc402fba984a589ca7c4c3adb271b7" title="プレイヤーの特性フラグ一覧表示1" alt="" coords="581,1783,713,1824"/>
+<area shape="rect" href="display-characteristic_8cpp.html#a6e3f658b668261aec60092801647b41b" title="プレイヤーの特性フラグ一覧表示2" alt="" coords="581,1665,713,1707"/>
+<area shape="rect" href="display-player-misc-info_8cpp.html#ab7234610551ed5bd008a16a62fd3cbd5" title="プレイヤーの特性フラグ一覧表示2a /" alt="" coords="563,1513,730,1539"/>
+<area shape="rect" href="display-player-stat-info_8cpp.html#af23dda5da4c4134bc91e811ea6255929" title="プレイヤーの特性フラグ一覧表示2b / Special display, part 2b" alt="" coords="566,1614,727,1641"/>
+<area shape="rect" href="knowledge-mutations_8cpp.html#a553a7223b99f30d93202f786b8abbf2c" title="突然変異の一覧を出力する" alt="" coords="547,1563,747,1590"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="842,1513,918,1539"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a97590407fe4f931d279f82aa651a5d8b" title="何らかの効果による一時的な速度変化を計算する" alt="" coords="570,651,723,678"/>
+<area shape="rect" href="player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="553,702,740,729"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a03b3ad6ef8154aa27eeac2377064a99d" title="プレーヤーの速度から表示色を決める" alt="" coords="578,753,715,779"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a3be8fbd88c38f785f20bf3c8b8cd9f5a" title="武器による命中率とダメージの補正を表示する" alt="" coords="578,449,715,475"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a38d8ca5122dcd25400ffd0760a7efa43" title="プレーヤーの現在経験値・最大経験値・次のレベルまでに必要な経験値を表示する" alt="" coords="580,499,713,526"/>
+<area shape="rect" href="display-player-middle_8cpp.html#aec99cbc87b4fb2bdc1027bea047a6a5d" title="プレイヤーの打撃能力修正を表示する" alt="" coords="807,999,953,1040"/>
+<area shape="rect" href="display-player-middle_8cpp.html#ac9656f4b5a37842d7767cb6f28c6c235" title="プレーヤーの最終的な速度を表示する" alt="" coords="573,803,720,830"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a01863ae506d3ffd2a46a367b6885cce6" title="ゲーム内の経過時間を表示する" alt="" coords="559,854,734,881"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a5c432186b0be13c7d8d198607d85dd8e" title="現実世界におけるプレイ時間を表示する" alt="" coords="573,905,720,931"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a7ffa845f60ebb5dd97e54815fc0db6c8" title="射撃武器倍率を表示する" alt="" coords="554,955,739,982"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a538780db09c90ba4cb815863867bcbaa" title="右手に比べて左手の表示ルーチンが複雑なので分離" alt="" coords="583,1006,710,1033"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_af49a50cb34bb1e825724246836430c65_icgraph.png" border="0" usemap="#ascores_8h_af49a50cb34bb1e825724246836430c65_icgraph" alt=""/></div>
+<map name="ascores_8h_af49a50cb34bb1e825724246836430c65_icgraph" id="ascores_8h_af49a50cb34bb1e825724246836430c65_icgraph">
+<area shape="rect" title="スコアサーバへの転送処理" alt="" coords="681,33,808,60"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="299,5,439,32"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="487,55,633,97"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="135,7,220,33"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,7,56,33"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="323,59,415,85"/>
+<area shape="rect" href="signal-handlers_8cpp.html#acf6a4a9a8cb29ca8bd1c8e232041aecd" title="OSからのシグナルを受けて中断、終了する / Handle signals – simple (interrupt and quit)" alt="" coords="104,59,251,85"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a139c95397e8ccc8ebcdd2e342f08174c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a139c95397e8ccc8ebcdd2e342f08174c">&#9670;&nbsp;</a></span>show_highclass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void show_highclass </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>current_player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>スコアランキングの簡易表示 / show_highclass - selectively list highscores based on class -KMW- </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_a139c95397e8ccc8ebcdd2e342f08174c_cgraph.png" border="0" usemap="#ascores_8h_a139c95397e8ccc8ebcdd2e342f08174c_cgraph" alt=""/></div>
+<map name="ascores_8h_a139c95397e8ccc8ebcdd2e342f08174c_cgraph" id="ascores_8h_a139c95397e8ccc8ebcdd2e342f08174c_cgraph">
+<area shape="rect" title="スコアランキングの簡易表示 / show_highclass &#45; selectively list highscores based on class &#45;KMW&#45;" alt="" coords="5,360,120,387"/>
+<area shape="rect" href="angband-files_8cpp.html#a5a186f4266676163ec63ff8413334fb1" title=" " alt="" coords="189,132,260,159"/>
+<area shape="rect" href="angband-files_8cpp.html#a0aaa636968ab7a5666dc2d7d779f82ca" title=" " alt="" coords="191,183,258,209"/>
+<area shape="rect" href="scores_8cpp.html#a21d404b1ebb714141bf43689560aa406" title="所定ポインタからスコア情報を読み取る / Read one score from the highscore file" alt="" coords="169,233,280,260"/>
+<area shape="rect" href="scores_8cpp.html#adee3ea2bc90aeda5dafba5b4bf0277f7" title="i番目のスコア情報にバッファ位置をシークする / Seek score &#39;i&#39; in the highscore file" alt="" coords="168,284,281,311"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="198,385,251,412"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="348,664,427,691"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="184,335,265,361"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="205,487,244,513"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="179,625,271,652"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="177,436,272,463"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="344,5,431,32"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="527,81,590,108"/>
+<area shape="rect" href="angband-files_8cpp.html#a8c0152dc880ff428bd0f4c52f479baf5" title=" " alt="" coords="355,56,419,83"/>
+<area shape="rect" href="angband-files_8cpp.html#a2bfbb437b11fcd69bf7a407bdfef886c" title=" " alt="" coords="354,107,421,133"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="336,461,439,488"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="509,309,608,336"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="672,487,749,513"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="347,613,428,640"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="515,563,602,589"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="329,208,445,235"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="346,259,429,285"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="329,309,445,336"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="329,360,445,387"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="513,411,604,437"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="517,461,600,488"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="511,360,606,387"/>
+<area shape="rect" href="macro-util_8cpp.html#a1e9851f9b9e0a0e51628a231ca95fcc1" title=" " alt="" coords="495,715,622,741"/>
+<area shape="rect" href="macro-util_8cpp.html#a7f48a1923076b3b314f1bc58913a2a59" title=" " alt="" coords="493,765,624,792"/>
+<area shape="rect" href="macro-util_8cpp.html#ada693de344c97bc09a586100f25919dd" title=" " alt="" coords="497,816,621,843"/>
+<area shape="rect" href="z-term_8cpp.html#a020ef4815c101960b4fdad94c4e5b59b" title=" " alt="" coords="503,664,614,691"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_a139c95397e8ccc8ebcdd2e342f08174c_icgraph.png" border="0" usemap="#ascores_8h_a139c95397e8ccc8ebcdd2e342f08174c_icgraph" alt=""/></div>
+<map name="ascores_8h_a139c95397e8ccc8ebcdd2e342f08174c_icgraph" id="ascores_8h_a139c95397e8ccc8ebcdd2e342f08174c_icgraph">
+<area shape="rect" title="スコアランキングの簡易表示 / show_highclass &#45; selectively list highscores based on class &#45;KMW&#45;" alt="" coords="563,5,677,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="352,5,515,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="185,5,304,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af3bc9911d7f0c3a60be12ca5ea8713b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3bc9911d7f0c3a60be12ca5ea8713b8">&#9670;&nbsp;</a></span>top_twenty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> top_twenty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>current_player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>スコアの過去二十位内ランキングを表示する Enters a players name on a hi-score table, if "legal", and in any case, displays some relevant portion of the high score list. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">current_player_ptr</td><td>スコアに適用するための現在プレイヤークリーチャー参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード</dd></dl>
+<p>Assumes "signals_ignore_tstp()" has been called. </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_af3bc9911d7f0c3a60be12ca5ea8713b8_cgraph.png" border="0" usemap="#ascores_8h_af3bc9911d7f0c3a60be12ca5ea8713b8_cgraph" alt=""/></div>
+<map name="ascores_8h_af3bc9911d7f0c3a60be12ca5ea8713b8_cgraph" id="ascores_8h_af3bc9911d7f0c3a60be12ca5ea8713b8_cgraph">
+<area shape="rect" title="スコアの過去二十位内ランキングを表示する Enters a players name on a hi&#45;score table, if &quot;legal&quot;, and in any case,..." alt="" coords="5,512,91,539"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="141,335,256,361"/>
+<area shape="rect" href="player-status_8cpp.html#a243ef43b96c60d2556df03404d7c82c6" title="スコアを計算する / Hack – Calculates the total number of points earned &#45;JWT&#45;" alt="" coords="156,385,241,412"/>
+<area shape="rect" href="scores_8cpp.html#ab638b7997049f0c4d7fbeac1f0f0a2d0" title="指定された順位範囲でスコアを並べて表示する / Display the scores in a given range." alt="" coords="307,335,444,361"/>
+<area shape="rect" href="angband-files_8cpp.html#a4596de25a04220941f707a9407dc6495" title=" " alt="" coords="167,537,230,564"/>
+<area shape="rect" href="scores_8cpp.html#a47d3bcc091540baeeb0fb0a2d0d02812" title="スコア情報をバッファの末尾に追加する / Actually place an entry into the high score file" alt="" coords="145,487,252,513"/>
+<area shape="rect" href="uid-checker_8cpp.html#a59c71c10d8af1998dee4791396cb9d1d" title="ファイルのドロップパーミッションチェック / Hack – drop permissions" alt="" coords="139,588,259,615"/>
+<area shape="rect" href="uid-checker_8cpp.html#a10816f3dfe2970e4b4c89e5362304f83" title="ファイルのグラブパーミッションチェック / Hack – grab permissions" alt="" coords="139,639,259,665"/>
+<area shape="rect" href="turn-compensator_8cpp.html#a56227c29ab78f7e7a649ff1c35e7919b" title="ゲームターンからの実時間換算を行うための補正をかける" alt="" coords="163,689,235,716"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="511,183,587,209"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="519,233,578,260"/>
+<area shape="rect" href="scores_8cpp.html#a21d404b1ebb714141bf43689560aa406" title="所定ポインタからスコア情報を読み取る / Read one score from the highscore file" alt="" coords="493,537,604,564"/>
+<area shape="rect" href="scores_8cpp.html#adee3ea2bc90aeda5dafba5b4bf0277f7" title="i番目のスコア情報にバッファ位置をシークする / Seek score &#39;i&#39; in the highscore file" alt="" coords="492,487,605,513"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="522,284,575,311"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="529,335,568,361"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="517,132,580,159"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="523,385,574,412"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="507,436,590,463"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="497,81,601,108"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="667,5,755,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="680,56,743,83"/>
+<area shape="rect" href="angband-files_8cpp.html#a8c0152dc880ff428bd0f4c52f479baf5" title=" " alt="" coords="679,613,743,640"/>
+<area shape="rect" href="angband-files_8cpp.html#a2bfbb437b11fcd69bf7a407bdfef886c" title=" " alt="" coords="678,563,745,589"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="660,259,763,285"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="817,309,916,336"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="964,360,1041,387"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="671,360,752,387"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="823,411,910,437"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="653,512,769,539"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="825,461,908,488"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="653,107,769,133"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="653,157,769,184"/>
+<area shape="rect" href="scores_8cpp.html#afdb7fbba6550e8e882ba3241a8d0473c" title="スコア情報を全て得るまで繰り返し取得する / Just determine where a new score would be placed" alt="" coords="316,487,435,513"/>
+<area shape="rect" href="scores_8cpp.html#a6c2086d2f89a48b8f00d2c6defb7274a" title="所定ポインタへスコア情報を書き込む / Write one score to the highscore file" alt="" coords="319,588,431,615"/>
+<area shape="rect" href="angband-files_8cpp.html#a1cec7f01bbb0339e030de218e231fcd4" title=" " alt="" coords="515,588,582,615"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scores_8h_af3bc9911d7f0c3a60be12ca5ea8713b8_icgraph.png" border="0" usemap="#ascores_8h_af3bc9911d7f0c3a60be12ca5ea8713b8_icgraph" alt=""/></div>
+<map name="ascores_8h_af3bc9911d7f0c3a60be12ca5ea8713b8_icgraph" id="ascores_8h_af3bc9911d7f0c3a60be12ca5ea8713b8_icgraph">
+<area shape="rect" title="スコアの過去二十位内ランキングを表示する Enters a players name on a hi&#45;score table, if &quot;legal&quot;, and in any case,..." alt="" coords="621,31,707,57"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="457,5,549,32"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="433,56,573,83"/>
+<area shape="rect" href="signal-handlers_8cpp.html#acf6a4a9a8cb29ca8bd1c8e232041aecd" title="OSからのシグナルを受けて中断、終了する / Handle signals – simple (interrupt and quit)" alt="" coords="239,5,385,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="269,56,355,83"/>
+<area shape="rect" href="signal-handlers_8cpp.html#a3719a1754f6e317bbb96770b973d453c" title="OSからのシグナルハンドルを初期化する / Prepare to handle the relevant signals" alt="" coords="104,5,191,32"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,56,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="ac9cc236113303957603deb8a25df5983"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9cc236113303957603deb8a25df5983">&#9670;&nbsp;</a></span>highscore_fd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int highscore_fd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分44秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/effect/effect-player-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dda8561cf3711d1096db62b1f19b56a8.html">effect</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">effect-player-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="effect-player-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-type-definition_8h.html">system/monster-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="structeffect__player__type.html">    6</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structeffect__player__type.html">effect_player_type</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structeffect__player__type.html#af45c17c4c4f0f6cb380c3237fc30311a">    7</a></span>&#160;    <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> <a class="code" href="structeffect__player__type.html#af45c17c4c4f0f6cb380c3237fc30311a">rlev</a>; <span class="comment">// モンスターのレベル (但し0のモンスターは1になる).</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structeffect__player__type.html#a6e12f36f4be3e8b0b00016899c9cfe45">    8</a></span>&#160;    <a class="code" href="structmonster__type.html">monster_type</a> *<a class="code" href="structeffect__player__type.html#a6e12f36f4be3e8b0b00016899c9cfe45">m_ptr</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structeffect__player__type.html#a04b2a49c7408580c2d1d7217c6f9e0ce">    9</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structeffect__player__type.html#a04b2a49c7408580c2d1d7217c6f9e0ce">killer</a>[<a class="code" href="h-type_8h.html#a9506f57397c70d5bb3b8e3a56cbe8b35">MAX_MONSTER_NAME</a>];</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structeffect__player__type.html#ae82bc46b297622d1383d147afb716c22">   10</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structeffect__player__type.html#ae82bc46b297622d1383d147afb716c22">m_name</a>[<a class="code" href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a>];</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structeffect__player__type.html#a9be741c8d69d58132a87afd72a3c5909">   11</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structeffect__player__type.html#a9be741c8d69d58132a87afd72a3c5909">get_damage</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structeffect__player__type.html#aa10c2c323ce3c3ce259297c355ac136e">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> <a class="code" href="structeffect__player__type.html#aa10c2c323ce3c3ce259297c355ac136e">who</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structeffect__player__type.html#adb38373f9e81757b5394a707a30a3874">   14</a></span>&#160;    <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="structeffect__player__type.html#adb38373f9e81757b5394a707a30a3874">dam</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structeffect__player__type.html#a906c49980abb3cdf9dc88082efa4112b">   15</a></span>&#160;    <a class="code" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a> <a class="code" href="structeffect__player__type.html#a906c49980abb3cdf9dc88082efa4112b">effect_type</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structeffect__player__type.html#ac74f2a7ef8ce8a681d32c2e40a02170b">   16</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structeffect__player__type.html#ac74f2a7ef8ce8a681d32c2e40a02170b">flag</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structeffect__player__type.html#aeeae638a169ccb0450d6f59c2d3db3ed">   17</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structeffect__player__type.html#aeeae638a169ccb0450d6f59c2d3db3ed">monspell</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="effect-player-util_8h.html#a514c3d854224b88247e10feb9e41d7e5">   18</a></span>&#160;} <a class="code" href="effect-player-util_8h.html#a514c3d854224b88247e10feb9e41d7e5">effect_player_type</a>;</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aeffect-player-util_8h_html_a514c3d854224b88247e10feb9e41d7e5"><div class="ttname"><a href="effect-player-util_8h.html#a514c3d854224b88247e10feb9e41d7e5">effect_player_type</a></div><div class="ttdeci">struct effect_player_type effect_player_type</div></div>
+<div class="ttc" id="ah-type_8h_html_a1c8b80a20fb5396ff07a523b01112c47"><div class="ttname"><a href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a></div><div class="ttdeci">s32b DEPTH</div><div class="ttdoc">ゲーム中の階層レベルの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:194</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a6e67d15477d3778e515c59e04e25a390"><div class="ttname"><a href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a></div><div class="ttdeci">int EFFECT_ID</div><div class="ttdoc">効果属性ID</div><div class="ttdef"><b>Definition:</b> h-type.h:227</div></div>
+<div class="ttc" id="ah-type_8h_html_a709af41498f5625eae9f3b73fb6b6f3c"><div class="ttname"><a href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a></div><div class="ttdeci">#define MAX_NLEN</div><div class="ttdoc">Maximum length of object's name</div><div class="ttdef"><b>Definition:</b> h-type.h:58</div></div>
+<div class="ttc" id="ah-type_8h_html_a9506f57397c70d5bb3b8e3a56cbe8b35"><div class="ttname"><a href="h-type_8h.html#a9506f57397c70d5bb3b8e3a56cbe8b35">MAX_MONSTER_NAME</a></div><div class="ttdeci">#define MAX_MONSTER_NAME</div><div class="ttdoc">モンスター名称の最大バイト数 / Max characters of monster's name</div><div class="ttdef"><b>Definition:</b> h-type.h:59</div></div>
+<div class="ttc" id="ah-type_8h_html_ac67a750044882c0fd3760a2eccd56d7c"><div class="ttname"><a href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a></div><div class="ttdeci">char GAME_TEXT</div><div class="ttdoc">ゲーム中のテキスト型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:133</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="ah-type_8h_html_afdb20155266ee801610f13b1589a3df3"><div class="ttname"><a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></div><div class="ttdeci">s32b HIT_POINT</div><div class="ttdoc">HPとその増減量の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:141</div></div>
+<div class="ttc" id="amonster-type-definition_8h_html"><div class="ttname"><a href="monster-type-definition_8h.html">monster-type-definition.h</a></div></div>
+<div class="ttc" id="astructeffect__player__type_html"><div class="ttname"><a href="structeffect__player__type.html">effect_player_type</a></div><div class="ttdef"><b>Definition:</b> effect-player-util.h:6</div></div>
+<div class="ttc" id="astructeffect__player__type_html_a04b2a49c7408580c2d1d7217c6f9e0ce"><div class="ttname"><a href="structeffect__player__type.html#a04b2a49c7408580c2d1d7217c6f9e0ce">effect_player_type::killer</a></div><div class="ttdeci">char killer[MAX_MONSTER_NAME]</div><div class="ttdef"><b>Definition:</b> effect-player-util.h:9</div></div>
+<div class="ttc" id="astructeffect__player__type_html_a6e12f36f4be3e8b0b00016899c9cfe45"><div class="ttname"><a href="structeffect__player__type.html#a6e12f36f4be3e8b0b00016899c9cfe45">effect_player_type::m_ptr</a></div><div class="ttdeci">monster_type * m_ptr</div><div class="ttdef"><b>Definition:</b> effect-player-util.h:8</div></div>
+<div class="ttc" id="astructeffect__player__type_html_a906c49980abb3cdf9dc88082efa4112b"><div class="ttname"><a href="structeffect__player__type.html#a906c49980abb3cdf9dc88082efa4112b">effect_player_type::effect_type</a></div><div class="ttdeci">EFFECT_ID effect_type</div><div class="ttdef"><b>Definition:</b> effect-player-util.h:15</div></div>
+<div class="ttc" id="astructeffect__player__type_html_a9be741c8d69d58132a87afd72a3c5909"><div class="ttname"><a href="structeffect__player__type.html#a9be741c8d69d58132a87afd72a3c5909">effect_player_type::get_damage</a></div><div class="ttdeci">int get_damage</div><div class="ttdef"><b>Definition:</b> effect-player-util.h:11</div></div>
+<div class="ttc" id="astructeffect__player__type_html_aa10c2c323ce3c3ce259297c355ac136e"><div class="ttname"><a href="structeffect__player__type.html#aa10c2c323ce3c3ce259297c355ac136e">effect_player_type::who</a></div><div class="ttdeci">MONSTER_IDX who</div><div class="ttdef"><b>Definition:</b> effect-player-util.h:13</div></div>
+<div class="ttc" id="astructeffect__player__type_html_ac74f2a7ef8ce8a681d32c2e40a02170b"><div class="ttname"><a href="structeffect__player__type.html#ac74f2a7ef8ce8a681d32c2e40a02170b">effect_player_type::flag</a></div><div class="ttdeci">BIT_FLAGS flag</div><div class="ttdef"><b>Definition:</b> effect-player-util.h:16</div></div>
+<div class="ttc" id="astructeffect__player__type_html_adb38373f9e81757b5394a707a30a3874"><div class="ttname"><a href="structeffect__player__type.html#adb38373f9e81757b5394a707a30a3874">effect_player_type::dam</a></div><div class="ttdeci">HIT_POINT dam</div><div class="ttdef"><b>Definition:</b> effect-player-util.h:14</div></div>
+<div class="ttc" id="astructeffect__player__type_html_ae82bc46b297622d1383d147afb716c22"><div class="ttname"><a href="structeffect__player__type.html#ae82bc46b297622d1383d147afb716c22">effect_player_type::m_name</a></div><div class="ttdeci">GAME_TEXT m_name[MAX_NLEN]</div><div class="ttdef"><b>Definition:</b> effect-player-util.h:10</div></div>
+<div class="ttc" id="astructeffect__player__type_html_aeeae638a169ccb0450d6f59c2d3db3ed"><div class="ttname"><a href="structeffect__player__type.html#aeeae638a169ccb0450d6f59c2d3db3ed">effect_player_type::monspell</a></div><div class="ttdeci">int monspell</div><div class="ttdef"><b>Definition:</b> effect-player-util.h:17</div></div>
+<div class="ttc" id="astructeffect__player__type_html_af45c17c4c4f0f6cb380c3237fc30311a"><div class="ttname"><a href="structeffect__player__type.html#af45c17c4c4f0f6cb380c3237fc30311a">effect_player_type::rlev</a></div><div class="ttdeci">DEPTH rlev</div><div class="ttdef"><b>Definition:</b> effect-player-util.h:7</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

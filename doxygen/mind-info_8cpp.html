@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/mind/mind-info.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6b47a62d84e364abcbfd077d968b76f4.html">mind</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">mind-info.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="mind-info_8h_source.html">mind/mind-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-spell_8h_source.html">cmd-action/cmd-spell.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mind-force-trainer_8h_source.html">mind/mind-force-trainer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mind-types_8h_source.html">mind/mind-types.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+mind-info.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mind-info_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2mind_2mind-info_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2mind_2mind-info_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2mind_2mind-info_8cpp">
+<area shape="rect" title=" " alt="" coords="525,5,721,61"/>
+<area shape="rect" href="mind-info_8h.html" title=" " alt="" coords="311,109,428,136"/>
+<area shape="rect" href="cmd-spell_8h.html" title=" " alt="" coords="452,109,609,136"/>
+<area shape="rect" href="mind-force-trainer_8h.html" title=" " alt="" coords="633,109,799,136"/>
+<area shape="rect" href="mind-types_8h.html" title=" " alt="" coords="823,109,953,136"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="466,184,595,211"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="5,259,96,285"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="120,259,211,285"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="235,259,333,285"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="357,259,456,285"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="481,259,581,285"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="605,259,779,285"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="804,259,945,285"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,259,1116,285"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:ac14277ea863cac1a9df0e46e8f62288f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mind-info_8cpp.html#ac14277ea863cac1a9df0e46e8f62288f">switch_mind_mindcrafter</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, const <a class="el" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> plev, const int power, char *p)</td></tr>
+<tr class="separator:ac14277ea863cac1a9df0e46e8f62288f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38d9938dbdef56dda013a170554afd50"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mind-info_8cpp.html#a38d9938dbdef56dda013a170554afd50">switch_mind_ki</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, const <a class="el" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> plev, const int power, char *p)</td></tr>
+<tr class="separator:a38d9938dbdef56dda013a170554afd50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b4b45e25973dae2971908bc5c27f1c9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mind-info_8cpp.html#a8b4b45e25973dae2971908bc5c27f1c9">switch_mind_mirror_master</a> (const <a class="el" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> plev, const int power, char *p)</td></tr>
+<tr class="separator:a8b4b45e25973dae2971908bc5c27f1c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab37fe50cef5f65b16acfbc9c856f0e7f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mind-info_8cpp.html#ab37fe50cef5f65b16acfbc9c856f0e7f">switch_mind_ninja</a> (const <a class="el" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> plev, const int power, char *p)</td></tr>
+<tr class="separator:ab37fe50cef5f65b16acfbc9c856f0e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55b9177a6e0140423a79924023b31293"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mind-info_8cpp.html#a55b9177a6e0140423a79924023b31293">mindcraft_info</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, char *p, int use_mind, int power)</td></tr>
+<tr class="memdesc:a55b9177a6e0140423a79924023b31293"><td class="mdescLeft">&#160;</td><td class="mdescRight">特殊技能の効果情報をまとめたフォーマットを返す  <a href="mind-info_8cpp.html#a55b9177a6e0140423a79924023b31293">[詳解]</a><br /></td></tr>
+<tr class="separator:a55b9177a6e0140423a79924023b31293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a55b9177a6e0140423a79924023b31293"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55b9177a6e0140423a79924023b31293">&#9670;&nbsp;</a></span>mindcraft_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mindcraft_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>use_mind</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>power</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>特殊技能の効果情報をまとめたフォーマットを返す </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>情報を返す文字列参照ポインタ </td></tr>
+    <tr><td class="paramname">use_mind</td><td>職業毎の特殊技能ID </td></tr>
+    <tr><td class="paramname">power</td><td>モンスター魔法のID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mind-info_8cpp_a55b9177a6e0140423a79924023b31293_cgraph.png" border="0" usemap="#amind-info_8cpp_a55b9177a6e0140423a79924023b31293_cgraph" alt=""/></div>
+<map name="amind-info_8cpp_a55b9177a6e0140423a79924023b31293_cgraph" id="amind-info_8cpp_a55b9177a6e0140423a79924023b31293_cgraph">
+<area shape="rect" title="特殊技能の効果情報をまとめたフォーマットを返す" alt="" coords="5,111,108,137"/>
+<area shape="rect" href="mind-info_8cpp.html#a38d9938dbdef56dda013a170554afd50" title=" " alt="" coords="183,31,294,57"/>
+<area shape="rect" href="mind-info_8cpp.html#ac14277ea863cac1a9df0e46e8f62288f" title=" " alt="" coords="156,81,321,108"/>
+<area shape="rect" href="mind-info_8cpp.html#a8b4b45e25973dae2971908bc5c27f1c9" title=" " alt="" coords="171,133,306,174"/>
+<area shape="rect" href="mind-info_8cpp.html#ab37fe50cef5f65b16acfbc9c856f0e7f" title=" " alt="" coords="175,199,303,225"/>
+<area shape="rect" href="mind-force-trainer_8cpp.html#a2713fb7ee9b72c3a39a8e5f5b82d3176" title="練気術師が「練気」で溜めた気の量を返す" alt="" coords="369,5,473,32"/>
+<area shape="rect" href="player-status_8cpp.html#af61e52604492724ecb12f4bc74e577aa" title="プレイヤーが防具重量制限のある職業時にペナルティを受ける状態にあるかどうかを返す。" alt="" coords="374,56,469,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mind-info_8cpp_a55b9177a6e0140423a79924023b31293_icgraph.png" border="0" usemap="#amind-info_8cpp_a55b9177a6e0140423a79924023b31293_icgraph" alt=""/></div>
+<map name="amind-info_8cpp_a55b9177a6e0140423a79924023b31293_icgraph" id="amind-info_8cpp_a55b9177a6e0140423a79924023b31293_icgraph">
+<area shape="rect" title="特殊技能の効果情報をまとめたフォーマットを返す" alt="" coords="435,31,537,57"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="265,5,387,32"/>
+<area shape="rect" href="mind-power-getter_8cpp.html#ae10efe533854f8dec5377db176677dc7" title="使用可能な特殊技能を選択する / Allow user to choose a mindcrafter power." alt="" coords="268,56,384,83"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#a1b6030a61185d027b8f84b0d3689d5c4" title="現在の習得済魔法をサブウィンドウに表示する /" alt="" coords="148,5,217,32"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="5,5,100,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a38d9938dbdef56dda013a170554afd50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38d9938dbdef56dda013a170554afd50">&#9670;&nbsp;</a></span>switch_mind_ki()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void switch_mind_ki </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a>&#160;</td>
+          <td class="paramname"><em>plev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>power</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mind-info_8cpp_a38d9938dbdef56dda013a170554afd50_cgraph.png" border="0" usemap="#amind-info_8cpp_a38d9938dbdef56dda013a170554afd50_cgraph" alt=""/></div>
+<map name="amind-info_8cpp_a38d9938dbdef56dda013a170554afd50_cgraph" id="amind-info_8cpp_a38d9938dbdef56dda013a170554afd50_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,116,57"/>
+<area shape="rect" href="mind-force-trainer_8cpp.html#a2713fb7ee9b72c3a39a8e5f5b82d3176" title="練気術師が「練気」で溜めた気の量を返す" alt="" coords="164,5,268,32"/>
+<area shape="rect" href="player-status_8cpp.html#af61e52604492724ecb12f4bc74e577aa" title="プレイヤーが防具重量制限のある職業時にペナルティを受ける状態にあるかどうかを返す。" alt="" coords="169,56,263,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mind-info_8cpp_a38d9938dbdef56dda013a170554afd50_icgraph.png" border="0" usemap="#amind-info_8cpp_a38d9938dbdef56dda013a170554afd50_icgraph" alt=""/></div>
+<map name="amind-info_8cpp_a38d9938dbdef56dda013a170554afd50_icgraph" id="amind-info_8cpp_a38d9938dbdef56dda013a170554afd50_icgraph">
+<area shape="rect" title=" " alt="" coords="443,31,553,57"/>
+<area shape="rect" href="mind-info_8cpp.html#a55b9177a6e0140423a79924023b31293" title="特殊技能の効果情報をまとめたフォーマットを返す" alt="" coords="292,31,395,57"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="123,5,244,32"/>
+<area shape="rect" href="mind-power-getter_8cpp.html#ae10efe533854f8dec5377db176677dc7" title="使用可能な特殊技能を選択する / Allow user to choose a mindcrafter power." alt="" coords="125,56,241,83"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#a1b6030a61185d027b8f84b0d3689d5c4" title="現在の習得済魔法をサブウィンドウに表示する /" alt="" coords="5,5,75,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac14277ea863cac1a9df0e46e8f62288f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac14277ea863cac1a9df0e46e8f62288f">&#9670;&nbsp;</a></span>switch_mind_mindcrafter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void switch_mind_mindcrafter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a>&#160;</td>
+          <td class="paramname"><em>plev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>power</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mind-info_8cpp_ac14277ea863cac1a9df0e46e8f62288f_icgraph.png" border="0" usemap="#amind-info_8cpp_ac14277ea863cac1a9df0e46e8f62288f_icgraph" alt=""/></div>
+<map name="amind-info_8cpp_ac14277ea863cac1a9df0e46e8f62288f_icgraph" id="amind-info_8cpp_ac14277ea863cac1a9df0e46e8f62288f_icgraph">
+<area shape="rect" title=" " alt="" coords="443,31,608,57"/>
+<area shape="rect" href="mind-info_8cpp.html#a55b9177a6e0140423a79924023b31293" title="特殊技能の効果情報をまとめたフォーマットを返す" alt="" coords="292,31,395,57"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="123,5,244,32"/>
+<area shape="rect" href="mind-power-getter_8cpp.html#ae10efe533854f8dec5377db176677dc7" title="使用可能な特殊技能を選択する / Allow user to choose a mindcrafter power." alt="" coords="125,56,241,83"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#a1b6030a61185d027b8f84b0d3689d5c4" title="現在の習得済魔法をサブウィンドウに表示する /" alt="" coords="5,5,75,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8b4b45e25973dae2971908bc5c27f1c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b4b45e25973dae2971908bc5c27f1c9">&#9670;&nbsp;</a></span>switch_mind_mirror_master()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void switch_mind_mirror_master </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a>&#160;</td>
+          <td class="paramname"><em>plev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>power</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mind-info_8cpp_a8b4b45e25973dae2971908bc5c27f1c9_icgraph.png" border="0" usemap="#amind-info_8cpp_a8b4b45e25973dae2971908bc5c27f1c9_icgraph" alt=""/></div>
+<map name="amind-info_8cpp_a8b4b45e25973dae2971908bc5c27f1c9_icgraph" id="amind-info_8cpp_a8b4b45e25973dae2971908bc5c27f1c9_icgraph">
+<area shape="rect" title=" " alt="" coords="443,23,577,65"/>
+<area shape="rect" href="mind-info_8cpp.html#a55b9177a6e0140423a79924023b31293" title="特殊技能の効果情報をまとめたフォーマットを返す" alt="" coords="292,31,395,57"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="123,5,244,32"/>
+<area shape="rect" href="mind-power-getter_8cpp.html#ae10efe533854f8dec5377db176677dc7" title="使用可能な特殊技能を選択する / Allow user to choose a mindcrafter power." alt="" coords="125,56,241,83"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#a1b6030a61185d027b8f84b0d3689d5c4" title="現在の習得済魔法をサブウィンドウに表示する /" alt="" coords="5,5,75,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab37fe50cef5f65b16acfbc9c856f0e7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab37fe50cef5f65b16acfbc9c856f0e7f">&#9670;&nbsp;</a></span>switch_mind_ninja()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void switch_mind_ninja </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a>&#160;</td>
+          <td class="paramname"><em>plev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>power</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mind-info_8cpp_ab37fe50cef5f65b16acfbc9c856f0e7f_icgraph.png" border="0" usemap="#amind-info_8cpp_ab37fe50cef5f65b16acfbc9c856f0e7f_icgraph" alt=""/></div>
+<map name="amind-info_8cpp_ab37fe50cef5f65b16acfbc9c856f0e7f_icgraph" id="amind-info_8cpp_ab37fe50cef5f65b16acfbc9c856f0e7f_icgraph">
+<area shape="rect" title=" " alt="" coords="443,31,571,57"/>
+<area shape="rect" href="mind-info_8cpp.html#a55b9177a6e0140423a79924023b31293" title="特殊技能の効果情報をまとめたフォーマットを返す" alt="" coords="292,31,395,57"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="123,5,244,32"/>
+<area shape="rect" href="mind-power-getter_8cpp.html#ae10efe533854f8dec5377db176677dc7" title="使用可能な特殊技能を選択する / Allow user to choose a mindcrafter power." alt="" coords="125,56,241,83"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#a1b6030a61185d027b8f84b0d3689d5c4" title="現在の習得済魔法をサブウィンドウに表示する /" alt="" coords="5,5,75,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

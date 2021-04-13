@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/io/input-key-requester.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html">io</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">input-key-requester.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="input-key-requester_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="keymap-directory-getter_8h.html">game-option/keymap-directory-getter.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="input-key-requester_8h.html#a4c9ab63ccec29942ba5a64b358b8169f">keymap_act</a>[<a class="code" href="keymap-directory-getter_8h.html#a0c2c4215e65829ba478e9746871ff7d4aa83cc3455c10f5d07ebf35b259f653e8">KEYMAP_MODES</a>][256];</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-key-requester_8h.html#a134da4102380d76881c0b3fd04be5841">use_menu</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a> <a class="code" href="input-key-requester_8h.html#a1b29b92e417731d11aa3117478d737c6">command_cmd</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a7dfb11a068fa7ecfbf4cc8c316d87563">COMMAND_ARG</a> <a class="code" href="input-key-requester_8h.html#a8d6dd392cb3bfdba720008f523affe0d">command_arg</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="input-key-requester_8h.html#ac8c5a03f435c9603ee98d1cfe491bbc1">command_rep</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> <a class="code" href="input-key-requester_8h.html#a5adc54c3e4fd3dbab5d65df1d1256138">command_dir</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="input-key-requester_8h.html#a4c6de7aad4cc85a87901cfbc9eb159fe">command_see</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> <a class="code" href="input-key-requester_8h.html#affd7d29c11c7d797660e2a844cd389b5">command_gap</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="input-key-requester_8h.html#a3fe026a1f0b6746ae313f2d033f9c3d2">command_wrk</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="input-key-requester_8h.html#a70b9a113dfcb60562d00e87af2d102da">command_new</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="input-key-requester_8h.html#a05bf5c41a8377acfa4b6b2487e55323d">request_command</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <span class="keywordtype">int</span> shopping);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a15cc25d6db15644573f14008c0a804eb"><div class="ttname"><a href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a></div><div class="ttdeci">int TERM_LEN</div><div class="ttdoc">コンソール表示座標の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:214</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_a28b4289b95abbeb7a422178cfa43525f"><div class="ttname"><a href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a></div><div class="ttdeci">int DIRECTION</div><div class="ttdoc">ゲーム中の方角の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:177</div></div>
+<div class="ttc" id="ah-type_8h_html_a7dfb11a068fa7ecfbf4cc8c316d87563"><div class="ttname"><a href="h-type_8h.html#a7dfb11a068fa7ecfbf4cc8c316d87563">COMMAND_ARG</a></div><div class="ttdeci">s16b COMMAND_ARG</div><div class="ttdoc">コマンド引数の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:211</div></div>
+<div class="ttc" id="ah-type_8h_html_a9760a9b50f8e3aeeb4b82d0dc9a81c33"><div class="ttname"><a href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a></div><div class="ttdeci">s16b COMMAND_CODE</div><div class="ttdoc">コマンド内容の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:210</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="ainput-key-requester_8h_html_a05bf5c41a8377acfa4b6b2487e55323d"><div class="ttname"><a href="input-key-requester_8h.html#a05bf5c41a8377acfa4b6b2487e55323d">request_command</a></div><div class="ttdeci">void request_command(player_type *player_ptr, int shopping)</div><div class="ttdef"><b>Definition:</b> input-key-requester.cpp:189</div></div>
+<div class="ttc" id="ainput-key-requester_8h_html_a134da4102380d76881c0b3fd04be5841"><div class="ttname"><a href="input-key-requester_8h.html#a134da4102380d76881c0b3fd04be5841">use_menu</a></div><div class="ttdeci">bool use_menu</div><div class="ttdef"><b>Definition:</b> input-key-requester.cpp:32</div></div>
+<div class="ttc" id="ainput-key-requester_8h_html_a1b29b92e417731d11aa3117478d737c6"><div class="ttname"><a href="input-key-requester_8h.html#a1b29b92e417731d11aa3117478d737c6">command_cmd</a></div><div class="ttdeci">COMMAND_CODE command_cmd</div><div class="ttdef"><b>Definition:</b> input-key-requester.cpp:34</div></div>
+<div class="ttc" id="ainput-key-requester_8h_html_a3fe026a1f0b6746ae313f2d033f9c3d2"><div class="ttname"><a href="input-key-requester_8h.html#a3fe026a1f0b6746ae313f2d033f9c3d2">command_wrk</a></div><div class="ttdeci">s16b command_wrk</div><div class="ttdef"><b>Definition:</b> input-key-requester.cpp:39</div></div>
+<div class="ttc" id="ainput-key-requester_8h_html_a4c6de7aad4cc85a87901cfbc9eb159fe"><div class="ttname"><a href="input-key-requester_8h.html#a4c6de7aad4cc85a87901cfbc9eb159fe">command_see</a></div><div class="ttdeci">s16b command_see</div><div class="ttdef"><b>Definition:</b> input-key-requester.cpp:38</div></div>
+<div class="ttc" id="ainput-key-requester_8h_html_a4c9ab63ccec29942ba5a64b358b8169f"><div class="ttname"><a href="input-key-requester_8h.html#a4c9ab63ccec29942ba5a64b358b8169f">keymap_act</a></div><div class="ttdeci">concptr keymap_act[KEYMAP_MODES][256]</div><div class="ttdoc">&lt;</div><div class="ttdef"><b>Definition:</b> input-key-requester.cpp:30</div></div>
+<div class="ttc" id="ainput-key-requester_8h_html_a5adc54c3e4fd3dbab5d65df1d1256138"><div class="ttname"><a href="input-key-requester_8h.html#a5adc54c3e4fd3dbab5d65df1d1256138">command_dir</a></div><div class="ttdeci">DIRECTION command_dir</div><div class="ttdoc">各種コマンドの汎用的な方向値処理として扱う/ Gives direction of current command</div><div class="ttdef"><b>Definition:</b> input-key-requester.cpp:37</div></div>
+<div class="ttc" id="ainput-key-requester_8h_html_a70b9a113dfcb60562d00e87af2d102da"><div class="ttname"><a href="input-key-requester_8h.html#a70b9a113dfcb60562d00e87af2d102da">command_new</a></div><div class="ttdeci">s16b command_new</div><div class="ttdef"><b>Definition:</b> input-key-requester.cpp:41</div></div>
+<div class="ttc" id="ainput-key-requester_8h_html_a8d6dd392cb3bfdba720008f523affe0d"><div class="ttname"><a href="input-key-requester_8h.html#a8d6dd392cb3bfdba720008f523affe0d">command_arg</a></div><div class="ttdeci">COMMAND_ARG command_arg</div><div class="ttdoc">各種コマンドの汎用的な引数として扱う / Gives argument of current command</div><div class="ttdef"><b>Definition:</b> input-key-requester.cpp:35</div></div>
+<div class="ttc" id="ainput-key-requester_8h_html_ac8c5a03f435c9603ee98d1cfe491bbc1"><div class="ttname"><a href="input-key-requester_8h.html#ac8c5a03f435c9603ee98d1cfe491bbc1">command_rep</a></div><div class="ttdeci">s16b command_rep</div><div class="ttdoc">各種コマンドの汎用的なリピート数として扱う / Gives repetition of current command</div><div class="ttdef"><b>Definition:</b> input-key-requester.cpp:36</div></div>
+<div class="ttc" id="ainput-key-requester_8h_html_affd7d29c11c7d797660e2a844cd389b5"><div class="ttname"><a href="input-key-requester_8h.html#affd7d29c11c7d797660e2a844cd389b5">command_gap</a></div><div class="ttdeci">TERM_LEN command_gap</div><div class="ttdef"><b>Definition:</b> input-key-requester.cpp:40</div></div>
+<div class="ttc" id="akeymap-directory-getter_8h_html"><div class="ttname"><a href="keymap-directory-getter_8h.html">keymap-directory-getter.h</a></div></div>
+<div class="ttc" id="akeymap-directory-getter_8h_html_a0c2c4215e65829ba478e9746871ff7d4aa83cc3455c10f5d07ebf35b259f653e8"><div class="ttname"><a href="keymap-directory-getter_8h.html#a0c2c4215e65829ba478e9746871ff7d4aa83cc3455c10f5d07ebf35b259f653e8">KEYMAP_MODES</a></div><div class="ttdeci">@ KEYMAP_MODES</div><div class="ttdoc">キー配置の数 / Number of keymap modes</div><div class="ttdef"><b>Definition:</b> keymap-directory-getter.h:6</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

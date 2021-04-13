@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/dungeon/quest.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_55f303817758c0e5b41dc0bbc9cd6c85.html">dungeon</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">quest.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="quest_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-type-definition_8h.html">system/monster-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="object-type-definition_8h.html">system/object-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * Quest constants</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="quest_8h.html#ad47a9b0b5eb7e43391d479dfd76b807a">   10</a></span>&#160;<span class="preprocessor">#define MIN_RANDOM_QUEST 40 </span><span class="comment">/*&lt;! ランダムクエストを割り当てるクエストIDの開始値 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="quest_8h.html#a388c8fc6112ce9c9c559ff7c98ef73cd">   11</a></span>&#160;<span class="preprocessor">#define MAX_RANDOM_QUEST 49 </span><span class="comment">/*&lt;! ランダムクエストを割り当てるクエストIDの終了値 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * Quest status</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="quest_8h.html#a16a25b6f948d7935881c672f774d3fb8">   16</a></span>&#160;<span class="preprocessor">#define QUEST_STATUS_UNTAKEN              0 </span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="quest_8h.html#af689f7dfac1f8069f2a6a4cebb892652">   17</a></span>&#160;<span class="preprocessor">#define QUEST_STATUS_TAKEN                1 </span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="quest_8h.html#a65e17db46c1715457a23166cdf8e90b9">   18</a></span>&#160;<span class="preprocessor">#define QUEST_STATUS_COMPLETED            2 </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="quest_8h.html#a4cbe80bfac4bda460a147b22ad85be3c">   19</a></span>&#160;<span class="preprocessor">#define QUEST_STATUS_REWARDED             3 </span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="quest_8h.html#ada4b59e28a223728b75a2ceeaade60f7">   20</a></span>&#160;<span class="preprocessor">#define QUEST_STATUS_FINISHED             4 </span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="quest_8h.html#ad84aa19ec15ce548ec9ef2694a2ef7d0">   21</a></span>&#160;<span class="preprocessor">#define QUEST_STATUS_FAILED               5 </span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="quest_8h.html#a6a695a553aedd7b2f20ed4f389a37e11">   22</a></span>&#160;<span class="preprocessor">#define QUEST_STATUS_FAILED_DONE          6 </span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="quest_8h.html#abd45d9845bd91e627c7d50b79526814d">   23</a></span>&#160;<span class="preprocessor">#define QUEST_STATUS_STAGE_COMPLETED      7 </span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * Quest type</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="quest_8h.html#a76e3209678d5daeaa7afac0520d6b263">   28</a></span>&#160;<span class="preprocessor">#define QUEST_TYPE_KILL_LEVEL                1 </span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="quest_8h.html#aa4242fc3efb46e4888bebd490ea680d5">   29</a></span>&#160;<span class="preprocessor">#define QUEST_TYPE_KILL_ANY_LEVEL            2 </span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="quest_8h.html#adf5de1040cfaec6671df10bf4ea6e1ba">   30</a></span>&#160;<span class="preprocessor">#define QUEST_TYPE_FIND_ARTIFACT             3 </span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="quest_8h.html#a837ff58c7a7789ecad12e98d6eeb9090">   31</a></span>&#160;<span class="preprocessor">#define QUEST_TYPE_FIND_EXIT                 4 </span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="quest_8h.html#a43bf9f49a1e5a5524ff9c7ff79b319fc">   32</a></span>&#160;<span class="preprocessor">#define QUEST_TYPE_KILL_NUMBER               5 </span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="quest_8h.html#a15b4e7f3b203d93138e9684e7ba30990">   33</a></span>&#160;<span class="preprocessor">#define QUEST_TYPE_KILL_ALL                  6 </span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="quest_8h.html#a0d7e1a11d44e29dab864253ad518c523">   34</a></span>&#160;<span class="preprocessor">#define QUEST_TYPE_RANDOM                    7 </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="quest_8h.html#aa05df8e63104572510aa0caa4ed65010">   35</a></span>&#160;<span class="preprocessor">#define QUEST_TYPE_TOWER                     8 </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> * Quest flags</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="quest_8h.html#a8ab7e3df389ef608e9e1f60b2eed4801">   40</a></span>&#160;<span class="preprocessor">#define QUEST_FLAG_SILENT  0x01 </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="quest_8h.html#a43946287746ae910cad704cf7d55ef56">   41</a></span>&#160;<span class="preprocessor">#define QUEST_FLAG_PRESET  0x02 </span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="quest_8h.html#a2f50a5723e2cf8a4118c36143ea4303b">   42</a></span>&#160;<span class="preprocessor">#define QUEST_FLAG_ONCE    0x04 </span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="quest_8h.html#ac299a52f8a4d62d691b3f4eac7510fd1">   43</a></span>&#160;<span class="preprocessor">#define QUEST_FLAG_TOWER   0x08 </span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="quest_8h.html#aa992addacc4304bca8e1bf107ec10cc8">   50</a></span>&#160;<span class="preprocessor">#define is_fixed_quest_idx(Q_IDX) (((Q_IDX) &lt; MIN_RANDOM_QUEST) || ((Q_IDX) &gt; MAX_RANDOM_QUEST))</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="quest_8h.html#a9f0ab719107c77caaf6e92aa7e72e046">   52</a></span>&#160;<span class="preprocessor">#define QUEST_TOWER1 5 </span><span class="comment">/*&lt;! 塔クエスト(第1階層)に割り振るクエストID */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="quest_8h.html#af55a30800dafa6a959c28afecb2fe1a2">   53</a></span>&#160;<span class="preprocessor">#define QUEST_TOWER2 6 </span><span class="comment">/*&lt;! 塔クエスト(第2階層)に割り振るクエストID */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="quest_8h.html#aad0670a131a5a9c5b127d2f784a084d9">   54</a></span>&#160;<span class="preprocessor">#define QUEST_TOWER3 7 </span><span class="comment">/*&lt;! 塔クエスト(第3階層)に割り振るクエストID */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="quest_8h.html#a74c1b70ecf2ac77e7994314cf635f2b5">   55</a></span>&#160;<span class="preprocessor">#define QUEST_OBERON 8 </span><span class="comment">/*&lt;! オベロン打倒クエストに割り振るクエストID */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="quest_8h.html#a6979189030ebf6c213ed19965e0301bb">   56</a></span>&#160;<span class="preprocessor">#define QUEST_SERPENT 9 </span><span class="comment">/*&lt;! サーペント打倒クエストに割り振るクエストID */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="quest_8h.html#a8124109e395661730ddc9b5f3ed57e49">   57</a></span>&#160;<span class="preprocessor">#define QUEST_MELKO 35 </span><span class="comment">/*&lt;! メル子くん打倒クエストに割り振るクエストID */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structquest__type.html">   63</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structquest__type.html">quest_type</a> {</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structquest__type.html#aef56470e2ec970c87950ec14ee003e65">   64</a></span>&#160;    <a class="code" href="h-type_8h.html#ac65fa075fea50dcb28e72a3090673a34">QUEST_STATUS</a> <a class="code" href="structquest__type.html#aef56470e2ec970c87950ec14ee003e65">status</a>;          </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="structquest__type.html#a2b3e1959c9599202b0e068b96e58c708">   65</a></span>&#160;    <a class="code" href="h-type_8h.html#a2c925ec2f530bfd904ba6d252794db50">QUEST_TYPE</a> <a class="code" href="structquest__type.html#a2b3e1959c9599202b0e068b96e58c708">type</a>;              </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structquest__type.html#abcedc376c85cf5586b3fcfbdfb398f66">   67</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structquest__type.html#abcedc376c85cf5586b3fcfbdfb398f66">name</a>[60];          </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="structquest__type.html#a94db40cbf10360bcd2512739cc67b9b6">   68</a></span>&#160;    <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> <a class="code" href="structquest__type.html#a94db40cbf10360bcd2512739cc67b9b6">level</a>;            </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="structquest__type.html#a7570c1b2ee4aa9ba8697facb0b519e19">   69</a></span>&#160;    <a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> <a class="code" href="structquest__type.html#a7570c1b2ee4aa9ba8697facb0b519e19">r_idx</a>;      </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="structquest__type.html#ab2b0362fefbe7f5f168027f154b85514">   71</a></span>&#160;    <a class="code" href="h-type_8h.html#a9c3b7a33a04e6a334235166acc31990f">MONSTER_NUMBER</a> <a class="code" href="structquest__type.html#ab2b0362fefbe7f5f168027f154b85514">cur_num</a>; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structquest__type.html#ade6f8bd39a1a4726a6bc13e1f94f47af">   72</a></span>&#160;    <a class="code" href="h-type_8h.html#a9c3b7a33a04e6a334235166acc31990f">MONSTER_NUMBER</a> <a class="code" href="structquest__type.html#ade6f8bd39a1a4726a6bc13e1f94f47af">max_num</a>; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="structquest__type.html#aff2dc015d27e0b1d769a54f36369edd8">   74</a></span>&#160;    <a class="code" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> <a class="code" href="structquest__type.html#aff2dc015d27e0b1d769a54f36369edd8">k_idx</a>;              </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="structquest__type.html#ad996a35f63493a48a8b61cc85ad0c60c">   75</a></span>&#160;    <a class="code" href="h-type_8h.html#a9c3b7a33a04e6a334235166acc31990f">MONSTER_NUMBER</a> <a class="code" href="structquest__type.html#ad996a35f63493a48a8b61cc85ad0c60c">num_mon</a>; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="structquest__type.html#a482ef642ee30975adef0eb2c83b80686">   77</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structquest__type.html#a482ef642ee30975adef0eb2c83b80686">flags</a>;             </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="structquest__type.html#a340811373c7fbae3d447ee7b4984c7e8">   78</a></span>&#160;    <a class="code" href="h-type_8h.html#ad858b43cf9b1e70a02dbeabfd632b70c">DUNGEON_IDX</a> <a class="code" href="structquest__type.html#a340811373c7fbae3d447ee7b4984c7e8">dungeon</a>;           </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="structquest__type.html#ac1f2574bcc0e5956005449c36b38e70c">   80</a></span>&#160;    <a class="code" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> <a class="code" href="structquest__type.html#ac1f2574bcc0e5956005449c36b38e70c">complev</a>;           </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structquest__type.html#a759c7e106f302f669f852a70925d64d6">   81</a></span>&#160;    <a class="code" href="h-type_8h.html#a701de55c026b23cfd86131dc1436f324">REAL_TIME</a> <a class="code" href="structquest__type.html#a759c7e106f302f669f852a70925d64d6">comptime</a>;          </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="quest_8h.html#a2fe817b48a3dfa12f22cbc9861b5a124">   82</a></span>&#160;} <a class="code" href="quest_8h.html#a2fe817b48a3dfa12f22cbc9861b5a124">quest_type</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">extern</span> <a class="code" href="structquest__type.html">quest_type</a> *<a class="code" href="quest_8h.html#adb46ae06677b6b08d98aa26bbb62db94">quest</a>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a77c612ab1c70448b936150562e7d6d44">QUEST_IDX</a> <a class="code" href="quest_8h.html#a3536f73a01c1a3285f3f6e4619ab5b62">max_q_idx</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="quest_8h.html#a3731bad96e8d5983e76362ecd5f00332">quest_text</a>[10][80];</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="quest_8h.html#acc3f9f8b154a1b1c76c3296f51bb9308">quest_text_line</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="quest_8h.html#ae792df38fdabe81d0dc845da46a3fbb8">leaving_quest</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">void</span> <a class="code" href="quest_8h.html#a11dcbb9d5b4df77d2d42877afecd26de">determine_random_questor</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structquest__type.html">quest_type</a> *q_ptr);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keywordtype">void</span> <a class="code" href="quest_8h.html#af5f55968be72b94b441f35b7dd1b954f">complete_quest</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a77c612ab1c70448b936150562e7d6d44">QUEST_IDX</a> quest_num);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">void</span> <a class="code" href="quest_8h.html#a1d11d74f3e4060b2cb0eca4d285d804c">check_find_art_quest_completion</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">void</span> <a class="code" href="quest_8h.html#ae20df73da95e4dfac9ce588fae49b6f7">quest_discovery</a>(<a class="code" href="h-type_8h.html#a77c612ab1c70448b936150562e7d6d44">QUEST_IDX</a> q_idx);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<a class="code" href="h-type_8h.html#a77c612ab1c70448b936150562e7d6d44">QUEST_IDX</a> <a class="code" href="quest_8h.html#a5b6b24bb1f79322d67d0cc51368d3ad3">quest_number</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> level);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<a class="code" href="h-type_8h.html#a77c612ab1c70448b936150562e7d6d44">QUEST_IDX</a> <a class="code" href="quest_8h.html#abab5512f0df1872d981afddd7ca8481f">random_quest_number</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> level);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">void</span> <a class="code" href="quest_8h.html#a0e307defb7da8eaf5b5b6815722c0043">leave_quest_check</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keywordtype">void</span> <a class="code" href="quest_8h.html#a4e4e7c44b99f39c05c5b8a1196e6a008">leave_tower_check</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span> <a class="code" href="quest_8h.html#a84fa7549df86f34d5c3b47ce5d1aec42">do_cmd_quest</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a1c8b80a20fb5396ff07a523b01112c47"><div class="ttname"><a href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a></div><div class="ttdeci">s32b DEPTH</div><div class="ttdoc">ゲーム中の階層レベルの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:194</div></div>
+<div class="ttc" id="ah-type_8h_html_a2c925ec2f530bfd904ba6d252794db50"><div class="ttname"><a href="h-type_8h.html#a2c925ec2f530bfd904ba6d252794db50">QUEST_TYPE</a></div><div class="ttdeci">s16b QUEST_TYPE</div><div class="ttdoc">クエストの種別ID</div><div class="ttdef"><b>Definition:</b> h-type.h:229</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a4afcd80086918943bed571d0a96b93eb"><div class="ttname"><a href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a></div><div class="ttdeci">s16b KIND_OBJECT_IDX</div><div class="ttdoc">ゲーム中のベースアイテムID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:123</div></div>
+<div class="ttc" id="ah-type_8h_html_a701de55c026b23cfd86131dc1436f324"><div class="ttname"><a href="h-type_8h.html#a701de55c026b23cfd86131dc1436f324">REAL_TIME</a></div><div class="ttdeci">u32b REAL_TIME</div><div class="ttdoc">実時刻の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:198</div></div>
+<div class="ttc" id="ah-type_8h_html_a77c612ab1c70448b936150562e7d6d44"><div class="ttname"><a href="h-type_8h.html#a77c612ab1c70448b936150562e7d6d44">QUEST_IDX</a></div><div class="ttdeci">s16b QUEST_IDX</div><div class="ttdoc">ゲーム中のクエストID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:117</div></div>
+<div class="ttc" id="ah-type_8h_html_a7ea47f67338902d35c1e93e00cf86908"><div class="ttname"><a href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a></div><div class="ttdeci">s16b MONRACE_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:109</div></div>
+<div class="ttc" id="ah-type_8h_html_a9a1975460009e928d9b53995d07d3623"><div class="ttname"><a href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a></div><div class="ttdeci">s16b PLAYER_LEVEL</div><div class="ttdoc">ゲーム中のプレイヤーレベルの型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:176</div></div>
+<div class="ttc" id="ah-type_8h_html_a9c3b7a33a04e6a334235166acc31990f"><div class="ttname"><a href="h-type_8h.html#a9c3b7a33a04e6a334235166acc31990f">MONSTER_NUMBER</a></div><div class="ttdeci">s32b MONSTER_NUMBER</div><div class="ttdoc">ゲーム中のモンスター数型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:157</div></div>
+<div class="ttc" id="ah-type_8h_html_ac65fa075fea50dcb28e72a3090673a34"><div class="ttname"><a href="h-type_8h.html#ac65fa075fea50dcb28e72a3090673a34">QUEST_STATUS</a></div><div class="ttdeci">s16b QUEST_STATUS</div><div class="ttdoc">クエストの状態ID</div><div class="ttdef"><b>Definition:</b> h-type.h:230</div></div>
+<div class="ttc" id="ah-type_8h_html_ac67a750044882c0fd3760a2eccd56d7c"><div class="ttname"><a href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a></div><div class="ttdeci">char GAME_TEXT</div><div class="ttdoc">ゲーム中のテキスト型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:133</div></div>
+<div class="ttc" id="ah-type_8h_html_ad858b43cf9b1e70a02dbeabfd632b70c"><div class="ttname"><a href="h-type_8h.html#ad858b43cf9b1e70a02dbeabfd632b70c">DUNGEON_IDX</a></div><div class="ttdeci">s16b DUNGEON_IDX</div><div class="ttdoc">ゲーム中のダンジョンID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:111</div></div>
+<div class="ttc" id="amonster-type-definition_8h_html"><div class="ttname"><a href="monster-type-definition_8h.html">monster-type-definition.h</a></div></div>
+<div class="ttc" id="aobject-type-definition_8h_html"><div class="ttname"><a href="object-type-definition_8h.html">object-type-definition.h</a></div></div>
+<div class="ttc" id="aquest_8h_html_a0e307defb7da8eaf5b5b6815722c0043"><div class="ttname"><a href="quest_8h.html#a0e307defb7da8eaf5b5b6815722c0043">leave_quest_check</a></div><div class="ttdeci">void leave_quest_check(player_type *player_ptr)</div><div class="ttdoc">クエスト階層から離脱する際の処理</div><div class="ttdef"><b>Definition:</b> quest.cpp:247</div></div>
+<div class="ttc" id="aquest_8h_html_a11dcbb9d5b4df77d2d42877afecd26de"><div class="ttname"><a href="quest_8h.html#a11dcbb9d5b4df77d2d42877afecd26de">determine_random_questor</a></div><div class="ttdeci">void determine_random_questor(player_type *player_ptr, quest_type *q_ptr)</div><div class="ttdoc">ランダムクエストの討伐ユニークを決める / Determine the random quest uniques</div><div class="ttdef"><b>Definition:</b> quest.cpp:60</div></div>
+<div class="ttc" id="aquest_8h_html_a1d11d74f3e4060b2cb0eca4d285d804c"><div class="ttname"><a href="quest_8h.html#a1d11d74f3e4060b2cb0eca4d285d804c">check_find_art_quest_completion</a></div><div class="ttdeci">void check_find_art_quest_completion(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">特定のアーティファクトを入手した際のクエスト達成処理 / Check for &quot;Quest&quot; completion when a quest monster is killed or charmed.</div><div class="ttdef"><b>Definition:</b> quest.cpp:144</div></div>
+<div class="ttc" id="aquest_8h_html_a2fe817b48a3dfa12f22cbc9861b5a124"><div class="ttname"><a href="quest_8h.html#a2fe817b48a3dfa12f22cbc9861b5a124">quest_type</a></div><div class="ttdeci">struct quest_type quest_type</div></div>
+<div class="ttc" id="aquest_8h_html_a3536f73a01c1a3285f3f6e4619ab5b62"><div class="ttname"><a href="quest_8h.html#a3536f73a01c1a3285f3f6e4619ab5b62">max_q_idx</a></div><div class="ttdeci">QUEST_IDX max_q_idx</div><div class="ttdoc">Maximum number of quests</div><div class="ttdef"><b>Definition:</b> quest.cpp:39</div></div>
+<div class="ttc" id="aquest_8h_html_a3731bad96e8d5983e76362ecd5f00332"><div class="ttname"><a href="quest_8h.html#a3731bad96e8d5983e76362ecd5f00332">quest_text</a></div><div class="ttdeci">char quest_text[10][80]</div><div class="ttdoc">Quest text</div><div class="ttdef"><b>Definition:</b> quest.cpp:40</div></div>
+<div class="ttc" id="aquest_8h_html_a4e4e7c44b99f39c05c5b8a1196e6a008"><div class="ttname"><a href="quest_8h.html#a4e4e7c44b99f39c05c5b8a1196e6a008">leave_tower_check</a></div><div class="ttdeci">void leave_tower_check(player_type *player_ptr)</div><div class="ttdoc">「塔」クエストの各階層から離脱する際の処理</div><div class="ttdef"><b>Definition:</b> quest.cpp:295</div></div>
+<div class="ttc" id="aquest_8h_html_a5b6b24bb1f79322d67d0cc51368d3ad3"><div class="ttname"><a href="quest_8h.html#a5b6b24bb1f79322d67d0cc51368d3ad3">quest_number</a></div><div class="ttdeci">QUEST_IDX quest_number(player_type *player_ptr, DEPTH level)</div><div class="ttdoc">新しく入ったダンジョンの階層に固定されている一般のクエストを探し出しIDを返す。 / Hack – Check if a level is a &quot;quest&quot; level</div><div class="ttdef"><b>Definition:</b> quest.cpp:203</div></div>
+<div class="ttc" id="aquest_8h_html_a84fa7549df86f34d5c3b47ce5d1aec42"><div class="ttname"><a href="quest_8h.html#a84fa7549df86f34d5c3b47ce5d1aec42">do_cmd_quest</a></div><div class="ttdeci">void do_cmd_quest(player_type *player_ptr)</div><div class="ttdoc">クエスト入り口にプレイヤーが乗った際の処理 / Do building commands</div><div class="ttdef"><b>Definition:</b> quest.cpp:317</div></div>
+<div class="ttc" id="aquest_8h_html_abab5512f0df1872d981afddd7ca8481f"><div class="ttname"><a href="quest_8h.html#abab5512f0df1872d981afddd7ca8481f">random_quest_number</a></div><div class="ttdeci">QUEST_IDX random_quest_number(player_type *player_ptr, DEPTH level)</div><div class="ttdoc">新しく入ったダンジョンの階層に固定されているランダムクエストを探し出しIDを返す。</div><div class="ttdef"><b>Definition:</b> quest.cpp:227</div></div>
+<div class="ttc" id="aquest_8h_html_acc3f9f8b154a1b1c76c3296f51bb9308"><div class="ttname"><a href="quest_8h.html#acc3f9f8b154a1b1c76c3296f51bb9308">quest_text_line</a></div><div class="ttdeci">int quest_text_line</div><div class="ttdoc">Current line of the quest text</div><div class="ttdef"><b>Definition:</b> quest.cpp:41</div></div>
+<div class="ttc" id="aquest_8h_html_adb46ae06677b6b08d98aa26bbb62db94"><div class="ttname"><a href="quest_8h.html#adb46ae06677b6b08d98aa26bbb62db94">quest</a></div><div class="ttdeci">quest_type * quest</div><div class="ttdoc">Quest info</div><div class="ttdef"><b>Definition:</b> quest.cpp:38</div></div>
+<div class="ttc" id="aquest_8h_html_ae20df73da95e4dfac9ce588fae49b6f7"><div class="ttname"><a href="quest_8h.html#ae20df73da95e4dfac9ce588fae49b6f7">quest_discovery</a></div><div class="ttdeci">void quest_discovery(QUEST_IDX q_idx)</div><div class="ttdoc">クエストの導入メッセージを表示する / Discover quest</div><div class="ttdef"><b>Definition:</b> quest.cpp:158</div></div>
+<div class="ttc" id="aquest_8h_html_ae792df38fdabe81d0dc845da46a3fbb8"><div class="ttname"><a href="quest_8h.html#ae792df38fdabe81d0dc845da46a3fbb8">leaving_quest</a></div><div class="ttdeci">int leaving_quest</div><div class="ttdef"><b>Definition:</b> quest.cpp:42</div></div>
+<div class="ttc" id="aquest_8h_html_af5f55968be72b94b441f35b7dd1b954f"><div class="ttname"><a href="quest_8h.html#af5f55968be72b94b441f35b7dd1b954f">complete_quest</a></div><div class="ttdeci">void complete_quest(player_type *player_ptr, QUEST_IDX quest_num)</div><div class="ttdoc">クエストを達成状態にする /</div><div class="ttdef"><b>Definition:</b> quest.cpp:106</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="astructquest__type_html"><div class="ttname"><a href="structquest__type.html">quest_type</a></div><div class="ttdoc">クエスト情報の構造体 / Structure for the &quot;quests&quot;.</div><div class="ttdef"><b>Definition:</b> quest.h:63</div></div>
+<div class="ttc" id="astructquest__type_html_a2b3e1959c9599202b0e068b96e58c708"><div class="ttname"><a href="structquest__type.html#a2b3e1959c9599202b0e068b96e58c708">quest_type::type</a></div><div class="ttdeci">QUEST_TYPE type</div><div class="ttdoc">クエストの種別 / The quest type</div><div class="ttdef"><b>Definition:</b> quest.h:65</div></div>
+<div class="ttc" id="astructquest__type_html_a340811373c7fbae3d447ee7b4984c7e8"><div class="ttname"><a href="structquest__type.html#a340811373c7fbae3d447ee7b4984c7e8">quest_type::dungeon</a></div><div class="ttdeci">DUNGEON_IDX dungeon</div><div class="ttdoc">クエスト対象のダンジョンID / quest dungeon</div><div class="ttdef"><b>Definition:</b> quest.h:78</div></div>
+<div class="ttc" id="astructquest__type_html_a482ef642ee30975adef0eb2c83b80686"><div class="ttname"><a href="structquest__type.html#a482ef642ee30975adef0eb2c83b80686">quest_type::flags</a></div><div class="ttdeci">BIT_FLAGS flags</div><div class="ttdoc">クエストに関するフラグビット / quest flags</div><div class="ttdef"><b>Definition:</b> quest.h:77</div></div>
+<div class="ttc" id="astructquest__type_html_a7570c1b2ee4aa9ba8697facb0b519e19"><div class="ttname"><a href="structquest__type.html#a7570c1b2ee4aa9ba8697facb0b519e19">quest_type::r_idx</a></div><div class="ttdeci">MONRACE_IDX r_idx</div><div class="ttdoc">クエスト対象のモンスターID / Monster race</div><div class="ttdef"><b>Definition:</b> quest.h:69</div></div>
+<div class="ttc" id="astructquest__type_html_a759c7e106f302f669f852a70925d64d6"><div class="ttname"><a href="structquest__type.html#a759c7e106f302f669f852a70925d64d6">quest_type::comptime</a></div><div class="ttdeci">REAL_TIME comptime</div><div class="ttdoc">クリア時ゲーム時間 / quest clear time</div><div class="ttdef"><b>Definition:</b> quest.h:81</div></div>
+<div class="ttc" id="astructquest__type_html_a94db40cbf10360bcd2512739cc67b9b6"><div class="ttname"><a href="structquest__type.html#a94db40cbf10360bcd2512739cc67b9b6">quest_type::level</a></div><div class="ttdeci">DEPTH level</div><div class="ttdoc">処理階層 / Dungeon level</div><div class="ttdef"><b>Definition:</b> quest.h:68</div></div>
+<div class="ttc" id="astructquest__type_html_ab2b0362fefbe7f5f168027f154b85514"><div class="ttname"><a href="structquest__type.html#ab2b0362fefbe7f5f168027f154b85514">quest_type::cur_num</a></div><div class="ttdeci">MONSTER_NUMBER cur_num</div><div class="ttdoc">撃破したモンスターの数 / Number killed</div><div class="ttdef"><b>Definition:</b> quest.h:71</div></div>
+<div class="ttc" id="astructquest__type_html_abcedc376c85cf5586b3fcfbdfb398f66"><div class="ttname"><a href="structquest__type.html#abcedc376c85cf5586b3fcfbdfb398f66">quest_type::name</a></div><div class="ttdeci">GAME_TEXT name[60]</div><div class="ttdoc">クエスト名 / Quest name</div><div class="ttdef"><b>Definition:</b> quest.h:67</div></div>
+<div class="ttc" id="astructquest__type_html_ac1f2574bcc0e5956005449c36b38e70c"><div class="ttname"><a href="structquest__type.html#ac1f2574bcc0e5956005449c36b38e70c">quest_type::complev</a></div><div class="ttdeci">PLAYER_LEVEL complev</div><div class="ttdoc">クリア時プレイヤーレベル / player level (complete)</div><div class="ttdef"><b>Definition:</b> quest.h:80</div></div>
+<div class="ttc" id="astructquest__type_html_ad996a35f63493a48a8b61cc85ad0c60c"><div class="ttname"><a href="structquest__type.html#ad996a35f63493a48a8b61cc85ad0c60c">quest_type::num_mon</a></div><div class="ttdeci">MONSTER_NUMBER num_mon</div><div class="ttdoc">QUEST_TYPE_KILL_NUMBER時の目標撃破数 number of monsters on level</div><div class="ttdef"><b>Definition:</b> quest.h:75</div></div>
+<div class="ttc" id="astructquest__type_html_ade6f8bd39a1a4726a6bc13e1f94f47af"><div class="ttname"><a href="structquest__type.html#ade6f8bd39a1a4726a6bc13e1f94f47af">quest_type::max_num</a></div><div class="ttdeci">MONSTER_NUMBER max_num</div><div class="ttdoc">求められるモンスターの撃破数 / Number required</div><div class="ttdef"><b>Definition:</b> quest.h:72</div></div>
+<div class="ttc" id="astructquest__type_html_aef56470e2ec970c87950ec14ee003e65"><div class="ttname"><a href="structquest__type.html#aef56470e2ec970c87950ec14ee003e65">quest_type::status</a></div><div class="ttdeci">QUEST_STATUS status</div><div class="ttdoc">クエストの進行ステータス / Is the quest taken, completed, finished?</div><div class="ttdef"><b>Definition:</b> quest.h:64</div></div>
+<div class="ttc" id="astructquest__type_html_aff2dc015d27e0b1d769a54f36369edd8"><div class="ttname"><a href="structquest__type.html#aff2dc015d27e0b1d769a54f36369edd8">quest_type::k_idx</a></div><div class="ttdeci">KIND_OBJECT_IDX k_idx</div><div class="ttdoc">クエスト対象のアイテムID / object index</div><div class="ttdef"><b>Definition:</b> quest.h:74</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

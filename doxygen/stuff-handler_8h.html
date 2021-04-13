@@ -1,0 +1,460 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/core/stuff-handler.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">stuff-handler.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+stuff-handler.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="stuff-handler_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2core_2stuff-handler_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2core_2stuff-handler_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2core_2stuff-handler_8h">
+<area shape="rect" title=" " alt="" coords="347,5,537,61"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="377,109,507,136"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="31,184,122,211"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="23,348,165,375"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,184,607,211"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,184,245,211"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,184,367,211"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,184,492,211"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,184,807,211"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="943,184,1090,211"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="169,266,291,293"/>
+<area shape="rect" title=" " alt="" coords="386,266,461,293"/>
+<area shape="rect" title=" " alt="" coords="485,266,567,293"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="592,259,743,300"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="767,259,920,300"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="944,259,1089,300"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1114,259,1287,300"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1311,259,1437,300"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1461,266,1580,293"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1604,266,1715,293"/>
+</map>
+</div>
+</div>
+<p><a href="stuff-handler_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:ae6fb3f813fe2e4b1bbef82331e170c59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stuff-handler_8h.html#ae6fb3f813fe2e4b1bbef82331e170c59">handle_stuff</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="memdesc:ae6fb3f813fe2e4b1bbef82331e170c59"><td class="mdescLeft">&#160;</td><td class="mdescRight">全更新処理をチェックして処理していく Handle "player_ptr-&gt;update" and "player_ptr-&gt;redraw" and "player_ptr-&gt;window"  <a href="stuff-handler_8h.html#ae6fb3f813fe2e4b1bbef82331e170c59">[詳解]</a><br /></td></tr>
+<tr class="separator:ae6fb3f813fe2e4b1bbef82331e170c59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4c472d001cbdcb0c412ec4735b185d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stuff-handler_8h.html#ab4c472d001cbdcb0c412ec4735b185d8">monster_race_track</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> r_idx)</td></tr>
+<tr class="separator:ab4c472d001cbdcb0c412ec4735b185d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e3afaa56b55c6e8837edeaf8d5355c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stuff-handler_8h.html#a5e3afaa56b55c6e8837edeaf8d5355c2">object_kind_track</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx)</td></tr>
+<tr class="separator:a5e3afaa56b55c6e8837edeaf8d5355c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad491b75a9a598cb361c671e23737d1fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stuff-handler_8h.html#ad491b75a9a598cb361c671e23737d1fb">health_track</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx)</td></tr>
+<tr class="separator:ad491b75a9a598cb361c671e23737d1fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a5917edba3efb030fed4872671e8e14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stuff-handler_8h.html#a0a5917edba3efb030fed4872671e8e14">update_player</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr)</td></tr>
+<tr class="separator:a0a5917edba3efb030fed4872671e8e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5e3a5e044fc12e6b08c5d4010497a54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stuff-handler_8h.html#ab5e3a5e044fc12e6b08c5d4010497a54">redraw_player</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr)</td></tr>
+<tr class="separator:ab5e3a5e044fc12e6b08c5d4010497a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ae6fb3f813fe2e4b1bbef82331e170c59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6fb3f813fe2e4b1bbef82331e170c59">&#9670;&nbsp;</a></span>handle_stuff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void handle_stuff </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>全更新処理をチェックして処理していく Handle "player_ptr-&gt;update" and "player_ptr-&gt;redraw" and "player_ptr-&gt;window" </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="stuff-handler_8h_ae6fb3f813fe2e4b1bbef82331e170c59_cgraph.png" border="0" usemap="#astuff-handler_8h_ae6fb3f813fe2e4b1bbef82331e170c59_cgraph" alt=""/></div>
+<map name="astuff-handler_8h_ae6fb3f813fe2e4b1bbef82331e170c59_cgraph" id="astuff-handler_8h_ae6fb3f813fe2e4b1bbef82331e170c59_cgraph">
+<area shape="rect" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="5,993,96,1020"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="156,993,247,1020"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="707,5,801,32"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="144,1044,259,1071"/>
+<area shape="rect" href="display-player_8cpp.html#a9fe8f180d0c7988d9f70e24d800817e0" title="プレイヤーの装備一覧をシンボルで並べる Equippy chars" alt="" coords="307,132,464,159"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#ac998ca123dae0422c7e40ef406cff479" title="モンスターの体力ゲージを表示する" alt="" coords="512,461,615,488"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="524,208,603,235"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a7d5ec7c1181db9b693f537dd9e0d41e7" title="プレイヤーのACを表示する / Prints current AC" alt="" coords="529,563,597,589"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a6181c8a6ad32547a234b2058e6b0e525" title="プレイヤーの負傷状態を表示する" alt="" coords="527,1171,599,1197"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a5bfa2237dc983925953f84a885559d79" title="現在のフロアの深さを表示する / Prints depth in stat area" alt="" coords="520,1272,607,1299"/>
+<area shape="rect" href="window-redrawer_8cpp.html#a41d833bdfe7715316bb530e140248670" title="現在のマップ名を描画する / Print dungeon" alt="" coords="512,1221,615,1248"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a18af94b5af464f3967f0ed8a20dac1d0" title="プレイヤーの経験値を表示する / Display the experience" alt="" coords="526,613,601,640"/>
+<area shape="rect" href="main-window-util_8cpp.html#a74f5abdff68634c310ce9e4bf83e9f33" title="画面左の能力値表示を行うために指定位置から13キャラ分を空白消去後指定のメッセージを明るい青で描画する / Print character info at given row,..." alt="" coords="715,1069,793,1096"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a1e77dcf108066d1125d6bd67ff0a503a" title="プレイヤーのステータスを一括表示する（左側部分） / Display basic info (mostly left of map)" alt="" coords="323,816,447,843"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a2885d18ebf873971cb460b26b1cd9465" title="プレイヤーの所持金を表示する / Prints current gold" alt="" coords="524,664,603,691"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a5805711d6d76e93f028e594309a70b2a" title="プレイヤーのHPを表示する / Prints Cur/Max hit points" alt="" coords="529,715,597,741"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a9141d6c0e7c5ab59266e2b03c2f9be83" title="プレイヤーのレベルを表示する / Prints level" alt="" coords="524,765,603,792"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a6740c9df10edfa479b29c3fa64a2e67e" title="プレイヤーのMPを表示する / Prints players max/cur spell points" alt="" coords="529,816,597,843"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a09f789316ff276b64a076c8f06382900" title="プレイヤー能力値を描画する / Print character stat in given row, column" alt="" coords="525,867,601,893"/>
+<area shape="rect" href="main-window-left-frame_8cpp.html#a697c881fefb73b66a129eeeb7e71c131" title="プレイヤーの称号を表示する / Prints &quot;title&quot;, including &quot;wizard&quot; or &quot;winner&quot; as needed." alt="" coords="526,1019,601,1045"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#ac1f738b7a5ba34c408d778f0c00afa64" title="プレイヤーのステータスを一括表示する（下部分） / Display extra info (mostly below map)" alt="" coords="324,1373,447,1400"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#aebd5d1f389eff327860385b1090b4605" title="プレイヤーの空腹状態を表示する / Prints status of hunger" alt="" coords="517,1576,610,1603"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a6e9ce49dc68f15e20ab91ed3ced188e5" title="プレイヤーのものまね可能状態を表示する" alt="" coords="512,1475,615,1501"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a3e7fa200db1ee53f89cbd62db2cf93ce" title="プレイヤーの行動速度を表示する / Prints the speed_value of a character." alt="" coords="519,1525,608,1552"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a771dc00b6a1e33e839d8933154efa9aa" title="プレイヤーの行動状態を表示する / Prints Searching, Resting, Paralysis, or &#39;count&#39; status" alt="" coords="522,1373,605,1400"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a0dcb16a35f4ec657370c5b16febc8d88" title="下部に状態表示を行う / Show status bar" alt="" coords="518,1627,609,1653"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a4c797de7671346c3c777a2037406f63d" title="プレイヤーの呪文学習可能状態を表示する" alt="" coords="520,1323,607,1349"/>
+<area shape="rect" href="main-window-stat-poster_8cpp.html#a0efdfaa19c5817c94b672d0a95f7b4dc" title="プレイヤーの朦朧状態を表示する" alt="" coords="524,968,603,995"/>
+<area shape="rect" href="main-window-util_8cpp.html#a939591bb7cb9347fbb114ffd9ae7cc8e" title=" " alt="" coords="524,1728,603,1755"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#ae997244cfd06fde0444730af2862038b" title="ゲーム時刻を表示する / Print time" alt="" coords="524,1424,603,1451"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="344,512,427,539"/>
+<area shape="rect" href="object-info_8cpp.html#a55e6a6cccf0029e1be8f471671cb39dc" title=" " alt="" coords="522,157,605,184"/>
+<area shape="rect" href="object-kind_8cpp.html#ae87afbe432132204007b406c96ac9687" title=" " alt="" coords="519,56,608,83"/>
+<area shape="rect" href="z-term_8cpp.html#abb85e44f10d01b0cfb7b1bd4b5bc48e5" title=" " alt="" coords="520,107,607,133"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="725,1323,783,1349"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="665,411,843,437"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="674,461,834,488"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="663,360,845,387"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="893,385,980,412"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="1028,512,1116,539"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="703,157,805,184"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="713,56,795,83"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="695,107,813,133"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="899,1044,975,1071"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="723,816,785,843"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="729,1221,779,1248"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="702,1525,806,1552"/>
+<area shape="rect" href="floor-util_8cpp.html#a07021e31377daf075675327389b73831" title="現在のマップ名を返す /" alt="" coords="711,1171,797,1197"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="697,968,811,995"/>
+<area shape="rect" href="player-status_8cpp.html#af6be48df20384df551b88a2466d159fb" title=" " alt="" coords="719,1779,789,1805"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad491b75a9a598cb361c671e23737d1fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad491b75a9a598cb361c671e23737d1fb">&#9670;&nbsp;</a></span>health_track()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void health_track </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>m_idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="stuff-handler_8h_ad491b75a9a598cb361c671e23737d1fb_icgraph.png" border="0" usemap="#astuff-handler_8h_ad491b75a9a598cb361c671e23737d1fb_icgraph" alt=""/></div>
+<map name="astuff-handler_8h_ad491b75a9a598cb361c671e23737d1fb_icgraph" id="astuff-handler_8h_ad491b75a9a598cb361c671e23737d1fb_icgraph">
+<area shape="rect" title=" " alt="" coords="876,1419,969,1446"/>
+<area shape="rect" href="monster-compaction_8cpp.html#a2983ca487cde209ae5191771e8859669" title="モンスター情報を配列内移動する / Move an object from index i1 to index i2 in the object list" alt="" coords="667,554,828,580"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="198,208,322,235"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="8,107,144,134"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="680,899,815,926"/>
+<area shape="rect" href="cmd-pet_8cpp.html#a016f22b29967f438acaee62a94bb05af" title="ペットを開放するコマンドのメインルーチン" alt="" coords="423,208,569,235"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="227,1558,293,1584"/>
+<area shape="rect" href="spells-polymorph_8cpp.html#abf6f0e07032268b1b3aff681bda9e043" title="指定座標にいるモンスターを変身させる / Helper function – return a &quot;nearby&quot; race for polymorphing" alt="" coords="428,1507,564,1534"/>
+<area shape="rect" href="target-describer_8cpp.html#a385f9390a5aeeb71e53958c351bbe287" title=" " alt="" coords="698,1390,797,1416"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a88436a666e8881ff9701908f0745f5f0" title=" " alt="" coords="675,1441,819,1482"/>
+<area shape="rect" href="cmd-attack_8cpp.html#a8e48cd6d2ca0901e5c89e19e30aab0b3" title="プレイヤーの打撃処理メインルーチン" alt="" coords="692,1710,803,1736"/>
+<area shape="rect" href="cmd-pet_8cpp.html#a28f35d22f806bfd883341a2cc735003a" title="ペットから騎乗/下馬するコマンドのメインルーチン /" alt="" coords="443,1684,549,1711"/>
+<area shape="rect" href="movement-execution_8cpp.html#a586b9fe6bc207183655cdfb8dcfaf464" title="該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す / Move player in the given direction, with the given &quot;pickup&quot; flag." alt="" coords="441,1786,551,1812"/>
+<area shape="rect" href="spells-fetcher_8cpp.html#a82174cd61ca4f0523a9cc463175df4cf" title=" " alt="" coords="695,1659,799,1686"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="717,1339,778,1366"/>
+<area shape="rect" href="target-setter_8cpp.html#a649c5f6b2fc0b76a71e4d9c7a0687e41" title=" " alt="" coords="680,1760,815,1787"/>
+<area shape="rect" href="monster-remover_8cpp.html#af83635a321f316ed234ed7f2c38371d0" title="プレイヤーのフロア離脱に伴う全モンスター配列の消去 / Delete/Remove all the monsters when the player leaves the level" alt="" coords="429,107,563,134"/>
+<area shape="rect" href="monster-compaction_8cpp.html#a45418160543ab052bb17c17d724acb6b" title="モンスター情報配列を圧縮する / Compact and Reorder the monster list" alt="" coords="429,259,563,286"/>
+<area shape="rect" href="floor-writer_8cpp.html#a11937fb0136a154a63265b4d3e946b7c" title="ゲームプレイ中のフロア一時保存出力処理サブルーチン / Actually write a temporary saved floor file" alt="" coords="207,259,313,286"/>
+<area shape="rect" href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="203,360,317,387"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#a4a451de636382e9b7827db0baa28e8de" title="ダメージを受けたモンスターのHPが0未満になった際の処理" alt="" coords="430,899,562,926"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a96b320c18dbf4c4ae9c1e7d2bae92d1d" title=" " alt="" coords="411,1304,581,1331"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a9473eba7ae635c7cb94c6cf0d7426659" title="フロア移動時のペット保存処理 / Preserve_pets" alt="" coords="213,1051,307,1078"/>
+<area shape="rect" href="grid_8h.html#a73f3bf1cce90b5f4579ab9e8eaf3c990" title="指定位置に存在するモンスターを削除する / Delete the monster, if any, at a given location" alt="" coords="441,848,551,875"/>
+<area shape="rect" href="mutation-execution_8cpp.html#a0c9c1052c587d71b683d8a700d9ae016" title="突然変異のレイシャル効果実装" alt="" coords="5,710,147,736"/>
+<area shape="rect" href="spells-pet_8cpp.html#a4d1508b844fb21fa74cec6f11df83464" title="ペット爆破処理 /" alt="" coords="435,1456,557,1483"/>
+<area shape="rect" href="effect-monster_8cpp.html#a66fbd35d5367d63f8dade77eb3f020a9" title="ペットの死亡を処理する" alt="" coords="412,1102,580,1128"/>
+<area shape="rect" href="effect-monster-charm_8cpp.html#a2a5454454ef807a2f8913dd585cd30d3" title="モンスターボールで捕らえた処理" alt="" coords="414,1152,578,1179"/>
+<area shape="rect" href="spells-genocide_8cpp.html#a92bd5e26c84fa2eb42514b87bc6f2632" title="モンスターへの単体抹殺処理サブルーチン / Delete a non&#45;unique/non&#45;quest monster" alt="" coords="445,1203,547,1230"/>
+<area shape="rect" href="effect-monster_8cpp.html#acef771ba4088ad06648538d22f19615e" title="不潔な病人の治療処理" alt="" coords="452,1254,540,1280"/>
+<area shape="rect" href="monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="446,1406,546,1432"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="455,950,537,976"/>
+<area shape="rect" href="floor-leaver_8cpp.html#aa73f111463184d866eaa0b6224b4f728" title="クエスト・フロア内のモンスター・インベントリ情報を保存する" alt="" coords="447,1355,545,1382"/>
+<area shape="rect" href="floor-changer_8cpp.html#ae7751559958500b17c9ce9eb67d3b531" title=" " alt="" coords="422,361,570,402"/>
+<area shape="rect" href="monster-runaway_8cpp.html#ae8dda2c5c942f1263737b32fd4ac4f25" title="ペットや友好的なモンスターがフロアから逃げる処理を行う" alt="" coords="434,427,558,454"/>
+<area shape="rect" href="mspell-special_8cpp.html#a687af24a85011574ed6b0878a26951e8" title="特殊な行動を取るモンスターの具体的な行動定義 (r_infoのSPECIALフラグ)" alt="" coords="373,478,619,504"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a8665adb3738f60520d0b3f4cec4aeafc" title=" " alt="" coords="421,1051,571,1078"/>
+<area shape="rect" href="spells-world_8cpp.html#a7204ab233ffa573046416517da467469" title="プレイヤー及びモンスターをレベルテレポートさせる / Teleport the player one level up or down (random when legal)" alt="" coords="447,528,545,555"/>
+<area shape="rect" href="quantum-effect_8cpp.html#a18d880aac6dc2b623b0bacac0bc5e350" title="ユニークでない量子生物を消滅させる" alt="" coords="434,579,558,606"/>
+<area shape="rect" href="monster-processor_8cpp.html#a7a235f391a99359f8492015d2afa2d11" title="召喚の親元が消滅した時、子供も消滅させる" alt="" coords="405,630,587,656"/>
+<area shape="rect" href="wild_8cpp.html#ad2b39f3334022fd4e424dbc1029c79f4" title="広域マップの生成 / Build the wilderness area outside of the town." alt="" coords="441,310,551,336"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac11136d7f8c0e65133da9da3d3392d" title="フロアに存在する全モンスターを消去する / Delete all monsters" alt="" coords="415,731,577,758"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#aac26873cfc84c2e6540c702eb92cc9a5" title="プレイヤー近辺の全モンスターを消去する / Delete all nearby monsters" alt="" coords="425,782,567,824"/>
+<area shape="rect" href="floor-streams_8cpp.html#a4c0e9c1836936ded0040dede609df5e0" title="ダンジョンの壁部にストリーマー（地質の変化）を与える / Places &quot;streamers&quot; of rock through dungeon" alt="" coords="207,899,313,926"/>
+<area shape="rect" href="spells-floor_8cpp.html#aff6b2287b85d21769fa6b05e3df35eaf" title="*破壊*処理を行う / The spell of destruction" alt="" coords="211,950,309,976"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="217,739,303,766"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#a240162d8716628b91552ad2ce79944b7" title=" " alt="" coords="211,798,309,824"/>
+<area shape="rect" href="door_8cpp.html#a0da7b4515c9710b9967bf26703d22834" title="鍵のかかったドアを配置する" alt="" coords="195,848,325,875"/>
+<area shape="rect" href="floor-generator_8cpp.html#ac118aa928b4521013e62c16a0bc6b28f" title="ダンジョンのランダムフロアを生成する / Generates a random dungeon level &#45;RAK&#45; @parama player_ptr プレーヤーへの参照ポインタ" alt="" coords="209,310,311,336"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="215,158,305,184"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab4c472d001cbdcb0c412ec4735b185d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4c472d001cbdcb0c412ec4735b185d8">&#9670;&nbsp;</a></span>monster_race_track()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void monster_race_track </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a>&#160;</td>
+          <td class="paramname"><em>r_idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="stuff-handler_8h_ab4c472d001cbdcb0c412ec4735b185d8_icgraph.png" border="0" usemap="#astuff-handler_8h_ab4c472d001cbdcb0c412ec4735b185d8_icgraph" alt=""/></div>
+<map name="astuff-handler_8h_ab4c472d001cbdcb0c412ec4735b185d8_icgraph" id="astuff-handler_8h_ab4c472d001cbdcb0c412ec4735b185d8_icgraph">
+<area shape="rect" title=" " alt="" coords="747,300,884,327"/>
+<area shape="rect" href="target-describer_8cpp.html#a385f9390a5aeeb71e53958c351bbe287" title=" " alt="" coords="551,31,649,57"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a88436a666e8881ff9701908f0745f5f0" title=" " alt="" coords="528,82,672,123"/>
+<area shape="rect" href="cmd-attack_8cpp.html#a8e48cd6d2ca0901e5c89e19e30aab0b3" title="プレイヤーの打撃処理メインルーチン" alt="" coords="545,148,655,175"/>
+<area shape="rect" href="movement-execution_8cpp.html#a586b9fe6bc207183655cdfb8dcfaf464" title="該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す / Move player in the given direction, with the given &quot;pickup&quot; flag." alt="" coords="344,173,453,200"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#a3ba32fc8df87acb37ad0757bdc3a0388" title="Display known monsters." alt="" coords="501,249,699,276"/>
+<area shape="rect" href="cmd-lore_8cpp.html#ae1f67e879bad2c6ac1ee0971abd55d5d" title="モンスターの思い出を見るコマンドのメインルーチン Identify a character, allow recall of monsters" alt="" coords="522,300,678,327"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="365,452,432,479"/>
+<area shape="rect" href="spells-fetcher_8cpp.html#a82174cd61ca4f0523a9cc463175df4cf" title=" " alt="" coords="548,401,652,428"/>
+<area shape="rect" href="monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="550,452,650,479"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="569,503,631,529"/>
+<area shape="rect" href="building-monster_8cpp.html#a830fd649f8119cf8b94ee1d447ba14c0" title="施設でモンスターの情報を知るメインルーチン / research_mon &#45;KMW&#45;" alt="" coords="548,553,652,580"/>
+<area shape="rect" href="target-describer_8cpp.html#a91974c989701cf617f42e1ecddfbadf5" title="xまたはlで指定したグリッドにあるアイテムやモンスターの説明を記述する" alt="" coords="349,31,448,57"/>
+<area shape="rect" href="target-setter_8cpp.html#a45a8cf5d783c1bb8dcbe5909b9cac54d" title=" " alt="" coords="188,5,296,32"/>
+<area shape="rect" href="target-setter_8cpp.html#ad02c1118be239ab872713cc386fd3163" title=" " alt="" coords="5,31,140,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5e3afaa56b55c6e8837edeaf8d5355c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e3afaa56b55c6e8837edeaf8d5355c2">&#9670;&nbsp;</a></span>object_kind_track()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void object_kind_track </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a>&#160;</td>
+          <td class="paramname"><em>k_idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="stuff-handler_8h_a5e3afaa56b55c6e8837edeaf8d5355c2_icgraph.png" border="0" usemap="#astuff-handler_8h_a5e3afaa56b55c6e8837edeaf8d5355c2_icgraph" alt=""/></div>
+<map name="astuff-handler_8h_a5e3afaa56b55c6e8837edeaf8d5355c2_icgraph" id="astuff-handler_8h_a5e3afaa56b55c6e8837edeaf8d5355c2_icgraph">
+<area shape="rect" title=" " alt="" coords="1144,175,1268,201"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="737,48,853,75"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="953,200,1053,227"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a6cc60a9c8d1e600f6618e93dde225137" title="Display known objects" alt="" coords="911,149,1096,176"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="741,317,848,344"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,149,296,176"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="511,48,679,75"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,149,116,176"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="351,48,455,75"/>
+<area shape="rect" href="racial-switcher_8cpp.html#ac21c6b6a9eae71ce476478232b11f8e0" title="レイシャルと突然変異の技能処理 / Racial powers (and mutations)" alt="" coords="727,251,862,293"/>
+<area shape="rect" href="racial-execution_8cpp.html#a7e635e6235b51eda9d29cc9bf0ac79dd" title="レイシャル・パワー発動処理" alt="" coords="533,251,656,277"/>
+<area shape="rect" href="cmd-knowledge_8cpp.html#aa220b38b20d426fe2517d1a4fd738e0c" title=" " alt="" coords="727,99,863,125"/>
+<area shape="rect" href="cmd-visuals_8cpp.html#a0826877287cc62ecef1432f586181997" title=" " alt="" coords="737,149,852,176"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="513,301,676,328"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="344,276,463,303"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab5e3a5e044fc12e6b08c5d4010497a54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5e3a5e044fc12e6b08c5d4010497a54">&#9670;&nbsp;</a></span>redraw_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> redraw_player </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="stuff-handler_8h_ab5e3a5e044fc12e6b08c5d4010497a54_icgraph.png" border="0" usemap="#astuff-handler_8h_ab5e3a5e044fc12e6b08c5d4010497a54_icgraph" alt=""/></div>
+<map name="astuff-handler_8h_ab5e3a5e044fc12e6b08c5d4010497a54_icgraph" id="astuff-handler_8h_ab5e3a5e044fc12e6b08c5d4010497a54_icgraph">
+<area shape="rect" title=" " alt="" coords="724,32,827,59"/>
+<area shape="rect" href="mind-mage_8cpp.html#aa5ccfdbf3aa06956f929153e9aa24790" title="魔力喰い処理" alt="" coords="593,32,676,59"/>
+<area shape="rect" href="mutation-execution_8cpp.html#a0c9c1052c587d71b683d8a700d9ae016" title="突然変異のレイシャル効果実装" alt="" coords="221,5,363,32"/>
+<area shape="rect" href="racial-switcher_8cpp.html#ac21c6b6a9eae71ce476478232b11f8e0" title="レイシャルと突然変異の技能処理 / Racial powers (and mutations)" alt="" coords="411,54,545,95"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a5f006f05c6ec58252925013371aa132f" title=" " alt="" coords="5,32,173,59"/>
+<area shape="rect" href="racial-execution_8cpp.html#a7e635e6235b51eda9d29cc9bf0ac79dd" title="レイシャル・パワー発動処理" alt="" coords="231,57,353,84"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0a5917edba3efb030fed4872671e8e14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a5917edba3efb030fed4872671e8e14">&#9670;&nbsp;</a></span>update_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> update_player </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="stuff-handler_8h_a0a5917edba3efb030fed4872671e8e14_icgraph.png" border="0" usemap="#astuff-handler_8h_a0a5917edba3efb030fed4872671e8e14_icgraph" alt=""/></div>
+<map name="astuff-handler_8h_a0a5917edba3efb030fed4872671e8e14_icgraph" id="astuff-handler_8h_a0a5917edba3efb030fed4872671e8e14_icgraph">
+<area shape="rect" title=" " alt="" coords="663,157,765,184"/>
+<area shape="rect" href="magic-item-recharger_8cpp.html#a9b2e285ff33f0ea5da68af05b3495d24" title="魔法効果の実装/ Spell code (part 3)" alt="" coords="543,157,615,184"/>
+<area shape="rect" href="activation-others_8cpp.html#a187ffe66dfe36a807335df2d8d0db57a" title=" " alt="" coords="346,5,469,32"/>
+<area shape="rect" href="activation-others_8cpp.html#a4ff6d68a368bdc90062117e16cb079c7" title=" " alt="" coords="328,56,487,83"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="351,107,463,133"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="5,157,104,184"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="347,157,467,184"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="370,259,445,285"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a74d62708df45b643ad7193b43e5d053c" title="クラスパワーを実行" alt="" coords="320,309,495,336"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="152,31,272,57"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="173,157,251,184"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分45秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

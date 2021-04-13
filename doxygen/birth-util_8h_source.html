@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/birth/birth-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_84d111bb56536c13b547e5976d232fbf.html">birth</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">birth-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="birth-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737fec">    5</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737fec">birth_kind</a></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737fecaee7b03bbdc0b8e646d5be8f7f73f4e7f">    7</a></span>&#160;    <a class="code" href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737fecaee7b03bbdc0b8e646d5be8f7f73f4e7f">BK_REALM</a>,</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737fecac3770be4ee9a8a566ff0edac04ce344c">    8</a></span>&#160;    <a class="code" href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737fecac3770be4ee9a8a566ff0edac04ce344c">BK_RACE</a>,</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737fecaad4c781079cc624b2c37e6eeba56bc05">    9</a></span>&#160;    <a class="code" href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737fecaad4c781079cc624b2c37e6eeba56bc05">BK_CLASS</a>,</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737feca9169b5c2636fbfffbb93773f24a26255">   10</a></span>&#160;    <a class="code" href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737feca9169b5c2636fbfffbb93773f24a26255">BK_PERSONALITY</a>,</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737feca63acaa6ad5bf2e9f03f465e094e06dc5">   11</a></span>&#160;    <a class="code" href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737feca63acaa6ad5bf2e9f03f465e094e06dc5">BK_AUTO_ROLLER</a>,</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;};</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> <a class="code" href="birth-util_8h.html#ac653c0197e083ace688c790e576eae22">birth_quit</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> <a class="code" href="birth-util_8h.html#a272bd84ea8cf1a4a13db4d37550aaf16">show_help</a>(<a class="code" href="structplayer__type.html">player_type</a>* creature_ptr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> helpfile);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span> <a class="code" href="birth-util_8h.html#a11522f9d6a8d4dcb0c7ab5e512a56ce3">birth_help_option</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">char</span> c, <a class="code" href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737fec">birth_kind</a> bk);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="abirth-util_8h_html_a11522f9d6a8d4dcb0c7ab5e512a56ce3"><div class="ttname"><a href="birth-util_8h.html#a11522f9d6a8d4dcb0c7ab5e512a56ce3">birth_help_option</a></div><div class="ttdeci">void birth_help_option(player_type *creature_ptr, char c, birth_kind bk)</div><div class="ttdef"><b>Definition:</b> birth-util.cpp:30</div></div>
+<div class="ttc" id="abirth-util_8h_html_a272bd84ea8cf1a4a13db4d37550aaf16"><div class="ttname"><a href="birth-util_8h.html#a272bd84ea8cf1a4a13db4d37550aaf16">show_help</a></div><div class="ttdeci">void show_help(player_type *creature_ptr, concptr helpfile)</div><div class="ttdoc">指定されたヘルプファイルを表示する / Show specific help file</div><div class="ttdef"><b>Definition:</b> birth-util.cpp:23</div></div>
+<div class="ttc" id="abirth-util_8h_html_a6d7b2044fb066873cf01eb5a93737fec"><div class="ttname"><a href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737fec">birth_kind</a></div><div class="ttdeci">birth_kind</div><div class="ttdef"><b>Definition:</b> birth-util.h:6</div></div>
+<div class="ttc" id="abirth-util_8h_html_a6d7b2044fb066873cf01eb5a93737feca63acaa6ad5bf2e9f03f465e094e06dc5"><div class="ttname"><a href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737feca63acaa6ad5bf2e9f03f465e094e06dc5">BK_AUTO_ROLLER</a></div><div class="ttdeci">@ BK_AUTO_ROLLER</div><div class="ttdef"><b>Definition:</b> birth-util.h:11</div></div>
+<div class="ttc" id="abirth-util_8h_html_a6d7b2044fb066873cf01eb5a93737feca9169b5c2636fbfffbb93773f24a26255"><div class="ttname"><a href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737feca9169b5c2636fbfffbb93773f24a26255">BK_PERSONALITY</a></div><div class="ttdeci">@ BK_PERSONALITY</div><div class="ttdef"><b>Definition:</b> birth-util.h:10</div></div>
+<div class="ttc" id="abirth-util_8h_html_a6d7b2044fb066873cf01eb5a93737fecaad4c781079cc624b2c37e6eeba56bc05"><div class="ttname"><a href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737fecaad4c781079cc624b2c37e6eeba56bc05">BK_CLASS</a></div><div class="ttdeci">@ BK_CLASS</div><div class="ttdef"><b>Definition:</b> birth-util.h:9</div></div>
+<div class="ttc" id="abirth-util_8h_html_a6d7b2044fb066873cf01eb5a93737fecac3770be4ee9a8a566ff0edac04ce344c"><div class="ttname"><a href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737fecac3770be4ee9a8a566ff0edac04ce344c">BK_RACE</a></div><div class="ttdeci">@ BK_RACE</div><div class="ttdef"><b>Definition:</b> birth-util.h:8</div></div>
+<div class="ttc" id="abirth-util_8h_html_a6d7b2044fb066873cf01eb5a93737fecaee7b03bbdc0b8e646d5be8f7f73f4e7f"><div class="ttname"><a href="birth-util_8h.html#a6d7b2044fb066873cf01eb5a93737fecaee7b03bbdc0b8e646d5be8f7f73f4e7f">BK_REALM</a></div><div class="ttdeci">@ BK_REALM</div><div class="ttdef"><b>Definition:</b> birth-util.h:7</div></div>
+<div class="ttc" id="abirth-util_8h_html_ac653c0197e083ace688c790e576eae22"><div class="ttname"><a href="birth-util_8h.html#ac653c0197e083ace688c790e576eae22">birth_quit</a></div><div class="ttdeci">void birth_quit(void)</div><div class="ttdoc">プレイヤー作成を中断して馬鹿馬鹿蛮怒を終了する</div><div class="ttdef"><b>Definition:</b> birth-util.cpp:12</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

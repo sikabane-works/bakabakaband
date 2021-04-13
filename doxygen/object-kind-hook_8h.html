@@ -1,0 +1,677 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/object/object-kind-hook.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_bb043af75e54e1af3032f67529bb720c.html">object</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">object-kind-hook.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="tval-types_8h_source.html">object/tval-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+object-kind-hook.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-kind-hook_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object_2object-kind-hook_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object_2object-kind-hook_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object_2object-kind-hook_8h">
+<area shape="rect" title=" " alt="" coords="272,5,460,61"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="227,109,353,136"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="377,109,507,136"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="31,184,122,211"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="23,348,165,375"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,184,607,211"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,184,245,211"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,184,367,211"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,184,492,211"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,184,807,211"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="943,184,1090,211"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="169,266,291,293"/>
+<area shape="rect" title=" " alt="" coords="386,266,461,293"/>
+<area shape="rect" title=" " alt="" coords="485,266,567,293"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="592,259,743,300"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="767,259,920,300"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="944,259,1089,300"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1114,259,1287,300"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1311,259,1437,300"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1461,266,1580,293"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1604,266,1715,293"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-kind-hook_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object_2object-kind-hook_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object_2object-kind-hook_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object_2object-kind-hook_8hdep">
+<area shape="rect" title=" " alt="" coords="3435,5,3623,61"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html" title=" " alt="" coords="5,109,193,165"/>
+<area shape="rect" href="random-art-generator_8cpp.html" title=" " alt="" coords="217,109,405,165"/>
+<area shape="rect" href="inventory-initializer_8cpp.html" title=" " alt="" coords="429,109,617,165"/>
+<area shape="rect" href="cmd-eat_8cpp.html" title=" " alt="" coords="641,109,832,165"/>
+<area shape="rect" href="cmd-magiceat_8cpp.html" title=" " alt="" coords="856,109,1047,165"/>
+<area shape="rect" href="effect-monster_8cpp.html" title=" " alt="" coords="1071,109,1259,165"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html" title=" " alt="" coords="1283,109,1471,165"/>
+<area shape="rect" href="floor-object_8cpp.html" title=" " alt="" coords="1495,109,1683,165"/>
+<area shape="rect" href="general-parser_8cpp.html" title=" " alt="" coords="1707,109,1903,165"/>
+<area shape="rect" href="special-class-dump_8cpp.html" title=" " alt="" coords="1927,109,2115,165"/>
+<area shape="rect" href="knowledge-items_8cpp.html" title=" " alt="" coords="2139,109,2337,165"/>
+<area shape="rect" href="knowledge-quests_8cpp.html" title=" " alt="" coords="2361,109,2558,165"/>
+<area shape="rect" href="load-v1-5-0_8cpp.html" title=" " alt="" coords="2583,109,2771,165"/>
+<area shape="rect" href="bounty_8cpp.html" title=" " alt="" coords="2795,109,2983,165"/>
+<area shape="rect" href="building-craft-fix_8cpp.html" title=" " alt="" coords="3007,109,3195,165"/>
+<area shape="rect" href="building-initializer_8cpp.html" title=" " alt="" coords="3219,109,3407,165"/>
+<area shape="rect" href="mind-archer_8cpp.html" title=" " alt="" coords="3431,109,3627,165"/>
+<area shape="rect" href="mind-chaos-warrior_8cpp.html" title=" " alt="" coords="3651,109,3847,165"/>
+<area shape="rect" href="mind-hobbit_8cpp.html" title=" " alt="" coords="3871,109,4067,165"/>
+<area shape="rect" href="mind-ninja_8cpp.html" title=" " alt="" coords="4091,109,4287,165"/>
+<area shape="rect" href="monster-processor_8cpp.html" title=" " alt="" coords="4311,109,4499,165"/>
+<area shape="rect" href="monster-death_8cpp.html" title=" " alt="" coords="4523,109,4711,165"/>
+<area shape="rect" href="special-death-switcher_8cpp.html" title=" " alt="" coords="4735,109,4943,165"/>
+<area shape="rect" href="object-kind-hook_8cpp.html" title=" " alt="" coords="4968,109,5156,165"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html" title=" " alt="" coords="5181,109,5389,165"/>
+<area shape="rect" href="patron_8cpp.html" title=" " alt="" coords="5413,109,5601,165"/>
+<area shape="rect" href="realm-nature_8cpp.html" title=" " alt="" coords="5625,109,5813,165"/>
+<area shape="rect" href="rooms-special_8cpp.html" title=" " alt="" coords="5838,109,6043,165"/>
+<area shape="rect" href="spells-object_8cpp.html" title=" " alt="" coords="6068,109,6256,165"/>
+<area shape="rect" href="spells-status_8cpp.html" title=" " alt="" coords="6280,109,6468,165"/>
+<area shape="rect" href="rumor_8cpp.html" title=" " alt="" coords="6492,109,6680,165"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html" title=" " alt="" coords="6704,109,6892,165"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html" title=" " alt="" coords="6916,109,7104,165"/>
+</map>
+</div>
+</div>
+<p><a href="object-kind-hook_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a679b5a26867928f1caafa61fb0d1e197"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-kind-hook_8h.html#a679b5a26867928f1caafa61fb0d1e197">kind_is_cloak</a> (<a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx)</td></tr>
+<tr class="memdesc:a679b5a26867928f1caafa61fb0d1e197"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトがクロークかどうかを判定する / Hack &ndash; determine if a template is Cloak  <a href="object-kind-hook_8h.html#a679b5a26867928f1caafa61fb0d1e197">[詳解]</a><br /></td></tr>
+<tr class="separator:a679b5a26867928f1caafa61fb0d1e197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8eb6227693368bbaef99f5404ade0c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-kind-hook_8h.html#ae8eb6227693368bbaef99f5404ade0c9">kind_is_polearm</a> (<a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx)</td></tr>
+<tr class="memdesc:ae8eb6227693368bbaef99f5404ade0c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトが竿状武器かどうかを判定する / Hack &ndash; determine if a template is Polearm  <a href="object-kind-hook_8h.html#ae8eb6227693368bbaef99f5404ade0c9">[詳解]</a><br /></td></tr>
+<tr class="separator:ae8eb6227693368bbaef99f5404ade0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2113c3ec0166a291a6fdf3054c7aab3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-kind-hook_8h.html#ad2113c3ec0166a291a6fdf3054c7aab3">kind_is_sword</a> (<a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx)</td></tr>
+<tr class="memdesc:ad2113c3ec0166a291a6fdf3054c7aab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトが剣かどうかを判定する / Hack &ndash; determine if a template is Sword  <a href="object-kind-hook_8h.html#ad2113c3ec0166a291a6fdf3054c7aab3">[詳解]</a><br /></td></tr>
+<tr class="separator:ad2113c3ec0166a291a6fdf3054c7aab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22ba36a4d9b7853256a2fb7175d4abc3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-kind-hook_8h.html#a22ba36a4d9b7853256a2fb7175d4abc3">kind_is_book</a> (<a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx)</td></tr>
+<tr class="memdesc:a22ba36a4d9b7853256a2fb7175d4abc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトが魔法書かどうかを判定する / Hack &ndash; determine if a template is Book  <a href="object-kind-hook_8h.html#a22ba36a4d9b7853256a2fb7175d4abc3">[詳解]</a><br /></td></tr>
+<tr class="separator:a22ba36a4d9b7853256a2fb7175d4abc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fbcb4aaee64e77a30bcfccf2568c52a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-kind-hook_8h.html#a5fbcb4aaee64e77a30bcfccf2568c52a">kind_is_good_book</a> (<a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx)</td></tr>
+<tr class="memdesc:a5fbcb4aaee64e77a30bcfccf2568c52a"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトがベースアイテム時点でGOODかどうかを判定する / Hack &ndash; determine if a template is Good book  <a href="object-kind-hook_8h.html#a5fbcb4aaee64e77a30bcfccf2568c52a">[詳解]</a><br /></td></tr>
+<tr class="separator:a5fbcb4aaee64e77a30bcfccf2568c52a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe041dede41caf95c0f5992b34400ef3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-kind-hook_8h.html#abe041dede41caf95c0f5992b34400ef3">kind_is_armor</a> (<a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx)</td></tr>
+<tr class="memdesc:abe041dede41caf95c0f5992b34400ef3"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトが鎧かどうかを判定する / Hack &ndash; determine if a template is Armor  <a href="object-kind-hook_8h.html#abe041dede41caf95c0f5992b34400ef3">[詳解]</a><br /></td></tr>
+<tr class="separator:abe041dede41caf95c0f5992b34400ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad73db97c47f650fc701863177147eaa4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-kind-hook_8h.html#ad73db97c47f650fc701863177147eaa4">kind_is_hafted</a> (<a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx)</td></tr>
+<tr class="memdesc:ad73db97c47f650fc701863177147eaa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトが打撃武器かどうかを判定する / Hack &ndash; determine if a template is hafted weapon  <a href="object-kind-hook_8h.html#ad73db97c47f650fc701863177147eaa4">[詳解]</a><br /></td></tr>
+<tr class="separator:ad73db97c47f650fc701863177147eaa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a385cc9416ddcd81e90f3a10e111195"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-kind-hook_8h.html#a0a385cc9416ddcd81e90f3a10e111195">kind_is_potion</a> (<a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx)</td></tr>
+<tr class="memdesc:a0a385cc9416ddcd81e90f3a10e111195"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトが薬かどうかを判定する / Hack &ndash; determine if a template is hafted weapon  <a href="object-kind-hook_8h.html#a0a385cc9416ddcd81e90f3a10e111195">[詳解]</a><br /></td></tr>
+<tr class="separator:a0a385cc9416ddcd81e90f3a10e111195"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24165dc468314ac5f0d11700eefe241b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-kind-hook_8h.html#a24165dc468314ac5f0d11700eefe241b">kind_is_boots</a> (<a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx)</td></tr>
+<tr class="memdesc:a24165dc468314ac5f0d11700eefe241b"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトが靴かどうかを判定する / Hack &ndash; determine if a template is hafted weapon  <a href="object-kind-hook_8h.html#a24165dc468314ac5f0d11700eefe241b">[詳解]</a><br /></td></tr>
+<tr class="separator:a24165dc468314ac5f0d11700eefe241b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a999d195e5c6c1db6e00330af236bf3ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-kind-hook_8h.html#a999d195e5c6c1db6e00330af236bf3ed">kind_is_good</a> (<a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> k_idx)</td></tr>
+<tr class="memdesc:a999d195e5c6c1db6e00330af236bf3ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">ベースアイテムが上質として扱われるかどうかを返す。 Hack &ndash; determine if a template is "good"  <a href="object-kind-hook_8h.html#a999d195e5c6c1db6e00330af236bf3ed">[詳解]</a><br /></td></tr>
+<tr class="separator:a999d195e5c6c1db6e00330af236bf3ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24f8a2426e4fc5128654ec26033312ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-kind-hook_8h.html#a24f8a2426e4fc5128654ec26033312ab">lookup_kind</a> (<a class="el" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a> tval, <a class="el" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a> sval)</td></tr>
+<tr class="memdesc:a24f8a2426e4fc5128654ec26033312ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the <a class="el" href="structobject__kind.html">object_kind</a> with the given tval and sval  <a href="object-kind-hook_8h.html#a24f8a2426e4fc5128654ec26033312ab">[詳解]</a><br /></td></tr>
+<tr class="separator:a24f8a2426e4fc5128654ec26033312ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="abe041dede41caf95c0f5992b34400ef3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe041dede41caf95c0f5992b34400ef3">&#9670;&nbsp;</a></span>kind_is_armor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> kind_is_armor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a>&#160;</td>
+          <td class="paramname"><em>k_idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>オブジェクトが鎧かどうかを判定する / Hack &ndash; determine if a template is Armor </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k_idx</td><td>判定したいオブジェクトのベースアイテムID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>オブジェクトが鎧ならばTRUEを返す </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-kind-hook_8h_abe041dede41caf95c0f5992b34400ef3_icgraph.png" border="0" usemap="#aobject-kind-hook_8h_abe041dede41caf95c0f5992b34400ef3_icgraph" alt=""/></div>
+<map name="aobject-kind-hook_8h_abe041dede41caf95c0f5992b34400ef3_icgraph" id="aobject-kind-hook_8h_abe041dede41caf95c0f5992b34400ef3_icgraph">
+<area shape="rect" title="オブジェクトが鎧かどうかを判定する / Hack – determine if a template is Armor" alt="" coords="524,5,627,32"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#aed8cd22c7d376a046232f95a57f2787b" title=" " alt="" coords="356,5,476,32"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a6ecb03d662c5a6acf294c9426e730cde" title=" " alt="" coords="161,5,308,32"/>
+<area shape="rect" href="monster-death_8cpp.html#a9c647c2a727aa1c903b9dc31b65f63e6" title="モンスターが死亡した時の処理 / Handle the &quot;death&quot; of a monster." alt="" coords="5,5,113,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a22ba36a4d9b7853256a2fb7175d4abc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22ba36a4d9b7853256a2fb7175d4abc3">&#9670;&nbsp;</a></span>kind_is_book()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> kind_is_book </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a>&#160;</td>
+          <td class="paramname"><em>k_idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>オブジェクトが魔法書かどうかを判定する / Hack &ndash; determine if a template is Book </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k_idx</td><td>判定したいオブジェクトのベースアイテムID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>オブジェクトが魔法書ならばTRUEを返す </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-kind-hook_8h_a22ba36a4d9b7853256a2fb7175d4abc3_icgraph.png" border="0" usemap="#aobject-kind-hook_8h_a22ba36a4d9b7853256a2fb7175d4abc3_icgraph" alt=""/></div>
+<map name="aobject-kind-hook_8h_a22ba36a4d9b7853256a2fb7175d4abc3_icgraph" id="aobject-kind-hook_8h_a22ba36a4d9b7853256a2fb7175d4abc3_icgraph">
+<area shape="rect" title="オブジェクトが魔法書かどうかを判定する / Hack – determine if a template is Book" alt="" coords="503,5,601,32"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a3b159fe61fa01d4e2fec7af7b49d42d0" title=" " alt="" coords="356,5,455,32"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a6ecb03d662c5a6acf294c9426e730cde" title=" " alt="" coords="161,5,308,32"/>
+<area shape="rect" href="monster-death_8cpp.html#a9c647c2a727aa1c903b9dc31b65f63e6" title="モンスターが死亡した時の処理 / Handle the &quot;death&quot; of a monster." alt="" coords="5,5,113,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a24165dc468314ac5f0d11700eefe241b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24165dc468314ac5f0d11700eefe241b">&#9670;&nbsp;</a></span>kind_is_boots()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> kind_is_boots </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a>&#160;</td>
+          <td class="paramname"><em>k_idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>オブジェクトが靴かどうかを判定する / Hack &ndash; determine if a template is hafted weapon </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k_idx</td><td>判定したいオブジェクトのベースアイテムID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>オブジェクトが靴ならばTRUEを返す </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-kind-hook_8h_a24165dc468314ac5f0d11700eefe241b_icgraph.png" border="0" usemap="#aobject-kind-hook_8h_a24165dc468314ac5f0d11700eefe241b_icgraph" alt=""/></div>
+<map name="aobject-kind-hook_8h_a24165dc468314ac5f0d11700eefe241b_icgraph" id="aobject-kind-hook_8h_a24165dc468314ac5f0d11700eefe241b_icgraph">
+<area shape="rect" title="オブジェクトが靴かどうかを判定する / Hack – determine if a template is hafted weapon" alt="" coords="524,31,627,57"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#aed8cd22c7d376a046232f95a57f2787b" title=" " alt="" coords="356,5,476,32"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a6ecb03d662c5a6acf294c9426e730cde" title=" " alt="" coords="161,31,308,57"/>
+<area shape="rect" href="monster-death_8cpp.html#a9c647c2a727aa1c903b9dc31b65f63e6" title="モンスターが死亡した時の処理 / Handle the &quot;death&quot; of a monster." alt="" coords="5,31,113,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a679b5a26867928f1caafa61fb0d1e197"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a679b5a26867928f1caafa61fb0d1e197">&#9670;&nbsp;</a></span>kind_is_cloak()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> kind_is_cloak </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a>&#160;</td>
+          <td class="paramname"><em>k_idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>オブジェクトがクロークかどうかを判定する / Hack &ndash; determine if a template is Cloak </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k_idx</td><td>判定したいオブジェクトのベースアイテムID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>オブジェクトがクロークならばTRUEを返す </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-kind-hook_8h_a679b5a26867928f1caafa61fb0d1e197_icgraph.png" border="0" usemap="#aobject-kind-hook_8h_a679b5a26867928f1caafa61fb0d1e197_icgraph" alt=""/></div>
+<map name="aobject-kind-hook_8h_a679b5a26867928f1caafa61fb0d1e197_icgraph" id="aobject-kind-hook_8h_a679b5a26867928f1caafa61fb0d1e197_icgraph">
+<area shape="rect" title="オブジェクトがクロークかどうかを判定する / Hack – determine if a template is Cloak" alt="" coords="524,5,625,32"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#aed8cd22c7d376a046232f95a57f2787b" title=" " alt="" coords="356,5,476,32"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a6ecb03d662c5a6acf294c9426e730cde" title=" " alt="" coords="161,5,308,32"/>
+<area shape="rect" href="monster-death_8cpp.html#a9c647c2a727aa1c903b9dc31b65f63e6" title="モンスターが死亡した時の処理 / Handle the &quot;death&quot; of a monster." alt="" coords="5,5,113,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a999d195e5c6c1db6e00330af236bf3ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a999d195e5c6c1db6e00330af236bf3ed">&#9670;&nbsp;</a></span>kind_is_good()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> kind_is_good </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a>&#160;</td>
+          <td class="paramname"><em>k_idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ベースアイテムが上質として扱われるかどうかを返す。 Hack &ndash; determine if a template is "good" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k_idx</td><td>判定したいベースアイテムのID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ベースアイテムが上質ならばTRUEを返す。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-kind-hook_8h_a999d195e5c6c1db6e00330af236bf3ed_icgraph.png" border="0" usemap="#aobject-kind-hook_8h_a999d195e5c6c1db6e00330af236bf3ed_icgraph" alt=""/></div>
+<map name="aobject-kind-hook_8h_a999d195e5c6c1db6e00330af236bf3ed_icgraph" id="aobject-kind-hook_8h_a999d195e5c6c1db6e00330af236bf3ed_icgraph">
+<area shape="rect" title="ベースアイテムが上質として扱われるかどうかを返す。 Hack – determine if a template is &quot;good&quot;" alt="" coords="700,203,799,230"/>
+<area shape="rect" href="floor-object_8cpp.html#adbba66fa3bc17cfd4ebeff0ee923a304" title="生成階に応じたベースアイテムの生成を行う。 Attempt to make an object (normal or good/great)" alt="" coords="556,203,652,230"/>
+<area shape="rect" href="spells-object_8cpp.html#a7b226fbb1bcb6ce60975a5cbe63e756f" title="獲得ドロップを行う。 Scatter some &quot;great&quot; objects near the player" alt="" coords="378,22,471,49"/>
+<area shape="rect" href="quest-completion-checker_8cpp.html#a9e42969ac66783fe5b572f6e444072e7" title="特定の敵を倒した際にクエスト達成処理 / Check for &quot;Quest&quot; completion when a quest monster is killed or charmed." alt="" coords="341,73,508,99"/>
+<area shape="rect" href="chest_8cpp.html#a6c1737bff7d6e6260a16b0aeeb8002a0" title="箱からアイテムを引き出す / Allocates objects upon opening a chest &#45;BEN&#45;" alt="" coords="378,123,471,150"/>
+<area shape="rect" href="monster-death_8cpp.html#a8250e249cbdb8aae0dd44d785b7c2a72" title=" " alt="" coords="363,174,487,201"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a959751785c50df74893e18e6a20c8bcf" title=" " alt="" coords="359,225,490,267"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a3b159fe61fa01d4e2fec7af7b49d42d0" title=" " alt="" coords="375,291,474,318"/>
+<area shape="rect" href="object-placer_8cpp.html#a803fa4f18318725892a17c7ababf869f" title="フロアの指定位置に生成階に応じたベースアイテムの生成を行う。 Attempt to place an object (normal or good/great) at the given locatio..." alt="" coords="377,342,472,369"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#aa68f351c86678f7ce149c3afb7697308" title="検査対象のアイテムを基準とした生成テストを行う / Try to create an item again." alt="" coords="374,393,475,419"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="5,22,123,49"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="195,22,269,49"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="171,73,293,99"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5fbcb4aaee64e77a30bcfccf2568c52a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fbcb4aaee64e77a30bcfccf2568c52a">&#9670;&nbsp;</a></span>kind_is_good_book()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> kind_is_good_book </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a>&#160;</td>
+          <td class="paramname"><em>k_idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>オブジェクトがベースアイテム時点でGOODかどうかを判定する / Hack &ndash; determine if a template is Good book </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k_idx</td><td>判定したいオブジェクトのベースアイテムID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>オブジェクトがベースアイテム時点でGOODなアイテムならばTRUEを返す </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-kind-hook_8h_a5fbcb4aaee64e77a30bcfccf2568c52a_icgraph.png" border="0" usemap="#aobject-kind-hook_8h_a5fbcb4aaee64e77a30bcfccf2568c52a_icgraph" alt=""/></div>
+<map name="aobject-kind-hook_8h_a5fbcb4aaee64e77a30bcfccf2568c52a_icgraph" id="aobject-kind-hook_8h_a5fbcb4aaee64e77a30bcfccf2568c52a_icgraph">
+<area shape="rect" title="オブジェクトがベースアイテム時点でGOODかどうかを判定する / Hack – determine if a template is Good book" alt="" coords="503,5,636,32"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a3b159fe61fa01d4e2fec7af7b49d42d0" title=" " alt="" coords="356,5,455,32"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a6ecb03d662c5a6acf294c9426e730cde" title=" " alt="" coords="161,5,308,32"/>
+<area shape="rect" href="monster-death_8cpp.html#a9c647c2a727aa1c903b9dc31b65f63e6" title="モンスターが死亡した時の処理 / Handle the &quot;death&quot; of a monster." alt="" coords="5,5,113,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad73db97c47f650fc701863177147eaa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad73db97c47f650fc701863177147eaa4">&#9670;&nbsp;</a></span>kind_is_hafted()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> kind_is_hafted </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a>&#160;</td>
+          <td class="paramname"><em>k_idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>オブジェクトが打撃武器かどうかを判定する / Hack &ndash; determine if a template is hafted weapon </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k_idx</td><td>判定したいオブジェクトのベースアイテムID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>オブジェクトが打撃武器ならばTRUEを返す </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-kind-hook_8h_ad73db97c47f650fc701863177147eaa4_icgraph.png" border="0" usemap="#aobject-kind-hook_8h_ad73db97c47f650fc701863177147eaa4_icgraph" alt=""/></div>
+<map name="aobject-kind-hook_8h_ad73db97c47f650fc701863177147eaa4_icgraph" id="aobject-kind-hook_8h_ad73db97c47f650fc701863177147eaa4_icgraph">
+<area shape="rect" title="オブジェクトが打撃武器かどうかを判定する / Hack – determine if a template is hafted weapon" alt="" coords="524,5,629,32"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#aed8cd22c7d376a046232f95a57f2787b" title=" " alt="" coords="356,5,476,32"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a6ecb03d662c5a6acf294c9426e730cde" title=" " alt="" coords="161,5,308,32"/>
+<area shape="rect" href="monster-death_8cpp.html#a9c647c2a727aa1c903b9dc31b65f63e6" title="モンスターが死亡した時の処理 / Handle the &quot;death&quot; of a monster." alt="" coords="5,5,113,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae8eb6227693368bbaef99f5404ade0c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8eb6227693368bbaef99f5404ade0c9">&#9670;&nbsp;</a></span>kind_is_polearm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> kind_is_polearm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a>&#160;</td>
+          <td class="paramname"><em>k_idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>オブジェクトが竿状武器かどうかを判定する / Hack &ndash; determine if a template is Polearm </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k_idx</td><td>判定したいオブジェクトのベースアイテムID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>オブジェクトが竿状武器ならばTRUEを返す </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-kind-hook_8h_ae8eb6227693368bbaef99f5404ade0c9_icgraph.png" border="0" usemap="#aobject-kind-hook_8h_ae8eb6227693368bbaef99f5404ade0c9_icgraph" alt=""/></div>
+<map name="aobject-kind-hook_8h_ae8eb6227693368bbaef99f5404ade0c9_icgraph" id="aobject-kind-hook_8h_ae8eb6227693368bbaef99f5404ade0c9_icgraph">
+<area shape="rect" title="オブジェクトが竿状武器かどうかを判定する / Hack – determine if a template is Polearm" alt="" coords="524,5,640,32"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#aed8cd22c7d376a046232f95a57f2787b" title=" " alt="" coords="356,5,476,32"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a6ecb03d662c5a6acf294c9426e730cde" title=" " alt="" coords="161,5,308,32"/>
+<area shape="rect" href="monster-death_8cpp.html#a9c647c2a727aa1c903b9dc31b65f63e6" title="モンスターが死亡した時の処理 / Handle the &quot;death&quot; of a monster." alt="" coords="5,5,113,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0a385cc9416ddcd81e90f3a10e111195"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a385cc9416ddcd81e90f3a10e111195">&#9670;&nbsp;</a></span>kind_is_potion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> kind_is_potion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a>&#160;</td>
+          <td class="paramname"><em>k_idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>オブジェクトが薬かどうかを判定する / Hack &ndash; determine if a template is hafted weapon </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k_idx</td><td>判定したいオブジェクトのベースアイテムID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>オブジェクトが薬ならばTRUEを返す </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-kind-hook_8h_a0a385cc9416ddcd81e90f3a10e111195_icgraph.png" border="0" usemap="#aobject-kind-hook_8h_a0a385cc9416ddcd81e90f3a10e111195_icgraph" alt=""/></div>
+<map name="aobject-kind-hook_8h_a0a385cc9416ddcd81e90f3a10e111195_icgraph" id="aobject-kind-hook_8h_a0a385cc9416ddcd81e90f3a10e111195_icgraph">
+<area shape="rect" title="オブジェクトが薬かどうかを判定する / Hack – determine if a template is hafted weapon" alt="" coords="444,5,549,32"/>
+<area shape="rect" href="rooms-special_8cpp.html#a06f16c514e2a57fdf3fac3b902aa2650" title="タイプ15の部屋…ガラス部屋の生成 / Type 15 – glass rooms" alt="" coords="301,5,396,32"/>
+<area shape="rect" href="room-generator_8cpp.html#a5308aed51162378846c18cb4b1a05ae3" title="与えられた部屋型IDに応じて部屋の生成処理分岐を行い結果を返す / Attempt to build a room of the given type at the given block" alt="" coords="168,5,253,32"/>
+<area shape="rect" href="room-generator_8cpp.html#ac162d3550981d56e72a3a79a1078aa76" title="部屋生成処理のメインルーチン(Sangbandを経由してOangbandからの実装を引用) / Generate rooms in dungeon." alt="" coords="5,5,120,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad2113c3ec0166a291a6fdf3054c7aab3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2113c3ec0166a291a6fdf3054c7aab3">&#9670;&nbsp;</a></span>kind_is_sword()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> kind_is_sword </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a>&#160;</td>
+          <td class="paramname"><em>k_idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>オブジェクトが剣かどうかを判定する / Hack &ndash; determine if a template is Sword </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k_idx</td><td>判定したいオブジェクトのベースアイテムID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>オブジェクトが剣ならばTRUEを返す </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-kind-hook_8h_ad2113c3ec0166a291a6fdf3054c7aab3_icgraph.png" border="0" usemap="#aobject-kind-hook_8h_ad2113c3ec0166a291a6fdf3054c7aab3_icgraph" alt=""/></div>
+<map name="aobject-kind-hook_8h_ad2113c3ec0166a291a6fdf3054c7aab3_icgraph" id="aobject-kind-hook_8h_ad2113c3ec0166a291a6fdf3054c7aab3_icgraph">
+<area shape="rect" title="オブジェクトが剣かどうかを判定する / Hack – determine if a template is Sword" alt="" coords="524,5,628,32"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#aed8cd22c7d376a046232f95a57f2787b" title=" " alt="" coords="356,5,476,32"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a6ecb03d662c5a6acf294c9426e730cde" title=" " alt="" coords="161,5,308,32"/>
+<area shape="rect" href="monster-death_8cpp.html#a9c647c2a727aa1c903b9dc31b65f63e6" title="モンスターが死亡した時の処理 / Handle the &quot;death&quot; of a monster." alt="" coords="5,5,113,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a24f8a2426e4fc5128654ec26033312ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24f8a2426e4fc5128654ec26033312ab">&#9670;&nbsp;</a></span>lookup_kind()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> lookup_kind </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a>&#160;</td>
+          <td class="paramname"><em>tval</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a>&#160;</td>
+          <td class="paramname"><em>sval</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the <a class="el" href="structobject__kind.html">object_kind</a> with the given tval and sval </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tval</td><td>検索したいベースアイテムのtval </td></tr>
+    <tr><td class="paramname">sval</td><td>検索したいベースアイテムのsval </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-kind-hook_8h_a24f8a2426e4fc5128654ec26033312ab_icgraph.png" border="0" usemap="#aobject-kind-hook_8h_a24f8a2426e4fc5128654ec26033312ab_icgraph" alt=""/></div>
+<map name="aobject-kind-hook_8h_a24f8a2426e4fc5128654ec26033312ab_icgraph" id="aobject-kind-hook_8h_a24f8a2426e4fc5128654ec26033312ab_icgraph">
+<area shape="rect" title="tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the object_kind with the given tval and sval" alt="" coords="827,933,917,960"/>
+<area shape="rect" href="mind-chaos-warrior_8cpp.html#aab1e8df1af19a70410932863dd503d27" title=" " alt="" coords="605,107,763,133"/>
+<area shape="rect" href="spells-object_8cpp.html#ab57eadbdf0c4a98fa5ed43800743e2e9" title="誰得ドロップを行う。" alt="" coords="639,411,729,437"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="181,487,315,513"/>
+<area shape="rect" href="mind-archer_8cpp.html#a5c7ac014262f5236c69ea18c406fee25" title="「弾/矢の製造」処理 / do_cmd_cast calls this function if the player&#39;s class is &#39;archer&#39;." alt="" coords="633,563,735,589"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#a0e609c4508abe3e79a3aa921f8f052d4" title="フロアの指定された位置に固定アーティファクトを生成する。 / Create the artifact of the specified number" alt="" coords="621,259,747,285"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#a3bd34825cd5d9e92c7474a31576ac7c0" title="願ったが消えてしまった場合のメッセージ" alt="" coords="398,157,517,184"/>
+<area shape="rect" href="monster-death_8cpp.html#a92ea67756bf181388e5e4e51207cfa03" title=" " alt="" coords="391,277,524,318"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#af81a0584225771d2ab4a403d68ba1509" title=" " alt="" coords="398,352,517,379"/>
+<area shape="rect" href="mind-hobbit_8cpp.html#a0e1fc197df82257cae81eed853ac470c" title=" " alt="" coords="635,613,733,640"/>
+<area shape="rect" href="inventory-initializer_8cpp.html#ae23e47e554ecbcd0152fb87ba8638f88" title=" " alt="" coords="616,5,752,32"/>
+<area shape="rect" href="inventory-initializer_8cpp.html#a4e9f0535c619eb1650e5ef1123051b40" title="種族/職業/性格などに基づき初期所持アイテムを設定するメインセット関数。 / Init players with some belongings" alt="" coords="411,5,503,32"/>
+<area shape="rect" href="rumor_8cpp.html#ac90795303a6239b4a511b424262e743b" title=" " alt="" coords="633,664,735,691"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a19c446276d6a7514112c7c1101d0540e" title="既知のアイテムとアーティファクトを表示する" alt="" coords="589,715,779,741"/>
+<area shape="rect" href="knowledge-quests_8cpp.html#a25a090019c28dcf6d21b2a87a4308095" title="Print all active quests" alt="" coords="593,766,775,807"/>
+<area shape="rect" href="cmd-magiceat_8cpp.html#acd59184a979a8d34f868767874534ce8" title="取り込んだ魔力を利用するコマンドのメインルーチン / Use eaten rod, wand or staff" alt="" coords="384,857,531,884"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="627,933,741,960"/>
+<area shape="rect" href="monster-death_8cpp.html#a6ad70c6340e25c826a90a7d1c0804175" title=" " alt="" coords="637,984,731,1011"/>
+<area shape="rect" href="special-class-dump_8cpp.html#a560dbe7e9260b4c2c2c1cc2b5c15684a" title="魔力喰いを持つクラスの情報をダンプする" alt="" coords="618,1035,750,1061"/>
+<area shape="rect" href="bounty_8cpp.html#a6aa3c9347a136a6ff64e84d0dd306057" title="賞金首の引き換え処理 / Get prize" alt="" coords="627,1085,741,1112"/>
+<area shape="rect" href="cmd-eat_8cpp.html#a77b0b5d933aedbf6ab8e24616c2ce1fd" title="実際にアイテムを食おうとするコマンドのサブルーチン" alt="" coords="635,1136,733,1163"/>
+<area shape="rect" href="building-initializer_8cpp.html#a050d115e7df9abacdbe6d1d617277fc7" title="町情報読み込みのメインルーチン / Initialize town array" alt="" coords="644,1187,724,1213"/>
+<area shape="rect" href="mind-ninja_8cpp.html#a24ff4b9325e293fbb2a4cb72d323c9b7" title="変わり身処理" alt="" coords="647,1237,721,1264"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#a2888af04afeda521b655bb0d2eb55f52" title="INSTA_ART型の固定アーティファクトの生成を確率に応じて試行する。 Mega&#45;Hack – Attempt to create one of the &quot;Special Objects&quot;" alt="" coords="610,1288,758,1315"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a4dec4d4ca3c104d4757a0f83f1543331" title="アーティファクト情報を出力するためにダミー生成を行う / Hack – Create a &quot;forged&quot; artifact" alt="" coords="619,208,749,235"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a9ae29bdeb891416b7ebcc0928120f940" title=" " alt="" coords="615,1339,753,1365"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#aeab5aaf4660ee8ea5c91b6c49d3c1a6a" title=" " alt="" coords="615,1389,753,1416"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#af65c05755bc69a7951419f913878538e" title=" " alt="" coords="609,1440,759,1467"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a86ca898ccdc86d14979a1311bb8878d0" title=" " alt="" coords="623,1491,745,1517"/>
+<area shape="rect" href="monster-death_8cpp.html#a630cf8a7d0a3e31b96992334c0220b24" title=" " alt="" coords="599,1541,769,1568"/>
+<area shape="rect" href="general-parser_8cpp.html#a28dc0c306a8a3470513e70613befd73c" title="地形情報の「F:」情報をパースする Process &quot;F:&lt;letter&gt;:&lt;terrain&gt;:&lt;cave_info&gt;:&lt;monster&gt;:&lt;object&gt;:&lt;ego&gt;:&lt;artifact&gt;:&lt;trap..." alt="" coords="621,1592,747,1619"/>
+<area shape="rect" href="effect-monster_8cpp.html#a74e111b8616d79dedb3c631e58fb0f1a" title="写真を撮った時の処理" alt="" coords="606,1643,762,1685"/>
+<area shape="rect" href="monster-processor_8cpp.html#a4eee1b88a804d2a316077940da38bad2" title="モンスターの恐怖状態を処理する" alt="" coords="609,1709,759,1736"/>
+<area shape="rect" href="load-v1-5-0_8cpp.html#ad02061f4e849319d3d0775df91347668" title="アイテムオブジェクト1件を読み込む / Read an object" alt="" coords="639,1760,729,1787"/>
+<area shape="rect" href="building-craft-fix_8cpp.html#a69630572b2265030a369d054520ada0a" title="アイテム修復処理のメインルーチン / Repair broken weapon" alt="" coords="595,1811,773,1837"/>
+<area shape="rect" href="spells-status_8cpp.html#a9c1fd4d729b4e9e9d371b61110ca0f97" title=" " alt="" coords="633,1861,735,1888"/>
+<area shape="rect" href="cmd-magiceat_8cpp.html#a91c575b4ac80c9d0058cf329b943d063" title="プレイヤーのアイテムに関するコマンドの実装2 / Spell/Prayer commands" alt="" coords="617,832,751,859"/>
+<area shape="rect" href="random-art-generator_8cpp.html#a9853c171174df70f4c84704660825821" title="ランダムアーティファクトの生成 / Artifact code" alt="" coords="619,512,749,539"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="396,107,519,133"/>
+<area shape="rect" href="player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="185,107,311,133"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="5,107,123,133"/>
+<area shape="rect" href="special-class-dump_8cpp.html#ada331728f6d2d42f437f94da6c419635" title="プレイヤーの職業能力情報をファイルにダンプする" alt="" coords="373,1035,541,1061"/>
+<area shape="rect" href="character-dump_8cpp.html#ad9ac4fe2e14196316e97fef3cb8db4e5" title="ダンプ出力のメインルーチン Output the character dump to a file" alt="" coords="171,1035,325,1061"/>
+<area shape="rect" href="angband-initializer_8cpp.html#aeb43129ef8fbea1c72b20e1513eb9702" title="全ゲームデータ読み込みのメインルーチン /" alt="" coords="410,1187,505,1213"/>
+<area shape="rect" href="floor-object_8cpp.html#adbba66fa3bc17cfd4ebeff0ee923a304" title="生成階に応じたベースアイテムの生成を行う。 Attempt to make an object (normal or good/great)" alt="" coords="409,1288,505,1315"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="393,208,522,235"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="179,208,317,235"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#abf28dd4c313dd9d7d0f5ae6f2fe13ed7" title="固定マップ (クエスト＆街＆広域マップ)をフロアに生成する Parse a sub&#45;file of the &quot;extra info&quot;" alt="" coords="388,1585,527,1626"/>
+<area shape="rect" href="item-loader_8cpp.html#ae4cf72615dec20a97e17f6d9f8d5c6d0" title="アイテムオブジェクトを読み込む(現版) / Read an object (New method)" alt="" coords="425,1760,490,1787"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="375,512,539,539"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時55分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

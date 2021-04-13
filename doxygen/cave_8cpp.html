@@ -1,0 +1,1420 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/floor/cave.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a620f8a6b723e397390ae5ca00f5aa8c.html">floor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">cave.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="cave_8h_source.html">floor/cave.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="feature_8h_source.html">grid/feature.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+cave.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2cave_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2cave_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2cave_8cpp">
+<area shape="rect" title=" " alt="" coords="857,5,1045,61"/>
+<area shape="rect" href="cave_8h.html" title=" " alt="" coords="854,109,941,136"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="599,109,697,136"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="965,109,1043,136"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1275,109,1463,136"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="1067,109,1226,136"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="733,109,830,136"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="678,266,807,293"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="341,355,432,382"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="456,355,547,382"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="571,355,669,382"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="693,355,792,382"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="817,355,917,382"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="941,355,1115,382"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="5,355,147,382"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="171,355,317,382"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="639,437,758,464"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="439,184,596,211"/>
+<area shape="rect" title=" " alt="" coords="621,184,675,211"/>
+<area shape="rect" title=" " alt="" coords="700,184,756,211"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="947,184,1061,211"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="950,259,1095,300"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1191,348,1347,389"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1293,184,1472,211"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1497,184,1647,211"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a9a8f98687efe06482b7da1823cb40dcb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb">in_bounds</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="memdesc:a9a8f98687efe06482b7da1823cb40dcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">ダンジョンの壁等に関する判定関数の集合  <a href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb">[詳解]</a><br /></td></tr>
+<tr class="separator:a9a8f98687efe06482b7da1823cb40dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e5519e9632a1976322c085788b4dc0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d">in_bounds2</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="separator:a6e5519e9632a1976322c085788b4dc0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4418acad9f4e14a2f633c8432b0fd63c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#a4418acad9f4e14a2f633c8432b0fd63c">in_bounds2u</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="separator:a4418acad9f4e14a2f633c8432b0fd63c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf1b6aff1aa303afd2b72225c7abbcee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#abf1b6aff1aa303afd2b72225c7abbcee">is_cave_empty_bold</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="separator:abf1b6aff1aa303afd2b72225c7abbcee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad3aa7818b160a3bd79fdb3ca2584bbf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#aad3aa7818b160a3bd79fdb3ca2584bbf">is_cave_empty_bold2</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="separator:aad3aa7818b160a3bd79fdb3ca2584bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e8f81630ced5a3209bae0d0e79d8821"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821">cave_has_flag_bold</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="el" href="feature-flag-types_8h.html#ad3281e746dc1738364076980e1aa6dbd">feature_flag_type</a> f_idx)</td></tr>
+<tr class="separator:a2e8f81630ced5a3209bae0d0e79d8821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad140737a0660acfdbadc377c80a7df1b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b">player_has_los_bold</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="separator:ad140737a0660acfdbadc377c80a7df1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac69872aa54de3f8ee80b6f0f933ebbcd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd">player_bold</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="separator:ac69872aa54de3f8ee80b6f0f933ebbcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9940da0af854b0b88a943373b8b41055"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#a9940da0af854b0b88a943373b8b41055">cave_stop_disintegration</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="separator:a9940da0af854b0b88a943373b8b41055"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc0f94b19918e1965ddd320ae168d551"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#adc0f94b19918e1965ddd320ae168d551">cave_los_bold</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="separator:adc0f94b19918e1965ddd320ae168d551"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a512cd3e2d9d7f5f5ca427d6b4321548e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e">feat_supports_los</a> (<a class="el" href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a> f_idx)</td></tr>
+<tr class="separator:a512cd3e2d9d7f5f5ca427d6b4321548e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addf7d48898d2d31d2dc6d9c3a6454042"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#addf7d48898d2d31d2dc6d9c3a6454042">cave_los_grid</a> (<a class="el" href="structgrid__type.html">grid_type</a> *grid_ptr)</td></tr>
+<tr class="separator:addf7d48898d2d31d2dc6d9c3a6454042"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72e9e49e417af9b290323225114db833"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#a72e9e49e417af9b290323225114db833">cave_has_flag_grid</a> (<a class="el" href="structgrid__type.html">grid_type</a> *grid_ptr, int feature_flags)</td></tr>
+<tr class="separator:a72e9e49e417af9b290323225114db833"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9a5c1edf9fbd3c7be2784c8b75d14bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#ae9a5c1edf9fbd3c7be2784c8b75d14bd">cave_clean_bold</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="separator:ae9a5c1edf9fbd3c7be2784c8b75d14bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a414eb0dc404cc94635df4b0f3ad8590c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#a414eb0dc404cc94635df4b0f3ad8590c">cave_drop_bold</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="separator:a414eb0dc404cc94635df4b0f3ad8590c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3ebcc730bf3e9662adef8c0a4b49903"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cave_8cpp.html#af3ebcc730bf3e9662adef8c0a4b49903">pattern_tile</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="separator:af3ebcc730bf3e9662adef8c0a4b49903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ae9a5c1edf9fbd3c7be2784c8b75d14bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9a5c1edf9fbd3c7be2784c8b75d14bd">&#9670;&nbsp;</a></span>cave_clean_bold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> cave_clean_bold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_ae9a5c1edf9fbd3c7be2784c8b75d14bd_cgraph.png" border="0" usemap="#acave_8cpp_ae9a5c1edf9fbd3c7be2784c8b75d14bd_cgraph" alt=""/></div>
+<map name="acave_8cpp_ae9a5c1edf9fbd3c7be2784c8b75d14bd_cgraph" id="acave_8cpp_ae9a5c1edf9fbd3c7be2784c8b75d14bd_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,123,32"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="171,5,305,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_ae9a5c1edf9fbd3c7be2784c8b75d14bd_icgraph.png" border="0" usemap="#acave_8cpp_ae9a5c1edf9fbd3c7be2784c8b75d14bd_icgraph" alt=""/></div>
+<map name="acave_8cpp_ae9a5c1edf9fbd3c7be2784c8b75d14bd_icgraph" id="acave_8cpp_ae9a5c1edf9fbd3c7be2784c8b75d14bd_icgraph">
+<area shape="rect" title=" " alt="" coords="531,132,648,159"/>
+<area shape="rect" href="effect-feature_8cpp.html#ab737fe54000e9c290f3a9db846d89d6a" title=" " alt="" coords="331,31,452,57"/>
+<area shape="rect" href="spells-grid_8cpp.html#ad8e3d810b657175f4ef7273379bade19" title="爆発のルーン設置処理 / Leave an &quot;explosive rune&quot; which prevents monster movement" alt="" coords="315,81,467,108"/>
+<area shape="rect" href="spells-grid_8cpp.html#a7ac822d645ff4090ab55543a3711e3d0" title="守りのルーン設置処理 / Leave a &quot;rune of protection&quot; which prevents monster movement" alt="" coords="300,132,483,159"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#ac896b6f8aac898b683d2bf0dfe2e0af6" title="鏡設置処理" alt="" coords="345,183,438,209"/>
+<area shape="rect" href="trap_8cpp.html#a5409f23e3aeaabec658e99c2fa99fb91" title="マスをトラップを配置する / The location must be a legal, naked, floor grid." alt="" coords="350,233,433,260"/>
+<area shape="rect" href="effect-feature_8cpp.html#ab60eea66f4d858035803d331e84151cc" title="汎用的なビーム/ボルト/ボール系による地形効果処理 / We are called from &quot;project()&quot; to &quot;damage&quot; terrain features" alt="" coords="150,56,249,83"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#ac5e475bf543027393672734eb9613bf6" title="鏡魔法「封魔結界」の効果処理" alt="" coords="5,5,99,32"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="21,56,83,83"/>
+<area shape="rect" href="object-allocator_8cpp.html#a89db4f576184ecd3a0777c85e1a1294d" title="フロア上のランダム位置に各種オブジェクトを配置する / Allocates some objects (using &quot;place&quot; and &quot;type&quot;)" alt="" coords="154,132,245,159"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a6701b31a195109db285669bb4ff352d4" title="Vaultをフロアに配置する / Hack – fill in &quot;vault&quot; rooms" alt="" coords="158,183,241,209"/>
+<area shape="rect" href="treasure-deployment_8cpp.html#ab1a32c89c0fa8a2239925974c026c1bb" title="部屋にアイテム・モンスター・罠を配置する処理" alt="" coords="155,233,243,260"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#a3ded96400ca064dccf4124b59f3b0588" title=" " alt="" coords="151,284,248,311"/>
+<area shape="rect" href="vault-builder_8cpp.html#a2c94cff67f5fe3f212c3d92aab996a39" title="特殊な部屋向けに各種アイテムを配置する(vault_trapのサブセット) / Place a trap with a given displacement of point" alt="" coords="147,335,252,361"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a414eb0dc404cc94635df4b0f3ad8590c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a414eb0dc404cc94635df4b0f3ad8590c">&#9670;&nbsp;</a></span>cave_drop_bold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> cave_drop_bold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_a414eb0dc404cc94635df4b0f3ad8590c_cgraph.png" border="0" usemap="#acave_8cpp_a414eb0dc404cc94635df4b0f3ad8590c_cgraph" alt=""/></div>
+<map name="acave_8cpp_a414eb0dc404cc94635df4b0f3ad8590c_cgraph" id="acave_8cpp_a414eb0dc404cc94635df4b0f3ad8590c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="164,5,299,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_a414eb0dc404cc94635df4b0f3ad8590c_icgraph.png" border="0" usemap="#acave_8cpp_a414eb0dc404cc94635df4b0f3ad8590c_icgraph" alt=""/></div>
+<map name="acave_8cpp_a414eb0dc404cc94635df4b0f3ad8590c_icgraph" id="acave_8cpp_a414eb0dc404cc94635df4b0f3ad8590c_icgraph">
+<area shape="rect" title=" " alt="" coords="955,1025,1065,1052"/>
+<area shape="rect" href="floor-object_8cpp.html#a62c807ef0af547704f7d1f6b825abbe5" title="生成済のオブジェクトをフロアの所定の位置に落とす。 Let an object fall to the ground at or near a location." alt="" coords="820,975,899,1001"/>
+<area shape="rect" href="object-placer_8cpp.html#a11d171ab728c555217997c19ead857be" title="フロアの指定位置に生成階に応じた財宝オブジェクトの生成を行う。 Places a treasure (Gold or Gems) at given location" alt="" coords="817,1025,901,1052"/>
+<area shape="rect" href="object-placer_8cpp.html#a803fa4f18318725892a17c7ababf869f" title="フロアの指定位置に生成階に応じたベースアイテムの生成を行う。 Attempt to place an object (normal or good/great) at the given locatio..." alt="" coords="812,1076,907,1103"/>
+<area shape="rect" href="mind-chaos-warrior_8cpp.html#aab1e8df1af19a70410932863dd503d27" title=" " alt="" coords="607,5,764,32"/>
+<area shape="rect" href="spells-object_8cpp.html#a7b226fbb1bcb6ce60975a5cbe63e756f" title="獲得ドロップを行う。 Scatter some &quot;great&quot; objects near the player" alt="" coords="639,56,732,83"/>
+<area shape="rect" href="spells-object_8cpp.html#ab57eadbdf0c4a98fa5ed43800743e2e9" title="誰得ドロップを行う。" alt="" coords="640,107,731,133"/>
+<area shape="rect" href="quest-completion-checker_8cpp.html#a9e42969ac66783fe5b572f6e444072e7" title="特定の敵を倒した際にクエスト達成処理 / Check for &quot;Quest&quot; completion when a quest monster is killed or charmed." alt="" coords="163,233,330,260"/>
+<area shape="rect" href="chest_8cpp.html#a6c1737bff7d6e6260a16b0aeeb8002a0" title="箱からアイテムを引き出す / Allocates objects upon opening a chest &#45;BEN&#45;" alt="" coords="639,1168,732,1195"/>
+<area shape="rect" href="spells-status_8cpp.html#a6b3d51cd9befa32b5917f7c8c47626f0" title="装備を脱ぎ捨てて小宇宙を燃やす" alt="" coords="627,1219,743,1245"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#a0e609c4508abe3e79a3aa921f8f052d4" title="フロアの指定された位置に固定アーティファクトを生成する。 / Create the artifact of the specified number" alt="" coords="622,448,749,475"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#a3bd34825cd5d9e92c7474a31576ac7c0" title="願ったが消えてしまった場合のメッセージ" alt="" coords="410,528,529,555"/>
+<area shape="rect" href="monster-death_8cpp.html#aea0de54fa5a454fe0ffe114223355316" title=" " alt="" coords="200,389,293,416"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a3a8736b020ffd037a5337cdebed86b88" title="任意のベースアイテム生成のメインルーチン / Wizard routine for creating objects &#45;RAK&#45;" alt="" coords="411,579,527,605"/>
+<area shape="rect" href="mind-hobbit_8cpp.html#a0e1fc197df82257cae81eed853ac470c" title=" " alt="" coords="637,1269,734,1296"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="629,1320,742,1347"/>
+<area shape="rect" href="monster-death_8cpp.html#a6ad70c6340e25c826a90a7d1c0804175" title=" " alt="" coords="200,949,293,976"/>
+<area shape="rect" href="inventory-object_8cpp.html#ad9fc9e3233c784e7e4edef0b300ece63" title="所持スロットから床下にオブジェクトを落とすメインルーチン / Drop (some of) a non&#45;cursed inventory/equipment item" alt="" coords="617,1371,754,1397"/>
+<area shape="rect" href="monster-death_8cpp.html#a8250e249cbdb8aae0dd44d785b7c2a72" title=" " alt="" coords="185,1000,309,1027"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a959751785c50df74893e18e6a20c8bcf" title=" " alt="" coords="404,630,535,671"/>
+<area shape="rect" href="cmd-throw_8cpp.html#ab4a5f5c5ec5ef0cac44d30d213374ae7" title=" " alt="" coords="623,1421,747,1448"/>
+<area shape="rect" href="cmd-eat_8cpp.html#a77b0b5d933aedbf6ab8e24616c2ce1fd" title="実際にアイテムを食おうとするコマンドのサブルーチン" alt="" coords="636,1472,735,1499"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="652,1523,719,1549"/>
+<area shape="rect" href="mind-ninja_8cpp.html#a24ff4b9325e293fbb2a4cb72d323c9b7" title="変わり身処理" alt="" coords="649,1573,722,1600"/>
+<area shape="rect" href="monster-object_8cpp.html#a9d0c80290145e58a0d1d77180938d96d" title="モンスターが盗みや拾いで確保していたアイテムを全てドロップさせる / Drop all items carried by a monster" alt="" coords="612,1051,759,1093"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a9ae29bdeb891416b7ebcc0928120f940" title=" " alt="" coords="400,899,539,925"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#aeab5aaf4660ee8ea5c91b6c49d3c1a6a" title=" " alt="" coords="401,696,538,723"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#af65c05755bc69a7951419f913878538e" title=" " alt="" coords="394,747,545,773"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a3b159fe61fa01d4e2fec7af7b49d42d0" title=" " alt="" coords="420,797,519,824"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a86ca898ccdc86d14979a1311bb8878d0" title=" " alt="" coords="409,848,530,875"/>
+<area shape="rect" href="monster-death_8cpp.html#a630cf8a7d0a3e31b96992334c0220b24" title=" " alt="" coords="161,1152,332,1179"/>
+<area shape="rect" href="pack-overflow_8cpp.html#a89d1f1d66e5f1efc4eddba0c69c8d3c6" title="アイテムの所持種類数が超えた場合にアイテムを床に落とす処理" alt="" coords="634,1624,737,1651"/>
+<area shape="rect" href="effect-monster_8cpp.html#a74e111b8616d79dedb3c631e58fb0f1a" title="写真を撮った時の処理" alt="" coords="607,1675,763,1717"/>
+<area shape="rect" href="monster-processor_8cpp.html#a4eee1b88a804d2a316077940da38bad2" title="モンスターの恐怖状態を処理する" alt="" coords="610,1741,761,1768"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="408,31,531,57"/>
+<area shape="rect" href="monster-death_8cpp.html#a9c647c2a727aa1c903b9dc31b65f63e6" title="モンスターが死亡した時の処理 / Handle the &quot;death&quot; of a monster." alt="" coords="5,949,113,976"/>
+<area shape="rect" href="monster-death_8cpp.html#a24bbcb03067d88964cdf68db9124210b" title="アーティファクトのドロップ判定処理" alt="" coords="404,360,535,387"/>
+<area shape="rect" href="monster-death_8cpp.html#a92ea67756bf181388e5e4e51207cfa03" title=" " alt="" coords="403,411,536,453"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#af81a0584225771d2ab4a403d68ba1509" title=" " alt="" coords="410,259,529,285"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a8b08f5e5d6aa55d2ec04e54b74566fb6" title=" " alt="" coords="380,477,559,504"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a0ca5945ffd044b52a5f49ed486382340" title="指定されたIDの固定アーティファクトを生成する / Create the artifact of the specified number" alt="" coords="393,309,545,336"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a6ecb03d662c5a6acf294c9426e730cde" title=" " alt="" coords="173,772,320,799"/>
+<area shape="rect" href="cmd-throw_8cpp.html#ad5a2694d677c498bbc88091785b50605" title="投射処理メインルーチン / Throw an object from the pack or floor." alt="" coords="416,1421,523,1448"/>
+<area shape="rect" href="cmd-pet_8cpp.html#a5393c5248eb883f75cebd459120fb959" title="ペットに関するコマンドリストのメインルーチン / Issue a pet command" alt="" coords="423,1051,516,1077"/>
+<area shape="rect" href="effect-monster_8cpp.html#a2beb918ea8d568746366904325419f95" title="モンスター効果の後処理 (ペット関係、記念撮影、グローバル変数更新)" alt="" coords="402,1675,537,1717"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2e8f81630ced5a3209bae0d0e79d8821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e8f81630ced5a3209bae0d0e79d8821">&#9670;&nbsp;</a></span>cave_has_flag_bold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> cave_has_flag_bold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="feature-flag-types_8h.html#ad3281e746dc1738364076980e1aa6dbd">feature_flag_type</a>&#160;</td>
+          <td class="paramname"><em>f_idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_a2e8f81630ced5a3209bae0d0e79d8821_icgraph.png" border="0" usemap="#acave_8cpp_a2e8f81630ced5a3209bae0d0e79d8821_icgraph" alt=""/></div>
+<map name="acave_8cpp_a2e8f81630ced5a3209bae0d0e79d8821_icgraph" id="acave_8cpp_a2e8f81630ced5a3209bae0d0e79d8821_icgraph">
+<area shape="rect" title=" " alt="" coords="1393,1207,1528,1234"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a5f4625552656aee45b62542787f7cd08" title=" " alt="" coords="205,258,323,285"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a18d1785b5416dd0102f17af5a5e64339" title="モンスターが敵対モンスターに直接ブレスを当てることが可能かを判定する / Determine if a breath will hit the target." alt="" coords="412,270,509,297"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a967933565c13f95ea0500a0fd24d8021" title=" " alt="" coords="963,371,1115,398"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="231,625,297,651"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a874c3947f23540371fe5a100ec89a22b" title="モンスターが特殊能力の目標地点を決める処理 / Get the actual center point of ball spells (rad &gt; 1) (originally from TOband)" alt="" coords="400,473,521,499"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="430,726,491,753"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#ab738ba0734204e55707411a35acde85c" title="元素魔法呪文を実行する" alt="" coords="197,777,331,803"/>
+<area shape="rect" href="spells-chaos_8cpp.html#af16bb565fa9396a13ad62570b7d0344f" title="カオス魔法「流星群」/トランプ魔法「隕石のカード」の処理としてプレイヤーを中心に隕石落下処理を10+1d10回繰り返す。 / Drop 10+1d10 meteor ball at random pla..." alt="" coords="217,827,311,854"/>
+<area shape="rect" href="spells-crusade_8cpp.html#afb7053fa5419ad06ab18be525f1d92af" title="破邪魔法処理" alt="" coords="187,498,341,525"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="201,1005,327,1031"/>
+<area shape="rect" href="spells-lite_8cpp.html#aea3ab2b77babe219cf83264064799121" title="スターライトの効果を発生させる" alt="" coords="230,878,298,905"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#aa3c6ea47d39b38e54711fcfdbca7f4b6" title="周辺破壊効果(プレイヤー中心)" alt="" coords="217,1131,311,1158"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a6730483ce19802de5ca2858b88b6e8c4" title=" " alt="" coords="976,484,1103,525"/>
+<area shape="rect" href="cave_8cpp.html#ae9a5c1edf9fbd3c7be2784c8b75d14bd" title=" " alt="" coords="1203,1334,1321,1361"/>
+<area shape="rect" href="treasure-deployment_8cpp.html#ab1a32c89c0fa8a2239925974c026c1bb" title="部屋にアイテム・モンスター・罠を配置する処理" alt="" coords="770,1461,858,1487"/>
+<area shape="rect" href="cave_8cpp.html#a414eb0dc404cc94635df4b0f3ad8590c" title=" " alt="" coords="1207,1435,1317,1462"/>
+<area shape="rect" href="spells-lite_8cpp.html#af256207d13fdf4748c542404b1fecbcd" title="指定のマスが光を通さず射線のみを通すかを返す。 / Aux function – see below" alt="" coords="1189,1486,1335,1513"/>
+<area shape="rect" href="feature_8cpp.html#acad9118499482c605f583af0ef408f10" title=" " alt="" coords="1211,1131,1313,1158"/>
+<area shape="rect" href="quest-completion-checker_8cpp.html#a9e42969ac66783fe5b572f6e444072e7" title="特定の敵を倒した際にクエスト達成処理 / Check for &quot;Quest&quot; completion when a quest monster is killed or charmed." alt="" coords="956,1081,1123,1107"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="996,1131,1083,1158"/>
+<area shape="rect" href="cave_8cpp.html#a9940da0af854b0b88a943373b8b41055" title=" " alt="" coords="1180,471,1344,498"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a687a274385000779724afcdd8f11f4d1" title=" " alt="" coords="1179,1537,1345,1563"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="1203,1587,1321,1614"/>
+<area shape="rect" href="quest_8cpp.html#a84fa7549df86f34d5c3b47ce5d1aec42" title="クエスト入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="1209,1638,1315,1665"/>
+<area shape="rect" href="cmd-move_8cpp.html#a52d23a65648bfd0f53bf6e5c6690b635" title="「歩く」動作コマンドのメインルーチン / Support code for the &quot;Walk&quot; and &quot;Jump&quot; commands" alt="" coords="1211,1689,1313,1715"/>
+<area shape="rect" href="cmd-throw_8cpp.html#ab4a5f5c5ec5ef0cac44d30d213374ae7" title=" " alt="" coords="1200,1739,1324,1766"/>
+<area shape="rect" href="spells-fetcher_8cpp.html#a511a98f348296163f1a0bdfd6b9bae3b" title="アイテム引き寄せ処理 / Fetch an item (teleport it right underneath the caster)" alt="" coords="1221,1790,1303,1817"/>
+<area shape="rect" href="spells-status_8cpp.html#aa3ffab6789c8f7c2dd9fb9272c0e189f" title=" " alt="" coords="595,67,654,94"/>
+<area shape="rect" href="cave-filler_8cpp.html#a268dc154292036c8e0732c3b006525df" title=" " alt="" coords="1211,1841,1313,1867"/>
+<area shape="rect" href="cave_8cpp.html#abf1b6aff1aa303afd2b72225c7abbcee" title=" " alt="" coords="1193,979,1331,1006"/>
+<area shape="rect" href="cave_8cpp.html#aad3aa7818b160a3bd79fdb3ca2584bbf" title=" " alt="" coords="966,929,1113,955"/>
+<area shape="rect" href="player-attack_8cpp.html#a55754960d00a6d79d985245b3495865c" title="皆殺し(全方向攻撃)処理" alt="" coords="1223,1891,1301,1918"/>
+<area shape="rect" href="cave_8cpp.html#af3ebcc730bf3e9662adef8c0a4b49903" title=" " alt="" coords="1219,1182,1305,1209"/>
+<area shape="rect" href="feature-generator_8cpp.html#ae27489589a44b5c5c0cdaeda30924fb3" title="ドアを設置可能な地形かを返す / Determine if the given location is &quot;between&quot; two walls, and &quot;next to&quot; two corridor s..." alt="" coords="1199,1993,1325,2019"/>
+<area shape="rect" href="feature-generator_8cpp.html#abb36deb31de9b8db0c40de41e482e830" title="ドアの設置を試みる / Places door at y, x position if at least 2 walls found" alt="" coords="1005,1967,1074,1994"/>
+<area shape="rect" href="run-execution_8cpp.html#a1f4e9537b99f54a1b1a44ac3cdbd5e79" title="ダッシュ処理の導入 / Initialize the running algorithm for a new direction." alt="" coords="1230,2043,1294,2070"/>
+<area shape="rect" href="monster-lite_8cpp.html#a75793a7fadfe3df5141a3b455080c33b" title="Update squares illuminated or darkened by monsters." alt="" coords="981,2119,1098,2146"/>
+<area shape="rect" href="monster-lite_8cpp.html#a61e1504081117a811de0e6ef456b3715" title=" " alt="" coords="1189,2145,1335,2171"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="7,131,127,158"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#addad41b5490f0e5440142f98ca58a0f9" title=" " alt="" coords="176,207,352,234"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="569,473,680,499"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="5,726,128,753"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a30ef387a791d4e4e8de0c441056943e0" title=" " alt="" coords="728,523,900,550"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a32a097212154ab56f1a529ee83ff2559" title=" " alt="" coords="736,473,892,499"/>
+<area shape="rect" href="effect-feature_8cpp.html#ab737fe54000e9c290f3a9db846d89d6a" title=" " alt="" coords="979,1233,1100,1259"/>
+<area shape="rect" href="spells-grid_8cpp.html#ad8e3d810b657175f4ef7273379bade19" title="爆発のルーン設置処理 / Leave an &quot;explosive rune&quot; which prevents monster movement" alt="" coords="963,1283,1115,1310"/>
+<area shape="rect" href="spells-grid_8cpp.html#a7ac822d645ff4090ab55543a3711e3d0" title="守りのルーン設置処理 / Leave a &quot;rune of protection&quot; which prevents monster movement" alt="" coords="948,1334,1131,1361"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#ac896b6f8aac898b683d2bf0dfe2e0af6" title="鏡設置処理" alt="" coords="993,1385,1086,1411"/>
+<area shape="rect" href="trap_8cpp.html#a5409f23e3aeaabec658e99c2fa99fb91" title="マスをトラップを配置する / The location must be a legal, naked, floor grid." alt="" coords="998,1435,1081,1462"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a72e9e49e417af9b290323225114db833"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72e9e49e417af9b290323225114db833">&#9670;&nbsp;</a></span>cave_has_flag_grid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> cave_has_flag_grid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgrid__type.html">grid_type</a> *&#160;</td>
+          <td class="paramname"><em>grid_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>feature_flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_a72e9e49e417af9b290323225114db833_icgraph.png" border="0" usemap="#acave_8cpp_a72e9e49e417af9b290323225114db833_icgraph" alt=""/></div>
+<map name="acave_8cpp_a72e9e49e417af9b290323225114db833_icgraph" id="acave_8cpp_a72e9e49e417af9b290323225114db833_icgraph">
+<area shape="rect" title=" " alt="" coords="724,639,855,665"/>
+<area shape="rect" href="mspell-lite_8cpp.html#a00376991c69f6003fcad6cf1b3b4c28c" title="モンスターの魔法によってフロアを明るくする処理及びその判定" alt="" coords="530,56,671,83"/>
+<area shape="rect" href="spells-chaos_8cpp.html#a207154409a52e3ce87987b79eec6c59b" title="虚無招来処理 /" alt="" coords="351,107,447,133"/>
+<area shape="rect" href="stair_8cpp.html#aea4112323991d426dd48847f219a0bc8" title="指定された座標が地震や階段生成の対象となるマスかを返す。 / Determine if a given location may be &quot;destroyed&quot;" alt="" coords="545,208,656,235"/>
+<area shape="rect" href="mind-archer_8cpp.html#a5c7ac014262f5236c69ea18c406fee25" title="「弾/矢の製造」処理 / do_cmd_cast calls this function if the player&#39;s class is &#39;archer&#39;." alt="" coords="550,259,651,285"/>
+<area shape="rect" href="spells-floor_8cpp.html#aff6b2287b85d21769fa6b05e3df35eaf" title="*破壊*処理を行う / The spell of destruction" alt="" coords="552,157,649,184"/>
+<area shape="rect" href="spells-detection_8cpp.html#a0d6dd453d43f9fc679219f8b8590ca5c" title="プレイヤー周辺の地形を感知する" alt="" coords="343,309,456,336"/>
+<area shape="rect" href="trap_8cpp.html#a3a6c4bccfd944baf84f4dd98576a366b" title="マスに存在する隠しトラップを公開する / Disclose an invisible trap" alt="" coords="551,360,650,387"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="549,512,653,539"/>
+<area shape="rect" href="tunnel-execution_8cpp.html#acd0fd90d9b9b8280c6f5e406d3b145cd" title="「掘る」コマンドを該当のマスに行えるかの判定と結果メッセージの表示 / Determine if a given grid may be &quot;tunneled&quot;" alt="" coords="531,461,670,488"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="567,563,634,589"/>
+<area shape="rect" href="vault-builder_8cpp.html#a8575e806cddfd193ed02131ed2149aeb" title=" " alt="" coords="533,613,669,640"/>
+<area shape="rect" href="grid_8cpp.html#a04727cfe34bdadfe9608d1ff5ee84c06" title="マスに隠されたドアがあるかの判定を行う。 / Return TRUE if the given grid is a hidden closed door" alt="" coords="546,411,655,437"/>
+<area shape="rect" href="grid_8cpp.html#ac7e419802b28d8aaa00fd241dfe96e7c" title="マスに看破済みの罠があるかの判定を行う。 / Return TRUE if the given grid is a known trap" alt="" coords="548,664,653,691"/>
+<area shape="rect" href="feature-generator_8cpp.html#a3bf85011ec9685dcb0dddc4dcf3870d7" title="隣接4マスに存在する通路の数を返す / Count the number of &quot;corridor&quot; grids adjacent to the given grid." alt="" coords="553,715,648,741"/>
+<area shape="rect" href="floor-streams_8cpp.html#a68725788d9b43d168e95be964a25ee85" title="ダンジョンの指定位置近辺に森林を配置する / Places &quot;streamers&quot; of rock through dungeon" alt="" coords="355,765,444,792"/>
+<area shape="rect" href="cursor_8cpp.html#ab3f12b6994600a41837ccc8855511b12" title=" " alt="" coords="561,867,640,893"/>
+<area shape="rect" href="pet-fall-off_8cpp.html#a6cccefbe31f9c2f308dfe3a3a2266647" title="プレイヤーの落馬判定処理" alt="" coords="525,917,676,944"/>
+<area shape="rect" href="floor-streams_8cpp.html#a30757e5ff85e979b2b866d035db930ae" title="ダンジョン生成に利用する関数群 / Used by dungeon generation." alt="" coords="549,816,652,843"/>
+<area shape="rect" href="grid-selector_8cpp.html#aa3b09db98c664d46739f232d0471ab35" title=" " alt="" coords="550,968,651,995"/>
+<area shape="rect" href="grid_8cpp.html#adf9b44c11b18af0666ff2580ec2399d7" title=" " alt="" coords="354,1019,445,1045"/>
+<area shape="rect" href="monster-lite_8cpp.html#a75793a7fadfe3df5141a3b455080c33b" title="Update squares illuminated or darkened by monsters." alt="" coords="341,1069,458,1096"/>
+<area shape="rect" href="monster-lite_8cpp.html#a61e1504081117a811de0e6ef456b3715" title=" " alt="" coords="527,1120,674,1147"/>
+<area shape="rect" href="floor-util_8cpp.html#a2d31bc446ebe45686459b7cf678fb645" title=" " alt="" coords="551,1171,650,1197"/>
+<area shape="rect" href="wild_8cpp.html#ad2b39f3334022fd4e424dbc1029c79f4" title="広域マップの生成 / Build the wilderness area outside of the town." alt="" coords="545,1221,656,1248"/>
+<area shape="rect" href="mspell-lite_8cpp.html#a316166f8fac75707171476e2ab246562" title=" " alt="" coords="326,5,473,32"/>
+<area shape="rect" href="mspell-lite_8cpp.html#a31c67bd69de673c6fa195b340ea42b13" title=" " alt="" coords="338,56,461,83"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ab50ab49708e55a42a4caeb03490bdf93" title="モンスターの特殊技能メインルーチン / Creatures can cast spells, shoot missiles, and breathe." alt="" coords="137,44,267,71"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="146,120,258,147"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="5,120,83,147"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="356,208,443,235"/>
+<area shape="rect" href="spells-grid_8cpp.html#acf2eb5e94ece8678894af710d01688f4" title="プレイヤーの手による能動的な階段生成処理 / Create stairs at or move previously created stairs into the player location." alt="" coords="349,259,449,285"/>
+<area shape="rect" href="effect-feature_8cpp.html#ab60eea66f4d858035803d331e84151cc" title="汎用的なビーム/ボルト/ボール系による地形効果処理 / We are called from &quot;project()&quot; to &quot;damage&quot; terrain features" alt="" coords="350,360,449,387"/>
+<area shape="rect" href="player-move_8cpp.html#ae72673d8255819953f0510b3a57c2543" title="地形やその上のアイテムの隠された要素を全て明かす / Search for hidden things" alt="" coords="321,411,477,437"/>
+<area shape="rect" href="tunnel-execution_8cpp.html#a56e19640f889d32bc5c781d8a6d07691" title="「掘る」動作コマンドのサブルーチン / Perform the basic &quot;tunnel&quot; command" alt="" coords="357,461,442,488"/>
+<area shape="rect" href="vault-builder_8cpp.html#a90eb7bba8a6822db1505a25b34ce5b19" title="特殊な部屋地形向けにモンスターを配置する / Place some sleeping monsters near the given location" alt="" coords="345,613,454,640"/>
+<area shape="rect" href="feature-generator_8cpp.html#ae27489589a44b5c5c0cdaeda30924fb3" title="ドアを設置可能な地形かを返す / Determine if the given location is &quot;between&quot; two walls, and &quot;next to&quot; two corridor s..." alt="" coords="337,715,462,741"/>
+<area shape="rect" href="feature-generator_8cpp.html#abb36deb31de9b8db0c40de41e482e830" title="ドアの設置を試みる / Places door at y, x position if at least 2 walls found" alt="" coords="167,715,237,741"/>
+<area shape="rect" href="cave-generator_8cpp.html#a7c3c6b71c90167d5fb5067742c42515f" title=" " alt="" coords="131,791,273,817"/>
+<area shape="rect" href="floor-streams_8cpp.html#ad94d05f19803ed247994dad1c368d425" title="ランダムに川/溶岩流をダンジョンに配置する / Places water /lava through dungeon." alt="" coords="363,816,436,843"/>
+<area shape="rect" href="grid-selector_8cpp.html#a5da96012220c31693d621050d9dcd7c2" title=" " alt="" coords="347,968,452,995"/>
+<area shape="rect" href="grid-selector_8cpp.html#a7db00eacc9a3dba741e67541ea55dab0" title="位置を指定するプロンプト" alt="" coords="175,968,229,995"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="145,1044,259,1071"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="344,1171,455,1197"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adc0f94b19918e1965ddd320ae168d551"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc0f94b19918e1965ddd320ae168d551">&#9670;&nbsp;</a></span>cave_los_bold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> cave_los_bold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_adc0f94b19918e1965ddd320ae168d551_cgraph.png" border="0" usemap="#acave_8cpp_adc0f94b19918e1965ddd320ae168d551_cgraph" alt=""/></div>
+<map name="acave_8cpp_adc0f94b19918e1965ddd320ae168d551_cgraph" id="acave_8cpp_adc0f94b19918e1965ddd320ae168d551_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,108,32"/>
+<area shape="rect" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e" title=" " alt="" coords="156,5,280,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_adc0f94b19918e1965ddd320ae168d551_icgraph.png" border="0" usemap="#acave_8cpp_adc0f94b19918e1965ddd320ae168d551_icgraph" alt=""/></div>
+<map name="acave_8cpp_adc0f94b19918e1965ddd320ae168d551_icgraph" id="acave_8cpp_adc0f94b19918e1965ddd320ae168d551_icgraph">
+<area shape="rect" title=" " alt="" coords="1751,986,1853,1013"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a18d1785b5416dd0102f17af5a5e64339" title="モンスターが敵対モンスターに直接ブレスを当てることが可能かを判定する / Determine if a breath will hit the target." alt="" coords="583,1082,681,1109"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a967933565c13f95ea0500a0fd24d8021" title=" " alt="" coords="1321,961,1473,988"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="223,872,284,898"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a6730483ce19802de5ca2858b88b6e8c4" title=" " alt="" coords="1553,1008,1680,1050"/>
+<area shape="rect" href="spells-lite_8cpp.html#a567217f3f25346d672d5906d6e8d0f1d" title="(y,x) が明るくすべきマスなら points に加える" alt="" coords="1531,1074,1703,1101"/>
+<area shape="rect" href="spells-lite_8cpp.html#a942ecd2245dd83fbf1b96e593ba2e6df" title="(y1,x1) を含む全ての部屋を照らす。 / Illuminate any room containing the given location." alt="" coords="1359,1120,1434,1146"/>
+<area shape="rect" href="line-of-sight_8cpp.html#adff83a1e8c9d47236408737740652a4b" title="LOS(Line Of Sight / 視線が通っているか)の判定を行う。" alt="" coords="1024,568,1063,594"/>
+<area shape="rect" href="torch_8cpp.html#ae4899076be3d81501f0ddb5b83e773dc" title=" " alt="" coords="1165,450,1250,477"/>
+<area shape="rect" href="monster-lite_8cpp.html#a61e1504081117a811de0e6ef456b3715" title=" " alt="" coords="1543,754,1690,781"/>
+<area shape="rect" href="monster-lite_8cpp.html#a0ee9b9616ea4e7f86a16e3a9b5916dda" title="モンスターによる光量状態更新 / Add a square to the changes array" alt="" coords="1547,805,1686,832"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#addad41b5490f0e5440142f98ca58a0f9" title=" " alt="" coords="343,1242,519,1269"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a8558f34c01633de68b995225193b6d05" title=" " alt="" coords="212,1242,295,1269"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="5,1032,164,1058"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="1152,1040,1263,1066"/>
+<area shape="rect" href="mspell-checker_8cpp.html#ad7f823f0d59ae8876db5e23cc77f8b46" title="モンスターにとってボルト型魔法が有効な状態かを返す / Determine if a bolt spell will hit the player." alt="" coords="1001,1040,1086,1066"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a265a95d04381b6b6ac4e54b2d3803aa7" title="モンスター魔法の実装(対モンスター処理) / Monster spells (attack monster)" alt="" coords="997,1090,1090,1117"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="51,1213,118,1240"/>
+<area shape="rect" href="spells-fetcher_8cpp.html#a82174cd61ca4f0523a9cc463175df4cf" title=" " alt="" coords="788,1141,892,1168"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a874c3947f23540371fe5a100ec89a22b" title="モンスターが特殊能力の目標地点を決める処理 / Get the actual center point of ball spells (rad &gt; 1) (originally from TOband)" alt="" coords="983,1141,1104,1168"/>
+<area shape="rect" href="cursor_8cpp.html#ab3f12b6994600a41837ccc8855511b12" title=" " alt="" coords="1004,888,1083,914"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="1001,829,1086,856"/>
+<area shape="rect" href="mind-ninja_8cpp.html#a0bb9e2fc92fc023955549549df3f24cf" title="入身処理 / &quot;Rush Attack&quot; routine for Samurai or Ninja" alt="" coords="998,989,1089,1016"/>
+<area shape="rect" href="mspell-lite_8cpp.html#af1ce4a80952cbf0d294ecab5c07701c1" title=" " alt="" coords="773,1024,907,1066"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#afc5ab2de8a94ef9db572fa52a1d349b9" title=" " alt="" coords="745,1090,935,1117"/>
+<area shape="rect" href="target-setter_8cpp.html#a3b81773d8c052a061ad2dc39401158b3" title=" " alt="" coords="766,922,914,949"/>
+<area shape="rect" href="range-calc_8cpp.html#aa0bea06a5600ef01a6952378a83a60f8" title=" " alt="" coords="790,821,890,848"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a966fa20c8558fa0beff9bf3f87e2a138" title=" " alt="" coords="761,502,919,543"/>
+<area shape="rect" href="target-setter_8cpp.html#af7e6e2af52fcb15557b64c945e9524af" title=" " alt="" coords="769,568,911,594"/>
+<area shape="rect" href="monster-sweep-grid_8cpp.html#a89c8d5047de783b34e52d77b597ab1bf" title="モンスターの移動方向を返す / Choose &quot;logical&quot; directions for monster movement" alt="" coords="779,618,901,645"/>
+<area shape="rect" href="spells-summon_8cpp.html#a7e2d3c870d4426892e3f3c8c11d11a3e" title=" " alt="" coords="793,669,887,696"/>
+<area shape="rect" href="mspell-checker_8cpp.html#ae10739c91db6102c1cbaa631acd622d9" title="モンスターにとって死者復活を行うべき状態かどうかを返す / Determine if there is a space near the player in which a summoned creat..." alt="" coords="787,720,893,746"/>
+<area shape="rect" href="floor-util_8cpp.html#a2704964f2aa08734888dc95c82b138c4" title=" " alt="" coords="809,770,871,797"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a30ef387a791d4e4e8de0c441056943e0" title=" " alt="" coords="1311,1065,1483,1092"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a32a097212154ab56f1a529ee83ff2559" title=" " alt="" coords="1319,1014,1475,1041"/>
+<area shape="rect" href="mspell-lite_8cpp.html#a31c67bd69de673c6fa195b340ea42b13" title=" " alt="" coords="779,349,901,376"/>
+<area shape="rect" href="effect-monster-psi_8cpp.html#ac2742db203ad2bcecc5cd05d51938caa" title="モンスターへのPsi攻撃(GF_PSI)の効果を発動する" alt="" coords="775,197,905,224"/>
+<area shape="rect" href="quantum-effect_8cpp.html#a1f8d8fd16b7d003f0c9260d7f8a5ccf0" title="量子生物ユニークの量子的効果 (ショート・テレポートまたは距離10のテレポート・アウェイ)を実行する" alt="" coords="759,248,921,274"/>
+<area shape="rect" href="spells-teleport_8cpp.html#a1b17c743ff014ec38b3f906eb54c8480" title=" " alt="" coords="757,298,923,325"/>
+<area shape="rect" href="player-view_8cpp.html#a6db7a2878791ddf98774ed5430414a4d" title=" " alt="" coords="780,96,900,122"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ab50ab49708e55a42a4caeb03490bdf93" title="モンスターの特殊技能メインルーチン / Creatures can cast spells, shoot missiles, and breathe." alt="" coords="567,349,697,376"/>
+<area shape="rect" href="player-view_8cpp.html#a501289eb6a4767f7b9dcfad64b29ad4f" title=" " alt="" coords="586,96,678,122"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="373,70,488,97"/>
+<area shape="rect" href="monster-lite_8cpp.html#a75793a7fadfe3df5141a3b455080c33b" title="Update squares illuminated or darkened by monsters." alt="" coords="1338,754,1455,781"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="addf7d48898d2d31d2dc6d9c3a6454042"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addf7d48898d2d31d2dc6d9c3a6454042">&#9670;&nbsp;</a></span>cave_los_grid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> cave_los_grid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgrid__type.html">grid_type</a> *&#160;</td>
+          <td class="paramname"><em>grid_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_addf7d48898d2d31d2dc6d9c3a6454042_cgraph.png" border="0" usemap="#acave_8cpp_addf7d48898d2d31d2dc6d9c3a6454042_cgraph" alt=""/></div>
+<map name="acave_8cpp_addf7d48898d2d31d2dc6d9c3a6454042_cgraph" id="acave_8cpp_addf7d48898d2d31d2dc6d9c3a6454042_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,105,32"/>
+<area shape="rect" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e" title=" " alt="" coords="153,5,277,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_addf7d48898d2d31d2dc6d9c3a6454042_icgraph.png" border="0" usemap="#acave_8cpp_addf7d48898d2d31d2dc6d9c3a6454042_icgraph" alt=""/></div>
+<map name="acave_8cpp_addf7d48898d2d31d2dc6d9c3a6454042_icgraph" id="acave_8cpp_addf7d48898d2d31d2dc6d9c3a6454042_icgraph">
+<area shape="rect" title=" " alt="" coords="528,81,628,108"/>
+<area shape="rect" href="monster-lite_8cpp.html#a61e1504081117a811de0e6ef456b3715" title=" " alt="" coords="333,5,480,32"/>
+<area shape="rect" href="monster-lite_8cpp.html#a0ee9b9616ea4e7f86a16e3a9b5916dda" title="モンスターによる光量状態更新 / Add a square to the changes array" alt="" coords="337,56,476,83"/>
+<area shape="rect" href="player-view_8cpp.html#a501289eb6a4767f7b9dcfad64b29ad4f" title=" " alt="" coords="181,107,273,133"/>
+<area shape="rect" href="player-view_8cpp.html#a6db7a2878791ddf98774ed5430414a4d" title=" " alt="" coords="347,157,467,184"/>
+<area shape="rect" href="monster-lite_8cpp.html#a75793a7fadfe3df5141a3b455080c33b" title="Update squares illuminated or darkened by monsters." alt="" coords="168,56,285,83"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="5,81,120,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9940da0af854b0b88a943373b8b41055"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9940da0af854b0b88a943373b8b41055">&#9670;&nbsp;</a></span>cave_stop_disintegration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> cave_stop_disintegration </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_a9940da0af854b0b88a943373b8b41055_cgraph.png" border="0" usemap="#acave_8cpp_a9940da0af854b0b88a943373b8b41055_cgraph" alt=""/></div>
+<map name="acave_8cpp_a9940da0af854b0b88a943373b8b41055_cgraph" id="acave_8cpp_a9940da0af854b0b88a943373b8b41055_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,169,32"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="217,5,352,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_a9940da0af854b0b88a943373b8b41055_icgraph.png" border="0" usemap="#acave_8cpp_a9940da0af854b0b88a943373b8b41055_icgraph" alt=""/></div>
+<map name="acave_8cpp_a9940da0af854b0b88a943373b8b41055_icgraph" id="acave_8cpp_a9940da0af854b0b88a943373b8b41055_icgraph">
+<area shape="rect" title=" " alt="" coords="1493,439,1657,466"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a18d1785b5416dd0102f17af5a5e64339" title="モンスターが敵対モンスターに直接ブレスを当てることが可能かを判定する / Determine if a breath will hit the target." alt="" coords="360,531,457,558"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a967933565c13f95ea0500a0fd24d8021" title=" " alt="" coords="1293,341,1445,367"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="378,197,439,223"/>
+<area shape="rect" href="spells-crusade_8cpp.html#afb7053fa5419ad06ab18be525f1d92af" title="破邪魔法処理" alt="" coords="147,683,301,710"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a6730483ce19802de5ca2858b88b6e8c4" title=" " alt="" coords="1306,413,1433,455"/>
+<area shape="rect" href="range-calc_8cpp.html#a583d3a676864745468096ddfc9da8ddf" title=" " alt="" coords="712,501,867,527"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#addad41b5490f0e5440142f98ca58a0f9" title=" " alt="" coords="136,531,312,558"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a8558f34c01633de68b995225193b6d05" title=" " alt="" coords="5,531,88,558"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="915,319,1025,346"/>
+<area shape="rect" href="mspell-checker_8cpp.html#ad7f823f0d59ae8876db5e23cc77f8b46" title="モンスターにとってボルト型魔法が有効な状態かを返す / Determine if a bolt spell will hit the player." alt="" coords="747,399,832,426"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a265a95d04381b6b6ac4e54b2d3803aa7" title="モンスター魔法の実装(対モンスター処理) / Monster spells (attack monster)" alt="" coords="743,450,836,477"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="191,95,257,122"/>
+<area shape="rect" href="spells-fetcher_8cpp.html#a82174cd61ca4f0523a9cc463175df4cf" title=" " alt="" coords="533,146,637,173"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a874c3947f23540371fe5a100ec89a22b" title="モンスターが特殊能力の目標地点を決める処理 / Get the actual center point of ball spells (rad &gt; 1) (originally from TOband)" alt="" coords="729,298,850,325"/>
+<area shape="rect" href="cursor_8cpp.html#ab3f12b6994600a41837ccc8855511b12" title=" " alt="" coords="750,146,829,173"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="747,247,832,274"/>
+<area shape="rect" href="mind-ninja_8cpp.html#a0bb9e2fc92fc023955549549df3f24cf" title="入身処理 / &quot;Rush Attack&quot; routine for Samurai or Ninja" alt="" coords="744,349,835,375"/>
+<area shape="rect" href="mspell-lite_8cpp.html#af1ce4a80952cbf0d294ecab5c07701c1" title=" " alt="" coords="517,364,652,405"/>
+<area shape="rect" href="range-calc_8cpp.html#aa0bea06a5600ef01a6952378a83a60f8" title=" " alt="" coords="535,430,635,457"/>
+<area shape="rect" href="monster-direction_8cpp.html#a49da95cc812423a12a1d4e5abf2b52bf" title="モンスターが敵に接近するための方向を決定する" alt="" coords="505,299,664,340"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a30ef387a791d4e4e8de0c441056943e0" title=" " alt="" coords="1073,421,1245,447"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a32a097212154ab56f1a529ee83ff2559" title=" " alt="" coords="1081,370,1237,397"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a512cd3e2d9d7f5f5ca427d6b4321548e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a512cd3e2d9d7f5f5ca427d6b4321548e">&#9670;&nbsp;</a></span>feat_supports_los()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> feat_supports_los </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a>&#160;</td>
+          <td class="paramname"><em>f_idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_a512cd3e2d9d7f5f5ca427d6b4321548e_icgraph.png" border="0" usemap="#acave_8cpp_a512cd3e2d9d7f5f5ca427d6b4321548e_icgraph" alt=""/></div>
+<map name="acave_8cpp_a512cd3e2d9d7f5f5ca427d6b4321548e_icgraph" id="acave_8cpp_a512cd3e2d9d7f5f5ca427d6b4321548e_icgraph">
+<area shape="rect" title=" " alt="" coords="1392,910,1516,936"/>
+<area shape="rect" href="cave_8cpp.html#adc0f94b19918e1965ddd320ae168d551" title=" " alt="" coords="1225,428,1328,455"/>
+<area shape="rect" href="cave_8cpp.html#addf7d48898d2d31d2dc6d9c3a6454042" title=" " alt="" coords="1227,707,1327,734"/>
+<area shape="rect" href="grid_8cpp.html#ab400c1b998f2aac3e96120a9f4e374dc" title="指定された座標のマスが現在照らされているかを返す。 / Check for &quot;local&quot; illumination" alt="" coords="994,884,1157,911"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="783,1239,927,1266"/>
+<area shape="rect" href="door_8cpp.html#a871ffc3458d3a544d8e5b0d0ca7ac24e" title="所定の位置にさまざまな状態や種類のドアを配置する / Place a random type of door at the given location" alt="" coords="1209,986,1344,1012"/>
+<area shape="rect" href="door_8cpp.html#a062b9ead56aeca6ac33bc71118a9d735" title="隠しドアを配置する" alt="" coords="1213,1036,1341,1063"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a18d1785b5416dd0102f17af5a5e64339" title="モンスターが敵対モンスターに直接ブレスを当てることが可能かを判定する / Determine if a breath will hit the target." alt="" coords="387,282,484,308"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a967933565c13f95ea0500a0fd24d8021" title=" " alt="" coords="779,67,931,94"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="405,720,466,747"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a6730483ce19802de5ca2858b88b6e8c4" title=" " alt="" coords="1012,161,1139,202"/>
+<area shape="rect" href="spells-lite_8cpp.html#a567217f3f25346d672d5906d6e8d0f1d" title="(y,x) が明るくすべきマスなら points に加える" alt="" coords="989,327,1161,354"/>
+<area shape="rect" href="spells-lite_8cpp.html#a942ecd2245dd83fbf1b96e593ba2e6df" title="(y1,x1) を含む全ての部屋を照らす。 / Illuminate any room containing the given location." alt="" coords="818,352,893,379"/>
+<area shape="rect" href="line-of-sight_8cpp.html#adff83a1e8c9d47236408737740652a4b" title="LOS(Line Of Sight / 視線が通っているか)の判定を行う。" alt="" coords="836,428,875,455"/>
+<area shape="rect" href="torch_8cpp.html#ae4899076be3d81501f0ddb5b83e773dc" title=" " alt="" coords="1033,428,1118,455"/>
+<area shape="rect" href="monster-lite_8cpp.html#a61e1504081117a811de0e6ef456b3715" title=" " alt="" coords="1002,606,1149,632"/>
+<area shape="rect" href="monster-lite_8cpp.html#a0ee9b9616ea4e7f86a16e3a9b5916dda" title="モンスターによる光量状態更新 / Add a square to the changes array" alt="" coords="1006,656,1145,683"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#addad41b5490f0e5440142f98ca58a0f9" title=" " alt="" coords="163,282,339,308"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="571,67,682,94"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="27,784,93,811"/>
+<area shape="rect" href="effect-feature_8cpp.html#ab60eea66f4d858035803d331e84151cc" title="汎用的なビーム/ボルト/ボール系による地形効果処理 / We are called from &quot;project()&quot; to &quot;damage&quot; terrain features" alt="" coords="11,847,109,874"/>
+<area shape="rect" href="grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="197,960,305,987"/>
+<area shape="rect" href="movement-execution_8cpp.html#a586b9fe6bc207183655cdfb8dcfaf464" title="該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す / Move player in the given direction, with the given &quot;pickup&quot; flag." alt="" coords="5,1340,115,1367"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a30ef387a791d4e4e8de0c441056943e0" title=" " alt="" coords="769,168,941,195"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a32a097212154ab56f1a529ee83ff2559" title=" " alt="" coords="777,118,933,144"/>
+<area shape="rect" href="range-calc_8cpp.html#aa0bea06a5600ef01a6952378a83a60f8" title=" " alt="" coords="577,555,677,582"/>
+<area shape="rect" href="mspell-lite_8cpp.html#af1ce4a80952cbf0d294ecab5c07701c1" title=" " alt="" coords="559,388,694,429"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#afc5ab2de8a94ef9db572fa52a1d349b9" title=" " alt="" coords="532,454,721,480"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="547,504,706,531"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a966fa20c8558fa0beff9bf3f87e2a138" title=" " alt="" coords="547,118,706,160"/>
+<area shape="rect" href="mspell-lite_8cpp.html#a31c67bd69de673c6fa195b340ea42b13" title=" " alt="" coords="565,184,688,211"/>
+<area shape="rect" href="target-setter_8cpp.html#af7e6e2af52fcb15557b64c945e9524af" title=" " alt="" coords="555,235,698,262"/>
+<area shape="rect" href="target-setter_8cpp.html#a3b81773d8c052a061ad2dc39401158b3" title=" " alt="" coords="553,286,701,312"/>
+<area shape="rect" href="player-view_8cpp.html#a6db7a2878791ddf98774ed5430414a4d" title=" " alt="" coords="567,707,687,734"/>
+<area shape="rect" href="player-view_8cpp.html#a501289eb6a4767f7b9dcfad64b29ad4f" title=" " alt="" coords="389,771,481,798"/>
+<area shape="rect" href="display-map_8cpp.html#a9be4d479cc04510dbea7b7c114c617f3" title="指定した座標の地形の表示属性を取得する / Extract the attr/char to display at the given (legal) map location" alt="" coords="818,910,893,936"/>
+<area shape="rect" href="grid_8cpp.html#acfe2dde219c27902b1cbd0e7b6d95357" title=" " alt="" coords="211,784,290,811"/>
+<area shape="rect" href="monster-update_8cpp.html#a3a396e1d3462438fbdbf1d6726ddf10b" title=" " alt="" coords="572,1011,681,1038"/>
+<area shape="rect" href="cmd-throw_8cpp.html#af3a8eb4a3cc4a277a37ebb2b81410c30" title=" " alt="" coords="541,1062,712,1088"/>
+<area shape="rect" href="target-describer_8cpp.html#a91974c989701cf617f42e1ecddfbadf5" title="xまたはlで指定したグリッドにあるアイテムやモンスターの説明を記述する" alt="" coords="577,1112,676,1139"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="593,808,660,835"/>
+<area shape="rect" href="monster-status_8cpp.html#a5816c48586498ed28b6080bb6ebb5e45" title="モンスターの経験値取得処理" alt="" coords="563,1214,691,1240"/>
+<area shape="rect" href="monster-object_8cpp.html#a9ef3ffafff4b487b19f9df8f26595911" title="モンスターがアイテムを拾うか壊す処理" alt="" coords="549,1264,705,1291"/>
+<area shape="rect" href="grid_8cpp.html#a90a8ac3022bff7cdeddf03830a82b39d" title="指定された座標をプレイヤー収められていない状態かどうか / Returns true if the player&#39;s grid is dark" alt="" coords="597,1315,657,1342"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#aeb4b9f86d7b5087ea62e54a705b03efe" title=" " alt="" coords="550,1366,703,1392"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a0b8b48375a97172b376ca663aa5df701" title=" " alt="" coords="537,1416,717,1443"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a4821abe01bd987172e6d1f493c7e87ab" title=" " alt="" coords="555,1467,698,1494"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a7ce26cd1c402ad230a919b9b58204965" title=" " alt="" coords="538,1518,715,1544"/>
+<area shape="rect" href="run-execution_8cpp.html#a88e3dfe2e13cb1f22b67737858764e87" title="ダッシュ移動処理中、移動先のマスか未知の地形かどうかを判定する / Hack – Check for an &quot;unknown corner&quot; (see below)" alt="" coords="581,1568,673,1595"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a171b6fd602a2c8d672ccd9772e5323e1" title="モンスター死亡時の特殊処理switch (一般的な処理もdefaultで実施)" alt="" coords="577,1619,676,1646"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9a8f98687efe06482b7da1823cb40dcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a8f98687efe06482b7da1823cb40dcb">&#9670;&nbsp;</a></span>in_bounds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> in_bounds </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ダンジョンの壁等に関する判定関数の集合 </p>
+<dl class="section date"><dt>日付</dt><dd>2020/07/18 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier</dd></dl>
+<p>Dance with a colorless dress. Shout with a withered voice. </p>
+
+</div>
+</div>
+<a id="a6e5519e9632a1976322c085788b4dc0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e5519e9632a1976322c085788b4dc0d">&#9670;&nbsp;</a></span>in_bounds2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> in_bounds2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_a6e5519e9632a1976322c085788b4dc0d_icgraph.png" border="0" usemap="#acave_8cpp_a6e5519e9632a1976322c085788b4dc0d_icgraph" alt=""/></div>
+<map name="acave_8cpp_a6e5519e9632a1976322c085788b4dc0d_icgraph" id="acave_8cpp_a6e5519e9632a1976322c085788b4dc0d_icgraph">
+<area shape="rect" title=" " alt="" coords="1295,762,1383,789"/>
+<area shape="rect" href="effect-feature_8cpp.html#ab60eea66f4d858035803d331e84151cc" title="汎用的なビーム/ボルト/ボール系による地形効果処理 / We are called from &quot;project()&quot; to &quot;damage&quot; terrain features" alt="" coords="669,610,768,637"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="476,661,537,688"/>
+<area shape="rect" href="floor-streams_8cpp.html#a4c0e9c1836936ded0040dede609df5e0" title="ダンジョンの壁部にストリーマー（地質の変化）を与える / Places &quot;streamers&quot; of rock through dungeon" alt="" coords="15,154,122,181"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="35,433,102,460"/>
+<area shape="rect" href="feature_8cpp.html#acad9118499482c605f583af0ef408f10" title=" " alt="" coords="875,560,976,586"/>
+<area shape="rect" href="spells-floor_8cpp.html#aff6b2287b85d21769fa6b05e3df35eaf" title="*破壊*処理を行う / The spell of destruction" alt="" coords="458,408,555,434"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="463,864,550,890"/>
+<area shape="rect" href="spells-lite_8cpp.html#acfb02e78d215d1ed3100ef68e662c29f" title="(y,x) が指定条件を満たすなら points に加える" alt="" coords="1083,205,1231,232"/>
+<area shape="rect" href="spells-lite_8cpp.html#a222eed5525d789b02fbd19966f987fbf" title="指定した座標全てを暗くする。" alt="" coords="846,408,1005,434"/>
+<area shape="rect" href="monster-processor_8cpp.html#ae19539e212a069ad5dd6fbfa050ce834" title="モンスターを分裂させるかどうかを決定する (分裂もさせる)" alt="" coords="408,1370,605,1397"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#a618ba1b9ba0c1ccc906ad9355e43ba33" title="自分の周辺の地形をTermに表示する" alt="" coords="1097,281,1216,308"/>
+<area shape="rect" href="monster-sweep-grid_8cpp.html#a89c8d5047de783b34e52d77b597ab1bf" title="モンスターの移動方向を返す / Choose &quot;logical&quot; directions for monster movement" alt="" coords="657,1269,780,1296"/>
+<area shape="rect" href="floor-events_8cpp.html#a4f2c934b22e6229ec79d0bfb1c3eae5c" title=" " alt="" coords="1071,357,1242,384"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="1121,832,1192,858"/>
+<area shape="rect" href="monster-move_8cpp.html#ad952bf31a67518ea50735f5f724b866d" title="モンスターの移動に関するメインルーチン" alt="" coords="413,1421,601,1448"/>
+<area shape="rect" href="floor-streams_8cpp.html#a30757e5ff85e979b2b866d035db930ae" title="ダンジョン生成に利用する関数群 / Used by dungeon generation." alt="" coords="1105,1072,1208,1098"/>
+<area shape="rect" href="run-execution_8cpp.html#a88e3dfe2e13cb1f22b67737858764e87" title="ダッシュ移動処理中、移動先のマスか未知の地形かどうかを判定する / Hack – Check for an &quot;unknown corner&quot; (see below)" alt="" coords="1111,1122,1203,1149"/>
+<area shape="rect" href="run-execution_8cpp.html#aac590ff670ba843be6f069f509d63660" title="ダッシュ移動処理中、移動先のマスが既知の壁かどうかを判定する / Hack – Check for a &quot;known wall&quot; (see below)" alt="" coords="1121,1173,1193,1200"/>
+<area shape="rect" href="monster-sweep-grid_8cpp.html#a616c02dc6ef1e1be8644ccbbec06a4d0" title="モンスターがプレイヤーに向けて接近することが可能なマスを走査する / Choose the &quot;best&quot; direction for &quot;flowing&quot;" alt="" coords="855,1269,996,1296"/>
+<area shape="rect" href="monster-sweep-grid_8cpp.html#ac2c9d6b31d61645f0fdb4228484c7b23" title="モンスターがプレイヤーに向けて遠距離攻撃を行うことが可能なマスを走査する / Search spell castable grid" alt="" coords="1069,970,1245,997"/>
+<area shape="rect" href="monster-sweep-grid_8cpp.html#a104958ef51d0a02313782e93458dd071" title="モンスターがプレイヤーから逃走することが可能なマスを走査する / Provide a location to flee to, but give the player a wide berth." alt="" coords="1067,1300,1247,1326"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#ac5e475bf543027393672734eb9613bf6" title="鏡魔法「封魔結界」の効果処理" alt="" coords="460,914,553,941"/>
+<area shape="rect" href="spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="7,864,130,890"/>
+<area shape="rect" href="blood-curse_8cpp.html#ac0ecc46e48f607918b001bc2b08b561f" title=" " alt="" coords="192,762,348,789"/>
+<area shape="rect" href="grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="216,509,324,536"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="5,712,132,738"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="214,458,326,485"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="209,408,331,434"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="214,813,326,840"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="213,712,327,738"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a74d62708df45b643ad7193b43e5d053c" title="クラスパワーを実行" alt="" coords="183,914,357,941"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#aa3c6ea47d39b38e54711fcfdbca7f4b6" title="周辺破壊効果(プレイヤー中心)" alt="" coords="223,864,317,890"/>
+<area shape="rect" href="spells-grid_8cpp.html#acf2eb5e94ece8678894af710d01688f4" title="プレイヤーの手による能動的な階段生成処理 / Create stairs at or move previously created stairs into the player location." alt="" coords="669,509,769,536"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a3fd651c85a7cfc993105fe819d556ccb" title="指定された地点の地形IDを変更する / Create desired feature" alt="" coords="653,712,784,738"/>
+<area shape="rect" href="mutation-execution_8cpp.html#a0c9c1052c587d71b683d8a700d9ae016" title="突然変異のレイシャル効果実装" alt="" coords="199,965,341,992"/>
+<area shape="rect" href="spells-lite_8cpp.html#a567217f3f25346d672d5906d6e8d0f1d" title="(y,x) が明るくすべきマスなら points に加える" alt="" coords="839,205,1011,232"/>
+<area shape="rect" href="spells-lite_8cpp.html#ab05285d8dae5f502a816ee42486df352" title="(y,x) が暗くすべきマスなら points に加える" alt="" coords="832,154,1019,181"/>
+<area shape="rect" href="spells-lite_8cpp.html#a4d8b3641ead6748770127d91f2d2fc66" title="(y1,x1) を含む全ての部屋を暗くする。 / Darken all rooms containing the given location" alt="" coords="674,230,763,257"/>
+<area shape="rect" href="monster-processor_8cpp.html#ae6e21e8e28cd96eb7bc76f452416588a" title="モンスター単体の1ターン行動処理メインルーチン / Process a monster" alt="" coords="7,1370,130,1397"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#a0e857c8519e0656e354e9f46f6b4e5de" title="自分の周辺のダンジョンの地形をサブウィンドウに表示する / display dungeon view around player in a sub window" alt="" coords="880,256,971,282"/>
+<area shape="rect" href="monster-direction_8cpp.html#a855dbe8f8c72497d1f3a8abae7ea768b" title="モンスターの移動パターンを決定する" alt="" coords="180,1304,360,1346"/>
+<area shape="rect" href="monster-direction_8cpp.html#ab50a2a25a308d0b975eddfd7675e7237" title="ペットや友好的なモンスターがフロアから逃げる処理を行う" alt="" coords="431,1250,582,1291"/>
+<area shape="rect" href="floor-generator_8cpp.html#ac118aa928b4521013e62c16a0bc6b28f" title="ダンジョンのランダムフロアを生成する / Generates a random dungeon level &#45;RAK&#45; @parama player_ptr プレーヤーへの参照ポインタ" alt="" coords="874,357,977,384"/>
+<area shape="rect" href="floor-events_8cpp.html#ac255446499e40c7b84ac4fc6fb016f37" title=" " alt="" coords="885,306,965,333"/>
+<area shape="rect" href="effect-item_8cpp.html#a535ce53ec7f78b19e787e4289d5dec3f" title="汎用的なビーム/ボルト/ボール系によるアイテムオブジェクトへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="676,965,761,992"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="665,914,772,941"/>
+<area shape="rect" href="spells-lite_8cpp.html#af9bb030f4463bc4bb1466f979968d7e8" title="指定した座標全てを照らす。" alt="" coords="853,965,997,992"/>
+<area shape="rect" href="shape-changer_8cpp.html#a7e5697a071fe31476a758edba5057d36" title=" " alt="" coords="877,1016,973,1042"/>
+<area shape="rect" href="cmd-throw_8cpp.html#af3a8eb4a3cc4a277a37ebb2b81410c30" title=" " alt="" coords="840,1066,1011,1093"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4418acad9f4e14a2f633c8432b0fd63c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4418acad9f4e14a2f633c8432b0fd63c">&#9670;&nbsp;</a></span>in_bounds2u()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> in_bounds2u </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_a4418acad9f4e14a2f633c8432b0fd63c_icgraph.png" border="0" usemap="#acave_8cpp_a4418acad9f4e14a2f633c8432b0fd63c_icgraph" alt=""/></div>
+<map name="acave_8cpp_a4418acad9f4e14a2f633c8432b0fd63c_icgraph" id="acave_8cpp_a4418acad9f4e14a2f633c8432b0fd63c_icgraph">
+<area shape="rect" title=" " alt="" coords="663,81,757,108"/>
+<area shape="rect" href="effect-player_8cpp.html#a35e717f29486d57c50445d57693c7c25" title="ボルト魔法を反射する" alt="" coords="460,52,615,79"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="5,31,67,57"/>
+<area shape="rect" href="effect-player_8cpp.html#a15c922eb8fc168c85e08a24a4c37ef35" title="反射・忍者の変わり身などでそもそも当たらない状況を判定する" alt="" coords="257,41,412,82"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="115,5,209,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abf1b6aff1aa303afd2b72225c7abbcee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf1b6aff1aa303afd2b72225c7abbcee">&#9670;&nbsp;</a></span>is_cave_empty_bold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> is_cave_empty_bold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_abf1b6aff1aa303afd2b72225c7abbcee_cgraph.png" border="0" usemap="#acave_8cpp_abf1b6aff1aa303afd2b72225c7abbcee_cgraph" alt=""/></div>
+<map name="acave_8cpp_abf1b6aff1aa303afd2b72225c7abbcee_cgraph" id="acave_8cpp_abf1b6aff1aa303afd2b72225c7abbcee_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="192,5,327,32"/>
+<area shape="rect" href="cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="215,56,303,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_abf1b6aff1aa303afd2b72225c7abbcee_icgraph.png" border="0" usemap="#acave_8cpp_abf1b6aff1aa303afd2b72225c7abbcee_icgraph" alt=""/></div>
+<map name="acave_8cpp_abf1b6aff1aa303afd2b72225c7abbcee_icgraph" id="acave_8cpp_abf1b6aff1aa303afd2b72225c7abbcee_icgraph">
+<area shape="rect" title=" " alt="" coords="1513,613,1652,640"/>
+<area shape="rect" href="monster-generator_8cpp.html#a337e4104356fdcc868464def8b309c5b" title="ダンジョンの初期配置モンスターを生成1回生成する / Attempt to allocate a random monster in the dungeon." alt="" coords="435,107,537,133"/>
+<area shape="rect" href="chest_8cpp.html#a6c1737bff7d6e6260a16b0aeeb8002a0" title="箱からアイテムを引き出す / Allocates objects upon opening a chest &#45;BEN&#45;" alt="" coords="1345,563,1439,589"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="1099,512,1197,539"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="1085,461,1211,488"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a8d91c3d039a9066fac59c9ffaab95efb" title="@breif 暗いところ限定での次元の扉" alt="" coords="1329,613,1455,640"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="1349,411,1435,437"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="1359,664,1425,691"/>
+<area shape="rect" href="spells-fetcher_8cpp.html#a82174cd61ca4f0523a9cc463175df4cf" title=" " alt="" coords="1340,715,1444,741"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a920239f7451f5ae817d2e496d88065e2" title="フロア移動時、プレイヤーの移動先モンスターが既にいた場合ランダムな近隣に移動させる / When a monster is at a place where player will return," alt="" coords="1333,765,1451,792"/>
+<area shape="rect" href="cave_8cpp.html#aad3aa7818b160a3bd79fdb3ca2584bbf" title=" " alt="" coords="1319,284,1465,311"/>
+<area shape="rect" href="mind-ninja_8cpp.html#a0bb9e2fc92fc023955549549df3f24cf" title="入身処理 / &quot;Rush Attack&quot; routine for Samurai or Ninja" alt="" coords="1347,461,1437,488"/>
+<area shape="rect" href="mind-force-trainer_8cpp.html#ac8b774243f411e2c45b48476e1296374" title="衝波" alt="" coords="1343,816,1441,843"/>
+<area shape="rect" href="specified-summon_8cpp.html#ad7afcbe33b8054d1aa6109a8b37e9c7b" title="ナズグル戦隊召喚の処理。 /" alt="" coords="1083,867,1213,893"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a7d6635349783f11ffc8768b9db716753" title="モンスター魔法の実装 / Monster spells (attack player)" alt="" coords="1329,917,1455,944"/>
+<area shape="rect" href="wizard-spells_8cpp.html#af5919ee18af8d65ec16792a43282675b" title="ウィザードモード用モンスターの群れ生成 / Summon a horde of monsters" alt="" coords="1323,968,1461,995"/>
+<area shape="rect" href="cave-generator_8cpp.html#a677fcfde8c563a84f490206cdd1d8774" title=" " alt="" coords="221,157,376,184"/>
+<area shape="rect" href="floor-changer_8cpp.html#a4fc5172d58a596bc101d833ae8066b68" title=" " alt="" coords="229,107,368,133"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="246,5,351,32"/>
+<area shape="rect" href="wild_8cpp.html#ad2b39f3334022fd4e424dbc1029c79f4" title="広域マップの生成 / Build the wilderness area outside of the town." alt="" coords="243,56,354,83"/>
+<area shape="rect" href="cave-generator_8cpp.html#a9b7cb506f74a6ee856853b073a165ea3" title="ダンジョン生成のメインルーチン / Generate a new dungeon level" alt="" coords="51,157,127,184"/>
+<area shape="rect" href="floor-changer_8cpp.html#aa05b3eab27e3e7d6881085650a867eef" title=" " alt="" coords="5,107,173,133"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="27,5,151,32"/>
+<area shape="rect" href="floor-generator_8cpp.html#ac118aa928b4521013e62c16a0bc6b28f" title="ダンジョンのランダムフロアを生成する / Generates a random dungeon level &#45;RAK&#45; @parama player_ptr プレーヤーへの参照ポインタ" alt="" coords="38,56,141,83"/>
+<area shape="rect" href="chest_8cpp.html#a15fe189e236398690182db36a2c28a9b" title="箱のトラップ処理 / Chests have traps too." alt="" coords="1107,563,1189,589"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#a5e8d54fe79ddf86d8f253ae4a6e844d6" title="箱を開ける実行処理 / Attempt to open the given chest at the given location" alt="" coords="851,613,969,640"/>
+<area shape="rect" href="open-close-execution_8cpp.html#a7ae101c2ede52c77b602e7a195815c3e" title="箱のトラップを解除する実行処理 / Perform the basic &quot;disarm&quot; command" alt="" coords="846,563,974,589"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="871,512,949,539"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="653,512,738,539"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="646,563,745,589"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="635,613,756,640"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="241,715,357,741"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="249,208,349,235"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="618,309,773,336"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="424,385,548,412"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="596,461,795,488"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="245,461,352,488"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="627,411,764,437"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="449,664,523,691"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="651,715,739,741"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a092e95632a8987f70d45586dfe3d522f" title=" " alt="" coords="1093,765,1203,792"/>
+<area shape="rect" href="monster-generator_8cpp.html#a5771512eb9a80e12f614653ce4cf36c2" title="ダンジョンの主生成を試みる / Put the Guardian" alt="" coords="643,157,748,184"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="1087,411,1209,437"/>
+<area shape="rect" href="monster-generator_8cpp.html#a6475b2ac50800fa644c25e145fb3dda3" title="モンスター1体を目標地点に可能な限り近い位置に生成する / improved version of scatter() for place monster" alt="" coords="1101,309,1195,336"/>
+<area shape="rect" href="monster-generator_8cpp.html#a75f22366aa0266c858e15d023f9bb91b" title="一般的なモンスター生成処理のサブルーチン / Attempt to place a monster of the given race at the given location" alt="" coords="843,208,977,235"/>
+<area shape="rect" href="monster-generator_8cpp.html#a7f34ce3e6f1935352c4d961a5cc5a8b6" title="モンスターを目標地点に集団生成する / Attempt to place a &quot;group&quot; of monsters around the given location" alt="" coords="1075,259,1221,285"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a171b6fd602a2c8d672ccd9772e5323e1" title="モンスター死亡時の特殊処理switch (一般的な処理もdefaultで実施)" alt="" coords="1099,360,1197,387"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a57952d1fa5552cef4c9ba52ff967757f" title=" " alt="" coords="1062,968,1234,995"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a99d3aaa6f05f111ace289f0d99759700" title=" " alt="" coords="1085,1019,1211,1045"/>
+<area shape="rect" href="mspell-special_8cpp.html#a687af24a85011574ed6b0878a26951e8" title="特殊な行動を取るモンスターの具体的な行動定義 (r_infoのSPECIALフラグ)" alt="" coords="1025,917,1271,944"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aad3aa7818b160a3bd79fdb3ca2584bbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad3aa7818b160a3bd79fdb3ca2584bbf">&#9670;&nbsp;</a></span>is_cave_empty_bold2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> is_cave_empty_bold2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_aad3aa7818b160a3bd79fdb3ca2584bbf_cgraph.png" border="0" usemap="#acave_8cpp_aad3aa7818b160a3bd79fdb3ca2584bbf_cgraph" alt=""/></div>
+<map name="acave_8cpp_aad3aa7818b160a3bd79fdb3ca2584bbf_cgraph" id="acave_8cpp_aad3aa7818b160a3bd79fdb3ca2584bbf_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,152,57"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="387,5,521,32"/>
+<area shape="rect" href="cave_8cpp.html#abf1b6aff1aa303afd2b72225c7abbcee" title=" " alt="" coords="200,56,339,83"/>
+<area shape="rect" href="cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="410,56,498,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_aad3aa7818b160a3bd79fdb3ca2584bbf_icgraph.png" border="0" usemap="#acave_8cpp_aad3aa7818b160a3bd79fdb3ca2584bbf_icgraph" alt=""/></div>
+<map name="acave_8cpp_aad3aa7818b160a3bd79fdb3ca2584bbf_icgraph" id="acave_8cpp_aad3aa7818b160a3bd79fdb3ca2584bbf_icgraph">
+<area shape="rect" title=" " alt="" coords="1559,375,1705,401"/>
+<area shape="rect" href="monster-generator_8cpp.html#a5771512eb9a80e12f614653ce4cf36c2" title="ダンジョンの主生成を試みる / Put the Guardian" alt="" coords="995,223,1100,249"/>
+<area shape="rect" href="monster-generator_8cpp.html#a337e4104356fdcc868464def8b309c5b" title="ダンジョンの初期配置モンスターを生成1回生成する / Attempt to allocate a random monster in the dungeon." alt="" coords="801,273,903,300"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="791,476,913,503"/>
+<area shape="rect" href="monster-generator_8cpp.html#a6475b2ac50800fa644c25e145fb3dda3" title="モンスター1体を目標地点に可能な限り近い位置に生成する / improved version of scatter() for place monster" alt="" coords="1201,413,1296,440"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a171b6fd602a2c8d672ccd9772e5323e1" title="モンスター死亡時の特殊処理switch (一般的な処理もdefaultで実施)" alt="" coords="803,527,901,553"/>
+<area shape="rect" href="monster-generator_8cpp.html#a75f22366aa0266c858e15d023f9bb91b" title="一般的なモンスター生成処理のサブルーチン / Attempt to place a monster of the given race at the given location" alt="" coords="1181,337,1316,364"/>
+<area shape="rect" href="monster-generator_8cpp.html#a7f34ce3e6f1935352c4d961a5cc5a8b6" title="モンスターを目標地点に集団生成する / Attempt to place a &quot;group&quot; of monsters around the given location" alt="" coords="1364,375,1511,401"/>
+<area shape="rect" href="cave-generator_8cpp.html#a677fcfde8c563a84f490206cdd1d8774" title=" " alt="" coords="588,223,743,249"/>
+<area shape="rect" href="floor-changer_8cpp.html#a4fc5172d58a596bc101d833ae8066b68" title=" " alt="" coords="596,280,735,307"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="613,343,718,369"/>
+<area shape="rect" href="wild_8cpp.html#ad2b39f3334022fd4e424dbc1029c79f4" title="広域マップの生成 / Build the wilderness area outside of the town." alt="" coords="610,419,721,445"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="627,476,704,503"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,83,274,109"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,451,281,477"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,527,501,553"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,273,121,300"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,147,113,173"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,577,518,604"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,653,293,680"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,729,540,756"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,349,117,376"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,780,490,807"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,679,509,705"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,223,269,249"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,273,485,300"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,831,491,857"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,147,286,173"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,121,505,148"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,476,488,503"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,881,516,908"/>
+<area shape="rect" href="monster-generator_8cpp.html#a0b58eeb5b4f59e773ec70d80aa62976d" title="モンスターを増殖生成する / Let the given monster attempt to reproduce." alt="" coords="987,375,1108,401"/>
+<area shape="rect" href="monster-summon_8cpp.html#a9e13da0472ca86a16d8c3a8359e38ea6" title="特定モンスター種族を召喚により生成する / A &quot;dangerous&quot; function, creates a pet of the specified type" alt="" coords="961,425,1133,452"/>
+<area shape="rect" href="monster-summon_8cpp.html#a6e66d06ca9502871c59a2a58c15708e5" title="モンスターを召喚により配置する / Place a monster (of the specified &quot;type&quot;) near the given location." alt="" coords="986,324,1109,351"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af3ebcc730bf3e9662adef8c0a4b49903"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3ebcc730bf3e9662adef8c0a4b49903">&#9670;&nbsp;</a></span>pattern_tile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> pattern_tile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_af3ebcc730bf3e9662adef8c0a4b49903_cgraph.png" border="0" usemap="#acave_8cpp_af3ebcc730bf3e9662adef8c0a4b49903_cgraph" alt=""/></div>
+<map name="acave_8cpp_af3ebcc730bf3e9662adef8c0a4b49903_cgraph" id="acave_8cpp_af3ebcc730bf3e9662adef8c0a4b49903_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,92,32"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="140,5,275,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_af3ebcc730bf3e9662adef8c0a4b49903_icgraph.png" border="0" usemap="#acave_8cpp_af3ebcc730bf3e9662adef8c0a4b49903_icgraph" alt=""/></div>
+<map name="acave_8cpp_af3ebcc730bf3e9662adef8c0a4b49903_icgraph" id="acave_8cpp_af3ebcc730bf3e9662adef8c0a4b49903_icgraph">
+<area shape="rect" title=" " alt="" coords="1069,867,1156,893"/>
+<area shape="rect" href="object-allocator_8cpp.html#af41f012db4dbfa245e0e8deab25e2f28" title="alloc_stairs()の補助として指定の位置に階段を生成できるかの判定を行う / Helper function for alloc_stairs()." alt="" coords="896,95,1012,121"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="911,816,997,843"/>
+<area shape="rect" href="spells-fetcher_8cpp.html#a82174cd61ca4f0523a9cc463175df4cf" title=" " alt="" coords="902,867,1006,893"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a920239f7451f5ae817d2e496d88065e2" title="フロア移動時、プレイヤーの移動先モンスターが既にいた場合ランダムな近隣に移動させる / When a monster is at a place where player will return," alt="" coords="895,917,1013,944"/>
+<area shape="rect" href="monster-generator_8cpp.html#a6475b2ac50800fa644c25e145fb3dda3" title="モンスター1体を目標地点に可能な限り近い位置に生成する / improved version of scatter() for place monster" alt="" coords="907,475,1001,501"/>
+<area shape="rect" href="pattern-walk_8cpp.html#ab1af315dceaa594ca567ad1cff7cf226" title="各種パターン地形上の特別な処理 / Returns TRUE if we are on the Pattern..." alt="" coords="701,1380,801,1407"/>
+<area shape="rect" href="one-monster-placer_8cpp.html#a06b69a037c778b7d072e1f68bc705926" title="モンスターを一体生成する / Attempt to place a monster of the given race at the given location." alt="" coords="887,1069,1021,1096"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a7d6635349783f11ffc8768b9db716753" title="モンスター魔法の実装 / Monster spells (attack player)" alt="" coords="688,183,815,209"/>
+<area shape="rect" href="player-status_8cpp.html#aa6d49b352e6c7b69fc01f0be27a5120d" title="種族アンバライトが出血時パターンの上に乗った際のペナルティ処理" alt="" coords="890,1019,1018,1045"/>
+<area shape="rect" href="object-allocator_8cpp.html#ad84db97d5cb2b341ed3d817f061c84da" title="外壁に隣接させて階段を生成する / Places some staircases near walls" alt="" coords="707,31,795,57"/>
+<area shape="rect" href="cave-generator_8cpp.html#a81376b86643f157e8763b5cda3e608e8" title=" " alt="" coords="437,31,550,57"/>
+<area shape="rect" href="cave-generator_8cpp.html#a0df4eaf807b15231f8070a6d7ea9e7b6" title=" " alt="" coords="164,5,303,32"/>
+<area shape="rect" href="activation-others_8cpp.html#a9b90dfddb03061f58f3689526fb96528" title=" " alt="" coords="683,740,820,767"/>
+<area shape="rect" href="spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="432,1060,555,1087"/>
+<area shape="rect" href="spells-trump_8cpp.html#a62ebe5c603d93fd2c11edcc6fc2b4caf" title="トランプ領域の「シャッフル」の効果をランダムに決めて処理する。" alt="" coords="5,1009,96,1036"/>
+<area shape="rect" href="spells-random_8cpp.html#ad3967ff26aec044a7b9dd0a553073fe3" title="運命の輪、並びにカオス的な効果の発動" alt="" coords="190,857,277,884"/>
+<area shape="rect" href="blood-curse_8cpp.html#ac0ecc46e48f607918b001bc2b08b561f" title=" " alt="" coords="415,908,571,935"/>
+<area shape="rect" href="mind-berserker_8cpp.html#a73db877ef674132d5c3149ed726ccf47" title="怒りの発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;berserker&#39;." alt="" coords="686,841,817,868"/>
+<area shape="rect" href="spells-summon_8cpp.html#ae25b9862f324f43e7bd22de4bba02963" title="「悪霊召喚」のランダムな効果を決定して処理する。" alt="" coords="427,385,559,412"/>
+<area shape="rect" href="spells-random_8cpp.html#a37a969b807fd2f1ce9399ed7851424c7" title="「ワンダー」のランダムな効果を決定して処理する。" alt="" coords="704,639,799,665"/>
+<area shape="rect" href="player-attack_8cpp.html#a4941cbce22aea0186f8fffa85dd4930a" title="地震を起こす" alt="" coords="687,791,815,817"/>
+<area shape="rect" href="melee-switcher_8cpp.html#a26526a37b98f5208b627891dcc405fa4" title=" " alt="" coords="673,943,830,985"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="688,1009,815,1036"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="695,1060,807,1087"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="437,436,550,463"/>
+<area shape="rect" href="mutation-execution_8cpp.html#a0c9c1052c587d71b683d8a700d9ae016" title="突然変異のレイシャル効果実装" alt="" coords="423,689,564,716"/>
+<area shape="rect" href="cmd-usestaff_8cpp.html#a4a284c2f2988d427dd6baac5fcf99fd6" title="杖の効果を発動する" alt="" coords="451,740,535,767"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a74d62708df45b643ad7193b43e5d053c" title="クラスパワーを実行" alt="" coords="664,436,839,463"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a5de1dfd64f941a47e81c3fb2c043a3e2" title=" " alt="" coords="678,1213,825,1254"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#aa3c6ea47d39b38e54711fcfdbca7f4b6" title="周辺破壊効果(プレイヤー中心)" alt="" coords="704,1161,799,1188"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="433,791,553,817"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="172,908,295,935"/>
+<area shape="rect" href="trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="201,959,266,985"/>
+<area shape="rect" href="monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="183,672,283,699"/>
+<area shape="rect" href="inventory-curse_8cpp.html#ac7a04f90d8b3a0ebdf4a37a38e9203dd" title=" " alt="" coords="164,1111,303,1137"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="178,1060,289,1087"/>
+<area shape="rect" href="player-attack_8cpp.html#a7a5d04133dc8285f590218cfa1f63780" title="プレイヤーの打撃処理サブルーチン / Player attacks a (poor, defenseless) creature &#45;RAK&#45;" alt="" coords="420,842,567,883"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3877284386fd0f7550d1bc35fc17b19c" title=" " alt="" coords="438,959,549,985"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a092e95632a8987f70d45586dfe3d522f" title=" " alt="" coords="696,1329,807,1356"/>
+<area shape="rect" href="monster-generator_8cpp.html#a0b58eeb5b4f59e773ec70d80aa62976d" title="モンスターを増殖生成する / Let the given monster attempt to reproduce." alt="" coords="691,233,812,260"/>
+<area shape="rect" href="monster-summon_8cpp.html#a9e13da0472ca86a16d8c3a8359e38ea6" title="特定モンスター種族を召喚により生成する / A &quot;dangerous&quot; function, creates a pet of the specified type" alt="" coords="665,284,837,311"/>
+<area shape="rect" href="monster-summon_8cpp.html#a6e66d06ca9502871c59a2a58c15708e5" title="モンスターを召喚により配置する / Place a monster (of the specified &quot;type&quot;) near the given location." alt="" coords="690,537,813,564"/>
+<area shape="rect" href="mspell-special_8cpp.html#a687af24a85011574ed6b0878a26951e8" title="特殊な行動を取るモンスターの具体的な行動定義 (r_infoのSPECIALフラグ)" alt="" coords="371,183,616,209"/>
+<area shape="rect" href="specified-summon_8cpp.html#ad7afcbe33b8054d1aa6109a8b37e9c7b" title="ナズグル戦隊召喚の処理。 /" alt="" coords="428,233,559,260"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a57952d1fa5552cef4c9ba52ff967757f" title=" " alt="" coords="407,81,579,108"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a99d3aaa6f05f111ace289f0d99759700" title=" " alt="" coords="430,132,557,159"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="144,81,323,108"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="154,132,313,159"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac69872aa54de3f8ee80b6f0f933ebbcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac69872aa54de3f8ee80b6f0f933ebbcd">&#9670;&nbsp;</a></span>player_bold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> player_bold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_ac69872aa54de3f8ee80b6f0f933ebbcd_icgraph.png" border="0" usemap="#acave_8cpp_ac69872aa54de3f8ee80b6f0f933ebbcd_icgraph" alt=""/></div>
+<map name="acave_8cpp_ac69872aa54de3f8ee80b6f0f933ebbcd_icgraph" id="acave_8cpp_ac69872aa54de3f8ee80b6f0f933ebbcd_icgraph">
+<area shape="rect" title=" " alt="" coords="1383,1087,1471,1113"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a5f4625552656aee45b62542787f7cd08" title=" " alt="" coords="381,87,499,113"/>
+<area shape="rect" href="effect-feature_8cpp.html#ab60eea66f4d858035803d331e84151cc" title="汎用的なビーム/ボルト/ボール系による地形効果処理 / We are called from &quot;project()&quot; to &quot;damage&quot; terrain features" alt="" coords="945,324,1043,351"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="594,359,655,385"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#ab738ba0734204e55707411a35acde85c" title="元素魔法呪文を実行する" alt="" coords="373,283,507,309"/>
+<area shape="rect" href="mind-ninja_8cpp.html#ae73c136f3f19a9d9d3691f8894bfad97" title="忍術の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;ninja&#39;." alt="" coords="383,589,497,616"/>
+<area shape="rect" href="effect-player_8cpp.html#a15c922eb8fc168c85e08a24a4c37ef35" title="反射・忍者の変わり身などでそもそも当たらない状況を判定する" alt="" coords="363,145,517,186"/>
+<area shape="rect" href="player-move_8cpp.html#ac637efbeba2a2fca5538ee13812b97bf" title="移動に伴うプレイヤーのステータス変化処理" alt="" coords="374,488,506,515"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="183,491,269,517"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#aa3c6ea47d39b38e54711fcfdbca7f4b6" title="周辺破壊効果(プレイヤー中心)" alt="" coords="5,384,100,411"/>
+<area shape="rect" href="spells-teleport_8cpp.html#a10005e098869cd45941c7a4201fbcb89" title="プレイヤーのテレポート先選定と移動処理 / Teleport the player to a location up to &quot;dis&quot; grids away." alt="" coords="159,440,293,467"/>
+<area shape="rect" href="monster-move_8cpp.html#a9d83b8dee9966a1ba1f1871fe95d8e0a" title="爆発のルーンを処理する" alt="" coords="360,224,520,251"/>
+<area shape="rect" href="mspell-special_8cpp.html#a46257436a8241552387fcfce42c8dd8e" title="BシンボルのRF6_SPECIALの処理。投げ落とす攻撃。 /" alt="" coords="361,1533,519,1560"/>
+<area shape="rect" href="spells-lite_8cpp.html#aea3ab2b77babe219cf83264064799121" title="スターライトの効果を発生させる" alt="" coords="406,539,474,565"/>
+<area shape="rect" href="object-allocator_8cpp.html#a89db4f576184ecd3a0777c85e1a1294d" title="フロア上のランダム位置に各種オブジェクトを配置する / Allocates some objects (using &quot;place&quot; and &quot;type&quot;)" alt="" coords="1186,691,1277,717"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a18d1785b5416dd0102f17af5a5e64339" title="モンスターが敵対モンスターに直接ブレスを当てることが可能かを判定する / Determine if a breath will hit the target." alt="" coords="576,1061,673,1088"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a967933565c13f95ea0500a0fd24d8021" title=" " alt="" coords="918,808,1070,835"/>
+<area shape="rect" href="mspell-checker_8cpp.html#ad7f823f0d59ae8876db5e23cc77f8b46" title="モンスターにとってボルト型魔法が有効な状態かを返す / Determine if a bolt spell will hit the player." alt="" coords="582,897,667,924"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a265a95d04381b6b6ac4e54b2d3803aa7" title="モンスター魔法の実装(対モンスター処理) / Monster spells (attack monster)" alt="" coords="578,960,671,987"/>
+<area shape="rect" href="mind-ninja_8cpp.html#a0bb9e2fc92fc023955549549df3f24cf" title="入身処理 / &quot;Rush Attack&quot; routine for Samurai or Ninja" alt="" coords="579,640,670,667"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a6730483ce19802de5ca2858b88b6e8c4" title=" " alt="" coords="1168,894,1295,935"/>
+<area shape="rect" href="grid_8cpp.html#a07eb34fe76bc09e5684d9d5de85be0aa" title="指定されたマスがモンスターのテレポート可能先かどうかを判定する。" alt="" coords="1128,1061,1335,1088"/>
+<area shape="rect" href="effect-feature_8cpp.html#ab737fe54000e9c290f3a9db846d89d6a" title=" " alt="" coords="1171,336,1292,363"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a23c849997d94ae1fcaccf58834a52a20" title="モンスターが使おうとする特技がプレイヤーに届くかどうかを返す" alt="" coords="1158,1163,1305,1189"/>
+<area shape="rect" href="target-describer_8cpp.html#a4312940df4901b4106f01a42b811449f" title=" " alt="" coords="1176,1213,1287,1240"/>
+<area shape="rect" href="spells-floor_8cpp.html#aff6b2287b85d21769fa6b05e3df35eaf" title="*破壊*処理を行う / The spell of destruction" alt="" coords="1183,1264,1280,1291"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#ae1190cadd5200d38fbfbde5c160bd2bb" title=" " alt="" coords="1156,1315,1307,1341"/>
+<area shape="rect" href="floor-object_8cpp.html#a62c807ef0af547704f7d1f6b825abbe5" title="生成済のオブジェクトをフロアの所定の位置に落とす。 Let an object fall to the ground at or near a location." alt="" coords="1192,1365,1271,1392"/>
+<area shape="rect" href="monster-attack-processor_8cpp.html#aa095f5ecccac0b28f47b8ddf95c88a54" title="モンスターの攻撃に関する処理" alt="" coords="1161,1417,1301,1458"/>
+<area shape="rect" href="monster-direction_8cpp.html#a2f5e9dbd436bb3c6db0d5c7f0bd666fd" title="モンスターが敵に接近するための方向を計算するメインルーチン Calculate the direction to the next enemy" alt="" coords="1178,1483,1285,1509"/>
+<area shape="rect" href="cave_8cpp.html#abf1b6aff1aa303afd2b72225c7abbcee" title=" " alt="" coords="721,691,860,717"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#ad1f0f3b1e09613dd611d055979e16079" title="モンスターが敵モンスターに行う打撃処理 / Hack, based on mon_take_hit..." alt="" coords="725,1533,857,1560"/>
+<area shape="rect" href="monster-info_8cpp.html#a7560ae7968cd1c5cfe0a084a1b74f474" title="指定された座標の地形をモンスターが踏破できるかどうかを返す Strictly check if monster can enter the grid" alt="" coords="1165,1635,1298,1661"/>
+<area shape="rect" href="effect-monster_8cpp.html#a0a84539a44ea3f6c5b601476c3959084" title="魔法効果がペットに及んだ時の処理" alt="" coords="1136,1685,1327,1712"/>
+<area shape="rect" href="monster-move_8cpp.html#aa741d7562a25e1250cd3c4a7ba14c948" title="守りのルーンによるモンスターの移動制限を処理する" alt="" coords="1149,1736,1313,1763"/>
+<area shape="rect" href="monster-move_8cpp.html#a7c0175a10a9e7f1d7c7edc63c6fd73a3" title="モンスターによる壁の透過・破壊を行う" alt="" coords="1183,1787,1280,1813"/>
+<area shape="rect" href="game-play_8cpp.html#a0bffa572634d1741bd84a1ab565841e2" title="フロア情報をゲームロード時に復帰" alt="" coords="1153,1837,1310,1864"/>
+<area shape="rect" href="run-execution_8cpp.html#af168900c990c8f45296e1cdf5780e627" title="継続的なダッシュ処理 / Take one step along the current &quot;run&quot; path" alt="" coords="1195,1888,1267,1915"/>
+<area shape="rect" href="main-window-util_8cpp.html#a3ab8e01c741c2a56691cee494bc7ce45" title=" " alt="" coords="1177,1939,1285,1965"/>
+<area shape="rect" href="monster-sweep-grid_8cpp.html#ac2c9d6b31d61645f0fdb4228484c7b23" title="モンスターがプレイヤーに向けて遠距離攻撃を行うことが可能なマスを走査する / Search spell castable grid" alt="" coords="1143,1989,1319,2016"/>
+<area shape="rect" href="target-preparation_8cpp.html#ad85892412e91792183fb0048b14f5d7f" title=" " alt="" coords="1168,2040,1295,2067"/>
+<area shape="rect" href="grid-selector_8cpp.html#a7db00eacc9a3dba741e67541ea55dab0" title="位置を指定するプロンプト" alt="" coords="1204,2091,1259,2117"/>
+<area shape="rect" href="grid_8cpp.html#adf9b44c11b18af0666ff2580ec2399d7" title=" " alt="" coords="1186,2141,1277,2168"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="166,87,286,113"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#ac5e475bf543027393672734eb9613bf6" title="鏡魔法「封魔結界」の効果処理" alt="" coords="744,261,837,288"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a90d73fb2b3347c19d770e69407dd6c3b" title="元素魔法呪文の詠唱を試み、成功なら詠唱し、失敗ならファンブルする" alt="" coords="148,308,304,335"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#addad41b5490f0e5440142f98ca58a0f9" title=" " alt="" coords="352,1061,528,1088"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="735,884,846,911"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a30ef387a791d4e4e8de0c441056943e0" title=" " alt="" coords="908,859,1080,885"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a32a097212154ab56f1a529ee83ff2559" title=" " alt="" coords="916,909,1072,936"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad140737a0660acfdbadc377c80a7df1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad140737a0660acfdbadc377c80a7df1b">&#9670;&nbsp;</a></span>player_has_los_bold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> player_has_los_bold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cave_8cpp_ad140737a0660acfdbadc377c80a7df1b_icgraph.png" border="0" usemap="#acave_8cpp_ad140737a0660acfdbadc377c80a7df1b_icgraph" alt=""/></div>
+<map name="acave_8cpp_ad140737a0660acfdbadc377c80a7df1b_icgraph" id="acave_8cpp_ad140737a0660acfdbadc377c80a7df1b_icgraph">
+<area shape="rect" title=" " alt="" coords="1620,747,1760,773"/>
+<area shape="rect" href="effect-feature_8cpp.html#ab60eea66f4d858035803d331e84151cc" title="汎用的なビーム/ボルト/ボール系による地形効果処理 / We are called from &quot;project()&quot; to &quot;damage&quot; terrain features" alt="" coords="585,772,684,799"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#ac5e475bf543027393672734eb9613bf6" title="鏡魔法「封魔結界」の効果処理" alt="" coords="407,519,500,545"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="423,747,484,773"/>
+<area shape="rect" href="spells-sight_8cpp.html#a47482081184d0a1282de835163dc6e62" title="視界内モンスターに魔法効果を与える / Apply a &quot;project()&quot; directly to all viewable monsters" alt="" coords="205,823,311,849"/>
+<area shape="rect" href="effect-item_8cpp.html#a535ce53ec7f78b19e787e4289d5dec3f" title="汎用的なビーム/ボルト/ボール系によるアイテムオブジェクトへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="592,519,677,545"/>
+<area shape="rect" href="spells-sight_8cpp.html#a38649e896637efab6c1c96d71f870948" title="視界内モンスターを怒らせる処理 / Wake up all monsters, and speed up &quot;los&quot; monsters." alt="" coords="384,47,523,73"/>
+<area shape="rect" href="cmd-mane_8cpp.html#a2d4bde2652a51ec0fd7361ae48a34da2" title="ものまね処理の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;imitator&#39;." alt="" coords="217,148,299,175"/>
+<area shape="rect" href="blue-magic-caster_8cpp.html#a08c1ae48dbd01ee6fa1d4a6cac5c7a6a" title=" " alt="" coords="1428,401,1547,428"/>
+<area shape="rect" href="mind-force-trainer_8cpp.html#a08ed4ef4f0eccabdb4a8348948298fb5" title="練気術の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;ForceTrainer&#39;." alt="" coords="1429,452,1545,479"/>
+<area shape="rect" href="mspell-attack_8cpp.html#af60bde2c5c4891d7808a7378ff183754" title=" " alt="" coords="1408,351,1567,377"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a966fa20c8558fa0beff9bf3f87e2a138" title=" " alt="" coords="1408,503,1567,545"/>
+<area shape="rect" href="monster-processor_8cpp.html#a3ba7a048819736435a255d41a8769b6e" title="後続のモンスター処理が必要かどうか判定する (要調査)" alt="" coords="1403,569,1572,596"/>
+<area shape="rect" href="monster-update_8cpp.html#accf491d0422881fe5a626cfeafed9c69" title="テレパシー・赤外線視力・可視透明によってモンスターを感知できるかどうかの判定" alt="" coords="959,1081,1106,1122"/>
+<area shape="rect" href="spells-fetcher_8cpp.html#a82174cd61ca4f0523a9cc463175df4cf" title=" " alt="" coords="583,975,687,1001"/>
+<area shape="rect" href="monster-runaway_8cpp.html#ae0ab9c0e64c33e5182a652853d8df197" title="モンスターの逃走に関する処理" alt="" coords="1428,772,1547,799"/>
+<area shape="rect" href="blue-magic-caster_8cpp.html#a3c1cbfff127ef6c812ff695d3d26e25b" title=" " alt="" coords="1408,823,1567,849"/>
+<area shape="rect" href="spells-fetcher_8cpp.html#a511a98f348296163f1a0bdfd6b9bae3b" title="アイテム引き寄せ処理 / Fetch an item (teleport it right underneath the caster)" alt="" coords="773,435,855,461"/>
+<area shape="rect" href="melee-spell-util_8cpp.html#a5a1ff731218e4523e52c99b88d26b03d" title=" " alt="" coords="944,823,1121,849"/>
+<area shape="rect" href="monster-object_8cpp.html#a9ef3ffafff4b487b19f9df8f26595911" title="モンスターがアイテムを拾うか壊す処理" alt="" coords="1191,924,1347,951"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="1415,1076,1559,1103"/>
+<area shape="rect" href="monster-status_8cpp.html#a443274a2f1e9d2595a1d600a6579b427" title="モンスターの各種状態値を時間経過により更新するサブルーチン" alt="" coords="929,1431,1136,1457"/>
+<area shape="rect" href="spells-sight_8cpp.html#a23bd0b66715a8270f8ab5c5f3686a4ff" title="周辺モンスターを調査する / Probe nearby monsters" alt="" coords="1455,1127,1519,1153"/>
+<area shape="rect" href="monster-move_8cpp.html#a1d446df3c7f8b4b4631677cc8f7b7363" title="モンスターを喋らせたり足音を立てたりする" alt="" coords="1411,1177,1563,1204"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a682fbdb6c220cc503b8c072b69548f5b" title="モンスターの時間停止処理" alt="" coords="1411,1228,1563,1255"/>
+<area shape="rect" href="mspell-learn-checker_8cpp.html#add67f69d4654ad42044ff3d6f1fadfc5" title="モンスターの唱えた呪文を青魔法で学習できるか判定する /" alt="" coords="1433,1279,1541,1305"/>
+<area shape="rect" href="monster-sweep-grid_8cpp.html#a616c02dc6ef1e1be8644ccbbec06a4d0" title="モンスターがプレイヤーに向けて接近することが可能なマスを走査する / Choose the &quot;best&quot; direction for &quot;flowing&quot;" alt="" coords="1417,1329,1558,1356"/>
+<area shape="rect" href="spells-world_8cpp.html#aace208d0177b72c716c1168eeb7f8668" title=" " alt="" coords="966,148,1099,175"/>
+<area shape="rect" href="floor-util_8cpp.html#a2d31bc446ebe45686459b7cf678fb645" title=" " alt="" coords="1438,1481,1537,1508"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#af68e01e109fc7fb8b1e131a7131ed4c5" title="鏡魔法の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;Mirror magic&#39;." alt="" coords="197,620,319,647"/>
+<area shape="rect" href="spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="197,569,319,596"/>
+<area shape="rect" href="trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="36,645,101,672"/>
+<area shape="rect" href="blood-curse_8cpp.html#ac0ecc46e48f607918b001bc2b08b561f" title=" " alt="" coords="180,371,336,397"/>
+<area shape="rect" href="mind-mindcrafter_8cpp.html#a8da07b1c4907a85709c965d06d9038cb" title="超能力の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;mindcrafter&#39;." alt="" coords="182,671,334,697"/>
+<area shape="rect" href="mind-ninja_8cpp.html#ae73c136f3f19a9d9d3691f8894bfad97" title="忍術の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;ninja&#39;." alt="" coords="201,924,315,951"/>
+<area shape="rect" href="grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="204,975,312,1001"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="5,823,132,849"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="35,1051,102,1077"/>
+<area shape="rect" href="movement-execution_8cpp.html#a586b9fe6bc207183655cdfb8dcfaf464" title="該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す / Move player in the given direction, with the given &quot;pickup&quot; flag." alt="" coords="14,1316,123,1343"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="208,47,308,73"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ab50ab49708e55a42a4caeb03490bdf93" title="モンスターの特殊技能メインルーチン / Creatures can cast spells, shoot missiles, and breathe." alt="" coords="1204,351,1335,377"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a8665adb3738f60520d0b3f4cec4aeafc" title=" " alt="" coords="1195,511,1344,537"/>
+<area shape="rect" href="monster-processor_8cpp.html#a5a5170bbc427f3c8dfad442f40e2a11b" title="フロア内のモンスターについてターン終了時の処理を繰り返す" alt="" coords="1186,569,1353,596"/>
+<area shape="rect" href="monster-update_8cpp.html#a2813cd48be3165ceff9b8c77da15da3f" title="モンスターの各情報を更新する / This function updates the monster record of the given monster" alt="" coords="757,1088,871,1115"/>
+<area shape="rect" href="monster-status_8cpp.html#a5816c48586498ed28b6080bb6ebb5e45" title="モンスターの経験値取得処理" alt="" coords="571,1215,699,1241"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="747,823,881,849"/>
+<area shape="rect" href="monster-update_8cpp.html#a3a396e1d3462438fbdbf1d6726ddf10b" title=" " alt="" coords="1215,1228,1324,1255"/>
+<area shape="rect" href="cmd-throw_8cpp.html#af3a8eb4a3cc4a277a37ebb2b81410c30" title=" " alt="" coords="1184,1127,1355,1153"/>
+<area shape="rect" href="target-describer_8cpp.html#a91974c989701cf617f42e1ecddfbadf5" title="xまたはlで指定したグリッドにあるアイテムやモンスターの説明を記述する" alt="" coords="1220,1177,1319,1204"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="1236,1076,1303,1103"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分09秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

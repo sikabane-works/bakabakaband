@@ -1,0 +1,773 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/floor/tunnel-generator.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a620f8a6b723e397390ae5ca00f5aa8c.html">floor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">tunnel-generator.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="tunnel-generator_8h_source.html">floor/tunnel-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cave_8h_source.html">floor/cave.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon-tunnel-util_8h_source.html">floor/dungeon-tunnel-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="geometry_8h_source.html">floor/geometry.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon-data-definition_8h_source.html">system/dungeon-data-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+tunnel-generator.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tunnel-generator_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2tunnel-generator_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2tunnel-generator_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2tunnel-generator_8cpp">
+<area shape="rect" title=" " alt="" coords="941,5,1129,61"/>
+<area shape="rect" href="tunnel-generator_8h.html" title=" " alt="" coords="609,199,764,225"/>
+<area shape="rect" href="cave_8h.html" title=" " alt="" coords="789,199,875,225"/>
+<area shape="rect" href="dungeon-tunnel-util_8h.html" title=" " alt="" coords="1483,109,1621,151"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="900,199,1015,225"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="995,117,1074,143"/>
+<area shape="rect" href="dungeon-data-definition_8h.html" title=" " alt="" coords="1099,109,1245,151"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1270,117,1458,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="627,281,757,307"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="5,370,96,397"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="120,370,211,397"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="235,370,333,397"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="357,370,456,397"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="481,370,581,397"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="605,370,779,397"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="804,370,945,397"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,370,1116,397"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="994,452,1113,479"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1142,452,1253,479"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1237,273,1382,315"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="1241,363,1385,404"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1573,363,1729,404"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="1409,363,1548,404"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1196,199,1375,225"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1458,199,1609,225"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a29f3f0b8195639b4be9e34026fa8c3f8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tunnel-generator_8cpp.html#a29f3f0b8195639b4be9e34026fa8c3f8">rand_dir</a> (<a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *rdir, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *cdir)</td></tr>
+<tr class="memdesc:a29f3f0b8195639b4be9e34026fa8c3f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">build_tunnel用に通路を掘るための方向をランダムに決める / Pick a random direction  <a href="tunnel-generator_8cpp.html#a29f3f0b8195639b4be9e34026fa8c3f8">[詳解]</a><br /></td></tr>
+<tr class="separator:a29f3f0b8195639b4be9e34026fa8c3f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af99f26848a42015c631879d4c25aa3c3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tunnel-generator_8cpp.html#af99f26848a42015c631879d4c25aa3c3">correct_dir</a> (<a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *rdir, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *cdir, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y2, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x2)</td></tr>
+<tr class="memdesc:af99f26848a42015c631879d4c25aa3c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">build_tunnel用に通路を掘るための方向を位置関係通りに決める / Always picks a correct direction  <a href="tunnel-generator_8cpp.html#af99f26848a42015c631879d4c25aa3c3">[詳解]</a><br /></td></tr>
+<tr class="separator:af99f26848a42015c631879d4c25aa3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ed0a728fe143141daa507e27efc28a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tunnel-generator_8cpp.html#a0ed0a728fe143141daa507e27efc28a9">build_tunnel</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structdun__data__type.html">dun_data_type</a> *dd_ptr, <a class="el" href="structdt__type.html">dt_type</a> *dt_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> row1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> col1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> row2, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> col2)</td></tr>
+<tr class="memdesc:a0ed0a728fe143141daa507e27efc28a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">部屋間のトンネルを生成する / Constructs a tunnel between two points  <a href="tunnel-generator_8cpp.html#a0ed0a728fe143141daa507e27efc28a9">[詳解]</a><br /></td></tr>
+<tr class="separator:a0ed0a728fe143141daa507e27efc28a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a188349d5d7edf4347c3d13b9c582d4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tunnel-generator_8cpp.html#a3a188349d5d7edf4347c3d13b9c582d4">set_tunnel</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structdun__data__type.html">dun_data_type</a> *dd_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *x, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *y, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> affectwall)</td></tr>
+<tr class="memdesc:a3a188349d5d7edf4347c3d13b9c582d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">トンネル生成のための基準点を指定する。  <a href="tunnel-generator_8cpp.html#a3a188349d5d7edf4347c3d13b9c582d4">[詳解]</a><br /></td></tr>
+<tr class="separator:a3a188349d5d7edf4347c3d13b9c582d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48277112421acba57a4dbcc8e4d425cc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tunnel-generator_8cpp.html#a48277112421acba57a4dbcc8e4d425cc">create_cata_tunnel</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structdun__data__type.html">dun_data_type</a> *dd_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y)</td></tr>
+<tr class="memdesc:a48277112421acba57a4dbcc8e4d425cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">外壁を削って「カタコンベ状」の通路を作成する / This routine creates the catacomb-like tunnels by removing extra rock.  <a href="tunnel-generator_8cpp.html#a48277112421acba57a4dbcc8e4d425cc">[詳解]</a><br /></td></tr>
+<tr class="separator:a48277112421acba57a4dbcc8e4d425cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea72248c0d2fa68d855093eabd0e5429"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tunnel-generator_8cpp.html#aea72248c0d2fa68d855093eabd0e5429">short_seg_hack</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structdun__data__type.html">dun_data_type</a> *dd_ptr, const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1, const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x2, const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y2, int type, int count, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> *fail)</td></tr>
+<tr class="memdesc:aea72248c0d2fa68d855093eabd0e5429"><td class="mdescLeft">&#160;</td><td class="mdescRight">トンネル生成処理（詳細調査中）/ This routine does the bulk of the work in creating the new types of tunnels.  <a href="tunnel-generator_8cpp.html#aea72248c0d2fa68d855093eabd0e5429">[詳解]</a><br /></td></tr>
+<tr class="separator:aea72248c0d2fa68d855093eabd0e5429"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77f441246d4e3a7711f91fed4d5e79a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tunnel-generator_8cpp.html#a77f441246d4e3a7711f91fed4d5e79a1">build_tunnel2</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structdun__data__type.html">dun_data_type</a> *dd_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x2, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y2, int type, int cutoff)</td></tr>
+<tr class="memdesc:a77f441246d4e3a7711f91fed4d5e79a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">特定の壁(永久壁など)を避けながら部屋間の通路を作成する / This routine maps a path from (x1, y1) to (x2, y2) avoiding SOLID walls.  <a href="tunnel-generator_8cpp.html#a77f441246d4e3a7711f91fed4d5e79a1">[詳解]</a><br /></td></tr>
+<tr class="separator:a77f441246d4e3a7711f91fed4d5e79a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a0ed0a728fe143141daa507e27efc28a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ed0a728fe143141daa507e27efc28a9">&#9670;&nbsp;</a></span>build_tunnel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> build_tunnel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdun__data__type.html">dun_data_type</a> *&#160;</td>
+          <td class="paramname"><em>dd_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdt__type.html">dt_type</a> *&#160;</td>
+          <td class="paramname"><em>dt_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>row1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>col1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>row2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>col2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>部屋間のトンネルを生成する / Constructs a tunnel between two points </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">row1</td><td>始点Y座標 </td></tr>
+    <tr><td class="paramname">col1</td><td>始点X座標 </td></tr>
+    <tr><td class="paramname">row2</td><td>終点Y座標 </td></tr>
+    <tr><td class="paramname">col2</td><td>終点X座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>生成に成功したらTRUEを返す </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tunnel-generator_8cpp_a0ed0a728fe143141daa507e27efc28a9_cgraph.png" border="0" usemap="#atunnel-generator_8cpp_a0ed0a728fe143141daa507e27efc28a9_cgraph" alt=""/></div>
+<map name="atunnel-generator_8cpp_a0ed0a728fe143141daa507e27efc28a9_cgraph" id="atunnel-generator_8cpp_a0ed0a728fe143141daa507e27efc28a9_cgraph">
+<area shape="rect" title="部屋間のトンネルを生成する / Constructs a tunnel between two points" alt="" coords="5,81,96,108"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#af99f26848a42015c631879d4c25aa3c3" title="build_tunnel用に通路を掘るための方向を位置関係通りに決める / Always picks a correct direction" alt="" coords="145,5,227,32"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="145,56,227,83"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="144,107,228,133"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#a29f3f0b8195639b4be9e34026fa8c3f8" title="build_tunnel用に通路を掘るための方向をランダムに決める / Pick a random direction" alt="" coords="152,157,220,184"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="276,107,357,133"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="405,56,540,83"/>
+<area shape="rect" href="grid_8cpp.html#a8ea39c3dfc40de144095718ade7e2ec9" title=" " alt="" coords="433,107,512,133"/>
+<area shape="rect" href="feature_8cpp.html#ab6f2d85244b993c3996dafd0eac6056e" title=" " alt="" coords="417,157,529,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tunnel-generator_8cpp_a0ed0a728fe143141daa507e27efc28a9_icgraph.png" border="0" usemap="#atunnel-generator_8cpp_a0ed0a728fe143141daa507e27efc28a9_icgraph" alt=""/></div>
+<map name="atunnel-generator_8cpp_a0ed0a728fe143141daa507e27efc28a9_icgraph" id="atunnel-generator_8cpp_a0ed0a728fe143141daa507e27efc28a9_icgraph">
+<area shape="rect" title="部屋間のトンネルを生成する / Constructs a tunnel between two points" alt="" coords="549,5,640,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#ae2182c98f3049e9b95450c58250ec22b" title=" " alt="" coords="319,5,501,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a16f434086dd589224af75161bf087b74" title=" " alt="" coords="167,5,271,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a81376b86643f157e8763b5cda3e608e8" title=" " alt="" coords="5,5,119,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a77f441246d4e3a7711f91fed4d5e79a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77f441246d4e3a7711f91fed4d5e79a1">&#9670;&nbsp;</a></span>build_tunnel2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> build_tunnel2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdun__data__type.html">dun_data_type</a> *&#160;</td>
+          <td class="paramname"><em>dd_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cutoff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>特定の壁(永久壁など)を避けながら部屋間の通路を作成する / This routine maps a path from (x1, y1) to (x2, y2) avoiding SOLID walls. </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000039">todo:</a></b></dt><dd>詳細要調査 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tunnel-generator_8cpp_a77f441246d4e3a7711f91fed4d5e79a1_cgraph.png" border="0" usemap="#atunnel-generator_8cpp_a77f441246d4e3a7711f91fed4d5e79a1_cgraph" alt=""/></div>
+<map name="atunnel-generator_8cpp_a77f441246d4e3a7711f91fed4d5e79a1_cgraph" id="atunnel-generator_8cpp_a77f441246d4e3a7711f91fed4d5e79a1_cgraph">
+<area shape="rect" title="特定の壁(永久壁など)を避けながら部屋間の通路を作成する / This routine maps a path from (x1, y1) to (x2, y2) avoiding SOLID wall..." alt="" coords="5,72,104,99"/>
+<area shape="rect" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="345,72,416,99"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="627,22,708,48"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="625,174,709,200"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#a3a188349d5d7edf4347c3d13b9c582d4" title="トンネル生成のための基準点を指定する。" alt="" coords="495,123,577,150"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#aea72248c0d2fa68d855093eabd0e5429" title="トンネル生成処理（詳細調査中）/ This routine does the bulk of the work in creating the new types of tunnels." alt="" coords="152,123,267,150"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="757,148,839,175"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="887,98,1021,124"/>
+<area shape="rect" href="grid_8cpp.html#a8ea39c3dfc40de144095718ade7e2ec9" title=" " alt="" coords="915,148,993,175"/>
+<area shape="rect" href="feature_8cpp.html#ab6f2d85244b993c3996dafd0eac6056e" title=" " alt="" coords="898,199,1010,226"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#a48277112421acba57a4dbcc8e4d425cc" title="外壁を削って「カタコンベ状」の通路を作成する / This routine creates the catacomb&#45;like tunnels by removing extra rock." alt="" coords="315,174,447,200"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tunnel-generator_8cpp_a77f441246d4e3a7711f91fed4d5e79a1_icgraph.png" border="0" usemap="#atunnel-generator_8cpp_a77f441246d4e3a7711f91fed4d5e79a1_icgraph" alt=""/></div>
+<map name="atunnel-generator_8cpp_a77f441246d4e3a7711f91fed4d5e79a1_icgraph" id="atunnel-generator_8cpp_a77f441246d4e3a7711f91fed4d5e79a1_icgraph">
+<area shape="rect" title="特定の壁(永久壁など)を避けながら部屋間の通路を作成する / This routine maps a path from (x1, y1) to (x2, y2) avoiding SOLID wall..." alt="" coords="549,5,648,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#ae2182c98f3049e9b95450c58250ec22b" title=" " alt="" coords="319,5,501,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a16f434086dd589224af75161bf087b74" title=" " alt="" coords="167,5,271,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a81376b86643f157e8763b5cda3e608e8" title=" " alt="" coords="5,5,119,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af99f26848a42015c631879d4c25aa3c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af99f26848a42015c631879d4c25aa3c3">&#9670;&nbsp;</a></span>correct_dir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void correct_dir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *&#160;</td>
+          <td class="paramname"><em>rdir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *&#160;</td>
+          <td class="paramname"><em>cdir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>build_tunnel用に通路を掘るための方向を位置関係通りに決める / Always picks a correct direction </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rdir</td><td>Y方向に取るべきベクトル値を返す参照ポインタ </td></tr>
+    <tr><td class="paramname">cdir</td><td>X方向に取るべきベクトル値を返す参照ポインタ </td></tr>
+    <tr><td class="paramname">y1</td><td>始点Y座標 </td></tr>
+    <tr><td class="paramname">x1</td><td>始点X座標 </td></tr>
+    <tr><td class="paramname">y2</td><td>終点Y座標 </td></tr>
+    <tr><td class="paramname">x2</td><td>終点X座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tunnel-generator_8cpp_af99f26848a42015c631879d4c25aa3c3_icgraph.png" border="0" usemap="#atunnel-generator_8cpp_af99f26848a42015c631879d4c25aa3c3_icgraph" alt=""/></div>
+<map name="atunnel-generator_8cpp_af99f26848a42015c631879d4c25aa3c3_icgraph" id="atunnel-generator_8cpp_af99f26848a42015c631879d4c25aa3c3_icgraph">
+<area shape="rect" title="build_tunnel用に通路を掘るための方向を位置関係通りに決める / Always picks a correct direction" alt="" coords="527,5,609,32"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#a0ed0a728fe143141daa507e27efc28a9" title="部屋間のトンネルを生成する / Constructs a tunnel between two points" alt="" coords="388,5,479,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#ae2182c98f3049e9b95450c58250ec22b" title=" " alt="" coords="157,5,340,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a16f434086dd589224af75161bf087b74" title=" " alt="" coords="5,5,109,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a48277112421acba57a4dbcc8e4d425cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48277112421acba57a4dbcc8e4d425cc">&#9670;&nbsp;</a></span>create_cata_tunnel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void create_cata_tunnel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdun__data__type.html">dun_data_type</a> *&#160;</td>
+          <td class="paramname"><em>dd_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>外壁を削って「カタコンベ状」の通路を作成する / This routine creates the catacomb-like tunnels by removing extra rock. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">x</td><td>基準点のX座標 </td></tr>
+    <tr><td class="paramname">y</td><td>基準点のY座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tunnel-generator_8cpp_a48277112421acba57a4dbcc8e4d425cc_cgraph.png" border="0" usemap="#atunnel-generator_8cpp_a48277112421acba57a4dbcc8e4d425cc_cgraph" alt=""/></div>
+<map name="atunnel-generator_8cpp_a48277112421acba57a4dbcc8e4d425cc_cgraph" id="atunnel-generator_8cpp_a48277112421acba57a4dbcc8e4d425cc_cgraph">
+<area shape="rect" title="外壁を削って「カタコンベ状」の通路を作成する / This routine creates the catacomb&#45;like tunnels by removing extra rock." alt="" coords="5,56,137,83"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#a3a188349d5d7edf4347c3d13b9c582d4" title="トンネル生成のための基準点を指定する。" alt="" coords="185,56,268,83"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="317,5,399,32"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="316,56,400,83"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="448,81,529,108"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tunnel-generator_8cpp_a48277112421acba57a4dbcc8e4d425cc_icgraph.png" border="0" usemap="#atunnel-generator_8cpp_a48277112421acba57a4dbcc8e4d425cc_icgraph" alt=""/></div>
+<map name="atunnel-generator_8cpp_a48277112421acba57a4dbcc8e4d425cc_icgraph" id="atunnel-generator_8cpp_a48277112421acba57a4dbcc8e4d425cc_icgraph">
+<area shape="rect" title="外壁を削って「カタコンベ状」の通路を作成する / This routine creates the catacomb&#45;like tunnels by removing extra rock." alt="" coords="545,5,677,32"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#aea72248c0d2fa68d855093eabd0e5429" title="トンネル生成処理（詳細調査中）/ This routine does the bulk of the work in creating the new types of tunnels." alt="" coords="383,5,497,32"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#a77f441246d4e3a7711f91fed4d5e79a1" title="特定の壁(永久壁など)を避けながら部屋間の通路を作成する / This routine maps a path from (x1, y1) to (x2, y2) avoiding SOLID wall..." alt="" coords="236,5,335,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#ae2182c98f3049e9b95450c58250ec22b" title=" " alt="" coords="5,5,188,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a29f3f0b8195639b4be9e34026fa8c3f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29f3f0b8195639b4be9e34026fa8c3f8">&#9670;&nbsp;</a></span>rand_dir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rand_dir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *&#160;</td>
+          <td class="paramname"><em>rdir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *&#160;</td>
+          <td class="paramname"><em>cdir</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>build_tunnel用に通路を掘るための方向をランダムに決める / Pick a random direction </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rdir</td><td>Y方向に取るべきベクトル値を返す参照ポインタ </td></tr>
+    <tr><td class="paramname">cdir</td><td>X方向に取るべきベクトル値を返す参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tunnel-generator_8cpp_a29f3f0b8195639b4be9e34026fa8c3f8_icgraph.png" border="0" usemap="#atunnel-generator_8cpp_a29f3f0b8195639b4be9e34026fa8c3f8_icgraph" alt=""/></div>
+<map name="atunnel-generator_8cpp_a29f3f0b8195639b4be9e34026fa8c3f8_icgraph" id="atunnel-generator_8cpp_a29f3f0b8195639b4be9e34026fa8c3f8_icgraph">
+<area shape="rect" title="build_tunnel用に通路を掘るための方向をランダムに決める / Pick a random direction" alt="" coords="527,5,595,32"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#a0ed0a728fe143141daa507e27efc28a9" title="部屋間のトンネルを生成する / Constructs a tunnel between two points" alt="" coords="388,5,479,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#ae2182c98f3049e9b95450c58250ec22b" title=" " alt="" coords="157,5,340,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a16f434086dd589224af75161bf087b74" title=" " alt="" coords="5,5,109,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3a188349d5d7edf4347c3d13b9c582d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a188349d5d7edf4347c3d13b9c582d4">&#9670;&nbsp;</a></span>set_tunnel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> set_tunnel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdun__data__type.html">dun_data_type</a> *&#160;</td>
+          <td class="paramname"><em>dd_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>affectwall</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>トンネル生成のための基準点を指定する。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">x</td><td>基準点を指定するX座標の参照ポインタ、適時値が修正される。 </td></tr>
+    <tr><td class="paramname">y</td><td>基準点を指定するY座標の参照ポインタ、適時値が修正される。 </td></tr>
+    <tr><td class="paramname">affectwall</td><td>(調査中) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000037">todo:</a></b></dt><dd>特に詳細な処理の意味を調査すべし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tunnel-generator_8cpp_a3a188349d5d7edf4347c3d13b9c582d4_cgraph.png" border="0" usemap="#atunnel-generator_8cpp_a3a188349d5d7edf4347c3d13b9c582d4_cgraph" alt=""/></div>
+<map name="atunnel-generator_8cpp_a3a188349d5d7edf4347c3d13b9c582d4_cgraph" id="atunnel-generator_8cpp_a3a188349d5d7edf4347c3d13b9c582d4_cgraph">
+<area shape="rect" title="トンネル生成のための基準点を指定する。" alt="" coords="5,56,88,83"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="137,5,219,32"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="136,56,220,83"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="268,81,349,108"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="397,31,532,57"/>
+<area shape="rect" href="grid_8cpp.html#a8ea39c3dfc40de144095718ade7e2ec9" title=" " alt="" coords="425,81,504,108"/>
+<area shape="rect" href="feature_8cpp.html#ab6f2d85244b993c3996dafd0eac6056e" title=" " alt="" coords="409,132,521,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tunnel-generator_8cpp_a3a188349d5d7edf4347c3d13b9c582d4_icgraph.png" border="0" usemap="#atunnel-generator_8cpp_a3a188349d5d7edf4347c3d13b9c582d4_icgraph" alt=""/></div>
+<map name="atunnel-generator_8cpp_a3a188349d5d7edf4347c3d13b9c582d4_icgraph" id="atunnel-generator_8cpp_a3a188349d5d7edf4347c3d13b9c582d4_icgraph">
+<area shape="rect" title="トンネル生成のための基準点を指定する。" alt="" coords="877,31,960,57"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#a77f441246d4e3a7711f91fed4d5e79a1" title="特定の壁(永久壁など)を避けながら部屋間の通路を作成する / This routine maps a path from (x1, y1) to (x2, y2) avoiding SOLID wall..." alt="" coords="388,5,487,32"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#a48277112421acba57a4dbcc8e4d425cc" title="外壁を削って「カタコンベ状」の通路を作成する / This routine creates the catacomb&#45;like tunnels by removing extra rock." alt="" coords="697,31,829,57"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#aea72248c0d2fa68d855093eabd0e5429" title="トンネル生成処理（詳細調査中）/ This routine does the bulk of the work in creating the new types of tunnels." alt="" coords="535,31,649,57"/>
+<area shape="rect" href="cave-generator_8cpp.html#ae2182c98f3049e9b95450c58250ec22b" title=" " alt="" coords="157,5,340,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a16f434086dd589224af75161bf087b74" title=" " alt="" coords="5,5,109,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aea72248c0d2fa68d855093eabd0e5429"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea72248c0d2fa68d855093eabd0e5429">&#9670;&nbsp;</a></span>short_seg_hack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void short_seg_hack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdun__data__type.html">dun_data_type</a> *&#160;</td>
+          <td class="paramname"><em>dd_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> *&#160;</td>
+          <td class="paramname"><em>fail</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>トンネル生成処理（詳細調査中）/ This routine does the bulk of the work in creating the new types of tunnels. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000038">todo:</a></b></dt><dd>詳細用調査 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tunnel-generator_8cpp_aea72248c0d2fa68d855093eabd0e5429_cgraph.png" border="0" usemap="#atunnel-generator_8cpp_aea72248c0d2fa68d855093eabd0e5429_cgraph" alt=""/></div>
+<map name="atunnel-generator_8cpp_aea72248c0d2fa68d855093eabd0e5429_cgraph" id="atunnel-generator_8cpp_aea72248c0d2fa68d855093eabd0e5429_cgraph">
+<area shape="rect" title="トンネル生成処理（詳細調査中）/ This routine does the bulk of the work in creating the new types of tunnels." alt="" coords="5,81,120,108"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#a48277112421acba57a4dbcc8e4d425cc" title="外壁を削って「カタコンベ状」の通路を作成する / This routine creates the catacomb&#45;like tunnels by removing extra rock." alt="" coords="168,31,300,57"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#a3a188349d5d7edf4347c3d13b9c582d4" title="トンネル生成のための基準点を指定する。" alt="" coords="348,56,431,83"/>
+<area shape="rect" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="199,132,269,159"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="480,5,561,32"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="479,56,563,83"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="611,81,692,108"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tunnel-generator_8cpp_aea72248c0d2fa68d855093eabd0e5429_icgraph.png" border="0" usemap="#atunnel-generator_8cpp_aea72248c0d2fa68d855093eabd0e5429_icgraph" alt=""/></div>
+<map name="atunnel-generator_8cpp_aea72248c0d2fa68d855093eabd0e5429_icgraph" id="atunnel-generator_8cpp_aea72248c0d2fa68d855093eabd0e5429_icgraph">
+<area shape="rect" title="トンネル生成処理（詳細調査中）/ This routine does the bulk of the work in creating the new types of tunnels." alt="" coords="535,5,649,32"/>
+<area shape="rect" href="tunnel-generator_8cpp.html#a77f441246d4e3a7711f91fed4d5e79a1" title="特定の壁(永久壁など)を避けながら部屋間の通路を作成する / This routine maps a path from (x1, y1) to (x2, y2) avoiding SOLID wall..." alt="" coords="388,5,487,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#ae2182c98f3049e9b95450c58250ec22b" title=" " alt="" coords="157,5,340,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a16f434086dd589224af75161bf087b74" title=" " alt="" coords="5,5,109,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分16秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

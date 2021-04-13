@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/info-reader/race-info-tokens-table.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_529b8da86662ab841593409a3db5f3bb.html">info-reader</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">race-info-tokens-table.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="race-info-tokens-table_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-attack-effect_8h.html">monster-attack/monster-attack-effect.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-attack-types_8h.html">monster-attack/monster-attack-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="race-info-tokens-table_8h.html#adb4a8c0c30614024a10f786a17d531a7">   10</a></span>&#160;<span class="preprocessor">#define NUM_R_FLAGS_1 32</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="race-info-tokens-table_8h.html#a06e6fda2ba24d7bbc4c24255596a746d">   11</a></span>&#160;<span class="preprocessor">#define NUM_R_FLAGS_2 32</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="race-info-tokens-table_8h.html#a2a710a2e50e3ab751ab298182b8b5f77">   12</a></span>&#160;<span class="preprocessor">#define NUM_R_FLAGS_3 32</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="race-info-tokens-table_8h.html#ae610cc81f4d0bc7703811154f9216b32">   13</a></span>&#160;<span class="preprocessor">#define NUM_R_FLAGS_4 32</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="race-info-tokens-table_8h.html#a92c9b6264d6c2d8aecd543d692e0c6eb">   14</a></span>&#160;<span class="preprocessor">#define NUM_R_ABILITY_FLAGS_1 32</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="race-info-tokens-table_8h.html#aa452203f7b85f61222245294fc429317">   15</a></span>&#160;<span class="preprocessor">#define NUM_R_ABILITY_FLAGS_2 32</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="race-info-tokens-table_8h.html#af2bea87815c518e8b5cfc0ff715a8080">   16</a></span>&#160;<span class="preprocessor">#define NUM_R_FLAGS_7 32</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="race-info-tokens-table_8h.html#a7a5834b9c2df381ed021d6c80559bb61">   17</a></span>&#160;<span class="preprocessor">#define NUM_R_FLAGS_8 32</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="race-info-tokens-table_8h.html#aa46913f1309785f402771f7a4eb191a5">   18</a></span>&#160;<span class="preprocessor">#define NUM_R_FLAGS_9 33</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="race-info-tokens-table_8h.html#aa2c49fc4c9702131c0402fd0a7b55986">   19</a></span>&#160;<span class="preprocessor">#define NUM_R_FLAGS_R 32</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">enum class</span> <a class="code" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="race-info-tokens-table_8h.html#aa60a05b6d291f630e103abb1eba4e098">r_info_blow_method</a>[<a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803aceca1dcb7181c2591feb5218ac44e410">NB_RBM_TYPE</a> + 1];</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="race-info-tokens-table_8h.html#ae616cf7524b5639abd44a9481463e360">r_info_blow_effect</a>[<a class="code" href="monster-attack-effect_8h.html#a8a4aff73f821ef61faba1c4afd2e3429a67e0c30c2103a2ce4627a1edcd048534">NB_RBE_TYPE</a> + 1];</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="race-info-tokens-table_8h.html#a87439f7a17d6b6fdcdc6c4a6fb78be81">r_info_flags1</a>[<a class="code" href="race-info-tokens-table_8h.html#adb4a8c0c30614024a10f786a17d531a7">NUM_R_FLAGS_1</a>];</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="race-info-tokens-table_8h.html#ad59b670d106bec2eafca2c5a5cacb11a">r_info_flags2</a>[<a class="code" href="race-info-tokens-table_8h.html#a06e6fda2ba24d7bbc4c24255596a746d">NUM_R_FLAGS_2</a>];</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="race-info-tokens-table_8h.html#abecf1b8b4020fc0b661f62c5fc4527e0">r_info_flags3</a>[<a class="code" href="race-info-tokens-table_8h.html#a2a710a2e50e3ab751ab298182b8b5f77">NUM_R_FLAGS_3</a>];</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> std::unordered_map&lt;std::string_view, RF_ABILITY&gt; <a class="code" href="race-info-tokens-table_8h.html#a648f083ed6b35b3670723efb5a13c1b7">r_info_ability_flags</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="race-info-tokens-table_8h.html#a0f37c6bf1ed9f8437430c87a4428771a">r_info_flags7</a>[<a class="code" href="race-info-tokens-table_8h.html#af2bea87815c518e8b5cfc0ff715a8080">NUM_R_FLAGS_7</a>];</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="race-info-tokens-table_8h.html#a373f0e46b62a0e5edcc83a6ce4cfbb46">r_info_flags8</a>[<a class="code" href="race-info-tokens-table_8h.html#a7a5834b9c2df381ed021d6c80559bb61">NUM_R_FLAGS_8</a>];</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="race-info-tokens-table_8h.html#a364734270858121609eaf2b9ec73ac50">r_info_flags9</a>[<a class="code" href="race-info-tokens-table_8h.html#aa46913f1309785f402771f7a4eb191a5">NUM_R_FLAGS_9</a>];</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="race-info-tokens-table_8h.html#a30e8df970eff9fcb53928f883a24b65a">r_info_flagsr</a>[<a class="code" href="race-info-tokens-table_8h.html#aa2c49fc4c9702131c0402fd0a7b55986">NUM_R_FLAGS_R</a>];</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="amonster-attack-effect_8h_html"><div class="ttname"><a href="monster-attack-effect_8h.html">monster-attack-effect.h</a></div></div>
+<div class="ttc" id="amonster-attack-effect_8h_html_a8a4aff73f821ef61faba1c4afd2e3429a67e0c30c2103a2ce4627a1edcd048534"><div class="ttname"><a href="monster-attack-effect_8h.html#a8a4aff73f821ef61faba1c4afd2e3429a67e0c30c2103a2ce4627a1edcd048534">NB_RBE_TYPE</a></div><div class="ttdeci">@ NB_RBE_TYPE</div><div class="ttdoc">enum バリアント数</div><div class="ttdef"><b>Definition:</b> monster-attack-effect.h:48</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html"><div class="ttname"><a href="monster-attack-types_8h.html">monster-attack-types.h</a></div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803aceca1dcb7181c2591feb5218ac44e410"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803aceca1dcb7181c2591feb5218ac44e410">NB_RBM_TYPE</a></div><div class="ttdeci">@ NB_RBM_TYPE</div><div class="ttdoc">enum バリアント数</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:41</div></div>
+<div class="ttc" id="arace-ability-flags_8h_html_acbcf656bb21b1f961b30ca0f24fcb5aa"><div class="ttname"><a href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a></div><div class="ttdeci">RF_ABILITY</div><div class="ttdef"><b>Definition:</b> race-ability-flags.h:3</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_a06e6fda2ba24d7bbc4c24255596a746d"><div class="ttname"><a href="race-info-tokens-table_8h.html#a06e6fda2ba24d7bbc4c24255596a746d">NUM_R_FLAGS_2</a></div><div class="ttdeci">#define NUM_R_FLAGS_2</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.h:11</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_a0f37c6bf1ed9f8437430c87a4428771a"><div class="ttname"><a href="race-info-tokens-table_8h.html#a0f37c6bf1ed9f8437430c87a4428771a">r_info_flags7</a></div><div class="ttdeci">concptr r_info_flags7[NUM_R_FLAGS_7]</div><div class="ttdoc">モンスター特性トークンの定義7 / Monster race flags &quot;GUARDIAN&quot; ...</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.cpp:314</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_a2a710a2e50e3ab751ab298182b8b5f77"><div class="ttname"><a href="race-info-tokens-table_8h.html#a2a710a2e50e3ab751ab298182b8b5f77">NUM_R_FLAGS_3</a></div><div class="ttdeci">#define NUM_R_FLAGS_3</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.h:12</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_a30e8df970eff9fcb53928f883a24b65a"><div class="ttname"><a href="race-info-tokens-table_8h.html#a30e8df970eff9fcb53928f883a24b65a">r_info_flagsr</a></div><div class="ttdeci">concptr r_info_flagsr[NUM_R_FLAGS_R]</div><div class="ttdoc">モンスター特性トークンの定義R(耐性) / Monster race flags</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.cpp:432</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_a364734270858121609eaf2b9ec73ac50"><div class="ttname"><a href="race-info-tokens-table_8h.html#a364734270858121609eaf2b9ec73ac50">r_info_flags9</a></div><div class="ttdeci">concptr r_info_flags9[NUM_R_FLAGS_9]</div><div class="ttdoc">モンスター特性トークンの定義9 / Monster race flags</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.cpp:392</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_a373f0e46b62a0e5edcc83a6ce4cfbb46"><div class="ttname"><a href="race-info-tokens-table_8h.html#a373f0e46b62a0e5edcc83a6ce4cfbb46">r_info_flags8</a></div><div class="ttdeci">concptr r_info_flags8[NUM_R_FLAGS_8]</div><div class="ttdoc">モンスター特性トークンの定義8 / Monster race flags</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.cpp:353</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_a648f083ed6b35b3670723efb5a13c1b7"><div class="ttname"><a href="race-info-tokens-table_8h.html#a648f083ed6b35b3670723efb5a13c1b7">r_info_ability_flags</a></div><div class="ttdeci">const std::unordered_map&lt; std::string_view, RF_ABILITY &gt; r_info_ability_flags</div><div class="ttdoc">モンスター特性トークン (発動型能力) / Monster race flags</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.cpp:207</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_a7a5834b9c2df381ed021d6c80559bb61"><div class="ttname"><a href="race-info-tokens-table_8h.html#a7a5834b9c2df381ed021d6c80559bb61">NUM_R_FLAGS_8</a></div><div class="ttdeci">#define NUM_R_FLAGS_8</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.h:17</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_a87439f7a17d6b6fdcdc6c4a6fb78be81"><div class="ttname"><a href="race-info-tokens-table_8h.html#a87439f7a17d6b6fdcdc6c4a6fb78be81">r_info_flags1</a></div><div class="ttdeci">concptr r_info_flags1[NUM_R_FLAGS_1]</div><div class="ttdoc">モンスター特性トークンの定義1 / Monster race flags</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.cpp:89</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_aa2c49fc4c9702131c0402fd0a7b55986"><div class="ttname"><a href="race-info-tokens-table_8h.html#aa2c49fc4c9702131c0402fd0a7b55986">NUM_R_FLAGS_R</a></div><div class="ttdeci">#define NUM_R_FLAGS_R</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.h:19</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_aa46913f1309785f402771f7a4eb191a5"><div class="ttname"><a href="race-info-tokens-table_8h.html#aa46913f1309785f402771f7a4eb191a5">NUM_R_FLAGS_9</a></div><div class="ttdeci">#define NUM_R_FLAGS_9</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.h:18</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_aa60a05b6d291f630e103abb1eba4e098"><div class="ttname"><a href="race-info-tokens-table_8h.html#aa60a05b6d291f630e103abb1eba4e098">r_info_blow_method</a></div><div class="ttdeci">concptr r_info_blow_method[NB_RBM_TYPE+1]</div><div class="ttdoc">モンスターの打撃手段トークンの定義 / Monster Blow Methods</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.cpp:10</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_abecf1b8b4020fc0b661f62c5fc4527e0"><div class="ttname"><a href="race-info-tokens-table_8h.html#abecf1b8b4020fc0b661f62c5fc4527e0">r_info_flags3</a></div><div class="ttdeci">concptr r_info_flags3[NUM_R_FLAGS_3]</div><div class="ttdoc">モンスター特性トークンの定義3 / Monster race flags</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.cpp:167</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_ad59b670d106bec2eafca2c5a5cacb11a"><div class="ttname"><a href="race-info-tokens-table_8h.html#ad59b670d106bec2eafca2c5a5cacb11a">r_info_flags2</a></div><div class="ttdeci">concptr r_info_flags2[NUM_R_FLAGS_2]</div><div class="ttdoc">モンスター特性トークンの定義2 / Monster race flags</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.cpp:128</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_adb4a8c0c30614024a10f786a17d531a7"><div class="ttname"><a href="race-info-tokens-table_8h.html#adb4a8c0c30614024a10f786a17d531a7">NUM_R_FLAGS_1</a></div><div class="ttdeci">#define NUM_R_FLAGS_1</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.h:10</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_ae616cf7524b5639abd44a9481463e360"><div class="ttname"><a href="race-info-tokens-table_8h.html#ae616cf7524b5639abd44a9481463e360">r_info_blow_effect</a></div><div class="ttdeci">concptr r_info_blow_effect[NB_RBE_TYPE+1]</div><div class="ttdoc">モンスターの打撃属性トークンの定義 / Monster Blow Effects</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.cpp:44</div></div>
+<div class="ttc" id="arace-info-tokens-table_8h_html_af2bea87815c518e8b5cfc0ff715a8080"><div class="ttname"><a href="race-info-tokens-table_8h.html#af2bea87815c518e8b5cfc0ff715a8080">NUM_R_FLAGS_7</a></div><div class="ttdeci">#define NUM_R_FLAGS_7</div><div class="ttdef"><b>Definition:</b> race-info-tokens-table.h:16</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

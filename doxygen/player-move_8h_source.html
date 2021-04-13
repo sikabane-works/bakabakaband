@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player/player-move.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_975424cdae97a07db69e55371758444e.html">player</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">player-move.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="player-move_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="player-move_8h.html#a2d76a8bd9d943631c09091e3f4f044e3">    5</a></span>&#160;<span class="preprocessor">#define MPE_STAYING       0x00000001</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="player-move_8h.html#a2446c0004a50745b5c4f73f8fd14b41a">    6</a></span>&#160;<span class="preprocessor">#define MPE_FORGET_FLOW   0x00000002</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="player-move_8h.html#ab43fbea389f368836800104cf8fe3f63">    7</a></span>&#160;<span class="preprocessor">#define MPE_HANDLE_STUFF  0x00000004</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="player-move_8h.html#ac5b4293e9309056c39f159412cbea9f6">    8</a></span>&#160;<span class="preprocessor">#define MPE_ENERGY_USE    0x00000008</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="player-move_8h.html#a33a83b4b3d1ab0ae4654d15c9e64f8a4">    9</a></span>&#160;<span class="preprocessor">#define MPE_DONT_PICKUP   0x00000010</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="player-move_8h.html#a955b535283be2c0a27518953c5b80b9a">   10</a></span>&#160;<span class="preprocessor">#define MPE_DO_PICKUP     0x00000020</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="player-move_8h.html#aafa7a8baa062d4998aa851358e796d8b">   11</a></span>&#160;<span class="preprocessor">#define MPE_BREAK_TRAP    0x00000040</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="player-move_8h.html#aaa77f50a1110a7e9d1cf71b03955b6e7">   12</a></span>&#160;<span class="preprocessor">#define MPE_DONT_SWAP_MON 0x00000080</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/* Types of pattern tiles */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="player-move_8h.html#a9f41e4862a4e42836d604718ec731a77">   15</a></span>&#160;<span class="preprocessor">#define NOT_PATTERN_TILE      -1</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="player-move_8h.html#a477637958b1ce99c10901c3129d5212e">   16</a></span>&#160;<span class="preprocessor">#define PATTERN_TILE_START    0</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="player-move_8h.html#a4cb43b48c245704cf5578c2446eb3906">   17</a></span>&#160;<span class="preprocessor">#define PATTERN_TILE_1        1</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="player-move_8h.html#a5e486374461d67f736e6b1828e78f115">   18</a></span>&#160;<span class="preprocessor">#define PATTERN_TILE_2        2</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="player-move_8h.html#ac8154d643ce559060c2e71ab67b93158">   19</a></span>&#160;<span class="preprocessor">#define PATTERN_TILE_3        3</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="player-move_8h.html#a47cf2c701ee349009b12c49420934c2a">   20</a></span>&#160;<span class="preprocessor">#define PATTERN_TILE_4        4</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="player-move_8h.html#afdeafbdd7cd7170f718a9b7affe1e172">   21</a></span>&#160;<span class="preprocessor">#define PATTERN_TILE_END      5</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="player-move_8h.html#a13e588aa3b6062eaa611c3539a33cb3e">   22</a></span>&#160;<span class="preprocessor">#define PATTERN_TILE_OLD      6</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="player-move_8h.html#aecef504f2341602931e2d1629fc18346">   23</a></span>&#160;<span class="preprocessor">#define PATTERN_TILE_TELEPORT 7</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="player-move_8h.html#a20a49e29369f4b7620f1ca623f038dc5">   24</a></span>&#160;<span class="preprocessor">#define PATTERN_TILE_WRECKED  8</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="player-move_8h.html#a644f4948c06f5b3798a5a9acb9eff388">flow_head</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="player-move_8h.html#a7c225b1f26dce4c995de8fbccb57fce8">flow_tail</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="player-move_8h.html#a07fefe35355604039531a3385d9b94d2">temp2_x</a>[<a class="code" href="h-type_8h.html#a3742efaf988af88c727a30ca9d8d993f">MAX_SHORT</a>];</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="player-move_8h.html#aa94ca68b6933daae8cc38106f5b30829">temp2_y</a>[<a class="code" href="h-type_8h.html#a3742efaf988af88c727a30ca9d8d993f">MAX_SHORT</a>];</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="player-move_8h.html#ac637efbeba2a2fca5538ee13812b97bf">move_player_effect</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> ny, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> nx, <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> mpe_mode);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="player-move_8h.html#a4f9afc4c9b94e386c8dff3bdf9607218">trap_can_be_ignored</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a> feat);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> <a class="code" href="player-move_8h.html#a065d2dfda4580aec2d9d8a9844fbff38">search</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a3742efaf988af88c727a30ca9d8d993f"><div class="ttname"><a href="h-type_8h.html#a3742efaf988af88c727a30ca9d8d993f">MAX_SHORT</a></div><div class="ttdeci">#define MAX_SHORT</div><div class="ttdoc">Maximum value storable in a &quot;s16b&quot; (hard-coded)</div><div class="ttdef"><b>Definition:</b> h-type.h:56</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a85b58bbae289409cd01a8a413e991f12"><div class="ttname"><a href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a></div><div class="ttdeci">s16b FEAT_IDX</div><div class="ttdoc">ゲーム中の地形ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:99</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="aplayer-move_8h_html_a065d2dfda4580aec2d9d8a9844fbff38"><div class="ttname"><a href="player-move_8h.html#a065d2dfda4580aec2d9d8a9844fbff38">search</a></div><div class="ttdeci">void search(player_type *creature_ptr)</div><div class="ttdoc">プレイヤーの探索処理判定</div><div class="ttdef"><b>Definition:</b> player-move.cpp:95</div></div>
+<div class="ttc" id="aplayer-move_8h_html_a07fefe35355604039531a3385d9b94d2"><div class="ttname"><a href="player-move_8h.html#a07fefe35355604039531a3385d9b94d2">temp2_x</a></div><div class="ttdeci">POSITION temp2_x[MAX_SHORT]</div><div class="ttdef"><b>Definition:</b> player-move.cpp:45</div></div>
+<div class="ttc" id="aplayer-move_8h_html_a4f9afc4c9b94e386c8dff3bdf9607218"><div class="ttname"><a href="player-move_8h.html#a4f9afc4c9b94e386c8dff3bdf9607218">trap_can_be_ignored</a></div><div class="ttdeci">bool trap_can_be_ignored(player_type *creature_ptr, FEAT_IDX feat)</div><div class="ttdoc">該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す</div><div class="ttdef"><b>Definition:</b> player-move.cpp:270</div></div>
+<div class="ttc" id="aplayer-move_8h_html_a644f4948c06f5b3798a5a9acb9eff388"><div class="ttname"><a href="player-move_8h.html#a644f4948c06f5b3798a5a9acb9eff388">flow_head</a></div><div class="ttdeci">int flow_head</div><div class="ttdoc">プレイヤーの移動処理 / Movement commands</div><div class="ttdef"><b>Definition:</b> player-move.cpp:43</div></div>
+<div class="ttc" id="aplayer-move_8h_html_a7c225b1f26dce4c995de8fbccb57fce8"><div class="ttname"><a href="player-move_8h.html#a7c225b1f26dce4c995de8fbccb57fce8">flow_tail</a></div><div class="ttdeci">int flow_tail</div><div class="ttdef"><b>Definition:</b> player-move.cpp:44</div></div>
+<div class="ttc" id="aplayer-move_8h_html_aa94ca68b6933daae8cc38106f5b30829"><div class="ttname"><a href="player-move_8h.html#aa94ca68b6933daae8cc38106f5b30829">temp2_y</a></div><div class="ttdeci">POSITION temp2_y[MAX_SHORT]</div><div class="ttdef"><b>Definition:</b> player-move.cpp:46</div></div>
+<div class="ttc" id="aplayer-move_8h_html_ac637efbeba2a2fca5538ee13812b97bf"><div class="ttname"><a href="player-move_8h.html#ac637efbeba2a2fca5538ee13812b97bf">move_player_effect</a></div><div class="ttdeci">bool move_player_effect(player_type *creature_ptr, POSITION ny, POSITION nx, BIT_FLAGS mpe_mode)</div><div class="ttdoc">移動に伴うプレイヤーのステータス変化処理</div><div class="ttdef"><b>Definition:</b> player-move.cpp:117</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

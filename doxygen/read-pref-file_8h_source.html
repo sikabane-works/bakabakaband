@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/io/read-pref-file.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html">io</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">read-pref-file.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="read-pref-file_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="read-pref-file_8h.html#a92ec75f585dafe9613977864bc98a1f2">auto_dump_header</a>[];</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="read-pref-file_8h.html#a0a13727501f9b8f566cb8ae663553001">auto_dump_footer</a>[];</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> <a class="code" href="read-pref-file_8h.html#ab57f4471a02cad99cad5ef6cf754dbe4">process_pref_file</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> name, <span class="keywordtype">void</span>(*<a class="code" href="autopick-pref-processor_8cpp.html#aa31a42830d1eed102ec91a767c3db6e7">process_autopick_file_command</a>)(<span class="keywordtype">char</span>*));</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> <a class="code" href="read-pref-file_8h.html#ae139783582dab502a0806d6a632b1932">process_autopick_file</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> name, <span class="keywordtype">void</span>(*<a class="code" href="autopick-pref-processor_8cpp.html#aa31a42830d1eed102ec91a767c3db6e7">process_autopick_file_command</a>)(<span class="keywordtype">char</span>*));</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> <a class="code" href="read-pref-file_8h.html#abe54d45e9640965029a9b8ba1298965c">process_histpref_file</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> name, <span class="keywordtype">void</span>(*<a class="code" href="autopick-pref-processor_8cpp.html#aa31a42830d1eed102ec91a767c3db6e7">process_autopick_file_command</a>)(<span class="keywordtype">char</span>*));</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="read-pref-file_8h.html#a2c69979bf7ef3c16ada8791410bf5a01">read_histpref</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">void</span> (*<a class="code" href="autopick-pref-processor_8cpp.html#aa31a42830d1eed102ec91a767c3db6e7">process_autopick_file_command</a>)(<span class="keywordtype">char</span> *));</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="read-pref-file_8h.html#aaee18f21e18b381f4513bb961081536e">auto_dump_printf</a>(FILE *auto_dump_stream, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> fmt, ...);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="read-pref-file_8h.html#a5a737ea245d6b917ff81756f8448f258">open_auto_dump</a>(FILE **fpp, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> mark);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> <a class="code" href="read-pref-file_8h.html#a91f761522cc6472f2b8db25265b9e686">close_auto_dump</a>(FILE **fpp, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> auto_dump_mark);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">void</span> <a class="code" href="read-pref-file_8h.html#a277ec1508e8e1b27be4ce3fbb4a3c384">load_all_pref_files</a>(<a class="code" href="structplayer__type.html">player_type</a>* player_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aautopick-pref-processor_8cpp_html_aa31a42830d1eed102ec91a767c3db6e7"><div class="ttname"><a href="autopick-pref-processor_8cpp.html#aa31a42830d1eed102ec91a767c3db6e7">process_autopick_file_command</a></div><div class="ttdeci">void process_autopick_file_command(char *buf)</div><div class="ttdef"><b>Definition:</b> autopick-pref-processor.cpp:9</div></div>
+<div class="ttc" id="ah-type_8h_html_ad99e8b64263d5831d93bec22e89da527"><div class="ttname"><a href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a></div><div class="ttdeci">int errr</div><div class="ttdoc">エラーコードの定義 / Error codes for function return values</div><div class="ttdef"><b>Definition:</b> h-type.h:53</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="aread-pref-file_8h_html_a0a13727501f9b8f566cb8ae663553001"><div class="ttname"><a href="read-pref-file_8h.html#a0a13727501f9b8f566cb8ae663553001">auto_dump_footer</a></div><div class="ttdeci">char auto_dump_footer[]</div><div class="ttdef"><b>Definition:</b> read-pref-file.cpp:39</div></div>
+<div class="ttc" id="aread-pref-file_8h_html_a277ec1508e8e1b27be4ce3fbb4a3c384"><div class="ttname"><a href="read-pref-file_8h.html#a277ec1508e8e1b27be4ce3fbb4a3c384">load_all_pref_files</a></div><div class="ttdeci">void load_all_pref_files(player_type *player_ptr)</div><div class="ttdoc">全ユーザプロファイルをロードする / Load some &quot;user pref files&quot; @paaram player_ptr プレーヤーへの参照ポインタ</div><div class="ttdef"><b>Definition:</b> read-pref-file.cpp:275</div></div>
+<div class="ttc" id="aread-pref-file_8h_html_a2c69979bf7ef3c16ada8791410bf5a01"><div class="ttname"><a href="read-pref-file_8h.html#a2c69979bf7ef3c16ada8791410bf5a01">read_histpref</a></div><div class="ttdeci">bool read_histpref(player_type *creature_ptr, void(*process_autopick_file_command)(char *))</div><div class="ttdoc">生い立ちメッセージをファイルからロードする。</div><div class="ttdef"><b>Definition:</b> read-pref-file.cpp:305</div></div>
+<div class="ttc" id="aread-pref-file_8h_html_a5a737ea245d6b917ff81756f8448f258"><div class="ttname"><a href="read-pref-file_8h.html#a5a737ea245d6b917ff81756f8448f258">open_auto_dump</a></div><div class="ttdeci">bool open_auto_dump(FILE **fpp, concptr buf, concptr mark)</div><div class="ttdoc">prfファイルをファイルオープンする / Open file to append auto dump.</div><div class="ttdef"><b>Definition:</b> read-pref-file.cpp:230</div></div>
+<div class="ttc" id="aread-pref-file_8h_html_a91f761522cc6472f2b8db25265b9e686"><div class="ttname"><a href="read-pref-file_8h.html#a91f761522cc6472f2b8db25265b9e686">close_auto_dump</a></div><div class="ttdeci">void close_auto_dump(FILE **fpp, concptr auto_dump_mark)</div><div class="ttdoc">prfファイルをファイルクローズする / Append foot part and close auto dump.</div><div class="ttdef"><b>Definition:</b> read-pref-file.cpp:256</div></div>
+<div class="ttc" id="aread-pref-file_8h_html_a92ec75f585dafe9613977864bc98a1f2"><div class="ttname"><a href="read-pref-file_8h.html#a92ec75f585dafe9613977864bc98a1f2">auto_dump_header</a></div><div class="ttdeci">char auto_dump_header[]</div><div class="ttdef"><b>Definition:</b> read-pref-file.cpp:38</div></div>
+<div class="ttc" id="aread-pref-file_8h_html_aaee18f21e18b381f4513bb961081536e"><div class="ttname"><a href="read-pref-file_8h.html#aaee18f21e18b381f4513bb961081536e">auto_dump_printf</a></div><div class="ttdeci">void auto_dump_printf(FILE *auto_dump_stream, concptr fmt,...)</div><div class="ttdoc">prfファイルのフォーマットに従った内容を出力する / Dump a formatted line, using &quot;vstrnfmt()&quot;.</div><div class="ttdef"><b>Definition:</b> read-pref-file.cpp:208</div></div>
+<div class="ttc" id="aread-pref-file_8h_html_ab57f4471a02cad99cad5ef6cf754dbe4"><div class="ttname"><a href="read-pref-file_8h.html#ab57f4471a02cad99cad5ef6cf754dbe4">process_pref_file</a></div><div class="ttdeci">errr process_pref_file(player_type *creature_ptr, concptr name, void(*process_autopick_file_command)(char *))</div><div class="ttdoc">pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name</div><div class="ttdef"><b>Definition:</b> read-pref-file.cpp:151</div></div>
+<div class="ttc" id="aread-pref-file_8h_html_abe54d45e9640965029a9b8ba1298965c"><div class="ttname"><a href="read-pref-file_8h.html#abe54d45e9640965029a9b8ba1298965c">process_histpref_file</a></div><div class="ttdeci">errr process_histpref_file(player_type *creature_ptr, concptr name, void(*process_autopick_file_command)(char *))</div><div class="ttdoc">プレイヤーの生い立ちファイルを読み込む / Process file for player's history editor.</div><div class="ttdef"><b>Definition:</b> read-pref-file.cpp:190</div></div>
+<div class="ttc" id="aread-pref-file_8h_html_ae139783582dab502a0806d6a632b1932"><div class="ttname"><a href="read-pref-file_8h.html#ae139783582dab502a0806d6a632b1932">process_autopick_file</a></div><div class="ttdeci">errr process_autopick_file(player_type *creature_ptr, concptr name, void(*process_autopick_file_command)(char *))</div><div class="ttdoc">自動拾いファイルを読み込む /</div><div class="ttdef"><b>Definition:</b> read-pref-file.cpp:174</div></div>
+<div class="ttc" id="arecord-play-movie_8cpp_html_a1fe855c208bc17a51a4d34fefdb2d5b1"><div class="ttname"><a href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a></div><div class="ttdeci">char * buf</div><div class="ttdef"><b>Definition:</b> record-play-movie.cpp:54</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

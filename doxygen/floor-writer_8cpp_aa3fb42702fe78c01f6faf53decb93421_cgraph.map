@@ -1,0 +1,29 @@
+<map id="wr_dungeon" name="wr_dungeon">
+<area shape="rect" id="node1" title="現在フロアの書き込み / Write the current dungeon (new method) @player_ptr プレーヤーへの参照ポインタ" alt="" coords="5,284,96,311"/>
+<area shape="rect" id="node2" href="$monster-lite_8cpp.html#a75ee5b3b7870c752f4e98b25ba59eaaf" title="画面切り替え等でモンスターの灯りを消去する" alt="" coords="144,31,251,57"/>
+<area shape="rect" id="node3" href="$floor-events_8cpp.html#aad0bd5ca092d96aec22ced472c90e083" title=" " alt="" coords="158,81,237,108"/>
+<area shape="rect" id="node4" href="$floor-events_8cpp.html#abacf8f89e9bdb853927c5f55377cca6c" title=" " alt="" coords="155,132,240,159"/>
+<area shape="rect" id="node5" href="$floor-save_8cpp.html#a236b93956898407a6e8110c8f4c16bfe" title="保存フロアIDから参照ポインタを得る / Get a pointer for an item of the saved_floors array." alt="" coords="158,183,237,209"/>
+<area shape="rect" id="node6" href="$floor-loader_8cpp.html#a7c391e0a9128864de0d78e70acf21bbd" title="一時保存フロア情報を読み込む / Attempt to load the temporarily saved&#45;floor data" alt="" coords="159,233,236,260"/>
+<area shape="rect" id="node17" href="$floor-writer_8cpp.html#a159128f33a5ee6ede05b1b1759af3088" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="158,284,237,311"/>
+<area shape="rect" id="node23" href="$save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="885,461,952,488"/>
+<area shape="rect" id="node24" href="$floor-writer_8cpp.html#a0ca3769fc9944271112a5fe1e063665e" title="保存フロアの書き込み / Actually write a saved floor data using effectively compressed format." alt="" coords="480,537,587,564"/>
+<area shape="rect" id="node25" href="$save-util_8cpp.html#a0a9fc9ad1a0b5696b8d33200e93f6a59" title="符号あり16ビットをファイルに書き込む" alt="" coords="648,588,719,615"/>
+<area shape="rect" id="node26" href="$save-util_8cpp.html#a3f4d20bc88690cc8e3bd61de4ab96ae7" title="符号あり32ビットをファイルに書き込む" alt="" coords="648,487,719,513"/>
+<area shape="rect" id="node27" href="$save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="767,487,837,513"/>
+<area shape="rect" id="node7" href="$angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="303,81,415,108"/>
+<area shape="rect" id="node8" href="$angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="304,183,413,209"/>
+<area shape="rect" id="node10" href="$angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="331,132,386,159"/>
+<area shape="rect" id="node11" href="$floor-loader_8cpp.html#a8374609771b72d04645d6f61df4eb643" title="保存フロア読み込みのサブ関数 / Actually load and verify a floor save data" alt="" coords="306,31,411,57"/>
+<area shape="rect" id="node15" href="$uid-checker_8cpp.html#a59c71c10d8af1998dee4791396cb9d1d" title="ファイルのドロップパーミッションチェック / Hack – drop permissions" alt="" coords="299,233,419,260"/>
+<area shape="rect" id="node16" href="$uid-checker_8cpp.html#a10816f3dfe2970e4b4c89e5362304f83" title="ファイルのグラブパーミッションチェック / Hack – grab permissions" alt="" coords="299,284,419,311"/>
+<area shape="rect" id="node9" href="$angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="490,183,577,209"/>
+<area shape="rect" id="node12" href="$load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="651,81,716,108"/>
+<area shape="rect" id="node13" href="$floor-loader_8cpp.html#a04b4ceaa0f057897dee805390a533b88" title="保存されたフロアを読み込む / Read the saved floor" alt="" coords="481,31,585,57"/>
+<area shape="rect" id="node14" href="$load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="649,5,717,32"/>
+<area shape="rect" id="node18" href="$angband-files_8cpp.html#a5a186f4266676163ec63ff8413334fb1" title=" " alt="" coords="323,385,394,412"/>
+<area shape="rect" id="node19" href="$angband-files_8cpp.html#a4c4108d1fb8217d15fd233d2787ff91d" title=" " alt="" coords="323,335,394,361"/>
+<area shape="rect" id="node20" href="$floor-writer_8cpp.html#a11937fb0136a154a63265b4d3e946b7c" title="ゲームプレイ中のフロア一時保存出力処理サブルーチン / Actually write a temporary saved floor file" alt="" coords="305,436,412,463"/>
+<area shape="rect" id="node21" href="$monster-compaction_8cpp.html#a45418160543ab052bb17c17d724acb6b" title="モンスター情報配列を圧縮する / Compact and Reorder the monster list" alt="" coords="467,385,600,412"/>
+<area shape="rect" id="node22" href="$object-compressor_8cpp.html#a1ede50288749e158368e8fefdd4d960b" title="グローバルオブジェクト配列から優先度の低いものを削除し、データを圧縮する。 / Compact and Reorder the object list." alt="" coords="473,284,594,311"/>
+</map>

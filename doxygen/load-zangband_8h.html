@@ -1,0 +1,902 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/load/load-zangband.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2ce012611788abb6196ef11b41953a16.html">load</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">load-zangband.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="quest_8h_source.html">dungeon/quest.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+load-zangband.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2load_2load-zangband_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2load_2load-zangband_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2load_2load-zangband_8h">
+<area shape="rect" title=" " alt="" coords="809,5,997,61"/>
+<area shape="rect" href="quest_8h.html" title=" " alt="" coords="795,109,914,136"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="914,281,1043,307"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="351,184,497,225"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="759,184,892,225"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1588,363,1679,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="568,363,659,389"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="683,363,781,389"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="805,363,904,389"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="929,363,1029,389"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1053,363,1227,389"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1252,363,1393,389"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1417,363,1564,389"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="955,437,1066,464"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="5,273,149,315"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="174,273,330,315"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="355,273,493,315"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="762,281,889,307"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2load_2load-zangband_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2load_2load-zangband_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2load_2load-zangband_8hdep">
+<area shape="rect" title=" " alt="" coords="684,5,872,61"/>
+<area shape="rect" href="load-zangband_8cpp.html" title=" " alt="" coords="5,109,193,165"/>
+<area shape="rect" href="load_8cpp.html" title=" " alt="" coords="218,117,431,158"/>
+<area shape="rect" href="option-loader_8cpp.html" title=" " alt="" coords="456,109,655,165"/>
+<area shape="rect" href="player-attack-loader_8cpp.html" title=" " alt="" coords="679,109,877,165"/>
+<area shape="rect" href="player-info-loader_8cpp.html" title=" " alt="" coords="901,109,1100,165"/>
+<area shape="rect" href="quest-loader_8cpp.html" title=" " alt="" coords="1124,109,1320,165"/>
+<area shape="rect" href="world-loader_8cpp.html" title=" " alt="" coords="1345,109,1539,165"/>
+</map>
+</div>
+</div>
+<p><a href="load-zangband_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a4746eec43fc200bf9280e29a5a8d5ccf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#a4746eec43fc200bf9280e29a5a8d5ccf">load_zangband_options</a> (void)</td></tr>
+<tr class="separator:a4746eec43fc200bf9280e29a5a8d5ccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5ea28f22677374549c6d4df157f55c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#aa5ea28f22677374549c6d4df157f55c0">set_zangband_realm</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:aa5ea28f22677374549c6d4df157f55c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a798360715b229afdd3ce36a83b484608"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#a798360715b229afdd3ce36a83b484608">set_zangband_skill</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a798360715b229afdd3ce36a83b484608"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a685944ba1a48d3e25901252d4afdfc8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#a685944ba1a48d3e25901252d4afdfc8a">set_zangband_spells</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a685944ba1a48d3e25901252d4afdfc8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0bbc5785c55ff9ff74f5a243430941c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#ac0bbc5785c55ff9ff74f5a243430941c">set_zangband_race</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:ac0bbc5785c55ff9ff74f5a243430941c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8ad08c0b31741b60455810f2e6840c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#af8ad08c0b31741b60455810f2e6840c2">set_zangband_bounty_uniques</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:af8ad08c0b31741b60455810f2e6840c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3adf05d213d861a448c3142e3936b3e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#a3adf05d213d861a448c3142e3936b3e9">set_zangband_mimic</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a3adf05d213d861a448c3142e3936b3e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f054bb8e1349f55e7aa8fa8fa30824f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#a0f054bb8e1349f55e7aa8fa8fa30824f">set_zangband_holy_aura</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a0f054bb8e1349f55e7aa8fa8fa30824f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a589ea3c4bd28c0db182c39d05f794145"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#a589ea3c4bd28c0db182c39d05f794145">set_zangband_reflection</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a589ea3c4bd28c0db182c39d05f794145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7996ecb05634c4db4d94b3e0c3bb33db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#a7996ecb05634c4db4d94b3e0c3bb33db">rd_zangband_dungeon</a> (void)</td></tr>
+<tr class="separator:a7996ecb05634c4db4d94b3e0c3bb33db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accdbd467b7566a546a30b36e3335e79e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#accdbd467b7566a546a30b36e3335e79e">set_zangband_game_turns</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:accdbd467b7566a546a30b36e3335e79e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aced99bce96baa59687fbfc8d51273193"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#aced99bce96baa59687fbfc8d51273193">set_zangband_gambling_monsters</a> (int i)</td></tr>
+<tr class="separator:aced99bce96baa59687fbfc8d51273193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad11b33fbc0e114f26e95e1b0aac70c00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#ad11b33fbc0e114f26e95e1b0aac70c00">set_zangband_special_attack</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:ad11b33fbc0e114f26e95e1b0aac70c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3087a8b1788578aef13cecf1bddd2732"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#a3087a8b1788578aef13cecf1bddd2732">set_zangband_special_defense</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a3087a8b1788578aef13cecf1bddd2732"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4468691572add54c89e1cd4bac6bd923"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#a4468691572add54c89e1cd4bac6bd923">set_zangband_action</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a4468691572add54c89e1cd4bac6bd923"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af01920f1077203ddf3c6873f9f92718d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#af01920f1077203ddf3c6873f9f92718d">set_zangband_visited_towns</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:af01920f1077203ddf3c6873f9f92718d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f944b89580428c6fb2e3acb6cbc515a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#a4f944b89580428c6fb2e3acb6cbc515a">set_zangband_quest</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structquest__type.html">quest_type</a> *const q_ptr, int loading_quest_index, const <a class="el" href="h-type_8h.html#a77c612ab1c70448b936150562e7d6d44">QUEST_IDX</a> old_inside_quest)</td></tr>
+<tr class="separator:a4f944b89580428c6fb2e3acb6cbc515a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15ce97dfc48e8af47e4048b5cb148677"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#a15ce97dfc48e8af47e4048b5cb148677">set_zangband_class</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a15ce97dfc48e8af47e4048b5cb148677"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a911496a47c6b4e2bc439c14e0c545e22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#a911496a47c6b4e2bc439c14e0c545e22">set_zangband_learnt_spells</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a911496a47c6b4e2bc439c14e0c545e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35a6ca6a200fd44e7337ede17aaf62f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="load-zangband_8h.html#a35a6ca6a200fd44e7337ede17aaf62f1">set_zangband_pet</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a35a6ca6a200fd44e7337ede17aaf62f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a4746eec43fc200bf9280e29a5a8d5ccf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4746eec43fc200bf9280e29a5a8d5ccf">&#9670;&nbsp;</a></span>load_zangband_options()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_zangband_options </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a4746eec43fc200bf9280e29a5a8d5ccf_icgraph.png" border="0" usemap="#aload-zangband_8h_a4746eec43fc200bf9280e29a5a8d5ccf_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_a4746eec43fc200bf9280e29a5a8d5ccf_icgraph" id="aload-zangband_8h_a4746eec43fc200bf9280e29a5a8d5ccf_icgraph">
+<area shape="rect" title=" " alt="" coords="484,5,643,32"/>
+<area shape="rect" href="option-loader_8cpp.html#a36ab720d1336b5f52543ce6ce9b41d4e" title="ゲームオプションを読み込む / Read options (ignore most pre&#45;2.8.0 options)" alt="" coords="353,5,436,32"/>
+<area shape="rect" href="info-loader_8cpp.html#a382ca07f5c0c64622fb15c194f429029" title=" " alt="" coords="195,5,305,32"/>
+<area shape="rect" href="load_8cpp.html#af89dd931d12eb33981704a2943877f34" title="セーブファイル読み込み処理の実体 / Actually read the savefile" alt="" coords="5,5,147,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7996ecb05634c4db4d94b3e0c3bb33db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7996ecb05634c4db4d94b3e0c3bb33db">&#9670;&nbsp;</a></span>rd_zangband_dungeon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rd_zangband_dungeon </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a7996ecb05634c4db4d94b3e0c3bb33db_cgraph.png" border="0" usemap="#aload-zangband_8h_a7996ecb05634c4db4d94b3e0c3bb33db_cgraph" alt=""/></div>
+<map name="aload-zangband_8h_a7996ecb05634c4db4d94b3e0c3bb33db_cgraph" id="aload-zangband_8h_a7996ecb05634c4db4d94b3e0c3bb33db_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,157,32"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="205,5,273,32"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="321,5,389,32"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="437,5,495,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a7996ecb05634c4db4d94b3e0c3bb33db_icgraph.png" border="0" usemap="#aload-zangband_8h_a7996ecb05634c4db4d94b3e0c3bb33db_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_a7996ecb05634c4db4d94b3e0c3bb33db_icgraph" id="aload-zangband_8h_a7996ecb05634c4db4d94b3e0c3bb33db_icgraph">
+<area shape="rect" title=" " alt="" coords="467,5,619,32"/>
+<area shape="rect" href="world-loader_8cpp.html#a8fea0f64ea2bd286e506803cc4536c7f" title=" " alt="" coords="323,5,419,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="156,5,275,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="5,5,108,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4468691572add54c89e1cd4bac6bd923"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4468691572add54c89e1cd4bac6bd923">&#9670;&nbsp;</a></span>set_zangband_action()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_action </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a4468691572add54c89e1cd4bac6bd923_cgraph.png" border="0" usemap="#aload-zangband_8h_a4468691572add54c89e1cd4bac6bd923_cgraph" alt=""/></div>
+<map name="aload-zangband_8h_a4468691572add54c89e1cd4bac6bd923_cgraph" id="aload-zangband_8h_a4468691572add54c89e1cd4bac6bd923_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,151,32"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="199,5,264,32"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="312,5,369,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a4468691572add54c89e1cd4bac6bd923_icgraph.png" border="0" usemap="#aload-zangband_8h_a4468691572add54c89e1cd4bac6bd923_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_a4468691572add54c89e1cd4bac6bd923_icgraph" id="aload-zangband_8h_a4468691572add54c89e1cd4bac6bd923_icgraph">
+<area shape="rect" title=" " alt="" coords="452,5,597,32"/>
+<area shape="rect" href="player-attack-loader_8cpp.html#a1b392ddfeacc97c708eeb280c58a00f3" title=" " alt="" coords="329,5,404,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,5,281,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af8ad08c0b31741b60455810f2e6840c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8ad08c0b31741b60455810f2e6840c2">&#9670;&nbsp;</a></span>set_zangband_bounty_uniques()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_bounty_uniques </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_af8ad08c0b31741b60455810f2e6840c2_cgraph.png" border="0" usemap="#aload-zangband_8h_af8ad08c0b31741b60455810f2e6840c2_cgraph" alt=""/></div>
+<map name="aload-zangband_8h_af8ad08c0b31741b60455810f2e6840c2_cgraph" id="aload-zangband_8h_af8ad08c0b31741b60455810f2e6840c2_cgraph">
+<area shape="rect" title=" " alt="" coords="5,306,155,347"/>
+<area shape="rect" href="bounty_8cpp.html#a2f618d420b0b8cc1f3a970226abc33bd" title="賞金首となるユニークを確定する / Determine bounty uniques" alt="" coords="203,313,380,340"/>
+<area shape="rect" href="monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する" alt="" coords="467,199,571,225"/>
+<area shape="rect" href="monster-util_8cpp.html#a119044a0722d084a4fa94a064a6923d8" title="モンスター生成テーブルの重み修正(賞金首選定用)" alt="" coords="428,313,611,340"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#adff19d35f4122bbff5c1c34ad18e8e2c" title="モンスターが特殊能力上、賞金首から排除する必要があるかどうかを返す。 Is the monster &quot;alive&quot;? / Is this monster declined to be questor o..." alt="" coords="444,365,595,406"/>
+<area shape="rect" href="class_probability_table.html#a9a26ed4b275f0764cadd5497b9dcb0fa" title="確率テーブルの項目が空かどうかを調べる" alt="" coords="671,5,829,32"/>
+<area shape="rect" href="class_probability_table.html#a8ca61661e88333610e5763cf9d69a720" title="確率テーブルに項目を登録する" alt="" coords="659,56,841,83"/>
+<area shape="rect" href="class_probability_table.html#a6dbbe1d240c9fbe044e2006fe561bb86" title="確率テーブルに登録されている項目の数を取得する" alt="" coords="677,107,823,149"/>
+<area shape="rect" href="class_probability_table.html#ae443cc721a82c7aaae779be2823ff778" title="確率テーブルから複数回抽選する" alt="" coords="671,173,829,200"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="889,300,980,327"/>
+<area shape="rect" href="z-util_8cpp.html#a8ded1d651c0ddb5daeaeb60980edf285" title="平方根を切り捨て整数で返す" alt="" coords="719,275,781,301"/>
+<area shape="rect" href="class_probability_table.html#a365bea78aa7c197450cf845e31e93927" title="現在の確率テーブルのすべての項目の選択確率の合計を取得する" alt="" coords="661,325,839,352"/>
+<area shape="rect" href="monster-util_8cpp.html#af18242b02cd87d93e75b543d398cbbf2" title="モンスター生成テーブルの重みを指定条件に従って変更する。" alt="" coords="671,376,829,403"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_af8ad08c0b31741b60455810f2e6840c2_icgraph.png" border="0" usemap="#aload-zangband_8h_af8ad08c0b31741b60455810f2e6840c2_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_af8ad08c0b31741b60455810f2e6840c2_icgraph" id="aload-zangband_8h_af8ad08c0b31741b60455810f2e6840c2_icgraph">
+<area shape="rect" title=" " alt="" coords="501,5,651,47"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a34d0ca3e33cf6837d9432e08fd5c964b" title=" " alt="" coords="323,13,453,39"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="156,13,275,39"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="5,13,108,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a15ce97dfc48e8af47e4048b5cb148677"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15ce97dfc48e8af47e4048b5cb148677">&#9670;&nbsp;</a></span>set_zangband_class()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_class </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a15ce97dfc48e8af47e4048b5cb148677_cgraph.png" border="0" usemap="#aload-zangband_8h_a15ce97dfc48e8af47e4048b5cb148677_cgraph" alt=""/></div>
+<map name="aload-zangband_8h_a15ce97dfc48e8af47e4048b5cb148677_cgraph" id="aload-zangband_8h_a15ce97dfc48e8af47e4048b5cb148677_cgraph">
+<area shape="rect" title=" " alt="" coords="5,103,147,129"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="195,77,291,104"/>
+<area shape="rect" href="spells-status_8cpp.html#a6b124a1b6a39257cbc861a6c4ef5c6ec" title="プレイヤーのヒットダイスを振る / Role Hitpoints" alt="" coords="201,128,285,155"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="339,52,429,79"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="640,77,719,104"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="339,179,429,205"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="489,27,580,53"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="767,52,861,79"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="477,77,592,104"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a15ce97dfc48e8af47e4048b5cb148677_icgraph.png" border="0" usemap="#aload-zangband_8h_a15ce97dfc48e8af47e4048b5cb148677_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_a15ce97dfc48e8af47e4048b5cb148677_icgraph" id="aload-zangband_8h_a15ce97dfc48e8af47e4048b5cb148677_icgraph">
+<area shape="rect" title=" " alt="" coords="477,5,619,32"/>
+<area shape="rect" href="load_8cpp.html#af89dd931d12eb33981704a2943877f34" title="セーブファイル読み込み処理の実体 / Actually read the savefile" alt="" coords="288,5,429,32"/>
+<area shape="rect" href="load_8cpp.html#a9f3adb4871bc426fc462d139f54cdd46" title="セーブファイル読み込み処理 (UIDチェック等含む) / Reading the savefile (including UID check)" alt="" coords="157,5,240,32"/>
+<area shape="rect" href="load_8cpp.html#ac688b6edacb63309692463886f9d5cbc" title="セーブデータ読み込みのメインルーチン / Attempt to Load a &quot;savefile&quot;" alt="" coords="5,5,109,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aced99bce96baa59687fbfc8d51273193"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aced99bce96baa59687fbfc8d51273193">&#9670;&nbsp;</a></span>set_zangband_gambling_monsters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_gambling_monsters </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_aced99bce96baa59687fbfc8d51273193_cgraph.png" border="0" usemap="#aload-zangband_8h_aced99bce96baa59687fbfc8d51273193_cgraph" alt=""/></div>
+<map name="aload-zangband_8h_aced99bce96baa59687fbfc8d51273193_cgraph" id="aload-zangband_8h_aced99bce96baa59687fbfc8d51273193_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,168,47"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="216,13,284,39"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="332,13,400,39"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="448,13,505,39"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_aced99bce96baa59687fbfc8d51273193_icgraph.png" border="0" usemap="#aload-zangband_8h_aced99bce96baa59687fbfc8d51273193_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_aced99bce96baa59687fbfc8d51273193_icgraph" id="aload-zangband_8h_aced99bce96baa59687fbfc8d51273193_icgraph">
+<area shape="rect" title=" " alt="" coords="500,5,663,47"/>
+<area shape="rect" href="world-loader_8cpp.html#a097ef8b5b96bf7ebf59e09a19bfdff0b" title=" " alt="" coords="292,13,452,39"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a6b1a7b04b3f2d4fa2a76d00e3edb6fca" title=" " alt="" coords="172,13,244,39"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="5,13,124,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="accdbd467b7566a546a30b36e3335e79e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accdbd467b7566a546a30b36e3335e79e">&#9670;&nbsp;</a></span>set_zangband_game_turns()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_game_turns </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_accdbd467b7566a546a30b36e3335e79e_icgraph.png" border="0" usemap="#aload-zangband_8h_accdbd467b7566a546a30b36e3335e79e_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_accdbd467b7566a546a30b36e3335e79e_icgraph" id="aload-zangband_8h_accdbd467b7566a546a30b36e3335e79e_icgraph">
+<area shape="rect" title=" " alt="" coords="533,5,712,32"/>
+<area shape="rect" href="world-loader_8cpp.html#aa075bb0c47076d0b68f05676a80374da" title=" " alt="" coords="388,5,485,32"/>
+<area shape="rect" href="world-loader_8cpp.html#a41923212d938658a4e113ec1b6e1936f" title=" " alt="" coords="179,5,340,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0f054bb8e1349f55e7aa8fa8fa30824f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f054bb8e1349f55e7aa8fa8fa30824f">&#9670;&nbsp;</a></span>set_zangband_holy_aura()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_holy_aura </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a0f054bb8e1349f55e7aa8fa8fa30824f_icgraph.png" border="0" usemap="#aload-zangband_8h_a0f054bb8e1349f55e7aa8fa8fa30824f_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_a0f054bb8e1349f55e7aa8fa8fa30824f_icgraph" id="aload-zangband_8h_a0f054bb8e1349f55e7aa8fa8fa30824f_icgraph">
+<area shape="rect" title=" " alt="" coords="509,5,676,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a822503a72910a1881584c8f7ff90e7f1" title=" " alt="" coords="337,5,461,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#acae4ff705274b9e71e5a930078fc1cbb" title="各種時限効果を読み込む" alt="" coords="172,5,289,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="5,5,124,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a911496a47c6b4e2bc439c14e0c545e22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a911496a47c6b4e2bc439c14e0c545e22">&#9670;&nbsp;</a></span>set_zangband_learnt_spells()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_learnt_spells </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a911496a47c6b4e2bc439c14e0c545e22_icgraph.png" border="0" usemap="#aload-zangband_8h_a911496a47c6b4e2bc439c14e0c545e22_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_a911496a47c6b4e2bc439c14e0c545e22_icgraph" id="aload-zangband_8h_a911496a47c6b4e2bc439c14e0c545e22_icgraph">
+<area shape="rect" title=" " alt="" coords="460,5,603,47"/>
+<area shape="rect" href="load_8cpp.html#a1de01e8b041dc9a923999e518bf40ec7" title=" " alt="" coords="325,13,412,39"/>
+<area shape="rect" href="load_8cpp.html#af89dd931d12eb33981704a2943877f34" title="セーブファイル読み込み処理の実体 / Actually read the savefile" alt="" coords="136,13,277,39"/>
+<area shape="rect" href="load_8cpp.html#a9f3adb4871bc426fc462d139f54cdd46" title="セーブファイル読み込み処理 (UIDチェック等含む) / Reading the savefile (including UID check)" alt="" coords="5,13,88,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3adf05d213d861a448c3142e3936b3e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3adf05d213d861a448c3142e3936b3e9">&#9670;&nbsp;</a></span>set_zangband_mimic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_mimic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a3adf05d213d861a448c3142e3936b3e9_icgraph.png" border="0" usemap="#aload-zangband_8h_a3adf05d213d861a448c3142e3936b3e9_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_a3adf05d213d861a448c3142e3936b3e9_icgraph" id="aload-zangband_8h_a3adf05d213d861a448c3142e3936b3e9_icgraph">
+<area shape="rect" title=" " alt="" coords="509,5,655,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a822503a72910a1881584c8f7ff90e7f1" title=" " alt="" coords="337,5,461,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#acae4ff705274b9e71e5a930078fc1cbb" title="各種時限効果を読み込む" alt="" coords="172,5,289,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="5,5,124,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a35a6ca6a200fd44e7337ede17aaf62f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35a6ca6a200fd44e7337ede17aaf62f1">&#9670;&nbsp;</a></span>set_zangband_pet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_pet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a35a6ca6a200fd44e7337ede17aaf62f1_cgraph.png" border="0" usemap="#aload-zangband_8h_a35a6ca6a200fd44e7337ede17aaf62f1_cgraph" alt=""/></div>
+<map name="aload-zangband_8h_a35a6ca6a200fd44e7337ede17aaf62f1_cgraph" id="aload-zangband_8h_a35a6ca6a200fd44e7337ede17aaf62f1_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,133,57"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="181,5,277,32"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="197,56,262,83"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="325,56,383,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a35a6ca6a200fd44e7337ede17aaf62f1_icgraph.png" border="0" usemap="#aload-zangband_8h_a35a6ca6a200fd44e7337ede17aaf62f1_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_a35a6ca6a200fd44e7337ede17aaf62f1_icgraph" id="aload-zangband_8h_a35a6ca6a200fd44e7337ede17aaf62f1_icgraph">
+<area shape="rect" title=" " alt="" coords="477,5,605,32"/>
+<area shape="rect" href="load_8cpp.html#af89dd931d12eb33981704a2943877f34" title="セーブファイル読み込み処理の実体 / Actually read the savefile" alt="" coords="288,5,429,32"/>
+<area shape="rect" href="load_8cpp.html#a9f3adb4871bc426fc462d139f54cdd46" title="セーブファイル読み込み処理 (UIDチェック等含む) / Reading the savefile (including UID check)" alt="" coords="157,5,240,32"/>
+<area shape="rect" href="load_8cpp.html#ac688b6edacb63309692463886f9d5cbc" title="セーブデータ読み込みのメインルーチン / Attempt to Load a &quot;savefile&quot;" alt="" coords="5,5,109,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4f944b89580428c6fb2e3acb6cbc515a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f944b89580428c6fb2e3acb6cbc515a">&#9670;&nbsp;</a></span>set_zangband_quest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_quest </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquest__type.html">quest_type</a> *const&#160;</td>
+          <td class="paramname"><em>q_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>loading_quest_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#a77c612ab1c70448b936150562e7d6d44">QUEST_IDX</a>&#160;</td>
+          <td class="paramname"><em>old_inside_quest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a4f944b89580428c6fb2e3acb6cbc515a_cgraph.png" border="0" usemap="#aload-zangband_8h_a4f944b89580428c6fb2e3acb6cbc515a_cgraph" alt=""/></div>
+<map name="aload-zangband_8h_a4f944b89580428c6fb2e3acb6cbc515a_cgraph" id="aload-zangband_8h_a4f944b89580428c6fb2e3acb6cbc515a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,259,148,285"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="196,259,316,285"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="409,5,521,32"/>
+<area shape="rect" href="angband-files_8cpp.html#af8478ae9202a347c7b95688842ff7633" title=" " alt="" coords="411,56,518,83"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="410,107,519,133"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#abf28dd4c313dd9d7d0f5ae6f2fe13ed7" title="固定マップ (クエスト＆街＆広域マップ)をフロアに生成する Parse a sub&#45;file of the &quot;extra info&quot;" alt="" coords="395,331,534,373"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#a89adbf41062493c3df896908f308bdee" title=" " alt="" coords="364,397,565,424"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="419,568,510,595"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="649,603,727,629"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#a004d75eda8289edd1263b93939e95031" title="固定マップ (クエスト＆街＆広域マップ)生成時の分岐処理 Helper function for &quot;parse_fixed_map()&quot;" alt="" coords="369,157,560,184"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="663,197,713,224"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="424,208,505,235"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="645,45,731,72"/>
+<area shape="rect" href="general-parser_8cpp.html#aa7365eeb41a50984801069e5ceac540f" title="地形情報の「B:」情報をパースする Process &quot;B:&lt;Index&gt;:&lt;Command&gt;:...&quot; – Building definition" alt="" coords="622,299,754,325"/>
+<area shape="rect" href="general-parser_8cpp.html#a28dc0c306a8a3470513e70613befd73c" title="地形情報の「F:」情報をパースする Process &quot;F:&lt;letter&gt;:&lt;terrain&gt;:&lt;cave_info&gt;:&lt;monster&gt;:&lt;object&gt;:&lt;ego&gt;:&lt;artifact&gt;:&lt;trap..." alt="" coords="625,349,751,376"/>
+<area shape="rect" href="wild_8cpp.html#a276eca2704b4a40fcbfa59274b9035c1" title="w_info.txtのデータ解析 / Parse a sub&#45;file of the &quot;extra info&quot;" alt="" coords="613,400,763,427"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#a3ded96400ca064dccf4124b59f3b0588" title=" " alt="" coords="639,451,737,477"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#af1180c0d1268d10b3094f6266e3b0c6e" title=" " alt="" coords="639,501,737,528"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#a240162d8716628b91552ad2ce79944b7" title=" " alt="" coords="639,552,737,579"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#a4323380305b5c6b76772f954c5f82e5b" title="t_info、q_info、w_infoにおけるQトークンをパースする" alt="" coords="639,248,737,275"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="811,197,921,224"/>
+<area shape="rect" href="z-util_8cpp.html#a7f7463689689266c2c7dd1c0b170c7a3" title=" " alt="" coords="661,147,715,173"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a4f944b89580428c6fb2e3acb6cbc515a_icgraph.png" border="0" usemap="#aload-zangband_8h_a4f944b89580428c6fb2e3acb6cbc515a_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_a4f944b89580428c6fb2e3acb6cbc515a_icgraph" id="aload-zangband_8h_a4f944b89580428c6fb2e3acb6cbc515a_icgraph">
+<area shape="rect" title=" " alt="" coords="523,5,665,32"/>
+<area shape="rect" href="quest-loader_8cpp.html#acfc37a11127276ea500ca15b4d0d8a89" title=" " alt="" coords="361,5,475,32"/>
+<area shape="rect" href="load_8cpp.html#a07187121df961b1115ff29ef687c4841" title="セーブファイル読み込み処理 / Purpose: support for loading savefiles &#45;BEN&#45;" alt="" coords="195,5,313,32"/>
+<area shape="rect" href="load_8cpp.html#af89dd931d12eb33981704a2943877f34" title="セーブファイル読み込み処理の実体 / Actually read the savefile" alt="" coords="5,5,147,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac0bbc5785c55ff9ff74f5a243430941c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0bbc5785c55ff9ff74f5a243430941c">&#9670;&nbsp;</a></span>set_zangband_race()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_race </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_ac0bbc5785c55ff9ff74f5a243430941c_icgraph.png" border="0" usemap="#aload-zangband_8h_ac0bbc5785c55ff9ff74f5a243430941c_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_ac0bbc5785c55ff9ff74f5a243430941c_icgraph" id="aload-zangband_8h_ac0bbc5785c55ff9ff74f5a243430941c_icgraph">
+<area shape="rect" title=" " alt="" coords="436,5,571,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a7d3d876e6e3de98f2f747baf7a935acd" title=" " alt="" coords="323,5,388,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="156,5,275,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="5,5,108,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa5ea28f22677374549c6d4df157f55c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5ea28f22677374549c6d4df157f55c0">&#9670;&nbsp;</a></span>set_zangband_realm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_realm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_aa5ea28f22677374549c6d4df157f55c0_icgraph.png" border="0" usemap="#aload-zangband_8h_aa5ea28f22677374549c6d4df157f55c0_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_aa5ea28f22677374549c6d4df157f55c0_icgraph" id="aload-zangband_8h_aa5ea28f22677374549c6d4df157f55c0_icgraph">
+<area shape="rect" title=" " alt="" coords="511,5,653,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a856bd8c0fc46a785d244928cb146a592" title="セーブデータからプレイヤー基本情報を読み込む / Read player&#39;s basic info" alt="" coords="368,5,463,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="195,5,320,32"/>
+<area shape="rect" href="load_8cpp.html#af89dd931d12eb33981704a2943877f34" title="セーブファイル読み込み処理の実体 / Actually read the savefile" alt="" coords="5,5,147,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a589ea3c4bd28c0db182c39d05f794145"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a589ea3c4bd28c0db182c39d05f794145">&#9670;&nbsp;</a></span>set_zangband_reflection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_reflection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a589ea3c4bd28c0db182c39d05f794145_icgraph.png" border="0" usemap="#aload-zangband_8h_a589ea3c4bd28c0db182c39d05f794145_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_a589ea3c4bd28c0db182c39d05f794145_icgraph" id="aload-zangband_8h_a589ea3c4bd28c0db182c39d05f794145_icgraph">
+<area shape="rect" title=" " alt="" coords="509,5,672,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a822503a72910a1881584c8f7ff90e7f1" title=" " alt="" coords="337,5,461,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#acae4ff705274b9e71e5a930078fc1cbb" title="各種時限効果を読み込む" alt="" coords="172,5,289,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="5,5,124,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a798360715b229afdd3ce36a83b484608"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a798360715b229afdd3ce36a83b484608">&#9670;&nbsp;</a></span>set_zangband_skill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_skill </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a798360715b229afdd3ce36a83b484608_icgraph.png" border="0" usemap="#aload-zangband_8h_a798360715b229afdd3ce36a83b484608_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_a798360715b229afdd3ce36a83b484608_icgraph" id="aload-zangband_8h_a798360715b229afdd3ce36a83b484608_icgraph">
+<area shape="rect" title=" " alt="" coords="441,5,575,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a694e609032c48f84db72a574d8d07aa8" title=" " alt="" coords="323,5,393,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="156,5,275,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="5,5,108,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad11b33fbc0e114f26e95e1b0aac70c00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad11b33fbc0e114f26e95e1b0aac70c00">&#9670;&nbsp;</a></span>set_zangband_special_attack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_special_attack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_ad11b33fbc0e114f26e95e1b0aac70c00_cgraph.png" border="0" usemap="#aload-zangband_8h_ad11b33fbc0e114f26e95e1b0aac70c00_cgraph" alt=""/></div>
+<map name="aload-zangband_8h_ad11b33fbc0e114f26e95e1b0aac70c00_cgraph" id="aload-zangband_8h_ad11b33fbc0e114f26e95e1b0aac70c00_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,156,47"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="204,13,269,39"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="317,13,375,39"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_ad11b33fbc0e114f26e95e1b0aac70c00_icgraph.png" border="0" usemap="#aload-zangband_8h_ad11b33fbc0e114f26e95e1b0aac70c00_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_ad11b33fbc0e114f26e95e1b0aac70c00_icgraph" id="aload-zangband_8h_ad11b33fbc0e114f26e95e1b0aac70c00_icgraph">
+<area shape="rect" title=" " alt="" coords="501,5,652,47"/>
+<area shape="rect" href="player-attack-loader_8cpp.html#a4e6859872b3249ca5a8ab431444516a1" title=" " alt="" coords="329,13,453,39"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,13,281,39"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,13,131,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3087a8b1788578aef13cecf1bddd2732"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3087a8b1788578aef13cecf1bddd2732">&#9670;&nbsp;</a></span>set_zangband_special_defense()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_special_defense </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a3087a8b1788578aef13cecf1bddd2732_icgraph.png" border="0" usemap="#aload-zangband_8h_a3087a8b1788578aef13cecf1bddd2732_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_a3087a8b1788578aef13cecf1bddd2732_icgraph" id="aload-zangband_8h_a3087a8b1788578aef13cecf1bddd2732_icgraph">
+<area shape="rect" title=" " alt="" coords="511,5,661,47"/>
+<area shape="rect" href="player-attack-loader_8cpp.html#a8e4d43d05997e6755bac14844e03d73f" title=" " alt="" coords="329,13,463,39"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,13,281,39"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,13,131,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a685944ba1a48d3e25901252d4afdfc8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a685944ba1a48d3e25901252d4afdfc8a">&#9670;&nbsp;</a></span>set_zangband_spells()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_spells </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_a685944ba1a48d3e25901252d4afdfc8a_icgraph.png" border="0" usemap="#aload-zangband_8h_a685944ba1a48d3e25901252d4afdfc8a_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_a685944ba1a48d3e25901252d4afdfc8a_icgraph" id="aload-zangband_8h_a685944ba1a48d3e25901252d4afdfc8a_icgraph">
+<area shape="rect" title=" " alt="" coords="441,5,585,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a694e609032c48f84db72a574d8d07aa8" title=" " alt="" coords="323,5,393,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="156,5,275,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="5,5,108,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af01920f1077203ddf3c6873f9f92718d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af01920f1077203ddf3c6873f9f92718d">&#9670;&nbsp;</a></span>set_zangband_visited_towns()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_zangband_visited_towns </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_af01920f1077203ddf3c6873f9f92718d_cgraph.png" border="0" usemap="#aload-zangband_8h_af01920f1077203ddf3c6873f9f92718d_cgraph" alt=""/></div>
+<map name="aload-zangband_8h_af01920f1077203ddf3c6873f9f92718d_cgraph" id="aload-zangband_8h_af01920f1077203ddf3c6873f9f92718d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,152,47"/>
+<area shape="rect" href="load-util_8cpp.html#a2b230df62990bec0c7ed479aad43a4b3" title="ロードファイルポインタから符号つき32bit値を読み込んでポインタに渡す" alt="" coords="200,13,268,39"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="316,13,384,39"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="432,13,489,39"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="load-zangband_8h_af01920f1077203ddf3c6873f9f92718d_icgraph.png" border="0" usemap="#aload-zangband_8h_af01920f1077203ddf3c6873f9f92718d_icgraph" alt=""/></div>
+<map name="aload-zangband_8h_af01920f1077203ddf3c6873f9f92718d_icgraph" id="aload-zangband_8h_af01920f1077203ddf3c6873f9f92718d_icgraph">
+<area shape="rect" title=" " alt="" coords="461,5,608,47"/>
+<area shape="rect" href="world-loader_8cpp.html#aa1fbfe156e34c13bc8cc695b7aa1df03" title=" " alt="" coords="296,13,413,39"/>
+<area shape="rect" href="extra-loader_8cpp.html#a5de9da5f22db44d7b4648ee45677b349" title="その他の情報を読み込む処理" alt="" coords="179,13,248,39"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,13,131,39"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分40秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

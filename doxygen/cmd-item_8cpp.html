@@ -1,0 +1,730 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/cmd-item/cmd-item.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1feb516edb48b9003f77be11a320817a.html">cmd-item</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">cmd-item.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="cmd-item_8h_source.html">cmd-item/cmd-item.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="action-limited_8h_source.html">action/action-limited.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="activation-execution_8h_source.html">action/activation-execution.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="weapon-shield_8h_source.html">action/weapon-shield.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-open-close_8h_source.html">cmd-action/cmd-open-close.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-pet_8h_source.html">cmd-action/cmd-pet.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-eat_8h_source.html">cmd-item/cmd-eat.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-quaff_8h_source.html">cmd-item/cmd-quaff.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-read_8h_source.html">cmd-item/cmd-read.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-usestaff_8h_source.html">cmd-item/cmd-usestaff.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-zaprod_8h_source.html">cmd-item/cmd-zaprod.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-zapwand_8h_source.html">cmd-item/cmd-zapwand.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="shoot_8h_source.html">combat/shoot.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-redraw-types_8h_source.html">core/player-redraw-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-update-types_8h_source.html">core/player-update-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="window-redrawer_8h_source.html">core/window-redrawer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flavor-describer_8h_source.html">flavor/flavor-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flavor-types_8h_source.html">flavor/object-flavor-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-object_8h_source.html">floor/floor-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-options_8h_source.html">game-option/input-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-object_8h_source.html">inventory/inventory-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-requester_8h_source.html">io/input-key-requester.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="snipe-types_8h_source.html">mind/snipe-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="activation-switcher_8h_source.html">object-activation/activation-switcher.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-checker_8h_source.html">object-hook/hook-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-magic_8h_source.html">object-hook/hook-magic.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quaff-execution_8h_source.html">object-use/quaff-execution.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="read-execution_8h_source.html">object-use/read-execution.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-tester-hooker_8h_source.html">object/item-tester-hooker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-use-flags_8h_source.html">object/item-use-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="identification_8h_source.html">perception/identification.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-perception_8h_source.html">perception/object-perception.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="self-info_8h_source.html">player-info/self-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="attack-defense-types_8h_source.html">player/attack-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-class_8h_source.html">player/player-class.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-personalities-types_8h_source.html">player/player-personalities-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-race-types_8h_source.html">player/player-race-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status_8h_source.html">player/player-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-defense-types_8h_source.html">player/special-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="racial-android_8h_source.html">racial/racial-android.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="realm-hex-numbers_8h_source.html">realm/realm-hex-numbers.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="realm-types_8h_source.html">realm/realm-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="action-setter_8h_source.html">status/action-setter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quarks_8h_source.html">util/quarks.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-inventory_8h_source.html">view/display-inventory.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:ad09ef060f7bec3023c142b5d9f782b96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-item_8cpp.html#ad09ef060f7bec3023c142b5d9f782b96">do_cmd_inven</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:ad09ef060f7bec3023c142b5d9f782b96"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーのアイテムに関するコマンドの実装1 / Inventory and equipment commands  <a href="cmd-item_8cpp.html#ad09ef060f7bec3023c142b5d9f782b96">[詳解]</a><br /></td></tr>
+<tr class="separator:ad09ef060f7bec3023c142b5d9f782b96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c64a709c024d5bf297243ccb7dc090d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-item_8cpp.html#a5c64a709c024d5bf297243ccb7dc090d">do_cmd_drop</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a5c64a709c024d5bf297243ccb7dc090d"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムを落とすコマンドのメインルーチン / Drop an item  <a href="cmd-item_8cpp.html#a5c64a709c024d5bf297243ccb7dc090d">[詳解]</a><br /></td></tr>
+<tr class="separator:a5c64a709c024d5bf297243ccb7dc090d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08dcb1c3fde4e72fd96c62b5575627dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-item_8cpp.html#a08dcb1c3fde4e72fd96c62b5575627dd">do_cmd_observe</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a08dcb1c3fde4e72fd96c62b5575627dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムを調査するコマンドのメインルーチン / Observe an item which has been <em>identify</em>-ed  <a href="cmd-item_8cpp.html#a08dcb1c3fde4e72fd96c62b5575627dd">[詳解]</a><br /></td></tr>
+<tr class="separator:a08dcb1c3fde4e72fd96c62b5575627dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30efa59b31bf679025117857ece92c52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-item_8cpp.html#a30efa59b31bf679025117857ece92c52">do_cmd_uninscribe</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a30efa59b31bf679025117857ece92c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムの銘を消すコマンドのメインルーチン Remove the inscription from an object XXX Mention item (when done)?  <a href="cmd-item_8cpp.html#a30efa59b31bf679025117857ece92c52">[詳解]</a><br /></td></tr>
+<tr class="separator:a30efa59b31bf679025117857ece92c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af46524a03899d48bc4eab853368db03f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-item_8cpp.html#af46524a03899d48bc4eab853368db03f">do_cmd_inscribe</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:af46524a03899d48bc4eab853368db03f"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムの銘を刻むコマンドのメインルーチン Inscribe an object with a comment  <a href="cmd-item_8cpp.html#af46524a03899d48bc4eab853368db03f">[詳解]</a><br /></td></tr>
+<tr class="separator:af46524a03899d48bc4eab853368db03f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b14aae871e0716a5ff84d7b8106d265"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265">do_cmd_use</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a8b14aae871e0716a5ff84d7b8106d265"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item  <a href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265">[詳解]</a><br /></td></tr>
+<tr class="separator:a8b14aae871e0716a5ff84d7b8106d265"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a415fb2b959d0aee88a1799fa8f38b18e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-item_8cpp.html#a415fb2b959d0aee88a1799fa8f38b18e">do_cmd_activate</a> (<a class="el" href="structplayer__type.html">player_type</a> *user_ptr)</td></tr>
+<tr class="memdesc:a415fb2b959d0aee88a1799fa8f38b18e"><td class="mdescLeft">&#160;</td><td class="mdescRight">装備を発動するコマンドのメインルーチン /  <a href="cmd-item_8cpp.html#a415fb2b959d0aee88a1799fa8f38b18e">[詳解]</a><br /></td></tr>
+<tr class="separator:a415fb2b959d0aee88a1799fa8f38b18e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a415fb2b959d0aee88a1799fa8f38b18e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a415fb2b959d0aee88a1799fa8f38b18e">&#9670;&nbsp;</a></span>do_cmd_activate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_activate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>user_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>装備を発動するコマンドのメインルーチン / </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">user_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-item_8cpp_a415fb2b959d0aee88a1799fa8f38b18e_cgraph.png" border="0" usemap="#acmd-item_8cpp_a415fb2b959d0aee88a1799fa8f38b18e_cgraph" alt=""/></div>
+<map name="acmd-item_8cpp_a415fb2b959d0aee88a1799fa8f38b18e_cgraph" id="acmd-item_8cpp_a415fb2b959d0aee88a1799fa8f38b18e_cgraph">
+<area shape="rect" title="装備を発動するコマンドのメインルーチン /" alt="" coords="5,1771,124,1798"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="205,1366,312,1392"/>
+<area shape="rect" href="action-limited_8cpp.html#a8d29d006f56dadb8397fe5bb8a516dce" title=" " alt="" coords="200,1568,317,1595"/>
+<area shape="rect" href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="211,1771,306,1798"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="891,1999,974,2026"/>
+<area shape="rect" href="hook-magic_8cpp.html#a053a289edc606bad48ee20f6deb56dd9" title="オブジェクトをプレイヤーが魔道具として発動できるかを判定する / Hook to determine if an object is activatable" alt="" coords="172,2176,345,2203"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="449,682,521,708"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="687,1416,755,1443"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="911,606,954,632"/>
+<area shape="rect" href="player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="1273,631,1460,658"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7c7bc7aaa4ea1facc9bffef817ae15ef" title=" " alt="" coords="1508,631,1687,658"/>
+<area shape="rect" href="item-getter_8cpp.html#acd17e2a74ae5acb8bfb06fead7ed7d1b" title="オブジェクト選択のモード設定" alt="" coords="628,352,815,379"/>
+<area shape="rect" href="item-getter_8cpp.html#aae1ffe8e95349276ec2eea3c8f1aabaf" title="アイテムにタグ付けがされているかの調査処理 (のはず)" alt="" coords="664,403,779,430"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="692,454,751,480"/>
+<area shape="rect" href="inventory-util_8cpp.html#a8ecee8934da290e32a3d32c076c79c8d" title="選択したアイテムの確認処理のメインルーチン /" alt="" coords="879,1062,987,1088"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#a608d31e79fc4aba7a4903453f3c78c95" title="オブジェクト選択の汎用関数(床上アイテム用) / Let the user select an item, save its &quot;index&quot;" alt="" coords="670,859,773,886"/>
+<area shape="rect" href="inventory-util_8cpp.html#ac56c08414553f69a101a859aa01220e3" title="プレイヤーの所持/装備オブジェクトが正規のものかを返す / Auxiliary function for &quot;get_item()&quot; – test an index" alt="" coords="879,555,986,582"/>
+<area shape="rect" href="item-tester-hooker_8cpp.html#ac2523c2f0be8b9c8a2ecce14fd51887c" title="アイテムがitem_tester_hookグローバル関数ポインタの条件を満たしているかを返す汎用関数 Check an item against the item tester info" alt="" coords="1075,555,1198,582"/>
+<area shape="rect" href="inventory-util_8cpp.html#a6106140a69e84e316a7ee1172c62f4b6" title="所持/装備オブジェクトに選択タグを与える/タグに該当するオブジェクトがあるかを返す / Find the &quot;first&quot; inventory object with the given &quot;tag&quot;." alt="" coords="900,656,965,683"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="887,1112,978,1139"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3be357b2b900b29111c229eb1e975763" title=" " alt="" coords="1048,504,1225,531"/>
+<area shape="rect" href="object-info_8cpp.html#a21413bf407071b7e2f68ff548c34b165" title="オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label" alt="" coords="1084,910,1189,936"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="906,251,959,278"/>
+<area shape="rect" href="inventory-util_8cpp.html#a3b02f8780c65381593401e83a8189bf8" title="選択アルファベットラベルからプレイヤーの装備オブジェクトIDを返す /" alt="" coords="865,302,1000,328"/>
+<area shape="rect" href="inventory-util_8cpp.html#a157c018a9ae0e35bfadcf28c66106a5a" title="選択アルファベットラベルからプレイヤーの所持オブジェクトIDを返す / Convert a label into the index of an item in the &quot;inven&quot;" alt="" coords="870,352,995,379"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1097,1518,1176,1544"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="1117,960,1156,987"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="886,454,979,480"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="887,1264,979,1291"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="885,1315,980,1342"/>
+<area shape="rect" href="display-inventory_8h.html#a8041341e081743592015db17430769dd" title="メインウィンドウの右上に装備アイテムの表示させる Display the equipment." alt="" coords="873,808,992,835"/>
+<area shape="rect" href="display-inventory_8cpp.html#a403a4e82e5b9baac453b37484b0974a8" title="所持アイテムの表示を行う / Display the inventory." alt="" coords="877,910,988,936"/>
+<area shape="rect" href="item-selection-util_8cpp.html#a74d26ed39043ee25aaf6a0ebc08b69c8" title=" " alt="" coords="625,504,817,531"/>
+<area shape="rect" href="item-getter_8cpp.html#add9a7ed16f574346b91cf8019e78304b" title="装備品が妥当かを判定する" alt="" coords="877,150,988,176"/>
+<area shape="rect" href="item-getter_8cpp.html#ae132acedf2c0faba83006a85b747743d" title="インベントリ内のアイテムが妥当かを判定する" alt="" coords="670,606,773,632"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="665,1923,777,1950"/>
+<area shape="rect" href="activation-execution_8cpp.html#a30a9f7720cfaaf81f7dcc8992bdd34e7" title=" " alt="" coords="429,1974,542,2000"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="1099,2062,1175,2088"/>
+<area shape="rect" href="artifact-info_8cpp.html#a937fce3b10509fe08c9881591860d553" title="オブジェクトから能力発動IDを取得する。" alt="" coords="428,2024,543,2051"/>
+<area shape="rect" href="activation-execution_8cpp.html#a1ab73969a31f28fccf568363cc16347e" title=" " alt="" coords="393,1518,577,1544"/>
+<area shape="rect" href="action-limited_8cpp.html#a2d38e70c73ec7a8ef315889388365bb3" title=" " alt="" coords="414,1619,557,1646"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="693,1720,750,1747"/>
+<area shape="rect" href="activation-execution_8cpp.html#a4884eb17b8481177864da4a0288a6aa1" title=" " alt="" coords="409,1670,562,1696"/>
+<area shape="rect" href="activation-execution_8cpp.html#aaa27b1be977e0e349b0c6b710a513ed0" title=" " alt="" coords="397,1720,574,1747"/>
+<area shape="rect" href="activation-execution_8cpp.html#aa4ca9718f3b4f597c713e039303fdc54" title=" " alt="" coords="419,1822,551,1848"/>
+<area shape="rect" href="monster-ball_8cpp.html#a0301814245a0e3301ef7d349762fdbb5" title=" " alt="" coords="648,1568,795,1595"/>
+<area shape="rect" href="activation-util_8cpp.html#ae183fc9470aae4f58d7da4c19a7a3b27" title=" " alt="" coords="424,1467,547,1494"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="674,1999,769,2026"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="440,2227,531,2254"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="426,2176,545,2203"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-item_8cpp_a415fb2b959d0aee88a1799fa8f38b18e_icgraph.png" border="0" usemap="#acmd-item_8cpp_a415fb2b959d0aee88a1799fa8f38b18e_icgraph" alt=""/></div>
+<map name="acmd-item_8cpp_a415fb2b959d0aee88a1799fa8f38b18e_icgraph" id="acmd-item_8cpp_a415fb2b959d0aee88a1799fa8f38b18e_icgraph">
+<area shape="rect" title="装備を発動するコマンドのメインルーチン /" alt="" coords="516,5,635,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5c64a709c024d5bf297243ccb7dc090d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c64a709c024d5bf297243ccb7dc090d">&#9670;&nbsp;</a></span>do_cmd_drop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_drop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アイテムを落とすコマンドのメインルーチン / Drop an item </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-item_8cpp_a5c64a709c024d5bf297243ccb7dc090d_cgraph.png" border="0" usemap="#acmd-item_8cpp_a5c64a709c024d5bf297243ccb7dc090d_cgraph" alt=""/></div>
+<map name="acmd-item_8cpp_a5c64a709c024d5bf297243ccb7dc090d_cgraph" id="acmd-item_8cpp_a5c64a709c024d5bf297243ccb7dc090d_cgraph">
+<area shape="rect" title="アイテムを落とすコマンドのメインルーチン / Drop an item" alt="" coords="5,923,105,950"/>
+<area shape="rect" href="racial-android_8cpp.html#a79575a6f85af0b14d59eff0efe003795" title=" " alt="" coords="161,1176,283,1203"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1179,568,1257,595"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="779,1582,899,1608"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="169,872,275,899"/>
+<area shape="rect" href="inventory-object_8cpp.html#ad9fc9e3233c784e7e4edef0b300ece63" title="所持スロットから床下にオブジェクトを落とすメインルーチン / Drop (some of) a non&#45;cursed inventory/equipment item" alt="" coords="153,2190,291,2216"/>
+<area shape="rect" href="asking-player_8cpp.html#a18ddf190b45e6fbac7a074687008550f" title=" " alt="" coords="376,62,469,88"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="181,619,263,646"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="385,619,461,646"/>
+<area shape="rect" href="weapon-shield_8cpp.html#a7ed8dc21276fd8441fa7ea3d31653a4b" title="持ち替え処理" alt="" coords="364,1987,481,2014"/>
+<area shape="rect" href="player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="359,670,486,696"/>
+<area shape="rect" href="player-status_8cpp.html#a505fc5be2b6382dbcd3b279e2f2f2be5" title="プレイヤーが現在右手/左手に武器を持っているか判定する /" alt="" coords="771,1531,907,1558"/>
+<area shape="rect" href="object-value-calc_8cpp.html#a50a71dd33434317049f92e1f4a3f18dd" title="オブジェクトのフラグ類から価格を算出する / Return the value of the flags the object has..." alt="" coords="597,1227,671,1254"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="787,1126,890,1152"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="761,1278,916,1304"/>
+<area shape="rect" href="object-generator_8cpp.html#aa666d0b3f34f2bebf82e976361f59f1c" title="オブジェクトを複製する Wipe an object clean." alt="" coords="793,2139,885,2166"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="574,1430,694,1456"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a3abbd26c216ede60fb3c6e8d519cc7c6" title="オブジェクトが武器や矢弾として使用できるかを返す / Check if an object is weapon (including bows and ammo) Rare weapons/aromor..." alt="" coords="339,1075,507,1102"/>
+<area shape="rect" href="object-value_8cpp.html#a4b43c1e5db9d62cc85dce89c00b8ff3a" title="オブジェクトの真の価格を算出する / Return the value of the flags the object has..." alt="" coords="362,1176,483,1203"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="793,2240,884,2267"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a237b4b6ff1cb50402312e9b60c5c8a55" title=" " alt="" coords="773,923,904,950"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="1002,974,1093,1000"/>
+<area shape="rect" href="player-status_8cpp.html#aeff5a61381b15a0da6515408f33a5ce7" title="現在の修正後能力値を3～17及び18/xxx形式に変換する / Converts stat num into a six&#45;char (right justified) string" alt="" coords="599,720,669,747"/>
+<area shape="rect" href="base-status_8cpp.html#a343b4d5e7c5756f694b048c57ab043d0" title=" " alt="" coords="794,872,883,899"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="783,315,895,342"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="1018,315,1077,342"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="573,670,695,696"/>
+<area shape="rect" href="mutation-investor-remover_8cpp.html#a3f2ae6d11a1293d5aaba45657ea17e0a" title="プレイヤーに突然変異を与える" alt="" coords="787,518,890,544"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="1002,391,1093,418"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="593,771,675,798"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="579,822,689,848"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="607,416,661,443"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="615,214,653,240"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="1001,467,1093,494"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="1000,568,1095,595"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="605,1328,663,1355"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="785,1886,892,1912"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a0e428cd41af0f842e9e73e48a7cfc77d" title="オブジェクトが近接武器として装備できるかを返す / Melee weapons" alt="" coords="964,2190,1131,2216"/>
+<area shape="rect" href="object-stack_8cpp.html#ae384075ff186d825f05ecd11e4ca62f5" title="同種のアイテムをインベントリや床に重ね合わせたり、その判断を行う処理" alt="" coords="359,2291,487,2318"/>
+<area shape="rect" href="floor-object_8cpp.html#a62c807ef0af547704f7d1f6b825abbe5" title="生成済のオブジェクトをフロアの所定の位置に落とす。 Let an object fall to the ground at or near a location." alt="" coords="383,1734,462,1760"/>
+<area shape="rect" href="object-info_8cpp.html#a21413bf407071b7e2f68ff548c34b165" title="オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label" alt="" coords="581,2291,687,2318"/>
+<area shape="rect" href="inventory-object_8cpp.html#aaa6c1073129818534a1eb0677a237a5b" title="装備スロットからオブジェクトを外すメインルーチン / Take off (some of) a non&#45;cursed equipment item" alt="" coords="375,2342,471,2368"/>
+<area shape="rect" href="inventory-object_8cpp.html#a95bd37f416091df0360f4eec6bd12e49" title=" " alt="" coords="384,2139,461,2166"/>
+<area shape="rect" href="inventory-object_8cpp.html#a7310d550e75b9887975ad6c39f033441" title="アイテムを増減させ残り所持数メッセージを表示する / Increase the &quot;number&quot; of an item in the inventory" alt="" coords="565,2139,703,2166"/>
+<area shape="rect" href="inventory-object_8cpp.html#a58a4353e5faf4712704c8803bbbc7c84" title="所持アイテムスロットから所持数のなくなったアイテムを消去する / Erase an inventory slot if it has no more items" alt="" coords="565,2240,703,2267"/>
+<area shape="rect" href="inventory-object_8cpp.html#a7d987f9b5f55d41d114975ba40e21c47" title="オブジェクトをプレイヤーが拾って所持スロットに納めるメインルーチン / Add an item to the players inventory, and return the slot used." alt="" coords="555,2443,713,2470"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-item_8cpp_a5c64a709c024d5bf297243ccb7dc090d_icgraph.png" border="0" usemap="#acmd-item_8cpp_a5c64a709c024d5bf297243ccb7dc090d_icgraph" alt=""/></div>
+<map name="acmd-item_8cpp_a5c64a709c024d5bf297243ccb7dc090d_icgraph" id="acmd-item_8cpp_a5c64a709c024d5bf297243ccb7dc090d_icgraph">
+<area shape="rect" title="アイテムを落とすコマンドのメインルーチン / Drop an item" alt="" coords="516,5,616,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af46524a03899d48bc4eab853368db03f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af46524a03899d48bc4eab853368db03f">&#9670;&nbsp;</a></span>do_cmd_inscribe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_inscribe </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アイテムの銘を刻むコマンドのメインルーチン Inscribe an object with a comment </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-item_8cpp_af46524a03899d48bc4eab853368db03f_cgraph.png" border="0" usemap="#acmd-item_8cpp_af46524a03899d48bc4eab853368db03f_cgraph" alt=""/></div>
+<map name="acmd-item_8cpp_af46524a03899d48bc4eab853368db03f_cgraph" id="acmd-item_8cpp_af46524a03899d48bc4eab853368db03f_cgraph">
+<area shape="rect" title="アイテムの銘を刻むコマンドのメインルーチン Inscribe an object with a comment" alt="" coords="5,1685,125,1712"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="173,1153,280,1180"/>
+<area shape="rect" href="quarks_8cpp.html#a95cf419856c525009b78e5246327f405" title=" " alt="" coords="988,1229,1064,1256"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="1203,976,1309,1003"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="987,1533,1065,1560"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="759,1533,837,1560"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="328,1685,419,1712"/>
+<area shape="rect" href="quarks_8cpp.html#a6fada8d9acfd20a42a8a9887484a1802" title=" " alt="" coords="185,1837,268,1864"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="337,799,409,825"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="339,1153,407,1180"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="777,520,819,547"/>
+<area shape="rect" href="player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="1163,393,1349,420"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7c7bc7aaa4ea1facc9bffef817ae15ef" title=" " alt="" coords="1397,393,1576,420"/>
+<area shape="rect" href="item-getter_8cpp.html#acd17e2a74ae5acb8bfb06fead7ed7d1b" title="オブジェクト選択のモード設定" alt="" coords="469,875,656,901"/>
+<area shape="rect" href="item-getter_8cpp.html#aae1ffe8e95349276ec2eea3c8f1aabaf" title="アイテムにタグ付けがされているかの調査処理 (のはず)" alt="" coords="505,925,620,952"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="533,976,592,1003"/>
+<area shape="rect" href="inventory-util_8cpp.html#a8ecee8934da290e32a3d32c076c79c8d" title="選択したアイテムの確認処理のメインルーチン /" alt="" coords="744,1229,852,1256"/>
+<area shape="rect" href="inventory-util_8cpp.html#abe55b4fa8f67c4788feaab1f7289a715" title="選択したアイテムの確認処理の補助 / Verify the choice of an item." alt="" coords="1001,1103,1051,1129"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#a608d31e79fc4aba7a4903453f3c78c95" title="オブジェクト選択の汎用関数(床上アイテム用) / Let the user select an item, save its &quot;index&quot;" alt="" coords="511,773,614,800"/>
+<area shape="rect" href="inventory-util_8cpp.html#ac56c08414553f69a101a859aa01220e3" title="プレイヤーの所持/装備オブジェクトが正規のものかを返す / Auxiliary function for &quot;get_item()&quot; – test an index" alt="" coords="745,571,851,597"/>
+<area shape="rect" href="item-tester-hooker_8cpp.html#ac2523c2f0be8b9c8a2ecce14fd51887c" title="アイテムがitem_tester_hookグローバル関数ポインタの条件を満たしているかを返す汎用関数 Check an item against the item tester info" alt="" coords="965,571,1087,597"/>
+<area shape="rect" href="inventory-util_8cpp.html#a6106140a69e84e316a7ee1172c62f4b6" title="所持/装備オブジェクトに選択タグを与える/タグに該当するオブジェクトがあるかを返す / Find the &quot;first&quot; inventory object with the given &quot;tag&quot;." alt="" coords="765,1077,831,1104"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="753,1331,843,1357"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3be357b2b900b29111c229eb1e975763" title=" " alt="" coords="937,115,1115,141"/>
+<area shape="rect" href="object-info_8cpp.html#a21413bf407071b7e2f68ff548c34b165" title="オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label" alt="" coords="973,773,1079,800"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="771,1381,825,1408"/>
+<area shape="rect" href="inventory-util_8cpp.html#a3b02f8780c65381593401e83a8189bf8" title="選択アルファベットラベルからプレイヤーの装備オブジェクトIDを返す /" alt="" coords="731,317,865,344"/>
+<area shape="rect" href="inventory-util_8cpp.html#a157c018a9ae0e35bfadcf28c66106a5a" title="選択アルファベットラベルからプレイヤーの所持オブジェクトIDを返す / Convert a label into the index of an item in the &quot;inven&quot;" alt="" coords="735,368,861,395"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="1007,976,1045,1003"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="751,419,845,445"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="752,1432,844,1459"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="751,1483,845,1509"/>
+<area shape="rect" href="display-inventory_8h.html#a8041341e081743592015db17430769dd" title="メインウィンドウの右上に装備アイテムの表示させる Display the equipment." alt="" coords="739,672,857,699"/>
+<area shape="rect" href="display-inventory_8cpp.html#a403a4e82e5b9baac453b37484b0974a8" title="所持アイテムの表示を行う / Display the inventory." alt="" coords="743,925,853,952"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#abb13bedcb0e77c425d362fb31288215e" title="サブウィンドウに所持品、装備品リストの表示を行う / Flip &quot;inven&quot; and &quot;equip&quot; in any sub&#45;windows" alt="" coords="707,469,889,496"/>
+<area shape="rect" href="item-selection-util_8cpp.html#a74d26ed39043ee25aaf6a0ebc08b69c8" title=" " alt="" coords="467,1027,659,1053"/>
+<area shape="rect" href="item-getter_8cpp.html#add9a7ed16f574346b91cf8019e78304b" title="装備品が妥当かを判定する" alt="" coords="743,115,853,141"/>
+<area shape="rect" href="item-getter_8cpp.html#ae132acedf2c0faba83006a85b747743d" title="インベントリ内のアイテムが妥当かを判定する" alt="" coords="511,267,614,293"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-item_8cpp_af46524a03899d48bc4eab853368db03f_icgraph.png" border="0" usemap="#acmd-item_8cpp_af46524a03899d48bc4eab853368db03f_icgraph" alt=""/></div>
+<map name="acmd-item_8cpp_af46524a03899d48bc4eab853368db03f_icgraph" id="acmd-item_8cpp_af46524a03899d48bc4eab853368db03f_icgraph">
+<area shape="rect" title="アイテムの銘を刻むコマンドのメインルーチン Inscribe an object with a comment" alt="" coords="884,5,1004,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="668,31,836,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="516,31,620,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad09ef060f7bec3023c142b5d9f782b96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad09ef060f7bec3023c142b5d9f782b96">&#9670;&nbsp;</a></span>do_cmd_inven()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_inven </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーのアイテムに関するコマンドの実装1 / Inventory and equipment commands </p>
+<dl class="section date"><dt>日付</dt><dd>2014/01/02 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Copyright (c) 1997 Ben Harrison, James E. Wilson, Robert A. Koeneke</dd></dl>
+<p>This software may be copied and distributed for educational, research, and not for profit purposes provided that this copyright and statement are included in all such copies. Other copyrights may also apply.</p>
+<p>持ち物一覧を表示するコマンドのメインルーチン / Display inventory_list </p><dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-item_8cpp_ad09ef060f7bec3023c142b5d9f782b96_cgraph.png" border="0" usemap="#acmd-item_8cpp_ad09ef060f7bec3023c142b5d9f782b96_cgraph" alt=""/></div>
+<map name="acmd-item_8cpp_ad09ef060f7bec3023c142b5d9f782b96_cgraph" id="acmd-item_8cpp_ad09ef060f7bec3023c142b5d9f782b96_cgraph">
+<area shape="rect" title="プレイヤーのアイテムに関するコマンドの実装1 / Inventory and equipment commands" alt="" coords="5,537,109,564"/>
+<area shape="rect" href="player-status_8cpp.html#a23e950e374e9cc0fbaf49ad00b82977c" title="所持品総重量を計算する" alt="" coords="157,360,305,387"/>
+<area shape="rect" href="player-status_8cpp.html#a8a2a6f400fbb8cdafa4731b607116ff2" title="プレイヤーの所持重量制限を計算する / Computes current weight limit." alt="" coords="171,411,292,437"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="205,461,258,488"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="392,664,431,691"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="185,563,277,589"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="184,613,279,640"/>
+<area shape="rect" href="display-inventory_8cpp.html#a403a4e82e5b9baac453b37484b0974a8" title="所持アイテムの表示を行う / Display the inventory." alt="" coords="176,664,287,691"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="359,715,463,741"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="360,107,463,133"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="533,5,632,32"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="696,233,773,260"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="371,360,452,387"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="539,512,626,539"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="353,461,469,488"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="370,512,453,539"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="353,563,469,589"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="353,613,469,640"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="537,56,628,83"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="541,107,624,133"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="535,157,630,184"/>
+<area shape="rect" href="macro-util_8cpp.html#a1e9851f9b9e0a0e51628a231ca95fcc1" title=" " alt="" coords="519,309,646,336"/>
+<area shape="rect" href="macro-util_8cpp.html#a7f48a1923076b3b314f1bc58913a2a59" title=" " alt="" coords="517,360,648,387"/>
+<area shape="rect" href="macro-util_8cpp.html#ada693de344c97bc09a586100f25919dd" title=" " alt="" coords="521,411,645,437"/>
+<area shape="rect" href="z-term_8cpp.html#a020ef4815c101960b4fdad94c4e5b59b" title=" " alt="" coords="527,461,638,488"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-item_8cpp_ad09ef060f7bec3023c142b5d9f782b96_icgraph.png" border="0" usemap="#acmd-item_8cpp_ad09ef060f7bec3023c142b5d9f782b96_icgraph" alt=""/></div>
+<map name="acmd-item_8cpp_ad09ef060f7bec3023c142b5d9f782b96_icgraph" id="acmd-item_8cpp_ad09ef060f7bec3023c142b5d9f782b96_icgraph">
+<area shape="rect" title="プレイヤーのアイテムに関するコマンドの実装1 / Inventory and equipment commands" alt="" coords="884,5,988,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="668,31,836,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="516,31,620,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a08dcb1c3fde4e72fd96c62b5575627dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08dcb1c3fde4e72fd96c62b5575627dd">&#9670;&nbsp;</a></span>do_cmd_observe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_observe </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アイテムを調査するコマンドのメインルーチン / Observe an item which has been <em>identify</em>-ed </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-item_8cpp_a08dcb1c3fde4e72fd96c62b5575627dd_cgraph.png" border="0" usemap="#acmd-item_8cpp_a08dcb1c3fde4e72fd96c62b5575627dd_cgraph" alt=""/></div>
+<map name="acmd-item_8cpp_a08dcb1c3fde4e72fd96c62b5575627dd_cgraph" id="acmd-item_8cpp_a08dcb1c3fde4e72fd96c62b5575627dd_cgraph">
+<area shape="rect" title="アイテムを調査するコマンドのメインルーチン / Observe an item which has been identify&#45;ed" alt="" coords="5,1762,124,1788"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="193,1306,299,1332"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="1243,1280,1349,1307"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1027,1534,1105,1560"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="368,1787,459,1814"/>
+<area shape="rect" href="object-perception_8cpp.html#ab8b89c67f70a877a7964cca6a2f139eb" title=" " alt="" coords="172,1888,320,1915"/>
+<area shape="rect" href="identification_8cpp.html#a055287a06fa0fbaee3ce11ef22031084" title="オブジェクトの*鑑定*内容を詳述して表示する / Describe a &quot;fully identified&quot; item" alt="" coords="551,1534,654,1560"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="377,900,449,927"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="379,1306,447,1332"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="817,419,859,446"/>
+<area shape="rect" href="player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="1203,295,1389,322"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7c7bc7aaa4ea1facc9bffef817ae15ef" title=" " alt="" coords="1437,295,1616,322"/>
+<area shape="rect" href="item-getter_8cpp.html#acd17e2a74ae5acb8bfb06fead7ed7d1b" title="オブジェクト選択のモード設定" alt="" coords="509,1078,696,1104"/>
+<area shape="rect" href="item-getter_8cpp.html#aae1ffe8e95349276ec2eea3c8f1aabaf" title="アイテムにタグ付けがされているかの調査処理 (のはず)" alt="" coords="545,1128,660,1155"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="809,1686,867,1712"/>
+<area shape="rect" href="inventory-util_8cpp.html#a8ecee8934da290e32a3d32c076c79c8d" title="選択したアイテムの確認処理のメインルーチン /" alt="" coords="784,1280,892,1307"/>
+<area shape="rect" href="inventory-util_8cpp.html#abe55b4fa8f67c4788feaab1f7289a715" title="選択したアイテムの確認処理の補助 / Verify the choice of an item." alt="" coords="1041,1280,1091,1307"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#a608d31e79fc4aba7a4903453f3c78c95" title="オブジェクト選択の汎用関数(床上アイテム用) / Let the user select an item, save its &quot;index&quot;" alt="" coords="551,875,654,902"/>
+<area shape="rect" href="inventory-util_8cpp.html#ac56c08414553f69a101a859aa01220e3" title="プレイヤーの所持/装備オブジェクトが正規のものかを返す / Auxiliary function for &quot;get_item()&quot; – test an index" alt="" coords="785,470,891,496"/>
+<area shape="rect" href="item-tester-hooker_8cpp.html#ac2523c2f0be8b9c8a2ecce14fd51887c" title="アイテムがitem_tester_hookグローバル関数ポインタの条件を満たしているかを返す汎用関数 Check an item against the item tester info" alt="" coords="1005,318,1127,344"/>
+<area shape="rect" href="inventory-util_8cpp.html#a6106140a69e84e316a7ee1172c62f4b6" title="所持/装備オブジェクトに選択タグを与える/タグに該当するオブジェクトがあるかを返す / Find the &quot;first&quot; inventory object with the given &quot;tag&quot;." alt="" coords="805,318,871,344"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="793,1078,883,1104"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3be357b2b900b29111c229eb1e975763" title=" " alt="" coords="977,115,1155,142"/>
+<area shape="rect" href="object-info_8cpp.html#a21413bf407071b7e2f68ff548c34b165" title="オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label" alt="" coords="1013,647,1119,674"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="811,1331,865,1358"/>
+<area shape="rect" href="inventory-util_8cpp.html#a3b02f8780c65381593401e83a8189bf8" title="選択アルファベットラベルからプレイヤーの装備オブジェクトIDを返す /" alt="" coords="771,1128,905,1155"/>
+<area shape="rect" href="inventory-util_8cpp.html#a157c018a9ae0e35bfadcf28c66106a5a" title="選択アルファベットラベルからプレイヤーの所持オブジェクトIDを返す / Convert a label into the index of an item in the &quot;inven&quot;" alt="" coords="775,1179,901,1206"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="1047,774,1085,800"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="791,1230,885,1256"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="792,1483,884,1510"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="791,1584,885,1611"/>
+<area shape="rect" href="display-inventory_8h.html#a8041341e081743592015db17430769dd" title="メインウィンドウの右上に装備アイテムの表示させる Display the equipment." alt="" coords="779,571,897,598"/>
+<area shape="rect" href="display-inventory_8cpp.html#a403a4e82e5b9baac453b37484b0974a8" title="所持アイテムの表示を行う / Display the inventory." alt="" coords="783,723,893,750"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#abb13bedcb0e77c425d362fb31288215e" title="サブウィンドウに所持品、装備品リストの表示を行う / Flip &quot;inven&quot; and &quot;equip&quot; in any sub&#45;windows" alt="" coords="747,368,929,395"/>
+<area shape="rect" href="item-selection-util_8cpp.html#a74d26ed39043ee25aaf6a0ebc08b69c8" title=" " alt="" coords="507,1179,699,1206"/>
+<area shape="rect" href="item-getter_8cpp.html#add9a7ed16f574346b91cf8019e78304b" title="装備品が妥当かを判定する" alt="" coords="783,115,893,142"/>
+<area shape="rect" href="item-getter_8cpp.html#ae132acedf2c0faba83006a85b747743d" title="インベントリ内のアイテムが妥当かを判定する" alt="" coords="551,268,654,295"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-item_8cpp_a08dcb1c3fde4e72fd96c62b5575627dd_icgraph.png" border="0" usemap="#acmd-item_8cpp_a08dcb1c3fde4e72fd96c62b5575627dd_icgraph" alt=""/></div>
+<map name="acmd-item_8cpp_a08dcb1c3fde4e72fd96c62b5575627dd_icgraph" id="acmd-item_8cpp_a08dcb1c3fde4e72fd96c62b5575627dd_icgraph">
+<area shape="rect" title="アイテムを調査するコマンドのメインルーチン / Observe an item which has been identify&#45;ed" alt="" coords="884,5,1003,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="668,31,836,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="516,31,620,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a30efa59b31bf679025117857ece92c52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30efa59b31bf679025117857ece92c52">&#9670;&nbsp;</a></span>do_cmd_uninscribe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_uninscribe </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アイテムの銘を消すコマンドのメインルーチン Remove the inscription from an object XXX Mention item (when done)? </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-item_8cpp_a30efa59b31bf679025117857ece92c52_cgraph.png" border="0" usemap="#acmd-item_8cpp_a30efa59b31bf679025117857ece92c52_cgraph" alt=""/></div>
+<map name="acmd-item_8cpp_a30efa59b31bf679025117857ece92c52_cgraph" id="acmd-item_8cpp_a30efa59b31bf679025117857ece92c52_cgraph">
+<area shape="rect" title="アイテムの銘を消すコマンドのメインルーチン Remove the inscription from an object XXX Mention item (when done)?" alt="" coords="5,1354,140,1381"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="188,949,295,975"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="983,1481,1061,1507"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="343,949,415,975"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="345,898,413,925"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="773,417,815,443"/>
+<area shape="rect" href="player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="1159,398,1345,425"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7c7bc7aaa4ea1facc9bffef817ae15ef" title=" " alt="" coords="1393,398,1572,425"/>
+<area shape="rect" href="item-getter_8cpp.html#acd17e2a74ae5acb8bfb06fead7ed7d1b" title="オブジェクト選択のモード設定" alt="" coords="465,1582,652,1609"/>
+<area shape="rect" href="item-getter_8cpp.html#aae1ffe8e95349276ec2eea3c8f1aabaf" title="アイテムにタグ付けがされているかの調査処理 (のはず)" alt="" coords="501,1633,616,1659"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="529,1683,588,1710"/>
+<area shape="rect" href="inventory-util_8cpp.html#a8ecee8934da290e32a3d32c076c79c8d" title="選択したアイテムの確認処理のメインルーチン /" alt="" coords="740,974,848,1001"/>
+<area shape="rect" href="inventory-util_8cpp.html#abe55b4fa8f67c4788feaab1f7289a715" title="選択したアイテムの確認処理の補助 / Verify the choice of an item." alt="" coords="997,974,1047,1001"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#a608d31e79fc4aba7a4903453f3c78c95" title="オブジェクト選択の汎用関数(床上アイテム用) / Let the user select an item, save its &quot;index&quot;" alt="" coords="507,923,610,950"/>
+<area shape="rect" href="inventory-util_8cpp.html#ac56c08414553f69a101a859aa01220e3" title="プレイヤーの所持/装備オブジェクトが正規のものかを返す / Auxiliary function for &quot;get_item()&quot; – test an index" alt="" coords="741,366,847,393"/>
+<area shape="rect" href="item-tester-hooker_8cpp.html#ac2523c2f0be8b9c8a2ecce14fd51887c" title="アイテムがitem_tester_hookグローバル関数ポインタの条件を満たしているかを返す汎用関数 Check an item against the item tester info" alt="" coords="961,366,1083,393"/>
+<area shape="rect" href="inventory-util_8cpp.html#a6106140a69e84e316a7ee1172c62f4b6" title="所持/装備オブジェクトに選択タグを与える/タグに該当するオブジェクトがあるかを返す / Find the &quot;first&quot; inventory object with the given &quot;tag&quot;." alt="" coords="761,315,827,342"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="749,1075,839,1102"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3be357b2b900b29111c229eb1e975763" title=" " alt="" coords="933,315,1111,342"/>
+<area shape="rect" href="object-info_8cpp.html#a21413bf407071b7e2f68ff548c34b165" title="オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label" alt="" coords="969,594,1075,621"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="767,1126,821,1153"/>
+<area shape="rect" href="inventory-util_8cpp.html#a3b02f8780c65381593401e83a8189bf8" title="選択アルファベットラベルからプレイヤーの装備オブジェクトIDを返す /" alt="" coords="727,1177,861,1203"/>
+<area shape="rect" href="inventory-util_8cpp.html#a157c018a9ae0e35bfadcf28c66106a5a" title="選択アルファベットラベルからプレイヤーの所持オブジェクトIDを返す / Convert a label into the index of an item in the &quot;inven&quot;" alt="" coords="731,1227,857,1254"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="1003,645,1041,671"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="747,1278,841,1305"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="748,1481,840,1507"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="747,1430,841,1457"/>
+<area shape="rect" href="display-inventory_8h.html#a8041341e081743592015db17430769dd" title="メインウィンドウの右上に装備アイテムの表示させる Display the equipment." alt="" coords="735,518,853,545"/>
+<area shape="rect" href="display-inventory_8cpp.html#a403a4e82e5b9baac453b37484b0974a8" title="所持アイテムの表示を行う / Display the inventory." alt="" coords="739,619,849,646"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#abb13bedcb0e77c425d362fb31288215e" title="サブウィンドウに所持品、装備品リストの表示を行う / Flip &quot;inven&quot; and &quot;equip&quot; in any sub&#45;windows" alt="" coords="703,1329,885,1355"/>
+<area shape="rect" href="item-selection-util_8cpp.html#a74d26ed39043ee25aaf6a0ebc08b69c8" title=" " alt="" coords="463,113,655,139"/>
+<area shape="rect" href="item-getter_8cpp.html#add9a7ed16f574346b91cf8019e78304b" title="装備品が妥当かを判定する" alt="" coords="739,163,849,190"/>
+<area shape="rect" href="item-getter_8cpp.html#ae132acedf2c0faba83006a85b747743d" title="インベントリ内のアイテムが妥当かを判定する" alt="" coords="507,315,610,342"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-item_8cpp_a30efa59b31bf679025117857ece92c52_icgraph.png" border="0" usemap="#acmd-item_8cpp_a30efa59b31bf679025117857ece92c52_icgraph" alt=""/></div>
+<map name="acmd-item_8cpp_a30efa59b31bf679025117857ece92c52_icgraph" id="acmd-item_8cpp_a30efa59b31bf679025117857ece92c52_icgraph">
+<area shape="rect" title="アイテムの銘を消すコマンドのメインルーチン Remove the inscription from an object XXX Mention item (when done)?" alt="" coords="884,5,1019,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="668,31,836,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="516,31,620,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8b14aae871e0716a5ff84d7b8106d265"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b14aae871e0716a5ff84d7b8106d265">&#9670;&nbsp;</a></span>do_cmd_use()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_use </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<p>XXX - Add actions for other item types </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-item_8cpp_a8b14aae871e0716a5ff84d7b8106d265_cgraph.png" border="0" usemap="#acmd-item_8cpp_a8b14aae871e0716a5ff84d7b8106d265_cgraph" alt=""/></div>
+<map name="acmd-item_8cpp_a8b14aae871e0716a5ff84d7b8106d265_cgraph" id="acmd-item_8cpp_a8b14aae871e0716a5ff84d7b8106d265_cgraph">
+<area shape="rect" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="5,1880,101,1907"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="383,1981,490,2008"/>
+<area shape="rect" href="action-limited_8cpp.html#a8d29d006f56dadb8397fe5bb8a516dce" title=" " alt="" coords="607,107,724,133"/>
+<area shape="rect" href="action-limited_8cpp.html#a071fa928301cca389bfefc56eded6e02" title=" " alt="" coords="169,56,281,83"/>
+<area shape="rect" href="action-limited_8cpp.html#ab6e41ead2ec3155cacbd47e788347578" title=" " alt="" coords="597,157,734,184"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#ae9a608d582edd6d821e9ba557bcc1a1e" title="「くさびを打つ」動作コマンドのメインルーチン / Jam a closed door with a spike" alt="" coords="171,1069,278,1096"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="624,1221,707,1248"/>
+<area shape="rect" href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="177,537,272,564"/>
+<area shape="rect" href="cmd-zapwand_8cpp.html#a563e649e00ffd51df5645994760a4fe5" title="魔法棒を使うコマンドのサブルーチン / Aim a wand (from the pack or floor)." alt="" coords="171,1880,279,1907"/>
+<area shape="rect" href="cmd-eat_8cpp.html#a77b0b5d933aedbf6ab8e24616c2ce1fd" title="実際にアイテムを食おうとするコマンドのサブルーチン" alt="" coords="175,3501,274,3528"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="191,1475,258,1501"/>
+<area shape="rect" href="quaff-execution_8cpp.html#a663518dc63d12a75833fcd01acd2f364" title="薬を飲むコマンドのサブルーチン / Quaff a potion (from the pack or the floor)" alt="" coords="165,3349,284,3376"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="187,3096,262,3123"/>
+<area shape="rect" href="cmd-usestaff_8cpp.html#a53af198ed4ce8898892ed6324862b5ad" title="杖を使うコマンドのサブルーチン / Use a staff." alt="" coords="173,2361,276,2388"/>
+<area shape="rect" href="cmd-zaprod_8cpp.html#ab0a091f1dc1f9ba0779afcd7fead675d" title="ロッドを使うコマンドのサブルーチン / Activate (zap) a Rod" alt="" coords="177,2640,273,2667"/>
+<area shape="rect" href="hook-magic_8cpp.html#ae2cb9c18cea178cf1327975ba3e05f91" title="オブジェクトをプレイヤーが簡易使用コマンドで利用できるかを判定する / Hook to determine if an object is useable" alt="" coords="149,3552,300,3579"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="629,1905,701,1932"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="631,2615,699,2641"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="805,1348,884,1375"/>
+<area shape="rect" href="grid_8cpp.html#a90a8ac3022bff7cdeddf03830a82b39d" title="指定された座標をプレイヤー収められていない状態かどうか / Returns true if the player&#39;s grid is dark" alt="" coords="407,5,467,32"/>
+<area shape="rect" href="grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="383,1120,491,1147"/>
+<area shape="rect" href="cmd-attack_8cpp.html#a8e48cd6d2ca0901e5c89e19e30aab0b3" title="プレイヤーの打撃処理メインルーチン" alt="" coords="381,1272,492,1299"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="620,1272,711,1299"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="807,2108,883,2135"/>
+<area shape="rect" href="grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="381,816,492,843"/>
+<area shape="rect" href="target-getter_8cpp.html#aa83483a326fa08c6c2ca85fb75d7442f" title=" " alt="" coords="393,1019,480,1045"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#a4e0b145a460cbf1f320af06772a088ad" title="「くさびを打つ」ために必要なオブジェクトを所持しているかどうかの判定を返す / Find the index of some &quot;spikes&quot;, if possible." alt="" coords="397,867,476,893"/>
+<area shape="rect" href="inventory-object_8cpp.html#a95bd37f416091df0360f4eec6bd12e49" title=" " alt="" coords="398,2893,475,2920"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="625,2336,705,2363"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="637,2196,694,2223"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="381,360,493,387"/>
+<area shape="rect" href="activation-execution_8cpp.html#a30a9f7720cfaaf81f7dcc8992bdd34e7" title=" " alt="" coords="380,512,493,539"/>
+<area shape="rect" href="artifact-info_8cpp.html#a937fce3b10509fe08c9881591860d553" title="オブジェクトから能力発動IDを取得する。" alt="" coords="379,563,494,589"/>
+<area shape="rect" href="activation-execution_8cpp.html#a1ab73969a31f28fccf568363cc16347e" title=" " alt="" coords="573,208,757,235"/>
+<area shape="rect" href="action-limited_8cpp.html#a2d38e70c73ec7a8ef315889388365bb3" title=" " alt="" coords="365,2285,508,2312"/>
+<area shape="rect" href="activation-execution_8cpp.html#a4884eb17b8481177864da4a0288a6aa1" title=" " alt="" coords="360,613,513,640"/>
+<area shape="rect" href="activation-execution_8cpp.html#aaa27b1be977e0e349b0c6b710a513ed0" title=" " alt="" coords="348,411,525,437"/>
+<area shape="rect" href="activation-execution_8cpp.html#aa4ca9718f3b4f597c713e039303fdc54" title=" " alt="" coords="371,461,503,488"/>
+<area shape="rect" href="monster-ball_8cpp.html#a0301814245a0e3301ef7d349762fdbb5" title=" " alt="" coords="592,259,739,285"/>
+<area shape="rect" href="activation-util_8cpp.html#ae183fc9470aae4f58d7da4c19a7a3b27" title=" " alt="" coords="375,765,498,792"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="641,2387,690,2413"/>
+<area shape="rect" href="floor-object_8cpp.html#a3e302f3718f30dd5354c44d26d271eea" title="床上の魔道具の残り残量メッセージを表示する / Describe the charges on an item on the floor." alt="" coords="371,1677,502,1704"/>
+<area shape="rect" href="experience_8cpp.html#a526ec6c3a82867a6a0152ffeb12a720d" title=" " alt="" coords="399,2944,474,2971"/>
+<area shape="rect" href="target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="392,1576,481,1603"/>
+<area shape="rect" href="object-describer_8cpp.html#aab75c5ef108dc35b353bbf2353792639" title="魔道具の使用回数の残量を示すメッセージを表示する / Describe the charges on an item in the inventory." alt="" coords="369,1627,505,1653"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f7ad5a9cb44932d39bbf0c31a37c946" title="オブジェクトを＊鑑定＊済にする / The player is now aware of the effects of the given object." alt="" coords="387,3045,486,3072"/>
+<area shape="rect" href="object-perception_8cpp.html#a377c00bc8a6d66ec30288f1e3be60e9f" title=" " alt="" coords="608,3045,723,3072"/>
+<area shape="rect" href="object-perception_8cpp.html#a78195fd3f76f71dd37cd6b691f729891" title="オブジェクトを試行済にする / Something has been &quot;sampled&quot;" alt="" coords="392,2995,481,3021"/>
+<area shape="rect" href="cmd-zapwand_8cpp.html#a31d2ae8a16eb78a6205a02588fbbcc77" title="魔法棒の効果を発動する" alt="" coords="391,1779,482,1805"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="381,4059,492,4085"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-item_8cpp_a8b14aae871e0716a5ff84d7b8106d265_icgraph.png" border="0" usemap="#acmd-item_8cpp_a8b14aae871e0716a5ff84d7b8106d265_icgraph" alt=""/></div>
+<map name="acmd-item_8cpp_a8b14aae871e0716a5ff84d7b8106d265_icgraph" id="acmd-item_8cpp_a8b14aae871e0716a5ff84d7b8106d265_icgraph">
+<area shape="rect" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="516,5,612,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分32秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

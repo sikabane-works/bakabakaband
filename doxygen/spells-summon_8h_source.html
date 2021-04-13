@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/spell/spells-summon.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b288867d93d6ddd637031b6cda0e8b43.html">spell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">spells-summon.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="spells-summon_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">enum</span> <a class="code" href="summon-types_8h.html#a89c2c6b840344f16466ff955a555bf64">summon_type</a> : int;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-summon_8h.html#a9792c335db5c02d7c46a2166964fabb1">trump_summoning</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <span class="keywordtype">int</span> num, <span class="keywordtype">bool</span> pet, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> lev, <a class="code" href="summon-types_8h.html#a89c2c6b840344f16466ff955a555bf64">summon_type</a> type, <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> mode);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-summon_8h.html#ac86ec05773a02c3530f9f6444a4631d6">cast_summon_demon</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">int</span> power);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-summon_8h.html#a2c742fe160592cee467ed28bba94c40d">cast_summon_undead</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">int</span> power);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-summon_8h.html#adf12d4348cc51c03fb4fd7561534b42d">cast_summon_hound</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">int</span> power);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-summon_8h.html#af7daa42518560cfa475480591b4b95dc">cast_summon_elemental</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">int</span> power);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-summon_8h.html#aa31ec5b47ad384b6d11d1b541c7f5dca">cast_summon_octopus</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-summon_8h.html#ab7537979a7135fb50d2a6f24598b62bb">item_tester_offer</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-summon_8h.html#a9fed6d127284194f2a61e5fc07171536">cast_summon_greater_demon</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-summon_8h.html#acc089f5610626fcb4fa6ae70bc831e9b">summon_kin_player</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> level, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> mode);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spells-summon_8h.html#a7e2d3c870d4426892e3f3c8c11d11a3e">mitokohmon</a>(<a class="code" href="structplayer__type.html">player_type</a> *kohmon_ptr);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">int</span> <a class="code" href="spells-summon_8h.html#ad5a77675cad59a14d66ef2c6d12f01c9">summon_cyber</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> who, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">int</span> <a class="code" href="spells-summon_8h.html#a7e56fd88af9905231b5b3061bf76f672">activate_hi_summon</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <span class="keywordtype">bool</span> can_pet);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spells-summon_8h.html#ae25b9862f324f43e7bd22de4bba02963">cast_invoke_spirits</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a1c8b80a20fb5396ff07a523b01112c47"><div class="ttname"><a href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a></div><div class="ttdeci">s32b DEPTH</div><div class="ttdoc">ゲーム中の階層レベルの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:194</div></div>
+<div class="ttc" id="ah-type_8h_html_a28b4289b95abbeb7a422178cfa43525f"><div class="ttname"><a href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a></div><div class="ttdeci">int DIRECTION</div><div class="ttdoc">ゲーム中の方角の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:177</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="aspells-summon_8h_html_a2c742fe160592cee467ed28bba94c40d"><div class="ttname"><a href="spells-summon_8h.html#a2c742fe160592cee467ed28bba94c40d">cast_summon_undead</a></div><div class="ttdeci">bool cast_summon_undead(player_type *creature_ptr, int power)</div><div class="ttdef"><b>Definition:</b> spells-summon.cpp:120</div></div>
+<div class="ttc" id="aspells-summon_8h_html_a7e2d3c870d4426892e3f3c8c11d11a3e"><div class="ttname"><a href="spells-summon_8h.html#a7e2d3c870d4426892e3f3c8c11d11a3e">mitokohmon</a></div><div class="ttdeci">void mitokohmon(player_type *kohmon_ptr)</div><div class="ttdef"><b>Definition:</b> spells-summon.cpp:300</div></div>
+<div class="ttc" id="aspells-summon_8h_html_a7e56fd88af9905231b5b3061bf76f672"><div class="ttname"><a href="spells-summon_8h.html#a7e56fd88af9905231b5b3061bf76f672">activate_hi_summon</a></div><div class="ttdeci">int activate_hi_summon(player_type *caster_ptr, POSITION y, POSITION x, bool can_pet)</div><div class="ttdoc">HI_SUMMON(上級召喚)処理発動</div><div class="ttdef"><b>Definition:</b> spells-summon.cpp:358</div></div>
+<div class="ttc" id="aspells-summon_8h_html_a9792c335db5c02d7c46a2166964fabb1"><div class="ttname"><a href="spells-summon_8h.html#a9792c335db5c02d7c46a2166964fabb1">trump_summoning</a></div><div class="ttdeci">enum summon_type int bool trump_summoning(player_type *caster_ptr, int num, bool pet, POSITION y, POSITION x, DEPTH lev, summon_type type, BIT_FLAGS mode)</div><div class="ttdoc">トランプ魔法独自の召喚処理を行う / Handle summoning and failure of trump spells</div><div class="ttdef"><b>Definition:</b> spells-summon.cpp:47</div></div>
+<div class="ttc" id="aspells-summon_8h_html_a9fed6d127284194f2a61e5fc07171536"><div class="ttname"><a href="spells-summon_8h.html#a9fed6d127284194f2a61e5fc07171536">cast_summon_greater_demon</a></div><div class="ttdeci">bool cast_summon_greater_demon(player_type *caster_ptr)</div><div class="ttdoc">悪魔領域のグレーターデーモン召喚を処理する / Daemon spell Summon Greater Demon</div><div class="ttdef"><b>Definition:</b> spells-summon.cpp:223</div></div>
+<div class="ttc" id="aspells-summon_8h_html_aa31ec5b47ad384b6d11d1b541c7f5dca"><div class="ttname"><a href="spells-summon_8h.html#aa31ec5b47ad384b6d11d1b541c7f5dca">cast_summon_octopus</a></div><div class="ttdeci">bool cast_summon_octopus(player_type *creature_ptr)</div><div class="ttdef"><b>Definition:</b> spells-summon.cpp:185</div></div>
+<div class="ttc" id="aspells-summon_8h_html_ab7537979a7135fb50d2a6f24598b62bb"><div class="ttname"><a href="spells-summon_8h.html#ab7537979a7135fb50d2a6f24598b62bb">item_tester_offer</a></div><div class="ttdeci">bool item_tester_offer(player_type *creature_ptr, object_type *o_ptr)</div><div class="ttdoc">悪魔領域のグレーターデーモン召喚に利用可能な死体かどうかを返す。 / An &quot;item_tester_hook&quot; for offer</div><div class="ttdef"><b>Definition:</b> spells-summon.cpp:207</div></div>
+<div class="ttc" id="aspells-summon_8h_html_ac86ec05773a02c3530f9f6444a4631d6"><div class="ttname"><a href="spells-summon_8h.html#ac86ec05773a02c3530f9f6444a4631d6">cast_summon_demon</a></div><div class="ttdeci">bool cast_summon_demon(player_type *creature_ptr, int power)</div><div class="ttdef"><b>Definition:</b> spells-summon.cpp:95</div></div>
+<div class="ttc" id="aspells-summon_8h_html_acc089f5610626fcb4fa6ae70bc831e9b"><div class="ttname"><a href="spells-summon_8h.html#acc089f5610626fcb4fa6ae70bc831e9b">summon_kin_player</a></div><div class="ttdeci">bool summon_kin_player(player_type *creature_ptr, DEPTH level, POSITION y, POSITION x, BIT_FLAGS mode)</div><div class="ttdoc">同族召喚(援軍)処理</div><div class="ttdef"><b>Definition:</b> spells-summon.cpp:260</div></div>
+<div class="ttc" id="aspells-summon_8h_html_ad5a77675cad59a14d66ef2c6d12f01c9"><div class="ttname"><a href="spells-summon_8h.html#ad5a77675cad59a14d66ef2c6d12f01c9">summon_cyber</a></div><div class="ttdeci">int summon_cyber(player_type *creature_ptr, MONSTER_IDX who, POSITION y, POSITION x)</div><div class="ttdoc">サイバーデーモンの召喚</div><div class="ttdef"><b>Definition:</b> spells-summon.cpp:276</div></div>
+<div class="ttc" id="aspells-summon_8h_html_adf12d4348cc51c03fb4fd7561534b42d"><div class="ttname"><a href="spells-summon_8h.html#adf12d4348cc51c03fb4fd7561534b42d">cast_summon_hound</a></div><div class="ttdeci">bool cast_summon_hound(player_type *creature_ptr, int power)</div><div class="ttdef"><b>Definition:</b> spells-summon.cpp:145</div></div>
+<div class="ttc" id="aspells-summon_8h_html_ae25b9862f324f43e7bd22de4bba02963"><div class="ttname"><a href="spells-summon_8h.html#ae25b9862f324f43e7bd22de4bba02963">cast_invoke_spirits</a></div><div class="ttdeci">void cast_invoke_spirits(player_type *caster_ptr, DIRECTION dir)</div><div class="ttdoc">「悪霊召喚」のランダムな効果を決定して処理する。</div><div class="ttdef"><b>Definition:</b> spells-summon.cpp:453</div></div>
+<div class="ttc" id="aspells-summon_8h_html_af7daa42518560cfa475480591b4b95dc"><div class="ttname"><a href="spells-summon_8h.html#af7daa42518560cfa475480591b4b95dc">cast_summon_elemental</a></div><div class="ttdeci">bool cast_summon_elemental(player_type *creature_ptr, int power)</div><div class="ttdef"><b>Definition:</b> spells-summon.cpp:164</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="asummon-types_8h_html_a89c2c6b840344f16466ff955a555bf64"><div class="ttname"><a href="summon-types_8h.html#a89c2c6b840344f16466ff955a555bf64">summon_type</a></div><div class="ttdeci">summon_type</div><div class="ttdef"><b>Definition:</b> summon-types.h:4</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

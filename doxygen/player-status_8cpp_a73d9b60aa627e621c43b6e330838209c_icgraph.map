@@ -1,0 +1,39 @@
+<map id="stop_singing" name="stop_singing">
+<area shape="rect" id="node1" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="1673,971,1768,998"/>
+<area shape="rect" id="node2" href="$activation-breath_8cpp.html#a88f1ece9019c468eafe34f4de0be2c89" title="発動によるブレスの属性をアイテムの耐性から選択し、実行を処理する。/ Dragon breath activation" alt="" coords="533,279,687,306"/>
+<area shape="rect" id="node6" href="$activation-others_8cpp.html#af39744866d6216c9da194c662604bb70" title=" " alt="" coords="557,381,663,407"/>
+<area shape="rect" id="node7" href="$activation-execution_8cpp.html#a30a9f7720cfaaf81f7dcc8992bdd34e7" title=" " alt="" coords="553,229,667,255"/>
+<area shape="rect" id="node8" href="$spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="1191,23,1290,50"/>
+<area shape="rect" id="node11" href="$cmd-move_8cpp.html#a1ca5da27fdf6b4625bbac49754cd7ce8" title="「休む」動作コマンドのメインルーチン / Resting allows a player to safely restore his hp &#45;RAK&#45;" alt="" coords="561,959,659,986"/>
+<area shape="rect" id="node13" href="$realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="1513,689,1625,715"/>
+<area shape="rect" id="node19" href="$racial-switcher_8cpp.html#ac21c6b6a9eae71ce476478232b11f8e0" title="レイシャルと突然変異の技能処理 / Racial powers (and mutations)" alt="" coords="543,821,677,863"/>
+<area shape="rect" id="node30" href="$action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="983,909,1066,935"/>
+<area shape="rect" id="node32" href="$cmd-eat_8cpp.html#a77b0b5d933aedbf6ab8e24616c2ce1fd" title="実際にアイテムを食おうとするコマンドのサブルーチン" alt="" coords="561,1010,659,1037"/>
+<area shape="rect" id="node33" href="$quaff-execution_8cpp.html#a663518dc63d12a75833fcd01acd2f364" title="薬を飲むコマンドのサブルーチン / Quaff a potion (from the pack or the floor)" alt="" coords="551,1061,669,1087"/>
+<area shape="rect" id="node34" href="$read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="573,1111,647,1138"/>
+<area shape="rect" id="node35" href="$mutation-processor_8cpp.html#aac6e6f0b449a92493ac8a184c221d6b4" title="10ゲームターンが進行するごとに突然変異の発動判定を行う処理 / Handle mutation effects once every 10 game turns" alt="" coords="515,1257,705,1283"/>
+<area shape="rect" id="node36" href="$player-status_8cpp.html#ade8a430aa0b3212b3e8c057a4d05943f" title="口を使う継続的な処理を中断する" alt="" coords="565,1395,655,1422"/>
+<area shape="rect" id="node3" href="$activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="333,283,453,310"/>
+<area shape="rect" id="node4" href="$activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="154,283,266,310"/>
+<area shape="rect" id="node5" href="$activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="5,258,100,285"/>
+<area shape="rect" id="node9" href="$player-processor_8cpp.html#af24fbcbcceb1cacc5638530532d65f29" title="プレイヤーの行動エネルギーが充填される（＝プレイヤーのターンが回る）毎に行われる処理 / process the effects per 100 energy at player speed." alt="" coords="320,167,467,208"/>
+<area shape="rect" id="node10" href="$dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="148,174,272,201"/>
+<area shape="rect" id="node12" href="$input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="327,682,459,709"/>
+<area shape="rect" id="node14" href="$spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="1388,657,1465,683"/>
+<area shape="rect" id="node15" href="$spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="567,330,653,357"/>
+<area shape="rect" id="node16" href="$display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="1180,858,1301,885"/>
+<area shape="rect" id="node17" href="$cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="773,530,889,557"/>
+<area shape="rect" id="node18" href="$cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="781,631,881,658"/>
+<area shape="rect" id="node20" href="$cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="753,1085,908,1111"/>
+<area shape="rect" id="node21" href="$cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="769,581,893,607"/>
+<area shape="rect" id="node22" href="$knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="1141,429,1340,455"/>
+<area shape="rect" id="node23" href="$cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="777,682,884,709"/>
+<area shape="rect" id="node24" href="$realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="781,745,880,771"/>
+<area shape="rect" id="node25" href="$cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="956,378,1093,405"/>
+<area shape="rect" id="node26" href="$cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="987,530,1062,557"/>
+<area shape="rect" id="node27" href="$spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="1197,530,1285,557"/>
+<area shape="rect" id="node28" href="$spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="975,175,1075,202"/>
+<area shape="rect" id="node29" href="$spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="1186,909,1295,935"/>
+<area shape="rect" id="node31" href="$spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="766,1010,895,1037"/>
+<area shape="rect" id="node37" href="$player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="1165,807,1316,834"/>
+</map>

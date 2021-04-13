@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/room/rooms-pit-nest.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f5e46bed6dfb8f23408bb24a4886d7b9.html">room</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">rooms-pit-nest.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="rooms-pit-nest_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#adf7376ddd0fe80cae671e92729a4700a">    1</a></span>&#160;<span class="preprocessor">#pragma once </span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a8ac8a3fb12f7639c85c6ab1bf8c25544">    5</a></span>&#160;<span class="preprocessor">#define NUM_NEST_MON_TYPE 64 </span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a4cac276f327e1b933b7fa1057a52ae79">    6</a></span>&#160;<span class="preprocessor">#define TRAPPED_PIT_MONSTER_PLACE_MAX 69</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770a">    9</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770a">nest_type</a> : <span class="keywordtype">int</span> {</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aae4bb5076488ef35896b7069c5d8d9540">   10</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aae4bb5076488ef35896b7069c5d8d9540">NEST_TYPE_CLONE</a> = 0,</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa8d45324ca784dece9520518152fe2eaf">   11</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa8d45324ca784dece9520518152fe2eaf">NEST_TYPE_JELLY</a> = 1,</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa22f269508656a28815dc7081666825af">   12</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa22f269508656a28815dc7081666825af">NEST_TYPE_SYMBOL_GOOD</a> = 2,</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa49f3b3e80cb24e4632d8ae75280231a7">   13</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa49f3b3e80cb24e4632d8ae75280231a7">NEST_TYPE_SYMBOL_EVIL</a> = 3,</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa9682ea9e90e7c3bbf75e66babf02a916">   14</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa9682ea9e90e7c3bbf75e66babf02a916">NEST_TYPE_MIMIC</a> = 4,</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa1d1d78de17076dbc7ca1064211033e7d">   15</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa1d1d78de17076dbc7ca1064211033e7d">NEST_TYPE_LOVECRAFTIAN</a> = 5,</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aaf9bbabc718520dfd33807e27fded8cbb">   16</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aaf9bbabc718520dfd33807e27fded8cbb">NEST_TYPE_KENNEL</a> = 6,</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aaa3af6f720d884bc1fd4dd3dde5f27d0d">   17</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aaa3af6f720d884bc1fd4dd3dde5f27d0d">NEST_TYPE_ANIMAL</a> = 7,</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa235c5e7e1caf255e7c71f03a8efd4341">   18</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa235c5e7e1caf255e7c71f03a8efd4341">NEST_TYPE_CHAPEL</a> = 8,</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aab715b50f76494ddf2ad7c205e57f6e70">   19</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aab715b50f76494ddf2ad7c205e57f6e70">NEST_TYPE_UNDEAD</a> = 9,</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688">   23</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688">pit_type</a> : <span class="keywordtype">int</span> {</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a6c606356357200d322c46a40a7f13447">   24</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a6c606356357200d322c46a40a7f13447">PIT_TYPE_ORC</a> = 0,</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a7737c0ecf186bdae9ab9387a200871d5">   25</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a7737c0ecf186bdae9ab9387a200871d5">PIT_TYPE_TROLL</a> = 1,</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a1b92f2d58c5b940d29935e02b05883ba">   26</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a1b92f2d58c5b940d29935e02b05883ba">PIT_TYPE_GIANT</a> = 2,</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688ad8c1560fae92501e0bf51c21f113d209">   27</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688ad8c1560fae92501e0bf51c21f113d209">PIT_TYPE_LOVECRAFTIAN</a> = 3,</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688ad0cd85d4a97e39615343f187d9d1adbd">   28</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688ad0cd85d4a97e39615343f187d9d1adbd">PIT_TYPE_SYMBOL_GOOD</a> = 4,</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688ad5b88d887f6b69c1a889beb23791fc34">   29</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688ad5b88d887f6b69c1a889beb23791fc34">PIT_TYPE_SYMBOL_EVIL</a> = 5,</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688ac3526e6698847918974ce110aa638977">   30</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688ac3526e6698847918974ce110aa638977">PIT_TYPE_CHAPEL</a> = 6,</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a280fa84573afdb4821f89ab3de38555c">   31</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a280fa84573afdb4821f89ab3de38555c">PIT_TYPE_DRAGON</a> = 7,</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a5893671333ac0eee0d2c2d849f086206">   32</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a5893671333ac0eee0d2c2d849f086206">PIT_TYPE_DEMON</a> = 8,</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a5813e56682d804e55a3f4d9ca684d56f">   33</a></span>&#160;    <a class="code" href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a5813e56682d804e55a3f4d9ca684d56f">PIT_TYPE_DARK_ELF</a> = 9,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structnest__pit__type.html">   37</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structnest__pit__type.html">nest_pit_type</a> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structnest__pit__type.html#a025dc1c884e77470a1062332aceb25c9">   38</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structnest__pit__type.html#a025dc1c884e77470a1062332aceb25c9">name</a>; <span class="comment">//&lt;! 部屋名</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structnest__pit__type.html#a6987e91c64f64ab5710ab3b24e60735d">   39</a></span>&#160;    <a class="code" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> (*<a class="code" href="structnest__pit__type.html#a6987e91c64f64ab5710ab3b24e60735d">hook_func</a>)(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> r_idx); <span class="comment">//&lt;! モンスターフィルタ関数</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structnest__pit__type.html#aef446bd50f1c6714c2085dbf75440cd3">   40</a></span>&#160;    void (*<a class="code" href="structnest__pit__type.html#aef446bd50f1c6714c2085dbf75440cd3">prep_func</a>)(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr); <span class="comment">//&lt;! 能力フィルタ関数</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structnest__pit__type.html#a4f2905809b99da3edefa790ac4678ff5">   41</a></span>&#160;    <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> <a class="code" href="structnest__pit__type.html#a4f2905809b99da3edefa790ac4678ff5">level</a>; <span class="comment">//&lt;! 相当階</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structnest__pit__type.html#aa172b239fbdfc0ed132b6ccab36c58f1">   42</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structnest__pit__type.html#aa172b239fbdfc0ed132b6ccab36c58f1">chance</a>; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structnest__mon__info__type.html">   46</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structnest__mon__info__type.html">nest_mon_info_type</a> {</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structnest__mon__info__type.html#a0f3400e4da00f6a2fee027d2ee4de938">   47</a></span>&#160;    <a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> <a class="code" href="structnest__mon__info__type.html#a0f3400e4da00f6a2fee027d2ee4de938">r_idx</a>; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structnest__mon__info__type.html#a34327d80964810c496b68ecdcb475444">   48</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structnest__mon__info__type.html#a34327d80964810c496b68ecdcb475444">used</a>; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structdun__data__type.html">dun_data_type</a> <a class="code" href="structdun__data__type.html">dun_data_type</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="rooms-pit-nest_8h.html#ad3758d34c04bf3a6abb40261f6b85540">build_type5</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structdun__data__type.html">dun_data_type</a> *dd_ptr);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="rooms-pit-nest_8h.html#a3e3435cd95a7c287bee760de7feafe84">build_type6</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structdun__data__type.html">dun_data_type</a> *dd_ptr);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="rooms-pit-nest_8h.html#a374b4e29d2c311751902ed314494ef82">build_type13</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structdun__data__type.html">dun_data_type</a> *dd_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a1c8b80a20fb5396ff07a523b01112c47"><div class="ttname"><a href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a></div><div class="ttdeci">s32b DEPTH</div><div class="ttdoc">ゲーム中の階層レベルの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:194</div></div>
+<div class="ttc" id="ah-type_8h_html_a7ea47f67338902d35c1e93e00cf86908"><div class="ttname"><a href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a></div><div class="ttdeci">s16b MONRACE_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:109</div></div>
+<div class="ttc" id="ah-type_8h_html_ad5c9d4ba3dc37783a528b0925dc981a0"><div class="ttname"><a href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a></div><div class="ttdeci">char bool</div><div class="ttdoc">bool型をcharとして定義 / Note that a bool is smaller than a full &quot;int&quot; / Simple True/False type</div><div class="ttdef"><b>Definition:</b> h-type.h:70</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a195c6d35ec2eefffadd022d70453770a"><div class="ttname"><a href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770a">nest_type</a></div><div class="ttdeci">nest_type</div><div class="ttdoc">nestのID定義 / Nest types code</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:9</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a195c6d35ec2eefffadd022d70453770aa1d1d78de17076dbc7ca1064211033e7d"><div class="ttname"><a href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa1d1d78de17076dbc7ca1064211033e7d">NEST_TYPE_LOVECRAFTIAN</a></div><div class="ttdeci">@ NEST_TYPE_LOVECRAFTIAN</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:15</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a195c6d35ec2eefffadd022d70453770aa22f269508656a28815dc7081666825af"><div class="ttname"><a href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa22f269508656a28815dc7081666825af">NEST_TYPE_SYMBOL_GOOD</a></div><div class="ttdeci">@ NEST_TYPE_SYMBOL_GOOD</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:12</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a195c6d35ec2eefffadd022d70453770aa235c5e7e1caf255e7c71f03a8efd4341"><div class="ttname"><a href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa235c5e7e1caf255e7c71f03a8efd4341">NEST_TYPE_CHAPEL</a></div><div class="ttdeci">@ NEST_TYPE_CHAPEL</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:18</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a195c6d35ec2eefffadd022d70453770aa49f3b3e80cb24e4632d8ae75280231a7"><div class="ttname"><a href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa49f3b3e80cb24e4632d8ae75280231a7">NEST_TYPE_SYMBOL_EVIL</a></div><div class="ttdeci">@ NEST_TYPE_SYMBOL_EVIL</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:13</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a195c6d35ec2eefffadd022d70453770aa8d45324ca784dece9520518152fe2eaf"><div class="ttname"><a href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa8d45324ca784dece9520518152fe2eaf">NEST_TYPE_JELLY</a></div><div class="ttdeci">@ NEST_TYPE_JELLY</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:11</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a195c6d35ec2eefffadd022d70453770aa9682ea9e90e7c3bbf75e66babf02a916"><div class="ttname"><a href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aa9682ea9e90e7c3bbf75e66babf02a916">NEST_TYPE_MIMIC</a></div><div class="ttdeci">@ NEST_TYPE_MIMIC</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:14</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a195c6d35ec2eefffadd022d70453770aaa3af6f720d884bc1fd4dd3dde5f27d0d"><div class="ttname"><a href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aaa3af6f720d884bc1fd4dd3dde5f27d0d">NEST_TYPE_ANIMAL</a></div><div class="ttdeci">@ NEST_TYPE_ANIMAL</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:17</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a195c6d35ec2eefffadd022d70453770aab715b50f76494ddf2ad7c205e57f6e70"><div class="ttname"><a href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aab715b50f76494ddf2ad7c205e57f6e70">NEST_TYPE_UNDEAD</a></div><div class="ttdeci">@ NEST_TYPE_UNDEAD</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:19</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a195c6d35ec2eefffadd022d70453770aae4bb5076488ef35896b7069c5d8d9540"><div class="ttname"><a href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aae4bb5076488ef35896b7069c5d8d9540">NEST_TYPE_CLONE</a></div><div class="ttdeci">@ NEST_TYPE_CLONE</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:10</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a195c6d35ec2eefffadd022d70453770aaf9bbabc718520dfd33807e27fded8cbb"><div class="ttname"><a href="rooms-pit-nest_8h.html#a195c6d35ec2eefffadd022d70453770aaf9bbabc718520dfd33807e27fded8cbb">NEST_TYPE_KENNEL</a></div><div class="ttdeci">@ NEST_TYPE_KENNEL</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:16</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a374b4e29d2c311751902ed314494ef82"><div class="ttname"><a href="rooms-pit-nest_8h.html#a374b4e29d2c311751902ed314494ef82">build_type13</a></div><div class="ttdeci">bool build_type13(player_type *player_ptr, dun_data_type *dd_ptr)</div><div class="ttdoc">タイプ13の部屋…開門トラップpitの生成 / Type 13 – Trapped monster pits</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.cpp:736</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a3e3435cd95a7c287bee760de7feafe84"><div class="ttname"><a href="rooms-pit-nest_8h.html#a3e3435cd95a7c287bee760de7feafe84">build_type6</a></div><div class="ttdeci">bool build_type6(player_type *player_ptr, dun_data_type *dd_ptr)</div><div class="ttdoc">タイプ6の部屋…pitを生成する / Type 6 – Monster pits</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.cpp:434</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a63262644bfb41fe6005ffba776d32688"><div class="ttname"><a href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688">pit_type</a></div><div class="ttdeci">pit_type</div><div class="ttdoc">pitのID定義 / Pit types code</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:23</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a63262644bfb41fe6005ffba776d32688a1b92f2d58c5b940d29935e02b05883ba"><div class="ttname"><a href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a1b92f2d58c5b940d29935e02b05883ba">PIT_TYPE_GIANT</a></div><div class="ttdeci">@ PIT_TYPE_GIANT</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:26</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a63262644bfb41fe6005ffba776d32688a280fa84573afdb4821f89ab3de38555c"><div class="ttname"><a href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a280fa84573afdb4821f89ab3de38555c">PIT_TYPE_DRAGON</a></div><div class="ttdeci">@ PIT_TYPE_DRAGON</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:31</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a63262644bfb41fe6005ffba776d32688a5813e56682d804e55a3f4d9ca684d56f"><div class="ttname"><a href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a5813e56682d804e55a3f4d9ca684d56f">PIT_TYPE_DARK_ELF</a></div><div class="ttdeci">@ PIT_TYPE_DARK_ELF</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:33</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a63262644bfb41fe6005ffba776d32688a5893671333ac0eee0d2c2d849f086206"><div class="ttname"><a href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a5893671333ac0eee0d2c2d849f086206">PIT_TYPE_DEMON</a></div><div class="ttdeci">@ PIT_TYPE_DEMON</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:32</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a63262644bfb41fe6005ffba776d32688a6c606356357200d322c46a40a7f13447"><div class="ttname"><a href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a6c606356357200d322c46a40a7f13447">PIT_TYPE_ORC</a></div><div class="ttdeci">@ PIT_TYPE_ORC</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:24</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a63262644bfb41fe6005ffba776d32688a7737c0ecf186bdae9ab9387a200871d5"><div class="ttname"><a href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688a7737c0ecf186bdae9ab9387a200871d5">PIT_TYPE_TROLL</a></div><div class="ttdeci">@ PIT_TYPE_TROLL</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:25</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a63262644bfb41fe6005ffba776d32688ac3526e6698847918974ce110aa638977"><div class="ttname"><a href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688ac3526e6698847918974ce110aa638977">PIT_TYPE_CHAPEL</a></div><div class="ttdeci">@ PIT_TYPE_CHAPEL</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:30</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a63262644bfb41fe6005ffba776d32688ad0cd85d4a97e39615343f187d9d1adbd"><div class="ttname"><a href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688ad0cd85d4a97e39615343f187d9d1adbd">PIT_TYPE_SYMBOL_GOOD</a></div><div class="ttdeci">@ PIT_TYPE_SYMBOL_GOOD</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:28</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a63262644bfb41fe6005ffba776d32688ad5b88d887f6b69c1a889beb23791fc34"><div class="ttname"><a href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688ad5b88d887f6b69c1a889beb23791fc34">PIT_TYPE_SYMBOL_EVIL</a></div><div class="ttdeci">@ PIT_TYPE_SYMBOL_EVIL</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:29</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_a63262644bfb41fe6005ffba776d32688ad8c1560fae92501e0bf51c21f113d209"><div class="ttname"><a href="rooms-pit-nest_8h.html#a63262644bfb41fe6005ffba776d32688ad8c1560fae92501e0bf51c21f113d209">PIT_TYPE_LOVECRAFTIAN</a></div><div class="ttdeci">@ PIT_TYPE_LOVECRAFTIAN</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:27</div></div>
+<div class="ttc" id="arooms-pit-nest_8h_html_ad3758d34c04bf3a6abb40261f6b85540"><div class="ttname"><a href="rooms-pit-nest_8h.html#ad3758d34c04bf3a6abb40261f6b85540">build_type5</a></div><div class="ttdeci">bool build_type5(player_type *player_ptr, dun_data_type *dd_ptr)</div><div class="ttdoc">タイプ5の部屋…nestを生成する / Type 5 – Monster nests</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.cpp:207</div></div>
+<div class="ttc" id="astructdun__data__type_html"><div class="ttname"><a href="structdun__data__type.html">dun_data_type</a></div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:38</div></div>
+<div class="ttc" id="astructnest__mon__info__type_html"><div class="ttname"><a href="structnest__mon__info__type.html">nest_mon_info_type</a></div><div class="ttdoc">デバッグ時にnestのモンスター情報を確認するための構造体 / A struct for nest monster information with cheat_hear</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:46</div></div>
+<div class="ttc" id="astructnest__mon__info__type_html_a0f3400e4da00f6a2fee027d2ee4de938"><div class="ttname"><a href="structnest__mon__info__type.html#a0f3400e4da00f6a2fee027d2ee4de938">nest_mon_info_type::r_idx</a></div><div class="ttdeci">MONRACE_IDX r_idx</div><div class="ttdoc">モンスター種族ID</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:47</div></div>
+<div class="ttc" id="astructnest__mon__info__type_html_a34327d80964810c496b68ecdcb475444"><div class="ttname"><a href="structnest__mon__info__type.html#a34327d80964810c496b68ecdcb475444">nest_mon_info_type::used</a></div><div class="ttdeci">bool used</div><div class="ttdoc">既に選んだかどうか</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:48</div></div>
+<div class="ttc" id="astructnest__pit__type_html"><div class="ttname"><a href="structnest__pit__type.html">nest_pit_type</a></div><div class="ttdoc">pit/nest型情報の構造体定義</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:37</div></div>
+<div class="ttc" id="astructnest__pit__type_html_a025dc1c884e77470a1062332aceb25c9"><div class="ttname"><a href="structnest__pit__type.html#a025dc1c884e77470a1062332aceb25c9">nest_pit_type::name</a></div><div class="ttdeci">concptr name</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:38</div></div>
+<div class="ttc" id="astructnest__pit__type_html_a4f2905809b99da3edefa790ac4678ff5"><div class="ttname"><a href="structnest__pit__type.html#a4f2905809b99da3edefa790ac4678ff5">nest_pit_type::level</a></div><div class="ttdeci">DEPTH level</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:41</div></div>
+<div class="ttc" id="astructnest__pit__type_html_a6987e91c64f64ab5710ab3b24e60735d"><div class="ttname"><a href="structnest__pit__type.html#a6987e91c64f64ab5710ab3b24e60735d">nest_pit_type::hook_func</a></div><div class="ttdeci">bool(* hook_func)(player_type *player_ptr, MONRACE_IDX r_idx)</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:39</div></div>
+<div class="ttc" id="astructnest__pit__type_html_aa172b239fbdfc0ed132b6ccab36c58f1"><div class="ttname"><a href="structnest__pit__type.html#aa172b239fbdfc0ed132b6ccab36c58f1">nest_pit_type::chance</a></div><div class="ttdeci">int chance</div><div class="ttdoc">生成確率</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:42</div></div>
+<div class="ttc" id="astructnest__pit__type_html_aef446bd50f1c6714c2085dbf75440cd3"><div class="ttname"><a href="structnest__pit__type.html#aef446bd50f1c6714c2085dbf75440cd3">nest_pit_type::prep_func</a></div><div class="ttdeci">void(* prep_func)(player_type *player_ptr)</div><div class="ttdef"><b>Definition:</b> rooms-pit-nest.h:40</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

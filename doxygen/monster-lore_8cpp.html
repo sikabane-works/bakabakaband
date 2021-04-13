@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/lore/monster-lore.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_89a6f1a5ea7a1eb7554fb2222d79246d.html">lore</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">monster-lore.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="monster-lore_8h_source.html">lore/monster-lore.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cheat-options_8h_source.html">game-option/cheat-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lore-calculator_8h_source.html">lore/lore-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lore-util_8h_source.html">lore/lore-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="magic-types-setter_8h_source.html">lore/magic-types-setter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags1_8h_source.html">monster-race/race-flags1.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags2_8h_source.html">monster-race/race-flags2.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags3_8h_source.html">monster-race/race-flags3.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-indice-types_8h_source.html">monster-race/race-indice-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-lore-attacks_8h_source.html">view/display-lore-attacks.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-lore-drops_8h_source.html">view/display-lore-drops.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-lore-magics_8h_source.html">view/display-lore-magics.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-lore-status_8h_source.html">view/display-lore-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-lore_8h_source.html">view/display-lore.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+monster-lore.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-lore_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2lore_2monster-lore_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2lore_2monster-lore_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2lore_2monster-lore_8cpp">
+<area shape="rect" title=" " alt="" coords="1403,5,1611,61"/>
+<area shape="rect" href="monster-lore_8h.html" title=" " alt="" coords="2089,117,2220,143"/>
+<area shape="rect" href="lore-util_8h.html" title=" " alt="" coords="1018,206,1118,233"/>
+<area shape="rect" href="cheat-options_8h.html" title=" " alt="" coords="104,206,291,233"/>
+<area shape="rect" href="lore-calculator_8h.html" title=" " alt="" coords="235,117,373,143"/>
+<area shape="rect" href="magic-types-setter_8h.html" title=" " alt="" coords="398,117,565,143"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="1381,199,1531,240"/>
+<area shape="rect" href="race-flags1_8h.html" title=" " alt="" coords="1119,117,1295,143"/>
+<area shape="rect" href="race-flags2_8h.html" title=" " alt="" coords="1319,117,1495,143"/>
+<area shape="rect" href="race-flags3_8h.html" title=" " alt="" coords="1519,117,1695,143"/>
+<area shape="rect" href="race-indice-types_8h.html" title=" " alt="" coords="1719,109,1884,151"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="1908,117,2065,143"/>
+<area shape="rect" href="display-lore-attacks_8h.html" title=" " alt="" coords="2493,117,2667,143"/>
+<area shape="rect" href="display-lore-drops_8h.html" title=" " alt="" coords="589,117,752,143"/>
+<area shape="rect" href="display-lore-magics_8h.html" title=" " alt="" coords="2295,117,2468,143"/>
+<area shape="rect" href="display-lore-status_8h.html" title=" " alt="" coords="777,117,943,143"/>
+<area shape="rect" href="display-lore_8h.html" title=" " alt="" coords="967,117,1094,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="631,385,761,411"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="171,467,261,493"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="285,467,376,493"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="400,467,499,493"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="523,467,621,493"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="646,467,746,493"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="770,467,945,493"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="5,467,147,493"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,467,1116,493"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1098,541,1209,568"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="1295,288,1441,329"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="1169,377,1335,419"/>
+<area shape="rect" title=" " alt="" coords="1433,385,1487,411"/>
+<area shape="rect" title=" " alt="" coords="957,295,1067,322"/>
+<area shape="rect" href="mspell-type_8h.html" title=" " alt="" coords="366,206,509,233"/>
+<area shape="rect" title=" " alt="" coords="1516,295,1572,322"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:aa6921cb96de270dc5e0fbf2ab6a3e9d8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-lore_8cpp.html#aa6921cb96de270dc5e0fbf2ab6a3e9d8">set_msex_flags</a> (<a class="el" href="structlore__type.html">lore_type</a> *lore_ptr)</td></tr>
+<tr class="memdesc:aa6921cb96de270dc5e0fbf2ab6a3e9d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターの思い出表示に必要なフラグ類の処理  <a href="monster-lore_8cpp.html#aa6921cb96de270dc5e0fbf2ab6a3e9d8">[詳解]</a><br /></td></tr>
+<tr class="separator:aa6921cb96de270dc5e0fbf2ab6a3e9d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a236e9df254faca4bcf425aabc34a3940"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-lore_8cpp.html#a236e9df254faca4bcf425aabc34a3940">set_flags1</a> (<a class="el" href="structlore__type.html">lore_type</a> *lore_ptr)</td></tr>
+<tr class="separator:a236e9df254faca4bcf425aabc34a3940"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55fa2f5e961570d06c3d89e3468eadf3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-lore_8cpp.html#a55fa2f5e961570d06c3d89e3468eadf3">set_race_flags</a> (<a class="el" href="structlore__type.html">lore_type</a> *lore_ptr)</td></tr>
+<tr class="separator:a55fa2f5e961570d06c3d89e3468eadf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bca8b991910e7d6b38f0e5f7c045d4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-lore_8cpp.html#a6bca8b991910e7d6b38f0e5f7c045d4d">process_monster_lore</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> r_idx, <a class="el" href="lore-util_8h.html#a1659fb6692775cc89e77a771f2acb063">monster_lore_mode</a> mode)</td></tr>
+<tr class="memdesc:a6bca8b991910e7d6b38f0e5f7c045d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターの思い出情報を表示するメインルーチン Hack &ndash; display monster information using "hooked_roff()"  <a href="monster-lore_8cpp.html#a6bca8b991910e7d6b38f0e5f7c045d4d">[詳解]</a><br /></td></tr>
+<tr class="separator:a6bca8b991910e7d6b38f0e5f7c045d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a6bca8b991910e7d6b38f0e5f7c045d4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bca8b991910e7d6b38f0e5f7c045d4d">&#9670;&nbsp;</a></span>process_monster_lore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void process_monster_lore </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a>&#160;</td>
+          <td class="paramname"><em>r_idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="lore-util_8h.html#a1659fb6692775cc89e77a771f2acb063">monster_lore_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターの思い出情報を表示するメインルーチン Hack &ndash; display monster information using "hooked_roff()" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">r_idx</td><td>モンスターの種族ID </td></tr>
+    <tr><td class="paramname">mode</td><td>表示オプション </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<p>This function should only be called with the cursor placed at the left edge of the screen, on a cleared line, in which the recall is to take place. One extra blank line is left after the recall. </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-lore_8cpp_a6bca8b991910e7d6b38f0e5f7c045d4d_cgraph.png" border="0" usemap="#amonster-lore_8cpp_a6bca8b991910e7d6b38f0e5f7c045d4d_cgraph" alt=""/></div>
+<map name="amonster-lore_8cpp_a6bca8b991910e7d6b38f0e5f7c045d4d_cgraph" id="amonster-lore_8cpp_a6bca8b991910e7d6b38f0e5f7c045d4d_cgraph">
+<area shape="rect" title="モンスターの思い出情報を表示するメインルーチン Hack – display monster information using &quot;hooked_roff()&quot;" alt="" coords="5,1189,156,1216"/>
+<area shape="rect" href="display-lore_8cpp.html#a7494d9c522ce9746c9d8acf5592a5ddc" title=" " alt="" coords="222,860,365,886"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="692,910,751,937"/>
+<area shape="rect" href="lore-util_8cpp.html#a5ed5b2f35bbfee87e15cdf200ea4223e" title="モンスターの思い出メッセージをあらかじめ指定された関数ポインタに基づき出力する" alt="" coords="677,729,765,756"/>
+<area shape="rect" href="class_who.html#a5642e60ef2c89743bc6b6bdc30332366" title="三人称主格を取得(単数のみ)" alt="" coords="681,1012,761,1038"/>
+<area shape="rect" href="display-lore_8cpp.html#a75046bb34e7741a51191180ed10dd417" title=" " alt="" coords="234,192,353,218"/>
+<area shape="rect" href="display-lore-status_8cpp.html#aa72cd75a46cf5ee748215abb18661889" title=" " alt="" coords="446,1214,614,1241"/>
+<area shape="rect" href="display-lore-status_8cpp.html#a078c6de1f34820ced89bec5a6c53ec1a" title=" " alt="" coords="455,1265,605,1292"/>
+<area shape="rect" href="display-lore_8cpp.html#a28b7f4231f57ea66b5910cebc2603313" title=" " alt="" coords="455,1468,605,1494"/>
+<area shape="rect" href="display-lore-attacks_8cpp.html#a63acc7377e65b212ee0a0e3a5a2f5aa6" title="モンスターの思い出に打撃に関する情報を出力する" alt="" coords="451,1316,609,1342"/>
+<area shape="rect" href="display-lore-magics_8cpp.html#a21b50803afcdc69126c4cd1f42539ec6" title=" " alt="" coords="450,1366,610,1393"/>
+<area shape="rect" href="display-lore_8cpp.html#aca858057a8987cd0f91b63e78c1d2e46" title=" " alt="" coords="441,1417,619,1444"/>
+<area shape="rect" href="display-lore-status_8cpp.html#a03ff1fe631fc04c5e6e2913f45844ba7" title=" " alt="" coords="206,598,381,639"/>
+<area shape="rect" href="display-lore-status_8cpp.html#a2ca5f325268361e1cbec3d10b61bb4b3" title=" " alt="" coords="206,663,381,704"/>
+<area shape="rect" href="display-lore-status_8cpp.html#afb4f39ff7c91d08d1ab6ad1b575e1bb0" title=" " alt="" coords="206,728,381,770"/>
+<area shape="rect" href="display-lore-status_8cpp.html#a0f8ed2b4431524b803506622c90f64ca" title=" " alt="" coords="206,794,381,835"/>
+<area shape="rect" href="display-lore-status_8cpp.html#ac6baa59386a2f2d495e85ecc720a1e1d" title=" " alt="" coords="431,438,629,465"/>
+<area shape="rect" href="display-lore-drops_8cpp.html#a869a6e70b09702913a0419a2d89ac4b6" title=" " alt="" coords="452,489,608,516"/>
+<area shape="rect" href="display-lore-status_8cpp.html#a634167d4834d3116f6990e1d8fa169d4" title=" " alt="" coords="443,540,617,566"/>
+<area shape="rect" href="display-lore_8cpp.html#acf20f2bccfdbfe697a86bef7461a84a0" title=" " alt="" coords="207,129,380,156"/>
+<area shape="rect" href="display-lore-status_8cpp.html#a5f384d88f1a900235af15a2a28365e91" title=" " alt="" coords="451,590,609,617"/>
+<area shape="rect" href="display-lore-status_8cpp.html#a6f6b022a3585e4f0308ff032d84f7acd" title=" " alt="" coords="437,641,623,668"/>
+<area shape="rect" href="display-lore_8cpp.html#a3d8b04fbfcee314cfcd83b59e4af70c3" title="モンスターの発射に関する情報を表示するルーチン / Display monster launching information" alt="" coords="204,1822,383,1849"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="475,1898,585,1925"/>
+<area shape="rect" href="display-lore-magics_8cpp.html#ab6c07818cfba80b2ac61cd47a886ca8d" title=" " alt="" coords="451,692,609,734"/>
+<area shape="rect" href="display-lore_8cpp.html#a182c97e301b8c804c67cab55836a0aaf" title=" " alt="" coords="216,17,371,44"/>
+<area shape="rect" href="display-lore_8cpp.html#a5da09eea7643c939658a2129e2b79bb5" title=" " alt="" coords="435,961,625,988"/>
+<area shape="rect" href="display-lore-status_8cpp.html#a46df51ba36c1743d46f4da70f73f4d4e" title=" " alt="" coords="435,1012,625,1038"/>
+<area shape="rect" href="display-lore_8cpp.html#a4c6593094cbc7ce4f19d8f7a3cb6ca49" title=" " alt="" coords="436,1062,624,1089"/>
+<area shape="rect" href="display-lore-status_8cpp.html#a4791c03113ce782e361440bcf12c07eb" title=" " alt="" coords="439,1113,621,1140"/>
+<area shape="rect" href="display-lore-magics_8cpp.html#a5a1762d6dd490220a1c8d91202989e0b" title=" " alt="" coords="451,271,609,312"/>
+<area shape="rect" href="display-lore_8cpp.html#a98b70f34810b9205de5b2a0dea36d114" title="どこに出没するかを表示する" alt="" coords="446,1164,614,1190"/>
+<area shape="rect" href="lore-util_8cpp.html#a7ddd854f87cd3c8ed2f9b5003b9a01fc" title=" " alt="" coords="229,1670,358,1697"/>
+<area shape="rect" href="magic-types-setter_8cpp.html#a6102dff182e2b2ab2144bb0ecca44f08" title=" " alt="" coords="240,2076,347,2102"/>
+<area shape="rect" href="magic-types-setter_8cpp.html#a6870158bc3f9ac39edf4a6718f3b542e" title=" " alt="" coords="240,2177,347,2204"/>
+<area shape="rect" href="magic-types-setter_8cpp.html#aa6d6e8e27c633b527fc17f2eb427d306" title=" " alt="" coords="232,2228,355,2254"/>
+<area shape="rect" href="lore-calculator_8cpp.html#af63b58d7af6eb3e05d0fa6e4a447126c" title=" " alt="" coords="240,1873,347,1900"/>
+<area shape="rect" href="monster-lore_8cpp.html#a236e9df254faca4bcf425aabc34a3940" title=" " alt="" coords="253,1924,334,1950"/>
+<area shape="rect" href="magic-types-setter_8cpp.html#a9466e4ccad8167e2ebcdde36fcfc6c76" title=" " alt="" coords="238,2278,349,2305"/>
+<area shape="rect" href="monster-lore_8cpp.html#aa6921cb96de270dc5e0fbf2ab6a3e9d8" title="モンスターの思い出表示に必要なフラグ類の処理" alt="" coords="237,2025,350,2052"/>
+<area shape="rect" href="magic-types-setter_8cpp.html#a56afcb1a25b4a20cc4fce2d291c87c46" title=" " alt="" coords="224,1569,363,1596"/>
+<area shape="rect" href="monster-lore_8cpp.html#a55fa2f5e961570d06c3d89e3468eadf3" title=" " alt="" coords="240,2126,347,2153"/>
+<area shape="rect" href="magic-types-setter_8cpp.html#a91a029b27308bfd9d7b480539d372ea9" title=" " alt="" coords="232,1620,355,1646"/>
+<area shape="rect" href="magic-types-setter_8cpp.html#a92df7808c596624584c34e962d3bb349" title=" " alt="" coords="225,1721,361,1748"/>
+<area shape="rect" href="magic-types-setter_8cpp.html#af87ae87595b19e7461545a61fb10e415" title=" " alt="" coords="229,1772,358,1798"/>
+<area shape="rect" href="display-lore_8cpp.html#a53dff7ffa1f33b81be47bb80f9cb1932" title=" " alt="" coords="465,860,595,886"/>
+<area shape="rect" href="display-lore_8cpp.html#a3112087be96ce8f5dc885c703e0bf46b" title=" " alt="" coords="480,758,580,785"/>
+<area shape="rect" href="display-lore_8cpp.html#ae55112191c0664dcaec5d010ae267817" title=" " alt="" coords="469,388,591,414"/>
+<area shape="rect" href="display-lore_8cpp.html#a8f0a335aca58463d41ca77437e199c33" title="生存数制限のあるモンスターの最大生存数を表示する" alt="" coords="439,809,621,836"/>
+<area shape="rect" href="display-lore_8cpp.html#ac32c8bb53cab35a67097818d150e27f5" title=" " alt="" coords="440,169,620,196"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-lore_8cpp_a6bca8b991910e7d6b38f0e5f7c045d4d_icgraph.png" border="0" usemap="#amonster-lore_8cpp_a6bca8b991910e7d6b38f0e5f7c045d4d_icgraph" alt=""/></div>
+<map name="amonster-lore_8cpp_a6bca8b991910e7d6b38f0e5f7c045d4d_icgraph" id="amonster-lore_8cpp_a6bca8b991910e7d6b38f0e5f7c045d4d_icgraph">
+<area shape="rect" title="モンスターの思い出情報を表示するメインルーチン Hack – display monster information using &quot;hooked_roff()&quot;" alt="" coords="553,56,704,83"/>
+<area shape="rect" href="display-lore_8cpp.html#a9be33b7a9bfa9fff9e9bff01d3546f79" title="モンスター情報の現在のウィンドウに表示する / Hack – describe the given monster race in the current &quot;term&quot; window" alt="" coords="383,5,470,32"/>
+<area shape="rect" href="display-lore_8cpp.html#af82243a5afd4413a4ce4b901c984f490" title="モンスター詳細情報を自動スポイラー向けに出力する / Hack – output description of the given monster race" alt="" coords="348,56,505,83"/>
+<area shape="rect" href="display-lore_8cpp.html#a9a19b136c0c0d88ac9bf1c3822dba2c4" title="モンスター情報の表示と共に画面を一時消去するサブルーチン / Hack – describe the given monster race at the top of the screen" alt="" coords="384,107,469,133"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#ac46cc9ce16200b7e52557070eafbc705" title="モンスターの思い出をサブウィンドウに表示する / Hack – display dungeon view in sub&#45;windows" alt="" coords="201,5,291,32"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="27,5,122,32"/>
+<area shape="rect" href="monster-info-spoiler_8cpp.html#aec3c4c4a889e0a9925f97fb32c252959" title="モンスター詳細情報をスポイラー出力するメインルーチン / Create a spoiler file for monsters (&#45;SHAWN&#45;)" alt="" coords="192,56,300,83"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="5,56,144,83"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="9,107,140,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a236e9df254faca4bcf425aabc34a3940"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a236e9df254faca4bcf425aabc34a3940">&#9670;&nbsp;</a></span>set_flags1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_flags1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlore__type.html">lore_type</a> *&#160;</td>
+          <td class="paramname"><em>lore_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-lore_8cpp_a236e9df254faca4bcf425aabc34a3940_icgraph.png" border="0" usemap="#amonster-lore_8cpp_a236e9df254faca4bcf425aabc34a3940_icgraph" alt=""/></div>
+<map name="amonster-lore_8cpp_a236e9df254faca4bcf425aabc34a3940_icgraph" id="amonster-lore_8cpp_a236e9df254faca4bcf425aabc34a3940_icgraph">
+<area shape="rect" title=" " alt="" coords="565,56,647,83"/>
+<area shape="rect" href="monster-lore_8cpp.html#a6bca8b991910e7d6b38f0e5f7c045d4d" title="モンスターの思い出情報を表示するメインルーチン Hack – display monster information using &quot;hooked_roff()&quot;" alt="" coords="367,56,517,83"/>
+<area shape="rect" href="display-lore_8cpp.html#a9be33b7a9bfa9fff9e9bff01d3546f79" title="モンスター情報の現在のウィンドウに表示する / Hack – describe the given monster race in the current &quot;term&quot; window" alt="" coords="197,5,283,32"/>
+<area shape="rect" href="display-lore_8cpp.html#af82243a5afd4413a4ce4b901c984f490" title="モンスター詳細情報を自動スポイラー向けに出力する / Hack – output description of the given monster race" alt="" coords="161,56,319,83"/>
+<area shape="rect" href="display-lore_8cpp.html#a9a19b136c0c0d88ac9bf1c3822dba2c4" title="モンスター情報の表示と共に画面を一時消去するサブルーチン / Hack – describe the given monster race at the top of the screen" alt="" coords="197,107,283,133"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#ac46cc9ce16200b7e52557070eafbc705" title="モンスターの思い出をサブウィンドウに表示する / Hack – display dungeon view in sub&#45;windows" alt="" coords="15,5,104,32"/>
+<area shape="rect" href="monster-info-spoiler_8cpp.html#aec3c4c4a889e0a9925f97fb32c252959" title="モンスター詳細情報をスポイラー出力するメインルーチン / Create a spoiler file for monsters (&#45;SHAWN&#45;)" alt="" coords="5,56,113,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa6921cb96de270dc5e0fbf2ab6a3e9d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6921cb96de270dc5e0fbf2ab6a3e9d8">&#9670;&nbsp;</a></span>set_msex_flags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_msex_flags </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlore__type.html">lore_type</a> *&#160;</td>
+          <td class="paramname"><em>lore_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>モンスターの思い出表示に必要なフラグ類の処理 </p>
+<dl class="section date"><dt>日付</dt><dd>2020/06/09 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-lore_8cpp_aa6921cb96de270dc5e0fbf2ab6a3e9d8_icgraph.png" border="0" usemap="#amonster-lore_8cpp_aa6921cb96de270dc5e0fbf2ab6a3e9d8_icgraph" alt=""/></div>
+<map name="amonster-lore_8cpp_aa6921cb96de270dc5e0fbf2ab6a3e9d8_icgraph" id="amonster-lore_8cpp_aa6921cb96de270dc5e0fbf2ab6a3e9d8_icgraph">
+<area shape="rect" title="モンスターの思い出表示に必要なフラグ類の処理" alt="" coords="565,56,679,83"/>
+<area shape="rect" href="monster-lore_8cpp.html#a6bca8b991910e7d6b38f0e5f7c045d4d" title="モンスターの思い出情報を表示するメインルーチン Hack – display monster information using &quot;hooked_roff()&quot;" alt="" coords="367,56,517,83"/>
+<area shape="rect" href="display-lore_8cpp.html#a9be33b7a9bfa9fff9e9bff01d3546f79" title="モンスター情報の現在のウィンドウに表示する / Hack – describe the given monster race in the current &quot;term&quot; window" alt="" coords="197,5,283,32"/>
+<area shape="rect" href="display-lore_8cpp.html#af82243a5afd4413a4ce4b901c984f490" title="モンスター詳細情報を自動スポイラー向けに出力する / Hack – output description of the given monster race" alt="" coords="161,56,319,83"/>
+<area shape="rect" href="display-lore_8cpp.html#a9a19b136c0c0d88ac9bf1c3822dba2c4" title="モンスター情報の表示と共に画面を一時消去するサブルーチン / Hack – describe the given monster race at the top of the screen" alt="" coords="197,107,283,133"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#ac46cc9ce16200b7e52557070eafbc705" title="モンスターの思い出をサブウィンドウに表示する / Hack – display dungeon view in sub&#45;windows" alt="" coords="15,5,104,32"/>
+<area shape="rect" href="monster-info-spoiler_8cpp.html#aec3c4c4a889e0a9925f97fb32c252959" title="モンスター詳細情報をスポイラー出力するメインルーチン / Create a spoiler file for monsters (&#45;SHAWN&#45;)" alt="" coords="5,56,113,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a55fa2f5e961570d06c3d89e3468eadf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55fa2f5e961570d06c3d89e3468eadf3">&#9670;&nbsp;</a></span>set_race_flags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_race_flags </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlore__type.html">lore_type</a> *&#160;</td>
+          <td class="paramname"><em>lore_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-lore_8cpp_a55fa2f5e961570d06c3d89e3468eadf3_icgraph.png" border="0" usemap="#amonster-lore_8cpp_a55fa2f5e961570d06c3d89e3468eadf3_icgraph" alt=""/></div>
+<map name="amonster-lore_8cpp_a55fa2f5e961570d06c3d89e3468eadf3_icgraph" id="amonster-lore_8cpp_a55fa2f5e961570d06c3d89e3468eadf3_icgraph">
+<area shape="rect" title=" " alt="" coords="565,56,672,83"/>
+<area shape="rect" href="monster-lore_8cpp.html#a6bca8b991910e7d6b38f0e5f7c045d4d" title="モンスターの思い出情報を表示するメインルーチン Hack – display monster information using &quot;hooked_roff()&quot;" alt="" coords="367,56,517,83"/>
+<area shape="rect" href="display-lore_8cpp.html#a9be33b7a9bfa9fff9e9bff01d3546f79" title="モンスター情報の現在のウィンドウに表示する / Hack – describe the given monster race in the current &quot;term&quot; window" alt="" coords="197,5,283,32"/>
+<area shape="rect" href="display-lore_8cpp.html#af82243a5afd4413a4ce4b901c984f490" title="モンスター詳細情報を自動スポイラー向けに出力する / Hack – output description of the given monster race" alt="" coords="161,56,319,83"/>
+<area shape="rect" href="display-lore_8cpp.html#a9a19b136c0c0d88ac9bf1c3822dba2c4" title="モンスター情報の表示と共に画面を一時消去するサブルーチン / Hack – describe the given monster race at the top of the screen" alt="" coords="197,107,283,133"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#ac46cc9ce16200b7e52557070eafbc705" title="モンスターの思い出をサブウィンドウに表示する / Hack – display dungeon view in sub&#45;windows" alt="" coords="15,5,104,32"/>
+<area shape="rect" href="monster-info-spoiler_8cpp.html#aec3c4c4a889e0a9925f97fb32c252959" title="モンスター詳細情報をスポイラー出力するメインルーチン / Create a spoiler file for monsters (&#45;SHAWN&#45;)" alt="" coords="5,56,113,83"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分43秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

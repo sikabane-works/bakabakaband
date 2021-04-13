@@ -1,0 +1,738 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/floor/geometry.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a620f8a6b723e397390ae5ca00f5aa8c.html">floor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">geometry.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="geometry_8h_source.html">floor/geometry.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cave_8h_source.html">floor/cave.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="text-display-options_8h_source.html">game-option/text-display-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="feature_8h_source.html">grid/feature.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="projection-path-calculator_8h_source.html">target/projection-path-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+geometry.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="geometry_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2geometry_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2geometry_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2geometry_8cpp">
+<area shape="rect" title=" " alt="" coords="1207,5,1395,61"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="1349,206,1464,233"/>
+<area shape="rect" href="cave_8h.html" title=" " alt="" coords="1218,117,1305,143"/>
+<area shape="rect" href="text-display-options_8h.html" title=" " alt="" coords="641,109,805,151"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="1097,117,1194,143"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="1381,117,1459,143"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1491,117,1679,143"/>
+<area shape="rect" href="projection-path-calculator_8h.html" title=" " alt="" coords="688,199,832,240"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="1703,117,1862,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="695,295,825,322"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1334,288,1479,329"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="855,385,945,411"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="5,385,96,411"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="120,385,219,411"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="243,385,341,411"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="366,385,466,411"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="490,385,665,411"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="689,385,831,411"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,385,1116,411"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1326,467,1445,493"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1042,467,1153,493"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="1191,377,1335,419"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1573,377,1729,419"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="1359,377,1497,419"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="856,206,1013,233"/>
+<area shape="rect" title=" " alt="" coords="1038,206,1093,233"/>
+<area shape="rect" title=" " alt="" coords="1117,206,1173,233"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1623,206,1801,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1826,206,1977,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:aed7b0b7bf05feb27e08a21112a69abb8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8">distance</a> (<a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y2, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x2)</td></tr>
+<tr class="memdesc:aed7b0b7bf05feb27e08a21112a69abb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton-Raphson technique  <a href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8">[詳解]</a><br /></td></tr>
+<tr class="separator:aed7b0b7bf05feb27e08a21112a69abb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22b294183ebff5dff5f2797476fdc01e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="geometry_8cpp.html#a22b294183ebff5dff5f2797476fdc01e">coords_to_dir</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="memdesc:a22b294183ebff5dff5f2797476fdc01e"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーから指定の座標がどの方角にあるかを返す / Convert an adjacent location to a direction.  <a href="geometry_8cpp.html#a22b294183ebff5dff5f2797476fdc01e">[詳解]</a><br /></td></tr>
+<tr class="separator:a22b294183ebff5dff5f2797476fdc01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06266551cc87bd4ad197c318d9c64d2d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d">player_can_see_bold</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="memdesc:a06266551cc87bd4ad197c318d9c64d2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player "see" the given grid in detail?  <a href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d">[詳解]</a><br /></td></tr>
+<tr class="separator:a06266551cc87bd4ad197c318d9c64d2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a291c2349c962b57d4225189fa1f12286"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="geometry_8cpp.html#a291c2349c962b57d4225189fa1f12286">mmove2</a> (<a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *x, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y2, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x2)</td></tr>
+<tr class="separator:a291c2349c962b57d4225189fa1f12286"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee4a4a78ed769a57ff6e3745a4425498"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498">is_seen</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structmonster__type.html">monster_type</a> *m_ptr)</td></tr>
+<tr class="memdesc:aee4a4a78ed769a57ff6e3745a4425498"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the monster seen by the player?  <a href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498">[詳解]</a><br /></td></tr>
+<tr class="separator:aee4a4a78ed769a57ff6e3745a4425498"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a341fc62460f4f160b7b223c051971a1a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="geometry_8cpp.html#a341fc62460f4f160b7b223c051971a1a">ddd</a> [9] = { 2, 8, 6, 4, 3, 1, 9, 7, 5 }</td></tr>
+<tr class="memdesc:a341fc62460f4f160b7b223c051971a1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">キーパッドの方向を南から反時計回り順に列挙 / Global array for looping through the "keypad directions"  <a href="geometry_8cpp.html#a341fc62460f4f160b7b223c051971a1a">[詳解]</a><br /></td></tr>
+<tr class="separator:a341fc62460f4f160b7b223c051971a1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2bb37c17ed7c5877d52832784bf7b72"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="geometry_8cpp.html#af2bb37c17ed7c5877d52832784bf7b72">ddx</a> [10] = { 0, -1, 0, 1, -1, 0, 1, -1, 0, 1 }</td></tr>
+<tr class="memdesc:af2bb37c17ed7c5877d52832784bf7b72"><td class="mdescLeft">&#160;</td><td class="mdescRight">dddで定義した順にベクトルのX軸成分を定義 / Global arrays for converting "keypad direction" into offsets  <a href="geometry_8cpp.html#af2bb37c17ed7c5877d52832784bf7b72">[詳解]</a><br /></td></tr>
+<tr class="separator:af2bb37c17ed7c5877d52832784bf7b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d436e7be40d101eb66b7351e4f5b3d8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="geometry_8cpp.html#a4d436e7be40d101eb66b7351e4f5b3d8">ddy</a> [10] = { 0, 1, 1, 1, 0, 0, 0, -1, -1, -1 }</td></tr>
+<tr class="memdesc:a4d436e7be40d101eb66b7351e4f5b3d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">dddで定義した順にベクトルのY軸成分を定義 / Global arrays for converting "keypad direction" into offsets  <a href="geometry_8cpp.html#a4d436e7be40d101eb66b7351e4f5b3d8">[詳解]</a><br /></td></tr>
+<tr class="separator:a4d436e7be40d101eb66b7351e4f5b3d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88c89b28f3d3d96bc4ff1e1284c73b60"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="geometry_8cpp.html#a88c89b28f3d3d96bc4ff1e1284c73b60">ddx_ddd</a> [9] = { 0, 0, 1, -1, 1, -1, 1, -1, 0 }</td></tr>
+<tr class="memdesc:a88c89b28f3d3d96bc4ff1e1284c73b60"><td class="mdescLeft">&#160;</td><td class="mdescRight">ddd越しにベクトルのX軸成分を定義 / Global arrays for optimizing "ddx[ddd[i]]" and "ddy[ddd[i]]"  <a href="geometry_8cpp.html#a88c89b28f3d3d96bc4ff1e1284c73b60">[詳解]</a><br /></td></tr>
+<tr class="separator:a88c89b28f3d3d96bc4ff1e1284c73b60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1476eabdaecb2135d3b74e968e2c3aff"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="geometry_8cpp.html#a1476eabdaecb2135d3b74e968e2c3aff">ddy_ddd</a> [9] = { 1, -1, 0, 0, 1, 1, -1, -1, 0 }</td></tr>
+<tr class="memdesc:a1476eabdaecb2135d3b74e968e2c3aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">ddd越しにベクトルのY軸成分を定義 / Global arrays for optimizing "ddx[ddd[i]]" and "ddy[ddd[i]]"  <a href="geometry_8cpp.html#a1476eabdaecb2135d3b74e968e2c3aff">[詳解]</a><br /></td></tr>
+<tr class="separator:a1476eabdaecb2135d3b74e968e2c3aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac426123a4419b49072ad24be3e189aca"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="geometry_8cpp.html#ac426123a4419b49072ad24be3e189aca">cdd</a> [8] = { 2, 3, 6, 9, 8, 7, 4, 1 }</td></tr>
+<tr class="memdesc:ac426123a4419b49072ad24be3e189aca"><td class="mdescLeft">&#160;</td><td class="mdescRight">キーパッドの円環状方向配列 / Circular keypad direction array  <a href="geometry_8cpp.html#ac426123a4419b49072ad24be3e189aca">[詳解]</a><br /></td></tr>
+<tr class="separator:ac426123a4419b49072ad24be3e189aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c90e030136905b2f1a82668b66f15d6"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="geometry_8cpp.html#a6c90e030136905b2f1a82668b66f15d6">ddx_cdd</a> [8] = { 0, 1, 1, 1, 0, -1, -1, -1 }</td></tr>
+<tr class="memdesc:a6c90e030136905b2f1a82668b66f15d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">cdd越しにベクトルのX軸成分を定義 / Global arrays for optimizing "ddx[cdd[i]]" and "ddy[cdd[i]]"  <a href="geometry_8cpp.html#a6c90e030136905b2f1a82668b66f15d6">[詳解]</a><br /></td></tr>
+<tr class="separator:a6c90e030136905b2f1a82668b66f15d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12759be2e54a40793fb689340ed7db46"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="geometry_8cpp.html#a12759be2e54a40793fb689340ed7db46">ddy_cdd</a> [8] = { 1, 1, 0, -1, -1, -1, 0, 1 }</td></tr>
+<tr class="memdesc:a12759be2e54a40793fb689340ed7db46"><td class="mdescLeft">&#160;</td><td class="mdescRight">cdd越しにベクトルのY軸成分を定義 / Global arrays for optimizing "ddx[cdd[i]]" and "ddy[cdd[i]]"  <a href="geometry_8cpp.html#a12759be2e54a40793fb689340ed7db46">[詳解]</a><br /></td></tr>
+<tr class="separator:a12759be2e54a40793fb689340ed7db46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a22b294183ebff5dff5f2797476fdc01e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22b294183ebff5dff5f2797476fdc01e">&#9670;&nbsp;</a></span>coords_to_dir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> coords_to_dir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーから指定の座標がどの方角にあるかを返す / Convert an adjacent location to a direction. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">y</td><td>方角を確認したY座標 </td></tr>
+    <tr><td class="paramname">x</td><td>方角を確認したX座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>方向ID </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="geometry_8cpp_a22b294183ebff5dff5f2797476fdc01e_icgraph.png" border="0" usemap="#ageometry_8cpp_a22b294183ebff5dff5f2797476fdc01e_icgraph" alt=""/></div>
+<map name="ageometry_8cpp_a22b294183ebff5dff5f2797476fdc01e_icgraph" id="ageometry_8cpp_a22b294183ebff5dff5f2797476fdc01e_icgraph">
+<area shape="rect" title="プレイヤーから指定の座標がどの方角にあるかを返す / Convert an adjacent location to a direction." alt="" coords="507,56,607,83"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#a6945001a0c01e0ef531db77445d1246f" title="「閉じる」コマンドのメインルーチン / Close an open door." alt="" coords="348,5,455,32"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#af905b3420d1017dc794ab89a9d6d0c42" title="箱、床のトラップ解除処理双方の統合メインルーチン / Disarms a trap, or chest" alt="" coords="344,56,459,83"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#a4da6ce664a625f0aa47bcbee0627fc5f" title="「開ける」コマンドのメインルーチン / Open a closed/locked/jammed door or a closed/locked chest." alt="" coords="350,107,453,133"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,56,296,83"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,56,116,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aed7b0b7bf05feb27e08a21112a69abb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed7b0b7bf05feb27e08a21112a69abb8">&#9670;&nbsp;</a></span>distance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> distance </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton-Raphson technique </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">y1</td><td>1点目のy座標 </td></tr>
+    <tr><td class="paramname">x1</td><td>1点目のx座標 </td></tr>
+    <tr><td class="paramname">y2</td><td>2点目のy座標 </td></tr>
+    <tr><td class="paramname">x2</td><td>2点目のx座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>2点間の距離 </dd></dl>
+
+</div>
+</div>
+<a id="aee4a4a78ed769a57ff6e3745a4425498"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee4a4a78ed769a57ff6e3745a4425498">&#9670;&nbsp;</a></span>is_seen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> is_seen </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonster__type.html">monster_type</a> *&#160;</td>
+          <td class="paramname"><em>m_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Is the monster seen by the player? </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">m_ptr</td><td>個々のモンスターへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>個々のモンスターがプレーヤーが見えたらTRUE </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000036">todo:</a></b></dt><dd><a class="el" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?">is_seen()</a> の関数マクロをバラそうとしたがインクルード関係のコンパイルエラーで失敗 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="geometry_8cpp_aee4a4a78ed769a57ff6e3745a4425498_cgraph.png" border="0" usemap="#ageometry_8cpp_aee4a4a78ed769a57ff6e3745a4425498_cgraph" alt=""/></div>
+<map name="ageometry_8cpp_aee4a4a78ed769a57ff6e3745a4425498_cgraph" id="ageometry_8cpp_aee4a4a78ed769a57ff6e3745a4425498_cgraph">
+<area shape="rect" title="Is the monster seen by the player?" alt="" coords="5,161,72,187"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="120,85,264,111"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="149,237,235,263"/>
+<area shape="rect" href="grid_8cpp.html#ab400c1b998f2aac3e96120a9f4e374dc" title="指定された座標のマスが現在照らされているかを返す。 / Check for &quot;local&quot; illumination" alt="" coords="312,34,475,61"/>
+<area shape="rect" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e" title=" " alt="" coords="547,9,671,35"/>
+<area shape="rect" href="grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="553,71,664,98"/>
+<area shape="rect" href="cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="323,135,463,162"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a4b51e58b486248125ebe09c66b7cf4fd" title=" " alt="" coords="352,186,435,213"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a0efdd47805f853338eaf1e059248e888" title=" " alt="" coords="352,237,435,263"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="338,287,449,314"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#abe5bfead50a2faa5df229a92b5126f32" title="始点から終点への直線経路を返す / Determine the path taken by a projection." alt="" coords="338,338,449,365"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a30ef387a791d4e4e8de0c441056943e0" title=" " alt="" coords="523,237,695,263"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a967933565c13f95ea0500a0fd24d8021" title=" " alt="" coords="533,287,685,314"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a32a097212154ab56f1a529ee83ff2559" title=" " alt="" coords="531,338,687,365"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a291b34765c99fa0567ca24a7e9eea0a3" title=" " alt="" coords="543,389,675,431"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a3b3cbd8d5e3729549be74e6e65721adb" title=" " alt="" coords="571,455,646,482"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="geometry_8cpp_aee4a4a78ed769a57ff6e3745a4425498_icgraph.png" border="0" usemap="#ageometry_8cpp_aee4a4a78ed769a57ff6e3745a4425498_icgraph" alt=""/></div>
+<map name="ageometry_8cpp_aee4a4a78ed769a57ff6e3745a4425498_icgraph" id="ageometry_8cpp_aee4a4a78ed769a57ff6e3745a4425498_icgraph">
+<area shape="rect" title="Is the monster seen by the player?" alt="" coords="1399,1152,1465,1179"/>
+<area shape="rect" href="mind-sniper_8cpp.html#aba0d8ae8ce1e0a34c3aa0afcc2bc7324" title="スナイバー技能のスレイ倍率計算を行う / Calcurate magnification of snipe technics" alt="" coords="1148,1583,1347,1609"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="725,485,811,512"/>
+<area shape="rect" href="spells-genocide_8cpp.html#a92bd5e26c84fa2eb42514b87bc6f2632" title="モンスターへの単体抹殺処理サブルーチン / Delete a non&#45;unique/non&#45;quest monster" alt="" coords="1196,848,1299,875"/>
+<area shape="rect" href="effect-monster-util_8cpp.html#ac4e0ed311cd8006b433e7d0ccc5507bb" title="effect_monster_type構造体を初期化する" alt="" coords="1167,797,1328,824"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="737,899,799,925"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a8d2297e3be04a6ff5b94c04b3238e5af" title=" " alt="" coords="478,1051,595,1077"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a1a1b3e0a12064c9a3fa70d65f8bd5e32" title=" " alt="" coords="473,1101,601,1128"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#ab0c6f44097a488c6a52e729cff6a8e88" title=" " alt="" coords="1168,1051,1327,1077"/>
+<area shape="rect" href="melee-util_8cpp.html#a457e94672a81323dcb025895bad6e34f" title=" " alt="" coords="1179,1101,1316,1128"/>
+<area shape="rect" href="melee-spell-util_8cpp.html#a5a1ff731218e4523e52c99b88d26b03d" title=" " alt="" coords="1159,1152,1336,1179"/>
+<area shape="rect" href="monster-status_8cpp.html#aea5a519fd7a4c7f9c718fdfc1c788c7f" title="モンスターに与えたダメージの修正処理 / Modify the physical damage done to the monster." alt="" coords="702,1557,834,1584"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a0e87fa3c4d00e18ae470c0611d0019f0" title="キューちゃん撃破時メッセージ" alt="" coords="1181,1380,1313,1407"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a9473eba7ae635c7cb94c6cf0d7426659" title="フロア移動時のペット保存処理 / Preserve_pets" alt="" coords="1200,1431,1295,1457"/>
+<area shape="rect" href="monster-processor_8cpp.html#ae6e21e8e28cd96eb7bc76f452416588a" title="モンスター単体の1ターン行動処理メインルーチン / Process a monster" alt="" coords="1186,1481,1309,1508"/>
+<area shape="rect" href="monster-status_8cpp.html#a443274a2f1e9d2595a1d600a6579b427" title="モンスターの各種状態値を時間経過により更新するサブルーチン" alt="" coords="1144,1532,1351,1559"/>
+<area shape="rect" href="mspell-util_8cpp.html#a0bdfd9b55b743eb4f82ef3582403f0eb" title="プレイヤーがモンスターを見ることができるかの判定 /" alt="" coords="1199,1279,1296,1305"/>
+<area shape="rect" href="spells-world_8cpp.html#a7204ab233ffa573046416517da467469" title="プレイヤー及びモンスターをレベルテレポートさせる / Teleport the player one level up or down (random when legal)" alt="" coords="1199,1633,1296,1660"/>
+<area shape="rect" href="shoot_8cpp.html#a3a4f56c3d547ea46853ea3489479bd0f" title="矢弾を射撃した際のスレイ倍率をかけた結果を返す / Determines the odds of an object breaking when thrown at a monster" alt="" coords="672,1608,864,1635"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="503,1557,570,1584"/>
+<area shape="rect" href="activation-others_8cpp.html#a9b90dfddb03061f58f3689526fb96528" title=" " alt="" coords="468,5,605,32"/>
+<area shape="rect" href="spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="279,645,401,672"/>
+<area shape="rect" href="spells-trump_8cpp.html#a62ebe5c603d93fd2c11edcc6fc2b4caf" title="トランプ領域の「シャッフル」の効果をランダムに決めて処理する。" alt="" coords="5,519,96,545"/>
+<area shape="rect" href="spells-random_8cpp.html#ad3967ff26aec044a7b9dd0a553073fe3" title="運命の輪、並びにカオス的な効果の発動" alt="" coords="144,544,231,571"/>
+<area shape="rect" href="blood-curse_8cpp.html#ac0ecc46e48f607918b001bc2b08b561f" title=" " alt="" coords="459,848,615,875"/>
+<area shape="rect" href="mind-berserker_8cpp.html#a73db877ef674132d5c3149ed726ccf47" title="怒りの発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;berserker&#39;." alt="" coords="471,107,602,133"/>
+<area shape="rect" href="spells-summon_8cpp.html#ae25b9862f324f43e7bd22de4bba02963" title="「悪霊召喚」のランダムな効果を決定して処理する。" alt="" coords="471,157,603,184"/>
+<area shape="rect" href="spells-random_8cpp.html#a37a969b807fd2f1ce9399ed7851424c7" title="「ワンダー」のランダムな効果を決定して処理する。" alt="" coords="489,208,584,235"/>
+<area shape="rect" href="player-attack_8cpp.html#a4941cbce22aea0186f8fffa85dd4930a" title="地震を起こす" alt="" coords="473,259,601,285"/>
+<area shape="rect" href="melee-switcher_8cpp.html#a26526a37b98f5208b627891dcc405fa4" title=" " alt="" coords="458,310,615,351"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="473,797,600,824"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="481,747,593,773"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="480,899,593,925"/>
+<area shape="rect" href="mutation-execution_8cpp.html#a0c9c1052c587d71b683d8a700d9ae016" title="突然変異のレイシャル効果実装" alt="" coords="466,376,607,403"/>
+<area shape="rect" href="cmd-usestaff_8cpp.html#a4a284c2f2988d427dd6baac5fcf99fd6" title="杖の効果を発動する" alt="" coords="495,427,579,453"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a74d62708df45b643ad7193b43e5d053c" title="クラスパワーを実行" alt="" coords="449,696,624,723"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a5de1dfd64f941a47e81c3fb2c043a3e2" title=" " alt="" coords="463,478,610,519"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#aa3c6ea47d39b38e54711fcfdbca7f4b6" title="周辺破壊効果(プレイヤー中心)" alt="" coords="489,595,584,621"/>
+<area shape="rect" href="trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="155,823,220,849"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="951,823,1057,849"/>
+<area shape="rect" href="mspell-floor_8cpp.html#acfd69c3cc851b4d76300b197389a7ce7" title="RF6_DARKNESSの処理。暗闇or閃光。 /" alt="" coords="457,1329,616,1356"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#ad1f0f3b1e09613dd611d055979e16079" title="モンスターが敵モンスターに行う打撃処理 / Hack, based on mon_take_hit..." alt="" coords="938,1051,1070,1077"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a42ec35a0659aa887eabe9976cf5f7e77" title="モンスターから敵モンスターへの打撃攻撃処理" alt="" coords="932,1101,1076,1128"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="937,1152,1071,1179"/>
+<area shape="rect" href="mspell-summon_8cpp.html#ac11493557de32115985e3bd6b33bf485" title=" " alt="" coords="912,1203,1096,1229"/>
+<area shape="rect" href="mspell-util_8cpp.html#a6d1fe40d21640ab21cdaba03bb3e70dc" title="モンスターが呪文行使する際のメッセージを処理する汎用関数 /" alt="" coords="919,1253,1089,1280"/>
+<area shape="rect" href="mspell-status_8cpp.html#af786fe11d0c98f4d3fed6ccdf02965e0" title="プレーヤーのステータスを下げるか、モンスター自身のステータスを上げるスペル類の処理" alt="" coords="917,1304,1091,1331"/>
+<area shape="rect" href="mspell-breath_8cpp.html#a582e3df29a03e6ac31dc403c431cc2a9" title="RF4_BR_*の処理。各種ブレス。 /" alt="" coords="935,1355,1073,1381"/>
+<area shape="rect" href="mspell-ball_8cpp.html#a4c6a0a6ce55f8492bc6ce74f015198d7" title="RF5_BA_WATEの処理。ウォーター・ボール。 /" alt="" coords="929,1405,1079,1432"/>
+<area shape="rect" href="mspell-status_8cpp.html#a065e582b50d2b55a6a1971230ecd63b5" title="RF5_BRAIN_SMASHの処理。脳攻撃。 /" alt="" coords="914,1456,1094,1483"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a291c2349c962b57d4225189fa1f12286"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a291c2349c962b57d4225189fa1f12286">&#9670;&nbsp;</a></span>mmove2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mmove2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="geometry_8cpp_a291c2349c962b57d4225189fa1f12286_icgraph.png" border="0" usemap="#ageometry_8cpp_a291c2349c962b57d4225189fa1f12286_icgraph" alt=""/></div>
+<map name="ageometry_8cpp_a291c2349c962b57d4225189fa1f12286_icgraph" id="ageometry_8cpp_a291c2349c962b57d4225189fa1f12286_icgraph">
+<area shape="rect" title=" " alt="" coords="516,56,587,83"/>
+<area shape="rect" href="spells-crusade_8cpp.html#afb7053fa5419ad06ab18be525f1d92af" title="破邪魔法処理" alt="" coords="307,5,462,32"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a687a274385000779724afcdd8f11f4d1" title=" " alt="" coords="301,56,468,83"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="351,107,418,133"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="131,5,253,32"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="5,5,83,32"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a144b5ba602202137adbda1a4eb26ce88" title=" " alt="" coords="151,56,233,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a06266551cc87bd4ad197c318d9c64d2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06266551cc87bd4ad197c318d9c64d2d">&#9670;&nbsp;</a></span>player_can_see_bold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> player_can_see_bold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player "see" the given grid in detail? </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">y</td><td>y座標 </td></tr>
+    <tr><td class="paramname">x</td><td>x座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>視覚に収められる状態ならTRUEを返す</dd></dl>
+<p>He must have vision, illumination, and line of sight.<br  />
+ <br  />
+ Note &ndash; "CAVE_LITE" is only set if the "torch" has "los()".<br  />
+ So, given "CAVE_LITE", we know that the grid is "fully visible".<br  />
+<br  />
+ Note that "CAVE_GLOW" makes little sense for a wall, since it would mean<br  />
+ that a wall is visible from any direction. That would be odd. Except<br  />
+ under wizard light, which might make sense. Thus, for walls, we require<br  />
+ not only that they be "CAVE_GLOW", but also, that they be adjacent to a<br  />
+ grid which is not only "CAVE_GLOW", but which is a non-wall, and which is<br  />
+ in line of sight of the player.<br  />
+<br  />
+ This extra check is expensive, but it provides a more "correct" semantics.<br  />
+<br  />
+ Note that we should not run this check on walls which are "outer walls" of<br  />
+ the dungeon, or we will induce a memory fault, but actually verifying all<br  />
+ of the locations would be extremely expensive.<br  />
+<br  />
+ Thus, to speed up the function, we assume that all "perma-walls" which are<br  />
+ "CAVE_GLOW" are "illuminated" from all sides. This is correct for all cases<br  />
+ except "vaults" and the "buildings" in town. But the town is a hack anyway,<br  />
+ and the player has more important things on his mind when he is attacking a<br  />
+ monster vault. It is annoying, but an extremely important optimization.<br  />
+<br  />
+ Note that "glowing walls" are only considered to be "illuminated" if the<br  />
+ grid which is next to the wall in the direction of the player is also a<br  />
+ "glowing" grid. This prevents the player from being able to "see" the<br  />
+ walls of illuminated rooms from a corridor outside the room.<br  />
+</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="geometry_8cpp_a06266551cc87bd4ad197c318d9c64d2d_cgraph.png" border="0" usemap="#ageometry_8cpp_a06266551cc87bd4ad197c318d9c64d2d_cgraph" alt=""/></div>
+<map name="ageometry_8cpp_a06266551cc87bd4ad197c318d9c64d2d_cgraph" id="ageometry_8cpp_a06266551cc87bd4ad197c318d9c64d2d_cgraph">
+<area shape="rect" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="5,56,149,83"/>
+<area shape="rect" href="grid_8cpp.html#ab400c1b998f2aac3e96120a9f4e374dc" title="指定された座標のマスが現在照らされているかを返す。 / Check for &quot;local&quot; illumination" alt="" coords="197,31,360,57"/>
+<area shape="rect" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e" title=" " alt="" coords="408,5,532,32"/>
+<area shape="rect" href="grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="415,56,525,83"/>
+<area shape="rect" href="cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="209,132,349,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="geometry_8cpp_a06266551cc87bd4ad197c318d9c64d2d_icgraph.png" border="0" usemap="#ageometry_8cpp_a06266551cc87bd4ad197c318d9c64d2d_icgraph" alt=""/></div>
+<map name="ageometry_8cpp_a06266551cc87bd4ad197c318d9c64d2d_icgraph" id="ageometry_8cpp_a06266551cc87bd4ad197c318d9c64d2d_icgraph">
+<area shape="rect" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="1356,1525,1500,1552"/>
+<area shape="rect" href="effect-feature_8cpp.html#ab60eea66f4d858035803d331e84151cc" title="汎用的なビーム/ボルト/ボール系による地形効果処理 / We are called from &quot;project()&quot; to &quot;damage&quot; terrain features" alt="" coords="1169,715,1267,741"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="946,715,1007,741"/>
+<area shape="rect" href="grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="705,613,813,640"/>
+<area shape="rect" href="movement-execution_8cpp.html#a586b9fe6bc207183655cdfb8dcfaf464" title="該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す / Move player in the given direction, with the given &quot;pickup&quot; flag." alt="" coords="180,537,289,564"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="548,917,615,944"/>
+<area shape="rect" href="monster-update_8cpp.html#a3a396e1d3462438fbdbf1d6726ddf10b" title=" " alt="" coords="1163,1449,1273,1476"/>
+<area shape="rect" href="cmd-throw_8cpp.html#af3a8eb4a3cc4a277a37ebb2b81410c30" title=" " alt="" coords="1133,1500,1303,1527"/>
+<area shape="rect" href="target-describer_8cpp.html#a91974c989701cf617f42e1ecddfbadf5" title="xまたはlで指定したグリッドにあるアイテムやモンスターの説明を記述する" alt="" coords="1169,1551,1267,1577"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="1185,1145,1251,1172"/>
+<area shape="rect" href="monster-status_8cpp.html#a5816c48586498ed28b6080bb6ebb5e45" title="モンスターの経験値取得処理" alt="" coords="1154,1601,1282,1628"/>
+<area shape="rect" href="monster-object_8cpp.html#a9ef3ffafff4b487b19f9df8f26595911" title="モンスターがアイテムを拾うか壊す処理" alt="" coords="1140,1652,1296,1679"/>
+<area shape="rect" href="grid_8cpp.html#a90a8ac3022bff7cdeddf03830a82b39d" title="指定された座標をプレイヤー収められていない状態かどうか / Returns true if the player&#39;s grid is dark" alt="" coords="729,259,789,285"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#aeb4b9f86d7b5087ea62e54a705b03efe" title=" " alt="" coords="1141,1703,1295,1729"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a0b8b48375a97172b376ca663aa5df701" title=" " alt="" coords="1128,1753,1308,1780"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a4821abe01bd987172e6d1f493c7e87ab" title=" " alt="" coords="1147,1804,1289,1831"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a7ce26cd1c402ad230a919b9b58204965" title=" " alt="" coords="1129,1855,1307,1881"/>
+<area shape="rect" href="run-execution_8cpp.html#a88e3dfe2e13cb1f22b67737858764e87" title="ダッシュ移動処理中、移動先のマスか未知の地形かどうかを判定する / Hack – Check for an &quot;unknown corner&quot; (see below)" alt="" coords="1172,1905,1264,1932"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a171b6fd602a2c8d672ccd9772e5323e1" title="モンスター死亡時の特殊処理switch (一般的な処理もdefaultで実施)" alt="" coords="1169,1956,1267,1983"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#ac5e475bf543027393672734eb9613bf6" title="鏡魔法「封魔結界」の効果処理" alt="" coords="930,664,1023,691"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="5,740,132,767"/>
+<area shape="rect" href="trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="549,664,614,691"/>
+<area shape="rect" href="player-move_8cpp.html#ac637efbeba2a2fca5538ee13812b97bf" title="移動に伴うプレイヤーのステータス変化処理" alt="" coords="337,664,469,691"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a8d2297e3be04a6ff5b94c04b3238e5af" title=" " alt="" coords="701,867,818,893"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a1a1b3e0a12064c9a3fa70d65f8bd5e32" title=" " alt="" coords="695,917,823,944"/>
+<area shape="rect" href="open-close-execution_8cpp.html#ae4c38ee9a960b05377ffd1e939af8514" title="移動処理による簡易な「開く」処理 / easy_open_door –" alt="" coords="523,360,640,387"/>
+<area shape="rect" href="open-close-execution_8cpp.html#ad1cd5c9c791561ebb1f78caf1bb3bef3" title="箱のトラップを解除するコマンドのサブルーチン / Perform the basic &quot;disarm&quot; command" alt="" coords="24,537,113,564"/>
+<area shape="rect" href="open-close-execution_8cpp.html#aaacef67c04f28a538f5f32d53ba1dd45" title="扉や箱を開ける処理" alt="" coords="542,461,621,488"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="191,715,278,741"/>
+<area shape="rect" href="monster-update_8cpp.html#accf491d0422881fe5a626cfeafed9c69" title="テレパシー・赤外線視力・可視透明によってモンスターを感知できるかどうかの判定" alt="" coords="903,1627,1050,1669"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a144b5ba602202137adbda1a4eb26ce88" title=" " alt="" coords="936,1693,1017,1720"/>
+<area shape="rect" href="mind-sniper_8cpp.html#aba0d8ae8ce1e0a34c3aa0afcc2bc7324" title="スナイバー技能のスレイ倍率計算を行う / Calcurate magnification of snipe technics" alt="" coords="877,1323,1076,1349"/>
+<area shape="rect" href="spells-genocide_8cpp.html#a92bd5e26c84fa2eb42514b87bc6f2632" title="モンスターへの単体抹殺処理サブルーチン / Delete a non&#45;unique/non&#45;quest monster" alt="" coords="925,1373,1028,1400"/>
+<area shape="rect" href="effect-monster-util_8cpp.html#ac4e0ed311cd8006b433e7d0ccc5507bb" title="effect_monster_type構造体を初期化する" alt="" coords="896,1424,1057,1451"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#ab0c6f44097a488c6a52e729cff6a8e88" title=" " alt="" coords="897,1475,1056,1501"/>
+<area shape="rect" href="melee-util_8cpp.html#a457e94672a81323dcb025895bad6e34f" title=" " alt="" coords="908,1525,1045,1552"/>
+<area shape="rect" href="melee-spell-util_8cpp.html#a5a1ff731218e4523e52c99b88d26b03d" title=" " alt="" coords="888,867,1065,893"/>
+<area shape="rect" href="monster-status_8cpp.html#aea5a519fd7a4c7f9c718fdfc1c788c7f" title="モンスターに与えたダメージの修正処理 / Modify the physical damage done to the monster." alt="" coords="693,1069,825,1096"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a0e87fa3c4d00e18ae470c0611d0019f0" title="キューちゃん撃破時メッセージ" alt="" coords="911,917,1043,944"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a9473eba7ae635c7cb94c6cf0d7426659" title="フロア移動時のペット保存処理 / Preserve_pets" alt="" coords="929,968,1024,995"/>
+<area shape="rect" href="monster-processor_8cpp.html#ae6e21e8e28cd96eb7bc76f452416588a" title="モンスター単体の1ターン行動処理メインルーチン / Process a monster" alt="" coords="915,1019,1038,1045"/>
+<area shape="rect" href="monster-status_8cpp.html#a443274a2f1e9d2595a1d600a6579b427" title="モンスターの各種状態値を時間経過により更新するサブルーチン" alt="" coords="873,1069,1080,1096"/>
+<area shape="rect" href="mspell-util_8cpp.html#a0bdfd9b55b743eb4f82ef3582403f0eb" title="プレイヤーがモンスターを見ることができるかの判定 /" alt="" coords="928,1120,1025,1147"/>
+<area shape="rect" href="spells-world_8cpp.html#a7204ab233ffa573046416517da467469" title="プレイヤー及びモンスターをレベルテレポートさせる / Teleport the player one level up or down (random when legal)" alt="" coords="928,1171,1025,1197"/>
+<area shape="rect" href="action-limited_8cpp.html#a071fa928301cca389bfefc56eded6e02" title=" " alt="" coords="525,259,637,285"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="531,5,631,32"/>
+<area shape="rect" href="open-close-execution_8cpp.html#a7ae101c2ede52c77b602e7a195815c3e" title="箱のトラップを解除する実行処理 / Perform the basic &quot;disarm&quot; command" alt="" coords="517,107,645,133"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#a5e8d54fe79ddf86d8f253ae4a6e844d6" title="箱を開ける実行処理 / Attempt to open the given chest at the given location" alt="" coords="523,157,640,184"/>
+<area shape="rect" href="player-move_8cpp.html#a065d2dfda4580aec2d9d8a9844fbff38" title="プレイヤーの探索処理判定" alt="" coords="551,309,612,336"/>
+<area shape="rect" href="travel-execution_8cpp.html#a28091a523a97e5eeb81f051bae9ac2b1" title="トラベル機能の判定処理 / Test for traveling" alt="" coords="541,208,622,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="ac426123a4419b49072ad24be3e189aca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac426123a4419b49072ad24be3e189aca">&#9670;&nbsp;</a></span>cdd</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> cdd[8] = { 2, 3, 6, 9, 8, 7, 4, 1 }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>キーパッドの円環状方向配列 / Circular keypad direction array </p>
+
+</div>
+</div>
+<a id="a341fc62460f4f160b7b223c051971a1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a341fc62460f4f160b7b223c051971a1a">&#9670;&nbsp;</a></span>ddd</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> ddd[9] = { 2, 8, 6, 4, 3, 1, 9, 7, 5 }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>キーパッドの方向を南から反時計回り順に列挙 / Global array for looping through the "keypad directions" </p>
+
+</div>
+</div>
+<a id="af2bb37c17ed7c5877d52832784bf7b72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2bb37c17ed7c5877d52832784bf7b72">&#9670;&nbsp;</a></span>ddx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> ddx[10] = { 0, -1, 0, 1, -1, 0, 1, -1, 0, 1 }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>dddで定義した順にベクトルのX軸成分を定義 / Global arrays for converting "keypad direction" into offsets </p>
+
+</div>
+</div>
+<a id="a6c90e030136905b2f1a82668b66f15d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c90e030136905b2f1a82668b66f15d6">&#9670;&nbsp;</a></span>ddx_cdd</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> ddx_cdd[8] = { 0, 1, 1, 1, 0, -1, -1, -1 }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>cdd越しにベクトルのX軸成分を定義 / Global arrays for optimizing "ddx[cdd[i]]" and "ddy[cdd[i]]" </p>
+
+</div>
+</div>
+<a id="a88c89b28f3d3d96bc4ff1e1284c73b60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88c89b28f3d3d96bc4ff1e1284c73b60">&#9670;&nbsp;</a></span>ddx_ddd</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> ddx_ddd[9] = { 0, 0, 1, -1, 1, -1, 1, -1, 0 }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ddd越しにベクトルのX軸成分を定義 / Global arrays for optimizing "ddx[ddd[i]]" and "ddy[ddd[i]]" </p>
+
+</div>
+</div>
+<a id="a4d436e7be40d101eb66b7351e4f5b3d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d436e7be40d101eb66b7351e4f5b3d8">&#9670;&nbsp;</a></span>ddy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> ddy[10] = { 0, 1, 1, 1, 0, 0, 0, -1, -1, -1 }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>dddで定義した順にベクトルのY軸成分を定義 / Global arrays for converting "keypad direction" into offsets </p>
+
+</div>
+</div>
+<a id="a12759be2e54a40793fb689340ed7db46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12759be2e54a40793fb689340ed7db46">&#9670;&nbsp;</a></span>ddy_cdd</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> ddy_cdd[8] = { 1, 1, 0, -1, -1, -1, 0, 1 }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>cdd越しにベクトルのY軸成分を定義 / Global arrays for optimizing "ddx[cdd[i]]" and "ddy[cdd[i]]" </p>
+
+</div>
+</div>
+<a id="a1476eabdaecb2135d3b74e968e2c3aff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1476eabdaecb2135d3b74e968e2c3aff">&#9670;&nbsp;</a></span>ddy_ddd</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> ddy_ddd[9] = { 1, -1, 0, 0, 1, 1, -1, -1, 0 }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ddd越しにベクトルのY軸成分を定義 / Global arrays for optimizing "ddx[ddd[i]]" and "ddy[ddd[i]]" </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分15秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

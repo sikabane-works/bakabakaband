@@ -1,0 +1,1299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/wizard/artifact-analyzer.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e09032bb770e6e0f4355f890c3180c4a.html">wizard</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">artifact-analyzer.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="artifact-analyzer_8h_source.html">wizard/artifact-analyzer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flavor-describer_8h_source.html">flavor/flavor-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flavor-types_8h_source.html">flavor/object-flavor-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-ego_8h_source.html">object-enchant/object-ego.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="trc-types_8h_source.html">object-enchant/trc-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="trg-types_8h_source.html">object-enchant/trg-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flags_8h_source.html">object/object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-info_8h_source.html">object/object-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="artifact-type-definition_8h_source.html">system/artifact-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quarks_8h_source.html">util/quarks.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spoiler-util_8h_source.html">wizard/spoiler-util.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+artifact-analyzer.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2wizard_2artifact-analyzer_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2wizard_2artifact-analyzer_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2wizard_2artifact-analyzer_8cpp">
+<area shape="rect" title=" " alt="" coords="926,5,1114,61"/>
+<area shape="rect" href="artifact-analyzer_8h.html" title=" " alt="" coords="253,206,419,233"/>
+<area shape="rect" href="flavor-describer_8h.html" title=" " alt="" coords="76,206,228,233"/>
+<area shape="rect" href="object-flavor-types_8h.html" title=" " alt="" coords="1441,109,1564,151"/>
+<area shape="rect" href="object-ego_8h.html" title=" " alt="" coords="1057,109,1204,151"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="1402,199,1529,240"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="881,199,1015,240"/>
+<area shape="rect" href="trc-types_8h.html" title=" " alt="" coords="1589,109,1715,151"/>
+<area shape="rect" href="object-flags_8h.html" title=" " alt="" coords="689,117,828,143"/>
+<area shape="rect" href="object-info_8h.html" title=" " alt="" coords="852,117,983,143"/>
+<area shape="rect" href="artifact-type-definition_8h.html" title=" " alt="" coords="1229,109,1366,151"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="1739,117,1898,143"/>
+<area shape="rect" href="quarks_8h.html" title=" " alt="" coords="444,206,537,233"/>
+<area shape="rect" href="spoiler-util_8h.html" title=" " alt="" coords="532,117,665,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="565,288,694,315"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="171,363,261,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="285,363,376,389"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="400,363,499,389"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="523,363,621,389"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="646,363,746,389"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="770,363,945,389"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="5,363,147,389"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,363,1116,389"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1098,437,1209,464"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="911,288,1078,315"/>
+<area shape="rect" title=" " alt="" coords="1271,206,1326,233"/>
+<area shape="rect" title=" " alt="" coords="1191,206,1247,233"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="741,288,867,315"/>
+<area shape="rect" href="spoiler-table_8h.html" title=" " alt="" coords="713,206,857,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a47fcfc88c0d8fbcea4b91d780a5c956c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="artifact-analyzer_8cpp.html#a47fcfc88c0d8fbcea4b91d780a5c956c">spoiler_flag_aux</a> (const <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> art_flags[<a class="el" href="object-type-definition_8h.html#a396c51ddaffe17c1e21a428c41ba294e">TR_FLAG_SIZE</a>], const <a class="el" href="structflag__desc.html">flag_desc</a> *flag_ptr, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *desc_ptr, const int n_elmnts)</td></tr>
+<tr class="memdesc:a47fcfc88c0d8fbcea4b91d780a5c956c"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーティファクトの特性一覧を出力する / Write a line to the spoiler file and then "underline" it with hypens  <a href="artifact-analyzer_8cpp.html#a47fcfc88c0d8fbcea4b91d780a5c956c">[詳解]</a><br /></td></tr>
+<tr class="separator:a47fcfc88c0d8fbcea4b91d780a5c956c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aebf0933710d2f5b0b2cf87e1aa4618"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="artifact-analyzer_8cpp.html#a7aebf0933710d2f5b0b2cf87e1aa4618">analyze_general</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, char *desc_ptr)</td></tr>
+<tr class="memdesc:a7aebf0933710d2f5b0b2cf87e1aa4618"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムの特定記述内容を返す / Acquire a "basic" description "The Cloak of Death [1,+10]"  <a href="artifact-analyzer_8cpp.html#a7aebf0933710d2f5b0b2cf87e1aa4618">[詳解]</a><br /></td></tr>
+<tr class="separator:a7aebf0933710d2f5b0b2cf87e1aa4618"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb5c917a0d598785804cde6f8a12aa37"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="artifact-analyzer_8cpp.html#afb5c917a0d598785804cde6f8a12aa37">analyze_pval</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, <a class="el" href="structpval__info__type.html">pval_info_type</a> *pi_ptr)</td></tr>
+<tr class="memdesc:afb5c917a0d598785804cde6f8a12aa37"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーティファクトがプレイヤーに与えるpval修正を構造体に収める / List "player traits" altered by an artifact's pval.  <a href="artifact-analyzer_8cpp.html#afb5c917a0d598785804cde6f8a12aa37">[詳解]</a><br /></td></tr>
+<tr class="separator:afb5c917a0d598785804cde6f8a12aa37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f52fad0e07f86922891eff6c198e300"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="artifact-analyzer_8cpp.html#a8f52fad0e07f86922891eff6c198e300">analyze_slay</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *slay_list)</td></tr>
+<tr class="memdesc:a8f52fad0e07f86922891eff6c198e300"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーティファクトの種族スレイ特性を構造体に収める / Note the slaying specialties of a weapon  <a href="artifact-analyzer_8cpp.html#a8f52fad0e07f86922891eff6c198e300">[詳解]</a><br /></td></tr>
+<tr class="separator:a8f52fad0e07f86922891eff6c198e300"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2e84c35f4fd2542f7d25f52be97efcc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="artifact-analyzer_8cpp.html#ae2e84c35f4fd2542f7d25f52be97efcc">analyze_brand</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *brand_list)</td></tr>
+<tr class="memdesc:ae2e84c35f4fd2542f7d25f52be97efcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーティファクトの属性ブランド特性を構造体に収める / Note an object's elemental brands  <a href="artifact-analyzer_8cpp.html#ae2e84c35f4fd2542f7d25f52be97efcc">[詳解]</a><br /></td></tr>
+<tr class="separator:ae2e84c35f4fd2542f7d25f52be97efcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0b62923208a78584f2f5d00ffce8e49"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="artifact-analyzer_8cpp.html#ab0b62923208a78584f2f5d00ffce8e49">analyze_resist</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *resist_list)</td></tr>
+<tr class="memdesc:ab0b62923208a78584f2f5d00ffce8e49"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーティファクトの通常耐性を構造体に収める / Note an object's elemental brands  <a href="artifact-analyzer_8cpp.html#ab0b62923208a78584f2f5d00ffce8e49">[詳解]</a><br /></td></tr>
+<tr class="separator:ab0b62923208a78584f2f5d00ffce8e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a5470523604583af0074f362918b800"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="artifact-analyzer_8cpp.html#a3a5470523604583af0074f362918b800">analyze_immune</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *immune_list)</td></tr>
+<tr class="memdesc:a3a5470523604583af0074f362918b800"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーティファクトの免疫特性を構造体に収める / Note the immunities granted by an object  <a href="artifact-analyzer_8cpp.html#a3a5470523604583af0074f362918b800">[詳解]</a><br /></td></tr>
+<tr class="separator:a3a5470523604583af0074f362918b800"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ded92e44b7c34773903a888cf19ff97"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="artifact-analyzer_8cpp.html#a0ded92e44b7c34773903a888cf19ff97">analyze_sustains</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *sustain_list)</td></tr>
+<tr class="memdesc:a0ded92e44b7c34773903a888cf19ff97"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーティファクトの維持特性を構造体に収める / Note which stats an object sustains  <a href="artifact-analyzer_8cpp.html#a0ded92e44b7c34773903a888cf19ff97">[詳解]</a><br /></td></tr>
+<tr class="separator:a0ded92e44b7c34773903a888cf19ff97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa704a61c49537fc61ea1463a81295950"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="artifact-analyzer_8cpp.html#aa704a61c49537fc61ea1463a81295950">analyze_misc_magic</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *misc_list)</td></tr>
+<tr class="memdesc:aa704a61c49537fc61ea1463a81295950"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーティファクトのその他の特性を構造体に収める / Note miscellaneous powers bestowed by an artifact such as see invisible, free action, permanent light, etc.  <a href="artifact-analyzer_8cpp.html#aa704a61c49537fc61ea1463a81295950">[詳解]</a><br /></td></tr>
+<tr class="separator:aa704a61c49537fc61ea1463a81295950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8555995229916944fb8f40a7afabe976"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="artifact-analyzer_8cpp.html#a8555995229916944fb8f40a7afabe976">analyze_addition</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr, char *addition)</td></tr>
+<tr class="memdesc:a8555995229916944fb8f40a7afabe976"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーティファクトの追加ランダム特性を構造体に収める / Note additional ability and/or resistance of fixed artifacts  <a href="artifact-analyzer_8cpp.html#a8555995229916944fb8f40a7afabe976">[詳解]</a><br /></td></tr>
+<tr class="separator:a8555995229916944fb8f40a7afabe976"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a063b12619c5c9ea3db2c592f16552534"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="artifact-analyzer_8cpp.html#a063b12619c5c9ea3db2c592f16552534">analyze_misc</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr, char *misc_desc)</td></tr>
+<tr class="memdesc:a063b12619c5c9ea3db2c592f16552534"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーティファクトの基本情報を文字列に収める / Determine the minimum depth an artifact can appear, its rarity, its weight, and its value in gold pieces  <a href="artifact-analyzer_8cpp.html#a063b12619c5c9ea3db2c592f16552534">[詳解]</a><br /></td></tr>
+<tr class="separator:a063b12619c5c9ea3db2c592f16552534"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca067da7ac3b4483f1c10e3d6d5e9c0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="artifact-analyzer_8cpp.html#aca067da7ac3b4483f1c10e3d6d5e9c0d">object_analyze</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, <a class="el" href="structobj__desc__list.html">obj_desc_list</a> *desc_ptr)</td></tr>
+<tr class="memdesc:aca067da7ac3b4483f1c10e3d6d5e9c0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in gold pieces  <a href="artifact-analyzer_8cpp.html#aca067da7ac3b4483f1c10e3d6d5e9c0d">[詳解]</a><br /></td></tr>
+<tr class="separator:aca067da7ac3b4483f1c10e3d6d5e9c0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92a9f6d1ee0061956b8ca39c02f86f86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="artifact-analyzer_8cpp.html#a92a9f6d1ee0061956b8ca39c02f86f86">random_artifact_analyze</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, <a class="el" href="structobj__desc__list.html">obj_desc_list</a> *desc_ptr)</td></tr>
+<tr class="memdesc:a92a9f6d1ee0061956b8ca39c02f86f86"><td class="mdescLeft">&#160;</td><td class="mdescRight">ランダムアーティファクト１件を解析する / Fill in an object description structure for a given object  <a href="artifact-analyzer_8cpp.html#a92a9f6d1ee0061956b8ca39c02f86f86">[詳解]</a><br /></td></tr>
+<tr class="separator:a92a9f6d1ee0061956b8ca39c02f86f86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a8555995229916944fb8f40a7afabe976"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8555995229916944fb8f40a7afabe976">&#9670;&nbsp;</a></span>analyze_addition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void analyze_addition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>addition</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アーティファクトの追加ランダム特性を構造体に収める / Note additional ability and/or resistance of fixed artifacts </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>オブジェクト構造体の参照ポインタ </td></tr>
+    <tr><td class="paramname">addition</td><td>追加ランダム耐性構造体の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_a8555995229916944fb8f40a7afabe976_cgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_a8555995229916944fb8f40a7afabe976_cgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_a8555995229916944fb8f40a7afabe976_cgraph" id="aartifact-analyzer_8cpp_a8555995229916944fb8f40a7afabe976_cgraph">
+<area shape="rect" title="アーティファクトの追加ランダム特性を構造体に収める / Note additional ability and/or resistance of fixed artifacts" alt="" coords="5,5,124,32"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="552,5,663,32"/>
+<area shape="rect" href="class_flag_group.html#a806f557d9a55d4fd21e0c43492066b11" title="入力イテレータで指定した範囲のリストに含まれるフラグがすべてONかどうかを調べる" alt="" coords="172,31,320,57"/>
+<area shape="rect" href="class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="368,31,504,57"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_a8555995229916944fb8f40a7afabe976_icgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_a8555995229916944fb8f40a7afabe976_icgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_a8555995229916944fb8f40a7afabe976_icgraph" id="aartifact-analyzer_8cpp_a8555995229916944fb8f40a7afabe976_icgraph">
+<area shape="rect" title="アーティファクトの追加ランダム特性を構造体に収める / Note additional ability and/or resistance of fixed artifacts" alt="" coords="527,31,645,57"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aca067da7ac3b4483f1c10e3d6d5e9c0d" title="アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in g..." alt="" coords="369,31,479,57"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="192,31,321,57"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="5,5,144,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="9,56,140,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae2e84c35f4fd2542f7d25f52be97efcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2e84c35f4fd2542f7d25f52be97efcc">&#9670;&nbsp;</a></span>analyze_brand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void analyze_brand </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *&#160;</td>
+          <td class="paramname"><em>brand_list</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アーティファクトの属性ブランド特性を構造体に収める / Note an object's elemental brands </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>オブジェクト構造体の参照ポインタ </td></tr>
+    <tr><td class="paramname">brand_list</td><td>属性ブランド構造体の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_ae2e84c35f4fd2542f7d25f52be97efcc_cgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_ae2e84c35f4fd2542f7d25f52be97efcc_cgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_ae2e84c35f4fd2542f7d25f52be97efcc_cgraph" id="aartifact-analyzer_8cpp_ae2e84c35f4fd2542f7d25f52be97efcc_cgraph">
+<area shape="rect" title="アーティファクトの属性ブランド特性を構造体に収める / Note an object&#39;s elemental brands" alt="" coords="5,81,112,108"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="172,56,263,83"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a47fcfc88c0d8fbcea4b91d780a5c956c" title="アーティファクトの特性一覧を出力する / Write a line to the spoiler file and then &quot;underline&quot; it with hypens" alt="" coords="160,107,275,133"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="349,5,451,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="323,56,477,83"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="343,107,457,133"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="525,107,740,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_ae2e84c35f4fd2542f7d25f52be97efcc_icgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_ae2e84c35f4fd2542f7d25f52be97efcc_icgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_ae2e84c35f4fd2542f7d25f52be97efcc_icgraph" id="aartifact-analyzer_8cpp_ae2e84c35f4fd2542f7d25f52be97efcc_icgraph">
+<area shape="rect" title="アーティファクトの属性ブランド特性を構造体に収める / Note an object&#39;s elemental brands" alt="" coords="631,81,737,108"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aca067da7ac3b4483f1c10e3d6d5e9c0d" title="アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in g..." alt="" coords="447,56,556,83"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a92a9f6d1ee0061956b8ca39c02f86f86" title="ランダムアーティファクト１件を解析する / Fill in an object description structure for a given object" alt="" coords="420,107,583,133"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="221,56,350,83"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="9,5,147,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="13,56,143,83"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a24cc5840cf7857a3ef2a2835a5cdeae3" title="ランダムアーティファクト内容をスポイラー出力するサブルーチン /" alt="" coords="199,107,372,133"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a61530241b7679032c7e32229a5086e90" title="ランダムアーティファクト内容をスポイラー出力するメインルーチン / Create a list file for random artifacts" alt="" coords="5,107,151,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7aebf0933710d2f5b0b2cf87e1aa4618"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7aebf0933710d2f5b0b2cf87e1aa4618">&#9670;&nbsp;</a></span>analyze_general()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void analyze_general </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>desc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アイテムの特定記述内容を返す / Acquire a "basic" description "The Cloak of Death [1,+10]" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>記述を得たいオブジェクトの参照ポインタ </td></tr>
+    <tr><td class="paramname">desc_ptr</td><td>記述内容を返すための文字列参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_a7aebf0933710d2f5b0b2cf87e1aa4618_cgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_a7aebf0933710d2f5b0b2cf87e1aa4618_cgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_a7aebf0933710d2f5b0b2cf87e1aa4618_cgraph" id="aartifact-analyzer_8cpp_a7aebf0933710d2f5b0b2cf87e1aa4618_cgraph">
+<area shape="rect" title="アイテムの特定記述内容を返す / Acquire a &quot;basic&quot; description &quot;The Cloak of Death [1,+10]&quot;" alt="" coords="5,842,121,869"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="169,842,276,869"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="783,13,898,40"/>
+<area shape="rect" href="bow_8cpp.html#ac67fe672b98bb4c3ba89474dce007a50" title="射撃武器に対応する矢/弾薬のベースアイテムIDを返す /" alt="" coords="342,1752,457,1778"/>
+<area shape="rect" href="flavor-describer_8cpp.html#abffcf700f83741151f4d965b01800395" title=" " alt="" coords="331,1912,467,1938"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a779b5f26ab2e2c1e104583399787dcf1" title=" " alt="" coords="338,1701,461,1728"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a7ec17cfdde3219bd0e9dfe166181cc9d" title=" " alt="" coords="353,368,445,394"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a81194951a890007868ac1c4352750174" title=" " alt="" coords="328,1102,471,1129"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a6ad3608e29e2b55a612a9bece5987c6e" title=" " alt="" coords="344,1372,455,1398"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="325,1650,474,1677"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a040ee8534be2d36b2db2c511158488c0" title=" " alt="" coords="531,190,706,217"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a5f9a02ab4e1253b0cd2270b287b17bee" title="杖や光源等、寿命のあるアイテムの残り回数やターン表記" alt="" coords="332,893,467,920"/>
+<area shape="rect" href="flavor-describer_8cpp.html#af3b92a1eedcea38d55cb313d2ff7fbed" title=" " alt="" coords="543,444,694,470"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a487e2423615ea280fb3f3a339ae2980b" title=" " alt="" coords="351,697,448,724"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#ae75e4fc7cc754cbf43a5ef91d0e1d963" title=" " alt="" coords="324,760,475,786"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#acfcf21e14ba3017d1cc69e6fdff850e9" title="呪いの有無や割引率等を表示する" alt="" coords="523,748,715,774"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#a892d0257efeeabd5136e0e224ee0d757" title=" " alt="" coords="328,140,471,166"/>
+<area shape="rect" href="flavor-util_8cpp.html#ae0f69cdaef63ddd298c7fbe175bf8c21" title=" " alt="" coords="331,1962,468,1989"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="559,1996,679,2022"/>
+<area shape="rect" href="object-perception_8cpp.html#a28c38c7965d53e8b20d1937245b8970b" title=" " alt="" coords="565,2046,672,2073"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="562,1945,675,1972"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a8726edfc05ad4884bd9643a4bd2e8eff" title=" " alt="" coords="535,342,703,369"/>
+<area shape="rect" href="flavor-util_8cpp.html#aa1378b4bd2a85f709f6f48dc4f48ecf3" title="対象文字配列に一文字だけをコピーする。" alt="" coords="782,570,899,597"/>
+<area shape="rect" href="flavor-util_8cpp.html#aba21c13bcaaf19811cb5d62824eaa1af" title="対象文字配列に符号なし整数値をコピーする。" alt="" coords="779,697,903,724"/>
+<area shape="rect" href="flavor-util_8cpp.html#a35ea10adb65931a256030363f956a413" title="対象文字配列に符号あり整数値をコピーする。" alt="" coords="784,241,897,268"/>
+<area shape="rect" href="mind-sniper_8cpp.html#a6fd6bafd31f45a4175f2a8907c7fc614" title="スナイパーの集中度によるダメージボーナスを加算する" alt="" coords="549,1154,688,1195"/>
+<area shape="rect" href="shoot_8cpp.html#afea7a69a70c8e57df24d1d6a4a0153df" title=" " alt="" coords="802,1026,879,1053"/>
+<area shape="rect" href="shoot_8cpp.html#aa0e832cf3b6da1a0193d110bf0a42be5" title="射撃時クリティカルによるダメージ期待値修正計算（重量依存部分） / critical happens at i / 10000" alt="" coords="544,1220,693,1246"/>
+<area shape="rect" href="flavor-describer_8cpp.html#ab90ef1eec6a73db724ce2db39327766e" title=" " alt="" coords="548,849,689,876"/>
+<area shape="rect" href="flavor-util_8cpp.html#a9afac279f6c93e8e8856f96113493a8b" title="対象文字配列に文字列をコピーする。" alt="" coords="783,1212,898,1238"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="781,1680,900,1706"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a0c1fa37fd59818ca44bbe11db43aa593" title="武器/防具/アクセサリアイテムにおける、耐性やスレイ等の表記" alt="" coords="549,1422,688,1449"/>
+<area shape="rect" href="named-item-describer_8cpp.html#ac7efc2d8a25fc2fd5af3db95e7f3d9b4" title=" " alt="" coords="547,1879,690,1920"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a876c4fc7dc88a1fa3f2b7d6707b10cf8" title=" " alt="" coords="532,1270,705,1297"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a4db5274e8c52834bc7bb6ef880b0d09d" title=" " alt="" coords="531,1777,707,1804"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a4998ed0656a32c2290f80b72b751512d" title=" " alt="" coords="539,1828,698,1854"/>
+<area shape="rect" href="named-item-describer_8cpp.html#acaa46c6c182761a488d16112c7b3545a" title="銘を表記する" alt="" coords="550,1676,687,1702"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="589,1726,648,1753"/>
+<area shape="rect" href="named-item-describer_8cpp.html#ada4725207c8415750227020605ee0076" title=" " alt="" coords="561,1574,676,1601"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="541,1625,696,1652"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="785,900,896,926"/>
+<area shape="rect" href="flavor-describer_8cpp.html#ab472c941c5eabc9b75ecad853d18a477" title=" " alt="" coords="544,900,693,926"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a9fd7a9d6b99cb6897a0a2b7504bb11a4" title=" " alt="" coords="523,798,715,825"/>
+<area shape="rect" href="flavor-describer_8cpp.html#adf55bbfa245a2161ab57aedfbff6273c" title=" " alt="" coords="554,950,683,977"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a2cd340c5aebeeec3d46ba34be2543c15" title=" " alt="" coords="569,241,669,268"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a5a3e0e5f61ce04ba547d44482efec909" title=" " alt="" coords="568,697,669,724"/>
+<area shape="rect" href="flavor-describer_8cpp.html#ac239ea7a9678c92f4f6f4136449dab44" title=" " alt="" coords="542,494,695,521"/>
+<area shape="rect" href="string-processor_8cpp.html#aae65e4133109b992019bc6cafcc9b597" title=" " alt="" coords="563,38,674,65"/>
+<area shape="rect" href="flavor-util_8cpp.html#afc2228ff9bb7c1d1e4f4c905d5c65993" title="オブジェクト名の特性短縮表記をまとめて提示する。" alt="" coords="763,114,919,141"/>
+<area shape="rect" href="flavor-util_8cpp.html#a2ab0b9abe9d4010c3c68e34581cd867a" title="オブジェクト名の特性短縮表記＋刻み内容を提示する。 / Get object inscription with auto inscription of object flags." alt="" coords="565,89,672,116"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_a7aebf0933710d2f5b0b2cf87e1aa4618_icgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_a7aebf0933710d2f5b0b2cf87e1aa4618_icgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_a7aebf0933710d2f5b0b2cf87e1aa4618_icgraph" id="aartifact-analyzer_8cpp_a7aebf0933710d2f5b0b2cf87e1aa4618_icgraph">
+<area shape="rect" title="アイテムの特定記述内容を返す / Acquire a &quot;basic&quot; description &quot;The Cloak of Death [1,+10]&quot;" alt="" coords="631,81,747,108"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aca067da7ac3b4483f1c10e3d6d5e9c0d" title="アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in g..." alt="" coords="447,56,556,83"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a92a9f6d1ee0061956b8ca39c02f86f86" title="ランダムアーティファクト１件を解析する / Fill in an object description structure for a given object" alt="" coords="420,107,583,133"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="221,56,350,83"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="9,5,147,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="13,56,143,83"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a24cc5840cf7857a3ef2a2835a5cdeae3" title="ランダムアーティファクト内容をスポイラー出力するサブルーチン /" alt="" coords="199,107,372,133"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a61530241b7679032c7e32229a5086e90" title="ランダムアーティファクト内容をスポイラー出力するメインルーチン / Create a list file for random artifacts" alt="" coords="5,107,151,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3a5470523604583af0074f362918b800"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a5470523604583af0074f362918b800">&#9670;&nbsp;</a></span>analyze_immune()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void analyze_immune </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *&#160;</td>
+          <td class="paramname"><em>immune_list</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アーティファクトの免疫特性を構造体に収める / Note the immunities granted by an object </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>オブジェクト構造体の参照ポインタ </td></tr>
+    <tr><td class="paramname">immune_list</td><td>免疫構造体の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_a3a5470523604583af0074f362918b800_cgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_a3a5470523604583af0074f362918b800_cgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_a3a5470523604583af0074f362918b800_cgraph" id="aartifact-analyzer_8cpp_a3a5470523604583af0074f362918b800_cgraph">
+<area shape="rect" title="アーティファクトの免疫特性を構造体に収める / Note the immunities granted by an object" alt="" coords="5,81,125,108"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="185,56,276,83"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a47fcfc88c0d8fbcea4b91d780a5c956c" title="アーティファクトの特性一覧を出力する / Write a line to the spoiler file and then &quot;underline&quot; it with hypens" alt="" coords="173,107,288,133"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="362,5,465,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="336,56,491,83"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="357,107,470,133"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="539,107,753,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_a3a5470523604583af0074f362918b800_icgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_a3a5470523604583af0074f362918b800_icgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_a3a5470523604583af0074f362918b800_icgraph" id="aartifact-analyzer_8cpp_a3a5470523604583af0074f362918b800_icgraph">
+<area shape="rect" title="アーティファクトの免疫特性を構造体に収める / Note the immunities granted by an object" alt="" coords="631,81,751,108"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aca067da7ac3b4483f1c10e3d6d5e9c0d" title="アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in g..." alt="" coords="447,56,556,83"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a92a9f6d1ee0061956b8ca39c02f86f86" title="ランダムアーティファクト１件を解析する / Fill in an object description structure for a given object" alt="" coords="420,107,583,133"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="221,56,350,83"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="9,5,147,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="13,56,143,83"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a24cc5840cf7857a3ef2a2835a5cdeae3" title="ランダムアーティファクト内容をスポイラー出力するサブルーチン /" alt="" coords="199,107,372,133"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a61530241b7679032c7e32229a5086e90" title="ランダムアーティファクト内容をスポイラー出力するメインルーチン / Create a list file for random artifacts" alt="" coords="5,107,151,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a063b12619c5c9ea3db2c592f16552534"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a063b12619c5c9ea3db2c592f16552534">&#9670;&nbsp;</a></span>analyze_misc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void analyze_misc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>misc_desc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アーティファクトの基本情報を文字列に収める / Determine the minimum depth an artifact can appear, its rarity, its weight, and its value in gold pieces </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>オブジェクト構造体の参照ポインタ </td></tr>
+    <tr><td class="paramname">misc_desc</td><td>基本情報を収める文字列参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_a063b12619c5c9ea3db2c592f16552534_icgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_a063b12619c5c9ea3db2c592f16552534_icgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_a063b12619c5c9ea3db2c592f16552534_icgraph" id="aartifact-analyzer_8cpp_a063b12619c5c9ea3db2c592f16552534_icgraph">
+<area shape="rect" title="アーティファクトの基本情報を文字列に収める / Determine the minimum depth an artifact can appear, its rarity,..." alt="" coords="527,31,629,57"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aca067da7ac3b4483f1c10e3d6d5e9c0d" title="アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in g..." alt="" coords="369,31,479,57"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="192,31,321,57"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="5,5,144,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="9,56,140,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa704a61c49537fc61ea1463a81295950"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa704a61c49537fc61ea1463a81295950">&#9670;&nbsp;</a></span>analyze_misc_magic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void analyze_misc_magic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *&#160;</td>
+          <td class="paramname"><em>misc_list</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アーティファクトのその他の特性を構造体に収める / Note miscellaneous powers bestowed by an artifact such as see invisible, free action, permanent light, etc. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>オブジェクト構造体の参照ポインタ </td></tr>
+    <tr><td class="paramname">misc_list</td><td>その他の特性構造体の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_aa704a61c49537fc61ea1463a81295950_cgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_aa704a61c49537fc61ea1463a81295950_cgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_aa704a61c49537fc61ea1463a81295950_cgraph" id="aartifact-analyzer_8cpp_aa704a61c49537fc61ea1463a81295950_cgraph">
+<area shape="rect" title="アーティファクトのその他の特性を構造体に収める / Note miscellaneous powers bestowed by an artifact such as see invisible,..." alt="" coords="5,183,149,209"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="209,81,300,108"/>
+<area shape="rect" href="quarks_8cpp.html#a6fada8d9acfd20a42a8a9887484a1802" title=" " alt="" coords="213,157,296,184"/>
+<area shape="rect" href="quarks_8cpp.html#a95cf419856c525009b78e5246327f405" title=" " alt="" coords="217,208,293,235"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a47fcfc88c0d8fbcea4b91d780a5c956c" title="アーティファクトの特性一覧を出力する / Write a line to the spoiler file and then &quot;underline&quot; it with hypens" alt="" coords="197,259,312,285"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="386,5,489,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="360,56,515,83"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="381,107,494,133"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="563,107,777,133"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="412,157,463,184"/>
+<area shape="rect" href="z-virt_8cpp.html#a64d699412915544198fd477a26d44f84" title="str の複製を返す。戻り値は使用後に string_free() で解放すること。" alt="" coords="391,208,484,235"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_aa704a61c49537fc61ea1463a81295950_icgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_aa704a61c49537fc61ea1463a81295950_icgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_aa704a61c49537fc61ea1463a81295950_icgraph" id="aartifact-analyzer_8cpp_aa704a61c49537fc61ea1463a81295950_icgraph">
+<area shape="rect" title="アーティファクトのその他の特性を構造体に収める / Note miscellaneous powers bestowed by an artifact such as see invisible,..." alt="" coords="631,81,775,108"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aca067da7ac3b4483f1c10e3d6d5e9c0d" title="アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in g..." alt="" coords="447,56,556,83"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a92a9f6d1ee0061956b8ca39c02f86f86" title="ランダムアーティファクト１件を解析する / Fill in an object description structure for a given object" alt="" coords="420,107,583,133"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="221,56,350,83"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="9,5,147,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="13,56,143,83"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a24cc5840cf7857a3ef2a2835a5cdeae3" title="ランダムアーティファクト内容をスポイラー出力するサブルーチン /" alt="" coords="199,107,372,133"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a61530241b7679032c7e32229a5086e90" title="ランダムアーティファクト内容をスポイラー出力するメインルーチン / Create a list file for random artifacts" alt="" coords="5,107,151,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afb5c917a0d598785804cde6f8a12aa37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb5c917a0d598785804cde6f8a12aa37">&#9670;&nbsp;</a></span>analyze_pval()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void analyze_pval </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structpval__info__type.html">pval_info_type</a> *&#160;</td>
+          <td class="paramname"><em>pi_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アーティファクトがプレイヤーに与えるpval修正を構造体に収める / List "player traits" altered by an artifact's pval. </p>
+<p>These include stats, speed, infravision, tunneling, stealth, searching, and extra attacks. </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>オブジェクト構造体の参照ポインタ </td></tr>
+    <tr><td class="paramname">pi_ptr</td><td>pval修正構造体の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_afb5c917a0d598785804cde6f8a12aa37_cgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_afb5c917a0d598785804cde6f8a12aa37_cgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_afb5c917a0d598785804cde6f8a12aa37_cgraph" id="aartifact-analyzer_8cpp_afb5c917a0d598785804cde6f8a12aa37_cgraph">
+<area shape="rect" title="アーティファクトがプレイヤーに与えるpval修正を構造体に収める / List &quot;player traits&quot; altered by an artifact&#39;s pval." alt="" coords="5,81,101,108"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="161,56,252,83"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a47fcfc88c0d8fbcea4b91d780a5c956c" title="アーティファクトの特性一覧を出力する / Write a line to the spoiler file and then &quot;underline&quot; it with hypens" alt="" coords="149,107,264,133"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="338,5,441,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="312,56,467,83"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="333,107,446,133"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="515,107,729,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_afb5c917a0d598785804cde6f8a12aa37_icgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_afb5c917a0d598785804cde6f8a12aa37_icgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_afb5c917a0d598785804cde6f8a12aa37_icgraph" id="aartifact-analyzer_8cpp_afb5c917a0d598785804cde6f8a12aa37_icgraph">
+<area shape="rect" title="アーティファクトがプレイヤーに与えるpval修正を構造体に収める / List &quot;player traits&quot; altered by an artifact&#39;s pval." alt="" coords="631,81,727,108"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aca067da7ac3b4483f1c10e3d6d5e9c0d" title="アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in g..." alt="" coords="447,56,556,83"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a92a9f6d1ee0061956b8ca39c02f86f86" title="ランダムアーティファクト１件を解析する / Fill in an object description structure for a given object" alt="" coords="420,107,583,133"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="221,56,350,83"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="9,5,147,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="13,56,143,83"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a24cc5840cf7857a3ef2a2835a5cdeae3" title="ランダムアーティファクト内容をスポイラー出力するサブルーチン /" alt="" coords="199,107,372,133"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a61530241b7679032c7e32229a5086e90" title="ランダムアーティファクト内容をスポイラー出力するメインルーチン / Create a list file for random artifacts" alt="" coords="5,107,151,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab0b62923208a78584f2f5d00ffce8e49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0b62923208a78584f2f5d00ffce8e49">&#9670;&nbsp;</a></span>analyze_resist()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void analyze_resist </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *&#160;</td>
+          <td class="paramname"><em>resist_list</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アーティファクトの通常耐性を構造体に収める / Note an object's elemental brands </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>オブジェクト構造体の参照ポインタ </td></tr>
+    <tr><td class="paramname">resist_list</td><td>通常耐性構造体の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_ab0b62923208a78584f2f5d00ffce8e49_cgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_ab0b62923208a78584f2f5d00ffce8e49_cgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_ab0b62923208a78584f2f5d00ffce8e49_cgraph" id="aartifact-analyzer_8cpp_ab0b62923208a78584f2f5d00ffce8e49_cgraph">
+<area shape="rect" title="アーティファクトの通常耐性を構造体に収める / Note an object&#39;s elemental brands" alt="" coords="5,81,112,108"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="172,56,263,83"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a47fcfc88c0d8fbcea4b91d780a5c956c" title="アーティファクトの特性一覧を出力する / Write a line to the spoiler file and then &quot;underline&quot; it with hypens" alt="" coords="160,107,275,133"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="349,5,451,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="323,56,477,83"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="343,107,457,133"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="525,107,740,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_ab0b62923208a78584f2f5d00ffce8e49_icgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_ab0b62923208a78584f2f5d00ffce8e49_icgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_ab0b62923208a78584f2f5d00ffce8e49_icgraph" id="aartifact-analyzer_8cpp_ab0b62923208a78584f2f5d00ffce8e49_icgraph">
+<area shape="rect" title="アーティファクトの通常耐性を構造体に収める / Note an object&#39;s elemental brands" alt="" coords="631,81,737,108"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aca067da7ac3b4483f1c10e3d6d5e9c0d" title="アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in g..." alt="" coords="447,56,556,83"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a92a9f6d1ee0061956b8ca39c02f86f86" title="ランダムアーティファクト１件を解析する / Fill in an object description structure for a given object" alt="" coords="420,107,583,133"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="221,56,350,83"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="9,5,147,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="13,56,143,83"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a24cc5840cf7857a3ef2a2835a5cdeae3" title="ランダムアーティファクト内容をスポイラー出力するサブルーチン /" alt="" coords="199,107,372,133"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a61530241b7679032c7e32229a5086e90" title="ランダムアーティファクト内容をスポイラー出力するメインルーチン / Create a list file for random artifacts" alt="" coords="5,107,151,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8f52fad0e07f86922891eff6c198e300"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f52fad0e07f86922891eff6c198e300">&#9670;&nbsp;</a></span>analyze_slay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void analyze_slay </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *&#160;</td>
+          <td class="paramname"><em>slay_list</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アーティファクトの種族スレイ特性を構造体に収める / Note the slaying specialties of a weapon </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>オブジェクト構造体の参照ポインタ </td></tr>
+    <tr><td class="paramname">slay_list</td><td>種族スレイ構造体の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_a8f52fad0e07f86922891eff6c198e300_cgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_a8f52fad0e07f86922891eff6c198e300_cgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_a8f52fad0e07f86922891eff6c198e300_cgraph" id="aartifact-analyzer_8cpp_a8f52fad0e07f86922891eff6c198e300_cgraph">
+<area shape="rect" title="アーティファクトの種族スレイ特性を構造体に収める / Note the slaying specialties of a weapon" alt="" coords="5,81,104,108"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="164,56,255,83"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a47fcfc88c0d8fbcea4b91d780a5c956c" title="アーティファクトの特性一覧を出力する / Write a line to the spoiler file and then &quot;underline&quot; it with hypens" alt="" coords="152,107,267,133"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="341,5,443,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="315,56,469,83"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="335,107,449,133"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="517,107,732,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_a8f52fad0e07f86922891eff6c198e300_icgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_a8f52fad0e07f86922891eff6c198e300_icgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_a8f52fad0e07f86922891eff6c198e300_icgraph" id="aartifact-analyzer_8cpp_a8f52fad0e07f86922891eff6c198e300_icgraph">
+<area shape="rect" title="アーティファクトの種族スレイ特性を構造体に収める / Note the slaying specialties of a weapon" alt="" coords="631,81,729,108"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aca067da7ac3b4483f1c10e3d6d5e9c0d" title="アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in g..." alt="" coords="447,56,556,83"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a92a9f6d1ee0061956b8ca39c02f86f86" title="ランダムアーティファクト１件を解析する / Fill in an object description structure for a given object" alt="" coords="420,107,583,133"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="221,56,350,83"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="9,5,147,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="13,56,143,83"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a24cc5840cf7857a3ef2a2835a5cdeae3" title="ランダムアーティファクト内容をスポイラー出力するサブルーチン /" alt="" coords="199,107,372,133"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a61530241b7679032c7e32229a5086e90" title="ランダムアーティファクト内容をスポイラー出力するメインルーチン / Create a list file for random artifacts" alt="" coords="5,107,151,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0ded92e44b7c34773903a888cf19ff97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ded92e44b7c34773903a888cf19ff97">&#9670;&nbsp;</a></span>analyze_sustains()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void analyze_sustains </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *&#160;</td>
+          <td class="paramname"><em>sustain_list</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アーティファクトの維持特性を構造体に収める / Note which stats an object sustains </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>オブジェクト構造体の参照ポインタ </td></tr>
+    <tr><td class="paramname">sustain_list</td><td>維持特性構造体の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_a0ded92e44b7c34773903a888cf19ff97_cgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_a0ded92e44b7c34773903a888cf19ff97_cgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_a0ded92e44b7c34773903a888cf19ff97_cgraph" id="aartifact-analyzer_8cpp_a0ded92e44b7c34773903a888cf19ff97_cgraph">
+<area shape="rect" title="アーティファクトの維持特性を構造体に収める / Note which stats an object sustains" alt="" coords="5,81,128,108"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="188,56,279,83"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a47fcfc88c0d8fbcea4b91d780a5c956c" title="アーティファクトの特性一覧を出力する / Write a line to the spoiler file and then &quot;underline&quot; it with hypens" alt="" coords="176,107,291,133"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="365,5,467,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="339,56,493,83"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="359,107,473,133"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="541,107,756,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_a0ded92e44b7c34773903a888cf19ff97_icgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_a0ded92e44b7c34773903a888cf19ff97_icgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_a0ded92e44b7c34773903a888cf19ff97_icgraph" id="aartifact-analyzer_8cpp_a0ded92e44b7c34773903a888cf19ff97_icgraph">
+<area shape="rect" title="アーティファクトの維持特性を構造体に収める / Note which stats an object sustains" alt="" coords="631,81,753,108"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aca067da7ac3b4483f1c10e3d6d5e9c0d" title="アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in g..." alt="" coords="447,56,556,83"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a92a9f6d1ee0061956b8ca39c02f86f86" title="ランダムアーティファクト１件を解析する / Fill in an object description structure for a given object" alt="" coords="420,107,583,133"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="221,56,350,83"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="9,5,147,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="13,56,143,83"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a24cc5840cf7857a3ef2a2835a5cdeae3" title="ランダムアーティファクト内容をスポイラー出力するサブルーチン /" alt="" coords="199,107,372,133"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a61530241b7679032c7e32229a5086e90" title="ランダムアーティファクト内容をスポイラー出力するメインルーチン / Create a list file for random artifacts" alt="" coords="5,107,151,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aca067da7ac3b4483f1c10e3d6d5e9c0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca067da7ac3b4483f1c10e3d6d5e9c0d">&#9670;&nbsp;</a></span>object_analyze()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void object_analyze </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobj__desc__list.html">obj_desc_list</a> *&#160;</td>
+          <td class="paramname"><em>desc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in gold pieces </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">o_ptr</td><td>オブジェクト構造体の参照ポインタ </td></tr>
+    <tr><td class="paramname">desc_ptr</td><td>全アーティファクト情報を収める文字列参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_aca067da7ac3b4483f1c10e3d6d5e9c0d_cgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_aca067da7ac3b4483f1c10e3d6d5e9c0d_cgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_aca067da7ac3b4483f1c10e3d6d5e9c0d_cgraph" id="aartifact-analyzer_8cpp_aca067da7ac3b4483f1c10e3d6d5e9c0d_cgraph">
+<area shape="rect" title="アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in g..." alt="" coords="5,417,115,444"/>
+<area shape="rect" href="object-info_8cpp.html#a61840e5db97036b2685a525ec2636d1d" title="オブジェクトの発動効果名称を返す（メインルーチン） / Determine the &quot;Activation&quot; (if any) for an artifact Return a string,..." alt="" coords="163,134,312,161"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a8555995229916944fb8f40a7afabe976" title="アーティファクトの追加ランダム特性を構造体に収める / Note additional ability and/or resistance of fixed artifacts" alt="" coords="178,1177,297,1204"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#ae2e84c35f4fd2542f7d25f52be97efcc" title="アーティファクトの属性ブランド特性を構造体に収める / Note an object&#39;s elemental brands" alt="" coords="599,468,705,494"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a7aebf0933710d2f5b0b2cf87e1aa4618" title="アイテムの特定記述内容を返す / Acquire a &quot;basic&quot; description &quot;The Cloak of Death [1,+10]&quot;" alt="" coords="179,746,295,773"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a3a5470523604583af0074f362918b800" title="アーティファクトの免疫特性を構造体に収める / Note the immunities granted by an object" alt="" coords="592,214,712,241"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a063b12619c5c9ea3db2c592f16552534" title="アーティファクトの基本情報を文字列に収める / Determine the minimum depth an artifact can appear, its rarity,..." alt="" coords="186,1228,289,1254"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aa704a61c49537fc61ea1463a81295950" title="アーティファクトのその他の特性を構造体に収める / Note miscellaneous powers bestowed by an artifact such as see invisible,..." alt="" coords="580,518,724,545"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#afb5c917a0d598785804cde6f8a12aa37" title="アーティファクトがプレイヤーに与えるpval修正を構造体に収める / List &quot;player traits&quot; altered by an artifact&#39;s pval." alt="" coords="604,265,700,292"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#ab0b62923208a78584f2f5d00ffce8e49" title="アーティファクトの通常耐性を構造体に収める / Note an object&#39;s elemental brands" alt="" coords="599,316,705,342"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a8f52fad0e07f86922891eff6c198e300" title="アーティファクトの種族スレイ特性を構造体に収める / Note the slaying specialties of a weapon" alt="" coords="603,366,701,393"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a0ded92e44b7c34773903a888cf19ff97" title="アーティファクトの維持特性を構造体に収める / Note which stats an object sustains" alt="" coords="591,417,713,444"/>
+<area shape="rect" href="artifact-info_8cpp.html#a937fce3b10509fe08c9881591860d553" title="オブジェクトから能力発動IDを取得する。" alt="" coords="813,189,928,216"/>
+<area shape="rect" href="object-info_8cpp.html#a7bc73eceff342f62687bb898f74e2f1e" title="オブジェクトの発動効果名称を返す（サブルーチン/汎用）" alt="" coords="366,105,502,132"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="825,316,916,342"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="1027,265,1130,292"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="1212,214,1367,241"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a1cd52eb9c4cad275d12f040a2c9e7fae" title="オブジェクトがランダムアーティファクトかを返す / Check if an object is random artifact" alt="" coords="993,164,1164,190"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="1022,417,1135,444"/>
+<area shape="rect" href="artifact-info_8cpp.html#a545193ad600698cdfc665e311beee97c" title="オブジェクトから発動効果構造体のポインタを取得する。" alt="" coords="587,46,717,73"/>
+<area shape="rect" href="object-info_8cpp.html#a5054be75bc4078c9d2aa420fc3bacd9d" title="オブジェクトの実装 / Object code, part 1" alt="" coords="575,98,729,139"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="815,1405,926,1432"/>
+<area shape="rect" href="class_flag_group.html#a806f557d9a55d4fd21e0c43492066b11" title="入力イテレータで指定した範囲のリストに含まれるフラグがすべてONかどうかを調べる" alt="" coords="360,1430,508,1457"/>
+<area shape="rect" href="class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="584,1430,720,1457"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a47fcfc88c0d8fbcea4b91d780a5c956c" title="アーティファクトの特性一覧を出力する / Write a line to the spoiler file and then &quot;underline&quot; it with hypens" alt="" coords="813,366,928,393"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="381,924,487,950"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="595,1329,709,1356"/>
+<area shape="rect" href="bow_8cpp.html#ac67fe672b98bb4c3ba89474dce007a50" title="射撃武器に対応する矢/弾薬のベースアイテムIDを返す /" alt="" coords="595,569,709,596"/>
+<area shape="rect" href="flavor-describer_8cpp.html#abffcf700f83741151f4d965b01800395" title=" " alt="" coords="584,620,720,646"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a779b5f26ab2e2c1e104583399787dcf1" title=" " alt="" coords="809,924,932,950"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a7ec17cfdde3219bd0e9dfe166181cc9d" title=" " alt="" coords="606,670,698,697"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a81194951a890007868ac1c4352750174" title=" " alt="" coords="581,721,723,748"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a6ad3608e29e2b55a612a9bece5987c6e" title=" " alt="" coords="597,772,707,798"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="796,1266,945,1293"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a040ee8534be2d36b2db2c511158488c0" title=" " alt="" coords="565,822,739,849"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a5f9a02ab4e1253b0cd2270b287b17bee" title="杖や光源等、寿命のあるアイテムの残り回数やターン表記" alt="" coords="585,873,719,900"/>
+<area shape="rect" href="flavor-describer_8cpp.html#af3b92a1eedcea38d55cb313d2ff7fbed" title=" " alt="" coords="577,924,727,950"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a487e2423615ea280fb3f3a339ae2980b" title=" " alt="" coords="603,974,701,1001"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#ae75e4fc7cc754cbf43a5ef91d0e1d963" title=" " alt="" coords="577,1025,727,1052"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#acfcf21e14ba3017d1cc69e6fdff850e9" title="呪いの有無や割引率等を表示する" alt="" coords="556,1076,748,1102"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#a892d0257efeeabd5136e0e224ee0d757" title=" " alt="" coords="581,1126,723,1153"/>
+<area shape="rect" href="flavor-util_8cpp.html#ae0f69cdaef63ddd298c7fbe175bf8c21" title=" " alt="" coords="583,1177,721,1204"/>
+<area shape="rect" href="quarks_8cpp.html#a95cf419856c525009b78e5246327f405" title=" " alt="" coords="833,848,909,874"/>
+<area shape="rect" href="quarks_8cpp.html#a6fada8d9acfd20a42a8a9887484a1802" title=" " alt="" coords="829,518,912,545"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="1053,544,1104,570"/>
+<area shape="rect" href="z-virt_8cpp.html#a64d699412915544198fd477a26d44f84" title="str の複製を返す。戻り値は使用後に string_free() で解放すること。" alt="" coords="1032,493,1125,520"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_aca067da7ac3b4483f1c10e3d6d5e9c0d_icgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_aca067da7ac3b4483f1c10e3d6d5e9c0d_icgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_aca067da7ac3b4483f1c10e3d6d5e9c0d_icgraph" id="aartifact-analyzer_8cpp_aca067da7ac3b4483f1c10e3d6d5e9c0d_icgraph">
+<area shape="rect" title="アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in g..." alt="" coords="535,31,644,57"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="357,31,487,57"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="171,5,309,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="175,56,305,83"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="5,5,123,32"/>
+<area shape="rect" href="main_8cpp.html#a6d912cdfb4d30abf0dc29e59f3cb58b3" title=" " alt="" coords="9,56,119,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a92a9f6d1ee0061956b8ca39c02f86f86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92a9f6d1ee0061956b8ca39c02f86f86">&#9670;&nbsp;</a></span>random_artifact_analyze()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void random_artifact_analyze </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobj__desc__list.html">obj_desc_list</a> *&#160;</td>
+          <td class="paramname"><em>desc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ランダムアーティファクト１件を解析する / Fill in an object description structure for a given object </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">o_ptr</td><td>ランダムアーティファクトのオブジェクト構造体参照ポインタ </td></tr>
+    <tr><td class="paramname">desc_ptr</td><td>記述内容を収める構造体参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_a92a9f6d1ee0061956b8ca39c02f86f86_cgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_a92a9f6d1ee0061956b8ca39c02f86f86_cgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_a92a9f6d1ee0061956b8ca39c02f86f86_cgraph" id="aartifact-analyzer_8cpp_a92a9f6d1ee0061956b8ca39c02f86f86_cgraph">
+<area shape="rect" title="ランダムアーティファクト１件を解析する / Fill in an object description structure for a given object" alt="" coords="5,365,168,392"/>
+<area shape="rect" href="object-info_8cpp.html#a61840e5db97036b2685a525ec2636d1d" title="オブジェクトの発動効果名称を返す（メインルーチン） / Determine the &quot;Activation&quot; (if any) for an artifact Return a string,..." alt="" coords="216,133,365,160"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#ae2e84c35f4fd2542f7d25f52be97efcc" title="アーティファクトの属性ブランド特性を構造体に収める / Note an object&#39;s elemental brands" alt="" coords="640,416,747,443"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a7aebf0933710d2f5b0b2cf87e1aa4618" title="アイテムの特定記述内容を返す / Acquire a &quot;basic&quot; description &quot;The Cloak of Death [1,+10]&quot;" alt="" coords="233,745,349,772"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a3a5470523604583af0074f362918b800" title="アーティファクトの免疫特性を構造体に収める / Note the immunities granted by an object" alt="" coords="633,467,753,493"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aa704a61c49537fc61ea1463a81295950" title="アーティファクトのその他の特性を構造体に収める / Note miscellaneous powers bestowed by an artifact such as see invisible,..." alt="" coords="621,517,765,544"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#afb5c917a0d598785804cde6f8a12aa37" title="アーティファクトがプレイヤーに与えるpval修正を構造体に収める / List &quot;player traits&quot; altered by an artifact&#39;s pval." alt="" coords="645,213,741,240"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#ab0b62923208a78584f2f5d00ffce8e49" title="アーティファクトの通常耐性を構造体に収める / Note an object&#39;s elemental brands" alt="" coords="640,264,747,291"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a8f52fad0e07f86922891eff6c198e300" title="アーティファクトの種族スレイ特性を構造体に収める / Note the slaying specialties of a weapon" alt="" coords="644,315,743,341"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a0ded92e44b7c34773903a888cf19ff97" title="アーティファクトの維持特性を構造体に収める / Note which stats an object sustains" alt="" coords="632,365,755,392"/>
+<area shape="rect" href="artifact-info_8cpp.html#a937fce3b10509fe08c9881591860d553" title="オブジェクトから能力発動IDを取得する。" alt="" coords="855,188,969,215"/>
+<area shape="rect" href="object-info_8cpp.html#a7bc73eceff342f62687bb898f74e2f1e" title="オブジェクトの発動効果名称を返す（サブルーチン/汎用）" alt="" coords="413,104,549,131"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="867,315,957,341"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="1069,264,1171,291"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="1253,213,1408,240"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a1cd52eb9c4cad275d12f040a2c9e7fae" title="オブジェクトがランダムアーティファクトかを返す / Check if an object is random artifact" alt="" coords="1035,163,1205,189"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="1063,467,1177,493"/>
+<area shape="rect" href="artifact-info_8cpp.html#a545193ad600698cdfc665e311beee97c" title="オブジェクトから発動効果構造体のポインタを取得する。" alt="" coords="628,45,759,72"/>
+<area shape="rect" href="object-info_8cpp.html#a5054be75bc4078c9d2aa420fc3bacd9d" title="オブジェクトの実装 / Object code, part 1" alt="" coords="616,97,771,138"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a47fcfc88c0d8fbcea4b91d780a5c956c" title="アーティファクトの特性一覧を出力する / Write a line to the spoiler file and then &quot;underline&quot; it with hypens" alt="" coords="855,365,969,392"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="428,923,535,949"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="636,1277,751,1304"/>
+<area shape="rect" href="bow_8cpp.html#ac67fe672b98bb4c3ba89474dce007a50" title="射撃武器に対応する矢/弾薬のベースアイテムIDを返す /" alt="" coords="636,1328,751,1355"/>
+<area shape="rect" href="flavor-describer_8cpp.html#abffcf700f83741151f4d965b01800395" title=" " alt="" coords="625,568,761,595"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a779b5f26ab2e2c1e104583399787dcf1" title=" " alt="" coords="851,619,973,645"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a7ec17cfdde3219bd0e9dfe166181cc9d" title=" " alt="" coords="647,619,739,645"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a81194951a890007868ac1c4352750174" title=" " alt="" coords="622,669,765,696"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a6ad3608e29e2b55a612a9bece5987c6e" title=" " alt="" coords="638,720,749,747"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="837,568,987,595"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a040ee8534be2d36b2db2c511158488c0" title=" " alt="" coords="606,771,781,797"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a5f9a02ab4e1253b0cd2270b287b17bee" title="杖や光源等、寿命のあるアイテムの残り回数やターン表記" alt="" coords="626,821,761,848"/>
+<area shape="rect" href="flavor-describer_8cpp.html#af3b92a1eedcea38d55cb313d2ff7fbed" title=" " alt="" coords="618,872,769,899"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a487e2423615ea280fb3f3a339ae2980b" title=" " alt="" coords="645,923,742,949"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#ae75e4fc7cc754cbf43a5ef91d0e1d963" title=" " alt="" coords="618,973,769,1000"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#acfcf21e14ba3017d1cc69e6fdff850e9" title="呪いの有無や割引率等を表示する" alt="" coords="597,1024,789,1051"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#a892d0257efeeabd5136e0e224ee0d757" title=" " alt="" coords="622,1075,765,1101"/>
+<area shape="rect" href="flavor-util_8cpp.html#ae0f69cdaef63ddd298c7fbe175bf8c21" title=" " alt="" coords="625,1176,762,1203"/>
+<area shape="rect" href="quarks_8cpp.html#a95cf419856c525009b78e5246327f405" title=" " alt="" coords="874,517,950,544"/>
+<area shape="rect" href="quarks_8cpp.html#a6fada8d9acfd20a42a8a9887484a1802" title=" " alt="" coords="871,669,953,696"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="1095,644,1145,671"/>
+<area shape="rect" href="z-virt_8cpp.html#a64d699412915544198fd477a26d44f84" title="str の複製を返す。戻り値は使用後に string_free() で解放すること。" alt="" coords="1073,695,1167,721"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_a92a9f6d1ee0061956b8ca39c02f86f86_icgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_a92a9f6d1ee0061956b8ca39c02f86f86_icgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_a92a9f6d1ee0061956b8ca39c02f86f86_icgraph" id="aartifact-analyzer_8cpp_a92a9f6d1ee0061956b8ca39c02f86f86_icgraph">
+<area shape="rect" title="ランダムアーティファクト１件を解析する / Fill in an object description structure for a given object" alt="" coords="600,5,763,32"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a24cc5840cf7857a3ef2a2835a5cdeae3" title="ランダムアーティファクト内容をスポイラー出力するサブルーチン /" alt="" coords="379,5,552,32"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a61530241b7679032c7e32229a5086e90" title="ランダムアーティファクト内容をスポイラー出力するメインルーチン / Create a list file for random artifacts" alt="" coords="185,5,331,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a47fcfc88c0d8fbcea4b91d780a5c956c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47fcfc88c0d8fbcea4b91d780a5c956c">&#9670;&nbsp;</a></span>spoiler_flag_aux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>* spoiler_flag_aux </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td>
+          <td class="paramname"><em>art_flags</em>[TR_FLAG_SIZE], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structflag__desc.html">flag_desc</a> *&#160;</td>
+          <td class="paramname"><em>flag_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *&#160;</td>
+          <td class="paramname"><em>desc_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>n_elmnts</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アーティファクトの特性一覧を出力する / Write a line to the spoiler file and then "underline" it with hypens </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">art_flags</td><td>アーティファクトのフラグ群 </td></tr>
+    <tr><td class="paramname">flag_ptr</td><td>フラグ記述情報の参照ポインタ </td></tr>
+    <tr><td class="paramname">desc_ptr</td><td>記述内容を返すための文字列参照ポインタ </td></tr>
+    <tr><td class="paramname">n_elmnts</td><td>フラグの要素数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>desc_ptrと同じアドレス</dd></dl>
+<pre>
+This function does most of the actual "analysis". Given a set of bit flags
+(which will be from one of the flags fields from the object in question),
+a "flag description structure", a "description list", and the number of
+elements in the "flag description structure", this function sets the
+"description list" members to the appropriate descriptions contained in
+the "flag description structure".
+The possibly updated description pointer is returned.
+</pre> <div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="artifact-analyzer_8cpp_a47fcfc88c0d8fbcea4b91d780a5c956c_icgraph.png" border="0" usemap="#aartifact-analyzer_8cpp_a47fcfc88c0d8fbcea4b91d780a5c956c_icgraph" alt=""/></div>
+<map name="aartifact-analyzer_8cpp_a47fcfc88c0d8fbcea4b91d780a5c956c_icgraph" id="aartifact-analyzer_8cpp_a47fcfc88c0d8fbcea4b91d780a5c956c_icgraph">
+<area shape="rect" title="アーティファクトの特性一覧を出力する / Write a line to the spoiler file and then &quot;underline&quot; it with hypens" alt="" coords="629,157,744,184"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#ae2e84c35f4fd2542f7d25f52be97efcc" title="アーティファクトの属性ブランド特性を構造体に収める / Note an object&#39;s elemental brands" alt="" coords="456,309,563,336"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a3a5470523604583af0074f362918b800" title="アーティファクトの免疫特性を構造体に収める / Note the immunities granted by an object" alt="" coords="449,5,569,32"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aa704a61c49537fc61ea1463a81295950" title="アーティファクトのその他の特性を構造体に収める / Note miscellaneous powers bestowed by an artifact such as see invisible,..." alt="" coords="437,56,581,83"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#afb5c917a0d598785804cde6f8a12aa37" title="アーティファクトがプレイヤーに与えるpval修正を構造体に収める / List &quot;player traits&quot; altered by an artifact&#39;s pval." alt="" coords="461,107,557,133"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#ab0b62923208a78584f2f5d00ffce8e49" title="アーティファクトの通常耐性を構造体に収める / Note an object&#39;s elemental brands" alt="" coords="456,157,563,184"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a8f52fad0e07f86922891eff6c198e300" title="アーティファクトの種族スレイ特性を構造体に収める / Note the slaying specialties of a weapon" alt="" coords="460,208,559,235"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a0ded92e44b7c34773903a888cf19ff97" title="アーティファクトの維持特性を構造体に収める / Note which stats an object sustains" alt="" coords="448,259,571,285"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aca067da7ac3b4483f1c10e3d6d5e9c0d" title="アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in g..." alt="" coords="253,132,363,159"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a92a9f6d1ee0061956b8ca39c02f86f86" title="ランダムアーティファクト１件を解析する / Fill in an object description structure for a given object" alt="" coords="227,183,389,209"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="27,132,157,159"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a24cc5840cf7857a3ef2a2835a5cdeae3" title="ランダムアーティファクト内容をスポイラー出力するサブルーチン /" alt="" coords="5,183,179,209"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分45秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

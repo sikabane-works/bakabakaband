@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/monster/monster-status-setter.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f68a7f142a463f095d22e67af9193b2d.html">monster</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">monster-status-setter.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="monster-status-setter_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="monster-status-setter_8h.html#aa3cb01ad99d0ae3d678914dd09879e66">    1</a></span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmonster__type.html">monster_type</a> <a class="code" href="structmonster__type.html">monster_type</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-status-setter_8h.html#aa25bed4c7b1ad4a7af6bc8f4bdcdfcaf">set_friendly</a>(<a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-status-setter_8h.html#ae5813db3e0193f799be8ecc90597e7b8">set_pet</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-status-setter_8h.html#aecb5672ce45dbe9124ea2e502352dffe">set_hostile</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-status-setter_8h.html#a8fc25062bd77e0bfa12c4f211efe4d7c">anger_monster</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="monster-status-setter_8h.html#abf6321fd027008211ec03df294378470">set_monster_csleep</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <span class="keywordtype">int</span> v);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="monster-status-setter_8h.html#ac81c0952258c31c0bb053742f5d63e0f">set_monster_fast</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <span class="keywordtype">int</span> v);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="monster-status-setter_8h.html#a70a3313581408d358cae74b128acceff">set_monster_slow</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <span class="keywordtype">int</span> v);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="monster-status-setter_8h.html#a04c7c898df8f01472c8979c7a08b0925">set_monster_stunned</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <span class="keywordtype">int</span> v);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="monster-status-setter_8h.html#ab59547e7afcd9ac0b20e21f7c1d029aa">set_monster_confused</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <span class="keywordtype">int</span> v);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="monster-status-setter_8h.html#a9e49c39d8a53ae6e809e8c3662c97411">set_monster_monfear</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <span class="keywordtype">int</span> v);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="monster-status-setter_8h.html#a0f21d1420ce64b3a07b8d58396edbdfd">set_monster_invulner</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <span class="keywordtype">int</span> v, <span class="keywordtype">bool</span> <a class="code" href="structmonster__type.html#af9814fd62e56754359cba39231fd3267">energy_need</a>);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="monster-status-setter_8h.html#a682fbdb6c220cc503b8c072b69548f5b">set_monster_timewalk</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <span class="keywordtype">int</span> num, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> who, <span class="keywordtype">bool</span> vs_player);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="amonster-status-setter_8h_html_a04c7c898df8f01472c8979c7a08b0925"><div class="ttname"><a href="monster-status-setter_8h.html#a04c7c898df8f01472c8979c7a08b0925">set_monster_stunned</a></div><div class="ttdeci">bool set_monster_stunned(player_type *target_ptr, MONSTER_IDX m_idx, int v)</div><div class="ttdoc">モンスターの朦朧状態値をセット / Set &quot;m_ptr-&gt;mtimed[MTIMED_STUNNED]&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> monster-status-setter.cpp:209</div></div>
+<div class="ttc" id="amonster-status-setter_8h_html_a0f21d1420ce64b3a07b8d58396edbdfd"><div class="ttname"><a href="monster-status-setter_8h.html#a0f21d1420ce64b3a07b8d58396edbdfd">set_monster_invulner</a></div><div class="ttdeci">bool set_monster_invulner(player_type *target_ptr, MONSTER_IDX m_idx, int v, bool energy_need)</div><div class="ttdoc">モンスターの無敵状態値をセット / Set &quot;m_ptr-&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> monster-status-setter.cpp:312</div></div>
+<div class="ttc" id="amonster-status-setter_8h_html_a682fbdb6c220cc503b8c072b69548f5b"><div class="ttname"><a href="monster-status-setter_8h.html#a682fbdb6c220cc503b8c072b69548f5b">set_monster_timewalk</a></div><div class="ttdeci">bool set_monster_timewalk(player_type *target_ptr, int num, MONSTER_IDX who, bool vs_player)</div><div class="ttdoc">モンスターの時間停止処理</div><div class="ttdef"><b>Definition:</b> monster-status-setter.cpp:355</div></div>
+<div class="ttc" id="amonster-status-setter_8h_html_a70a3313581408d358cae74b128acceff"><div class="ttname"><a href="monster-status-setter_8h.html#a70a3313581408d358cae74b128acceff">set_monster_slow</a></div><div class="ttdeci">bool set_monster_slow(player_type *target_ptr, MONSTER_IDX m_idx, int v)</div><div class="ttdef"><b>Definition:</b> monster-status-setter.cpp:173</div></div>
+<div class="ttc" id="amonster-status-setter_8h_html_a8fc25062bd77e0bfa12c4f211efe4d7c"><div class="ttname"><a href="monster-status-setter_8h.html#a8fc25062bd77e0bfa12c4f211efe4d7c">anger_monster</a></div><div class="ttdeci">void anger_monster(player_type *player_ptr, monster_type *m_ptr)</div><div class="ttdoc">モンスターを怒らせる Anger the monster</div><div class="ttdef"><b>Definition:</b> monster-status-setter.cpp:61</div></div>
+<div class="ttc" id="amonster-status-setter_8h_html_a9e49c39d8a53ae6e809e8c3662c97411"><div class="ttname"><a href="monster-status-setter_8h.html#a9e49c39d8a53ae6e809e8c3662c97411">set_monster_monfear</a></div><div class="ttdeci">bool set_monster_monfear(player_type *target_ptr, MONSTER_IDX m_idx, int v)</div><div class="ttdoc">モンスターの恐慌状態値をセット / Set &quot;m_ptr-&gt;mtimed[MTIMED_MONFEAR]&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> monster-status-setter.cpp:269</div></div>
+<div class="ttc" id="amonster-status-setter_8h_html_aa25bed4c7b1ad4a7af6bc8f4bdcdfcaf"><div class="ttname"><a href="monster-status-setter_8h.html#aa25bed4c7b1ad4a7af6bc8f4bdcdfcaf">set_friendly</a></div><div class="ttdeci">void set_friendly(monster_type *m_ptr)</div><div class="ttdoc">モンスター情報の記述 / describe monsters (using monster memory)</div><div class="ttdef"><b>Definition:</b> monster-info.cpp:39</div></div>
+<div class="ttc" id="amonster-status-setter_8h_html_ab59547e7afcd9ac0b20e21f7c1d029aa"><div class="ttname"><a href="monster-status-setter_8h.html#ab59547e7afcd9ac0b20e21f7c1d029aa">set_monster_confused</a></div><div class="ttdeci">bool set_monster_confused(player_type *target_ptr, MONSTER_IDX m_idx, int v)</div><div class="ttdoc">モンスターの混乱状態値をセット / Set &quot;m_ptr-&gt;mtimed[MTIMED_CONFUSED]&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> monster-status-setter.cpp:239</div></div>
+<div class="ttc" id="amonster-status-setter_8h_html_abf6321fd027008211ec03df294378470"><div class="ttname"><a href="monster-status-setter_8h.html#abf6321fd027008211ec03df294378470">set_monster_csleep</a></div><div class="ttdeci">bool set_monster_csleep(player_type *target_ptr, MONSTER_IDX m_idx, int v)</div><div class="ttdoc">モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr-&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> monster-status-setter.cpp:98</div></div>
+<div class="ttc" id="amonster-status-setter_8h_html_ac81c0952258c31c0bb053742f5d63e0f"><div class="ttname"><a href="monster-status-setter_8h.html#ac81c0952258c31c0bb053742f5d63e0f">set_monster_fast</a></div><div class="ttdeci">bool set_monster_fast(player_type *target_ptr, MONSTER_IDX m_idx, int v)</div><div class="ttdoc">モンスターの加速状態値をセット / Set &quot;m_ptr-&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> monster-status-setter.cpp:142</div></div>
+<div class="ttc" id="amonster-status-setter_8h_html_ae5813db3e0193f799be8ecc90597e7b8"><div class="ttname"><a href="monster-status-setter_8h.html#ae5813db3e0193f799be8ecc90597e7b8">set_pet</a></div><div class="ttdeci">void set_pet(player_type *player_ptr, monster_type *m_ptr)</div><div class="ttdoc">&lt;</div><div class="ttdef"><b>Definition:</b> monster-status-setter.cpp:33</div></div>
+<div class="ttc" id="amonster-status-setter_8h_html_aecb5672ce45dbe9124ea2e502352dffe"><div class="ttname"><a href="monster-status-setter_8h.html#aecb5672ce45dbe9124ea2e502352dffe">set_hostile</a></div><div class="ttdeci">void set_hostile(player_type *player_ptr, monster_type *m_ptr)</div><div class="ttdoc">モンスターを敵に回す Makes the monster hostile towards the player</div><div class="ttdef"><b>Definition:</b> monster-status-setter.cpp:47</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructmonster__type_html_af9814fd62e56754359cba39231fd3267"><div class="ttname"><a href="structmonster__type.html#af9814fd62e56754359cba39231fd3267">monster_type::energy_need</a></div><div class="ttdeci">ACTION_ENERGY energy_need</div><div class="ttdoc">モンスター次ターンまでに必要な行動エネルギー / Monster &quot;energy&quot;</div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:36</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

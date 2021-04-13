@@ -1,0 +1,52 @@
+<map id="stop_hex_spell" name="stop_hex_spell">
+<area shape="rect" id="node1" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="1264,19,1373,45"/>
+<area shape="rect" id="node2" href="$cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="766,19,866,45"/>
+<area shape="rect" id="node5" href="$racial-switcher_8cpp.html#ac21c6b6a9eae71ce476478232b11f8e0" title="レイシャルと突然変異の技能処理 / Racial powers (and mutations)" alt="" coords="553,205,687,246"/>
+<area shape="rect" id="node6" href="$action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="1133,1428,1216,1455"/>
+<area shape="rect" id="node3" href="$input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,1631,296,1657"/>
+<area shape="rect" id="node4" href="$player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,440,116,467"/>
+<area shape="rect" id="node7" href="$wild_8cpp.html#a50c95b33e216b6cd860ddc2ac319c510" title="荒野から広域マップへの切り替え処理 / Initialize arrays for wilderness terrains" alt="" coords="946,541,1078,568"/>
+<area shape="rect" id="node8" href="$cmd-move_8cpp.html#a52d23a65648bfd0f53bf6e5c6690b635" title="「歩く」動作コマンドのメインルーチン / Support code for the &quot;Walk&quot; and &quot;Jump&quot; commands" alt="" coords="765,541,867,568"/>
+<area shape="rect" id="node9" href="$mind-samurai_8cpp.html#a20c01e741b19567510bbc455baa2df41" title="剣術家の型設定処理" alt="" coords="768,339,864,365"/>
+<area shape="rect" id="node10" href="$mind-monk_8cpp.html#abdae926b1a5058ecaca36bb916774c25" title="修行僧の構え設定処理" alt="" coords="741,288,891,315"/>
+<area shape="rect" id="node11" href="$disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="981,947,1043,973"/>
+<area shape="rect" id="node12" href="$cmd-others_8cpp.html#a11518397b269903d9ab5eaec7d7e9e00" title="特定のマスに影響を及ぼすための汎用的コマンド / Manipulate an adjacent grid in some way" alt="" coords="766,693,866,720"/>
+<area shape="rect" id="node13" href="$cmd-attack_8cpp.html#a8e48cd6d2ca0901e5c89e19e30aab0b3" title="プレイヤーの打撃処理メインルーチン" alt="" coords="761,1099,871,1125"/>
+<area shape="rect" id="node14" href="$cmd-open-close_8cpp.html#a5a74463d27e5f0d96dd1c49ab85d850c" title="「打ち破る」動作コマンドのメインルーチン / Bash open a door, success based on character strength" alt="" coords="569,1149,671,1176"/>
+<area shape="rect" id="node15" href="$cmd-open-close_8cpp.html#a6945001a0c01e0ef531db77445d1246f" title="「閉じる」コマンドのメインルーチン / Close an open door." alt="" coords="567,871,673,897"/>
+<area shape="rect" id="node16" href="$cmd-open-close_8cpp.html#af905b3420d1017dc794ab89a9d6d0c42" title="箱、床のトラップ解除処理双方の統合メインルーチン / Disarms a trap, or chest" alt="" coords="563,997,677,1024"/>
+<area shape="rect" id="node17" href="$cmd-open-close_8cpp.html#a4da6ce664a625f0aa47bcbee0627fc5f" title="「開ける」コマンドのメインルーチン / Open a closed/locked/jammed door or a closed/locked chest." alt="" coords="569,1048,671,1075"/>
+<area shape="rect" id="node18" href="$cmd-pet_8cpp.html#a28f35d22f806bfd883341a2cc735003a" title="ペットから騎乗/下馬するコマンドのメインルーチン /" alt="" coords="567,1200,673,1227"/>
+<area shape="rect" id="node19" href="$cmd-open-close_8cpp.html#ae9a608d582edd6d821e9ba557bcc1a1e" title="「くさびを打つ」動作コマンドのメインルーチン / Jam a closed door with a spike" alt="" coords="567,1403,673,1429"/>
+<area shape="rect" id="node20" href="$cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="373,1453,469,1480"/>
+<area shape="rect" id="node21" href="$cmd-tunnel_8cpp.html#a6c5ca83f853694de1a4f4c4eafae85e2" title="「掘る」動作コマンドのメインルーチン / Tunnels through &quot;walls&quot; (including rubble and closed doors)" alt="" coords="565,1099,675,1125"/>
+<area shape="rect" id="node22" href="$player-move_8cpp.html#ac637efbeba2a2fca5538ee13812b97bf" title="移動に伴うプレイヤーのステータス変化処理" alt="" coords="750,1200,882,1227"/>
+<area shape="rect" id="node23" href="$cmd-item_8cpp.html#a415fb2b959d0aee88a1799fa8f38b18e" title="装備を発動するコマンドのメインルーチン /" alt="" coords="757,1504,875,1531"/>
+<area shape="rect" id="node24" href="$cmd-zapwand_8cpp.html#a46222579960ecc4a885aef38dced388d" title="魔法棒を使うコマンドのメインルーチン /" alt="" coords="553,1555,687,1581"/>
+<area shape="rect" id="node25" href="$cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="954,1605,1070,1632"/>
+<area shape="rect" id="node26" href="$cmd-destroy_8cpp.html#ace3fa3c633ff433fd6ce004e56316daf" title="アイテムを破壊するコマンドのメインルーチン / Destroy an item" alt="" coords="953,1656,1071,1683"/>
+<area shape="rect" id="node27" href="$cmd-item_8cpp.html#a5c64a709c024d5bf297243ccb7dc090d" title="アイテムを落とすコマンドのメインルーチン / Drop an item" alt="" coords="962,1707,1062,1733"/>
+<area shape="rect" id="node28" href="$cmd-eat_8cpp.html#a7935eda3156ff639e9a0aeffc530902f" title="食料を食べるコマンドのメインルーチン / Eat some food (from the pack or floor)" alt="" coords="950,1757,1074,1784"/>
+<area shape="rect" id="node29" href="$cmd-shoot_8cpp.html#a30d572039212ee44f63d055a45a68f93" title="射撃処理のメインルーチン" alt="" coords="966,1808,1058,1835"/>
+<area shape="rect" id="node30" href="$cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="344,1859,499,1885"/>
+<area shape="rect" id="node31" href="$cmd-move_8cpp.html#a9d5fbe57b7b1e9058947333e00dee815" title="階段を使って階層を降りる処理 / Go down one level" alt="" coords="557,1909,683,1936"/>
+<area shape="rect" id="node32" href="$cmd-move_8cpp.html#a16005f2ab8f785b6fb42030270681913" title="階段を使って階層を昇る処理 / Go up one level" alt="" coords="761,2061,871,2088"/>
+<area shape="rect" id="node33" href="$cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="359,2112,483,2139"/>
+<area shape="rect" id="node34" href="$cmd-quaff_8cpp.html#ab90506a5f63dc9ea978acddd5759c265" title="プレイヤーの飲むコマンド実装" alt="" coords="940,2011,1084,2037"/>
+<area shape="rect" id="node35" href="$realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="767,1960,865,1987"/>
+<area shape="rect" id="node36" href="$cmd-racial_8cpp.html#af680948d79d56d5f61bb856637db3ae2" title="レイシャル・パワーコマンドのメインルーチン / Allow user to choose a power (racial / mutation) to activate" alt="" coords="547,2163,693,2189"/>
+<area shape="rect" id="node37" href="$cmd-read_8cpp.html#a8a5fffa71d510f2bf92c8fc1ceaf7ded" title="プレイヤーの読むコマンド実装" alt="" coords="747,2213,885,2240"/>
+<area shape="rect" id="node38" href="$cmd-refill_8cpp.html#a72007dc0d3aa4cf00b096133b3cc9e93" title="燃料を補充するコマンドのメインルーチン Refill the players lamp, or restock his torches" alt="" coords="372,2264,471,2291"/>
+<area shape="rect" id="node39" href="$cmd-move_8cpp.html#a1ca5da27fdf6b4625bbac49754cd7ce8" title="「休む」動作コマンドのメインルーチン / Resting allows a player to safely restore his hp &#45;RAK&#45;" alt="" coords="571,2315,669,2341"/>
+<area shape="rect" id="node40" href="$cmd-move_8cpp.html#af37fcf2891ab1245c2faa79a1dfa6625" title="「走る」動作コマンドのメインルーチン / Start running." alt="" coords="375,2365,468,2392"/>
+<area shape="rect" id="node41" href="$cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="368,2416,475,2443"/>
+<area shape="rect" id="node42" href="$cmd-equipment_8cpp.html#a98b30607be0d5815930989687eed824a" title="装備を外すコマンドのメインルーチン / Take off an item" alt="" coords="365,2467,478,2493"/>
+<area shape="rect" id="node43" href="$cmd-throw_8cpp.html#ad5a2694d677c498bbc88091785b50605" title="投射処理メインルーチン / Throw an object from the pack or floor." alt="" coords="368,2517,475,2544"/>
+<area shape="rect" id="node44" href="$cmd-usestaff_8cpp.html#ae473edf5924b4550f63236d266fe92df" title="杖を使うコマンドのメインルーチン /" alt="" coords="358,2593,485,2620"/>
+<area shape="rect" id="node45" href="$cmd-equipment_8cpp.html#ac5a7ea600612007cbf7d105f433213ab" title="装備するコマンドのメインルーチン / Wield or wear a single item from the pack or floor" alt="" coords="369,491,473,517"/>
+<area shape="rect" id="node46" href="$cmd-zaprod_8cpp.html#a651d6a7277acb4e5210567653dba2940" title="ロッドを使うコマンドのメインルーチン /" alt="" coords="361,668,482,695"/>
+<area shape="rect" id="node47" href="$spells-status_8cpp.html#aa3ffab6789c8f7c2dd9fb9272c0e189f" title=" " alt="" coords="983,2568,1041,2595"/>
+<area shape="rect" id="node48" href="$mind-ninja_8cpp.html#ac73b4b32138282732c528ea1d56263d8" title="速駆け処理" alt="" coords="777,187,855,213"/>
+<area shape="rect" id="node49" href="$monster-attack-player_8cpp.html#ac9adba580ceb0cedfd7450fa038b1a49" title=" " alt="" coords="939,121,1085,162"/>
+<area shape="rect" id="node50" href="$mind-monk_8cpp.html#ae601fb3fbefe9a488865a00a01414c76" title=" " alt="" coords="969,288,1055,315"/>
+</map>

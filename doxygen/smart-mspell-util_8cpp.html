@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/mspell/smart-mspell-util.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d3503302c38a329207825687a87abf53.html">mspell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">smart-mspell-util.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="smart-mspell-util_8h_source.html">mspell/smart-mspell-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags2_8h_source.html">monster-race/race-flags2.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-type-definition_8h_source.html">system/monster-type-definition.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+smart-mspell-util.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="smart-mspell-util_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2mspell_2smart-mspell-util_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2mspell_2smart-mspell-util_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2mspell_2smart-mspell-util_8cpp">
+<area shape="rect" title=" " alt="" coords="1115,5,1303,61"/>
+<area shape="rect" href="smart-mspell-util_8h.html" title=" " alt="" coords="425,199,564,240"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="929,109,1079,151"/>
+<area shape="rect" href="race-flags2_8h.html" title=" " alt="" coords="1297,117,1473,143"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1522,206,1710,233"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1171,199,1317,240"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="585,385,714,411"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1082,541,1193,568"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="412,288,577,329"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="652,288,791,329"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="780,467,871,493"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="895,467,985,493"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="45,467,144,493"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="168,467,267,493"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="291,467,391,493"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="415,467,590,493"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="615,467,756,493"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1009,467,1156,493"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="897,199,1042,240"/>
+<area shape="rect" title=" " alt="" coords="1067,206,1123,233"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="924,377,1084,419"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="865,288,1025,329"/>
+<area shape="rect" title=" " alt="" coords="1101,295,1155,322"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1805,295,1984,322"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1630,295,1781,322"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1450,288,1606,329"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="1281,288,1425,329"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a3e507e73d0f2b3e0d5455603bb3aa84e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmsr__type.html">msr_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="smart-mspell-util_8cpp.html#a3e507e73d0f2b3e0d5455603bb3aa84e">initialize_msr_type</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmsr__type.html">msr_type</a> *msr_ptr, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, const <a class="el" href="class_flag_group.html">FlagGroup</a>&lt; <a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> &gt; &amp;ability_flags)</td></tr>
+<tr class="separator:a3e507e73d0f2b3e0d5455603bb3aa84e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ade9ab226c8a7e951a77a088b7ecf87"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="smart-mspell-util_8cpp.html#a5ade9ab226c8a7e951a77a088b7ecf87">int_outof</a> (<a class="el" href="structmonster__race.html">monster_race</a> *r_ptr, <a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> prob)</td></tr>
+<tr class="memdesc:a5ade9ab226c8a7e951a77a088b7ecf87"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターがプレイヤーの弱点をついた選択を取るかどうかの判定 / Internal probability routine  <a href="smart-mspell-util_8cpp.html#a5ade9ab226c8a7e951a77a088b7ecf87">[詳解]</a><br /></td></tr>
+<tr class="separator:a5ade9ab226c8a7e951a77a088b7ecf87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a3e507e73d0f2b3e0d5455603bb3aa84e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e507e73d0f2b3e0d5455603bb3aa84e">&#9670;&nbsp;</a></span>initialize_msr_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmsr__type.html">msr_type</a>* initialize_msr_type </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmsr__type.html">msr_type</a> *&#160;</td>
+          <td class="paramname"><em>msr_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>m_idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_flag_group.html">FlagGroup</a>&lt; <a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>ability_flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="smart-mspell-util_8cpp_a3e507e73d0f2b3e0d5455603bb3aa84e_cgraph.png" border="0" usemap="#asmart-mspell-util_8cpp_a3e507e73d0f2b3e0d5455603bb3aa84e_cgraph" alt=""/></div>
+<map name="asmart-mspell-util_8cpp_a3e507e73d0f2b3e0d5455603bb3aa84e_cgraph" id="asmart-mspell-util_8cpp_a3e507e73d0f2b3e0d5455603bb3aa84e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,136,32"/>
+<area shape="rect" href="class_flag_group.html#a7cb664ab9b738ea100bca1e9e0ce5521" title="フラグ集合に含まれるフラグをすべてOFFにする" alt="" coords="184,5,303,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="smart-mspell-util_8cpp_a3e507e73d0f2b3e0d5455603bb3aa84e_icgraph.png" border="0" usemap="#asmart-mspell-util_8cpp_a3e507e73d0f2b3e0d5455603bb3aa84e_icgraph" alt=""/></div>
+<map name="asmart-mspell-util_8cpp_a3e507e73d0f2b3e0d5455603bb3aa84e_icgraph" id="asmart-mspell-util_8cpp_a3e507e73d0f2b3e0d5455603bb3aa84e_icgraph">
+<area shape="rect" title=" " alt="" coords="591,5,721,32"/>
+<area shape="rect" href="improper-mspell-remover_8cpp.html#a68fc92dbf3fe21eac9a4100c5314b5ef" title="モンスターの魔法一覧から戦術的に適さない魔法を除外する / Remove the &quot;bad&quot; spells from a spell list" alt="" coords="411,5,543,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="184,5,363,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ab50ab49708e55a42a4caeb03490bdf93" title="モンスターの特殊技能メインルーチン / Creatures can cast spells, shoot missiles, and breathe." alt="" coords="5,5,136,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5ade9ab226c8a7e951a77a088b7ecf87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ade9ab226c8a7e951a77a088b7ecf87">&#9670;&nbsp;</a></span>int_outof()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> int_outof </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmonster__race.html">monster_race</a> *&#160;</td>
+          <td class="paramname"><em>r_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td>
+          <td class="paramname"><em>prob</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターがプレイヤーの弱点をついた選択を取るかどうかの判定 / Internal probability routine </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">r_ptr</td><td>モンスター種族の構造体参照ポインタ </td></tr>
+    <tr><td class="paramname">prob</td><td>基本確率(%) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>適した選択を取るならばTRUEを返す。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="smart-mspell-util_8cpp_a5ade9ab226c8a7e951a77a088b7ecf87_icgraph.png" border="0" usemap="#asmart-mspell-util_8cpp_a5ade9ab226c8a7e951a77a088b7ecf87_icgraph" alt=""/></div>
+<map name="asmart-mspell-util_8cpp_a5ade9ab226c8a7e951a77a088b7ecf87_icgraph" id="asmart-mspell-util_8cpp_a5ade9ab226c8a7e951a77a088b7ecf87_icgraph">
+<area shape="rect" title="モンスターがプレイヤーの弱点をついた選択を取るかどうかの判定 / Internal probability routine" alt="" coords="625,309,696,336"/>
+<area shape="rect" href="element-resistance-checker_8cpp.html#a538a18b8d13d06d58505395a65fe6230" title=" " alt="" coords="417,5,571,32"/>
+<area shape="rect" href="high-resistance-checker_8cpp.html#a331efc1f2669b5fc1f3e4898d27847e6" title=" " alt="" coords="411,259,577,285"/>
+<area shape="rect" href="high-resistance-checker_8cpp.html#a60efa5d6c7488bf26ab508eb78bd220a" title=" " alt="" coords="193,411,355,437"/>
+<area shape="rect" href="element-resistance-checker_8cpp.html#a20af535b917d104b708e0b993e9d062b" title=" " alt="" coords="417,56,571,83"/>
+<area shape="rect" href="high-resistance-checker_8cpp.html#afabf5995edf61506f78c70bd4d2a3b3c" title=" " alt="" coords="417,360,571,387"/>
+<area shape="rect" href="high-resistance-checker_8cpp.html#a524b61151ff20930701f5128e9c33545" title=" " alt="" coords="416,411,572,437"/>
+<area shape="rect" href="element-resistance-checker_8cpp.html#a48abdbe0fe59f700b286132d919f643d" title=" " alt="" coords="417,107,571,133"/>
+<area shape="rect" href="element-resistance-checker_8cpp.html#a8895e0f5906ae340c851a11dec9bf1fc" title=" " alt="" coords="420,157,568,184"/>
+<area shape="rect" href="high-resistance-checker_8cpp.html#a37775db55a199f1e3bacedcf7d4b314b" title=" " alt="" coords="420,461,568,488"/>
+<area shape="rect" href="high-resistance-checker_8cpp.html#a437d09f0958fb47c92a1e8e275e80881" title=" " alt="" coords="411,512,577,539"/>
+<area shape="rect" href="high-resistance-checker_8cpp.html#a4133390b4a6fec6e1167a882184db55c" title=" " alt="" coords="411,563,577,589"/>
+<area shape="rect" href="element-resistance-checker_8cpp.html#a077dcbe4f7b8f2a5e1c3ce85fc3e41b1" title=" " alt="" coords="417,208,571,235"/>
+<area shape="rect" href="high-resistance-checker_8cpp.html#add87d9d92b5eabe45238c8e92e8f5da8" title=" " alt="" coords="436,613,552,640"/>
+<area shape="rect" href="element-resistance-checker_8cpp.html#a36cbfd4c89b5cf09c23495cfa392343c" title=" " alt="" coords="185,132,363,159"/>
+<area shape="rect" href="improper-mspell-remover_8cpp.html#a68fc92dbf3fe21eac9a4100c5314b5ef" title="モンスターの魔法一覧から戦術的に適さない魔法を除外する / Remove the &quot;bad&quot; spells from a spell list" alt="" coords="5,284,137,311"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時55分30秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

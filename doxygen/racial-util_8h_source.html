@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/racial/racial-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b2ee39835c95b3d107f0e48efca19b6b.html">racial</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">racial-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="racial-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="racial-util_8h.html#acc2ae02c16b6297643bb04244c71292c">    5</a></span>&#160;<span class="preprocessor">#define MAX_RACIAL_POWERS 36</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">/* Racial Power Info / レイシャル・パワー情報の構造体定義 */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structrpi__type.html">    8</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structrpi__type.html">rpi_type</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structrpi__type.html#a58d3076d03750d555a4c04d544b2f50c">    9</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structrpi__type.html#a58d3076d03750d555a4c04d544b2f50c">racial_name</a>[<a class="code" href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a>];</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structrpi__type.html#a6252d6bd03f6be231aa031fe52bcb63e">   10</a></span>&#160;    <a class="code" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> <a class="code" href="structrpi__type.html#a6252d6bd03f6be231aa031fe52bcb63e">min_level</a>; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structrpi__type.html#a1b656ad13caa09728c5622d24612bc16">   11</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structrpi__type.html#a1b656ad13caa09728c5622d24612bc16">cost</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structrpi__type.html#a864c6cbfccc17c4efdf4bdb273cdb258">   12</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structrpi__type.html#a864c6cbfccc17c4efdf4bdb273cdb258">stat</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structrpi__type.html#a437ed2ede00ad7aad2d1bb292948b738">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> <a class="code" href="structrpi__type.html#a437ed2ede00ad7aad2d1bb292948b738">fail</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structrpi__type.html#ab6726749dc47e68bcfd3be86c2983b9d">   14</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structrpi__type.html#ab6726749dc47e68bcfd3be86c2983b9d">number</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structrpi__type.html#ae71a8c38a641d0cfb615b5a32a626ee7">   15</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structrpi__type.html#ae71a8c38a641d0cfb615b5a32a626ee7">racial_cost</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="racial-util_8h.html#a2ca06dccb48862db3df7901b90d266b7">   16</a></span>&#160;} <a class="code" href="racial-util_8h.html#a2ca06dccb48862db3df7901b90d266b7">rpi_type</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// Racial Command.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structrc__type.html">   19</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structrc__type.html">rc_type</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structrc__type.html#abccdf166202bb772ac0398535eeef0be">   20</a></span>&#160;    <a class="code" href="structrpi__type.html">rpi_type</a> <a class="code" href="structrc__type.html#abccdf166202bb772ac0398535eeef0be">power_desc</a>[<a class="code" href="racial-util_8h.html#acc2ae02c16b6297643bb04244c71292c">MAX_RACIAL_POWERS</a>];</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structrc__type.html#a752d40b132193b623b1d211394e57d5b">   21</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structrc__type.html#a752d40b132193b623b1d211394e57d5b">num</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structrc__type.html#aff46e7dbc98347be10d656b8993b6284">   22</a></span>&#160;    <a class="code" href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a> <a class="code" href="structrc__type.html#aff46e7dbc98347be10d656b8993b6284">command_code</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structrc__type.html#a23faa79b416693bddace58f54c6e6ef1">   23</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structrc__type.html#a23faa79b416693bddace58f54c6e6ef1">ask</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structrc__type.html#af943ab9ce87a740e843931a4c453cc77">   24</a></span>&#160;    <a class="code" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> <a class="code" href="structrc__type.html#af943ab9ce87a740e843931a4c453cc77">lvl</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structrc__type.html#a68316b06a95c02e6549441589338cacd">   25</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structrc__type.html#a68316b06a95c02e6549441589338cacd">flag</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structrc__type.html#a7340785e3f42c1a35f94bd244d51949d">   26</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structrc__type.html#a7340785e3f42c1a35f94bd244d51949d">redraw</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structrc__type.html#a7f974fd102aec9a822e67e31f42b9198">   27</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structrc__type.html#a7f974fd102aec9a822e67e31f42b9198">cast</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structrc__type.html#a3a88fff7c511f3762dc893b9c2751130">   28</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structrc__type.html#a3a88fff7c511f3762dc893b9c2751130">is_warrior</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structrc__type.html#aba5460d53347baa0242ee3fef3e5a561">   29</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structrc__type.html#aba5460d53347baa0242ee3fef3e5a561">choice</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structrc__type.html#a9bb38e9d83aba73ecd5ff593e9b14c73">   30</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structrc__type.html#a9bb38e9d83aba73ecd5ff593e9b14c73">out_val</a>[160];</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structrc__type.html#acca530f22235465fbeb4e7b51389d4f0">   31</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structrc__type.html#acca530f22235465fbeb4e7b51389d4f0">menu_line</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="racial-util_8h.html#abcb60c31a72bb56d59f91447632b8403">   32</a></span>&#160;} <a class="code" href="racial-util_8h.html#abcb60c31a72bb56d59f91447632b8403">rc_type</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<a class="code" href="structrc__type.html">rc_type</a> *<a class="code" href="racial-util_8h.html#aff753b2cd3b6e1e7541ff50234fcad39">initialize_rc_type</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="structrc__type.html">rc_type</a> *rc_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a709af41498f5625eae9f3b73fb6b6f3c"><div class="ttname"><a href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a></div><div class="ttdeci">#define MAX_NLEN</div><div class="ttdoc">Maximum length of object's name</div><div class="ttdef"><b>Definition:</b> h-type.h:58</div></div>
+<div class="ttc" id="ah-type_8h_html_a7c6a37c6000d234e7e4b733a8c830018"><div class="ttname"><a href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a></div><div class="ttdeci">s32b PERCENTAGE</div><div class="ttdoc">ゲーム中のパーセント表記の型定義(/100倍)</div><div class="ttdef"><b>Definition:</b> h-type.h:200</div></div>
+<div class="ttc" id="ah-type_8h_html_a9760a9b50f8e3aeeb4b82d0dc9a81c33"><div class="ttname"><a href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a></div><div class="ttdeci">s16b COMMAND_CODE</div><div class="ttdoc">コマンド内容の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:210</div></div>
+<div class="ttc" id="ah-type_8h_html_a9a1975460009e928d9b53995d07d3623"><div class="ttname"><a href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a></div><div class="ttdeci">s16b PLAYER_LEVEL</div><div class="ttdoc">ゲーム中のプレイヤーレベルの型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:176</div></div>
+<div class="ttc" id="ah-type_8h_html_ac67a750044882c0fd3760a2eccd56d7c"><div class="ttname"><a href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a></div><div class="ttdeci">char GAME_TEXT</div><div class="ttdoc">ゲーム中のテキスト型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:133</div></div>
+<div class="ttc" id="aracial-util_8h_html_a2ca06dccb48862db3df7901b90d266b7"><div class="ttname"><a href="racial-util_8h.html#a2ca06dccb48862db3df7901b90d266b7">rpi_type</a></div><div class="ttdeci">struct rpi_type rpi_type</div></div>
+<div class="ttc" id="aracial-util_8h_html_abcb60c31a72bb56d59f91447632b8403"><div class="ttname"><a href="racial-util_8h.html#abcb60c31a72bb56d59f91447632b8403">rc_type</a></div><div class="ttdeci">struct rc_type rc_type</div></div>
+<div class="ttc" id="aracial-util_8h_html_acc2ae02c16b6297643bb04244c71292c"><div class="ttname"><a href="racial-util_8h.html#acc2ae02c16b6297643bb04244c71292c">MAX_RACIAL_POWERS</a></div><div class="ttdeci">#define MAX_RACIAL_POWERS</div><div class="ttdef"><b>Definition:</b> racial-util.h:5</div></div>
+<div class="ttc" id="aracial-util_8h_html_aff753b2cd3b6e1e7541ff50234fcad39"><div class="ttname"><a href="racial-util_8h.html#aff753b2cd3b6e1e7541ff50234fcad39">initialize_rc_type</a></div><div class="ttdeci">rc_type * initialize_rc_type(player_type *creature_ptr, rc_type *rc_ptr)</div><div class="ttdef"><b>Definition:</b> racial-util.cpp:4</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="astructrc__type_html"><div class="ttname"><a href="structrc__type.html">rc_type</a></div><div class="ttdef"><b>Definition:</b> racial-util.h:19</div></div>
+<div class="ttc" id="astructrc__type_html_a23faa79b416693bddace58f54c6e6ef1"><div class="ttname"><a href="structrc__type.html#a23faa79b416693bddace58f54c6e6ef1">rc_type::ask</a></div><div class="ttdeci">int ask</div><div class="ttdef"><b>Definition:</b> racial-util.h:23</div></div>
+<div class="ttc" id="astructrc__type_html_a3a88fff7c511f3762dc893b9c2751130"><div class="ttname"><a href="structrc__type.html#a3a88fff7c511f3762dc893b9c2751130">rc_type::is_warrior</a></div><div class="ttdeci">bool is_warrior</div><div class="ttdef"><b>Definition:</b> racial-util.h:28</div></div>
+<div class="ttc" id="astructrc__type_html_a68316b06a95c02e6549441589338cacd"><div class="ttname"><a href="structrc__type.html#a68316b06a95c02e6549441589338cacd">rc_type::flag</a></div><div class="ttdeci">bool flag</div><div class="ttdef"><b>Definition:</b> racial-util.h:25</div></div>
+<div class="ttc" id="astructrc__type_html_a7340785e3f42c1a35f94bd244d51949d"><div class="ttname"><a href="structrc__type.html#a7340785e3f42c1a35f94bd244d51949d">rc_type::redraw</a></div><div class="ttdeci">bool redraw</div><div class="ttdef"><b>Definition:</b> racial-util.h:26</div></div>
+<div class="ttc" id="astructrc__type_html_a752d40b132193b623b1d211394e57d5b"><div class="ttname"><a href="structrc__type.html#a752d40b132193b623b1d211394e57d5b">rc_type::num</a></div><div class="ttdeci">int num</div><div class="ttdef"><b>Definition:</b> racial-util.h:21</div></div>
+<div class="ttc" id="astructrc__type_html_a7f974fd102aec9a822e67e31f42b9198"><div class="ttname"><a href="structrc__type.html#a7f974fd102aec9a822e67e31f42b9198">rc_type::cast</a></div><div class="ttdeci">bool cast</div><div class="ttdef"><b>Definition:</b> racial-util.h:27</div></div>
+<div class="ttc" id="astructrc__type_html_a9bb38e9d83aba73ecd5ff593e9b14c73"><div class="ttname"><a href="structrc__type.html#a9bb38e9d83aba73ecd5ff593e9b14c73">rc_type::out_val</a></div><div class="ttdeci">char out_val[160]</div><div class="ttdef"><b>Definition:</b> racial-util.h:30</div></div>
+<div class="ttc" id="astructrc__type_html_aba5460d53347baa0242ee3fef3e5a561"><div class="ttname"><a href="structrc__type.html#aba5460d53347baa0242ee3fef3e5a561">rc_type::choice</a></div><div class="ttdeci">char choice</div><div class="ttdef"><b>Definition:</b> racial-util.h:29</div></div>
+<div class="ttc" id="astructrc__type_html_abccdf166202bb772ac0398535eeef0be"><div class="ttname"><a href="structrc__type.html#abccdf166202bb772ac0398535eeef0be">rc_type::power_desc</a></div><div class="ttdeci">rpi_type power_desc[MAX_RACIAL_POWERS]</div><div class="ttdef"><b>Definition:</b> racial-util.h:20</div></div>
+<div class="ttc" id="astructrc__type_html_acca530f22235465fbeb4e7b51389d4f0"><div class="ttname"><a href="structrc__type.html#acca530f22235465fbeb4e7b51389d4f0">rc_type::menu_line</a></div><div class="ttdeci">int menu_line</div><div class="ttdef"><b>Definition:</b> racial-util.h:31</div></div>
+<div class="ttc" id="astructrc__type_html_af943ab9ce87a740e843931a4c453cc77"><div class="ttname"><a href="structrc__type.html#af943ab9ce87a740e843931a4c453cc77">rc_type::lvl</a></div><div class="ttdeci">PLAYER_LEVEL lvl</div><div class="ttdef"><b>Definition:</b> racial-util.h:24</div></div>
+<div class="ttc" id="astructrc__type_html_aff46e7dbc98347be10d656b8993b6284"><div class="ttname"><a href="structrc__type.html#aff46e7dbc98347be10d656b8993b6284">rc_type::command_code</a></div><div class="ttdeci">COMMAND_CODE command_code</div><div class="ttdef"><b>Definition:</b> racial-util.h:22</div></div>
+<div class="ttc" id="astructrpi__type_html"><div class="ttname"><a href="structrpi__type.html">rpi_type</a></div><div class="ttdef"><b>Definition:</b> racial-util.h:8</div></div>
+<div class="ttc" id="astructrpi__type_html_a1b656ad13caa09728c5622d24612bc16"><div class="ttname"><a href="structrpi__type.html#a1b656ad13caa09728c5622d24612bc16">rpi_type::cost</a></div><div class="ttdeci">int cost</div><div class="ttdef"><b>Definition:</b> racial-util.h:11</div></div>
+<div class="ttc" id="astructrpi__type_html_a437ed2ede00ad7aad2d1bb292948b738"><div class="ttname"><a href="structrpi__type.html#a437ed2ede00ad7aad2d1bb292948b738">rpi_type::fail</a></div><div class="ttdeci">PERCENTAGE fail</div><div class="ttdef"><b>Definition:</b> racial-util.h:13</div></div>
+<div class="ttc" id="astructrpi__type_html_a58d3076d03750d555a4c04d544b2f50c"><div class="ttname"><a href="structrpi__type.html#a58d3076d03750d555a4c04d544b2f50c">rpi_type::racial_name</a></div><div class="ttdeci">GAME_TEXT racial_name[MAX_NLEN]</div><div class="ttdef"><b>Definition:</b> racial-util.h:9</div></div>
+<div class="ttc" id="astructrpi__type_html_a6252d6bd03f6be231aa031fe52bcb63e"><div class="ttname"><a href="structrpi__type.html#a6252d6bd03f6be231aa031fe52bcb63e">rpi_type::min_level</a></div><div class="ttdeci">PLAYER_LEVEL min_level</div><div class="ttdoc">体得レベル</div><div class="ttdef"><b>Definition:</b> racial-util.h:10</div></div>
+<div class="ttc" id="astructrpi__type_html_a864c6cbfccc17c4efdf4bdb273cdb258"><div class="ttname"><a href="structrpi__type.html#a864c6cbfccc17c4efdf4bdb273cdb258">rpi_type::stat</a></div><div class="ttdeci">int stat</div><div class="ttdef"><b>Definition:</b> racial-util.h:12</div></div>
+<div class="ttc" id="astructrpi__type_html_ab6726749dc47e68bcfd3be86c2983b9d"><div class="ttname"><a href="structrpi__type.html#ab6726749dc47e68bcfd3be86c2983b9d">rpi_type::number</a></div><div class="ttdeci">int number</div><div class="ttdef"><b>Definition:</b> racial-util.h:14</div></div>
+<div class="ttc" id="astructrpi__type_html_ae71a8c38a641d0cfb615b5a32a626ee7"><div class="ttname"><a href="structrpi__type.html#ae71a8c38a641d0cfb615b5a32a626ee7">rpi_type::racial_cost</a></div><div class="ttdeci">int racial_cost</div><div class="ttdef"><b>Definition:</b> racial-util.h:15</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

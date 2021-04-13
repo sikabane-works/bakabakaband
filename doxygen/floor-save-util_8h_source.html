@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/floor/floor-save-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a620f8a6b723e397390ae5ca00f5aa8c.html">floor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">floor-save-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="floor-save-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-type-definition_8h.html">system/monster-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="floor-save-util_8h.html#acb8796bb7d93e3f4b5ca7c07599a198b">    6</a></span>&#160;<span class="preprocessor">#define MAX_SAVED_FLOORS 20 </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="floor-save-util_8h.html#a5e027b15c676a7a5d433c160956047ba">    7</a></span>&#160;<span class="preprocessor">#define MAX_PARTY_MON 21 </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structsaved__floor__type.html">    9</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structsaved__floor__type.html">saved_floor_type</a> {</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structsaved__floor__type.html#a6d3fc6e1b5d0fe0f3a15e68b69a1de1c">   10</a></span>&#160;    <a class="code" href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a> <a class="code" href="structsaved__floor__type.html#a6d3fc6e1b5d0fe0f3a15e68b69a1de1c">floor_id</a>; <span class="comment">/* No recycle until 65536 IDs are all used */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structsaved__floor__type.html#ad9c7905e4dcb53b1d5ded0f49472b868">   11</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structsaved__floor__type.html#ad9c7905e4dcb53b1d5ded0f49472b868">savefile_id</a>; <span class="comment">/* ID for savefile (from 0 to MAX_SAVED_FLOOR) */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structsaved__floor__type.html#af3f82bb0a4288e77d12a812b2e233552">   12</a></span>&#160;    <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> <a class="code" href="structsaved__floor__type.html#af3f82bb0a4288e77d12a812b2e233552">dun_level</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structsaved__floor__type.html#a56674aabc544781992bb2ef8db3b62d9">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="code" href="structsaved__floor__type.html#a56674aabc544781992bb2ef8db3b62d9">last_visit</a>; <span class="comment">/* Time count of last visit. 0 for new floor. */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structsaved__floor__type.html#a031e4dfb9b3e2f7550043f057f58cf9c">   14</a></span>&#160;    <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="structsaved__floor__type.html#a031e4dfb9b3e2f7550043f057f58cf9c">visit_mark</a>; <span class="comment">/* Older has always smaller mark. */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structsaved__floor__type.html#a22b600ff033a3af56f78651eb61b947d">   15</a></span>&#160;    <a class="code" href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a> <a class="code" href="structsaved__floor__type.html#a22b600ff033a3af56f78651eb61b947d">upper_floor_id</a>; <span class="comment">/* a floor connected with level teleportation */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structsaved__floor__type.html#ae6b125403889891a9f93e9ba8b6e1a5a">   16</a></span>&#160;    <a class="code" href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a> <a class="code" href="structsaved__floor__type.html#ae6b125403889891a9f93e9ba8b6e1a5a">lower_floor_id</a>; <span class="comment">/* a floor connected with level tel. and trap door */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="floor-save-util_8h.html#abbaf8a1becaf5b7bd0b785fab413aa09">   17</a></span>&#160;} <a class="code" href="floor-save-util_8h.html#abbaf8a1becaf5b7bd0b785fab413aa09">saved_floor_type</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="floor-save-util_8h.html#a9559b8ccb836eb25a0988c9da4e41791">saved_floor_file_sign</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <a class="code" href="structsaved__floor__type.html">saved_floor_type</a> <a class="code" href="floor-save-util_8h.html#a41d02107df0bacecc42c8869f722221d">saved_floors</a>[<a class="code" href="floor-save-util_8h.html#acb8796bb7d93e3f4b5ca7c07599a198b">MAX_SAVED_FLOORS</a>];</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a> <a class="code" href="floor-save-util_8h.html#a4de4ba565f75008e190129ceb1675937">max_floor_id</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a> <a class="code" href="floor-save-util_8h.html#a7d573a9a60163599bf7f6e37f5b02df9">new_floor_id</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="floor-save-util_8h.html#a38817dec13fe27ffa28ff9b3d188cc33">latest_visit_mark</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">extern</span> <a class="code" href="structmonster__type.html">monster_type</a> <a class="code" href="floor-save-util_8h.html#acde248d21e566ab128a91e189ed49d4f">party_mon</a>[<a class="code" href="floor-save-util_8h.html#a5e027b15c676a7a5d433c160956047ba">MAX_PARTY_MON</a>];</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="afloor-save-util_8h_html_a38817dec13fe27ffa28ff9b3d188cc33"><div class="ttname"><a href="floor-save-util_8h.html#a38817dec13fe27ffa28ff9b3d188cc33">latest_visit_mark</a></div><div class="ttdeci">u32b latest_visit_mark</div><div class="ttdoc">フロアを渡った回数？(確認中) / Max number of visit_mark</div><div class="ttdef"><b>Definition:</b> floor-save-util.cpp:11</div></div>
+<div class="ttc" id="afloor-save-util_8h_html_a41d02107df0bacecc42c8869f722221d"><div class="ttname"><a href="floor-save-util_8h.html#a41d02107df0bacecc42c8869f722221d">saved_floors</a></div><div class="ttdeci">saved_floor_type saved_floors[MAX_SAVED_FLOORS]</div><div class="ttdef"><b>Definition:</b> floor-save-util.cpp:8</div></div>
+<div class="ttc" id="afloor-save-util_8h_html_a4de4ba565f75008e190129ceb1675937"><div class="ttname"><a href="floor-save-util_8h.html#a4de4ba565f75008e190129ceb1675937">max_floor_id</a></div><div class="ttdeci">FLOOR_IDX max_floor_id</div><div class="ttdoc">Number of floor_id used from birth</div><div class="ttdef"><b>Definition:</b> floor-save-util.cpp:9</div></div>
+<div class="ttc" id="afloor-save-util_8h_html_a5e027b15c676a7a5d433c160956047ba"><div class="ttname"><a href="floor-save-util_8h.html#a5e027b15c676a7a5d433c160956047ba">MAX_PARTY_MON</a></div><div class="ttdeci">#define MAX_PARTY_MON</div><div class="ttdoc">フロア移動時に先のフロアに連れて行けるペットの最大数 Maximum number of preservable pets</div><div class="ttdef"><b>Definition:</b> floor-save-util.h:7</div></div>
+<div class="ttc" id="afloor-save-util_8h_html_a7d573a9a60163599bf7f6e37f5b02df9"><div class="ttname"><a href="floor-save-util_8h.html#a7d573a9a60163599bf7f6e37f5b02df9">new_floor_id</a></div><div class="ttdeci">FLOOR_IDX new_floor_id</div><div class="ttdoc">次のフロアのID / floor_id of the destination</div><div class="ttdef"><b>Definition:</b> floor-save-util.cpp:10</div></div>
+<div class="ttc" id="afloor-save-util_8h_html_a9559b8ccb836eb25a0988c9da4e41791"><div class="ttname"><a href="floor-save-util_8h.html#a9559b8ccb836eb25a0988c9da4e41791">saved_floor_file_sign</a></div><div class="ttdeci">u32b saved_floor_file_sign</div><div class="ttdef"><b>Definition:</b> floor-save-util.cpp:7</div></div>
+<div class="ttc" id="afloor-save-util_8h_html_abbaf8a1becaf5b7bd0b785fab413aa09"><div class="ttname"><a href="floor-save-util_8h.html#abbaf8a1becaf5b7bd0b785fab413aa09">saved_floor_type</a></div><div class="ttdeci">struct saved_floor_type saved_floor_type</div></div>
+<div class="ttc" id="afloor-save-util_8h_html_acb8796bb7d93e3f4b5ca7c07599a198b"><div class="ttname"><a href="floor-save-util_8h.html#acb8796bb7d93e3f4b5ca7c07599a198b">MAX_SAVED_FLOORS</a></div><div class="ttdeci">#define MAX_SAVED_FLOORS</div><div class="ttdoc">保存フロアの最大数 / Maximum number of saved floors.</div><div class="ttdef"><b>Definition:</b> floor-save-util.h:6</div></div>
+<div class="ttc" id="afloor-save-util_8h_html_acde248d21e566ab128a91e189ed49d4f"><div class="ttname"><a href="floor-save-util_8h.html#acde248d21e566ab128a91e189ed49d4f">party_mon</a></div><div class="ttdeci">monster_type party_mon[MAX_PARTY_MON]</div><div class="ttdoc">フロア移動に保存するペットモンスターの配列</div><div class="ttdef"><b>Definition:</b> floor-save-util.cpp:12</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_a1c8b80a20fb5396ff07a523b01112c47"><div class="ttname"><a href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a></div><div class="ttdeci">s32b DEPTH</div><div class="ttdoc">ゲーム中の階層レベルの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:194</div></div>
+<div class="ttc" id="ah-type_8h_html_af28a46c3af7b537a7cf39e1f7e6bf81c"><div class="ttname"><a href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a></div><div class="ttdeci">signed long s32b</div><div class="ttdef"><b>Definition:</b> h-type.h:92</div></div>
+<div class="ttc" id="ah-type_8h_html_af7a1de980667931f896ae6a820f0ee80"><div class="ttname"><a href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a></div><div class="ttdeci">unsigned long u32b</div><div class="ttdef"><b>Definition:</b> h-type.h:93</div></div>
+<div class="ttc" id="ah-type_8h_html_afef75ce8b6b6a38fed9a8ed936b5ea5c"><div class="ttname"><a href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a></div><div class="ttdeci">s16b FLOOR_IDX</div><div class="ttdoc">ゲーム中のフロアID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:100</div></div>
+<div class="ttc" id="amonster-type-definition_8h_html"><div class="ttname"><a href="monster-type-definition_8h.html">monster-type-definition.h</a></div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructsaved__floor__type_html"><div class="ttname"><a href="structsaved__floor__type.html">saved_floor_type</a></div><div class="ttdef"><b>Definition:</b> floor-save-util.h:9</div></div>
+<div class="ttc" id="astructsaved__floor__type_html_a031e4dfb9b3e2f7550043f057f58cf9c"><div class="ttname"><a href="structsaved__floor__type.html#a031e4dfb9b3e2f7550043f057f58cf9c">saved_floor_type::visit_mark</a></div><div class="ttdeci">u32b visit_mark</div><div class="ttdef"><b>Definition:</b> floor-save-util.h:14</div></div>
+<div class="ttc" id="astructsaved__floor__type_html_a22b600ff033a3af56f78651eb61b947d"><div class="ttname"><a href="structsaved__floor__type.html#a22b600ff033a3af56f78651eb61b947d">saved_floor_type::upper_floor_id</a></div><div class="ttdeci">FLOOR_IDX upper_floor_id</div><div class="ttdef"><b>Definition:</b> floor-save-util.h:15</div></div>
+<div class="ttc" id="astructsaved__floor__type_html_a56674aabc544781992bb2ef8db3b62d9"><div class="ttname"><a href="structsaved__floor__type.html#a56674aabc544781992bb2ef8db3b62d9">saved_floor_type::last_visit</a></div><div class="ttdeci">s32b last_visit</div><div class="ttdef"><b>Definition:</b> floor-save-util.h:13</div></div>
+<div class="ttc" id="astructsaved__floor__type_html_a6d3fc6e1b5d0fe0f3a15e68b69a1de1c"><div class="ttname"><a href="structsaved__floor__type.html#a6d3fc6e1b5d0fe0f3a15e68b69a1de1c">saved_floor_type::floor_id</a></div><div class="ttdeci">FLOOR_IDX floor_id</div><div class="ttdef"><b>Definition:</b> floor-save-util.h:10</div></div>
+<div class="ttc" id="astructsaved__floor__type_html_ad9c7905e4dcb53b1d5ded0f49472b868"><div class="ttname"><a href="structsaved__floor__type.html#ad9c7905e4dcb53b1d5ded0f49472b868">saved_floor_type::savefile_id</a></div><div class="ttdeci">s16b savefile_id</div><div class="ttdef"><b>Definition:</b> floor-save-util.h:11</div></div>
+<div class="ttc" id="astructsaved__floor__type_html_ae6b125403889891a9f93e9ba8b6e1a5a"><div class="ttname"><a href="structsaved__floor__type.html#ae6b125403889891a9f93e9ba8b6e1a5a">saved_floor_type::lower_floor_id</a></div><div class="ttdeci">FLOOR_IDX lower_floor_id</div><div class="ttdef"><b>Definition:</b> floor-save-util.h:16</div></div>
+<div class="ttc" id="astructsaved__floor__type_html_af3f82bb0a4288e77d12a812b2e233552"><div class="ttname"><a href="structsaved__floor__type.html#af3f82bb0a4288e77d12a812b2e233552">saved_floor_type::dun_level</a></div><div class="ttdeci">DEPTH dun_level</div><div class="ttdef"><b>Definition:</b> floor-save-util.h:12</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

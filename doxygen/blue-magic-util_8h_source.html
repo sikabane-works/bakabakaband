@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/blue-magic/blue-magic-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_0aba8cb0538d7572eed18f9f76c6d907.html">blue-magic</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">blue-magic-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="blue-magic-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Blue Magic Cast.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="structbmc__type.html">    6</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structbmc__type.html">bmc_type</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structbmc__type.html#af0cbd8f68fed63d2cf991ddc1b9dd4ba">    7</a></span>&#160;    <a class="code" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> <a class="code" href="structbmc__type.html#af0cbd8f68fed63d2cf991ddc1b9dd4ba">dir</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structbmc__type.html#acf3911bedc655782d386071b40875065">    8</a></span>&#160;    <a class="code" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> <a class="code" href="structbmc__type.html#acf3911bedc655782d386071b40875065">plev</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structbmc__type.html#a0d5144745a3bdb26371acb1b662e437f">    9</a></span>&#160;    <a class="code" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> <a class="code" href="structbmc__type.html#a0d5144745a3bdb26371acb1b662e437f">summon_lev</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structbmc__type.html#ac0edc81202ca961d22d3ca8ef10a3fca">   10</a></span>&#160;    <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="structbmc__type.html#ac0edc81202ca961d22d3ca8ef10a3fca">damage</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structbmc__type.html#a82efdb8152fa3308d33dcdaa27f458e6">   11</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structbmc__type.html#a82efdb8152fa3308d33dcdaa27f458e6">pet</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structbmc__type.html#adc09961e38a314dcf217126d0d615a5f">   12</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structbmc__type.html#adc09961e38a314dcf217126d0d615a5f">no_trump</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structbmc__type.html#a49ad749c23ca073527a4d13f7e895e01">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structbmc__type.html#a49ad749c23ca073527a4d13f7e895e01">p_mode</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structbmc__type.html#a64ebbddb6e848ad3b05501ff0c6f11f4">   14</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structbmc__type.html#a64ebbddb6e848ad3b05501ff0c6f11f4">u_mode</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structbmc__type.html#a0bdd7e8f2ee39723760e45da8d3bc083">   15</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structbmc__type.html#a0bdd7e8f2ee39723760e45da8d3bc083">g_mode</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="blue-magic-util_8h.html#a208f168ca9256fb3bcee33092c223a67">   16</a></span>&#160;} <a class="code" href="blue-magic-util_8h.html#a208f168ca9256fb3bcee33092c223a67">bmc_type</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="blue-magic-util_8h.html#ad53cbf2609144b266bc5bcd916b915e0">   18</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> (*<a class="code" href="blue-magic-util_8h.html#ad53cbf2609144b266bc5bcd916b915e0">get_pseudo_monstetr_level_pf</a>)(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<a class="code" href="structbmc__type.html">bmc_type</a> *<a class="code" href="blue-magic-util_8h.html#aa75e6b55d117205ecbbb114f56181546">initialize_blue_magic_type</a>(</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="structbmc__type.html">bmc_type</a> *bmc_ptr, <span class="keyword">const</span> <span class="keywordtype">bool</span> success, <a class="code" href="blue-magic-util_8h.html#ad53cbf2609144b266bc5bcd916b915e0">get_pseudo_monstetr_level_pf</a> <a class="code" href="learnt-info_8cpp.html#a49d5c05c7a7c803a592aade788f28276">get_pseudo_monstetr_level</a>);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ablue-magic-util_8h_html_a208f168ca9256fb3bcee33092c223a67"><div class="ttname"><a href="blue-magic-util_8h.html#a208f168ca9256fb3bcee33092c223a67">bmc_type</a></div><div class="ttdeci">struct bmc_type bmc_type</div></div>
+<div class="ttc" id="ablue-magic-util_8h_html_aa75e6b55d117205ecbbb114f56181546"><div class="ttname"><a href="blue-magic-util_8h.html#aa75e6b55d117205ecbbb114f56181546">initialize_blue_magic_type</a></div><div class="ttdeci">bmc_type * initialize_blue_magic_type(player_type *caster_ptr, bmc_type *bmc_ptr, const bool success, get_pseudo_monstetr_level_pf get_pseudo_monstetr_level)</div><div class="ttdef"><b>Definition:</b> blue-magic-util.cpp:4</div></div>
+<div class="ttc" id="ablue-magic-util_8h_html_ad53cbf2609144b266bc5bcd916b915e0"><div class="ttname"><a href="blue-magic-util_8h.html#ad53cbf2609144b266bc5bcd916b915e0">get_pseudo_monstetr_level_pf</a></div><div class="ttdeci">PLAYER_LEVEL(* get_pseudo_monstetr_level_pf)(player_type *caster_ptr)</div><div class="ttdef"><b>Definition:</b> blue-magic-util.h:18</div></div>
+<div class="ttc" id="ah-type_8h_html_a28b4289b95abbeb7a422178cfa43525f"><div class="ttname"><a href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a></div><div class="ttdeci">int DIRECTION</div><div class="ttdoc">ゲーム中の方角の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:177</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a9a1975460009e928d9b53995d07d3623"><div class="ttname"><a href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a></div><div class="ttdeci">s16b PLAYER_LEVEL</div><div class="ttdoc">ゲーム中のプレイヤーレベルの型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:176</div></div>
+<div class="ttc" id="ah-type_8h_html_afdb20155266ee801610f13b1589a3df3"><div class="ttname"><a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></div><div class="ttdeci">s32b HIT_POINT</div><div class="ttdoc">HPとその増減量の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:141</div></div>
+<div class="ttc" id="alearnt-info_8cpp_html_a49d5c05c7a7c803a592aade788f28276"><div class="ttname"><a href="learnt-info_8cpp.html#a49d5c05c7a7c803a592aade788f28276">get_pseudo_monstetr_level</a></div><div class="ttdeci">PLAYER_LEVEL get_pseudo_monstetr_level(player_type *caster_ptr)</div><div class="ttdoc">&lt;</div><div class="ttdef"><b>Definition:</b> learnt-info.cpp:12</div></div>
+<div class="ttc" id="astructbmc__type_html"><div class="ttname"><a href="structbmc__type.html">bmc_type</a></div><div class="ttdef"><b>Definition:</b> blue-magic-util.h:6</div></div>
+<div class="ttc" id="astructbmc__type_html_a0bdd7e8f2ee39723760e45da8d3bc083"><div class="ttname"><a href="structbmc__type.html#a0bdd7e8f2ee39723760e45da8d3bc083">bmc_type::g_mode</a></div><div class="ttdeci">BIT_FLAGS g_mode</div><div class="ttdef"><b>Definition:</b> blue-magic-util.h:15</div></div>
+<div class="ttc" id="astructbmc__type_html_a0d5144745a3bdb26371acb1b662e437f"><div class="ttname"><a href="structbmc__type.html#a0d5144745a3bdb26371acb1b662e437f">bmc_type::summon_lev</a></div><div class="ttdeci">PLAYER_LEVEL summon_lev</div><div class="ttdef"><b>Definition:</b> blue-magic-util.h:9</div></div>
+<div class="ttc" id="astructbmc__type_html_a49ad749c23ca073527a4d13f7e895e01"><div class="ttname"><a href="structbmc__type.html#a49ad749c23ca073527a4d13f7e895e01">bmc_type::p_mode</a></div><div class="ttdeci">BIT_FLAGS p_mode</div><div class="ttdef"><b>Definition:</b> blue-magic-util.h:13</div></div>
+<div class="ttc" id="astructbmc__type_html_a64ebbddb6e848ad3b05501ff0c6f11f4"><div class="ttname"><a href="structbmc__type.html#a64ebbddb6e848ad3b05501ff0c6f11f4">bmc_type::u_mode</a></div><div class="ttdeci">BIT_FLAGS u_mode</div><div class="ttdef"><b>Definition:</b> blue-magic-util.h:14</div></div>
+<div class="ttc" id="astructbmc__type_html_a82efdb8152fa3308d33dcdaa27f458e6"><div class="ttname"><a href="structbmc__type.html#a82efdb8152fa3308d33dcdaa27f458e6">bmc_type::pet</a></div><div class="ttdeci">bool pet</div><div class="ttdef"><b>Definition:</b> blue-magic-util.h:11</div></div>
+<div class="ttc" id="astructbmc__type_html_ac0edc81202ca961d22d3ca8ef10a3fca"><div class="ttname"><a href="structbmc__type.html#ac0edc81202ca961d22d3ca8ef10a3fca">bmc_type::damage</a></div><div class="ttdeci">HIT_POINT damage</div><div class="ttdef"><b>Definition:</b> blue-magic-util.h:10</div></div>
+<div class="ttc" id="astructbmc__type_html_acf3911bedc655782d386071b40875065"><div class="ttname"><a href="structbmc__type.html#acf3911bedc655782d386071b40875065">bmc_type::plev</a></div><div class="ttdeci">PLAYER_LEVEL plev</div><div class="ttdef"><b>Definition:</b> blue-magic-util.h:8</div></div>
+<div class="ttc" id="astructbmc__type_html_adc09961e38a314dcf217126d0d615a5f"><div class="ttname"><a href="structbmc__type.html#adc09961e38a314dcf217126d0d615a5f">bmc_type::no_trump</a></div><div class="ttdeci">bool no_trump</div><div class="ttdef"><b>Definition:</b> blue-magic-util.h:12</div></div>
+<div class="ttc" id="astructbmc__type_html_af0cbd8f68fed63d2cf991ddc1b9dd4ba"><div class="ttname"><a href="structbmc__type.html#af0cbd8f68fed63d2cf991ddc1b9dd4ba">bmc_type::dir</a></div><div class="ttdeci">DIRECTION dir</div><div class="ttdef"><b>Definition:</b> blue-magic-util.h:7</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

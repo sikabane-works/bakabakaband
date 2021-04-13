@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/object-enchant/trc-types.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7478db7a13e5bc43b9c00ed0e2222476.html">object-enchant</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">trc-types.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="trc-types_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">/* TRCが何の略かは分からない (type / ??? / curse)*/</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fc">    4</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fc">trc_curse_type</a> {</div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca5e50a079e7741bf384e0b45bbaed8a98">    5</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca5e50a079e7741bf384e0b45bbaed8a98">TRC_CURSED</a> = 0x00000001L,</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca81029f356c5b896e3c2a0c95005d30bd">    6</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca81029f356c5b896e3c2a0c95005d30bd">TRC_HEAVY_CURSE</a> = 0x00000002L,</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca40d22206f75bdf363951edf14c1f9357">    7</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca40d22206f75bdf363951edf14c1f9357">TRC_PERMA_CURSE</a> = 0x00000004L,</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca88edfe50062250ce852f23baa4d33b7c">    8</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca88edfe50062250ce852f23baa4d33b7c">TRC_XXX1</a> = 0x00000008L,</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca41fa14ee036e3fe4bc48c6596b70ac5d">    9</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca41fa14ee036e3fe4bc48c6596b70ac5d">TRC_TY_CURSE</a> = 0x00000010L,</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcad542d99138af170e1d36b5a23c3a7279">   10</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcad542d99138af170e1d36b5a23c3a7279">TRC_AGGRAVATE</a> = 0x00000020L,</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcaac7bc9fec4bcd9193025b5526460ddfb">   11</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcaac7bc9fec4bcd9193025b5526460ddfb">TRC_DRAIN_EXP</a> = 0x00000040L,</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca1c536c86b284bb041564d044eb3cd23b">   12</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca1c536c86b284bb041564d044eb3cd23b">TRC_SLOW_REGEN</a> = 0x00000080L,</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcaa2108f8c696c2b6302bdd3b718643ff9">   13</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcaa2108f8c696c2b6302bdd3b718643ff9">TRC_ADD_L_CURSE</a> = 0x00000100L,</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcae45979b78641b07bb51376f487c047aa">   14</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcae45979b78641b07bb51376f487c047aa">TRC_ADD_H_CURSE</a> = 0x00000200L,</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca6893affa786c4793fb62bda58ee95371">   15</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca6893affa786c4793fb62bda58ee95371">TRC_CALL_ANIMAL</a> = 0x00000400L,</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca954953f127550b168ec98dbd41b6122e">   16</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca954953f127550b168ec98dbd41b6122e">TRC_CALL_DEMON</a> = 0x00000800L,</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcad138e7d2bef886e16f2ed21f78a3c9ba">   17</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcad138e7d2bef886e16f2ed21f78a3c9ba">TRC_CALL_DRAGON</a> = 0x00001000L,</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcac58c36bfe394610cd368d5b2845e6752">   18</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcac58c36bfe394610cd368d5b2845e6752">TRC_COWARDICE</a> = 0x00002000L,</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca7f46145826024f4fbe423de5d2969cf4">   19</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca7f46145826024f4fbe423de5d2969cf4">TRC_TELEPORT</a> = 0x00004000L,</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcafc33b258b44cd7987809338fb1b47689">   20</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcafc33b258b44cd7987809338fb1b47689">TRC_LOW_MELEE</a> = 0x00008000L,</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca4a9bdd9e87e5d0677e087d8ad30eae84">   21</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca4a9bdd9e87e5d0677e087d8ad30eae84">TRC_LOW_AC</a> = 0x00010000L,</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcaeaeb04c05c0a2195f352e75fa36b48f3">   22</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcaeaeb04c05c0a2195f352e75fa36b48f3">TRC_HARD_SPELL</a> = 0x00020000L,</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcae97319b6aa8df16cc94690ce10c869b6">   23</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcae97319b6aa8df16cc94690ce10c869b6">TRC_FAST_DIGEST</a> = 0x00040000L,</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca463dcbe7e842a6fee8f41212ae4462ab">   24</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca463dcbe7e842a6fee8f41212ae4462ab">TRC_DRAIN_HP</a> = 0x00080000L,</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcaabc9c52871c4c710e2ccec5e07436f26">   25</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcaabc9c52871c4c710e2ccec5e07436f26">TRC_DRAIN_MANA</a> = 0x00100000L,</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcad78f85fd00e851bf85f5a7582e4af29f">   26</a></span>&#160;    <a class="code" href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcad78f85fd00e851bf85f5a7582e4af29f">TRC_CALL_UNDEAD</a> = 0x00200000L,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a0921630694602ea79eff79003e8b735e">   29</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="trc-types_8h.html#a0921630694602ea79eff79003e8b735e">trc_special_type</a> {</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a0921630694602ea79eff79003e8b735eacd720126cd77993bc07d9e0b4d4a82a3">   30</a></span>&#160;    <a class="code" href="trc-types_8h.html#a0921630694602ea79eff79003e8b735eacd720126cd77993bc07d9e0b4d4a82a3">TRC_TELEPORT_SELF</a> = 0x00000001L,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="trc-types_8h.html#a0921630694602ea79eff79003e8b735ea44d4e70469b165741f2c9bf8dbb4914c">TRC_CHAINSWORD</a> = 0x00000002L</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="trc-types_8h.html#a0921630694602ea79eff79003e8b735ea44d4e70469b165741f2c9bf8dbb4914c">   32</a></span>&#160;};</div>
+<div class="ttc" id="atrc-types_8h_html_a0921630694602ea79eff79003e8b735e"><div class="ttname"><a href="trc-types_8h.html#a0921630694602ea79eff79003e8b735e">trc_special_type</a></div><div class="ttdeci">trc_special_type</div><div class="ttdef"><b>Definition:</b> trc-types.h:29</div></div>
+<div class="ttc" id="atrc-types_8h_html_a0921630694602ea79eff79003e8b735ea44d4e70469b165741f2c9bf8dbb4914c"><div class="ttname"><a href="trc-types_8h.html#a0921630694602ea79eff79003e8b735ea44d4e70469b165741f2c9bf8dbb4914c">TRC_CHAINSWORD</a></div><div class="ttdeci">@ TRC_CHAINSWORD</div><div class="ttdef"><b>Definition:</b> trc-types.h:31</div></div>
+<div class="ttc" id="atrc-types_8h_html_a0921630694602ea79eff79003e8b735eacd720126cd77993bc07d9e0b4d4a82a3"><div class="ttname"><a href="trc-types_8h.html#a0921630694602ea79eff79003e8b735eacd720126cd77993bc07d9e0b4d4a82a3">TRC_TELEPORT_SELF</a></div><div class="ttdeci">@ TRC_TELEPORT_SELF</div><div class="ttdef"><b>Definition:</b> trc-types.h:30</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fc"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fc">trc_curse_type</a></div><div class="ttdeci">trc_curse_type</div><div class="ttdef"><b>Definition:</b> trc-types.h:4</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fca1c536c86b284bb041564d044eb3cd23b"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca1c536c86b284bb041564d044eb3cd23b">TRC_SLOW_REGEN</a></div><div class="ttdeci">@ TRC_SLOW_REGEN</div><div class="ttdef"><b>Definition:</b> trc-types.h:12</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fca40d22206f75bdf363951edf14c1f9357"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca40d22206f75bdf363951edf14c1f9357">TRC_PERMA_CURSE</a></div><div class="ttdeci">@ TRC_PERMA_CURSE</div><div class="ttdef"><b>Definition:</b> trc-types.h:7</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fca41fa14ee036e3fe4bc48c6596b70ac5d"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca41fa14ee036e3fe4bc48c6596b70ac5d">TRC_TY_CURSE</a></div><div class="ttdeci">@ TRC_TY_CURSE</div><div class="ttdef"><b>Definition:</b> trc-types.h:9</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fca463dcbe7e842a6fee8f41212ae4462ab"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca463dcbe7e842a6fee8f41212ae4462ab">TRC_DRAIN_HP</a></div><div class="ttdeci">@ TRC_DRAIN_HP</div><div class="ttdef"><b>Definition:</b> trc-types.h:24</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fca4a9bdd9e87e5d0677e087d8ad30eae84"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca4a9bdd9e87e5d0677e087d8ad30eae84">TRC_LOW_AC</a></div><div class="ttdeci">@ TRC_LOW_AC</div><div class="ttdef"><b>Definition:</b> trc-types.h:21</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fca5e50a079e7741bf384e0b45bbaed8a98"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca5e50a079e7741bf384e0b45bbaed8a98">TRC_CURSED</a></div><div class="ttdeci">@ TRC_CURSED</div><div class="ttdef"><b>Definition:</b> trc-types.h:5</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fca6893affa786c4793fb62bda58ee95371"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca6893affa786c4793fb62bda58ee95371">TRC_CALL_ANIMAL</a></div><div class="ttdeci">@ TRC_CALL_ANIMAL</div><div class="ttdef"><b>Definition:</b> trc-types.h:15</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fca7f46145826024f4fbe423de5d2969cf4"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca7f46145826024f4fbe423de5d2969cf4">TRC_TELEPORT</a></div><div class="ttdeci">@ TRC_TELEPORT</div><div class="ttdef"><b>Definition:</b> trc-types.h:19</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fca81029f356c5b896e3c2a0c95005d30bd"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca81029f356c5b896e3c2a0c95005d30bd">TRC_HEAVY_CURSE</a></div><div class="ttdeci">@ TRC_HEAVY_CURSE</div><div class="ttdef"><b>Definition:</b> trc-types.h:6</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fca88edfe50062250ce852f23baa4d33b7c"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca88edfe50062250ce852f23baa4d33b7c">TRC_XXX1</a></div><div class="ttdeci">@ TRC_XXX1</div><div class="ttdef"><b>Definition:</b> trc-types.h:8</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fca954953f127550b168ec98dbd41b6122e"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fca954953f127550b168ec98dbd41b6122e">TRC_CALL_DEMON</a></div><div class="ttdeci">@ TRC_CALL_DEMON</div><div class="ttdef"><b>Definition:</b> trc-types.h:16</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fcaa2108f8c696c2b6302bdd3b718643ff9"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcaa2108f8c696c2b6302bdd3b718643ff9">TRC_ADD_L_CURSE</a></div><div class="ttdeci">@ TRC_ADD_L_CURSE</div><div class="ttdef"><b>Definition:</b> trc-types.h:13</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fcaabc9c52871c4c710e2ccec5e07436f26"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcaabc9c52871c4c710e2ccec5e07436f26">TRC_DRAIN_MANA</a></div><div class="ttdeci">@ TRC_DRAIN_MANA</div><div class="ttdef"><b>Definition:</b> trc-types.h:25</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fcaac7bc9fec4bcd9193025b5526460ddfb"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcaac7bc9fec4bcd9193025b5526460ddfb">TRC_DRAIN_EXP</a></div><div class="ttdeci">@ TRC_DRAIN_EXP</div><div class="ttdef"><b>Definition:</b> trc-types.h:11</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fcac58c36bfe394610cd368d5b2845e6752"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcac58c36bfe394610cd368d5b2845e6752">TRC_COWARDICE</a></div><div class="ttdeci">@ TRC_COWARDICE</div><div class="ttdef"><b>Definition:</b> trc-types.h:18</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fcad138e7d2bef886e16f2ed21f78a3c9ba"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcad138e7d2bef886e16f2ed21f78a3c9ba">TRC_CALL_DRAGON</a></div><div class="ttdeci">@ TRC_CALL_DRAGON</div><div class="ttdef"><b>Definition:</b> trc-types.h:17</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fcad542d99138af170e1d36b5a23c3a7279"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcad542d99138af170e1d36b5a23c3a7279">TRC_AGGRAVATE</a></div><div class="ttdeci">@ TRC_AGGRAVATE</div><div class="ttdef"><b>Definition:</b> trc-types.h:10</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fcad78f85fd00e851bf85f5a7582e4af29f"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcad78f85fd00e851bf85f5a7582e4af29f">TRC_CALL_UNDEAD</a></div><div class="ttdeci">@ TRC_CALL_UNDEAD</div><div class="ttdef"><b>Definition:</b> trc-types.h:26</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fcae45979b78641b07bb51376f487c047aa"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcae45979b78641b07bb51376f487c047aa">TRC_ADD_H_CURSE</a></div><div class="ttdeci">@ TRC_ADD_H_CURSE</div><div class="ttdef"><b>Definition:</b> trc-types.h:14</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fcae97319b6aa8df16cc94690ce10c869b6"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcae97319b6aa8df16cc94690ce10c869b6">TRC_FAST_DIGEST</a></div><div class="ttdeci">@ TRC_FAST_DIGEST</div><div class="ttdef"><b>Definition:</b> trc-types.h:23</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fcaeaeb04c05c0a2195f352e75fa36b48f3"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcaeaeb04c05c0a2195f352e75fa36b48f3">TRC_HARD_SPELL</a></div><div class="ttdeci">@ TRC_HARD_SPELL</div><div class="ttdef"><b>Definition:</b> trc-types.h:22</div></div>
+<div class="ttc" id="atrc-types_8h_html_a5d7eeb8ac568d31defc4f1bd99b911fcafc33b258b44cd7987809338fb1b47689"><div class="ttname"><a href="trc-types_8h.html#a5d7eeb8ac568d31defc4f1bd99b911fcafc33b258b44cd7987809338fb1b47689">TRC_LOW_MELEE</a></div><div class="ttdeci">@ TRC_LOW_MELEE</div><div class="ttdef"><b>Definition:</b> trc-types.h:20</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

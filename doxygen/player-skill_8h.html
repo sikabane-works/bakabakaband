@@ -1,0 +1,642 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player/player-skill.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_975424cdae97a07db69e55371758444e.html">player</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">player-skill.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+player-skill.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-skill_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2player_2player-skill_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2player_2player-skill_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2player_2player-skill_8h">
+<area shape="rect" title=" " alt="" coords="464,5,652,61"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="377,109,507,136"/>
+<area shape="rect" title=" " alt="" coords="531,109,585,136"/>
+<area shape="rect" title=" " alt="" coords="610,109,666,136"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="31,184,122,211"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="23,348,165,375"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,184,607,211"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,184,245,211"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,184,367,211"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,184,492,211"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,184,807,211"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="943,184,1090,211"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="169,266,291,293"/>
+<area shape="rect" title=" " alt="" coords="386,266,461,293"/>
+<area shape="rect" title=" " alt="" coords="485,266,567,293"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="592,259,743,300"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="767,259,920,300"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="944,259,1089,300"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1114,259,1287,300"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1311,259,1437,300"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1461,266,1580,293"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1604,266,1715,293"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-skill_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2player_2player-skill_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2player_2player-skill_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2player_2player-skill_8hdep">
+<area shape="rect" title=" " alt="" coords="3199,5,3387,61"/>
+<area shape="rect" href="birth-stat_8cpp.html" title=" " alt="" coords="5,109,193,165"/>
+<area shape="rect" href="cmd-attack_8cpp.html" title=" " alt="" coords="218,109,418,165"/>
+<area shape="rect" href="cmd-pet_8cpp.html" title=" " alt="" coords="442,109,642,165"/>
+<area shape="rect" href="cmd-spell_8cpp.html" title=" " alt="" coords="666,109,866,165"/>
+<area shape="rect" href="shoot_8cpp.html" title=" " alt="" coords="891,109,1079,165"/>
+<area shape="rect" href="game-play_8cpp.html" title=" " alt="" coords="1103,109,1301,165"/>
+<area shape="rect" href="player-processor_8cpp.html" title=" " alt="" coords="1325,109,1525,165"/>
+<area shape="rect" href="skill-reader_8cpp.html" title=" " alt="" coords="1549,109,1745,165"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html" title=" " alt="" coords="1770,109,1967,165"/>
+<area shape="rect" href="load-zangband_8cpp.html" title=" " alt="" coords="1992,109,2180,165"/>
+<area shape="rect" href="player-info-loader_8cpp.html" title=" " alt="" coords="2204,109,2403,165"/>
+<area shape="rect" href="info-initializer_8cpp.html" title=" " alt="" coords="2427,109,2615,165"/>
+<area shape="rect" href="mind-cavalry_8cpp.html" title=" " alt="" coords="2639,109,2835,165"/>
+<area shape="rect" href="monster-processor_8cpp.html" title=" " alt="" coords="2859,109,3047,165"/>
+<area shape="rect" href="monster-attack-player_8cpp.html" title=" " alt="" coords="3071,109,3288,165"/>
+<area shape="rect" href="hook-weapon_8cpp.html" title=" " alt="" coords="3312,109,3500,165"/>
+<area shape="rect" href="pet-fall-off_8cpp.html" title=" " alt="" coords="3524,109,3712,165"/>
+<area shape="rect" href="player-skill_8cpp.html" title=" " alt="" coords="3736,109,3924,165"/>
+<area shape="rect" href="player-status-flags_8cpp.html" title=" " alt="" coords="3948,109,4136,165"/>
+<area shape="rect" href="player-status-resist_8cpp.html" title=" " alt="" coords="4160,109,4348,165"/>
+<area shape="rect" href="player-status_8cpp.html" title=" " alt="" coords="4372,109,4560,165"/>
+<area shape="rect" href="player-attack_8cpp.html" title=" " alt="" coords="4584,109,4772,165"/>
+<area shape="rect" href="player-speed_8cpp.html" title=" " alt="" coords="4796,109,4984,165"/>
+<area shape="rect" href="player-stealth_8cpp.html" title=" " alt="" coords="5008,109,5196,165"/>
+<area shape="rect" href="realm-hex_8cpp.html" title=" " alt="" coords="5220,109,5408,165"/>
+<area shape="rect" href="spell-info_8cpp.html" title=" " alt="" coords="5432,109,5620,165"/>
+<area shape="rect" href="spells-hex_8cpp.html" title=" " alt="" coords="5644,109,5832,165"/>
+<area shape="rect" href="spells-song_8cpp.html" title=" " alt="" coords="5856,109,6044,165"/>
+<area shape="rect" href="display-player-middle_8cpp.html" title=" " alt="" coords="6069,109,6274,165"/>
+<area shape="rect" href="wizard-special-process_8cpp.html" title=" " alt="" coords="6299,109,6487,165"/>
+</map>
+</div>
+</div>
+<p><a href="player-skill_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structskill__table.html">skill_table</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a520fb2f33fd525fd3566e3cd2d9fcb56"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a520fb2f33fd525fd3566e3cd2d9fcb56">GINOU_SUDE</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a520fb2f33fd525fd3566e3cd2d9fcb56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84f4526471e197abe7518d5f2fdb4f45"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a84f4526471e197abe7518d5f2fdb4f45">GINOU_NITOURYU</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a84f4526471e197abe7518d5f2fdb4f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f7a189bcb1013991b0ba4b64a76161a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a4f7a189bcb1013991b0ba4b64a76161a">GINOU_RIDING</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a4f7a189bcb1013991b0ba4b64a76161a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa5d976a9ba1ea0af4d8961c3d00c34a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#afa5d976a9ba1ea0af4d8961c3d00c34a">GINOU_SHIELD</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:afa5d976a9ba1ea0af4d8961c3d00c34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5def5b552210eca010ca022be76ad263"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a5def5b552210eca010ca022be76ad263">GINOU_TEMPMAX</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a5def5b552210eca010ca022be76ad263"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f483a40a82325dd3be9f6c45bf8555e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a8f483a40a82325dd3be9f6c45bf8555e">EXP_LEVEL_UNSKILLED</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a8f483a40a82325dd3be9f6c45bf8555e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2595bf8e81e8849f7d83afb1b7f3152"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#ae2595bf8e81e8849f7d83afb1b7f3152">EXP_LEVEL_BEGINNER</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ae2595bf8e81e8849f7d83afb1b7f3152"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e752175a5719dabe9909a9cba237f4a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a1e752175a5719dabe9909a9cba237f4a">EXP_LEVEL_SKILLED</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a1e752175a5719dabe9909a9cba237f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8da96e543f0b1224a098675ce7bd4994"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a8da96e543f0b1224a098675ce7bd4994">EXP_LEVEL_EXPERT</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a8da96e543f0b1224a098675ce7bd4994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f6f5631de913ef13f0f6b2adbc4dd2e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a2f6f5631de913ef13f0f6b2adbc4dd2e">EXP_LEVEL_MASTER</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a2f6f5631de913ef13f0f6b2adbc4dd2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad55a0351267500173361a5d4530c7a22"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#ad55a0351267500173361a5d4530c7a22">WEAPON_EXP_UNSKILLED</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:ad55a0351267500173361a5d4530c7a22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afefd98e6017c1ed56c443c8b75afd834"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#afefd98e6017c1ed56c443c8b75afd834">WEAPON_EXP_BEGINNER</a>&#160;&#160;&#160;4000</td></tr>
+<tr class="separator:afefd98e6017c1ed56c443c8b75afd834"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a439837792233e7437448bb85c0282826"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a439837792233e7437448bb85c0282826">WEAPON_EXP_SKILLED</a>&#160;&#160;&#160;6000</td></tr>
+<tr class="separator:a439837792233e7437448bb85c0282826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11ab16a08eae0742a8555c8566700936"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a11ab16a08eae0742a8555c8566700936">WEAPON_EXP_EXPERT</a>&#160;&#160;&#160;7000</td></tr>
+<tr class="separator:a11ab16a08eae0742a8555c8566700936"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62803ed9f9052f01b94aacd5cac7da5f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a62803ed9f9052f01b94aacd5cac7da5f">WEAPON_EXP_MASTER</a>&#160;&#160;&#160;8000</td></tr>
+<tr class="separator:a62803ed9f9052f01b94aacd5cac7da5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55b113ad631b4a03c923e68443c55f9a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a55b113ad631b4a03c923e68443c55f9a">RIDING_EXP_UNSKILLED</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a55b113ad631b4a03c923e68443c55f9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47b57ec2a8273c58416b1024f06efdf0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a47b57ec2a8273c58416b1024f06efdf0">RIDING_EXP_BEGINNER</a>&#160;&#160;&#160;500</td></tr>
+<tr class="separator:a47b57ec2a8273c58416b1024f06efdf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72407ed5c074e9d560bfcebc743a2ff8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a72407ed5c074e9d560bfcebc743a2ff8">RIDING_EXP_SKILLED</a>&#160;&#160;&#160;2000</td></tr>
+<tr class="separator:a72407ed5c074e9d560bfcebc743a2ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace555972a6c432fc9b5bb8196b7f4b6e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#ace555972a6c432fc9b5bb8196b7f4b6e">RIDING_EXP_EXPERT</a>&#160;&#160;&#160;5000</td></tr>
+<tr class="separator:ace555972a6c432fc9b5bb8196b7f4b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01600fb9c6e10a176418526c759d93ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a01600fb9c6e10a176418526c759d93ad">RIDING_EXP_MASTER</a>&#160;&#160;&#160;8000</td></tr>
+<tr class="separator:a01600fb9c6e10a176418526c759d93ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2850aa76b33e747b312e9f7e344c99bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a2850aa76b33e747b312e9f7e344c99bd">SPELL_EXP_UNSKILLED</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a2850aa76b33e747b312e9f7e344c99bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaab55640635e8de8a72dc65af17dc11"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#afaab55640635e8de8a72dc65af17dc11">SPELL_EXP_BEGINNER</a>&#160;&#160;&#160;900</td></tr>
+<tr class="separator:afaab55640635e8de8a72dc65af17dc11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a10b86b9774454108049cfef469f602"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a1a10b86b9774454108049cfef469f602">SPELL_EXP_SKILLED</a>&#160;&#160;&#160;1200</td></tr>
+<tr class="separator:a1a10b86b9774454108049cfef469f602"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15d21e424fd6d57ca99e42eeebe13222"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a15d21e424fd6d57ca99e42eeebe13222">SPELL_EXP_EXPERT</a>&#160;&#160;&#160;1400</td></tr>
+<tr class="separator:a15d21e424fd6d57ca99e42eeebe13222"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e9dbe66aa493bcca109b0c427174cad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a7e9dbe66aa493bcca109b0c427174cad">SPELL_EXP_MASTER</a>&#160;&#160;&#160;1600</td></tr>
+<tr class="separator:a7e9dbe66aa493bcca109b0c427174cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:a6c1a7186e22fd35f22c36160a461385e"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structskill__table.html">skill_table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a6c1a7186e22fd35f22c36160a461385e">skill_table</a></td></tr>
+<tr class="separator:a6c1a7186e22fd35f22c36160a461385e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a2fbb9b932adde54abc3d6acd2e1b3876"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#a2fbb9b932adde54abc3d6acd2e1b3876">exp_level_str</a> [5]</td></tr>
+<tr class="memdesc:a2fbb9b932adde54abc3d6acd2e1b3876"><td class="mdescLeft">&#160;</td><td class="mdescRight">技能値到達表記テーブル  <a href="player-skill_8h.html#a2fbb9b932adde54abc3d6acd2e1b3876">[詳解]</a><br /></td></tr>
+<tr class="separator:a2fbb9b932adde54abc3d6acd2e1b3876"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af93cf7485ca3bfa675296f1d64be666d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structskill__table.html">skill_table</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-skill_8h.html#af93cf7485ca3bfa675296f1d64be666d">s_info</a></td></tr>
+<tr class="separator:af93cf7485ca3bfa675296f1d64be666d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="ae2595bf8e81e8849f7d83afb1b7f3152"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2595bf8e81e8849f7d83afb1b7f3152">&#9670;&nbsp;</a></span>EXP_LEVEL_BEGINNER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EXP_LEVEL_BEGINNER&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8da96e543f0b1224a098675ce7bd4994"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8da96e543f0b1224a098675ce7bd4994">&#9670;&nbsp;</a></span>EXP_LEVEL_EXPERT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EXP_LEVEL_EXPERT&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2f6f5631de913ef13f0f6b2adbc4dd2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f6f5631de913ef13f0f6b2adbc4dd2e">&#9670;&nbsp;</a></span>EXP_LEVEL_MASTER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EXP_LEVEL_MASTER&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1e752175a5719dabe9909a9cba237f4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e752175a5719dabe9909a9cba237f4a">&#9670;&nbsp;</a></span>EXP_LEVEL_SKILLED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EXP_LEVEL_SKILLED&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f483a40a82325dd3be9f6c45bf8555e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f483a40a82325dd3be9f6c45bf8555e">&#9670;&nbsp;</a></span>EXP_LEVEL_UNSKILLED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EXP_LEVEL_UNSKILLED&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a84f4526471e197abe7518d5f2fdb4f45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84f4526471e197abe7518d5f2fdb4f45">&#9670;&nbsp;</a></span>GINOU_NITOURYU</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GINOU_NITOURYU&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f7a189bcb1013991b0ba4b64a76161a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f7a189bcb1013991b0ba4b64a76161a">&#9670;&nbsp;</a></span>GINOU_RIDING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GINOU_RIDING&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afa5d976a9ba1ea0af4d8961c3d00c34a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa5d976a9ba1ea0af4d8961c3d00c34a">&#9670;&nbsp;</a></span>GINOU_SHIELD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GINOU_SHIELD&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a520fb2f33fd525fd3566e3cd2d9fcb56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a520fb2f33fd525fd3566e3cd2d9fcb56">&#9670;&nbsp;</a></span>GINOU_SUDE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GINOU_SUDE&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5def5b552210eca010ca022be76ad263"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5def5b552210eca010ca022be76ad263">&#9670;&nbsp;</a></span>GINOU_TEMPMAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GINOU_TEMPMAX&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a47b57ec2a8273c58416b1024f06efdf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47b57ec2a8273c58416b1024f06efdf0">&#9670;&nbsp;</a></span>RIDING_EXP_BEGINNER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RIDING_EXP_BEGINNER&#160;&#160;&#160;500</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ace555972a6c432fc9b5bb8196b7f4b6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace555972a6c432fc9b5bb8196b7f4b6e">&#9670;&nbsp;</a></span>RIDING_EXP_EXPERT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RIDING_EXP_EXPERT&#160;&#160;&#160;5000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a01600fb9c6e10a176418526c759d93ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01600fb9c6e10a176418526c759d93ad">&#9670;&nbsp;</a></span>RIDING_EXP_MASTER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RIDING_EXP_MASTER&#160;&#160;&#160;8000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a72407ed5c074e9d560bfcebc743a2ff8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72407ed5c074e9d560bfcebc743a2ff8">&#9670;&nbsp;</a></span>RIDING_EXP_SKILLED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RIDING_EXP_SKILLED&#160;&#160;&#160;2000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a55b113ad631b4a03c923e68443c55f9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55b113ad631b4a03c923e68443c55f9a">&#9670;&nbsp;</a></span>RIDING_EXP_UNSKILLED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RIDING_EXP_UNSKILLED&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afaab55640635e8de8a72dc65af17dc11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaab55640635e8de8a72dc65af17dc11">&#9670;&nbsp;</a></span>SPELL_EXP_BEGINNER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SPELL_EXP_BEGINNER&#160;&#160;&#160;900</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a15d21e424fd6d57ca99e42eeebe13222"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15d21e424fd6d57ca99e42eeebe13222">&#9670;&nbsp;</a></span>SPELL_EXP_EXPERT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SPELL_EXP_EXPERT&#160;&#160;&#160;1400</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7e9dbe66aa493bcca109b0c427174cad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e9dbe66aa493bcca109b0c427174cad">&#9670;&nbsp;</a></span>SPELL_EXP_MASTER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SPELL_EXP_MASTER&#160;&#160;&#160;1600</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a10b86b9774454108049cfef469f602"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a10b86b9774454108049cfef469f602">&#9670;&nbsp;</a></span>SPELL_EXP_SKILLED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SPELL_EXP_SKILLED&#160;&#160;&#160;1200</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2850aa76b33e747b312e9f7e344c99bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2850aa76b33e747b312e9f7e344c99bd">&#9670;&nbsp;</a></span>SPELL_EXP_UNSKILLED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SPELL_EXP_UNSKILLED&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afefd98e6017c1ed56c443c8b75afd834"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afefd98e6017c1ed56c443c8b75afd834">&#9670;&nbsp;</a></span>WEAPON_EXP_BEGINNER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WEAPON_EXP_BEGINNER&#160;&#160;&#160;4000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a11ab16a08eae0742a8555c8566700936"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11ab16a08eae0742a8555c8566700936">&#9670;&nbsp;</a></span>WEAPON_EXP_EXPERT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WEAPON_EXP_EXPERT&#160;&#160;&#160;7000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a62803ed9f9052f01b94aacd5cac7da5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62803ed9f9052f01b94aacd5cac7da5f">&#9670;&nbsp;</a></span>WEAPON_EXP_MASTER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WEAPON_EXP_MASTER&#160;&#160;&#160;8000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a439837792233e7437448bb85c0282826"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a439837792233e7437448bb85c0282826">&#9670;&nbsp;</a></span>WEAPON_EXP_SKILLED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WEAPON_EXP_SKILLED&#160;&#160;&#160;6000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad55a0351267500173361a5d4530c7a22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad55a0351267500173361a5d4530c7a22">&#9670;&nbsp;</a></span>WEAPON_EXP_UNSKILLED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WEAPON_EXP_UNSKILLED&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">型定義詳解</h2>
+<a id="a6c1a7186e22fd35f22c36160a461385e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c1a7186e22fd35f22c36160a461385e">&#9670;&nbsp;</a></span>skill_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structskill__table.html">skill_table</a> <a class="el" href="structskill__table.html">skill_table</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a2fbb9b932adde54abc3d6acd2e1b3876"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fbb9b932adde54abc3d6acd2e1b3876">&#9670;&nbsp;</a></span>exp_level_str</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> exp_level_str[5]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>技能値到達表記テーブル </p>
+
+</div>
+</div>
+<a id="af93cf7485ca3bfa675296f1d64be666d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af93cf7485ca3bfa675296f1d64be666d">&#9670;&nbsp;</a></span>s_info</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structskill__table.html">skill_table</a>&gt; s_info</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時56分02秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,1629 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/birth/birth-wizard.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_84d111bb56536c13b547e5976d232fbf.html">birth</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">birth-wizard.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="birth-wizard_8h_source.html">birth/birth-wizard.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="auto-roller_8h_source.html">birth/auto-roller.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-body-spec_8h_source.html">birth/birth-body-spec.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-explanations-table_8h_source.html">birth/birth-explanations-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-select-class_8h_source.html">birth/birth-select-class.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-select-personality_8h_source.html">birth/birth-select-personality.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-select-race_8h_source.html">birth/birth-select-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-select-realm_8h_source.html">birth/birth-select-realm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-stat_8h_source.html">birth/birth-stat.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-util_8h_source.html">birth/birth-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="game-play-initializer_8h_source.html">birth/game-play-initializer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="history-editor_8h_source.html">birth/history-editor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="history-generator_8h_source.html">birth/history-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quick-start_8h_source.html">birth/quick-start.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-gameoption_8h_source.html">cmd-io/cmd-gameoption.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-help_8h_source.html">cmd-io/cmd-help.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-update-types_8h_source.html">core/player-update-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-options_8h_source.html">game-option/birth-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-definitions-table_8h_source.html">main/sound-definitions-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="avatar_8h_source.html">player-info/avatar.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="patron_8h_source.html">player/patron.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-class_8h_source.html">player/player-class.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-race_8h_source.html">player/player-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-sex_8h_source.html">player/player-sex.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="process-name_8h_source.html">player/process-name.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status-table_8h_source.html">player/player-status-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="game-option-types_8h_source.html">system/game-option-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="buffer-shaper_8h_source.html">util/buffer-shaper.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-birth_8h_source.html">view/display-birth.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-player_8h_source.html">view/display-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+birth-wizard.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2birth_2birth-wizard_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2birth_2birth-wizard_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2birth_2birth-wizard_8cpp">
+<area shape="rect" title=" " alt="" coords="2354,5,2542,61"/>
+<area shape="rect" href="birth-wizard_8h.html" title=" " alt="" coords="3723,206,3851,233"/>
+<area shape="rect" href="auto-roller_8h.html" title=" " alt="" coords="2955,206,3074,233"/>
+<area shape="rect" href="birth-body-spec_8h.html" title=" " alt="" coords="3098,206,3249,233"/>
+<area shape="rect" href="birth-explanations-table_8h.html" title=" " alt="" coords="3346,109,3499,151"/>
+<area shape="rect" href="birth-select-class_8h.html" title=" " alt="" coords="3875,199,3989,240"/>
+<area shape="rect" href="birth-select-personality_8h.html" title=" " alt="" coords="4013,199,4128,240"/>
+<area shape="rect" href="birth-select-race_8h.html" title=" " alt="" coords="5,109,120,151"/>
+<area shape="rect" href="birth-select-realm_8h.html" title=" " alt="" coords="144,109,259,151"/>
+<area shape="rect" href="birth-stat_8h.html" title=" " alt="" coords="283,117,397,143"/>
+<area shape="rect" href="birth-util_8h.html" title=" " alt="" coords="421,117,529,143"/>
+<area shape="rect" href="game-play-initializer_8h.html" title=" " alt="" coords="553,117,730,143"/>
+<area shape="rect" href="history-editor_8h.html" title=" " alt="" coords="754,117,891,143"/>
+<area shape="rect" href="history-generator_8h.html" title=" " alt="" coords="915,117,1074,143"/>
+<area shape="rect" href="quick-start_8h.html" title=" " alt="" coords="1099,117,1221,143"/>
+<area shape="rect" href="cmd-gameoption_8h.html" title=" " alt="" coords="2638,117,2810,143"/>
+<area shape="rect" href="game-option-types_8h.html" title=" " alt="" coords="2670,199,2810,240"/>
+<area shape="rect" href="cmd-help_8h.html" title=" " alt="" coords="1246,117,1375,143"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="1400,117,1539,143"/>
+<area shape="rect" href="player-update-types_8h.html" title=" " alt="" coords="4442,109,4571,151"/>
+<area shape="rect" href="birth-options_8h.html" title=" " alt="" coords="1563,117,1741,143"/>
+<area shape="rect" href="input-key-acceptor_8h.html" title=" " alt="" coords="1765,117,1920,143"/>
+<area shape="rect" href="sound-definitions-table_8h.html" title=" " alt="" coords="4595,109,4746,151"/>
+<area shape="rect" href="sound-of-music_8h.html" title=" " alt="" coords="4089,117,4242,143"/>
+<area shape="rect" href="avatar_8h.html" title=" " alt="" coords="1944,117,2075,143"/>
+<area shape="rect" href="patron_8h.html" title=" " alt="" coords="2099,117,2207,143"/>
+<area shape="rect" href="player-class_8h.html" title=" " alt="" coords="4275,117,4418,143"/>
+<area shape="rect" href="player-race_8h.html" title=" " alt="" coords="1304,206,1440,233"/>
+<area shape="rect" href="player-sex_8h.html" title=" " alt="" coords="1465,206,1597,233"/>
+<area shape="rect" href="process-name_8h.html" title=" " alt="" coords="1621,206,1776,233"/>
+<area shape="rect" href="player-status-table_8h.html" title=" " alt="" coords="1800,199,1936,240"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="1960,206,2123,233"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="4771,117,4928,143"/>
+<area shape="rect" href="buffer-shaper_8h.html" title=" " alt="" coords="2147,206,2275,233"/>
+<area shape="rect" href="int-char-converter_8h.html" title=" " alt="" coords="4953,117,5106,143"/>
+<area shape="rect" href="display-birth_8h.html" title=" " alt="" coords="2299,206,2429,233"/>
+<area shape="rect" href="display-player_8h.html" title=" " alt="" coords="2453,206,2595,233"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="2834,206,2931,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1803,288,1933,315"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1708,363,1799,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1823,363,1913,389"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1937,363,2036,389"/>
+<area shape="rect" href="player-personality_8h.html" title=" " alt="" coords="3273,206,3447,233"/>
+<area shape="rect" href="realm-names-table_8h.html" title=" " alt="" coords="3523,206,3699,233"/>
+<area shape="rect" href="realm-types_8h.html" title=" " alt="" coords="4574,288,4711,315"/>
+<area shape="rect" title=" " alt="" coords="4203,206,4259,233"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="4778,206,4905,233"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="4283,199,4429,240"/>
+<area shape="rect" href="technic-info-table_8h.html" title=" " alt="" coords="4583,199,4702,240"/>
+<area shape="rect" title=" " alt="" coords="4505,206,4559,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a356fd3fd34eff6f524da21a5f923fad8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#a356fd3fd34eff6f524da21a5f923fad8">AUTOROLLER_STEP</a>&#160;&#160;&#160;54321L</td></tr>
+<tr class="memdesc:a356fd3fd34eff6f524da21a5f923fad8"><td class="mdescLeft">&#160;</td><td class="mdescRight">オートローラーの内容を描画する間隔 / How often the autoroller will update the display and pause to check for user interuptions.  <a href="birth-wizard_8cpp.html#a356fd3fd34eff6f524da21a5f923fad8">[詳解]</a><br /></td></tr>
+<tr class="separator:a356fd3fd34eff6f524da21a5f923fad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:ac674cff9e4fbf9c52fb0a478fb38e438"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#ac674cff9e4fbf9c52fb0a478fb38e438">display_initial_birth_message</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:ac674cff9e4fbf9c52fb0a478fb38e438"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aa3d3d0ec551fe094cb00fe570c5d36"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#a7aa3d3d0ec551fe094cb00fe570c5d36">display_help_on_sex_select</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, char c)</td></tr>
+<tr class="memdesc:a7aa3d3d0ec551fe094cb00fe570c5d36"><td class="mdescLeft">&#160;</td><td class="mdescRight">@prief 性別選択画面でヘルプを表示させる  <a href="birth-wizard_8cpp.html#a7aa3d3d0ec551fe094cb00fe570c5d36">[詳解]</a><br /></td></tr>
+<tr class="separator:a7aa3d3d0ec551fe094cb00fe570c5d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c4f5c76de8047111a38ed18ce8986fb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#a7c4f5c76de8047111a38ed18ce8986fb">get_player_sex</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:a7c4f5c76de8047111a38ed18ce8986fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの性別選択を行う / Player sex  <a href="birth-wizard_8cpp.html#a7c4f5c76de8047111a38ed18ce8986fb">[詳解]</a><br /></td></tr>
+<tr class="separator:a7c4f5c76de8047111a38ed18ce8986fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9d355caae0e9b8701818a80cb9fd10f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#af9d355caae0e9b8701818a80cb9fd10f">let_player_select_race</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:af9d355caae0e9b8701818a80cb9fd10f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3493c5f0c727143bab2c3754b58832c9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#a3493c5f0c727143bab2c3754b58832c9">let_player_select_class</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a3493c5f0c727143bab2c3754b58832c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74182e6b2dddbef588f04c8045a6c32e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#a74182e6b2dddbef588f04c8045a6c32e">let_player_select_personality</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a74182e6b2dddbef588f04c8045a6c32e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b079a66fad1807a747decfb49ed4fdb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb">let_player_build_character</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a8b079a66fad1807a747decfb49ed4fdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef4d1d3d6253c68693db30cb565199c9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#aef4d1d3d6253c68693db30cb565199c9">display_initial_options</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:aef4d1d3d6253c68693db30cb565199c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac09365196a991193cf7fd19d801a7d72"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#ac09365196a991193cf7fd19d801a7d72">display_auto_roller_success_rate</a> (const int <a class="el" href="display-util_8cpp.html#afb52e720f5f0c483db5861f9e42e924e">col</a>)</td></tr>
+<tr class="separator:ac09365196a991193cf7fd19d801a7d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada66049f6be8afce1e900fd179f31c91"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#ada66049f6be8afce1e900fd179f31c91">auto_roller_count</a> (void)</td></tr>
+<tr class="separator:ada66049f6be8afce1e900fd179f31c91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae258ee5e6c179b3502cec6d66d6bb451"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#ae258ee5e6c179b3502cec6d66d6bb451">decide_initial_stat</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:ae258ee5e6c179b3502cec6d66d6bb451"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe358f19a097b3d661699f18303a069b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#abe358f19a097b3d661699f18303a069b">decide_body_spec</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structchara__limit__type.html">chara_limit_type</a> chara_limit, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> *accept)</td></tr>
+<tr class="separator:abe358f19a097b3d661699f18303a069b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64a4702bb5ebbc97a880fd3a7f217d71"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#a64a4702bb5ebbc97a880fd3a7f217d71">display_auto_roller_count</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, const int <a class="el" href="display-util_8cpp.html#afb52e720f5f0c483db5861f9e42e924e">col</a>)</td></tr>
+<tr class="separator:a64a4702bb5ebbc97a880fd3a7f217d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea5776b0ae97f5fd7217aafa3978c786"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#aea5776b0ae97f5fd7217aafa3978c786">exe_auto_roller</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structchara__limit__type.html">chara_limit_type</a> chara_limit, const int <a class="el" href="display-util_8cpp.html#afb52e720f5f0c483db5861f9e42e924e">col</a>)</td></tr>
+<tr class="separator:aea5776b0ae97f5fd7217aafa3978c786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d60953f69c4329b967ae38c36df8a2f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f">display_auto_roller_result</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> prev, char *c)</td></tr>
+<tr class="separator:a0d60953f69c4329b967ae38c36df8a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdfed098d39f68b6df65e34ca2e77fb2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#afdfed098d39f68b6df65e34ca2e77fb2">display_auto_roller</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structchara__limit__type.html">chara_limit_type</a> chara_limit)</td></tr>
+<tr class="separator:afdfed098d39f68b6df65e34ca2e77fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06012604ab69cf4f6c5b0e51b89a9657"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#a06012604ab69cf4f6c5b0e51b89a9657">set_name_history</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, void(*<a class="el" href="autopick-pref-processor_8h.html#aa31a42830d1eed102ec91a767c3db6e7">process_autopick_file_command</a>)(char *))</td></tr>
+<tr class="memdesc:a06012604ab69cf4f6c5b0e51b89a9657"><td class="mdescLeft">&#160;</td><td class="mdescRight">名前と生い立ちを設定する  <a href="birth-wizard_8cpp.html#a06012604ab69cf4f6c5b0e51b89a9657">[詳解]</a><br /></td></tr>
+<tr class="separator:a06012604ab69cf4f6c5b0e51b89a9657"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39f485b3d21e4423fea77030fd0294ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea">player_birth_wizard</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, void(*<a class="el" href="autopick-pref-processor_8h.html#aa31a42830d1eed102ec91a767c3db6e7">process_autopick_file_command</a>)(char *))</td></tr>
+<tr class="memdesc:a39f485b3d21e4423fea77030fd0294ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレーヤーキャラ作成ウィザード  <a href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea">[詳解]</a><br /></td></tr>
+<tr class="separator:a39f485b3d21e4423fea77030fd0294ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="a356fd3fd34eff6f524da21a5f923fad8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a356fd3fd34eff6f524da21a5f923fad8">&#9670;&nbsp;</a></span>AUTOROLLER_STEP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AUTOROLLER_STEP&#160;&#160;&#160;54321L</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>オートローラーの内容を描画する間隔 / How often the autoroller will update the display and pause to check for user interuptions. </p>
+<p>Bigger values will make the autoroller faster, but slower system may have problems because the user can't stop the autoroller for this number of rolls. </p>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ada66049f6be8afce1e900fd179f31c91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada66049f6be8afce1e900fd179f31c91">&#9670;&nbsp;</a></span>auto_roller_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void auto_roller_count </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_ada66049f6be8afce1e900fd179f31c91_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_ada66049f6be8afce1e900fd179f31c91_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_ada66049f6be8afce1e900fd179f31c91_icgraph" id="abirth-wizard_8cpp_ada66049f6be8afce1e900fd179f31c91_icgraph">
+<area shape="rect" title=" " alt="" coords="524,5,645,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#aea5776b0ae97f5fd7217aafa3978c786" title=" " alt="" coords="365,5,476,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#afdfed098d39f68b6df65e34ca2e77fb2" title=" " alt="" coords="187,5,317,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="5,5,139,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abe358f19a097b3d661699f18303a069b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe358f19a097b3d661699f18303a069b">&#9670;&nbsp;</a></span>decide_body_spec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> decide_body_spec </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structchara__limit__type.html">chara_limit_type</a>&#160;</td>
+          <td class="paramname"><em>chara_limit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> *&#160;</td>
+          <td class="paramname"><em>accept</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_abe358f19a097b3d661699f18303a069b_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_abe358f19a097b3d661699f18303a069b_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_abe358f19a097b3d661699f18303a069b_cgraph" id="abirth-wizard_8cpp_abe358f19a097b3d661699f18303a069b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,136,57"/>
+<area shape="rect" href="birth-body-spec_8cpp.html#aba21d84cfe8e5d3cb29a0ce36a50e8ff" title="プレイヤーの年齢を決める。 / Computes character&#39;s age, height, and weight by henkma" alt="" coords="192,5,263,32"/>
+<area shape="rect" href="history-generator_8cpp.html#a29a87117a76307e58f816bfde940ce10" title="プレイヤーの生い立ちの自動生成を行う。 / Get the racial history, and prestige, using the &quot;history charts&quot;." alt="" coords="184,56,271,83"/>
+<area shape="rect" href="birth-body-spec_8cpp.html#a6e86c0ec942a038747606c5b71a3a1ec" title="プレイヤーの身長体重を決める / Get character&#39;s height and weight" alt="" coords="325,5,451,32"/>
+<area shape="rect" href="z-rand_8cpp.html#a73f3287c335a4dbfebdc5cfa30462b91" title=" " alt="" coords="534,5,599,32"/>
+<area shape="rect" href="history-generator_8cpp.html#aeedf747745608beb785ba81f5940e583" title="生い立ちを画面に表示しつつ、種族から威信を決定する" alt="" coords="319,56,457,83"/>
+<area shape="rect" href="buffer-shaper_8cpp.html#a74f223098d062fe8625ee0809a800315" title=" " alt="" coords="341,107,435,133"/>
+<area shape="rect" href="history-generator_8cpp.html#af23459e47146c6fea75e38bfd0cbd5e3" title=" " alt="" coords="505,56,628,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_abe358f19a097b3d661699f18303a069b_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_abe358f19a097b3d661699f18303a069b_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_abe358f19a097b3d661699f18303a069b_icgraph" id="abirth-wizard_8cpp_abe358f19a097b3d661699f18303a069b_icgraph">
+<area shape="rect" title=" " alt="" coords="524,5,655,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#aea5776b0ae97f5fd7217aafa3978c786" title=" " alt="" coords="365,5,476,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#afdfed098d39f68b6df65e34ca2e77fb2" title=" " alt="" coords="187,5,317,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="5,5,139,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae258ee5e6c179b3502cec6d66d6bb451"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae258ee5e6c179b3502cec6d66d6bb451">&#9670;&nbsp;</a></span>decide_initial_stat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> decide_initial_stat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_ae258ee5e6c179b3502cec6d66d6bb451_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_ae258ee5e6c179b3502cec6d66d6bb451_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_ae258ee5e6c179b3502cec6d66d6bb451_icgraph" id="abirth-wizard_8cpp_ae258ee5e6c179b3502cec6d66d6bb451_icgraph">
+<area shape="rect" title=" " alt="" coords="524,5,651,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#aea5776b0ae97f5fd7217aafa3978c786" title=" " alt="" coords="365,5,476,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#afdfed098d39f68b6df65e34ca2e77fb2" title=" " alt="" coords="187,5,317,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="5,5,139,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afdfed098d39f68b6df65e34ca2e77fb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdfed098d39f68b6df65e34ca2e77fb2">&#9670;&nbsp;</a></span>display_auto_roller()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> display_auto_roller </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structchara__limit__type.html">chara_limit_type</a>&#160;</td>
+          <td class="paramname"><em>chara_limit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_afdfed098d39f68b6df65e34ca2e77fb2_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_afdfed098d39f68b6df65e34ca2e77fb2_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_afdfed098d39f68b6df65e34ca2e77fb2_cgraph" id="abirth-wizard_8cpp_afdfed098d39f68b6df65e34ca2e77fb2_cgraph">
+<area shape="rect" title=" " alt="" coords="5,760,136,787"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f" title=" " alt="" coords="184,390,315,431"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="894,448,943,475"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="741,296,823,323"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="583,651,645,677"/>
+<area shape="rect" href="quick-start_8cpp.html#a178218281e0bf0476c01e52f004fec11" title="プレイヤーのクイックスタート情報をプレイヤー構造体から保存する / Save the current data for later" alt="" coords="559,93,669,120"/>
+<area shape="rect" href="birth-wizard_8cpp.html#ac09365196a991193cf7fd19d801a7d72" title=" " alt="" coords="363,753,493,794"/>
+<area shape="rect" href="birth-wizard_8cpp.html#aea5776b0ae97f5fd7217aafa3978c786" title=" " alt="" coords="194,947,305,973"/>
+<area shape="rect" href="birth-body-spec_8cpp.html#aba21d84cfe8e5d3cb29a0ce36a50e8ff" title="プレイヤーの年齢を決める。 / Computes character&#39;s age, height, and weight by henkma" alt="" coords="579,1056,649,1083"/>
+<area shape="rect" href="history-generator_8cpp.html#a29a87117a76307e58f816bfde940ce10" title="プレイヤーの生い立ちの自動生成を行う。 / Get the racial history, and prestige, using the &quot;history charts&quot;." alt="" coords="571,1107,657,1133"/>
+<area shape="rect" href="birth-stat_8cpp.html#acd84781ec38c9d3d3cff434a9adb0744" title="プレイヤーの能力値を一通りロールする。 / Roll for a characters stats" alt="" coords="390,1087,466,1113"/>
+<area shape="rect" href="birth-stat_8cpp.html#acf916f93f75a56ca077d7b8cc8b23585" title="その他「オートローラ中は算出の対象にしない」副次ステータスを処理する / Roll for some info that the auto&#45;roller ignores" alt="" coords="211,1124,287,1151"/>
+<area shape="rect" href="birth-body-spec_8cpp.html#a6537f6a1274bd2155f3f7a9175e05fc3" title="プレイヤーの初期所持金を決める。 / Get the player&#39;s starting money" alt="" coords="206,1175,293,1201"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="890,169,947,196"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="761,448,803,475"/>
+<area shape="rect" href="birth-util_8cpp.html#a11522f9d6a8d4dcb0c7ab5e512a56ce3" title=" " alt="" coords="368,245,488,272"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="755,549,809,576"/>
+<area shape="rect" href="birth-util_8cpp.html#ac653c0197e083ace688c790e576eae22" title="プレイヤー作成を中断して馬鹿馬鹿蛮怒を終了する" alt="" coords="391,195,465,221"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="375,600,481,627"/>
+<area shape="rect" href="quick-start_8cpp.html#a79704830075ddb153dbf7333894f4437" title="プレイヤーのクイックスタート情報をプレイヤー構造体へ読み込む / Load the previous data" alt="" coords="374,144,482,171"/>
+<area shape="rect" href="z-term_8cpp.html#a2bb133bab8899a7b9118b3b22efcbd34" title=" " alt="" coords="383,347,473,373"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="383,397,473,424"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="381,448,475,475"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="371,499,485,525"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="877,499,960,525"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="1008,448,1085,475"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#a053bb14d758ca1d9ea84fdedf7e6c01f" title="標準オプションを変更するコマンドのサブルーチン / Interact with some options" alt="" coords="541,448,687,475"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="736,347,828,373"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="735,245,829,272"/>
+<area shape="rect" href="birth-util_8cpp.html#a272bd84ea8cf1a4a13db4d37550aaf16" title="指定されたヘルプファイルを表示する / Show specific help file" alt="" coords="573,296,655,323"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="593,195,635,221"/>
+<area shape="rect" href="tag-sorter_8cpp.html#a59dcf630da96ba1104e56c4633ddd25a" title=" " alt="" coords="588,144,640,171"/>
+<area shape="rect" href="birth-stat_8cpp.html#a80b7a30304f2137f636e15f41893bf64" title="プレイヤーの能力値表現に基づいて加減算を行う。" alt="" coords="739,752,825,779"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="744,828,820,855"/>
+<area shape="rect" href="player-status_8cpp.html#aeff5a61381b15a0da6515408f33a5ce7" title="現在の修正後能力値を3～17及び18/xxx形式に変換する / Converts stat num into a six&#45;char (right justified) string" alt="" coords="747,701,817,728"/>
+<area shape="rect" href="birth-wizard_8cpp.html#ada66049f6be8afce1e900fd179f31c91" title=" " alt="" coords="367,935,489,961"/>
+<area shape="rect" href="birth-wizard_8cpp.html#abe358f19a097b3d661699f18303a069b" title=" " alt="" coords="363,1036,493,1063"/>
+<area shape="rect" href="birth-wizard_8cpp.html#ae258ee5e6c179b3502cec6d66d6bb451" title=" " alt="" coords="365,985,491,1012"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a64a4702bb5ebbc97a880fd3a7f217d71" title=" " alt="" coords="363,818,493,859"/>
+<area shape="rect" href="display-birth_8cpp.html#a8130bb641f3d79d7d196db6f8c0789e8" title="オートロール中のステータスを表示する / Display stat values, subset of &quot;put_stats()&quot;" alt="" coords="560,803,668,829"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="585,955,643,981"/>
+<area shape="rect" href="birth-stat_8cpp.html#ab0f924bb3e40e38aa3be0af9b4b563d0" title="経験値修正の合計値を計算" alt="" coords="383,1137,473,1164"/>
+<area shape="rect" href="spells-status_8cpp.html#a6b124a1b6a39257cbc861a6c4ef5c6ec" title="プレイヤーのヒットダイスを振る / Role Hitpoints" alt="" coords="386,1188,470,1215"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_afdfed098d39f68b6df65e34ca2e77fb2_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_afdfed098d39f68b6df65e34ca2e77fb2_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_afdfed098d39f68b6df65e34ca2e77fb2_icgraph" id="abirth-wizard_8cpp_afdfed098d39f68b6df65e34ca2e77fb2_icgraph">
+<area shape="rect" title=" " alt="" coords="507,5,637,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="325,5,459,32"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="188,5,277,32"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a64a4702bb5ebbc97a880fd3a7f217d71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64a4702bb5ebbc97a880fd3a7f217d71">&#9670;&nbsp;</a></span>display_auto_roller_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> display_auto_roller_count </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>col</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a64a4702bb5ebbc97a880fd3a7f217d71_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_a64a4702bb5ebbc97a880fd3a7f217d71_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a64a4702bb5ebbc97a880fd3a7f217d71_cgraph" id="abirth-wizard_8cpp_a64a4702bb5ebbc97a880fd3a7f217d71_cgraph">
+<area shape="rect" title=" " alt="" coords="5,454,136,495"/>
+<area shape="rect" href="display-birth_8cpp.html#a8130bb641f3d79d7d196db6f8c0789e8" title="オートロール中のステータスを表示する / Display stat values, subset of &quot;put_stats()&quot;" alt="" coords="184,81,292,108"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="209,572,267,599"/>
+<area shape="rect" href="birth-body-spec_8cpp.html#aba21d84cfe8e5d3cb29a0ce36a50e8ff" title="プレイヤーの年齢を決める。 / Computes character&#39;s age, height, and weight by henkma" alt="" coords="203,743,273,769"/>
+<area shape="rect" href="history-generator_8cpp.html#a29a87117a76307e58f816bfde940ce10" title="プレイヤーの生い立ちの自動生成を行う。 / Get the racial history, and prestige, using the &quot;history charts&quot;." alt="" coords="195,860,281,887"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="211,461,265,488"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="551,360,633,387"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="207,208,269,235"/>
+<area shape="rect" href="birth-stat_8cpp.html#a80b7a30304f2137f636e15f41893bf64" title="プレイヤーの能力値表現に基づいて加減算を行う。" alt="" coords="366,5,453,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="371,56,447,83"/>
+<area shape="rect" href="player-status_8cpp.html#aeff5a61381b15a0da6515408f33a5ce7" title="現在の修正後能力値を3～17及び18/xxx形式に変換する / Converts stat num into a six&#45;char (right justified) string" alt="" coords="374,107,445,133"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="548,107,636,133"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="705,132,800,159"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="378,740,441,767"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="559,765,625,792"/>
+<area shape="rect" href="birth-body-spec_8cpp.html#a6e86c0ec942a038747606c5b71a3a1ec" title="プレイヤーの身長体重を決める / Get character&#39;s height and weight" alt="" coords="346,803,473,829"/>
+<area shape="rect" href="z-rand_8cpp.html#a73f3287c335a4dbfebdc5cfa30462b91" title=" " alt="" coords="559,816,625,843"/>
+<area shape="rect" href="history-generator_8cpp.html#aeedf747745608beb785ba81f5940e583" title="生い立ちを画面に表示しつつ、種族から威信を決定する" alt="" coords="340,860,479,887"/>
+<area shape="rect" href="buffer-shaper_8cpp.html#a74f223098d062fe8625ee0809a800315" title=" " alt="" coords="362,911,457,937"/>
+<area shape="rect" href="history-generator_8cpp.html#af23459e47146c6fea75e38bfd0cbd5e3" title=" " alt="" coords="531,867,653,893"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="358,208,461,235"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="543,309,641,336"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="714,385,791,412"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="369,461,450,488"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="549,411,635,437"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="351,563,467,589"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="551,715,633,741"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="351,613,467,640"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="351,664,467,691"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="547,208,637,235"/>
+<area shape="rect" href="macro-util_8cpp.html#a1e9851f9b9e0a0e51628a231ca95fcc1" title=" " alt="" coords="529,512,655,539"/>
+<area shape="rect" href="macro-util_8cpp.html#a7f48a1923076b3b314f1bc58913a2a59" title=" " alt="" coords="527,563,657,589"/>
+<area shape="rect" href="macro-util_8cpp.html#ada693de344c97bc09a586100f25919dd" title=" " alt="" coords="530,613,654,640"/>
+<area shape="rect" href="z-term_8cpp.html#a020ef4815c101960b4fdad94c4e5b59b" title=" " alt="" coords="537,664,647,691"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a64a4702bb5ebbc97a880fd3a7f217d71_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_a64a4702bb5ebbc97a880fd3a7f217d71_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a64a4702bb5ebbc97a880fd3a7f217d71_icgraph" id="abirth-wizard_8cpp_a64a4702bb5ebbc97a880fd3a7f217d71_icgraph">
+<area shape="rect" title=" " alt="" coords="524,5,655,47"/>
+<area shape="rect" href="birth-wizard_8cpp.html#aea5776b0ae97f5fd7217aafa3978c786" title=" " alt="" coords="365,13,476,39"/>
+<area shape="rect" href="birth-wizard_8cpp.html#afdfed098d39f68b6df65e34ca2e77fb2" title=" " alt="" coords="187,13,317,39"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="5,13,139,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0d60953f69c4329b967ae38c36df8a2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d60953f69c4329b967ae38c36df8a2f">&#9670;&nbsp;</a></span>display_auto_roller_result()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> display_auto_roller_result </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>prev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a0d60953f69c4329b967ae38c36df8a2f_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_a0d60953f69c4329b967ae38c36df8a2f_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a0d60953f69c4329b967ae38c36df8a2f_cgraph" id="abirth-wizard_8cpp_a0d60953f69c4329b967ae38c36df8a2f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,631,136,673"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="581,157,624,184"/>
+<area shape="rect" href="birth-util_8cpp.html#a11522f9d6a8d4dcb0c7ab5e512a56ce3" title=" " alt="" coords="184,157,304,184"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="877,512,967,539"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="576,512,629,539"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="708,461,803,488"/>
+<area shape="rect" href="birth-util_8cpp.html#ac653c0197e083ace688c790e576eae22" title="プレイヤー作成を中断して馬鹿馬鹿蛮怒を終了する" alt="" coords="207,664,281,691"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="191,715,297,741"/>
+<area shape="rect" href="quick-start_8cpp.html#a79704830075ddb153dbf7333894f4437" title="プレイヤーのクイックスタート情報をプレイヤー構造体へ読み込む / Load the previous data" alt="" coords="190,765,298,792"/>
+<area shape="rect" href="z-term_8cpp.html#a2bb133bab8899a7b9118b3b22efcbd34" title=" " alt="" coords="199,816,289,843"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="187,867,301,893"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="731,132,780,159"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="714,183,797,209"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="883,272,961,299"/>
+<area shape="rect" href="z-term_8cpp.html#a50f4ddf9b64ef43b1be95eb89e78c263" title=" " alt="" coords="851,120,993,147"/>
+<area shape="rect" href="z-term_8cpp.html#a5d7c0ea368bccad499b9bbdb4ffc53dc" title=" " alt="" coords="853,171,991,197"/>
+<area shape="rect" href="z-term_8cpp.html#a1b660c2d9fa25eb39e501811a0088cd2" title=" " alt="" coords="853,221,991,248"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#a053bb14d758ca1d9ea84fdedf7e6c01f" title="標準オプションを変更するコマンドのサブルーチン / Interact with some options" alt="" coords="352,296,497,323"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="557,56,649,83"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="555,5,650,32"/>
+<area shape="rect" href="birth-util_8cpp.html#a272bd84ea8cf1a4a13db4d37550aaf16" title="指定されたヘルプファイルを表示する / Show specific help file" alt="" coords="383,56,466,83"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="730,411,781,437"/>
+<area shape="rect" href="keymap-directory-getter_8cpp.html#aed8fd4908c74fd56c86969ecd593842c" title=" " alt="" coords="545,360,660,387"/>
+<area shape="rect" href="screen-processor_8cpp.html#acb7638639688bd542b5f6b541708c1f3" title=" " alt="" coords="555,208,650,235"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="583,411,622,437"/>
+<area shape="rect" href="show-file_8h.html#a5bd591d95db1838d6d72a17dfc76e98f" title=" " alt="" coords="565,107,640,133"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="571,259,634,285"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="561,309,644,336"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="403,664,446,691"/>
+<area shape="rect" href="quick-start_8cpp.html#a178218281e0bf0476c01e52f004fec11" title="プレイヤーのクイックスタート情報をプレイヤー構造体から保存する / Save the current data for later" alt="" coords="369,740,480,767"/>
+<area shape="rect" href="tag-sorter_8cpp.html#a59dcf630da96ba1104e56c4633ddd25a" title=" " alt="" coords="399,791,451,817"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a0d60953f69c4329b967ae38c36df8a2f_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_a0d60953f69c4329b967ae38c36df8a2f_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a0d60953f69c4329b967ae38c36df8a2f_icgraph" id="abirth-wizard_8cpp_a0d60953f69c4329b967ae38c36df8a2f_icgraph">
+<area shape="rect" title=" " alt="" coords="503,5,633,47"/>
+<area shape="rect" href="birth-wizard_8cpp.html#afdfed098d39f68b6df65e34ca2e77fb2" title=" " alt="" coords="324,13,455,39"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="143,13,276,39"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="5,13,95,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac09365196a991193cf7fd19d801a7d72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac09365196a991193cf7fd19d801a7d72">&#9670;&nbsp;</a></span>display_auto_roller_success_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_auto_roller_success_rate </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>col</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_ac09365196a991193cf7fd19d801a7d72_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_ac09365196a991193cf7fd19d801a7d72_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_ac09365196a991193cf7fd19d801a7d72_cgraph" id="abirth-wizard_8cpp_ac09365196a991193cf7fd19d801a7d72_cgraph">
+<area shape="rect" title=" " alt="" coords="5,74,136,115"/>
+<area shape="rect" href="birth-stat_8cpp.html#a80b7a30304f2137f636e15f41893bf64" title="プレイヤーの能力値表現に基づいて加減算を行う。" alt="" coords="184,5,271,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="189,56,265,83"/>
+<area shape="rect" href="player-status_8cpp.html#aeff5a61381b15a0da6515408f33a5ce7" title="現在の修正後能力値を3～17及び18/xxx形式に変換する / Converts stat num into a six&#45;char (right justified) string" alt="" coords="192,107,263,133"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="196,157,259,184"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="319,107,407,133"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="457,81,547,108"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="455,132,549,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_ac09365196a991193cf7fd19d801a7d72_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_ac09365196a991193cf7fd19d801a7d72_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_ac09365196a991193cf7fd19d801a7d72_icgraph" id="abirth-wizard_8cpp_ac09365196a991193cf7fd19d801a7d72_icgraph">
+<area shape="rect" title=" " alt="" coords="503,5,633,47"/>
+<area shape="rect" href="birth-wizard_8cpp.html#afdfed098d39f68b6df65e34ca2e77fb2" title=" " alt="" coords="324,13,455,39"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="143,13,276,39"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="5,13,95,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7aa3d3d0ec551fe094cb00fe570c5d36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7aa3d3d0ec551fe094cb00fe570c5d36">&#9670;&nbsp;</a></span>display_help_on_sex_select()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_help_on_sex_select </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>@prief 性別選択画面でヘルプを表示させる </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">c</td><td>入力したコマンド </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<p>他の関数名と被りそうだったので少し眺め </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a7aa3d3d0ec551fe094cb00fe570c5d36_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_a7aa3d3d0ec551fe094cb00fe570c5d36_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a7aa3d3d0ec551fe094cb00fe570c5d36_cgraph" id="abirth-wizard_8cpp_a7aa3d3d0ec551fe094cb00fe570c5d36_cgraph">
+<area shape="rect" title="@prief 性別選択画面でヘルプを表示させる" alt="" coords="5,99,148,141"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="425,157,468,184"/>
+<area shape="rect" href="cmd-help_8cpp.html#a188bc54fef783ca3f15c2b9f09c3a441" title="ヘルプを表示するコマンドのメインルーチン Peruse the On&#45;Line&#45;Help" alt="" coords="219,56,318,83"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="401,5,493,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="399,56,494,83"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#a053bb14d758ca1d9ea84fdedf7e6c01f" title="標準オプションを変更するコマンドのサブルーチン / Interact with some options" alt="" coords="196,284,341,311"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="575,233,624,260"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="558,132,641,159"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="727,208,805,235"/>
+<area shape="rect" href="z-term_8cpp.html#a50f4ddf9b64ef43b1be95eb89e78c263" title=" " alt="" coords="695,157,837,184"/>
+<area shape="rect" href="z-term_8cpp.html#a5d7c0ea368bccad499b9bbdb4ffc53dc" title=" " alt="" coords="697,56,835,83"/>
+<area shape="rect" href="z-term_8cpp.html#a1b660c2d9fa25eb39e501811a0088cd2" title=" " alt="" coords="697,107,835,133"/>
+<area shape="rect" href="show-file_8h.html#a5bd591d95db1838d6d72a17dfc76e98f" title=" " alt="" coords="409,107,484,133"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="560,56,639,83"/>
+<area shape="rect" href="z-term_8cpp.html#af7733a1560582d2e2bce4c3fcb7a4bdc" title=" " alt="" coords="560,5,639,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="574,436,625,463"/>
+<area shape="rect" href="keymap-directory-getter_8cpp.html#aed8fd4908c74fd56c86969ecd593842c" title=" " alt="" coords="389,360,504,387"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="573,296,626,323"/>
+<area shape="rect" href="screen-processor_8cpp.html#acb7638639688bd542b5f6b541708c1f3" title=" " alt="" coords="399,512,494,539"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="427,411,466,437"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="415,208,478,235"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="405,259,488,285"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="552,512,647,539"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a7aa3d3d0ec551fe094cb00fe570c5d36_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_a7aa3d3d0ec551fe094cb00fe570c5d36_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a7aa3d3d0ec551fe094cb00fe570c5d36_icgraph" id="abirth-wizard_8cpp_a7aa3d3d0ec551fe094cb00fe570c5d36_icgraph">
+<area shape="rect" title="@prief 性別選択画面でヘルプを表示させる" alt="" coords="567,5,709,47"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a7c4f5c76de8047111a38ed18ce8986fb" title="プレイヤーの性別選択を行う / Player sex" alt="" coords="408,13,519,39"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="187,13,360,39"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="5,13,139,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac674cff9e4fbf9c52fb0a478fb38e438"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac674cff9e4fbf9c52fb0a478fb38e438">&#9670;&nbsp;</a></span>display_initial_birth_message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_initial_birth_message </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_ac674cff9e4fbf9c52fb0a478fb38e438_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_ac674cff9e4fbf9c52fb0a478fb38e438_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_ac674cff9e4fbf9c52fb0a478fb38e438_cgraph" id="abirth-wizard_8cpp_ac674cff9e4fbf9c52fb0a478fb38e438_cgraph">
+<area shape="rect" title=" " alt="" coords="5,49,137,90"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="189,5,265,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="195,56,258,83"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="185,107,268,133"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="316,31,404,57"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="454,5,545,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="452,56,547,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_ac674cff9e4fbf9c52fb0a478fb38e438_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_ac674cff9e4fbf9c52fb0a478fb38e438_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_ac674cff9e4fbf9c52fb0a478fb38e438_icgraph" id="abirth-wizard_8cpp_ac674cff9e4fbf9c52fb0a478fb38e438_icgraph">
+<area shape="rect" title=" " alt="" coords="507,5,639,47"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="325,13,459,39"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="188,13,277,39"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="5,13,140,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aef4d1d3d6253c68693db30cb565199c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef4d1d3d6253c68693db30cb565199c9">&#9670;&nbsp;</a></span>display_initial_options()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_initial_options </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_aef4d1d3d6253c68693db30cb565199c9_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_aef4d1d3d6253c68693db30cb565199c9_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_aef4d1d3d6253c68693db30cb565199c9_cgraph" id="abirth-wizard_8cpp_aef4d1d3d6253c68693db30cb565199c9_cgraph">
+<area shape="rect" title=" " alt="" coords="5,274,155,301"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="237,135,313,162"/>
+<area shape="rect" href="screen-processor_8cpp.html#a723cb7a38362add3188d0080fc2934f2" title=" " alt="" coords="234,211,317,238"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#a053bb14d758ca1d9ea84fdedf7e6c01f" title="標準オプションを変更するコマンドのサブルーチン / Interact with some options" alt="" coords="203,274,348,301"/>
+<area shape="rect" href="birth-stat_8cpp.html#ab0f924bb3e40e38aa3be0af9b4b563d0" title="経験値修正の合計値を計算" alt="" coords="231,325,320,351"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="244,34,307,61"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="229,375,321,402"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="228,426,323,453"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="409,27,497,54"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="727,53,817,79"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="869,166,964,193"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="729,129,815,155"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="595,369,638,395"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="591,129,642,155"/>
+<area shape="rect" href="keymap-directory-getter_8cpp.html#aed8fd4908c74fd56c86969ecd593842c" title=" " alt="" coords="396,597,511,623"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="427,546,480,573"/>
+<area shape="rect" href="screen-processor_8cpp.html#acb7638639688bd542b5f6b541708c1f3" title=" " alt="" coords="725,191,819,218"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="434,129,473,155"/>
+<area shape="rect" href="show-file_8h.html#a5bd591d95db1838d6d72a17dfc76e98f" title=" " alt="" coords="416,647,491,674"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="422,230,485,257"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="412,281,495,307"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="747,267,797,294"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="731,419,813,446"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="878,521,955,547"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="565,419,668,446"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="723,470,821,497"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="576,774,657,801"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="729,673,815,699"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="559,571,675,598"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="731,521,813,547"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="559,622,675,649"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="559,723,675,750"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_aef4d1d3d6253c68693db30cb565199c9_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_aef4d1d3d6253c68693db30cb565199c9_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_aef4d1d3d6253c68693db30cb565199c9_icgraph" id="abirth-wizard_8cpp_aef4d1d3d6253c68693db30cb565199c9_icgraph">
+<area shape="rect" title=" " alt="" coords="507,5,656,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="325,5,459,32"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="188,5,277,32"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aea5776b0ae97f5fd7217aafa3978c786"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea5776b0ae97f5fd7217aafa3978c786">&#9670;&nbsp;</a></span>exe_auto_roller()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void exe_auto_roller </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structchara__limit__type.html">chara_limit_type</a>&#160;</td>
+          <td class="paramname"><em>chara_limit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>col</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_aea5776b0ae97f5fd7217aafa3978c786_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_aea5776b0ae97f5fd7217aafa3978c786_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_aea5776b0ae97f5fd7217aafa3978c786_cgraph" id="abirth-wizard_8cpp_aea5776b0ae97f5fd7217aafa3978c786_cgraph">
+<area shape="rect" title=" " alt="" coords="5,225,116,252"/>
+<area shape="rect" href="birth-wizard_8cpp.html#ada66049f6be8afce1e900fd179f31c91" title=" " alt="" coords="169,116,290,143"/>
+<area shape="rect" href="birth-wizard_8cpp.html#abe358f19a097b3d661699f18303a069b" title=" " alt="" coords="164,167,295,193"/>
+<area shape="rect" href="birth-wizard_8cpp.html#ae258ee5e6c179b3502cec6d66d6bb451" title=" " alt="" coords="166,284,293,311"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a64a4702bb5ebbc97a880fd3a7f217d71" title=" " alt="" coords="164,218,295,259"/>
+<area shape="rect" href="birth-stat_8cpp.html#acd84781ec38c9d3d3cff434a9adb0744" title="プレイヤーの能力値を一通りロールする。 / Roll for a characters stats" alt="" coords="191,335,267,361"/>
+<area shape="rect" href="birth-body-spec_8cpp.html#aba21d84cfe8e5d3cb29a0ce36a50e8ff" title="プレイヤーの年齢を決める。 / Computes character&#39;s age, height, and weight by henkma" alt="" coords="361,116,432,143"/>
+<area shape="rect" href="history-generator_8cpp.html#a29a87117a76307e58f816bfde940ce10" title="プレイヤーの生い立ちの自動生成を行う。 / Get the racial history, and prestige, using the &quot;history charts&quot;." alt="" coords="353,167,440,193"/>
+<area shape="rect" href="birth-body-spec_8cpp.html#a6e86c0ec942a038747606c5b71a3a1ec" title="プレイヤーの身長体重を決める / Get character&#39;s height and weight" alt="" coords="505,5,631,32"/>
+<area shape="rect" href="history-generator_8cpp.html#aeedf747745608beb785ba81f5940e583" title="生い立ちを画面に表示しつつ、種族から威信を決定する" alt="" coords="499,56,637,83"/>
+<area shape="rect" href="buffer-shaper_8cpp.html#a74f223098d062fe8625ee0809a800315" title=" " alt="" coords="521,107,615,133"/>
+<area shape="rect" href="display-birth_8cpp.html#a8130bb641f3d79d7d196db6f8c0789e8" title="オートロール中のステータスを表示する / Display stat values, subset of &quot;put_stats()&quot;" alt="" coords="343,221,451,248"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="367,297,426,324"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="370,563,423,589"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="693,512,776,539"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="365,613,428,640"/>
+<area shape="rect" href="birth-stat_8cpp.html#a80b7a30304f2137f636e15f41893bf64" title="プレイヤーの能力値表現に基づいて加減算を行う。" alt="" coords="525,157,611,184"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="530,208,606,235"/>
+<area shape="rect" href="player-status_8cpp.html#aeff5a61381b15a0da6515408f33a5ce7" title="現在の修正後能力値を3～17及び18/xxx形式に変換する / Converts stat num into a six&#45;char (right justified) string" alt="" coords="533,259,603,285"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="537,309,599,336"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="517,461,619,488"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="685,461,784,488"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="832,537,909,564"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="527,563,609,589"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="691,613,778,640"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="510,715,626,741"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="693,664,776,691"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="510,765,626,792"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="510,816,626,843"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_aea5776b0ae97f5fd7217aafa3978c786_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_aea5776b0ae97f5fd7217aafa3978c786_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_aea5776b0ae97f5fd7217aafa3978c786_icgraph" id="abirth-wizard_8cpp_aea5776b0ae97f5fd7217aafa3978c786_icgraph">
+<area shape="rect" title=" " alt="" coords="503,5,613,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#afdfed098d39f68b6df65e34ca2e77fb2" title=" " alt="" coords="324,5,455,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="143,5,276,32"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="5,5,95,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7c4f5c76de8047111a38ed18ce8986fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c4f5c76de8047111a38ed18ce8986fb">&#9670;&nbsp;</a></span>get_player_sex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> get_player_sex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>プレイヤーの性別選択を行う / Player sex </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ @buf 表示用バッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>やり直すならFALSE、それ以外はTRUE </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a7c4f5c76de8047111a38ed18ce8986fb_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_a7c4f5c76de8047111a38ed18ce8986fb_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a7c4f5c76de8047111a38ed18ce8986fb_cgraph" id="abirth-wizard_8cpp_a7c4f5c76de8047111a38ed18ce8986fb_cgraph">
+<area shape="rect" title="プレイヤーの性別選択を行う / Player sex" alt="" coords="5,157,116,184"/>
+<area shape="rect" href="birth-util_8cpp.html#ac653c0197e083ace688c790e576eae22" title="プレイヤー作成を中断して馬鹿馬鹿蛮怒を終了する" alt="" coords="198,56,273,83"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="197,107,273,133"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a7aa3d3d0ec551fe094cb00fe570c5d36" title="@prief 性別選択画面でヘルプを表示させる" alt="" coords="164,230,307,271"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="579,664,632,691"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="204,157,267,184"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="406,31,449,57"/>
+<area shape="rect" href="z-util_8cpp.html#add3ff125e6340e76d3c307ebaf757660" title=" " alt="" coords="582,5,629,32"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="383,107,471,133"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="853,259,944,285"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="711,208,805,235"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="584,613,627,640"/>
+<area shape="rect" href="cmd-help_8cpp.html#a188bc54fef783ca3f15c2b9f09c3a441" title="ヘルプを表示するコマンドのメインルーチン Peruse the On&#45;Line&#45;Help" alt="" coords="378,208,477,235"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="559,208,651,235"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="558,157,653,184"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#a053bb14d758ca1d9ea84fdedf7e6c01f" title="標準オプションを変更するコマンドのサブルーチン / Interact with some options" alt="" coords="355,429,500,456"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="733,588,783,615"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="717,639,799,665"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="860,639,937,665"/>
+<area shape="rect" href="show-file_8h.html#a5bd591d95db1838d6d72a17dfc76e98f" title=" " alt="" coords="568,259,643,285"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="733,461,783,488"/>
+<area shape="rect" href="keymap-directory-getter_8cpp.html#aed8fd4908c74fd56c86969ecd593842c" title=" " alt="" coords="548,411,663,437"/>
+<area shape="rect" href="screen-processor_8cpp.html#acb7638639688bd542b5f6b541708c1f3" title=" " alt="" coords="558,309,653,336"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="586,512,625,539"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="574,563,637,589"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="564,360,647,387"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a7c4f5c76de8047111a38ed18ce8986fb_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_a7c4f5c76de8047111a38ed18ce8986fb_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a7c4f5c76de8047111a38ed18ce8986fb_icgraph" id="abirth-wizard_8cpp_a7c4f5c76de8047111a38ed18ce8986fb_icgraph">
+<area shape="rect" title="プレイヤーの性別選択を行う / Player sex" alt="" coords="545,5,656,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="324,5,497,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="143,5,276,32"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="5,5,95,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8b079a66fad1807a747decfb49ed4fdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b079a66fad1807a747decfb49ed4fdb">&#9670;&nbsp;</a></span>let_player_build_character()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> let_player_build_character </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a8b079a66fad1807a747decfb49ed4fdb_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_a8b079a66fad1807a747decfb49ed4fdb_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a8b079a66fad1807a747decfb49ed4fdb_cgraph" id="abirth-wizard_8cpp_a8b079a66fad1807a747decfb49ed4fdb_cgraph">
+<area shape="rect" title=" " alt="" coords="5,1452,179,1479"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a6db34ed45daf644d42817df2008a101d" title="選択した魔法領域の解説を表示する / Choose the magical realms" alt="" coords="227,1604,355,1631"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a7c4f5c76de8047111a38ed18ce8986fb" title="プレイヤーの性別選択を行う / Player sex" alt="" coords="443,996,553,1023"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a3493c5f0c727143bab2c3754b58832c9" title=" " alt="" coords="419,1756,577,1783"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a74182e6b2dddbef588f04c8045a6c32e" title=" " alt="" coords="403,1452,593,1479"/>
+<area shape="rect" href="birth-wizard_8cpp.html#af9d355caae0e9b8701818a80cb9fd10f" title=" " alt="" coords="422,1401,574,1428"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="1089,2288,1165,2315"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a6b18cfb7a628b9d317783b8d0c64571b" title="選んだ魔法領域で本当に良いか問い合わせる" alt="" coords="421,869,575,896"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="1108,591,1147,617"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a2c01d2a1e67d3311c478c0e8778fa9ed" title=" " alt="" coords="641,1947,807,1989"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="1096,1731,1159,1757"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="469,1655,527,1681"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a7938bd6931e341c09bf755674a0203c8" title="元素魔法の領域名を返す" alt="" coords="437,1503,559,1529"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a79aa374e6d4d9a9502ae3d1ba1fe69a4" title="領域選択" alt="" coords="423,1553,573,1580"/>
+<area shape="rect" href="buffer-shaper_8cpp.html#a74f223098d062fe8625ee0809a800315" title=" " alt="" coords="677,1705,771,1732"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a0561bf85d709ea0507a201c2489dba82" title="プレイヤーの魔法領域を選択する / Choose from one of the available magical realms" alt="" coords="676,1604,772,1631"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="1223,2009,1311,2036"/>
+<area shape="rect" href="asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="665,996,783,1023"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="1101,895,1154,921"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="1106,312,1149,339"/>
+<area shape="rect" href="screen-processor_8cpp.html#a723cb7a38362add3188d0080fc2934f2" title=" " alt="" coords="902,1503,985,1529"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#ab35e9d197027ac28e1cb79068776a353" title="領域選択時のカーソル表示(シンボル＋領域名)" alt="" coords="871,2364,1016,2391"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a5540256c0f91da73b85f91797757f82d" title="領域選択ループ処理" alt="" coords="658,337,790,364"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#a053bb14d758ca1d9ea84fdedf7e6c01f" title="標準オプションを変更するコマンドのサブルーチン / Interact with some options" alt="" coords="871,337,1016,364"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="1081,33,1173,60"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="1080,84,1175,111"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a021380eaee281df55eccab04e281d442" title=" " alt="" coords="887,1756,1000,1783"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#aac7091ff050b5cbcbbb778c30ba60126" title=" " alt="" coords="867,1655,1019,1681"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a27ecd03b42c95746280578f9b8753b9c" title=" " alt="" coords="897,1097,990,1124"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a94bff2451da008ffd845b87b89231308" title=" " alt="" coords="878,1553,1009,1580"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#adfebd933f3370c1156d7b52c96bf1463" title=" " alt="" coords="857,1604,1029,1631"/>
+<area shape="rect" href="birth-util_8cpp.html#ac653c0197e083ace688c790e576eae22" title="プレイヤー作成を中断して馬鹿馬鹿蛮怒を終了する" alt="" coords="1090,1097,1165,1124"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a7aa3d3d0ec551fe094cb00fe570c5d36" title="@prief 性別選択画面でヘルプを表示させる" alt="" coords="653,127,795,169"/>
+<area shape="rect" href="cmd-help_8cpp.html#a188bc54fef783ca3f15c2b9f09c3a441" title="ヘルプを表示するコマンドのメインルーチン Peruse the On&#45;Line&#45;Help" alt="" coords="894,33,993,60"/>
+<area shape="rect" href="birth-select-class_8cpp.html#a13505b5e9c5df43eaf013b9a35e8d772" title="プレイヤーの職業選択を行う / Player class" alt="" coords="664,2013,784,2040"/>
+<area shape="rect" href="birth-select-class_8cpp.html#ac3ec2f11be339569095f33ebe869d682" title=" " alt="" coords="871,2060,1016,2087"/>
+<area shape="rect" href="birth-select-class_8cpp.html#a1270daea320c7cc268b906c3598ad1c8" title=" " alt="" coords="896,1199,991,1225"/>
+<area shape="rect" href="birth-select-personality_8cpp.html#aba538e06bdcee367245250cb05cd32e8" title="プレイヤーの性格選択を行う / Player Player seikaku" alt="" coords="648,1655,800,1681"/>
+<area shape="rect" href="birth-select-personality_8cpp.html#a4499999762a45f8a1fbad7e585df82aa" title=" " alt="" coords="855,1857,1032,1884"/>
+<area shape="rect" href="birth-select-personality_8cpp.html#a7b9a52428e56dd83f4600d8686ea5bdc" title=" " alt="" coords="880,1148,1007,1175"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a6197d9114994dd0df968817ffb8f1c60" title="プレイヤーの種族選択を行う / Player race" alt="" coords="667,1351,781,1377"/>
+<area shape="rect" href="birth-select-race_8cpp.html#aea0a7e83b37441a18a4526947e11ce9f" title=" " alt="" coords="874,1401,1013,1428"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a60edd4c12d40f3b647091f3c8986aa90" title=" " alt="" coords="899,1047,988,1073"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a8b079a66fad1807a747decfb49ed4fdb_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_a8b079a66fad1807a747decfb49ed4fdb_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a8b079a66fad1807a747decfb49ed4fdb_icgraph" id="abirth-wizard_8cpp_a8b079a66fad1807a747decfb49ed4fdb_icgraph">
+<area shape="rect" title=" " alt="" coords="507,5,680,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="325,5,459,32"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="188,5,277,32"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3493c5f0c727143bab2c3754b58832c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3493c5f0c727143bab2c3754b58832c9">&#9670;&nbsp;</a></span>let_player_select_class()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> let_player_select_class </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a3493c5f0c727143bab2c3754b58832c9_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_a3493c5f0c727143bab2c3754b58832c9_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a3493c5f0c727143bab2c3754b58832c9_cgraph" id="abirth-wizard_8cpp_a3493c5f0c727143bab2c3754b58832c9_cgraph">
+<area shape="rect" title=" " alt="" coords="5,449,164,476"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="772,28,848,54"/>
+<area shape="rect" href="screen-processor_8cpp.html#a723cb7a38362add3188d0080fc2934f2" title=" " alt="" coords="411,373,494,400"/>
+<area shape="rect" href="asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="213,525,331,552"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="433,778,472,805"/>
+<area shape="rect" href="birth-select-class_8cpp.html#a13505b5e9c5df43eaf013b9a35e8d772" title="プレイヤーの職業選択を行う / Player class" alt="" coords="212,297,332,324"/>
+<area shape="rect" href="buffer-shaper_8cpp.html#a74f223098d062fe8625ee0809a800315" title=" " alt="" coords="225,626,319,653"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="905,272,993,298"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="1050,272,1141,298"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="1048,474,1143,501"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="905,525,992,552"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="395,525,510,552"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="789,373,831,400"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="407,728,498,754"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="771,601,849,628"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="897,640,1000,666"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="621,474,675,501"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="924,424,973,450"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="907,322,990,349"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="1057,373,1134,400"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="603,626,693,653"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="901,690,996,717"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="591,778,705,805"/>
+<area shape="rect" href="birth-select-class_8cpp.html#ac3ec2f11be339569095f33ebe869d682" title=" " alt="" coords="380,162,525,189"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="779,272,841,298"/>
+<area shape="rect" href="birth-select-class_8cpp.html#a1270daea320c7cc268b906c3598ad1c8" title=" " alt="" coords="405,272,500,298"/>
+<area shape="rect" href="birth-util_8cpp.html#a11522f9d6a8d4dcb0c7ab5e512a56ce3" title=" " alt="" coords="588,373,708,400"/>
+<area shape="rect" href="birth-util_8cpp.html#ac653c0197e083ace688c790e576eae22" title="プレイヤー作成を中断して馬鹿馬鹿蛮怒を終了する" alt="" coords="611,154,685,181"/>
+<area shape="rect" href="birth-select-class_8cpp.html#a66b3d53c8f100a6b3287bc4c45da235e" title=" " alt="" coords="583,53,713,80"/>
+<area shape="rect" href="birth-select-class_8cpp.html#a541bb11ccfda1231cfdd8c0ccba848f6" title=" " alt="" coords="573,206,723,247"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a3493c5f0c727143bab2c3754b58832c9_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_a3493c5f0c727143bab2c3754b58832c9_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a3493c5f0c727143bab2c3754b58832c9_icgraph" id="abirth-wizard_8cpp_a3493c5f0c727143bab2c3754b58832c9_icgraph">
+<area shape="rect" title=" " alt="" coords="545,5,704,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="324,5,497,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="143,5,276,32"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="5,5,95,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a74182e6b2dddbef588f04c8045a6c32e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74182e6b2dddbef588f04c8045a6c32e">&#9670;&nbsp;</a></span>let_player_select_personality()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> let_player_select_personality </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a74182e6b2dddbef588f04c8045a6c32e_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_a74182e6b2dddbef588f04c8045a6c32e_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a74182e6b2dddbef588f04c8045a6c32e_cgraph" id="abirth-wizard_8cpp_a74182e6b2dddbef588f04c8045a6c32e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,451,196,477"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="881,29,957,56"/>
+<area shape="rect" href="screen-processor_8cpp.html#a723cb7a38362add3188d0080fc2934f2" title=" " alt="" coords="491,375,574,401"/>
+<area shape="rect" href="asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="261,527,379,553"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="513,780,552,807"/>
+<area shape="rect" href="birth-select-personality_8cpp.html#aba538e06bdcee367245250cb05cd32e8" title="プレイヤーの性格選択を行う / Player Player seikaku" alt="" coords="244,299,396,325"/>
+<area shape="rect" href="buffer-shaper_8cpp.html#a74f223098d062fe8625ee0809a800315" title=" " alt="" coords="273,628,367,655"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="1014,273,1102,300"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="1159,273,1250,300"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="1157,476,1252,503"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="1015,527,1101,553"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="475,527,590,553"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="898,375,941,401"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="487,729,578,756"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="880,603,959,629"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="1007,641,1109,668"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="724,476,777,503"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="1033,425,1083,452"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="1017,324,1099,351"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="1166,375,1243,401"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="705,628,796,655"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="1011,692,1105,719"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="693,780,808,807"/>
+<area shape="rect" href="birth-select-personality_8cpp.html#a4499999762a45f8a1fbad7e585df82aa" title=" " alt="" coords="444,164,621,191"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="888,273,951,300"/>
+<area shape="rect" href="birth-select-personality_8cpp.html#a7b9a52428e56dd83f4600d8686ea5bdc" title=" " alt="" coords="469,273,596,300"/>
+<area shape="rect" href="birth-util_8cpp.html#a11522f9d6a8d4dcb0c7ab5e512a56ce3" title=" " alt="" coords="691,375,811,401"/>
+<area shape="rect" href="birth-util_8cpp.html#ac653c0197e083ace688c790e576eae22" title="プレイヤー作成を中断して馬鹿馬鹿蛮怒を終了する" alt="" coords="713,156,788,183"/>
+<area shape="rect" href="birth-select-personality_8cpp.html#a79de7880e76684309e18c0d0f579fcb3" title=" " alt="" coords="669,55,832,81"/>
+<area shape="rect" href="birth-select-personality_8cpp.html#a20449c693e97b06bacb15626016775e6" title=" " alt="" coords="681,207,820,249"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a74182e6b2dddbef588f04c8045a6c32e_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_a74182e6b2dddbef588f04c8045a6c32e_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a74182e6b2dddbef588f04c8045a6c32e_icgraph" id="abirth-wizard_8cpp_a74182e6b2dddbef588f04c8045a6c32e_icgraph">
+<area shape="rect" title=" " alt="" coords="545,5,736,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="324,5,497,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="143,5,276,32"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="5,5,95,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af9d355caae0e9b8701818a80cb9fd10f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9d355caae0e9b8701818a80cb9fd10f">&#9670;&nbsp;</a></span>let_player_select_race()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> let_player_select_race </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_af9d355caae0e9b8701818a80cb9fd10f_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_af9d355caae0e9b8701818a80cb9fd10f_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_af9d355caae0e9b8701818a80cb9fd10f_cgraph" id="abirth-wizard_8cpp_af9d355caae0e9b8701818a80cb9fd10f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,448,157,475"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="751,27,827,53"/>
+<area shape="rect" href="screen-processor_8cpp.html#a723cb7a38362add3188d0080fc2934f2" title=" " alt="" coords="400,372,483,399"/>
+<area shape="rect" href="asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="205,524,324,551"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="422,777,461,804"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a6197d9114994dd0df968817ffb8f1c60" title="プレイヤーの種族選択を行う / Player race" alt="" coords="207,296,322,323"/>
+<area shape="rect" href="buffer-shaper_8cpp.html#a74f223098d062fe8625ee0809a800315" title=" " alt="" coords="217,625,312,652"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="883,271,971,297"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="1029,271,1119,297"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="1027,473,1121,500"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="884,524,971,551"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="384,524,499,551"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="767,372,810,399"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="396,727,487,753"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="749,600,828,627"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="876,639,979,665"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="603,473,657,500"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="903,423,952,449"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="886,321,969,348"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="1035,372,1113,399"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="585,625,675,652"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="880,689,975,716"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="573,777,687,804"/>
+<area shape="rect" href="birth-select-race_8cpp.html#aea0a7e83b37441a18a4526947e11ce9f" title=" " alt="" coords="372,161,511,188"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="757,271,820,297"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a60edd4c12d40f3b647091f3c8986aa90" title=" " alt="" coords="397,271,486,297"/>
+<area shape="rect" href="birth-util_8cpp.html#a11522f9d6a8d4dcb0c7ab5e512a56ce3" title=" " alt="" coords="570,372,690,399"/>
+<area shape="rect" href="birth-util_8cpp.html#ac653c0197e083ace688c790e576eae22" title="プレイヤー作成を中断して馬鹿馬鹿蛮怒を終了する" alt="" coords="593,153,667,180"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a5c7c12cf702e1bc749ec39735ef520a5" title=" " alt="" coords="568,52,692,79"/>
+<area shape="rect" href="birth-select-race_8cpp.html#a00796fb43a4eafc3a85418928807b63f" title=" " alt="" coords="559,205,701,246"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_af9d355caae0e9b8701818a80cb9fd10f_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_af9d355caae0e9b8701818a80cb9fd10f_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_af9d355caae0e9b8701818a80cb9fd10f_icgraph" id="abirth-wizard_8cpp_af9d355caae0e9b8701818a80cb9fd10f_icgraph">
+<area shape="rect" title=" " alt="" coords="545,5,697,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="324,5,497,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="143,5,276,32"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="5,5,95,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a39f485b3d21e4423fea77030fd0294ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39f485b3d21e4423fea77030fd0294ea">&#9670;&nbsp;</a></span>player_birth_wizard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> player_birth_wizard </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(char *)&#160;</td>
+          <td class="paramname"><em>process_autopick_file_command</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレーヤーキャラ作成ウィザード </p>
+<p>The delay may be reduced, but is recommended to keep players from continuously rolling up characters, which can be VERY expensive CPU wise. And it cuts down on player stupidity. </p><dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a39f485b3d21e4423fea77030fd0294ea_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_a39f485b3d21e4423fea77030fd0294ea_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a39f485b3d21e4423fea77030fd0294ea_cgraph" id="abirth-wizard_8cpp_a39f485b3d21e4423fea77030fd0294ea_cgraph">
+<area shape="rect" title="プレーヤーキャラ作成ウィザード" alt="" coords="5,1100,139,1127"/>
+<area shape="rect" href="birth-util_8cpp.html#ac653c0197e083ace688c790e576eae22" title="プレイヤー作成を中断して馬鹿馬鹿蛮怒を終了する" alt="" coords="683,213,757,240"/>
+<area shape="rect" href="screen-processor_8cpp.html#a723cb7a38362add3188d0080fc2934f2" title=" " alt="" coords="679,1429,761,1456"/>
+<area shape="rect" href="birth-wizard_8cpp.html#afdfed098d39f68b6df65e34ca2e77fb2" title=" " alt="" coords="208,357,339,384"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="862,872,915,899"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="689,1075,751,1101"/>
+<area shape="rect" href="quick-start_8cpp.html#a178218281e0bf0476c01e52f004fec11" title="プレイヤーのクイックスタート情報をプレイヤー構造体から保存する / Save the current data for later" alt="" coords="448,805,559,832"/>
+<area shape="rect" href="birth-wizard_8cpp.html#ac674cff9e4fbf9c52fb0a478fb38e438" title=" " alt="" coords="437,958,569,999"/>
+<area shape="rect" href="birth-wizard_8cpp.html#aef4d1d3d6253c68693db30cb565199c9" title=" " alt="" coords="429,856,578,883"/>
+<area shape="rect" href="auto-roller_8cpp.html#a404d4d00738dfae673fa78ce11074172" title="オートローラで得たい年齢、身長、体重、威信の基準を決める。" alt="" coords="445,637,562,664"/>
+<area shape="rect" href="auto-roller_8cpp.html#aff45c5d24c8980e11e4c550ff44c1f76" title="オートローラで得たい能力値の基準を決める。" alt="" coords="450,587,557,613"/>
+<area shape="rect" href="game-play-initializer_8cpp.html#a00b1426ed21af0def3a084bbb4e06231" title="ダンジョン内部のクエストを初期化する / Initialize random quests and final quests" alt="" coords="203,1075,344,1101"/>
+<area shape="rect" href="game-play-initializer_8cpp.html#ae45b17082bab1dfd5bd0628da1527ea8" title="ゲームターンを初期化する / Reset turn" alt="" coords="239,1303,307,1329"/>
+<area shape="rect" href="auto-roller_8cpp.html#abbfd88d0503ee3e08070295983d159f3" title=" " alt="" coords="204,1353,343,1380"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="187,1252,360,1279"/>
+<area shape="rect" href="autopick-pref-processor_8cpp.html#aa31a42830d1eed102ec91a767c3db6e7" title=" " alt="" coords="647,1777,793,1818"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a06012604ab69cf4f6c5b0e51b89a9657" title="名前と生い立ちを設定する" alt="" coords="211,1632,336,1659"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="867,213,910,240"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="845,1531,932,1557"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f" title=" " alt="" coords="438,379,569,421"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="984,137,1033,164"/>
+<area shape="rect" href="birth-wizard_8cpp.html#ac09365196a991193cf7fd19d801a7d72" title=" " alt="" coords="438,739,569,781"/>
+<area shape="rect" href="birth-wizard_8cpp.html#aea5776b0ae97f5fd7217aafa3978c786" title=" " alt="" coords="448,119,559,145"/>
+<area shape="rect" href="birth-stat_8cpp.html#acd84781ec38c9d3d3cff434a9adb0744" title="プレイヤーの能力値を一通りロールする。 / Roll for a characters stats" alt="" coords="682,61,758,88"/>
+<area shape="rect" href="birth-body-spec_8cpp.html#aba21d84cfe8e5d3cb29a0ce36a50e8ff" title="プレイヤーの年齢を決める。 / Computes character&#39;s age, height, and weight by henkma" alt="" coords="468,176,539,203"/>
+<area shape="rect" href="birth-stat_8cpp.html#acf916f93f75a56ca077d7b8cc8b23585" title="その他「オートローラ中は算出の対象にしない」副次ステータスを処理する / Roll for some info that the auto&#45;roller ignores" alt="" coords="465,688,541,715"/>
+<area shape="rect" href="history-generator_8cpp.html#a29a87117a76307e58f816bfde940ce10" title="プレイヤーの生い立ちの自動生成を行う。 / Get the racial history, and prestige, using the &quot;history charts&quot;." alt="" coords="460,227,547,253"/>
+<area shape="rect" href="birth-body-spec_8cpp.html#a6537f6a1274bd2155f3f7a9175e05fc3" title="プレイヤーの初期所持金を決める。 / Get the player&#39;s starting money" alt="" coords="460,277,547,304"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="475,328,532,355"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="847,821,930,848"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="867,264,910,291"/>
+<area shape="rect" href="birth-stat_8cpp.html#a80b7a30304f2137f636e15f41893bf64" title="プレイヤーの能力値表現に基づいて加減算を行う。" alt="" coords="677,771,763,797"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="682,1277,758,1304"/>
+<area shape="rect" href="birth-stat_8cpp.html#ab0f924bb3e40e38aa3be0af9b4b563d0" title="経験値修正の合計値を計算" alt="" coords="675,923,765,949"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#a053bb14d758ca1d9ea84fdedf7e6c01f" title="標準オプションを変更するコマンドのサブルーチン / Interact with some options" alt="" coords="647,821,793,848"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="843,517,935,544"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="841,593,936,620"/>
+<area shape="rect" href="birth-util_8cpp.html#a272bd84ea8cf1a4a13db4d37550aaf16" title="指定されたヘルプファイルを表示する / Show specific help file" alt="" coords="679,467,761,493"/>
+<area shape="rect" href="auto-roller_8cpp.html#a60604d2bb1536142624fefd2756f34f4" title="@breif オートローラーで指定した能力値以上が出る確率を計算する。" alt="" coords="654,365,786,392"/>
+<area shape="rect" href="quest_8cpp.html#a11dcbb9d5b4df77d2d42877afecd26de" title="ランダムクエストの討伐ユニークを決める / Determine the random quest uniques" alt="" coords="414,1024,593,1051"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="443,1075,563,1101"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a6db34ed45daf644d42817df2008a101d" title="選択した魔法領域の解説を表示する / Choose the magical realms" alt="" coords="439,1277,567,1304"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a7c4f5c76de8047111a38ed18ce8986fb" title="プレイヤーの性別選択を行う / Player sex" alt="" coords="448,1227,559,1253"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a3493c5f0c727143bab2c3754b58832c9" title=" " alt="" coords="424,1429,583,1456"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a74182e6b2dddbef588f04c8045a6c32e" title=" " alt="" coords="408,1328,599,1355"/>
+<area shape="rect" href="birth-wizard_8cpp.html#af9d355caae0e9b8701818a80cb9fd10f" title=" " alt="" coords="427,1379,579,1405"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="459,1531,548,1557"/>
+<area shape="rect" href="birth-stat_8cpp.html#a6f68b2388c9c3ddfe439f68928968094" title="プレイヤーの限界ステータスを決める。" alt="" coords="449,1733,557,1760"/>
+<area shape="rect" href="process-name_8cpp.html#af6976381e8d1f0ca462bc3da9e34abc2" title="プレイヤーの名前を変更するコマンドのメインルーチン Gets a name for the character, reacting to name changes." alt="" coords="464,1632,543,1659"/>
+<area shape="rect" href="avatar_8cpp.html#a22da968625c13cae0f5b66e3d017b716" title="作成中のプレイヤーキャラクターに徳8種類を与える。 / Select virtues &amp; reset values for a new character" alt="" coords="461,1581,545,1608"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a39f485b3d21e4423fea77030fd0294ea_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_a39f485b3d21e4423fea77030fd0294ea_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a39f485b3d21e4423fea77030fd0294ea_icgraph" id="abirth-wizard_8cpp_a39f485b3d21e4423fea77030fd0294ea_icgraph">
+<area shape="rect" title="プレーヤーキャラ作成ウィザード" alt="" coords="459,5,592,32"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="321,5,411,32"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="139,5,273,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="5,5,91,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a06012604ab69cf4f6c5b0e51b89a9657"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06012604ab69cf4f6c5b0e51b89a9657">&#9670;&nbsp;</a></span>set_name_history()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_name_history </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(char *)&#160;</td>
+          <td class="paramname"><em>process_autopick_file_command</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>名前と生い立ちを設定する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">process_autopick_file_command</td><td>自動拾いコマンドへの関数ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<p>ついでにステータス限界もここで決めている </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a06012604ab69cf4f6c5b0e51b89a9657_cgraph.png" border="0" usemap="#abirth-wizard_8cpp_a06012604ab69cf4f6c5b0e51b89a9657_cgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a06012604ab69cf4f6c5b0e51b89a9657_cgraph" id="abirth-wizard_8cpp_a06012604ab69cf4f6c5b0e51b89a9657_cgraph">
+<area shape="rect" title="名前と生い立ちを設定する" alt="" coords="5,1510,131,1537"/>
+<area shape="rect" href="screen-processor_8cpp.html#a723cb7a38362add3188d0080fc2934f2" title=" " alt="" coords="576,15,659,42"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="188,978,277,1005"/>
+<area shape="rect" href="autopick-pref-processor_8cpp.html#aa31a42830d1eed102ec91a767c3db6e7" title=" " alt="" coords="757,1376,904,1417"/>
+<area shape="rect" href="birth-stat_8cpp.html#a6f68b2388c9c3ddfe439f68928968094" title="プレイヤーの限界ステータスを決める。" alt="" coords="179,1485,287,1511"/>
+<area shape="rect" href="process-name_8cpp.html#af6976381e8d1f0ca462bc3da9e34abc2" title="プレイヤーの名前を変更するコマンドのメインルーチン Gets a name for the character, reacting to name changes." alt="" coords="370,91,449,118"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="811,851,850,878"/>
+<area shape="rect" href="avatar_8cpp.html#a22da968625c13cae0f5b66e3d017b716" title="作成中のプレイヤーキャラクターに徳8種類を与える。 / Select virtues &amp; reset values for a new character" alt="" coords="191,1586,275,1613"/>
+<area shape="rect" href="process-name_8cpp.html#a4c201aae855594c36a336de8ad51600f" title="プレイヤーの名前をチェックして修正する Process the player name." alt="" coords="335,1738,484,1765"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="959,117,1046,143"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="1095,218,1189,245"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="793,294,869,321"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="357,674,462,701"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="799,725,862,751"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="801,1079,860,1106"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="591,1485,644,1511"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a41533d64d34cff21ac2f08e39073e746" title=" " alt="" coords="359,1485,460,1511"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a2c69979bf7ef3c16ada8791410bf5a01" title="生い立ちメッセージをファイルからロードする。" alt="" coords="361,1206,457,1233"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="959,725,1047,751"/>
+<area shape="rect" href="class_flag_group.html#a85a4dd28bb671ffe973b1fd50a0be4d7" title="フラグ集合のいずれかのフラグがONかどうかを調べる" alt="" coords="562,471,673,498"/>
+<area shape="rect" href="display-player_8cpp.html#aaee4f2ef5be5ff2730b5c33cd3abcfeb" title="現在いるフロアを、または死んでいたらどこでどう死んだかをバッファに詰める" alt="" coords="548,522,687,549"/>
+<area shape="rect" href="display-player_8cpp.html#a1bdb389744310331940e29af30840133" title="今いる、または死亡した場所を表示する" alt="" coords="547,1079,688,1106"/>
+<area shape="rect" href="display-player_8cpp.html#a0ef97a250df984851fc8da77b03efa7f" title="魔法領域を表示する" alt="" coords="542,775,693,802"/>
+<area shape="rect" href="display-util_8cpp.html#a93793a2ac3c90903c7062b3997b8e873" title="プレイヤーのステータス1種を出力する" alt="" coords="751,915,911,942"/>
+<area shape="rect" href="display-player_8cpp.html#a70fd99a5acd7bdf8ecbb0ca5bd2c06a9" title="@ brief 年齢、身長、体重、威信を表示する" alt="" coords="558,978,677,1005"/>
+<area shape="rect" href="display-player_8cpp.html#ac1c5dd5acc0c426608055edb73550f96" title="名前、性別、種族、職業を表示する" alt="" coords="532,421,703,447"/>
+<area shape="rect" href="display-player_8cpp.html#a5e697054ef593f4033637a2bdfffe272" title="プレーヤーのステータス表示メインルーチン群" alt="" coords="551,573,683,599"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a829dd2517519fca14718f1bf3bfb5990" title="プレイヤーステータス表示の中央部分を表示するサブルーチン" alt="" coords="542,1029,693,1055"/>
+<area shape="rect" href="display-player_8cpp.html#a1514de610e5f67886716738fc150fdee" title="能力値を (減少していたら色を変えて)表示する" alt="" coords="547,319,688,346"/>
+<area shape="rect" href="status-first-page_8cpp.html#a982a10d3afa348525bad0d2d64110ed5" title="プレイヤーステータスの1ページ目各種詳細をまとめて表示する Prints ratings on certain abilities" alt="" coords="541,623,693,650"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="562,674,673,701"/>
+<area shape="rect" href="buffer-shaper_8cpp.html#a74f223098d062fe8625ee0809a800315" title=" " alt="" coords="783,1155,878,1182"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="971,1358,1034,1385"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="977,1763,1028,1790"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="576,1231,659,1258"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="791,775,870,802"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="547,1383,687,1410"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="790,1763,871,1790"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="578,370,657,397"/>
+<area shape="rect" href="avatar_8cpp.html#af14e664e2a225b2b74c6a08c866ae1d4" title="プレイヤーの職業や種族に依存しないランダムな徳を取得する / Aux function" alt="" coords="346,1586,473,1613"/>
+<area shape="rect" href="avatar_8cpp.html#a7f6ac7ecce16776258fb1c9dcdfdc7e6" title="プレイヤーの選んだ魔法領域に応じて対応する徳を返す。" alt="" coords="348,1637,471,1663"/>
+<area shape="rect" href="avatar_8cpp.html#a9f77c7a74f4dd1df02cd6e40b532f2ed" title="プレイヤーの指定の徳が何番目のスロットに登録されているかを返す。 / Aux function" alt="" coords="566,1637,669,1663"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="562,1890,673,1917"/>
+<area shape="rect" href="string-processor_8cpp.html#ac8184d2eea3bb502c7828b1cf2e15a7a" title=" " alt="" coords="563,1738,671,1765"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a237b4b6ff1cb50402312e9b60c5c8a55" title=" " alt="" coords="552,1282,683,1309"/>
+<area shape="rect" href="z-form_8cpp.html#aa7812191f0df9e7a61fd845892b26ea9" title=" " alt="" coords="583,1687,651,1714"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="809,1687,852,1714"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-wizard_8cpp_a06012604ab69cf4f6c5b0e51b89a9657_icgraph.png" border="0" usemap="#abirth-wizard_8cpp_a06012604ab69cf4f6c5b0e51b89a9657_icgraph" alt=""/></div>
+<map name="abirth-wizard_8cpp_a06012604ab69cf4f6c5b0e51b89a9657_icgraph" id="abirth-wizard_8cpp_a06012604ab69cf4f6c5b0e51b89a9657_icgraph">
+<area shape="rect" title="名前と生い立ちを設定する" alt="" coords="507,5,632,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="325,5,459,32"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="188,5,277,32"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分08秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

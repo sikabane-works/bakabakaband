@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player-status/player-basic-statistics.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b229fbdc4ab0cfad60eb3057c8d9c405.html">player-status</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">player-basic-statistics.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="player-basic-statistics_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player-status-base_8h.html">player-status/player-status-base.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="class_player_basic_statistics.html">    4</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_player_basic_statistics.html">PlayerBasicStatistics</a> : <span class="keyword">public</span> <a class="code" href="class_player_status_base.html">PlayerStatusBase</a> {</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">using</span> <a class="code" href="class_player_status_base.html#a036eaac2774544966c2acc44dd51059b">PlayerStatusBase::PlayerStatusBase</a>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_player_basic_statistics.html#a52900856cb1c5a7bbe1be19cd6797aaf">    7</a></span>&#160;    <a class="code" href="class_player_basic_statistics.html#a52900856cb1c5a7bbe1be19cd6797aaf">PlayerBasicStatistics</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_player_basic_statistics.html#ad3af90334c603316dc2bea6a18f8c315">update_value</a>();</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5">modification_value</a>();</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_basic_statistics.html#a2c3264c4f9995ee3a5281ed116a7d38f">get_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_player_basic_statistics.html#a42d94dc228b6b81ccebf03b8e9ba705d">   14</a></span>&#160;    <a class="code" href="base-status-types_8h.html#a7221fddb2d4fad72fff2324a318ddfca">base_status_type</a> <a class="code" href="class_player_basic_statistics.html#a42d94dc228b6b81ccebf03b8e9ba705d">status_type</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_basic_statistics.html#a1b69ab278acc7b371a05b5f03996b392">race_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_basic_statistics.html#aa77ed2d52b000dbfa812ec7706a62bff">class_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_basic_statistics.html#ac4e2819916d897e57124d895c0a7add9">personality_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_player_basic_statistics.html#a7be0e7bff3f6fd7b5d70fc928d1c40a2">update_top_status</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_player_basic_statistics.html#a01cde1c9207a01826366ddf958e3587d">update_use_status</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_player_basic_statistics.html#a163c35fcf399805f2ad0e68f1388bb3d">update_index_status</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_basic_statistics.html#ae30317b9a8b38938de86717f9143189c">set_exception_use_status</a>(<a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> value);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player-strength_8h.html">player-status/player-strength.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player-intelligence_8h.html">player-status/player-intelligence.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player-wisdom_8h.html">player-status/player-wisdom.h</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player-dextarity_8h.html">player-status/player-dextarity.h</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player-constitution_8h.html">player-status/player-constitution.h</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player-charisma_8h.html">player-status/player-charisma.h</a>&quot;</span></div>
+<div class="ttc" id="abase-status-types_8h_html_a7221fddb2d4fad72fff2324a318ddfca"><div class="ttname"><a href="base-status-types_8h.html#a7221fddb2d4fad72fff2324a318ddfca">base_status_type</a></div><div class="ttdeci">base_status_type</div><div class="ttdef"><b>Definition:</b> base-status-types.h:3</div></div>
+<div class="ttc" id="aclass_player_basic_statistics_html"><div class="ttname"><a href="class_player_basic_statistics.html">PlayerBasicStatistics</a></div><div class="ttdef"><b>Definition:</b> player-basic-statistics.h:4</div></div>
+<div class="ttc" id="aclass_player_basic_statistics_html_a01cde1c9207a01826366ddf958e3587d"><div class="ttname"><a href="class_player_basic_statistics.html#a01cde1c9207a01826366ddf958e3587d">PlayerBasicStatistics::update_use_status</a></div><div class="ttdeci">void update_use_status()</div><div class="ttdoc">ステータス現在値更新処理</div><div class="ttdef"><b>Definition:</b> player-basic-statistics.cpp:132</div></div>
+<div class="ttc" id="aclass_player_basic_statistics_html_a163c35fcf399805f2ad0e68f1388bb3d"><div class="ttname"><a href="class_player_basic_statistics.html#a163c35fcf399805f2ad0e68f1388bb3d">PlayerBasicStatistics::update_index_status</a></div><div class="ttdeci">void update_index_status()</div><div class="ttdoc">ステータス内部値更新処理</div><div class="ttdef"><b>Definition:</b> player-basic-statistics.cpp:153</div></div>
+<div class="ttc" id="aclass_player_basic_statistics_html_a1b69ab278acc7b371a05b5f03996b392"><div class="ttname"><a href="class_player_basic_statistics.html#a1b69ab278acc7b371a05b5f03996b392">PlayerBasicStatistics::race_value</a></div><div class="ttdeci">s16b race_value() override</div><div class="ttdoc">基礎ステータス補正計算 - 種族 @params 計算するステータスの種類</div><div class="ttdef"><b>Definition:</b> player-basic-statistics.cpp:44</div></div>
+<div class="ttc" id="aclass_player_basic_statistics_html_a2c3264c4f9995ee3a5281ed116a7d38f"><div class="ttname"><a href="class_player_basic_statistics.html#a2c3264c4f9995ee3a5281ed116a7d38f">PlayerBasicStatistics::get_value</a></div><div class="ttdeci">s16b get_value() override</div><div class="ttdoc">基礎ステータスの実値</div><div class="ttdef"><b>Definition:</b> player-basic-statistics.cpp:31</div></div>
+<div class="ttc" id="aclass_player_basic_statistics_html_a42d94dc228b6b81ccebf03b8e9ba705d"><div class="ttname"><a href="class_player_basic_statistics.html#a42d94dc228b6b81ccebf03b8e9ba705d">PlayerBasicStatistics::status_type</a></div><div class="ttdeci">base_status_type status_type</div><div class="ttdef"><b>Definition:</b> player-basic-statistics.h:14</div></div>
+<div class="ttc" id="aclass_player_basic_statistics_html_a52900856cb1c5a7bbe1be19cd6797aaf"><div class="ttname"><a href="class_player_basic_statistics.html#a52900856cb1c5a7bbe1be19cd6797aaf">PlayerBasicStatistics::PlayerBasicStatistics</a></div><div class="ttdeci">PlayerBasicStatistics()=delete</div></div>
+<div class="ttc" id="aclass_player_basic_statistics_html_a7886f430d9b6638da24912daaab356b5"><div class="ttname"><a href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5">PlayerBasicStatistics::modification_value</a></div><div class="ttdeci">s16b modification_value()</div><div class="ttdoc">基礎ステータス補正値</div><div class="ttdef"><b>Definition:</b> player-basic-statistics.cpp:22</div></div>
+<div class="ttc" id="aclass_player_basic_statistics_html_a7be0e7bff3f6fd7b5d70fc928d1c40a2"><div class="ttname"><a href="class_player_basic_statistics.html#a7be0e7bff3f6fd7b5d70fc928d1c40a2">PlayerBasicStatistics::update_top_status</a></div><div class="ttdeci">void update_top_status()</div><div class="ttdoc">ステータス最大値更新処理</div><div class="ttdef"><b>Definition:</b> player-basic-statistics.cpp:100</div></div>
+<div class="ttc" id="aclass_player_basic_statistics_html_aa77ed2d52b000dbfa812ec7706a62bff"><div class="ttname"><a href="class_player_basic_statistics.html#aa77ed2d52b000dbfa812ec7706a62bff">PlayerBasicStatistics::class_value</a></div><div class="ttdeci">s16b class_value() override</div><div class="ttdoc">ステータス補正計算 - 職業 @params 計算するステータスの種類</div><div class="ttdef"><b>Definition:</b> player-basic-statistics.cpp:62</div></div>
+<div class="ttc" id="aclass_player_basic_statistics_html_ac4e2819916d897e57124d895c0a7add9"><div class="ttname"><a href="class_player_basic_statistics.html#ac4e2819916d897e57124d895c0a7add9">PlayerBasicStatistics::personality_value</a></div><div class="ttdeci">s16b personality_value() override</div><div class="ttdoc">ステータス補正計算 - 性格 @params 計算するステータスの種類</div><div class="ttdef"><b>Definition:</b> player-basic-statistics.cpp:75</div></div>
+<div class="ttc" id="aclass_player_basic_statistics_html_ad3af90334c603316dc2bea6a18f8c315"><div class="ttname"><a href="class_player_basic_statistics.html#ad3af90334c603316dc2bea6a18f8c315">PlayerBasicStatistics::update_value</a></div><div class="ttdeci">void update_value()</div><div class="ttdoc">ステータス更新処理</div><div class="ttdef"><b>Definition:</b> player-basic-statistics.cpp:86</div></div>
+<div class="ttc" id="aclass_player_basic_statistics_html_ae30317b9a8b38938de86717f9143189c"><div class="ttname"><a href="class_player_basic_statistics.html#ae30317b9a8b38938de86717f9143189c">PlayerBasicStatistics::set_exception_use_status</a></div><div class="ttdeci">virtual s16b set_exception_use_status(s16b value)</div><div class="ttdoc">ステータス現在値更新の例外処理 @params 通常処理されたステータスの値</div><div class="ttdef"><b>Definition:</b> player-basic-statistics.cpp:121</div></div>
+<div class="ttc" id="aclass_player_status_base_html"><div class="ttname"><a href="class_player_status_base.html">PlayerStatusBase</a></div><div class="ttdef"><b>Definition:</b> player-status-base.h:5</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a036eaac2774544966c2acc44dd51059b"><div class="ttname"><a href="class_player_status_base.html#a036eaac2774544966c2acc44dd51059b">PlayerStatusBase::PlayerStatusBase</a></div><div class="ttdeci">PlayerStatusBase()=delete</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="aplayer-charisma_8h_html"><div class="ttname"><a href="player-charisma_8h.html">player-charisma.h</a></div></div>
+<div class="ttc" id="aplayer-constitution_8h_html"><div class="ttname"><a href="player-constitution_8h.html">player-constitution.h</a></div></div>
+<div class="ttc" id="aplayer-dextarity_8h_html"><div class="ttname"><a href="player-dextarity_8h.html">player-dextarity.h</a></div></div>
+<div class="ttc" id="aplayer-intelligence_8h_html"><div class="ttname"><a href="player-intelligence_8h.html">player-intelligence.h</a></div></div>
+<div class="ttc" id="aplayer-status-base_8h_html"><div class="ttname"><a href="player-status-base_8h.html">player-status-base.h</a></div></div>
+<div class="ttc" id="aplayer-strength_8h_html"><div class="ttname"><a href="player-strength_8h.html">player-strength.h</a></div></div>
+<div class="ttc" id="aplayer-wisdom_8h_html"><div class="ttname"><a href="player-wisdom_8h.html">player-wisdom.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

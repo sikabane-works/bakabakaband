@@ -1,0 +1,1372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: PlayerStatusBase クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pro-methods">限定公開メンバ関数</a> &#124;
+<a href="#pro-attribs">限定公開変数類</a> &#124;
+<a href="class_player_status_base-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">PlayerStatusBase クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="player-status-base_8h_source.html">player-status-base.h</a>&gt;</code></p>
+<div class="dynheader">
+PlayerStatusBase の継承関係図</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base__inherit__graph.png" border="0" usemap="#a_player_status_base_inherit__map" alt="Inheritance graph"/></div>
+<map name="a_player_status_base_inherit__map" id="a_player_status_base_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,183,132,209"/>
+<area shape="rect" href="class_player_basic_statistics.html" title=" " alt="" coords="180,132,327,159"/>
+<area shape="rect" href="class_player_speed.html" title=" " alt="" coords="205,183,301,209"/>
+<area shape="rect" href="class_player_stealth.html" title=" " alt="" coords="203,233,303,260"/>
+<area shape="rect" href="class_player_charisma.html" title=" " alt="" coords="381,5,496,32"/>
+<area shape="rect" href="class_player_constitution.html" title=" " alt="" coords="375,56,503,83"/>
+<area shape="rect" href="class_player_dextarity.html" title=" " alt="" coords="383,107,494,133"/>
+<area shape="rect" href="class_player_intelligence.html" title=" " alt="" coords="377,157,501,184"/>
+<area shape="rect" href="class_player_strength.html" title=" " alt="" coords="385,208,493,235"/>
+<area shape="rect" href="class_player_wisdom.html" title=" " alt="" coords="385,259,492,285"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+PlayerStatusBase 連携図</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base__coll__graph.png" border="0" usemap="#a_player_status_base_coll__map" alt="Collaboration graph"/></div>
+<map name="a_player_status_base_coll__map" id="a_player_status_base_coll__map">
+<area shape="rect" title=" " alt="" coords="283,273,410,300"/>
+<area shape="rect" href="structplayer__type.html" title=" " alt="" coords="302,184,391,211"/>
+<area shape="rect" href="structobject__type.html" title=" " alt="" coords="286,5,375,32"/>
+<area shape="rect" href="structfloor__type.html" title=" " alt="" coords="95,95,174,121"/>
+<area shape="rect" href="class_flag_group.html" title=" " alt="" coords="242,95,385,121"/>
+<area shape="rect" href="structmonster__type.html" title=" " alt="" coords="5,184,107,211"/>
+<area shape="rect" href="structgrid__type.html" title=" " alt="" coords="97,5,172,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a8a13774f3d4adb49562bb60e61071d99"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a8a13774f3d4adb49562bb60e61071d99">PlayerStatusBase</a> (<a class="el" href="structplayer__type.html">player_type</a> *<a class="el" href="class_player_status_base.html#ae8c08db466b4009b560f752411aaca66">owner_ptr</a>)</td></tr>
+<tr class="memdesc:a8a13774f3d4adb49562bb60e61071d99"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの各ステータス計算用のクラス  <a href="class_player_status_base.html#a8a13774f3d4adb49562bb60e61071d99">[詳解]</a><br /></td></tr>
+<tr class="separator:a8a13774f3d4adb49562bb60e61071d99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a036eaac2774544966c2acc44dd51059b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a036eaac2774544966c2acc44dd51059b">PlayerStatusBase</a> ()=delete</td></tr>
+<tr class="separator:a036eaac2774544966c2acc44dd51059b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1506ef65cc14bb0cc8d31b7d139931c5"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a1506ef65cc14bb0cc8d31b7d139931c5">~PlayerStatusBase</a> ()=default</td></tr>
+<tr class="separator:a1506ef65cc14bb0cc8d31b7d139931c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd947fc2d7f6dd57e2c5044d5c7f5e21"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21">get_value</a> ()</td></tr>
+<tr class="memdesc:abd947fc2d7f6dd57e2c5044d5c7f5e21"><td class="mdescLeft">&#160;</td><td class="mdescRight">該当する値を計算して取得する。  <a href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21">[詳解]</a><br /></td></tr>
+<tr class="separator:abd947fc2d7f6dd57e2c5044d5c7f5e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0889bfa2925d2e6b157b6d8fdc9a69df"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a0889bfa2925d2e6b157b6d8fdc9a69df">get_all_flags</a> ()</td></tr>
+<tr class="memdesc:a0889bfa2925d2e6b157b6d8fdc9a69df"><td class="mdescLeft">&#160;</td><td class="mdescRight">修正値が0でないところにビットを立てて返す。  <a href="class_player_status_base.html#a0889bfa2925d2e6b157b6d8fdc9a69df">[詳解]</a><br /></td></tr>
+<tr class="separator:a0889bfa2925d2e6b157b6d8fdc9a69df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a006ec02b2b35eefef6ad1316e755bce0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a006ec02b2b35eefef6ad1316e755bce0">get_good_flags</a> ()</td></tr>
+<tr class="memdesc:a006ec02b2b35eefef6ad1316e755bce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">修正値が1以上のところにビットを立てて返す。  <a href="class_player_status_base.html#a006ec02b2b35eefef6ad1316e755bce0">[詳解]</a><br /></td></tr>
+<tr class="separator:a006ec02b2b35eefef6ad1316e755bce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6668c83e4874f12b03d6742c41f1acc"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#ab6668c83e4874f12b03d6742c41f1acc">get_bad_flags</a> ()</td></tr>
+<tr class="memdesc:ab6668c83e4874f12b03d6742c41f1acc"><td class="mdescLeft">&#160;</td><td class="mdescRight">修正値が-1以下のところにビットを立てて返す。  <a href="class_player_status_base.html#ab6668c83e4874f12b03d6742c41f1acc">[詳解]</a><br /></td></tr>
+<tr class="separator:ab6668c83e4874f12b03d6742c41f1acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+限定公開メンバ関数</h2></td></tr>
+<tr class="memitem:abc87578ebe9d97b0e3792dda2ee060e8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#abc87578ebe9d97b0e3792dda2ee060e8">set_locals</a> ()</td></tr>
+<tr class="separator:abc87578ebe9d97b0e3792dda2ee060e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af59efe712734a574862eadf89906eb04"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#af59efe712734a574862eadf89906eb04">race_value</a> ()</td></tr>
+<tr class="separator:af59efe712734a574862eadf89906eb04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a112bfd74f52279c8cd08933daf023f41"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a112bfd74f52279c8cd08933daf023f41">class_value</a> ()</td></tr>
+<tr class="separator:a112bfd74f52279c8cd08933daf023f41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16bbdaa744a14e36c668aeac33163284"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a16bbdaa744a14e36c668aeac33163284">class_base_value</a> ()</td></tr>
+<tr class="separator:a16bbdaa744a14e36c668aeac33163284"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6206e6a4f66301e2f05146e922ebb19e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a6206e6a4f66301e2f05146e922ebb19e">personality_value</a> ()</td></tr>
+<tr class="separator:a6206e6a4f66301e2f05146e922ebb19e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14b5898872af8c53c6b81ccc0a74f223"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a14b5898872af8c53c6b81ccc0a74f223">equipments_value</a> ()</td></tr>
+<tr class="memdesc:a14b5898872af8c53c6b81ccc0a74f223"><td class="mdescLeft">&#160;</td><td class="mdescRight">this-&gt;tr_flagを持つ装備品のpval合計値を返す  <a href="class_player_status_base.html#a14b5898872af8c53c6b81ccc0a74f223">[詳解]</a><br /></td></tr>
+<tr class="separator:a14b5898872af8c53c6b81ccc0a74f223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a116ad46979a2bb093a215704a4b041de"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a116ad46979a2bb093a215704a4b041de">time_effect_value</a> ()</td></tr>
+<tr class="separator:a116ad46979a2bb093a215704a4b041de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a645da8385fa599199e6c2ad76581b11e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a645da8385fa599199e6c2ad76581b11e">battleform_value</a> ()</td></tr>
+<tr class="separator:a645da8385fa599199e6c2ad76581b11e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb3e49505b763e15f400d86a7c9f2232"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#adb3e49505b763e15f400d86a7c9f2232">mutation_value</a> ()</td></tr>
+<tr class="separator:adb3e49505b763e15f400d86a7c9f2232"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc037278529faa29f9aa15adfcc390e5"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#afc037278529faa29f9aa15adfcc390e5">riding_value</a> ()</td></tr>
+<tr class="separator:afc037278529faa29f9aa15adfcc390e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37d27cd6c377fa0e15b60c882e47e5d4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a37d27cd6c377fa0e15b60c882e47e5d4">inventory_weight_value</a> ()</td></tr>
+<tr class="separator:a37d27cd6c377fa0e15b60c882e47e5d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1abd0d77566036b1fdc453f4a65f34e4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a1abd0d77566036b1fdc453f4a65f34e4">action_value</a> ()</td></tr>
+<tr class="separator:a1abd0d77566036b1fdc453f4a65f34e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3804fda1405e757d554cc617e33977e7"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a3804fda1405e757d554cc617e33977e7">set_exception_value</a> (<a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> value)</td></tr>
+<tr class="memdesc:a3804fda1405e757d554cc617e33977e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を直接変更する例外処理。 @params value 単純加算された修正値の合計  <a href="class_player_status_base.html#a3804fda1405e757d554cc617e33977e7">[詳解]</a><br /></td></tr>
+<tr class="separator:a3804fda1405e757d554cc617e33977e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d3a3b9feb434686f2dc7c2a40a0b169"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a1d3a3b9feb434686f2dc7c2a40a0b169">equipments_flags</a> (<a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a> check_flag)</td></tr>
+<tr class="memdesc:a1d3a3b9feb434686f2dc7c2a40a0b169"><td class="mdescLeft">&#160;</td><td class="mdescRight">判定するflagを持つ装備品に対応するBIT_FLAGSを返す @params check_flag 判定するtr_type  <a href="class_player_status_base.html#a1d3a3b9feb434686f2dc7c2a40a0b169">[詳解]</a><br /></td></tr>
+<tr class="separator:a1d3a3b9feb434686f2dc7c2a40a0b169"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e2aa12370128f2226690e2158c237c6"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a6e2aa12370128f2226690e2158c237c6">equipments_bad_flags</a> (<a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a> check_flag)</td></tr>
+<tr class="memdesc:a6e2aa12370128f2226690e2158c237c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">判定するflagを持ち、pvalが負の装備品に対応するBIT_FLAGSを返す @params check_flag 判定するtr_type  <a href="class_player_status_base.html#a6e2aa12370128f2226690e2158c237c6">[詳解]</a><br /></td></tr>
+<tr class="separator:a6e2aa12370128f2226690e2158c237c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+限定公開変数類</h2></td></tr>
+<tr class="memitem:a0dd504a8adc3fd48584003fa93733f9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a0dd504a8adc3fd48584003fa93733f9f">default_value</a></td></tr>
+<tr class="separator:a0dd504a8adc3fd48584003fa93733f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac42ee1eb4dab652c229ed5a66b70e5d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#ac42ee1eb4dab652c229ed5a66b70e5d6">min_value</a></td></tr>
+<tr class="separator:ac42ee1eb4dab652c229ed5a66b70e5d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc6850609853cb8db9717c873683e3e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#acc6850609853cb8db9717c873683e3e1">max_value</a></td></tr>
+<tr class="separator:acc6850609853cb8db9717c873683e3e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8c08db466b4009b560f752411aaca66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#ae8c08db466b4009b560f752411aaca66">owner_ptr</a></td></tr>
+<tr class="separator:ae8c08db466b4009b560f752411aaca66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e87ba5470805540831960807cfd5c74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#a5e87ba5470805540831960807cfd5c74">tr_flag</a></td></tr>
+<tr class="separator:a5e87ba5470805540831960807cfd5c74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab21ae8274a29742d0f192b9a5f6820e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_status_base.html#ab21ae8274a29742d0f192b9a5f6820e7">tr_bad_flag</a></td></tr>
+<tr class="separator:ab21ae8274a29742d0f192b9a5f6820e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">構築子と解体子</h2>
+<a id="a8a13774f3d4adb49562bb60e61071d99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a13774f3d4adb49562bb60e61071d99">&#9670;&nbsp;</a></span>PlayerStatusBase() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PlayerStatusBase::PlayerStatusBase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>owner_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーの各ステータス計算用のクラス </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">owner_ptr</td><td>プレイヤーの参照ポインタ</td></tr>
+  </table>
+  </dd>
+</dl>
+<ul>
+<li>コンストラクタでowner_ptrをセット。メンバ変数を0クリア。 </li>
+</ul>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a8a13774f3d4adb49562bb60e61071d99_cgraph.png" border="0" usemap="#aclass_player_status_base_a8a13774f3d4adb49562bb60e61071d99_cgraph" alt=""/></div>
+<map name="aclass_player_status_base_a8a13774f3d4adb49562bb60e61071d99_cgraph" id="aclass_player_status_base_a8a13774f3d4adb49562bb60e61071d99_cgraph">
+<area shape="rect" title="プレイヤーの各ステータス計算用のクラス" alt="" coords="5,5,177,47"/>
+<area shape="rect" href="class_player_status_base.html#abc87578ebe9d97b0e3792dda2ee060e8" title=" " alt="" coords="225,5,379,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a036eaac2774544966c2acc44dd51059b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a036eaac2774544966c2acc44dd51059b">&#9670;&nbsp;</a></span>PlayerStatusBase() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PlayerStatusBase::PlayerStatusBase </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1506ef65cc14bb0cc8d31b7d139931c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1506ef65cc14bb0cc8d31b7d139931c5">&#9670;&nbsp;</a></span>~PlayerStatusBase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual PlayerStatusBase::~PlayerStatusBase </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a1abd0d77566036b1fdc453f4a65f34e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1abd0d77566036b1fdc453f4a65f34e4">&#9670;&nbsp;</a></span>action_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::action_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_player_speed.html#a5dc90d4ea2536b28e1622b7df586528b">PlayerSpeed</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a1abd0d77566036b1fdc453f4a65f34e4_icgraph.png" border="0" usemap="#aclass_player_status_base_a1abd0d77566036b1fdc453f4a65f34e4_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_a1abd0d77566036b1fdc453f4a65f34e4_icgraph" id="aclass_player_status_base_a1abd0d77566036b1fdc453f4a65f34e4_icgraph">
+<area shape="rect" title=" " alt="" coords="567,161,737,203"/>
+<area shape="rect" href="class_player_status_base.html#a0889bfa2925d2e6b157b6d8fdc9a69df" title="修正値が0でないところにビットを立てて返す。" alt="" coords="365,63,519,104"/>
+<area shape="rect" href="class_player_status_base.html#ab6668c83e4874f12b03d6742c41f1acc" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="365,128,519,169"/>
+<area shape="rect" href="class_player_status_base.html#a006ec02b2b35eefef6ad1316e755bce0" title="修正値が1以上のところにビットを立てて返す。" alt="" coords="365,193,519,235"/>
+<area shape="rect" href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21" title="該当する値を計算して取得する。" alt="" coords="365,259,519,300"/>
+<area shape="rect" href="class_player_charisma.html#ab44363e58fc7ac34ad44c736b11a8b55" title="修正値が0でないところにビットを立てて返す。" alt="" coords="174,5,314,47"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a92ecf822679a1b19a3c7ed51d71ace9d" title="プレイヤーの所持するフラグのうち、tr_flagに対応するものを返す" alt="" coords="6,42,122,69"/>
+<area shape="rect" href="class_player_charisma.html#a134039d517fc353892ba3db42a46b781" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="174,124,314,165"/>
+<area shape="rect" href="class_player_stealth.html#a1c6c001728ee9faa408f3c606395fd26" title="隠密マイナスフラグ判定" alt="" coords="181,189,307,231"/>
+<area shape="rect" href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5" title="基礎ステータス補正値" alt="" coords="171,257,317,299"/>
+<area shape="rect" href="player-status_8cpp.html#a7ad432f906fa9311634f48b302a51952" title="プレイヤーの全ステータスを更新する / Calculate the players current &quot;state&quot;, taking into account not only race/class in..." alt="" coords="5,294,123,321"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a645da8385fa599199e6c2ad76581b11e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a645da8385fa599199e6c2ad76581b11e">&#9670;&nbsp;</a></span>battleform_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::battleform_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_player_wisdom.html#a1cf103f177bf6603e75d6ca7acc54192">PlayerWisdom</a>, <a class="el" href="class_player_strength.html#a482872f580d5cce21d7cdb0e4c861c98">PlayerStrength</a>, <a class="el" href="class_player_speed.html#a4af1f86240616373109fff366f33195f">PlayerSpeed</a>, <a class="el" href="class_player_intelligence.html#a1936e554a78af714f08278f828e8029b">PlayerIntelligence</a>, <a class="el" href="class_player_dextarity.html#a3942ee556f4dc6bb1e0cfc976651c435">PlayerDextarity</a>, <a class="el" href="class_player_constitution.html#aa6c6c3f48777530879b37585a5836139">PlayerConstitution</a>, <a class="el" href="class_player_charisma.html#a5f0926dd90663e33de265c907f4eb2f9">PlayerCharisma</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a645da8385fa599199e6c2ad76581b11e_icgraph.png" border="0" usemap="#aclass_player_status_base_a645da8385fa599199e6c2ad76581b11e_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_a645da8385fa599199e6c2ad76581b11e_icgraph" id="aclass_player_status_base_a645da8385fa599199e6c2ad76581b11e_icgraph">
+<area shape="rect" title=" " alt="" coords="567,161,759,203"/>
+<area shape="rect" href="class_player_status_base.html#a0889bfa2925d2e6b157b6d8fdc9a69df" title="修正値が0でないところにビットを立てて返す。" alt="" coords="365,63,519,104"/>
+<area shape="rect" href="class_player_status_base.html#ab6668c83e4874f12b03d6742c41f1acc" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="365,128,519,169"/>
+<area shape="rect" href="class_player_status_base.html#a006ec02b2b35eefef6ad1316e755bce0" title="修正値が1以上のところにビットを立てて返す。" alt="" coords="365,193,519,235"/>
+<area shape="rect" href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21" title="該当する値を計算して取得する。" alt="" coords="365,259,519,300"/>
+<area shape="rect" href="class_player_charisma.html#ab44363e58fc7ac34ad44c736b11a8b55" title="修正値が0でないところにビットを立てて返す。" alt="" coords="174,5,314,47"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a92ecf822679a1b19a3c7ed51d71ace9d" title="プレイヤーの所持するフラグのうち、tr_flagに対応するものを返す" alt="" coords="6,42,122,69"/>
+<area shape="rect" href="class_player_charisma.html#a134039d517fc353892ba3db42a46b781" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="174,124,314,165"/>
+<area shape="rect" href="class_player_stealth.html#a1c6c001728ee9faa408f3c606395fd26" title="隠密マイナスフラグ判定" alt="" coords="181,189,307,231"/>
+<area shape="rect" href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5" title="基礎ステータス補正値" alt="" coords="171,257,317,299"/>
+<area shape="rect" href="player-status_8cpp.html#a7ad432f906fa9311634f48b302a51952" title="プレイヤーの全ステータスを更新する / Calculate the players current &quot;state&quot;, taking into account not only race/class in..." alt="" coords="5,294,123,321"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a16bbdaa744a14e36c668aeac33163284"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16bbdaa744a14e36c668aeac33163284">&#9670;&nbsp;</a></span>class_base_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::class_base_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_player_stealth.html#aaaa2d3c817ad8c629d8af014f4360e42">PlayerStealth</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a16bbdaa744a14e36c668aeac33163284_icgraph.png" border="0" usemap="#aclass_player_status_base_a16bbdaa744a14e36c668aeac33163284_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_a16bbdaa744a14e36c668aeac33163284_icgraph" id="aclass_player_status_base_a16bbdaa744a14e36c668aeac33163284_icgraph">
+<area shape="rect" title=" " alt="" coords="567,35,733,76"/>
+<area shape="rect" href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21" title="該当する値を計算して取得する。" alt="" coords="365,35,519,76"/>
+<area shape="rect" href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5" title="基礎ステータス補正値" alt="" coords="171,5,317,47"/>
+<area shape="rect" href="player-status_8cpp.html#a7ad432f906fa9311634f48b302a51952" title="プレイヤーの全ステータスを更新する / Calculate the players current &quot;state&quot;, taking into account not only race/class in..." alt="" coords="5,42,123,69"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a112bfd74f52279c8cd08933daf023f41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a112bfd74f52279c8cd08933daf023f41">&#9670;&nbsp;</a></span>class_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::class_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_player_stealth.html#af59345e8511f51cce110396e9c280f07">PlayerStealth</a>, <a class="el" href="class_player_speed.html#a87c46977ae295b1272eeceeed24243ec">PlayerSpeed</a>, <a class="el" href="class_player_basic_statistics.html#aa77ed2d52b000dbfa812ec7706a62bff">PlayerBasicStatistics</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a112bfd74f52279c8cd08933daf023f41_icgraph.png" border="0" usemap="#aclass_player_status_base_a112bfd74f52279c8cd08933daf023f41_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_a112bfd74f52279c8cd08933daf023f41_icgraph" id="aclass_player_status_base_a112bfd74f52279c8cd08933daf023f41_icgraph">
+<area shape="rect" title=" " alt="" coords="567,161,733,203"/>
+<area shape="rect" href="class_player_status_base.html#a0889bfa2925d2e6b157b6d8fdc9a69df" title="修正値が0でないところにビットを立てて返す。" alt="" coords="365,63,519,104"/>
+<area shape="rect" href="class_player_status_base.html#ab6668c83e4874f12b03d6742c41f1acc" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="365,128,519,169"/>
+<area shape="rect" href="class_player_status_base.html#a006ec02b2b35eefef6ad1316e755bce0" title="修正値が1以上のところにビットを立てて返す。" alt="" coords="365,193,519,235"/>
+<area shape="rect" href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21" title="該当する値を計算して取得する。" alt="" coords="365,259,519,300"/>
+<area shape="rect" href="class_player_charisma.html#ab44363e58fc7ac34ad44c736b11a8b55" title="修正値が0でないところにビットを立てて返す。" alt="" coords="174,5,314,47"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a92ecf822679a1b19a3c7ed51d71ace9d" title="プレイヤーの所持するフラグのうち、tr_flagに対応するものを返す" alt="" coords="6,42,122,69"/>
+<area shape="rect" href="class_player_charisma.html#a134039d517fc353892ba3db42a46b781" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="174,124,314,165"/>
+<area shape="rect" href="class_player_stealth.html#a1c6c001728ee9faa408f3c606395fd26" title="隠密マイナスフラグ判定" alt="" coords="181,189,307,231"/>
+<area shape="rect" href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5" title="基礎ステータス補正値" alt="" coords="171,257,317,299"/>
+<area shape="rect" href="player-status_8cpp.html#a7ad432f906fa9311634f48b302a51952" title="プレイヤーの全ステータスを更新する / Calculate the players current &quot;state&quot;, taking into account not only race/class in..." alt="" coords="5,294,123,321"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6e2aa12370128f2226690e2158c237c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e2aa12370128f2226690e2158c237c6">&#9670;&nbsp;</a></span>equipments_bad_flags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> PlayerStatusBase::equipments_bad_flags </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a>&#160;</td>
+          <td class="paramname"><em>check_flag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>判定するflagを持ち、pvalが負の装備品に対応するBIT_FLAGSを返す @params check_flag 判定するtr_type </p>
+<dl class="section return"><dt>戻り値</dt><dd>判定結果のBIT_FLAGS </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a6e2aa12370128f2226690e2158c237c6_cgraph.png" border="0" usemap="#aclass_player_status_base_a6e2aa12370128f2226690e2158c237c6_cgraph" alt=""/></div>
+<map name="aclass_player_status_base_a6e2aa12370128f2226690e2158c237c6_cgraph" id="aclass_player_status_base_a6e2aa12370128f2226690e2158c237c6_cgraph">
+<area shape="rect" title="判定するflagを持ち、pvalが負の装備品に対応するBIT_FLAGSを返す @params check_flag 判定するtr_type" alt="" coords="5,35,208,76"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="256,5,405,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="285,71,376,98"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="479,21,582,47"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="453,71,608,98"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="474,122,587,149"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="656,122,871,149"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a6e2aa12370128f2226690e2158c237c6_icgraph.png" border="0" usemap="#aclass_player_status_base_a6e2aa12370128f2226690e2158c237c6_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_a6e2aa12370128f2226690e2158c237c6_icgraph" id="aclass_player_status_base_a6e2aa12370128f2226690e2158c237c6_icgraph">
+<area shape="rect" title="判定するflagを持ち、pvalが負の装備品に対応するBIT_FLAGSを返す @params check_flag 判定するtr_type" alt="" coords="395,39,597,80"/>
+<area shape="rect" href="class_player_status_base.html#ab6668c83e4874f12b03d6742c41f1acc" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="193,39,347,80"/>
+<area shape="rect" href="class_player_charisma.html#a134039d517fc353892ba3db42a46b781" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="5,5,145,47"/>
+<area shape="rect" href="class_player_stealth.html#a1c6c001728ee9faa408f3c606395fd26" title="隠密マイナスフラグ判定" alt="" coords="12,71,139,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1d3a3b9feb434686f2dc7c2a40a0b169"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d3a3b9feb434686f2dc7c2a40a0b169">&#9670;&nbsp;</a></span>equipments_flags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> PlayerStatusBase::equipments_flags </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a>&#160;</td>
+          <td class="paramname"><em>check_flag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>判定するflagを持つ装備品に対応するBIT_FLAGSを返す @params check_flag 判定するtr_type </p>
+<dl class="section return"><dt>戻り値</dt><dd>判定結果のBIT_FLAGS </dd></dl>
+
+<p><a class="el" href="class_player_speed.html#aa76ccee8755c5e762dd0786079754e0c">PlayerSpeed</a>で再実装されています。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a1d3a3b9feb434686f2dc7c2a40a0b169_cgraph.png" border="0" usemap="#aclass_player_status_base_a1d3a3b9feb434686f2dc7c2a40a0b169_cgraph" alt=""/></div>
+<map name="aclass_player_status_base_a1d3a3b9feb434686f2dc7c2a40a0b169_cgraph" id="aclass_player_status_base_a1d3a3b9feb434686f2dc7c2a40a0b169_cgraph">
+<area shape="rect" title="判定するflagを持つ装備品に対応するBIT_FLAGSを返す @params check_flag 判定するtr_type" alt="" coords="5,35,208,76"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="256,5,405,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="285,71,376,98"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="479,21,582,47"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="453,71,608,98"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="474,122,587,149"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="656,122,871,149"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a1d3a3b9feb434686f2dc7c2a40a0b169_icgraph.png" border="0" usemap="#aclass_player_status_base_a1d3a3b9feb434686f2dc7c2a40a0b169_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_a1d3a3b9feb434686f2dc7c2a40a0b169_icgraph" id="aclass_player_status_base_a1d3a3b9feb434686f2dc7c2a40a0b169_icgraph">
+<area shape="rect" title="判定するflagを持つ装備品に対応するBIT_FLAGSを返す @params check_flag 判定するtr_type" alt="" coords="576,71,779,112"/>
+<area shape="rect" href="class_player_speed.html#aa76ccee8755c5e762dd0786079754e0c" title="判定するflagを持つ装備品に対応するBIT_FLAGSを返す @params check_flag 判定するtr_type" alt="" coords="357,5,528,47"/>
+<area shape="rect" href="class_player_status_base.html#a0889bfa2925d2e6b157b6d8fdc9a69df" title="修正値が0でないところにビットを立てて返す。" alt="" coords="366,71,519,112"/>
+<area shape="rect" href="class_player_status_base.html#a006ec02b2b35eefef6ad1316e755bce0" title="修正値が1以上のところにビットを立てて返す。" alt="" coords="366,136,519,177"/>
+<area shape="rect" href="class_player_charisma.html#ab44363e58fc7ac34ad44c736b11a8b55" title="修正値が0でないところにビットを立てて返す。" alt="" coords="169,41,309,83"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a92ecf822679a1b19a3c7ed51d71ace9d" title="プレイヤーの所持するフラグのうち、tr_flagに対応するものを返す" alt="" coords="5,78,121,105"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a14b5898872af8c53c6b81ccc0a74f223"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14b5898872af8c53c6b81ccc0a74f223">&#9670;&nbsp;</a></span>equipments_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::equipments_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>this-&gt;tr_flagを持つ装備品のpval合計値を返す </p>
+<dl class="section return"><dt>戻り値</dt><dd>該当するfalgを持つ全装備のpvalの合計値 </dd></dl>
+
+<p><a class="el" href="class_player_speed.html#aafe5cee854f83be414e30603691ed033">PlayerSpeed</a>で再実装されています。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a14b5898872af8c53c6b81ccc0a74f223_cgraph.png" border="0" usemap="#aclass_player_status_base_a14b5898872af8c53c6b81ccc0a74f223_cgraph" alt=""/></div>
+<map name="aclass_player_status_base_a14b5898872af8c53c6b81ccc0a74f223_cgraph" id="aclass_player_status_base_a14b5898872af8c53c6b81ccc0a74f223_cgraph">
+<area shape="rect" title="this&#45;&gt;tr_flagを持つ装備品のpval合計値を返す" alt="" coords="5,78,208,119"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="287,56,378,83"/>
+<area shape="rect" href="class_player_status_base.html#abc87578ebe9d97b0e3792dda2ee060e8" title=" " alt="" coords="256,107,409,149"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="483,5,586,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="457,56,612,83"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="478,107,591,133"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="660,107,875,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a14b5898872af8c53c6b81ccc0a74f223_icgraph.png" border="0" usemap="#aclass_player_status_base_a14b5898872af8c53c6b81ccc0a74f223_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_a14b5898872af8c53c6b81ccc0a74f223_icgraph" id="aclass_player_status_base_a14b5898872af8c53c6b81ccc0a74f223_icgraph">
+<area shape="rect" title="this&#45;&gt;tr_flagを持つ装備品のpval合計値を返す" alt="" coords="584,39,787,80"/>
+<area shape="rect" href="class_player_speed.html#aafe5cee854f83be414e30603691ed033" title="this&#45;&gt;tr_flagを持つ装備品のpval合計値を返す" alt="" coords="365,5,536,47"/>
+<area shape="rect" href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21" title="該当する値を計算して取得する。" alt="" coords="374,71,527,112"/>
+<area shape="rect" href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5" title="基礎ステータス補正値" alt="" coords="171,41,317,83"/>
+<area shape="rect" href="player-status_8cpp.html#a7ad432f906fa9311634f48b302a51952" title="プレイヤーの全ステータスを更新する / Calculate the players current &quot;state&quot;, taking into account not only race/class in..." alt="" coords="5,78,123,105"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0889bfa2925d2e6b157b6d8fdc9a69df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0889bfa2925d2e6b157b6d8fdc9a69df">&#9670;&nbsp;</a></span>get_all_flags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> PlayerStatusBase::get_all_flags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>修正値が0でないところにビットを立てて返す。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>判定結果のBIT_FLAGS </dd></dl>
+
+<p><a class="el" href="class_player_charisma.html#ab44363e58fc7ac34ad44c736b11a8b55">PlayerCharisma</a>で再実装されています。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a0889bfa2925d2e6b157b6d8fdc9a69df_cgraph.png" border="0" usemap="#aclass_player_status_base_a0889bfa2925d2e6b157b6d8fdc9a69df_cgraph" alt=""/></div>
+<map name="aclass_player_status_base_a0889bfa2925d2e6b157b6d8fdc9a69df_cgraph" id="aclass_player_status_base_a0889bfa2925d2e6b157b6d8fdc9a69df_cgraph">
+<area shape="rect" title="修正値が0でないところにビットを立てて返す。" alt="" coords="5,332,159,373"/>
+<area shape="rect" href="class_player_status_base.html#a1abd0d77566036b1fdc453f4a65f34e4" title=" " alt="" coords="223,5,393,47"/>
+<area shape="rect" href="class_player_status_base.html#a645da8385fa599199e6c2ad76581b11e" title=" " alt="" coords="212,71,404,112"/>
+<area shape="rect" href="class_player_status_base.html#a112bfd74f52279c8cd08933daf023f41" title=" " alt="" coords="225,136,391,177"/>
+<area shape="rect" href="class_player_status_base.html#a1d3a3b9feb434686f2dc7c2a40a0b169" title="判定するflagを持つ装備品に対応するBIT_FLAGSを返す @params check_flag 判定するtr_type" alt="" coords="207,201,409,243"/>
+<area shape="rect" href="class_player_status_base.html#a37d27cd6c377fa0e15b60c882e47e5d4" title=" " alt="" coords="215,267,401,308"/>
+<area shape="rect" href="class_player_status_base.html#adb3e49505b763e15f400d86a7c9f2232" title=" " alt="" coords="215,332,401,373"/>
+<area shape="rect" href="class_player_status_base.html#a6206e6a4f66301e2f05146e922ebb19e" title=" " alt="" coords="209,397,407,439"/>
+<area shape="rect" href="class_player_status_base.html#af59efe712734a574862eadf89906eb04" title=" " alt="" coords="228,463,388,504"/>
+<area shape="rect" href="class_player_status_base.html#afc037278529faa29f9aa15adfcc390e5" title=" " alt="" coords="225,528,391,569"/>
+<area shape="rect" href="class_player_status_base.html#abc87578ebe9d97b0e3792dda2ee060e8" title=" " alt="" coords="231,593,385,635"/>
+<area shape="rect" href="class_player_status_base.html#a116ad46979a2bb093a215704a4b041de" title=" " alt="" coords="228,659,388,700"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="457,172,607,213"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="487,238,577,265"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="681,187,783,214"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="655,238,809,265"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="675,289,789,315"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a0889bfa2925d2e6b157b6d8fdc9a69df_icgraph.png" border="0" usemap="#aclass_player_status_base_a0889bfa2925d2e6b157b6d8fdc9a69df_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_a0889bfa2925d2e6b157b6d8fdc9a69df_icgraph" id="aclass_player_status_base_a0889bfa2925d2e6b157b6d8fdc9a69df_icgraph">
+<area shape="rect" title="修正値が0でないところにビットを立てて返す。" alt="" coords="521,35,675,76"/>
+<area shape="rect" href="class_player_charisma.html#ab44363e58fc7ac34ad44c736b11a8b55" title="修正値が0でないところにビットを立てて返す。" alt="" coords="333,5,473,47"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a92ecf822679a1b19a3c7ed51d71ace9d" title="プレイヤーの所持するフラグのうち、tr_flagに対応するものを返す" alt="" coords="169,42,285,69"/>
+<area shape="rect" href="temporary-resistances_8cpp.html#ad253206fef886c272578cb65ad2658d6" title="プレイヤーの一時的魔法効果による耐性を返す Prints ratings on certain abilities" alt="" coords="5,42,121,69"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab6668c83e4874f12b03d6742c41f1acc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6668c83e4874f12b03d6742c41f1acc">&#9670;&nbsp;</a></span>get_bad_flags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> PlayerStatusBase::get_bad_flags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>修正値が-1以下のところにビットを立てて返す。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>判定結果のBIT_FLAGS </dd></dl>
+
+<p><a class="el" href="class_player_stealth.html#a1c6c001728ee9faa408f3c606395fd26">PlayerStealth</a>, <a class="el" href="class_player_charisma.html#a134039d517fc353892ba3db42a46b781">PlayerCharisma</a>で再実装されています。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_ab6668c83e4874f12b03d6742c41f1acc_cgraph.png" border="0" usemap="#aclass_player_status_base_ab6668c83e4874f12b03d6742c41f1acc_cgraph" alt=""/></div>
+<map name="aclass_player_status_base_ab6668c83e4874f12b03d6742c41f1acc_cgraph" id="aclass_player_status_base_ab6668c83e4874f12b03d6742c41f1acc_cgraph">
+<area shape="rect" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="5,332,159,373"/>
+<area shape="rect" href="class_player_status_base.html#a1abd0d77566036b1fdc453f4a65f34e4" title=" " alt="" coords="223,5,393,47"/>
+<area shape="rect" href="class_player_status_base.html#a645da8385fa599199e6c2ad76581b11e" title=" " alt="" coords="212,71,404,112"/>
+<area shape="rect" href="class_player_status_base.html#a112bfd74f52279c8cd08933daf023f41" title=" " alt="" coords="225,136,391,177"/>
+<area shape="rect" href="class_player_status_base.html#a6e2aa12370128f2226690e2158c237c6" title="判定するflagを持ち、pvalが負の装備品に対応するBIT_FLAGSを返す @params check_flag 判定するtr_type" alt="" coords="207,201,409,243"/>
+<area shape="rect" href="class_player_status_base.html#a37d27cd6c377fa0e15b60c882e47e5d4" title=" " alt="" coords="215,267,401,308"/>
+<area shape="rect" href="class_player_status_base.html#adb3e49505b763e15f400d86a7c9f2232" title=" " alt="" coords="215,332,401,373"/>
+<area shape="rect" href="class_player_status_base.html#a6206e6a4f66301e2f05146e922ebb19e" title=" " alt="" coords="209,397,407,439"/>
+<area shape="rect" href="class_player_status_base.html#af59efe712734a574862eadf89906eb04" title=" " alt="" coords="228,463,388,504"/>
+<area shape="rect" href="class_player_status_base.html#afc037278529faa29f9aa15adfcc390e5" title=" " alt="" coords="225,528,391,569"/>
+<area shape="rect" href="class_player_status_base.html#abc87578ebe9d97b0e3792dda2ee060e8" title=" " alt="" coords="231,593,385,635"/>
+<area shape="rect" href="class_player_status_base.html#a116ad46979a2bb093a215704a4b041de" title=" " alt="" coords="228,659,388,700"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="457,172,607,213"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="487,238,577,265"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="681,187,783,214"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="655,238,809,265"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="675,289,789,315"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_ab6668c83e4874f12b03d6742c41f1acc_icgraph.png" border="0" usemap="#aclass_player_status_base_ab6668c83e4874f12b03d6742c41f1acc_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_ab6668c83e4874f12b03d6742c41f1acc_icgraph" id="aclass_player_status_base_ab6668c83e4874f12b03d6742c41f1acc_icgraph">
+<area shape="rect" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="193,39,347,80"/>
+<area shape="rect" href="class_player_charisma.html#a134039d517fc353892ba3db42a46b781" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="5,5,145,47"/>
+<area shape="rect" href="class_player_stealth.html#a1c6c001728ee9faa408f3c606395fd26" title="隠密マイナスフラグ判定" alt="" coords="12,71,139,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a006ec02b2b35eefef6ad1316e755bce0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a006ec02b2b35eefef6ad1316e755bce0">&#9670;&nbsp;</a></span>get_good_flags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> PlayerStatusBase::get_good_flags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>修正値が1以上のところにビットを立てて返す。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>判定結果のBIT_FLAGS </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a006ec02b2b35eefef6ad1316e755bce0_cgraph.png" border="0" usemap="#aclass_player_status_base_a006ec02b2b35eefef6ad1316e755bce0_cgraph" alt=""/></div>
+<map name="aclass_player_status_base_a006ec02b2b35eefef6ad1316e755bce0_cgraph" id="aclass_player_status_base_a006ec02b2b35eefef6ad1316e755bce0_cgraph">
+<area shape="rect" title="修正値が1以上のところにビットを立てて返す。" alt="" coords="5,332,159,373"/>
+<area shape="rect" href="class_player_status_base.html#a1abd0d77566036b1fdc453f4a65f34e4" title=" " alt="" coords="223,5,393,47"/>
+<area shape="rect" href="class_player_status_base.html#a645da8385fa599199e6c2ad76581b11e" title=" " alt="" coords="212,71,404,112"/>
+<area shape="rect" href="class_player_status_base.html#a112bfd74f52279c8cd08933daf023f41" title=" " alt="" coords="225,136,391,177"/>
+<area shape="rect" href="class_player_status_base.html#a1d3a3b9feb434686f2dc7c2a40a0b169" title="判定するflagを持つ装備品に対応するBIT_FLAGSを返す @params check_flag 判定するtr_type" alt="" coords="207,201,409,243"/>
+<area shape="rect" href="class_player_status_base.html#a37d27cd6c377fa0e15b60c882e47e5d4" title=" " alt="" coords="215,267,401,308"/>
+<area shape="rect" href="class_player_status_base.html#adb3e49505b763e15f400d86a7c9f2232" title=" " alt="" coords="215,332,401,373"/>
+<area shape="rect" href="class_player_status_base.html#a6206e6a4f66301e2f05146e922ebb19e" title=" " alt="" coords="209,397,407,439"/>
+<area shape="rect" href="class_player_status_base.html#af59efe712734a574862eadf89906eb04" title=" " alt="" coords="228,463,388,504"/>
+<area shape="rect" href="class_player_status_base.html#afc037278529faa29f9aa15adfcc390e5" title=" " alt="" coords="225,528,391,569"/>
+<area shape="rect" href="class_player_status_base.html#abc87578ebe9d97b0e3792dda2ee060e8" title=" " alt="" coords="231,593,385,635"/>
+<area shape="rect" href="class_player_status_base.html#a116ad46979a2bb093a215704a4b041de" title=" " alt="" coords="228,659,388,700"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="457,172,607,213"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="487,238,577,265"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="681,187,783,214"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="655,238,809,265"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="675,289,789,315"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abd947fc2d7f6dd57e2c5044d5c7f5e21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd947fc2d7f6dd57e2c5044d5c7f5e21">&#9670;&nbsp;</a></span>get_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::get_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>該当する値を計算して取得する。 </p>
+<ul>
+<li>派生クラスからset_locals()をコールして初期値、上限、下限をセット。</li>
+<li>各要素毎に計算した値を初期値に単純に加算し、上限と下限で丸める。 </li>
+</ul>
+
+<p><a class="el" href="class_player_basic_statistics.html#a2c3264c4f9995ee3a5281ed116a7d38f">PlayerBasicStatistics</a>で再実装されています。</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_abd947fc2d7f6dd57e2c5044d5c7f5e21_cgraph.png" border="0" usemap="#aclass_player_status_base_abd947fc2d7f6dd57e2c5044d5c7f5e21_cgraph" alt=""/></div>
+<map name="aclass_player_status_base_abd947fc2d7f6dd57e2c5044d5c7f5e21_cgraph" id="aclass_player_status_base_abd947fc2d7f6dd57e2c5044d5c7f5e21_cgraph">
+<area shape="rect" title="該当する値を計算して取得する。" alt="" coords="5,384,159,425"/>
+<area shape="rect" href="class_player_status_base.html#a1abd0d77566036b1fdc453f4a65f34e4" title=" " alt="" coords="223,5,393,47"/>
+<area shape="rect" href="class_player_status_base.html#a645da8385fa599199e6c2ad76581b11e" title=" " alt="" coords="212,71,404,112"/>
+<area shape="rect" href="class_player_status_base.html#a16bbdaa744a14e36c668aeac33163284" title=" " alt="" coords="225,136,391,177"/>
+<area shape="rect" href="class_player_status_base.html#a112bfd74f52279c8cd08933daf023f41" title=" " alt="" coords="225,201,391,243"/>
+<area shape="rect" href="class_player_status_base.html#a14b5898872af8c53c6b81ccc0a74f223" title="this&#45;&gt;tr_flagを持つ装備品のpval合計値を返す" alt="" coords="207,267,409,308"/>
+<area shape="rect" href="class_player_status_base.html#abc87578ebe9d97b0e3792dda2ee060e8" title=" " alt="" coords="457,325,611,367"/>
+<area shape="rect" href="class_player_status_base.html#a37d27cd6c377fa0e15b60c882e47e5d4" title=" " alt="" coords="215,384,401,425"/>
+<area shape="rect" href="class_player_status_base.html#adb3e49505b763e15f400d86a7c9f2232" title=" " alt="" coords="215,449,401,491"/>
+<area shape="rect" href="class_player_status_base.html#a6206e6a4f66301e2f05146e922ebb19e" title=" " alt="" coords="209,515,407,556"/>
+<area shape="rect" href="class_player_status_base.html#af59efe712734a574862eadf89906eb04" title=" " alt="" coords="228,580,388,621"/>
+<area shape="rect" href="class_player_status_base.html#afc037278529faa29f9aa15adfcc390e5" title=" " alt="" coords="225,645,391,687"/>
+<area shape="rect" href="class_player_status_base.html#a3804fda1405e757d554cc617e33977e7" title="値を直接変更する例外処理。 @params value 単純加算された修正値の合計" alt="" coords="231,711,385,752"/>
+<area shape="rect" href="class_player_status_base.html#a116ad46979a2bb093a215704a4b041de" title=" " alt="" coords="228,776,388,817"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="489,274,579,301"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="685,223,787,250"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="659,274,813,301"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="679,325,793,351"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_abd947fc2d7f6dd57e2c5044d5c7f5e21_icgraph.png" border="0" usemap="#aclass_player_status_base_abd947fc2d7f6dd57e2c5044d5c7f5e21_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_abd947fc2d7f6dd57e2c5044d5c7f5e21_icgraph" id="aclass_player_status_base_abd947fc2d7f6dd57e2c5044d5c7f5e21_icgraph">
+<area shape="rect" title="該当する値を計算して取得する。" alt="" coords="528,35,681,76"/>
+<area shape="rect" href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5" title="基礎ステータス補正値" alt="" coords="333,5,480,47"/>
+<area shape="rect" href="player-status_8cpp.html#a7ad432f906fa9311634f48b302a51952" title="プレイヤーの全ステータスを更新する / Calculate the players current &quot;state&quot;, taking into account not only race/class in..." alt="" coords="168,42,285,69"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="5,42,120,69"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a37d27cd6c377fa0e15b60c882e47e5d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37d27cd6c377fa0e15b60c882e47e5d4">&#9670;&nbsp;</a></span>inventory_weight_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::inventory_weight_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_player_speed.html#a5812566ad7a07906fcbcb8e13cb69dee">PlayerSpeed</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a37d27cd6c377fa0e15b60c882e47e5d4_icgraph.png" border="0" usemap="#aclass_player_status_base_a37d27cd6c377fa0e15b60c882e47e5d4_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_a37d27cd6c377fa0e15b60c882e47e5d4_icgraph" id="aclass_player_status_base_a37d27cd6c377fa0e15b60c882e47e5d4_icgraph">
+<area shape="rect" title=" " alt="" coords="567,161,753,203"/>
+<area shape="rect" href="class_player_status_base.html#a0889bfa2925d2e6b157b6d8fdc9a69df" title="修正値が0でないところにビットを立てて返す。" alt="" coords="365,63,519,104"/>
+<area shape="rect" href="class_player_status_base.html#ab6668c83e4874f12b03d6742c41f1acc" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="365,128,519,169"/>
+<area shape="rect" href="class_player_status_base.html#a006ec02b2b35eefef6ad1316e755bce0" title="修正値が1以上のところにビットを立てて返す。" alt="" coords="365,193,519,235"/>
+<area shape="rect" href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21" title="該当する値を計算して取得する。" alt="" coords="365,259,519,300"/>
+<area shape="rect" href="class_player_charisma.html#ab44363e58fc7ac34ad44c736b11a8b55" title="修正値が0でないところにビットを立てて返す。" alt="" coords="174,5,314,47"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a92ecf822679a1b19a3c7ed51d71ace9d" title="プレイヤーの所持するフラグのうち、tr_flagに対応するものを返す" alt="" coords="6,42,122,69"/>
+<area shape="rect" href="class_player_charisma.html#a134039d517fc353892ba3db42a46b781" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="174,124,314,165"/>
+<area shape="rect" href="class_player_stealth.html#a1c6c001728ee9faa408f3c606395fd26" title="隠密マイナスフラグ判定" alt="" coords="181,189,307,231"/>
+<area shape="rect" href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5" title="基礎ステータス補正値" alt="" coords="171,257,317,299"/>
+<area shape="rect" href="player-status_8cpp.html#a7ad432f906fa9311634f48b302a51952" title="プレイヤーの全ステータスを更新する / Calculate the players current &quot;state&quot;, taking into account not only race/class in..." alt="" coords="5,294,123,321"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adb3e49505b763e15f400d86a7c9f2232"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb3e49505b763e15f400d86a7c9f2232">&#9670;&nbsp;</a></span>mutation_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::mutation_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_player_wisdom.html#ad201c0676306f88914020aa14e3dc8c6">PlayerWisdom</a>, <a class="el" href="class_player_strength.html#a3924d101e4e657e2a2a9ffb68eac6ffa">PlayerStrength</a>, <a class="el" href="class_player_stealth.html#af43bf0ec687c920b0e99798af12737e3">PlayerStealth</a>, <a class="el" href="class_player_speed.html#a4c837feb0159ed28f797ffb7a418d207">PlayerSpeed</a>, <a class="el" href="class_player_intelligence.html#a51ea27f66c86413bbf43f4f3c5c2fc5e">PlayerIntelligence</a>, <a class="el" href="class_player_dextarity.html#a2767dbc562f69390a15b67c5c4da000c">PlayerDextarity</a>, <a class="el" href="class_player_constitution.html#aa1327e446ee2a4bab2d9a7a1daf9b221">PlayerConstitution</a>, <a class="el" href="class_player_charisma.html#afea7ddeea1b56a170c9092568623cf8b">PlayerCharisma</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_adb3e49505b763e15f400d86a7c9f2232_icgraph.png" border="0" usemap="#aclass_player_status_base_adb3e49505b763e15f400d86a7c9f2232_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_adb3e49505b763e15f400d86a7c9f2232_icgraph" id="aclass_player_status_base_adb3e49505b763e15f400d86a7c9f2232_icgraph">
+<area shape="rect" title=" " alt="" coords="567,161,752,203"/>
+<area shape="rect" href="class_player_status_base.html#a0889bfa2925d2e6b157b6d8fdc9a69df" title="修正値が0でないところにビットを立てて返す。" alt="" coords="365,63,519,104"/>
+<area shape="rect" href="class_player_status_base.html#ab6668c83e4874f12b03d6742c41f1acc" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="365,128,519,169"/>
+<area shape="rect" href="class_player_status_base.html#a006ec02b2b35eefef6ad1316e755bce0" title="修正値が1以上のところにビットを立てて返す。" alt="" coords="365,193,519,235"/>
+<area shape="rect" href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21" title="該当する値を計算して取得する。" alt="" coords="365,259,519,300"/>
+<area shape="rect" href="class_player_charisma.html#ab44363e58fc7ac34ad44c736b11a8b55" title="修正値が0でないところにビットを立てて返す。" alt="" coords="174,5,314,47"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a92ecf822679a1b19a3c7ed51d71ace9d" title="プレイヤーの所持するフラグのうち、tr_flagに対応するものを返す" alt="" coords="6,42,122,69"/>
+<area shape="rect" href="class_player_charisma.html#a134039d517fc353892ba3db42a46b781" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="174,124,314,165"/>
+<area shape="rect" href="class_player_stealth.html#a1c6c001728ee9faa408f3c606395fd26" title="隠密マイナスフラグ判定" alt="" coords="181,189,307,231"/>
+<area shape="rect" href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5" title="基礎ステータス補正値" alt="" coords="171,257,317,299"/>
+<area shape="rect" href="player-status_8cpp.html#a7ad432f906fa9311634f48b302a51952" title="プレイヤーの全ステータスを更新する / Calculate the players current &quot;state&quot;, taking into account not only race/class in..." alt="" coords="5,294,123,321"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6206e6a4f66301e2f05146e922ebb19e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6206e6a4f66301e2f05146e922ebb19e">&#9670;&nbsp;</a></span>personality_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::personality_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_player_stealth.html#a3bb2d8a98e8607311aabadb73ffe161a">PlayerStealth</a>, <a class="el" href="class_player_speed.html#a0717c893c8c54058327859c69eebc22d">PlayerSpeed</a>, <a class="el" href="class_player_basic_statistics.html#ac4e2819916d897e57124d895c0a7add9">PlayerBasicStatistics</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a6206e6a4f66301e2f05146e922ebb19e_icgraph.png" border="0" usemap="#aclass_player_status_base_a6206e6a4f66301e2f05146e922ebb19e_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_a6206e6a4f66301e2f05146e922ebb19e_icgraph" id="aclass_player_status_base_a6206e6a4f66301e2f05146e922ebb19e_icgraph">
+<area shape="rect" title=" " alt="" coords="567,161,765,203"/>
+<area shape="rect" href="class_player_status_base.html#a0889bfa2925d2e6b157b6d8fdc9a69df" title="修正値が0でないところにビットを立てて返す。" alt="" coords="365,63,519,104"/>
+<area shape="rect" href="class_player_status_base.html#ab6668c83e4874f12b03d6742c41f1acc" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="365,128,519,169"/>
+<area shape="rect" href="class_player_status_base.html#a006ec02b2b35eefef6ad1316e755bce0" title="修正値が1以上のところにビットを立てて返す。" alt="" coords="365,193,519,235"/>
+<area shape="rect" href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21" title="該当する値を計算して取得する。" alt="" coords="365,259,519,300"/>
+<area shape="rect" href="class_player_charisma.html#ab44363e58fc7ac34ad44c736b11a8b55" title="修正値が0でないところにビットを立てて返す。" alt="" coords="174,5,314,47"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a92ecf822679a1b19a3c7ed51d71ace9d" title="プレイヤーの所持するフラグのうち、tr_flagに対応するものを返す" alt="" coords="6,42,122,69"/>
+<area shape="rect" href="class_player_charisma.html#a134039d517fc353892ba3db42a46b781" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="174,124,314,165"/>
+<area shape="rect" href="class_player_stealth.html#a1c6c001728ee9faa408f3c606395fd26" title="隠密マイナスフラグ判定" alt="" coords="181,189,307,231"/>
+<area shape="rect" href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5" title="基礎ステータス補正値" alt="" coords="171,257,317,299"/>
+<area shape="rect" href="player-status_8cpp.html#a7ad432f906fa9311634f48b302a51952" title="プレイヤーの全ステータスを更新する / Calculate the players current &quot;state&quot;, taking into account not only race/class in..." alt="" coords="5,294,123,321"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af59efe712734a574862eadf89906eb04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af59efe712734a574862eadf89906eb04">&#9670;&nbsp;</a></span>race_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::race_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_player_strength.html#a5086e96ff01c069300c9d5a051ebc3c3">PlayerStrength</a>, <a class="el" href="class_player_stealth.html#ab376685fa951f52716d6e6dc1beb1e2a">PlayerStealth</a>, <a class="el" href="class_player_speed.html#a9712e0af595549c12a81770402d85b34">PlayerSpeed</a>, <a class="el" href="class_player_dextarity.html#a84ef9d9688c78e01ba9e56401c4afbbc">PlayerDextarity</a>, <a class="el" href="class_player_constitution.html#ade423eafc31c78e1d4a10a6fa0899d29">PlayerConstitution</a>, <a class="el" href="class_player_basic_statistics.html#a1b69ab278acc7b371a05b5f03996b392">PlayerBasicStatistics</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_af59efe712734a574862eadf89906eb04_icgraph.png" border="0" usemap="#aclass_player_status_base_af59efe712734a574862eadf89906eb04_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_af59efe712734a574862eadf89906eb04_icgraph" id="aclass_player_status_base_af59efe712734a574862eadf89906eb04_icgraph">
+<area shape="rect" title=" " alt="" coords="567,161,727,203"/>
+<area shape="rect" href="class_player_status_base.html#a0889bfa2925d2e6b157b6d8fdc9a69df" title="修正値が0でないところにビットを立てて返す。" alt="" coords="365,63,519,104"/>
+<area shape="rect" href="class_player_status_base.html#ab6668c83e4874f12b03d6742c41f1acc" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="365,128,519,169"/>
+<area shape="rect" href="class_player_status_base.html#a006ec02b2b35eefef6ad1316e755bce0" title="修正値が1以上のところにビットを立てて返す。" alt="" coords="365,193,519,235"/>
+<area shape="rect" href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21" title="該当する値を計算して取得する。" alt="" coords="365,259,519,300"/>
+<area shape="rect" href="class_player_charisma.html#ab44363e58fc7ac34ad44c736b11a8b55" title="修正値が0でないところにビットを立てて返す。" alt="" coords="174,5,314,47"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a92ecf822679a1b19a3c7ed51d71ace9d" title="プレイヤーの所持するフラグのうち、tr_flagに対応するものを返す" alt="" coords="6,42,122,69"/>
+<area shape="rect" href="class_player_charisma.html#a134039d517fc353892ba3db42a46b781" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="174,124,314,165"/>
+<area shape="rect" href="class_player_stealth.html#a1c6c001728ee9faa408f3c606395fd26" title="隠密マイナスフラグ判定" alt="" coords="181,189,307,231"/>
+<area shape="rect" href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5" title="基礎ステータス補正値" alt="" coords="171,257,317,299"/>
+<area shape="rect" href="player-status_8cpp.html#a7ad432f906fa9311634f48b302a51952" title="プレイヤーの全ステータスを更新する / Calculate the players current &quot;state&quot;, taking into account not only race/class in..." alt="" coords="5,294,123,321"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afc037278529faa29f9aa15adfcc390e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc037278529faa29f9aa15adfcc390e5">&#9670;&nbsp;</a></span>riding_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::riding_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_player_speed.html#a3ffdfb0babf7f32a2d731a0b481f10c4">PlayerSpeed</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_afc037278529faa29f9aa15adfcc390e5_icgraph.png" border="0" usemap="#aclass_player_status_base_afc037278529faa29f9aa15adfcc390e5_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_afc037278529faa29f9aa15adfcc390e5_icgraph" id="aclass_player_status_base_afc037278529faa29f9aa15adfcc390e5_icgraph">
+<area shape="rect" title=" " alt="" coords="567,161,733,203"/>
+<area shape="rect" href="class_player_status_base.html#a0889bfa2925d2e6b157b6d8fdc9a69df" title="修正値が0でないところにビットを立てて返す。" alt="" coords="365,63,519,104"/>
+<area shape="rect" href="class_player_status_base.html#ab6668c83e4874f12b03d6742c41f1acc" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="365,128,519,169"/>
+<area shape="rect" href="class_player_status_base.html#a006ec02b2b35eefef6ad1316e755bce0" title="修正値が1以上のところにビットを立てて返す。" alt="" coords="365,193,519,235"/>
+<area shape="rect" href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21" title="該当する値を計算して取得する。" alt="" coords="365,259,519,300"/>
+<area shape="rect" href="class_player_charisma.html#ab44363e58fc7ac34ad44c736b11a8b55" title="修正値が0でないところにビットを立てて返す。" alt="" coords="174,5,314,47"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a92ecf822679a1b19a3c7ed51d71ace9d" title="プレイヤーの所持するフラグのうち、tr_flagに対応するものを返す" alt="" coords="6,42,122,69"/>
+<area shape="rect" href="class_player_charisma.html#a134039d517fc353892ba3db42a46b781" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="174,124,314,165"/>
+<area shape="rect" href="class_player_stealth.html#a1c6c001728ee9faa408f3c606395fd26" title="隠密マイナスフラグ判定" alt="" coords="181,189,307,231"/>
+<area shape="rect" href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5" title="基礎ステータス補正値" alt="" coords="171,257,317,299"/>
+<area shape="rect" href="player-status_8cpp.html#a7ad432f906fa9311634f48b302a51952" title="プレイヤーの全ステータスを更新する / Calculate the players current &quot;state&quot;, taking into account not only race/class in..." alt="" coords="5,294,123,321"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3804fda1405e757d554cc617e33977e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3804fda1405e757d554cc617e33977e7">&#9670;&nbsp;</a></span>set_exception_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::set_exception_value </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値を直接変更する例外処理。 @params value 単純加算された修正値の合計 </p>
+<ul>
+<li>派生クラスで必要とされる例外処理でoverrideされる <dl class="section return"><dt>戻り値</dt><dd>直接変更された値。このままmin-max処理され最終的なvalueになる。 </dd></dl>
+</li>
+</ul>
+
+<p><a class="el" href="class_player_stealth.html#a5dbb6ac329438d4754ba5a02cdddd94f">PlayerStealth</a>, <a class="el" href="class_player_speed.html#a4e66d0929747e913053dd5409f6bc5e4">PlayerSpeed</a>, <a class="el" href="class_player_charisma.html#ac8a32d015de8a59819d9d7ecd8316761">PlayerCharisma</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a3804fda1405e757d554cc617e33977e7_icgraph.png" border="0" usemap="#aclass_player_status_base_a3804fda1405e757d554cc617e33977e7_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_a3804fda1405e757d554cc617e33977e7_icgraph" id="aclass_player_status_base_a3804fda1405e757d554cc617e33977e7_icgraph">
+<area shape="rect" title="値を直接変更する例外処理。 @params value 単純加算された修正値の合計" alt="" coords="567,35,720,76"/>
+<area shape="rect" href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21" title="該当する値を計算して取得する。" alt="" coords="365,35,519,76"/>
+<area shape="rect" href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5" title="基礎ステータス補正値" alt="" coords="171,5,317,47"/>
+<area shape="rect" href="player-status_8cpp.html#a7ad432f906fa9311634f48b302a51952" title="プレイヤーの全ステータスを更新する / Calculate the players current &quot;state&quot;, taking into account not only race/class in..." alt="" coords="5,42,123,69"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abc87578ebe9d97b0e3792dda2ee060e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc87578ebe9d97b0e3792dda2ee060e8">&#9670;&nbsp;</a></span>set_locals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerStatusBase::set_locals </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_player_wisdom.html#aa856fcbedc5eaf04a75db77e94e36199">PlayerWisdom</a>, <a class="el" href="class_player_strength.html#ae62a530d99297380bb35bdfe6048e799">PlayerStrength</a>, <a class="el" href="class_player_stealth.html#a6c6da49d04060ec223dfc8d4f18c34d5">PlayerStealth</a>, <a class="el" href="class_player_speed.html#a02e6ed384a13e9e2a30d10087bf3264f">PlayerSpeed</a>, <a class="el" href="class_player_intelligence.html#a25e544d7be4373382d8520bfa4105ad4">PlayerIntelligence</a>, <a class="el" href="class_player_dextarity.html#afbede6ff3710cfac6afabbdaa8a3b2cd">PlayerDextarity</a>, <a class="el" href="class_player_constitution.html#a93a822ecd157d04bdfab6f979edb0163">PlayerConstitution</a>, <a class="el" href="class_player_charisma.html#aad3ab85a4ca3f3568ddf08fff9b3eb98">PlayerCharisma</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_abc87578ebe9d97b0e3792dda2ee060e8_icgraph.png" border="0" usemap="#aclass_player_status_base_abc87578ebe9d97b0e3792dda2ee060e8_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_abc87578ebe9d97b0e3792dda2ee060e8_icgraph" id="aclass_player_status_base_abc87578ebe9d97b0e3792dda2ee060e8_icgraph">
+<area shape="rect" title=" " alt="" coords="835,260,988,301"/>
+<area shape="rect" href="class_player_status_base.html#a14b5898872af8c53c6b81ccc0a74f223" title="this&#45;&gt;tr_flagを持つ装備品のpval合計値を返す" alt="" coords="584,44,787,85"/>
+<area shape="rect" href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21" title="該当する値を計算して取得する。" alt="" coords="374,71,527,112"/>
+<area shape="rect" href="class_player_status_base.html#a0889bfa2925d2e6b157b6d8fdc9a69df" title="修正値が0でないところにビットを立てて返す。" alt="" coords="609,161,762,203"/>
+<area shape="rect" href="class_player_status_base.html#ab6668c83e4874f12b03d6742c41f1acc" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="609,227,762,268"/>
+<area shape="rect" href="class_player_status_base.html#a006ec02b2b35eefef6ad1316e755bce0" title="修正値が1以上のところにビットを立てて返す。" alt="" coords="609,292,762,333"/>
+<area shape="rect" href="class_player_basic_statistics.html#a2c3264c4f9995ee3a5281ed116a7d38f" title="基礎ステータスの実値" alt="" coords="612,357,759,399"/>
+<area shape="rect" href="class_player_status_base.html#a8a13774f3d4adb49562bb60e61071d99" title="プレイヤーの各ステータス計算用のクラス" alt="" coords="599,423,771,464"/>
+<area shape="rect" href="class_player_basic_statistics.html#ad3af90334c603316dc2bea6a18f8c315" title="ステータス更新処理" alt="" coords="171,348,317,389"/>
+<area shape="rect" href="class_player_speed.html#aafe5cee854f83be414e30603691ed033" title="this&#45;&gt;tr_flagを持つ装備品のpval合計値を返す" alt="" coords="365,5,536,47"/>
+<area shape="rect" href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5" title="基礎ステータス補正値" alt="" coords="171,71,317,112"/>
+<area shape="rect" href="player-status_8cpp.html#a7ad432f906fa9311634f48b302a51952" title="プレイヤーの全ステータスを更新する / Calculate the players current &quot;state&quot;, taking into account not only race/class in..." alt="" coords="5,137,123,163"/>
+<area shape="rect" href="class_player_charisma.html#ab44363e58fc7ac34ad44c736b11a8b55" title="修正値が0でないところにビットを立てて返す。" alt="" coords="381,136,521,177"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a92ecf822679a1b19a3c7ed51d71ace9d" title="プレイヤーの所持するフラグのうち、tr_flagに対応するものを返す" alt="" coords="186,195,302,222"/>
+<area shape="rect" href="class_player_charisma.html#a134039d517fc353892ba3db42a46b781" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="381,253,521,295"/>
+<area shape="rect" href="class_player_stealth.html#a1c6c001728ee9faa408f3c606395fd26" title="隠密マイナスフラグ判定" alt="" coords="387,319,514,360"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a116ad46979a2bb093a215704a4b041de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a116ad46979a2bb093a215704a4b041de">&#9670;&nbsp;</a></span>time_effect_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::time_effect_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_player_strength.html#a6c09d65def37faf5b05691d96b68af7b">PlayerStrength</a>, <a class="el" href="class_player_stealth.html#a1e6a43637239ae7e86a0b167e0c2f9f4">PlayerStealth</a>, <a class="el" href="class_player_speed.html#a9d3a993e53ab4c25347c7ad9ed9ebadc">PlayerSpeed</a>, <a class="el" href="class_player_dextarity.html#a5b090555cc7179a8f893d2ae64a0e806">PlayerDextarity</a>, <a class="el" href="class_player_constitution.html#a63dbeffffd07d812cb35f3d51a62142e">PlayerConstitution</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player_status_base_a116ad46979a2bb093a215704a4b041de_icgraph.png" border="0" usemap="#aclass_player_status_base_a116ad46979a2bb093a215704a4b041de_icgraph" alt=""/></div>
+<map name="aclass_player_status_base_a116ad46979a2bb093a215704a4b041de_icgraph" id="aclass_player_status_base_a116ad46979a2bb093a215704a4b041de_icgraph">
+<area shape="rect" title=" " alt="" coords="567,161,727,203"/>
+<area shape="rect" href="class_player_status_base.html#a0889bfa2925d2e6b157b6d8fdc9a69df" title="修正値が0でないところにビットを立てて返す。" alt="" coords="365,63,519,104"/>
+<area shape="rect" href="class_player_status_base.html#ab6668c83e4874f12b03d6742c41f1acc" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="365,128,519,169"/>
+<area shape="rect" href="class_player_status_base.html#a006ec02b2b35eefef6ad1316e755bce0" title="修正値が1以上のところにビットを立てて返す。" alt="" coords="365,193,519,235"/>
+<area shape="rect" href="class_player_status_base.html#abd947fc2d7f6dd57e2c5044d5c7f5e21" title="該当する値を計算して取得する。" alt="" coords="365,259,519,300"/>
+<area shape="rect" href="class_player_charisma.html#ab44363e58fc7ac34ad44c736b11a8b55" title="修正値が0でないところにビットを立てて返す。" alt="" coords="174,5,314,47"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a92ecf822679a1b19a3c7ed51d71ace9d" title="プレイヤーの所持するフラグのうち、tr_flagに対応するものを返す" alt="" coords="6,42,122,69"/>
+<area shape="rect" href="class_player_charisma.html#a134039d517fc353892ba3db42a46b781" title="修正値が&#45;1以下のところにビットを立てて返す。" alt="" coords="174,124,314,165"/>
+<area shape="rect" href="class_player_stealth.html#a1c6c001728ee9faa408f3c606395fd26" title="隠密マイナスフラグ判定" alt="" coords="181,189,307,231"/>
+<area shape="rect" href="class_player_basic_statistics.html#a7886f430d9b6638da24912daaab356b5" title="基礎ステータス補正値" alt="" coords="171,257,317,299"/>
+<area shape="rect" href="player-status_8cpp.html#a7ad432f906fa9311634f48b302a51952" title="プレイヤーの全ステータスを更新する / Calculate the players current &quot;state&quot;, taking into account not only race/class in..." alt="" coords="5,294,123,321"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="a0dd504a8adc3fd48584003fa93733f9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dd504a8adc3fd48584003fa93733f9f">&#9670;&nbsp;</a></span>default_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::default_value</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acc6850609853cb8db9717c873683e3e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc6850609853cb8db9717c873683e3e1">&#9670;&nbsp;</a></span>max_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::max_value</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac42ee1eb4dab652c229ed5a66b70e5d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac42ee1eb4dab652c229ed5a66b70e5d6">&#9670;&nbsp;</a></span>min_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> PlayerStatusBase::min_value</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae8c08db466b4009b560f752411aaca66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8c08db466b4009b560f752411aaca66">&#9670;&nbsp;</a></span>owner_ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structplayer__type.html">player_type</a>* PlayerStatusBase::owner_ptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab21ae8274a29742d0f192b9a5f6820e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab21ae8274a29742d0f192b9a5f6820e7">&#9670;&nbsp;</a></span>tr_bad_flag</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a> PlayerStatusBase::tr_bad_flag</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5e87ba5470805540831960807cfd5c74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e87ba5470805540831960807cfd5c74">&#9670;&nbsp;</a></span>tr_flag</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a> PlayerStatusBase::tr_flag</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>C:/Users/deskull/Documents/bakabakaband/src/player-status/<a class="el" href="player-status-base_8h_source.html">player-status-base.h</a></li>
+<li>C:/Users/deskull/Documents/bakabakaband/src/player-status/<a class="el" href="player-status-base_8cpp.html">player-status-base.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

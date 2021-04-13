@@ -1,0 +1,1743 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player/player-status-resist.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_975424cdae97a07db69e55371758444e.html">player</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">player-status-resist.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="player-status-resist_8h_source.html">player/player-status-resist.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fixed-art-types_8h_source.html">artifact/fixed-art-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags2_8h_source.html">monster-race/race-flags2.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags7_8h_source.html">monster-race/race-flags7.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mutation-flag-types_8h_source.html">mutation/mutation-flag-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-ego_8h_source.html">object-enchant/object-ego.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tr-types_8h_source.html">object-enchant/tr-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="trc-types_8h_source.html">object-enchant/trc-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-checker_8h_source.html">object-hook/hook-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-weapon_8h_source.html">object-hook/hook-weapon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flags_8h_source.html">object/object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mimic-info-table_8h_source.html">player/mimic-info-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-class_8h_source.html">player/player-class.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-race-types_8h_source.html">player/player-race-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-race_8h_source.html">player/player-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-skill_8h_source.html">player/player-skill.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status-flags_8h_source.html">player/player-status-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status_8h_source.html">player/player-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-defense-types_8h_source.html">player/special-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="realm-hex-numbers_8h_source.html">realm/realm-hex-numbers.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="realm-song-numbers_8h_source.html">realm/realm-song-numbers.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="realm-types_8h_source.html">realm/realm-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-hex_8h_source.html">spell-realm/spells-hex.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="element-resistance_8h_source.html">status/element-resistance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-weapon-types_8h_source.html">sv-definition/sv-weapon-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-type-definition_8h_source.html">system/monster-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quarks_8h_source.html">util/quarks.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="string-processor_8h_source.html">util/string-processor.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+player-status-resist.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2player_2player-status-resist_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2player_2player-status-resist_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2player_2player-status-resist_8cpp">
+<area shape="rect" title=" " alt="" coords="1553,5,1741,61"/>
+<area shape="rect" href="player-status-resist_8h.html" title=" " alt="" coords="488,199,624,240"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="825,385,972,411"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="173,467,323,508"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="595,467,720,508"/>
+<area shape="rect" href="fixed-art-types_8h.html" title=" " alt="" coords="379,109,490,151"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="1710,117,1789,143"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="2305,288,2450,329"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="93,199,221,240"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="2197,109,2347,151"/>
+<area shape="rect" href="race-flags2_8h.html" title=" " alt="" coords="717,117,893,143"/>
+<area shape="rect" href="race-flags7_8h.html" title=" " alt="" coords="917,117,1093,143"/>
+<area shape="rect" href="object-ego_8h.html" title=" " alt="" coords="2027,109,2173,151"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="297,206,463,233"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="2033,199,2167,240"/>
+<area shape="rect" href="trc-types_8h.html" title=" " alt="" coords="1270,109,1397,151"/>
+<area shape="rect" href="hook-checker_8h.html" title=" " alt="" coords="817,206,999,233"/>
+<area shape="rect" href="hook-weapon_8h.html" title=" " alt="" coords="1023,206,1203,233"/>
+<area shape="rect" href="object-flags_8h.html" title=" " alt="" coords="1813,117,1952,143"/>
+<area shape="rect" href="mimic-info-table_8h.html" title=" " alt="" coords="1421,117,1584,143"/>
+<area shape="rect" href="player-race_8h.html" title=" " alt="" coords="1228,206,1364,233"/>
+<area shape="rect" href="player-class_8h.html" title=" " alt="" coords="3519,117,3662,143"/>
+<area shape="rect" href="realm-types_8h.html" title=" " alt="" coords="3633,295,3770,322"/>
+<area shape="rect" href="player-skill_8h.html" title=" " alt="" coords="2371,117,2506,143"/>
+<area shape="rect" href="player-status-flags_8h.html" title=" " alt="" coords="207,109,343,151"/>
+<area shape="rect" href="special-defense-types_8h.html" title=" " alt="" coords="2530,109,2681,151"/>
+<area shape="rect" href="realm-hex-numbers_8h.html" title=" " alt="" coords="2705,117,2885,143"/>
+<area shape="rect" href="realm-song-numbers_8h.html" title=" " alt="" coords="2909,117,3096,143"/>
+<area shape="rect" href="spells-hex_8h.html" title=" " alt="" coords="1388,199,1511,240"/>
+<area shape="rect" href="element-resistance_8h.html" title=" " alt="" coords="1535,206,1718,233"/>
+<area shape="rect" href="sv-weapon-types_8h.html" title=" " alt="" coords="3342,109,3495,151"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="3982,117,4170,143"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="3686,117,3845,143"/>
+<area shape="rect" href="quarks_8h.html" title=" " alt="" coords="699,206,792,233"/>
+<area shape="rect" href="string-processor_8h.html" title=" " alt="" coords="3120,117,3267,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1815,295,1945,322"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="2815,467,2961,508"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1223,474,1342,501"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="2230,474,2341,501"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="1844,206,1959,233"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="2958,377,3114,419"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="2597,199,2742,240"/>
+<area shape="rect" title=" " alt="" coords="2817,206,2873,233"/>
+<area shape="rect" title=" " alt="" coords="2753,295,2807,322"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="2293,199,2419,240"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="2591,295,2718,322"/>
+<area shape="rect" href="technic-info-table_8h.html" title=" " alt="" coords="3545,199,3663,240"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="3920,206,4099,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="4174,206,4325,233"/>
+<area shape="rect" title=" " alt="" coords="3020,206,3105,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:ac20fca6111ddbfb76bda5f40f658af67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67">randrate</a> (int dice, int fix, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:ac20fca6111ddbfb76bda5f40f658af67"><td class="mdescLeft">&#160;</td><td class="mdescRight">耐性倍率計算の用途に応じた分岐処理  <a href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67">[詳解]</a><br /></td></tr>
+<tr class="separator:ac20fca6111ddbfb76bda5f40f658af67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4582efcc5e8b9fb139b2fcc30fcf4abc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#a4582efcc5e8b9fb139b2fcc30fcf4abc">calc_acid_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a4582efcc5e8b9fb139b2fcc30fcf4abc"><td class="mdescLeft">&#160;</td><td class="mdescRight">酸属性攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#a4582efcc5e8b9fb139b2fcc30fcf4abc">[詳解]</a><br /></td></tr>
+<tr class="separator:a4582efcc5e8b9fb139b2fcc30fcf4abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ac8f301f067aa747db2f2d623e78998"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#a8ac8f301f067aa747db2f2d623e78998">calc_elec_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a8ac8f301f067aa747db2f2d623e78998"><td class="mdescLeft">&#160;</td><td class="mdescRight">電撃属性攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#a8ac8f301f067aa747db2f2d623e78998">[詳解]</a><br /></td></tr>
+<tr class="separator:a8ac8f301f067aa747db2f2d623e78998"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd1c3489adf3464ff2bfbbfb58dbf47f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#abd1c3489adf3464ff2bfbbfb58dbf47f">calc_fire_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:abd1c3489adf3464ff2bfbbfb58dbf47f"><td class="mdescLeft">&#160;</td><td class="mdescRight">火炎属性攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#abd1c3489adf3464ff2bfbbfb58dbf47f">[詳解]</a><br /></td></tr>
+<tr class="separator:abd1c3489adf3464ff2bfbbfb58dbf47f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aa0baf0fc9bfa9ebc8e8fc5045f0622"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#a1aa0baf0fc9bfa9ebc8e8fc5045f0622">calc_cold_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a1aa0baf0fc9bfa9ebc8e8fc5045f0622"><td class="mdescLeft">&#160;</td><td class="mdescRight">冷気属性攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#a1aa0baf0fc9bfa9ebc8e8fc5045f0622">[詳解]</a><br /></td></tr>
+<tr class="separator:a1aa0baf0fc9bfa9ebc8e8fc5045f0622"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dc98d50daa3a9bc4204eb0d82132f1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#a9dc98d50daa3a9bc4204eb0d82132f1f">calc_pois_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a9dc98d50daa3a9bc4204eb0d82132f1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">毒属性攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#a9dc98d50daa3a9bc4204eb0d82132f1f">[詳解]</a><br /></td></tr>
+<tr class="separator:a9dc98d50daa3a9bc4204eb0d82132f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b398093c77c03f4208e9dbc65cdb78e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#a0b398093c77c03f4208e9dbc65cdb78e">calc_nuke_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a0b398093c77c03f4208e9dbc65cdb78e"><td class="mdescLeft">&#160;</td><td class="mdescRight">放射性廃棄物攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#a0b398093c77c03f4208e9dbc65cdb78e">[詳解]</a><br /></td></tr>
+<tr class="separator:a0b398093c77c03f4208e9dbc65cdb78e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca6d0a93d4c4ef4f09607516a75d4fe3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#aca6d0a93d4c4ef4f09607516a75d4fe3">calc_deathray_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:aca6d0a93d4c4ef4f09607516a75d4fe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">死の光線に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#aca6d0a93d4c4ef4f09607516a75d4fe3">[詳解]</a><br /></td></tr>
+<tr class="separator:aca6d0a93d4c4ef4f09607516a75d4fe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a787e8711d1aa6a2429325041f67750be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#a787e8711d1aa6a2429325041f67750be">calc_lite_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:a787e8711d1aa6a2429325041f67750be"><td class="mdescLeft">&#160;</td><td class="mdescRight">閃光属性攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#a787e8711d1aa6a2429325041f67750be">[詳解]</a><br /></td></tr>
+<tr class="separator:a787e8711d1aa6a2429325041f67750be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad09e38f4ce36ffc51f8d99549b64a6da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#ad09e38f4ce36ffc51f8d99549b64a6da">calc_dark_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:ad09e38f4ce36ffc51f8d99549b64a6da"><td class="mdescLeft">&#160;</td><td class="mdescRight">暗黒属性攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#ad09e38f4ce36ffc51f8d99549b64a6da">[詳解]</a><br /></td></tr>
+<tr class="separator:ad09e38f4ce36ffc51f8d99549b64a6da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08965195f21a6463e035b3383b18b2ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#a08965195f21a6463e035b3383b18b2ab">calc_shards_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:a08965195f21a6463e035b3383b18b2ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">破片属性攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#a08965195f21a6463e035b3383b18b2ab">[詳解]</a><br /></td></tr>
+<tr class="separator:a08965195f21a6463e035b3383b18b2ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6db5d9cb3a1ac877ca5f8b0a78ea3518"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#a6db5d9cb3a1ac877ca5f8b0a78ea3518">calc_sound_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:a6db5d9cb3a1ac877ca5f8b0a78ea3518"><td class="mdescLeft">&#160;</td><td class="mdescRight">轟音属性攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#a6db5d9cb3a1ac877ca5f8b0a78ea3518">[詳解]</a><br /></td></tr>
+<tr class="separator:a6db5d9cb3a1ac877ca5f8b0a78ea3518"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0f09f3f4b1f25dbe864c47abed55831"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#af0f09f3f4b1f25dbe864c47abed55831">calc_conf_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:af0f09f3f4b1f25dbe864c47abed55831"><td class="mdescLeft">&#160;</td><td class="mdescRight">混乱属性攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#af0f09f3f4b1f25dbe864c47abed55831">[詳解]</a><br /></td></tr>
+<tr class="separator:af0f09f3f4b1f25dbe864c47abed55831"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a253e621fb6141bb093cb356f8d8ae5ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#a253e621fb6141bb093cb356f8d8ae5ac">calc_chaos_damage_rate_rand</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a253e621fb6141bb093cb356f8d8ae5ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">混沌属性攻撃に対するダメージ倍率計算(乱数固定)  <a href="player-status-resist_8cpp.html#a253e621fb6141bb093cb356f8d8ae5ac">[詳解]</a><br /></td></tr>
+<tr class="separator:a253e621fb6141bb093cb356f8d8ae5ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ee49112da3413277c505e7c9e2e2753"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#a5ee49112da3413277c505e7c9e2e2753">calc_chaos_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:a5ee49112da3413277c505e7c9e2e2753"><td class="mdescLeft">&#160;</td><td class="mdescRight">混沌属性攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#a5ee49112da3413277c505e7c9e2e2753">[詳解]</a><br /></td></tr>
+<tr class="separator:a5ee49112da3413277c505e7c9e2e2753"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af449c4804042e3fd96e013bbe6e1e953"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#af449c4804042e3fd96e013bbe6e1e953">calc_disenchant_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:af449c4804042e3fd96e013bbe6e1e953"><td class="mdescLeft">&#160;</td><td class="mdescRight">劣化属性攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#af449c4804042e3fd96e013bbe6e1e953">[詳解]</a><br /></td></tr>
+<tr class="separator:af449c4804042e3fd96e013bbe6e1e953"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7114824bf64f2cca54ed6840e8af85fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#a7114824bf64f2cca54ed6840e8af85fd">calc_nexus_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:a7114824bf64f2cca54ed6840e8af85fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">因果混乱属性攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#a7114824bf64f2cca54ed6840e8af85fd">[詳解]</a><br /></td></tr>
+<tr class="separator:a7114824bf64f2cca54ed6840e8af85fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5862238b26310fc46cc64f721b41ae8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#ac5862238b26310fc46cc64f721b41ae8">calc_rocket_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:ac5862238b26310fc46cc64f721b41ae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">ロケット属性攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#ac5862238b26310fc46cc64f721b41ae8">[詳解]</a><br /></td></tr>
+<tr class="separator:ac5862238b26310fc46cc64f721b41ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefbc214b1d6bac6f5db5902edab4e495"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#aefbc214b1d6bac6f5db5902edab4e495">calc_nether_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:aefbc214b1d6bac6f5db5902edab4e495"><td class="mdescLeft">&#160;</td><td class="mdescRight">地獄属性攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#aefbc214b1d6bac6f5db5902edab4e495">[詳解]</a><br /></td></tr>
+<tr class="separator:aefbc214b1d6bac6f5db5902edab4e495"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5a9cf88a620802ab42f152f32cb9d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#a3f5a9cf88a620802ab42f152f32cb9d3">calc_time_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:a3f5a9cf88a620802ab42f152f32cb9d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">時間逆転攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#a3f5a9cf88a620802ab42f152f32cb9d3">[詳解]</a><br /></td></tr>
+<tr class="separator:a3f5a9cf88a620802ab42f152f32cb9d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5e455446275ab7b7f2ee6e3f69cad91"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#ad5e455446275ab7b7f2ee6e3f69cad91">calc_water_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:ad5e455446275ab7b7f2ee6e3f69cad91"><td class="mdescLeft">&#160;</td><td class="mdescRight">水流攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#ad5e455446275ab7b7f2ee6e3f69cad91">[詳解]</a><br /></td></tr>
+<tr class="separator:ad5e455446275ab7b7f2ee6e3f69cad91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab103071ffabc98d383836992f1069866"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#ab103071ffabc98d383836992f1069866">calc_holy_fire_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:ab103071ffabc98d383836992f1069866"><td class="mdescLeft">&#160;</td><td class="mdescRight">聖なる火炎攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#ab103071ffabc98d383836992f1069866">[詳解]</a><br /></td></tr>
+<tr class="separator:ab103071ffabc98d383836992f1069866"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae197b2672c72d0f37a4eb20c3d6de5c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#ae197b2672c72d0f37a4eb20c3d6de5c4">calc_hell_fire_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:ae197b2672c72d0f37a4eb20c3d6de5c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">地獄の火炎攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#ae197b2672c72d0f37a4eb20c3d6de5c4">[詳解]</a><br /></td></tr>
+<tr class="separator:ae197b2672c72d0f37a4eb20c3d6de5c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b70242ad7da716639ae861aa8ca65f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#a1b70242ad7da716639ae861aa8ca65f8">calc_gravity_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:a1b70242ad7da716639ae861aa8ca65f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">重力攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#a1b70242ad7da716639ae861aa8ca65f8">[詳解]</a><br /></td></tr>
+<tr class="separator:a1b70242ad7da716639ae861aa8ca65f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa53895160d561e864885dc3b9c9fd63c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#aa53895160d561e864885dc3b9c9fd63c">calc_void_damage_rate_rand</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:aa53895160d561e864885dc3b9c9fd63c"><td class="mdescLeft">&#160;</td><td class="mdescRight">虚無攻撃に対するダメージ倍率計算(乱数固定)  <a href="player-status-resist_8cpp.html#aa53895160d561e864885dc3b9c9fd63c">[詳解]</a><br /></td></tr>
+<tr class="separator:aa53895160d561e864885dc3b9c9fd63c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad91de85c228ab5feccee43398411141d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#ad91de85c228ab5feccee43398411141d">calc_void_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:ad91de85c228ab5feccee43398411141d"><td class="mdescLeft">&#160;</td><td class="mdescRight">虚無攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#ad91de85c228ab5feccee43398411141d">[詳解]</a><br /></td></tr>
+<tr class="separator:ad91de85c228ab5feccee43398411141d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1afbb7294ee4fbe56d1b6ee3d42ee1ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-status-resist_8cpp.html#a1afbb7294ee4fbe56d1b6ee3d42ee1ae">calc_abyss_damage_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a> mode)</td></tr>
+<tr class="memdesc:a1afbb7294ee4fbe56d1b6ee3d42ee1ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">深淵攻撃に対するダメージ倍率計算  <a href="player-status-resist_8cpp.html#a1afbb7294ee4fbe56d1b6ee3d42ee1ae">[詳解]</a><br /></td></tr>
+<tr class="separator:a1afbb7294ee4fbe56d1b6ee3d42ee1ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a1afbb7294ee4fbe56d1b6ee3d42ee1ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1afbb7294ee4fbe56d1b6ee3d42ee1ae">&#9670;&nbsp;</a></span>calc_abyss_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_abyss_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>深淵攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a1afbb7294ee4fbe56d1b6ee3d42ee1ae_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a1afbb7294ee4fbe56d1b6ee3d42ee1ae_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a1afbb7294ee4fbe56d1b6ee3d42ee1ae_cgraph" id="aplayer-status-resist_8cpp_a1afbb7294ee4fbe56d1b6ee3d42ee1ae_cgraph">
+<area shape="rect" title="深淵攻撃に対するダメージ倍率計算" alt="" coords="5,93,176,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a8d4edecd58f282d6dd802d24707d5f6d" title=" " alt="" coords="224,67,339,94"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="247,118,316,145"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="387,42,545,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="399,93,533,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="593,5,743,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="623,71,713,98"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a1afbb7294ee4fbe56d1b6ee3d42ee1ae_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a1afbb7294ee4fbe56d1b6ee3d42ee1ae_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a1afbb7294ee4fbe56d1b6ee3d42ee1ae_icgraph" id="aplayer-status-resist_8cpp_a1afbb7294ee4fbe56d1b6ee3d42ee1ae_icgraph">
+<area shape="rect" title="深淵攻撃に対するダメージ倍率計算" alt="" coords="191,5,361,32"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a30c131390e9c98b86d46e5b8f84d9c29" title=" " alt="" coords="5,5,143,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4582efcc5e8b9fb139b2fcc30fcf4abc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4582efcc5e8b9fb139b2fcc30fcf4abc">&#9670;&nbsp;</a></span>calc_acid_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_acid_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>酸属性攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a4582efcc5e8b9fb139b2fcc30fcf4abc_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a4582efcc5e8b9fb139b2fcc30fcf4abc_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a4582efcc5e8b9fb139b2fcc30fcf4abc_cgraph" id="aplayer-status-resist_8cpp_a4582efcc5e8b9fb139b2fcc30fcf4abc_cgraph">
+<area shape="rect" title="酸属性攻撃に対するダメージ倍率計算" alt="" coords="5,143,164,170"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a1676b47cc24010b348bc26769fd4bae5" title=" " alt="" coords="389,17,515,43"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a556c00d2456ffbf9d0c0fa4bb241d79c" title=" " alt="" coords="212,118,325,145"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a6e8a7a079287a8adc5c9c5b8edc7ab57" title=" " alt="" coords="217,194,320,221"/>
+<area shape="rect" href="element-resistance_8cpp.html#a64580bed127b84646a1dc84e9da22950" title=" " alt="" coords="213,245,325,271"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="579,42,737,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="591,93,725,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="785,5,935,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="815,71,905,98"/>
+<area shape="rect" href="player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="373,169,531,195"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="397,219,507,246"/>
+<area shape="rect" href="player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="399,270,505,297"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a4582efcc5e8b9fb139b2fcc30fcf4abc_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a4582efcc5e8b9fb139b2fcc30fcf4abc_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a4582efcc5e8b9fb139b2fcc30fcf4abc_icgraph" id="aplayer-status-resist_8cpp_a4582efcc5e8b9fb139b2fcc30fcf4abc_icgraph">
+<area shape="rect" title="酸属性攻撃に対するダメージ倍率計算" alt="" coords="623,115,781,141"/>
+<area shape="rect" href="player-damage_8cpp.html#a2cc414088296f068951969e2748ba07e" title="酸属性によるプレイヤー損害処理 / Hurt the player with Acid" alt="" coords="457,60,536,87"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#afc8eefd59cfc7a8bd571c9ed53344350" title="10ゲームターンが進行するごとにプレイヤーのHPとMPの増減処理を行う。 / Handle timed damage and regeneration every 10 game turns" alt="" coords="419,115,575,141"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="444,173,549,200"/>
+<area shape="rect" href="trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="245,5,311,32"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="205,56,351,83"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a5de1dfd64f941a47e81c3fb2c043a3e2" title=" " alt="" coords="205,107,351,149"/>
+<area shape="rect" href="player-move_8cpp.html#ac637efbeba2a2fca5538ee13812b97bf" title="移動に伴うプレイヤーのステータス変化処理" alt="" coords="5,5,137,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="226,173,330,200"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="185,224,371,251"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="12,199,131,225"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5ee49112da3413277c505e7c9e2e2753"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ee49112da3413277c505e7c9e2e2753">&#9670;&nbsp;</a></span>calc_chaos_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_chaos_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>混沌属性攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a5ee49112da3413277c505e7c9e2e2753_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a5ee49112da3413277c505e7c9e2e2753_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a5ee49112da3413277c505e7c9e2e2753_cgraph" id="aplayer-status-resist_8cpp_a5ee49112da3413277c505e7c9e2e2753_cgraph">
+<area shape="rect" title="混沌属性攻撃に対するダメージ倍率計算" alt="" coords="5,93,176,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a450ecdde34c30b89071f3f357c482a27" title=" " alt="" coords="224,67,348,94"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="251,118,321,145"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="396,42,555,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="408,93,543,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="603,5,752,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="632,71,723,98"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a5ee49112da3413277c505e7c9e2e2753_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a5ee49112da3413277c505e7c9e2e2753_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a5ee49112da3413277c505e7c9e2e2753_icgraph" id="aplayer-status-resist_8cpp_a5ee49112da3413277c505e7c9e2e2753_icgraph">
+<area shape="rect" title="混沌属性攻撃に対するダメージ倍率計算" alt="" coords="656,56,827,83"/>
+<area shape="rect" href="player-status-resist_8cpp.html#a253e621fb6141bb093cb356f8d8ae5ac" title="混沌属性攻撃に対するダメージ倍率計算(乱数固定)" alt="" coords="405,5,608,32"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a74769e902b7010f27290355c09bc385f" title=" " alt="" coords="438,56,575,83"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="454,107,559,133"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#afc8eefd59cfc7a8bd571c9ed53344350" title="10ゲームターンが進行するごとにプレイヤーのHPとMPの増減処理を行う。 / Handle timed damage and regeneration every 10 game turns" alt="" coords="187,5,343,32"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="12,5,117,32"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,56,338,83"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,56,112,83"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,107,317,133"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,157,357,184"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,132,124,159"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a253e621fb6141bb093cb356f8d8ae5ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a253e621fb6141bb093cb356f8d8ae5ac">&#9670;&nbsp;</a></span>calc_chaos_damage_rate_rand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_chaos_damage_rate_rand </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>混沌属性攻撃に対するダメージ倍率計算(乱数固定) </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a253e621fb6141bb093cb356f8d8ae5ac_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a253e621fb6141bb093cb356f8d8ae5ac_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a253e621fb6141bb093cb356f8d8ae5ac_cgraph" id="aplayer-status-resist_8cpp_a253e621fb6141bb093cb356f8d8ae5ac_cgraph">
+<area shape="rect" title="混沌属性攻撃に対するダメージ倍率計算(乱数固定)" alt="" coords="5,56,208,83"/>
+<area shape="rect" href="player-status-resist_8cpp.html#a5ee49112da3413277c505e7c9e2e2753" title="混沌属性攻撃に対するダメージ倍率計算" alt="" coords="256,56,427,83"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a450ecdde34c30b89071f3f357c482a27" title=" " alt="" coords="475,31,599,57"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="502,81,571,108"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="647,5,805,32"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="659,56,793,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a253e621fb6141bb093cb356f8d8ae5ac_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a253e621fb6141bb093cb356f8d8ae5ac_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a253e621fb6141bb093cb356f8d8ae5ac_icgraph" id="aplayer-status-resist_8cpp_a253e621fb6141bb093cb356f8d8ae5ac_icgraph">
+<area shape="rect" title="混沌属性攻撃に対するダメージ倍率計算(乱数固定)" alt="" coords="535,5,737,32"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#afc8eefd59cfc7a8bd571c9ed53344350" title="10ゲームターンが進行するごとにプレイヤーのHPとMPの増減処理を行う。 / Handle timed damage and regeneration every 10 game turns" alt="" coords="331,5,487,32"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="177,5,283,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1aa0baf0fc9bfa9ebc8e8fc5045f0622"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1aa0baf0fc9bfa9ebc8e8fc5045f0622">&#9670;&nbsp;</a></span>calc_cold_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_cold_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>冷気属性攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a1aa0baf0fc9bfa9ebc8e8fc5045f0622_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a1aa0baf0fc9bfa9ebc8e8fc5045f0622_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a1aa0baf0fc9bfa9ebc8e8fc5045f0622_cgraph" id="aplayer-status-resist_8cpp_a1aa0baf0fc9bfa9ebc8e8fc5045f0622_cgraph">
+<area shape="rect" title="冷気属性攻撃に対するダメージ倍率計算" alt="" coords="5,219,164,246"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a18b109ff35e05d7601188f7df38994cf" title=" " alt="" coords="212,118,325,145"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af4b16d48c4c26f2bcc1e18f503eadd34" title=" " alt="" coords="217,219,320,246"/>
+<area shape="rect" href="element-resistance_8cpp.html#a4575f3a39880dde6011b3486b4812bd5" title=" " alt="" coords="213,270,325,297"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="579,42,737,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="591,93,725,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a1ef7b925805f17575d38db4d7ec565ef" title=" " alt="" coords="389,67,515,94"/>
+<area shape="rect" href="player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="373,169,531,195"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="785,5,935,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="815,71,905,98"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="397,219,507,246"/>
+<area shape="rect" href="player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="399,270,505,297"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a1aa0baf0fc9bfa9ebc8e8fc5045f0622_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a1aa0baf0fc9bfa9ebc8e8fc5045f0622_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a1aa0baf0fc9bfa9ebc8e8fc5045f0622_icgraph" id="aplayer-status-resist_8cpp_a1aa0baf0fc9bfa9ebc8e8fc5045f0622_icgraph">
+<area shape="rect" title="冷気属性攻撃に対するダメージ倍率計算" alt="" coords="637,169,796,196"/>
+<area shape="rect" href="player-damage_8cpp.html#a71b92a6bc674bee26d592cd621fabb89" title="冷気属性によるプレイヤー損害処理 / Hurt the player with Cold" alt="" coords="472,115,551,141"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#afc8eefd59cfc7a8bd571c9ed53344350" title="10ゲームターンが進行するごとにプレイヤーのHPとMPの増減処理を行う。 / Handle timed damage and regeneration every 10 game turns" alt="" coords="433,169,589,196"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="459,224,564,251"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#aaa05a5250933f8e86ddeb176acd03250" title=" " alt="" coords="229,5,356,32"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="5,31,152,57"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a5de1dfd64f941a47e81c3fb2c043a3e2" title=" " alt="" coords="219,107,366,149"/>
+<area shape="rect" href="player-damage_8cpp.html#a7b72f7a9f63aeb5e4e28ca9cd8d0fe43" title="敵オーラによるプレイヤーのダメージ処理" alt="" coords="231,173,355,200"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="241,224,345,251"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="200,275,385,301"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="19,249,138,276"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af0f09f3f4b1f25dbe864c47abed55831"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0f09f3f4b1f25dbe864c47abed55831">&#9670;&nbsp;</a></span>calc_conf_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_conf_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>混乱属性攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_af0f09f3f4b1f25dbe864c47abed55831_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_af0f09f3f4b1f25dbe864c47abed55831_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_af0f09f3f4b1f25dbe864c47abed55831_cgraph" id="aplayer-status-resist_8cpp_af0f09f3f4b1f25dbe864c47abed55831_cgraph">
+<area shape="rect" title="混乱属性攻撃に対するダメージ倍率計算" alt="" coords="5,93,164,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a87e2385dc2ef3915747658a53a9a24d3" title=" " alt="" coords="212,67,325,94"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="234,118,303,145"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="373,42,532,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="385,93,520,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="580,5,729,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="609,71,700,98"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_af0f09f3f4b1f25dbe864c47abed55831_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_af0f09f3f4b1f25dbe864c47abed55831_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_af0f09f3f4b1f25dbe864c47abed55831_icgraph" id="aplayer-status-resist_8cpp_af0f09f3f4b1f25dbe864c47abed55831_icgraph">
+<area shape="rect" title="混乱属性攻撃に対するダメージ倍率計算" alt="" coords="611,31,769,57"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a4db391222fac6de9243b6a960dcd838b" title=" " alt="" coords="405,5,563,32"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="431,56,537,83"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,5,338,32"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,5,112,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,56,317,83"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,107,357,133"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,81,124,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad09e38f4ce36ffc51f8d99549b64a6da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad09e38f4ce36ffc51f8d99549b64a6da">&#9670;&nbsp;</a></span>calc_dark_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_dark_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>暗黒属性攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_ad09e38f4ce36ffc51f8d99549b64a6da_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_ad09e38f4ce36ffc51f8d99549b64a6da_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_ad09e38f4ce36ffc51f8d99549b64a6da_cgraph" id="aplayer-status-resist_8cpp_ad09e38f4ce36ffc51f8d99549b64a6da_cgraph">
+<area shape="rect" title="暗黒属性攻撃に対するダメージ倍率計算" alt="" coords="5,118,165,145"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a8d4edecd58f282d6dd802d24707d5f6d" title=" " alt="" coords="235,67,349,94"/>
+<area shape="rect" href="player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="213,118,371,145"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="257,169,327,195"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="419,42,577,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="431,93,565,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="625,5,775,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="655,71,745,98"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_ad09e38f4ce36ffc51f8d99549b64a6da_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_ad09e38f4ce36ffc51f8d99549b64a6da_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_ad09e38f4ce36ffc51f8d99549b64a6da_icgraph" id="aplayer-status-resist_8cpp_ad09e38f4ce36ffc51f8d99549b64a6da_icgraph">
+<area shape="rect" title="暗黒属性攻撃に対するダメージ倍率計算" alt="" coords="580,31,740,57"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a58c6bcec90400d27d6118275bf500d5e" title=" " alt="" coords="405,5,532,32"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="416,56,521,83"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,5,338,32"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,5,112,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,56,317,83"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,107,357,133"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,81,124,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aca6d0a93d4c4ef4f09607516a75d4fe3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca6d0a93d4c4ef4f09607516a75d4fe3">&#9670;&nbsp;</a></span>calc_deathray_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_deathray_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>死の光線に対するダメージ倍率計算 </p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_aca6d0a93d4c4ef4f09607516a75d4fe3_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_aca6d0a93d4c4ef4f09607516a75d4fe3_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_aca6d0a93d4c4ef4f09607516a75d4fe3_icgraph" id="aplayer-status-resist_8cpp_aca6d0a93d4c4ef4f09607516a75d4fe3_icgraph">
+<area shape="rect" title="死の光線に対するダメージ倍率計算" alt="" coords="612,31,797,57"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a6efc6146a7b8d1e862f0d6d3fcbd359e" title=" " alt="" coords="405,5,564,32"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="432,56,537,83"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,5,338,32"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,5,112,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,56,317,83"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,107,357,133"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,81,124,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af449c4804042e3fd96e013bbe6e1e953"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af449c4804042e3fd96e013bbe6e1e953">&#9670;&nbsp;</a></span>calc_disenchant_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_disenchant_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>劣化属性攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_af449c4804042e3fd96e013bbe6e1e953_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_af449c4804042e3fd96e013bbe6e1e953_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_af449c4804042e3fd96e013bbe6e1e953_cgraph" id="aplayer-status-resist_8cpp_af449c4804042e3fd96e013bbe6e1e953_cgraph">
+<area shape="rect" title="劣化属性攻撃に対するダメージ倍率計算" alt="" coords="5,93,204,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a2920de06b527fff6d193d676fd4d812d" title=" " alt="" coords="252,67,372,94"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="277,118,347,145"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="420,42,579,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="432,93,567,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="627,5,776,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="656,71,747,98"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_af449c4804042e3fd96e013bbe6e1e953_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_af449c4804042e3fd96e013bbe6e1e953_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_af449c4804042e3fd96e013bbe6e1e953_icgraph" id="aplayer-status-resist_8cpp_af449c4804042e3fd96e013bbe6e1e953_icgraph">
+<area shape="rect" title="劣化属性攻撃に対するダメージ倍率計算" alt="" coords="619,31,817,57"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a44bf08974b173bfabd14b7f969327052" title=" " alt="" coords="405,5,571,32"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="435,56,541,83"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,5,338,32"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,5,112,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,56,317,83"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,107,357,133"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,81,124,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8ac8f301f067aa747db2f2d623e78998"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ac8f301f067aa747db2f2d623e78998">&#9670;&nbsp;</a></span>calc_elec_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_elec_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>電撃属性攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a8ac8f301f067aa747db2f2d623e78998_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a8ac8f301f067aa747db2f2d623e78998_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a8ac8f301f067aa747db2f2d623e78998_cgraph" id="aplayer-status-resist_8cpp_a8ac8f301f067aa747db2f2d623e78998_cgraph">
+<area shape="rect" title="電撃属性攻撃に対するダメージ倍率計算" alt="" coords="5,143,164,170"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a2ec20a346ee5ea8fb5c8d235ad0148cf" title=" " alt="" coords="389,17,515,43"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7922f516a1908d8f3c31f64003704ecb" title=" " alt="" coords="212,118,325,145"/>
+<area shape="rect" href="player-status-flags_8cpp.html#aaaac45a147459f6dcef1d53328692296" title=" " alt="" coords="217,169,320,195"/>
+<area shape="rect" href="element-resistance_8cpp.html#a9c549b5cefa113e04fd56c1a84d42bc3" title=" " alt="" coords="213,245,325,271"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="579,42,737,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="591,93,725,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="785,5,935,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="815,71,905,98"/>
+<area shape="rect" href="player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="373,169,531,195"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="397,219,507,246"/>
+<area shape="rect" href="player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="399,270,505,297"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a8ac8f301f067aa747db2f2d623e78998_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a8ac8f301f067aa747db2f2d623e78998_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a8ac8f301f067aa747db2f2d623e78998_icgraph" id="aplayer-status-resist_8cpp_a8ac8f301f067aa747db2f2d623e78998_icgraph">
+<area shape="rect" title="電撃属性攻撃に対するダメージ倍率計算" alt="" coords="609,119,768,145"/>
+<area shape="rect" href="player-damage_8cpp.html#a1fdd8fef23ce71cad2865261b7ccfc92" title="電撃属性によるプレイヤー損害処理 / Hurt the player with electricity" alt="" coords="444,67,523,93"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#afc8eefd59cfc7a8bd571c9ed53344350" title="10ゲームターンが進行するごとにプレイヤーのHPとMPの増減処理を行う。 / Handle timed damage and regeneration every 10 game turns" alt="" coords="405,119,561,145"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="431,173,536,200"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,5,338,32"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a5de1dfd64f941a47e81c3fb2c043a3e2" title=" " alt="" coords="191,57,338,98"/>
+<area shape="rect" href="player-damage_8cpp.html#a7b72f7a9f63aeb5e4e28ca9cd8d0fe43" title="敵オーラによるプレイヤーのダメージ処理" alt="" coords="203,123,327,149"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,5,112,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,173,317,200"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,224,357,251"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,199,124,225"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abd1c3489adf3464ff2bfbbfb58dbf47f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd1c3489adf3464ff2bfbbfb58dbf47f">&#9670;&nbsp;</a></span>calc_fire_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_fire_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>火炎属性攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_abd1c3489adf3464ff2bfbbfb58dbf47f_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_abd1c3489adf3464ff2bfbbfb58dbf47f_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_abd1c3489adf3464ff2bfbbfb58dbf47f_cgraph" id="aplayer-status-resist_8cpp_abd1c3489adf3464ff2bfbbfb58dbf47f_cgraph">
+<area shape="rect" title="火炎属性攻撃に対するダメージ倍率計算" alt="" coords="5,181,157,207"/>
+<area shape="rect" href="player-status-flags_8cpp.html#ade78b9d37026daaaef1f1b904da9ce40" title=" " alt="" coords="205,130,312,157"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a1c5bf1a571c9b8f65e83a7fe3d777b71" title=" " alt="" coords="211,181,307,207"/>
+<area shape="rect" href="element-resistance_8cpp.html#a2adbd8481ec9c24c47d1a1a106f15d1f" title=" " alt="" coords="206,231,311,258"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="565,42,724,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="577,105,712,131"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3c8e37ad1c2ecfdc389e4070fda2c1c0" title=" " alt="" coords="379,79,499,106"/>
+<area shape="rect" href="player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="360,181,517,207"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="772,5,921,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="801,71,892,98"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="383,231,494,258"/>
+<area shape="rect" href="player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="386,282,491,309"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_abd1c3489adf3464ff2bfbbfb58dbf47f_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_abd1c3489adf3464ff2bfbbfb58dbf47f_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_abd1c3489adf3464ff2bfbbfb58dbf47f_icgraph" id="aplayer-status-resist_8cpp_abd1c3489adf3464ff2bfbbfb58dbf47f_icgraph">
+<area shape="rect" title="火炎属性攻撃に対するダメージ倍率計算" alt="" coords="623,169,775,196"/>
+<area shape="rect" href="player-damage_8cpp.html#a1baa0fdc9a8912f4da2d8f1905c2aac7" title="火炎属性によるプレイヤー損害処理 / Hurt the player with Fire" alt="" coords="461,115,532,141"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#afc8eefd59cfc7a8bd571c9ed53344350" title="10ゲームターンが進行するごとにプレイヤーのHPとMPの増減処理を行う。 / Handle timed damage and regeneration every 10 game turns" alt="" coords="419,169,575,196"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="444,224,549,251"/>
+<area shape="rect" href="trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="245,5,311,32"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="205,56,351,83"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a5de1dfd64f941a47e81c3fb2c043a3e2" title=" " alt="" coords="205,107,351,149"/>
+<area shape="rect" href="player-damage_8cpp.html#a7b72f7a9f63aeb5e4e28ca9cd8d0fe43" title="敵オーラによるプレイヤーのダメージ処理" alt="" coords="216,173,340,200"/>
+<area shape="rect" href="player-move_8cpp.html#ac637efbeba2a2fca5538ee13812b97bf" title="移動に伴うプレイヤーのステータス変化処理" alt="" coords="5,5,137,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="226,224,330,251"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="185,275,371,301"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="12,249,131,276"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1b70242ad7da716639ae861aa8ca65f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b70242ad7da716639ae861aa8ca65f8">&#9670;&nbsp;</a></span>calc_gravity_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_gravity_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重力攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a1b70242ad7da716639ae861aa8ca65f8_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a1b70242ad7da716639ae861aa8ca65f8_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a1b70242ad7da716639ae861aa8ca65f8_icgraph" id="aplayer-status-resist_8cpp_a1b70242ad7da716639ae861aa8ca65f8_icgraph">
+<area shape="rect" title="重力攻撃に対するダメージ倍率計算" alt="" coords="592,31,764,57"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a1b78b9f0d91f7022364038517f53d45f" title=" " alt="" coords="405,5,544,32"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="422,56,527,83"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,5,338,32"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,5,112,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,56,317,83"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,107,357,133"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,81,124,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae197b2672c72d0f37a4eb20c3d6de5c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae197b2672c72d0f37a4eb20c3d6de5c4">&#9670;&nbsp;</a></span>calc_hell_fire_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_hell_fire_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>地獄の火炎攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_ae197b2672c72d0f37a4eb20c3d6de5c4_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_ae197b2672c72d0f37a4eb20c3d6de5c4_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_ae197b2672c72d0f37a4eb20c3d6de5c4_icgraph" id="aplayer-status-resist_8cpp_ae197b2672c72d0f37a4eb20c3d6de5c4_icgraph">
+<area shape="rect" title="地獄の火炎攻撃に対するダメージ倍率計算" alt="" coords="600,31,779,57"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#abe29cb7326c3fc1aa70eef0750217599" title=" " alt="" coords="405,5,552,32"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="426,56,531,83"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,5,338,32"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,5,112,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,56,317,83"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,107,357,133"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,81,124,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab103071ffabc98d383836992f1069866"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab103071ffabc98d383836992f1069866">&#9670;&nbsp;</a></span>calc_holy_fire_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_holy_fire_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>聖なる火炎攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_ab103071ffabc98d383836992f1069866_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_ab103071ffabc98d383836992f1069866_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_ab103071ffabc98d383836992f1069866_icgraph" id="aplayer-status-resist_8cpp_ab103071ffabc98d383836992f1069866_icgraph">
+<area shape="rect" title="聖なる火炎攻撃に対するダメージ倍率計算" alt="" coords="604,31,787,57"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#aad6b73f5efa90374610e2217db3944ea" title=" " alt="" coords="405,5,556,32"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="428,56,533,83"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,5,338,32"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,5,112,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,56,317,83"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,107,357,133"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,81,124,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a787e8711d1aa6a2429325041f67750be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a787e8711d1aa6a2429325041f67750be">&#9670;&nbsp;</a></span>calc_lite_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_lite_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>閃光属性攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a787e8711d1aa6a2429325041f67750be_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a787e8711d1aa6a2429325041f67750be_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a787e8711d1aa6a2429325041f67750be_cgraph" id="aplayer-status-resist_8cpp_a787e8711d1aa6a2429325041f67750be_cgraph">
+<area shape="rect" title="閃光属性攻撃に対するダメージ倍率計算" alt="" coords="5,93,157,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a539fb94ebe19c2e394dc92ada45c657e" title=" " alt="" coords="231,42,337,69"/>
+<area shape="rect" href="player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="205,93,363,119"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="249,143,319,170"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="411,42,569,69"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="617,5,767,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="647,71,737,98"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a787e8711d1aa6a2429325041f67750be_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a787e8711d1aa6a2429325041f67750be_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a787e8711d1aa6a2429325041f67750be_icgraph" id="aplayer-status-resist_8cpp_a787e8711d1aa6a2429325041f67750be_icgraph">
+<area shape="rect" title="閃光属性攻撃に対するダメージ倍率計算" alt="" coords="572,31,724,57"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#aac0e5865e185429974095a18e1e9c516" title=" " alt="" coords="405,5,524,32"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="412,56,517,83"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,5,338,32"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,5,112,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,56,317,83"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,107,357,133"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,81,124,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aefbc214b1d6bac6f5db5902edab4e495"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefbc214b1d6bac6f5db5902edab4e495">&#9670;&nbsp;</a></span>calc_nether_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_nether_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>地獄属性攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_aefbc214b1d6bac6f5db5902edab4e495_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_aefbc214b1d6bac6f5db5902edab4e495_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_aefbc214b1d6bac6f5db5902edab4e495_cgraph" id="aplayer-status-resist_8cpp_aefbc214b1d6bac6f5db5902edab4e495_cgraph">
+<area shape="rect" title="地獄属性攻撃に対するダメージ倍率計算" alt="" coords="5,118,176,145"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a582fe0fbf9e8e59ab7414b96e298907d" title=" " alt="" coords="245,67,360,94"/>
+<area shape="rect" href="player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="224,118,381,145"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="268,169,337,195"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="429,42,588,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="441,93,576,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="636,5,785,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="665,71,756,98"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_aefbc214b1d6bac6f5db5902edab4e495_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_aefbc214b1d6bac6f5db5902edab4e495_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_aefbc214b1d6bac6f5db5902edab4e495_icgraph" id="aplayer-status-resist_8cpp_aefbc214b1d6bac6f5db5902edab4e495_icgraph">
+<area shape="rect" title="地獄属性攻撃に対するダメージ倍率計算" alt="" coords="592,31,763,57"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#ad39232a477af529bbefded5c2e68fcb6" title="地獄属性によるダメージを受ける" alt="" coords="405,5,544,32"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="422,56,527,83"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,5,338,32"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,5,112,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,56,317,83"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,107,357,133"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,81,124,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7114824bf64f2cca54ed6840e8af85fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7114824bf64f2cca54ed6840e8af85fd">&#9670;&nbsp;</a></span>calc_nexus_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_nexus_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>因果混乱属性攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a7114824bf64f2cca54ed6840e8af85fd_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a7114824bf64f2cca54ed6840e8af85fd_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a7114824bf64f2cca54ed6840e8af85fd_cgraph" id="aplayer-status-resist_8cpp_a7114824bf64f2cca54ed6840e8af85fd_cgraph">
+<area shape="rect" title="因果混乱属性攻撃に対するダメージ倍率計算" alt="" coords="5,93,176,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a2920de06b527fff6d193d676fd4d812d" title=" " alt="" coords="224,67,344,94"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="249,118,319,145"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="392,42,551,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="404,93,539,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="599,5,748,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="628,71,719,98"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a7114824bf64f2cca54ed6840e8af85fd_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a7114824bf64f2cca54ed6840e8af85fd_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a7114824bf64f2cca54ed6840e8af85fd_icgraph" id="aplayer-status-resist_8cpp_a7114824bf64f2cca54ed6840e8af85fd_icgraph">
+<area shape="rect" title="因果混乱属性攻撃に対するダメージ倍率計算" alt="" coords="591,31,761,57"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a1f1daf40f482dac324c58410be190eb0" title=" " alt="" coords="405,5,543,32"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="421,56,527,83"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,5,338,32"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,5,112,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,56,317,83"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,107,357,133"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,81,124,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0b398093c77c03f4208e9dbc65cdb78e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b398093c77c03f4208e9dbc65cdb78e">&#9670;&nbsp;</a></span>calc_nuke_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_nuke_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>放射性廃棄物攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a0b398093c77c03f4208e9dbc65cdb78e_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a0b398093c77c03f4208e9dbc65cdb78e_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a0b398093c77c03f4208e9dbc65cdb78e_cgraph" id="aplayer-status-resist_8cpp_a0b398093c77c03f4208e9dbc65cdb78e_cgraph">
+<area shape="rect" title="放射性廃棄物攻撃に対するダメージ倍率計算" alt="" coords="5,143,168,170"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a82a3c09fa7e9113cb5a952b8cce27cb6" title=" " alt="" coords="216,118,329,145"/>
+<area shape="rect" href="element-resistance_8cpp.html#a15b3a8e7ece2bbc45ef1d42559bfb0d2" title=" " alt="" coords="217,169,329,195"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="377,42,536,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="389,93,524,119"/>
+<area shape="rect" href="player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="378,143,535,170"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="584,5,733,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="613,71,704,98"/>
+<area shape="rect" href="player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="404,194,509,221"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a0b398093c77c03f4208e9dbc65cdb78e_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a0b398093c77c03f4208e9dbc65cdb78e_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a0b398093c77c03f4208e9dbc65cdb78e_icgraph" id="aplayer-status-resist_8cpp_a0b398093c77c03f4208e9dbc65cdb78e_icgraph">
+<area shape="rect" title="放射性廃棄物攻撃に対するダメージ倍率計算" alt="" coords="652,56,815,83"/>
+<area shape="rect" href="monster-attack-lose_8cpp.html#a256586043cdcaa5da8bc36e86e5151af" title="病気ダメージを計算する (毒耐性があれば、(1d4 + 4) / 9になる。二重耐性なら更に(1d4 + 4) / 9)" alt="" coords="473,5,604,32"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#acef826f9c56e2d18ed1e37256dfcfb10" title="モンスターからプレーヤーへの直接攻撃をその種別において振り分ける" alt="" coords="477,56,601,83"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="486,107,591,133"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a5de1dfd64f941a47e81c3fb2c043a3e2" title=" " alt="" coords="259,9,406,50"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a4c501e4155c9fe7c492e1c0fd4c61c3b" title="モンスターから直接攻撃を1回受けた時の処理" alt="" coords="5,16,192,43"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="281,96,385,123"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="240,147,425,173"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="39,121,158,148"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9dc98d50daa3a9bc4204eb0d82132f1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dc98d50daa3a9bc4204eb0d82132f1f">&#9670;&nbsp;</a></span>calc_pois_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_pois_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>毒属性攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a9dc98d50daa3a9bc4204eb0d82132f1f_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a9dc98d50daa3a9bc4204eb0d82132f1f_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a9dc98d50daa3a9bc4204eb0d82132f1f_cgraph" id="aplayer-status-resist_8cpp_a9dc98d50daa3a9bc4204eb0d82132f1f_cgraph">
+<area shape="rect" title="毒属性攻撃に対するダメージ倍率計算" alt="" coords="5,143,164,170"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a82a3c09fa7e9113cb5a952b8cce27cb6" title=" " alt="" coords="212,118,325,145"/>
+<area shape="rect" href="element-resistance_8cpp.html#a15b3a8e7ece2bbc45ef1d42559bfb0d2" title=" " alt="" coords="213,169,325,195"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="373,42,532,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="385,93,520,119"/>
+<area shape="rect" href="player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="374,143,531,170"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="580,5,729,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="609,71,700,98"/>
+<area shape="rect" href="player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="400,194,505,221"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a9dc98d50daa3a9bc4204eb0d82132f1f_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a9dc98d50daa3a9bc4204eb0d82132f1f_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a9dc98d50daa3a9bc4204eb0d82132f1f_icgraph" id="aplayer-status-resist_8cpp_a9dc98d50daa3a9bc4204eb0d82132f1f_icgraph">
+<area shape="rect" title="毒属性攻撃に対するダメージ倍率計算" alt="" coords="593,56,752,83"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#af55a7105481ccf1d35de7d9b5898bfba" title=" " alt="" coords="410,5,541,32"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#ae55c8ae5bbb432fe04dd096c46d7b88a" title=" " alt="" coords="405,56,545,83"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="423,107,528,133"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,31,338,57"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,31,112,57"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,81,317,108"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,132,357,159"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,107,124,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac5862238b26310fc46cc64f721b41ae8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5862238b26310fc46cc64f721b41ae8">&#9670;&nbsp;</a></span>calc_rocket_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_rocket_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ロケット属性攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_ac5862238b26310fc46cc64f721b41ae8_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_ac5862238b26310fc46cc64f721b41ae8_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_ac5862238b26310fc46cc64f721b41ae8_cgraph" id="aplayer-status-resist_8cpp_ac5862238b26310fc46cc64f721b41ae8_cgraph">
+<area shape="rect" title="ロケット属性攻撃に対するダメージ倍率計算" alt="" coords="5,67,176,94"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a424fa05aca9475823bdc30881234e269" title=" " alt="" coords="224,67,345,94"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="393,42,552,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="405,93,540,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="600,5,749,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="629,71,720,98"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_ac5862238b26310fc46cc64f721b41ae8_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_ac5862238b26310fc46cc64f721b41ae8_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_ac5862238b26310fc46cc64f721b41ae8_icgraph" id="aplayer-status-resist_8cpp_ac5862238b26310fc46cc64f721b41ae8_icgraph">
+<area shape="rect" title="ロケット属性攻撃に対するダメージ倍率計算" alt="" coords="592,31,763,57"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a1b79a4e4193f10627af578d9e55b55e2" title=" " alt="" coords="405,5,544,32"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="422,56,527,83"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,5,338,32"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,5,112,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,56,317,83"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,107,357,133"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,81,124,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a08965195f21a6463e035b3383b18b2ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08965195f21a6463e035b3383b18b2ab">&#9670;&nbsp;</a></span>calc_shards_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_shards_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>破片属性攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a08965195f21a6463e035b3383b18b2ab_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a08965195f21a6463e035b3383b18b2ab_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a08965195f21a6463e035b3383b18b2ab_cgraph" id="aplayer-status-resist_8cpp_a08965195f21a6463e035b3383b18b2ab_cgraph">
+<area shape="rect" title="破片属性攻撃に対するダメージ倍率計算" alt="" coords="5,93,180,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a424fa05aca9475823bdc30881234e269" title=" " alt="" coords="228,67,349,94"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="254,118,323,145"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="397,42,556,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="409,93,544,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="604,5,753,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="633,71,724,98"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a08965195f21a6463e035b3383b18b2ab_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a08965195f21a6463e035b3383b18b2ab_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a08965195f21a6463e035b3383b18b2ab_icgraph" id="aplayer-status-resist_8cpp_a08965195f21a6463e035b3383b18b2ab_icgraph">
+<area shape="rect" title="破片属性攻撃に対するダメージ倍率計算" alt="" coords="595,31,769,57"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a9546da6b90c339f82ef7547ff8c20d8e" title=" " alt="" coords="405,5,547,32"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="423,56,529,83"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,5,338,32"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,5,112,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,56,317,83"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,107,357,133"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,81,124,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6db5d9cb3a1ac877ca5f8b0a78ea3518"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6db5d9cb3a1ac877ca5f8b0a78ea3518">&#9670;&nbsp;</a></span>calc_sound_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_sound_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>轟音属性攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a6db5d9cb3a1ac877ca5f8b0a78ea3518_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a6db5d9cb3a1ac877ca5f8b0a78ea3518_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a6db5d9cb3a1ac877ca5f8b0a78ea3518_cgraph" id="aplayer-status-resist_8cpp_a6db5d9cb3a1ac877ca5f8b0a78ea3518_cgraph">
+<area shape="rect" title="轟音属性攻撃に対するダメージ倍率計算" alt="" coords="5,67,176,94"/>
+<area shape="rect" href="player-status-flags_8cpp.html#aa4ee039268e7bab18e332dc675ca8fe7" title=" " alt="" coords="224,42,348,69"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="251,93,321,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="396,42,555,69"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="603,5,752,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="632,71,723,98"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a6db5d9cb3a1ac877ca5f8b0a78ea3518_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a6db5d9cb3a1ac877ca5f8b0a78ea3518_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a6db5d9cb3a1ac877ca5f8b0a78ea3518_icgraph" id="aplayer-status-resist_8cpp_a6db5d9cb3a1ac877ca5f8b0a78ea3518_icgraph">
+<area shape="rect" title="轟音属性攻撃に対するダメージ倍率計算" alt="" coords="591,31,761,57"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#acde8194acd68dc39184a59c925930010" title=" " alt="" coords="405,5,543,32"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="421,56,527,83"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,5,338,32"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,5,112,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,56,317,83"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,107,357,133"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,81,124,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3f5a9cf88a620802ab42f152f32cb9d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f5a9cf88a620802ab42f152f32cb9d3">&#9670;&nbsp;</a></span>calc_time_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_time_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>時間逆転攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a3f5a9cf88a620802ab42f152f32cb9d3_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a3f5a9cf88a620802ab42f152f32cb9d3_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a3f5a9cf88a620802ab42f152f32cb9d3_cgraph" id="aplayer-status-resist_8cpp_a3f5a9cf88a620802ab42f152f32cb9d3_cgraph">
+<area shape="rect" title="時間逆転攻撃に対するダメージ倍率計算" alt="" coords="5,67,165,94"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7ec9e6d164c210cf9bd2e3247ca48593" title=" " alt="" coords="213,42,328,69"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="236,93,305,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="376,42,535,69"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="583,5,732,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="612,71,703,98"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_a3f5a9cf88a620802ab42f152f32cb9d3_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_a3f5a9cf88a620802ab42f152f32cb9d3_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_a3f5a9cf88a620802ab42f152f32cb9d3_icgraph" id="aplayer-status-resist_8cpp_a3f5a9cf88a620802ab42f152f32cb9d3_icgraph">
+<area shape="rect" title="時間逆転攻撃に対するダメージ倍率計算" alt="" coords="580,31,740,57"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a7b4276ebe6b586c5aa4cb95e3cd6a925" title="時間逆転属性によるダメージを受ける" alt="" coords="405,5,532,32"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="416,56,521,83"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="191,5,338,32"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="17,5,112,32"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="213,56,317,83"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="172,107,357,133"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="5,81,124,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad91de85c228ab5feccee43398411141d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad91de85c228ab5feccee43398411141d">&#9670;&nbsp;</a></span>calc_void_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_void_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>虚無攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_ad91de85c228ab5feccee43398411141d_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_ad91de85c228ab5feccee43398411141d_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_ad91de85c228ab5feccee43398411141d_cgraph" id="aplayer-status-resist_8cpp_ad91de85c228ab5feccee43398411141d_cgraph">
+<area shape="rect" title="虚無攻撃に対するダメージ倍率計算" alt="" coords="5,5,163,32"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="211,5,280,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_ad91de85c228ab5feccee43398411141d_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_ad91de85c228ab5feccee43398411141d_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_ad91de85c228ab5feccee43398411141d_icgraph" id="aplayer-status-resist_8cpp_ad91de85c228ab5feccee43398411141d_icgraph">
+<area shape="rect" title="虚無攻撃に対するダメージ倍率計算" alt="" coords="600,31,757,57"/>
+<area shape="rect" href="player-status-resist_8cpp.html#aa53895160d561e864885dc3b9c9fd63c" title="虚無攻撃に対するダメージ倍率計算(乱数固定)" alt="" coords="363,5,552,32"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#abe224fc7a33c6fc39f1309aa3aaadcbc" title=" " alt="" coords="395,56,519,83"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#afc8eefd59cfc7a8bd571c9ed53344350" title="10ゲームターンが進行するごとにプレイヤーのHPとMPの増減処理を行う。 / Handle timed damage and regeneration every 10 game turns" alt="" coords="159,5,315,32"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="5,5,111,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa53895160d561e864885dc3b9c9fd63c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa53895160d561e864885dc3b9c9fd63c">&#9670;&nbsp;</a></span>calc_void_damage_rate_rand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_void_damage_rate_rand </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>虚無攻撃に対するダメージ倍率計算(乱数固定) </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_aa53895160d561e864885dc3b9c9fd63c_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_aa53895160d561e864885dc3b9c9fd63c_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_aa53895160d561e864885dc3b9c9fd63c_cgraph" id="aplayer-status-resist_8cpp_aa53895160d561e864885dc3b9c9fd63c_cgraph">
+<area shape="rect" title="虚無攻撃に対するダメージ倍率計算(乱数固定)" alt="" coords="5,5,195,32"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ad91de85c228ab5feccee43398411141d" title="虚無攻撃に対するダメージ倍率計算" alt="" coords="243,5,400,32"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="448,5,517,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_aa53895160d561e864885dc3b9c9fd63c_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_aa53895160d561e864885dc3b9c9fd63c_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_aa53895160d561e864885dc3b9c9fd63c_icgraph" id="aplayer-status-resist_8cpp_aa53895160d561e864885dc3b9c9fd63c_icgraph">
+<area shape="rect" title="虚無攻撃に対するダメージ倍率計算(乱数固定)" alt="" coords="535,5,724,32"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#afc8eefd59cfc7a8bd571c9ed53344350" title="10ゲームターンが進行するごとにプレイヤーのHPとMPの増減処理を行う。 / Handle timed damage and regeneration every 10 game turns" alt="" coords="331,5,487,32"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="177,5,283,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad5e455446275ab7b7f2ee6e3f69cad91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5e455446275ab7b7f2ee6e3f69cad91">&#9670;&nbsp;</a></span>calc_water_damage_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> calc_water_damage_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>水流攻撃に対するダメージ倍率計算 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_ad5e455446275ab7b7f2ee6e3f69cad91_cgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_ad5e455446275ab7b7f2ee6e3f69cad91_cgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_ad5e455446275ab7b7f2ee6e3f69cad91_cgraph" id="aplayer-status-resist_8cpp_ad5e455446275ab7b7f2ee6e3f69cad91_cgraph">
+<area shape="rect" title="水流攻撃に対するダメージ倍率計算" alt="" coords="5,67,172,94"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a9fa6dce7c556330329fd275daaed4743" title=" " alt="" coords="220,42,340,69"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ac20fca6111ddbfb76bda5f40f658af67" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="245,93,315,119"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="388,42,547,69"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="595,5,744,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="624,71,715,98"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_ad5e455446275ab7b7f2ee6e3f69cad91_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_ad5e455446275ab7b7f2ee6e3f69cad91_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_ad5e455446275ab7b7f2ee6e3f69cad91_icgraph" id="aplayer-status-resist_8cpp_ad5e455446275ab7b7f2ee6e3f69cad91_icgraph">
+<area shape="rect" title="水流攻撃に対するダメージ倍率計算" alt="" coords="524,5,691,32"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a3c8d385479ee21a1d5a63d07677043be" title="水流属性によるダメージを受ける" alt="" coords="343,5,476,32"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="148,5,295,32"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="5,5,100,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac20fca6111ddbfb76bda5f40f658af67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac20fca6111ddbfb76bda5f40f658af67">&#9670;&nbsp;</a></span>randrate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> randrate </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dice</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="player-status-resist_8h.html#abaf43e5595b98243fec08b0357b3fc9d">rate_calc_type_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>耐性倍率計算の用途に応じた分岐処理 </p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-status-resist_8cpp_ac20fca6111ddbfb76bda5f40f658af67_icgraph.png" border="0" usemap="#aplayer-status-resist_8cpp_ac20fca6111ddbfb76bda5f40f658af67_icgraph" alt=""/></div>
+<map name="aplayer-status-resist_8cpp_ac20fca6111ddbfb76bda5f40f658af67_icgraph" id="aplayer-status-resist_8cpp_ac20fca6111ddbfb76bda5f40f658af67_icgraph">
+<area shape="rect" title="耐性倍率計算の用途に応じた分岐処理" alt="" coords="736,411,805,437"/>
+<area shape="rect" href="player-status-resist_8cpp.html#a1afbb7294ee4fbe56d1b6ee3d42ee1ae" title="深淵攻撃に対するダメージ倍率計算" alt="" coords="503,31,674,57"/>
+<area shape="rect" href="player-status-resist_8cpp.html#a5ee49112da3413277c505e7c9e2e2753" title="混沌属性攻撃に対するダメージ倍率計算" alt="" coords="503,208,674,235"/>
+<area shape="rect" href="player-status-resist_8cpp.html#af0f09f3f4b1f25dbe864c47abed55831" title="混乱属性攻撃に対するダメージ倍率計算" alt="" coords="509,411,668,437"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ad09e38f4ce36ffc51f8d99549b64a6da" title="暗黒属性攻撃に対するダメージ倍率計算" alt="" coords="509,461,669,488"/>
+<area shape="rect" href="player-status-resist_8cpp.html#af449c4804042e3fd96e013bbe6e1e953" title="劣化属性攻撃に対するダメージ倍率計算" alt="" coords="489,512,688,539"/>
+<area shape="rect" href="player-status-resist_8cpp.html#a787e8711d1aa6a2429325041f67750be" title="閃光属性攻撃に対するダメージ倍率計算" alt="" coords="513,563,665,589"/>
+<area shape="rect" href="player-status-resist_8cpp.html#aefbc214b1d6bac6f5db5902edab4e495" title="地獄属性攻撃に対するダメージ倍率計算" alt="" coords="503,613,674,640"/>
+<area shape="rect" href="player-status-resist_8cpp.html#a7114824bf64f2cca54ed6840e8af85fd" title="因果混乱属性攻撃に対するダメージ倍率計算" alt="" coords="503,664,674,691"/>
+<area shape="rect" href="player-status-resist_8cpp.html#a08965195f21a6463e035b3383b18b2ab" title="破片属性攻撃に対するダメージ倍率計算" alt="" coords="501,259,676,285"/>
+<area shape="rect" href="player-status-resist_8cpp.html#a6db5d9cb3a1ac877ca5f8b0a78ea3518" title="轟音属性攻撃に対するダメージ倍率計算" alt="" coords="503,309,674,336"/>
+<area shape="rect" href="player-status-resist_8cpp.html#a3f5a9cf88a620802ab42f152f32cb9d3" title="時間逆転攻撃に対するダメージ倍率計算" alt="" coords="509,360,669,387"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ad91de85c228ab5feccee43398411141d" title="虚無攻撃に対するダメージ倍率計算" alt="" coords="510,107,667,133"/>
+<area shape="rect" href="player-status-resist_8cpp.html#ad5e455446275ab7b7f2ee6e3f69cad91" title="水流攻撃に対するダメージ倍率計算" alt="" coords="505,740,672,767"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a30c131390e9c98b86d46e5b8f84d9c29" title=" " alt="" coords="271,5,409,32"/>
+<area shape="rect" href="player-status-resist_8cpp.html#a253e621fb6141bb093cb356f8d8ae5ac" title="混沌属性攻撃に対するダメージ倍率計算(乱数固定)" alt="" coords="239,157,441,184"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a74769e902b7010f27290355c09bc385f" title=" " alt="" coords="271,208,409,235"/>
+<area shape="rect" href="warning_8cpp.html#a571645a42dda06b74598025cf43bcc28" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する / Calculate spell damages" alt="" coords="287,411,393,437"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#afc8eefd59cfc7a8bd571c9ed53344350" title="10ゲームターンが進行するごとにプレイヤーのHPとMPの増減処理を行う。 / Handle timed damage and regeneration every 10 game turns" alt="" coords="20,107,176,133"/>
+<area shape="rect" href="effect-player-switcher_8cpp.html#a30760356d9fab8f269b9d52392e222b3" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="25,512,171,539"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="46,385,150,412"/>
+<area shape="rect" href="warning_8cpp.html#ac3e2b62c0728c4fddcb916ea23fabb36" title="警告基準を定めるために魔法の効果属性に基づいて最大魔法ダメージを計算する。 / Calculate spell damages" alt="" coords="5,436,191,463"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a4db391222fac6de9243b6a960dcd838b" title=" " alt="" coords="261,461,419,488"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a58c6bcec90400d27d6118275bf500d5e" title=" " alt="" coords="277,512,403,539"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a44bf08974b173bfabd14b7f969327052" title=" " alt="" coords="257,563,423,589"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#aac0e5865e185429974095a18e1e9c516" title=" " alt="" coords="281,613,399,640"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#ad39232a477af529bbefded5c2e68fcb6" title="地獄属性によるダメージを受ける" alt="" coords="271,664,409,691"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a1f1daf40f482dac324c58410be190eb0" title=" " alt="" coords="271,715,409,741"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a9546da6b90c339f82ef7547ff8c20d8e" title=" " alt="" coords="269,259,411,285"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#acde8194acd68dc39184a59c925930010" title=" " alt="" coords="271,309,409,336"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a7b4276ebe6b586c5aa4cb95e3cd6a925" title="時間逆転属性によるダメージを受ける" alt="" coords="277,360,403,387"/>
+<area shape="rect" href="player-status-resist_8cpp.html#aa53895160d561e864885dc3b9c9fd63c" title="虚無攻撃に対するダメージ倍率計算(乱数固定)" alt="" coords="245,56,435,83"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#abe224fc7a33c6fc39f1309aa3aaadcbc" title=" " alt="" coords="278,107,402,133"/>
+<area shape="rect" href="effect-player-resist-hurt_8cpp.html#a3c8d385479ee21a1d5a63d07677043be" title="水流属性によるダメージを受ける" alt="" coords="273,765,407,792"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時56分09秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

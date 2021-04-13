@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/floor/floor-town.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a620f8a6b723e397390ae5ca00f5aa8c.html">floor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">floor-town.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="floor-town_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="floor-town_8h.html#a343bcd7a53cb367ec07bc755d6697088">    1</a></span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structstore__type.html">store_type</a> <a class="code" href="structstore__type.html">store_type</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * A structure describing a town with</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * stores and buildings</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structtown__type.html">   11</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structtown__type.html">town_type</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structtown__type.html#a6d9f84a3868950e9e232367708cc25e6">   12</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structtown__type.html#a6d9f84a3868950e9e232367708cc25e6">name</a>[32];</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structtown__type.html#a7ef303a7ea479f1a61014f918e80d556">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="structtown__type.html#a7ef303a7ea479f1a61014f918e80d556">seed</a>;      <span class="comment">/* Seed for RNG */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structtown__type.html#a1b66c6609b3f6d0503d1ed9d3b04cbf2">   14</a></span>&#160;    <a class="code" href="structstore__type.html">store_type</a> *<a class="code" href="structtown__type.html#a1b66c6609b3f6d0503d1ed9d3b04cbf2">store</a>;    <span class="comment">/* The stores [MAX_STORES] */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structtown__type.html#a0ac30f3777feea9949ba25c5d8188a91">   15</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structtown__type.html#a0ac30f3777feea9949ba25c5d8188a91">numstores</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="floor-town_8h.html#a2a1a6bcea34eac5ce9b4fcc5b21f5c10">   16</a></span>&#160;} <a class="code" href="floor-town_8h.html#a2a1a6bcea34eac5ce9b4fcc5b21f5c10">town_type</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#adc2d0131e2525ce0dc1b663caaaf384e">TOWN_IDX</a> <a class="code" href="floor-town_8h.html#ad92a7c03f6e484eaa0f4468a970f0207">max_towns</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <a class="code" href="structtown__type.html">town_type</a> *<a class="code" href="floor-town_8h.html#a225828ae980064ceb62f677dfd977c17">town_info</a>;</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="afloor-town_8h_html_a225828ae980064ceb62f677dfd977c17"><div class="ttname"><a href="floor-town_8h.html#a225828ae980064ceb62f677dfd977c17">town_info</a></div><div class="ttdeci">town_type * town_info</div><div class="ttdef"><b>Definition:</b> floor-town.cpp:7</div></div>
+<div class="ttc" id="afloor-town_8h_html_a2a1a6bcea34eac5ce9b4fcc5b21f5c10"><div class="ttname"><a href="floor-town_8h.html#a2a1a6bcea34eac5ce9b4fcc5b21f5c10">town_type</a></div><div class="ttdeci">struct town_type town_type</div></div>
+<div class="ttc" id="afloor-town_8h_html_ad92a7c03f6e484eaa0f4468a970f0207"><div class="ttname"><a href="floor-town_8h.html#ad92a7c03f6e484eaa0f4468a970f0207">max_towns</a></div><div class="ttdeci">TOWN_IDX max_towns</div><div class="ttdef"><b>Definition:</b> floor-town.cpp:4</div></div>
+<div class="ttc" id="ah-type_8h_html_ac67a750044882c0fd3760a2eccd56d7c"><div class="ttname"><a href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a></div><div class="ttdeci">char GAME_TEXT</div><div class="ttdoc">ゲーム中のテキスト型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:133</div></div>
+<div class="ttc" id="ah-type_8h_html_adc2d0131e2525ce0dc1b663caaaf384e"><div class="ttname"><a href="h-type_8h.html#adc2d0131e2525ce0dc1b663caaaf384e">TOWN_IDX</a></div><div class="ttdeci">s16b TOWN_IDX</div><div class="ttdoc">ゲーム中の町ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:98</div></div>
+<div class="ttc" id="ah-type_8h_html_af7a1de980667931f896ae6a820f0ee80"><div class="ttname"><a href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a></div><div class="ttdeci">unsigned long u32b</div><div class="ttdef"><b>Definition:</b> h-type.h:93</div></div>
+<div class="ttc" id="astructstore__type_html"><div class="ttname"><a href="structstore__type.html">store_type</a></div><div class="ttdoc">店舗の情報構造体</div><div class="ttdef"><b>Definition:</b> store-util.h:27</div></div>
+<div class="ttc" id="astructtown__type_html"><div class="ttname"><a href="structtown__type.html">town_type</a></div><div class="ttdef"><b>Definition:</b> floor-town.h:11</div></div>
+<div class="ttc" id="astructtown__type_html_a0ac30f3777feea9949ba25c5d8188a91"><div class="ttname"><a href="structtown__type.html#a0ac30f3777feea9949ba25c5d8188a91">town_type::numstores</a></div><div class="ttdeci">byte numstores</div><div class="ttdef"><b>Definition:</b> floor-town.h:15</div></div>
+<div class="ttc" id="astructtown__type_html_a1b66c6609b3f6d0503d1ed9d3b04cbf2"><div class="ttname"><a href="structtown__type.html#a1b66c6609b3f6d0503d1ed9d3b04cbf2">town_type::store</a></div><div class="ttdeci">store_type * store</div><div class="ttdef"><b>Definition:</b> floor-town.h:14</div></div>
+<div class="ttc" id="astructtown__type_html_a6d9f84a3868950e9e232367708cc25e6"><div class="ttname"><a href="structtown__type.html#a6d9f84a3868950e9e232367708cc25e6">town_type::name</a></div><div class="ttdeci">GAME_TEXT name[32]</div><div class="ttdef"><b>Definition:</b> floor-town.h:12</div></div>
+<div class="ttc" id="astructtown__type_html_a7ef303a7ea479f1a61014f918e80d556"><div class="ttname"><a href="structtown__type.html#a7ef303a7ea479f1a61014f918e80d556">town_type::seed</a></div><div class="ttdeci">u32b seed</div><div class="ttdef"><b>Definition:</b> floor-town.h:13</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

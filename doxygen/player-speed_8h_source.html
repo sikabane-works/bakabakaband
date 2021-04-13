@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player-status/player-speed.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b229fbdc4ab0cfad60eb3057c8d9c405.html">player-status</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">player-speed.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="player-speed_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player-status-base_8h.html">player-status/player-status-base.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="class_player_speed.html">    4</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_player_speed.html">PlayerSpeed</a> : <span class="keyword">public</span> <a class="code" href="class_player_status_base.html">PlayerStatusBase</a> {</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">using</span> <a class="code" href="class_player_status_base.html#a036eaac2774544966c2acc44dd51059b">PlayerStatusBase::PlayerStatusBase</a>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_player_speed.html#a5cb861ed7d4f5d264ed610b65d7c2fb7">    7</a></span>&#160;    <a class="code" href="class_player_speed.html#a5cb861ed7d4f5d264ed610b65d7c2fb7">PlayerSpeed</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_player_speed.html#a02e6ed384a13e9e2a30d10087bf3264f">set_locals</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_speed.html#a9712e0af595549c12a81770402d85b34">race_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_speed.html#a87c46977ae295b1272eeceeed24243ec">class_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_speed.html#a0717c893c8c54058327859c69eebc22d">personality_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_speed.html#aafe5cee854f83be414e30603691ed033">equipments_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_speed.html#a9d3a993e53ab4c25347c7ad9ed9ebadc">time_effect_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_speed.html#a4af1f86240616373109fff366f33195f">battleform_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_speed.html#a4c837feb0159ed28f797ffb7a418d207">mutation_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_speed.html#a3ffdfb0babf7f32a2d731a0b481f10c4">riding_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_speed.html#a5812566ad7a07906fcbcb8e13cb69dee">inventory_weight_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_speed.html#a5dc90d4ea2536b28e1622b7df586528b">action_value</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="class_player_speed.html#aa76ccee8755c5e762dd0786079754e0c">equipments_flags</a>(<a class="code" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a> check_flag) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_speed.html#af5204919044a07d73920be74af1214ed">special_weapon_set_value</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="class_player_speed.html#a4e66d0929747e913053dd5409f6bc5e4">set_exception_value</a>(<a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> value) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="ttc" id="aclass_player_speed_html"><div class="ttname"><a href="class_player_speed.html">PlayerSpeed</a></div><div class="ttdef"><b>Definition:</b> player-speed.h:4</div></div>
+<div class="ttc" id="aclass_player_speed_html_a02e6ed384a13e9e2a30d10087bf3264f"><div class="ttname"><a href="class_player_speed.html#a02e6ed384a13e9e2a30d10087bf3264f">PlayerSpeed::set_locals</a></div><div class="ttdeci">void set_locals() override</div><div class="ttdef"><b>Definition:</b> player-speed.cpp:31</div></div>
+<div class="ttc" id="aclass_player_speed_html_a0717c893c8c54058327859c69eebc22d"><div class="ttname"><a href="class_player_speed.html#a0717c893c8c54058327859c69eebc22d">PlayerSpeed::personality_value</a></div><div class="ttdeci">s16b personality_value() override</div><div class="ttdef"><b>Definition:</b> player-speed.cpp:134</div></div>
+<div class="ttc" id="aclass_player_speed_html_a3ffdfb0babf7f32a2d731a0b481f10c4"><div class="ttname"><a href="class_player_speed.html#a3ffdfb0babf7f32a2d731a0b481f10c4">PlayerSpeed::riding_value</a></div><div class="ttdeci">s16b riding_value() override</div><div class="ttdef"><b>Definition:</b> player-speed.cpp:268</div></div>
+<div class="ttc" id="aclass_player_speed_html_a4af1f86240616373109fff366f33195f"><div class="ttname"><a href="class_player_speed.html#a4af1f86240616373109fff366f33195f">PlayerSpeed::battleform_value</a></div><div class="ttdeci">s16b battleform_value() override</div><div class="ttdef"><b>Definition:</b> player-speed.cpp:226</div></div>
+<div class="ttc" id="aclass_player_speed_html_a4c837feb0159ed28f797ffb7a418d207"><div class="ttname"><a href="class_player_speed.html#a4c837feb0159ed28f797ffb7a418d207">PlayerSpeed::mutation_value</a></div><div class="ttdeci">s16b mutation_value() override</div><div class="ttdef"><b>Definition:</b> player-speed.cpp:242</div></div>
+<div class="ttc" id="aclass_player_speed_html_a4e66d0929747e913053dd5409f6bc5e4"><div class="ttname"><a href="class_player_speed.html#a4e66d0929747e913053dd5409f6bc5e4">PlayerSpeed::set_exception_value</a></div><div class="ttdeci">s16b set_exception_value(s16b value) override</div><div class="ttdoc">値を直接変更する例外処理。 @params value 単純加算された修正値の合計</div><div class="ttdef"><b>Definition:</b> player-speed.cpp:367</div></div>
+<div class="ttc" id="aclass_player_speed_html_a5812566ad7a07906fcbcb8e13cb69dee"><div class="ttname"><a href="class_player_speed.html#a5812566ad7a07906fcbcb8e13cb69dee">PlayerSpeed::inventory_weight_value</a></div><div class="ttdeci">s16b inventory_weight_value() override</div><div class="ttdef"><b>Definition:</b> player-speed.cpp:302</div></div>
+<div class="ttc" id="aclass_player_speed_html_a5cb861ed7d4f5d264ed610b65d7c2fb7"><div class="ttname"><a href="class_player_speed.html#a5cb861ed7d4f5d264ed610b65d7c2fb7">PlayerSpeed::PlayerSpeed</a></div><div class="ttdeci">PlayerSpeed()=delete</div></div>
+<div class="ttc" id="aclass_player_speed_html_a5dc90d4ea2536b28e1622b7df586528b"><div class="ttname"><a href="class_player_speed.html#a5dc90d4ea2536b28e1622b7df586528b">PlayerSpeed::action_value</a></div><div class="ttdeci">s16b action_value() override</div><div class="ttdef"><b>Definition:</b> player-speed.cpp:336</div></div>
+<div class="ttc" id="aclass_player_speed_html_a87c46977ae295b1272eeceeed24243ec"><div class="ttname"><a href="class_player_speed.html#a87c46977ae295b1272eeceeed24243ec">PlayerSpeed::class_value</a></div><div class="ttdeci">s16b class_value() override</div><div class="ttdef"><b>Definition:</b> player-speed.cpp:92</div></div>
+<div class="ttc" id="aclass_player_speed_html_a9712e0af595549c12a81770402d85b34"><div class="ttname"><a href="class_player_speed.html#a9712e0af595549c12a81770402d85b34">PlayerSpeed::race_value</a></div><div class="ttdeci">s16b race_value() override</div><div class="ttdef"><b>Definition:</b> player-speed.cpp:50</div></div>
+<div class="ttc" id="aclass_player_speed_html_a9d3a993e53ab4c25347c7ad9ed9ebadc"><div class="ttname"><a href="class_player_speed.html#a9d3a993e53ab4c25347c7ad9ed9ebadc">PlayerSpeed::time_effect_value</a></div><div class="ttdeci">s16b time_effect_value() override</div><div class="ttdef"><b>Definition:</b> player-speed.cpp:192</div></div>
+<div class="ttc" id="aclass_player_speed_html_aa76ccee8755c5e762dd0786079754e0c"><div class="ttname"><a href="class_player_speed.html#aa76ccee8755c5e762dd0786079754e0c">PlayerSpeed::equipments_flags</a></div><div class="ttdeci">BIT_FLAGS equipments_flags(tr_type check_flag) override</div><div class="ttdoc">判定するflagを持つ装備品に対応するBIT_FLAGSを返す @params check_flag 判定するtr_type</div><div class="ttdef"><b>Definition:</b> player-speed.cpp:350</div></div>
+<div class="ttc" id="aclass_player_speed_html_aafe5cee854f83be414e30603691ed033"><div class="ttname"><a href="class_player_speed.html#aafe5cee854f83be414e30603691ed033">PlayerSpeed::equipments_value</a></div><div class="ttdeci">s16b equipments_value() override</div><div class="ttdoc">this-&gt;tr_flagを持つ装備品のpval合計値を返す</div><div class="ttdef"><b>Definition:</b> player-speed.cpp:174</div></div>
+<div class="ttc" id="aclass_player_speed_html_af5204919044a07d73920be74af1214ed"><div class="ttname"><a href="class_player_speed.html#af5204919044a07d73920be74af1214ed">PlayerSpeed::special_weapon_set_value</a></div><div class="ttdeci">s16b special_weapon_set_value()</div><div class="ttdef"><b>Definition:</b> player-speed.cpp:150</div></div>
+<div class="ttc" id="aclass_player_status_base_html"><div class="ttname"><a href="class_player_status_base.html">PlayerStatusBase</a></div><div class="ttdef"><b>Definition:</b> player-status-base.h:5</div></div>
+<div class="ttc" id="aclass_player_status_base_html_a036eaac2774544966c2acc44dd51059b"><div class="ttname"><a href="class_player_status_base.html#a036eaac2774544966c2acc44dd51059b">PlayerStatusBase::PlayerStatusBase</a></div><div class="ttdeci">PlayerStatusBase()=delete</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="aplayer-status-base_8h_html"><div class="ttname"><a href="player-status-base_8h.html">player-status-base.h</a></div></div>
+<div class="ttc" id="atr-types_8h_html_a269ab2317e91ea335ab19483ab09d4fd"><div class="ttname"><a href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a></div><div class="ttdeci">tr_type</div><div class="ttdef"><b>Definition:</b> tr-types.h:6</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

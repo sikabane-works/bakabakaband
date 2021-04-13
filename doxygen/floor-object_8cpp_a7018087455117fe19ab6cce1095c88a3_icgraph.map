@@ -1,0 +1,49 @@
+<map id="excise_object_idx" name="excise_object_idx">
+<area shape="rect" id="node1" title="床上、モンスター所持でスタックされたアイテムを削除しスタックを補完する / Excise a dungeon object from any stacks" alt="" coords="919,1637,1045,1664"/>
+<area shape="rect" id="node2" href="$floor-object_8cpp.html#af338285652093066df1fda01f9b4fed2" title="オブジェクトを削除する / Delete a dungeon object" alt="" coords="732,1456,855,1483"/>
+<area shape="rect" id="node45" href="$monster-object_8cpp.html#a9ef3ffafff4b487b19f9df8f26595911" title="モンスターがアイテムを拾うか壊す処理" alt="" coords="499,1709,655,1736"/>
+<area shape="rect" id="node46" href="$target-describer_8cpp.html#a59979cacfc216b2b74e2a13531351b13" title=" " alt="" coords="716,1659,871,1701"/>
+<area shape="rect" id="node47" href="$floor-item-getter_8cpp.html#a608d31e79fc4aba7a4903453f3c78c95" title="オブジェクト選択の汎用関数(床上アイテム用) / Let the user select an item, save its &quot;index&quot;" alt="" coords="742,1725,845,1752"/>
+<area shape="rect" id="node3" href="$effect-item_8cpp.html#a535ce53ec7f78b19e787e4289d5dec3f" title="汎用的なビーム/ボルト/ボール系によるアイテムオブジェクトへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="534,368,619,395"/>
+<area shape="rect" id="node7" href="$autopick_8cpp.html#a5bc67a4e33234de016dd0bf46e90a051" title=" " alt="" coords="485,760,668,787"/>
+<area shape="rect" id="node8" href="$player-inventory_8cpp.html#a9a1c3265a4b625e9f772baa1c55a0a3e" title="プレイヤーがオブジェクト上に乗った際の表示処理 / Player &quot;wants&quot; to pick up an object or gold." alt="" coords="49,1557,100,1584"/>
+<area shape="rect" id="node9" href="$object-compressor_8cpp.html#a1ede50288749e158368e8fefdd4d960b" title="グローバルオブジェクト配列から優先度の低いものを削除し、データを圧縮する。 / Compact and Reorder the object list." alt="" coords="516,1355,637,1381"/>
+<area shape="rect" id="node10" href="$monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="509,811,644,837"/>
+<area shape="rect" id="node24" href="$spells-polymorph_8cpp.html#abf6f0e07032268b1b3aff681bda9e043" title="指定座標にいるモンスターを変身させる / Helper function – return a &quot;nearby&quot; race for polymorphing" alt="" coords="247,1405,383,1432"/>
+<area shape="rect" id="node27" href="$floor-changer_8cpp.html#a4fc5172d58a596bc101d833ae8066b68" title=" " alt="" coords="5,1148,144,1175"/>
+<area shape="rect" id="node37" href="$player-inventory_8cpp.html#a870affd57aaed3be875c174410ecf5d3" title="プレイヤーがオブジェクトを拾った際のメッセージ表示処理 / Helper routine for py_pickup() and py_pickup_floor()." alt="" coords="503,1557,651,1584"/>
+<area shape="rect" id="node38" href="$player-inventory_8cpp.html#afcd849ce59bc779d896da0d7287e9c68" title="床上のアイテムを拾うメイン処理" alt="" coords="259,1608,371,1635"/>
+<area shape="rect" id="node39" href="$floor-object_8cpp.html#a813cdbf06e3e4393d69f571c29c942cd" title="床上の数の無くなったアイテムスロットを消去する / Optimize an item on the floor (destroy &quot;empty&quot; items)" alt="" coords="509,1659,644,1685"/>
+<area shape="rect" id="node44" href="$monster-object_8cpp.html#a9d0c80290145e58a0d1d77180938d96d" title="モンスターが盗みや拾いで確保していたアイテムを全てドロップさせる / Drop all items carried by a monster" alt="" coords="503,302,650,343"/>
+<area shape="rect" id="node4" href="$mind-mirror-master_8cpp.html#ac5e475bf543027393672734eb9613bf6" title="鏡魔法「封魔結界」の効果処理" alt="" coords="268,5,361,32"/>
+<area shape="rect" id="node5" href="$effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="284,56,345,83"/>
+<area shape="rect" id="node6" href="$spells-pet_8cpp.html#a4d1508b844fb21fa74cec6f11df83464" title="ペット爆破処理 /" alt="" coords="13,81,136,108"/>
+<area shape="rect" id="node11" href="$melee-postprocess_8cpp.html#a4a451de636382e9b7827db0baa28e8de" title="ダメージを受けたモンスターのHPが0未満になった際の処理" alt="" coords="249,781,381,808"/>
+<area shape="rect" id="node12" href="$floor-leaver_8cpp.html#a96b320c18dbf4c4ae9c1e7d2bae92d1d" title=" " alt="" coords="229,360,400,387"/>
+<area shape="rect" id="node13" href="$floor-leaver_8cpp.html#a9473eba7ae635c7cb94c6cf0d7426659" title="フロア移動時のペット保存処理 / Preserve_pets" alt="" coords="27,360,122,387"/>
+<area shape="rect" id="node14" href="$monster-compaction_8cpp.html#a45418160543ab052bb17c17d724acb6b" title="モンスター情報配列を圧縮する / Compact and Reorder the monster list" alt="" coords="248,899,381,925"/>
+<area shape="rect" id="node15" href="$grid_8h.html#a73f3bf1cce90b5f4579ab9e8eaf3c990" title="指定位置に存在するモンスターを削除する / Delete the monster, if any, at a given location" alt="" coords="259,949,370,976"/>
+<area shape="rect" id="node16" href="$cmd-pet_8cpp.html#a016f22b29967f438acaee62a94bb05af" title="ペットを開放するコマンドのメインルーチン" alt="" coords="242,1000,387,1027"/>
+<area shape="rect" id="node17" href="$effect-monster_8cpp.html#a66fbd35d5367d63f8dade77eb3f020a9" title="ペットの死亡を処理する" alt="" coords="231,1051,399,1077"/>
+<area shape="rect" id="node18" href="$effect-monster-charm_8cpp.html#a2a5454454ef807a2f8913dd585cd30d3" title="モンスターボールで捕らえた処理" alt="" coords="233,1101,397,1128"/>
+<area shape="rect" id="node19" href="$mutation-execution_8cpp.html#a0c9c1052c587d71b683d8a700d9ae016" title="突然変異のレイシャル効果実装" alt="" coords="244,1152,385,1179"/>
+<area shape="rect" id="node20" href="$spells-genocide_8cpp.html#a92bd5e26c84fa2eb42514b87bc6f2632" title="モンスターへの単体抹殺処理サブルーチン / Delete a non&#45;unique/non&#45;quest monster" alt="" coords="263,1203,366,1229"/>
+<area shape="rect" id="node21" href="$effect-monster_8cpp.html#acef771ba4088ad06648538d22f19615e" title="不潔な病人の治療処理" alt="" coords="271,1253,359,1280"/>
+<area shape="rect" id="node22" href="$monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="265,1304,365,1331"/>
+<area shape="rect" id="node23" href="$grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="274,1355,355,1381"/>
+<area shape="rect" id="node25" href="$floor-leaver_8cpp.html#aa73f111463184d866eaa0b6224b4f728" title="クエスト・フロア内のモンスター・インベントリ情報を保存する" alt="" coords="266,157,363,184"/>
+<area shape="rect" id="node26" href="$floor-changer_8cpp.html#ae7751559958500b17c9ce9eb67d3b531" title=" " alt="" coords="241,833,389,874"/>
+<area shape="rect" id="node28" href="$monster-runaway_8cpp.html#ae8dda2c5c942f1263737b32fd4ac4f25" title="ペットや友好的なモンスターがフロアから逃げる処理を行う" alt="" coords="253,259,377,285"/>
+<area shape="rect" id="node29" href="$mspell-special_8cpp.html#a687af24a85011574ed6b0878a26951e8" title="特殊な行動を取るモンスターの具体的な行動定義 (r_infoのSPECIALフラグ)" alt="" coords="192,309,437,336"/>
+<area shape="rect" id="node30" href="$floor-leaver_8cpp.html#a8665adb3738f60520d0b3f4cec4aeafc" title=" " alt="" coords="240,731,389,757"/>
+<area shape="rect" id="node31" href="$spells-world_8cpp.html#a7204ab233ffa573046416517da467469" title="プレイヤー及びモンスターをレベルテレポートさせる / Teleport the player one level up or down (random when legal)" alt="" coords="266,411,363,437"/>
+<area shape="rect" id="node32" href="$quantum-effect_8cpp.html#a18d880aac6dc2b623b0bacac0bc5e350" title="ユニークでない量子生物を消滅させる" alt="" coords="253,461,377,488"/>
+<area shape="rect" id="node33" href="$monster-processor_8cpp.html#a7a235f391a99359f8492015d2afa2d11" title="召喚の親元が消滅した時、子供も消滅させる" alt="" coords="224,512,405,539"/>
+<area shape="rect" id="node34" href="$wild_8cpp.html#ad2b39f3334022fd4e424dbc1029c79f4" title="広域マップの生成 / Build the wilderness area outside of the town." alt="" coords="259,563,370,589"/>
+<area shape="rect" id="node35" href="$wizard-special-process_8cpp.html#a9ac11136d7f8c0e65133da9da3d3392d" title="フロアに存在する全モンスターを消去する / Delete all monsters" alt="" coords="234,613,395,640"/>
+<area shape="rect" id="node36" href="$wizard-special-process_8cpp.html#aac26873cfc84c2e6540c702eb92cc9a5" title="プレイヤー近辺の全モンスターを消去する / Delete all nearby monsters" alt="" coords="243,665,386,706"/>
+<area shape="rect" id="node40" href="$cmd-equipment_8cpp.html#ac5a7ea600612007cbf7d105f433213ab" title="装備するコマンドのメインルーチン / Wield or wear a single item from the pack or floor" alt="" coords="263,1659,367,1685"/>
+<area shape="rect" id="node41" href="$cmd-throw_8cpp.html#a2bf5cafc33bda1c413586efc1a7b133b" title=" " alt="" coords="247,1710,383,1751"/>
+<area shape="rect" id="node42" href="$inventory-object_8cpp.html#a95bd37f416091df0360f4eec6bd12e49" title=" " alt="" coords="276,1776,353,1803"/>
+<area shape="rect" id="node43" href="$inventory-initializer_8cpp.html#aebe89b7df76c5e6fbada804a5f1852bf" title="所持状態にあるアイテムの中から一部枠の装備可能なものを装備させる。" alt="" coords="279,1827,350,1853"/>
+</map>

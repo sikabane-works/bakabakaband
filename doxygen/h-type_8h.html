@@ -1,0 +1,2280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/system/h-type.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d501334aeb1b78ad67cd3c72c37b1e87.html">system</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#enum-members">列挙型</a>  </div>
+  <div class="headertitle">
+<div class="title">h-type.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>ゲーム中に用いる変数型定義 / Basic "types".  
+<a href="#details">[詳解]</a></p>
+<div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="h-type_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2system_2h-type_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2system_2h-type_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2system_2h-type_8hdep">
+<area shape="rect" title="ゲーム中に用いる変数型定義 / Basic &quot;types&quot;." alt="" coords="602,5,790,61"/>
+<area shape="rect" href="main-win-cfg-reader_8h.html" title=" " alt="" coords="159,109,347,165"/>
+<area shape="rect" href="main-win-music_8h.html" title=" " alt="" coords="27,213,215,269"/>
+<area shape="rect" href="main-win-sound_8h.html" title=" " alt="" coords="291,213,479,269"/>
+<area shape="rect" href="main-win-file-utils_8h.html" title=" " alt="" coords="503,213,691,269"/>
+<area shape="rect" href="main-win-tokenizer_8h.html" title=" " alt="" coords="474,421,662,477"/>
+<area shape="rect" href="angband-version_8h.html" title=" " alt="" coords="2615,317,2803,373"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="4138,109,4326,165"/>
+<area shape="rect" href="point-2d_8h.html" title=" " alt="" coords="5421,117,5635,158"/>
+<area shape="rect" href="main-win-cfg-reader_8cpp.html" title="Windows版固有実装(.cfgファイル処理)" alt="" coords="262,525,450,581"/>
+<area shape="rect" href="main-win-sound_8cpp.html" title="Windows版固有実装(効果音)" alt="" coords="159,317,347,373"/>
+<area shape="rect" href="main-win-music_8cpp.html" title="Windows版固有実装(BGM)" alt="" coords="474,525,662,581"/>
+<area shape="rect" href="main-win-file-utils_8cpp.html" title="Windows版固有実装(ファイル関連処理)" alt="" coords="503,317,691,373"/>
+<area shape="rect" href="main-win-tokenizer_8cpp.html" title="Windows版固有実装(トークン分割)" alt="" coords="686,525,874,581"/>
+<area shape="rect" href="cmd-dump_8cpp.html" title=" " alt="" coords="686,421,874,477"/>
+<area shape="rect" href="game-play_8cpp.html" title=" " alt="" coords="899,421,1096,477"/>
+<area shape="rect" href="scores_8cpp.html" title=" " alt="" coords="1120,429,1349,470"/>
+<area shape="rect" href="show-file_8cpp.html" title=" " alt="" coords="1373,421,1568,477"/>
+<area shape="rect" href="report_8cpp.html" title=" " alt="" coords="1592,429,1800,470"/>
+<area shape="rect" href="character-dump_8cpp.html" title=" " alt="" coords="1825,421,2013,477"/>
+<area shape="rect" href="floor-loader_8cpp.html" title=" " alt="" coords="2037,421,2225,477"/>
+<area shape="rect" href="info-loader_8cpp.html" title=" " alt="" coords="4242,421,4430,477"/>
+<area shape="rect" href="load_8cpp.html" title=" " alt="" coords="2249,429,2463,470"/>
+<area shape="rect" href="angband-initializer_8cpp.html" title=" " alt="" coords="2487,421,2705,477"/>
+<area shape="rect" href="info-initializer_8cpp.html" title=" " alt="" coords="2729,421,2917,477"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="4455,429,4644,470"/>
+<area shape="rect" href="save_8cpp.html" title=" " alt="" coords="2941,429,3158,470"/>
+<area shape="rect" href="angband-version_8cpp.html" title=" " alt="" coords="4669,421,4857,477"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html" title=" " alt="" coords="3182,421,3370,477"/>
+<area shape="rect" href="items-spoiler_8cpp.html" title=" " alt="" coords="3394,421,3582,477"/>
+<area shape="rect" href="monster-info-spoiler_8cpp.html" title=" " alt="" coords="3606,421,3794,477"/>
+<area shape="rect" href="wizard-special-process_8cpp.html" title=" " alt="" coords="3818,421,4006,477"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html" title=" " alt="" coords="4030,421,4218,477"/>
+<area shape="rect" href="autopick-keys-table_8h.html" title=" " alt="" coords="3582,213,3770,269"/>
+<area shape="rect" href="record-play-movie_8cpp.html" title=" " alt="" coords="3794,213,3982,269"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="4007,221,4220,262"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="4881,429,5095,470"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="4244,221,4457,262"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="4481,221,4687,262"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="4711,221,4915,262"/>
+<area shape="rect" href="autopick-entry_8cpp.html" title=" " alt="" coords="3474,317,3662,373"/>
+<area shape="rect" href="autopick-menu-data-table_8cpp.html" title=" " alt="" coords="3687,317,3884,373"/>
+<area shape="rect" href="main-win-bg_8cpp.html" title="Windows版固有実装(壁紙)" alt="" coords="4019,317,4207,373"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="4490,317,4678,373"/>
+<area shape="rect" href="grid_8cpp.html" title=" " alt="" coords="4991,221,5198,262"/>
+<area shape="rect" href="monster-lite_8cpp.html" title=" " alt="" coords="5222,213,5410,269"/>
+<area shape="rect" href="player-view_8cpp.html" title=" " alt="" coords="5434,213,5622,269"/>
+<area shape="rect" href="cave-filler_8cpp.html" title=" " alt="" coords="5647,213,5841,269"/>
+<area shape="rect" href="torch_8cpp.html" title=" " alt="" coords="5866,213,6054,269"/>
+<area shape="rect" href="spells-lite_8cpp.html" title=" " alt="" coords="6078,213,6266,269"/>
+</map>
+</div>
+</div>
+<p><a href="h-type_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:ac222effa7b6033f273d19335e5869457"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ac222effa7b6033f273d19335e5869457">INCLUDED_H_TYPE_H</a></td></tr>
+<tr class="separator:ac222effa7b6033f273d19335e5869457"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27e4d170dbc874d1cabf62de11455785"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a27e4d170dbc874d1cabf62de11455785">MAX_UCHAR</a>&#160;&#160;&#160;255</td></tr>
+<tr class="memdesc:a27e4d170dbc874d1cabf62de11455785"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum value storable in a "byte" (hard-coded)  <a href="h-type_8h.html#a27e4d170dbc874d1cabf62de11455785">[詳解]</a><br /></td></tr>
+<tr class="separator:a27e4d170dbc874d1cabf62de11455785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3742efaf988af88c727a30ca9d8d993f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a3742efaf988af88c727a30ca9d8d993f">MAX_SHORT</a>&#160;&#160;&#160;32767</td></tr>
+<tr class="memdesc:a3742efaf988af88c727a30ca9d8d993f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum value storable in a "s16b" (hard-coded)  <a href="h-type_8h.html#a3742efaf988af88c727a30ca9d8d993f">[詳解]</a><br /></td></tr>
+<tr class="separator:a3742efaf988af88c727a30ca9d8d993f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a709af41498f5625eae9f3b73fb6b6f3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a>&#160;&#160;&#160;160</td></tr>
+<tr class="memdesc:a709af41498f5625eae9f3b73fb6b6f3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum length of object's name  <a href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">[詳解]</a><br /></td></tr>
+<tr class="separator:a709af41498f5625eae9f3b73fb6b6f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9506f57397c70d5bb3b8e3a56cbe8b35"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a9506f57397c70d5bb3b8e3a56cbe8b35">MAX_MONSTER_NAME</a>&#160;&#160;&#160;160</td></tr>
+<tr class="memdesc:a9506f57397c70d5bb3b8e3a56cbe8b35"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスター名称の最大バイト数 / Max characters of monster's name  <a href="h-type_8h.html#a9506f57397c70d5bb3b8e3a56cbe8b35">[詳解]</a><br /></td></tr>
+<tr class="separator:a9506f57397c70d5bb3b8e3a56cbe8b35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:a6ff70012dce98a61c680a920f660c210"><td class="memItemLeft" align="right" valign="top">typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a></td></tr>
+<tr class="memdesc:a6ff70012dce98a61c680a920f660c210"><td class="mdescLeft">&#160;</td><td class="mdescRight">void型ポインタ定義 / A standard pointer (to "void" because ANSI C says so)  <a href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">[詳解]</a><br /></td></tr>
+<tr class="separator:a6ff70012dce98a61c680a920f660c210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af792750f10cc3fb0d64db2ebfb385fa6"><td class="memItemLeft" align="right" valign="top">typedef const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></td></tr>
+<tr class="memdesc:af792750f10cc3fb0d64db2ebfb385fa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)  <a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">[詳解]</a><br /></td></tr>
+<tr class="separator:af792750f10cc3fb0d64db2ebfb385fa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad99e8b64263d5831d93bec22e89da527"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a></td></tr>
+<tr class="memdesc:ad99e8b64263d5831d93bec22e89da527"><td class="mdescLeft">&#160;</td><td class="mdescRight">エラーコードの定義 / Error codes for function return values  <a href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">[詳解]</a><br /></td></tr>
+<tr class="separator:ad99e8b64263d5831d93bec22e89da527"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c8186d9b9b7880309c27230bbb5e69d"><td class="memItemLeft" align="right" valign="top">typedef unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a></td></tr>
+<tr class="memdesc:a0c8186d9b9b7880309c27230bbb5e69d"><td class="mdescLeft">&#160;</td><td class="mdescRight">byte型をunsighned charとして定義 / Note that unsigned values can cause math problems / An unsigned byte of memory  <a href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">[詳解]</a><br /></td></tr>
+<tr class="separator:a0c8186d9b9b7880309c27230bbb5e69d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5c9d4ba3dc37783a528b0925dc981a0"><td class="memItemLeft" align="right" valign="top">typedef char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a></td></tr>
+<tr class="memdesc:ad5c9d4ba3dc37783a528b0925dc981a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">bool型をcharとして定義 / Note that a bool is smaller than a full "int" / Simple True/False type  <a href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">[詳解]</a><br /></td></tr>
+<tr class="separator:ad5c9d4ba3dc37783a528b0925dc981a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91ad9478d81a7aaf2593e8d9c3d06a14"><td class="memItemLeft" align="right" valign="top">typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></td></tr>
+<tr class="separator:a91ad9478d81a7aaf2593e8d9c3d06a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a323299f19186bb8ebd229f05b34cfc22"><td class="memItemLeft" align="right" valign="top">typedef unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a323299f19186bb8ebd229f05b34cfc22">huge</a></td></tr>
+<tr class="separator:a323299f19186bb8ebd229f05b34cfc22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a192c51b1ed9cf77f1a597d8e2ef32ed5"><td class="memItemLeft" align="right" valign="top">typedef signed short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></td></tr>
+<tr class="separator:a192c51b1ed9cf77f1a597d8e2ef32ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae21ecc67b92c35422853544364e96b42"><td class="memItemLeft" align="right" valign="top">typedef unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a></td></tr>
+<tr class="separator:ae21ecc67b92c35422853544364e96b42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af28a46c3af7b537a7cf39e1f7e6bf81c"><td class="memItemLeft" align="right" valign="top">typedef signed long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a></td></tr>
+<tr class="separator:af28a46c3af7b537a7cf39e1f7e6bf81c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7a1de980667931f896ae6a820f0ee80"><td class="memItemLeft" align="right" valign="top">typedef unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a></td></tr>
+<tr class="separator:af7a1de980667931f896ae6a820f0ee80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f634297ff78d56cc39e0f92ea8a65a8"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a3f634297ff78d56cc39e0f92ea8a65a8">IDX</a></td></tr>
+<tr class="memdesc:a3f634297ff78d56cc39e0f92ea8a65a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のID型を定義  <a href="h-type_8h.html#a3f634297ff78d56cc39e0f92ea8a65a8">[詳解]</a><br /></td></tr>
+<tr class="separator:a3f634297ff78d56cc39e0f92ea8a65a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc2d0131e2525ce0dc1b663caaaf384e"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#adc2d0131e2525ce0dc1b663caaaf384e">TOWN_IDX</a></td></tr>
+<tr class="memdesc:adc2d0131e2525ce0dc1b663caaaf384e"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の町ID型を定義  <a href="h-type_8h.html#adc2d0131e2525ce0dc1b663caaaf384e">[詳解]</a><br /></td></tr>
+<tr class="separator:adc2d0131e2525ce0dc1b663caaaf384e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85b58bbae289409cd01a8a413e991f12"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a></td></tr>
+<tr class="memdesc:a85b58bbae289409cd01a8a413e991f12"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の地形ID型を定義  <a href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">[詳解]</a><br /></td></tr>
+<tr class="separator:a85b58bbae289409cd01a8a413e991f12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afef75ce8b6b6a38fed9a8ed936b5ea5c"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a></td></tr>
+<tr class="memdesc:afef75ce8b6b6a38fed9a8ed936b5ea5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のフロアID型を定義  <a href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">[詳解]</a><br /></td></tr>
+<tr class="separator:afef75ce8b6b6a38fed9a8ed936b5ea5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add4d21d35964c2013b8e62870d1dd798"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#add4d21d35964c2013b8e62870d1dd798">SEX_IDX</a></td></tr>
+<tr class="memdesc:add4d21d35964c2013b8e62870d1dd798"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のプレイヤー性別ID型を定義  <a href="h-type_8h.html#add4d21d35964c2013b8e62870d1dd798">[詳解]</a><br /></td></tr>
+<tr class="separator:add4d21d35964c2013b8e62870d1dd798"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af040d628a6cf11f05b0a9a38bf63a089"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#af040d628a6cf11f05b0a9a38bf63a089">MIMIC_RACE_IDX</a></td></tr>
+<tr class="memdesc:af040d628a6cf11f05b0a9a38bf63a089"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のプレイヤー変身種族ID型を定義  <a href="h-type_8h.html#af040d628a6cf11f05b0a9a38bf63a089">[詳解]</a><br /></td></tr>
+<tr class="separator:af040d628a6cf11f05b0a9a38bf63a089"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1c4dc1416e38f93cdccc5cfcfe7eb84"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ad1c4dc1416e38f93cdccc5cfcfe7eb84">PATRON_IDX</a></td></tr>
+<tr class="memdesc:ad1c4dc1416e38f93cdccc5cfcfe7eb84"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のプレイヤーパトロンID型を定義  <a href="h-type_8h.html#ad1c4dc1416e38f93cdccc5cfcfe7eb84">[詳解]</a><br /></td></tr>
+<tr class="separator:ad1c4dc1416e38f93cdccc5cfcfe7eb84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20d6abf9b1237fd7952a04ff6c31d1be"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a20d6abf9b1237fd7952a04ff6c31d1be">ACTION_IDX</a></td></tr>
+<tr class="memdesc:a20d6abf9b1237fd7952a04ff6c31d1be"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーが現在取っている常時行動のID定義  <a href="h-type_8h.html#a20d6abf9b1237fd7952a04ff6c31d1be">[詳解]</a><br /></td></tr>
+<tr class="separator:a20d6abf9b1237fd7952a04ff6c31d1be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8185d62afce2ae79b207f9300e96b14f"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a8185d62afce2ae79b207f9300e96b14f">BACT_IDX</a></td></tr>
+<tr class="memdesc:a8185d62afce2ae79b207f9300e96b14f"><td class="mdescLeft">&#160;</td><td class="mdescRight">町の施設処理のID定義  <a href="h-type_8h.html#a8185d62afce2ae79b207f9300e96b14f">[詳解]</a><br /></td></tr>
+<tr class="separator:a8185d62afce2ae79b207f9300e96b14f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdb549772010fb5de924e126357ee3f3"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#acdb549772010fb5de924e126357ee3f3">BACT_RESTRICT_IDX</a></td></tr>
+<tr class="memdesc:acdb549772010fb5de924e126357ee3f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">町の施設処理の規制処理ID定義  <a href="h-type_8h.html#acdb549772010fb5de924e126357ee3f3">[詳解]</a><br /></td></tr>
+<tr class="separator:acdb549772010fb5de924e126357ee3f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ea47f67338902d35c1e93e00cf86908"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a></td></tr>
+<tr class="separator:a7ea47f67338902d35c1e93e00cf86908"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2d0f988482931f676c919cf5d0f7716"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></td></tr>
+<tr class="separator:ad2d0f988482931f676c919cf5d0f7716"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad858b43cf9b1e70a02dbeabfd632b70c"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ad858b43cf9b1e70a02dbeabfd632b70c">DUNGEON_IDX</a></td></tr>
+<tr class="memdesc:ad858b43cf9b1e70a02dbeabfd632b70c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のダンジョンID型を定義  <a href="h-type_8h.html#ad858b43cf9b1e70a02dbeabfd632b70c">[詳解]</a><br /></td></tr>
+<tr class="separator:ad858b43cf9b1e70a02dbeabfd632b70c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a557f0599108d7e2a11e3495c819c6d6b"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a></td></tr>
+<tr class="memdesc:a557f0599108d7e2a11e3495c819c6d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の魔法領域ID型を定義  <a href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">[詳解]</a><br /></td></tr>
+<tr class="separator:a557f0599108d7e2a11e3495c819c6d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fc040f8a9ad313d0ce50224ff8841a0"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a4fc040f8a9ad313d0ce50224ff8841a0">ARTIFACT_IDX</a></td></tr>
+<tr class="memdesc:a4fc040f8a9ad313d0ce50224ff8841a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のアーティファクトID型を定義  <a href="h-type_8h.html#a4fc040f8a9ad313d0ce50224ff8841a0">[詳解]</a><br /></td></tr>
+<tr class="separator:a4fc040f8a9ad313d0ce50224ff8841a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad436c265819d8e3689955f6d5a6c67dc"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ad436c265819d8e3689955f6d5a6c67dc">EGO_IDX</a></td></tr>
+<tr class="memdesc:ad436c265819d8e3689955f6d5a6c67dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムエゴのID型を定義  <a href="h-type_8h.html#ad436c265819d8e3689955f6d5a6c67dc">[詳解]</a><br /></td></tr>
+<tr class="separator:ad436c265819d8e3689955f6d5a6c67dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93640422bdbf8fb6159d07fb971aa489"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a93640422bdbf8fb6159d07fb971aa489">ACTIVATION_IDX</a></td></tr>
+<tr class="memdesc:a93640422bdbf8fb6159d07fb971aa489"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムの発動効果ID型を定義  <a href="h-type_8h.html#a93640422bdbf8fb6159d07fb971aa489">[詳解]</a><br /></td></tr>
+<tr class="separator:a93640422bdbf8fb6159d07fb971aa489"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea64870d12a46c26b6b21b8b9e0b82df"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#aea64870d12a46c26b6b21b8b9e0b82df">VIRTUES_IDX</a></td></tr>
+<tr class="memdesc:aea64870d12a46c26b6b21b8b9e0b82df"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の徳ID型を定義  <a href="h-type_8h.html#aea64870d12a46c26b6b21b8b9e0b82df">[詳解]</a><br /></td></tr>
+<tr class="separator:aea64870d12a46c26b6b21b8b9e0b82df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77c612ab1c70448b936150562e7d6d44"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a77c612ab1c70448b936150562e7d6d44">QUEST_IDX</a></td></tr>
+<tr class="memdesc:a77c612ab1c70448b936150562e7d6d44"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のクエストID型を定義  <a href="h-type_8h.html#a77c612ab1c70448b936150562e7d6d44">[詳解]</a><br /></td></tr>
+<tr class="separator:a77c612ab1c70448b936150562e7d6d44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d97e7d4deebdc1efbab92c4d4f8bd1f"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a5d97e7d4deebdc1efbab92c4d4f8bd1f">ROOM_IDX</a></td></tr>
+<tr class="memdesc:a5d97e7d4deebdc1efbab92c4d4f8bd1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">部屋のID型を定義  <a href="h-type_8h.html#a5d97e7d4deebdc1efbab92c4d4f8bd1f">[詳解]</a><br /></td></tr>
+<tr class="separator:a5d97e7d4deebdc1efbab92c4d4f8bd1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a592c0b48d60348198260e1f6ffb1897e"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a></td></tr>
+<tr class="memdesc:a592c0b48d60348198260e1f6ffb1897e"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の所持品ID型を定義  <a href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">[詳解]</a><br /></td></tr>
+<tr class="separator:a592c0b48d60348198260e1f6ffb1897e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30141f88547728df57f6a10c56fbeb8f"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a></td></tr>
+<tr class="memdesc:a30141f88547728df57f6a10c56fbeb8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のアイテムID型を定義  <a href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">[詳解]</a><br /></td></tr>
+<tr class="separator:a30141f88547728df57f6a10c56fbeb8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcde018af7ffced7b844b9a8a4b937db"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#adcde018af7ffced7b844b9a8a4b937db">ESSENCE_IDX</a></td></tr>
+<tr class="memdesc:adcde018af7ffced7b844b9a8a4b937db"><td class="mdescLeft">&#160;</td><td class="mdescRight">鍛冶エッセンスのID型  <a href="h-type_8h.html#adcde018af7ffced7b844b9a8a4b937db">[詳解]</a><br /></td></tr>
+<tr class="separator:adcde018af7ffced7b844b9a8a4b937db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4afcd80086918943bed571d0a96b93eb"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a></td></tr>
+<tr class="memdesc:a4afcd80086918943bed571d0a96b93eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のベースアイテムID型を定義  <a href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">[詳解]</a><br /></td></tr>
+<tr class="separator:a4afcd80086918943bed571d0a96b93eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a624fc7cbe85809bead6398470d80232c"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a624fc7cbe85809bead6398470d80232c">VAULT_IDX</a></td></tr>
+<tr class="memdesc:a624fc7cbe85809bead6398470d80232c"><td class="mdescLeft">&#160;</td><td class="mdescRight">固定部屋のID型を定義  <a href="h-type_8h.html#a624fc7cbe85809bead6398470d80232c">[詳解]</a><br /></td></tr>
+<tr class="separator:a624fc7cbe85809bead6398470d80232c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc5d346936be2101fe94d1956152daba"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#adc5d346936be2101fe94d1956152daba">MUTATION_IDX</a></td></tr>
+<tr class="memdesc:adc5d346936be2101fe94d1956152daba"><td class="mdescLeft">&#160;</td><td class="mdescRight">突然変異のID型を定義  <a href="h-type_8h.html#adc5d346936be2101fe94d1956152daba">[詳解]</a><br /></td></tr>
+<tr class="separator:adc5d346936be2101fe94d1956152daba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa76a678e41fd2b751e1a18b9f5dc8c03"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></td></tr>
+<tr class="memdesc:aa76a678e41fd2b751e1a18b9f5dc8c03"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の座標型を定義  <a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">[詳解]</a><br /></td></tr>
+<tr class="separator:aa76a678e41fd2b751e1a18b9f5dc8c03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a120bdf3873d55faac841c794b3891b4a"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a120bdf3873d55faac841c794b3891b4a">POSITION_IDX</a></td></tr>
+<tr class="memdesc:a120bdf3873d55faac841c794b3891b4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の座標リストID型  <a href="h-type_8h.html#a120bdf3873d55faac841c794b3891b4a">[詳解]</a><br /></td></tr>
+<tr class="separator:a120bdf3873d55faac841c794b3891b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a08cc336b8208f7ea47e169707b626f"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a6a08cc336b8208f7ea47e169707b626f">ALIGNMENT</a></td></tr>
+<tr class="memdesc:a6a08cc336b8208f7ea47e169707b626f"><td class="mdescLeft">&#160;</td><td class="mdescRight">善悪属性の型定義  <a href="h-type_8h.html#a6a08cc336b8208f7ea47e169707b626f">[詳解]</a><br /></td></tr>
+<tr class="separator:a6a08cc336b8208f7ea47e169707b626f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6ef2627c6c64a0a5083462e8eadb434"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ae6ef2627c6c64a0a5083462e8eadb434">FEAT_SUBTYPE</a></td></tr>
+<tr class="memdesc:ae6ef2627c6c64a0a5083462e8eadb434"><td class="mdescLeft">&#160;</td><td class="mdescRight">地形情報の副値 (トラップ種別/パターン種別/店舗種別)  <a href="h-type_8h.html#ae6ef2627c6c64a0a5083462e8eadb434">[詳解]</a><br /></td></tr>
+<tr class="separator:ae6ef2627c6c64a0a5083462e8eadb434"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac67a750044882c0fd3760a2eccd56d7c"><td class="memItemLeft" align="right" valign="top">typedef char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a></td></tr>
+<tr class="memdesc:ac67a750044882c0fd3760a2eccd56d7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のテキスト型定義  <a href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">[詳解]</a><br /></td></tr>
+<tr class="separator:ac67a750044882c0fd3760a2eccd56d7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdb20155266ee801610f13b1589a3df3"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></td></tr>
+<tr class="memdesc:afdb20155266ee801610f13b1589a3df3"><td class="mdescLeft">&#160;</td><td class="mdescRight">HPとその増減量の型定義  <a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">[詳解]</a><br /></td></tr>
+<tr class="separator:afdb20155266ee801610f13b1589a3df3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7448a47304a3bec61dd90b4078037cef"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a7448a47304a3bec61dd90b4078037cef">MANA_POINT</a></td></tr>
+<tr class="memdesc:a7448a47304a3bec61dd90b4078037cef"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のMP型を定義  <a href="h-type_8h.html#a7448a47304a3bec61dd90b4078037cef">[詳解]</a><br /></td></tr>
+<tr class="separator:a7448a47304a3bec61dd90b4078037cef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d96367b8202f9cb06015609793723cd"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a5d96367b8202f9cb06015609793723cd">ARTIFACT_BIAS_IDX</a></td></tr>
+<tr class="memdesc:a5d96367b8202f9cb06015609793723cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">ランダムアーティファクトのバイアス型  <a href="h-type_8h.html#a5d96367b8202f9cb06015609793723cd">[詳解]</a><br /></td></tr>
+<tr class="separator:a5d96367b8202f9cb06015609793723cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47dfe4960088b41ad87a10ad5120f939"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a47dfe4960088b41ad87a10ad5120f939">HIT_PROB</a></td></tr>
+<tr class="memdesc:a47dfe4960088b41ad87a10ad5120f939"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の装備命中修正値を定義  <a href="h-type_8h.html#a47dfe4960088b41ad87a10ad5120f939">[詳解]</a><br /></td></tr>
+<tr class="separator:a47dfe4960088b41ad87a10ad5120f939"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3a50689203251f4dbf060fb594c8a08"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ac3a50689203251f4dbf060fb594c8a08">HIT_RELIABILITY</a></td></tr>
+<tr class="memdesc:ac3a50689203251f4dbf060fb594c8a08"><td class="mdescLeft">&#160;</td><td class="mdescRight">最終算出命中力を定義  <a href="h-type_8h.html#ac3a50689203251f4dbf060fb594c8a08">[詳解]</a><br /></td></tr>
+<tr class="separator:ac3a50689203251f4dbf060fb594c8a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e619d230e34bb820b97a37602546d3b"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a3e619d230e34bb820b97a37602546d3b">BASE_STATUS</a></td></tr>
+<tr class="memdesc:a3e619d230e34bb820b97a37602546d3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の基礎能力値型を定義  <a href="h-type_8h.html#a3e619d230e34bb820b97a37602546d3b">[詳解]</a><br /></td></tr>
+<tr class="separator:a3e619d230e34bb820b97a37602546d3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c3b7a33a04e6a334235166acc31990f"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a9c3b7a33a04e6a334235166acc31990f">MONSTER_NUMBER</a></td></tr>
+<tr class="memdesc:a9c3b7a33a04e6a334235166acc31990f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のモンスター数型を定義  <a href="h-type_8h.html#a9c3b7a33a04e6a334235166acc31990f">[詳解]</a><br /></td></tr>
+<tr class="separator:a9c3b7a33a04e6a334235166acc31990f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64d1c0cbb82f223cd3ab16d119c71b59"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a64d1c0cbb82f223cd3ab16d119c71b59">ITEM_NUMBER</a></td></tr>
+<tr class="memdesc:a64d1c0cbb82f223cd3ab16d119c71b59"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のアイテム数型を定義  <a href="h-type_8h.html#a64d1c0cbb82f223cd3ab16d119c71b59">[詳解]</a><br /></td></tr>
+<tr class="separator:a64d1c0cbb82f223cd3ab16d119c71b59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cd982c452d786746f7664a31a2507e4"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a0cd982c452d786746f7664a31a2507e4">ACTION_ENERGY</a></td></tr>
+<tr class="memdesc:a0cd982c452d786746f7664a31a2507e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の行動エネルギー型を定義  <a href="h-type_8h.html#a0cd982c452d786746f7664a31a2507e4">[詳解]</a><br /></td></tr>
+<tr class="separator:a0cd982c452d786746f7664a31a2507e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a220932af45570eca82fbc85454205983"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a></td></tr>
+<tr class="memdesc:a220932af45570eca82fbc85454205983"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の行動アーマークラス型を定義  <a href="h-type_8h.html#a220932af45570eca82fbc85454205983">[詳解]</a><br /></td></tr>
+<tr class="separator:a220932af45570eca82fbc85454205983"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba20657d0771ac9353e9e43605c12a94"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a></td></tr>
+<tr class="memdesc:aba20657d0771ac9353e9e43605c12a94"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の時限期間の型を定義  <a href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">[詳解]</a><br /></td></tr>
+<tr class="separator:aba20657d0771ac9353e9e43605c12a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa58486a17eb151250f1af9f1362d8de4"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#aa58486a17eb151250f1af9f1362d8de4">DISCOUNT_RATE</a></td></tr>
+<tr class="memdesc:aa58486a17eb151250f1af9f1362d8de4"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の値引き率の型を定義  <a href="h-type_8h.html#aa58486a17eb151250f1af9f1362d8de4">[詳解]</a><br /></td></tr>
+<tr class="separator:aa58486a17eb151250f1af9f1362d8de4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ebc6e00318348041703de0484bead54"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a8ebc6e00318348041703de0484bead54">SPEED</a></td></tr>
+<tr class="memdesc:a8ebc6e00318348041703de0484bead54"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の加速値の型定義  <a href="h-type_8h.html#a8ebc6e00318348041703de0484bead54">[詳解]</a><br /></td></tr>
+<tr class="separator:a8ebc6e00318348041703de0484bead54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d6373a43af80d5f6424518b503fa2d7"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a6d6373a43af80d5f6424518b503fa2d7">ENERGY</a></td></tr>
+<tr class="memdesc:a6d6373a43af80d5f6424518b503fa2d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の行動エネルギーの型定義  <a href="h-type_8h.html#a6d6373a43af80d5f6424518b503fa2d7">[詳解]</a><br /></td></tr>
+<tr class="separator:a6d6373a43af80d5f6424518b503fa2d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af79cfe31633ae40e42489be09a62acf7"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#af79cfe31633ae40e42489be09a62acf7">SLEEP_DEGREE</a></td></tr>
+<tr class="memdesc:af79cfe31633ae40e42489be09a62acf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターの睡眠度の型定義  <a href="h-type_8h.html#af79cfe31633ae40e42489be09a62acf7">[詳解]</a><br /></td></tr>
+<tr class="separator:af79cfe31633ae40e42489be09a62acf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a1975460009e928d9b53995d07d3623"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a></td></tr>
+<tr class="memdesc:a9a1975460009e928d9b53995d07d3623"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のプレイヤーレベルの型を定義  <a href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">[詳解]</a><br /></td></tr>
+<tr class="separator:a9a1975460009e928d9b53995d07d3623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28b4289b95abbeb7a422178cfa43525f"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a></td></tr>
+<tr class="memdesc:a28b4289b95abbeb7a422178cfa43525f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の方角の型定義  <a href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">[詳解]</a><br /></td></tr>
+<tr class="separator:a28b4289b95abbeb7a422178cfa43525f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4eab974608c90fb1be94a113865965be"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a4eab974608c90fb1be94a113865965be">EXP</a></td></tr>
+<tr class="memdesc:a4eab974608c90fb1be94a113865965be"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の主経験値の型定義  <a href="h-type_8h.html#a4eab974608c90fb1be94a113865965be">[詳解]</a><br /></td></tr>
+<tr class="separator:a4eab974608c90fb1be94a113865965be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ec77bf1bea30a6355c842de60743dcb"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a6ec77bf1bea30a6355c842de60743dcb">SUB_EXP</a></td></tr>
+<tr class="memdesc:a6ec77bf1bea30a6355c842de60743dcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の副経験値の型定義  <a href="h-type_8h.html#a6ec77bf1bea30a6355c842de60743dcb">[詳解]</a><br /></td></tr>
+<tr class="separator:a6ec77bf1bea30a6355c842de60743dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad52e4f96ca473e40e3be6db6f73a13d4"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a></td></tr>
+<tr class="memdesc:ad52e4f96ca473e40e3be6db6f73a13d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のアイテム副分類の型定義  <a href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">[詳解]</a><br /></td></tr>
+<tr class="separator:ad52e4f96ca473e40e3be6db6f73a13d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93e03fb0f06674384e8374479dfcf11b"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a93e03fb0f06674384e8374479dfcf11b">PARAMETER_VALUE</a></td></tr>
+<tr class="memdesc:a93e03fb0f06674384e8374479dfcf11b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のアイテム能力値の型定義  <a href="h-type_8h.html#a93e03fb0f06674384e8374479dfcf11b">[詳解]</a><br /></td></tr>
+<tr class="separator:a93e03fb0f06674384e8374479dfcf11b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab31578f84064b0779ae4f18997f3fdbf"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a></td></tr>
+<tr class="memdesc:ab31578f84064b0779ae4f18997f3fdbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の重量の型定義(ポンド)  <a href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">[詳解]</a><br /></td></tr>
+<tr class="separator:ab31578f84064b0779ae4f18997f3fdbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd34196d60f0f739ccfb2d8fb3eedc26"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a></td></tr>
+<tr class="memdesc:abd34196d60f0f739ccfb2d8fb3eedc26"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のダイス数の型定義  <a href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">[詳解]</a><br /></td></tr>
+<tr class="separator:abd34196d60f0f739ccfb2d8fb3eedc26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc9bfdf1fe589edec2328018c5fd91e4"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a></td></tr>
+<tr class="memdesc:adc9bfdf1fe589edec2328018c5fd91e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のダイス面の型定義  <a href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">[詳解]</a><br /></td></tr>
+<tr class="separator:adc9bfdf1fe589edec2328018c5fd91e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeba8ab2222e118a4540456c55d92a894"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a></td></tr>
+<tr class="memdesc:aeba8ab2222e118a4540456c55d92a894"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の金額価値の型定義  <a href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">[詳解]</a><br /></td></tr>
+<tr class="separator:aeba8ab2222e118a4540456c55d92a894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c0492c5c690ab6ad87b097078e9aeee"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a5c0492c5c690ab6ad87b097078e9aeee">FEED</a></td></tr>
+<tr class="memdesc:a5c0492c5c690ab6ad87b097078e9aeee"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の滋養度の型定義  <a href="h-type_8h.html#a5c0492c5c690ab6ad87b097078e9aeee">[詳解]</a><br /></td></tr>
+<tr class="separator:a5c0492c5c690ab6ad87b097078e9aeee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b935cf7de20948db1ea0def08fa7a08"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a2b935cf7de20948db1ea0def08fa7a08">STR_OFFSET</a></td></tr>
+<tr class="memdesc:a2b935cf7de20948db1ea0def08fa7a08"><td class="mdescLeft">&#160;</td><td class="mdescRight">テキストオフセットの型定義  <a href="h-type_8h.html#a2b935cf7de20948db1ea0def08fa7a08">[詳解]</a><br /></td></tr>
+<tr class="separator:a2b935cf7de20948db1ea0def08fa7a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9690e41bad96bf06e72319f12c019dc"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ab9690e41bad96bf06e72319f12c019dc">POWER</a></td></tr>
+<tr class="memdesc:ab9690e41bad96bf06e72319f12c019dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法の効力定義  <a href="h-type_8h.html#ab9690e41bad96bf06e72319f12c019dc">[詳解]</a><br /></td></tr>
+<tr class="separator:ab9690e41bad96bf06e72319f12c019dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c8b80a20fb5396ff07a523b01112c47"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a></td></tr>
+<tr class="memdesc:a1c8b80a20fb5396ff07a523b01112c47"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の階層レベルの型定義  <a href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">[詳解]</a><br /></td></tr>
+<tr class="separator:a1c8b80a20fb5396ff07a523b01112c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e713a90f2ba27dc50424d2cc0b543ae"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a7e713a90f2ba27dc50424d2cc0b543ae">RARITY</a></td></tr>
+<tr class="memdesc:a7e713a90f2ba27dc50424d2cc0b543ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の希少度の型定義  <a href="h-type_8h.html#a7e713a90f2ba27dc50424d2cc0b543ae">[詳解]</a><br /></td></tr>
+<tr class="separator:a7e713a90f2ba27dc50424d2cc0b543ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cffa72d359000e874c9f3c7a3a0e793"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a2cffa72d359000e874c9f3c7a3a0e793">GAME_TURN</a></td></tr>
+<tr class="memdesc:a2cffa72d359000e874c9f3c7a3a0e793"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のターンの型定義  <a href="h-type_8h.html#a2cffa72d359000e874c9f3c7a3a0e793">[詳解]</a><br /></td></tr>
+<tr class="separator:a2cffa72d359000e874c9f3c7a3a0e793"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a701de55c026b23cfd86131dc1436f324"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a701de55c026b23cfd86131dc1436f324">REAL_TIME</a></td></tr>
+<tr class="memdesc:a701de55c026b23cfd86131dc1436f324"><td class="mdescLeft">&#160;</td><td class="mdescRight">実時刻の型定義  <a href="h-type_8h.html#a701de55c026b23cfd86131dc1436f324">[詳解]</a><br /></td></tr>
+<tr class="separator:a701de55c026b23cfd86131dc1436f324"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c6a37c6000d234e7e4b733a8c830018"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a></td></tr>
+<tr class="memdesc:a7c6a37c6000d234e7e4b733a8c830018"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中のパーセント表記の型定義(/100倍)  <a href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">[詳解]</a><br /></td></tr>
+<tr class="separator:a7c6a37c6000d234e7e4b733a8c830018"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aabe70374d2ed3a66a93dcfd73c8ac7"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a5aabe70374d2ed3a66a93dcfd73c8ac7">MULTIPLY</a></td></tr>
+<tr class="memdesc:a5aabe70374d2ed3a66a93dcfd73c8ac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム中の倍率の型定義(/10倍)  <a href="h-type_8h.html#a5aabe70374d2ed3a66a93dcfd73c8ac7">[詳解]</a><br /></td></tr>
+<tr class="separator:a5aabe70374d2ed3a66a93dcfd73c8ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a388a375ee4bbca7b74cd70f9cb26e187"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></td></tr>
+<tr class="memdesc:a388a375ee4bbca7b74cd70f9cb26e187"><td class="mdescLeft">&#160;</td><td class="mdescRight">32ビットのフラグ配列の型定義  <a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">[詳解]</a><br /></td></tr>
+<tr class="separator:a388a375ee4bbca7b74cd70f9cb26e187"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedded897f998957063f6aa0bb52c18c9"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#aedded897f998957063f6aa0bb52c18c9">BIT_FLAGS16</a></td></tr>
+<tr class="memdesc:aedded897f998957063f6aa0bb52c18c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">16ビットのフラグ配列の型定義  <a href="h-type_8h.html#aedded897f998957063f6aa0bb52c18c9">[詳解]</a><br /></td></tr>
+<tr class="separator:aedded897f998957063f6aa0bb52c18c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3dcd9674923d3dbc3fa7c294cb4a68d"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ab3dcd9674923d3dbc3fa7c294cb4a68d">BIT_FLAGS8</a></td></tr>
+<tr class="memdesc:ab3dcd9674923d3dbc3fa7c294cb4a68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">8ビットのフラグ配列の型定義  <a href="h-type_8h.html#ab3dcd9674923d3dbc3fa7c294cb4a68d">[詳解]</a><br /></td></tr>
+<tr class="separator:ab3dcd9674923d3dbc3fa7c294cb4a68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20b712a4a90ecdb7d0ba127957508515"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a20b712a4a90ecdb7d0ba127957508515">XTRA16</a></td></tr>
+<tr class="memdesc:a20b712a4a90ecdb7d0ba127957508515"><td class="mdescLeft">&#160;</td><td class="mdescRight">汎用変数16ビットの型定義  <a href="h-type_8h.html#a20b712a4a90ecdb7d0ba127957508515">[詳解]</a><br /></td></tr>
+<tr class="separator:a20b712a4a90ecdb7d0ba127957508515"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa8edf82def2c41d633605281c5b38cd"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#aaa8edf82def2c41d633605281c5b38cd">XTRA8</a></td></tr>
+<tr class="memdesc:aaa8edf82def2c41d633605281c5b38cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">汎用変数8ビットの型定義  <a href="h-type_8h.html#aaa8edf82def2c41d633605281c5b38cd">[詳解]</a><br /></td></tr>
+<tr class="separator:aaa8edf82def2c41d633605281c5b38cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9760a9b50f8e3aeeb4b82d0dc9a81c33"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a></td></tr>
+<tr class="memdesc:a9760a9b50f8e3aeeb4b82d0dc9a81c33"><td class="mdescLeft">&#160;</td><td class="mdescRight">コマンド内容の型定義  <a href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">[詳解]</a><br /></td></tr>
+<tr class="separator:a9760a9b50f8e3aeeb4b82d0dc9a81c33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dfb11a068fa7ecfbf4cc8c316d87563"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a7dfb11a068fa7ecfbf4cc8c316d87563">COMMAND_ARG</a></td></tr>
+<tr class="memdesc:a7dfb11a068fa7ecfbf4cc8c316d87563"><td class="mdescLeft">&#160;</td><td class="mdescRight">コマンド引数の型定義  <a href="h-type_8h.html#a7dfb11a068fa7ecfbf4cc8c316d87563">[詳解]</a><br /></td></tr>
+<tr class="separator:a7dfb11a068fa7ecfbf4cc8c316d87563"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3d5052a51aa52f74d9c07a8ee170a86"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ae3d5052a51aa52f74d9c07a8ee170a86">COMMAND_NUM</a></td></tr>
+<tr class="memdesc:ae3d5052a51aa52f74d9c07a8ee170a86"><td class="mdescLeft">&#160;</td><td class="mdescRight">コマンド数の型定義  <a href="h-type_8h.html#ae3d5052a51aa52f74d9c07a8ee170a86">[詳解]</a><br /></td></tr>
+<tr class="separator:ae3d5052a51aa52f74d9c07a8ee170a86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15cc25d6db15644573f14008c0a804eb"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a></td></tr>
+<tr class="memdesc:a15cc25d6db15644573f14008c0a804eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンソール表示座標の型定義  <a href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">[詳解]</a><br /></td></tr>
+<tr class="separator:a15cc25d6db15644573f14008c0a804eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadcf8cee15fbcb7d92dd27e9eda42de1"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a></td></tr>
+<tr class="memdesc:aadcf8cee15fbcb7d92dd27e9eda42de1"><td class="mdescLeft">&#160;</td><td class="mdescRight">テキスト表示色の型定義  <a href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">[詳解]</a><br /></td></tr>
+<tr class="separator:aadcf8cee15fbcb7d92dd27e9eda42de1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a956852f26de2bab8053529224e40dd37"><td class="memItemLeft" align="right" valign="top">typedef char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a956852f26de2bab8053529224e40dd37">SYMBOL_CODE</a></td></tr>
+<tr class="memdesc:a956852f26de2bab8053529224e40dd37"><td class="mdescLeft">&#160;</td><td class="mdescRight">キャラの文字の型定義  <a href="h-type_8h.html#a956852f26de2bab8053529224e40dd37">[詳解]</a><br /></td></tr>
+<tr class="separator:a956852f26de2bab8053529224e40dd37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe872c44b50bb4be8495de5450ea67b8"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#afe872c44b50bb4be8495de5450ea67b8">MAGIC_NUM1</a></td></tr>
+<tr class="memdesc:afe872c44b50bb4be8495de5450ea67b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの汎用魔法情報配列1の型定義  <a href="h-type_8h.html#afe872c44b50bb4be8495de5450ea67b8">[詳解]</a><br /></td></tr>
+<tr class="separator:afe872c44b50bb4be8495de5450ea67b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd6e54ea3926efa4d0072d301154cadc"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#acd6e54ea3926efa4d0072d301154cadc">MAGIC_NUM2</a></td></tr>
+<tr class="memdesc:acd6e54ea3926efa4d0072d301154cadc"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの汎用魔法情報配列2の型定義  <a href="h-type_8h.html#acd6e54ea3926efa4d0072d301154cadc">[詳解]</a><br /></td></tr>
+<tr class="separator:acd6e54ea3926efa4d0072d301154cadc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8999b4411f93c429d3c10840fde80da1"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a></td></tr>
+<tr class="memdesc:a8999b4411f93c429d3c10840fde80da1"><td class="mdescLeft">&#160;</td><td class="mdescRight">各魔法領域/職業能力ごとの呪文ID型定義  <a href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">[詳解]</a><br /></td></tr>
+<tr class="separator:a8999b4411f93c429d3c10840fde80da1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22dfcdd3424b7ae6a31bcba8b0989a22"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a22dfcdd3424b7ae6a31bcba8b0989a22">PROB</a></td></tr>
+<tr class="memdesc:a22dfcdd3424b7ae6a31bcba8b0989a22"><td class="mdescLeft">&#160;</td><td class="mdescRight">確率の重みの型定義  <a href="h-type_8h.html#a22dfcdd3424b7ae6a31bcba8b0989a22">[詳解]</a><br /></td></tr>
+<tr class="separator:a22dfcdd3424b7ae6a31bcba8b0989a22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65cbaed3dd267a460c1bf17edf8a1c50"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a65cbaed3dd267a460c1bf17edf8a1c50">FEAT_POWER</a></td></tr>
+<tr class="memdesc:a65cbaed3dd267a460c1bf17edf8a1c50"><td class="mdescLeft">&#160;</td><td class="mdescRight">地形強度の型定義  <a href="h-type_8h.html#a65cbaed3dd267a460c1bf17edf8a1c50">[詳解]</a><br /></td></tr>
+<tr class="separator:a65cbaed3dd267a460c1bf17edf8a1c50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e3a4164fb177c0c9c9296c739462b13"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a9e3a4164fb177c0c9c9296c739462b13">QUANTITY</a></td></tr>
+<tr class="memdesc:a9e3a4164fb177c0c9c9296c739462b13"><td class="mdescLeft">&#160;</td><td class="mdescRight">インターフェース上の指定個数  <a href="h-type_8h.html#a9e3a4164fb177c0c9c9296c739462b13">[詳解]</a><br /></td></tr>
+<tr class="separator:a9e3a4164fb177c0c9c9296c739462b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e67d15477d3778e515c59e04e25a390"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a></td></tr>
+<tr class="memdesc:a6e67d15477d3778e515c59e04e25a390"><td class="mdescLeft">&#160;</td><td class="mdescRight">効果属性ID  <a href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">[詳解]</a><br /></td></tr>
+<tr class="separator:a6e67d15477d3778e515c59e04e25a390"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c925ec2f530bfd904ba6d252794db50"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a2c925ec2f530bfd904ba6d252794db50">QUEST_TYPE</a></td></tr>
+<tr class="memdesc:a2c925ec2f530bfd904ba6d252794db50"><td class="mdescLeft">&#160;</td><td class="mdescRight">クエストの種別ID  <a href="h-type_8h.html#a2c925ec2f530bfd904ba6d252794db50">[詳解]</a><br /></td></tr>
+<tr class="separator:a2c925ec2f530bfd904ba6d252794db50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac65fa075fea50dcb28e72a3090673a34"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ac65fa075fea50dcb28e72a3090673a34">QUEST_STATUS</a></td></tr>
+<tr class="memdesc:ac65fa075fea50dcb28e72a3090673a34"><td class="mdescLeft">&#160;</td><td class="mdescRight">クエストの状態ID  <a href="h-type_8h.html#ac65fa075fea50dcb28e72a3090673a34">[詳解]</a><br /></td></tr>
+<tr class="separator:ac65fa075fea50dcb28e72a3090673a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a307bb7d720c92381dc53ba036e6368e2"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a307bb7d720c92381dc53ba036e6368e2">ACTION_SKILL_POWER</a></td></tr>
+<tr class="memdesc:a307bb7d720c92381dc53ba036e6368e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">行動技能値  <a href="h-type_8h.html#a307bb7d720c92381dc53ba036e6368e2">[詳解]</a><br /></td></tr>
+<tr class="separator:a307bb7d720c92381dc53ba036e6368e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24e6d83b8def31deeaf2ad693caa7887"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a24e6d83b8def31deeaf2ad693caa7887">PET_COMMAND_IDX</a></td></tr>
+<tr class="memdesc:a24e6d83b8def31deeaf2ad693caa7887"><td class="mdescLeft">&#160;</td><td class="mdescRight">ペットへの指示ID  <a href="h-type_8h.html#a24e6d83b8def31deeaf2ad693caa7887">[詳解]</a><br /></td></tr>
+<tr class="separator:a24e6d83b8def31deeaf2ad693caa7887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b69af384e6a84d6372fc5b2e418eebf"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a9b69af384e6a84d6372fc5b2e418eebf">FF_FLAGS_IDX</a></td></tr>
+<tr class="memdesc:a9b69af384e6a84d6372fc5b2e418eebf"><td class="mdescLeft">&#160;</td><td class="mdescRight">地形特性ID  <a href="h-type_8h.html#a9b69af384e6a84d6372fc5b2e418eebf">[詳解]</a><br /></td></tr>
+<tr class="separator:a9b69af384e6a84d6372fc5b2e418eebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8b45f0ff8ed75d3638d088c4d7bf549"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ad8b45f0ff8ed75d3638d088c4d7bf549">FEAT_PRIORITY</a></td></tr>
+<tr class="memdesc:ad8b45f0ff8ed75d3638d088c4d7bf549"><td class="mdescLeft">&#160;</td><td class="mdescRight">地形の縮小表示優先順位  <a href="h-type_8h.html#ad8b45f0ff8ed75d3638d088c4d7bf549">[詳解]</a><br /></td></tr>
+<tr class="separator:ad8b45f0ff8ed75d3638d088c4d7bf549"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ea7d3fefa2144d9bddaf2053c9691a1"><td class="memItemLeft" align="right" valign="top">typedef char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a5ea7d3fefa2144d9bddaf2053c9691a1">char_ptr</a></td></tr>
+<tr class="separator:a5ea7d3fefa2144d9bddaf2053c9691a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02e2378d30fb34a5068c26c158603457"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a02e2378d30fb34a5068c26c158603457">byte_ptr</a></td></tr>
+<tr class="separator:a02e2378d30fb34a5068c26c158603457"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f13664e49eccad63db2a44b2d0ba8ab"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a9f13664e49eccad63db2a44b2d0ba8ab">func_gen</a>) (<a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>, <a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>)</td></tr>
+<tr class="separator:a9f13664e49eccad63db2a44b2d0ba8ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a177af3cc044c61d33eaa355492f01f52"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a177af3cc044c61d33eaa355492f01f52">func_eql</a>) (<a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>, <a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>)</td></tr>
+<tr class="separator:a177af3cc044c61d33eaa355492f01f52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5288ea180be524a6b3c7217c15de833"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#ab5288ea180be524a6b3c7217c15de833">func_hsh</a>) (<a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>, <a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>)</td></tr>
+<tr class="separator:ab5288ea180be524a6b3c7217c15de833"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff2ff2b5eb5ea9111711e73fb5242a9c"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#aff2ff2b5eb5ea9111711e73fb5242a9c">func_key</a>) (<a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>)</td></tr>
+<tr class="separator:aff2ff2b5eb5ea9111711e73fb5242a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+列挙型</h2></td></tr>
+<tr class="memitem:a906543cecbc333cb7bf9195e18a6ce16"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> { <a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16a06c50a32551a640b79ea4b2d63d1cd45">PROCESS_FALSE</a> = 0
+, <a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16afad3fe064ec423de4ce1b012dd2a044a">PROCESS_TRUE</a> = 1
+, <a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16a20b12758d9f5397c88196a5d37588d93">PROCESS_CONTINUE</a> = 2
+ }</td></tr>
+<tr class="separator:a906543cecbc333cb7bf9195e18a6ce16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>ゲーム中に用いる変数型定義 / Basic "types". </p>
+<dl class="section date"><dt>日付</dt><dd>2017/12/03 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>不明(馬鹿馬鹿蛮怒スタッフ？)</dd></dl>
+<pre>
+Note the attempt to make all basic types have 4 letters.
+This improves readibility and standardizes the code.
+Likewise, all complex types are at least 4 letters.
+Thus, almost every three letter word is a legal variable.
+But beware of certain reserved words ('for' and 'if' and 'do').
+Note that the type used in structures for bit flags should be uint.
+As long as these bit flags are sequential, they will be space smart.
+Note that on some machines, apparently "signed char" is illegal.
+It must be true that char/byte takes exactly 1 byte
+It must be true that sind/uind takes exactly 2 bytes
+It must be true that sbig/ubig takes exactly 4 bytes
+On Sparc's, a uint takes 4 bytes (2 is legal)
+On Sparc's, a long takes 4 bytes (8 is legal)
+On Sparc's, a huge takes 4 bytes (8 is legal)
+On Sparc's, a vptr takes 4 bytes (8 is legal)
+On Sparc's, a real takes 8 bytes (4 is legal)
+Note that some files have already been included by "h-include.h"
+These include &lt;stdio.h&gt; and &lt;sys/types&gt;, which define some types
+In particular, uint is defined so we do not have to define it
+Also, see &lt;limits.h&gt; for min/max values for sind, uind, long, huge
+(SHRT_MIN, SHRT_MAX, USHRT_MAX, LONG_MIN, LONG_MAX, ULONG_MAX)
+These limits should be verified and coded into "h-constant.h".
+</pre> </div><h2 class="groupheader">マクロ定義詳解</h2>
+<a id="ac222effa7b6033f273d19335e5869457"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac222effa7b6033f273d19335e5869457">&#9670;&nbsp;</a></span>INCLUDED_H_TYPE_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INCLUDED_H_TYPE_H</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9506f57397c70d5bb3b8e3a56cbe8b35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9506f57397c70d5bb3b8e3a56cbe8b35">&#9670;&nbsp;</a></span>MAX_MONSTER_NAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_MONSTER_NAME&#160;&#160;&#160;160</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスター名称の最大バイト数 / Max characters of monster's name </p>
+
+</div>
+</div>
+<a id="a709af41498f5625eae9f3b73fb6b6f3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a709af41498f5625eae9f3b73fb6b6f3c">&#9670;&nbsp;</a></span>MAX_NLEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_NLEN&#160;&#160;&#160;160</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maximum length of object's name </p>
+
+</div>
+</div>
+<a id="a3742efaf988af88c727a30ca9d8d993f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3742efaf988af88c727a30ca9d8d993f">&#9670;&nbsp;</a></span>MAX_SHORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_SHORT&#160;&#160;&#160;32767</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maximum value storable in a "s16b" (hard-coded) </p>
+
+</div>
+</div>
+<a id="a27e4d170dbc874d1cabf62de11455785"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27e4d170dbc874d1cabf62de11455785">&#9670;&nbsp;</a></span>MAX_UCHAR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_UCHAR&#160;&#160;&#160;255</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maximum value storable in a "byte" (hard-coded) </p>
+
+</div>
+</div>
+<h2 class="groupheader">型定義詳解</h2>
+<a id="a0cd982c452d786746f7664a31a2507e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cd982c452d786746f7664a31a2507e4">&#9670;&nbsp;</a></span>ACTION_ENERGY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a0cd982c452d786746f7664a31a2507e4">ACTION_ENERGY</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の行動エネルギー型を定義 </p>
+
+</div>
+</div>
+<a id="a20d6abf9b1237fd7952a04ff6c31d1be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20d6abf9b1237fd7952a04ff6c31d1be">&#9670;&nbsp;</a></span>ACTION_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#a20d6abf9b1237fd7952a04ff6c31d1be">ACTION_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーが現在取っている常時行動のID定義 </p>
+
+</div>
+</div>
+<a id="a307bb7d720c92381dc53ba036e6368e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a307bb7d720c92381dc53ba036e6368e2">&#9670;&nbsp;</a></span>ACTION_SKILL_POWER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a307bb7d720c92381dc53ba036e6368e2">ACTION_SKILL_POWER</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>行動技能値 </p>
+
+</div>
+</div>
+<a id="a93640422bdbf8fb6159d07fb971aa489"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93640422bdbf8fb6159d07fb971aa489">&#9670;&nbsp;</a></span>ACTIVATION_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a93640422bdbf8fb6159d07fb971aa489">ACTIVATION_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アイテムの発動効果ID型を定義 </p>
+
+</div>
+</div>
+<a id="a6a08cc336b8208f7ea47e169707b626f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a08cc336b8208f7ea47e169707b626f">&#9670;&nbsp;</a></span>ALIGNMENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#a6a08cc336b8208f7ea47e169707b626f">ALIGNMENT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>善悪属性の型定義 </p>
+
+</div>
+</div>
+<a id="a220932af45570eca82fbc85454205983"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a220932af45570eca82fbc85454205983">&#9670;&nbsp;</a></span>ARMOUR_CLASS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の行動アーマークラス型を定義 </p>
+
+</div>
+</div>
+<a id="a5d96367b8202f9cb06015609793723cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d96367b8202f9cb06015609793723cd">&#9670;&nbsp;</a></span>ARTIFACT_BIAS_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="h-type_8h.html#a5d96367b8202f9cb06015609793723cd">ARTIFACT_BIAS_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ランダムアーティファクトのバイアス型 </p>
+
+</div>
+</div>
+<a id="a4fc040f8a9ad313d0ce50224ff8841a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fc040f8a9ad313d0ce50224ff8841a0">&#9670;&nbsp;</a></span>ARTIFACT_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a4fc040f8a9ad313d0ce50224ff8841a0">ARTIFACT_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のアーティファクトID型を定義 </p>
+
+</div>
+</div>
+<a id="a8185d62afce2ae79b207f9300e96b14f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8185d62afce2ae79b207f9300e96b14f">&#9670;&nbsp;</a></span>BACT_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a8185d62afce2ae79b207f9300e96b14f">BACT_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>町の施設処理のID定義 </p>
+
+</div>
+</div>
+<a id="acdb549772010fb5de924e126357ee3f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdb549772010fb5de924e126357ee3f3">&#9670;&nbsp;</a></span>BACT_RESTRICT_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#acdb549772010fb5de924e126357ee3f3">BACT_RESTRICT_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>町の施設処理の規制処理ID定義 </p>
+
+</div>
+</div>
+<a id="a3e619d230e34bb820b97a37602546d3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e619d230e34bb820b97a37602546d3b">&#9670;&nbsp;</a></span>BASE_STATUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a3e619d230e34bb820b97a37602546d3b">BASE_STATUS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の基礎能力値型を定義 </p>
+
+</div>
+</div>
+<a id="a388a375ee4bbca7b74cd70f9cb26e187"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a388a375ee4bbca7b74cd70f9cb26e187">&#9670;&nbsp;</a></span>BIT_FLAGS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>32ビットのフラグ配列の型定義 </p>
+
+</div>
+</div>
+<a id="aedded897f998957063f6aa0bb52c18c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedded897f998957063f6aa0bb52c18c9">&#9670;&nbsp;</a></span>BIT_FLAGS16</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a> <a class="el" href="h-type_8h.html#aedded897f998957063f6aa0bb52c18c9">BIT_FLAGS16</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>16ビットのフラグ配列の型定義 </p>
+
+</div>
+</div>
+<a id="ab3dcd9674923d3dbc3fa7c294cb4a68d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3dcd9674923d3dbc3fa7c294cb4a68d">&#9670;&nbsp;</a></span>BIT_FLAGS8</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> <a class="el" href="h-type_8h.html#ab3dcd9674923d3dbc3fa7c294cb4a68d">BIT_FLAGS8</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>8ビットのフラグ配列の型定義 </p>
+
+</div>
+</div>
+<a id="ad5c9d4ba3dc37783a528b0925dc981a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5c9d4ba3dc37783a528b0925dc981a0">&#9670;&nbsp;</a></span>bool</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef char <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>bool型をcharとして定義 / Note that a bool is smaller than a full "int" / Simple True/False type </p>
+
+</div>
+</div>
+<a id="a0c8186d9b9b7880309c27230bbb5e69d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c8186d9b9b7880309c27230bbb5e69d">&#9670;&nbsp;</a></span>byte</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned char <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>byte型をunsighned charとして定義 / Note that unsigned values can cause math problems / An unsigned byte of memory </p>
+
+</div>
+</div>
+<a id="a02e2378d30fb34a5068c26c158603457"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02e2378d30fb34a5068c26c158603457">&#9670;&nbsp;</a></span>byte_ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>* <a class="el" href="h-type_8h.html#a02e2378d30fb34a5068c26c158603457">byte_ptr</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5ea7d3fefa2144d9bddaf2053c9691a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ea7d3fefa2144d9bddaf2053c9691a1">&#9670;&nbsp;</a></span>char_ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef char* <a class="el" href="h-type_8h.html#a5ea7d3fefa2144d9bddaf2053c9691a1">char_ptr</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7dfb11a068fa7ecfbf4cc8c316d87563"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dfb11a068fa7ecfbf4cc8c316d87563">&#9670;&nbsp;</a></span>COMMAND_ARG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a7dfb11a068fa7ecfbf4cc8c316d87563">COMMAND_ARG</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>コマンド引数の型定義 </p>
+
+</div>
+</div>
+<a id="a9760a9b50f8e3aeeb4b82d0dc9a81c33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9760a9b50f8e3aeeb4b82d0dc9a81c33">&#9670;&nbsp;</a></span>COMMAND_CODE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>コマンド内容の型定義 </p>
+
+</div>
+</div>
+<a id="ae3d5052a51aa52f74d9c07a8ee170a86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3d5052a51aa52f74d9c07a8ee170a86">&#9670;&nbsp;</a></span>COMMAND_NUM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#ae3d5052a51aa52f74d9c07a8ee170a86">COMMAND_NUM</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>コマンド数の型定義 </p>
+
+</div>
+</div>
+<a id="af792750f10cc3fb0d64db2ebfb385fa6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af792750f10cc3fb0d64db2ebfb385fa6">&#9670;&nbsp;</a></span>concptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef const char* <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings) </p>
+
+</div>
+</div>
+<a id="a1c8b80a20fb5396ff07a523b01112c47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c8b80a20fb5396ff07a523b01112c47">&#9670;&nbsp;</a></span>DEPTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の階層レベルの型定義 </p>
+
+</div>
+</div>
+<a id="abd34196d60f0f739ccfb2d8fb3eedc26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd34196d60f0f739ccfb2d8fb3eedc26">&#9670;&nbsp;</a></span>DICE_NUMBER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のダイス数の型定義 </p>
+
+</div>
+</div>
+<a id="adc9bfdf1fe589edec2328018c5fd91e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc9bfdf1fe589edec2328018c5fd91e4">&#9670;&nbsp;</a></span>DICE_SID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のダイス面の型定義 </p>
+
+</div>
+</div>
+<a id="a28b4289b95abbeb7a422178cfa43525f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28b4289b95abbeb7a422178cfa43525f">&#9670;&nbsp;</a></span>DIRECTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の方角の型定義 </p>
+
+</div>
+</div>
+<a id="aa58486a17eb151250f1af9f1362d8de4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa58486a17eb151250f1af9f1362d8de4">&#9670;&nbsp;</a></span>DISCOUNT_RATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> <a class="el" href="h-type_8h.html#aa58486a17eb151250f1af9f1362d8de4">DISCOUNT_RATE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の値引き率の型を定義 </p>
+
+</div>
+</div>
+<a id="ad858b43cf9b1e70a02dbeabfd632b70c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad858b43cf9b1e70a02dbeabfd632b70c">&#9670;&nbsp;</a></span>DUNGEON_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#ad858b43cf9b1e70a02dbeabfd632b70c">DUNGEON_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のダンジョンID型を定義 </p>
+
+</div>
+</div>
+<a id="a6e67d15477d3778e515c59e04e25a390"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e67d15477d3778e515c59e04e25a390">&#9670;&nbsp;</a></span>EFFECT_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>効果属性ID </p>
+
+</div>
+</div>
+<a id="ad436c265819d8e3689955f6d5a6c67dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad436c265819d8e3689955f6d5a6c67dc">&#9670;&nbsp;</a></span>EGO_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#ad436c265819d8e3689955f6d5a6c67dc">EGO_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アイテムエゴのID型を定義 </p>
+
+</div>
+</div>
+<a id="a6d6373a43af80d5f6424518b503fa2d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d6373a43af80d5f6424518b503fa2d7">&#9670;&nbsp;</a></span>ENERGY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a6d6373a43af80d5f6424518b503fa2d7">ENERGY</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の行動エネルギーの型定義 </p>
+
+</div>
+</div>
+<a id="ad99e8b64263d5831d93bec22e89da527"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad99e8b64263d5831d93bec22e89da527">&#9670;&nbsp;</a></span>errr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>エラーコードの定義 / Error codes for function return values </p>
+<p>一般に成功時0、失敗時負数、何らかの問題時正数とする。 Success = 0, Failure = -N, Problem = +N </p>
+
+</div>
+</div>
+<a id="adcde018af7ffced7b844b9a8a4b937db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcde018af7ffced7b844b9a8a4b937db">&#9670;&nbsp;</a></span>ESSENCE_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#adcde018af7ffced7b844b9a8a4b937db">ESSENCE_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>鍛冶エッセンスのID型 </p>
+
+</div>
+</div>
+<a id="a4eab974608c90fb1be94a113865965be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4eab974608c90fb1be94a113865965be">&#9670;&nbsp;</a></span>EXP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#a4eab974608c90fb1be94a113865965be">EXP</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の主経験値の型定義 </p>
+
+</div>
+</div>
+<a id="a85b58bbae289409cd01a8a413e991f12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85b58bbae289409cd01a8a413e991f12">&#9670;&nbsp;</a></span>FEAT_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の地形ID型を定義 </p>
+
+</div>
+</div>
+<a id="a65cbaed3dd267a460c1bf17edf8a1c50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65cbaed3dd267a460c1bf17edf8a1c50">&#9670;&nbsp;</a></span>FEAT_POWER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> <a class="el" href="h-type_8h.html#a65cbaed3dd267a460c1bf17edf8a1c50">FEAT_POWER</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>地形強度の型定義 </p>
+
+</div>
+</div>
+<a id="ad8b45f0ff8ed75d3638d088c4d7bf549"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8b45f0ff8ed75d3638d088c4d7bf549">&#9670;&nbsp;</a></span>FEAT_PRIORITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#ad8b45f0ff8ed75d3638d088c4d7bf549">FEAT_PRIORITY</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>地形の縮小表示優先順位 </p>
+
+</div>
+</div>
+<a id="ae6ef2627c6c64a0a5083462e8eadb434"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6ef2627c6c64a0a5083462e8eadb434">&#9670;&nbsp;</a></span>FEAT_SUBTYPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> <a class="el" href="h-type_8h.html#ae6ef2627c6c64a0a5083462e8eadb434">FEAT_SUBTYPE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>地形情報の副値 (トラップ種別/パターン種別/店舗種別) </p>
+
+</div>
+</div>
+<a id="a5c0492c5c690ab6ad87b097078e9aeee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c0492c5c690ab6ad87b097078e9aeee">&#9670;&nbsp;</a></span>FEED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a5c0492c5c690ab6ad87b097078e9aeee">FEED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の滋養度の型定義 </p>
+
+</div>
+</div>
+<a id="a9b69af384e6a84d6372fc5b2e418eebf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b69af384e6a84d6372fc5b2e418eebf">&#9670;&nbsp;</a></span>FF_FLAGS_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> <a class="el" href="h-type_8h.html#a9b69af384e6a84d6372fc5b2e418eebf">FF_FLAGS_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>地形特性ID </p>
+
+</div>
+</div>
+<a id="afef75ce8b6b6a38fed9a8ed936b5ea5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afef75ce8b6b6a38fed9a8ed936b5ea5c">&#9670;&nbsp;</a></span>FLOOR_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のフロアID型を定義 </p>
+
+</div>
+</div>
+<a id="a177af3cc044c61d33eaa355492f01f52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a177af3cc044c61d33eaa355492f01f52">&#9670;&nbsp;</a></span>func_eql</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>(* func_eql) (<a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>, <a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f13664e49eccad63db2a44b2d0ba8ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f13664e49eccad63db2a44b2d0ba8ab">&#9670;&nbsp;</a></span>func_gen</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>(* func_gen) (<a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>, <a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab5288ea180be524a6b3c7217c15de833"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5288ea180be524a6b3c7217c15de833">&#9670;&nbsp;</a></span>func_hsh</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>(* func_hsh) (<a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>, <a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aff2ff2b5eb5ea9111711e73fb5242a9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff2ff2b5eb5ea9111711e73fb5242a9c">&#9670;&nbsp;</a></span>func_key</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>(* func_key) (<a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac67a750044882c0fd3760a2eccd56d7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac67a750044882c0fd3760a2eccd56d7c">&#9670;&nbsp;</a></span>GAME_TEXT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef char <a class="el" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のテキスト型定義 </p>
+
+</div>
+</div>
+<a id="a2cffa72d359000e874c9f3c7a3a0e793"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cffa72d359000e874c9f3c7a3a0e793">&#9670;&nbsp;</a></span>GAME_TURN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#a2cffa72d359000e874c9f3c7a3a0e793">GAME_TURN</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のターンの型定義 </p>
+
+</div>
+</div>
+<a id="afdb20155266ee801610f13b1589a3df3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdb20155266ee801610f13b1589a3df3">&#9670;&nbsp;</a></span>HIT_POINT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>HPとその増減量の型定義 </p>
+<p>HIT_POINTはプレイヤー及びモンスターのHPの各値とその増減量の型である。 </p>
+
+</div>
+</div>
+<a id="a47dfe4960088b41ad87a10ad5120f939"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47dfe4960088b41ad87a10ad5120f939">&#9670;&nbsp;</a></span>HIT_PROB</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a47dfe4960088b41ad87a10ad5120f939">HIT_PROB</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の装備命中修正値を定義 </p>
+
+</div>
+</div>
+<a id="ac3a50689203251f4dbf060fb594c8a08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3a50689203251f4dbf060fb594c8a08">&#9670;&nbsp;</a></span>HIT_RELIABILITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="h-type_8h.html#ac3a50689203251f4dbf060fb594c8a08">HIT_RELIABILITY</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>最終算出命中力を定義 </p>
+
+</div>
+</div>
+<a id="a323299f19186bb8ebd229f05b34cfc22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a323299f19186bb8ebd229f05b34cfc22">&#9670;&nbsp;</a></span>huge</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned long <a class="el" href="h-type_8h.html#a323299f19186bb8ebd229f05b34cfc22">huge</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3f634297ff78d56cc39e0f92ea8a65a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f634297ff78d56cc39e0f92ea8a65a8">&#9670;&nbsp;</a></span>IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a3f634297ff78d56cc39e0f92ea8a65a8">IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のID型を定義 </p>
+
+</div>
+</div>
+<a id="a592c0b48d60348198260e1f6ffb1897e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a592c0b48d60348198260e1f6ffb1897e">&#9670;&nbsp;</a></span>INVENTORY_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の所持品ID型を定義 </p>
+
+</div>
+</div>
+<a id="a64d1c0cbb82f223cd3ab16d119c71b59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64d1c0cbb82f223cd3ab16d119c71b59">&#9670;&nbsp;</a></span>ITEM_NUMBER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#a64d1c0cbb82f223cd3ab16d119c71b59">ITEM_NUMBER</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のアイテム数型を定義 </p>
+
+</div>
+</div>
+<a id="a4afcd80086918943bed571d0a96b93eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4afcd80086918943bed571d0a96b93eb">&#9670;&nbsp;</a></span>KIND_OBJECT_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のベースアイテムID型を定義 </p>
+
+</div>
+</div>
+<a id="afe872c44b50bb4be8495de5450ea67b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe872c44b50bb4be8495de5450ea67b8">&#9670;&nbsp;</a></span>MAGIC_NUM1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#afe872c44b50bb4be8495de5450ea67b8">MAGIC_NUM1</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーの汎用魔法情報配列1の型定義 </p>
+
+</div>
+</div>
+<a id="acd6e54ea3926efa4d0072d301154cadc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd6e54ea3926efa4d0072d301154cadc">&#9670;&nbsp;</a></span>MAGIC_NUM2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> <a class="el" href="h-type_8h.html#acd6e54ea3926efa4d0072d301154cadc">MAGIC_NUM2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーの汎用魔法情報配列2の型定義 </p>
+
+</div>
+</div>
+<a id="a7448a47304a3bec61dd90b4078037cef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7448a47304a3bec61dd90b4078037cef">&#9670;&nbsp;</a></span>MANA_POINT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#a7448a47304a3bec61dd90b4078037cef">MANA_POINT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のMP型を定義 </p>
+<p>MPとその増減量の型定義</p>
+<p>MANA_POINTはプレイヤーのMPの各地とその増減量の型である。 </p>
+
+</div>
+</div>
+<a id="af040d628a6cf11f05b0a9a38bf63a089"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af040d628a6cf11f05b0a9a38bf63a089">&#9670;&nbsp;</a></span>MIMIC_RACE_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#af040d628a6cf11f05b0a9a38bf63a089">MIMIC_RACE_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のプレイヤー変身種族ID型を定義 </p>
+
+</div>
+</div>
+<a id="a7ea47f67338902d35c1e93e00cf86908"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ea47f67338902d35c1e93e00cf86908">&#9670;&nbsp;</a></span>MONRACE_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000150">todo:</a></b></dt><dd>monster_race_typeに差し替えて消滅させる ゲーム中のモンスター種族ID型を定義 </dd></dl>
+
+</div>
+</div>
+<a id="ad2d0f988482931f676c919cf5d0f7716"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2d0f988482931f676c919cf5d0f7716">&#9670;&nbsp;</a></span>MONSTER_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000151">todo:</a></b></dt><dd>monster_race_typeに差し替えて消滅させる ゲーム中のモンスター個体ID型を定義 </dd></dl>
+
+</div>
+</div>
+<a id="a9c3b7a33a04e6a334235166acc31990f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c3b7a33a04e6a334235166acc31990f">&#9670;&nbsp;</a></span>MONSTER_NUMBER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#a9c3b7a33a04e6a334235166acc31990f">MONSTER_NUMBER</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のモンスター数型を定義 </p>
+
+</div>
+</div>
+<a id="a5aabe70374d2ed3a66a93dcfd73c8ac7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5aabe70374d2ed3a66a93dcfd73c8ac7">&#9670;&nbsp;</a></span>MULTIPLY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a5aabe70374d2ed3a66a93dcfd73c8ac7">MULTIPLY</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の倍率の型定義(/10倍) </p>
+
+</div>
+</div>
+<a id="adc5d346936be2101fe94d1956152daba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc5d346936be2101fe94d1956152daba">&#9670;&nbsp;</a></span>MUTATION_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="h-type_8h.html#adc5d346936be2101fe94d1956152daba">MUTATION_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>突然変異のID型を定義 </p>
+
+</div>
+</div>
+<a id="a30141f88547728df57f6a10c56fbeb8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30141f88547728df57f6a10c56fbeb8f">&#9670;&nbsp;</a></span>OBJECT_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のアイテムID型を定義 </p>
+
+</div>
+</div>
+<a id="ad52e4f96ca473e40e3be6db6f73a13d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad52e4f96ca473e40e3be6db6f73a13d4">&#9670;&nbsp;</a></span>OBJECT_SUBTYPE_VALUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のアイテム副分類の型定義 </p>
+
+</div>
+</div>
+<a id="a93e03fb0f06674384e8374479dfcf11b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93e03fb0f06674384e8374479dfcf11b">&#9670;&nbsp;</a></span>PARAMETER_VALUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a93e03fb0f06674384e8374479dfcf11b">PARAMETER_VALUE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のアイテム能力値の型定義 </p>
+
+</div>
+</div>
+<a id="ad1c4dc1416e38f93cdccc5cfcfe7eb84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1c4dc1416e38f93cdccc5cfcfe7eb84">&#9670;&nbsp;</a></span>PATRON_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#ad1c4dc1416e38f93cdccc5cfcfe7eb84">PATRON_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のプレイヤーパトロンID型を定義 </p>
+
+</div>
+</div>
+<a id="a7c6a37c6000d234e7e4b733a8c830018"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c6a37c6000d234e7e4b733a8c830018">&#9670;&nbsp;</a></span>PERCENTAGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のパーセント表記の型定義(/100倍) </p>
+
+</div>
+</div>
+<a id="a24e6d83b8def31deeaf2ad693caa7887"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24e6d83b8def31deeaf2ad693caa7887">&#9670;&nbsp;</a></span>PET_COMMAND_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="h-type_8h.html#a24e6d83b8def31deeaf2ad693caa7887">PET_COMMAND_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ペットへの指示ID </p>
+
+</div>
+</div>
+<a id="a9a1975460009e928d9b53995d07d3623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a1975460009e928d9b53995d07d3623">&#9670;&nbsp;</a></span>PLAYER_LEVEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のプレイヤーレベルの型を定義 </p>
+
+</div>
+</div>
+<a id="aa76a678e41fd2b751e1a18b9f5dc8c03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa76a678e41fd2b751e1a18b9f5dc8c03">&#9670;&nbsp;</a></span>POSITION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の座標型を定義 </p>
+
+</div>
+</div>
+<a id="a120bdf3873d55faac841c794b3891b4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a120bdf3873d55faac841c794b3891b4a">&#9670;&nbsp;</a></span>POSITION_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a120bdf3873d55faac841c794b3891b4a">POSITION_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の座標リストID型 </p>
+
+</div>
+</div>
+<a id="ab9690e41bad96bf06e72319f12c019dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9690e41bad96bf06e72319f12c019dc">&#9670;&nbsp;</a></span>POWER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="h-type_8h.html#ab9690e41bad96bf06e72319f12c019dc">POWER</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法の効力定義 </p>
+
+</div>
+</div>
+<a id="aeba8ab2222e118a4540456c55d92a894"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeba8ab2222e118a4540456c55d92a894">&#9670;&nbsp;</a></span>PRICE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の金額価値の型定義 </p>
+
+</div>
+</div>
+<a id="a22dfcdd3424b7ae6a31bcba8b0989a22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22dfcdd3424b7ae6a31bcba8b0989a22">&#9670;&nbsp;</a></span>PROB</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a22dfcdd3424b7ae6a31bcba8b0989a22">PROB</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>確率の重みの型定義 </p>
+
+</div>
+</div>
+<a id="a9e3a4164fb177c0c9c9296c739462b13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e3a4164fb177c0c9c9296c739462b13">&#9670;&nbsp;</a></span>QUANTITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="h-type_8h.html#a9e3a4164fb177c0c9c9296c739462b13">QUANTITY</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>インターフェース上の指定個数 </p>
+
+</div>
+</div>
+<a id="a77c612ab1c70448b936150562e7d6d44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77c612ab1c70448b936150562e7d6d44">&#9670;&nbsp;</a></span>QUEST_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a77c612ab1c70448b936150562e7d6d44">QUEST_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のクエストID型を定義 </p>
+
+</div>
+</div>
+<a id="ac65fa075fea50dcb28e72a3090673a34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac65fa075fea50dcb28e72a3090673a34">&#9670;&nbsp;</a></span>QUEST_STATUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#ac65fa075fea50dcb28e72a3090673a34">QUEST_STATUS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>クエストの状態ID </p>
+
+</div>
+</div>
+<a id="a2c925ec2f530bfd904ba6d252794db50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c925ec2f530bfd904ba6d252794db50">&#9670;&nbsp;</a></span>QUEST_TYPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a2c925ec2f530bfd904ba6d252794db50">QUEST_TYPE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>クエストの種別ID </p>
+
+</div>
+</div>
+<a id="a7e713a90f2ba27dc50424d2cc0b543ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e713a90f2ba27dc50424d2cc0b543ae">&#9670;&nbsp;</a></span>RARITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> <a class="el" href="h-type_8h.html#a7e713a90f2ba27dc50424d2cc0b543ae">RARITY</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の希少度の型定義 </p>
+
+</div>
+</div>
+<a id="a701de55c026b23cfd86131dc1436f324"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a701de55c026b23cfd86131dc1436f324">&#9670;&nbsp;</a></span>REAL_TIME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="el" href="h-type_8h.html#a701de55c026b23cfd86131dc1436f324">REAL_TIME</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>実時刻の型定義 </p>
+
+</div>
+</div>
+<a id="a557f0599108d7e2a11e3495c819c6d6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a557f0599108d7e2a11e3495c819c6d6b">&#9670;&nbsp;</a></span>REALM_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の魔法領域ID型を定義 </p>
+
+</div>
+</div>
+<a id="a5d97e7d4deebdc1efbab92c4d4f8bd1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d97e7d4deebdc1efbab92c4d4f8bd1f">&#9670;&nbsp;</a></span>ROOM_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> <a class="el" href="h-type_8h.html#a5d97e7d4deebdc1efbab92c4d4f8bd1f">ROOM_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>部屋のID型を定義 </p>
+
+</div>
+</div>
+<a id="a192c51b1ed9cf77f1a597d8e2ef32ed5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a192c51b1ed9cf77f1a597d8e2ef32ed5">&#9670;&nbsp;</a></span>s16b</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef signed short <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af28a46c3af7b537a7cf39e1f7e6bf81c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af28a46c3af7b537a7cf39e1f7e6bf81c">&#9670;&nbsp;</a></span>s32b</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef signed long <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add4d21d35964c2013b8e62870d1dd798"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add4d21d35964c2013b8e62870d1dd798">&#9670;&nbsp;</a></span>SEX_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> <a class="el" href="h-type_8h.html#add4d21d35964c2013b8e62870d1dd798">SEX_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中のプレイヤー性別ID型を定義 </p>
+
+</div>
+</div>
+<a id="af79cfe31633ae40e42489be09a62acf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af79cfe31633ae40e42489be09a62acf7">&#9670;&nbsp;</a></span>SLEEP_DEGREE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#af79cfe31633ae40e42489be09a62acf7">SLEEP_DEGREE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターの睡眠度の型定義 </p>
+
+</div>
+</div>
+<a id="a8ebc6e00318348041703de0484bead54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ebc6e00318348041703de0484bead54">&#9670;&nbsp;</a></span>SPEED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a8ebc6e00318348041703de0484bead54">SPEED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の加速値の型定義 </p>
+
+</div>
+</div>
+<a id="a8999b4411f93c429d3c10840fde80da1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8999b4411f93c429d3c10840fde80da1">&#9670;&nbsp;</a></span>SPELL_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>各魔法領域/職業能力ごとの呪文ID型定義 </p>
+
+</div>
+</div>
+<a id="a2b935cf7de20948db1ea0def08fa7a08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b935cf7de20948db1ea0def08fa7a08">&#9670;&nbsp;</a></span>STR_OFFSET</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="el" href="h-type_8h.html#a2b935cf7de20948db1ea0def08fa7a08">STR_OFFSET</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>テキストオフセットの型定義 </p>
+
+</div>
+</div>
+<a id="a6ec77bf1bea30a6355c842de60743dcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ec77bf1bea30a6355c842de60743dcb">&#9670;&nbsp;</a></span>SUB_EXP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a6ec77bf1bea30a6355c842de60743dcb">SUB_EXP</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の副経験値の型定義 </p>
+
+</div>
+</div>
+<a id="a956852f26de2bab8053529224e40dd37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a956852f26de2bab8053529224e40dd37">&#9670;&nbsp;</a></span>SYMBOL_CODE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef char <a class="el" href="h-type_8h.html#a956852f26de2bab8053529224e40dd37">SYMBOL_CODE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>キャラの文字の型定義 </p>
+
+</div>
+</div>
+<a id="aadcf8cee15fbcb7d92dd27e9eda42de1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadcf8cee15fbcb7d92dd27e9eda42de1">&#9670;&nbsp;</a></span>TERM_COLOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> <a class="el" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>テキスト表示色の型定義 </p>
+
+</div>
+</div>
+<a id="a15cc25d6db15644573f14008c0a804eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15cc25d6db15644573f14008c0a804eb">&#9670;&nbsp;</a></span>TERM_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>コンソール表示座標の型定義 </p>
+
+</div>
+</div>
+<a id="aba20657d0771ac9353e9e43605c12a94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba20657d0771ac9353e9e43605c12a94">&#9670;&nbsp;</a></span>TIME_EFFECT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の時限期間の型を定義 </p>
+
+</div>
+</div>
+<a id="adc2d0131e2525ce0dc1b663caaaf384e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc2d0131e2525ce0dc1b663caaaf384e">&#9670;&nbsp;</a></span>TOWN_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#adc2d0131e2525ce0dc1b663caaaf384e">TOWN_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の町ID型を定義 </p>
+
+</div>
+</div>
+<a id="ae21ecc67b92c35422853544364e96b42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae21ecc67b92c35422853544364e96b42">&#9670;&nbsp;</a></span>u16b</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned short <a class="el" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7a1de980667931f896ae6a820f0ee80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7a1de980667931f896ae6a820f0ee80">&#9670;&nbsp;</a></span>u32b</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned long <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a91ad9478d81a7aaf2593e8d9c3d06a14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91ad9478d81a7aaf2593e8d9c3d06a14">&#9670;&nbsp;</a></span>uint</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned int <a class="el" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a624fc7cbe85809bead6398470d80232c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a624fc7cbe85809bead6398470d80232c">&#9670;&nbsp;</a></span>VAULT_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a624fc7cbe85809bead6398470d80232c">VAULT_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>固定部屋のID型を定義 </p>
+
+</div>
+</div>
+<a id="aea64870d12a46c26b6b21b8b9e0b82df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea64870d12a46c26b6b21b8b9e0b82df">&#9670;&nbsp;</a></span>VIRTUES_IDX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#aea64870d12a46c26b6b21b8b9e0b82df">VIRTUES_IDX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の徳ID型を定義 </p>
+
+</div>
+</div>
+<a id="a6ff70012dce98a61c680a920f660c210"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ff70012dce98a61c680a920f660c210">&#9670;&nbsp;</a></span>vptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void* <a class="el" href="h-type_8h.html#a6ff70012dce98a61c680a920f660c210">vptr</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>void型ポインタ定義 / A standard pointer (to "void" because ANSI C says so) </p>
+
+</div>
+</div>
+<a id="ab31578f84064b0779ae4f18997f3fdbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab31578f84064b0779ae4f18997f3fdbf">&#9670;&nbsp;</a></span>WEIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="el" href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム中の重量の型定義(ポンド) </p>
+
+</div>
+</div>
+<a id="a20b712a4a90ecdb7d0ba127957508515"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20b712a4a90ecdb7d0ba127957508515">&#9670;&nbsp;</a></span>XTRA16</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="el" href="h-type_8h.html#a20b712a4a90ecdb7d0ba127957508515">XTRA16</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>汎用変数16ビットの型定義 </p>
+
+</div>
+</div>
+<a id="aaa8edf82def2c41d633605281c5b38cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa8edf82def2c41d633605281c5b38cd">&#9670;&nbsp;</a></span>XTRA8</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> <a class="el" href="h-type_8h.html#aaa8edf82def2c41d633605281c5b38cd">XTRA8</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>汎用変数8ビットの型定義 </p>
+
+</div>
+</div>
+<h2 class="groupheader">列挙型詳解</h2>
+<a id="a906543cecbc333cb7bf9195e18a6ce16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a906543cecbc333cb7bf9195e18a6ce16">&#9670;&nbsp;</a></span>process_result</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a906543cecbc333cb7bf9195e18a6ce16a06c50a32551a640b79ea4b2d63d1cd45"></a>PROCESS_FALSE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a906543cecbc333cb7bf9195e18a6ce16afad3fe064ec423de4ce1b012dd2a044a"></a>PROCESS_TRUE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a906543cecbc333cb7bf9195e18a6ce16a20b12758d9f5397c88196a5d37588d93"></a>PROCESS_CONTINUE&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分17秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

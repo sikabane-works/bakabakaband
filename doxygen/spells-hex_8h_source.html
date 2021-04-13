@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/spell-realm/spells-hex.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_91e81b2ef343e9fa99409409c6a6e4c8.html">spell-realm</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">spells-hex.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="spells-hex_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-hex_8h.html#a31dc16a80812e93d70b223fcf28db63b">stop_hex_spell_all</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-hex_8h.html#a86fbae88140f0826e8724846f6f36873">stop_hex_spell</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spells-hex_8h.html#afd3614788833ddbd0fece90266f444eb">check_hex</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-hex_8h.html#af44c73411a6535870d40b84a4fbc2209">hex_spell_fully</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spells-hex_8h.html#ad53feb8afce5ea1dbcd3283cda5a1e3e">revenge_spell</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spells-hex_8h.html#ae16fd08805f6a2bb34a1e913b8d68ad5">revenge_store</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-hex_8h.html#ac985b1afb644fe3a51c57a06dafc1405">teleport_barrier</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-hex_8h.html#a43433e0b01e5f6d251fa7c7174d0a773">magic_barrier</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-hex_8h.html#a23c1c2db0dd278a5694c0119df0df07d">multiply_barrier</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-hex_8h.html#a2d1d6fca33bc6757463f5e4f51492627">hex_spelling</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_type, <span class="keywordtype">int</span> hex);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-hex_8h.html#aab616e21add8740d7765fef77fb065fe">hex_spelling_any</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_type);</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="spells-hex_8h.html#af92b7cff61a2b19a2db0dd3589e19353">   16</a></span>&#160;<span class="preprocessor">#define casting_hex_flags(P_PTR) ((P_PTR)-&gt;magic_num1[0])</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="spells-hex_8h.html#a0bad271ecd5b2d7b39bf3ce291c5b538">   17</a></span>&#160;<span class="preprocessor">#define casting_hex_num(P_PTR) ((P_PTR)-&gt;magic_num2[0])</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="spells-hex_8h.html#aaf9301af6a77da2544eb3106b22fa508">   18</a></span>&#160;<span class="preprocessor">#define hex_revenge_power(P_PTR) ((P_PTR)-&gt;magic_num1[2])</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="spells-hex_8h.html#abb44b1d037a024019acb40c210186ffd">   19</a></span>&#160;<span class="preprocessor">#define hex_revenge_turn(P_PTR) ((P_PTR)-&gt;magic_num2[2])</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="spells-hex_8h.html#afbd8a3c9a81e3a1f1d334a3c642d3510">   20</a></span>&#160;<span class="preprocessor">#define hex_revenge_type(P_PTR) ((P_PTR)-&gt;magic_num2[1])</span></div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="ah-type_8h_html_afdb20155266ee801610f13b1589a3df3"><div class="ttname"><a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></div><div class="ttdeci">s32b HIT_POINT</div><div class="ttdoc">HPとその増減量の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:141</div></div>
+<div class="ttc" id="aspells-hex_8h_html_a23c1c2db0dd278a5694c0119df0df07d"><div class="ttname"><a href="spells-hex_8h.html#a23c1c2db0dd278a5694c0119df0df07d">multiply_barrier</a></div><div class="ttdeci">bool multiply_barrier(player_type *caster_ptr, MONSTER_IDX m_idx)</div><div class="ttdoc">反増殖結界の判定</div><div class="ttdef"><b>Definition:</b> spells-hex.cpp:309</div></div>
+<div class="ttc" id="aspells-hex_8h_html_a2d1d6fca33bc6757463f5e4f51492627"><div class="ttname"><a href="spells-hex_8h.html#a2d1d6fca33bc6757463f5e4f51492627">hex_spelling</a></div><div class="ttdeci">bool hex_spelling(player_type *caster_type, int hex)</div><div class="ttdef"><b>Definition:</b> spells-hex.cpp:322</div></div>
+<div class="ttc" id="aspells-hex_8h_html_a31dc16a80812e93d70b223fcf28db63b"><div class="ttname"><a href="spells-hex_8h.html#a31dc16a80812e93d70b223fcf28db63b">stop_hex_spell_all</a></div><div class="ttdeci">bool stop_hex_spell_all(player_type *caster_ptr)</div><div class="ttdoc">プレイヤーが詠唱中の全呪術を停止する</div><div class="ttdef"><b>Definition:</b> spells-hex.cpp:26</div></div>
+<div class="ttc" id="aspells-hex_8h_html_a43433e0b01e5f6d251fa7c7174d0a773"><div class="ttname"><a href="spells-hex_8h.html#a43433e0b01e5f6d251fa7c7174d0a773">magic_barrier</a></div><div class="ttdeci">bool magic_barrier(player_type *target_ptr, MONSTER_IDX m_idx)</div><div class="ttdoc">反魔法結界の判定</div><div class="ttdef"><b>Definition:</b> spells-hex.cpp:291</div></div>
+<div class="ttc" id="aspells-hex_8h_html_a86fbae88140f0826e8724846f6f36873"><div class="ttname"><a href="spells-hex_8h.html#a86fbae88140f0826e8724846f6f36873">stop_hex_spell</a></div><div class="ttdeci">bool stop_hex_spell(player_type *caster_ptr)</div><div class="ttdoc">プレイヤーが詠唱中の呪術から一つを選んで停止する</div><div class="ttdef"><b>Definition:</b> spells-hex.cpp:51</div></div>
+<div class="ttc" id="aspells-hex_8h_html_aab616e21add8740d7765fef77fb065fe"><div class="ttname"><a href="spells-hex_8h.html#aab616e21add8740d7765fef77fb065fe">hex_spelling_any</a></div><div class="ttdeci">bool hex_spelling_any(player_type *caster_type)</div><div class="ttdef"><b>Definition:</b> spells-hex.cpp:324</div></div>
+<div class="ttc" id="aspells-hex_8h_html_ac985b1afb644fe3a51c57a06dafc1405"><div class="ttname"><a href="spells-hex_8h.html#ac985b1afb644fe3a51c57a06dafc1405">teleport_barrier</a></div><div class="ttdeci">bool teleport_barrier(player_type *caster_ptr, MONSTER_IDX m_idx)</div><div class="ttdoc">反テレポート結界の判定</div><div class="ttdef"><b>Definition:</b> spells-hex.cpp:273</div></div>
+<div class="ttc" id="aspells-hex_8h_html_ad53feb8afce5ea1dbcd3283cda5a1e3e"><div class="ttname"><a href="spells-hex_8h.html#ad53feb8afce5ea1dbcd3283cda5a1e3e">revenge_spell</a></div><div class="ttdeci">void revenge_spell(player_type *caster_ptr)</div><div class="ttdoc">一定ゲームターン毎に復讐処理の残り期間の判定を行う</div><div class="ttdef"><b>Definition:</b> spells-hex.cpp:236</div></div>
+<div class="ttc" id="aspells-hex_8h_html_ae16fd08805f6a2bb34a1e913b8d68ad5"><div class="ttname"><a href="spells-hex_8h.html#ae16fd08805f6a2bb34a1e913b8d68ad5">revenge_store</a></div><div class="ttdeci">void revenge_store(player_type *caster_ptr, HIT_POINT dam)</div><div class="ttdoc">復讐ダメージの追加を行う</div><div class="ttdef"><b>Definition:</b> spells-hex.cpp:258</div></div>
+<div class="ttc" id="aspells-hex_8h_html_af44c73411a6535870d40b84a4fbc2209"><div class="ttname"><a href="spells-hex_8h.html#af44c73411a6535870d40b84a4fbc2209">hex_spell_fully</a></div><div class="ttdeci">bool hex_spell_fully(player_type *caster_ptr)</div><div class="ttdoc">プレイヤーの呪術詠唱枠がすでに最大かどうかを返す</div><div class="ttdef"><b>Definition:</b> spells-hex.cpp:222</div></div>
+<div class="ttc" id="aspells-hex_8h_html_afd3614788833ddbd0fece90266f444eb"><div class="ttname"><a href="spells-hex_8h.html#afd3614788833ddbd0fece90266f444eb">check_hex</a></div><div class="ttdeci">void check_hex(player_type *caster_ptr)</div><div class="ttdoc">一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c</div><div class="ttdef"><b>Definition:</b> spells-hex.cpp:124</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

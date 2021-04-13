@@ -1,0 +1,647 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/dungeon/dungeon.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_55f303817758c0e5b41dc0bbc9cd6c85.html">dungeon</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">dungeon.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="feature_8h_source.html">grid/feature.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-ability-flags_8h_source.html">monster-race/race-ability-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flag-group_8h_source.html">util/flag-group.h</a>&quot;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+dungeon.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="dungeon_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2dungeon_2dungeon_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2dungeon_2dungeon_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2dungeon_2dungeon_8h">
+<area shape="rect" title=" " alt="" coords="1104,5,1292,61"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="438,199,567,225"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1496,355,1607,382"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="1107,117,1204,143"/>
+<area shape="rect" title=" " alt="" coords="1238,199,1292,225"/>
+<area shape="rect" title=" " alt="" coords="1317,199,1373,225"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="1330,109,1496,151"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="32,273,122,300"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="21,437,162,464"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,273,608,300"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,273,245,300"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,273,368,300"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,273,492,300"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,273,807,300"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="834,273,981,300"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="132,355,254,382"/>
+<area shape="rect" title=" " alt="" coords="278,355,353,382"/>
+<area shape="rect" title=" " alt="" coords="377,355,460,382"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="484,348,635,389"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="659,348,812,389"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="836,348,982,389"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1006,348,1180,389"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1204,348,1329,389"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1354,355,1472,382"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="1056,199,1213,225"/>
+</map>
+</div>
+</div>
+<p><a href="dungeon_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdungeon__type.html">dungeon_type</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:aabe510033c90952e5a76000a657b2897"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#aabe510033c90952e5a76000a657b2897">DUNGEON_FEAT_PROB_NUM</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:aabe510033c90952e5a76000a657b2897"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ef522aa0ac169502a6223572e4bcbf1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a5ef522aa0ac169502a6223572e4bcbf1">DUNGEON_ANGBAND</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a5ef522aa0ac169502a6223572e4bcbf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81ae1d114dea57fcf80a086cd7a1e9c1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a81ae1d114dea57fcf80a086cd7a1e9c1">DUNGEON_GALGALS</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a81ae1d114dea57fcf80a086cd7a1e9c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0bacdf64bb1258e4eaba7f97d48e924"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#ab0bacdf64bb1258e4eaba7f97d48e924">DUNGEON_ORC</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:ab0bacdf64bb1258e4eaba7f97d48e924"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb89bd77304fc1290e54f1971ab673e5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#acb89bd77304fc1290e54f1971ab673e5">DUNGEON_MAZE</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:acb89bd77304fc1290e54f1971ab673e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb1113423bb50ac33935febb8adc040c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#aeb1113423bb50ac33935febb8adc040c">DUNGEON_DRAGON</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:aeb1113423bb50ac33935febb8adc040c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4401c88c490c015a63371cefe66c703a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a4401c88c490c015a63371cefe66c703a">DUNGEON_GRAVE</a>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:a4401c88c490c015a63371cefe66c703a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a591b0edef3d2e3c63b201111777c96c8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a591b0edef3d2e3c63b201111777c96c8">DUNGEON_WOOD</a>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:a591b0edef3d2e3c63b201111777c96c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30199aa51f54a052e93fc742aebedb22"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a30199aa51f54a052e93fc742aebedb22">DUNGEON_VOLCANO</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:a30199aa51f54a052e93fc742aebedb22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e47f3f950e6b2bc7bc89b2c1b53e069"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a9e47f3f950e6b2bc7bc89b2c1b53e069">DUNGEON_HELL</a>&#160;&#160;&#160;9</td></tr>
+<tr class="separator:a9e47f3f950e6b2bc7bc89b2c1b53e069"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a708284e01c6976e6853b25549178a5b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a708284e01c6976e6853b25549178a5b9">DUNGEON_HEAVEN</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:a708284e01c6976e6853b25549178a5b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2eb4c8af02a45149ef9e88ab37d9b0c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#ad2eb4c8af02a45149ef9e88ab37d9b0c">DUNGEON_OCEAN</a>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:ad2eb4c8af02a45149ef9e88ab37d9b0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb53692722eea7240b91575a202b496e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#afb53692722eea7240b91575a202b496e">DUNGEON_CASTLE</a>&#160;&#160;&#160;12</td></tr>
+<tr class="separator:afb53692722eea7240b91575a202b496e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f6811828e0bb2da7bd9d0256094bbe1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a1f6811828e0bb2da7bd9d0256094bbe1">DUNGEON_CTH</a>&#160;&#160;&#160;13</td></tr>
+<tr class="separator:a1f6811828e0bb2da7bd9d0256094bbe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a768b3e257e56c81c5dcdc721aa8c3bc1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a768b3e257e56c81c5dcdc721aa8c3bc1">DUNGEON_MOUNTAIN</a>&#160;&#160;&#160;14</td></tr>
+<tr class="separator:a768b3e257e56c81c5dcdc721aa8c3bc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33ce1c594eb3104b9269063c3d23fda8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a33ce1c594eb3104b9269063c3d23fda8">DUNGEON_GOLD</a>&#160;&#160;&#160;15</td></tr>
+<tr class="separator:a33ce1c594eb3104b9269063c3d23fda8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54d398b94f128c12888b280667ca6a94"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a54d398b94f128c12888b280667ca6a94">DUNGEON_NO_MAGIC</a>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:a54d398b94f128c12888b280667ca6a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a607f86f9ae229d0daaa557400bbff8a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a607f86f9ae229d0daaa557400bbff8a6">DUNGEON_NO_MELEE</a>&#160;&#160;&#160;17</td></tr>
+<tr class="separator:a607f86f9ae229d0daaa557400bbff8a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee3015f2d6b3024ae4e98bc2da5e4676"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#aee3015f2d6b3024ae4e98bc2da5e4676">DUNGEON_CHAMELEON</a>&#160;&#160;&#160;18</td></tr>
+<tr class="separator:aee3015f2d6b3024ae4e98bc2da5e4676"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4eb7685dc00deebfbe6ae0cada1eadd5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a4eb7685dc00deebfbe6ae0cada1eadd5">DUNGEON_DARKNESS</a>&#160;&#160;&#160;19</td></tr>
+<tr class="separator:a4eb7685dc00deebfbe6ae0cada1eadd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:a0ac81fb885456a8265e3458f49c33d38"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structdungeon__type.html">dungeon_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a0ac81fb885456a8265e3458f49c33d38">dungeon_type</a></td></tr>
+<tr class="separator:a0ac81fb885456a8265e3458f49c33d38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a1ecdebcef74092729467110b5eecc64c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad858b43cf9b1e70a02dbeabfd632b70c">DUNGEON_IDX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a1ecdebcef74092729467110b5eecc64c">choose_dungeon</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> note, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="memdesc:a1ecdebcef74092729467110b5eecc64c"><td class="mdescLeft">&#160;</td><td class="mdescRight">これまでに入ったダンジョンの一覧を表示し、選択させる。  <a href="dungeon_8h.html#a1ecdebcef74092729467110b5eecc64c">[詳解]</a><br /></td></tr>
+<tr class="separator:a1ecdebcef74092729467110b5eecc64c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a84a278c671bd0ed0812a8a4037144936"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a84a278c671bd0ed0812a8a4037144936">max_dlv</a></td></tr>
+<tr class="separator:a84a278c671bd0ed0812a8a4037144936"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2397365208db1df4da112742eb7c5f9b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structdungeon__type.html">dungeon_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dungeon_8h.html#a2397365208db1df4da112742eb7c5f9b">d_info</a></td></tr>
+<tr class="separator:a2397365208db1df4da112742eb7c5f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="a5ef522aa0ac169502a6223572e4bcbf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ef522aa0ac169502a6223572e4bcbf1">&#9670;&nbsp;</a></span>DUNGEON_ANGBAND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_ANGBAND&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afb53692722eea7240b91575a202b496e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb53692722eea7240b91575a202b496e">&#9670;&nbsp;</a></span>DUNGEON_CASTLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_CASTLE&#160;&#160;&#160;12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee3015f2d6b3024ae4e98bc2da5e4676"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee3015f2d6b3024ae4e98bc2da5e4676">&#9670;&nbsp;</a></span>DUNGEON_CHAMELEON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_CHAMELEON&#160;&#160;&#160;18</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1f6811828e0bb2da7bd9d0256094bbe1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f6811828e0bb2da7bd9d0256094bbe1">&#9670;&nbsp;</a></span>DUNGEON_CTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_CTH&#160;&#160;&#160;13</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4eb7685dc00deebfbe6ae0cada1eadd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4eb7685dc00deebfbe6ae0cada1eadd5">&#9670;&nbsp;</a></span>DUNGEON_DARKNESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_DARKNESS&#160;&#160;&#160;19</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb1113423bb50ac33935febb8adc040c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb1113423bb50ac33935febb8adc040c">&#9670;&nbsp;</a></span>DUNGEON_DRAGON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_DRAGON&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aabe510033c90952e5a76000a657b2897"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabe510033c90952e5a76000a657b2897">&#9670;&nbsp;</a></span>DUNGEON_FEAT_PROB_NUM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_FEAT_PROB_NUM&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a81ae1d114dea57fcf80a086cd7a1e9c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81ae1d114dea57fcf80a086cd7a1e9c1">&#9670;&nbsp;</a></span>DUNGEON_GALGALS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_GALGALS&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a33ce1c594eb3104b9269063c3d23fda8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33ce1c594eb3104b9269063c3d23fda8">&#9670;&nbsp;</a></span>DUNGEON_GOLD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_GOLD&#160;&#160;&#160;15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4401c88c490c015a63371cefe66c703a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4401c88c490c015a63371cefe66c703a">&#9670;&nbsp;</a></span>DUNGEON_GRAVE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_GRAVE&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a708284e01c6976e6853b25549178a5b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a708284e01c6976e6853b25549178a5b9">&#9670;&nbsp;</a></span>DUNGEON_HEAVEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_HEAVEN&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9e47f3f950e6b2bc7bc89b2c1b53e069"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e47f3f950e6b2bc7bc89b2c1b53e069">&#9670;&nbsp;</a></span>DUNGEON_HELL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_HELL&#160;&#160;&#160;9</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acb89bd77304fc1290e54f1971ab673e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb89bd77304fc1290e54f1971ab673e5">&#9670;&nbsp;</a></span>DUNGEON_MAZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_MAZE&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a768b3e257e56c81c5dcdc721aa8c3bc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a768b3e257e56c81c5dcdc721aa8c3bc1">&#9670;&nbsp;</a></span>DUNGEON_MOUNTAIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_MOUNTAIN&#160;&#160;&#160;14</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a54d398b94f128c12888b280667ca6a94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54d398b94f128c12888b280667ca6a94">&#9670;&nbsp;</a></span>DUNGEON_NO_MAGIC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_NO_MAGIC&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a607f86f9ae229d0daaa557400bbff8a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a607f86f9ae229d0daaa557400bbff8a6">&#9670;&nbsp;</a></span>DUNGEON_NO_MELEE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_NO_MELEE&#160;&#160;&#160;17</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad2eb4c8af02a45149ef9e88ab37d9b0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2eb4c8af02a45149ef9e88ab37d9b0c">&#9670;&nbsp;</a></span>DUNGEON_OCEAN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_OCEAN&#160;&#160;&#160;11</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab0bacdf64bb1258e4eaba7f97d48e924"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0bacdf64bb1258e4eaba7f97d48e924">&#9670;&nbsp;</a></span>DUNGEON_ORC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_ORC&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a30199aa51f54a052e93fc742aebedb22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30199aa51f54a052e93fc742aebedb22">&#9670;&nbsp;</a></span>DUNGEON_VOLCANO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_VOLCANO&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a591b0edef3d2e3c63b201111777c96c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a591b0edef3d2e3c63b201111777c96c8">&#9670;&nbsp;</a></span>DUNGEON_WOOD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DUNGEON_WOOD&#160;&#160;&#160;7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">型定義詳解</h2>
+<a id="a0ac81fb885456a8265e3458f49c33d38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ac81fb885456a8265e3458f49c33d38">&#9670;&nbsp;</a></span>dungeon_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structdungeon__type.html">dungeon_type</a> <a class="el" href="structdungeon__type.html">dungeon_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a1ecdebcef74092729467110b5eecc64c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ecdebcef74092729467110b5eecc64c">&#9670;&nbsp;</a></span>choose_dungeon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad858b43cf9b1e70a02dbeabfd632b70c">DUNGEON_IDX</a> choose_dungeon </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>note</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>これまでに入ったダンジョンの一覧を表示し、選択させる。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">note</td><td>ダンジョンに施す処理記述 </td></tr>
+    <tr><td class="paramname">y</td><td>コンソールY座標 </td></tr>
+    <tr><td class="paramname">x</td><td>コンソールX座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>選択されたダンジョンID </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="dungeon_8h_a1ecdebcef74092729467110b5eecc64c_cgraph.png" border="0" usemap="#adungeon_8h_a1ecdebcef74092729467110b5eecc64c_cgraph" alt=""/></div>
+<map name="adungeon_8h_a1ecdebcef74092729467110b5eecc64c_cgraph" id="adungeon_8h_a1ecdebcef74092729467110b5eecc64c_cgraph">
+<area shape="rect" title="これまでに入ったダンジョンの一覧を表示し、選択させる。" alt="" coords="5,777,125,804"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="353,5,395,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="191,701,250,728"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="194,284,247,311"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="175,752,266,779"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="335,828,413,855"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="201,955,240,981"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="175,853,267,880"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="173,904,268,931"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="521,5,570,32"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="504,56,587,83"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="691,309,769,336"/>
+<area shape="rect" href="z-term_8cpp.html#a50f4ddf9b64ef43b1be95eb89e78c263" title=" " alt="" coords="659,5,801,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5d7c0ea368bccad499b9bbdb4ffc53dc" title=" " alt="" coords="661,56,799,83"/>
+<area shape="rect" href="z-term_8cpp.html#a1b660c2d9fa25eb39e501811a0088cd2" title=" " alt="" coords="661,107,799,133"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="343,715,405,741"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="512,740,579,767"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="323,259,425,285"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="496,157,595,184"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="333,461,415,488"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="502,360,589,387"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="316,56,432,83"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="333,309,415,336"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="316,107,432,133"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="316,157,432,184"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="500,208,591,235"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="498,259,593,285"/>
+<area shape="rect" href="macro-util_8cpp.html#a1e9851f9b9e0a0e51628a231ca95fcc1" title=" " alt="" coords="482,461,609,488"/>
+<area shape="rect" href="macro-util_8cpp.html#a7f48a1923076b3b314f1bc58913a2a59" title=" " alt="" coords="480,512,611,539"/>
+<area shape="rect" href="macro-util_8cpp.html#ada693de344c97bc09a586100f25919dd" title=" " alt="" coords="483,563,607,589"/>
+<area shape="rect" href="z-term_8cpp.html#a020ef4815c101960b4fdad94c4e5b59b" title=" " alt="" coords="490,613,601,640"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="dungeon_8h_a1ecdebcef74092729467110b5eecc64c_icgraph.png" border="0" usemap="#adungeon_8h_a1ecdebcef74092729467110b5eecc64c_icgraph" alt=""/></div>
+<map name="adungeon_8h_a1ecdebcef74092729467110b5eecc64c_icgraph" id="adungeon_8h_a1ecdebcef74092729467110b5eecc64c_icgraph">
+<area shape="rect" title="これまでに入ったダンジョンの一覧を表示し、選択させる。" alt="" coords="564,325,684,352"/>
+<area shape="rect" href="spells-world_8cpp.html#a17f767372dbdae04de501f8d205742f3" title=" " alt="" coords="403,140,516,167"/>
+<area shape="rect" href="spells-world_8cpp.html#acd1bf8acf03f4392bc78f8c170a23bc7" title="プレイヤーの帰還発動及び中止処理 / Recall the player to town or dungeon" alt="" coords="412,325,507,352"/>
+<area shape="rect" href="spells-world_8cpp.html#aed0db166d220d3154450d18708491e28" title="フロア・リセット処理" alt="" coords="415,579,504,605"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="192,5,355,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="15,5,134,32"/>
+<area shape="rect" href="activation-others_8cpp.html#a318cab58d04b4ec73f9c109d33b1311f" title=" " alt="" coords="207,275,340,301"/>
+<area shape="rect" href="activation-others_8cpp.html#ae4a988da470e3c12dea60d2c55ff517e" title=" " alt="" coords="221,224,325,251"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#af68e01e109fc7fb8b1e131a7131ed4c5" title="鏡魔法の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;Mirror magic&#39;." alt="" coords="213,325,334,352"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="227,376,320,403"/>
+<area shape="rect" href="realm-arcane_8cpp.html#a7832487e3190270957aa0ada40c22dc0" title="秘術領域魔法の各処理を行う" alt="" coords="215,427,331,453"/>
+<area shape="rect" href="realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="227,477,320,504"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="213,528,333,555"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="218,579,329,605"/>
+<area shape="rect" href="mutation-execution_8cpp.html#a0c9c1052c587d71b683d8a700d9ae016" title="突然変異のレイシャル効果実装" alt="" coords="203,56,344,83"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="236,629,311,656"/>
+<area shape="rect" href="cmd-zaprod_8cpp.html#ae9106d1cdcf01f0497ab6cfc5758bf11" title="ロッドの効果を発動する" alt="" coords="234,107,313,133"/>
+<area shape="rect" href="racial-switcher_8cpp.html#ac21c6b6a9eae71ce476478232b11f8e0" title="レイシャルと突然変異の技能処理 / Racial powers (and mutations)" alt="" coords="206,158,341,199"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="15,249,135,276"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a49b73965d0ef306e6cb8a9dc70ed212a" title=" " alt="" coords="9,325,141,352"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="5,376,144,403"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="36,503,113,529"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a2397365208db1df4da112742eb7c5f9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2397365208db1df4da112742eb7c5f9b">&#9670;&nbsp;</a></span>d_info</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structdungeon__type.html">dungeon_type</a>&gt; d_info</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a84a278c671bd0ed0812a8a4037144936"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84a278c671bd0ed0812a8a4037144936">&#9670;&nbsp;</a></span>max_dlv</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a>* max_dlv</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分46秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

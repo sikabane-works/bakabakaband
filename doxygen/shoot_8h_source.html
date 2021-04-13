@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/combat/shoot.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_61f20e49ac5d6763f7282e8c799f7538.html">combat</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">shoot.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="shoot_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-type-definition_8h.html">system/monster-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="shoot_8h.html#a9908e62c6f4d432752c8cff5b4e72cfc">test_hit_fire</a>(<a class="code" href="structplayer__type.html">player_type</a> *shooter_ptr, <span class="keywordtype">int</span> chance, <a class="code" href="structmonster__type.html">monster_type</a> *m_ptr, <span class="keywordtype">int</span> vis, <span class="keywordtype">char</span>* o_name);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="shoot_8h.html#a5f91f63cae04b8cc5cfa2427c5aaac24">critical_shot</a>(<a class="code" href="structplayer__type.html">player_type</a> *shooter_ptr, <a class="code" href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a> weight, <span class="keywordtype">int</span> plus_ammo, <span class="keywordtype">int</span> plus_bow, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<a class="code" href="h-type_8h.html#a6d6373a43af80d5f6424518b503fa2d7">ENERGY</a> <a class="code" href="shoot_8h.html#a4c408f517b161f6e1fd5b185cfcd786a">bow_energy</a>(<a class="code" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a> sval);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">int</span> <a class="code" href="shoot_8h.html#afea7a69a70c8e57df24d1d6a4a0153df">bow_tmul</a>(<a class="code" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a> sval);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="shoot_8h.html#a9de320b32a1d18a191c7a1581bf7e789">calc_crit_ratio_shot</a>(<a class="code" href="structplayer__type.html">player_type</a> *shooter_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> plus_ammo, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> plus_bow);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="shoot_8h.html#aa0e832cf3b6da1a0193d110bf0a42be5">calc_expect_crit_shot</a>(<a class="code" href="structplayer__type.html">player_type</a> *shooter_ptr, <a class="code" href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a> weight, <span class="keywordtype">int</span> plus_ammo, <span class="keywordtype">int</span> plus_bow, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="shoot_8h.html#a59038ce6794aeeff4f002830fbea9e41">calc_expect_crit</a>(<a class="code" href="structplayer__type.html">player_type</a> *shooter_ptr, <a class="code" href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a> weight, <span class="keywordtype">int</span> plus, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam, <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> meichuu, <span class="keywordtype">bool</span> dokubari);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="shoot_8h.html#a39bfc14e1d1ecbb15639107988599ff8">exe_fire</a>(<a class="code" href="structplayer__type.html">player_type</a> *shooter_ptr, <a class="code" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> item, <a class="code" href="structobject__type.html">object_type</a> *j_ptr, <a class="code" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a> <a class="code" href="snipe-types_8h.html#a2b114e33bdc4f1bba5f6b19b082b7f87">snipe_type</a>);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_a592c0b48d60348198260e1f6ffb1897e"><div class="ttname"><a href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a></div><div class="ttdeci">s16b INVENTORY_IDX</div><div class="ttdoc">ゲーム中の所持品ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:120</div></div>
+<div class="ttc" id="ah-type_8h_html_a6d6373a43af80d5f6424518b503fa2d7"><div class="ttname"><a href="h-type_8h.html#a6d6373a43af80d5f6424518b503fa2d7">ENERGY</a></div><div class="ttdeci">s16b ENERGY</div><div class="ttdoc">ゲーム中の行動エネルギーの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:172</div></div>
+<div class="ttc" id="ah-type_8h_html_a8999b4411f93c429d3c10840fde80da1"><div class="ttname"><a href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a></div><div class="ttdeci">s32b SPELL_IDX</div><div class="ttdoc">各魔法領域/職業能力ごとの呪文ID型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:221</div></div>
+<div class="ttc" id="ah-type_8h_html_ab31578f84064b0779ae4f18997f3fdbf"><div class="ttname"><a href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a></div><div class="ttdeci">s32b WEIGHT</div><div class="ttdoc">ゲーム中の重量の型定義(ポンド)</div><div class="ttdef"><b>Definition:</b> h-type.h:183</div></div>
+<div class="ttc" id="ah-type_8h_html_ad52e4f96ca473e40e3be6db6f73a13d4"><div class="ttname"><a href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a></div><div class="ttdeci">s32b OBJECT_SUBTYPE_VALUE</div><div class="ttdoc">ゲーム中のアイテム副分類の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:181</div></div>
+<div class="ttc" id="ah-type_8h_html_afdb20155266ee801610f13b1589a3df3"><div class="ttname"><a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></div><div class="ttdeci">s32b HIT_POINT</div><div class="ttdoc">HPとその増減量の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:141</div></div>
+<div class="ttc" id="amonster-type-definition_8h_html"><div class="ttname"><a href="monster-type-definition_8h.html">monster-type-definition.h</a></div></div>
+<div class="ttc" id="ashoot_8h_html_a39bfc14e1d1ecbb15639107988599ff8"><div class="ttname"><a href="shoot_8h.html#a39bfc14e1d1ecbb15639107988599ff8">exe_fire</a></div><div class="ttdeci">void exe_fire(player_type *shooter_ptr, INVENTORY_IDX item, object_type *j_ptr, SPELL_IDX snipe_type)</div><div class="ttdoc">射撃処理実行 / Fire an object from the pack or floor.</div><div class="ttdef"><b>Definition:</b> shoot.cpp:362</div></div>
+<div class="ttc" id="ashoot_8h_html_a4c408f517b161f6e1fd5b185cfcd786a"><div class="ttname"><a href="shoot_8h.html#a4c408f517b161f6e1fd5b185cfcd786a">bow_energy</a></div><div class="ttdeci">ENERGY bow_energy(OBJECT_SUBTYPE_VALUE sval)</div><div class="ttdoc">射撃武器の攻撃に必要な基本消費エネルギーを返す/Return bow energy</div><div class="ttdef"><b>Definition:</b> shoot.cpp:981</div></div>
+<div class="ttc" id="ashoot_8h_html_a59038ce6794aeeff4f002830fbea9e41"><div class="ttname"><a href="shoot_8h.html#a59038ce6794aeeff4f002830fbea9e41">calc_expect_crit</a></div><div class="ttdeci">HIT_POINT calc_expect_crit(player_type *shooter_ptr, WEIGHT weight, int plus, HIT_POINT dam, s16b meichuu, bool dokubari)</div><div class="ttdoc">攻撃時クリティカルによるダメージ期待値修正計算（重量と毒針処理） / critical happens at i / 10000</div><div class="ttdef"><b>Definition:</b> shoot.cpp:1162</div></div>
+<div class="ttc" id="ashoot_8h_html_a5f91f63cae04b8cc5cfa2427c5aaac24"><div class="ttname"><a href="shoot_8h.html#a5f91f63cae04b8cc5cfa2427c5aaac24">critical_shot</a></div><div class="ttdeci">HIT_POINT critical_shot(player_type *shooter_ptr, WEIGHT weight, int plus_ammo, int plus_bow, HIT_POINT dam)</div><div class="ttdoc">プレイヤーからモンスターへの射撃クリティカル判定 / Critical hits (from objects thrown by player) Factor in item weight,...</div><div class="ttdef"><b>Definition:</b> shoot.cpp:935</div></div>
+<div class="ttc" id="ashoot_8h_html_a9908e62c6f4d432752c8cff5b4e72cfc"><div class="ttname"><a href="shoot_8h.html#a9908e62c6f4d432752c8cff5b4e72cfc">test_hit_fire</a></div><div class="ttdeci">bool test_hit_fire(player_type *shooter_ptr, int chance, monster_type *m_ptr, int vis, char *o_name)</div><div class="ttdoc">プレイヤーからモンスターへの射撃命中判定 / Determine if the player &quot;hits&quot; a monster (normal combat).</div><div class="ttdef"><b>Definition:</b> shoot.cpp:873</div></div>
+<div class="ttc" id="ashoot_8h_html_a9de320b32a1d18a191c7a1581bf7e789"><div class="ttname"><a href="shoot_8h.html#a9de320b32a1d18a191c7a1581bf7e789">calc_crit_ratio_shot</a></div><div class="ttdeci">HIT_POINT calc_crit_ratio_shot(player_type *shooter_ptr, HIT_POINT plus_ammo, HIT_POINT plus_bow)</div><div class="ttdoc">射撃時クリティカルによるダメージ期待値修正計算（スナイパーの集中処理と武器経験値） / critical happens at i / 10000</div><div class="ttdef"><b>Definition:</b> shoot.cpp:1084</div></div>
+<div class="ttc" id="ashoot_8h_html_aa0e832cf3b6da1a0193d110bf0a42be5"><div class="ttname"><a href="shoot_8h.html#aa0e832cf3b6da1a0193d110bf0a42be5">calc_expect_crit_shot</a></div><div class="ttdeci">HIT_POINT calc_expect_crit_shot(player_type *shooter_ptr, WEIGHT weight, int plus_ammo, int plus_bow, HIT_POINT dam)</div><div class="ttdoc">射撃時クリティカルによるダメージ期待値修正計算（重量依存部分） / critical happens at i / 10000</div><div class="ttdef"><b>Definition:</b> shoot.cpp:1120</div></div>
+<div class="ttc" id="ashoot_8h_html_afea7a69a70c8e57df24d1d6a4a0153df"><div class="ttname"><a href="shoot_8h.html#afea7a69a70c8e57df24d1d6a4a0153df">bow_tmul</a></div><div class="ttdeci">int bow_tmul(OBJECT_SUBTYPE_VALUE sval)</div><div class="ttdef"><b>Definition:</b> shoot.cpp:1030</div></div>
+<div class="ttc" id="asnipe-types_8h_html_a2b114e33bdc4f1bba5f6b19b082b7f87"><div class="ttname"><a href="snipe-types_8h.html#a2b114e33bdc4f1bba5f6b19b082b7f87">snipe_type</a></div><div class="ttdeci">snipe_type</div><div class="ttdef"><b>Definition:</b> snipe-types.h:3</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/load/load-v1-5-0.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2ce012611788abb6196ef11b41953a16.html">load</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">load-v1-5-0.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="load-v1-5-0_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-type-definition_8h.html">system/monster-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// TODO: 更に分割する可能性が中程度あるのでヘッダに置いておく</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1">    7</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1">old_monster_resistance_type</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a1dada90703f488d4e2765403349e8319">    8</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a1dada90703f488d4e2765403349e8319">RF3_IM_ACID</a> = 0x00010000, <span class="comment">/* Resist acid a lot */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a9f29ca67ea5ff3d42bc13e9d598ad7bf">    9</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a9f29ca67ea5ff3d42bc13e9d598ad7bf">RF3_IM_ELEC</a> = 0x00020000, <span class="comment">/* Resist elec a lot */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a68eeaa7016a5fd569d5811db69bc9c3c">   10</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a68eeaa7016a5fd569d5811db69bc9c3c">RF3_IM_FIRE</a> = 0x00040000, <span class="comment">/* Resist fire a lot */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1ad44f799aba0172d7921e6303540fd2e1">   11</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1ad44f799aba0172d7921e6303540fd2e1">RF3_IM_COLD</a> = 0x00080000, <span class="comment">/* Resist cold a lot */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a58481931a06cd830aeed686c21f8fc00">   12</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a58481931a06cd830aeed686c21f8fc00">RF3_IM_POIS</a> = 0x00100000, <span class="comment">/* Resist poison a lot */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a49e08a9d2b3b738ea4479fa9b919dc39">   13</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a49e08a9d2b3b738ea4479fa9b919dc39">RF3_RES_TELE</a> = 0x00200000, <span class="comment">/* Resist teleportation */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1aed128f6ab7ebef90859c4300516dd2bd">   14</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1aed128f6ab7ebef90859c4300516dd2bd">RF3_RES_NETH</a> = 0x00400000, <span class="comment">/* Resist nether a lot */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1acfbf5cf45a6da2bbbc37bcb040fc57aa">   15</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1acfbf5cf45a6da2bbbc37bcb040fc57aa">RF3_RES_WATE</a> = 0x00800000, <span class="comment">/* Resist water */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1ad217b35a52192f82d11875c2b70ca279">   16</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1ad217b35a52192f82d11875c2b70ca279">RF3_RES_PLAS</a> = 0x01000000, <span class="comment">/* Resist plasma */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a5b6972b0dfbef3312c0c142aad946cae">   17</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a5b6972b0dfbef3312c0c142aad946cae">RF3_RES_NEXU</a> = 0x02000000, <span class="comment">/* Resist nexus */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a327733b8128fde267dec7085fd318dce">   18</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a327733b8128fde267dec7085fd318dce">RF3_RES_DISE</a> = 0x04000000, <span class="comment">/* Resist disenchantment */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a9346a32cb53e87f5b5872f3c8e74320a">   19</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a9346a32cb53e87f5b5872f3c8e74320a">RF3_RES_ALL</a> = 0x08000000, <span class="comment">/* Resist all */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98b">   22</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98b">old_monster_breath_type</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba1b0a5d221fb3edde2eca97c904258c8d">   23</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba1b0a5d221fb3edde2eca97c904258c8d">RF4_BR_LITE</a> = 0x00004000, <span class="comment">/* Breathe Lite */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba94e9b7c89a8b38dbc00322c53d7f500d">   24</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba94e9b7c89a8b38dbc00322c53d7f500d">RF4_BR_DARK</a> = 0x00008000, <span class="comment">/* Breathe Dark */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba6a88be3bc0ff9d1a4e24946f15de4475">   25</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba6a88be3bc0ff9d1a4e24946f15de4475">RF4_BR_CONF</a> = 0x00010000, <span class="comment">/* Breathe Confusion */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba6936cf4a2a8eb8d77c7ea565eb0ad4e9">   26</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba6936cf4a2a8eb8d77c7ea565eb0ad4e9">RF4_BR_SOUN</a> = 0x00020000, <span class="comment">/* Breathe Sound */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba706dc467a910e4e1f3db6d4ae25ba6b5">   27</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba706dc467a910e4e1f3db6d4ae25ba6b5">RF4_BR_CHAO</a> = 0x00040000, <span class="comment">/* Breathe Chaos */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba9055d3bf6c5bab146de5d1540a3f09e8">   28</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba9055d3bf6c5bab146de5d1540a3f09e8">RF4_BR_TIME</a> = 0x00200000, <span class="comment">/* Breathe Time */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba601090371af84e811dcae76b79eaa2fe">   29</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba601090371af84e811dcae76b79eaa2fe">RF4_BR_INER</a> = 0x00400000, <span class="comment">/* Breathe Inertia */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba14bb8f3543c0e8a73bd3c456f676ab03">   30</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba14bb8f3543c0e8a73bd3c456f676ab03">RF4_BR_GRAV</a> = 0x00800000, <span class="comment">/* Breathe Gravity */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba4a7427b8205a0920f0fe0c34455362a5">   31</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba4a7427b8205a0920f0fe0c34455362a5">RF4_BR_SHAR</a> = 0x01000000, <span class="comment">/* Breathe Shards */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba453d0d466cbb29af43e64a72a9c4d251">   32</a></span>&#160;    <a class="code" href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba453d0d466cbb29af43e64a72a9c4d251">RF4_BR_WALL</a> = 0x04000000, <span class="comment">/* Breathe Force */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="load-v1-5-0_8h.html#abf5aed2d4c4a66ea2ce9d726896b3b8a">OLD_QUEST_WATER_CAVE</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="load-v1-5-0_8h.html#a7b1adb44e4e3d5955c91955aa4e8c045">QUEST_OLD_CASTLE</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="load-v1-5-0_8h.html#a21154fcf032081ccd4fc4a4078507a95">QUEST_ROYAL_CRYPT</a>; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> <a class="code" href="load-v1-5-0_8h.html#ad02061f4e849319d3d0775df91347668">rd_item_old</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">void</span> <a class="code" href="load-v1-5-0_8h.html#a3eaa3c5c5bd6009d4a504bd351ca0093">rd_monster_old</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> <a class="code" href="load-v1-5-0_8h.html#ab989edfc4f4d23601fb62876ad62e2cc">set_old_lore</a>(<a class="code" href="structmonster__race.html">monster_race</a> *r_ptr, <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> f4, <span class="keyword">const</span> <a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> r_idx);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> <a class="code" href="load-v1-5-0_8h.html#a8b27d23ddd092fb87bb6f5e9fe80a9ad">rd_dungeon_old</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a7ea47f67338902d35c1e93e00cf86908"><div class="ttname"><a href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a></div><div class="ttdeci">s16b MONRACE_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:109</div></div>
+<div class="ttc" id="ah-type_8h_html_ad99e8b64263d5831d93bec22e89da527"><div class="ttname"><a href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a></div><div class="ttdeci">int errr</div><div class="ttdoc">エラーコードの定義 / Error codes for function return values</div><div class="ttdef"><b>Definition:</b> h-type.h:53</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a0a1e2f79245898e33e96b64fd011c6a1"><div class="ttname"><a href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1">old_monster_resistance_type</a></div><div class="ttdeci">old_monster_resistance_type</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:7</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a0a1e2f79245898e33e96b64fd011c6a1a1dada90703f488d4e2765403349e8319"><div class="ttname"><a href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a1dada90703f488d4e2765403349e8319">RF3_IM_ACID</a></div><div class="ttdeci">@ RF3_IM_ACID</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:8</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a0a1e2f79245898e33e96b64fd011c6a1a327733b8128fde267dec7085fd318dce"><div class="ttname"><a href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a327733b8128fde267dec7085fd318dce">RF3_RES_DISE</a></div><div class="ttdeci">@ RF3_RES_DISE</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:18</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a0a1e2f79245898e33e96b64fd011c6a1a49e08a9d2b3b738ea4479fa9b919dc39"><div class="ttname"><a href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a49e08a9d2b3b738ea4479fa9b919dc39">RF3_RES_TELE</a></div><div class="ttdeci">@ RF3_RES_TELE</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:13</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a0a1e2f79245898e33e96b64fd011c6a1a58481931a06cd830aeed686c21f8fc00"><div class="ttname"><a href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a58481931a06cd830aeed686c21f8fc00">RF3_IM_POIS</a></div><div class="ttdeci">@ RF3_IM_POIS</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:12</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a0a1e2f79245898e33e96b64fd011c6a1a5b6972b0dfbef3312c0c142aad946cae"><div class="ttname"><a href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a5b6972b0dfbef3312c0c142aad946cae">RF3_RES_NEXU</a></div><div class="ttdeci">@ RF3_RES_NEXU</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:17</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a0a1e2f79245898e33e96b64fd011c6a1a68eeaa7016a5fd569d5811db69bc9c3c"><div class="ttname"><a href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a68eeaa7016a5fd569d5811db69bc9c3c">RF3_IM_FIRE</a></div><div class="ttdeci">@ RF3_IM_FIRE</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:10</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a0a1e2f79245898e33e96b64fd011c6a1a9346a32cb53e87f5b5872f3c8e74320a"><div class="ttname"><a href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a9346a32cb53e87f5b5872f3c8e74320a">RF3_RES_ALL</a></div><div class="ttdeci">@ RF3_RES_ALL</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:19</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a0a1e2f79245898e33e96b64fd011c6a1a9f29ca67ea5ff3d42bc13e9d598ad7bf"><div class="ttname"><a href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1a9f29ca67ea5ff3d42bc13e9d598ad7bf">RF3_IM_ELEC</a></div><div class="ttdeci">@ RF3_IM_ELEC</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:9</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a0a1e2f79245898e33e96b64fd011c6a1acfbf5cf45a6da2bbbc37bcb040fc57aa"><div class="ttname"><a href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1acfbf5cf45a6da2bbbc37bcb040fc57aa">RF3_RES_WATE</a></div><div class="ttdeci">@ RF3_RES_WATE</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:15</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a0a1e2f79245898e33e96b64fd011c6a1ad217b35a52192f82d11875c2b70ca279"><div class="ttname"><a href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1ad217b35a52192f82d11875c2b70ca279">RF3_RES_PLAS</a></div><div class="ttdeci">@ RF3_RES_PLAS</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:16</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a0a1e2f79245898e33e96b64fd011c6a1ad44f799aba0172d7921e6303540fd2e1"><div class="ttname"><a href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1ad44f799aba0172d7921e6303540fd2e1">RF3_IM_COLD</a></div><div class="ttdeci">@ RF3_IM_COLD</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:11</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a0a1e2f79245898e33e96b64fd011c6a1aed128f6ab7ebef90859c4300516dd2bd"><div class="ttname"><a href="load-v1-5-0_8h.html#a0a1e2f79245898e33e96b64fd011c6a1aed128f6ab7ebef90859c4300516dd2bd">RF3_RES_NETH</a></div><div class="ttdeci">@ RF3_RES_NETH</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:14</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a1d9563fa2154fb6389b7492e74e4a98b"><div class="ttname"><a href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98b">old_monster_breath_type</a></div><div class="ttdeci">old_monster_breath_type</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:22</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a1d9563fa2154fb6389b7492e74e4a98ba14bb8f3543c0e8a73bd3c456f676ab03"><div class="ttname"><a href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba14bb8f3543c0e8a73bd3c456f676ab03">RF4_BR_GRAV</a></div><div class="ttdeci">@ RF4_BR_GRAV</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:30</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a1d9563fa2154fb6389b7492e74e4a98ba1b0a5d221fb3edde2eca97c904258c8d"><div class="ttname"><a href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba1b0a5d221fb3edde2eca97c904258c8d">RF4_BR_LITE</a></div><div class="ttdeci">@ RF4_BR_LITE</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:23</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a1d9563fa2154fb6389b7492e74e4a98ba453d0d466cbb29af43e64a72a9c4d251"><div class="ttname"><a href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba453d0d466cbb29af43e64a72a9c4d251">RF4_BR_WALL</a></div><div class="ttdeci">@ RF4_BR_WALL</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:32</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a1d9563fa2154fb6389b7492e74e4a98ba4a7427b8205a0920f0fe0c34455362a5"><div class="ttname"><a href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba4a7427b8205a0920f0fe0c34455362a5">RF4_BR_SHAR</a></div><div class="ttdeci">@ RF4_BR_SHAR</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:31</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a1d9563fa2154fb6389b7492e74e4a98ba601090371af84e811dcae76b79eaa2fe"><div class="ttname"><a href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba601090371af84e811dcae76b79eaa2fe">RF4_BR_INER</a></div><div class="ttdeci">@ RF4_BR_INER</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:29</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a1d9563fa2154fb6389b7492e74e4a98ba6936cf4a2a8eb8d77c7ea565eb0ad4e9"><div class="ttname"><a href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba6936cf4a2a8eb8d77c7ea565eb0ad4e9">RF4_BR_SOUN</a></div><div class="ttdeci">@ RF4_BR_SOUN</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:26</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a1d9563fa2154fb6389b7492e74e4a98ba6a88be3bc0ff9d1a4e24946f15de4475"><div class="ttname"><a href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba6a88be3bc0ff9d1a4e24946f15de4475">RF4_BR_CONF</a></div><div class="ttdeci">@ RF4_BR_CONF</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:25</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a1d9563fa2154fb6389b7492e74e4a98ba706dc467a910e4e1f3db6d4ae25ba6b5"><div class="ttname"><a href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba706dc467a910e4e1f3db6d4ae25ba6b5">RF4_BR_CHAO</a></div><div class="ttdeci">@ RF4_BR_CHAO</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:27</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a1d9563fa2154fb6389b7492e74e4a98ba9055d3bf6c5bab146de5d1540a3f09e8"><div class="ttname"><a href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba9055d3bf6c5bab146de5d1540a3f09e8">RF4_BR_TIME</a></div><div class="ttdeci">@ RF4_BR_TIME</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:28</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a1d9563fa2154fb6389b7492e74e4a98ba94e9b7c89a8b38dbc00322c53d7f500d"><div class="ttname"><a href="load-v1-5-0_8h.html#a1d9563fa2154fb6389b7492e74e4a98ba94e9b7c89a8b38dbc00322c53d7f500d">RF4_BR_DARK</a></div><div class="ttdeci">@ RF4_BR_DARK</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.h:24</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a21154fcf032081ccd4fc4a4078507a95"><div class="ttname"><a href="load-v1-5-0_8h.html#a21154fcf032081ccd4fc4a4078507a95">QUEST_ROYAL_CRYPT</a></div><div class="ttdeci">const int QUEST_ROYAL_CRYPT</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.cpp:52</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a3eaa3c5c5bd6009d4a504bd351ca0093"><div class="ttname"><a href="load-v1-5-0_8h.html#a3eaa3c5c5bd6009d4a504bd351ca0093">rd_monster_old</a></div><div class="ttdeci">void rd_monster_old(player_type *player_ptr, monster_type *m_ptr)</div><div class="ttdoc">モンスターを読み込む / Read a monster</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.cpp:339</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a7b1adb44e4e3d5955c91955aa4e8c045"><div class="ttname"><a href="load-v1-5-0_8h.html#a7b1adb44e4e3d5955c91955aa4e8c045">QUEST_OLD_CASTLE</a></div><div class="ttdeci">const int QUEST_OLD_CASTLE</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.cpp:51</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_a8b27d23ddd092fb87bb6f5e9fe80a9ad"><div class="ttname"><a href="load-v1-5-0_8h.html#a8b27d23ddd092fb87bb6f5e9fe80a9ad">rd_dungeon_old</a></div><div class="ttdeci">errr rd_dungeon_old(player_type *player_ptr)</div><div class="ttdoc">ダンジョン情報を読み込む / Read the dungeon (old method)</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.cpp:547</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_ab989edfc4f4d23601fb62876ad62e2cc"><div class="ttname"><a href="load-v1-5-0_8h.html#ab989edfc4f4d23601fb62876ad62e2cc">set_old_lore</a></div><div class="ttdeci">void set_old_lore(monster_race *r_ptr, BIT_FLAGS f4, const MONRACE_IDX r_idx)</div><div class="ttdoc">モンスターの思い出を読み込む</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.cpp:503</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_abf5aed2d4c4a66ea2ce9d726896b3b8a"><div class="ttname"><a href="load-v1-5-0_8h.html#abf5aed2d4c4a66ea2ce9d726896b3b8a">OLD_QUEST_WATER_CAVE</a></div><div class="ttdeci">const int OLD_QUEST_WATER_CAVE</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.cpp:50</div></div>
+<div class="ttc" id="aload-v1-5-0_8h_html_ad02061f4e849319d3d0775df91347668"><div class="ttname"><a href="load-v1-5-0_8h.html#ad02061f4e849319d3d0775df91347668">rd_item_old</a></div><div class="ttdeci">void rd_item_old(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">アイテムオブジェクト1件を読み込む / Read an object</div><div class="ttdef"><b>Definition:</b> load-v1-5-0.cpp:59</div></div>
+<div class="ttc" id="amonster-type-definition_8h_html"><div class="ttname"><a href="monster-type-definition_8h.html">monster-type-definition.h</a></div></div>
+<div class="ttc" id="astructmonster__race_html"><div class="ttname"><a href="structmonster__race.html">monster_race</a></div><div class="ttdef"><b>Definition:</b> monster-race-definition.h:48</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

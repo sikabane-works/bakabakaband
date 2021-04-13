@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/object-activation/activation-breath.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_184218ff5f1ccbad062c2879f7d0960f.html">object-activation</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">activation-breath.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="activation-breath_8h_source.html">object-activation/activation-breath.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dragon-breaths-table_8h_source.html">object-enchant/dragon-breaths-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flags_8h_source.html">object/object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-launcher_8h_source.html">spell-kind/spells-launcher.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-hex_8h_source.html">spell-realm/spells-hex.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spell-types_8h_source.html">spell/spell-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="element-resistance_8h_source.html">status/element-resistance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-ring-types_8h_source.html">sv-definition/sv-ring-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="target-getter_8h_source.html">target/target-getter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+activation-breath.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-breath_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object-activation_2activation-breath_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object-activation_2activation-breath_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2object-activation_2activation-breath_8cpp">
+<area shape="rect" title=" " alt="" coords="647,5,849,61"/>
+<area shape="rect" href="activation-breath_8h.html" title=" " alt="" coords="1264,199,1437,240"/>
+<area shape="rect" href="dragon-breaths-table_8h.html" title=" " alt="" coords="591,109,742,151"/>
+<area shape="rect" href="object-flags_8h.html" title=" " alt="" coords="124,117,263,143"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="33,199,167,240"/>
+<area shape="rect" href="spells-launcher_8h.html" title=" " alt="" coords="287,117,465,143"/>
+<area shape="rect" href="spells-hex_8h.html" title=" " alt="" coords="292,199,415,240"/>
+<area shape="rect" href="spell-types_8h.html" title=" " alt="" coords="766,117,893,143"/>
+<area shape="rect" href="element-resistance_8h.html" title=" " alt="" coords="439,206,622,233"/>
+<area shape="rect" href="sv-ring-types_8h.html" title=" " alt="" coords="968,109,1099,151"/>
+<area shape="rect" href="target-getter_8h.html" title=" " alt="" coords="889,206,1029,233"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="1174,117,1333,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="1053,206,1219,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="466,288,595,315"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="5,363,96,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="120,363,211,389"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="235,363,333,389"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="357,363,456,389"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="481,363,581,389"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="605,363,779,389"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="804,363,945,389"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,363,1116,389"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="646,206,813,233"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="37,288,163,315"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a88f1ece9019c468eafe34f4de0be2c89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activation-breath_8cpp.html#a88f1ece9019c468eafe34f4de0be2c89">activate_dragon_breath</a> (<a class="el" href="structplayer__type.html">player_type</a> *user_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:a88f1ece9019c468eafe34f4de0be2c89"><td class="mdescLeft">&#160;</td><td class="mdescRight">発動によるブレスの属性をアイテムの耐性から選択し、実行を処理する。/ Dragon breath activation  <a href="activation-breath_8cpp.html#a88f1ece9019c468eafe34f4de0be2c89">[詳解]</a><br /></td></tr>
+<tr class="separator:a88f1ece9019c468eafe34f4de0be2c89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56fcfe9b32761abc14453c7e2be459ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activation-breath_8cpp.html#a56fcfe9b32761abc14453c7e2be459ec">activate_breath_fire</a> (<a class="el" href="structplayer__type.html">player_type</a> *user_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a56fcfe9b32761abc14453c7e2be459ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf048ffbf0a3b4d81cfa1cc073ab3723"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activation-breath_8cpp.html#acf048ffbf0a3b4d81cfa1cc073ab3723">activate_breath_cold</a> (<a class="el" href="structplayer__type.html">player_type</a> *user_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:acf048ffbf0a3b4d81cfa1cc073ab3723"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="acf048ffbf0a3b4d81cfa1cc073ab3723"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf048ffbf0a3b4d81cfa1cc073ab3723">&#9670;&nbsp;</a></span>activate_breath_cold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> activate_breath_cold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>user_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-breath_8cpp_acf048ffbf0a3b4d81cfa1cc073ab3723_cgraph.png" border="0" usemap="#aactivation-breath_8cpp_acf048ffbf0a3b4d81cfa1cc073ab3723_cgraph" alt=""/></div>
+<map name="aactivation-breath_8cpp_acf048ffbf0a3b4d81cfa1cc073ab3723_cgraph" id="aactivation-breath_8cpp_acf048ffbf0a3b4d81cfa1cc073ab3723_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,145,83"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a27e010ab89af1e3d7baaa7df152a2692" title="ブレス系スペルの発動 / Cast a breath spell" alt="" coords="212,5,295,32"/>
+<area shape="rect" href="target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="361,56,451,83"/>
+<area shape="rect" href="element-resistance_8cpp.html#a4aedfbfb30de8af7f62ac69c8bd30715" title="一時的冷気耐性の継続時間をセットする / Set &quot;oppose_cold&quot;, notice observable changes" alt="" coords="193,107,313,133"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a9c5b6430a190c4d961f6017a483fdcf2" title="ボール系スペルの発動 / Cast a ball spell" alt="" coords="373,5,439,32"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="513,5,575,32"/>
+<area shape="rect" href="target-checker_8cpp.html#a43f7c7d2eba452af5bb74b818d0a0eda" title=" " alt="" coords="499,56,589,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-breath_8cpp_acf048ffbf0a3b4d81cfa1cc073ab3723_icgraph.png" border="0" usemap="#aactivation-breath_8cpp_acf048ffbf0a3b4d81cfa1cc073ab3723_icgraph" alt=""/></div>
+<map name="aactivation-breath_8cpp_acf048ffbf0a3b4d81cfa1cc073ab3723_icgraph" id="aactivation-breath_8cpp_acf048ffbf0a3b4d81cfa1cc073ab3723_icgraph">
+<area shape="rect" title=" " alt="" coords="476,5,616,32"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="308,5,428,32"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="148,5,260,32"/>
+<area shape="rect" href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="5,5,100,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a56fcfe9b32761abc14453c7e2be459ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56fcfe9b32761abc14453c7e2be459ec">&#9670;&nbsp;</a></span>activate_breath_fire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> activate_breath_fire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>user_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-breath_8cpp_a56fcfe9b32761abc14453c7e2be459ec_cgraph.png" border="0" usemap="#aactivation-breath_8cpp_a56fcfe9b32761abc14453c7e2be459ec_cgraph" alt=""/></div>
+<map name="aactivation-breath_8cpp_a56fcfe9b32761abc14453c7e2be459ec_cgraph" id="aactivation-breath_8cpp_a56fcfe9b32761abc14453c7e2be459ec_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,139,83"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a27e010ab89af1e3d7baaa7df152a2692" title="ブレス系スペルの発動 / Cast a breath spell" alt="" coords="202,5,285,32"/>
+<area shape="rect" href="target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="348,56,437,83"/>
+<area shape="rect" href="element-resistance_8cpp.html#ae8333840ce64c42c444857fdd00b4dd2" title="一時的火炎耐性の継続時間をセットする / Set &quot;oppose_fire&quot;, notice observable changes" alt="" coords="187,107,300,133"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a9c5b6430a190c4d961f6017a483fdcf2" title="ボール系スペルの発動 / Cast a ball spell" alt="" coords="359,5,426,32"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="500,5,561,32"/>
+<area shape="rect" href="target-checker_8cpp.html#a43f7c7d2eba452af5bb74b818d0a0eda" title=" " alt="" coords="485,56,576,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-breath_8cpp_a56fcfe9b32761abc14453c7e2be459ec_icgraph.png" border="0" usemap="#aactivation-breath_8cpp_a56fcfe9b32761abc14453c7e2be459ec_icgraph" alt=""/></div>
+<map name="aactivation-breath_8cpp_a56fcfe9b32761abc14453c7e2be459ec_icgraph" id="aactivation-breath_8cpp_a56fcfe9b32761abc14453c7e2be459ec_icgraph">
+<area shape="rect" title=" " alt="" coords="476,5,609,32"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="308,5,428,32"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="148,5,260,32"/>
+<area shape="rect" href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="5,5,100,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a88f1ece9019c468eafe34f4de0be2c89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88f1ece9019c468eafe34f4de0be2c89">&#9670;&nbsp;</a></span>activate_dragon_breath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> activate_dragon_breath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>user_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>発動によるブレスの属性をアイテムの耐性から選択し、実行を処理する。/ Dragon breath activation </p>
+<p>対象となる耐性は dragonbreath_info テーブルを参照のこと。 </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">user_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">o_ptr</td><td>対象のオブジェクト構造体ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>発動実行の是非を返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-breath_8cpp_a88f1ece9019c468eafe34f4de0be2c89_cgraph.png" border="0" usemap="#aactivation-breath_8cpp_a88f1ece9019c468eafe34f4de0be2c89_cgraph" alt=""/></div>
+<map name="aactivation-breath_8cpp_a88f1ece9019c468eafe34f4de0be2c89_cgraph" id="aactivation-breath_8cpp_a88f1ece9019c468eafe34f4de0be2c89_cgraph">
+<area shape="rect" title="発動によるブレスの属性をアイテムの耐性から選択し、実行を処理する。/ Dragon breath activation" alt="" coords="5,157,160,184"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a27e010ab89af1e3d7baaa7df152a2692" title="ブレス系スペルの発動 / Cast a breath spell" alt="" coords="231,56,314,82"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="661,30,752,57"/>
+<area shape="rect" href="target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="385,106,475,133"/>
+<area shape="rect" href="spells-hex_8cpp.html#a1fe803ed2313c7c276285c2803e83ed3" title=" " alt="" coords="211,157,334,184"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="227,208,318,234"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="208,258,337,285"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="225,309,320,336"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a9c5b6430a190c4d961f6017a483fdcf2" title="ボール系スペルの発動 / Cast a ball spell" alt="" coords="397,56,463,82"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="537,56,599,82"/>
+<area shape="rect" href="target-checker_8cpp.html#a43f7c7d2eba452af5bb74b818d0a0eda" title=" " alt="" coords="523,106,613,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-breath_8cpp_a88f1ece9019c468eafe34f4de0be2c89_icgraph.png" border="0" usemap="#aactivation-breath_8cpp_a88f1ece9019c468eafe34f4de0be2c89_icgraph" alt=""/></div>
+<map name="aactivation-breath_8cpp_a88f1ece9019c468eafe34f4de0be2c89_icgraph" id="aactivation-breath_8cpp_a88f1ece9019c468eafe34f4de0be2c89_icgraph">
+<area shape="rect" title="発動によるブレスの属性をアイテムの耐性から選択し、実行を処理する。/ Dragon breath activation" alt="" coords="476,5,631,32"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="308,5,428,32"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="148,5,260,32"/>
+<area shape="rect" href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="5,5,100,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時55分37秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

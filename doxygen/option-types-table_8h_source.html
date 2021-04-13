@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/game-option/option-types-table.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_75d1aa6e715a0a2a957f68c14f483856.html">game-option</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">option-types-table.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="option-types-table_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * Available &quot;options&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *  - Address of actual option variable (or NULL)</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *  - Normal Value (TRUE or FALSE)</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  - Option Page Number (or zero)</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  - Savefile Set (or zero)</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  - Savefile Bit in that set</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  - Textual name (or NULL)</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *  - Textual description</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structoption__type.html">   16</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structoption__type.html">option_type</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structoption__type.html#a87ec26dacb82f219ac37510b9e1743f0">   17</a></span>&#160;    <span class="keywordtype">bool</span> *<a class="code" href="structoption__type.html#a87ec26dacb82f219ac37510b9e1743f0">o_var</a>{};</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structoption__type.html#ae899f8729eeb9078bc2a446a6ec817b5">   18</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structoption__type.html#ae899f8729eeb9078bc2a446a6ec817b5">o_norm</a>{};</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structoption__type.html#a1110004a08793b9c3dd4798e247e832d">   19</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structoption__type.html#a1110004a08793b9c3dd4798e247e832d">o_page</a>{};</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structoption__type.html#ab0fc8ad107dfa5fc6685ae29b1330f4e">   20</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structoption__type.html#ab0fc8ad107dfa5fc6685ae29b1330f4e">o_set</a>{};</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structoption__type.html#a0460b2ad0d1f4d203ab32d78ba1f8368">   21</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structoption__type.html#a0460b2ad0d1f4d203ab32d78ba1f8368">o_bit</a>{};</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structoption__type.html#ac6604359faa5719ccd2ff8103f8183a4">   22</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structoption__type.html#ac6604359faa5719ccd2ff8103f8183a4">o_text</a>{};</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structoption__type.html#a951c9e8779cabd589d3df2bc397600ea">   23</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structoption__type.html#a951c9e8779cabd589d3df2bc397600ea">o_desc</a>{};</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="option-types-table_8h.html#abbb0c727b1df0763368a4f70eb1024fe">   26</a></span>&#160;<span class="preprocessor">#define MAX_OPTION_INFO 126</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="option-types-table_8h.html#a5ad312b1827072d1b6925f59e354b35f">   27</a></span>&#160;<span class="preprocessor">#define MAX_CHEAT_OPTIONS 11</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="option-types-table_8h.html#adf3b3ece50069a5a41b5e787edaf7c45">   28</a></span>&#160;<span class="preprocessor">#define MAX_AUTOSAVE_INFO 2</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> std::array&lt;const option_type, MAX_OPTION_INFO&gt; <a class="code" href="option-types-table_8h.html#ad8e3ef4c3b0487589152c3a56431efaa">option_info</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structoption__type.html">option_type</a> <a class="code" href="option-types-table_8h.html#a9a1e66672f67787c5567689c37efbd4c">cheat_info</a>[<a class="code" href="option-types-table_8h.html#a5ad312b1827072d1b6925f59e354b35f">MAX_CHEAT_OPTIONS</a>];</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structoption__type.html">option_type</a> <a class="code" href="option-types-table_8h.html#a958a0e49ebd2919c5a922f72529b2104">autosave_info</a>[<a class="code" href="option-types-table_8h.html#adf3b3ece50069a5a41b5e787edaf7c45">MAX_AUTOSAVE_INFO</a>];</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="aoption-types-table_8h_html_a5ad312b1827072d1b6925f59e354b35f"><div class="ttname"><a href="option-types-table_8h.html#a5ad312b1827072d1b6925f59e354b35f">MAX_CHEAT_OPTIONS</a></div><div class="ttdeci">#define MAX_CHEAT_OPTIONS</div><div class="ttdef"><b>Definition:</b> option-types-table.h:27</div></div>
+<div class="ttc" id="aoption-types-table_8h_html_a958a0e49ebd2919c5a922f72529b2104"><div class="ttname"><a href="option-types-table_8h.html#a958a0e49ebd2919c5a922f72529b2104">autosave_info</a></div><div class="ttdeci">const option_type autosave_info[MAX_AUTOSAVE_INFO]</div><div class="ttdoc">自動セーブオプションテーブル</div><div class="ttdef"><b>Definition:</b> option-types-table.cpp:331</div></div>
+<div class="ttc" id="aoption-types-table_8h_html_a9a1e66672f67787c5567689c37efbd4c"><div class="ttname"><a href="option-types-table_8h.html#a9a1e66672f67787c5567689c37efbd4c">cheat_info</a></div><div class="ttdeci">const option_type cheat_info[MAX_CHEAT_OPTIONS]</div><div class="ttdoc">チートオプションの定義テーブル / Cheating options</div><div class="ttdef"><b>Definition:</b> option-types-table.cpp:304</div></div>
+<div class="ttc" id="aoption-types-table_8h_html_ad8e3ef4c3b0487589152c3a56431efaa"><div class="ttname"><a href="option-types-table_8h.html#ad8e3ef4c3b0487589152c3a56431efaa">option_info</a></div><div class="ttdeci">const std::array&lt; const option_type, MAX_OPTION_INFO &gt; option_info</div><div class="ttdoc">オプションテーブル / Available Options</div><div class="ttdef"><b>Definition:</b> option-types-table.cpp:18</div></div>
+<div class="ttc" id="aoption-types-table_8h_html_adf3b3ece50069a5a41b5e787edaf7c45"><div class="ttname"><a href="option-types-table_8h.html#adf3b3ece50069a5a41b5e787edaf7c45">MAX_AUTOSAVE_INFO</a></div><div class="ttdeci">#define MAX_AUTOSAVE_INFO</div><div class="ttdef"><b>Definition:</b> option-types-table.h:28</div></div>
+<div class="ttc" id="astructoption__type_html"><div class="ttname"><a href="structoption__type.html">option_type</a></div><div class="ttdef"><b>Definition:</b> option-types-table.h:16</div></div>
+<div class="ttc" id="astructoption__type_html_a0460b2ad0d1f4d203ab32d78ba1f8368"><div class="ttname"><a href="structoption__type.html#a0460b2ad0d1f4d203ab32d78ba1f8368">option_type::o_bit</a></div><div class="ttdeci">byte o_bit</div><div class="ttdef"><b>Definition:</b> option-types-table.h:21</div></div>
+<div class="ttc" id="astructoption__type_html_a1110004a08793b9c3dd4798e247e832d"><div class="ttname"><a href="structoption__type.html#a1110004a08793b9c3dd4798e247e832d">option_type::o_page</a></div><div class="ttdeci">byte o_page</div><div class="ttdef"><b>Definition:</b> option-types-table.h:19</div></div>
+<div class="ttc" id="astructoption__type_html_a87ec26dacb82f219ac37510b9e1743f0"><div class="ttname"><a href="structoption__type.html#a87ec26dacb82f219ac37510b9e1743f0">option_type::o_var</a></div><div class="ttdeci">bool * o_var</div><div class="ttdef"><b>Definition:</b> option-types-table.h:17</div></div>
+<div class="ttc" id="astructoption__type_html_a951c9e8779cabd589d3df2bc397600ea"><div class="ttname"><a href="structoption__type.html#a951c9e8779cabd589d3df2bc397600ea">option_type::o_desc</a></div><div class="ttdeci">concptr o_desc</div><div class="ttdef"><b>Definition:</b> option-types-table.h:23</div></div>
+<div class="ttc" id="astructoption__type_html_ab0fc8ad107dfa5fc6685ae29b1330f4e"><div class="ttname"><a href="structoption__type.html#ab0fc8ad107dfa5fc6685ae29b1330f4e">option_type::o_set</a></div><div class="ttdeci">byte o_set</div><div class="ttdef"><b>Definition:</b> option-types-table.h:20</div></div>
+<div class="ttc" id="astructoption__type_html_ac6604359faa5719ccd2ff8103f8183a4"><div class="ttname"><a href="structoption__type.html#ac6604359faa5719ccd2ff8103f8183a4">option_type::o_text</a></div><div class="ttdeci">concptr o_text</div><div class="ttdef"><b>Definition:</b> option-types-table.h:22</div></div>
+<div class="ttc" id="astructoption__type_html_ae899f8729eeb9078bc2a446a6ec817b5"><div class="ttname"><a href="structoption__type.html#ae899f8729eeb9078bc2a446a6ec817b5">option_type::o_norm</a></div><div class="ttdeci">byte o_norm</div><div class="ttdef"><b>Definition:</b> option-types-table.h:18</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

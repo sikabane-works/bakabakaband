@@ -1,0 +1,369 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/util/bit-flags-calculator.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b7878ad5ecbf2506f4125b9d34c97e45.html">util</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a>  </div>
+  <div class="headertitle">
+<div class="title">bit-flags-calculator.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><a href="bit-flags-calculator_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:aaa2a941df50f210264fc858d1d019e5d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit-flags-calculator_8h.html#aaa2a941df50f210264fc858d1d019e5d">reset_bits</a>(FLAG,  INDEX)&#160;&#160;&#160;((FLAG) &amp;= ~(INDEX))</td></tr>
+<tr class="separator:aaa2a941df50f210264fc858d1d019e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf324fb34f69c2b45e260fe31325d9d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit-flags-calculator_8h.html#aaf324fb34f69c2b45e260fe31325d9d7">set_bits</a>(FLAG,  INDEX)&#160;&#160;&#160;((FLAG) |= (INDEX))</td></tr>
+<tr class="separator:aaf324fb34f69c2b45e260fe31325d9d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac277c32e182c59bd941eec6d3a770911"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit-flags-calculator_8h.html#ac277c32e182c59bd941eec6d3a770911">any_bits</a>(FLAG,  INDEX)&#160;&#160;&#160;(((FLAG) &amp; (INDEX)) != 0)</td></tr>
+<tr class="separator:ac277c32e182c59bd941eec6d3a770911"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03909bce77228491e030b3283aa9cb55"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit-flags-calculator_8h.html#a03909bce77228491e030b3283aa9cb55">all_bits</a>(FLAG,  INDEX)&#160;&#160;&#160;(((FLAG) &amp; (INDEX)) == (INDEX))</td></tr>
+<tr class="separator:a03909bce77228491e030b3283aa9cb55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d0f1190f3b3318f7f39e7b56ba97a64"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit-flags-calculator_8h.html#a3d0f1190f3b3318f7f39e7b56ba97a64">none_bits</a>(FLAG,  INDEX)&#160;&#160;&#160;(((FLAG) &amp; (INDEX)) == 0)</td></tr>
+<tr class="separator:a3d0f1190f3b3318f7f39e7b56ba97a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3858867081454147c51182173743965"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit-flags-calculator_8h.html#ab3858867081454147c51182173743965">has_flag</a>(ARRAY,  INDEX)&#160;&#160;&#160;!!((ARRAY)[(INDEX) / 32] &amp; (1UL &lt;&lt; ((INDEX) % 32)))</td></tr>
+<tr class="separator:ab3858867081454147c51182173743965"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4b368b9bbb33ee22ce7c7d721e497de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit-flags-calculator_8h.html#ab4b368b9bbb33ee22ce7c7d721e497de">add_flag</a>(ARRAY,  INDEX)&#160;&#160;&#160;((ARRAY)[(INDEX) / 32] |= (1UL &lt;&lt; ((INDEX) % 32)))</td></tr>
+<tr class="separator:ab4b368b9bbb33ee22ce7c7d721e497de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3e196ac38d6bc3f7b9eb2563406d7ee"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit-flags-calculator_8h.html#ad3e196ac38d6bc3f7b9eb2563406d7ee">remove_flag</a>(ARRAY,  INDEX)&#160;&#160;&#160;((ARRAY)[(INDEX) / 32] &amp;= ~(1UL &lt;&lt; ((INDEX) % 32)))</td></tr>
+<tr class="separator:ad3e196ac38d6bc3f7b9eb2563406d7ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d6714a5f63d45ac57d7e34767d55c76"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit-flags-calculator_8h.html#a9d6714a5f63d45ac57d7e34767d55c76">is_pval_flag</a>(INDEX)&#160;&#160;&#160;((<a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fda57bd7ff44384c985dcd91e3ad9497342">TR_STR</a> &lt;= (INDEX) &amp;&amp; (INDEX) &lt;= <a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fda10b5a070c8e94cfd75aec03cac04284b">TR_MAGIC_MASTERY</a>) || (<a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fdaa1614b348a20fb021a985f4f4f898a99">TR_STEALTH</a> &lt;= (INDEX) &amp;&amp; (INDEX) &lt;= <a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fdae19fae79d6cb818e4cc7658252237b6e">TR_BLOWS</a>))</td></tr>
+<tr class="separator:a9d6714a5f63d45ac57d7e34767d55c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05cc045a741cf3cda2d47c27f8d21887"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit-flags-calculator_8h.html#a05cc045a741cf3cda2d47c27f8d21887">has_pval_flags</a>(ARRAY)&#160;&#160;&#160;!!((ARRAY)[0] &amp; (0x00003f7f))</td></tr>
+<tr class="separator:a05cc045a741cf3cda2d47c27f8d21887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="ab4b368b9bbb33ee22ce7c7d721e497de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4b368b9bbb33ee22ce7c7d721e497de">&#9670;&nbsp;</a></span>add_flag</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define add_flag</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ARRAY, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">INDEX&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;((ARRAY)[(INDEX) / 32] |= (1UL &lt;&lt; ((INDEX) % 32)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a03909bce77228491e030b3283aa9cb55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03909bce77228491e030b3283aa9cb55">&#9670;&nbsp;</a></span>all_bits</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define all_bits</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">FLAG, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">INDEX&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(((FLAG) &amp; (INDEX)) == (INDEX))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac277c32e182c59bd941eec6d3a770911"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac277c32e182c59bd941eec6d3a770911">&#9670;&nbsp;</a></span>any_bits</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define any_bits</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">FLAG, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">INDEX&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(((FLAG) &amp; (INDEX)) != 0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3858867081454147c51182173743965"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3858867081454147c51182173743965">&#9670;&nbsp;</a></span>has_flag</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define has_flag</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ARRAY, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">INDEX&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;!!((ARRAY)[(INDEX) / 32] &amp; (1UL &lt;&lt; ((INDEX) % 32)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a05cc045a741cf3cda2d47c27f8d21887"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05cc045a741cf3cda2d47c27f8d21887">&#9670;&nbsp;</a></span>has_pval_flags</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define has_pval_flags</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ARRAY</td><td>)</td>
+          <td>&#160;&#160;&#160;!!((ARRAY)[0] &amp; (0x00003f7f))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d6714a5f63d45ac57d7e34767d55c76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d6714a5f63d45ac57d7e34767d55c76">&#9670;&nbsp;</a></span>is_pval_flag</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define is_pval_flag</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">INDEX</td><td>)</td>
+          <td>&#160;&#160;&#160;((<a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fda57bd7ff44384c985dcd91e3ad9497342">TR_STR</a> &lt;= (INDEX) &amp;&amp; (INDEX) &lt;= <a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fda10b5a070c8e94cfd75aec03cac04284b">TR_MAGIC_MASTERY</a>) || (<a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fdaa1614b348a20fb021a985f4f4f898a99">TR_STEALTH</a> &lt;= (INDEX) &amp;&amp; (INDEX) &lt;= <a class="el" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fdae19fae79d6cb818e4cc7658252237b6e">TR_BLOWS</a>))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3d0f1190f3b3318f7f39e7b56ba97a64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d0f1190f3b3318f7f39e7b56ba97a64">&#9670;&nbsp;</a></span>none_bits</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define none_bits</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">FLAG, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">INDEX&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(((FLAG) &amp; (INDEX)) == 0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad3e196ac38d6bc3f7b9eb2563406d7ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3e196ac38d6bc3f7b9eb2563406d7ee">&#9670;&nbsp;</a></span>remove_flag</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define remove_flag</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ARRAY, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">INDEX&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;((ARRAY)[(INDEX) / 32] &amp;= ~(1UL &lt;&lt; ((INDEX) % 32)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa2a941df50f210264fc858d1d019e5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa2a941df50f210264fc858d1d019e5d">&#9670;&nbsp;</a></span>reset_bits</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define reset_bits</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">FLAG, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">INDEX&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;((FLAG) &amp;= ~(INDEX))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaf324fb34f69c2b45e260fe31325d9d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf324fb34f69c2b45e260fe31325d9d7">&#9670;&nbsp;</a></span>set_bits</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define set_bits</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">FLAG, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">INDEX&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;((FLAG) |= (INDEX))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分29秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

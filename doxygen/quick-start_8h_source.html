@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/birth/quick-start.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_84d111bb56536c13b547e5976d232fbf.html">birth</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">quick-start.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="quick-start_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * A structure to hold &quot;rolled&quot; information</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structbirther.html">    8</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structbirther.html">birther</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structbirther.html#a03bc05affefe4d32622de5f82e5a0410">    9</a></span>&#160;    <a class="code" href="h-type_8h.html#add4d21d35964c2013b8e62870d1dd798">SEX_IDX</a> <a class="code" href="structbirther.html#a03bc05affefe4d32622de5f82e5a0410">psex</a>{}; <span class="comment">/* Sex index */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structbirther.html#aba9dd3ed742403deabe5f123dcad058b">   10</a></span>&#160;    <a class="code" href="player-race-types_8h.html#afd890f7607910d11808132db27cf4009">player_race_type</a> <a class="code" href="structbirther.html#aba9dd3ed742403deabe5f123dcad058b">prace</a>{}; <span class="comment">/* Race index */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structbirther.html#aa25c5dc71abd5866d8f0d9ce25dc970c">   11</a></span>&#160;    <a class="code" href="player-classes-types_8h.html#addabd864452eb307e7fc8dcf6ea2fc72">player_class_type</a> <a class="code" href="structbirther.html#aa25c5dc71abd5866d8f0d9ce25dc970c">pclass</a>{}; <span class="comment">/* Class index */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structbirther.html#a72ceb5c6eb06d518fc460a866a29aded">   12</a></span>&#160;    <a class="code" href="player-personalities-types_8h.html#aad35620e3044139cb75675a050936863">player_personality_type</a> <a class="code" href="structbirther.html#a72ceb5c6eb06d518fc460a866a29aded">pseikaku</a>{}; <span class="comment">/* Seikaku index */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structbirther.html#a469cee2b1aba667dbb954502dd68118f">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a> <a class="code" href="structbirther.html#a469cee2b1aba667dbb954502dd68118f">realm1</a>{}; <span class="comment">/* First magic realm */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structbirther.html#ac817e46bb1073e9d3e86fe9e6208331c">   14</a></span>&#160;    <a class="code" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a> <a class="code" href="structbirther.html#ac817e46bb1073e9d3e86fe9e6208331c">realm2</a>{}; <span class="comment">/* Second magic realm */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structbirther.html#a1445b4d448d03b842cfee1f25aa6b067">   16</a></span>&#160;    <a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="code" href="structbirther.html#a1445b4d448d03b842cfee1f25aa6b067">death_count</a>{};</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structbirther.html#a708848bc2291d8ff0fce60d9700ad845">   17</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structbirther.html#a708848bc2291d8ff0fce60d9700ad845">age</a>{};</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structbirther.html#ab08e5a7c8f5d7f3539132d3ea5c51860">   18</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structbirther.html#ab08e5a7c8f5d7f3539132d3ea5c51860">ht</a>{};</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structbirther.html#ac5d809b731426a64a9b78427dc71882e">   19</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structbirther.html#ac5d809b731426a64a9b78427dc71882e">wt</a>{};</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structbirther.html#aa2126bc4d9d06e0715e8195f90f100ab">   20</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structbirther.html#aa2126bc4d9d06e0715e8195f90f100ab">prestige</a>{};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structbirther.html#af82f6036f2a211e885d95a38838c0282">   22</a></span>&#160;    <a class="code" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> <a class="code" href="structbirther.html#af82f6036f2a211e885d95a38838c0282">au</a>{}; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structbirther.html#afaf42cf3008939b7c4d0df8f62b29975">   24</a></span>&#160;    <a class="code" href="h-type_8h.html#a3e619d230e34bb820b97a37602546d3b">BASE_STATUS</a> <a class="code" href="structbirther.html#afaf42cf3008939b7c4d0df8f62b29975">stat_max</a>[6]{}; <span class="comment">/* Current &quot;maximal&quot; stat values */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structbirther.html#ac680979a98acdff8e016380701dc3fb6">   25</a></span>&#160;    <a class="code" href="h-type_8h.html#a3e619d230e34bb820b97a37602546d3b">BASE_STATUS</a> <a class="code" href="structbirther.html#ac680979a98acdff8e016380701dc3fb6">stat_max_max</a>[6]{}; <span class="comment">/* Maximal &quot;maximal&quot; stat values */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structbirther.html#aba766278ec845b0994c50b67d53d166f">   26</a></span>&#160;    <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="structbirther.html#aba766278ec845b0994c50b67d53d166f">player_hp</a>[<a class="code" href="player-status_8h.html#aa1d3ae54887cba9ecf3831f28038d8f2">PY_MAX_LEVEL</a>]{};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structbirther.html#a2744e82c3402b01a6be7899dd6915724">   28</a></span>&#160;    <a class="code" href="h-type_8h.html#ad1c4dc1416e38f93cdccc5cfcfe7eb84">PATRON_IDX</a> <a class="code" href="structbirther.html#a2744e82c3402b01a6be7899dd6915724">chaos_patron</a>{};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structbirther.html#a43d380142dd95c537af0d9dbe1276fac">   30</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structbirther.html#a43d380142dd95c537af0d9dbe1276fac">vir_types</a>[8]{};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structbirther.html#a3413ae2cc380ca62bb5410ff2d95b7ae">   32</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structbirther.html#a3413ae2cc380ca62bb5410ff2d95b7ae">history</a>[4][60]{};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structbirther.html#a810acaa183d67beafcf659ab42146edf">   34</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structbirther.html#a810acaa183d67beafcf659ab42146edf">quick_ok</a>{};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">extern</span> <a class="code" href="structbirther.html">birther</a> <a class="code" href="quick-start_8h.html#a555b8e4f09ced7684c154a30c28b7b7a">previous_char</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="quick-start_8h.html#a78f6862bff917ca6355c3a41445fc73d">ask_quick_start</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">void</span> <a class="code" href="quick-start_8h.html#a178218281e0bf0476c01e52f004fec11">save_prev_data</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="structbirther.html">birther</a> *birther_ptr);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> <a class="code" href="quick-start_8h.html#a79704830075ddb153dbf7333894f4437">load_prev_data</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">bool</span> <a class="code" href="tag-sorter_8cpp.html#a59dcf630da96ba1104e56c4633ddd25a">swap</a>);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_a3e619d230e34bb820b97a37602546d3b"><div class="ttname"><a href="h-type_8h.html#a3e619d230e34bb820b97a37602546d3b">BASE_STATUS</a></div><div class="ttdeci">s16b BASE_STATUS</div><div class="ttdoc">ゲーム中の基礎能力値型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:155</div></div>
+<div class="ttc" id="ah-type_8h_html_a557f0599108d7e2a11e3495c819c6d6b"><div class="ttname"><a href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a></div><div class="ttdeci">s16b REALM_IDX</div><div class="ttdoc">ゲーム中の魔法領域ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:112</div></div>
+<div class="ttc" id="ah-type_8h_html_ad1c4dc1416e38f93cdccc5cfcfe7eb84"><div class="ttname"><a href="h-type_8h.html#ad1c4dc1416e38f93cdccc5cfcfe7eb84">PATRON_IDX</a></div><div class="ttdeci">s16b PATRON_IDX</div><div class="ttdoc">ゲーム中のプレイヤーパトロンID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:104</div></div>
+<div class="ttc" id="ah-type_8h_html_add4d21d35964c2013b8e62870d1dd798"><div class="ttname"><a href="h-type_8h.html#add4d21d35964c2013b8e62870d1dd798">SEX_IDX</a></div><div class="ttdeci">byte SEX_IDX</div><div class="ttdoc">ゲーム中のプレイヤー性別ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:102</div></div>
+<div class="ttc" id="ah-type_8h_html_aeba8ab2222e118a4540456c55d92a894"><div class="ttname"><a href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a></div><div class="ttdeci">s32b PRICE</div><div class="ttdoc">ゲーム中の金額価値の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:187</div></div>
+<div class="ttc" id="ah-type_8h_html_af28a46c3af7b537a7cf39e1f7e6bf81c"><div class="ttname"><a href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a></div><div class="ttdeci">signed long s32b</div><div class="ttdef"><b>Definition:</b> h-type.h:92</div></div>
+<div class="ttc" id="ah-type_8h_html_afdb20155266ee801610f13b1589a3df3"><div class="ttname"><a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></div><div class="ttdeci">s32b HIT_POINT</div><div class="ttdoc">HPとその増減量の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:141</div></div>
+<div class="ttc" id="aplayer-classes-types_8h_html_addabd864452eb307e7fc8dcf6ea2fc72"><div class="ttname"><a href="player-classes-types_8h.html#addabd864452eb307e7fc8dcf6ea2fc72">player_class_type</a></div><div class="ttdeci">player_class_type</div><div class="ttdef"><b>Definition:</b> player-classes-types.h:3</div></div>
+<div class="ttc" id="aplayer-personalities-types_8h_html_aad35620e3044139cb75675a050936863"><div class="ttname"><a href="player-personalities-types_8h.html#aad35620e3044139cb75675a050936863">player_personality_type</a></div><div class="ttdeci">player_personality_type</div><div class="ttdef"><b>Definition:</b> player-personalities-types.h:3</div></div>
+<div class="ttc" id="aplayer-race-types_8h_html_afd890f7607910d11808132db27cf4009"><div class="ttname"><a href="player-race-types_8h.html#afd890f7607910d11808132db27cf4009">player_race_type</a></div><div class="ttdeci">player_race_type</div><div class="ttdef"><b>Definition:</b> player-race-types.h:6</div></div>
+<div class="ttc" id="aplayer-status_8h_html_aa1d3ae54887cba9ecf3831f28038d8f2"><div class="ttname"><a href="player-status_8h.html#aa1d3ae54887cba9ecf3831f28038d8f2">PY_MAX_LEVEL</a></div><div class="ttdeci">#define PY_MAX_LEVEL</div><div class="ttdoc">プレイヤーレベルの最大値 / Maximum level</div><div class="ttdef"><b>Definition:</b> player-status.h:34</div></div>
+<div class="ttc" id="aquick-start_8h_html_a178218281e0bf0476c01e52f004fec11"><div class="ttname"><a href="quick-start_8h.html#a178218281e0bf0476c01e52f004fec11">save_prev_data</a></div><div class="ttdeci">void save_prev_data(player_type *creature_ptr, birther *birther_ptr)</div><div class="ttdoc">プレイヤーのクイックスタート情報をプレイヤー構造体から保存する / Save the current data for later</div><div class="ttdef"><b>Definition:</b> quick-start.cpp:73</div></div>
+<div class="ttc" id="aquick-start_8h_html_a555b8e4f09ced7684c154a30c28b7b7a"><div class="ttname"><a href="quick-start_8h.html#a555b8e4f09ced7684c154a30c28b7b7a">previous_char</a></div><div class="ttdeci">birther previous_char</div><div class="ttdef"><b>Definition:</b> quick-start.cpp:19</div></div>
+<div class="ttc" id="aquick-start_8h_html_a78f6862bff917ca6355c3a41445fc73d"><div class="ttname"><a href="quick-start_8h.html#a78f6862bff917ca6355c3a41445fc73d">ask_quick_start</a></div><div class="ttdeci">bool ask_quick_start(player_type *creature_ptr)</div><div class="ttdoc">クイックスタート処理の問い合わせと実行を行う。/Ask whether the player use Quick Start or not.</div><div class="ttdef"><b>Definition:</b> quick-start.cpp:25</div></div>
+<div class="ttc" id="aquick-start_8h_html_a79704830075ddb153dbf7333894f4437"><div class="ttname"><a href="quick-start_8h.html#a79704830075ddb153dbf7333894f4437">load_prev_data</a></div><div class="ttdeci">void load_prev_data(player_type *creature_ptr, bool swap)</div><div class="ttdoc">プレイヤーのクイックスタート情報をプレイヤー構造体へ読み込む / Load the previous data</div><div class="ttdef"><b>Definition:</b> quick-start.cpp:117</div></div>
+<div class="ttc" id="astructbirther_html"><div class="ttname"><a href="structbirther.html">birther</a></div><div class="ttdef"><b>Definition:</b> quick-start.h:8</div></div>
+<div class="ttc" id="astructbirther_html_a03bc05affefe4d32622de5f82e5a0410"><div class="ttname"><a href="structbirther.html#a03bc05affefe4d32622de5f82e5a0410">birther::psex</a></div><div class="ttdeci">SEX_IDX psex</div><div class="ttdef"><b>Definition:</b> quick-start.h:9</div></div>
+<div class="ttc" id="astructbirther_html_a1445b4d448d03b842cfee1f25aa6b067"><div class="ttname"><a href="structbirther.html#a1445b4d448d03b842cfee1f25aa6b067">birther::death_count</a></div><div class="ttdeci">s32b death_count</div><div class="ttdef"><b>Definition:</b> quick-start.h:16</div></div>
+<div class="ttc" id="astructbirther_html_a2744e82c3402b01a6be7899dd6915724"><div class="ttname"><a href="structbirther.html#a2744e82c3402b01a6be7899dd6915724">birther::chaos_patron</a></div><div class="ttdeci">PATRON_IDX chaos_patron</div><div class="ttdef"><b>Definition:</b> quick-start.h:28</div></div>
+<div class="ttc" id="astructbirther_html_a3413ae2cc380ca62bb5410ff2d95b7ae"><div class="ttname"><a href="structbirther.html#a3413ae2cc380ca62bb5410ff2d95b7ae">birther::history</a></div><div class="ttdeci">char history[4][60]</div><div class="ttdef"><b>Definition:</b> quick-start.h:32</div></div>
+<div class="ttc" id="astructbirther_html_a43d380142dd95c537af0d9dbe1276fac"><div class="ttname"><a href="structbirther.html#a43d380142dd95c537af0d9dbe1276fac">birther::vir_types</a></div><div class="ttdeci">s16b vir_types[8]</div><div class="ttdef"><b>Definition:</b> quick-start.h:30</div></div>
+<div class="ttc" id="astructbirther_html_a469cee2b1aba667dbb954502dd68118f"><div class="ttname"><a href="structbirther.html#a469cee2b1aba667dbb954502dd68118f">birther::realm1</a></div><div class="ttdeci">REALM_IDX realm1</div><div class="ttdef"><b>Definition:</b> quick-start.h:13</div></div>
+<div class="ttc" id="astructbirther_html_a708848bc2291d8ff0fce60d9700ad845"><div class="ttname"><a href="structbirther.html#a708848bc2291d8ff0fce60d9700ad845">birther::age</a></div><div class="ttdeci">s16b age</div><div class="ttdef"><b>Definition:</b> quick-start.h:17</div></div>
+<div class="ttc" id="astructbirther_html_a72ceb5c6eb06d518fc460a866a29aded"><div class="ttname"><a href="structbirther.html#a72ceb5c6eb06d518fc460a866a29aded">birther::pseikaku</a></div><div class="ttdeci">player_personality_type pseikaku</div><div class="ttdef"><b>Definition:</b> quick-start.h:12</div></div>
+<div class="ttc" id="astructbirther_html_a810acaa183d67beafcf659ab42146edf"><div class="ttname"><a href="structbirther.html#a810acaa183d67beafcf659ab42146edf">birther::quick_ok</a></div><div class="ttdeci">bool quick_ok</div><div class="ttdef"><b>Definition:</b> quick-start.h:34</div></div>
+<div class="ttc" id="astructbirther_html_aa2126bc4d9d06e0715e8195f90f100ab"><div class="ttname"><a href="structbirther.html#aa2126bc4d9d06e0715e8195f90f100ab">birther::prestige</a></div><div class="ttdeci">s16b prestige</div><div class="ttdef"><b>Definition:</b> quick-start.h:20</div></div>
+<div class="ttc" id="astructbirther_html_aa25c5dc71abd5866d8f0d9ce25dc970c"><div class="ttname"><a href="structbirther.html#aa25c5dc71abd5866d8f0d9ce25dc970c">birther::pclass</a></div><div class="ttdeci">player_class_type pclass</div><div class="ttdef"><b>Definition:</b> quick-start.h:11</div></div>
+<div class="ttc" id="astructbirther_html_ab08e5a7c8f5d7f3539132d3ea5c51860"><div class="ttname"><a href="structbirther.html#ab08e5a7c8f5d7f3539132d3ea5c51860">birther::ht</a></div><div class="ttdeci">s16b ht</div><div class="ttdef"><b>Definition:</b> quick-start.h:18</div></div>
+<div class="ttc" id="astructbirther_html_aba766278ec845b0994c50b67d53d166f"><div class="ttname"><a href="structbirther.html#aba766278ec845b0994c50b67d53d166f">birther::player_hp</a></div><div class="ttdeci">HIT_POINT player_hp[PY_MAX_LEVEL]</div><div class="ttdef"><b>Definition:</b> quick-start.h:26</div></div>
+<div class="ttc" id="astructbirther_html_aba9dd3ed742403deabe5f123dcad058b"><div class="ttname"><a href="structbirther.html#aba9dd3ed742403deabe5f123dcad058b">birther::prace</a></div><div class="ttdeci">player_race_type prace</div><div class="ttdef"><b>Definition:</b> quick-start.h:10</div></div>
+<div class="ttc" id="astructbirther_html_ac5d809b731426a64a9b78427dc71882e"><div class="ttname"><a href="structbirther.html#ac5d809b731426a64a9b78427dc71882e">birther::wt</a></div><div class="ttdeci">s16b wt</div><div class="ttdef"><b>Definition:</b> quick-start.h:19</div></div>
+<div class="ttc" id="astructbirther_html_ac680979a98acdff8e016380701dc3fb6"><div class="ttname"><a href="structbirther.html#ac680979a98acdff8e016380701dc3fb6">birther::stat_max_max</a></div><div class="ttdeci">BASE_STATUS stat_max_max[6]</div><div class="ttdef"><b>Definition:</b> quick-start.h:25</div></div>
+<div class="ttc" id="astructbirther_html_ac817e46bb1073e9d3e86fe9e6208331c"><div class="ttname"><a href="structbirther.html#ac817e46bb1073e9d3e86fe9e6208331c">birther::realm2</a></div><div class="ttdeci">REALM_IDX realm2</div><div class="ttdef"><b>Definition:</b> quick-start.h:14</div></div>
+<div class="ttc" id="astructbirther_html_af82f6036f2a211e885d95a38838c0282"><div class="ttname"><a href="structbirther.html#af82f6036f2a211e885d95a38838c0282">birther::au</a></div><div class="ttdeci">PRICE au</div><div class="ttdoc">初期の所持金</div><div class="ttdef"><b>Definition:</b> quick-start.h:22</div></div>
+<div class="ttc" id="astructbirther_html_afaf42cf3008939b7c4d0df8f62b29975"><div class="ttname"><a href="structbirther.html#afaf42cf3008939b7c4d0df8f62b29975">birther::stat_max</a></div><div class="ttdeci">BASE_STATUS stat_max[6]</div><div class="ttdef"><b>Definition:</b> quick-start.h:24</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="atag-sorter_8cpp_html_a59dcf630da96ba1104e56c4633ddd25a"><div class="ttname"><a href="tag-sorter_8cpp.html#a59dcf630da96ba1104e56c4633ddd25a">swap</a></div><div class="ttdeci">static void swap(tag_type *a, tag_type *b)</div><div class="ttdef"><b>Definition:</b> tag-sorter.cpp:8</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,1236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/store/service-checker.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ce523e85215a280d7642dc7a1cfeecaa.html">store</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">service-checker.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="service-checker_8h_source.html">store/service-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags3_8h_source.html">monster-race/race-flags3.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tr-types_8h_source.html">object-enchant/tr-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-enchant_8h_source.html">object-hook/hook-enchant.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flags_8h_source.html">object/object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-value_8h_source.html">object/object-value.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="store-util_8h_source.html">store/store-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-potion-types_8h_source.html">sv-definition/sv-potion-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-rod-types_8h_source.html">sv-definition/sv-rod-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-scroll-types_8h_source.html">sv-definition/sv-scroll-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-weapon-types_8h_source.html">sv-definition/sv-weapon-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="string-processor_8h_source.html">util/string-processor.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+service-checker.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2store_2service-checker_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2store_2service-checker_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2store_2service-checker_8cpp">
+<area shape="rect" title=" " alt="" coords="801,5,989,61"/>
+<area shape="rect" href="service-checker_8h.html" title=" " alt="" coords="435,206,591,233"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="648,109,797,151"/>
+<area shape="rect" href="race-flags3_8h.html" title=" " alt="" coords="992,117,1168,143"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="1193,117,1359,143"/>
+<area shape="rect" href="hook-enchant_8h.html" title=" " alt="" coords="358,295,541,322"/>
+<area shape="rect" href="object-flags_8h.html" title=" " alt="" coords="5,117,144,143"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="172,199,305,240"/>
+<area shape="rect" href="object-value_8h.html" title=" " alt="" coords="169,117,309,143"/>
+<area shape="rect" href="store-util_8h.html" title=" " alt="" coords="507,117,623,143"/>
+<area shape="rect" href="sv-potion-types_8h.html" title=" " alt="" coords="1384,109,1528,151"/>
+<area shape="rect" href="sv-rod-types_8h.html" title=" " alt="" coords="1553,109,1679,151"/>
+<area shape="rect" href="sv-scroll-types_8h.html" title=" " alt="" coords="1703,109,1843,151"/>
+<area shape="rect" href="sv-weapon-types_8h.html" title=" " alt="" coords="1867,109,2021,151"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="2045,117,2203,143"/>
+<area shape="rect" href="string-processor_8h.html" title=" " alt="" coords="821,117,968,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="539,385,669,411"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="843,467,933,493"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="957,467,1048,493"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="108,467,207,493"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="231,467,329,493"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="354,467,454,493"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="478,467,653,493"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="677,467,819,493"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1072,467,1219,493"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1145,541,1255,568"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="931,199,1077,240"/>
+<area shape="rect" title=" " alt="" coords="717,206,773,233"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="1033,377,1193,419"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="1008,288,1168,329"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="819,288,984,329"/>
+<area shape="rect" title=" " alt="" coords="1294,295,1349,322"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="155,295,282,322"/>
+<area shape="rect" title=" " alt="" coords="1152,206,1237,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:ab191aed5e5e4971b508a96bf08deca03"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#ab191aed5e5e4971b508a96bf08deca03">is_blessed_item</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:ab191aed5e5e4971b508a96bf08deca03"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトが祝福されているかの判定を返す /  <a href="service-checker_8cpp.html#ab191aed5e5e4971b508a96bf08deca03">[詳解]</a><br /></td></tr>
+<tr class="separator:ab191aed5e5e4971b508a96bf08deca03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4afd18b3a42d9bd71b5998c00357369"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#ae4afd18b3a42d9bd71b5998c00357369">check_store_general</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:ae4afd18b3a42d9bd71b5998c00357369"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfbc2ef8bde3fdf5ec2b73fdfe0ccff4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#abfbc2ef8bde3fdf5ec2b73fdfe0ccff4">check_store_armoury</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:abfbc2ef8bde3fdf5ec2b73fdfe0ccff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af10f0e03b53b1240357026d592f8e50e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#af10f0e03b53b1240357026d592f8e50e">check_store_weapon</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:af10f0e03b53b1240357026d592f8e50e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9478ad9ac9b68b58804e4c49e8b879a8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#a9478ad9ac9b68b58804e4c49e8b879a8">check_store_temple</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a9478ad9ac9b68b58804e4c49e8b879a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ea9b329ae8f5ba9c3a118e23b379590"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#a8ea9b329ae8f5ba9c3a118e23b379590">check_store_alchemist</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a8ea9b329ae8f5ba9c3a118e23b379590"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa57f72ac37b83a883963813e0994cda8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#aa57f72ac37b83a883963813e0994cda8">check_store_magic</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:aa57f72ac37b83a883963813e0994cda8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9bde2d46a68622eb09a82fa8b479402"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#aa9bde2d46a68622eb09a82fa8b479402">check_store_book</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:aa9bde2d46a68622eb09a82fa8b479402"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24029eb97354b592b5b2433a0a7f1f17"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#a24029eb97354b592b5b2433a0a7f1f17">switch_store_check</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a24029eb97354b592b5b2433a0a7f1f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e96fade24af6ab1c689037f314549e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#a3e96fade24af6ab1c689037f314549e0">store_will_buy</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:a3e96fade24af6ab1c689037f314549e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトが所定の店舗で引き取れるかどうかを返す / Determine if the current store will purchase the given item  <a href="service-checker_8cpp.html#a3e96fade24af6ab1c689037f314549e0">[詳解]</a><br /></td></tr>
+<tr class="separator:a3e96fade24af6ab1c689037f314549e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5db360695fad8bf9a942f0176d8e1590"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#a5db360695fad8bf9a942f0176d8e1590">mass_lite_produce</a> (const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> cost)</td></tr>
+<tr class="separator:a5db360695fad8bf9a942f0176d8e1590"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86b569e07b742ec101cde61ba6b42972"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#a86b569e07b742ec101cde61ba6b42972">mass_scroll_produce</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr, const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> cost)</td></tr>
+<tr class="separator:a86b569e07b742ec101cde61ba6b42972"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c662c81a4137c0717a1a8cee9a1362c"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#a2c662c81a4137c0717a1a8cee9a1362c">mass_book_produce</a> (const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> cost)</td></tr>
+<tr class="separator:a2c662c81a4137c0717a1a8cee9a1362c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a443e45c2ec6ef30e7929a7986df342b8"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#a443e45c2ec6ef30e7929a7986df342b8">mass_equipment_produce</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr, const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> cost)</td></tr>
+<tr class="separator:a443e45c2ec6ef30e7929a7986df342b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d47589a8ad452d41cc8613ace1e92a8"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#a0d47589a8ad452d41cc8613ace1e92a8">mass_arrow_produce</a> (const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> cost)</td></tr>
+<tr class="separator:a0d47589a8ad452d41cc8613ace1e92a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01aa148566c1a42fd618f399fef30f9b"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#a01aa148566c1a42fd618f399fef30f9b">mass_figurine_produce</a> (const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> cost)</td></tr>
+<tr class="separator:a01aa148566c1a42fd618f399fef30f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad79df3d5ec85d9f91470daa8d7491feb"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#ad79df3d5ec85d9f91470daa8d7491feb">mass_magic_produce</a> (const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> cost)</td></tr>
+<tr class="separator:ad79df3d5ec85d9f91470daa8d7491feb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69839db0ca6572a7a397ad5dcabee740"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#a69839db0ca6572a7a397ad5dcabee740">switch_mass_production</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr, const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> cost)</td></tr>
+<tr class="separator:a69839db0ca6572a7a397ad5dcabee740"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31b09c1f5b602967559181f03252610e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#aa58486a17eb151250f1af9f1362d8de4">DISCOUNT_RATE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#a31b09c1f5b602967559181f03252610e">decide_discount_rate</a> (const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a> cost)</td></tr>
+<tr class="separator:a31b09c1f5b602967559181f03252610e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54ed8fdf61800d7c646e443224d2b6c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="service-checker_8cpp.html#a54ed8fdf61800d7c646e443224d2b6c9">mass_produce</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:a54ed8fdf61800d7c646e443224d2b6c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">安価な消耗品の販売数を増やし、低確率で割引にする / Certain "cheap" objects should be created in "piles"  <a href="service-checker_8cpp.html#a54ed8fdf61800d7c646e443224d2b6c9">[詳解]</a><br /></td></tr>
+<tr class="separator:a54ed8fdf61800d7c646e443224d2b6c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a8ea9b329ae8f5ba9c3a118e23b379590"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ea9b329ae8f5ba9c3a118e23b379590">&#9670;&nbsp;</a></span>check_store_alchemist()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_store_alchemist </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a8ea9b329ae8f5ba9c3a118e23b379590_icgraph.png" border="0" usemap="#aservice-checker_8cpp_a8ea9b329ae8f5ba9c3a118e23b379590_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a8ea9b329ae8f5ba9c3a118e23b379590_icgraph" id="aservice-checker_8cpp_a8ea9b329ae8f5ba9c3a118e23b379590_icgraph">
+<area shape="rect" title=" " alt="" coords="665,56,821,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a24029eb97354b592b5b2433a0a7f1f17" title=" " alt="" coords="480,56,617,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a3e96fade24af6ab1c689037f314549e0" title="オブジェクトが所定の店舗で引き取れるかどうかを返す / Determine if the current store will purchase the given item" alt="" coords="328,56,432,83"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+<area shape="rect" href="sell-order_8cpp.html#a99c896d0a63db27afbf59621f6b7d51f" title="店からの売却処理のメインルーチン / Sell an item to the store (or home)" alt="" coords="193,107,272,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abfbc2ef8bde3fdf5ec2b73fdfe0ccff4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfbc2ef8bde3fdf5ec2b73fdfe0ccff4">&#9670;&nbsp;</a></span>check_store_armoury()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_store_armoury </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_abfbc2ef8bde3fdf5ec2b73fdfe0ccff4_icgraph.png" border="0" usemap="#aservice-checker_8cpp_abfbc2ef8bde3fdf5ec2b73fdfe0ccff4_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_abfbc2ef8bde3fdf5ec2b73fdfe0ccff4_icgraph" id="aservice-checker_8cpp_abfbc2ef8bde3fdf5ec2b73fdfe0ccff4_icgraph">
+<area shape="rect" title=" " alt="" coords="665,56,812,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a24029eb97354b592b5b2433a0a7f1f17" title=" " alt="" coords="480,56,617,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a3e96fade24af6ab1c689037f314549e0" title="オブジェクトが所定の店舗で引き取れるかどうかを返す / Determine if the current store will purchase the given item" alt="" coords="328,56,432,83"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+<area shape="rect" href="sell-order_8cpp.html#a99c896d0a63db27afbf59621f6b7d51f" title="店からの売却処理のメインルーチン / Sell an item to the store (or home)" alt="" coords="193,107,272,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa9bde2d46a68622eb09a82fa8b479402"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9bde2d46a68622eb09a82fa8b479402">&#9670;&nbsp;</a></span>check_store_book()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_store_book </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_aa9bde2d46a68622eb09a82fa8b479402_icgraph.png" border="0" usemap="#aservice-checker_8cpp_aa9bde2d46a68622eb09a82fa8b479402_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_aa9bde2d46a68622eb09a82fa8b479402_icgraph" id="aservice-checker_8cpp_aa9bde2d46a68622eb09a82fa8b479402_icgraph">
+<area shape="rect" title=" " alt="" coords="665,56,793,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a24029eb97354b592b5b2433a0a7f1f17" title=" " alt="" coords="480,56,617,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a3e96fade24af6ab1c689037f314549e0" title="オブジェクトが所定の店舗で引き取れるかどうかを返す / Determine if the current store will purchase the given item" alt="" coords="328,56,432,83"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+<area shape="rect" href="sell-order_8cpp.html#a99c896d0a63db27afbf59621f6b7d51f" title="店からの売却処理のメインルーチン / Sell an item to the store (or home)" alt="" coords="193,107,272,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae4afd18b3a42d9bd71b5998c00357369"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4afd18b3a42d9bd71b5998c00357369">&#9670;&nbsp;</a></span>check_store_general()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_store_general </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_ae4afd18b3a42d9bd71b5998c00357369_icgraph.png" border="0" usemap="#aservice-checker_8cpp_ae4afd18b3a42d9bd71b5998c00357369_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_ae4afd18b3a42d9bd71b5998c00357369_icgraph" id="aservice-checker_8cpp_ae4afd18b3a42d9bd71b5998c00357369_icgraph">
+<area shape="rect" title=" " alt="" coords="665,56,808,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a24029eb97354b592b5b2433a0a7f1f17" title=" " alt="" coords="480,56,617,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a3e96fade24af6ab1c689037f314549e0" title="オブジェクトが所定の店舗で引き取れるかどうかを返す / Determine if the current store will purchase the given item" alt="" coords="328,56,432,83"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+<area shape="rect" href="sell-order_8cpp.html#a99c896d0a63db27afbf59621f6b7d51f" title="店からの売却処理のメインルーチン / Sell an item to the store (or home)" alt="" coords="193,107,272,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa57f72ac37b83a883963813e0994cda8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa57f72ac37b83a883963813e0994cda8">&#9670;&nbsp;</a></span>check_store_magic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_store_magic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_aa57f72ac37b83a883963813e0994cda8_icgraph.png" border="0" usemap="#aservice-checker_8cpp_aa57f72ac37b83a883963813e0994cda8_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_aa57f72ac37b83a883963813e0994cda8_icgraph" id="aservice-checker_8cpp_aa57f72ac37b83a883963813e0994cda8_icgraph">
+<area shape="rect" title=" " alt="" coords="665,56,800,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a24029eb97354b592b5b2433a0a7f1f17" title=" " alt="" coords="480,56,617,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a3e96fade24af6ab1c689037f314549e0" title="オブジェクトが所定の店舗で引き取れるかどうかを返す / Determine if the current store will purchase the given item" alt="" coords="328,56,432,83"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+<area shape="rect" href="sell-order_8cpp.html#a99c896d0a63db27afbf59621f6b7d51f" title="店からの売却処理のメインルーチン / Sell an item to the store (or home)" alt="" coords="193,107,272,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9478ad9ac9b68b58804e4c49e8b879a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9478ad9ac9b68b58804e4c49e8b879a8">&#9670;&nbsp;</a></span>check_store_temple()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_store_temple </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a9478ad9ac9b68b58804e4c49e8b879a8_cgraph.png" border="0" usemap="#aservice-checker_8cpp_a9478ad9ac9b68b58804e4c49e8b879a8_cgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a9478ad9ac9b68b58804e4c49e8b879a8_cgraph" id="aservice-checker_8cpp_a9478ad9ac9b68b58804e4c49e8b879a8_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="195,5,305,32"/>
+<area shape="rect" href="service-checker_8cpp.html#ab191aed5e5e4971b508a96bf08deca03" title="オブジェクトが祝福されているかの判定を返す /" alt="" coords="192,56,308,83"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="356,56,447,83"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="521,5,623,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="495,56,649,83"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="515,107,629,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a9478ad9ac9b68b58804e4c49e8b879a8_icgraph.png" border="0" usemap="#aservice-checker_8cpp_a9478ad9ac9b68b58804e4c49e8b879a8_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a9478ad9ac9b68b58804e4c49e8b879a8_icgraph" id="aservice-checker_8cpp_a9478ad9ac9b68b58804e4c49e8b879a8_icgraph">
+<area shape="rect" title=" " alt="" coords="665,56,804,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a24029eb97354b592b5b2433a0a7f1f17" title=" " alt="" coords="480,56,617,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a3e96fade24af6ab1c689037f314549e0" title="オブジェクトが所定の店舗で引き取れるかどうかを返す / Determine if the current store will purchase the given item" alt="" coords="328,56,432,83"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+<area shape="rect" href="sell-order_8cpp.html#a99c896d0a63db27afbf59621f6b7d51f" title="店からの売却処理のメインルーチン / Sell an item to the store (or home)" alt="" coords="193,107,272,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af10f0e03b53b1240357026d592f8e50e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af10f0e03b53b1240357026d592f8e50e">&#9670;&nbsp;</a></span>check_store_weapon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_store_weapon </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_af10f0e03b53b1240357026d592f8e50e_icgraph.png" border="0" usemap="#aservice-checker_8cpp_af10f0e03b53b1240357026d592f8e50e_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_af10f0e03b53b1240357026d592f8e50e_icgraph" id="aservice-checker_8cpp_af10f0e03b53b1240357026d592f8e50e_icgraph">
+<area shape="rect" title=" " alt="" coords="665,56,809,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a24029eb97354b592b5b2433a0a7f1f17" title=" " alt="" coords="480,56,617,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a3e96fade24af6ab1c689037f314549e0" title="オブジェクトが所定の店舗で引き取れるかどうかを返す / Determine if the current store will purchase the given item" alt="" coords="328,56,432,83"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+<area shape="rect" href="sell-order_8cpp.html#a99c896d0a63db27afbf59621f6b7d51f" title="店からの売却処理のメインルーチン / Sell an item to the store (or home)" alt="" coords="193,107,272,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a31b09c1f5b602967559181f03252610e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31b09c1f5b602967559181f03252610e">&#9670;&nbsp;</a></span>decide_discount_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#aa58486a17eb151250f1af9f1362d8de4">DISCOUNT_RATE</a> decide_discount_rate </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a>&#160;</td>
+          <td class="paramname"><em>cost</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a31b09c1f5b602967559181f03252610e_icgraph.png" border="0" usemap="#aservice-checker_8cpp_a31b09c1f5b602967559181f03252610e_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a31b09c1f5b602967559181f03252610e_icgraph" id="aservice-checker_8cpp_a31b09c1f5b602967559181f03252610e_icgraph">
+<area shape="rect" title=" " alt="" coords="483,31,628,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a54ed8fdf61800d7c646e443224d2b6c9" title="安価な消耗品の販売数を増やし、低確率で割引にする / Certain &quot;cheap&quot; objects should be created in &quot;piles&quot;" alt="" coords="328,31,435,57"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab191aed5e5e4971b508a96bf08deca03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab191aed5e5e4971b508a96bf08deca03">&#9670;&nbsp;</a></span>is_blessed_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> is_blessed_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>オブジェクトが祝福されているかの判定を返す / </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>判定したいオブジェクト構造体の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>アイテムが祝福されたアイテムならばTRUEを返す </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_ab191aed5e5e4971b508a96bf08deca03_cgraph.png" border="0" usemap="#aservice-checker_8cpp_ab191aed5e5e4971b508a96bf08deca03_cgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_ab191aed5e5e4971b508a96bf08deca03_cgraph" id="aservice-checker_8cpp_ab191aed5e5e4971b508a96bf08deca03_cgraph">
+<area shape="rect" title="オブジェクトが祝福されているかの判定を返す /" alt="" coords="5,56,121,83"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="169,56,260,83"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="334,5,437,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="308,56,463,83"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="329,107,442,133"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="511,107,725,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_ab191aed5e5e4971b508a96bf08deca03_icgraph.png" border="0" usemap="#aservice-checker_8cpp_ab191aed5e5e4971b508a96bf08deca03_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_ab191aed5e5e4971b508a96bf08deca03_icgraph" id="aservice-checker_8cpp_ab191aed5e5e4971b508a96bf08deca03_icgraph">
+<area shape="rect" title="オブジェクトが祝福されているかの判定を返す /" alt="" coords="529,5,645,32"/>
+<area shape="rect" href="service-checker_8cpp.html#a9478ad9ac9b68b58804e4c49e8b879a8" title=" " alt="" coords="343,5,481,32"/>
+<area shape="rect" href="service-checker_8cpp.html#a24029eb97354b592b5b2433a0a7f1f17" title=" " alt="" coords="157,5,295,32"/>
+<area shape="rect" href="service-checker_8cpp.html#a3e96fade24af6ab1c689037f314549e0" title="オブジェクトが所定の店舗で引き取れるかどうかを返す / Determine if the current store will purchase the given item" alt="" coords="5,5,109,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0d47589a8ad452d41cc8613ace1e92a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d47589a8ad452d41cc8613ace1e92a8">&#9670;&nbsp;</a></span>mass_arrow_produce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int mass_arrow_produce </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a>&#160;</td>
+          <td class="paramname"><em>cost</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a0d47589a8ad452d41cc8613ace1e92a8_cgraph.png" border="0" usemap="#aservice-checker_8cpp_a0d47589a8ad452d41cc8613ace1e92a8_cgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a0d47589a8ad452d41cc8613ace1e92a8_cgraph" id="aservice-checker_8cpp_a0d47589a8ad452d41cc8613ace1e92a8_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,151,32"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="199,5,263,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a0d47589a8ad452d41cc8613ace1e92a8_icgraph.png" border="0" usemap="#aservice-checker_8cpp_a0d47589a8ad452d41cc8613ace1e92a8_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a0d47589a8ad452d41cc8613ace1e92a8_icgraph" id="aservice-checker_8cpp_a0d47589a8ad452d41cc8613ace1e92a8_icgraph">
+<area shape="rect" title=" " alt="" coords="696,31,841,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a69839db0ca6572a7a397ad5dcabee740" title=" " alt="" coords="483,31,648,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a54ed8fdf61800d7c646e443224d2b6c9" title="安価な消耗品の販売数を増やし、低確率で割引にする / Certain &quot;cheap&quot; objects should be created in &quot;piles&quot;" alt="" coords="328,31,435,57"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2c662c81a4137c0717a1a8cee9a1362c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c662c81a4137c0717a1a8cee9a1362c">&#9670;&nbsp;</a></span>mass_book_produce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int mass_book_produce </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a>&#160;</td>
+          <td class="paramname"><em>cost</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a2c662c81a4137c0717a1a8cee9a1362c_cgraph.png" border="0" usemap="#aservice-checker_8cpp_a2c662c81a4137c0717a1a8cee9a1362c_cgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a2c662c81a4137c0717a1a8cee9a1362c_cgraph" id="aservice-checker_8cpp_a2c662c81a4137c0717a1a8cee9a1362c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,148,32"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="196,5,260,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a2c662c81a4137c0717a1a8cee9a1362c_icgraph.png" border="0" usemap="#aservice-checker_8cpp_a2c662c81a4137c0717a1a8cee9a1362c_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a2c662c81a4137c0717a1a8cee9a1362c_icgraph" id="aservice-checker_8cpp_a2c662c81a4137c0717a1a8cee9a1362c_icgraph">
+<area shape="rect" title=" " alt="" coords="696,31,839,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a69839db0ca6572a7a397ad5dcabee740" title=" " alt="" coords="483,31,648,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a54ed8fdf61800d7c646e443224d2b6c9" title="安価な消耗品の販売数を増やし、低確率で割引にする / Certain &quot;cheap&quot; objects should be created in &quot;piles&quot;" alt="" coords="328,31,435,57"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a443e45c2ec6ef30e7929a7986df342b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a443e45c2ec6ef30e7929a7986df342b8">&#9670;&nbsp;</a></span>mass_equipment_produce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int mass_equipment_produce </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a>&#160;</td>
+          <td class="paramname"><em>cost</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a443e45c2ec6ef30e7929a7986df342b8_cgraph.png" border="0" usemap="#aservice-checker_8cpp_a443e45c2ec6ef30e7929a7986df342b8_cgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a443e45c2ec6ef30e7929a7986df342b8_cgraph" id="aservice-checker_8cpp_a443e45c2ec6ef30e7929a7986df342b8_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,180,83"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="256,5,320,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="228,56,348,83"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="237,107,339,133"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="396,56,551,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a443e45c2ec6ef30e7929a7986df342b8_icgraph.png" border="0" usemap="#aservice-checker_8cpp_a443e45c2ec6ef30e7929a7986df342b8_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a443e45c2ec6ef30e7929a7986df342b8_icgraph" id="aservice-checker_8cpp_a443e45c2ec6ef30e7929a7986df342b8_icgraph">
+<area shape="rect" title=" " alt="" coords="696,31,871,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a69839db0ca6572a7a397ad5dcabee740" title=" " alt="" coords="483,31,648,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a54ed8fdf61800d7c646e443224d2b6c9" title="安価な消耗品の販売数を増やし、低確率で割引にする / Certain &quot;cheap&quot; objects should be created in &quot;piles&quot;" alt="" coords="328,31,435,57"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a01aa148566c1a42fd618f399fef30f9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01aa148566c1a42fd618f399fef30f9b">&#9670;&nbsp;</a></span>mass_figurine_produce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int mass_figurine_produce </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a>&#160;</td>
+          <td class="paramname"><em>cost</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a01aa148566c1a42fd618f399fef30f9b_cgraph.png" border="0" usemap="#aservice-checker_8cpp_a01aa148566c1a42fd618f399fef30f9b_cgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a01aa148566c1a42fd618f399fef30f9b_cgraph" id="aservice-checker_8cpp_a01aa148566c1a42fd618f399fef30f9b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,160,32"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="208,5,272,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a01aa148566c1a42fd618f399fef30f9b_icgraph.png" border="0" usemap="#aservice-checker_8cpp_a01aa148566c1a42fd618f399fef30f9b_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a01aa148566c1a42fd618f399fef30f9b_icgraph" id="aservice-checker_8cpp_a01aa148566c1a42fd618f399fef30f9b_icgraph">
+<area shape="rect" title=" " alt="" coords="696,31,851,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a69839db0ca6572a7a397ad5dcabee740" title=" " alt="" coords="483,31,648,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a54ed8fdf61800d7c646e443224d2b6c9" title="安価な消耗品の販売数を増やし、低確率で割引にする / Certain &quot;cheap&quot; objects should be created in &quot;piles&quot;" alt="" coords="328,31,435,57"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5db360695fad8bf9a942f0176d8e1590"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5db360695fad8bf9a942f0176d8e1590">&#9670;&nbsp;</a></span>mass_lite_produce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int mass_lite_produce </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a>&#160;</td>
+          <td class="paramname"><em>cost</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a5db360695fad8bf9a942f0176d8e1590_cgraph.png" border="0" usemap="#aservice-checker_8cpp_a5db360695fad8bf9a942f0176d8e1590_cgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a5db360695fad8bf9a942f0176d8e1590_cgraph" id="aservice-checker_8cpp_a5db360695fad8bf9a942f0176d8e1590_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,136,32"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="184,5,248,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a5db360695fad8bf9a942f0176d8e1590_icgraph.png" border="0" usemap="#aservice-checker_8cpp_a5db360695fad8bf9a942f0176d8e1590_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a5db360695fad8bf9a942f0176d8e1590_icgraph" id="aservice-checker_8cpp_a5db360695fad8bf9a942f0176d8e1590_icgraph">
+<area shape="rect" title=" " alt="" coords="696,31,827,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a69839db0ca6572a7a397ad5dcabee740" title=" " alt="" coords="483,31,648,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a54ed8fdf61800d7c646e443224d2b6c9" title="安価な消耗品の販売数を増やし、低確率で割引にする / Certain &quot;cheap&quot; objects should be created in &quot;piles&quot;" alt="" coords="328,31,435,57"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad79df3d5ec85d9f91470daa8d7491feb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad79df3d5ec85d9f91470daa8d7491feb">&#9670;&nbsp;</a></span>mass_magic_produce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int mass_magic_produce </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a>&#160;</td>
+          <td class="paramname"><em>cost</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_ad79df3d5ec85d9f91470daa8d7491feb_cgraph.png" border="0" usemap="#aservice-checker_8cpp_ad79df3d5ec85d9f91470daa8d7491feb_cgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_ad79df3d5ec85d9f91470daa8d7491feb_cgraph" id="aservice-checker_8cpp_ad79df3d5ec85d9f91470daa8d7491feb_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,155,32"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="203,5,267,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_ad79df3d5ec85d9f91470daa8d7491feb_icgraph.png" border="0" usemap="#aservice-checker_8cpp_ad79df3d5ec85d9f91470daa8d7491feb_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_ad79df3d5ec85d9f91470daa8d7491feb_icgraph" id="aservice-checker_8cpp_ad79df3d5ec85d9f91470daa8d7491feb_icgraph">
+<area shape="rect" title=" " alt="" coords="696,31,845,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a69839db0ca6572a7a397ad5dcabee740" title=" " alt="" coords="483,31,648,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a54ed8fdf61800d7c646e443224d2b6c9" title="安価な消耗品の販売数を増やし、低確率で割引にする / Certain &quot;cheap&quot; objects should be created in &quot;piles&quot;" alt="" coords="328,31,435,57"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a54ed8fdf61800d7c646e443224d2b6c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54ed8fdf61800d7c646e443224d2b6c9">&#9670;&nbsp;</a></span>mass_produce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mass_produce </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>安価な消耗品の販売数を増やし、低確率で割引にする / Certain "cheap" objects should be created in "piles" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>店舗に並べるオブジェクト構造体の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<pre>
+Some objects can be sold at a "discount" (in small piles)
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a54ed8fdf61800d7c646e443224d2b6c9_cgraph.png" border="0" usemap="#aservice-checker_8cpp_a54ed8fdf61800d7c646e443224d2b6c9_cgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a54ed8fdf61800d7c646e443224d2b6c9_cgraph" id="aservice-checker_8cpp_a54ed8fdf61800d7c646e443224d2b6c9_cgraph">
+<area shape="rect" title="安価な消耗品の販売数を増やし、低確率で割引にする / Certain &quot;cheap&quot; objects should be created in &quot;piles&quot;" alt="" coords="5,224,112,251"/>
+<area shape="rect" href="service-checker_8cpp.html#a31b09c1f5b602967559181f03252610e" title=" " alt="" coords="160,173,305,200"/>
+<area shape="rect" href="object-value_8cpp.html#a0147f5032ab01303e47ff00f49648520" title="オブジェクト価格算出のメインルーチン / Return the price of an item including plusses (and charges)" alt="" coords="186,224,279,251"/>
+<area shape="rect" href="service-checker_8cpp.html#a69839db0ca6572a7a397ad5dcabee740" title=" " alt="" coords="353,427,519,453"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="376,249,496,276"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="789,199,909,225"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="377,148,495,175"/>
+<area shape="rect" href="object-value_8cpp.html#afb59e3a93aa528a3a73df60ce054c2f9" title="未鑑定なベースアイテムの基本価格を返す / Return the &quot;value&quot; of an &quot;unknown&quot; item Make a guess at the value of non&#45;aware ..." alt="" coords="372,300,500,327"/>
+<area shape="rect" href="object-value_8cpp.html#a4b43c1e5db9d62cc85dce89c00b8ff3a" title="オブジェクトの真の価格を算出する / Return the value of the flags the object has..." alt="" coords="375,97,497,124"/>
+<area shape="rect" href="object-perception_8cpp.html#a377c00bc8a6d66ec30288f1e3be60e9f" title=" " alt="" coords="597,249,711,276"/>
+<area shape="rect" href="object-value-calc_8cpp.html#a50a71dd33434317049f92e1f4a3f18dd" title="オブジェクトのフラグ類から価格を算出する / Return the value of the flags the object has..." alt="" coords="617,97,691,124"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="804,47,895,73"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="983,21,1086,48"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="957,123,1112,149"/>
+<area shape="rect" href="service-checker_8cpp.html#a0d47589a8ad452d41cc8613ace1e92a8" title=" " alt="" coords="581,452,727,479"/>
+<area shape="rect" href="service-checker_8cpp.html#a2c662c81a4137c0717a1a8cee9a1362c" title=" " alt="" coords="583,503,725,529"/>
+<area shape="rect" href="service-checker_8cpp.html#a443e45c2ec6ef30e7929a7986df342b8" title=" " alt="" coords="567,300,741,327"/>
+<area shape="rect" href="service-checker_8cpp.html#a01aa148566c1a42fd618f399fef30f9b" title=" " alt="" coords="577,553,731,580"/>
+<area shape="rect" href="service-checker_8cpp.html#a5db360695fad8bf9a942f0176d8e1590" title=" " alt="" coords="589,604,719,631"/>
+<area shape="rect" href="service-checker_8cpp.html#ad79df3d5ec85d9f91470daa8d7491feb" title=" " alt="" coords="579,351,729,377"/>
+<area shape="rect" href="service-checker_8cpp.html#a86b569e07b742ec101cde61ba6b42972" title=" " alt="" coords="581,401,727,428"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="817,452,881,479"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="789,300,909,327"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a54ed8fdf61800d7c646e443224d2b6c9_icgraph.png" border="0" usemap="#aservice-checker_8cpp_a54ed8fdf61800d7c646e443224d2b6c9_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a54ed8fdf61800d7c646e443224d2b6c9_icgraph" id="aservice-checker_8cpp_a54ed8fdf61800d7c646e443224d2b6c9_icgraph">
+<area shape="rect" title="安価な消耗品の販売数を増やし、低確率で割引にする / Certain &quot;cheap&quot; objects should be created in &quot;piles&quot;" alt="" coords="511,31,617,57"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="368,5,463,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="188,31,320,57"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="21,5,125,32"/>
+<area shape="rect" href="purchase-order_8cpp.html#adfed87bf46b0d23cfb2106925f181097" title=" " alt="" coords="5,56,140,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a86b569e07b742ec101cde61ba6b42972"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86b569e07b742ec101cde61ba6b42972">&#9670;&nbsp;</a></span>mass_scroll_produce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int mass_scroll_produce </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a>&#160;</td>
+          <td class="paramname"><em>cost</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a86b569e07b742ec101cde61ba6b42972_cgraph.png" border="0" usemap="#aservice-checker_8cpp_a86b569e07b742ec101cde61ba6b42972_cgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a86b569e07b742ec101cde61ba6b42972_cgraph" id="aservice-checker_8cpp_a86b569e07b742ec101cde61ba6b42972_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,151,32"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="199,5,263,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a86b569e07b742ec101cde61ba6b42972_icgraph.png" border="0" usemap="#aservice-checker_8cpp_a86b569e07b742ec101cde61ba6b42972_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a86b569e07b742ec101cde61ba6b42972_icgraph" id="aservice-checker_8cpp_a86b569e07b742ec101cde61ba6b42972_icgraph">
+<area shape="rect" title=" " alt="" coords="696,31,841,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a69839db0ca6572a7a397ad5dcabee740" title=" " alt="" coords="483,31,648,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a54ed8fdf61800d7c646e443224d2b6c9" title="安価な消耗品の販売数を増やし、低確率で割引にする / Certain &quot;cheap&quot; objects should be created in &quot;piles&quot;" alt="" coords="328,31,435,57"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3e96fade24af6ab1c689037f314549e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e96fade24af6ab1c689037f314549e0">&#9670;&nbsp;</a></span>store_will_buy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> store_will_buy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>オブジェクトが所定の店舗で引き取れるかどうかを返す / Determine if the current store will purchase the given item </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>判定したいオブジェクト構造体の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>アイテムが買い取れるならばTRUEを返す </dd></dl>
+<dl class="section note"><dt>覚え書き</dt><dd>Note that a shop-keeper must refuse to buy "worthless" items </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a3e96fade24af6ab1c689037f314549e0_cgraph.png" border="0" usemap="#aservice-checker_8cpp_a3e96fade24af6ab1c689037f314549e0_cgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a3e96fade24af6ab1c689037f314549e0_cgraph" id="aservice-checker_8cpp_a3e96fade24af6ab1c689037f314549e0_cgraph">
+<area shape="rect" title="オブジェクトが所定の店舗で引き取れるかどうかを返す / Determine if the current store will purchase the given item" alt="" coords="5,284,109,311"/>
+<area shape="rect" href="object-value_8cpp.html#a0147f5032ab01303e47ff00f49648520" title="オブジェクト価格算出のメインルーチン / Return the price of an item including plusses (and charges)" alt="" coords="179,132,273,159"/>
+<area shape="rect" href="service-checker_8cpp.html#a24029eb97354b592b5b2433a0a7f1f17" title=" " alt="" coords="157,385,295,412"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="361,56,481,83"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="711,107,831,133"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="361,208,480,235"/>
+<area shape="rect" href="object-value_8cpp.html#afb59e3a93aa528a3a73df60ce054c2f9" title="未鑑定なベースアイテムの基本価格を返す / Return the &quot;value&quot; of an &quot;unknown&quot; item Make a guess at the value of non&#45;aware ..." alt="" coords="357,5,485,32"/>
+<area shape="rect" href="object-value_8cpp.html#a4b43c1e5db9d62cc85dce89c00b8ff3a" title="オブジェクトの真の価格を算出する / Return the value of the flags the object has..." alt="" coords="360,157,481,184"/>
+<area shape="rect" href="object-perception_8cpp.html#a377c00bc8a6d66ec30288f1e3be60e9f" title=" " alt="" coords="547,5,662,32"/>
+<area shape="rect" href="object-value-calc_8cpp.html#a50a71dd33434317049f92e1f4a3f18dd" title="オブジェクトのフラグ類から価格を算出する / Return the value of the flags the object has..." alt="" coords="567,157,642,184"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="725,259,816,285"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="905,259,1007,285"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="879,157,1033,184"/>
+<area shape="rect" href="service-checker_8cpp.html#a8ea9b329ae8f5ba9c3a118e23b379590" title=" " alt="" coords="343,360,499,387"/>
+<area shape="rect" href="service-checker_8cpp.html#abfbc2ef8bde3fdf5ec2b73fdfe0ccff4" title=" " alt="" coords="347,411,494,437"/>
+<area shape="rect" href="service-checker_8cpp.html#aa9bde2d46a68622eb09a82fa8b479402" title=" " alt="" coords="357,461,485,488"/>
+<area shape="rect" href="service-checker_8cpp.html#ae4afd18b3a42d9bd71b5998c00357369" title=" " alt="" coords="349,512,492,539"/>
+<area shape="rect" href="service-checker_8cpp.html#aa57f72ac37b83a883963813e0994cda8" title=" " alt="" coords="353,563,488,589"/>
+<area shape="rect" href="service-checker_8cpp.html#a9478ad9ac9b68b58804e4c49e8b879a8" title=" " alt="" coords="351,259,490,285"/>
+<area shape="rect" href="service-checker_8cpp.html#af10f0e03b53b1240357026d592f8e50e" title=" " alt="" coords="349,309,493,336"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="549,360,660,387"/>
+<area shape="rect" href="service-checker_8cpp.html#ab191aed5e5e4971b508a96bf08deca03" title="オブジェクトが祝福されているかの判定を返す /" alt="" coords="547,259,663,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a3e96fade24af6ab1c689037f314549e0_icgraph.png" border="0" usemap="#aservice-checker_8cpp_a3e96fade24af6ab1c689037f314549e0_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a3e96fade24af6ab1c689037f314549e0_icgraph" id="aservice-checker_8cpp_a3e96fade24af6ab1c689037f314549e0_icgraph">
+<area shape="rect" title="オブジェクトが所定の店舗で引き取れるかどうかを返す / Determine if the current store will purchase the given item" alt="" coords="547,56,651,83"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="404,5,499,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="206,56,338,83"/>
+<area shape="rect" href="sell-order_8cpp.html#a99c896d0a63db27afbf59621f6b7d51f" title="店からの売却処理のメインルーチン / Sell an item to the store (or home)" alt="" coords="412,107,491,133"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="21,107,125,133"/>
+<area shape="rect" href="purchase-order_8cpp.html#adfed87bf46b0d23cfb2106925f181097" title=" " alt="" coords="5,56,140,83"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="188,107,356,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a69839db0ca6572a7a397ad5dcabee740"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69839db0ca6572a7a397ad5dcabee740">&#9670;&nbsp;</a></span>switch_mass_production()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int switch_mass_production </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#aeba8ab2222e118a4540456c55d92a894">PRICE</a>&#160;</td>
+          <td class="paramname"><em>cost</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a69839db0ca6572a7a397ad5dcabee740_cgraph.png" border="0" usemap="#aservice-checker_8cpp_a69839db0ca6572a7a397ad5dcabee740_cgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a69839db0ca6572a7a397ad5dcabee740_cgraph" id="aservice-checker_8cpp_a69839db0ca6572a7a397ad5dcabee740_cgraph">
+<area shape="rect" title=" " alt="" coords="5,157,171,184"/>
+<area shape="rect" href="service-checker_8cpp.html#a0d47589a8ad452d41cc8613ace1e92a8" title=" " alt="" coords="233,5,379,32"/>
+<area shape="rect" href="service-checker_8cpp.html#a2c662c81a4137c0717a1a8cee9a1362c" title=" " alt="" coords="235,56,377,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a443e45c2ec6ef30e7929a7986df342b8" title=" " alt="" coords="219,309,393,336"/>
+<area shape="rect" href="service-checker_8cpp.html#a01aa148566c1a42fd618f399fef30f9b" title=" " alt="" coords="229,107,383,133"/>
+<area shape="rect" href="service-checker_8cpp.html#a5db360695fad8bf9a942f0176d8e1590" title=" " alt="" coords="241,157,371,184"/>
+<area shape="rect" href="service-checker_8cpp.html#ad79df3d5ec85d9f91470daa8d7491feb" title=" " alt="" coords="231,208,381,235"/>
+<area shape="rect" href="service-checker_8cpp.html#a86b569e07b742ec101cde61ba6b42972" title=" " alt="" coords="233,259,379,285"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="469,157,533,184"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="441,284,561,311"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="450,335,553,361"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="609,284,764,311"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a69839db0ca6572a7a397ad5dcabee740_icgraph.png" border="0" usemap="#aservice-checker_8cpp_a69839db0ca6572a7a397ad5dcabee740_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a69839db0ca6572a7a397ad5dcabee740_icgraph" id="aservice-checker_8cpp_a69839db0ca6572a7a397ad5dcabee740_icgraph">
+<area shape="rect" title=" " alt="" coords="483,31,648,57"/>
+<area shape="rect" href="service-checker_8cpp.html#a54ed8fdf61800d7c646e443224d2b6c9" title="安価な消耗品の販売数を増やし、低確率で割引にする / Certain &quot;cheap&quot; objects should be created in &quot;piles&quot;" alt="" coords="328,31,435,57"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="185,5,280,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a24029eb97354b592b5b2433a0a7f1f17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24029eb97354b592b5b2433a0a7f1f17">&#9670;&nbsp;</a></span>switch_store_check()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> switch_store_check </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a24029eb97354b592b5b2433a0a7f1f17_cgraph.png" border="0" usemap="#aservice-checker_8cpp_a24029eb97354b592b5b2433a0a7f1f17_cgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a24029eb97354b592b5b2433a0a7f1f17_cgraph" id="aservice-checker_8cpp_a24029eb97354b592b5b2433a0a7f1f17_cgraph">
+<area shape="rect" title=" " alt="" coords="5,157,143,184"/>
+<area shape="rect" href="service-checker_8cpp.html#a8ea9b329ae8f5ba9c3a118e23b379590" title=" " alt="" coords="191,5,347,32"/>
+<area shape="rect" href="service-checker_8cpp.html#abfbc2ef8bde3fdf5ec2b73fdfe0ccff4" title=" " alt="" coords="195,56,342,83"/>
+<area shape="rect" href="service-checker_8cpp.html#aa9bde2d46a68622eb09a82fa8b479402" title=" " alt="" coords="205,107,333,133"/>
+<area shape="rect" href="service-checker_8cpp.html#ae4afd18b3a42d9bd71b5998c00357369" title=" " alt="" coords="197,157,340,184"/>
+<area shape="rect" href="service-checker_8cpp.html#aa57f72ac37b83a883963813e0994cda8" title=" " alt="" coords="201,208,336,235"/>
+<area shape="rect" href="service-checker_8cpp.html#a9478ad9ac9b68b58804e4c49e8b879a8" title=" " alt="" coords="199,259,338,285"/>
+<area shape="rect" href="service-checker_8cpp.html#af10f0e03b53b1240357026d592f8e50e" title=" " alt="" coords="197,309,341,336"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="397,233,508,260"/>
+<area shape="rect" href="service-checker_8cpp.html#ab191aed5e5e4971b508a96bf08deca03" title="オブジェクトが祝福されているかの判定を返す /" alt="" coords="395,284,511,311"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="559,284,649,311"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="service-checker_8cpp_a24029eb97354b592b5b2433a0a7f1f17_icgraph.png" border="0" usemap="#aservice-checker_8cpp_a24029eb97354b592b5b2433a0a7f1f17_icgraph" alt=""/></div>
+<map name="aservice-checker_8cpp_a24029eb97354b592b5b2433a0a7f1f17_icgraph" id="aservice-checker_8cpp_a24029eb97354b592b5b2433a0a7f1f17_icgraph">
+<area shape="rect" title=" " alt="" coords="516,56,653,83"/>
+<area shape="rect" href="service-checker_8cpp.html#a3e96fade24af6ab1c689037f314549e0" title="オブジェクトが所定の店舗で引き取れるかどうかを返す / Determine if the current store will purchase the given item" alt="" coords="364,56,468,83"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="221,5,316,32"/>
+<area shape="rect" href="store_8cpp.html#a6a854a65bd5dddbfc17fb317b5fff5f4" title="店の品揃えを変化させる / Maintain the inventory at the stores." alt="" coords="23,31,155,57"/>
+<area shape="rect" href="sell-order_8cpp.html#a99c896d0a63db27afbf59621f6b7d51f" title="店からの売却処理のメインルーチン / Sell an item to the store (or home)" alt="" coords="229,107,308,133"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,107,173,133"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分16秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

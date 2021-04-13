@@ -1,0 +1,52 @@
+<map id="exe_player_attack_to_monster" name="exe_player_attack_to_monster">
+<area shape="rect" id="node1" title="プレイヤーの打撃処理サブルーチン / Player attacks a (poor, defenseless) creature &#45;RAK&#45;" alt="" coords="5,855,152,896"/>
+<area shape="rect" id="node2" href="$monster-status-setter_8cpp.html#a8fc25062bd77e0bfa12c4f211efe4d7c" title="モンスターを怒らせる Anger the monster" alt="" coords="689,634,797,661"/>
+<area shape="rect" id="node3" href="$avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="933,773,1013,800"/>
+<area shape="rect" id="node5" href="$monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="921,229,1025,256"/>
+<area shape="rect" id="node7" href="$display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="928,482,1019,509"/>
+<area shape="rect" id="node10" href="$player-attack_8cpp.html#ab4369babee2851a796a5e7693bd99cd8" title="直接攻撃が当たった時の処理" alt="" coords="224,938,363,965"/>
+<area shape="rect" id="node24" href="$player-attack_8cpp.html#a5d475194f0ff50f65e8a0091b01a0071" title="一部職業で攻撃に倍率がかかったりすることの処理" alt="" coords="239,1153,348,1180"/>
+<area shape="rect" id="node27" href="$mind-samurai_8cpp.html#ad3e7326cd8b928900cba7e1900be055e" title="剣術家限定で、型等に応じて命中率を高める" alt="" coords="226,1204,361,1230"/>
+<area shape="rect" id="node29" href="$blood-sucking-processor_8cpp.html#af91a03bc25b9699f15246722eed49949" title="吸血量を計算する" alt="" coords="253,786,334,813"/>
+<area shape="rect" id="node30" href="$player-attack_8cpp.html#a9d428009272dc75a54a5500a6c0c692e" title="攻撃回数を決定する" alt="" coords="238,837,349,864"/>
+<area shape="rect" id="node31" href="$player-attack_8cpp.html#a4941cbce22aea0186f8fffa85dd4930a" title="地震を起こす" alt="" coords="229,128,357,154"/>
+<area shape="rect" id="node33" href="$monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="904,280,1043,306"/>
+<area shape="rect" id="node34" href="$attack-chaos-effect_8cpp.html#aea880734152903201f8af05e5ef8d125" title="カオス武器その他でモンスターのステータスを変化させる" alt="" coords="445,356,591,382"/>
+<area shape="rect" id="node39" href="$player-attack_8cpp.html#af0ab6ca0952352ed33259e0050c24614" title="モンスターのHPを減らした後、恐怖させるか死なす (フロアから消滅させる)" alt="" coords="456,1293,580,1320"/>
+<area shape="rect" id="node43" href="$player-attack_8cpp.html#a35829b900547084c093af11a7599307c" title="直接攻撃に伴う技能値の上昇処理" alt="" coords="238,1457,349,1484"/>
+<area shape="rect" id="node47" href="$player-attack_8cpp.html#a58a30d890e0739a260cfe2adf2769447" title="プレーヤーからモンスターへの打撃処理" alt="" coords="200,1254,387,1281"/>
+<area shape="rect" id="node48" href="$attack-accuracy_8cpp.html#a41704245c0a59349b1f36c2c4398e516" title="直接攻撃の命中を処理するメインルーチン" alt="" coords="677,786,809,813"/>
+<area shape="rect" id="node49" href="$blood-sucking-processor_8cpp.html#a4527e8360619e071606de0b9f944046b" title="吸血処理のメインルーチン" alt="" coords="242,1508,345,1534"/>
+<area shape="rect" id="node50" href="$player-damage_8cpp.html#a7b72f7a9f63aeb5e4e28ca9cd8d0fe43" title="敵オーラによるプレイヤーのダメージ処理" alt="" coords="231,1558,355,1585"/>
+<area shape="rect" id="node4" href="$monster-info_8cpp.html#a310dca2e8b756213922ce91ffff3dbd0" title=" " alt="" coords="933,609,1013,636"/>
+<area shape="rect" id="node9" href="$monster-status-setter_8cpp.html#aecb5672ce45dbe9124ea2e502352dffe" title="モンスターを敵に回す Makes the monster hostile towards the player" alt="" coords="931,660,1016,686"/>
+<area shape="rect" id="node6" href="$z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="1121,178,1179,205"/>
+<area shape="rect" id="node8" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1111,722,1189,749"/>
+<area shape="rect" id="node11" href="$player-attack_8cpp.html#a736019c401ba53d09a870506bb1e4eb9" title="武器のダメージボーナスや剣術家の技によってダメージにボーナスを与える" alt="" coords="444,938,592,965"/>
+<area shape="rect" id="node12" href="$player-attack_8cpp.html#a5311b00c121014503b495dd87bc0398b" title="特殊な条件でダメージが減ったり0になったりする処理" alt="" coords="893,923,1053,964"/>
+<area shape="rect" id="node13" href="$player-attack_8cpp.html#a9f4ffef6f0f73c0f18a6d0258367704a" title="武器または素手による攻撃ダメージを計算する" alt="" coords="447,989,589,1016"/>
+<area shape="rect" id="node14" href="$attack-criticality_8cpp.html#a3b27747ee30f684626460215018a6a8a" title="急所を突く" alt="" coords="691,482,794,509"/>
+<area shape="rect" id="node15" href="$blood-sucking-processor_8cpp.html#a59163ad50afcc89298d08d9850a5ef0d" title="吸血処理" alt="" coords="443,837,593,864"/>
+<area shape="rect" id="node16" href="$spells-hex_8cpp.html#ab35c57227b5fdac063f315e972f67188" title=" " alt="" coords="695,685,790,712"/>
+<area shape="rect" id="node17" href="$mind-samurai_8cpp.html#a9945fa21dd57cd7f8d443c0472297d4f" title="峰打ちの効果処理" alt="" coords="481,584,555,610"/>
+<area shape="rect" id="node18" href="$monster-status_8cpp.html#aea5a519fd7a4c7f9c718fdfc1c788c7f" title="モンスターに与えたダメージの修正処理 / Modify the physical damage done to the monster." alt="" coords="907,1073,1039,1100"/>
+<area shape="rect" id="node19" href="$wizard-messages_8cpp.html#ac7bcb3c013f80e2b3c78401e7ccb3968" title=" " alt="" coords="451,1040,585,1066"/>
+<area shape="rect" id="node20" href="$object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="473,1090,563,1117"/>
+<area shape="rect" id="node21" href="$mind-ninja_8cpp.html#a051e6181d6b6ea0ac62558b497801b20" title=" " alt="" coords="671,584,814,610"/>
+<area shape="rect" id="node22" href="$player-attack_8cpp.html#a63820ba8fd4bd09c6314eebe65795af8" title="混沌属性の武器におけるカオス効果を決定する" alt="" coords="671,888,815,914"/>
+<area shape="rect" id="node23" href="$sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="945,824,1002,850"/>
+<area shape="rect" id="node25" href="$player-status_8cpp.html#a71651ca05a739cebea95603a32776907" title="プレイヤーの現在開いている手の状態を返す" alt="" coords="923,1420,1023,1446"/>
+<area shape="rect" id="node26" href="$mind-ninja_8cpp.html#ac8620f76780f6c47175d6cf5f6954356" title="盗賊と忍者における不意打ち" alt="" coords="436,1344,600,1370"/>
+<area shape="rect" id="node28" href="$avatar_8cpp.html#a9f77c7a74f4dd1df02cd6e40b532f2ed" title="プレイヤーの指定の徳が何番目のスロットに登録されているかを返す。 / Aux function" alt="" coords="467,1445,569,1472"/>
+<area shape="rect" id="node32" href="$earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="699,128,786,154"/>
+<area shape="rect" id="node35" href="$attack-chaos-effect_8cpp.html#a2aeb017073fba464a53ad377dfb21083" title="カオス武器で攻撃した際の追加効果処理" alt="" coords="687,280,798,306"/>
+<area shape="rect" id="node36" href="$attack-chaos-effect_8cpp.html#aa422cba35675dfe3869ae37fc7cdf17d" title="ゴールデンハンマーによるアイテム奪取処理" alt="" coords="664,330,821,357"/>
+<area shape="rect" id="node37" href="$attack-chaos-effect_8cpp.html#a3ab83784d3f907e0a97026aa6687d0b1" title="カオス武器でのテレポート・アウェイを実行する" alt="" coords="680,229,805,256"/>
+<area shape="rect" id="node38" href="$attack-chaos-effect_8cpp.html#a21fb59a1495009a59e82d845df89c1e2" title="カオス武器でのテレポート・アウェイを実行する" alt="" coords="670,381,815,408"/>
+<area shape="rect" id="node40" href="$player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="649,1394,836,1421"/>
+<area shape="rect" id="node41" href="$player-status-flags_8cpp.html#a7c7bc7aaa4ea1facc9bffef817ae15ef" title=" " alt="" coords="884,1356,1063,1382"/>
+<area shape="rect" id="node42" href="$monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="693,736,793,762"/>
+<area shape="rect" id="node44" href="$player-attack_8cpp.html#a17bfb4cd0897579ef28e78e4076b3304" title="マーシャルアーツの技能値を増加させる" alt="" coords="442,1597,594,1624"/>
+<area shape="rect" id="node45" href="$player-attack_8cpp.html#a49a2ae4bc5a2870db504b2d2176aa58d" title="装備している武器の技能値を増加させる" alt="" coords="459,1496,577,1522"/>
+<area shape="rect" id="node46" href="$hook-weapon_8cpp.html#a0e428cd41af0f842e9e73e48a7cfc77d" title="オブジェクトが近接武器として装備できるかを返す / Melee weapons" alt="" coords="435,1546,601,1573"/>
+</map>

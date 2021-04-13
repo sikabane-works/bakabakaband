@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/system/dungeon-data-definition.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d501334aeb1b78ad67cd3c72c37b1e87.html">system</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">dungeon-data-definition.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="dungeon-data-definition_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="floor-base-definitions_8h.html">floor/floor-base-definitions.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * Bounds on some arrays used in the &quot;dun_data_type&quot; structure.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * These bounds are checked, though usually this is a formality.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="dungeon-data-definition_8h.html#addfe614884400572e7f5ca373664e792">   10</a></span>&#160;<span class="preprocessor">#define CENT_MAX 300 </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="dungeon-data-definition_8h.html#a45b195e441ed85e063cd998a4bffceef">   11</a></span>&#160;<span class="preprocessor">#define DOOR_MAX 200</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="dungeon-data-definition_8h.html#a053647bf9730aa9232f59b7a3bf396b7">   12</a></span>&#160;<span class="preprocessor">#define WALL_MAX 500</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="dungeon-data-definition_8h.html#afbf146e5fb9054f3a26b33f46d2d9226">   13</a></span>&#160;<span class="preprocessor">#define TUNN_MAX 900</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * The &quot;size&quot; of a &quot;generation block&quot; in grids</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="dungeon-data-definition_8h.html#a0fb687556cdf6e9be659f489bac988e5">   18</a></span>&#160;<span class="preprocessor">#define BLOCK_HGT 11</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="dungeon-data-definition_8h.html#a6f8577b28cbb5948f161a04e94f25bce">   19</a></span>&#160;<span class="preprocessor">#define BLOCK_WID 11</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * Maximum numbers of rooms along each axis (currently 6x6)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="dungeon-data-definition_8h.html#a3a61bc8bf9c9e0e1edb968c98ac45abf">   24</a></span>&#160;<span class="preprocessor">#define MAX_ROOMS_ROW (MAX_HGT / BLOCK_HGT)</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="dungeon-data-definition_8h.html#ad57603e7a35c6856213ea06933f85dd5">   25</a></span>&#160;<span class="preprocessor">#define MAX_ROOMS_COL (MAX_WID / BLOCK_WID)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * Simple structure to hold a map location</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structcoord.html">   30</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structcoord.html">coord</a> {</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structcoord.html#ae658bf540d24a6f124b8b59f9827a533">   31</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structcoord.html#ae658bf540d24a6f124b8b59f9827a533">y</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structcoord.html#a9e3a1849f4be2ee6f478ceea5700ab4f">   32</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structcoord.html#a9e3a1849f4be2ee6f478ceea5700ab4f">x</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="dungeon-data-definition_8h.html#abecb74906500a2705f6ae978bf79b295">   33</a></span>&#160;} <a class="code" href="dungeon-data-definition_8h.html#abecb74906500a2705f6ae978bf79b295">coord</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> * Structure to hold all &quot;dungeon generation&quot; data</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structdun__data__type.html">   38</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structdun__data__type.html">dun_data_type</a> {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">/* Array of centers of rooms */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structdun__data__type.html#aabd428aa568585c0b9d95fad46266b34">   40</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdun__data__type.html#aabd428aa568585c0b9d95fad46266b34">cent_n</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structdun__data__type.html#ad32ea673dd46911cefc8fe6454ea7d90">   41</a></span>&#160;    <a class="code" href="structcoord.html">coord</a> <a class="code" href="structdun__data__type.html#ad32ea673dd46911cefc8fe6454ea7d90">cent</a>[<a class="code" href="dungeon-data-definition_8h.html#addfe614884400572e7f5ca373664e792">CENT_MAX</a>];</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">/* Array of possible door locations */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structdun__data__type.html#a23cd992156443a616fce86c526ba4f8a">   44</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdun__data__type.html#a23cd992156443a616fce86c526ba4f8a">door_n</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structdun__data__type.html#a83400640cecf0752d67425a129752378">   45</a></span>&#160;    <a class="code" href="structcoord.html">coord</a> <a class="code" href="structdun__data__type.html#a83400640cecf0752d67425a129752378">door</a>[<a class="code" href="dungeon-data-definition_8h.html#a45b195e441ed85e063cd998a4bffceef">DOOR_MAX</a>];</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">/* Array of wall piercing locations */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structdun__data__type.html#a8616e630b0199106e6abf18c9ff4eb01">   48</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdun__data__type.html#a8616e630b0199106e6abf18c9ff4eb01">wall_n</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structdun__data__type.html#a731b1e3fdd5fbf5da0570d3e41ce6914">   49</a></span>&#160;    <a class="code" href="structcoord.html">coord</a> <a class="code" href="structdun__data__type.html#a731b1e3fdd5fbf5da0570d3e41ce6914">wall</a>[<a class="code" href="dungeon-data-definition_8h.html#a053647bf9730aa9232f59b7a3bf396b7">WALL_MAX</a>];</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">/* Array of tunnel grids */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structdun__data__type.html#afbe8a2da871d12b783f480ed26c52671">   52</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdun__data__type.html#afbe8a2da871d12b783f480ed26c52671">tunn_n</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structdun__data__type.html#a0cb9860458c627cf3b5297e164887197">   53</a></span>&#160;    <a class="code" href="structcoord.html">coord</a> <a class="code" href="structdun__data__type.html#a0cb9860458c627cf3b5297e164887197">tunn</a>[<a class="code" href="dungeon-data-definition_8h.html#afbf146e5fb9054f3a26b33f46d2d9226">TUNN_MAX</a>];</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">/* Number of blocks along each axis */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structdun__data__type.html#ab93faf8ae1a52bbd36ef39ae7d7165d6">   56</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdun__data__type.html#ab93faf8ae1a52bbd36ef39ae7d7165d6">row_rooms</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structdun__data__type.html#a32412df9dba95bbe9fe6d5e799556ec5">   57</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdun__data__type.html#a32412df9dba95bbe9fe6d5e799556ec5">col_rooms</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">/* Array of which blocks are used */</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structdun__data__type.html#adecb80fd3f425d2f737c4daa611dd801">   60</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structdun__data__type.html#adecb80fd3f425d2f737c4daa611dd801">room_map</a>[<a class="code" href="dungeon-data-definition_8h.html#a3a61bc8bf9c9e0e1edb968c98ac45abf">MAX_ROOMS_ROW</a>][<a class="code" href="dungeon-data-definition_8h.html#ad57603e7a35c6856213ea06933f85dd5">MAX_ROOMS_COL</a>];</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">/* Various type of dungeon floors */</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structdun__data__type.html#af5ba6ba56b2d90e135b64dd8783efa7e">   63</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structdun__data__type.html#af5ba6ba56b2d90e135b64dd8783efa7e">destroyed</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structdun__data__type.html#a6469d010a3cce9c9283547050332f3b1">   64</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structdun__data__type.html#a6469d010a3cce9c9283547050332f3b1">empty_level</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="structdun__data__type.html#ae1d1e29fdf063b7f454e4601dc466bcb">   65</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structdun__data__type.html#ae1d1e29fdf063b7f454e4601dc466bcb">cavern</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structdun__data__type.html#ae5f1f5df7ef2d4dde3618ed3214d4e18">   66</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdun__data__type.html#ae5f1f5df7ef2d4dde3618ed3214d4e18">laketype</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structdun__data__type.html#a8332c71f236e72ca2e71c0c4fa2fac38">   67</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdun__data__type.html#a8332c71f236e72ca2e71c0c4fa2fac38">tunnel_fail_count</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="structdun__data__type.html#abe4719168ebfdf01348f811a8df6e0d3">   69</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structdun__data__type.html#abe4719168ebfdf01348f811a8df6e0d3">tunnel_y</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structdun__data__type.html#a124060c7c654484ff305a0f1de1b4c5f">   70</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structdun__data__type.html#a124060c7c654484ff305a0f1de1b4c5f">tunnel_x</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structdun__data__type.html#a1bcd7bca9261be67a115174ee5ece5dc">   72</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdun__data__type.html#a1bcd7bca9261be67a115174ee5ece5dc">alloc_object_num</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structdun__data__type.html#a4fc15d4365b1669965d5d103e68b8b7d">   73</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdun__data__type.html#a4fc15d4365b1669965d5d103e68b8b7d">alloc_monster_num</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="structdun__data__type.html#a0397f2a83bacf4b4359b3c2e359abe74">   75</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *<a class="code" href="structdun__data__type.html#a0397f2a83bacf4b4359b3c2e359abe74">why</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="dungeon-data-definition_8h.html#adf7376ddd0fe80cae671e92729a4700a">   76</a></span>&#160;} <a class="code" href="dungeon-data-definition_8h.html#adf7376ddd0fe80cae671e92729a4700a">dun_data_type</a>;</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="adungeon-data-definition_8h_html_a053647bf9730aa9232f59b7a3bf396b7"><div class="ttname"><a href="dungeon-data-definition_8h.html#a053647bf9730aa9232f59b7a3bf396b7">WALL_MAX</a></div><div class="ttdeci">#define WALL_MAX</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:12</div></div>
+<div class="ttc" id="adungeon-data-definition_8h_html_a3a61bc8bf9c9e0e1edb968c98ac45abf"><div class="ttname"><a href="dungeon-data-definition_8h.html#a3a61bc8bf9c9e0e1edb968c98ac45abf">MAX_ROOMS_ROW</a></div><div class="ttdeci">#define MAX_ROOMS_ROW</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:24</div></div>
+<div class="ttc" id="adungeon-data-definition_8h_html_a45b195e441ed85e063cd998a4bffceef"><div class="ttname"><a href="dungeon-data-definition_8h.html#a45b195e441ed85e063cd998a4bffceef">DOOR_MAX</a></div><div class="ttdeci">#define DOOR_MAX</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:11</div></div>
+<div class="ttc" id="adungeon-data-definition_8h_html_abecb74906500a2705f6ae978bf79b295"><div class="ttname"><a href="dungeon-data-definition_8h.html#abecb74906500a2705f6ae978bf79b295">coord</a></div><div class="ttdeci">struct coord coord</div></div>
+<div class="ttc" id="adungeon-data-definition_8h_html_ad57603e7a35c6856213ea06933f85dd5"><div class="ttname"><a href="dungeon-data-definition_8h.html#ad57603e7a35c6856213ea06933f85dd5">MAX_ROOMS_COL</a></div><div class="ttdeci">#define MAX_ROOMS_COL</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:25</div></div>
+<div class="ttc" id="adungeon-data-definition_8h_html_addfe614884400572e7f5ca373664e792"><div class="ttname"><a href="dungeon-data-definition_8h.html#addfe614884400572e7f5ca373664e792">CENT_MAX</a></div><div class="ttdeci">#define CENT_MAX</div><div class="ttdoc">「部屋の中心」最大数/巨大マップを作るバリアントにするほど大きめにとっておかないといけないと思われる。</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:10</div></div>
+<div class="ttc" id="adungeon-data-definition_8h_html_adf7376ddd0fe80cae671e92729a4700a"><div class="ttname"><a href="dungeon-data-definition_8h.html#adf7376ddd0fe80cae671e92729a4700a">dun_data_type</a></div><div class="ttdeci">struct dun_data_type dun_data_type</div></div>
+<div class="ttc" id="adungeon-data-definition_8h_html_afbf146e5fb9054f3a26b33f46d2d9226"><div class="ttname"><a href="dungeon-data-definition_8h.html#afbf146e5fb9054f3a26b33f46d2d9226">TUNN_MAX</a></div><div class="ttdeci">#define TUNN_MAX</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:13</div></div>
+<div class="ttc" id="afloor-base-definitions_8h_html"><div class="ttname"><a href="floor-base-definitions_8h.html">floor-base-definitions.h</a></div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="astructcoord_html"><div class="ttname"><a href="structcoord.html">coord</a></div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:30</div></div>
+<div class="ttc" id="astructcoord_html_a9e3a1849f4be2ee6f478ceea5700ab4f"><div class="ttname"><a href="structcoord.html#a9e3a1849f4be2ee6f478ceea5700ab4f">coord::x</a></div><div class="ttdeci">POSITION x</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:32</div></div>
+<div class="ttc" id="astructcoord_html_ae658bf540d24a6f124b8b59f9827a533"><div class="ttname"><a href="structcoord.html#ae658bf540d24a6f124b8b59f9827a533">coord::y</a></div><div class="ttdeci">POSITION y</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:31</div></div>
+<div class="ttc" id="astructdun__data__type_html"><div class="ttname"><a href="structdun__data__type.html">dun_data_type</a></div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:38</div></div>
+<div class="ttc" id="astructdun__data__type_html_a0397f2a83bacf4b4359b3c2e359abe74"><div class="ttname"><a href="structdun__data__type.html#a0397f2a83bacf4b4359b3c2e359abe74">dun_data_type::why</a></div><div class="ttdeci">concptr * why</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:75</div></div>
+<div class="ttc" id="astructdun__data__type_html_a0cb9860458c627cf3b5297e164887197"><div class="ttname"><a href="structdun__data__type.html#a0cb9860458c627cf3b5297e164887197">dun_data_type::tunn</a></div><div class="ttdeci">coord tunn[TUNN_MAX]</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:53</div></div>
+<div class="ttc" id="astructdun__data__type_html_a124060c7c654484ff305a0f1de1b4c5f"><div class="ttname"><a href="structdun__data__type.html#a124060c7c654484ff305a0f1de1b4c5f">dun_data_type::tunnel_x</a></div><div class="ttdeci">POSITION tunnel_x</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:70</div></div>
+<div class="ttc" id="astructdun__data__type_html_a1bcd7bca9261be67a115174ee5ece5dc"><div class="ttname"><a href="structdun__data__type.html#a1bcd7bca9261be67a115174ee5ece5dc">dun_data_type::alloc_object_num</a></div><div class="ttdeci">int alloc_object_num</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:72</div></div>
+<div class="ttc" id="astructdun__data__type_html_a23cd992156443a616fce86c526ba4f8a"><div class="ttname"><a href="structdun__data__type.html#a23cd992156443a616fce86c526ba4f8a">dun_data_type::door_n</a></div><div class="ttdeci">int door_n</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:44</div></div>
+<div class="ttc" id="astructdun__data__type_html_a32412df9dba95bbe9fe6d5e799556ec5"><div class="ttname"><a href="structdun__data__type.html#a32412df9dba95bbe9fe6d5e799556ec5">dun_data_type::col_rooms</a></div><div class="ttdeci">int col_rooms</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:57</div></div>
+<div class="ttc" id="astructdun__data__type_html_a4fc15d4365b1669965d5d103e68b8b7d"><div class="ttname"><a href="structdun__data__type.html#a4fc15d4365b1669965d5d103e68b8b7d">dun_data_type::alloc_monster_num</a></div><div class="ttdeci">int alloc_monster_num</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:73</div></div>
+<div class="ttc" id="astructdun__data__type_html_a6469d010a3cce9c9283547050332f3b1"><div class="ttname"><a href="structdun__data__type.html#a6469d010a3cce9c9283547050332f3b1">dun_data_type::empty_level</a></div><div class="ttdeci">bool empty_level</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:64</div></div>
+<div class="ttc" id="astructdun__data__type_html_a731b1e3fdd5fbf5da0570d3e41ce6914"><div class="ttname"><a href="structdun__data__type.html#a731b1e3fdd5fbf5da0570d3e41ce6914">dun_data_type::wall</a></div><div class="ttdeci">coord wall[WALL_MAX]</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:49</div></div>
+<div class="ttc" id="astructdun__data__type_html_a8332c71f236e72ca2e71c0c4fa2fac38"><div class="ttname"><a href="structdun__data__type.html#a8332c71f236e72ca2e71c0c4fa2fac38">dun_data_type::tunnel_fail_count</a></div><div class="ttdeci">int tunnel_fail_count</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:67</div></div>
+<div class="ttc" id="astructdun__data__type_html_a83400640cecf0752d67425a129752378"><div class="ttname"><a href="structdun__data__type.html#a83400640cecf0752d67425a129752378">dun_data_type::door</a></div><div class="ttdeci">coord door[DOOR_MAX]</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:45</div></div>
+<div class="ttc" id="astructdun__data__type_html_a8616e630b0199106e6abf18c9ff4eb01"><div class="ttname"><a href="structdun__data__type.html#a8616e630b0199106e6abf18c9ff4eb01">dun_data_type::wall_n</a></div><div class="ttdeci">int wall_n</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:48</div></div>
+<div class="ttc" id="astructdun__data__type_html_aabd428aa568585c0b9d95fad46266b34"><div class="ttname"><a href="structdun__data__type.html#aabd428aa568585c0b9d95fad46266b34">dun_data_type::cent_n</a></div><div class="ttdeci">int cent_n</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:40</div></div>
+<div class="ttc" id="astructdun__data__type_html_ab93faf8ae1a52bbd36ef39ae7d7165d6"><div class="ttname"><a href="structdun__data__type.html#ab93faf8ae1a52bbd36ef39ae7d7165d6">dun_data_type::row_rooms</a></div><div class="ttdeci">int row_rooms</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:56</div></div>
+<div class="ttc" id="astructdun__data__type_html_abe4719168ebfdf01348f811a8df6e0d3"><div class="ttname"><a href="structdun__data__type.html#abe4719168ebfdf01348f811a8df6e0d3">dun_data_type::tunnel_y</a></div><div class="ttdeci">POSITION tunnel_y</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:69</div></div>
+<div class="ttc" id="astructdun__data__type_html_ad32ea673dd46911cefc8fe6454ea7d90"><div class="ttname"><a href="structdun__data__type.html#ad32ea673dd46911cefc8fe6454ea7d90">dun_data_type::cent</a></div><div class="ttdeci">coord cent[CENT_MAX]</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:41</div></div>
+<div class="ttc" id="astructdun__data__type_html_adecb80fd3f425d2f737c4daa611dd801"><div class="ttname"><a href="structdun__data__type.html#adecb80fd3f425d2f737c4daa611dd801">dun_data_type::room_map</a></div><div class="ttdeci">bool room_map[MAX_ROOMS_ROW][MAX_ROOMS_COL]</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:60</div></div>
+<div class="ttc" id="astructdun__data__type_html_ae1d1e29fdf063b7f454e4601dc466bcb"><div class="ttname"><a href="structdun__data__type.html#ae1d1e29fdf063b7f454e4601dc466bcb">dun_data_type::cavern</a></div><div class="ttdeci">bool cavern</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:65</div></div>
+<div class="ttc" id="astructdun__data__type_html_ae5f1f5df7ef2d4dde3618ed3214d4e18"><div class="ttname"><a href="structdun__data__type.html#ae5f1f5df7ef2d4dde3618ed3214d4e18">dun_data_type::laketype</a></div><div class="ttdeci">int laketype</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:66</div></div>
+<div class="ttc" id="astructdun__data__type_html_af5ba6ba56b2d90e135b64dd8783efa7e"><div class="ttname"><a href="structdun__data__type.html#af5ba6ba56b2d90e135b64dd8783efa7e">dun_data_type::destroyed</a></div><div class="ttdeci">bool destroyed</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:63</div></div>
+<div class="ttc" id="astructdun__data__type_html_afbe8a2da871d12b783f480ed26c52671"><div class="ttname"><a href="structdun__data__type.html#afbe8a2da871d12b783f480ed26c52671">dun_data_type::tunn_n</a></div><div class="ttdeci">int tunn_n</div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:52</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

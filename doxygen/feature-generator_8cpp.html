@@ -1,0 +1,500 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/grid/feature-generator.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_35c063c51595aed048740f74a780093f.html">grid</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">feature-generator.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="feature-generator_8h_source.html">grid/feature-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon-flag-types_8h_source.html">dungeon/dungeon-flag-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon_8h_source.html">dungeon/dungeon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quest_8h_source.html">dungeon/quest.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cave_8h_source.html">floor/cave.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon-tunnel-util_8h_source.html">floor/dungeon-tunnel-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cheat-types_8h_source.html">game-option/cheat-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="game-play-options_8h_source.html">game-option/game-play-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="door_8h_source.html">grid/door.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lake-types_8h_source.html">room/lake-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="rooms-builder_8h_source.html">room/rooms-builder.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon-data-definition_8h_source.html">system/dungeon-data-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="wizard-messages_8h_source.html">wizard/wizard-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+feature-generator.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="feature-generator_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2grid_2feature-generator_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2grid_2feature-generator_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2grid_2feature-generator_8cpp">
+<area shape="rect" title=" " alt="" coords="1252,5,1452,61"/>
+<area shape="rect" href="feature-generator_8h.html" title=" " alt="" coords="1160,206,1315,233"/>
+<area shape="rect" href="dungeon-flag-types_8h.html" title=" " alt="" coords="1979,109,2127,151"/>
+<area shape="rect" href="dungeon_8h.html" title=" " alt="" coords="1437,117,1571,143"/>
+<area shape="rect" href="quest_8h.html" title=" " alt="" coords="159,117,278,143"/>
+<area shape="rect" href="cave_8h.html" title=" " alt="" coords="1309,117,1395,143"/>
+<area shape="rect" href="dungeon-tunnel-util_8h.html" title=" " alt="" coords="2152,109,2291,151"/>
+<area shape="rect" href="cheat-types_8h.html" title=" " alt="" coords="2315,117,2491,143"/>
+<area shape="rect" href="game-play-options_8h.html" title=" " alt="" coords="704,199,861,240"/>
+<area shape="rect" href="door_8h.html" title=" " alt="" coords="885,206,968,233"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="386,117,465,143"/>
+<area shape="rect" href="lake-types_8h.html" title=" " alt="" coords="2515,117,2642,143"/>
+<area shape="rect" href="rooms-builder_8h.html" title=" " alt="" coords="992,206,1136,233"/>
+<area shape="rect" href="dungeon-data-definition_8h.html" title=" " alt="" coords="1596,109,1743,151"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1767,117,1955,143"/>
+<area shape="rect" href="wizard-messages_8h.html" title=" " alt="" coords="505,206,679,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="999,295,1129,322"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="981,385,1072,411"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1096,385,1187,411"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1211,385,1309,411"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1515,385,1613,411"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="1638,385,1738,411"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1762,385,1937,411"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="816,385,957,411"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="645,385,792,411"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="345,467,463,493"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="663,467,774,493"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="1731,206,1829,233"/>
+<area shape="rect" title=" " alt="" coords="1578,295,1633,322"/>
+<area shape="rect" title=" " alt="" coords="1839,295,1895,322"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="1440,199,1605,240"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="1657,295,1815,322"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="346,288,491,329"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="5,199,139,240"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="264,377,408,419"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1334,377,1490,419"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="432,377,571,419"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="9,295,135,322"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="264,206,379,233"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1955,206,2133,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="2209,206,2359,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a82337fbaeb0ce77f5e5eb76769336f43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="feature-generator_8cpp.html#a82337fbaeb0ce77f5e5eb76769336f43">gen_caverns_and_lakes</a> (<a class="el" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="el" href="structdungeon__type.html">dungeon_type</a> *dungeon_ptr, <a class="el" href="structdun__data__type.html">dun_data_type</a> *dd_ptr)</td></tr>
+<tr class="memdesc:a82337fbaeb0ce77f5e5eb76769336f43"><td class="mdescLeft">&#160;</td><td class="mdescRight">フロアに洞窟や湖を配置する / Generate various caverns and lakes  <a href="feature-generator_8cpp.html#a82337fbaeb0ce77f5e5eb76769336f43">[詳解]</a><br /></td></tr>
+<tr class="separator:a82337fbaeb0ce77f5e5eb76769336f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f184172a04a115993b974a466401eeb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="feature-generator_8cpp.html#a4f184172a04a115993b974a466401eeb">has_river_flag</a> (<a class="el" href="structdungeon__type.html">dungeon_type</a> *dungeon_ptr)</td></tr>
+<tr class="separator:a4f184172a04a115993b974a466401eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bf85011ec9685dcb0dddc4dcf3870d7"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="feature-generator_8cpp.html#a3bf85011ec9685dcb0dddc4dcf3870d7">next_to_corr</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1)</td></tr>
+<tr class="memdesc:a3bf85011ec9685dcb0dddc4dcf3870d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">隣接4マスに存在する通路の数を返す / Count the number of "corridor" grids adjacent to the given grid.  <a href="feature-generator_8cpp.html#a3bf85011ec9685dcb0dddc4dcf3870d7">[詳解]</a><br /></td></tr>
+<tr class="separator:a3bf85011ec9685dcb0dddc4dcf3870d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae27489589a44b5c5c0cdaeda30924fb3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="feature-generator_8cpp.html#ae27489589a44b5c5c0cdaeda30924fb3">possible_doorway</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="memdesc:ae27489589a44b5c5c0cdaeda30924fb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">ドアを設置可能な地形かを返す / Determine if the given location is "between" two walls, and "next to" two corridor spaces.  <a href="feature-generator_8cpp.html#ae27489589a44b5c5c0cdaeda30924fb3">[詳解]</a><br /></td></tr>
+<tr class="separator:ae27489589a44b5c5c0cdaeda30924fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb36deb31de9b8db0c40de41e482e830"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="feature-generator_8cpp.html#abb36deb31de9b8db0c40de41e482e830">try_door</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structdt__type.html">dt_type</a> *dt_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="memdesc:abb36deb31de9b8db0c40de41e482e830"><td class="mdescLeft">&#160;</td><td class="mdescRight">ドアの設置を試みる / Places door at y, x position if at least 2 walls found  <a href="feature-generator_8cpp.html#abb36deb31de9b8db0c40de41e482e830">[詳解]</a><br /></td></tr>
+<tr class="separator:abb36deb31de9b8db0c40de41e482e830"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a82337fbaeb0ce77f5e5eb76769336f43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82337fbaeb0ce77f5e5eb76769336f43">&#9670;&nbsp;</a></span>gen_caverns_and_lakes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gen_caverns_and_lakes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>owner_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdungeon__type.html">dungeon_type</a> *&#160;</td>
+          <td class="paramname"><em>dungeon_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdun__data__type.html">dun_data_type</a> *&#160;</td>
+          <td class="paramname"><em>dd_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>フロアに洞窟や湖を配置する / Generate various caverns and lakes </p>
+<p>There were moved from <a class="el" href="cave-generator_8cpp.html#a9b7cb506f74a6ee856853b073a165ea3" title="ダンジョン生成のメインルーチン / Generate a new dungeon level">cave_gen()</a>. </p><dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="feature-generator_8cpp_a82337fbaeb0ce77f5e5eb76769336f43_cgraph.png" border="0" usemap="#afeature-generator_8cpp_a82337fbaeb0ce77f5e5eb76769336f43_cgraph" alt=""/></div>
+<map name="afeature-generator_8cpp_a82337fbaeb0ce77f5e5eb76769336f43_cgraph" id="afeature-generator_8cpp_a82337fbaeb0ce77f5e5eb76769336f43_cgraph">
+<area shape="rect" title="フロアに洞窟や湖を配置する / Generate various caverns and lakes" alt="" coords="5,208,165,235"/>
+<area shape="rect" href="rooms-builder_8cpp.html#a88b8d4c16205c2b2ab8e9c4048af1fa9" title=" " alt="" coords="228,132,321,159"/>
+<area shape="rect" href="rooms-builder_8cpp.html#a2c7b33a681174a3cb0e7f5871a4ec23b" title=" " alt="" coords="235,183,315,209"/>
+<area shape="rect" href="wizard-messages_8cpp.html#a834c486f88fc21479dfb3532191cc06d" title=" " alt="" coords="213,233,336,260"/>
+<area shape="rect" href="quest_8cpp.html#a5b6b24bb1f79322d67d0cc51368d3ad3" title="新しく入ったダンジョンの階層に固定されている一般のクエストを探し出しIDを返す。 / Hack – Check if a level is a &quot;quest&quot; level" alt="" coords="223,284,327,311"/>
+<area shape="rect" href="cave-filler_8cpp.html#ae31e3b63bbc7d71f64fc614249417949" title=" " alt="" coords="384,56,503,83"/>
+<area shape="rect" href="cave-filler_8cpp.html#a3626f85af8d6702b7cb0179816fb1751" title=" " alt="" coords="388,157,499,184"/>
+<area shape="rect" href="cave-filler_8cpp.html#a9586441b5d9677511b5a32a44c0840d2" title=" " alt="" coords="585,56,651,83"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="576,5,660,32"/>
+<area shape="rect" href="cave-filler_8cpp.html#ab336f7ae82961f786f297eb626bb15d9" title="Store routine for the fractal floor generator this routine probably should be an inline function or a..." alt="" coords="571,157,665,184"/>
+<area shape="rect" href="cave-filler_8cpp.html#a268dc154292036c8e0732c3b006525df" title=" " alt="" coords="392,107,495,133"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="398,208,489,235"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="551,107,685,133"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="579,259,657,285"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="585,208,651,235"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="feature-generator_8cpp_a82337fbaeb0ce77f5e5eb76769336f43_icgraph.png" border="0" usemap="#afeature-generator_8cpp_a82337fbaeb0ce77f5e5eb76769336f43_icgraph" alt=""/></div>
+<map name="afeature-generator_8cpp_a82337fbaeb0ce77f5e5eb76769336f43_icgraph" id="afeature-generator_8cpp_a82337fbaeb0ce77f5e5eb76769336f43_icgraph">
+<area shape="rect" title="フロアに洞窟や湖を配置する / Generate various caverns and lakes" alt="" coords="403,5,563,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a9b7cb506f74a6ee856853b073a165ea3" title="ダンジョン生成のメインルーチン / Generate a new dungeon level" alt="" coords="279,5,355,32"/>
+<area shape="rect" href="floor-generator_8cpp.html#a4a6a31853be6f0277b257f8ff6ebf7b9" title="ダンジョン時のランダムフロア生成 / Make a real level" alt="" coords="156,5,231,32"/>
+<area shape="rect" href="floor-generator_8cpp.html#ac118aa928b4521013e62c16a0bc6b28f" title="ダンジョンのランダムフロアを生成する / Generates a random dungeon level &#45;RAK&#45; @parama player_ptr プレーヤーへの参照ポインタ" alt="" coords="5,5,108,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4f184172a04a115993b974a466401eeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f184172a04a115993b974a466401eeb">&#9670;&nbsp;</a></span>has_river_flag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> has_river_flag </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structdungeon__type.html">dungeon_type</a> *&#160;</td>
+          <td class="paramname"><em>dungeon_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="feature-generator_8cpp_a4f184172a04a115993b974a466401eeb_icgraph.png" border="0" usemap="#afeature-generator_8cpp_a4f184172a04a115993b974a466401eeb_icgraph" alt=""/></div>
+<map name="afeature-generator_8cpp_a4f184172a04a115993b974a466401eeb_icgraph" id="afeature-generator_8cpp_a4f184172a04a115993b974a466401eeb_icgraph">
+<area shape="rect" title=" " alt="" coords="544,5,644,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a7c3c6b71c90167d5fb5067742c42515f" title=" " alt="" coords="353,5,496,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a81376b86643f157e8763b5cda3e608e8" title=" " alt="" coords="192,5,305,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a0df4eaf807b15231f8070a6d7ea9e7b6" title=" " alt="" coords="5,5,144,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3bf85011ec9685dcb0dddc4dcf3870d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bf85011ec9685dcb0dddc4dcf3870d7">&#9670;&nbsp;</a></span>next_to_corr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int next_to_corr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>隣接4マスに存在する通路の数を返す / Count the number of "corridor" grids adjacent to the given grid. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">y1</td><td>基準となるマスのY座標 </td></tr>
+    <tr><td class="paramname">x1</td><td>基準となるマスのX座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>通路の数 </dd></dl>
+<dl class="section note"><dt>覚え書き</dt><dd>Assumes "in_bounds(y1, x1)"</dd></dl>
+<p>XXX XXX This routine currently only counts actual "empty floor"<br  />
+grids which are not in rooms. We might want to also count stairs,<br  />
+open doors, closed doors, etc. </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="feature-generator_8cpp_a3bf85011ec9685dcb0dddc4dcf3870d7_cgraph.png" border="0" usemap="#afeature-generator_8cpp_a3bf85011ec9685dcb0dddc4dcf3870d7_cgraph" alt=""/></div>
+<map name="afeature-generator_8cpp_a3bf85011ec9685dcb0dddc4dcf3870d7_cgraph" id="afeature-generator_8cpp_a3bf85011ec9685dcb0dddc4dcf3870d7_cgraph">
+<area shape="rect" title="隣接4マスに存在する通路の数を返す / Count the number of &quot;corridor&quot; grids adjacent to the given grid." alt="" coords="5,5,100,32"/>
+<area shape="rect" href="cave_8cpp.html#a72e9e49e417af9b290323225114db833" title=" " alt="" coords="148,5,279,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="feature-generator_8cpp_a3bf85011ec9685dcb0dddc4dcf3870d7_icgraph.png" border="0" usemap="#afeature-generator_8cpp_a3bf85011ec9685dcb0dddc4dcf3870d7_icgraph" alt=""/></div>
+<map name="afeature-generator_8cpp_a3bf85011ec9685dcb0dddc4dcf3870d7_icgraph" id="afeature-generator_8cpp_a3bf85011ec9685dcb0dddc4dcf3870d7_icgraph">
+<area shape="rect" title="隣接4マスに存在する通路の数を返す / Count the number of &quot;corridor&quot; grids adjacent to the given grid." alt="" coords="437,5,532,32"/>
+<area shape="rect" href="feature-generator_8cpp.html#ae27489589a44b5c5c0cdaeda30924fb3" title="ドアを設置可能な地形かを返す / Determine if the given location is &quot;between&quot; two walls, and &quot;next to&quot; two corridor s..." alt="" coords="264,5,389,32"/>
+<area shape="rect" href="feature-generator_8cpp.html#abb36deb31de9b8db0c40de41e482e830" title="ドアの設置を試みる / Places door at y, x position if at least 2 walls found" alt="" coords="147,5,216,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a0f1dc2b3de1b6c8df47498292eb6336a" title=" " alt="" coords="5,5,99,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae27489589a44b5c5c0cdaeda30924fb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae27489589a44b5c5c0cdaeda30924fb3">&#9670;&nbsp;</a></span>possible_doorway()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> possible_doorway </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ドアを設置可能な地形かを返す / Determine if the given location is "between" two walls, and "next to" two corridor spaces. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">y</td><td>判定を行いたいマスのY座標 </td></tr>
+    <tr><td class="paramname">x</td><td>判定を行いたいマスのX座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ドアを設置可能ならばTRUEを返す</dd></dl>
+<p>まず垂直方向に、次に水平方向に調べる </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="feature-generator_8cpp_ae27489589a44b5c5c0cdaeda30924fb3_cgraph.png" border="0" usemap="#afeature-generator_8cpp_ae27489589a44b5c5c0cdaeda30924fb3_cgraph" alt=""/></div>
+<map name="afeature-generator_8cpp_ae27489589a44b5c5c0cdaeda30924fb3_cgraph" id="afeature-generator_8cpp_ae27489589a44b5c5c0cdaeda30924fb3_cgraph">
+<area shape="rect" title="ドアを設置可能な地形かを返す / Determine if the given location is &quot;between&quot; two walls, and &quot;next to&quot; two corridor s..." alt="" coords="5,31,131,57"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="179,5,313,32"/>
+<area shape="rect" href="feature-generator_8cpp.html#a3bf85011ec9685dcb0dddc4dcf3870d7" title="隣接4マスに存在する通路の数を返す / Count the number of &quot;corridor&quot; grids adjacent to the given grid." alt="" coords="199,56,293,83"/>
+<area shape="rect" href="cave_8cpp.html#a72e9e49e417af9b290323225114db833" title=" " alt="" coords="361,56,492,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="feature-generator_8cpp_ae27489589a44b5c5c0cdaeda30924fb3_icgraph.png" border="0" usemap="#afeature-generator_8cpp_ae27489589a44b5c5c0cdaeda30924fb3_icgraph" alt=""/></div>
+<map name="afeature-generator_8cpp_ae27489589a44b5c5c0cdaeda30924fb3_icgraph" id="afeature-generator_8cpp_ae27489589a44b5c5c0cdaeda30924fb3_icgraph">
+<area shape="rect" title="ドアを設置可能な地形かを返す / Determine if the given location is &quot;between&quot; two walls, and &quot;next to&quot; two corridor s..." alt="" coords="425,5,551,32"/>
+<area shape="rect" href="feature-generator_8cpp.html#abb36deb31de9b8db0c40de41e482e830" title="ドアの設置を試みる / Places door at y, x position if at least 2 walls found" alt="" coords="308,5,377,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a0f1dc2b3de1b6c8df47498292eb6336a" title=" " alt="" coords="167,5,260,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a81376b86643f157e8763b5cda3e608e8" title=" " alt="" coords="5,5,119,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abb36deb31de9b8db0c40de41e482e830"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb36deb31de9b8db0c40de41e482e830">&#9670;&nbsp;</a></span>try_door()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void try_door </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdt__type.html">dt_type</a> *&#160;</td>
+          <td class="paramname"><em>dt_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ドアの設置を試みる / Places door at y, x position if at least 2 walls found </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">y</td><td>設置を行いたいマスのY座標 </td></tr>
+    <tr><td class="paramname">x</td><td>設置を行いたいマスのX座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="feature-generator_8cpp_abb36deb31de9b8db0c40de41e482e830_cgraph.png" border="0" usemap="#afeature-generator_8cpp_abb36deb31de9b8db0c40de41e482e830_cgraph" alt=""/></div>
+<map name="afeature-generator_8cpp_abb36deb31de9b8db0c40de41e482e830_cgraph" id="afeature-generator_8cpp_abb36deb31de9b8db0c40de41e482e830_cgraph">
+<area shape="rect" title="ドアの設置を試みる / Places door at y, x position if at least 2 walls found" alt="" coords="5,275,75,301"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="711,351,845,377"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="533,5,614,32"/>
+<area shape="rect" href="door_8cpp.html#a871ffc3458d3a544d8e5b0d0ca7ac24e" title="所定の位置にさまざまな状態や種類のドアを配置する / Place a random type of door at the given location" alt="" coords="123,180,257,207"/>
+<area shape="rect" href="feature-generator_8cpp.html#ae27489589a44b5c5c0cdaeda30924fb3" title="ドアを設置可能な地形かを返す / Determine if the given location is &quot;between&quot; two walls, and &quot;next to&quot; two corridor s..." alt="" coords="127,351,253,377"/>
+<area shape="rect" href="grid_8h.html#a73f3bf1cce90b5f4579ab9e8eaf3c990" title="指定位置に存在するモンスターを削除する / Delete the monster, if any, at a given location" alt="" coords="315,53,426,80"/>
+<area shape="rect" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e" title=" " alt="" coords="309,104,433,131"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="531,148,615,175"/>
+<area shape="rect" href="door_8cpp.html#a9561339298078ea29f71a37976c06600" title="所定の位置に各種の閉じたドアを配置する / Place a random type of normal door at the given location." alt="" coords="305,256,436,283"/>
+<area shape="rect" href="grid_8cpp.html#a5c5e9d2e2502b05246d84d0707dec50e" title=" " alt="" coords="320,205,421,232"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="893,92,1028,119"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="737,123,819,149"/>
+<area shape="rect" href="feature_8cpp.html#acad9118499482c605f583af0ef408f10" title=" " alt="" coords="523,300,624,327"/>
+<area shape="rect" href="feature_8cpp.html#a7111802bafb1515aa38332ee254ee251" title=" " alt="" coords="484,199,663,225"/>
+<area shape="rect" href="feature_8cpp.html#a76ba1dc49654a6a66f2fd80a7461a194" title=" " alt="" coords="488,249,659,276"/>
+<area shape="rect" href="feature-generator_8cpp.html#a3bf85011ec9685dcb0dddc4dcf3870d7" title="隣接4マスに存在する通路の数を返す / Count the number of &quot;corridor&quot; grids adjacent to the given grid." alt="" coords="323,401,418,428"/>
+<area shape="rect" href="cave_8cpp.html#a72e9e49e417af9b290323225114db833" title=" " alt="" coords="508,401,639,428"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="feature-generator_8cpp_abb36deb31de9b8db0c40de41e482e830_icgraph.png" border="0" usemap="#afeature-generator_8cpp_abb36deb31de9b8db0c40de41e482e830_icgraph" alt=""/></div>
+<map name="afeature-generator_8cpp_abb36deb31de9b8db0c40de41e482e830_icgraph" id="afeature-generator_8cpp_abb36deb31de9b8db0c40de41e482e830_icgraph">
+<area shape="rect" title="ドアの設置を試みる / Places door at y, x position if at least 2 walls found" alt="" coords="495,5,564,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a0f1dc2b3de1b6c8df47498292eb6336a" title=" " alt="" coords="353,5,447,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a81376b86643f157e8763b5cda3e608e8" title=" " alt="" coords="192,5,305,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a0df4eaf807b15231f8070a6d7ea9e7b6" title=" " alt="" coords="5,5,144,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分17秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

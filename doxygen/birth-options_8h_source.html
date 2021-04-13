@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/game-option/birth-options.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_75d1aa6e715a0a2a957f68c14f483856.html">game-option</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">birth-options.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="birth-options_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#a0975e779a9e404146068c2ef65a2e9f1">easy_band</a>; <span class="comment">/* Easy Mode (*) */</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#ab1d27124a56f4623875b759135d1fb61">smart_learn</a>; <span class="comment">/* Monsters learn from their mistakes (*) */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#af526d28523d259689ee113a969f92616">smart_cheat</a>; <span class="comment">/* Monsters exploit players weaknesses (*) */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#abf164b1f22829c9e60e186ca24208fa5">vanilla_town</a>; <span class="comment">/* Use &#39;vanilla&#39; town without quests and wilderness */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#ab7be0dbd652a1cc0ca614291306e545d">lite_town</a>; <span class="comment">/* Use &#39;lite&#39; town without a wilderness */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#aeec15c5e145b9040011a75f8b4ebe9f9">ironman_shops</a>; <span class="comment">/* Stores are permanently closed (*) */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#a3277e6b8f0c95eb69294bb7f22eaeb7b">ironman_small_levels</a>; <span class="comment">/* Always create unusually small dungeon levels (*) */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#a80ebe51ea491b52cf467ff7158ba2fad">ironman_downward</a>; <span class="comment">/* Disable recall and use of up stairs (*) */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#a0ffee79827eb56071e14b405666521b8">ironman_empty_levels</a>; <span class="comment">/* Always create empty &#39;on_defeat_arena_monster&#39; levels (*) */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#ac561e951efc7d356dd5d120f893f0440">ironman_rooms</a>; <span class="comment">/* Always generate very unusual rooms (*) */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#a7a54510cad9da648822f315d66dc7ddd">ironman_nightmare</a>; <span class="comment">/* Nightmare mode(it isn&#39;t even remotely fair!)(*) */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#adf05640da85ff14188048ff920260a0d">left_hander</a>; <span class="comment">/* Left-Hander */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#a444dd0213d9a205cbfeda6f3d334fe22">preserve_mode</a>; <span class="comment">/* Preserve artifacts (*) */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#a493732ccab2c1108f610d26217dc10c7">autoroller</a>; <span class="comment">/* Allow use of autoroller for stats (*) */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#a93f48247caed0d2228aa966b63efccec">autochara</a>; <span class="comment">/* Autoroll for weight, height and social status */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#a031dd4c5fe72416475202e72f297a845">powerup_home</a>; <span class="comment">/* Increase capacity of your home (*) */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="birth-options_8h.html#a6c2600e1ddf4b13d93a3b40463943463">keep_savefile</a>; </div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="abirth-options_8h_html_a031dd4c5fe72416475202e72f297a845"><div class="ttname"><a href="birth-options_8h.html#a031dd4c5fe72416475202e72f297a845">powerup_home</a></div><div class="ttdeci">bool powerup_home</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:18</div></div>
+<div class="ttc" id="abirth-options_8h_html_a0975e779a9e404146068c2ef65a2e9f1"><div class="ttname"><a href="birth-options_8h.html#a0975e779a9e404146068c2ef65a2e9f1">easy_band</a></div><div class="ttdeci">bool easy_band</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:3</div></div>
+<div class="ttc" id="abirth-options_8h_html_a0ffee79827eb56071e14b405666521b8"><div class="ttname"><a href="birth-options_8h.html#a0ffee79827eb56071e14b405666521b8">ironman_empty_levels</a></div><div class="ttdeci">bool ironman_empty_levels</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:11</div></div>
+<div class="ttc" id="abirth-options_8h_html_a3277e6b8f0c95eb69294bb7f22eaeb7b"><div class="ttname"><a href="birth-options_8h.html#a3277e6b8f0c95eb69294bb7f22eaeb7b">ironman_small_levels</a></div><div class="ttdeci">bool ironman_small_levels</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:9</div></div>
+<div class="ttc" id="abirth-options_8h_html_a444dd0213d9a205cbfeda6f3d334fe22"><div class="ttname"><a href="birth-options_8h.html#a444dd0213d9a205cbfeda6f3d334fe22">preserve_mode</a></div><div class="ttdeci">bool preserve_mode</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:15</div></div>
+<div class="ttc" id="abirth-options_8h_html_a493732ccab2c1108f610d26217dc10c7"><div class="ttname"><a href="birth-options_8h.html#a493732ccab2c1108f610d26217dc10c7">autoroller</a></div><div class="ttdeci">bool autoroller</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:16</div></div>
+<div class="ttc" id="abirth-options_8h_html_a6c2600e1ddf4b13d93a3b40463943463"><div class="ttname"><a href="birth-options_8h.html#a6c2600e1ddf4b13d93a3b40463943463">keep_savefile</a></div><div class="ttdeci">bool keep_savefile</div><div class="ttdoc">同一のセーブファイルでゲームを開始する / Start game with same savefile thet is loaded</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:19</div></div>
+<div class="ttc" id="abirth-options_8h_html_a7a54510cad9da648822f315d66dc7ddd"><div class="ttname"><a href="birth-options_8h.html#a7a54510cad9da648822f315d66dc7ddd">ironman_nightmare</a></div><div class="ttdeci">bool ironman_nightmare</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:13</div></div>
+<div class="ttc" id="abirth-options_8h_html_a80ebe51ea491b52cf467ff7158ba2fad"><div class="ttname"><a href="birth-options_8h.html#a80ebe51ea491b52cf467ff7158ba2fad">ironman_downward</a></div><div class="ttdeci">bool ironman_downward</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:10</div></div>
+<div class="ttc" id="abirth-options_8h_html_a93f48247caed0d2228aa966b63efccec"><div class="ttname"><a href="birth-options_8h.html#a93f48247caed0d2228aa966b63efccec">autochara</a></div><div class="ttdeci">bool autochara</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:17</div></div>
+<div class="ttc" id="abirth-options_8h_html_ab1d27124a56f4623875b759135d1fb61"><div class="ttname"><a href="birth-options_8h.html#ab1d27124a56f4623875b759135d1fb61">smart_learn</a></div><div class="ttdeci">bool smart_learn</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:4</div></div>
+<div class="ttc" id="abirth-options_8h_html_ab7be0dbd652a1cc0ca614291306e545d"><div class="ttname"><a href="birth-options_8h.html#ab7be0dbd652a1cc0ca614291306e545d">lite_town</a></div><div class="ttdeci">bool lite_town</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:7</div></div>
+<div class="ttc" id="abirth-options_8h_html_abf164b1f22829c9e60e186ca24208fa5"><div class="ttname"><a href="birth-options_8h.html#abf164b1f22829c9e60e186ca24208fa5">vanilla_town</a></div><div class="ttdeci">bool vanilla_town</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:6</div></div>
+<div class="ttc" id="abirth-options_8h_html_ac561e951efc7d356dd5d120f893f0440"><div class="ttname"><a href="birth-options_8h.html#ac561e951efc7d356dd5d120f893f0440">ironman_rooms</a></div><div class="ttdeci">bool ironman_rooms</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:12</div></div>
+<div class="ttc" id="abirth-options_8h_html_adf05640da85ff14188048ff920260a0d"><div class="ttname"><a href="birth-options_8h.html#adf05640da85ff14188048ff920260a0d">left_hander</a></div><div class="ttdeci">bool left_hander</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:14</div></div>
+<div class="ttc" id="abirth-options_8h_html_aeec15c5e145b9040011a75f8b4ebe9f9"><div class="ttname"><a href="birth-options_8h.html#aeec15c5e145b9040011a75f8b4ebe9f9">ironman_shops</a></div><div class="ttdeci">bool ironman_shops</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:8</div></div>
+<div class="ttc" id="abirth-options_8h_html_af526d28523d259689ee113a969f92616"><div class="ttname"><a href="birth-options_8h.html#af526d28523d259689ee113a969f92616">smart_cheat</a></div><div class="ttdeci">bool smart_cheat</div><div class="ttdef"><b>Definition:</b> birth-options.cpp:5</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

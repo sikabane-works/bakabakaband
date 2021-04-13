@@ -1,0 +1,1562 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/load/player-info-loader.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2ce012611788abb6196ef11b41953a16.html">load</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">player-info-loader.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="player-info-loader_8h_source.html">load/player-info-loader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-building_8h_source.html">cmd-building/cmd-building.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-version-comparer_8h_source.html">load/angband-version-comparer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-loader_8h_source.html">load/birth-loader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dummy-loader_8h_source.html">load/dummy-loader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="load-util_8h_source.html">load/load-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="load-v1-3-0_8h_source.html">load/load-v1-3-0.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="load-v1-7-0_8h_source.html">load/load-v1-7-0.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="load-zangband_8h_source.html">load/load-zangband.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-attack-loader_8h_source.html">load/player-attack-loader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world-loader_8h_source.html">load/world-loader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="arena_8h_source.html">market/arena.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mutation-calculator_8h_source.html">mutation/mutation-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-ability-flags_8h_source.html">monster-race/race-ability-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="attack-defense-types_8h_source.html">player/attack-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-skill_8h_source.html">player/player-skill.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+player-info-loader.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2load_2player-info-loader_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2load_2player-info-loader_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2load_2player-info-loader_8cpp">
+<area shape="rect" title=" " alt="" coords="781,5,980,61"/>
+<area shape="rect" href="player-info-loader_8h.html" title=" " alt="" coords="1220,281,1379,307"/>
+<area shape="rect" href="cmd-building_8h.html" title=" " alt="" coords="5,281,188,307"/>
+<area shape="rect" href="angband-version-comparer_8h.html" title=" " alt="" coords="376,109,519,151"/>
+<area shape="rect" href="birth-loader_8h.html" title=" " alt="" coords="226,117,351,143"/>
+<area shape="rect" href="dummy-loader_8h.html" title=" " alt="" coords="595,117,737,143"/>
+<area shape="rect" href="load-util_8h.html" title=" " alt="" coords="550,199,657,225"/>
+<area shape="rect" href="load-v1-3-0_8h.html" title=" " alt="" coords="1073,281,1195,307"/>
+<area shape="rect" href="load-v1-7-0_8h.html" title=" " alt="" coords="681,199,803,225"/>
+<area shape="rect" href="load-zangband_8h.html" title=" " alt="" coords="864,117,1009,143"/>
+<area shape="rect" href="player-attack-loader_8h.html" title=" " alt="" coords="1403,273,1529,315"/>
+<area shape="rect" href="world-loader_8h.html" title=" " alt="" coords="1671,199,1802,225"/>
+<area shape="rect" href="arena_8h.html" title=" " alt="" coords="213,281,322,307"/>
+<area shape="rect" href="mutation-calculator_8h.html" title=" " alt="" coords="175,199,373,225"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="1294,109,1459,151"/>
+<area shape="rect" href="attack-defense-types_8h.html" title=" " alt="" coords="1483,109,1630,151"/>
+<area shape="rect" href="player-skill_8h.html" title=" " alt="" coords="1033,117,1168,143"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1885,117,2073,143"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="448,281,545,307"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="687,370,816,397"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="226,452,317,479"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="341,452,431,479"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="455,452,554,479"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="578,452,677,479"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="701,452,801,479"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="825,452,1000,479"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1025,452,1166,479"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1190,452,1337,479"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="297,370,424,397"/>
+<area shape="rect" href="quest_8h.html" title=" " alt="" coords="879,199,997,225"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1553,273,1699,315"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="814,273,947,315"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1756,363,1912,404"/>
+<area shape="rect" title=" " alt="" coords="1153,199,1208,225"/>
+<area shape="rect" title=" " alt="" coords="1073,199,1129,225"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1826,199,2005,225"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="2080,199,2231,225"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:aa549ad967c1ec9dc290013e257f120ff"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#aa549ad967c1ec9dc290013e257f120ff">rd_realms</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:aa549ad967c1ec9dc290013e257f120ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">セーブデータから領域情報を読み込む / Read player realms  <a href="player-info-loader_8cpp.html#aa549ad967c1ec9dc290013e257f120ff">[詳解]</a><br /></td></tr>
+<tr class="separator:aa549ad967c1ec9dc290013e257f120ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a856bd8c0fc46a785d244928cb146a592"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#a856bd8c0fc46a785d244928cb146a592">rd_base_info</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a856bd8c0fc46a785d244928cb146a592"><td class="mdescLeft">&#160;</td><td class="mdescRight">セーブデータからプレイヤー基本情報を読み込む / Read player's basic info  <a href="player-info-loader_8cpp.html#a856bd8c0fc46a785d244928cb146a592">[詳解]</a><br /></td></tr>
+<tr class="separator:a856bd8c0fc46a785d244928cb146a592"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8550cf2ba8f9554631f826eccba5318"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#af8550cf2ba8f9554631f826eccba5318">rd_experience</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:af8550cf2ba8f9554631f826eccba5318"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5597fae2d2460d3c76684488f355824c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#a5597fae2d2460d3c76684488f355824c">set_spells</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a5597fae2d2460d3c76684488f355824c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a694e609032c48f84db72a574d8d07aa8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#a694e609032c48f84db72a574d8d07aa8">rd_skills</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a694e609032c48f84db72a574d8d07aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8768c018b743c997ae95ac602af536a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#af8768c018b743c997ae95ac602af536a">set_race</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:af8768c018b743c997ae95ac602af536a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d3d876e6e3de98f2f747baf7a935acd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#a7d3d876e6e3de98f2f747baf7a935acd">rd_race</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a7d3d876e6e3de98f2f747baf7a935acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34d0ca3e33cf6837d9432e08fd5c964b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#a34d0ca3e33cf6837d9432e08fd5c964b">rd_bounty_uniques</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a34d0ca3e33cf6837d9432e08fd5c964b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cdef2b1263d3beb5921a34e33e136a2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#a7cdef2b1263d3beb5921a34e33e136a2">rd_base_status</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a7cdef2b1263d3beb5921a34e33e136a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">腕力などの基本ステータス情報を読み込む  <a href="player-info-loader_8cpp.html#a7cdef2b1263d3beb5921a34e33e136a2">[詳解]</a><br /></td></tr>
+<tr class="separator:a7cdef2b1263d3beb5921a34e33e136a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa85cd58092339dceef1bcb4f6dbdb92a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#aa85cd58092339dceef1bcb4f6dbdb92a">set_imitation</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:aa85cd58092339dceef1bcb4f6dbdb92a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b1a31050eaad81d5e37ad8dfb6222d5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#a5b1a31050eaad81d5e37ad8dfb6222d5">rd_phase_out</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a5b1a31050eaad81d5e37ad8dfb6222d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b1a7b04b3f2d4fa2a76d00e3edb6fca"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#a6b1a7b04b3f2d4fa2a76d00e3edb6fca">rd_arena</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a6b1a7b04b3f2d4fa2a76d00e3edb6fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44a802b3b66cdaf3569bbf59da93af87"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#a44a802b3b66cdaf3569bbf59da93af87">rd_hp</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a44a802b3b66cdaf3569bbf59da93af87"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレーヤーの最大HP/現在HPを読み込む  <a href="player-info-loader_8cpp.html#a44a802b3b66cdaf3569bbf59da93af87">[詳解]</a><br /></td></tr>
+<tr class="separator:a44a802b3b66cdaf3569bbf59da93af87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeea2cfd1f6353fd6cd9f97ed5271d3e1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#aeea2cfd1f6353fd6cd9f97ed5271d3e1">rd_mana</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:aeea2cfd1f6353fd6cd9f97ed5271d3e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレーヤーの最大MP/現在MPを読み込む  <a href="player-info-loader_8cpp.html#aeea2cfd1f6353fd6cd9f97ed5271d3e1">[詳解]</a><br /></td></tr>
+<tr class="separator:aeea2cfd1f6353fd6cd9f97ed5271d3e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89c9683fdc9c6849d5c6c24549e408fb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#a89c9683fdc9c6849d5c6c24549e408fb">rd_bad_status</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a89c9683fdc9c6849d5c6c24549e408fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレーヤーのバッドステータス (と空腹)を読み込む  <a href="player-info-loader_8cpp.html#a89c9683fdc9c6849d5c6c24549e408fb">[詳解]</a><br /></td></tr>
+<tr class="separator:a89c9683fdc9c6849d5c6c24549e408fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed7ab2efb928004d3598b22a370bd24d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#aed7ab2efb928004d3598b22a370bd24d">rd_energy</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:aed7ab2efb928004d3598b22a370bd24d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b75e152380035e2886ed5edf4fba4d2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#a7b75e152380035e2886ed5edf4fba4d2">rd_status</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a7b75e152380035e2886ed5edf4fba4d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレーヤーのグッド/バッドステータスを読み込む  <a href="player-info-loader_8cpp.html#a7b75e152380035e2886ed5edf4fba4d2">[詳解]</a><br /></td></tr>
+<tr class="separator:a7b75e152380035e2886ed5edf4fba4d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4457e3bf517b815fa852a02444c945ea"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#a4457e3bf517b815fa852a02444c945ea">rd_tsuyoshi</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a4457e3bf517b815fa852a02444c945ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a822503a72910a1881584c8f7ff90e7f1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#a822503a72910a1881584c8f7ff90e7f1">set_timed_effects</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:a822503a72910a1881584c8f7ff90e7f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9418f7e92966092da8eafe16c4e1f62"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#ae9418f7e92966092da8eafe16c4e1f62">set_mutations</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:ae9418f7e92966092da8eafe16c4e1f62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb129f67e78ab3830bb2ba1e98b7bc8b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#acb129f67e78ab3830bb2ba1e98b7bc8b">set_virtues</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:acb129f67e78ab3830bb2ba1e98b7bc8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acae4ff705274b9e71e5a930078fc1cbb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#acae4ff705274b9e71e5a930078fc1cbb">rd_timed_effects</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:acae4ff705274b9e71e5a930078fc1cbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">各種時限効果を読み込む  <a href="player-info-loader_8cpp.html#acae4ff705274b9e71e5a930078fc1cbb">[詳解]</a><br /></td></tr>
+<tr class="separator:acae4ff705274b9e71e5a930078fc1cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae79e0153881031e36d2937fffa929c4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4">rd_player_status</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:aae79e0153881031e36d2937fffa929c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa6008383a2e3dba7290d6cf4e14922d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d">rd_player_info</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:aaa6008383a2e3dba7290d6cf4e14922d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a6b1a7b04b3f2d4fa2a76d00e3edb6fca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b1a7b04b3f2d4fa2a76d00e3edb6fca">&#9670;&nbsp;</a></span>rd_arena()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rd_arena </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a6b1a7b04b3f2d4fa2a76d00e3edb6fca_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a6b1a7b04b3f2d4fa2a76d00e3edb6fca_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a6b1a7b04b3f2d4fa2a76d00e3edb6fca_cgraph" id="aplayer-info-loader_8cpp_a6b1a7b04b3f2d4fa2a76d00e3edb6fca_cgraph">
+<area shape="rect" title=" " alt="" coords="5,209,77,236"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="393,96,489,123"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="163,365,269,392"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="807,64,872,91"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a5b1a31050eaad81d5e37ad8dfb6222d5" title=" " alt="" coords="166,96,266,123"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="632,184,700,211"/>
+<area shape="rect" href="world-loader_8cpp.html#a097ef8b5b96bf7ebf59e09a19bfdff0b" title=" " alt="" coords="136,209,296,236"/>
+<area shape="rect" href="arena_8cpp.html#a8f76d0f962bd2705b72a72823e77f9e1" title="モンスター闘技場に参加するモンスターを更新する。" alt="" coords="125,441,307,468"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="921,184,979,211"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="805,184,873,211"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="805,249,873,276"/>
+<area shape="rect" href="load-zangband_8cpp.html#aced99bce96baa59687fbfc8d51273193" title=" " alt="" coords="359,147,522,189"/>
+<area shape="rect" href="z-util_8cpp.html#a95c8541ef70dbcbf165f9272be00ea17" title="符号なし32ビット整数のビット数を返す。" alt="" coords="399,416,482,443"/>
+<area shape="rect" href="monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する" alt="" coords="389,467,493,493"/>
+<area shape="rect" href="monster-util_8cpp.html#ae37ebccef3dd7dacea088110d0388d49" title="モンスター生成テーブルの重み修正" alt="" coords="373,517,509,544"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="385,568,496,595"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a41922bde47068a06d0e270afb04189b3" title="モンスター闘技場に参加できるモンスターの判定" alt="" coords="355,365,527,392"/>
+<area shape="rect" href="class_probability_table.html#a9a26ed4b275f0764cadd5497b9dcb0fa" title="確率テーブルの項目が空かどうかを調べる" alt="" coords="587,517,745,544"/>
+<area shape="rect" href="class_probability_table.html#a8ca61661e88333610e5763cf9d69a720" title="確率テーブルに項目を登録する" alt="" coords="575,568,757,595"/>
+<area shape="rect" href="class_probability_table.html#a6dbbe1d240c9fbe044e2006fe561bb86" title="確率テーブルに登録されている項目の数を取得する" alt="" coords="593,619,739,661"/>
+<area shape="rect" href="class_probability_table.html#ae443cc721a82c7aaae779be2823ff778" title="確率テーブルから複数回抽選する" alt="" coords="587,685,745,712"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="621,365,711,392"/>
+<area shape="rect" href="z-util_8cpp.html#a8ded1d651c0ddb5daeaeb60980edf285" title="平方根を切り捨て整数で返す" alt="" coords="635,416,697,443"/>
+<area shape="rect" href="class_probability_table.html#a365bea78aa7c197450cf845e31e93927" title="現在の確率テーブルのすべての項目の選択確率の合計を取得する" alt="" coords="577,467,755,493"/>
+<area shape="rect" href="class_flag_group.html#af6327bd9a9e463469a9aa5daaad3346a" title="入力イテレータで指定した範囲のリストに含まれるフラグがすべてOFFかどうかを調べる" alt="" coords="585,315,747,341"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a6b1a7b04b3f2d4fa2a76d00e3edb6fca_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a6b1a7b04b3f2d4fa2a76d00e3edb6fca_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a6b1a7b04b3f2d4fa2a76d00e3edb6fca_icgraph" id="aplayer-info-loader_8cpp_a6b1a7b04b3f2d4fa2a76d00e3edb6fca_icgraph">
+<area shape="rect" title=" " alt="" coords="496,5,568,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="329,5,448,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,5,281,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a89c9683fdc9c6849d5c6c24549e408fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89c9683fdc9c6849d5c6c24549e408fb">&#9670;&nbsp;</a></span>rd_bad_status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rd_bad_status </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>プレーヤーのバッドステータス (と空腹)を読み込む </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a89c9683fdc9c6849d5c6c24549e408fb_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a89c9683fdc9c6849d5c6c24549e408fb_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a89c9683fdc9c6849d5c6c24549e408fb_cgraph" id="aplayer-info-loader_8cpp_a89c9683fdc9c6849d5c6c24549e408fb_cgraph">
+<area shape="rect" title="プレーヤーのバッドステータス (と空腹)を読み込む" alt="" coords="5,31,109,57"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="167,5,235,32"/>
+<area shape="rect" href="load-util_8cpp.html#a2982efb62fc7a9124a9a07a391ef56be" title="ロードファイルポインタを指定バイト分飛ばして進める / Hack – strip some bytes" alt="" coords="157,56,244,83"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="292,5,360,32"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="408,31,465,57"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="293,56,359,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a89c9683fdc9c6849d5c6c24549e408fb_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a89c9683fdc9c6849d5c6c24549e408fb_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a89c9683fdc9c6849d5c6c24549e408fb_icgraph" id="aplayer-info-loader_8cpp_a89c9683fdc9c6849d5c6c24549e408fb_icgraph">
+<area shape="rect" title="プレーヤーのバッドステータス (と空腹)を読み込む" alt="" coords="496,5,600,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="329,5,448,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,5,281,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a856bd8c0fc46a785d244928cb146a592"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a856bd8c0fc46a785d244928cb146a592">&#9670;&nbsp;</a></span>rd_base_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rd_base_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>セーブデータからプレイヤー基本情報を読み込む / Read player's basic info </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a856bd8c0fc46a785d244928cb146a592_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a856bd8c0fc46a785d244928cb146a592_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a856bd8c0fc46a785d244928cb146a592_cgraph" id="aplayer-info-loader_8cpp_a856bd8c0fc46a785d244928cb146a592_cgraph">
+<area shape="rect" title="セーブデータからプレイヤー基本情報を読み込む / Read player&#39;s basic info" alt="" coords="5,233,100,259"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="339,55,435,82"/>
+<area shape="rect" href="birth-loader_8cpp.html#a1ebb36573fce2540dc64316615dfbdd7" title="クイックスタート情報を読み込む / Load quick start data" alt="" coords="161,157,278,183"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="484,157,549,183"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="353,309,421,335"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="483,309,551,335"/>
+<area shape="rect" href="load-util_8cpp.html#a2b230df62990bec0c7ed479aad43a4b3" title="ロードファイルポインタから符号つき32bit値を読み込んでポインタに渡す" alt="" coords="353,258,421,285"/>
+<area shape="rect" href="load-util_8cpp.html#a18c64dc19daf4d1faa75891b501dde0a" title="ロードファイルポインタから文字列を読み込んでポインタに渡す / Hack – read a string" alt="" coords="351,106,423,133"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aa549ad967c1ec9dc290013e257f120ff" title="セーブデータから領域情報を読み込む / Read player realms" alt="" coords="180,207,259,234"/>
+<area shape="rect" href="load-zangband_8cpp.html#aa5ea28f22677374549c6d4df157f55c0" title=" " alt="" coords="148,410,291,437"/>
+<area shape="rect" href="z-virt_8cpp.html#a64d699412915544198fd477a26d44f84" title="str の複製を返す。戻り値は使用後に string_free() で解放すること。" alt="" coords="173,461,266,487"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="599,258,656,285"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="483,258,551,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a856bd8c0fc46a785d244928cb146a592_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a856bd8c0fc46a785d244928cb146a592_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a856bd8c0fc46a785d244928cb146a592_icgraph" id="aplayer-info-loader_8cpp_a856bd8c0fc46a785d244928cb146a592_icgraph">
+<area shape="rect" title="セーブデータからプレイヤー基本情報を読み込む / Read player&#39;s basic info" alt="" coords="499,5,593,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="325,5,451,32"/>
+<area shape="rect" href="load_8cpp.html#af89dd931d12eb33981704a2943877f34" title="セーブファイル読み込み処理の実体 / Actually read the savefile" alt="" coords="136,5,277,32"/>
+<area shape="rect" href="load_8cpp.html#a9f3adb4871bc426fc462d139f54cdd46" title="セーブファイル読み込み処理 (UIDチェック等含む) / Reading the savefile (including UID check)" alt="" coords="5,5,88,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7cdef2b1263d3beb5921a34e33e136a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cdef2b1263d3beb5921a34e33e136a2">&#9670;&nbsp;</a></span>rd_base_status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rd_base_status </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>腕力などの基本ステータス情報を読み込む </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a7cdef2b1263d3beb5921a34e33e136a2_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a7cdef2b1263d3beb5921a34e33e136a2_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a7cdef2b1263d3beb5921a34e33e136a2_cgraph" id="aplayer-info-loader_8cpp_a7cdef2b1263d3beb5921a34e33e136a2_cgraph">
+<area shape="rect" title="腕力などの基本ステータス情報を読み込む" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="164,5,232,32"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="280,5,348,32"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="396,5,453,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a7cdef2b1263d3beb5921a34e33e136a2_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a7cdef2b1263d3beb5921a34e33e136a2_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a7cdef2b1263d3beb5921a34e33e136a2_icgraph" id="aplayer-info-loader_8cpp_a7cdef2b1263d3beb5921a34e33e136a2_icgraph">
+<area shape="rect" title="腕力などの基本ステータス情報を読み込む" alt="" coords="496,5,607,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="329,5,448,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,5,281,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a34d0ca3e33cf6837d9432e08fd5c964b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34d0ca3e33cf6837d9432e08fd5c964b">&#9670;&nbsp;</a></span>rd_bounty_uniques()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rd_bounty_uniques </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a34d0ca3e33cf6837d9432e08fd5c964b_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a34d0ca3e33cf6837d9432e08fd5c964b_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a34d0ca3e33cf6837d9432e08fd5c964b_cgraph" id="aplayer-info-loader_8cpp_a34d0ca3e33cf6837d9432e08fd5c964b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,136,83"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="211,5,307,32"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="225,56,293,83"/>
+<area shape="rect" href="load-zangband_8cpp.html#af8ad08c0b31741b60455810f2e6840c2" title=" " alt="" coords="184,118,333,159"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="436,53,504,80"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="669,51,727,77"/>
+<area shape="rect" href="bounty_8cpp.html#a2f618d420b0b8cc1f3a970226abc33bd" title="賞金首となるユニークを確定する / Determine bounty uniques" alt="" coords="381,147,559,173"/>
+<area shape="rect" href="monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する" alt="" coords="646,101,750,128"/>
+<area shape="rect" href="monster-util_8cpp.html#a119044a0722d084a4fa94a064a6923d8" title="モンスター生成テーブルの重み修正(賞金首選定用)" alt="" coords="607,152,789,179"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#adff19d35f4122bbff5c1c34ad18e8e2c" title="モンスターが特殊能力上、賞金首から排除する必要があるかどうかを返す。 Is the monster &quot;alive&quot;? / Is this monster declined to be questor o..." alt="" coords="623,203,773,245"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a34d0ca3e33cf6837d9432e08fd5c964b_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a34d0ca3e33cf6837d9432e08fd5c964b_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a34d0ca3e33cf6837d9432e08fd5c964b_icgraph" id="aplayer-info-loader_8cpp_a34d0ca3e33cf6837d9432e08fd5c964b_icgraph">
+<area shape="rect" title=" " alt="" coords="496,5,627,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="329,5,448,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,5,281,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aed7ab2efb928004d3598b22a370bd24d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed7ab2efb928004d3598b22a370bd24d">&#9670;&nbsp;</a></span>rd_energy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rd_energy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_aed7ab2efb928004d3598b22a370bd24d_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_aed7ab2efb928004d3598b22a370bd24d_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_aed7ab2efb928004d3598b22a370bd24d_cgraph" id="aplayer-info-loader_8cpp_aed7ab2efb928004d3598b22a370bd24d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,84,57"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="132,5,228,32"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="146,56,214,83"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="276,56,344,83"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="392,56,449,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_aed7ab2efb928004d3598b22a370bd24d_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_aed7ab2efb928004d3598b22a370bd24d_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_aed7ab2efb928004d3598b22a370bd24d_icgraph" id="aplayer-info-loader_8cpp_aed7ab2efb928004d3598b22a370bd24d_icgraph">
+<area shape="rect" title=" " alt="" coords="496,5,575,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="329,5,448,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,5,281,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af8550cf2ba8f9554631f826eccba5318"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8550cf2ba8f9554631f826eccba5318">&#9670;&nbsp;</a></span>rd_experience()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rd_experience </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_af8550cf2ba8f9554631f826eccba5318_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_af8550cf2ba8f9554631f826eccba5318_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_af8550cf2ba8f9554631f826eccba5318_cgraph" id="aplayer-info-loader_8cpp_af8550cf2ba8f9554631f826eccba5318_cgraph">
+<area shape="rect" title=" " alt="" coords="5,107,108,133"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="168,5,264,32"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="182,56,250,83"/>
+<area shape="rect" href="load-util_8cpp.html#a2b230df62990bec0c7ed479aad43a4b3" title="ロードファイルポインタから符号つき32bit値を読み込んでポインタに渡す" alt="" coords="182,157,250,184"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="324,157,392,184"/>
+<area shape="rect" href="load-v1-7-0_8cpp.html#a932d97db57be6a6cecb1bd8c867a20a3" title=" " alt="" coords="156,107,276,133"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="324,107,392,133"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="440,132,497,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_af8550cf2ba8f9554631f826eccba5318_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_af8550cf2ba8f9554631f826eccba5318_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_af8550cf2ba8f9554631f826eccba5318_icgraph" id="aplayer-info-loader_8cpp_af8550cf2ba8f9554631f826eccba5318_icgraph">
+<area shape="rect" title=" " alt="" coords="496,5,599,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="329,5,448,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,5,281,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a44a802b3b66cdaf3569bbf59da93af87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44a802b3b66cdaf3569bbf59da93af87">&#9670;&nbsp;</a></span>rd_hp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rd_hp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>プレーヤーの最大HP/現在HPを読み込む </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a44a802b3b66cdaf3569bbf59da93af87_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a44a802b3b66cdaf3569bbf59da93af87_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a44a802b3b66cdaf3569bbf59da93af87_cgraph" id="aplayer-info-loader_8cpp_a44a802b3b66cdaf3569bbf59da93af87_cgraph">
+<area shape="rect" title="プレーヤーの最大HP/現在HPを読み込む" alt="" coords="5,81,60,108"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="108,5,204,32"/>
+<area shape="rect" href="load-util_8cpp.html#a2b230df62990bec0c7ed479aad43a4b3" title="ロードファイルポインタから符号つき32bit値を読み込んでポインタに渡す" alt="" coords="122,56,190,83"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="252,81,320,108"/>
+<area shape="rect" href="load-v1-7-0_8cpp.html#a65ad46f794f6e1d5d4091bca36ad0deb" title=" " alt="" coords="113,157,199,184"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="484,107,541,133"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="252,132,320,159"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="368,132,436,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a44a802b3b66cdaf3569bbf59da93af87_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a44a802b3b66cdaf3569bbf59da93af87_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a44a802b3b66cdaf3569bbf59da93af87_icgraph" id="aplayer-info-loader_8cpp_a44a802b3b66cdaf3569bbf59da93af87_icgraph">
+<area shape="rect" title="プレーヤーの最大HP/現在HPを読み込む" alt="" coords="496,5,551,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="329,5,448,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,5,281,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aeea2cfd1f6353fd6cd9f97ed5271d3e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeea2cfd1f6353fd6cd9f97ed5271d3e1">&#9670;&nbsp;</a></span>rd_mana()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rd_mana </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>プレーヤーの最大MP/現在MPを読み込む </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_aeea2cfd1f6353fd6cd9f97ed5271d3e1_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_aeea2cfd1f6353fd6cd9f97ed5271d3e1_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_aeea2cfd1f6353fd6cd9f97ed5271d3e1_cgraph" id="aplayer-info-loader_8cpp_aeea2cfd1f6353fd6cd9f97ed5271d3e1_cgraph">
+<area shape="rect" title="プレーヤーの最大MP/現在MPを読み込む" alt="" coords="5,81,77,108"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="129,5,225,32"/>
+<area shape="rect" href="load-util_8cpp.html#a2b230df62990bec0c7ed479aad43a4b3" title="ロードファイルポインタから符号つき32bit値を読み込んでポインタに渡す" alt="" coords="143,56,211,83"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="276,81,344,108"/>
+<area shape="rect" href="load-v1-7-0_8cpp.html#aa67f5b59b7ed7afe52852d9c2fcc7152" title=" " alt="" coords="125,157,228,184"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="508,107,565,133"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="276,132,344,159"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="392,132,460,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_aeea2cfd1f6353fd6cd9f97ed5271d3e1_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_aeea2cfd1f6353fd6cd9f97ed5271d3e1_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_aeea2cfd1f6353fd6cd9f97ed5271d3e1_icgraph" id="aplayer-info-loader_8cpp_aeea2cfd1f6353fd6cd9f97ed5271d3e1_icgraph">
+<area shape="rect" title="プレーヤーの最大MP/現在MPを読み込む" alt="" coords="496,5,568,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="329,5,448,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,5,281,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5b1a31050eaad81d5e37ad8dfb6222d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b1a31050eaad81d5e37ad8dfb6222d5">&#9670;&nbsp;</a></span>rd_phase_out()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rd_phase_out </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a5b1a31050eaad81d5e37ad8dfb6222d5_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a5b1a31050eaad81d5e37ad8dfb6222d5_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a5b1a31050eaad81d5e37ad8dfb6222d5_cgraph" id="aplayer-info-loader_8cpp_a5b1a31050eaad81d5e37ad8dfb6222d5_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,105,57"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="153,5,249,32"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="167,56,235,83"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="297,56,365,83"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="413,56,471,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a5b1a31050eaad81d5e37ad8dfb6222d5_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a5b1a31050eaad81d5e37ad8dfb6222d5_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a5b1a31050eaad81d5e37ad8dfb6222d5_icgraph" id="aplayer-info-loader_8cpp_a5b1a31050eaad81d5e37ad8dfb6222d5_icgraph">
+<area shape="rect" title=" " alt="" coords="443,5,543,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a6b1a7b04b3f2d4fa2a76d00e3edb6fca" title=" " alt="" coords="323,5,395,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="156,5,275,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="5,5,108,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aaa6008383a2e3dba7290d6cf4e14922d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa6008383a2e3dba7290d6cf4e14922d">&#9670;&nbsp;</a></span>rd_player_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rd_player_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_aaa6008383a2e3dba7290d6cf4e14922d_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_aaa6008383a2e3dba7290d6cf4e14922d_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_aaa6008383a2e3dba7290d6cf4e14922d_cgraph" id="aplayer-info-loader_8cpp_aaa6008383a2e3dba7290d6cf4e14922d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,323,108,350"/>
+<area shape="rect" href="player-attack-loader_8cpp.html#a1b392ddfeacc97c708eeb280c58a00f3" title=" " alt="" coords="386,46,461,72"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="840,256,905,283"/>
+<area shape="rect" href="world-loader_8cpp.html#a46ab6510c2a1c723c854a43ba76d150a" title=" " alt="" coords="173,188,262,215"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="158,1747,277,1774"/>
+<area shape="rect" href="player-attack-loader_8cpp.html#a90839e06c2daeae4b30733663d98d3b0" title=" " alt="" coords="156,374,279,400"/>
+<area shape="rect" href="player-attack-loader_8cpp.html#a4e6859872b3249ca5a8ab431444516a1" title=" " alt="" coords="361,366,485,392"/>
+<area shape="rect" href="player-attack-loader_8cpp.html#a8e4d43d05997e6755bac14844e03d73f" title=" " alt="" coords="592,2443,725,2470"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="825,1278,921,1304"/>
+<area shape="rect" href="load-zangband_8cpp.html#a4468691572add54c89e1cd4bac6bd923" title=" " alt="" coords="586,46,731,72"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="1112,746,1169,772"/>
+<area shape="rect" href="mutation-calculator_8cpp.html#abc4ec82633664f0e30dd98b00c6981ec" title="突然変異による自然回復ペナルティをパーセント値で返す / Return the modifier to the regeneration rate (in percent)" alt="" coords="327,2135,520,2162"/>
+<area shape="rect" href="world-loader_8cpp.html#a4a8b2e5e73e76e6456e0431c0d5ce6e2" title="現実変容処理の有無及びその残りターン数を読み込む" alt="" coords="605,2038,712,2064"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="839,1860,907,1887"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a6b1a7b04b3f2d4fa2a76d00e3edb6fca" title=" " alt="" coords="387,1708,459,1735"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a89c9683fdc9c6849d5c6c24549e408fb" title="プレーヤーのバッドステータス (と空腹)を読み込む" alt="" coords="371,974,475,1000"/>
+<area shape="rect" href="load-util_8cpp.html#a2982efb62fc7a9124a9a07a391ef56be" title="ロードファイルポインタを指定バイト分飛ばして進める / Hack – strip some bytes" alt="" coords="615,198,702,224"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a7cdef2b1263d3beb5921a34e33e136a2" title="腕力などの基本ステータス情報を読み込む" alt="" coords="368,2392,479,2419"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a34d0ca3e33cf6837d9432e08fd5c964b" title=" " alt="" coords="593,2190,724,2216"/>
+<area shape="rect" href="dummy-loader_8cpp.html#a33da055bec3a64e348545395e3d84510" title="ダミーバイトを読み込む" alt="" coords="378,2240,469,2267"/>
+<area shape="rect" href="world-loader_8cpp.html#a8fea0f64ea2bd286e506803cc4536c7f" title=" " alt="" coords="375,1519,471,1546"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aed7ab2efb928004d3598b22a370bd24d" title=" " alt="" coords="619,2088,698,2115"/>
+<area shape="rect" href="player-info-loader_8cpp.html#af8550cf2ba8f9554631f826eccba5318" title=" " alt="" coords="607,518,710,544"/>
+<area shape="rect" href="load-util_8cpp.html#a2b230df62990bec0c7ed479aad43a4b3" title="ロードファイルポインタから符号つき32bit値を読み込んでポインタに渡す" alt="" coords="839,619,907,646"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a44a802b3b66cdaf3569bbf59da93af87" title="プレーヤーの最大HP/現在HPを読み込む" alt="" coords="396,1075,451,1102"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aeea2cfd1f6353fd6cd9f97ed5271d3e1" title="プレーヤーの最大MP/現在MPを読み込む" alt="" coords="387,1024,459,1051"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a7d3d876e6e3de98f2f747baf7a935acd" title=" " alt="" coords="391,796,456,823"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a694e609032c48f84db72a574d8d07aa8" title=" " alt="" coords="388,1354,459,1380"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a7b75e152380035e2886ed5edf4fba4d2" title="プレーヤーのグッド/バッドステータスを読み込む" alt="" coords="621,1886,697,1912"/>
+<area shape="rect" href="player-info-loader_8cpp.html#acae4ff705274b9e71e5a930078fc1cbb" title="各種時限効果を読み込む" alt="" coords="365,2342,482,2368"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a4457e3bf517b815fa852a02444c945ea" title=" " alt="" coords="614,1987,703,2014"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aa85cd58092339dceef1bcb4f6dbdb92a" title=" " alt="" coords="611,1835,707,1862"/>
+<area shape="rect" href="mutation-calculator_8cpp.html#a4fd1aa7ed43b3ac78ee3879e15a09791" title="突然変異の各種計算 / Calculations for mutation" alt="" coords="599,2139,718,2166"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="606,1734,711,1760"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a5b1a31050eaad81d5e37ad8dfb6222d5" title=" " alt="" coords="609,1683,709,1710"/>
+<area shape="rect" href="world-loader_8cpp.html#a097ef8b5b96bf7ebf59e09a19bfdff0b" title=" " alt="" coords="579,1328,739,1355"/>
+<area shape="rect" href="arena_8cpp.html#a8f76d0f962bd2705b72a72823e77f9e1" title="モンスター闘技場に参加するモンスターを更新する。" alt="" coords="568,1784,749,1811"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="996,771,1064,798"/>
+<area shape="rect" href="load-zangband_8cpp.html#af8ad08c0b31741b60455810f2e6840c2" title=" " alt="" coords="798,2182,947,2224"/>
+<area shape="rect" href="world-loader_8cpp.html#a9576fc7da13461759d4b1eb3130fccc9" title=" " alt="" coords="579,1227,738,1254"/>
+<area shape="rect" href="load-zangband_8cpp.html#a6814d85aad1e2d4fd32f623bfd4fe46f" title=" " alt="" coords="583,1632,735,1659"/>
+<area shape="rect" href="load-v1-7-0_8cpp.html#a932d97db57be6a6cecb1bd8c867a20a3" title=" " alt="" coords="813,568,933,595"/>
+<area shape="rect" href="load-v1-7-0_8cpp.html#a65ad46f794f6e1d5d4091bca36ad0deb" title=" " alt="" coords="616,1531,701,1558"/>
+<area shape="rect" href="load-v1-7-0_8cpp.html#aa67f5b59b7ed7afe52852d9c2fcc7152" title=" " alt="" coords="607,1480,710,1507"/>
+<area shape="rect" href="player-info-loader_8cpp.html#af8768c018b743c997ae95ac602af536a" title=" " alt="" coords="623,467,695,494"/>
+<area shape="rect" href="load-zangband_8cpp.html#ac0bbc5785c55ff9ff74f5a243430941c" title=" " alt="" coords="591,568,726,595"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a5597fae2d2460d3c76684488f355824c" title=" " alt="" coords="618,720,699,747"/>
+<area shape="rect" href="load-zangband_8cpp.html#a798360715b229afdd3ce36a83b484608" title=" " alt="" coords="592,1582,725,1608"/>
+<area shape="rect" href="load-zangband_8cpp.html#ad11b33fbc0e114f26e95e1b0aac70c00" title=" " alt="" coords="583,249,734,290"/>
+<area shape="rect" href="load-zangband_8cpp.html#a3087a8b1788578aef13cecf1bddd2732" title=" " alt="" coords="797,2436,948,2477"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_aaa6008383a2e3dba7290d6cf4e14922d_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_aaa6008383a2e3dba7290d6cf4e14922d_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_aaa6008383a2e3dba7290d6cf4e14922d_icgraph" id="aplayer-info-loader_8cpp_aaa6008383a2e3dba7290d6cf4e14922d_icgraph">
+<area shape="rect" title=" " alt="" coords="499,5,601,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="325,5,451,32"/>
+<area shape="rect" href="load_8cpp.html#af89dd931d12eb33981704a2943877f34" title="セーブファイル読み込み処理の実体 / Actually read the savefile" alt="" coords="136,5,277,32"/>
+<area shape="rect" href="load_8cpp.html#a9f3adb4871bc426fc462d139f54cdd46" title="セーブファイル読み込み処理 (UIDチェック等含む) / Reading the savefile (including UID check)" alt="" coords="5,5,88,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aae79e0153881031e36d2937fffa929c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae79e0153881031e36d2937fffa929c4">&#9670;&nbsp;</a></span>rd_player_status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rd_player_status </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_aae79e0153881031e36d2937fffa929c4_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_aae79e0153881031e36d2937fffa929c4_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_aae79e0153881031e36d2937fffa929c4_cgraph" id="aplayer-info-loader_8cpp_aae79e0153881031e36d2937fffa929c4_cgraph">
+<area shape="rect" title=" " alt="" coords="5,1187,124,1213"/>
+<area shape="rect" href="mutation-calculator_8cpp.html#abc4ec82633664f0e30dd98b00c6981ec" title="突然変異による自然回復ペナルティをパーセント値で返す / Return the modifier to the regeneration rate (in percent)" alt="" coords="172,5,365,32"/>
+<area shape="rect" href="world-loader_8cpp.html#a4a8b2e5e73e76e6456e0431c0d5ce6e2" title="現実変容処理の有無及びその残りターン数を読み込む" alt="" coords="451,984,557,1011"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="879,984,947,1011"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a6b1a7b04b3f2d4fa2a76d00e3edb6fca" title=" " alt="" coords="233,579,305,605"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a89c9683fdc9c6849d5c6c24549e408fb" title="プレーヤーのバッドステータス (と空腹)を読み込む" alt="" coords="217,1643,321,1669"/>
+<area shape="rect" href="load-util_8cpp.html#a2982efb62fc7a9124a9a07a391ef56be" title="ロードファイルポインタを指定バイト分飛ばして進める / Hack – strip some bytes" alt="" coords="461,1643,547,1669"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a7cdef2b1263d3beb5921a34e33e136a2" title="腕力などの基本ステータス情報を読み込む" alt="" coords="213,1503,324,1529"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a34d0ca3e33cf6837d9432e08fd5c964b" title=" " alt="" coords="439,224,569,251"/>
+<area shape="rect" href="dummy-loader_8cpp.html#a33da055bec3a64e348545395e3d84510" title="ダミーバイトを読み込む" alt="" coords="223,56,314,83"/>
+<area shape="rect" href="world-loader_8cpp.html#a8fea0f64ea2bd286e506803cc4536c7f" title=" " alt="" coords="221,401,317,428"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aed7ab2efb928004d3598b22a370bd24d" title=" " alt="" coords="465,1035,543,1061"/>
+<area shape="rect" href="player-info-loader_8cpp.html#af8550cf2ba8f9554631f826eccba5318" title=" " alt="" coords="453,1845,555,1872"/>
+<area shape="rect" href="load-util_8cpp.html#a2b230df62990bec0c7ed479aad43a4b3" title="ロードファイルポインタから符号つき32bit値を読み込んでポインタに渡す" alt="" coords="690,1744,758,1771"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a44a802b3b66cdaf3569bbf59da93af87" title="プレーヤーの最大HP/現在HPを読み込む" alt="" coords="477,1896,531,1923"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aeea2cfd1f6353fd6cd9f97ed5271d3e1" title="プレーヤーの最大MP/現在MPを読み込む" alt="" coords="468,1744,540,1771"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a7d3d876e6e3de98f2f747baf7a935acd" title=" " alt="" coords="236,1237,301,1264"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a694e609032c48f84db72a574d8d07aa8" title=" " alt="" coords="233,1440,304,1467"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a7b75e152380035e2886ed5edf4fba4d2" title="プレーヤーのグッド/バッドステータスを読み込む" alt="" coords="466,1136,542,1163"/>
+<area shape="rect" href="player-info-loader_8cpp.html#acae4ff705274b9e71e5a930078fc1cbb" title="各種時限効果を読み込む" alt="" coords="210,883,327,909"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a4457e3bf517b815fa852a02444c945ea" title=" " alt="" coords="459,1187,549,1213"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aa85cd58092339dceef1bcb4f6dbdb92a" title=" " alt="" coords="456,1389,552,1416"/>
+<area shape="rect" href="mutation-calculator_8cpp.html#a4fd1aa7ed43b3ac78ee3879e15a09791" title="突然変異の各種計算 / Calculations for mutation" alt="" coords="445,5,563,32"/>
+<area shape="rect" href="class_flag_group.html#ab9fa3f8fb34b0ad71114510175a59203" title="フラグ集合のONになっているフラグの数を返す" alt="" coords="663,5,785,32"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="676,1136,772,1163"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="1021,1643,1089,1669"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="1137,1643,1195,1669"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="451,680,557,707"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="691,933,757,960"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a5b1a31050eaad81d5e37ad8dfb6222d5" title=" " alt="" coords="454,528,554,555"/>
+<area shape="rect" href="world-loader_8cpp.html#a097ef8b5b96bf7ebf59e09a19bfdff0b" title=" " alt="" coords="424,427,584,453"/>
+<area shape="rect" href="arena_8cpp.html#a8f76d0f962bd2705b72a72823e77f9e1" title="モンスター闘技場に参加するモンスターを更新する。" alt="" coords="413,477,595,504"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="879,1693,947,1720"/>
+<area shape="rect" href="load-zangband_8cpp.html#aced99bce96baa59687fbfc8d51273193" title=" " alt="" coords="643,478,805,519"/>
+<area shape="rect" href="z-util_8cpp.html#a95c8541ef70dbcbf165f9272be00ea17" title="符号なし32ビット整数のビット数を返す。" alt="" coords="683,595,765,621"/>
+<area shape="rect" href="monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する" alt="" coords="672,645,776,672"/>
+<area shape="rect" href="load-zangband_8cpp.html#af8ad08c0b31741b60455810f2e6840c2" title=" " alt="" coords="649,158,799,199"/>
+<area shape="rect" href="world-loader_8cpp.html#a9576fc7da13461759d4b1eb3130fccc9" title=" " alt="" coords="425,325,583,352"/>
+<area shape="rect" href="load-zangband_8cpp.html#a6814d85aad1e2d4fd32f623bfd4fe46f" title=" " alt="" coords="648,275,800,301"/>
+<area shape="rect" href="load-v1-7-0_8cpp.html#a932d97db57be6a6cecb1bd8c867a20a3" title=" " alt="" coords="853,1795,973,1821"/>
+<area shape="rect" href="load-v1-7-0_8cpp.html#a65ad46f794f6e1d5d4091bca36ad0deb" title=" " alt="" coords="681,1997,767,2024"/>
+<area shape="rect" href="load-v1-7-0_8cpp.html#aa67f5b59b7ed7afe52852d9c2fcc7152" title=" " alt="" coords="673,1643,775,1669"/>
+<area shape="rect" href="player-info-loader_8cpp.html#af8768c018b743c997ae95ac602af536a" title=" " alt="" coords="468,1339,540,1365"/>
+<area shape="rect" href="load-zangband_8cpp.html#ac0bbc5785c55ff9ff74f5a243430941c" title=" " alt="" coords="437,1237,571,1264"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a5597fae2d2460d3c76684488f355824c" title=" " alt="" coords="463,1541,545,1568"/>
+<area shape="rect" href="load-zangband_8cpp.html#a798360715b229afdd3ce36a83b484608" title=" " alt="" coords="437,1440,571,1467"/>
+<area shape="rect" href="load-zangband_8cpp.html#a685944ba1a48d3e25901252d4afdfc8a" title=" " alt="" coords="432,1491,576,1517"/>
+<area shape="rect" href="player-info-loader_8cpp.html#ae9418f7e92966092da8eafe16c4e1f62" title=" " alt="" coords="452,933,556,960"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a822503a72910a1881584c8f7ff90e7f1" title=" " alt="" coords="442,883,566,909"/>
+<area shape="rect" href="player-info-loader_8cpp.html#acb129f67e78ab3830bb2ba1e98b7bc8b" title=" " alt="" coords="682,832,766,859"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_aae79e0153881031e36d2937fffa929c4_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_aae79e0153881031e36d2937fffa929c4_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_aae79e0153881031e36d2937fffa929c4_icgraph" id="aplayer-info-loader_8cpp_aae79e0153881031e36d2937fffa929c4_icgraph">
+<area shape="rect" title=" " alt="" coords="519,5,637,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="368,5,471,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="195,5,320,32"/>
+<area shape="rect" href="load_8cpp.html#af89dd931d12eb33981704a2943877f34" title="セーブファイル読み込み処理の実体 / Actually read the savefile" alt="" coords="5,5,147,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7d3d876e6e3de98f2f747baf7a935acd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d3d876e6e3de98f2f747baf7a935acd">&#9670;&nbsp;</a></span>rd_race()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rd_race </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a7d3d876e6e3de98f2f747baf7a935acd_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a7d3d876e6e3de98f2f747baf7a935acd_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a7d3d876e6e3de98f2f747baf7a935acd_cgraph" id="aplayer-info-loader_8cpp_a7d3d876e6e3de98f2f747baf7a935acd_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,71,83"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="138,5,234,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#af8768c018b743c997ae95ac602af536a" title=" " alt="" coords="150,56,222,83"/>
+<area shape="rect" href="load-zangband_8cpp.html#ac0bbc5785c55ff9ff74f5a243430941c" title=" " alt="" coords="119,107,253,133"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="419,5,484,32"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="301,56,369,83"/>
+<area shape="rect" href="load-util_8cpp.html#a2b230df62990bec0c7ed479aad43a4b3" title="ロードファイルポインタから符号つき32bit値を読み込んでポインタに渡す" alt="" coords="301,107,369,133"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="533,56,591,83"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="417,56,485,83"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="417,107,485,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a7d3d876e6e3de98f2f747baf7a935acd_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a7d3d876e6e3de98f2f747baf7a935acd_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a7d3d876e6e3de98f2f747baf7a935acd_icgraph" id="aplayer-info-loader_8cpp_a7d3d876e6e3de98f2f747baf7a935acd_icgraph">
+<area shape="rect" title=" " alt="" coords="496,5,561,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="329,5,448,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,5,281,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa549ad967c1ec9dc290013e257f120ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa549ad967c1ec9dc290013e257f120ff">&#9670;&nbsp;</a></span>rd_realms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rd_realms </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>セーブデータから領域情報を読み込む / Read player realms </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_aa549ad967c1ec9dc290013e257f120ff_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_aa549ad967c1ec9dc290013e257f120ff_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_aa549ad967c1ec9dc290013e257f120ff_cgraph" id="aplayer-info-loader_8cpp_aa549ad967c1ec9dc290013e257f120ff_cgraph">
+<area shape="rect" title="セーブデータから領域情報を読み込む / Read player realms" alt="" coords="5,5,84,32"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="132,5,197,32"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="245,5,303,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_aa549ad967c1ec9dc290013e257f120ff_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_aa549ad967c1ec9dc290013e257f120ff_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_aa549ad967c1ec9dc290013e257f120ff_icgraph" id="aplayer-info-loader_8cpp_aa549ad967c1ec9dc290013e257f120ff_icgraph">
+<area shape="rect" title="セーブデータから領域情報を読み込む / Read player realms" alt="" coords="511,5,589,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a856bd8c0fc46a785d244928cb146a592" title="セーブデータからプレイヤー基本情報を読み込む / Read player&#39;s basic info" alt="" coords="368,5,463,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="195,5,320,32"/>
+<area shape="rect" href="load_8cpp.html#af89dd931d12eb33981704a2943877f34" title="セーブファイル読み込み処理の実体 / Actually read the savefile" alt="" coords="5,5,147,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a694e609032c48f84db72a574d8d07aa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a694e609032c48f84db72a574d8d07aa8">&#9670;&nbsp;</a></span>rd_skills()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rd_skills </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a694e609032c48f84db72a574d8d07aa8_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a694e609032c48f84db72a574d8d07aa8_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a694e609032c48f84db72a574d8d07aa8_cgraph" id="aplayer-info-loader_8cpp_a694e609032c48f84db72a574d8d07aa8_cgraph">
+<area shape="rect" title=" " alt="" coords="5,81,76,108"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="321,5,417,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a5597fae2d2460d3c76684488f355824c" title=" " alt="" coords="155,56,237,83"/>
+<area shape="rect" href="load-zangband_8cpp.html#a798360715b229afdd3ce36a83b484608" title=" " alt="" coords="129,107,263,133"/>
+<area shape="rect" href="load-zangband_8cpp.html#a685944ba1a48d3e25901252d4afdfc8a" title=" " alt="" coords="124,157,268,184"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="471,56,536,83"/>
+<area shape="rect" href="load-util_8cpp.html#a2b230df62990bec0c7ed479aad43a4b3" title="ロードファイルポインタから符号つき32bit値を読み込んでポインタに渡す" alt="" coords="335,107,403,133"/>
+<area shape="rect" href="load-v1-3-0_8cpp.html#a4ad51c98af235d1f16f55c4f12129baa" title=" " alt="" coords="316,157,421,184"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="585,81,643,108"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="469,107,537,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a694e609032c48f84db72a574d8d07aa8_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a694e609032c48f84db72a574d8d07aa8_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a694e609032c48f84db72a574d8d07aa8_icgraph" id="aplayer-info-loader_8cpp_a694e609032c48f84db72a574d8d07aa8_icgraph">
+<area shape="rect" title=" " alt="" coords="496,5,567,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="329,5,448,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,5,281,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7b75e152380035e2886ed5edf4fba4d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b75e152380035e2886ed5edf4fba4d2">&#9670;&nbsp;</a></span>rd_status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rd_status </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>プレーヤーのグッド/バッドステータスを読み込む </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000071">todo:</a></b></dt><dd>明らかに関数名がビッグワードだが他に思いつかなかった </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a7b75e152380035e2886ed5edf4fba4d2_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a7b75e152380035e2886ed5edf4fba4d2_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a7b75e152380035e2886ed5edf4fba4d2_cgraph" id="aplayer-info-loader_8cpp_a7b75e152380035e2886ed5edf4fba4d2_cgraph">
+<area shape="rect" title="プレーヤーのグッド/バッドステータスを読み込む" alt="" coords="5,31,81,57"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="129,5,225,32"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="143,56,211,83"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="273,56,341,83"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="389,56,447,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a7b75e152380035e2886ed5edf4fba4d2_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a7b75e152380035e2886ed5edf4fba4d2_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a7b75e152380035e2886ed5edf4fba4d2_icgraph" id="aplayer-info-loader_8cpp_a7b75e152380035e2886ed5edf4fba4d2_icgraph">
+<area shape="rect" title="プレーヤーのグッド/バッドステータスを読み込む" alt="" coords="496,5,572,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="329,5,448,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,5,281,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acae4ff705274b9e71e5a930078fc1cbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acae4ff705274b9e71e5a930078fc1cbb">&#9670;&nbsp;</a></span>rd_timed_effects()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rd_timed_effects </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>各種時限効果を読み込む </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_acae4ff705274b9e71e5a930078fc1cbb_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_acae4ff705274b9e71e5a930078fc1cbb_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_acae4ff705274b9e71e5a930078fc1cbb_cgraph" id="aplayer-info-loader_8cpp_acae4ff705274b9e71e5a930078fc1cbb_cgraph">
+<area shape="rect" title="各種時限効果を読み込む" alt="" coords="5,88,123,115"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="392,5,460,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#ae9418f7e92966092da8eafe16c4e1f62" title=" " alt="" coords="181,113,285,140"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a822503a72910a1881584c8f7ff90e7f1" title=" " alt="" coords="171,224,295,251"/>
+<area shape="rect" href="player-info-loader_8cpp.html#acb129f67e78ab3830bb2ba1e98b7bc8b" title=" " alt="" coords="191,59,275,85"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="557,5,625,32"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="673,56,731,83"/>
+<area shape="rect" href="load-util_8cpp.html#af6b521c74e84f90174772f6101a4d7f4" title="ロード中のセーブファイルのバージョンが引数で指定したバージョンと比較して古いかどうか調べる" alt="" coords="347,107,505,149"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="393,173,459,200"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="557,56,625,83"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="378,224,474,251"/>
+<area shape="rect" href="load-zangband_8cpp.html#a0f054bb8e1349f55e7aa8fa8fa30824f" title=" " alt="" coords="343,275,509,301"/>
+<area shape="rect" href="load-zangband_8cpp.html#a3adf05d213d861a448c3142e3936b3e9" title=" " alt="" coords="353,325,499,352"/>
+<area shape="rect" href="load-zangband_8cpp.html#a589ea3c4bd28c0db182c39d05f794145" title=" " alt="" coords="345,376,507,403"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_acae4ff705274b9e71e5a930078fc1cbb_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_acae4ff705274b9e71e5a930078fc1cbb_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_acae4ff705274b9e71e5a930078fc1cbb_icgraph" id="aplayer-info-loader_8cpp_acae4ff705274b9e71e5a930078fc1cbb_icgraph">
+<area shape="rect" title="各種時限効果を読み込む" alt="" coords="496,5,613,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="329,5,448,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,5,281,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4457e3bf517b815fa852a02444c945ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4457e3bf517b815fa852a02444c945ea">&#9670;&nbsp;</a></span>rd_tsuyoshi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rd_tsuyoshi </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a4457e3bf517b815fa852a02444c945ea_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a4457e3bf517b815fa852a02444c945ea_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a4457e3bf517b815fa852a02444c945ea_cgraph" id="aplayer-info-loader_8cpp_a4457e3bf517b815fa852a02444c945ea_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,95,57"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="143,5,239,32"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="157,56,225,83"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="287,56,355,83"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="403,56,460,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a4457e3bf517b815fa852a02444c945ea_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a4457e3bf517b815fa852a02444c945ea_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a4457e3bf517b815fa852a02444c945ea_icgraph" id="aplayer-info-loader_8cpp_a4457e3bf517b815fa852a02444c945ea_icgraph">
+<area shape="rect" title=" " alt="" coords="496,5,585,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="329,5,448,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,5,281,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa85cd58092339dceef1bcb4f6dbdb92a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa85cd58092339dceef1bcb4f6dbdb92a">&#9670;&nbsp;</a></span>set_imitation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_imitation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_aa85cd58092339dceef1bcb4f6dbdb92a_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_aa85cd58092339dceef1bcb4f6dbdb92a_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_aa85cd58092339dceef1bcb4f6dbdb92a_cgraph" id="aplayer-info-loader_8cpp_aa85cd58092339dceef1bcb4f6dbdb92a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,101,57"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="149,5,245,32"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="163,56,231,83"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="293,56,361,83"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="409,56,467,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_aa85cd58092339dceef1bcb4f6dbdb92a_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_aa85cd58092339dceef1bcb4f6dbdb92a_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_aa85cd58092339dceef1bcb4f6dbdb92a_icgraph" id="aplayer-info-loader_8cpp_aa85cd58092339dceef1bcb4f6dbdb92a_icgraph">
+<area shape="rect" title=" " alt="" coords="496,5,592,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="329,5,448,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="179,5,281,32"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="5,5,131,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae9418f7e92966092da8eafe16c4e1f62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9418f7e92966092da8eafe16c4e1f62">&#9670;&nbsp;</a></span>set_mutations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_mutations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_ae9418f7e92966092da8eafe16c4e1f62_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_ae9418f7e92966092da8eafe16c4e1f62_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_ae9418f7e92966092da8eafe16c4e1f62_cgraph" id="aplayer-info-loader_8cpp_ae9418f7e92966092da8eafe16c4e1f62_cgraph">
+<area shape="rect" title=" " alt="" coords="5,71,109,98"/>
+<area shape="rect" href="load-util_8cpp.html#af6b521c74e84f90174772f6101a4d7f4" title="ロード中のセーブファイルのバージョンが引数で指定したバージョンと比較して古いかどうか調べる" alt="" coords="157,5,316,47"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="204,71,269,98"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="203,122,271,149"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="364,97,421,123"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_ae9418f7e92966092da8eafe16c4e1f62_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_ae9418f7e92966092da8eafe16c4e1f62_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_ae9418f7e92966092da8eafe16c4e1f62_icgraph" id="aplayer-info-loader_8cpp_ae9418f7e92966092da8eafe16c4e1f62_icgraph">
+<area shape="rect" title=" " alt="" coords="488,5,592,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#acae4ff705274b9e71e5a930078fc1cbb" title="各種時限効果を読み込む" alt="" coords="323,5,440,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="156,5,275,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="5,5,108,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af8768c018b743c997ae95ac602af536a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8768c018b743c997ae95ac602af536a">&#9670;&nbsp;</a></span>set_race()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_race </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_af8768c018b743c997ae95ac602af536a_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_af8768c018b743c997ae95ac602af536a_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_af8768c018b743c997ae95ac602af536a_cgraph" id="aplayer-info-loader_8cpp_af8768c018b743c997ae95ac602af536a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,77,83"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="243,5,308,32"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="125,56,193,83"/>
+<area shape="rect" href="load-util_8cpp.html#a2b230df62990bec0c7ed479aad43a4b3" title="ロードファイルポインタから符号つき32bit値を読み込んでポインタに渡す" alt="" coords="125,107,193,133"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="357,56,415,83"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="241,56,309,83"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="241,107,309,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_af8768c018b743c997ae95ac602af536a_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_af8768c018b743c997ae95ac602af536a_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_af8768c018b743c997ae95ac602af536a_icgraph" id="aplayer-info-loader_8cpp_af8768c018b743c997ae95ac602af536a_icgraph">
+<area shape="rect" title=" " alt="" coords="436,5,508,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a7d3d876e6e3de98f2f747baf7a935acd" title=" " alt="" coords="323,5,388,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="156,5,275,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="5,5,108,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5597fae2d2460d3c76684488f355824c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5597fae2d2460d3c76684488f355824c">&#9670;&nbsp;</a></span>set_spells()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_spells </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a5597fae2d2460d3c76684488f355824c_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a5597fae2d2460d3c76684488f355824c_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a5597fae2d2460d3c76684488f355824c_cgraph" id="aplayer-info-loader_8cpp_a5597fae2d2460d3c76684488f355824c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,81,87,108"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="139,5,235,32"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="289,56,355,83"/>
+<area shape="rect" href="load-util_8cpp.html#a2b230df62990bec0c7ed479aad43a4b3" title="ロードファイルポインタから符号つき32bit値を読み込んでポインタに渡す" alt="" coords="153,107,221,133"/>
+<area shape="rect" href="load-v1-3-0_8cpp.html#a4ad51c98af235d1f16f55c4f12129baa" title=" " alt="" coords="135,157,240,184"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="404,81,461,108"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="288,107,356,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a5597fae2d2460d3c76684488f355824c_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a5597fae2d2460d3c76684488f355824c_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a5597fae2d2460d3c76684488f355824c_icgraph" id="aplayer-info-loader_8cpp_a5597fae2d2460d3c76684488f355824c_icgraph">
+<area shape="rect" title=" " alt="" coords="441,5,523,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a694e609032c48f84db72a574d8d07aa8" title=" " alt="" coords="323,5,393,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="156,5,275,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="5,5,108,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a822503a72910a1881584c8f7ff90e7f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a822503a72910a1881584c8f7ff90e7f1">&#9670;&nbsp;</a></span>set_timed_effects()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_timed_effects </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a822503a72910a1881584c8f7ff90e7f1_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a822503a72910a1881584c8f7ff90e7f1_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a822503a72910a1881584c8f7ff90e7f1_cgraph" id="aplayer-info-loader_8cpp_a822503a72910a1881584c8f7ff90e7f1_cgraph">
+<area shape="rect" title=" " alt="" coords="5,132,129,159"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="213,5,309,32"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="393,56,459,83"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="227,107,295,133"/>
+<area shape="rect" href="load-zangband_8cpp.html#a0f054bb8e1349f55e7aa8fa8fa30824f" title=" " alt="" coords="177,157,344,184"/>
+<area shape="rect" href="load-zangband_8cpp.html#a3adf05d213d861a448c3142e3936b3e9" title=" " alt="" coords="188,208,333,235"/>
+<area shape="rect" href="load-zangband_8cpp.html#a589ea3c4bd28c0db182c39d05f794145" title=" " alt="" coords="179,259,342,285"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="508,81,565,108"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="392,107,460,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_a822503a72910a1881584c8f7ff90e7f1_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_a822503a72910a1881584c8f7ff90e7f1_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_a822503a72910a1881584c8f7ff90e7f1_icgraph" id="aplayer-info-loader_8cpp_a822503a72910a1881584c8f7ff90e7f1_icgraph">
+<area shape="rect" title=" " alt="" coords="488,5,612,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#acae4ff705274b9e71e5a930078fc1cbb" title="各種時限効果を読み込む" alt="" coords="323,5,440,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="156,5,275,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="5,5,108,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acb129f67e78ab3830bb2ba1e98b7bc8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb129f67e78ab3830bb2ba1e98b7bc8b">&#9670;&nbsp;</a></span>set_virtues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_virtues </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_acb129f67e78ab3830bb2ba1e98b7bc8b_cgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_acb129f67e78ab3830bb2ba1e98b7bc8b_cgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_acb129f67e78ab3830bb2ba1e98b7bc8b_cgraph" id="aplayer-info-loader_8cpp_acb129f67e78ab3830bb2ba1e98b7bc8b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,89,32"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="137,5,205,32"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="253,5,321,32"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="369,5,427,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-info-loader_8cpp_acb129f67e78ab3830bb2ba1e98b7bc8b_icgraph.png" border="0" usemap="#aplayer-info-loader_8cpp_acb129f67e78ab3830bb2ba1e98b7bc8b_icgraph" alt=""/></div>
+<map name="aplayer-info-loader_8cpp_acb129f67e78ab3830bb2ba1e98b7bc8b_icgraph" id="aplayer-info-loader_8cpp_acb129f67e78ab3830bb2ba1e98b7bc8b_icgraph">
+<area shape="rect" title=" " alt="" coords="488,5,572,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#acae4ff705274b9e71e5a930078fc1cbb" title="各種時限効果を読み込む" alt="" coords="323,5,440,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="156,5,275,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aaa6008383a2e3dba7290d6cf4e14922d" title=" " alt="" coords="5,5,108,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分40秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

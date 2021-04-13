@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/floor/floor-mode-changer.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a620f8a6b723e397390ae5ca00f5aa8c.html">floor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">floor-mode-changer.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="floor-mode-changer_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Change Floor Mode.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dd">    6</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dd">cfm_type</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95ddafaf8b06cc03b12cfc212ebf435eaf877">    7</a></span>&#160;    <a class="code" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95ddafaf8b06cc03b12cfc212ebf435eaf877">CFM_UP</a> = 0x0001, <span class="comment">/* Move up */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda37d071456e3229b32a22c00b394b27d8">    8</a></span>&#160;    <a class="code" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda37d071456e3229b32a22c00b394b27d8">CFM_DOWN</a> = 0x0002, <span class="comment">/* Move down */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda700eb79bd6df971ac63ec0f3aeec8827">    9</a></span>&#160;    <a class="code" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda700eb79bd6df971ac63ec0f3aeec8827">CFM_LONG_STAIRS</a> = 0x0004, <span class="comment">/* Randomly occurred long stairs/shaft */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda21a4f3cae9c21ddfc8e804ef701c3640">   10</a></span>&#160;    <a class="code" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda21a4f3cae9c21ddfc8e804ef701c3640">CFM_XXX</a> = 0x0008, <span class="comment">/* XXX */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95ddaba7beac7ed0bcf4631077ec90cc40afa">   11</a></span>&#160;    <a class="code" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95ddaba7beac7ed0bcf4631077ec90cc40afa">CFM_SHAFT</a> = 0x0010, <span class="comment">/* Shaft */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda0b3203aef3ad36bdcc35dece52dd75f2">   12</a></span>&#160;    <a class="code" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda0b3203aef3ad36bdcc35dece52dd75f2">CFM_RAND_PLACE</a> = 0x0020, <span class="comment">/* Arrive at random grid */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda6bcaf23e3b2ffc2db4f97d3608e86441">   13</a></span>&#160;    <a class="code" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda6bcaf23e3b2ffc2db4f97d3608e86441">CFM_RAND_CONNECT</a> = 0x0040, <span class="comment">/* Connect with random stairs */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95ddacd714ef9d37ce8480812e189ed237360">   14</a></span>&#160;    <a class="code" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95ddacd714ef9d37ce8480812e189ed237360">CFM_SAVE_FLOORS</a> = 0x0080, <span class="comment">/* Save floors */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda196f56bb174cad579f12938991699113">   15</a></span>&#160;    <a class="code" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda196f56bb174cad579f12938991699113">CFM_NO_RETURN</a> = 0x0100, <span class="comment">/* Flee from random quest etc... */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda035391124a1d20c56ba7eac76df5d818">   16</a></span>&#160;    <a class="code" href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda035391124a1d20c56ba7eac76df5d818">CFM_FIRST_FLOOR</a> = 0x0200, <span class="comment">/* Create exit from the dungeon */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floor-mode-changer_8h.html#ac3d4752c4acfdb1dfe04cdbcd562c1ec">prepare_change_floor_mode</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> mode);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="afloor-mode-changer_8h_html_a892c844d6982a2dd05fe2531e13e95dd"><div class="ttname"><a href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dd">cfm_type</a></div><div class="ttdeci">cfm_type</div><div class="ttdef"><b>Definition:</b> floor-mode-changer.h:6</div></div>
+<div class="ttc" id="afloor-mode-changer_8h_html_a892c844d6982a2dd05fe2531e13e95dda035391124a1d20c56ba7eac76df5d818"><div class="ttname"><a href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda035391124a1d20c56ba7eac76df5d818">CFM_FIRST_FLOOR</a></div><div class="ttdeci">@ CFM_FIRST_FLOOR</div><div class="ttdef"><b>Definition:</b> floor-mode-changer.h:16</div></div>
+<div class="ttc" id="afloor-mode-changer_8h_html_a892c844d6982a2dd05fe2531e13e95dda0b3203aef3ad36bdcc35dece52dd75f2"><div class="ttname"><a href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda0b3203aef3ad36bdcc35dece52dd75f2">CFM_RAND_PLACE</a></div><div class="ttdeci">@ CFM_RAND_PLACE</div><div class="ttdef"><b>Definition:</b> floor-mode-changer.h:12</div></div>
+<div class="ttc" id="afloor-mode-changer_8h_html_a892c844d6982a2dd05fe2531e13e95dda196f56bb174cad579f12938991699113"><div class="ttname"><a href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda196f56bb174cad579f12938991699113">CFM_NO_RETURN</a></div><div class="ttdeci">@ CFM_NO_RETURN</div><div class="ttdef"><b>Definition:</b> floor-mode-changer.h:15</div></div>
+<div class="ttc" id="afloor-mode-changer_8h_html_a892c844d6982a2dd05fe2531e13e95dda21a4f3cae9c21ddfc8e804ef701c3640"><div class="ttname"><a href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda21a4f3cae9c21ddfc8e804ef701c3640">CFM_XXX</a></div><div class="ttdeci">@ CFM_XXX</div><div class="ttdef"><b>Definition:</b> floor-mode-changer.h:10</div></div>
+<div class="ttc" id="afloor-mode-changer_8h_html_a892c844d6982a2dd05fe2531e13e95dda37d071456e3229b32a22c00b394b27d8"><div class="ttname"><a href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda37d071456e3229b32a22c00b394b27d8">CFM_DOWN</a></div><div class="ttdeci">@ CFM_DOWN</div><div class="ttdef"><b>Definition:</b> floor-mode-changer.h:8</div></div>
+<div class="ttc" id="afloor-mode-changer_8h_html_a892c844d6982a2dd05fe2531e13e95dda6bcaf23e3b2ffc2db4f97d3608e86441"><div class="ttname"><a href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda6bcaf23e3b2ffc2db4f97d3608e86441">CFM_RAND_CONNECT</a></div><div class="ttdeci">@ CFM_RAND_CONNECT</div><div class="ttdef"><b>Definition:</b> floor-mode-changer.h:13</div></div>
+<div class="ttc" id="afloor-mode-changer_8h_html_a892c844d6982a2dd05fe2531e13e95dda700eb79bd6df971ac63ec0f3aeec8827"><div class="ttname"><a href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95dda700eb79bd6df971ac63ec0f3aeec8827">CFM_LONG_STAIRS</a></div><div class="ttdeci">@ CFM_LONG_STAIRS</div><div class="ttdef"><b>Definition:</b> floor-mode-changer.h:9</div></div>
+<div class="ttc" id="afloor-mode-changer_8h_html_a892c844d6982a2dd05fe2531e13e95ddaba7beac7ed0bcf4631077ec90cc40afa"><div class="ttname"><a href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95ddaba7beac7ed0bcf4631077ec90cc40afa">CFM_SHAFT</a></div><div class="ttdeci">@ CFM_SHAFT</div><div class="ttdef"><b>Definition:</b> floor-mode-changer.h:11</div></div>
+<div class="ttc" id="afloor-mode-changer_8h_html_a892c844d6982a2dd05fe2531e13e95ddacd714ef9d37ce8480812e189ed237360"><div class="ttname"><a href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95ddacd714ef9d37ce8480812e189ed237360">CFM_SAVE_FLOORS</a></div><div class="ttdeci">@ CFM_SAVE_FLOORS</div><div class="ttdef"><b>Definition:</b> floor-mode-changer.h:14</div></div>
+<div class="ttc" id="afloor-mode-changer_8h_html_a892c844d6982a2dd05fe2531e13e95ddafaf8b06cc03b12cfc212ebf435eaf877"><div class="ttname"><a href="floor-mode-changer_8h.html#a892c844d6982a2dd05fe2531e13e95ddafaf8b06cc03b12cfc212ebf435eaf877">CFM_UP</a></div><div class="ttdeci">@ CFM_UP</div><div class="ttdef"><b>Definition:</b> floor-mode-changer.h:7</div></div>
+<div class="ttc" id="afloor-mode-changer_8h_html_ac3d4752c4acfdb1dfe04cdbcd562c1ec"><div class="ttname"><a href="floor-mode-changer_8h.html#ac3d4752c4acfdb1dfe04cdbcd562c1ec">prepare_change_floor_mode</a></div><div class="ttdeci">void prepare_change_floor_mode(player_type *creature_ptr, BIT_FLAGS mode)</div><div class="ttdoc">フロア切り替え時の処理フラグを追加する / Prepare mode flags of changing floor</div><div class="ttdef"><b>Definition:</b> floor-mode-changer.cpp:9</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

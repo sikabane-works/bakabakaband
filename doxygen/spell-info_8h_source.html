@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/spell/spell-info.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b288867d93d6ddd637031b6cda0e8b43.html">spell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">spell-info.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="spell-info_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<a class="code" href="h-type_8h.html#a4eab974608c90fb1be94a113865965be">EXP</a> <a class="code" href="spell-info_8h.html#a4f72c859b13e708b4a4fb3023a77c421">experience_of_spell</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a> spell, <a class="code" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a> use_realm);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<a class="code" href="h-type_8h.html#a7448a47304a3bec61dd90b4078037cef">MANA_POINT</a> <a class="code" href="spell-info_8h.html#a83499255de42cbe65adcd9aad90da2ae">mod_need_mana</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a7448a47304a3bec61dd90b4078037cef">MANA_POINT</a> need_mana, <a class="code" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a> spell, <a class="code" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a> realm);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<a class="code" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> <a class="code" href="spell-info_8h.html#a1e89c6a35328d711dcb051ba25c93a2a">mod_spell_chance_1</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> chance);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<a class="code" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> <a class="code" href="spell-info_8h.html#ad00ef1a0fb303825fc68e70dbdd62338">mod_spell_chance_2</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> chance);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<a class="code" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> <a class="code" href="spell-info_8h.html#a143d1a1afde1cacc686ef6c085eabb62">spell_chance</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a> spell, <a class="code" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a> realm);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spell-info_8h.html#a0a5a1d8d5e190936adc5ff16e684c92d">print_spells</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a> target_spell, <a class="code" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a> *spells, <span class="keywordtype">int</span> num, <a class="code" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> y, <a class="code" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> x, <a class="code" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a> realm);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a15cc25d6db15644573f14008c0a804eb"><div class="ttname"><a href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a></div><div class="ttdeci">int TERM_LEN</div><div class="ttdoc">コンソール表示座標の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:214</div></div>
+<div class="ttc" id="ah-type_8h_html_a4eab974608c90fb1be94a113865965be"><div class="ttname"><a href="h-type_8h.html#a4eab974608c90fb1be94a113865965be">EXP</a></div><div class="ttdeci">s32b EXP</div><div class="ttdoc">ゲーム中の主経験値の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:178</div></div>
+<div class="ttc" id="ah-type_8h_html_a557f0599108d7e2a11e3495c819c6d6b"><div class="ttname"><a href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a></div><div class="ttdeci">s16b REALM_IDX</div><div class="ttdoc">ゲーム中の魔法領域ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:112</div></div>
+<div class="ttc" id="ah-type_8h_html_a7448a47304a3bec61dd90b4078037cef"><div class="ttname"><a href="h-type_8h.html#a7448a47304a3bec61dd90b4078037cef">MANA_POINT</a></div><div class="ttdeci">s32b MANA_POINT</div><div class="ttdoc">ゲーム中のMP型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:149</div></div>
+<div class="ttc" id="ah-type_8h_html_a7c6a37c6000d234e7e4b733a8c830018"><div class="ttname"><a href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a></div><div class="ttdeci">s32b PERCENTAGE</div><div class="ttdoc">ゲーム中のパーセント表記の型定義(/100倍)</div><div class="ttdef"><b>Definition:</b> h-type.h:200</div></div>
+<div class="ttc" id="ah-type_8h_html_a8999b4411f93c429d3c10840fde80da1"><div class="ttname"><a href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a></div><div class="ttdeci">s32b SPELL_IDX</div><div class="ttdoc">各魔法領域/職業能力ごとの呪文ID型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:221</div></div>
+<div class="ttc" id="aspell-info_8h_html_a0a5a1d8d5e190936adc5ff16e684c92d"><div class="ttname"><a href="spell-info_8h.html#a0a5a1d8d5e190936adc5ff16e684c92d">print_spells</a></div><div class="ttdeci">void print_spells(player_type *caster_ptr, SPELL_IDX target_spell, SPELL_IDX *spells, int num, TERM_LEN y, TERM_LEN x, REALM_IDX realm)</div><div class="ttdoc">呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)</div><div class="ttdef"><b>Definition:</b> spell-info.cpp:221</div></div>
+<div class="ttc" id="aspell-info_8h_html_a143d1a1afde1cacc686ef6c085eabb62"><div class="ttname"><a href="spell-info_8h.html#a143d1a1afde1cacc686ef6c085eabb62">spell_chance</a></div><div class="ttdeci">PERCENTAGE spell_chance(player_type *caster_ptr, SPELL_IDX spell, REALM_IDX realm)</div><div class="ttdoc">呪文の失敗率計算メインルーチン / Returns spell chance of failure for spell -RAK-</div><div class="ttdef"><b>Definition:</b> spell-info.cpp:127</div></div>
+<div class="ttc" id="aspell-info_8h_html_a1e89c6a35328d711dcb051ba25c93a2a"><div class="ttname"><a href="spell-info_8h.html#a1e89c6a35328d711dcb051ba25c93a2a">mod_spell_chance_1</a></div><div class="ttdeci">PERCENTAGE mod_spell_chance_1(player_type *caster_ptr, PERCENTAGE chance)</div><div class="ttdoc">呪文の失敗率修正処理1(呪い、消費魔力減少、呪文簡易化) / Modify spell fail rate Using to_m_chance, dec_mana,...</div><div class="ttdef"><b>Definition:</b> spell-info.cpp:81</div></div>
+<div class="ttc" id="aspell-info_8h_html_a4f72c859b13e708b4a4fb3023a77c421"><div class="ttname"><a href="spell-info_8h.html#a4f72c859b13e708b4a4fb3023a77c421">experience_of_spell</a></div><div class="ttdeci">EXP experience_of_spell(player_type *caster_ptr, SPELL_IDX spell, REALM_IDX use_realm)</div><div class="ttdoc">呪文の経験値を返す / Returns experience of a spell</div><div class="ttdef"><b>Definition:</b> spell-info.cpp:26</div></div>
+<div class="ttc" id="aspell-info_8h_html_a83499255de42cbe65adcd9aad90da2ae"><div class="ttname"><a href="spell-info_8h.html#a83499255de42cbe65adcd9aad90da2ae">mod_need_mana</a></div><div class="ttdeci">MANA_POINT mod_need_mana(player_type *caster_ptr, MANA_POINT need_mana, SPELL_IDX spell, REALM_IDX realm)</div><div class="ttdoc">呪文の消費MPを返す / Modify mana consumption rate using spell exp and dec_mana</div><div class="ttdef"><b>Definition:</b> spell-info.cpp:49</div></div>
+<div class="ttc" id="aspell-info_8h_html_ad00ef1a0fb303825fc68e70dbdd62338"><div class="ttname"><a href="spell-info_8h.html#ad00ef1a0fb303825fc68e70dbdd62338">mod_spell_chance_2</a></div><div class="ttdeci">PERCENTAGE mod_spell_chance_2(player_type *caster_ptr, PERCENTAGE chance)</div><div class="ttdoc">呪文の失敗率修正処理2(消費魔力減少、呪い、負値修正) / Modify spell fail rate Using to_m_chance, dec_mana, easy_spell and heav...</div><div class="ttdef"><b>Definition:</b> spell-info.cpp:110</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

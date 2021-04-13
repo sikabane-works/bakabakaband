@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/term/term-color-types.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f015963f69ae14c534311f2118856536.html">term</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">term-color-types.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="term-color-types_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Angband &quot;attributes&quot; (with symbols, and base (R,G,B) codes)</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * The &quot;(R,G,B)&quot; codes are given in &quot;fourths&quot; of the &quot;maximal&quot; value,</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * and should &quot;gamma corrected&quot; on most (non-Macintosh) machines.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9">    9</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9">term_color_type</a> {</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a690d363f9c13738001e897b5cf883cb6">   10</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a690d363f9c13738001e897b5cf883cb6">TERM_DARK</a> = 0, </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9afbad6c8848334addab2ddeae5c59145b">   11</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9afbad6c8848334addab2ddeae5c59145b">TERM_WHITE</a> = 1, </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9ae06c8a1767a5ff404570f6e6b44d50ed">   12</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9ae06c8a1767a5ff404570f6e6b44d50ed">TERM_SLATE</a> = 2, </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9ad8381f6d59c5299f2b7408a1e28d334e">   13</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9ad8381f6d59c5299f2b7408a1e28d334e">TERM_ORANGE</a> = 3, </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9adee60002b80d2e288c6cca834625a7a1">   14</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9adee60002b80d2e288c6cca834625a7a1">TERM_RED</a> = 4, </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a28e629f1573056472710cd032c8a63f3">   15</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a28e629f1573056472710cd032c8a63f3">TERM_GREEN</a> = 5, </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a00755021b59fa0f185155cae9b30cbab">   16</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a00755021b59fa0f185155cae9b30cbab">TERM_BLUE</a> = 6, </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9af91d47ee09b0afbfb79662c0ebdb22f2">   17</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9af91d47ee09b0afbfb79662c0ebdb22f2">TERM_UMBER</a> = 7, </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a2a11f3f1b9fba93e54b6b91038c2d03d">   18</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a2a11f3f1b9fba93e54b6b91038c2d03d">TERM_L_DARK</a> = 8, </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a28a32777aed33204d35b7c1c5b21c1fa">   19</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a28a32777aed33204d35b7c1c5b21c1fa">TERM_L_WHITE</a> = 9, </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9ab82a74259730de55102ce34533268acf">   20</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9ab82a74259730de55102ce34533268acf">TERM_VIOLET</a> = 10, </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9aa253e17ee94cbc87371e3434fbff58e8">   21</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9aa253e17ee94cbc87371e3434fbff58e8">TERM_YELLOW</a> = 11, </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9aaf2d09080c1756e8b98e52f11a61464e">   22</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9aaf2d09080c1756e8b98e52f11a61464e">TERM_L_RED</a> = 12, </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a3ebddc30a8ae31e8e00454d13d5e350a">   23</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a3ebddc30a8ae31e8e00454d13d5e350a">TERM_L_GREEN</a> = 13, </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a46140b99278d4d80b480834af47a5f3b">   24</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a46140b99278d4d80b480834af47a5f3b">TERM_L_BLUE</a> = 14, </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9afec97338ae8ba782b0d0cc41d1813e67">   25</a></span>&#160;    <a class="code" href="term-color-types_8h.html#a876001384b70184bda55e454874083f9afec97338ae8ba782b0d0cc41d1813e67">TERM_L_UMBER</a> = 15, </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9">term_color_type</a></div><div class="ttdeci">term_color_type</div><div class="ttdef"><b>Definition:</b> term-color-types.h:9</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9a00755021b59fa0f185155cae9b30cbab"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a00755021b59fa0f185155cae9b30cbab">TERM_BLUE</a></div><div class="ttdeci">@ TERM_BLUE</div><div class="ttdoc">'b' - 青 0,0,4</div><div class="ttdef"><b>Definition:</b> term-color-types.h:16</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9a28a32777aed33204d35b7c1c5b21c1fa"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a28a32777aed33204d35b7c1c5b21c1fa">TERM_L_WHITE</a></div><div class="ttdeci">@ TERM_L_WHITE</div><div class="ttdoc">'W' - 明るい灰 3,3,3</div><div class="ttdef"><b>Definition:</b> term-color-types.h:19</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9a28e629f1573056472710cd032c8a63f3"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a28e629f1573056472710cd032c8a63f3">TERM_GREEN</a></div><div class="ttdeci">@ TERM_GREEN</div><div class="ttdoc">'g' - 緑 0,2,1</div><div class="ttdef"><b>Definition:</b> term-color-types.h:15</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9a2a11f3f1b9fba93e54b6b91038c2d03d"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a2a11f3f1b9fba93e54b6b91038c2d03d">TERM_L_DARK</a></div><div class="ttdeci">@ TERM_L_DARK</div><div class="ttdoc">'D' - 暗い灰 1,1,1</div><div class="ttdef"><b>Definition:</b> term-color-types.h:18</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9a3ebddc30a8ae31e8e00454d13d5e350a"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a3ebddc30a8ae31e8e00454d13d5e350a">TERM_L_GREEN</a></div><div class="ttdeci">@ TERM_L_GREEN</div><div class="ttdoc">'G' - 明るい緑 0,4,0</div><div class="ttdef"><b>Definition:</b> term-color-types.h:23</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9a46140b99278d4d80b480834af47a5f3b"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a46140b99278d4d80b480834af47a5f3b">TERM_L_BLUE</a></div><div class="ttdeci">@ TERM_L_BLUE</div><div class="ttdoc">'B' - 明るい青 0,4,4</div><div class="ttdef"><b>Definition:</b> term-color-types.h:24</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9a690d363f9c13738001e897b5cf883cb6"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9a690d363f9c13738001e897b5cf883cb6">TERM_DARK</a></div><div class="ttdeci">@ TERM_DARK</div><div class="ttdoc">'d' - 黒 0,0,0</div><div class="ttdef"><b>Definition:</b> term-color-types.h:10</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9aa253e17ee94cbc87371e3434fbff58e8"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9aa253e17ee94cbc87371e3434fbff58e8">TERM_YELLOW</a></div><div class="ttdeci">@ TERM_YELLOW</div><div class="ttdoc">'y' - 黄 4,4,0</div><div class="ttdef"><b>Definition:</b> term-color-types.h:21</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9aaf2d09080c1756e8b98e52f11a61464e"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9aaf2d09080c1756e8b98e52f11a61464e">TERM_L_RED</a></div><div class="ttdeci">@ TERM_L_RED</div><div class="ttdoc">'R' - 明るい赤 4,0,0</div><div class="ttdef"><b>Definition:</b> term-color-types.h:22</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9ab82a74259730de55102ce34533268acf"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9ab82a74259730de55102ce34533268acf">TERM_VIOLET</a></div><div class="ttdeci">@ TERM_VIOLET</div><div class="ttdoc">'v' - 紫 4,0,4</div><div class="ttdef"><b>Definition:</b> term-color-types.h:20</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9ad8381f6d59c5299f2b7408a1e28d334e"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9ad8381f6d59c5299f2b7408a1e28d334e">TERM_ORANGE</a></div><div class="ttdeci">@ TERM_ORANGE</div><div class="ttdoc">'o' - 橙 4,2,0</div><div class="ttdef"><b>Definition:</b> term-color-types.h:13</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9adee60002b80d2e288c6cca834625a7a1"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9adee60002b80d2e288c6cca834625a7a1">TERM_RED</a></div><div class="ttdeci">@ TERM_RED</div><div class="ttdoc">'r' - 赤 3,0,0</div><div class="ttdef"><b>Definition:</b> term-color-types.h:14</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9ae06c8a1767a5ff404570f6e6b44d50ed"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9ae06c8a1767a5ff404570f6e6b44d50ed">TERM_SLATE</a></div><div class="ttdeci">@ TERM_SLATE</div><div class="ttdoc">'s' - 灰 2,2,2</div><div class="ttdef"><b>Definition:</b> term-color-types.h:12</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9af91d47ee09b0afbfb79662c0ebdb22f2"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9af91d47ee09b0afbfb79662c0ebdb22f2">TERM_UMBER</a></div><div class="ttdeci">@ TERM_UMBER</div><div class="ttdoc">'u' - 琥珀 2,1,0</div><div class="ttdef"><b>Definition:</b> term-color-types.h:17</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9afbad6c8848334addab2ddeae5c59145b"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9afbad6c8848334addab2ddeae5c59145b">TERM_WHITE</a></div><div class="ttdeci">@ TERM_WHITE</div><div class="ttdoc">'w' - 白 4,4,4</div><div class="ttdef"><b>Definition:</b> term-color-types.h:11</div></div>
+<div class="ttc" id="aterm-color-types_8h_html_a876001384b70184bda55e454874083f9afec97338ae8ba782b0d0cc41d1813e67"><div class="ttname"><a href="term-color-types_8h.html#a876001384b70184bda55e454874083f9afec97338ae8ba782b0d0cc41d1813e67">TERM_L_UMBER</a></div><div class="ttdeci">@ TERM_L_UMBER</div><div class="ttdoc">'U' - 明るい琥珀 3,2,1</div><div class="ttdef"><b>Definition:</b> term-color-types.h:25</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

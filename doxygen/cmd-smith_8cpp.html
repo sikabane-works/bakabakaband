@@ -1,0 +1,834 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/cmd-item/cmd-smith.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1feb516edb48b9003f77be11a320817a.html">cmd-item</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">cmd-smith.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="cmd-smith_8h_source.html">cmd-item/cmd-smith.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="action-limited_8h_source.html">action/action-limited.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="autopick_8h_source.html">autopick/autopick.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-update-types_8h_source.html">core/player-update-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="window-redrawer_8h_source.html">core/window-redrawer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flavor-describer_8h_source.html">flavor/flavor-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flavor-types_8h_source.html">flavor/object-flavor-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-object_8h_source.html">floor/floor-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="text-display-options_8h_source.html">game-option/text-display-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="command-repeater_8h_source.html">io/command-repeater.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-requester_8h_source.html">io/input-key-requester.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mind-weaponsmith_8h_source.html">mind/mind-weaponsmith.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-ego_8h_source.html">object-enchant/object-ego.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-object-flags_8h_source.html">object-enchant/special-object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tr-types_8h_source.html">object-enchant/tr-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="trc-types_8h_source.html">object-enchant/trc-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-armor_8h_source.html">object-hook/hook-armor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-enchant_8h_source.html">object-hook/hook-enchant.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-weapon_8h_source.html">object-hook/hook-weapon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-tester-hooker_8h_source.html">object/item-tester-hooker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-use-flags_8h_source.html">object/item-use-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flags_8h_source.html">object/object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-generator_8h_source.html">object/object-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-perception_8h_source.html">perception/object-perception.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status_8h_source.html">player/player-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="buffer-shaper_8h_source.html">util/buffer-shaper.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+cmd-smith.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-smith_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-item_2cmd-smith_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-item_2cmd-smith_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-item_2cmd-smith_8cpp">
+<area shape="rect" title=" " alt="" coords="2327,5,2517,61"/>
+<area shape="rect" href="cmd-smith_8h.html" title=" " alt="" coords="435,206,587,233"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1691,452,1838,479"/>
+<area shape="rect" href="action-limited_8h.html" title=" " alt="" coords="2643,117,2793,143"/>
+<area shape="rect" href="autopick_8h.html" title=" " alt="" coords="891,117,1025,143"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="2817,117,2955,143"/>
+<area shape="rect" href="player-update-types_8h.html" title=" " alt="" coords="3263,109,3392,151"/>
+<area shape="rect" href="window-redrawer_8h.html" title=" " alt="" coords="2979,117,3137,143"/>
+<area shape="rect" href="flavor-describer_8h.html" title=" " alt="" coords="3098,206,3250,233"/>
+<area shape="rect" href="object-flavor-types_8h.html" title=" " alt="" coords="3417,109,3539,151"/>
+<area shape="rect" href="floor-object_8h.html" title=" " alt="" coords="5,295,129,322"/>
+<area shape="rect" href="text-display-options_8h.html" title=" " alt="" coords="153,288,317,329"/>
+<area shape="rect" href="command-repeater_8h.html" title=" " alt="" coords="155,206,310,233"/>
+<area shape="rect" href="input-key-acceptor_8h.html" title=" " alt="" coords="393,295,547,322"/>
+<area shape="rect" href="input-key-requester_8h.html" title=" " alt="" coords="1643,117,1801,143"/>
+<area shape="rect" href="sound-of-music_8h.html" title=" " alt="" coords="2067,206,2220,233"/>
+<area shape="rect" href="mind-weaponsmith_8h.html" title=" " alt="" coords="611,206,785,233"/>
+<area shape="rect" href="object-ego_8h.html" title=" " alt="" coords="2482,199,2629,240"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="2501,295,2668,322"/>
+<area shape="rect" href="special-object-flags_8h.html" title=" " alt="" coords="3563,109,3715,151"/>
+<area shape="rect" href="trc-types_8h.html" title=" " alt="" coords="3740,109,3867,151"/>
+<area shape="rect" href="hook-armor_8h.html" title=" " alt="" coords="777,295,947,322"/>
+<area shape="rect" href="hook-enchant_8h.html" title=" " alt="" coords="1401,206,1584,233"/>
+<area shape="rect" href="hook-weapon_8h.html" title=" " alt="" coords="1563,295,1743,322"/>
+<area shape="rect" href="item-tester-hooker_8h.html" title=" " alt="" coords="1091,199,1214,240"/>
+<area shape="rect" href="item-use-flags_8h.html" title=" " alt="" coords="3891,117,4044,143"/>
+<area shape="rect" href="object-flags_8h.html" title=" " alt="" coords="1238,206,1377,233"/>
+<area shape="rect" href="object-generator_8h.html" title=" " alt="" coords="1877,206,2042,233"/>
+<area shape="rect" href="object-perception_8h.html" title=" " alt="" coords="1869,295,2065,322"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="2295,206,2458,233"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="4069,117,4226,143"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="4251,117,4409,143"/>
+<area shape="rect" href="buffer-shaper_8h.html" title=" " alt="" coords="2693,295,2821,322"/>
+<area shape="rect" href="int-char-converter_8h.html" title=" " alt="" coords="4433,117,4587,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="2755,206,2921,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1435,377,1564,404"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1339,452,1430,479"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1454,452,1545,479"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1569,452,1667,479"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1217,452,1315,479"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1524,527,1643,553"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1889,527,2000,553"/>
+<area shape="rect" href="autopick-util_8h.html" title=" " alt="" coords="911,206,1067,233"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="572,295,651,322"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="1215,288,1349,329"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="1108,377,1235,404"/>
+<area shape="rect" href="keymap-directory-getter_8h.html" title=" " alt="" coords="1608,199,1751,240"/>
+<area shape="rect" title=" " alt="" coords="2090,295,2146,322"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="2272,288,2399,329"/>
+<area shape="rect" title=" " alt="" coords="2423,295,2477,322"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structessence__type.html">essence_type</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの鍛冶コマンド実装  <a href="structessence__type.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a847c50092bfc5100229cf7b35d75a78b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-smith_8cpp.html#a847c50092bfc5100229cf7b35d75a78b">display_essence</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a847c50092bfc5100229cf7b35d75a78b"><td class="mdescLeft">&#160;</td><td class="mdescRight">所持しているエッセンス一覧を表示する  <a href="cmd-smith_8cpp.html#a847c50092bfc5100229cf7b35d75a78b">[詳解]</a><br /></td></tr>
+<tr class="separator:a847c50092bfc5100229cf7b35d75a78b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a797b62fcd176848c22caea6a89c96911"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-smith_8cpp.html#a797b62fcd176848c22caea6a89c96911">drain_essence</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a797b62fcd176848c22caea6a89c96911"><td class="mdescLeft">&#160;</td><td class="mdescRight">エッセンスの抽出処理  <a href="cmd-smith_8cpp.html#a797b62fcd176848c22caea6a89c96911">[詳解]</a><br /></td></tr>
+<tr class="separator:a797b62fcd176848c22caea6a89c96911"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa74e35d5d3495d1c2dea9875c6a678c0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-smith_8cpp.html#aa74e35d5d3495d1c2dea9875c6a678c0">choose_essence</a> (void)</td></tr>
+<tr class="memdesc:aa74e35d5d3495d1c2dea9875c6a678c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">付加するエッセンスの大別を選択する  <a href="cmd-smith_8cpp.html#aa74e35d5d3495d1c2dea9875c6a678c0">[詳解]</a><br /></td></tr>
+<tr class="separator:aa74e35d5d3495d1c2dea9875c6a678c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53bf0b2e4c1aa52241e31f957a28e240"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-smith_8cpp.html#a53bf0b2e4c1aa52241e31f957a28e240">add_essence</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#adcde018af7ffced7b844b9a8a4b937db">ESSENCE_IDX</a> mode)</td></tr>
+<tr class="memdesc:a53bf0b2e4c1aa52241e31f957a28e240"><td class="mdescLeft">&#160;</td><td class="mdescRight">エッセンスを実際に付加する  <a href="cmd-smith_8cpp.html#a53bf0b2e4c1aa52241e31f957a28e240">[詳解]</a><br /></td></tr>
+<tr class="separator:a53bf0b2e4c1aa52241e31f957a28e240"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af097a4d1a6d82fc80c9bbdcb97476067"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-smith_8cpp.html#af097a4d1a6d82fc80c9bbdcb97476067">erase_essence</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:af097a4d1a6d82fc80c9bbdcb97476067"><td class="mdescLeft">&#160;</td><td class="mdescRight">エッセンスを消去する  <a href="cmd-smith_8cpp.html#af097a4d1a6d82fc80c9bbdcb97476067">[詳解]</a><br /></td></tr>
+<tr class="separator:af097a4d1a6d82fc80c9bbdcb97476067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ee36ec07842685feb97d0d9295e4985"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-smith_8cpp.html#a1ee36ec07842685feb97d0d9295e4985">do_cmd_kaji</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> only_browse)</td></tr>
+<tr class="memdesc:a1ee36ec07842685feb97d0d9295e4985"><td class="mdescLeft">&#160;</td><td class="mdescRight">鍛冶コマンドのメインルーチン  <a href="cmd-smith_8cpp.html#a1ee36ec07842685feb97d0d9295e4985">[詳解]</a><br /></td></tr>
+<tr class="separator:a1ee36ec07842685feb97d0d9295e4985"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a1b1409e78c7b6be6d378ee564b868a00"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structessence__type.html">essence_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-smith_8cpp.html#a1b1409e78c7b6be6d378ee564b868a00">essence_info</a> []</td></tr>
+<tr class="memdesc:a1b1409e78c7b6be6d378ee564b868a00"><td class="mdescLeft">&#160;</td><td class="mdescRight">エッセンス情報テーブル Smithing type data for Weapon smith  <a href="cmd-smith_8cpp.html#a1b1409e78c7b6be6d378ee564b868a00">[詳解]</a><br /></td></tr>
+<tr class="separator:a1b1409e78c7b6be6d378ee564b868a00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa57afb19d3bd40b203d396b953a5cda"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-smith_8cpp.html#aaa57afb19d3bd40b203d396b953a5cda">essence_name</a> []</td></tr>
+<tr class="memdesc:aaa57afb19d3bd40b203d396b953a5cda"><td class="mdescLeft">&#160;</td><td class="mdescRight">エッセンス名テーブル / Essense names for Weapon smith  <a href="cmd-smith_8cpp.html#aaa57afb19d3bd40b203d396b953a5cda">[詳解]</a><br /></td></tr>
+<tr class="separator:aaa57afb19d3bd40b203d396b953a5cda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a415786da50bfccf38383544f86aa2967"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-smith_8cpp.html#a415786da50bfccf38383544f86aa2967">kaji_tips</a> [5]</td></tr>
+<tr class="separator:a415786da50bfccf38383544f86aa2967"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a53bf0b2e4c1aa52241e31f957a28e240"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53bf0b2e4c1aa52241e31f957a28e240">&#9670;&nbsp;</a></span>add_essence()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void add_essence </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#adcde018af7ffced7b844b9a8a4b937db">ESSENCE_IDX</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>エッセンスを実際に付加する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mode</td><td>エッセンスの大別ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-smith_8cpp_a53bf0b2e4c1aa52241e31f957a28e240_cgraph.png" border="0" usemap="#acmd-smith_8cpp_a53bf0b2e4c1aa52241e31f957a28e240_cgraph" alt=""/></div>
+<map name="acmd-smith_8cpp_a53bf0b2e4c1aa52241e31f957a28e240_cgraph" id="acmd-smith_8cpp_a53bf0b2e4c1aa52241e31f957a28e240_cgraph">
+<area shape="rect" title="エッセンスを実際に付加する" alt="" coords="5,1500,104,1527"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="977,107,1019,133"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="1203,1424,1253,1451"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="202,867,309,893"/>
+<area shape="rect" href="command-repeater_8cpp.html#a7d3c94fc9d6f020c659ace3f90900d63" title=" " alt="" coords="955,1145,1041,1172"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="736,1095,795,1121"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1189,1297,1267,1324"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="979,1424,1017,1451"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="951,233,1045,260"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="952,892,1044,919"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="951,943,1045,969"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="202,1449,309,1476"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="214,1500,297,1527"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="729,1297,801,1324"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="726,1449,805,1476"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a07b7ed7cf91aa1787f1def0c93eaffa6" title="エッセンスの付加可能な武器や矢弾かを返す" alt="" coords="152,1652,359,1679"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="469,1601,559,1628"/>
+<area shape="rect" href="hook-weapon_8cpp.html#aab8e2d5bc14010a9e4b9c377f8ac200e" title="オブジェクトが強化可能武器であるかを返す / Check if an object is weapon (including bows and ammo) and allows enchantment" alt="" coords="182,1754,329,1795"/>
+<area shape="rect" href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537" title="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour" alt="" coords="705,1871,826,1897"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="195,1871,315,1897"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="199,1972,312,1999"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="407,1921,621,1948"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="224,2023,287,2049"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="217,2073,293,2100"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="1203,183,1253,209"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="1187,81,1269,108"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="1420,157,1497,184"/>
+<area shape="rect" href="z-term_8cpp.html#a50f4ddf9b64ef43b1be95eb89e78c263" title=" " alt="" coords="1387,107,1530,133"/>
+<area shape="rect" href="z-term_8cpp.html#a5d7c0ea368bccad499b9bbdb4ffc53dc" title=" " alt="" coords="1389,5,1528,32"/>
+<area shape="rect" href="z-term_8cpp.html#a1b660c2d9fa25eb39e501811a0088cd2" title=" " alt="" coords="1389,56,1528,83"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="1413,1424,1504,1451"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="1415,1335,1502,1361"/>
+<area shape="rect" href="z-term_8cpp.html#aed0973004e647060e40c2e8ee2471b89" title=" " alt="" coords="1596,1424,1725,1451"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="1613,1335,1708,1361"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="478,664,550,691"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="480,867,548,893"/>
+<area shape="rect" href="player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="1135,613,1321,640"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7c7bc7aaa4ea1facc9bffef817ae15ef" title=" " alt="" coords="1369,639,1548,665"/>
+<area shape="rect" href="item-getter_8cpp.html#acd17e2a74ae5acb8bfb06fead7ed7d1b" title="オブジェクト選択のモード設定" alt="" coords="672,892,859,919"/>
+<area shape="rect" href="item-getter_8cpp.html#aae1ffe8e95349276ec2eea3c8f1aabaf" title="アイテムにタグ付けがされているかの調査処理 (のはず)" alt="" coords="708,1044,823,1071"/>
+<area shape="rect" href="inventory-util_8cpp.html#a8ecee8934da290e32a3d32c076c79c8d" title="選択したアイテムの確認処理のメインルーチン /" alt="" coords="944,841,1052,868"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#a608d31e79fc4aba7a4903453f3c78c95" title="オブジェクト選択の汎用関数(床上アイテム用) / Let the user select an item, save its &quot;index&quot;" alt="" coords="714,537,817,564"/>
+<area shape="rect" href="inventory-util_8cpp.html#ac56c08414553f69a101a859aa01220e3" title="プレイヤーの所持/装備オブジェクトが正規のものかを返す / Auxiliary function for &quot;get_item()&quot; – test an index" alt="" coords="945,335,1051,361"/>
+<area shape="rect" href="item-tester-hooker_8cpp.html#ac2523c2f0be8b9c8a2ecce14fd51887c" title="アイテムがitem_tester_hookグローバル関数ポインタの条件を満たしているかを返す汎用関数 Check an item against the item tester info" alt="" coords="1167,335,1289,361"/>
+<area shape="rect" href="inventory-util_8cpp.html#a6106140a69e84e316a7ee1172c62f4b6" title="所持/装備オブジェクトに選択タグを与える/タグに該当するオブジェクトがあるかを返す / Find the &quot;first&quot; inventory object with the given &quot;tag&quot;." alt="" coords="965,385,1031,412"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="953,284,1043,311"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3be357b2b900b29111c229eb1e975763" title=" " alt="" coords="909,639,1087,665"/>
+<area shape="rect" href="object-info_8cpp.html#a21413bf407071b7e2f68ff548c34b165" title="オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label" alt="" coords="945,436,1051,463"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="971,487,1025,513"/>
+<area shape="rect" href="item-selection-util_8cpp.html#a74d26ed39043ee25aaf6a0ebc08b69c8" title=" " alt="" coords="669,740,861,767"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-smith_8cpp_a53bf0b2e4c1aa52241e31f957a28e240_icgraph.png" border="0" usemap="#acmd-smith_8cpp_a53bf0b2e4c1aa52241e31f957a28e240_icgraph" alt=""/></div>
+<map name="acmd-smith_8cpp_a53bf0b2e4c1aa52241e31f957a28e240_icgraph" id="acmd-smith_8cpp_a53bf0b2e4c1aa52241e31f957a28e240_icgraph">
+<area shape="rect" title="エッセンスを実際に付加する" alt="" coords="855,5,953,32"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a1ee36ec07842685feb97d0d9295e4985" title="鍛冶コマンドのメインルーチン" alt="" coords="712,5,807,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa74e35d5d3495d1c2dea9875c6a678c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa74e35d5d3495d1c2dea9875c6a678c0">&#9670;&nbsp;</a></span>choose_essence()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#a9760a9b50f8e3aeeb4b82d0dc9a81c33">COMMAND_CODE</a> choose_essence </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>付加するエッセンスの大別を選択する </p>
+<dl class="section return"><dt>戻り値</dt><dd>選んだエッセンスの大別ID </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-smith_8cpp_aa74e35d5d3495d1c2dea9875c6a678c0_cgraph.png" border="0" usemap="#acmd-smith_8cpp_aa74e35d5d3495d1c2dea9875c6a678c0_cgraph" alt=""/></div>
+<map name="acmd-smith_8cpp_aa74e35d5d3495d1c2dea9875c6a678c0_cgraph" id="acmd-smith_8cpp_aa74e35d5d3495d1c2dea9875c6a678c0_cgraph">
+<area shape="rect" title="付加するエッセンスの大別を選択する" alt="" coords="5,275,125,301"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="191,97,250,124"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="185,199,257,225"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="472,199,525,225"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="347,351,386,377"/>
+<area shape="rect" href="command-repeater_8cpp.html#a7d3c94fc9d6f020c659ace3f90900d63" title=" " alt="" coords="178,401,263,428"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="174,452,267,479"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="175,249,267,276"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="173,300,268,327"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="335,97,398,124"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="465,97,532,124"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a41533d64d34cff21ac2f08e39073e746" title=" " alt="" coords="316,249,417,276"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="327,300,406,327"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="587,47,689,73"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="744,97,843,124"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="891,148,968,175"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="597,148,679,175"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="750,199,837,225"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="580,300,696,327"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="752,249,835,276"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="580,351,696,377"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="580,401,696,428"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-smith_8cpp_aa74e35d5d3495d1c2dea9875c6a678c0_icgraph.png" border="0" usemap="#acmd-smith_8cpp_aa74e35d5d3495d1c2dea9875c6a678c0_icgraph" alt=""/></div>
+<map name="acmd-smith_8cpp_aa74e35d5d3495d1c2dea9875c6a678c0_icgraph" id="acmd-smith_8cpp_aa74e35d5d3495d1c2dea9875c6a678c0_icgraph">
+<area shape="rect" title="付加するエッセンスの大別を選択する" alt="" coords="855,5,975,32"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a1ee36ec07842685feb97d0d9295e4985" title="鍛冶コマンドのメインルーチン" alt="" coords="712,5,807,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a847c50092bfc5100229cf7b35d75a78b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a847c50092bfc5100229cf7b35d75a78b">&#9670;&nbsp;</a></span>display_essence()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_essence </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>所持しているエッセンス一覧を表示する </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-smith_8cpp_a847c50092bfc5100229cf7b35d75a78b_cgraph.png" border="0" usemap="#acmd-smith_8cpp_a847c50092bfc5100229cf7b35d75a78b_cgraph" alt=""/></div>
+<map name="acmd-smith_8cpp_a847c50092bfc5100229cf7b35d75a78b_cgraph" id="acmd-smith_8cpp_a847c50092bfc5100229cf7b35d75a78b_cgraph">
+<area shape="rect" title="所持しているエッセンス一覧を表示する" alt="" coords="5,461,124,488"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="190,208,249,235"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="193,411,246,437"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="200,461,239,488"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="173,512,265,539"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="172,563,267,589"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="341,19,404,45"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="511,5,577,32"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="321,157,424,184"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="495,56,593,83"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="657,284,735,311"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="332,385,413,412"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="501,563,587,589"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="315,487,431,513"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="331,537,414,564"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="315,588,431,615"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="315,639,431,665"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="499,107,589,133"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="503,157,585,184"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="497,208,591,235"/>
+<area shape="rect" href="macro-util_8cpp.html#a1e9851f9b9e0a0e51628a231ca95fcc1" title=" " alt="" coords="481,360,607,387"/>
+<area shape="rect" href="macro-util_8cpp.html#a7f48a1923076b3b314f1bc58913a2a59" title=" " alt="" coords="479,411,609,437"/>
+<area shape="rect" href="macro-util_8cpp.html#ada693de344c97bc09a586100f25919dd" title=" " alt="" coords="482,461,606,488"/>
+<area shape="rect" href="z-term_8cpp.html#a020ef4815c101960b4fdad94c4e5b59b" title=" " alt="" coords="489,512,599,539"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-smith_8cpp_a847c50092bfc5100229cf7b35d75a78b_icgraph.png" border="0" usemap="#acmd-smith_8cpp_a847c50092bfc5100229cf7b35d75a78b_icgraph" alt=""/></div>
+<map name="acmd-smith_8cpp_a847c50092bfc5100229cf7b35d75a78b_icgraph" id="acmd-smith_8cpp_a847c50092bfc5100229cf7b35d75a78b_icgraph">
+<area shape="rect" title="所持しているエッセンス一覧を表示する" alt="" coords="855,5,973,32"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a1ee36ec07842685feb97d0d9295e4985" title="鍛冶コマンドのメインルーチン" alt="" coords="712,5,807,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1ee36ec07842685feb97d0d9295e4985"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ee36ec07842685feb97d0d9295e4985">&#9670;&nbsp;</a></span>do_cmd_kaji()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_kaji </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>only_browse</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>鍛冶コマンドのメインルーチン </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">only_browse</td><td>TRUEならばエッセンス一覧の表示のみを行う </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-smith_8cpp_a1ee36ec07842685feb97d0d9295e4985_cgraph.png" border="0" usemap="#acmd-smith_8cpp_a1ee36ec07842685feb97d0d9295e4985_cgraph" alt=""/></div>
+<map name="acmd-smith_8cpp_a1ee36ec07842685feb97d0d9295e4985_cgraph" id="acmd-smith_8cpp_a1ee36ec07842685feb97d0d9295e4985_cgraph">
+<area shape="rect" title="鍛冶コマンドのメインルーチン" alt="" coords="5,663,100,689"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a53bf0b2e4c1aa52241e31f957a28e240" title="エッセンスを実際に付加する" alt="" coords="167,1321,266,1348"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="1237,891,1323,917"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="834,1245,893,1272"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="837,891,890,917"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="844,1043,883,1069"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="817,485,910,512"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="817,649,909,676"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="816,764,911,791"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="612,840,684,867"/>
+<area shape="rect" href="command-repeater_8cpp.html#a7d3c94fc9d6f020c659ace3f90900d63" title=" " alt="" coords="605,384,691,411"/>
+<area shape="rect" href="cmd-smith_8cpp.html#aa74e35d5d3495d1c2dea9875c6a678c0" title="付加するエッセンスの大別を選択する" alt="" coords="377,637,497,664"/>
+<area shape="rect" href="action-limited_8cpp.html#a071fa928301cca389bfefc56eded6e02" title=" " alt="" coords="161,29,273,56"/>
+<area shape="rect" href="action-limited_8cpp.html#ab6e41ead2ec3155cacbd47e788347578" title=" " alt="" coords="148,131,285,157"/>
+<area shape="rect" href="action-limited_8cpp.html#a67a4629c20dfdbd1febcb4ab33347267" title=" " alt="" coords="157,181,277,208"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a847c50092bfc5100229cf7b35d75a78b" title="所持しているエッセンス一覧を表示する" alt="" coords="589,789,707,816"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a797b62fcd176848c22caea6a89c96911" title="エッセンスの抽出処理" alt="" coords="163,2284,270,2311"/>
+<area shape="rect" href="cmd-smith_8cpp.html#af097a4d1a6d82fc80c9bbdcb97476067" title="エッセンスを消去する" alt="" coords="161,1955,272,1981"/>
+<area shape="rect" href="buffer-shaper_8cpp.html#a74f223098d062fe8625ee0809a800315" title=" " alt="" coords="169,2335,264,2361"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="842,1636,885,1663"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="1077,1043,1128,1069"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="383,2005,490,2032"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1063,891,1142,917"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="595,2208,701,2235"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="395,1853,478,1880"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="609,1347,687,1373"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a07b7ed7cf91aa1787f1def0c93eaffa6" title="エッセンスの付加可能な武器や矢弾かを返す" alt="" coords="333,1043,540,1069"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="391,1752,482,1779"/>
+<area shape="rect" href="hook-weapon_8cpp.html#aab8e2d5bc14010a9e4b9c377f8ac200e" title="オブジェクトが強化可能武器であるかを返す / Check if an object is weapon (including bows and ammo) and allows enchantment" alt="" coords="790,1810,937,1851"/>
+<area shape="rect" href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537" title="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour" alt="" coords="1042,1745,1163,1772"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="588,1904,708,1931"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="591,2056,705,2083"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="756,2020,971,2047"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="405,1093,468,1120"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="399,1955,475,1981"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="1078,1611,1127,1637"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="1061,1560,1144,1587"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="1241,1560,1319,1587"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="1235,1043,1325,1069"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="612,992,684,1019"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="614,2411,682,2437"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a3abbd26c216ede60fb3c6e8d519cc7c6" title="オブジェクトが武器や矢弾として使用できるかを返す / Check if an object is weapon (including bows and ammo) Rare weapons/aromor..." alt="" coords="1019,2020,1187,2047"/>
+<area shape="rect" href="grid_8cpp.html#a90a8ac3022bff7cdeddf03830a82b39d" title="指定された座標をプレイヤー収められていない状態かどうか / Returns true if the player&#39;s grid is dark" alt="" coords="407,29,467,56"/>
+<area shape="rect" href="autopick_8cpp.html#ae7f092144503a2ccb534345fe872d299" title=" " alt="" coords="369,2563,504,2589"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f7ad5a9cb44932d39bbf0c31a37c946" title="オブジェクトを＊鑑定＊済にする / The player is now aware of the effects of the given object." alt="" coords="387,2309,486,2336"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="391,2208,482,2235"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="377,2613,496,2640"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a4c57d869f2831012a54d4cc096820260" title="オブジェクトが通常のアイテム(アーティファクト、エゴ、鍛冶師エッセンス付加いずれでもない)かを返す / Check if an object is neither artifact,..." alt="" coords="368,2056,505,2083"/>
+<area shape="rect" href="object-perception_8cpp.html#a7d25977942886a0b3043ce3c468cf08c" title="オブジェクトを鑑定済にする / Known is true when the &quot;attributes&quot; of an object are &quot;known&quot;." alt="" coords="386,2664,487,2691"/>
+<area shape="rect" href="object-generator_8cpp.html#a9d4bf7f51bf5056089190534c673d068" title="オブジェクト構造体にベースアイテムを作成する Prepare an object based on an object kind." alt="" coords="392,2512,481,2539"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-smith_8cpp_a1ee36ec07842685feb97d0d9295e4985_icgraph.png" border="0" usemap="#acmd-smith_8cpp_a1ee36ec07842685feb97d0d9295e4985_icgraph" alt=""/></div>
+<map name="acmd-smith_8cpp_a1ee36ec07842685feb97d0d9295e4985_icgraph" id="acmd-smith_8cpp_a1ee36ec07842685feb97d0d9295e4985_icgraph">
+<area shape="rect" title="鍛冶コマンドのメインルーチン" alt="" coords="884,5,979,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="668,31,836,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="516,31,620,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a797b62fcd176848c22caea6a89c96911"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a797b62fcd176848c22caea6a89c96911">&#9670;&nbsp;</a></span>drain_essence()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void drain_essence </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>エッセンスの抽出処理 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-smith_8cpp_a797b62fcd176848c22caea6a89c96911_cgraph.png" border="0" usemap="#acmd-smith_8cpp_a797b62fcd176848c22caea6a89c96911_cgraph" alt=""/></div>
+<map name="acmd-smith_8cpp_a797b62fcd176848c22caea6a89c96911_cgraph" id="acmd-smith_8cpp_a797b62fcd176848c22caea6a89c96911_cgraph">
+<area shape="rect" title="エッセンスの抽出処理" alt="" coords="5,473,112,500"/>
+<area shape="rect" href="autopick_8cpp.html#ae7f092144503a2ccb534345fe872d299" title=" " alt="" coords="161,296,296,323"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="790,116,881,143"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="776,241,895,268"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="549,161,655,188"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="728,296,943,323"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a3abbd26c216ede60fb3c6e8d519cc7c6" title="オブジェクトが武器や矢弾として使用できるかを返す / Check if an object is weapon (including bows and ammo) Rare weapons/aromor..." alt="" coords="991,144,1159,171"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="557,499,647,525"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="796,524,875,551"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="175,347,282,373"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="199,600,258,627"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="187,651,270,677"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f7ad5a9cb44932d39bbf0c31a37c946" title="オブジェクトを＊鑑定＊済にする / The player is now aware of the effects of the given object." alt="" coords="361,144,460,171"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a4c57d869f2831012a54d4cc096820260" title="オブジェクトが通常のアイテム(アーティファクト、エゴ、鍛冶師エッセンス付加いずれでもない)かを返す / Check if an object is neither artifact,..." alt="" coords="160,701,297,728"/>
+<area shape="rect" href="object-perception_8cpp.html#a7d25977942886a0b3043ce3c468cf08c" title="オブジェクトを鑑定済にする / Known is true when the &quot;attributes&quot; of an object are &quot;known&quot;." alt="" coords="178,752,279,779"/>
+<area shape="rect" href="object-generator_8cpp.html#a9d4bf7f51bf5056089190534c673d068" title="オブジェクト構造体にベースアイテムを作成する Prepare an object based on an object kind." alt="" coords="184,803,273,829"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="191,853,267,880"/>
+<area shape="rect" href="autopick-destroyer_8cpp.html#a9efe25ff3ad1ac56b5dc6ab7b27eae0a" title=" " alt="" coords="346,296,475,323"/>
+<area shape="rect" href="autopick-util_8cpp.html#a1dd80fdd8ddb78ff0a4e450460cd8951" title=" " alt="" coords="345,245,476,272"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a8108553a0b971c8d22ad18d214df8fb3" title="自動拾いの検索" alt="" coords="349,195,472,221"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="377,347,445,373"/>
+<area shape="rect" href="hook-expendable_8cpp.html#a149d1d797103307eb21cc6cafea39576" title="破壊可能なアイテムかを返す / Determines whether an object can be destroyed, and makes fake inscription." alt="" coords="535,230,669,271"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="571,347,633,373"/>
+<area shape="rect" href="autopick-destroyer_8cpp.html#a7e4c7c11cb092024c7638404dbb7ed77" title=" " alt="" coords="524,296,680,323"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-smith_8cpp_a797b62fcd176848c22caea6a89c96911_icgraph.png" border="0" usemap="#acmd-smith_8cpp_a797b62fcd176848c22caea6a89c96911_icgraph" alt=""/></div>
+<map name="acmd-smith_8cpp_a797b62fcd176848c22caea6a89c96911_icgraph" id="acmd-smith_8cpp_a797b62fcd176848c22caea6a89c96911_icgraph">
+<area shape="rect" title="エッセンスの抽出処理" alt="" coords="855,5,961,32"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a1ee36ec07842685feb97d0d9295e4985" title="鍛冶コマンドのメインルーチン" alt="" coords="712,5,807,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af097a4d1a6d82fc80c9bbdcb97476067"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af097a4d1a6d82fc80c9bbdcb97476067">&#9670;&nbsp;</a></span>erase_essence()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void erase_essence </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>エッセンスを消去する </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-smith_8cpp_af097a4d1a6d82fc80c9bbdcb97476067_cgraph.png" border="0" usemap="#acmd-smith_8cpp_af097a4d1a6d82fc80c9bbdcb97476067_cgraph" alt=""/></div>
+<map name="acmd-smith_8cpp_af097a4d1a6d82fc80c9bbdcb97476067_cgraph" id="acmd-smith_8cpp_af097a4d1a6d82fc80c9bbdcb97476067_cgraph">
+<area shape="rect" title="エッセンスを消去する" alt="" coords="5,1871,116,1897"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="164,857,271,884"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="547,1744,605,1771"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="1216,807,1323,833"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="1228,984,1311,1011"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1000,1592,1079,1619"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="172,1997,263,2024"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="319,1972,432,1999"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="179,2048,255,2075"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="339,857,411,884"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="341,807,409,833"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="790,579,833,605"/>
+<area shape="rect" href="player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="1176,883,1363,909"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7c7bc7aaa4ea1facc9bffef817ae15ef" title=" " alt="" coords="1411,731,1589,757"/>
+<area shape="rect" href="item-getter_8cpp.html#acd17e2a74ae5acb8bfb06fead7ed7d1b" title="オブジェクト選択のモード設定" alt="" coords="483,72,669,99"/>
+<area shape="rect" href="item-getter_8cpp.html#aae1ffe8e95349276ec2eea3c8f1aabaf" title="アイテムにタグ付けがされているかの調査処理 (のはず)" alt="" coords="519,123,633,149"/>
+<area shape="rect" href="inventory-util_8cpp.html#a8ecee8934da290e32a3d32c076c79c8d" title="選択したアイテムの確認処理のメインルーチン /" alt="" coords="757,275,865,301"/>
+<area shape="rect" href="inventory-util_8cpp.html#abe55b4fa8f67c4788feaab1f7289a715" title="選択したアイテムの確認処理の補助 / Verify the choice of an item." alt="" coords="1014,579,1065,605"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#a608d31e79fc4aba7a4903453f3c78c95" title="オブジェクト選択の汎用関数(床上アイテム用) / Let the user select an item, save its &quot;index&quot;" alt="" coords="525,933,627,960"/>
+<area shape="rect" href="inventory-util_8cpp.html#ac56c08414553f69a101a859aa01220e3" title="プレイヤーの所持/装備オブジェクトが正規のものかを返す / Auxiliary function for &quot;get_item()&quot; – test an index" alt="" coords="758,781,865,808"/>
+<area shape="rect" href="item-tester-hooker_8cpp.html#ac2523c2f0be8b9c8a2ecce14fd51887c" title="アイテムがitem_tester_hookグローバル関数ポインタの条件を満たしているかを返す汎用関数 Check an item against the item tester info" alt="" coords="978,680,1101,707"/>
+<area shape="rect" href="inventory-util_8cpp.html#a6106140a69e84e316a7ee1172c62f4b6" title="所持/装備オブジェクトに選択タグを与える/タグに該当するオブジェクトがあるかを返す / Find the &quot;first&quot; inventory object with the given &quot;tag&quot;." alt="" coords="779,731,844,757"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="766,1187,857,1213"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3be357b2b900b29111c229eb1e975763" title=" " alt="" coords="951,629,1128,656"/>
+<area shape="rect" href="object-info_8cpp.html#a21413bf407071b7e2f68ff548c34b165" title="オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label" alt="" coords="987,984,1092,1011"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="785,1237,838,1264"/>
+<area shape="rect" href="inventory-util_8cpp.html#a3b02f8780c65381593401e83a8189bf8" title="選択アルファベットラベルからプレイヤーの装備オブジェクトIDを返す /" alt="" coords="744,1288,879,1315"/>
+<area shape="rect" href="inventory-util_8cpp.html#a157c018a9ae0e35bfadcf28c66106a5a" title="選択アルファベットラベルからプレイヤーの所持オブジェクトIDを返す / Convert a label into the index of an item in the &quot;inven&quot;" alt="" coords="749,1339,874,1365"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="1020,933,1059,960"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="765,1389,858,1416"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="765,1541,857,1568"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="764,1592,859,1619"/>
+<area shape="rect" href="display-inventory_8h.html#a8041341e081743592015db17430769dd" title="メインウィンドウの右上に装備アイテムの表示させる Display the equipment." alt="" coords="752,832,871,859"/>
+<area shape="rect" href="display-inventory_8cpp.html#a403a4e82e5b9baac453b37484b0974a8" title="所持アイテムの表示を行う / Display the inventory." alt="" coords="756,883,867,909"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#abb13bedcb0e77c425d362fb31288215e" title="サブウィンドウに所持品、装備品リストの表示を行う / Flip &quot;inven&quot; and &quot;equip&quot; in any sub&#45;windows" alt="" coords="720,528,903,555"/>
+<area shape="rect" href="item-selection-util_8cpp.html#a74d26ed39043ee25aaf6a0ebc08b69c8" title=" " alt="" coords="480,173,672,200"/>
+<area shape="rect" href="item-getter_8cpp.html#add9a7ed16f574346b91cf8019e78304b" title="装備品が妥当かを判定する" alt="" coords="756,376,867,403"/>
+<area shape="rect" href="item-getter_8cpp.html#ae132acedf2c0faba83006a85b747743d" title="インベントリ内のアイテムが妥当かを判定する" alt="" coords="525,489,627,516"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-smith_8cpp_af097a4d1a6d82fc80c9bbdcb97476067_icgraph.png" border="0" usemap="#acmd-smith_8cpp_af097a4d1a6d82fc80c9bbdcb97476067_icgraph" alt=""/></div>
+<map name="acmd-smith_8cpp_af097a4d1a6d82fc80c9bbdcb97476067_icgraph" id="acmd-smith_8cpp_af097a4d1a6d82fc80c9bbdcb97476067_icgraph">
+<area shape="rect" title="エッセンスを消去する" alt="" coords="855,5,965,32"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a1ee36ec07842685feb97d0d9295e4985" title="鍛冶コマンドのメインルーチン" alt="" coords="712,5,807,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a1b1409e78c7b6be6d378ee564b868a00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b1409e78c7b6be6d378ee564b868a00">&#9670;&nbsp;</a></span>essence_info</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structessence__type.html">essence_type</a> essence_info[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>エッセンス情報テーブル Smithing type data for Weapon smith </p>
+
+</div>
+</div>
+<a id="aaa57afb19d3bd40b203d396b953a5cda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa57afb19d3bd40b203d396b953a5cda">&#9670;&nbsp;</a></span>essence_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> essence_name[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>初期値:</b><div class="fragment"><div class="line">= { <span class="stringliteral">&quot;strength&quot;</span>, <span class="stringliteral">&quot;intelligen.&quot;</span>, <span class="stringliteral">&quot;wisdom&quot;</span>, <span class="stringliteral">&quot;dexterity&quot;</span>, <span class="stringliteral">&quot;constitut.&quot;</span>, <span class="stringliteral">&quot;charisma&quot;</span>, <span class="stringliteral">&quot;magic mast.&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;stealth&quot;</span>, <span class="stringliteral">&quot;searching&quot;</span>, <span class="stringliteral">&quot;infravision&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;digging&quot;</span>, <span class="stringliteral">&quot;speed&quot;</span>, <span class="stringliteral">&quot;extra atk&quot;</span>, <span class="stringliteral">&quot;chaos brand&quot;</span>, <span class="stringliteral">&quot;vampiric&quot;</span>, <span class="stringliteral">&quot;slay animal&quot;</span>, <span class="stringliteral">&quot;slay evil&quot;</span>, <span class="stringliteral">&quot;slay undead&quot;</span>, <span class="stringliteral">&quot;slay demon&quot;</span>, <span class="stringliteral">&quot;slay orc&quot;</span>, <span class="stringliteral">&quot;slay troll&quot;</span>, <span class="stringliteral">&quot;slay giant&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;slay dragon&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;quake&quot;</span>, <span class="stringliteral">&quot;pois. brand&quot;</span>, <span class="stringliteral">&quot;acid brand&quot;</span>, <span class="stringliteral">&quot;elec. brand&quot;</span>, <span class="stringliteral">&quot;fire brand&quot;</span>, <span class="stringliteral">&quot;cold brand&quot;</span>, <span class="stringliteral">&quot;sustain&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;immunity&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;reflection&quot;</span>, <span class="stringliteral">&quot;free action&quot;</span>, <span class="stringliteral">&quot;hold exp&quot;</span>, <span class="stringliteral">&quot;res. acid&quot;</span>, <span class="stringliteral">&quot;res. elec.&quot;</span>, <span class="stringliteral">&quot;res. fire&quot;</span>, <span class="stringliteral">&quot;res. cold&quot;</span>, <span class="stringliteral">&quot;res. poison&quot;</span>, <span class="stringliteral">&quot;res. fear&quot;</span>, <span class="stringliteral">&quot;res. light&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;res. dark&quot;</span>, <span class="stringliteral">&quot;res. blind&quot;</span>, <span class="stringliteral">&quot;res.confuse&quot;</span>, <span class="stringliteral">&quot;res. sound&quot;</span>, <span class="stringliteral">&quot;res. shard&quot;</span>, <span class="stringliteral">&quot;res. nether&quot;</span>, <span class="stringliteral">&quot;res. nexus&quot;</span>, <span class="stringliteral">&quot;res. chaos&quot;</span>, <span class="stringliteral">&quot;res. disen.&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;slay human&quot;</span>, <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;anti magic&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;warning&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;levitation&quot;</span>, <span class="stringliteral">&quot;perm. light&quot;</span>, <span class="stringliteral">&quot;see invis.&quot;</span>, <span class="stringliteral">&quot;telepathy&quot;</span>, <span class="stringliteral">&quot;slow dige.&quot;</span>, <span class="stringliteral">&quot;regen.&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;teleport&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;weapon enc.&quot;</span>, <span class="stringliteral">&quot;armor enc.&quot;</span>,</div>
+<div class="line"> </div>
+<div class="line">    NULL }</div>
+</div><!-- fragment -->
+<p>エッセンス名テーブル / Essense names for Weapon smith </p>
+
+</div>
+</div>
+<a id="a415786da50bfccf38383544f86aa2967"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a415786da50bfccf38383544f86aa2967">&#9670;&nbsp;</a></span>kaji_tips</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> const kaji_tips[5]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初期値:</b><div class="fragment"><div class="line">= {</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">    <span class="stringliteral">&quot;Display essences you have.&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;Extract essences from an item. The item become non magical.&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;Remove added essences from equipment which was improved before. The removed essence will be ruined.&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;Add essences to an item. The improved items or artifacts cannot be reimprove.&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;Enchant an item or make an item element-proofed. Improved items and artifacts can be enchanted too.&quot;</span>,</div>
+<div class="line"> </div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分33秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

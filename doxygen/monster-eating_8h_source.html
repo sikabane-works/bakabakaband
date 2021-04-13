@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/monster-attack/monster-eating.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_11905a11fb100707d03e882653e10246.html">monster-attack</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">monster-eating.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="monster-eating_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-attack-util_8h.html">monster-attack/monster-attack-util.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-eating_8h.html#aad417fdb3cb0b966068fc3e31def1595">process_eat_gold</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmonap__type.html">monap_type</a> *monap_ptr);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="monster-eating_8h.html#a2c65a8802b0e049e20e1e4e16827d0b3">check_eat_item</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmonap__type.html">monap_type</a> *monap_ptr);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-eating_8h.html#abd3ba551314e9224222e5efc444b04b8">process_eat_item</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmonap__type.html">monap_type</a> *monap_ptr);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-eating_8h.html#a08d5a6fc131fa58e04e9d2a035eff3bf">process_eat_food</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmonap__type.html">monap_type</a> *monap_ptr);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-eating_8h.html#ab2265672b83bbe198b37eaef149ef712">process_eat_lite</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmonap__type.html">monap_type</a> *monap_ptr);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="monster-eating_8h.html#ad33b23fdfe0750d68614bae61a0f48fc">process_un_power</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmonap__type.html">monap_type</a> *monap_ptr);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="monster-eating_8h.html#af7eb3d27b51aae5bc5ce138e74186d36">check_drain_hp</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <span class="keyword">const</span> <a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> d);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-eating_8h.html#ab3e646c20f0226bb00cdf431284d8a22">process_drain_life</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmonap__type.html">monap_type</a> *monap_ptr, <span class="keyword">const</span> <span class="keywordtype">bool</span> resist_drain);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-eating_8h.html#a12de596ed4bc8736c8421f228882bc6f">process_drain_mana</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmonap__type.html">monap_type</a> *monap_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_af28a46c3af7b537a7cf39e1f7e6bf81c"><div class="ttname"><a href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a></div><div class="ttdeci">signed long s32b</div><div class="ttdef"><b>Definition:</b> h-type.h:92</div></div>
+<div class="ttc" id="amonster-attack-util_8h_html"><div class="ttname"><a href="monster-attack-util_8h.html">monster-attack-util.h</a></div></div>
+<div class="ttc" id="amonster-eating_8h_html_a08d5a6fc131fa58e04e9d2a035eff3bf"><div class="ttname"><a href="monster-eating_8h.html#a08d5a6fc131fa58e04e9d2a035eff3bf">process_eat_food</a></div><div class="ttdeci">void process_eat_food(player_type *target_ptr, monap_type *monap_ptr)</div><div class="ttdef"><b>Definition:</b> monster-eating.cpp:155</div></div>
+<div class="ttc" id="amonster-eating_8h_html_a12de596ed4bc8736c8421f228882bc6f"><div class="ttname"><a href="monster-eating_8h.html#a12de596ed4bc8736c8421f228882bc6f">process_drain_mana</a></div><div class="ttdeci">void process_drain_mana(player_type *target_ptr, monap_type *monap_ptr)</div><div class="ttdef"><b>Definition:</b> monster-eating.cpp:280</div></div>
+<div class="ttc" id="amonster-eating_8h_html_a2c65a8802b0e049e20e1e4e16827d0b3"><div class="ttname"><a href="monster-eating_8h.html#a2c65a8802b0e049e20e1e4e16827d0b3">check_eat_item</a></div><div class="ttdeci">bool check_eat_item(player_type *target_ptr, monap_type *monap_ptr)</div><div class="ttdoc">盗み打撃の時にアイテムが盗まれるかどうかを判定する</div><div class="ttdef"><b>Definition:</b> monster-eating.cpp:75</div></div>
+<div class="ttc" id="amonster-eating_8h_html_aad417fdb3cb0b966068fc3e31def1595"><div class="ttname"><a href="monster-eating_8h.html#aad417fdb3cb0b966068fc3e31def1595">process_eat_gold</a></div><div class="ttdeci">void process_eat_gold(player_type *target_ptr, monap_type *monap_ptr)</div><div class="ttdoc">プレーヤーのHP/MP、アイテム、お金・明かりの残りターン、充填魔力を盗んだり減少させたりする処理</div><div class="ttdef"><b>Definition:</b> monster-eating.cpp:31</div></div>
+<div class="ttc" id="amonster-eating_8h_html_ab2265672b83bbe198b37eaef149ef712"><div class="ttname"><a href="monster-eating_8h.html#ab2265672b83bbe198b37eaef149ef712">process_eat_lite</a></div><div class="ttdeci">void process_eat_lite(player_type *target_ptr, monap_type *monap_ptr)</div><div class="ttdef"><b>Definition:</b> monster-eating.cpp:179</div></div>
+<div class="ttc" id="amonster-eating_8h_html_ab3e646c20f0226bb00cdf431284d8a22"><div class="ttname"><a href="monster-eating_8h.html#ab3e646c20f0226bb00cdf431284d8a22">process_drain_life</a></div><div class="ttdeci">void process_drain_life(player_type *target_ptr, monap_type *monap_ptr, const bool resist_drain)</div><div class="ttdef"><b>Definition:</b> monster-eating.cpp:260</div></div>
+<div class="ttc" id="amonster-eating_8h_html_abd3ba551314e9224222e5efc444b04b8"><div class="ttname"><a href="monster-eating_8h.html#abd3ba551314e9224222e5efc444b04b8">process_eat_item</a></div><div class="ttdeci">void process_eat_item(player_type *target_ptr, monap_type *monap_ptr)</div><div class="ttdoc">アイテム盗み処理</div><div class="ttdef"><b>Definition:</b> monster-eating.cpp:126</div></div>
+<div class="ttc" id="amonster-eating_8h_html_ad33b23fdfe0750d68614bae61a0f48fc"><div class="ttname"><a href="monster-eating_8h.html#ad33b23fdfe0750d68614bae61a0f48fc">process_un_power</a></div><div class="ttdeci">bool process_un_power(player_type *target_ptr, monap_type *monap_ptr)</div><div class="ttdoc">モンスターからの攻撃による充填魔力吸収処理</div><div class="ttdef"><b>Definition:</b> monster-eating.cpp:204</div></div>
+<div class="ttc" id="amonster-eating_8h_html_af7eb3d27b51aae5bc5ce138e74186d36"><div class="ttname"><a href="monster-eating_8h.html#af7eb3d27b51aae5bc5ce138e74186d36">check_drain_hp</a></div><div class="ttdeci">bool check_drain_hp(player_type *target_ptr, const s32b d)</div><div class="ttdef"><b>Definition:</b> monster-eating.cpp:240</div></div>
+<div class="ttc" id="astructmonap__type_html"><div class="ttname"><a href="structmonap__type.html">monap_type</a></div><div class="ttdef"><b>Definition:</b> monster-attack-util.h:9</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

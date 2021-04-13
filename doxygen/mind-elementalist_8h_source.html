@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/mind/mind-elementalist.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6b47a62d84e364abcbfd077d968b76f4.html">mind</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mind-elementalist.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="mind-elementalist_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="mind-elementalist_8h.html#aea76ce1250a74a9a113f6672f9e62e4d">    1</a></span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="spell-types_8h.html">spell/spell-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7">    6</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7">ElementRealm</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7ab7426fb9c3932995306fceba2874d057">FIRE</a> = 1,</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7a22fb77eba93786121faa55c581785893">ICE</a> = 2,</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7a8fcce50f392a6fab43f30d3af609d4e3">SKY</a> = 3,</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7a9abd3d9b983e99aa1fd94837498b0bea">SEA</a> = 4,</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7a70419927a73bef553f50bdc5198a300c">DARKNESS</a> = 5,</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7a7f903fc95c5f6059a3c0d1b22820dbf7">CHAOS</a> = 6,</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7ab6f13830e914e2068be5c1008a124857">EARTH</a> = 7,</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7abf5ddcfbfeb1c3affd54efad7069aac9">DEATH</a> = 8,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="mind-elementalist_8cpp.html#adc7e877d6db7c880a3da6036861f1ab1a26a4b44a837bf97b972628509912b4a5">MAX</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structplayer__type.html">player_type</a> <a class="code" href="structplayer__type.html">player_type</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structeffect__monster__type.html">effect_monster_type</a> <a class="code" href="structeffect__monster__type.html">effect_monster_type</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structrc__type.html">rc_type</a> <a class="code" href="structrc__type.html">rc_type</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="mind-elementalist_8h.html#a7938bd6931e341c09bf755674a0203c8">get_element_title</a>(<span class="keywordtype">int</span> realm_idx);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<a class="code" href="spell-types_8h.html#a141c216a179b958a665de1c1e22934a3">spells_type</a> <a class="code" href="mind-elementalist_8h.html#af7035bf44e895533df36489fd950cd88">get_element_type</a>(<span class="keywordtype">int</span> realm_idx, <span class="keywordtype">int</span> n);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="mind-elementalist_8h.html#a8d2bf268e63bd7f507b81ff99372f7cb">get_element_name</a>(<span class="keywordtype">int</span> realm_idx, <span class="keywordtype">int</span> n);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">void</span> <a class="code" href="mind-elementalist_8h.html#a929e3c54bcadf03000ba9a7d3c8f95b5">do_cmd_element</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">void</span> <a class="code" href="mind-elementalist_8h.html#a68bac767c848df8fcbf173047aecb1bf">do_cmd_element_browse</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<a class="code" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> <a class="code" href="mind-elementalist_8h.html#a8751848779b10883d6efeb0f2800010c">effect_monster_elemental_genocide</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="mind-elementalist_8h.html#a815055951961d16fa1fba921b44354b2">has_element_resist</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7">ElementRealm</a> realm, <a class="code" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> lev);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">byte</span> <a class="code" href="mind-elementalist_8h.html#a79aa374e6d4d9a9502ae3d1ba1fe69a4">select_element_realm</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">void</span> <a class="code" href="mind-elementalist_8h.html#a8564526a539e03c44d4514204436675f">switch_element_racial</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="structrc__type.html">rc_type</a> *rc_ptr);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="mind-elementalist_8h.html#a74d62708df45b643ad7193b43e5d053c">switch_element_execution</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a906543cecbc333cb7bf9195e18a6ce16"><div class="ttname"><a href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a></div><div class="ttdeci">process_result</div><div class="ttdef"><b>Definition:</b> h-type.h:256</div></div>
+<div class="ttc" id="ah-type_8h_html_a9a1975460009e928d9b53995d07d3623"><div class="ttname"><a href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a></div><div class="ttdeci">s16b PLAYER_LEVEL</div><div class="ttdoc">ゲーム中のプレイヤーレベルの型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:176</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="amind-elementalist_8cpp_html_adc7e877d6db7c880a3da6036861f1ab1a26a4b44a837bf97b972628509912b4a5"><div class="ttname"><a href="mind-elementalist_8cpp.html#adc7e877d6db7c880a3da6036861f1ab1a26a4b44a837bf97b972628509912b4a5">ElementSpells::MAX</a></div><div class="ttdeci">@ MAX</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_a68bac767c848df8fcbf173047aecb1bf"><div class="ttname"><a href="mind-elementalist_8h.html#a68bac767c848df8fcbf173047aecb1bf">do_cmd_element_browse</a></div><div class="ttdeci">void do_cmd_element_browse(player_type *caster_ptr)</div><div class="ttdoc">現在プレイヤーが使用可能な元素魔法の一覧表示</div><div class="ttdef"><b>Definition:</b> mind-elementalist.cpp:937</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_a74d62708df45b643ad7193b43e5d053c"><div class="ttname"><a href="mind-elementalist_8h.html#a74d62708df45b643ad7193b43e5d053c">switch_element_execution</a></div><div class="ttdeci">bool switch_element_execution(player_type *creature_ptr)</div><div class="ttdoc">クラスパワーを実行</div><div class="ttdef"><b>Definition:</b> mind-elementalist.cpp:1327</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_a7938bd6931e341c09bf755674a0203c8"><div class="ttname"><a href="mind-elementalist_8h.html#a7938bd6931e341c09bf755674a0203c8">get_element_title</a></div><div class="ttdeci">concptr get_element_title(int realm_idx)</div><div class="ttdoc">元素魔法の領域名を返す</div><div class="ttdef"><b>Definition:</b> mind-elementalist.cpp:286</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_a79aa374e6d4d9a9502ae3d1ba1fe69a4"><div class="ttname"><a href="mind-elementalist_8h.html#a79aa374e6d4d9a9502ae3d1ba1fe69a4">select_element_realm</a></div><div class="ttdeci">byte select_element_realm(player_type *creature_ptr)</div><div class="ttdoc">領域選択</div><div class="ttdef"><b>Definition:</b> mind-elementalist.cpp:1196</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_a815055951961d16fa1fba921b44354b2"><div class="ttname"><a href="mind-elementalist_8h.html#a815055951961d16fa1fba921b44354b2">has_element_resist</a></div><div class="ttdeci">bool has_element_resist(player_type *creature_ptr, ElementRealm realm, PLAYER_LEVEL lev)</div><div class="ttdoc">元素領域とレベルの条件に見合うかチェックする</div><div class="ttdef"><b>Definition:</b> mind-elementalist.cpp:1060</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_a8564526a539e03c44d4514204436675f"><div class="ttname"><a href="mind-elementalist_8h.html#a8564526a539e03c44d4514204436675f">switch_element_racial</a></div><div class="ttdeci">void switch_element_racial(player_type *creature_ptr, rc_type *rc_ptr)</div><div class="ttdoc">クラスパワー情報を追加</div><div class="ttdef"><b>Definition:</b> mind-elementalist.cpp:1243</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_a8751848779b10883d6efeb0f2800010c"><div class="ttname"><a href="mind-elementalist_8h.html#a8751848779b10883d6efeb0f2800010c">effect_monster_elemental_genocide</a></div><div class="ttdeci">process_result effect_monster_elemental_genocide(player_type *caster_ptr, effect_monster_type *em_ptr)</div><div class="ttdoc">元素魔法の単体抹殺の効果を発動する</div><div class="ttdef"><b>Definition:</b> mind-elementalist.cpp:1020</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_a8d2bf268e63bd7f507b81ff99372f7cb"><div class="ttname"><a href="mind-elementalist_8h.html#a8d2bf268e63bd7f507b81ff99372f7cb">get_element_name</a></div><div class="ttdeci">concptr get_element_name(int realm_idx, int n)</div><div class="ttdoc">元素魔法領域のn番目の属性名を返す</div><div class="ttdef"><b>Definition:</b> mind-elementalist.cpp:347</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_a929e3c54bcadf03000ba9a7d3c8f95b5"><div class="ttname"><a href="mind-elementalist_8h.html#a929e3c54bcadf03000ba9a7d3c8f95b5">do_cmd_element</a></div><div class="ttdeci">void do_cmd_element(player_type *caster_ptr)</div><div class="ttdoc">元素魔法コマンドのメインルーチン</div><div class="ttdef"><b>Definition:</b> mind-elementalist.cpp:895</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_ad66141746f6096f10ebbbf7be6da0fe7"><div class="ttname"><a href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7">ElementRealm</a></div><div class="ttdeci">ElementRealm</div><div class="ttdef"><b>Definition:</b> mind-elementalist.h:6</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_ad66141746f6096f10ebbbf7be6da0fe7a22fb77eba93786121faa55c581785893"><div class="ttname"><a href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7a22fb77eba93786121faa55c581785893">ElementRealm::ICE</a></div><div class="ttdeci">@ ICE</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_ad66141746f6096f10ebbbf7be6da0fe7a70419927a73bef553f50bdc5198a300c"><div class="ttname"><a href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7a70419927a73bef553f50bdc5198a300c">ElementRealm::DARKNESS</a></div><div class="ttdeci">@ DARKNESS</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_ad66141746f6096f10ebbbf7be6da0fe7a7f903fc95c5f6059a3c0d1b22820dbf7"><div class="ttname"><a href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7a7f903fc95c5f6059a3c0d1b22820dbf7">ElementRealm::CHAOS</a></div><div class="ttdeci">@ CHAOS</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_ad66141746f6096f10ebbbf7be6da0fe7a8fcce50f392a6fab43f30d3af609d4e3"><div class="ttname"><a href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7a8fcce50f392a6fab43f30d3af609d4e3">ElementRealm::SKY</a></div><div class="ttdeci">@ SKY</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_ad66141746f6096f10ebbbf7be6da0fe7a9abd3d9b983e99aa1fd94837498b0bea"><div class="ttname"><a href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7a9abd3d9b983e99aa1fd94837498b0bea">ElementRealm::SEA</a></div><div class="ttdeci">@ SEA</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_ad66141746f6096f10ebbbf7be6da0fe7ab6f13830e914e2068be5c1008a124857"><div class="ttname"><a href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7ab6f13830e914e2068be5c1008a124857">ElementRealm::EARTH</a></div><div class="ttdeci">@ EARTH</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_ad66141746f6096f10ebbbf7be6da0fe7ab7426fb9c3932995306fceba2874d057"><div class="ttname"><a href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7ab7426fb9c3932995306fceba2874d057">ElementRealm::FIRE</a></div><div class="ttdeci">@ FIRE</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_ad66141746f6096f10ebbbf7be6da0fe7abf5ddcfbfeb1c3affd54efad7069aac9"><div class="ttname"><a href="mind-elementalist_8h.html#ad66141746f6096f10ebbbf7be6da0fe7abf5ddcfbfeb1c3affd54efad7069aac9">ElementRealm::DEATH</a></div><div class="ttdeci">@ DEATH</div></div>
+<div class="ttc" id="amind-elementalist_8h_html_af7035bf44e895533df36489fd950cd88"><div class="ttname"><a href="mind-elementalist_8h.html#af7035bf44e895533df36489fd950cd88">get_element_type</a></div><div class="ttdeci">spells_type get_element_type(int realm_idx, int n)</div><div class="ttdoc">元素魔法領域のn番目の属性を返す</div><div class="ttdef"><b>Definition:</b> mind-elementalist.cpp:309</div></div>
+<div class="ttc" id="aspell-types_8h_html"><div class="ttname"><a href="spell-types_8h.html">spell-types.h</a></div></div>
+<div class="ttc" id="aspell-types_8h_html_a141c216a179b958a665de1c1e22934a3"><div class="ttname"><a href="spell-types_8h.html#a141c216a179b958a665de1c1e22934a3">spells_type</a></div><div class="ttdeci">spells_type</div><div class="ttdef"><b>Definition:</b> spell-types.h:4</div></div>
+<div class="ttc" id="astructeffect__monster__type_html"><div class="ttname"><a href="structeffect__monster__type.html">effect_monster_type</a></div><div class="ttdef"><b>Definition:</b> effect-monster-util.h:7</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="astructrc__type_html"><div class="ttname"><a href="structrc__type.html">rc_type</a></div><div class="ttdef"><b>Definition:</b> racial-util.h:19</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

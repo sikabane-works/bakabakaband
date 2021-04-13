@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/spell-kind/spells-sight.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_315ff05a33a3f1372a1d1cebc99757c1.html">spell-kind</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">spells-sight.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="spells-sight_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a47482081184d0a1282de835163dc6e62">project_all_los</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a> typ, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a7754a6d3c8dfea90c4422d01035b6afb">speed_monsters</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#ab080c09ea8d8057addec20b0cf99eff3">slow_monsters</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <span class="keywordtype">int</span> power);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a98ef80e7d33c8f2e1c1166e46d9868e4">sleep_monsters</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <span class="keywordtype">int</span> power);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spells-sight_8h.html#a38649e896637efab6c1c96d71f870948">aggravate_monsters</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> who);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a89c5b806b66b5ca935291edae07daaa3">banish_evil</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <span class="keywordtype">int</span> dist);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#ae98bff55b3fde93a870613af3522feab">turn_undead</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a32fe4c8f9f2cb32c6da76d6770a330cc">dispel_evil</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a46e4ece454fb91f69e45aab92205aada">dispel_good</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a199916bfeeab7d62c6b8b9682cebd440">dispel_undead</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a4492b77dd7b9034a0655e716bd049902">dispel_monsters</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a980bfa1b232be43b3a13d0823f2852db">dispel_living</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#ad80e887a08188205470a16795fa177f0">dispel_demons</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a7912843dc6cfa9702d5751f854959e76">crusade</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a91d8f0ee8b930d75a0856fbb1be6b08e">confuse_monsters</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a5d5a0c7b26048332c2924192d06e42b0">charm_monsters</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a74a7a713031470556ed2f775a175da3f">charm_animals</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a06bd681cdb9bd896efbea96a23f7da10">stun_monsters</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a6bf270f07df165590990b580beea7324">stasis_monsters</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a072d3502a9c85cb190478b7f685d658e">mindblast_monsters</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a0d5dad27889c24db576cc04e78a86731">banish_monsters</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <span class="keywordtype">int</span> dist);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#aa3f988abef86838ac52ec935b506a174">turn_evil</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a3371472da5a4188ef4aeda1da69ef891">turn_monsters</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#aadf5ae08e2dd31ff6653f5748caa0df3">deathray_monsters</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-sight_8h.html#a23bd0b66715a8270f8ab5c5f3686a4ff">probing</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a6e67d15477d3778e515c59e04e25a390"><div class="ttname"><a href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a></div><div class="ttdeci">int EFFECT_ID</div><div class="ttdoc">効果属性ID</div><div class="ttdef"><b>Definition:</b> h-type.h:227</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="ah-type_8h_html_afdb20155266ee801610f13b1589a3df3"><div class="ttname"><a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></div><div class="ttdeci">s32b HIT_POINT</div><div class="ttdoc">HPとその増減量の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:141</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a06bd681cdb9bd896efbea96a23f7da10"><div class="ttname"><a href="spells-sight_8h.html#a06bd681cdb9bd896efbea96a23f7da10">stun_monsters</a></div><div class="ttdeci">bool stun_monsters(player_type *caster_ptr, HIT_POINT dam)</div><div class="ttdoc">モンスター朦朧効果(プレイヤー視界範囲内) / Stun monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:245</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a072d3502a9c85cb190478b7f685d658e"><div class="ttname"><a href="spells-sight_8h.html#a072d3502a9c85cb190478b7f685d658e">mindblast_monsters</a></div><div class="ttdeci">bool mindblast_monsters(player_type *caster_ptr, HIT_POINT dam)</div><div class="ttdoc">モンスター精神攻撃効果(プレイヤー視界範囲内) / Mindblast monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:261</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a0d5dad27889c24db576cc04e78a86731"><div class="ttname"><a href="spells-sight_8h.html#a0d5dad27889c24db576cc04e78a86731">banish_monsters</a></div><div class="ttdeci">bool banish_monsters(player_type *caster_ptr, int dist)</div><div class="ttdoc">モンスター追放効果(プレイヤー視界範囲内) / Banish all monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:269</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a199916bfeeab7d62c6b8b9682cebd440"><div class="ttname"><a href="spells-sight_8h.html#a199916bfeeab7d62c6b8b9682cebd440">dispel_undead</a></div><div class="ttdeci">bool dispel_undead(player_type *caster_ptr, HIT_POINT dam)</div><div class="ttdoc">視界内のアンデッド・モンスターにダメージを与える処理 / Dispel undead monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:122</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a23bd0b66715a8270f8ab5c5f3686a4ff"><div class="ttname"><a href="spells-sight_8h.html#a23bd0b66715a8270f8ab5c5f3686a4ff">probing</a></div><div class="ttdeci">bool probing(player_type *caster_ptr)</div><div class="ttdoc">周辺モンスターを調査する / Probe nearby monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:298</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a32fe4c8f9f2cb32c6da76d6770a330cc"><div class="ttname"><a href="spells-sight_8h.html#a32fe4c8f9f2cb32c6da76d6770a330cc">dispel_evil</a></div><div class="ttdeci">bool dispel_evil(player_type *caster_ptr, HIT_POINT dam)</div><div class="ttdoc">視界内の邪悪なモンスターにダメージを与える処理 / Dispel evil monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:135</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a3371472da5a4188ef4aeda1da69ef891"><div class="ttname"><a href="spells-sight_8h.html#a3371472da5a4188ef4aeda1da69ef891">turn_monsters</a></div><div class="ttdeci">bool turn_monsters(player_type *caster_ptr, HIT_POINT dam)</div><div class="ttdoc">全モンスター退散効果(プレイヤー視界範囲内) / Turn everyone</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:285</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a38649e896637efab6c1c96d71f870948"><div class="ttname"><a href="spells-sight_8h.html#a38649e896637efab6c1c96d71f870948">aggravate_monsters</a></div><div class="ttdeci">void aggravate_monsters(player_type *caster_ptr, MONSTER_IDX who)</div><div class="ttdoc">視界内モンスターを怒らせる処理 / Wake up all monsters, and speed up &quot;los&quot; monsters.</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:178</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a4492b77dd7b9034a0655e716bd049902"><div class="ttname"><a href="spells-sight_8h.html#a4492b77dd7b9034a0655e716bd049902">dispel_monsters</a></div><div class="ttdeci">bool dispel_monsters(player_type *caster_ptr, HIT_POINT dam)</div><div class="ttdoc">視界内のあらゆるモンスターにダメージを与える処理 / Dispel all monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:149</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a46e4ece454fb91f69e45aab92205aada"><div class="ttname"><a href="spells-sight_8h.html#a46e4ece454fb91f69e45aab92205aada">dispel_good</a></div><div class="ttdeci">bool dispel_good(player_type *caster_ptr, HIT_POINT dam)</div><div class="ttdoc">視界内の善良なモンスターにダメージを与える処理 / Dispel good monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:142</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a47482081184d0a1282de835163dc6e62"><div class="ttname"><a href="spells-sight_8h.html#a47482081184d0a1282de835163dc6e62">project_all_los</a></div><div class="ttdeci">bool project_all_los(player_type *caster_ptr, EFFECT_ID typ, HIT_POINT dam)</div><div class="ttdoc">視界内モンスターに魔法効果を与える / Apply a &quot;project()&quot; directly to all viewable monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:44</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a5d5a0c7b26048332c2924192d06e42b0"><div class="ttname"><a href="spells-sight_8h.html#a5d5a0c7b26048332c2924192d06e42b0">charm_monsters</a></div><div class="ttdeci">bool charm_monsters(player_type *caster_ptr, HIT_POINT dam)</div><div class="ttdoc">チャーム・モンスター効果(プレイヤー視界範囲内) / Charm monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:229</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a6bf270f07df165590990b580beea7324"><div class="ttname"><a href="spells-sight_8h.html#a6bf270f07df165590990b580beea7324">stasis_monsters</a></div><div class="ttdeci">bool stasis_monsters(player_type *caster_ptr, HIT_POINT dam)</div><div class="ttdoc">モンスター停止効果(プレイヤー視界範囲内) / Stasis monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:253</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a74a7a713031470556ed2f775a175da3f"><div class="ttname"><a href="spells-sight_8h.html#a74a7a713031470556ed2f775a175da3f">charm_animals</a></div><div class="ttdeci">bool charm_animals(player_type *caster_ptr, HIT_POINT dam)</div><div class="ttdoc">動物魅了効果(プレイヤー視界範囲内) / Charm Animals</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:237</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a7754a6d3c8dfea90c4422d01035b6afb"><div class="ttname"><a href="spells-sight_8h.html#a7754a6d3c8dfea90c4422d01035b6afb">speed_monsters</a></div><div class="ttdeci">bool speed_monsters(player_type *caster_ptr)</div><div class="ttdoc">視界内モンスターを加速する処理 / Speed monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:82</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a7912843dc6cfa9702d5751f854959e76"><div class="ttname"><a href="spells-sight_8h.html#a7912843dc6cfa9702d5751f854959e76">crusade</a></div><div class="ttdeci">bool crusade(player_type *caster_ptr)</div><div class="ttdoc">視界内のモンスターに「聖戦」効果を与える処理</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:170</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a89c5b806b66b5ca935291edae07daaa3"><div class="ttname"><a href="spells-sight_8h.html#a89c5b806b66b5ca935291edae07daaa3">banish_evil</a></div><div class="ttdeci">bool banish_evil(player_type *caster_ptr, int dist)</div><div class="ttdoc">視界内の邪悪なモンスターをテレポート・アウェイさせる処理 / Banish evil monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:103</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a91d8f0ee8b930d75a0856fbb1be6b08e"><div class="ttname"><a href="spells-sight_8h.html#a91d8f0ee8b930d75a0856fbb1be6b08e">confuse_monsters</a></div><div class="ttdeci">bool confuse_monsters(player_type *caster_ptr, HIT_POINT dam)</div><div class="ttdoc">パニック・モンスター効果(プレイヤー視界範囲内) / Confuse monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:221</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a980bfa1b232be43b3a13d0823f2852db"><div class="ttname"><a href="spells-sight_8h.html#a980bfa1b232be43b3a13d0823f2852db">dispel_living</a></div><div class="ttdeci">bool dispel_living(player_type *caster_ptr, HIT_POINT dam)</div><div class="ttdoc">視界内の生命のあるモンスターにダメージを与える処理 / Dispel 'living' monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:156</div></div>
+<div class="ttc" id="aspells-sight_8h_html_a98ef80e7d33c8f2e1c1166e46d9868e4"><div class="ttname"><a href="spells-sight_8h.html#a98ef80e7d33c8f2e1c1166e46d9868e4">sleep_monsters</a></div><div class="ttdeci">bool sleep_monsters(player_type *caster_ptr, int power)</div><div class="ttdoc">視界内モンスターを眠らせる処理 / Sleep monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:96</div></div>
+<div class="ttc" id="aspells-sight_8h_html_aa3f988abef86838ac52ec935b506a174"><div class="ttname"><a href="spells-sight_8h.html#aa3f988abef86838ac52ec935b506a174">turn_evil</a></div><div class="ttdeci">bool turn_evil(player_type *caster_ptr, HIT_POINT dam)</div><div class="ttdoc">邪悪退散効果(プレイヤー視界範囲内) / Turn evil</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:277</div></div>
+<div class="ttc" id="aspells-sight_8h_html_aadf5ae08e2dd31ff6653f5748caa0df3"><div class="ttname"><a href="spells-sight_8h.html#aadf5ae08e2dd31ff6653f5748caa0df3">deathray_monsters</a></div><div class="ttdeci">bool deathray_monsters(player_type *caster_ptr)</div><div class="ttdoc">死の光線(プレイヤー視界範囲内) / Death-ray all monsters (note: OBSCENELY powerful)</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:292</div></div>
+<div class="ttc" id="aspells-sight_8h_html_ab080c09ea8d8057addec20b0cf99eff3"><div class="ttname"><a href="spells-sight_8h.html#ab080c09ea8d8057addec20b0cf99eff3">slow_monsters</a></div><div class="ttdeci">bool slow_monsters(player_type *caster_ptr, int power)</div><div class="ttdoc">視界内モンスターを加速する処理 / Slow monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:89</div></div>
+<div class="ttc" id="aspells-sight_8h_html_ad80e887a08188205470a16795fa177f0"><div class="ttname"><a href="spells-sight_8h.html#ad80e887a08188205470a16795fa177f0">dispel_demons</a></div><div class="ttdeci">bool dispel_demons(player_type *caster_ptr, HIT_POINT dam)</div><div class="ttdoc">視界内の悪魔系モンスターにダメージを与える処理 / Dispel 'living' monsters</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:163</div></div>
+<div class="ttc" id="aspells-sight_8h_html_ae98bff55b3fde93a870613af3522feab"><div class="ttname"><a href="spells-sight_8h.html#ae98bff55b3fde93a870613af3522feab">turn_undead</a></div><div class="ttdeci">bool turn_undead(player_type *caster_ptr)</div><div class="ttdoc">視界内のアンデッド・モンスターを恐怖させる処理 / Turn undead</div><div class="ttdef"><b>Definition:</b> spells-sight.cpp:109</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

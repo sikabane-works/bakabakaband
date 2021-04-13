@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['xtra_5fd_5fres_24446',['XTRA_D_RES',['../trg-types_8h.html#a6e957fdeebc5d8281705b0617f8a83dca2ca779d4bb04733c1fc4e68c43d73e6f',1,'trg-types.h']]],
+  ['xtra_5fdice_24447',['XTRA_DICE',['../trg-types_8h.html#a6e957fdeebc5d8281705b0617f8a83dca44eb8022600122c889a306ed5fb69558',1,'trg-types.h']]],
+  ['xtra_5fe_5fres_24448',['XTRA_E_RES',['../trg-types_8h.html#a6e957fdeebc5d8281705b0617f8a83dcab3820878c043da54118a3fe66f3df28d',1,'trg-types.h']]],
+  ['xtra_5feyes_24449',['XTRA_EYES',['../mutation-flag-types_8h.html#a37689ec6e7b421ddd2252e2a317b1816a0191a2700454eb6c5e3c47f13ea0afcc',1,'mutation-flag-types.h']]],
+  ['xtra_5ffat_24450',['XTRA_FAT',['../mutation-flag-types_8h.html#a37689ec6e7b421ddd2252e2a317b1816a25f639c6a410c968b968cd44ee718f8a',1,'mutation-flag-types.h']]],
+  ['xtra_5fh_5fres_24451',['XTRA_H_RES',['../trg-types_8h.html#a6e957fdeebc5d8281705b0617f8a83dcad5302797fd5f1bcdc6dc2f19679af1c7',1,'trg-types.h']]],
+  ['xtra_5fl_5fres_24452',['XTRA_L_RES',['../trg-types_8h.html#a6e957fdeebc5d8281705b0617f8a83dca4ee7632101607bf41e16ccbf4d926e07',1,'trg-types.h']]],
+  ['xtra_5flegs_24453',['XTRA_LEGS',['../mutation-flag-types_8h.html#a37689ec6e7b421ddd2252e2a317b1816a5fae0679b393c435ded24a59ed7424bd',1,'mutation-flag-types.h']]],
+  ['xtra_5fnois_24454',['XTRA_NOIS',['../mutation-flag-types_8h.html#a37689ec6e7b421ddd2252e2a317b1816ab824d73997deb228b98380031d5bb377',1,'mutation-flag-types.h']]],
+  ['xtra_5fpower_24455',['XTRA_POWER',['../trg-types_8h.html#a6e957fdeebc5d8281705b0617f8a83dca8e2ae6d1c8ecaa3fdbbda8cd5a23302b',1,'trg-types.h']]],
+  ['xtra_5fres_24456',['XTRA_RES',['../trg-types_8h.html#a6e957fdeebc5d8281705b0617f8a83dca7f791b666c460d6f8e50739fe542dd6a',1,'trg-types.h']]],
+  ['xtra_5fres_5for_5fpower_24457',['XTRA_RES_OR_POWER',['../trg-types_8h.html#a6e957fdeebc5d8281705b0617f8a83dcaf876afde3eb94f2ad727998018daa7f6',1,'trg-types.h']]],
+  ['xxx1_24458',['XXX1',['../race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aaa6fcbe19778e65be71018733c385e5cca',1,'race-ability-flags.h']]],
+  ['xxx2_24459',['XXX2',['../race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aaa4b4c0d6f47a8f497994eb6d8ee6d57e4',1,'race-ability-flags.h']]],
+  ['xxx3_24460',['XXX3',['../race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aaae9ea0ddeeef38fded22b718b7f0d7638',1,'race-ability-flags.h']]],
+  ['xxx4_24461',['XXX4',['../race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aaa860f3f2796a576f37628038fa10ee2ed',1,'race-ability-flags.h']]]
+];

@@ -1,0 +1,2667 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/autopick/autopick-menu-data-table.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_609976a57c98df6cb9f80f504e628a46.html">autopick</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">autopick-menu-data-table.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="autopick-menu-data-table_8h_source.html">autopick/autopick-menu-data-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="autopick-commands-table_8h_source.html">autopick/autopick-commands-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="autopick-keys-table_8h_source.html">autopick/autopick-keys-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+autopick-menu-data-table.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="autopick-menu-data-table_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2autopick_2autopick-menu-data-table_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2autopick_2autopick-menu-data-table_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2autopick_2autopick-menu-data-table_8cpp">
+<area shape="rect" title=" " alt="" coords="286,5,483,61"/>
+<area shape="rect" href="autopick-menu-data-table_8h.html" title=" " alt="" coords="405,109,565,151"/>
+<area shape="rect" href="autopick-commands-table_8h.html" title=" " alt="" coords="189,109,381,151"/>
+<area shape="rect" href="autopick-keys-table_8h.html" title=" " alt="" coords="5,199,161,240"/>
+<area shape="rect" href="int-char-converter_8h.html" title=" " alt="" coords="589,117,743,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="433,206,563,233"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="334,288,425,315"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="658,437,799,464"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="219,288,310,315"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="449,288,547,315"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="942,288,1041,315"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="95,288,195,315"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="572,288,747,315"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="771,288,918,315"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="318,363,441,389"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a279ffaa09c076402abbf270b9d105bda"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a279ffaa09c076402abbf270b9d105bda">MN_QUIT</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;セーブ無しで終了&quot;, &quot;Quit without save&quot;)</td></tr>
+<tr class="memdesc:a279ffaa09c076402abbf270b9d105bda"><td class="mdescLeft">&#160;</td><td class="mdescRight">自動拾いのユーティリティ  <a href="autopick-menu-data-table_8cpp.html#a279ffaa09c076402abbf270b9d105bda">[詳解]</a><br /></td></tr>
+<tr class="separator:a279ffaa09c076402abbf270b9d105bda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1764e064514f0a97dd380e050154b3d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aa1764e064514f0a97dd380e050154b3d">MN_SAVEQUIT</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;セーブして終了&quot;, &quot;Save &amp; Quit&quot;)</td></tr>
+<tr class="separator:aa1764e064514f0a97dd380e050154b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3463947006ab676ff7c8db9ec469e68"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#af3463947006ab676ff7c8db9ec469e68">MN_REVERT</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;全ての変更を破棄&quot;, &quot;Revert all changes&quot;)</td></tr>
+<tr class="separator:af3463947006ab676ff7c8db9ec469e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b191b856b144b96beebedbdab7366e2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a8b191b856b144b96beebedbdab7366e2">MN_HELP</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ヘルプ&quot;, &quot;Help&quot;)</td></tr>
+<tr class="separator:a8b191b856b144b96beebedbdab7366e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c85a9e9fc67a058b0cd998c5add5124"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a2c85a9e9fc67a058b0cd998c5add5124">MN_MOVE</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;カーソル移動&quot;, &quot;Move cursor&quot;)</td></tr>
+<tr class="separator:a2c85a9e9fc67a058b0cd998c5add5124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2969162a6cbdcfda9e3d3d5070854f0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ae2969162a6cbdcfda9e3d3d5070854f0">MN_LEFT</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;左          (←矢印キー)&quot;, &quot;Left     (Left Arrow key)&quot;)</td></tr>
+<tr class="separator:ae2969162a6cbdcfda9e3d3d5070854f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e703b0d5a31d196825f8567ce872c80"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a5e703b0d5a31d196825f8567ce872c80">MN_DOWN</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;下          (↓矢印キー)&quot;, &quot;Down     (Down Arrow key)&quot;)</td></tr>
+<tr class="separator:a5e703b0d5a31d196825f8567ce872c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a842629d4f76aa6adfef11634d6fae71e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a842629d4f76aa6adfef11634d6fae71e">MN_UP</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;上          (↑矢印キー)&quot;, &quot;Up       (Up Arrow key)&quot;)</td></tr>
+<tr class="separator:a842629d4f76aa6adfef11634d6fae71e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a569d295c351cb3449f53de41cfc2af81"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a569d295c351cb3449f53de41cfc2af81">MN_RIGHT</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;右          (→矢印キー)&quot;, &quot;Right    (Right Arrow key)&quot;)</td></tr>
+<tr class="separator:a569d295c351cb3449f53de41cfc2af81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ed8bd30708baa052dd0d0cd2f6c5f53"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a2ed8bd30708baa052dd0d0cd2f6c5f53">MN_BOL</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;行の先頭&quot;, &quot;Beginning of line&quot;)</td></tr>
+<tr class="separator:a2ed8bd30708baa052dd0d0cd2f6c5f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af785a175322df6bf9d89b731ef0f764a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#af785a175322df6bf9d89b731ef0f764a">MN_EOL</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;行の終端&quot;, &quot;End of line&quot;)</td></tr>
+<tr class="separator:af785a175322df6bf9d89b731ef0f764a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebcf6c9957301e855fe1228a4e19ae6d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aebcf6c9957301e855fe1228a4e19ae6d">MN_PGUP</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;上のページ  (PageUpキー)&quot;, &quot;Page up  (PageUp key)&quot;)</td></tr>
+<tr class="separator:aebcf6c9957301e855fe1228a4e19ae6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2536dc11e43bbb33f96c26bc523078d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ac2536dc11e43bbb33f96c26bc523078d">MN_PGDOWN</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;下のページ  (PageDownキー)&quot;, &quot;Page down(PageDown key)&quot;)</td></tr>
+<tr class="separator:ac2536dc11e43bbb33f96c26bc523078d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd8d02dd63a60914392aeef3ef3550e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#abd8d02dd63a60914392aeef3ef3550e7">MN_TOP</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;1行目へ移動 (Homeキー)&quot;, &quot;Top      (Home key)&quot;)</td></tr>
+<tr class="separator:abd8d02dd63a60914392aeef3ef3550e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaab3f3b8693f98a04f19442e3a341a04"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aaab3f3b8693f98a04f19442e3a341a04">MN_BOTTOM</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;最下行へ移動(Endキー)&quot;, &quot;Bottom   (End key)&quot;)</td></tr>
+<tr class="separator:aaab3f3b8693f98a04f19442e3a341a04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa96557ba125e575e946692e1a820b71d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aa96557ba125e575e946692e1a820b71d">MN_EDIT</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;編集&quot;, &quot;Edit&quot;)</td></tr>
+<tr class="separator:aa96557ba125e575e946692e1a820b71d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d076f55eec7a324c06f32265ff6f583"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a4d076f55eec7a324c06f32265ff6f583">MN_CUT</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;カット&quot;, &quot;Cut&quot;)</td></tr>
+<tr class="separator:a4d076f55eec7a324c06f32265ff6f583"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91d908f987720d2bef9b838057681ab0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a91d908f987720d2bef9b838057681ab0">MN_COPY</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;コピー&quot;, &quot;Copy&quot;)</td></tr>
+<tr class="separator:a91d908f987720d2bef9b838057681ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c7e458e66b1a0c5bec2817deec3371f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a3c7e458e66b1a0c5bec2817deec3371f">MN_PASTE</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ペースト&quot;, &quot;Paste&quot;)</td></tr>
+<tr class="separator:a3c7e458e66b1a0c5bec2817deec3371f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae4dddccea928bf74b40e465bc2c5116"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aae4dddccea928bf74b40e465bc2c5116">MN_BLOCK</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;選択範囲の指定&quot;, &quot;Select block&quot;)</td></tr>
+<tr class="separator:aae4dddccea928bf74b40e465bc2c5116"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad82d057fe2443224a70508b8061f4e35"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ad82d057fe2443224a70508b8061f4e35">MN_KILL_LINE</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;行の残りを削除&quot;, &quot;Kill rest of line&quot;)</td></tr>
+<tr class="separator:ad82d057fe2443224a70508b8061f4e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a15353c8ee85fcefa62f7df0fe4c51a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a1a15353c8ee85fcefa62f7df0fe4c51a">MN_DELETE_CHAR</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;1文字削除&quot;, &quot;Delete character&quot;)</td></tr>
+<tr class="separator:a1a15353c8ee85fcefa62f7df0fe4c51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4534296c747b54879c214ac5d38d2f1a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a4534296c747b54879c214ac5d38d2f1a">MN_BACKSPACE</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;バックスペース&quot;, &quot;Backspace&quot;)</td></tr>
+<tr class="separator:a4534296c747b54879c214ac5d38d2f1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7341886e3473f671c9d96a683405788"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aa7341886e3473f671c9d96a683405788">MN_RETURN</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;改行&quot;, &quot;Return&quot;)</td></tr>
+<tr class="separator:aa7341886e3473f671c9d96a683405788"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06b8e805e2549f4506a7a789bb86e1df"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a06b8e805e2549f4506a7a789bb86e1df">MN_SEARCH</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;検索&quot;, &quot;Search&quot;)</td></tr>
+<tr class="separator:a06b8e805e2549f4506a7a789bb86e1df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11456328498233907ac696837130937a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a11456328498233907ac696837130937a">MN_SEARCH_STR</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;文字列で検索&quot;, &quot;Search by string&quot;)</td></tr>
+<tr class="separator:a11456328498233907ac696837130937a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7cb857025c882636765614d17290b95"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ae7cb857025c882636765614d17290b95">MN_SEARCH_FORW</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;前方へ再検索&quot;, &quot;Search foward&quot;)</td></tr>
+<tr class="separator:ae7cb857025c882636765614d17290b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a826a97cad09fe1d42859ed61dc0db42d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a826a97cad09fe1d42859ed61dc0db42d">MN_SEARCH_BACK</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;後方へ再検索&quot;, &quot;Search backward&quot;)</td></tr>
+<tr class="separator:a826a97cad09fe1d42859ed61dc0db42d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ffaf6984975ff4c50b2b5a31a3e4ec5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a4ffaf6984975ff4c50b2b5a31a3e4ec5">MN_SEARCH_OBJ</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;アイテムを選択して検索&quot;, &quot;Search by inventory object&quot;)</td></tr>
+<tr class="separator:a4ffaf6984975ff4c50b2b5a31a3e4ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8de9c21c1f0edff9dc2e03edf2b6f27"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ac8de9c21c1f0edff9dc2e03edf2b6f27">MN_SEARCH_DESTROYED</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;自動破壊されたアイテムで検索&quot;, &quot;Search by destroyed object&quot;)</td></tr>
+<tr class="separator:ac8de9c21c1f0edff9dc2e03edf2b6f27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae533230ba40cabe77d13a466db5e1526"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ae533230ba40cabe77d13a466db5e1526">MN_INSERT</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;色々挿入&quot;, &quot;Insert...&quot;)</td></tr>
+<tr class="separator:ae533230ba40cabe77d13a466db5e1526"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34eb1f0e0cd01072ca6f5ba2d8c9a4f5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a34eb1f0e0cd01072ca6f5ba2d8c9a4f5">MN_INSERT_OBJECT</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;選択したアイテムの名前を挿入&quot;, &quot;Insert name of choosen object&quot;)</td></tr>
+<tr class="separator:a34eb1f0e0cd01072ca6f5ba2d8c9a4f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ad58aaed7373289a11373eb93dc6d09"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a1ad58aaed7373289a11373eb93dc6d09">MN_INSERT_DESTROYED</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;自動破壊されたアイテムの名前を挿入&quot;, &quot;Insert name of destroyed object&quot;)</td></tr>
+<tr class="separator:a1ad58aaed7373289a11373eb93dc6d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e2129cf72084dda5a8b37f4e4afa06a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a1e2129cf72084dda5a8b37f4e4afa06a">MN_INSERT_BLOCK</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;条件分岐ブロックの例を挿入&quot;, &quot;Insert conditional block&quot;)</td></tr>
+<tr class="separator:a1e2129cf72084dda5a8b37f4e4afa06a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d738d851bdbedb333774352913e6224"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a7d738d851bdbedb333774352913e6224">MN_INSERT_MACRO</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;マクロ定義を挿入&quot;, &quot;Insert a macro definition&quot;)</td></tr>
+<tr class="separator:a7d738d851bdbedb333774352913e6224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaae79c10e8aea08f979268bb4161911"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#abaae79c10e8aea08f979268bb4161911">MN_INSERT_KEYMAP</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;キーマップ定義を挿入&quot;, &quot;Insert a keymap definition&quot;)</td></tr>
+<tr class="separator:abaae79c10e8aea08f979268bb4161911"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ec87c358505d1508266870b9156eeed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a2ec87c358505d1508266870b9156eeed">MN_COMMAND_LETTER</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;拾い/破壊/放置の選択&quot;, &quot;Command <a class="el" href="general-parser_8h.html#ad20065d2367d2f8c9e70940a029c3744">letter</a>&quot;)</td></tr>
+<tr class="separator:a2ec87c358505d1508266870b9156eeed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0537b2a6b5c75af6eed1e3b7e36ee7a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ac0537b2a6b5c75af6eed1e3b7e36ee7a">MN_CL_AUTOPICK</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;「 」 (自動拾い)&quot;, &quot;' ' (Auto pick)&quot;)</td></tr>
+<tr class="separator:ac0537b2a6b5c75af6eed1e3b7e36ee7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1936740afad6af7f30c036a9609b945f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a1936740afad6af7f30c036a9609b945f">MN_CL_DESTROY</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;「!」 (自動破壊)&quot;, &quot;'!' (Auto destroy)&quot;)</td></tr>
+<tr class="separator:a1936740afad6af7f30c036a9609b945f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9cc301e24834e44346463e9b5720eb5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ab9cc301e24834e44346463e9b5720eb5">MN_CL_LEAVE</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;「~」 (放置)&quot;, &quot;'~' (Leave it on the floor)&quot;)</td></tr>
+<tr class="separator:ab9cc301e24834e44346463e9b5720eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8145919208cbf7aff2c0bdef53ecf81"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aa8145919208cbf7aff2c0bdef53ecf81">MN_CL_QUERY</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;「;」 (確認して拾う)&quot;, &quot;';' (Query to pick up)&quot;)</td></tr>
+<tr class="separator:aa8145919208cbf7aff2c0bdef53ecf81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9a6dbfe5d92717d3ea60e1605847631"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ad9a6dbfe5d92717d3ea60e1605847631">MN_CL_NO_DISP</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;「(」 (マップコマンドで表示しない)&quot;, &quot;'(' (No display on the large map)&quot;)</td></tr>
+<tr class="separator:ad9a6dbfe5d92717d3ea60e1605847631"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af08ad6dd159d0fabb3a7bb96bd361895"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#af08ad6dd159d0fabb3a7bb96bd361895">MN_ADJECTIVE_GEN</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;形容詞(一般)の選択&quot;, &quot;Adjective (general)&quot;)</td></tr>
+<tr class="separator:af08ad6dd159d0fabb3a7bb96bd361895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add89643690c1b69702fd2b5d758ee0bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#add89643690c1b69702fd2b5d758ee0bd">MN_RARE</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;レアな (装備)&quot;, &quot;rare (equipment)&quot;)</td></tr>
+<tr class="separator:add89643690c1b69702fd2b5d758ee0bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83184617734d3bcb7448aa7a82b038cb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a83184617734d3bcb7448aa7a82b038cb">MN_COMMON</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ありふれた (装備)&quot;, &quot;common (equipment)&quot;)</td></tr>
+<tr class="separator:a83184617734d3bcb7448aa7a82b038cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b5ec77b42a2631ccc6781246e7aad98"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a9b5ec77b42a2631ccc6781246e7aad98">MN_ADJECTIVE_SPECIAL</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;形容詞(特殊)の選択&quot;, &quot;Adjective (special)&quot;)</td></tr>
+<tr class="separator:a9b5ec77b42a2631ccc6781246e7aad98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a810ef7d665e5f48834140c663ac48d9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a810ef7d665e5f48834140c663ac48d9e">MN_BOOSTED</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ダイス目の違う (武器)&quot;, &quot;dice boosted (weapons)&quot;)</td></tr>
+<tr class="separator:a810ef7d665e5f48834140c663ac48d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad04b480070ece33a884ea0d902c87f14"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ad04b480070ece33a884ea0d902c87f14">MN_MORE_DICE</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ダイス目 # 以上の (武器)&quot;, &quot;more than # dice (weapons)&quot;)</td></tr>
+<tr class="separator:ad04b480070ece33a884ea0d902c87f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a492e627586f3e15d1cdd59221f818c3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a492e627586f3e15d1cdd59221f818c3c">MN_MORE_BONUS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;修正値 # 以上の (指輪等)&quot;, &quot;more bonus than # (rings etc.)&quot;)</td></tr>
+<tr class="separator:a492e627586f3e15d1cdd59221f818c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1799531e5d10ed6a69d7427696bacf4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ac1799531e5d10ed6a69d7427696bacf4">MN_WANTED</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;賞金首の (死体)&quot;, &quot;wanted (corpse)&quot;)</td></tr>
+<tr class="separator:ac1799531e5d10ed6a69d7427696bacf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a633c6c89b1d8bed52734c81c08967087"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a633c6c89b1d8bed52734c81c08967087">MN_UNIQUE</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ユニーク・モンスターの (死体)&quot;, &quot;unique (corpse)&quot;)</td></tr>
+<tr class="separator:a633c6c89b1d8bed52734c81c08967087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cf4c40903ebdb47f70bca1cdebd23f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a3cf4c40903ebdb47f70bca1cdebd23f3">MN_HUMAN</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;人間の (死体)&quot;, &quot;human (corpse)&quot;)</td></tr>
+<tr class="separator:a3cf4c40903ebdb47f70bca1cdebd23f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab21655330c306c6b12769b350c5a3054"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ab21655330c306c6b12769b350c5a3054">MN_UNREADABLE</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;読めない (魔法書)&quot;, &quot;unreadable (spellbooks)&quot;)</td></tr>
+<tr class="separator:ab21655330c306c6b12769b350c5a3054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64cce7c60dcf876bcb3966c2a5939c46"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a64cce7c60dcf876bcb3966c2a5939c46">MN_REALM1</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;第一領域の (魔法書)&quot;, &quot;realm1 (spellbooks)&quot;)</td></tr>
+<tr class="separator:a64cce7c60dcf876bcb3966c2a5939c46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a20de9003d671805cd8eea64096bcea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a4a20de9003d671805cd8eea64096bcea">MN_REALM2</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;第二領域の (魔法書)&quot;, &quot;realm2 (spellbooks)&quot;)</td></tr>
+<tr class="separator:a4a20de9003d671805cd8eea64096bcea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09dade313b31f29487ae8e319cb49769"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a09dade313b31f29487ae8e319cb49769">MN_FIRST</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;1冊目の (魔法書)&quot;, &quot;first (spellbooks)&quot;)</td></tr>
+<tr class="separator:a09dade313b31f29487ae8e319cb49769"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4374d39717e91373eeab715ece41ce51"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a4374d39717e91373eeab715ece41ce51">MN_SECOND</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;2冊目の (魔法書)&quot;, &quot;second (spellbooks)&quot;)</td></tr>
+<tr class="separator:a4374d39717e91373eeab715ece41ce51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c18ecd94575f5c82a32adee61b6d231"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a5c18ecd94575f5c82a32adee61b6d231">MN_THIRD</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;3冊目の (魔法書)&quot;, &quot;third (spellbooks)&quot;)</td></tr>
+<tr class="separator:a5c18ecd94575f5c82a32adee61b6d231"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a474eb7121b9f432552aaa99b5b5370a4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a474eb7121b9f432552aaa99b5b5370a4">MN_FOURTH</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;4冊目の (魔法書)&quot;, &quot;fourth (spellbooks)&quot;)</td></tr>
+<tr class="separator:a474eb7121b9f432552aaa99b5b5370a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f48b01c028adf471caf84ca34796bdf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a3f48b01c028adf471caf84ca34796bdf">MN_NOUN</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;名詞の選択&quot;, &quot;Keywords (noun)&quot;)</td></tr>
+<tr class="separator:a3f48b01c028adf471caf84ca34796bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11f7014b61bb9be1897f4893af2692d4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a11f7014b61bb9be1897f4893af2692d4">MKEY_ALL</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;すべての&quot;, &quot;all&quot;)</td></tr>
+<tr class="separator:a11f7014b61bb9be1897f4893af2692d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3438372e6f38cc478763e5d74647c57"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ab3438372e6f38cc478763e5d74647c57">MKEY_UNAWARE</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;未判明の&quot;, &quot;unaware&quot;)</td></tr>
+<tr class="separator:ab3438372e6f38cc478763e5d74647c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a847afde653e037fb19918df521e70682"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a847afde653e037fb19918df521e70682">MKEY_UNIDENTIFIED</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;未鑑定の&quot;, &quot;unidentified&quot;)</td></tr>
+<tr class="separator:a847afde653e037fb19918df521e70682"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2f55cc03616c3669d75bfc140434d5d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aa2f55cc03616c3669d75bfc140434d5d">MKEY_IDENTIFIED</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;鑑定済みの&quot;, &quot;identified&quot;)</td></tr>
+<tr class="separator:aa2f55cc03616c3669d75bfc140434d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea0f12ec431d2d045a5fb784fc259eb8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aea0f12ec431d2d045a5fb784fc259eb8">MKEY_STAR_IDENTIFIED</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;*鑑定*済みの&quot;, &quot;*identified*&quot;)</td></tr>
+<tr class="separator:aea0f12ec431d2d045a5fb784fc259eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadc9c40535c7b6c066d37cb52efbfb8a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aadc9c40535c7b6c066d37cb52efbfb8a">MKEY_COLLECTING</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;収集中の&quot;, &quot;collecting&quot;)</td></tr>
+<tr class="separator:aadc9c40535c7b6c066d37cb52efbfb8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0db8b45f349650b6f684d930aa154005"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a0db8b45f349650b6f684d930aa154005">MKEY_ARTIFACT</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;アーティファクト&quot;, &quot;artifact&quot;)</td></tr>
+<tr class="separator:a0db8b45f349650b6f684d930aa154005"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf52f6d0a845267bfc27a877f2544675"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#abf52f6d0a845267bfc27a877f2544675">MKEY_EGO</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;エゴ&quot;, &quot;ego&quot;)</td></tr>
+<tr class="separator:abf52f6d0a845267bfc27a877f2544675"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ad30fe57a2a6b0621160076b714a630"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a0ad30fe57a2a6b0621160076b714a630">MKEY_GOOD</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;上質の&quot;, &quot;good&quot;)</td></tr>
+<tr class="separator:a0ad30fe57a2a6b0621160076b714a630"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacdb5b8142d12e8400a24c7cf61d8931"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aacdb5b8142d12e8400a24c7cf61d8931">MKEY_NAMELESS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;無銘の&quot;, &quot;nameless&quot;)</td></tr>
+<tr class="separator:aacdb5b8142d12e8400a24c7cf61d8931"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54d29f8bff3d4274c9a111a9badcb0d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a54d29f8bff3d4274c9a111a9badcb0d8">MKEY_AVERAGE</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;並の&quot;, &quot;average&quot;)</td></tr>
+<tr class="separator:a54d29f8bff3d4274c9a111a9badcb0d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a548b2d02edaf6759301287580a22ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a6a548b2d02edaf6759301287580a22ac">MKEY_WORTHLESS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;無価値の&quot;, &quot;worthless&quot;)</td></tr>
+<tr class="separator:a6a548b2d02edaf6759301287580a22ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b82e859b71f04d67d988e0b9decfcc4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a6b82e859b71f04d67d988e0b9decfcc4">MKEY_RARE</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;レアな&quot;, &quot;rare&quot;)</td></tr>
+<tr class="separator:a6b82e859b71f04d67d988e0b9decfcc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6b6e5e6488e9c91f247eac0f7561b24"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ab6b6e5e6488e9c91f247eac0f7561b24">MKEY_COMMON</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ありふれた&quot;, &quot;common&quot;)</td></tr>
+<tr class="separator:ab6b6e5e6488e9c91f247eac0f7561b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa4939cd26dd8fd06d1441ed4c47c615"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#afa4939cd26dd8fd06d1441ed4c47c615">MKEY_BOOSTED</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ダイス目の違う&quot;, &quot;dice boosted&quot;)</td></tr>
+<tr class="separator:afa4939cd26dd8fd06d1441ed4c47c615"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21159a1c1b8d729947acdf07fab2a5fe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a21159a1c1b8d729947acdf07fab2a5fe">MKEY_MORE_THAN</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ダイス目&quot;, &quot;more than&quot;)</td></tr>
+<tr class="separator:a21159a1c1b8d729947acdf07fab2a5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaad8c30d9c5216ae067e3f7c050678a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aaad8c30d9c5216ae067e3f7c050678a5">MKEY_DICE</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;以上の&quot;, &quot;dice&quot;)</td></tr>
+<tr class="separator:aaad8c30d9c5216ae067e3f7c050678a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d46c1e33dd50d2548264f9907210212"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a3d46c1e33dd50d2548264f9907210212">MKEY_MORE_BONUS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;修正値&quot;, &quot;more bonus than&quot;)</td></tr>
+<tr class="separator:a3d46c1e33dd50d2548264f9907210212"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44b897d0df0927275a2728b8346f32a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a44b897d0df0927275a2728b8346f32a6">MKEY_MORE_BONUS2</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;以上の&quot;, &quot;&quot;)</td></tr>
+<tr class="separator:a44b897d0df0927275a2728b8346f32a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3690812b5c6cf535681fc62ed9e1865c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a3690812b5c6cf535681fc62ed9e1865c">MKEY_WANTED</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;賞金首の&quot;, &quot;wanted&quot;)</td></tr>
+<tr class="separator:a3690812b5c6cf535681fc62ed9e1865c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcc0754c99b11da291a33066f0ee4b88"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#afcc0754c99b11da291a33066f0ee4b88">MKEY_UNIQUE</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ユニーク・モンスターの&quot;, &quot;unique monster's&quot;)</td></tr>
+<tr class="separator:afcc0754c99b11da291a33066f0ee4b88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13a977f63627c6d857c1a00058a40792"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a13a977f63627c6d857c1a00058a40792">MKEY_HUMAN</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;人間の&quot;, &quot;human&quot;)</td></tr>
+<tr class="separator:a13a977f63627c6d857c1a00058a40792"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a0f372cb6398ce50df08112ef6d08f2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a2a0f372cb6398ce50df08112ef6d08f2">MKEY_UNREADABLE</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;読めない&quot;, &quot;unreadable&quot;)</td></tr>
+<tr class="separator:a2a0f372cb6398ce50df08112ef6d08f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a5a3592bc14b8597cfc4b144307f4c0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a4a5a3592bc14b8597cfc4b144307f4c0">MKEY_REALM1</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;第一領域の&quot;, &quot;first realm's&quot;)</td></tr>
+<tr class="separator:a4a5a3592bc14b8597cfc4b144307f4c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae483149f8c5721a87a5a8b4e2aa0d762"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ae483149f8c5721a87a5a8b4e2aa0d762">MKEY_REALM2</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;第二領域の&quot;, &quot;second realm's&quot;)</td></tr>
+<tr class="separator:ae483149f8c5721a87a5a8b4e2aa0d762"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afce545bd935449c784d3ab2205d5ddfa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#afce545bd935449c784d3ab2205d5ddfa">MKEY_FIRST</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;1冊目の&quot;, &quot;first&quot;)</td></tr>
+<tr class="separator:afce545bd935449c784d3ab2205d5ddfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe68d738307920a0f8455d4461cbf416"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#afe68d738307920a0f8455d4461cbf416">MKEY_SECOND</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;2冊目の&quot;, &quot;second&quot;)</td></tr>
+<tr class="separator:afe68d738307920a0f8455d4461cbf416"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7166987770163a2a337f278f1f9752e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ad7166987770163a2a337f278f1f9752e">MKEY_THIRD</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;3冊目の&quot;, &quot;third&quot;)</td></tr>
+<tr class="separator:ad7166987770163a2a337f278f1f9752e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0222abd4a350eb1a057a09db7aab05f9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a0222abd4a350eb1a057a09db7aab05f9">MKEY_FOURTH</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;4冊目の&quot;, &quot;fourth&quot;)</td></tr>
+<tr class="separator:a0222abd4a350eb1a057a09db7aab05f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b94a4170dd38d1d2d3b9edcff49c58a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a5b94a4170dd38d1d2d3b9edcff49c58a">MKEY_ITEMS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;アイテム&quot;, &quot;items&quot;)</td></tr>
+<tr class="separator:a5b94a4170dd38d1d2d3b9edcff49c58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae992bff1555022f08a63762ae1fc37ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ae992bff1555022f08a63762ae1fc37ad">MKEY_WEAPONS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;武器&quot;, &quot;weapons&quot;)</td></tr>
+<tr class="separator:ae992bff1555022f08a63762ae1fc37ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35294e417d238c4d6f9783099feaf213"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a35294e417d238c4d6f9783099feaf213">MKEY_FAVORITE_WEAPONS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;得意武器&quot;, &quot;favorite weapons&quot;)</td></tr>
+<tr class="separator:a35294e417d238c4d6f9783099feaf213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf05b7571f880e47fbf644e77a6d7077"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#adf05b7571f880e47fbf644e77a6d7077">MKEY_ARMORS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;防具&quot;, &quot;armors&quot;)</td></tr>
+<tr class="separator:adf05b7571f880e47fbf644e77a6d7077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5887c0c6ef01f2f6045f4891733a46b0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a5887c0c6ef01f2f6045f4891733a46b0">MKEY_MISSILES</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;矢&quot;, &quot;missiles&quot;)</td></tr>
+<tr class="separator:a5887c0c6ef01f2f6045f4891733a46b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9471db86a9de9a1e6a333535b3e8971"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ad9471db86a9de9a1e6a333535b3e8971">MKEY_DEVICES</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;魔法アイテム&quot;, &quot;magical devices&quot;)</td></tr>
+<tr class="separator:ad9471db86a9de9a1e6a333535b3e8971"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfded3108fffbaece09f6d8c34805c77"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#abfded3108fffbaece09f6d8c34805c77">MKEY_LIGHTS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;光源&quot;, &quot;lights&quot;)</td></tr>
+<tr class="separator:abfded3108fffbaece09f6d8c34805c77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a399871a57e5809af25f22ad4a32bc359"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a399871a57e5809af25f22ad4a32bc359">MKEY_JUNKS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;がらくた&quot;, &quot;junk&quot;)</td></tr>
+<tr class="separator:a399871a57e5809af25f22ad4a32bc359"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a000145e862eab28991a82b702c77fa07"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a000145e862eab28991a82b702c77fa07">MKEY_CORPSES</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;死体や骨&quot;, &quot;corpses or skeletons&quot;)</td></tr>
+<tr class="separator:a000145e862eab28991a82b702c77fa07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18f54184813222cd4f56688c1c0f813d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a18f54184813222cd4f56688c1c0f813d">MKEY_SPELLBOOKS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;魔法書&quot;, &quot;spellbooks&quot;)</td></tr>
+<tr class="separator:a18f54184813222cd4f56688c1c0f813d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63ae096b65a53a85e84245361ab2107a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a63ae096b65a53a85e84245361ab2107a">MKEY_HAFTED</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;鈍器&quot;, &quot;hafted weapons&quot;)</td></tr>
+<tr class="separator:a63ae096b65a53a85e84245361ab2107a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7decda584c12b1e1f23ff4142d7be5e6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a7decda584c12b1e1f23ff4142d7be5e6">MKEY_SHIELDS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;盾&quot;, &quot;shields&quot;)</td></tr>
+<tr class="separator:a7decda584c12b1e1f23ff4142d7be5e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2144827068f2eb2631f84743d35ad76f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a2144827068f2eb2631f84743d35ad76f">MKEY_BOWS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;弓&quot;, &quot;bows&quot;)</td></tr>
+<tr class="separator:a2144827068f2eb2631f84743d35ad76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a901f3ae05a16ef6d94e83c19ebff61da"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a901f3ae05a16ef6d94e83c19ebff61da">MKEY_RINGS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;指輪&quot;, &quot;rings&quot;)</td></tr>
+<tr class="separator:a901f3ae05a16ef6d94e83c19ebff61da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade6d5412dc3da887774a8a64e82bfb59"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ade6d5412dc3da887774a8a64e82bfb59">MKEY_AMULETS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;アミュレット&quot;, &quot;amulets&quot;)</td></tr>
+<tr class="separator:ade6d5412dc3da887774a8a64e82bfb59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6efeb74d7cba7d84835218f90af02f2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#af6efeb74d7cba7d84835218f90af02f2">MKEY_SUITS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;鎧&quot;, &quot;suits&quot;)</td></tr>
+<tr class="separator:af6efeb74d7cba7d84835218f90af02f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0e8e39760cdff0bd9d99c0d5ee86237"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ac0e8e39760cdff0bd9d99c0d5ee86237">MKEY_CLOAKS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;クローク&quot;, &quot;cloaks&quot;)</td></tr>
+<tr class="separator:ac0e8e39760cdff0bd9d99c0d5ee86237"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0ea01c545359609a39c62eedbe4f9e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ac0ea01c545359609a39c62eedbe4f9e1">MKEY_HELMS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;兜&quot;, &quot;helms&quot;)</td></tr>
+<tr class="separator:ac0ea01c545359609a39c62eedbe4f9e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1074a233aa87df6e8f35313e11a6f8f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a1074a233aa87df6e8f35313e11a6f8f6">MKEY_GLOVES</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;籠手&quot;, &quot;gloves&quot;)</td></tr>
+<tr class="separator:a1074a233aa87df6e8f35313e11a6f8f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf0fffa0e3034c32575b726898472d3b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#adf0fffa0e3034c32575b726898472d3b">MKEY_BOOTS</a>&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;靴&quot;, &quot;boots&quot;)</td></tr>
+<tr class="separator:adf0fffa0e3034c32575b726898472d3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:ac868ada75a0588da747f19aa9f1ca1a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ac868ada75a0588da747f19aa9f1ca1a1">KEY_ALL</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a11f7014b61bb9be1897f4893af2692d4">MKEY_ALL</a></td></tr>
+<tr class="separator:ac868ada75a0588da747f19aa9f1ca1a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4ef414d49a2c01e8f34a085a88ac97a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ad4ef414d49a2c01e8f34a085a88ac97a">KEY_UNAWARE</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#ab3438372e6f38cc478763e5d74647c57">MKEY_UNAWARE</a></td></tr>
+<tr class="separator:ad4ef414d49a2c01e8f34a085a88ac97a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a3d210c2e7a9c76202556c56810485c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a3a3d210c2e7a9c76202556c56810485c">KEY_UNIDENTIFIED</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a847afde653e037fb19918df521e70682">MKEY_UNIDENTIFIED</a></td></tr>
+<tr class="separator:a3a3d210c2e7a9c76202556c56810485c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af51580f41e26b6e3d93c7e4a00bdd2fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#af51580f41e26b6e3d93c7e4a00bdd2fa">KEY_IDENTIFIED</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#aa2f55cc03616c3669d75bfc140434d5d">MKEY_IDENTIFIED</a></td></tr>
+<tr class="separator:af51580f41e26b6e3d93c7e4a00bdd2fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01baabcb987b985c7c1e59337ed1d280"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a01baabcb987b985c7c1e59337ed1d280">KEY_STAR_IDENTIFIED</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#aea0f12ec431d2d045a5fb784fc259eb8">MKEY_STAR_IDENTIFIED</a></td></tr>
+<tr class="separator:a01baabcb987b985c7c1e59337ed1d280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c36ac8352debdd63e921942f3af62aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a6c36ac8352debdd63e921942f3af62aa">KEY_COLLECTING</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#aadc9c40535c7b6c066d37cb52efbfb8a">MKEY_COLLECTING</a></td></tr>
+<tr class="separator:a6c36ac8352debdd63e921942f3af62aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a269f738e7808ef64b2b9299ae42878fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a269f738e7808ef64b2b9299ae42878fd">KEY_ARTIFACT</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a0db8b45f349650b6f684d930aa154005">MKEY_ARTIFACT</a></td></tr>
+<tr class="separator:a269f738e7808ef64b2b9299ae42878fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6af6fba8c3ae581be06049cd81871b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ac6af6fba8c3ae581be06049cd81871b1">KEY_EGO</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#abf52f6d0a845267bfc27a877f2544675">MKEY_EGO</a></td></tr>
+<tr class="separator:ac6af6fba8c3ae581be06049cd81871b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b282fc4438d6802e241c9515abfc1ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a6b282fc4438d6802e241c9515abfc1ed">KEY_GOOD</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a0ad30fe57a2a6b0621160076b714a630">MKEY_GOOD</a></td></tr>
+<tr class="separator:a6b282fc4438d6802e241c9515abfc1ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63931fd7af5247f0fa7c15770a30ce1a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a63931fd7af5247f0fa7c15770a30ce1a">KEY_NAMELESS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#aacdb5b8142d12e8400a24c7cf61d8931">MKEY_NAMELESS</a></td></tr>
+<tr class="separator:a63931fd7af5247f0fa7c15770a30ce1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad299e8fb0ebecbf71c4e29f351916dd9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ad299e8fb0ebecbf71c4e29f351916dd9">KEY_AVERAGE</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a54d29f8bff3d4274c9a111a9badcb0d8">MKEY_AVERAGE</a></td></tr>
+<tr class="separator:ad299e8fb0ebecbf71c4e29f351916dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3b3e0c3cf4084322ef6b1066780ba6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ab3b3e0c3cf4084322ef6b1066780ba6f">KEY_WORTHLESS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a6a548b2d02edaf6759301287580a22ac">MKEY_WORTHLESS</a></td></tr>
+<tr class="separator:ab3b3e0c3cf4084322ef6b1066780ba6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7437c6a3686b892e8a6ed2ee19ddc321"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a7437c6a3686b892e8a6ed2ee19ddc321">KEY_RARE</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a6b82e859b71f04d67d988e0b9decfcc4">MKEY_RARE</a></td></tr>
+<tr class="separator:a7437c6a3686b892e8a6ed2ee19ddc321"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49a8493a11733d52e5c143b925c8a715"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a49a8493a11733d52e5c143b925c8a715">KEY_COMMON</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#ab6b6e5e6488e9c91f247eac0f7561b24">MKEY_COMMON</a></td></tr>
+<tr class="separator:a49a8493a11733d52e5c143b925c8a715"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af82a38a081bd806af77e67c9d667d93b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#af82a38a081bd806af77e67c9d667d93b">KEY_BOOSTED</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#afa4939cd26dd8fd06d1441ed4c47c615">MKEY_BOOSTED</a></td></tr>
+<tr class="separator:af82a38a081bd806af77e67c9d667d93b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa76a2c3ddc84265f73350b6e3efad75b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aa76a2c3ddc84265f73350b6e3efad75b">KEY_MORE_THAN</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a21159a1c1b8d729947acdf07fab2a5fe">MKEY_MORE_THAN</a></td></tr>
+<tr class="separator:aa76a2c3ddc84265f73350b6e3efad75b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b6007cfe0177e42e769a764307ab2f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a5b6007cfe0177e42e769a764307ab2f4">KEY_DICE</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#aaad8c30d9c5216ae067e3f7c050678a5">MKEY_DICE</a></td></tr>
+<tr class="separator:a5b6007cfe0177e42e769a764307ab2f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ffc606bc8baa9f14791f2100c77d822"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a0ffc606bc8baa9f14791f2100c77d822">KEY_MORE_BONUS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a3d46c1e33dd50d2548264f9907210212">MKEY_MORE_BONUS</a></td></tr>
+<tr class="separator:a0ffc606bc8baa9f14791f2100c77d822"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04b69ef671fdd051009157a97b784684"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a04b69ef671fdd051009157a97b784684">KEY_MORE_BONUS2</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a44b897d0df0927275a2728b8346f32a6">MKEY_MORE_BONUS2</a></td></tr>
+<tr class="separator:a04b69ef671fdd051009157a97b784684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a672e258153be375cd795836daf3e2fe6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a672e258153be375cd795836daf3e2fe6">KEY_WANTED</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a3690812b5c6cf535681fc62ed9e1865c">MKEY_WANTED</a></td></tr>
+<tr class="separator:a672e258153be375cd795836daf3e2fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfe220255faf7c455e8d6da37c2c24cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#abfe220255faf7c455e8d6da37c2c24cd">KEY_UNIQUE</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#afcc0754c99b11da291a33066f0ee4b88">MKEY_UNIQUE</a></td></tr>
+<tr class="separator:abfe220255faf7c455e8d6da37c2c24cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf60b168aac0ab474c1545ebdc7c194d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#adf60b168aac0ab474c1545ebdc7c194d">KEY_HUMAN</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a13a977f63627c6d857c1a00058a40792">MKEY_HUMAN</a></td></tr>
+<tr class="separator:adf60b168aac0ab474c1545ebdc7c194d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf5d05ba38789818802fa22b234ad8ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#abf5d05ba38789818802fa22b234ad8ab">KEY_UNREADABLE</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a2a0f372cb6398ce50df08112ef6d08f2">MKEY_UNREADABLE</a></td></tr>
+<tr class="separator:abf5d05ba38789818802fa22b234ad8ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb39552cc48405fbc837cc25b3d9f59d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#acb39552cc48405fbc837cc25b3d9f59d">KEY_REALM1</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a4a5a3592bc14b8597cfc4b144307f4c0">MKEY_REALM1</a></td></tr>
+<tr class="separator:acb39552cc48405fbc837cc25b3d9f59d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a960c8779edde299048e35324a0f13528"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a960c8779edde299048e35324a0f13528">KEY_REALM2</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#ae483149f8c5721a87a5a8b4e2aa0d762">MKEY_REALM2</a></td></tr>
+<tr class="separator:a960c8779edde299048e35324a0f13528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75d54267c6cc7e2045ec80677b7a90fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a75d54267c6cc7e2045ec80677b7a90fe">KEY_FIRST</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#afce545bd935449c784d3ab2205d5ddfa">MKEY_FIRST</a></td></tr>
+<tr class="separator:a75d54267c6cc7e2045ec80677b7a90fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21af6d8a9b1372589bc757974b37fe05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a21af6d8a9b1372589bc757974b37fe05">KEY_SECOND</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#afe68d738307920a0f8455d4461cbf416">MKEY_SECOND</a></td></tr>
+<tr class="separator:a21af6d8a9b1372589bc757974b37fe05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b29480693bd7f959b5bd7c55af0ca4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a6b29480693bd7f959b5bd7c55af0ca4e">KEY_THIRD</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#ad7166987770163a2a337f278f1f9752e">MKEY_THIRD</a></td></tr>
+<tr class="separator:a6b29480693bd7f959b5bd7c55af0ca4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad70134dac5d5c604eb21e87696ac2fb3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ad70134dac5d5c604eb21e87696ac2fb3">KEY_FOURTH</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a0222abd4a350eb1a057a09db7aab05f9">MKEY_FOURTH</a></td></tr>
+<tr class="separator:ad70134dac5d5c604eb21e87696ac2fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af34984aefd5ad3176d7597c7c0ea6113"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#af34984aefd5ad3176d7597c7c0ea6113">KEY_ITEMS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a5b94a4170dd38d1d2d3b9edcff49c58a">MKEY_ITEMS</a></td></tr>
+<tr class="separator:af34984aefd5ad3176d7597c7c0ea6113"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40bcf206fc83e4e4191af6220e678d4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a40bcf206fc83e4e4191af6220e678d4b">KEY_WEAPONS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#ae992bff1555022f08a63762ae1fc37ad">MKEY_WEAPONS</a></td></tr>
+<tr class="separator:a40bcf206fc83e4e4191af6220e678d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12efa1e98b7ae2e01829552fba1b62a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a12efa1e98b7ae2e01829552fba1b62a2">KEY_FAVORITE_WEAPONS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a35294e417d238c4d6f9783099feaf213">MKEY_FAVORITE_WEAPONS</a></td></tr>
+<tr class="separator:a12efa1e98b7ae2e01829552fba1b62a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66e9fd830b95080d926d562f062c3e3d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a66e9fd830b95080d926d562f062c3e3d">KEY_ARMORS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#adf05b7571f880e47fbf644e77a6d7077">MKEY_ARMORS</a></td></tr>
+<tr class="separator:a66e9fd830b95080d926d562f062c3e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48179f0afa1c401dbfd481056f3a91a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a48179f0afa1c401dbfd481056f3a91a0">KEY_MISSILES</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a5887c0c6ef01f2f6045f4891733a46b0">MKEY_MISSILES</a></td></tr>
+<tr class="separator:a48179f0afa1c401dbfd481056f3a91a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2496d46b5712dd99716808f502465c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aa2496d46b5712dd99716808f502465c0">KEY_DEVICES</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#ad9471db86a9de9a1e6a333535b3e8971">MKEY_DEVICES</a></td></tr>
+<tr class="separator:aa2496d46b5712dd99716808f502465c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9f57a73af848474dd1c84f9ec42067b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#ae9f57a73af848474dd1c84f9ec42067b">KEY_LIGHTS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#abfded3108fffbaece09f6d8c34805c77">MKEY_LIGHTS</a></td></tr>
+<tr class="separator:ae9f57a73af848474dd1c84f9ec42067b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c704321f1ffaa153b9461fdd8b865cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a7c704321f1ffaa153b9461fdd8b865cd">KEY_JUNKS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a399871a57e5809af25f22ad4a32bc359">MKEY_JUNKS</a></td></tr>
+<tr class="separator:a7c704321f1ffaa153b9461fdd8b865cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab91bbdcf0e39af01f24a3a7e77a2433"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aab91bbdcf0e39af01f24a3a7e77a2433">KEY_CORPSES</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a000145e862eab28991a82b702c77fa07">MKEY_CORPSES</a></td></tr>
+<tr class="separator:aab91bbdcf0e39af01f24a3a7e77a2433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42ba3c1657a6fff699c554a2c8210a54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a42ba3c1657a6fff699c554a2c8210a54">KEY_SPELLBOOKS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a18f54184813222cd4f56688c1c0f813d">MKEY_SPELLBOOKS</a></td></tr>
+<tr class="separator:a42ba3c1657a6fff699c554a2c8210a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a304b2f540ffbd223129701fabd6d0a79"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a304b2f540ffbd223129701fabd6d0a79">KEY_HAFTED</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a63ae096b65a53a85e84245361ab2107a">MKEY_HAFTED</a></td></tr>
+<tr class="separator:a304b2f540ffbd223129701fabd6d0a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c7c67ce524cc13ebe8e3c4bce2df953"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a8c7c67ce524cc13ebe8e3c4bce2df953">KEY_SHIELDS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a7decda584c12b1e1f23ff4142d7be5e6">MKEY_SHIELDS</a></td></tr>
+<tr class="separator:a8c7c67ce524cc13ebe8e3c4bce2df953"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8dbd58da30dc33959abf77dcb34025a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#af8dbd58da30dc33959abf77dcb34025a">KEY_BOWS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a2144827068f2eb2631f84743d35ad76f">MKEY_BOWS</a></td></tr>
+<tr class="separator:af8dbd58da30dc33959abf77dcb34025a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b1e8d97034c9395575be424024953dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a4b1e8d97034c9395575be424024953dc">KEY_RINGS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a901f3ae05a16ef6d94e83c19ebff61da">MKEY_RINGS</a></td></tr>
+<tr class="separator:a4b1e8d97034c9395575be424024953dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fb4e37ef3cd6b4f0045fe12792795fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a8fb4e37ef3cd6b4f0045fe12792795fa">KEY_AMULETS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#ade6d5412dc3da887774a8a64e82bfb59">MKEY_AMULETS</a></td></tr>
+<tr class="separator:a8fb4e37ef3cd6b4f0045fe12792795fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55054e23e8174700daa51b3a95122951"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a55054e23e8174700daa51b3a95122951">KEY_SUITS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#af6efeb74d7cba7d84835218f90af02f2">MKEY_SUITS</a></td></tr>
+<tr class="separator:a55054e23e8174700daa51b3a95122951"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa630aa199ed29ba20a94b5fb15eb88b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#aa630aa199ed29ba20a94b5fb15eb88b5">KEY_CLOAKS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#ac0e8e39760cdff0bd9d99c0d5ee86237">MKEY_CLOAKS</a></td></tr>
+<tr class="separator:aa630aa199ed29ba20a94b5fb15eb88b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77199018f7a5c61b83ef6d45a79343f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a77199018f7a5c61b83ef6d45a79343f8">KEY_HELMS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#ac0ea01c545359609a39c62eedbe4f9e1">MKEY_HELMS</a></td></tr>
+<tr class="separator:a77199018f7a5c61b83ef6d45a79343f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73a1a1e3657f68289a8c6787b0e6ef6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a73a1a1e3657f68289a8c6787b0e6ef6f">KEY_GLOVES</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#a1074a233aa87df6e8f35313e11a6f8f6">MKEY_GLOVES</a></td></tr>
+<tr class="separator:a73a1a1e3657f68289a8c6787b0e6ef6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a966f870f91153e16181ff9911354da0e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a966f870f91153e16181ff9911354da0e">KEY_BOOTS</a> = <a class="el" href="autopick-menu-data-table_8cpp.html#adf0fffa0e3034c32575b726898472d3b">MKEY_BOOTS</a></td></tr>
+<tr class="separator:a966f870f91153e16181ff9911354da0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d8fb29029e6fc0ada3f16289b41e0a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcommand__menu__type.html">command_menu_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-menu-data-table_8cpp.html#a1d8fb29029e6fc0ada3f16289b41e0a2">menu_data</a> [<a class="el" href="autopick-menu-data-table_8h.html#abc8c751f03b1addfbcf0def5c8ea2715">MENU_DATA_NUM</a>]</td></tr>
+<tr class="separator:a1d8fb29029e6fc0ada3f16289b41e0a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="a11f7014b61bb9be1897f4893af2692d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11f7014b61bb9be1897f4893af2692d4">&#9670;&nbsp;</a></span>MKEY_ALL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_ALL&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;すべての&quot;, &quot;all&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ade6d5412dc3da887774a8a64e82bfb59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade6d5412dc3da887774a8a64e82bfb59">&#9670;&nbsp;</a></span>MKEY_AMULETS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_AMULETS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;アミュレット&quot;, &quot;amulets&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf05b7571f880e47fbf644e77a6d7077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf05b7571f880e47fbf644e77a6d7077">&#9670;&nbsp;</a></span>MKEY_ARMORS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_ARMORS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;防具&quot;, &quot;armors&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0db8b45f349650b6f684d930aa154005"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0db8b45f349650b6f684d930aa154005">&#9670;&nbsp;</a></span>MKEY_ARTIFACT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_ARTIFACT&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;アーティファクト&quot;, &quot;artifact&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a54d29f8bff3d4274c9a111a9badcb0d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54d29f8bff3d4274c9a111a9badcb0d8">&#9670;&nbsp;</a></span>MKEY_AVERAGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_AVERAGE&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;並の&quot;, &quot;average&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afa4939cd26dd8fd06d1441ed4c47c615"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa4939cd26dd8fd06d1441ed4c47c615">&#9670;&nbsp;</a></span>MKEY_BOOSTED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_BOOSTED&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ダイス目の違う&quot;, &quot;dice boosted&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf0fffa0e3034c32575b726898472d3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf0fffa0e3034c32575b726898472d3b">&#9670;&nbsp;</a></span>MKEY_BOOTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_BOOTS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;靴&quot;, &quot;boots&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2144827068f2eb2631f84743d35ad76f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2144827068f2eb2631f84743d35ad76f">&#9670;&nbsp;</a></span>MKEY_BOWS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_BOWS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;弓&quot;, &quot;bows&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac0e8e39760cdff0bd9d99c0d5ee86237"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0e8e39760cdff0bd9d99c0d5ee86237">&#9670;&nbsp;</a></span>MKEY_CLOAKS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_CLOAKS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;クローク&quot;, &quot;cloaks&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aadc9c40535c7b6c066d37cb52efbfb8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadc9c40535c7b6c066d37cb52efbfb8a">&#9670;&nbsp;</a></span>MKEY_COLLECTING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_COLLECTING&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;収集中の&quot;, &quot;collecting&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab6b6e5e6488e9c91f247eac0f7561b24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6b6e5e6488e9c91f247eac0f7561b24">&#9670;&nbsp;</a></span>MKEY_COMMON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_COMMON&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ありふれた&quot;, &quot;common&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a000145e862eab28991a82b702c77fa07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a000145e862eab28991a82b702c77fa07">&#9670;&nbsp;</a></span>MKEY_CORPSES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_CORPSES&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;死体や骨&quot;, &quot;corpses or skeletons&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad9471db86a9de9a1e6a333535b3e8971"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9471db86a9de9a1e6a333535b3e8971">&#9670;&nbsp;</a></span>MKEY_DEVICES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_DEVICES&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;魔法アイテム&quot;, &quot;magical devices&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaad8c30d9c5216ae067e3f7c050678a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaad8c30d9c5216ae067e3f7c050678a5">&#9670;&nbsp;</a></span>MKEY_DICE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_DICE&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;以上の&quot;, &quot;dice&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abf52f6d0a845267bfc27a877f2544675"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf52f6d0a845267bfc27a877f2544675">&#9670;&nbsp;</a></span>MKEY_EGO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_EGO&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;エゴ&quot;, &quot;ego&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35294e417d238c4d6f9783099feaf213"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35294e417d238c4d6f9783099feaf213">&#9670;&nbsp;</a></span>MKEY_FAVORITE_WEAPONS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_FAVORITE_WEAPONS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;得意武器&quot;, &quot;favorite weapons&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afce545bd935449c784d3ab2205d5ddfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afce545bd935449c784d3ab2205d5ddfa">&#9670;&nbsp;</a></span>MKEY_FIRST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_FIRST&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;1冊目の&quot;, &quot;first&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0222abd4a350eb1a057a09db7aab05f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0222abd4a350eb1a057a09db7aab05f9">&#9670;&nbsp;</a></span>MKEY_FOURTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_FOURTH&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;4冊目の&quot;, &quot;fourth&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1074a233aa87df6e8f35313e11a6f8f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1074a233aa87df6e8f35313e11a6f8f6">&#9670;&nbsp;</a></span>MKEY_GLOVES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_GLOVES&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;籠手&quot;, &quot;gloves&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0ad30fe57a2a6b0621160076b714a630"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ad30fe57a2a6b0621160076b714a630">&#9670;&nbsp;</a></span>MKEY_GOOD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_GOOD&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;上質の&quot;, &quot;good&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63ae096b65a53a85e84245361ab2107a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63ae096b65a53a85e84245361ab2107a">&#9670;&nbsp;</a></span>MKEY_HAFTED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_HAFTED&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;鈍器&quot;, &quot;hafted weapons&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac0ea01c545359609a39c62eedbe4f9e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0ea01c545359609a39c62eedbe4f9e1">&#9670;&nbsp;</a></span>MKEY_HELMS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_HELMS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;兜&quot;, &quot;helms&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a13a977f63627c6d857c1a00058a40792"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13a977f63627c6d857c1a00058a40792">&#9670;&nbsp;</a></span>MKEY_HUMAN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_HUMAN&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;人間の&quot;, &quot;human&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa2f55cc03616c3669d75bfc140434d5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2f55cc03616c3669d75bfc140434d5d">&#9670;&nbsp;</a></span>MKEY_IDENTIFIED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_IDENTIFIED&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;鑑定済みの&quot;, &quot;identified&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b94a4170dd38d1d2d3b9edcff49c58a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b94a4170dd38d1d2d3b9edcff49c58a">&#9670;&nbsp;</a></span>MKEY_ITEMS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_ITEMS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;アイテム&quot;, &quot;items&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a399871a57e5809af25f22ad4a32bc359"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a399871a57e5809af25f22ad4a32bc359">&#9670;&nbsp;</a></span>MKEY_JUNKS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_JUNKS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;がらくた&quot;, &quot;junk&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abfded3108fffbaece09f6d8c34805c77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfded3108fffbaece09f6d8c34805c77">&#9670;&nbsp;</a></span>MKEY_LIGHTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_LIGHTS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;光源&quot;, &quot;lights&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5887c0c6ef01f2f6045f4891733a46b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5887c0c6ef01f2f6045f4891733a46b0">&#9670;&nbsp;</a></span>MKEY_MISSILES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_MISSILES&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;矢&quot;, &quot;missiles&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3d46c1e33dd50d2548264f9907210212"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d46c1e33dd50d2548264f9907210212">&#9670;&nbsp;</a></span>MKEY_MORE_BONUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_MORE_BONUS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;修正値&quot;, &quot;more bonus than&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a44b897d0df0927275a2728b8346f32a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44b897d0df0927275a2728b8346f32a6">&#9670;&nbsp;</a></span>MKEY_MORE_BONUS2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_MORE_BONUS2&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;以上の&quot;, &quot;&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a21159a1c1b8d729947acdf07fab2a5fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21159a1c1b8d729947acdf07fab2a5fe">&#9670;&nbsp;</a></span>MKEY_MORE_THAN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_MORE_THAN&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ダイス目&quot;, &quot;more than&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aacdb5b8142d12e8400a24c7cf61d8931"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacdb5b8142d12e8400a24c7cf61d8931">&#9670;&nbsp;</a></span>MKEY_NAMELESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_NAMELESS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;無銘の&quot;, &quot;nameless&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6b82e859b71f04d67d988e0b9decfcc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b82e859b71f04d67d988e0b9decfcc4">&#9670;&nbsp;</a></span>MKEY_RARE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_RARE&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;レアな&quot;, &quot;rare&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4a5a3592bc14b8597cfc4b144307f4c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a5a3592bc14b8597cfc4b144307f4c0">&#9670;&nbsp;</a></span>MKEY_REALM1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_REALM1&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;第一領域の&quot;, &quot;first realm's&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae483149f8c5721a87a5a8b4e2aa0d762"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae483149f8c5721a87a5a8b4e2aa0d762">&#9670;&nbsp;</a></span>MKEY_REALM2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_REALM2&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;第二領域の&quot;, &quot;second realm's&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a901f3ae05a16ef6d94e83c19ebff61da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a901f3ae05a16ef6d94e83c19ebff61da">&#9670;&nbsp;</a></span>MKEY_RINGS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_RINGS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;指輪&quot;, &quot;rings&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afe68d738307920a0f8455d4461cbf416"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe68d738307920a0f8455d4461cbf416">&#9670;&nbsp;</a></span>MKEY_SECOND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_SECOND&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;2冊目の&quot;, &quot;second&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7decda584c12b1e1f23ff4142d7be5e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7decda584c12b1e1f23ff4142d7be5e6">&#9670;&nbsp;</a></span>MKEY_SHIELDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_SHIELDS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;盾&quot;, &quot;shields&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18f54184813222cd4f56688c1c0f813d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18f54184813222cd4f56688c1c0f813d">&#9670;&nbsp;</a></span>MKEY_SPELLBOOKS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_SPELLBOOKS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;魔法書&quot;, &quot;spellbooks&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aea0f12ec431d2d045a5fb784fc259eb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea0f12ec431d2d045a5fb784fc259eb8">&#9670;&nbsp;</a></span>MKEY_STAR_IDENTIFIED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_STAR_IDENTIFIED&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;*鑑定*済みの&quot;, &quot;*identified*&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af6efeb74d7cba7d84835218f90af02f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6efeb74d7cba7d84835218f90af02f2">&#9670;&nbsp;</a></span>MKEY_SUITS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_SUITS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;鎧&quot;, &quot;suits&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad7166987770163a2a337f278f1f9752e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7166987770163a2a337f278f1f9752e">&#9670;&nbsp;</a></span>MKEY_THIRD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_THIRD&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;3冊目の&quot;, &quot;third&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3438372e6f38cc478763e5d74647c57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3438372e6f38cc478763e5d74647c57">&#9670;&nbsp;</a></span>MKEY_UNAWARE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_UNAWARE&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;未判明の&quot;, &quot;unaware&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a847afde653e037fb19918df521e70682"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a847afde653e037fb19918df521e70682">&#9670;&nbsp;</a></span>MKEY_UNIDENTIFIED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_UNIDENTIFIED&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;未鑑定の&quot;, &quot;unidentified&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afcc0754c99b11da291a33066f0ee4b88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcc0754c99b11da291a33066f0ee4b88">&#9670;&nbsp;</a></span>MKEY_UNIQUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_UNIQUE&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ユニーク・モンスターの&quot;, &quot;unique monster's&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2a0f372cb6398ce50df08112ef6d08f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a0f372cb6398ce50df08112ef6d08f2">&#9670;&nbsp;</a></span>MKEY_UNREADABLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_UNREADABLE&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;読めない&quot;, &quot;unreadable&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3690812b5c6cf535681fc62ed9e1865c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3690812b5c6cf535681fc62ed9e1865c">&#9670;&nbsp;</a></span>MKEY_WANTED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_WANTED&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;賞金首の&quot;, &quot;wanted&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae992bff1555022f08a63762ae1fc37ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae992bff1555022f08a63762ae1fc37ad">&#9670;&nbsp;</a></span>MKEY_WEAPONS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_WEAPONS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;武器&quot;, &quot;weapons&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6a548b2d02edaf6759301287580a22ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a548b2d02edaf6759301287580a22ac">&#9670;&nbsp;</a></span>MKEY_WORTHLESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKEY_WORTHLESS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;無価値の&quot;, &quot;worthless&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af08ad6dd159d0fabb3a7bb96bd361895"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af08ad6dd159d0fabb3a7bb96bd361895">&#9670;&nbsp;</a></span>MN_ADJECTIVE_GEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_ADJECTIVE_GEN&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;形容詞(一般)の選択&quot;, &quot;Adjective (general)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9b5ec77b42a2631ccc6781246e7aad98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b5ec77b42a2631ccc6781246e7aad98">&#9670;&nbsp;</a></span>MN_ADJECTIVE_SPECIAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_ADJECTIVE_SPECIAL&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;形容詞(特殊)の選択&quot;, &quot;Adjective (special)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4534296c747b54879c214ac5d38d2f1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4534296c747b54879c214ac5d38d2f1a">&#9670;&nbsp;</a></span>MN_BACKSPACE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_BACKSPACE&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;バックスペース&quot;, &quot;Backspace&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aae4dddccea928bf74b40e465bc2c5116"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae4dddccea928bf74b40e465bc2c5116">&#9670;&nbsp;</a></span>MN_BLOCK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_BLOCK&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;選択範囲の指定&quot;, &quot;Select block&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ed8bd30708baa052dd0d0cd2f6c5f53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ed8bd30708baa052dd0d0cd2f6c5f53">&#9670;&nbsp;</a></span>MN_BOL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_BOL&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;行の先頭&quot;, &quot;Beginning of line&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a810ef7d665e5f48834140c663ac48d9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a810ef7d665e5f48834140c663ac48d9e">&#9670;&nbsp;</a></span>MN_BOOSTED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_BOOSTED&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ダイス目の違う (武器)&quot;, &quot;dice boosted (weapons)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaab3f3b8693f98a04f19442e3a341a04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaab3f3b8693f98a04f19442e3a341a04">&#9670;&nbsp;</a></span>MN_BOTTOM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_BOTTOM&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;最下行へ移動(Endキー)&quot;, &quot;Bottom   (End key)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac0537b2a6b5c75af6eed1e3b7e36ee7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0537b2a6b5c75af6eed1e3b7e36ee7a">&#9670;&nbsp;</a></span>MN_CL_AUTOPICK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_CL_AUTOPICK&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;「 」 (自動拾い)&quot;, &quot;' ' (Auto pick)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1936740afad6af7f30c036a9609b945f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1936740afad6af7f30c036a9609b945f">&#9670;&nbsp;</a></span>MN_CL_DESTROY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_CL_DESTROY&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;「!」 (自動破壊)&quot;, &quot;'!' (Auto destroy)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab9cc301e24834e44346463e9b5720eb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9cc301e24834e44346463e9b5720eb5">&#9670;&nbsp;</a></span>MN_CL_LEAVE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_CL_LEAVE&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;「~」 (放置)&quot;, &quot;'~' (Leave it on the floor)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad9a6dbfe5d92717d3ea60e1605847631"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9a6dbfe5d92717d3ea60e1605847631">&#9670;&nbsp;</a></span>MN_CL_NO_DISP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_CL_NO_DISP&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;「(」 (マップコマンドで表示しない)&quot;, &quot;'(' (No display on the large map)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa8145919208cbf7aff2c0bdef53ecf81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8145919208cbf7aff2c0bdef53ecf81">&#9670;&nbsp;</a></span>MN_CL_QUERY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_CL_QUERY&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;「;」 (確認して拾う)&quot;, &quot;';' (Query to pick up)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ec87c358505d1508266870b9156eeed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ec87c358505d1508266870b9156eeed">&#9670;&nbsp;</a></span>MN_COMMAND_LETTER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_COMMAND_LETTER&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;拾い/破壊/放置の選択&quot;, &quot;Command <a class="el" href="general-parser_8h.html#ad20065d2367d2f8c9e70940a029c3744">letter</a>&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83184617734d3bcb7448aa7a82b038cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83184617734d3bcb7448aa7a82b038cb">&#9670;&nbsp;</a></span>MN_COMMON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_COMMON&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ありふれた (装備)&quot;, &quot;common (equipment)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a91d908f987720d2bef9b838057681ab0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91d908f987720d2bef9b838057681ab0">&#9670;&nbsp;</a></span>MN_COPY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_COPY&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;コピー&quot;, &quot;Copy&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4d076f55eec7a324c06f32265ff6f583"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d076f55eec7a324c06f32265ff6f583">&#9670;&nbsp;</a></span>MN_CUT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_CUT&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;カット&quot;, &quot;Cut&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a15353c8ee85fcefa62f7df0fe4c51a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a15353c8ee85fcefa62f7df0fe4c51a">&#9670;&nbsp;</a></span>MN_DELETE_CHAR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_DELETE_CHAR&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;1文字削除&quot;, &quot;Delete character&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5e703b0d5a31d196825f8567ce872c80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e703b0d5a31d196825f8567ce872c80">&#9670;&nbsp;</a></span>MN_DOWN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_DOWN&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;下          (↓矢印キー)&quot;, &quot;Down     (Down Arrow key)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa96557ba125e575e946692e1a820b71d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa96557ba125e575e946692e1a820b71d">&#9670;&nbsp;</a></span>MN_EDIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_EDIT&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;編集&quot;, &quot;Edit&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af785a175322df6bf9d89b731ef0f764a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af785a175322df6bf9d89b731ef0f764a">&#9670;&nbsp;</a></span>MN_EOL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_EOL&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;行の終端&quot;, &quot;End of line&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a09dade313b31f29487ae8e319cb49769"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09dade313b31f29487ae8e319cb49769">&#9670;&nbsp;</a></span>MN_FIRST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_FIRST&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;1冊目の (魔法書)&quot;, &quot;first (spellbooks)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a474eb7121b9f432552aaa99b5b5370a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a474eb7121b9f432552aaa99b5b5370a4">&#9670;&nbsp;</a></span>MN_FOURTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_FOURTH&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;4冊目の (魔法書)&quot;, &quot;fourth (spellbooks)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b191b856b144b96beebedbdab7366e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b191b856b144b96beebedbdab7366e2">&#9670;&nbsp;</a></span>MN_HELP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_HELP&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ヘルプ&quot;, &quot;Help&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3cf4c40903ebdb47f70bca1cdebd23f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cf4c40903ebdb47f70bca1cdebd23f3">&#9670;&nbsp;</a></span>MN_HUMAN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_HUMAN&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;人間の (死体)&quot;, &quot;human (corpse)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae533230ba40cabe77d13a466db5e1526"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae533230ba40cabe77d13a466db5e1526">&#9670;&nbsp;</a></span>MN_INSERT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_INSERT&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;色々挿入&quot;, &quot;Insert...&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1e2129cf72084dda5a8b37f4e4afa06a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e2129cf72084dda5a8b37f4e4afa06a">&#9670;&nbsp;</a></span>MN_INSERT_BLOCK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_INSERT_BLOCK&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;条件分岐ブロックの例を挿入&quot;, &quot;Insert conditional block&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1ad58aaed7373289a11373eb93dc6d09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ad58aaed7373289a11373eb93dc6d09">&#9670;&nbsp;</a></span>MN_INSERT_DESTROYED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_INSERT_DESTROYED&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;自動破壊されたアイテムの名前を挿入&quot;, &quot;Insert name of destroyed object&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abaae79c10e8aea08f979268bb4161911"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaae79c10e8aea08f979268bb4161911">&#9670;&nbsp;</a></span>MN_INSERT_KEYMAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_INSERT_KEYMAP&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;キーマップ定義を挿入&quot;, &quot;Insert a keymap definition&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7d738d851bdbedb333774352913e6224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d738d851bdbedb333774352913e6224">&#9670;&nbsp;</a></span>MN_INSERT_MACRO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_INSERT_MACRO&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;マクロ定義を挿入&quot;, &quot;Insert a macro definition&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a34eb1f0e0cd01072ca6f5ba2d8c9a4f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34eb1f0e0cd01072ca6f5ba2d8c9a4f5">&#9670;&nbsp;</a></span>MN_INSERT_OBJECT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_INSERT_OBJECT&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;選択したアイテムの名前を挿入&quot;, &quot;Insert name of choosen object&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad82d057fe2443224a70508b8061f4e35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad82d057fe2443224a70508b8061f4e35">&#9670;&nbsp;</a></span>MN_KILL_LINE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_KILL_LINE&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;行の残りを削除&quot;, &quot;Kill rest of line&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae2969162a6cbdcfda9e3d3d5070854f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2969162a6cbdcfda9e3d3d5070854f0">&#9670;&nbsp;</a></span>MN_LEFT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_LEFT&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;左          (←矢印キー)&quot;, &quot;Left     (Left Arrow key)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a492e627586f3e15d1cdd59221f818c3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a492e627586f3e15d1cdd59221f818c3c">&#9670;&nbsp;</a></span>MN_MORE_BONUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_MORE_BONUS&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;修正値 # 以上の (指輪等)&quot;, &quot;more bonus than # (rings etc.)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad04b480070ece33a884ea0d902c87f14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad04b480070ece33a884ea0d902c87f14">&#9670;&nbsp;</a></span>MN_MORE_DICE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_MORE_DICE&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ダイス目 # 以上の (武器)&quot;, &quot;more than # dice (weapons)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c85a9e9fc67a058b0cd998c5add5124"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c85a9e9fc67a058b0cd998c5add5124">&#9670;&nbsp;</a></span>MN_MOVE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_MOVE&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;カーソル移動&quot;, &quot;Move cursor&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3f48b01c028adf471caf84ca34796bdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f48b01c028adf471caf84ca34796bdf">&#9670;&nbsp;</a></span>MN_NOUN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_NOUN&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;名詞の選択&quot;, &quot;Keywords (noun)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3c7e458e66b1a0c5bec2817deec3371f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c7e458e66b1a0c5bec2817deec3371f">&#9670;&nbsp;</a></span>MN_PASTE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_PASTE&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ペースト&quot;, &quot;Paste&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac2536dc11e43bbb33f96c26bc523078d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2536dc11e43bbb33f96c26bc523078d">&#9670;&nbsp;</a></span>MN_PGDOWN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_PGDOWN&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;下のページ  (PageDownキー)&quot;, &quot;Page down(PageDown key)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aebcf6c9957301e855fe1228a4e19ae6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebcf6c9957301e855fe1228a4e19ae6d">&#9670;&nbsp;</a></span>MN_PGUP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_PGUP&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;上のページ  (PageUpキー)&quot;, &quot;Page up  (PageUp key)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a279ffaa09c076402abbf270b9d105bda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a279ffaa09c076402abbf270b9d105bda">&#9670;&nbsp;</a></span>MN_QUIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_QUIT&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;セーブ無しで終了&quot;, &quot;Quit without save&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>自動拾いのユーティリティ </p>
+<dl class="section date"><dt>日付</dt><dd>2020/04/25 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier </dd></dl>
+
+</div>
+</div>
+<a id="add89643690c1b69702fd2b5d758ee0bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add89643690c1b69702fd2b5d758ee0bd">&#9670;&nbsp;</a></span>MN_RARE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_RARE&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;レアな (装備)&quot;, &quot;rare (equipment)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a64cce7c60dcf876bcb3966c2a5939c46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64cce7c60dcf876bcb3966c2a5939c46">&#9670;&nbsp;</a></span>MN_REALM1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_REALM1&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;第一領域の (魔法書)&quot;, &quot;realm1 (spellbooks)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4a20de9003d671805cd8eea64096bcea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a20de9003d671805cd8eea64096bcea">&#9670;&nbsp;</a></span>MN_REALM2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_REALM2&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;第二領域の (魔法書)&quot;, &quot;realm2 (spellbooks)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa7341886e3473f671c9d96a683405788"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7341886e3473f671c9d96a683405788">&#9670;&nbsp;</a></span>MN_RETURN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_RETURN&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;改行&quot;, &quot;Return&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af3463947006ab676ff7c8db9ec469e68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3463947006ab676ff7c8db9ec469e68">&#9670;&nbsp;</a></span>MN_REVERT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_REVERT&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;全ての変更を破棄&quot;, &quot;Revert all changes&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a569d295c351cb3449f53de41cfc2af81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a569d295c351cb3449f53de41cfc2af81">&#9670;&nbsp;</a></span>MN_RIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_RIGHT&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;右          (→矢印キー)&quot;, &quot;Right    (Right Arrow key)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa1764e064514f0a97dd380e050154b3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1764e064514f0a97dd380e050154b3d">&#9670;&nbsp;</a></span>MN_SAVEQUIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_SAVEQUIT&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;セーブして終了&quot;, &quot;Save &amp; Quit&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06b8e805e2549f4506a7a789bb86e1df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06b8e805e2549f4506a7a789bb86e1df">&#9670;&nbsp;</a></span>MN_SEARCH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_SEARCH&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;検索&quot;, &quot;Search&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a826a97cad09fe1d42859ed61dc0db42d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a826a97cad09fe1d42859ed61dc0db42d">&#9670;&nbsp;</a></span>MN_SEARCH_BACK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_SEARCH_BACK&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;後方へ再検索&quot;, &quot;Search backward&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac8de9c21c1f0edff9dc2e03edf2b6f27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8de9c21c1f0edff9dc2e03edf2b6f27">&#9670;&nbsp;</a></span>MN_SEARCH_DESTROYED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_SEARCH_DESTROYED&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;自動破壊されたアイテムで検索&quot;, &quot;Search by destroyed object&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae7cb857025c882636765614d17290b95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7cb857025c882636765614d17290b95">&#9670;&nbsp;</a></span>MN_SEARCH_FORW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_SEARCH_FORW&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;前方へ再検索&quot;, &quot;Search foward&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4ffaf6984975ff4c50b2b5a31a3e4ec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ffaf6984975ff4c50b2b5a31a3e4ec5">&#9670;&nbsp;</a></span>MN_SEARCH_OBJ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_SEARCH_OBJ&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;アイテムを選択して検索&quot;, &quot;Search by inventory object&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a11456328498233907ac696837130937a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11456328498233907ac696837130937a">&#9670;&nbsp;</a></span>MN_SEARCH_STR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_SEARCH_STR&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;文字列で検索&quot;, &quot;Search by string&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4374d39717e91373eeab715ece41ce51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4374d39717e91373eeab715ece41ce51">&#9670;&nbsp;</a></span>MN_SECOND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_SECOND&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;2冊目の (魔法書)&quot;, &quot;second (spellbooks)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5c18ecd94575f5c82a32adee61b6d231"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c18ecd94575f5c82a32adee61b6d231">&#9670;&nbsp;</a></span>MN_THIRD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_THIRD&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;3冊目の (魔法書)&quot;, &quot;third (spellbooks)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd8d02dd63a60914392aeef3ef3550e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd8d02dd63a60914392aeef3ef3550e7">&#9670;&nbsp;</a></span>MN_TOP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_TOP&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;1行目へ移動 (Homeキー)&quot;, &quot;Top      (Home key)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a633c6c89b1d8bed52734c81c08967087"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a633c6c89b1d8bed52734c81c08967087">&#9670;&nbsp;</a></span>MN_UNIQUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_UNIQUE&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;ユニーク・モンスターの (死体)&quot;, &quot;unique (corpse)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab21655330c306c6b12769b350c5a3054"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab21655330c306c6b12769b350c5a3054">&#9670;&nbsp;</a></span>MN_UNREADABLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_UNREADABLE&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;読めない (魔法書)&quot;, &quot;unreadable (spellbooks)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a842629d4f76aa6adfef11634d6fae71e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a842629d4f76aa6adfef11634d6fae71e">&#9670;&nbsp;</a></span>MN_UP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_UP&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;上          (↑矢印キー)&quot;, &quot;Up       (Up Arrow key)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac1799531e5d10ed6a69d7427696bacf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1799531e5d10ed6a69d7427696bacf4">&#9670;&nbsp;</a></span>MN_WANTED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MN_WANTED&#160;&#160;&#160;<a class="el" href="language-switcher_8h.html#a0717cbb874ae2e9d9fed2b931f4c8cd9">_</a>(&quot;賞金首の (死体)&quot;, &quot;wanted (corpse)&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="ac868ada75a0588da747f19aa9f1ca1a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac868ada75a0588da747f19aa9f1ca1a1">&#9670;&nbsp;</a></span>KEY_ALL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_ALL = <a class="el" href="autopick-menu-data-table_8cpp.html#a11f7014b61bb9be1897f4893af2692d4">MKEY_ALL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8fb4e37ef3cd6b4f0045fe12792795fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fb4e37ef3cd6b4f0045fe12792795fa">&#9670;&nbsp;</a></span>KEY_AMULETS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_AMULETS = <a class="el" href="autopick-menu-data-table_8cpp.html#ade6d5412dc3da887774a8a64e82bfb59">MKEY_AMULETS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a66e9fd830b95080d926d562f062c3e3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66e9fd830b95080d926d562f062c3e3d">&#9670;&nbsp;</a></span>KEY_ARMORS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_ARMORS = <a class="el" href="autopick-menu-data-table_8cpp.html#adf05b7571f880e47fbf644e77a6d7077">MKEY_ARMORS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a269f738e7808ef64b2b9299ae42878fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a269f738e7808ef64b2b9299ae42878fd">&#9670;&nbsp;</a></span>KEY_ARTIFACT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_ARTIFACT = <a class="el" href="autopick-menu-data-table_8cpp.html#a0db8b45f349650b6f684d930aa154005">MKEY_ARTIFACT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad299e8fb0ebecbf71c4e29f351916dd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad299e8fb0ebecbf71c4e29f351916dd9">&#9670;&nbsp;</a></span>KEY_AVERAGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_AVERAGE = <a class="el" href="autopick-menu-data-table_8cpp.html#a54d29f8bff3d4274c9a111a9badcb0d8">MKEY_AVERAGE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af82a38a081bd806af77e67c9d667d93b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af82a38a081bd806af77e67c9d667d93b">&#9670;&nbsp;</a></span>KEY_BOOSTED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_BOOSTED = <a class="el" href="autopick-menu-data-table_8cpp.html#afa4939cd26dd8fd06d1441ed4c47c615">MKEY_BOOSTED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a966f870f91153e16181ff9911354da0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a966f870f91153e16181ff9911354da0e">&#9670;&nbsp;</a></span>KEY_BOOTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_BOOTS = <a class="el" href="autopick-menu-data-table_8cpp.html#adf0fffa0e3034c32575b726898472d3b">MKEY_BOOTS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af8dbd58da30dc33959abf77dcb34025a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8dbd58da30dc33959abf77dcb34025a">&#9670;&nbsp;</a></span>KEY_BOWS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_BOWS = <a class="el" href="autopick-menu-data-table_8cpp.html#a2144827068f2eb2631f84743d35ad76f">MKEY_BOWS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa630aa199ed29ba20a94b5fb15eb88b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa630aa199ed29ba20a94b5fb15eb88b5">&#9670;&nbsp;</a></span>KEY_CLOAKS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_CLOAKS = <a class="el" href="autopick-menu-data-table_8cpp.html#ac0e8e39760cdff0bd9d99c0d5ee86237">MKEY_CLOAKS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6c36ac8352debdd63e921942f3af62aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c36ac8352debdd63e921942f3af62aa">&#9670;&nbsp;</a></span>KEY_COLLECTING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_COLLECTING = <a class="el" href="autopick-menu-data-table_8cpp.html#aadc9c40535c7b6c066d37cb52efbfb8a">MKEY_COLLECTING</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a49a8493a11733d52e5c143b925c8a715"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49a8493a11733d52e5c143b925c8a715">&#9670;&nbsp;</a></span>KEY_COMMON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_COMMON = <a class="el" href="autopick-menu-data-table_8cpp.html#ab6b6e5e6488e9c91f247eac0f7561b24">MKEY_COMMON</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aab91bbdcf0e39af01f24a3a7e77a2433"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab91bbdcf0e39af01f24a3a7e77a2433">&#9670;&nbsp;</a></span>KEY_CORPSES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_CORPSES = <a class="el" href="autopick-menu-data-table_8cpp.html#a000145e862eab28991a82b702c77fa07">MKEY_CORPSES</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa2496d46b5712dd99716808f502465c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2496d46b5712dd99716808f502465c0">&#9670;&nbsp;</a></span>KEY_DEVICES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_DEVICES = <a class="el" href="autopick-menu-data-table_8cpp.html#ad9471db86a9de9a1e6a333535b3e8971">MKEY_DEVICES</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b6007cfe0177e42e769a764307ab2f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b6007cfe0177e42e769a764307ab2f4">&#9670;&nbsp;</a></span>KEY_DICE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_DICE = <a class="el" href="autopick-menu-data-table_8cpp.html#aaad8c30d9c5216ae067e3f7c050678a5">MKEY_DICE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac6af6fba8c3ae581be06049cd81871b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6af6fba8c3ae581be06049cd81871b1">&#9670;&nbsp;</a></span>KEY_EGO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_EGO = <a class="el" href="autopick-menu-data-table_8cpp.html#abf52f6d0a845267bfc27a877f2544675">MKEY_EGO</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a12efa1e98b7ae2e01829552fba1b62a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12efa1e98b7ae2e01829552fba1b62a2">&#9670;&nbsp;</a></span>KEY_FAVORITE_WEAPONS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_FAVORITE_WEAPONS = <a class="el" href="autopick-menu-data-table_8cpp.html#a35294e417d238c4d6f9783099feaf213">MKEY_FAVORITE_WEAPONS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a75d54267c6cc7e2045ec80677b7a90fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75d54267c6cc7e2045ec80677b7a90fe">&#9670;&nbsp;</a></span>KEY_FIRST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_FIRST = <a class="el" href="autopick-menu-data-table_8cpp.html#afce545bd935449c784d3ab2205d5ddfa">MKEY_FIRST</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad70134dac5d5c604eb21e87696ac2fb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad70134dac5d5c604eb21e87696ac2fb3">&#9670;&nbsp;</a></span>KEY_FOURTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_FOURTH = <a class="el" href="autopick-menu-data-table_8cpp.html#a0222abd4a350eb1a057a09db7aab05f9">MKEY_FOURTH</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a73a1a1e3657f68289a8c6787b0e6ef6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73a1a1e3657f68289a8c6787b0e6ef6f">&#9670;&nbsp;</a></span>KEY_GLOVES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_GLOVES = <a class="el" href="autopick-menu-data-table_8cpp.html#a1074a233aa87df6e8f35313e11a6f8f6">MKEY_GLOVES</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6b282fc4438d6802e241c9515abfc1ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b282fc4438d6802e241c9515abfc1ed">&#9670;&nbsp;</a></span>KEY_GOOD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_GOOD = <a class="el" href="autopick-menu-data-table_8cpp.html#a0ad30fe57a2a6b0621160076b714a630">MKEY_GOOD</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a304b2f540ffbd223129701fabd6d0a79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a304b2f540ffbd223129701fabd6d0a79">&#9670;&nbsp;</a></span>KEY_HAFTED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_HAFTED = <a class="el" href="autopick-menu-data-table_8cpp.html#a63ae096b65a53a85e84245361ab2107a">MKEY_HAFTED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a77199018f7a5c61b83ef6d45a79343f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77199018f7a5c61b83ef6d45a79343f8">&#9670;&nbsp;</a></span>KEY_HELMS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_HELMS = <a class="el" href="autopick-menu-data-table_8cpp.html#ac0ea01c545359609a39c62eedbe4f9e1">MKEY_HELMS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf60b168aac0ab474c1545ebdc7c194d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf60b168aac0ab474c1545ebdc7c194d">&#9670;&nbsp;</a></span>KEY_HUMAN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_HUMAN = <a class="el" href="autopick-menu-data-table_8cpp.html#a13a977f63627c6d857c1a00058a40792">MKEY_HUMAN</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af51580f41e26b6e3d93c7e4a00bdd2fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af51580f41e26b6e3d93c7e4a00bdd2fa">&#9670;&nbsp;</a></span>KEY_IDENTIFIED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_IDENTIFIED = <a class="el" href="autopick-menu-data-table_8cpp.html#aa2f55cc03616c3669d75bfc140434d5d">MKEY_IDENTIFIED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af34984aefd5ad3176d7597c7c0ea6113"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af34984aefd5ad3176d7597c7c0ea6113">&#9670;&nbsp;</a></span>KEY_ITEMS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_ITEMS = <a class="el" href="autopick-menu-data-table_8cpp.html#a5b94a4170dd38d1d2d3b9edcff49c58a">MKEY_ITEMS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7c704321f1ffaa153b9461fdd8b865cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c704321f1ffaa153b9461fdd8b865cd">&#9670;&nbsp;</a></span>KEY_JUNKS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_JUNKS = <a class="el" href="autopick-menu-data-table_8cpp.html#a399871a57e5809af25f22ad4a32bc359">MKEY_JUNKS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae9f57a73af848474dd1c84f9ec42067b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9f57a73af848474dd1c84f9ec42067b">&#9670;&nbsp;</a></span>KEY_LIGHTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_LIGHTS = <a class="el" href="autopick-menu-data-table_8cpp.html#abfded3108fffbaece09f6d8c34805c77">MKEY_LIGHTS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a48179f0afa1c401dbfd481056f3a91a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48179f0afa1c401dbfd481056f3a91a0">&#9670;&nbsp;</a></span>KEY_MISSILES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_MISSILES = <a class="el" href="autopick-menu-data-table_8cpp.html#a5887c0c6ef01f2f6045f4891733a46b0">MKEY_MISSILES</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0ffc606bc8baa9f14791f2100c77d822"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ffc606bc8baa9f14791f2100c77d822">&#9670;&nbsp;</a></span>KEY_MORE_BONUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_MORE_BONUS = <a class="el" href="autopick-menu-data-table_8cpp.html#a3d46c1e33dd50d2548264f9907210212">MKEY_MORE_BONUS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a04b69ef671fdd051009157a97b784684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04b69ef671fdd051009157a97b784684">&#9670;&nbsp;</a></span>KEY_MORE_BONUS2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_MORE_BONUS2 = <a class="el" href="autopick-menu-data-table_8cpp.html#a44b897d0df0927275a2728b8346f32a6">MKEY_MORE_BONUS2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa76a2c3ddc84265f73350b6e3efad75b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa76a2c3ddc84265f73350b6e3efad75b">&#9670;&nbsp;</a></span>KEY_MORE_THAN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_MORE_THAN = <a class="el" href="autopick-menu-data-table_8cpp.html#a21159a1c1b8d729947acdf07fab2a5fe">MKEY_MORE_THAN</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63931fd7af5247f0fa7c15770a30ce1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63931fd7af5247f0fa7c15770a30ce1a">&#9670;&nbsp;</a></span>KEY_NAMELESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_NAMELESS = <a class="el" href="autopick-menu-data-table_8cpp.html#aacdb5b8142d12e8400a24c7cf61d8931">MKEY_NAMELESS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7437c6a3686b892e8a6ed2ee19ddc321"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7437c6a3686b892e8a6ed2ee19ddc321">&#9670;&nbsp;</a></span>KEY_RARE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_RARE = <a class="el" href="autopick-menu-data-table_8cpp.html#a6b82e859b71f04d67d988e0b9decfcc4">MKEY_RARE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acb39552cc48405fbc837cc25b3d9f59d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb39552cc48405fbc837cc25b3d9f59d">&#9670;&nbsp;</a></span>KEY_REALM1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_REALM1 = <a class="el" href="autopick-menu-data-table_8cpp.html#a4a5a3592bc14b8597cfc4b144307f4c0">MKEY_REALM1</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a960c8779edde299048e35324a0f13528"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a960c8779edde299048e35324a0f13528">&#9670;&nbsp;</a></span>KEY_REALM2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_REALM2 = <a class="el" href="autopick-menu-data-table_8cpp.html#ae483149f8c5721a87a5a8b4e2aa0d762">MKEY_REALM2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4b1e8d97034c9395575be424024953dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b1e8d97034c9395575be424024953dc">&#9670;&nbsp;</a></span>KEY_RINGS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_RINGS = <a class="el" href="autopick-menu-data-table_8cpp.html#a901f3ae05a16ef6d94e83c19ebff61da">MKEY_RINGS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a21af6d8a9b1372589bc757974b37fe05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21af6d8a9b1372589bc757974b37fe05">&#9670;&nbsp;</a></span>KEY_SECOND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_SECOND = <a class="el" href="autopick-menu-data-table_8cpp.html#afe68d738307920a0f8455d4461cbf416">MKEY_SECOND</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c7c67ce524cc13ebe8e3c4bce2df953"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c7c67ce524cc13ebe8e3c4bce2df953">&#9670;&nbsp;</a></span>KEY_SHIELDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_SHIELDS = <a class="el" href="autopick-menu-data-table_8cpp.html#a7decda584c12b1e1f23ff4142d7be5e6">MKEY_SHIELDS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42ba3c1657a6fff699c554a2c8210a54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42ba3c1657a6fff699c554a2c8210a54">&#9670;&nbsp;</a></span>KEY_SPELLBOOKS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_SPELLBOOKS = <a class="el" href="autopick-menu-data-table_8cpp.html#a18f54184813222cd4f56688c1c0f813d">MKEY_SPELLBOOKS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a01baabcb987b985c7c1e59337ed1d280"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01baabcb987b985c7c1e59337ed1d280">&#9670;&nbsp;</a></span>KEY_STAR_IDENTIFIED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_STAR_IDENTIFIED = <a class="el" href="autopick-menu-data-table_8cpp.html#aea0f12ec431d2d045a5fb784fc259eb8">MKEY_STAR_IDENTIFIED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a55054e23e8174700daa51b3a95122951"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55054e23e8174700daa51b3a95122951">&#9670;&nbsp;</a></span>KEY_SUITS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_SUITS = <a class="el" href="autopick-menu-data-table_8cpp.html#af6efeb74d7cba7d84835218f90af02f2">MKEY_SUITS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6b29480693bd7f959b5bd7c55af0ca4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b29480693bd7f959b5bd7c55af0ca4e">&#9670;&nbsp;</a></span>KEY_THIRD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_THIRD = <a class="el" href="autopick-menu-data-table_8cpp.html#ad7166987770163a2a337f278f1f9752e">MKEY_THIRD</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad4ef414d49a2c01e8f34a085a88ac97a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4ef414d49a2c01e8f34a085a88ac97a">&#9670;&nbsp;</a></span>KEY_UNAWARE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_UNAWARE = <a class="el" href="autopick-menu-data-table_8cpp.html#ab3438372e6f38cc478763e5d74647c57">MKEY_UNAWARE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3a3d210c2e7a9c76202556c56810485c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a3d210c2e7a9c76202556c56810485c">&#9670;&nbsp;</a></span>KEY_UNIDENTIFIED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_UNIDENTIFIED = <a class="el" href="autopick-menu-data-table_8cpp.html#a847afde653e037fb19918df521e70682">MKEY_UNIDENTIFIED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abfe220255faf7c455e8d6da37c2c24cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfe220255faf7c455e8d6da37c2c24cd">&#9670;&nbsp;</a></span>KEY_UNIQUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_UNIQUE = <a class="el" href="autopick-menu-data-table_8cpp.html#afcc0754c99b11da291a33066f0ee4b88">MKEY_UNIQUE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abf5d05ba38789818802fa22b234ad8ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf5d05ba38789818802fa22b234ad8ab">&#9670;&nbsp;</a></span>KEY_UNREADABLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_UNREADABLE = <a class="el" href="autopick-menu-data-table_8cpp.html#a2a0f372cb6398ce50df08112ef6d08f2">MKEY_UNREADABLE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a672e258153be375cd795836daf3e2fe6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a672e258153be375cd795836daf3e2fe6">&#9670;&nbsp;</a></span>KEY_WANTED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_WANTED = <a class="el" href="autopick-menu-data-table_8cpp.html#a3690812b5c6cf535681fc62ed9e1865c">MKEY_WANTED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a40bcf206fc83e4e4191af6220e678d4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40bcf206fc83e4e4191af6220e678d4b">&#9670;&nbsp;</a></span>KEY_WEAPONS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_WEAPONS = <a class="el" href="autopick-menu-data-table_8cpp.html#ae992bff1555022f08a63762ae1fc37ad">MKEY_WEAPONS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3b3e0c3cf4084322ef6b1066780ba6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3b3e0c3cf4084322ef6b1066780ba6f">&#9670;&nbsp;</a></span>KEY_WORTHLESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> KEY_WORTHLESS = <a class="el" href="autopick-menu-data-table_8cpp.html#a6a548b2d02edaf6759301287580a22ac">MKEY_WORTHLESS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1d8fb29029e6fc0ada3f16289b41e0a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d8fb29029e6fc0ada3f16289b41e0a2">&#9670;&nbsp;</a></span>menu_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structcommand__menu__type.html">command_menu_type</a> menu_data[<a class="el" href="autopick-menu-data-table_8h.html#abc8c751f03b1addfbcf0def5c8ea2715">MENU_DATA_NUM</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分04秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

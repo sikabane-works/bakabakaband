@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/save/info-writer.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2787ab3e88de134edafc81d1ef96b4ab.html">save</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">info-writer.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="info-writer_8h_source.html">save/info-writer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quick-start_8h_source.html">birth/quick-start.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cheat-options_8h_source.html">game-option/cheat-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="option-flags_8h_source.html">game-option/option-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="option-types-table_8h_source.html">game-option/option-types-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-options_8h_source.html">game-option/special-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-writer_8h_source.html">save/item-writer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="save-util_8h_source.html">save/save-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="store-util_8h_source.html">store/store-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+info-writer.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-writer_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2save_2info-writer_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2save_2info-writer_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2save_2info-writer_8cpp">
+<area shape="rect" title=" " alt="" coords="546,5,734,61"/>
+<area shape="rect" href="info-writer_8h.html" title=" " alt="" coords="51,117,170,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="602,363,731,389"/>
+<area shape="rect" href="quick-start_8h.html" title=" " alt="" coords="245,288,368,315"/>
+<area shape="rect" href="cheat-options_8h.html" title=" " alt="" coords="392,288,579,315"/>
+<area shape="rect" href="option-flags_8h.html" title=" " alt="" coords="381,199,513,240"/>
+<area shape="rect" href="option-types-table_8h.html" title=" " alt="" coords="522,109,654,151"/>
+<area shape="rect" href="special-options_8h.html" title=" " alt="" coords="663,199,801,240"/>
+<area shape="rect" href="item-writer_8h.html" title=" " alt="" coords="729,117,852,143"/>
+<area shape="rect" href="save-util_8h.html" title=" " alt="" coords="806,288,917,315"/>
+<area shape="rect" href="store-util_8h.html" title=" " alt="" coords="927,117,1043,143"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="1068,109,1201,151"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="1181,288,1278,315"/>
+<area shape="rect" href="save_8h.html" title=" " alt="" coords="66,206,155,233"/>
+<area shape="rect" href="floor-save_8h.html" title=" " alt="" coords="5,288,120,315"/>
+<area shape="rect" title=" " alt="" coords="588,206,639,233"/>
+<area shape="rect" title=" " alt="" coords="992,206,1048,233"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="1123,206,1250,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:ad1574040ad7c2fb0cdb8d5d18442baed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="info-writer_8cpp.html#ad1574040ad7c2fb0cdb8d5d18442baed">wr_store</a> (<a class="el" href="structstore__type.html">store_type</a> *store_ptr)</td></tr>
+<tr class="memdesc:ad1574040ad7c2fb0cdb8d5d18442baed"><td class="mdescLeft">&#160;</td><td class="mdescRight">セーブデータに店舗情報を書き込む / Write a "store" record  <a href="info-writer_8cpp.html#ad1574040ad7c2fb0cdb8d5d18442baed">[詳解]</a><br /></td></tr>
+<tr class="separator:ad1574040ad7c2fb0cdb8d5d18442baed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac53804dca62307ef302f2d195ec1106c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="info-writer_8cpp.html#ac53804dca62307ef302f2d195ec1106c">wr_randomizer</a> (void)</td></tr>
+<tr class="memdesc:ac53804dca62307ef302f2d195ec1106c"><td class="mdescLeft">&#160;</td><td class="mdescRight">セーブデータに乱数情報を書き込む / Write RNG state  <a href="info-writer_8cpp.html#ac53804dca62307ef302f2d195ec1106c">[詳解]</a><br /></td></tr>
+<tr class="separator:ac53804dca62307ef302f2d195ec1106c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f329f5f6a097063507fb929e5a8398e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="info-writer_8cpp.html#a3f329f5f6a097063507fb929e5a8398e">wr_options</a> (<a class="el" href="save_8h.html#a747112ae24ac7d263aacca7298fbfeb6">save_type</a> type)</td></tr>
+<tr class="memdesc:a3f329f5f6a097063507fb929e5a8398e"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲームオプション情報を書き込む / Write the "options"  <a href="info-writer_8cpp.html#a3f329f5f6a097063507fb929e5a8398e">[詳解]</a><br /></td></tr>
+<tr class="separator:a3f329f5f6a097063507fb929e5a8398e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a768eabe5d86e379001625f80fccea879"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="info-writer_8cpp.html#a768eabe5d86e379001625f80fccea879">wr_ghost</a> (void)</td></tr>
+<tr class="memdesc:a768eabe5d86e379001625f80fccea879"><td class="mdescLeft">&#160;</td><td class="mdescRight">ダミー情報スキップを書き込む / Hack &ndash; Write the "ghost" info  <a href="info-writer_8cpp.html#a768eabe5d86e379001625f80fccea879">[詳解]</a><br /></td></tr>
+<tr class="separator:a768eabe5d86e379001625f80fccea879"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6324c5a98dece95cf74f96b3e05a75c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="info-writer_8cpp.html#a6324c5a98dece95cf74f96b3e05a75c1">save_quick_start</a> (void)</td></tr>
+<tr class="memdesc:a6324c5a98dece95cf74f96b3e05a75c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">クイック・スタート情報を書き込む / Save quick start data  <a href="info-writer_8cpp.html#a6324c5a98dece95cf74f96b3e05a75c1">[詳解]</a><br /></td></tr>
+<tr class="separator:a6324c5a98dece95cf74f96b3e05a75c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a6324c5a98dece95cf74f96b3e05a75c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6324c5a98dece95cf74f96b3e05a75c1">&#9670;&nbsp;</a></span>save_quick_start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void save_quick_start </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>クイック・スタート情報を書き込む / Save quick start data </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-writer_8cpp_a6324c5a98dece95cf74f96b3e05a75c1_cgraph.png" border="0" usemap="#ainfo-writer_8cpp_a6324c5a98dece95cf74f96b3e05a75c1_cgraph" alt=""/></div>
+<map name="ainfo-writer_8cpp_a6324c5a98dece95cf74f96b3e05a75c1_cgraph" id="ainfo-writer_8cpp_a6324c5a98dece95cf74f96b3e05a75c1_cgraph">
+<area shape="rect" title="クイック・スタート情報を書き込む / Save quick start data" alt="" coords="5,59,124,86"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="413,59,480,86"/>
+<area shape="rect" href="save-util_8cpp.html#a0a9fc9ad1a0b5696b8d33200e93f6a59" title="符号あり16ビットをファイルに書き込む" alt="" coords="172,34,243,60"/>
+<area shape="rect" href="save-util_8cpp.html#a3f4d20bc88690cc8e3bd61de4ab96ae7" title="符号あり32ビットをファイルに書き込む" alt="" coords="172,84,243,111"/>
+<area shape="rect" href="save-util_8cpp.html#a272917124cf4c8dc5760c16caed8db80" title="文字列をファイルに書き込む" alt="" coords="291,135,365,162"/>
+<area shape="rect" href="save-util_8cpp.html#a320fb5495ecbaf494a3ecfee37176734" title="1バイトをファイルに書き込む / These functions place information into a savefile a byte at a time" alt="" coords="528,59,585,86"/>
+<area shape="rect" href="save-util_8cpp.html#a3029d75be518c5d591b64029c472db4e" title="符号なし16ビットをファイルに書き込む" alt="" coords="293,34,363,60"/>
+<area shape="rect" href="save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="293,84,363,111"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-writer_8cpp_a6324c5a98dece95cf74f96b3e05a75c1_icgraph.png" border="0" usemap="#ainfo-writer_8cpp_a6324c5a98dece95cf74f96b3e05a75c1_icgraph" alt=""/></div>
+<map name="ainfo-writer_8cpp_a6324c5a98dece95cf74f96b3e05a75c1_icgraph" id="ainfo-writer_8cpp_a6324c5a98dece95cf74f96b3e05a75c1_icgraph">
+<area shape="rect" title="クイック・スタート情報を書き込む / Save quick start data" alt="" coords="460,5,579,32"/>
+<area shape="rect" href="player-writer_8cpp.html#a07a3bb3bc775adafe1624b62387523c2" title="セーブデータにプレーヤー情報を書き込む / Write some &quot;player&quot; info" alt="" coords="335,5,412,32"/>
+<area shape="rect" href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="172,5,287,32"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="5,5,124,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a768eabe5d86e379001625f80fccea879"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a768eabe5d86e379001625f80fccea879">&#9670;&nbsp;</a></span>wr_ghost()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wr_ghost </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ダミー情報スキップを書き込む / Hack &ndash; Write the "ghost" info </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-writer_8cpp_a768eabe5d86e379001625f80fccea879_cgraph.png" border="0" usemap="#ainfo-writer_8cpp_a768eabe5d86e379001625f80fccea879_cgraph" alt=""/></div>
+<map name="ainfo-writer_8cpp_a768eabe5d86e379001625f80fccea879_cgraph" id="ainfo-writer_8cpp_a768eabe5d86e379001625f80fccea879_cgraph">
+<area shape="rect" title="ダミー情報スキップを書き込む / Hack – Write the &quot;ghost&quot; info" alt="" coords="5,5,80,32"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="251,5,317,32"/>
+<area shape="rect" href="save-util_8cpp.html#a272917124cf4c8dc5760c16caed8db80" title="文字列をファイルに書き込む" alt="" coords="128,31,203,57"/>
+<area shape="rect" href="save-util_8cpp.html#a320fb5495ecbaf494a3ecfee37176734" title="1バイトをファイルに書き込む / These functions place information into a savefile a byte at a time" alt="" coords="365,5,423,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-writer_8cpp_a768eabe5d86e379001625f80fccea879_icgraph.png" border="0" usemap="#ainfo-writer_8cpp_a768eabe5d86e379001625f80fccea879_icgraph" alt=""/></div>
+<map name="ainfo-writer_8cpp_a768eabe5d86e379001625f80fccea879_icgraph" id="ainfo-writer_8cpp_a768eabe5d86e379001625f80fccea879_icgraph">
+<area shape="rect" title="ダミー情報スキップを書き込む / Hack – Write the &quot;ghost&quot; info" alt="" coords="473,5,548,32"/>
+<area shape="rect" href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="311,5,425,32"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="144,5,263,32"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="5,5,96,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3f329f5f6a097063507fb929e5a8398e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f329f5f6a097063507fb929e5a8398e">&#9670;&nbsp;</a></span>wr_options()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wr_options </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="save_8h.html#a747112ae24ac7d263aacca7298fbfeb6">save_type</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲームオプション情報を書き込む / Write the "options" </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-writer_8cpp_a3f329f5f6a097063507fb929e5a8398e_cgraph.png" border="0" usemap="#ainfo-writer_8cpp_a3f329f5f6a097063507fb929e5a8398e_cgraph" alt=""/></div>
+<map name="ainfo-writer_8cpp_a3f329f5f6a097063507fb929e5a8398e_cgraph" id="ainfo-writer_8cpp_a3f329f5f6a097063507fb929e5a8398e_cgraph">
+<area shape="rect" title="ゲームオプション情報を書き込む / Write the &quot;options&quot;" alt="" coords="5,51,89,78"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="375,38,441,64"/>
+<area shape="rect" href="save-util_8cpp.html#a0a9fc9ad1a0b5696b8d33200e93f6a59" title="符号あり16ビットをファイルに書き込む" alt="" coords="137,26,208,52"/>
+<area shape="rect" href="save-util_8cpp.html#a3029d75be518c5d591b64029c472db4e" title="符号なし16ビットをファイルに書き込む" alt="" coords="256,38,327,64"/>
+<area shape="rect" href="save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="256,114,327,140"/>
+<area shape="rect" href="save-util_8cpp.html#a320fb5495ecbaf494a3ecfee37176734" title="1バイトをファイルに書き込む / These functions place information into a savefile a byte at a time" alt="" coords="489,38,547,64"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-writer_8cpp_a3f329f5f6a097063507fb929e5a8398e_icgraph.png" border="0" usemap="#ainfo-writer_8cpp_a3f329f5f6a097063507fb929e5a8398e_icgraph" alt=""/></div>
+<map name="ainfo-writer_8cpp_a3f329f5f6a097063507fb929e5a8398e_icgraph" id="ainfo-writer_8cpp_a3f329f5f6a097063507fb929e5a8398e_icgraph">
+<area shape="rect" title="ゲームオプション情報を書き込む / Write the &quot;options&quot;" alt="" coords="473,5,557,32"/>
+<area shape="rect" href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="311,5,425,32"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="144,5,263,32"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="5,5,96,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac53804dca62307ef302f2d195ec1106c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac53804dca62307ef302f2d195ec1106c">&#9670;&nbsp;</a></span>wr_randomizer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wr_randomizer </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>セーブデータに乱数情報を書き込む / Write RNG state </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">なし</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-writer_8cpp_ac53804dca62307ef302f2d195ec1106c_cgraph.png" border="0" usemap="#ainfo-writer_8cpp_ac53804dca62307ef302f2d195ec1106c_cgraph" alt=""/></div>
+<map name="ainfo-writer_8cpp_ac53804dca62307ef302f2d195ec1106c_cgraph" id="ainfo-writer_8cpp_ac53804dca62307ef302f2d195ec1106c_cgraph">
+<area shape="rect" title="セーブデータに乱数情報を書き込む / Write RNG state" alt="" coords="5,31,112,57"/>
+<area shape="rect" href="save-util_8cpp.html#a3029d75be518c5d591b64029c472db4e" title="符号なし16ビットをファイルに書き込む" alt="" coords="160,5,231,32"/>
+<area shape="rect" href="save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="160,56,231,83"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="279,31,345,57"/>
+<area shape="rect" href="save-util_8cpp.html#a320fb5495ecbaf494a3ecfee37176734" title="1バイトをファイルに書き込む / These functions place information into a savefile a byte at a time" alt="" coords="393,31,451,57"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-writer_8cpp_ac53804dca62307ef302f2d195ec1106c_icgraph.png" border="0" usemap="#ainfo-writer_8cpp_ac53804dca62307ef302f2d195ec1106c_icgraph" alt=""/></div>
+<map name="ainfo-writer_8cpp_ac53804dca62307ef302f2d195ec1106c_icgraph" id="ainfo-writer_8cpp_ac53804dca62307ef302f2d195ec1106c_icgraph">
+<area shape="rect" title="セーブデータに乱数情報を書き込む / Write RNG state" alt="" coords="473,5,580,32"/>
+<area shape="rect" href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="311,5,425,32"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="144,5,263,32"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="5,5,96,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad1574040ad7c2fb0cdb8d5d18442baed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1574040ad7c2fb0cdb8d5d18442baed">&#9670;&nbsp;</a></span>wr_store()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wr_store </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstore__type.html">store_type</a> *&#160;</td>
+          <td class="paramname"><em>store_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>セーブデータに店舗情報を書き込む / Write a "store" record </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">store_ptr</td><td>店舗情報の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-writer_8cpp_ad1574040ad7c2fb0cdb8d5d18442baed_cgraph.png" border="0" usemap="#ainfo-writer_8cpp_ad1574040ad7c2fb0cdb8d5d18442baed_cgraph" alt=""/></div>
+<map name="ainfo-writer_8cpp_ad1574040ad7c2fb0cdb8d5d18442baed_cgraph" id="ainfo-writer_8cpp_ad1574040ad7c2fb0cdb8d5d18442baed_cgraph">
+<area shape="rect" title="セーブデータに店舗情報を書き込む / Write a &quot;store&quot; record" alt="" coords="5,245,76,272"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="647,169,713,196"/>
+<area shape="rect" href="item-writer_8cpp.html#a0e9875ae663d151074da35b385a44ba6" title="アイテムオブジェクトを書き込む / Write an &quot;item&quot; record" alt="" coords="126,195,193,221"/>
+<area shape="rect" href="save-util_8cpp.html#a0a9fc9ad1a0b5696b8d33200e93f6a59" title="符号あり16ビットをファイルに書き込む" alt="" coords="405,220,476,247"/>
+<area shape="rect" href="save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="405,347,476,373"/>
+<area shape="rect" href="save-util_8cpp.html#a3f4d20bc88690cc8e3bd61de4ab96ae7" title="符号あり32ビットをファイルに書き込む" alt="" coords="124,347,195,373"/>
+<area shape="rect" href="save-util_8cpp.html#a320fb5495ecbaf494a3ecfee37176734" title="1バイトをファイルに書き込む / These functions place information into a savefile a byte at a time" alt="" coords="761,169,819,196"/>
+<area shape="rect" href="quarks_8cpp.html#a95cf419856c525009b78e5246327f405" title=" " alt="" coords="262,93,338,120"/>
+<area shape="rect" href="save-util_8cpp.html#a272917124cf4c8dc5760c16caed8db80" title="文字列をファイルに書き込む" alt="" coords="524,156,599,183"/>
+<area shape="rect" href="item-writer_8cpp.html#ab4b28d838034b2606b99d2f11a3ef74b" title=" " alt="" coords="243,347,357,373"/>
+<area shape="rect" href="item-writer_8cpp.html#aff46409cfa832bdccbabd97c1f7d38b9" title=" " alt="" coords="246,296,354,323"/>
+<area shape="rect" href="save-util_8cpp.html#a3029d75be518c5d591b64029c472db4e" title="符号なし16ビットをファイルに書き込む" alt="" coords="526,220,597,247"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-writer_8cpp_ad1574040ad7c2fb0cdb8d5d18442baed_icgraph.png" border="0" usemap="#ainfo-writer_8cpp_ad1574040ad7c2fb0cdb8d5d18442baed_icgraph" alt=""/></div>
+<map name="ainfo-writer_8cpp_ad1574040ad7c2fb0cdb8d5d18442baed_icgraph" id="ainfo-writer_8cpp_ad1574040ad7c2fb0cdb8d5d18442baed_icgraph">
+<area shape="rect" title="セーブデータに店舗情報を書き込む / Write a &quot;store&quot; record" alt="" coords="473,5,544,32"/>
+<area shape="rect" href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="311,5,425,32"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="144,5,263,32"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="5,5,96,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時56分23秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,894 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/birth/birth-select-realm.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_84d111bb56536c13b547e5976d232fbf.html">birth</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">birth-select-realm.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="birth-select-realm_8h_source.html">birth/birth-select-realm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-explanations-table_8h_source.html">birth/birth-explanations-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-util_8h_source.html">birth/birth-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mind-elementalist_8h_source.html">mind/mind-elementalist.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-realm_8h_source.html">player/player-realm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="buffer-shaper_8h_source.html">util/buffer-shaper.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+birth-select-realm.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2birth_2birth-select-realm_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2birth_2birth-select-realm_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2birth_2birth-select-realm_8cpp">
+<area shape="rect" title=" " alt="" coords="695,5,883,61"/>
+<area shape="rect" href="birth-select-realm_8h.html" title=" " alt="" coords="5,199,120,240"/>
+<area shape="rect" href="birth-explanations-table_8h.html" title=" " alt="" coords="938,109,1091,151"/>
+<area shape="rect" href="birth-util_8h.html" title=" " alt="" coords="302,117,410,143"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="435,117,573,143"/>
+<area shape="rect" href="input-key-acceptor_8h.html" title=" " alt="" coords="597,117,752,143"/>
+<area shape="rect" href="mind-elementalist_8h.html" title=" " alt="" coords="111,117,278,143"/>
+<area shape="rect" href="player-realm_8h.html" title=" " alt="" coords="499,206,642,233"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="667,206,829,233"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="1116,117,1273,143"/>
+<area shape="rect" href="buffer-shaper_8h.html" title=" " alt="" coords="853,206,981,233"/>
+<area shape="rect" href="int-char-converter_8h.html" title=" " alt="" coords="1298,117,1451,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="526,288,655,315"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="868,363,959,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="983,363,1073,389"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="133,363,232,389"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="256,363,355,389"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="379,363,479,389"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="503,363,678,389"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="703,363,844,389"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1097,363,1244,389"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1160,437,1333,479"/>
+<area shape="rect" href="player-personality_8h.html" title=" " alt="" coords="1257,206,1431,233"/>
+<area shape="rect" href="realm-names-table_8h.html" title=" " alt="" coords="1056,206,1232,233"/>
+<area shape="rect" href="realm-types_8h.html" title=" " alt="" coords="1075,288,1213,315"/>
+<area shape="rect" href="spell-types_8h.html" title=" " alt="" coords="195,206,322,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbirth__realm__type.html">birth_realm_type</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:a40d99a3491e68c03496de1ca9601652b"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structbirth__realm__type.html">birth_realm_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-realm_8cpp.html#a40d99a3491e68c03496de1ca9601652b">birth_realm_type</a></td></tr>
+<tr class="separator:a40d99a3491e68c03496de1ca9601652b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:aac7091ff050b5cbcbbb778c30ba60126"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-realm_8cpp.html#aac7091ff050b5cbcbbb778c30ba60126">count_realm_selection</a> (const <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> choices, int *count)</td></tr>
+<tr class="separator:aac7091ff050b5cbcbbb778c30ba60126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfebd933f3370c1156d7b52c96bf1463"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structbirth__realm__type.html">birth_realm_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-realm_8cpp.html#adfebd933f3370c1156d7b52c96bf1463">initialize_birth_realm_type</a> (<a class="el" href="structbirth__realm__type.html">birth_realm_type</a> *birth_realm_ptr)</td></tr>
+<tr class="separator:adfebd933f3370c1156d7b52c96bf1463"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94bff2451da008ffd845b87b89231308"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-realm_8cpp.html#a94bff2451da008ffd845b87b89231308">impose_first_realm</a> (const <a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> *choices)</td></tr>
+<tr class="separator:a94bff2451da008ffd845b87b89231308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a021380eaee281df55eccab04e281d442"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-realm_8cpp.html#a021380eaee281df55eccab04e281d442">analyze_realms</a> (const <a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, const <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> choices, <a class="el" href="structbirth__realm__type.html">birth_realm_type</a> *birth_realm_ptr)</td></tr>
+<tr class="separator:a021380eaee281df55eccab04e281d442"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01c73817199225deb209511a6cacf3f4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-realm_8cpp.html#a01c73817199225deb209511a6cacf3f4">move_birth_realm_cursor</a> (<a class="el" href="structbirth__realm__type.html">birth_realm_type</a> *birth_realm_ptr)</td></tr>
+<tr class="separator:a01c73817199225deb209511a6cacf3f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f9a9b66aeff83c86c193da606a933e2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-realm_8cpp.html#a1f9a9b66aeff83c86c193da606a933e2">interpret_realm_select_key</a> (<a class="el" href="structbirth__realm__type.html">birth_realm_type</a> *birth_realm_ptr, char c)</td></tr>
+<tr class="separator:a1f9a9b66aeff83c86c193da606a933e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27ecd03b42c95746280578f9b8753b9c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-realm_8cpp.html#a27ecd03b42c95746280578f9b8753b9c">get_a_realm</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structbirth__realm__type.html">birth_realm_type</a> *birth_realm_ptr)</td></tr>
+<tr class="separator:a27ecd03b42c95746280578f9b8753b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0561bf85d709ea0507a201c2489dba82"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-realm_8cpp.html#a0561bf85d709ea0507a201c2489dba82">select_realm</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> choices, int *count)</td></tr>
+<tr class="memdesc:a0561bf85d709ea0507a201c2489dba82"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの魔法領域を選択する / Choose from one of the available magical realms  <a href="birth-select-realm_8cpp.html#a0561bf85d709ea0507a201c2489dba82">[詳解]</a><br /></td></tr>
+<tr class="separator:a0561bf85d709ea0507a201c2489dba82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c01d2a1e67d3311c478c0e8778fa9ed"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-realm_8cpp.html#a2c01d2a1e67d3311c478c0e8778fa9ed">cleanup_realm_selection_window</a> (void)</td></tr>
+<tr class="separator:a2c01d2a1e67d3311c478c0e8778fa9ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b18cfb7a628b9d317783b8d0c64571b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-realm_8cpp.html#a6b18cfb7a628b9d317783b8d0c64571b">check_realm_selection</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, int count)</td></tr>
+<tr class="memdesc:a6b18cfb7a628b9d317783b8d0c64571b"><td class="mdescLeft">&#160;</td><td class="mdescRight">選んだ魔法領域で本当に良いか問い合わせる  <a href="birth-select-realm_8cpp.html#a6b18cfb7a628b9d317783b8d0c64571b">[詳解]</a><br /></td></tr>
+<tr class="separator:a6b18cfb7a628b9d317783b8d0c64571b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6db34ed45daf644d42817df2008a101d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-realm_8cpp.html#a6db34ed45daf644d42817df2008a101d">get_player_realms</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a6db34ed45daf644d42817df2008a101d"><td class="mdescLeft">&#160;</td><td class="mdescRight">選択した魔法領域の解説を表示する / Choose the magical realms  <a href="birth-select-realm_8cpp.html#a6db34ed45daf644d42817df2008a101d">[詳解]</a><br /></td></tr>
+<tr class="separator:a6db34ed45daf644d42817df2008a101d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a1c7eb4daf1180df9bdfe83aaddd727a8"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="birth-select-realm_8cpp.html#a1c7eb4daf1180df9bdfe83aaddd727a8">REALM_SELECT_CANCEL</a> = 255</td></tr>
+<tr class="separator:a1c7eb4daf1180df9bdfe83aaddd727a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">型定義詳解</h2>
+<a id="a40d99a3491e68c03496de1ca9601652b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40d99a3491e68c03496de1ca9601652b">&#9670;&nbsp;</a></span>birth_realm_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structbirth__realm__type.html">birth_realm_type</a> <a class="el" href="structbirth__realm__type.html">birth_realm_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a021380eaee281df55eccab04e281d442"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a021380eaee281df55eccab04e281d442">&#9670;&nbsp;</a></span>analyze_realms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void analyze_realms </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a>&#160;</td>
+          <td class="paramname"><em>choices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structbirth__realm__type.html">birth_realm_type</a> *&#160;</td>
+          <td class="paramname"><em>birth_realm_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a021380eaee281df55eccab04e281d442_cgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a021380eaee281df55eccab04e281d442_cgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a021380eaee281df55eccab04e281d442_cgraph" id="abirth-select-realm_8cpp_a021380eaee281df55eccab04e281d442_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,119,57"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="167,31,229,57"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="277,31,365,57"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="415,5,506,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="413,56,508,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a021380eaee281df55eccab04e281d442_icgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a021380eaee281df55eccab04e281d442_icgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a021380eaee281df55eccab04e281d442_icgraph" id="abirth-select-realm_8cpp_a021380eaee281df55eccab04e281d442_icgraph">
+<area shape="rect" title=" " alt="" coords="547,5,660,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a0561bf85d709ea0507a201c2489dba82" title="プレイヤーの魔法領域を選択する / Choose from one of the available magical realms" alt="" coords="403,5,499,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a6db34ed45daf644d42817df2008a101d" title="選択した魔法領域の解説を表示する / Choose the magical realms" alt="" coords="227,5,355,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="5,5,179,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6b18cfb7a628b9d317783b8d0c64571b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b18cfb7a628b9d317783b8d0c64571b">&#9670;&nbsp;</a></span>check_realm_selection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_realm_selection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>選んだ魔法領域で本当に良いか問い合わせる </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">count</td><td>魔法領域の数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>選んだ魔法領域で良ければTRUE、再選択ならばFALSE </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a6b18cfb7a628b9d317783b8d0c64571b_cgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a6b18cfb7a628b9d317783b8d0c64571b_cgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a6b18cfb7a628b9d317783b8d0c64571b_cgraph" id="abirth-select-realm_8cpp_a6b18cfb7a628b9d317783b8d0c64571b_cgraph">
+<area shape="rect" title="選んだ魔法領域で本当に良いか問い合わせる" alt="" coords="5,323,160,350"/>
+<area shape="rect" href="asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="208,247,327,274"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="405,323,459,350"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="413,374,451,401"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="375,58,489,85"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="411,273,453,299"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="387,197,477,223"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="700,115,779,142"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="827,97,929,123"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="570,337,619,363"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="553,286,636,313"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="701,387,778,414"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="549,134,640,161"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="831,159,925,186"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="537,235,652,262"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a6b18cfb7a628b9d317783b8d0c64571b_icgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a6b18cfb7a628b9d317783b8d0c64571b_icgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a6b18cfb7a628b9d317783b8d0c64571b_icgraph" id="abirth-select-realm_8cpp_a6b18cfb7a628b9d317783b8d0c64571b_icgraph">
+<area shape="rect" title="選んだ魔法領域で本当に良いか問い合わせる" alt="" coords="584,5,739,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a6db34ed45daf644d42817df2008a101d" title="選択した魔法領域の解説を表示する / Choose the magical realms" alt="" coords="408,5,536,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="187,5,360,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="5,5,139,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2c01d2a1e67d3311c478c0e8778fa9ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c01d2a1e67d3311c478c0e8778fa9ed">&#9670;&nbsp;</a></span>cleanup_realm_selection_window()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void cleanup_realm_selection_window </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a2c01d2a1e67d3311c478c0e8778fa9ed_cgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a2c01d2a1e67d3311c478c0e8778fa9ed_cgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a2c01d2a1e67d3311c478c0e8778fa9ed_cgraph" id="abirth-select-realm_8cpp_a2c01d2a1e67d3311c478c0e8778fa9ed_cgraph">
+<area shape="rect" title=" " alt="" coords="5,23,171,65"/>
+<area shape="rect" href="screen-processor_8cpp.html#a723cb7a38362add3188d0080fc2934f2" title=" " alt="" coords="219,5,301,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="229,56,291,83"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="350,5,437,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="485,5,580,32"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="349,56,437,83"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="487,56,578,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a2c01d2a1e67d3311c478c0e8778fa9ed_icgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a2c01d2a1e67d3311c478c0e8778fa9ed_icgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a2c01d2a1e67d3311c478c0e8778fa9ed_icgraph" id="abirth-select-realm_8cpp_a2c01d2a1e67d3311c478c0e8778fa9ed_icgraph">
+<area shape="rect" title=" " alt="" coords="584,5,749,47"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a6db34ed45daf644d42817df2008a101d" title="選択した魔法領域の解説を表示する / Choose the magical realms" alt="" coords="408,13,536,39"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="187,13,360,39"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="5,13,139,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aac7091ff050b5cbcbbb778c30ba60126"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac7091ff050b5cbcbbb778c30ba60126">&#9670;&nbsp;</a></span>count_realm_selection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> count_realm_selection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a>&#160;</td>
+          <td class="paramname"><em>choices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_aac7091ff050b5cbcbbb778c30ba60126_icgraph.png" border="0" usemap="#abirth-select-realm_8cpp_aac7091ff050b5cbcbbb778c30ba60126_icgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_aac7091ff050b5cbcbbb778c30ba60126_icgraph" id="abirth-select-realm_8cpp_aac7091ff050b5cbcbbb778c30ba60126_icgraph">
+<area shape="rect" title=" " alt="" coords="547,5,699,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a0561bf85d709ea0507a201c2489dba82" title="プレイヤーの魔法領域を選択する / Choose from one of the available magical realms" alt="" coords="403,5,499,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a6db34ed45daf644d42817df2008a101d" title="選択した魔法領域の解説を表示する / Choose the magical realms" alt="" coords="227,5,355,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="5,5,179,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a27ecd03b42c95746280578f9b8753b9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27ecd03b42c95746280578f9b8753b9c">&#9670;&nbsp;</a></span>get_a_realm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> get_a_realm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structbirth__realm__type.html">birth_realm_type</a> *&#160;</td>
+          <td class="paramname"><em>birth_realm_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a27ecd03b42c95746280578f9b8753b9c_cgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a27ecd03b42c95746280578f9b8753b9c_cgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a27ecd03b42c95746280578f9b8753b9c_cgraph" id="abirth-select-realm_8cpp_a27ecd03b42c95746280578f9b8753b9c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,461,99,488"/>
+<area shape="rect" href="birth-util_8cpp.html#a11522f9d6a8d4dcb0c7ab5e512a56ce3" title=" " alt="" coords="176,132,296,159"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="597,461,651,488"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a1f9a9b66aeff83c86c193da606a933e2" title=" " alt="" coords="147,512,325,539"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a01c73817199225deb209511a6cacf3f4" title=" " alt="" coords="153,461,319,488"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="205,563,267,589"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="603,157,645,184"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#a053bb14d758ca1d9ea84fdedf7e6c01f" title="標準オプションを変更するコマンドのサブルーチン / Interact with some options" alt="" coords="373,284,519,311"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="578,5,670,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="577,56,671,83"/>
+<area shape="rect" href="birth-util_8cpp.html#a272bd84ea8cf1a4a13db4d37550aaf16" title="指定されたヘルプファイルを表示する / Show specific help file" alt="" coords="405,107,487,133"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="746,132,795,159"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="729,183,812,209"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="860,233,937,260"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="745,411,796,437"/>
+<area shape="rect" href="keymap-directory-getter_8cpp.html#aed8fd4908c74fd56c86969ecd593842c" title=" " alt="" coords="567,360,681,387"/>
+<area shape="rect" href="screen-processor_8cpp.html#acb7638639688bd542b5f6b541708c1f3" title=" " alt="" coords="577,208,671,235"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="605,512,643,539"/>
+<area shape="rect" href="show-file_8h.html#a5bd591d95db1838d6d72a17dfc76e98f" title=" " alt="" coords="587,107,661,133"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="593,259,655,285"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="583,309,665,336"/>
+<area shape="rect" href="birth-util_8cpp.html#ac653c0197e083ace688c790e576eae22" title="プレイヤー作成を中断して馬鹿馬鹿蛮怒を終了する" alt="" coords="409,563,483,589"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="603,563,645,589"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="408,461,484,488"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a27ecd03b42c95746280578f9b8753b9c_icgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a27ecd03b42c95746280578f9b8753b9c_icgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a27ecd03b42c95746280578f9b8753b9c_icgraph" id="abirth-select-realm_8cpp_a27ecd03b42c95746280578f9b8753b9c_icgraph">
+<area shape="rect" title=" " alt="" coords="547,5,640,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a0561bf85d709ea0507a201c2489dba82" title="プレイヤーの魔法領域を選択する / Choose from one of the available magical realms" alt="" coords="403,5,499,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a6db34ed45daf644d42817df2008a101d" title="選択した魔法領域の解説を表示する / Choose the magical realms" alt="" coords="227,5,355,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="5,5,179,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6db34ed45daf644d42817df2008a101d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6db34ed45daf644d42817df2008a101d">&#9670;&nbsp;</a></span>get_player_realms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> get_player_realms </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>選択した魔法領域の解説を表示する / Choose the magical realms </p>
+<dl class="section return"><dt>戻り値</dt><dd>ユーザが魔法領域の確定を選んだらTRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a6db34ed45daf644d42817df2008a101d_cgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a6db34ed45daf644d42817df2008a101d_cgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a6db34ed45daf644d42817df2008a101d_cgraph" id="abirth-select-realm_8cpp_a6db34ed45daf644d42817df2008a101d_cgraph">
+<area shape="rect" title="選択した魔法領域の解説を表示する / Choose the magical realms" alt="" coords="5,632,133,659"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="876,696,952,723"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a6b18cfb7a628b9d317783b8d0c64571b" title="選んだ魔法領域で本当に良いか問い合わせる" alt="" coords="627,38,781,64"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="1073,240,1111,267"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a2c01d2a1e67d3311c478c0e8778fa9ed" title=" " alt="" coords="181,596,347,637"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="673,798,735,824"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="235,662,293,688"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a7938bd6931e341c09bf755674a0203c8" title="元素魔法の領域名を返す" alt="" coords="203,712,325,739"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a79aa374e6d4d9a9502ae3d1ba1fe69a4" title="領域選択" alt="" coords="189,468,339,495"/>
+<area shape="rect" href="buffer-shaper_8cpp.html#a74f223098d062fe8625ee0809a800315" title=" " alt="" coords="433,544,528,571"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a0561bf85d709ea0507a201c2489dba82" title="プレイヤーの魔法領域を選択する / Choose from one of the available magical realms" alt="" coords="216,780,312,807"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="1205,696,1293,723"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="1350,671,1441,698"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="1348,722,1443,748"/>
+<area shape="rect" href="asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="855,139,973,166"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="1065,291,1119,318"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="1035,88,1149,115"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="1071,367,1113,394"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="1047,139,1137,166"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="1197,316,1300,343"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1053,443,1131,470"/>
+<area shape="rect" href="screen-processor_8cpp.html#a723cb7a38362add3188d0080fc2934f2" title=" " alt="" coords="439,595,522,622"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#ab35e9d197027ac28e1cb79068776a353" title="領域選択時のカーソル表示(シンボル＋領域名)" alt="" coords="631,595,777,622"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a5540256c0f91da73b85f91797757f82d" title="領域選択ループ処理" alt="" coords="415,392,547,419"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#a053bb14d758ca1d9ea84fdedf7e6c01f" title="標準オプションを変更するコマンドのサブルーチン / Interact with some options" alt="" coords="841,342,987,368"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#ae38b4664744f6600b6fbf10258f89535" title="領域選択時の移動キー処理" alt="" coords="615,291,793,318"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="868,443,960,470"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="867,544,961,571"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a021380eaee281df55eccab04e281d442" title=" " alt="" coords="424,747,537,774"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#aac7091ff050b5cbcbbb778c30ba60126" title=" " alt="" coords="405,950,557,976"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a27ecd03b42c95746280578f9b8753b9c" title=" " alt="" coords="434,646,527,672"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a94bff2451da008ffd845b87b89231308" title=" " alt="" coords="415,798,546,824"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#adfebd933f3370c1156d7b52c96bf1463" title=" " alt="" coords="395,899,567,926"/>
+<area shape="rect" href="birth-util_8cpp.html#a11522f9d6a8d4dcb0c7ab5e512a56ce3" title=" " alt="" coords="644,494,764,520"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a1f9a9b66aeff83c86c193da606a933e2" title=" " alt="" coords="615,747,793,774"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a01c73817199225deb209511a6cacf3f4" title=" " alt="" coords="621,696,787,723"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a6db34ed45daf644d42817df2008a101d_icgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a6db34ed45daf644d42817df2008a101d_icgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a6db34ed45daf644d42817df2008a101d_icgraph" id="abirth-select-realm_8cpp_a6db34ed45daf644d42817df2008a101d_icgraph">
+<area shape="rect" title="選択した魔法領域の解説を表示する / Choose the magical realms" alt="" coords="545,5,673,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="324,5,497,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="143,5,276,32"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="5,5,95,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a94bff2451da008ffd845b87b89231308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94bff2451da008ffd845b87b89231308">&#9670;&nbsp;</a></span>impose_first_realm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void impose_first_realm </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> *&#160;</td>
+          <td class="paramname"><em>choices</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a94bff2451da008ffd845b87b89231308_icgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a94bff2451da008ffd845b87b89231308_icgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a94bff2451da008ffd845b87b89231308_icgraph" id="abirth-select-realm_8cpp_a94bff2451da008ffd845b87b89231308_icgraph">
+<area shape="rect" title=" " alt="" coords="547,5,677,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a0561bf85d709ea0507a201c2489dba82" title="プレイヤーの魔法領域を選択する / Choose from one of the available magical realms" alt="" coords="403,5,499,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a6db34ed45daf644d42817df2008a101d" title="選択した魔法領域の解説を表示する / Choose the magical realms" alt="" coords="227,5,355,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="5,5,179,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adfebd933f3370c1156d7b52c96bf1463"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfebd933f3370c1156d7b52c96bf1463">&#9670;&nbsp;</a></span>initialize_birth_realm_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="structbirth__realm__type.html">birth_realm_type</a>* initialize_birth_realm_type </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structbirth__realm__type.html">birth_realm_type</a> *&#160;</td>
+          <td class="paramname"><em>birth_realm_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_adfebd933f3370c1156d7b52c96bf1463_icgraph.png" border="0" usemap="#abirth-select-realm_8cpp_adfebd933f3370c1156d7b52c96bf1463_icgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_adfebd933f3370c1156d7b52c96bf1463_icgraph" id="abirth-select-realm_8cpp_adfebd933f3370c1156d7b52c96bf1463_icgraph">
+<area shape="rect" title=" " alt="" coords="547,5,719,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a0561bf85d709ea0507a201c2489dba82" title="プレイヤーの魔法領域を選択する / Choose from one of the available magical realms" alt="" coords="403,5,499,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a6db34ed45daf644d42817df2008a101d" title="選択した魔法領域の解説を表示する / Choose the magical realms" alt="" coords="227,5,355,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="5,5,179,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1f9a9b66aeff83c86c193da606a933e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f9a9b66aeff83c86c193da606a933e2">&#9670;&nbsp;</a></span>interpret_realm_select_key()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void interpret_realm_select_key </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structbirth__realm__type.html">birth_realm_type</a> *&#160;</td>
+          <td class="paramname"><em>birth_realm_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a1f9a9b66aeff83c86c193da606a933e2_cgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a1f9a9b66aeff83c86c193da606a933e2_cgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a1f9a9b66aeff83c86c193da606a933e2_cgraph" id="abirth-select-realm_8cpp_a1f9a9b66aeff83c86c193da606a933e2_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,184,32"/>
+<area shape="rect" href="birth-util_8cpp.html#ac653c0197e083ace688c790e576eae22" title="プレイヤー作成を中断して馬鹿馬鹿蛮怒を終了する" alt="" coords="232,5,307,32"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="355,5,397,32"/>
+<area shape="rect" href="z-util_8cpp.html#add3ff125e6340e76d3c307ebaf757660" title=" " alt="" coords="445,5,492,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a1f9a9b66aeff83c86c193da606a933e2_icgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a1f9a9b66aeff83c86c193da606a933e2_icgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a1f9a9b66aeff83c86c193da606a933e2_icgraph" id="abirth-select-realm_8cpp_a1f9a9b66aeff83c86c193da606a933e2_icgraph">
+<area shape="rect" title=" " alt="" coords="467,5,645,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a27ecd03b42c95746280578f9b8753b9c" title=" " alt="" coords="325,5,419,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a0561bf85d709ea0507a201c2489dba82" title="プレイヤーの魔法領域を選択する / Choose from one of the available magical realms" alt="" coords="181,5,277,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a6db34ed45daf644d42817df2008a101d" title="選択した魔法領域の解説を表示する / Choose the magical realms" alt="" coords="5,5,133,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a01c73817199225deb209511a6cacf3f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01c73817199225deb209511a6cacf3f4">&#9670;&nbsp;</a></span>move_birth_realm_cursor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void move_birth_realm_cursor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structbirth__realm__type.html">birth_realm_type</a> *&#160;</td>
+          <td class="paramname"><em>birth_realm_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a01c73817199225deb209511a6cacf3f4_cgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a01c73817199225deb209511a6cacf3f4_cgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a01c73817199225deb209511a6cacf3f4_cgraph" id="abirth-select-realm_8cpp_a01c73817199225deb209511a6cacf3f4_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,172,57"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="220,5,296,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="239,56,277,83"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="344,5,432,32"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="480,31,571,57"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="619,31,713,57"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="363,56,413,83"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="482,81,569,108"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a01c73817199225deb209511a6cacf3f4_icgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a01c73817199225deb209511a6cacf3f4_icgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a01c73817199225deb209511a6cacf3f4_icgraph" id="abirth-select-realm_8cpp_a01c73817199225deb209511a6cacf3f4_icgraph">
+<area shape="rect" title=" " alt="" coords="467,5,633,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a27ecd03b42c95746280578f9b8753b9c" title=" " alt="" coords="325,5,419,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a0561bf85d709ea0507a201c2489dba82" title="プレイヤーの魔法領域を選択する / Choose from one of the available magical realms" alt="" coords="181,5,277,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a6db34ed45daf644d42817df2008a101d" title="選択した魔法領域の解説を表示する / Choose the magical realms" alt="" coords="5,5,133,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0561bf85d709ea0507a201c2489dba82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0561bf85d709ea0507a201c2489dba82">&#9670;&nbsp;</a></span>select_realm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> select_realm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a>&#160;</td>
+          <td class="paramname"><em>choices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>プレイヤーの魔法領域を選択する / Choose from one of the available magical realms </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">choices</td><td>選択可能な魔法領域のビット配列 </td></tr>
+    <tr><td class="paramname">count</td><td>選択可能な魔法領域を返すポインタ群。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>選択した魔法領域のID</dd></dl>
+<p>領域数が0 (戦士等)or 1 (観光客等)なら自動での値を返す </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a0561bf85d709ea0507a201c2489dba82_cgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a0561bf85d709ea0507a201c2489dba82_cgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a0561bf85d709ea0507a201c2489dba82_cgraph" id="abirth-select-realm_8cpp_a0561bf85d709ea0507a201c2489dba82_cgraph">
+<area shape="rect" title="プレイヤーの魔法領域を選択する / Choose from one of the available magical realms" alt="" coords="5,461,101,488"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a021380eaee281df55eccab04e281d442" title=" " alt="" coords="179,411,292,437"/>
+<area shape="rect" href="screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="427,461,490,488"/>
+<area shape="rect" href="screen-processor_8cpp.html#a723cb7a38362add3188d0080fc2934f2" title=" " alt="" coords="194,189,277,216"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#aac7091ff050b5cbcbbb778c30ba60126" title=" " alt="" coords="159,512,311,539"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a27ecd03b42c95746280578f9b8753b9c" title=" " alt="" coords="189,360,282,387"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a94bff2451da008ffd845b87b89231308" title=" " alt="" coords="170,563,301,589"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#adfebd933f3370c1156d7b52c96bf1463" title=" " alt="" coords="149,613,321,640"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="793,461,881,488"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="932,259,1027,285"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="625,5,712,32"/>
+<area shape="rect" href="birth-util_8cpp.html#a11522f9d6a8d4dcb0c7ab5e512a56ce3" title=" " alt="" coords="399,183,519,209"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="810,284,863,311"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a1f9a9b66aeff83c86c193da606a933e2" title=" " alt="" coords="369,309,548,336"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a01c73817199225deb209511a6cacf3f4" title=" " alt="" coords="375,411,542,437"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="815,208,858,235"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#a053bb14d758ca1d9ea84fdedf7e6c01f" title="標準オプションを変更するコマンドのサブルーチン / Interact with some options" alt="" coords="596,259,741,285"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="791,81,883,108"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="789,157,884,184"/>
+<area shape="rect" href="birth-util_8cpp.html#a272bd84ea8cf1a4a13db4d37550aaf16" title="指定されたヘルプファイルを表示する / Show specific help file" alt="" coords="627,107,710,133"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="817,385,856,412"/>
+<area shape="rect" href="birth-util_8cpp.html#ac653c0197e083ace688c790e576eae22" title="プレイヤー作成を中断して馬鹿馬鹿蛮怒を終了する" alt="" coords="631,309,706,336"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="631,461,707,488"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="birth-select-realm_8cpp_a0561bf85d709ea0507a201c2489dba82_icgraph.png" border="0" usemap="#abirth-select-realm_8cpp_a0561bf85d709ea0507a201c2489dba82_icgraph" alt=""/></div>
+<map name="abirth-select-realm_8cpp_a0561bf85d709ea0507a201c2489dba82_icgraph" id="abirth-select-realm_8cpp_a0561bf85d709ea0507a201c2489dba82_icgraph">
+<area shape="rect" title="プレイヤーの魔法領域を選択する / Choose from one of the available magical realms" alt="" coords="584,5,680,32"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a6db34ed45daf644d42817df2008a101d" title="選択した魔法領域の解説を表示する / Choose the magical realms" alt="" coords="408,5,536,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a8b079a66fad1807a747decfb49ed4fdb" title=" " alt="" coords="187,5,360,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="5,5,139,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a1c7eb4daf1180df9bdfe83aaddd727a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c7eb4daf1180df9bdfe83aaddd727a8">&#9670;&nbsp;</a></span>REALM_SELECT_CANCEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> REALM_SELECT_CANCEL = 255</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分07秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

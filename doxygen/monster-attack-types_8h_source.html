@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/monster-attack/monster-attack-types.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_11905a11fb100707d03e882653e10246.html">monster-attack</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">monster-attack-types.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="monster-attack-types_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-attack-effect_8h.html">monster-attack/monster-attack-effect.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803">   13</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803">rbm_type</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a8e3869dca3ba15cdbd0b0148b10ea877">   14</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a8e3869dca3ba15cdbd0b0148b10ea877">RBM_NONE</a> = 0,</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a324132ce0472bd9f57d9c884a1367d69">   15</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a324132ce0472bd9f57d9c884a1367d69">RBM_HIT</a> = 1, </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803aff742ff9fffd18a81e55afc8e6fa1ea4">   16</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803aff742ff9fffd18a81e55afc8e6fa1ea4">RBM_TOUCH</a> = 2, </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803aef2851a6468201b1dbb66c36a8560baf">   17</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803aef2851a6468201b1dbb66c36a8560baf">RBM_PUNCH</a> = 3, </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803ab7dcfea7d9d3c10f6376722403b0fa5d">   18</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803ab7dcfea7d9d3c10f6376722403b0fa5d">RBM_KICK</a> = 4, </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a7e398abe4683bbc16fa3779b393252ce">   19</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a7e398abe4683bbc16fa3779b393252ce">RBM_CLAW</a> = 5, </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803ac74af1490c18776b9c1b10fcbb28e958">   20</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803ac74af1490c18776b9c1b10fcbb28e958">RBM_BITE</a> = 6, </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a850e2e17ef6a55cf7d21cd164a119a96">   21</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a850e2e17ef6a55cf7d21cd164a119a96">RBM_STING</a> = 7, </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a90de0a1cfc76273f209a0e5d83eef8c3">   22</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a90de0a1cfc76273f209a0e5d83eef8c3">RBM_SLASH</a> = 8, </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a08fed0973fd784ab201f50e7f9805c18">   23</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a08fed0973fd784ab201f50e7f9805c18">RBM_BUTT</a> = 9, </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803ad7ac2ad0ef66cc9f0b508a092a26ae5e">   24</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803ad7ac2ad0ef66cc9f0b508a092a26ae5e">RBM_CRUSH</a> = 10, </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803ad6e28610b99bc05954231d8aaf5eda4f">   25</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803ad6e28610b99bc05954231d8aaf5eda4f">RBM_ENGULF</a> = 11, </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a9988eb1b3d8703bb600cc0237dfa21cb">   26</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a9988eb1b3d8703bb600cc0237dfa21cb">RBM_CHARGE</a> = 12, </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a36c2864c0696701fb6999803ec67aada">   27</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a36c2864c0696701fb6999803ec67aada">RBM_CRAWL</a> = 13, </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a3f350a7f508c66b4f0eea8b50e0fa9df">   28</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a3f350a7f508c66b4f0eea8b50e0fa9df">RBM_DROOL</a> = 14, </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a7e49f53033453ccd2ab9de207bd97dcc">   29</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a7e49f53033453ccd2ab9de207bd97dcc">RBM_SPIT</a> = 15, </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a9f6d9a8035cd93aa78c54a061aa63661">   30</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a9f6d9a8035cd93aa78c54a061aa63661">RBM_EXPLODE</a> = 16, </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a24c278e0db142080b7d47dc47c68234b">   31</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a24c278e0db142080b7d47dc47c68234b">RBM_GAZE</a> = 17, </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a778a44105aba508c2096289d88858e8c">   32</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a778a44105aba508c2096289d88858e8c">RBM_WAIL</a> = 18, </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a47a6154761efed9afa3ea138ec6328d3">   33</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a47a6154761efed9afa3ea138ec6328d3">RBM_SPORE</a> = 19, </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a2092066531d3c04c7604c75789f975ff">   34</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a2092066531d3c04c7604c75789f975ff">RBM_XXX4</a> = 20, </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a4bc4b47ba744c12326047b9c68256425">   35</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a4bc4b47ba744c12326047b9c68256425">RBM_BEG</a> = 21, </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a2bc93a0e837ef63c84f920d643f6cba5">   36</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a2bc93a0e837ef63c84f920d643f6cba5">RBM_INSULT</a> = 22, </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803aff9531df9a675675cd2f1450754da9eb">   37</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803aff9531df9a675675cd2f1450754da9eb">RBM_MOAN</a> = 23, </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803af19500457f9d028b8fd341bb41ad9679">   38</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803af19500457f9d028b8fd341bb41ad9679">RBM_SHOW</a> = 24, </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a524aadf35c66d16cd34ae0a5dcdf2fe9">   39</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a524aadf35c66d16cd34ae0a5dcdf2fe9">RBM_SHOOT</a> = 25, </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803aceca1dcb7181c2591feb5218ac44e410">   41</a></span>&#160;    <a class="code" href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803aceca1dcb7181c2591feb5218ac44e410">NB_RBM_TYPE</a>, </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structmbe__info__type.html">   44</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmbe__info__type.html">mbe_info_type</a> {</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structmbe__info__type.html#ac454f164dc098b06bd071de223a766cc">   45</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmbe__info__type.html#ac454f164dc098b06bd071de223a766cc">power</a>; <span class="comment">/* The attack &quot;power&quot; */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structmbe__info__type.html#aaf848ffc0718d3dc973951b74f132bcb">   46</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmbe__info__type.html#aaf848ffc0718d3dc973951b74f132bcb">explode_type</a>; <span class="comment">/* Explosion effect */</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="monster-attack-types_8h.html#a54dd8eb20988e479d3186a724fbce98f">   47</a></span>&#160;} <a class="code" href="monster-attack-types_8h.html#a54dd8eb20988e479d3186a724fbce98f">mbe_info_type</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structmbe__info__type.html">mbe_info_type</a> <a class="code" href="monster-attack-types_8h.html#af80709dcd035475f27a6b7d2bbbe5f15">mbe_info</a>[<a class="code" href="monster-attack-effect_8h.html#a8a4aff73f821ef61faba1c4afd2e3429a67e0c30c2103a2ce4627a1edcd048534">NB_RBE_TYPE</a>];</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="amonster-attack-effect_8h_html"><div class="ttname"><a href="monster-attack-effect_8h.html">monster-attack-effect.h</a></div></div>
+<div class="ttc" id="amonster-attack-effect_8h_html_a8a4aff73f821ef61faba1c4afd2e3429a67e0c30c2103a2ce4627a1edcd048534"><div class="ttname"><a href="monster-attack-effect_8h.html#a8a4aff73f821ef61faba1c4afd2e3429a67e0c30c2103a2ce4627a1edcd048534">NB_RBE_TYPE</a></div><div class="ttdeci">@ NB_RBE_TYPE</div><div class="ttdoc">enum バリアント数</div><div class="ttdef"><b>Definition:</b> monster-attack-effect.h:48</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803">rbm_type</a></div><div class="ttdeci">rbm_type</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:13</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a08fed0973fd784ab201f50e7f9805c18"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a08fed0973fd784ab201f50e7f9805c18">RBM_BUTT</a></div><div class="ttdeci">@ RBM_BUTT</div><div class="ttdoc">モンスターの攻撃種別:角で突く(朦朧)</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:23</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a2092066531d3c04c7604c75789f975ff"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a2092066531d3c04c7604c75789f975ff">RBM_XXX4</a></div><div class="ttdeci">@ RBM_XXX4</div><div class="ttdoc">モンスターの攻撃種別:未定義</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:34</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a24c278e0db142080b7d47dc47c68234b"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a24c278e0db142080b7d47dc47c68234b">RBM_GAZE</a></div><div class="ttdeci">@ RBM_GAZE</div><div class="ttdoc">モンスターの攻撃種別:にらむ</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:31</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a2bc93a0e837ef63c84f920d643f6cba5"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a2bc93a0e837ef63c84f920d643f6cba5">RBM_INSULT</a></div><div class="ttdeci">@ RBM_INSULT</div><div class="ttdoc">モンスターの攻撃種別:侮辱する</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:36</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a324132ce0472bd9f57d9c884a1367d69"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a324132ce0472bd9f57d9c884a1367d69">RBM_HIT</a></div><div class="ttdeci">@ RBM_HIT</div><div class="ttdoc">モンスターの攻撃種別:殴る(傷/朦朧が半々)</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:15</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a36c2864c0696701fb6999803ec67aada"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a36c2864c0696701fb6999803ec67aada">RBM_CRAWL</a></div><div class="ttdeci">@ RBM_CRAWL</div><div class="ttdoc">モンスターの攻撃種別:体の上を這い回る</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:27</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a3f350a7f508c66b4f0eea8b50e0fa9df"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a3f350a7f508c66b4f0eea8b50e0fa9df">RBM_DROOL</a></div><div class="ttdeci">@ RBM_DROOL</div><div class="ttdoc">モンスターの攻撃種別:よだれをたらす</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:28</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a47a6154761efed9afa3ea138ec6328d3"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a47a6154761efed9afa3ea138ec6328d3">RBM_SPORE</a></div><div class="ttdeci">@ RBM_SPORE</div><div class="ttdoc">モンスターの攻撃種別:胞子を飛ばす</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:33</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a4bc4b47ba744c12326047b9c68256425"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a4bc4b47ba744c12326047b9c68256425">RBM_BEG</a></div><div class="ttdeci">@ RBM_BEG</div><div class="ttdoc">モンスターの攻撃種別:金をせがむ</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:35</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a524aadf35c66d16cd34ae0a5dcdf2fe9"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a524aadf35c66d16cd34ae0a5dcdf2fe9">RBM_SHOOT</a></div><div class="ttdeci">@ RBM_SHOOT</div><div class="ttdoc">モンスターの攻撃種別:射撃(非打撃)</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:39</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a778a44105aba508c2096289d88858e8c"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a778a44105aba508c2096289d88858e8c">RBM_WAIL</a></div><div class="ttdeci">@ RBM_WAIL</div><div class="ttdoc">モンスターの攻撃種別:泣き叫ぶ</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:32</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a7e398abe4683bbc16fa3779b393252ce"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a7e398abe4683bbc16fa3779b393252ce">RBM_CLAW</a></div><div class="ttdeci">@ RBM_CLAW</div><div class="ttdoc">モンスターの攻撃種別:ひっかく(傷)</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:19</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a7e49f53033453ccd2ab9de207bd97dcc"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a7e49f53033453ccd2ab9de207bd97dcc">RBM_SPIT</a></div><div class="ttdeci">@ RBM_SPIT</div><div class="ttdoc">モンスターの攻撃種別:つばを吐く</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:29</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a850e2e17ef6a55cf7d21cd164a119a96"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a850e2e17ef6a55cf7d21cd164a119a96">RBM_STING</a></div><div class="ttdeci">@ RBM_STING</div><div class="ttdoc">モンスターの攻撃種別:刺す</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:21</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a8e3869dca3ba15cdbd0b0148b10ea877"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a8e3869dca3ba15cdbd0b0148b10ea877">RBM_NONE</a></div><div class="ttdeci">@ RBM_NONE</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:14</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a90de0a1cfc76273f209a0e5d83eef8c3"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a90de0a1cfc76273f209a0e5d83eef8c3">RBM_SLASH</a></div><div class="ttdeci">@ RBM_SLASH</div><div class="ttdoc">モンスターの攻撃種別:斬る(傷)</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:22</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a9988eb1b3d8703bb600cc0237dfa21cb"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a9988eb1b3d8703bb600cc0237dfa21cb">RBM_CHARGE</a></div><div class="ttdeci">@ RBM_CHARGE</div><div class="ttdoc">モンスターの攻撃種別:請求書を寄越す</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:26</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803a9f6d9a8035cd93aa78c54a061aa63661"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803a9f6d9a8035cd93aa78c54a061aa63661">RBM_EXPLODE</a></div><div class="ttdeci">@ RBM_EXPLODE</div><div class="ttdoc">モンスターの攻撃種別:爆発する</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:30</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803ab7dcfea7d9d3c10f6376722403b0fa5d"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803ab7dcfea7d9d3c10f6376722403b0fa5d">RBM_KICK</a></div><div class="ttdeci">@ RBM_KICK</div><div class="ttdoc">モンスターの攻撃種別:蹴る(朦朧)</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:18</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803ac74af1490c18776b9c1b10fcbb28e958"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803ac74af1490c18776b9c1b10fcbb28e958">RBM_BITE</a></div><div class="ttdeci">@ RBM_BITE</div><div class="ttdoc">モンスターの攻撃種別:噛む(傷)</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:20</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803aceca1dcb7181c2591feb5218ac44e410"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803aceca1dcb7181c2591feb5218ac44e410">NB_RBM_TYPE</a></div><div class="ttdeci">@ NB_RBM_TYPE</div><div class="ttdoc">enum バリアント数</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:41</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803ad6e28610b99bc05954231d8aaf5eda4f"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803ad6e28610b99bc05954231d8aaf5eda4f">RBM_ENGULF</a></div><div class="ttdeci">@ RBM_ENGULF</div><div class="ttdoc">モンスターの攻撃種別:飲み込む</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:25</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803ad7ac2ad0ef66cc9f0b508a092a26ae5e"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803ad7ac2ad0ef66cc9f0b508a092a26ae5e">RBM_CRUSH</a></div><div class="ttdeci">@ RBM_CRUSH</div><div class="ttdoc">モンスターの攻撃種別:体当たりする(朦朧)</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:24</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803aef2851a6468201b1dbb66c36a8560baf"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803aef2851a6468201b1dbb66c36a8560baf">RBM_PUNCH</a></div><div class="ttdeci">@ RBM_PUNCH</div><div class="ttdoc">モンスターの攻撃種別:パンチする(朦朧)</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:17</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803af19500457f9d028b8fd341bb41ad9679"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803af19500457f9d028b8fd341bb41ad9679">RBM_SHOW</a></div><div class="ttdeci">@ RBM_SHOW</div><div class="ttdoc">モンスターの攻撃種別:歌う</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:38</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803aff742ff9fffd18a81e55afc8e6fa1ea4"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803aff742ff9fffd18a81e55afc8e6fa1ea4">RBM_TOUCH</a></div><div class="ttdeci">@ RBM_TOUCH</div><div class="ttdoc">モンスターの攻撃種別:触る</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:16</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a2836d9b3c869d62fbed39f17d23ff803aff9531df9a675675cd2f1450754da9eb"><div class="ttname"><a href="monster-attack-types_8h.html#a2836d9b3c869d62fbed39f17d23ff803aff9531df9a675675cd2f1450754da9eb">RBM_MOAN</a></div><div class="ttdeci">@ RBM_MOAN</div><div class="ttdoc">モンスターの攻撃種別:うめく</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:37</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_a54dd8eb20988e479d3186a724fbce98f"><div class="ttname"><a href="monster-attack-types_8h.html#a54dd8eb20988e479d3186a724fbce98f">mbe_info_type</a></div><div class="ttdeci">struct mbe_info_type mbe_info_type</div></div>
+<div class="ttc" id="amonster-attack-types_8h_html_af80709dcd035475f27a6b7d2bbbe5f15"><div class="ttname"><a href="monster-attack-types_8h.html#af80709dcd035475f27a6b7d2bbbe5f15">mbe_info</a></div><div class="ttdeci">const mbe_info_type mbe_info[NB_RBE_TYPE]</div><div class="ttdoc">モンスターの打撃効力テーブル / The table of monsters' blow effects</div><div class="ttdef"><b>Definition:</b> monster-attack-types.cpp:9</div></div>
+<div class="ttc" id="astructmbe__info__type_html"><div class="ttname"><a href="structmbe__info__type.html">mbe_info_type</a></div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:44</div></div>
+<div class="ttc" id="astructmbe__info__type_html_aaf848ffc0718d3dc973951b74f132bcb"><div class="ttname"><a href="structmbe__info__type.html#aaf848ffc0718d3dc973951b74f132bcb">mbe_info_type::explode_type</a></div><div class="ttdeci">int explode_type</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:46</div></div>
+<div class="ttc" id="astructmbe__info__type_html_ac454f164dc098b06bd071de223a766cc"><div class="ttname"><a href="structmbe__info__type.html#ac454f164dc098b06bd071de223a766cc">mbe_info_type::power</a></div><div class="ttdeci">int power</div><div class="ttdef"><b>Definition:</b> monster-attack-types.h:45</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

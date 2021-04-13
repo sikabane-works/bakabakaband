@@ -1,0 +1,661 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/grid/door.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_35c063c51595aed048740f74a780093f.html">grid</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">door.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+door.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="door_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2grid_2door_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2grid_2door_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2grid_2door_8h">
+<area shape="rect" title=" " alt="" coords="343,5,541,47"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="377,95,507,121"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="31,169,122,196"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="23,333,165,360"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,169,607,196"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,169,245,196"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,169,367,196"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,169,492,196"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,169,807,196"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="943,169,1090,196"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="169,251,291,278"/>
+<area shape="rect" title=" " alt="" coords="386,251,461,278"/>
+<area shape="rect" title=" " alt="" coords="485,251,567,278"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="592,244,743,285"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="767,244,920,285"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="944,244,1089,285"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1114,244,1287,285"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1311,244,1437,285"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1461,251,1580,278"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1604,251,1715,278"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="door_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2grid_2door_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2grid_2door_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2grid_2door_8hdep">
+<area shape="rect" title=" " alt="" coords="795,5,993,47"/>
+<area shape="rect" href="cave-generator_8cpp.html" title=" " alt="" coords="5,95,193,151"/>
+<area shape="rect" href="door_8cpp.html" title=" " alt="" coords="218,102,429,143"/>
+<area shape="rect" href="feature-generator_8cpp.html" title=" " alt="" coords="453,95,653,151"/>
+<area shape="rect" href="rooms-builder_8cpp.html" title=" " alt="" coords="677,95,882,151"/>
+<area shape="rect" href="rooms-normal_8cpp.html" title=" " alt="" coords="906,95,1111,151"/>
+<area shape="rect" href="rooms-pit-nest_8cpp.html" title=" " alt="" coords="1135,95,1341,151"/>
+<area shape="rect" href="rooms-special_8cpp.html" title=" " alt="" coords="1365,95,1570,151"/>
+<area shape="rect" href="rooms-vault_8cpp.html" title=" " alt="" coords="1594,95,1799,151"/>
+</map>
+</div>
+</div>
+<p><a href="door_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:aa4f3883d9b1b9d4e1460be32a23182cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="door_8h.html#aa4f3883d9b1b9d4e1460be32a23182cc">add_door</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y)</td></tr>
+<tr class="separator:aa4f3883d9b1b9d4e1460be32a23182cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a062b9ead56aeca6ac33bc71118a9d735"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="door_8h.html#a062b9ead56aeca6ac33bc71118a9d735">place_secret_door</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, int type)</td></tr>
+<tr class="memdesc:a062b9ead56aeca6ac33bc71118a9d735"><td class="mdescLeft">&#160;</td><td class="mdescRight">隠しドアを配置する  <a href="door_8h.html#a062b9ead56aeca6ac33bc71118a9d735">[詳解]</a><br /></td></tr>
+<tr class="separator:a062b9ead56aeca6ac33bc71118a9d735"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0da7b4515c9710b9967bf26703d22834"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="door_8h.html#a0da7b4515c9710b9967bf26703d22834">place_locked_door</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="memdesc:a0da7b4515c9710b9967bf26703d22834"><td class="mdescLeft">&#160;</td><td class="mdescRight">鍵のかかったドアを配置する  <a href="door_8h.html#a0da7b4515c9710b9967bf26703d22834">[詳解]</a><br /></td></tr>
+<tr class="separator:a0da7b4515c9710b9967bf26703d22834"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a871ffc3458d3a544d8e5b0d0ca7ac24e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="door_8h.html#a871ffc3458d3a544d8e5b0d0ca7ac24e">place_random_door</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> room)</td></tr>
+<tr class="memdesc:a871ffc3458d3a544d8e5b0d0ca7ac24e"><td class="mdescLeft">&#160;</td><td class="mdescRight">所定の位置にさまざまな状態や種類のドアを配置する / Place a random type of door at the given location  <a href="door_8h.html#a871ffc3458d3a544d8e5b0d0ca7ac24e">[詳解]</a><br /></td></tr>
+<tr class="separator:a871ffc3458d3a544d8e5b0d0ca7ac24e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9561339298078ea29f71a37976c06600"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="door_8h.html#a9561339298078ea29f71a37976c06600">place_closed_door</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, int type)</td></tr>
+<tr class="memdesc:a9561339298078ea29f71a37976c06600"><td class="mdescLeft">&#160;</td><td class="mdescRight">所定の位置に各種の閉じたドアを配置する / Place a random type of normal door at the given location.  <a href="door_8h.html#a9561339298078ea29f71a37976c06600">[詳解]</a><br /></td></tr>
+<tr class="separator:a9561339298078ea29f71a37976c06600"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="aa4f3883d9b1b9d4e1460be32a23182cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4f3883d9b1b9d4e1460be32a23182cc">&#9670;&nbsp;</a></span>add_door()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void add_door </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="door_8h_aa4f3883d9b1b9d4e1460be32a23182cc_cgraph.png" border="0" usemap="#adoor_8h_aa4f3883d9b1b9d4e1460be32a23182cc_cgraph" alt=""/></div>
+<map name="adoor_8h_aa4f3883d9b1b9d4e1460be32a23182cc_cgraph" id="adoor_8h_aa4f3883d9b1b9d4e1460be32a23182cc_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,80,32"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="530,5,614,32"/>
+<area shape="rect" href="door_8cpp.html#a062b9ead56aeca6ac33bc71118a9d735" title="隠しドアを配置する" alt="" coords="128,56,256,83"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="709,31,791,57"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="839,157,973,184"/>
+<area shape="rect" href="grid_8cpp.html#a8ea39c3dfc40de144095718ade7e2ec9" title=" " alt="" coords="867,5,945,32"/>
+<area shape="rect" href="feature_8cpp.html#ab6f2d85244b993c3996dafd0eac6056e" title=" " alt="" coords="850,56,962,83"/>
+<area shape="rect" href="grid_8h.html#a73f3bf1cce90b5f4579ab9e8eaf3c990" title="指定位置に存在するモンスターを削除する / Delete the monster, if any, at a given location" alt="" coords="314,208,425,235"/>
+<area shape="rect" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e" title=" " alt="" coords="307,56,431,83"/>
+<area shape="rect" href="door_8cpp.html#a9561339298078ea29f71a37976c06600" title="所定の位置に各種の閉じたドアを配置する / Place a random type of normal door at the given location." alt="" coords="304,107,435,133"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="531,208,613,235"/>
+<area shape="rect" href="feature_8cpp.html#acad9118499482c605f583af0ef408f10" title=" " alt="" coords="521,56,623,83"/>
+<area shape="rect" href="feature_8cpp.html#a7111802bafb1515aa38332ee254ee251" title=" " alt="" coords="483,107,661,133"/>
+<area shape="rect" href="feature_8cpp.html#a76ba1dc49654a6a66f2fd80a7461a194" title=" " alt="" coords="487,157,657,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="door_8h_aa4f3883d9b1b9d4e1460be32a23182cc_icgraph.png" border="0" usemap="#adoor_8h_aa4f3883d9b1b9d4e1460be32a23182cc_icgraph" alt=""/></div>
+<map name="adoor_8h_aa4f3883d9b1b9d4e1460be32a23182cc_icgraph" id="adoor_8h_aa4f3883d9b1b9d4e1460be32a23182cc_icgraph">
+<area shape="rect" title=" " alt="" coords="456,56,531,83"/>
+<area shape="rect" href="rooms-vault_8cpp.html#ae59c2509f35031c4baba4acfa48a54db" title=" " alt="" coords="281,5,408,32"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a8be4ffd91c2f3558ad915b87b6a8be58" title=" " alt="" coords="285,56,404,83"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a59cb2292250b9d13b29fe4becf25ba84" title=" " alt="" coords="283,107,406,133"/>
+<area shape="rect" href="rooms-vault_8cpp.html#ab4caa119e209544982b77a920b5af760" title="タイプ10の部屋…ランダム生成vault / Type 10 – Random vaults" alt="" coords="139,56,233,83"/>
+<area shape="rect" href="room-generator_8cpp.html#a5308aed51162378846c18cb4b1a05ae3" title="与えられた部屋型IDに応じて部屋の生成処理分岐を行い結果を返す / Attempt to build a room of the given type at the given block" alt="" coords="5,56,91,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9561339298078ea29f71a37976c06600"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9561339298078ea29f71a37976c06600">&#9670;&nbsp;</a></span>place_closed_door()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void place_closed_door </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>所定の位置に各種の閉じたドアを配置する / Place a random type of normal door at the given location. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">y</td><td>ドアの配置を試みたいマスのY座標 </td></tr>
+    <tr><td class="paramname">x</td><td>ドアの配置を試みたいマスのX座標 </td></tr>
+    <tr><td class="paramname">type</td><td>ドアの地形ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="door_8h_a9561339298078ea29f71a37976c06600_cgraph.png" border="0" usemap="#adoor_8h_a9561339298078ea29f71a37976c06600_cgraph" alt=""/></div>
+<map name="adoor_8h_a9561339298078ea29f71a37976c06600_cgraph" id="adoor_8h_a9561339298078ea29f71a37976c06600_cgraph">
+<area shape="rect" title="所定の位置に各種の閉じたドアを配置する / Place a random type of normal door at the given location." alt="" coords="5,321,136,348"/>
+<area shape="rect" href="feature_8cpp.html#acad9118499482c605f583af0ef408f10" title=" " alt="" coords="223,233,324,260"/>
+<area shape="rect" href="feature_8cpp.html#a7111802bafb1515aa38332ee254ee251" title=" " alt="" coords="184,296,363,323"/>
+<area shape="rect" href="feature_8cpp.html#a76ba1dc49654a6a66f2fd80a7461a194" title=" " alt="" coords="188,347,359,373"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="231,423,315,449"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="427,5,561,32"/>
+<area shape="rect" href="cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="651,5,739,32"/>
+<area shape="rect" href="grid_8cpp.html#aa76190ea626631d68070030818399df5" title=" " alt="" coords="444,107,544,133"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="459,157,529,184"/>
+<area shape="rect" href="grid_8cpp.html#acfe2dde219c27902b1cbd0e7b6d95357" title=" " alt="" coords="655,309,734,336"/>
+<area shape="rect" href="feature_8cpp.html#a4ef7296980be04521b7a339d930af1e8" title=" " alt="" coords="425,259,563,285"/>
+<area shape="rect" href="mind-ninja_8cpp.html#a52ea1929bb465180b42d7321e65512eb" title="超隠密状態をセットする" alt="" coords="435,309,553,336"/>
+<area shape="rect" href="grid_8cpp.html#aba638b114fae87c0f1068113eb8fc8cf" title="指定された座標の照明状態を更新する / Update &quot;local&quot; illumination" alt="" coords="411,360,577,387"/>
+<area shape="rect" href="monster-update_8cpp.html#a2813cd48be3165ceff9b8c77da15da3f" title="モンスターの各情報を更新する / This function updates the monster record of the given monster" alt="" coords="437,411,551,437"/>
+<area shape="rect" href="player-status_8cpp.html#af6be48df20384df551b88a2466d159fb" title=" " alt="" coords="659,56,730,83"/>
+<area shape="rect" href="display-map_8cpp.html#a9be4d479cc04510dbea7b7c114c617f3" title="指定した座標の地形の表示属性を取得する / Extract the attr/char to display at the given (legal) map location" alt="" coords="657,107,732,133"/>
+<area shape="rect" href="main-window-util_8cpp.html#a34b1aa1feae2690664832deba004ef74" title=" " alt="" coords="647,157,742,184"/>
+<area shape="rect" href="screen-util_8cpp.html#a40da48b19968a0521c68cf9d0195b50c" title=" " alt="" coords="640,208,749,235"/>
+<area shape="rect" href="z-term_8cpp.html#a0d418957c1b2ef703fabda3056a96a3a" title=" " alt="" coords="625,259,764,285"/>
+<area shape="rect" href="grid_8cpp.html#ab400c1b998f2aac3e96120a9f4e374dc" title="指定された座標のマスが現在照らされているかを返す。 / Check for &quot;local&quot; illumination" alt="" coords="812,183,975,209"/>
+<area shape="rect" href="grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="1023,183,1133,209"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="664,411,725,437"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="655,360,734,387"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="453,461,535,488"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="door_8h_a9561339298078ea29f71a37976c06600_icgraph.png" border="0" usemap="#adoor_8h_a9561339298078ea29f71a37976c06600_icgraph" alt=""/></div>
+<map name="adoor_8h_a9561339298078ea29f71a37976c06600_icgraph" id="adoor_8h_a9561339298078ea29f71a37976c06600_icgraph">
+<area shape="rect" title="所定の位置に各種の閉じたドアを配置する / Place a random type of normal door at the given location." alt="" coords="685,335,816,361"/>
+<area shape="rect" href="door_8cpp.html#a871ffc3458d3a544d8e5b0d0ca7ac24e" title="所定の位置にさまざまな状態や種類のドアを配置する / Place a random type of door at the given location" alt="" coords="503,132,637,159"/>
+<area shape="rect" href="door_8cpp.html#a062b9ead56aeca6ac33bc71118a9d735" title="隠しドアを配置する" alt="" coords="506,512,634,539"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a586e8bfce23aa4a1010c917642f6a547" title="タイプ1の部屋…通常可変長方形の部屋を生成する / Type 1 – normal rectangular rooms" alt="" coords="349,56,437,83"/>
+<area shape="rect" href="cave-generator_8cpp.html#abf2a4cf142c48e21bd1eeea3d8342948" title=" " alt="" coords="348,107,439,133"/>
+<area shape="rect" href="feature-generator_8cpp.html#abb36deb31de9b8db0c40de41e482e830" title="ドアの設置を試みる / Places door at y, x position if at least 2 walls found" alt="" coords="359,157,428,184"/>
+<area shape="rect" href="rooms-fractal_8cpp.html#a1ec9bb25712ec47ab5257ae086c686a4" title="タイプ9の部屋…フラクタルカーブによる洞窟生成 / Type 9 – Driver routine to create fractal grid" alt="" coords="167,5,255,32"/>
+<area shape="rect" href="room-generator_8cpp.html#a5308aed51162378846c18cb4b1a05ae3" title="与えられた部屋型IDに応じて部屋の生成処理分岐を行い結果を返す / Attempt to build a room of the given type at the given block" alt="" coords="5,563,91,589"/>
+<area shape="rect" href="cave-generator_8cpp.html#a16f434086dd589224af75161bf087b74" title=" " alt="" coords="159,107,263,133"/>
+<area shape="rect" href="cave-generator_8cpp.html#a0f1dc2b3de1b6c8df47498292eb6336a" title=" " alt="" coords="165,157,258,184"/>
+<area shape="rect" href="door_8cpp.html#aa4f3883d9b1b9d4e1460be32a23182cc" title=" " alt="" coords="356,284,431,311"/>
+<area shape="rect" href="rooms-builder_8cpp.html#a25e593577c00763dc3375f740870a0f7" title="ダンジョンフロアの部屋生成処理 / make rooms." alt="" coords="332,411,455,437"/>
+<area shape="rect" href="rooms-special_8cpp.html#a06f16c514e2a57fdf3fac3b902aa2650" title="タイプ15の部屋…ガラス部屋の生成 / Type 15 – glass rooms" alt="" coords="346,461,441,488"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a51dae11ee04d63f0275ba51d98e85929" title="タイプ3の部屋…十字型の部屋を生成する / Type 3 – Cross shaped rooms" alt="" coords="349,512,437,539"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a2f8e9286a1a69a7231e18e15ef037893" title="タイプ4の部屋…固定サイズの二重構造部屋を生成する / Type 4 – Large room with inner features" alt="" coords="349,563,437,589"/>
+<area shape="rect" href="rooms-pit-nest_8cpp.html#ad3758d34c04bf3a6abb40261f6b85540" title="タイプ5の部屋…nestを生成する / Type 5 – Monster nests" alt="" coords="349,613,437,640"/>
+<area shape="rect" href="rooms-pit-nest_8cpp.html#a3e3435cd95a7c287bee760de7feafe84" title="タイプ6の部屋…pitを生成する / Type 6 – Monster pits" alt="" coords="349,664,437,691"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a6701b31a195109db285669bb4ff352d4" title="Vaultをフロアに配置する / Hack – fill in &quot;vault&quot; rooms" alt="" coords="352,715,435,741"/>
+<area shape="rect" href="rooms-vault_8cpp.html#ae59c2509f35031c4baba4acfa48a54db" title=" " alt="" coords="148,208,275,235"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a8be4ffd91c2f3558ad915b87b6a8be58" title=" " alt="" coords="152,259,271,285"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a59cb2292250b9d13b29fe4becf25ba84" title=" " alt="" coords="150,309,273,336"/>
+<area shape="rect" href="rooms-vault_8cpp.html#ab0e47ed9bd018aa796ae255ddc96f1a2" title=" " alt="" coords="139,360,284,387"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a44d5e2c5c7ccd315f5e08f1ff2f935f7" title="タイプ12の部屋…ドーム型部屋の生成 / Type 12 – Build crypt room." alt="" coords="164,411,259,437"/>
+<area shape="rect" href="rooms-vault_8cpp.html#af87b72a44a465c3a0456061e3ac7e47f" title="タイプ17の部屋…v_info.txtより固定特殊部屋を生成する / Type 17 – fixed special room (see &quot;v_info.txt&quot;)" alt="" coords="164,715,259,741"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a17ca0646a861d1ad35250031be7c2ac7" title="タイプ7の部屋…v_info.txtより小型vaultを生成する / Type 7 – simple vaults (see &quot;v_info.txt&quot;)" alt="" coords="167,765,255,792"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a47c214974df28e1e344ed5be2be4858a" title="タイプ8の部屋…v_info.txtより大型vaultを生成する / Type 8 – greater vaults (see &quot;v_info.txt&quot;)" alt="" coords="167,816,255,843"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0da7b4515c9710b9967bf26703d22834"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0da7b4515c9710b9967bf26703d22834">&#9670;&nbsp;</a></span>place_locked_door()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void place_locked_door </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>鍵のかかったドアを配置する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">y</td><td>配置したいフロアのY座標 </td></tr>
+    <tr><td class="paramname">x</td><td>配置したいフロアのX座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="door_8h_a0da7b4515c9710b9967bf26703d22834_cgraph.png" border="0" usemap="#adoor_8h_a0da7b4515c9710b9967bf26703d22834_cgraph" alt=""/></div>
+<map name="adoor_8h_a0da7b4515c9710b9967bf26703d22834_cgraph" id="adoor_8h_a0da7b4515c9710b9967bf26703d22834_cgraph">
+<area shape="rect" title="鍵のかかったドアを配置する" alt="" coords="5,461,136,488"/>
+<area shape="rect" href="grid_8h.html#a73f3bf1cce90b5f4579ab9e8eaf3c990" title="指定位置に存在するモンスターを削除する / Delete the monster, if any, at a given location" alt="" coords="214,385,325,412"/>
+<area shape="rect" href="feature_8cpp.html#a76ba1dc49654a6a66f2fd80a7461a194" title=" " alt="" coords="184,436,355,463"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="227,487,311,513"/>
+<area shape="rect" href="grid_8cpp.html#a5c5e9d2e2502b05246d84d0707dec50e" title=" " alt="" coords="219,537,320,564"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="532,436,667,463"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="403,385,484,412"/>
+<area shape="rect" href="floor-object_8cpp.html#af338285652093066df1fda01f9b4fed2" title="オブジェクトを削除する / Delete a dungeon object" alt="" coords="730,5,853,32"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="976,31,1047,57"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ad491b75a9a598cb361c671e23737d1fb" title=" " alt="" coords="745,107,838,133"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="916,183,1107,209"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="923,284,1100,311"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="931,385,1091,412"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="931,512,1091,539"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="920,639,1103,665"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="929,740,1094,767"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="919,841,1104,868"/>
+<area shape="rect" href="monster-info_8cpp.html#a3228fe93eae0423e4bea1d418088d3c3" title="モンスターの真の種族を返す / Extract monster race pointer of a monster&#39;s true form" alt="" coords="753,512,829,539"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ab59547e7afcd9ac0b20e21f7c1d029aa" title="モンスターの混乱状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CONFUSED]&quot;, notice observable changes" alt="" coords="715,208,868,235"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="722,259,861,285"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ac81c0952258c31c0bb053742f5d63e0f" title="モンスターの加速状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes" alt="" coords="730,411,853,437"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a0f21d1420ce64b3a07b8d58396edbdfd" title="モンスターの無敵状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes" alt="" coords="719,664,863,691"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a9e49c39d8a53ae6e809e8c3662c97411" title="モンスターの恐慌状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_MONFEAR]&quot;, notice observable changes" alt="" coords="718,461,865,488"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="728,715,855,741"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a04c7c898df8f01472c8979c7a08b0925" title="モンスターの朦朧状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_STUNNED]&quot;, notice observable changes" alt="" coords="718,867,865,893"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="403,487,484,513"/>
+<area shape="rect" href="grid_8cpp.html#a8ea39c3dfc40de144095718ade7e2ec9" title=" " alt="" coords="560,537,639,564"/>
+<area shape="rect" href="feature_8cpp.html#ab6f2d85244b993c3996dafd0eac6056e" title=" " alt="" coords="543,487,655,513"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="door_8h_a0da7b4515c9710b9967bf26703d22834_icgraph.png" border="0" usemap="#adoor_8h_a0da7b4515c9710b9967bf26703d22834_icgraph" alt=""/></div>
+<map name="adoor_8h_a0da7b4515c9710b9967bf26703d22834_icgraph" id="adoor_8h_a0da7b4515c9710b9967bf26703d22834_icgraph">
+<area shape="rect" title="鍵のかかったドアを配置する" alt="" coords="437,5,568,32"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a2f8e9286a1a69a7231e18e15ef037893" title="タイプ4の部屋…固定サイズの二重構造部屋を生成する / Type 4 – Large room with inner features" alt="" coords="301,5,389,32"/>
+<area shape="rect" href="room-generator_8cpp.html#a5308aed51162378846c18cb4b1a05ae3" title="与えられた部屋型IDに応じて部屋の生成処理分岐を行い結果を返す / Attempt to build a room of the given type at the given block" alt="" coords="168,5,253,32"/>
+<area shape="rect" href="room-generator_8cpp.html#ac162d3550981d56e72a3a79a1078aa76" title="部屋生成処理のメインルーチン(Sangbandを経由してOangbandからの実装を引用) / Generate rooms in dungeon." alt="" coords="5,5,120,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a871ffc3458d3a544d8e5b0d0ca7ac24e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a871ffc3458d3a544d8e5b0d0ca7ac24e">&#9670;&nbsp;</a></span>place_random_door()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void place_random_door </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>room</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>所定の位置にさまざまな状態や種類のドアを配置する / Place a random type of door at the given location </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">y</td><td>ドアの配置を試みたいマスのY座標 </td></tr>
+    <tr><td class="paramname">x</td><td>ドアの配置を試みたいマスのX座標 </td></tr>
+    <tr><td class="paramname">room</td><td>部屋に接している場合向けのドア生成か否か </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="door_8h_a871ffc3458d3a544d8e5b0d0ca7ac24e_cgraph.png" border="0" usemap="#adoor_8h_a871ffc3458d3a544d8e5b0d0ca7ac24e_cgraph" alt=""/></div>
+<map name="adoor_8h_a871ffc3458d3a544d8e5b0d0ca7ac24e_cgraph" id="adoor_8h_a871ffc3458d3a544d8e5b0d0ca7ac24e_cgraph">
+<area shape="rect" title="所定の位置にさまざまな状態や種類のドアを配置する / Place a random type of door at the given location" alt="" coords="5,917,140,944"/>
+<area shape="rect" href="grid_8h.html#a73f3bf1cce90b5f4579ab9e8eaf3c990" title="指定位置に存在するモンスターを削除する / Delete the monster, if any, at a given location" alt="" coords="621,715,732,741"/>
+<area shape="rect" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e" title=" " alt="" coords="191,968,315,995"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="414,816,498,843"/>
+<area shape="rect" href="door_8cpp.html#a9561339298078ea29f71a37976c06600" title="所定の位置に各種の閉じたドアを配置する / Place a random type of normal door at the given location." alt="" coords="188,917,319,944"/>
+<area shape="rect" href="grid_8cpp.html#a5c5e9d2e2502b05246d84d0707dec50e" title=" " alt="" coords="203,1019,304,1045"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="808,487,943,513"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="835,740,916,767"/>
+<area shape="rect" href="floor-object_8cpp.html#af338285652093066df1fda01f9b4fed2" title="オブジェクトを削除する / Delete a dungeon object" alt="" coords="1006,867,1129,893"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="1252,892,1323,919"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ad491b75a9a598cb361c671e23737d1fb" title=" " alt="" coords="1021,259,1114,285"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="1192,31,1383,57"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="1199,183,1376,209"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="1207,436,1367,463"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="1207,537,1367,564"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="1196,639,1379,665"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="1205,740,1370,767"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="1195,335,1380,361"/>
+<area shape="rect" href="monster-info_8cpp.html#a3228fe93eae0423e4bea1d418088d3c3" title="モンスターの真の種族を返す / Extract monster race pointer of a monster&#39;s true form" alt="" coords="1029,107,1105,133"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ab59547e7afcd9ac0b20e21f7c1d029aa" title="モンスターの混乱状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CONFUSED]&quot;, notice observable changes" alt="" coords="991,5,1144,32"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="998,157,1137,184"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ac81c0952258c31c0bb053742f5d63e0f" title="モンスターの加速状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes" alt="" coords="1006,411,1129,437"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a0f21d1420ce64b3a07b8d58396edbdfd" title="モンスターの無敵状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes" alt="" coords="995,613,1139,640"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a9e49c39d8a53ae6e809e8c3662c97411" title="モンスターの恐慌状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_MONFEAR]&quot;, notice observable changes" alt="" coords="994,512,1141,539"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="1004,715,1131,741"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a04c7c898df8f01472c8979c7a08b0925" title="モンスターの朦朧状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_STUNNED]&quot;, notice observable changes" alt="" coords="994,360,1141,387"/>
+<area shape="rect" href="cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="1431,993,1519,1020"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="636,461,717,488"/>
+<area shape="rect" href="grid_8cpp.html#a8ea39c3dfc40de144095718ade7e2ec9" title=" " alt="" coords="836,385,915,412"/>
+<area shape="rect" href="feature_8cpp.html#ab6f2d85244b993c3996dafd0eac6056e" title=" " alt="" coords="819,436,931,463"/>
+<area shape="rect" href="feature_8cpp.html#acad9118499482c605f583af0ef408f10" title=" " alt="" coords="405,917,507,944"/>
+<area shape="rect" href="feature_8cpp.html#a7111802bafb1515aa38332ee254ee251" title=" " alt="" coords="367,968,545,995"/>
+<area shape="rect" href="feature_8cpp.html#a76ba1dc49654a6a66f2fd80a7461a194" title=" " alt="" coords="371,1019,541,1045"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="609,1171,744,1197"/>
+<area shape="rect" href="grid_8cpp.html#aa76190ea626631d68070030818399df5" title=" " alt="" coords="627,816,727,843"/>
+<area shape="rect" href="grid_8cpp.html#acfe2dde219c27902b1cbd0e7b6d95357" title=" " alt="" coords="637,867,716,893"/>
+<area shape="rect" href="feature_8cpp.html#a4ef7296980be04521b7a339d930af1e8" title=" " alt="" coords="608,968,745,995"/>
+<area shape="rect" href="mind-ninja_8cpp.html#a52ea1929bb465180b42d7321e65512eb" title="超隠密状態をセットする" alt="" coords="617,1019,736,1045"/>
+<area shape="rect" href="grid_8cpp.html#aba638b114fae87c0f1068113eb8fc8cf" title="指定された座標の照明状態を更新する / Update &quot;local&quot; illumination" alt="" coords="593,765,760,792"/>
+<area shape="rect" href="monster-update_8cpp.html#a2813cd48be3165ceff9b8c77da15da3f" title="モンスターの各情報を更新する / This function updates the monster record of the given monster" alt="" coords="619,1120,734,1147"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="door_8h_a871ffc3458d3a544d8e5b0d0ca7ac24e_icgraph.png" border="0" usemap="#adoor_8h_a871ffc3458d3a544d8e5b0d0ca7ac24e_icgraph" alt=""/></div>
+<map name="adoor_8h_a871ffc3458d3a544d8e5b0d0ca7ac24e_icgraph" id="adoor_8h_a871ffc3458d3a544d8e5b0d0ca7ac24e_icgraph">
+<area shape="rect" title="所定の位置にさまざまな状態や種類のドアを配置する / Place a random type of door at the given location" alt="" coords="457,107,592,133"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a586e8bfce23aa4a1010c917642f6a547" title="タイプ1の部屋…通常可変長方形の部屋を生成する / Type 1 – normal rectangular rooms" alt="" coords="320,56,408,83"/>
+<area shape="rect" href="cave-generator_8cpp.html#abf2a4cf142c48e21bd1eeea3d8342948" title=" " alt="" coords="319,107,409,133"/>
+<area shape="rect" href="feature-generator_8cpp.html#abb36deb31de9b8db0c40de41e482e830" title="ドアの設置を試みる / Places door at y, x position if at least 2 walls found" alt="" coords="329,157,399,184"/>
+<area shape="rect" href="rooms-fractal_8cpp.html#a1ec9bb25712ec47ab5257ae086c686a4" title="タイプ9の部屋…フラクタルカーブによる洞窟生成 / Type 9 – Driver routine to create fractal grid" alt="" coords="175,5,263,32"/>
+<area shape="rect" href="room-generator_8cpp.html#a5308aed51162378846c18cb4b1a05ae3" title="与えられた部屋型IDに応じて部屋の生成処理分岐を行い結果を返す / Attempt to build a room of the given type at the given block" alt="" coords="19,44,105,71"/>
+<area shape="rect" href="cave-generator_8cpp.html#a16f434086dd589224af75161bf087b74" title=" " alt="" coords="167,107,271,133"/>
+<area shape="rect" href="cave-generator_8cpp.html#a81376b86643f157e8763b5cda3e608e8" title=" " alt="" coords="5,120,119,147"/>
+<area shape="rect" href="cave-generator_8cpp.html#a0f1dc2b3de1b6c8df47498292eb6336a" title=" " alt="" coords="172,157,265,184"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a062b9ead56aeca6ac33bc71118a9d735"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a062b9ead56aeca6ac33bc71118a9d735">&#9670;&nbsp;</a></span>place_secret_door()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void place_secret_door </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>隠しドアを配置する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">y</td><td>配置したいフロアのY座標 </td></tr>
+    <tr><td class="paramname">x</td><td>配置したいフロアのX座標 </td></tr>
+    <tr><td class="paramname">type</td><td>DOOR_DEFAULT / DOOR_DOOR / DOOR_GLASS_DOOR / DOOR_CURTAIN のいずれか </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="door_8h_a062b9ead56aeca6ac33bc71118a9d735_cgraph.png" border="0" usemap="#adoor_8h_a062b9ead56aeca6ac33bc71118a9d735_cgraph" alt=""/></div>
+<map name="adoor_8h_a062b9ead56aeca6ac33bc71118a9d735_cgraph" id="adoor_8h_a062b9ead56aeca6ac33bc71118a9d735_cgraph">
+<area shape="rect" title="隠しドアを配置する" alt="" coords="5,782,133,809"/>
+<area shape="rect" href="grid_8h.html#a73f3bf1cce90b5f4579ab9e8eaf3c990" title="指定位置に存在するモンスターを削除する / Delete the monster, if any, at a given location" alt="" coords="615,706,725,733"/>
+<area shape="rect" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e" title=" " alt="" coords="185,858,309,885"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="407,706,491,733"/>
+<area shape="rect" href="door_8cpp.html#a9561339298078ea29f71a37976c06600" title="所定の位置に各種の閉じたドアを配置する / Place a random type of normal door at the given location." alt="" coords="181,807,312,834"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="801,478,936,505"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="828,731,909,758"/>
+<area shape="rect" href="floor-object_8cpp.html#af338285652093066df1fda01f9b4fed2" title="オブジェクトを削除する / Delete a dungeon object" alt="" coords="999,807,1122,834"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="1245,883,1316,910"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ad491b75a9a598cb361c671e23737d1fb" title=" " alt="" coords="1014,199,1107,226"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="1185,73,1376,99"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="1192,174,1369,201"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="1201,427,1361,454"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="1201,529,1361,555"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="1189,630,1372,657"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="1198,731,1363,758"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="1188,326,1373,353"/>
+<area shape="rect" href="monster-info_8cpp.html#a3228fe93eae0423e4bea1d418088d3c3" title="モンスターの真の種族を返す / Extract monster race pointer of a monster&#39;s true form" alt="" coords="1023,47,1099,74"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ab59547e7afcd9ac0b20e21f7c1d029aa" title="モンスターの混乱状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CONFUSED]&quot;, notice observable changes" alt="" coords="984,98,1137,125"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="991,250,1130,277"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ac81c0952258c31c0bb053742f5d63e0f" title="モンスターの加速状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes" alt="" coords="999,453,1122,479"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a0f21d1420ce64b3a07b8d58396edbdfd" title="モンスターの無敵状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes" alt="" coords="989,655,1133,682"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a9e49c39d8a53ae6e809e8c3662c97411" title="モンスターの恐慌状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_MONFEAR]&quot;, notice observable changes" alt="" coords="987,554,1134,581"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="997,757,1124,783"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a04c7c898df8f01472c8979c7a08b0925" title="モンスターの朦朧状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_STUNNED]&quot;, notice observable changes" alt="" coords="987,301,1134,327"/>
+<area shape="rect" href="cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="1424,934,1512,961"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="629,453,711,479"/>
+<area shape="rect" href="grid_8cpp.html#a8ea39c3dfc40de144095718ade7e2ec9" title=" " alt="" coords="829,427,908,454"/>
+<area shape="rect" href="feature_8cpp.html#ab6f2d85244b993c3996dafd0eac6056e" title=" " alt="" coords="813,377,925,403"/>
+<area shape="rect" href="feature_8cpp.html#acad9118499482c605f583af0ef408f10" title=" " alt="" coords="399,909,500,935"/>
+<area shape="rect" href="feature_8cpp.html#a7111802bafb1515aa38332ee254ee251" title=" " alt="" coords="360,959,539,986"/>
+<area shape="rect" href="feature_8cpp.html#a76ba1dc49654a6a66f2fd80a7461a194" title=" " alt="" coords="364,807,535,834"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="603,1061,737,1087"/>
+<area shape="rect" href="grid_8cpp.html#aa76190ea626631d68070030818399df5" title=" " alt="" coords="620,1111,720,1138"/>
+<area shape="rect" href="grid_8cpp.html#acfe2dde219c27902b1cbd0e7b6d95357" title=" " alt="" coords="631,1162,709,1189"/>
+<area shape="rect" href="feature_8cpp.html#a4ef7296980be04521b7a339d930af1e8" title=" " alt="" coords="601,807,739,834"/>
+<area shape="rect" href="mind-ninja_8cpp.html#a52ea1929bb465180b42d7321e65512eb" title="超隠密状態をセットする" alt="" coords="611,858,729,885"/>
+<area shape="rect" href="grid_8cpp.html#aba638b114fae87c0f1068113eb8fc8cf" title="指定された座標の照明状態を更新する / Update &quot;local&quot; illumination" alt="" coords="587,757,753,783"/>
+<area shape="rect" href="monster-update_8cpp.html#a2813cd48be3165ceff9b8c77da15da3f" title="モンスターの各情報を更新する / This function updates the monster record of the given monster" alt="" coords="613,1010,727,1037"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="door_8h_a062b9ead56aeca6ac33bc71118a9d735_icgraph.png" border="0" usemap="#adoor_8h_a062b9ead56aeca6ac33bc71118a9d735_icgraph" alt=""/></div>
+<map name="adoor_8h_a062b9ead56aeca6ac33bc71118a9d735_icgraph" id="adoor_8h_a062b9ead56aeca6ac33bc71118a9d735_icgraph">
+<area shape="rect" title="隠しドアを配置する" alt="" coords="645,335,773,361"/>
+<area shape="rect" href="door_8cpp.html#aa4f3883d9b1b9d4e1460be32a23182cc" title=" " alt="" coords="499,81,573,108"/>
+<area shape="rect" href="rooms-builder_8cpp.html#a25e593577c00763dc3375f740870a0f7" title="ダンジョンフロアの部屋生成処理 / make rooms." alt="" coords="475,208,597,235"/>
+<area shape="rect" href="rooms-special_8cpp.html#a06f16c514e2a57fdf3fac3b902aa2650" title="タイプ15の部屋…ガラス部屋の生成 / Type 15 – glass rooms" alt="" coords="489,259,583,285"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a51dae11ee04d63f0275ba51d98e85929" title="タイプ3の部屋…十字型の部屋を生成する / Type 3 – Cross shaped rooms" alt="" coords="492,309,580,336"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a2f8e9286a1a69a7231e18e15ef037893" title="タイプ4の部屋…固定サイズの二重構造部屋を生成する / Type 4 – Large room with inner features" alt="" coords="492,360,580,387"/>
+<area shape="rect" href="rooms-pit-nest_8cpp.html#ad3758d34c04bf3a6abb40261f6b85540" title="タイプ5の部屋…nestを生成する / Type 5 – Monster nests" alt="" coords="142,411,230,437"/>
+<area shape="rect" href="rooms-pit-nest_8cpp.html#a3e3435cd95a7c287bee760de7feafe84" title="タイプ6の部屋…pitを生成する / Type 6 – Monster pits" alt="" coords="142,461,230,488"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a6701b31a195109db285669bb4ff352d4" title="Vaultをフロアに配置する / Hack – fill in &quot;vault&quot; rooms" alt="" coords="313,537,395,564"/>
+<area shape="rect" href="rooms-vault_8cpp.html#ae59c2509f35031c4baba4acfa48a54db" title=" " alt="" coords="291,5,417,32"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a8be4ffd91c2f3558ad915b87b6a8be58" title=" " alt="" coords="295,56,413,83"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a59cb2292250b9d13b29fe4becf25ba84" title=" " alt="" coords="293,107,415,133"/>
+<area shape="rect" href="rooms-vault_8cpp.html#ab4caa119e209544982b77a920b5af760" title="タイプ10の部屋…ランダム生成vault / Type 10 – Random vaults" alt="" coords="139,107,233,133"/>
+<area shape="rect" href="room-generator_8cpp.html#a5308aed51162378846c18cb4b1a05ae3" title="与えられた部屋型IDに応じて部屋の生成処理分岐を行い結果を返す / Attempt to build a room of the given type at the given block" alt="" coords="5,385,91,412"/>
+<area shape="rect" href="rooms-vault_8cpp.html#ab0e47ed9bd018aa796ae255ddc96f1a2" title=" " alt="" coords="281,157,427,184"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a44d5e2c5c7ccd315f5e08f1ff2f935f7" title="タイプ12の部屋…ドーム型部屋の生成 / Type 12 – Build crypt room." alt="" coords="307,208,401,235"/>
+<area shape="rect" href="rooms-vault_8cpp.html#af87b72a44a465c3a0456061e3ac7e47f" title="タイプ17の部屋…v_info.txtより固定特殊部屋を生成する / Type 17 – fixed special room (see &quot;v_info.txt&quot;)" alt="" coords="139,512,233,539"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a17ca0646a861d1ad35250031be7c2ac7" title="タイプ7の部屋…v_info.txtより小型vaultを生成する / Type 7 – simple vaults (see &quot;v_info.txt&quot;)" alt="" coords="142,563,230,589"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a47c214974df28e1e344ed5be2be4858a" title="タイプ8の部屋…v_info.txtより大型vaultを生成する / Type 8 – greater vaults (see &quot;v_info.txt&quot;)" alt="" coords="142,613,230,640"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分17秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

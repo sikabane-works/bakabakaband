@@ -1,0 +1,1097 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/status/buff-setter.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3b5a16ca9d597ec3bd11cf60fc07b716.html">status</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">buff-setter.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="buff-setter_8h_source.html">status/buff-setter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="disturbance_8h_source.html">core/disturbance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-redraw-types_8h_source.html">core/player-redraw-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-update-types_8h_source.html">core/player-update-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stuff-handler_8h_source.html">core/stuff-handler.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="speed-table_8h_source.html">core/speed-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="disturbance-options_8h_source.html">game-option/disturbance-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="avatar_8h_source.html">player-info/avatar.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-race_8h_source.html">player/player-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-class_8h_source.html">player/player-class.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="attack-defense-types_8h_source.html">player/attack-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="realm-song-numbers_8h_source.html">realm/realm-song-numbers.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="window-redrawer_8h_source.html">core/window-redrawer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="element-resistance_8h_source.html">status/element-resistance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="base-status_8h_source.html">status/base-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status-setter_8h_source.html">monster/monster-status-setter.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+buff-setter.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2status_2buff-setter_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2status_2buff-setter_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2status_2buff-setter_8cpp">
+<area shape="rect" title=" " alt="" coords="1022,5,1210,61"/>
+<area shape="rect" href="buff-setter_8h.html" title=" " alt="" coords="1096,206,1227,233"/>
+<area shape="rect" href="disturbance_8h.html" title=" " alt="" coords="897,117,1026,143"/>
+<area shape="rect" href="player-redraw-types_8h.html" title=" " alt="" coords="1871,109,1999,151"/>
+<area shape="rect" href="player-update-types_8h.html" title=" " alt="" coords="2023,109,2153,151"/>
+<area shape="rect" href="stuff-handler_8h.html" title=" " alt="" coords="1050,117,1182,143"/>
+<area shape="rect" href="speed-table_8h.html" title=" " alt="" coords="1206,117,1335,143"/>
+<area shape="rect" href="disturbance-options_8h.html" title=" " alt="" coords="1359,109,1523,151"/>
+<area shape="rect" href="avatar_8h.html" title=" " alt="" coords="1548,117,1679,143"/>
+<area shape="rect" href="player-race_8h.html" title=" " alt="" coords="5,206,141,233"/>
+<area shape="rect" href="player-class_8h.html" title=" " alt="" coords="1703,117,1846,143"/>
+<area shape="rect" href="attack-defense-types_8h.html" title=" " alt="" coords="2177,109,2324,151"/>
+<area shape="rect" href="realm-song-numbers_8h.html" title=" " alt="" coords="2348,117,2535,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="166,206,333,233"/>
+<area shape="rect" href="window-redrawer_8h.html" title=" " alt="" coords="357,206,515,233"/>
+<area shape="rect" href="element-resistance_8h.html" title=" " alt="" coords="539,206,722,233"/>
+<area shape="rect" href="base-status_8h.html" title=" " alt="" coords="747,206,888,233"/>
+<area shape="rect" href="monster-status-setter_8h.html" title=" " alt="" coords="912,199,1072,240"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1199,288,1329,315"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1703,363,1793,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="853,363,944,389"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="968,363,1067,389"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1091,363,1189,389"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="1214,363,1314,389"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1338,363,1513,389"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1537,363,1679,389"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1817,363,1964,389"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="1910,437,2055,479"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="1910,206,2037,233"/>
+<area shape="rect" href="realm-types_8h.html" title=" " alt="" coords="1754,288,1891,315"/>
+<area shape="rect" href="technic-info-table_8h.html" title=" " alt="" coords="1715,199,1834,240"/>
+<area shape="rect" title=" " alt="" coords="1555,206,1610,233"/>
+<area shape="rect" title=" " alt="" coords="1635,206,1691,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:af16307a374a02b0f958aace61b82956c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buff-setter_8cpp.html#af16307a374a02b0f958aace61b82956c">reset_tim_flags</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:af16307a374a02b0f958aace61b82956c"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの全ての時限効果をリセットする。 / reset timed flags  <a href="buff-setter_8cpp.html#af16307a374a02b0f958aace61b82956c">[詳解]</a><br /></td></tr>
+<tr class="separator:af16307a374a02b0f958aace61b82956c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adba19dfd913dcf5feb9f6e0b09c9326d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buff-setter_8cpp.html#adba19dfd913dcf5feb9f6e0b09c9326d">set_fast</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> do_dec)</td></tr>
+<tr class="memdesc:adba19dfd913dcf5feb9f6e0b09c9326d"><td class="mdescLeft">&#160;</td><td class="mdescRight">加速の継続時間をセットする / Set "fast", notice observable changes  <a href="buff-setter_8cpp.html#adba19dfd913dcf5feb9f6e0b09c9326d">[詳解]</a><br /></td></tr>
+<tr class="separator:adba19dfd913dcf5feb9f6e0b09c9326d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e5079cffccadd1f26832a8cad9379d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buff-setter_8cpp.html#a2e5079cffccadd1f26832a8cad9379d5">set_shield</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> do_dec)</td></tr>
+<tr class="memdesc:a2e5079cffccadd1f26832a8cad9379d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">肌石化の継続時間をセットする / Set "shield", notice observable changes  <a href="buff-setter_8cpp.html#a2e5079cffccadd1f26832a8cad9379d5">[詳解]</a><br /></td></tr>
+<tr class="separator:a2e5079cffccadd1f26832a8cad9379d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0477bb92baf3702a88dbd2c86e52afe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buff-setter_8cpp.html#aa0477bb92baf3702a88dbd2c86e52afe">set_magicdef</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> do_dec)</td></tr>
+<tr class="memdesc:aa0477bb92baf3702a88dbd2c86e52afe"><td class="mdescLeft">&#160;</td><td class="mdescRight">魔法の鎧の継続時間をセットする / Set "magicdef", notice observable changes  <a href="buff-setter_8cpp.html#aa0477bb92baf3702a88dbd2c86e52afe">[詳解]</a><br /></td></tr>
+<tr class="separator:aa0477bb92baf3702a88dbd2c86e52afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f33ce24a83a1573ead35a6ce0913b85"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buff-setter_8cpp.html#a0f33ce24a83a1573ead35a6ce0913b85">set_blessed</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> do_dec)</td></tr>
+<tr class="memdesc:a0f33ce24a83a1573ead35a6ce0913b85"><td class="mdescLeft">&#160;</td><td class="mdescRight">祝福の継続時間をセットする / Set "blessed", notice observable changes  <a href="buff-setter_8cpp.html#a0f33ce24a83a1573ead35a6ce0913b85">[詳解]</a><br /></td></tr>
+<tr class="separator:a0f33ce24a83a1573ead35a6ce0913b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac03004c39e900ef70456ab128e303508"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buff-setter_8cpp.html#ac03004c39e900ef70456ab128e303508">set_hero</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> do_dec)</td></tr>
+<tr class="memdesc:ac03004c39e900ef70456ab128e303508"><td class="mdescLeft">&#160;</td><td class="mdescRight">士気高揚の継続時間をセットする / Set "hero", notice observable changes  <a href="buff-setter_8cpp.html#ac03004c39e900ef70456ab128e303508">[詳解]</a><br /></td></tr>
+<tr class="separator:ac03004c39e900ef70456ab128e303508"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93ff8d516629853e66fcca03f1cb4205"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buff-setter_8cpp.html#a93ff8d516629853e66fcca03f1cb4205">set_mimic</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <a class="el" href="h-type_8h.html#af040d628a6cf11f05b0a9a38bf63a089">MIMIC_RACE_IDX</a> p, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> do_dec)</td></tr>
+<tr class="memdesc:a93ff8d516629853e66fcca03f1cb4205"><td class="mdescLeft">&#160;</td><td class="mdescRight">変身効果の継続時間と変身先をセットする / Set "tim_mimic", and "mimic_form", notice observable changes  <a href="buff-setter_8cpp.html#a93ff8d516629853e66fcca03f1cb4205">[詳解]</a><br /></td></tr>
+<tr class="separator:a93ff8d516629853e66fcca03f1cb4205"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1b21b8906921e646ee19865602c7ca6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buff-setter_8cpp.html#ab1b21b8906921e646ee19865602c7ca6">set_shero</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> do_dec)</td></tr>
+<tr class="memdesc:ab1b21b8906921e646ee19865602c7ca6"><td class="mdescLeft">&#160;</td><td class="mdescRight">狂戦士化の継続時間をセットする / Set "shero", notice observable changes  <a href="buff-setter_8cpp.html#ab1b21b8906921e646ee19865602c7ca6">[詳解]</a><br /></td></tr>
+<tr class="separator:ab1b21b8906921e646ee19865602c7ca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1741caf2f971d0ba0e513fbc049482f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buff-setter_8cpp.html#a1741caf2f971d0ba0e513fbc049482f1">set_wraith_form</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> do_dec)</td></tr>
+<tr class="memdesc:a1741caf2f971d0ba0e513fbc049482f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">幽体化の継続時間をセットする / Set "wraith_form", notice observable changes  <a href="buff-setter_8cpp.html#a1741caf2f971d0ba0e513fbc049482f1">[詳解]</a><br /></td></tr>
+<tr class="separator:a1741caf2f971d0ba0e513fbc049482f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a036b09158d78c04e7fbe74a5f4c6f7cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buff-setter_8cpp.html#a036b09158d78c04e7fbe74a5f4c6f7cb">set_tsuyoshi</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> do_dec)</td></tr>
+<tr class="memdesc:a036b09158d78c04e7fbe74a5f4c6f7cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">オクレ兄さんの継続時間をセットする / Set "tsuyoshi", notice observable changes  <a href="buff-setter_8cpp.html#a036b09158d78c04e7fbe74a5f4c6f7cb">[詳解]</a><br /></td></tr>
+<tr class="separator:a036b09158d78c04e7fbe74a5f4c6f7cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="af16307a374a02b0f958aace61b82956c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af16307a374a02b0f958aace61b82956c">&#9670;&nbsp;</a></span>reset_tim_flags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void reset_tim_flags </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーの全ての時限効果をリセットする。 / reset timed flags </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_af16307a374a02b0f958aace61b82956c_cgraph.png" border="0" usemap="#abuff-setter_8cpp_af16307a374a02b0f958aace61b82956c_cgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_af16307a374a02b0f958aace61b82956c_cgraph" id="abuff-setter_8cpp_af16307a374a02b0f958aace61b82956c_cgraph">
+<area shape="rect" title="プレイヤーの全ての時限効果をリセットする。 / reset timed flags" alt="" coords="5,107,116,133"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#ac81c0952258c31c0bb053742f5d63e0f" title="モンスターの加速状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes" alt="" coords="175,56,297,83"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a0f21d1420ce64b3a07b8d58396edbdfd" title="モンスターの無敵状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes" alt="" coords="164,157,308,184"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="173,107,299,133"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="367,5,527,32"/>
+<area shape="rect" href="monster-status_8cpp.html#af5149aae69ef6e936f6c691c691cd95a" title="モンスターの時限ステータスリストを追加する" alt="" coords="404,56,491,83"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#acd89fe746188ecd270865d3bd1a3a4ae" title="モンスターの時限ステータスリストを削除" alt="" coords="394,107,501,133"/>
+<area shape="rect" href="monster-status_8cpp.html#a8b634a687e3b64547e012114b21ed69c" title="モンスターの時限ステータスを取得する" alt="" coords="587,107,693,133"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="356,208,539,235"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="365,157,530,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_af16307a374a02b0f958aace61b82956c_icgraph.png" border="0" usemap="#abuff-setter_8cpp_af16307a374a02b0f958aace61b82956c_icgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_af16307a374a02b0f958aace61b82956c_icgraph" id="abuff-setter_8cpp_af16307a374a02b0f958aace61b82956c_icgraph">
+<area shape="rect" title="プレイヤーの全ての時限効果をリセットする。 / reset timed flags" alt="" coords="785,81,896,108"/>
+<area shape="rect" href="arena_8cpp.html#a4e46125aeea390cec884cc830a4bdc64" title="はぐれメタルとの対戦" alt="" coords="599,5,737,32"/>
+<area shape="rect" href="arena_8cpp.html#a4a03dee7d64c2e030e2098b795bc56d6" title=" " alt="" coords="436,56,529,83"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="599,107,737,133"/>
+<area shape="rect" href="arena_8cpp.html#a2d2b41ec6554c963be1e6283e50e8602" title="モンスター闘技場のメインルーチン" alt="" coords="216,132,367,159"/>
+<area shape="rect" href="arena_8cpp.html#a51d963b118c0890809d20fc48f07866a" title="闘技場に入るコマンドの処理 / on_defeat_arena_monster commands" alt="" coords="243,69,340,96"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="5,107,168,133"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="415,107,551,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0f33ce24a83a1573ead35a6ce0913b85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f33ce24a83a1573ead35a6ce0913b85">&#9670;&nbsp;</a></span>set_blessed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> set_blessed </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a>&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>do_dec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>祝福の継続時間をセットする / Set "blessed", notice observable changes </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>継続時間 </td></tr>
+    <tr><td class="paramname">do_dec</td><td>現在の継続時間より長い値のみ上書きする </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ステータスに影響を及ぼす変化があった場合TRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_a0f33ce24a83a1573ead35a6ce0913b85_cgraph.png" border="0" usemap="#abuff-setter_8cpp_a0f33ce24a83a1573ead35a6ce0913b85_cgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_a0f33ce24a83a1573ead35a6ce0913b85_cgraph" id="abuff-setter_8cpp_a0f33ce24a83a1573ead35a6ce0913b85_cgraph">
+<area shape="rect" title="祝福の継続時間をセットする / Set &quot;blessed&quot;, notice observable changes" alt="" coords="5,231,97,258"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="160,130,221,157"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="595,29,673,55"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="145,231,236,258"/>
+<area shape="rect" href="player-status_8cpp.html#ab215a70b4e353b64b10c1fe720c86717" title=" " alt="" coords="149,282,233,309"/>
+<area shape="rect" href="player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="284,307,389,334"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="312,29,361,55"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="295,79,378,106"/>
+<area shape="rect" href="target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="292,130,381,157"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="437,29,547,55"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="445,79,539,106"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="454,130,530,157"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_a0f33ce24a83a1573ead35a6ce0913b85_icgraph.png" border="0" usemap="#abuff-setter_8cpp_a0f33ce24a83a1573ead35a6ce0913b85_icgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_a0f33ce24a83a1573ead35a6ce0913b85_icgraph" id="abuff-setter_8cpp_a0f33ce24a83a1573ead35a6ce0913b85_icgraph">
+<area shape="rect" title="祝福の継続時間をセットする / Set &quot;blessed&quot;, notice observable changes" alt="" coords="571,233,663,260"/>
+<area shape="rect" href="blade-turner_8cpp.html#a9df4f5418f546d8fa9d75c1676e66a36" title=" " alt="" coords="361,5,498,32"/>
+<area shape="rect" href="activation-resistance_8cpp.html#a86b3393a1813d3013276d64dd3e7390f" title=" " alt="" coords="336,56,523,83"/>
+<area shape="rect" href="spells-trump_8cpp.html#a62ebe5c603d93fd2c11edcc6fc2b4caf" title="トランプ領域の「シャッフル」の効果をランダムに決めて処理する。" alt="" coords="384,157,475,184"/>
+<area shape="rect" href="spells-status_8cpp.html#a6b3d51cd9befa32b5917f7c8c47626f0" title="装備を脱ぎ捨てて小宇宙を燃やす" alt="" coords="371,107,487,133"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#a09256f06bfc5fa758d6fee6d4df9082a" title="プレイヤーに魔力消去効果を与える。" alt="" coords="380,208,479,235"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="165,259,288,285"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="165,309,288,336"/>
+<area shape="rect" href="realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="180,360,273,387"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="392,411,467,437"/>
+<area shape="rect" href="magic-effects-timeout-reducer_8cpp.html#ab3da74b04d4dd1f34442fc82cde68b60" title="10ゲームターンが進行するごとに魔法効果の残りターンを減らしていく処理 / Handle timeout every 10 game turns" alt="" coords="355,462,503,503"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="167,56,287,83"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="5,56,117,83"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="171,183,282,209"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="23,284,100,311"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adba19dfd913dcf5feb9f6e0b09c9326d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adba19dfd913dcf5feb9f6e0b09c9326d">&#9670;&nbsp;</a></span>set_fast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> set_fast </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a>&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>do_dec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>加速の継続時間をセットする / Set "fast", notice observable changes </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>継続時間 </td></tr>
+    <tr><td class="paramname">do_dec</td><td>現在の継続時間より長い値のみ上書きする </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ステータスに影響を及ぼす変化があった場合TRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_adba19dfd913dcf5feb9f6e0b09c9326d_cgraph.png" border="0" usemap="#abuff-setter_8cpp_adba19dfd913dcf5feb9f6e0b09c9326d_cgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_adba19dfd913dcf5feb9f6e0b09c9326d_cgraph" id="abuff-setter_8cpp_adba19dfd913dcf5feb9f6e0b09c9326d_cgraph">
+<area shape="rect" title="加速の継続時間をセットする / Set &quot;fast&quot;, notice observable changes" alt="" coords="5,206,73,233"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="127,79,207,106"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="136,130,197,157"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="571,29,649,55"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="121,231,212,258"/>
+<area shape="rect" href="player-status_8cpp.html#a5dc31dcacd506df65ec4babd972ca7dd" title=" " alt="" coords="137,282,197,309"/>
+<area shape="rect" href="player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="260,307,365,334"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="288,29,337,55"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="271,79,354,106"/>
+<area shape="rect" href="target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="268,130,357,157"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="413,29,523,55"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="421,79,515,106"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="430,130,506,157"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_adba19dfd913dcf5feb9f6e0b09c9326d_icgraph.png" border="0" usemap="#abuff-setter_8cpp_adba19dfd913dcf5feb9f6e0b09c9326d_icgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_adba19dfd913dcf5feb9f6e0b09c9326d_icgraph" id="abuff-setter_8cpp_adba19dfd913dcf5feb9f6e0b09c9326d_icgraph">
+<area shape="rect" title="加速の継続時間をセットする / Set &quot;fast&quot;, notice observable changes" alt="" coords="1048,537,1116,564"/>
+<area shape="rect" href="mind-mindcrafter_8cpp.html#a8da07b1c4907a85709c965d06d9038cb" title="超能力の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;mindcrafter&#39;." alt="" coords="842,43,994,69"/>
+<area shape="rect" href="spells-status_8cpp.html#a6b3d51cd9befa32b5917f7c8c47626f0" title="装備を脱ぎ捨てて小宇宙を燃やす" alt="" coords="860,157,976,184"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="661,107,781,133"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#a09256f06bfc5fa758d6fee6d4df9082a" title="プレイヤーに魔力消去効果を与える。" alt="" coords="869,208,967,235"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="867,613,969,640"/>
+<area shape="rect" href="quaff-execution_8cpp.html#a663518dc63d12a75833fcd01acd2f364" title="薬を飲むコマンドのサブルーチン / Quaff a potion (from the pack or the floor)" alt="" coords="205,309,324,336"/>
+<area shape="rect" href="mutation-processor_8cpp.html#aac6e6f0b449a92493ac8a184c221d6b4" title="10ゲームターンが進行するごとに突然変異の発動判定を行う処理 / Handle mutation effects once every 10 game turns" alt="" coords="169,360,360,387"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="857,411,979,437"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="863,461,973,488"/>
+<area shape="rect" href="realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="871,512,965,539"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="858,563,978,589"/>
+<area shape="rect" href="effect-player-oldies_8cpp.html#a041be21532ad3918facf43cb8c6c60da" title=" " alt="" coords="837,664,999,691"/>
+<area shape="rect" href="cmd-eat_8cpp.html#afb5bdcc73085684a1cdebe5403f710e4" title="死体を食べたときの効果を発動" alt="" coords="845,715,991,757"/>
+<area shape="rect" href="magic-effects-timeout-reducer_8cpp.html#ab3da74b04d4dd1f34442fc82cde68b60" title="10ゲームターンが進行するごとに魔法効果の残りターンを減らしていく処理 / Handle timeout every 10 game turns" alt="" coords="844,781,992,822"/>
+<area shape="rect" href="cmd-zaprod_8cpp.html#ae9106d1cdcf01f0497ab6cfc5758bf11" title="ロッドの効果を発動する" alt="" coords="879,847,957,873"/>
+<area shape="rect" href="cmd-usestaff_8cpp.html#a4a284c2f2988d427dd6baac5fcf99fd6" title="杖の効果を発動する" alt="" coords="876,897,960,924"/>
+<area shape="rect" href="blue-magic-caster_8cpp.html#ac4b080704cd126dae6ee4a201fbc7d62" title=" " alt="" coords="836,948,1000,975"/>
+<area shape="rect" href="cmd-mane_8cpp.html#a2d4bde2652a51ec0fd7361ae48a34da2" title="ものまね処理の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;imitator&#39;." alt="" coords="877,999,959,1025"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a49b73965d0ef306e6cb8a9dc70ed212a" title=" " alt="" coords="655,31,787,57"/>
+<area shape="rect" href="cmd-mind_8cpp.html#aabc979c31c0704f59ff46f8254ddb892" title=" " alt="" coords="439,5,576,32"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="451,56,563,83"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#ad33fead4cf76dc5c5ed3c259376d8728" title="RF4_DISPELの処理。魔力消去。 /" alt="" coords="655,157,788,184"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a50f2be9467ee2c4cff879e3d4e9c66b6" title=" " alt="" coords="419,107,596,133"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a6df5fae2d3026a687f76997a8b41d0e7" title=" " alt="" coords="425,157,590,184"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="683,639,760,665"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="222,233,307,260"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="215,537,314,564"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="447,411,568,437"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,1069,121,1096"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,968,113,995"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="430,461,585,488"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="203,892,327,919"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="408,613,607,640"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,1145,117,1172"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="458,664,557,691"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="439,917,576,944"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="227,1069,302,1096"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="463,1019,551,1045"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="457,715,557,741"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="210,816,319,843"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="443,309,572,336"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="460,512,555,539"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="432,765,583,792"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac03004c39e900ef70456ab128e303508"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac03004c39e900ef70456ab128e303508">&#9670;&nbsp;</a></span>set_hero()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> set_hero </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a>&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>do_dec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>士気高揚の継続時間をセットする / Set "hero", notice observable changes </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>継続時間 </td></tr>
+    <tr><td class="paramname">do_dec</td><td>現在の継続時間より長い値のみ上書きする </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ステータスに影響を及ぼす変化があった場合TRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_ac03004c39e900ef70456ab128e303508_cgraph.png" border="0" usemap="#abuff-setter_8cpp_ac03004c39e900ef70456ab128e303508_cgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_ac03004c39e900ef70456ab128e303508_cgraph" id="abuff-setter_8cpp_ac03004c39e900ef70456ab128e303508_cgraph">
+<area shape="rect" title="士気高揚の継続時間をセットする / Set &quot;hero&quot;, notice observable changes" alt="" coords="5,231,77,258"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="140,130,201,157"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="575,29,653,55"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="125,231,216,258"/>
+<area shape="rect" href="player-status_8cpp.html#a0dbbaf6ad1cc21536b317efaa5b917f2" title=" " alt="" coords="139,282,203,309"/>
+<area shape="rect" href="player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="264,307,369,334"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="292,29,341,55"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="275,79,358,106"/>
+<area shape="rect" href="target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="272,130,361,157"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="417,29,527,55"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="425,79,519,106"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="434,130,510,157"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_ac03004c39e900ef70456ab128e303508_icgraph.png" border="0" usemap="#abuff-setter_8cpp_ac03004c39e900ef70456ab128e303508_icgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_ac03004c39e900ef70456ab128e303508_icgraph" id="abuff-setter_8cpp_ac03004c39e900ef70456ab128e303508_icgraph">
+<area shape="rect" title="士気高揚の継続時間をセットする / Set &quot;hero&quot;, notice observable changes" alt="" coords="1229,424,1301,451"/>
+<area shape="rect" href="blade-turner_8cpp.html#a9df4f5418f546d8fa9d75c1676e66a36" title=" " alt="" coords="1019,247,1157,274"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="820,323,940,350"/>
+<area shape="rect" href="activation-others_8cpp.html#a40db7b0ca748e4633089ad50b822c5c1" title=" " alt="" coords="1024,298,1152,324"/>
+<area shape="rect" href="activation-resistance_8cpp.html#a86b3393a1813d3013276d64dd3e7390f" title=" " alt="" coords="995,348,1181,375"/>
+<area shape="rect" href="mind-mindcrafter_8cpp.html#a8da07b1c4907a85709c965d06d9038cb" title="超能力の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;mindcrafter&#39;." alt="" coords="1012,551,1164,578"/>
+<area shape="rect" href="spells-status_8cpp.html#a6b3d51cd9befa32b5917f7c8c47626f0" title="装備を脱ぎ捨てて小宇宙を燃やす" alt="" coords="1030,399,1146,426"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#a09256f06bfc5fa758d6fee6d4df9082a" title="プレイヤーに魔力消去効果を与える。" alt="" coords="1039,602,1137,628"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="819,475,941,502"/>
+<area shape="rect" href="spells-status_8cpp.html#ae6dca9801477e0f3326c5da3d7d2abae" title=" " alt="" coords="1054,450,1122,476"/>
+<area shape="rect" href="magic-effects-timeout-reducer_8cpp.html#ab3da74b04d4dd1f34442fc82cde68b60" title="10ゲームターンが進行するごとに魔法効果の残りターンを減らしていく処理 / Handle timeout every 10 game turns" alt="" coords="1014,653,1162,694"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="621,323,733,350"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a49b73965d0ef306e6cb8a9dc70ed212a" title=" " alt="" coords="814,551,946,578"/>
+<area shape="rect" href="cmd-mind_8cpp.html#aabc979c31c0704f59ff46f8254ddb892" title=" " alt="" coords="608,551,745,578"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#ad33fead4cf76dc5c5ed3c259376d8728" title="RF4_DISPELの処理。魔力消去。 /" alt="" coords="813,602,947,628"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a50f2be9467ee2c4cff879e3d4e9c66b6" title=" " alt="" coords="588,652,765,679"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a6df5fae2d3026a687f76997a8b41d0e7" title=" " alt="" coords="594,602,759,628"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="638,475,715,502"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,82,274,108"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,450,281,476"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,526,501,552"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,272,121,299"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,146,113,172"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,576,518,603"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,652,293,679"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,728,540,755"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,348,117,375"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,779,490,806"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,678,509,704"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,222,269,248"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,272,485,299"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,830,491,856"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,146,286,172"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,120,505,147"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,475,488,502"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,880,516,907"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa0477bb92baf3702a88dbd2c86e52afe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0477bb92baf3702a88dbd2c86e52afe">&#9670;&nbsp;</a></span>set_magicdef()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> set_magicdef </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a>&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>do_dec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>魔法の鎧の継続時間をセットする / Set "magicdef", notice observable changes </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>継続時間 </td></tr>
+    <tr><td class="paramname">do_dec</td><td>現在の継続時間より長い値のみ上書きする </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ステータスに影響を及ぼす変化があった場合TRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_aa0477bb92baf3702a88dbd2c86e52afe_cgraph.png" border="0" usemap="#abuff-setter_8cpp_aa0477bb92baf3702a88dbd2c86e52afe_cgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_aa0477bb92baf3702a88dbd2c86e52afe_cgraph" id="abuff-setter_8cpp_aa0477bb92baf3702a88dbd2c86e52afe_cgraph">
+<area shape="rect" title="魔法の鎧の継続時間をセットする / Set &quot;magicdef&quot;, notice observable changes" alt="" coords="5,181,104,207"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="167,130,228,157"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="585,29,664,55"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="152,231,243,258"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="311,29,360,55"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="294,79,377,106"/>
+<area shape="rect" href="target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="291,130,380,157"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="428,29,537,55"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="435,79,530,106"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="445,130,521,157"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_aa0477bb92baf3702a88dbd2c86e52afe_icgraph.png" border="0" usemap="#abuff-setter_8cpp_aa0477bb92baf3702a88dbd2c86e52afe_icgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_aa0477bb92baf3702a88dbd2c86e52afe_icgraph" id="abuff-setter_8cpp_aa0477bb92baf3702a88dbd2c86e52afe_icgraph">
+<area shape="rect" title="魔法の鎧の継続時間をセットする / Set &quot;magicdef&quot;, notice observable changes" alt="" coords="965,392,1064,419"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#a09256f06bfc5fa758d6fee6d4df9082a" title="プレイヤーに魔力消去効果を与える。" alt="" coords="794,152,893,179"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="792,392,895,419"/>
+<area shape="rect" href="magic-effects-timeout-reducer_8cpp.html#ab3da74b04d4dd1f34442fc82cde68b60" title="10ゲームターンが進行するごとに魔法効果の残りターンを減らしていく処理 / Handle timeout every 10 game turns" alt="" coords="769,443,917,485"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#ad33fead4cf76dc5c5ed3c259376d8728" title="RF4_DISPELの処理。魔力消去。 /" alt="" coords="588,56,721,83"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a50f2be9467ee2c4cff879e3d4e9c66b6" title=" " alt="" coords="352,5,529,32"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a6df5fae2d3026a687f76997a8b41d0e7" title=" " alt="" coords="358,56,523,83"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="616,487,693,513"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,487,274,513"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,841,281,868"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,917,501,944"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,664,121,691"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,563,113,589"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,968,518,995"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,132,293,159"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,208,540,235"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,740,117,767"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,259,490,285"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,157,509,184"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,613,269,640"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,664,485,691"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,309,491,336"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,563,286,589"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,512,505,539"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,867,488,893"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,360,516,387"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a93ff8d516629853e66fcca03f1cb4205"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93ff8d516629853e66fcca03f1cb4205">&#9670;&nbsp;</a></span>set_mimic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> set_mimic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a>&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af040d628a6cf11f05b0a9a38bf63a089">MIMIC_RACE_IDX</a>&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>do_dec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>変身効果の継続時間と変身先をセットする / Set "tim_mimic", and "mimic_form", notice observable changes </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>継続時間 </td></tr>
+    <tr><td class="paramname">p</td><td>変身内容 </td></tr>
+    <tr><td class="paramname">do_dec</td><td>現在の継続時間より長い値のみ上書きする </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ステータスに影響を及ぼす変化があった場合TRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_a93ff8d516629853e66fcca03f1cb4205_cgraph.png" border="0" usemap="#abuff-setter_8cpp_a93ff8d516629853e66fcca03f1cb4205_cgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_a93ff8d516629853e66fcca03f1cb4205_cgraph" id="abuff-setter_8cpp_a93ff8d516629853e66fcca03f1cb4205_cgraph">
+<area shape="rect" title="変身効果の継続時間と変身先をセットする / Set &quot;tim_mimic&quot;, and &quot;mimic_form&quot;, notice observable changes" alt="" coords="5,233,88,260"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="312,81,373,108"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="731,183,809,209"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="297,259,388,285"/>
+<area shape="rect" href="element-resistance_8cpp.html#ae8333840ce64c42c444857fdd00b4dd2" title="一時的火炎耐性の継続時間をセットする / Set &quot;oppose_fire&quot;, notice observable changes" alt="" coords="136,208,249,235"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="456,56,505,83"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="439,107,522,133"/>
+<area shape="rect" href="target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="436,5,525,32"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="573,5,683,32"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="581,107,675,133"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="590,56,666,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_a93ff8d516629853e66fcca03f1cb4205_icgraph.png" border="0" usemap="#abuff-setter_8cpp_a93ff8d516629853e66fcca03f1cb4205_icgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_a93ff8d516629853e66fcca03f1cb4205_icgraph" id="abuff-setter_8cpp_a93ff8d516629853e66fcca03f1cb4205_icgraph">
+<area shape="rect" title="変身効果の継続時間と変身先をセットする / Set &quot;tim_mimic&quot;, and &quot;mimic_form&quot;, notice observable changes" alt="" coords="965,461,1048,488"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#a09256f06bfc5fa758d6fee6d4df9082a" title="プレイヤーに魔力消去効果を与える。" alt="" coords="794,220,893,247"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="782,436,905,463"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="789,487,898,513"/>
+<area shape="rect" href="magic-effects-timeout-reducer_8cpp.html#ab3da74b04d4dd1f34442fc82cde68b60" title="10ゲームターンが進行するごとに魔法効果の残りターンを減らしていく処理 / Handle timeout every 10 game turns" alt="" coords="769,538,917,579"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#ad33fead4cf76dc5c5ed3c259376d8728" title="RF4_DISPELの処理。魔力消去。 /" alt="" coords="588,56,721,83"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a50f2be9467ee2c4cff879e3d4e9c66b6" title=" " alt="" coords="352,5,529,32"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a6df5fae2d3026a687f76997a8b41d0e7" title=" " alt="" coords="358,56,523,83"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="616,487,693,513"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,473,274,500"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,841,281,868"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,917,501,944"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,664,121,691"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,537,113,564"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,968,518,995"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,132,293,159"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,208,540,235"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,740,117,767"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,259,490,285"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,157,509,184"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,613,269,640"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,664,485,691"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,309,491,336"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,537,286,564"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,512,505,539"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,867,488,893"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,360,516,387"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab1b21b8906921e646ee19865602c7ca6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1b21b8906921e646ee19865602c7ca6">&#9670;&nbsp;</a></span>set_shero()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> set_shero </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a>&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>do_dec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>狂戦士化の継続時間をセットする / Set "shero", notice observable changes </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>継続時間/ 0ならば無条件にリセット </td></tr>
+    <tr><td class="paramname">do_dec</td><td>FALSEの場合現在の継続時間より長い値のみ上書きする </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ステータスに影響を及ぼす変化があった場合TRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_ab1b21b8906921e646ee19865602c7ca6_cgraph.png" border="0" usemap="#abuff-setter_8cpp_ab1b21b8906921e646ee19865602c7ca6_cgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_ab1b21b8906921e646ee19865602c7ca6_cgraph" id="abuff-setter_8cpp_ab1b21b8906921e646ee19865602c7ca6_cgraph">
+<area shape="rect" title="狂戦士化の継続時間をセットする / Set &quot;shero&quot;, notice observable changes" alt="" coords="5,181,84,207"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="147,130,208,157"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="565,29,644,55"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="132,231,223,258"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="291,29,340,55"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="274,79,357,106"/>
+<area shape="rect" href="target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="271,130,360,157"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="408,29,517,55"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="415,79,510,106"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="425,130,501,157"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_ab1b21b8906921e646ee19865602c7ca6_icgraph.png" border="0" usemap="#abuff-setter_8cpp_ab1b21b8906921e646ee19865602c7ca6_icgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_ab1b21b8906921e646ee19865602c7ca6_icgraph" id="abuff-setter_8cpp_ab1b21b8906921e646ee19865602c7ca6_icgraph">
+<area shape="rect" title="狂戦士化の継続時間をセットする / Set &quot;shero&quot;, notice observable changes" alt="" coords="559,401,637,428"/>
+<area shape="rect" href="spells-status_8cpp.html#aae9a0980e97bd173f6040909d6e66097" title=" " alt="" coords="383,123,448,149"/>
+<area shape="rect" href="spells-status_8cpp.html#a6b3d51cd9befa32b5917f7c8c47626f0" title="装備を脱ぎ捨てて小宇宙を燃やす" alt="" coords="357,173,473,200"/>
+<area shape="rect" href="spells-status_8cpp.html#ac6cc23e751d903cceebb4c6baf1d61d1" title=" " alt="" coords="344,325,487,352"/>
+<area shape="rect" href="cmd-zaprod_8cpp.html#ae9106d1cdcf01f0497ab6cfc5758bf11" title="ロッドの効果を発動する" alt="" coords="162,325,241,352"/>
+<area shape="rect" href="cmd-usestaff_8cpp.html#a4a284c2f2988d427dd6baac5fcf99fd6" title="杖の効果を発動する" alt="" coords="159,376,243,403"/>
+<area shape="rect" href="spells-status_8cpp.html#a9d09019685ce462d411c9554fdf8e2a6" title=" " alt="" coords="351,376,480,403"/>
+<area shape="rect" href="spells-status_8cpp.html#a1250a8abfd5f99b37bbcd22e7fde8d17" title=" " alt="" coords="342,224,489,251"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#a09256f06bfc5fa758d6fee6d4df9082a" title="プレイヤーに魔力消去効果を与える。" alt="" coords="366,477,465,504"/>
+<area shape="rect" href="cmd-eat_8cpp.html#afb5bdcc73085684a1cdebe5403f710e4" title="死体を食べたときの効果を発動" alt="" coords="342,529,489,570"/>
+<area shape="rect" href="spells-status_8cpp.html#a3cb2a18d41d25c9c825b16220de7b45d" title=" " alt="" coords="373,275,458,301"/>
+<area shape="rect" href="mutation-processor_8cpp.html#aac6e6f0b449a92493ac8a184c221d6b4" title="10ゲームターンが進行するごとに突然変異の発動判定を行う処理 / Handle mutation effects once every 10 game turns" alt="" coords="320,645,511,672"/>
+<area shape="rect" href="magic-effects-timeout-reducer_8cpp.html#ab3da74b04d4dd1f34442fc82cde68b60" title="10ゲームターンが進行するごとに魔法効果の残りターンを減らしていく処理 / Handle timeout every 10 game turns" alt="" coords="341,697,489,738"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="150,5,253,32"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="147,56,256,83"/>
+<area shape="rect" href="mutation-execution_8cpp.html#a0c9c1052c587d71b683d8a700d9ae016" title="突然変異のレイシャル効果実装" alt="" coords="131,107,272,133"/>
+<area shape="rect" href="quaff-execution_8cpp.html#a663518dc63d12a75833fcd01acd2f364" title="薬を飲むコマンドのサブルーチン / Quaff a potion (from the pack or the floor)" alt="" coords="142,275,261,301"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="141,224,261,251"/>
+<area shape="rect" href="racial-switcher_8cpp.html#aa572ab3a50b5978ef74af24ed0220bed" title=" " alt="" coords="137,158,266,199"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="5,31,83,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2e5079cffccadd1f26832a8cad9379d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e5079cffccadd1f26832a8cad9379d5">&#9670;&nbsp;</a></span>set_shield()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> set_shield </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a>&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>do_dec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>肌石化の継続時間をセットする / Set "shield", notice observable changes </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>継続時間 </td></tr>
+    <tr><td class="paramname">do_dec</td><td>現在の継続時間より長い値のみ上書きする </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ステータスに影響を及ぼす変化があった場合TRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_a2e5079cffccadd1f26832a8cad9379d5_cgraph.png" border="0" usemap="#abuff-setter_8cpp_a2e5079cffccadd1f26832a8cad9379d5_cgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_a2e5079cffccadd1f26832a8cad9379d5_cgraph" id="abuff-setter_8cpp_a2e5079cffccadd1f26832a8cad9379d5_cgraph">
+<area shape="rect" title="肌石化の継続時間をセットする / Set &quot;shield&quot;, notice observable changes" alt="" coords="5,181,87,207"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="149,130,211,157"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="568,29,647,55"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="135,231,225,258"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="293,29,343,55"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="277,79,359,106"/>
+<area shape="rect" href="target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="273,130,363,157"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="411,29,520,55"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="418,79,513,106"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="427,130,503,157"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_a2e5079cffccadd1f26832a8cad9379d5_icgraph.png" border="0" usemap="#abuff-setter_8cpp_a2e5079cffccadd1f26832a8cad9379d5_icgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_a2e5079cffccadd1f26832a8cad9379d5_icgraph" id="abuff-setter_8cpp_a2e5079cffccadd1f26832a8cad9379d5_icgraph">
+<area shape="rect" title="肌石化の継続時間をセットする / Set &quot;shield&quot;, notice observable changes" alt="" coords="969,183,1051,209"/>
+<area shape="rect" href="mind-mindcrafter_8cpp.html#a8da07b1c4907a85709c965d06d9038cb" title="超能力の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;mindcrafter&#39;." alt="" coords="769,81,921,108"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#af68e01e109fc7fb8b1e131a7131ed4c5" title="鏡魔法の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;Mirror magic&#39;." alt="" coords="785,31,906,57"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#a09256f06bfc5fa758d6fee6d4df9082a" title="プレイヤーに魔力消去効果を与える。" alt="" coords="796,132,895,159"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="794,233,897,260"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="789,183,902,209"/>
+<area shape="rect" href="magic-effects-timeout-reducer_8cpp.html#ab3da74b04d4dd1f34442fc82cde68b60" title="10ゲームターンが進行するごとに魔法効果の残りターンを減らしていく処理 / Handle timeout every 10 game turns" alt="" coords="771,285,919,326"/>
+<area shape="rect" href="racial-switcher_8cpp.html#aa572ab3a50b5978ef74af24ed0220bed" title=" " alt="" coords="781,350,910,391"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a49b73965d0ef306e6cb8a9dc70ed212a" title=" " alt="" coords="589,31,721,57"/>
+<area shape="rect" href="cmd-mind_8cpp.html#aabc979c31c0704f59ff46f8254ddb892" title=" " alt="" coords="372,5,509,32"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#ad33fead4cf76dc5c5ed3c259376d8728" title="RF4_DISPELの処理。魔力消去。 /" alt="" coords="588,107,721,133"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a50f2be9467ee2c4cff879e3d4e9c66b6" title=" " alt="" coords="352,107,529,133"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a6df5fae2d3026a687f76997a8b41d0e7" title=" " alt="" coords="358,56,523,83"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="616,512,693,539"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,677,274,704"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,601,281,628"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,208,501,235"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,917,121,944"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,816,113,843"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,259,518,285"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,233,293,260"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,411,540,437"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,993,117,1020"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,461,490,488"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,157,509,184"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,867,269,893"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,917,485,944"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,512,491,539"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,765,286,792"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,715,505,741"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,613,488,640"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,563,516,589"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a036b09158d78c04e7fbe74a5f4c6f7cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a036b09158d78c04e7fbe74a5f4c6f7cb">&#9670;&nbsp;</a></span>set_tsuyoshi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> set_tsuyoshi </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a>&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>do_dec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>オクレ兄さんの継続時間をセットする / Set "tsuyoshi", notice observable changes </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>継続時間 </td></tr>
+    <tr><td class="paramname">do_dec</td><td>現在の継続時間より長い値のみ上書きする </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ステータスに影響を及ぼす変化があった場合TRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_a036b09158d78c04e7fbe74a5f4c6f7cb_cgraph.png" border="0" usemap="#abuff-setter_8cpp_a036b09158d78c04e7fbe74a5f4c6f7cb_cgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_a036b09158d78c04e7fbe74a5f4c6f7cb_cgraph" id="abuff-setter_8cpp_a036b09158d78c04e7fbe74a5f4c6f7cb_cgraph">
+<area shape="rect" title="オクレ兄さんの継続時間をセットする / Set &quot;tsuyoshi&quot;, notice observable changes" alt="" coords="5,132,101,159"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="293,5,373,32"/>
+<area shape="rect" href="base-status_8cpp.html#abc8401db064966371a87b64d1a6070cb" title="プレイヤーの基本能力値を減少させる / Decreases a stat by an amount indended to vary from 0 to 100 percent." alt="" coords="159,75,231,101"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="164,132,225,159"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="583,56,661,83"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="149,259,240,285"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="308,56,357,83"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="291,107,374,133"/>
+<area shape="rect" href="target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="288,157,377,184"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="425,56,535,83"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="433,107,527,133"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="442,157,518,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_a036b09158d78c04e7fbe74a5f4c6f7cb_icgraph.png" border="0" usemap="#abuff-setter_8cpp_a036b09158d78c04e7fbe74a5f4c6f7cb_icgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_a036b09158d78c04e7fbe74a5f4c6f7cb_icgraph" id="abuff-setter_8cpp_a036b09158d78c04e7fbe74a5f4c6f7cb_icgraph">
+<area shape="rect" title="オクレ兄さんの継続時間をセットする / Set &quot;tsuyoshi&quot;, notice observable changes" alt="" coords="753,129,849,156"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#a09256f06bfc5fa758d6fee6d4df9082a" title="プレイヤーに魔力消去効果を与える。" alt="" coords="607,53,705,80"/>
+<area shape="rect" href="quaff-execution_8cpp.html#a663518dc63d12a75833fcd01acd2f364" title="薬を飲むコマンドのサブルーチン / Quaff a potion (from the pack or the floor)" alt="" coords="425,115,544,141"/>
+<area shape="rect" href="magic-effects-timeout-reducer_8cpp.html#ab3da74b04d4dd1f34442fc82cde68b60" title="10ゲームターンが進行するごとに魔法効果の残りターンを減らしていく処理 / Handle timeout every 10 game turns" alt="" coords="411,177,559,218"/>
+<area shape="rect" href="bad-status-setter_8cpp.html#a13b10e09c11dd68125a9575aec35003a" title="幻覚の継続時間をセットする / Set &quot;image&quot;, notice observable changes" alt="" coords="615,155,697,181"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#ad33fead4cf76dc5c5ed3c259376d8728" title="RF4_DISPELの処理。魔力消去。 /" alt="" coords="418,53,551,80"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a50f2be9467ee2c4cff879e3d4e9c66b6" title=" " alt="" coords="185,5,363,32"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a6df5fae2d3026a687f76997a8b41d0e7" title=" " alt="" coords="191,56,357,83"/>
+<area shape="rect" href="cmd-quaff_8cpp.html#ab90506a5f63dc9ea978acddd5759c265" title="プレイヤーの飲むコマンド実装" alt="" coords="202,112,346,139"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="226,163,322,189"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="22,112,121,139"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,163,137,189"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1741caf2f971d0ba0e513fbc049482f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1741caf2f971d0ba0e513fbc049482f1">&#9670;&nbsp;</a></span>set_wraith_form()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> set_wraith_form </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a>&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>do_dec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>幽体化の継続時間をセットする / Set "wraith_form", notice observable changes </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>継続時間 </td></tr>
+    <tr><td class="paramname">do_dec</td><td>現在の継続時間より長い値のみ上書きする </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ステータスに影響を及ぼす変化があった場合TRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_a1741caf2f971d0ba0e513fbc049482f1_cgraph.png" border="0" usemap="#abuff-setter_8cpp_a1741caf2f971d0ba0e513fbc049482f1_cgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_a1741caf2f971d0ba0e513fbc049482f1_cgraph" id="abuff-setter_8cpp_a1741caf2f971d0ba0e513fbc049482f1_cgraph">
+<area shape="rect" title="幽体化の継続時間をセットする / Set &quot;wraith_form&quot;, notice observable changes" alt="" coords="5,155,119,182"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="172,79,252,106"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="181,130,243,157"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="600,29,679,55"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="167,231,257,258"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="325,29,375,55"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="309,79,391,106"/>
+<area shape="rect" href="target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="305,130,395,157"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="443,29,552,55"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="450,79,545,106"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="459,130,535,157"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="buff-setter_8cpp_a1741caf2f971d0ba0e513fbc049482f1_icgraph.png" border="0" usemap="#abuff-setter_8cpp_a1741caf2f971d0ba0e513fbc049482f1_icgraph" alt=""/></div>
+<map name="abuff-setter_8cpp_a1741caf2f971d0ba0e513fbc049482f1_icgraph" id="abuff-setter_8cpp_a1741caf2f971d0ba0e513fbc049482f1_icgraph">
+<area shape="rect" title="幽体化の継続時間をセットする / Set &quot;wraith_form&quot;, notice observable changes" alt="" coords="1032,259,1145,285"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#a09256f06bfc5fa758d6fee6d4df9082a" title="プレイヤーに魔力消去効果を与える。" alt="" coords="861,107,959,133"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="855,259,965,285"/>
+<area shape="rect" href="mutation-processor_8cpp.html#aac6e6f0b449a92493ac8a184c221d6b4" title="10ゲームターンが進行するごとに突然変異の発動判定を行う処理 / Handle mutation effects once every 10 game turns" alt="" coords="169,360,360,387"/>
+<area shape="rect" href="magic-effects-timeout-reducer_8cpp.html#ab3da74b04d4dd1f34442fc82cde68b60" title="10ゲームターンが進行するごとに魔法効果の残りターンを減らしていく処理 / Handle timeout every 10 game turns" alt="" coords="836,310,984,351"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="850,376,970,403"/>
+<area shape="rect" href="mspell-dispel_8cpp.html#ad33fead4cf76dc5c5ed3c259376d8728" title="RF4_DISPELの処理。魔力消去。 /" alt="" coords="655,56,788,83"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a50f2be9467ee2c4cff879e3d4e9c66b6" title=" " alt="" coords="419,56,596,83"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a6df5fae2d3026a687f76997a8b41d0e7" title=" " alt="" coords="425,5,590,32"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="683,537,760,564"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="222,233,307,260"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="215,487,314,513"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="447,816,568,843"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,639,121,665"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,411,113,437"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="430,867,585,893"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="203,943,327,969"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="408,1019,607,1045"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,740,117,767"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="458,259,557,285"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="439,917,576,944"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="227,639,302,665"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="463,715,551,741"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="457,309,557,336"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="210,411,319,437"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="443,360,572,387"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="460,461,555,488"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="432,664,583,691"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分09秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

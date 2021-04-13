@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/room/rooms-vault.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f5e46bed6dfb8f23408bb24a4886d7b9.html">room</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">rooms-vault.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="rooms-vault_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structvault__type.html">    7</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structvault__type.html">vault_type</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structvault__type.html#adbbc3df64b254eedde3fb72a8865455a">    8</a></span>&#160;    std::string <a class="code" href="structvault__type.html#adbbc3df64b254eedde3fb72a8865455a">name</a>; <span class="comment">/* Name (offset) */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structvault__type.html#aae32e6b8ce4ca4070e23ca716903bbac">    9</a></span>&#160;    std::string <a class="code" href="structvault__type.html#aae32e6b8ce4ca4070e23ca716903bbac">text</a>; <span class="comment">/* Text (offset) */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structvault__type.html#ab45acdde1a9fce80960886996cc8aad7">   11</a></span>&#160;    <a class="code" href="h-type_8h.html#a5d97e7d4deebdc1efbab92c4d4f8bd1f">ROOM_IDX</a> <a class="code" href="structvault__type.html#ab45acdde1a9fce80960886996cc8aad7">typ</a>{}; <span class="comment">/* Vault type */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structvault__type.html#aa69397482b42812540f395dc9342aa08">   12</a></span>&#160;    <a class="code" href="h-type_8h.html#a22dfcdd3424b7ae6a31bcba8b0989a22">PROB</a> <a class="code" href="structvault__type.html#aa69397482b42812540f395dc9342aa08">rat</a>{}; <span class="comment">/* Vault rating (unused) */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structvault__type.html#af6bb3263b6d27ca427ad6a8331780ef6">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structvault__type.html#af6bb3263b6d27ca427ad6a8331780ef6">hgt</a>{}; <span class="comment">/* Vault height */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structvault__type.html#a06dc690167121286965612561d72c639">   14</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structvault__type.html#a06dc690167121286965612561d72c639">wid</a>{}; <span class="comment">/* Vault width */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="rooms-vault_8h.html#a05ba3eac49b3b0a30079b6a110bab1ab">   15</a></span>&#160;} <a class="code" href="rooms-vault_8h.html#a05ba3eac49b3b0a30079b6a110bab1ab">vault_type</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> std::vector&lt;vault_type&gt; <a class="code" href="rooms-vault_8h.html#af87744bd67ade9057770d0a73d6f9e6f">v_info</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="rooms-vault_8h.html#adf7376ddd0fe80cae671e92729a4700a">   18</a></span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#a624fc7cbe85809bead6398470d80232c">VAULT_IDX</a> <a class="code" href="rooms-vault_8h.html#afbe073e4b3cf33ddf7a8b7d794cd1045">max_v_idx</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structdun__data__type.html">dun_data_type</a> <a class="code" href="structdun__data__type.html">dun_data_type</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="rooms-vault_8h.html#a17ca0646a861d1ad35250031be7c2ac7">build_type7</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structdun__data__type.html">dun_data_type</a> *dd_ptr);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="rooms-vault_8h.html#a47c214974df28e1e344ed5be2be4858a">build_type8</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structdun__data__type.html">dun_data_type</a> *dd_ptr);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="rooms-vault_8h.html#ab4caa119e209544982b77a920b5af760">build_type10</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structdun__data__type.html">dun_data_type</a> *dd_ptr);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="rooms-vault_8h.html#af87b72a44a465c3a0456061e3ac7e47f">build_type17</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structdun__data__type.html">dun_data_type</a> *dd_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a22dfcdd3424b7ae6a31bcba8b0989a22"><div class="ttname"><a href="h-type_8h.html#a22dfcdd3424b7ae6a31bcba8b0989a22">PROB</a></div><div class="ttdeci">s16b PROB</div><div class="ttdoc">確率の重みの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:222</div></div>
+<div class="ttc" id="ah-type_8h_html_a5d97e7d4deebdc1efbab92c4d4f8bd1f"><div class="ttname"><a href="h-type_8h.html#a5d97e7d4deebdc1efbab92c4d4f8bd1f">ROOM_IDX</a></div><div class="ttdeci">byte ROOM_IDX</div><div class="ttdoc">部屋のID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:118</div></div>
+<div class="ttc" id="ah-type_8h_html_a624fc7cbe85809bead6398470d80232c"><div class="ttname"><a href="h-type_8h.html#a624fc7cbe85809bead6398470d80232c">VAULT_IDX</a></div><div class="ttdeci">s16b VAULT_IDX</div><div class="ttdoc">固定部屋のID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:124</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="arooms-vault_8h_html_a05ba3eac49b3b0a30079b6a110bab1ab"><div class="ttname"><a href="rooms-vault_8h.html#a05ba3eac49b3b0a30079b6a110bab1ab">vault_type</a></div><div class="ttdeci">struct vault_type vault_type</div></div>
+<div class="ttc" id="arooms-vault_8h_html_a17ca0646a861d1ad35250031be7c2ac7"><div class="ttname"><a href="rooms-vault_8h.html#a17ca0646a861d1ad35250031be7c2ac7">build_type7</a></div><div class="ttdeci">bool build_type7(player_type *player_ptr, dun_data_type *dd_ptr)</div><div class="ttdoc">タイプ7の部屋…v_info.txtより小型vaultを生成する / Type 7 – simple vaults (see &quot;v_info.txt&quot;)</div><div class="ttdef"><b>Definition:</b> rooms-vault.cpp:608</div></div>
+<div class="ttc" id="arooms-vault_8h_html_a47c214974df28e1e344ed5be2be4858a"><div class="ttname"><a href="rooms-vault_8h.html#a47c214974df28e1e344ed5be2be4858a">build_type8</a></div><div class="ttdeci">bool build_type8(player_type *player_ptr, dun_data_type *dd_ptr)</div><div class="ttdoc">タイプ8の部屋…v_info.txtより大型vaultを生成する / Type 8 – greater vaults (see &quot;v_info.txt&quot;)</div><div class="ttdef"><b>Definition:</b> rooms-vault.cpp:677</div></div>
+<div class="ttc" id="arooms-vault_8h_html_ab4caa119e209544982b77a920b5af760"><div class="ttname"><a href="rooms-vault_8h.html#ab4caa119e209544982b77a920b5af760">build_type10</a></div><div class="ttdeci">bool build_type10(player_type *player_ptr, dun_data_type *dd_ptr)</div><div class="ttdoc">タイプ10の部屋…ランダム生成vault / Type 10 – Random vaults</div><div class="ttdef"><b>Definition:</b> rooms-vault.cpp:1089</div></div>
+<div class="ttc" id="arooms-vault_8h_html_af87744bd67ade9057770d0a73d6f9e6f"><div class="ttname"><a href="rooms-vault_8h.html#af87744bd67ade9057770d0a73d6f9e6f">v_info</a></div><div class="ttdeci">std::vector&lt; vault_type &gt; v_info</div><div class="ttdoc">Vaultの生成処理</div><div class="ttdef"><b>Definition:</b> rooms-vault.cpp:38</div></div>
+<div class="ttc" id="arooms-vault_8h_html_af87b72a44a465c3a0456061e3ac7e47f"><div class="ttname"><a href="rooms-vault_8h.html#af87b72a44a465c3a0456061e3ac7e47f">build_type17</a></div><div class="ttdeci">bool build_type17(player_type *player_ptr, dun_data_type *dd_ptr)</div><div class="ttdoc">タイプ17の部屋…v_info.txtより固定特殊部屋を生成する / Type 17 – fixed special room (see &quot;v_info.txt&quot;)</div><div class="ttdef"><b>Definition:</b> rooms-vault.cpp:1152</div></div>
+<div class="ttc" id="arooms-vault_8h_html_afbe073e4b3cf33ddf7a8b7d794cd1045"><div class="ttname"><a href="rooms-vault_8h.html#afbe073e4b3cf33ddf7a8b7d794cd1045">max_v_idx</a></div><div class="ttdeci">VAULT_IDX max_v_idx</div><div class="ttdef"><b>Definition:</b> rooms-vault.cpp:43</div></div>
+<div class="ttc" id="astructdun__data__type_html"><div class="ttname"><a href="structdun__data__type.html">dun_data_type</a></div><div class="ttdef"><b>Definition:</b> dungeon-data-definition.h:38</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="astructvault__type_html"><div class="ttname"><a href="structvault__type.html">vault_type</a></div><div class="ttdef"><b>Definition:</b> rooms-vault.h:7</div></div>
+<div class="ttc" id="astructvault__type_html_a06dc690167121286965612561d72c639"><div class="ttname"><a href="structvault__type.html#a06dc690167121286965612561d72c639">vault_type::wid</a></div><div class="ttdeci">POSITION wid</div><div class="ttdef"><b>Definition:</b> rooms-vault.h:14</div></div>
+<div class="ttc" id="astructvault__type_html_aa69397482b42812540f395dc9342aa08"><div class="ttname"><a href="structvault__type.html#aa69397482b42812540f395dc9342aa08">vault_type::rat</a></div><div class="ttdeci">PROB rat</div><div class="ttdef"><b>Definition:</b> rooms-vault.h:12</div></div>
+<div class="ttc" id="astructvault__type_html_aae32e6b8ce4ca4070e23ca716903bbac"><div class="ttname"><a href="structvault__type.html#aae32e6b8ce4ca4070e23ca716903bbac">vault_type::text</a></div><div class="ttdeci">std::string text</div><div class="ttdef"><b>Definition:</b> rooms-vault.h:9</div></div>
+<div class="ttc" id="astructvault__type_html_ab45acdde1a9fce80960886996cc8aad7"><div class="ttname"><a href="structvault__type.html#ab45acdde1a9fce80960886996cc8aad7">vault_type::typ</a></div><div class="ttdeci">ROOM_IDX typ</div><div class="ttdef"><b>Definition:</b> rooms-vault.h:11</div></div>
+<div class="ttc" id="astructvault__type_html_adbbc3df64b254eedde3fb72a8865455a"><div class="ttname"><a href="structvault__type.html#adbbc3df64b254eedde3fb72a8865455a">vault_type::name</a></div><div class="ttdeci">std::string name</div><div class="ttdef"><b>Definition:</b> rooms-vault.h:8</div></div>
+<div class="ttc" id="astructvault__type_html_af6bb3263b6d27ca427ad6a8331780ef6"><div class="ttname"><a href="structvault__type.html#af6bb3263b6d27ca427ad6a8331780ef6">vault_type::hgt</a></div><div class="ttdeci">POSITION hgt</div><div class="ttdef"><b>Definition:</b> rooms-vault.h:13</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

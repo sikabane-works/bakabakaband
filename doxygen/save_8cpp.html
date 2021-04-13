@@ -1,0 +1,563 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/save/save.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2787ab3e88de134edafc81d1ef96b4ab.html">save</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">save.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="save_8h_source.html">save/save.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-compressor_8h_source.html">core/object-compressor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quest_8h_source.html">dungeon/quest.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-town_8h_source.html">floor/floor-town.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="wild_8h_source.html">floor/wild.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="text-display-options_8h_source.html">game-option/text-display-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="files-util_8h_source.html">io/files-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="report_8h_source.html">io/report.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="uid-checker_8h_source.html">io/uid-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-compaction_8h_source.html">monster/monster-compaction.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status_8h_source.html">monster/monster-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind_8h_source.html">object/object-kind.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-writer_8h_source.html">save/floor-writer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="info-writer_8h_source.html">save/info-writer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-writer_8h_source.html">save/item-writer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-writer_8h_source.html">save/monster-writer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-writer_8h_source.html">save/player-writer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="save-util_8h_source.html">save/save-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="store-owners_8h_source.html">store/store-owners.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="store-util_8h_source.html">store/store-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-version_8h_source.html">system/angband-version.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="artifact-type-definition_8h_source.html">system/artifact-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-files_8h_source.html">util/angband-files.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+save.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="save_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2save_2save_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2save_2save_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2save_2save_8cpp">
+<area shape="rect" title=" " alt="" coords="1397,5,1615,47"/>
+<area shape="rect" href="save_8h.html" title=" " alt="" coords="1753,191,1843,218"/>
+<area shape="rect" href="object-compressor_8h.html" title=" " alt="" coords="3549,191,3719,218"/>
+<area shape="rect" href="quest_8h.html" title=" " alt="" coords="3016,102,3135,129"/>
+<area shape="rect" href="floor-town_8h.html" title=" " alt="" coords="573,102,689,129"/>
+<area shape="rect" href="wild_8h.html" title=" " alt="" coords="3651,102,3734,129"/>
+<area shape="rect" href="text-display-options_8h.html" title=" " alt="" coords="5,184,169,225"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="714,95,842,136"/>
+<area shape="rect" href="files-util_8h.html" title=" " alt="" coords="334,281,425,307"/>
+<area shape="rect" href="report_8h.html" title=" " alt="" coords="281,191,361,218"/>
+<area shape="rect" href="uid-checker_8h.html" title=" " alt="" coords="846,191,961,218"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="1954,95,2103,136"/>
+<area shape="rect" href="monster-compaction_8h.html" title=" " alt="" coords="346,102,549,129"/>
+<area shape="rect" href="monster-status_8h.html" title=" " alt="" coords="2229,102,2399,129"/>
+<area shape="rect" href="object-kind_8h.html" title=" " alt="" coords="2672,191,2807,218"/>
+<area shape="rect" href="floor-writer_8h.html" title=" " alt="" coords="3462,102,3585,129"/>
+<area shape="rect" href="info-writer_8h.html" title=" " alt="" coords="1760,102,1879,129"/>
+<area shape="rect" href="item-writer_8h.html" title=" " alt="" coords="917,102,1039,129"/>
+<area shape="rect" href="monster-writer_8h.html" title=" " alt="" coords="1064,102,1209,129"/>
+<area shape="rect" href="player-writer_8h.html" title=" " alt="" coords="1234,102,1367,129"/>
+<area shape="rect" href="save-util_8h.html" title=" " alt="" coords="1180,281,1291,307"/>
+<area shape="rect" href="store-owners_8h.html" title=" " alt="" coords="1544,102,1684,129"/>
+<area shape="rect" href="store-util_8h.html" title=" " alt="" coords="1613,191,1729,218"/>
+<area shape="rect" href="angband-version_8h.html" title=" " alt="" coords="3779,102,3953,129"/>
+<area shape="rect" href="artifact-type-definition_8h.html" title=" " alt="" coords="2511,184,2648,225"/>
+<area shape="rect" href="angband-files_8h.html" title=" " alt="" coords="1282,191,1413,218"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="1367,281,1533,307"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="512,191,609,218"/>
+<area shape="rect" href="floor-save_8h.html" title=" " alt="" coords="1710,281,1825,307"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1532,370,1661,397"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="3116,184,3261,225"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="2973,273,3106,315"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="3130,273,3274,315"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="3299,273,3455,315"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="3479,273,3618,315"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="2636,281,2747,307"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="2976,370,3103,397"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="2197,184,2343,225"/>
+<area shape="rect" title=" " alt="" coords="2425,281,2481,307"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="2249,363,2409,404"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="2190,273,2350,315"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="2001,273,2166,315"/>
+<area shape="rect" title=" " alt="" coords="2505,281,2560,307"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="2771,273,2897,315"/>
+<area shape="rect" title=" " alt="" coords="1487,191,1538,218"/>
+<area shape="rect" href="h-type_8h.html" title="ゲーム中に用いる変数型定義 / Basic &quot;types&quot;." alt="" coords="3845,191,3961,218"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a0187035e4766ac965c70227d8ce43e3f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f">wr_savefile_new</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="save_8h.html#a747112ae24ac7d263aacca7298fbfeb6">save_type</a> type)</td></tr>
+<tr class="memdesc:a0187035e4766ac965c70227d8ce43e3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">セーブデータの書き込み / Actually write a save-file  <a href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f">[詳解]</a><br /></td></tr>
+<tr class="separator:a0187035e4766ac965c70227d8ce43e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b588f8e7135a7d75e809775bbdf4f55"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55">save_player_aux</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, char *name, <a class="el" href="save_8h.html#a747112ae24ac7d263aacca7298fbfeb6">save_type</a> type)</td></tr>
+<tr class="memdesc:a0b588f8e7135a7d75e809775bbdf4f55"><td class="mdescLeft">&#160;</td><td class="mdescRight">セーブデータ書き込みのサブルーチン / Medium level player saver  <a href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55">[詳解]</a><br /></td></tr>
+<tr class="separator:a0b588f8e7135a7d75e809775bbdf4f55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3821fe79e79e495fe816c6c52f2a68c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0">save_player</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="save_8h.html#a747112ae24ac7d263aacca7298fbfeb6">save_type</a> type)</td></tr>
+<tr class="memdesc:a3821fe79e79e495fe816c6c52f2a68c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile  <a href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0">[詳解]</a><br /></td></tr>
+<tr class="separator:a3821fe79e79e495fe816c6c52f2a68c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a3821fe79e79e495fe816c6c52f2a68c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3821fe79e79e495fe816c6c52f2a68c0">&#9670;&nbsp;</a></span>save_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> save_player </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="save_8h.html#a747112ae24ac7d263aacca7298fbfeb6">save_type</a>&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>成功すればtrue </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="save_8cpp_a3821fe79e79e495fe816c6c52f2a68c0_cgraph.png" border="0" usemap="#asave_8cpp_a3821fe79e79e495fe816c6c52f2a68c0_cgraph" alt=""/></div>
+<map name="asave_8cpp_a3821fe79e79e495fe816c6c52f2a68c0_cgraph" id="asave_8cpp_a3821fe79e79e495fe816c6c52f2a68c0_cgraph">
+<area shape="rect" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="5,537,96,564"/>
+<area shape="rect" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="341,563,395,589"/>
+<area shape="rect" href="angband-files_8cpp.html#a15f41fb1a5a8fef0a03f789aabbb6b3b" title=" " alt="" coords="169,512,238,539"/>
+<area shape="rect" href="monster-status_8cpp.html#a1ebc28b4930a40482c2973912ab8484b" title="モンスターの時限ステータスリストを初期化する / Initialize monster process" alt="" coords="162,613,245,640"/>
+<area shape="rect" href="uid-checker_8cpp.html#a59c71c10d8af1998dee4791396cb9d1d" title="ファイルのドロップパーミッションチェック / Hack – drop permissions" alt="" coords="480,56,600,83"/>
+<area shape="rect" href="uid-checker_8cpp.html#a10816f3dfe2970e4b4c89e5362304f83" title="ファイルのグラブパーミッションチェック / Hack – grab permissions" alt="" coords="480,5,600,32"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="144,385,263,412"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="146,664,261,691"/>
+<area shape="rect" href="world_8cpp.html#a722be27807c99a7258058b2baabee95e" title="実ゲームプレイ時間を更新する" alt="" coords="145,715,262,741"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="671,411,757,437"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="827,347,890,373"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="655,1791,773,1817"/>
+<area shape="rect" href="monster-status_8cpp.html#af5149aae69ef6e936f6c691c691cd95a" title="モンスターの時限ステータスリストを追加する" alt="" coords="325,1284,411,1311"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="693,44,735,71"/>
+<area shape="rect" href="z-util_8cpp.html#add3ff125e6340e76d3c307ebaf757660" title=" " alt="" coords="835,44,882,71"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="312,360,424,387"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="313,461,423,488"/>
+<area shape="rect" href="files-util_8cpp.html#a1a24b90a72b9344cd7790c0a0d2dc794" title="ファイル位置に書き込む /" alt="" coords="321,233,415,260"/>
+<area shape="rect" href="angband-files_8cpp.html#a5a186f4266676163ec63ff8413334fb1" title=" " alt="" coords="505,411,575,437"/>
+<area shape="rect" href="angband-files_8cpp.html#a4c4108d1fb8217d15fd233d2787ff91d" title=" " alt="" coords="505,360,575,387"/>
+<area shape="rect" href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="311,1233,425,1260"/>
+<area shape="rect" href="files-util_8cpp.html#abfccb2761e2d8bb78c0d4e277fd58a71" title="ファイル位置をシーク /" alt="" coords="492,107,588,133"/>
+<area shape="rect" href="angband-files_8cpp.html#a1cec7f01bbb0339e030de218e231fcd4" title=" " alt="" coords="681,120,747,147"/>
+<area shape="rect" href="angband-files_8cpp.html#a4596de25a04220941f707a9407dc6495" title=" " alt="" coords="509,259,571,285"/>
+<area shape="rect" href="angband-files_8cpp.html#a0aaa636968ab7a5666dc2d7d779f82ca" title=" " alt="" coords="507,309,573,336"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="673,271,755,297"/>
+<area shape="rect" href="monster-compaction_8cpp.html#a45418160543ab052bb17c17d724acb6b" title="モンスター情報配列を圧縮する / Compact and Reorder the monster list" alt="" coords="473,1765,607,1792"/>
+<area shape="rect" href="object-compressor_8cpp.html#a1ede50288749e158368e8fefdd4d960b" title="グローバルオブジェクト配列から優先度の低いものを削除し、データを圧縮する。 / Compact and Reorder the object list." alt="" coords="479,1259,601,1285"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="661,1563,767,1589"/>
+<area shape="rect" href="display-messages_8cpp.html#ac9305ebe30df4e0d85dd7fad0573e2e5" title="過去のゲームメッセージを返す。 / Recall the &quot;text&quot; of a saved message @params age メッセージの世代" alt="" coords="491,1563,589,1589"/>
+<area shape="rect" href="z-rand_8cpp.html#ac0eb0bdd9e321a354aaee69cdee5ba5e" title=" " alt="" coords="487,1411,593,1437"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="1095,1233,1161,1260"/>
+<area shape="rect" href="floor-writer_8cpp.html#aa3fb42702fe78c01f6faf53decb93421" title="現在フロアの書き込み / Write the current dungeon (new method) @player_ptr プレーヤーへの参照ポインタ" alt="" coords="495,752,585,779"/>
+<area shape="rect" href="save-util_8cpp.html#a0a9fc9ad1a0b5696b8d33200e93f6a59" title="符号あり16ビットをファイルに書き込む" alt="" coords="823,1132,894,1159"/>
+<area shape="rect" href="save-util_8cpp.html#a3029d75be518c5d591b64029c472db4e" title="符号なし16ビットをファイルに書き込む" alt="" coords="960,1183,1031,1209"/>
+<area shape="rect" href="save-util_8cpp.html#a3f4d20bc88690cc8e3bd61de4ab96ae7" title="符号あり32ビットをファイルに書き込む" alt="" coords="679,752,749,779"/>
+<area shape="rect" href="save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="823,803,894,829"/>
+<area shape="rect" href="info-writer_8cpp.html#a768eabe5d86e379001625f80fccea879" title="ダミー情報スキップを書き込む / Hack – Write the &quot;ghost&quot; info" alt="" coords="677,1613,751,1640"/>
+<area shape="rect" href="save-util_8cpp.html#a272917124cf4c8dc5760c16caed8db80" title="文字列をファイルに書き込む" alt="" coords="821,1461,896,1488"/>
+<area shape="rect" href="item-writer_8cpp.html#a0e9875ae663d151074da35b385a44ba6" title="アイテムオブジェクトを書き込む / Write an &quot;item&quot; record" alt="" coords="681,1411,747,1437"/>
+<area shape="rect" href="monster-writer_8cpp.html#ae06978fb101c6a405ccb812e978455d4" title="モンスターの思い出を書き込む / Write a &quot;lore&quot; record" alt="" coords="683,651,745,677"/>
+<area shape="rect" href="info-writer_8cpp.html#a3f329f5f6a097063507fb929e5a8398e" title="ゲームオプション情報を書き込む / Write the &quot;options&quot;" alt="" coords="672,904,756,931"/>
+<area shape="rect" href="item-writer_8cpp.html#a8c2a599ff2e78171cf796d5cf25acdd4" title="セーブデータにアイテムの鑑定情報を書き込む / Write an &quot;perception&quot; record" alt="" coords="944,1613,1047,1640"/>
+<area shape="rect" href="player-writer_8cpp.html#a07a3bb3bc775adafe1624b62387523c2" title="セーブデータにプレーヤー情報を書き込む / Write some &quot;player&quot; info" alt="" coords="501,1208,579,1235"/>
+<area shape="rect" href="info-writer_8cpp.html#ac53804dca62307ef302f2d195ec1106c" title="セーブデータに乱数情報を書き込む / Write RNG state" alt="" coords="661,1005,767,1032"/>
+<area shape="rect" href="info-writer_8cpp.html#ad1574040ad7c2fb0cdb8d5d18442baed" title="セーブデータに店舗情報を書き込む / Write a &quot;store&quot; record" alt="" coords="505,1028,575,1055"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="save_8cpp_a3821fe79e79e495fe816c6c52f2a68c0_icgraph.png" border="0" usemap="#asave_8cpp_a3821fe79e79e495fe816c6c52f2a68c0_icgraph" alt=""/></div>
+<map name="asave_8cpp_a3821fe79e79e495fe816c6c52f2a68c0_icgraph" id="asave_8cpp_a3821fe79e79e495fe816c6c52f2a68c0_icgraph">
+<area shape="rect" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="1016,257,1107,283"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="457,155,549,182"/>
+<area shape="rect" href="cmd-save_8cpp.html#a5f3c9a464d1f438f0a2860a68b31da96" title="セーブするコマンドのメインルーチン Save the game" alt="" coords="825,535,965,562"/>
+<area shape="rect" href="exit-panic_8cpp.html#a0f279185d9f6e778065f70c47157b5c2" title="異常発生時のゲーム緊急終了処理" alt="" coords="835,586,955,613"/>
+<area shape="rect" href="signal-handlers_8cpp.html#a1d7db3880dfb5e325d7f9388f84a90aa" title="OSからのシグナルを受けて強制終了する / Handle signal – abort, kill, etc" alt="" coords="243,55,381,82"/>
+<area shape="rect" href="input-key-requester_8cpp.html#a05bf5c41a8377acfa4b6b2487e55323d" title=" " alt="" coords="830,637,959,663"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="433,206,573,233"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="821,89,968,131"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="861,307,929,334"/>
+<area shape="rect" href="signal-handlers_8cpp.html#acf6a4a9a8cb29ca8bd1c8e232041aecd" title="OSからのシグナルを受けて中断、終了する / Handle signals – simple (interrupt and quit)" alt="" coords="239,139,385,166"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="269,190,355,217"/>
+<area shape="rect" href="signal-handlers_8cpp.html#a3719a1754f6e317bbb96770b973d453c" title="OSからのシグナルハンドルを初期化する / Prepare to handle the relevant signals" alt="" coords="104,139,191,166"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,165,56,191"/>
+<area shape="rect" href="activation-teleport_8cpp.html#ab5384bdf29abc3ad27487147449600af" title=" " alt="" coords="640,510,755,537"/>
+<area shape="rect" href="game-closer_8cpp.html#a87d2bc43dd7c1537d1b537a9f776a73b" title="ゲームクローズ時、プレイヤーが死亡しているかのチェックを行い死亡していないならば、確認キー入力とスコア表示、現フロアの初期化を行う。" alt="" coords="649,257,745,283"/>
+<area shape="rect" href="cmd-autopick_8cpp.html#a8dc56811ab6efa5123eec7f83eb4bb26" title=" " alt="" coords="621,713,773,739"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="246,662,378,689"/>
+<area shape="rect" href="cmd-move_8cpp.html#a9d5fbe57b7b1e9058947333e00dee815" title="階段を使って階層を降りる処理 / Go down one level" alt="" coords="440,561,567,587"/>
+<area shape="rect" href="cmd-move_8cpp.html#a16005f2ab8f785b6fb42030270681913" title="階段を使って階層を昇る処理 / Go up one level" alt="" coords="448,611,559,638"/>
+<area shape="rect" href="world-movement-processor_8cpp.html#a597a48dd4ed8e2e51c1a114cb9b125c1" title="10ゲームターンが進行するごとにフロア・リセット/現実変容の残り時間カウントダウンと発動を処理する。 / Handle involuntary movement once every 10 game t..." alt="" coords="630,814,765,841"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="451,814,556,841"/>
+<area shape="rect" href="world-movement-processor_8cpp.html#a9cf11d071cabe6008f72bbb6eed498d5" title="10ゲームターンが進行するごとに帰還の残り時間カウントダウンと発動を処理する。 / Handle involuntary movement once every 10 game turns" alt="" coords="644,865,751,891"/>
+<area shape="rect" href="trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="665,358,730,385"/>
+<area shape="rect" href="pattern-walk_8cpp.html#a745540435a2b0b0a48557231ce3b5cef" title="パターン終点到達時のテレポート処理を行う" alt="" coords="641,915,753,942"/>
+<area shape="rect" href="spells-world_8cpp.html#a7204ab233ffa573046416517da467469" title="プレイヤー及びモンスターをレベルテレポートさせる / Teleport the player one level up or down (random when legal)" alt="" coords="649,409,746,435"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a98b79010bb1266a7ff2f32920ca5f5a2" title="任意のダンジョン及び階層に飛ぶ / Go to any level" alt="" coords="622,459,773,486"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="443,307,563,334"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#ab33f054c7b623777d0e9417255966aea" title="標準オプションを変更するコマンドのメインルーチン / Set or unset various options." alt="" coords="445,713,562,739"/>
+<area shape="rect" href="player-move_8cpp.html#ac637efbeba2a2fca5538ee13812b97bf" title="移動に伴うプレイヤーのステータス変化処理" alt="" coords="437,358,569,385"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0b588f8e7135a7d75e809775bbdf4f55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b588f8e7135a7d75e809775bbdf4f55">&#9670;&nbsp;</a></span>save_player_aux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> save_player_aux </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="save_8h.html#a747112ae24ac7d263aacca7298fbfeb6">save_type</a>&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>セーブデータ書き込みのサブルーチン / Medium level player saver </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>成功すればtrue</dd></dl>
+<p>Angband 2.8.0 will use "fd" instead of "fff" if possible </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="save_8cpp_a0b588f8e7135a7d75e809775bbdf4f55_cgraph.png" border="0" usemap="#asave_8cpp_a0b588f8e7135a7d75e809775bbdf4f55_cgraph" alt=""/></div>
+<map name="asave_8cpp_a0b588f8e7135a7d75e809775bbdf4f55_cgraph" id="asave_8cpp_a0b588f8e7135a7d75e809775bbdf4f55_cgraph">
+<area shape="rect" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="5,303,124,329"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="725,1696,837,1723"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="175,5,284,32"/>
+<area shape="rect" href="files-util_8cpp.html#a1a24b90a72b9344cd7790c0a0d2dc794" title="ファイル位置に書き込む /" alt="" coords="182,303,277,329"/>
+<area shape="rect" href="angband-files_8cpp.html#a5a186f4266676163ec63ff8413334fb1" title=" " alt="" coords="366,100,437,127"/>
+<area shape="rect" href="angband-files_8cpp.html#a4c4108d1fb8217d15fd233d2787ff91d" title=" " alt="" coords="366,151,437,177"/>
+<area shape="rect" href="uid-checker_8cpp.html#a59c71c10d8af1998dee4791396cb9d1d" title="ファイルのドロップパーミッションチェック / Hack – drop permissions" alt="" coords="341,455,461,481"/>
+<area shape="rect" href="uid-checker_8cpp.html#a10816f3dfe2970e4b4c89e5362304f83" title="ファイルのグラブパーミッションチェック / Hack – grab permissions" alt="" coords="341,505,461,532"/>
+<area shape="rect" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="202,63,257,89"/>
+<area shape="rect" href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="172,1265,287,1292"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="553,100,640,127"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="750,176,813,203"/>
+<area shape="rect" href="files-util_8cpp.html#abfccb2761e2d8bb78c0d4e277fd58a71" title="ファイル位置をシーク /" alt="" coords="353,353,449,380"/>
+<area shape="rect" href="angband-files_8cpp.html#a1cec7f01bbb0339e030de218e231fcd4" title=" " alt="" coords="563,404,630,431"/>
+<area shape="rect" href="angband-files_8cpp.html#a4596de25a04220941f707a9407dc6495" title=" " alt="" coords="370,303,433,329"/>
+<area shape="rect" href="angband-files_8cpp.html#a0aaa636968ab7a5666dc2d7d779f82ca" title=" " alt="" coords="368,201,435,228"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="361,252,442,279"/>
+<area shape="rect" href="angband-files_8cpp.html#a8c0152dc880ff428bd0f4c52f479baf5" title=" " alt="" coords="565,353,629,380"/>
+<area shape="rect" href="angband-files_8cpp.html#a2bfbb437b11fcd69bf7a407bdfef886c" title=" " alt="" coords="563,303,630,329"/>
+<area shape="rect" href="z-util_8cpp.html#a7f7463689689266c2c7dd1c0b170c7a3" title=" " alt="" coords="570,151,623,177"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="571,201,622,228"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="575,480,618,507"/>
+<area shape="rect" href="monster-compaction_8cpp.html#a45418160543ab052bb17c17d724acb6b" title="モンスター情報配列を圧縮する / Compact and Reorder the monster list" alt="" coords="335,1848,468,1875"/>
+<area shape="rect" href="object-compressor_8cpp.html#a1ede50288749e158368e8fefdd4d960b" title="グローバルオブジェクト配列から優先度の低いものを削除し、データを圧縮する。 / Compact and Reorder the object list." alt="" coords="341,1911,462,1937"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="543,2127,650,2153"/>
+<area shape="rect" href="display-messages_8cpp.html#ac9305ebe30df4e0d85dd7fad0573e2e5" title="過去のゲームメッセージを返す。 / Recall the &quot;text&quot; of a saved message @params age メッセージの世代" alt="" coords="353,2101,450,2128"/>
+<area shape="rect" href="z-rand_8cpp.html#ac0eb0bdd9e321a354aaee69cdee5ba5e" title=" " alt="" coords="349,1961,454,1988"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="1036,1088,1103,1115"/>
+<area shape="rect" href="floor-writer_8cpp.html#aa3fb42702fe78c01f6faf53decb93421" title="現在フロアの書き込み / Write the current dungeon (new method) @player_ptr プレーヤーへの参照ポインタ" alt="" coords="356,1417,447,1444"/>
+<area shape="rect" href="save-util_8cpp.html#a0a9fc9ad1a0b5696b8d33200e93f6a59" title="符号あり16ビットをファイルに書き込む" alt="" coords="746,961,817,988"/>
+<area shape="rect" href="save-util_8cpp.html#a3029d75be518c5d591b64029c472db4e" title="符号なし16ビットをファイルに書き込む" alt="" coords="901,1037,972,1064"/>
+<area shape="rect" href="save-util_8cpp.html#a3f4d20bc88690cc8e3bd61de4ab96ae7" title="符号あり32ビットをファイルに書き込む" alt="" coords="561,1417,632,1444"/>
+<area shape="rect" href="save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="746,1341,817,1368"/>
+<area shape="rect" href="info-writer_8cpp.html#a768eabe5d86e379001625f80fccea879" title="ダミー情報スキップを書き込む / Hack – Write the &quot;ghost&quot; info" alt="" coords="559,556,634,583"/>
+<area shape="rect" href="save-util_8cpp.html#a272917124cf4c8dc5760c16caed8db80" title="文字列をファイルに書き込む" alt="" coords="744,708,819,735"/>
+<area shape="rect" href="item-writer_8cpp.html#a0e9875ae663d151074da35b385a44ba6" title="アイテムオブジェクトを書き込む / Write an &quot;item&quot; record" alt="" coords="563,759,630,785"/>
+<area shape="rect" href="monster-writer_8cpp.html#ae06978fb101c6a405ccb812e978455d4" title="モンスターの思い出を書き込む / Write a &quot;lore&quot; record" alt="" coords="565,860,628,887"/>
+<area shape="rect" href="info-writer_8cpp.html#a3f329f5f6a097063507fb929e5a8398e" title="ゲームオプション情報を書き込む / Write the &quot;options&quot;" alt="" coords="555,1215,639,1241"/>
+<area shape="rect" href="item-writer_8cpp.html#a8c2a599ff2e78171cf796d5cf25acdd4" title="セーブデータにアイテムの鑑定情報を書き込む / Write an &quot;perception&quot; record" alt="" coords="885,632,988,659"/>
+<area shape="rect" href="player-writer_8cpp.html#a07a3bb3bc775adafe1624b62387523c2" title="セーブデータにプレーヤー情報を書き込む / Write some &quot;player&quot; info" alt="" coords="363,1164,440,1191"/>
+<area shape="rect" href="info-writer_8cpp.html#ac53804dca62307ef302f2d195ec1106c" title="セーブデータに乱数情報を書き込む / Write RNG state" alt="" coords="543,1265,650,1292"/>
+<area shape="rect" href="info-writer_8cpp.html#ad1574040ad7c2fb0cdb8d5d18442baed" title="セーブデータに店舗情報を書き込む / Write a &quot;store&quot; record" alt="" coords="366,1316,437,1343"/>
+<area shape="rect" href="monster-compaction_8cpp.html#a2983ca487cde209ae5191771e8859669" title="モンスター情報を配列内移動する / Move an object from index i1 to index i2 in the object list" alt="" coords="516,1975,677,2001"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="753,1924,810,1951"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="529,1772,664,1799"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="541,1721,653,1748"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="545,1873,649,1900"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="537,1823,656,1849"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="557,2025,636,2052"/>
+<area shape="rect" href="object-compressor_8cpp.html#aedb7c42f527370f5da7f6c158dd62902" title="グローバルオブジェクト配列に対し指定範囲のオブジェクトを整理してIDの若い順に寄せる / Move an object from index i1 to index i2 in the object l..." alt="" coords="522,2076,671,2103"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="save_8cpp_a0b588f8e7135a7d75e809775bbdf4f55_icgraph.png" border="0" usemap="#asave_8cpp_a0b588f8e7135a7d75e809775bbdf4f55_icgraph" alt=""/></div>
+<map name="asave_8cpp_a0b588f8e7135a7d75e809775bbdf4f55_icgraph" id="asave_8cpp_a0b588f8e7135a7d75e809775bbdf4f55_icgraph">
+<area shape="rect" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="921,350,1040,377"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="783,350,873,377"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="224,198,316,225"/>
+<area shape="rect" href="cmd-save_8cpp.html#a5f3c9a464d1f438f0a2860a68b31da96" title="セーブするコマンドのメインルーチン Save the game" alt="" coords="591,426,731,453"/>
+<area shape="rect" href="exit-panic_8cpp.html#a0f279185d9f6e778065f70c47157b5c2" title="異常発生時のゲーム緊急終了処理" alt="" coords="601,274,721,301"/>
+<area shape="rect" href="signal-handlers_8cpp.html#a1d7db3880dfb5e325d7f9388f84a90aa" title="OSからのシグナルを受けて強制終了する / Handle signal – abort, kill, etc" alt="" coords="593,325,730,351"/>
+<area shape="rect" href="input-key-requester_8cpp.html#a05bf5c41a8377acfa4b6b2487e55323d" title=" " alt="" coords="597,375,726,402"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="200,730,340,757"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="588,5,735,47"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="627,603,695,630"/>
+<area shape="rect" href="signal-handlers_8cpp.html#acf6a4a9a8cb29ca8bd1c8e232041aecd" title="OSからのシグナルを受けて中断、終了する / Handle signals – simple (interrupt and quit)" alt="" coords="5,198,152,225"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="36,401,121,427"/>
+<area shape="rect" href="activation-teleport_8cpp.html#ab5384bdf29abc3ad27487147449600af" title=" " alt="" coords="407,274,521,301"/>
+<area shape="rect" href="game-closer_8cpp.html#a87d2bc43dd7c1537d1b537a9f776a73b" title="ゲームクローズ時、プレイヤーが死亡しているかのチェックを行い死亡していないならば、確認キー入力とスコア表示、現フロアの初期化を行う。" alt="" coords="416,325,512,351"/>
+<area shape="rect" href="cmd-autopick_8cpp.html#a8dc56811ab6efa5123eec7f83eb4bb26" title=" " alt="" coords="388,527,540,554"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="204,451,336,478"/>
+<area shape="rect" href="cmd-move_8cpp.html#a9d5fbe57b7b1e9058947333e00dee815" title="階段を使って階層を降りる処理 / Go down one level" alt="" coords="401,426,527,453"/>
+<area shape="rect" href="cmd-move_8cpp.html#a16005f2ab8f785b6fb42030270681913" title="階段を使って階層を昇る処理 / Go up one level" alt="" coords="409,477,519,503"/>
+<area shape="rect" href="world-movement-processor_8cpp.html#a597a48dd4ed8e2e51c1a114cb9b125c1" title="10ゲームターンが進行するごとにフロア・リセット/現実変容の残り時間カウントダウンと発動を処理する。 / Handle involuntary movement once every 10 game t..." alt="" coords="397,578,531,605"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="217,629,323,655"/>
+<area shape="rect" href="world-movement-processor_8cpp.html#a9cf11d071cabe6008f72bbb6eed498d5" title="10ゲームターンが進行するごとに帰還の残り時間カウントダウンと発動を処理する。 / Handle involuntary movement once every 10 game turns" alt="" coords="411,629,517,655"/>
+<area shape="rect" href="trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="431,730,497,757"/>
+<area shape="rect" href="pattern-walk_8cpp.html#a745540435a2b0b0a48557231ce3b5cef" title="パターン終点到達時のテレポート処理を行う" alt="" coords="408,122,520,149"/>
+<area shape="rect" href="spells-world_8cpp.html#a7204ab233ffa573046416517da467469" title="プレイヤー及びモンスターをレベルテレポートさせる / Teleport the player one level up or down (random when legal)" alt="" coords="415,173,513,199"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a98b79010bb1266a7ff2f32920ca5f5a2" title="任意のダンジョン及び階層に飛ぶ / Go to any level" alt="" coords="389,223,539,250"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0187035e4766ac965c70227d8ce43e3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0187035e4766ac965c70227d8ce43e3f">&#9670;&nbsp;</a></span>wr_savefile_new()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> wr_savefile_new </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="save_8h.html#a747112ae24ac7d263aacca7298fbfeb6">save_type</a>&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>セーブデータの書き込み / Actually write a save-file </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>成功すればtrue </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="save_8cpp_a0187035e4766ac965c70227d8ce43e3f_cgraph.png" border="0" usemap="#asave_8cpp_a0187035e4766ac965c70227d8ce43e3f_cgraph" alt=""/></div>
+<map name="asave_8cpp_a0187035e4766ac965c70227d8ce43e3f_cgraph" id="asave_8cpp_a0187035e4766ac965c70227d8ce43e3f_cgraph">
+<area shape="rect" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="5,1424,120,1451"/>
+<area shape="rect" href="monster-compaction_8cpp.html#a45418160543ab052bb17c17d724acb6b" title="モンスター情報配列を圧縮する / Compact and Reorder the monster list" alt="" coords="168,487,301,513"/>
+<area shape="rect" href="object-compressor_8cpp.html#a1ede50288749e158368e8fefdd4d960b" title="グローバルオブジェクト配列から優先度の低いものを削除し、データを圧縮する。 / Compact and Reorder the object list." alt="" coords="369,183,491,209"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="377,664,483,691"/>
+<area shape="rect" href="display-messages_8cpp.html#ac9305ebe30df4e0d85dd7fad0573e2e5" title="過去のゲームメッセージを返す。 / Recall the &quot;text&quot; of a saved message @params age メッセージの世代" alt="" coords="186,715,283,741"/>
+<area shape="rect" href="z-rand_8cpp.html#ac0eb0bdd9e321a354aaee69cdee5ba5e" title=" " alt="" coords="182,765,287,792"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="1155,1677,1221,1704"/>
+<area shape="rect" href="floor-writer_8cpp.html#aa3fb42702fe78c01f6faf53decb93421" title="現在フロアの書き込み / Write the current dungeon (new method) @player_ptr プレーヤーへの参照ポインタ" alt="" coords="189,1297,280,1324"/>
+<area shape="rect" href="save-util_8cpp.html#a0a9fc9ad1a0b5696b8d33200e93f6a59" title="符号あり16ビットをファイルに書き込む" alt="" coords="841,1424,912,1451"/>
+<area shape="rect" href="save-util_8cpp.html#a3029d75be518c5d591b64029c472db4e" title="符号なし16ビットをファイルに書き込む" alt="" coords="1020,1424,1091,1451"/>
+<area shape="rect" href="save-util_8cpp.html#a3f4d20bc88690cc8e3bd61de4ab96ae7" title="符号あり32ビットをファイルに書き込む" alt="" coords="619,1728,689,1755"/>
+<area shape="rect" href="save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="841,1677,912,1704"/>
+<area shape="rect" href="item-writer_8cpp.html#a0e9875ae663d151074da35b385a44ba6" title="アイテムオブジェクトを書き込む / Write an &quot;item&quot; record" alt="" coords="621,1272,687,1299"/>
+<area shape="rect" href="save-util_8cpp.html#a272917124cf4c8dc5760c16caed8db80" title="文字列をファイルに書き込む" alt="" coords="839,2285,914,2312"/>
+<area shape="rect" href="info-writer_8cpp.html#a768eabe5d86e379001625f80fccea879" title="ダミー情報スキップを書き込む / Hack – Write the &quot;ghost&quot; info" alt="" coords="617,2387,691,2413"/>
+<area shape="rect" href="monster-writer_8cpp.html#ae06978fb101c6a405ccb812e978455d4" title="モンスターの思い出を書き込む / Write a &quot;lore&quot; record" alt="" coords="623,1880,685,1907"/>
+<area shape="rect" href="info-writer_8cpp.html#a3f329f5f6a097063507fb929e5a8398e" title="ゲームオプション情報を書き込む / Write the &quot;options&quot;" alt="" coords="612,1120,696,1147"/>
+<area shape="rect" href="item-writer_8cpp.html#a8c2a599ff2e78171cf796d5cf25acdd4" title="セーブデータにアイテムの鑑定情報を書き込む / Write an &quot;perception&quot; record" alt="" coords="1004,2424,1107,2451"/>
+<area shape="rect" href="player-writer_8cpp.html#a07a3bb3bc775adafe1624b62387523c2" title="セーブデータにプレーヤー情報を書き込む / Write some &quot;player&quot; info" alt="" coords="196,2032,273,2059"/>
+<area shape="rect" href="info-writer_8cpp.html#ac53804dca62307ef302f2d195ec1106c" title="セーブデータに乱数情報を書き込む / Write RNG state" alt="" coords="601,1627,707,1653"/>
+<area shape="rect" href="info-writer_8cpp.html#ad1574040ad7c2fb0cdb8d5d18442baed" title="セーブデータに店舗情報を書き込む / Write a &quot;store&quot; record" alt="" coords="395,1576,465,1603"/>
+<area shape="rect" href="monster-compaction_8cpp.html#a2983ca487cde209ae5191771e8859669" title="モンスター情報を配列内移動する / Move an object from index i1 to index i2 in the object list" alt="" coords="349,461,511,488"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="625,563,683,589"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="363,360,497,387"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="374,411,486,437"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="378,512,482,539"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="371,563,489,589"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="615,259,693,285"/>
+<area shape="rect" href="monster-status_8cpp.html#a8b634a687e3b64547e012114b21ed69c" title="モンスターの時限ステータスを取得する" alt="" coords="601,512,707,539"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ad491b75a9a598cb361c671e23737d1fb" title=" " alt="" coords="607,461,701,488"/>
+<area shape="rect" href="floor-object_8cpp.html#af338285652093066df1fda01f9b4fed2" title="オブジェクトを削除する / Delete a dungeon object" alt="" coords="593,309,715,336"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="841,335,912,361"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="559,411,749,437"/>
+<area shape="rect" href="hook-checker_8cpp.html#ac4cc92b3d4f6e42f4c5a1e729382ee6e" title=" " alt="" coords="797,157,956,184"/>
+<area shape="rect" href="object-compressor_8cpp.html#aedb7c42f527370f5da7f6c158dd62902" title="グローバルオブジェクト配列に対し指定範囲のオブジェクトを整理してIDの若い順に寄せる / Move an object from index i1 to index i2 in the object l..." alt="" coords="579,157,729,184"/>
+<area shape="rect" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="619,208,689,235"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="577,5,731,32"/>
+<area shape="rect" href="hook-checker_8cpp.html#a41a37b8108a515afc4462557128c9a92" title=" " alt="" coords="601,56,707,83"/>
+<area shape="rect" href="z-rand_8cpp.html#a4403596e156c5ffec773135ab93d2e11" title=" " alt="" coords="377,715,483,741"/>
+<area shape="rect" href="z-rand_8cpp.html#afa8a5c942caf3469b950201edd1bbafd" title=" " alt="" coords="387,765,473,792"/>
+<area shape="rect" href="save-util_8cpp.html#a320fb5495ecbaf494a3ecfee37176734" title="1バイトをファイルに書き込む / These functions place information into a savefile a byte at a time" alt="" coords="1269,1677,1327,1704"/>
+<area shape="rect" href="monster-lite_8cpp.html#a75ee5b3b7870c752f4e98b25ba59eaaf" title="画面切り替え等でモンスターの灯りを消去する" alt="" coords="377,1171,483,1197"/>
+<area shape="rect" href="floor-events_8cpp.html#aad0bd5ca092d96aec22ced472c90e083" title=" " alt="" coords="391,1221,469,1248"/>
+<area shape="rect" href="floor-events_8cpp.html#abacf8f89e9bdb853927c5f55377cca6c" title=" " alt="" coords="387,1272,473,1299"/>
+<area shape="rect" href="floor-save_8cpp.html#a236b93956898407a6e8110c8f4c16bfe" title="保存フロアIDから参照ポインタを得る / Get a pointer for an item of the saved_floors array." alt="" coords="391,1323,469,1349"/>
+<area shape="rect" href="floor-loader_8cpp.html#a7c391e0a9128864de0d78e70acf21bbd" title="一時保存フロア情報を読み込む / Attempt to load the temporarily saved&#45;floor data" alt="" coords="391,1069,469,1096"/>
+<area shape="rect" href="floor-writer_8cpp.html#a159128f33a5ee6ede05b1b1759af3088" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="391,1120,469,1147"/>
+<area shape="rect" href="floor-writer_8cpp.html#a0ca3769fc9944271112a5fe1e063665e" title="保存フロアの書き込み / Actually write a saved floor data using effectively compressed format." alt="" coords="377,1019,483,1045"/>
+<area shape="rect" href="info-writer_8cpp.html#a6324c5a98dece95cf74f96b3e05a75c1" title="クイック・スタート情報を書き込む / Save quick start data" alt="" coords="371,1981,489,2008"/>
+<area shape="rect" href="player-writer_8cpp.html#a8d8613c33d56f6f88c0843c9d245e603" title="セーブデータに領域情報を書き込む / Write player realms" alt="" coords="1015,2209,1096,2236"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="save_8cpp_a0187035e4766ac965c70227d8ce43e3f_icgraph.png" border="0" usemap="#asave_8cpp_a0187035e4766ac965c70227d8ce43e3f_icgraph" alt=""/></div>
+<map name="asave_8cpp_a0187035e4766ac965c70227d8ce43e3f_icgraph" id="asave_8cpp_a0187035e4766ac965c70227d8ce43e3f_icgraph">
+<area shape="rect" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="645,167,760,194"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="479,167,597,194"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="340,167,431,194"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="5,146,97,173"/>
+<area shape="rect" href="cmd-save_8cpp.html#a5f3c9a464d1f438f0a2860a68b31da96" title="セーブするコマンドのメインルーチン Save the game" alt="" coords="149,41,289,67"/>
+<area shape="rect" href="exit-panic_8cpp.html#a0f279185d9f6e778065f70c47157b5c2" title="異常発生時のゲーム緊急終了処理" alt="" coords="159,91,279,118"/>
+<area shape="rect" href="signal-handlers_8cpp.html#a1d7db3880dfb5e325d7f9388f84a90aa" title="OSからのシグナルを受けて強制終了する / Handle signal – abort, kill, etc" alt="" coords="150,142,287,169"/>
+<area shape="rect" href="input-key-requester_8cpp.html#a05bf5c41a8377acfa4b6b2487e55323d" title=" " alt="" coords="154,193,283,219"/>
+<area shape="rect" href="game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="149,243,289,270"/>
+<area shape="rect" href="game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="145,295,292,336"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="185,361,253,387"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時56分24秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

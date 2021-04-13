@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/status/buff-setter.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3b5a16ca9d597ec3bd11cf60fc07b716.html">status</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">buff-setter.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="buff-setter_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">void</span> <a class="code" href="buff-setter_8h.html#af16307a374a02b0f958aace61b82956c">reset_tim_flags</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="buff-setter_8h.html#adba19dfd913dcf5feb9f6e0b09c9326d">set_fast</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <span class="keywordtype">bool</span> do_dec);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="buff-setter_8h.html#a2e5079cffccadd1f26832a8cad9379d5">set_shield</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <span class="keywordtype">bool</span> do_dec);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="buff-setter_8h.html#aa0477bb92baf3702a88dbd2c86e52afe">set_magicdef</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <span class="keywordtype">bool</span> do_dec);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="buff-setter_8h.html#a0f33ce24a83a1573ead35a6ce0913b85">set_blessed</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <span class="keywordtype">bool</span> do_dec);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="buff-setter_8h.html#ac03004c39e900ef70456ab128e303508">set_hero</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <span class="keywordtype">bool</span> do_dec);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="buff-setter_8h.html#a93ff8d516629853e66fcca03f1cb4205">set_mimic</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <a class="code" href="h-type_8h.html#af040d628a6cf11f05b0a9a38bf63a089">MIMIC_RACE_IDX</a> p, <span class="keywordtype">bool</span> do_dec);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="buff-setter_8h.html#ab1b21b8906921e646ee19865602c7ca6">set_shero</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <span class="keywordtype">bool</span> do_dec);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="buff-setter_8h.html#a1741caf2f971d0ba0e513fbc049482f1">set_wraith_form</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <span class="keywordtype">bool</span> do_dec);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="buff-setter_8h.html#a036b09158d78c04e7fbe74a5f4c6f7cb">set_tsuyoshi</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> v, <span class="keywordtype">bool</span> do_dec);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="abuff-setter_8h_html_a036b09158d78c04e7fbe74a5f4c6f7cb"><div class="ttname"><a href="buff-setter_8h.html#a036b09158d78c04e7fbe74a5f4c6f7cb">set_tsuyoshi</a></div><div class="ttdeci">bool set_tsuyoshi(player_type *creature_ptr, TIME_EFFECT v, bool do_dec)</div><div class="ttdoc">オクレ兄さんの継続時間をセットする / Set &quot;tsuyoshi&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> buff-setter.cpp:474</div></div>
+<div class="ttc" id="abuff-setter_8h_html_a0f33ce24a83a1573ead35a6ce0913b85"><div class="ttname"><a href="buff-setter_8h.html#a0f33ce24a83a1573ead35a6ce0913b85">set_blessed</a></div><div class="ttdeci">bool set_blessed(player_type *creature_ptr, TIME_EFFECT v, bool do_dec)</div><div class="ttdoc">祝福の継続時間をセットする / Set &quot;blessed&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> buff-setter.cpp:233</div></div>
+<div class="ttc" id="abuff-setter_8h_html_a1741caf2f971d0ba0e513fbc049482f1"><div class="ttname"><a href="buff-setter_8h.html#a1741caf2f971d0ba0e513fbc049482f1">set_wraith_form</a></div><div class="ttdeci">bool set_wraith_form(player_type *creature_ptr, TIME_EFFECT v, bool do_dec)</div><div class="ttdoc">幽体化の継続時間をセットする / Set &quot;wraith_form&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> buff-setter.cpp:418</div></div>
+<div class="ttc" id="abuff-setter_8h_html_a2e5079cffccadd1f26832a8cad9379d5"><div class="ttname"><a href="buff-setter_8h.html#a2e5079cffccadd1f26832a8cad9379d5">set_shield</a></div><div class="ttdeci">bool set_shield(player_type *creature_ptr, TIME_EFFECT v, bool do_dec)</div><div class="ttdoc">肌石化の継続時間をセットする / Set &quot;shield&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> buff-setter.cpp:149</div></div>
+<div class="ttc" id="abuff-setter_8h_html_a93ff8d516629853e66fcca03f1cb4205"><div class="ttname"><a href="buff-setter_8h.html#a93ff8d516629853e66fcca03f1cb4205">set_mimic</a></div><div class="ttdeci">bool set_mimic(player_type *creature_ptr, TIME_EFFECT v, MIMIC_RACE_IDX p, bool do_dec)</div><div class="ttdoc">変身効果の継続時間と変身先をセットする / Set &quot;tim_mimic&quot;, and &quot;mimic_form&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> buff-setter.cpp:320</div></div>
+<div class="ttc" id="abuff-setter_8h_html_aa0477bb92baf3702a88dbd2c86e52afe"><div class="ttname"><a href="buff-setter_8h.html#aa0477bb92baf3702a88dbd2c86e52afe">set_magicdef</a></div><div class="ttdeci">bool set_magicdef(player_type *creature_ptr, TIME_EFFECT v, bool do_dec)</div><div class="ttdoc">魔法の鎧の継続時間をセットする / Set &quot;magicdef&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> buff-setter.cpp:191</div></div>
+<div class="ttc" id="abuff-setter_8h_html_ab1b21b8906921e646ee19865602c7ca6"><div class="ttname"><a href="buff-setter_8h.html#ab1b21b8906921e646ee19865602c7ca6">set_shero</a></div><div class="ttdeci">bool set_shero(player_type *creature_ptr, TIME_EFFECT v, bool do_dec)</div><div class="ttdoc">狂戦士化の継続時間をセットする / Set &quot;shero&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> buff-setter.cpp:370</div></div>
+<div class="ttc" id="abuff-setter_8h_html_ac03004c39e900ef70456ab128e303508"><div class="ttname"><a href="buff-setter_8h.html#ac03004c39e900ef70456ab128e303508">set_hero</a></div><div class="ttdeci">bool set_hero(player_type *creature_ptr, TIME_EFFECT v, bool do_dec)</div><div class="ttdoc">士気高揚の継続時間をセットする / Set &quot;hero&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> buff-setter.cpp:275</div></div>
+<div class="ttc" id="abuff-setter_8h_html_adba19dfd913dcf5feb9f6e0b09c9326d"><div class="ttname"><a href="buff-setter_8h.html#adba19dfd913dcf5feb9f6e0b09c9326d">set_fast</a></div><div class="ttdeci">bool set_fast(player_type *creature_ptr, TIME_EFFECT v, bool do_dec)</div><div class="ttdoc">加速の継続時間をセットする / Set &quot;fast&quot;, notice observable changes</div><div class="ttdef"><b>Definition:</b> buff-setter.cpp:107</div></div>
+<div class="ttc" id="abuff-setter_8h_html_af16307a374a02b0f958aace61b82956c"><div class="ttname"><a href="buff-setter_8h.html#af16307a374a02b0f958aace61b82956c">reset_tim_flags</a></div><div class="ttdeci">void reset_tim_flags(player_type *creature_ptr)</div><div class="ttdoc">プレイヤーの全ての時限効果をリセットする。 / reset timed flags</div><div class="ttdef"><b>Definition:</b> buff-setter.cpp:24</div></div>
+<div class="ttc" id="ah-type_8h_html_aba20657d0771ac9353e9e43605c12a94"><div class="ttname"><a href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a></div><div class="ttdeci">s16b TIME_EFFECT</div><div class="ttdoc">ゲーム中の時限期間の型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:162</div></div>
+<div class="ttc" id="ah-type_8h_html_af040d628a6cf11f05b0a9a38bf63a089"><div class="ttname"><a href="h-type_8h.html#af040d628a6cf11f05b0a9a38bf63a089">MIMIC_RACE_IDX</a></div><div class="ttdeci">s16b MIMIC_RACE_IDX</div><div class="ttdoc">ゲーム中のプレイヤー変身種族ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:103</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

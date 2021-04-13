@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/wizard/spoiler-table.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e09032bb770e6e0f4355f890c3180c4a.html">wizard</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">spoiler-table.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="spoiler-table_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tr-types_8h.html">object-enchant/tr-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tval-types_8h.html">object/tval-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="spoiler-table_8h.html#aa0ab69124107dfd7f3df5f60f79e74eb">    7</a></span>&#160;<span class="preprocessor">#define MAX_GROUPER_ITEM 53</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="spoiler-table_8h.html#ae6b87bc77899cba55afd7d8a7800fe8d">    8</a></span>&#160;<span class="preprocessor">#define MAX_GROUPER_ARTIFACT 21</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="spoiler-table_8h.html#a62eda6a6438369e9c0129819a5909379">    9</a></span>&#160;<span class="preprocessor">#define MAX_STAT_FLAGS_DESCRIPTION 6</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="spoiler-table_8h.html#a043e2ad7fab1a6505b21f85ad565e4bb">   10</a></span>&#160;<span class="preprocessor">#define MAX_PVAL_FLAGS_DESCRIPTION 7</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="spoiler-table_8h.html#a3d2206de718e30e76f404220c331628a">   11</a></span>&#160;<span class="preprocessor">#define MAX_SLAY_FLAGS_DESCRIPTION 18</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="spoiler-table_8h.html#a781ceeafd13f87f149f2d917d3239861">   12</a></span>&#160;<span class="preprocessor">#define MAX_BRAND_FLAGS_DESCRIPTION 10</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="spoiler-table_8h.html#a96f2c76a719a61b700758802fe3b4c31">   13</a></span>&#160;<span class="preprocessor">#define MAX_RESISTANCE_FLAGS_DESCRIPTION 18</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="spoiler-table_8h.html#ad578b6643abb2edb5360dd62a8079bbf">   14</a></span>&#160;<span class="preprocessor">#define MAX_IMMUNITY_FLAGS_DESCRIPTION 4</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="spoiler-table_8h.html#ac42e1594c7c5972e8339c68508bd1c6e">   15</a></span>&#160;<span class="preprocessor">#define MAX_SUSTAINER_FLAGS_DESCRIPTION 6</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="spoiler-table_8h.html#a4fc66808b89327839d00f1c0f50da82e">   16</a></span>&#160;<span class="preprocessor">#define MAX_MISC2_FLAGS_DESCRIPTION 4</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="spoiler-table_8h.html#a448ffc803291482799ac70b9e237c46b">   17</a></span>&#160;<span class="preprocessor">#define MAX_MISC3_FLAGS_DESCRIPTION 34</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/* A tval grouper */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structgrouper.html">   20</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structgrouper.html">grouper</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structgrouper.html#aff82187e2eb19773399af2b6a569ecfe">   21</a></span>&#160;    <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a> <a class="code" href="structgrouper.html#aff82187e2eb19773399af2b6a569ecfe">tval</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structgrouper.html#ac7cfea194943a3a30d19d4df5bfc8d38">   22</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structgrouper.html#ac7cfea194943a3a30d19d4df5bfc8d38">name</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="spoiler-table_8h.html#af5d4c5b3cb38f32bb6670fd4ce07096b">   23</a></span>&#160;} <a class="code" href="spoiler-table_8h.html#af5d4c5b3cb38f32bb6670fd4ce07096b">grouper</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * Pair together a constant flag with a textual description.</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * Note that it sometimes more efficient to actually make an array</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * of textual names, where entry &#39;N&#39; is assumed to be paired with</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * the flag whose value is &quot;1UL &lt;&lt; N&quot;, but that requires hard-coding.</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structflag__desc.html">   31</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structflag__desc.html">flag_desc</a> {</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structflag__desc.html#a737c2b008ee6868f56bbae5b1d037309">   32</a></span>&#160;    <a class="code" href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a> <a class="code" href="structflag__desc.html#a737c2b008ee6868f56bbae5b1d037309">flag</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structflag__desc.html#acc53c300f403dc25a7f63d0803ff1741">   33</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structflag__desc.html#acc53c300f403dc25a7f63d0803ff1741">desc</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="spoiler-table_8h.html#a881369400b91dec6e0dc8c77067ec819">   34</a></span>&#160;} <a class="code" href="spoiler-table_8h.html#a881369400b91dec6e0dc8c77067ec819">flag_desc</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">extern</span> <a class="code" href="structgrouper.html">grouper</a> <a class="code" href="spoiler-table_8h.html#aad2d5e28d606451955d83da1cffcbf23">group_item</a>[<a class="code" href="spoiler-table_8h.html#aa0ab69124107dfd7f3df5f60f79e74eb">MAX_GROUPER_ITEM</a>];</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">extern</span> <a class="code" href="structgrouper.html">grouper</a> <a class="code" href="spoiler-table_8h.html#a0219df0ef479d26483c43116136637e8">group_artifact</a>[<a class="code" href="spoiler-table_8h.html#ae6b87bc77899cba55afd7d8a7800fe8d">MAX_GROUPER_ARTIFACT</a>];</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">extern</span> <a class="code" href="structflag__desc.html">flag_desc</a> <a class="code" href="spoiler-table_8h.html#aedc88ca9d2a4ba19e5bdd915de3cd519">stat_flags_desc</a>[<a class="code" href="spoiler-table_8h.html#a62eda6a6438369e9c0129819a5909379">MAX_STAT_FLAGS_DESCRIPTION</a>];</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">extern</span> <a class="code" href="structflag__desc.html">flag_desc</a> <a class="code" href="spoiler-table_8h.html#a5ee724c901ae634d8c4f5316aca38f63">pval_flags1_desc</a>[<a class="code" href="spoiler-table_8h.html#a043e2ad7fab1a6505b21f85ad565e4bb">MAX_PVAL_FLAGS_DESCRIPTION</a>];</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">extern</span> <a class="code" href="structflag__desc.html">flag_desc</a> <a class="code" href="spoiler-table_8h.html#a3c44bf944a487ecd269d933906fbf448">slay_flags_desc</a>[<a class="code" href="spoiler-table_8h.html#a3d2206de718e30e76f404220c331628a">MAX_SLAY_FLAGS_DESCRIPTION</a>];</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">extern</span> <a class="code" href="structflag__desc.html">flag_desc</a> <a class="code" href="spoiler-table_8h.html#ae04f6c49988bbf36f6b1284c87e7eae1">brand_flags_desc</a>[<a class="code" href="spoiler-table_8h.html#a781ceeafd13f87f149f2d917d3239861">MAX_BRAND_FLAGS_DESCRIPTION</a>];</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structflag__desc.html">flag_desc</a> <a class="code" href="spoiler-table_8h.html#a4550e650fa472271a815c7b365e55ba9">resist_flags_desc</a>[<a class="code" href="spoiler-table_8h.html#a96f2c76a719a61b700758802fe3b4c31">MAX_RESISTANCE_FLAGS_DESCRIPTION</a>];</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structflag__desc.html">flag_desc</a> <a class="code" href="spoiler-table_8h.html#aa87a84b01ec6c60c7b63617d7c60c10e">immune_flags_desc</a>[<a class="code" href="spoiler-table_8h.html#ad578b6643abb2edb5360dd62a8079bbf">MAX_IMMUNITY_FLAGS_DESCRIPTION</a>];</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structflag__desc.html">flag_desc</a> <a class="code" href="spoiler-table_8h.html#a999d939c8cc33b3396793e4f01efd628">sustain_flags_desc</a>[<a class="code" href="spoiler-table_8h.html#ac42e1594c7c5972e8339c68508bd1c6e">MAX_SUSTAINER_FLAGS_DESCRIPTION</a>];</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structflag__desc.html">flag_desc</a> <a class="code" href="spoiler-table_8h.html#a11fd01ef51298778840717264cbdd601">misc_flags2_desc</a>[<a class="code" href="spoiler-table_8h.html#a4fc66808b89327839d00f1c0f50da82e">MAX_MISC2_FLAGS_DESCRIPTION</a>];</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structflag__desc.html">flag_desc</a> <a class="code" href="spoiler-table_8h.html#a35937b988542ee767749118edc4da251">misc_flags3_desc</a>[<a class="code" href="spoiler-table_8h.html#a448ffc803291482799ac70b9e237c46b">MAX_MISC3_FLAGS_DESCRIPTION</a>];</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_a0219df0ef479d26483c43116136637e8"><div class="ttname"><a href="spoiler-table_8h.html#a0219df0ef479d26483c43116136637e8">group_artifact</a></div><div class="ttdeci">grouper group_artifact[MAX_GROUPER_ARTIFACT]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:31</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_a043e2ad7fab1a6505b21f85ad565e4bb"><div class="ttname"><a href="spoiler-table_8h.html#a043e2ad7fab1a6505b21f85ad565e4bb">MAX_PVAL_FLAGS_DESCRIPTION</a></div><div class="ttdeci">#define MAX_PVAL_FLAGS_DESCRIPTION</div><div class="ttdef"><b>Definition:</b> spoiler-table.h:10</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_a11fd01ef51298778840717264cbdd601"><div class="ttname"><a href="spoiler-table_8h.html#a11fd01ef51298778840717264cbdd601">misc_flags2_desc</a></div><div class="ttdeci">const flag_desc misc_flags2_desc[MAX_MISC2_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:141</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_a35937b988542ee767749118edc4da251"><div class="ttname"><a href="spoiler-table_8h.html#a35937b988542ee767749118edc4da251">misc_flags3_desc</a></div><div class="ttdeci">const flag_desc misc_flags3_desc[MAX_MISC3_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:149</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_a3c44bf944a487ecd269d933906fbf448"><div class="ttname"><a href="spoiler-table_8h.html#a3c44bf944a487ecd269d933906fbf448">slay_flags_desc</a></div><div class="ttdeci">flag_desc slay_flags_desc[MAX_SLAY_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:66</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_a3d2206de718e30e76f404220c331628a"><div class="ttname"><a href="spoiler-table_8h.html#a3d2206de718e30e76f404220c331628a">MAX_SLAY_FLAGS_DESCRIPTION</a></div><div class="ttdeci">#define MAX_SLAY_FLAGS_DESCRIPTION</div><div class="ttdef"><b>Definition:</b> spoiler-table.h:11</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_a448ffc803291482799ac70b9e237c46b"><div class="ttname"><a href="spoiler-table_8h.html#a448ffc803291482799ac70b9e237c46b">MAX_MISC3_FLAGS_DESCRIPTION</a></div><div class="ttdeci">#define MAX_MISC3_FLAGS_DESCRIPTION</div><div class="ttdef"><b>Definition:</b> spoiler-table.h:17</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_a4550e650fa472271a815c7b365e55ba9"><div class="ttname"><a href="spoiler-table_8h.html#a4550e650fa472271a815c7b365e55ba9">resist_flags_desc</a></div><div class="ttdeci">const flag_desc resist_flags_desc[MAX_RESISTANCE_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:101</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_a4fc66808b89327839d00f1c0f50da82e"><div class="ttname"><a href="spoiler-table_8h.html#a4fc66808b89327839d00f1c0f50da82e">MAX_MISC2_FLAGS_DESCRIPTION</a></div><div class="ttdeci">#define MAX_MISC2_FLAGS_DESCRIPTION</div><div class="ttdef"><b>Definition:</b> spoiler-table.h:16</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_a5ee724c901ae634d8c4f5316aca38f63"><div class="ttname"><a href="spoiler-table_8h.html#a5ee724c901ae634d8c4f5316aca38f63">pval_flags1_desc</a></div><div class="ttdeci">flag_desc pval_flags1_desc[MAX_PVAL_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:62</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_a62eda6a6438369e9c0129819a5909379"><div class="ttname"><a href="spoiler-table_8h.html#a62eda6a6438369e9c0129819a5909379">MAX_STAT_FLAGS_DESCRIPTION</a></div><div class="ttdeci">#define MAX_STAT_FLAGS_DESCRIPTION</div><div class="ttdef"><b>Definition:</b> spoiler-table.h:9</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_a781ceeafd13f87f149f2d917d3239861"><div class="ttname"><a href="spoiler-table_8h.html#a781ceeafd13f87f149f2d917d3239861">MAX_BRAND_FLAGS_DESCRIPTION</a></div><div class="ttdeci">#define MAX_BRAND_FLAGS_DESCRIPTION</div><div class="ttdef"><b>Definition:</b> spoiler-table.h:12</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_a881369400b91dec6e0dc8c77067ec819"><div class="ttname"><a href="spoiler-table_8h.html#a881369400b91dec6e0dc8c77067ec819">flag_desc</a></div><div class="ttdeci">struct flag_desc flag_desc</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_a96f2c76a719a61b700758802fe3b4c31"><div class="ttname"><a href="spoiler-table_8h.html#a96f2c76a719a61b700758802fe3b4c31">MAX_RESISTANCE_FLAGS_DESCRIPTION</a></div><div class="ttdeci">#define MAX_RESISTANCE_FLAGS_DESCRIPTION</div><div class="ttdef"><b>Definition:</b> spoiler-table.h:13</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_a999d939c8cc33b3396793e4f01efd628"><div class="ttname"><a href="spoiler-table_8h.html#a999d939c8cc33b3396793e4f01efd628">sustain_flags_desc</a></div><div class="ttdeci">const flag_desc sustain_flags_desc[MAX_SUSTAINER_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:131</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_aa0ab69124107dfd7f3df5f60f79e74eb"><div class="ttname"><a href="spoiler-table_8h.html#aa0ab69124107dfd7f3df5f60f79e74eb">MAX_GROUPER_ITEM</a></div><div class="ttdeci">#define MAX_GROUPER_ITEM</div><div class="ttdef"><b>Definition:</b> spoiler-table.h:7</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_aa87a84b01ec6c60c7b63617d7c60c10e"><div class="ttname"><a href="spoiler-table_8h.html#aa87a84b01ec6c60c7b63617d7c60c10e">immune_flags_desc</a></div><div class="ttdeci">const flag_desc immune_flags_desc[MAX_IMMUNITY_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:123</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_aad2d5e28d606451955d83da1cffcbf23"><div class="ttname"><a href="spoiler-table_8h.html#aad2d5e28d606451955d83da1cffcbf23">group_item</a></div><div class="ttdeci">grouper group_item[MAX_GROUPER_ITEM]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:4</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_ac42e1594c7c5972e8339c68508bd1c6e"><div class="ttname"><a href="spoiler-table_8h.html#ac42e1594c7c5972e8339c68508bd1c6e">MAX_SUSTAINER_FLAGS_DESCRIPTION</a></div><div class="ttdeci">#define MAX_SUSTAINER_FLAGS_DESCRIPTION</div><div class="ttdef"><b>Definition:</b> spoiler-table.h:15</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_ad578b6643abb2edb5360dd62a8079bbf"><div class="ttname"><a href="spoiler-table_8h.html#ad578b6643abb2edb5360dd62a8079bbf">MAX_IMMUNITY_FLAGS_DESCRIPTION</a></div><div class="ttdeci">#define MAX_IMMUNITY_FLAGS_DESCRIPTION</div><div class="ttdef"><b>Definition:</b> spoiler-table.h:14</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_ae04f6c49988bbf36f6b1284c87e7eae1"><div class="ttname"><a href="spoiler-table_8h.html#ae04f6c49988bbf36f6b1284c87e7eae1">brand_flags_desc</a></div><div class="ttdeci">flag_desc brand_flags_desc[MAX_BRAND_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:88</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_ae6b87bc77899cba55afd7d8a7800fe8d"><div class="ttname"><a href="spoiler-table_8h.html#ae6b87bc77899cba55afd7d8a7800fe8d">MAX_GROUPER_ARTIFACT</a></div><div class="ttdeci">#define MAX_GROUPER_ARTIFACT</div><div class="ttdef"><b>Definition:</b> spoiler-table.h:8</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_aedc88ca9d2a4ba19e5bdd915de3cd519"><div class="ttname"><a href="spoiler-table_8h.html#aedc88ca9d2a4ba19e5bdd915de3cd519">stat_flags_desc</a></div><div class="ttdeci">flag_desc stat_flags_desc[MAX_STAT_FLAGS_DESCRIPTION]</div><div class="ttdef"><b>Definition:</b> spoiler-table.cpp:58</div></div>
+<div class="ttc" id="aspoiler-table_8h_html_af5d4c5b3cb38f32bb6670fd4ce07096b"><div class="ttname"><a href="spoiler-table_8h.html#af5d4c5b3cb38f32bb6670fd4ce07096b">grouper</a></div><div class="ttdeci">struct grouper grouper</div></div>
+<div class="ttc" id="astructflag__desc_html"><div class="ttname"><a href="structflag__desc.html">flag_desc</a></div><div class="ttdef"><b>Definition:</b> spoiler-table.h:31</div></div>
+<div class="ttc" id="astructflag__desc_html_a737c2b008ee6868f56bbae5b1d037309"><div class="ttname"><a href="structflag__desc.html#a737c2b008ee6868f56bbae5b1d037309">flag_desc::flag</a></div><div class="ttdeci">tr_type flag</div><div class="ttdef"><b>Definition:</b> spoiler-table.h:32</div></div>
+<div class="ttc" id="astructflag__desc_html_acc53c300f403dc25a7f63d0803ff1741"><div class="ttname"><a href="structflag__desc.html#acc53c300f403dc25a7f63d0803ff1741">flag_desc::desc</a></div><div class="ttdeci">concptr desc</div><div class="ttdef"><b>Definition:</b> spoiler-table.h:33</div></div>
+<div class="ttc" id="astructgrouper_html"><div class="ttname"><a href="structgrouper.html">grouper</a></div><div class="ttdef"><b>Definition:</b> spoiler-table.h:20</div></div>
+<div class="ttc" id="astructgrouper_html_ac7cfea194943a3a30d19d4df5bfc8d38"><div class="ttname"><a href="structgrouper.html#ac7cfea194943a3a30d19d4df5bfc8d38">grouper::name</a></div><div class="ttdeci">concptr name</div><div class="ttdef"><b>Definition:</b> spoiler-table.h:22</div></div>
+<div class="ttc" id="astructgrouper_html_aff82187e2eb19773399af2b6a569ecfe"><div class="ttname"><a href="structgrouper.html#aff82187e2eb19773399af2b6a569ecfe">grouper::tval</a></div><div class="ttdeci">tval_type tval</div><div class="ttdef"><b>Definition:</b> spoiler-table.h:21</div></div>
+<div class="ttc" id="atr-types_8h_html"><div class="ttname"><a href="tr-types_8h.html">tr-types.h</a></div></div>
+<div class="ttc" id="atr-types_8h_html_a269ab2317e91ea335ab19483ab09d4fd"><div class="ttname"><a href="tr-types_8h.html#a269ab2317e91ea335ab19483ab09d4fd">tr_type</a></div><div class="ttdeci">tr_type</div><div class="ttdef"><b>Definition:</b> tr-types.h:6</div></div>
+<div class="ttc" id="atval-types_8h_html"><div class="ttname"><a href="tval-types_8h.html">tval-types.h</a></div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a></div><div class="ttdeci">tval_type</div><div class="ttdef"><b>Definition:</b> tval-types.h:17</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/world/world-turn-processor.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6826d79532171ff2338799cfd298b875.html">world</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">world-turn-processor.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="world-turn-processor_8h_source.html">world/world-turn-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-building_8h_source.html">cmd-building/cmd-building.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-save_8h_source.html">cmd-io/cmd-save.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="disturbance_8h_source.html">core/disturbance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hp-mp-processor_8h_source.html">core/hp-mp-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hp-mp-regenerator_8h_source.html">core/hp-mp-regenerator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="magic-effects-timeout-reducer_8h_source.html">core/magic-effects-timeout-reducer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon_8h_source.html">dungeon/dungeon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-events_8h_source.html">floor/floor-events.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-mode-changer_8h_source.html">floor/floor-mode-changer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="wild_8h_source.html">floor/wild.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-options_8h_source.html">game-option/birth-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cheat-options_8h_source.html">game-option/cheat-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-options_8h_source.html">game-option/special-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="text-display-options_8h_source.html">game-option/text-display-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-curse_8h_source.html">inventory/inventory-curse.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="recharge-processor_8h_source.html">inventory/recharge-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="write-diary_8h_source.html">io/write-diary.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="arena_8h_source.html">market/arena.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bounty_8h_source.html">market/bounty.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-generator_8h_source.html">monster-floor/monster-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-summon_8h_source.html">monster-floor/monster-summon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-describer_8h_source.html">monster/monster-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status_8h_source.html">monster/monster-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mutation-processor_8h_source.html">mutation/mutation-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lite-processor_8h_source.html">object/lite-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="simple-perception_8h_source.html">perception/simple-perception.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="digestion-processor_8h_source.html">player/digestion-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="store-util_8h_source.html">store/store-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="store_8h_source.html">store/store.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="main-window-row-column_8h_source.html">window/main-window-row-column.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world-movement-processor_8h_source.html">world/world-movement-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+world-turn-processor.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="world-turn-processor_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2world_2world-turn-processor_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2world_2world-turn-processor_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2world_2world-turn-processor_8cpp">
+<area shape="rect" title=" " alt="" coords="2689,5,2877,61"/>
+<area shape="rect" href="world-turn-processor_8h.html" title=" " alt="" coords="4045,206,4229,233"/>
+<area shape="rect" href="cmd-building_8h.html" title=" " alt="" coords="3421,117,3603,143"/>
+<area shape="rect" href="cmd-save_8h.html" title=" " alt="" coords="3211,206,3341,233"/>
+<area shape="rect" href="disturbance_8h.html" title=" " alt="" coords="3366,206,3495,233"/>
+<area shape="rect" href="hp-mp-processor_8h.html" title=" " alt="" coords="3519,206,3678,233"/>
+<area shape="rect" href="hp-mp-regenerator_8h.html" title=" " alt="" coords="3702,206,3869,233"/>
+<area shape="rect" href="magic-effects-timeout-reducer_8h.html" title=" " alt="" coords="3893,199,4021,240"/>
+<area shape="rect" href="dungeon_8h.html" title=" " alt="" coords="278,117,413,143"/>
+<area shape="rect" href="floor-events_8h.html" title=" " alt="" coords="3074,117,3201,143"/>
+<area shape="rect" href="floor-mode-changer_8h.html" title=" " alt="" coords="3225,117,3396,143"/>
+<area shape="rect" href="wild_8h.html" title=" " alt="" coords="3628,117,3711,143"/>
+<area shape="rect" href="birth-options_8h.html" title=" " alt="" coords="3735,117,3913,143"/>
+<area shape="rect" href="cheat-options_8h.html" title=" " alt="" coords="3937,117,4124,143"/>
+<area shape="rect" href="special-options_8h.html" title=" " alt="" coords="4361,109,4500,151"/>
+<area shape="rect" href="text-display-options_8h.html" title=" " alt="" coords="4889,109,5053,151"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="2015,117,2094,143"/>
+<area shape="rect" href="inventory-curse_8h.html" title=" " alt="" coords="5244,109,5372,151"/>
+<area shape="rect" href="recharge-processor_8h.html" title=" " alt="" coords="5397,109,5523,151"/>
+<area shape="rect" href="write-diary_8h.html" title=" " alt="" coords="1155,117,1261,143"/>
+<area shape="rect" href="arena_8h.html" title=" " alt="" coords="1291,117,1400,143"/>
+<area shape="rect" href="bounty_8h.html" title=" " alt="" coords="1427,117,1543,143"/>
+<area shape="rect" href="monster-generator_8h.html" title=" " alt="" coords="1569,109,1717,151"/>
+<area shape="rect" href="monster-summon_8h.html" title=" " alt="" coords="1741,109,1889,151"/>
+<area shape="rect" href="monster-describer_8h.html" title=" " alt="" coords="855,206,1043,233"/>
+<area shape="rect" href="monster-status_8h.html" title=" " alt="" coords="520,206,691,233"/>
+<area shape="rect" href="mutation-processor_8h.html" title=" " alt="" coords="1373,206,1571,233"/>
+<area shape="rect" href="lite-processor_8h.html" title=" " alt="" coords="1595,206,1746,233"/>
+<area shape="rect" href="simple-perception_8h.html" title=" " alt="" coords="2103,206,2302,233"/>
+<area shape="rect" href="digestion-processor_8h.html" title=" " alt="" coords="2326,206,2511,233"/>
+<area shape="rect" href="store-util_8h.html" title=" " alt="" coords="715,206,831,233"/>
+<area shape="rect" href="store_8h.html" title=" " alt="" coords="1034,117,1129,143"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="4149,117,4337,143"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="2536,206,2699,233"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="4524,117,4681,143"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="4706,117,4865,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="2723,206,2890,233"/>
+<area shape="rect" href="main-window-row-column_8h.html" title=" " alt="" coords="5077,109,5219,151"/>
+<area shape="rect" href="world-movement-processor_8h.html" title=" " alt="" coords="2915,199,3064,240"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="3089,206,3186,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="2742,295,2871,322"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="4406,206,4533,233"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="297,206,394,233"/>
+<area shape="rect" title=" " alt="" coords="282,295,337,322"/>
+<area shape="rect" title=" " alt="" coords="404,295,460,322"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="5,199,171,240"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="351,377,462,404"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="1913,206,2028,233"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1770,206,1889,233"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="705,288,850,329"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a3be33cb7446b354094b2e08c51ddfdb4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4">process_world</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="memdesc:a3be33cb7446b354094b2e08c51ddfdb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns  <a href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4">[詳解]</a><br /></td></tr>
+<tr class="separator:a3be33cb7446b354094b2e08c51ddfdb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae997244cfd06fde0444730af2862038b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world-turn-processor_8cpp.html#ae997244cfd06fde0444730af2862038b">print_time</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="memdesc:ae997244cfd06fde0444730af2862038b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲーム時刻を表示する / Print time  <a href="world-turn-processor_8cpp.html#ae997244cfd06fde0444730af2862038b">[詳解]</a><br /></td></tr>
+<tr class="separator:ae997244cfd06fde0444730af2862038b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ae997244cfd06fde0444730af2862038b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae997244cfd06fde0444730af2862038b">&#9670;&nbsp;</a></span>print_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_time </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲーム時刻を表示する / Print time </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="world-turn-processor_8cpp_ae997244cfd06fde0444730af2862038b_cgraph.png" border="0" usemap="#aworld-turn-processor_8cpp_ae997244cfd06fde0444730af2862038b_cgraph" alt=""/></div>
+<map name="aworld-turn-processor_8cpp_ae997244cfd06fde0444730af2862038b_cgraph" id="aworld-turn-processor_8cpp_ae997244cfd06fde0444730af2862038b_cgraph">
+<area shape="rect" title="ゲーム時刻を表示する / Print time" alt="" coords="5,81,84,108"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="169,31,245,57"/>
+<area shape="rect" href="world_8cpp.html#a3da5b82e6bb95498402f78c954a628d0" title="現在の日数、時刻を返す / Extract day, hour, min" alt="" coords="132,81,283,108"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="178,132,237,159"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="331,31,419,57"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="469,5,559,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="467,56,561,83"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="343,132,406,159"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="481,132,547,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="world-turn-processor_8cpp_ae997244cfd06fde0444730af2862038b_icgraph.png" border="0" usemap="#aworld-turn-processor_8cpp_ae997244cfd06fde0444730af2862038b_icgraph" alt=""/></div>
+<map name="aworld-turn-processor_8cpp_ae997244cfd06fde0444730af2862038b_icgraph" id="aworld-turn-processor_8cpp_ae997244cfd06fde0444730af2862038b_icgraph">
+<area shape="rect" title="ゲーム時刻を表示する / Print time" alt="" coords="1117,614,1196,641"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="399,158,509,185"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="979,639,1069,666"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="189,158,313,185"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="5,107,141,134"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="840,1197,931,1223"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="642,411,745,438"/>
+<area shape="rect" href="pet-util_8cpp.html#a6da87a66edbf955c4c0fb4336d34d60f" title="プレイヤーの騎乗/下馬処理判定" alt="" coords="624,462,763,489"/>
+<area shape="rect" href="player-inventory_8cpp.html#a9a1c3265a4b625e9f772baa1c55a0a3e" title="プレイヤーがオブジェクト上に乗った際の表示処理 / Player &quot;wants&quot; to pick up an object or gold." alt="" coords="668,513,719,539"/>
+<area shape="rect" href="cursor_8cpp.html#a32ea13a872e058d5f3236a496b71462a" title="フォーカスを当てるべきマップ描画の基準座標を指定する（サブルーチン）" alt="" coords="642,665,745,691"/>
+<area shape="rect" href="cmd-floor_8cpp.html#acd79a6cf02eda3f886024b7b48c31e73" title="位置を確認するコマンドのメインルーチン Allow the player to examine other sectors on the map" alt="" coords="399,639,509,666"/>
+<area shape="rect" href="shape-changer_8cpp.html#a7e5697a071fe31476a758edba5057d36" title=" " alt="" coords="203,639,299,666"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a06816378fb54efdc970af77a16abe448" title="プレイヤーの第二魔法領域を変更する /" alt="" coords="638,817,749,843"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="401,791,507,818"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f" title=" " alt="" coords="624,867,763,894"/>
+<area shape="rect" href="player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="391,563,517,590"/>
+<area shape="rect" href="game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="647,918,739,945"/>
+<area shape="rect" href="building-craft-weapon_8cpp.html#a2b2951f2d62f18d1a7867d4f1524079e" title="武器匠鑑定1回分（オブジェクト2種）の処理。/ Compare weapons" alt="" coords="628,969,759,995"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a523d2aaf1b1c03fd9ff5fdfdaa9d49f5" title=" " alt="" coords="641,1070,746,1097"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a6cc60a9c8d1e600f6618e93dde225137" title="Display known objects" alt="" coords="361,1045,547,1071"/>
+<area shape="rect" href="target-describer_8cpp.html#a385f9390a5aeeb71e53958c351bbe287" title=" " alt="" coords="644,1121,743,1147"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="635,1171,751,1198"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="634,1222,753,1249"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="404,1298,504,1325"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#a3ba32fc8df87acb37ad0757bdc3a0388" title="Display known monsters." alt="" coords="595,1374,792,1401"/>
+<area shape="rect" href="cmd-floor_8cpp.html#ad1856d6353df054753f18b12ae7b319c" title="周囲を見渡すコマンドのメインルーチン Look command" alt="" coords="644,1425,743,1451"/>
+<area shape="rect" href="cmd-pet_8cpp.html#a5393c5248eb883f75cebd459120fb959" title="ペットに関するコマンドリストのメインルーチン / Issue a pet command" alt="" coords="407,1501,501,1527"/>
+<area shape="rect" href="cmd-pet_8cpp.html#a016f22b29967f438acaee62a94bb05af" title="ペットを開放するコマンドのメインルーチン" alt="" coords="621,1526,766,1553"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="617,1577,770,1603"/>
+<area shape="rect" href="cmd-lore_8cpp.html#ae1f67e879bad2c6ac1ee0971abd55d5d" title="モンスターの思い出を見るコマンドのメインルーチン Identify a character, allow recall of monsters" alt="" coords="615,1627,771,1654"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ae19882bca0152830acd6b12e0c50eeb2" title="画面を再描画するコマンドのメインルーチン Hack – redraw the screen" alt="" coords="637,1729,750,1755"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a1f4156d254c4e75492a93a62c6d47d1d" title=" " alt="" coords="381,1703,527,1730"/>
+<area shape="rect" href="cmd-move_8cpp.html#a1ca5da27fdf6b4625bbac49754cd7ce8" title="「休む」動作コマンドのメインルーチン / Resting allows a player to safely restore his hp &#45;RAK&#45;" alt="" coords="645,1779,742,1806"/>
+<area shape="rect" href="cmd-save_8cpp.html#a5f3c9a464d1f438f0a2860a68b31da96" title="セーブするコマンドのメインルーチン Save the game" alt="" coords="623,1830,763,1857"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="641,1881,745,1907"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="630,1931,757,1958"/>
+<area shape="rect" href="monk-attack_8cpp.html#affb3013a6705f2f1cc0ffb9f20790ff6" title=" " alt="" coords="642,1982,745,2009"/>
+<area shape="rect" href="bounty_8cpp.html#a6aa3c9347a136a6ff64e84d0dd306057" title="賞金首の引き換え処理 / Get prize" alt="" coords="637,2033,750,2059"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="660,2083,727,2110"/>
+<area shape="rect" href="mutation-investor-remover_8cpp.html#a3f2ae6d11a1293d5aaba45657ea17e0a" title="プレイヤーに突然変異を与える" alt="" coords="642,361,745,387"/>
+<area shape="rect" href="spells-genocide_8cpp.html#a92bd5e26c84fa2eb42514b87bc6f2632" title="モンスターへの単体抹殺処理サブルーチン / Delete a non&#45;unique/non&#45;quest monster" alt="" coords="642,2134,745,2161"/>
+<area shape="rect" href="asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="634,1323,753,1350"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a1cf8ce6181c605bc9e09247323cb95f2" title="元素魔法呪文を選択して取得" alt="" coords="626,2185,761,2211"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="625,2235,762,2262"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="418,2311,490,2338"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#a608d31e79fc4aba7a4903453f3c78c95" title="オブジェクト選択の汎用関数(床上アイテム用) / Let the user select an item, save its &quot;index&quot;" alt="" coords="642,2337,745,2363"/>
+<area shape="rect" href="learnt-power-getter_8cpp.html#a4b2de56dc35d14f2c36ac65ad283a869" title="使用可能な青魔法を選択する / Allow user to choose a imitation." alt="" coords="628,2387,759,2414"/>
+<area shape="rect" href="cmd-mane_8cpp.html#a9803c7ddf3888e2717d6d2e1d10f3154" title="どのものまねを発動するか選択する処理 / Allow user to choose a imitation." alt="" coords="633,107,753,134"/>
+<area shape="rect" href="mind-power-getter_8cpp.html#ae10efe533854f8dec5377db176677dc7" title="使用可能な特殊技能を選択する / Allow user to choose a mindcrafter power." alt="" coords="635,209,751,235"/>
+<area shape="rect" href="mind-sniper_8cpp.html#a948ccca094f40c437b69212b68a38a64" title="スナイパー技能を選択する" alt="" coords="634,259,753,286"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3be33cb7446b354094b2e08c51ddfdb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3be33cb7446b354094b2e08c51ddfdb4">&#9670;&nbsp;</a></span>process_world()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void process_world </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="world-turn-processor_8cpp_a3be33cb7446b354094b2e08c51ddfdb4_cgraph.png" border="0" usemap="#aworld-turn-processor_8cpp_a3be33cb7446b354094b2e08c51ddfdb4_cgraph" alt=""/></div>
+<map name="aworld-turn-processor_8cpp_a3be33cb7446b354094b2e08c51ddfdb4_cgraph" id="aworld-turn-processor_8cpp_a3be33cb7446b354094b2e08c51ddfdb4_cgraph">
+<area shape="rect" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="5,1360,111,1387"/>
+<area shape="rect" href="monster-generator_8cpp.html#a337e4104356fdcc868464def8b309c5b" title="ダンジョンの初期配置モンスターを生成1回生成する / Attempt to allocate a random monster in the dungeon." alt="" coords="203,245,305,272"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="1121,524,1211,551"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1291,929,1369,956"/>
+<area shape="rect" href="monster-summon_8cpp.html#a6e66d06ca9502871c59a2a58c15708e5" title="モンスターを召喚により配置する / Place a monster (of the specified &quot;type&quot;) near the given location." alt="" coords="659,448,781,475"/>
+<area shape="rect" href="wild_8cpp.html#a50c95b33e216b6cd860ddc2ac319c510" title="荒野から広域マップへの切り替え処理 / Initialize arrays for wilderness terrains" alt="" coords="188,1588,320,1615"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="451,1816,527,1843"/>
+<area shape="rect" href="floor-events_8cpp.html#a3edd731b459d1183fe27fe82f0d11519" title=" " alt="" coords="213,828,295,855"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="689,1208,751,1235"/>
+<area shape="rect" href="bounty_8cpp.html#a44a22a03177d5ed8ec96a36eced9bd20" title="今日の賞金首を確定する / Determine today&#39;s bounty monster" alt="" coords="641,600,799,627"/>
+<area shape="rect" href="cmd-save_8cpp.html#a5f3c9a464d1f438f0a2860a68b31da96" title="セーブするコマンドのメインルーチン Save the game" alt="" coords="419,1107,559,1133"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="433,2019,545,2045"/>
+<area shape="rect" href="world_8cpp.html#a3da5b82e6bb95498402f78c954a628d0" title="現在の日数、時刻を返す / Extract day, hour, min" alt="" coords="645,2044,795,2071"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a15e87169136684b61a2a317bf3c6e0d5" title="10ゲームターンが進行するごとに装備効果の発動判定を行う処理 / Handle curse effects once every 10 game turns" alt="" coords="1089,694,1243,735"/>
+<area shape="rect" href="world-movement-processor_8cpp.html#a597a48dd4ed8e2e51c1a114cb9b125c1" title="10ゲームターンが進行するごとにフロア・リセット/現実変容の残り時間カウントダウンと発動を処理する。 / Handle involuntary movement once every 10 game t..." alt="" coords="187,1157,321,1184"/>
+<area shape="rect" href="floor-mode-changer_8cpp.html#ac3d4752c4acfdb1dfe04cdbcd562c1ec" title="フロア切り替え時の処理フラグを追加する / Prepare mode flags of changing floor" alt="" coords="397,1867,581,1893"/>
+<area shape="rect" href="world-movement-processor_8cpp.html#a9cf11d071cabe6008f72bbb6eed498d5" title="10ゲームターンが進行するごとに帰還の残り時間カウントダウンと発動を処理する。 / Handle involuntary movement once every 10 game turns" alt="" coords="201,1791,307,1817"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="202,1639,306,1665"/>
+<area shape="rect" href="floor-events_8cpp.html#ac255446499e40c7b84ac4fc6fb016f37" title=" " alt="" coords="214,929,294,956"/>
+<area shape="rect" href="monster-status_8cpp.html#a61f7a158553d0911c699a0f8532578ec" title="全モンスターの各種状態値を時間経過により更新するメインルーチン" alt="" coords="165,1943,343,1969"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#afc8eefd59cfc7a8bd571c9ed53344350" title="10ゲームターンが進行するごとにプレイヤーのHPとMPの増減処理を行う。 / Handle timed damage and regeneration every 10 game turns" alt="" coords="872,651,1028,677"/>
+<area shape="rect" href="mutation-processor_8cpp.html#aac6e6f0b449a92493ac8a184c221d6b4" title="10ゲームターンが進行するごとに突然変異の発動判定を行う処理 / Handle mutation effects once every 10 game turns" alt="" coords="159,1411,349,1437"/>
+<area shape="rect" href="store_8cpp.html#ab1d59efed4587b44cdf1579c606c3e4b" title="現在の町の店主を交代させる / Shuffle one of the stores." alt="" coords="442,1309,537,1336"/>
+<area shape="rect" href="recharge-processor_8cpp.html#add5026b607899e0c233b041c00449391" title="10ゲームターンが進行するごとに魔道具の自然充填を行う処理 / Handle recharging objects once every 10 game turns" alt="" coords="177,1993,331,2020"/>
+<area shape="rect" href="lite-processor_8cpp.html#a16fb62011b30f21554e561a9a87a5f81" title="10ゲームターンが進行する毎に光源の寿命を減らす処理 / Handle burning fuel every 10 game turns" alt="" coords="200,2044,308,2071"/>
+<area shape="rect" href="magic-effects-timeout-reducer_8cpp.html#ab3da74b04d4dd1f34442fc82cde68b60" title="10ゲームターンが進行するごとに魔法効果の残りターンを減らしていく処理 / Handle timeout every 10 game turns" alt="" coords="180,2095,328,2137"/>
+<area shape="rect" href="hp-mp-regenerator_8cpp.html#afd49f60612cbe412e72cfe4067d8816f" title="30ゲームターン毎のボール中モンスターのHP自然回復処理 / Regenerate the captured monsters (once per 30 game turns)" alt="" coords="184,2161,324,2202"/>
+<area shape="rect" href="hp-mp-regenerator_8cpp.html#a94770c7dddfe10f9f174e619e9504a45" title="100ゲームターン毎のモンスターのHP自然回復処理 / Regenerate the monsters (once per 100 game turns)" alt="" coords="182,1487,326,1513"/>
+<area shape="rect" href="simple-perception_8cpp.html#a0fe147809288def2c16773c0e89fc033" title="1プレイヤーターン毎に武器、防具の擬似鑑定が行われるかを判定する。" alt="" coords="193,2227,315,2253"/>
+<area shape="rect" href="simple-perception_8cpp.html#a3d7694f1e0812a7f9137285efacf9506" title="1プレイヤーターン毎に武器、防具以外の擬似鑑定が行われるかを判定する。" alt="" coords="193,2277,315,2304"/>
+<area shape="rect" href="digestion-processor_8cpp.html#a9cc59992d58ca87e9d1953df73acf94e" title="10ゲームターンが進行するごとにプレイヤーの腹を減らす" alt="" coords="440,1005,539,1032"/>
+<area shape="rect" href="floor-events_8cpp.html#a10ddc8e3a83cc30f6451f427b55eb838" title="ダンジョンの雰囲気を更新し、変化があった場合メッセージを表示する / Update dungeon feeling, and announce it if changed" alt="" coords="173,1271,335,1297"/>
+<area shape="rect" href="arena_8cpp.html#a8f76d0f962bd2705b72a72823e77f9e1" title="モンスター闘技場に参加するモンスターを更新する。" alt="" coords="629,499,811,525"/>
+<area shape="rect" href="monster-generator_8cpp.html#a5771512eb9a80e12f614653ce4cf36c2" title="ダンジョンの主生成を試みる / Put the Guardian" alt="" coords="437,195,542,221"/>
+<area shape="rect" href="cave_8cpp.html#aad3aa7818b160a3bd79fdb3ca2584bbf" title=" " alt="" coords="647,93,793,120"/>
+<area shape="rect" href="cave_8cpp.html#abf1b6aff1aa303afd2b72225c7abbcee" title=" " alt="" coords="881,68,1019,95"/>
+<area shape="rect" href="monster-generator_8cpp.html#acf1750358f03ad12021678aa270bba5e" title="指定地点に1種類のモンスター種族による群れを生成する" alt="" coords="445,296,533,323"/>
+<area shape="rect" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="454,144,525,171"/>
+<area shape="rect" href="monster-generator_8cpp.html#ae384acae95b077cd4fa9b1bbb573f083" title="一般的なモンスター生成処理のメインルーチン / Attempt to place a monster of the given race at the given location" alt="" coords="667,397,773,424"/>
+<area shape="rect" href="monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する" alt="" coords="898,448,1002,475"/>
+<area shape="rect" href="spells-hex_8cpp.html#a1fe803ed2313c7c276285c2803e83ed3" title=" " alt="" coords="428,1613,551,1640"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="461,1765,518,1792"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="401,1664,578,1691"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="430,1512,549,1539"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="425,1563,554,1589"/>
+<area shape="rect" href="grid_8cpp.html#acfe2dde219c27902b1cbd0e7b6d95357" title=" " alt="" coords="450,803,529,829"/>
+<area shape="rect" href="mind-ninja_8cpp.html#a52ea1929bb465180b42d7321e65512eb" title="超隠密状態をセットする" alt="" coords="430,904,549,931"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="925,1309,975,1336"/>
+<area shape="rect" href="monster-util_8cpp.html#a119044a0722d084a4fa94a064a6923d8" title="モンスター生成テーブルの重み修正(賞金首選定用)" alt="" coords="859,600,1041,627"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="675,1157,765,1184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="world-turn-processor_8cpp_a3be33cb7446b354094b2e08c51ddfdb4_icgraph.png" border="0" usemap="#aworld-turn-processor_8cpp_a3be33cb7446b354094b2e08c51ddfdb4_icgraph" alt=""/></div>
+<map name="aworld-turn-processor_8cpp_a3be33cb7446b354094b2e08c51ddfdb4_icgraph" id="aworld-turn-processor_8cpp_a3be33cb7446b354094b2e08c51ddfdb4_icgraph">
+<area shape="rect" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="495,5,600,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="323,5,447,32"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="139,5,275,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="5,5,91,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

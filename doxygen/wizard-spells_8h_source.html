@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/wizard/wizard-spells.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e09032bb770e6e0f4355f890c3180c4a.html">wizard</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">wizard-spells.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="wizard-spells_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="wizard-spells_8h.html#a8ab95b0764d923f347a7331d3bfcd41d">    5</a></span>&#160;<span class="preprocessor">#define SPELL_MAX 3</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="unionspell__functions.html">    7</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">union </span><a class="code" href="unionspell__functions.html">spell_functions</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structspell__functions_1_1debug__spell__type1.html">    8</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structspell__functions_1_1debug__spell__type1.html">debug_spell_type1</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structspell__functions_1_1debug__spell__type1.html#a08811defec8b09375cb8ea555faff8e1">    9</a></span>&#160;        <a class="code" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> (*<a class="code" href="structspell__functions_1_1debug__spell__type1.html#a08811defec8b09375cb8ea555faff8e1">spell_function</a>)(<a class="code" href="structplayer__type.html">player_type</a> *, <a class="code" href="structfloor__type.html">floor_type</a> *);</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="unionspell__functions.html#a15819c3bf0769ec2c2d0a65d01304c18">   10</a></span>&#160;    } <a class="code" href="unionspell__functions.html#a15819c3bf0769ec2c2d0a65d01304c18">spell1</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structspell__functions_1_1debug__spell__type2.html">   12</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structspell__functions_1_1debug__spell__type2.html">debug_spell_type2</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structspell__functions_1_1debug__spell__type2.html#abca686db4a116ac616f46a0099eb7337">   13</a></span>&#160;        <a class="code" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> (*<a class="code" href="structspell__functions_1_1debug__spell__type2.html#abca686db4a116ac616f46a0099eb7337">spell_function</a>)(<a class="code" href="structplayer__type.html">player_type</a> *);</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="unionspell__functions.html#a628d58a97da89d6a305e0612c6f989af">   14</a></span>&#160;    } <a class="code" href="unionspell__functions.html#a628d58a97da89d6a305e0612c6f989af">spell2</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structspell__functions_1_1debug__spell__type3.html">   16</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structspell__functions_1_1debug__spell__type3.html">debug_spell_type3</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structspell__functions_1_1debug__spell__type3.html#a72f368ea9e80e8ca43f69451fd2c1d74">   17</a></span>&#160;        <a class="code" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> (*<a class="code" href="structspell__functions_1_1debug__spell__type3.html#a72f368ea9e80e8ca43f69451fd2c1d74">spell_function</a>)(<a class="code" href="structplayer__type.html">player_type</a> *, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a>);</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="unionspell__functions.html#ae53968eacfa21ec5a5c04e530c132039">   18</a></span>&#160;    } <a class="code" href="unionspell__functions.html#ae53968eacfa21ec5a5c04e530c132039">spell3</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="wizard-spells_8h.html#a3c93e0a51bd4909583e0598d25fffd02">   20</a></span>&#160;} <a class="code" href="wizard-spells_8h.html#a3c93e0a51bd4909583e0598d25fffd02">spell_functions</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structdebug__spell__command.html">   22</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structdebug__spell__command.html">debug_spell_command</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structdebug__spell__command.html#ac299ed75c5e7a6b0b24abc237768f8f1">   23</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdebug__spell__command.html#ac299ed75c5e7a6b0b24abc237768f8f1">type</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structdebug__spell__command.html#a056eaa414de15ce585a5d8b1c59ddb16">   24</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structdebug__spell__command.html#a056eaa414de15ce585a5d8b1c59ddb16">command_name</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structdebug__spell__command.html#a5099a3659ebb5ec374988d5eecea3589">   25</a></span>&#160;    <a class="code" href="unionspell__functions.html">spell_functions</a> <a class="code" href="structdebug__spell__command.html#a5099a3659ebb5ec374988d5eecea3589">command_function</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="wizard-spells_8h.html#a24d6855be5dd00df551d6005b034f811">   26</a></span>&#160;} <a class="code" href="wizard-spells_8h.html#a24d6855be5dd00df551d6005b034f811">debug_spell_command</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">extern</span> <a class="code" href="structdebug__spell__command.html">debug_spell_command</a> <a class="code" href="wizard-spells_8h.html#a840f3c6fd66262e5a82f405c3ee9c199">debug_spell_commands_list</a>[<a class="code" href="wizard-spells_8h.html#a8ab95b0764d923f347a7331d3bfcd41d">SPELL_MAX</a>];</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="wizard-spells_8h.html#a6792c4a28636d5692f7989e92635f427">wiz_debug_spell</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-spells_8h.html#a1e0d31ac0c229cec062169813827ff25">wiz_dimension_door</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-spells_8h.html#af5919ee18af8d65ec16792a43282675b">wiz_summon_horde</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-spells_8h.html#af89ec9d0e206aacd41a6141a99a5b023">wiz_teleport_back</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-spells_8h.html#a801bfee579a0323751345b8878c3f153">wiz_learn_blue_magic_all</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-spells_8h.html#ad4abeb8699b77454758b44eafb5034ab">wiz_summon_random_enemy</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <span class="keywordtype">int</span> num);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-spells_8h.html#ac03ff418cb5dce47415f91b23464ab58">wiz_summon_specific_enemy</a>(<a class="code" href="structplayer__type.html">player_type</a> *summoner_ptr, <a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> r_idx);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-spells_8h.html#a019da5614fb72294529d9505646ef770">wiz_summon_pet</a>(<a class="code" href="structplayer__type.html">player_type</a> *summoner_ptr, <a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> r_idx);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-spells_8h.html#a289b5000e3fe4a89c48da205f3ac0c3b">wiz_kill_enemy</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a7ea47f67338902d35c1e93e00cf86908"><div class="ttname"><a href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a></div><div class="ttdeci">s16b MONRACE_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:109</div></div>
+<div class="ttc" id="ah-type_8h_html_ad5c9d4ba3dc37783a528b0925dc981a0"><div class="ttname"><a href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a></div><div class="ttdeci">char bool</div><div class="ttdoc">bool型をcharとして定義 / Note that a bool is smaller than a full &quot;int&quot; / Simple True/False type</div><div class="ttdef"><b>Definition:</b> h-type.h:70</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="ah-type_8h_html_afdb20155266ee801610f13b1589a3df3"><div class="ttname"><a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></div><div class="ttdeci">s32b HIT_POINT</div><div class="ttdoc">HPとその増減量の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:141</div></div>
+<div class="ttc" id="astructdebug__spell__command_html"><div class="ttname"><a href="structdebug__spell__command.html">debug_spell_command</a></div><div class="ttdef"><b>Definition:</b> wizard-spells.h:22</div></div>
+<div class="ttc" id="astructdebug__spell__command_html_a056eaa414de15ce585a5d8b1c59ddb16"><div class="ttname"><a href="structdebug__spell__command.html#a056eaa414de15ce585a5d8b1c59ddb16">debug_spell_command::command_name</a></div><div class="ttdeci">concptr command_name</div><div class="ttdef"><b>Definition:</b> wizard-spells.h:24</div></div>
+<div class="ttc" id="astructdebug__spell__command_html_a5099a3659ebb5ec374988d5eecea3589"><div class="ttname"><a href="structdebug__spell__command.html#a5099a3659ebb5ec374988d5eecea3589">debug_spell_command::command_function</a></div><div class="ttdeci">spell_functions command_function</div><div class="ttdef"><b>Definition:</b> wizard-spells.h:25</div></div>
+<div class="ttc" id="astructdebug__spell__command_html_ac299ed75c5e7a6b0b24abc237768f8f1"><div class="ttname"><a href="structdebug__spell__command.html#ac299ed75c5e7a6b0b24abc237768f8f1">debug_spell_command::type</a></div><div class="ttdeci">int type</div><div class="ttdef"><b>Definition:</b> wizard-spells.h:23</div></div>
+<div class="ttc" id="astructfloor__type_html"><div class="ttname"><a href="structfloor__type.html">floor_type</a></div><div class="ttdef"><b>Definition:</b> floor-type-definition.h:10</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="astructspell__functions_1_1debug__spell__type1_html"><div class="ttname"><a href="structspell__functions_1_1debug__spell__type1.html">spell_functions::debug_spell_type1</a></div><div class="ttdef"><b>Definition:</b> wizard-spells.h:8</div></div>
+<div class="ttc" id="astructspell__functions_1_1debug__spell__type1_html_a08811defec8b09375cb8ea555faff8e1"><div class="ttname"><a href="structspell__functions_1_1debug__spell__type1.html#a08811defec8b09375cb8ea555faff8e1">spell_functions::debug_spell_type1::spell_function</a></div><div class="ttdeci">bool(* spell_function)(player_type *, floor_type *)</div><div class="ttdef"><b>Definition:</b> wizard-spells.h:9</div></div>
+<div class="ttc" id="astructspell__functions_1_1debug__spell__type2_html"><div class="ttname"><a href="structspell__functions_1_1debug__spell__type2.html">spell_functions::debug_spell_type2</a></div><div class="ttdef"><b>Definition:</b> wizard-spells.h:12</div></div>
+<div class="ttc" id="astructspell__functions_1_1debug__spell__type2_html_abca686db4a116ac616f46a0099eb7337"><div class="ttname"><a href="structspell__functions_1_1debug__spell__type2.html#abca686db4a116ac616f46a0099eb7337">spell_functions::debug_spell_type2::spell_function</a></div><div class="ttdeci">bool(* spell_function)(player_type *)</div><div class="ttdef"><b>Definition:</b> wizard-spells.h:13</div></div>
+<div class="ttc" id="astructspell__functions_1_1debug__spell__type3_html"><div class="ttname"><a href="structspell__functions_1_1debug__spell__type3.html">spell_functions::debug_spell_type3</a></div><div class="ttdef"><b>Definition:</b> wizard-spells.h:16</div></div>
+<div class="ttc" id="astructspell__functions_1_1debug__spell__type3_html_a72f368ea9e80e8ca43f69451fd2c1d74"><div class="ttname"><a href="structspell__functions_1_1debug__spell__type3.html#a72f368ea9e80e8ca43f69451fd2c1d74">spell_functions::debug_spell_type3::spell_function</a></div><div class="ttdeci">bool(* spell_function)(player_type *, HIT_POINT)</div><div class="ttdef"><b>Definition:</b> wizard-spells.h:17</div></div>
+<div class="ttc" id="aunionspell__functions_html"><div class="ttname"><a href="unionspell__functions.html">spell_functions</a></div><div class="ttdef"><b>Definition:</b> wizard-spells.h:7</div></div>
+<div class="ttc" id="aunionspell__functions_html_a15819c3bf0769ec2c2d0a65d01304c18"><div class="ttname"><a href="unionspell__functions.html#a15819c3bf0769ec2c2d0a65d01304c18">spell_functions::spell1</a></div><div class="ttdeci">struct spell_functions::debug_spell_type1 spell1</div></div>
+<div class="ttc" id="aunionspell__functions_html_a628d58a97da89d6a305e0612c6f989af"><div class="ttname"><a href="unionspell__functions.html#a628d58a97da89d6a305e0612c6f989af">spell_functions::spell2</a></div><div class="ttdeci">struct spell_functions::debug_spell_type2 spell2</div></div>
+<div class="ttc" id="aunionspell__functions_html_ae53968eacfa21ec5a5c04e530c132039"><div class="ttname"><a href="unionspell__functions.html#ae53968eacfa21ec5a5c04e530c132039">spell_functions::spell3</a></div><div class="ttdeci">struct spell_functions::debug_spell_type3 spell3</div></div>
+<div class="ttc" id="awizard-spells_8h_html_a019da5614fb72294529d9505646ef770"><div class="ttname"><a href="wizard-spells_8h.html#a019da5614fb72294529d9505646ef770">wiz_summon_pet</a></div><div class="ttdeci">void wiz_summon_pet(player_type *summoner_ptr, MONRACE_IDX r_idx)</div><div class="ttdoc">モンスターを種族IDを指定してペット召喚する / Summon a creature of the specified type</div><div class="ttdef"><b>Definition:</b> wizard-spells.cpp:175</div></div>
+<div class="ttc" id="awizard-spells_8h_html_a1e0d31ac0c229cec062169813827ff25"><div class="ttname"><a href="wizard-spells_8h.html#a1e0d31ac0c229cec062169813827ff25">wiz_dimension_door</a></div><div class="ttdeci">void wiz_dimension_door(player_type *caster_ptr)</div><div class="ttdoc">必ず成功するウィザードモード用次元の扉処理 / Wizard Dimension Door</div><div class="ttdef"><b>Definition:</b> wizard-spells.cpp:82</div></div>
+<div class="ttc" id="awizard-spells_8h_html_a24d6855be5dd00df551d6005b034f811"><div class="ttname"><a href="wizard-spells_8h.html#a24d6855be5dd00df551d6005b034f811">debug_spell_command</a></div><div class="ttdeci">struct debug_spell_command debug_spell_command</div></div>
+<div class="ttc" id="awizard-spells_8h_html_a289b5000e3fe4a89c48da205f3ac0c3b"><div class="ttname"><a href="wizard-spells_8h.html#a289b5000e3fe4a89c48da205f3ac0c3b">wiz_kill_enemy</a></div><div class="ttdeci">void wiz_kill_enemy(player_type *caster_ptr)</div><div class="ttdoc">ターゲットを指定してダメージ100万・半径0の弱魔力のボールを放つ</div><div class="ttdef"><b>Definition:</b> wizard-spells.cpp:185</div></div>
+<div class="ttc" id="awizard-spells_8h_html_a3c93e0a51bd4909583e0598d25fffd02"><div class="ttname"><a href="wizard-spells_8h.html#a3c93e0a51bd4909583e0598d25fffd02">spell_functions</a></div><div class="ttdeci">union spell_functions spell_functions</div></div>
+<div class="ttc" id="awizard-spells_8h_html_a6792c4a28636d5692f7989e92635f427"><div class="ttname"><a href="wizard-spells_8h.html#a6792c4a28636d5692f7989e92635f427">wiz_debug_spell</a></div><div class="ttdeci">bool wiz_debug_spell(player_type *creature_ptr)</div><div class="ttdoc">コマンド入力により任意にスペル効果を起こす / Wizard spells</div><div class="ttdef"><b>Definition:</b> wizard-spells.cpp:43</div></div>
+<div class="ttc" id="awizard-spells_8h_html_a801bfee579a0323751345b8878c3f153"><div class="ttname"><a href="wizard-spells_8h.html#a801bfee579a0323751345b8878c3f153">wiz_learn_blue_magic_all</a></div><div class="ttdeci">void wiz_learn_blue_magic_all(player_type *caster_ptr)</div><div class="ttdoc">青魔導師の魔法を全て習得済みにする / debug command for blue mage</div><div class="ttdef"><b>Definition:</b> wizard-spells.cpp:127</div></div>
+<div class="ttc" id="awizard-spells_8h_html_a840f3c6fd66262e5a82f405c3ee9c199"><div class="ttname"><a href="wizard-spells_8h.html#a840f3c6fd66262e5a82f405c3ee9c199">debug_spell_commands_list</a></div><div class="ttdeci">debug_spell_command debug_spell_commands_list[SPELL_MAX]</div><div class="ttdoc">ウィザードモード専用のスペル処理</div><div class="ttdef"><b>Definition:</b> wizard-spells.cpp:33</div></div>
+<div class="ttc" id="awizard-spells_8h_html_a8ab95b0764d923f347a7331d3bfcd41d"><div class="ttname"><a href="wizard-spells_8h.html#a8ab95b0764d923f347a7331d3bfcd41d">SPELL_MAX</a></div><div class="ttdeci">#define SPELL_MAX</div><div class="ttdef"><b>Definition:</b> wizard-spells.h:5</div></div>
+<div class="ttc" id="awizard-spells_8h_html_ac03ff418cb5dce47415f91b23464ab58"><div class="ttname"><a href="wizard-spells_8h.html#ac03ff418cb5dce47415f91b23464ab58">wiz_summon_specific_enemy</a></div><div class="ttdeci">void wiz_summon_specific_enemy(player_type *summoner_ptr, MONRACE_IDX r_idx)</div><div class="ttdoc">モンスターを種族IDを指定して敵対的に召喚する / Summon a creature of the specified type</div><div class="ttdef"><b>Definition:</b> wizard-spells.cpp:162</div></div>
+<div class="ttc" id="awizard-spells_8h_html_ad4abeb8699b77454758b44eafb5034ab"><div class="ttname"><a href="wizard-spells_8h.html#ad4abeb8699b77454758b44eafb5034ab">wiz_summon_random_enemy</a></div><div class="ttdeci">void wiz_summon_random_enemy(player_type *caster_ptr, int num)</div><div class="ttdoc">現在のフロアに合ったモンスターをランダムに召喚する / Summon some creatures</div><div class="ttdef"><b>Definition:</b> wizard-spells.cpp:148</div></div>
+<div class="ttc" id="awizard-spells_8h_html_af5919ee18af8d65ec16792a43282675b"><div class="ttname"><a href="wizard-spells_8h.html#af5919ee18af8d65ec16792a43282675b">wiz_summon_horde</a></div><div class="ttdeci">void wiz_summon_horde(player_type *caster_ptr)</div><div class="ttdoc">ウィザードモード用モンスターの群れ生成 / Summon a horde of monsters</div><div class="ttdef"><b>Definition:</b> wizard-spells.cpp:96</div></div>
+<div class="ttc" id="awizard-spells_8h_html_af89ec9d0e206aacd41a6141a99a5b023"><div class="ttname"><a href="wizard-spells_8h.html#af89ec9d0e206aacd41a6141a99a5b023">wiz_teleport_back</a></div><div class="ttdeci">void wiz_teleport_back(player_type *caster_ptr)</div><div class="ttdoc">ウィザードモード用処理としてターゲット中の相手をテレポートバックする / Hack – Teleport to the target</div><div class="ttdef"><b>Definition:</b> wizard-spells.cpp:114</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

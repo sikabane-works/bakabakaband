@@ -1,0 +1,487 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/wizard/fixed-artifacts-spoiler.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e09032bb770e6e0f4355f890c3180c4a.html">wizard</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">fixed-artifacts-spoiler.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="fixed-artifacts-spoiler_8h_source.html">wizard/fixed-artifacts-spoiler.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="files-util_8h_source.html">io/files-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-generator_8h_source.html">object/object-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind-hook_8h_source.html">object/object-kind-hook.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-version_8h_source.html">system/angband-version.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="artifact-type-definition_8h_source.html">system/artifact-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-files_8h_source.html">util/angband-files.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="artifact-analyzer_8h_source.html">wizard/artifact-analyzer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spoiler-util_8h_source.html">wizard/spoiler-util.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+fixed-artifacts-spoiler.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="fixed-artifacts-spoiler_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2wizard_2fixed-artifacts-spoiler_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2wizard_2fixed-artifacts-spoiler_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2wizard_2fixed-artifacts-spoiler_8cpp">
+<area shape="rect" title=" " alt="" coords="681,5,869,61"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8h.html" title=" " alt="" coords="362,109,502,151"/>
+<area shape="rect" href="spoiler-util_8h.html" title=" " alt="" coords="272,206,405,233"/>
+<area shape="rect" href="files-util_8h.html" title=" " alt="" coords="577,117,668,143"/>
+<area shape="rect" href="object-generator_8h.html" title=" " alt="" coords="692,117,857,143"/>
+<area shape="rect" href="object-kind-hook_8h.html" title=" " alt="" coords="77,288,201,329"/>
+<area shape="rect" href="angband-version_8h.html" title=" " alt="" coords="1279,117,1452,143"/>
+<area shape="rect" href="artifact-type-definition_8h.html" title=" " alt="" coords="1186,199,1323,240"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="495,288,628,329"/>
+<area shape="rect" href="angband-files_8h.html" title=" " alt="" coords="881,117,1012,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="805,206,971,233"/>
+<area shape="rect" href="artifact-analyzer_8h.html" title=" " alt="" coords="995,206,1162,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="598,377,727,404"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="617,452,708,479"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="732,452,823,479"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="847,452,945,479"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="5,452,104,479"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="129,452,229,479"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="253,452,427,479"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="452,452,593,479"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,452,1116,479"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1042,527,1153,553"/>
+<area shape="rect" href="spoiler-table_8h.html" title=" " alt="" coords="225,295,369,322"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="234,377,361,404"/>
+<area shape="rect" href="h-type_8h.html" title="ゲーム中に用いる変数型定義 / Basic &quot;types&quot;." alt="" coords="1347,206,1463,233"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="1191,288,1318,329"/>
+<area shape="rect" title=" " alt="" coords="1342,295,1397,322"/>
+<area shape="rect" title=" " alt="" coords="1421,295,1477,322"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:aa4b5c8474f1025162e72b44a1bfbad50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fixed-artifacts-spoiler_8cpp.html#aa4b5c8474f1025162e72b44a1bfbad50">spoiler_outlist</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="el" href="display-util_8cpp.html#aa54565d393033afc00207d92bffd53d1">header</a>, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *list, char separator)</td></tr>
+<tr class="memdesc:aa4b5c8474f1025162e72b44a1bfbad50"><td class="mdescLeft">&#160;</td><td class="mdescRight">フラグ名称を出力する汎用関数  <a href="fixed-artifacts-spoiler_8cpp.html#aa4b5c8474f1025162e72b44a1bfbad50">[詳解]</a><br /></td></tr>
+<tr class="separator:aa4b5c8474f1025162e72b44a1bfbad50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af86a002a8f4937709874f90030d19c63"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fixed-artifacts-spoiler_8cpp.html#af86a002a8f4937709874f90030d19c63">print_header</a> (void)</td></tr>
+<tr class="memdesc:af86a002a8f4937709874f90030d19c63"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファにアーティファクト出力情報ヘッダを収める /  <a href="fixed-artifacts-spoiler_8cpp.html#af86a002a8f4937709874f90030d19c63">[詳解]</a><br /></td></tr>
+<tr class="separator:af86a002a8f4937709874f90030d19c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dec4d4ca3c104d4757a0f83f1543331"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fixed-artifacts-spoiler_8cpp.html#a4dec4d4ca3c104d4757a0f83f1543331">make_fake_artifact</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, <a class="el" href="h-type_8h.html#a4fc040f8a9ad313d0ce50224ff8841a0">ARTIFACT_IDX</a> name1)</td></tr>
+<tr class="memdesc:a4dec4d4ca3c104d4757a0f83f1543331"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーティファクト情報を出力するためにダミー生成を行う / Hack &ndash; Create a "forged" artifact  <a href="fixed-artifacts-spoiler_8cpp.html#a4dec4d4ca3c104d4757a0f83f1543331">[詳解]</a><br /></td></tr>
+<tr class="separator:a4dec4d4ca3c104d4757a0f83f1543331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa339912ca3eaac0d3157809fc6707dd0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fixed-artifacts-spoiler_8cpp.html#aa339912ca3eaac0d3157809fc6707dd0">spoiler_print_art</a> (<a class="el" href="structobj__desc__list.html">obj_desc_list</a> *art_ptr)</td></tr>
+<tr class="memdesc:aa339912ca3eaac0d3157809fc6707dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーティファクト一件をスポイラー出力する / Create a spoiler file entry for an artifact  <a href="fixed-artifacts-spoiler_8cpp.html#aa339912ca3eaac0d3157809fc6707dd0">[詳解]</a><br /></td></tr>
+<tr class="separator:aa339912ca3eaac0d3157809fc6707dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62564b3ec51c0b0942b121326b3b4bd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24">spoiler_output_status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1">spoil_fixed_artifact</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> fname)</td></tr>
+<tr class="memdesc:a62564b3ec51c0b0942b121326b3b4bd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts  <a href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1">[詳解]</a><br /></td></tr>
+<tr class="separator:a62564b3ec51c0b0942b121326b3b4bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a4dec4d4ca3c104d4757a0f83f1543331"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dec4d4ca3c104d4757a0f83f1543331">&#9670;&nbsp;</a></span>make_fake_artifact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> make_fake_artifact </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a4fc040f8a9ad313d0ce50224ff8841a0">ARTIFACT_IDX</a>&#160;</td>
+          <td class="paramname"><em>name1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アーティファクト情報を出力するためにダミー生成を行う / Hack &ndash; Create a "forged" artifact </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>一時生成先を保管するオブジェクト構造体 </td></tr>
+    <tr><td class="paramname">name1</td><td>生成するアーティファクトID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>生成が成功した場合TRUEを返す </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="fixed-artifacts-spoiler_8cpp_a4dec4d4ca3c104d4757a0f83f1543331_cgraph.png" border="0" usemap="#afixed-artifacts-spoiler_8cpp_a4dec4d4ca3c104d4757a0f83f1543331_cgraph" alt=""/></div>
+<map name="afixed-artifacts-spoiler_8cpp_a4dec4d4ca3c104d4757a0f83f1543331_cgraph" id="afixed-artifacts-spoiler_8cpp_a4dec4d4ca3c104d4757a0f83f1543331_cgraph">
+<area shape="rect" title="アーティファクト情報を出力するためにダミー生成を行う / Hack – Create a &quot;forged&quot; artifact" alt="" coords="5,56,136,83"/>
+<area shape="rect" href="object-kind-hook_8cpp.html#a24f8a2426e4fc5128654ec26033312ab" title="tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the object_kind with the given tval and sval" alt="" coords="184,31,275,57"/>
+<area shape="rect" href="object-generator_8cpp.html#a9d4bf7f51bf5056089190534c673d068" title="オブジェクト構造体にベースアイテムを作成する Prepare an object based on an object kind." alt="" coords="185,81,274,108"/>
+<area shape="rect" href="object-curse_8cpp.html#a749ffeeeaa9633e0b6300253e4bc9730" title="アイテムに付加される可能性のある呪いを指定する。" alt="" coords="339,31,417,57"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="323,81,433,108"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="333,132,423,159"/>
+<area shape="rect" href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537" title="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour" alt="" coords="483,5,605,32"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a3c30f6f6fb14bece864e482c0080485c" title="オブジェクトが武器として装備できるかどうかを返す / Check if an object is weapon (including bows and ammo)" alt="" coords="481,56,607,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="fixed-artifacts-spoiler_8cpp_a4dec4d4ca3c104d4757a0f83f1543331_icgraph.png" border="0" usemap="#afixed-artifacts-spoiler_8cpp_a4dec4d4ca3c104d4757a0f83f1543331_icgraph" alt=""/></div>
+<map name="afixed-artifacts-spoiler_8cpp_a4dec4d4ca3c104d4757a0f83f1543331_icgraph" id="afixed-artifacts-spoiler_8cpp_a4dec4d4ca3c104d4757a0f83f1543331_icgraph">
+<area shape="rect" title="アーティファクト情報を出力するためにダミー生成を行う / Hack – Create a &quot;forged&quot; artifact" alt="" coords="535,31,665,57"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="357,31,487,57"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="171,5,309,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="175,56,305,83"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="5,5,123,32"/>
+<area shape="rect" href="main_8cpp.html#a6d912cdfb4d30abf0dc29e59f3cb58b3" title=" " alt="" coords="9,56,119,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af86a002a8f4937709874f90030d19c63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af86a002a8f4937709874f90030d19c63">&#9670;&nbsp;</a></span>print_header()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void print_header </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>バッファにアーティファクト出力情報ヘッダを収める / </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="fixed-artifacts-spoiler_8cpp_af86a002a8f4937709874f90030d19c63_cgraph.png" border="0" usemap="#afixed-artifacts-spoiler_8cpp_af86a002a8f4937709874f90030d19c63_cgraph" alt=""/></div>
+<map name="afixed-artifacts-spoiler_8cpp_af86a002a8f4937709874f90030d19c63_cgraph" id="afixed-artifacts-spoiler_8cpp_af86a002a8f4937709874f90030d19c63_cgraph">
+<area shape="rect" title="バッファにアーティファクト出力情報ヘッダを収める /" alt="" coords="5,31,99,57"/>
+<area shape="rect" href="angband-version_8cpp.html#a1480311848ea7897e5576c09d39699d8" title=" " alt="" coords="163,5,249,32"/>
+<area shape="rect" href="spoiler-util_8cpp.html#a110c69c3b8581a9083fd49a6b035e7f6" title="ファイルポインタ先に複数のハイフンで装飾した文字列を出力する / Write a line to the spoiler file and then &quot;underline&quot; it with hypens" alt="" coords="147,56,265,83"/>
+<area shape="rect" href="spoiler-util_8cpp.html#a8c8536cb016c46b92495f9fff0fe5beb" title="ファイルポインタ先に同じ文字を複数出力する / Write out ‘n’ of the character ‘c’ to the spoiler file" alt="" coords="313,56,452,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="fixed-artifacts-spoiler_8cpp_af86a002a8f4937709874f90030d19c63_icgraph.png" border="0" usemap="#afixed-artifacts-spoiler_8cpp_af86a002a8f4937709874f90030d19c63_icgraph" alt=""/></div>
+<map name="afixed-artifacts-spoiler_8cpp_af86a002a8f4937709874f90030d19c63_icgraph" id="afixed-artifacts-spoiler_8cpp_af86a002a8f4937709874f90030d19c63_icgraph">
+<area shape="rect" title="バッファにアーティファクト出力情報ヘッダを収める /" alt="" coords="535,31,628,57"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="357,31,487,57"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="171,5,309,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="175,56,305,83"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="5,5,123,32"/>
+<area shape="rect" href="main_8cpp.html#a6d912cdfb4d30abf0dc29e59f3cb58b3" title=" " alt="" coords="9,56,119,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a62564b3ec51c0b0942b121326b3b4bd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62564b3ec51c0b0942b121326b3b4bd1">&#9670;&nbsp;</a></span>spoil_fixed_artifact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="spoiler-util_8h.html#a65babe7f20d4de9fe0339f9beae6bd24">spoiler_output_status</a> spoil_fixed_artifact </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>fname</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fname</td><td>生成ファイル名 </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="fixed-artifacts-spoiler_8cpp_a62564b3ec51c0b0942b121326b3b4bd1_cgraph.png" border="0" usemap="#afixed-artifacts-spoiler_8cpp_a62564b3ec51c0b0942b121326b3b4bd1_cgraph" alt=""/></div>
+<map name="afixed-artifacts-spoiler_8cpp_a62564b3ec51c0b0942b121326b3b4bd1_cgraph" id="afixed-artifacts-spoiler_8cpp_a62564b3ec51c0b0942b121326b3b4bd1_cgraph">
+<area shape="rect" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="5,777,135,804"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="192,296,304,323"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="193,347,303,373"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a4dec4d4ca3c104d4757a0f83f1543331" title="アーティファクト情報を出力するためにダミー生成を行う / Hack – Create a &quot;forged&quot; artifact" alt="" coords="183,752,313,779"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="587,803,678,829"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aca067da7ac3b4483f1c10e3d6d5e9c0d" title="アーティファクトの情報全体を構造体に収める / Fill in an object description structure for a given object and its value in g..." alt="" coords="193,448,303,475"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="395,81,477,108"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#af86a002a8f4937709874f90030d19c63" title="バッファにアーティファクト出力情報ヘッダを収める /" alt="" coords="201,853,295,880"/>
+<area shape="rect" href="spoiler-util_8cpp.html#a110c69c3b8581a9083fd49a6b035e7f6" title="ファイルポインタ先に複数のハイフンで装飾した文字列を出力する / Write a line to the spoiler file and then &quot;underline&quot; it with hypens" alt="" coords="377,904,495,931"/>
+<area shape="rect" href="spoiler-util_8cpp.html#a069868bef509d5bcbc1c2a4c0c464cc2" title="ファイルポインタ先に改行を複数出力する / Write out ‘n’ blank lines to the spoiler file" alt="" coords="185,955,311,981"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#aa339912ca3eaac0d3157809fc6707dd0" title="アーティファクト一件をスポイラー出力する / Create a spoiler file entry for an artifact" alt="" coords="191,1005,305,1032"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="393,19,479,45"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="601,5,664,32"/>
+<area shape="rect" href="object-kind-hook_8cpp.html#a24f8a2426e4fc5128654ec26033312ab" title="tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the object_kind with the given tval and sval" alt="" coords="391,701,481,728"/>
+<area shape="rect" href="object-generator_8cpp.html#a9d4bf7f51bf5056089190534c673d068" title="オブジェクト構造体にベースアイテムを作成する Prepare an object based on an object kind." alt="" coords="391,752,481,779"/>
+<area shape="rect" href="object-curse_8cpp.html#a749ffeeeaa9633e0b6300253e4bc9730" title="アイテムに付加される可能性のある呪いを指定する。" alt="" coords="593,752,672,779"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="577,701,688,728"/>
+<area shape="rect" href="object-info_8cpp.html#a61840e5db97036b2685a525ec2636d1d" title="オブジェクトの発動効果名称を返す（メインルーチン） / Determine the &quot;Activation&quot; (if any) for an artifact Return a string,..." alt="" coords="361,600,511,627"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a8555995229916944fb8f40a7afabe976" title="アーティファクトの追加ランダム特性を構造体に収める / Note additional ability and/or resistance of fixed artifacts" alt="" coords="377,651,495,677"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#ae2e84c35f4fd2542f7d25f52be97efcc" title="アーティファクトの属性ブランド特性を構造体に収める / Note an object&#39;s elemental brands" alt="" coords="383,448,489,475"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a7aebf0933710d2f5b0b2cf87e1aa4618" title="アイテムの特定記述内容を返す / Acquire a &quot;basic&quot; description &quot;The Cloak of Death [1,+10]&quot;" alt="" coords="378,549,494,576"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a3a5470523604583af0074f362918b800" title="アーティファクトの免疫特性を構造体に収める / Note the immunities granted by an object" alt="" coords="376,245,496,272"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a063b12619c5c9ea3db2c592f16552534" title="アーティファクトの基本情報を文字列に収める / Determine the minimum depth an artifact can appear, its rarity,..." alt="" coords="385,347,487,373"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#aa704a61c49537fc61ea1463a81295950" title="アーティファクトのその他の特性を構造体に収める / Note miscellaneous powers bestowed by an artifact such as see invisible,..." alt="" coords="364,144,508,171"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#afb5c917a0d598785804cde6f8a12aa37" title="アーティファクトがプレイヤーに与えるpval修正を構造体に収める / List &quot;player traits&quot; altered by an artifact&#39;s pval." alt="" coords="388,499,484,525"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#ab0b62923208a78584f2f5d00ffce8e49" title="アーティファクトの通常耐性を構造体に収める / Note an object&#39;s elemental brands" alt="" coords="383,397,489,424"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a8f52fad0e07f86922891eff6c198e300" title="アーティファクトの種族スレイ特性を構造体に収める / Note the slaying specialties of a weapon" alt="" coords="387,296,485,323"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a0ded92e44b7c34773903a888cf19ff97" title="アーティファクトの維持特性を構造体に収める / Note which stats an object sustains" alt="" coords="375,195,497,221"/>
+<area shape="rect" href="artifact-info_8cpp.html#a937fce3b10509fe08c9881591860d553" title="オブジェクトから能力発動IDを取得する。" alt="" coords="575,600,690,627"/>
+<area shape="rect" href="object-info_8cpp.html#a7bc73eceff342f62687bb898f74e2f1e" title="オブジェクトの発動効果名称を返す（サブルーチン/汎用）" alt="" coords="565,549,701,576"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="587,372,678,399"/>
+<area shape="rect" href="class_flag_group.html#a806f557d9a55d4fd21e0c43492066b11" title="入力イテレータで指定した範囲のリストに含まれるフラグがすべてONかどうかを調べる" alt="" coords="559,651,707,677"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a47fcfc88c0d8fbcea4b91d780a5c956c" title="アーティファクトの特性一覧を出力する / Write a line to the spoiler file and then &quot;underline&quot; it with hypens" alt="" coords="575,296,690,323"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="579,499,686,525"/>
+<area shape="rect" href="quarks_8cpp.html#a6fada8d9acfd20a42a8a9887484a1802" title=" " alt="" coords="591,157,674,184"/>
+<area shape="rect" href="quarks_8cpp.html#a95cf419856c525009b78e5246327f405" title=" " alt="" coords="595,208,671,235"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="755,132,805,159"/>
+<area shape="rect" href="z-util_8cpp.html#a7f7463689689266c2c7dd1c0b170c7a3" title=" " alt="" coords="606,56,659,83"/>
+<area shape="rect" href="angband-version_8cpp.html#a1480311848ea7897e5576c09d39699d8" title=" " alt="" coords="393,853,479,880"/>
+<area shape="rect" href="spoiler-util_8cpp.html#a8c8536cb016c46b92495f9fff0fe5beb" title="ファイルポインタ先に同じ文字を複数出力する / Write out ‘n’ of the character ‘c’ to the spoiler file" alt="" coords="563,929,702,956"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#aa4b5c8474f1025162e72b44a1bfbad50" title="フラグ名称を出力する汎用関数" alt="" coords="385,1005,487,1032"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="fixed-artifacts-spoiler_8cpp_a62564b3ec51c0b0942b121326b3b4bd1_icgraph.png" border="0" usemap="#afixed-artifacts-spoiler_8cpp_a62564b3ec51c0b0942b121326b3b4bd1_icgraph" alt=""/></div>
+<map name="afixed-artifacts-spoiler_8cpp_a62564b3ec51c0b0942b121326b3b4bd1_icgraph" id="afixed-artifacts-spoiler_8cpp_a62564b3ec51c0b0942b121326b3b4bd1_icgraph">
+<area shape="rect" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="516,31,645,57"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="329,5,468,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="333,56,464,83"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="164,5,281,32"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="5,5,116,32"/>
+<area shape="rect" href="main_8cpp.html#a6d912cdfb4d30abf0dc29e59f3cb58b3" title=" " alt="" coords="167,56,278,83"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="35,56,86,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa4b5c8474f1025162e72b44a1bfbad50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4b5c8474f1025162e72b44a1bfbad50">&#9670;&nbsp;</a></span>spoiler_outlist()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void spoiler_outlist </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>header</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>separator</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>フラグ名称を出力する汎用関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">header</td><td>ヘッダに出力するフラグ群の名前 </td></tr>
+    <tr><td class="paramname">list</td><td>フラグ名リスト </td></tr>
+    <tr><td class="paramname">separator</td><td>フラグ表示の区切り記号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000162">todo:</a></b></dt><dd>固定アーティファクトとランダムアーティファクトで共用、ここに置くべきかは要調整. </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="fixed-artifacts-spoiler_8cpp_aa4b5c8474f1025162e72b44a1bfbad50_icgraph.png" border="0" usemap="#afixed-artifacts-spoiler_8cpp_aa4b5c8474f1025162e72b44a1bfbad50_icgraph" alt=""/></div>
+<map name="afixed-artifacts-spoiler_8cpp_aa4b5c8474f1025162e72b44a1bfbad50_icgraph" id="afixed-artifacts-spoiler_8cpp_aa4b5c8474f1025162e72b44a1bfbad50_icgraph">
+<area shape="rect" title="フラグ名称を出力する汎用関数" alt="" coords="607,81,709,108"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#aa339912ca3eaac0d3157809fc6707dd0" title="アーティファクト一件をスポイラー出力する / Create a spoiler file entry for an artifact" alt="" coords="432,56,547,83"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a76b84de3eacd8f90093f4e3c1781589a" title="ランダムアーティファクト1件をスポイラー出力する / Create a spoiler file entry for an artifact" alt="" coords="420,107,559,133"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="221,56,350,83"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="9,5,147,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="13,56,143,83"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a24cc5840cf7857a3ef2a2835a5cdeae3" title="ランダムアーティファクト内容をスポイラー出力するサブルーチン /" alt="" coords="199,107,372,133"/>
+<area shape="rect" href="random-art-info-dumper_8cpp.html#a61530241b7679032c7e32229a5086e90" title="ランダムアーティファクト内容をスポイラー出力するメインルーチン / Create a list file for random artifacts" alt="" coords="5,107,151,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa339912ca3eaac0d3157809fc6707dd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa339912ca3eaac0d3157809fc6707dd0">&#9670;&nbsp;</a></span>spoiler_print_art()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void spoiler_print_art </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobj__desc__list.html">obj_desc_list</a> *&#160;</td>
+          <td class="paramname"><em>art_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アーティファクト一件をスポイラー出力する / Create a spoiler file entry for an artifact </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">art_ptr</td><td>アーティファクト情報をまとめた構造体の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="fixed-artifacts-spoiler_8cpp_aa339912ca3eaac0d3157809fc6707dd0_cgraph.png" border="0" usemap="#afixed-artifacts-spoiler_8cpp_aa339912ca3eaac0d3157809fc6707dd0_cgraph" alt=""/></div>
+<map name="afixed-artifacts-spoiler_8cpp_aa339912ca3eaac0d3157809fc6707dd0_cgraph" id="afixed-artifacts-spoiler_8cpp_aa339912ca3eaac0d3157809fc6707dd0_cgraph">
+<area shape="rect" title="アーティファクト一件をスポイラー出力する / Create a spoiler file entry for an artifact" alt="" coords="5,5,120,32"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#aa4b5c8474f1025162e72b44a1bfbad50" title="フラグ名称を出力する汎用関数" alt="" coords="168,5,271,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="fixed-artifacts-spoiler_8cpp_aa339912ca3eaac0d3157809fc6707dd0_icgraph.png" border="0" usemap="#afixed-artifacts-spoiler_8cpp_aa339912ca3eaac0d3157809fc6707dd0_icgraph" alt=""/></div>
+<map name="afixed-artifacts-spoiler_8cpp_aa339912ca3eaac0d3157809fc6707dd0_icgraph" id="afixed-artifacts-spoiler_8cpp_aa339912ca3eaac0d3157809fc6707dd0_icgraph">
+<area shape="rect" title="アーティファクト一件をスポイラー出力する / Create a spoiler file entry for an artifact" alt="" coords="535,31,649,57"/>
+<area shape="rect" href="fixed-artifacts-spoiler_8cpp.html#a62564b3ec51c0b0942b121326b3b4bd1" title="アーティファクト情報のスポイラー出力を行うメインルーチン / Create a spoiler file for artifacts" alt="" coords="357,31,487,57"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#a767daae923873abb8f7a870237676337" title="スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="171,5,309,32"/>
+<area shape="rect" href="wizard-spoiler_8cpp.html#ae6d9850ddb252c7a86d95f16467ed773" title="全スポイラー出力を行うコマンドのメインルーチン / Create Spoiler files &#45;BEN&#45;" alt="" coords="175,56,305,83"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="5,5,123,32"/>
+<area shape="rect" href="main_8cpp.html#a6d912cdfb4d30abf0dc29e59f3cb58b3" title=" " alt="" coords="9,56,119,83"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分45秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

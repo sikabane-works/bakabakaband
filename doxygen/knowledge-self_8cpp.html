@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/knowledge/knowledge-self.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_0f5dae52def78bb1cdd7feb97bca91d7.html">knowledge</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">knowledge-self.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="knowledge-self_8h_source.html">knowledge-self.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-explanations-table_8h_source.html">birth/birth-explanations-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="show-file_8h_source.html">core/show-file.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flavor-describer_8h_source.html">flavor/flavor-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-town_8h_source.html">floor/floor-town.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fixed-map-parser_8h_source.html">info-reader/fixed-map-parser.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dump-util_8h_source.html">io-dump/dump-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="avatar_8h_source.html">player-info/avatar.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-class_8h_source.html">player/player-class.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status-table_8h_source.html">player/player-status-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-info-table_8h_source.html">player/race-info-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="store-util_8h_source.html">store/store-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-files_8h_source.html">util/angband-files.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="buffer-shaper_8h_source.html">util/buffer-shaper.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+<code>#include &lt;string&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+knowledge-self.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="knowledge-self_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2knowledge_2knowledge-self_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2knowledge_2knowledge-self_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2knowledge_2knowledge-self_8cpp">
+<area shape="rect" title=" " alt="" coords="1125,5,1322,61"/>
+<area shape="rect" href="knowledge-self_8h.html" title=" " alt="" coords="289,206,408,233"/>
+<area shape="rect" href="birth-explanations-table_8h.html" title=" " alt="" coords="1441,109,1595,151"/>
+<area shape="rect" href="show-file_8h.html" title=" " alt="" coords="394,117,506,143"/>
+<area shape="rect" href="flavor-describer_8h.html" title=" " alt="" coords="530,117,682,143"/>
+<area shape="rect" href="floor-town_8h.html" title=" " alt="" coords="707,117,823,143"/>
+<area shape="rect" href="fixed-map-parser_8h.html" title=" " alt="" coords="847,109,989,151"/>
+<area shape="rect" href="dump-util_8h.html" title=" " alt="" coords="2047,117,2183,143"/>
+<area shape="rect" title=" " alt="" coords="2775,288,2829,315"/>
+<area shape="rect" href="avatar_8h.html" title=" " alt="" coords="1286,117,1417,143"/>
+<area shape="rect" href="player-class_8h.html" title=" " alt="" coords="2392,117,2535,143"/>
+<area shape="rect" href="player-status-table_8h.html" title=" " alt="" coords="183,109,319,151"/>
+<area shape="rect" href="race-info-table_8h.html" title=" " alt="" coords="5,117,159,143"/>
+<area shape="rect" href="store-util_8h.html" title=" " alt="" coords="1961,206,2077,233"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="1670,109,1803,151"/>
+<area shape="rect" href="angband-files_8h.html" title=" " alt="" coords="979,206,1110,233"/>
+<area shape="rect" href="buffer-shaper_8h.html" title=" " alt="" coords="1134,206,1262,233"/>
+<area shape="rect" href="int-char-converter_8h.html" title=" " alt="" coords="2876,117,3029,143"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="1287,206,1384,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1201,288,1331,315"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="741,363,831,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="855,363,946,389"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="970,363,1069,389"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1093,363,1191,389"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="1216,363,1316,389"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1340,363,1515,389"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1539,363,1681,389"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1705,363,1851,389"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="2365,437,2511,479"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1746,437,1919,479"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="849,437,974,479"/>
+<area shape="rect" href="player-personality_8h.html" title=" " alt="" coords="1511,206,1685,233"/>
+<area shape="rect" href="realm-names-table_8h.html" title=" " alt="" coords="1761,206,1937,233"/>
+<area shape="rect" href="realm-types_8h.html" title=" " alt="" coords="2300,288,2437,315"/>
+<area shape="rect" href="info-reader-util_8h.html" title=" " alt="" coords="809,199,955,240"/>
+<area shape="rect" href="parse-error-types_8h.html" title=" " alt="" coords="585,199,733,240"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="2551,206,2648,233"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="2462,288,2619,315"/>
+<area shape="rect" title=" " alt="" coords="2643,288,2699,315"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="2153,206,2280,233"/>
+<area shape="rect" href="technic-info-table_8h.html" title=" " alt="" coords="2356,199,2475,240"/>
+<area shape="rect" href="player-race_8h.html" title=" " alt="" coords="78,206,214,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a4120497dfdeb621df236bfa9bb4a114d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knowledge-self_8cpp.html#a4120497dfdeb621df236bfa9bb4a114d">do_cmd_knowledge_virtues</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a4120497dfdeb621df236bfa9bb4a114d"><td class="mdescLeft">&#160;</td><td class="mdescRight">自己に関する情報を表示する  <a href="knowledge-self_8cpp.html#a4120497dfdeb621df236bfa9bb4a114d">[詳解]</a><br /></td></tr>
+<tr class="separator:a4120497dfdeb621df236bfa9bb4a114d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a472b126ad9ec5fd4bb9bd3a11e636f7f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knowledge-self_8cpp.html#a472b126ad9ec5fd4bb9bd3a11e636f7f">dump_yourself</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, FILE *fff)</td></tr>
+<tr class="memdesc:a472b126ad9ec5fd4bb9bd3a11e636f7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">自分に関する情報を画面に表示する  <a href="knowledge-self_8cpp.html#a472b126ad9ec5fd4bb9bd3a11e636f7f">[詳解]</a><br /></td></tr>
+<tr class="separator:a472b126ad9ec5fd4bb9bd3a11e636f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8c9d4de6c5e87ff995e2af752929808"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knowledge-self_8cpp.html#ad8c9d4de6c5e87ff995e2af752929808">do_cmd_knowledge_stat</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:ad8c9d4de6c5e87ff995e2af752929808"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7de2bac473b3a93ad1b8abbee8e22eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knowledge-self_8cpp.html#ab7de2bac473b3a93ad1b8abbee8e22eb">do_cmd_knowledge_home</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="separator:ab7de2bac473b3a93ad1b8abbee8e22eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ab7de2bac473b3a93ad1b8abbee8e22eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7de2bac473b3a93ad1b8abbee8e22eb">&#9670;&nbsp;</a></span>do_cmd_knowledge_home()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_knowledge_home </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="knowledge-self_8cpp_ab7de2bac473b3a93ad1b8abbee8e22eb_cgraph.png" border="0" usemap="#aknowledge-self_8cpp_ab7de2bac473b3a93ad1b8abbee8e22eb_cgraph" alt=""/></div>
+<map name="aknowledge-self_8cpp_ab7de2bac473b3a93ad1b8abbee8e22eb_cgraph" id="aknowledge-self_8cpp_ab7de2bac473b3a93ad1b8abbee8e22eb_cgraph">
+<area shape="rect" title=" " alt="" coords="5,284,180,311"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="434,5,546,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="244,803,351,829"/>
+<area shape="rect" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="270,309,325,336"/>
+<area shape="rect" href="dump-util_8cpp.html#a27e645085e01749040cc85a4e9242bff" title="ダンプ用の一時ファイルを開く" alt="" coords="228,233,367,260"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="237,157,357,184"/>
+<area shape="rect" href="show-file_8h.html#a5bd591d95db1838d6d72a17dfc76e98f" title=" " alt="" coords="260,853,335,880"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="433,828,547,855"/>
+<area shape="rect" href="bow_8cpp.html#ac67fe672b98bb4c3ba89474dce007a50" title="射撃武器に対応する矢/弾薬のベースアイテムIDを返す /" alt="" coords="433,879,547,905"/>
+<area shape="rect" href="flavor-describer_8cpp.html#abffcf700f83741151f4d965b01800395" title=" " alt="" coords="422,1136,558,1163"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a779b5f26ab2e2c1e104583399787dcf1" title=" " alt="" coords="429,1212,551,1239"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a7ec17cfdde3219bd0e9dfe166181cc9d" title=" " alt="" coords="444,567,536,593"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a81194951a890007868ac1c4352750174" title=" " alt="" coords="419,929,561,956"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a6ad3608e29e2b55a612a9bece5987c6e" title=" " alt="" coords="435,1760,545,1787"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="415,1456,565,1483"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a040ee8534be2d36b2db2c511158488c0" title=" " alt="" coords="622,664,797,691"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a5f9a02ab4e1253b0cd2270b287b17bee" title="杖や光源等、寿命のあるアイテムの残り回数やターン表記" alt="" coords="423,1836,557,1863"/>
+<area shape="rect" href="flavor-describer_8cpp.html#af3b92a1eedcea38d55cb313d2ff7fbed" title=" " alt="" coords="634,512,785,539"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a487e2423615ea280fb3f3a339ae2980b" title=" " alt="" coords="441,676,539,703"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#ae75e4fc7cc754cbf43a5ef91d0e1d963" title=" " alt="" coords="415,411,565,437"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#acfcf21e14ba3017d1cc69e6fdff850e9" title="呪いの有無や割引率等を表示する" alt="" coords="613,1085,805,1112"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#a892d0257efeeabd5136e0e224ee0d757" title=" " alt="" coords="419,727,561,753"/>
+<area shape="rect" href="flavor-util_8cpp.html#ae0f69cdaef63ddd298c7fbe175bf8c21" title=" " alt="" coords="421,777,559,804"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="649,1136,769,1163"/>
+<area shape="rect" href="object-perception_8cpp.html#a28c38c7965d53e8b20d1937245b8970b" title=" " alt="" coords="656,1187,763,1213"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="653,1237,766,1264"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a8726edfc05ad4884bd9643a4bd2e8eff" title=" " alt="" coords="625,563,793,589"/>
+<area shape="rect" href="flavor-util_8cpp.html#aa1378b4bd2a85f709f6f48dc4f48ecf3" title="対象文字配列に一文字だけをコピーする。" alt="" coords="857,740,974,767"/>
+<area shape="rect" href="flavor-util_8cpp.html#aba21c13bcaaf19811cb5d62824eaa1af" title="対象文字配列に符号なし整数値をコピーする。" alt="" coords="853,487,977,513"/>
+<area shape="rect" href="flavor-util_8cpp.html#a35ea10adb65931a256030363f956a413" title="対象文字配列に符号あり整数値をコピーする。" alt="" coords="859,613,972,640"/>
+<area shape="rect" href="mind-sniper_8cpp.html#a6fd6bafd31f45a4175f2a8907c7fc614" title="スナイパーの集中度によるダメージボーナスを加算する" alt="" coords="640,867,779,909"/>
+<area shape="rect" href="shoot_8cpp.html#afea7a69a70c8e57df24d1d6a4a0153df" title=" " alt="" coords="671,715,748,741"/>
+<area shape="rect" href="shoot_8cpp.html#aa0e832cf3b6da1a0193d110bf0a42be5" title="射撃時クリティカルによるダメージ期待値修正計算（重量依存部分） / critical happens at i / 10000" alt="" coords="635,765,784,792"/>
+<area shape="rect" href="flavor-describer_8cpp.html#ab90ef1eec6a73db724ce2db39327766e" title=" " alt="" coords="639,816,780,843"/>
+<area shape="rect" href="flavor-util_8cpp.html#a9afac279f6c93e8e8856f96113493a8b" title="対象文字配列に文字列をコピーする。" alt="" coords="858,1481,973,1508"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="856,1140,975,1167"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a0c1fa37fd59818ca44bbe11db43aa593" title="武器/防具/アクセサリアイテムにおける、耐性やスレイ等の表記" alt="" coords="640,1811,779,1837"/>
+<area shape="rect" href="named-item-describer_8cpp.html#ac7efc2d8a25fc2fd5af3db95e7f3d9b4" title=" " alt="" coords="638,1289,781,1330"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a876c4fc7dc88a1fa3f2b7d6707b10cf8" title=" " alt="" coords="623,1355,796,1381"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a4db5274e8c52834bc7bb6ef880b0d09d" title=" " alt="" coords="621,1456,797,1483"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a4998ed0656a32c2290f80b72b751512d" title=" " alt="" coords="630,1507,789,1533"/>
+<area shape="rect" href="named-item-describer_8cpp.html#acaa46c6c182761a488d16112c7b3545a" title="銘を表記する" alt="" coords="641,1557,778,1584"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="680,1608,739,1635"/>
+<area shape="rect" href="named-item-describer_8cpp.html#ada4725207c8415750227020605ee0076" title=" " alt="" coords="652,1659,767,1685"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="632,1405,787,1432"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="872,208,959,235"/>
+<area shape="rect" href="angband-files_8cpp.html#ad6dfef3d6a652bf311e07eb7c1aee550" title=" " alt="" coords="417,107,563,133"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="445,208,535,235"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="670,208,749,235"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="655,107,764,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="knowledge-self_8cpp_ab7de2bac473b3a93ad1b8abbee8e22eb_icgraph.png" border="0" usemap="#aknowledge-self_8cpp_ab7de2bac473b3a93ad1b8abbee8e22eb_icgraph" alt=""/></div>
+<map name="aknowledge-self_8cpp_ab7de2bac473b3a93ad1b8abbee8e22eb_icgraph" id="aknowledge-self_8cpp_ab7de2bac473b3a93ad1b8abbee8e22eb_icgraph">
+<area shape="rect" title=" " alt="" coords="896,5,1071,32"/>
+<area shape="rect" href="cmd-knowledge_8cpp.html#aa220b38b20d426fe2517d1a4fd738e0c" title=" " alt="" coords="712,5,848,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad8c9d4de6c5e87ff995e2af752929808"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8c9d4de6c5e87ff995e2af752929808">&#9670;&nbsp;</a></span>do_cmd_knowledge_stat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_knowledge_stat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="knowledge-self_8cpp_ad8c9d4de6c5e87ff995e2af752929808_cgraph.png" border="0" usemap="#aknowledge-self_8cpp_ad8c9d4de6c5e87ff995e2af752929808_cgraph" alt=""/></div>
+<map name="aknowledge-self_8cpp_ad8c9d4de6c5e87ff995e2af752929808_cgraph" id="aknowledge-self_8cpp_ad8c9d4de6c5e87ff995e2af752929808_cgraph">
+<area shape="rect" title=" " alt="" coords="5,107,171,133"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="232,5,344,32"/>
+<area shape="rect" href="knowledge-self_8cpp.html#a472b126ad9ec5fd4bb9bd3a11e636f7f" title="自分に関する情報を画面に表示する" alt="" coords="235,56,341,83"/>
+<area shape="rect" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="451,107,505,133"/>
+<area shape="rect" href="dump-util_8cpp.html#a27e645085e01749040cc85a4e9242bff" title="ダンプ用の一時ファイルを開く" alt="" coords="219,157,357,184"/>
+<area shape="rect" href="show-file_8h.html#a5bd591d95db1838d6d72a17dfc76e98f" title=" " alt="" coords="251,208,325,235"/>
+<area shape="rect" href="buffer-shaper_8cpp.html#a74f223098d062fe8625ee0809a800315" title=" " alt="" coords="431,56,525,83"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="756,107,843,133"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="891,157,953,184"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="1001,183,1068,209"/>
+<area shape="rect" href="angband-files_8cpp.html#ad6dfef3d6a652bf311e07eb7c1aee550" title=" " alt="" coords="405,157,551,184"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="433,208,523,235"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="614,259,693,285"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="599,107,708,133"/>
+<area shape="rect" href="angband-files_8cpp.html#ab2f18c39aa3ab9c75fed34e21e784901" title=" " alt="" coords="758,157,841,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="knowledge-self_8cpp_ad8c9d4de6c5e87ff995e2af752929808_icgraph.png" border="0" usemap="#aknowledge-self_8cpp_ad8c9d4de6c5e87ff995e2af752929808_icgraph" alt=""/></div>
+<map name="aknowledge-self_8cpp_ad8c9d4de6c5e87ff995e2af752929808_icgraph" id="aknowledge-self_8cpp_ad8c9d4de6c5e87ff995e2af752929808_icgraph">
+<area shape="rect" title=" " alt="" coords="896,5,1061,32"/>
+<area shape="rect" href="cmd-knowledge_8cpp.html#aa220b38b20d426fe2517d1a4fd738e0c" title=" " alt="" coords="712,5,848,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4120497dfdeb621df236bfa9bb4a114d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4120497dfdeb621df236bfa9bb4a114d">&#9670;&nbsp;</a></span>do_cmd_knowledge_virtues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_knowledge_virtues </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>自己に関する情報を表示する </p>
+<dl class="section date"><dt>日付</dt><dd>2020/04/24 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="knowledge-self_8cpp_a4120497dfdeb621df236bfa9bb4a114d_cgraph.png" border="0" usemap="#aknowledge-self_8cpp_a4120497dfdeb621df236bfa9bb4a114d_cgraph" alt=""/></div>
+<map name="aknowledge-self_8cpp_a4120497dfdeb621df236bfa9bb4a114d_cgraph" id="aknowledge-self_8cpp_a4120497dfdeb621df236bfa9bb4a114d_cgraph">
+<area shape="rect" title="自己に関する情報を表示する" alt="" coords="5,132,185,159"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="247,5,359,32"/>
+<area shape="rect" href="avatar_8cpp.html#ab012a28489f1d40544ccabe10319c4f5" title="徳のダンプ表示を行う" alt="" coords="253,56,352,83"/>
+<area shape="rect" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="465,144,520,171"/>
+<area shape="rect" href="dump-util_8cpp.html#a27e645085e01749040cc85a4e9242bff" title="ダンプ用の一時ファイルを開く" alt="" coords="233,265,372,292"/>
+<area shape="rect" href="show-file_8h.html#a5bd591d95db1838d6d72a17dfc76e98f" title=" " alt="" coords="265,208,340,235"/>
+<area shape="rect" href="player-status_8cpp.html#a9274f7ed1a8752514bd93bd8027a4954" title="クリーチャーの抽象的善悪アライメントの表記を返す。 / Return alignment title" alt="" coords="247,107,358,133"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="463,68,522,95"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="905,107,968,133"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="1016,195,1083,221"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="771,169,857,196"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="905,195,968,221"/>
+<area shape="rect" href="angband-files_8cpp.html#ad6dfef3d6a652bf311e07eb7c1aee550" title=" " alt="" coords="420,220,565,247"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="447,321,538,348"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="629,271,707,297"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="613,169,723,196"/>
+<area shape="rect" href="angband-files_8cpp.html#ab2f18c39aa3ab9c75fed34e21e784901" title=" " alt="" coords="773,220,855,247"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="knowledge-self_8cpp_a4120497dfdeb621df236bfa9bb4a114d_icgraph.png" border="0" usemap="#aknowledge-self_8cpp_a4120497dfdeb621df236bfa9bb4a114d_icgraph" alt=""/></div>
+<map name="aknowledge-self_8cpp_a4120497dfdeb621df236bfa9bb4a114d_icgraph" id="aknowledge-self_8cpp_a4120497dfdeb621df236bfa9bb4a114d_icgraph">
+<area shape="rect" title="自己に関する情報を表示する" alt="" coords="896,5,1076,32"/>
+<area shape="rect" href="cmd-knowledge_8cpp.html#aa220b38b20d426fe2517d1a4fd738e0c" title=" " alt="" coords="712,5,848,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,31,664,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,31,448,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a472b126ad9ec5fd4bb9bd3a11e636f7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a472b126ad9ec5fd4bb9bd3a11e636f7f">&#9670;&nbsp;</a></span>dump_yourself()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void dump_yourself </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>自分に関する情報を画面に表示する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">fff</td><td>ファイルポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="knowledge-self_8cpp_a472b126ad9ec5fd4bb9bd3a11e636f7f_cgraph.png" border="0" usemap="#aknowledge-self_8cpp_a472b126ad9ec5fd4bb9bd3a11e636f7f_cgraph" alt=""/></div>
+<map name="aknowledge-self_8cpp_a472b126ad9ec5fd4bb9bd3a11e636f7f_cgraph" id="aknowledge-self_8cpp_a472b126ad9ec5fd4bb9bd3a11e636f7f_cgraph">
+<area shape="rect" title="自分に関する情報を画面に表示する" alt="" coords="5,5,112,32"/>
+<area shape="rect" href="buffer-shaper_8cpp.html#a74f223098d062fe8625ee0809a800315" title=" " alt="" coords="160,5,255,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="knowledge-self_8cpp_a472b126ad9ec5fd4bb9bd3a11e636f7f_icgraph.png" border="0" usemap="#aknowledge-self_8cpp_a472b126ad9ec5fd4bb9bd3a11e636f7f_icgraph" alt=""/></div>
+<map name="aknowledge-self_8cpp_a472b126ad9ec5fd4bb9bd3a11e636f7f_icgraph" id="aknowledge-self_8cpp_a472b126ad9ec5fd4bb9bd3a11e636f7f_icgraph">
+<area shape="rect" title="自分に関する情報を画面に表示する" alt="" coords="619,31,725,57"/>
+<area shape="rect" href="knowledge-self_8cpp.html#ad8c9d4de6c5e87ff995e2af752929808" title=" " alt="" coords="405,31,571,57"/>
+<area shape="rect" href="cmd-knowledge_8cpp.html#aa220b38b20d426fe2517d1a4fd738e0c" title=" " alt="" coords="221,31,357,57"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分37秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

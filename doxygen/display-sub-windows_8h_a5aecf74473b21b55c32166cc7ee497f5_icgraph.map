@@ -1,0 +1,52 @@
+<map id="fix_equip" name="fix_equip">
+<area shape="rect" id="node1" title="現在の装備品をサブウィンドウに表示する / Hack – display equipment in sub&#45;windows" alt="" coords="940,1053,1013,1080"/>
+<area shape="rect" id="node2" href="$window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="797,1053,892,1080"/>
+<area shape="rect" id="node3" href="$stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="659,1509,749,1536"/>
+<area shape="rect" id="node7" href="$player-move_8cpp.html#ac637efbeba2a2fca5538ee13812b97bf" title="移動に伴うプレイヤーのステータス変化処理" alt="" coords="207,2295,339,2321"/>
+<area shape="rect" id="node39" href="$player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="217,65,328,92"/>
+<area shape="rect" id="node50" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="665,597,743,624"/>
+<area shape="rect" id="node4" href="$input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="461,1560,563,1587"/>
+<area shape="rect" id="node5" href="$pet-util_8cpp.html#a6da87a66edbf955c4c0fb4336d34d60f" title="プレイヤーの騎乗/下馬処理判定" alt="" coords="443,1611,581,1637"/>
+<area shape="rect" id="node6" href="$player-inventory_8cpp.html#a9a1c3265a4b625e9f772baa1c55a0a3e" title="プレイヤーがオブジェクト上に乗った際の表示処理 / Player &quot;wants&quot; to pick up an object or gold." alt="" coords="487,2269,537,2296"/>
+<area shape="rect" id="node8" href="$realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="5,2295,132,2321"/>
+<area shape="rect" id="node9" href="$cursor_8cpp.html#a32ea13a872e058d5f3236a496b71462a" title="フォーカスを当てるべきマップ描画の基準座標を指定する（サブルーチン）" alt="" coords="461,2573,563,2600"/>
+<area shape="rect" id="node10" href="$cmd-floor_8cpp.html#acd79a6cf02eda3f886024b7b48c31e73" title="位置を確認するコマンドのメインルーチン Allow the player to examine other sectors on the map" alt="" coords="217,2548,328,2575"/>
+<area shape="rect" id="node11" href="$shape-changer_8cpp.html#a7e5697a071fe31476a758edba5057d36" title=" " alt="" coords="21,851,117,877"/>
+<area shape="rect" id="node12" href="$cmd-spell_8cpp.html#a06816378fb54efdc970af77a16abe448" title="プレイヤーの第二魔法領域を変更する /" alt="" coords="457,2421,567,2448"/>
+<area shape="rect" id="node13" href="$cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="219,2421,326,2448"/>
+<area shape="rect" id="node14" href="$cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f" title=" " alt="" coords="443,851,581,877"/>
+<area shape="rect" id="node15" href="$player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="209,192,336,219"/>
+<area shape="rect" id="node16" href="$game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="466,952,558,979"/>
+<area shape="rect" id="node17" href="$building-craft-weapon_8cpp.html#a2b2951f2d62f18d1a7867d4f1524079e" title="武器匠鑑定1回分（オブジェクト2種）の処理。/ Compare weapons" alt="" coords="447,1003,577,1029"/>
+<area shape="rect" id="node18" href="$knowledge-items_8cpp.html#a523d2aaf1b1c03fd9ff5fdfdaa9d49f5" title=" " alt="" coords="459,1053,565,1080"/>
+<area shape="rect" id="node19" href="$knowledge-items_8cpp.html#a6cc60a9c8d1e600f6618e93dde225137" title="Display known objects" alt="" coords="180,1256,365,1283"/>
+<area shape="rect" id="node20" href="$target-describer_8cpp.html#a385f9390a5aeeb71e53958c351bbe287" title=" " alt="" coords="463,2067,561,2093"/>
+<area shape="rect" id="node21" href="$cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="454,1155,570,1181"/>
+<area shape="rect" id="node22" href="$cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="453,496,571,523"/>
+<area shape="rect" id="node23" href="$cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="223,293,323,320"/>
+<area shape="rect" id="node24" href="$knowledge-monsters_8cpp.html#a3ba32fc8df87acb37ad0757bdc3a0388" title="Display known monsters." alt="" coords="413,2117,611,2144"/>
+<area shape="rect" id="node25" href="$cmd-floor_8cpp.html#ad1856d6353df054753f18b12ae7b319c" title="周囲を見渡すコマンドのメインルーチン Look command" alt="" coords="463,648,561,675"/>
+<area shape="rect" id="node26" href="$cmd-pet_8cpp.html#a5393c5248eb883f75cebd459120fb959" title="ペットに関するコマンドリストのメインルーチン / Issue a pet command" alt="" coords="226,749,319,776"/>
+<area shape="rect" id="node27" href="$cmd-pet_8cpp.html#a016f22b29967f438acaee62a94bb05af" title="ペットを開放するコマンドのメインルーチン" alt="" coords="439,749,585,776"/>
+<area shape="rect" id="node28" href="$cmd-draw_8cpp.html#ad3528b8e2356de97114f203b4d4ef4f9" title="プレイヤーのステータス表示" alt="" coords="435,2168,589,2195"/>
+<area shape="rect" id="node29" href="$cmd-lore_8cpp.html#ae1f67e879bad2c6ac1ee0971abd55d5d" title="モンスターの思い出を見るコマンドのメインルーチン Identify a character, allow recall of monsters" alt="" coords="434,2219,590,2245"/>
+<area shape="rect" id="node30" href="$cmd-draw_8cpp.html#ae19882bca0152830acd6b12e0c50eeb2" title="画面を再描画するコマンドのメインルーチン Hack – redraw the screen" alt="" coords="455,2624,569,2651"/>
+<area shape="rect" id="node31" href="$cmd-process-screen_8cpp.html#a1f4156d254c4e75492a93a62c6d47d1d" title=" " alt="" coords="199,2675,346,2701"/>
+<area shape="rect" id="node32" href="$cmd-move_8cpp.html#a1ca5da27fdf6b4625bbac49754cd7ce8" title="「休む」動作コマンドのメインルーチン / Resting allows a player to safely restore his hp &#45;RAK&#45;" alt="" coords="463,1661,561,1688"/>
+<area shape="rect" id="node33" href="$cmd-save_8cpp.html#a5f3c9a464d1f438f0a2860a68b31da96" title="セーブするコマンドのメインルーチン Save the game" alt="" coords="442,597,582,624"/>
+<area shape="rect" id="node34" href="$cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="460,699,564,725"/>
+<area shape="rect" id="node35" href="$monk-attack_8cpp.html#affb3013a6705f2f1cc0ffb9f20790ff6" title=" " alt="" coords="461,901,563,928"/>
+<area shape="rect" id="node36" href="$bounty_8cpp.html#a6aa3c9347a136a6ff64e84d0dd306057" title="賞金首の引き換え処理 / Get prize" alt="" coords="455,1104,569,1131"/>
+<area shape="rect" id="node37" href="$shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="479,547,545,573"/>
+<area shape="rect" id="node38" href="$mutation-investor-remover_8cpp.html#a3f2ae6d11a1293d5aaba45657ea17e0a" title="プレイヤーに突然変異を与える" alt="" coords="461,91,563,117"/>
+<area shape="rect" id="node40" href="$spells-genocide_8cpp.html#a92bd5e26c84fa2eb42514b87bc6f2632" title="モンスターへの単体抹殺処理サブルーチン / Delete a non&#45;unique/non&#45;quest monster" alt="" coords="461,1712,563,1739"/>
+<area shape="rect" id="node41" href="$asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="453,293,571,320"/>
+<area shape="rect" id="node42" href="$mind-elementalist_8cpp.html#a1cf8ce6181c605bc9e09247323cb95f2" title="元素魔法呪文を選択して取得" alt="" coords="445,1763,579,1789"/>
+<area shape="rect" id="node43" href="$cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="443,1813,581,1840"/>
+<area shape="rect" id="node44" href="$item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="237,800,309,827"/>
+<area shape="rect" id="node45" href="$floor-item-getter_8cpp.html#a608d31e79fc4aba7a4903453f3c78c95" title="オブジェクト選択の汎用関数(床上アイテム用) / Let the user select an item, save its &quot;index&quot;" alt="" coords="461,800,563,827"/>
+<area shape="rect" id="node46" href="$learnt-power-getter_8cpp.html#a4b2de56dc35d14f2c36ac65ad283a869" title="使用可能な青魔法を選択する / Allow user to choose a imitation." alt="" coords="447,1864,577,1891"/>
+<area shape="rect" id="node47" href="$cmd-mane_8cpp.html#a9803c7ddf3888e2717d6d2e1d10f3154" title="どのものまねを発動するか選択する処理 / Allow user to choose a imitation." alt="" coords="452,1915,572,1941"/>
+<area shape="rect" id="node48" href="$mind-power-getter_8cpp.html#ae10efe533854f8dec5377db176677dc7" title="使用可能な特殊技能を選択する / Allow user to choose a mindcrafter power." alt="" coords="454,1965,570,1992"/>
+<area shape="rect" id="node49" href="$mind-sniper_8cpp.html#a948ccca094f40c437b69212b68a38a64" title="スナイパー技能を選択する" alt="" coords="453,2016,571,2043"/>
+</map>

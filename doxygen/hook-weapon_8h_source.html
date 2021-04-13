@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/object-hook/hook-weapon.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_8bb31b59ca59df56bca4016a9e010a5e.html">object-hook</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">hook-weapon.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="hook-weapon_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#ad8e02dc35577d1491c25dc28b9dccd4f">item_tester_hook_orthodox_melee_weapons</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#acb85a34c752e413a4250542127270ea3">item_tester_hook_melee_weapon</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#ace12018b3dbff13c74b2139168e38f27">item_tester_hook_broken_weapon</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#af044098e98b94810061a9515e4766af5">item_tester_hook_boomerang</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#a149f8b11045e7b691befed88873b974c">item_tester_hook_mochikae</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#a5b0eb47e02dac170b9cee8a4b35fb887">object_is_favorite</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#a3c30f6f6fb14bece864e482c0080485c">object_is_weapon</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#a3abbd26c216ede60fb3c6e8d519cc7c6">object_is_weapon_ammo</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#a70ad6a543702cb8d8c26dc4674051839">object_is_weapon_armour_ammo</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#a0e428cd41af0f842e9e73e48a7cfc77d">object_is_melee_weapon</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#aa805c153039786690b595cdcc5e693a6">object_is_wearable</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#a440de5f35a9a07a64dd27fc8074a3948">object_is_equipment</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#a9281e4b4b09f84281bc99f39699747db">object_refuse_enchant_weapon</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#aab8e2d5bc14010a9e4b9c377f8ac200e">object_allow_enchant_weapon</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#a00ad5aac8cc8b32eff8498c7da83abf3">object_allow_enchant_melee_weapon</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-weapon_8h.html#a33693ed23357e9335a244f44ac3128b2">object_allow_two_hands_wielding</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_a00ad5aac8cc8b32eff8498c7da83abf3"><div class="ttname"><a href="hook-weapon_8h.html#a00ad5aac8cc8b32eff8498c7da83abf3">object_allow_enchant_melee_weapon</a></div><div class="ttdeci">bool object_allow_enchant_melee_weapon(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトが強化可能な近接武器であるかを返す / Check if an object is melee weapon and allows enchantment</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:292</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_a0e428cd41af0f842e9e73e48a7cfc77d"><div class="ttname"><a href="hook-weapon_8h.html#a0e428cd41af0f842e9e73e48a7cfc77d">object_is_melee_weapon</a></div><div class="ttdeci">bool object_is_melee_weapon(object_type *o_ptr)</div><div class="ttdoc">オブジェクトが近接武器として装備できるかを返す / Melee weapons</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:222</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_a149f8b11045e7b691befed88873b974c"><div class="ttname"><a href="hook-weapon_8h.html#a149f8b11045e7b691befed88873b974c">item_tester_hook_mochikae</a></div><div class="ttdeci">bool item_tester_hook_mochikae(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトがどちらの手にも装備できる武器かどうかの判定</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:98</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_a33693ed23357e9335a244f44ac3128b2"><div class="ttname"><a href="hook-weapon_8h.html#a33693ed23357e9335a244f44ac3128b2">object_allow_two_hands_wielding</a></div><div class="ttdeci">bool object_allow_two_hands_wielding(object_type *o_ptr)</div><div class="ttdoc">オブジェクトが両手持ち可能な武器かを返す / Check if an object is melee weapon and allows wielding with two-hands</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:309</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_a3abbd26c216ede60fb3c6e8d519cc7c6"><div class="ttname"><a href="hook-weapon_8h.html#a3abbd26c216ede60fb3c6e8d519cc7c6">object_is_weapon_ammo</a></div><div class="ttdeci">bool object_is_weapon_ammo(object_type *o_ptr)</div><div class="ttdoc">オブジェクトが武器や矢弾として使用できるかを返す / Check if an object is weapon (including bows and ammo) Rare weapons/aromor...</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:193</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_a3c30f6f6fb14bece864e482c0080485c"><div class="ttname"><a href="hook-weapon_8h.html#a3c30f6f6fb14bece864e482c0080485c">object_is_weapon</a></div><div class="ttdeci">bool object_is_weapon(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトが武器として装備できるかどうかを返す / Check if an object is weapon (including bows and ammo)</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:176</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_a440de5f35a9a07a64dd27fc8074a3948"><div class="ttname"><a href="hook-weapon_8h.html#a440de5f35a9a07a64dd27fc8074a3948">object_is_equipment</a></div><div class="ttdeci">bool object_is_equipment(object_type *o_ptr)</div><div class="ttdoc">オブジェクトが装備品であるかを返す(object_is_wearableに矢弾を含む) / Equipment including all wearable objects and ammo</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:248</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_a5b0eb47e02dac170b9cee8a4b35fb887"><div class="ttname"><a href="hook-weapon_8h.html#a5b0eb47e02dac170b9cee8a4b35fb887">object_is_favorite</a></div><div class="ttdeci">bool object_is_favorite(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトがプレイヤーの職業に応じた適正武器か否かを返す / Favorite weapons</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:115</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_a70ad6a543702cb8d8c26dc4674051839"><div class="ttname"><a href="hook-weapon_8h.html#a70ad6a543702cb8d8c26dc4674051839">object_is_weapon_armour_ammo</a></div><div class="ttdeci">bool object_is_weapon_armour_ammo(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:206</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_a9281e4b4b09f84281bc99f39699747db"><div class="ttname"><a href="hook-weapon_8h.html#a9281e4b4b09f84281bc99f39699747db">object_refuse_enchant_weapon</a></div><div class="ttdeci">bool object_refuse_enchant_weapon(object_type *o_ptr)</div><div class="ttdoc">オブジェクトが強化不能武器であるかを返す / Poison needle can not be enchanted</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:261</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_aa805c153039786690b595cdcc5e693a6"><div class="ttname"><a href="hook-weapon_8h.html#aa805c153039786690b595cdcc5e693a6">object_is_wearable</a></div><div class="ttdeci">bool object_is_wearable(object_type *o_ptr)</div><div class="ttdoc">オブジェクトが装備可能であるかを返す / Wearable including all weapon, all armour, bow, light source,...</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:235</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_aab8e2d5bc14010a9e4b9c377f8ac200e"><div class="ttname"><a href="hook-weapon_8h.html#aab8e2d5bc14010a9e4b9c377f8ac200e">object_allow_enchant_weapon</a></div><div class="ttdeci">bool object_allow_enchant_weapon(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトが強化可能武器であるかを返す / Check if an object is weapon (including bows and ammo) and allows enchantment</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:275</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_acb85a34c752e413a4250542127270ea3"><div class="ttname"><a href="hook-weapon_8h.html#acb85a34c752e413a4250542127270ea3">item_tester_hook_melee_weapon</a></div><div class="ttdeci">bool item_tester_hook_melee_weapon(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトが右手か左手に装備できる武器かどうかの判定</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:43</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_ace12018b3dbff13c74b2139168e38f27"><div class="ttname"><a href="hook-weapon_8h.html#ace12018b3dbff13c74b2139168e38f27">item_tester_hook_broken_weapon</a></div><div class="ttdeci">bool item_tester_hook_broken_weapon(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">修復対象となる壊れた武器かを判定する。 / Hook to specify &quot;broken weapon&quot;</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:60</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_ad8e02dc35577d1491c25dc28b9dccd4f"><div class="ttname"><a href="hook-weapon_8h.html#ad8e02dc35577d1491c25dc28b9dccd4f">item_tester_hook_orthodox_melee_weapons</a></div><div class="ttdeci">bool item_tester_hook_orthodox_melee_weapons(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">武器匠の「武器」鑑定対象になるかを判定する。/ Hook to specify &quot;weapon&quot;</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:15</div></div>
+<div class="ttc" id="ahook-weapon_8h_html_af044098e98b94810061a9515e4766af5"><div class="ttname"><a href="hook-weapon_8h.html#af044098e98b94810061a9515e4766af5">item_tester_hook_boomerang</a></div><div class="ttdeci">bool item_tester_hook_boomerang(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトが投射可能な武器かどうかを返す。</div><div class="ttdef"><b>Definition:</b> hook-weapon.cpp:82</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

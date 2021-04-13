@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['v_5fchance_25958',['V_CHANCE',['../avatar_8h.html#a35bd99f9dc7cefdeba2e19ffb411954d',1,'avatar.h']]],
+  ['v_5fcompassion_25959',['V_COMPASSION',['../avatar_8h.html#a9d08fff0c9b082834f9d20c017444a06',1,'avatar.h']]],
+  ['v_5fdiligence_25960',['V_DILIGENCE',['../avatar_8h.html#a9ccb308ad462977a5b02417e666b0356',1,'avatar.h']]],
+  ['v_5fenchant_25961',['V_ENCHANT',['../avatar_8h.html#a139080787bd614553e47c2c5221e09ed',1,'avatar.h']]],
+  ['v_5fenlighten_25962',['V_ENLIGHTEN',['../avatar_8h.html#a8516ad4f3d831f3fcf1c5854ab186470',1,'avatar.h']]],
+  ['v_5ffaith_25963',['V_FAITH',['../avatar_8h.html#a1553eeaead2603a69b8d9439a222fc4c',1,'avatar.h']]],
+  ['v_5fharmony_25964',['V_HARMONY',['../avatar_8h.html#a4fe39f85fc4725dbb685de97b4b07b9c',1,'avatar.h']]],
+  ['v_5fhonour_25965',['V_HONOUR',['../avatar_8h.html#a9b071fc3f9d6f529ffb89a362aad2237',1,'avatar.h']]],
+  ['v_5findividualism_25966',['V_INDIVIDUALISM',['../avatar_8h.html#a8d1118f034e4401ea0e65a9f9ebaf69c',1,'avatar.h']]],
+  ['v_5fjustice_25967',['V_JUSTICE',['../avatar_8h.html#af217ffbea0fc6a6420c9781b7eb2a3ac',1,'avatar.h']]],
+  ['v_5fknowledge_25968',['V_KNOWLEDGE',['../avatar_8h.html#a62c812b22b27da9f0ac6a474d778501f',1,'avatar.h']]],
+  ['v_5fnature_25969',['V_NATURE',['../avatar_8h.html#a32bfaff0e8d47216a67ede5a14f7fdee',1,'avatar.h']]],
+  ['v_5fpatience_25970',['V_PATIENCE',['../avatar_8h.html#a7ac0915802589273c9e781fa9af2f6fa',1,'avatar.h']]],
+  ['v_5fsacrifice_25971',['V_SACRIFICE',['../avatar_8h.html#a049621b33de0d9fd6ac41956f7e2261d',1,'avatar.h']]],
+  ['v_5ftemperance_25972',['V_TEMPERANCE',['../avatar_8h.html#ab542a07c7907da03cf93e3f29fda1432',1,'avatar.h']]],
+  ['v_5funlife_25973',['V_UNLIFE',['../avatar_8h.html#a9bdc89a8b11f43b8323175d07db97c96',1,'avatar.h']]],
+  ['v_5fvalour_25974',['V_VALOUR',['../avatar_8h.html#adc27ca6d646e80f9162b60b3cd098b70',1,'avatar.h']]],
+  ['v_5fvitality_25975',['V_VITALITY',['../avatar_8h.html#acb52b03b3b715b2600b5366999762b02',1,'avatar.h']]],
+  ['valid_5frealm_25976',['VALID_REALM',['../realm-names-table_8h.html#ac0691fb9b47364d83ddfb431ff5625ed',1,'realm-names-table.h']]],
+  ['version_5fname_25977',['VERSION_NAME',['../angband-version_8h.html#a0f6b33e60d027eacf28ed3c94efcd47c',1,'angband-version.h']]],
+  ['view_5fmax_25978',['VIEW_MAX',['../sight-definitions_8h.html#a00558904bd57953b6400327d167587f4',1,'sight-definitions.h']]],
+  ['view_5fversion_5fminus_25979',['VIEW_VERSION_MINUS',['../angband-version_8h.html#ad3a0a181850f2f580d0bf3b4269428de',1,'angband-version.h']]],
+  ['virtue_5flarge_25980',['VIRTUE_LARGE',['../avatar_8h.html#a0f0051ab477e42d0a0db0ace3b811b39',1,'avatar.h']]],
+  ['virtue_5fsmall_25981',['VIRTUE_SMALL',['../avatar_8h.html#a74b9fab7c9b326ce846f90ee04d8f241',1,'avatar.h']]]
+];

@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/flavor/flavor-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_00a0f7706b31e0c6052c2f42eab1294e.html">flavor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">flavor-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="flavor-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="flavor-util_8h.html#aec82beceb1360d8cde7c73085f704659">    1</a></span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="object-type-definition_8h.html">system/object-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structobject__kind.html">object_kind</a> <a class="code" href="structobject__kind.html">object_kind</a>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structflavor__type.html">    7</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structflavor__type.html">flavor_type</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structflavor__type.html#a889e987a2e4737975343faf36ceeeb50">    8</a></span>&#160;    <span class="keywordtype">char</span> *<a class="code" href="structflavor__type.html#a889e987a2e4737975343faf36ceeeb50">buf</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structflavor__type.html#a189bf4108772cad3dc578b2ccc4f9604">    9</a></span>&#160;    <a class="code" href="structobject__type.html">object_type</a> *<a class="code" href="structflavor__type.html#a189bf4108772cad3dc578b2ccc4f9604">o_ptr</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structflavor__type.html#a12edc0e9c7a63b75b5dd4742d2c47b44">   10</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structflavor__type.html#a12edc0e9c7a63b75b5dd4742d2c47b44">mode</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structflavor__type.html#ab60bba37172403b496c25cfbc4d510f7">   11</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structflavor__type.html#ab60bba37172403b496c25cfbc4d510f7">kindname</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structflavor__type.html#ac56ac54c01b86a3513028d3ecea1a068">   12</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structflavor__type.html#ac56ac54c01b86a3513028d3ecea1a068">basenm</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structflavor__type.html#a11d902c6d2d432860589e26e284c3c81">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structflavor__type.html#a11d902c6d2d432860589e26e284c3c81">modstr</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structflavor__type.html#a68246ea9422c65573d603adc1aa95eb6">   14</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structflavor__type.html#a68246ea9422c65573d603adc1aa95eb6">power</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structflavor__type.html#a6a9e2d8f4f331927bdb233f1e88d48f6">   15</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structflavor__type.html#a6a9e2d8f4f331927bdb233f1e88d48f6">fire_rate</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structflavor__type.html#aeb02f7cc5bd5159285945b04bb325de8">   16</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structflavor__type.html#aeb02f7cc5bd5159285945b04bb325de8">aware</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structflavor__type.html#a8d4289c2a3b3ae01a92aa4e531d368be">   17</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structflavor__type.html#a8d4289c2a3b3ae01a92aa4e531d368be">known</a>; <span class="comment">// 鑑定 or *鑑定* 済.</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structflavor__type.html#a4a4f3ebc3baef197e1aef32023d76fa4">   18</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structflavor__type.html#a4a4f3ebc3baef197e1aef32023d76fa4">flavor</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structflavor__type.html#aae03eb4ba195929780e35064e599e31b">   19</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structflavor__type.html#aae03eb4ba195929780e35064e599e31b">show_weapon</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structflavor__type.html#af6330d62ba185fccc11fb19622b338d6">   20</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structflavor__type.html#af6330d62ba185fccc11fb19622b338d6">show_armour</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structflavor__type.html#a580a992a1e806169602abd096e591a1c">   21</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structflavor__type.html#a580a992a1e806169602abd096e591a1c">s</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structflavor__type.html#a811fd215968a97dbb78f8a20728d7d39">   22</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structflavor__type.html#a811fd215968a97dbb78f8a20728d7d39">s0</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structflavor__type.html#a21e698b1b48529ec63f221726311ee94">   23</a></span>&#160;    <span class="keywordtype">char</span> *<a class="code" href="structflavor__type.html#a21e698b1b48529ec63f221726311ee94">t</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structflavor__type.html#a93fabfe66926de290759e6b8de5c6170">   24</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structflavor__type.html#a93fabfe66926de290759e6b8de5c6170">p1</a>; <span class="comment">// const.</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structflavor__type.html#ac797cf9311963b844e84f46d61a51205">   25</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structflavor__type.html#ac797cf9311963b844e84f46d61a51205">p2</a>; <span class="comment">// const.</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structflavor__type.html#af5a0d37caf3d93364409f6862f57d726">   26</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structflavor__type.html#af5a0d37caf3d93364409f6862f57d726">b1</a>; <span class="comment">// const.</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structflavor__type.html#aa7f39ef8de0a8b86ee1c6fcb83ea147e">   27</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structflavor__type.html#aa7f39ef8de0a8b86ee1c6fcb83ea147e">b2</a>; <span class="comment">// const.</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structflavor__type.html#a27b0482578627373eb59f0cf88d7889d">   28</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structflavor__type.html#a27b0482578627373eb59f0cf88d7889d">c1</a>; <span class="comment">// const.</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structflavor__type.html#ac6a547741195c6631955efb12e564194">   29</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structflavor__type.html#ac6a547741195c6631955efb12e564194">c2</a>; <span class="comment">// const.</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structflavor__type.html#a1bf0624f3624d0865f99ccc452abc65d">   30</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structflavor__type.html#a1bf0624f3624d0865f99ccc452abc65d">tmp_val</a>[<a class="code" href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a> + 160];</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structflavor__type.html#ae7ecc5f4a32f5b6b84976c0c26035829">   31</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structflavor__type.html#ae7ecc5f4a32f5b6b84976c0c26035829">tmp_val2</a>[<a class="code" href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a> + 10];</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structflavor__type.html#aff0293bae67d859f4b75fb7d2d442941">   32</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structflavor__type.html#aff0293bae67d859f4b75fb7d2d442941">fake_insc_buf</a>[30];</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structflavor__type.html#a7db7b260ea70035147840a0e78b7ff8e">   33</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structflavor__type.html#a7db7b260ea70035147840a0e78b7ff8e">tr_flags</a>[<a class="code" href="object-type-definition_8h.html#a396c51ddaffe17c1e21a428c41ba294e">TR_FLAG_SIZE</a>];</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structflavor__type.html#a251e0e52e3921b1ee56b2e29063713f1">   34</a></span>&#160;    <a class="code" href="structobject__type.html">object_type</a> *<a class="code" href="structflavor__type.html#a251e0e52e3921b1ee56b2e29063713f1">bow_ptr</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structflavor__type.html#aa038d3973e44ba0f4a9dd1b69acf5941">   35</a></span>&#160;    <a class="code" href="structobject__kind.html">object_kind</a> *<a class="code" href="structflavor__type.html#aa038d3973e44ba0f4a9dd1b69acf5941">k_ptr</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structflavor__type.html#ae041e16b1a8e9936037800dba1a03ca7">   36</a></span>&#160;    <a class="code" href="structobject__kind.html">object_kind</a> *<a class="code" href="structflavor__type.html#ae041e16b1a8e9936037800dba1a03ca7">flavor_k_ptr</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structflavor__type.html#a50f7545b2665b06e7f499eefbe01ed6c">   37</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structflavor__type.html#a50f7545b2665b06e7f499eefbe01ed6c">avgdam</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="flavor-util_8h.html#a891eb24a1633bd68e503964d2d3222eb">   38</a></span>&#160;} <a class="code" href="flavor-util_8h.html#a891eb24a1633bd68e503964d2d3222eb">flavor_type</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<a class="code" href="structflavor__type.html">flavor_type</a> *<a class="code" href="flavor-util_8h.html#ae0f69cdaef63ddd298c7fbe175bf8c21">initialize_flavor_type</a>(<a class="code" href="structflavor__type.html">flavor_type</a> *flavor_ptr, <span class="keywordtype">char</span> *<a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="code" href="structobject__type.html">object_type</a> *o_ptr, <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> mode);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="flavor-util_8h.html#aa1378b4bd2a85f709f6f48dc4f48ecf3">object_desc_chr</a>(<span class="keywordtype">char</span> *t, <span class="keywordtype">char</span> c);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="flavor-util_8h.html#a9afac279f6c93e8e8856f96113493a8b">object_desc_str</a>(<span class="keywordtype">char</span> *t, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> s);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="flavor-util_8h.html#aba21c13bcaaf19811cb5d62824eaa1af">object_desc_num</a>(<span class="keywordtype">char</span> *t, <a class="code" href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> n);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="flavor-util_8h.html#a35ea10adb65931a256030363f956a413">object_desc_int</a>(<span class="keywordtype">char</span> *t, <span class="keywordtype">int</span> v);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="flavor-util_8h.html#a2a309a1eb1fc607269fbb6c2706771fb">get_ability_abbreviation</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <span class="keywordtype">char</span> *ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr, <span class="keywordtype">bool</span> kanji, <span class="keywordtype">bool</span> all);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> <a class="code" href="flavor-util_8h.html#a2ab0b9abe9d4010c3c68e34581cd867a">get_inscription</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <span class="keywordtype">char</span> *buff, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="flavor-util_8h.html#a969b350b6dade559035adfbbd61f2113">has_lite_flag</a>(<a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> *flags);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="flavor-util_8h.html#a9ec35a9bca6d928400303f3d27ef9c25">has_dark_flag</a>(<a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> *flags);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#ifdef JP</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">char</span> *object_desc_count_japanese(<span class="keywordtype">char</span> *t, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aflavor-util_8h_html_a2a309a1eb1fc607269fbb6c2706771fb"><div class="ttname"><a href="flavor-util_8h.html#a2a309a1eb1fc607269fbb6c2706771fb">get_ability_abbreviation</a></div><div class="ttdeci">char * get_ability_abbreviation(player_type *player_ptr, char *ptr, object_type *o_ptr, bool kanji, bool all)</div><div class="ttdoc">オブジェクト名の特性短縮表記をまとめて提示する。</div><div class="ttdef"><b>Definition:</b> flavor-util.cpp:192</div></div>
+<div class="ttc" id="aflavor-util_8h_html_a2ab0b9abe9d4010c3c68e34581cd867a"><div class="ttname"><a href="flavor-util_8h.html#a2ab0b9abe9d4010c3c68e34581cd867a">get_inscription</a></div><div class="ttdeci">void get_inscription(player_type *player_ptr, char *buff, object_type *o_ptr)</div><div class="ttdoc">オブジェクト名の特性短縮表記＋刻み内容を提示する。 / Get object inscription with auto inscription of object flags.</div><div class="ttdef"><b>Definition:</b> flavor-util.cpp:319</div></div>
+<div class="ttc" id="aflavor-util_8h_html_a35ea10adb65931a256030363f956a413"><div class="ttname"><a href="flavor-util_8h.html#a35ea10adb65931a256030363f956a413">object_desc_int</a></div><div class="ttdeci">char * object_desc_int(char *t, int v)</div><div class="ttdoc">対象文字配列に符号あり整数値をコピーする。</div><div class="ttdef"><b>Definition:</b> flavor-util.cpp:109</div></div>
+<div class="ttc" id="aflavor-util_8h_html_a891eb24a1633bd68e503964d2d3222eb"><div class="ttname"><a href="flavor-util_8h.html#a891eb24a1633bd68e503964d2d3222eb">flavor_type</a></div><div class="ttdeci">struct flavor_type flavor_type</div></div>
+<div class="ttc" id="aflavor-util_8h_html_a969b350b6dade559035adfbbd61f2113"><div class="ttname"><a href="flavor-util_8h.html#a969b350b6dade559035adfbbd61f2113">has_lite_flag</a></div><div class="ttdeci">bool has_lite_flag(BIT_FLAGS *flags)</div><div class="ttdef"><b>Definition:</b> flavor-util.cpp:461</div></div>
+<div class="ttc" id="aflavor-util_8h_html_a9afac279f6c93e8e8856f96113493a8b"><div class="ttname"><a href="flavor-util_8h.html#a9afac279f6c93e8e8856f96113493a8b">object_desc_str</a></div><div class="ttdeci">char * object_desc_str(char *t, concptr s)</div><div class="ttdoc">対象文字配列に文字列をコピーする。</div><div class="ttdef"><b>Definition:</b> flavor-util.cpp:64</div></div>
+<div class="ttc" id="aflavor-util_8h_html_a9ec35a9bca6d928400303f3d27ef9c25"><div class="ttname"><a href="flavor-util_8h.html#a9ec35a9bca6d928400303f3d27ef9c25">has_dark_flag</a></div><div class="ttdeci">bool has_dark_flag(BIT_FLAGS *flags)</div><div class="ttdef"><b>Definition:</b> flavor-util.cpp:463</div></div>
+<div class="ttc" id="aflavor-util_8h_html_aa1378b4bd2a85f709f6f48dc4f48ecf3"><div class="ttname"><a href="flavor-util_8h.html#aa1378b4bd2a85f709f6f48dc4f48ecf3">object_desc_chr</a></div><div class="ttdeci">char * object_desc_chr(char *t, char c)</div><div class="ttdoc">対象文字配列に一文字だけをコピーする。</div><div class="ttdef"><b>Definition:</b> flavor-util.cpp:48</div></div>
+<div class="ttc" id="aflavor-util_8h_html_aba21c13bcaaf19811cb5d62824eaa1af"><div class="ttname"><a href="flavor-util_8h.html#aba21c13bcaaf19811cb5d62824eaa1af">object_desc_num</a></div><div class="ttdeci">char * object_desc_num(char *t, uint n)</div><div class="ttdoc">対象文字配列に符号なし整数値をコピーする。</div><div class="ttdef"><b>Definition:</b> flavor-util.cpp:82</div></div>
+<div class="ttc" id="aflavor-util_8h_html_ae0f69cdaef63ddd298c7fbe175bf8c21"><div class="ttname"><a href="flavor-util_8h.html#ae0f69cdaef63ddd298c7fbe175bf8c21">initialize_flavor_type</a></div><div class="ttdeci">flavor_type * initialize_flavor_type(flavor_type *flavor_ptr, char *buf, object_type *o_ptr, BIT_FLAGS mode)</div><div class="ttdef"><b>Definition:</b> flavor-util.cpp:15</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a709af41498f5625eae9f3b73fb6b6f3c"><div class="ttname"><a href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a></div><div class="ttdeci">#define MAX_NLEN</div><div class="ttdoc">Maximum length of object's name</div><div class="ttdef"><b>Definition:</b> h-type.h:58</div></div>
+<div class="ttc" id="ah-type_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="h-type_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> h-type.h:73</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="aobject-type-definition_8h_html"><div class="ttname"><a href="object-type-definition_8h.html">object-type-definition.h</a></div></div>
+<div class="ttc" id="aobject-type-definition_8h_html_a396c51ddaffe17c1e21a428c41ba294e"><div class="ttname"><a href="object-type-definition_8h.html#a396c51ddaffe17c1e21a428c41ba294e">TR_FLAG_SIZE</a></div><div class="ttdeci">#define TR_FLAG_SIZE</div><div class="ttdef"><b>Definition:</b> object-type-definition.h:6</div></div>
+<div class="ttc" id="arecord-play-movie_8cpp_html_a1fe855c208bc17a51a4d34fefdb2d5b1"><div class="ttname"><a href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a></div><div class="ttdeci">char * buf</div><div class="ttdef"><b>Definition:</b> record-play-movie.cpp:54</div></div>
+<div class="ttc" id="astructflavor__type_html"><div class="ttname"><a href="structflavor__type.html">flavor_type</a></div><div class="ttdef"><b>Definition:</b> flavor-util.h:7</div></div>
+<div class="ttc" id="astructflavor__type_html_a11d902c6d2d432860589e26e284c3c81"><div class="ttname"><a href="structflavor__type.html#a11d902c6d2d432860589e26e284c3c81">flavor_type::modstr</a></div><div class="ttdeci">concptr modstr</div><div class="ttdef"><b>Definition:</b> flavor-util.h:13</div></div>
+<div class="ttc" id="astructflavor__type_html_a12edc0e9c7a63b75b5dd4742d2c47b44"><div class="ttname"><a href="structflavor__type.html#a12edc0e9c7a63b75b5dd4742d2c47b44">flavor_type::mode</a></div><div class="ttdeci">BIT_FLAGS mode</div><div class="ttdef"><b>Definition:</b> flavor-util.h:10</div></div>
+<div class="ttc" id="astructflavor__type_html_a189bf4108772cad3dc578b2ccc4f9604"><div class="ttname"><a href="structflavor__type.html#a189bf4108772cad3dc578b2ccc4f9604">flavor_type::o_ptr</a></div><div class="ttdeci">object_type * o_ptr</div><div class="ttdef"><b>Definition:</b> flavor-util.h:9</div></div>
+<div class="ttc" id="astructflavor__type_html_a1bf0624f3624d0865f99ccc452abc65d"><div class="ttname"><a href="structflavor__type.html#a1bf0624f3624d0865f99ccc452abc65d">flavor_type::tmp_val</a></div><div class="ttdeci">char tmp_val[MAX_NLEN+160]</div><div class="ttdef"><b>Definition:</b> flavor-util.h:30</div></div>
+<div class="ttc" id="astructflavor__type_html_a21e698b1b48529ec63f221726311ee94"><div class="ttname"><a href="structflavor__type.html#a21e698b1b48529ec63f221726311ee94">flavor_type::t</a></div><div class="ttdeci">char * t</div><div class="ttdef"><b>Definition:</b> flavor-util.h:23</div></div>
+<div class="ttc" id="astructflavor__type_html_a251e0e52e3921b1ee56b2e29063713f1"><div class="ttname"><a href="structflavor__type.html#a251e0e52e3921b1ee56b2e29063713f1">flavor_type::bow_ptr</a></div><div class="ttdeci">object_type * bow_ptr</div><div class="ttdef"><b>Definition:</b> flavor-util.h:34</div></div>
+<div class="ttc" id="astructflavor__type_html_a27b0482578627373eb59f0cf88d7889d"><div class="ttname"><a href="structflavor__type.html#a27b0482578627373eb59f0cf88d7889d">flavor_type::c1</a></div><div class="ttdeci">char c1</div><div class="ttdef"><b>Definition:</b> flavor-util.h:28</div></div>
+<div class="ttc" id="astructflavor__type_html_a4a4f3ebc3baef197e1aef32023d76fa4"><div class="ttname"><a href="structflavor__type.html#a4a4f3ebc3baef197e1aef32023d76fa4">flavor_type::flavor</a></div><div class="ttdeci">bool flavor</div><div class="ttdef"><b>Definition:</b> flavor-util.h:18</div></div>
+<div class="ttc" id="astructflavor__type_html_a50f7545b2665b06e7f499eefbe01ed6c"><div class="ttname"><a href="structflavor__type.html#a50f7545b2665b06e7f499eefbe01ed6c">flavor_type::avgdam</a></div><div class="ttdeci">int avgdam</div><div class="ttdef"><b>Definition:</b> flavor-util.h:37</div></div>
+<div class="ttc" id="astructflavor__type_html_a580a992a1e806169602abd096e591a1c"><div class="ttname"><a href="structflavor__type.html#a580a992a1e806169602abd096e591a1c">flavor_type::s</a></div><div class="ttdeci">concptr s</div><div class="ttdef"><b>Definition:</b> flavor-util.h:21</div></div>
+<div class="ttc" id="astructflavor__type_html_a68246ea9422c65573d603adc1aa95eb6"><div class="ttname"><a href="structflavor__type.html#a68246ea9422c65573d603adc1aa95eb6">flavor_type::power</a></div><div class="ttdeci">int power</div><div class="ttdef"><b>Definition:</b> flavor-util.h:14</div></div>
+<div class="ttc" id="astructflavor__type_html_a6a9e2d8f4f331927bdb233f1e88d48f6"><div class="ttname"><a href="structflavor__type.html#a6a9e2d8f4f331927bdb233f1e88d48f6">flavor_type::fire_rate</a></div><div class="ttdeci">int fire_rate</div><div class="ttdef"><b>Definition:</b> flavor-util.h:15</div></div>
+<div class="ttc" id="astructflavor__type_html_a7db7b260ea70035147840a0e78b7ff8e"><div class="ttname"><a href="structflavor__type.html#a7db7b260ea70035147840a0e78b7ff8e">flavor_type::tr_flags</a></div><div class="ttdeci">BIT_FLAGS tr_flags[TR_FLAG_SIZE]</div><div class="ttdef"><b>Definition:</b> flavor-util.h:33</div></div>
+<div class="ttc" id="astructflavor__type_html_a811fd215968a97dbb78f8a20728d7d39"><div class="ttname"><a href="structflavor__type.html#a811fd215968a97dbb78f8a20728d7d39">flavor_type::s0</a></div><div class="ttdeci">concptr s0</div><div class="ttdef"><b>Definition:</b> flavor-util.h:22</div></div>
+<div class="ttc" id="astructflavor__type_html_a889e987a2e4737975343faf36ceeeb50"><div class="ttname"><a href="structflavor__type.html#a889e987a2e4737975343faf36ceeeb50">flavor_type::buf</a></div><div class="ttdeci">char * buf</div><div class="ttdef"><b>Definition:</b> flavor-util.h:8</div></div>
+<div class="ttc" id="astructflavor__type_html_a8d4289c2a3b3ae01a92aa4e531d368be"><div class="ttname"><a href="structflavor__type.html#a8d4289c2a3b3ae01a92aa4e531d368be">flavor_type::known</a></div><div class="ttdeci">bool known</div><div class="ttdef"><b>Definition:</b> flavor-util.h:17</div></div>
+<div class="ttc" id="astructflavor__type_html_a93fabfe66926de290759e6b8de5c6170"><div class="ttname"><a href="structflavor__type.html#a93fabfe66926de290759e6b8de5c6170">flavor_type::p1</a></div><div class="ttdeci">char p1</div><div class="ttdef"><b>Definition:</b> flavor-util.h:24</div></div>
+<div class="ttc" id="astructflavor__type_html_aa038d3973e44ba0f4a9dd1b69acf5941"><div class="ttname"><a href="structflavor__type.html#aa038d3973e44ba0f4a9dd1b69acf5941">flavor_type::k_ptr</a></div><div class="ttdeci">object_kind * k_ptr</div><div class="ttdef"><b>Definition:</b> flavor-util.h:35</div></div>
+<div class="ttc" id="astructflavor__type_html_aa7f39ef8de0a8b86ee1c6fcb83ea147e"><div class="ttname"><a href="structflavor__type.html#aa7f39ef8de0a8b86ee1c6fcb83ea147e">flavor_type::b2</a></div><div class="ttdeci">char b2</div><div class="ttdef"><b>Definition:</b> flavor-util.h:27</div></div>
+<div class="ttc" id="astructflavor__type_html_aae03eb4ba195929780e35064e599e31b"><div class="ttname"><a href="structflavor__type.html#aae03eb4ba195929780e35064e599e31b">flavor_type::show_weapon</a></div><div class="ttdeci">bool show_weapon</div><div class="ttdef"><b>Definition:</b> flavor-util.h:19</div></div>
+<div class="ttc" id="astructflavor__type_html_ab60bba37172403b496c25cfbc4d510f7"><div class="ttname"><a href="structflavor__type.html#ab60bba37172403b496c25cfbc4d510f7">flavor_type::kindname</a></div><div class="ttdeci">concptr kindname</div><div class="ttdef"><b>Definition:</b> flavor-util.h:11</div></div>
+<div class="ttc" id="astructflavor__type_html_ac56ac54c01b86a3513028d3ecea1a068"><div class="ttname"><a href="structflavor__type.html#ac56ac54c01b86a3513028d3ecea1a068">flavor_type::basenm</a></div><div class="ttdeci">concptr basenm</div><div class="ttdef"><b>Definition:</b> flavor-util.h:12</div></div>
+<div class="ttc" id="astructflavor__type_html_ac6a547741195c6631955efb12e564194"><div class="ttname"><a href="structflavor__type.html#ac6a547741195c6631955efb12e564194">flavor_type::c2</a></div><div class="ttdeci">char c2</div><div class="ttdef"><b>Definition:</b> flavor-util.h:29</div></div>
+<div class="ttc" id="astructflavor__type_html_ac797cf9311963b844e84f46d61a51205"><div class="ttname"><a href="structflavor__type.html#ac797cf9311963b844e84f46d61a51205">flavor_type::p2</a></div><div class="ttdeci">char p2</div><div class="ttdef"><b>Definition:</b> flavor-util.h:25</div></div>
+<div class="ttc" id="astructflavor__type_html_ae041e16b1a8e9936037800dba1a03ca7"><div class="ttname"><a href="structflavor__type.html#ae041e16b1a8e9936037800dba1a03ca7">flavor_type::flavor_k_ptr</a></div><div class="ttdeci">object_kind * flavor_k_ptr</div><div class="ttdef"><b>Definition:</b> flavor-util.h:36</div></div>
+<div class="ttc" id="astructflavor__type_html_ae7ecc5f4a32f5b6b84976c0c26035829"><div class="ttname"><a href="structflavor__type.html#ae7ecc5f4a32f5b6b84976c0c26035829">flavor_type::tmp_val2</a></div><div class="ttdeci">char tmp_val2[MAX_NLEN+10]</div><div class="ttdef"><b>Definition:</b> flavor-util.h:31</div></div>
+<div class="ttc" id="astructflavor__type_html_aeb02f7cc5bd5159285945b04bb325de8"><div class="ttname"><a href="structflavor__type.html#aeb02f7cc5bd5159285945b04bb325de8">flavor_type::aware</a></div><div class="ttdeci">bool aware</div><div class="ttdef"><b>Definition:</b> flavor-util.h:16</div></div>
+<div class="ttc" id="astructflavor__type_html_af5a0d37caf3d93364409f6862f57d726"><div class="ttname"><a href="structflavor__type.html#af5a0d37caf3d93364409f6862f57d726">flavor_type::b1</a></div><div class="ttdeci">char b1</div><div class="ttdef"><b>Definition:</b> flavor-util.h:26</div></div>
+<div class="ttc" id="astructflavor__type_html_af6330d62ba185fccc11fb19622b338d6"><div class="ttname"><a href="structflavor__type.html#af6330d62ba185fccc11fb19622b338d6">flavor_type::show_armour</a></div><div class="ttdeci">bool show_armour</div><div class="ttdef"><b>Definition:</b> flavor-util.h:20</div></div>
+<div class="ttc" id="astructflavor__type_html_aff0293bae67d859f4b75fb7d2d442941"><div class="ttname"><a href="structflavor__type.html#aff0293bae67d859f4b75fb7d2d442941">flavor_type::fake_insc_buf</a></div><div class="ttdeci">char fake_insc_buf[30]</div><div class="ttdef"><b>Definition:</b> flavor-util.h:32</div></div>
+<div class="ttc" id="astructobject__kind_html"><div class="ttname"><a href="structobject__kind.html">object_kind</a></div><div class="ttdef"><b>Definition:</b> object-kind.h:12</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

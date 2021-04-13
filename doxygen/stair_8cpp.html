@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/grid/stair.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_35c063c51595aed048740f74a780093f.html">grid</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">stair.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="stair_8h_source.html">grid/stair.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon_8h_source.html">dungeon/dungeon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quest_8h_source.html">dungeon/quest.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-options_8h_source.html">game-option/birth-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cave_8h_source.html">floor/cave.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-enchant_8h_source.html">object-hook/hook-enchant.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+stair.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="stair_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2grid_2stair_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2grid_2stair_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2grid_2stair_8cpp">
+<area shape="rect" title=" " alt="" coords="611,5,821,47"/>
+<area shape="rect" href="stair_8h.html" title=" " alt="" coords="727,177,809,203"/>
+<area shape="rect" href="dungeon_8h.html" title=" " alt="" coords="1165,95,1299,121"/>
+<area shape="rect" href="quest_8h.html" title=" " alt="" coords="341,95,459,121"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="5,169,139,211"/>
+<area shape="rect" href="birth-options_8h.html" title=" " alt="" coords="961,95,1140,121"/>
+<area shape="rect" href="cave_8h.html" title=" " alt="" coords="591,95,678,121"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="485,95,563,121"/>
+<area shape="rect" href="hook-enchant_8h.html" title=" " alt="" coords="754,95,937,121"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1725,95,1913,121"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="751,266,881,293"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1373,355,1464,382"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1488,355,1579,382"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="639,355,737,382"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="761,355,860,382"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="1050,355,1150,382"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1174,355,1349,382"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="884,355,1025,382"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="468,355,615,382"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="167,437,286,464"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="486,437,597,464"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="986,177,1083,203"/>
+<area shape="rect" title=" " alt="" coords="1094,266,1149,293"/>
+<area shape="rect" title=" " alt="" coords="1253,266,1309,293"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="1159,169,1324,211"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="912,266,1069,293"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="337,259,482,300"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="249,348,393,389"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1603,348,1759,389"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="87,348,225,389"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="9,266,135,293"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="436,177,551,203"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1835,177,2013,203"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="2038,177,2189,203"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a05af2d25963d08c4ce1ae1e297560051"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stair_8cpp.html#a05af2d25963d08c4ce1ae1e297560051">place_random_stairs</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="memdesc:a05af2d25963d08c4ce1ae1e297560051"><td class="mdescLeft">&#160;</td><td class="mdescRight">所定の位置に上り階段か下り階段を配置する / Place an up/down staircase at given location  <a href="stair_8cpp.html#a05af2d25963d08c4ce1ae1e297560051">[詳解]</a><br /></td></tr>
+<tr class="separator:a05af2d25963d08c4ce1ae1e297560051"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea4112323991d426dd48847f219a0bc8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stair_8cpp.html#aea4112323991d426dd48847f219a0bc8">cave_valid_bold</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="memdesc:aea4112323991d426dd48847f219a0bc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定された座標が地震や階段生成の対象となるマスかを返す。 / Determine if a given location may be "destroyed"  <a href="stair_8cpp.html#aea4112323991d426dd48847f219a0bc8">[詳解]</a><br /></td></tr>
+<tr class="separator:aea4112323991d426dd48847f219a0bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="aea4112323991d426dd48847f219a0bc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea4112323991d426dd48847f219a0bc8">&#9670;&nbsp;</a></span>cave_valid_bold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> cave_valid_bold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>指定された座標が地震や階段生成の対象となるマスかを返す。 / Determine if a given location may be "destroyed" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">y</td><td>y座標 </td></tr>
+    <tr><td class="paramname">x</td><td>x座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>各種の変更が可能ならTRUEを返す。</dd></dl>
+<p>条件は永久地形でなく、なおかつ該当のマスにアーティファクトが存在しないか、である。英語の旧コメントに反して＊破壊＊の抑止判定には現在使われていない。 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="stair_8cpp_aea4112323991d426dd48847f219a0bc8_cgraph.png" border="0" usemap="#astair_8cpp_aea4112323991d426dd48847f219a0bc8_cgraph" alt=""/></div>
+<map name="astair_8cpp_aea4112323991d426dd48847f219a0bc8_cgraph" id="astair_8cpp_aea4112323991d426dd48847f219a0bc8_cgraph">
+<area shape="rect" title="指定された座標が地震や階段生成の対象となるマスかを返す。 / Determine if a given location may be &quot;destroyed&quot;" alt="" coords="5,31,116,57"/>
+<area shape="rect" href="cave_8cpp.html#a72e9e49e417af9b290323225114db833" title=" " alt="" coords="164,5,295,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="169,56,289,83"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="343,56,497,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="stair_8cpp_aea4112323991d426dd48847f219a0bc8_icgraph.png" border="0" usemap="#astair_8cpp_aea4112323991d426dd48847f219a0bc8_icgraph" alt=""/></div>
+<map name="astair_8cpp_aea4112323991d426dd48847f219a0bc8_icgraph" id="astair_8cpp_aea4112323991d426dd48847f219a0bc8_icgraph">
+<area shape="rect" title="指定された座標が地震や階段生成の対象となるマスかを返す。 / Determine if a given location may be &quot;destroyed&quot;" alt="" coords="896,688,1007,715"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="755,477,841,504"/>
+<area shape="rect" href="spells-grid_8cpp.html#acf2eb5e94ece8678894af710d01688f4" title="プレイヤーの手による能動的な階段生成処理 / Create stairs at or move previously created stairs into the player location." alt="" coords="748,713,848,740"/>
+<area shape="rect" href="activation-others_8cpp.html#a9b90dfddb03061f58f3689526fb96528" title=" " alt="" coords="544,173,681,200"/>
+<area shape="rect" href="spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="343,275,465,301"/>
+<area shape="rect" href="spells-trump_8cpp.html#a62ebe5c603d93fd2c11edcc6fc2b4caf" title="トランプ領域の「シャッフル」の効果をランダムに決めて処理する。" alt="" coords="5,351,96,377"/>
+<area shape="rect" href="spells-random_8cpp.html#ad3967ff26aec044a7b9dd0a553073fe3" title="運命の輪、並びにカオス的な効果の発動" alt="" coords="170,427,257,453"/>
+<area shape="rect" href="blood-curse_8cpp.html#ac0ecc46e48f607918b001bc2b08b561f" title=" " alt="" coords="535,427,691,453"/>
+<area shape="rect" href="mind-berserker_8cpp.html#a73db877ef674132d5c3149ed726ccf47" title="怒りの発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;berserker&#39;." alt="" coords="547,477,678,504"/>
+<area shape="rect" href="spells-summon_8cpp.html#ae25b9862f324f43e7bd22de4bba02963" title="「悪霊召喚」のランダムな効果を決定して処理する。" alt="" coords="547,528,679,555"/>
+<area shape="rect" href="spells-random_8cpp.html#a37a969b807fd2f1ce9399ed7851424c7" title="「ワンダー」のランダムな効果を決定して処理する。" alt="" coords="565,579,660,605"/>
+<area shape="rect" href="player-attack_8cpp.html#a4941cbce22aea0186f8fffa85dd4930a" title="地震を起こす" alt="" coords="549,629,677,656"/>
+<area shape="rect" href="melee-switcher_8cpp.html#a26526a37b98f5208b627891dcc405fa4" title=" " alt="" coords="534,681,691,722"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="549,747,676,773"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="557,797,669,824"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="556,899,669,925"/>
+<area shape="rect" href="mutation-execution_8cpp.html#a0c9c1052c587d71b683d8a700d9ae016" title="突然変異のレイシャル効果実装" alt="" coords="542,848,683,875"/>
+<area shape="rect" href="cmd-usestaff_8cpp.html#a4a284c2f2988d427dd6baac5fcf99fd6" title="杖の効果を発動する" alt="" coords="571,5,655,32"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a74d62708df45b643ad7193b43e5d053c" title="クラスパワーを実行" alt="" coords="525,56,700,83"/>
+<area shape="rect" href="monster-attack-switcher_8cpp.html#a5de1dfd64f941a47e81c3fb2c043a3e2" title=" " alt="" coords="539,107,686,149"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#aa3c6ea47d39b38e54711fcfdbca7f4b6" title="周辺破壊効果(プレイヤー中心)" alt="" coords="565,325,660,352"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="344,173,464,200"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="152,173,275,200"/>
+<area shape="rect" href="trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="181,224,246,251"/>
+<area shape="rect" href="monster-status_8cpp.html#ae88b5c2cdbbdd487fe9d94a99438be81" title="モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death." alt="" coords="163,275,263,301"/>
+<area shape="rect" href="inventory-curse_8cpp.html#ac7a04f90d8b3a0ebdf4a37a38e9203dd" title=" " alt="" coords="144,72,283,99"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="158,123,269,149"/>
+<area shape="rect" href="player-attack_8cpp.html#a7a5d04133dc8285f590218cfa1f63780" title="プレイヤーの打撃処理サブルーチン / Player attacks a (poor, defenseless) creature &#45;RAK&#45;" alt="" coords="331,622,477,663"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3877284386fd0f7550d1bc35fc17b19c" title=" " alt="" coords="349,688,459,715"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a05af2d25963d08c4ce1ae1e297560051"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05af2d25963d08c4ce1ae1e297560051">&#9670;&nbsp;</a></span>place_random_stairs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void place_random_stairs </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>所定の位置に上り階段か下り階段を配置する / Place an up/down staircase at given location </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">y</td><td>配置を試みたいマスのY座標 </td></tr>
+    <tr><td class="paramname">x</td><td>配置を試みたいマスのX座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="stair_8cpp_a05af2d25963d08c4ce1ae1e297560051_cgraph.png" border="0" usemap="#astair_8cpp_a05af2d25963d08c4ce1ae1e297560051_cgraph" alt=""/></div>
+<map name="astair_8cpp_a05af2d25963d08c4ce1ae1e297560051_cgraph" id="astair_8cpp_a05af2d25963d08c4ce1ae1e297560051_cgraph">
+<area shape="rect" title="所定の位置に上り階段か下り階段を配置する / Place an up/down staircase at given location" alt="" coords="5,31,148,57"/>
+<area shape="rect" href="quest_8cpp.html#a5b6b24bb1f79322d67d0cc51368d3ad3" title="新しく入ったダンジョンの階層に固定されている一般のクエストを探し出しIDを返す。 / Hack – Check if a level is a &quot;quest&quot; level" alt="" coords="196,5,300,32"/>
+<area shape="rect" href="grid_8cpp.html#a5c5e9d2e2502b05246d84d0707dec50e" title=" " alt="" coords="197,56,299,83"/>
+<area shape="rect" href="quest_8cpp.html#abab5512f0df1872d981afddd7ca8481f" title="新しく入ったダンジョンの階層に固定されているランダムクエストを探し出しIDを返す。" alt="" coords="348,5,503,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="stair_8cpp_a05af2d25963d08c4ce1ae1e297560051_icgraph.png" border="0" usemap="#astair_8cpp_a05af2d25963d08c4ce1ae1e297560051_icgraph" alt=""/></div>
+<map name="astair_8cpp_a05af2d25963d08c4ce1ae1e297560051_icgraph" id="astair_8cpp_a05af2d25963d08c4ce1ae1e297560051_icgraph">
+<area shape="rect" title="所定の位置に上り階段か下り階段を配置する / Place an up/down staircase at given location" alt="" coords="437,5,580,32"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a2f8e9286a1a69a7231e18e15ef037893" title="タイプ4の部屋…固定サイズの二重構造部屋を生成する / Type 4 – Large room with inner features" alt="" coords="301,5,389,32"/>
+<area shape="rect" href="room-generator_8cpp.html#a5308aed51162378846c18cb4b1a05ae3" title="与えられた部屋型IDに応じて部屋の生成処理分岐を行い結果を返す / Attempt to build a room of the given type at the given block" alt="" coords="168,5,253,32"/>
+<area shape="rect" href="room-generator_8cpp.html#ac162d3550981d56e72a3a79a1078aa76" title="部屋生成処理のメインルーチン(Sangbandを経由してOangbandからの実装を引用) / Generate rooms in dungeon." alt="" coords="5,5,120,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分20秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

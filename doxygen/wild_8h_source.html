@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/floor/wild.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a620f8a6b723e397390ae5ca00f5aa8c.html">floor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">wild.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="wild_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="wild_8h.html#acd56f7333f3de5a0d3d4f4dca634a05a">    5</a></span>&#160;<span class="preprocessor">#define NO_TOWN 6</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="wild_8h.html#a832c9e611d839a6ae2e1f1c9308fa4e3">    6</a></span>&#160;<span class="preprocessor">#define SECRET_TOWN 5</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">enum</span> <a class="code" href="parse-error-types_8h.html#a0910e3ed68e027a6e5d590d1520c1697">parse_error_type</a> : int;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/* Wilderness Terrains */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="wild_8h.html#af014f6e4df3706ef74612911626fed37">   11</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="wild_8h.html#af014f6e4df3706ef74612911626fed37">wt_type</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="wild_8h.html#af014f6e4df3706ef74612911626fed37af4bbae733291af39bd94dcd232d07fa0">   12</a></span>&#160;    <a class="code" href="wild_8h.html#af014f6e4df3706ef74612911626fed37af4bbae733291af39bd94dcd232d07fa0">TERRAIN_EDGE</a> = 0, <span class="comment">/* Edge of the World */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="wild_8h.html#af014f6e4df3706ef74612911626fed37af1dc7dff4805315f4f7ad356477939ba">   13</a></span>&#160;    <a class="code" href="wild_8h.html#af014f6e4df3706ef74612911626fed37af1dc7dff4805315f4f7ad356477939ba">TERRAIN_TOWN</a> = 1, <span class="comment">/* Town */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="wild_8h.html#af014f6e4df3706ef74612911626fed37ac2b79871cb16c38d095a683c767ad69e">   14</a></span>&#160;    <a class="code" href="wild_8h.html#af014f6e4df3706ef74612911626fed37ac2b79871cb16c38d095a683c767ad69e">TERRAIN_DEEP_WATER</a> = 2, <span class="comment">/* Deep water */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="wild_8h.html#af014f6e4df3706ef74612911626fed37aaf54fd30c46165200b5ac910b5a0211c">   15</a></span>&#160;    <a class="code" href="wild_8h.html#af014f6e4df3706ef74612911626fed37aaf54fd30c46165200b5ac910b5a0211c">TERRAIN_SHALLOW_WATER</a> = 3, <span class="comment">/* Shallow water */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="wild_8h.html#af014f6e4df3706ef74612911626fed37aed25358684c409a3d4e42c4fc5982646">   16</a></span>&#160;    <a class="code" href="wild_8h.html#af014f6e4df3706ef74612911626fed37aed25358684c409a3d4e42c4fc5982646">TERRAIN_SWAMP</a> = 4, <span class="comment">/* Swamp */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="wild_8h.html#af014f6e4df3706ef74612911626fed37ac92c15605d171747a6a7766061a5a92f">   17</a></span>&#160;    <a class="code" href="wild_8h.html#af014f6e4df3706ef74612911626fed37ac92c15605d171747a6a7766061a5a92f">TERRAIN_DIRT</a> = 5, <span class="comment">/* Dirt */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="wild_8h.html#af014f6e4df3706ef74612911626fed37a487f0c36cc467bfee23dc5dc72e8cc53">   18</a></span>&#160;    <a class="code" href="wild_8h.html#af014f6e4df3706ef74612911626fed37a487f0c36cc467bfee23dc5dc72e8cc53">TERRAIN_GRASS</a> = 6, <span class="comment">/* Grass */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="wild_8h.html#af014f6e4df3706ef74612911626fed37a805411918cded90eaf442a096e92b79a">   19</a></span>&#160;    <a class="code" href="wild_8h.html#af014f6e4df3706ef74612911626fed37a805411918cded90eaf442a096e92b79a">TERRAIN_TREES</a> = 7, <span class="comment">/* Trees */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="wild_8h.html#af014f6e4df3706ef74612911626fed37ab5a2aa66f61349261143f703272b72a9">   20</a></span>&#160;    <a class="code" href="wild_8h.html#af014f6e4df3706ef74612911626fed37ab5a2aa66f61349261143f703272b72a9">TERRAIN_DESERT</a> = 8, <span class="comment">/* Desert */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="wild_8h.html#af014f6e4df3706ef74612911626fed37a7df3b297037f32e12adf1a17570194d5">   21</a></span>&#160;    <a class="code" href="wild_8h.html#af014f6e4df3706ef74612911626fed37a7df3b297037f32e12adf1a17570194d5">TERRAIN_SHALLOW_LAVA</a> = 9, <span class="comment">/* Shallow lava */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="wild_8h.html#af014f6e4df3706ef74612911626fed37a8b64bb169f25e69bb247d81b8ad5b135">   22</a></span>&#160;    <a class="code" href="wild_8h.html#af014f6e4df3706ef74612911626fed37a8b64bb169f25e69bb247d81b8ad5b135">TERRAIN_DEEP_LAVA</a> = 10, <span class="comment">/* Deep lava */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="wild_8h.html#af014f6e4df3706ef74612911626fed37a8c4faa706e6dd306a65c6bfbd76b8054">   23</a></span>&#160;    <a class="code" href="wild_8h.html#af014f6e4df3706ef74612911626fed37a8c4faa706e6dd306a65c6bfbd76b8054">TERRAIN_MOUNTAIN</a> = 11, <span class="comment">/* Mountain */</span>   </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="wild_8h.html#af014f6e4df3706ef74612911626fed37a3e796ee38db0afdb62aa8d92c666126a">   24</a></span>&#160;    <a class="code" href="wild_8h.html#af014f6e4df3706ef74612911626fed37a3e796ee38db0afdb62aa8d92c666126a">MAX_WILDERNESS</a> = 12, <span class="comment">/* Maximum wilderness index */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wild_8h.html#a7ee8f4d60d0eae646b701d9b15dae91b">set_floor_and_wall</a>(<a class="code" href="h-type_8h.html#ad858b43cf9b1e70a02dbeabfd632b70c">DUNGEON_IDX</a> type);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wild_8h.html#ad2b39f3334022fd4e424dbc1029c79f4">wilderness_gen</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wild_8h.html#a23a94f3898758c39d5b3d102d9a8d076">wilderness_gen_small</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> <a class="code" href="wild_8h.html#aa1f8acaf5fe825e10c7aca19f9221a50">init_wilderness</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wild_8h.html#aebeefda4eb79962726c84cc82aea648e">init_wilderness_terrains</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wild_8h.html#a6e089c9c345787e8ddadb21d82c6b850">seed_wilderness</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<a class="code" href="parse-error-types_8h.html#a0910e3ed68e027a6e5d590d1520c1697">parse_error_type</a> <a class="code" href="wild_8h.html#a276eca2704b4a40fcbfa59274b9035c1">parse_line_wilderness</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">char</span> *<a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <span class="keywordtype">int</span> xmin, <span class="keywordtype">int</span> xmax, <span class="keywordtype">int</span> *y, <span class="keywordtype">int</span> *x);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="wild_8h.html#a50c95b33e216b6cd860ddc2ac319c510">change_wild_mode</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">bool</span> encount);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> * A structure describing a wilderness area with a terrain or a town</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structwilderness__type.html">   39</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structwilderness__type.html">wilderness_type</a> {</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structwilderness__type.html#a28546f9335c28701c7f084f98cc2915c">   40</a></span>&#160;    <a class="code" href="wild_8h.html#af014f6e4df3706ef74612911626fed37">wt_type</a> <a class="code" href="structwilderness__type.html#a28546f9335c28701c7f084f98cc2915c">terrain</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structwilderness__type.html#adf3446d53a52e8f0baa59af3ac3c51e9">   41</a></span>&#160;    <a class="code" href="h-type_8h.html#adc2d0131e2525ce0dc1b663caaaf384e">TOWN_IDX</a> <a class="code" href="structwilderness__type.html#adf3446d53a52e8f0baa59af3ac3c51e9">town</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structwilderness__type.html#a483c3cbf31f2407e1311fea29c3d551c">   42</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structwilderness__type.html#a483c3cbf31f2407e1311fea29c3d551c">road</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structwilderness__type.html#ab20eccb51d4a811c393a2442c2bc618e">   43</a></span>&#160;    <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="structwilderness__type.html#ab20eccb51d4a811c393a2442c2bc618e">seed</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structwilderness__type.html#a2998348c041566ee7fc91e70a2ca88d5">   44</a></span>&#160;    <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> <a class="code" href="structwilderness__type.html#a2998348c041566ee7fc91e70a2ca88d5">level</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structwilderness__type.html#a9be1a68eee3539c888c92a1c02b713eb">   45</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structwilderness__type.html#a9be1a68eee3539c888c92a1c02b713eb">entrance</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="wild_8h.html#a775c4015ebe15ca9fc0f8448a86f091e">   46</a></span>&#160;} <a class="code" href="wild_8h.html#a775c4015ebe15ca9fc0f8448a86f091e">wilderness_type</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">extern</span> <a class="code" href="structwilderness__type.html">wilderness_type</a> **<a class="code" href="wild_8h.html#a1d1dae6d403d8fccdf29575a205225bf">wilderness</a>;</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a1c8b80a20fb5396ff07a523b01112c47"><div class="ttname"><a href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a></div><div class="ttdeci">s32b DEPTH</div><div class="ttdoc">ゲーム中の階層レベルの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:194</div></div>
+<div class="ttc" id="ah-type_8h_html_ad858b43cf9b1e70a02dbeabfd632b70c"><div class="ttname"><a href="h-type_8h.html#ad858b43cf9b1e70a02dbeabfd632b70c">DUNGEON_IDX</a></div><div class="ttdeci">s16b DUNGEON_IDX</div><div class="ttdoc">ゲーム中のダンジョンID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:111</div></div>
+<div class="ttc" id="ah-type_8h_html_ad99e8b64263d5831d93bec22e89da527"><div class="ttname"><a href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a></div><div class="ttdeci">int errr</div><div class="ttdoc">エラーコードの定義 / Error codes for function return values</div><div class="ttdef"><b>Definition:</b> h-type.h:53</div></div>
+<div class="ttc" id="ah-type_8h_html_adc2d0131e2525ce0dc1b663caaaf384e"><div class="ttname"><a href="h-type_8h.html#adc2d0131e2525ce0dc1b663caaaf384e">TOWN_IDX</a></div><div class="ttdeci">s16b TOWN_IDX</div><div class="ttdoc">ゲーム中の町ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:98</div></div>
+<div class="ttc" id="ah-type_8h_html_af7a1de980667931f896ae6a820f0ee80"><div class="ttname"><a href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a></div><div class="ttdeci">unsigned long u32b</div><div class="ttdef"><b>Definition:</b> h-type.h:93</div></div>
+<div class="ttc" id="aparse-error-types_8h_html_a0910e3ed68e027a6e5d590d1520c1697"><div class="ttname"><a href="parse-error-types_8h.html#a0910e3ed68e027a6e5d590d1520c1697">parse_error_type</a></div><div class="ttdeci">parse_error_type</div><div class="ttdef"><b>Definition:</b> parse-error-types.h:3</div></div>
+<div class="ttc" id="arecord-play-movie_8cpp_html_a1fe855c208bc17a51a4d34fefdb2d5b1"><div class="ttname"><a href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a></div><div class="ttdeci">char * buf</div><div class="ttdef"><b>Definition:</b> record-play-movie.cpp:54</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="astructwilderness__type_html"><div class="ttname"><a href="structwilderness__type.html">wilderness_type</a></div><div class="ttdef"><b>Definition:</b> wild.h:39</div></div>
+<div class="ttc" id="astructwilderness__type_html_a28546f9335c28701c7f084f98cc2915c"><div class="ttname"><a href="structwilderness__type.html#a28546f9335c28701c7f084f98cc2915c">wilderness_type::terrain</a></div><div class="ttdeci">wt_type terrain</div><div class="ttdef"><b>Definition:</b> wild.h:40</div></div>
+<div class="ttc" id="astructwilderness__type_html_a2998348c041566ee7fc91e70a2ca88d5"><div class="ttname"><a href="structwilderness__type.html#a2998348c041566ee7fc91e70a2ca88d5">wilderness_type::level</a></div><div class="ttdeci">DEPTH level</div><div class="ttdef"><b>Definition:</b> wild.h:44</div></div>
+<div class="ttc" id="astructwilderness__type_html_a483c3cbf31f2407e1311fea29c3d551c"><div class="ttname"><a href="structwilderness__type.html#a483c3cbf31f2407e1311fea29c3d551c">wilderness_type::road</a></div><div class="ttdeci">int road</div><div class="ttdef"><b>Definition:</b> wild.h:42</div></div>
+<div class="ttc" id="astructwilderness__type_html_a9be1a68eee3539c888c92a1c02b713eb"><div class="ttname"><a href="structwilderness__type.html#a9be1a68eee3539c888c92a1c02b713eb">wilderness_type::entrance</a></div><div class="ttdeci">byte entrance</div><div class="ttdef"><b>Definition:</b> wild.h:45</div></div>
+<div class="ttc" id="astructwilderness__type_html_ab20eccb51d4a811c393a2442c2bc618e"><div class="ttname"><a href="structwilderness__type.html#ab20eccb51d4a811c393a2442c2bc618e">wilderness_type::seed</a></div><div class="ttdeci">u32b seed</div><div class="ttdef"><b>Definition:</b> wild.h:43</div></div>
+<div class="ttc" id="astructwilderness__type_html_adf3446d53a52e8f0baa59af3ac3c51e9"><div class="ttname"><a href="structwilderness__type.html#adf3446d53a52e8f0baa59af3ac3c51e9">wilderness_type::town</a></div><div class="ttdeci">TOWN_IDX town</div><div class="ttdef"><b>Definition:</b> wild.h:41</div></div>
+<div class="ttc" id="awild_8h_html_a1d1dae6d403d8fccdf29575a205225bf"><div class="ttname"><a href="wild_8h.html#a1d1dae6d403d8fccdf29575a205225bf">wilderness</a></div><div class="ttdeci">wilderness_type ** wilderness</div><div class="ttdef"><b>Definition:</b> wild.cpp:49</div></div>
+<div class="ttc" id="awild_8h_html_a23a94f3898758c39d5b3d102d9a8d076"><div class="ttname"><a href="wild_8h.html#a23a94f3898758c39d5b3d102d9a8d076">wilderness_gen_small</a></div><div class="ttdeci">void wilderness_gen_small(player_type *creature_ptr)</div><div class="ttdoc">広域マップの生成(簡易処理版) / Build the wilderness area.</div><div class="ttdef"><b>Definition:</b> wild.cpp:562</div></div>
+<div class="ttc" id="awild_8h_html_a276eca2704b4a40fcbfa59274b9035c1"><div class="ttname"><a href="wild_8h.html#a276eca2704b4a40fcbfa59274b9035c1">parse_line_wilderness</a></div><div class="ttdeci">parse_error_type parse_line_wilderness(player_type *creature_ptr, char *buf, int xmin, int xmax, int *y, int *x)</div><div class="ttdoc">w_info.txtのデータ解析 / Parse a sub-file of the &quot;extra info&quot;</div><div class="ttdef"><b>Definition:</b> wild.cpp:634</div></div>
+<div class="ttc" id="awild_8h_html_a50c95b33e216b6cd860ddc2ac319c510"><div class="ttname"><a href="wild_8h.html#a50c95b33e216b6cd860ddc2ac319c510">change_wild_mode</a></div><div class="ttdeci">bool change_wild_mode(player_type *creature_ptr, bool encount)</div><div class="ttdoc">荒野から広域マップへの切り替え処理 / Initialize arrays for wilderness terrains</div><div class="ttdef"><b>Definition:</b> wild.cpp:852</div></div>
+<div class="ttc" id="awild_8h_html_a6e089c9c345787e8ddadb21d82c6b850"><div class="ttname"><a href="wild_8h.html#a6e089c9c345787e8ddadb21d82c6b850">seed_wilderness</a></div><div class="ttdeci">void seed_wilderness(void)</div><div class="ttdoc">ゲーム開始時に各荒野フロアの乱数シードを指定する / Generate the random seeds for the wilderness</div><div class="ttdef"><b>Definition:</b> wild.cpp:752</div></div>
+<div class="ttc" id="awild_8h_html_a775c4015ebe15ca9fc0f8448a86f091e"><div class="ttname"><a href="wild_8h.html#a775c4015ebe15ca9fc0f8448a86f091e">wilderness_type</a></div><div class="ttdeci">struct wilderness_type wilderness_type</div></div>
+<div class="ttc" id="awild_8h_html_a7ee8f4d60d0eae646b701d9b15dae91b"><div class="ttname"><a href="wild_8h.html#a7ee8f4d60d0eae646b701d9b15dae91b">set_floor_and_wall</a></div><div class="ttdeci">void set_floor_and_wall(DUNGEON_IDX type)</div><div class="ttdoc">ダンジョンの地形を指定確率に応じて各マスへランダムに敷き詰める / Fill the arrays of floors and walls in the good proportions</div><div class="ttdef"><b>Definition:</b> wild.cpp:94</div></div>
+<div class="ttc" id="awild_8h_html_aa1f8acaf5fe825e10c7aca19f9221a50"><div class="ttname"><a href="wild_8h.html#aa1f8acaf5fe825e10c7aca19f9221a50">init_wilderness</a></div><div class="ttdeci">errr init_wilderness(void)</div><div class="ttdoc">ゲーム開始時の荒野初期化メインルーチン / Initialize wilderness array</div><div class="ttdef"><b>Definition:</b> wild.cpp:769</div></div>
+<div class="ttc" id="awild_8h_html_ad2b39f3334022fd4e424dbc1029c79f4"><div class="ttname"><a href="wild_8h.html#ad2b39f3334022fd4e424dbc1029c79f4">wilderness_gen</a></div><div class="ttdeci">void wilderness_gen(player_type *creature_ptr)</div><div class="ttdoc">広域マップの生成 / Build the wilderness area outside of the town.</div><div class="ttdef"><b>Definition:</b> wild.cpp:384</div></div>
+<div class="ttc" id="awild_8h_html_aebeefda4eb79962726c84cc82aea648e"><div class="ttname"><a href="wild_8h.html#aebeefda4eb79962726c84cc82aea648e">init_wilderness_terrains</a></div><div class="ttdeci">void init_wilderness_terrains(void)</div><div class="ttdoc">荒野の地勢設定全体を初期化するメインルーチン / Initialize arrays for wilderness terrains</div><div class="ttdef"><b>Definition:</b> wild.cpp:824</div></div>
+<div class="ttc" id="awild_8h_html_af014f6e4df3706ef74612911626fed37"><div class="ttname"><a href="wild_8h.html#af014f6e4df3706ef74612911626fed37">wt_type</a></div><div class="ttdeci">wt_type</div><div class="ttdef"><b>Definition:</b> wild.h:11</div></div>
+<div class="ttc" id="awild_8h_html_af014f6e4df3706ef74612911626fed37a3e796ee38db0afdb62aa8d92c666126a"><div class="ttname"><a href="wild_8h.html#af014f6e4df3706ef74612911626fed37a3e796ee38db0afdb62aa8d92c666126a">MAX_WILDERNESS</a></div><div class="ttdeci">@ MAX_WILDERNESS</div><div class="ttdef"><b>Definition:</b> wild.h:24</div></div>
+<div class="ttc" id="awild_8h_html_af014f6e4df3706ef74612911626fed37a487f0c36cc467bfee23dc5dc72e8cc53"><div class="ttname"><a href="wild_8h.html#af014f6e4df3706ef74612911626fed37a487f0c36cc467bfee23dc5dc72e8cc53">TERRAIN_GRASS</a></div><div class="ttdeci">@ TERRAIN_GRASS</div><div class="ttdef"><b>Definition:</b> wild.h:18</div></div>
+<div class="ttc" id="awild_8h_html_af014f6e4df3706ef74612911626fed37a7df3b297037f32e12adf1a17570194d5"><div class="ttname"><a href="wild_8h.html#af014f6e4df3706ef74612911626fed37a7df3b297037f32e12adf1a17570194d5">TERRAIN_SHALLOW_LAVA</a></div><div class="ttdeci">@ TERRAIN_SHALLOW_LAVA</div><div class="ttdef"><b>Definition:</b> wild.h:21</div></div>
+<div class="ttc" id="awild_8h_html_af014f6e4df3706ef74612911626fed37a805411918cded90eaf442a096e92b79a"><div class="ttname"><a href="wild_8h.html#af014f6e4df3706ef74612911626fed37a805411918cded90eaf442a096e92b79a">TERRAIN_TREES</a></div><div class="ttdeci">@ TERRAIN_TREES</div><div class="ttdef"><b>Definition:</b> wild.h:19</div></div>
+<div class="ttc" id="awild_8h_html_af014f6e4df3706ef74612911626fed37a8b64bb169f25e69bb247d81b8ad5b135"><div class="ttname"><a href="wild_8h.html#af014f6e4df3706ef74612911626fed37a8b64bb169f25e69bb247d81b8ad5b135">TERRAIN_DEEP_LAVA</a></div><div class="ttdeci">@ TERRAIN_DEEP_LAVA</div><div class="ttdef"><b>Definition:</b> wild.h:22</div></div>
+<div class="ttc" id="awild_8h_html_af014f6e4df3706ef74612911626fed37a8c4faa706e6dd306a65c6bfbd76b8054"><div class="ttname"><a href="wild_8h.html#af014f6e4df3706ef74612911626fed37a8c4faa706e6dd306a65c6bfbd76b8054">TERRAIN_MOUNTAIN</a></div><div class="ttdeci">@ TERRAIN_MOUNTAIN</div><div class="ttdef"><b>Definition:</b> wild.h:23</div></div>
+<div class="ttc" id="awild_8h_html_af014f6e4df3706ef74612911626fed37aaf54fd30c46165200b5ac910b5a0211c"><div class="ttname"><a href="wild_8h.html#af014f6e4df3706ef74612911626fed37aaf54fd30c46165200b5ac910b5a0211c">TERRAIN_SHALLOW_WATER</a></div><div class="ttdeci">@ TERRAIN_SHALLOW_WATER</div><div class="ttdef"><b>Definition:</b> wild.h:15</div></div>
+<div class="ttc" id="awild_8h_html_af014f6e4df3706ef74612911626fed37ab5a2aa66f61349261143f703272b72a9"><div class="ttname"><a href="wild_8h.html#af014f6e4df3706ef74612911626fed37ab5a2aa66f61349261143f703272b72a9">TERRAIN_DESERT</a></div><div class="ttdeci">@ TERRAIN_DESERT</div><div class="ttdef"><b>Definition:</b> wild.h:20</div></div>
+<div class="ttc" id="awild_8h_html_af014f6e4df3706ef74612911626fed37ac2b79871cb16c38d095a683c767ad69e"><div class="ttname"><a href="wild_8h.html#af014f6e4df3706ef74612911626fed37ac2b79871cb16c38d095a683c767ad69e">TERRAIN_DEEP_WATER</a></div><div class="ttdeci">@ TERRAIN_DEEP_WATER</div><div class="ttdef"><b>Definition:</b> wild.h:14</div></div>
+<div class="ttc" id="awild_8h_html_af014f6e4df3706ef74612911626fed37ac92c15605d171747a6a7766061a5a92f"><div class="ttname"><a href="wild_8h.html#af014f6e4df3706ef74612911626fed37ac92c15605d171747a6a7766061a5a92f">TERRAIN_DIRT</a></div><div class="ttdeci">@ TERRAIN_DIRT</div><div class="ttdef"><b>Definition:</b> wild.h:17</div></div>
+<div class="ttc" id="awild_8h_html_af014f6e4df3706ef74612911626fed37aed25358684c409a3d4e42c4fc5982646"><div class="ttname"><a href="wild_8h.html#af014f6e4df3706ef74612911626fed37aed25358684c409a3d4e42c4fc5982646">TERRAIN_SWAMP</a></div><div class="ttdeci">@ TERRAIN_SWAMP</div><div class="ttdef"><b>Definition:</b> wild.h:16</div></div>
+<div class="ttc" id="awild_8h_html_af014f6e4df3706ef74612911626fed37af1dc7dff4805315f4f7ad356477939ba"><div class="ttname"><a href="wild_8h.html#af014f6e4df3706ef74612911626fed37af1dc7dff4805315f4f7ad356477939ba">TERRAIN_TOWN</a></div><div class="ttdeci">@ TERRAIN_TOWN</div><div class="ttdef"><b>Definition:</b> wild.h:13</div></div>
+<div class="ttc" id="awild_8h_html_af014f6e4df3706ef74612911626fed37af4bbae733291af39bd94dcd232d07fa0"><div class="ttname"><a href="wild_8h.html#af014f6e4df3706ef74612911626fed37af4bbae733291af39bd94dcd232d07fa0">TERRAIN_EDGE</a></div><div class="ttdeci">@ TERRAIN_EDGE</div><div class="ttdef"><b>Definition:</b> wild.h:12</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

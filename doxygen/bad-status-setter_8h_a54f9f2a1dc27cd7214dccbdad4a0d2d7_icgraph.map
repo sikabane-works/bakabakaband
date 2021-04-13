@@ -1,0 +1,40 @@
+<map id="set_poisoned" name="set_poisoned">
+<area shape="rect" id="node1" title="毒の継続時間をセットする / Set &quot;poisoned&quot;, notice observable changes" alt="" coords="672,615,771,642"/>
+<area shape="rect" id="node2" href="$monster-attack-lose_8cpp.html#a256586043cdcaa5da8bc36e86e5151af" title="病気ダメージを計算する (毒耐性があれば、(1d4 + 4) / 9になる。二重耐性なら更に(1d4 + 4) / 9)" alt="" coords="472,14,603,41"/>
+<area shape="rect" id="node5" href="$monster-attack-switcher_8cpp.html#acef826f9c56e2d18ed1e37256dfcfb10" title="モンスターからプレーヤーへの直接攻撃をその種別において振り分ける" alt="" coords="475,69,599,95"/>
+<area shape="rect" id="node6" href="$chest_8cpp.html#a15fe189e236398690182db36a2c28a9b" title="箱のトラップ処理 / Chests have traps too." alt="" coords="496,122,579,149"/>
+<area shape="rect" id="node11" href="$spells-staff-only_8cpp.html#a0c69c70dc7888dc9c6dd0378a62d81dd" title="聖浄の杖の効果" alt="" coords="482,489,593,515"/>
+<area shape="rect" id="node15" href="$spells-status_8cpp.html#ac6cc23e751d903cceebb4c6baf1d61d1" title=" " alt="" coords="466,438,609,465"/>
+<area shape="rect" id="node20" href="$realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="275,325,368,351"/>
+<area shape="rect" id="node21" href="$realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="265,274,378,301"/>
+<area shape="rect" id="node22" href="$quaff-execution_8cpp.html#a663518dc63d12a75833fcd01acd2f364" title="薬を飲むコマンドのサブルーチン / Quaff a potion (from the pack or the floor)" alt="" coords="262,679,381,706"/>
+<area shape="rect" id="node24" href="$hp-mp-processor_8cpp.html#afc8eefd59cfc7a8bd571c9ed53344350" title="10ゲームターンが進行するごとにプレイヤーのHPとMPの増減処理を行う。 / Handle timed damage and regeneration every 10 game turns" alt="" coords="21,713,177,739"/>
+<area shape="rect" id="node26" href="$activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="261,629,381,655"/>
+<area shape="rect" id="node27" href="$realm-arcane_8cpp.html#a7832487e3190270957aa0ada40c22dc0" title="秘術領域魔法の各処理を行う" alt="" coords="479,173,595,199"/>
+<area shape="rect" id="node28" href="$realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="260,223,383,250"/>
+<area shape="rect" id="node29" href="$effect-player-resist-hurt_8cpp.html#af55a7105481ccf1d35de7d9b5898bfba" title=" " alt="" coords="472,843,603,870"/>
+<area shape="rect" id="node30" href="$effect-player-resist-hurt_8cpp.html#ae55c8ae5bbb432fe04dd096c46d7b88a" title=" " alt="" coords="467,894,607,921"/>
+<area shape="rect" id="node31" href="$cmd-eat_8cpp.html#afb5bdcc73085684a1cdebe5403f710e4" title="死体を食べたときの効果を発動" alt="" coords="248,731,395,772"/>
+<area shape="rect" id="node32" href="$cmd-eat_8cpp.html#a4bbdfbcc722fc44aab2b42884ec4c562" title="食料タイプの食料を食べたときの効果を発動" alt="" coords="451,945,624,971"/>
+<area shape="rect" id="node33" href="$cmd-eat_8cpp.html#ab76ec66aa2cd1856d22233b810d2910c" title="プレイヤーの食べるコマンド実装" alt="" coords="451,995,624,1022"/>
+<area shape="rect" id="node34" href="$trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="289,1071,354,1098"/>
+<area shape="rect" id="node35" href="$trap_8cpp.html#a0a60d73695cc5eb57f5de28640917696" title="落とし穴系トラップの判定とプレイヤーの被害処理" alt="" coords="494,1097,581,1123"/>
+<area shape="rect" id="node36" href="$spells-status_8cpp.html#a3cb2a18d41d25c9c825b16220de7b45d" title=" " alt="" coords="495,641,580,667"/>
+<area shape="rect" id="node37" href="$magic-effects-timeout-reducer_8cpp.html#ab3da74b04d4dd1f34442fc82cde68b60" title="10ゲームターンが進行するごとに魔法効果の残りターンを減らしていく処理 / Handle timeout every 10 game turns" alt="" coords="463,1148,611,1189"/>
+<area shape="rect" id="node38" href="$spells-status_8cpp.html#a78827593ec05044e1205b65805e78944" title=" " alt="" coords="491,590,583,617"/>
+<area shape="rect" id="node3" href="$monster-attack-switcher_8cpp.html#a5de1dfd64f941a47e81c3fb2c043a3e2" title=" " alt="" coords="248,5,395,47"/>
+<area shape="rect" id="node4" href="$monster-attack-player_8cpp.html#a4c501e4155c9fe7c492e1c0fd4c61c3b" title="モンスターから直接攻撃を1回受けた時の処理" alt="" coords="5,13,192,39"/>
+<area shape="rect" id="node7" href="$open-close-execution_8cpp.html#a7ae101c2ede52c77b602e7a195815c3e" title="箱のトラップを解除する実行処理 / Perform the basic &quot;disarm&quot; command" alt="" coords="257,122,385,149"/>
+<area shape="rect" id="node9" href="$cmd-open-close_8cpp.html#a5e8d54fe79ddf86d8f253ae4a6e844d6" title="箱を開ける実行処理 / Attempt to open the given chest at the given location" alt="" coords="263,71,380,98"/>
+<area shape="rect" id="node8" href="$cmd-open-close_8cpp.html#af905b3420d1017dc794ab89a9d6d0c42" title="箱、床のトラップ解除処理双方の統合メインルーチン / Disarms a trap, or chest" alt="" coords="41,122,156,149"/>
+<area shape="rect" id="node10" href="$cmd-open-close_8cpp.html#a4da6ce664a625f0aa47bcbee0627fc5f" title="「開ける」コマンドのメインルーチン / Open a closed/locked/jammed door or a closed/locked chest." alt="" coords="47,71,150,98"/>
+<area shape="rect" id="node12" href="$cmd-usestaff_8cpp.html#a4a284c2f2988d427dd6baac5fcf99fd6" title="杖の効果を発動する" alt="" coords="279,527,363,554"/>
+<area shape="rect" id="node13" href="$cmd-magiceat_8cpp.html#acd59184a979a8d34f868767874534ce8" title="取り込んだ魔力を利用するコマンドのメインルーチン / Use eaten rod, wand or staff" alt="" coords="25,578,172,605"/>
+<area shape="rect" id="node14" href="$cmd-usestaff_8cpp.html#a53af198ed4ce8898892ed6324862b5ad" title="杖を使うコマンドのサブルーチン / Use a staff." alt="" coords="47,527,150,554"/>
+<area shape="rect" id="node16" href="$cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="240,426,403,453"/>
+<area shape="rect" id="node18" href="$realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="272,375,371,402"/>
+<area shape="rect" id="node23" href="$pattern-walk_8cpp.html#ab1af315dceaa594ca567ad1cff7cf226" title="各種パターン地形上の特別な処理 / Returns TRUE if we are on the Pattern..." alt="" coords="271,477,371,503"/>
+<area shape="rect" id="node25" href="$cmd-zaprod_8cpp.html#ae9106d1cdcf01f0497ab6cfc5758bf11" title="ロッドの効果を発動する" alt="" coords="282,578,361,605"/>
+<area shape="rect" id="node17" href="$cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="39,426,158,453"/>
+<area shape="rect" id="node19" href="$spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="60,299,137,326"/>
+</map>

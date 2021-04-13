@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/game-option/disturbance-options.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_75d1aa6e715a0a2a957f68c14f483856.html">game-option</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">disturbance-options.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="disturbance-options_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#a7c4ece9c8ab7fc8f272a867b71dae470">find_ignore_stairs</a>; <span class="comment">/* Run past stairs */</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#a6ad204c4d6015c009420c44037bcab4f">find_ignore_doors</a>; <span class="comment">/* Run through open doors */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#aef3147eeaf05a8cbf04c29fd32ec484f">find_cut</a>; <span class="comment">/* Run past known corners */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#a7e1ad9baed021e6ca4664052bc6410c8">check_abort</a>; <span class="comment">/* Check for user abort while continuous command */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#af9934e90867eb9e9ddb9fb53c0a2b8ee">flush_failure</a>; <span class="comment">/* Flush input on various failures */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#ab12f9c95b582a45c99d735d55f0b7d12">flush_disturb</a>; <span class="comment">/* Flush input whenever disturbed */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#aeb834e8ee491ab2c7a7563462fe21867">disturb_move</a>; <span class="comment">/* Disturb whenever any monster moves */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#aec2fcd251e9d750a0b19f267f32ffea5">disturb_high</a>; <span class="comment">/* Disturb whenever high-level monster moves */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#a3c4226a33bc4f26983c4f8507f7cf715">disturb_near</a>; <span class="comment">/* Disturb whenever viewable monster moves */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#ad22d725822e53b2ab0804adefa800040">disturb_pets</a>; <span class="comment">/* Disturb when visible pets move */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#aed363b9a7796a2ea68981ce105fbdea2">disturb_panel</a>; <span class="comment">/* Disturb whenever map panel changes */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#a3d136b81c944c3498c377a14efdb01c8">disturb_state</a>; <span class="comment">/* Disturb whenever player state changes */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#a42b1eef99ef3c1553b3b3482d07bdb2b">disturb_minor</a>; <span class="comment">/* Disturb whenever boring things happen */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#a210243a0a2684e6870e10d5e220e789d">ring_bell</a>; <span class="comment">/* Audible bell (on errors, etc) */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#a2921c12e660c0174063133fe73bba1df">disturb_trap_detect</a>; <span class="comment">/* Disturb when leaving trap detected area */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="disturbance-options_8h.html#a94d0f0894b812e414880d0555a82193e">alert_trap_detect</a>; <span class="comment">/* Alert when leaving trap detected area */</span></div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_a210243a0a2684e6870e10d5e220e789d"><div class="ttname"><a href="disturbance-options_8h.html#a210243a0a2684e6870e10d5e220e789d">ring_bell</a></div><div class="ttdeci">bool ring_bell</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:16</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_a2921c12e660c0174063133fe73bba1df"><div class="ttname"><a href="disturbance-options_8h.html#a2921c12e660c0174063133fe73bba1df">disturb_trap_detect</a></div><div class="ttdeci">bool disturb_trap_detect</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:17</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_a3c4226a33bc4f26983c4f8507f7cf715"><div class="ttname"><a href="disturbance-options_8h.html#a3c4226a33bc4f26983c4f8507f7cf715">disturb_near</a></div><div class="ttdeci">bool disturb_near</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:11</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_a3d136b81c944c3498c377a14efdb01c8"><div class="ttname"><a href="disturbance-options_8h.html#a3d136b81c944c3498c377a14efdb01c8">disturb_state</a></div><div class="ttdeci">bool disturb_state</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:14</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_a42b1eef99ef3c1553b3b3482d07bdb2b"><div class="ttname"><a href="disturbance-options_8h.html#a42b1eef99ef3c1553b3b3482d07bdb2b">disturb_minor</a></div><div class="ttdeci">bool disturb_minor</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:15</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_a6ad204c4d6015c009420c44037bcab4f"><div class="ttname"><a href="disturbance-options_8h.html#a6ad204c4d6015c009420c44037bcab4f">find_ignore_doors</a></div><div class="ttdeci">bool find_ignore_doors</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:4</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_a7c4ece9c8ab7fc8f272a867b71dae470"><div class="ttname"><a href="disturbance-options_8h.html#a7c4ece9c8ab7fc8f272a867b71dae470">find_ignore_stairs</a></div><div class="ttdeci">bool find_ignore_stairs</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:3</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_a7e1ad9baed021e6ca4664052bc6410c8"><div class="ttname"><a href="disturbance-options_8h.html#a7e1ad9baed021e6ca4664052bc6410c8">check_abort</a></div><div class="ttdeci">bool check_abort</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:6</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_a94d0f0894b812e414880d0555a82193e"><div class="ttname"><a href="disturbance-options_8h.html#a94d0f0894b812e414880d0555a82193e">alert_trap_detect</a></div><div class="ttdeci">bool alert_trap_detect</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:18</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_ab12f9c95b582a45c99d735d55f0b7d12"><div class="ttname"><a href="disturbance-options_8h.html#ab12f9c95b582a45c99d735d55f0b7d12">flush_disturb</a></div><div class="ttdeci">bool flush_disturb</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:8</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_ad22d725822e53b2ab0804adefa800040"><div class="ttname"><a href="disturbance-options_8h.html#ad22d725822e53b2ab0804adefa800040">disturb_pets</a></div><div class="ttdeci">bool disturb_pets</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:12</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_aeb834e8ee491ab2c7a7563462fe21867"><div class="ttname"><a href="disturbance-options_8h.html#aeb834e8ee491ab2c7a7563462fe21867">disturb_move</a></div><div class="ttdeci">bool disturb_move</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:9</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_aec2fcd251e9d750a0b19f267f32ffea5"><div class="ttname"><a href="disturbance-options_8h.html#aec2fcd251e9d750a0b19f267f32ffea5">disturb_high</a></div><div class="ttdeci">bool disturb_high</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:10</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_aed363b9a7796a2ea68981ce105fbdea2"><div class="ttname"><a href="disturbance-options_8h.html#aed363b9a7796a2ea68981ce105fbdea2">disturb_panel</a></div><div class="ttdeci">bool disturb_panel</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:13</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_aef3147eeaf05a8cbf04c29fd32ec484f"><div class="ttname"><a href="disturbance-options_8h.html#aef3147eeaf05a8cbf04c29fd32ec484f">find_cut</a></div><div class="ttdeci">bool find_cut</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:5</div></div>
+<div class="ttc" id="adisturbance-options_8h_html_af9934e90867eb9e9ddb9fb53c0a2b8ee"><div class="ttname"><a href="disturbance-options_8h.html#af9934e90867eb9e9ddb9fb53c0a2b8ee">flush_failure</a></div><div class="ttdeci">bool flush_failure</div><div class="ttdef"><b>Definition:</b> disturbance-options.cpp:7</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

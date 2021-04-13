@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/view/display-map.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b39b5091e8d1d2be4b7fc59d57749634.html">view</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">display-map.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="display-map_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="display-map_8h.html#aecf24962b9ab48219acc50fe92e4c31b">    5</a></span>&#160;<span class="preprocessor">#define MAX_IMAGE_OBJECT_HACK 19</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="display-map_8h.html#a621368dc98634dc3b73b923854b32cba">    6</a></span>&#160;<span class="preprocessor">#define MAX_IMAGE_MONSTER_HACK 53</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">byte</span> <a class="code" href="display-map_8h.html#aa0efc328d1f8d146c1ce9bfb366f3c96">display_autopick</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="display-map_8h.html#a133aa9ac9c65cb85f07e3e748d5e8d6d">image_object_hack</a>[<a class="code" href="display-map_8h.html#aecf24962b9ab48219acc50fe92e4c31b">MAX_IMAGE_OBJECT_HACK</a>];</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="display-map_8h.html#a2bd1ae2e4589259f5295ce759eca5ecb">image_monster_hack</a>[<a class="code" href="display-map_8h.html#a621368dc98634dc3b73b923854b32cba">MAX_IMAGE_MONSTER_HACK</a>];</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display-map_8h.html#a9be4d479cc04510dbea7b7c114c617f3">map_info</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="code" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> *ap, <a class="code" href="h-type_8h.html#a956852f26de2bab8053529224e40dd37">SYMBOL_CODE</a> *cp, <a class="code" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> *tap, <a class="code" href="h-type_8h.html#a956852f26de2bab8053529224e40dd37">SYMBOL_CODE</a> *tcp);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="adisplay-map_8h_html_a133aa9ac9c65cb85f07e3e748d5e8d6d"><div class="ttname"><a href="display-map_8h.html#a133aa9ac9c65cb85f07e3e748d5e8d6d">image_object_hack</a></div><div class="ttdeci">char image_object_hack[MAX_IMAGE_OBJECT_HACK]</div><div class="ttdef"><b>Definition:</b> display-map.cpp:24</div></div>
+<div class="ttc" id="adisplay-map_8h_html_a2bd1ae2e4589259f5295ce759eca5ecb"><div class="ttname"><a href="display-map_8h.html#a2bd1ae2e4589259f5295ce759eca5ecb">image_monster_hack</a></div><div class="ttdeci">char image_monster_hack[MAX_IMAGE_MONSTER_HACK]</div><div class="ttdef"><b>Definition:</b> display-map.cpp:27</div></div>
+<div class="ttc" id="adisplay-map_8h_html_a621368dc98634dc3b73b923854b32cba"><div class="ttname"><a href="display-map_8h.html#a621368dc98634dc3b73b923854b32cba">MAX_IMAGE_MONSTER_HACK</a></div><div class="ttdeci">#define MAX_IMAGE_MONSTER_HACK</div><div class="ttdef"><b>Definition:</b> display-map.h:6</div></div>
+<div class="ttc" id="adisplay-map_8h_html_a9be4d479cc04510dbea7b7c114c617f3"><div class="ttname"><a href="display-map_8h.html#a9be4d479cc04510dbea7b7c114c617f3">map_info</a></div><div class="ttdeci">void map_info(player_type *player_ptr, POSITION y, POSITION x, TERM_COLOR *ap, SYMBOL_CODE *cp, TERM_COLOR *tap, SYMBOL_CODE *tcp)</div><div class="ttdoc">指定した座標の地形の表示属性を取得する / Extract the attr/char to display at the given (legal) map location</div><div class="ttdef"><b>Definition:</b> display-map.cpp:138</div></div>
+<div class="ttc" id="adisplay-map_8h_html_aa0efc328d1f8d146c1ce9bfb366f3c96"><div class="ttname"><a href="display-map_8h.html#aa0efc328d1f8d146c1ce9bfb366f3c96">display_autopick</a></div><div class="ttdeci">byte display_autopick</div><div class="ttdoc">自動拾い状態の設定フラグ</div><div class="ttdef"><b>Definition:</b> display-map.cpp:21</div></div>
+<div class="ttc" id="adisplay-map_8h_html_aecf24962b9ab48219acc50fe92e4c31b"><div class="ttname"><a href="display-map_8h.html#aecf24962b9ab48219acc50fe92e4c31b">MAX_IMAGE_OBJECT_HACK</a></div><div class="ttdeci">#define MAX_IMAGE_OBJECT_HACK</div><div class="ttdef"><b>Definition:</b> display-map.h:5</div></div>
+<div class="ttc" id="ah-type_8h_html_a956852f26de2bab8053529224e40dd37"><div class="ttname"><a href="h-type_8h.html#a956852f26de2bab8053529224e40dd37">SYMBOL_CODE</a></div><div class="ttdeci">char SYMBOL_CODE</div><div class="ttdoc">キャラの文字の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:216</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_aadcf8cee15fbcb7d92dd27e9eda42de1"><div class="ttname"><a href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a></div><div class="ttdeci">byte TERM_COLOR</div><div class="ttdoc">テキスト表示色の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:215</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

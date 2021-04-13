@@ -1,0 +1,11 @@
+<map id="drop_from_inventory" name="drop_from_inventory">
+<area shape="rect" id="node1" title="所持スロットから床下にオブジェクトを落とすメインルーチン / Drop (some of) a non&#45;cursed inventory/equipment item" alt="" coords="748,56,885,83"/>
+<area shape="rect" id="node2" href="$cmd-item_8cpp.html#a5c64a709c024d5bf297243ccb7dc090d" title="アイテムを落とすコマンドのメインルーチン / Drop an item" alt="" coords="389,56,489,83"/>
+<area shape="rect" id="node5" href="$mutation-processor_8cpp.html#a7f4e8a570690e75d60caf8cc65984c72" title=" " alt="" coords="589,107,694,133"/>
+<area shape="rect" id="node8" href="$cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="583,5,700,32"/>
+<area shape="rect" id="node3" href="$input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,31,296,57"/>
+<area shape="rect" id="node4" href="$player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,31,116,57"/>
+<area shape="rect" id="node6" href="$mutation-processor_8cpp.html#aac6e6f0b449a92493ac8a184c221d6b4" title="10ゲームターンが進行するごとに突然変異の発動判定を行う処理 / Handle mutation effects once every 10 game turns" alt="" coords="344,107,535,133"/>
+<area shape="rect" id="node7" href="$world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="177,107,283,133"/>
+<area shape="rect" id="node9" href="$cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="384,5,495,32"/>
+</map>

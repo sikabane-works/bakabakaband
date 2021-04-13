@@ -1,0 +1,475 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/cmd-action/cmd-travel.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_53ca698ad401df685f027e5f337f5216.html">cmd-action</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">cmd-travel.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="cmd-travel_8h_source.html">cmd-action/cmd-travel.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="travel-execution_8h_source.html">action/travel-execution.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cave_8h_source.html">floor/cave.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="feature_8h_source.html">grid/feature.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-move_8h_source.html">player/player-move.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status-flags_8h_source.html">player/player-status-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid-selector_8h_source.html">target/grid-selector.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+cmd-travel.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-travel_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-action_2cmd-travel_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-action_2cmd-travel_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-action_2cmd-travel_8cpp">
+<area shape="rect" title=" " alt="" coords="917,5,1117,61"/>
+<area shape="rect" href="cmd-travel_8h.html" title=" " alt="" coords="259,206,419,233"/>
+<area shape="rect" href="travel-execution_8h.html" title=" " alt="" coords="1516,117,1679,143"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="880,117,1019,143"/>
+<area shape="rect" href="cave_8h.html" title=" " alt="" coords="1043,117,1130,143"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="593,117,690,143"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="1366,117,1445,143"/>
+<area shape="rect" href="player-move_8h.html" title=" " alt="" coords="715,117,856,143"/>
+<area shape="rect" href="player-status-flags_8h.html" title=" " alt="" coords="1155,109,1291,151"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1703,117,1891,143"/>
+<area shape="rect" href="grid-selector_8h.html" title=" " alt="" coords="5,117,147,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="67,206,234,233"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="1915,117,2074,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="817,295,946,322"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="463,385,553,411"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="577,385,668,411"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="692,385,791,411"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="815,385,913,411"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="938,385,1038,411"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1062,385,1237,411"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="297,385,439,411"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1261,385,1408,411"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1330,467,1449,493"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1672,206,1851,233"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="573,206,731,233"/>
+<area shape="rect" title=" " alt="" coords="755,206,810,233"/>
+<area shape="rect" title=" " alt="" coords="493,206,549,233"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="1483,206,1597,233"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1682,288,1827,329"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1831,377,1987,419"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="987,199,1115,240"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="1139,206,1306,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1875,206,2026,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a8be598bfad9acb74b63228db1fe0a4a4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-travel_8cpp.html#a8be598bfad9acb74b63228db1fe0a4a4">TRAVEL_UNABLE</a>&#160;&#160;&#160;9999</td></tr>
+<tr class="separator:a8be598bfad9acb74b63228db1fe0a4a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:af12188e162024497d52fba1a3bbf9120"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-travel_8cpp.html#af12188e162024497d52fba1a3bbf9120">travel_flow_cost</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x)</td></tr>
+<tr class="memdesc:af12188e162024497d52fba1a3bbf9120"><td class="mdescLeft">&#160;</td><td class="mdescRight">トラベル処理中に地形に応じた移動コスト基準を返す  <a href="cmd-travel_8cpp.html#af12188e162024497d52fba1a3bbf9120">[詳解]</a><br /></td></tr>
+<tr class="separator:af12188e162024497d52fba1a3bbf9120"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cc86d607c53359286eaefdee32002c1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-travel_8cpp.html#a0cc86d607c53359286eaefdee32002c1">travel_flow_aux</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, int n, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> wall)</td></tr>
+<tr class="memdesc:a0cc86d607c53359286eaefdee32002c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">トラベル処理の到達地点までの行程を得る処理のサブルーチン  <a href="cmd-travel_8cpp.html#a0cc86d607c53359286eaefdee32002c1">[詳解]</a><br /></td></tr>
+<tr class="separator:a0cc86d607c53359286eaefdee32002c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ac31349514af4513055de1eaad55aaf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-travel_8cpp.html#a8ac31349514af4513055de1eaad55aaf">travel_flow</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> ty, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> tx)</td></tr>
+<tr class="memdesc:a8ac31349514af4513055de1eaad55aaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">トラベル処理の到達地点までの行程を得る処理のメインルーチン  <a href="cmd-travel_8cpp.html#a8ac31349514af4513055de1eaad55aaf">[詳解]</a><br /></td></tr>
+<tr class="separator:a8ac31349514af4513055de1eaad55aaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78418238abf7cced6af47acbcf469240"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-travel_8cpp.html#a78418238abf7cced6af47acbcf469240">do_cmd_travel</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a78418238abf7cced6af47acbcf469240"><td class="mdescLeft">&#160;</td><td class="mdescRight">トラベル処理のメインルーチン  <a href="cmd-travel_8cpp.html#a78418238abf7cced6af47acbcf469240">[詳解]</a><br /></td></tr>
+<tr class="separator:a78418238abf7cced6af47acbcf469240"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="a8be598bfad9acb74b63228db1fe0a4a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8be598bfad9acb74b63228db1fe0a4a4">&#9670;&nbsp;</a></span>TRAVEL_UNABLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRAVEL_UNABLE&#160;&#160;&#160;9999</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a78418238abf7cced6af47acbcf469240"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78418238abf7cced6af47acbcf469240">&#9670;&nbsp;</a></span>do_cmd_travel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_travel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>トラベル処理のメインルーチン </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-travel_8cpp_a78418238abf7cced6af47acbcf469240_cgraph.png" border="0" usemap="#acmd-travel_8cpp_a78418238abf7cced6af47acbcf469240_cgraph" alt=""/></div>
+<map name="acmd-travel_8cpp_a78418238abf7cced6af47acbcf469240_cgraph" id="acmd-travel_8cpp_a78418238abf7cced6af47acbcf469240_cgraph">
+<area shape="rect" title="トラベル処理のメインルーチン" alt="" coords="5,259,111,285"/>
+<area shape="rect" href="travel-execution_8cpp.html#a7b3306338d59c336f4ecaeb527123b3b" title="トラベル処理の記憶配列を初期化する Hack: forget the &quot;flow&quot; information" alt="" coords="159,157,279,184"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="177,208,260,235"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="511,309,590,336"/>
+<area shape="rect" href="grid-selector_8cpp.html#a7db00eacc9a3dba741e67541ea55dab0" title="位置を指定するプロンプト" alt="" coords="359,259,413,285"/>
+<area shape="rect" href="cmd-travel_8cpp.html#a8ac31349514af4513055de1eaad55aaf" title="トラベル処理の到達地点までの行程を得る処理のメインルーチン" alt="" coords="178,360,259,387"/>
+<area shape="rect" href="asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="327,183,445,209"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="493,5,608,32"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="529,56,572,83"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="505,157,596,184"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="524,208,577,235"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="656,208,759,235"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="531,259,570,285"/>
+<area shape="rect" href="cmd-travel_8cpp.html#a0cc86d607c53359286eaefdee32002c1" title="トラベル処理の到達地点までの行程を得る処理のサブルーチン" alt="" coords="331,360,441,387"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="510,360,591,387"/>
+<area shape="rect" href="cmd-travel_8cpp.html#af12188e162024497d52fba1a3bbf9120" title="トラベル処理中に地形に応じた移動コスト基準を返す" alt="" coords="494,411,607,437"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-travel_8cpp_a78418238abf7cced6af47acbcf469240_icgraph.png" border="0" usemap="#acmd-travel_8cpp_a78418238abf7cced6af47acbcf469240_icgraph" alt=""/></div>
+<map name="acmd-travel_8cpp_a78418238abf7cced6af47acbcf469240_icgraph" id="acmd-travel_8cpp_a78418238abf7cced6af47acbcf469240_icgraph">
+<area shape="rect" title="トラベル処理のメインルーチン" alt="" coords="516,5,621,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8ac31349514af4513055de1eaad55aaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ac31349514af4513055de1eaad55aaf">&#9670;&nbsp;</a></span>travel_flow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void travel_flow </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>ty</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>tx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>トラベル処理の到達地点までの行程を得る処理のメインルーチン </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">ty</td><td>目標地点のY座標 </td></tr>
+    <tr><td class="paramname">tx</td><td>目標地点のX座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-travel_8cpp_a8ac31349514af4513055de1eaad55aaf_cgraph.png" border="0" usemap="#acmd-travel_8cpp_a8ac31349514af4513055de1eaad55aaf_cgraph" alt=""/></div>
+<map name="acmd-travel_8cpp_a8ac31349514af4513055de1eaad55aaf_cgraph" id="acmd-travel_8cpp_a8ac31349514af4513055de1eaad55aaf_cgraph">
+<area shape="rect" title="トラベル処理の到達地点までの行程を得る処理のメインルーチン" alt="" coords="5,31,87,57"/>
+<area shape="rect" href="cmd-travel_8cpp.html#a0cc86d607c53359286eaefdee32002c1" title="トラベル処理の到達地点までの行程を得る処理のサブルーチン" alt="" coords="135,31,244,57"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="308,5,389,32"/>
+<area shape="rect" href="cmd-travel_8cpp.html#af12188e162024497d52fba1a3bbf9120" title="トラベル処理中に地形に応じた移動コスト基準を返す" alt="" coords="292,56,405,83"/>
+<area shape="rect" href="player-status-flags_8cpp.html#ade78b9d37026daaaef1f1b904da9ce40" title=" " alt="" coords="453,56,560,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-travel_8cpp_a8ac31349514af4513055de1eaad55aaf_icgraph.png" border="0" usemap="#acmd-travel_8cpp_a8ac31349514af4513055de1eaad55aaf_icgraph" alt=""/></div>
+<map name="acmd-travel_8cpp_a8ac31349514af4513055de1eaad55aaf_icgraph" id="acmd-travel_8cpp_a8ac31349514af4513055de1eaad55aaf_icgraph">
+<area shape="rect" title="トラベル処理の到達地点までの行程を得る処理のメインルーチン" alt="" coords="497,5,579,32"/>
+<area shape="rect" href="cmd-travel_8cpp.html#a78418238abf7cced6af47acbcf469240" title="トラベル処理のメインルーチン" alt="" coords="344,5,449,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0cc86d607c53359286eaefdee32002c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cc86d607c53359286eaefdee32002c1">&#9670;&nbsp;</a></span>travel_flow_aux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void travel_flow_aux </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>wall</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>トラベル処理の到達地点までの行程を得る処理のサブルーチン </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">y</td><td>目標地点のY座標 </td></tr>
+    <tr><td class="paramname">x</td><td>目標地点のX座標 </td></tr>
+    <tr><td class="paramname">n</td><td>現在のコスト </td></tr>
+    <tr><td class="paramname">wall</td><td>プレイヤーが壁の中にいるならばTRUE </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-travel_8cpp_a0cc86d607c53359286eaefdee32002c1_cgraph.png" border="0" usemap="#acmd-travel_8cpp_a0cc86d607c53359286eaefdee32002c1_cgraph" alt=""/></div>
+<map name="acmd-travel_8cpp_a0cc86d607c53359286eaefdee32002c1_cgraph" id="acmd-travel_8cpp_a0cc86d607c53359286eaefdee32002c1_cgraph">
+<area shape="rect" title="トラベル処理の到達地点までの行程を得る処理のサブルーチン" alt="" coords="5,31,115,58"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="179,6,260,32"/>
+<area shape="rect" href="cmd-travel_8cpp.html#af12188e162024497d52fba1a3bbf9120" title="トラベル処理中に地形に応じた移動コスト基準を返す" alt="" coords="163,56,276,83"/>
+<area shape="rect" href="player-status-flags_8cpp.html#ade78b9d37026daaaef1f1b904da9ce40" title=" " alt="" coords="324,56,431,83"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="684,6,843,32"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="696,56,831,83"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3c8e37ad1c2ecfdc389e4070fda2c1c0" title=" " alt="" coords="497,31,617,58"/>
+<area shape="rect" href="player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="479,132,636,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-travel_8cpp_a0cc86d607c53359286eaefdee32002c1_icgraph.png" border="0" usemap="#acmd-travel_8cpp_a0cc86d607c53359286eaefdee32002c1_icgraph" alt=""/></div>
+<map name="acmd-travel_8cpp_a0cc86d607c53359286eaefdee32002c1_icgraph" id="acmd-travel_8cpp_a0cc86d607c53359286eaefdee32002c1_icgraph">
+<area shape="rect" title="トラベル処理の到達地点までの行程を得る処理のサブルーチン" alt="" coords="468,5,577,32"/>
+<area shape="rect" href="cmd-travel_8cpp.html#a8ac31349514af4513055de1eaad55aaf" title="トラベル処理の到達地点までの行程を得る処理のメインルーチン" alt="" coords="339,5,420,32"/>
+<area shape="rect" href="cmd-travel_8cpp.html#a78418238abf7cced6af47acbcf469240" title="トラベル処理のメインルーチン" alt="" coords="185,5,291,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af12188e162024497d52fba1a3bbf9120"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af12188e162024497d52fba1a3bbf9120">&#9670;&nbsp;</a></span>travel_flow_cost()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int travel_flow_cost </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>トラベル処理中に地形に応じた移動コスト基準を返す </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">y</td><td>該当地点のY座標 </td></tr>
+    <tr><td class="paramname">x</td><td>該当地点のX座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>コスト値 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-travel_8cpp_af12188e162024497d52fba1a3bbf9120_cgraph.png" border="0" usemap="#acmd-travel_8cpp_af12188e162024497d52fba1a3bbf9120_cgraph" alt=""/></div>
+<map name="acmd-travel_8cpp_af12188e162024497d52fba1a3bbf9120_cgraph" id="acmd-travel_8cpp_af12188e162024497d52fba1a3bbf9120_cgraph">
+<area shape="rect" title="トラベル処理中に地形に応じた移動コスト基準を返す" alt="" coords="5,105,119,131"/>
+<area shape="rect" href="player-status-flags_8cpp.html#ade78b9d37026daaaef1f1b904da9ce40" title=" " alt="" coords="167,105,273,131"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="527,42,685,69"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="539,105,673,131"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3c8e37ad1c2ecfdc389e4070fda2c1c0" title=" " alt="" coords="340,79,460,106"/>
+<area shape="rect" href="player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="321,181,479,207"/>
+<area shape="rect" href="player-status-flags_8cpp.html#af60bd15078685be49be91a09af014760" title=" " alt="" coords="733,5,883,47"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="763,71,853,98"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-travel_8cpp_af12188e162024497d52fba1a3bbf9120_icgraph.png" border="0" usemap="#acmd-travel_8cpp_af12188e162024497d52fba1a3bbf9120_icgraph" alt=""/></div>
+<map name="acmd-travel_8cpp_af12188e162024497d52fba1a3bbf9120_icgraph" id="acmd-travel_8cpp_af12188e162024497d52fba1a3bbf9120_icgraph">
+<area shape="rect" title="トラベル処理中に地形に応じた移動コスト基準を返す" alt="" coords="445,5,559,32"/>
+<area shape="rect" href="cmd-travel_8cpp.html#a0cc86d607c53359286eaefdee32002c1" title="トラベル処理の到達地点までの行程を得る処理のサブルーチン" alt="" coords="288,5,397,32"/>
+<area shape="rect" href="cmd-travel_8cpp.html#a8ac31349514af4513055de1eaad55aaf" title="トラベル処理の到達地点までの行程を得る処理のメインルーチン" alt="" coords="159,5,240,32"/>
+<area shape="rect" href="cmd-travel_8cpp.html#a78418238abf7cced6af47acbcf469240" title="トラベル処理のメインルーチン" alt="" coords="5,5,111,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分25秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/wizard/wizard-special-process.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e09032bb770e6e0f4355f890c3180c4a.html">wizard</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">wizard-special-process.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="wizard-special-process_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-special-process_8h.html#aa1c5e4046a1d0beceda234dfbf991e77">wiz_cure_all</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<a class="code" href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a> <a class="code" href="wizard-special-process_8h.html#acb55dac4cc6064f6fd4cd68a635414f9">wiz_create_itemtype</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-special-process_8h.html#a3a8736b020ffd037a5337cdebed86b88">wiz_create_item</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-special-process_8h.html#a0ca5945ffd044b52a5f49ed486382340">wiz_create_named_art</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a4fc040f8a9ad313d0ce50224ff8841a0">ARTIFACT_IDX</a> a_idx);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-special-process_8h.html#a5a4d12b795975f60db883b928465c22f">wiz_change_status</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-special-process_8h.html#a3fd651c85a7cfc993105fe819d556ccb">wiz_create_feature</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-special-process_8h.html#a98b79010bb1266a7ff2f32920ca5f5a2">wiz_jump_to_dungeon</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-special-process_8h.html#a49009c6edebcfb420db0b967d3b07828">wiz_learn_items_all</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-special-process_8h.html#a8c7cd2d5988dbdc19bc703465d332938">wiz_reset_race</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-special-process_8h.html#a7813142ec69b0dac5f6c6e95990dd2c1">wiz_reset_class</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-special-process_8h.html#a5b26b42a18b59c67be60ee84fffcc7cf">wiz_reset_realms</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-special-process_8h.html#aab587c280fc21305bf6ff10c8f95a11e">wiz_dump_options</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-special-process_8h.html#a84af4013cc193546ec04f0023f477a88">set_gametime</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-special-process_8h.html#aac26873cfc84c2e6540c702eb92cc9a5">wiz_zap_surrounding_monsters</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wizard-special-process_8h.html#a9ac11136d7f8c0e65133da9da3d3392d">wiz_zap_floor_monsters</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="wizard-special-process_8h.html#a9ac09086b75ef38e3817317ca5c2d423">cheat_death</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">bool</span> no_penalty);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a4afcd80086918943bed571d0a96b93eb"><div class="ttname"><a href="h-type_8h.html#a4afcd80086918943bed571d0a96b93eb">KIND_OBJECT_IDX</a></div><div class="ttdeci">s16b KIND_OBJECT_IDX</div><div class="ttdoc">ゲーム中のベースアイテムID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:123</div></div>
+<div class="ttc" id="ah-type_8h_html_a4fc040f8a9ad313d0ce50224ff8841a0"><div class="ttname"><a href="h-type_8h.html#a4fc040f8a9ad313d0ce50224ff8841a0">ARTIFACT_IDX</a></div><div class="ttdeci">s16b ARTIFACT_IDX</div><div class="ttdoc">ゲーム中のアーティファクトID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:113</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_a0ca5945ffd044b52a5f49ed486382340"><div class="ttname"><a href="wizard-special-process_8h.html#a0ca5945ffd044b52a5f49ed486382340">wiz_create_named_art</a></div><div class="ttdeci">void wiz_create_named_art(player_type *caster_ptr, ARTIFACT_IDX a_idx)</div><div class="ttdoc">指定されたIDの固定アーティファクトを生成する / Create the artifact of the specified number</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:215</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_a3a8736b020ffd037a5337cdebed86b88"><div class="ttname"><a href="wizard-special-process_8h.html#a3a8736b020ffd037a5337cdebed86b88">wiz_create_item</a></div><div class="ttdeci">void wiz_create_item(player_type *caster_ptr)</div><div class="ttdoc">任意のベースアイテム生成のメインルーチン / Wizard routine for creating objects -RAK-</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:182</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_a3fd651c85a7cfc993105fe819d556ccb"><div class="ttname"><a href="wizard-special-process_8h.html#a3fd651c85a7cfc993105fe819d556ccb">wiz_create_feature</a></div><div class="ttdeci">void wiz_create_feature(player_type *creature_ptr)</div><div class="ttdoc">指定された地点の地形IDを変更する / Create desired feature</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:325</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_a49009c6edebcfb420db0b967d3b07828"><div class="ttname"><a href="wizard-special-process_8h.html#a49009c6edebcfb420db0b967d3b07828">wiz_learn_items_all</a></div><div class="ttdeci">void wiz_learn_items_all(player_type *caster_ptr)</div><div class="ttdoc">全ベースアイテムを鑑定済みにする / Become aware of a lot of objects</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:438</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_a5a4d12b795975f60db883b928465c22f"><div class="ttname"><a href="wizard-special-process_8h.html#a5a4d12b795975f60db883b928465c22f">wiz_change_status</a></div><div class="ttdeci">void wiz_change_status(player_type *creature_ptr)</div><div class="ttdoc">プレイヤーの現能力値を調整する / Change various &quot;permanent&quot; player variables.</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:241</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_a5b26b42a18b59c67be60ee84fffcc7cf"><div class="ttname"><a href="wizard-special-process_8h.html#a5b26b42a18b59c67be60ee84fffcc7cf">wiz_reset_realms</a></div><div class="ttdeci">void wiz_reset_realms(player_type *creature_ptr)</div><div class="ttdoc">プレイヤーの領域を変更する</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:514</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_a7813142ec69b0dac5f6c6e95990dd2c1"><div class="ttname"><a href="wizard-special-process_8h.html#a7813142ec69b0dac5f6c6e95990dd2c1">wiz_reset_class</a></div><div class="ttdeci">void wiz_reset_class(player_type *creature_ptr)</div><div class="ttdoc">プレイヤーの職業を変更する</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:485</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_a84af4013cc193546ec04f0023f477a88"><div class="ttname"><a href="wizard-special-process_8h.html#a84af4013cc193546ec04f0023f477a88">set_gametime</a></div><div class="ttdeci">void set_gametime(void)</div><div class="ttdoc">プレイ日数を変更する / Set gametime.</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:596</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_a8c7cd2d5988dbdc19bc703465d332938"><div class="ttname"><a href="wizard-special-process_8h.html#a8c7cd2d5988dbdc19bc703465d332938">wiz_reset_race</a></div><div class="ttdeci">void wiz_reset_race(player_type *creature_ptr)</div><div class="ttdoc">プレイヤーの種族を変更する</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:456</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_a98b79010bb1266a7ff2f32920ca5f5a2"><div class="ttname"><a href="wizard-special-process_8h.html#a98b79010bb1266a7ff2f32920ca5f5a2">wiz_jump_to_dungeon</a></div><div class="ttdeci">void wiz_jump_to_dungeon(player_type *creature_ptr)</div><div class="ttdoc">任意のダンジョン及び階層に飛ぶ / Go to any level</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:380</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_a9ac09086b75ef38e3817317ca5c2d423"><div class="ttname"><a href="wizard-special-process_8h.html#a9ac09086b75ef38e3817317ca5c2d423">cheat_death</a></div><div class="ttdeci">void cheat_death(player_type *creature_ptr, bool no_penalty)</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:659</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_a9ac11136d7f8c0e65133da9da3d3392d"><div class="ttname"><a href="wizard-special-process_8h.html#a9ac11136d7f8c0e65133da9da3d3392d">wiz_zap_floor_monsters</a></div><div class="ttdeci">void wiz_zap_floor_monsters(player_type *caster_ptr)</div><div class="ttdoc">フロアに存在する全モンスターを消去する / Delete all monsters</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:641</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_aa1c5e4046a1d0beceda234dfbf991e77"><div class="ttname"><a href="wizard-special-process_8h.html#aa1c5e4046a1d0beceda234dfbf991e77">wiz_cure_all</a></div><div class="ttdeci">void wiz_cure_all(player_type *creature_ptr)</div><div class="ttdoc">プレイヤーを完全回復する / Cure everything instantly</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:96</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_aab587c280fc21305bf6ff10c8f95a11e"><div class="ttname"><a href="wizard-special-process_8h.html#aab587c280fc21305bf6ff10c8f95a11e">wiz_dump_options</a></div><div class="ttdeci">void wiz_dump_options(void)</div><div class="ttdoc">現在のオプション設定をダンプ出力する /</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:544</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_aac26873cfc84c2e6540c702eb92cc9a5"><div class="ttname"><a href="wizard-special-process_8h.html#aac26873cfc84c2e6540c702eb92cc9a5">wiz_zap_surrounding_monsters</a></div><div class="ttdeci">void wiz_zap_surrounding_monsters(player_type *caster_ptr)</div><div class="ttdoc">プレイヤー近辺の全モンスターを消去する / Delete all nearby monsters</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:618</div></div>
+<div class="ttc" id="awizard-special-process_8h_html_acb55dac4cc6064f6fd4cd68a635414f9"><div class="ttname"><a href="wizard-special-process_8h.html#acb55dac4cc6064f6fd4cd68a635414f9">wiz_create_itemtype</a></div><div class="ttdeci">KIND_OBJECT_IDX wiz_create_itemtype(void)</div><div class="ttdoc">ベースアイテムのウィザード生成のために大項目IDと小項目IDを取得する / Specify tval and sval (type and subtype of object) originally</div><div class="ttdef"><b>Definition:</b> wizard-special-process.cpp:112</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

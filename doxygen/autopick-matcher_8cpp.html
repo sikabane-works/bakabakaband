@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/autopick/autopick-matcher.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_609976a57c98df6cb9f80f504e628a46.html">autopick</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">autopick-matcher.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="autopick-matcher_8h_source.html">autopick/autopick-matcher.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="autopick-flags-table_8h_source.html">autopick/autopick-flags-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="autopick-key-flag-process_8h_source.html">autopick/autopick-key-flag-process.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags1_8h_source.html">monster-race/race-flags1.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-feeling_8h_source.html">object-enchant/item-feeling.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-object-flags_8h_source.html">object-enchant/special-object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-armor_8h_source.html">object-hook/hook-armor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-bow_8h_source.html">object-hook/hook-bow.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-checker_8h_source.html">object-hook/hook-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-enchant_8h_source.html">object-hook/hook-enchant.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-quest_8h_source.html">object-hook/hook-quest.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-weapon_8h_source.html">object-hook/hook-weapon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-info_8h_source.html">object/object-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind_8h_source.html">object/object-kind.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-stack_8h_source.html">object/object-stack.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-value_8h_source.html">object/object-value.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-perception_8h_source.html">perception/object-perception.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-realm_8h_source.html">player/player-realm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="string-processor_8h_source.html">util/string-processor.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+autopick-matcher.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="autopick-matcher_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2autopick_2autopick-matcher_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2autopick_2autopick-matcher_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2autopick_2autopick-matcher_8cpp">
+<area shape="rect" title=" " alt="" coords="1145,5,1333,61"/>
+<area shape="rect" href="autopick-matcher_8h.html" title=" " alt="" coords="1081,117,1267,143"/>
+<area shape="rect" href="autopick-flags-table_8h.html" title=" " alt="" coords="1617,109,1771,151"/>
+<area shape="rect" href="autopick-key-flag-process_8h.html" title=" " alt="" coords="1795,109,1945,151"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="1969,109,2097,151"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="1342,109,1491,151"/>
+<area shape="rect" href="race-flags1_8h.html" title=" " alt="" coords="2121,117,2297,143"/>
+<area shape="rect" href="item-feeling_8h.html" title=" " alt="" coords="2321,109,2457,151"/>
+<area shape="rect" href="special-object-flags_8h.html" title=" " alt="" coords="2481,109,2633,151"/>
+<area shape="rect" href="hook-armor_8h.html" title=" " alt="" coords="5,117,175,143"/>
+<area shape="rect" href="hook-bow_8h.html" title=" " alt="" coords="199,117,357,143"/>
+<area shape="rect" href="hook-checker_8h.html" title=" " alt="" coords="203,206,385,233"/>
+<area shape="rect" href="hook-enchant_8h.html" title=" " alt="" coords="232,295,415,322"/>
+<area shape="rect" href="hook-quest_8h.html" title=" " alt="" coords="483,206,651,233"/>
+<area shape="rect" href="hook-weapon_8h.html" title=" " alt="" coords="491,295,671,322"/>
+<area shape="rect" href="object-info_8h.html" title=" " alt="" coords="1393,206,1523,233"/>
+<area shape="rect" href="object-kind_8h.html" title=" " alt="" coords="2117,206,2252,233"/>
+<area shape="rect" href="object-stack_8h.html" title=" " alt="" coords="727,206,869,233"/>
+<area shape="rect" href="object-value_8h.html" title=" " alt="" coords="996,206,1136,233"/>
+<area shape="rect" href="object-perception_8h.html" title=" " alt="" coords="747,295,943,322"/>
+<area shape="rect" href="player-realm_8h.html" title=" " alt="" coords="967,295,1109,322"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="2669,117,2857,143"/>
+<area shape="rect" href="string-processor_8h.html" title=" " alt="" coords="2349,206,2495,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1108,385,1237,411"/>
+<area shape="rect" href="autopick-util_8h.html" title=" " alt="" coords="1212,206,1368,233"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1127,467,1218,493"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1242,467,1333,493"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1357,467,1455,493"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1479,467,1578,493"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="639,467,739,493"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="763,467,937,493"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="962,467,1103,493"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1602,467,1749,493"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="2028,541,2139,568"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="1286,288,1419,329"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="1843,199,1988,240"/>
+<area shape="rect" title=" " alt="" coords="2402,295,2458,322"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="1861,377,2021,419"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="1835,288,1995,329"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="1595,288,1761,329"/>
+<area shape="rect" title=" " alt="" coords="2272,295,2327,322"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="2121,288,2248,329"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="2519,206,2698,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="2723,206,2873,233"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="2897,199,3053,240"/>
+<area shape="rect" title=" " alt="" coords="2533,295,2618,322"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a24dad2a6a647be39be6b1d9aba964aad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-matcher_8cpp.html#a24dad2a6a647be39be6b1d9aba964aad">is_autopick_match</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, <a class="el" href="structautopick__type.html">autopick_type</a> *entry, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> o_name)</td></tr>
+<tr class="memdesc:a24dad2a6a647be39be6b1d9aba964aad"><td class="mdescLeft">&#160;</td><td class="mdescRight">床のアイテムが自動拾いに一致するかどうかを調べる関数だけを格納したファイル  <a href="autopick-matcher_8cpp.html#a24dad2a6a647be39be6b1d9aba964aad">[詳解]</a><br /></td></tr>
+<tr class="separator:a24dad2a6a647be39be6b1d9aba964aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a24dad2a6a647be39be6b1d9aba964aad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24dad2a6a647be39be6b1d9aba964aad">&#9670;&nbsp;</a></span>is_autopick_match()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> is_autopick_match </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structautopick__type.html">autopick_type</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>o_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>床のアイテムが自動拾いに一致するかどうかを調べる関数だけを格納したファイル </p>
+<dl class="section date"><dt>日付</dt><dd>2020/04/25 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">todo:</a></b></dt><dd>300行以上の凶悪関数なので後で分割しておく </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="autopick-matcher_8cpp_a24dad2a6a647be39be6b1d9aba964aad_cgraph.png" border="0" usemap="#aautopick-matcher_8cpp_a24dad2a6a647be39be6b1d9aba964aad_cgraph" alt=""/></div>
+<map name="aautopick-matcher_8cpp_a24dad2a6a647be39be6b1d9aba964aad_cgraph" id="aautopick-matcher_8cpp_a24dad2a6a647be39be6b1d9aba964aad_cgraph">
+<area shape="rect" title="床のアイテムが自動拾いに一致するかどうかを調べる関数だけを格納したファイル" alt="" coords="5,613,136,640"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="212,5,323,32"/>
+<area shape="rect" href="string-processor_8cpp.html#ac8184d2eea3bb502c7828b1cf2e15a7a" title=" " alt="" coords="213,56,321,83"/>
+<area shape="rect" href="object-info_8cpp.html#a6db41b634f18ba4fcb97bab7cfeac978" title="tval/sval指定のベースアイテムがプレイヤーの使用可能な魔法書かどうかを返す / Hack: Check if a spellbook is one of the realms we can us..." alt="" coords="202,157,333,184"/>
+<area shape="rect" href="player-realm_8cpp.html#a11a8208a38771a1915bc63de183f561a" title=" " alt="" coords="407,120,528,147"/>
+<area shape="rect" href="player-realm_8cpp.html#a17a8cc91a8bf571f0d9ab86dfb238429" title=" " alt="" coords="407,183,528,209"/>
+<area shape="rect" href="hook-bow_8cpp.html#a5fd32e52325fed3ac5f46d6e2fcd04e1" title="オブジェクトが矢弾として使用できるかどうかを返す / Check if an object is ammo" alt="" coords="209,259,326,285"/>
+<area shape="rect" href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537" title="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour" alt="" coords="207,309,328,336"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="598,411,718,437"/>
+<area shape="rect" href="object-perception_8cpp.html#a377c00bc8a6d66ec30288f1e3be60e9f" title=" " alt="" coords="601,512,715,539"/>
+<area shape="rect" href="hook-quest_8cpp.html#a5e010009492b31ea38cbd15c6cb5d3ed" title="オブジェクトが賞金首の報酬対象になるかを返す" alt="" coords="207,1069,327,1096"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="407,917,527,944"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="780,1019,900,1045"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="974,639,1077,665"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a440de5f35a9a07a64dd27fc8074a3948" title="オブジェクトが装備品であるかを返す(object_is_wearableに矢弾を含む) / Equipment including all wearable objects and ammo" alt="" coords="197,1120,338,1147"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a5b0eb47e02dac170b9cee8a4b35fb887" title="オブジェクトがプレイヤーの職業に応じた適正武器か否かを返す / Favorite weapons" alt="" coords="207,639,328,665"/>
+<area shape="rect" href="object-perception_8cpp.html#ab8b89c67f70a877a7964cca6a2f139eb" title=" " alt="" coords="584,968,732,995"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="599,715,717,741"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a0e428cd41af0f842e9e73e48a7cfc77d" title="オブジェクトが近接武器として装備できるかを返す / Melee weapons" alt="" coords="184,1171,351,1197"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a4c57d869f2831012a54d4cc096820260" title="オブジェクトが通常のアイテム(アーティファクト、エゴ、鍛冶師エッセンス付加いずれでもない)かを返す / Check if an object is neither artifact,..." alt="" coords="399,360,536,387"/>
+<area shape="rect" href="hook-quest_8cpp.html#a491596fedb420499b7274392b275ab0c" title="オブジェクトがクエストの達成目的か否かを返す。" alt="" coords="191,1221,344,1248"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a75879cc87f48fafe56f4bc04d3b60b1d" title="オブジェクトがレアアイテムかどうかを返す / Rare weapons/aromors including Blade of Chaos, Dragon armors,..." alt="" coords="216,1272,319,1299"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a3c30f6f6fb14bece864e482c0080485c" title="オブジェクトが武器として装備できるかどうかを返す / Check if an object is weapon (including bows and ammo)" alt="" coords="205,1323,330,1349"/>
+<area shape="rect" href="object-stack_8cpp.html#af0b5aa377553696b3185a0157d962260" title="両オブジェクトをスロットに重ねることができるかどうかを返す。 Determine if an item can absorb a second item." alt="" coords="216,512,319,539"/>
+<area shape="rect" href="object-value_8cpp.html#a0147f5032ab01303e47ff00f49648520" title="オブジェクト価格算出のメインルーチン / Return the price of an item including plusses (and charges)" alt="" coords="221,791,314,817"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="948,765,1103,792"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="442,1069,493,1096"/>
+<area shape="rect" href="object-flags_8cpp.html#aa8b49202dccde14ed12d3de5e33c2c73" title="オブジェクトの明示されているフラグ類を取得する Obtain the &quot;flags&quot; for an item which are known to the player" alt="" coords="400,664,535,691"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="969,512,1082,539"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="412,1221,523,1248"/>
+<area shape="rect" href="object-stack_8cpp.html#a8a60e805097d553c743e5e31d0a3d2e0" title="両オブジェクトをスロットに重ね合わせ可能な最大数を返す。 Determine if an item can partly absorb a second item." alt="" coords="402,512,533,539"/>
+<area shape="rect" href="object-value_8cpp.html#afb59e3a93aa528a3a73df60ce054c2f9" title="未鑑定なベースアイテムの基本価格を返す / Return the &quot;value&quot; of an &quot;unknown&quot; item Make a guess at the value of non&#45;aware ..." alt="" coords="403,613,531,640"/>
+<area shape="rect" href="object-value_8cpp.html#a4b43c1e5db9d62cc85dce89c00b8ff3a" title="オブジェクトの真の価格を算出する / Return the value of the flags the object has..." alt="" coords="407,816,528,843"/>
+<area shape="rect" href="object-value-calc_8cpp.html#a50a71dd33434317049f92e1f4a3f18dd" title="オブジェクトのフラグ類から価格を算出する / Return the value of the flags the object has..." alt="" coords="621,867,695,893"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="795,765,885,792"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="autopick-matcher_8cpp_a24dad2a6a647be39be6b1d9aba964aad_icgraph.png" border="0" usemap="#aautopick-matcher_8cpp_a24dad2a6a647be39be6b1d9aba964aad_icgraph" alt=""/></div>
+<map name="aautopick-matcher_8cpp_a24dad2a6a647be39be6b1d9aba964aad_icgraph" id="aautopick-matcher_8cpp_a24dad2a6a647be39be6b1d9aba964aad_icgraph">
+<area shape="rect" title="床のアイテムが自動拾いに一致するかどうかを調べる関数だけを格納したファイル" alt="" coords="771,897,901,924"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a8108553a0b971c8d22ad18d214df8fb3" title="自動拾いの検索" alt="" coords="599,644,722,671"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a58a59a6c0789acd4d0fd87e349e49b5c" title=" " alt="" coords="599,923,723,949"/>
+<area shape="rect" href="autopick_8cpp.html#ae7f092144503a2ccb534345fe872d299" title=" " alt="" coords="410,644,545,671"/>
+<area shape="rect" href="autopick_8cpp.html#aa84c8c12cf35bd08cc70374c9bf70413" title=" " alt="" coords="5,872,160,899"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="404,416,551,443"/>
+<area shape="rect" href="display-map_8cpp.html#a9be4d479cc04510dbea7b7c114c617f3" title="指定した座標の地形の表示属性を取得する / Extract the attr/char to display at the given (legal) map location" alt="" coords="440,112,515,139"/>
+<area shape="rect" href="inventory-initializer_8cpp.html#afd93c067dfb17be0323012e0c06daab6" title="初期所持アイテムの処理 / Add an outfit object" alt="" coords="243,391,321,417"/>
+<area shape="rect" href="effect-item_8cpp.html#a535ce53ec7f78b19e787e4289d5dec3f" title="汎用的なビーム/ボルト/ボール系によるアイテムオブジェクトへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="40,239,125,265"/>
+<area shape="rect" href="building-recharger_8cpp.html#ac7c07a23630b5e2f83c38746dabef46c" title="魔道具の使用回数を回復させる施設のメインルーチン / Recharge rods, wands and staffs" alt="" coords="221,492,343,519"/>
+<area shape="rect" href="building-recharger_8cpp.html#ad461a845e07738b38becb2b5c2b3d0b7" title="魔道具の使用回数を回復させる施設の一括処理向けサブルーチン / Recharge rods, wands and staffs" alt="" coords="211,543,353,569"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f" title=" " alt="" coords="213,239,351,265"/>
+<area shape="rect" href="mind-archer_8cpp.html#a5c7ac014262f5236c69ea18c406fee25" title="「弾/矢の製造」処理 / do_cmd_cast calls this function if the player&#39;s class is &#39;archer&#39;." alt="" coords="231,593,333,620"/>
+<area shape="rect" href="player-inventory_8cpp.html#a870affd57aaed3be875c174410ecf5d3" title="プレイヤーがオブジェクトを拾った際のメッセージ表示処理 / Helper routine for py_pickup() and py_pickup_floor()." alt="" coords="208,644,356,671"/>
+<area shape="rect" href="cmd-equipment_8cpp.html#ac5a7ea600612007cbf7d105f433213ab" title="装備するコマンドのメインルーチン / Wield or wear a single item from the pack or floor" alt="" coords="230,695,334,721"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a797b62fcd176848c22caea6a89c96911" title="エッセンスの抽出処理" alt="" coords="229,745,335,772"/>
+<area shape="rect" href="bounty_8cpp.html#a6aa3c9347a136a6ff64e84d0dd306057" title="賞金首の引き換え処理 / Get prize" alt="" coords="225,796,339,823"/>
+<area shape="rect" href="spells-perception_8cpp.html#ac3df176ff52478263f041532247ea900" title="アイテム鑑定のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="240,847,324,873"/>
+<area shape="rect" href="spells-perception_8cpp.html#a37cf235976cfb937acb8a284ed66593e" title="アイテム*鑑定*のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="235,897,329,924"/>
+<area shape="rect" href="spells-perception_8cpp.html#afff4f08e929a35d21ccc50e4c6149e52" title="全所持アイテム鑑定処理 / Identify everything being carried." alt="" coords="233,948,331,975"/>
+<area shape="rect" href="mind-mindcrafter_8cpp.html#a32c9502c994c59bed2f6bfbceddfd05f" title="超能力者のサイコメトリー処理/ Forcibly pseudo&#45;identify an object in the inventory (or on the floor)" alt="" coords="233,999,331,1025"/>
+<area shape="rect" href="simple-perception_8cpp.html#a39c27f6da7bb8717e01a8312fa0e6347" title="疑似鑑定処理" alt="" coords="211,1049,353,1076"/>
+<area shape="rect" href="purchase-order_8cpp.html#af2598623de85822d1bbcea345f900770" title="店からの購入処理のメインルーチン / Buy an item from a store &#45;RAK&#45;" alt="" coords="227,289,337,316"/>
+<area shape="rect" href="sell-order_8cpp.html#a99c896d0a63db27afbf59621f6b7d51f" title="店からの売却処理のメインルーチン / Sell an item to the store (or home)" alt="" coords="243,340,321,367"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#a618ba1b9ba0c1ccc906ad9355e43ba33" title="自分の周辺の地形をTermに表示する" alt="" coords="223,137,341,164"/>
+<area shape="rect" href="main-window-util_8cpp.html#ab796a066c67896a730d448c40957903e" title="縮小マップ表示 / Display a &quot;small&#45;scale&quot; map of the dungeon in the active Term" alt="" coords="235,188,329,215"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="247,36,317,63"/>
+<area shape="rect" href="main-window-util_8cpp.html#a939591bb7cb9347fbb114ffd9ae7cc8e" title=" " alt="" coords="43,11,122,37"/>
+<area shape="rect" href="cursor_8cpp.html#ab3f12b6994600a41837ccc8855511b12" title=" " alt="" coords="243,87,321,113"/>
+<area shape="rect" href="autopick-editor-command_8cpp.html#ac32821feb8173c8df9a544bcfac215e9" title="自動拾いエディタ画面でキーを押した時の挙動一式" alt="" coords="408,1151,547,1177"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分04秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

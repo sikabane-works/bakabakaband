@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/realm/realm-death.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e915a26c8e560103e3313d0a1faccb83.html">realm</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">realm-death.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="realm-death_8h_source.html">realm/realm-death.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-spell_8h_source.html">cmd-action/cmd-spell.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hp-mp-processor_8h_source.html">core/hp-mp-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="effect-characteristics_8h_source.html">effect/effect-characteristics.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="effect-processor_8h_source.html">effect/effect-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="avatar_8h_source.html">player-info/avatar.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="digestion-processor_8h_source.html">player/digestion-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-damage_8h_source.html">player/player-damage.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-race_8h_source.html">player/player-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-realm_8h_source.html">player/player-realm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-charm_8h_source.html">spell-kind/spells-charm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-detection_8h_source.html">spell-kind/spells-detection.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-genocide_8h_source.html">spell-kind/spells-genocide.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-launcher_8h_source.html">spell-kind/spells-launcher.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-neighbor_8h_source.html">spell-kind/spells-neighbor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-perception_8h_source.html">spell-kind/spells-perception.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-sight_8h_source.html">spell-kind/spells-sight.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-specific-bolt_8h_source.html">spell-kind/spells-specific-bolt.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spell-types_8h_source.html">spell/spell-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-diceroll_8h_source.html">spell/spells-diceroll.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-object_8h_source.html">spell/spells-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-status_8h_source.html">spell/spells-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-summon_8h_source.html">spell/spells-summon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="buff-setter_8h_source.html">status/buff-setter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="element-resistance_8h_source.html">status/element-resistance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="experience_8h_source.html">status/experience.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="shape-changer_8h_source.html">status/shape-changer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="target-getter_8h_source.html">target/target-getter.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+realm-death.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="realm-death_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2realm_2realm-death_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2realm_2realm-death_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2realm_2realm-death_8cpp">
+<area shape="rect" title=" " alt="" coords="2560,5,2748,61"/>
+<area shape="rect" href="realm-death_8h.html" title=" " alt="" coords="220,117,357,143"/>
+<area shape="rect" href="cmd-spell_8h.html" title=" " alt="" coords="2667,117,2825,143"/>
+<area shape="rect" href="hp-mp-processor_8h.html" title=" " alt="" coords="4208,117,4367,143"/>
+<area shape="rect" href="effect-characteristics_8h.html" title=" " alt="" coords="537,117,725,143"/>
+<area shape="rect" href="effect-processor_8h.html" title=" " alt="" coords="4391,117,4551,143"/>
+<area shape="rect" href="avatar_8h.html" title=" " alt="" coords="382,117,513,143"/>
+<area shape="rect" href="digestion-processor_8h.html" title=" " alt="" coords="749,117,935,143"/>
+<area shape="rect" href="player-damage_8h.html" title=" " alt="" coords="4575,117,4733,143"/>
+<area shape="rect" href="player-race_8h.html" title=" " alt="" coords="959,117,1095,143"/>
+<area shape="rect" href="player-realm_8h.html" title=" " alt="" coords="1120,117,1263,143"/>
+<area shape="rect" href="spells-charm_8h.html" title=" " alt="" coords="1287,117,1453,143"/>
+<area shape="rect" href="spells-detection_8h.html" title=" " alt="" coords="1477,117,1660,143"/>
+<area shape="rect" href="spells-genocide_8h.html" title=" " alt="" coords="1684,117,1867,143"/>
+<area shape="rect" href="spells-launcher_8h.html" title=" " alt="" coords="1891,117,2070,143"/>
+<area shape="rect" href="spells-neighbor_8h.html" title=" " alt="" coords="2094,117,2273,143"/>
+<area shape="rect" href="spells-perception_8h.html" title=" " alt="" coords="5,117,196,143"/>
+<area shape="rect" href="spells-sight_8h.html" title=" " alt="" coords="2297,117,2456,143"/>
+<area shape="rect" href="spells-specific-bolt_8h.html" title=" " alt="" coords="2481,109,2643,151"/>
+<area shape="rect" href="spell-types_8h.html" title=" " alt="" coords="3343,117,3469,143"/>
+<area shape="rect" href="spells-diceroll_8h.html" title=" " alt="" coords="4757,117,4900,143"/>
+<area shape="rect" href="spells-object_8h.html" title=" " alt="" coords="2849,117,2987,143"/>
+<area shape="rect" href="spells-status_8h.html" title=" " alt="" coords="4925,117,5063,143"/>
+<area shape="rect" href="spells-summon_8h.html" title=" " alt="" coords="3011,117,3163,143"/>
+<area shape="rect" href="buff-setter_8h.html" title=" " alt="" coords="3187,117,3318,143"/>
+<area shape="rect" href="element-resistance_8h.html" title=" " alt="" coords="3493,117,3676,143"/>
+<area shape="rect" href="experience_8h.html" title=" " alt="" coords="3701,117,3837,143"/>
+<area shape="rect" href="shape-changer_8h.html" title=" " alt="" coords="3861,117,4020,143"/>
+<area shape="rect" href="target-getter_8h.html" title=" " alt="" coords="4044,117,4184,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="2681,206,2811,233"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="2416,377,2535,404"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="3185,295,3275,322"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="3299,295,3390,322"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="2279,295,2378,322"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="2573,295,2671,322"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="2696,295,2796,322"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="2820,295,2995,322"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="3019,295,3161,322"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="2402,295,2549,322"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="3200,377,3311,404"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="4597,199,4743,240"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="4763,288,4907,329"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="4420,288,4576,329"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="4601,288,4739,329"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="37,206,164,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a50c6496985b42dd66c09ac5be171bbdf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf">do_death_spell</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a> spell, <a class="el" href="spells-util_8h.html#a2135e50f939c526eb0a4164754e6e4ff">spell_type</a> mode)</td></tr>
+<tr class="memdesc:a50c6496985b42dd66c09ac5be171bbdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">暗黒領域魔法の各処理を行う  <a href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf">[詳解]</a><br /></td></tr>
+<tr class="separator:a50c6496985b42dd66c09ac5be171bbdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a50c6496985b42dd66c09ac5be171bbdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50c6496985b42dd66c09ac5be171bbdf">&#9670;&nbsp;</a></span>do_death_spell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> do_death_spell </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a>&#160;</td>
+          <td class="paramname"><em>spell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="spells-util_8h.html#a2135e50f939c526eb0a4164754e6e4ff">spell_type</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>暗黒領域魔法の各処理を行う </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">caster_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">spell</td><td>魔法ID </td></tr>
+    <tr><td class="paramname">mode</td><td>処理内容 (SPELL_NAME / SPELL_DESC / SPELL_INFO / SPELL_CAST) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>SPELL_NAME / SPELL_DESC / SPELL_INFO 時には文字列ポインタを返す。SPELL_CAST時はNULL文字列を返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="realm-death_8cpp_a50c6496985b42dd66c09ac5be171bbdf_cgraph.png" border="0" usemap="#arealm-death_8cpp_a50c6496985b42dd66c09ac5be171bbdf_cgraph" alt=""/></div>
+<map name="arealm-death_8cpp_a50c6496985b42dd66c09ac5be171bbdf_cgraph" id="arealm-death_8cpp_a50c6496985b42dd66c09ac5be171bbdf_cgraph">
+<area shape="rect" title="暗黒領域魔法の各処理を行う" alt="" coords="5,1275,115,1302"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#ad8d6bd76ccded6edc3d938dddafbea6d" title="死者復活処理(起点より周囲5マス)" alt="" coords="361,1833,464,1859"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="555,1681,616,1707"/>
+<area shape="rect" href="spells-diceroll_8cpp.html#aba99310cc53a1d33fb596c7499b6b24a" title="一部ボルト魔法のビーム化確率を算出する / Prepare standard probability to become beam for fire_bolt_or_beam()" alt="" coords="361,591,464,618"/>
+<area shape="rect" href="spells-status_8cpp.html#aae9a0980e97bd173f6040909d6e66097" title=" " alt="" coords="199,439,265,466"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#aae3b822ccd5276c3867b9f1af446719d" title=" " alt="" coords="373,389,452,415"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="742,667,822,694"/>
+<area shape="rect" href="spells-object_8cpp.html#a606c388ae9ec39706af972b765edadbe" title="武器へのエゴ付加処理 / Brand the current weapon" alt="" coords="533,1491,638,1518"/>
+<area shape="rect" href="spells-summon_8cpp.html#ae25b9862f324f43e7bd22de4bba02963" title="「悪霊召喚」のランダムな効果を決定して処理する。" alt="" coords="166,895,298,922"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="553,743,617,770"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="753,1934,811,1961"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="551,1339,619,1366"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a9c5b6430a190c4d961f6017a483fdcf2" title="ボール系スペルの発動 / Cast a ball spell" alt="" coords="379,1655,446,1682"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a1e7a3734d8ba41c7cc45621f4917a99b" title="確率に応じたボルト系/ビーム系スペルの発動 / Cast a bolt spell, or rarely, a beam spell." alt="" coords="351,1098,475,1125"/>
+<area shape="rect" href="spells-specific-bolt_8cpp.html#a16b29006f7234e69026dc7327ef03be8" title="衰弱ボルト処理" alt="" coords="349,1199,476,1226"/>
+<area shape="rect" href="spells-genocide_8cpp.html#af6c9224600da04c8ce3dc98bf986715e" title="モンスターへのシンボル抹殺処理ルーチン / Delete all non&#45;unique/non&#45;quest monsters of a given &quot;type&quot; from the level" alt="" coords="524,997,647,1023"/>
+<area shape="rect" href="spells-summon_8cpp.html#a2c742fe160592cee467ed28bba94c40d" title=" " alt="" coords="705,2035,859,2062"/>
+<area shape="rect" href="spells-charm_8cpp.html#a58d677413c24dd3ccff3db653c09cb6f" title="アンデッド支配(1体)" alt="" coords="163,1098,301,1125"/>
+<area shape="rect" href="spells-specific-bolt_8cpp.html#a5c96aff47945f93261c309bb8412867b" title="死の光線処理" alt="" coords="193,1149,271,1175"/>
+<area shape="rect" href="spells-detection_8cpp.html#afac285bd37a07daa4478cc5c22c1ff1b" title="邪悪なモンスターを感知する / Detect all &quot;evil&quot; monsters on current panel" alt="" coords="710,2086,854,2113"/>
+<area shape="rect" href="spells-detection_8cpp.html#afc193c45bedcba070d222fdc3f9750e8" title="無生命のモンスターを感知する(アンデッド、悪魔系を含む) / Detect all &quot;nonliving&quot;, &quot;undead&quot; or &quot;demonic&quot; monsters on current pane..." alt="" coords="695,35,869,62"/>
+<area shape="rect" href="spells-sight_8cpp.html#a980bfa1b232be43b3a13d0823f2852db" title="視界内の生命のあるモンスターにダメージを与える処理 / Dispel &#39;living&#39; monsters" alt="" coords="187,1301,277,1327"/>
+<area shape="rect" href="spells-status_8cpp.html#aa02a9d57bfca3762f92177fab153ed7f" title="モンスター恐慌処理" alt="" coords="183,1351,281,1378"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a91b238446e2261ec912dcf94e20cfef8" title="ボール(ハイド)系スペルの発動 / Cast a ball spell" alt="" coords="364,1757,461,1783"/>
+<area shape="rect" href="target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="737,87,827,114"/>
+<area shape="rect" href="spells-perception_8cpp.html#ac3df176ff52478263f041532247ea900" title="アイテム鑑定のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="543,1441,627,1467"/>
+<area shape="rect" href="spells-perception_8cpp.html#a37cf235976cfb937acb8a284ed66593e" title="アイテム*鑑定*のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="539,1542,632,1569"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a3f8bb1e2e9d89f976a13812b836c5f9a" title="魔法によるダメージを出力する / Generate damage&#45;dice info string such as &quot;dam 2d10&quot;" alt="" coords="185,1605,279,1631"/>
+<area shape="rect" href="cmd-spell_8cpp.html#ab76faaaa974c8d183f1111f310491881" title="魔法の効果時間を出力する / Generate duration info string such as &quot;dur 20+1d20&quot;" alt="" coords="538,1909,633,1935"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a5e47d86393f65df045ae425fb077117d" title="魔法による一般的な効力値を出力する（固定値） / Generate power info string such as &quot;power 100&quot;" alt="" coords="544,1959,627,1986"/>
+<area shape="rect" href="cmd-spell_8cpp.html#ad7588e7d4c5b74ae0236d927fa888a30" title="魔法の効果半径を出力する / Generate radius info string such as &quot;rad 100&quot;" alt="" coords="543,2061,627,2087"/>
+<area shape="rect" href="player-realm_8cpp.html#aca735d2c754a04b4e011003532982c92" title=" " alt="" coords="175,1807,289,1834"/>
+<area shape="rect" href="spells-genocide_8cpp.html#abdf758f4c6b51dbbf56cfe6cfc0fd36b" title="モンスターへの周辺抹殺処理ルーチン / Delete all nearby (non&#45;unique) monsters" alt="" coords="175,338,289,365"/>
+<area shape="rect" href="experience_8cpp.html#a530d12101ed829b4f6ff94c9f9964cfd" title=" " alt="" coords="735,139,829,166"/>
+<area shape="rect" href="buff-setter_8cpp.html#adba19dfd913dcf5feb9f6e0b09c9326d" title="加速の継続時間をセットする / Set &quot;fast&quot;, notice observable changes" alt="" coords="551,1047,619,1074"/>
+<area shape="rect" href="digestion-processor_8cpp.html#a6d19789daca41118040cb2abdfdcc17c" title="空腹状態をセットする / Set &quot;food&quot;, notice observable changes" alt="" coords="550,1098,621,1125"/>
+<area shape="rect" href="buff-setter_8cpp.html#a93ff8d516629853e66fcca03f1cb4205" title="変身効果の継続時間と変身先をセットする / Set &quot;tim_mimic&quot;, and &quot;mimic_form&quot;, notice observable changes" alt="" coords="741,193,823,219"/>
+<area shape="rect" href="element-resistance_8cpp.html#a1931c2c7f031edea14439c6ca1f3be83" title="一時的毒耐性の継続時間をセットする / Set &quot;oppose_pois&quot;, notice observable changes" alt="" coords="722,250,842,277"/>
+<area shape="rect" href="buff-setter_8cpp.html#a1741caf2f971d0ba0e513fbc049482f1" title="幽体化の継続時間をセットする / Set &quot;wraith_form&quot;, notice observable changes" alt="" coords="529,287,642,314"/>
+<area shape="rect" href="spells-status_8cpp.html#a8588af408bfd6fc7c3cb8bf7ddbaab0b" title="モンスター催眠処理" alt="" coords="179,2213,285,2239"/>
+<area shape="rect" href="spells-status_8cpp.html#af5beecc4236e3ddf58f54b0cf52c60a9" title="モンスター朦朧処理" alt="" coords="181,2263,283,2290"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="737,1402,827,1429"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="917,1022,996,1049"/>
+<area shape="rect" href="bad-status-setter_8cpp.html#a6152d304ba1b3495baef77a69de9f187" title="恐怖の継続時間をセットする / Set &quot;afraid&quot;, notice observable changes" alt="" coords="373,439,452,466"/>
+<area shape="rect" href="spells-status_8cpp.html#a6e1fc6aa98b692b6010e4fbc4712f02e" title="モンスター混乱処理" alt="" coords="352,794,473,821"/>
+<area shape="rect" href="spells-floor_8cpp.html#aff6b2287b85d21769fa6b05e3df35eaf" title="*破壊*処理を行う / The spell of destruction" alt="" coords="537,1149,634,1175"/>
+<area shape="rect" href="spells-sight_8cpp.html#a4492b77dd7b9034a0655e716bd049902" title="視界内のあらゆるモンスターにダメージを与える処理 / Dispel all monsters" alt="" coords="354,845,471,871"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="369,1351,456,1378"/>
+<area shape="rect" href="spells-lite_8cpp.html#aa1d1337228a5158ce576fed55814716f" title="LITE_WEAK属性による光源ビーム処理" alt="" coords="379,895,446,922"/>
+<area shape="rect" href="spells-status_8cpp.html#a7d03a8fb9016f6481a5402da0d886070" title="チェンジモンスター処理" alt="" coords="363,642,463,669"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="realm-death_8cpp_a50c6496985b42dd66c09ac5be171bbdf_icgraph.png" border="0" usemap="#arealm-death_8cpp_a50c6496985b42dd66c09ac5be171bbdf_icgraph" alt=""/></div>
+<map name="arealm-death_8cpp_a50c6496985b42dd66c09ac5be171bbdf_icgraph" id="arealm-death_8cpp_a50c6496985b42dd66c09ac5be171bbdf_icgraph">
+<area shape="rect" title="暗黒領域魔法の各処理を行う" alt="" coords="744,456,853,483"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="619,456,696,483"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="219,152,305,179"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="213,51,311,77"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="411,557,532,584"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="21,405,137,432"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="29,304,129,331"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="394,608,549,635"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="200,684,324,711"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="372,760,571,787"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="25,481,132,508"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="422,811,521,837"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="403,709,540,736"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="225,355,299,381"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="427,405,515,432"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="212,101,312,128"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="207,253,317,280"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="407,203,536,229"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="424,51,519,77"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="396,861,547,888"/>
+<area shape="rect" href="player-processor_8cpp.html#af24fbcbcceb1cacc5638530532d65f29" title="プレイヤーの行動エネルギーが充填される（＝プレイヤーのターンが回る）毎に行われる処理 / process the effects per 100 energy at player speed." alt="" coords="5,94,152,135"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#a1b6030a61185d027b8f84b0d3689d5c4" title="現在の習得済魔法をサブウィンドウに表示する /" alt="" coords="227,557,297,584"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時56分17秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

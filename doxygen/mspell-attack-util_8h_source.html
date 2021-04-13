@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/mspell/mspell-attack-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d3503302c38a329207825687a87abf53.html">mspell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mspell-attack-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="mspell-attack-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="mspell-attack-util_8h.html#ac391064991fd38d11b4924ddcefc84e2">    1</a></span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="race-ability-flags_8h.html">monster-race/race-ability-flags.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="flag-group_8h.html">util/flag-group.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359fa">   10</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359fa">mspell_lite_type</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359faaa7eb1dccfe51df83d520c94839cd8a24">   11</a></span>&#160;    <a class="code" href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359faaa7eb1dccfe51df83d520c94839cd8a24">DO_SPELL_NONE</a> = 0,</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359faa8ea792f1097aade8b3a6e68ecf4c0ef0">   12</a></span>&#160;    <a class="code" href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359faa8ea792f1097aade8b3a6e68ecf4c0ef0">DO_SPELL_BR_LITE</a> = 1,</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359faa781da63b979c128465bcf2d144eb20a0">   13</a></span>&#160;    <a class="code" href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359faa781da63b979c128465bcf2d144eb20a0">DO_SPELL_BR_DISI</a> = 2,</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359faab17a818dacd7482fbe37ac8e2e9e641b">   14</a></span>&#160;    <a class="code" href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359faab17a818dacd7482fbe37ac8e2e9e641b">DO_SPELL_BA_LITE</a> = 3,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;};</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// Monster Spell Attack.</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmonster__type.html">monster_type</a> <a class="code" href="structmonster__type.html">monster_type</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmonster__race.html">monster_race</a> <a class="code" href="structmonster__race.html">monster_race</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structmsa__type.html">   20</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmsa__type.html">msa_type</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structmsa__type.html#a18f4dc95512c255084a58680ab356ef6">   21</a></span>&#160;    <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> <a class="code" href="structmsa__type.html#a18f4dc95512c255084a58680ab356ef6">m_idx</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structmsa__type.html#a3df435bb2e2d9cc7e01ec76835811616">   22</a></span>&#160;    <a class="code" href="structmonster__type.html">monster_type</a> *<a class="code" href="structmsa__type.html#a3df435bb2e2d9cc7e01ec76835811616">m_ptr</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structmsa__type.html#a59e69d854aa2efe3fed567c5c3c238c0">   23</a></span>&#160;    <a class="code" href="structmonster__race.html">monster_race</a> *<a class="code" href="structmsa__type.html#a59e69d854aa2efe3fed567c5c3c238c0">r_ptr</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structmsa__type.html#a3a855f5870e46dbad8ca4bb29cbba30b">   24</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmsa__type.html#a3a855f5870e46dbad8ca4bb29cbba30b">no_inate</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structmsa__type.html#ac447eddf3072a63d0eeb6a1c61d60b16">   25</a></span>&#160;    <a class="code" href="class_flag_group.html">FlagGroup&lt;RF_ABILITY&gt;</a> <a class="code" href="structmsa__type.html#ac447eddf3072a63d0eeb6a1c61d60b16">ability_flags</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structmsa__type.html#a21f39c28cf6bc2187b626ccd72b27212">   26</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structmsa__type.html#a21f39c28cf6bc2187b626ccd72b27212">x</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structmsa__type.html#a9b0c3d2dcc88b2202f0e159a4569c106">   27</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structmsa__type.html#a9b0c3d2dcc88b2202f0e159a4569c106">y</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structmsa__type.html#a2340dcf08d2251ae1dbf13d51d546b33">   28</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structmsa__type.html#a2340dcf08d2251ae1dbf13d51d546b33">x_br_lite</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structmsa__type.html#a58fb1e23cd72ee794954bb8a4372328e">   29</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structmsa__type.html#a58fb1e23cd72ee794954bb8a4372328e">y_br_lite</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structmsa__type.html#ade9b735f41739c74649e92340d538564">   30</a></span>&#160;    <a class="code" href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359fa">mspell_lite_type</a> <a class="code" href="structmsa__type.html#ade9b735f41739c74649e92340d538564">do_spell</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structmsa__type.html#af4aed477be06c3d0ea23a3391df18086">   31</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmsa__type.html#af4aed477be06c3d0ea23a3391df18086">in_no_magic_dungeon</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structmsa__type.html#ac1e8e626237177c839dff13baace3d1e">   32</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmsa__type.html#ac1e8e626237177c839dff13baace3d1e">success</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structmsa__type.html#a442dfedf9e9ee564e00771e1df147662">   33</a></span>&#160;    std::vector&lt;RF_ABILITY&gt; <a class="code" href="structmsa__type.html#a442dfedf9e9ee564e00771e1df147662">mspells</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structmsa__type.html#a3371d879e3f22b2b0ca5ebff625a2f87">   34</a></span>&#160;    <a class="code" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> <a class="code" href="structmsa__type.html#a3371d879e3f22b2b0ca5ebff625a2f87">thrown_spell</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structmsa__type.html#a0edfa67fd227a2ce89e9e18280acc9d2">   35</a></span>&#160;    <a class="code" href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a> <a class="code" href="structmsa__type.html#a0edfa67fd227a2ce89e9e18280acc9d2">m_name</a>[<a class="code" href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a>];</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structmsa__type.html#ad3397548b929b14d18667554d30c46e8">   36</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmsa__type.html#ad3397548b929b14d18667554d30c46e8">can_remember</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structmsa__type.html#adc3b44aa1746ca78f992a3e955cc6e91">   37</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmsa__type.html#adc3b44aa1746ca78f992a3e955cc6e91">dam</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structmsa__type.html#ad15d4acbc55b1f0fc19e965b44b9d098">   38</a></span>&#160;    <a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> <a class="code" href="structmsa__type.html#ad15d4acbc55b1f0fc19e965b44b9d098">rlev</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="mspell-attack-util_8h.html#aeb7d6089ddfe68c20948458e8af117b3">   39</a></span>&#160;} <a class="code" href="mspell-attack-util_8h.html#aeb7d6089ddfe68c20948458e8af117b3">msa_type</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<a class="code" href="structmsa__type.html">msa_type</a> *<a class="code" href="mspell-attack-util_8h.html#a691e27820d1e52fe127dbc89bc425246">initialize_msa_type</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmsa__type.html">msa_type</a> *msa_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aclass_flag_group_html"><div class="ttname"><a href="class_flag_group.html">FlagGroup&lt; RF_ABILITY &gt;</a></div></div>
+<div class="ttc" id="aflag-group_8h_html"><div class="ttname"><a href="flag-group_8h.html">flag-group.h</a></div></div>
+<div class="ttc" id="ah-type_8h_html_a1c8b80a20fb5396ff07a523b01112c47"><div class="ttname"><a href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a></div><div class="ttdeci">s32b DEPTH</div><div class="ttdoc">ゲーム中の階層レベルの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:194</div></div>
+<div class="ttc" id="ah-type_8h_html_a709af41498f5625eae9f3b73fb6b6f3c"><div class="ttname"><a href="h-type_8h.html#a709af41498f5625eae9f3b73fb6b6f3c">MAX_NLEN</a></div><div class="ttdeci">#define MAX_NLEN</div><div class="ttdoc">Maximum length of object's name</div><div class="ttdef"><b>Definition:</b> h-type.h:58</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_ac67a750044882c0fd3760a2eccd56d7c"><div class="ttname"><a href="h-type_8h.html#ac67a750044882c0fd3760a2eccd56d7c">GAME_TEXT</a></div><div class="ttdeci">char GAME_TEXT</div><div class="ttdoc">ゲーム中のテキスト型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:133</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="amspell-attack-util_8h_html_a691e27820d1e52fe127dbc89bc425246"><div class="ttname"><a href="mspell-attack-util_8h.html#a691e27820d1e52fe127dbc89bc425246">initialize_msa_type</a></div><div class="ttdeci">msa_type * initialize_msa_type(player_type *target_ptr, msa_type *msa_ptr, MONSTER_IDX m_idx)</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.cpp:6</div></div>
+<div class="ttc" id="amspell-attack-util_8h_html_aceea058439a36b9dfa54fed3430359fa"><div class="ttname"><a href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359fa">mspell_lite_type</a></div><div class="ttdeci">mspell_lite_type</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:10</div></div>
+<div class="ttc" id="amspell-attack-util_8h_html_aceea058439a36b9dfa54fed3430359faa781da63b979c128465bcf2d144eb20a0"><div class="ttname"><a href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359faa781da63b979c128465bcf2d144eb20a0">DO_SPELL_BR_DISI</a></div><div class="ttdeci">@ DO_SPELL_BR_DISI</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:13</div></div>
+<div class="ttc" id="amspell-attack-util_8h_html_aceea058439a36b9dfa54fed3430359faa8ea792f1097aade8b3a6e68ecf4c0ef0"><div class="ttname"><a href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359faa8ea792f1097aade8b3a6e68ecf4c0ef0">DO_SPELL_BR_LITE</a></div><div class="ttdeci">@ DO_SPELL_BR_LITE</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:12</div></div>
+<div class="ttc" id="amspell-attack-util_8h_html_aceea058439a36b9dfa54fed3430359faaa7eb1dccfe51df83d520c94839cd8a24"><div class="ttname"><a href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359faaa7eb1dccfe51df83d520c94839cd8a24">DO_SPELL_NONE</a></div><div class="ttdeci">@ DO_SPELL_NONE</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:11</div></div>
+<div class="ttc" id="amspell-attack-util_8h_html_aceea058439a36b9dfa54fed3430359faab17a818dacd7482fbe37ac8e2e9e641b"><div class="ttname"><a href="mspell-attack-util_8h.html#aceea058439a36b9dfa54fed3430359faab17a818dacd7482fbe37ac8e2e9e641b">DO_SPELL_BA_LITE</a></div><div class="ttdeci">@ DO_SPELL_BA_LITE</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:14</div></div>
+<div class="ttc" id="amspell-attack-util_8h_html_aeb7d6089ddfe68c20948458e8af117b3"><div class="ttname"><a href="mspell-attack-util_8h.html#aeb7d6089ddfe68c20948458e8af117b3">msa_type</a></div><div class="ttdeci">struct msa_type msa_type</div></div>
+<div class="ttc" id="arace-ability-flags_8h_html"><div class="ttname"><a href="race-ability-flags_8h.html">race-ability-flags.h</a></div></div>
+<div class="ttc" id="arace-ability-flags_8h_html_acbcf656bb21b1f961b30ca0f24fcb5aa"><div class="ttname"><a href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a></div><div class="ttdeci">RF_ABILITY</div><div class="ttdef"><b>Definition:</b> race-ability-flags.h:3</div></div>
+<div class="ttc" id="astructmonster__race_html"><div class="ttname"><a href="structmonster__race.html">monster_race</a></div><div class="ttdef"><b>Definition:</b> monster-race-definition.h:48</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructmsa__type_html"><div class="ttname"><a href="structmsa__type.html">msa_type</a></div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:20</div></div>
+<div class="ttc" id="astructmsa__type_html_a0edfa67fd227a2ce89e9e18280acc9d2"><div class="ttname"><a href="structmsa__type.html#a0edfa67fd227a2ce89e9e18280acc9d2">msa_type::m_name</a></div><div class="ttdeci">GAME_TEXT m_name[MAX_NLEN]</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:35</div></div>
+<div class="ttc" id="astructmsa__type_html_a18f4dc95512c255084a58680ab356ef6"><div class="ttname"><a href="structmsa__type.html#a18f4dc95512c255084a58680ab356ef6">msa_type::m_idx</a></div><div class="ttdeci">MONSTER_IDX m_idx</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:21</div></div>
+<div class="ttc" id="astructmsa__type_html_a21f39c28cf6bc2187b626ccd72b27212"><div class="ttname"><a href="structmsa__type.html#a21f39c28cf6bc2187b626ccd72b27212">msa_type::x</a></div><div class="ttdeci">POSITION x</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:26</div></div>
+<div class="ttc" id="astructmsa__type_html_a2340dcf08d2251ae1dbf13d51d546b33"><div class="ttname"><a href="structmsa__type.html#a2340dcf08d2251ae1dbf13d51d546b33">msa_type::x_br_lite</a></div><div class="ttdeci">POSITION x_br_lite</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:28</div></div>
+<div class="ttc" id="astructmsa__type_html_a3371d879e3f22b2b0ca5ebff625a2f87"><div class="ttname"><a href="structmsa__type.html#a3371d879e3f22b2b0ca5ebff625a2f87">msa_type::thrown_spell</a></div><div class="ttdeci">RF_ABILITY thrown_spell</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:34</div></div>
+<div class="ttc" id="astructmsa__type_html_a3a855f5870e46dbad8ca4bb29cbba30b"><div class="ttname"><a href="structmsa__type.html#a3a855f5870e46dbad8ca4bb29cbba30b">msa_type::no_inate</a></div><div class="ttdeci">bool no_inate</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:24</div></div>
+<div class="ttc" id="astructmsa__type_html_a3df435bb2e2d9cc7e01ec76835811616"><div class="ttname"><a href="structmsa__type.html#a3df435bb2e2d9cc7e01ec76835811616">msa_type::m_ptr</a></div><div class="ttdeci">monster_type * m_ptr</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:22</div></div>
+<div class="ttc" id="astructmsa__type_html_a442dfedf9e9ee564e00771e1df147662"><div class="ttname"><a href="structmsa__type.html#a442dfedf9e9ee564e00771e1df147662">msa_type::mspells</a></div><div class="ttdeci">std::vector&lt; RF_ABILITY &gt; mspells</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:33</div></div>
+<div class="ttc" id="astructmsa__type_html_a58fb1e23cd72ee794954bb8a4372328e"><div class="ttname"><a href="structmsa__type.html#a58fb1e23cd72ee794954bb8a4372328e">msa_type::y_br_lite</a></div><div class="ttdeci">POSITION y_br_lite</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:29</div></div>
+<div class="ttc" id="astructmsa__type_html_a59e69d854aa2efe3fed567c5c3c238c0"><div class="ttname"><a href="structmsa__type.html#a59e69d854aa2efe3fed567c5c3c238c0">msa_type::r_ptr</a></div><div class="ttdeci">monster_race * r_ptr</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:23</div></div>
+<div class="ttc" id="astructmsa__type_html_a9b0c3d2dcc88b2202f0e159a4569c106"><div class="ttname"><a href="structmsa__type.html#a9b0c3d2dcc88b2202f0e159a4569c106">msa_type::y</a></div><div class="ttdeci">POSITION y</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:27</div></div>
+<div class="ttc" id="astructmsa__type_html_ac1e8e626237177c839dff13baace3d1e"><div class="ttname"><a href="structmsa__type.html#ac1e8e626237177c839dff13baace3d1e">msa_type::success</a></div><div class="ttdeci">bool success</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:32</div></div>
+<div class="ttc" id="astructmsa__type_html_ac447eddf3072a63d0eeb6a1c61d60b16"><div class="ttname"><a href="structmsa__type.html#ac447eddf3072a63d0eeb6a1c61d60b16">msa_type::ability_flags</a></div><div class="ttdeci">FlagGroup&lt; RF_ABILITY &gt; ability_flags</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:25</div></div>
+<div class="ttc" id="astructmsa__type_html_ad15d4acbc55b1f0fc19e965b44b9d098"><div class="ttname"><a href="structmsa__type.html#ad15d4acbc55b1f0fc19e965b44b9d098">msa_type::rlev</a></div><div class="ttdeci">DEPTH rlev</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:38</div></div>
+<div class="ttc" id="astructmsa__type_html_ad3397548b929b14d18667554d30c46e8"><div class="ttname"><a href="structmsa__type.html#ad3397548b929b14d18667554d30c46e8">msa_type::can_remember</a></div><div class="ttdeci">bool can_remember</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:36</div></div>
+<div class="ttc" id="astructmsa__type_html_adc3b44aa1746ca78f992a3e955cc6e91"><div class="ttname"><a href="structmsa__type.html#adc3b44aa1746ca78f992a3e955cc6e91">msa_type::dam</a></div><div class="ttdeci">int dam</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:37</div></div>
+<div class="ttc" id="astructmsa__type_html_ade9b735f41739c74649e92340d538564"><div class="ttname"><a href="structmsa__type.html#ade9b735f41739c74649e92340d538564">msa_type::do_spell</a></div><div class="ttdeci">mspell_lite_type do_spell</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:30</div></div>
+<div class="ttc" id="astructmsa__type_html_af4aed477be06c3d0ea23a3391df18086"><div class="ttname"><a href="structmsa__type.html#af4aed477be06c3d0ea23a3391df18086">msa_type::in_no_magic_dungeon</a></div><div class="ttdeci">bool in_no_magic_dungeon</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:31</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

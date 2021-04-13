@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player/player-class.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_975424cdae97a07db69e55371758444e.html">player</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">player-class.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="player-class_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">/* 人畜無害なenumヘッダを先に読み込む */</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tval-types_8h.html">object/tval-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player-classes-types_8h.html">player/player-classes-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="realm-types_8h.html">realm/realm-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="technic-info-table_8h.html">spell/technic-info-table.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="player-class_8h.html#afaf5b155aaba2d3254af1afcccc770ea">   15</a></span>&#160;<span class="preprocessor">#define SPELL_FIRST_NO_SPELL 99</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * Information about the player&#39;s &quot;magic&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * Note that a player with a &quot;spell_book&quot; of &quot;zero&quot; is illiterate.</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structplayer__magic.html">   23</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structplayer__magic.html">player_magic</a> {</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structplayer__magic.html#a40ca390f9180f59b2686f1a09b628c8e">   24</a></span>&#160;    <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a> <a class="code" href="structplayer__magic.html#a40ca390f9180f59b2686f1a09b628c8e">spell_book</a>{}; <span class="comment">/* Tval of spell books (if any) */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structplayer__magic.html#ac25529c9ca0e6098488f8966b7187af6">   25</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structplayer__magic.html#ac25529c9ca0e6098488f8966b7187af6">spell_xtra</a>{}; <span class="comment">/* Something for later */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structplayer__magic.html#a0f43d08bd72e63a58ffc06e8a97950b6">   27</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structplayer__magic.html#a0f43d08bd72e63a58ffc06e8a97950b6">spell_stat</a>{}; <span class="comment">/* Stat for spells (if any)  */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structplayer__magic.html#a3567662086e7d88b85b6e735b2b2d01e">   28</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="spells-util_8h.html#a2135e50f939c526eb0a4164754e6e4ff">spell_type</a>{}; <span class="comment">/* Spell type (mage/priest) */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structplayer__magic.html#acd4d5932f1a6618780e9134bd3ca05c5">   30</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structplayer__magic.html#acd4d5932f1a6618780e9134bd3ca05c5">spell_first</a>{}; <span class="comment">/* Level of first spell */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structplayer__magic.html#a163e12e03cde416500845ed0b63decec">   31</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structplayer__magic.html#a163e12e03cde416500845ed0b63decec">spell_weight</a>{}; <span class="comment">/* Weight that hurts spells */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structplayer__magic.html#a42e5f7108d256872583338042035c512">   33</a></span>&#160;    <a class="code" href="structmagic__type.html">magic_type</a> <a class="code" href="structplayer__magic.html#a42e5f7108d256872583338042035c512">info</a>[<a class="code" href="realm-types_8h.html#a13eedab443f376324788b409e0fa962ea7a599c125fad36b302272b21784f7aa3">MAX_MAGIC</a>][32]{}; <span class="comment">/* The available spells */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="player-class_8h.html#a61e6cee613e5b1f8d250373345a83a2f">   34</a></span>&#160;} <a class="code" href="player-class_8h.html#a61e6cee613e5b1f8d250373345a83a2f">player_magic</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">extern</span> std::vector&lt;player_magic&gt; <a class="code" href="player-class_8h.html#a06325e58ce559343f1725e1718fa0287">m_info</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="player-class_8h.html#afc021afb2da71fda58b3df984c032700">   37</a></span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structplayer__magic.html">player_magic</a> *<a class="code" href="player-class_8h.html#aa8119d5700a9534fc2568f354a2ed431">mp_ptr</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> * Player class info</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structplayer__class.html">player_class</a> <a class="code" href="structplayer__class.html">player_class</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structplayer__class.html">   45</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structplayer__class.html">player_class</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structplayer__class.html#af54de014278a47c9bc71a6724ae70d31">   47</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structplayer__class.html#af54de014278a47c9bc71a6724ae70d31">title</a>;          <span class="comment">/* Type of class */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#ifdef JP</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> E_title;        <span class="comment">/* 英語職業 */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structplayer__class.html#a43e823b2776a6dc0a4348e4da42d11c7">   52</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#a43e823b2776a6dc0a4348e4da42d11c7">c_adj</a>[6];      <span class="comment">/* Class stat modifier */</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structplayer__class.html#a5014c5a8c9e32364e9d4751dc1eb7c1d">   54</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#a5014c5a8c9e32364e9d4751dc1eb7c1d">c_dis</a>;         <span class="comment">/* class disarming */</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structplayer__class.html#a53986a0871ea8f0fa570ad00e39d5f39">   55</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#a53986a0871ea8f0fa570ad00e39d5f39">c_dev</a>;         <span class="comment">/* class magic devices */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structplayer__class.html#a6bb23cd0cb02ca9e7968fa21cc6a6a2e">   56</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#a6bb23cd0cb02ca9e7968fa21cc6a6a2e">c_sav</a>;         <span class="comment">/* class saving throws */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structplayer__class.html#acd34a07b76bf24f2c8b97a6187dd11ac">   57</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#acd34a07b76bf24f2c8b97a6187dd11ac">c_stl</a>;         <span class="comment">/* class stealth */</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structplayer__class.html#a6227274cc4b8e071dadba468f96cf2a2">   58</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#a6227274cc4b8e071dadba468f96cf2a2">c_srh</a>;         <span class="comment">/* class searching ability */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structplayer__class.html#aaaaa605487d037f0eaf73521c9fa8759">   59</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#aaaaa605487d037f0eaf73521c9fa8759">c_fos</a>;         <span class="comment">/* class searching frequency */</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structplayer__class.html#a794f1f767f119a3c8cca0bb940d04d41">   60</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#a794f1f767f119a3c8cca0bb940d04d41">c_thn</a>;         <span class="comment">/* class to hit (normal) */</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structplayer__class.html#acf2c1200a34304ad72bd9e00425dec73">   61</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#acf2c1200a34304ad72bd9e00425dec73">c_thb</a>;         <span class="comment">/* class to hit (bows) */</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structplayer__class.html#a1cafe2f2f221701c5231e5f25c0eb0a0">   63</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#a1cafe2f2f221701c5231e5f25c0eb0a0">x_dis</a>;         <span class="comment">/* extra disarming */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structplayer__class.html#accb48659165cbf34692355034a20c53c">   64</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#accb48659165cbf34692355034a20c53c">x_dev</a>;         <span class="comment">/* extra magic devices */</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="structplayer__class.html#ab6b89c0d0e6718b775caba563b30a531">   65</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#ab6b89c0d0e6718b775caba563b30a531">x_sav</a>;         <span class="comment">/* extra saving throws */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structplayer__class.html#aef2fe2789a35ff1017c6117dcdf2e59b">   66</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#aef2fe2789a35ff1017c6117dcdf2e59b">x_stl</a>;         <span class="comment">/* extra stealth */</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structplayer__class.html#a1d1df9cb88dc226e6bfa3d2168d07360">   67</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#a1d1df9cb88dc226e6bfa3d2168d07360">x_srh</a>;         <span class="comment">/* extra searching ability */</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="structplayer__class.html#af279ba384cf4406c6167e717ee422eeb">   68</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#af279ba384cf4406c6167e717ee422eeb">x_fos</a>;         <span class="comment">/* extra searching frequency */</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="structplayer__class.html#af6bf7e3950be6f2334d39fb566112e09">   69</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#af6bf7e3950be6f2334d39fb566112e09">x_thn</a>;         <span class="comment">/* extra to hit (normal) */</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structplayer__class.html#a5d0083e2a2a5860210c08695a0c677ce">   70</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#a5d0083e2a2a5860210c08695a0c677ce">x_thb</a>;         <span class="comment">/* extra to hit (bows) */</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structplayer__class.html#a36090e08e33a7d59871c32cda931752c">   72</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#a36090e08e33a7d59871c32cda931752c">c_mhp</a>;         <span class="comment">/* Class hit-dice adjustment */</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structplayer__class.html#a6041530c2e9600b9b8c1888193c4f355">   73</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__class.html#a6041530c2e9600b9b8c1888193c4f355">c_exp</a>;         <span class="comment">/* Class experience factor */</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="structplayer__class.html#aad84e5810204d9b532aba4d814ceefea">   75</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__class.html#aad84e5810204d9b532aba4d814ceefea">pet_upkeep_div</a>; <span class="comment">/* Pet upkeep divider */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="structplayer__class.html#a4fa1d03eca2cd1c682c53bd1d116d5e8">   77</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structplayer__class.html#a4fa1d03eca2cd1c682c53bd1d116d5e8">num</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="structplayer__class.html#a777ba1ffa0770c1219c29fd09bb6e76f">   78</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structplayer__class.html#a777ba1ffa0770c1219c29fd09bb6e76f">wgt</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="structplayer__class.html#a150d9bf1bde7257749925c95808d98aa">   79</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structplayer__class.html#a150d9bf1bde7257749925c95808d98aa">mul</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structplayer__class.html">player_class</a> *<a class="code" href="player-class_8h.html#a21402ecfd67bdfbd2d3a95774f843794">cp_ptr</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structplayer__class.html">player_class</a> <a class="code" href="player-class_8h.html#a04995d3ad130c1ea9625d93a987deb96">class_info</a>[<a class="code" href="player-classes-types_8h.html#addabd864452eb307e7fc8dcf6ea2fc72ac2b6af85e26de699ea41ae2565361e7b">MAX_CLASS</a>];</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="player-class_8h.html#aa97aa1ccfde4d87ccd72e203731e3193">player_title</a>[<a class="code" href="player-classes-types_8h.html#addabd864452eb307e7fc8dcf6ea2fc72ac2b6af85e26de699ea41ae2565361e7b">MAX_CLASS</a>][10];</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="aplayer-class_8h_html_a04995d3ad130c1ea9625d93a987deb96"><div class="ttname"><a href="player-class_8h.html#a04995d3ad130c1ea9625d93a987deb96">class_info</a></div><div class="ttdeci">const player_class class_info[MAX_CLASS]</div><div class="ttdoc">職業情報 / Player Classes</div><div class="ttdef"><b>Definition:</b> player-class.cpp:33</div></div>
+<div class="ttc" id="aplayer-class_8h_html_a06325e58ce559343f1725e1718fa0287"><div class="ttname"><a href="player-class_8h.html#a06325e58ce559343f1725e1718fa0287">m_info</a></div><div class="ttdeci">std::vector&lt; player_magic &gt; m_info</div><div class="ttdef"><b>Definition:</b> player-class.cpp:17</div></div>
+<div class="ttc" id="aplayer-class_8h_html_a21402ecfd67bdfbd2d3a95774f843794"><div class="ttname"><a href="player-class_8h.html#a21402ecfd67bdfbd2d3a95774f843794">cp_ptr</a></div><div class="ttdeci">const player_class * cp_ptr</div><div class="ttdef"><b>Definition:</b> player-class.cpp:19</div></div>
+<div class="ttc" id="aplayer-class_8h_html_a61e6cee613e5b1f8d250373345a83a2f"><div class="ttname"><a href="player-class_8h.html#a61e6cee613e5b1f8d250373345a83a2f">player_magic</a></div><div class="ttdeci">struct player_magic player_magic</div></div>
+<div class="ttc" id="aplayer-class_8h_html_aa8119d5700a9534fc2568f354a2ed431"><div class="ttname"><a href="player-class_8h.html#aa8119d5700a9534fc2568f354a2ed431">mp_ptr</a></div><div class="ttdeci">const player_magic * mp_ptr</div><div class="ttdoc">プレーヤーの職業に関する諸テーブル定義</div><div class="ttdef"><b>Definition:</b> player-class.cpp:16</div></div>
+<div class="ttc" id="aplayer-class_8h_html_aa97aa1ccfde4d87ccd72e203731e3193"><div class="ttname"><a href="player-class_8h.html#aa97aa1ccfde4d87ccd72e203731e3193">player_title</a></div><div class="ttdeci">const concptr player_title[MAX_CLASS][10]</div><div class="ttdoc">職業とレベル毎のプレイヤー称号テーブル / Class titles for the player.</div><div class="ttdef"><b>Definition:</b> player-class.cpp:830</div></div>
+<div class="ttc" id="aplayer-classes-types_8h_html"><div class="ttname"><a href="player-classes-types_8h.html">player-classes-types.h</a></div></div>
+<div class="ttc" id="aplayer-classes-types_8h_html_addabd864452eb307e7fc8dcf6ea2fc72ac2b6af85e26de699ea41ae2565361e7b"><div class="ttname"><a href="player-classes-types_8h.html#addabd864452eb307e7fc8dcf6ea2fc72ac2b6af85e26de699ea41ae2565361e7b">MAX_CLASS</a></div><div class="ttdeci">@ MAX_CLASS</div><div class="ttdoc">職業の最大定義数 Maximum number of player &quot;class&quot; types (see &quot;table.c&quot;, etc)</div><div class="ttdef"><b>Definition:</b> player-classes-types.h:33</div></div>
+<div class="ttc" id="arealm-types_8h_html"><div class="ttname"><a href="realm-types_8h.html">realm-types.h</a></div></div>
+<div class="ttc" id="arealm-types_8h_html_a13eedab443f376324788b409e0fa962ea7a599c125fad36b302272b21784f7aa3"><div class="ttname"><a href="realm-types_8h.html#a13eedab443f376324788b409e0fa962ea7a599c125fad36b302272b21784f7aa3">MAX_MAGIC</a></div><div class="ttdeci">@ MAX_MAGIC</div><div class="ttdef"><b>Definition:</b> realm-types.h:15</div></div>
+<div class="ttc" id="aspells-util_8h_html_a2135e50f939c526eb0a4164754e6e4ff"><div class="ttname"><a href="spells-util_8h.html#a2135e50f939c526eb0a4164754e6e4ff">spell_type</a></div><div class="ttdeci">spell_type</div><div class="ttdef"><b>Definition:</b> spells-util.h:8</div></div>
+<div class="ttc" id="astructmagic__type_html"><div class="ttname"><a href="structmagic__type.html">magic_type</a></div><div class="ttdef"><b>Definition:</b> technic-info-table.h:12</div></div>
+<div class="ttc" id="astructplayer__class_html"><div class="ttname"><a href="structplayer__class.html">player_class</a></div><div class="ttdef"><b>Definition:</b> player-class.h:46</div></div>
+<div class="ttc" id="astructplayer__class_html_a150d9bf1bde7257749925c95808d98aa"><div class="ttname"><a href="structplayer__class.html#a150d9bf1bde7257749925c95808d98aa">player_class::mul</a></div><div class="ttdeci">int mul</div><div class="ttdef"><b>Definition:</b> player-class.h:79</div></div>
+<div class="ttc" id="astructplayer__class_html_a1cafe2f2f221701c5231e5f25c0eb0a0"><div class="ttname"><a href="structplayer__class.html#a1cafe2f2f221701c5231e5f25c0eb0a0">player_class::x_dis</a></div><div class="ttdeci">s16b x_dis</div><div class="ttdef"><b>Definition:</b> player-class.h:63</div></div>
+<div class="ttc" id="astructplayer__class_html_a1d1df9cb88dc226e6bfa3d2168d07360"><div class="ttname"><a href="structplayer__class.html#a1d1df9cb88dc226e6bfa3d2168d07360">player_class::x_srh</a></div><div class="ttdeci">s16b x_srh</div><div class="ttdef"><b>Definition:</b> player-class.h:67</div></div>
+<div class="ttc" id="astructplayer__class_html_a36090e08e33a7d59871c32cda931752c"><div class="ttname"><a href="structplayer__class.html#a36090e08e33a7d59871c32cda931752c">player_class::c_mhp</a></div><div class="ttdeci">s16b c_mhp</div><div class="ttdef"><b>Definition:</b> player-class.h:72</div></div>
+<div class="ttc" id="astructplayer__class_html_a43e823b2776a6dc0a4348e4da42d11c7"><div class="ttname"><a href="structplayer__class.html#a43e823b2776a6dc0a4348e4da42d11c7">player_class::c_adj</a></div><div class="ttdeci">s16b c_adj[6]</div><div class="ttdef"><b>Definition:</b> player-class.h:52</div></div>
+<div class="ttc" id="astructplayer__class_html_a4fa1d03eca2cd1c682c53bd1d116d5e8"><div class="ttname"><a href="structplayer__class.html#a4fa1d03eca2cd1c682c53bd1d116d5e8">player_class::num</a></div><div class="ttdeci">int num</div><div class="ttdef"><b>Definition:</b> player-class.h:77</div></div>
+<div class="ttc" id="astructplayer__class_html_a5014c5a8c9e32364e9d4751dc1eb7c1d"><div class="ttname"><a href="structplayer__class.html#a5014c5a8c9e32364e9d4751dc1eb7c1d">player_class::c_dis</a></div><div class="ttdeci">s16b c_dis</div><div class="ttdef"><b>Definition:</b> player-class.h:54</div></div>
+<div class="ttc" id="astructplayer__class_html_a53986a0871ea8f0fa570ad00e39d5f39"><div class="ttname"><a href="structplayer__class.html#a53986a0871ea8f0fa570ad00e39d5f39">player_class::c_dev</a></div><div class="ttdeci">s16b c_dev</div><div class="ttdef"><b>Definition:</b> player-class.h:55</div></div>
+<div class="ttc" id="astructplayer__class_html_a5d0083e2a2a5860210c08695a0c677ce"><div class="ttname"><a href="structplayer__class.html#a5d0083e2a2a5860210c08695a0c677ce">player_class::x_thb</a></div><div class="ttdeci">s16b x_thb</div><div class="ttdef"><b>Definition:</b> player-class.h:70</div></div>
+<div class="ttc" id="astructplayer__class_html_a6041530c2e9600b9b8c1888193c4f355"><div class="ttname"><a href="structplayer__class.html#a6041530c2e9600b9b8c1888193c4f355">player_class::c_exp</a></div><div class="ttdeci">s16b c_exp</div><div class="ttdef"><b>Definition:</b> player-class.h:73</div></div>
+<div class="ttc" id="astructplayer__class_html_a6227274cc4b8e071dadba468f96cf2a2"><div class="ttname"><a href="structplayer__class.html#a6227274cc4b8e071dadba468f96cf2a2">player_class::c_srh</a></div><div class="ttdeci">s16b c_srh</div><div class="ttdef"><b>Definition:</b> player-class.h:58</div></div>
+<div class="ttc" id="astructplayer__class_html_a6bb23cd0cb02ca9e7968fa21cc6a6a2e"><div class="ttname"><a href="structplayer__class.html#a6bb23cd0cb02ca9e7968fa21cc6a6a2e">player_class::c_sav</a></div><div class="ttdeci">s16b c_sav</div><div class="ttdef"><b>Definition:</b> player-class.h:56</div></div>
+<div class="ttc" id="astructplayer__class_html_a777ba1ffa0770c1219c29fd09bb6e76f"><div class="ttname"><a href="structplayer__class.html#a777ba1ffa0770c1219c29fd09bb6e76f">player_class::wgt</a></div><div class="ttdeci">int wgt</div><div class="ttdef"><b>Definition:</b> player-class.h:78</div></div>
+<div class="ttc" id="astructplayer__class_html_a794f1f767f119a3c8cca0bb940d04d41"><div class="ttname"><a href="structplayer__class.html#a794f1f767f119a3c8cca0bb940d04d41">player_class::c_thn</a></div><div class="ttdeci">s16b c_thn</div><div class="ttdef"><b>Definition:</b> player-class.h:60</div></div>
+<div class="ttc" id="astructplayer__class_html_aaaaa605487d037f0eaf73521c9fa8759"><div class="ttname"><a href="structplayer__class.html#aaaaa605487d037f0eaf73521c9fa8759">player_class::c_fos</a></div><div class="ttdeci">s16b c_fos</div><div class="ttdef"><b>Definition:</b> player-class.h:59</div></div>
+<div class="ttc" id="astructplayer__class_html_aad84e5810204d9b532aba4d814ceefea"><div class="ttname"><a href="structplayer__class.html#aad84e5810204d9b532aba4d814ceefea">player_class::pet_upkeep_div</a></div><div class="ttdeci">byte pet_upkeep_div</div><div class="ttdef"><b>Definition:</b> player-class.h:75</div></div>
+<div class="ttc" id="astructplayer__class_html_ab6b89c0d0e6718b775caba563b30a531"><div class="ttname"><a href="structplayer__class.html#ab6b89c0d0e6718b775caba563b30a531">player_class::x_sav</a></div><div class="ttdeci">s16b x_sav</div><div class="ttdef"><b>Definition:</b> player-class.h:65</div></div>
+<div class="ttc" id="astructplayer__class_html_accb48659165cbf34692355034a20c53c"><div class="ttname"><a href="structplayer__class.html#accb48659165cbf34692355034a20c53c">player_class::x_dev</a></div><div class="ttdeci">s16b x_dev</div><div class="ttdef"><b>Definition:</b> player-class.h:64</div></div>
+<div class="ttc" id="astructplayer__class_html_acd34a07b76bf24f2c8b97a6187dd11ac"><div class="ttname"><a href="structplayer__class.html#acd34a07b76bf24f2c8b97a6187dd11ac">player_class::c_stl</a></div><div class="ttdeci">s16b c_stl</div><div class="ttdef"><b>Definition:</b> player-class.h:57</div></div>
+<div class="ttc" id="astructplayer__class_html_acf2c1200a34304ad72bd9e00425dec73"><div class="ttname"><a href="structplayer__class.html#acf2c1200a34304ad72bd9e00425dec73">player_class::c_thb</a></div><div class="ttdeci">s16b c_thb</div><div class="ttdef"><b>Definition:</b> player-class.h:61</div></div>
+<div class="ttc" id="astructplayer__class_html_aef2fe2789a35ff1017c6117dcdf2e59b"><div class="ttname"><a href="structplayer__class.html#aef2fe2789a35ff1017c6117dcdf2e59b">player_class::x_stl</a></div><div class="ttdeci">s16b x_stl</div><div class="ttdef"><b>Definition:</b> player-class.h:66</div></div>
+<div class="ttc" id="astructplayer__class_html_af279ba384cf4406c6167e717ee422eeb"><div class="ttname"><a href="structplayer__class.html#af279ba384cf4406c6167e717ee422eeb">player_class::x_fos</a></div><div class="ttdeci">s16b x_fos</div><div class="ttdef"><b>Definition:</b> player-class.h:68</div></div>
+<div class="ttc" id="astructplayer__class_html_af54de014278a47c9bc71a6724ae70d31"><div class="ttname"><a href="structplayer__class.html#af54de014278a47c9bc71a6724ae70d31">player_class::title</a></div><div class="ttdeci">concptr title</div><div class="ttdef"><b>Definition:</b> player-class.h:47</div></div>
+<div class="ttc" id="astructplayer__class_html_af6bf7e3950be6f2334d39fb566112e09"><div class="ttname"><a href="structplayer__class.html#af6bf7e3950be6f2334d39fb566112e09">player_class::x_thn</a></div><div class="ttdeci">s16b x_thn</div><div class="ttdef"><b>Definition:</b> player-class.h:69</div></div>
+<div class="ttc" id="astructplayer__magic_html"><div class="ttname"><a href="structplayer__magic.html">player_magic</a></div><div class="ttdef"><b>Definition:</b> player-class.h:23</div></div>
+<div class="ttc" id="astructplayer__magic_html_a0f43d08bd72e63a58ffc06e8a97950b6"><div class="ttname"><a href="structplayer__magic.html#a0f43d08bd72e63a58ffc06e8a97950b6">player_magic::spell_stat</a></div><div class="ttdeci">int spell_stat</div><div class="ttdef"><b>Definition:</b> player-class.h:27</div></div>
+<div class="ttc" id="astructplayer__magic_html_a163e12e03cde416500845ed0b63decec"><div class="ttname"><a href="structplayer__magic.html#a163e12e03cde416500845ed0b63decec">player_magic::spell_weight</a></div><div class="ttdeci">int spell_weight</div><div class="ttdef"><b>Definition:</b> player-class.h:31</div></div>
+<div class="ttc" id="astructplayer__magic_html_a40ca390f9180f59b2686f1a09b628c8e"><div class="ttname"><a href="structplayer__magic.html#a40ca390f9180f59b2686f1a09b628c8e">player_magic::spell_book</a></div><div class="ttdeci">tval_type spell_book</div><div class="ttdef"><b>Definition:</b> player-class.h:24</div></div>
+<div class="ttc" id="astructplayer__magic_html_a42e5f7108d256872583338042035c512"><div class="ttname"><a href="structplayer__magic.html#a42e5f7108d256872583338042035c512">player_magic::info</a></div><div class="ttdeci">magic_type info[MAX_MAGIC][32]</div><div class="ttdef"><b>Definition:</b> player-class.h:33</div></div>
+<div class="ttc" id="astructplayer__magic_html_ac25529c9ca0e6098488f8966b7187af6"><div class="ttname"><a href="structplayer__magic.html#ac25529c9ca0e6098488f8966b7187af6">player_magic::spell_xtra</a></div><div class="ttdeci">int spell_xtra</div><div class="ttdef"><b>Definition:</b> player-class.h:25</div></div>
+<div class="ttc" id="astructplayer__magic_html_acd4d5932f1a6618780e9134bd3ca05c5"><div class="ttname"><a href="structplayer__magic.html#acd4d5932f1a6618780e9134bd3ca05c5">player_magic::spell_first</a></div><div class="ttdeci">int spell_first</div><div class="ttdef"><b>Definition:</b> player-class.h:30</div></div>
+<div class="ttc" id="atechnic-info-table_8h_html"><div class="ttname"><a href="technic-info-table_8h.html">technic-info-table.h</a></div></div>
+<div class="ttc" id="atval-types_8h_html"><div class="ttname"><a href="tval-types_8h.html">tval-types.h</a></div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a></div><div class="ttdeci">tval_type</div><div class="ttdef"><b>Definition:</b> tval-types.h:17</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

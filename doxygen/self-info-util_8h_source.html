@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player-info/self-info-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_71bb7b4142074e6b6cdcd57a4541b611.html">player-info</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">self-info-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="self-info-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="object-type-definition_8h.html">system/object-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="structself__info__type.html">    6</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structself__info__type.html">self_info_type</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structself__info__type.html#a30a0e99c121766358364b94e0e8bd7ea">    7</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structself__info__type.html#a30a0e99c121766358364b94e0e8bd7ea">line</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structself__info__type.html#a519e1591f65e0190450a8b43a1c73348">    8</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structself__info__type.html#a519e1591f65e0190450a8b43a1c73348">v_string</a>[8][128];</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structself__info__type.html#a894a412dd7a028db0325d92cf7964549">    9</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structself__info__type.html#a894a412dd7a028db0325d92cf7964549">s_string</a>[6][128];</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structself__info__type.html#a719582635acfffa003e3f8ad04491924">   10</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structself__info__type.html#a719582635acfffa003e3f8ad04491924">flags</a>[<a class="code" href="object-type-definition_8h.html#a396c51ddaffe17c1e21a428c41ba294e">TR_FLAG_SIZE</a>];</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structself__info__type.html#a66770dbb2733b47aaf952e955a0114a5">   11</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structself__info__type.html#a66770dbb2733b47aaf952e955a0114a5">plev_buf</a>[80];</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structself__info__type.html#a3b452e3a095e1da78de5ac68e2a505e7">   12</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structself__info__type.html#a3b452e3a095e1da78de5ac68e2a505e7">buf</a>[2][80];</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structself__info__type.html#aca7b79d31b52e3ff42cca96b786a92ef">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structself__info__type.html#aca7b79d31b52e3ff42cca96b786a92ef">info</a>[220];</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="self-info-util_8h.html#a2cc23fc2fedf57b749375af403684440">   14</a></span>&#160;} <a class="code" href="self-info-util_8h.html#a2cc23fc2fedf57b749375af403684440">self_info_type</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<a class="code" href="structself__info__type.html">self_info_type</a> *<a class="code" href="self-info-util_8h.html#a6b1b4ec01eabc37c82d5a698e177407a">initialize_self_info_type</a>(<a class="code" href="structself__info__type.html">self_info_type</a> *self_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="aobject-type-definition_8h_html"><div class="ttname"><a href="object-type-definition_8h.html">object-type-definition.h</a></div></div>
+<div class="ttc" id="aobject-type-definition_8h_html_a396c51ddaffe17c1e21a428c41ba294e"><div class="ttname"><a href="object-type-definition_8h.html#a396c51ddaffe17c1e21a428c41ba294e">TR_FLAG_SIZE</a></div><div class="ttdeci">#define TR_FLAG_SIZE</div><div class="ttdef"><b>Definition:</b> object-type-definition.h:6</div></div>
+<div class="ttc" id="aself-info-util_8h_html_a2cc23fc2fedf57b749375af403684440"><div class="ttname"><a href="self-info-util_8h.html#a2cc23fc2fedf57b749375af403684440">self_info_type</a></div><div class="ttdeci">struct self_info_type self_info_type</div></div>
+<div class="ttc" id="aself-info-util_8h_html_a6b1b4ec01eabc37c82d5a698e177407a"><div class="ttname"><a href="self-info-util_8h.html#a6b1b4ec01eabc37c82d5a698e177407a">initialize_self_info_type</a></div><div class="ttdeci">self_info_type * initialize_self_info_type(self_info_type *self_ptr)</div><div class="ttdef"><b>Definition:</b> self-info-util.cpp:3</div></div>
+<div class="ttc" id="astructself__info__type_html"><div class="ttname"><a href="structself__info__type.html">self_info_type</a></div><div class="ttdef"><b>Definition:</b> self-info-util.h:6</div></div>
+<div class="ttc" id="astructself__info__type_html_a30a0e99c121766358364b94e0e8bd7ea"><div class="ttname"><a href="structself__info__type.html#a30a0e99c121766358364b94e0e8bd7ea">self_info_type::line</a></div><div class="ttdeci">int line</div><div class="ttdef"><b>Definition:</b> self-info-util.h:7</div></div>
+<div class="ttc" id="astructself__info__type_html_a3b452e3a095e1da78de5ac68e2a505e7"><div class="ttname"><a href="structself__info__type.html#a3b452e3a095e1da78de5ac68e2a505e7">self_info_type::buf</a></div><div class="ttdeci">char buf[2][80]</div><div class="ttdef"><b>Definition:</b> self-info-util.h:12</div></div>
+<div class="ttc" id="astructself__info__type_html_a519e1591f65e0190450a8b43a1c73348"><div class="ttname"><a href="structself__info__type.html#a519e1591f65e0190450a8b43a1c73348">self_info_type::v_string</a></div><div class="ttdeci">char v_string[8][128]</div><div class="ttdef"><b>Definition:</b> self-info-util.h:8</div></div>
+<div class="ttc" id="astructself__info__type_html_a66770dbb2733b47aaf952e955a0114a5"><div class="ttname"><a href="structself__info__type.html#a66770dbb2733b47aaf952e955a0114a5">self_info_type::plev_buf</a></div><div class="ttdeci">char plev_buf[80]</div><div class="ttdef"><b>Definition:</b> self-info-util.h:11</div></div>
+<div class="ttc" id="astructself__info__type_html_a719582635acfffa003e3f8ad04491924"><div class="ttname"><a href="structself__info__type.html#a719582635acfffa003e3f8ad04491924">self_info_type::flags</a></div><div class="ttdeci">BIT_FLAGS flags[TR_FLAG_SIZE]</div><div class="ttdef"><b>Definition:</b> self-info-util.h:10</div></div>
+<div class="ttc" id="astructself__info__type_html_a894a412dd7a028db0325d92cf7964549"><div class="ttname"><a href="structself__info__type.html#a894a412dd7a028db0325d92cf7964549">self_info_type::s_string</a></div><div class="ttdeci">char s_string[6][128]</div><div class="ttdef"><b>Definition:</b> self-info-util.h:9</div></div>
+<div class="ttc" id="astructself__info__type_html_aca7b79d31b52e3ff42cca96b786a92ef"><div class="ttname"><a href="structself__info__type.html#aca7b79d31b52e3ff42cca96b786a92ef">self_info_type::info</a></div><div class="ttdeci">concptr info[220]</div><div class="ttdef"><b>Definition:</b> self-info-util.h:13</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

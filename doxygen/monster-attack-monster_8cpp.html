@@ -1,0 +1,1201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/melee/monster-attack-monster.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6d77d0d3b006a67320265fc283939a4a.html">melee</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">monster-attack-monster.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="monster-attack-monster_8h_source.html">melee/monster-attack-monster.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="attack-accuracy_8h_source.html">combat/attack-accuracy.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hallucination-attacks-table_8h_source.html">combat/hallucination-attacks-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="disturbance_8h_source.html">core/disturbance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-redraw-types_8h_source.html">core/player-redraw-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon-flag-types_8h_source.html">dungeon/dungeon-flag-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon_8h_source.html">dungeon/dungeon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="effect-characteristics_8h_source.html">effect/effect-characteristics.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="effect-processor_8h_source.html">effect/effect-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-definitions-table_8h_source.html">main/sound-definitions-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="melee-postprocess_8h_source.html">melee/melee-postprocess.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="melee-switcher_8h_source.html">melee/melee-switcher.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="melee-util_8h_source.html">melee/melee-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-attack-effect_8h_source.html">monster-attack/monster-attack-effect.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race-hook_8h_source.html">monster-race/monster-race-hook.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags-resistance_8h_source.html">monster-race/race-flags-resistance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags1_8h_source.html">monster-race/race-flags1.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags2_8h_source.html">monster-race/race-flags2.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags3_8h_source.html">monster-race/race-flags3.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-describer_8h_source.html">monster/monster-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-info_8h_source.html">monster/monster-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status-setter_8h_source.html">monster/monster-status-setter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status_8h_source.html">monster/monster-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-teleport_8h_source.html">spell-kind/spells-teleport.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-hex_8h_source.html">spell-realm/spells-hex.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spell-types_8h_source.html">spell/spell-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+monster-attack-monster.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2melee_2monster-attack-monster_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2melee_2monster-attack-monster_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2melee_2monster-attack-monster_8cpp">
+<area shape="rect" title=" " alt="" coords="1813,5,2002,61"/>
+<area shape="rect" href="monster-attack-monster_8h.html" title=" " alt="" coords="1081,288,1229,329"/>
+<area shape="rect" href="attack-accuracy_8h.html" title=" " alt="" coords="2107,117,2281,143"/>
+<area shape="rect" href="hallucination-attacks-table_8h.html" title=" " alt="" coords="865,288,1006,329"/>
+<area shape="rect" href="disturbance_8h.html" title=" " alt="" coords="980,206,1109,233"/>
+<area shape="rect" href="player-redraw-types_8h.html" title=" " alt="" coords="707,109,835,151"/>
+<area shape="rect" href="dungeon-flag-types_8h.html" title=" " alt="" coords="860,109,1008,151"/>
+<area shape="rect" href="dungeon_8h.html" title=" " alt="" coords="120,206,255,233"/>
+<area shape="rect" href="effect-characteristics_8h.html" title=" " alt="" coords="1084,117,1272,143"/>
+<area shape="rect" href="effect-processor_8h.html" title=" " alt="" coords="1585,295,1745,322"/>
+<area shape="rect" href="sound-definitions-table_8h.html" title=" " alt="" coords="1348,109,1499,151"/>
+<area shape="rect" href="sound-of-music_8h.html" title=" " alt="" coords="295,295,448,322"/>
+<area shape="rect" href="melee-postprocess_8h.html" title=" " alt="" coords="2113,206,2296,233"/>
+<area shape="rect" href="melee-switcher_8h.html" title=" " alt="" coords="1924,117,2083,143"/>
+<area shape="rect" href="melee-util_8h.html" title=" " alt="" coords="3241,206,3369,233"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="2879,377,3039,419"/>
+<area shape="rect" href="spell-types_8h.html" title=" " alt="" coords="3267,295,3393,322"/>
+<area shape="rect" href="monster-race-hook_8h.html" title=" " alt="" coords="2675,199,2825,240"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="483,109,633,151"/>
+<area shape="rect" href="race-flags-resistance_8h.html" title=" " alt="" coords="2356,109,2515,151"/>
+<area shape="rect" href="race-flags1_8h.html" title=" " alt="" coords="2539,117,2715,143"/>
+<area shape="rect" href="race-flags2_8h.html" title=" " alt="" coords="2739,117,2915,143"/>
+<area shape="rect" href="race-flags3_8h.html" title=" " alt="" coords="2939,117,3115,143"/>
+<area shape="rect" href="monster-describer_8h.html" title=" " alt="" coords="2849,206,3037,233"/>
+<area shape="rect" href="monster-info_8h.html" title=" " alt="" coords="3062,206,3217,233"/>
+<area shape="rect" href="monster-status-setter_8h.html" title=" " alt="" coords="1254,288,1414,329"/>
+<area shape="rect" href="monster-status_8h.html" title=" " alt="" coords="2481,206,2651,233"/>
+<area shape="rect" href="spells-teleport_8h.html" title=" " alt="" coords="1726,117,1899,143"/>
+<area shape="rect" href="spells-hex_8h.html" title=" " alt="" coords="1438,288,1561,329"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="3580,117,3768,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="1769,295,1936,322"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1788,385,1917,411"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1633,467,1723,493"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1747,467,1838,493"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1862,467,1961,493"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1985,467,2083,493"/>
+<area shape="rect" href="player-attack-util_8h.html" title=" " alt="" coords="2321,199,2457,240"/>
+<area shape="rect" href="combat-options-type_8h.html" title=" " alt="" coords="2184,288,2343,329"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="2871,288,3016,329"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="3532,377,3688,419"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="671,385,781,411"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="71,295,168,322"/>
+<area shape="rect" title=" " alt="" coords="5,385,60,411"/>
+<area shape="rect" title=" " alt="" coords="135,385,191,411"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="523,288,689,329"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="2686,288,2846,329"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="644,199,789,240"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1868,206,1987,233"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="3670,206,3849,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="3495,206,3645,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:ab7ba2a90eae071149cae3516f51fb486"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-attack-monster_8cpp.html#ab7ba2a90eae071149cae3516f51fb486">heal_monster_by_melee</a> (<a class="el" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="el" href="structmam__type.html">mam_type</a> *mam_ptr)</td></tr>
+<tr class="memdesc:ab7ba2a90eae071149cae3516f51fb486"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスター同士が乱闘する処理  <a href="monster-attack-monster_8cpp.html#ab7ba2a90eae071149cae3516f51fb486">[詳解]</a><br /></td></tr>
+<tr class="separator:ab7ba2a90eae071149cae3516f51fb486"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaf2b09b88c5c2a75003afeb565da868"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-attack-monster_8cpp.html#adaf2b09b88c5c2a75003afeb565da868">process_blow_effect</a> (<a class="el" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="el" href="structmam__type.html">mam_type</a> *mam_ptr)</td></tr>
+<tr class="separator:adaf2b09b88c5c2a75003afeb565da868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3715ddccdb53d6a15e7e1d455332abc4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-attack-monster_8cpp.html#a3715ddccdb53d6a15e7e1d455332abc4">aura_fire_by_melee</a> (<a class="el" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="el" href="structmam__type.html">mam_type</a> *mam_ptr)</td></tr>
+<tr class="separator:a3715ddccdb53d6a15e7e1d455332abc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c3318b5f3aed8ad86d874c1490f86af"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-attack-monster_8cpp.html#a2c3318b5f3aed8ad86d874c1490f86af">aura_cold_by_melee</a> (<a class="el" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="el" href="structmam__type.html">mam_type</a> *mam_ptr)</td></tr>
+<tr class="separator:a2c3318b5f3aed8ad86d874c1490f86af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65fc9979f5efe840339924249b7a8d48"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-attack-monster_8cpp.html#a65fc9979f5efe840339924249b7a8d48">aura_elec_by_melee</a> (<a class="el" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="el" href="structmam__type.html">mam_type</a> *mam_ptr)</td></tr>
+<tr class="separator:a65fc9979f5efe840339924249b7a8d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad653e022a8728810e2fd86cfe47f5cbe"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-attack-monster_8cpp.html#ad653e022a8728810e2fd86cfe47f5cbe">check_same_monster</a> (<a class="el" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="el" href="structmam__type.html">mam_type</a> *mam_ptr)</td></tr>
+<tr class="separator:ad653e022a8728810e2fd86cfe47f5cbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a304ec9dbc466c8bfa67e7694490cd0d8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-attack-monster_8cpp.html#a304ec9dbc466c8bfa67e7694490cd0d8">redraw_health_bar</a> (<a class="el" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="el" href="structmam__type.html">mam_type</a> *mam_ptr)</td></tr>
+<tr class="separator:a304ec9dbc466c8bfa67e7694490cd0d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd6db5b0176c94a18bdf22e1752bf6de"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-attack-monster_8cpp.html#afd6db5b0176c94a18bdf22e1752bf6de">describe_silly_melee</a> (<a class="el" href="structmam__type.html">mam_type</a> *mam_ptr)</td></tr>
+<tr class="separator:afd6db5b0176c94a18bdf22e1752bf6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92ca98354733e6151c9daeec962f892a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-attack-monster_8cpp.html#a92ca98354733e6151c9daeec962f892a">process_monster_attack_effect</a> (<a class="el" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="el" href="structmam__type.html">mam_type</a> *mam_ptr)</td></tr>
+<tr class="separator:a92ca98354733e6151c9daeec962f892a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3877284386fd0f7550d1bc35fc17b19c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-attack-monster_8cpp.html#a3877284386fd0f7550d1bc35fc17b19c">process_melee</a> (<a class="el" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="el" href="structmam__type.html">mam_type</a> *mam_ptr)</td></tr>
+<tr class="separator:a3877284386fd0f7550d1bc35fc17b19c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24b70f13486473060f759cb97bb12012"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-attack-monster_8cpp.html#a24b70f13486473060f759cb97bb12012">thief_runaway_by_melee</a> (<a class="el" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="el" href="structmam__type.html">mam_type</a> *mam_ptr)</td></tr>
+<tr class="separator:a24b70f13486473060f759cb97bb12012"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b13044e9b26eac26ca737d9927cfd19"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-attack-monster_8cpp.html#a7b13044e9b26eac26ca737d9927cfd19">explode_monster_by_melee</a> (<a class="el" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="el" href="structmam__type.html">mam_type</a> *mam_ptr)</td></tr>
+<tr class="separator:a7b13044e9b26eac26ca737d9927cfd19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44fa0c05c2f6b2f7e5ee32d34847472f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-attack-monster_8cpp.html#a44fa0c05c2f6b2f7e5ee32d34847472f">repeat_melee</a> (<a class="el" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="el" href="structmam__type.html">mam_type</a> *mam_ptr)</td></tr>
+<tr class="memdesc:a44fa0c05c2f6b2f7e5ee32d34847472f"><td class="mdescLeft">&#160;</td><td class="mdescRight">r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す  <a href="monster-attack-monster_8cpp.html#a44fa0c05c2f6b2f7e5ee32d34847472f">[詳解]</a><br /></td></tr>
+<tr class="separator:a44fa0c05c2f6b2f7e5ee32d34847472f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42ec35a0659aa887eabe9976cf5f7e77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-attack-monster_8cpp.html#a42ec35a0659aa887eabe9976cf5f7e77">monst_attack_monst</a> (<a class="el" href="structplayer__type.html">player_type</a> *subject_ptr, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx)</td></tr>
+<tr class="memdesc:a42ec35a0659aa887eabe9976cf5f7e77"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターから敵モンスターへの打撃攻撃処理  <a href="monster-attack-monster_8cpp.html#a42ec35a0659aa887eabe9976cf5f7e77">[詳解]</a><br /></td></tr>
+<tr class="separator:a42ec35a0659aa887eabe9976cf5f7e77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a2c3318b5f3aed8ad86d874c1490f86af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c3318b5f3aed8ad86d874c1490f86af">&#9670;&nbsp;</a></span>aura_cold_by_melee()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void aura_cold_by_melee </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>subject_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmam__type.html">mam_type</a> *&#160;</td>
+          <td class="paramname"><em>mam_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a2c3318b5f3aed8ad86d874c1490f86af_cgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a2c3318b5f3aed8ad86d874c1490f86af_cgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a2c3318b5f3aed8ad86d874c1490f86af_cgraph" id="amonster-attack-monster_8cpp_a2c3318b5f3aed8ad86d874c1490f86af_cgraph">
+<area shape="rect" title=" " alt="" coords="5,107,147,133"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="195,31,259,57"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="307,81,471,108"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="343,183,434,209"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="196,132,257,159"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="519,132,597,159"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="525,183,591,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="653,5,756,32"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="664,107,745,133"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="813,69,899,96"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="812,132,900,159"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="645,208,764,235"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="657,259,752,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a2c3318b5f3aed8ad86d874c1490f86af_icgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a2c3318b5f3aed8ad86d874c1490f86af_icgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a2c3318b5f3aed8ad86d874c1490f86af_icgraph" id="amonster-attack-monster_8cpp_a2c3318b5f3aed8ad86d874c1490f86af_icgraph">
+<area shape="rect" title=" " alt="" coords="525,13,667,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a92ca98354733e6151c9daeec962f892a" title=" " alt="" coords="312,5,477,47"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3877284386fd0f7550d1bc35fc17b19c" title=" " alt="" coords="153,13,264,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a44fa0c05c2f6b2f7e5ee32d34847472f" title="r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す" alt="" coords="5,13,105,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a65fc9979f5efe840339924249b7a8d48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65fc9979f5efe840339924249b7a8d48">&#9670;&nbsp;</a></span>aura_elec_by_melee()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void aura_elec_by_melee </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>subject_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmam__type.html">mam_type</a> *&#160;</td>
+          <td class="paramname"><em>mam_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a65fc9979f5efe840339924249b7a8d48_cgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a65fc9979f5efe840339924249b7a8d48_cgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a65fc9979f5efe840339924249b7a8d48_cgraph" id="amonster-attack-monster_8cpp_a65fc9979f5efe840339924249b7a8d48_cgraph">
+<area shape="rect" title=" " alt="" coords="5,107,147,133"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="195,31,259,57"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="307,81,471,108"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="343,183,434,209"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="196,132,257,159"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="519,132,597,159"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="525,183,591,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="653,5,756,32"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="664,107,745,133"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="813,69,899,96"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="812,132,900,159"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="645,208,764,235"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="657,259,752,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a65fc9979f5efe840339924249b7a8d48_icgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a65fc9979f5efe840339924249b7a8d48_icgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a65fc9979f5efe840339924249b7a8d48_icgraph" id="amonster-attack-monster_8cpp_a65fc9979f5efe840339924249b7a8d48_icgraph">
+<area shape="rect" title=" " alt="" coords="525,13,667,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a92ca98354733e6151c9daeec962f892a" title=" " alt="" coords="312,5,477,47"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3877284386fd0f7550d1bc35fc17b19c" title=" " alt="" coords="153,13,264,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a44fa0c05c2f6b2f7e5ee32d34847472f" title="r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す" alt="" coords="5,13,105,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3715ddccdb53d6a15e7e1d455332abc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3715ddccdb53d6a15e7e1d455332abc4">&#9670;&nbsp;</a></span>aura_fire_by_melee()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void aura_fire_by_melee </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>subject_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmam__type.html">mam_type</a> *&#160;</td>
+          <td class="paramname"><em>mam_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a3715ddccdb53d6a15e7e1d455332abc4_cgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a3715ddccdb53d6a15e7e1d455332abc4_cgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a3715ddccdb53d6a15e7e1d455332abc4_cgraph" id="amonster-attack-monster_8cpp_a3715ddccdb53d6a15e7e1d455332abc4_cgraph">
+<area shape="rect" title=" " alt="" coords="5,107,140,133"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="188,31,252,57"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="300,81,464,108"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="337,183,427,209"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="189,132,251,159"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="512,132,591,159"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="518,183,585,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="647,5,749,32"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="657,107,739,133"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="806,69,893,96"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="805,132,893,159"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="639,208,757,235"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="651,259,745,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a3715ddccdb53d6a15e7e1d455332abc4_icgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a3715ddccdb53d6a15e7e1d455332abc4_icgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a3715ddccdb53d6a15e7e1d455332abc4_icgraph" id="amonster-attack-monster_8cpp_a3715ddccdb53d6a15e7e1d455332abc4_icgraph">
+<area shape="rect" title=" " alt="" coords="525,13,660,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a92ca98354733e6151c9daeec962f892a" title=" " alt="" coords="312,5,477,47"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3877284386fd0f7550d1bc35fc17b19c" title=" " alt="" coords="153,13,264,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a44fa0c05c2f6b2f7e5ee32d34847472f" title="r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す" alt="" coords="5,13,105,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad653e022a8728810e2fd86cfe47f5cbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad653e022a8728810e2fd86cfe47f5cbe">&#9670;&nbsp;</a></span>check_same_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_same_monster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>subject_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmam__type.html">mam_type</a> *&#160;</td>
+          <td class="paramname"><em>mam_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_ad653e022a8728810e2fd86cfe47f5cbe_icgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_ad653e022a8728810e2fd86cfe47f5cbe_icgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_ad653e022a8728810e2fd86cfe47f5cbe_icgraph" id="amonster-attack-monster_8cpp_ad653e022a8728810e2fd86cfe47f5cbe_icgraph">
+<area shape="rect" title=" " alt="" coords="599,13,749,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a42ec35a0659aa887eabe9976cf5f7e77" title="モンスターから敵モンスターへの打撃攻撃処理" alt="" coords="407,13,551,39"/>
+<area shape="rect" href="monster-attack-processor_8cpp.html#a0aee1ff7b13583888878ac480e5b6afd" title="モンスターからモンスターへの直接攻撃を実行する" alt="" coords="219,5,359,47"/>
+<area shape="rect" href="monster-attack-processor_8cpp.html#add2b2d9c11aa4bf6cd55e177af6bb934" title="モンスターからモンスターへの攻撃処理" alt="" coords="5,5,171,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afd6db5b0176c94a18bdf22e1752bf6de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd6db5b0176c94a18bdf22e1752bf6de">&#9670;&nbsp;</a></span>describe_silly_melee()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_silly_melee </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmam__type.html">mam_type</a> *&#160;</td>
+          <td class="paramname"><em>mam_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_afd6db5b0176c94a18bdf22e1752bf6de_cgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_afd6db5b0176c94a18bdf22e1752bf6de_cgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_afd6db5b0176c94a18bdf22e1752bf6de_cgraph" id="amonster-attack-monster_8cpp_afd6db5b0176c94a18bdf22e1752bf6de_cgraph">
+<area shape="rect" title=" " alt="" coords="5,157,148,184"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="196,132,287,159"/>
+<area shape="rect" href="z-form_8cpp.html#aca76ca27ded4ee78e1b517a47b2710e2" title=" " alt="" coords="214,183,269,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="335,132,413,159"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="341,183,407,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="469,5,572,32"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="480,107,561,133"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="629,69,715,96"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="628,132,716,159"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="461,208,580,235"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="473,259,568,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_afd6db5b0176c94a18bdf22e1752bf6de_icgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_afd6db5b0176c94a18bdf22e1752bf6de_icgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_afd6db5b0176c94a18bdf22e1752bf6de_icgraph" id="amonster-attack-monster_8cpp_afd6db5b0176c94a18bdf22e1752bf6de_icgraph">
+<area shape="rect" title=" " alt="" coords="504,5,647,32"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3877284386fd0f7550d1bc35fc17b19c" title=" " alt="" coords="345,5,456,32"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a44fa0c05c2f6b2f7e5ee32d34847472f" title="r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す" alt="" coords="197,5,297,32"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a42ec35a0659aa887eabe9976cf5f7e77" title="モンスターから敵モンスターへの打撃攻撃処理" alt="" coords="5,5,149,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7b13044e9b26eac26ca737d9927cfd19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b13044e9b26eac26ca737d9927cfd19">&#9670;&nbsp;</a></span>explode_monster_by_melee()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void explode_monster_by_melee </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>subject_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmam__type.html">mam_type</a> *&#160;</td>
+          <td class="paramname"><em>mam_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a7b13044e9b26eac26ca737d9927cfd19_cgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a7b13044e9b26eac26ca737d9927cfd19_cgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a7b13044e9b26eac26ca737d9927cfd19_cgraph" id="amonster-attack-monster_8cpp_a7b13044e9b26eac26ca737d9927cfd19_cgraph">
+<area shape="rect" title=" " alt="" coords="5,472,148,514"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#ad1f0f3b1e09613dd611d055979e16079" title="モンスターが敵モンスターに行う打撃処理 / Hack, based on mon_take_hit..." alt="" coords="196,480,328,506"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a0f21d1420ce64b3a07b8d58396edbdfd" title="モンスターの無敵状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes" alt="" coords="800,328,944,354"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="634,873,691,900"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#a28beddd63c68bd1dbf93a3fd3fceb2df" title="死亡等で恐慌状態をキャンセルする" alt="" coords="593,74,733,101"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#a4a451de636382e9b7827db0baa28e8de" title="ダメージを受けたモンスターのHPが0未満になった際の処理" alt="" coords="389,530,521,557"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="803,176,941,202"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="1041,708,1145,734"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="1232,480,1289,506"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="425,632,486,658"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#aeacc66f07a76819b6429435ea1589b2e" title="モンスター同士の乱闘による落馬処理" alt="" coords="583,725,743,752"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#ab0c6f44097a488c6a52e729cff6a8e88" title=" " alt="" coords="376,328,535,354"/>
+<area shape="rect" href="monster-info_8cpp.html#a310dca2e8b756213922ce91ffff3dbd0" title=" " alt="" coords="415,733,495,760"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#a91d8c001ace30ae38fb46b5ecd306306" title="@biref HP残量などに応じてモンスターを恐慌状態にする" alt="" coords="595,24,731,50"/>
+<area shape="rect" href="cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="411,784,499,810"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#a11f2a462a92a4bfe5e3df88ab7f38328" title=" " alt="" coords="400,834,511,861"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#a6be524dd47044e15b0bb5ae0a443b0ea" title="魔法完全防御持ちの処理" alt="" coords="791,429,953,456"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#a222f8ff145b867bdc75a5d9b2c58986b" title="モンスターが無敵だった場合の処理" alt="" coords="796,378,948,405"/>
+<area shape="rect" href="monster-move_8cpp.html#a1eb609718fff1dbf879719647d38d8d7" title="モンスターの目標地点をセットする / Set the target of counter attack" alt="" coords="415,429,495,456"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="1013,49,1173,76"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a9e49c39d8a53ae6e809e8c3662c97411" title="モンスターの恐慌状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_MONFEAR]&quot;, notice observable changes" alt="" coords="799,24,945,50"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="595,226,730,253"/>
+<area shape="rect" href="monster-death_8cpp.html#a9c647c2a727aa1c903b9dc31b65f63e6" title="モンスターが死亡した時の処理 / Handle the &quot;death&quot; of a monster." alt="" coords="609,665,717,692"/>
+<area shape="rect" href="monster-status_8cpp.html#a5816c48586498ed28b6080bb6ebb5e45" title="モンスターの経験値取得処理" alt="" coords="808,480,936,506"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a2c78256436f23b50681f5fe147c7f021" title="モンスターが生命体かどうかを返す Is the monster &quot;alive&quot;?" alt="" coords="820,530,924,557"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#a6fe01f750bed029419ee26364dcda072" title="モンスター死亡時のメッセージ表示" alt="" coords="595,582,731,623"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="1001,328,1184,354"/>
+<area shape="rect" href="pet-fall-off_8cpp.html#a6cccefbe31f9c2f308dfe3a3a2266647" title="プレイヤーの落馬判定処理" alt="" coords="797,733,947,760"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="1047,556,1138,582"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="629,328,696,354"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a7b13044e9b26eac26ca737d9927cfd19_icgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a7b13044e9b26eac26ca737d9927cfd19_icgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a7b13044e9b26eac26ca737d9927cfd19_icgraph" id="amonster-attack-monster_8cpp_a7b13044e9b26eac26ca737d9927cfd19_icgraph">
+<area shape="rect" title=" " alt="" coords="599,5,741,47"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a42ec35a0659aa887eabe9976cf5f7e77" title="モンスターから敵モンスターへの打撃攻撃処理" alt="" coords="407,13,551,39"/>
+<area shape="rect" href="monster-attack-processor_8cpp.html#a0aee1ff7b13583888878ac480e5b6afd" title="モンスターからモンスターへの直接攻撃を実行する" alt="" coords="219,5,359,47"/>
+<area shape="rect" href="monster-attack-processor_8cpp.html#add2b2d9c11aa4bf6cd55e177af6bb934" title="モンスターからモンスターへの攻撃処理" alt="" coords="5,5,171,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab7ba2a90eae071149cae3516f51fb486"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7ba2a90eae071149cae3516f51fb486">&#9670;&nbsp;</a></span>heal_monster_by_melee()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void heal_monster_by_melee </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>subject_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmam__type.html">mam_type</a> *&#160;</td>
+          <td class="paramname"><em>mam_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>モンスター同士が乱闘する処理 </p>
+<dl class="section date"><dt>日付</dt><dd>2020/05/23 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_ab7ba2a90eae071149cae3516f51fb486_cgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_ab7ba2a90eae071149cae3516f51fb486_cgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_ab7ba2a90eae071149cae3516f51fb486_cgraph" id="amonster-attack-monster_8cpp_ab7ba2a90eae071149cae3516f51fb486_cgraph">
+<area shape="rect" title="モンスター同士が乱闘する処理" alt="" coords="5,107,168,133"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="236,56,300,83"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a2c78256436f23b50681f5fe147c7f021" title="モンスターが生命体かどうかを返す Is the monster &quot;alive&quot;?" alt="" coords="216,107,320,133"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="223,157,313,184"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="368,132,447,159"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="374,183,441,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="503,5,605,32"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="513,107,595,133"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="662,81,749,108"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="661,132,749,159"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="495,208,613,235"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="507,259,601,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_ab7ba2a90eae071149cae3516f51fb486_icgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_ab7ba2a90eae071149cae3516f51fb486_icgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_ab7ba2a90eae071149cae3516f51fb486_icgraph" id="amonster-attack-monster_8cpp_ab7ba2a90eae071149cae3516f51fb486_icgraph">
+<area shape="rect" title="モンスター同士が乱闘する処理" alt="" coords="564,13,727,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#adaf2b09b88c5c2a75003afeb565da868" title=" " alt="" coords="377,13,516,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a92ca98354733e6151c9daeec962f892a" title=" " alt="" coords="164,5,329,47"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3877284386fd0f7550d1bc35fc17b19c" title=" " alt="" coords="5,13,116,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a42ec35a0659aa887eabe9976cf5f7e77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42ec35a0659aa887eabe9976cf5f7e77">&#9670;&nbsp;</a></span>monst_attack_monst()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> monst_attack_monst </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>subject_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>m_idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>t_idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターから敵モンスターへの打撃攻撃処理 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m_idx</td><td>攻撃側モンスターの参照ID </td></tr>
+    <tr><td class="paramname">t_idx</td><td>目標側モンスターの参照ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>実際に打撃処理が行われた場合TRUEを返す </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a42ec35a0659aa887eabe9976cf5f7e77_cgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a42ec35a0659aa887eabe9976cf5f7e77_cgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a42ec35a0659aa887eabe9976cf5f7e77_cgraph" id="amonster-attack-monster_8cpp_a42ec35a0659aa887eabe9976cf5f7e77_cgraph">
+<area shape="rect" title="モンスターから敵モンスターへの打撃攻撃処理" alt="" coords="5,360,149,387"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#ad653e022a8728810e2fd86cfe47f5cbe" title=" " alt="" coords="197,192,348,219"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="880,1455,941,1481"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a7b13044e9b26eac26ca737d9927cfd19" title=" " alt="" coords="201,294,344,335"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="859,461,963,488"/>
+<area shape="rect" href="melee-util_8cpp.html#a457e94672a81323dcb025895bad6e34f" title=" " alt="" coords="204,563,341,589"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a44fa0c05c2f6b2f7e5ee32d34847472f" title="r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す" alt="" coords="223,917,323,944"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a24b70f13486473060f759cb97bb12012" title=" " alt="" coords="396,157,560,184"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="1048,1505,1097,1532"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="1031,461,1114,488"/>
+<area shape="rect" href="target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="1028,1455,1117,1481"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1331,107,1409,133"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="1165,56,1275,83"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="1173,461,1267,488"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="1182,411,1258,437"/>
+<area shape="rect" href="spells-hex_8cpp.html#ab35c57227b5fdac063f315e972f67188" title=" " alt="" coords="1323,31,1417,57"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#ad1f0f3b1e09613dd611d055979e16079" title="モンスターが敵モンスターに行う打撃処理 / Hack, based on mon_take_hit..." alt="" coords="412,689,544,716"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="882,259,939,285"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a0f21d1420ce64b3a07b8d58396edbdfd" title="モンスターの無敵状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_INVULNER]&quot;, notice observable changes" alt="" coords="406,309,550,336"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#a28beddd63c68bd1dbf93a3fd3fceb2df" title="死亡等で恐慌状態をキャンセルする" alt="" coords="631,664,771,691"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#a4a451de636382e9b7827db0baa28e8de" title="ダメージを受けたモンスターのHPが0未満になった際の処理" alt="" coords="635,309,767,336"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#aeacc66f07a76819b6429435ea1589b2e" title="モンスター同士の乱闘による落馬処理" alt="" coords="621,461,781,488"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="1044,411,1101,437"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#ab0c6f44097a488c6a52e729cff6a8e88" title=" " alt="" coords="621,968,780,995"/>
+<area shape="rect" href="monster-info_8cpp.html#a310dca2e8b756213922ce91ffff3dbd0" title=" " alt="" coords="661,715,741,741"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#a91d8c001ace30ae38fb46b5ecd306306" title="@biref HP残量などに応じてモンスターを恐慌状態にする" alt="" coords="633,765,769,792"/>
+<area shape="rect" href="cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="657,816,745,843"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#a11f2a462a92a4bfe5e3df88ab7f38328" title=" " alt="" coords="645,867,756,893"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#a6be524dd47044e15b0bb5ae0a443b0ea" title="魔法完全防御持ちの処理" alt="" coords="619,512,782,539"/>
+<area shape="rect" href="melee-postprocess_8cpp.html#a222f8ff145b867bdc75a5d9b2c58986b" title="モンスターが無敵だった場合の処理" alt="" coords="625,563,777,589"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="841,1171,980,1197"/>
+<area shape="rect" href="monster-move_8cpp.html#a1eb609718fff1dbf879719647d38d8d7" title="モンスターの目標地点をセットする / Set the target of counter attack" alt="" coords="661,613,741,640"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="877,993,944,1020"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="396,1069,560,1096"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="851,183,970,209"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3877284386fd0f7550d1bc35fc17b19c" title=" " alt="" coords="423,1412,533,1439"/>
+<area shape="rect" href="attack-accuracy_8cpp.html#aafdccfcbf00ef088b23b6d122a018a0f" title="モンスターから敵モンスターへの命中判定" alt="" coords="619,1405,783,1446"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="669,1471,733,1497"/>
+<area shape="rect" href="melee-switcher_8cpp.html#a26526a37b98f5208b627891dcc405fa4" title=" " alt="" coords="622,1522,779,1563"/>
+<area shape="rect" href="melee-switcher_8cpp.html#a207ffa791b2fa4032dcaca2782d08030" title="モンスター同士が乱闘を起こした時の攻撃種別をスイッチングする" alt="" coords="619,1689,782,1716"/>
+<area shape="rect" href="melee-switcher_8cpp.html#af9388631a17c92baef2c23ce40963c28" title=" " alt="" coords="613,1222,788,1263"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#afd6db5b0176c94a18bdf22e1752bf6de" title=" " alt="" coords="629,1588,772,1615"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="608,1639,793,1665"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a92ca98354733e6151c9daeec962f892a" title=" " alt="" coords="618,1287,783,1329"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a304ec9dbc466c8bfa67e7694490cd0d8" title=" " alt="" coords="637,1353,764,1380"/>
+<area shape="rect" href="spells-teleport_8cpp.html#a673e0c578a199d0d78f6fc944bcba7fb" title="モンスターのテレポートアウェイ処理 / Teleport a monster, normally up to &quot;dis&quot; grids away." alt="" coords="649,208,752,235"/>
+<area shape="rect" href="spells-hex_8cpp.html#ac985b1afb644fe3a51c57a06dafc1405" title="反テレポート結界の判定" alt="" coords="1166,5,1274,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a42ec35a0659aa887eabe9976cf5f7e77_icgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a42ec35a0659aa887eabe9976cf5f7e77_icgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a42ec35a0659aa887eabe9976cf5f7e77_icgraph" id="amonster-attack-monster_8cpp_a42ec35a0659aa887eabe9976cf5f7e77_icgraph">
+<area shape="rect" title="モンスターから敵モンスターへの打撃攻撃処理" alt="" coords="643,13,787,39"/>
+<area shape="rect" href="monster-attack-processor_8cpp.html#a0aee1ff7b13583888878ac480e5b6afd" title="モンスターからモンスターへの直接攻撃を実行する" alt="" coords="455,5,595,47"/>
+<area shape="rect" href="monster-attack-processor_8cpp.html#add2b2d9c11aa4bf6cd55e177af6bb934" title="モンスターからモンスターへの攻撃処理" alt="" coords="241,5,407,47"/>
+<area shape="rect" href="monster-move_8cpp.html#ad952bf31a67518ea50735f5f724b866d" title="モンスターの移動に関するメインルーチン" alt="" coords="5,13,193,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adaf2b09b88c5c2a75003afeb565da868"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaf2b09b88c5c2a75003afeb565da868">&#9670;&nbsp;</a></span>process_blow_effect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void process_blow_effect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>subject_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmam__type.html">mam_type</a> *&#160;</td>
+          <td class="paramname"><em>mam_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_adaf2b09b88c5c2a75003afeb565da868_cgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_adaf2b09b88c5c2a75003afeb565da868_cgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_adaf2b09b88c5c2a75003afeb565da868_cgraph" id="amonster-attack-monster_8cpp_adaf2b09b88c5c2a75003afeb565da868_cgraph">
+<area shape="rect" title=" " alt="" coords="5,81,144,108"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#ab7ba2a90eae071149cae3516f51fb486" title="モンスター同士が乱闘する処理" alt="" coords="192,56,355,83"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="243,107,304,133"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="423,5,487,32"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a2c78256436f23b50681f5fe147c7f021" title="モンスターが生命体かどうかを返す Is the monster &quot;alive&quot;?" alt="" coords="403,56,507,83"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="409,107,500,133"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="555,157,633,184"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="561,107,627,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_adaf2b09b88c5c2a75003afeb565da868_icgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_adaf2b09b88c5c2a75003afeb565da868_icgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_adaf2b09b88c5c2a75003afeb565da868_icgraph" id="amonster-attack-monster_8cpp_adaf2b09b88c5c2a75003afeb565da868_icgraph">
+<area shape="rect" title=" " alt="" coords="525,13,664,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a92ca98354733e6151c9daeec962f892a" title=" " alt="" coords="312,5,477,47"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3877284386fd0f7550d1bc35fc17b19c" title=" " alt="" coords="153,13,264,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a44fa0c05c2f6b2f7e5ee32d34847472f" title="r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す" alt="" coords="5,13,105,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3877284386fd0f7550d1bc35fc17b19c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3877284386fd0f7550d1bc35fc17b19c">&#9670;&nbsp;</a></span>process_melee()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void process_melee </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>subject_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmam__type.html">mam_type</a> *&#160;</td>
+          <td class="paramname"><em>mam_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a3877284386fd0f7550d1bc35fc17b19c_cgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a3877284386fd0f7550d1bc35fc17b19c_cgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a3877284386fd0f7550d1bc35fc17b19c_cgraph" id="amonster-attack-monster_8cpp_a3877284386fd0f7550d1bc35fc17b19c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,1946,116,1973"/>
+<area shape="rect" href="attack-accuracy_8cpp.html#aafdccfcbf00ef088b23b6d122a018a0f" title="モンスターから敵モンスターへの命中判定" alt="" coords="175,1687,339,1728"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="861,2026,925,2053"/>
+<area shape="rect" href="melee-switcher_8cpp.html#a26526a37b98f5208b627891dcc405fa4" title=" " alt="" coords="178,1804,335,1846"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="629,1773,767,1800"/>
+<area shape="rect" href="melee-switcher_8cpp.html#a207ffa791b2fa4032dcaca2782d08030" title="モンスター同士が乱闘を起こした時の攻撃種別をスイッチングする" alt="" coords="403,465,566,492"/>
+<area shape="rect" href="melee-switcher_8cpp.html#af9388631a17c92baef2c23ce40963c28" title=" " alt="" coords="397,1766,572,1807"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#afd6db5b0176c94a18bdf22e1752bf6de" title=" " alt="" coords="185,1921,328,1948"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="164,2178,349,2205"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a92ca98354733e6151c9daeec962f892a" title=" " alt="" coords="402,2023,567,2064"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a304ec9dbc466c8bfa67e7694490cd0d8" title=" " alt="" coords="193,2229,320,2256"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="441,921,528,948"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="1011,744,1145,770"/>
+<area shape="rect" href="feature_8cpp.html#acad9118499482c605f583af0ef408f10" title=" " alt="" coords="647,794,749,821"/>
+<area shape="rect" href="cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="1193,1440,1281,1466"/>
+<area shape="rect" href="grid_8cpp.html#aa76190ea626631d68070030818399df5" title=" " alt="" coords="1028,1410,1128,1437"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="1043,1360,1113,1386"/>
+<area shape="rect" href="mind-ninja_8cpp.html#a52ea1929bb465180b42d7321e65512eb" title="超隠密状態をセットする" alt="" coords="834,642,953,669"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1198,592,1277,618"/>
+<area shape="rect" href="monster-update_8cpp.html#a2813cd48be3165ceff9b8c77da15da3f" title="モンスターの各情報を更新する / This function updates the monster record of the given monster" alt="" coords="836,592,951,618"/>
+<area shape="rect" href="stair_8cpp.html#aea4112323991d426dd48847f219a0bc8" title="指定された座標が地震や階段生成の対象となるマスかを返す。 / Determine if a given location may be &quot;destroyed&quot;" alt="" coords="643,896,753,922"/>
+<area shape="rect" href="monster-lite_8cpp.html#a75ee5b3b7870c752f4e98b25ba59eaaf" title="画面切り替え等でモンスターの灯りを消去する" alt="" coords="645,946,751,973"/>
+<area shape="rect" href="floor-object_8cpp.html#a2fd603c483d5026d6c3d83aac926b769" title="フロア中のアイテムを全て削除する / Deletes all objects at given location Delete a dungeon object" alt="" coords="624,1352,772,1394"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="853,1301,934,1328"/>
+<area shape="rect" href="grid_8h.html#a73f3bf1cce90b5f4579ab9e8eaf3c990" title="指定位置に存在するモンスターを削除する / Delete the monster, if any, at a given location" alt="" coords="643,1250,753,1277"/>
+<area shape="rect" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="1043,1570,1113,1597"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="1022,85,1134,112"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="1208,136,1267,162"/>
+<area shape="rect" href="grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="643,997,753,1024"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a4ba5778ce8edcd5f8a8b517a30491f58" title="クリーチャーが壁破壊進行を持っているかを返す。" alt="" coords="651,1048,745,1074"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3716d7b8ad214794e5de54641ff0ca5d" title="クリーチャーが壁通過を持っているかを返す。" alt="" coords="645,1098,751,1125"/>
+<area shape="rect" href="cave_8cpp.html#abf1b6aff1aa303afd2b72225c7abbcee" title=" " alt="" coords="824,794,963,821"/>
+<area shape="rect" href="cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="1034,946,1122,973"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="1209,1016,1266,1042"/>
+<area shape="rect" href="grid_8cpp.html#a42dd322b30c143370ad535de2b11f7cc" title=" " alt="" coords="621,1149,775,1176"/>
+<area shape="rect" href="grid_8cpp.html#ac3da6975f25ee500f82ed6105e9a069c" title=" " alt="" coords="620,136,776,162"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="1045,1621,1111,1648"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="1026,642,1130,669"/>
+<area shape="rect" href="player-move_8cpp.html#ac637efbeba2a2fca5538ee13812b97bf" title="移動に伴うプレイヤーのステータス変化処理" alt="" coords="632,693,764,720"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="1033,1773,1123,1800"/>
+<area shape="rect" href="cave_8cpp.html#af3ebcc730bf3e9662adef8c0a4b49903" title=" " alt="" coords="850,490,937,517"/>
+<area shape="rect" href="bad-status-setter_8cpp.html#ac1bf0ab6dab8b807333530aa20d1cc22" title="朦朧の継続時間をセットする / Set &quot;stun&quot;, notice observable changes" alt="" coords="857,288,929,314"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="859,186,927,213"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="1047,338,1109,365"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="863,1672,924,1698"/>
+<area shape="rect" href="z-form_8cpp.html#aca76ca27ded4ee78e1b517a47b2710e2" title=" " alt="" coords="457,1921,512,1948"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a2c3318b5f3aed8ad86d874c1490f86af" title=" " alt="" coords="627,2077,769,2104"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a65fc9979f5efe840339924249b7a8d48" title=" " alt="" coords="627,1976,769,2002"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3715ddccdb53d6a15e7e1d455332abc4" title=" " alt="" coords="631,2026,765,2053"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#adaf2b09b88c5c2a75003afeb565da868" title=" " alt="" coords="629,1925,767,1952"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a3877284386fd0f7550d1bc35fc17b19c_icgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a3877284386fd0f7550d1bc35fc17b19c_icgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a3877284386fd0f7550d1bc35fc17b19c_icgraph" id="amonster-attack-monster_8cpp_a3877284386fd0f7550d1bc35fc17b19c_icgraph">
+<area shape="rect" title=" " alt="" coords="533,13,644,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a44fa0c05c2f6b2f7e5ee32d34847472f" title="r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す" alt="" coords="385,13,485,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a42ec35a0659aa887eabe9976cf5f7e77" title="モンスターから敵モンスターへの打撃攻撃処理" alt="" coords="193,13,337,39"/>
+<area shape="rect" href="monster-attack-processor_8cpp.html#a0aee1ff7b13583888878ac480e5b6afd" title="モンスターからモンスターへの直接攻撃を実行する" alt="" coords="5,5,145,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a92ca98354733e6151c9daeec962f892a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92ca98354733e6151c9daeec962f892a">&#9670;&nbsp;</a></span>process_monster_attack_effect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void process_monster_attack_effect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>subject_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmam__type.html">mam_type</a> *&#160;</td>
+          <td class="paramname"><em>mam_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a92ca98354733e6151c9daeec962f892a_cgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a92ca98354733e6151c9daeec962f892a_cgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a92ca98354733e6151c9daeec962f892a_cgraph" id="amonster-attack-monster_8cpp_a92ca98354733e6151c9daeec962f892a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,251,171,293"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a2c3318b5f3aed8ad86d874c1490f86af" title=" " alt="" coords="219,259,360,285"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="459,309,520,336"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a65fc9979f5efe840339924249b7a8d48" title=" " alt="" coords="219,360,360,387"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3715ddccdb53d6a15e7e1d455332abc4" title=" " alt="" coords="222,208,357,235"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#adaf2b09b88c5c2a75003afeb565da868" title=" " alt="" coords="220,157,359,184"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="669,107,733,133"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="619,385,783,412"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="655,215,746,241"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="831,272,909,299"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="837,215,903,241"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#ab7ba2a90eae071149cae3516f51fb486" title="モンスター同士が乱闘する処理" alt="" coords="408,5,571,32"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#a2c78256436f23b50681f5fe147c7f021" title="モンスターが生命体かどうかを返す Is the monster &quot;alive&quot;?" alt="" coords="649,5,753,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a92ca98354733e6151c9daeec962f892a_icgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a92ca98354733e6151c9daeec962f892a_icgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a92ca98354733e6151c9daeec962f892a_icgraph" id="amonster-attack-monster_8cpp_a92ca98354733e6151c9daeec962f892a_icgraph">
+<area shape="rect" title=" " alt="" coords="504,5,669,47"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3877284386fd0f7550d1bc35fc17b19c" title=" " alt="" coords="345,13,456,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a44fa0c05c2f6b2f7e5ee32d34847472f" title="r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す" alt="" coords="197,13,297,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a42ec35a0659aa887eabe9976cf5f7e77" title="モンスターから敵モンスターへの打撃攻撃処理" alt="" coords="5,13,149,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a304ec9dbc466c8bfa67e7694490cd0d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a304ec9dbc466c8bfa67e7694490cd0d8">&#9670;&nbsp;</a></span>redraw_health_bar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void redraw_health_bar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>subject_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmam__type.html">mam_type</a> *&#160;</td>
+          <td class="paramname"><em>mam_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a304ec9dbc466c8bfa67e7694490cd0d8_icgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a304ec9dbc466c8bfa67e7694490cd0d8_icgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a304ec9dbc466c8bfa67e7694490cd0d8_icgraph" id="amonster-attack-monster_8cpp_a304ec9dbc466c8bfa67e7694490cd0d8_icgraph">
+<area shape="rect" title=" " alt="" coords="504,5,631,32"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3877284386fd0f7550d1bc35fc17b19c" title=" " alt="" coords="345,5,456,32"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a44fa0c05c2f6b2f7e5ee32d34847472f" title="r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す" alt="" coords="197,5,297,32"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a42ec35a0659aa887eabe9976cf5f7e77" title="モンスターから敵モンスターへの打撃攻撃処理" alt="" coords="5,5,149,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a44fa0c05c2f6b2f7e5ee32d34847472f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44fa0c05c2f6b2f7e5ee32d34847472f">&#9670;&nbsp;</a></span>repeat_melee()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void repeat_melee </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>subject_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmam__type.html">mam_type</a> *&#160;</td>
+          <td class="paramname"><em>mam_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">subject_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">mam_ptr</td><td>モンスター乱闘構造体への参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a44fa0c05c2f6b2f7e5ee32d34847472f_cgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a44fa0c05c2f6b2f7e5ee32d34847472f_cgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a44fa0c05c2f6b2f7e5ee32d34847472f_cgraph" id="amonster-attack-monster_8cpp_a44fa0c05c2f6b2f7e5ee32d34847472f_cgraph">
+<area shape="rect" title="r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す" alt="" coords="5,375,105,401"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="963,93,1127,120"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="153,425,272,452"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3877284386fd0f7550d1bc35fc17b19c" title=" " alt="" coords="157,375,268,401"/>
+<area shape="rect" href="attack-accuracy_8cpp.html#aafdccfcbf00ef088b23b6d122a018a0f" title="モンスターから敵モンスターへの命中判定" alt="" coords="331,433,495,474"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="813,397,877,424"/>
+<area shape="rect" href="melee-switcher_8cpp.html#a26526a37b98f5208b627891dcc405fa4" title=" " alt="" coords="334,367,491,409"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="776,549,915,576"/>
+<area shape="rect" href="melee-switcher_8cpp.html#a207ffa791b2fa4032dcaca2782d08030" title="モンスター同士が乱闘を起こした時の攻撃種別をスイッチングする" alt="" coords="331,659,494,685"/>
+<area shape="rect" href="melee-switcher_8cpp.html#af9388631a17c92baef2c23ce40963c28" title=" " alt="" coords="553,601,728,642"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#afd6db5b0176c94a18bdf22e1752bf6de" title=" " alt="" coords="341,499,484,525"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="320,127,505,153"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a92ca98354733e6151c9daeec962f892a" title=" " alt="" coords="330,229,495,270"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a304ec9dbc466c8bfa67e7694490cd0d8" title=" " alt="" coords="349,177,476,204"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="597,397,684,424"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="999,347,1090,373"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="610,667,671,693"/>
+<area shape="rect" href="z-form_8cpp.html#aca76ca27ded4ee78e1b517a47b2710e2" title=" " alt="" coords="613,448,668,475"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a2c3318b5f3aed8ad86d874c1490f86af" title=" " alt="" coords="570,215,711,241"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="815,93,876,120"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a65fc9979f5efe840339924249b7a8d48" title=" " alt="" coords="570,265,711,292"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3715ddccdb53d6a15e7e1d455332abc4" title=" " alt="" coords="573,164,708,191"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#adaf2b09b88c5c2a75003afeb565da868" title=" " alt="" coords="571,113,710,140"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a44fa0c05c2f6b2f7e5ee32d34847472f_icgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a44fa0c05c2f6b2f7e5ee32d34847472f_icgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a44fa0c05c2f6b2f7e5ee32d34847472f_icgraph" id="amonster-attack-monster_8cpp_a44fa0c05c2f6b2f7e5ee32d34847472f_icgraph">
+<area shape="rect" title="r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す" alt="" coords="599,13,699,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a42ec35a0659aa887eabe9976cf5f7e77" title="モンスターから敵モンスターへの打撃攻撃処理" alt="" coords="407,13,551,39"/>
+<area shape="rect" href="monster-attack-processor_8cpp.html#a0aee1ff7b13583888878ac480e5b6afd" title="モンスターからモンスターへの直接攻撃を実行する" alt="" coords="219,5,359,47"/>
+<area shape="rect" href="monster-attack-processor_8cpp.html#add2b2d9c11aa4bf6cd55e177af6bb934" title="モンスターからモンスターへの攻撃処理" alt="" coords="5,5,171,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a24b70f13486473060f759cb97bb12012"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24b70f13486473060f759cb97bb12012">&#9670;&nbsp;</a></span>thief_runaway_by_melee()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void thief_runaway_by_melee </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>subject_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmam__type.html">mam_type</a> *&#160;</td>
+          <td class="paramname"><em>mam_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a24b70f13486473060f759cb97bb12012_cgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a24b70f13486473060f759cb97bb12012_cgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a24b70f13486473060f759cb97bb12012_cgraph" id="amonster-attack-monster_8cpp_a24b70f13486473060f759cb97bb12012_cgraph">
+<area shape="rect" title=" " alt="" coords="5,259,169,285"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="232,196,311,223"/>
+<area shape="rect" href="spells-teleport_8cpp.html#a673e0c578a199d0d78f6fc944bcba7fb" title="モンスターのテレポートアウェイ処理 / Teleport a monster, normally up to &quot;dis&quot; grids away." alt="" coords="220,259,323,285"/>
+<area shape="rect" href="spells-hex_8cpp.html#ac985b1afb644fe3a51c57a06dafc1405" title="反テレポート結界の判定" alt="" coords="217,335,325,361"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="381,44,484,71"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="392,247,473,273"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="575,385,661,412"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="574,183,662,209"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="373,145,492,172"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="385,95,480,121"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="565,56,671,83"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="593,5,643,32"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="597,233,639,260"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="591,284,645,311"/>
+<area shape="rect" href="display-messages_8cpp.html#a8647d1d8cbef5e4db465563838dd2b87" title=" " alt="" coords="540,335,696,361"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="744,183,827,209"/>
+<area shape="rect" href="spells-hex_8cpp.html#ab35c57227b5fdac063f315e972f67188" title=" " alt="" coords="385,348,480,375"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-attack-monster_8cpp_a24b70f13486473060f759cb97bb12012_icgraph.png" border="0" usemap="#amonster-attack-monster_8cpp_a24b70f13486473060f759cb97bb12012_icgraph" alt=""/></div>
+<map name="amonster-attack-monster_8cpp_a24b70f13486473060f759cb97bb12012_icgraph" id="amonster-attack-monster_8cpp_a24b70f13486473060f759cb97bb12012_icgraph">
+<area shape="rect" title=" " alt="" coords="599,13,763,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a42ec35a0659aa887eabe9976cf5f7e77" title="モンスターから敵モンスターへの打撃攻撃処理" alt="" coords="407,13,551,39"/>
+<area shape="rect" href="monster-attack-processor_8cpp.html#a0aee1ff7b13583888878ac480e5b6afd" title="モンスターからモンスターへの直接攻撃を実行する" alt="" coords="219,5,359,47"/>
+<area shape="rect" href="monster-attack-processor_8cpp.html#add2b2d9c11aa4bf6cd55e177af6bb934" title="モンスターからモンスターへの攻撃処理" alt="" coords="5,5,171,47"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分50秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

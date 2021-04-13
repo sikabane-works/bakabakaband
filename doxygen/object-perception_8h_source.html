@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/perception/object-perception.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_346c2aea098094a6f11a0f66feef12e0.html">perception</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">object-perception.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="object-perception_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">void</span> <a class="code" href="object-perception_8h.html#a7d25977942886a0b3043ce3c468cf08c">object_known</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">void</span> <a class="code" href="object-perception_8h.html#a2f7ad5a9cb44932d39bbf0c31a37c946">object_aware</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> <a class="code" href="object-perception_8h.html#a78195fd3f76f71dd37cd6b691f729891">object_tried</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="object-perception_8h.html#a377c00bc8a6d66ec30288f1e3be60e9f">object_is_aware</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="object-perception_8h.html#a28c38c7965d53e8b20d1937245b8970b">object_is_tried</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="object-perception_8h.html#a2f61d6d1ce832270f964fa703089c651">object_is_known</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="object-perception_8h.html#ab8b89c67f70a877a7964cca6a2f139eb">object_is_fully_known</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aobject-perception_8h_html_a28c38c7965d53e8b20d1937245b8970b"><div class="ttname"><a href="object-perception_8h.html#a28c38c7965d53e8b20d1937245b8970b">object_is_tried</a></div><div class="ttdeci">bool object_is_tried(object_type *o_ptr)</div><div class="ttdef"><b>Definition:</b> object-perception.cpp:99</div></div>
+<div class="ttc" id="aobject-perception_8h_html_a2f61d6d1ce832270f964fa703089c651"><div class="ttname"><a href="object-perception_8h.html#a2f61d6d1ce832270f964fa703089c651">object_is_known</a></div><div class="ttdeci">bool object_is_known(object_type *o_ptr)</div><div class="ttdef"><b>Definition:</b> object-perception.cpp:106</div></div>
+<div class="ttc" id="aobject-perception_8h_html_a2f7ad5a9cb44932d39bbf0c31a37c946"><div class="ttname"><a href="object-perception_8h.html#a2f7ad5a9cb44932d39bbf0c31a37c946">object_aware</a></div><div class="ttdeci">void object_aware(player_type *owner_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトを＊鑑定＊済にする / The player is now aware of the effects of the given object.</div><div class="ttdef"><b>Definition:</b> object-perception.cpp:46</div></div>
+<div class="ttc" id="aobject-perception_8h_html_a377c00bc8a6d66ec30288f1e3be60e9f"><div class="ttname"><a href="object-perception_8h.html#a377c00bc8a6d66ec30288f1e3be60e9f">object_is_aware</a></div><div class="ttdeci">bool object_is_aware(object_type *o_ptr)</div><div class="ttdef"><b>Definition:</b> object-perception.cpp:94</div></div>
+<div class="ttc" id="aobject-perception_8h_html_a78195fd3f76f71dd37cd6b691f729891"><div class="ttname"><a href="object-perception_8h.html#a78195fd3f76f71dd37cd6b691f729891">object_tried</a></div><div class="ttdeci">void object_tried(object_type *o_ptr)</div><div class="ttdoc">オブジェクトを試行済にする / Something has been &quot;sampled&quot;</div><div class="ttdef"><b>Definition:</b> object-perception.cpp:87</div></div>
+<div class="ttc" id="aobject-perception_8h_html_a7d25977942886a0b3043ce3c468cf08c"><div class="ttname"><a href="object-perception_8h.html#a7d25977942886a0b3043ce3c468cf08c">object_known</a></div><div class="ttdeci">void object_known(object_type *o_ptr)</div><div class="ttdoc">オブジェクトを鑑定済にする / Known is true when the &quot;attributes&quot; of an object are &quot;known&quot;.</div><div class="ttdef"><b>Definition:</b> object-perception.cpp:31</div></div>
+<div class="ttc" id="aobject-perception_8h_html_ab8b89c67f70a877a7964cca6a2f139eb"><div class="ttname"><a href="object-perception_8h.html#ab8b89c67f70a877a7964cca6a2f139eb">object_is_fully_known</a></div><div class="ttdeci">bool object_is_fully_known(object_type *o_ptr)</div><div class="ttdef"><b>Definition:</b> object-perception.cpp:108</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

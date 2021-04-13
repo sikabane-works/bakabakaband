@@ -1,0 +1,42 @@
+<map id="do_trump_spell" name="do_trump_spell">
+<area shape="rect" id="node1" title="トランプ領域魔法の各処理を行う" alt="" coords="5,1069,116,1096"/>
+<area shape="rect" id="node2" href="$spells-sight_8cpp.html#a0d5dad27889c24db576cc04e78a86731" title="モンスター追放効果(プレイヤー視界範囲内) / Banish all monsters" alt="" coords="169,247,290,273"/>
+<area shape="rect" id="node8" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="748,816,827,843"/>
+<area shape="rect" id="node12" href="$spells-trump_8cpp.html#afb1c11d04a5a5603467ffb8f4f29c287" title=" " alt="" coords="343,1772,485,1799"/>
+<area shape="rect" id="node13" href="$spells-object_8cpp.html#a606c388ae9ec39706af972b765edadbe" title="武器へのエゴ付加処理 / Brand the current weapon" alt="" coords="361,1823,467,1849"/>
+<area shape="rect" id="node14" href="$spells-chaos_8cpp.html#af16bb565fa9396a13ad62570b7d0344f" title="カオス魔法「流星群」/トランプ魔法「隕石のカード」の処理としてプレイヤーを中心に隕石落下処理を10+1d10回繰り返す。 / Drop 10+1d10 meteor ball at random pla..." alt="" coords="367,360,461,387"/>
+<area shape="rect" id="node15" href="$spells-trump_8cpp.html#a62ebe5c603d93fd2c11edcc6fc2b4caf" title="トランプ領域の「シャッフル」の効果をランダムに決めて処理する。" alt="" coords="184,613,275,640"/>
+<area shape="rect" id="node16" href="$target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="369,512,459,539"/>
+<area shape="rect" id="node17" href="$target-setter_8cpp.html#a64107a1f4c060494cae81c0eed0d5a17" title=" " alt="" coords="561,563,641,589"/>
+<area shape="rect" id="node18" href="$spells-teleport_8cpp.html#ab7dc77e5dccd8357b2058d9bcd352cde" title="プレイヤーのテレポート処理メインルーチン" alt="" coords="361,664,467,691"/>
+<area shape="rect" id="node19" href="$spells-summon_8cpp.html#a6b4ede03d00296b0d4c62cd5649b1246" title="トランプ魔法独自の召喚処理を行う / Handle summoning and failure of trump spells" alt="" coords="349,715,479,741"/>
+<area shape="rect" id="node20" href="$spells-detection_8cpp.html#a5d096ba459f50401bf2e3d6762b9f297" title="全感知処理 / Detect everything" alt="" coords="190,816,269,843"/>
+<area shape="rect" id="node21" href="$spells-teleport_8cpp.html#aa6fff18343cd20a043447d819368520d" title="次元の扉処理のメインルーチン /" alt="" coords="545,791,658,817"/>
+<area shape="rect" id="node22" href="$spells-fetcher_8cpp.html#a511a98f348296163f1a0bdfd6b9bae3b" title="アイテム引き寄せ処理 / Fetch an item (teleport it right underneath the caster)" alt="" coords="560,411,643,437"/>
+<area shape="rect" id="node23" href="$spells-launcher_8cpp.html#a668ad35122f82691e97074533dbc8b5c" title="ビーム系スペルの発動 / Cast a beam spell." alt="" coords="190,968,269,995"/>
+<area shape="rect" id="node24" href="$asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="373,1019,455,1045"/>
+<area shape="rect" id="node25" href="$spells-status_8cpp.html#ac949ba84c46936b2dd035820fe36c3ca" title="スピード等のステータスに影響のある魔法の処理" alt="" coords="179,1069,279,1096"/>
+<area shape="rect" id="node26" href="$spells-perception_8cpp.html#a37cf235976cfb937acb8a284ed66593e" title="アイテム*鑑定*のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="183,1120,276,1147"/>
+<area shape="rect" id="node27" href="$cmd-spell_8cpp.html#a0556cb7ce380535793da85ab99b59b5f" title="魔法効果発動までの遅延ターンを出力する / Generate delay info string such as &quot;delay 15+1d15&quot;" alt="" coords="189,1171,269,1197"/>
+<area shape="rect" id="node28" href="$cmd-spell_8cpp.html#ab76faaaa974c8d183f1111f310491881" title="魔法の効果時間を出力する / Generate duration info string such as &quot;dur 20+1d20&quot;" alt="" coords="182,1221,277,1248"/>
+<area shape="rect" id="node29" href="$cmd-spell_8cpp.html#ab3443595b2b8754dd7836ab341deed35" title="魔法による回復量を出力する / Generate heal info string such as &quot;heal 2d8&quot;" alt="" coords="193,1272,266,1299"/>
+<area shape="rect" id="node30" href="$cmd-spell_8cpp.html#abdf2f9bcb6476242b82511fe3763188d" title="魔法によるダメージを出力する(固定値＆複数回処理) / Generate multiple&#45;damage info string such as &quot;dam 25 each&quot;" alt="" coords="164,1323,295,1349"/>
+<area shape="rect" id="node31" href="$cmd-spell_8cpp.html#a5e47d86393f65df045ae425fb077117d" title="魔法による一般的な効力値を出力する（固定値） / Generate power info string such as &quot;power 100&quot;" alt="" coords="188,1373,271,1400"/>
+<area shape="rect" id="node32" href="$cmd-spell_8cpp.html#ad7588e7d4c5b74ae0236d927fa888a30" title="魔法の効果半径を出力する / Generate radius info string such as &quot;rad 100&quot;" alt="" coords="187,1424,271,1451"/>
+<area shape="rect" id="node33" href="$cmd-spell_8cpp.html#a425a4063acc1e1bb952de80eb772c96d" title="魔法の効果範囲を出力する / Generate range info string such as &quot;range 5&quot;" alt="" coords="189,1475,270,1501"/>
+<area shape="rect" id="node34" href="$cmd-spell_8cpp.html#a23998444645294a59ca97e0faff21e66" title="魔法効果の限界重量を出力する / Generate weight info string such as &quot;max wgt 15&quot;" alt="" coords="186,1525,273,1552"/>
+<area shape="rect" id="node35" href="$spells-world_8cpp.html#acd1bf8acf03f4392bc78f8c170a23bc7" title="プレイヤーの帰還発動及び中止処理 / Recall the player to town or dungeon" alt="" coords="182,917,277,944"/>
+<area shape="rect" id="node36" href="$spells-world_8cpp.html#aed0db166d220d3154450d18708491e28" title="フロア・リセット処理" alt="" coords="557,853,646,880"/>
+<area shape="rect" id="node37" href="$sight-setter_8cpp.html#a35a114c478c4067cac46cbffb0a3b8da" title="時限ESPの継続時間をセットする / Set &quot;tim_esp&quot;, notice observable changes" alt="" coords="367,1500,461,1527"/>
+<area shape="rect" id="node38" href="$spells-status_8cpp.html#a96352835bc9e6de6f9a98ff179470e72" title="モンスター加速処理" alt="" coords="174,1728,285,1755"/>
+<area shape="rect" id="node39" href="$spells-world_8cpp.html#a7204ab233ffa573046416517da467469" title="プレイヤー及びモンスターをレベルテレポートさせる / Teleport the player one level up or down (random when legal)" alt="" coords="181,1576,278,1603"/>
+<area shape="rect" id="node40" href="$spells-teleport_8cpp.html#a4dd12f4ef95f06f81b067771b43a1158" title="テレポート魔法全般" alt="" coords="363,461,465,488"/>
+<area shape="rect" id="node3" href="$spells-sight_8cpp.html#a47482081184d0a1282de835163dc6e62" title="視界内モンスターに魔法効果を与える / Apply a &quot;project()&quot; directly to all viewable monsters" alt="" coords="361,183,467,209"/>
+<area shape="rect" id="node4" href="$class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="533,56,669,83"/>
+<area shape="rect" id="node5" href="$monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="542,107,661,133"/>
+<area shape="rect" id="node6" href="$cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="717,309,857,336"/>
+<area shape="rect" id="node7" href="$effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="571,309,632,336"/>
+<area shape="rect" id="node9" href="$projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="745,360,830,387"/>
+<area shape="rect" id="node10" href="$class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="542,259,661,285"/>
+<area shape="rect" id="node11" href="$class_flag_group.html#a021f4c66b2af9456aa41200d81efee90" title="指定したフラグを指定した値にセットする" alt="" coords="547,5,655,32"/>
+</map>

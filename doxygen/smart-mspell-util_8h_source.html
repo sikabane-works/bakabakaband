@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/mspell/smart-mspell-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d3503302c38a329207825687a87abf53.html">mspell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">smart-mspell-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="smart-mspell-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="smart-mspell-util_8h.html#ac391064991fd38d11b4924ddcefc84e2">    1</a></span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="race-ability-flags_8h.html">monster-race/race-ability-flags.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="smart-learn-types_8h.html">monster/smart-learn-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="flag-group_8h.html">util/flag-group.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// Monster Spell Remover.</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmonster__race.html">monster_race</a> <a class="code" href="structmonster__race.html">monster_race</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structmsr__type.html">   11</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmsr__type.html">msr_type</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structmsr__type.html#a32080c656b640a94f5bd816d2f473591">   12</a></span>&#160;    <a class="code" href="structmonster__race.html">monster_race</a> *<a class="code" href="structmsr__type.html#a32080c656b640a94f5bd816d2f473591">r_ptr</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structmsr__type.html#adb664477989b12b9cfb8a46d5c184303">   13</a></span>&#160;    <a class="code" href="class_flag_group.html">FlagGroup&lt;RF_ABILITY&gt;</a> <a class="code" href="structmsr__type.html#adb664477989b12b9cfb8a46d5c184303">ability_flags</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structmsr__type.html#af00abe2ff487ce36abbcb1a02925a1c8">   14</a></span>&#160;    <a class="code" href="class_flag_group.html">FlagGroup&lt;SM&gt;</a> <a class="code" href="structmsr__type.html#af00abe2ff487ce36abbcb1a02925a1c8">smart</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="smart-mspell-util_8h.html#a0657dc6cc0bf1dd55367142a8f3685e4">   15</a></span>&#160;} <a class="code" href="smart-mspell-util_8h.html#a0657dc6cc0bf1dd55367142a8f3685e4">msr_type</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<a class="code" href="structmsr__type.html">msr_type</a> *<a class="code" href="smart-mspell-util_8h.html#a3e507e73d0f2b3e0d5455603bb3aa84e">initialize_msr_type</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmsr__type.html">msr_type</a> *msr_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <span class="keyword">const</span> <a class="code" href="class_flag_group.html">FlagGroup&lt;RF_ABILITY&gt;</a> &amp;ability_flags);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="smart-mspell-util_8h.html#a5ade9ab226c8a7e951a77a088b7ecf87">int_outof</a>(<a class="code" href="structmonster__race.html">monster_race</a> *r_ptr, <a class="code" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> prob);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aclass_flag_group_html"><div class="ttname"><a href="class_flag_group.html">FlagGroup&lt; RF_ABILITY &gt;</a></div></div>
+<div class="ttc" id="aflag-group_8h_html"><div class="ttname"><a href="flag-group_8h.html">flag-group.h</a></div></div>
+<div class="ttc" id="ah-type_8h_html_a7c6a37c6000d234e7e4b733a8c830018"><div class="ttname"><a href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a></div><div class="ttdeci">s32b PERCENTAGE</div><div class="ttdoc">ゲーム中のパーセント表記の型定義(/100倍)</div><div class="ttdef"><b>Definition:</b> h-type.h:200</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="arace-ability-flags_8h_html"><div class="ttname"><a href="race-ability-flags_8h.html">race-ability-flags.h</a></div></div>
+<div class="ttc" id="asmart-learn-types_8h_html"><div class="ttname"><a href="smart-learn-types_8h.html">smart-learn-types.h</a></div></div>
+<div class="ttc" id="asmart-mspell-util_8h_html_a0657dc6cc0bf1dd55367142a8f3685e4"><div class="ttname"><a href="smart-mspell-util_8h.html#a0657dc6cc0bf1dd55367142a8f3685e4">msr_type</a></div><div class="ttdeci">struct msr_type msr_type</div></div>
+<div class="ttc" id="asmart-mspell-util_8h_html_a3e507e73d0f2b3e0d5455603bb3aa84e"><div class="ttname"><a href="smart-mspell-util_8h.html#a3e507e73d0f2b3e0d5455603bb3aa84e">initialize_msr_type</a></div><div class="ttdeci">msr_type * initialize_msr_type(player_type *target_ptr, msr_type *msr_ptr, MONSTER_IDX m_idx, const FlagGroup&lt; RF_ABILITY &gt; &amp;ability_flags)</div><div class="ttdef"><b>Definition:</b> smart-mspell-util.cpp:7</div></div>
+<div class="ttc" id="asmart-mspell-util_8h_html_a5ade9ab226c8a7e951a77a088b7ecf87"><div class="ttname"><a href="smart-mspell-util_8h.html#a5ade9ab226c8a7e951a77a088b7ecf87">int_outof</a></div><div class="ttdeci">bool int_outof(monster_race *r_ptr, PERCENTAGE prob)</div><div class="ttdoc">モンスターがプレイヤーの弱点をついた選択を取るかどうかの判定 / Internal probability routine</div><div class="ttdef"><b>Definition:</b> smart-mspell-util.cpp:23</div></div>
+<div class="ttc" id="astructmonster__race_html"><div class="ttname"><a href="structmonster__race.html">monster_race</a></div><div class="ttdef"><b>Definition:</b> monster-race-definition.h:48</div></div>
+<div class="ttc" id="astructmsr__type_html"><div class="ttname"><a href="structmsr__type.html">msr_type</a></div><div class="ttdef"><b>Definition:</b> smart-mspell-util.h:11</div></div>
+<div class="ttc" id="astructmsr__type_html_a32080c656b640a94f5bd816d2f473591"><div class="ttname"><a href="structmsr__type.html#a32080c656b640a94f5bd816d2f473591">msr_type::r_ptr</a></div><div class="ttdeci">monster_race * r_ptr</div><div class="ttdef"><b>Definition:</b> smart-mspell-util.h:12</div></div>
+<div class="ttc" id="astructmsr__type_html_adb664477989b12b9cfb8a46d5c184303"><div class="ttname"><a href="structmsr__type.html#adb664477989b12b9cfb8a46d5c184303">msr_type::ability_flags</a></div><div class="ttdeci">FlagGroup&lt; RF_ABILITY &gt; ability_flags</div><div class="ttdef"><b>Definition:</b> smart-mspell-util.h:13</div></div>
+<div class="ttc" id="astructmsr__type_html_af00abe2ff487ce36abbcb1a02925a1c8"><div class="ttname"><a href="structmsr__type.html#af00abe2ff487ce36abbcb1a02925a1c8">msr_type::smart</a></div><div class="ttdeci">FlagGroup&lt; SM &gt; smart</div><div class="ttdef"><b>Definition:</b> smart-mspell-util.h:14</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

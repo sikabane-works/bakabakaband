@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/save/monster-writer.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2787ab3e88de134edafc81d1ef96b4ab.html">save</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">monster-writer.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="monster-writer_8h_source.html">save/monster-writer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="savedata-flag-types_8h_source.html">load/savedata-flag-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-info_8h_source.html">monster/monster-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status_8h_source.html">monster/monster-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="save-util_8h_source.html">save/save-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-type-definition_8h_source.html">system/monster-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quarks_8h_source.html">util/quarks.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+monster-writer.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-writer_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2save_2monster-writer_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2save_2monster-writer_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2save_2monster-writer_8cpp">
+<area shape="rect" title=" " alt="" coords="782,5,995,61"/>
+<area shape="rect" href="monster-writer_8h.html" title=" " alt="" coords="773,206,919,233"/>
+<area shape="rect" href="savedata-flag-types_8h.html" title=" " alt="" coords="1293,109,1418,151"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="319,109,469,151"/>
+<area shape="rect" href="monster-info_8h.html" title=" " alt="" coords="869,117,1023,143"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1183,199,1328,240"/>
+<area shape="rect" href="monster-status_8h.html" title=" " alt="" coords="1047,117,1218,143"/>
+<area shape="rect" href="save-util_8h.html" title=" " alt="" coords="572,117,683,143"/>
+<area shape="rect" href="quarks_8h.html" title=" " alt="" coords="655,206,749,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="595,385,724,411"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1159,467,1250,493"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="310,467,401,493"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="425,467,523,493"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="547,467,646,493"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="671,467,771,493"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="795,467,969,493"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="994,467,1135,493"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="139,467,286,493"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="157,541,268,568"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="233,199,379,240"/>
+<area shape="rect" title=" " alt="" coords="153,206,209,233"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="159,377,319,419"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="319,288,479,329"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="130,288,295,329"/>
+<area shape="rect" title=" " alt="" coords="51,295,105,322"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="1045,288,1189,329"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1213,288,1369,329"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="1394,288,1533,329"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a6bbe64f5eb68aad3b6b1ce75864aef0f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-writer_8cpp.html#a6bbe64f5eb68aad3b6b1ce75864aef0f">write_monster_flags</a> (<a class="el" href="structmonster__type.html">monster_type</a> *m_ptr, <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> *flags)</td></tr>
+<tr class="separator:a6bbe64f5eb68aad3b6b1ce75864aef0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c6f1575320a25af5cca4829ddbe78b4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-writer_8cpp.html#a3c6f1575320a25af5cca4829ddbe78b4">write_monster_info</a> (<a class="el" href="structmonster__type.html">monster_type</a> *m_ptr, const <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> flags)</td></tr>
+<tr class="separator:a3c6f1575320a25af5cca4829ddbe78b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a347124d58fc5f0f54c2a32153a40f748"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-writer_8cpp.html#a347124d58fc5f0f54c2a32153a40f748">wr_monster</a> (<a class="el" href="structmonster__type.html">monster_type</a> *m_ptr)</td></tr>
+<tr class="memdesc:a347124d58fc5f0f54c2a32153a40f748"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスター情報を書き込む / Write a "monster" record  <a href="monster-writer_8cpp.html#a347124d58fc5f0f54c2a32153a40f748">[詳解]</a><br /></td></tr>
+<tr class="separator:a347124d58fc5f0f54c2a32153a40f748"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae06978fb101c6a405ccb812e978455d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-writer_8cpp.html#ae06978fb101c6a405ccb812e978455d4">wr_lore</a> (<a class="el" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> r_idx)</td></tr>
+<tr class="memdesc:ae06978fb101c6a405ccb812e978455d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターの思い出を書き込む / Write a "lore" record  <a href="monster-writer_8cpp.html#ae06978fb101c6a405ccb812e978455d4">[詳解]</a><br /></td></tr>
+<tr class="separator:ae06978fb101c6a405ccb812e978455d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ae06978fb101c6a405ccb812e978455d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae06978fb101c6a405ccb812e978455d4">&#9670;&nbsp;</a></span>wr_lore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wr_lore </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a>&#160;</td>
+          <td class="paramname"><em>r_idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターの思い出を書き込む / Write a "lore" record </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">r_idx</td><td>モンスター種族ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-writer_8cpp_ae06978fb101c6a405ccb812e978455d4_cgraph.png" border="0" usemap="#amonster-writer_8cpp_ae06978fb101c6a405ccb812e978455d4_cgraph" alt=""/></div>
+<map name="amonster-writer_8cpp_ae06978fb101c6a405ccb812e978455d4_cgraph" id="amonster-writer_8cpp_ae06978fb101c6a405ccb812e978455d4_cgraph">
+<area shape="rect" title="モンスターの思い出を書き込む / Write a &quot;lore&quot; record" alt="" coords="5,27,68,54"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="353,27,420,54"/>
+<area shape="rect" href="save-util_8cpp.html#a0a9fc9ad1a0b5696b8d33200e93f6a59" title="符号あり16ビットをファイルに書き込む" alt="" coords="116,27,187,54"/>
+<area shape="rect" href="save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="235,78,305,104"/>
+<area shape="rect" href="save-util_8cpp.html#a320fb5495ecbaf494a3ecfee37176734" title="1バイトをファイルに書き込む / These functions place information into a savefile a byte at a time" alt="" coords="468,27,525,54"/>
+<area shape="rect" href="save-util_8cpp.html#a3029d75be518c5d591b64029c472db4e" title="符号なし16ビットをファイルに書き込む" alt="" coords="235,27,305,54"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-writer_8cpp_ae06978fb101c6a405ccb812e978455d4_icgraph.png" border="0" usemap="#amonster-writer_8cpp_ae06978fb101c6a405ccb812e978455d4_icgraph" alt=""/></div>
+<map name="amonster-writer_8cpp_ae06978fb101c6a405ccb812e978455d4_icgraph" id="amonster-writer_8cpp_ae06978fb101c6a405ccb812e978455d4_icgraph">
+<area shape="rect" title="モンスターの思い出を書き込む / Write a &quot;lore&quot; record" alt="" coords="473,5,536,32"/>
+<area shape="rect" href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="311,5,425,32"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="144,5,263,32"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="5,5,96,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a347124d58fc5f0f54c2a32153a40f748"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a347124d58fc5f0f54c2a32153a40f748">&#9670;&nbsp;</a></span>wr_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wr_monster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmonster__type.html">monster_type</a> *&#160;</td>
+          <td class="paramname"><em>m_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスター情報を書き込む / Write a "monster" record </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m_ptr</td><td>モンスター情報保存元ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-writer_8cpp_a347124d58fc5f0f54c2a32153a40f748_cgraph.png" border="0" usemap="#amonster-writer_8cpp_a347124d58fc5f0f54c2a32153a40f748_cgraph" alt=""/></div>
+<map name="amonster-writer_8cpp_a347124d58fc5f0f54c2a32153a40f748_cgraph" id="amonster-writer_8cpp_a347124d58fc5f0f54c2a32153a40f748_cgraph">
+<area shape="rect" title="モンスター情報を書き込む / Write a &quot;monster&quot; record" alt="" coords="5,148,95,175"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="689,97,756,124"/>
+<area shape="rect" href="save-util_8cpp.html#a0a9fc9ad1a0b5696b8d33200e93f6a59" title="符号あり16ビットをファイルに書き込む" alt="" coords="388,47,459,73"/>
+<area shape="rect" href="save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="388,249,459,276"/>
+<area shape="rect" href="monster-writer_8cpp.html#a6bbe64f5eb68aad3b6b1ce75864aef0f" title=" " alt="" coords="143,452,280,479"/>
+<area shape="rect" href="monster-writer_8cpp.html#a3c6f1575320a25af5cca4829ddbe78b4" title=" " alt="" coords="146,148,277,175"/>
+<area shape="rect" href="save-util_8cpp.html#a320fb5495ecbaf494a3ecfee37176734" title="1バイトをファイルに書き込む / These functions place information into a savefile a byte at a time" alt="" coords="804,97,861,124"/>
+<area shape="rect" href="save-util_8cpp.html#a3029d75be518c5d591b64029c472db4e" title="符号なし16ビットをファイルに書き込む" alt="" coords="569,47,639,73"/>
+<area shape="rect" href="class_flag_group.html#a85a4dd28bb671ffe973b1fd50a0be4d7" title="フラグ集合のいずれかのフラグがONかどうかを調べる" alt="" coords="368,604,479,631"/>
+<area shape="rect" href="monster-info_8cpp.html#aee375b2cef10419aee76d699c91d4007" title=" " alt="" coords="373,655,474,681"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="328,705,519,732"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="335,300,512,327"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="343,351,503,377"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="343,401,503,428"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="332,452,515,479"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="341,503,506,529"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="331,553,516,580"/>
+<area shape="rect" href="quarks_8cpp.html#a95cf419856c525009b78e5246327f405" title=" " alt="" coords="385,199,461,225"/>
+<area shape="rect" href="save-util_8cpp.html#a272917124cf4c8dc5760c16caed8db80" title="文字列をファイルに書き込む" alt="" coords="567,148,641,175"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-writer_8cpp_a347124d58fc5f0f54c2a32153a40f748_icgraph.png" border="0" usemap="#amonster-writer_8cpp_a347124d58fc5f0f54c2a32153a40f748_icgraph" alt=""/></div>
+<map name="amonster-writer_8cpp_a347124d58fc5f0f54c2a32153a40f748_icgraph" id="amonster-writer_8cpp_a347124d58fc5f0f54c2a32153a40f748_icgraph">
+<area shape="rect" title="モンスター情報を書き込む / Write a &quot;monster&quot; record" alt="" coords="580,31,669,57"/>
+<area shape="rect" href="floor-writer_8cpp.html#a0ca3769fc9944271112a5fe1e063665e" title="保存フロアの書き込み / Actually write a saved floor data using effectively compressed format." alt="" coords="425,31,532,57"/>
+<area shape="rect" href="floor-writer_8cpp.html#a11937fb0136a154a63265b4d3e946b7c" title="ゲームプレイ中のフロア一時保存出力処理サブルーチン / Actually write a temporary saved floor file" alt="" coords="271,5,377,32"/>
+<area shape="rect" href="floor-writer_8cpp.html#aa3fb42702fe78c01f6faf53decb93421" title="現在フロアの書き込み / Write the current dungeon (new method) @player_ptr プレーヤーへの参照ポインタ" alt="" coords="5,31,96,57"/>
+<area shape="rect" href="floor-writer_8cpp.html#a159128f33a5ee6ede05b1b1759af3088" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="144,5,223,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6bbe64f5eb68aad3b6b1ce75864aef0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bbe64f5eb68aad3b6b1ce75864aef0f">&#9670;&nbsp;</a></span>write_monster_flags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void write_monster_flags </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmonster__type.html">monster_type</a> *&#160;</td>
+          <td class="paramname"><em>m_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> *&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-writer_8cpp_a6bbe64f5eb68aad3b6b1ce75864aef0f_cgraph.png" border="0" usemap="#amonster-writer_8cpp_a6bbe64f5eb68aad3b6b1ce75864aef0f_cgraph" alt=""/></div>
+<map name="amonster-writer_8cpp_a6bbe64f5eb68aad3b6b1ce75864aef0f_cgraph" id="amonster-writer_8cpp_a6bbe64f5eb68aad3b6b1ce75864aef0f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,233,143,260"/>
+<area shape="rect" href="class_flag_group.html#a85a4dd28bb671ffe973b1fd50a0be4d7" title="フラグ集合のいずれかのフラグがONかどうかを調べる" alt="" coords="231,5,341,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aee375b2cef10419aee76d699c91d4007" title=" " alt="" coords="235,56,337,83"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="191,107,381,133"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="197,157,375,184"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="206,208,366,235"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="206,259,366,285"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="195,309,377,336"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="203,360,369,387"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="193,411,379,437"/>
+<area shape="rect" href="save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="251,461,321,488"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="429,461,496,488"/>
+<area shape="rect" href="save-util_8cpp.html#a320fb5495ecbaf494a3ecfee37176734" title="1バイトをファイルに書き込む / These functions place information into a savefile a byte at a time" alt="" coords="544,461,601,488"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-writer_8cpp_a6bbe64f5eb68aad3b6b1ce75864aef0f_icgraph.png" border="0" usemap="#amonster-writer_8cpp_a6bbe64f5eb68aad3b6b1ce75864aef0f_icgraph" alt=""/></div>
+<map name="amonster-writer_8cpp_a6bbe64f5eb68aad3b6b1ce75864aef0f_icgraph" id="amonster-writer_8cpp_a6bbe64f5eb68aad3b6b1ce75864aef0f_icgraph">
+<area shape="rect" title=" " alt="" coords="452,31,589,57"/>
+<area shape="rect" href="monster-writer_8cpp.html#a347124d58fc5f0f54c2a32153a40f748" title="モンスター情報を書き込む / Write a &quot;monster&quot; record" alt="" coords="315,31,404,57"/>
+<area shape="rect" href="floor-writer_8cpp.html#a0ca3769fc9944271112a5fe1e063665e" title="保存フロアの書き込み / Actually write a saved floor data using effectively compressed format." alt="" coords="160,31,267,57"/>
+<area shape="rect" href="floor-writer_8cpp.html#a11937fb0136a154a63265b4d3e946b7c" title="ゲームプレイ中のフロア一時保存出力処理サブルーチン / Actually write a temporary saved floor file" alt="" coords="5,5,112,32"/>
+<area shape="rect" href="floor-writer_8cpp.html#aa3fb42702fe78c01f6faf53decb93421" title="現在フロアの書き込み / Write the current dungeon (new method) @player_ptr プレーヤーへの参照ポインタ" alt="" coords="13,56,104,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3c6f1575320a25af5cca4829ddbe78b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c6f1575320a25af5cca4829ddbe78b4">&#9670;&nbsp;</a></span>write_monster_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void write_monster_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmonster__type.html">monster_type</a> *&#160;</td>
+          <td class="paramname"><em>m_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-writer_8cpp_a3c6f1575320a25af5cca4829ddbe78b4_cgraph.png" border="0" usemap="#amonster-writer_8cpp_a3c6f1575320a25af5cca4829ddbe78b4_cgraph" alt=""/></div>
+<map name="amonster-writer_8cpp_a3c6f1575320a25af5cca4829ddbe78b4_cgraph" id="amonster-writer_8cpp_a3c6f1575320a25af5cca4829ddbe78b4_cgraph">
+<area shape="rect" title=" " alt="" coords="5,107,136,133"/>
+<area shape="rect" href="quarks_8cpp.html#a95cf419856c525009b78e5246327f405" title=" " alt="" coords="184,5,260,32"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="431,132,497,159"/>
+<area shape="rect" href="save-util_8cpp.html#a0a9fc9ad1a0b5696b8d33200e93f6a59" title="符号あり16ビットをファイルに書き込む" alt="" coords="187,107,257,133"/>
+<area shape="rect" href="save-util_8cpp.html#a272917124cf4c8dc5760c16caed8db80" title="文字列をファイルに書き込む" alt="" coords="308,157,383,184"/>
+<area shape="rect" href="save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="310,208,381,235"/>
+<area shape="rect" href="save-util_8cpp.html#a320fb5495ecbaf494a3ecfee37176734" title="1バイトをファイルに書き込む / These functions place information into a savefile a byte at a time" alt="" coords="545,132,603,159"/>
+<area shape="rect" href="save-util_8cpp.html#a3029d75be518c5d591b64029c472db4e" title="符号なし16ビットをファイルに書き込む" alt="" coords="310,107,381,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-writer_8cpp_a3c6f1575320a25af5cca4829ddbe78b4_icgraph.png" border="0" usemap="#amonster-writer_8cpp_a3c6f1575320a25af5cca4829ddbe78b4_icgraph" alt=""/></div>
+<map name="amonster-writer_8cpp_a3c6f1575320a25af5cca4829ddbe78b4_icgraph" id="amonster-writer_8cpp_a3c6f1575320a25af5cca4829ddbe78b4_icgraph">
+<area shape="rect" title=" " alt="" coords="452,31,583,57"/>
+<area shape="rect" href="monster-writer_8cpp.html#a347124d58fc5f0f54c2a32153a40f748" title="モンスター情報を書き込む / Write a &quot;monster&quot; record" alt="" coords="315,31,404,57"/>
+<area shape="rect" href="floor-writer_8cpp.html#a0ca3769fc9944271112a5fe1e063665e" title="保存フロアの書き込み / Actually write a saved floor data using effectively compressed format." alt="" coords="160,31,267,57"/>
+<area shape="rect" href="floor-writer_8cpp.html#a11937fb0136a154a63265b4d3e946b7c" title="ゲームプレイ中のフロア一時保存出力処理サブルーチン / Actually write a temporary saved floor file" alt="" coords="5,5,112,32"/>
+<area shape="rect" href="floor-writer_8cpp.html#aa3fb42702fe78c01f6faf53decb93421" title="現在フロアの書き込み / Write the current dungeon (new method) @player_ptr プレーヤーへの参照ポインタ" alt="" coords="13,56,104,83"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時56分23秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

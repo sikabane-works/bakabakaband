@@ -1,0 +1,50 @@
+<map id="cast_shuffle" name="cast_shuffle">
+<area shape="rect" id="node1" title="トランプ領域の「シャッフル」の効果をランダムに決めて処理する。" alt="" coords="5,1495,96,1521"/>
+<area shape="rect" id="node2" href="$spells-summon_8cpp.html#a7e56fd88af9905231b5b3061bf76f672" title="HI_SUMMON(上級召喚)処理発動" alt="" coords="505,329,645,356"/>
+<area shape="rect" id="node3" href="$monster-summon_8cpp.html#a6e66d06ca9502871c59a2a58c15708e5" title="モンスターを召喚により配置する / Place a monster (of the specified &quot;type&quot;) near the given location." alt="" coords="725,228,848,255"/>
+<area shape="rect" id="node14" href="$spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="319,1013,442,1040"/>
+<area shape="rect" id="node15" href="$spells-sight_8cpp.html#a38649e896637efab6c1c96d71f870948" title="視界内モンスターを怒らせる処理 / Wake up all monsters, and speed up &quot;los&quot; monsters." alt="" coords="506,1495,645,1521"/>
+<area shape="rect" id="node16" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="980,1495,1059,1521"/>
+<area shape="rect" id="node17" href="$base-status_8cpp.html#a02f02e57ff04a59667b69ae931263500" title=" " alt="" coords="529,1393,622,1420"/>
+<area shape="rect" id="node18" href="$earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="743,532,830,559"/>
+<area shape="rect" id="node20" href="$avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="747,1444,827,1471"/>
+<area shape="rect" id="node23" href="$spells-teleport_8cpp.html#ab7dc77e5dccd8357b2058d9bcd352cde" title="プレイヤーのテレポート処理メインルーチン" alt="" coords="522,1343,629,1369"/>
+<area shape="rect" id="node24" href="$spells-neighbor_8cpp.html#aa3c6ea47d39b38e54711fcfdbca7f4b6" title="周辺破壊効果(プレイヤー中心)" alt="" coords="528,583,623,609"/>
+<area shape="rect" id="node25" href="$spells-charm_8cpp.html#a89710b267e0fabc8eee195e43b726c7e" title="チャーム・モンスター(1体)" alt="" coords="144,1900,256,1927"/>
+<area shape="rect" id="node26" href="$experience_8cpp.html#a526ec6c3a82867a6a0152ffeb12a720d" title=" " alt="" coords="163,1951,237,1977"/>
+<area shape="rect" id="node27" href="$target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="155,1748,245,1775"/>
+<area shape="rect" id="node28" href="$mutation-investor-remover_8cpp.html#aad129a21d41e3abf901ceeb96989c264" title=" " alt="" coords="510,1697,641,1724"/>
+<area shape="rect" id="node29" href="$spells-status_8cpp.html#a6b124a1b6a39257cbc861a6c4ef5c6ec" title="プレイヤーのヒットダイスを振る / Role Hitpoints" alt="" coords="158,1799,242,1825"/>
+<area shape="rect" id="node30" href="$buff-setter_8cpp.html#a0f33ce24a83a1573ead35a6ce0913b85" title="祝福の継続時間をセットする / Set &quot;blessed&quot;, notice observable changes" alt="" coords="741,1647,833,1673"/>
+<area shape="rect" id="node31" href="$spells-neighbor_8cpp.html#af2f9c7264ccac1b6fc0dc746fd1836eb" title="スリープモンスター処理(プレイヤー中心に周囲1マス)" alt="" coords="304,937,457,964"/>
+<area shape="rect" id="node32" href="$spells-summon_8cpp.html#a6b4ede03d00296b0d4c62cd5649b1246" title="トランプ魔法独自の召喚処理を行う / Handle summoning and failure of trump spells" alt="" coords="511,177,640,204"/>
+<area shape="rect" id="node33" href="$spells-lite_8cpp.html#a333d4702d3cce04aee99ad4747d802c0" title="プレイヤー位置を中心にLITE_DARK属性を通じた消灯処理を行う / Hack – call light around the player Affect all monsters in the pr..." alt="" coords="338,1596,423,1623"/>
+<area shape="rect" id="node38" href="$avatar_8cpp.html#a9f77c7a74f4dd1df02cd6e40b532f2ed" title="プレイヤーの指定の徳が何番目のスロットに登録されているかを返す。 / Aux function" alt="" coords="149,2001,251,2028"/>
+<area shape="rect" id="node39" href="$spells-neighbor_8cpp.html#ae9aee6e4449925a2ff99bf082856bb60" title="壁生成処理(プレイヤー中心に周囲1マス)" alt="" coords="339,887,422,913"/>
+<area shape="rect" id="node40" href="$spells-random_8cpp.html#ad3967ff26aec044a7b9dd0a553073fe3" title="運命の輪、並びにカオス的な効果の発動" alt="" coords="157,887,243,913"/>
+<area shape="rect" id="node48" href="$spells-floor_8cpp.html#aa1bf6734f45843faa71627418ea72ff1" title="フロアに影響のある魔法の処理" alt="" coords="167,2052,233,2079"/>
+<area shape="rect" id="node4" href="$monster-summon_8cpp.html#a80a88ba3a9e2abebb3f87edf1be776b3" title="荒野のレベルを含めた階層レベルを返す" alt="" coords="928,297,1111,338"/>
+<area shape="rect" id="node5" href="$monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する" alt="" coords="1175,81,1279,108"/>
+<area shape="rect" id="node6" href="$monster-util_8cpp.html#ae37ebccef3dd7dacea088110d0388d49" title="モンスター生成テーブルの重み修正" alt="" coords="1159,248,1295,275"/>
+<area shape="rect" id="node7" href="$monster-util_8cpp.html#a9fc01fd90dd6a66966721b7c06902394" title="指定された広域マップ座標の地勢を元にモンスターの生成条件関数を返す" alt="" coords="1159,5,1295,32"/>
+<area shape="rect" id="node8" href="$monster-summon_8cpp.html#a538285977ec7fbfb5c94205866f35dd1" title="モンスター死亡時に召喚されうるモンスターかどうかの判定" alt="" coords="949,144,1090,171"/>
+<area shape="rect" id="node9" href="$monster-generator_8cpp.html#a6475b2ac50800fa644c25e145fb3dda3" title="モンスター1体を目標地点に可能な限り近い位置に生成する / improved version of scatter() for place monster" alt="" coords="972,195,1067,221"/>
+<area shape="rect" id="node10" href="$monster-generator_8cpp.html#a75f22366aa0266c858e15d023f9bb91b" title="一般的なモンスター生成処理のサブルーチン / Attempt to place a monster of the given race at the given location" alt="" coords="952,93,1087,120"/>
+<area shape="rect" id="node12" href="$sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="991,413,1048,440"/>
+<area shape="rect" id="node13" href="$monster-summon_8cpp.html#afa1dd8f608f90b4488fb7c018c7ef565" title="モンスターが召喚の基本条件に合っているかをチェックする / Hack – help decide if a monster race is &quot;okay&quot; to summon" alt="" coords="940,245,1099,272"/>
+<area shape="rect" id="node11" href="$z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="1195,532,1259,559"/>
+<area shape="rect" id="node19" href="$base-status_8cpp.html#aebc385dcca9c29b2c8b570c2811ed982" title=" " alt="" coords="529,1292,622,1319"/>
+<area shape="rect" id="node21" href="$effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="756,836,817,863"/>
+<area shape="rect" id="node22" href="$spells-summon_8cpp.html#ad5a77675cad59a14d66ef2c6d12f01c9" title="サイバーデーモンの召喚" alt="" coords="520,380,631,407"/>
+<area shape="rect" id="node34" href="$spells-lite_8cpp.html#a4d8b3641ead6748770127d91f2d2fc66" title="(y1,x1) を含む全ての部屋を暗くする。 / Darken all rooms containing the given location" alt="" coords="531,1925,620,1952"/>
+<area shape="rect" id="node35" href="$spells-lite_8cpp.html#af256207d13fdf4748c542404b1fecbcd" title="指定のマスが光を通さず射線のみを通すかを返す。 / Aux function – see below" alt="" coords="946,1976,1093,2003"/>
+<area shape="rect" id="node36" href="$spells-lite_8cpp.html#a222eed5525d789b02fbd19966f987fbf" title="指定した座標全てを暗くする。" alt="" coords="707,1900,866,1927"/>
+<area shape="rect" id="node37" href="$spells-lite_8cpp.html#ab05285d8dae5f502a816ee42486df352" title="(y,x) が暗くすべきマスなら points に加える" alt="" coords="693,2001,880,2028"/>
+<area shape="rect" id="node41" href="$spells-equipment_8cpp.html#aa03fdf6f0d68dd8464e6b6b8e1d5641a" title="プレイヤーの装備劣化処理 / Apply disenchantment to the player&#39;s stuff" alt="" coords="319,1267,442,1293"/>
+<area shape="rect" id="node42" href="$spells-neighbor_8cpp.html#af6d0cc0cfbba75815d7b4caa7aec3294" title="ドア破壊処理(プレイヤー中心に周囲1マス)" alt="" coords="309,836,452,863"/>
+<area shape="rect" id="node43" href="$spells-neighbor_8cpp.html#a68ec743cccdff3a324a099b5ebe908fc" title="ドア生成処理(プレイヤー中心に周囲1マス) / Hooks – affect adjacent grids (radius 1 ball attack)" alt="" coords="331,735,431,761"/>
+<area shape="rect" id="node44" href="$spells-launcher_8cpp.html#a9c5b6430a190c4d961f6017a483fdcf2" title="ボール系スペルの発動 / Cast a ball spell" alt="" coords="347,785,414,812"/>
+<area shape="rect" id="node45" href="$mutation-investor-remover_8cpp.html#a3f2ae6d11a1293d5aaba45657ea17e0a" title="プレイヤーに突然変異を与える" alt="" coords="524,1241,627,1268"/>
+<area shape="rect" id="node46" href="$spells-lite_8cpp.html#a78cee093a3c7190cac79b36c36e200fc" title="プレイヤー位置を中心にLITE_WEAK属性を通じた照明処理を行う / Hack – call light around the player Affect all monsters in the pr..." alt="" coords="540,1089,611,1116"/>
+<area shape="rect" id="node47" href="$spells-neighbor_8cpp.html#accb745582657b43fb0fe86bebb57eb55" title="トラップ生成処理(起点から周囲1マス)" alt="" coords="332,684,429,711"/>
+</map>

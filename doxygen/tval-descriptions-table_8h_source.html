@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/wizard/tval-descriptions-table.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e09032bb770e6e0f4355f890c3180c4a.html">wizard</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">tval-descriptions-table.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="tval-descriptions-table_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structtval__desc.html">    8</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structtval__desc.html">tval_desc</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structtval__desc.html#ad31a295095dd9e38ac19c1423387b115">    9</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structtval__desc.html#ad31a295095dd9e38ac19c1423387b115">tval</a>; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structtval__desc.html#a06579487fe27c34dc0b582ff1bb51e42">   10</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structtval__desc.html#a06579487fe27c34dc0b582ff1bb51e42">desc</a>; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="tval-descriptions-table_8h.html#ac02171dfcc7b20ae402bedca560f7fbf">   11</a></span>&#160;} <a class="code" href="tval-descriptions-table_8h.html#ac02171dfcc7b20ae402bedca560f7fbf">tval_desc</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="tval-descriptions-table_8h.html#a04c43560cb19daf87abe014c6dc189e1">   13</a></span>&#160;<span class="preprocessor">#define MAX_TVAL_DESCRIPTIONS 52</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="tval-descriptions-table_8h.html#acc1e58db4e8af3db0510c3468c963bd5">   14</a></span>&#160;<span class="preprocessor">#define MAX_DEBUG_COMMAND_SYMBOLS 63</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <a class="code" href="structtval__desc.html">tval_desc</a> <a class="code" href="tval-descriptions-table_8h.html#a120f95af7b475c7c769bb35f88c5ab1e">tvals</a>[<a class="code" href="tval-descriptions-table_8h.html#a04c43560cb19daf87abe014c6dc189e1">MAX_TVAL_DESCRIPTIONS</a>];</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="tval-descriptions-table_8h.html#a6d2ab7c78df1255dfbefd33cc356d62c">listsym</a>[<a class="code" href="tval-descriptions-table_8h.html#acc1e58db4e8af3db0510c3468c963bd5">MAX_DEBUG_COMMAND_SYMBOLS</a>];</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="astructtval__desc_html"><div class="ttname"><a href="structtval__desc.html">tval_desc</a></div><div class="ttdoc">ベースアイテムの大項目IDの種別名をまとめる構造体 / A structure to hold a tval and its description</div><div class="ttdef"><b>Definition:</b> tval-descriptions-table.h:8</div></div>
+<div class="ttc" id="astructtval__desc_html_a06579487fe27c34dc0b582ff1bb51e42"><div class="ttname"><a href="structtval__desc.html#a06579487fe27c34dc0b582ff1bb51e42">tval_desc::desc</a></div><div class="ttdeci">concptr desc</div><div class="ttdoc">大項目名</div><div class="ttdef"><b>Definition:</b> tval-descriptions-table.h:10</div></div>
+<div class="ttc" id="astructtval__desc_html_ad31a295095dd9e38ac19c1423387b115"><div class="ttname"><a href="structtval__desc.html#ad31a295095dd9e38ac19c1423387b115">tval_desc::tval</a></div><div class="ttdeci">int tval</div><div class="ttdoc">大項目のID</div><div class="ttdef"><b>Definition:</b> tval-descriptions-table.h:9</div></div>
+<div class="ttc" id="atval-descriptions-table_8h_html_a04c43560cb19daf87abe014c6dc189e1"><div class="ttname"><a href="tval-descriptions-table_8h.html#a04c43560cb19daf87abe014c6dc189e1">MAX_TVAL_DESCRIPTIONS</a></div><div class="ttdeci">#define MAX_TVAL_DESCRIPTIONS</div><div class="ttdef"><b>Definition:</b> tval-descriptions-table.h:13</div></div>
+<div class="ttc" id="atval-descriptions-table_8h_html_a120f95af7b475c7c769bb35f88c5ab1e"><div class="ttname"><a href="tval-descriptions-table_8h.html#a120f95af7b475c7c769bb35f88c5ab1e">tvals</a></div><div class="ttdeci">tval_desc tvals[MAX_TVAL_DESCRIPTIONS]</div><div class="ttdoc">ベースアイテムの大項目IDの種別名定義 / A list of tvals and their textual names</div><div class="ttdef"><b>Definition:</b> tval-descriptions-table.cpp:7</div></div>
+<div class="ttc" id="atval-descriptions-table_8h_html_a6d2ab7c78df1255dfbefd33cc356d62c"><div class="ttname"><a href="tval-descriptions-table_8h.html#a6d2ab7c78df1255dfbefd33cc356d62c">listsym</a></div><div class="ttdeci">const char listsym[MAX_DEBUG_COMMAND_SYMBOLS]</div><div class="ttdoc">選択処理用キーコード / Global array for converting numbers to a logical list symbol</div><div class="ttdef"><b>Definition:</b> tval-descriptions-table.cpp:23</div></div>
+<div class="ttc" id="atval-descriptions-table_8h_html_ac02171dfcc7b20ae402bedca560f7fbf"><div class="ttname"><a href="tval-descriptions-table_8h.html#ac02171dfcc7b20ae402bedca560f7fbf">tval_desc</a></div><div class="ttdeci">struct tval_desc tval_desc</div><div class="ttdoc">ベースアイテムの大項目IDの種別名をまとめる構造体 / A structure to hold a tval and its description</div></div>
+<div class="ttc" id="atval-descriptions-table_8h_html_acc1e58db4e8af3db0510c3468c963bd5"><div class="ttname"><a href="tval-descriptions-table_8h.html#acc1e58db4e8af3db0510c3468c963bd5">MAX_DEBUG_COMMAND_SYMBOLS</a></div><div class="ttdeci">#define MAX_DEBUG_COMMAND_SYMBOLS</div><div class="ttdef"><b>Definition:</b> tval-descriptions-table.h:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

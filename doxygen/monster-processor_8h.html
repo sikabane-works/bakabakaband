@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/monster/monster-processor.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f68a7f142a463f095d22e67af9193b2d.html">monster</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">monster-processor.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+monster-processor.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-processor_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2monster_2monster-processor_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2monster_2monster-processor_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2monster_2monster-processor_8h">
+<area shape="rect" title=" " alt="" coords="348,5,536,61"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="377,109,507,136"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="31,184,122,211"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="23,348,165,375"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,184,607,211"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,184,245,211"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,184,367,211"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,184,492,211"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,184,807,211"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="943,184,1090,211"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="169,266,291,293"/>
+<area shape="rect" title=" " alt="" coords="386,266,461,293"/>
+<area shape="rect" title=" " alt="" coords="485,266,567,293"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="592,259,743,300"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="767,259,920,300"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="944,259,1089,300"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1114,259,1287,300"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1311,259,1437,300"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1461,266,1580,293"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1604,266,1715,293"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-processor_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2monster_2monster-processor_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2monster_2monster-processor_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2monster_2monster-processor_8hdep">
+<area shape="rect" title=" " alt="" coords="335,5,523,61"/>
+<area shape="rect" href="cmd-mane_8cpp.html" title=" " alt="" coords="5,109,205,165"/>
+<area shape="rect" href="dungeon-processor_8cpp.html" title=" " alt="" coords="230,109,418,165"/>
+<area shape="rect" href="monster-processor_8cpp.html" title=" " alt="" coords="442,109,630,165"/>
+<area shape="rect" href="monster-status-setter_8cpp.html" title=" " alt="" coords="654,109,842,165"/>
+</map>
+</div>
+</div>
+<p><a href="monster-processor_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a98948c5a04c1b578d8dade2e4b92455d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-processor_8h.html#a98948c5a04c1b578d8dade2e4b92455d">process_monsters</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr)</td></tr>
+<tr class="memdesc:a98948c5a04c1b578d8dade2e4b92455d"><td class="mdescLeft">&#160;</td><td class="mdescRight">全モンスターのターン管理メインルーチン / Process all the "live" monsters, once per game turn.  <a href="monster-processor_8h.html#a98948c5a04c1b578d8dade2e4b92455d">[詳解]</a><br /></td></tr>
+<tr class="separator:a98948c5a04c1b578d8dade2e4b92455d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6e21e8e28cd96eb7bc76f452416588a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monster-processor_8h.html#ae6e21e8e28cd96eb7bc76f452416588a">process_monster</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx)</td></tr>
+<tr class="memdesc:ae6e21e8e28cd96eb7bc76f452416588a"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスター単体の1ターン行動処理メインルーチン / Process a monster  <a href="monster-processor_8h.html#ae6e21e8e28cd96eb7bc76f452416588a">[詳解]</a><br /></td></tr>
+<tr class="separator:ae6e21e8e28cd96eb7bc76f452416588a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ae6e21e8e28cd96eb7bc76f452416588a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6e21e8e28cd96eb7bc76f452416588a">&#9670;&nbsp;</a></span>process_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void process_monster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>m_idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスター単体の1ターン行動処理メインルーチン / Process a monster </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">m_idx</td><td>行動モンスターの参照ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<p>The monster is known to be within 100 grids of the player<br  />
+<br  />
+ In several cases, we directly update the monster lore<br  />
+<br  />
+ Note that a monster is only allowed to "reproduce" if there<br  />
+ are a limited number of "reproducing" monsters on the current<br  />
+ level. This should prevent the level from being "swamped" by<br  />
+ reproducing monsters. It also allows a large mass of mice to<br  />
+ prevent a louse from multiplying, but this is a small price to<br  />
+ pay for a simple multiplication method.<br  />
+<br  />
+ XXX Monster fear is slightly odd, in particular, monsters will<br  />
+ fixate on opening a door even if they cannot open it. Actually,<br  />
+ the same thing happens to normal monsters when they hit a door<br  />
+<br  />
+ In addition, monsters which <em>cannot</em> open or bash<br  />
+ down a door will still stand there trying to open it...<br  />
+<br  />
+ XXX Technically, need to check for monster in the way<br  />
+ combined with that monster being in a wall (or door?)<br  />
+<br  />
+ A "direction" of "5" means "pick a random direction".<br  />
+</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-processor_8h_ae6e21e8e28cd96eb7bc76f452416588a_cgraph.png" border="0" usemap="#amonster-processor_8h_ae6e21e8e28cd96eb7bc76f452416588a_cgraph" alt=""/></div>
+<map name="amonster-processor_8h_ae6e21e8e28cd96eb7bc76f452416588a_cgraph" id="amonster-processor_8h_ae6e21e8e28cd96eb7bc76f452416588a_cgraph">
+<area shape="rect" title="モンスター単体の1ターン行動処理メインルーチン / Process a monster" alt="" coords="5,1207,128,1234"/>
+<area shape="rect" href="monster-processor_8cpp.html#a150676b003b8e11b78708a5589c6cf47" title="寝ているモンスターの起床を判定する" alt="" coords="424,252,537,279"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="872,100,1049,127"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="1101,1114,1212,1140"/>
+<area shape="rect" href="monster-processor_8cpp.html#aaa5ef8ac387ca2823430b86040541c79" title="モンスターに魔法を試行させる" alt="" coords="217,1519,298,1546"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ab50ab49708e55a42a4caeb03490bdf93" title="モンスターの特殊技能メインルーチン / Creatures can cast spells, shoot missiles, and breathe." alt="" coords="415,1899,546,1926"/>
+<area shape="rect" href="class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="901,2254,1020,2280"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="868,1786,1053,1812"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="217,2279,297,2306"/>
+<area shape="rect" href="monster-list_8cpp.html#ae665a55b0d2be7b41b9d88eaf4b7dbdb" title="モンスターの変身処理" alt="" coords="407,522,555,548"/>
+<area shape="rect" href="monster-processor_8cpp.html#aeb0812430183b636b7150cc7741176e6" title="モンスターの特殊技能とターン経過処理 (移動等)/ Monster spells and movement for passaging a turn" alt="" coords="391,572,570,599"/>
+<area shape="rect" href="monster-direction_8cpp.html#a855dbe8f8c72497d1f3a8abae7ea768b" title="モンスターの移動パターンを決定する" alt="" coords="391,1258,571,1300"/>
+<area shape="rect" href="monster-processor_8cpp.html#ae19539e212a069ad5dd6fbfa050ce834" title="モンスターを分裂させるかどうかを決定する (分裂もさせる)" alt="" coords="623,1266,820,1292"/>
+<area shape="rect" href="monster-processor_8cpp.html#aa32834c87b77a8a685a92a4f21174832" title="手榴弾の爆発処理" alt="" coords="197,2330,317,2356"/>
+<area shape="rect" href="monster-processor-util_8cpp.html#a346e3743f087198ab4355cd2ca1455c5" title="monster&#45;processのための構造体群初期化処理と共通性の極めて高い処理" alt="" coords="206,2380,309,2407"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="224,1646,291,1672"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="641,962,801,988"/>
+<area shape="rect" href="monster-processor_8cpp.html#a2889ad08854505d47b074ea840d9b2f1" title="モンスターの怒り状態を判定する (怒っていたら敵に回す)" alt="" coords="427,455,534,482"/>
+<area shape="rect" href="monster-processor_8cpp.html#a4eee1b88a804d2a316077940da38bad2" title="モンスターの恐怖状態を処理する" alt="" coords="405,734,556,760"/>
+<area shape="rect" href="monster-move_8cpp.html#ad952bf31a67518ea50735f5f724b866d" title="モンスターの移動に関するメインルーチン" alt="" coords="387,1156,575,1183"/>
+<area shape="rect" href="quantum-effect_8cpp.html#af0652b47113f5354bc6d5fdc0cd2d438" title="量子生物の量子的効果を実行する" alt="" coords="176,2431,339,2458"/>
+<area shape="rect" href="monster-move_8cpp.html#a1d446df3c7f8b4b4631677cc8f7b7363" title="モンスターを喋らせたり足音を立てたりする" alt="" coords="405,919,557,946"/>
+<area shape="rect" href="monster-processor_8cpp.html#a978928e99defbbdb2b39995db022d30d" title="モンスター依存の特別な行動を取らせる" alt="" coords="663,1316,779,1343"/>
+<area shape="rect" href="monster-processor_8cpp.html#a76ab9682101953a177cbd1980fa82efb" title="超隠密処理" alt="" coords="200,386,315,412"/>
+<area shape="rect" href="monster-runaway_8cpp.html#ae8dda2c5c942f1263737b32fd4ac4f25" title="ペットや友好的なモンスターがフロアから逃げる処理を行う" alt="" coords="419,798,543,824"/>
+<area shape="rect" href="monster-update_8cpp.html#ac1745d64bae084824f93b1576f2d7185" title="モンスターのフラグを更新する" alt="" coords="184,1410,331,1452"/>
+<area shape="rect" href="monster-update_8cpp.html#aefe7ff4296972bdb8a8d169dbac1f644" title="updateフィールドを更新する" alt="" coords="190,2482,325,2508"/>
+<area shape="rect" href="monster-processor_8cpp.html#a7a235f391a99359f8492015d2afa2d11" title="召喚の親元が消滅した時、子供も消滅させる" alt="" coords="390,650,571,676"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a820cc7bebf90dc1f3c21aeb76763e9e9" title=" " alt="" coords="669,303,774,330"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="879,1316,1043,1343"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="669,556,773,583"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="915,607,1006,634"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="652,100,791,127"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="932,1012,989,1039"/>
+<area shape="rect" href="monster-info_8cpp.html#a923e88d938d90100c5b241388a5183af" title="モンスターの属性の基づいた敵対関係の有無を返す Check if two monsters are enemies" alt="" coords="433,1106,529,1132"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="918,1710,1003,1736"/>
+<area shape="rect" href="melee-spell_8cpp.html#a93c1a36ac3088c05269a475ba0a4f37a" title="モンスターが敵モンスターに特殊能力を使う処理のメインルーチン / Monster tries to &#39;cast a spell&#39; (or breath, etc) at another monster." alt="" coords="413,1519,548,1546"/>
+<area shape="rect" href="monster-info_8cpp.html#ad051474143ae51acf70bf275b30ff246" title=" " alt="" coords="683,1164,760,1191"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="632,1975,811,2002"/>
+<area shape="rect" href="mspell-attack_8cpp.html#af60bde2c5c4891d7808a7378ff183754" title=" " alt="" coords="642,2026,801,2052"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a9ac101459834f5cb207aec1a6064bf00" title=" " alt="" coords="650,1924,793,1951"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a8eb7d76556b51b2cae8ec6a6a745bc9c" title=" " alt="" coords="649,2127,793,2154"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07c1cfa71fda21f2a2799cd6b703b494" title=" " alt="" coords="634,1772,809,1799"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a23c849997d94ae1fcaccf58834a52a20" title="モンスターが使おうとする特技がプレイヤーに届くかどうかを返す" alt="" coords="648,1671,795,1698"/>
+<area shape="rect" href="mspell-lite_8cpp.html#a64a157427640c8e581eecec67c3fd8a0" title=" " alt="" coords="663,2279,779,2306"/>
+<area shape="rect" href="mspell-lite_8cpp.html#a316166f8fac75707171476e2ab246562" title=" " alt="" coords="648,1823,795,1850"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#a1ce00ce9cc05fe55f734db2b0c166cd0" title="プレイヤーの攻撃射程(マス) / Maximum range (spells, etc)" alt="" coords="1101,2051,1212,2078"/>
+<area shape="rect" href="mspell-lite_8cpp.html#a31c67bd69de673c6fa195b340ea42b13" title=" " alt="" coords="660,2228,783,2255"/>
+<area shape="rect" href="mspell-attack-util_8cpp.html#a691e27820d1e52fe127dbc89bc425246" title=" " alt="" coords="655,2076,788,2103"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="626,1620,817,1647"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-processor_8h_ae6e21e8e28cd96eb7bc76f452416588a_icgraph.png" border="0" usemap="#amonster-processor_8h_ae6e21e8e28cd96eb7bc76f452416588a_icgraph" alt=""/></div>
+<map name="amonster-processor_8h_ae6e21e8e28cd96eb7bc76f452416588a_icgraph" id="amonster-processor_8h_ae6e21e8e28cd96eb7bc76f452416588a_icgraph">
+<area shape="rect" title="モンスター単体の1ターン行動処理メインルーチン / Process a monster" alt="" coords="616,31,739,57"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a682fbdb6c220cc503b8c072b69548f5b" title="モンスターの時間停止処理" alt="" coords="409,5,561,32"/>
+<area shape="rect" href="monster-processor_8cpp.html#a5a5170bbc427f3c8dfad442f40e2a11b" title="フロア内のモンスターについてターン終了時の処理を繰り返す" alt="" coords="401,56,568,83"/>
+<area shape="rect" href="mspell-floor_8cpp.html#a807896d22e12e7f05f7fb0991c8c01f2" title="RF6_WORLDの処理。時を止める。 /" alt="" coords="219,5,353,32"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a6df5fae2d3026a687f76997a8b41d0e7" title=" " alt="" coords="5,5,171,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a98948c5a04c1b578d8dade2e4b92455d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98948c5a04c1b578d8dade2e4b92455d">&#9670;&nbsp;</a></span>process_monsters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void process_monsters </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>全モンスターのターン管理メインルーチン / Process all the "live" monsters, once per game turn. </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<p>During each game current game turn, we scan through the list of all the "live" monsters,<br  />
+ (backwards, so we can excise any "freshly dead" monsters), energizing each<br  />
+ monster, and allowing fully energized monsters to move, attack, pass, etc.<br  />
+<br  />
+ Note that monsters can never move in the monster array (except when the<br  />
+ "compact_monsters()" function is called by "dungeon()" or "save_player()").<br  />
+<br  />
+ This function is responsible for at least half of the processor time<br  />
+ on a normal system with a "normal" amount of monsters and a player doing<br  />
+ normal things.<br  />
+<br  />
+ When the player is resting, virtually 90% of the processor time is spent<br  />
+ in this function, and its children, "process_monster()" and "make_move()".<br  />
+<br  />
+ Most of the rest of the time is spent in "update_view()" and "lite_spot()",<br  />
+ especially when the player is running.<br  />
+<br  />
+ Note the special "MFLAG_BORN" flag, which allows us to ignore "fresh"<br  />
+ monsters while they are still being "born". A monster is "fresh" only<br  />
+ during the game turn in which it is created, and we use the "hack_m_idx" to<br  />
+ determine if the monster is yet to be processed during the game turn.<br  />
+<br  />
+ Note the special "MFLAG_PREVENT_MAGIC" flag, which allows the player to get one<br  />
+ move before any "nasty" monsters get to use their spell attacks.<br  />
+<br  />
+ Note that when the "knowledge" about the currently tracked monster<br  />
+ changes (flags, attacks, spells), we induce a redraw of the monster<br  />
+ recall window.<br  />
+</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-processor_8h_a98948c5a04c1b578d8dade2e4b92455d_cgraph.png" border="0" usemap="#amonster-processor_8h_a98948c5a04c1b578d8dade2e4b92455d_cgraph" alt=""/></div>
+<map name="amonster-processor_8h_a98948c5a04c1b578d8dade2e4b92455d_cgraph" id="amonster-processor_8h_a98948c5a04c1b578d8dade2e4b92455d_cgraph">
+<area shape="rect" title="全モンスターのターン管理メインルーチン / Process all the &quot;live&quot; monsters, once per game turn." alt="" coords="5,272,135,299"/>
+<area shape="rect" href="monster-processor-util_8cpp.html#a10bef904d0d03f30ebbfeb05602e0c67" title="old_race_flags_ptr の初期化" alt="" coords="201,69,331,96"/>
+<area shape="rect" href="monster-processor-util_8cpp.html#a9a30ed7127f8072b86b65f2c2f7da85a" title="古いモンスター情報の保存" alt="" coords="197,247,335,273"/>
+<area shape="rect" href="monster-processor_8cpp.html#a5a5170bbc427f3c8dfad442f40e2a11b" title="フロア内のモンスターについてターン終了時の処理を繰り返す" alt="" coords="183,297,349,324"/>
+<area shape="rect" href="monster-update_8cpp.html#a1376ae88b92754b838011027a5547a16" title="モンスターフラグの更新に基づき、モンスター表示を更新する" alt="" coords="190,348,342,375"/>
+<area shape="rect" href="class_flag_group.html#a7cb664ab9b738ea100bca1e9e0ce5521" title="フラグ集合に含まれるフラグをすべてOFFにする" alt="" coords="423,5,541,32"/>
+<area shape="rect" href="monster-processor-util_8cpp.html#a42dc0f64a48a1fbc8283d78916057351" title="モンスターの加速値を決定する" alt="" coords="404,107,560,133"/>
+<area shape="rect" href="monster-processor_8cpp.html#a3ba7a048819736435a255d41a8769b6e" title="後続のモンスター処理が必要かどうか判定する (要調査)" alt="" coords="397,360,567,387"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="1085,1060,1196,1087"/>
+<area shape="rect" href="class_flag_group.html#a0010b71915608f4dac8f57f6e1c9ec4b" title="指定したフラグをOFFにする" alt="" coords="654,461,773,488"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="423,56,541,83"/>
+<area shape="rect" href="monster-processor_8cpp.html#ae6e21e8e28cd96eb7bc76f452416588a" title="モンスター単体の1ターン行動処理メインルーチン / Process a monster" alt="" coords="421,1009,543,1036"/>
+<area shape="rect" href="monster-move_8cpp.html#add899c0f49d2829497cd1c0b4082a06d" title="モンスターの目標地点をリセットする / Reset the target of counter attack" alt="" coords="1095,1575,1186,1601"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="633,56,793,83"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="631,107,796,133"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a820cc7bebf90dc1f3c21aeb76763e9e9" title=" " alt="" coords="896,284,1001,311"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="920,1060,977,1087"/>
+<area shape="rect" href="cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="879,799,1019,825"/>
+<area shape="rect" href="monster-processor_8cpp.html#a150676b003b8e11b78708a5589c6cf47" title="寝ているモンスターの起床を判定する" alt="" coords="657,309,770,336"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="860,424,1037,451"/>
+<area shape="rect" href="monster-processor_8cpp.html#aaa5ef8ac387ca2823430b86040541c79" title="モンスターに魔法を試行させる" alt="" coords="673,1440,754,1467"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ab50ab49708e55a42a4caeb03490bdf93" title="モンスターの特殊技能メインルーチン / Creatures can cast spells, shoot missiles, and breathe." alt="" coords="883,1415,1014,1441"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="673,1541,753,1568"/>
+<area shape="rect" href="monster-list_8cpp.html#ae665a55b0d2be7b41b9d88eaf4b7dbdb" title="モンスターの変身処理" alt="" coords="639,1592,787,1619"/>
+<area shape="rect" href="monster-processor_8cpp.html#aeb0812430183b636b7150cc7741176e6" title="モンスターの特殊技能とターン経過処理 (移動等)/ Monster spells and movement for passaging a turn" alt="" coords="624,1643,803,1669"/>
+<area shape="rect" href="monster-direction_8cpp.html#a855dbe8f8c72497d1f3a8abae7ea768b" title="モンスターの移動パターンを決定する" alt="" coords="623,1694,803,1735"/>
+<area shape="rect" href="monster-processor_8cpp.html#ae19539e212a069ad5dd6fbfa050ce834" title="モンスターを分裂させるかどうかを決定する (分裂もさせる)" alt="" coords="615,1187,812,1213"/>
+<area shape="rect" href="monster-processor_8cpp.html#aa32834c87b77a8a685a92a4f21174832" title="手榴弾の爆発処理" alt="" coords="653,664,773,691"/>
+<area shape="rect" href="monster-processor-util_8cpp.html#a346e3743f087198ab4355cd2ca1455c5" title="monster&#45;processのための構造体群初期化処理と共通性の極めて高い処理" alt="" coords="662,715,765,741"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="680,765,747,792"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="869,1263,1029,1289"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="621,816,806,843"/>
+<area shape="rect" href="monster-processor_8cpp.html#a2889ad08854505d47b074ea840d9b2f1" title="モンスターの怒り状態を判定する (怒っていたら敵に回す)" alt="" coords="660,613,767,640"/>
+<area shape="rect" href="monster-processor_8cpp.html#a4eee1b88a804d2a316077940da38bad2" title="モンスターの恐怖状態を処理する" alt="" coords="638,1339,789,1365"/>
+<area shape="rect" href="monster-move_8cpp.html#ad952bf31a67518ea50735f5f724b866d" title="モンスターの移動に関するメインルーチン" alt="" coords="619,1237,807,1264"/>
+<area shape="rect" href="quantum-effect_8cpp.html#af0652b47113f5354bc6d5fdc0cd2d438" title="量子生物の量子的効果を実行する" alt="" coords="632,867,795,893"/>
+<area shape="rect" href="monster-move_8cpp.html#a1d446df3c7f8b4b4631677cc8f7b7363" title="モンスターを喋らせたり足音を立てたりする" alt="" coords="637,984,789,1011"/>
+<area shape="rect" href="monster-processor_8cpp.html#a978928e99defbbdb2b39995db022d30d" title="モンスター依存の特別な行動を取らせる" alt="" coords="655,1035,771,1061"/>
+<area shape="rect" href="monster-processor_8cpp.html#a76ab9682101953a177cbd1980fa82efb" title="超隠密処理" alt="" coords="656,259,771,285"/>
+<area shape="rect" href="monster-runaway_8cpp.html#ae8dda2c5c942f1263737b32fd4ac4f25" title="ペットや友好的なモンスターがフロアから逃げる処理を行う" alt="" coords="651,1085,775,1112"/>
+<area shape="rect" href="monster-update_8cpp.html#ac1745d64bae084824f93b1576f2d7185" title="モンスターのフラグを更新する" alt="" coords="640,918,787,959"/>
+<area shape="rect" href="monster-update_8cpp.html#aefe7ff4296972bdb8a8d169dbac1f644" title="updateフィールドを更新する" alt="" coords="646,1491,781,1517"/>
+<area shape="rect" href="monster-processor_8cpp.html#a7a235f391a99359f8492015d2afa2d11" title="召喚の親元が消滅した時、子供も消滅させる" alt="" coords="623,1136,804,1163"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="monster-processor_8h_a98948c5a04c1b578d8dade2e4b92455d_icgraph.png" border="0" usemap="#amonster-processor_8h_a98948c5a04c1b578d8dade2e4b92455d_icgraph" alt=""/></div>
+<map name="amonster-processor_8h_a98948c5a04c1b578d8dade2e4b92455d_icgraph" id="amonster-processor_8h_a98948c5a04c1b578d8dade2e4b92455d_icgraph">
+<area shape="rect" title="全モンスターのターン管理メインルーチン / Process all the &quot;live&quot; monsters, once per game turn." alt="" coords="495,5,624,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="323,5,447,32"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="139,5,275,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="5,5,91,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時55分15秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

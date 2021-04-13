@@ -1,0 +1,1885 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/artifact/random-art-resistance.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d3b18051860347e70f1c3b4c6b45900c.html">artifact</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">random-art-resistance.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="random-art-resistance_8h_source.html">artifact/random-art-resistance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="random-art-bias-types_8h_source.html">artifact/random-art-bias-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tr-types_8h_source.html">object-enchant/tr-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+random-art-resistance.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2artifact_2random-art-resistance_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2artifact_2random-art-resistance_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2artifact_2random-art-resistance_8cpp">
+<area shape="rect" title=" " alt="" coords="586,5,774,61"/>
+<area shape="rect" href="random-art-resistance_8h.html" title=" " alt="" coords="295,109,422,151"/>
+<area shape="rect" href="random-art-bias-types_8h.html" title=" " alt="" coords="446,109,573,151"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="597,117,763,143"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="788,109,921,151"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="946,117,1105,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="466,199,595,225"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="5,273,96,300"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="120,273,211,300"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="235,273,333,300"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="357,273,456,300"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="481,273,581,300"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="605,273,779,300"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="804,273,945,300"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,273,1116,300"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="791,199,918,225"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a4b7a56b5661c6565260e84fb9b4ec963"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a4b7a56b5661c6565260e84fb9b4ec963">random_art_resistance_acid</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a4b7a56b5661c6565260e84fb9b4ec963"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80671c02108553671fe382575e32574e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a80671c02108553671fe382575e32574e">random_art_immunity_acid</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a80671c02108553671fe382575e32574e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b0e064baf6209f371f6e411ccc05d14"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a4b0e064baf6209f371f6e411ccc05d14">random_art_resistance_elec</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a4b0e064baf6209f371f6e411ccc05d14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51d82e4b802f26917c9416b19fa76683"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a51d82e4b802f26917c9416b19fa76683">random_art_aura_elec</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a51d82e4b802f26917c9416b19fa76683"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0207c65a6397a8d70b84b3809f0d2d3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#ae0207c65a6397a8d70b84b3809f0d2d3">random_art_immunity_elec</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:ae0207c65a6397a8d70b84b3809f0d2d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26d93b4ea338c3671b62e564a6378c2d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a26d93b4ea338c3671b62e564a6378c2d">random_art_resistance_fire</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a26d93b4ea338c3671b62e564a6378c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a243e50ae34be5c67be1e2a8549aaf32d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a243e50ae34be5c67be1e2a8549aaf32d">random_art_aura_fire</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a243e50ae34be5c67be1e2a8549aaf32d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4eb05a13588082c4c373fed86abd96ff"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a4eb05a13588082c4c373fed86abd96ff">random_art_immunity_fire</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a4eb05a13588082c4c373fed86abd96ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af33b4a8c18c8b465db3f925c10ead11b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#af33b4a8c18c8b465db3f925c10ead11b">random_art_resistance_cold</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:af33b4a8c18c8b465db3f925c10ead11b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41a86a141d6f35c245d6a26d17d25269"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a41a86a141d6f35c245d6a26d17d25269">random_art_aura_cold</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a41a86a141d6f35c245d6a26d17d25269"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7048c13e74b2512eac6d8dd11a0fef04"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a7048c13e74b2512eac6d8dd11a0fef04">random_art_immunity_cold</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a7048c13e74b2512eac6d8dd11a0fef04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4aa87b7e5c047715084a7ca39d6570b3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a4aa87b7e5c047715084a7ca39d6570b3">random_art_resistance_pois</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a4aa87b7e5c047715084a7ca39d6570b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dac09a9a0f813537ccb15680a8d5dc5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a4dac09a9a0f813537ccb15680a8d5dc5">random_art_resistance_fear</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a4dac09a9a0f813537ccb15680a8d5dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1508eae9e808d3a21a36c97ec959f44a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a1508eae9e808d3a21a36c97ec959f44a">random_art_resistance_no_magic</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a1508eae9e808d3a21a36c97ec959f44a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d3e364b654a5f68344895782befe263"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a3d3e364b654a5f68344895782befe263">random_art_resistance_nether</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a3d3e364b654a5f68344895782befe263"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aeb8d1f9b24ae39b26981eb30cf85d7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a7aeb8d1f9b24ae39b26981eb30cf85d7">random_art_resistance_dark</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a7aeb8d1f9b24ae39b26981eb30cf85d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac735d6e3d92b1d4c3470daee751d9aab"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#ac735d6e3d92b1d4c3470daee751d9aab">random_art_resistance_chaos</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:ac735d6e3d92b1d4c3470daee751d9aab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1e852cb8d078b96ea0ca2a9da8f5d67"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#af1e852cb8d078b96ea0ca2a9da8f5d67">random_art_resistance_confusion</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:af1e852cb8d078b96ea0ca2a9da8f5d67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab717bb96542727899e2955fd55334065"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#ab717bb96542727899e2955fd55334065">random_art_resistance_disenchant</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:ab717bb96542727899e2955fd55334065"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad67ec0c68f78412e455ad91b8e958b55"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55">switch_random_art_resistance</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:ad67ec0c68f78412e455ad91b8e958b55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a522e9f435c558f9fc46493362afb8742"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742">set_weird_bias_acid</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a522e9f435c558f9fc46493362afb8742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6e0fac21500eca671880da5a499be90"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90">set_weird_bias_elec</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:af6e0fac21500eca671880da5a499be90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05b222f54f82a9530575b4e3cc26c7f8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8">set_weird_bias_cold</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a05b222f54f82a9530575b4e3cc26c7f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3364bc6d447111ee254d0acad48e1c8a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a">set_weird_bias_fire</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a3364bc6d447111ee254d0acad48e1c8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a131bc7308805bc74d98efa65fbb2564a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a131bc7308805bc74d98efa65fbb2564a">set_bias_pois</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a131bc7308805bc74d98efa65fbb2564a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf33eca83d53cc6aa45bff3caf63faef"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef">set_weird_bias_aura_elec</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:acf33eca83d53cc6aa45bff3caf63faef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e6f431cca3efc399ffd23b451d52b36"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36">set_weird_bias_aura_fire</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a0e6f431cca3efc399ffd23b451d52b36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7421b0084a809f06e997de27acd0fc50"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50">set_weird_bias_reflection</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a7421b0084a809f06e997de27acd0fc50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52f26f294880b69eaf0addc1dcc3d3ca"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca">set_weird_bias_aura_cold</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="separator:a52f26f294880b69eaf0addc1dcc3d3ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a896a70aadf2fc624f8a77db88869d5b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6">random_resistance</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:a896a70aadf2fc624f8a77db88869d5b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact.  <a href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6">[詳解]</a><br /></td></tr>
+<tr class="separator:a896a70aadf2fc624f8a77db88869d5b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a41a86a141d6f35c245d6a26d17d25269"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41a86a141d6f35c245d6a26d17d25269">&#9670;&nbsp;</a></span>random_art_aura_cold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_aura_cold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a41a86a141d6f35c245d6a26d17d25269_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a41a86a141d6f35c245d6a26d17d25269_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a41a86a141d6f35c245d6a26d17d25269_icgraph" id="arandom-art-resistance_8cpp_a41a86a141d6f35c245d6a26d17d25269_icgraph">
+<area shape="rect" title=" " alt="" coords="651,208,801,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a51d82e4b802f26917c9416b19fa76683"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51d82e4b802f26917c9416b19fa76683">&#9670;&nbsp;</a></span>random_art_aura_elec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_aura_elec </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a51d82e4b802f26917c9416b19fa76683_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a51d82e4b802f26917c9416b19fa76683_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a51d82e4b802f26917c9416b19fa76683_icgraph" id="arandom-art-resistance_8cpp_a51d82e4b802f26917c9416b19fa76683_icgraph">
+<area shape="rect" title=" " alt="" coords="651,208,801,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a243e50ae34be5c67be1e2a8549aaf32d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a243e50ae34be5c67be1e2a8549aaf32d">&#9670;&nbsp;</a></span>random_art_aura_fire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_aura_fire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a243e50ae34be5c67be1e2a8549aaf32d_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a243e50ae34be5c67be1e2a8549aaf32d_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a243e50ae34be5c67be1e2a8549aaf32d_icgraph" id="arandom-art-resistance_8cpp_a243e50ae34be5c67be1e2a8549aaf32d_icgraph">
+<area shape="rect" title=" " alt="" coords="651,208,793,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a80671c02108553671fe382575e32574e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80671c02108553671fe382575e32574e">&#9670;&nbsp;</a></span>random_art_immunity_acid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_immunity_acid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a80671c02108553671fe382575e32574e_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a80671c02108553671fe382575e32574e_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a80671c02108553671fe382575e32574e_icgraph" id="arandom-art-resistance_8cpp_a80671c02108553671fe382575e32574e_icgraph">
+<area shape="rect" title=" " alt="" coords="651,208,829,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7048c13e74b2512eac6d8dd11a0fef04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7048c13e74b2512eac6d8dd11a0fef04">&#9670;&nbsp;</a></span>random_art_immunity_cold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_immunity_cold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a7048c13e74b2512eac6d8dd11a0fef04_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a7048c13e74b2512eac6d8dd11a0fef04_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a7048c13e74b2512eac6d8dd11a0fef04_icgraph" id="arandom-art-resistance_8cpp_a7048c13e74b2512eac6d8dd11a0fef04_icgraph">
+<area shape="rect" title=" " alt="" coords="651,208,829,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae0207c65a6397a8d70b84b3809f0d2d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0207c65a6397a8d70b84b3809f0d2d3">&#9670;&nbsp;</a></span>random_art_immunity_elec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_immunity_elec </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_ae0207c65a6397a8d70b84b3809f0d2d3_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_ae0207c65a6397a8d70b84b3809f0d2d3_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_ae0207c65a6397a8d70b84b3809f0d2d3_icgraph" id="arandom-art-resistance_8cpp_ae0207c65a6397a8d70b84b3809f0d2d3_icgraph">
+<area shape="rect" title=" " alt="" coords="651,208,829,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4eb05a13588082c4c373fed86abd96ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4eb05a13588082c4c373fed86abd96ff">&#9670;&nbsp;</a></span>random_art_immunity_fire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_immunity_fire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a4eb05a13588082c4c373fed86abd96ff_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a4eb05a13588082c4c373fed86abd96ff_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a4eb05a13588082c4c373fed86abd96ff_icgraph" id="arandom-art-resistance_8cpp_a4eb05a13588082c4c373fed86abd96ff_icgraph">
+<area shape="rect" title=" " alt="" coords="651,208,821,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4b7a56b5661c6565260e84fb9b4ec963"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b7a56b5661c6565260e84fb9b4ec963">&#9670;&nbsp;</a></span>random_art_resistance_acid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_resistance_acid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a4b7a56b5661c6565260e84fb9b4ec963_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a4b7a56b5661c6565260e84fb9b4ec963_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a4b7a56b5661c6565260e84fb9b4ec963_icgraph" id="arandom-art-resistance_8cpp_a4b7a56b5661c6565260e84fb9b4ec963_icgraph">
+<area shape="rect" title=" " alt="" coords="651,208,836,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac735d6e3d92b1d4c3470daee751d9aab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac735d6e3d92b1d4c3470daee751d9aab">&#9670;&nbsp;</a></span>random_art_resistance_chaos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_resistance_chaos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_ac735d6e3d92b1d4c3470daee751d9aab_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_ac735d6e3d92b1d4c3470daee751d9aab_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_ac735d6e3d92b1d4c3470daee751d9aab_icgraph" id="arandom-art-resistance_8cpp_ac735d6e3d92b1d4c3470daee751d9aab_icgraph">
+<area shape="rect" title=" " alt="" coords="651,201,805,242"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af33b4a8c18c8b465db3f925c10ead11b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af33b4a8c18c8b465db3f925c10ead11b">&#9670;&nbsp;</a></span>random_art_resistance_cold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_resistance_cold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_af33b4a8c18c8b465db3f925c10ead11b_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_af33b4a8c18c8b465db3f925c10ead11b_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_af33b4a8c18c8b465db3f925c10ead11b_icgraph" id="arandom-art-resistance_8cpp_af33b4a8c18c8b465db3f925c10ead11b_icgraph">
+<area shape="rect" title=" " alt="" coords="651,208,836,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af1e852cb8d078b96ea0ca2a9da8f5d67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1e852cb8d078b96ea0ca2a9da8f5d67">&#9670;&nbsp;</a></span>random_art_resistance_confusion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_resistance_confusion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_af1e852cb8d078b96ea0ca2a9da8f5d67_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_af1e852cb8d078b96ea0ca2a9da8f5d67_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_af1e852cb8d078b96ea0ca2a9da8f5d67_icgraph" id="arandom-art-resistance_8cpp_af1e852cb8d078b96ea0ca2a9da8f5d67_icgraph">
+<area shape="rect" title=" " alt="" coords="651,201,805,242"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7aeb8d1f9b24ae39b26981eb30cf85d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7aeb8d1f9b24ae39b26981eb30cf85d7">&#9670;&nbsp;</a></span>random_art_resistance_dark()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_resistance_dark </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a7aeb8d1f9b24ae39b26981eb30cf85d7_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a7aeb8d1f9b24ae39b26981eb30cf85d7_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a7aeb8d1f9b24ae39b26981eb30cf85d7_icgraph" id="arandom-art-resistance_8cpp_a7aeb8d1f9b24ae39b26981eb30cf85d7_icgraph">
+<area shape="rect" title=" " alt="" coords="651,208,837,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab717bb96542727899e2955fd55334065"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab717bb96542727899e2955fd55334065">&#9670;&nbsp;</a></span>random_art_resistance_disenchant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_resistance_disenchant </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_ab717bb96542727899e2955fd55334065_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_ab717bb96542727899e2955fd55334065_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_ab717bb96542727899e2955fd55334065_icgraph" id="arandom-art-resistance_8cpp_ab717bb96542727899e2955fd55334065_icgraph">
+<area shape="rect" title=" " alt="" coords="651,201,805,242"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4b0e064baf6209f371f6e411ccc05d14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b0e064baf6209f371f6e411ccc05d14">&#9670;&nbsp;</a></span>random_art_resistance_elec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_resistance_elec </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a4b0e064baf6209f371f6e411ccc05d14_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a4b0e064baf6209f371f6e411ccc05d14_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a4b0e064baf6209f371f6e411ccc05d14_icgraph" id="arandom-art-resistance_8cpp_a4b0e064baf6209f371f6e411ccc05d14_icgraph">
+<area shape="rect" title=" " alt="" coords="651,208,836,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4dac09a9a0f813537ccb15680a8d5dc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dac09a9a0f813537ccb15680a8d5dc5">&#9670;&nbsp;</a></span>random_art_resistance_fear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_resistance_fear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a4dac09a9a0f813537ccb15680a8d5dc5_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a4dac09a9a0f813537ccb15680a8d5dc5_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a4dac09a9a0f813537ccb15680a8d5dc5_icgraph" id="arandom-art-resistance_8cpp_a4dac09a9a0f813537ccb15680a8d5dc5_icgraph">
+<area shape="rect" title=" " alt="" coords="651,208,833,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a26d93b4ea338c3671b62e564a6378c2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26d93b4ea338c3671b62e564a6378c2d">&#9670;&nbsp;</a></span>random_art_resistance_fire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_resistance_fire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a26d93b4ea338c3671b62e564a6378c2d_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a26d93b4ea338c3671b62e564a6378c2d_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a26d93b4ea338c3671b62e564a6378c2d_icgraph" id="arandom-art-resistance_8cpp_a26d93b4ea338c3671b62e564a6378c2d_icgraph">
+<area shape="rect" title=" " alt="" coords="651,208,829,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3d3e364b654a5f68344895782befe263"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d3e364b654a5f68344895782befe263">&#9670;&nbsp;</a></span>random_art_resistance_nether()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_resistance_nether </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a3d3e364b654a5f68344895782befe263_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a3d3e364b654a5f68344895782befe263_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a3d3e364b654a5f68344895782befe263_icgraph" id="arandom-art-resistance_8cpp_a3d3e364b654a5f68344895782befe263_icgraph">
+<area shape="rect" title=" " alt="" coords="651,201,805,242"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1508eae9e808d3a21a36c97ec959f44a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1508eae9e808d3a21a36c97ec959f44a">&#9670;&nbsp;</a></span>random_art_resistance_no_magic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_resistance_no_magic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a1508eae9e808d3a21a36c97ec959f44a_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a1508eae9e808d3a21a36c97ec959f44a_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a1508eae9e808d3a21a36c97ec959f44a_icgraph" id="arandom-art-resistance_8cpp_a1508eae9e808d3a21a36c97ec959f44a_icgraph">
+<area shape="rect" title=" " alt="" coords="651,201,805,242"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4aa87b7e5c047715084a7ca39d6570b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4aa87b7e5c047715084a7ca39d6570b3">&#9670;&nbsp;</a></span>random_art_resistance_pois()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> random_art_resistance_pois </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a4aa87b7e5c047715084a7ca39d6570b3_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a4aa87b7e5c047715084a7ca39d6570b3_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a4aa87b7e5c047715084a7ca39d6570b3_icgraph" id="arandom-art-resistance_8cpp_a4aa87b7e5c047715084a7ca39d6570b3_icgraph">
+<area shape="rect" title=" " alt="" coords="651,208,836,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,208,603,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,208,356,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="39,5,142,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="21,56,160,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="5,157,176,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="9,208,173,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="21,259,160,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="21,309,160,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="25,360,157,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="7,411,174,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a896a70aadf2fc624f8a77db88869d5b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a896a70aadf2fc624f8a77db88869d5b6">&#9670;&nbsp;</a></span>random_resistance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void random_resistance </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact. </p>
+<p>優先的に付加される耐性がランダムアーティファクトバイアスに依存して存在する。 原則的候補は火炎、冷気、電撃、酸（以上免疫の可能性もあり）、 毒、閃光、暗黒、破片、轟音、盲目、混乱、地獄、カオス、劣化、恐怖、火オーラ、冷気オーラ、電撃オーラ、反射。 戦士系バイアスのみ反魔もつく。 </p><dl class="section attention"><dt>注意</dt><dd>オブジェクトのtval、svalに依存したハードコーディング処理がある。 </dd></dl>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>対象のオブジェクト構造体ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a896a70aadf2fc624f8a77db88869d5b6_cgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a896a70aadf2fc624f8a77db88869d5b6_cgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a896a70aadf2fc624f8a77db88869d5b6_cgraph" id="arandom-art-resistance_8cpp_a896a70aadf2fc624f8a77db88869d5b6_cgraph">
+<area shape="rect" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="5,249,137,276"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a131bc7308805bc74d98efa65fbb2564a" title=" " alt="" coords="233,21,336,48"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="215,72,354,99"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="199,123,370,149"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="199,173,370,200"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="203,224,367,251"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="215,275,354,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="215,325,354,352"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="219,376,351,403"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="201,427,368,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="185,477,384,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a41a86a141d6f35c245d6a26d17d25269" title=" " alt="" coords="450,5,601,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a51d82e4b802f26917c9416b19fa76683" title=" " alt="" coords="450,56,601,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a243e50ae34be5c67be1e2a8549aaf32d" title=" " alt="" coords="454,107,597,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a80671c02108553671fe382575e32574e" title=" " alt="" coords="436,157,615,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7048c13e74b2512eac6d8dd11a0fef04" title=" " alt="" coords="436,208,615,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ae0207c65a6397a8d70b84b3809f0d2d3" title=" " alt="" coords="436,259,615,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4eb05a13588082c4c373fed86abd96ff" title=" " alt="" coords="440,309,611,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b7a56b5661c6565260e84fb9b4ec963" title=" " alt="" coords="433,360,618,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ac735d6e3d92b1d4c3470daee751d9aab" title=" " alt="" coords="448,411,603,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af33b4a8c18c8b465db3f925c10ead11b" title=" " alt="" coords="433,477,618,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af1e852cb8d078b96ea0ca2a9da8f5d67" title=" " alt="" coords="448,529,603,570"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7aeb8d1f9b24ae39b26981eb30cf85d7" title=" " alt="" coords="432,595,619,621"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ab717bb96542727899e2955fd55334065" title=" " alt="" coords="448,646,603,687"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b0e064baf6209f371f6e411ccc05d14" title=" " alt="" coords="433,712,618,739"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4dac09a9a0f813537ccb15680a8d5dc5" title=" " alt="" coords="434,763,617,789"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a26d93b4ea338c3671b62e564a6378c2d" title=" " alt="" coords="436,813,615,840"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3d3e364b654a5f68344895782befe263" title=" " alt="" coords="448,865,603,906"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a1508eae9e808d3a21a36c97ec959f44a" title=" " alt="" coords="448,930,603,971"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4aa87b7e5c047715084a7ca39d6570b3" title=" " alt="" coords="433,996,618,1023"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a896a70aadf2fc624f8a77db88869d5b6_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a896a70aadf2fc624f8a77db88869d5b6_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a896a70aadf2fc624f8a77db88869d5b6_icgraph" id="arandom-art-resistance_8cpp_a896a70aadf2fc624f8a77db88869d5b6_icgraph">
+<area shape="rect" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="647,335,779,361"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="462,132,565,159"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="444,183,583,209"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="428,233,599,260"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="428,284,599,311"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="431,335,595,361"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="444,385,583,412"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="444,436,583,463"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="447,487,579,513"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="430,537,597,564"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="216,132,380,159"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="5,5,168,32"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="19,56,154,83"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="17,107,156,133"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="13,157,160,184"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="37,208,136,235"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#af1e72e1ae1887d663ecbb199ceceda40" title="アイテムの質を選択して再生成する / Apply magic to an item or turn it into an artifact." alt="" coords="33,259,141,285"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a131bc7308805bc74d98efa65fbb2564a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a131bc7308805bc74d98efa65fbb2564a">&#9670;&nbsp;</a></span>set_bias_pois()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_bias_pois </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a131bc7308805bc74d98efa65fbb2564a_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a131bc7308805bc74d98efa65fbb2564a_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a131bc7308805bc74d98efa65fbb2564a_icgraph" id="arandom-art-resistance_8cpp_a131bc7308805bc74d98efa65fbb2564a_icgraph">
+<area shape="rect" title=" " alt="" coords="616,208,719,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="436,208,568,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="251,5,354,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="233,56,372,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="217,107,388,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="217,157,388,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="221,208,385,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="233,259,372,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="233,309,372,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="237,360,369,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="219,411,386,437"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="5,5,169,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a522e9f435c558f9fc46493362afb8742"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a522e9f435c558f9fc46493362afb8742">&#9670;&nbsp;</a></span>set_weird_bias_acid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_weird_bias_acid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a522e9f435c558f9fc46493362afb8742_cgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a522e9f435c558f9fc46493362afb8742_cgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a522e9f435c558f9fc46493362afb8742_cgraph" id="arandom-art-resistance_8cpp_a522e9f435c558f9fc46493362afb8742_cgraph">
+<area shape="rect" title=" " alt="" coords="5,275,144,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="192,275,324,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a131bc7308805bc74d98efa65fbb2564a" title=" " alt="" coords="420,72,523,99"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="386,123,557,149"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="386,173,557,200"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="389,224,553,251"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="402,275,541,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="402,325,541,352"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="405,376,537,403"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="388,427,555,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="372,477,571,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a41a86a141d6f35c245d6a26d17d25269" title=" " alt="" coords="637,5,787,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a51d82e4b802f26917c9416b19fa76683" title=" " alt="" coords="637,56,787,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a243e50ae34be5c67be1e2a8549aaf32d" title=" " alt="" coords="641,107,783,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a80671c02108553671fe382575e32574e" title=" " alt="" coords="623,157,801,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7048c13e74b2512eac6d8dd11a0fef04" title=" " alt="" coords="623,208,801,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ae0207c65a6397a8d70b84b3809f0d2d3" title=" " alt="" coords="623,259,801,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4eb05a13588082c4c373fed86abd96ff" title=" " alt="" coords="627,309,797,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b7a56b5661c6565260e84fb9b4ec963" title=" " alt="" coords="619,360,805,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ac735d6e3d92b1d4c3470daee751d9aab" title=" " alt="" coords="635,411,789,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af33b4a8c18c8b465db3f925c10ead11b" title=" " alt="" coords="619,477,805,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af1e852cb8d078b96ea0ca2a9da8f5d67" title=" " alt="" coords="635,529,789,570"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7aeb8d1f9b24ae39b26981eb30cf85d7" title=" " alt="" coords="619,595,805,621"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ab717bb96542727899e2955fd55334065" title=" " alt="" coords="635,646,789,687"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b0e064baf6209f371f6e411ccc05d14" title=" " alt="" coords="619,712,805,739"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4dac09a9a0f813537ccb15680a8d5dc5" title=" " alt="" coords="621,763,803,789"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a26d93b4ea338c3671b62e564a6378c2d" title=" " alt="" coords="623,813,801,840"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3d3e364b654a5f68344895782befe263" title=" " alt="" coords="635,865,789,906"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a1508eae9e808d3a21a36c97ec959f44a" title=" " alt="" coords="635,930,789,971"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4aa87b7e5c047715084a7ca39d6570b3" title=" " alt="" coords="619,996,805,1023"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a522e9f435c558f9fc46493362afb8742_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a522e9f435c558f9fc46493362afb8742_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a522e9f435c558f9fc46493362afb8742_icgraph" id="arandom-art-resistance_8cpp_a522e9f435c558f9fc46493362afb8742_icgraph">
+<area shape="rect" title=" " alt="" coords="616,208,755,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="436,208,568,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="251,5,354,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="217,56,388,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="217,107,388,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="221,157,385,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="233,208,372,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="233,259,372,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="237,309,369,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="219,360,386,387"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="5,5,169,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a52f26f294880b69eaf0addc1dcc3d3ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52f26f294880b69eaf0addc1dcc3d3ca">&#9670;&nbsp;</a></span>set_weird_bias_aura_cold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_weird_bias_aura_cold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a52f26f294880b69eaf0addc1dcc3d3ca_cgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a52f26f294880b69eaf0addc1dcc3d3ca_cgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a52f26f294880b69eaf0addc1dcc3d3ca_cgraph" id="arandom-art-resistance_8cpp_a52f26f294880b69eaf0addc1dcc3d3ca_cgraph">
+<area shape="rect" title=" " alt="" coords="5,275,176,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,275,356,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a131bc7308805bc74d98efa65fbb2564a" title=" " alt="" coords="452,72,555,99"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="434,123,573,149"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="418,173,589,200"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="421,224,585,251"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="434,275,573,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="434,325,573,352"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="437,376,569,403"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="420,427,587,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,477,603,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a41a86a141d6f35c245d6a26d17d25269" title=" " alt="" coords="669,5,819,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a51d82e4b802f26917c9416b19fa76683" title=" " alt="" coords="669,56,819,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a243e50ae34be5c67be1e2a8549aaf32d" title=" " alt="" coords="673,107,815,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a80671c02108553671fe382575e32574e" title=" " alt="" coords="655,157,833,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7048c13e74b2512eac6d8dd11a0fef04" title=" " alt="" coords="655,208,833,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ae0207c65a6397a8d70b84b3809f0d2d3" title=" " alt="" coords="655,259,833,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4eb05a13588082c4c373fed86abd96ff" title=" " alt="" coords="659,309,829,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b7a56b5661c6565260e84fb9b4ec963" title=" " alt="" coords="651,360,837,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ac735d6e3d92b1d4c3470daee751d9aab" title=" " alt="" coords="667,411,821,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af33b4a8c18c8b465db3f925c10ead11b" title=" " alt="" coords="651,477,837,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af1e852cb8d078b96ea0ca2a9da8f5d67" title=" " alt="" coords="667,529,821,570"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7aeb8d1f9b24ae39b26981eb30cf85d7" title=" " alt="" coords="651,595,837,621"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ab717bb96542727899e2955fd55334065" title=" " alt="" coords="667,646,821,687"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b0e064baf6209f371f6e411ccc05d14" title=" " alt="" coords="651,712,837,739"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4dac09a9a0f813537ccb15680a8d5dc5" title=" " alt="" coords="653,763,835,789"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a26d93b4ea338c3671b62e564a6378c2d" title=" " alt="" coords="655,813,833,840"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3d3e364b654a5f68344895782befe263" title=" " alt="" coords="667,865,821,906"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a1508eae9e808d3a21a36c97ec959f44a" title=" " alt="" coords="667,930,821,971"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4aa87b7e5c047715084a7ca39d6570b3" title=" " alt="" coords="651,996,837,1023"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a52f26f294880b69eaf0addc1dcc3d3ca_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a52f26f294880b69eaf0addc1dcc3d3ca_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a52f26f294880b69eaf0addc1dcc3d3ca_icgraph" id="arandom-art-resistance_8cpp_a52f26f294880b69eaf0addc1dcc3d3ca_icgraph">
+<area shape="rect" title=" " alt="" coords="616,208,787,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="436,208,568,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="251,5,354,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="233,56,372,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="217,107,388,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="221,157,385,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="233,208,372,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="233,259,372,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="237,309,369,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="219,360,386,387"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="5,5,169,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acf33eca83d53cc6aa45bff3caf63faef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf33eca83d53cc6aa45bff3caf63faef">&#9670;&nbsp;</a></span>set_weird_bias_aura_elec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_weird_bias_aura_elec </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_acf33eca83d53cc6aa45bff3caf63faef_cgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_acf33eca83d53cc6aa45bff3caf63faef_cgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_acf33eca83d53cc6aa45bff3caf63faef_cgraph" id="arandom-art-resistance_8cpp_acf33eca83d53cc6aa45bff3caf63faef_cgraph">
+<area shape="rect" title=" " alt="" coords="5,275,176,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="224,275,356,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a131bc7308805bc74d98efa65fbb2564a" title=" " alt="" coords="452,72,555,99"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="434,123,573,149"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="418,173,589,200"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="421,224,585,251"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="434,275,573,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="434,325,573,352"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="437,376,569,403"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="420,427,587,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="404,477,603,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a41a86a141d6f35c245d6a26d17d25269" title=" " alt="" coords="669,5,819,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a51d82e4b802f26917c9416b19fa76683" title=" " alt="" coords="669,56,819,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a243e50ae34be5c67be1e2a8549aaf32d" title=" " alt="" coords="673,107,815,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a80671c02108553671fe382575e32574e" title=" " alt="" coords="655,157,833,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7048c13e74b2512eac6d8dd11a0fef04" title=" " alt="" coords="655,208,833,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ae0207c65a6397a8d70b84b3809f0d2d3" title=" " alt="" coords="655,259,833,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4eb05a13588082c4c373fed86abd96ff" title=" " alt="" coords="659,309,829,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b7a56b5661c6565260e84fb9b4ec963" title=" " alt="" coords="651,360,837,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ac735d6e3d92b1d4c3470daee751d9aab" title=" " alt="" coords="667,411,821,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af33b4a8c18c8b465db3f925c10ead11b" title=" " alt="" coords="651,477,837,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af1e852cb8d078b96ea0ca2a9da8f5d67" title=" " alt="" coords="667,529,821,570"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7aeb8d1f9b24ae39b26981eb30cf85d7" title=" " alt="" coords="651,595,837,621"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ab717bb96542727899e2955fd55334065" title=" " alt="" coords="667,646,821,687"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b0e064baf6209f371f6e411ccc05d14" title=" " alt="" coords="651,712,837,739"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4dac09a9a0f813537ccb15680a8d5dc5" title=" " alt="" coords="653,763,835,789"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a26d93b4ea338c3671b62e564a6378c2d" title=" " alt="" coords="655,813,833,840"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3d3e364b654a5f68344895782befe263" title=" " alt="" coords="667,865,821,906"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a1508eae9e808d3a21a36c97ec959f44a" title=" " alt="" coords="667,930,821,971"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4aa87b7e5c047715084a7ca39d6570b3" title=" " alt="" coords="651,996,837,1023"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_acf33eca83d53cc6aa45bff3caf63faef_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_acf33eca83d53cc6aa45bff3caf63faef_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_acf33eca83d53cc6aa45bff3caf63faef_icgraph" id="arandom-art-resistance_8cpp_acf33eca83d53cc6aa45bff3caf63faef_icgraph">
+<area shape="rect" title=" " alt="" coords="616,208,787,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="436,208,568,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="251,5,354,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="233,56,372,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="217,107,388,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="221,157,385,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="233,208,372,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="233,259,372,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="237,309,369,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="219,360,386,387"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="5,5,169,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0e6f431cca3efc399ffd23b451d52b36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e6f431cca3efc399ffd23b451d52b36">&#9670;&nbsp;</a></span>set_weird_bias_aura_fire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_weird_bias_aura_fire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a0e6f431cca3efc399ffd23b451d52b36_cgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a0e6f431cca3efc399ffd23b451d52b36_cgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a0e6f431cca3efc399ffd23b451d52b36_cgraph" id="arandom-art-resistance_8cpp_a0e6f431cca3efc399ffd23b451d52b36_cgraph">
+<area shape="rect" title=" " alt="" coords="5,275,169,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="217,275,349,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a131bc7308805bc74d98efa65fbb2564a" title=" " alt="" coords="445,72,548,99"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="427,123,566,149"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="411,173,582,200"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="411,224,582,251"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="427,275,566,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="427,325,566,352"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="431,376,563,403"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="413,427,580,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="397,477,596,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a41a86a141d6f35c245d6a26d17d25269" title=" " alt="" coords="662,5,813,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a51d82e4b802f26917c9416b19fa76683" title=" " alt="" coords="662,56,813,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a243e50ae34be5c67be1e2a8549aaf32d" title=" " alt="" coords="666,107,809,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a80671c02108553671fe382575e32574e" title=" " alt="" coords="648,157,827,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7048c13e74b2512eac6d8dd11a0fef04" title=" " alt="" coords="648,208,827,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ae0207c65a6397a8d70b84b3809f0d2d3" title=" " alt="" coords="648,259,827,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4eb05a13588082c4c373fed86abd96ff" title=" " alt="" coords="652,309,823,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b7a56b5661c6565260e84fb9b4ec963" title=" " alt="" coords="645,360,830,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ac735d6e3d92b1d4c3470daee751d9aab" title=" " alt="" coords="660,411,815,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af33b4a8c18c8b465db3f925c10ead11b" title=" " alt="" coords="645,477,830,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af1e852cb8d078b96ea0ca2a9da8f5d67" title=" " alt="" coords="660,529,815,570"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7aeb8d1f9b24ae39b26981eb30cf85d7" title=" " alt="" coords="644,595,831,621"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ab717bb96542727899e2955fd55334065" title=" " alt="" coords="660,646,815,687"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b0e064baf6209f371f6e411ccc05d14" title=" " alt="" coords="645,712,830,739"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4dac09a9a0f813537ccb15680a8d5dc5" title=" " alt="" coords="646,763,829,789"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a26d93b4ea338c3671b62e564a6378c2d" title=" " alt="" coords="648,813,827,840"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3d3e364b654a5f68344895782befe263" title=" " alt="" coords="660,865,815,906"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a1508eae9e808d3a21a36c97ec959f44a" title=" " alt="" coords="660,930,815,971"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4aa87b7e5c047715084a7ca39d6570b3" title=" " alt="" coords="645,996,830,1023"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a0e6f431cca3efc399ffd23b451d52b36_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a0e6f431cca3efc399ffd23b451d52b36_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a0e6f431cca3efc399ffd23b451d52b36_icgraph" id="arandom-art-resistance_8cpp_a0e6f431cca3efc399ffd23b451d52b36_icgraph">
+<area shape="rect" title=" " alt="" coords="616,208,780,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="436,208,568,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="251,5,354,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="233,56,372,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="217,107,388,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="217,157,388,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="233,208,372,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="233,259,372,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="237,309,369,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="219,360,386,387"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="5,5,169,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a05b222f54f82a9530575b4e3cc26c7f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05b222f54f82a9530575b4e3cc26c7f8">&#9670;&nbsp;</a></span>set_weird_bias_cold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_weird_bias_cold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a05b222f54f82a9530575b4e3cc26c7f8_cgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a05b222f54f82a9530575b4e3cc26c7f8_cgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a05b222f54f82a9530575b4e3cc26c7f8_cgraph" id="arandom-art-resistance_8cpp_a05b222f54f82a9530575b4e3cc26c7f8_cgraph">
+<area shape="rect" title=" " alt="" coords="5,275,144,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="192,275,324,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a131bc7308805bc74d98efa65fbb2564a" title=" " alt="" coords="420,72,523,99"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="402,123,541,149"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="386,173,557,200"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="386,224,557,251"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="389,275,553,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="402,325,541,352"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="405,376,537,403"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="388,427,555,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="372,477,571,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a41a86a141d6f35c245d6a26d17d25269" title=" " alt="" coords="637,5,787,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a51d82e4b802f26917c9416b19fa76683" title=" " alt="" coords="637,56,787,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a243e50ae34be5c67be1e2a8549aaf32d" title=" " alt="" coords="641,107,783,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a80671c02108553671fe382575e32574e" title=" " alt="" coords="623,157,801,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7048c13e74b2512eac6d8dd11a0fef04" title=" " alt="" coords="623,208,801,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ae0207c65a6397a8d70b84b3809f0d2d3" title=" " alt="" coords="623,259,801,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4eb05a13588082c4c373fed86abd96ff" title=" " alt="" coords="627,309,797,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b7a56b5661c6565260e84fb9b4ec963" title=" " alt="" coords="619,360,805,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ac735d6e3d92b1d4c3470daee751d9aab" title=" " alt="" coords="635,411,789,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af33b4a8c18c8b465db3f925c10ead11b" title=" " alt="" coords="619,477,805,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af1e852cb8d078b96ea0ca2a9da8f5d67" title=" " alt="" coords="635,529,789,570"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7aeb8d1f9b24ae39b26981eb30cf85d7" title=" " alt="" coords="619,595,805,621"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ab717bb96542727899e2955fd55334065" title=" " alt="" coords="635,646,789,687"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b0e064baf6209f371f6e411ccc05d14" title=" " alt="" coords="619,712,805,739"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4dac09a9a0f813537ccb15680a8d5dc5" title=" " alt="" coords="621,763,803,789"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a26d93b4ea338c3671b62e564a6378c2d" title=" " alt="" coords="623,813,801,840"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3d3e364b654a5f68344895782befe263" title=" " alt="" coords="635,865,789,906"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a1508eae9e808d3a21a36c97ec959f44a" title=" " alt="" coords="635,930,789,971"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4aa87b7e5c047715084a7ca39d6570b3" title=" " alt="" coords="619,996,805,1023"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a05b222f54f82a9530575b4e3cc26c7f8_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a05b222f54f82a9530575b4e3cc26c7f8_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a05b222f54f82a9530575b4e3cc26c7f8_icgraph" id="arandom-art-resistance_8cpp_a05b222f54f82a9530575b4e3cc26c7f8_icgraph">
+<area shape="rect" title=" " alt="" coords="616,208,755,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="436,208,568,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="251,5,354,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="233,56,372,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="217,107,388,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="217,157,388,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="221,208,385,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="233,259,372,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="237,309,369,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="219,360,386,387"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="5,5,169,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af6e0fac21500eca671880da5a499be90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6e0fac21500eca671880da5a499be90">&#9670;&nbsp;</a></span>set_weird_bias_elec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_weird_bias_elec </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_af6e0fac21500eca671880da5a499be90_cgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_af6e0fac21500eca671880da5a499be90_cgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_af6e0fac21500eca671880da5a499be90_cgraph" id="arandom-art-resistance_8cpp_af6e0fac21500eca671880da5a499be90_cgraph">
+<area shape="rect" title=" " alt="" coords="5,275,144,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="192,275,324,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a131bc7308805bc74d98efa65fbb2564a" title=" " alt="" coords="420,72,523,99"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="402,123,541,149"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="386,173,557,200"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="386,224,557,251"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="389,275,553,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="402,325,541,352"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="405,376,537,403"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="388,427,555,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="372,477,571,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a41a86a141d6f35c245d6a26d17d25269" title=" " alt="" coords="637,5,787,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a51d82e4b802f26917c9416b19fa76683" title=" " alt="" coords="637,56,787,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a243e50ae34be5c67be1e2a8549aaf32d" title=" " alt="" coords="641,107,783,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a80671c02108553671fe382575e32574e" title=" " alt="" coords="623,157,801,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7048c13e74b2512eac6d8dd11a0fef04" title=" " alt="" coords="623,208,801,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ae0207c65a6397a8d70b84b3809f0d2d3" title=" " alt="" coords="623,259,801,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4eb05a13588082c4c373fed86abd96ff" title=" " alt="" coords="627,309,797,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b7a56b5661c6565260e84fb9b4ec963" title=" " alt="" coords="619,360,805,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ac735d6e3d92b1d4c3470daee751d9aab" title=" " alt="" coords="635,411,789,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af33b4a8c18c8b465db3f925c10ead11b" title=" " alt="" coords="619,477,805,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af1e852cb8d078b96ea0ca2a9da8f5d67" title=" " alt="" coords="635,529,789,570"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7aeb8d1f9b24ae39b26981eb30cf85d7" title=" " alt="" coords="619,595,805,621"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ab717bb96542727899e2955fd55334065" title=" " alt="" coords="635,646,789,687"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b0e064baf6209f371f6e411ccc05d14" title=" " alt="" coords="619,712,805,739"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4dac09a9a0f813537ccb15680a8d5dc5" title=" " alt="" coords="621,763,803,789"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a26d93b4ea338c3671b62e564a6378c2d" title=" " alt="" coords="623,813,801,840"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3d3e364b654a5f68344895782befe263" title=" " alt="" coords="635,865,789,906"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a1508eae9e808d3a21a36c97ec959f44a" title=" " alt="" coords="635,930,789,971"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4aa87b7e5c047715084a7ca39d6570b3" title=" " alt="" coords="619,996,805,1023"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_af6e0fac21500eca671880da5a499be90_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_af6e0fac21500eca671880da5a499be90_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_af6e0fac21500eca671880da5a499be90_icgraph" id="arandom-art-resistance_8cpp_af6e0fac21500eca671880da5a499be90_icgraph">
+<area shape="rect" title=" " alt="" coords="616,208,755,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="436,208,568,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="251,5,354,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="233,56,372,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="217,107,388,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="217,157,388,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="221,208,385,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="233,259,372,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="237,309,369,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="219,360,386,387"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="5,5,169,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3364bc6d447111ee254d0acad48e1c8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3364bc6d447111ee254d0acad48e1c8a">&#9670;&nbsp;</a></span>set_weird_bias_fire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_weird_bias_fire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a3364bc6d447111ee254d0acad48e1c8a_cgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a3364bc6d447111ee254d0acad48e1c8a_cgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a3364bc6d447111ee254d0acad48e1c8a_cgraph" id="arandom-art-resistance_8cpp_a3364bc6d447111ee254d0acad48e1c8a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,275,137,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="185,275,317,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a131bc7308805bc74d98efa65fbb2564a" title=" " alt="" coords="413,72,516,99"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="395,123,534,149"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="379,173,550,200"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="379,224,550,251"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="383,275,547,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="395,325,534,352"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="395,376,534,403"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="381,427,548,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="365,477,564,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a41a86a141d6f35c245d6a26d17d25269" title=" " alt="" coords="630,5,781,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a51d82e4b802f26917c9416b19fa76683" title=" " alt="" coords="630,56,781,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a243e50ae34be5c67be1e2a8549aaf32d" title=" " alt="" coords="634,107,777,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a80671c02108553671fe382575e32574e" title=" " alt="" coords="616,157,795,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7048c13e74b2512eac6d8dd11a0fef04" title=" " alt="" coords="616,208,795,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ae0207c65a6397a8d70b84b3809f0d2d3" title=" " alt="" coords="616,259,795,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4eb05a13588082c4c373fed86abd96ff" title=" " alt="" coords="620,309,791,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b7a56b5661c6565260e84fb9b4ec963" title=" " alt="" coords="613,360,798,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ac735d6e3d92b1d4c3470daee751d9aab" title=" " alt="" coords="628,411,783,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af33b4a8c18c8b465db3f925c10ead11b" title=" " alt="" coords="613,477,798,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af1e852cb8d078b96ea0ca2a9da8f5d67" title=" " alt="" coords="628,529,783,570"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7aeb8d1f9b24ae39b26981eb30cf85d7" title=" " alt="" coords="612,595,799,621"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ab717bb96542727899e2955fd55334065" title=" " alt="" coords="628,646,783,687"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b0e064baf6209f371f6e411ccc05d14" title=" " alt="" coords="613,712,798,739"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4dac09a9a0f813537ccb15680a8d5dc5" title=" " alt="" coords="614,763,797,789"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a26d93b4ea338c3671b62e564a6378c2d" title=" " alt="" coords="616,813,795,840"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3d3e364b654a5f68344895782befe263" title=" " alt="" coords="628,865,783,906"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a1508eae9e808d3a21a36c97ec959f44a" title=" " alt="" coords="628,930,783,971"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4aa87b7e5c047715084a7ca39d6570b3" title=" " alt="" coords="613,996,798,1023"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a3364bc6d447111ee254d0acad48e1c8a_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a3364bc6d447111ee254d0acad48e1c8a_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a3364bc6d447111ee254d0acad48e1c8a_icgraph" id="arandom-art-resistance_8cpp_a3364bc6d447111ee254d0acad48e1c8a_icgraph">
+<area shape="rect" title=" " alt="" coords="616,208,748,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="436,208,568,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="251,5,354,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="233,56,372,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="217,107,388,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="217,157,388,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="221,208,385,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="233,259,372,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="233,309,372,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="219,360,386,387"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="5,5,169,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7421b0084a809f06e997de27acd0fc50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7421b0084a809f06e997de27acd0fc50">&#9670;&nbsp;</a></span>set_weird_bias_reflection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void set_weird_bias_reflection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a7421b0084a809f06e997de27acd0fc50_cgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a7421b0084a809f06e997de27acd0fc50_cgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a7421b0084a809f06e997de27acd0fc50_cgraph" id="arandom-art-resistance_8cpp_a7421b0084a809f06e997de27acd0fc50_cgraph">
+<area shape="rect" title=" " alt="" coords="5,275,172,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="220,275,352,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a131bc7308805bc74d98efa65fbb2564a" title=" " alt="" coords="448,72,551,99"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="430,123,569,149"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="414,173,585,200"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="414,224,585,251"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="417,275,581,301"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="430,325,569,352"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="430,376,569,403"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="433,427,565,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ad67ec0c68f78412e455ad91b8e958b55" title=" " alt="" coords="400,477,599,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a41a86a141d6f35c245d6a26d17d25269" title=" " alt="" coords="665,5,815,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a51d82e4b802f26917c9416b19fa76683" title=" " alt="" coords="665,56,815,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a243e50ae34be5c67be1e2a8549aaf32d" title=" " alt="" coords="669,107,811,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a80671c02108553671fe382575e32574e" title=" " alt="" coords="651,157,829,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7048c13e74b2512eac6d8dd11a0fef04" title=" " alt="" coords="651,208,829,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ae0207c65a6397a8d70b84b3809f0d2d3" title=" " alt="" coords="651,259,829,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4eb05a13588082c4c373fed86abd96ff" title=" " alt="" coords="655,309,825,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b7a56b5661c6565260e84fb9b4ec963" title=" " alt="" coords="647,360,833,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ac735d6e3d92b1d4c3470daee751d9aab" title=" " alt="" coords="663,411,817,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af33b4a8c18c8b465db3f925c10ead11b" title=" " alt="" coords="647,477,833,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af1e852cb8d078b96ea0ca2a9da8f5d67" title=" " alt="" coords="663,529,817,570"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7aeb8d1f9b24ae39b26981eb30cf85d7" title=" " alt="" coords="647,595,833,621"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ab717bb96542727899e2955fd55334065" title=" " alt="" coords="663,646,817,687"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b0e064baf6209f371f6e411ccc05d14" title=" " alt="" coords="647,712,833,739"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4dac09a9a0f813537ccb15680a8d5dc5" title=" " alt="" coords="649,763,831,789"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a26d93b4ea338c3671b62e564a6378c2d" title=" " alt="" coords="651,813,829,840"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3d3e364b654a5f68344895782befe263" title=" " alt="" coords="663,865,817,906"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a1508eae9e808d3a21a36c97ec959f44a" title=" " alt="" coords="663,930,817,971"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4aa87b7e5c047715084a7ca39d6570b3" title=" " alt="" coords="647,996,833,1023"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_a7421b0084a809f06e997de27acd0fc50_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_a7421b0084a809f06e997de27acd0fc50_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_a7421b0084a809f06e997de27acd0fc50_icgraph" id="arandom-art-resistance_8cpp_a7421b0084a809f06e997de27acd0fc50_icgraph">
+<area shape="rect" title=" " alt="" coords="616,208,783,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="436,208,568,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="251,5,354,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="233,56,372,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="217,107,388,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="217,157,388,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="221,208,385,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="233,259,372,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="233,309,372,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="237,360,369,387"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="5,5,169,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad67ec0c68f78412e455ad91b8e958b55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad67ec0c68f78412e455ad91b8e958b55">&#9670;&nbsp;</a></span>switch_random_art_resistance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> switch_random_art_resistance </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_ad67ec0c68f78412e455ad91b8e958b55_cgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_ad67ec0c68f78412e455ad91b8e958b55_cgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_ad67ec0c68f78412e455ad91b8e958b55_cgraph" id="arandom-art-resistance_8cpp_ad67ec0c68f78412e455ad91b8e958b55_cgraph">
+<area shape="rect" title=" " alt="" coords="5,477,204,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a41a86a141d6f35c245d6a26d17d25269" title=" " alt="" coords="270,5,421,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a51d82e4b802f26917c9416b19fa76683" title=" " alt="" coords="270,56,421,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a243e50ae34be5c67be1e2a8549aaf32d" title=" " alt="" coords="274,107,417,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a80671c02108553671fe382575e32574e" title=" " alt="" coords="256,157,435,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7048c13e74b2512eac6d8dd11a0fef04" title=" " alt="" coords="256,208,435,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ae0207c65a6397a8d70b84b3809f0d2d3" title=" " alt="" coords="256,259,435,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4eb05a13588082c4c373fed86abd96ff" title=" " alt="" coords="260,309,431,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b7a56b5661c6565260e84fb9b4ec963" title=" " alt="" coords="253,360,438,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ac735d6e3d92b1d4c3470daee751d9aab" title=" " alt="" coords="268,411,423,453"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af33b4a8c18c8b465db3f925c10ead11b" title=" " alt="" coords="253,477,438,504"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af1e852cb8d078b96ea0ca2a9da8f5d67" title=" " alt="" coords="268,529,423,570"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7aeb8d1f9b24ae39b26981eb30cf85d7" title=" " alt="" coords="252,595,439,621"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#ab717bb96542727899e2955fd55334065" title=" " alt="" coords="268,646,423,687"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4b0e064baf6209f371f6e411ccc05d14" title=" " alt="" coords="253,712,438,739"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4dac09a9a0f813537ccb15680a8d5dc5" title=" " alt="" coords="254,763,437,789"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a26d93b4ea338c3671b62e564a6378c2d" title=" " alt="" coords="256,813,435,840"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3d3e364b654a5f68344895782befe263" title=" " alt="" coords="268,865,423,906"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a1508eae9e808d3a21a36c97ec959f44a" title=" " alt="" coords="268,930,423,971"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a4aa87b7e5c047715084a7ca39d6570b3" title=" " alt="" coords="253,996,438,1023"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="random-art-resistance_8cpp_ad67ec0c68f78412e455ad91b8e958b55_icgraph.png" border="0" usemap="#arandom-art-resistance_8cpp_ad67ec0c68f78412e455ad91b8e958b55_icgraph" alt=""/></div>
+<map name="arandom-art-resistance_8cpp_ad67ec0c68f78412e455ad91b8e958b55_icgraph" id="arandom-art-resistance_8cpp_ad67ec0c68f78412e455ad91b8e958b55_icgraph">
+<area shape="rect" title=" " alt="" coords="616,208,815,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a896a70aadf2fc624f8a77db88869d5b6" title="ランダムアーティファクト生成中、対象のオブジェクトに耐性を付加する。/ Add one resistance on generation of randam artifact." alt="" coords="436,208,568,235"/>
+<area shape="rect" href="random-art-generator_8cpp.html#ae4850d68a618eedf8e66ff48ec9a2bfc" title=" " alt="" coords="251,5,354,32"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a522e9f435c558f9fc46493362afb8742" title=" " alt="" coords="233,56,372,83"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a52f26f294880b69eaf0addc1dcc3d3ca" title=" " alt="" coords="217,107,388,133"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#acf33eca83d53cc6aa45bff3caf63faef" title=" " alt="" coords="217,157,388,184"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a0e6f431cca3efc399ffd23b451d52b36" title=" " alt="" coords="221,208,385,235"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a05b222f54f82a9530575b4e3cc26c7f8" title=" " alt="" coords="233,259,372,285"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#af6e0fac21500eca671880da5a499be90" title=" " alt="" coords="233,309,372,336"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a3364bc6d447111ee254d0acad48e1c8a" title=" " alt="" coords="237,360,369,387"/>
+<area shape="rect" href="random-art-resistance_8cpp.html#a7421b0084a809f06e997de27acd0fc50" title=" " alt="" coords="219,411,386,437"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="5,5,169,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分02秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

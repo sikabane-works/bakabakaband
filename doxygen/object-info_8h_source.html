@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/object/object-info.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_bb043af75e54e1af3032f67529bb720c.html">object</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">object-info.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="object-info_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="object-type-definition_8h.html">system/object-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="object-info_8h.html#a51452febd979d89651aebcfe4129dfc4">    6</a></span>&#160;<span class="preprocessor">#define OBJ_GOLD_LIST 480 </span><span class="comment">/* First &quot;gold&quot; entry */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="object-info_8h.html#a61840e5db97036b2685a525ec2636d1d">activation_explanation</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">char</span> <a class="code" href="object-info_8h.html#a21413bf407071b7e2f68ff548c34b165">index_to_label</a>(<span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="object-info_8h.html#a73ccd17731c578cf0bb290bf1833f4a2">wield_slot</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="object-info_8h.html#a6db41b634f18ba4fcb97bab7cfeac978">check_book_realm</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <span class="keyword">const</span> <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a> book_tval, <span class="keyword">const</span> <a class="code" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a> book_sval);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<a class="code" href="structobject__type.html">object_type</a> *<a class="code" href="object-info_8h.html#a25c1a3d5e265021c4c8b13c67ecf709f">ref_item</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="code" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> item);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<a class="code" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> <a class="code" href="object-info_8h.html#a55e6a6cccf0029e1be8f471671cb39dc">object_attr</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_a592c0b48d60348198260e1f6ffb1897e"><div class="ttname"><a href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a></div><div class="ttdeci">s16b INVENTORY_IDX</div><div class="ttdoc">ゲーム中の所持品ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:120</div></div>
+<div class="ttc" id="ah-type_8h_html_aadcf8cee15fbcb7d92dd27e9eda42de1"><div class="ttname"><a href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a></div><div class="ttdeci">byte TERM_COLOR</div><div class="ttdoc">テキスト表示色の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:215</div></div>
+<div class="ttc" id="ah-type_8h_html_ad52e4f96ca473e40e3be6db6f73a13d4"><div class="ttname"><a href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a></div><div class="ttdeci">s32b OBJECT_SUBTYPE_VALUE</div><div class="ttdoc">ゲーム中のアイテム副分類の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:181</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="aobject-info_8h_html_a21413bf407071b7e2f68ff548c34b165"><div class="ttname"><a href="object-info_8h.html#a21413bf407071b7e2f68ff548c34b165">index_to_label</a></div><div class="ttdeci">char index_to_label(int i)</div><div class="ttdoc">オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label</div><div class="ttdef"><b>Definition:</b> object-info.cpp:196</div></div>
+<div class="ttc" id="aobject-info_8h_html_a25c1a3d5e265021c4c8b13c67ecf709f"><div class="ttname"><a href="object-info_8h.html#a25c1a3d5e265021c4c8b13c67ecf709f">ref_item</a></div><div class="ttdeci">object_type * ref_item(player_type *owner_ptr, INVENTORY_IDX item)</div><div class="ttdef"><b>Definition:</b> object-info.cpp:289</div></div>
+<div class="ttc" id="aobject-info_8h_html_a55e6a6cccf0029e1be8f471671cb39dc"><div class="ttname"><a href="object-info_8h.html#a55e6a6cccf0029e1be8f471671cb39dc">object_attr</a></div><div class="ttdeci">TERM_COLOR object_attr(object_type *o_ptr)</div><div class="ttdef"><b>Definition:</b> object-info.cpp:300</div></div>
+<div class="ttc" id="aobject-info_8h_html_a61840e5db97036b2685a525ec2636d1d"><div class="ttname"><a href="object-info_8h.html#a61840e5db97036b2685a525ec2636d1d">activation_explanation</a></div><div class="ttdeci">concptr activation_explanation(player_type *owner_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトの発動効果名称を返す（メインルーチン） / Determine the &quot;Activation&quot; (if any) for an artifact Return a string,...</div><div class="ttdef"><b>Definition:</b> object-info.cpp:167</div></div>
+<div class="ttc" id="aobject-info_8h_html_a6db41b634f18ba4fcb97bab7cfeac978"><div class="ttname"><a href="object-info_8h.html#a6db41b634f18ba4fcb97bab7cfeac978">check_book_realm</a></div><div class="ttdeci">bool check_book_realm(player_type *owner_ptr, const tval_type book_tval, const OBJECT_SUBTYPE_VALUE book_sval)</div><div class="ttdoc">tval/sval指定のベースアイテムがプレイヤーの使用可能な魔法書かどうかを返す / Hack: Check if a spellbook is one of the realms we can us...</div><div class="ttdef"><b>Definition:</b> object-info.cpp:275</div></div>
+<div class="ttc" id="aobject-info_8h_html_a73ccd17731c578cf0bb290bf1833f4a2"><div class="ttname"><a href="object-info_8h.html#a73ccd17731c578cf0bb290bf1833f4a2">wield_slot</a></div><div class="ttdeci">s16b wield_slot(player_type *owner_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトの該当装備部位IDを返す / Determine which equipment slot (if any) an item likes</div><div class="ttdef"><b>Definition:</b> object-info.cpp:204</div></div>
+<div class="ttc" id="aobject-type-definition_8h_html"><div class="ttname"><a href="object-type-definition_8h.html">object-type-definition.h</a></div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192">tval_type</a></div><div class="ttdeci">tval_type</div><div class="ttdef"><b>Definition:</b> tval-types.h:17</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

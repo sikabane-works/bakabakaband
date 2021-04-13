@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/load/inventory-loader.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2ce012611788abb6196ef11b41953a16.html">load</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">inventory-loader.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="inventory-loader_8h_source.html">load/inventory-loader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-loader_8h_source.html">load/item-loader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="load-util_8h_source.html">load/load-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-generator_8h_source.html">object/object-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-mark-types_8h_source.html">object/object-mark-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+inventory-loader.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="inventory-loader_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2load_2inventory-loader_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2load_2inventory-loader_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2load_2inventory-loader_8cpp">
+<area shape="rect" title=" " alt="" coords="428,5,643,61"/>
+<area shape="rect" href="inventory-loader_8h.html" title=" " alt="" coords="5,117,156,143"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="181,109,309,151"/>
+<area shape="rect" href="item-loader_8h.html" title=" " alt="" coords="333,117,458,143"/>
+<area shape="rect" href="load-util_8h.html" title=" " alt="" coords="482,117,589,143"/>
+<area shape="rect" href="object-generator_8h.html" title=" " alt="" coords="613,117,778,143"/>
+<area shape="rect" href="object-mark-types_8h.html" title=" " alt="" coords="803,109,932,151"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="957,109,1090,151"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="471,199,600,225"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="10,273,101,300"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="125,273,215,300"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="239,273,338,300"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="362,273,461,300"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="485,273,585,300"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="609,273,784,300"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="809,273,950,300"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="974,273,1121,300"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="960,199,1087,225"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:acbb6ec113f46c01e83d2e99d40d6bdd8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inventory-loader_8cpp.html#acbb6ec113f46c01e83d2e99d40d6bdd8">rd_inventory</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="memdesc:acbb6ec113f46c01e83d2e99d40d6bdd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの所持品情報を読み込む / Read the player inventory  <a href="inventory-loader_8cpp.html#acbb6ec113f46c01e83d2e99d40d6bdd8">[詳解]</a><br /></td></tr>
+<tr class="separator:acbb6ec113f46c01e83d2e99d40d6bdd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf597af994c02a18949e5731390f07f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inventory-loader_8cpp.html#aaf597af994c02a18949e5731390f07f0">load_inventory</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="separator:aaf597af994c02a18949e5731390f07f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="aaf597af994c02a18949e5731390f07f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf597af994c02a18949e5731390f07f0">&#9670;&nbsp;</a></span>load_inventory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> load_inventory </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="inventory-loader_8cpp_aaf597af994c02a18949e5731390f07f0_cgraph.png" border="0" usemap="#ainventory-loader_8cpp_aaf597af994c02a18949e5731390f07f0_cgraph" alt=""/></div>
+<map name="ainventory-loader_8cpp_aaf597af994c02a18949e5731390f07f0_cgraph" id="ainventory-loader_8cpp_aaf597af994c02a18949e5731390f07f0_cgraph">
+<area shape="rect" title=" " alt="" coords="5,271,109,297"/>
+<area shape="rect" href="load-util_8cpp.html#a12de8c405bef4d2454f31a0f87137021" title="ゲームスクリーンにメッセージを表示する / Hack – Show information on the screen, one line at a time." alt="" coords="303,169,381,196"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="779,600,844,627"/>
+<area shape="rect" href="inventory-loader_8cpp.html#acbb6ec113f46c01e83d2e99d40d6bdd8" title="プレイヤーの所持品情報を読み込む / Read the player inventory" alt="" coords="157,271,248,297"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="462,195,501,221"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="440,107,523,133"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="627,208,677,235"/>
+<area shape="rect" href="z-term_8cpp.html#a50f4ddf9b64ef43b1be95eb89e78c263" title=" " alt="" coords="581,5,723,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5d7c0ea368bccad499b9bbdb4ffc53dc" title=" " alt="" coords="583,56,721,83"/>
+<area shape="rect" href="z-term_8cpp.html#a1b660c2d9fa25eb39e501811a0088cd2" title=" " alt="" coords="583,107,721,133"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="613,157,691,184"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="893,423,951,449"/>
+<area shape="rect" href="object-generator_8cpp.html#aa666d0b3f34f2bebf82e976361f59f1c" title="オブジェクトを複製する Wipe an object clean." alt="" coords="296,524,388,551"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="297,220,387,247"/>
+<area shape="rect" href="item-loader_8cpp.html#ae4cf72615dec20a97e17f6d9f8d5c6d0" title="アイテムオブジェクトを読み込む(現版) / Read an object (New method)" alt="" coords="309,473,375,500"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="777,321,845,348"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="604,372,700,399"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="436,575,527,601"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="575,524,729,551"/>
+<area shape="rect" href="quarks_8cpp.html#a6fada8d9acfd20a42a8a9887484a1802" title=" " alt="" coords="611,663,693,689"/>
+<area shape="rect" href="load-v1-5-0_8cpp.html#ad02061f4e849319d3d0775df91347668" title="アイテムオブジェクト1件を読み込む / Read an object" alt="" coords="437,473,526,500"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="618,321,686,348"/>
+<area shape="rect" href="load-util_8cpp.html#a18c64dc19daf4d1faa75891b501dde0a" title="ロードファイルポインタから文字列を読み込んでポインタに渡す / Hack – read a string" alt="" coords="616,600,688,627"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="618,423,686,449"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="inventory-loader_8cpp_aaf597af994c02a18949e5731390f07f0_icgraph.png" border="0" usemap="#ainventory-loader_8cpp_aaf597af994c02a18949e5731390f07f0_icgraph" alt=""/></div>
+<map name="ainventory-loader_8cpp_aaf597af994c02a18949e5731390f07f0_icgraph" id="ainventory-loader_8cpp_aaf597af994c02a18949e5731390f07f0_icgraph">
+<area shape="rect" title=" " alt="" coords="477,5,581,32"/>
+<area shape="rect" href="load_8cpp.html#af89dd931d12eb33981704a2943877f34" title="セーブファイル読み込み処理の実体 / Actually read the savefile" alt="" coords="288,5,429,32"/>
+<area shape="rect" href="load_8cpp.html#a9f3adb4871bc426fc462d139f54cdd46" title="セーブファイル読み込み処理 (UIDチェック等含む) / Reading the savefile (including UID check)" alt="" coords="157,5,240,32"/>
+<area shape="rect" href="load_8cpp.html#ac688b6edacb63309692463886f9d5cbc" title="セーブデータ読み込みのメインルーチン / Attempt to Load a &quot;savefile&quot;" alt="" coords="5,5,109,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acbb6ec113f46c01e83d2e99d40d6bdd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbb6ec113f46c01e83d2e99d40d6bdd8">&#9670;&nbsp;</a></span>rd_inventory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> rd_inventory </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>プレイヤーの所持品情報を読み込む / Read the player inventory </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<p>Note that the inventory changed in Angband 2.7.4. Two extra pack slots were added and the equipment was rearranged. Note that these two features combine when parsing old save-files, in which items from the old "aux" slot are "carried", perhaps into one of the two new "inventory" slots.</p>
+<p>Note that the inventory is "re-sorted" later by "dungeon()". </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="inventory-loader_8cpp_acbb6ec113f46c01e83d2e99d40d6bdd8_cgraph.png" border="0" usemap="#ainventory-loader_8cpp_acbb6ec113f46c01e83d2e99d40d6bdd8_cgraph" alt=""/></div>
+<map name="ainventory-loader_8cpp_acbb6ec113f46c01e83d2e99d40d6bdd8_cgraph" id="ainventory-loader_8cpp_acbb6ec113f46c01e83d2e99d40d6bdd8_cgraph">
+<area shape="rect" title="プレイヤーの所持品情報を読み込む / Read the player inventory" alt="" coords="5,208,96,235"/>
+<area shape="rect" href="load-util_8cpp.html#a12de8c405bef4d2454f31a0f87137021" title="ゲームスクリーンにメッセージを表示する / Hack – Show information on the screen, one line at a time." alt="" coords="151,107,229,133"/>
+<area shape="rect" href="object-generator_8cpp.html#aa666d0b3f34f2bebf82e976361f59f1c" title="オブジェクトを複製する Wipe an object clean." alt="" coords="144,157,236,184"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="145,208,235,235"/>
+<area shape="rect" href="item-loader_8cpp.html#ae4cf72615dec20a97e17f6d9f8d5c6d0" title="アイテムオブジェクトを読み込む(現版) / Read an object (New method)" alt="" coords="157,537,223,564"/>
+<area shape="rect" href="load-util_8cpp.html#a11d3f9a1b5b0e826535f3887d0fe29fd" title="ロードファイルポインタから符号なし16bit値を読み込んでポインタに渡す" alt="" coords="638,512,706,539"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="310,31,349,57"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="288,107,371,133"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="475,5,525,32"/>
+<area shape="rect" href="z-term_8cpp.html#a50f4ddf9b64ef43b1be95eb89e78c263" title=" " alt="" coords="429,107,571,133"/>
+<area shape="rect" href="z-term_8cpp.html#a5d7c0ea368bccad499b9bbdb4ffc53dc" title=" " alt="" coords="431,157,569,184"/>
+<area shape="rect" href="z-term_8cpp.html#a1b660c2d9fa25eb39e501811a0088cd2" title=" " alt="" coords="431,208,569,235"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="461,56,539,83"/>
+<area shape="rect" href="angband-version-comparer_8cpp.html#ac1b3046aa2e4c1f758cde1ef83958552" title="馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is ol..." alt="" coords="452,1019,548,1045"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="284,436,375,463"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="423,360,577,387"/>
+<area shape="rect" href="quarks_8cpp.html#a6fada8d9acfd20a42a8a9887484a1802" title=" " alt="" coords="459,1120,541,1147"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="639,715,705,741"/>
+<area shape="rect" href="load-v1-5-0_8cpp.html#ad02061f4e849319d3d0775df91347668" title="アイテムオブジェクト1件を読み込む / Read an object" alt="" coords="285,689,374,716"/>
+<area shape="rect" href="load-util_8cpp.html#a61cfc7153b8b038846e92d46e1484705" title="ロードファイルポインタから符号つき16bit値を読み込んでポインタに渡す" alt="" coords="466,512,534,539"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="638,613,706,640"/>
+<area shape="rect" href="load-util_8cpp.html#a18c64dc19daf4d1faa75891b501dde0a" title="ロードファイルポインタから文字列を読み込んでポインタに渡す / Hack – read a string" alt="" coords="464,563,536,589"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="449,461,551,488"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="443,411,557,437"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="647,1145,697,1172"/>
+<area shape="rect" href="z-virt_8cpp.html#a64d699412915544198fd477a26d44f84" title="str の複製を返す。戻り値は使用後に string_free() で解放すること。" alt="" coords="625,1095,719,1121"/>
+<area shape="rect" href="load-util_8cpp.html#a5e4b1bbe1ad0a724e603baf2c77a0eda" title="ロードファイルポインタから1バイトを読み込む" alt="" coords="767,613,824,640"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="468,765,532,792"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="445,816,555,843"/>
+<area shape="rect" href="object-kind-hook_8cpp.html#a24f8a2426e4fc5128654ec26033312ab" title="tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the object_kind with the given tval and sval" alt="" coords="455,867,545,893"/>
+<area shape="rect" href="z-rand_8cpp.html#aad0bf68339aca559471bcf0ff21c049d" title=" " alt="" coords="468,917,532,944"/>
+<area shape="rect" href="load-util_8cpp.html#a2b230df62990bec0c7ed479aad43a4b3" title="ロードファイルポインタから符号つき32bit値を読み込んでポインタに渡す" alt="" coords="466,613,534,640"/>
+<area shape="rect" href="load-util_8cpp.html#a2982efb62fc7a9124a9a07a391ef56be" title="ロードファイルポインタを指定バイト分飛ばして進める / Hack – strip some bytes" alt="" coords="457,715,543,741"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="inventory-loader_8cpp_acbb6ec113f46c01e83d2e99d40d6bdd8_icgraph.png" border="0" usemap="#ainventory-loader_8cpp_acbb6ec113f46c01e83d2e99d40d6bdd8_icgraph" alt=""/></div>
+<map name="ainventory-loader_8cpp_acbb6ec113f46c01e83d2e99d40d6bdd8_icgraph" id="ainventory-loader_8cpp_acbb6ec113f46c01e83d2e99d40d6bdd8_icgraph">
+<area shape="rect" title="プレイヤーの所持品情報を読み込む / Read the player inventory" alt="" coords="477,5,568,32"/>
+<area shape="rect" href="inventory-loader_8cpp.html#aaf597af994c02a18949e5731390f07f0" title=" " alt="" coords="325,5,429,32"/>
+<area shape="rect" href="load_8cpp.html#af89dd931d12eb33981704a2943877f34" title="セーブファイル読み込み処理の実体 / Actually read the savefile" alt="" coords="136,5,277,32"/>
+<area shape="rect" href="load_8cpp.html#a9f3adb4871bc426fc462d139f54cdd46" title="セーブファイル読み込み処理 (UIDチェック等含む) / Reading the savefile (including UID check)" alt="" coords="5,5,88,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分38秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

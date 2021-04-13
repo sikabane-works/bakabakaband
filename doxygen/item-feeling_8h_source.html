@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/object-enchant/item-feeling.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7478db7a13e5bc43b9c00ed0e2222476.html">object-enchant</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">item-feeling.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="item-feeling_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * アイテムの簡易鑑定定義 / Game generated inscription indices. These are stored in the object,</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * and are used to index the string array from tables.c.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498">    7</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498">item_feel_type</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498ada1ff46b4496b43ed8c53191f0a3c6f2">    8</a></span>&#160;    <a class="code" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498ada1ff46b4496b43ed8c53191f0a3c6f2">FEEL_NONE</a> = 0, </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a7a389df330c1c9a73548a12facbdaa0a">    9</a></span>&#160;    <a class="code" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a7a389df330c1c9a73548a12facbdaa0a">FEEL_BROKEN</a> = 1, </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a4a444f39d1890efe645f6cf3190459d5">   10</a></span>&#160;    <a class="code" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a4a444f39d1890efe645f6cf3190459d5">FEEL_TERRIBLE</a> = 2, </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a1b86b348300602ce1dbdd937cdc2d602">   11</a></span>&#160;    <a class="code" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a1b86b348300602ce1dbdd937cdc2d602">FEEL_WORTHLESS</a> = 3, </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498aff5f1ebadfe2e8173fb81c164c30068a">   12</a></span>&#160;    <a class="code" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498aff5f1ebadfe2e8173fb81c164c30068a">FEEL_CURSED</a> = 4, </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498abde254f7ec730f74ea8f3b61f6f0fa96">   13</a></span>&#160;    <a class="code" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498abde254f7ec730f74ea8f3b61f6f0fa96">FEEL_UNCURSED</a> = 5, </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498ab837529de9b9f062f28434d76b6b2f8a">   14</a></span>&#160;    <a class="code" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498ab837529de9b9f062f28434d76b6b2f8a">FEEL_AVERAGE</a> = 6, </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498ad3eba50daa56408b1289c1e8f0cecece">   15</a></span>&#160;    <a class="code" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498ad3eba50daa56408b1289c1e8f0cecece">FEEL_GOOD</a> = 7, </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a5e81e2d3b441f0b9fc5a083feb652dce">   16</a></span>&#160;    <a class="code" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a5e81e2d3b441f0b9fc5a083feb652dce">FEEL_EXCELLENT</a> = 8, </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a884c9531785e092e4fa0f04741966d46">   17</a></span>&#160;    <a class="code" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a884c9531785e092e4fa0f04741966d46">FEEL_SPECIAL</a> = 9, </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a864e8b5434ff35132dc267246a64c67f">   18</a></span>&#160;    <a class="code" href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a864e8b5434ff35132dc267246a64c67f">FEEL_MAX</a> = 9, </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
+<div class="ttc" id="aitem-feeling_8h_html_a6e7b344d522b8ce36ce9da2d8293f498"><div class="ttname"><a href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498">item_feel_type</a></div><div class="ttdeci">item_feel_type</div><div class="ttdef"><b>Definition:</b> item-feeling.h:7</div></div>
+<div class="ttc" id="aitem-feeling_8h_html_a6e7b344d522b8ce36ce9da2d8293f498a1b86b348300602ce1dbdd937cdc2d602"><div class="ttname"><a href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a1b86b348300602ce1dbdd937cdc2d602">FEEL_WORTHLESS</a></div><div class="ttdeci">@ FEEL_WORTHLESS</div><div class="ttdoc">簡易鑑定: 無価値</div><div class="ttdef"><b>Definition:</b> item-feeling.h:11</div></div>
+<div class="ttc" id="aitem-feeling_8h_html_a6e7b344d522b8ce36ce9da2d8293f498a4a444f39d1890efe645f6cf3190459d5"><div class="ttname"><a href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a4a444f39d1890efe645f6cf3190459d5">FEEL_TERRIBLE</a></div><div class="ttdeci">@ FEEL_TERRIBLE</div><div class="ttdoc">簡易鑑定: 恐ろしい</div><div class="ttdef"><b>Definition:</b> item-feeling.h:10</div></div>
+<div class="ttc" id="aitem-feeling_8h_html_a6e7b344d522b8ce36ce9da2d8293f498a5e81e2d3b441f0b9fc5a083feb652dce"><div class="ttname"><a href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a5e81e2d3b441f0b9fc5a083feb652dce">FEEL_EXCELLENT</a></div><div class="ttdeci">@ FEEL_EXCELLENT</div><div class="ttdoc">簡易鑑定: 高級</div><div class="ttdef"><b>Definition:</b> item-feeling.h:16</div></div>
+<div class="ttc" id="aitem-feeling_8h_html_a6e7b344d522b8ce36ce9da2d8293f498a7a389df330c1c9a73548a12facbdaa0a"><div class="ttname"><a href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a7a389df330c1c9a73548a12facbdaa0a">FEEL_BROKEN</a></div><div class="ttdeci">@ FEEL_BROKEN</div><div class="ttdoc">簡易鑑定: 壊れている</div><div class="ttdef"><b>Definition:</b> item-feeling.h:9</div></div>
+<div class="ttc" id="aitem-feeling_8h_html_a6e7b344d522b8ce36ce9da2d8293f498a864e8b5434ff35132dc267246a64c67f"><div class="ttname"><a href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a864e8b5434ff35132dc267246a64c67f">FEEL_MAX</a></div><div class="ttdeci">@ FEEL_MAX</div><div class="ttdoc">簡易鑑定の種別数</div><div class="ttdef"><b>Definition:</b> item-feeling.h:18</div></div>
+<div class="ttc" id="aitem-feeling_8h_html_a6e7b344d522b8ce36ce9da2d8293f498a884c9531785e092e4fa0f04741966d46"><div class="ttname"><a href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498a884c9531785e092e4fa0f04741966d46">FEEL_SPECIAL</a></div><div class="ttdeci">@ FEEL_SPECIAL</div><div class="ttdoc">簡易鑑定: 特別</div><div class="ttdef"><b>Definition:</b> item-feeling.h:17</div></div>
+<div class="ttc" id="aitem-feeling_8h_html_a6e7b344d522b8ce36ce9da2d8293f498ab837529de9b9f062f28434d76b6b2f8a"><div class="ttname"><a href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498ab837529de9b9f062f28434d76b6b2f8a">FEEL_AVERAGE</a></div><div class="ttdeci">@ FEEL_AVERAGE</div><div class="ttdoc">簡易鑑定: 並</div><div class="ttdef"><b>Definition:</b> item-feeling.h:14</div></div>
+<div class="ttc" id="aitem-feeling_8h_html_a6e7b344d522b8ce36ce9da2d8293f498abde254f7ec730f74ea8f3b61f6f0fa96"><div class="ttname"><a href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498abde254f7ec730f74ea8f3b61f6f0fa96">FEEL_UNCURSED</a></div><div class="ttdeci">@ FEEL_UNCURSED</div><div class="ttdoc">簡易鑑定: 呪われていない</div><div class="ttdef"><b>Definition:</b> item-feeling.h:13</div></div>
+<div class="ttc" id="aitem-feeling_8h_html_a6e7b344d522b8ce36ce9da2d8293f498ad3eba50daa56408b1289c1e8f0cecece"><div class="ttname"><a href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498ad3eba50daa56408b1289c1e8f0cecece">FEEL_GOOD</a></div><div class="ttdeci">@ FEEL_GOOD</div><div class="ttdoc">簡易鑑定: 上質</div><div class="ttdef"><b>Definition:</b> item-feeling.h:15</div></div>
+<div class="ttc" id="aitem-feeling_8h_html_a6e7b344d522b8ce36ce9da2d8293f498ada1ff46b4496b43ed8c53191f0a3c6f2"><div class="ttname"><a href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498ada1ff46b4496b43ed8c53191f0a3c6f2">FEEL_NONE</a></div><div class="ttdeci">@ FEEL_NONE</div><div class="ttdoc">簡易鑑定: 未鑑定</div><div class="ttdef"><b>Definition:</b> item-feeling.h:8</div></div>
+<div class="ttc" id="aitem-feeling_8h_html_a6e7b344d522b8ce36ce9da2d8293f498aff5f1ebadfe2e8173fb81c164c30068a"><div class="ttname"><a href="item-feeling_8h.html#a6e7b344d522b8ce36ce9da2d8293f498aff5f1ebadfe2e8173fb81c164c30068a">FEEL_CURSED</a></div><div class="ttdeci">@ FEEL_CURSED</div><div class="ttdoc">簡易鑑定: 呪われている</div><div class="ttdef"><b>Definition:</b> item-feeling.h:12</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

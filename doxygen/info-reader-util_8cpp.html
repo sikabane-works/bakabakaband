@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/info-reader/info-reader-util.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_529b8da86662ab841593409a3db5f3bb.html">info-reader</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">info-reader-util.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="info-reader-util_8h_source.html">info-reader/info-reader-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-headers_8h_source.html">main/angband-headers.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="activation-info-table_8h_source.html">object-enchant/activation-info-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+info-reader-util.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-reader-util_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2info-reader_2info-reader-util_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2info-reader_2info-reader-util_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2info-reader_2info-reader-util_8cpp">
+<area shape="rect" title=" " alt="" coords="433,5,629,61"/>
+<area shape="rect" href="info-reader-util_8h.html" title=" " alt="" coords="183,109,329,151"/>
+<area shape="rect" href="angband-headers_8h.html" title=" " alt="" coords="354,117,518,143"/>
+<area shape="rect" href="activation-info-table_8h.html" title=" " alt="" coords="543,109,708,151"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="733,117,899,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="466,199,595,225"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="5,273,96,300"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="120,273,211,300"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="235,273,333,300"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="357,273,456,300"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="481,273,581,300"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="605,273,779,300"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="804,273,945,300"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,273,1116,300"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:ae347cc8b4ec13776cdf28dccd5527f78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="info-reader-util_8cpp.html#ae347cc8b4ec13776cdf28dccd5527f78">grab_one_flag</a> (<a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> *flags, <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> names[], <a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> what)</td></tr>
+<tr class="memdesc:ae347cc8b4ec13776cdf28dccd5527f78"><td class="mdescLeft">&#160;</td><td class="mdescRight">テキストトークンを走査してフラグを一つ得る(汎用) / Grab one flag from a textual string  <a href="info-reader-util_8cpp.html#ae347cc8b4ec13776cdf28dccd5527f78">[詳解]</a><br /></td></tr>
+<tr class="separator:ae347cc8b4ec13776cdf28dccd5527f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24f91de7ae5416cb8cbf57f55ebc8095"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="info-reader-util_8cpp.html#a24f91de7ae5416cb8cbf57f55ebc8095">grab_one_activation_flag</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> what)</td></tr>
+<tr class="memdesc:a24f91de7ae5416cb8cbf57f55ebc8095"><td class="mdescLeft">&#160;</td><td class="mdescRight">テキストトークンを走査してフラグを一つ得る(発動能力用) / Grab one activation index flag  <a href="info-reader-util_8cpp.html#a24f91de7ae5416cb8cbf57f55ebc8095">[詳解]</a><br /></td></tr>
+<tr class="separator:a24f91de7ae5416cb8cbf57f55ebc8095"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a3152252b76a86a474bf63419e528e939"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="info-reader-util_8cpp.html#a3152252b76a86a474bf63419e528e939">error_idx</a></td></tr>
+<tr class="memdesc:a3152252b76a86a474bf63419e528e939"><td class="mdescLeft">&#160;</td><td class="mdescRight">データ読み込み/初期化時に汎用的にエラーコードを保存するグローバル変数  <a href="info-reader-util_8cpp.html#a3152252b76a86a474bf63419e528e939">[詳解]</a><br /></td></tr>
+<tr class="separator:a3152252b76a86a474bf63419e528e939"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57ff7c9a75df068d19a120feb40b1971"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="info-reader-util_8cpp.html#a57ff7c9a75df068d19a120feb40b1971">error_line</a></td></tr>
+<tr class="memdesc:a57ff7c9a75df068d19a120feb40b1971"><td class="mdescLeft">&#160;</td><td class="mdescRight">データ読み込み/初期化時に汎用的にエラー行数を保存するグローバル変数  <a href="info-reader-util_8cpp.html#a57ff7c9a75df068d19a120feb40b1971">[詳解]</a><br /></td></tr>
+<tr class="separator:a57ff7c9a75df068d19a120feb40b1971"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a24f91de7ae5416cb8cbf57f55ebc8095"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24f91de7ae5416cb8cbf57f55ebc8095">&#9670;&nbsp;</a></span>grab_one_activation_flag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> grab_one_activation_flag </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>what</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>テキストトークンを走査してフラグを一つ得る(発動能力用) / Grab one activation index flag </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">what</td><td>参照元の文字列ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>発動能力ID </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-reader-util_8cpp_a24f91de7ae5416cb8cbf57f55ebc8095_cgraph.png" border="0" usemap="#ainfo-reader-util_8cpp_a24f91de7ae5416cb8cbf57f55ebc8095_cgraph" alt=""/></div>
+<map name="ainfo-reader-util_8cpp_a24f91de7ae5416cb8cbf57f55ebc8095_cgraph" id="ainfo-reader-util_8cpp_a24f91de7ae5416cb8cbf57f55ebc8095_cgraph">
+<area shape="rect" title="テキストトークンを走査してフラグを一つ得る(発動能力用) / Grab one activation index flag" alt="" coords="5,233,168,260"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="216,157,307,184"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="667,284,717,311"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="355,157,433,184"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="361,107,427,133"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="489,259,592,285"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="500,107,581,133"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="649,81,735,108"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="648,132,736,159"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="481,208,600,235"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="493,5,588,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-reader-util_8cpp_a24f91de7ae5416cb8cbf57f55ebc8095_icgraph.png" border="0" usemap="#ainfo-reader-util_8cpp_a24f91de7ae5416cb8cbf57f55ebc8095_icgraph" alt=""/></div>
+<map name="ainfo-reader-util_8cpp_a24f91de7ae5416cb8cbf57f55ebc8095_icgraph" id="ainfo-reader-util_8cpp_a24f91de7ae5416cb8cbf57f55ebc8095_icgraph">
+<area shape="rect" title="テキストトークンを走査してフラグを一つ得る(発動能力用) / Grab one activation index flag" alt="" coords="419,56,581,83"/>
+<area shape="rect" href="artifact-reader_8cpp.html#a0fcc8c202022aa9f8f6c5d3276ed034d" title="固定アーティファクト情報(a_info)のパース関数 / Initialize the &quot;a_info&quot; array, by parsing an ascii &quot;template&quot; file" alt="" coords="276,5,371,32"/>
+<area shape="rect" href="ego-reader_8cpp.html#a1ecbdfd717463f3c82faba9e63c45b78" title="アイテムエゴ情報(e_info)のパース関数 / Initialize the &quot;e_info&quot; array, by parsing an ascii &quot;template&quot; file" alt="" coords="276,56,371,83"/>
+<area shape="rect" href="kind-reader_8cpp.html#ac894ef42b2bebdb1a219e794f1d23e2f" title="ベースアイテム(k_info)のパース関数 / Initialize the &quot;k_info&quot; array, by parsing an ascii &quot;template&quot; file" alt="" coords="276,107,371,133"/>
+<area shape="rect" href="info-initializer_8cpp.html#a72058950b1c69cad45fb7630146dd902" title="固定アーティファクト情報読み込みのメインルーチン / Initialize the &quot;a_info&quot; array" alt="" coords="148,5,228,32"/>
+<area shape="rect" href="angband-initializer_8cpp.html#aeb43129ef8fbea1c72b20e1513eb9702" title="全ゲームデータ読み込みのメインルーチン /" alt="" coords="5,56,100,83"/>
+<area shape="rect" href="info-initializer_8cpp.html#a6e0fbbf31f7cef50bedcd966914aea0a" title="固定アーティファクト情報読み込みのメインルーチン / Initialize the &quot;e_info&quot; array" alt="" coords="148,56,228,83"/>
+<area shape="rect" href="info-initializer_8cpp.html#a48ac5c3ae431e17e03ae3edcdb732c0a" title="ベースアイテム情報読み込みのメインルーチン / Initialize the &quot;k_info&quot; array" alt="" coords="148,107,228,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae347cc8b4ec13776cdf28dccd5527f78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae347cc8b4ec13776cdf28dccd5527f78">&#9670;&nbsp;</a></span>grab_one_flag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> grab_one_flag </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> *&#160;</td>
+          <td class="paramname"><em>flags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>names</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>what</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>テキストトークンを走査してフラグを一つ得る(汎用) / Grab one flag from a textual string </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flags</td><td>ビットフラグを追加する先の参照ポインタ </td></tr>
+    <tr><td class="paramname">names</td><td>トークン定義配列 </td></tr>
+    <tr><td class="paramname">what</td><td>参照元の文字列ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-reader-util_8cpp_ae347cc8b4ec13776cdf28dccd5527f78_cgraph.png" border="0" usemap="#ainfo-reader-util_8cpp_ae347cc8b4ec13776cdf28dccd5527f78_cgraph" alt=""/></div>
+<map name="ainfo-reader-util_8cpp_ae347cc8b4ec13776cdf28dccd5527f78_cgraph" id="ainfo-reader-util_8cpp_ae347cc8b4ec13776cdf28dccd5527f78_cgraph">
+<area shape="rect" title="テキストトークンを走査してフラグを一つ得る(汎用) / Grab one flag from a textual string" alt="" coords="5,5,108,32"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="156,5,207,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="info-reader-util_8cpp_ae347cc8b4ec13776cdf28dccd5527f78_icgraph.png" border="0" usemap="#ainfo-reader-util_8cpp_ae347cc8b4ec13776cdf28dccd5527f78_icgraph" alt=""/></div>
+<map name="ainfo-reader-util_8cpp_ae347cc8b4ec13776cdf28dccd5527f78_icgraph" id="ainfo-reader-util_8cpp_ae347cc8b4ec13776cdf28dccd5527f78_icgraph">
+<area shape="rect" title="テキストトークンを走査してフラグを一つ得る(汎用) / Grab one flag from a textual string" alt="" coords="519,56,621,83"/>
+<area shape="rect" href="race-reader_8cpp.html#a7779dd4c8a53dddfb104770647d9d6df" title="テキストトークンを走査してフラグを一つ得る(モンスター用1) / Grab one (basic) flag in a monster_race from a textual string" alt="" coords="303,5,443,32"/>
+<area shape="rect" href="dungeon-reader_8cpp.html#af33677607b85bece43029080cad54db4" title="テキストトークンを走査してフラグを一つ得る(モンスターのダンジョン出現条件用1) / Grab one (basic) flag in a monster_race from a textual str..." alt="" coords="276,56,471,83"/>
+<area shape="rect" href="dungeon-reader_8cpp.html#a514c72d81e9f14270c1d4fe0ae25e64f" title="テキストトークンを走査してフラグを一つ得る(ダンジョン用) / Grab one flag for a dungeon type from a textual string" alt="" coords="294,107,453,133"/>
+<area shape="rect" href="race-reader_8cpp.html#aaec14a7640f4b8b2b9558b36db697afb" title="モンスター種族情報(r_info)のパース関数 / Initialize the &quot;r_info&quot; array, by parsing an ascii &quot;template&quot; file" alt="" coords="135,5,227,32"/>
+<area shape="rect" href="info-initializer_8cpp.html#a20aa822617912408066a0abab5beabec" title="モンスター種族情報読み込みのメインルーチン / Initialize the &quot;r_info&quot; array" alt="" coords="7,5,84,32"/>
+<area shape="rect" href="dungeon-reader_8cpp.html#aba702f5acbe7b7b12ce87725277e8953" title="ダンジョン情報(d_info)のパース関数 / Initialize the &quot;d_info&quot; array, by parsing an ascii &quot;template&quot; file" alt="" coords="133,81,228,108"/>
+<area shape="rect" href="info-initializer_8cpp.html#a9401aef7490ccc8d9fcd2d4199963b37" title="ダンジョン情報読み込みのメインルーチン / Initialize the &quot;d_info&quot; array" alt="" coords="5,81,85,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a3152252b76a86a474bf63419e528e939"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3152252b76a86a474bf63419e528e939">&#9670;&nbsp;</a></span>error_idx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int error_idx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>データ読み込み/初期化時に汎用的にエラーコードを保存するグローバル変数 </p>
+
+</div>
+</div>
+<a id="a57ff7c9a75df068d19a120feb40b1971"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57ff7c9a75df068d19a120feb40b1971">&#9670;&nbsp;</a></span>error_line</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int error_line</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>データ読み込み/初期化時に汎用的にエラー行数を保存するグローバル変数 </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分22秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

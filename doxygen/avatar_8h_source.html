@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player-info/avatar.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_71bb7b4142074e6b6cdcd57a4541b611.html">player-info</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">avatar.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="avatar_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="avatar_8h.html#a393a9ddfa0af406b07ae1b8490d71a7b">    5</a></span>&#160;<span class="preprocessor">#define MAX_VIRTUE 18 </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="avatar_8h.html#a9d08fff0c9b082834f9d20c017444a06">    7</a></span>&#160;<span class="preprocessor">#define V_COMPASSION    1</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="avatar_8h.html#a9b071fc3f9d6f529ffb89a362aad2237">    8</a></span>&#160;<span class="preprocessor">#define V_HONOUR        2</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="avatar_8h.html#af217ffbea0fc6a6420c9781b7eb2a3ac">    9</a></span>&#160;<span class="preprocessor">#define V_JUSTICE       3</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="avatar_8h.html#a049621b33de0d9fd6ac41956f7e2261d">   10</a></span>&#160;<span class="preprocessor">#define V_SACRIFICE     4</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="avatar_8h.html#a62c812b22b27da9f0ac6a474d778501f">   11</a></span>&#160;<span class="preprocessor">#define V_KNOWLEDGE     5</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="avatar_8h.html#a1553eeaead2603a69b8d9439a222fc4c">   12</a></span>&#160;<span class="preprocessor">#define V_FAITH         6</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="avatar_8h.html#a8516ad4f3d831f3fcf1c5854ab186470">   13</a></span>&#160;<span class="preprocessor">#define V_ENLIGHTEN     7</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="avatar_8h.html#a139080787bd614553e47c2c5221e09ed">   14</a></span>&#160;<span class="preprocessor">#define V_ENCHANT       8</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="avatar_8h.html#a35bd99f9dc7cefdeba2e19ffb411954d">   15</a></span>&#160;<span class="preprocessor">#define V_CHANCE        9</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="avatar_8h.html#a32bfaff0e8d47216a67ede5a14f7fdee">   16</a></span>&#160;<span class="preprocessor">#define V_NATURE       10</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="avatar_8h.html#a4fe39f85fc4725dbb685de97b4b07b9c">   17</a></span>&#160;<span class="preprocessor">#define V_HARMONY      11</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="avatar_8h.html#acb52b03b3b715b2600b5366999762b02">   18</a></span>&#160;<span class="preprocessor">#define V_VITALITY     12</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="avatar_8h.html#a9bdc89a8b11f43b8323175d07db97c96">   19</a></span>&#160;<span class="preprocessor">#define V_UNLIFE       13</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="avatar_8h.html#a7ac0915802589273c9e781fa9af2f6fa">   20</a></span>&#160;<span class="preprocessor">#define V_PATIENCE     14</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="avatar_8h.html#ab542a07c7907da03cf93e3f29fda1432">   21</a></span>&#160;<span class="preprocessor">#define V_TEMPERANCE       15</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="avatar_8h.html#a9ccb308ad462977a5b02417e666b0356">   22</a></span>&#160;<span class="preprocessor">#define V_DILIGENCE    16</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="avatar_8h.html#adc27ca6d646e80f9162b60b3cd098b70">   23</a></span>&#160;<span class="preprocessor">#define V_VALOUR       17</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="avatar_8h.html#a8d1118f034e4401ea0e65a9f9ebaf69c">   24</a></span>&#160;<span class="preprocessor">#define V_INDIVIDUALISM    18</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="avatar_8h.html#a0f0051ab477e42d0a0db0ace3b811b39">   26</a></span>&#160;<span class="preprocessor">#define VIRTUE_LARGE 1</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="avatar_8h.html#a74b9fab7c9b326ce846f90ee04d8f241">   27</a></span>&#160;<span class="preprocessor">#define VIRTUE_SMALL 2</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="avatar_8h.html#a0765c8ac8ec8795f5177062841d047cf">compare_virtue</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">int</span> type, <span class="keywordtype">int</span> num, <span class="keywordtype">int</span> tekitou);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">int</span> <a class="code" href="avatar_8h.html#a9f77c7a74f4dd1df02cd6e40b532f2ed">virtue_number</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">int</span> type);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="avatar_8h.html#a524031de97471682df469f517df6798e">virtue</a>[<a class="code" href="avatar_8h.html#a393a9ddfa0af406b07ae1b8490d71a7b">MAX_VIRTUE</a>];</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="avatar_8h.html#a22da968625c13cae0f5b66e3d017b716">get_virtues</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> <a class="code" href="avatar_8h.html#a0b27a0959b27b2a3838ef65e598e5373">chg_virtue</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">int</span> <a class="code" href="avatar_8h.html#a524031de97471682df469f517df6798e">virtue</a>, <span class="keywordtype">int</span> amount);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> <a class="code" href="avatar_8h.html#affd99530c999ecd923b7049fb0ee65de">set_virtue</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">int</span> <a class="code" href="avatar_8h.html#a524031de97471682df469f517df6798e">virtue</a>, <span class="keywordtype">int</span> amount);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">void</span> <a class="code" href="avatar_8h.html#a3cb0517b62d3cfc5a5ee25ed58716280">dump_virtues</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, FILE *OutFile);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="aavatar_8h_html_a0765c8ac8ec8795f5177062841d047cf"><div class="ttname"><a href="avatar_8h.html#a0765c8ac8ec8795f5177062841d047cf">compare_virtue</a></div><div class="ttdeci">bool compare_virtue(player_type *creature_ptr, int type, int num, int tekitou)</div><div class="ttdoc">該当の徳がプレイヤーに指定されているか否かに応じつつ、大小を比較する。</div><div class="ttdef"><b>Definition:</b> avatar.cpp:55</div></div>
+<div class="ttc" id="aavatar_8h_html_a0b27a0959b27b2a3838ef65e598e5373"><div class="ttname"><a href="avatar_8h.html#a0b27a0959b27b2a3838ef65e598e5373">chg_virtue</a></div><div class="ttdeci">void chg_virtue(player_type *creature_ptr, int virtue, int amount)</div><div class="ttdoc">対応する徳をプレイヤーがスロットに登録している場合に加減を行う。</div><div class="ttdef"><b>Definition:</b> avatar.cpp:446</div></div>
+<div class="ttc" id="aavatar_8h_html_a22da968625c13cae0f5b66e3d017b716"><div class="ttname"><a href="avatar_8h.html#a22da968625c13cae0f5b66e3d017b716">get_virtues</a></div><div class="ttdeci">void get_virtues(player_type *creature_ptr)</div><div class="ttdoc">作成中のプレイヤーキャラクターに徳8種類を与える。 / Select virtues &amp; reset values for a new character</div><div class="ttdef"><b>Definition:</b> avatar.cpp:215</div></div>
+<div class="ttc" id="aavatar_8h_html_a393a9ddfa0af406b07ae1b8490d71a7b"><div class="ttname"><a href="avatar_8h.html#a393a9ddfa0af406b07ae1b8490d71a7b">MAX_VIRTUE</a></div><div class="ttdeci">#define MAX_VIRTUE</div><div class="ttdoc">徳定義の最大数</div><div class="ttdef"><b>Definition:</b> avatar.h:5</div></div>
+<div class="ttc" id="aavatar_8h_html_a3cb0517b62d3cfc5a5ee25ed58716280"><div class="ttname"><a href="avatar_8h.html#a3cb0517b62d3cfc5a5ee25ed58716280">dump_virtues</a></div><div class="ttdeci">void dump_virtues(player_type *creature_ptr, FILE *OutFile)</div><div class="ttdoc">徳のダンプ表示を行う</div><div class="ttdef"><b>Definition:</b> avatar.cpp:519</div></div>
+<div class="ttc" id="aavatar_8h_html_a524031de97471682df469f517df6798e"><div class="ttname"><a href="avatar_8h.html#a524031de97471682df469f517df6798e">virtue</a></div><div class="ttdeci">concptr virtue[MAX_VIRTUE]</div><div class="ttdoc">ウルティマ4を参考にした徳のシステムの実装 / Enable an Ultima IV style &quot;avatar&quot; game where you try to achieve perfection i...</div><div class="ttdef"><b>Definition:</b> avatar.cpp:25</div></div>
+<div class="ttc" id="aavatar_8h_html_a9f77c7a74f4dd1df02cd6e40b532f2ed"><div class="ttname"><a href="avatar_8h.html#a9f77c7a74f4dd1df02cd6e40b532f2ed">virtue_number</a></div><div class="ttdeci">int virtue_number(player_type *creature_ptr, int type)</div><div class="ttdoc">プレイヤーの指定の徳が何番目のスロットに登録されているかを返す。 / Aux function</div><div class="ttdef"><b>Definition:</b> avatar.cpp:79</div></div>
+<div class="ttc" id="aavatar_8h_html_affd99530c999ecd923b7049fb0ee65de"><div class="ttname"><a href="avatar_8h.html#affd99530c999ecd923b7049fb0ee65de">set_virtue</a></div><div class="ttdeci">void set_virtue(player_type *creature_ptr, int virtue, int amount)</div><div class="ttdoc">対応する徳をプレイヤーがスロットに登録している場合に固定値をセットする</div><div class="ttdef"><b>Definition:</b> avatar.cpp:505</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

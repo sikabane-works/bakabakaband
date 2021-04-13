@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/info-reader/general-parser.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_529b8da86662ab841593409a3db5f3bb.html">info-reader</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">general-parser.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="general-parser_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">enum</span> <a class="code" href="parse-error-types_8h.html#a0910e3ed68e027a6e5d590d1520c1697">parse_error_type</a> : int;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structdungeon__grid.html">    7</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structdungeon__grid.html">dungeon_grid</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structdungeon__grid.html#ac2d4e4fdcbf8b98e1248ab11ed70bfae">    8</a></span>&#160;    <a class="code" href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a> <a class="code" href="structdungeon__grid.html#ac2d4e4fdcbf8b98e1248ab11ed70bfae">feature</a>; <span class="comment">/* Terrain feature */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structdungeon__grid.html#a788de96c8ef70b9dd7318e9652a1b4fe">    9</a></span>&#160;    <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> <a class="code" href="structdungeon__grid.html#a788de96c8ef70b9dd7318e9652a1b4fe">monster</a>; <span class="comment">/* Monster */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structdungeon__grid.html#a3584092fccd12193811d2151782b6ccc">   10</a></span>&#160;    <a class="code" href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a> <a class="code" href="structdungeon__grid.html#a3584092fccd12193811d2151782b6ccc">object</a>; <span class="comment">/* Object */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structdungeon__grid.html#ac17f3de929213342273dee75df78060e">   11</a></span>&#160;    <a class="code" href="h-type_8h.html#ad436c265819d8e3689955f6d5a6c67dc">EGO_IDX</a> <a class="code" href="structdungeon__grid.html#ac17f3de929213342273dee75df78060e">ego</a>; <span class="comment">/* Ego-Item */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structdungeon__grid.html#af3ee2163a6d0ea57040ac1b525f73ecb">   12</a></span>&#160;    <a class="code" href="h-type_8h.html#a4fc040f8a9ad313d0ce50224ff8841a0">ARTIFACT_IDX</a> <a class="code" href="structdungeon__grid.html#af3ee2163a6d0ea57040ac1b525f73ecb">artifact</a>; <span class="comment">/* Artifact */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structdungeon__grid.html#ad8edc25e92ce477fb339a4d613be423c">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#a3f634297ff78d56cc39e0f92ea8a65a8">IDX</a> <a class="code" href="structdungeon__grid.html#ad8edc25e92ce477fb339a4d613be423c">trap</a>; <span class="comment">/* Trap */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structdungeon__grid.html#aa8b9bec5970970218613b02fc4372522">   14</a></span>&#160;    <a class="code" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> <a class="code" href="structdungeon__grid.html#aa8b9bec5970970218613b02fc4372522">cave_info</a>; <span class="comment">/* Flags for CAVE_MARK, CAVE_GLOW, CAVE_ICKY, CAVE_ROOM */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structdungeon__grid.html#a4a7d1be0e54eda2045f9b379a7270c31">   15</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structdungeon__grid.html#a4a7d1be0e54eda2045f9b379a7270c31">special</a>; <span class="comment">/* Reserved for special terrain info */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structdungeon__grid.html#a2e968c6ef5eb88b93c6502e1f3714ad4">   16</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structdungeon__grid.html#a2e968c6ef5eb88b93c6502e1f3714ad4">random</a>; <span class="comment">/* Number of the random effect */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="general-parser_8h.html#aa414401d5ebf9015d8302d5df88e5a03">   17</a></span>&#160;} <a class="code" href="general-parser_8h.html#aa414401d5ebf9015d8302d5df88e5a03">dungeon_grid</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="general-parser_8h.html#ae5fc28efa613c01be477eb59b0c6d165">   19</a></span>&#160;<span class="keyword">extern</span> <a class="code" href="structdungeon__grid.html">dungeon_grid</a> <a class="code" href="general-parser_8h.html#ad20065d2367d2f8c9e70940a029c3744">letter</a>[255];</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structangband__header.html">angband_header</a> <a class="code" href="structangband__header.html">angband_header</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="general-parser_8h.html#afa96d741aab523f29c013f42a423fe70">   22</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> (*<a class="code" href="general-parser_8h.html#afa96d741aab523f29c013f42a423fe70">parse_info_txt_func</a>)(<span class="keywordtype">char</span> *<a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="code" href="structangband__header.html">angband_header</a> *head);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<a class="code" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> <a class="code" href="general-parser_8h.html#a96e4209594e62bec5a929f380252070c">init_info_txt</a>(FILE *fp, <span class="keywordtype">char</span> *<a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="code" href="structangband__header.html">angband_header</a> *head, <a class="code" href="general-parser_8h.html#afa96d741aab523f29c013f42a423fe70">parse_info_txt_func</a> parse_info_txt_line);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<a class="code" href="parse-error-types_8h.html#a0910e3ed68e027a6e5d590d1520c1697">parse_error_type</a> <a class="code" href="general-parser_8h.html#a28dc0c306a8a3470513e70613befd73c">parse_line_feature</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr, <span class="keywordtype">char</span> *<a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<a class="code" href="parse-error-types_8h.html#a0910e3ed68e027a6e5d590d1520c1697">parse_error_type</a> <a class="code" href="general-parser_8h.html#aa7365eeb41a50984801069e5ceac540f">parse_line_building</a>(<span class="keywordtype">char</span> *<a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ageneral-parser_8h_html_a28dc0c306a8a3470513e70613befd73c"><div class="ttname"><a href="general-parser_8h.html#a28dc0c306a8a3470513e70613befd73c">parse_line_feature</a></div><div class="ttdeci">parse_error_type parse_line_feature(floor_type *floor_ptr, char *buf)</div><div class="ttdoc">地形情報の「F:」情報をパースする Process &quot;F:&lt;letter&gt;:&lt;terrain&gt;:&lt;cave_info&gt;:&lt;monster&gt;:&lt;object&gt;:&lt;ego&gt;:&lt;artifact&gt;:&lt;trap...</div><div class="ttdef"><b>Definition:</b> general-parser.cpp:70</div></div>
+<div class="ttc" id="ageneral-parser_8h_html_a96e4209594e62bec5a929f380252070c"><div class="ttname"><a href="general-parser_8h.html#a96e4209594e62bec5a929f380252070c">init_info_txt</a></div><div class="ttdeci">errr init_info_txt(FILE *fp, char *buf, angband_header *head, parse_info_txt_func parse_info_txt_line)</div><div class="ttdoc">パース関数に基づいてデータファイルからデータを読み取る / Initialize an &quot;*_info&quot; array, by parsing an ascii &quot;template&quot; file</div><div class="ttdef"><b>Definition:</b> general-parser.cpp:30</div></div>
+<div class="ttc" id="ageneral-parser_8h_html_aa414401d5ebf9015d8302d5df88e5a03"><div class="ttname"><a href="general-parser_8h.html#aa414401d5ebf9015d8302d5df88e5a03">dungeon_grid</a></div><div class="ttdeci">enum parse_error_type int struct dungeon_grid dungeon_grid</div></div>
+<div class="ttc" id="ageneral-parser_8h_html_aa7365eeb41a50984801069e5ceac540f"><div class="ttname"><a href="general-parser_8h.html#aa7365eeb41a50984801069e5ceac540f">parse_line_building</a></div><div class="ttdeci">parse_error_type parse_line_building(char *buf)</div><div class="ttdoc">地形情報の「B:」情報をパースする Process &quot;B:&lt;Index&gt;:&lt;Command&gt;:...&quot; – Building definition</div><div class="ttdef"><b>Definition:</b> general-parser.cpp:182</div></div>
+<div class="ttc" id="ageneral-parser_8h_html_ad20065d2367d2f8c9e70940a029c3744"><div class="ttname"><a href="general-parser_8h.html#ad20065d2367d2f8c9e70940a029c3744">letter</a></div><div class="ttdeci">dungeon_grid letter[255]</div><div class="ttdef"><b>Definition:</b> general-parser.cpp:19</div></div>
+<div class="ttc" id="ageneral-parser_8h_html_afa96d741aab523f29c013f42a423fe70"><div class="ttname"><a href="general-parser_8h.html#afa96d741aab523f29c013f42a423fe70">parse_info_txt_func</a></div><div class="ttdeci">errr(* parse_info_txt_func)(char *buf, angband_header *head)</div><div class="ttdef"><b>Definition:</b> general-parser.h:22</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_a30141f88547728df57f6a10c56fbeb8f"><div class="ttname"><a href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a></div><div class="ttdeci">s16b OBJECT_IDX</div><div class="ttdoc">ゲーム中のアイテムID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:121</div></div>
+<div class="ttc" id="ah-type_8h_html_a388a375ee4bbca7b74cd70f9cb26e187"><div class="ttname"><a href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a></div><div class="ttdeci">u32b BIT_FLAGS</div><div class="ttdoc">32ビットのフラグ配列の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:203</div></div>
+<div class="ttc" id="ah-type_8h_html_a3f634297ff78d56cc39e0f92ea8a65a8"><div class="ttname"><a href="h-type_8h.html#a3f634297ff78d56cc39e0f92ea8a65a8">IDX</a></div><div class="ttdeci">s16b IDX</div><div class="ttdoc">ゲーム中のID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:96</div></div>
+<div class="ttc" id="ah-type_8h_html_a4fc040f8a9ad313d0ce50224ff8841a0"><div class="ttname"><a href="h-type_8h.html#a4fc040f8a9ad313d0ce50224ff8841a0">ARTIFACT_IDX</a></div><div class="ttdeci">s16b ARTIFACT_IDX</div><div class="ttdoc">ゲーム中のアーティファクトID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:113</div></div>
+<div class="ttc" id="ah-type_8h_html_a85b58bbae289409cd01a8a413e991f12"><div class="ttname"><a href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a></div><div class="ttdeci">s16b FEAT_IDX</div><div class="ttdoc">ゲーム中の地形ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:99</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="ah-type_8h_html_ad436c265819d8e3689955f6d5a6c67dc"><div class="ttname"><a href="h-type_8h.html#ad436c265819d8e3689955f6d5a6c67dc">EGO_IDX</a></div><div class="ttdeci">s16b EGO_IDX</div><div class="ttdoc">アイテムエゴのID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:114</div></div>
+<div class="ttc" id="ah-type_8h_html_ad99e8b64263d5831d93bec22e89da527"><div class="ttname"><a href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a></div><div class="ttdeci">int errr</div><div class="ttdoc">エラーコードの定義 / Error codes for function return values</div><div class="ttdef"><b>Definition:</b> h-type.h:53</div></div>
+<div class="ttc" id="aparse-error-types_8h_html_a0910e3ed68e027a6e5d590d1520c1697"><div class="ttname"><a href="parse-error-types_8h.html#a0910e3ed68e027a6e5d590d1520c1697">parse_error_type</a></div><div class="ttdeci">parse_error_type</div><div class="ttdef"><b>Definition:</b> parse-error-types.h:3</div></div>
+<div class="ttc" id="arecord-play-movie_8cpp_html_a1fe855c208bc17a51a4d34fefdb2d5b1"><div class="ttname"><a href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a></div><div class="ttdeci">char * buf</div><div class="ttdef"><b>Definition:</b> record-play-movie.cpp:54</div></div>
+<div class="ttc" id="astructangband__header_html"><div class="ttname"><a href="structangband__header.html">angband_header</a></div><div class="ttdef"><b>Definition:</b> angband-headers.h:11</div></div>
+<div class="ttc" id="astructdungeon__grid_html"><div class="ttname"><a href="structdungeon__grid.html">dungeon_grid</a></div><div class="ttdef"><b>Definition:</b> general-parser.h:7</div></div>
+<div class="ttc" id="astructdungeon__grid_html_a2e968c6ef5eb88b93c6502e1f3714ad4"><div class="ttname"><a href="structdungeon__grid.html#a2e968c6ef5eb88b93c6502e1f3714ad4">dungeon_grid::random</a></div><div class="ttdeci">int random</div><div class="ttdef"><b>Definition:</b> general-parser.h:16</div></div>
+<div class="ttc" id="astructdungeon__grid_html_a3584092fccd12193811d2151782b6ccc"><div class="ttname"><a href="structdungeon__grid.html#a3584092fccd12193811d2151782b6ccc">dungeon_grid::object</a></div><div class="ttdeci">OBJECT_IDX object</div><div class="ttdef"><b>Definition:</b> general-parser.h:10</div></div>
+<div class="ttc" id="astructdungeon__grid_html_a4a7d1be0e54eda2045f9b379a7270c31"><div class="ttname"><a href="structdungeon__grid.html#a4a7d1be0e54eda2045f9b379a7270c31">dungeon_grid::special</a></div><div class="ttdeci">s16b special</div><div class="ttdef"><b>Definition:</b> general-parser.h:15</div></div>
+<div class="ttc" id="astructdungeon__grid_html_a788de96c8ef70b9dd7318e9652a1b4fe"><div class="ttname"><a href="structdungeon__grid.html#a788de96c8ef70b9dd7318e9652a1b4fe">dungeon_grid::monster</a></div><div class="ttdeci">MONSTER_IDX monster</div><div class="ttdef"><b>Definition:</b> general-parser.h:9</div></div>
+<div class="ttc" id="astructdungeon__grid_html_aa8b9bec5970970218613b02fc4372522"><div class="ttname"><a href="structdungeon__grid.html#aa8b9bec5970970218613b02fc4372522">dungeon_grid::cave_info</a></div><div class="ttdeci">BIT_FLAGS cave_info</div><div class="ttdef"><b>Definition:</b> general-parser.h:14</div></div>
+<div class="ttc" id="astructdungeon__grid_html_ac17f3de929213342273dee75df78060e"><div class="ttname"><a href="structdungeon__grid.html#ac17f3de929213342273dee75df78060e">dungeon_grid::ego</a></div><div class="ttdeci">EGO_IDX ego</div><div class="ttdef"><b>Definition:</b> general-parser.h:11</div></div>
+<div class="ttc" id="astructdungeon__grid_html_ac2d4e4fdcbf8b98e1248ab11ed70bfae"><div class="ttname"><a href="structdungeon__grid.html#ac2d4e4fdcbf8b98e1248ab11ed70bfae">dungeon_grid::feature</a></div><div class="ttdeci">FEAT_IDX feature</div><div class="ttdef"><b>Definition:</b> general-parser.h:8</div></div>
+<div class="ttc" id="astructdungeon__grid_html_ad8edc25e92ce477fb339a4d613be423c"><div class="ttname"><a href="structdungeon__grid.html#ad8edc25e92ce477fb339a4d613be423c">dungeon_grid::trap</a></div><div class="ttdeci">IDX trap</div><div class="ttdef"><b>Definition:</b> general-parser.h:13</div></div>
+<div class="ttc" id="astructdungeon__grid_html_af3ee2163a6d0ea57040ac1b525f73ecb"><div class="ttname"><a href="structdungeon__grid.html#af3ee2163a6d0ea57040ac1b525f73ecb">dungeon_grid::artifact</a></div><div class="ttdeci">ARTIFACT_IDX artifact</div><div class="ttdef"><b>Definition:</b> general-parser.h:12</div></div>
+<div class="ttc" id="astructfloor__type_html"><div class="ttname"><a href="structfloor__type.html">floor_type</a></div><div class="ttdef"><b>Definition:</b> floor-type-definition.h:10</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

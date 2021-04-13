@@ -1,0 +1,1419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/io/interpret-pref-file.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html">io</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">interpret-pref-file.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="interpret-pref-file_8h_source.html">io/interpret-pref-file.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="character-builder_8h_source.html">birth/character-builder.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="macro-util_8h_source.html">cmd-io/macro-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="option-flags_8h_source.html">game-option/option-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="option-types-table_8h_source.html">game-option/option-types-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="feature_8h_source.html">grid/feature.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gf-descriptions_8h_source.html">io/gf-descriptions.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-requester_8h_source.html">io/input-key-requester.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tokenizer_8h_source.html">io/tokenizer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind_8h_source.html">object/object-kind.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="game-option-types_8h_source.html">system/game-option-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gameterm_8h_source.html">term/gameterm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quarks_8h_source.html">util/quarks.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="string-processor_8h_source.html">util/string-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+interpret-pref-file.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2io_2interpret-pref-file_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2io_2interpret-pref-file_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2io_2interpret-pref-file_8cpp">
+<area shape="rect" title=" " alt="" coords="931,5,1129,61"/>
+<area shape="rect" href="interpret-pref-file_8h.html" title=" " alt="" coords="781,206,919,233"/>
+<area shape="rect" href="character-builder_8h.html" title=" " alt="" coords="5,117,164,143"/>
+<area shape="rect" href="macro-util_8h.html" title=" " alt="" coords="189,117,322,143"/>
+<area shape="rect" href="option-flags_8h.html" title=" " alt="" coords="347,109,479,151"/>
+<area shape="rect" href="option-types-table_8h.html" title=" " alt="" coords="677,109,809,151"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="1537,206,1635,233"/>
+<area shape="rect" href="gf-descriptions_8h.html" title=" " alt="" coords="1418,117,1549,143"/>
+<area shape="rect" href="input-key-requester_8h.html" title=" " alt="" coords="1235,117,1393,143"/>
+<area shape="rect" href="tokenizer_8h.html" title=" " alt="" coords="400,295,500,322"/>
+<area shape="rect" href="object-kind_8h.html" title=" " alt="" coords="2351,206,2485,233"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="1769,109,1918,151"/>
+<area shape="rect" href="game-option-types_8h.html" title=" " alt="" coords="1993,109,2133,151"/>
+<area shape="rect" href="gameterm_8h.html" title=" " alt="" coords="969,117,1091,143"/>
+<area shape="rect" href="quarks_8h.html" title=" " alt="" coords="487,206,581,233"/>
+<area shape="rect" href="string-processor_8h.html" title=" " alt="" coords="1659,206,1806,233"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="576,295,743,322"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="1147,206,1244,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1179,385,1308,411"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1198,467,1289,493"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1313,467,1403,493"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1427,467,1526,493"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1550,467,1649,493"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="709,467,809,493"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="833,467,1008,493"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1033,467,1174,493"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1673,467,1819,493"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="2621,541,2732,568"/>
+<area shape="rect" title=" " alt="" coords="655,206,706,233"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="1429,295,1586,322"/>
+<area shape="rect" title=" " alt="" coords="1901,295,1956,322"/>
+<area shape="rect" title=" " alt="" coords="1770,295,1826,322"/>
+<area shape="rect" href="keymap-directory-getter_8h.html" title=" " alt="" coords="1268,199,1411,240"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="2715,288,2841,329"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="2506,288,2639,329"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="2509,385,2636,411"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="2041,199,2187,240"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="2273,377,2433,419"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="2221,288,2381,329"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="2031,288,2197,329"/>
+<area shape="rect" href="spell-types_8h.html" title=" " alt="" coords="944,206,1071,233"/>
+<area shape="rect" title=" " alt="" coords="1610,295,1695,322"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a311640379c5c404876e17213171cfdd0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#a311640379c5c404876e17213171cfdd0">MAX_MACRO_CHARS</a>&#160;&#160;&#160;16128</td></tr>
+<tr class="memdesc:a311640379c5c404876e17213171cfdd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">prefファイルの内容を解釈しメモリに展開する  <a href="interpret-pref-file_8cpp.html#a311640379c5c404876e17213171cfdd0">[詳解]</a><br /></td></tr>
+<tr class="separator:a311640379c5c404876e17213171cfdd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a0bfe992eed3827c822abfa52a6d4f306"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#a0bfe992eed3827c822abfa52a6d4f306">interpret_r_token</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:a0bfe992eed3827c822abfa52a6d4f306"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rトークンの解釈 / Process "R:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;" &ndash; attr/char for monster races  <a href="interpret-pref-file_8cpp.html#a0bfe992eed3827c822abfa52a6d4f306">[詳解]</a><br /></td></tr>
+<tr class="separator:a0bfe992eed3827c822abfa52a6d4f306"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc81494124b42d318cb5200dfe26ac76"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#adc81494124b42d318cb5200dfe26ac76">interpret_k_token</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:adc81494124b42d318cb5200dfe26ac76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kトークンの解釈 / Process "K:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;" &ndash; attr/char for object kinds  <a href="interpret-pref-file_8cpp.html#adc81494124b42d318cb5200dfe26ac76">[詳解]</a><br /></td></tr>
+<tr class="separator:adc81494124b42d318cb5200dfe26ac76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0011303761b2478fc37543c797f92e78"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#a0011303761b2478fc37543c797f92e78">decide_feature_type</a> (int i, int num, char **zz)</td></tr>
+<tr class="memdesc:a0011303761b2478fc37543c797f92e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">トークン数によって地形の文字形と色を決定する  <a href="interpret-pref-file_8cpp.html#a0011303761b2478fc37543c797f92e78">[詳解]</a><br /></td></tr>
+<tr class="separator:a0011303761b2478fc37543c797f92e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f56f4c3b59fcd8454b8602b31bae777"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#a2f56f4c3b59fcd8454b8602b31bae777">interpret_f_token</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:a2f56f4c3b59fcd8454b8602b31bae777"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fトークンの解釈 / Process "F:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;" &ndash; attr/char for terrain features  <a href="interpret-pref-file_8cpp.html#a2f56f4c3b59fcd8454b8602b31bae777">[詳解]</a><br /></td></tr>
+<tr class="separator:a2f56f4c3b59fcd8454b8602b31bae777"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32921b32c2098f77aff1939c31672fea"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#a32921b32c2098f77aff1939c31672fea">interpret_s_token</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:a32921b32c2098f77aff1939c31672fea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fトークンの解釈 / Process "S:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;" &ndash; attr/char for special things  <a href="interpret-pref-file_8cpp.html#a32921b32c2098f77aff1939c31672fea">[詳解]</a><br /></td></tr>
+<tr class="separator:a32921b32c2098f77aff1939c31672fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab069fce9039d87c13f55b0fb9c82d2e4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#ab069fce9039d87c13f55b0fb9c82d2e4">interpret_u_token</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:ab069fce9039d87c13f55b0fb9c82d2e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uトークンの解釈 / Process "U:&lt;tv&gt;:&lt;a&gt;/&lt;c&gt;" &ndash; attr/char for unaware items  <a href="interpret-pref-file_8cpp.html#ab069fce9039d87c13f55b0fb9c82d2e4">[詳解]</a><br /></td></tr>
+<tr class="separator:ab069fce9039d87c13f55b0fb9c82d2e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a841f766f2e55905b1ff5a405415a8db2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#a841f766f2e55905b1ff5a405415a8db2">interpret_e_token</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:a841f766f2e55905b1ff5a405415a8db2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eトークンの解釈 / Process "E:&lt;tv&gt;:&lt;a&gt;" &ndash; attribute for inventory objects  <a href="interpret-pref-file_8cpp.html#a841f766f2e55905b1ff5a405415a8db2">[詳解]</a><br /></td></tr>
+<tr class="separator:a841f766f2e55905b1ff5a405415a8db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae76beaa104aba565a996a08b8d759801"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#ae76beaa104aba565a996a08b8d759801">interpret_p_token</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:ae76beaa104aba565a996a08b8d759801"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pトークンの解釈 / Process "P:&lt;str&gt;" &ndash; normal macro  <a href="interpret-pref-file_8cpp.html#ae76beaa104aba565a996a08b8d759801">[詳解]</a><br /></td></tr>
+<tr class="separator:ae76beaa104aba565a996a08b8d759801"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcf03e6cdb3647e9d4dc3050cc54c330"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#adcf03e6cdb3647e9d4dc3050cc54c330">interpret_c_token</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:adcf03e6cdb3647e9d4dc3050cc54c330"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cトークンの解釈 / Process "C:&lt;str&gt;" &ndash; create keymap  <a href="interpret-pref-file_8cpp.html#adcf03e6cdb3647e9d4dc3050cc54c330">[詳解]</a><br /></td></tr>
+<tr class="separator:adcf03e6cdb3647e9d4dc3050cc54c330"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb494fb7df1679a948424cbda912fdd0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#adb494fb7df1679a948424cbda912fdd0">interpret_v_token</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:adb494fb7df1679a948424cbda912fdd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vトークンの解釈 / Process "V:&lt;num&gt;:&lt;kv&gt;:&lt;rv&gt;:&lt;gv&gt;:&lt;bv&gt;" &ndash; visual info  <a href="interpret-pref-file_8cpp.html#adb494fb7df1679a948424cbda912fdd0">[詳解]</a><br /></td></tr>
+<tr class="separator:adb494fb7df1679a948424cbda912fdd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0202dcda702dfc93683d39fb8934ad6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#ae0202dcda702dfc93683d39fb8934ad6">interpret_xy_token</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:ae0202dcda702dfc93683d39fb8934ad6"><td class="mdescLeft">&#160;</td><td class="mdescRight">X/Yトークンの解釈  <a href="interpret-pref-file_8cpp.html#ae0202dcda702dfc93683d39fb8934ad6">[詳解]</a><br /></td></tr>
+<tr class="separator:ae0202dcda702dfc93683d39fb8934ad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc3b1da3dfaf3d7e4e53b8140b61f8b7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#adc3b1da3dfaf3d7e4e53b8140b61f8b7">interpret_z_token</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:adc3b1da3dfaf3d7e4e53b8140b61f8b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zトークンの解釈 / Process "Z:&lt;type&gt;:&lt;str&gt;" &ndash; set spell color  <a href="interpret-pref-file_8cpp.html#adc3b1da3dfaf3d7e4e53b8140b61f8b7">[詳解]</a><br /></td></tr>
+<tr class="separator:adc3b1da3dfaf3d7e4e53b8140b61f8b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78ba73b307ed26ec3b6ccfbb91041286"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#a78ba73b307ed26ec3b6ccfbb91041286">decide_template_modifier</a> (int tok, char **zz)</td></tr>
+<tr class="memdesc:a78ba73b307ed26ec3b6ccfbb91041286"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tトークンの解釈 / Process "T:&lt;template&gt;:&lt;modifier chr&gt;:&lt;modifier name&gt;:..." for 4 tokens  <a href="interpret-pref-file_8cpp.html#a78ba73b307ed26ec3b6ccfbb91041286">[詳解]</a><br /></td></tr>
+<tr class="separator:a78ba73b307ed26ec3b6ccfbb91041286"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26940ed23872518ee3a27023c8110004"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#a26940ed23872518ee3a27023c8110004">interpret_macro_keycodes</a> (int tok, char **zz)</td></tr>
+<tr class="memdesc:a26940ed23872518ee3a27023c8110004"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tトークンの解釈 / Process "T:&lt;trigger&gt;:&lt;keycode&gt;:&lt;shift-keycode&gt;" for 2 or 3 tokens  <a href="interpret-pref-file_8cpp.html#a26940ed23872518ee3a27023c8110004">[詳解]</a><br /></td></tr>
+<tr class="separator:a26940ed23872518ee3a27023c8110004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88e70f45fe776a0a5ab284f68d73b7a9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#a88e70f45fe776a0a5ab284f68d73b7a9">interpret_t_token</a> (char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:a88e70f45fe776a0a5ab284f68d73b7a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tトークンの個数調査 (解釈はサブルーチンで) / Initialize macro trigger names and a template  <a href="interpret-pref-file_8cpp.html#a88e70f45fe776a0a5ab284f68d73b7a9">[詳解]</a><br /></td></tr>
+<tr class="separator:a88e70f45fe776a0a5ab284f68d73b7a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e666bfc73d8f55ac9cf2e6cca5db6a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7">interpret_pref_file</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, char *<a class="el" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:a2e666bfc73d8f55ac9cf2e6cca5db6a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">設定ファイルの各行から各種テキスト情報を取得する / Parse a sub-file of the "extra info" (format shown below)  <a href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7">[詳解]</a><br /></td></tr>
+<tr class="separator:a2e666bfc73d8f55ac9cf2e6cca5db6a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9859c0a085e4a80b917521a47f65755"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#ac9859c0a085e4a80b917521a47f65755">add_history_from_pref_line</a> (<a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> t)</td></tr>
+<tr class="memdesc:ac9859c0a085e4a80b917521a47f65755"><td class="mdescLeft">&#160;</td><td class="mdescRight">生い立ちメッセージの内容をバッファに加える。 / Hook function for reading the histpref.prf file.  <a href="interpret-pref-file_8cpp.html#ac9859c0a085e4a80b917521a47f65755">[詳解]</a><br /></td></tr>
+<tr class="separator:ac9859c0a085e4a80b917521a47f65755"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a1151c5c9815e18e286f8f497f78edfd0"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpret-pref-file_8cpp.html#a1151c5c9815e18e286f8f497f78edfd0">histpref_buf</a> = NULL</td></tr>
+<tr class="separator:a1151c5c9815e18e286f8f497f78edfd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="a311640379c5c404876e17213171cfdd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a311640379c5c404876e17213171cfdd0">&#9670;&nbsp;</a></span>MAX_MACRO_CHARS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_MACRO_CHARS&#160;&#160;&#160;16128</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>prefファイルの内容を解釈しメモリに展開する </p>
+<dl class="section date"><dt>日付</dt><dd>2020/03/01 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ac9859c0a085e4a80b917521a47f65755"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9859c0a085e4a80b917521a47f65755">&#9670;&nbsp;</a></span>add_history_from_pref_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void add_history_from_pref_line </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>生い立ちメッセージの内容をバッファに加える。 / Hook function for reading the histpref.prf file. </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_ac9859c0a085e4a80b917521a47f65755_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_ac9859c0a085e4a80b917521a47f65755_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_ac9859c0a085e4a80b917521a47f65755_cgraph" id="ainterpret-pref-file_8cpp_ac9859c0a085e4a80b917521a47f65755_cgraph">
+<area shape="rect" title="生い立ちメッセージの内容をバッファに加える。 / Hook function for reading the histpref.prf file." alt="" coords="5,5,181,32"/>
+<area shape="rect" href="string-processor_8cpp.html#aae65e4133109b992019bc6cafcc9b597" title=" " alt="" coords="229,5,340,32"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="388,5,503,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_ac9859c0a085e4a80b917521a47f65755_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_ac9859c0a085e4a80b917521a47f65755_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_ac9859c0a085e4a80b917521a47f65755_icgraph" id="ainterpret-pref-file_8cpp_ac9859c0a085e4a80b917521a47f65755_icgraph">
+<area shape="rect" title="生い立ちメッセージの内容をバッファに加える。 / Hook function for reading the histpref.prf file." alt="" coords="584,107,760,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="416,107,536,133"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="247,56,343,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="221,157,368,184"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="16,107,163,133"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="19,157,159,184"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="30,208,149,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0011303761b2478fc37543c797f92e78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0011303761b2478fc37543c797f92e78">&#9670;&nbsp;</a></span>decide_feature_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> decide_feature_type </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>zz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>トークン数によって地形の文字形と色を決定する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>地形種別 </td></tr>
+    <tr><td class="paramname">num</td><td>トークン数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a0011303761b2478fc37543c797f92e78_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a0011303761b2478fc37543c797f92e78_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a0011303761b2478fc37543c797f92e78_cgraph" id="ainterpret-pref-file_8cpp_a0011303761b2478fc37543c797f92e78_cgraph">
+<area shape="rect" title="トークン数によって地形の文字形と色を決定する" alt="" coords="5,13,144,39"/>
+<area shape="rect" href="feature_8cpp.html#a3fa9506b1b119cd5adfb70afd8c4af0c" title="調査中" alt="" coords="192,5,319,47"/>
+<area shape="rect" href="feature_8cpp.html#a0192277195524a937816615c320982b4" title=" " alt="" coords="367,13,489,39"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a0011303761b2478fc37543c797f92e78_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a0011303761b2478fc37543c797f92e78_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a0011303761b2478fc37543c797f92e78_icgraph" id="ainterpret-pref-file_8cpp_a0011303761b2478fc37543c797f92e78_icgraph">
+<area shape="rect" title="トークン数によって地形の文字形と色を決定する" alt="" coords="535,31,673,57"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2f56f4c3b59fcd8454b8602b31bae777" title="Fトークンの解釈 / Process &quot;F:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for terrain features" alt="" coords="368,31,487,57"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="200,31,320,57"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="31,5,127,32"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="5,56,152,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a78ba73b307ed26ec3b6ccfbb91041286"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78ba73b307ed26ec3b6ccfbb91041286">&#9670;&nbsp;</a></span>decide_template_modifier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> decide_template_modifier </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tok</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>zz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tトークンの解釈 / Process "T:&lt;template&gt;:&lt;modifier chr&gt;:&lt;modifier name&gt;:..." for 4 tokens </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+    <tr><td class="paramname">zz</td><td>トークン保管文字列 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a78ba73b307ed26ec3b6ccfbb91041286_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a78ba73b307ed26ec3b6ccfbb91041286_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a78ba73b307ed26ec3b6ccfbb91041286_cgraph" id="ainterpret-pref-file_8cpp_a78ba73b307ed26ec3b6ccfbb91041286_cgraph">
+<area shape="rect" title="Tトークンの解釈 / Process &quot;T:&lt;template&gt;:&lt;modifier chr&gt;:&lt;modifier name&gt;:...&quot; for 4 tokens" alt="" coords="5,31,175,57"/>
+<area shape="rect" href="z-virt_8cpp.html#a70a7941cc921785c30b981487ebb8f17" title="string_make() で割り当てたバッファを解放する。" alt="" coords="228,5,311,32"/>
+<area shape="rect" href="z-virt_8cpp.html#a64d699412915544198fd477a26d44f84" title="str の複製を返す。戻り値は使用後に string_free() で解放すること。" alt="" coords="223,56,316,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a78ba73b307ed26ec3b6ccfbb91041286_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a78ba73b307ed26ec3b6ccfbb91041286_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a78ba73b307ed26ec3b6ccfbb91041286_icgraph" id="ainterpret-pref-file_8cpp_a78ba73b307ed26ec3b6ccfbb91041286_icgraph">
+<area shape="rect" title="Tトークンの解釈 / Process &quot;T:&lt;template&gt;:&lt;modifier chr&gt;:&lt;modifier name&gt;:...&quot; for 4 tokens" alt="" coords="535,31,704,57"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a88e70f45fe776a0a5ab284f68d73b7a9" title="Tトークンの個数調査 (解釈はサブルーチンで) / Initialize macro trigger names and a template" alt="" coords="368,31,487,57"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="200,31,320,57"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="31,5,127,32"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="5,56,152,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adcf03e6cdb3647e9d4dc3050cc54c330"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcf03e6cdb3647e9d4dc3050cc54c330">&#9670;&nbsp;</a></span>interpret_c_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> interpret_c_token </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Cトークンの解釈 / Process "C:&lt;str&gt;" &ndash; create keymap </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_adcf03e6cdb3647e9d4dc3050cc54c330_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_adcf03e6cdb3647e9d4dc3050cc54c330_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_adcf03e6cdb3647e9d4dc3050cc54c330_cgraph" id="ainterpret-pref-file_8cpp_adcf03e6cdb3647e9d4dc3050cc54c330_cgraph">
+<area shape="rect" title="Cトークンの解釈 / Process &quot;C:&lt;str&gt;&quot; – create keymap" alt="" coords="5,81,128,108"/>
+<area shape="rect" href="z-virt_8cpp.html#a70a7941cc921785c30b981487ebb8f17" title="string_make() で割り当てたバッファを解放する。" alt="" coords="183,5,265,32"/>
+<area shape="rect" href="z-virt_8cpp.html#a64d699412915544198fd477a26d44f84" title="str の複製を返す。戻り値は使用後に string_free() で解放すること。" alt="" coords="177,56,271,83"/>
+<area shape="rect" href="string-processor_8cpp.html#adc590b5d3c6f6e8e87a50271e51296a5" title=" " alt="" coords="176,107,272,133"/>
+<area shape="rect" href="tokenizer_8cpp.html#a15c2327bd72981ff5538a732e1fe2d3b" title="各種データテキストをトークン単位に分解する / Extract the first few &quot;tokens&quot; from a buffer" alt="" coords="189,157,259,184"/>
+<area shape="rect" href="string-processor_8cpp.html#a5e284c55ff4dc5e1c8a295d492de6344" title=" " alt="" coords="361,56,418,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a2f2b867a4f91dce37c063a1fbf2498cf" title=" " alt="" coords="362,107,417,133"/>
+<area shape="rect" href="string-processor_8cpp.html#a2fd70263cb86956a1ce1b92c4cdfcb03" title=" " alt="" coords="320,157,459,184"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="515,132,626,159"/>
+<area shape="rect" href="string-processor_8cpp.html#a06cb74c7993a5a9d6f2dfce3c3cc308c" title=" " alt="" coords="507,183,635,209"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_adcf03e6cdb3647e9d4dc3050cc54c330_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_adcf03e6cdb3647e9d4dc3050cc54c330_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_adcf03e6cdb3647e9d4dc3050cc54c330_icgraph" id="ainterpret-pref-file_8cpp_adcf03e6cdb3647e9d4dc3050cc54c330_icgraph">
+<area shape="rect" title="Cトークンの解釈 / Process &quot;C:&lt;str&gt;&quot; – create keymap" alt="" coords="584,107,707,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="416,107,536,133"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="247,56,343,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="221,157,368,184"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="16,107,163,133"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="19,157,159,184"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="30,208,149,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a841f766f2e55905b1ff5a405415a8db2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a841f766f2e55905b1ff5a405415a8db2">&#9670;&nbsp;</a></span>interpret_e_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> interpret_e_token </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Eトークンの解釈 / Process "E:&lt;tv&gt;:&lt;a&gt;" &ndash; attribute for inventory objects </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a841f766f2e55905b1ff5a405415a8db2_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a841f766f2e55905b1ff5a405415a8db2_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a841f766f2e55905b1ff5a405415a8db2_cgraph" id="ainterpret-pref-file_8cpp_a841f766f2e55905b1ff5a405415a8db2_cgraph">
+<area shape="rect" title="Eトークンの解釈 / Process &quot;E:&lt;tv&gt;:&lt;a&gt;&quot; – attribute for inventory objects" alt="" coords="5,5,128,32"/>
+<area shape="rect" href="tokenizer_8cpp.html#a15c2327bd72981ff5538a732e1fe2d3b" title="各種データテキストをトークン単位に分解する / Extract the first few &quot;tokens&quot; from a buffer" alt="" coords="176,5,247,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a841f766f2e55905b1ff5a405415a8db2_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a841f766f2e55905b1ff5a405415a8db2_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a841f766f2e55905b1ff5a405415a8db2_icgraph" id="ainterpret-pref-file_8cpp_a841f766f2e55905b1ff5a405415a8db2_icgraph">
+<area shape="rect" title="Eトークンの解釈 / Process &quot;E:&lt;tv&gt;:&lt;a&gt;&quot; – attribute for inventory objects" alt="" coords="584,107,707,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="416,107,536,133"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="247,56,343,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="221,157,368,184"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="16,107,163,133"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="19,157,159,184"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="30,208,149,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2f56f4c3b59fcd8454b8602b31bae777"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f56f4c3b59fcd8454b8602b31bae777">&#9670;&nbsp;</a></span>interpret_f_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> interpret_f_token </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fトークンの解釈 / Process "F:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;" &ndash; attr/char for terrain features </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード</dd></dl>
+<p>"F:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;" "F:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;:LIT" "F:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;:&lt;la&gt;/&lt;lc&gt;:&lt;da&gt;/&lt;dc&gt;" </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a2f56f4c3b59fcd8454b8602b31bae777_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a2f56f4c3b59fcd8454b8602b31bae777_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a2f56f4c3b59fcd8454b8602b31bae777_cgraph" id="ainterpret-pref-file_8cpp_a2f56f4c3b59fcd8454b8602b31bae777_cgraph">
+<area shape="rect" title="Fトークンの解釈 / Process &quot;F:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for terrain features" alt="" coords="5,63,124,90"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a0011303761b2478fc37543c797f92e78" title="トークン数によって地形の文字形と色を決定する" alt="" coords="172,13,311,39"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="216,63,267,90"/>
+<area shape="rect" href="tokenizer_8cpp.html#a15c2327bd72981ff5538a732e1fe2d3b" title="各種データテキストをトークン単位に分解する / Extract the first few &quot;tokens&quot; from a buffer" alt="" coords="206,114,277,141"/>
+<area shape="rect" href="feature_8cpp.html#a3fa9506b1b119cd5adfb70afd8c4af0c" title="調査中" alt="" coords="359,5,485,47"/>
+<area shape="rect" href="feature_8cpp.html#a0192277195524a937816615c320982b4" title=" " alt="" coords="533,13,656,39"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a2f56f4c3b59fcd8454b8602b31bae777_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a2f56f4c3b59fcd8454b8602b31bae777_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a2f56f4c3b59fcd8454b8602b31bae777_icgraph" id="ainterpret-pref-file_8cpp_a2f56f4c3b59fcd8454b8602b31bae777_icgraph">
+<area shape="rect" title="Fトークンの解釈 / Process &quot;F:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for terrain features" alt="" coords="584,107,703,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="416,107,536,133"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="247,56,343,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="221,157,368,184"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="16,107,163,133"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="19,157,159,184"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="30,208,149,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adc81494124b42d318cb5200dfe26ac76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc81494124b42d318cb5200dfe26ac76">&#9670;&nbsp;</a></span>interpret_k_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> interpret_k_token </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kトークンの解釈 / Process "K:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;" &ndash; attr/char for object kinds </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_adc81494124b42d318cb5200dfe26ac76_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_adc81494124b42d318cb5200dfe26ac76_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_adc81494124b42d318cb5200dfe26ac76_cgraph" id="ainterpret-pref-file_8cpp_adc81494124b42d318cb5200dfe26ac76_cgraph">
+<area shape="rect" title="Kトークンの解釈 / Process &quot;K:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for object kinds" alt="" coords="5,5,128,32"/>
+<area shape="rect" href="tokenizer_8cpp.html#a15c2327bd72981ff5538a732e1fe2d3b" title="各種データテキストをトークン単位に分解する / Extract the first few &quot;tokens&quot; from a buffer" alt="" coords="176,5,247,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_adc81494124b42d318cb5200dfe26ac76_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_adc81494124b42d318cb5200dfe26ac76_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_adc81494124b42d318cb5200dfe26ac76_icgraph" id="ainterpret-pref-file_8cpp_adc81494124b42d318cb5200dfe26ac76_icgraph">
+<area shape="rect" title="Kトークンの解釈 / Process &quot;K:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for object kinds" alt="" coords="584,107,707,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="416,107,536,133"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="247,56,343,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="221,157,368,184"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="16,107,163,133"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="19,157,159,184"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="30,208,149,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a26940ed23872518ee3a27023c8110004"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26940ed23872518ee3a27023c8110004">&#9670;&nbsp;</a></span>interpret_macro_keycodes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> interpret_macro_keycodes </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tok</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>zz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tトークンの解釈 / Process "T:&lt;trigger&gt;:&lt;keycode&gt;:&lt;shift-keycode&gt;" for 2 or 3 tokens </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tok</td><td>トークン数 </td></tr>
+    <tr><td class="paramname">zz</td><td>トークン保管文字列 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a26940ed23872518ee3a27023c8110004_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a26940ed23872518ee3a27023c8110004_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a26940ed23872518ee3a27023c8110004_cgraph" id="ainterpret-pref-file_8cpp_a26940ed23872518ee3a27023c8110004_cgraph">
+<area shape="rect" title="Tトークンの解釈 / Process &quot;T:&lt;trigger&gt;:&lt;keycode&gt;:&lt;shift&#45;keycode&gt;&quot; for 2 or 3 tokens" alt="" coords="5,309,180,336"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="235,284,314,311"/>
+<area shape="rect" href="z-virt_8cpp.html#a64d699412915544198fd477a26d44f84" title="str の複製を返す。戻り値は使用後に string_free() で解放すること。" alt="" coords="228,335,321,361"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="377,56,480,83"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="388,259,469,285"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="571,309,657,336"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="570,360,658,387"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="369,157,488,184"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="381,411,476,437"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="561,5,667,32"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="589,56,639,83"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="593,157,635,184"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="587,208,641,235"/>
+<area shape="rect" href="display-messages_8cpp.html#a8647d1d8cbef5e4db465563838dd2b87" title=" " alt="" coords="536,259,692,285"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="740,132,823,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a26940ed23872518ee3a27023c8110004_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a26940ed23872518ee3a27023c8110004_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a26940ed23872518ee3a27023c8110004_icgraph" id="ainterpret-pref-file_8cpp_a26940ed23872518ee3a27023c8110004_icgraph">
+<area shape="rect" title="Tトークンの解釈 / Process &quot;T:&lt;trigger&gt;:&lt;keycode&gt;:&lt;shift&#45;keycode&gt;&quot; for 2 or 3 tokens" alt="" coords="535,31,709,57"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a88e70f45fe776a0a5ab284f68d73b7a9" title="Tトークンの個数調査 (解釈はサブルーチンで) / Initialize macro trigger names and a template" alt="" coords="368,31,487,57"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="200,31,320,57"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="31,5,127,32"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="5,56,152,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae76beaa104aba565a996a08b8d759801"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae76beaa104aba565a996a08b8d759801">&#9670;&nbsp;</a></span>interpret_p_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> interpret_p_token </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pトークンの解釈 / Process "P:&lt;str&gt;" &ndash; normal macro </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_ae76beaa104aba565a996a08b8d759801_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_ae76beaa104aba565a996a08b8d759801_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_ae76beaa104aba565a996a08b8d759801_cgraph" id="ainterpret-pref-file_8cpp_ae76beaa104aba565a996a08b8d759801_cgraph">
+<area shape="rect" title="Pトークンの解釈 / Process &quot;P:&lt;str&gt;&quot; – normal macro" alt="" coords="5,145,128,172"/>
+<area shape="rect" href="macro-util_8cpp.html#a83a8d20b3c9823bf29eaf62e357efaa1" title=" " alt="" coords="181,95,267,121"/>
+<area shape="rect" href="string-processor_8cpp.html#adc590b5d3c6f6e8e87a50271e51296a5" title=" " alt="" coords="176,171,272,197"/>
+<area shape="rect" href="macro-util_8cpp.html#aac69ffdbe07a5a454163ab233fd04fbf" title=" " alt="" coords="327,5,451,32"/>
+<area shape="rect" href="z-virt_8cpp.html#a70a7941cc921785c30b981487ebb8f17" title="string_make() で割り当てたバッファを解放する。" alt="" coords="348,56,431,83"/>
+<area shape="rect" href="z-virt_8cpp.html#a64d699412915544198fd477a26d44f84" title="str の複製を返す。戻り値は使用後に string_free() で解放すること。" alt="" coords="343,107,436,133"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="545,5,596,32"/>
+<area shape="rect" href="string-processor_8cpp.html#a5e284c55ff4dc5e1c8a295d492de6344" title=" " alt="" coords="361,157,418,184"/>
+<area shape="rect" href="string-processor_8cpp.html#a2f2b867a4f91dce37c063a1fbf2498cf" title=" " alt="" coords="362,208,417,235"/>
+<area shape="rect" href="string-processor_8cpp.html#a2fd70263cb86956a1ce1b92c4cdfcb03" title=" " alt="" coords="320,259,459,285"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="515,233,626,260"/>
+<area shape="rect" href="string-processor_8cpp.html#a06cb74c7993a5a9d6f2dfce3c3cc308c" title=" " alt="" coords="507,284,635,311"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_ae76beaa104aba565a996a08b8d759801_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_ae76beaa104aba565a996a08b8d759801_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_ae76beaa104aba565a996a08b8d759801_icgraph" id="ainterpret-pref-file_8cpp_ae76beaa104aba565a996a08b8d759801_icgraph">
+<area shape="rect" title="Pトークンの解釈 / Process &quot;P:&lt;str&gt;&quot; – normal macro" alt="" coords="584,107,707,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="416,107,536,133"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="247,56,343,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="221,157,368,184"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="16,107,163,133"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="19,157,159,184"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="30,208,149,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2e666bfc73d8f55ac9cf2e6cca5db6a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e666bfc73d8f55ac9cf2e6cca5db6a7">&#9670;&nbsp;</a></span>interpret_pref_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> interpret_pref_file </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>設定ファイルの各行から各種テキスト情報を取得する / Parse a sub-file of the "extra info" (format shown below) </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">buf</td><td>データテキストの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード</dd></dl>
+<pre>
+Each "action" line has an "action symbol" in the first column,
+followed by a colon, followed by some command specific info,
+usually in the form of "tokens" separated by colons or slashes.
+Blank lines, lines starting with white space, and lines starting
+with pound signs ("#") are ignored (as comments).
+Note the use of "tokenize()" to allow the use of both colons and
+slashes as delimeters, while still allowing final tokens which
+may contain any characters including "delimiters".
+Note the use of "strtol()" to allow all "integers" to be encoded
+in decimal, hexidecimal, or octal form.
+Note that "monster zero" is used for the "player" attr/char, "object
+zero" will be used for the "stack" attr/char, and "feature zero" is
+used for the "nothing" attr/char.
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a2e666bfc73d8f55ac9cf2e6cca5db6a7_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a2e666bfc73d8f55ac9cf2e6cca5db6a7_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a2e666bfc73d8f55ac9cf2e6cca5db6a7_cgraph" id="ainterpret-pref-file_8cpp_a2e666bfc73d8f55ac9cf2e6cca5db6a7_cgraph">
+<area shape="rect" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="5,335,125,361"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#ac9859c0a085e4a80b917521a47f65755" title="生い立ちメッセージの内容をバッファに加える。 / Hook function for reading the histpref.prf file." alt="" coords="173,5,349,32"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#adcf03e6cdb3647e9d4dc3050cc54c330" title="Cトークンの解釈 / Process &quot;C:&lt;str&gt;&quot; – create keymap" alt="" coords="200,157,323,184"/>
+<area shape="rect" href="string-processor_8cpp.html#adc590b5d3c6f6e8e87a50271e51296a5" title=" " alt="" coords="437,107,533,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a841f766f2e55905b1ff5a405415a8db2" title="Eトークンの解釈 / Process &quot;E:&lt;tv&gt;:&lt;a&gt;&quot; – attribute for inventory objects" alt="" coords="200,461,323,488"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2f56f4c3b59fcd8454b8602b31bae777" title="Fトークンの解釈 / Process &quot;F:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for terrain features" alt="" coords="202,613,321,640"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#adc81494124b42d318cb5200dfe26ac76" title="Kトークンの解釈 / Process &quot;K:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for object kinds" alt="" coords="200,208,323,235"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#ae76beaa104aba565a996a08b8d759801" title="Pトークンの解釈 / Process &quot;P:&lt;str&gt;&quot; – normal macro" alt="" coords="200,107,323,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a0bfe992eed3827c822abfa52a6d4f306" title="Rトークンの解釈 / Process &quot;R:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for monster races" alt="" coords="202,259,321,285"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a32921b32c2098f77aff1939c31672fea" title="Fトークンの解釈 / Process &quot;S:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for special things" alt="" coords="200,309,323,336"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a88e70f45fe776a0a5ab284f68d73b7a9" title="Tトークンの個数調査 (解釈はサブルーチンで) / Initialize macro trigger names and a template" alt="" coords="202,512,321,539"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#ab069fce9039d87c13f55b0fb9c82d2e4" title="Uトークンの解釈 / Process &quot;U:&lt;tv&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for unaware items" alt="" coords="200,360,323,387"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#adb494fb7df1679a948424cbda912fdd0" title="Vトークンの解釈 / Process &quot;V:&lt;num&gt;:&lt;kv&gt;:&lt;rv&gt;:&lt;gv&gt;:&lt;bv&gt;&quot; – visual info" alt="" coords="201,411,321,437"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#ae0202dcda702dfc93683d39fb8934ad6" title="X/Yトークンの解釈" alt="" coords="197,740,326,767"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#adc3b1da3dfaf3d7e4e53b8140b61f8b7" title="Zトークンの解釈 / Process &quot;Z:&lt;type&gt;:&lt;str&gt;&quot; – set spell color" alt="" coords="200,563,323,589"/>
+<area shape="rect" href="string-processor_8cpp.html#aae65e4133109b992019bc6cafcc9b597" title=" " alt="" coords="429,5,540,32"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="632,5,747,32"/>
+<area shape="rect" href="z-virt_8cpp.html#a70a7941cc921785c30b981487ebb8f17" title="string_make() で割り当てたバッファを解放する。" alt="" coords="648,259,731,285"/>
+<area shape="rect" href="z-virt_8cpp.html#a64d699412915544198fd477a26d44f84" title="str の複製を返す。戻り値は使用後に string_free() で解放すること。" alt="" coords="643,360,736,387"/>
+<area shape="rect" href="tokenizer_8cpp.html#a15c2327bd72981ff5538a732e1fe2d3b" title="各種データテキストをトークン単位に分解する / Extract the first few &quot;tokens&quot; from a buffer" alt="" coords="449,309,520,336"/>
+<area shape="rect" href="string-processor_8cpp.html#a5e284c55ff4dc5e1c8a295d492de6344" title=" " alt="" coords="661,56,718,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a2f2b867a4f91dce37c063a1fbf2498cf" title=" " alt="" coords="662,107,717,133"/>
+<area shape="rect" href="string-processor_8cpp.html#a2fd70263cb86956a1ce1b92c4cdfcb03" title=" " alt="" coords="620,157,759,184"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="807,335,917,361"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a0011303761b2478fc37543c797f92e78" title="トークン数によって地形の文字形と色を決定する" alt="" coords="415,664,554,691"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="837,563,887,589"/>
+<area shape="rect" href="feature_8cpp.html#a3fa9506b1b119cd5adfb70afd8c4af0c" title="調査中" alt="" coords="626,665,753,706"/>
+<area shape="rect" href="macro-util_8cpp.html#a83a8d20b3c9823bf29eaf62e357efaa1" title=" " alt="" coords="441,157,528,184"/>
+<area shape="rect" href="macro-util_8cpp.html#aac69ffdbe07a5a454163ab233fd04fbf" title=" " alt="" coords="627,208,751,235"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a78ba73b307ed26ec3b6ccfbb91041286" title="Tトークンの解釈 / Process &quot;T:&lt;template&gt;:&lt;modifier chr&gt;:&lt;modifier name&gt;:...&quot; for 4 tokens" alt="" coords="400,360,569,387"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a26940ed23872518ee3a27023c8110004" title="Tトークンの解釈 / Process &quot;T:&lt;trigger&gt;:&lt;keycode&gt;:&lt;shift&#45;keycode&gt;&quot; for 2 or 3 tokens" alt="" coords="397,461,572,488"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="650,731,729,757"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="439,715,530,741"/>
+<area shape="rect" href="quarks_8cpp.html#a6fada8d9acfd20a42a8a9887484a1802" title=" " alt="" coords="443,411,526,437"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a2e666bfc73d8f55ac9cf2e6cca5db6a7_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a2e666bfc73d8f55ac9cf2e6cca5db6a7_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a2e666bfc73d8f55ac9cf2e6cca5db6a7_icgraph" id="ainterpret-pref-file_8cpp_a2e666bfc73d8f55ac9cf2e6cca5db6a7_icgraph">
+<area shape="rect" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="1452,97,1572,124"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="726,9,822,36"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="1257,198,1404,225"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,136,296,162"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="496,110,664,137"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,136,116,162"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,110,448,137"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="1063,325,1209,352"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="1066,148,1206,174"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="1077,198,1195,225"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a237b4b6ff1cb50402312e9b60c5c8a55" title=" " alt="" coords="884,376,1015,402"/>
+<area shape="rect" href="cmd-autopick_8cpp.html#a8dc56811ab6efa5123eec7f83eb4bb26" title=" " alt="" coords="504,376,656,402"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a277ec1508e8e1b27be4ce3fbb4a3c384" title="全ユーザプロファイルをロードする / Load some &quot;user pref files&quot; @paaram player_ptr プレーヤーへの参照ポインタ" alt="" coords="712,325,836,352"/>
+<area shape="rect" href="read-pref-file_8cpp.html#a2c69979bf7ef3c16ada8791410bf5a01" title="生い立ちメッセージをファイルからロードする。" alt="" coords="901,21,997,48"/>
+<area shape="rect" href="cmd-dump_8cpp.html#a17a616fd39ca52c5531a875c2a186ee4" title=" " alt="" coords="719,72,829,98"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a73df5fe8058943d380d6b31f9de15728" title="マクロを設定するコマンドのメインルーチン / Interact with &quot;macros&quot;" alt="" coords="715,122,833,149"/>
+<area shape="rect" href="cmd-visuals_8cpp.html#a0826877287cc62ecef1432f586181997" title=" " alt="" coords="717,186,831,213"/>
+<area shape="rect" href="angband-initializer_8cpp.html#aeb43129ef8fbea1c72b20e1513eb9702" title="全ゲームデータ読み込みのメインルーチン /" alt="" coords="902,325,997,352"/>
+<area shape="rect" href="visuals-reseter_8cpp.html#a0bff15ee0bec53f209d078d49af3470c" title="オブジェクト、地形の表示シンボルなど初期化する / Reset the &quot;visual&quot; lists" alt="" coords="901,173,998,200"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0bfe992eed3827c822abfa52a6d4f306"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bfe992eed3827c822abfa52a6d4f306">&#9670;&nbsp;</a></span>interpret_r_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> interpret_r_token </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Rトークンの解釈 / Process "R:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;" &ndash; attr/char for monster races </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a0bfe992eed3827c822abfa52a6d4f306_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a0bfe992eed3827c822abfa52a6d4f306_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a0bfe992eed3827c822abfa52a6d4f306_cgraph" id="ainterpret-pref-file_8cpp_a0bfe992eed3827c822abfa52a6d4f306_cgraph">
+<area shape="rect" title="Rトークンの解釈 / Process &quot;R:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for monster races" alt="" coords="5,5,124,32"/>
+<area shape="rect" href="tokenizer_8cpp.html#a15c2327bd72981ff5538a732e1fe2d3b" title="各種データテキストをトークン単位に分解する / Extract the first few &quot;tokens&quot; from a buffer" alt="" coords="172,5,243,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a0bfe992eed3827c822abfa52a6d4f306_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a0bfe992eed3827c822abfa52a6d4f306_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a0bfe992eed3827c822abfa52a6d4f306_icgraph" id="ainterpret-pref-file_8cpp_a0bfe992eed3827c822abfa52a6d4f306_icgraph">
+<area shape="rect" title="Rトークンの解釈 / Process &quot;R:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for monster races" alt="" coords="584,107,703,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="416,107,536,133"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="247,56,343,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="221,157,368,184"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="16,107,163,133"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="19,157,159,184"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="30,208,149,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a32921b32c2098f77aff1939c31672fea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32921b32c2098f77aff1939c31672fea">&#9670;&nbsp;</a></span>interpret_s_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> interpret_s_token </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fトークンの解釈 / Process "S:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;" &ndash; attr/char for special things </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a32921b32c2098f77aff1939c31672fea_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a32921b32c2098f77aff1939c31672fea_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a32921b32c2098f77aff1939c31672fea_cgraph" id="ainterpret-pref-file_8cpp_a32921b32c2098f77aff1939c31672fea_cgraph">
+<area shape="rect" title="Fトークンの解釈 / Process &quot;S:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for special things" alt="" coords="5,5,128,32"/>
+<area shape="rect" href="tokenizer_8cpp.html#a15c2327bd72981ff5538a732e1fe2d3b" title="各種データテキストをトークン単位に分解する / Extract the first few &quot;tokens&quot; from a buffer" alt="" coords="176,5,247,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a32921b32c2098f77aff1939c31672fea_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a32921b32c2098f77aff1939c31672fea_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a32921b32c2098f77aff1939c31672fea_icgraph" id="ainterpret-pref-file_8cpp_a32921b32c2098f77aff1939c31672fea_icgraph">
+<area shape="rect" title="Fトークンの解釈 / Process &quot;S:&lt;num&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for special things" alt="" coords="584,107,707,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="416,107,536,133"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="247,56,343,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="221,157,368,184"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="16,107,163,133"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="19,157,159,184"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="30,208,149,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a88e70f45fe776a0a5ab284f68d73b7a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88e70f45fe776a0a5ab284f68d73b7a9">&#9670;&nbsp;</a></span>interpret_t_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> interpret_t_token </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tトークンの個数調査 (解釈はサブルーチンで) / Initialize macro trigger names and a template </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000054">todo:</a></b></dt><dd>2.2.1r時点のコードからトークン数0～1の場合もエラーコード0だが、1であるべきでは？ </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a88e70f45fe776a0a5ab284f68d73b7a9_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a88e70f45fe776a0a5ab284f68d73b7a9_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a88e70f45fe776a0a5ab284f68d73b7a9_cgraph" id="ainterpret-pref-file_8cpp_a88e70f45fe776a0a5ab284f68d73b7a9_cgraph">
+<area shape="rect" title="Tトークンの個数調査 (解釈はサブルーチンで) / Initialize macro trigger names and a template" alt="" coords="5,107,124,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a78ba73b307ed26ec3b6ccfbb91041286" title="Tトークンの解釈 / Process &quot;T:&lt;template&gt;:&lt;modifier chr&gt;:&lt;modifier name&gt;:...&quot; for 4 tokens" alt="" coords="175,56,344,83"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a26940ed23872518ee3a27023c8110004" title="Tトークンの解釈 / Process &quot;T:&lt;trigger&gt;:&lt;keycode&gt;:&lt;shift&#45;keycode&gt;&quot; for 2 or 3 tokens" alt="" coords="172,107,347,133"/>
+<area shape="rect" href="tokenizer_8cpp.html#a15c2327bd72981ff5538a732e1fe2d3b" title="各種データテキストをトークン単位に分解する / Extract the first few &quot;tokens&quot; from a buffer" alt="" coords="224,157,295,184"/>
+<area shape="rect" href="z-virt_8cpp.html#a70a7941cc921785c30b981487ebb8f17" title="string_make() で割り当てたバッファを解放する。" alt="" coords="400,31,483,57"/>
+<area shape="rect" href="z-virt_8cpp.html#a64d699412915544198fd477a26d44f84" title="str の複製を返す。戻り値は使用後に string_free() で解放すること。" alt="" coords="395,81,488,108"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="402,132,481,159"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="544,5,647,32"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="555,107,636,133"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="703,81,790,108"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="703,132,791,159"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="536,208,655,235"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="548,259,643,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_a88e70f45fe776a0a5ab284f68d73b7a9_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_a88e70f45fe776a0a5ab284f68d73b7a9_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_a88e70f45fe776a0a5ab284f68d73b7a9_icgraph" id="ainterpret-pref-file_8cpp_a88e70f45fe776a0a5ab284f68d73b7a9_icgraph">
+<area shape="rect" title="Tトークンの個数調査 (解釈はサブルーチンで) / Initialize macro trigger names and a template" alt="" coords="584,107,703,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="416,107,536,133"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="247,56,343,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="221,157,368,184"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="16,107,163,133"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="19,157,159,184"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="30,208,149,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab069fce9039d87c13f55b0fb9c82d2e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab069fce9039d87c13f55b0fb9c82d2e4">&#9670;&nbsp;</a></span>interpret_u_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> interpret_u_token </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Uトークンの解釈 / Process "U:&lt;tv&gt;:&lt;a&gt;/&lt;c&gt;" &ndash; attr/char for unaware items </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_ab069fce9039d87c13f55b0fb9c82d2e4_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_ab069fce9039d87c13f55b0fb9c82d2e4_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_ab069fce9039d87c13f55b0fb9c82d2e4_cgraph" id="ainterpret-pref-file_8cpp_ab069fce9039d87c13f55b0fb9c82d2e4_cgraph">
+<area shape="rect" title="Uトークンの解釈 / Process &quot;U:&lt;tv&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for unaware items" alt="" coords="5,5,128,32"/>
+<area shape="rect" href="tokenizer_8cpp.html#a15c2327bd72981ff5538a732e1fe2d3b" title="各種データテキストをトークン単位に分解する / Extract the first few &quot;tokens&quot; from a buffer" alt="" coords="176,5,247,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_ab069fce9039d87c13f55b0fb9c82d2e4_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_ab069fce9039d87c13f55b0fb9c82d2e4_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_ab069fce9039d87c13f55b0fb9c82d2e4_icgraph" id="ainterpret-pref-file_8cpp_ab069fce9039d87c13f55b0fb9c82d2e4_icgraph">
+<area shape="rect" title="Uトークンの解釈 / Process &quot;U:&lt;tv&gt;:&lt;a&gt;/&lt;c&gt;&quot; – attr/char for unaware items" alt="" coords="584,107,707,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="416,107,536,133"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="247,56,343,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="221,157,368,184"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="16,107,163,133"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="19,157,159,184"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="30,208,149,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adb494fb7df1679a948424cbda912fdd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb494fb7df1679a948424cbda912fdd0">&#9670;&nbsp;</a></span>interpret_v_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> interpret_v_token </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Vトークンの解釈 / Process "V:&lt;num&gt;:&lt;kv&gt;:&lt;rv&gt;:&lt;gv&gt;:&lt;bv&gt;" &ndash; visual info </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_adb494fb7df1679a948424cbda912fdd0_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_adb494fb7df1679a948424cbda912fdd0_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_adb494fb7df1679a948424cbda912fdd0_cgraph" id="ainterpret-pref-file_8cpp_adb494fb7df1679a948424cbda912fdd0_cgraph">
+<area shape="rect" title="Vトークンの解釈 / Process &quot;V:&lt;num&gt;:&lt;kv&gt;:&lt;rv&gt;:&lt;gv&gt;:&lt;bv&gt;&quot; – visual info" alt="" coords="5,5,125,32"/>
+<area shape="rect" href="tokenizer_8cpp.html#a15c2327bd72981ff5538a732e1fe2d3b" title="各種データテキストをトークン単位に分解する / Extract the first few &quot;tokens&quot; from a buffer" alt="" coords="173,5,244,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_adb494fb7df1679a948424cbda912fdd0_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_adb494fb7df1679a948424cbda912fdd0_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_adb494fb7df1679a948424cbda912fdd0_icgraph" id="ainterpret-pref-file_8cpp_adb494fb7df1679a948424cbda912fdd0_icgraph">
+<area shape="rect" title="Vトークンの解釈 / Process &quot;V:&lt;num&gt;:&lt;kv&gt;:&lt;rv&gt;:&lt;gv&gt;:&lt;bv&gt;&quot; – visual info" alt="" coords="584,107,704,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="416,107,536,133"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="247,56,343,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="221,157,368,184"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="16,107,163,133"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="19,157,159,184"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="30,208,149,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae0202dcda702dfc93683d39fb8934ad6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0202dcda702dfc93683d39fb8934ad6">&#9670;&nbsp;</a></span>interpret_xy_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> interpret_xy_token </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>X/Yトークンの解釈 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード</dd></dl>
+<p>Process "X:&lt;str&gt;" &ndash; turn option off Process "Y:&lt;str&gt;" &ndash; turn option on </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_ae0202dcda702dfc93683d39fb8934ad6_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_ae0202dcda702dfc93683d39fb8934ad6_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_ae0202dcda702dfc93683d39fb8934ad6_cgraph" id="ainterpret-pref-file_8cpp_ae0202dcda702dfc93683d39fb8934ad6_cgraph">
+<area shape="rect" title="X/Yトークンの解釈" alt="" coords="5,86,135,113"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="183,86,273,113"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="321,137,400,164"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="633,74,684,101"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="327,86,394,113"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="456,86,559,113"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="467,188,548,214"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="615,150,702,177"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="615,252,703,278"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="448,238,567,265"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="460,36,555,62"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_ae0202dcda702dfc93683d39fb8934ad6_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_ae0202dcda702dfc93683d39fb8934ad6_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_ae0202dcda702dfc93683d39fb8934ad6_icgraph" id="ainterpret-pref-file_8cpp_ae0202dcda702dfc93683d39fb8934ad6_icgraph">
+<area shape="rect" title="X/Yトークンの解釈" alt="" coords="584,107,713,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="416,107,536,133"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="247,56,343,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="221,157,368,184"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="16,107,163,133"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="19,157,159,184"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="30,208,149,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adc3b1da3dfaf3d7e4e53b8140b61f8b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc3b1da3dfaf3d7e4e53b8140b61f8b7">&#9670;&nbsp;</a></span>interpret_z_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad99e8b64263d5831d93bec22e89da527">errr</a> interpret_z_token </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zトークンの解釈 / Process "Z:&lt;type&gt;:&lt;str&gt;" &ndash; set spell color </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>バッファ </td></tr>
+    <tr><td class="paramname">zz</td><td>トークン保管文字列 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>エラーコード </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_adc3b1da3dfaf3d7e4e53b8140b61f8b7_cgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_adc3b1da3dfaf3d7e4e53b8140b61f8b7_cgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_adc3b1da3dfaf3d7e4e53b8140b61f8b7_cgraph" id="ainterpret-pref-file_8cpp_adc3b1da3dfaf3d7e4e53b8140b61f8b7_cgraph">
+<area shape="rect" title="Zトークンの解釈 / Process &quot;Z:&lt;type&gt;:&lt;str&gt;&quot; – set spell color" alt="" coords="5,56,128,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="176,5,287,32"/>
+<area shape="rect" href="quarks_8cpp.html#a6fada8d9acfd20a42a8a9887484a1802" title=" " alt="" coords="190,107,273,133"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="356,56,407,83"/>
+<area shape="rect" href="z-virt_8cpp.html#a64d699412915544198fd477a26d44f84" title="str の複製を返す。戻り値は使用後に string_free() で解放すること。" alt="" coords="335,107,428,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="interpret-pref-file_8cpp_adc3b1da3dfaf3d7e4e53b8140b61f8b7_icgraph.png" border="0" usemap="#ainterpret-pref-file_8cpp_adc3b1da3dfaf3d7e4e53b8140b61f8b7_icgraph" alt=""/></div>
+<map name="ainterpret-pref-file_8cpp_adc3b1da3dfaf3d7e4e53b8140b61f8b7_icgraph" id="ainterpret-pref-file_8cpp_adc3b1da3dfaf3d7e4e53b8140b61f8b7_icgraph">
+<area shape="rect" title="Zトークンの解釈 / Process &quot;Z:&lt;type&gt;:&lt;str&gt;&quot; – set spell color" alt="" coords="584,107,707,133"/>
+<area shape="rect" href="interpret-pref-file_8cpp.html#a2e666bfc73d8f55ac9cf2e6cca5db6a7" title="設定ファイルの各行から各種テキスト情報を取得する / Parse a sub&#45;file of the &quot;extra info&quot; (format shown below)" alt="" coords="416,107,536,133"/>
+<area shape="rect" href="cmd-dump_8cpp.html#af890fd7a4443fb2940dd840e9c13fa0c" title="プレイヤーのインターフェイスに関するコマンドの実装 / Interface commands" alt="" coords="247,56,343,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#aab439d83a834669f645f062ca3a1c325" title="process_pref_fileのサブルーチン / Open the &quot;user pref file&quot; and parse it." alt="" coords="221,157,368,184"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ae139783582dab502a0806d6a632b1932" title="自動拾いファイルを読み込む /" alt="" coords="16,107,163,133"/>
+<area shape="rect" href="read-pref-file_8cpp.html#abe54d45e9640965029a9b8ba1298965c" title="プレイヤーの生い立ちファイルを読み込む / Process file for player&#39;s history editor." alt="" coords="19,157,159,184"/>
+<area shape="rect" href="read-pref-file_8cpp.html#ab57f4471a02cad99cad5ef6cf754dbe4" title="pref設定ファイルを読み込み設定を反映させる / Process the &quot;user pref file&quot; with the given name" alt="" coords="30,208,149,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a1151c5c9815e18e286f8f497f78edfd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1151c5c9815e18e286f8f497f78edfd0">&#9670;&nbsp;</a></span>histpref_buf</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* histpref_buf = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分31秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

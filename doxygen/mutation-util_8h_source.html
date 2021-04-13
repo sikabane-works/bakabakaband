@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/mutation/mutation-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_bab03038fa610f9e3473b3ce998247f6.html">mutation</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mutation-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="mutation-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">enum class</span> <a class="code" href="mutation-flag-types_8h.html#a37689ec6e7b421ddd2252e2a317b1816">MUTA</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structglm__type.html">    7</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structglm__type.html">glm_type</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structglm__type.html#acffbf9348afbb654e690fec81427895f">    8</a></span>&#160;    <a class="code" href="mutation-flag-types_8h.html#a37689ec6e7b421ddd2252e2a317b1816">MUTA</a> <a class="code" href="structglm__type.html#acffbf9348afbb654e690fec81427895f">muta_which</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structglm__type.html#ab790177af145d747708c874f42609494">    9</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structglm__type.html#ab790177af145d747708c874f42609494">muta_desc</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structglm__type.html#a24d21c0b56d2ef67477f8532cb776346">   10</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structglm__type.html#a24d21c0b56d2ef67477f8532cb776346">muta_chosen</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structglm__type.html#aa81d9047d90034f24c3d32036ca86878">   11</a></span>&#160;    <a class="code" href="h-type_8h.html#adc5d346936be2101fe94d1956152daba">MUTATION_IDX</a> <a class="code" href="structglm__type.html#aa81d9047d90034f24c3d32036ca86878">choose_mut</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="mutation-util_8h.html#aef8b8a097c575b14e43f652c66aa61e9">   12</a></span>&#160;} <a class="code" href="mutation-util_8h.html#aef8b8a097c575b14e43f652c66aa61e9">glm_type</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<a class="code" href="structglm__type.html">glm_type</a> *<a class="code" href="mutation-util_8h.html#a725a1839342fadf447c2e67c8c722796">initialize_glm_type</a>(<a class="code" href="structglm__type.html">glm_type</a> *gm_ptr, <a class="code" href="h-type_8h.html#adc5d346936be2101fe94d1956152daba">MUTATION_IDX</a> choose_mut);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_adc5d346936be2101fe94d1956152daba"><div class="ttname"><a href="h-type_8h.html#adc5d346936be2101fe94d1956152daba">MUTATION_IDX</a></div><div class="ttdeci">int MUTATION_IDX</div><div class="ttdoc">突然変異のID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:125</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="amutation-flag-types_8h_html_a37689ec6e7b421ddd2252e2a317b1816"><div class="ttname"><a href="mutation-flag-types_8h.html#a37689ec6e7b421ddd2252e2a317b1816">MUTA</a></div><div class="ttdeci">MUTA</div><div class="ttdef"><b>Definition:</b> mutation-flag-types.h:3</div></div>
+<div class="ttc" id="amutation-util_8h_html_a725a1839342fadf447c2e67c8c722796"><div class="ttname"><a href="mutation-util_8h.html#a725a1839342fadf447c2e67c8c722796">initialize_glm_type</a></div><div class="ttdeci">glm_type * initialize_glm_type(glm_type *gm_ptr, MUTATION_IDX choose_mut)</div><div class="ttdef"><b>Definition:</b> mutation-util.cpp:3</div></div>
+<div class="ttc" id="amutation-util_8h_html_aef8b8a097c575b14e43f652c66aa61e9"><div class="ttname"><a href="mutation-util_8h.html#aef8b8a097c575b14e43f652c66aa61e9">glm_type</a></div><div class="ttdeci">struct glm_type glm_type</div></div>
+<div class="ttc" id="astructglm__type_html"><div class="ttname"><a href="structglm__type.html">glm_type</a></div><div class="ttdef"><b>Definition:</b> mutation-util.h:7</div></div>
+<div class="ttc" id="astructglm__type_html_a24d21c0b56d2ef67477f8532cb776346"><div class="ttname"><a href="structglm__type.html#a24d21c0b56d2ef67477f8532cb776346">glm_type::muta_chosen</a></div><div class="ttdeci">bool muta_chosen</div><div class="ttdef"><b>Definition:</b> mutation-util.h:10</div></div>
+<div class="ttc" id="astructglm__type_html_aa81d9047d90034f24c3d32036ca86878"><div class="ttname"><a href="structglm__type.html#aa81d9047d90034f24c3d32036ca86878">glm_type::choose_mut</a></div><div class="ttdeci">MUTATION_IDX choose_mut</div><div class="ttdef"><b>Definition:</b> mutation-util.h:11</div></div>
+<div class="ttc" id="astructglm__type_html_ab790177af145d747708c874f42609494"><div class="ttname"><a href="structglm__type.html#ab790177af145d747708c874f42609494">glm_type::muta_desc</a></div><div class="ttdeci">concptr muta_desc</div><div class="ttdef"><b>Definition:</b> mutation-util.h:9</div></div>
+<div class="ttc" id="astructglm__type_html_acffbf9348afbb654e690fec81427895f"><div class="ttname"><a href="structglm__type.html#acffbf9348afbb654e690fec81427895f">glm_type::muta_which</a></div><div class="ttdeci">MUTA muta_which</div><div class="ttdef"><b>Definition:</b> mutation-util.h:8</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

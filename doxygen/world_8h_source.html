@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/world/world.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6826d79532171ff2338799cfd298b875.html">world</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">world.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="world_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="world_8h.html#aa2f942c10b60e28e1f2a57f0f7e40edc">    5</a></span>&#160;<span class="preprocessor">#define MAX_BOUNTY 20</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structworld__type.html">   10</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structworld__type.html">world_type</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structworld__type.html#a8da3613339aa1b595f9327adaccfd8ab">   12</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structworld__type.html#a8da3613339aa1b595f9327adaccfd8ab">max_wild_x</a>; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structworld__type.html#ac780cce13ec1553a9e9bc2e1eeaa4bd0">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> <a class="code" href="structworld__type.html#ac780cce13ec1553a9e9bc2e1eeaa4bd0">max_wild_y</a>; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structworld__type.html#a87a8e226516b61a494a5791bae90a558">   14</a></span>&#160;    <a class="code" href="h-type_8h.html#a2cffa72d359000e874c9f3c7a3a0e793">GAME_TURN</a> <a class="code" href="structworld__type.html#a87a8e226516b61a494a5791bae90a558">game_turn</a>; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structworld__type.html#a8eeaf2d7ec7b3e44a1c9f03d823c1960">   15</a></span>&#160;    <a class="code" href="h-type_8h.html#a2cffa72d359000e874c9f3c7a3a0e793">GAME_TURN</a> <a class="code" href="structworld__type.html#a8eeaf2d7ec7b3e44a1c9f03d823c1960">game_turn_limit</a>; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structworld__type.html#a0a1c6cafcbeb8295cc2806b77a6085f9">   16</a></span>&#160;    <a class="code" href="h-type_8h.html#a2cffa72d359000e874c9f3c7a3a0e793">GAME_TURN</a> <a class="code" href="structworld__type.html#a0a1c6cafcbeb8295cc2806b77a6085f9">dungeon_turn</a>; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structworld__type.html#ab7878822ef1a0baa8a8b9a93fe032cf6">   17</a></span>&#160;    <a class="code" href="h-type_8h.html#a2cffa72d359000e874c9f3c7a3a0e793">GAME_TURN</a> <a class="code" href="structworld__type.html#ab7878822ef1a0baa8a8b9a93fe032cf6">dungeon_turn_limit</a>; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structworld__type.html#aa77060f6e58524754f7660128a029a74">   18</a></span>&#160;    <a class="code" href="h-type_8h.html#a2cffa72d359000e874c9f3c7a3a0e793">GAME_TURN</a> <a class="code" href="structworld__type.html#aa77060f6e58524754f7660128a029a74">arena_start_turn</a>; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structworld__type.html#a2f9df454a999af3b2fe0341b5b530dec">   19</a></span>&#160;    <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="structworld__type.html#a2f9df454a999af3b2fe0341b5b530dec">start_time</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structworld__type.html#ad559a0b5df7a1a1ae3c26b3e7d0e275f">   20</a></span>&#160;    <a class="code" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a> <a class="code" href="structworld__type.html#ad559a0b5df7a1a1ae3c26b3e7d0e275f">noscore</a>; <span class="comment">/* Cheating flags */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structworld__type.html#a7d22f2f1c7fd5a4d0b13792c52a38a64">   21</a></span>&#160;    <a class="code" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a> <a class="code" href="structworld__type.html#a7d22f2f1c7fd5a4d0b13792c52a38a64">total_winner</a>; <span class="comment">/* Total winner */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structworld__type.html#a134f5d0c3241871dd69aad16fce94e42">   23</a></span>&#160;    <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> <a class="code" href="structworld__type.html#a134f5d0c3241871dd69aad16fce94e42">timewalk_m_idx</a>; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structworld__type.html#a723d31ea65aac5eb8b3dc1efb27442b3">   25</a></span>&#160;    <a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> <a class="code" href="structworld__type.html#a723d31ea65aac5eb8b3dc1efb27442b3">bounty_r_idx</a>[<a class="code" href="world_8h.html#aa2f942c10b60e28e1f2a57f0f7e40edc">MAX_BOUNTY</a>];</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structworld__type.html#a4b3e9001e7538ed0fe5d01be12c0b18c">   26</a></span>&#160;    <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> <a class="code" href="structworld__type.html#a4b3e9001e7538ed0fe5d01be12c0b18c">today_mon</a>; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structworld__type.html#a5a442aa09d8ec089ebe904a9ef47666f">   28</a></span>&#160;    <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="structworld__type.html#a5a442aa09d8ec089ebe904a9ef47666f">play_time</a>; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structworld__type.html#a95df745cb6d9aa06ce48f250679aaba8">   30</a></span>&#160;    <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="structworld__type.html#a95df745cb6d9aa06ce48f250679aaba8">seed_flavor</a>; <span class="comment">/* Hack -- consistent object colors */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structworld__type.html#a1b2a5b76ce1b2c94ab9d3bd98d1ee3f9">   31</a></span>&#160;    <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="structworld__type.html#a1b2a5b76ce1b2c94ab9d3bd98d1ee3f9">seed_town</a>; <span class="comment">/* Hack -- consistent town layout */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structworld__type.html#ac238d993aa36d0dfb77c16bb541e4f7a">   33</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structworld__type.html#ac238d993aa36d0dfb77c16bb541e4f7a">is_loading_now</a>; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structworld__type.html#a6cd88cf91a06e140389a074ad22a4c4b">   35</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structworld__type.html#a6cd88cf91a06e140389a074ad22a4c4b">h_ver_major</a>; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structworld__type.html#ac68f4e7c1cdbdd68e55a10fc9ab3fed2">   36</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structworld__type.html#ac68f4e7c1cdbdd68e55a10fc9ab3fed2">h_ver_minor</a>; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structworld__type.html#a125ce229dc5a957c0f9b0d2a701fa270">   37</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structworld__type.html#a125ce229dc5a957c0f9b0d2a701fa270">h_ver_patch</a>; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structworld__type.html#a418398a0bc2fd37b03fb9270b3eba64b">   38</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structworld__type.html#a418398a0bc2fd37b03fb9270b3eba64b">h_ver_extra</a>; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structworld__type.html#adef7d5ea4655083a746e0335d2a4a51b">   40</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structworld__type.html#adef7d5ea4655083a746e0335d2a4a51b">sf_extra</a>; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structworld__type.html#a086db5d816e32d34a32fab1bbefd25be">   42</a></span>&#160;    <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="structworld__type.html#a086db5d816e32d34a32fab1bbefd25be">sf_system</a>; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structworld__type.html#ae7037e591e78e7a184aadcd4ab097359">   43</a></span>&#160;    <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="structworld__type.html#ae7037e591e78e7a184aadcd4ab097359">sf_when</a>; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structworld__type.html#afbb39c4fdc4f31b49d73d31789e9ae44">   44</a></span>&#160;    <a class="code" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a> <a class="code" href="structworld__type.html#afbb39c4fdc4f31b49d73d31789e9ae44">sf_lives</a>; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structworld__type.html#ab9f8b550c28ad910483d0fad97bb1bba">   45</a></span>&#160;    <a class="code" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a> <a class="code" href="structworld__type.html#ab9f8b550c28ad910483d0fad97bb1bba">sf_saves</a>; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structworld__type.html#a60b0d25bed7a88a54621c5ae881450f1">   47</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structworld__type.html#a60b0d25bed7a88a54621c5ae881450f1">character_generated</a>; <span class="comment">/* The character exists */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structworld__type.html#ac20e1b85d1681a9970403278c44568b8">   48</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structworld__type.html#ac20e1b85d1681a9970403278c44568b8">character_dungeon</a>; <span class="comment">/* The character has a dungeon */</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structworld__type.html#a3bf28aa4a9098ca2a3ccbda2bb214ba0">   49</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structworld__type.html#a3bf28aa4a9098ca2a3ccbda2bb214ba0">character_loaded</a>; <span class="comment">/* The character was loaded from a savefile */</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structworld__type.html#a585fd27845da714ba4f5992f79014029">   50</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structworld__type.html#a585fd27845da714ba4f5992f79014029">character_saved</a>; <span class="comment">/* The character was just saved to a savefile */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structworld__type.html#a38c49197878fd45f4c1bcb5e676ca1c2">   52</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structworld__type.html#a38c49197878fd45f4c1bcb5e676ca1c2">character_icky_depth</a>; <span class="comment">/* The game is in an icky full screen mode */</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structworld__type.html#aa4347f53a00e2c46704654106c941bca">   53</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structworld__type.html#aa4347f53a00e2c46704654106c941bca">character_xtra</a>; <span class="comment">/* The game is in an icky startup mode */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structworld__type.html#a21c1be54767d6f528d226376dfd10b56">   55</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structworld__type.html#a21c1be54767d6f528d226376dfd10b56">creating_savefile</a>; <span class="comment">/* New savefile is currently created */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structworld__type.html#add27184fed8847d00189d818533760fe">   57</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structworld__type.html#add27184fed8847d00189d818533760fe">wizard</a>; <span class="comment">/* This world under wizard mode */</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structworld__type.html#adf80e317dca5505d61806b3d34d4a420">   59</a></span>&#160;    <a class="code" href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a> <a class="code" href="structworld__type.html#adf80e317dca5505d61806b3d34d4a420">max_o_idx</a>; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structworld__type.html#ac8f56d9c26095a8fbb052b8f1646bab9">   60</a></span>&#160;    <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> <a class="code" href="structworld__type.html#ac8f56d9c26095a8fbb052b8f1646bab9">max_m_idx</a>; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structworld__type.html#a4f0bc4b9fe41e4e56fa59db2eefd654d">   62</a></span>&#160;    <a class="code" href="h-type_8h.html#ad858b43cf9b1e70a02dbeabfd632b70c">DUNGEON_IDX</a> <a class="code" href="structworld__type.html#a4f0bc4b9fe41e4e56fa59db2eefd654d">max_d_idx</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">extern</span> <a class="code" href="structworld__type.html">world_type</a> *<a class="code" href="world_8h.html#a5715e01610d65e6a53071d8534b8ffeb">current_world_ptr</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="world_8h.html#a1efea6ec2eda36dcce6680466cbae14d">is_daytime</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">void</span> <a class="code" href="world_8h.html#a3da5b82e6bb95498402f78c954a628d0">extract_day_hour_min</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <span class="keywordtype">int</span> *day, <span class="keywordtype">int</span> *hour, <span class="keywordtype">int</span> *min);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span> <a class="code" href="world_8h.html#a722be27807c99a7258058b2baabee95e">update_playtime</a>(<span class="keywordtype">void</span>);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a2cffa72d359000e874c9f3c7a3a0e793"><div class="ttname"><a href="h-type_8h.html#a2cffa72d359000e874c9f3c7a3a0e793">GAME_TURN</a></div><div class="ttdeci">s32b GAME_TURN</div><div class="ttdoc">ゲーム中のターンの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:197</div></div>
+<div class="ttc" id="ah-type_8h_html_a30141f88547728df57f6a10c56fbeb8f"><div class="ttname"><a href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a></div><div class="ttdeci">s16b OBJECT_IDX</div><div class="ttdoc">ゲーム中のアイテムID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:121</div></div>
+<div class="ttc" id="ah-type_8h_html_a7ea47f67338902d35c1e93e00cf86908"><div class="ttname"><a href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a></div><div class="ttdeci">s16b MONRACE_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:109</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="ah-type_8h_html_ad858b43cf9b1e70a02dbeabfd632b70c"><div class="ttname"><a href="h-type_8h.html#ad858b43cf9b1e70a02dbeabfd632b70c">DUNGEON_IDX</a></div><div class="ttdeci">s16b DUNGEON_IDX</div><div class="ttdoc">ゲーム中のダンジョンID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:111</div></div>
+<div class="ttc" id="ah-type_8h_html_ae21ecc67b92c35422853544364e96b42"><div class="ttname"><a href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a></div><div class="ttdeci">unsigned short u16b</div><div class="ttdef"><b>Definition:</b> h-type.h:84</div></div>
+<div class="ttc" id="ah-type_8h_html_af7a1de980667931f896ae6a820f0ee80"><div class="ttname"><a href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a></div><div class="ttdeci">unsigned long u32b</div><div class="ttdef"><b>Definition:</b> h-type.h:93</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="astructworld__type_html"><div class="ttname"><a href="structworld__type.html">world_type</a></div><div class="ttdoc">世界情報構造体</div><div class="ttdef"><b>Definition:</b> world.h:10</div></div>
+<div class="ttc" id="astructworld__type_html_a086db5d816e32d34a32fab1bbefd25be"><div class="ttname"><a href="structworld__type.html#a086db5d816e32d34a32fab1bbefd25be">world_type::sf_system</a></div><div class="ttdeci">u32b sf_system</div><div class="ttdoc">OS情報 / OS information</div><div class="ttdef"><b>Definition:</b> world.h:42</div></div>
+<div class="ttc" id="astructworld__type_html_a0a1c6cafcbeb8295cc2806b77a6085f9"><div class="ttname"><a href="structworld__type.html#a0a1c6cafcbeb8295cc2806b77a6085f9">world_type::dungeon_turn</a></div><div class="ttdeci">GAME_TURN dungeon_turn</div><div class="ttdoc">NASTY生成の計算に関わる内部ターン値 / Game turn in dungeon</div><div class="ttdef"><b>Definition:</b> world.h:16</div></div>
+<div class="ttc" id="astructworld__type_html_a125ce229dc5a957c0f9b0d2a701fa270"><div class="ttname"><a href="structworld__type.html#a125ce229dc5a957c0f9b0d2a701fa270">world_type::h_ver_patch</a></div><div class="ttdeci">byte h_ver_patch</div><div class="ttdoc">変愚蛮怒バージョン(パッチ番号) / Hengband version (patch ver.)</div><div class="ttdef"><b>Definition:</b> world.h:37</div></div>
+<div class="ttc" id="astructworld__type_html_a134f5d0c3241871dd69aad16fce94e42"><div class="ttname"><a href="structworld__type.html#a134f5d0c3241871dd69aad16fce94e42">world_type::timewalk_m_idx</a></div><div class="ttdeci">MONSTER_IDX timewalk_m_idx</div><div class="ttdoc">現在時間停止を行っているモンスターのID</div><div class="ttdef"><b>Definition:</b> world.h:23</div></div>
+<div class="ttc" id="astructworld__type_html_a1b2a5b76ce1b2c94ab9d3bd98d1ee3f9"><div class="ttname"><a href="structworld__type.html#a1b2a5b76ce1b2c94ab9d3bd98d1ee3f9">world_type::seed_town</a></div><div class="ttdeci">u32b seed_town</div><div class="ttdef"><b>Definition:</b> world.h:31</div></div>
+<div class="ttc" id="astructworld__type_html_a21c1be54767d6f528d226376dfd10b56"><div class="ttname"><a href="structworld__type.html#a21c1be54767d6f528d226376dfd10b56">world_type::creating_savefile</a></div><div class="ttdeci">bool creating_savefile</div><div class="ttdef"><b>Definition:</b> world.h:55</div></div>
+<div class="ttc" id="astructworld__type_html_a2f9df454a999af3b2fe0341b5b530dec"><div class="ttname"><a href="structworld__type.html#a2f9df454a999af3b2fe0341b5b530dec">world_type::start_time</a></div><div class="ttdeci">u32b start_time</div><div class="ttdef"><b>Definition:</b> world.h:19</div></div>
+<div class="ttc" id="astructworld__type_html_a38c49197878fd45f4c1bcb5e676ca1c2"><div class="ttname"><a href="structworld__type.html#a38c49197878fd45f4c1bcb5e676ca1c2">world_type::character_icky_depth</a></div><div class="ttdeci">byte character_icky_depth</div><div class="ttdef"><b>Definition:</b> world.h:52</div></div>
+<div class="ttc" id="astructworld__type_html_a3bf28aa4a9098ca2a3ccbda2bb214ba0"><div class="ttname"><a href="structworld__type.html#a3bf28aa4a9098ca2a3ccbda2bb214ba0">world_type::character_loaded</a></div><div class="ttdeci">bool character_loaded</div><div class="ttdef"><b>Definition:</b> world.h:49</div></div>
+<div class="ttc" id="astructworld__type_html_a418398a0bc2fd37b03fb9270b3eba64b"><div class="ttname"><a href="structworld__type.html#a418398a0bc2fd37b03fb9270b3eba64b">world_type::h_ver_extra</a></div><div class="ttdeci">byte h_ver_extra</div><div class="ttdoc">変愚蛮怒バージョン(エクストラ番号) / Hengband version (extra ver.)</div><div class="ttdef"><b>Definition:</b> world.h:38</div></div>
+<div class="ttc" id="astructworld__type_html_a4b3e9001e7538ed0fe5d01be12c0b18c"><div class="ttname"><a href="structworld__type.html#a4b3e9001e7538ed0fe5d01be12c0b18c">world_type::today_mon</a></div><div class="ttdeci">MONSTER_IDX today_mon</div><div class="ttdoc">実際の日替わり賞金首</div><div class="ttdef"><b>Definition:</b> world.h:26</div></div>
+<div class="ttc" id="astructworld__type_html_a4f0bc4b9fe41e4e56fa59db2eefd654d"><div class="ttname"><a href="structworld__type.html#a4f0bc4b9fe41e4e56fa59db2eefd654d">world_type::max_d_idx</a></div><div class="ttdeci">DUNGEON_IDX max_d_idx</div><div class="ttdef"><b>Definition:</b> world.h:62</div></div>
+<div class="ttc" id="astructworld__type_html_a585fd27845da714ba4f5992f79014029"><div class="ttname"><a href="structworld__type.html#a585fd27845da714ba4f5992f79014029">world_type::character_saved</a></div><div class="ttdeci">bool character_saved</div><div class="ttdef"><b>Definition:</b> world.h:50</div></div>
+<div class="ttc" id="astructworld__type_html_a5a442aa09d8ec089ebe904a9ef47666f"><div class="ttname"><a href="structworld__type.html#a5a442aa09d8ec089ebe904a9ef47666f">world_type::play_time</a></div><div class="ttdeci">u32b play_time</div><div class="ttdoc">実プレイ時間</div><div class="ttdef"><b>Definition:</b> world.h:28</div></div>
+<div class="ttc" id="astructworld__type_html_a60b0d25bed7a88a54621c5ae881450f1"><div class="ttname"><a href="structworld__type.html#a60b0d25bed7a88a54621c5ae881450f1">world_type::character_generated</a></div><div class="ttdeci">bool character_generated</div><div class="ttdef"><b>Definition:</b> world.h:47</div></div>
+<div class="ttc" id="astructworld__type_html_a6cd88cf91a06e140389a074ad22a4c4b"><div class="ttname"><a href="structworld__type.html#a6cd88cf91a06e140389a074ad22a4c4b">world_type::h_ver_major</a></div><div class="ttdeci">byte h_ver_major</div><div class="ttdoc">変愚蛮怒バージョン(メジャー番号) / Hengband version (major ver.)</div><div class="ttdef"><b>Definition:</b> world.h:35</div></div>
+<div class="ttc" id="astructworld__type_html_a723d31ea65aac5eb8b3dc1efb27442b3"><div class="ttname"><a href="structworld__type.html#a723d31ea65aac5eb8b3dc1efb27442b3">world_type::bounty_r_idx</a></div><div class="ttdeci">MONRACE_IDX bounty_r_idx[MAX_BOUNTY]</div><div class="ttdef"><b>Definition:</b> world.h:25</div></div>
+<div class="ttc" id="astructworld__type_html_a7d22f2f1c7fd5a4d0b13792c52a38a64"><div class="ttname"><a href="structworld__type.html#a7d22f2f1c7fd5a4d0b13792c52a38a64">world_type::total_winner</a></div><div class="ttdeci">u16b total_winner</div><div class="ttdef"><b>Definition:</b> world.h:21</div></div>
+<div class="ttc" id="astructworld__type_html_a87a8e226516b61a494a5791bae90a558"><div class="ttname"><a href="structworld__type.html#a87a8e226516b61a494a5791bae90a558">world_type::game_turn</a></div><div class="ttdeci">GAME_TURN game_turn</div><div class="ttdoc">画面表示上のゲーム時間基準となるターン / Current game turn</div><div class="ttdef"><b>Definition:</b> world.h:14</div></div>
+<div class="ttc" id="astructworld__type_html_a8da3613339aa1b595f9327adaccfd8ab"><div class="ttname"><a href="structworld__type.html#a8da3613339aa1b595f9327adaccfd8ab">world_type::max_wild_x</a></div><div class="ttdeci">POSITION max_wild_x</div><div class="ttdoc">Maximum size of the wilderness</div><div class="ttdef"><b>Definition:</b> world.h:12</div></div>
+<div class="ttc" id="astructworld__type_html_a8eeaf2d7ec7b3e44a1c9f03d823c1960"><div class="ttname"><a href="structworld__type.html#a8eeaf2d7ec7b3e44a1c9f03d823c1960">world_type::game_turn_limit</a></div><div class="ttdeci">GAME_TURN game_turn_limit</div><div class="ttdoc">game_turnの最大値 / Limit of game_turn</div><div class="ttdef"><b>Definition:</b> world.h:15</div></div>
+<div class="ttc" id="astructworld__type_html_a95df745cb6d9aa06ce48f250679aaba8"><div class="ttname"><a href="structworld__type.html#a95df745cb6d9aa06ce48f250679aaba8">world_type::seed_flavor</a></div><div class="ttdeci">u32b seed_flavor</div><div class="ttdef"><b>Definition:</b> world.h:30</div></div>
+<div class="ttc" id="astructworld__type_html_aa4347f53a00e2c46704654106c941bca"><div class="ttname"><a href="structworld__type.html#aa4347f53a00e2c46704654106c941bca">world_type::character_xtra</a></div><div class="ttdeci">bool character_xtra</div><div class="ttdef"><b>Definition:</b> world.h:53</div></div>
+<div class="ttc" id="astructworld__type_html_aa77060f6e58524754f7660128a029a74"><div class="ttname"><a href="structworld__type.html#aa77060f6e58524754f7660128a029a74">world_type::arena_start_turn</a></div><div class="ttdeci">GAME_TURN arena_start_turn</div><div class="ttdoc">闘技場賭博の開始ターン値</div><div class="ttdef"><b>Definition:</b> world.h:18</div></div>
+<div class="ttc" id="astructworld__type_html_ab7878822ef1a0baa8a8b9a93fe032cf6"><div class="ttname"><a href="structworld__type.html#ab7878822ef1a0baa8a8b9a93fe032cf6">world_type::dungeon_turn_limit</a></div><div class="ttdeci">GAME_TURN dungeon_turn_limit</div><div class="ttdoc">dungeon_turnの最大値 / Limit of game_turn in dungeon</div><div class="ttdef"><b>Definition:</b> world.h:17</div></div>
+<div class="ttc" id="astructworld__type_html_ab9f8b550c28ad910483d0fad97bb1bba"><div class="ttname"><a href="structworld__type.html#ab9f8b550c28ad910483d0fad97bb1bba">world_type::sf_saves</a></div><div class="ttdeci">u16b sf_saves</div><div class="ttdoc">現在のプレイで何回セーブしたか / Number of &quot;saves&quot; during this life</div><div class="ttdef"><b>Definition:</b> world.h:45</div></div>
+<div class="ttc" id="astructworld__type_html_ac20e1b85d1681a9970403278c44568b8"><div class="ttname"><a href="structworld__type.html#ac20e1b85d1681a9970403278c44568b8">world_type::character_dungeon</a></div><div class="ttdeci">bool character_dungeon</div><div class="ttdef"><b>Definition:</b> world.h:48</div></div>
+<div class="ttc" id="astructworld__type_html_ac238d993aa36d0dfb77c16bb541e4f7a"><div class="ttname"><a href="structworld__type.html#ac238d993aa36d0dfb77c16bb541e4f7a">world_type::is_loading_now</a></div><div class="ttdeci">bool is_loading_now</div><div class="ttdoc">ロード処理中フラグ...ロード直後にcalc_bonus()時の徳変化、及びsanity_blast()による異常を抑止する</div><div class="ttdef"><b>Definition:</b> world.h:33</div></div>
+<div class="ttc" id="astructworld__type_html_ac68f4e7c1cdbdd68e55a10fc9ab3fed2"><div class="ttname"><a href="structworld__type.html#ac68f4e7c1cdbdd68e55a10fc9ab3fed2">world_type::h_ver_minor</a></div><div class="ttdeci">byte h_ver_minor</div><div class="ttdoc">変愚蛮怒バージョン(マイナー番号) / Hengband version (minor ver.)</div><div class="ttdef"><b>Definition:</b> world.h:36</div></div>
+<div class="ttc" id="astructworld__type_html_ac780cce13ec1553a9e9bc2e1eeaa4bd0"><div class="ttname"><a href="structworld__type.html#ac780cce13ec1553a9e9bc2e1eeaa4bd0">world_type::max_wild_y</a></div><div class="ttdeci">POSITION max_wild_y</div><div class="ttdoc">Maximum size of the wilderness</div><div class="ttdef"><b>Definition:</b> world.h:13</div></div>
+<div class="ttc" id="astructworld__type_html_ac8f56d9c26095a8fbb052b8f1646bab9"><div class="ttname"><a href="structworld__type.html#ac8f56d9c26095a8fbb052b8f1646bab9">world_type::max_m_idx</a></div><div class="ttdeci">MONSTER_IDX max_m_idx</div><div class="ttdoc">Maximum number of monsters in the level</div><div class="ttdef"><b>Definition:</b> world.h:60</div></div>
+<div class="ttc" id="astructworld__type_html_ad559a0b5df7a1a1ae3c26b3e7d0e275f"><div class="ttname"><a href="structworld__type.html#ad559a0b5df7a1a1ae3c26b3e7d0e275f">world_type::noscore</a></div><div class="ttdeci">u16b noscore</div><div class="ttdef"><b>Definition:</b> world.h:20</div></div>
+<div class="ttc" id="astructworld__type_html_add27184fed8847d00189d818533760fe"><div class="ttname"><a href="structworld__type.html#add27184fed8847d00189d818533760fe">world_type::wizard</a></div><div class="ttdeci">bool wizard</div><div class="ttdef"><b>Definition:</b> world.h:57</div></div>
+<div class="ttc" id="astructworld__type_html_adef7d5ea4655083a746e0335d2a4a51b"><div class="ttname"><a href="structworld__type.html#adef7d5ea4655083a746e0335d2a4a51b">world_type::sf_extra</a></div><div class="ttdeci">byte sf_extra</div><div class="ttdoc">セーブファイルエンコードキー(XOR)</div><div class="ttdef"><b>Definition:</b> world.h:40</div></div>
+<div class="ttc" id="astructworld__type_html_adf80e317dca5505d61806b3d34d4a420"><div class="ttname"><a href="structworld__type.html#adf80e317dca5505d61806b3d34d4a420">world_type::max_o_idx</a></div><div class="ttdeci">OBJECT_IDX max_o_idx</div><div class="ttdoc">Maximum number of objects in the level</div><div class="ttdef"><b>Definition:</b> world.h:59</div></div>
+<div class="ttc" id="astructworld__type_html_ae7037e591e78e7a184aadcd4ab097359"><div class="ttname"><a href="structworld__type.html#ae7037e591e78e7a184aadcd4ab097359">world_type::sf_when</a></div><div class="ttdeci">u32b sf_when</div><div class="ttdoc">作成日時 / Created Date</div><div class="ttdef"><b>Definition:</b> world.h:43</div></div>
+<div class="ttc" id="astructworld__type_html_afbb39c4fdc4f31b49d73d31789e9ae44"><div class="ttname"><a href="structworld__type.html#afbb39c4fdc4f31b49d73d31789e9ae44">world_type::sf_lives</a></div><div class="ttdeci">u16b sf_lives</div><div class="ttdoc">このセーブファイルで何人プレイしたか / Number of past &quot;lives&quot; with this file</div><div class="ttdef"><b>Definition:</b> world.h:44</div></div>
+<div class="ttc" id="aworld_8h_html_a1efea6ec2eda36dcce6680466cbae14d"><div class="ttname"><a href="world_8h.html#a1efea6ec2eda36dcce6680466cbae14d">is_daytime</a></div><div class="ttdeci">bool is_daytime(void)</div><div class="ttdoc">ゲーム時間が日中かどうかを返す / Whether daytime or not</div><div class="ttdef"><b>Definition:</b> world.cpp:12</div></div>
+<div class="ttc" id="aworld_8h_html_a3da5b82e6bb95498402f78c954a628d0"><div class="ttname"><a href="world_8h.html#a3da5b82e6bb95498402f78c954a628d0">extract_day_hour_min</a></div><div class="ttdeci">void extract_day_hour_min(player_type *player_ptr, int *day, int *hour, int *min)</div><div class="ttdoc">現在の日数、時刻を返す / Extract day, hour, min</div><div class="ttdef"><b>Definition:</b> world.cpp:29</div></div>
+<div class="ttc" id="aworld_8h_html_a5715e01610d65e6a53071d8534b8ffeb"><div class="ttname"><a href="world_8h.html#a5715e01610d65e6a53071d8534b8ffeb">current_world_ptr</a></div><div class="ttdeci">world_type * current_world_ptr</div><div class="ttdef"><b>Definition:</b> world.cpp:5</div></div>
+<div class="ttc" id="aworld_8h_html_a722be27807c99a7258058b2baabee95e"><div class="ttname"><a href="world_8h.html#a722be27807c99a7258058b2baabee95e">update_playtime</a></div><div class="ttdeci">void update_playtime(void)</div><div class="ttdoc">実ゲームプレイ時間を更新する</div><div class="ttdef"><b>Definition:</b> world.cpp:53</div></div>
+<div class="ttc" id="aworld_8h_html_aa2f942c10b60e28e1f2a57f0f7e40edc"><div class="ttname"><a href="world_8h.html#aa2f942c10b60e28e1f2a57f0f7e40edc">MAX_BOUNTY</a></div><div class="ttdeci">#define MAX_BOUNTY</div><div class="ttdef"><b>Definition:</b> world.h:5</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

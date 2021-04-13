@@ -1,0 +1,1153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/flavor/tval-description-switcher.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_00a0f7706b31e0c6052c2f42eab1294e.html">flavor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">tval-description-switcher.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="tval-description-switcher_8h_source.html">flavor/tval-description-switcher.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flavor-util_8h_source.html">flavor/flavor-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="trg-types_8h_source.html">object-enchant/trg-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-enchant_8h_source.html">object-hook/hook-enchant.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind_8h_source.html">object/object-kind.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="english_8h_source.html">locale/english.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags1_8h_source.html">monster-race/race-flags1.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-class_8h_source.html">player/player-class.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+tval-description-switcher.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2flavor_2tval-description-switcher_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2flavor_2tval-description-switcher_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2flavor_2tval-description-switcher_8cpp">
+<area shape="rect" title=" " alt="" coords="820,5,1009,61"/>
+<area shape="rect" href="tval-description-switcher_8h.html" title=" " alt="" coords="448,199,589,240"/>
+<area shape="rect" href="flavor-util_8h.html" title=" " alt="" coords="766,206,882,233"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="333,109,483,151"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="915,288,1042,329"/>
+<area shape="rect" href="hook-enchant_8h.html" title=" " alt="" coords="558,117,741,143"/>
+<area shape="rect" href="object-kind_8h.html" title=" " alt="" coords="1013,206,1147,233"/>
+<area shape="rect" href="english_8h.html" title=" " alt="" coords="765,117,877,143"/>
+<area shape="rect" href="race-flags1_8h.html" title=" " alt="" coords="1104,117,1280,143"/>
+<area shape="rect" href="player-class_8h.html" title=" " alt="" coords="1295,206,1438,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="605,385,734,411"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="797,467,888,493"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="912,467,1003,493"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="63,467,161,493"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="185,467,284,493"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="309,467,409,493"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="433,467,607,493"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="632,467,773,493"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1027,467,1173,493"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="1371,541,1517,583"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1045,549,1155,575"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="757,288,891,329"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="903,385,1030,411"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="227,199,373,240"/>
+<area shape="rect" title=" " alt="" coords="1248,295,1304,322"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="55,377,215,419"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="80,288,240,329"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="264,288,429,329"/>
+<area shape="rect" title=" " alt="" coords="1118,295,1173,322"/>
+<area shape="rect" href="realm-types_8h.html" title=" " alt="" coords="1441,385,1578,411"/>
+<area shape="rect" href="technic-info-table_8h.html" title=" " alt="" coords="1430,288,1549,329"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a0135bfc8c87a849f81899430c2261b73"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a0135bfc8c87a849f81899430c2261b73">describe_monster_ball</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="memdesc:a0135bfc8c87a849f81899430c2261b73"><td class="mdescLeft">&#160;</td><td class="mdescRight">個々のアイテム種別について、未鑑定名/鑑定後の正式な名前を取得する処理  <a href="tval-description-switcher_8cpp.html#a0135bfc8c87a849f81899430c2261b73">[詳解]</a><br /></td></tr>
+<tr class="separator:a0135bfc8c87a849f81899430c2261b73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6178cb181a98405f079ec04cad8fc3c6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a6178cb181a98405f079ec04cad8fc3c6">describe_statue</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a6178cb181a98405f079ec04cad8fc3c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed8b3b26b036cfea748a14563ec4e2fc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#aed8b3b26b036cfea748a14563ec4e2fc">describe_corpse</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:aed8b3b26b036cfea748a14563ec4e2fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4376d444c4d1b8a256de8877ce7316b5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a4376d444c4d1b8a256de8877ce7316b5">describe_amulet</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a4376d444c4d1b8a256de8877ce7316b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92319cc63a1892c3c3c53b91807a6670"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a92319cc63a1892c3c3c53b91807a6670">describe_ring</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a92319cc63a1892c3c3c53b91807a6670"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a611d8591cd304e90810d42ef91fcace0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a611d8591cd304e90810d42ef91fcace0">describe_staff</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a611d8591cd304e90810d42ef91fcace0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16d3404a7873914dd2ef727c2be6597f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a16d3404a7873914dd2ef727c2be6597f">describe_wand</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a16d3404a7873914dd2ef727c2be6597f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bd8bd49debfc9f5fd66e9cca0db61af"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a2bd8bd49debfc9f5fd66e9cca0db61af">describe_rod</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a2bd8bd49debfc9f5fd66e9cca0db61af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26de0b03b49050f5c43b1a3d39117939"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a26de0b03b49050f5c43b1a3d39117939">describe_scroll</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a26de0b03b49050f5c43b1a3d39117939"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9721af0484c3ce7c3ce21e1044065eb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#aa9721af0484c3ce7c3ce21e1044065eb">describe_potion</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:aa9721af0484c3ce7c3ce21e1044065eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29963efd9aa9207ed7b8844258030673"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a29963efd9aa9207ed7b8844258030673">describe_food</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a29963efd9aa9207ed7b8844258030673"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeab65ab0b05d960cb1d01408049927f5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#aeab65ab0b05d960cb1d01408049927f5">describe_book_life</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:aeab65ab0b05d960cb1d01408049927f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2986266fdae0ffc85722c1f89c38f54"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#ab2986266fdae0ffc85722c1f89c38f54">describe_book_sorcery</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:ab2986266fdae0ffc85722c1f89c38f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c1c5adc8fdbcbbc2d01d8074a6fbc23"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a1c1c5adc8fdbcbbc2d01d8074a6fbc23">describe_book_nature</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a1c1c5adc8fdbcbbc2d01d8074a6fbc23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb2d3edc632c41b130576b8bdc113938"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#afb2d3edc632c41b130576b8bdc113938">describe_book_chaos</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:afb2d3edc632c41b130576b8bdc113938"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e5d4fd07de8f14b32538aa31ed206f8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a7e5d4fd07de8f14b32538aa31ed206f8">describe_book_death</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a7e5d4fd07de8f14b32538aa31ed206f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafd1e35a6f814aef7c3978142d6e30c6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#aafd1e35a6f814aef7c3978142d6e30c6">describe_book_trump</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:aafd1e35a6f814aef7c3978142d6e30c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95cf09c2eae94a7cbc721b62477264d0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a95cf09c2eae94a7cbc721b62477264d0">describe_book_arcane</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a95cf09c2eae94a7cbc721b62477264d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fea503467d49842feeb026de762ec13"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a0fea503467d49842feeb026de762ec13">describe_book_craft</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a0fea503467d49842feeb026de762ec13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c5ad495ba0782a9c1b56e73d5d97c0c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a0c5ad495ba0782a9c1b56e73d5d97c0c">describe_book_demon</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a0c5ad495ba0782a9c1b56e73d5d97c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47477aca8776879c02b55d229d021a47"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a47477aca8776879c02b55d229d021a47">describe_book_crusade</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a47477aca8776879c02b55d229d021a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b88a7629cbe7923ad85acb9ea14cc03"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a1b88a7629cbe7923ad85acb9ea14cc03">describe_book_hex</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a1b88a7629cbe7923ad85acb9ea14cc03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42a3c18b94de0215a801e0ba86995595"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595">switch_tval_description</a> (<a class="el" href="structflavor__type.html">flavor_type</a> *flavor_ptr)</td></tr>
+<tr class="separator:a42a3c18b94de0215a801e0ba86995595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a4376d444c4d1b8a256de8877ce7316b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4376d444c4d1b8a256de8877ce7316b5">&#9670;&nbsp;</a></span>describe_amulet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_amulet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a4376d444c4d1b8a256de8877ce7316b5_cgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a4376d444c4d1b8a256de8877ce7316b5_cgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a4376d444c4d1b8a256de8877ce7316b5_cgraph" id="atval-description-switcher_8cpp_a4376d444c4d1b8a256de8877ce7316b5_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,123,57"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="193,5,303,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="171,56,325,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a4376d444c4d1b8a256de8877ce7316b5_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a4376d444c4d1b8a256de8877ce7316b5_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a4376d444c4d1b8a256de8877ce7316b5_icgraph" id="atval-description-switcher_8cpp_a4376d444c4d1b8a256de8877ce7316b5_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,677,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a95cf09c2eae94a7cbc721b62477264d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95cf09c2eae94a7cbc721b62477264d0">&#9670;&nbsp;</a></span>describe_book_arcane()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_book_arcane </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a95cf09c2eae94a7cbc721b62477264d0_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a95cf09c2eae94a7cbc721b62477264d0_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a95cf09c2eae94a7cbc721b62477264d0_icgraph" id="atval-description-switcher_8cpp_a95cf09c2eae94a7cbc721b62477264d0_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,712,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afb2d3edc632c41b130576b8bdc113938"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb2d3edc632c41b130576b8bdc113938">&#9670;&nbsp;</a></span>describe_book_chaos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_book_chaos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_afb2d3edc632c41b130576b8bdc113938_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_afb2d3edc632c41b130576b8bdc113938_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_afb2d3edc632c41b130576b8bdc113938_icgraph" id="atval-description-switcher_8cpp_afb2d3edc632c41b130576b8bdc113938_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,708,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0fea503467d49842feeb026de762ec13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fea503467d49842feeb026de762ec13">&#9670;&nbsp;</a></span>describe_book_craft()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_book_craft </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a0fea503467d49842feeb026de762ec13_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a0fea503467d49842feeb026de762ec13_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a0fea503467d49842feeb026de762ec13_icgraph" id="atval-description-switcher_8cpp_a0fea503467d49842feeb026de762ec13_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,699,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a47477aca8776879c02b55d229d021a47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47477aca8776879c02b55d229d021a47">&#9670;&nbsp;</a></span>describe_book_crusade()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_book_crusade </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a47477aca8776879c02b55d229d021a47_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a47477aca8776879c02b55d229d021a47_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a47477aca8776879c02b55d229d021a47_icgraph" id="atval-description-switcher_8cpp_a47477aca8776879c02b55d229d021a47_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,719,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7e5d4fd07de8f14b32538aa31ed206f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e5d4fd07de8f14b32538aa31ed206f8">&#9670;&nbsp;</a></span>describe_book_death()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_book_death </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a7e5d4fd07de8f14b32538aa31ed206f8_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a7e5d4fd07de8f14b32538aa31ed206f8_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a7e5d4fd07de8f14b32538aa31ed206f8_icgraph" id="atval-description-switcher_8cpp_a7e5d4fd07de8f14b32538aa31ed206f8_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,705,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0c5ad495ba0782a9c1b56e73d5d97c0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c5ad495ba0782a9c1b56e73d5d97c0c">&#9670;&nbsp;</a></span>describe_book_demon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_book_demon </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a0c5ad495ba0782a9c1b56e73d5d97c0c_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a0c5ad495ba0782a9c1b56e73d5d97c0c_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a0c5ad495ba0782a9c1b56e73d5d97c0c_icgraph" id="atval-description-switcher_8cpp_a0c5ad495ba0782a9c1b56e73d5d97c0c_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,712,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1b88a7629cbe7923ad85acb9ea14cc03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b88a7629cbe7923ad85acb9ea14cc03">&#9670;&nbsp;</a></span>describe_book_hex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_book_hex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a1b88a7629cbe7923ad85acb9ea14cc03_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a1b88a7629cbe7923ad85acb9ea14cc03_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a1b88a7629cbe7923ad85acb9ea14cc03_icgraph" id="atval-description-switcher_8cpp_a1b88a7629cbe7923ad85acb9ea14cc03_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,695,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aeab65ab0b05d960cb1d01408049927f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeab65ab0b05d960cb1d01408049927f5">&#9670;&nbsp;</a></span>describe_book_life()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_book_life </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_aeab65ab0b05d960cb1d01408049927f5_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_aeab65ab0b05d960cb1d01408049927f5_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_aeab65ab0b05d960cb1d01408049927f5_icgraph" id="atval-description-switcher_8cpp_aeab65ab0b05d960cb1d01408049927f5_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,689,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1c1c5adc8fdbcbbc2d01d8074a6fbc23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c1c5adc8fdbcbbc2d01d8074a6fbc23">&#9670;&nbsp;</a></span>describe_book_nature()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_book_nature </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a1c1c5adc8fdbcbbc2d01d8074a6fbc23_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a1c1c5adc8fdbcbbc2d01d8074a6fbc23_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a1c1c5adc8fdbcbbc2d01d8074a6fbc23_icgraph" id="atval-description-switcher_8cpp_a1c1c5adc8fdbcbbc2d01d8074a6fbc23_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,709,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab2986266fdae0ffc85722c1f89c38f54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2986266fdae0ffc85722c1f89c38f54">&#9670;&nbsp;</a></span>describe_book_sorcery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_book_sorcery </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_ab2986266fdae0ffc85722c1f89c38f54_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_ab2986266fdae0ffc85722c1f89c38f54_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_ab2986266fdae0ffc85722c1f89c38f54_icgraph" id="atval-description-switcher_8cpp_ab2986266fdae0ffc85722c1f89c38f54_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,716,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aafd1e35a6f814aef7c3978142d6e30c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafd1e35a6f814aef7c3978142d6e30c6">&#9670;&nbsp;</a></span>describe_book_trump()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_book_trump </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_aafd1e35a6f814aef7c3978142d6e30c6_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_aafd1e35a6f814aef7c3978142d6e30c6_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_aafd1e35a6f814aef7c3978142d6e30c6_icgraph" id="atval-description-switcher_8cpp_aafd1e35a6f814aef7c3978142d6e30c6_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,707,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aed8b3b26b036cfea748a14563ec4e2fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed8b3b26b036cfea748a14563ec4e2fc">&#9670;&nbsp;</a></span>describe_corpse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_corpse </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_aed8b3b26b036cfea748a14563ec4e2fc_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_aed8b3b26b036cfea748a14563ec4e2fc_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_aed8b3b26b036cfea748a14563ec4e2fc_icgraph" id="atval-description-switcher_8cpp_aed8b3b26b036cfea748a14563ec4e2fc_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,677,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a29963efd9aa9207ed7b8844258030673"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29963efd9aa9207ed7b8844258030673">&#9670;&nbsp;</a></span>describe_food()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_food </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a29963efd9aa9207ed7b8844258030673_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a29963efd9aa9207ed7b8844258030673_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a29963efd9aa9207ed7b8844258030673_icgraph" id="atval-description-switcher_8cpp_a29963efd9aa9207ed7b8844258030673_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,663,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0135bfc8c87a849f81899430c2261b73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0135bfc8c87a849f81899430c2261b73">&#9670;&nbsp;</a></span>describe_monster_ball()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_monster_ball </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>個々のアイテム種別について、未鑑定名/鑑定後の正式な名前を取得する処理 </p>
+<dl class="section date"><dt>日付</dt><dd>2020/07/07 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a0135bfc8c87a849f81899430c2261b73_cgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a0135bfc8c87a849f81899430c2261b73_cgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a0135bfc8c87a849f81899430c2261b73_cgraph" id="atval-description-switcher_8cpp_a0135bfc8c87a849f81899430c2261b73_cgraph">
+<area shape="rect" title="個々のアイテム種別について、未鑑定名/鑑定後の正式な名前を取得する処理" alt="" coords="5,31,157,57"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="218,5,277,32"/>
+<area shape="rect" href="english_8cpp.html#a1183a616ba1590738914bbd4e6524917" title=" " alt="" coords="205,56,289,83"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="337,5,400,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="448,5,515,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a0135bfc8c87a849f81899430c2261b73_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a0135bfc8c87a849f81899430c2261b73_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a0135bfc8c87a849f81899430c2261b73_icgraph" id="atval-description-switcher_8cpp_a0135bfc8c87a849f81899430c2261b73_icgraph">
+<area shape="rect" title="個々のアイテム種別について、未鑑定名/鑑定後の正式な名前を取得する処理" alt="" coords="560,5,712,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa9721af0484c3ce7c3ce21e1044065eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9721af0484c3ce7c3ce21e1044065eb">&#9670;&nbsp;</a></span>describe_potion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_potion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_aa9721af0484c3ce7c3ce21e1044065eb_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_aa9721af0484c3ce7c3ce21e1044065eb_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_aa9721af0484c3ce7c3ce21e1044065eb_icgraph" id="atval-description-switcher_8cpp_aa9721af0484c3ce7c3ce21e1044065eb_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,673,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a92319cc63a1892c3c3c53b91807a6670"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92319cc63a1892c3c3c53b91807a6670">&#9670;&nbsp;</a></span>describe_ring()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_ring </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a92319cc63a1892c3c3c53b91807a6670_cgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a92319cc63a1892c3c3c53b91807a6670_cgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a92319cc63a1892c3c3c53b91807a6670_cgraph" id="atval-description-switcher_8cpp_a92319cc63a1892c3c3c53b91807a6670_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,104,57"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="174,5,285,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="152,56,307,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a92319cc63a1892c3c3c53b91807a6670_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a92319cc63a1892c3c3c53b91807a6670_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a92319cc63a1892c3c3c53b91807a6670_icgraph" id="atval-description-switcher_8cpp_a92319cc63a1892c3c3c53b91807a6670_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,659,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2bd8bd49debfc9f5fd66e9cca0db61af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bd8bd49debfc9f5fd66e9cca0db61af">&#9670;&nbsp;</a></span>describe_rod()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_rod </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a2bd8bd49debfc9f5fd66e9cca0db61af_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a2bd8bd49debfc9f5fd66e9cca0db61af_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a2bd8bd49debfc9f5fd66e9cca0db61af_icgraph" id="atval-description-switcher_8cpp_a2bd8bd49debfc9f5fd66e9cca0db61af_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,656,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a26de0b03b49050f5c43b1a3d39117939"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26de0b03b49050f5c43b1a3d39117939">&#9670;&nbsp;</a></span>describe_scroll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_scroll </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a26de0b03b49050f5c43b1a3d39117939_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a26de0b03b49050f5c43b1a3d39117939_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a26de0b03b49050f5c43b1a3d39117939_icgraph" id="atval-description-switcher_8cpp_a26de0b03b49050f5c43b1a3d39117939_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,669,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a611d8591cd304e90810d42ef91fcace0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a611d8591cd304e90810d42ef91fcace0">&#9670;&nbsp;</a></span>describe_staff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_staff </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a611d8591cd304e90810d42ef91fcace0_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a611d8591cd304e90810d42ef91fcace0_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a611d8591cd304e90810d42ef91fcace0_icgraph" id="atval-description-switcher_8cpp_a611d8591cd304e90810d42ef91fcace0_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,663,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6178cb181a98405f079ec04cad8fc3c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6178cb181a98405f079ec04cad8fc3c6">&#9670;&nbsp;</a></span>describe_statue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_statue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a6178cb181a98405f079ec04cad8fc3c6_cgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a6178cb181a98405f079ec04cad8fc3c6_cgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a6178cb181a98405f079ec04cad8fc3c6_cgraph" id="atval-description-switcher_8cpp_a6178cb181a98405f079ec04cad8fc3c6_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,120,57"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="181,5,239,32"/>
+<area shape="rect" href="english_8cpp.html#a1183a616ba1590738914bbd4e6524917" title=" " alt="" coords="168,56,252,83"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="300,5,363,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="411,5,477,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a6178cb181a98405f079ec04cad8fc3c6_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a6178cb181a98405f079ec04cad8fc3c6_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a6178cb181a98405f079ec04cad8fc3c6_icgraph" id="atval-description-switcher_8cpp_a6178cb181a98405f079ec04cad8fc3c6_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,675,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a16d3404a7873914dd2ef727c2be6597f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16d3404a7873914dd2ef727c2be6597f">&#9670;&nbsp;</a></span>describe_wand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void describe_wand </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a16d3404a7873914dd2ef727c2be6597f_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a16d3404a7873914dd2ef727c2be6597f_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a16d3404a7873914dd2ef727c2be6597f_icgraph" id="atval-description-switcher_8cpp_a16d3404a7873914dd2ef727c2be6597f_icgraph">
+<area shape="rect" title=" " alt="" coords="560,5,668,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="357,5,512,32"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="160,5,309,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a42a3c18b94de0215a801e0ba86995595"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42a3c18b94de0215a801e0ba86995595">&#9670;&nbsp;</a></span>switch_tval_description()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void switch_tval_description </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structflavor__type.html">flavor_type</a> *&#160;</td>
+          <td class="paramname"><em>flavor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a42a3c18b94de0215a801e0ba86995595_cgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a42a3c18b94de0215a801e0ba86995595_cgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a42a3c18b94de0215a801e0ba86995595_cgraph" id="atval-description-switcher_8cpp_a42a3c18b94de0215a801e0ba86995595_cgraph">
+<area shape="rect" title=" " alt="" coords="5,537,160,564"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a4376d444c4d1b8a256de8877ce7316b5" title=" " alt="" coords="229,5,346,32"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a95cf09c2eae94a7cbc721b62477264d0" title=" " alt="" coords="211,107,363,133"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#afb2d3edc632c41b130576b8bdc113938" title=" " alt="" coords="213,157,361,184"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a0fea503467d49842feeb026de762ec13" title=" " alt="" coords="218,208,357,235"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a47477aca8776879c02b55d229d021a47" title=" " alt="" coords="208,259,367,285"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a7e5d4fd07de8f14b32538aa31ed206f8" title=" " alt="" coords="215,309,360,336"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a0c5ad495ba0782a9c1b56e73d5d97c0c" title=" " alt="" coords="211,360,363,387"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a1b88a7629cbe7923ad85acb9ea14cc03" title=" " alt="" coords="220,411,355,437"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#aeab65ab0b05d960cb1d01408049927f5" title=" " alt="" coords="223,461,352,488"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a1c1c5adc8fdbcbbc2d01d8074a6fbc23" title=" " alt="" coords="213,512,362,539"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#ab2986266fdae0ffc85722c1f89c38f54" title=" " alt="" coords="209,563,365,589"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#aafd1e35a6f814aef7c3978142d6e30c6" title=" " alt="" coords="214,613,361,640"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#aed8b3b26b036cfea748a14563ec4e2fc" title=" " alt="" coords="229,664,346,691"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a29963efd9aa9207ed7b8844258030673" title=" " alt="" coords="236,715,339,741"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a0135bfc8c87a849f81899430c2261b73" title="個々のアイテム種別について、未鑑定名/鑑定後の正式な名前を取得する処理" alt="" coords="211,765,363,792"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#aa9721af0484c3ce7c3ce21e1044065eb" title=" " alt="" coords="231,867,344,893"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a92319cc63a1892c3c3c53b91807a6670" title=" " alt="" coords="238,56,337,83"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a2bd8bd49debfc9f5fd66e9cca0db61af" title=" " alt="" coords="239,917,335,944"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a26de0b03b49050f5c43b1a3d39117939" title=" " alt="" coords="233,968,342,995"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a611d8591cd304e90810d42ef91fcace0" title=" " alt="" coords="236,1019,339,1045"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a6178cb181a98405f079ec04cad8fc3c6" title=" " alt="" coords="230,816,345,843"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a16d3404a7873914dd2ef727c2be6597f" title=" " alt="" coords="233,1069,341,1096"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="437,5,547,32"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="415,56,569,83"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="463,765,521,792"/>
+<area shape="rect" href="english_8cpp.html#a1183a616ba1590738914bbd4e6524917" title=" " alt="" coords="450,816,534,843"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="617,765,680,792"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="tval-description-switcher_8cpp_a42a3c18b94de0215a801e0ba86995595_icgraph.png" border="0" usemap="#atval-description-switcher_8cpp_a42a3c18b94de0215a801e0ba86995595_icgraph" alt=""/></div>
+<map name="atval-description-switcher_8cpp_a42a3c18b94de0215a801e0ba86995595_icgraph" id="atval-description-switcher_8cpp_a42a3c18b94de0215a801e0ba86995595_icgraph">
+<area shape="rect" title=" " alt="" coords="1017,1171,1172,1197"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="820,1171,969,1197"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="665,1171,772,1197"/>
+<area shape="rect" href="player-damage_8cpp.html#a3481d6c6d7162220dcda59d8452cdf4b" title="酸攻撃による装備のAC劣化処理 / Acid has hit the player, attempt to affect some armor." alt="" coords="451,5,561,32"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a53bf0b2e4c1aa52241e31f957a28e240" title="エッセンスを実際に付加する" alt="" coords="457,56,555,83"/>
+<area shape="rect" href="effect-item_8cpp.html#a535ce53ec7f78b19e787e4289d5dec3f" title="汎用的なビーム/ボルト/ボール系によるアイテムオブジェクトへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="463,107,549,133"/>
+<area shape="rect" href="spells-sorcery_8cpp.html#a6cdb24d97057728bc1fa0484c8dfb77d" title="アイテムの価値に応じた錬金術処理 / Turns an object into gold, gain some of its value in a shop" alt="" coords="471,157,541,184"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a7aebf0933710d2f5b0b2cf87e1aa4618" title="アイテムの特定記述内容を返す / Acquire a &quot;basic&quot; description &quot;The Cloak of Death [1,+10]&quot;" alt="" coords="448,208,564,235"/>
+<area shape="rect" href="spells-equipment_8cpp.html#aa03fdf6f0d68dd8464e6b6b8e1d5641a" title="プレイヤーの装備劣化処理 / Apply disenchantment to the player&#39;s stuff" alt="" coords="445,259,567,285"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="457,309,555,336"/>
+<area shape="rect" href="attack-chaos-effect_8cpp.html#aa422cba35675dfe3869ae37fc7cdf17d" title="ゴールデンハンマーによるアイテム奪取処理" alt="" coords="427,360,585,387"/>
+<area shape="rect" href="autopick-destroyer_8cpp.html#a9efe25ff3ad1ac56b5dc6ab7b27eae0a" title=" " alt="" coords="441,563,571,589"/>
+<area shape="rect" href="autopick_8cpp.html#aa84c8c12cf35bd08cc70374c9bf70413" title=" " alt="" coords="192,512,347,539"/>
+<area shape="rect" href="player-inventory_8cpp.html#a9a1c3265a4b625e9f772baa1c55a0a3e" title="プレイヤーがオブジェクト上に乗った際の表示処理 / Player &quot;wants&quot; to pick up an object or gold." alt="" coords="49,461,100,488"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="196,715,343,741"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f" title=" " alt="" coords="5,664,144,691"/>
+<area shape="rect" href="autopick_8cpp.html#a5bc67a4e33234de016dd0bf46e90a051" title=" " alt="" coords="415,664,597,691"/>
+<area shape="rect" href="autopick-entry_8cpp.html#a4f3f90481be8626c7f36c064d773d490" title=" " alt="" coords="437,1678,575,1719"/>
+<area shape="rect" href="mind-priest_8cpp.html#a49724e70edc0ac874b73b87b839eaf35" title="武器の祝福処理 / Bless a weapon" alt="" coords="454,765,558,792"/>
+<area shape="rect" href="spells-object_8cpp.html#a606c388ae9ec39706af972b765edadbe" title="武器へのエゴ付加処理 / Brand the current weapon" alt="" coords="453,816,559,843"/>
+<area shape="rect" href="floor-streams_8cpp.html#a4c0e9c1836936ded0040dede609df5e0" title="ダンジョンの壁部にストリーマー（地質の変化）を与える / Places &quot;streamers&quot; of rock through dungeon" alt="" coords="453,867,559,893"/>
+<area shape="rect" href="building-recharger_8cpp.html#ac7c07a23630b5e2f83c38746dabef46c" title="魔道具の使用回数を回復させる施設のメインルーチン / Recharge rods, wands and staffs" alt="" coords="445,917,567,944"/>
+<area shape="rect" href="cmd-throw_8cpp.html#ab74cb6b4ca4a2cac9b1c48f98d228d6d" title=" " alt="" coords="445,968,567,995"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a8b4f2968b15649cb19f6bd5e65962fce" title=" " alt="" coords="423,1019,589,1045"/>
+<area shape="rect" href="spells-status_8cpp.html#a6b3d51cd9befa32b5917f7c8c47626f0" title="装備を脱ぎ捨てて小宇宙を燃やす" alt="" coords="448,1069,564,1096"/>
+<area shape="rect" href="mind-archer_8cpp.html#a5c7ac014262f5236c69ea18c406fee25" title="「弾/矢の製造」処理 / do_cmd_cast calls this function if the player&#39;s class is &#39;archer&#39;." alt="" coords="455,1120,557,1147"/>
+<area shape="rect" href="spells-object_8cpp.html#a6f9410ac86db260e30cb7ce26261aa4d" title="防具呪縛処理 / Curse the players armor" alt="" coords="459,1171,553,1197"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a4477940ab9011d49b882f5206949745c" title=" " alt="" coords="439,1221,573,1248"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a0e8f45a3c8b44eb33491346f328f45fe" title=" " alt="" coords="451,1272,561,1299"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a00b0588d1ba51bc9f98e2076942f95ed" title=" " alt="" coords="449,1323,563,1349"/>
+<area shape="rect" href="object-curse_8cpp.html#a8b5d44a36e5f2d098b175f3f8f08832a" title="装備への呪い付加判定と付加処理" alt="" coords="445,1373,567,1400"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a38e1f36fd17441d50b8be5953d11ddf4" title="呪われている、トランプエゴ等による装備品由来のテレポートを実行する" alt="" coords="454,1424,558,1451"/>
+<area shape="rect" href="spells-object_8cpp.html#a7f937c2e893cc421a808dded72fc4e39" title="武器呪縛処理 / Curse the players weapon" alt="" coords="433,1475,579,1501"/>
+<area shape="rect" href="target-describer_8cpp.html#a8cab30bd50fb30be27531d37b11cef88" title=" " alt="" coords="448,1525,564,1552"/>
+<area shape="rect" href="target-describer_8cpp.html#a394264f8a5060a1a34c85c9b8a9ef2ea" title=" " alt="" coords="431,1576,581,1603"/>
+<area shape="rect" href="target-describer_8cpp.html#aadd4e4da9e34db0569f96630d44a5fd8" title=" " alt="" coords="427,1627,585,1653"/>
+<area shape="rect" href="player-inventory_8cpp.html#a870affd57aaed3be875c174410ecf5d3" title="プレイヤーがオブジェクトを拾った際のメッセージ表示処理 / Helper routine for py_pickup() and py_pickup_floor()." alt="" coords="432,461,580,488"/>
+<area shape="rect" href="spells-floor_8cpp.html#aff6b2287b85d21769fa6b05e3df35eaf" title="*破壊*処理を行う / The spell of destruction" alt="" coords="457,1744,555,1771"/>
+<area shape="rect" href="display-store_8cpp.html#aaec0d94f30a0a3554c4c2e6a6b3e0b33" title="店の商品リストを再表示する / Re&#45;displays a single store entry" alt="" coords="457,1795,555,1821"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#afe4440a2dd846286c0f1f33be0e0d4be" title="装備アイテム一覧を表示する / Choice window &quot;shadow&quot; of the &quot;show_equip()&quot; function" alt="" coords="441,1845,571,1872"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#ae1190cadd5200d38fbfbde5c160bd2bb" title=" " alt="" coords="431,1896,581,1923"/>
+<area shape="rect" href="display-inventory_8cpp.html#a30d21c4509ab13a7a4213ae59f23d0ef" title="所持アイテム一覧を表示する / Choice window &quot;shadow&quot; of the &quot;show_inven()&quot; function" alt="" coords="445,1947,567,1973"/>
+<area shape="rect" href="object-describer_8cpp.html#aedac848caea6b1e0f5ef5fe504fd84e1" title="現在アクティブになっているウィンドウにオブジェクトの詳細を表示する / Hack – display an object kind in the current window" alt="" coords="461,1997,551,2024"/>
+<area shape="rect" href="rumor_8cpp.html#ac90795303a6239b4a511b424262e743b" title=" " alt="" coords="455,2048,557,2075"/>
+<area shape="rect" href="main-window-util_8cpp.html#ab4a003edfee6aa74f07291b64f6e81d6" title=" " alt="" coords="407,2099,605,2125"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#ace3fa3c633ff433fd6ce004e56316daf" title="アイテムを破壊するコマンドのメインルーチン / Destroy an item" alt="" coords="447,2149,565,2176"/>
+<area shape="rect" href="cmd-item_8cpp.html#af46524a03899d48bc4eab853368db03f" title="アイテムの銘を刻むコマンドのメインルーチン Inscribe an object with a comment" alt="" coords="446,2200,566,2227"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a19c446276d6a7514112c7c1101d0540e" title="既知のアイテムとアーティファクトを表示する" alt="" coords="411,2251,601,2277"/>
+<area shape="rect" href="knowledge-self_8cpp.html#ab7de2bac473b3a93ad1b8abbee8e22eb" title=" " alt="" coords="419,2301,593,2328"/>
+<area shape="rect" href="knowledge-inventory_8cpp.html#ad270c8f0bf06a231e1fbe8922ba02f65" title="アイテム1つ当たりの耐性を表示する" alt="" coords="395,2352,617,2379"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分08秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

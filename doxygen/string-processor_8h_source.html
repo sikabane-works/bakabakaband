@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/util/string-processor.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b7878ad5ecbf2506f4125b9d34c97e45.html">util</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">string-processor.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="string-processor_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="string-processor_8h.html#a466b310a8a7778f9d8e07e87698d4121">    9</a></span>&#160;<span class="preprocessor">#define MAX_MACRO_MOD 12</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="string-processor_8h.html#aa007c3e0be60a9f6a3cb75e1d79ffadb">   10</a></span>&#160;<span class="preprocessor">#define MAX_MACRO_TRIG 200 </span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="string-processor_8h.html#a2da0d0b8238638c167302914ab2172e0">hexsym</a>[16];</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * Automatically generated &quot;variable&quot; declarations</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="string-processor_8h.html#a25b2da9c9d7f249474710bb6cc5a8fa9">max_macrotrigger</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="string-processor_8h.html#a9ed8d6d2afc2064db64535ac08410054">macro_template</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="string-processor_8h.html#ac06896ccd3d4732bae4c1b7d187460ed">macro_modifier_chr</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="string-processor_8h.html#aa7e38eb9e5f95616649d33ce748948e6">macro_modifier_name</a>[<a class="code" href="string-processor_8h.html#a466b310a8a7778f9d8e07e87698d4121">MAX_MACRO_MOD</a>];</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="string-processor_8h.html#a7f17299cdbd1c65fd3f5d0c01ebba9d6">macro_trigger_name</a>[<a class="code" href="string-processor_8h.html#aa007c3e0be60a9f6a3cb75e1d79ffadb">MAX_MACRO_TRIG</a>];</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="string-processor_8h.html#a91a638ee6fb65febd70ec4d114d8ab59">macro_trigger_keycode</a>[2][<a class="code" href="string-processor_8h.html#aa007c3e0be60a9f6a3cb75e1d79ffadb">MAX_MACRO_TRIG</a>];</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">void</span> <a class="code" href="string-processor_8h.html#adc590b5d3c6f6e8e87a50271e51296a5">text_to_ascii</a>(<span class="keywordtype">char</span> *<a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">void</span> <a class="code" href="string-processor_8h.html#ad986baa174929d7bd1cd78e722420be3">ascii_to_text</a>(<span class="keywordtype">char</span> *<a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="string-processor_8h.html#aa3085032d831bd3a5f752bf0823ba462">angband_strcpy</a>(<span class="keywordtype">char</span> *<a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> src, <span class="keywordtype">size_t</span> bufsize);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="string-processor_8h.html#aae65e4133109b992019bc6cafcc9b597">angband_strcat</a>(<span class="keywordtype">char</span> *<a class="code" href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> src, <span class="keywordtype">size_t</span> bufsize);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="string-processor_8h.html#ac8184d2eea3bb502c7828b1cf2e15a7a">angband_strstr</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> haystack, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> needle);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="string-processor_8h.html#a59b52311b27902957bcb2cc2ebd71e5a">angband_strchr</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> ptr, <span class="keywordtype">char</span> ch);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="string-processor_8h.html#a89dc207c8c9d5dbf55872f0882325859">ltrim</a>(<span class="keywordtype">char</span> *p);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="string-processor_8h.html#a1193ea0400d6ec032ec3a514138a33a6">rtrim</a>(<span class="keywordtype">char</span> *p);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">int</span> <a class="code" href="string-processor_8h.html#a59a5f450c1571742a51cf6786d6a28a5">strrncmp</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *s1, <span class="keyword">const</span> <span class="keywordtype">char</span> *s2, <span class="keywordtype">int</span> <a class="code" href="display-util_8cpp.html#afed088663f8704004425cdae2120b9b3">len</a>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;std::string <a class="code" href="string-processor_8h.html#af1ece90536d1e42869103d0a5ee82996">str_trim</a>(std::string_view str);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;std::string <a class="code" href="string-processor_8h.html#ae817951aef627358e5486febcea6b60f">str_rtrim</a>(std::string_view str);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;std::string <a class="code" href="string-processor_8h.html#a2affbd99cc86e8fc0c2921f422426687">str_ltrim</a>(std::string_view str);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;std::vector&lt;std::string&gt; <a class="code" href="string-processor_8h.html#a64d2534e032b94eba4b6728cbfb55870">str_split</a>(std::string_view str, <span class="keywordtype">char</span> delim, <span class="keywordtype">bool</span> trim = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;std::string <a class="code" href="string-processor_8h.html#ad1b52908bfa52817010574f74e85918a">str_erase</a>(std::string str, std::string_view erase_chars);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="adisplay-util_8cpp_html_afed088663f8704004425cdae2120b9b3"><div class="ttname"><a href="display-util_8cpp.html#afed088663f8704004425cdae2120b9b3">len</a></div><div class="ttdeci">int len</div><div class="ttdef"><b>Definition:</b> display-util.cpp:8</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="arecord-play-movie_8cpp_html_a1fe855c208bc17a51a4d34fefdb2d5b1"><div class="ttname"><a href="record-play-movie_8cpp.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a></div><div class="ttdeci">char * buf</div><div class="ttdef"><b>Definition:</b> record-play-movie.cpp:54</div></div>
+<div class="ttc" id="astring-processor_8h_html_a1193ea0400d6ec032ec3a514138a33a6"><div class="ttname"><a href="string-processor_8h.html#a1193ea0400d6ec032ec3a514138a33a6">rtrim</a></div><div class="ttdeci">char * rtrim(char *p)</div><div class="ttdoc">右側の空白を除去</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:495</div></div>
+<div class="ttc" id="astring-processor_8h_html_a25b2da9c9d7f249474710bb6cc5a8fa9"><div class="ttname"><a href="string-processor_8h.html#a25b2da9c9d7f249474710bb6cc5a8fa9">max_macrotrigger</a></div><div class="ttdeci">int max_macrotrigger</div><div class="ttdoc">現在登録中のマクロ(トリガー)の数</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:11</div></div>
+<div class="ttc" id="astring-processor_8h_html_a2affbd99cc86e8fc0c2921f422426687"><div class="ttname"><a href="string-processor_8h.html#a2affbd99cc86e8fc0c2921f422426687">str_ltrim</a></div><div class="ttdeci">std::string str_ltrim(std::string_view str)</div><div class="ttdoc">文字列の左端の空白を削除する</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:594</div></div>
+<div class="ttc" id="astring-processor_8h_html_a2da0d0b8238638c167302914ab2172e0"><div class="ttname"><a href="string-processor_8h.html#a2da0d0b8238638c167302914ab2172e0">hexsym</a></div><div class="ttdeci">const char hexsym[16]</div><div class="ttdoc">10進数から16進数への変換テーブル / Global array for converting numbers to uppercase hecidecimal digit This array ca...</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:9</div></div>
+<div class="ttc" id="astring-processor_8h_html_a466b310a8a7778f9d8e07e87698d4121"><div class="ttname"><a href="string-processor_8h.html#a466b310a8a7778f9d8e07e87698d4121">MAX_MACRO_MOD</a></div><div class="ttdeci">#define MAX_MACRO_MOD</div><div class="ttdef"><b>Definition:</b> string-processor.h:9</div></div>
+<div class="ttc" id="astring-processor_8h_html_a59a5f450c1571742a51cf6786d6a28a5"><div class="ttname"><a href="string-processor_8h.html#a59a5f450c1571742a51cf6786d6a28a5">strrncmp</a></div><div class="ttdeci">int strrncmp(const char *s1, const char *s2, int len)</div><div class="ttdoc">文字列の後方から一致するかどうか比較する</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:512</div></div>
+<div class="ttc" id="astring-processor_8h_html_a59b52311b27902957bcb2cc2ebd71e5a"><div class="ttname"><a href="string-processor_8h.html#a59b52311b27902957bcb2cc2ebd71e5a">angband_strchr</a></div><div class="ttdeci">char * angband_strchr(concptr ptr, char ch)</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:463</div></div>
+<div class="ttc" id="astring-processor_8h_html_a64d2534e032b94eba4b6728cbfb55870"><div class="ttname"><a href="string-processor_8h.html#a64d2534e032b94eba4b6728cbfb55870">str_split</a></div><div class="ttdeci">std::vector&lt; std::string &gt; str_split(std::string_view str, char delim, bool trim=false)</div><div class="ttdoc">文字列を指定した文字で分割する</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:616</div></div>
+<div class="ttc" id="astring-processor_8h_html_a7f17299cdbd1c65fd3f5d0c01ebba9d6"><div class="ttname"><a href="string-processor_8h.html#a7f17299cdbd1c65fd3f5d0c01ebba9d6">macro_trigger_name</a></div><div class="ttdeci">concptr macro_trigger_name[MAX_MACRO_TRIG]</div><div class="ttdoc">マクロのトリガーコード</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:15</div></div>
+<div class="ttc" id="astring-processor_8h_html_a89dc207c8c9d5dbf55872f0882325859"><div class="ttname"><a href="string-processor_8h.html#a89dc207c8c9d5dbf55872f0882325859">ltrim</a></div><div class="ttdeci">char * ltrim(char *p)</div><div class="ttdoc">左側の空白を除去</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:483</div></div>
+<div class="ttc" id="astring-processor_8h_html_a91a638ee6fb65febd70ec4d114d8ab59"><div class="ttname"><a href="string-processor_8h.html#a91a638ee6fb65febd70ec4d114d8ab59">macro_trigger_keycode</a></div><div class="ttdeci">concptr macro_trigger_keycode[2][MAX_MACRO_TRIG]</div><div class="ttdoc">マクロの内容</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:16</div></div>
+<div class="ttc" id="astring-processor_8h_html_a9ed8d6d2afc2064db64535ac08410054"><div class="ttname"><a href="string-processor_8h.html#a9ed8d6d2afc2064db64535ac08410054">macro_template</a></div><div class="ttdeci">concptr macro_template</div><div class="ttdoc">Angband設定ファイルのT: タグ情報から読み込んだ長いTコードを処理するために利用する文字列ポインタ</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:12</div></div>
+<div class="ttc" id="astring-processor_8h_html_aa007c3e0be60a9f6a3cb75e1d79ffadb"><div class="ttname"><a href="string-processor_8h.html#aa007c3e0be60a9f6a3cb75e1d79ffadb">MAX_MACRO_TRIG</a></div><div class="ttdeci">#define MAX_MACRO_TRIG</div><div class="ttdoc">登録を許すマクロ（トリガー）の最大数</div><div class="ttdef"><b>Definition:</b> string-processor.h:10</div></div>
+<div class="ttc" id="astring-processor_8h_html_aa3085032d831bd3a5f752bf0823ba462"><div class="ttname"><a href="string-processor_8h.html#aa3085032d831bd3a5f752bf0823ba462">angband_strcpy</a></div><div class="ttdeci">size_t angband_strcpy(char *buf, concptr src, size_t bufsize)</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:366</div></div>
+<div class="ttc" id="astring-processor_8h_html_aa7e38eb9e5f95616649d33ce748948e6"><div class="ttname"><a href="string-processor_8h.html#aa7e38eb9e5f95616649d33ce748948e6">macro_modifier_name</a></div><div class="ttdeci">concptr macro_modifier_name[MAX_MACRO_MOD]</div><div class="ttdoc">マクロ上で取り扱う特殊キーを文字列上で表現するためのフォーマットを記録した文字列ポインタ配列</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:14</div></div>
+<div class="ttc" id="astring-processor_8h_html_aae65e4133109b992019bc6cafcc9b597"><div class="ttname"><a href="string-processor_8h.html#aae65e4133109b992019bc6cafcc9b597">angband_strcat</a></div><div class="ttdeci">size_t angband_strcat(char *buf, concptr src, size_t bufsize)</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:423</div></div>
+<div class="ttc" id="astring-processor_8h_html_ac06896ccd3d4732bae4c1b7d187460ed"><div class="ttname"><a href="string-processor_8h.html#ac06896ccd3d4732bae4c1b7d187460ed">macro_modifier_chr</a></div><div class="ttdeci">concptr macro_modifier_chr</div><div class="ttdoc">&amp;x# で指定されるマクロトリガーに関する情報を記録する文字列ポインタ</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:13</div></div>
+<div class="ttc" id="astring-processor_8h_html_ac8184d2eea3bb502c7828b1cf2e15a7a"><div class="ttname"><a href="string-processor_8h.html#ac8184d2eea3bb502c7828b1cf2e15a7a">angband_strstr</a></div><div class="ttdeci">char * angband_strstr(concptr haystack, concptr needle)</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:438</div></div>
+<div class="ttc" id="astring-processor_8h_html_ad1b52908bfa52817010574f74e85918a"><div class="ttname"><a href="string-processor_8h.html#ad1b52908bfa52817010574f74e85918a">str_erase</a></div><div class="ttdeci">std::string str_erase(std::string str, std::string_view erase_chars)</div><div class="ttdoc">文字列から指定した文字を取り除く</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:653</div></div>
+<div class="ttc" id="astring-processor_8h_html_ad986baa174929d7bd1cd78e722420be3"><div class="ttname"><a href="string-processor_8h.html#ad986baa174929d7bd1cd78e722420be3">ascii_to_text</a></div><div class="ttdeci">void ascii_to_text(char *buf, concptr str)</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:299</div></div>
+<div class="ttc" id="astring-processor_8h_html_adc590b5d3c6f6e8e87a50271e51296a5"><div class="ttname"><a href="string-processor_8h.html#adc590b5d3c6f6e8e87a50271e51296a5">text_to_ascii</a></div><div class="ttdeci">void text_to_ascii(char *buf, concptr str)</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:175</div></div>
+<div class="ttc" id="astring-processor_8h_html_ae817951aef627358e5486febcea6b60f"><div class="ttname"><a href="string-processor_8h.html#ae817951aef627358e5486febcea6b60f">str_rtrim</a></div><div class="ttdeci">std::string str_rtrim(std::string_view str)</div><div class="ttdoc">文字列の右端の空白を削除する</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:573</div></div>
+<div class="ttc" id="astring-processor_8h_html_af1ece90536d1e42869103d0a5ee82996"><div class="ttname"><a href="string-processor_8h.html#af1ece90536d1e42869103d0a5ee82996">str_trim</a></div><div class="ttdeci">std::string str_trim(std::string_view str)</div><div class="ttdoc">文字列の両端の空白を削除する</div><div class="ttdef"><b>Definition:</b> string-processor.cpp:551</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

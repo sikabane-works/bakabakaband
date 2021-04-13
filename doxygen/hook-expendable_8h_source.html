@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/object-hook/hook-expendable.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_8bb31b59ca59df56bca4016a9e010a5e.html">object-hook</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">hook-expendable.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="hook-expendable_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-expendable_8h.html#a9834fc0574c6c37c0a9b9e00d378b8d6">item_tester_hook_eatable</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-expendable_8h.html#abeae0a291f2dcbaa84948af39705fb77">item_tester_hook_quaff</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-expendable_8h.html#a247bf09c1cd480e59a20245de6342462">item_tester_hook_readable</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-expendable_8h.html#a15ccbda36e0d8e10e1cbd1a724b6b254">item_tester_refill_lantern</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-expendable_8h.html#a06a5d53f8e01758c7b687c5ec3ae482c">object_can_refill_torch</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-expendable_8h.html#a149d1d797103307eb21cc6cafea39576">can_player_destroy_object</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="hook-expendable_8h.html#ae00bd999527fb9d77895c8fd475825f4">object_is_potion</a>(<a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ahook-expendable_8h_html_a06a5d53f8e01758c7b687c5ec3ae482c"><div class="ttname"><a href="hook-expendable_8h.html#a06a5d53f8e01758c7b687c5ec3ae482c">object_can_refill_torch</a></div><div class="ttdeci">bool object_can_refill_torch(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトが松明に束ねられるかどうかを判定する An &quot;item_tester_hook&quot; for refilling torches</div><div class="ttdef"><b>Definition:</b> hook-expendable.cpp:101</div></div>
+<div class="ttc" id="ahook-expendable_8h_html_a149d1d797103307eb21cc6cafea39576"><div class="ttname"><a href="hook-expendable_8h.html#a149d1d797103307eb21cc6cafea39576">can_player_destroy_object</a></div><div class="ttdeci">bool can_player_destroy_object(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">破壊可能なアイテムかを返す / Determines whether an object can be destroyed, and makes fake inscription.</div><div class="ttdef"><b>Definition:</b> hook-expendable.cpp:118</div></div>
+<div class="ttc" id="ahook-expendable_8h_html_a15ccbda36e0d8e10e1cbd1a724b6b254"><div class="ttname"><a href="hook-expendable_8h.html#a15ccbda36e0d8e10e1cbd1a724b6b254">item_tester_refill_lantern</a></div><div class="ttdeci">bool item_tester_refill_lantern(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトがランタンの燃料になるかどうかを判定する An &quot;item_tester_hook&quot; for refilling lanterns</div><div class="ttdef"><b>Definition:</b> hook-expendable.cpp:84</div></div>
+<div class="ttc" id="ahook-expendable_8h_html_a247bf09c1cd480e59a20245de6342462"><div class="ttname"><a href="hook-expendable_8h.html#a247bf09c1cd480e59a20245de6342462">item_tester_hook_readable</a></div><div class="ttdeci">bool item_tester_hook_readable(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトをプレイヤーが読むことができるかを判定する / Hook to determine if an object is readable</div><div class="ttdef"><b>Definition:</b> hook-expendable.cpp:67</div></div>
+<div class="ttc" id="ahook-expendable_8h_html_a9834fc0574c6c37c0a9b9e00d378b8d6"><div class="ttname"><a href="hook-expendable_8h.html#a9834fc0574c6c37c0a9b9e00d378b8d6">item_tester_hook_eatable</a></div><div class="ttdeci">bool item_tester_hook_eatable(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトをプレイヤーが食べることができるかを判定する / Hook to determine if an object is eatable</div><div class="ttdef"><b>Definition:</b> hook-expendable.cpp:27</div></div>
+<div class="ttc" id="ahook-expendable_8h_html_abeae0a291f2dcbaa84948af39705fb77"><div class="ttname"><a href="hook-expendable_8h.html#abeae0a291f2dcbaa84948af39705fb77">item_tester_hook_quaff</a></div><div class="ttdeci">bool item_tester_hook_quaff(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトをプレイヤーが飲むことができるかを判定する / Hook to determine if an object can be quaffed</div><div class="ttdef"><b>Definition:</b> hook-expendable.cpp:50</div></div>
+<div class="ttc" id="ahook-expendable_8h_html_ae00bd999527fb9d77895c8fd475825f4"><div class="ttname"><a href="hook-expendable_8h.html#ae00bd999527fb9d77895c8fd475825f4">object_is_potion</a></div><div class="ttdeci">bool object_is_potion(object_type *o_ptr)</div><div class="ttdoc">オブジェクトが薬であるかを返す</div><div class="ttdef"><b>Definition:</b> hook-expendable.cpp:153</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

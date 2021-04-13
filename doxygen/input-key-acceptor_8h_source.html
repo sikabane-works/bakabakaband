@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/io/input-key-acceptor.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html">io</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">input-key-acceptor.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="input-key-acceptor_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * Special key code used for inkey_special()</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="input-key-acceptor_8h.html#a3b2b30c751f65d79da19d441c313c561">    8</a></span>&#160;<span class="preprocessor">#define SKEY_MOD_MASK 0x0f00</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="input-key-acceptor_8h.html#a9ee5b5db1e7a22c0e91584c36a0437db">    9</a></span>&#160;<span class="preprocessor">#define SKEY_MOD_SHIFT 0x0100</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="input-key-acceptor_8h.html#ae1ced153a619230633efa8a609c2c4d7">   10</a></span>&#160;<span class="preprocessor">#define SKEY_MOD_CONTROL 0x0200</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="input-key-acceptor_8h.html#ac3db4cb522d1523745aa40d4185d0627">   12</a></span>&#160;<span class="preprocessor">#define SKEY_MASK 0xf000</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="input-key-acceptor_8h.html#a2e7defe018383cb7ac5bab58e833a2b1">   13</a></span>&#160;<span class="preprocessor">#define SKEY_DOWN 0xf001</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="input-key-acceptor_8h.html#a7803d4dc2d5a610c1631bfcc667e7138">   14</a></span>&#160;<span class="preprocessor">#define SKEY_LEFT 0xf002</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="input-key-acceptor_8h.html#aacb4b1b89ed826e0537741625a093e91">   15</a></span>&#160;<span class="preprocessor">#define SKEY_RIGHT 0xf003</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="input-key-acceptor_8h.html#a5bb7e3c4f33c48226b6e23e489303a19">   16</a></span>&#160;<span class="preprocessor">#define SKEY_UP 0xf004</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="input-key-acceptor_8h.html#a8db4c8653e8d87f8ee379aafb70aeb6e">   17</a></span>&#160;<span class="preprocessor">#define SKEY_PGUP 0xf005</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="input-key-acceptor_8h.html#acf76d0ae2de7885ca540f9dbf601801e">   18</a></span>&#160;<span class="preprocessor">#define SKEY_PGDOWN 0xf006</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="input-key-acceptor_8h.html#a676f32a15d1f46f1e4a03b462cdeaaa1">   19</a></span>&#160;<span class="preprocessor">#define SKEY_TOP 0xf007</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="input-key-acceptor_8h.html#a1a365c701923a6b7aebaad2c768aeae0">   20</a></span>&#160;<span class="preprocessor">#define SKEY_BOTTOM 0xf008</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-key-acceptor_8h.html#a151a20e8fe2cb4f5c44412a31f285ca5">inkey_base</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-key-acceptor_8h.html#ac9576f08565460ce179fd8b6a468e434">inkey_xtra</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-key-acceptor_8h.html#aee66a74a65a2f497cafbec59f9eb52ba">inkey_scan</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="input-key-acceptor_8h.html#aa263e1897d9f988719d82913354a1c88">inkey_flag</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="input-key-acceptor_8h.html#ae685c3c918ee6838b158e059ad598d7b">num_more</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="input-key-acceptor_8h.html#a4f397cba269be7a78161c4b8910d121b">inkey_next</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">char</span> <a class="code" href="input-key-acceptor_8h.html#acfd501ca170125b10ce4b02c62ae7fa5">inkey</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">int</span> <a class="code" href="input-key-acceptor_8h.html#a41533d64d34cff21ac2f08e39073e746">inkey_special</a>(<span class="keywordtype">bool</span> numpad_cursor);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="input-key-acceptor_8h.html#a64eb6f5671088fa94d476783b196d048">start_term_fresh</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> <a class="code" href="input-key-acceptor_8h.html#a0c739878efb45cb022d4ee12fe2a2e49">stop_term_fresh</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="input-key-acceptor_8h.html#aa7fb6a652354f16aa9904c07b32ecd99">macro_running</a>(<span class="keywordtype">void</span>);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="ainput-key-acceptor_8h_html_a0c739878efb45cb022d4ee12fe2a2e49"><div class="ttname"><a href="input-key-acceptor_8h.html#a0c739878efb45cb022d4ee12fe2a2e49">stop_term_fresh</a></div><div class="ttdeci">void stop_term_fresh(void)</div><div class="ttdoc">全てのウィンドウの描画を止める</div><div class="ttdef"><b>Definition:</b> input-key-acceptor.cpp:422</div></div>
+<div class="ttc" id="ainput-key-acceptor_8h_html_a151a20e8fe2cb4f5c44412a31f285ca5"><div class="ttname"><a href="input-key-acceptor_8h.html#a151a20e8fe2cb4f5c44412a31f285ca5">inkey_base</a></div><div class="ttdeci">bool inkey_base</div><div class="ttdef"><b>Definition:</b> input-key-acceptor.cpp:12</div></div>
+<div class="ttc" id="ainput-key-acceptor_8h_html_a41533d64d34cff21ac2f08e39073e746"><div class="ttname"><a href="input-key-acceptor_8h.html#a41533d64d34cff21ac2f08e39073e746">inkey_special</a></div><div class="ttdeci">int inkey_special(bool numpad_cursor)</div><div class="ttdef"><b>Definition:</b> input-key-acceptor.cpp:291</div></div>
+<div class="ttc" id="ainput-key-acceptor_8h_html_a4f397cba269be7a78161c4b8910d121b"><div class="ttname"><a href="input-key-acceptor_8h.html#a4f397cba269be7a78161c4b8910d121b">inkey_next</a></div><div class="ttdeci">concptr inkey_next</div><div class="ttdef"><b>Definition:</b> input-key-acceptor.cpp:25</div></div>
+<div class="ttc" id="ainput-key-acceptor_8h_html_a64eb6f5671088fa94d476783b196d048"><div class="ttname"><a href="input-key-acceptor_8h.html#a64eb6f5671088fa94d476783b196d048">start_term_fresh</a></div><div class="ttdeci">void start_term_fresh(void)</div><div class="ttdoc">全てのウィンドウの描画を再開する</div><div class="ttdef"><b>Definition:</b> input-key-acceptor.cpp:434</div></div>
+<div class="ttc" id="ainput-key-acceptor_8h_html_aa263e1897d9f988719d82913354a1c88"><div class="ttname"><a href="input-key-acceptor_8h.html#aa263e1897d9f988719d82913354a1c88">inkey_flag</a></div><div class="ttdeci">bool inkey_flag</div><div class="ttdef"><b>Definition:</b> input-key-acceptor.cpp:15</div></div>
+<div class="ttc" id="ainput-key-acceptor_8h_html_aa7fb6a652354f16aa9904c07b32ecd99"><div class="ttname"><a href="input-key-acceptor_8h.html#aa7fb6a652354f16aa9904c07b32ecd99">macro_running</a></div><div class="ttdeci">bool macro_running(void)</div><div class="ttdoc">マクロ実行中かの判定関数</div><div class="ttdef"><b>Definition:</b> input-key-acceptor.cpp:446</div></div>
+<div class="ttc" id="ainput-key-acceptor_8h_html_ac9576f08565460ce179fd8b6a468e434"><div class="ttname"><a href="input-key-acceptor_8h.html#ac9576f08565460ce179fd8b6a468e434">inkey_xtra</a></div><div class="ttdeci">bool inkey_xtra</div><div class="ttdef"><b>Definition:</b> input-key-acceptor.cpp:13</div></div>
+<div class="ttc" id="ainput-key-acceptor_8h_html_acfd501ca170125b10ce4b02c62ae7fa5"><div class="ttname"><a href="input-key-acceptor_8h.html#acfd501ca170125b10ce4b02c62ae7fa5">inkey</a></div><div class="ttdeci">char inkey(void)</div><div class="ttdef"><b>Definition:</b> input-key-acceptor.cpp:187</div></div>
+<div class="ttc" id="ainput-key-acceptor_8h_html_ae685c3c918ee6838b158e059ad598d7b"><div class="ttname"><a href="input-key-acceptor_8h.html#ae685c3c918ee6838b158e059ad598d7b">num_more</a></div><div class="ttdeci">int num_more</div><div class="ttdef"><b>Definition:</b> input-key-acceptor.cpp:17</div></div>
+<div class="ttc" id="ainput-key-acceptor_8h_html_aee66a74a65a2f497cafbec59f9eb52ba"><div class="ttname"><a href="input-key-acceptor_8h.html#aee66a74a65a2f497cafbec59f9eb52ba">inkey_scan</a></div><div class="ttdeci">bool inkey_scan</div><div class="ttdef"><b>Definition:</b> input-key-acceptor.cpp:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

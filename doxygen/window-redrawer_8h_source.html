@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/core/window-redrawer.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">window-redrawer.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="window-redrawer_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// clang-format off</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29a">    9</a></span>&#160;<span class="comment"></span><span class="keyword">enum</span> <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29a">window_redraw_type</a> {</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aadb78374268cda6e5496e0167ee42c8cc">   10</a></span>&#160;    <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aadb78374268cda6e5496e0167ee42c8cc">PW_INVEN</a>           = 1U &lt;&lt;  0, </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa9f9e6124314984d3e013cd4d34bda51d">   11</a></span>&#160;    <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa9f9e6124314984d3e013cd4d34bda51d">PW_EQUIP</a>           = 1U &lt;&lt;  1, </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa86d6dd614f1fee0040f5d3208b9ecd06">   12</a></span>&#160;    <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa86d6dd614f1fee0040f5d3208b9ecd06">PW_SPELL</a>           = 1U &lt;&lt;  2, </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa842e6ffc058244ea0e61c156873029b4">   13</a></span>&#160;    <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa842e6ffc058244ea0e61c156873029b4">PW_PLAYER</a>          = 1U &lt;&lt;  3, </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa690560284ea70adc78299c0d244422b4">   14</a></span>&#160;    <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa690560284ea70adc78299c0d244422b4">PW_MONSTER_LIST</a>    = 1U &lt;&lt;  4, </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa0369eecfd3de6c2abeb0a9d118a644fb">   15</a></span>&#160;    <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa0369eecfd3de6c2abeb0a9d118a644fb">PW_MESSAGE</a>         = 1U &lt;&lt;  6, </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa2d8548e712bc9e151e35a0194193a9ba">   16</a></span>&#160;    <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa2d8548e712bc9e151e35a0194193a9ba">PW_OVERHEAD</a>        = 1U &lt;&lt;  7, </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aab6726d72e5d6ac964817e4781882df90">   17</a></span>&#160;    <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aab6726d72e5d6ac964817e4781882df90">PW_MONSTER</a>         = 1U &lt;&lt;  8, </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa3870bbf140c4294c85c7d5530d45d4f8">   18</a></span>&#160;    <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa3870bbf140c4294c85c7d5530d45d4f8">PW_OBJECT</a>          = 1U &lt;&lt;  9, </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa9f82ea4372336039543e9eed9c9e939d">   19</a></span>&#160;    <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa9f82ea4372336039543e9eed9c9e939d">PW_DUNGEON</a>         = 1U &lt;&lt; 10, </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aabd61b3085fd6d3ce170087fc5c763b96">   20</a></span>&#160;    <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aabd61b3085fd6d3ce170087fc5c763b96">PW_SNAPSHOT</a>        = 1U &lt;&lt; 11, </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa4f18424c5c53c96bb843cd96ed1c6b51">   21</a></span>&#160;    <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa4f18424c5c53c96bb843cd96ed1c6b51">PW_FLOOR_ITEM_LIST</a> = 1U &lt;&lt; 12, </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa9c9be923aa5f22f429dd8729f6e03711">   23</a></span>&#160;    <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa9c9be923aa5f22f429dd8729f6e03711">PW_ALL</a> = (<a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aadb78374268cda6e5496e0167ee42c8cc">PW_INVEN</a> | <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa9f9e6124314984d3e013cd4d34bda51d">PW_EQUIP</a> | <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa86d6dd614f1fee0040f5d3208b9ecd06">PW_SPELL</a> | <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa842e6ffc058244ea0e61c156873029b4">PW_PLAYER</a> | <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa690560284ea70adc78299c0d244422b4">PW_MONSTER_LIST</a> | <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa0369eecfd3de6c2abeb0a9d118a644fb">PW_MESSAGE</a> | <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa2d8548e712bc9e151e35a0194193a9ba">PW_OVERHEAD</a> | <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aab6726d72e5d6ac964817e4781882df90">PW_MONSTER</a> | <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa3870bbf140c4294c85c7d5530d45d4f8">PW_OBJECT</a> | <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa9f82ea4372336039543e9eed9c9e939d">PW_DUNGEON</a> | <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aabd61b3085fd6d3ce170087fc5c763b96">PW_SNAPSHOT</a> | <a class="code" href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa4f18424c5c53c96bb843cd96ed1c6b51">PW_FLOOR_ITEM_LIST</a>),</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// clang-format on</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">void</span> <a class="code" href="window-redrawer_8h.html#ab0b6919bad7e2d3db8c6669b99f80d1d">redraw_window</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> <a class="code" href="window-redrawer_8h.html#aefd338f8c6d1f5188a27af55b3fa13a2">window_stuff</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">void</span> <a class="code" href="window-redrawer_8h.html#afd16c8016f2b78c1488a50e0d79ba8e0">redraw_stuff</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_a5ab257bf4a8629ecb692b5848065d29a"><div class="ttname"><a href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29a">window_redraw_type</a></div><div class="ttdeci">window_redraw_type</div><div class="ttdoc">サブウィンドウ描画フラグ</div><div class="ttdef"><b>Definition:</b> window-redrawer.h:9</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_a5ab257bf4a8629ecb692b5848065d29aa0369eecfd3de6c2abeb0a9d118a644fb"><div class="ttname"><a href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa0369eecfd3de6c2abeb0a9d118a644fb">PW_MESSAGE</a></div><div class="ttdeci">@ PW_MESSAGE</div><div class="ttdoc">サブウィンドウ描画フラグ: メッセージログ / Display messages</div><div class="ttdef"><b>Definition:</b> window-redrawer.h:15</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_a5ab257bf4a8629ecb692b5848065d29aa2d8548e712bc9e151e35a0194193a9ba"><div class="ttname"><a href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa2d8548e712bc9e151e35a0194193a9ba">PW_OVERHEAD</a></div><div class="ttdeci">@ PW_OVERHEAD</div><div class="ttdoc">サブウィンドウ描画フラグ: 周辺の光景 / Display overhead view</div><div class="ttdef"><b>Definition:</b> window-redrawer.h:16</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_a5ab257bf4a8629ecb692b5848065d29aa3870bbf140c4294c85c7d5530d45d4f8"><div class="ttname"><a href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa3870bbf140c4294c85c7d5530d45d4f8">PW_OBJECT</a></div><div class="ttdeci">@ PW_OBJECT</div><div class="ttdoc">サブウィンドウ描画フラグ: アイテムの知識 / Display object recall</div><div class="ttdef"><b>Definition:</b> window-redrawer.h:18</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_a5ab257bf4a8629ecb692b5848065d29aa4f18424c5c53c96bb843cd96ed1c6b51"><div class="ttname"><a href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa4f18424c5c53c96bb843cd96ed1c6b51">PW_FLOOR_ITEM_LIST</a></div><div class="ttdeci">@ PW_FLOOR_ITEM_LIST</div><div class="ttdoc">サブウィンドウ描画フラグ: 床上のアイテム一覧 / Display items at feet</div><div class="ttdef"><b>Definition:</b> window-redrawer.h:21</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_a5ab257bf4a8629ecb692b5848065d29aa690560284ea70adc78299c0d244422b4"><div class="ttname"><a href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa690560284ea70adc78299c0d244422b4">PW_MONSTER_LIST</a></div><div class="ttdeci">@ PW_MONSTER_LIST</div><div class="ttdoc">サブウィンドウ描画フラグ: 視界内モンスターの一覧 / Display monster list</div><div class="ttdef"><b>Definition:</b> window-redrawer.h:14</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_a5ab257bf4a8629ecb692b5848065d29aa842e6ffc058244ea0e61c156873029b4"><div class="ttname"><a href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa842e6ffc058244ea0e61c156873029b4">PW_PLAYER</a></div><div class="ttdeci">@ PW_PLAYER</div><div class="ttdoc">サブウィンドウ描画フラグ: プレイヤーのステータス / Display character</div><div class="ttdef"><b>Definition:</b> window-redrawer.h:13</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_a5ab257bf4a8629ecb692b5848065d29aa86d6dd614f1fee0040f5d3208b9ecd06"><div class="ttname"><a href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa86d6dd614f1fee0040f5d3208b9ecd06">PW_SPELL</a></div><div class="ttdeci">@ PW_SPELL</div><div class="ttdoc">サブウィンドウ描画フラグ: 魔法一覧 / Display spell list</div><div class="ttdef"><b>Definition:</b> window-redrawer.h:12</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_a5ab257bf4a8629ecb692b5848065d29aa9c9be923aa5f22f429dd8729f6e03711"><div class="ttname"><a href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa9c9be923aa5f22f429dd8729f6e03711">PW_ALL</a></div><div class="ttdeci">@ PW_ALL</div><div class="ttdef"><b>Definition:</b> window-redrawer.h:23</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_a5ab257bf4a8629ecb692b5848065d29aa9f82ea4372336039543e9eed9c9e939d"><div class="ttname"><a href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa9f82ea4372336039543e9eed9c9e939d">PW_DUNGEON</a></div><div class="ttdeci">@ PW_DUNGEON</div><div class="ttdoc">サブウィンドウ描画フラグ: ダンジョンの地形 / Display dungeon view</div><div class="ttdef"><b>Definition:</b> window-redrawer.h:19</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_a5ab257bf4a8629ecb692b5848065d29aa9f9e6124314984d3e013cd4d34bda51d"><div class="ttname"><a href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aa9f9e6124314984d3e013cd4d34bda51d">PW_EQUIP</a></div><div class="ttdeci">@ PW_EQUIP</div><div class="ttdoc">サブウィンドウ描画フラグ: 装備品-所持品 / Display equip/inven</div><div class="ttdef"><b>Definition:</b> window-redrawer.h:11</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_a5ab257bf4a8629ecb692b5848065d29aab6726d72e5d6ac964817e4781882df90"><div class="ttname"><a href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aab6726d72e5d6ac964817e4781882df90">PW_MONSTER</a></div><div class="ttdeci">@ PW_MONSTER</div><div class="ttdoc">サブウィンドウ描画フラグ: モンスターの思い出 / Display monster recall</div><div class="ttdef"><b>Definition:</b> window-redrawer.h:17</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_a5ab257bf4a8629ecb692b5848065d29aabd61b3085fd6d3ce170087fc5c763b96"><div class="ttname"><a href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aabd61b3085fd6d3ce170087fc5c763b96">PW_SNAPSHOT</a></div><div class="ttdeci">@ PW_SNAPSHOT</div><div class="ttdoc">サブウィンドウ描画フラグ: 記念写真 / Display snap-shot</div><div class="ttdef"><b>Definition:</b> window-redrawer.h:20</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_a5ab257bf4a8629ecb692b5848065d29aadb78374268cda6e5496e0167ee42c8cc"><div class="ttname"><a href="window-redrawer_8h.html#a5ab257bf4a8629ecb692b5848065d29aadb78374268cda6e5496e0167ee42c8cc">PW_INVEN</a></div><div class="ttdeci">@ PW_INVEN</div><div class="ttdoc">サブウィンドウ描画フラグ: 所持品-装備品 / Display inven/equip</div><div class="ttdef"><b>Definition:</b> window-redrawer.h:10</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_ab0b6919bad7e2d3db8c6669b99f80d1d"><div class="ttname"><a href="window-redrawer_8h.html#ab0b6919bad7e2d3db8c6669b99f80d1d">redraw_window</a></div><div class="ttdeci">void redraw_window(void)</div><div class="ttdoc">ウィンドウの再描画処理</div><div class="ttdef"><b>Definition:</b> window-redrawer.cpp:33</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_aefd338f8c6d1f5188a27af55b3fa13a2"><div class="ttname"><a href="window-redrawer_8h.html#aefd338f8c6d1f5188a27af55b3fa13a2">window_stuff</a></div><div class="ttdeci">void window_stuff(player_type *player_ptr)</div><div class="ttdoc">player_ptr-&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr-&gt;window&quot;</div><div class="ttdef"><b>Definition:</b> window-redrawer.cpp:227</div></div>
+<div class="ttc" id="awindow-redrawer_8h_html_afd16c8016f2b78c1488a50e0d79ba8e0"><div class="ttname"><a href="window-redrawer_8h.html#afd16c8016f2b78c1488a50e0d79ba8e0">redraw_stuff</a></div><div class="ttdeci">void redraw_stuff(player_type *creature_ptr)</div><div class="ttdoc">redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;</div><div class="ttdef"><b>Definition:</b> window-redrawer.cpp:65</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

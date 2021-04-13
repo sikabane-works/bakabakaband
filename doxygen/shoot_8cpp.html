@@ -1,0 +1,884 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/combat/shoot.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_61f20e49ac5d6763f7282e8c799f7538.html">combat</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">shoot.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="shoot_8h_source.html">combat/shoot.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fixed-art-types_8h_source.html">artifact/fixed-art-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-redraw-types_8h_source.html">core/player-redraw-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-update-types_8h_source.html">core/player-update-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stuff-handler_8h_source.html">core/stuff-handler.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="effect-characteristics_8h_source.html">effect/effect-characteristics.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="effect-processor_8h_source.html">effect/effect-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-effect-util_8h_source.html">effect/spells-effect-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flavor-describer_8h_source.html">flavor/flavor-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flavor-types_8h_source.html">flavor/object-flavor-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cave_8h_source.html">floor/cave.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-object_8h_source.html">floor/floor-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cheat-types_8h_source.html">game-option/cheat-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-options_8h_source.html">game-option/special-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="feature-flag-types_8h_source.html">grid/feature-flag-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="feature_8h_source.html">grid/feature.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-object_8h_source.html">inventory/inventory-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cursor_8h_source.html">io/cursor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-util_8h_source.html">io/screen-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-definitions-table_8h_source.html">main/sound-definitions-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mind-sniper_8h_source.html">mind/mind-sniper.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="snipe-types_8h_source.html">mind/snipe-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-death_8h_source.html">monster-floor/monster-death.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-move_8h_source.html">monster-floor/monster-move.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags-resistance_8h_source.html">monster-race/race-flags-resistance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags1_8h_source.html">monster-race/race-flags1.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags2_8h_source.html">monster-race/race-flags2.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags3_8h_source.html">monster-race/race-flags3.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags7_8h_source.html">monster-race/race-flags7.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-indice-types_8h_source.html">monster-race/race-indice-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-describer_8h_source.html">monster/monster-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-info_8h_source.html">monster/monster-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status-setter_8h_source.html">monster/monster-status-setter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status_8h_source.html">monster/monster-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-update_8h_source.html">monster/monster-update.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tr-types_8h_source.html">object-enchant/tr-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-enchant_8h_source.html">object-hook/hook-enchant.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-broken_8h_source.html">object/object-broken.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flags_8h_source.html">object/object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-generator_8h_source.html">object/object-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-info_8h_source.html">object/object-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind_8h_source.html">object/object-kind.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-mark-types_8h_source.html">object/object-mark-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="avatar_8h_source.html">player-info/avatar.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-class_8h_source.html">player/player-class.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-personalities-types_8h_source.html">player/player-personalities-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-skill_8h_source.html">player/player-skill.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status-table_8h_source.html">player/player-status-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status_8h_source.html">player/player-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spell-types_8h_source.html">spell/spell-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-bow-types_8h_source.html">sv-definition/sv-bow-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="artifact-type-definition_8h_source.html">system/artifact-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="projection-path-calculator_8h_source.html">target/projection-path-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="target-checker_8h_source.html">target/target-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="target-getter_8h_source.html">target/target-getter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="wizard-messages_8h_source.html">wizard/wizard-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world-object_8h_source.html">world/world-object.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a3a4f56c3d547ea46853ea3489479bd0f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#a5aabe70374d2ed3a66a93dcfd73c8ac7">MULTIPLY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shoot_8cpp.html#a3a4f56c3d547ea46853ea3489479bd0f">calc_shot_damage_with_slay</a> (<a class="el" href="structplayer__type.html">player_type</a> *sniper_ptr, <a class="el" href="structobject__type.html">object_type</a> *bow_ptr, <a class="el" href="structobject__type.html">object_type</a> *arrow_ptr, <a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> tdam, <a class="el" href="structmonster__type.html">monster_type</a> *monster_ptr, <a class="el" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a> <a class="el" href="snipe-types_8h.html#a2b114e33bdc4f1bba5f6b19b082b7f87">snipe_type</a>)</td></tr>
+<tr class="memdesc:a3a4f56c3d547ea46853ea3489479bd0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">矢弾を射撃した際のスレイ倍率をかけた結果を返す / Determines the odds of an object breaking when thrown at a monster  <a href="shoot_8cpp.html#a3a4f56c3d547ea46853ea3489479bd0f">[詳解]</a><br /></td></tr>
+<tr class="separator:a3a4f56c3d547ea46853ea3489479bd0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39bfc14e1d1ecbb15639107988599ff8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8">exe_fire</a> (<a class="el" href="structplayer__type.html">player_type</a> *shooter_ptr, <a class="el" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> item, <a class="el" href="structobject__type.html">object_type</a> *j_ptr, <a class="el" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a> <a class="el" href="snipe-types_8h.html#a2b114e33bdc4f1bba5f6b19b082b7f87">snipe_type</a>)</td></tr>
+<tr class="memdesc:a39bfc14e1d1ecbb15639107988599ff8"><td class="mdescLeft">&#160;</td><td class="mdescRight">射撃処理実行 / Fire an object from the pack or floor.  <a href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8">[詳解]</a><br /></td></tr>
+<tr class="separator:a39bfc14e1d1ecbb15639107988599ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9908e62c6f4d432752c8cff5b4e72cfc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shoot_8cpp.html#a9908e62c6f4d432752c8cff5b4e72cfc">test_hit_fire</a> (<a class="el" href="structplayer__type.html">player_type</a> *shooter_ptr, int chance, <a class="el" href="structmonster__type.html">monster_type</a> *m_ptr, int vis, char *o_name)</td></tr>
+<tr class="memdesc:a9908e62c6f4d432752c8cff5b4e72cfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーからモンスターへの射撃命中判定 / Determine if the player "hits" a monster (normal combat).  <a href="shoot_8cpp.html#a9908e62c6f4d432752c8cff5b4e72cfc">[詳解]</a><br /></td></tr>
+<tr class="separator:a9908e62c6f4d432752c8cff5b4e72cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f91f63cae04b8cc5cfa2427c5aaac24"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shoot_8cpp.html#a5f91f63cae04b8cc5cfa2427c5aaac24">critical_shot</a> (<a class="el" href="structplayer__type.html">player_type</a> *shooter_ptr, <a class="el" href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a> weight, int plus_ammo, int plus_bow, <a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam)</td></tr>
+<tr class="memdesc:a5f91f63cae04b8cc5cfa2427c5aaac24"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーからモンスターへの射撃クリティカル判定 / Critical hits (from objects thrown by player) Factor in item weight, total plusses, and player level.  <a href="shoot_8cpp.html#a5f91f63cae04b8cc5cfa2427c5aaac24">[詳解]</a><br /></td></tr>
+<tr class="separator:a5f91f63cae04b8cc5cfa2427c5aaac24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c408f517b161f6e1fd5b185cfcd786a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a6d6373a43af80d5f6424518b503fa2d7">ENERGY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shoot_8cpp.html#a4c408f517b161f6e1fd5b185cfcd786a">bow_energy</a> (<a class="el" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a> sval)</td></tr>
+<tr class="memdesc:a4c408f517b161f6e1fd5b185cfcd786a"><td class="mdescLeft">&#160;</td><td class="mdescRight">射撃武器の攻撃に必要な基本消費エネルギーを返す/Return bow energy  <a href="shoot_8cpp.html#a4c408f517b161f6e1fd5b185cfcd786a">[詳解]</a><br /></td></tr>
+<tr class="separator:a4c408f517b161f6e1fd5b185cfcd786a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afea7a69a70c8e57df24d1d6a4a0153df"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shoot_8cpp.html#afea7a69a70c8e57df24d1d6a4a0153df">bow_tmul</a> (<a class="el" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a> sval)</td></tr>
+<tr class="separator:afea7a69a70c8e57df24d1d6a4a0153df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9de320b32a1d18a191c7a1581bf7e789"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shoot_8cpp.html#a9de320b32a1d18a191c7a1581bf7e789">calc_crit_ratio_shot</a> (<a class="el" href="structplayer__type.html">player_type</a> *shooter_ptr, <a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> plus_ammo, <a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> plus_bow)</td></tr>
+<tr class="memdesc:a9de320b32a1d18a191c7a1581bf7e789"><td class="mdescLeft">&#160;</td><td class="mdescRight">射撃時クリティカルによるダメージ期待値修正計算（スナイパーの集中処理と武器経験値） / critical happens at i / 10000  <a href="shoot_8cpp.html#a9de320b32a1d18a191c7a1581bf7e789">[詳解]</a><br /></td></tr>
+<tr class="separator:a9de320b32a1d18a191c7a1581bf7e789"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e832cf3b6da1a0193d110bf0a42be5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shoot_8cpp.html#aa0e832cf3b6da1a0193d110bf0a42be5">calc_expect_crit_shot</a> (<a class="el" href="structplayer__type.html">player_type</a> *shooter_ptr, <a class="el" href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a> weight, int plus_ammo, int plus_bow, <a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam)</td></tr>
+<tr class="memdesc:aa0e832cf3b6da1a0193d110bf0a42be5"><td class="mdescLeft">&#160;</td><td class="mdescRight">射撃時クリティカルによるダメージ期待値修正計算（重量依存部分） / critical happens at i / 10000  <a href="shoot_8cpp.html#aa0e832cf3b6da1a0193d110bf0a42be5">[詳解]</a><br /></td></tr>
+<tr class="separator:aa0e832cf3b6da1a0193d110bf0a42be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59038ce6794aeeff4f002830fbea9e41"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shoot_8cpp.html#a59038ce6794aeeff4f002830fbea9e41">calc_expect_crit</a> (<a class="el" href="structplayer__type.html">player_type</a> *shooter_ptr, <a class="el" href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a> weight, int plus, <a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam, <a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> meichuu, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> dokubari)</td></tr>
+<tr class="memdesc:a59038ce6794aeeff4f002830fbea9e41"><td class="mdescLeft">&#160;</td><td class="mdescRight">攻撃時クリティカルによるダメージ期待値修正計算（重量と毒針処理） / critical happens at i / 10000  <a href="shoot_8cpp.html#a59038ce6794aeeff4f002830fbea9e41">[詳解]</a><br /></td></tr>
+<tr class="separator:a59038ce6794aeeff4f002830fbea9e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a4c408f517b161f6e1fd5b185cfcd786a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c408f517b161f6e1fd5b185cfcd786a">&#9670;&nbsp;</a></span>bow_energy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a6d6373a43af80d5f6424518b503fa2d7">ENERGY</a> bow_energy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a>&#160;</td>
+          <td class="paramname"><em>sval</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>射撃武器の攻撃に必要な基本消費エネルギーを返す/Return bow energy </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sval</td><td>射撃武器のアイテム副分類ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>消費する基本エネルギー </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="shoot_8cpp_a4c408f517b161f6e1fd5b185cfcd786a_icgraph.png" border="0" usemap="#ashoot_8cpp_a4c408f517b161f6e1fd5b185cfcd786a_icgraph" alt=""/></div>
+<map name="ashoot_8cpp_a4c408f517b161f6e1fd5b185cfcd786a_icgraph" id="ashoot_8cpp_a4c408f517b161f6e1fd5b185cfcd786a_icgraph">
+<area shape="rect" title="射撃武器の攻撃に必要な基本消費エネルギーを返す/Return bow energy" alt="" coords="664,81,755,108"/>
+<area shape="rect" href="status-first-page_8cpp.html#a93e8cdf0843d30524848d52a7560ce59" title=" " alt="" coords="481,5,609,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a5a3e0e5f61ce04ba547d44482efec909" title=" " alt="" coords="495,56,596,83"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="5,132,72,159"/>
+<area shape="rect" href="flavor-describer_8cpp.html#ab90ef1eec6a73db724ce2db39327766e" title=" " alt="" coords="475,107,616,133"/>
+<area shape="rect" href="status-first-page_8cpp.html#a982a10d3afa348525bad0d2d64110ed5" title="プレイヤーステータスの1ページ目各種詳細をまとめて表示する Prints ratings on certain abilities" alt="" coords="275,5,427,32"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="121,5,226,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a487e2423615ea280fb3f3a339ae2980b" title=" " alt="" coords="302,56,399,83"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="120,107,227,133"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a81194951a890007868ac1c4352750174" title=" " alt="" coords="279,107,422,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afea7a69a70c8e57df24d1d6a4a0153df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afea7a69a70c8e57df24d1d6a4a0153df">&#9670;&nbsp;</a></span>bow_tmul()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int bow_tmul </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad52e4f96ca473e40e3be6db6f73a13d4">OBJECT_SUBTYPE_VALUE</a>&#160;</td>
+          <td class="paramname"><em>sval</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="shoot_8cpp_afea7a69a70c8e57df24d1d6a4a0153df_icgraph.png" border="0" usemap="#ashoot_8cpp_afea7a69a70c8e57df24d1d6a4a0153df_icgraph" alt=""/></div>
+<map name="ashoot_8cpp_afea7a69a70c8e57df24d1d6a4a0153df_icgraph" id="ashoot_8cpp_afea7a69a70c8e57df24d1d6a4a0153df_icgraph">
+<area shape="rect" title=" " alt="" coords="707,81,784,108"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a5a3e0e5f61ce04ba547d44482efec909" title=" " alt="" coords="515,5,617,32"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="5,81,72,108"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a81194951a890007868ac1c4352750174" title=" " alt="" coords="279,56,421,83"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a7ffa845f60ebb5dd97e54815fc0db6c8" title="射撃武器倍率を表示する" alt="" coords="473,157,659,184"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a487e2423615ea280fb3f3a339ae2980b" title=" " alt="" coords="301,5,399,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="120,56,227,83"/>
+<area shape="rect" href="display-player-middle_8cpp.html#a829dd2517519fca14718f1bf3bfb5990" title="プレイヤーステータス表示の中央部分を表示するサブルーチン" alt="" coords="275,157,425,184"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="121,157,226,184"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9de320b32a1d18a191c7a1581bf7e789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9de320b32a1d18a191c7a1581bf7e789">&#9670;&nbsp;</a></span>calc_crit_ratio_shot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> calc_crit_ratio_shot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>shooter_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a>&#160;</td>
+          <td class="paramname"><em>plus_ammo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a>&#160;</td>
+          <td class="paramname"><em>plus_bow</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>射撃時クリティカルによるダメージ期待値修正計算（スナイパーの集中処理と武器経験値） / critical happens at i / 10000 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shooter_ptr</td><td>射撃を行うクリーチャー参照ポインタ </td></tr>
+    <tr><td class="paramname">plus_ammo</td><td>矢弾のダメージ修正 </td></tr>
+    <tr><td class="paramname">plus_bow</td><td>弓のダメージ修正 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ダメージ期待値 </dd></dl>
+<dl class="section note"><dt>覚え書き</dt><dd>基本ダメージ量と重量はこの部位では計算に加わらない。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="shoot_8cpp_a9de320b32a1d18a191c7a1581bf7e789_icgraph.png" border="0" usemap="#ashoot_8cpp_a9de320b32a1d18a191c7a1581bf7e789_icgraph" alt=""/></div>
+<map name="ashoot_8cpp_a9de320b32a1d18a191c7a1581bf7e789_icgraph" id="ashoot_8cpp_a9de320b32a1d18a191c7a1581bf7e789_icgraph">
+<area shape="rect" title="射撃時クリティカルによるダメージ期待値修正計算（スナイパーの集中処理と武器経験値） / critical happens at i / 10000" alt="" coords="548,31,683,57"/>
+<area shape="rect" href="shoot_8cpp.html#aa0e832cf3b6da1a0193d110bf0a42be5" title="射撃時クリティカルによるダメージ期待値修正計算（重量依存部分） / critical happens at i / 10000" alt="" coords="351,5,500,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#ab90ef1eec6a73db724ce2db39327766e" title=" " alt="" coords="355,56,496,83"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a81194951a890007868ac1c4352750174" title=" " alt="" coords="160,31,303,57"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="5,31,112,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a59038ce6794aeeff4f002830fbea9e41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59038ce6794aeeff4f002830fbea9e41">&#9670;&nbsp;</a></span>calc_expect_crit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> calc_expect_crit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>shooter_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a>&#160;</td>
+          <td class="paramname"><em>weight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>plus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a>&#160;</td>
+          <td class="paramname"><em>dam</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td>
+          <td class="paramname"><em>meichuu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>dokubari</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>攻撃時クリティカルによるダメージ期待値修正計算（重量と毒針処理） / critical happens at i / 10000 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shooter_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">weight</td><td>武器の重量 </td></tr>
+    <tr><td class="paramname">plus</td><td>武器のダメージ修正 </td></tr>
+    <tr><td class="paramname">dam</td><td>基本ダメージ </td></tr>
+    <tr><td class="paramname">meichuu</td><td>命中値 </td></tr>
+    <tr><td class="paramname">dokubari</td><td>毒針処理か否か </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ダメージ期待値 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="shoot_8cpp_a59038ce6794aeeff4f002830fbea9e41_icgraph.png" border="0" usemap="#ashoot_8cpp_a59038ce6794aeeff4f002830fbea9e41_icgraph" alt=""/></div>
+<map name="ashoot_8cpp_a59038ce6794aeeff4f002830fbea9e41_icgraph" id="ashoot_8cpp_a59038ce6794aeeff4f002830fbea9e41_icgraph">
+<area shape="rect" title="攻撃時クリティカルによるダメージ期待値修正計算（重量と毒針処理） / critical happens at i / 10000" alt="" coords="555,56,672,83"/>
+<area shape="rect" href="building-craft-weapon_8cpp.html#a967cc0c3e90004b5f0b7e20589c9c68c" title="攻撃時の期待値計算（スレイ→重量クリティカル→切れ味効果）" alt="" coords="384,5,507,32"/>
+<area shape="rect" href="building-craft-weapon_8cpp.html#a62acc3d2d4b056d5c05a5976237500cb" title="武器一つ毎のダメージ情報を表示する。" alt="" coords="185,31,335,57"/>
+<area shape="rect" href="status-first-page_8cpp.html#a87104e35820e5013312b7cf5f6e50acf" title="弓＋両手の武器それぞれについてダメージを計算する" alt="" coords="388,107,503,133"/>
+<area shape="rect" href="building-craft-weapon_8cpp.html#a2b2951f2d62f18d1a7867d4f1524079e" title="武器匠鑑定1回分（オブジェクト2種）の処理。/ Compare weapons" alt="" coords="5,31,136,57"/>
+<area shape="rect" href="status-first-page_8cpp.html#a982a10d3afa348525bad0d2d64110ed5" title="プレイヤーステータスの1ページ目各種詳細をまとめて表示する Prints ratings on certain abilities" alt="" coords="184,107,336,133"/>
+<area shape="rect" href="display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="18,107,123,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa0e832cf3b6da1a0193d110bf0a42be5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0e832cf3b6da1a0193d110bf0a42be5">&#9670;&nbsp;</a></span>calc_expect_crit_shot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> calc_expect_crit_shot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>shooter_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a>&#160;</td>
+          <td class="paramname"><em>weight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>plus_ammo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>plus_bow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a>&#160;</td>
+          <td class="paramname"><em>dam</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>射撃時クリティカルによるダメージ期待値修正計算（重量依存部分） / critical happens at i / 10000 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">weight</td><td>武器の重量 </td></tr>
+    <tr><td class="paramname">plus_ammo</td><td>矢弾のダメージ修正 </td></tr>
+    <tr><td class="paramname">plus_bow</td><td>弓のダメージ修正 </td></tr>
+    <tr><td class="paramname">dam</td><td>基本ダメージ量 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ダメージ期待値 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="shoot_8cpp_aa0e832cf3b6da1a0193d110bf0a42be5_cgraph.png" border="0" usemap="#ashoot_8cpp_aa0e832cf3b6da1a0193d110bf0a42be5_cgraph" alt=""/></div>
+<map name="ashoot_8cpp_aa0e832cf3b6da1a0193d110bf0a42be5_cgraph" id="ashoot_8cpp_aa0e832cf3b6da1a0193d110bf0a42be5_cgraph">
+<area shape="rect" title="射撃時クリティカルによるダメージ期待値修正計算（重量依存部分） / critical happens at i / 10000" alt="" coords="5,5,155,32"/>
+<area shape="rect" href="shoot_8cpp.html#a9de320b32a1d18a191c7a1581bf7e789" title="射撃時クリティカルによるダメージ期待値修正計算（スナイパーの集中処理と武器経験値） / critical happens at i / 10000" alt="" coords="203,5,337,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="shoot_8cpp_aa0e832cf3b6da1a0193d110bf0a42be5_icgraph.png" border="0" usemap="#ashoot_8cpp_aa0e832cf3b6da1a0193d110bf0a42be5_icgraph" alt=""/></div>
+<map name="ashoot_8cpp_aa0e832cf3b6da1a0193d110bf0a42be5_icgraph" id="ashoot_8cpp_aa0e832cf3b6da1a0193d110bf0a42be5_icgraph">
+<area shape="rect" title="射撃時クリティカルによるダメージ期待値修正計算（重量依存部分） / critical happens at i / 10000" alt="" coords="1011,1171,1160,1197"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a81194951a890007868ac1c4352750174" title=" " alt="" coords="820,1171,963,1197"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="665,1171,772,1197"/>
+<area shape="rect" href="player-damage_8cpp.html#a3481d6c6d7162220dcda59d8452cdf4b" title="酸攻撃による装備のAC劣化処理 / Acid has hit the player, attempt to affect some armor." alt="" coords="451,5,561,32"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a53bf0b2e4c1aa52241e31f957a28e240" title="エッセンスを実際に付加する" alt="" coords="457,56,555,83"/>
+<area shape="rect" href="effect-item_8cpp.html#a535ce53ec7f78b19e787e4289d5dec3f" title="汎用的なビーム/ボルト/ボール系によるアイテムオブジェクトへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="463,107,549,133"/>
+<area shape="rect" href="spells-sorcery_8cpp.html#a6cdb24d97057728bc1fa0484c8dfb77d" title="アイテムの価値に応じた錬金術処理 / Turns an object into gold, gain some of its value in a shop" alt="" coords="471,157,541,184"/>
+<area shape="rect" href="artifact-analyzer_8cpp.html#a7aebf0933710d2f5b0b2cf87e1aa4618" title="アイテムの特定記述内容を返す / Acquire a &quot;basic&quot; description &quot;The Cloak of Death [1,+10]&quot;" alt="" coords="448,208,564,235"/>
+<area shape="rect" href="spells-equipment_8cpp.html#aa03fdf6f0d68dd8464e6b6b8e1d5641a" title="プレイヤーの装備劣化処理 / Apply disenchantment to the player&#39;s stuff" alt="" coords="445,259,567,285"/>
+<area shape="rect" href="spells-enchant_8cpp.html#ac28d3a03609a42a4fccfac6af661dcbe" title="アーティファクト生成の巻物処理 /" alt="" coords="457,309,555,336"/>
+<area shape="rect" href="attack-chaos-effect_8cpp.html#aa422cba35675dfe3869ae37fc7cdf17d" title="ゴールデンハンマーによるアイテム奪取処理" alt="" coords="427,360,585,387"/>
+<area shape="rect" href="autopick-destroyer_8cpp.html#a9efe25ff3ad1ac56b5dc6ab7b27eae0a" title=" " alt="" coords="441,563,571,589"/>
+<area shape="rect" href="autopick_8cpp.html#aa84c8c12cf35bd08cc70374c9bf70413" title=" " alt="" coords="192,512,347,539"/>
+<area shape="rect" href="player-inventory_8cpp.html#a9a1c3265a4b625e9f772baa1c55a0a3e" title="プレイヤーがオブジェクト上に乗った際の表示処理 / Player &quot;wants&quot; to pick up an object or gold." alt="" coords="49,461,100,488"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="196,715,343,741"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f" title=" " alt="" coords="5,664,144,691"/>
+<area shape="rect" href="autopick_8cpp.html#a5bc67a4e33234de016dd0bf46e90a051" title=" " alt="" coords="415,664,597,691"/>
+<area shape="rect" href="autopick-entry_8cpp.html#a4f3f90481be8626c7f36c064d773d490" title=" " alt="" coords="437,1678,575,1719"/>
+<area shape="rect" href="mind-priest_8cpp.html#a49724e70edc0ac874b73b87b839eaf35" title="武器の祝福処理 / Bless a weapon" alt="" coords="454,765,558,792"/>
+<area shape="rect" href="spells-object_8cpp.html#a606c388ae9ec39706af972b765edadbe" title="武器へのエゴ付加処理 / Brand the current weapon" alt="" coords="453,816,559,843"/>
+<area shape="rect" href="floor-streams_8cpp.html#a4c0e9c1836936ded0040dede609df5e0" title="ダンジョンの壁部にストリーマー（地質の変化）を与える / Places &quot;streamers&quot; of rock through dungeon" alt="" coords="453,867,559,893"/>
+<area shape="rect" href="building-recharger_8cpp.html#ac7c07a23630b5e2f83c38746dabef46c" title="魔道具の使用回数を回復させる施設のメインルーチン / Recharge rods, wands and staffs" alt="" coords="445,917,567,944"/>
+<area shape="rect" href="cmd-throw_8cpp.html#ab74cb6b4ca4a2cac9b1c48f98d228d6d" title=" " alt="" coords="445,968,567,995"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a8b4f2968b15649cb19f6bd5e65962fce" title=" " alt="" coords="423,1019,589,1045"/>
+<area shape="rect" href="spells-status_8cpp.html#a6b3d51cd9befa32b5917f7c8c47626f0" title="装備を脱ぎ捨てて小宇宙を燃やす" alt="" coords="448,1069,564,1096"/>
+<area shape="rect" href="mind-archer_8cpp.html#a5c7ac014262f5236c69ea18c406fee25" title="「弾/矢の製造」処理 / do_cmd_cast calls this function if the player&#39;s class is &#39;archer&#39;." alt="" coords="455,1120,557,1147"/>
+<area shape="rect" href="spells-object_8cpp.html#a6f9410ac86db260e30cb7ce26261aa4d" title="防具呪縛処理 / Curse the players armor" alt="" coords="459,1171,553,1197"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a4477940ab9011d49b882f5206949745c" title=" " alt="" coords="439,1221,573,1248"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a0e8f45a3c8b44eb33491346f328f45fe" title=" " alt="" coords="451,1272,561,1299"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a00b0588d1ba51bc9f98e2076942f95ed" title=" " alt="" coords="449,1323,563,1349"/>
+<area shape="rect" href="object-curse_8cpp.html#a8b5d44a36e5f2d098b175f3f8f08832a" title="装備への呪い付加判定と付加処理" alt="" coords="445,1373,567,1400"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a38e1f36fd17441d50b8be5953d11ddf4" title="呪われている、トランプエゴ等による装備品由来のテレポートを実行する" alt="" coords="454,1424,558,1451"/>
+<area shape="rect" href="spells-object_8cpp.html#a7f937c2e893cc421a808dded72fc4e39" title="武器呪縛処理 / Curse the players weapon" alt="" coords="433,1475,579,1501"/>
+<area shape="rect" href="target-describer_8cpp.html#a8cab30bd50fb30be27531d37b11cef88" title=" " alt="" coords="448,1525,564,1552"/>
+<area shape="rect" href="target-describer_8cpp.html#a394264f8a5060a1a34c85c9b8a9ef2ea" title=" " alt="" coords="431,1576,581,1603"/>
+<area shape="rect" href="target-describer_8cpp.html#aadd4e4da9e34db0569f96630d44a5fd8" title=" " alt="" coords="427,1627,585,1653"/>
+<area shape="rect" href="player-inventory_8cpp.html#a870affd57aaed3be875c174410ecf5d3" title="プレイヤーがオブジェクトを拾った際のメッセージ表示処理 / Helper routine for py_pickup() and py_pickup_floor()." alt="" coords="432,461,580,488"/>
+<area shape="rect" href="spells-floor_8cpp.html#aff6b2287b85d21769fa6b05e3df35eaf" title="*破壊*処理を行う / The spell of destruction" alt="" coords="457,1744,555,1771"/>
+<area shape="rect" href="display-store_8cpp.html#aaec0d94f30a0a3554c4c2e6a6b3e0b33" title="店の商品リストを再表示する / Re&#45;displays a single store entry" alt="" coords="457,1795,555,1821"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#afe4440a2dd846286c0f1f33be0e0d4be" title="装備アイテム一覧を表示する / Choice window &quot;shadow&quot; of the &quot;show_equip()&quot; function" alt="" coords="441,1845,571,1872"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#ae1190cadd5200d38fbfbde5c160bd2bb" title=" " alt="" coords="431,1896,581,1923"/>
+<area shape="rect" href="display-inventory_8cpp.html#a30d21c4509ab13a7a4213ae59f23d0ef" title="所持アイテム一覧を表示する / Choice window &quot;shadow&quot; of the &quot;show_inven()&quot; function" alt="" coords="445,1947,567,1973"/>
+<area shape="rect" href="object-describer_8cpp.html#aedac848caea6b1e0f5ef5fe504fd84e1" title="現在アクティブになっているウィンドウにオブジェクトの詳細を表示する / Hack – display an object kind in the current window" alt="" coords="461,1997,551,2024"/>
+<area shape="rect" href="rumor_8cpp.html#ac90795303a6239b4a511b424262e743b" title=" " alt="" coords="455,2048,557,2075"/>
+<area shape="rect" href="main-window-util_8cpp.html#ab4a003edfee6aa74f07291b64f6e81d6" title=" " alt="" coords="407,2099,605,2125"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#ace3fa3c633ff433fd6ce004e56316daf" title="アイテムを破壊するコマンドのメインルーチン / Destroy an item" alt="" coords="447,2149,565,2176"/>
+<area shape="rect" href="cmd-item_8cpp.html#af46524a03899d48bc4eab853368db03f" title="アイテムの銘を刻むコマンドのメインルーチン Inscribe an object with a comment" alt="" coords="446,2200,566,2227"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a19c446276d6a7514112c7c1101d0540e" title="既知のアイテムとアーティファクトを表示する" alt="" coords="411,2251,601,2277"/>
+<area shape="rect" href="knowledge-self_8cpp.html#ab7de2bac473b3a93ad1b8abbee8e22eb" title=" " alt="" coords="419,2301,593,2328"/>
+<area shape="rect" href="knowledge-inventory_8cpp.html#ad270c8f0bf06a231e1fbe8922ba02f65" title="アイテム1つ当たりの耐性を表示する" alt="" coords="395,2352,617,2379"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3a4f56c3d547ea46853ea3489479bd0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a4f56c3d547ea46853ea3489479bd0f">&#9670;&nbsp;</a></span>calc_shot_damage_with_slay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#a5aabe70374d2ed3a66a93dcfd73c8ac7">MULTIPLY</a> calc_shot_damage_with_slay </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>sniper_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>bow_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>arrow_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a>&#160;</td>
+          <td class="paramname"><em>tdam</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonster__type.html">monster_type</a> *&#160;</td>
+          <td class="paramname"><em>monster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a>&#160;</td>
+          <td class="paramname"><em>snipe_type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>矢弾を射撃した際のスレイ倍率をかけた結果を返す / Determines the odds of an object breaking when thrown at a monster </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bow_ptr</td><td>弓のオブジェクト構造体参照ポインタ </td></tr>
+    <tr><td class="paramname">arrow_ptr</td><td>矢弾のオブジェクト構造体参照ポインタ </td></tr>
+    <tr><td class="paramname">tdam</td><td>計算途中のダメージ量 </td></tr>
+    <tr><td class="paramname">monster_ptr</td><td>目標モンスターの構造体参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>スレイ倍率をかけたダメージ量 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="shoot_8cpp_a3a4f56c3d547ea46853ea3489479bd0f_cgraph.png" border="0" usemap="#ashoot_8cpp_a3a4f56c3d547ea46853ea3489479bd0f_cgraph" alt=""/></div>
+<map name="ashoot_8cpp_a3a4f56c3d547ea46853ea3489479bd0f_cgraph" id="ashoot_8cpp_a3a4f56c3d547ea46853ea3489479bd0f_cgraph">
+<area shape="rect" title="矢弾を射撃した際のスレイ倍率をかけた結果を返す / Determines the odds of an object breaking when thrown at a monster" alt="" coords="5,81,197,108"/>
+<area shape="rect" href="mind-sniper_8cpp.html#aba0d8ae8ce1e0a34c3aa0afcc2bc7324" title="スナイバー技能のスレイ倍率計算を行う / Calcurate magnification of snipe technics" alt="" coords="245,31,444,57"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="263,81,427,108"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="299,132,390,159"/>
+<area shape="rect" href="geometry_8cpp.html#aee4a4a78ed769a57ff6e3745a4425498" title="Is the monster seen by the player?" alt="" coords="536,31,603,57"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="730,5,874,32"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="759,56,845,83"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="518,81,621,108"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="492,132,647,159"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="513,183,626,209"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="695,183,909,209"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="shoot_8cpp_a3a4f56c3d547ea46853ea3489479bd0f_icgraph.png" border="0" usemap="#ashoot_8cpp_a3a4f56c3d547ea46853ea3489479bd0f_icgraph" alt=""/></div>
+<map name="ashoot_8cpp_a3a4f56c3d547ea46853ea3489479bd0f_icgraph" id="ashoot_8cpp_a3a4f56c3d547ea46853ea3489479bd0f_icgraph">
+<area shape="rect" title="矢弾を射撃した際のスレイ倍率をかけた結果を返す / Determines the odds of an object breaking when thrown at a monster" alt="" coords="444,31,636,57"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="329,31,396,57"/>
+<area shape="rect" href="cmd-shoot_8cpp.html#a30d572039212ee44f63d055a45a68f93" title="射撃処理のメインルーチン" alt="" coords="187,5,279,32"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="185,56,281,83"/>
+<area shape="rect" href="mind-sniper_8cpp.html#aa338b11bf292bfe8e26a415d702db76e" title="スナイパー技能の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;snipe&#39;." alt="" coords="10,5,133,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,56,137,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5f91f63cae04b8cc5cfa2427c5aaac24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f91f63cae04b8cc5cfa2427c5aaac24">&#9670;&nbsp;</a></span>critical_shot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> critical_shot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>shooter_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ab31578f84064b0779ae4f18997f3fdbf">WEIGHT</a>&#160;</td>
+          <td class="paramname"><em>weight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>plus_ammo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>plus_bow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a>&#160;</td>
+          <td class="paramname"><em>dam</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーからモンスターへの射撃クリティカル判定 / Critical hits (from objects thrown by player) Factor in item weight, total plusses, and player level. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">weight</td><td>矢弾の重量 </td></tr>
+    <tr><td class="paramname">plus_ammo</td><td>矢弾の命中修正 </td></tr>
+    <tr><td class="paramname">plus_bow</td><td>弓の命中修正 </td></tr>
+    <tr><td class="paramname">dam</td><td>現在算出中のダメージ値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>クリティカル修正が入ったダメージ値 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="shoot_8cpp_a5f91f63cae04b8cc5cfa2427c5aaac24_cgraph.png" border="0" usemap="#ashoot_8cpp_a5f91f63cae04b8cc5cfa2427c5aaac24_cgraph" alt=""/></div>
+<map name="ashoot_8cpp_a5f91f63cae04b8cc5cfa2427c5aaac24_cgraph" id="ashoot_8cpp_a5f91f63cae04b8cc5cfa2427c5aaac24_cgraph">
+<area shape="rect" title="プレイヤーからモンスターへの射撃クリティカル判定 / Critical hits (from objects thrown by player) Factor in item weight,..." alt="" coords="5,284,97,311"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="145,284,224,311"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="280,56,383,83"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="291,259,372,285"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="473,309,560,336"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="473,360,561,387"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="272,157,391,184"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="284,411,379,437"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="463,5,570,32"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="491,56,542,83"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="495,157,538,184"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="490,208,543,235"/>
+<area shape="rect" href="display-messages_8cpp.html#a8647d1d8cbef5e4db465563838dd2b87" title=" " alt="" coords="439,259,595,285"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="643,132,725,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="shoot_8cpp_a5f91f63cae04b8cc5cfa2427c5aaac24_icgraph.png" border="0" usemap="#ashoot_8cpp_a5f91f63cae04b8cc5cfa2427c5aaac24_icgraph" alt=""/></div>
+<map name="ashoot_8cpp_a5f91f63cae04b8cc5cfa2427c5aaac24_icgraph" id="ashoot_8cpp_a5f91f63cae04b8cc5cfa2427c5aaac24_icgraph">
+<area shape="rect" title="プレイヤーからモンスターへの射撃クリティカル判定 / Critical hits (from objects thrown by player) Factor in item weight,..." alt="" coords="547,31,639,57"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a4a11a623028d48673c9cd924767cb6df" title=" " alt="" coords="320,5,499,32"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="376,56,443,83"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a7f907086f332d9bc2e4efcae61e61a80" title=" " alt="" coords="135,5,272,32"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a144b5ba602202137adbda1a4eb26ce88" title=" " alt="" coords="5,5,87,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a39bfc14e1d1ecbb15639107988599ff8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39bfc14e1d1ecbb15639107988599ff8">&#9670;&nbsp;</a></span>exe_fire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void exe_fire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>shooter_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a>&#160;</td>
+          <td class="paramname"><em>item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>j_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a8999b4411f93c429d3c10840fde80da1">SPELL_IDX</a>&#160;</td>
+          <td class="paramname"><em>snipe_type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>射撃処理実行 / Fire an object from the pack or floor. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>射撃するオブジェクトの所持ID </td></tr>
+    <tr><td class="paramname">bow_ptr</td><td>射撃武器のオブジェクト参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<pre>
+You may only fire items that "match" your missile launcher.
+You must use slings + pebbles/shots, bows + arrows, xbows + bolts.
+See "calc_bonuses()" for more calculations and such.
+Note that "firing" a missile is MUCH better than "throwing" it.
+Note: "unseen" monsters are very hard to hit.
+Objects are more likely to break if they "attempt" to hit a monster.
+Rangers (with Bows) and Anyone (with "Extra Shots") get extra shots.
+The "extra shot" code works by decreasing the amount of energy
+required to make each shot, spreading the shots out over time.
+Note that when firing missiles, the launcher multiplier is applied
+after all the bonuses are added in, making multipliers very useful.
+Note that Bows of "Extra Might" get extra range and an extra bonus
+for the damage multiplier.
+Note that Bows of "Extra Shots" give an extra shot.
+</pre> <div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="shoot_8cpp_a39bfc14e1d1ecbb15639107988599ff8_icgraph.png" border="0" usemap="#ashoot_8cpp_a39bfc14e1d1ecbb15639107988599ff8_icgraph" alt=""/></div>
+<map name="ashoot_8cpp_a39bfc14e1d1ecbb15639107988599ff8_icgraph" id="ashoot_8cpp_a39bfc14e1d1ecbb15639107988599ff8_icgraph">
+<area shape="rect" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="651,81,717,108"/>
+<area shape="rect" href="cmd-shoot_8cpp.html#a30d572039212ee44f63d055a45a68f93" title="射撃処理のメインルーチン" alt="" coords="511,56,603,83"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="353,107,449,133"/>
+<area shape="rect" href="mind-sniper_8cpp.html#aa338b11bf292bfe8e26a415d702db76e" title="スナイパー技能の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;snipe&#39;." alt="" coords="340,5,463,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,56,137,83"/>
+<area shape="rect" href="mind-sniper_8cpp.html#a7900343be25b38e7456331fa4360d66c" title="スナイパー技能コマンドのメインルーチン /" alt="" coords="185,5,292,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9908e62c6f4d432752c8cff5b4e72cfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9908e62c6f4d432752c8cff5b4e72cfc">&#9670;&nbsp;</a></span>test_hit_fire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> test_hit_fire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>shooter_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>chance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonster__type.html">monster_type</a> *&#160;</td>
+          <td class="paramname"><em>m_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>vis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>o_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーからモンスターへの射撃命中判定 / Determine if the player "hits" a monster (normal combat). </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chance</td><td>基本命中値 </td></tr>
+    <tr><td class="paramname">monster_ptr</td><td>モンスターの構造体参照ポインタ </td></tr>
+    <tr><td class="paramname">vis</td><td>目標を視界に捕らえているならばTRUEを指定 </td></tr>
+    <tr><td class="paramname">o_name</td><td>メッセージ表示時のモンスター名 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>命中と判定された場合TRUEを返す </dd></dl>
+<dl class="section note"><dt>覚え書き</dt><dd>Always miss 5%, always hit 5%, otherwise random. </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="shoot_8cpp_a9908e62c6f4d432752c8cff5b4e72cfc_cgraph.png" border="0" usemap="#ashoot_8cpp_a9908e62c6f4d432752c8cff5b4e72cfc_cgraph" alt=""/></div>
+<map name="ashoot_8cpp_a9908e62c6f4d432752c8cff5b4e72cfc_cgraph" id="ashoot_8cpp_a9908e62c6f4d432752c8cff5b4e72cfc_cgraph">
+<area shape="rect" title="プレイヤーからモンスターへの射撃命中判定 / Determine if the player &quot;hits&quot; a monster (normal combat)." alt="" coords="5,56,95,83"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="143,5,320,32"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="179,259,283,285"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="528,157,619,184"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="389,107,448,133"/>
+<area shape="rect" href="files-util_8cpp.html#a06656f06eccb3992114a0f3dd1f51ca1" title="ファイルからランダムに行を一つ取得する / Get a random line from a file" alt="" coords="373,259,465,285"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="518,411,629,437"/>
+<area shape="rect" href="english_8cpp.html#a1183a616ba1590738914bbd4e6524917" title=" " alt="" coords="377,461,461,488"/>
+<area shape="rect" href="monster-info_8cpp.html#aee375b2cef10419aee76d699c91d4007" title=" " alt="" coords="368,157,469,184"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="390,360,447,387"/>
+<area shape="rect" href="quarks_8cpp.html#a95cf419856c525009b78e5246327f405" title=" " alt="" coords="381,208,457,235"/>
+<area shape="rect" href="monster-info_8cpp.html#a3228fe93eae0423e4bea1d418088d3c3" title="モンスターの真の種族を返す / Extract monster race pointer of a monster&#39;s true form" alt="" coords="381,309,457,336"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="542,107,605,133"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="517,208,629,235"/>
+<area shape="rect" href="angband-files_8cpp.html#af8478ae9202a347c7b95688842ff7633" title=" " alt="" coords="520,259,627,285"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="519,309,628,336"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="533,360,614,387"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="shoot_8cpp_a9908e62c6f4d432752c8cff5b4e72cfc_icgraph.png" border="0" usemap="#ashoot_8cpp_a9908e62c6f4d432752c8cff5b4e72cfc_icgraph" alt=""/></div>
+<map name="ashoot_8cpp_a9908e62c6f4d432752c8cff5b4e72cfc_icgraph" id="ashoot_8cpp_a9908e62c6f4d432752c8cff5b4e72cfc_icgraph">
+<area shape="rect" title="プレイヤーからモンスターへの射撃命中判定 / Determine if the player &quot;hits&quot; a monster (normal combat)." alt="" coords="475,31,564,57"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a7f907086f332d9bc2e4efcae61e61a80" title=" " alt="" coords="289,5,427,32"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="325,56,391,83"/>
+<area shape="rect" href="cmd-throw_8cpp.html#a144b5ba602202137adbda1a4eb26ce88" title=" " alt="" coords="160,5,241,32"/>
+<area shape="rect" href="cmd-throw_8cpp.html#ad5a2694d677c498bbc88091785b50605" title="投射処理メインルーチン / Throw an object from the pack or floor." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分38秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

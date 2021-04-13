@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/inventory/inventory-object.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_8aa3e05b3c778144162028379a6046fd.html">inventory</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">inventory-object.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="inventory-object_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">void</span> <a class="code" href="inventory-object_8h.html#a95bd37f416091df0360f4eec6bd12e49">vary_item</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="code" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> item, <a class="code" href="h-type_8h.html#a64d1c0cbb82f223cd3ab16d119c71b59">ITEM_NUMBER</a> num);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">void</span> <a class="code" href="inventory-object_8h.html#a7310d550e75b9887975ad6c39f033441">inven_item_increase</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="code" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> item, <a class="code" href="h-type_8h.html#a64d1c0cbb82f223cd3ab16d119c71b59">ITEM_NUMBER</a> num);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> <a class="code" href="inventory-object_8h.html#a58a4353e5faf4712704c8803bbbc7c84">inven_item_optimize</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="code" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> item);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">void</span> <a class="code" href="inventory-object_8h.html#ae99b5b0caacc1908fec0ca73e540d638">drop_from_inventory</a>(<a class="code" href="structplayer__type.html">player_type</a> *<a class="code" href="structowner__type.html">owner_type</a>, <a class="code" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> item, <a class="code" href="h-type_8h.html#a64d1c0cbb82f223cd3ab16d119c71b59">ITEM_NUMBER</a> amt);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">void</span> <a class="code" href="inventory-object_8h.html#a3116c5fcb1bdbd9769f0ac791aa023df">combine_pack</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> <a class="code" href="inventory-object_8h.html#a84c5146175e6a94ec4d2a31d0d8bef5d">reorder_pack</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="inventory-object_8h.html#a7d987f9b5f55d41d114975ba40e21c47">store_item_to_inventory</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="inventory-object_8h.html#a309b68c38ed98e7a68c60d9d8e3f43c6">check_get_item</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="inventory-object_8h.html#a1b51ce45ba56d1a3251f5bd7b32b030b">check_store_item_to_inventory</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="code" href="structobject__type.html">object_type</a> *o_ptr);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<a class="code" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> <a class="code" href="inventory-object_8h.html#aaa6c1073129818534a1eb0677a237a5b">inven_takeoff</a>(<a class="code" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="code" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> item, <a class="code" href="h-type_8h.html#a64d1c0cbb82f223cd3ab16d119c71b59">ITEM_NUMBER</a> amt);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_a592c0b48d60348198260e1f6ffb1897e"><div class="ttname"><a href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a></div><div class="ttdeci">s16b INVENTORY_IDX</div><div class="ttdoc">ゲーム中の所持品ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:120</div></div>
+<div class="ttc" id="ah-type_8h_html_a64d1c0cbb82f223cd3ab16d119c71b59"><div class="ttname"><a href="h-type_8h.html#a64d1c0cbb82f223cd3ab16d119c71b59">ITEM_NUMBER</a></div><div class="ttdeci">s32b ITEM_NUMBER</div><div class="ttdoc">ゲーム中のアイテム数型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:158</div></div>
+<div class="ttc" id="ainventory-object_8h_html_a1b51ce45ba56d1a3251f5bd7b32b030b"><div class="ttname"><a href="inventory-object_8h.html#a1b51ce45ba56d1a3251f5bd7b32b030b">check_store_item_to_inventory</a></div><div class="ttdeci">bool check_store_item_to_inventory(player_type *owner_ptr, object_type *o_ptr)</div><div class="ttdoc">アイテムを拾う際にザックから溢れずに済むかを判定する / Check if we have space for an item in the pack without overflow</div><div class="ttdef"><b>Definition:</b> inventory-object.cpp:370</div></div>
+<div class="ttc" id="ainventory-object_8h_html_a309b68c38ed98e7a68c60d9d8e3f43c6"><div class="ttname"><a href="inventory-object_8h.html#a309b68c38ed98e7a68c60d9d8e3f43c6">check_get_item</a></div><div class="ttdeci">bool check_get_item(player_type *player_ptr, object_type *o_ptr)</div><div class="ttdoc">アイテムが拾えるものかどうか返す。</div><div class="ttdef"><b>Definition:</b> inventory-object.cpp:356</div></div>
+<div class="ttc" id="ainventory-object_8h_html_a3116c5fcb1bdbd9769f0ac791aa023df"><div class="ttname"><a href="inventory-object_8h.html#a3116c5fcb1bdbd9769f0ac791aa023df">combine_pack</a></div><div class="ttdeci">void combine_pack(player_type *owner_ptr)</div><div class="ttdoc">プレイヤーの所持スロットに存在するオブジェクトをまとめなおす / Combine items in the pack</div><div class="ttdef"><b>Definition:</b> inventory-object.cpp:157</div></div>
+<div class="ttc" id="ainventory-object_8h_html_a58a4353e5faf4712704c8803bbbc7c84"><div class="ttname"><a href="inventory-object_8h.html#a58a4353e5faf4712704c8803bbbc7c84">inven_item_optimize</a></div><div class="ttdeci">void inven_item_optimize(player_type *owner_ptr, INVENTORY_IDX item)</div><div class="ttdoc">所持アイテムスロットから所持数のなくなったアイテムを消去する / Erase an inventory slot if it has no more items</div><div class="ttdef"><b>Definition:</b> inventory-object.cpp:80</div></div>
+<div class="ttc" id="ainventory-object_8h_html_a7310d550e75b9887975ad6c39f033441"><div class="ttname"><a href="inventory-object_8h.html#a7310d550e75b9887975ad6c39f033441">inven_item_increase</a></div><div class="ttdeci">void inven_item_increase(player_type *owner_ptr, INVENTORY_IDX item, ITEM_NUMBER num)</div><div class="ttdoc">アイテムを増減させ残り所持数メッセージを表示する / Increase the &quot;number&quot; of an item in the inventory</div><div class="ttdef"><b>Definition:</b> inventory-object.cpp:44</div></div>
+<div class="ttc" id="ainventory-object_8h_html_a7d987f9b5f55d41d114975ba40e21c47"><div class="ttname"><a href="inventory-object_8h.html#a7d987f9b5f55d41d114975ba40e21c47">store_item_to_inventory</a></div><div class="ttdeci">s16b store_item_to_inventory(player_type *owner_ptr, object_type *o_ptr)</div><div class="ttdoc">オブジェクトをプレイヤーが拾って所持スロットに納めるメインルーチン / Add an item to the players inventory, and return the slot used.</div><div class="ttdef"><b>Definition:</b> inventory-object.cpp:292</div></div>
+<div class="ttc" id="ainventory-object_8h_html_a84c5146175e6a94ec4d2a31d0d8bef5d"><div class="ttname"><a href="inventory-object_8h.html#a84c5146175e6a94ec4d2a31d0d8bef5d">reorder_pack</a></div><div class="ttdeci">void reorder_pack(player_type *owner_ptr)</div><div class="ttdoc">プレイヤーの所持スロットに存在するオブジェクトを並び替える / Reorder items in the pack</div><div class="ttdef"><b>Definition:</b> inventory-object.cpp:231</div></div>
+<div class="ttc" id="ainventory-object_8h_html_a95bd37f416091df0360f4eec6bd12e49"><div class="ttname"><a href="inventory-object_8h.html#a95bd37f416091df0360f4eec6bd12e49">vary_item</a></div><div class="ttdeci">void vary_item(player_type *owner_ptr, INVENTORY_IDX item, ITEM_NUMBER num)</div><div class="ttdef"><b>Definition:</b> inventory-object.cpp:22</div></div>
+<div class="ttc" id="ainventory-object_8h_html_aaa6c1073129818534a1eb0677a237a5b"><div class="ttname"><a href="inventory-object_8h.html#aaa6c1073129818534a1eb0677a237a5b">inven_takeoff</a></div><div class="ttdeci">INVENTORY_IDX inven_takeoff(player_type *owner_ptr, INVENTORY_IDX item, ITEM_NUMBER amt)</div><div class="ttdoc">装備スロットからオブジェクトを外すメインルーチン / Take off (some of) a non-cursed equipment item</div><div class="ttdef"><b>Definition:</b> inventory-object.cpp:403</div></div>
+<div class="ttc" id="ainventory-object_8h_html_ae99b5b0caacc1908fec0ca73e540d638"><div class="ttname"><a href="inventory-object_8h.html#ae99b5b0caacc1908fec0ca73e540d638">drop_from_inventory</a></div><div class="ttdeci">void drop_from_inventory(player_type *owner_type, INVENTORY_IDX item, ITEM_NUMBER amt)</div><div class="ttdoc">所持スロットから床下にオブジェクトを落とすメインルーチン / Drop (some of) a non-cursed inventory/equipment item</div><div class="ttdef"><b>Definition:</b> inventory-object.cpp:121</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructowner__type_html"><div class="ttname"><a href="structowner__type.html">owner_type</a></div><div class="ttdoc">店主データ構造体</div><div class="ttdef"><b>Definition:</b> store-owners.h:12</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

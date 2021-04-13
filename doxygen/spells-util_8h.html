@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/spell/spells-util.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b288867d93d6ddd637031b6cda0e8b43.html">spell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#enum-members">列挙型</a>  </div>
+  <div class="headertitle">
+<div class="title">spells-util.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-util_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2spell_2spells-util_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2spell_2spells-util_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2spell_2spells-util_8hdep">
+<area shape="rect" title=" " alt="" coords="3821,5,4009,61"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="2862,117,3055,158"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1782,109,1970,165"/>
+<area shape="rect" href="realm-arcane_8h.html" title=" " alt="" coords="3079,109,3267,165"/>
+<area shape="rect" href="realm-chaos_8h.html" title=" " alt="" coords="3291,109,3479,165"/>
+<area shape="rect" href="realm-craft_8h.html" title=" " alt="" coords="3503,109,3691,165"/>
+<area shape="rect" href="realm-crusade_8h.html" title=" " alt="" coords="3715,109,3903,165"/>
+<area shape="rect" href="realm-death_8h.html" title=" " alt="" coords="3927,109,4115,165"/>
+<area shape="rect" href="realm-demon_8h.html" title=" " alt="" coords="4139,109,4327,165"/>
+<area shape="rect" href="realm-hex_8h.html" title=" " alt="" coords="4351,109,4539,165"/>
+<area shape="rect" href="realm-hissatsu_8h.html" title=" " alt="" coords="4563,109,4751,165"/>
+<area shape="rect" href="realm-life_8h.html" title=" " alt="" coords="4775,109,4963,165"/>
+<area shape="rect" href="realm-nature_8h.html" title=" " alt="" coords="4987,109,5175,165"/>
+<area shape="rect" href="realm-song_8h.html" title=" " alt="" coords="5199,109,5387,165"/>
+<area shape="rect" href="realm-sorcery_8h.html" title=" " alt="" coords="5411,109,5599,165"/>
+<area shape="rect" href="realm-trump_8h.html" title=" " alt="" coords="5623,109,5811,165"/>
+<area shape="rect" href="spells-execution_8h.html" title=" " alt="" coords="1566,109,1754,165"/>
+<area shape="rect" href="spells-status_8h.html" title=" " alt="" coords="995,109,1183,165"/>
+<area shape="rect" href="spells-teleport_8h.html" title=" " alt="" coords="551,109,739,165"/>
+<area shape="rect" href="action-limited_8cpp.html" title=" " alt="" coords="3955,213,4143,269"/>
+<area shape="rect" href="movement-execution_8cpp.html" title=" " alt="" coords="4167,213,4355,269"/>
+<area shape="rect" href="mutation-execution_8cpp.html" title=" " alt="" coords="230,213,418,269"/>
+<area shape="rect" href="open-close-execution_8cpp.html" title=" " alt="" coords="4379,213,4567,269"/>
+<area shape="rect" href="open-util_8cpp.html" title=" " alt="" coords="4591,213,4779,269"/>
+<area shape="rect" href="run-execution_8cpp.html" title=" " alt="" coords="4803,213,4991,269"/>
+<area shape="rect" href="travel-execution_8cpp.html" title=" " alt="" coords="5015,213,5203,269"/>
+<area shape="rect" href="tunnel-execution_8cpp.html" title=" " alt="" coords="5227,213,5415,269"/>
+<area shape="rect" href="autopick_8h.html" title=" " alt="" coords="5439,213,5627,269"/>
+<area shape="rect" href="blue-magic-caster_8cpp.html" title=" " alt="" coords="654,213,853,269"/>
+<area shape="rect" href="cmd-mane_8cpp.html" title=" " alt="" coords="877,213,1077,269"/>
+<area shape="rect" href="cmd-mind_8cpp.html" title=" " alt="" coords="5,213,205,269"/>
+<area shape="rect" href="cmd-move_8cpp.html" title=" " alt="" coords="5652,213,5852,269"/>
+<area shape="rect" href="cmd-open-close_8cpp.html" title=" " alt="" coords="5876,213,6076,269"/>
+<area shape="rect" href="cmd-others_8cpp.html" title=" " alt="" coords="6100,213,6300,269"/>
+<area shape="rect" href="cmd-pet_8cpp.html" title=" " alt="" coords="2207,213,2407,269"/>
+<area shape="rect" href="cmd-spell_8cpp.html" title=" " alt="" coords="1557,213,1757,269"/>
+<area shape="rect" href="cmd-travel_8cpp.html" title=" " alt="" coords="6324,213,6524,269"/>
+<area shape="rect" href="cmd-tunnel_8cpp.html" title=" " alt="" coords="6548,213,6748,269"/>
+<area shape="rect" href="cmd-building_8cpp.html" title=" " alt="" coords="1323,213,1533,269"/>
+<area shape="rect" href="cmd-throw_8cpp.html" title=" " alt="" coords="2431,213,2622,269"/>
+<area shape="rect" href="aura-counterattack_8cpp.html" title=" " alt="" coords="442,213,630,269"/>
+<area shape="rect" href="shoot_8cpp.html" title=" " alt="" coords="1782,213,1970,269"/>
+<area shape="rect" href="game-play_8cpp.html" title=" " alt="" coords="1101,213,1299,269"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html" title=" " alt="" coords="2646,213,2834,269"/>
+<area shape="rect" href="object-compressor_8cpp.html" title=" " alt="" coords="2859,213,3059,269"/>
+<area shape="rect" href="player-processor_8cpp.html" title=" " alt="" coords="3083,213,3283,269"/>
+<area shape="rect" href="quest-completion-checker_8cpp.html" title=" " alt="" coords="3307,213,3507,269"/>
+<area shape="rect" href="quest-monster-placer_8cpp.html" title=" " alt="" coords="3531,213,3719,269"/>
+<area shape="rect" href="quest_8cpp.html" title=" " alt="" coords="1994,213,2182,269"/>
+<area shape="rect" href="effect-feature_8cpp.html" title=" " alt="" coords="3743,213,3931,269"/>
+</map>
+</div>
+</div>
+<p><a href="spells-util_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:ae47c4d4cb891991ae5a7244e438d02a2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-util_8h.html#ae47c4d4cb891991ae5a7244e438d02a2">DETECT_RAD_DEFAULT</a>&#160;&#160;&#160;30</td></tr>
+<tr class="separator:ae47c4d4cb891991ae5a7244e438d02a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a973a9f0126964f756589370674fbadb7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-util_8h.html#a973a9f0126964f756589370674fbadb7">DETECT_RAD_MAP</a>&#160;&#160;&#160;30</td></tr>
+<tr class="separator:a973a9f0126964f756589370674fbadb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a534d437c3378fc10527e05c03357d6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-util_8h.html#a8a534d437c3378fc10527e05c03357d6">DETECT_RAD_ALL</a>&#160;&#160;&#160;255</td></tr>
+<tr class="separator:a8a534d437c3378fc10527e05c03357d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92aafb71931936502946a566a5f843bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-util_8h.html#a92aafb71931936502946a566a5f843bb">MAX_SPELLS</a>&#160;&#160;&#160;108</td></tr>
+<tr class="separator:a92aafb71931936502946a566a5f843bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+列挙型</h2></td></tr>
+<tr class="memitem:a2135e50f939c526eb0a4164754e6e4ff"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-util_8h.html#a2135e50f939c526eb0a4164754e6e4ff">spell_type</a> { <br />
+&#160;&#160;<a class="el" href="spells-util_8h.html#a2135e50f939c526eb0a4164754e6e4ffac67a223ebb04d061e6db0cdcd3139dbf">SPELL_NAME</a> = 0
+, <a class="el" href="spells-util_8h.html#a2135e50f939c526eb0a4164754e6e4ffabda0e51d788050ff6aa8f26c15cd7f4a">SPELL_DESC</a> = 1
+, <a class="el" href="spells-util_8h.html#a2135e50f939c526eb0a4164754e6e4ffa4ca140bbbfe70e493e62d9c2cb9b71c4">SPELL_INFO</a> = 2
+, <a class="el" href="spells-util_8h.html#a2135e50f939c526eb0a4164754e6e4ffadd87c7b169db9e2bd0618ee547ab92ad">SPELL_CAST</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="spells-util_8h.html#a2135e50f939c526eb0a4164754e6e4ffa3acfb47ec65f71c9ae2e8633e57a443a">SPELL_FAIL</a> = 4
+, <a class="el" href="spells-util_8h.html#a2135e50f939c526eb0a4164754e6e4ffad822ace81810c76d8d86303968399ed7">SPELL_STOP</a> = 5
+, <a class="el" href="spells-util_8h.html#a2135e50f939c526eb0a4164754e6e4ffa8ca248d46b59c7f6d8228ddd4d16b6c7">SPELL_CONT</a> = 6
+<br />
+ }</td></tr>
+<tr class="separator:a2135e50f939c526eb0a4164754e6e4ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ee8593c239802590f3790d44616f210"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-util_8h.html#a9ee8593c239802590f3790d44616f210">spell_operation</a> { <a class="el" href="spells-util_8h.html#a9ee8593c239802590f3790d44616f210af3db687118460cac6a3642eb4f787e2c">SPOP_NONE</a> = 0x0000U
+, <a class="el" href="spells-util_8h.html#a9ee8593c239802590f3790d44616f210a6a954ad336b20e5d4a0afbeaca3b333f">SPOP_DISPLAY_MES</a> = 0x0001U
+, <a class="el" href="spells-util_8h.html#a9ee8593c239802590f3790d44616f210acf78dc3a7b9efd7b268b566482f592b7">SPOP_NO_UPDATE</a> = 0x0002U
+, <a class="el" href="spells-util_8h.html#a9ee8593c239802590f3790d44616f210afafe5786f38acaf525bf5d49dbf8243b">SPOP_DEBUG</a> = 0x8000U
+ }</td></tr>
+<tr class="separator:a9ee8593c239802590f3790d44616f210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf9aa3633b7ffdbd539d94bc7f361d05"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-util_8h.html#adf9aa3633b7ffdbd539d94bc7f361d05">teleport_flags</a> { <a class="el" href="spells-util_8h.html#adf9aa3633b7ffdbd539d94bc7f361d05ab22c202b05f89907bb7b1973feb90a1a">TELEPORT_SPONTANEOUS</a> = 0x0000
+, <a class="el" href="spells-util_8h.html#adf9aa3633b7ffdbd539d94bc7f361d05a2b604dc9072bf0695d8e37f9e1182024">TELEPORT_NONMAGICAL</a> = 0x0001
+, <a class="el" href="spells-util_8h.html#adf9aa3633b7ffdbd539d94bc7f361d05ad03e95c5f0220b2718949161943e0bb0">TELEPORT_PASSIVE</a> = 0x0002
+, <a class="el" href="spells-util_8h.html#adf9aa3633b7ffdbd539d94bc7f361d05a03b80927410e9d0aee9e7ed3b80ecfed">TELEPORT_DEC_VALOUR</a> = 0x0004
+ }</td></tr>
+<tr class="separator:adf9aa3633b7ffdbd539d94bc7f361d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27dc899598aa4cd7ea94fd4e0a59c2af"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-util_8h.html#a27dc899598aa4cd7ea94fd4e0a59c2af">autogenesis_magical_effect</a> { <a class="el" href="spells-util_8h.html#a27dc899598aa4cd7ea94fd4e0a59c2afa04576a5241cae35fd12665e11e5b12e6">PROJECT_WHO_UNCTRL_POWER</a> = -1
+, <a class="el" href="spells-util_8h.html#a27dc899598aa4cd7ea94fd4e0a59c2afa1f7288442ed3ed1fd3eff9ea8a72c10f">PROJECT_WHO_GLASS_SHARDS</a> = -2
+ }</td></tr>
+<tr class="separator:a27dc899598aa4cd7ea94fd4e0a59c2af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="a8a534d437c3378fc10527e05c03357d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a534d437c3378fc10527e05c03357d6">&#9670;&nbsp;</a></span>DETECT_RAD_ALL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DETECT_RAD_ALL&#160;&#160;&#160;255</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae47c4d4cb891991ae5a7244e438d02a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae47c4d4cb891991ae5a7244e438d02a2">&#9670;&nbsp;</a></span>DETECT_RAD_DEFAULT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DETECT_RAD_DEFAULT&#160;&#160;&#160;30</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a973a9f0126964f756589370674fbadb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a973a9f0126964f756589370674fbadb7">&#9670;&nbsp;</a></span>DETECT_RAD_MAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DETECT_RAD_MAP&#160;&#160;&#160;30</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a92aafb71931936502946a566a5f843bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92aafb71931936502946a566a5f843bb">&#9670;&nbsp;</a></span>MAX_SPELLS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_SPELLS&#160;&#160;&#160;108</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">列挙型詳解</h2>
+<a id="a27dc899598aa4cd7ea94fd4e0a59c2af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27dc899598aa4cd7ea94fd4e0a59c2af">&#9670;&nbsp;</a></span>autogenesis_magical_effect</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="spells-util_8h.html#a27dc899598aa4cd7ea94fd4e0a59c2af">autogenesis_magical_effect</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a27dc899598aa4cd7ea94fd4e0a59c2afa04576a5241cae35fd12665e11e5b12e6"></a>PROJECT_WHO_UNCTRL_POWER&#160;</td><td class="fielddoc"><p>魔法効果の自然発生要因: 名状し難い力の解放 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a27dc899598aa4cd7ea94fd4e0a59c2afa1f7288442ed3ed1fd3eff9ea8a72c10f"></a>PROJECT_WHO_GLASS_SHARDS&#160;</td><td class="fielddoc"><p>魔法効果の自然発生要因: 破壊されたガラス地形の破片 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a9ee8593c239802590f3790d44616f210"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ee8593c239802590f3790d44616f210">&#9670;&nbsp;</a></span>spell_operation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="spells-util_8h.html#a9ee8593c239802590f3790d44616f210">spell_operation</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a9ee8593c239802590f3790d44616f210af3db687118460cac6a3642eb4f787e2c"></a>SPOP_NONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9ee8593c239802590f3790d44616f210a6a954ad336b20e5d4a0afbeaca3b333f"></a>SPOP_DISPLAY_MES&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9ee8593c239802590f3790d44616f210acf78dc3a7b9efd7b268b566482f592b7"></a>SPOP_NO_UPDATE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9ee8593c239802590f3790d44616f210afafe5786f38acaf525bf5d49dbf8243b"></a>SPOP_DEBUG&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a2135e50f939c526eb0a4164754e6e4ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2135e50f939c526eb0a4164754e6e4ff">&#9670;&nbsp;</a></span>spell_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="spells-util_8h.html#a2135e50f939c526eb0a4164754e6e4ff">spell_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a2135e50f939c526eb0a4164754e6e4ffac67a223ebb04d061e6db0cdcd3139dbf"></a>SPELL_NAME&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2135e50f939c526eb0a4164754e6e4ffabda0e51d788050ff6aa8f26c15cd7f4a"></a>SPELL_DESC&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2135e50f939c526eb0a4164754e6e4ffa4ca140bbbfe70e493e62d9c2cb9b71c4"></a>SPELL_INFO&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2135e50f939c526eb0a4164754e6e4ffadd87c7b169db9e2bd0618ee547ab92ad"></a>SPELL_CAST&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2135e50f939c526eb0a4164754e6e4ffa3acfb47ec65f71c9ae2e8633e57a443a"></a>SPELL_FAIL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2135e50f939c526eb0a4164754e6e4ffad822ace81810c76d8d86303968399ed7"></a>SPELL_STOP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2135e50f939c526eb0a4164754e6e4ffa8ca248d46b59c7f6d8228ddd4d16b6c7"></a>SPELL_CONT&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="adf9aa3633b7ffdbd539d94bc7f361d05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf9aa3633b7ffdbd539d94bc7f361d05">&#9670;&nbsp;</a></span>teleport_flags</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="spells-util_8h.html#adf9aa3633b7ffdbd539d94bc7f361d05">teleport_flags</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="adf9aa3633b7ffdbd539d94bc7f361d05ab22c202b05f89907bb7b1973feb90a1a"></a>TELEPORT_SPONTANEOUS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adf9aa3633b7ffdbd539d94bc7f361d05a2b604dc9072bf0695d8e37f9e1182024"></a>TELEPORT_NONMAGICAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adf9aa3633b7ffdbd539d94bc7f361d05ad03e95c5f0220b2718949161943e0bb0"></a>TELEPORT_PASSIVE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adf9aa3633b7ffdbd539d94bc7f361d05a03b80927410e9d0aee9e7ed3b80ecfed"></a>TELEPORT_DEC_VALOUR&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分04秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

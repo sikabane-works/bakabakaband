@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/autopick/autopick-command-menu.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_609976a57c98df6cb9f80f504e628a46.html">autopick</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">autopick-command-menu.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="autopick-command-menu_8h_source.html">autopick/autopick-command-menu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="autopick-menu-data-table_8h_source.html">autopick/autopick-menu-data-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="autopick-util_8h_source.html">autopick/autopick-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+autopick-command-menu.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="autopick-command-menu_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2autopick_2autopick-command-menu_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2autopick_2autopick-command-menu_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2autopick_2autopick-command-menu_8cpp">
+<area shape="rect" title=" " alt="" coords="483,5,680,61"/>
+<area shape="rect" href="autopick-command-menu_8h.html" title=" " alt="" coords="70,109,255,151"/>
+<area shape="rect" href="autopick-menu-data-table_8h.html" title=" " alt="" coords="876,199,1036,240"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="466,288,595,315"/>
+<area shape="rect" href="autopick-util_8h.html" title=" " alt="" coords="279,117,435,143"/>
+<area shape="rect" href="input-key-acceptor_8h.html" title=" " alt="" coords="511,206,665,233"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="689,206,852,233"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="695,117,852,143"/>
+<area shape="rect" href="int-char-converter_8h.html" title=" " alt="" coords="877,117,1030,143"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="5,363,96,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="120,363,211,389"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="235,363,333,389"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="357,363,456,389"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="481,363,581,389"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="605,363,779,389"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="804,363,945,389"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,363,1116,389"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="252,199,385,240"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="255,288,382,315"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a1a5bca5a5fb07a8931eee6e0d2e4e5ff"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-command-menu_8cpp.html#a1a5bca5a5fb07a8931eee6e0d2e4e5ff">redraw_edit_command_menu</a> (<a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> *redraw, int level, int start, char *linestr, <a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> *menu_key, int max_len)</td></tr>
+<tr class="memdesc:a1a5bca5a5fb07a8931eee6e0d2e4e5ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">自動拾いエディタのコマンドを受け付ける  <a href="autopick-command-menu_8cpp.html#a1a5bca5a5fb07a8931eee6e0d2e4e5ff">[詳解]</a><br /></td></tr>
+<tr class="separator:a1a5bca5a5fb07a8931eee6e0d2e4e5ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13b989d74b1b01da48a44abcdf6f0bf6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="autopick-command-menu_8cpp.html#a13b989d74b1b01da48a44abcdf6f0bf6">do_command_menu</a> (int level, int start)</td></tr>
+<tr class="separator:a13b989d74b1b01da48a44abcdf6f0bf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a13b989d74b1b01da48a44abcdf6f0bf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13b989d74b1b01da48a44abcdf6f0bf6">&#9670;&nbsp;</a></span>do_command_menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int do_command_menu </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>start</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="autopick-command-menu_8cpp_a13b989d74b1b01da48a44abcdf6f0bf6_cgraph.png" border="0" usemap="#aautopick-command-menu_8cpp_a13b989d74b1b01da48a44abcdf6f0bf6_cgraph" alt=""/></div>
+<map name="aautopick-command-menu_8cpp_a13b989d74b1b01da48a44abcdf6f0bf6_cgraph" id="aautopick-command-menu_8cpp_a13b989d74b1b01da48a44abcdf6f0bf6_cgraph">
+<area shape="rect" title=" " alt="" coords="5,261,144,288"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="459,8,518,35"/>
+<area shape="rect" href="autopick-util_8cpp.html#ad99139c2dc0a2513d0319e74c009e9ef" title=" " alt="" coords="243,312,332,339"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="261,261,314,288"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="268,363,307,389"/>
+<area shape="rect" href="autopick-command-menu_8cpp.html#a1a5bca5a5fb07a8931eee6e0d2e4e5ff" title="自動拾いエディタのコマンドを受け付ける" alt="" coords="192,59,383,85"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="629,8,691,35"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="779,8,845,35"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="437,211,540,237"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="611,261,709,288"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="773,337,851,364"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="448,439,529,465"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="617,363,703,389"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="431,540,547,567"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="447,489,530,516"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="431,109,547,136"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="431,160,547,187"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="615,211,705,237"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="619,160,701,187"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="613,84,707,111"/>
+<area shape="rect" href="macro-util_8cpp.html#a1e9851f9b9e0a0e51628a231ca95fcc1" title=" " alt="" coords="597,616,723,643"/>
+<area shape="rect" href="macro-util_8cpp.html#a7f48a1923076b3b314f1bc58913a2a59" title=" " alt="" coords="595,413,725,440"/>
+<area shape="rect" href="macro-util_8cpp.html#ada693de344c97bc09a586100f25919dd" title=" " alt="" coords="598,464,722,491"/>
+<area shape="rect" href="z-term_8cpp.html#a020ef4815c101960b4fdad94c4e5b59b" title=" " alt="" coords="605,515,715,541"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="445,59,533,85"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="autopick-command-menu_8cpp_a13b989d74b1b01da48a44abcdf6f0bf6_icgraph.png" border="0" usemap="#aautopick-command-menu_8cpp_a13b989d74b1b01da48a44abcdf6f0bf6_icgraph" alt=""/></div>
+<map name="aautopick-command-menu_8cpp_a13b989d74b1b01da48a44abcdf6f0bf6_icgraph" id="aautopick-command-menu_8cpp_a13b989d74b1b01da48a44abcdf6f0bf6_icgraph">
+<area shape="rect" title=" " alt="" coords="587,31,725,57"/>
+<area shape="rect" href="cmd-autopick_8cpp.html#a8dc56811ab6efa5123eec7f83eb4bb26" title=" " alt="" coords="387,31,539,57"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#ab33f054c7b623777d0e9417255966aea" title="標準オプションを変更するコマンドのメインルーチン / Set or unset various options." alt="" coords="221,56,339,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1a5bca5a5fb07a8931eee6e0d2e4e5ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a5bca5a5fb07a8931eee6e0d2e4e5ff">&#9670;&nbsp;</a></span>redraw_edit_command_menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void redraw_edit_command_menu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> *&#160;</td>
+          <td class="paramname"><em>redraw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>linestr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a0c8186d9b9b7880309c27230bbb5e69d">byte</a> *&#160;</td>
+          <td class="paramname"><em>menu_key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>自動拾いエディタのコマンドを受け付ける </p>
+<dl class="section date"><dt>日付</dt><dd>2020/04/26 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">todo:</a></b></dt><dd>1関数100行以上ある、後で関数を分割すること </dd></dl>
+<p>自動拾いエディタの画面を再描画する </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">redraw</td><td>再描画が必要ならTRUE </td></tr>
+    <tr><td class="paramname">level</td><td><a class="el" href="structcommand__menu__type.html">command_menu_type</a> 構造体におけるメニュー (詳細不明) </td></tr>
+    <tr><td class="paramname">start</td><td></td></tr>
+    <tr><td class="paramname">linestr</td><td></td></tr>
+    <tr><td class="paramname">menu_key</td><td>自動拾いエディタのメニューで入力したキー </td></tr>
+    <tr><td class="paramname">max_len</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="autopick-command-menu_8cpp_a1a5bca5a5fb07a8931eee6e0d2e4e5ff_cgraph.png" border="0" usemap="#aautopick-command-menu_8cpp_a1a5bca5a5fb07a8931eee6e0d2e4e5ff_cgraph" alt=""/></div>
+<map name="aautopick-command-menu_8cpp_a1a5bca5a5fb07a8931eee6e0d2e4e5ff_cgraph" id="aautopick-command-menu_8cpp_a1a5bca5a5fb07a8931eee6e0d2e4e5ff_cgraph">
+<area shape="rect" title="自動拾いエディタのコマンドを受け付ける" alt="" coords="5,31,196,57"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="259,5,317,32"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="244,56,332,83"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="396,5,459,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="554,5,621,32"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="382,56,473,83"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="380,107,475,133"/>
+<area shape="rect" href="z-term_8cpp.html#aed0973004e647060e40c2e8ee2471b89" title=" " alt="" coords="523,56,652,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="autopick-command-menu_8cpp_a1a5bca5a5fb07a8931eee6e0d2e4e5ff_icgraph.png" border="0" usemap="#aautopick-command-menu_8cpp_a1a5bca5a5fb07a8931eee6e0d2e4e5ff_icgraph" alt=""/></div>
+<map name="aautopick-command-menu_8cpp_a1a5bca5a5fb07a8931eee6e0d2e4e5ff_icgraph" id="aautopick-command-menu_8cpp_a1a5bca5a5fb07a8931eee6e0d2e4e5ff_icgraph">
+<area shape="rect" title="自動拾いエディタのコマンドを受け付ける" alt="" coords="737,31,928,57"/>
+<area shape="rect" href="autopick-command-menu_8cpp.html#a13b989d74b1b01da48a44abcdf6f0bf6" title=" " alt="" coords="551,31,689,57"/>
+<area shape="rect" href="cmd-autopick_8cpp.html#a8dc56811ab6efa5123eec7f83eb4bb26" title=" " alt="" coords="351,31,503,57"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#ab33f054c7b623777d0e9417255966aea" title="標準オプションを変更するコマンドのメインルーチン / Set or unset various options." alt="" coords="185,5,303,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分03秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

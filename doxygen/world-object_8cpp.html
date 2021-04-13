@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/world/world-object.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6826d79532171ff2338799cfd298b875.html">world</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">world-object.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="world-object_8h_source.html">world/world-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon-flag-types_8h_source.html">dungeon/dungeon-flag-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon_8h_source.html">dungeon/dungeon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-apply-magic_8h_source.html">object-enchant/item-apply-magic.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind_8h_source.html">object/object-kind.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="alloc-entries_8h_source.html">system/alloc-entries.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="probability-table_8h_source.html">util/probability-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+<code>#include &lt;iterator&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+world-object.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="world-object_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2world_2world-object_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2world_2world-object_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2world_2world-object_8cpp">
+<area shape="rect" title=" " alt="" coords="977,5,1165,61"/>
+<area shape="rect" href="world-object_8h.html" title=" " alt="" coords="2001,206,2137,233"/>
+<area shape="rect" href="dungeon-flag-types_8h.html" title=" " alt="" coords="445,109,593,151"/>
+<area shape="rect" href="dungeon_8h.html" title=" " alt="" coords="262,117,397,143"/>
+<area shape="rect" href="item-apply-magic_8h.html" title=" " alt="" coords="668,109,804,151"/>
+<area shape="rect" href="object-kind_8h.html" title=" " alt="" coords="829,117,963,143"/>
+<area shape="rect" href="alloc-entries_8h.html" title=" " alt="" coords="1178,117,1329,143"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1474,117,1662,143"/>
+<area shape="rect" href="probability-table_8h.html" title=" " alt="" coords="555,206,701,233"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="987,117,1154,143"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="1353,117,1450,143"/>
+<area shape="rect" title=" " alt="" coords="1738,117,1801,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1110,288,1239,315"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1387,363,1477,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1749,363,1840,389"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1501,363,1600,389"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="632,363,731,389"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="1625,363,1725,389"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1022,363,1197,389"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1221,363,1363,389"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="851,363,997,389"/>
+<area shape="rect" title=" " alt="" coords="1267,437,1341,464"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="450,437,561,464"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="281,206,378,233"/>
+<area shape="rect" title=" " alt="" coords="151,288,206,315"/>
+<area shape="rect" title=" " alt="" coords="412,288,468,315"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="40,199,205,240"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="231,288,388,315"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="777,199,903,240"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="928,199,1061,240"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="931,288,1058,315"/>
+<area shape="rect" href="alloc-entry-definition_8h.html" title=" " alt="" coords="1238,199,1367,240"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1443,206,1621,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1646,206,1797,233"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1821,199,1977,240"/>
+<area shape="rect" title=" " alt="" coords="594,288,673,315"/>
+<area shape="rect" title=" " alt="" coords="697,288,775,315"/>
+<area shape="rect" title=" " alt="" coords="800,288,851,315"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:aa2c112b391d5b74eb049474cac8d643b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world-object_8cpp.html#aa2c112b391d5b74eb049474cac8d643b">o_pop</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr)</td></tr>
+<tr class="memdesc:aa2c112b391d5b74eb049474cac8d643b"><td class="mdescLeft">&#160;</td><td class="mdescRight">グローバルオブジェクト配列から空きを取得する / Acquires and returns the index of a "free" object.  <a href="world-object_8cpp.html#aa2c112b391d5b74eb049474cac8d643b">[詳解]</a><br /></td></tr>
+<tr class="separator:aa2c112b391d5b74eb049474cac8d643b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63121cef2b07ff263642121c289a81e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world-object_8cpp.html#a63121cef2b07ff263642121c289a81e0">get_obj_num</a> (<a class="el" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="el" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> level, <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> mode)</td></tr>
+<tr class="memdesc:a63121cef2b07ff263642121c289a81e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクト生成テーブルからアイテムを取得する / Choose an object kind that seems "appropriate" to the given level  <a href="world-object_8cpp.html#a63121cef2b07ff263642121c289a81e0">[詳解]</a><br /></td></tr>
+<tr class="separator:a63121cef2b07ff263642121c289a81e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a63121cef2b07ff263642121c289a81e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63121cef2b07ff263642121c289a81e0">&#9670;&nbsp;</a></span>get_obj_num()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a> get_obj_num </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>owner_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a>&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>オブジェクト生成テーブルからアイテムを取得する / Choose an object kind that seems "appropriate" to the given level </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">owner_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">level</td><td>生成階 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>選ばれたオブジェクトベースID</dd></dl>
+<p>This function uses the "prob2" field of the "object allocation table",<br  />
+ and various local information, to calculate the "prob3" field of the<br  />
+ same table, which is then used to choose an "appropriate" object, in<br  />
+ a relatively efficient manner.<br  />
+<br  />
+ It is (slightly) more likely to acquire an object of the given level<br  />
+ than one of a lower level. This is done by choosing several objects<br  />
+ appropriate to the given level and keeping the "hardest" one.<br  />
+<br  />
+ Note that if no objects are "appropriate", then this function will<br  />
+ fail, and return zero, but this should <em>almost</em> never happen.<br  />
+</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="world-object_8cpp_a63121cef2b07ff263642121c289a81e0_cgraph.png" border="0" usemap="#aworld-object_8cpp_a63121cef2b07ff263642121c289a81e0_cgraph" alt=""/></div>
+<map name="aworld-object_8cpp_a63121cef2b07ff263642121c289a81e0_cgraph" id="aworld-object_8cpp_a63121cef2b07ff263642121c289a81e0_cgraph">
+<area shape="rect" title="オブジェクト生成テーブルからアイテムを取得する / Choose an object kind that seems &quot;appropriate&quot; to the given level" alt="" coords="5,31,101,57"/>
+<area shape="rect" href="class_probability_table.html#a9a26ed4b275f0764cadd5497b9dcb0fa" title="確率テーブルの項目が空かどうかを調べる" alt="" coords="585,5,743,32"/>
+<area shape="rect" href="class_probability_table.html#a8ca61661e88333610e5763cf9d69a720" title="確率テーブルに項目を登録する" alt="" coords="149,31,332,57"/>
+<area shape="rect" href="class_probability_table.html#ae443cc721a82c7aaae779be2823ff778" title="確率テーブルから複数回抽選する" alt="" coords="161,81,320,108"/>
+<area shape="rect" href="class_probability_table.html#a70b1f2ebe9b67f5aa8aac2f86178ffc0" title="確率テーブルから項目をランダムに1つ選択する" alt="" coords="380,53,527,94"/>
+<area shape="rect" href="class_probability_table.html#a365bea78aa7c197450cf845e31e93927" title="現在の確率テーブルのすべての項目の選択確率の合計を取得する" alt="" coords="575,60,753,87"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="world-object_8cpp_a63121cef2b07ff263642121c289a81e0_icgraph.png" border="0" usemap="#aworld-object_8cpp_a63121cef2b07ff263642121c289a81e0_icgraph" alt=""/></div>
+<map name="aworld-object_8cpp_a63121cef2b07ff263642121c289a81e0_icgraph" id="aworld-object_8cpp_a63121cef2b07ff263642121c289a81e0_icgraph">
+<area shape="rect" title="オブジェクト生成テーブルからアイテムを取得する / Choose an object kind that seems &quot;appropriate&quot; to the given level" alt="" coords="700,229,796,255"/>
+<area shape="rect" href="floor-object_8cpp.html#adbba66fa3bc17cfd4ebeff0ee923a304" title="生成階に応じたベースアイテムの生成を行う。 Attempt to make an object (normal or good/great)" alt="" coords="556,203,652,230"/>
+<area shape="rect" href="store-util_8cpp.html#a5c6ff7c60a8921e01be9591e98517b46" title="店舗の品揃え変化のためにアイテムを追加する / Creates a random item and gives it to a store" alt="" coords="557,254,651,281"/>
+<area shape="rect" href="spells-object_8cpp.html#a7b226fbb1bcb6ce60975a5cbe63e756f" title="獲得ドロップを行う。 Scatter some &quot;great&quot; objects near the player" alt="" coords="378,22,471,49"/>
+<area shape="rect" href="quest-completion-checker_8cpp.html#a9e42969ac66783fe5b572f6e444072e7" title="特定の敵を倒した際にクエスト達成処理 / Check for &quot;Quest&quot; completion when a quest monster is killed or charmed." alt="" coords="341,73,508,99"/>
+<area shape="rect" href="chest_8cpp.html#a6c1737bff7d6e6260a16b0aeeb8002a0" title="箱からアイテムを引き出す / Allocates objects upon opening a chest &#45;BEN&#45;" alt="" coords="378,123,471,150"/>
+<area shape="rect" href="monster-death_8cpp.html#a8250e249cbdb8aae0dd44d785b7c2a72" title=" " alt="" coords="363,174,487,201"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a959751785c50df74893e18e6a20c8bcf" title=" " alt="" coords="359,225,490,267"/>
+<area shape="rect" href="special-death-switcher_8cpp.html#a3b159fe61fa01d4e2fec7af7b49d42d0" title=" " alt="" coords="375,291,474,318"/>
+<area shape="rect" href="object-placer_8cpp.html#a803fa4f18318725892a17c7ababf869f" title="フロアの指定位置に生成階に応じたベースアイテムの生成を行う。 Attempt to place an object (normal or good/great) at the given locatio..." alt="" coords="377,342,472,369"/>
+<area shape="rect" href="wizard-item-modifier_8cpp.html#aa68f351c86678f7ce149c3afb7697308" title="検査対象のアイテムを基準とした生成テストを行う / Try to create an item again." alt="" coords="374,393,475,419"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="5,22,123,49"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="195,22,269,49"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="171,73,293,99"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa2c112b391d5b74eb049474cac8d643b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2c112b391d5b74eb049474cac8d643b">&#9670;&nbsp;</a></span>o_pop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a> o_pop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>グローバルオブジェクト配列から空きを取得する / Acquires and returns the index of a "free" object. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">floo_ptr</td><td>現在フロアへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>開いているオブジェクト要素のID</dd></dl>
+<p>This routine should almost never fail, but in case it does, we must be sure to handle "failure" of this routine. </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="world-object_8cpp_aa2c112b391d5b74eb049474cac8d643b_cgraph.png" border="0" usemap="#aworld-object_8cpp_aa2c112b391d5b74eb049474cac8d643b_cgraph" alt=""/></div>
+<map name="aworld-object_8cpp_aa2c112b391d5b74eb049474cac8d643b_cgraph" id="aworld-object_8cpp_aa2c112b391d5b74eb049474cac8d643b_cgraph">
+<area shape="rect" title="グローバルオブジェクト配列から空きを取得する / Acquires and returns the index of a &quot;free&quot; object." alt="" coords="5,284,63,311"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="111,284,189,311"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="245,56,348,83"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="256,259,337,285"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="439,309,525,336"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="438,360,526,387"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="237,157,356,184"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="249,411,344,437"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="429,5,535,32"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="457,56,507,83"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="461,157,503,184"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="455,208,509,235"/>
+<area shape="rect" href="display-messages_8cpp.html#a8647d1d8cbef5e4db465563838dd2b87" title=" " alt="" coords="404,259,560,285"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="608,132,691,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="world-object_8cpp_aa2c112b391d5b74eb049474cac8d643b_icgraph.png" border="0" usemap="#aworld-object_8cpp_aa2c112b391d5b74eb049474cac8d643b_icgraph" alt=""/></div>
+<map name="aworld-object_8cpp_aa2c112b391d5b74eb049474cac8d643b_icgraph" id="aworld-object_8cpp_aa2c112b391d5b74eb049474cac8d643b_icgraph">
+<area shape="rect" title="グローバルオブジェクト配列から空きを取得する / Acquires and returns the index of a &quot;free&quot; object." alt="" coords="491,276,548,302"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#ad855c6dacaabe9a26e2617615a8ceca0" title="フロアの所定のマスにオブジェクトを配置する Place the object j_ptr to a grid" alt="" coords="341,22,419,49"/>
+<area shape="rect" href="floor-object_8cpp.html#a62c807ef0af547704f7d1f6b825abbe5" title="生成済のオブジェクトをフロアの所定の位置に落とす。 Let an object fall to the ground at or near a location." alt="" coords="171,276,249,302"/>
+<area shape="rect" href="shoot_8cpp.html#a39bfc14e1d1ecbb15639107988599ff8" title="射撃処理実行 / Fire an object from the pack or floor." alt="" coords="21,276,87,302"/>
+<area shape="rect" href="object-placer_8cpp.html#a11d171ab728c555217997c19ead857be" title="フロアの指定位置に生成階に応じた財宝オブジェクトの生成を行う。 Places a treasure (Gold or Gems) at given location" alt="" coords="338,225,422,252"/>
+<area shape="rect" href="object-placer_8cpp.html#a803fa4f18318725892a17c7ababf869f" title="フロアの指定位置に生成階に応じたベースアイテムの生成を行う。 Attempt to place an object (normal or good/great) at the given locatio..." alt="" coords="333,174,427,201"/>
+<area shape="rect" href="monster-eating_8cpp.html#abd3ba551314e9224222e5efc444b04b8" title="アイテム盗み処理" alt="" coords="317,377,443,404"/>
+<area shape="rect" href="floor-loader_8cpp.html#a04b4ceaa0f057897dee805390a533b88" title="保存されたフロアを読み込む / Read the saved floor" alt="" coords="328,428,432,454"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#af81a0584225771d2ab4a403d68ba1509" title=" " alt="" coords="151,22,269,49"/>
+<area shape="rect" href="fixed-map-generator_8cpp.html#a3ded96400ca064dccf4124b59f3b0588" title=" " alt="" coords="5,22,103,49"/>
+<area shape="rect" href="object-allocator_8cpp.html#a89db4f576184ecd3a0777c85e1a1294d" title="フロア上のランダム位置に各種オブジェクトを配置する / Allocates some objects (using &quot;place&quot; and &quot;type&quot;)" alt="" coords="165,225,255,252"/>
+<area shape="rect" href="grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="156,124,264,150"/>
+<area shape="rect" href="vault-builder_8cpp.html#a4624327159a9c0debdc266636fb5ccd7" title="特殊な部屋向けに各種アイテムを配置する / Create up to &quot;num&quot; objects near the given coordinates" alt="" coords="161,174,259,201"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

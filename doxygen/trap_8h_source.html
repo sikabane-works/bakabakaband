@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/grid/trap.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_35c063c51595aed048740f74a780093f.html">grid</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">trap.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="trap_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="trap_8h.html#a366d34dfabc0c2f5d25885b5d941dc45">    8</a></span>&#160;<span class="preprocessor">#define CHEST_LOSE_STR          0x0001 </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="trap_8h.html#a247acc55dba4761402a68c228454cf99">    9</a></span>&#160;<span class="preprocessor">#define CHEST_LOSE_CON          0x0002 </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="trap_8h.html#a5ed938eca1fa6d6a7139873ebad4957a">   10</a></span>&#160;<span class="preprocessor">#define CHEST_POISON            0x0004 </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="trap_8h.html#ac2a1d8ac4bf7aafad2d85f65045f617a">   11</a></span>&#160;<span class="preprocessor">#define CHEST_PARALYZE          0x0008 </span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="trap_8h.html#ab7176de73e449b7f8ee9fccfff528c8f">   12</a></span>&#160;<span class="preprocessor">#define CHEST_EXPLODE           0x0010 </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="trap_8h.html#a3575f49d28c72b61642abf9825ad2a48">   13</a></span>&#160;<span class="preprocessor">#define CHEST_SUMMON            0x0020 </span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="trap_8h.html#aaef6ad8a2ad3707028ef81a86c051cf8">   14</a></span>&#160;<span class="preprocessor">#define CHEST_SCATTER           0x0040 </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="trap_8h.html#a3bc276c4cc7b5709a5ae1e9ffca03260">   15</a></span>&#160;<span class="preprocessor">#define CHEST_E_SUMMON          0x0080 </span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="trap_8h.html#a2aa85907699cfc19388b36c006f4bbc4">   16</a></span>&#160;<span class="preprocessor">#define CHEST_BIRD_STORM        0x0100 </span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="trap_8h.html#a37525e7d11cd5b03ff962b59d91a4454">   17</a></span>&#160;<span class="preprocessor">#define CHEST_H_SUMMON          0x0200 </span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="trap_8h.html#a88801556bd5887b3eeb6f504cbde6dd8">   18</a></span>&#160;<span class="preprocessor">#define CHEST_RUNES_OF_EVIL     0x0400 </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="trap_8h.html#ac486aa2613c2ed0927676d7a8f53046b">   19</a></span>&#160;<span class="preprocessor">#define CHEST_ALARM             0x0800 </span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/* Types of normal traps */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="trap_8h.html#ab39bc8620324cfec495fee5979557ec3">   22</a></span>&#160;<span class="preprocessor">#define NOT_TRAP        -1</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="trap_8h.html#ad76c1d37028cbe7b9164ebdf3c1c49e3">   23</a></span>&#160;<span class="preprocessor">#define TRAP_TRAPDOOR    0</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="trap_8h.html#a41255aedc251e5056ec29da80e134e23">   24</a></span>&#160;<span class="preprocessor">#define TRAP_PIT         1</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="trap_8h.html#a2cf76e8ff98d85610b69e65087f94c07">   25</a></span>&#160;<span class="preprocessor">#define TRAP_SPIKED_PIT  2</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="trap_8h.html#a7ec7178cbcf7f7f573ef38a2e1da52dd">   26</a></span>&#160;<span class="preprocessor">#define TRAP_POISON_PIT  3</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="trap_8h.html#a0a8534fa45e08ea1f3df94be89640414">   27</a></span>&#160;<span class="preprocessor">#define TRAP_TY_CURSE    4</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="trap_8h.html#afa1e148f161872d656b746a6f8e2f6d5">   28</a></span>&#160;<span class="preprocessor">#define TRAP_TELEPORT    5</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="trap_8h.html#a271ad7d94f8cd3faeea362c55110a8aa">   29</a></span>&#160;<span class="preprocessor">#define TRAP_FIRE        6</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="trap_8h.html#a55d491992c413d66c6492dc7dd2af72e">   30</a></span>&#160;<span class="preprocessor">#define TRAP_ACID        7</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="trap_8h.html#a6c378adf7ede46f2e32b8b0464e3c495">   31</a></span>&#160;<span class="preprocessor">#define TRAP_SLOW        8</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="trap_8h.html#a66397c50013ada68b852335a5b666d0d">   33</a></span>&#160;<span class="preprocessor">#define TRAP_LOSE_STR    9</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="trap_8h.html#a6d6a0c9b836f9960ed168f769ac23119">   34</a></span>&#160;<span class="preprocessor">#define TRAP_LOSE_DEX   10</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="trap_8h.html#a0a77c3deaa491149bca068833fa171d9">   35</a></span>&#160;<span class="preprocessor">#define TRAP_LOSE_CON   11</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="trap_8h.html#a1fa73065eef9e2d9f1ad03db3f9f7071">   36</a></span>&#160;<span class="preprocessor">#define TRAP_BLIND      12</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="trap_8h.html#a127a08d8e7e6bc1fab58a31d3583cd69">   37</a></span>&#160;<span class="preprocessor">#define TRAP_CONFUSE    13</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="trap_8h.html#ae779791af93153a4ef090dcad198da55">   38</a></span>&#160;<span class="preprocessor">#define TRAP_POISON     14</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="trap_8h.html#a44906f702096fe54ebfaa1b318259e18">   39</a></span>&#160;<span class="preprocessor">#define TRAP_SLEEP      15</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="trap_8h.html#a06e85599f6907310b3dc30cc2d88afd4">   40</a></span>&#160;<span class="preprocessor">#define TRAP_TRAPS      16</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="trap_8h.html#a4b5da0965d335efb7da09693a763fbab">   41</a></span>&#160;<span class="preprocessor">#define TRAP_ALARM      17</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="trap_8h.html#a064384895d5bc590f939be4076d33e9b">   43</a></span>&#160;<span class="preprocessor">#define MAX_NORMAL_TRAPS 18</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/* Types of special traps */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="trap_8h.html#a8b165d566d526755a929395fb057a99c">   46</a></span>&#160;<span class="preprocessor">#define TRAP_OPEN       18</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="trap_8h.html#a6740d6a7cc38e458be1a5c364f2413fc">   47</a></span>&#160;<span class="preprocessor">#define TRAP_ARMAGEDDON 19</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="trap_8h.html#a0d0a08e03a204c4e2d8ac3f9e60de321">   48</a></span>&#160;<span class="preprocessor">#define TRAP_PIRANHA    20</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="trap_8h.html#a8c5e55e75c018fbbfe91adc949f4f02e">chest_traps</a>[64];</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span> <a class="code" href="trap_8h.html#abeb76ed9b96e7a4ad4814258663a4307">init_normal_traps</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<a class="code" href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a> <a class="code" href="trap_8h.html#ad9436c6ca925f9a05347322b22b081cd">choose_random_trap</a>(<a class="code" href="structplayer__type.html">player_type</a> *trapped_ptr);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> <a class="code" href="trap_8h.html#a3a6c4bccfd944baf84f4dd98576a366b">disclose_grid</a>(<a class="code" href="structplayer__type.html">player_type</a> *trapped_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span> <a class="code" href="trap_8h.html#a5409f23e3aeaabec658e99c2fa99fb91">place_trap</a>(<a class="code" href="structplayer__type.html">player_type</a> *trapped_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> <a class="code" href="trap_8h.html#a5eaa65a0bbcf83191089866fb31961c6">hit_trap</a>(<a class="code" href="structplayer__type.html">player_type</a> *trapped_ptr, <span class="keywordtype">bool</span> break_trap);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a85b58bbae289409cd01a8a413e991f12"><div class="ttname"><a href="h-type_8h.html#a85b58bbae289409cd01a8a413e991f12">FEAT_IDX</a></div><div class="ttdeci">s16b FEAT_IDX</div><div class="ttdoc">ゲーム中の地形ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:99</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="atrap_8h_html_a3a6c4bccfd944baf84f4dd98576a366b"><div class="ttname"><a href="trap_8h.html#a3a6c4bccfd944baf84f4dd98576a366b">disclose_grid</a></div><div class="ttdeci">void disclose_grid(player_type *trapped_ptr, POSITION y, POSITION x)</div><div class="ttdoc">マスに存在する隠しトラップを公開する / Disclose an invisible trap</div><div class="ttdef"><b>Definition:</b> trap.cpp:199</div></div>
+<div class="ttc" id="atrap_8h_html_a5409f23e3aeaabec658e99c2fa99fb91"><div class="ttname"><a href="trap_8h.html#a5409f23e3aeaabec658e99c2fa99fb91">place_trap</a></div><div class="ttdeci">void place_trap(player_type *trapped_ptr, POSITION y, POSITION x)</div><div class="ttdoc">マスをトラップを配置する / The location must be a legal, naked, floor grid.</div><div class="ttdef"><b>Definition:</b> trap.cpp:225</div></div>
+<div class="ttc" id="atrap_8h_html_a5eaa65a0bbcf83191089866fb31961c6"><div class="ttname"><a href="trap_8h.html#a5eaa65a0bbcf83191089866fb31961c6">hit_trap</a></div><div class="ttdeci">void hit_trap(player_type *trapped_ptr, bool break_trap)</div><div class="ttdoc">プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap</div><div class="ttdef"><b>Definition:</b> trap.cpp:406</div></div>
+<div class="ttc" id="atrap_8h_html_a8c5e55e75c018fbbfe91adc949f4f02e"><div class="ttname"><a href="trap_8h.html#a8c5e55e75c018fbbfe91adc949f4f02e">chest_traps</a></div><div class="ttdeci">const int chest_traps[64]</div><div class="ttdoc">箱のトラップテーブル</div><div class="ttdef"><b>Definition:</b> trap.cpp:58</div></div>
+<div class="ttc" id="atrap_8h_html_abeb76ed9b96e7a4ad4814258663a4307"><div class="ttname"><a href="trap_8h.html#abeb76ed9b96e7a4ad4814258663a4307">init_normal_traps</a></div><div class="ttdeci">void init_normal_traps(void)</div><div class="ttdoc">タグに従って、基本トラップテーブルを初期化する / Initialize arrays for normal traps</div><div class="ttdef"><b>Definition:</b> trap.cpp:129</div></div>
+<div class="ttc" id="atrap_8h_html_ad9436c6ca925f9a05347322b22b081cd"><div class="ttname"><a href="trap_8h.html#ad9436c6ca925f9a05347322b22b081cd">choose_random_trap</a></div><div class="ttdeci">FEAT_IDX choose_random_trap(player_type *trapped_ptr)</div><div class="ttdoc">基本トラップをランダムに選択する / Get random trap</div><div class="ttdef"><b>Definition:</b> trap.cpp:163</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分52秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

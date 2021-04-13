@@ -1,0 +1,439 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/save/floor-writer.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2787ab3e88de134edafc81d1ef96b4ab.html">save</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">floor-writer.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+floor-writer.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-writer_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2save_2floor-writer_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2save_2floor-writer_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2save_2floor-writer_8h">
+<area shape="rect" title=" " alt="" coords="347,5,537,61"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="377,109,507,136"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="31,184,122,211"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="23,348,165,375"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,184,607,211"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,184,245,211"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,184,367,211"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,184,492,211"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,184,807,211"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="943,184,1090,211"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="169,266,291,293"/>
+<area shape="rect" title=" " alt="" coords="386,266,461,293"/>
+<area shape="rect" title=" " alt="" coords="485,266,567,293"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="592,259,743,300"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="767,259,920,300"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="944,259,1089,300"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1114,259,1287,300"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1311,259,1437,300"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1461,266,1580,293"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1604,266,1715,293"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-writer_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2save_2floor-writer_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2save_2floor-writer_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2save_2floor-writer_8hdep">
+<area shape="rect" title=" " alt="" coords="455,5,645,61"/>
+<area shape="rect" href="floor-leaver_8cpp.html" title=" " alt="" coords="5,109,193,165"/>
+<area shape="rect" href="dungeon-loader_8cpp.html" title=" " alt="" coords="218,109,431,165"/>
+<area shape="rect" href="floor-loader_8cpp.html" title=" " alt="" coords="456,109,644,165"/>
+<area shape="rect" href="floor-writer_8cpp.html" title=" " alt="" coords="668,109,859,165"/>
+<area shape="rect" href="save_8cpp.html" title=" " alt="" coords="883,117,1100,158"/>
+</map>
+</div>
+</div>
+<p><a href="floor-writer_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a0fb8a1ef54fc6cf9ca3704b08fb95f42"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-writer_8h.html#a0fb8a1ef54fc6cf9ca3704b08fb95f42">SLF_SECOND</a>&#160;&#160;&#160;0x0001 /* Called from another save/<a class="el" href="player-processor_8h.html#ad3fa449deaee61ca6040ab6f3cce84b0">load</a> function */</td></tr>
+<tr class="separator:a0fb8a1ef54fc6cf9ca3704b08fb95f42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdbbad3a15ad86ac413325efad38da11"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-writer_8h.html#afdbbad3a15ad86ac413325efad38da11">SLF_NO_KILL</a>&#160;&#160;&#160;0x0002 /* Don't kill temporary files */</td></tr>
+<tr class="separator:afdbbad3a15ad86ac413325efad38da11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:abbaf8a1becaf5b7bd0b785fab413aa09"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structsaved__floor__type.html">saved_floor_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-writer_8h.html#abbaf8a1becaf5b7bd0b785fab413aa09">saved_floor_type</a></td></tr>
+<tr class="separator:abbaf8a1becaf5b7bd0b785fab413aa09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a0ca3769fc9944271112a5fe1e063665e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-writer_8h.html#a0ca3769fc9944271112a5fe1e063665e">wr_saved_floor</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structsaved__floor__type.html">saved_floor_type</a> *sf_ptr)</td></tr>
+<tr class="memdesc:a0ca3769fc9944271112a5fe1e063665e"><td class="mdescLeft">&#160;</td><td class="mdescRight">保存フロアの書き込み / Actually write a saved floor data using effectively compressed format.  <a href="floor-writer_8h.html#a0ca3769fc9944271112a5fe1e063665e">[詳解]</a><br /></td></tr>
+<tr class="separator:a0ca3769fc9944271112a5fe1e063665e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3fb42702fe78c01f6faf53decb93421"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-writer_8h.html#aa3fb42702fe78c01f6faf53decb93421">wr_dungeon</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="memdesc:aa3fb42702fe78c01f6faf53decb93421"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在フロアの書き込み / Write the current dungeon (new method) @player_ptr プレーヤーへの参照ポインタ  <a href="floor-writer_8h.html#aa3fb42702fe78c01f6faf53decb93421">[詳解]</a><br /></td></tr>
+<tr class="separator:aa3fb42702fe78c01f6faf53decb93421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a159128f33a5ee6ede05b1b1759af3088"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="floor-writer_8h.html#a159128f33a5ee6ede05b1b1759af3088">save_floor</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structsaved__floor__type.html">saved_floor_type</a> *sf_ptr, <a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a> mode)</td></tr>
+<tr class="memdesc:a159128f33a5ee6ede05b1b1759af3088"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved-floor data  <a href="floor-writer_8h.html#a159128f33a5ee6ede05b1b1759af3088">[詳解]</a><br /></td></tr>
+<tr class="separator:a159128f33a5ee6ede05b1b1759af3088"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="afdbbad3a15ad86ac413325efad38da11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdbbad3a15ad86ac413325efad38da11">&#9670;&nbsp;</a></span>SLF_NO_KILL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SLF_NO_KILL&#160;&#160;&#160;0x0002 /* Don't kill temporary files */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0fb8a1ef54fc6cf9ca3704b08fb95f42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fb8a1ef54fc6cf9ca3704b08fb95f42">&#9670;&nbsp;</a></span>SLF_SECOND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SLF_SECOND&#160;&#160;&#160;0x0001 /* Called from another save/<a class="el" href="player-processor_8h.html#ad3fa449deaee61ca6040ab6f3cce84b0">load</a> function */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">型定義詳解</h2>
+<a id="abbaf8a1becaf5b7bd0b785fab413aa09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbaf8a1becaf5b7bd0b785fab413aa09">&#9670;&nbsp;</a></span>saved_floor_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structsaved__floor__type.html">saved_floor_type</a> <a class="el" href="structsaved__floor__type.html">saved_floor_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a159128f33a5ee6ede05b1b1759af3088"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a159128f33a5ee6ede05b1b1759af3088">&#9670;&nbsp;</a></span>save_floor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> save_floor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsaved__floor__type.html">saved_floor_type</a> *&#160;</td>
+          <td class="paramname"><em>sf_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a388a375ee4bbca7b74cd70f9cb26e187">BIT_FLAGS</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved-floor data </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">sf_ptr</td><td>保存フロア参照ポインタ </td></tr>
+    <tr><td class="paramname">mode</td><td>保存オプション </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-writer_8h_a159128f33a5ee6ede05b1b1759af3088_cgraph.png" border="0" usemap="#afloor-writer_8h_a159128f33a5ee6ede05b1b1759af3088_cgraph" alt=""/></div>
+<map name="afloor-writer_8h_a159128f33a5ee6ede05b1b1759af3088_cgraph" id="afloor-writer_8h_a159128f33a5ee6ede05b1b1759af3088_cgraph">
+<area shape="rect" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="5,519,84,545"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="691,12,803,39"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="137,443,247,469"/>
+<area shape="rect" href="angband-files_8cpp.html#a5a186f4266676163ec63ff8413334fb1" title=" " alt="" coords="157,595,227,621"/>
+<area shape="rect" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="165,493,219,520"/>
+<area shape="rect" href="angband-files_8cpp.html#a4c4108d1fb8217d15fd233d2787ff91d" title=" " alt="" coords="157,544,227,571"/>
+<area shape="rect" href="uid-checker_8cpp.html#a59c71c10d8af1998dee4791396cb9d1d" title="ファイルのドロップパーミッションチェック / Hack – drop permissions" alt="" coords="132,645,252,672"/>
+<area shape="rect" href="uid-checker_8cpp.html#a10816f3dfe2970e4b4c89e5362304f83" title="ファイルのグラブパーミッションチェック / Hack – grab permissions" alt="" coords="132,696,252,723"/>
+<area shape="rect" href="floor-writer_8cpp.html#a11937fb0136a154a63265b4d3e946b7c" title="ゲームプレイ中のフロア一時保存出力処理サブルーチン / Actually write a temporary saved floor file" alt="" coords="139,392,245,419"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="323,544,410,571"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="531,544,593,571"/>
+<area shape="rect" href="z-util_8cpp.html#a27cd52099ef49687abff54a5614cc102" title=" " alt="" coords="345,671,388,697"/>
+<area shape="rect" href="z-util_8cpp.html#add3ff125e6340e76d3c307ebaf757660" title=" " alt="" coords="539,671,585,697"/>
+<area shape="rect" href="monster-compaction_8cpp.html#a45418160543ab052bb17c17d724acb6b" title="モンスター情報配列を圧縮する / Compact and Reorder the monster list" alt="" coords="300,215,433,241"/>
+<area shape="rect" href="object-compressor_8cpp.html#a1ede50288749e158368e8fefdd4d960b" title="グローバルオブジェクト配列から優先度の低いものを削除し、データを圧縮する。 / Compact and Reorder the object list." alt="" coords="306,341,427,368"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="713,443,780,469"/>
+<area shape="rect" href="floor-writer_8cpp.html#a0ca3769fc9944271112a5fe1e063665e" title="保存フロアの書き込み / Actually write a saved floor data using effectively compressed format." alt="" coords="313,443,420,469"/>
+<area shape="rect" href="save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="527,493,597,520"/>
+<area shape="rect" href="monster-compaction_8cpp.html#a2983ca487cde209ae5191771e8859669" title="モンスター情報を配列内移動する / Move an object from index i1 to index i2 in the object list" alt="" coords="481,139,643,165"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="718,139,775,165"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="495,240,629,267"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="506,37,618,64"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="510,189,614,216"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="503,291,621,317"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="523,341,601,368"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-writer_8h_a159128f33a5ee6ede05b1b1759af3088_icgraph.png" border="0" usemap="#afloor-writer_8h_a159128f33a5ee6ede05b1b1759af3088_icgraph" alt=""/></div>
+<map name="afloor-writer_8h_a159128f33a5ee6ede05b1b1759af3088_icgraph" id="afloor-writer_8h_a159128f33a5ee6ede05b1b1759af3088_icgraph">
+<area shape="rect" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="707,157,785,184"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a092e95632a8987f70d45586dfe3d522f" title=" " alt="" coords="548,93,659,120"/>
+<area shape="rect" href="dungeon-loader_8cpp.html#a7500486a4ccc69265cdee7d56ed343d0" title="保存されたフロアを読み込む / Read the dungeon" alt="" coords="559,157,648,184"/>
+<area shape="rect" href="floor-writer_8cpp.html#aa3fb42702fe78c01f6faf53decb93421" title="現在フロアの書き込み / Write the current dungeon (new method) @player_ptr プレーヤーへの参照ポインタ" alt="" coords="558,208,649,235"/>
+<area shape="rect" href="floor-leaver_8cpp.html#af59b8dd9802b17c547ced83c5b40dffc" title="現在のフロアを離れるに伴って行なわれる保存処理 / Maintain quest monsters, mark next floor_id at stairs, save current floor,..." alt="" coords="399,81,482,108"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a9ac09086b75ef38e3817317ca5c2d423" title=" " alt="" coords="216,5,309,32"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="201,107,325,133"/>
+<area shape="rect" href="dungeon-loader_8cpp.html#a049da23ef6f6fa5b48b17c820cac3507" title=" " alt="" coords="381,157,500,184"/>
+<area shape="rect" href="load_8cpp.html#af89dd931d12eb33981704a2943877f34" title="セーブファイル読み込み処理の実体 / Actually read the savefile" alt="" coords="192,157,333,184"/>
+<area shape="rect" href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="383,208,498,235"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="203,208,322,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa3fb42702fe78c01f6faf53decb93421"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3fb42702fe78c01f6faf53decb93421">&#9670;&nbsp;</a></span>wr_dungeon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> wr_dungeon </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>現在フロアの書き込み / Write the current dungeon (new method) @player_ptr プレーヤーへの参照ポインタ </p>
+<dl class="section return"><dt>戻り値</dt><dd>保存に成功したらTRUE </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-writer_8h_aa3fb42702fe78c01f6faf53decb93421_cgraph.png" border="0" usemap="#afloor-writer_8h_aa3fb42702fe78c01f6faf53decb93421_cgraph" alt=""/></div>
+<map name="afloor-writer_8h_aa3fb42702fe78c01f6faf53decb93421_cgraph" id="afloor-writer_8h_aa3fb42702fe78c01f6faf53decb93421_cgraph">
+<area shape="rect" title="現在フロアの書き込み / Write the current dungeon (new method) @player_ptr プレーヤーへの参照ポインタ" alt="" coords="5,259,96,285"/>
+<area shape="rect" href="monster-lite_8cpp.html#a75ee5b3b7870c752f4e98b25ba59eaaf" title="画面切り替え等でモンスターの灯りを消去する" alt="" coords="144,5,251,32"/>
+<area shape="rect" href="floor-events_8cpp.html#aad0bd5ca092d96aec22ced472c90e083" title=" " alt="" coords="158,56,237,83"/>
+<area shape="rect" href="floor-events_8cpp.html#abacf8f89e9bdb853927c5f55377cca6c" title=" " alt="" coords="155,107,240,133"/>
+<area shape="rect" href="floor-save_8cpp.html#a236b93956898407a6e8110c8f4c16bfe" title="保存フロアIDから参照ポインタを得る / Get a pointer for an item of the saved_floors array." alt="" coords="158,157,237,184"/>
+<area shape="rect" href="floor-loader_8cpp.html#a7c391e0a9128864de0d78e70acf21bbd" title="一時保存フロア情報を読み込む / Attempt to load the temporarily saved&#45;floor data" alt="" coords="159,259,236,285"/>
+<area shape="rect" href="floor-writer_8cpp.html#a159128f33a5ee6ede05b1b1759af3088" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="158,208,237,235"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="619,512,686,539"/>
+<area shape="rect" href="save-util_8cpp.html#a0a9fc9ad1a0b5696b8d33200e93f6a59" title="符号あり16ビットをファイルに書き込む" alt="" coords="323,563,394,589"/>
+<area shape="rect" href="save-util_8cpp.html#a3f4d20bc88690cc8e3bd61de4ab96ae7" title="符号あり32ビットをファイルに書き込む" alt="" coords="323,411,394,437"/>
+<area shape="rect" href="save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="483,436,554,463"/>
+<area shape="rect" href="floor-writer_8cpp.html#a0ca3769fc9944271112a5fe1e063665e" title="保存フロアの書き込み / Actually write a saved floor data using effectively compressed format." alt="" coords="144,461,251,488"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="303,56,415,83"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="304,107,413,133"/>
+<area shape="rect" href="angband-files_8cpp.html#adaab27241547fba1e0f4cdcea6cc1891" title=" " alt="" coords="331,157,386,184"/>
+<area shape="rect" href="floor-loader_8cpp.html#a8374609771b72d04645d6f61df4eb643" title="保存フロア読み込みのサブ関数 / Actually load and verify a floor save data" alt="" coords="306,309,411,336"/>
+<area shape="rect" href="uid-checker_8cpp.html#a59c71c10d8af1998dee4791396cb9d1d" title="ファイルのドロップパーミッションチェック / Hack – drop permissions" alt="" coords="299,208,419,235"/>
+<area shape="rect" href="uid-checker_8cpp.html#a10816f3dfe2970e4b4c89e5362304f83" title="ファイルのグラブパーミッションチェック / Hack – grab permissions" alt="" coords="299,259,419,285"/>
+<area shape="rect" href="angband-files_8cpp.html#aa448acdb30934842110462f5dce87dbd" title=" " alt="" coords="475,132,562,159"/>
+<area shape="rect" href="load-util_8cpp.html#a9b25a333bc251613f6e916826fbafb61" title="ロードファイルポインタから1バイトを読み込んでポインタに渡す" alt="" coords="620,335,685,361"/>
+<area shape="rect" href="floor-loader_8cpp.html#a04b4ceaa0f057897dee805390a533b88" title="保存されたフロアを読み込む / Read the saved floor" alt="" coords="467,309,571,336"/>
+<area shape="rect" href="load-util_8cpp.html#a50c35dbc164a6083ae3c44b2366045c7" title="ロードファイルポインタから符号なし32bit値を読み込んでポインタに渡す" alt="" coords="619,272,687,299"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-writer_8h_aa3fb42702fe78c01f6faf53decb93421_icgraph.png" border="0" usemap="#afloor-writer_8h_aa3fb42702fe78c01f6faf53decb93421_icgraph" alt=""/></div>
+<map name="afloor-writer_8h_aa3fb42702fe78c01f6faf53decb93421_icgraph" id="afloor-writer_8h_aa3fb42702fe78c01f6faf53decb93421_icgraph">
+<area shape="rect" title="現在フロアの書き込み / Write the current dungeon (new method) @player_ptr プレーヤーへの参照ポインタ" alt="" coords="473,5,564,32"/>
+<area shape="rect" href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="311,5,425,32"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="144,5,263,32"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="5,5,96,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0ca3769fc9944271112a5fe1e063665e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ca3769fc9944271112a5fe1e063665e">&#9670;&nbsp;</a></span>wr_saved_floor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wr_saved_floor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsaved__floor__type.html">saved_floor_type</a> *&#160;</td>
+          <td class="paramname"><em>sf_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>保存フロアの書き込み / Actually write a saved floor data using effectively compressed format. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sf_ptr</td><td>保存したいフロアの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-writer_8h_a0ca3769fc9944271112a5fe1e063665e_cgraph.png" border="0" usemap="#afloor-writer_8h_a0ca3769fc9944271112a5fe1e063665e_cgraph" alt=""/></div>
+<map name="afloor-writer_8h_a0ca3769fc9944271112a5fe1e063665e_cgraph" id="afloor-writer_8h_a0ca3769fc9944271112a5fe1e063665e_cgraph">
+<area shape="rect" title="保存フロアの書き込み / Actually write a saved floor data using effectively compressed format." alt="" coords="5,233,112,260"/>
+<area shape="rect" href="sort_8cpp.html#ab407e67d890db0c6e9b33de4c90b5b84" title=" " alt="" coords="214,5,286,32"/>
+<area shape="rect" href="sort_8cpp.html#a8dc1104938e0c7b0ba64848f23b22e57" title="フロア保存時のgrid情報テンプレートをソートするための比較処理" alt="" coords="160,56,340,83"/>
+<area shape="rect" href="sort_8cpp.html#aa889e98eb6a078b89abe852c21f98315" title="フロア保存時のgrid情報テンプレートをソートするためのスワップ処理 / Sorting hook – Swap function" alt="" coords="161,107,339,133"/>
+<area shape="rect" href="save-util_8cpp.html#aaa89cdc90049a47968fd0de4912edc05" title="1バイトをファイルに書き込む(sf_put()の糖衣)" alt="" coords="931,487,997,513"/>
+<area shape="rect" href="item-writer_8cpp.html#a0e9875ae663d151074da35b385a44ba6" title="アイテムオブジェクトを書き込む / Write an &quot;item&quot; record" alt="" coords="217,461,283,488"/>
+<area shape="rect" href="save-util_8cpp.html#a0a9fc9ad1a0b5696b8d33200e93f6a59" title="符号あり16ビットをファイルに書き込む" alt="" coords="633,360,704,387"/>
+<area shape="rect" href="save-util_8cpp.html#a3029d75be518c5d591b64029c472db4e" title="符号なし16ビットをファイルに書き込む" alt="" coords="812,360,883,387"/>
+<area shape="rect" href="save-util_8cpp.html#a5db0a76a2b41363d15e976da1271eeb0" title="符号なし32ビットをファイルに書き込む" alt="" coords="633,765,704,792"/>
+<area shape="rect" href="monster-writer_8cpp.html#a347124d58fc5f0f54c2a32153a40f748" title="モンスター情報を書き込む / Write a &quot;monster&quot; record" alt="" coords="205,651,295,677"/>
+<area shape="rect" href="save-util_8cpp.html#a3f4d20bc88690cc8e3bd61de4ab96ae7" title="符号あり32ビットをファイルに書き込む" alt="" coords="421,816,492,843"/>
+<area shape="rect" href="sort_8cpp.html#a99d218f2e03679f2f8418b8d1540f8cf" title=" " alt="" coords="407,5,507,32"/>
+<area shape="rect" href="save-util_8cpp.html#a320fb5495ecbaf494a3ecfee37176734" title="1バイトをファイルに書き込む / These functions place information into a savefile a byte at a time" alt="" coords="1045,487,1103,513"/>
+<area shape="rect" href="quarks_8cpp.html#a95cf419856c525009b78e5246327f405" title=" " alt="" coords="631,563,707,589"/>
+<area shape="rect" href="save-util_8cpp.html#a272917124cf4c8dc5760c16caed8db80" title="文字列をファイルに書き込む" alt="" coords="631,512,706,539"/>
+<area shape="rect" href="item-writer_8cpp.html#ab4b28d838034b2606b99d2f11a3ef74b" title=" " alt="" coords="399,664,514,691"/>
+<area shape="rect" href="item-writer_8cpp.html#aff46409cfa832bdccbabd97c1f7d38b9" title=" " alt="" coords="403,411,511,437"/>
+<area shape="rect" href="monster-writer_8cpp.html#a6bbe64f5eb68aad3b6b1ce75864aef0f" title=" " alt="" coords="388,968,525,995"/>
+<area shape="rect" href="monster-writer_8cpp.html#a3c6f1575320a25af5cca4829ddbe78b4" title=" " alt="" coords="391,613,522,640"/>
+<area shape="rect" href="class_flag_group.html#a85a4dd28bb671ffe973b1fd50a0be4d7" title="フラグ集合のいずれかのフラグがONかどうかを調べる" alt="" coords="613,917,724,944"/>
+<area shape="rect" href="monster-info_8cpp.html#aee375b2cef10419aee76d699c91d4007" title=" " alt="" coords="618,968,719,995"/>
+<area shape="rect" href="monster-status_8cpp.html#a43f06b6e21bda28d0bd4ba24b2ab8169" title=" " alt="" coords="573,1019,764,1045"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="580,1069,757,1096"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="589,1120,749,1147"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="589,1171,749,1197"/>
+<area shape="rect" href="monster-status_8cpp.html#a80de21cbf726cc0aa7dca9b68b453313" title=" " alt="" coords="577,1221,760,1248"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="586,816,751,843"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="576,867,761,893"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="floor-writer_8h_a0ca3769fc9944271112a5fe1e063665e_icgraph.png" border="0" usemap="#afloor-writer_8h_a0ca3769fc9944271112a5fe1e063665e_icgraph" alt=""/></div>
+<map name="afloor-writer_8h_a0ca3769fc9944271112a5fe1e063665e_icgraph" id="afloor-writer_8h_a0ca3769fc9944271112a5fe1e063665e_icgraph">
+<area shape="rect" title="保存フロアの書き込み / Actually write a saved floor data using effectively compressed format." alt="" coords="445,81,552,108"/>
+<area shape="rect" href="floor-writer_8cpp.html#a11937fb0136a154a63265b4d3e946b7c" title="ゲームプレイ中のフロア一時保存出力処理サブルーチン / Actually write a temporary saved floor file" alt="" coords="291,56,397,83"/>
+<area shape="rect" href="floor-writer_8cpp.html#aa3fb42702fe78c01f6faf53decb93421" title="現在フロアの書き込み / Write the current dungeon (new method) @player_ptr プレーヤーへの参照ポインタ" alt="" coords="15,107,106,133"/>
+<area shape="rect" href="floor-writer_8cpp.html#a159128f33a5ee6ede05b1b1759af3088" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="164,56,243,83"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a092e95632a8987f70d45586dfe3d522f" title=" " alt="" coords="5,5,116,32"/>
+<area shape="rect" href="dungeon-loader_8cpp.html#a7500486a4ccc69265cdee7d56ed343d0" title="保存されたフロアを読み込む / Read the dungeon" alt="" coords="16,56,105,83"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時56分22秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

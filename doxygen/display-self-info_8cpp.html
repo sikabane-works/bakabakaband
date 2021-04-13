@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/view/display-self-info.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b39b5091e8d1d2be4b7fc59d57749634.html">view</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">display-self-info.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="display-self-info_8h_source.html">view/display-self-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="avatar_8h_source.html">player-info/avatar.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="self-info-util_8h_source.html">player-info/self-info-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-race_8h_source.html">player/player-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status-table_8h_source.html">player/player-status-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &lt;string&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+display-self-info.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-self-info_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2view_2display-self-info_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2view_2display-self-info_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2view_2display-self-info_8cpp">
+<area shape="rect" title=" " alt="" coords="568,5,773,61"/>
+<area shape="rect" href="display-self-info_8h.html" title=" " alt="" coords="106,206,257,233"/>
+<area shape="rect" href="input-key-acceptor_8h.html" title=" " alt="" coords="349,117,504,143"/>
+<area shape="rect" href="avatar_8h.html" title=" " alt="" coords="528,117,659,143"/>
+<area shape="rect" href="self-info-util_8h.html" title=" " alt="" coords="683,109,813,151"/>
+<area shape="rect" href="player-race_8h.html" title=" " alt="" coords="281,206,417,233"/>
+<area shape="rect" href="player-status-table_8h.html" title=" " alt="" coords="593,199,729,240"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="911,206,1073,233"/>
+<area shape="rect" title=" " alt="" coords="939,117,994,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="466,288,595,315"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="5,363,96,389"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="120,363,211,389"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="235,363,333,389"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="357,363,456,389"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="481,363,581,389"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="605,363,779,389"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="804,363,945,389"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,363,1116,389"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="753,199,887,240"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="757,288,883,315"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a810890bfbdb7a1983429f97955ccd4f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-self-info_8cpp.html#a810890bfbdb7a1983429f97955ccd4f5">display_life_rating</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structself__info__type.html">self_info_type</a> *self_ptr)</td></tr>
+<tr class="separator:a810890bfbdb7a1983429f97955ccd4f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acec7a2147967056911acece40b15fc69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-self-info_8cpp.html#acec7a2147967056911acece40b15fc69">display_max_base_status</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structself__info__type.html">self_info_type</a> *self_ptr)</td></tr>
+<tr class="separator:acec7a2147967056911acece40b15fc69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f49f322323133f27a834b61497aa0bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-self-info_8cpp.html#a0f49f322323133f27a834b61497aa0bb">display_virtue</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structself__info__type.html">self_info_type</a> *self_ptr)</td></tr>
+<tr class="separator:a0f49f322323133f27a834b61497aa0bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab6e396e2d8ce487eea4bfe95fad1011"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-self-info_8cpp.html#aab6e396e2d8ce487eea4bfe95fad1011">display_mimic_race_ability</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structself__info__type.html">self_info_type</a> *self_ptr)</td></tr>
+<tr class="separator:aab6e396e2d8ce487eea4bfe95fad1011"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f4e34cf9ef2378af7c7442fb6960bf2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display-self-info_8cpp.html#a8f4e34cf9ef2378af7c7442fb6960bf2">display_self_info</a> (<a class="el" href="structself__info__type.html">self_info_type</a> *self_ptr)</td></tr>
+<tr class="separator:a8f4e34cf9ef2378af7c7442fb6960bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a810890bfbdb7a1983429f97955ccd4f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a810890bfbdb7a1983429f97955ccd4f5">&#9670;&nbsp;</a></span>display_life_rating()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_life_rating </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structself__info__type.html">self_info_type</a> *&#160;</td>
+          <td class="paramname"><em>self_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-self-info_8cpp_a810890bfbdb7a1983429f97955ccd4f5_icgraph.png" border="0" usemap="#adisplay-self-info_8cpp_a810890bfbdb7a1983429f97955ccd4f5_icgraph" alt=""/></div>
+<map name="adisplay-self-info_8cpp_a810890bfbdb7a1983429f97955ccd4f5_icgraph" id="adisplay-self-info_8cpp_a810890bfbdb7a1983429f97955ccd4f5_icgraph">
+<area shape="rect" title=" " alt="" coords="491,81,616,108"/>
+<area shape="rect" href="self-info_8cpp.html#ab9a5d25159ba44362518adaa1377d12a" title="自己分析処理(Nethackからのアイデア) / self&#45;knowledge..." alt="" coords="332,81,443,108"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="156,5,259,32"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="147,56,267,83"/>
+<area shape="rect" href="quaff-execution_8cpp.html#a663518dc63d12a75833fcd01acd2f364" title="薬を飲むコマンドのサブルーチン / Quaff a potion (from the pack or the floor)" alt="" coords="148,107,267,133"/>
+<area shape="rect" href="wizard-player-modifier_8cpp.html#aa4a3273458fa47c8239f26e35bae206d" title="プレイヤー設定コマンドの入力を受け付ける" alt="" coords="131,157,284,184"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="5,31,83,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acec7a2147967056911acece40b15fc69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acec7a2147967056911acece40b15fc69">&#9670;&nbsp;</a></span>display_max_base_status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_max_base_status </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structself__info__type.html">self_info_type</a> *&#160;</td>
+          <td class="paramname"><em>self_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-self-info_8cpp_acec7a2147967056911acece40b15fc69_icgraph.png" border="0" usemap="#adisplay-self-info_8cpp_acec7a2147967056911acece40b15fc69_icgraph" alt=""/></div>
+<map name="adisplay-self-info_8cpp_acec7a2147967056911acece40b15fc69_icgraph" id="adisplay-self-info_8cpp_acec7a2147967056911acece40b15fc69_icgraph">
+<area shape="rect" title=" " alt="" coords="491,81,664,108"/>
+<area shape="rect" href="self-info_8cpp.html#ab9a5d25159ba44362518adaa1377d12a" title="自己分析処理(Nethackからのアイデア) / self&#45;knowledge..." alt="" coords="332,81,443,108"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="156,5,259,32"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="147,56,267,83"/>
+<area shape="rect" href="quaff-execution_8cpp.html#a663518dc63d12a75833fcd01acd2f364" title="薬を飲むコマンドのサブルーチン / Quaff a potion (from the pack or the floor)" alt="" coords="148,107,267,133"/>
+<area shape="rect" href="wizard-player-modifier_8cpp.html#aa4a3273458fa47c8239f26e35bae206d" title="プレイヤー設定コマンドの入力を受け付ける" alt="" coords="131,157,284,184"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="5,31,83,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aab6e396e2d8ce487eea4bfe95fad1011"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab6e396e2d8ce487eea4bfe95fad1011">&#9670;&nbsp;</a></span>display_mimic_race_ability()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_mimic_race_ability </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structself__info__type.html">self_info_type</a> *&#160;</td>
+          <td class="paramname"><em>self_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-self-info_8cpp_aab6e396e2d8ce487eea4bfe95fad1011_icgraph.png" border="0" usemap="#adisplay-self-info_8cpp_aab6e396e2d8ce487eea4bfe95fad1011_icgraph" alt=""/></div>
+<map name="adisplay-self-info_8cpp_aab6e396e2d8ce487eea4bfe95fad1011_icgraph" id="adisplay-self-info_8cpp_aab6e396e2d8ce487eea4bfe95fad1011_icgraph">
+<area shape="rect" title=" " alt="" coords="491,74,628,115"/>
+<area shape="rect" href="self-info_8cpp.html#ab9a5d25159ba44362518adaa1377d12a" title="自己分析処理(Nethackからのアイデア) / self&#45;knowledge..." alt="" coords="332,81,443,108"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="156,5,259,32"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="147,56,267,83"/>
+<area shape="rect" href="quaff-execution_8cpp.html#a663518dc63d12a75833fcd01acd2f364" title="薬を飲むコマンドのサブルーチン / Quaff a potion (from the pack or the floor)" alt="" coords="148,107,267,133"/>
+<area shape="rect" href="wizard-player-modifier_8cpp.html#aa4a3273458fa47c8239f26e35bae206d" title="プレイヤー設定コマンドの入力を受け付ける" alt="" coords="131,157,284,184"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="5,31,83,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8f4e34cf9ef2378af7c7442fb6960bf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f4e34cf9ef2378af7c7442fb6960bf2">&#9670;&nbsp;</a></span>display_self_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_self_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structself__info__type.html">self_info_type</a> *&#160;</td>
+          <td class="paramname"><em>self_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-self-info_8cpp_a8f4e34cf9ef2378af7c7442fb6960bf2_cgraph.png" border="0" usemap="#adisplay-self-info_8cpp_a8f4e34cf9ef2378af7c7442fb6960bf2_cgraph" alt=""/></div>
+<map name="adisplay-self-info_8cpp_a8f4e34cf9ef2378af7c7442fb6960bf2_cgraph" id="adisplay-self-info_8cpp_a8f4e34cf9ef2378af7c7442fb6960bf2_cgraph">
+<area shape="rect" title=" " alt="" coords="5,487,123,513"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="191,411,245,437"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="199,461,237,488"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="172,512,264,539"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="171,563,265,589"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="320,107,423,133"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="493,5,592,32"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="656,233,733,260"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="331,360,412,387"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="499,512,586,539"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="313,461,429,488"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="330,512,413,539"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="313,563,429,589"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="313,613,429,640"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="497,56,588,83"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="501,107,584,133"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="495,157,590,184"/>
+<area shape="rect" href="macro-util_8cpp.html#a1e9851f9b9e0a0e51628a231ca95fcc1" title=" " alt="" coords="479,309,606,336"/>
+<area shape="rect" href="macro-util_8cpp.html#a7f48a1923076b3b314f1bc58913a2a59" title=" " alt="" coords="477,360,608,387"/>
+<area shape="rect" href="macro-util_8cpp.html#ada693de344c97bc09a586100f25919dd" title=" " alt="" coords="481,411,605,437"/>
+<area shape="rect" href="z-term_8cpp.html#a020ef4815c101960b4fdad94c4e5b59b" title=" " alt="" coords="487,461,598,488"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-self-info_8cpp_a8f4e34cf9ef2378af7c7442fb6960bf2_icgraph.png" border="0" usemap="#adisplay-self-info_8cpp_a8f4e34cf9ef2378af7c7442fb6960bf2_icgraph" alt=""/></div>
+<map name="adisplay-self-info_8cpp_a8f4e34cf9ef2378af7c7442fb6960bf2_icgraph" id="adisplay-self-info_8cpp_a8f4e34cf9ef2378af7c7442fb6960bf2_icgraph">
+<area shape="rect" title=" " alt="" coords="491,81,608,108"/>
+<area shape="rect" href="self-info_8cpp.html#ab9a5d25159ba44362518adaa1377d12a" title="自己分析処理(Nethackからのアイデア) / self&#45;knowledge..." alt="" coords="332,81,443,108"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="156,5,259,32"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="147,56,267,83"/>
+<area shape="rect" href="quaff-execution_8cpp.html#a663518dc63d12a75833fcd01acd2f364" title="薬を飲むコマンドのサブルーチン / Quaff a potion (from the pack or the floor)" alt="" coords="148,107,267,133"/>
+<area shape="rect" href="wizard-player-modifier_8cpp.html#aa4a3273458fa47c8239f26e35bae206d" title="プレイヤー設定コマンドの入力を受け付ける" alt="" coords="131,157,284,184"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="5,31,83,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0f49f322323133f27a834b61497aa0bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f49f322323133f27a834b61497aa0bb">&#9670;&nbsp;</a></span>display_virtue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_virtue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structself__info__type.html">self_info_type</a> *&#160;</td>
+          <td class="paramname"><em>self_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-self-info_8cpp_a0f49f322323133f27a834b61497aa0bb_cgraph.png" border="0" usemap="#adisplay-self-info_8cpp_a0f49f322323133f27a834b61497aa0bb_cgraph" alt=""/></div>
+<map name="adisplay-self-info_8cpp_a0f49f322323133f27a834b61497aa0bb_cgraph" id="adisplay-self-info_8cpp_a0f49f322323133f27a834b61497aa0bb_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,105,57"/>
+<area shape="rect" href="player-status_8cpp.html#a9274f7ed1a8752514bd93bd8027a4954" title="クリーチャーの抽象的善悪アライメントの表記を返す。 / Return alignment title" alt="" coords="153,31,264,57"/>
+<area shape="rect" href="player-status_8cpp.html#a0fca30c88357169001f0270268dd8da8" title="クリーチャーの抽象的善悪アライメントの表記名のみを返す。 / Return only alignment title" alt="" coords="312,5,424,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="339,56,397,83"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="472,56,535,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="display-self-info_8cpp_a0f49f322323133f27a834b61497aa0bb_icgraph.png" border="0" usemap="#adisplay-self-info_8cpp_a0f49f322323133f27a834b61497aa0bb_icgraph" alt=""/></div>
+<map name="adisplay-self-info_8cpp_a0f49f322323133f27a834b61497aa0bb_icgraph" id="adisplay-self-info_8cpp_a0f49f322323133f27a834b61497aa0bb_icgraph">
+<area shape="rect" title=" " alt="" coords="491,81,591,108"/>
+<area shape="rect" href="self-info_8cpp.html#ab9a5d25159ba44362518adaa1377d12a" title="自己分析処理(Nethackからのアイデア) / self&#45;knowledge..." alt="" coords="332,81,443,108"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="156,5,259,32"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="147,56,267,83"/>
+<area shape="rect" href="quaff-execution_8cpp.html#a663518dc63d12a75833fcd01acd2f364" title="薬を飲むコマンドのサブルーチン / Quaff a potion (from the pack or the floor)" alt="" coords="148,107,267,133"/>
+<area shape="rect" href="wizard-player-modifier_8cpp.html#aa4a3273458fa47c8239f26e35bae206d" title="プレイヤー設定コマンドの入力を受け付ける" alt="" coords="131,157,284,184"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="5,31,83,57"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分39秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

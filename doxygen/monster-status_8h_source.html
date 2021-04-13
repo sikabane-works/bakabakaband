@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/monster/monster-status.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f68a7f142a463f095d22e67af9193b2d.html">monster</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">monster-status.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="monster-status_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-type-definition_8h.html">system/monster-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="monster-status_8h.html#a493e78b3d76a929ab3d58e08c6b8317f">monster_is_powerful</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<a class="code" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> <a class="code" href="monster-status_8h.html#a45616ce0d2aa0ea32dbbef3ef22caa66">monster_level_idx</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="monster-status_8h.html#aea5a519fd7a4c7f9c718fdfc1c788c7f">mon_damage_mod</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmonster__type.html">monster_type</a> *m_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam, <span class="keywordtype">bool</span> is_psy_spear);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="monster-status_8h.html#ae88b5c2cdbbdd487fe9d94a99438be81">mon_take_hit</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam, <span class="keywordtype">bool</span> *fear, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> note);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="monster-status_8h.html#a0f7201c5a9c7997732968dbdd75a5066">monster_is_valid</a>(<a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-status_8h.html#a8741b73b5117adbb98d24486378f48ec">dispel_monster_status</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-status_8h.html#a5816c48586498ed28b6080bb6ebb5e45">monster_gain_exp</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a> s_idx);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-status_8h.html#a61f7a158553d0911c699a0f8532578ec">process_monsters_mtimed</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <span class="keywordtype">int</span> mtimed_idx);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> <a class="code" href="monster-status_8h.html#ab13b269031a5b7b139713c537bbfe706">monster_csleep_remaining</a>(<a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> <a class="code" href="monster-status_8h.html#a6aef132d11ecd821ee1c1ddb63fd6081">monster_fast_remaining</a>(<a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> <a class="code" href="monster-status_8h.html#a78b5cd48423fd762b521c45644da0385">monster_slow_remaining</a>(<a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> <a class="code" href="monster-status_8h.html#a694441eba404946ed80519bf51df10ca">monster_stunned_remaining</a>(<a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> <a class="code" href="monster-status_8h.html#a43f06b6e21bda28d0bd4ba24b2ab8169">monster_confused_remaining</a>(<a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> <a class="code" href="monster-status_8h.html#a2d8323688784ef1bd6dc7da65bdea786">monster_fear_remaining</a>(<a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<a class="code" href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a> <a class="code" href="monster-status_8h.html#a80de21cbf726cc0aa7dca9b68b453313">monster_invulner_remaining</a>(<a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">int</span> <a class="code" href="monster-status_8h.html#a8b634a687e3b64547e012114b21ed69c">get_mproc_idx</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <span class="keywordtype">int</span> mproc_type);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-status_8h.html#a1ebc28b4930a40482c2973912ab8484b">mproc_init</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monster-status_8h.html#af5149aae69ef6e936f6c691c691cd95a">mproc_add</a>(<a class="code" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <span class="keywordtype">int</span> mproc_type);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a1c8b80a20fb5396ff07a523b01112c47"><div class="ttname"><a href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a></div><div class="ttdeci">s32b DEPTH</div><div class="ttdoc">ゲーム中の階層レベルの型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:194</div></div>
+<div class="ttc" id="ah-type_8h_html_a7ea47f67338902d35c1e93e00cf86908"><div class="ttname"><a href="h-type_8h.html#a7ea47f67338902d35c1e93e00cf86908">MONRACE_IDX</a></div><div class="ttdeci">s16b MONRACE_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:109</div></div>
+<div class="ttc" id="ah-type_8h_html_aba20657d0771ac9353e9e43605c12a94"><div class="ttname"><a href="h-type_8h.html#aba20657d0771ac9353e9e43605c12a94">TIME_EFFECT</a></div><div class="ttdeci">s16b TIME_EFFECT</div><div class="ttdoc">ゲーム中の時限期間の型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:162</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="ah-type_8h_html_afdb20155266ee801610f13b1589a3df3"><div class="ttname"><a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></div><div class="ttdeci">s32b HIT_POINT</div><div class="ttdoc">HPとその増減量の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:141</div></div>
+<div class="ttc" id="amonster-status_8h_html_a0f7201c5a9c7997732968dbdd75a5066"><div class="ttname"><a href="monster-status_8h.html#a0f7201c5a9c7997732968dbdd75a5066">monster_is_valid</a></div><div class="ttdeci">bool monster_is_valid(monster_type *m_ptr)</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:1030</div></div>
+<div class="ttc" id="amonster-status_8h_html_a1ebc28b4930a40482c2973912ab8484b"><div class="ttname"><a href="monster-status_8h.html#a1ebc28b4930a40482c2973912ab8484b">mproc_init</a></div><div class="ttdeci">void mproc_init(floor_type *floor_ptr)</div><div class="ttdoc">モンスターの時限ステータスリストを初期化する / Initialize monster process</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:243</div></div>
+<div class="ttc" id="amonster-status_8h_html_a2d8323688784ef1bd6dc7da65bdea786"><div class="ttname"><a href="monster-status_8h.html#a2d8323688784ef1bd6dc7da65bdea786">monster_fear_remaining</a></div><div class="ttdeci">TIME_EFFECT monster_fear_remaining(monster_type *m_ptr)</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:1042</div></div>
+<div class="ttc" id="amonster-status_8h_html_a43f06b6e21bda28d0bd4ba24b2ab8169"><div class="ttname"><a href="monster-status_8h.html#a43f06b6e21bda28d0bd4ba24b2ab8169">monster_confused_remaining</a></div><div class="ttdeci">TIME_EFFECT monster_confused_remaining(monster_type *m_ptr)</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:1040</div></div>
+<div class="ttc" id="amonster-status_8h_html_a45616ce0d2aa0ea32dbbef3ef22caa66"><div class="ttname"><a href="monster-status_8h.html#a45616ce0d2aa0ea32dbbef3ef22caa66">monster_level_idx</a></div><div class="ttdeci">DEPTH monster_level_idx(floor_type *floor_ptr, MONSTER_IDX m_idx)</div><div class="ttdoc">モンスターIDからモンスターのレベルを取得する(ただし最低1を保証する) /</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:75</div></div>
+<div class="ttc" id="amonster-status_8h_html_a493e78b3d76a929ab3d58e08c6b8317f"><div class="ttname"><a href="monster-status_8h.html#a493e78b3d76a929ab3d58e08c6b8317f">monster_is_powerful</a></div><div class="ttdeci">bool monster_is_powerful(floor_type *floor_ptr, MONSTER_IDX m_idx)</div><div class="ttdoc">&lt;</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:62</div></div>
+<div class="ttc" id="amonster-status_8h_html_a5816c48586498ed28b6080bb6ebb5e45"><div class="ttname"><a href="monster-status_8h.html#a5816c48586498ed28b6080bb6ebb5e45">monster_gain_exp</a></div><div class="ttdeci">void monster_gain_exp(player_type *target_ptr, MONSTER_IDX m_idx, MONRACE_IDX s_idx)</div><div class="ttdoc">モンスターの経験値取得処理</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:508</div></div>
+<div class="ttc" id="amonster-status_8h_html_a61f7a158553d0911c699a0f8532578ec"><div class="ttname"><a href="monster-status_8h.html#a61f7a158553d0911c699a0f8532578ec">process_monsters_mtimed</a></div><div class="ttdeci">void process_monsters_mtimed(player_type *target_ptr, int mtimed_idx)</div><div class="ttdoc">全モンスターの各種状態値を時間経過により更新するメインルーチン</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:458</div></div>
+<div class="ttc" id="amonster-status_8h_html_a694441eba404946ed80519bf51df10ca"><div class="ttname"><a href="monster-status_8h.html#a694441eba404946ed80519bf51df10ca">monster_stunned_remaining</a></div><div class="ttdeci">TIME_EFFECT monster_stunned_remaining(monster_type *m_ptr)</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:1038</div></div>
+<div class="ttc" id="amonster-status_8h_html_a6aef132d11ecd821ee1c1ddb63fd6081"><div class="ttname"><a href="monster-status_8h.html#a6aef132d11ecd821ee1c1ddb63fd6081">monster_fast_remaining</a></div><div class="ttdeci">TIME_EFFECT monster_fast_remaining(monster_type *m_ptr)</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:1034</div></div>
+<div class="ttc" id="amonster-status_8h_html_a78b5cd48423fd762b521c45644da0385"><div class="ttname"><a href="monster-status_8h.html#a78b5cd48423fd762b521c45644da0385">monster_slow_remaining</a></div><div class="ttdeci">TIME_EFFECT monster_slow_remaining(monster_type *m_ptr)</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:1036</div></div>
+<div class="ttc" id="amonster-status_8h_html_a80de21cbf726cc0aa7dca9b68b453313"><div class="ttname"><a href="monster-status_8h.html#a80de21cbf726cc0aa7dca9b68b453313">monster_invulner_remaining</a></div><div class="ttdeci">TIME_EFFECT monster_invulner_remaining(monster_type *m_ptr)</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:1044</div></div>
+<div class="ttc" id="amonster-status_8h_html_a8741b73b5117adbb98d24486378f48ec"><div class="ttname"><a href="monster-status_8h.html#a8741b73b5117adbb98d24486378f48ec">dispel_monster_status</a></div><div class="ttdeci">void dispel_monster_status(player_type *target_ptr, MONSTER_IDX m_idx)</div><div class="ttdoc">モンスターへの魔力消去処理</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:479</div></div>
+<div class="ttc" id="amonster-status_8h_html_a8b634a687e3b64547e012114b21ed69c"><div class="ttname"><a href="monster-status_8h.html#a8b634a687e3b64547e012114b21ed69c">get_mproc_idx</a></div><div class="ttdeci">int get_mproc_idx(floor_type *floor_ptr, MONSTER_IDX m_idx, int mproc_type)</div><div class="ttdoc">モンスターの時限ステータスを取得する</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:213</div></div>
+<div class="ttc" id="amonster-status_8h_html_ab13b269031a5b7b139713c537bbfe706"><div class="ttname"><a href="monster-status_8h.html#ab13b269031a5b7b139713c537bbfe706">monster_csleep_remaining</a></div><div class="ttdeci">TIME_EFFECT monster_csleep_remaining(monster_type *m_ptr)</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:1032</div></div>
+<div class="ttc" id="amonster-status_8h_html_ae88b5c2cdbbdd487fe9d94a99438be81"><div class="ttname"><a href="monster-status_8h.html#ae88b5c2cdbbdd487fe9d94a99438be81">mon_take_hit</a></div><div class="ttdeci">bool mon_take_hit(player_type *target_ptr, MONSTER_IDX m_idx, HIT_POINT dam, bool *fear, concptr note)</div><div class="ttdoc">モンスターのHPをダメージに応じて減算する / Decreases monsters hit points, handling monster death.</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:655</div></div>
+<div class="ttc" id="amonster-status_8h_html_aea5a519fd7a4c7f9c718fdfc1c788c7f"><div class="ttname"><a href="monster-status_8h.html#aea5a519fd7a4c7f9c718fdfc1c788c7f">mon_damage_mod</a></div><div class="ttdeci">HIT_POINT mon_damage_mod(player_type *target_ptr, monster_type *m_ptr, HIT_POINT dam, bool is_psy_spear)</div><div class="ttdoc">モンスターに与えたダメージの修正処理 / Modify the physical damage done to the monster.</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:99</div></div>
+<div class="ttc" id="amonster-status_8h_html_af5149aae69ef6e936f6c691c691cd95a"><div class="ttname"><a href="monster-status_8h.html#af5149aae69ef6e936f6c691c691cd95a">mproc_add</a></div><div class="ttdeci">void mproc_add(floor_type *floor_ptr, MONSTER_IDX m_idx, int mproc_type)</div><div class="ttdoc">モンスターの時限ステータスリストを追加する</div><div class="ttdef"><b>Definition:</b> monster-status.cpp:231</div></div>
+<div class="ttc" id="amonster-type-definition_8h_html"><div class="ttname"><a href="monster-type-definition_8h.html">monster-type-definition.h</a></div></div>
+<div class="ttc" id="astructfloor__type_html"><div class="ttname"><a href="structfloor__type.html">floor_type</a></div><div class="ttdef"><b>Definition:</b> floor-type-definition.h:10</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/mspell/mspell-checker.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d3503302c38a329207825687a87abf53.html">mspell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mspell-checker.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="mspell-checker_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-type-definition_8h.html">system/monster-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">struct </span><a class="code" href="struct_project_result.html">ProjectResult</a>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">enum class</span> <a class="code" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="mspell-checker_8h.html#ad7f823f0d59ae8876db5e23cc77f8b46">clean_shot</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y2, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x2, <span class="keywordtype">bool</span> is_friend);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="mspell-checker_8h.html#a7d6635349783f11ffc8768b9db716753">summon_possible</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="mspell-checker_8h.html#ae10739c91db6102c1cbaa631acd622d9">raise_possible</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmonster__type.html">monster_type</a> *m_ptr);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="mspell-checker_8h.html#ad5d369e023778ba5366512e0c388d512">spell_is_inate</a>(<a class="code" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> spell);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<a class="code" href="struct_project_result.html">ProjectResult</a> <a class="code" href="mspell-checker_8h.html#a8cdb77f4352965d8daaed40feabdd58f">beam</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="code" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a> typ, <span class="keywordtype">int</span> dam_hp, <span class="keywordtype">int</span> monspell, <span class="keywordtype">int</span> <a class="code" href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aa">target_type</a>);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<a class="code" href="struct_project_result.html">ProjectResult</a> <a class="code" href="mspell-checker_8h.html#a50c4496847b82cffa5927970c2add403">bolt</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="code" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a> typ, <span class="keywordtype">int</span> dam_hp, <span class="keywordtype">int</span> monspell, <span class="keywordtype">int</span> <a class="code" href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aa">target_type</a>);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<a class="code" href="struct_project_result.html">ProjectResult</a> <a class="code" href="mspell-checker_8h.html#a60d3d82169ca8120d8716c9994caf9ca">breath</a>(</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a> typ, <span class="keywordtype">int</span> dam_hp, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> rad, <span class="keywordtype">bool</span> <a class="code" href="mspell-checker_8h.html#a60d3d82169ca8120d8716c9994caf9ca">breath</a>, <span class="keywordtype">int</span> monspell, <span class="keywordtype">int</span> <a class="code" href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aa">target_type</a>);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a6e67d15477d3778e515c59e04e25a390"><div class="ttname"><a href="h-type_8h.html#a6e67d15477d3778e515c59e04e25a390">EFFECT_ID</a></div><div class="ttdeci">int EFFECT_ID</div><div class="ttdoc">効果属性ID</div><div class="ttdef"><b>Definition:</b> h-type.h:227</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="amonster-type-definition_8h_html"><div class="ttname"><a href="monster-type-definition_8h.html">monster-type-definition.h</a></div></div>
+<div class="ttc" id="amspell-checker_8h_html_a50c4496847b82cffa5927970c2add403"><div class="ttname"><a href="mspell-checker_8h.html#a50c4496847b82cffa5927970c2add403">bolt</a></div><div class="ttdeci">ProjectResult bolt(player_type *target_ptr, MONSTER_IDX m_idx, POSITION y, POSITION x, EFFECT_ID typ, int dam_hp, int monspell, int target_type)</div><div class="ttdoc">モンスターのボルト型魔法処理 / Cast a bolt at the player Stop if we hit a monster Affect monsters and the player</div><div class="ttdef"><b>Definition:</b> mspell-checker.cpp:187</div></div>
+<div class="ttc" id="amspell-checker_8h_html_a60d3d82169ca8120d8716c9994caf9ca"><div class="ttname"><a href="mspell-checker_8h.html#a60d3d82169ca8120d8716c9994caf9ca">breath</a></div><div class="ttdeci">ProjectResult breath(player_type *target_ptr, POSITION y, POSITION x, MONSTER_IDX m_idx, EFFECT_ID typ, int dam_hp, POSITION rad, bool breath, int monspell, int target_type)</div><div class="ttdoc">モンスターのボール型＆ブレス型魔法処理 / Cast a breath (or ball) attack at the player Pass over any monsters that may be...</div><div class="ttdef"><b>Definition:</b> mspell-checker.cpp:245</div></div>
+<div class="ttc" id="amspell-checker_8h_html_a7d6635349783f11ffc8768b9db716753"><div class="ttname"><a href="mspell-checker_8h.html#a7d6635349783f11ffc8768b9db716753">summon_possible</a></div><div class="ttdeci">bool summon_possible(player_type *target_ptr, POSITION y1, POSITION x1)</div><div class="ttdoc">モンスター魔法の実装 / Monster spells (attack player)</div><div class="ttdef"><b>Definition:</b> mspell-checker.cpp:64</div></div>
+<div class="ttc" id="amspell-checker_8h_html_a8cdb77f4352965d8daaed40feabdd58f"><div class="ttname"><a href="mspell-checker_8h.html#a8cdb77f4352965d8daaed40feabdd58f">beam</a></div><div class="ttdeci">ProjectResult beam(player_type *target_ptr, MONSTER_IDX m_idx, POSITION y, POSITION x, EFFECT_ID typ, int dam_hp, int monspell, int target_type)</div><div class="ttdoc">モンスターのビーム型魔法処理 /</div><div class="ttdef"><b>Definition:</b> mspell-checker.cpp:216</div></div>
+<div class="ttc" id="amspell-checker_8h_html_ad5d369e023778ba5366512e0c388d512"><div class="ttname"><a href="mspell-checker_8h.html#ad5d369e023778ba5366512e0c388d512">spell_is_inate</a></div><div class="ttdeci">bool spell_is_inate(RF_ABILITY spell)</div><div class="ttdoc">ID値が非魔術的な特殊技能かどうかを返す / Return TRUE if a spell is inate spell.</div><div class="ttdef"><b>Definition:</b> mspell-checker.cpp:291</div></div>
+<div class="ttc" id="amspell-checker_8h_html_ad7f823f0d59ae8876db5e23cc77f8b46"><div class="ttname"><a href="mspell-checker_8h.html#ad7f823f0d59ae8876db5e23cc77f8b46">clean_shot</a></div><div class="ttdeci">bool clean_shot(player_type *target_ptr, POSITION y1, POSITION x1, POSITION y2, POSITION x2, bool is_friend)</div><div class="ttdoc">モンスターにとってボルト型魔法が有効な状態かを返す / Determine if a bolt spell will hit the player.</div><div class="ttdef"><b>Definition:</b> mspell-checker.cpp:144</div></div>
+<div class="ttc" id="amspell-checker_8h_html_ae10739c91db6102c1cbaa631acd622d9"><div class="ttname"><a href="mspell-checker_8h.html#ae10739c91db6102c1cbaa631acd622d9">raise_possible</a></div><div class="ttdeci">bool raise_possible(player_type *target_ptr, monster_type *m_ptr)</div><div class="ttdoc">モンスターにとって死者復活を行うべき状態かどうかを返す / Determine if there is a space near the player in which a summoned creat...</div><div class="ttdef"><b>Definition:</b> mspell-checker.cpp:93</div></div>
+<div class="ttc" id="arace-ability-flags_8h_html_acbcf656bb21b1f961b30ca0f24fcb5aa"><div class="ttname"><a href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a></div><div class="ttdeci">RF_ABILITY</div><div class="ttdef"><b>Definition:</b> race-ability-flags.h:3</div></div>
+<div class="ttc" id="astruct_project_result_html"><div class="ttname"><a href="struct_project_result.html">ProjectResult</a></div><div class="ttdoc">project() の結果。</div><div class="ttdef"><b>Definition:</b> effect-processor.h:6</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="atarget-types_8h_html_ac8519e4328195cadef4f848c21a6d8aa"><div class="ttname"><a href="target-types_8h.html#ac8519e4328195cadef4f848c21a6d8aa">target_type</a></div><div class="ttdeci">target_type</div><div class="ttdef"><b>Definition:</b> target-types.h:4</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

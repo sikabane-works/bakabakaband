@@ -1,0 +1,16 @@
+digraph "invest_curse_to_fixed_artifact"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="invest_curse_to_fixed\l_artifact",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="get_curse",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$object-curse_8cpp.html#a749ffeeeaa9633e0b6300253e4bc9730",tooltip="アイテムに付加される可能性のある呪いを指定する。"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="object_is_armour",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537",tooltip="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour"];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="object_is_weapon",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$hook-weapon_8cpp.html#a3c30f6f6fb14bece864e482c0080485c",tooltip="オブジェクトが武器として装備できるかどうかを返す / Check if an object is weapon (including bows and ammo)"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="FlagGroup::has",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97",tooltip="指定したフラグがONかOFFか調べる"];
+}

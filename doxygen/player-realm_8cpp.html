@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player/player-realm.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_975424cdae97a07db69e55371758444e.html">player</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">player-realm.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="player-realm_8h_source.html">player/player-realm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tval-types_8h_source.html">object/tval-types.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+player-realm.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-realm_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2player_2player-realm_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2player_2player-realm_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2player_2player-realm_8cpp">
+<area shape="rect" title=" " alt="" coords="515,5,703,61"/>
+<area shape="rect" href="player-realm_8h.html" title=" " alt="" coords="459,109,602,136"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="626,109,753,136"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="466,184,595,211"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="5,259,96,285"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="120,259,211,285"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="235,259,333,285"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="357,259,456,285"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="481,259,581,285"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="605,259,779,285"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="804,259,945,285"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="969,259,1116,285"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a11a8208a38771a1915bc63de183f561a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-realm_8cpp.html#a11a8208a38771a1915bc63de183f561a">get_realm1_book</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="separator:a11a8208a38771a1915bc63de183f561a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17a8cc91a8bf571f0d9ab86dfb238429"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-realm_8cpp.html#a17a8cc91a8bf571f0d9ab86dfb238429">get_realm2_book</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="separator:a17a8cc91a8bf571f0d9ab86dfb238429"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca735d2c754a04b4e011003532982c92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-realm_8cpp.html#aca735d2c754a04b4e011003532982c92">is_wizard_class</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="separator:aca735d2c754a04b4e011003532982c92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:afcf388d22075e5a84e0793fba9582eb6"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-realm_8cpp.html#afcf388d22075e5a84e0793fba9582eb6">realm_choices1</a> [<a class="el" href="player-classes-types_8h.html#addabd864452eb307e7fc8dcf6ea2fc72ac2b6af85e26de699ea41ae2565361e7b">MAX_CLASS</a>]</td></tr>
+<tr class="memdesc:afcf388d22075e5a84e0793fba9582eb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">職業毎に選択可能な第一領域魔法テーブル  <a href="player-realm_8cpp.html#afcf388d22075e5a84e0793fba9582eb6">[詳解]</a><br /></td></tr>
+<tr class="separator:afcf388d22075e5a84e0793fba9582eb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8516eff97df9e6f932253cf55411c369"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player-realm_8cpp.html#a8516eff97df9e6f932253cf55411c369">realm_choices2</a> [<a class="el" href="player-classes-types_8h.html#addabd864452eb307e7fc8dcf6ea2fc72ac2b6af85e26de699ea41ae2565361e7b">MAX_CLASS</a>]</td></tr>
+<tr class="memdesc:a8516eff97df9e6f932253cf55411c369"><td class="mdescLeft">&#160;</td><td class="mdescRight">職業毎に選択可能な第二領域魔法テーブル  <a href="player-realm_8cpp.html#a8516eff97df9e6f932253cf55411c369">[詳解]</a><br /></td></tr>
+<tr class="separator:a8516eff97df9e6f932253cf55411c369"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a11a8208a38771a1915bc63de183f561a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11a8208a38771a1915bc63de183f561a">&#9670;&nbsp;</a></span>get_realm1_book()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a> get_realm1_book </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-realm_8cpp_a11a8208a38771a1915bc63de183f561a_icgraph.png" border="0" usemap="#aplayer-realm_8cpp_a11a8208a38771a1915bc63de183f561a_icgraph" alt=""/></div>
+<map name="aplayer-realm_8cpp_a11a8208a38771a1915bc63de183f561a_icgraph" id="aplayer-realm_8cpp_a11a8208a38771a1915bc63de183f561a_icgraph">
+<area shape="rect" title=" " alt="" coords="1432,857,1553,884"/>
+<area shape="rect" href="autopick-entry_8cpp.html#a4f3f90481be8626c7f36c064d773d490" title=" " alt="" coords="1023,217,1162,258"/>
+<area shape="rect" href="object-info_8cpp.html#a6db41b634f18ba4fcb97bab7cfeac978" title="tval/sval指定のベースアイテムがプレイヤーの使用可能な魔法書かどうかを返す / Hack: Check if a spellbook is one of the realms we can us..." alt="" coords="1241,629,1371,656"/>
+<area shape="rect" href="autopick-matcher_8cpp.html#a24dad2a6a647be39be6b1d9aba964aad" title="床のアイテムが自動拾いに一致するかどうかを調べる関数だけを格納したファイル" alt="" coords="1027,136,1158,163"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="1039,1136,1146,1163"/>
+<area shape="rect" href="hook-magic_8cpp.html#a07a9755e9e8c7bf56ae3329105af480b" title="オブジェクトがプレイヤーが使用可能な魔道書かどうかを判定する" alt="" coords="1228,1085,1384,1112"/>
+<area shape="rect" href="object-sort_8cpp.html#a1f7d1d3dc80367de9cce22210773f986" title="オブジェクトのソート処理" alt="" coords="1243,1633,1369,1660"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="564,31,711,57"/>
+<area shape="rect" href="cmd-autopick_8cpp.html#a8dc56811ab6efa5123eec7f83eb4bb26" title=" " alt="" coords="351,579,503,605"/>
+<area shape="rect" href="autopick-entry_8cpp.html#a1354860469ab185d1b919a3d0d0cd1e1" title=" " alt="" coords="795,158,934,199"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f" title=" " alt="" coords="357,31,496,57"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#ab33f054c7b623777d0e9417255966aea" title="標準オプションを変更するコマンドのメインルーチン / Set or unset various options." alt="" coords="185,895,303,921"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,1060,137,1087"/>
+<area shape="rect" href="autopick-editor-command_8cpp.html#ac32821feb8173c8df9a544bcfac215e9" title="自動拾いエディタ画面でキーを押した時の挙動一式" alt="" coords="568,165,707,192"/>
+<area shape="rect" href="item-tester-hooker_8cpp.html#ac2523c2f0be8b9c8a2ecce14fd51887c" title="アイテムがitem_tester_hookグローバル関数ポインタの条件を満たしているかを返す汎用関数 Check an item against the item tester info" alt="" coords="1031,629,1154,656"/>
+<area shape="rect" href="player-status_8cpp.html#a13cc3308d8f0b0703dea0e4f5b00e248" title="プレイヤーが魔道書を一冊も持っていないかを判定する" alt="" coords="1005,1035,1180,1061"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a8108553a0b971c8d22ad18d214df8fb3" title="自動拾いの検索" alt="" coords="803,5,926,32"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a58a59a6c0789acd4d0fd87e349e49b5c" title=" " alt="" coords="803,107,927,133"/>
+<area shape="rect" href="player-inventory_8cpp.html#ae138184b543d773a1d458a4cd1490f68" title="規定の処理にできるアイテムがプレイヤーの利用可能範囲内にあるかどうかを返す / Determine whether get_item() can get some item or not" alt="" coords="587,971,687,997"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#aa47714778f93ac892303443de925356c" title="オブジェクト選択処理" alt="" coords="551,908,724,935"/>
+<area shape="rect" href="item-getter_8cpp.html#abd813d014143cbad86e3c3f41cd9e958" title="アイテムへにタグ付けがされているかの調査処理 (のはず)" alt="" coords="793,275,936,301"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#afe4440a2dd846286c0f1f33be0e0d4be" title="装備アイテム一覧を表示する / Choice window &quot;shadow&quot; of the &quot;show_equip()&quot; function" alt="" coords="799,325,930,352"/>
+<area shape="rect" href="display-inventory_8cpp.html#a30d21c4509ab13a7a4213ae59f23d0ef" title="所持アイテム一覧を表示する / Choice window &quot;shadow&quot; of the &quot;show_inven()&quot; function" alt="" coords="804,376,925,403"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="601,579,673,605"/>
+<area shape="rect" href="inventory-util_8cpp.html#ac56c08414553f69a101a859aa01220e3" title="プレイヤーの所持/装備オブジェクトが正規のものかを返す / Auxiliary function for &quot;get_item()&quot; – test an index" alt="" coords="811,528,918,555"/>
+<area shape="rect" href="inventory-util_8cpp.html#a6106140a69e84e316a7ee1172c62f4b6" title="所持/装備オブジェクトに選択タグを与える/タグに該当するオブジェクトがあるかを返す / Find the &quot;first&quot; inventory object with the given &quot;tag&quot;." alt="" coords="832,680,897,707"/>
+<area shape="rect" href="object-scanner_8cpp.html#a3880ccd016880c10b4d944e481f58d62" title="床に落ちているオブジェクトの数を返す / scan floor items" alt="" coords="805,933,925,960"/>
+<area shape="rect" href="display-inventory_8h.html#a8041341e081743592015db17430769dd" title="メインウィンドウの右上に装備アイテムの表示させる Display the equipment." alt="" coords="805,731,924,757"/>
+<area shape="rect" href="display-inventory_8cpp.html#a403a4e82e5b9baac453b37484b0974a8" title="所持アイテムの表示を行う / Display the inventory." alt="" coords="809,427,920,453"/>
+<area shape="rect" href="item-getter_8cpp.html#add9a7ed16f574346b91cf8019e78304b" title="装備品が妥当かを判定する" alt="" coords="809,579,920,605"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#a5ebb07fb6417e610bdca3bc32188b183" title="装備品がが妥当かを判定する" alt="" coords="793,781,936,808"/>
+<area shape="rect" href="item-getter_8cpp.html#ae132acedf2c0faba83006a85b747743d" title="インベントリ内のアイテムが妥当かを判定する" alt="" coords="813,629,916,656"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#af13524d656369e7a0267d5165b39781b" title="インベントリ内のアイテムが妥当かを判定する" alt="" coords="798,832,931,859"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="807,1085,923,1112"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="194,1035,294,1061"/>
+<area shape="rect" href="home_8cpp.html#a35633aa0841596b49a97a1c6d68e49f6" title=" " alt="" coords="1013,1760,1172,1787"/>
+<area shape="rect" href="home_8cpp.html#a78a5861d97d8ea903444c60c1e369227" title="我が家にオブジェクトを加える / Add the item &quot;o_ptr&quot; to the inventory of the &quot;Home&quot;" alt="" coords="592,1633,683,1660"/>
+<area shape="rect" href="store-loader_8cpp.html#adba1ee9ebcb27d685301d47a89b3022e" title="店置きのアイテムオブジェクトを読み込む / Add the item &quot;o_ptr&quot; to the inventory of the &quot;Home&quot;" alt="" coords="1032,1659,1153,1685"/>
+<area shape="rect" href="inventory-object_8cpp.html#a84c5146175e6a94ec4d2a31d0d8bef5d" title="プレイヤーの所持スロットに存在するオブジェクトを並び替える / Reorder items in the pack" alt="" coords="1044,1709,1141,1736"/>
+<area shape="rect" href="inventory-object_8cpp.html#a7d987f9b5f55d41d114975ba40e21c47" title="オブジェクトをプレイヤーが拾って所持スロットに納めるメインルーチン / Add an item to the players inventory, and return the slot used." alt="" coords="1013,1389,1172,1416"/>
+<area shape="rect" href="home_8cpp.html#a82bbbddc811a703f8b4c0973e77b2729" title="現在の町の指定された店舗のアイテムを整理する / Combine and reorder items in store." alt="" coords="772,1709,957,1736"/>
+<area shape="rect" href="store-loader_8cpp.html#a3b9fc1f66f3e655a84c7559f3e9062a7" title="店舗情報を読み込む / Read a store" alt="" coords="830,1659,899,1685"/>
+<area shape="rect" href="inventory-initializer_8cpp.html#afd93c067dfb17be0323012e0c06daab6" title="初期所持アイテムの処理 / Add an outfit object" alt="" coords="825,1187,904,1213"/>
+<area shape="rect" href="attack-chaos-effect_8cpp.html#aa422cba35675dfe3869ae37fc7cdf17d" title="ゴールデンハンマーによるアイテム奪取処理" alt="" coords="786,1237,943,1264"/>
+<area shape="rect" href="mind-archer_8cpp.html#a5c7ac014262f5236c69ea18c406fee25" title="「弾/矢の製造」処理 / do_cmd_cast calls this function if the player&#39;s class is &#39;archer&#39;." alt="" coords="814,1288,915,1315"/>
+<area shape="rect" href="player-inventory_8cpp.html#a870affd57aaed3be875c174410ecf5d3" title="プレイヤーがオブジェクトを拾った際のメッセージ表示処理 / Helper routine for py_pickup() and py_pickup_floor()." alt="" coords="791,1339,939,1365"/>
+<area shape="rect" href="mind-mage_8cpp.html#aa5ccfdbf3aa06956f929153e9aa24790" title="魔力喰い処理" alt="" coords="823,1389,906,1416"/>
+<area shape="rect" href="bounty_8cpp.html#a6aa3c9347a136a6ff64e84d0dd306057" title="賞金首の引き換え処理 / Get prize" alt="" coords="808,1440,921,1467"/>
+<area shape="rect" href="cmd-eat_8cpp.html#a248693114e2bf00ca753677fec3c34dc" title="魔法道具のチャージをの食料として食べたときの効果を発動" alt="" coords="778,1491,951,1533"/>
+<area shape="rect" href="cmd-usestaff_8cpp.html#a53af198ed4ce8898892ed6324862b5ad" title="杖を使うコマンドのサブルーチン / Use a staff." alt="" coords="813,1557,916,1584"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a17a8cc91a8bf571f0d9ab86dfb238429"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17a8cc91a8bf571f0d9ab86dfb238429">&#9670;&nbsp;</a></span>get_realm2_book()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a> get_realm2_book </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-realm_8cpp_a17a8cc91a8bf571f0d9ab86dfb238429_icgraph.png" border="0" usemap="#aplayer-realm_8cpp_a17a8cc91a8bf571f0d9ab86dfb238429_icgraph" alt=""/></div>
+<map name="aplayer-realm_8cpp_a17a8cc91a8bf571f0d9ab86dfb238429_icgraph" id="aplayer-realm_8cpp_a17a8cc91a8bf571f0d9ab86dfb238429_icgraph">
+<area shape="rect" title=" " alt="" coords="1432,1012,1553,1038"/>
+<area shape="rect" href="autopick-entry_8cpp.html#a4f3f90481be8626c7f36c064d773d490" title=" " alt="" coords="1023,92,1162,134"/>
+<area shape="rect" href="object-info_8cpp.html#a6db41b634f18ba4fcb97bab7cfeac978" title="tval/sval指定のベースアイテムがプレイヤーの使用可能な魔法書かどうかを返す / Hack: Check if a spellbook is one of the realms we can us..." alt="" coords="1241,606,1371,633"/>
+<area shape="rect" href="autopick-matcher_8cpp.html#a24dad2a6a647be39be6b1d9aba964aad" title="床のアイテムが自動拾いに一致するかどうかを調べる関数だけを格納したファイル" alt="" coords="1027,378,1158,405"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="815,1012,915,1038"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="1039,1113,1146,1140"/>
+<area shape="rect" href="hook-magic_8cpp.html#a07a9755e9e8c7bf56ae3329105af480b" title="オブジェクトがプレイヤーが使用可能な魔道書かどうかを判定する" alt="" coords="1228,1062,1384,1089"/>
+<area shape="rect" href="object-sort_8cpp.html#a1f7d1d3dc80367de9cce22210773f986" title="オブジェクトのソート処理" alt="" coords="1243,1534,1369,1561"/>
+<area shape="rect" href="autopick-registry_8cpp.html#a8c29ca7f447ca605994ac036a418acb2" title=" " alt="" coords="564,201,711,228"/>
+<area shape="rect" href="cmd-autopick_8cpp.html#a8dc56811ab6efa5123eec7f83eb4bb26" title=" " alt="" coords="351,150,503,177"/>
+<area shape="rect" href="autopick-entry_8cpp.html#a1354860469ab185d1b919a3d0d0cd1e1" title=" " alt="" coords="795,34,934,75"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f" title=" " alt="" coords="357,201,496,228"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#ab33f054c7b623777d0e9417255966aea" title="標準オプションを変更するコマンドのメインルーチン / Set or unset various options." alt="" coords="185,770,303,797"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,1037,137,1064"/>
+<area shape="rect" href="autopick-editor-command_8cpp.html#ac32821feb8173c8df9a544bcfac215e9" title="自動拾いエディタ画面でキーを押した時の挙動一式" alt="" coords="568,150,707,177"/>
+<area shape="rect" href="item-tester-hooker_8cpp.html#ac2523c2f0be8b9c8a2ecce14fd51887c" title="アイテムがitem_tester_hookグローバル関数ポインタの条件を満たしているかを返す汎用関数 Check an item against the item tester info" alt="" coords="1031,606,1154,633"/>
+<area shape="rect" href="player-status_8cpp.html#a13cc3308d8f0b0703dea0e4f5b00e248" title="プレイヤーが魔道書を一冊も持っていないかを判定する" alt="" coords="1005,961,1180,988"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a8108553a0b971c8d22ad18d214df8fb3" title="自動拾いの検索" alt="" coords="803,201,926,228"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a58a59a6c0789acd4d0fd87e349e49b5c" title=" " alt="" coords="803,150,927,177"/>
+<area shape="rect" href="player-inventory_8cpp.html#ae138184b543d773a1d458a4cd1490f68" title="規定の処理にできるアイテムがプレイヤーの利用可能範囲内にあるかどうかを返す / Determine whether get_item() can get some item or not" alt="" coords="587,314,687,341"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#aa47714778f93ac892303443de925356c" title="オブジェクト選択処理" alt="" coords="551,390,724,417"/>
+<area shape="rect" href="item-getter_8cpp.html#abd813d014143cbad86e3c3f41cd9e958" title="アイテムへにタグ付けがされているかの調査処理 (のはず)" alt="" coords="793,910,936,937"/>
+<area shape="rect" href="display-sub-windows_8cpp.html#afe4440a2dd846286c0f1f33be0e0d4be" title="装備アイテム一覧を表示する / Choice window &quot;shadow&quot; of the &quot;show_equip()&quot; function" alt="" coords="799,961,930,988"/>
+<area shape="rect" href="display-inventory_8cpp.html#a30d21c4509ab13a7a4213ae59f23d0ef" title="所持アイテム一覧を表示する / Choice window &quot;shadow&quot; of the &quot;show_inven()&quot; function" alt="" coords="804,252,925,278"/>
+<area shape="rect" href="item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="601,606,673,633"/>
+<area shape="rect" href="inventory-util_8cpp.html#ac56c08414553f69a101a859aa01220e3" title="プレイヤーの所持/装備オブジェクトが正規のものかを返す / Auxiliary function for &quot;get_item()&quot; – test an index" alt="" coords="811,556,918,582"/>
+<area shape="rect" href="inventory-util_8cpp.html#a6106140a69e84e316a7ee1172c62f4b6" title="所持/装備オブジェクトに選択タグを与える/タグに該当するオブジェクトがあるかを返す / Find the &quot;first&quot; inventory object with the given &quot;tag&quot;." alt="" coords="832,606,897,633"/>
+<area shape="rect" href="object-scanner_8cpp.html#a3880ccd016880c10b4d944e481f58d62" title="床に落ちているオブジェクトの数を返す / scan floor items" alt="" coords="805,353,925,380"/>
+<area shape="rect" href="display-inventory_8h.html#a8041341e081743592015db17430769dd" title="メインウィンドウの右上に装備アイテムの表示させる Display the equipment." alt="" coords="805,758,924,785"/>
+<area shape="rect" href="display-inventory_8cpp.html#a403a4e82e5b9baac453b37484b0974a8" title="所持アイテムの表示を行う / Display the inventory." alt="" coords="809,809,920,836"/>
+<area shape="rect" href="item-getter_8cpp.html#add9a7ed16f574346b91cf8019e78304b" title="装備品が妥当かを判定する" alt="" coords="809,860,920,886"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#a5ebb07fb6417e610bdca3bc32188b183" title="装備品がが妥当かを判定する" alt="" coords="793,657,936,684"/>
+<area shape="rect" href="item-getter_8cpp.html#ae132acedf2c0faba83006a85b747743d" title="インベントリ内のアイテムが妥当かを判定する" alt="" coords="813,454,916,481"/>
+<area shape="rect" href="floor-item-getter_8cpp.html#af13524d656369e7a0267d5165b39781b" title="インベントリ内のアイテムが妥当かを判定する" alt="" coords="798,708,931,734"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="807,1062,923,1089"/>
+<area shape="rect" href="home_8cpp.html#a35633aa0841596b49a97a1c6d68e49f6" title=" " alt="" coords="1013,1273,1172,1300"/>
+<area shape="rect" href="home_8cpp.html#a78a5861d97d8ea903444c60c1e369227" title="我が家にオブジェクトを加える / Add the item &quot;o_ptr&quot; to the inventory of the &quot;Home&quot;" alt="" coords="592,1425,683,1452"/>
+<area shape="rect" href="store-loader_8cpp.html#adba1ee9ebcb27d685301d47a89b3022e" title="店置きのアイテムオブジェクトを読み込む / Add the item &quot;o_ptr&quot; to the inventory of the &quot;Home&quot;" alt="" coords="1032,1686,1153,1713"/>
+<area shape="rect" href="inventory-object_8cpp.html#a84c5146175e6a94ec4d2a31d0d8bef5d" title="プレイヤーの所持スロットに存在するオブジェクトを並び替える / Reorder items in the pack" alt="" coords="1044,1737,1141,1764"/>
+<area shape="rect" href="inventory-object_8cpp.html#a7d987f9b5f55d41d114975ba40e21c47" title="オブジェクトをプレイヤーが拾って所持スロットに納めるメインルーチン / Add an item to the players inventory, and return the slot used." alt="" coords="1013,1433,1172,1460"/>
+<area shape="rect" href="home_8cpp.html#a82bbbddc811a703f8b4c0973e77b2729" title="現在の町の指定された店舗のアイテムを整理する / Combine and reorder items in store." alt="" coords="772,1164,957,1190"/>
+<area shape="rect" href="store-loader_8cpp.html#a3b9fc1f66f3e655a84c7559f3e9062a7" title="店舗情報を読み込む / Read a store" alt="" coords="830,1686,899,1713"/>
+<area shape="rect" href="inventory-initializer_8cpp.html#afd93c067dfb17be0323012e0c06daab6" title="初期所持アイテムの処理 / Add an outfit object" alt="" coords="825,1433,904,1460"/>
+<area shape="rect" href="attack-chaos-effect_8cpp.html#aa422cba35675dfe3869ae37fc7cdf17d" title="ゴールデンハンマーによるアイテム奪取処理" alt="" coords="786,1484,943,1510"/>
+<area shape="rect" href="mind-archer_8cpp.html#a5c7ac014262f5236c69ea18c406fee25" title="「弾/矢の製造」処理 / do_cmd_cast calls this function if the player&#39;s class is &#39;archer&#39;." alt="" coords="814,1534,915,1561"/>
+<area shape="rect" href="player-inventory_8cpp.html#a870affd57aaed3be875c174410ecf5d3" title="プレイヤーがオブジェクトを拾った際のメッセージ表示処理 / Helper routine for py_pickup() and py_pickup_floor()." alt="" coords="791,1585,939,1612"/>
+<area shape="rect" href="mind-mage_8cpp.html#aa5ccfdbf3aa06956f929153e9aa24790" title="魔力喰い処理" alt="" coords="823,1214,906,1241"/>
+<area shape="rect" href="bounty_8cpp.html#a6aa3c9347a136a6ff64e84d0dd306057" title="賞金首の引き換え処理 / Get prize" alt="" coords="808,1265,921,1292"/>
+<area shape="rect" href="cmd-eat_8cpp.html#a248693114e2bf00ca753677fec3c34dc" title="魔法道具のチャージをの食料として食べたときの効果を発動" alt="" coords="778,1316,951,1358"/>
+<area shape="rect" href="cmd-usestaff_8cpp.html#a53af198ed4ce8898892ed6324862b5ad" title="杖を使うコマンドのサブルーチン / Use a staff." alt="" coords="813,1382,916,1409"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aca735d2c754a04b4e011003532982c92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca735d2c754a04b4e011003532982c92">&#9670;&nbsp;</a></span>is_wizard_class()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> is_wizard_class </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="player-realm_8cpp_aca735d2c754a04b4e011003532982c92_icgraph.png" border="0" usemap="#aplayer-realm_8cpp_aca735d2c754a04b4e011003532982c92_icgraph" alt=""/></div>
+<map name="aplayer-realm_8cpp_aca735d2c754a04b4e011003532982c92_icgraph" id="aplayer-realm_8cpp_aca735d2c754a04b4e011003532982c92_icgraph">
+<area shape="rect" title=" " alt="" coords="1291,313,1405,340"/>
+<area shape="rect" href="cmd-diary_8cpp.html#a43fb57cb916100ff12c156b6a232c1c8" title="日記のタイトル表記と内容出力" alt="" coords="843,35,941,61"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="995,288,1107,315"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="989,389,1112,416"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="996,339,1105,365"/>
+<area shape="rect" href="mind-mage_8cpp.html#aa5ccfdbf3aa06956f929153e9aa24790" title="魔力喰い処理" alt="" coords="1160,440,1243,467"/>
+<area shape="rect" href="magic-item-recharger_8cpp.html#a9b2e285ff33f0ea5da68af05b3495d24" title="魔法効果の実装/ Spell code (part 3)" alt="" coords="1165,237,1237,264"/>
+<area shape="rect" href="cmd-diary_8cpp.html#aaf0ccc9b13b97fbe9af4a017265aa384" title="日記コマンド" alt="" coords="247,288,350,315"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,403,155,429"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,327,173,353"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="853,389,931,416"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="443,516,529,543"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="437,820,535,847"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="635,896,756,923"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="241,339,357,365"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="249,389,349,416"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="221,528,376,555"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="424,693,548,720"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="596,85,795,112"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="245,440,352,467"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="646,35,745,61"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="627,744,764,771"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="449,339,523,365"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="651,288,739,315"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="645,136,745,163"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="431,440,541,467"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="631,491,760,517"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="648,845,743,872"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="620,187,771,213"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="afcf388d22075e5a84e0793fba9582eb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcf388d22075e5a84e0793fba9582eb6">&#9670;&nbsp;</a></span>realm_choices1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> realm_choices1[<a class="el" href="player-classes-types_8h.html#addabd864452eb307e7fc8dcf6ea2fc72ac2b6af85e26de699ea41ae2565361e7b">MAX_CLASS</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>職業毎に選択可能な第一領域魔法テーブル </p>
+
+</div>
+</div>
+<a id="a8516eff97df9e6f932253cf55411c369"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8516eff97df9e6f932253cf55411c369">&#9670;&nbsp;</a></span>realm_choices2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> realm_choices2[<a class="el" href="player-classes-types_8h.html#addabd864452eb307e7fc8dcf6ea2fc72ac2b6af85e26de699ea41ae2565361e7b">MAX_CLASS</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>職業毎に選択可能な第二領域魔法テーブル </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時56分02秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

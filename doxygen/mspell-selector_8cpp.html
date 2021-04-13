@@ -1,0 +1,989 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/mspell/mspell-selector.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d3503302c38a329207825687a87abf53.html">mspell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">mspell-selector.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="mspell-selector_8h_source.html">mspell/mspell-selector.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="geometry_8h_source.html">floor/geometry.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags2_8h_source.html">monster-race/race-flags2.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-indice-types_8h_source.html">monster-race/race-indice-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status_8h_source.html">monster/monster-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mspell-attack-util_8h_source.html">mspell/mspell-attack-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mspell-judgement_8h_source.html">mspell/mspell-judgement.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-type-definition_8h_source.html">system/monster-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+mspell-selector.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2mspell_2mspell-selector_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2mspell_2mspell-selector_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2mspell_2mspell-selector_8cpp">
+<area shape="rect" title=" " alt="" coords="786,5,974,61"/>
+<area shape="rect" href="mspell-selector_8h.html" title=" " alt="" coords="5,206,168,233"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="987,117,1101,143"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="213,199,358,240"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="1409,109,1559,151"/>
+<area shape="rect" href="race-flags2_8h.html" title=" " alt="" coords="597,117,773,143"/>
+<area shape="rect" href="race-indice-types_8h.html" title=" " alt="" coords="797,109,963,151"/>
+<area shape="rect" href="monster-status_8h.html" title=" " alt="" coords="200,117,371,143"/>
+<area shape="rect" href="mspell-attack-util_8h.html" title=" " alt="" coords="1687,199,1830,240"/>
+<area shape="rect" href="mspell-judgement_8h.html" title=" " alt="" coords="395,117,573,143"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1177,117,1365,143"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="879,206,977,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="863,385,993,411"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1205,467,1296,493"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="356,467,447,493"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="471,467,569,493"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="593,467,692,493"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="717,467,817,493"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="841,467,1015,493"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1040,467,1181,493"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1320,467,1467,493"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1393,541,1503,568"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="327,288,471,329"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="495,288,651,329"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="164,288,303,329"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="1431,199,1577,240"/>
+<area shape="rect" title=" " alt="" coords="1731,295,1787,322"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="1241,377,1401,419"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="1176,288,1336,329"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="1541,288,1707,329"/>
+<area shape="rect" title=" " alt="" coords="1361,295,1415,322"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1001,206,1180,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1205,206,1355,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:abfe3094f6a1c3d58bd3ab805b52ddaf0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-selector_8cpp.html#abfe3094f6a1c3d58bd3ab805b52ddaf0">spell_in_between</a> (<a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> spell, <a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> start, <a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> end)</td></tr>
+<tr class="memdesc:abfe3094f6a1c3d58bd3ab805b52ddaf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターが詠唱する魔法を選択する処理  <a href="mspell-selector_8cpp.html#abfe3094f6a1c3d58bd3ab805b52ddaf0">[詳解]</a><br /></td></tr>
+<tr class="separator:abfe3094f6a1c3d58bd3ab805b52ddaf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f1ed1a2f6f8670d72964a7d46faed1c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-selector_8cpp.html#a2f1ed1a2f6f8670d72964a7d46faed1c">spell_attack</a> (<a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> spell)</td></tr>
+<tr class="memdesc:a2f1ed1a2f6f8670d72964a7d46faed1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID値が攻撃魔法のIDかどうかを返す / Return TRUE if a spell is good for hurting the player (directly).  <a href="mspell-selector_8cpp.html#a2f1ed1a2f6f8670d72964a7d46faed1c">[詳解]</a><br /></td></tr>
+<tr class="separator:a2f1ed1a2f6f8670d72964a7d46faed1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5770fc273d5bb7ab1a4d349eaab455a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-selector_8cpp.html#ac5770fc273d5bb7ab1a4d349eaab455a">spell_escape</a> (<a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> spell)</td></tr>
+<tr class="memdesc:ac5770fc273d5bb7ab1a4d349eaab455a"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID値が退避目的に適したモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for escaping.  <a href="mspell-selector_8cpp.html#ac5770fc273d5bb7ab1a4d349eaab455a">[詳解]</a><br /></td></tr>
+<tr class="separator:ac5770fc273d5bb7ab1a4d349eaab455a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf83736e867e377394493a13f5c1bd95"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-selector_8cpp.html#acf83736e867e377394493a13f5c1bd95">spell_annoy</a> (<a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> spell)</td></tr>
+<tr class="memdesc:acf83736e867e377394493a13f5c1bd95"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID値が妨害目的に適したモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for annoying the player.  <a href="mspell-selector_8cpp.html#acf83736e867e377394493a13f5c1bd95">[詳解]</a><br /></td></tr>
+<tr class="separator:acf83736e867e377394493a13f5c1bd95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9163de86c83e4257aa18045c03588ef"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-selector_8cpp.html#ad9163de86c83e4257aa18045c03588ef">spell_summon</a> (<a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> spell)</td></tr>
+<tr class="memdesc:ad9163de86c83e4257aa18045c03588ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID値が召喚型のモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for annoying the player.  <a href="mspell-selector_8cpp.html#ad9163de86c83e4257aa18045c03588ef">[詳解]</a><br /></td></tr>
+<tr class="separator:ad9163de86c83e4257aa18045c03588ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b2508a9ae89796b0dc5f29b5eb694cb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-selector_8cpp.html#a8b2508a9ae89796b0dc5f29b5eb694cb">spell_raise</a> (<a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> spell)</td></tr>
+<tr class="memdesc:a8b2508a9ae89796b0dc5f29b5eb694cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID値が死者復活処理かどうかを返す / Return TRUE if a spell is good for annoying the player.  <a href="mspell-selector_8cpp.html#a8b2508a9ae89796b0dc5f29b5eb694cb">[詳解]</a><br /></td></tr>
+<tr class="separator:a8b2508a9ae89796b0dc5f29b5eb694cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94d119465c9394ff5df5a4e95ce4407b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-selector_8cpp.html#a94d119465c9394ff5df5a4e95ce4407b">spell_tactic</a> (<a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> spell)</td></tr>
+<tr class="memdesc:a94d119465c9394ff5df5a4e95ce4407b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID値が戦術的なモンスター魔法IDかどうかを返す / Return TRUE if a spell is good in a tactical situation.  <a href="mspell-selector_8cpp.html#a94d119465c9394ff5df5a4e95ce4407b">[詳解]</a><br /></td></tr>
+<tr class="separator:a94d119465c9394ff5df5a4e95ce4407b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8092a265109a1b089c46a1bab34a20f0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-selector_8cpp.html#a8092a265109a1b089c46a1bab34a20f0">spell_invulner</a> (<a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> spell)</td></tr>
+<tr class="memdesc:a8092a265109a1b089c46a1bab34a20f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID値が無敵化するモンスター魔法IDかどうかを返す / Return TRUE if a spell makes invulnerable.  <a href="mspell-selector_8cpp.html#a8092a265109a1b089c46a1bab34a20f0">[詳解]</a><br /></td></tr>
+<tr class="separator:a8092a265109a1b089c46a1bab34a20f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1751b99fa6b43814a2e8a76074d03058"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-selector_8cpp.html#a1751b99fa6b43814a2e8a76074d03058">spell_haste</a> (<a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> spell)</td></tr>
+<tr class="memdesc:a1751b99fa6b43814a2e8a76074d03058"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID値が加速するモンスター魔法IDかどうかを返す / Return TRUE if a spell hastes.  <a href="mspell-selector_8cpp.html#a1751b99fa6b43814a2e8a76074d03058">[詳解]</a><br /></td></tr>
+<tr class="separator:a1751b99fa6b43814a2e8a76074d03058"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1773c02b32ec69e9b0e8e0a2a192524"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-selector_8cpp.html#af1773c02b32ec69e9b0e8e0a2a192524">spell_world</a> (<a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> spell)</td></tr>
+<tr class="memdesc:af1773c02b32ec69e9b0e8e0a2a192524"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID値が時間停止を行うモンスター魔法IDかどうかを返す / Return TRUE if a spell world.  <a href="mspell-selector_8cpp.html#af1773c02b32ec69e9b0e8e0a2a192524">[詳解]</a><br /></td></tr>
+<tr class="separator:af1773c02b32ec69e9b0e8e0a2a192524"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94ee709585dc5af65ab945f21d5a634c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-selector_8cpp.html#a94ee709585dc5af65ab945f21d5a634c">spell_special</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> spell)</td></tr>
+<tr class="memdesc:a94ee709585dc5af65ab945f21d5a634c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID値が特別効果のモンスター魔法IDかどうかを返す / Return TRUE if a spell special.  <a href="mspell-selector_8cpp.html#a94ee709585dc5af65ab945f21d5a634c">[詳解]</a><br /></td></tr>
+<tr class="separator:a94ee709585dc5af65ab945f21d5a634c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad716017fdb77d4bc128f93e1e3fd7fee"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-selector_8cpp.html#ad716017fdb77d4bc128f93e1e3fd7fee">spell_psy_spe</a> (<a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> spell)</td></tr>
+<tr class="memdesc:ad716017fdb77d4bc128f93e1e3fd7fee"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID値が光の剣のモンスター魔法IDかどうかを返す / Return TRUE if a spell psycho-spear.  <a href="mspell-selector_8cpp.html#ad716017fdb77d4bc128f93e1e3fd7fee">[詳解]</a><br /></td></tr>
+<tr class="separator:ad716017fdb77d4bc128f93e1e3fd7fee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23cd3e11073ffbf2f794a1248862bc4d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-selector_8cpp.html#a23cd3e11073ffbf2f794a1248862bc4d">spell_heal</a> (<a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> spell)</td></tr>
+<tr class="memdesc:a23cd3e11073ffbf2f794a1248862bc4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID値が治癒魔法かどうかを返す / Return TRUE if a spell is good for healing.  <a href="mspell-selector_8cpp.html#a23cd3e11073ffbf2f794a1248862bc4d">[詳解]</a><br /></td></tr>
+<tr class="separator:a23cd3e11073ffbf2f794a1248862bc4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecbf1ef11970f92c5416b4555eddb9d9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-selector_8cpp.html#aecbf1ef11970f92c5416b4555eddb9d9">spell_dispel</a> (<a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> spell)</td></tr>
+<tr class="memdesc:aecbf1ef11970f92c5416b4555eddb9d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID値が魔力消去かどうかを返す / Return TRUE if a spell is good for dispel.  <a href="mspell-selector_8cpp.html#aecbf1ef11970f92c5416b4555eddb9d9">[詳解]</a><br /></td></tr>
+<tr class="separator:aecbf1ef11970f92c5416b4555eddb9d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb0ef6e99d759307182658cc69324070"><td class="memItemLeft" align="right" valign="top"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070">choose_attack_spell</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, <a class="el" href="structmsa__type.html">msa_type</a> *msa_ptr)</td></tr>
+<tr class="memdesc:acb0ef6e99d759307182658cc69324070"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターの魔法選択ルーチン Have a monster choose a spell from a list of "useful" spells.  <a href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070">[詳解]</a><br /></td></tr>
+<tr class="separator:acb0ef6e99d759307182658cc69324070"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="acb0ef6e99d759307182658cc69324070"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb0ef6e99d759307182658cc69324070">&#9670;&nbsp;</a></span>choose_attack_spell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a> choose_attack_spell </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmsa__type.html">msa_type</a> *&#160;</td>
+          <td class="paramname"><em>msa_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターの魔法選択ルーチン Have a monster choose a spell from a list of "useful" spells. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">m_idx</td><td>モンスターの構造体配列ID </td></tr>
+    <tr><td class="paramname">spells</td><td>候補魔法IDをまとめた配列 </td></tr>
+    <tr><td class="paramname">num</td><td>spellsの長さ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>選択したモンスター魔法のID</dd></dl>
+<p>Note that this list does NOT include spells that will just hit<br  />
+ other monsters, and the list is restricted when the monster is<br  />
+ "desperate". Should that be the job of this function instead?<br  />
+<br  />
+ Stupid monsters will just pick a spell randomly. Smart monsters<br  />
+ will choose more "intelligently".<br  />
+<br  />
+ Use the helper functions above to put spells into categories.<br  />
+<br  />
+ This function may well be an efficiency bottleneck.<br  />
+ </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000099">todo:</a></b></dt><dd>長過ぎる。切り分けが必要 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_acb0ef6e99d759307182658cc69324070_cgraph.png" border="0" usemap="#amspell-selector_8cpp_acb0ef6e99d759307182658cc69324070_cgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_acb0ef6e99d759307182658cc69324070_cgraph" id="amspell-selector_8cpp_acb0ef6e99d759307182658cc69324070_cgraph">
+<area shape="rect" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="5,816,147,843"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#ae0ce63fe326ff866098e3cccee96749a" title="モンスターがプレイヤーに魔力消去を与えるべきかを判定するルーチン Check should monster cast dispel spell." alt="" coords="225,259,324,285"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="635,411,745,437"/>
+<area shape="rect" href="player-status_8cpp.html#af6be48df20384df551b88a2466d159fb" title=" " alt="" coords="447,5,518,32"/>
+<area shape="rect" href="monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="403,461,563,488"/>
+<area shape="rect" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="239,563,310,589"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="195,613,355,640"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acf83736e867e377394493a13f5c1bd95" title="ID値が妨害目的に適したモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for annoying the player." alt="" coords="229,664,320,691"/>
+<area shape="rect" href="mspell-selector_8cpp.html#a2f1ed1a2f6f8670d72964a7d46faed1c" title="ID値が攻撃魔法のIDかどうかを返す / Return TRUE if a spell is good for hurting the player (directly)." alt="" coords="229,715,321,741"/>
+<area shape="rect" href="mspell-selector_8cpp.html#aecbf1ef11970f92c5416b4555eddb9d9" title="ID値が魔力消去かどうかを返す / Return TRUE if a spell is good for dispel." alt="" coords="229,765,320,792"/>
+<area shape="rect" href="mspell-selector_8cpp.html#ac5770fc273d5bb7ab1a4d349eaab455a" title="ID値が退避目的に適したモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for escaping." alt="" coords="225,816,324,843"/>
+<area shape="rect" href="mspell-selector_8cpp.html#a1751b99fa6b43814a2e8a76074d03058" title="ID値が加速するモンスター魔法IDかどうかを返す / Return TRUE if a spell hastes." alt="" coords="231,867,319,893"/>
+<area shape="rect" href="mspell-selector_8cpp.html#a23cd3e11073ffbf2f794a1248862bc4d" title="ID値が治癒魔法かどうかを返す / Return TRUE if a spell is good for healing." alt="" coords="235,917,315,944"/>
+<area shape="rect" href="mspell-selector_8cpp.html#a8092a265109a1b089c46a1bab34a20f0" title="ID値が無敵化するモンスター魔法IDかどうかを返す / Return TRUE if a spell makes invulnerable." alt="" coords="225,968,324,995"/>
+<area shape="rect" href="mspell-selector_8cpp.html#ad716017fdb77d4bc128f93e1e3fd7fee" title="ID値が光の剣のモンスター魔法IDかどうかを返す / Return TRUE if a spell psycho&#45;spear." alt="" coords="222,1019,327,1045"/>
+<area shape="rect" href="mspell-selector_8cpp.html#a8b2508a9ae89796b0dc5f29b5eb694cb" title="ID値が死者復活処理かどうかを返す / Return TRUE if a spell is good for annoying the player." alt="" coords="233,1069,317,1096"/>
+<area shape="rect" href="mspell-selector_8cpp.html#a94ee709585dc5af65ab945f21d5a634c" title="ID値が特別効果のモンスター魔法IDかどうかを返す / Return TRUE if a spell special." alt="" coords="226,1120,323,1147"/>
+<area shape="rect" href="mspell-selector_8cpp.html#ad9163de86c83e4257aa18045c03588ef" title="ID値が召喚型のモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for annoying the player." alt="" coords="221,1171,328,1197"/>
+<area shape="rect" href="mspell-selector_8cpp.html#a94d119465c9394ff5df5a4e95ce4407b" title="ID値が戦術的なモンスター魔法IDかどうかを返す / Return TRUE if a spell is good in a tactical situation." alt="" coords="231,1221,319,1248"/>
+<area shape="rect" href="mspell-selector_8cpp.html#af1773c02b32ec69e9b0e8e0a2a192524" title="ID値が時間停止を行うモンスター魔法IDかどうかを返す / Return TRUE if a spell world." alt="" coords="231,1272,318,1299"/>
+<area shape="rect" href="class_flag_group.html#a57a928e50a2473024e69c349bcd62525" title="入力イテレータで指定した範囲のリストに含まれるフラグのいずれかがONかどうかを調べる" alt="" coords="405,411,561,437"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a1676b47cc24010b348bc26769fd4bae5" title=" " alt="" coords="419,259,546,285"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a1ef7b925805f17575d38db4d7ec565ef" title=" " alt="" coords="419,208,546,235"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a2ec20a346ee5ea8fb5c8d235ad0148cf" title=" " alt="" coords="419,309,546,336"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3c8e37ad1c2ecfdc389e4070fda2c1c0" title=" " alt="" coords="423,157,543,184"/>
+<area shape="rect" href="player-status_8cpp.html#a5dc31dcacd506df65ec4babd972ca7dd" title=" " alt="" coords="453,56,513,83"/>
+<area shape="rect" href="player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="637,56,743,83"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a85daa5cdfccd5b585e8ea0bb0f9899fa" title="装備による所定の特性フラグを得ているかを一括して取得する関数。" alt="" coords="611,259,769,285"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a815055951961d16fa1fba921b44354b2" title="元素領域とレベルの条件に見合うかチェックする" alt="" coords="623,208,757,235"/>
+<area shape="rect" href="mspell-selector_8cpp.html#abfe3094f6a1c3d58bd3ab805b52ddaf0" title="モンスターが詠唱する魔法を選択する処理" alt="" coords="422,715,543,741"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_acb0ef6e99d759307182658cc69324070_icgraph.png" border="0" usemap="#amspell-selector_8cpp_acb0ef6e99d759307182658cc69324070_icgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_acb0ef6e99d759307182658cc69324070_icgraph" id="amspell-selector_8cpp_acb0ef6e99d759307182658cc69324070_icgraph">
+<area shape="rect" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="573,5,715,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07678c1b2f94c0b485c95f76b3914c69" title=" " alt="" coords="411,5,525,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="184,5,363,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ab50ab49708e55a42a4caeb03490bdf93" title="モンスターの特殊技能メインルーチン / Creatures can cast spells, shoot missiles, and breathe." alt="" coords="5,5,136,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acf83736e867e377394493a13f5c1bd95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf83736e867e377394493a13f5c1bd95">&#9670;&nbsp;</a></span>spell_annoy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> spell_annoy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>spell</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ID値が妨害目的に適したモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for annoying the player. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spell</td><td>判定対象のID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>適した魔法のIDならばTRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_acf83736e867e377394493a13f5c1bd95_cgraph.png" border="0" usemap="#amspell-selector_8cpp_acf83736e867e377394493a13f5c1bd95_cgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_acf83736e867e377394493a13f5c1bd95_cgraph" id="amspell-selector_8cpp_acf83736e867e377394493a13f5c1bd95_cgraph">
+<area shape="rect" title="ID値が妨害目的に適したモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for annoying the player." alt="" coords="5,5,96,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#abfe3094f6a1c3d58bd3ab805b52ddaf0" title="モンスターが詠唱する魔法を選択する処理" alt="" coords="144,5,265,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_acf83736e867e377394493a13f5c1bd95_icgraph.png" border="0" usemap="#amspell-selector_8cpp_acf83736e867e377394493a13f5c1bd95_icgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_acf83736e867e377394493a13f5c1bd95_icgraph" id="amspell-selector_8cpp_acf83736e867e377394493a13f5c1bd95_icgraph">
+<area shape="rect" title="ID値が妨害目的に適したモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for annoying the player." alt="" coords="584,5,675,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="395,5,536,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07678c1b2f94c0b485c95f76b3914c69" title=" " alt="" coords="232,5,347,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="5,5,184,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2f1ed1a2f6f8670d72964a7d46faed1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f1ed1a2f6f8670d72964a7d46faed1c">&#9670;&nbsp;</a></span>spell_attack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> spell_attack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>spell</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ID値が攻撃魔法のIDかどうかを返す / Return TRUE if a spell is good for hurting the player (directly). </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spell</td><td>判定対象のID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>正しいIDならばTRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_a2f1ed1a2f6f8670d72964a7d46faed1c_cgraph.png" border="0" usemap="#amspell-selector_8cpp_a2f1ed1a2f6f8670d72964a7d46faed1c_cgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_a2f1ed1a2f6f8670d72964a7d46faed1c_cgraph" id="amspell-selector_8cpp_a2f1ed1a2f6f8670d72964a7d46faed1c_cgraph">
+<area shape="rect" title="ID値が攻撃魔法のIDかどうかを返す / Return TRUE if a spell is good for hurting the player (directly)." alt="" coords="5,5,97,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#abfe3094f6a1c3d58bd3ab805b52ddaf0" title="モンスターが詠唱する魔法を選択する処理" alt="" coords="145,5,267,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_a2f1ed1a2f6f8670d72964a7d46faed1c_icgraph.png" border="0" usemap="#amspell-selector_8cpp_a2f1ed1a2f6f8670d72964a7d46faed1c_icgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_a2f1ed1a2f6f8670d72964a7d46faed1c_icgraph" id="amspell-selector_8cpp_a2f1ed1a2f6f8670d72964a7d46faed1c_icgraph">
+<area shape="rect" title="ID値が攻撃魔法のIDかどうかを返す / Return TRUE if a spell is good for hurting the player (directly)." alt="" coords="584,5,676,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="395,5,536,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07678c1b2f94c0b485c95f76b3914c69" title=" " alt="" coords="232,5,347,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="5,5,184,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aecbf1ef11970f92c5416b4555eddb9d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecbf1ef11970f92c5416b4555eddb9d9">&#9670;&nbsp;</a></span>spell_dispel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> spell_dispel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>spell</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ID値が魔力消去かどうかを返す / Return TRUE if a spell is good for dispel. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spell</td><td>判定対象のID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>魔力消去のIDならばTRUEを返す。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_aecbf1ef11970f92c5416b4555eddb9d9_icgraph.png" border="0" usemap="#amspell-selector_8cpp_aecbf1ef11970f92c5416b4555eddb9d9_icgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_aecbf1ef11970f92c5416b4555eddb9d9_icgraph" id="amspell-selector_8cpp_aecbf1ef11970f92c5416b4555eddb9d9_icgraph">
+<area shape="rect" title="ID値が魔力消去かどうかを返す / Return TRUE if a spell is good for dispel." alt="" coords="584,5,675,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="395,5,536,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07678c1b2f94c0b485c95f76b3914c69" title=" " alt="" coords="232,5,347,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="5,5,184,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac5770fc273d5bb7ab1a4d349eaab455a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5770fc273d5bb7ab1a4d349eaab455a">&#9670;&nbsp;</a></span>spell_escape()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> spell_escape </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>spell</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ID値が退避目的に適したモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for escaping. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spell</td><td>判定対象のID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>適した魔法のIDならばTRUEを返す。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_ac5770fc273d5bb7ab1a4d349eaab455a_icgraph.png" border="0" usemap="#amspell-selector_8cpp_ac5770fc273d5bb7ab1a4d349eaab455a_icgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_ac5770fc273d5bb7ab1a4d349eaab455a_icgraph" id="amspell-selector_8cpp_ac5770fc273d5bb7ab1a4d349eaab455a_icgraph">
+<area shape="rect" title="ID値が退避目的に適したモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for escaping." alt="" coords="584,5,683,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="395,5,536,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07678c1b2f94c0b485c95f76b3914c69" title=" " alt="" coords="232,5,347,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="5,5,184,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1751b99fa6b43814a2e8a76074d03058"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1751b99fa6b43814a2e8a76074d03058">&#9670;&nbsp;</a></span>spell_haste()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> spell_haste </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>spell</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ID値が加速するモンスター魔法IDかどうかを返す / Return TRUE if a spell hastes. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spell</td><td>判定対象のID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>召喚型魔法のIDならばTRUEを返す。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_a1751b99fa6b43814a2e8a76074d03058_icgraph.png" border="0" usemap="#amspell-selector_8cpp_a1751b99fa6b43814a2e8a76074d03058_icgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_a1751b99fa6b43814a2e8a76074d03058_icgraph" id="amspell-selector_8cpp_a1751b99fa6b43814a2e8a76074d03058_icgraph">
+<area shape="rect" title="ID値が加速するモンスター魔法IDかどうかを返す / Return TRUE if a spell hastes." alt="" coords="584,5,672,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="395,5,536,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07678c1b2f94c0b485c95f76b3914c69" title=" " alt="" coords="232,5,347,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="5,5,184,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a23cd3e11073ffbf2f794a1248862bc4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23cd3e11073ffbf2f794a1248862bc4d">&#9670;&nbsp;</a></span>spell_heal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> spell_heal </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>spell</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ID値が治癒魔法かどうかを返す / Return TRUE if a spell is good for healing. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spell</td><td>判定対象のID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>治癒魔法のIDならばTRUEを返す。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_a23cd3e11073ffbf2f794a1248862bc4d_icgraph.png" border="0" usemap="#amspell-selector_8cpp_a23cd3e11073ffbf2f794a1248862bc4d_icgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_a23cd3e11073ffbf2f794a1248862bc4d_icgraph" id="amspell-selector_8cpp_a23cd3e11073ffbf2f794a1248862bc4d_icgraph">
+<area shape="rect" title="ID値が治癒魔法かどうかを返す / Return TRUE if a spell is good for healing." alt="" coords="584,5,664,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="395,5,536,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07678c1b2f94c0b485c95f76b3914c69" title=" " alt="" coords="232,5,347,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="5,5,184,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abfe3094f6a1c3d58bd3ab805b52ddaf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfe3094f6a1c3d58bd3ab805b52ddaf0">&#9670;&nbsp;</a></span>spell_in_between()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> spell_in_between </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>spell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>モンスターが詠唱する魔法を選択する処理 </p>
+<dl class="section date"><dt>日付</dt><dd>2020/07/23 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier</dd></dl>
+<p>ba-no-ru/rupa-toの特殊処理はここで実施</p>
+<p>指定したID値が指定した範囲内のIDかどうかを返す</p>
+<p>enum値に対して範囲で判定するのはあまり好ましくないが、歴史的経緯により仕方がない</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spell</td><td>判定対象のID </td></tr>
+    <tr><td class="paramname">start</td><td>範囲の開始ID </td></tr>
+    <tr><td class="paramname">end</td><td>範囲の終了ID(このIDも含む) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>IDが start &lt;= spell &lt;= end なら true、そうでなければ false </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_abfe3094f6a1c3d58bd3ab805b52ddaf0_icgraph.png" border="0" usemap="#amspell-selector_8cpp_abfe3094f6a1c3d58bd3ab805b52ddaf0_icgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_abfe3094f6a1c3d58bd3ab805b52ddaf0_icgraph" id="amspell-selector_8cpp_abfe3094f6a1c3d58bd3ab805b52ddaf0_icgraph">
+<area shape="rect" title="モンスターが詠唱する魔法を選択する処理" alt="" coords="512,56,633,83"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acf83736e867e377394493a13f5c1bd95" title="ID値が妨害目的に適したモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for annoying the player." alt="" coords="365,5,456,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#a2f1ed1a2f6f8670d72964a7d46faed1c" title="ID値が攻撃魔法のIDかどうかを返す / Return TRUE if a spell is good for hurting the player (directly)." alt="" coords="365,56,457,83"/>
+<area shape="rect" href="mspell-selector_8cpp.html#ad9163de86c83e4257aa18045c03588ef" title="ID値が召喚型のモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for annoying the player." alt="" coords="357,107,464,133"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="168,56,309,83"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07678c1b2f94c0b485c95f76b3914c69" title=" " alt="" coords="5,56,120,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8092a265109a1b089c46a1bab34a20f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8092a265109a1b089c46a1bab34a20f0">&#9670;&nbsp;</a></span>spell_invulner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> spell_invulner </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>spell</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ID値が無敵化するモンスター魔法IDかどうかを返す / Return TRUE if a spell makes invulnerable. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spell</td><td>判定対象のID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>召喚型魔法のIDならばTRUEを返す。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_a8092a265109a1b089c46a1bab34a20f0_icgraph.png" border="0" usemap="#amspell-selector_8cpp_a8092a265109a1b089c46a1bab34a20f0_icgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_a8092a265109a1b089c46a1bab34a20f0_icgraph" id="amspell-selector_8cpp_a8092a265109a1b089c46a1bab34a20f0_icgraph">
+<area shape="rect" title="ID値が無敵化するモンスター魔法IDかどうかを返す / Return TRUE if a spell makes invulnerable." alt="" coords="584,5,683,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="395,5,536,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07678c1b2f94c0b485c95f76b3914c69" title=" " alt="" coords="232,5,347,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="5,5,184,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad716017fdb77d4bc128f93e1e3fd7fee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad716017fdb77d4bc128f93e1e3fd7fee">&#9670;&nbsp;</a></span>spell_psy_spe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> spell_psy_spe </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>spell</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ID値が光の剣のモンスター魔法IDかどうかを返す / Return TRUE if a spell psycho-spear. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spell</td><td>判定対象のID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>光の剣のIDならばTRUEを返す。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_ad716017fdb77d4bc128f93e1e3fd7fee_icgraph.png" border="0" usemap="#amspell-selector_8cpp_ad716017fdb77d4bc128f93e1e3fd7fee_icgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_ad716017fdb77d4bc128f93e1e3fd7fee_icgraph" id="amspell-selector_8cpp_ad716017fdb77d4bc128f93e1e3fd7fee_icgraph">
+<area shape="rect" title="ID値が光の剣のモンスター魔法IDかどうかを返す / Return TRUE if a spell psycho&#45;spear." alt="" coords="584,5,689,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="395,5,536,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07678c1b2f94c0b485c95f76b3914c69" title=" " alt="" coords="232,5,347,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="5,5,184,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8b2508a9ae89796b0dc5f29b5eb694cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b2508a9ae89796b0dc5f29b5eb694cb">&#9670;&nbsp;</a></span>spell_raise()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> spell_raise </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>spell</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ID値が死者復活処理かどうかを返す / Return TRUE if a spell is good for annoying the player. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spell</td><td>判定対象のID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>死者復活の処理ならばTRUEを返す。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_a8b2508a9ae89796b0dc5f29b5eb694cb_icgraph.png" border="0" usemap="#amspell-selector_8cpp_a8b2508a9ae89796b0dc5f29b5eb694cb_icgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_a8b2508a9ae89796b0dc5f29b5eb694cb_icgraph" id="amspell-selector_8cpp_a8b2508a9ae89796b0dc5f29b5eb694cb_icgraph">
+<area shape="rect" title="ID値が死者復活処理かどうかを返す / Return TRUE if a spell is good for annoying the player." alt="" coords="584,5,668,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="395,5,536,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07678c1b2f94c0b485c95f76b3914c69" title=" " alt="" coords="232,5,347,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="5,5,184,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a94ee709585dc5af65ab945f21d5a634c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94ee709585dc5af65ab945f21d5a634c">&#9670;&nbsp;</a></span>spell_special()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> spell_special </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>spell</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ID値が特別効果のモンスター魔法IDかどうかを返す / Return TRUE if a spell special. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">spell</td><td>判定対象のID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>特別効果魔法のIDならばTRUEを返す。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_a94ee709585dc5af65ab945f21d5a634c_icgraph.png" border="0" usemap="#amspell-selector_8cpp_a94ee709585dc5af65ab945f21d5a634c_icgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_a94ee709585dc5af65ab945f21d5a634c_icgraph" id="amspell-selector_8cpp_a94ee709585dc5af65ab945f21d5a634c_icgraph">
+<area shape="rect" title="ID値が特別効果のモンスター魔法IDかどうかを返す / Return TRUE if a spell special." alt="" coords="584,5,681,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="395,5,536,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07678c1b2f94c0b485c95f76b3914c69" title=" " alt="" coords="232,5,347,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="5,5,184,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad9163de86c83e4257aa18045c03588ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9163de86c83e4257aa18045c03588ef">&#9670;&nbsp;</a></span>spell_summon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> spell_summon </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>spell</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ID値が召喚型のモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for annoying the player. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spell</td><td>判定対象のID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>召喚型魔法のIDならばTRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_ad9163de86c83e4257aa18045c03588ef_cgraph.png" border="0" usemap="#amspell-selector_8cpp_ad9163de86c83e4257aa18045c03588ef_cgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_ad9163de86c83e4257aa18045c03588ef_cgraph" id="amspell-selector_8cpp_ad9163de86c83e4257aa18045c03588ef_cgraph">
+<area shape="rect" title="ID値が召喚型のモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for annoying the player." alt="" coords="5,5,112,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#abfe3094f6a1c3d58bd3ab805b52ddaf0" title="モンスターが詠唱する魔法を選択する処理" alt="" coords="160,5,281,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_ad9163de86c83e4257aa18045c03588ef_icgraph.png" border="0" usemap="#amspell-selector_8cpp_ad9163de86c83e4257aa18045c03588ef_icgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_ad9163de86c83e4257aa18045c03588ef_icgraph" id="amspell-selector_8cpp_ad9163de86c83e4257aa18045c03588ef_icgraph">
+<area shape="rect" title="ID値が召喚型のモンスター魔法IDかどうかを返す / Return TRUE if a spell is good for annoying the player." alt="" coords="584,5,691,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="395,5,536,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07678c1b2f94c0b485c95f76b3914c69" title=" " alt="" coords="232,5,347,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="5,5,184,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a94d119465c9394ff5df5a4e95ce4407b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94d119465c9394ff5df5a4e95ce4407b">&#9670;&nbsp;</a></span>spell_tactic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> spell_tactic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>spell</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ID値が戦術的なモンスター魔法IDかどうかを返す / Return TRUE if a spell is good in a tactical situation. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spell</td><td>判定対象のID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>戦術的な魔法のIDならばTRUEを返す。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_a94d119465c9394ff5df5a4e95ce4407b_icgraph.png" border="0" usemap="#amspell-selector_8cpp_a94d119465c9394ff5df5a4e95ce4407b_icgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_a94d119465c9394ff5df5a4e95ce4407b_icgraph" id="amspell-selector_8cpp_a94d119465c9394ff5df5a4e95ce4407b_icgraph">
+<area shape="rect" title="ID値が戦術的なモンスター魔法IDかどうかを返す / Return TRUE if a spell is good in a tactical situation." alt="" coords="584,5,672,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="395,5,536,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07678c1b2f94c0b485c95f76b3914c69" title=" " alt="" coords="232,5,347,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="5,5,184,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af1773c02b32ec69e9b0e8e0a2a192524"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1773c02b32ec69e9b0e8e0a2a192524">&#9670;&nbsp;</a></span>spell_world()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> spell_world </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="race-ability-flags_8h.html#acbcf656bb21b1f961b30ca0f24fcb5aa">RF_ABILITY</a>&#160;</td>
+          <td class="paramname"><em>spell</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ID値が時間停止を行うモンスター魔法IDかどうかを返す / Return TRUE if a spell world. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spell</td><td>判定対象のID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>時間停止魔法のIDならばTRUEを返す。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mspell-selector_8cpp_af1773c02b32ec69e9b0e8e0a2a192524_icgraph.png" border="0" usemap="#amspell-selector_8cpp_af1773c02b32ec69e9b0e8e0a2a192524_icgraph" alt=""/></div>
+<map name="amspell-selector_8cpp_af1773c02b32ec69e9b0e8e0a2a192524_icgraph" id="amspell-selector_8cpp_af1773c02b32ec69e9b0e8e0a2a192524_icgraph">
+<area shape="rect" title="ID値が時間停止を行うモンスター魔法IDかどうかを返す / Return TRUE if a spell world." alt="" coords="584,5,671,32"/>
+<area shape="rect" href="mspell-selector_8cpp.html#acb0ef6e99d759307182658cc69324070" title="モンスターの魔法選択ルーチン Have a monster choose a spell from a list of &quot;useful&quot; spells." alt="" coords="395,5,536,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#a07678c1b2f94c0b485c95f76b3914c69" title=" " alt="" coords="232,5,347,32"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ae43a90a7ff356b379aa89e3756dbe764" title=" " alt="" coords="5,5,184,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時55分26秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

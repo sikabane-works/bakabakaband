@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player/player-personality.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_975424cdae97a07db69e55371758444e.html">player</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">player-personality.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="player-personality_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player-personalities-types_8h.html">player/player-personalities-types.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="structplayer__personality.html">    6</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structplayer__personality.html">player_personality</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structplayer__personality.html#a9d8a4a618c9752afd5b81aaa4bb6343f">    7</a></span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="structplayer__personality.html#a9d8a4a618c9752afd5b81aaa4bb6343f">title</a>;          <span class="comment">/* Type of personality */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifdef JP</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> E_title;        <span class="comment">/* 英語性格 */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structplayer__personality.html#a6642048e7ff0465aafef3ad82aaeaad8">   13</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__personality.html#a6642048e7ff0465aafef3ad82aaeaad8">a_adj</a>[6];      <span class="comment">/* ersonality stat bonuses */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structplayer__personality.html#a2a597eeb6ecc9c442243922c45ac6219">   15</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__personality.html#a2a597eeb6ecc9c442243922c45ac6219">a_dis</a>;         <span class="comment">/* personality disarming */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structplayer__personality.html#a05c44b475d670518981e245b23ce92f5">   16</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__personality.html#a05c44b475d670518981e245b23ce92f5">a_dev</a>;         <span class="comment">/* personality magic devices */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structplayer__personality.html#a0f7f534fdad57be96e9324a19c3f7427">   17</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__personality.html#a0f7f534fdad57be96e9324a19c3f7427">a_sav</a>;         <span class="comment">/* personality saving throw */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structplayer__personality.html#a75ff64b64212dff9aa471285dc10ffc7">   18</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__personality.html#a75ff64b64212dff9aa471285dc10ffc7">a_stl</a>;         <span class="comment">/* personality stealth */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structplayer__personality.html#a498c6171efbeb9adc5574df1a5cfc91d">   19</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__personality.html#a498c6171efbeb9adc5574df1a5cfc91d">a_srh</a>;         <span class="comment">/* personality search ability */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structplayer__personality.html#af5b13a314433c9c805b2883eac640323">   20</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__personality.html#af5b13a314433c9c805b2883eac640323">a_fos</a>;         <span class="comment">/* personality search frequency */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structplayer__personality.html#ab0442fb1f462241f17c997f784cb0650">   21</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__personality.html#ab0442fb1f462241f17c997f784cb0650">a_thn</a>;         <span class="comment">/* personality combat (normal) */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structplayer__personality.html#ad72716705384efe1093031020bd81632">   22</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__personality.html#ad72716705384efe1093031020bd81632">a_thb</a>;         <span class="comment">/* personality combat (shooting) */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structplayer__personality.html#a2a8b9b40ee5ec813352193faaca47228">   24</a></span>&#160;    <a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="structplayer__personality.html#a2a8b9b40ee5ec813352193faaca47228">a_mhp</a>;         <span class="comment">/* Race hit-dice modifier */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structplayer__personality.html#aadbec19db9fca7543c427e9d5c0cb3c7">   26</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__personality.html#aadbec19db9fca7543c427e9d5c0cb3c7">no</a>;            <span class="comment">/* の */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structplayer__personality.html#a17426565893424b917f1fb4927b6c99d">   27</a></span>&#160;    <span class="keywordtype">byte</span> <a class="code" href="structplayer__personality.html#a17426565893424b917f1fb4927b6c99d">sex</a>;           <span class="comment">/* seibetu seigen */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="player-personality_8h.html#acdffa9f5a152e0ff93e7e37e92b37e72">   28</a></span>&#160;} <a class="code" href="player-personality_8h.html#acdffa9f5a152e0ff93e7e37e92b37e72">player_personality</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structplayer__personality.html">player_personality</a> <a class="code" href="player-personality_8h.html#a86c2146a5feaa7e67609a072977648ff">personality_info</a>[<a class="code" href="player-personalities-types_8h.html#aad35620e3044139cb75675a050936863a5c2c22020c0ff9c60523ee43a902bc9f">MAX_PERSONALITIES</a>];</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structplayer__personality.html">player_personality</a> *<a class="code" href="player-personality_8h.html#afdd548d1a983a387fdb7c8214545ce20">ap_ptr</a>;</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="aplayer-personalities-types_8h_html"><div class="ttname"><a href="player-personalities-types_8h.html">player-personalities-types.h</a></div></div>
+<div class="ttc" id="aplayer-personalities-types_8h_html_aad35620e3044139cb75675a050936863a5c2c22020c0ff9c60523ee43a902bc9f"><div class="ttname"><a href="player-personalities-types_8h.html#aad35620e3044139cb75675a050936863a5c2c22020c0ff9c60523ee43a902bc9f">MAX_PERSONALITIES</a></div><div class="ttdeci">@ MAX_PERSONALITIES</div><div class="ttdef"><b>Definition:</b> player-personalities-types.h:17</div></div>
+<div class="ttc" id="aplayer-personality_8h_html_a86c2146a5feaa7e67609a072977648ff"><div class="ttname"><a href="player-personality_8h.html#a86c2146a5feaa7e67609a072977648ff">personality_info</a></div><div class="ttdeci">const player_personality personality_info[MAX_PERSONALITIES]</div><div class="ttdoc">性格情報 / Player Character</div><div class="ttdef"><b>Definition:</b> player-personality.cpp:9</div></div>
+<div class="ttc" id="aplayer-personality_8h_html_acdffa9f5a152e0ff93e7e37e92b37e72"><div class="ttname"><a href="player-personality_8h.html#acdffa9f5a152e0ff93e7e37e92b37e72">player_personality</a></div><div class="ttdeci">struct player_personality player_personality</div></div>
+<div class="ttc" id="aplayer-personality_8h_html_afdd548d1a983a387fdb7c8214545ce20"><div class="ttname"><a href="player-personality_8h.html#afdd548d1a983a387fdb7c8214545ce20">ap_ptr</a></div><div class="ttdeci">const player_personality * ap_ptr</div><div class="ttdef"><b>Definition:</b> player-personality.cpp:143</div></div>
+<div class="ttc" id="astructplayer__personality_html"><div class="ttname"><a href="structplayer__personality.html">player_personality</a></div><div class="ttdef"><b>Definition:</b> player-personality.h:6</div></div>
+<div class="ttc" id="astructplayer__personality_html_a05c44b475d670518981e245b23ce92f5"><div class="ttname"><a href="structplayer__personality.html#a05c44b475d670518981e245b23ce92f5">player_personality::a_dev</a></div><div class="ttdeci">s16b a_dev</div><div class="ttdef"><b>Definition:</b> player-personality.h:16</div></div>
+<div class="ttc" id="astructplayer__personality_html_a0f7f534fdad57be96e9324a19c3f7427"><div class="ttname"><a href="structplayer__personality.html#a0f7f534fdad57be96e9324a19c3f7427">player_personality::a_sav</a></div><div class="ttdeci">s16b a_sav</div><div class="ttdef"><b>Definition:</b> player-personality.h:17</div></div>
+<div class="ttc" id="astructplayer__personality_html_a17426565893424b917f1fb4927b6c99d"><div class="ttname"><a href="structplayer__personality.html#a17426565893424b917f1fb4927b6c99d">player_personality::sex</a></div><div class="ttdeci">byte sex</div><div class="ttdef"><b>Definition:</b> player-personality.h:27</div></div>
+<div class="ttc" id="astructplayer__personality_html_a2a597eeb6ecc9c442243922c45ac6219"><div class="ttname"><a href="structplayer__personality.html#a2a597eeb6ecc9c442243922c45ac6219">player_personality::a_dis</a></div><div class="ttdeci">s16b a_dis</div><div class="ttdef"><b>Definition:</b> player-personality.h:15</div></div>
+<div class="ttc" id="astructplayer__personality_html_a2a8b9b40ee5ec813352193faaca47228"><div class="ttname"><a href="structplayer__personality.html#a2a8b9b40ee5ec813352193faaca47228">player_personality::a_mhp</a></div><div class="ttdeci">s16b a_mhp</div><div class="ttdef"><b>Definition:</b> player-personality.h:24</div></div>
+<div class="ttc" id="astructplayer__personality_html_a498c6171efbeb9adc5574df1a5cfc91d"><div class="ttname"><a href="structplayer__personality.html#a498c6171efbeb9adc5574df1a5cfc91d">player_personality::a_srh</a></div><div class="ttdeci">s16b a_srh</div><div class="ttdef"><b>Definition:</b> player-personality.h:19</div></div>
+<div class="ttc" id="astructplayer__personality_html_a6642048e7ff0465aafef3ad82aaeaad8"><div class="ttname"><a href="structplayer__personality.html#a6642048e7ff0465aafef3ad82aaeaad8">player_personality::a_adj</a></div><div class="ttdeci">s16b a_adj[6]</div><div class="ttdef"><b>Definition:</b> player-personality.h:13</div></div>
+<div class="ttc" id="astructplayer__personality_html_a75ff64b64212dff9aa471285dc10ffc7"><div class="ttname"><a href="structplayer__personality.html#a75ff64b64212dff9aa471285dc10ffc7">player_personality::a_stl</a></div><div class="ttdeci">s16b a_stl</div><div class="ttdef"><b>Definition:</b> player-personality.h:18</div></div>
+<div class="ttc" id="astructplayer__personality_html_a9d8a4a618c9752afd5b81aaa4bb6343f"><div class="ttname"><a href="structplayer__personality.html#a9d8a4a618c9752afd5b81aaa4bb6343f">player_personality::title</a></div><div class="ttdeci">concptr title</div><div class="ttdef"><b>Definition:</b> player-personality.h:7</div></div>
+<div class="ttc" id="astructplayer__personality_html_aadbec19db9fca7543c427e9d5c0cb3c7"><div class="ttname"><a href="structplayer__personality.html#aadbec19db9fca7543c427e9d5c0cb3c7">player_personality::no</a></div><div class="ttdeci">byte no</div><div class="ttdef"><b>Definition:</b> player-personality.h:26</div></div>
+<div class="ttc" id="astructplayer__personality_html_ab0442fb1f462241f17c997f784cb0650"><div class="ttname"><a href="structplayer__personality.html#ab0442fb1f462241f17c997f784cb0650">player_personality::a_thn</a></div><div class="ttdeci">s16b a_thn</div><div class="ttdef"><b>Definition:</b> player-personality.h:21</div></div>
+<div class="ttc" id="astructplayer__personality_html_ad72716705384efe1093031020bd81632"><div class="ttname"><a href="structplayer__personality.html#ad72716705384efe1093031020bd81632">player_personality::a_thb</a></div><div class="ttdeci">s16b a_thb</div><div class="ttdef"><b>Definition:</b> player-personality.h:22</div></div>
+<div class="ttc" id="astructplayer__personality_html_af5b13a314433c9c805b2883eac640323"><div class="ttname"><a href="structplayer__personality.html#af5b13a314433c9c805b2883eac640323">player_personality::a_fos</a></div><div class="ttdeci">s16b a_fos</div><div class="ttdef"><b>Definition:</b> player-personality.h:20</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

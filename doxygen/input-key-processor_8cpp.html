@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/io/input-key-processor.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html">io</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">input-key-processor.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="input-key-processor_8h_source.html">io/input-key-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="autopick-pref-processor_8h_source.html">autopick/autopick-pref-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-hissatsu_8h_source.html">cmd-action/cmd-hissatsu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-mane_8h_source.html">cmd-action/cmd-mane.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-mind_8h_source.html">cmd-action/cmd-mind.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-move_8h_source.html">cmd-action/cmd-move.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-open-close_8h_source.html">cmd-action/cmd-open-close.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-others_8h_source.html">cmd-action/cmd-others.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-pet_8h_source.html">cmd-action/cmd-pet.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-racial_8h_source.html">cmd-action/cmd-racial.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-shoot_8h_source.html">cmd-action/cmd-shoot.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-spell_8h_source.html">cmd-action/cmd-spell.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-travel_8h_source.html">cmd-action/cmd-travel.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-tunnel_8h_source.html">cmd-action/cmd-tunnel.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-building_8h_source.html">cmd-building/cmd-building.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-autopick_8h_source.html">cmd-io/cmd-autopick.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-diary_8h_source.html">cmd-io/cmd-diary.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-dump_8h_source.html">cmd-io/cmd-dump.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-floor_8h_source.html">cmd-io/cmd-floor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-gameoption_8h_source.html">cmd-io/cmd-gameoption.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-help_8h_source.html">cmd-io/cmd-help.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-knowledge_8h_source.html">cmd-io/cmd-knowledge.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-lore_8h_source.html">cmd-io/cmd-lore.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-macro_8h_source.html">cmd-io/cmd-macro.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-process-screen_8h_source.html">cmd-io/cmd-process-screen.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-save_8h_source.html">cmd-io/cmd-save.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-destroy_8h_source.html">cmd-item/cmd-destroy.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-eat_8h_source.html">cmd-item/cmd-eat.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-equipment_8h_source.html">cmd-item/cmd-equipment.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-item_8h_source.html">cmd-item/cmd-item.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-magiceat_8h_source.html">cmd-item/cmd-magiceat.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-quaff_8h_source.html">cmd-item/cmd-quaff.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-read_8h_source.html">cmd-item/cmd-read.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-refill_8h_source.html">cmd-item/cmd-refill.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-smith_8h_source.html">cmd-item/cmd-smith.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-throw_8h_source.html">cmd-item/cmd-throw.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-usestaff_8h_source.html">cmd-item/cmd-usestaff.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-zaprod_8h_source.html">cmd-item/cmd-zaprod.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-zapwand_8h_source.html">cmd-item/cmd-zapwand.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-draw_8h_source.html">cmd-visual/cmd-draw.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-map_8h_source.html">cmd-visual/cmd-map.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-visuals_8h_source.html">cmd-visual/cmd-visuals.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-redraw-types_8h_source.html">core/player-redraw-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-update-types_8h_source.html">core/player-update-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-internal-keys_8h_source.html">core/special-internal-keys.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon-flag-types_8h_source.html">dungeon/dungeon-flag-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon_8h_source.html">dungeon/dungeon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quest_8h_source.html">dungeon/quest.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="wild_8h_source.html">floor/wild.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="birth-options_8h_source.html">game-option/birth-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="disturbance-options_8h_source.html">game-option/disturbance-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="game-play-options_8h_source.html">game-option/game-play-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-options_8h_source.html">game-option/input-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="runtime-arguments_8h_source.html">game-option/runtime-arguments.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="random-art-info-dumper_8h_source.html">io-dump/random-art-info-dumper.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="record-play-movie_8h_source.html">io/record-play-movie.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="command-repeater_8h_source.html">io/command-repeater.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="files-util_8h_source.html">io/files-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-requester_8h_source.html">io/input-key-requester.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="write-diary_8h_source.html">io/write-diary.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="knowledge-autopick_8h_source.html">knowledge/knowledge-autopick.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="knowledge-quests_8h_source.html">knowledge/knowledge-quests.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-definitions-table_8h_source.html">main/sound-definitions-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mind-blue-mage_8h_source.html">mind/mind-blue-mage.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mind-elementalist_8h_source.html">mind/mind-elementalist.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mind-magic-eater_8h_source.html">mind/mind-magic-eater.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mind-sniper_8h_source.html">mind/mind-sniper.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="snipe-types_8h_source.html">mind/snipe-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="attack-defense-types_8h_source.html">player/attack-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-class_8h_source.html">player/player-class.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-defense-types_8h_source.html">player/special-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="action-setter_8h_source.html">status/action-setter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="home_8h_source.html">store/home.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-store_8h_source.html">store/cmd-store.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="store-util_8h_source.html">store/store-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-sub-windows_8h_source.html">window/display-sub-windows.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-wizard_8h_source.html">wizard/cmd-wizard.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a90bac3b9c386d417c39098c98871595f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-processor_8cpp.html#a90bac3b9c386d417c39098c98871595f">enter_wizard_mode</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="memdesc:a90bac3b9c386d417c39098c98871595f"><td class="mdescLeft">&#160;</td><td class="mdescRight">キー入力に応じてゲーム内コマンドを実行する  <a href="input-key-processor_8cpp.html#a90bac3b9c386d417c39098c98871595f">[詳解]</a><br /></td></tr>
+<tr class="separator:a90bac3b9c386d417c39098c98871595f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fbf83fada8559a5b40e87272e7537c7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-processor_8cpp.html#a2fbf83fada8559a5b40e87272e7537c7">enter_debug_mode</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="memdesc:a2fbf83fada8559a5b40e87272e7537c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">デバッグコマンドへの導入処理 / Verify use of "debug" commands  <a href="input-key-processor_8cpp.html#a2fbf83fada8559a5b40e87272e7537c7">[詳解]</a><br /></td></tr>
+<tr class="separator:a2fbf83fada8559a5b40e87272e7537c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0530e351f785b80cae24b34c9bcd0b6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e">process_command</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a0530e351f785b80cae24b34c9bcd0b6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give "Warning" on illegal commands.  <a href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e">[詳解]</a><br /></td></tr>
+<tr class="separator:a0530e351f785b80cae24b34c9bcd0b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a2fbf83fada8559a5b40e87272e7537c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fbf83fada8559a5b40e87272e7537c7">&#9670;&nbsp;</a></span>enter_debug_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> enter_debug_mode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>デバッグコマンドへの導入処理 / Verify use of "debug" commands </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>実際にデバッグコマンドへ移行したらTRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="input-key-processor_8cpp_a2fbf83fada8559a5b40e87272e7537c7_cgraph.png" border="0" usemap="#ainput-key-processor_8cpp_a2fbf83fada8559a5b40e87272e7537c7_cgraph" alt=""/></div>
+<map name="ainput-key-processor_8cpp_a2fbf83fada8559a5b40e87272e7537c7_cgraph" id="ainput-key-processor_8cpp_a2fbf83fada8559a5b40e87272e7537c7_cgraph">
+<area shape="rect" title="デバッグコマンドへの導入処理 / Verify use of &quot;debug&quot; commands" alt="" coords="5,477,137,504"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="185,233,297,260"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="704,335,783,361"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="200,528,283,555"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="544,132,656,159"/>
+<area shape="rect" href="world_8cpp.html#a3da5b82e6bb95498402f78c954a628d0" title="現在の日数、時刻を返す / Extract day, hour, min" alt="" coords="345,309,496,336"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="391,427,450,453"/>
+<area shape="rect" href="write-diary_8cpp.html#a9dd20d3a7be882e5dcb9d8ebd74539e0" title="Return suffix of ordinal number" alt="" coords="353,361,488,402"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="368,5,473,32"/>
+<area shape="rect" href="write-diary_8cpp.html#a721a3148877a6d0a8936a10842591e2c" title="日記ファイルを開く" alt="" coords="367,259,475,285"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="361,208,481,235"/>
+<area shape="rect" href="write-diary_8cpp.html#a0bc11216e7a5445c14b3c0df826641bf" title="ペットに関する日記を追加する" alt="" coords="366,107,475,133"/>
+<area shape="rect" href="write-diary_8cpp.html#af2cab656963fc78e9b465c77c6353382" title="フロア情報を日記に追加する" alt="" coords="381,56,461,83"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="569,427,631,453"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="545,284,655,311"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="555,335,645,361"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="559,233,641,260"/>
+<area shape="rect" href="quest_8cpp.html#a5b6b24bb1f79322d67d0cc51368d3ad3" title="新しく入ったダンジョンの階層に固定されている一般のクエストを探し出しIDを返す。 / Hack – Check if a level is a &quot;quest&quot; level" alt="" coords="548,56,652,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="input-key-processor_8cpp_a2fbf83fada8559a5b40e87272e7537c7_icgraph.png" border="0" usemap="#ainput-key-processor_8cpp_a2fbf83fada8559a5b40e87272e7537c7_icgraph" alt=""/></div>
+<map name="ainput-key-processor_8cpp_a2fbf83fada8559a5b40e87272e7537c7_icgraph" id="ainput-key-processor_8cpp_a2fbf83fada8559a5b40e87272e7537c7_icgraph">
+<area shape="rect" title="デバッグコマンドへの導入処理 / Verify use of &quot;debug&quot; commands" alt="" coords="516,5,648,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a90bac3b9c386d417c39098c98871595f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90bac3b9c386d417c39098c98871595f">&#9670;&nbsp;</a></span>enter_wizard_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> enter_wizard_mode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>キー入力に応じてゲーム内コマンドを実行する </p>
+<dl class="section date"><dt>日付</dt><dd>2020/05/10 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Hourier </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000048">todo:</a></b></dt><dd>Ctrl+C がShift+Q に認識されている。仕様の可能性も高いが要確認 </dd></dl>
+<p>&lt; @do_cmd_quest() がある。後で移設する. &lt; </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000049">todo:</a></b></dt><dd>相互依存している、後で何とかする. </dd></dl>
+<p>ウィザードモードへの導入処理 / Verify use of "wizard" mode </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>実際にウィザードモードへ移行したらTRUEを返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="input-key-processor_8cpp_a90bac3b9c386d417c39098c98871595f_cgraph.png" border="0" usemap="#ainput-key-processor_8cpp_a90bac3b9c386d417c39098c98871595f_cgraph" alt=""/></div>
+<map name="ainput-key-processor_8cpp_a90bac3b9c386d417c39098c98871595f_cgraph" id="ainput-key-processor_8cpp_a90bac3b9c386d417c39098c98871595f_cgraph">
+<area shape="rect" title="キー入力に応じてゲーム内コマンドを実行する" alt="" coords="5,477,140,504"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="188,233,300,260"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="707,335,785,361"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="203,528,285,555"/>
+<area shape="rect" href="angband-files_8cpp.html#a60e39b6af34eb94fb02e6b92499e503f" title=" " alt="" coords="547,132,659,159"/>
+<area shape="rect" href="world_8cpp.html#a3da5b82e6bb95498402f78c954a628d0" title="現在の日数、時刻を返す / Extract day, hour, min" alt="" coords="348,309,499,336"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="394,427,453,453"/>
+<area shape="rect" href="write-diary_8cpp.html#a9dd20d3a7be882e5dcb9d8ebd74539e0" title="Return suffix of ordinal number" alt="" coords="356,361,491,402"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="371,5,476,32"/>
+<area shape="rect" href="write-diary_8cpp.html#a721a3148877a6d0a8936a10842591e2c" title="日記ファイルを開く" alt="" coords="369,259,477,285"/>
+<area shape="rect" href="fixed-map-parser_8cpp.html#ab09a627b90b2283c71d0e697dfa9fe64" title="固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする" alt="" coords="363,208,483,235"/>
+<area shape="rect" href="write-diary_8cpp.html#a0bc11216e7a5445c14b3c0df826641bf" title="ペットに関する日記を追加する" alt="" coords="369,107,478,133"/>
+<area shape="rect" href="write-diary_8cpp.html#af2cab656963fc78e9b465c77c6353382" title="フロア情報を日記に追加する" alt="" coords="383,56,463,83"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="571,427,634,453"/>
+<area shape="rect" href="angband-files_8cpp.html#a260439804b04cf4df3e5e84ead313306" title=" " alt="" coords="548,284,657,311"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="557,335,648,361"/>
+<area shape="rect" href="angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="562,233,643,260"/>
+<area shape="rect" href="quest_8cpp.html#a5b6b24bb1f79322d67d0cc51368d3ad3" title="新しく入ったダンジョンの階層に固定されている一般のクエストを探し出しIDを返す。 / Hack – Check if a level is a &quot;quest&quot; level" alt="" coords="551,56,655,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="input-key-processor_8cpp_a90bac3b9c386d417c39098c98871595f_icgraph.png" border="0" usemap="#ainput-key-processor_8cpp_a90bac3b9c386d417c39098c98871595f_icgraph" alt=""/></div>
+<map name="ainput-key-processor_8cpp_a90bac3b9c386d417c39098c98871595f_icgraph" id="ainput-key-processor_8cpp_a90bac3b9c386d417c39098c98871595f_icgraph">
+<area shape="rect" title="キー入力に応じてゲーム内コマンドを実行する" alt="" coords="528,35,663,61"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="342,5,474,32"/>
+<area shape="rect" href="game-play_8cpp.html#af74af5879fc4070fb4521a11d99c9367" title=" " alt="" coords="336,57,480,98"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+<area shape="rect" href="game-play_8cpp.html#ad3af31cbaf6fef3c12d4e7cbd946d1d7" title=" " alt="" coords="178,64,287,91"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="25,64,110,91"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0530e351f785b80cae24b34c9bcd0b6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0530e351f785b80cae24b34c9bcd0b6e">&#9670;&nbsp;</a></span>process_command()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void process_command </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give "Warning" on illegal commands. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000050">todo:</a></b></dt><dd>Make some "blocks" </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="input-key-processor_8cpp_a0530e351f785b80cae24b34c9bcd0b6e_icgraph.png" border="0" usemap="#ainput-key-processor_8cpp_a0530e351f785b80cae24b34c9bcd0b6e_icgraph" alt=""/></div>
+<map name="ainput-key-processor_8cpp_a0530e351f785b80cae24b34c9bcd0b6e_icgraph" id="ainput-key-processor_8cpp_a0530e351f785b80cae24b34c9bcd0b6e_icgraph">
+<area shape="rect" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="520,5,652,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="361,5,472,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="189,5,313,32"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="5,5,141,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分30秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

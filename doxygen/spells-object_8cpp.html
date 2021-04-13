@@ -1,0 +1,1453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/spell/spells-object.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b288867d93d6ddd637031b6cda0e8b43.html">spell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">spells-object.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="spells-object_8h_source.html">spell/spells-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-redraw-types_8h_source.html">core/player-redraw-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-update-types_8h_source.html">core/player-update-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="window-redrawer_8h_source.html">core/window-redrawer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flavor-describer_8h_source.html">flavor/flavor-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-flavor-types_8h_source.html">flavor/object-flavor-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-object_8h_source.html">floor/floor-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="disturbance-options_8h_source.html">game-option/disturbance-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags1_8h_source.html">monster-race/race-flags1.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="apply-magic_8h_source.html">object-enchant/apply-magic.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-apply-magic_8h_source.html">object-enchant/item-apply-magic.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-feeling_8h_source.html">object-enchant/item-feeling.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-boost_8h_source.html">object-enchant/object-boost.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-ego_8h_source.html">object-enchant/object-ego.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-object-flags_8h_source.html">object-enchant/special-object-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="trc-types_8h_source.html">object-enchant/trc-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="trg-types_8h_source.html">object-enchant/trg-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-armor_8h_source.html">object-hook/hook-armor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-checker_8h_source.html">object-hook/hook-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-enchant_8h_source.html">object-hook/hook-enchant.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-weapon_8h_source.html">object-hook/hook-weapon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-tester-hooker_8h_source.html">object/item-tester-hooker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-use-flags_8h_source.html">object/item-use-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-generator_8h_source.html">object/object-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind-hook_8h_source.html">object/object-kind-hook.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind_8h_source.html">object/object-kind.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-perception_8h_source.html">perception/object-perception.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="avatar_8h_source.html">player-info/avatar.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-class_8h_source.html">player/player-class.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-damage_8h_source.html">player/player-damage.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="racial-android_8h_source.html">racial/racial-android.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-perception_8h_source.html">spell-kind/spells-perception.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bad-status-setter_8h_source.html">status/bad-status-setter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-other-types_8h_source.html">sv-definition/sv-other-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-scroll-types_8h_source.html">sv-definition/sv-scroll-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-weapon-types_8h_source.html">sv-definition/sv-weapon-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="artifact-type-definition_8h_source.html">system/artifact-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+spells-object.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2spell_2spells-object_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2spell_2spells-object_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2spell_2spells-object_8cpp">
+<area shape="rect" title=" " alt="" coords="3483,5,3671,61"/>
+<area shape="rect" href="spells-object_8h.html" title=" " alt="" coords="2263,206,2401,233"/>
+<area shape="rect" href="player-redraw-types_8h.html" title=" " alt="" coords="4096,109,4224,151"/>
+<area shape="rect" href="player-update-types_8h.html" title=" " alt="" coords="4249,109,4378,151"/>
+<area shape="rect" href="window-redrawer_8h.html" title=" " alt="" coords="1177,206,1335,233"/>
+<area shape="rect" href="flavor-describer_8h.html" title=" " alt="" coords="2087,206,2239,233"/>
+<area shape="rect" href="object-flavor-types_8h.html" title=" " alt="" coords="4403,109,4525,151"/>
+<area shape="rect" href="floor-object_8h.html" title=" " alt="" coords="4330,206,4454,233"/>
+<area shape="rect" href="disturbance-options_8h.html" title=" " alt="" coords="2425,199,2589,240"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="4549,109,4677,151"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="3009,109,3159,151"/>
+<area shape="rect" href="race-flags1_8h.html" title=" " alt="" coords="4701,117,4877,143"/>
+<area shape="rect" href="apply-magic_8h.html" title=" " alt="" coords="4015,199,4158,240"/>
+<area shape="rect" href="item-apply-magic_8h.html" title=" " alt="" coords="4901,109,5037,151"/>
+<area shape="rect" href="item-feeling_8h.html" title=" " alt="" coords="5061,109,5197,151"/>
+<area shape="rect" href="object-boost_8h.html" title=" " alt="" coords="5,199,152,240"/>
+<area shape="rect" href="object-ego_8h.html" title=" " alt="" coords="3504,109,3651,151"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="3521,199,3647,240"/>
+<area shape="rect" href="special-object-flags_8h.html" title=" " alt="" coords="5221,109,5373,151"/>
+<area shape="rect" href="trc-types_8h.html" title=" " alt="" coords="5398,109,5525,151"/>
+<area shape="rect" href="hook-armor_8h.html" title=" " alt="" coords="177,206,346,233"/>
+<area shape="rect" href="hook-checker_8h.html" title=" " alt="" coords="370,206,553,233"/>
+<area shape="rect" href="hook-enchant_8h.html" title=" " alt="" coords="577,206,759,233"/>
+<area shape="rect" href="hook-weapon_8h.html" title=" " alt="" coords="783,206,963,233"/>
+<area shape="rect" href="item-tester-hooker_8h.html" title=" " alt="" coords="2863,109,2985,151"/>
+<area shape="rect" href="item-use-flags_8h.html" title=" " alt="" coords="5549,117,5702,143"/>
+<area shape="rect" href="object-generator_8h.html" title=" " alt="" coords="988,206,1153,233"/>
+<area shape="rect" href="object-kind-hook_8h.html" title=" " alt="" coords="4182,199,4306,240"/>
+<area shape="rect" href="object-kind_8h.html" title=" " alt="" coords="3345,117,3479,143"/>
+<area shape="rect" href="object-perception_8h.html" title=" " alt="" coords="1359,206,1555,233"/>
+<area shape="rect" href="avatar_8h.html" title=" " alt="" coords="1580,206,1711,233"/>
+<area shape="rect" href="player-class_8h.html" title=" " alt="" coords="3726,117,3869,143"/>
+<area shape="rect" href="player-damage_8h.html" title=" " alt="" coords="1735,206,1892,233"/>
+<area shape="rect" href="racial-android_8h.html" title=" " alt="" coords="1917,206,2062,233"/>
+<area shape="rect" href="spells-perception_8h.html" title=" " alt="" coords="4478,206,4669,233"/>
+<area shape="rect" href="bad-status-setter_8h.html" title=" " alt="" coords="2613,206,2784,233"/>
+<area shape="rect" href="sv-other-types_8h.html" title=" " alt="" coords="5727,109,5865,151"/>
+<area shape="rect" href="sv-scroll-types_8h.html" title=" " alt="" coords="5890,109,6030,151"/>
+<area shape="rect" href="sv-weapon-types_8h.html" title=" " alt="" coords="6054,109,6207,151"/>
+<area shape="rect" href="artifact-type-definition_8h.html" title=" " alt="" coords="3183,109,3321,151"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="6231,117,6419,143"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="2484,117,2647,143"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="6443,117,6602,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="2671,117,2838,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="2634,288,2763,315"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="4181,288,4307,315"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="3011,199,3157,240"/>
+<area shape="rect" title=" " alt="" coords="3389,206,3445,233"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="3671,206,3838,233"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="3232,199,3365,240"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structamuse__type.html">amuse_type</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムに影響のある魔法の処理  <a href="structamuse__type.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:ae364423360562aa37e4e367d69d2d9dc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#ae364423360562aa37e4e367d69d2d9dc">AMS_NOTHING</a>&#160;&#160;&#160;0x00 /* No restriction */</td></tr>
+<tr class="separator:ae364423360562aa37e4e367d69d2d9dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81f9cd770b4aa4e759ba20f37f30470a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#a81f9cd770b4aa4e759ba20f37f30470a">AMS_NO_UNIQUE</a>&#160;&#160;&#160;0x01 /* Don't make the amusing object of uniques */</td></tr>
+<tr class="separator:a81f9cd770b4aa4e759ba20f37f30470a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad15e1f2ca066b20ea5ed3ecfe2147917"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#ad15e1f2ca066b20ea5ed3ecfe2147917">AMS_FIXED_ART</a>&#160;&#160;&#160;0x02 /* Make a fixed artifact based on the amusing object */</td></tr>
+<tr class="separator:ad15e1f2ca066b20ea5ed3ecfe2147917"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e34163883b00fc54c5d9f2834b706f1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#a0e34163883b00fc54c5d9f2834b706f1">AMS_MULTIPLE</a>&#160;&#160;&#160;0x04 /* Drop 1-3 objects for one type */</td></tr>
+<tr class="separator:a0e34163883b00fc54c5d9f2834b706f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38eea9eed46a0251e10bb4adb4724040"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#a38eea9eed46a0251e10bb4adb4724040">AMS_PILE</a>&#160;&#160;&#160;0x08 /* Drop 1-99 pile objects for one type */</td></tr>
+<tr class="separator:a38eea9eed46a0251e10bb4adb4724040"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:ab57eadbdf0c4a98fa5ed43800743e2e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#ab57eadbdf0c4a98fa5ed43800743e2e9">amusement</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1, int num, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> known)</td></tr>
+<tr class="memdesc:ab57eadbdf0c4a98fa5ed43800743e2e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">誰得ドロップを行う。  <a href="spells-object_8cpp.html#ab57eadbdf0c4a98fa5ed43800743e2e9">[詳解]</a><br /></td></tr>
+<tr class="separator:ab57eadbdf0c4a98fa5ed43800743e2e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b226fbb1bcb6ce60975a5cbe63e756f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#a7b226fbb1bcb6ce60975a5cbe63e756f">acquirement</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1, int num, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> great, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> special, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> known)</td></tr>
+<tr class="memdesc:a7b226fbb1bcb6ce60975a5cbe63e756f"><td class="mdescLeft">&#160;</td><td class="mdescRight">獲得ドロップを行う。 Scatter some "great" objects near the player  <a href="spells-object_8cpp.html#a7b226fbb1bcb6ce60975a5cbe63e756f">[詳解]</a><br /></td></tr>
+<tr class="separator:a7b226fbb1bcb6ce60975a5cbe63e756f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f9410ac86db260e30cb7ce26261aa4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#a6f9410ac86db260e30cb7ce26261aa4d">curse_armor</a> (<a class="el" href="structplayer__type.html">player_type</a> *owner_ptr)</td></tr>
+<tr class="memdesc:a6f9410ac86db260e30cb7ce26261aa4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">防具呪縛処理 / Curse the players armor  <a href="spells-object_8cpp.html#a6f9410ac86db260e30cb7ce26261aa4d">[詳解]</a><br /></td></tr>
+<tr class="separator:a6f9410ac86db260e30cb7ce26261aa4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f937c2e893cc421a808dded72fc4e39"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#a7f937c2e893cc421a808dded72fc4e39">curse_weapon_object</a> (<a class="el" href="structplayer__type.html">player_type</a> *owner_ptr, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> force, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:a7f937c2e893cc421a808dded72fc4e39"><td class="mdescLeft">&#160;</td><td class="mdescRight">武器呪縛処理 / Curse the players weapon  <a href="spells-object_8cpp.html#a7f937c2e893cc421a808dded72fc4e39">[詳解]</a><br /></td></tr>
+<tr class="separator:a7f937c2e893cc421a808dded72fc4e39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8432bfbd241e812d134667ebdfe6df68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#a8432bfbd241e812d134667ebdfe6df68">brand_bolts</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr)</td></tr>
+<tr class="memdesc:a8432bfbd241e812d134667ebdfe6df68"><td class="mdescLeft">&#160;</td><td class="mdescRight">ボルトのエゴ化処理(火炎エゴのみ) / Enchant some bolts  <a href="spells-object_8cpp.html#a8432bfbd241e812d134667ebdfe6df68">[詳解]</a><br /></td></tr>
+<tr class="separator:a8432bfbd241e812d134667ebdfe6df68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaefd631f619a96dbcd29521c0ae6d925"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#aaefd631f619a96dbcd29521c0ae6d925">perilous_secrets</a> (<a class="el" href="structplayer__type.html">player_type</a> *user_ptr)</td></tr>
+<tr class="memdesc:aaefd631f619a96dbcd29521c0ae6d925"><td class="mdescLeft">&#160;</td><td class="mdescRight">知識の石の発動を実行する / Do activation of the stone of lore.  <a href="spells-object_8cpp.html#aaefd631f619a96dbcd29521c0ae6d925">[詳解]</a><br /></td></tr>
+<tr class="separator:aaefd631f619a96dbcd29521c0ae6d925"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabc2fabcd9f358a34670b79c66341e67"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#aabc2fabcd9f358a34670b79c66341e67">break_curse</a> (<a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:aabc2fabcd9f358a34670b79c66341e67"><td class="mdescLeft">&#160;</td><td class="mdescRight">呪いの打ち破り処理 / Break the curse of an item  <a href="spells-object_8cpp.html#aabc2fabcd9f358a34670b79c66341e67">[詳解]</a><br /></td></tr>
+<tr class="separator:aabc2fabcd9f358a34670b79c66341e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9996ed8fe4b0182a32c3b30b4bd2911"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#ad9996ed8fe4b0182a32c3b30b4bd2911">enchant</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr, int n, int eflag)</td></tr>
+<tr class="memdesc:ad9996ed8fe4b0182a32c3b30b4bd2911"><td class="mdescLeft">&#160;</td><td class="mdescRight">装備修正強化処理 / Enchants a plus onto an item.  <a href="spells-object_8cpp.html#ad9996ed8fe4b0182a32c3b30b4bd2911">[詳解]</a><br /></td></tr>
+<tr class="separator:ad9996ed8fe4b0182a32c3b30b4bd2911"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac16ead42e822331e4ce782ea6b433891"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#ac16ead42e822331e4ce782ea6b433891">enchant_spell</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="h-type_8h.html#a47dfe4960088b41ad87a10ad5120f939">HIT_PROB</a> num_hit, <a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> num_dam, <a class="el" href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a> num_ac)</td></tr>
+<tr class="memdesc:ac16ead42e822331e4ce782ea6b433891"><td class="mdescLeft">&#160;</td><td class="mdescRight">装備修正強化処理のメインルーチン / Enchant an item (in the inventory or on the floor)  <a href="spells-object_8cpp.html#ac16ead42e822331e4ce782ea6b433891">[詳解]</a><br /></td></tr>
+<tr class="separator:ac16ead42e822331e4ce782ea6b433891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a606c388ae9ec39706af972b765edadbe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#a606c388ae9ec39706af972b765edadbe">brand_weapon</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, int brand_type)</td></tr>
+<tr class="memdesc:a606c388ae9ec39706af972b765edadbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">武器へのエゴ付加処理 / Brand the current weapon  <a href="spells-object_8cpp.html#a606c388ae9ec39706af972b765edadbe">[詳解]</a><br /></td></tr>
+<tr class="separator:a606c388ae9ec39706af972b765edadbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a160df014812e13dbc636e60ed6320754"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#a160df014812e13dbc636e60ed6320754">enchant_table</a> [16] = { 0, 10, 50, 100, 200, 300, 400, 500, 650, 800, 950, 987, 993, 995, 998, 1000 }</td></tr>
+<tr class="memdesc:a160df014812e13dbc636e60ed6320754"><td class="mdescLeft">&#160;</td><td class="mdescRight">装備強化処理の失敗率定数（千分率） / Used by the "enchant" function (chance of failure) (modified for Zangband, we need better stuff there...) &ndash; TY  <a href="spells-object_8cpp.html#a160df014812e13dbc636e60ed6320754">[詳解]</a><br /></td></tr>
+<tr class="separator:a160df014812e13dbc636e60ed6320754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab254a602f617275fb1ce8a479d8b593d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structamuse__type.html">amuse_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="spells-object_8cpp.html#ab254a602f617275fb1ce8a479d8b593d">amuse_info</a> []</td></tr>
+<tr class="separator:ab254a602f617275fb1ce8a479d8b593d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="ad15e1f2ca066b20ea5ed3ecfe2147917"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad15e1f2ca066b20ea5ed3ecfe2147917">&#9670;&nbsp;</a></span>AMS_FIXED_ART</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AMS_FIXED_ART&#160;&#160;&#160;0x02 /* Make a fixed artifact based on the amusing object */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e34163883b00fc54c5d9f2834b706f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e34163883b00fc54c5d9f2834b706f1">&#9670;&nbsp;</a></span>AMS_MULTIPLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AMS_MULTIPLE&#160;&#160;&#160;0x04 /* Drop 1-3 objects for one type */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a81f9cd770b4aa4e759ba20f37f30470a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81f9cd770b4aa4e759ba20f37f30470a">&#9670;&nbsp;</a></span>AMS_NO_UNIQUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AMS_NO_UNIQUE&#160;&#160;&#160;0x01 /* Don't make the amusing object of uniques */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae364423360562aa37e4e367d69d2d9dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae364423360562aa37e4e367d69d2d9dc">&#9670;&nbsp;</a></span>AMS_NOTHING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AMS_NOTHING&#160;&#160;&#160;0x00 /* No restriction */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a38eea9eed46a0251e10bb4adb4724040"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38eea9eed46a0251e10bb4adb4724040">&#9670;&nbsp;</a></span>AMS_PILE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AMS_PILE&#160;&#160;&#160;0x08 /* Drop 1-99 pile objects for one type */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a7b226fbb1bcb6ce60975a5cbe63e756f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b226fbb1bcb6ce60975a5cbe63e756f">&#9670;&nbsp;</a></span>acquirement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void acquirement </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>great</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>special</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>known</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>獲得ドロップを行う。 Scatter some "great" objects near the player </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">caster_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">y1</td><td>配置したいフロアのY座標 </td></tr>
+    <tr><td class="paramname">x1</td><td>配置したいフロアのX座標 </td></tr>
+    <tr><td class="paramname">num</td><td>獲得の処理回数 </td></tr>
+    <tr><td class="paramname">great</td><td>TRUEならば必ず高級品以上を落とす </td></tr>
+    <tr><td class="paramname">special</td><td>TRUEならば必ず特別品を落とす </td></tr>
+    <tr><td class="paramname">known</td><td>TRUEならばオブジェクトが必ず＊鑑定＊済になる </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_a7b226fbb1bcb6ce60975a5cbe63e756f_cgraph.png" border="0" usemap="#aspells-object_8cpp_a7b226fbb1bcb6ce60975a5cbe63e756f_cgraph" alt=""/></div>
+<map name="aspells-object_8cpp_a7b226fbb1bcb6ce60975a5cbe63e756f_cgraph" id="aspells-object_8cpp_a7b226fbb1bcb6ce60975a5cbe63e756f_cgraph">
+<area shape="rect" title="獲得ドロップを行う。 Scatter some &quot;great&quot; objects near the player" alt="" coords="5,1069,99,1096"/>
+<area shape="rect" href="floor-object_8cpp.html#a62c807ef0af547704f7d1f6b825abbe5" title="生成済のオブジェクトをフロアの所定の位置に落とす。 Let an object fall to the ground at or near a location." alt="" coords="157,1069,235,1096"/>
+<area shape="rect" href="object-perception_8cpp.html#a7d25977942886a0b3043ce3c468cf08c" title="オブジェクトを鑑定済にする / Known is true when the &quot;attributes&quot; of an object are &quot;known&quot;." alt="" coords="507,816,608,843"/>
+<area shape="rect" href="floor-object_8cpp.html#adbba66fa3bc17cfd4ebeff0ee923a304" title="生成階に応じたベースアイテムの生成を行う。 Attempt to make an object (normal or good/great)" alt="" coords="148,1120,244,1147"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f7ad5a9cb44932d39bbf0c31a37c946" title="オブジェクトを＊鑑定＊済にする / The player is now aware of the effects of the given object." alt="" coords="147,765,245,792"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="151,1171,241,1197"/>
+<area shape="rect" href="cave_8cpp.html#a414eb0dc404cc94635df4b0f3ad8590c" title=" " alt="" coords="298,1069,409,1096"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="300,436,407,463"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="701,867,820,893"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="313,1019,394,1045"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="318,1120,389,1147"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="308,1323,399,1349"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="518,1424,597,1451"/>
+<area shape="rect" href="grid_8cpp.html#acfe2dde219c27902b1cbd0e7b6d95357" title=" " alt="" coords="314,1272,393,1299"/>
+<area shape="rect" href="world-object_8cpp.html#aa2c112b391d5b74eb049474cac8d643b" title="グローバルオブジェクト配列から空きを取得する / Acquires and returns the index of a &quot;free&quot; object." alt="" coords="325,1373,382,1400"/>
+<area shape="rect" href="object-stack_8cpp.html#a4575bae0b59ee267d46732987a195aa8" title="両オブジェクトをスロットに重ね合わせる。 Allow one item to &quot;absorb&quot; another, assuming they are similar" alt="" coords="302,816,405,843"/>
+<area shape="rect" href="object-generator_8cpp.html#aa666d0b3f34f2bebf82e976361f59f1c" title="オブジェクトを複製する Wipe an object clean." alt="" coords="307,765,399,792"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="293,1221,413,1248"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="480,1323,635,1349"/>
+<area shape="rect" href="object-stack_8cpp.html#af0b5aa377553696b3185a0157d962260" title="両オブジェクトをスロットに重ねることができるかどうかを返す。 Determine if an item can absorb a second item." alt="" coords="302,1424,405,1451"/>
+<area shape="rect" href="cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="309,1525,397,1552"/>
+<area shape="rect" href="projection-path-calculator_8cpp.html#ae2538765ba16495d4c84617eceed2a06" title=" " alt="" coords="311,867,396,893"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="325,917,382,944"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="490,968,625,995"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="500,5,615,32"/>
+<area shape="rect" href="bow_8cpp.html#ac67fe672b98bb4c3ba89474dce007a50" title="射撃武器に対応する矢/弾薬のベースアイテムIDを返す /" alt="" coords="500,56,615,83"/>
+<area shape="rect" href="flavor-describer_8cpp.html#abffcf700f83741151f4d965b01800395" title=" " alt="" coords="489,107,625,133"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a779b5f26ab2e2c1e104583399787dcf1" title=" " alt="" coords="496,157,619,184"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a7ec17cfdde3219bd0e9dfe166181cc9d" title=" " alt="" coords="511,208,603,235"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a81194951a890007868ac1c4352750174" title=" " alt="" coords="486,765,629,792"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a6ad3608e29e2b55a612a9bece5987c6e" title=" " alt="" coords="502,259,613,285"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="483,309,632,336"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a040ee8534be2d36b2db2c511158488c0" title=" " alt="" coords="470,360,645,387"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a5f9a02ab4e1253b0cd2270b287b17bee" title="杖や光源等、寿命のあるアイテムの残り回数やターン表記" alt="" coords="490,411,625,437"/>
+<area shape="rect" href="flavor-describer_8cpp.html#af3b92a1eedcea38d55cb313d2ff7fbed" title=" " alt="" coords="482,461,633,488"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a487e2423615ea280fb3f3a339ae2980b" title=" " alt="" coords="509,512,606,539"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#ae75e4fc7cc754cbf43a5ef91d0e1d963" title=" " alt="" coords="482,563,633,589"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#acfcf21e14ba3017d1cc69e6fdff850e9" title="呪いの有無や割引率等を表示する" alt="" coords="461,613,653,640"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#a892d0257efeeabd5136e0e224ee0d757" title=" " alt="" coords="486,664,629,691"/>
+<area shape="rect" href="flavor-util_8cpp.html#ae0f69cdaef63ddd298c7fbe175bf8c21" title=" " alt="" coords="489,715,626,741"/>
+<area shape="rect" href="cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="513,1221,601,1248"/>
+<area shape="rect" href="player-status_8cpp.html#af6be48df20384df551b88a2466d159fb" title=" " alt="" coords="522,1272,593,1299"/>
+<area shape="rect" href="display-map_8cpp.html#a9be4d479cc04510dbea7b7c114c617f3" title="指定した座標の地形の表示属性を取得する / Extract the attr/char to display at the given (legal) map location" alt="" coords="520,1019,595,1045"/>
+<area shape="rect" href="main-window-util_8cpp.html#a34b1aa1feae2690664832deba004ef74" title=" " alt="" coords="510,1069,605,1096"/>
+<area shape="rect" href="screen-util_8cpp.html#a40da48b19968a0521c68cf9d0195b50c" title=" " alt="" coords="503,1120,612,1147"/>
+<area shape="rect" href="z-term_8cpp.html#a0d418957c1b2ef703fabda3056a96a3a" title=" " alt="" coords="488,1171,627,1197"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="524,1373,591,1400"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_a7b226fbb1bcb6ce60975a5cbe63e756f_icgraph.png" border="0" usemap="#aspells-object_8cpp_a7b226fbb1bcb6ce60975a5cbe63e756f_icgraph" alt=""/></div>
+<map name="aspells-object_8cpp_a7b226fbb1bcb6ce60975a5cbe63e756f_icgraph" id="aspells-object_8cpp_a7b226fbb1bcb6ce60975a5cbe63e756f_icgraph">
+<area shape="rect" title="獲得ドロップを行う。 Scatter some &quot;great&quot; objects near the player" alt="" coords="1064,306,1157,333"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="372,433,489,459"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="393,27,468,54"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="893,306,1016,333"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#af0e36a6c449994e02f7b9ec9153cc554" title="デバッグコマンドを選択する処理のメインルーチン / Ask for and parse a &quot;debug command&quot; The &quot;command_arg&quot; may have been set." alt="" coords="199,230,310,257"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,78,137,105"/>
+<area shape="rect" href="cmd-read_8cpp.html#a8a5fffa71d510f2bf92c8fc1ceaf7ded" title="プレイヤーの読むコマンド実装" alt="" coords="185,27,324,54"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="207,78,303,105"/>
+<area shape="rect" href="player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="719,255,845,282"/>
+<area shape="rect" href="racial-android_8cpp.html#a79575a6f85af0b14d59eff0efe003795" title=" " alt="" coords="543,179,665,206"/>
+<area shape="rect" href="shape-changer_8cpp.html#a7e5697a071fe31476a758edba5057d36" title=" " alt="" coords="556,230,652,257"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a9fdd31c5890d9344959c0857575f6016" title=" " alt="" coords="545,281,663,307"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="555,382,653,409"/>
+<area shape="rect" href="ring-of-power_8cpp.html#abdb24b285dfed48adee038ef51698d9a" title="『一つの指輪』の効果処理 / Hack – activate the ring of power" alt="" coords="539,78,669,105"/>
+<area shape="rect" href="experience_8cpp.html#a132a3c54bbf346604465a436da59ca26" title=" " alt="" coords="557,129,651,155"/>
+<area shape="rect" href="experience_8cpp.html#aa46ccb85f9aa6f7844eb67bd8eb28c7a" title=" " alt="" coords="567,433,641,459"/>
+<area shape="rect" href="experience_8cpp.html#a530d12101ed829b4f6ff94c9f9964cfd" title=" " alt="" coords="557,27,651,54"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a5a4d12b795975f60db883b928465c22f" title="プレイヤーの現能力値を調整する / Change various &quot;permanent&quot; player variables." alt="" coords="537,331,671,358"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab57eadbdf0c4a98fa5ed43800743e2e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab57eadbdf0c4a98fa5ed43800743e2e9">&#9670;&nbsp;</a></span>amusement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void amusement </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>known</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>誰得ドロップを行う。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">y1</td><td>配置したいフロアのY座標 </td></tr>
+    <tr><td class="paramname">x1</td><td>配置したいフロアのX座標 </td></tr>
+    <tr><td class="paramname">num</td><td>誰得の処理回数 </td></tr>
+    <tr><td class="paramname">known</td><td>TRUEならばオブジェクトが必ず＊鑑定＊済になる </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_ab57eadbdf0c4a98fa5ed43800743e2e9_cgraph.png" border="0" usemap="#aspells-object_8cpp_ab57eadbdf0c4a98fa5ed43800743e2e9_cgraph" alt=""/></div>
+<map name="aspells-object_8cpp_ab57eadbdf0c4a98fa5ed43800743e2e9_cgraph" id="aspells-object_8cpp_ab57eadbdf0c4a98fa5ed43800743e2e9_cgraph">
+<area shape="rect" title="誰得ドロップを行う。" alt="" coords="5,1371,96,1397"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="144,915,239,941"/>
+<area shape="rect" href="object-kind-hook_8cpp.html#a24f8a2426e4fc5128654ec26033312ab" title="tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the object_kind with the given tval and sval" alt="" coords="537,781,628,808"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f7ad5a9cb44932d39bbf0c31a37c946" title="オブジェクトを＊鑑定＊済にする / The player is now aware of the effects of the given object." alt="" coords="533,1421,632,1448"/>
+<area shape="rect" href="object-perception_8cpp.html#a7d25977942886a0b3043ce3c468cf08c" title="オブジェクトを鑑定済にする / Known is true when the &quot;attributes&quot; of an object are &quot;known&quot;." alt="" coords="532,1523,633,1549"/>
+<area shape="rect" href="floor-object_8cpp.html#a62c807ef0af547704f7d1f6b825abbe5" title="生成済のオブジェクトをフロアの所定の位置に落とす。 Let an object fall to the ground at or near a location." alt="" coords="152,1573,231,1600"/>
+<area shape="rect" href="object-generator_8cpp.html#a9d4bf7f51bf5056089190534c673d068" title="オブジェクト構造体にベースアイテムを作成する Prepare an object based on an object kind." alt="" coords="147,1371,236,1397"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="323,1421,413,1448"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#aa6bb6fee0c3e87b70fe7d71ac6b0a283" title="オブジェクトに指定した固定アーティファクトをオブジェクトに割り当てる。" alt="" coords="319,1016,417,1043"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="750,1059,861,1085"/>
+<area shape="rect" href="object-curse_8cpp.html#a749ffeeeaa9633e0b6300253e4bc9730" title="アイテムに付加される可能性のある呪いを指定する。" alt="" coords="766,941,845,968"/>
+<area shape="rect" href="object-ego_8cpp.html#ae52b9f92a7e5067ea20af2fbdc181485" title=" " alt="" coords="327,224,409,251"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="287,477,449,504"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="301,680,435,707"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="299,1269,437,1296"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="295,747,441,773"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a658f4e0b1d948165db84b32e9d11b5ff" title=" " alt="" coords="313,1117,423,1144"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#a1cadf1bc783aab1bd7044762e520cfbd" title="非INSTA_ART型の固定アーティファクトの生成を確率に応じて試行する。 Mega&#45;Hack – Attempt to create one of the &quot;Special Objects&quot;" alt="" coords="318,864,418,891"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="317,915,419,941"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="291,1472,445,1499"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#a366d2d0a6c3b91c22bd598d312b7e774" title="固定アーティファクトオブジェクトに追加能力/耐性を付加する" alt="" coords="510,934,655,975"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#ab1745b03a5b87acd3ab1822e6cccd853" title="固定アーティファクトオブジェクトに呪いフラグを付加する" alt="" coords="509,1051,656,1093"/>
+<area shape="rect" href="object-boost_8cpp.html#a8f91efd8221f822642748a831d76cde8" title="対象のオブジェクトにランダムな上位耐性を一つ付加する。/ Choose one random high resistance" alt="" coords="735,376,876,403"/>
+<area shape="rect" href="object-ego_8cpp.html#a9eefc5f11e04204df106d65490300efd" title=" " alt="" coords="516,107,649,149"/>
+<area shape="rect" href="object-ego_8cpp.html#a49336248c9f29791999fea5815dbe0eb" title=" " alt="" coords="521,528,644,555"/>
+<area shape="rect" href="object-ego_8cpp.html#ab380c73138c0ed4ac0741bad2ae5334b" title=" " alt="" coords="497,224,668,251"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="523,5,643,32"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="523,275,643,301"/>
+<area shape="rect" href="object-ego_8cpp.html#afea43c7036e61e39e7750e63465d335c" title="0 および負数に対応した randint1()" alt="" coords="526,56,639,83"/>
+<area shape="rect" href="object-boost_8cpp.html#a2d7dbf2cf7cd55f9c36f34b747293485" title="対象のオブジェクトに王者の指輪向けの上位耐性を一つ付加する。/ Choose one random high resistance" alt="" coords="716,199,895,225"/>
+<area shape="rect" href="object-boost_8cpp.html#a606621699d215b70e3bb550147e8e6da" title="オブジェクトにランダムな弱いESPを与える" alt="" coords="529,579,637,605"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="501,731,665,757"/>
+<area shape="rect" href="object-boost_8cpp.html#aac2a8bb6a1fc5c041b8f18f5660f3554" title="上質以上のオブジェクトに与えるための各種ボーナスを正規乱数も加えて算出する。 Help determine an &quot;enchantment bonus&quot; for an object." alt="" coords="545,629,620,656"/>
+<area shape="rect" href="object-boost_8cpp.html#a10830095266d73c5d3c07cb44576cf1e" title="対象のオブジェクトに弱いESPを一つ付加する。/ Choose one lower rank esp" alt="" coords="534,376,631,403"/>
+<area shape="rect" href="object-boost_8cpp.html#a36cf4f62bcad93e649af35c99d4e23cf" title="オブジェクトにランダムな強いESPを与える" alt="" coords="525,680,640,707"/>
+<area shape="rect" href="object-boost_8cpp.html#aebf400e29da27d5f9e627422526f4bb1" title="ドラゴン装備にランダムな耐性を与える" alt="" coords="533,427,633,453"/>
+<area shape="rect" href="object-ego_8cpp.html#ab2d834c8e6ce809dfce2c3a3fef269aa" title="アイテムのエゴをレア度の重みに合わせてランダムに選択する Choose random ego type" alt="" coords="523,832,642,859"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="943,1371,1021,1397"/>
+<area shape="rect" href="monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する" alt="" coords="531,1320,635,1347"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="760,1371,851,1397"/>
+<area shape="rect" href="monster-util_8cpp.html#ae37ebccef3dd7dacea088110d0388d49" title="モンスター生成テーブルの重み修正" alt="" coords="515,1219,651,1245"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#acdb2524187c8c89503ce0e2a9f1d03bf" title="モンスターが人形のベースにできるかを返す" alt="" coords="515,1269,651,1296"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_ab57eadbdf0c4a98fa5ed43800743e2e9_icgraph.png" border="0" usemap="#aspells-object_8cpp_ab57eadbdf0c4a98fa5ed43800743e2e9_icgraph" alt=""/></div>
+<map name="aspells-object_8cpp_ab57eadbdf0c4a98fa5ed43800743e2e9_icgraph" id="aspells-object_8cpp_ab57eadbdf0c4a98fa5ed43800743e2e9_icgraph">
+<area shape="rect" title="誰得ドロップを行う。" alt="" coords="495,31,585,57"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="372,31,447,57"/>
+<area shape="rect" href="cmd-read_8cpp.html#a8a5fffa71d510f2bf92c8fc1ceaf7ded" title="プレイヤーの読むコマンド実装" alt="" coords="185,5,324,32"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="207,56,303,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8432bfbd241e812d134667ebdfe6df68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8432bfbd241e812d134667ebdfe6df68">&#9670;&nbsp;</a></span>brand_bolts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void brand_bolts </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ボルトのエゴ化処理(火炎エゴのみ) / Enchant some bolts </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">caster_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_a8432bfbd241e812d134667ebdfe6df68_cgraph.png" border="0" usemap="#aspells-object_8cpp_a8432bfbd241e812d134667ebdfe6df68_cgraph" alt=""/></div>
+<map name="aspells-object_8cpp_a8432bfbd241e812d134667ebdfe6df68_cgraph" id="aspells-object_8cpp_a8432bfbd241e812d134667ebdfe6df68_cgraph">
+<area shape="rect" title="ボルトのエゴ化処理(火炎エゴのみ) / Enchant some bolts" alt="" coords="5,195,95,221"/>
+<area shape="rect" href="spells-object_8cpp.html#ad9996ed8fe4b0182a32c3b30b4bd2911" title="装備修正強化処理 / Enchants a plus onto an item." alt="" coords="169,195,237,221"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="502,5,581,32"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="481,68,601,95"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="481,195,601,221"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="490,271,593,297"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="178,347,227,373"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="143,397,263,424"/>
+<area shape="rect" href="spells-object_8cpp.html#aabc2fabcd9f358a34670b79c66341e67" title="呪いの打ち破り処理 / Break the curse of an item" alt="" coords="325,93,419,120"/>
+<area shape="rect" href="racial-android_8cpp.html#a79575a6f85af0b14d59eff0efe003795" title=" " alt="" coords="311,245,433,272"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_a8432bfbd241e812d134667ebdfe6df68_icgraph.png" border="0" usemap="#aspells-object_8cpp_a8432bfbd241e812d134667ebdfe6df68_icgraph" alt=""/></div>
+<map name="aspells-object_8cpp_a8432bfbd241e812d134667ebdfe6df68_icgraph" id="aspells-object_8cpp_a8432bfbd241e812d134667ebdfe6df68_icgraph">
+<area shape="rect" title="ボルトのエゴ化処理(火炎エゴのみ) / Enchant some bolts" alt="" coords="476,5,565,32"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="308,5,428,32"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="148,5,260,32"/>
+<area shape="rect" href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="5,5,100,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a606c388ae9ec39706af972b765edadbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a606c388ae9ec39706af972b765edadbe">&#9670;&nbsp;</a></span>brand_weapon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void brand_weapon </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>brand_type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>武器へのエゴ付加処理 / Brand the current weapon </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">caster_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">brand_type</td><td>エゴ化ID(e_info.txtとは連動していない) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_a606c388ae9ec39706af972b765edadbe_cgraph.png" border="0" usemap="#aspells-object_8cpp_a606c388ae9ec39706af972b765edadbe_cgraph" alt=""/></div>
+<map name="aspells-object_8cpp_a606c388ae9ec39706af972b765edadbe_cgraph" id="aspells-object_8cpp_a606c388ae9ec39706af972b765edadbe_cgraph">
+<area shape="rect" title="武器へのエゴ付加処理 / Brand the current weapon" alt="" coords="5,1157,111,1184"/>
+<area shape="rect" href="racial-android_8cpp.html#a79575a6f85af0b14d59eff0efe003795" title=" " alt="" coords="368,1208,491,1235"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="1181,347,1271,373"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1357,473,1436,500"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="1186,397,1266,424"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="964,296,1071,323"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="957,1183,1077,1209"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="966,1284,1069,1311"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="577,1512,697,1539"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="179,1259,285,1285"/>
+<area shape="rect" href="spells-object_8cpp.html#ad9996ed8fe4b0182a32c3b30b4bd2911" title="装備修正強化処理 / Enchants a plus onto an item." alt="" coords="198,1208,266,1235"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="207,1360,257,1387"/>
+<area shape="rect" href="object-boost_8cpp.html#aac2a8bb6a1fc5c041b8f18f5660f3554" title="上質以上のオブジェクトに与えるための各種ボーナスを正規乱数も加えて算出する。 Help determine an &quot;enchantment bonus&quot; for an object." alt="" coords="195,1411,269,1437"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a00ad5aac8cc8b32eff8498c7da83abf3" title="オブジェクトが強化可能な近接武器であるかを返す / Check if an object is melee weapon and allows enchantment" alt="" coords="159,1479,305,1521"/>
+<area shape="rect" href="player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="574,625,701,652"/>
+<area shape="rect" href="player-status_8cpp.html#a505fc5be2b6382dbcd3b279e2f2f2be5" title="プレイヤーが現在右手/左手に武器を持っているか判定する /" alt="" coords="949,1107,1085,1133"/>
+<area shape="rect" href="object-value-calc_8cpp.html#a50a71dd33434317049f92e1f4a3f18dd" title="オブジェクトのフラグ類から価格を算出する / Return the value of the flags the object has..." alt="" coords="793,1309,868,1336"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="940,1436,1095,1463"/>
+<area shape="rect" href="object-generator_8cpp.html#aa666d0b3f34f2bebf82e976361f59f1c" title="オブジェクトを複製する Wipe an object clean." alt="" coords="591,1157,683,1184"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a3abbd26c216ede60fb3c6e8d519cc7c6" title="オブジェクトが武器や矢弾として使用できるかを返す / Check if an object is weapon (including bows and ammo) Rare weapons/aromor..." alt="" coords="553,1208,721,1235"/>
+<area shape="rect" href="object-value_8cpp.html#a4b43c1e5db9d62cc85dce89c00b8ff3a" title="オブジェクトの真の価格を算出する / Return the value of the flags the object has..." alt="" coords="577,1411,698,1437"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="592,1259,683,1285"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a237b4b6ff1cb50402312e9b60c5c8a55" title=" " alt="" coords="952,448,1083,475"/>
+<area shape="rect" href="player-status_8cpp.html#aeff5a61381b15a0da6515408f33a5ce7" title="現在の修正後能力値を3～17及び18/xxx形式に変換する / Converts stat num into a six&#45;char (right justified) string" alt="" coords="795,853,866,880"/>
+<area shape="rect" href="base-status_8cpp.html#a343b4d5e7c5756f694b048c57ab043d0" title=" " alt="" coords="973,347,1062,373"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="961,727,1073,753"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="1197,727,1255,753"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="769,397,892,424"/>
+<area shape="rect" href="mutation-investor-remover_8cpp.html#a3f2ae6d11a1293d5aaba45657ea17e0a" title="プレイヤーに突然変異を与える" alt="" coords="966,549,1069,576"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="1181,600,1271,627"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="789,1005,872,1032"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="775,448,886,475"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="804,499,857,525"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="811,549,850,576"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="1180,651,1272,677"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="1179,879,1273,905"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="802,701,859,728"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a0e428cd41af0f842e9e73e48a7cfc77d" title="オブジェクトが近接武器として装備できるかを返す / Melee weapons" alt="" coords="1143,1335,1309,1361"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a9281e4b4b09f84281bc99f39699747db" title="オブジェクトが強化不能武器であるかを返す / Poison needle can not be enchanted" alt="" coords="353,1479,505,1521"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_a606c388ae9ec39706af972b765edadbe_icgraph.png" border="0" usemap="#aspells-object_8cpp_a606c388ae9ec39706af972b765edadbe_icgraph" alt=""/></div>
+<map name="aspells-object_8cpp_a606c388ae9ec39706af972b765edadbe_icgraph" id="aspells-object_8cpp_a606c388ae9ec39706af972b765edadbe_icgraph">
+<area shape="rect" title="武器へのエゴ付加処理 / Brand the current weapon" alt="" coords="884,474,989,501"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="719,322,831,349"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="723,373,826,399"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="713,423,836,450"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="713,474,836,501"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="720,525,829,551"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="718,575,831,602"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="719,626,830,653"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="588,474,665,501"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,81,274,107"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,449,281,475"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,525,501,551"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,271,121,298"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,145,113,171"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,575,518,602"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,651,293,678"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,727,540,754"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,347,117,374"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,778,490,805"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,677,509,703"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,221,269,247"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,271,485,298"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,829,491,855"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,145,286,171"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,119,505,146"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,474,488,501"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,879,516,906"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aabc2fabcd9f358a34670b79c66341e67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabc2fabcd9f358a34670b79c66341e67">&#9670;&nbsp;</a></span>break_curse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void break_curse </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>呪いの打ち破り処理 / Break the curse of an item </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o_ptr</td><td>呪い装備情報の参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_aabc2fabcd9f358a34670b79c66341e67_cgraph.png" border="0" usemap="#aspells-object_8cpp_aabc2fabcd9f358a34670b79c66341e67_cgraph" alt=""/></div>
+<map name="aspells-object_8cpp_aabc2fabcd9f358a34670b79c66341e67_cgraph" id="aspells-object_8cpp_aabc2fabcd9f358a34670b79c66341e67_cgraph">
+<area shape="rect" title="呪いの打ち破り処理 / Break the curse of an item" alt="" coords="5,309,99,336"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="167,284,246,311"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="147,335,267,361"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="323,56,425,83"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="333,259,415,285"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="516,309,603,336"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="515,360,603,387"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="315,157,433,184"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="327,411,421,437"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="506,5,613,32"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="534,56,585,83"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="538,157,581,184"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="533,208,586,235"/>
+<area shape="rect" href="display-messages_8cpp.html#a8647d1d8cbef5e4db465563838dd2b87" title=" " alt="" coords="481,259,637,285"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="685,132,768,159"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_aabc2fabcd9f358a34670b79c66341e67_icgraph.png" border="0" usemap="#aspells-object_8cpp_aabc2fabcd9f358a34670b79c66341e67_icgraph" alt=""/></div>
+<map name="aspells-object_8cpp_aabc2fabcd9f358a34670b79c66341e67_icgraph" id="aspells-object_8cpp_aabc2fabcd9f358a34670b79c66341e67_icgraph">
+<area shape="rect" title="呪いの打ち破り処理 / Break the curse of an item" alt="" coords="445,259,539,285"/>
+<area shape="rect" href="spells-object_8cpp.html#ad9996ed8fe4b0182a32c3b30b4bd2911" title="装備修正強化処理 / Enchants a plus onto an item." alt="" coords="329,259,397,285"/>
+<area shape="rect" href="spells-object_8cpp.html#a8432bfbd241e812d134667ebdfe6df68" title="ボルトのエゴ化処理(火炎エゴのみ) / Enchant some bolts" alt="" coords="184,81,273,108"/>
+<area shape="rect" href="spells-object_8cpp.html#a606c388ae9ec39706af972b765edadbe" title="武器へのエゴ付加処理 / Brand the current weapon" alt="" coords="176,208,281,235"/>
+<area shape="rect" href="building-enchanter_8cpp.html#a8a6a2b03080d33a6ad2753593b965f48" title="アイテムの強化を行う。 / Enchant item" alt="" coords="179,259,279,285"/>
+<area shape="rect" href="spells-object_8cpp.html#ac16ead42e822331e4ce782ea6b433891" title="装備修正強化処理のメインルーチン / Enchant an item (in the inventory or on the floor)" alt="" coords="177,309,280,336"/>
+<area shape="rect" href="spells-craft_8cpp.html#a74e833f8a77b66d14eeab2fc6a32988f" title="盾磨き処理 / pulish shield" alt="" coords="180,360,277,387"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="7,5,127,32"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="11,56,123,83"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="15,360,118,387"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="5,107,128,133"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="5,157,128,184"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="12,208,121,235"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="10,259,123,285"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="11,309,122,336"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6f9410ac86db260e30cb7ce26261aa4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f9410ac86db260e30cb7ce26261aa4d">&#9670;&nbsp;</a></span>curse_armor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> curse_armor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>owner_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>防具呪縛処理 / Curse the players armor </p>
+<dl class="section return"><dt>戻り値</dt><dd>何も持っていない場合を除き、常にTRUEを返す </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000141">todo:</a></b></dt><dd>元のreturnは間違っているが、修正後の↓文がどれくらい正しいかは要チェック </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_a6f9410ac86db260e30cb7ce26261aa4d_cgraph.png" border="0" usemap="#aspells-object_8cpp_a6f9410ac86db260e30cb7ce26261aa4d_cgraph" alt=""/></div>
+<map name="aspells-object_8cpp_a6f9410ac86db260e30cb7ce26261aa4d_cgraph" id="aspells-object_8cpp_a6f9410ac86db260e30cb7ce26261aa4d_cgraph">
+<area shape="rect" title="防具呪縛処理 / Curse the players armor" alt="" coords="5,368,100,395"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="161,5,241,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="148,705,255,732"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="743,259,863,285"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="156,1709,247,1736"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="321,335,435,361"/>
+<area shape="rect" href="bow_8cpp.html#ac67fe672b98bb4c3ba89474dce007a50" title="射撃武器に対応する矢/弾薬のベースアイテムIDを返す /" alt="" coords="321,385,435,412"/>
+<area shape="rect" href="flavor-describer_8cpp.html#abffcf700f83741151f4d965b01800395" title=" " alt="" coords="310,436,446,463"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a779b5f26ab2e2c1e104583399787dcf1" title=" " alt="" coords="317,487,439,513"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a7ec17cfdde3219bd0e9dfe166181cc9d" title=" " alt="" coords="332,1608,424,1635"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a81194951a890007868ac1c4352750174" title=" " alt="" coords="307,1288,449,1315"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a6ad3608e29e2b55a612a9bece5987c6e" title=" " alt="" coords="323,705,433,732"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="303,537,453,564"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a040ee8534be2d36b2db2c511158488c0" title=" " alt="" coords="510,1861,685,1888"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a5f9a02ab4e1253b0cd2270b287b17bee" title="杖や光源等、寿命のあるアイテムの残り回数やターン表記" alt="" coords="311,959,445,985"/>
+<area shape="rect" href="flavor-describer_8cpp.html#af3b92a1eedcea38d55cb313d2ff7fbed" title=" " alt="" coords="522,1557,673,1584"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a487e2423615ea280fb3f3a339ae2980b" title=" " alt="" coords="329,1380,427,1407"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#ae75e4fc7cc754cbf43a5ef91d0e1d963" title=" " alt="" coords="303,1136,453,1163"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#acfcf21e14ba3017d1cc69e6fdff850e9" title="呪いの有無や割引率等を表示する" alt="" coords="501,1136,693,1163"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#a892d0257efeeabd5136e0e224ee0d757" title=" " alt="" coords="307,233,449,260"/>
+<area shape="rect" href="flavor-util_8cpp.html#ae0f69cdaef63ddd298c7fbe175bf8c21" title=" " alt="" coords="309,284,447,311"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="537,157,657,184"/>
+<area shape="rect" href="object-perception_8cpp.html#a28c38c7965d53e8b20d1937245b8970b" title=" " alt="" coords="544,107,651,133"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="541,208,654,235"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a8726edfc05ad4884bd9643a4bd2e8eff" title=" " alt="" coords="513,1659,681,1685"/>
+<area shape="rect" href="flavor-util_8cpp.html#aa1378b4bd2a85f709f6f48dc4f48ecf3" title="対象文字配列に一文字だけをコピーする。" alt="" coords="745,1507,862,1533"/>
+<area shape="rect" href="flavor-util_8cpp.html#aba21c13bcaaf19811cb5d62824eaa1af" title="対象文字配列に符号なし整数値をコピーする。" alt="" coords="741,1263,865,1289"/>
+<area shape="rect" href="flavor-util_8cpp.html#a35ea10adb65931a256030363f956a413" title="対象文字配列に符号あり整数値をコピーする。" alt="" coords="747,1709,860,1736"/>
+<area shape="rect" href="mind-sniper_8cpp.html#a6fd6bafd31f45a4175f2a8907c7fc614" title="スナイパーの集中度によるダメージボーナスを加算する" alt="" coords="528,1390,667,1431"/>
+<area shape="rect" href="shoot_8cpp.html#afea7a69a70c8e57df24d1d6a4a0153df" title=" " alt="" coords="765,1608,842,1635"/>
+<area shape="rect" href="shoot_8cpp.html#aa0e832cf3b6da1a0193d110bf0a42be5" title="射撃時クリティカルによるダメージ期待値修正計算（重量依存部分） / critical happens at i / 10000" alt="" coords="523,1339,672,1365"/>
+<area shape="rect" href="flavor-describer_8cpp.html#ab90ef1eec6a73db724ce2db39327766e" title=" " alt="" coords="527,1237,668,1264"/>
+<area shape="rect" href="flavor-util_8cpp.html#a9afac279f6c93e8e8856f96113493a8b" title="対象文字配列に文字列をコピーする。" alt="" coords="746,908,861,935"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="744,701,863,728"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a0c1fa37fd59818ca44bbe11db43aa593" title="武器/防具/アクセサリアイテムにおける、耐性やスレイ等の表記" alt="" coords="528,731,667,757"/>
+<area shape="rect" href="named-item-describer_8cpp.html#ac7efc2d8a25fc2fd5af3db95e7f3d9b4" title=" " alt="" coords="526,614,669,655"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a876c4fc7dc88a1fa3f2b7d6707b10cf8" title=" " alt="" coords="511,832,684,859"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a4db5274e8c52834bc7bb6ef880b0d09d" title=" " alt="" coords="509,309,685,336"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a4998ed0656a32c2290f80b72b751512d" title=" " alt="" coords="518,259,677,285"/>
+<area shape="rect" href="named-item-describer_8cpp.html#acaa46c6c182761a488d16112c7b3545a" title="銘を表記する" alt="" coords="529,461,666,488"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="568,512,627,539"/>
+<area shape="rect" href="named-item-describer_8cpp.html#ada4725207c8415750227020605ee0076" title=" " alt="" coords="540,563,655,589"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="520,411,675,437"/>
+<area shape="rect" href="flavor-describer_8cpp.html#ab472c941c5eabc9b75ecad853d18a477" title=" " alt="" coords="523,984,672,1011"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a9fd7a9d6b99cb6897a0a2b7504bb11a4" title=" " alt="" coords="501,1085,693,1112"/>
+<area shape="rect" href="flavor-describer_8cpp.html#adf55bbfa245a2161ab57aedfbff6273c" title=" " alt="" coords="533,933,662,960"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a2cd340c5aebeeec3d46ba34be2543c15" title=" " alt="" coords="547,1709,647,1736"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a5a3e0e5f61ce04ba547d44482efec909" title=" " alt="" coords="547,1507,648,1533"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="339,1760,417,1787"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="345,1709,411,1736"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_a6f9410ac86db260e30cb7ce26261aa4d_icgraph.png" border="0" usemap="#aspells-object_8cpp_a6f9410ac86db260e30cb7ce26261aa4d_icgraph" alt=""/></div>
+<map name="aspells-object_8cpp_a6f9410ac86db260e30cb7ce26261aa4d_icgraph" id="aspells-object_8cpp_a6f9410ac86db260e30cb7ce26261aa4d_icgraph">
+<area shape="rect" title="防具呪縛処理 / Curse the players armor" alt="" coords="709,107,804,133"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="563,56,637,83"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="539,157,661,184"/>
+<area shape="rect" href="cmd-read_8cpp.html#a8a5fffa71d510f2bf92c8fc1ceaf7ded" title="プレイヤーの読むコマンド実装" alt="" coords="352,5,491,32"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="373,56,469,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="171,31,303,57"/>
+<area shape="rect" href="player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="358,335,485,361"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="5,183,123,209"/>
+<area shape="rect" href="racial-android_8cpp.html#a79575a6f85af0b14d59eff0efe003795" title=" " alt="" coords="176,309,299,336"/>
+<area shape="rect" href="shape-changer_8cpp.html#a7e5697a071fe31476a758edba5057d36" title=" " alt="" coords="189,360,285,387"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a9fdd31c5890d9344959c0857575f6016" title=" " alt="" coords="179,411,296,437"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="188,461,287,488"/>
+<area shape="rect" href="ring-of-power_8cpp.html#abdb24b285dfed48adee038ef51698d9a" title="『一つの指輪』の効果処理 / Hack – activate the ring of power" alt="" coords="173,512,302,539"/>
+<area shape="rect" href="experience_8cpp.html#a132a3c54bbf346604465a436da59ca26" title=" " alt="" coords="190,208,285,235"/>
+<area shape="rect" href="experience_8cpp.html#aa46ccb85f9aa6f7844eb67bd8eb28c7a" title=" " alt="" coords="200,563,275,589"/>
+<area shape="rect" href="experience_8cpp.html#a530d12101ed829b4f6ff94c9f9964cfd" title=" " alt="" coords="190,157,285,184"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a5a4d12b795975f60db883b928465c22f" title="プレイヤーの現能力値を調整する / Change various &quot;permanent&quot; player variables." alt="" coords="171,259,304,285"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7f937c2e893cc421a808dded72fc4e39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f937c2e893cc421a808dded72fc4e39">&#9670;&nbsp;</a></span>curse_weapon_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> curse_weapon_object </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>owner_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>force</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>武器呪縛処理 / Curse the players weapon </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">owner_ptr</td><td>所持者の参照ポインタ </td></tr>
+    <tr><td class="paramname">force</td><td>無条件に呪縛を行うならばTRUE </td></tr>
+    <tr><td class="paramname">o_ptr</td><td>呪縛する武器のアイテム情報参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>何も持っていない場合を除き、常にTRUEを返す </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000142">todo:</a></b></dt><dd>元のreturnは間違っているが、修正後の↓文がどれくらい正しいかは要チェック </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_a7f937c2e893cc421a808dded72fc4e39_cgraph.png" border="0" usemap="#aspells-object_8cpp_a7f937c2e893cc421a808dded72fc4e39_cgraph" alt=""/></div>
+<map name="aspells-object_8cpp_a7f937c2e893cc421a808dded72fc4e39_cgraph" id="aspells-object_8cpp_a7f937c2e893cc421a808dded72fc4e39_cgraph">
+<area shape="rect" title="武器呪縛処理 / Curse the players weapon" alt="" coords="5,368,152,395"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="213,5,293,32"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="200,705,307,732"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="795,259,915,285"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="208,1709,299,1736"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="373,335,487,361"/>
+<area shape="rect" href="bow_8cpp.html#ac67fe672b98bb4c3ba89474dce007a50" title="射撃武器に対応する矢/弾薬のベースアイテムIDを返す /" alt="" coords="373,385,487,412"/>
+<area shape="rect" href="flavor-describer_8cpp.html#abffcf700f83741151f4d965b01800395" title=" " alt="" coords="362,436,498,463"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a779b5f26ab2e2c1e104583399787dcf1" title=" " alt="" coords="369,487,491,513"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a7ec17cfdde3219bd0e9dfe166181cc9d" title=" " alt="" coords="384,1608,476,1635"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a81194951a890007868ac1c4352750174" title=" " alt="" coords="359,1288,501,1315"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a6ad3608e29e2b55a612a9bece5987c6e" title=" " alt="" coords="375,705,485,732"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a08b2e44e55add7893849a86ca53626b7" title=" " alt="" coords="355,537,505,564"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a040ee8534be2d36b2db2c511158488c0" title=" " alt="" coords="562,1861,737,1888"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a5f9a02ab4e1253b0cd2270b287b17bee" title="杖や光源等、寿命のあるアイテムの残り回数やターン表記" alt="" coords="363,959,497,985"/>
+<area shape="rect" href="flavor-describer_8cpp.html#af3b92a1eedcea38d55cb313d2ff7fbed" title=" " alt="" coords="574,1557,725,1584"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a487e2423615ea280fb3f3a339ae2980b" title=" " alt="" coords="381,1380,479,1407"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#ae75e4fc7cc754cbf43a5ef91d0e1d963" title=" " alt="" coords="355,1136,505,1163"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#acfcf21e14ba3017d1cc69e6fdff850e9" title="呪いの有無や割引率等を表示する" alt="" coords="553,1136,745,1163"/>
+<area shape="rect" href="display-sub-window-items_8cpp.html#a892d0257efeeabd5136e0e224ee0d757" title=" " alt="" coords="359,233,501,260"/>
+<area shape="rect" href="flavor-util_8cpp.html#ae0f69cdaef63ddd298c7fbe175bf8c21" title=" " alt="" coords="361,284,499,311"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="589,157,709,184"/>
+<area shape="rect" href="object-perception_8cpp.html#a28c38c7965d53e8b20d1937245b8970b" title=" " alt="" coords="596,107,703,133"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="593,208,706,235"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a8726edfc05ad4884bd9643a4bd2e8eff" title=" " alt="" coords="565,1659,733,1685"/>
+<area shape="rect" href="flavor-util_8cpp.html#aa1378b4bd2a85f709f6f48dc4f48ecf3" title="対象文字配列に一文字だけをコピーする。" alt="" coords="797,1507,914,1533"/>
+<area shape="rect" href="flavor-util_8cpp.html#aba21c13bcaaf19811cb5d62824eaa1af" title="対象文字配列に符号なし整数値をコピーする。" alt="" coords="793,1263,917,1289"/>
+<area shape="rect" href="flavor-util_8cpp.html#a35ea10adb65931a256030363f956a413" title="対象文字配列に符号あり整数値をコピーする。" alt="" coords="799,1709,912,1736"/>
+<area shape="rect" href="mind-sniper_8cpp.html#a6fd6bafd31f45a4175f2a8907c7fc614" title="スナイパーの集中度によるダメージボーナスを加算する" alt="" coords="580,1390,719,1431"/>
+<area shape="rect" href="shoot_8cpp.html#afea7a69a70c8e57df24d1d6a4a0153df" title=" " alt="" coords="817,1608,894,1635"/>
+<area shape="rect" href="shoot_8cpp.html#aa0e832cf3b6da1a0193d110bf0a42be5" title="射撃時クリティカルによるダメージ期待値修正計算（重量依存部分） / critical happens at i / 10000" alt="" coords="575,1339,724,1365"/>
+<area shape="rect" href="flavor-describer_8cpp.html#ab90ef1eec6a73db724ce2db39327766e" title=" " alt="" coords="579,1237,720,1264"/>
+<area shape="rect" href="flavor-util_8cpp.html#a9afac279f6c93e8e8856f96113493a8b" title="対象文字配列に文字列をコピーする。" alt="" coords="798,908,913,935"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="796,701,915,728"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a0c1fa37fd59818ca44bbe11db43aa593" title="武器/防具/アクセサリアイテムにおける、耐性やスレイ等の表記" alt="" coords="580,731,719,757"/>
+<area shape="rect" href="named-item-describer_8cpp.html#ac7efc2d8a25fc2fd5af3db95e7f3d9b4" title=" " alt="" coords="578,614,721,655"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a876c4fc7dc88a1fa3f2b7d6707b10cf8" title=" " alt="" coords="563,832,736,859"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a4db5274e8c52834bc7bb6ef880b0d09d" title=" " alt="" coords="561,309,737,336"/>
+<area shape="rect" href="named-item-describer_8cpp.html#a4998ed0656a32c2290f80b72b751512d" title=" " alt="" coords="570,259,729,285"/>
+<area shape="rect" href="named-item-describer_8cpp.html#acaa46c6c182761a488d16112c7b3545a" title="銘を表記する" alt="" coords="581,461,718,488"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="620,512,679,539"/>
+<area shape="rect" href="named-item-describer_8cpp.html#ada4725207c8415750227020605ee0076" title=" " alt="" coords="592,563,707,589"/>
+<area shape="rect" href="tval-description-switcher_8cpp.html#a42a3c18b94de0215a801e0ba86995595" title=" " alt="" coords="572,411,727,437"/>
+<area shape="rect" href="flavor-describer_8cpp.html#ab472c941c5eabc9b75ecad853d18a477" title=" " alt="" coords="575,984,724,1011"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a9fd7a9d6b99cb6897a0a2b7504bb11a4" title=" " alt="" coords="553,1085,745,1112"/>
+<area shape="rect" href="flavor-describer_8cpp.html#adf55bbfa245a2161ab57aedfbff6273c" title=" " alt="" coords="585,933,714,960"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a2cd340c5aebeeec3d46ba34be2543c15" title=" " alt="" coords="599,1709,699,1736"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a5a3e0e5f61ce04ba547d44482efec909" title=" " alt="" coords="599,1507,700,1533"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="391,1760,469,1787"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="397,1709,463,1736"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_a7f937c2e893cc421a808dded72fc4e39_icgraph.png" border="0" usemap="#aspells-object_8cpp_a7f937c2e893cc421a808dded72fc4e39_icgraph" alt=""/></div>
+<map name="aspells-object_8cpp_a7f937c2e893cc421a808dded72fc4e39_icgraph" id="aspells-object_8cpp_a7f937c2e893cc421a808dded72fc4e39_icgraph">
+<area shape="rect" title="武器呪縛処理 / Curse the players weapon" alt="" coords="884,297,1031,324"/>
+<area shape="rect" href="muramasa_8cpp.html#a0bbb406a32f0fcac7b4d8ad1906033d5" title=" " alt="" coords="701,95,836,121"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="731,537,806,564"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="707,297,830,324"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="165,5,285,32"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="5,5,117,32"/>
+<area shape="rect" href="cmd-read_8cpp.html#a8a5fffa71d510f2bf92c8fc1ceaf7ded" title="プレイヤーの読むコマンド実装" alt="" coords="515,537,653,564"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="536,588,632,615"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="334,563,466,589"/>
+<area shape="rect" href="player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="521,259,647,285"/>
+<area shape="rect" href="cmd-wizard_8cpp.html#a5963d5e37be29cedcf7069555ead595e" title="デバッグコマンド選択処理への分岐" alt="" coords="167,436,284,463"/>
+<area shape="rect" href="racial-android_8cpp.html#a79575a6f85af0b14d59eff0efe003795" title=" " alt="" coords="339,81,461,108"/>
+<area shape="rect" href="shape-changer_8cpp.html#a7e5697a071fe31476a758edba5057d36" title=" " alt="" coords="352,132,448,159"/>
+<area shape="rect" href="inventory-curse_8cpp.html#a9fdd31c5890d9344959c0857575f6016" title=" " alt="" coords="341,183,459,209"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="351,233,449,260"/>
+<area shape="rect" href="ring-of-power_8cpp.html#abdb24b285dfed48adee038ef51698d9a" title="『一つの指輪』の効果処理 / Hack – activate the ring of power" alt="" coords="335,284,465,311"/>
+<area shape="rect" href="experience_8cpp.html#a132a3c54bbf346604465a436da59ca26" title=" " alt="" coords="353,335,447,361"/>
+<area shape="rect" href="experience_8cpp.html#aa46ccb85f9aa6f7844eb67bd8eb28c7a" title=" " alt="" coords="363,436,437,463"/>
+<area shape="rect" href="experience_8cpp.html#a530d12101ed829b4f6ff94c9f9964cfd" title=" " alt="" coords="353,31,447,57"/>
+<area shape="rect" href="wizard-special-process_8cpp.html#a5a4d12b795975f60db883b928465c22f" title="プレイヤーの現能力値を調整する / Change various &quot;permanent&quot; player variables." alt="" coords="333,385,467,412"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad9996ed8fe4b0182a32c3b30b4bd2911"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9996ed8fe4b0182a32c3b30b4bd2911">&#9670;&nbsp;</a></span>enchant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> enchant </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>eflag</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>装備修正強化処理 / Enchants a plus onto an item. </p>
+<p>-RAK- </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">caster_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">o_ptr</td><td>強化するアイテムの参照ポインタ </td></tr>
+    <tr><td class="paramname">n</td><td>強化基本量 </td></tr>
+    <tr><td class="paramname">eflag</td><td>強化オプション(命中/ダメージ/AC) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>強化に成功した場合TRUEを返す</dd></dl>
+<pre>
+Revamped!  Now takes item pointer, number of times to try enchanting,
+and a flag of what to try enchanting.  Artifacts resist enchantment
+some of the time, and successful enchantment to at least +0 might
+break a curse on the item. -CFT-
+
+Note that an item can technically be enchanted all the way to +15 if
+you wait a very, very, long time.  Going from +9 to +10 only works
+about 5% of the time, and from +10 to +11 only about 1% of the time.
+
+Note that this function can now be used on "piles" of items, and
+the larger the pile, the lower the chance of success.
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_ad9996ed8fe4b0182a32c3b30b4bd2911_cgraph.png" border="0" usemap="#aspells-object_8cpp_ad9996ed8fe4b0182a32c3b30b4bd2911_cgraph" alt=""/></div>
+<map name="aspells-object_8cpp_ad9996ed8fe4b0182a32c3b30b4bd2911_cgraph" id="aspells-object_8cpp_ad9996ed8fe4b0182a32c3b30b4bd2911_cgraph">
+<area shape="rect" title="装備修正強化処理 / Enchants a plus onto an item." alt="" coords="5,208,73,235"/>
+<area shape="rect" href="spells-object_8cpp.html#aabc2fabcd9f358a34670b79c66341e67" title="呪いの打ち破り処理 / Break the curse of an item" alt="" coords="136,157,229,184"/>
+<area shape="rect" href="racial-android_8cpp.html#a79575a6f85af0b14d59eff0efe003795" title=" " alt="" coords="121,208,244,235"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="292,245,412,272"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="313,132,391,159"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="292,183,412,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="468,5,571,32"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="479,107,560,133"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="627,69,714,96"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="627,132,715,159"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="460,208,579,235"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="472,259,567,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_ad9996ed8fe4b0182a32c3b30b4bd2911_icgraph.png" border="0" usemap="#aspells-object_8cpp_ad9996ed8fe4b0182a32c3b30b4bd2911_icgraph" alt=""/></div>
+<map name="aspells-object_8cpp_ad9996ed8fe4b0182a32c3b30b4bd2911_icgraph" id="aspells-object_8cpp_ad9996ed8fe4b0182a32c3b30b4bd2911_icgraph">
+<area shape="rect" title="装備修正強化処理 / Enchants a plus onto an item." alt="" coords="489,259,557,285"/>
+<area shape="rect" href="spells-object_8cpp.html#a8432bfbd241e812d134667ebdfe6df68" title="ボルトのエゴ化処理(火炎エゴのみ) / Enchant some bolts" alt="" coords="344,81,433,108"/>
+<area shape="rect" href="spells-object_8cpp.html#a606c388ae9ec39706af972b765edadbe" title="武器へのエゴ付加処理 / Brand the current weapon" alt="" coords="336,208,441,235"/>
+<area shape="rect" href="building-enchanter_8cpp.html#a8a6a2b03080d33a6ad2753593b965f48" title="アイテムの強化を行う。 / Enchant item" alt="" coords="339,259,439,285"/>
+<area shape="rect" href="spells-object_8cpp.html#ac16ead42e822331e4ce782ea6b433891" title="装備修正強化処理のメインルーチン / Enchant an item (in the inventory or on the floor)" alt="" coords="337,309,440,336"/>
+<area shape="rect" href="spells-craft_8cpp.html#a74e833f8a77b66d14eeab2fc6a32988f" title="盾磨き処理 / pulish shield" alt="" coords="340,360,437,387"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="167,5,287,32"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="5,5,117,32"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="171,56,283,83"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="175,360,278,387"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="165,107,288,133"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="165,157,288,184"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="172,208,281,235"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="170,259,283,285"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="171,309,282,336"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="23,208,100,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac16ead42e822331e4ce782ea6b433891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac16ead42e822331e4ce782ea6b433891">&#9670;&nbsp;</a></span>enchant_spell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> enchant_spell </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a47dfe4960088b41ad87a10ad5120f939">HIT_PROB</a>&#160;</td>
+          <td class="paramname"><em>num_hit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a>&#160;</td>
+          <td class="paramname"><em>num_dam</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a>&#160;</td>
+          <td class="paramname"><em>num_ac</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>装備修正強化処理のメインルーチン / Enchant an item (in the inventory or on the floor) </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">caster_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">num_hit</td><td>命中修正量 </td></tr>
+    <tr><td class="paramname">num_dam</td><td>ダメージ修正量 </td></tr>
+    <tr><td class="paramname">num_ac</td><td>AC修正量 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>強化に成功した場合TRUEを返す</dd></dl>
+<p>Note that "num_ac" requires armour, else weapon Returns TRUE if attempted, FALSE if cancelled </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_ac16ead42e822331e4ce782ea6b433891_cgraph.png" border="0" usemap="#aspells-object_8cpp_ac16ead42e822331e4ce782ea6b433891_cgraph" alt=""/></div>
+<map name="aspells-object_8cpp_ac16ead42e822331e4ce782ea6b433891_cgraph" id="aspells-object_8cpp_ac16ead42e822331e4ce782ea6b433891_cgraph">
+<area shape="rect" title="装備修正強化処理のメインルーチン / Enchant an item (in the inventory or on the floor)" alt="" coords="5,1179,108,1205"/>
+<area shape="rect" href="racial-android_8cpp.html#a79575a6f85af0b14d59eff0efe003795" title=" " alt="" coords="365,296,488,323"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="1142,777,1233,804"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1283,651,1361,677"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="1147,575,1227,601"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="961,1157,1068,1184"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="176,1335,283,1361"/>
+<area shape="rect" href="spells-object_8cpp.html#ad9996ed8fe4b0182a32c3b30b4bd2911" title="装備修正強化処理 / Enchants a plus onto an item." alt="" coords="195,296,263,323"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="205,1385,254,1412"/>
+<area shape="rect" href="hook-weapon_8cpp.html#aab8e2d5bc14010a9e4b9c377f8ac200e" title="オブジェクトが強化可能武器であるかを返す / Check if an object is weapon (including bows and ammo) and allows enchantment" alt="" coords="156,1142,303,1183"/>
+<area shape="rect" href="hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537" title="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour" alt="" coords="169,1436,290,1463"/>
+<area shape="rect" href="player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="571,777,698,804"/>
+<area shape="rect" href="player-status_8cpp.html#a505fc5be2b6382dbcd3b279e2f2f2be5" title="プレイヤーが現在右手/左手に武器を持っているか判定する /" alt="" coords="947,1081,1083,1108"/>
+<area shape="rect" href="object-value-calc_8cpp.html#a50a71dd33434317049f92e1f4a3f18dd" title="オブジェクトのフラグ類から価格を算出する / Return the value of the flags the object has..." alt="" coords="791,195,865,221"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="963,245,1066,272"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="937,119,1092,145"/>
+<area shape="rect" href="object-generator_8cpp.html#aa666d0b3f34f2bebf82e976361f59f1c" title="オブジェクトを複製する Wipe an object clean." alt="" coords="589,347,681,373"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a6d1c8e8f9f75fbbf3d0cd8867a08245e" title="オブジェクトがアーティファクトかを返す / Check if an object is artifact" alt="" coords="575,43,695,69"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a3abbd26c216ede60fb3c6e8d519cc7c6" title="オブジェクトが武器や矢弾として使用できるかを返す / Check if an object is weapon (including bows and ammo) Rare weapons/aromor..." alt="" coords="551,1157,719,1184"/>
+<area shape="rect" href="object-value_8cpp.html#a4b43c1e5db9d62cc85dce89c00b8ff3a" title="オブジェクトの真の価格を算出する / Return the value of the flags the object has..." alt="" coords="574,144,695,171"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="589,245,680,272"/>
+<area shape="rect" href="autopick-reader-writer_8cpp.html#a237b4b6ff1cb50402312e9b60c5c8a55" title=" " alt="" coords="949,676,1080,703"/>
+<area shape="rect" href="player-status_8cpp.html#aeff5a61381b15a0da6515408f33a5ce7" title="現在の修正後能力値を3～17及び18/xxx形式に変換する / Converts stat num into a six&#45;char (right justified) string" alt="" coords="793,701,863,728"/>
+<area shape="rect" href="base-status_8cpp.html#a343b4d5e7c5756f694b048c57ab043d0" title=" " alt="" coords="970,752,1059,779"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="959,1019,1071,1045"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="1158,1019,1217,1045"/>
+<area shape="rect" href="patron_8cpp.html#aa88913d1d92e73030e3d918eddc78457" title=" " alt="" coords="767,853,889,880"/>
+<area shape="rect" href="mutation-investor-remover_8cpp.html#a3f2ae6d11a1293d5aaba45657ea17e0a" title="プレイヤーに突然変異を与える" alt="" coords="963,600,1066,627"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="1142,520,1233,547"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="787,904,869,931"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="773,955,883,981"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="801,1005,855,1032"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="809,1056,847,1083"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="1141,409,1233,436"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="1140,463,1235,489"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="799,549,857,576"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a9281e4b4b09f84281bc99f39699747db" title="オブジェクトが強化不能武器であるかを返す / Poison needle can not be enchanted" alt="" coords="351,1142,503,1183"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_ac16ead42e822331e4ce782ea6b433891_icgraph.png" border="0" usemap="#aspells-object_8cpp_ac16ead42e822331e4ce782ea6b433891_icgraph" alt=""/></div>
+<map name="aspells-object_8cpp_ac16ead42e822331e4ce782ea6b433891_icgraph" id="aspells-object_8cpp_ac16ead42e822331e4ce782ea6b433891_icgraph">
+<area shape="rect" title="装備修正強化処理のメインルーチン / Enchant an item (in the inventory or on the floor)" alt="" coords="864,715,967,741"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="713,588,816,615"/>
+<area shape="rect" href="read-execution_8cpp.html#ab630a6587d014b7693b9ddfc916ae114" title="巻物を読んだ際の効果処理" alt="" coords="194,765,269,792"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="588,487,665,513"/>
+<area shape="rect" href="spells-hex_8cpp.html#afd3614788833ddbd0fece90266f444eb" title="一定時間毎に呪術で消費するMPを処理する / Upkeeping hex spells Called from dungeon.c" alt="" coords="189,689,274,716"/>
+<area shape="rect" href="spells-song_8cpp.html#a33afebb7401218384923b9266a887d15" title="プレイヤーの歌に関する継続処理" alt="" coords="182,588,281,615"/>
+<area shape="rect" href="display-sub-window-spells_8cpp.html#ac24c1fa331305c379925f2628f3f3313" title="クリーチャー全既知呪文を表示する / Hack – Display all known spells in a window" alt="" coords="380,157,501,184"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,259,121,285"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aed538f48e17f7a7198da51550fcf54a6" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="13,816,113,843"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a4e4b585d5d54ba044db162f61a7d307e" title="剣術コマンドの学習" alt="" coords="363,309,518,336"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a3f84e2384eaa9d101d81e43e037f6710" title="剣術コマンドのメインルーチン" alt="" coords="169,157,293,184"/>
+<area shape="rect" href="knowledge-experiences_8cpp.html#aff262915ae6d2e450d4fa60d490235e7" title="魔法の経験値を表示するコマンドのメインルーチン Display spell&#45;exp" alt="" coords="341,411,540,437"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aec4b5e44c72d7df1b66edf84ac385308" title="魔法を学習するコマンドのメインルーチン / Study a book to gain a new spell/prayer" alt="" coords="10,411,117,437"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="391,512,490,539"/>
+<area shape="rect" href="cmd-hissatsu_8cpp.html#a33403bffedef91c2766deeaf4a1a1007" title="使用可能な剣術を選択する / Allow user to choose a blade arts." alt="" coords="372,208,509,235"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="194,360,269,387"/>
+<area shape="rect" href="spell-info_8cpp.html#a631a834f66c010291d5bd8376cb872e0" title="呪文情報の表示処理 / Print a list of spells (for browsing or casting or viewing)" alt="" coords="397,259,485,285"/>
+<area shape="rect" href="spells-hex_8cpp.html#ad53feb8afce5ea1dbcd3283cda5a1e3e" title="一定ゲームターン毎に復讐処理の残り期間の判定を行う" alt="" coords="391,715,491,741"/>
+<area shape="rect" href="spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="177,816,286,843"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="376,765,505,792"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="393,664,488,691"/>
+<area shape="rect" href="player-status_8cpp.html#a6572b7ee5828736deb7df01cc0db1a01" title="プレイヤーの現在学習可能な魔法数を計算し、増減に応じて魔法の忘却、再学習を処置する。 / Calculate number of spells player should have,..." alt="" coords="365,5,516,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aaefd631f619a96dbcd29521c0ae6d925"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaefd631f619a96dbcd29521c0ae6d925">&#9670;&nbsp;</a></span>perilous_secrets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> perilous_secrets </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>user_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>知識の石の発動を実行する / Do activation of the stone of lore. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">user_ptr</td><td>プレイヤー情報への参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>実行したらTRUE、しなかったらFALSE</dd></dl>
+<p>鑑定を実行した後HPを消費する。1/5で混乱し、1/20で追加ダメージ。 MPがある場合はさらにMPを20消費する。不足する場合は麻痺及び混乱。 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_aaefd631f619a96dbcd29521c0ae6d925_cgraph.png" border="0" usemap="#aspells-object_8cpp_aaefd631f619a96dbcd29521c0ae6d925_cgraph" alt=""/></div>
+<map name="aspells-object_8cpp_aaefd631f619a96dbcd29521c0ae6d925_cgraph" id="aspells-object_8cpp_aaefd631f619a96dbcd29521c0ae6d925_cgraph">
+<area shape="rect" title="知識の石の発動を実行する / Do activation of the stone of lore." alt="" coords="5,604,123,631"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="188,275,252,301"/>
+<area shape="rect" href="spells-perception_8cpp.html#ac3df176ff52478263f041532247ea900" title="アイテム鑑定のメインルーチン処理 / Identify an object in the inventory (or on the floor)" alt="" coords="178,325,262,352"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="953,629,1032,656"/>
+<area shape="rect" href="bad-status-setter_8cpp.html#ac2bda63c9e8d91a70dea9a38c6f76c16" title="混乱の継続時間をセットする / Set &quot;confused&quot;, notice observable changes" alt="" coords="171,680,269,707"/>
+<area shape="rect" href="bad-status-setter_8cpp.html#a4f18393e08963daf9454f4d2fe543b1c" title="麻痺の継続時間をセットする / Set &quot;paralyzed&quot;, notice observable changes" alt="" coords="801,731,903,757"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="609,579,677,605"/>
+<area shape="rect" href="autopick_8cpp.html#ae7f092144503a2ccb534345fe872d299" title=" " alt="" coords="335,325,470,352"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="799,325,905,352"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="807,528,897,555"/>
+<area shape="rect" href="player-inventory_8cpp.html#ae138184b543d773a1d458a4cd1490f68" title="規定の処理にできるアイテムがプレイヤーの利用可能範囲内にあるかどうかを返す / Determine whether get_item() can get some item or not" alt="" coords="353,376,453,403"/>
+<area shape="rect" href="floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="349,427,456,453"/>
+<area shape="rect" href="inventory-describer_8cpp.html#a961afa2c407f428dd215a0b6f353be67" title="所持/装備オブジェクトIDの現在の扱い方の状態表現を返す / Return a string describing how a given item is being worn." alt="" coords="353,477,452,504"/>
+<area shape="rect" href="spells-perception_8cpp.html#a695923d52b111c81c10c7d8795f86a1a" title="アイテム鑑定処理 / Identify an object" alt="" coords="596,224,691,251"/>
+<area shape="rect" href="object-info_8cpp.html#a21413bf407071b7e2f68ff548c34b165" title="オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label" alt="" coords="350,5,455,32"/>
+<area shape="rect" href="hook-perception_8cpp.html#ad682aefd6c6e84b84a2c25eb42967d7b" title="アイテムが鑑定済みかを判定する /" alt="" coords="317,56,488,83"/>
+<area shape="rect" href="hook-perception_8cpp.html#a0f82616fb3efe1f55343f15424106b22" title="アイテムが鑑定済みの武器防具かを判定する /" alt="" coords="317,107,488,149"/>
+<area shape="rect" href="hook-weapon_8cpp.html#a70ad6a543702cb8d8c26dc4674051839" title="オブジェクトが武器、防具、矢弾として使用できるかを返す / Check if an object is weapon, armour or ammo" alt="" coords="536,143,751,169"/>
+<area shape="rect" href="autopick-destroyer_8cpp.html#a9efe25ff3ad1ac56b5dc6ab7b27eae0a" title=" " alt="" coords="579,427,708,453"/>
+<area shape="rect" href="autopick-util_8cpp.html#a1dd80fdd8ddb78ff0a4e450460cd8951" title=" " alt="" coords="578,325,709,352"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a8108553a0b971c8d22ad18d214df8fb3" title="自動拾いの検索" alt="" coords="582,376,705,403"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="609,477,677,504"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f61d6d1ce832270f964fa703089c651" title=" " alt="" coords="584,88,703,115"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="spells-object_8cpp_aaefd631f619a96dbcd29521c0ae6d925_icgraph.png" border="0" usemap="#aspells-object_8cpp_aaefd631f619a96dbcd29521c0ae6d925_icgraph" alt=""/></div>
+<map name="aspells-object_8cpp_aaefd631f619a96dbcd29521c0ae6d925_icgraph" id="aspells-object_8cpp_aaefd631f619a96dbcd29521c0ae6d925_icgraph">
+<area shape="rect" title="知識の石の発動を実行する / Do activation of the stone of lore." alt="" coords="476,5,593,32"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="308,5,428,32"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="148,5,260,32"/>
+<area shape="rect" href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="5,5,100,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="ab254a602f617275fb1ce8a479d8b593d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab254a602f617275fb1ce8a479d8b593d">&#9670;&nbsp;</a></span>amuse_info</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structamuse__type.html">amuse_type</a> amuse_info[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初期値:</b><div class="fragment"><div class="line">= { { <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192aa043ac899fcc5b625023280fbf9f93bd">TV_BOTTLE</a>, <a class="code" href="sv-other-types_8h.html#a2e41f17ea31a7f863bae2e42c96ff86b">SV_ANY</a>, 5, <a class="code" href="spells-object_8cpp.html#ae364423360562aa37e4e367d69d2d9dc">AMS_NOTHING</a> }, { <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192aeb95c84f5aa6309d08071ae5b9e6cd6d">TV_JUNK</a>, <a class="code" href="sv-other-types_8h.html#a2e41f17ea31a7f863bae2e42c96ff86b">SV_ANY</a>, 3, <a class="code" href="spells-object_8cpp.html#a0e34163883b00fc54c5d9f2834b706f1">AMS_MULTIPLE</a> }, { <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192ad8e604949c0d9c017bf34455167f9ddf">TV_SPIKE</a>, <a class="code" href="sv-other-types_8h.html#a2e41f17ea31a7f863bae2e42c96ff86b">SV_ANY</a>, 10, <a class="code" href="spells-object_8cpp.html#a38eea9eed46a0251e10bb4adb4724040">AMS_PILE</a> }, { <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192a2e9d497bdcc4c475e001c484ab2a2925">TV_STATUE</a>, <a class="code" href="sv-other-types_8h.html#a2e41f17ea31a7f863bae2e42c96ff86b">SV_ANY</a>, 15, <a class="code" href="spells-object_8cpp.html#ae364423360562aa37e4e367d69d2d9dc">AMS_NOTHING</a> },</div>
+<div class="line">          { <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192aa14b6439097f20347b399dd34851f459">TV_CORPSE</a>, <a class="code" href="sv-other-types_8h.html#a2e41f17ea31a7f863bae2e42c96ff86b">SV_ANY</a>, 15, <a class="code" href="spells-object_8cpp.html#a81f9cd770b4aa4e759ba20f37f30470a">AMS_NO_UNIQUE</a> }, { <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192ab7c60faf287b72868870060be9f67586">TV_SKELETON</a>, <a class="code" href="sv-other-types_8h.html#a2e41f17ea31a7f863bae2e42c96ff86b">SV_ANY</a>, 10, <a class="code" href="spells-object_8cpp.html#a81f9cd770b4aa4e759ba20f37f30470a">AMS_NO_UNIQUE</a> }, { <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192aa9f192db071cde33c72eccea20f65613">TV_FIGURINE</a>, <a class="code" href="sv-other-types_8h.html#a2e41f17ea31a7f863bae2e42c96ff86b">SV_ANY</a>, 10, <a class="code" href="spells-object_8cpp.html#a81f9cd770b4aa4e759ba20f37f30470a">AMS_NO_UNIQUE</a> },</div>
+<div class="line">          { <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192a05b3a1b4afaf2085a835a409c8952a88">TV_READING_MATTER</a>, <a class="code" href="sv-other-types_8h.html#a2e41f17ea31a7f863bae2e42c96ff86b">SV_ANY</a>, 1, <a class="code" href="spells-object_8cpp.html#ae364423360562aa37e4e367d69d2d9dc">AMS_NOTHING</a> }, { <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192a30d16c50a98bace2c1870526e0048714">TV_POLEARM</a>, <a class="code" href="sv-weapon-types_8h.html#a53afc0366a0304b1ed6b6d762119ba6fa30e273f85fc0c507f6b01372d1be027d">SV_TSURIZAO</a>, 3, <a class="code" href="spells-object_8cpp.html#ae364423360562aa37e4e367d69d2d9dc">AMS_NOTHING</a> }, </div>
+<div class="line">          { <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192a4758bf7ffa0443adca9fc78d7c8ba9a5">TV_SWORD</a>, <a class="code" href="sv-weapon-types_8h.html#a30a781c64aa9c0dbae8a3952062520b6a23d9a13af3ee7cc410b7df11988b44e1">SV_BROKEN_DAGGER</a>, 3, <a class="code" href="spells-object_8cpp.html#ad15e1f2ca066b20ea5ed3ecfe2147917">AMS_FIXED_ART</a> }, </div>
+<div class="line">          { <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192a4758bf7ffa0443adca9fc78d7c8ba9a5">TV_SWORD</a>, <a class="code" href="sv-weapon-types_8h.html#a30a781c64aa9c0dbae8a3952062520b6a23d9a13af3ee7cc410b7df11988b44e1">SV_BROKEN_DAGGER</a>, 10, <a class="code" href="spells-object_8cpp.html#ae364423360562aa37e4e367d69d2d9dc">AMS_NOTHING</a> }, { <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192a4758bf7ffa0443adca9fc78d7c8ba9a5">TV_SWORD</a>, <a class="code" href="sv-weapon-types_8h.html#a30a781c64aa9c0dbae8a3952062520b6aa5c7f9a957c51490510a4379dd8f172a">SV_BROKEN_SWORD</a>, 5, <a class="code" href="spells-object_8cpp.html#ae364423360562aa37e4e367d69d2d9dc">AMS_NOTHING</a> }, { <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192a50e55f4e9ae11136acfa23302de16b13">TV_SCROLL</a>, <a class="code" href="sv-scroll-types_8h.html#a09703e89c70a69fa80425a419baf7429a3a420963acba0c2a176e849fc2cc9de9">SV_SCROLL_AMUSEMENT</a>, 10, <a class="code" href="spells-object_8cpp.html#ae364423360562aa37e4e367d69d2d9dc">AMS_NOTHING</a> },</div>
+<div class="line"> </div>
+<div class="line">          { <a class="code" href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192a35a45da323c03c7ece28d4db0a3d3765">TV_NONE</a>, 0, 0, 0 } }</div>
+<div class="ttc" id="aspells-object_8cpp_html_a0e34163883b00fc54c5d9f2834b706f1"><div class="ttname"><a href="spells-object_8cpp.html#a0e34163883b00fc54c5d9f2834b706f1">AMS_MULTIPLE</a></div><div class="ttdeci">#define AMS_MULTIPLE</div><div class="ttdef"><b>Definition:</b> spells-object.cpp:73</div></div>
+<div class="ttc" id="aspells-object_8cpp_html_a38eea9eed46a0251e10bb4adb4724040"><div class="ttname"><a href="spells-object_8cpp.html#a38eea9eed46a0251e10bb4adb4724040">AMS_PILE</a></div><div class="ttdeci">#define AMS_PILE</div><div class="ttdef"><b>Definition:</b> spells-object.cpp:74</div></div>
+<div class="ttc" id="aspells-object_8cpp_html_a81f9cd770b4aa4e759ba20f37f30470a"><div class="ttname"><a href="spells-object_8cpp.html#a81f9cd770b4aa4e759ba20f37f30470a">AMS_NO_UNIQUE</a></div><div class="ttdeci">#define AMS_NO_UNIQUE</div><div class="ttdef"><b>Definition:</b> spells-object.cpp:71</div></div>
+<div class="ttc" id="aspells-object_8cpp_html_ad15e1f2ca066b20ea5ed3ecfe2147917"><div class="ttname"><a href="spells-object_8cpp.html#ad15e1f2ca066b20ea5ed3ecfe2147917">AMS_FIXED_ART</a></div><div class="ttdeci">#define AMS_FIXED_ART</div><div class="ttdef"><b>Definition:</b> spells-object.cpp:72</div></div>
+<div class="ttc" id="aspells-object_8cpp_html_ae364423360562aa37e4e367d69d2d9dc"><div class="ttname"><a href="spells-object_8cpp.html#ae364423360562aa37e4e367d69d2d9dc">AMS_NOTHING</a></div><div class="ttdeci">#define AMS_NOTHING</div><div class="ttdef"><b>Definition:</b> spells-object.cpp:70</div></div>
+<div class="ttc" id="asv-other-types_8h_html_a2e41f17ea31a7f863bae2e42c96ff86b"><div class="ttname"><a href="sv-other-types_8h.html#a2e41f17ea31a7f863bae2e42c96ff86b">SV_ANY</a></div><div class="ttdeci">#define SV_ANY</div><div class="ttdoc">enumで表現することが却って高コストになりそうなSV定義をここに格納する</div><div class="ttdef"><b>Definition:</b> sv-other-types.h:10</div></div>
+<div class="ttc" id="asv-scroll-types_8h_html_a09703e89c70a69fa80425a419baf7429a3a420963acba0c2a176e849fc2cc9de9"><div class="ttname"><a href="sv-scroll-types_8h.html#a09703e89c70a69fa80425a419baf7429a3a420963acba0c2a176e849fc2cc9de9">SV_SCROLL_AMUSEMENT</a></div><div class="ttdeci">@ SV_SCROLL_AMUSEMENT</div><div class="ttdef"><b>Definition:</b> sv-scroll-types.h:60</div></div>
+<div class="ttc" id="asv-weapon-types_8h_html_a30a781c64aa9c0dbae8a3952062520b6a23d9a13af3ee7cc410b7df11988b44e1"><div class="ttname"><a href="sv-weapon-types_8h.html#a30a781c64aa9c0dbae8a3952062520b6a23d9a13af3ee7cc410b7df11988b44e1">SV_BROKEN_DAGGER</a></div><div class="ttdeci">@ SV_BROKEN_DAGGER</div><div class="ttdef"><b>Definition:</b> sv-weapon-types.h:59</div></div>
+<div class="ttc" id="asv-weapon-types_8h_html_a30a781c64aa9c0dbae8a3952062520b6aa5c7f9a957c51490510a4379dd8f172a"><div class="ttname"><a href="sv-weapon-types_8h.html#a30a781c64aa9c0dbae8a3952062520b6aa5c7f9a957c51490510a4379dd8f172a">SV_BROKEN_SWORD</a></div><div class="ttdeci">@ SV_BROKEN_SWORD</div><div class="ttdef"><b>Definition:</b> sv-weapon-types.h:60</div></div>
+<div class="ttc" id="asv-weapon-types_8h_html_a53afc0366a0304b1ed6b6d762119ba6fa30e273f85fc0c507f6b01372d1be027d"><div class="ttname"><a href="sv-weapon-types_8h.html#a53afc0366a0304b1ed6b6d762119ba6fa30e273f85fc0c507f6b01372d1be027d">SV_TSURIZAO</a></div><div class="ttdeci">@ SV_TSURIZAO</div><div class="ttdef"><b>Definition:</b> sv-weapon-types.h:53</div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192a05b3a1b4afaf2085a835a409c8952a88"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192a05b3a1b4afaf2085a835a409c8952a88">TV_READING_MATTER</a></div><div class="ttdeci">@ TV_READING_MATTER</div><div class="ttdef"><b>Definition:</b> tval-types.h:54</div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192a2e9d497bdcc4c475e001c484ab2a2925"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192a2e9d497bdcc4c475e001c484ab2a2925">TV_STATUE</a></div><div class="ttdeci">@ TV_STATUE</div><div class="ttdef"><b>Definition:</b> tval-types.h:26</div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192a30d16c50a98bace2c1870526e0048714"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192a30d16c50a98bace2c1870526e0048714">TV_POLEARM</a></div><div class="ttdeci">@ TV_POLEARM</div><div class="ttdef"><b>Definition:</b> tval-types.h:36</div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192a35a45da323c03c7ece28d4db0a3d3765"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192a35a45da323c03c7ece28d4db0a3d3765">TV_NONE</a></div><div class="ttdeci">@ TV_NONE</div><div class="ttdef"><b>Definition:</b> tval-types.h:18</div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192a4758bf7ffa0443adca9fc78d7c8ba9a5"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192a4758bf7ffa0443adca9fc78d7c8ba9a5">TV_SWORD</a></div><div class="ttdeci">@ TV_SWORD</div><div class="ttdef"><b>Definition:</b> tval-types.h:37</div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192a50e55f4e9ae11136acfa23302de16b13"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192a50e55f4e9ae11136acfa23302de16b13">TV_SCROLL</a></div><div class="ttdeci">@ TV_SCROLL</div><div class="ttdef"><b>Definition:</b> tval-types.h:55</div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192aa043ac899fcc5b625023280fbf9f93bd"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192aa043ac899fcc5b625023280fbf9f93bd">TV_BOTTLE</a></div><div class="ttdeci">@ TV_BOTTLE</div><div class="ttdef"><b>Definition:</b> tval-types.h:20</div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192aa14b6439097f20347b399dd34851f459"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192aa14b6439097f20347b399dd34851f459">TV_CORPSE</a></div><div class="ttdeci">@ TV_CORPSE</div><div class="ttdef"><b>Definition:</b> tval-types.h:27</div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192aa9f192db071cde33c72eccea20f65613"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192aa9f192db071cde33c72eccea20f65613">TV_FIGURINE</a></div><div class="ttdeci">@ TV_FIGURINE</div><div class="ttdef"><b>Definition:</b> tval-types.h:25</div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192ab7c60faf287b72868870060be9f67586"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192ab7c60faf287b72868870060be9f67586">TV_SKELETON</a></div><div class="ttdeci">@ TV_SKELETON</div><div class="ttdef"><b>Definition:</b> tval-types.h:19</div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192ad8e604949c0d9c017bf34455167f9ddf"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192ad8e604949c0d9c017bf34455167f9ddf">TV_SPIKE</a></div><div class="ttdeci">@ TV_SPIKE</div><div class="ttdef"><b>Definition:</b> tval-types.h:23</div></div>
+<div class="ttc" id="atval-types_8h_html_a992b7c3bcabdd2a05ada6fd18b355192aeb95c84f5aa6309d08071ae5b9e6cd6d"><div class="ttname"><a href="tval-types_8h.html#a992b7c3bcabdd2a05ada6fd18b355192aeb95c84f5aa6309d08071ae5b9e6cd6d">TV_JUNK</a></div><div class="ttdeci">@ TV_JUNK</div><div class="ttdef"><b>Definition:</b> tval-types.h:21</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a160df014812e13dbc636e60ed6320754"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a160df014812e13dbc636e60ed6320754">&#9670;&nbsp;</a></span>enchant_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int enchant_table[16] = { 0, 10, 50, 100, 200, 300, 400, 500, 650, 800, 950, 987, 993, 995, 998, 1000 }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>装備強化処理の失敗率定数（千分率） / Used by the "enchant" function (chance of failure) (modified for Zangband, we need better stuff there...) &ndash; TY </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時56分56秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/action/movement-execution.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_63a79716ac36ae14e4cbc21f08c9941e.html">action</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">movement-execution.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="movement-execution_8h_source.html">action/movement-execution.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="open-close-execution_8h_source.html">action/open-close-execution.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fixed-art-types_8h_source.html">artifact/fixed-art-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-attack_8h_source.html">cmd-action/cmd-attack.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="disturbance_8h_source.html">core/disturbance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-update-types_8h_source.html">core/player-update-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stuff-handler_8h_source.html">core/stuff-handler.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="pattern-walk_8h_source.html">floor/pattern-walk.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-options_8h_source.html">game-option/input-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="feature_8h_source.html">grid/feature.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-definitions-table_8h_source.html">main/sound-definitions-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags-resistance_8h_source.html">monster-race/race-flags-resistance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags1_8h_source.html">monster-race/race-flags1.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags2_8h_source.html">monster-race/race-flags2.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags7_8h_source.html">monster-race/race-flags7.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags8_8h_source.html">monster-race/race-flags8.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-describer_8h_source.html">monster/monster-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-info_8h_source.html">monster/monster-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status-setter_8h_source.html">monster/monster-status-setter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-status_8h_source.html">monster/monster-status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mutation-flag-types_8h_source.html">mutation/mutation-flag-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="warning_8h_source.html">object/warning.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-move_8h_source.html">player/player-move.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status-flags_8h_source.html">player/player-status-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="english_8h_source.html">locale/english.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+movement-execution.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="movement-execution_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2action_2movement-execution_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2action_2movement-execution_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2action_2movement-execution_8cpp">
+<area shape="rect" title=" " alt="" coords="2249,5,2437,61"/>
+<area shape="rect" href="movement-execution_8h.html" title=" " alt="" coords="211,295,402,322"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="3177,541,3327,583"/>
+<area shape="rect" href="open-close-execution_8h.html" title=" " alt="" coords="427,295,621,322"/>
+<area shape="rect" href="fixed-art-types_8h.html" title=" " alt="" coords="3111,109,3222,151"/>
+<area shape="rect" href="cmd-attack_8h.html" title=" " alt="" coords="1955,117,2122,143"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="2009,295,2087,322"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="2213,288,2347,329"/>
+<area shape="rect" href="disturbance_8h.html" title=" " alt="" coords="2381,117,2510,143"/>
+<area shape="rect" href="player-update-types_8h.html" title=" " alt="" coords="3246,109,3375,151"/>
+<area shape="rect" href="stuff-handler_8h.html" title=" " alt="" coords="2835,206,2967,233"/>
+<area shape="rect" href="pattern-walk_8h.html" title=" " alt="" coords="5,295,136,322"/>
+<area shape="rect" href="input-options_8h.html" title=" " alt="" coords="238,206,421,233"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="1106,206,1203,233"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="3233,199,3361,240"/>
+<area shape="rect" href="sound-definitions-table_8h.html" title=" " alt="" coords="3399,109,3550,151"/>
+<area shape="rect" href="sound-of-music_8h.html" title=" " alt="" coords="831,206,985,233"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="1243,199,1392,240"/>
+<area shape="rect" href="race-flags-resistance_8h.html" title=" " alt="" coords="3574,109,3733,151"/>
+<area shape="rect" href="race-flags1_8h.html" title=" " alt="" coords="3757,117,3933,143"/>
+<area shape="rect" href="race-flags2_8h.html" title=" " alt="" coords="3957,117,4133,143"/>
+<area shape="rect" href="race-flags7_8h.html" title=" " alt="" coords="4157,117,4333,143"/>
+<area shape="rect" href="race-flags8_8h.html" title=" " alt="" coords="4357,117,4533,143"/>
+<area shape="rect" href="monster-describer_8h.html" title=" " alt="" coords="2198,206,2386,233"/>
+<area shape="rect" href="monster-info_8h.html" title=" " alt="" coords="2411,206,2565,233"/>
+<area shape="rect" href="monster-status-setter_8h.html" title=" " alt="" coords="696,288,856,329"/>
+<area shape="rect" href="monster-status_8h.html" title=" " alt="" coords="2640,206,2811,233"/>
+<area shape="rect" href="warning_8h.html" title=" " alt="" coords="1457,206,1573,233"/>
+<area shape="rect" href="player-move_8h.html" title=" " alt="" coords="1515,295,1656,322"/>
+<area shape="rect" href="player-status-flags_8h.html" title=" " alt="" coords="2636,109,2772,151"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="2847,117,3035,143"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="4558,117,4717,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="1681,295,1847,322"/>
+<area shape="rect" href="english_8h.html" title=" " alt="" coords="1872,295,1984,322"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1781,385,1910,411"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1627,467,1717,493"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1741,467,1832,493"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1856,467,1955,493"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1979,467,2077,493"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="2604,467,2751,493"/>
+<area shape="rect" href="player-attack-util_8h.html" title=" " alt="" coords="1987,199,2123,240"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="2422,288,2567,329"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="2709,377,2865,419"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="960,295,1117,322"/>
+<area shape="rect" title=" " alt="" coords="1209,385,1263,411"/>
+<area shape="rect" title=" " alt="" coords="880,295,936,322"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="1243,288,1389,329"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="2991,206,3158,233"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="3385,206,3564,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="3589,206,3739,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a5e0cf57d0aba1d2d223741018447ee37"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="movement-execution_8cpp.html#a5e0cf57d0aba1d2d223741018447ee37">boundary_floor</a> (<a class="el" href="structgrid__type.html">grid_type</a> *g_ptr, <a class="el" href="structfeature__type.html">feature_type</a> *f_ptr, <a class="el" href="structfeature__type.html">feature_type</a> *mimic_f_ptr)</td></tr>
+<tr class="memdesc:a5e0cf57d0aba1d2d223741018447ee37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine if a "boundary" grid is "floor mimic"  <a href="movement-execution_8cpp.html#a5e0cf57d0aba1d2d223741018447ee37">[詳解]</a><br /></td></tr>
+<tr class="separator:a5e0cf57d0aba1d2d223741018447ee37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a586b9fe6bc207183655cdfb8dcfaf464"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="movement-execution_8cpp.html#a586b9fe6bc207183655cdfb8dcfaf464">exe_movement</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> do_pickup, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> break_trap)</td></tr>
+<tr class="memdesc:a586b9fe6bc207183655cdfb8dcfaf464"><td class="mdescLeft">&#160;</td><td class="mdescRight">該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す / Move player in the given direction, with the given "pickup" flag.  <a href="movement-execution_8cpp.html#a586b9fe6bc207183655cdfb8dcfaf464">[詳解]</a><br /></td></tr>
+<tr class="separator:a586b9fe6bc207183655cdfb8dcfaf464"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a5e0cf57d0aba1d2d223741018447ee37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e0cf57d0aba1d2d223741018447ee37">&#9670;&nbsp;</a></span>boundary_floor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> boundary_floor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgrid__type.html">grid_type</a> *&#160;</td>
+          <td class="paramname"><em>g_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structfeature__type.html">feature_type</a> *&#160;</td>
+          <td class="paramname"><em>f_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structfeature__type.html">feature_type</a> *&#160;</td>
+          <td class="paramname"><em>mimic_f_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Determine if a "boundary" grid is "floor mimic" </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structgrid__type.html">grid_type</a></td><td>*g_ptr </td></tr>
+    <tr><td class="paramname"><a class="el" href="structfeature__type.html" title="地形情報の構造体 / Information about terrain &quot;features&quot;">feature_type</a></td><td>*f_ptr </td></tr>
+    <tr><td class="paramname"><a class="el" href="structfeature__type.html" title="地形情報の構造体 / Information about terrain &quot;features&quot;">feature_type</a></td><td>*mimic_f_ptr </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>移動不能であればTRUE </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">todo:</a></b></dt><dd>負論理なので反転させたい </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="movement-execution_8cpp_a5e0cf57d0aba1d2d223741018447ee37_cgraph.png" border="0" usemap="#amovement-execution_8cpp_a5e0cf57d0aba1d2d223741018447ee37_cgraph" alt=""/></div>
+<map name="amovement-execution_8cpp_a5e0cf57d0aba1d2d223741018447ee37_cgraph" id="amovement-execution_8cpp_a5e0cf57d0aba1d2d223741018447ee37_cgraph">
+<area shape="rect" title="Determine if a &quot;boundary&quot; grid is &quot;floor mimic&quot;" alt="" coords="5,5,112,32"/>
+<area shape="rect" href="feature_8cpp.html#ab6f2d85244b993c3996dafd0eac6056e" title=" " alt="" coords="160,5,272,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="movement-execution_8cpp_a5e0cf57d0aba1d2d223741018447ee37_icgraph.png" border="0" usemap="#amovement-execution_8cpp_a5e0cf57d0aba1d2d223741018447ee37_icgraph" alt=""/></div>
+<map name="amovement-execution_8cpp_a5e0cf57d0aba1d2d223741018447ee37_icgraph" id="amovement-execution_8cpp_a5e0cf57d0aba1d2d223741018447ee37_icgraph">
+<area shape="rect" title="Determine if a &quot;boundary&quot; grid is &quot;floor mimic&quot;" alt="" coords="860,183,967,209"/>
+<area shape="rect" href="movement-execution_8cpp.html#a586b9fe6bc207183655cdfb8dcfaf464" title="該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す / Move player in the given direction, with the given &quot;pickup&quot; flag." alt="" coords="703,183,812,209"/>
+<area shape="rect" href="mind-berserker_8cpp.html#a73db877ef674132d5c3149ed726ccf47" title="怒りの発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;berserker&#39;." alt="" coords="524,12,655,39"/>
+<area shape="rect" href="cmd-move_8cpp.html#a52d23a65648bfd0f53bf6e5c6690b635" title="「歩く」動作コマンドのメインルーチン / Support code for the &quot;Walk&quot; and &quot;Jump&quot; commands" alt="" coords="359,56,461,83"/>
+<area shape="rect" href="open-close-execution_8cpp.html#a0b297aca75e05da37c74a0e7418b6fa0" title="「打ち破る」動作コマンドのサブルーチン / Perform the basic &quot;bash&quot; command" alt="" coords="550,132,629,159"/>
+<area shape="rect" href="open-close-execution_8cpp.html#ad1cd5c9c791561ebb1f78caf1bb3bef3" title="箱のトラップを解除するコマンドのサブルーチン / Perform the basic &quot;disarm&quot; command" alt="" coords="545,183,634,209"/>
+<area shape="rect" href="run-execution_8cpp.html#af168900c990c8f45296e1cdf5780e627" title="継続的なダッシュ処理 / Take one step along the current &quot;run&quot; path" alt="" coords="553,259,625,285"/>
+<area shape="rect" href="travel-execution_8cpp.html#ae1ee60425d5127a7f8d00b144c1187d1" title="トラベル機能の実装 / Travel command" alt="" coords="188,360,272,387"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a49b73965d0ef306e6cb8a9dc70ed212a" title=" " alt="" coords="344,5,476,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,208,296,235"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,309,116,336"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#a5a74463d27e5f0d96dd1c49ab85d850c" title="「打ち破る」動作コマンドのメインルーチン / Bash open a door, success based on character strength" alt="" coords="359,107,461,133"/>
+<area shape="rect" href="cmd-others_8cpp.html#a815a7a5e204c0455b946a163f5012bc0" title=" " alt="" coords="373,157,447,184"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#af905b3420d1017dc794ab89a9d6d0c42" title="箱、床のトラップ解除処理双方の統合メインルーチン / Disarms a trap, or chest" alt="" coords="353,208,467,235"/>
+<area shape="rect" href="cmd-move_8cpp.html#af37fcf2891ab1245c2faa79a1dfa6625" title="「走る」動作コマンドのメインルーチン / Start running." alt="" coords="363,259,457,285"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a586b9fe6bc207183655cdfb8dcfaf464"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a586b9fe6bc207183655cdfb8dcfaf464">&#9670;&nbsp;</a></span>exe_movement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void exe_movement </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a>&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>do_pickup</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>break_trap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す / Move player in the given direction, with the given "pickup" flag. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">dir</td><td>移動方向ID </td></tr>
+    <tr><td class="paramname">do_pickup</td><td>罠解除を試みながらの移動ならばTRUE </td></tr>
+    <tr><td class="paramname">break_trap</td><td>トラップ粉砕処理を行うならばTRUE </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>実際に移動が行われたならばTRUEを返す。 </dd></dl>
+<dl class="section note"><dt>覚え書き</dt><dd>This routine should (probably) always induce energy expenditure.<br  />
+</dd></dl>
+<p>Note that moving will <em>always</em> take a turn, and will <em>always</em> hit<br  />
+any monster which might be in the destination grid. Previously,<br  />
+moving into walls was "free" and did NOT hit invisible monsters.<br  />
+</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="movement-execution_8cpp_a586b9fe6bc207183655cdfb8dcfaf464_cgraph.png" border="0" usemap="#amovement-execution_8cpp_a586b9fe6bc207183655cdfb8dcfaf464_cgraph" alt=""/></div>
+<map name="amovement-execution_8cpp_a586b9fe6bc207183655cdfb8dcfaf464_cgraph" id="amovement-execution_8cpp_a586b9fe6bc207183655cdfb8dcfaf464_cgraph">
+<area shape="rect" title="該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す / Move player in the given direction, with the given &quot;pickup&quot; flag." alt="" coords="5,1120,115,1147"/>
+<area shape="rect" href="movement-execution_8cpp.html#a5e0cf57d0aba1d2d223741018447ee37" title="Determine if a &quot;boundary&quot; grid is &quot;floor mimic&quot;" alt="" coords="202,5,309,32"/>
+<area shape="rect" href="grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="431,1120,539,1147"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="827,1123,898,1149"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="1042,1348,1103,1375"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1033,1576,1112,1603"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="1017,385,1128,412"/>
+<area shape="rect" href="monster-info_8cpp.html#ad051474143ae51acf70bf275b30ff246" title=" " alt="" coords="1034,1804,1111,1831"/>
+<area shape="rect" href="geometry_8cpp.html#a06266551cc87bd4ad197c318d9c64d2d" title="指定された座標をプレイヤーが視覚に収められるかを返す。 / Can the player &quot;see&quot; the given grid in detail?" alt="" coords="791,968,935,995"/>
+<area shape="rect" href="grid_8cpp.html#a4c2c5040820d5fbf547b827f6ce87825" title=" " alt="" coords="1017,512,1128,539"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ad491b75a9a598cb361c671e23737d1fb" title=" " alt="" coords="816,816,909,843"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="811,360,915,387"/>
+<area shape="rect" href="english_8cpp.html#a1183a616ba1590738914bbd4e6524917" title=" " alt="" coords="1031,157,1115,184"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ab4c472d001cbdcb0c412ec4735b185d8" title=" " alt="" coords="794,867,931,893"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="817,1627,908,1653"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="834,917,891,944"/>
+<area shape="rect" href="cmd-attack_8cpp.html#a8e48cd6d2ca0901e5c89e19e30aab0b3" title="プレイヤーの打撃処理メインルーチン" alt="" coords="627,563,737,589"/>
+<area shape="rect" href="player-status_8cpp.html#acf19de25dd53f8896f4260fd49b00e74" title=" " alt="" coords="827,183,898,209"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="793,563,932,589"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="825,259,901,285"/>
+<area shape="rect" href="open-close-execution_8cpp.html#ae4c38ee9a960b05377ffd1e939af8514" title="移動処理による簡易な「開く」処理 / easy_open_door –" alt="" coords="197,1069,314,1096"/>
+<area shape="rect" href="feature_8cpp.html#a6b436ce4e0a21fa512563ecd2ec6da42" title="地形が閉じたドアであるかの判定を行う。 / Return TRUE if the given grid is a closed door" alt="" coords="431,1728,540,1755"/>
+<area shape="rect" href="open-close-execution_8cpp.html#ad1cd5c9c791561ebb1f78caf1bb3bef3" title="箱のトラップを解除するコマンドのサブルーチン / Perform the basic &quot;disarm&quot; command" alt="" coords="211,968,300,995"/>
+<area shape="rect" href="player-status_8cpp.html#a66e3d8439c969c25980516bbf58c5cad" title=" " alt="" coords="646,1981,718,2008"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a4ba5778ce8edcd5f8a8b517a30491f58" title="クリーチャーが壁破壊進行を持っているかを返す。" alt="" coords="208,1880,303,1907"/>
+<area shape="rect" href="monster-info_8cpp.html#ad1cf762c40679d90def446efc53d4215" title="モンスターが地形を踏破できるかどうかを返す Check if monster can cross terrain" alt="" coords="396,2209,575,2236"/>
+<area shape="rect" href="monster-status_8cpp.html#a2d8323688784ef1bd6dc7da65bdea786" title=" " alt="" coords="175,1981,335,2008"/>
+<area shape="rect" href="monster-status_8cpp.html#a694441eba404946ed80519bf51df10ca" title=" " alt="" coords="163,2032,348,2059"/>
+<area shape="rect" href="player-move_8cpp.html#ac637efbeba2a2fca5538ee13812b97bf" title="移動に伴うプレイヤーのステータス変化処理" alt="" coords="419,1412,551,1439"/>
+<area shape="rect" href="pattern-walk_8cpp.html#a04f44d20c6c81300e62fb0db4f7e5bcb" title="パターンによる移動制限処理" alt="" coords="637,1829,727,1856"/>
+<area shape="rect" href="grid_8cpp.html#a5fec66e7c4ce0e8976c9a2d2b8d99b1f" title="プレイヤーが地形踏破可能かを返す" alt="" coords="195,2184,316,2211"/>
+<area shape="rect" href="warning_8cpp.html#a3d11990d9e531558047f12baaae72774" title="プレイヤーが特定地点へ移動した場合に警告を発する処理 / Examine the grid (xx,yy) and warn the player if there are any danger" alt="" coords="623,1880,741,1907"/>
+<area shape="rect" href="player-move_8cpp.html#a4f9afc4c9b94e386c8dff3bdf9607218" title="該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す" alt="" coords="184,2285,327,2312"/>
+<area shape="rect" href="feature_8cpp.html#ab6f2d85244b993c3996dafd0eac6056e" title=" " alt="" coords="429,5,541,32"/>
+<area shape="rect" href="feature_8cpp.html#acad9118499482c605f583af0ef408f10" title=" " alt="" coords="631,1272,733,1299"/>
+<area shape="rect" href="grid_8cpp.html#a8ea39c3dfc40de144095718ade7e2ec9" title=" " alt="" coords="643,968,721,995"/>
+<area shape="rect" href="object-placer_8cpp.html#a11d171ab728c555217997c19ead857be" title="フロアの指定位置に生成階に応じた財宝オブジェクトの生成を行う。 Places a treasure (Gold or Gems) at given location" alt="" coords="640,1120,724,1147"/>
+<area shape="rect" href="object-placer_8cpp.html#a803fa4f18318725892a17c7ababf869f" title="フロアの指定位置に生成階に応じたベースアイテムの生成を行う。 Attempt to place an object (normal or good/great) at the given locatio..." alt="" coords="635,1069,729,1096"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="651,1019,713,1045"/>
+<area shape="rect" href="cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="1029,1123,1117,1149"/>
+<area shape="rect" href="mind-ninja_8cpp.html#a52ea1929bb465180b42d7321e65512eb" title="超隠密状態をセットする" alt="" coords="803,1449,922,1476"/>
+<area shape="rect" href="monster-update_8cpp.html#a2813cd48be3165ceff9b8c77da15da3f" title="モンスターの各情報を更新する / This function updates the monster record of the given monster" alt="" coords="805,1243,920,1269"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="1209,1348,1259,1375"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="821,1728,904,1755"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="984,613,1161,640"/>
+<area shape="rect" href="experience_8cpp.html#a526ec6c3a82867a6a0152ffeb12a720d" title=" " alt="" coords="448,917,523,944"/>
+<area shape="rect" href="grid_8cpp.html#a90a8ac3022bff7cdeddf03830a82b39d" title="指定された座標をプレイヤー収められていない状態かどうか / Returns true if the player&#39;s grid is dark" alt="" coords="652,867,712,893"/>
+<area shape="rect" href="feature_8cpp.html#ad0f1f52fc2d5637a690cceaf1635a15b" title="地形が罠持ちであるかの判定を行う。 / Return TRUE if the given feature is a trap" alt="" coords="832,2032,893,2059"/>
+<area shape="rect" href="warning_8cpp.html#a799feb0de32772ab33b90ee6e4700959" title="警告基準を定めるためにモンスターの打撃最大ダメージを算出する / Calculate blow damages" alt="" coords="811,1880,915,1907"/>
+<area shape="rect" href="warning_8cpp.html#a35c781435161cc23ece5a586e6a6546f" title="警告を放つアイテムを選択する / Choose one of items that have warning flag Calculate spell damages" alt="" coords="789,1931,936,1957"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="movement-execution_8cpp_a586b9fe6bc207183655cdfb8dcfaf464_icgraph.png" border="0" usemap="#amovement-execution_8cpp_a586b9fe6bc207183655cdfb8dcfaf464_icgraph" alt=""/></div>
+<map name="amovement-execution_8cpp_a586b9fe6bc207183655cdfb8dcfaf464_icgraph" id="amovement-execution_8cpp_a586b9fe6bc207183655cdfb8dcfaf464_icgraph">
+<area shape="rect" title="該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す / Move player in the given direction, with the given &quot;pickup&quot; flag." alt="" coords="888,169,997,196"/>
+<area shape="rect" href="mind-berserker_8cpp.html#a73db877ef674132d5c3149ed726ccf47" title="怒りの発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;berserker&#39;." alt="" coords="709,5,840,32"/>
+<area shape="rect" href="cmd-move_8cpp.html#a52d23a65648bfd0f53bf6e5c6690b635" title="「歩く」動作コマンドのメインルーチン / Support code for the &quot;Walk&quot; and &quot;Jump&quot; commands" alt="" coords="362,56,463,83"/>
+<area shape="rect" href="open-close-execution_8cpp.html#a0b297aca75e05da37c74a0e7418b6fa0" title="「打ち破る」動作コマンドのサブルーチン / Perform the basic &quot;bash&quot; command" alt="" coords="735,119,814,145"/>
+<area shape="rect" href="open-close-execution_8cpp.html#ad1cd5c9c791561ebb1f78caf1bb3bef3" title="箱のトラップを解除するコマンドのサブルーチン / Perform the basic &quot;disarm&quot; command" alt="" coords="730,169,819,196"/>
+<area shape="rect" href="run-execution_8cpp.html#af168900c990c8f45296e1cdf5780e627" title="継続的なダッシュ処理 / Take one step along the current &quot;run&quot; path" alt="" coords="559,259,631,285"/>
+<area shape="rect" href="travel-execution_8cpp.html#ae1ee60425d5127a7f8d00b144c1187d1" title="トラベル機能の実装 / Travel command" alt="" coords="188,360,272,387"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a49b73965d0ef306e6cb8a9dc70ed212a" title=" " alt="" coords="529,5,661,32"/>
+<area shape="rect" href="cmd-mind_8cpp.html#aabc979c31c0704f59ff46f8254ddb892" title=" " alt="" coords="344,5,481,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,183,296,209"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,309,116,336"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#a5a74463d27e5f0d96dd1c49ab85d850c" title="「打ち破る」動作コマンドのメインルーチン / Bash open a door, success based on character strength" alt="" coords="544,107,647,133"/>
+<area shape="rect" href="cmd-others_8cpp.html#a815a7a5e204c0455b946a163f5012bc0" title=" " alt="" coords="558,157,633,184"/>
+<area shape="rect" href="cmd-others_8cpp.html#a11518397b269903d9ab5eaec7d7e9e00" title="特定のマスに影響を及ぼすための汎用的コマンド / Manipulate an adjacent grid in some way" alt="" coords="363,157,463,184"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#af905b3420d1017dc794ab89a9d6d0c42" title="箱、床のトラップ解除処理双方の統合メインルーチン / Disarms a trap, or chest" alt="" coords="355,208,470,235"/>
+<area shape="rect" href="cmd-move_8cpp.html#af37fcf2891ab1245c2faa79a1dfa6625" title="「走る」動作コマンドのメインルーチン / Start running." alt="" coords="366,259,459,285"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分56秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

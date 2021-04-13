@@ -1,0 +1,52 @@
+<map id="close_game" name="close_game">
+<area shape="rect" id="node1" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="5,1286,97,1313"/>
+<area shape="rect" id="node2" href="$game-closer_8cpp.html#a87d2bc43dd7c1537d1b537a9f776a73b" title="ゲームクローズ時、プレイヤーが死亡しているかのチェックを行い死亡していないならば、確認キー入力とスコア表示、現フロアの初期化を行う。" alt="" coords="171,577,267,603"/>
+<area shape="rect" id="node3" href="$game-closer_8cpp.html#a7cf64dc3aba4c5aa43d6bb2c5397d1e5" title=" " alt="" coords="369,273,451,299"/>
+<area shape="rect" id="node5" href="$uid-checker_8cpp.html#a59c71c10d8af1998dee4791396cb9d1d" title="ファイルのドロップパーミッションチェック / Hack – drop permissions" alt="" coords="727,222,847,249"/>
+<area shape="rect" id="node6" href="$uid-checker_8cpp.html#a10816f3dfe2970e4b4c89e5362304f83" title="ファイルのグラブパーミッションチェック / Hack – grab permissions" alt="" coords="727,45,847,71"/>
+<area shape="rect" id="node10" href="$stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="741,551,832,578"/>
+<area shape="rect" id="node11" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="747,1159,826,1186"/>
+<area shape="rect" id="node13" href="$save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="558,425,649,451"/>
+<area shape="rect" id="node14" href="$world_8cpp.html#a722be27807c99a7258058b2baabee95e" title="実ゲームプレイ時間を更新する" alt="" coords="728,1438,845,1465"/>
+<area shape="rect" id="node15" href="$signal-handlers_8cpp.html#a7074c9ea83cb822ec7c9835dfccebdb6" title="OSからのSIGTSTPシグナルを無視する関数 / Ignore SIGTSTP signals (keyboard suspend)" alt="" coords="536,171,671,198"/>
+<area shape="rect" id="node19" href="$scores_8cpp.html#ab638b7997049f0c4d7fbeac1f0f0a2d0" title="指定された順位範囲でスコアを並べて表示する / Display the scores in a given range." alt="" coords="535,779,672,806"/>
+<area shape="rect" id="node26" href="$z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="745,2299,828,2326"/>
+<area shape="rect" id="node28" href="$scores_8cpp.html#ac992753447accdb78088d7d04620a733" title="スコアファイル出力 Display some character info" alt="" coords="555,2198,651,2225"/>
+<area shape="rect" id="node29" href="$display-player_8cpp.html#a47326bd321e057559d696b8252a26271" title="プレイヤーのステータス表示メイン処理 Display the character on the screen (various modes)" alt="" coords="551,1641,656,1667"/>
+<area shape="rect" id="node30" href="$angband-files_8cpp.html#a0aaa636968ab7a5666dc2d7d779f82ca" title=" " alt="" coords="185,2654,252,2681"/>
+<area shape="rect" id="node31" href="$screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="579,1793,628,1819"/>
+<area shape="rect" id="node32" href="$asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="177,729,260,755"/>
+<area shape="rect" id="node34" href="$scores_8cpp.html#a646d1119b381e0191fe2109589649b2b" title="勝利者用の引退演出処理 / Change the player into a King! &#45;RAK&#45;" alt="" coords="382,1919,438,1946"/>
+<area shape="rect" id="node37" href="$angband-files_8cpp.html#aed68cacae5a8a2502d31a2ee2a081898" title="ファイル入出力のためのパス生成する。/ Create a new path by appending a file (or directory) to a path." alt="" coords="746,2426,827,2453"/>
+<area shape="rect" id="node39" href="$process-death_8cpp.html#a6995792183c37e7b9d18101b3f461c37" title="墓石のアスキーアート表示 / Display a &quot;tomb&#45;stone&quot;" alt="" coords="369,2299,451,2326"/>
+<area shape="rect" id="node45" href="$game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="145,1228,292,1269"/>
+<area shape="rect" id="node47" href="$process-death_8cpp.html#ae9c570eb0fbf3c678455e095701f5548" title="死亡、引退時の簡易ステータス表示" alt="" coords="159,1489,278,1515"/>
+<area shape="rect" id="node50" href="$scores_8cpp.html#af3bc9911d7f0c3a60be12ca5ea8713b8" title="スコアの過去二十位内ランキングを表示する Enters a players name on a hi&#45;score table, if &quot;legal&quot;, and in any case,..." alt="" coords="367,127,453,154"/>
+<area shape="rect" id="node9" href="$cmd-save_8cpp.html#a5f3c9a464d1f438f0a2860a68b31da96" title="セーブするコマンドのメインルーチン Save the game" alt="" coords="340,475,480,502"/>
+<area shape="rect" id="node12" href="$screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="767,881,806,907"/>
+<area shape="rect" id="node16" href="$input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="760,982,813,1009"/>
+<area shape="rect" id="node17" href="$sound-of-music_8cpp.html#afbe4cbf7966050b5a6f68487a7d492ef" title="Hack – Play a music" alt="" coords="366,526,454,553"/>
+<area shape="rect" id="node18" href="$scores_8cpp.html#ac8cf8933c4b99926822c83fb819771cc" title="プレイヤーの現在のスコアをランキングに挟む / Predict the players location, and display it." alt="" coords="360,931,460,958"/>
+<area shape="rect" id="node4" href="$floor-save_8cpp.html#af6a0932b05702c7850af22d11e57b675" title="保存フロア用テンポラリファイルを削除する / Kill temporary files" alt="" coords="528,70,679,97"/>
+<area shape="rect" id="node7" href="$angband-files_8cpp.html#a5a186f4266676163ec63ff8413334fb1" title=" " alt="" coords="568,222,639,249"/>
+<area shape="rect" id="node8" href="$signal-handlers_8cpp.html#a09d63f1fdcc1d71b1ecd393078d21075" title="OSからのSIGTSTPシグナルハンドラ / Handle SIGTSTP signals (keyboard suspend)" alt="" coords="535,273,672,299"/>
+<area shape="rect" id="node20" href="$screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="749,678,825,705"/>
+<area shape="rect" id="node21" href="$z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="757,2046,816,2073"/>
+<area shape="rect" id="node22" href="$scores_8cpp.html#a21d404b1ebb714141bf43689560aa406" title="所定ポインタからスコア情報を読み取る / Read one score from the highscore file" alt="" coords="731,729,842,755"/>
+<area shape="rect" id="node23" href="$scores_8cpp.html#adee3ea2bc90aeda5dafba5b4bf0277f7" title="i番目のスコア情報にバッファ位置をシークする / Seek score &#39;i&#39; in the highscore file" alt="" coords="730,779,843,806"/>
+<area shape="rect" id="node24" href="$screen-processor_8cpp.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5" title=" " alt="" coords="755,2097,818,2123"/>
+<area shape="rect" id="node25" href="$z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="901,2059,951,2086"/>
+<area shape="rect" id="node27" href="$z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="735,1691,839,1718"/>
+<area shape="rect" id="node33" href="$asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="544,729,663,755"/>
+<area shape="rect" id="node35" href="$write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="547,2046,659,2073"/>
+<area shape="rect" id="node36" href="$asking-player_8cpp.html#a28b7bdf88cc755ffa6c94bb59d997d1a" title=" " alt="" coords="561,1843,645,1870"/>
+<area shape="rect" id="node38" href="$z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="895,2198,957,2225"/>
+<area shape="rect" id="node40" href="$process-death_8cpp.html#a31bd88d0e6c0dc5695cf8404a36b1ead" title="墓石の真ん中に文字列を書き込む / Centers a string within a GRAVE_LINE_WIDTH character string &#45;JWT&#45;" alt="" coords="738,2350,835,2377"/>
+<area shape="rect" id="node41" href="$display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="558,1995,649,2022"/>
+<area shape="rect" id="node42" href="$files-util_8cpp.html#a7a5f649ee8fe63baf4c1500fb050c8e2" title="墓のアスキーアートテンプレを読み込む" alt="" coords="551,2451,656,2478"/>
+<area shape="rect" id="node43" href="$process-death_8cpp.html#ac5ecd5e9c0807bd481992e032a8404bb" title="墓に基本情報を表示" alt="" coords="533,2350,673,2377"/>
+<area shape="rect" id="node44" href="$process-death_8cpp.html#ae57e647c0440e39537e3c4d92320a2e6" title="Detailed display of words engraved on the tomb (English version only)" alt="" coords="540,2249,667,2275"/>
+<area shape="rect" id="node46" href="$scores_8cpp.html#af49a50cb34bb1e825724246836430c65" title="スコアサーバへの転送処理" alt="" coords="347,1083,473,1110"/>
+<area shape="rect" id="node48" href="$process-death_8cpp.html#aedfc0764df97dc71148c2201d28d7fd1" title="キャラクタ情報をファイルに書き出す" alt="" coords="347,1539,473,1566"/>
+<area shape="rect" id="node49" href="$process-death_8cpp.html#ae28b0711f29637713f74286cb654a4e6" title="自動的にプレイヤーステータスをファイルダンプ出力する" alt="" coords="345,1742,475,1769"/>
+</map>

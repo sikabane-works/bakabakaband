@@ -1,0 +1,796 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/action/activation-execution.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_63a79716ac36ae14e4cbc21f08c9941e.html">action</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">activation-execution.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="activation-execution_8h_source.html">action/activation-execution.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="action-limited_8h_source.html">action/action-limited.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="random-art-effects_8h_source.html">artifact/random-art-effects.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="artifact-info_8h_source.html">artifact/artifact-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="window-redrawer_8h_source.html">core/window-redrawer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-effect-util_8h_source.html">effect/spells-effect-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="geometry_8h_source.html">floor/geometry.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="disturbance-options_8h_source.html">game-option/disturbance-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-options_8h_source.html">game-option/input-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-definitions-table_8h_source.html">main/sound-definitions-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-generator_8h_source.html">monster-floor/monster-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="place-monster-types_8h_source.html">monster-floor/place-monster-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-info_8h_source.html">monster/monster-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-util_8h_source.html">monster/monster-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="activation-switcher_8h_source.html">object-activation/activation-switcher.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="activation-util_8h_source.html">object-activation/activation-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-ego_8h_source.html">object-enchant/object-ego.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-enchant_8h_source.html">object-hook/hook-enchant.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-info_8h_source.html">object/object-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind_8h_source.html">object/object-kind.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="racial-android_8h_source.html">racial/racial-android.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-ball_8h_source.html">specific-object/monster-ball.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-launcher_8h_source.html">spell-kind/spells-launcher.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-teleport_8h_source.html">spell-kind/spells-teleport.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spells-hex_8h_source.html">spell-realm/spells-hex.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="spell-types_8h_source.html">spell/spell-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-lite-types_8h_source.html">sv-definition/sv-lite-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-ring-types_8h_source.html">sv-definition/sv-ring-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="artifact-type-definition_8h_source.html">system/artifact-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-type-definition_8h_source.html">system/monster-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="target-getter_8h_source.html">target/target-getter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quarks_8h_source.html">util/quarks.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sort_8h_source.html">util/sort.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+activation-execution.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-execution_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2action_2activation-execution_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2action_2activation-execution_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2action_2activation-execution_8cpp">
+<area shape="rect" title=" " alt="" coords="2602,5,2790,61"/>
+<area shape="rect" href="activation-execution_8h.html" title=" " alt="" coords="5,206,192,233"/>
+<area shape="rect" href="action-limited_8h.html" title=" " alt="" coords="216,206,365,233"/>
+<area shape="rect" href="random-art-effects_8h.html" title=" " alt="" coords="4399,109,4526,151"/>
+<area shape="rect" href="artifact-info_8h.html" title=" " alt="" coords="1661,117,1800,143"/>
+<area shape="rect" href="window-redrawer_8h.html" title=" " alt="" coords="1560,206,1717,233"/>
+<area shape="rect" href="spells-effect-util_8h.html" title=" " alt="" coords="1742,199,1869,240"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="3889,117,4004,143"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="4334,199,4479,240"/>
+<area shape="rect" href="disturbance-options_8h.html" title=" " alt="" coords="1893,199,2057,240"/>
+<area shape="rect" href="input-options_8h.html" title=" " alt="" coords="3559,206,3742,233"/>
+<area shape="rect" href="sound-definitions-table_8h.html" title=" " alt="" coords="4550,109,4701,151"/>
+<area shape="rect" href="sound-of-music_8h.html" title=" " alt="" coords="2838,117,2991,143"/>
+<area shape="rect" href="monster-generator_8h.html" title=" " alt="" coords="4110,199,4258,240"/>
+<area shape="rect" href="place-monster-types_8h.html" title=" " alt="" coords="4725,109,4857,151"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="4225,109,4375,151"/>
+<area shape="rect" href="monster-info_8h.html" title=" " alt="" coords="3660,117,3815,143"/>
+<area shape="rect" href="monster-util_8h.html" title=" " alt="" coords="389,206,541,233"/>
+<area shape="rect" href="activation-switcher_8h.html" title=" " alt="" coords="565,199,739,240"/>
+<area shape="rect" href="activation-util_8h.html" title=" " alt="" coords="763,199,936,240"/>
+<area shape="rect" href="object-ego_8h.html" title=" " alt="" coords="3439,109,3585,151"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="3017,199,3151,240"/>
+<area shape="rect" href="hook-enchant_8h.html" title=" " alt="" coords="961,206,1143,233"/>
+<area shape="rect" href="object-info_8h.html" title=" " alt="" coords="2683,117,2813,143"/>
+<area shape="rect" href="object-kind_8h.html" title=" " alt="" coords="3015,117,3150,143"/>
+<area shape="rect" href="racial-android_8h.html" title=" " alt="" coords="1109,117,1254,143"/>
+<area shape="rect" href="monster-ball_8h.html" title=" " alt="" coords="1278,109,1434,151"/>
+<area shape="rect" href="spells-launcher_8h.html" title=" " alt="" coords="1459,117,1637,143"/>
+<area shape="rect" href="spells-teleport_8h.html" title=" " alt="" coords="4028,117,4201,143"/>
+<area shape="rect" href="spells-hex_8h.html" title=" " alt="" coords="1981,109,2104,151"/>
+<area shape="rect" href="spell-types_8h.html" title=" " alt="" coords="4881,117,5007,143"/>
+<area shape="rect" href="sv-lite-types_8h.html" title=" " alt="" coords="5031,109,5158,151"/>
+<area shape="rect" href="sv-ring-types_8h.html" title=" " alt="" coords="5183,109,5313,151"/>
+<area shape="rect" href="artifact-type-definition_8h.html" title=" " alt="" coords="3226,109,3363,151"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="5338,117,5526,143"/>
+<area shape="rect" href="target-getter_8h.html" title=" " alt="" coords="2129,117,2269,143"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="2293,117,2456,143"/>
+<area shape="rect" href="quarks_8h.html" title=" " alt="" coords="2233,206,2327,233"/>
+<area shape="rect" href="sort_8h.html" title=" " alt="" coords="2351,206,2427,233"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="2451,206,2618,233"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="2642,206,2739,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="2174,288,2303,315"/>
+<area shape="rect" href="activation-info-table_8h.html" title=" " alt="" coords="1371,199,1536,240"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="4017,288,4127,315"/>
+<area shape="rect" title=" " alt="" coords="3428,206,3484,233"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="4801,199,4946,240"/>
+<area shape="rect" title=" " alt="" coords="3650,288,3705,315"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="3766,206,3933,233"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="3175,199,3302,240"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="4555,206,4674,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a4884eb17b8481177864da4a0288a6aa1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activation-execution_8cpp.html#a4884eb17b8481177864da4a0288a6aa1">decide_activation_level</a> (<a class="el" href="structplayer__type.html">player_type</a> *user_ptr, <a class="el" href="structae__type.html">ae_type</a> *ae_ptr)</td></tr>
+<tr class="separator:a4884eb17b8481177864da4a0288a6aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4ca9718f3b4f597c713e039303fdc54"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activation-execution_8cpp.html#aa4ca9718f3b4f597c713e039303fdc54">decide_chance_fail</a> (<a class="el" href="structplayer__type.html">player_type</a> *user_ptr, <a class="el" href="structae__type.html">ae_type</a> *ae_ptr)</td></tr>
+<tr class="separator:aa4ca9718f3b4f597c713e039303fdc54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa27b1be977e0e349b0c6b710a513ed0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activation-execution_8cpp.html#aaa27b1be977e0e349b0c6b710a513ed0">decide_activation_success</a> (<a class="el" href="structplayer__type.html">player_type</a> *user_ptr, <a class="el" href="structae__type.html">ae_type</a> *ae_ptr)</td></tr>
+<tr class="separator:aaa27b1be977e0e349b0c6b710a513ed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25cd2f2407f65cc9f4f23b504834ae28"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activation-execution_8cpp.html#a25cd2f2407f65cc9f4f23b504834ae28">check_activation_success</a> (<a class="el" href="structae__type.html">ae_type</a> *ae_ptr)</td></tr>
+<tr class="separator:a25cd2f2407f65cc9f4f23b504834ae28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ab73969a31f28fccf568363cc16347e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activation-execution_8cpp.html#a1ab73969a31f28fccf568363cc16347e">check_activation_conditions</a> (<a class="el" href="structplayer__type.html">player_type</a> *user_ptr, <a class="el" href="structae__type.html">ae_type</a> *ae_ptr)</td></tr>
+<tr class="separator:a1ab73969a31f28fccf568363cc16347e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cfcfe9ad47205294f63f4da85bac71c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c">activate_artifact</a> (<a class="el" href="structplayer__type.html">player_type</a> *user_ptr, <a class="el" href="structobject__type.html">object_type</a> *o_ptr)</td></tr>
+<tr class="memdesc:a8cfcfe9ad47205294f63f4da85bac71c"><td class="mdescLeft">&#160;</td><td class="mdescRight">アイテムの発動効果を処理する。  <a href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c">[詳解]</a><br /></td></tr>
+<tr class="separator:a8cfcfe9ad47205294f63f4da85bac71c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30a9f7720cfaaf81f7dcc8992bdd34e7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activation-execution_8cpp.html#a30a9f7720cfaaf81f7dcc8992bdd34e7">activate_whistle</a> (<a class="el" href="structplayer__type.html">player_type</a> *user_ptr, <a class="el" href="structae__type.html">ae_type</a> *ae_ptr)</td></tr>
+<tr class="separator:a30a9f7720cfaaf81f7dcc8992bdd34e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab19289487f397c69ecdf9b873512f19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19">exe_activate</a> (<a class="el" href="structplayer__type.html">player_type</a> *user_ptr, <a class="el" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a> item)</td></tr>
+<tr class="memdesc:aab19289487f397c69ecdf9b873512f19"><td class="mdescLeft">&#160;</td><td class="mdescRight">装備を発動するコマンドのサブルーチン / Activate a wielded object.  <a href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19">[詳解]</a><br /></td></tr>
+<tr class="separator:aab19289487f397c69ecdf9b873512f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a8cfcfe9ad47205294f63f4da85bac71c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cfcfe9ad47205294f63f4da85bac71c">&#9670;&nbsp;</a></span>activate_artifact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> activate_artifact </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>user_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobject__type.html">object_type</a> *&#160;</td>
+          <td class="paramname"><em>o_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アイテムの発動効果を処理する。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">user_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">o_ptr</td><td>対象のオブジェクト構造体ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>発動実行の是非を返す。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-execution_8cpp_a8cfcfe9ad47205294f63f4da85bac71c_cgraph.png" border="0" usemap="#aactivation-execution_8cpp_a8cfcfe9ad47205294f63f4da85bac71c_cgraph" alt=""/></div>
+<map name="aactivation-execution_8cpp_a8cfcfe9ad47205294f63f4da85bac71c_cgraph" id="aactivation-execution_8cpp_a8cfcfe9ad47205294f63f4da85bac71c_cgraph">
+<area shape="rect" title="アイテムの発動効果を処理する。" alt="" coords="5,81,117,108"/>
+<area shape="rect" href="artifact-info_8cpp.html#a545193ad600698cdfc665e311beee97c" title="オブジェクトから発動効果構造体のポインタを取得する。" alt="" coords="165,5,296,32"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="635,461,725,488"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="824,1404,903,1431"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="171,1125,291,1152"/>
+<area shape="rect" href="artifact-info_8cpp.html#a937fce3b10509fe08c9881591860d553" title="オブジェクトから能力発動IDを取得する。" alt="" coords="383,5,497,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="830,461,897,488"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="959,1277,1061,1304"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="969,1379,1051,1405"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="1118,1353,1205,1380"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="1117,1404,1205,1431"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="951,1480,1069,1507"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="963,1531,1057,1557"/>
+<area shape="rect" href="activation-resistance_8cpp.html#ae2acd077a4b8141b8104787e38d6e1e8" title="酸属性のボールを放ち、酸の一時耐性を得る。" alt="" coords="378,766,502,807"/>
+<area shape="rect" href="activation-others_8cpp.html#a54348d20a769a722e4b26178ab920c8e" title=" " alt="" coords="371,897,509,924"/>
+<area shape="rect" href="activation-others_8cpp.html#adf4603d2d6a36df4b46bb4453d33be20" title=" " alt="" coords="607,1201,753,1228"/>
+<area shape="rect" href="activation-others_8cpp.html#a8126e318689e9238d8d6ad2cad60a786" title=" " alt="" coords="367,831,513,873"/>
+<area shape="rect" href="activation-others_8cpp.html#a6f6ddd9f4eedd69de1762170558b57c7" title=" " alt="" coords="603,1303,757,1329"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#ad95ed4757ae72cc9af47b979b640c233" title=" " alt="" coords="611,1353,749,1380"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a8e06760c511de2abfea451e6d4f97181" title=" " alt="" coords="611,1404,749,1431"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a2e41ecf62c5a43e70265d6843958a8cb" title=" " alt="" coords="611,1455,749,1481"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a7e7df95c7d970728f75d8a6e0690a003" title=" " alt="" coords="377,157,503,184"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#ad38925026716cd111c8500745f895402" title=" " alt="" coords="611,1505,749,1532"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#aafc7b4cb2da217db61484c60939cac7a" title=" " alt="" coords="611,1556,749,1583"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a6e594ba36b3032460e8bccf1df5fae8a" title=" " alt="" coords="615,1607,745,1633"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#abf2654610ca985e29f43f0fdd0afab81" title=" " alt="" coords="375,208,505,235"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a1e6787abe18636efc7f637fb0ba2889a" title=" " alt="" coords="615,1657,745,1684"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a2145ac82ec790bedc61a11d51d93dfa4" title=" " alt="" coords="615,1708,745,1735"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a5f4625552656aee45b62542787f7cd08" title=" " alt="" coords="381,259,499,285"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#ae2ed383c43b5bff3246052bf1af7dd1a" title=" " alt="" coords="374,309,506,336"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#ad007e36c29df75bdaa379dcc07247984" title=" " alt="" coords="609,1759,751,1785"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a49a26e4bf9476aac0f30694eff7988dc" title=" " alt="" coords="611,1809,749,1836"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a63ea1d58daa7c70ba6e1d45881e93564" title=" " alt="" coords="375,411,505,437"/>
+<area shape="rect" href="activation-others_8cpp.html#ad84ac4657250c6d76a78884befa7965d" title=" " alt="" coords="612,1860,748,1887"/>
+<area shape="rect" href="blade-turner_8cpp.html#a9df4f5418f546d8fa9d75c1676e66a36" title=" " alt="" coords="611,1923,749,1949"/>
+<area shape="rect" href="activation-others_8cpp.html#ac029480297725b0f503c12a3702a3ec0" title=" " alt="" coords="366,461,514,488"/>
+<area shape="rect" href="bloody-moon_8cpp.html#a33e96be43e6166ee3834b0ec7c534abb" title="Let&#39;s dance a RONDO!!" alt="" coords="605,1999,755,2025"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a0e84cb20d7f44ba9ac51287def39aef8" title=" " alt="" coords="611,2100,749,2127"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a4bc3a3a94661aaeeb64cbc2b0775f674" title=" " alt="" coords="371,1049,509,1076"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a3fc6a5c1b253f492236c3a4c90d90612" title=" " alt="" coords="369,1911,511,1937"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a4dd4df30d425b57c01df4338c9e94588" title=" " alt="" coords="369,1961,511,1988"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a2eb19d8e03ab35dbf35d2d0557a8b553" title=" " alt="" coords="371,948,509,975"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#acb74154b9356916b76a332afcd26d71a" title=" " alt="" coords="614,999,746,1025"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#aa407054b85a5676d9379b2f266a7d973" title=" " alt="" coords="344,563,536,589"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#af3bddf380b282f3203801dbb1c6cde68" title=" " alt="" coords="584,1252,776,1279"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#af98a7ac4a983838465dfc1daa3f8751f" title=" " alt="" coords="373,664,507,691"/>
+<area shape="rect" href="activation-breath_8cpp.html#acf048ffbf0a3b4d81cfa1cc073ab3723" title=" " alt="" coords="370,360,510,387"/>
+<area shape="rect" href="activation-breath_8cpp.html#a56fcfe9b32761abc14453c7e2be459ec" title=" " alt="" coords="373,512,507,539"/>
+<area shape="rect" href="activation-others_8cpp.html#a3f520d2531c5cb360f4cacba49405d94" title=" " alt="" coords="613,1100,747,1127"/>
+<area shape="rect" href="activation-charm_8cpp.html#a4ba4932505e93b0fc8c471655c8bb08b" title=" " alt="" coords="363,613,517,640"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-execution_8cpp_a8cfcfe9ad47205294f63f4da85bac71c_icgraph.png" border="0" usemap="#aactivation-execution_8cpp_a8cfcfe9ad47205294f63f4da85bac71c_icgraph" alt=""/></div>
+<map name="aactivation-execution_8cpp_a8cfcfe9ad47205294f63f4da85bac71c_icgraph" id="aactivation-execution_8cpp_a8cfcfe9ad47205294f63f4da85bac71c_icgraph">
+<area shape="rect" title="アイテムの発動効果を処理する。" alt="" coords="495,31,607,57"/>
+<area shape="rect" href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="352,31,447,57"/>
+<area shape="rect" href="cmd-item_8cpp.html#a415fb2b959d0aee88a1799fa8f38b18e" title="装備を発動するコマンドのメインルーチン /" alt="" coords="185,5,304,32"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="197,56,293,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a30a9f7720cfaaf81f7dcc8992bdd34e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30a9f7720cfaaf81f7dcc8992bdd34e7">&#9670;&nbsp;</a></span>activate_whistle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> activate_whistle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>user_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structae__type.html">ae_type</a> *&#160;</td>
+          <td class="paramname"><em>ae_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-execution_8cpp_a30a9f7720cfaaf81f7dcc8992bdd34e7_cgraph.png" border="0" usemap="#aactivation-execution_8cpp_a30a9f7720cfaaf81f7dcc8992bdd34e7_cgraph" alt=""/></div>
+<map name="aactivation-execution_8cpp_a30a9f7720cfaaf81f7dcc8992bdd34e7_cgraph" id="aactivation-execution_8cpp_a30a9f7720cfaaf81f7dcc8992bdd34e7_cgraph">
+<area shape="rect" title=" " alt="" coords="5,613,119,640"/>
+<area shape="rect" href="sort_8cpp.html#ab407e67d890db0c6e9b33de4c90b5b84" title=" " alt="" coords="203,385,275,412"/>
+<area shape="rect" href="sort_8cpp.html#a0be5ac60bc38ac90d009e07b6df01f72" title="ペット入りモンスターボールをソートするための比較関数" alt="" coords="171,487,307,513"/>
+<area shape="rect" href="sort_8cpp.html#a626a506e850eb194e7894b988ba05d10" title="モンスター種族情報を特定の基準によりソートするためのスワップ処理 Sorting hook – Swap function – see below" alt="" coords="167,537,311,564"/>
+<area shape="rect" href="spells-hex_8cpp.html#a1fe803ed2313c7c276285c2803e83ed3" title=" " alt="" coords="177,588,300,615"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="210,639,267,665"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="174,689,303,716"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="852,664,947,691"/>
+<area shape="rect" href="spells-teleport_8cpp.html#a08f9196fc721f7435e72ecda87be3bb7" title="モンスターを指定された座標付近にテレポートする / Teleport monster next to a grid near the given location" alt="" coords="170,841,307,868"/>
+<area shape="rect" href="sort_8cpp.html#a99d218f2e03679f2f8418b8d1540f8cf" title=" " alt="" coords="364,335,464,361"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="359,385,469,412"/>
+<area shape="rect" href="spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="375,436,453,463"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="707,664,789,691"/>
+<area shape="rect" href="spells-hex_8cpp.html#ab35c57227b5fdac063f315e972f67188" title=" " alt="" coords="367,740,461,767"/>
+<area shape="rect" href="realm-arcane_8cpp.html#a7832487e3190270957aa0ada40c22dc0" title="秘術領域魔法の各処理を行う" alt="" coords="523,107,639,133"/>
+<area shape="rect" href="realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="525,157,637,184"/>
+<area shape="rect" href="realm-craft_8cpp.html#ae0958dc852b5eeb3488915ac62e70027" title="匠領域魔法の各処理を行う" alt="" coords="529,208,632,235"/>
+<area shape="rect" href="realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="519,259,642,285"/>
+<area shape="rect" href="realm-demon_8cpp.html#a67e9c81718fe7bad2fc64c18ded1f178" title="悪魔領域魔法の各処理を行う" alt="" coords="519,309,642,336"/>
+<area shape="rect" href="realm-death_8cpp.html#a50c6496985b42dd66c09ac5be171bbdf" title="暗黒領域魔法の各処理を行う" alt="" coords="526,360,635,387"/>
+<area shape="rect" href="realm-hex_8cpp.html#a85e85584a1e695808a78c678b0aea860" title="呪術領域魔法の各処理を行う" alt="" coords="531,664,630,691"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="517,461,644,488"/>
+<area shape="rect" href="realm-life_8cpp.html#a2ce6e85d24c57450e7326628ccbd8b51" title="生命領域魔法の各処理を行う" alt="" coords="534,512,627,539"/>
+<area shape="rect" href="realm-song_8cpp.html#abfadca249746638675c5db0e3475085e" title="歌の各処理を行う" alt="" coords="692,512,804,539"/>
+<area shape="rect" href="realm-nature_8cpp.html#a4228ac79d3420a20e00131f777943f18" title="自然領域魔法の各処理を行う" alt="" coords="524,563,637,589"/>
+<area shape="rect" href="realm-sorcery_8cpp.html#ab379a37d3f6e930141d7d08b4e16148d" title="仙術領域魔法の各処理を行う" alt="" coords="521,613,641,640"/>
+<area shape="rect" href="realm-trump_8cpp.html#adbd3cfb288ff260c36b10ed6ff0fa4a5" title="トランプ領域魔法の各処理を行う" alt="" coords="525,5,636,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-execution_8cpp_a30a9f7720cfaaf81f7dcc8992bdd34e7_icgraph.png" border="0" usemap="#aactivation-execution_8cpp_a30a9f7720cfaaf81f7dcc8992bdd34e7_icgraph" alt=""/></div>
+<map name="aactivation-execution_8cpp_a30a9f7720cfaaf81f7dcc8992bdd34e7_icgraph" id="aactivation-execution_8cpp_a30a9f7720cfaaf81f7dcc8992bdd34e7_icgraph">
+<area shape="rect" title=" " alt="" coords="495,31,608,57"/>
+<area shape="rect" href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="352,31,447,57"/>
+<area shape="rect" href="cmd-item_8cpp.html#a415fb2b959d0aee88a1799fa8f38b18e" title="装備を発動するコマンドのメインルーチン /" alt="" coords="185,5,304,32"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="197,56,293,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1ab73969a31f28fccf568363cc16347e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ab73969a31f28fccf568363cc16347e">&#9670;&nbsp;</a></span>check_activation_conditions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_activation_conditions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>user_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structae__type.html">ae_type</a> *&#160;</td>
+          <td class="paramname"><em>ae_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-execution_8cpp_a1ab73969a31f28fccf568363cc16347e_cgraph.png" border="0" usemap="#aactivation-execution_8cpp_a1ab73969a31f28fccf568363cc16347e_cgraph" alt=""/></div>
+<map name="aactivation-execution_8cpp_a1ab73969a31f28fccf568363cc16347e_cgraph" id="aactivation-execution_8cpp_a1ab73969a31f28fccf568363cc16347e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,132,189,159"/>
+<area shape="rect" href="activation-execution_8cpp.html#a25cd2f2407f65cc9f4f23b504834ae28" title=" " alt="" coords="237,81,412,108"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="460,132,539,159"/>
+<area shape="rect" href="player-status_8cpp.html#a66e3d8439c969c25980516bbf58c5cad" title=" " alt="" coords="289,183,361,209"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="475,31,524,57"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="471,81,528,108"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="595,5,697,32"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="605,107,687,133"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="754,69,841,96"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="753,132,841,159"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="587,208,705,235"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="599,259,693,285"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-execution_8cpp_a1ab73969a31f28fccf568363cc16347e_icgraph.png" border="0" usemap="#aactivation-execution_8cpp_a1ab73969a31f28fccf568363cc16347e_icgraph" alt=""/></div>
+<map name="aactivation-execution_8cpp_a1ab73969a31f28fccf568363cc16347e_icgraph" id="aactivation-execution_8cpp_a1ab73969a31f28fccf568363cc16347e_icgraph">
+<area shape="rect" title=" " alt="" coords="495,31,679,57"/>
+<area shape="rect" href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="352,31,447,57"/>
+<area shape="rect" href="cmd-item_8cpp.html#a415fb2b959d0aee88a1799fa8f38b18e" title="装備を発動するコマンドのメインルーチン /" alt="" coords="185,5,304,32"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="197,56,293,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a25cd2f2407f65cc9f4f23b504834ae28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25cd2f2407f65cc9f4f23b504834ae28">&#9670;&nbsp;</a></span>check_activation_success()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_activation_success </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structae__type.html">ae_type</a> *&#160;</td>
+          <td class="paramname"><em>ae_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-execution_8cpp_a25cd2f2407f65cc9f4f23b504834ae28_cgraph.png" border="0" usemap="#aactivation-execution_8cpp_a25cd2f2407f65cc9f4f23b504834ae28_cgraph" alt=""/></div>
+<map name="aactivation-execution_8cpp_a25cd2f2407f65cc9f4f23b504834ae28_cgraph" id="aactivation-execution_8cpp_a25cd2f2407f65cc9f4f23b504834ae28_cgraph">
+<area shape="rect" title=" " alt="" coords="5,211,180,238"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="742,275,791,302"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="228,211,307,238"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="239,262,296,288"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="363,110,465,136"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="373,262,455,288"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="556,363,643,390"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="555,160,643,187"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="355,402,473,428"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="367,211,461,238"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="546,59,653,86"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="574,110,625,136"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="578,312,621,339"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="573,211,626,238"/>
+<area shape="rect" href="display-messages_8cpp.html#a8647d1d8cbef5e4db465563838dd2b87" title=" " alt="" coords="521,262,677,288"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="725,351,808,378"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-execution_8cpp_a25cd2f2407f65cc9f4f23b504834ae28_icgraph.png" border="0" usemap="#aactivation-execution_8cpp_a25cd2f2407f65cc9f4f23b504834ae28_icgraph" alt=""/></div>
+<map name="aactivation-execution_8cpp_a25cd2f2407f65cc9f4f23b504834ae28_icgraph" id="aactivation-execution_8cpp_a25cd2f2407f65cc9f4f23b504834ae28_icgraph">
+<area shape="rect" title=" " alt="" coords="547,31,721,57"/>
+<area shape="rect" href="activation-execution_8cpp.html#a1ab73969a31f28fccf568363cc16347e" title=" " alt="" coords="315,31,499,57"/>
+<area shape="rect" href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="172,31,267,57"/>
+<area shape="rect" href="cmd-item_8cpp.html#a415fb2b959d0aee88a1799fa8f38b18e" title="装備を発動するコマンドのメインルーチン /" alt="" coords="5,5,124,32"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="17,56,113,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4884eb17b8481177864da4a0288a6aa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4884eb17b8481177864da4a0288a6aa1">&#9670;&nbsp;</a></span>decide_activation_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void decide_activation_level </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>user_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structae__type.html">ae_type</a> *&#160;</td>
+          <td class="paramname"><em>ae_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-execution_8cpp_a4884eb17b8481177864da4a0288a6aa1_cgraph.png" border="0" usemap="#aactivation-execution_8cpp_a4884eb17b8481177864da4a0288a6aa1_cgraph" alt=""/></div>
+<map name="aactivation-execution_8cpp_a4884eb17b8481177864da4a0288a6aa1_cgraph" id="aactivation-execution_8cpp_a4884eb17b8481177864da4a0288a6aa1_cgraph">
+<area shape="rect" title=" " alt="" coords="5,114,159,140"/>
+<area shape="rect" href="artifact-info_8cpp.html#a545193ad600698cdfc665e311beee97c" title="オブジェクトから発動効果構造体のポインタを取得する。" alt="" coords="207,114,337,140"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="767,152,921,179"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a1cd52eb9c4cad275d12f040a2c9e7fae" title="オブジェクトがランダムアーティファクトかを返す / Check if an object is random artifact" alt="" coords="548,203,719,230"/>
+<area shape="rect" href="artifact-info_8cpp.html#a937fce3b10509fe08c9881591860d553" title="オブジェクトから能力発動IDを取得する。" alt="" coords="385,114,500,140"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="582,102,685,128"/>
+<area shape="rect" href="mind-weaponsmith_8cpp.html#a73b2065aa7abf4e51a854015345db4e5" title="オブジェクトが鍛冶師のエッセンス付加済みかを返す / Check if an object is made by a smith&#39;s special ability" alt="" coords="577,51,690,78"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-execution_8cpp_a4884eb17b8481177864da4a0288a6aa1_icgraph.png" border="0" usemap="#aactivation-execution_8cpp_a4884eb17b8481177864da4a0288a6aa1_icgraph" alt=""/></div>
+<map name="aactivation-execution_8cpp_a4884eb17b8481177864da4a0288a6aa1_icgraph" id="aactivation-execution_8cpp_a4884eb17b8481177864da4a0288a6aa1_icgraph">
+<area shape="rect" title=" " alt="" coords="495,31,648,57"/>
+<area shape="rect" href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="352,31,447,57"/>
+<area shape="rect" href="cmd-item_8cpp.html#a415fb2b959d0aee88a1799fa8f38b18e" title="装備を発動するコマンドのメインルーチン /" alt="" coords="185,5,304,32"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="197,56,293,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aaa27b1be977e0e349b0c6b710a513ed0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa27b1be977e0e349b0c6b710a513ed0">&#9670;&nbsp;</a></span>decide_activation_success()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void decide_activation_success </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>user_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structae__type.html">ae_type</a> *&#160;</td>
+          <td class="paramname"><em>ae_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-execution_8cpp_aaa27b1be977e0e349b0c6b710a513ed0_icgraph.png" border="0" usemap="#aactivation-execution_8cpp_aaa27b1be977e0e349b0c6b710a513ed0_icgraph" alt=""/></div>
+<map name="aactivation-execution_8cpp_aaa27b1be977e0e349b0c6b710a513ed0_icgraph" id="aactivation-execution_8cpp_aaa27b1be977e0e349b0c6b710a513ed0_icgraph">
+<area shape="rect" title=" " alt="" coords="495,31,672,57"/>
+<area shape="rect" href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="352,31,447,57"/>
+<area shape="rect" href="cmd-item_8cpp.html#a415fb2b959d0aee88a1799fa8f38b18e" title="装備を発動するコマンドのメインルーチン /" alt="" coords="185,5,304,32"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="197,56,293,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa4ca9718f3b4f597c713e039303fdc54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4ca9718f3b4f597c713e039303fdc54">&#9670;&nbsp;</a></span>decide_chance_fail()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void decide_chance_fail </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>user_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structae__type.html">ae_type</a> *&#160;</td>
+          <td class="paramname"><em>ae_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-execution_8cpp_aa4ca9718f3b4f597c713e039303fdc54_icgraph.png" border="0" usemap="#aactivation-execution_8cpp_aa4ca9718f3b4f597c713e039303fdc54_icgraph" alt=""/></div>
+<map name="aactivation-execution_8cpp_aa4ca9718f3b4f597c713e039303fdc54_icgraph" id="aactivation-execution_8cpp_aa4ca9718f3b4f597c713e039303fdc54_icgraph">
+<area shape="rect" title=" " alt="" coords="495,31,627,57"/>
+<area shape="rect" href="activation-execution_8cpp.html#aab19289487f397c69ecdf9b873512f19" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="352,31,447,57"/>
+<area shape="rect" href="cmd-item_8cpp.html#a415fb2b959d0aee88a1799fa8f38b18e" title="装備を発動するコマンドのメインルーチン /" alt="" coords="185,5,304,32"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="197,56,293,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,31,137,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aab19289487f397c69ecdf9b873512f19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab19289487f397c69ecdf9b873512f19">&#9670;&nbsp;</a></span>exe_activate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void exe_activate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>user_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a592c0b48d60348198260e1f6ffb1897e">INVENTORY_IDX</a>&#160;</td>
+          <td class="paramname"><em>item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>装備を発動するコマンドのサブルーチン / Activate a wielded object. </p>
+<p>Wielded objects never stack. And even if they did, activatable objects never stack. </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>発動するオブジェクトの所持品ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<pre>
+Currently, only (some) artifacts, and Dragon Scale Mail, can be activated.
+But one could, for example, easily make an activatable "Ring of Plasma".
+Note that it always takes a turn to activate an artifact, even if
+the user hits "escape" at the "direction" prompt.
+</pre> <div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-execution_8cpp_aab19289487f397c69ecdf9b873512f19_cgraph.png" border="0" usemap="#aactivation-execution_8cpp_aab19289487f397c69ecdf9b873512f19_cgraph" alt=""/></div>
+<map name="aactivation-execution_8cpp_aab19289487f397c69ecdf9b873512f19_cgraph" id="aactivation-execution_8cpp_aab19289487f397c69ecdf9b873512f19_cgraph">
+<area shape="rect" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="5,1569,100,1596"/>
+<area shape="rect" href="activation-execution_8cpp.html#a8cfcfe9ad47205294f63f4da85bac71c" title="アイテムの発動効果を処理する。" alt="" coords="184,607,296,633"/>
+<area shape="rect" href="artifact-info_8cpp.html#a937fce3b10509fe08c9881591860d553" title="オブジェクトから能力発動IDを取得する。" alt="" coords="629,69,743,96"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1074,885,1153,912"/>
+<area shape="rect" href="activation-execution_8cpp.html#a30a9f7720cfaaf81f7dcc8992bdd34e7" title=" " alt="" coords="183,1772,297,1799"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="657,1569,715,1596"/>
+<area shape="rect" href="activation-execution_8cpp.html#a1ab73969a31f28fccf568363cc16347e" title=" " alt="" coords="148,1443,332,1469"/>
+<area shape="rect" href="action-limited_8cpp.html#a2d38e70c73ec7a8ef315889388365bb3" title=" " alt="" coords="396,1519,539,1545"/>
+<area shape="rect" href="activation-execution_8cpp.html#a4884eb17b8481177864da4a0288a6aa1" title=" " alt="" coords="163,95,317,121"/>
+<area shape="rect" href="activation-execution_8cpp.html#aaa27b1be977e0e349b0c6b710a513ed0" title=" " alt="" coords="151,1924,329,1951"/>
+<area shape="rect" href="activation-execution_8cpp.html#aa4ca9718f3b4f597c713e039303fdc54" title=" " alt="" coords="174,1975,306,2001"/>
+<area shape="rect" href="monster-ball_8cpp.html#a0301814245a0e3301ef7d349762fdbb5" title=" " alt="" coords="394,1215,541,1241"/>
+<area shape="rect" href="activation-util_8cpp.html#ae183fc9470aae4f58d7da4c19a7a3b27" title=" " alt="" coords="179,2025,301,2052"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="202,2076,278,2103"/>
+<area shape="rect" href="artifact-info_8cpp.html#a545193ad600698cdfc665e311beee97c" title="オブジェクトから発動効果構造体のポインタを取得する。" alt="" coords="402,69,533,96"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="857,392,948,419"/>
+<area shape="rect" href="activation-switcher_8cpp.html#a0c4745cad5a9c376ca86903b681f368f" title="プレイヤーの発動コマンド実装" alt="" coords="407,607,527,633"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="1036,95,1191,121"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a1cd52eb9c4cad275d12f040a2c9e7fae" title="オブジェクトがランダムアーティファクトかを返す / Check if an object is random artifact" alt="" coords="817,120,988,147"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="1080,392,1147,419"/>
+<area shape="rect" href="activation-resistance_8cpp.html#ae2acd077a4b8141b8104787e38d6e1e8" title="酸属性のボールを放ち、酸の一時耐性を得る。" alt="" coords="624,323,748,365"/>
+<area shape="rect" href="activation-others_8cpp.html#a54348d20a769a722e4b26178ab920c8e" title=" " alt="" coords="617,505,755,532"/>
+<area shape="rect" href="activation-others_8cpp.html#adf4603d2d6a36df4b46bb4453d33be20" title=" " alt="" coords="829,708,976,735"/>
+<area shape="rect" href="activation-others_8cpp.html#a8126e318689e9238d8d6ad2cad60a786" title=" " alt="" coords="613,389,759,430"/>
+<area shape="rect" href="activation-others_8cpp.html#a6f6ddd9f4eedd69de1762170558b57c7" title=" " alt="" coords="825,759,980,785"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#ad95ed4757ae72cc9af47b979b640c233" title=" " alt="" coords="833,809,972,836"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a8e06760c511de2abfea451e6d4f97181" title=" " alt="" coords="833,860,972,887"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a2e41ecf62c5a43e70265d6843958a8cb" title=" " alt="" coords="833,911,972,937"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a7e7df95c7d970728f75d8a6e0690a003" title=" " alt="" coords="623,455,749,481"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#ad38925026716cd111c8500745f895402" title=" " alt="" coords="833,961,972,988"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#aafc7b4cb2da217db61484c60939cac7a" title=" " alt="" coords="833,556,972,583"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a6e594ba36b3032460e8bccf1df5fae8a" title=" " alt="" coords="837,607,968,633"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#abf2654610ca985e29f43f0fdd0afab81" title=" " alt="" coords="621,221,751,248"/>
+<area shape="rect" href="sort_8cpp.html#ab407e67d890db0c6e9b33de4c90b5b84" title=" " alt="" coords="431,1671,503,1697"/>
+<area shape="rect" href="sort_8cpp.html#a0be5ac60bc38ac90d009e07b6df01f72" title="ペット入りモンスターボールをソートするための比較関数" alt="" coords="399,1721,535,1748"/>
+<area shape="rect" href="sort_8cpp.html#a626a506e850eb194e7894b988ba05d10" title="モンスター種族情報を特定の基準によりソートするためのスワップ処理 Sorting hook – Swap function – see below" alt="" coords="395,1772,539,1799"/>
+<area shape="rect" href="spells-hex_8cpp.html#a1fe803ed2313c7c276285c2803e83ed3" title=" " alt="" coords="406,1823,529,1849"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="874,1595,931,1621"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="403,1924,532,1951"/>
+<area shape="rect" href="player-status_8cpp.html#a73d9b60aa627e621c43b6e330838209c" title="歌の停止を処理する / Stop singing if the player is a Bard" alt="" coords="420,1975,515,2001"/>
+<area shape="rect" href="spells-teleport_8cpp.html#a08f9196fc721f7435e72ecda87be3bb7" title="モンスターを指定された座標付近にテレポートする / Teleport monster next to a grid near the given location" alt="" coords="399,1873,536,1900"/>
+<area shape="rect" href="activation-execution_8cpp.html#a25cd2f2407f65cc9f4f23b504834ae28" title=" " alt="" coords="380,1468,555,1495"/>
+<area shape="rect" href="player-status_8cpp.html#a66e3d8439c969c25980516bbf58c5cad" title=" " alt="" coords="431,1417,503,1444"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="661,1468,711,1495"/>
+<area shape="rect" href="racial-android_8cpp.html#a79575a6f85af0b14d59eff0efe003795" title=" " alt="" coords="841,1113,964,1140"/>
+<area shape="rect" href="player-status_8cpp.html#aeedbeda026c3ca2d73b43b5ff7bd4478" title="ペットの維持コスト計算" alt="" coords="625,1215,747,1241"/>
+<area shape="rect" href="monster-ball_8cpp.html#a352cb43d44bf4d32688b3f44f21ef7b0" title=" " alt="" coords="603,1265,769,1292"/>
+<area shape="rect" href="target-getter_8cpp.html#ac0f7cfda9cc6ea4a0386cac0745b2273" title=" " alt="" coords="638,1063,734,1089"/>
+<area shape="rect" href="monster-ball_8cpp.html#afca08830058f2d625f828bf78deee85b" title=" " alt="" coords="615,1316,757,1343"/>
+<area shape="rect" href="object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="433,2076,501,2103"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="activation-execution_8cpp_aab19289487f397c69ecdf9b873512f19_icgraph.png" border="0" usemap="#aactivation-execution_8cpp_aab19289487f397c69ecdf9b873512f19_icgraph" alt=""/></div>
+<map name="aactivation-execution_8cpp_aab19289487f397c69ecdf9b873512f19_icgraph" id="aactivation-execution_8cpp_aab19289487f397c69ecdf9b873512f19_icgraph">
+<area shape="rect" title="装備を発動するコマンドのサブルーチン / Activate a wielded object." alt="" coords="511,31,605,57"/>
+<area shape="rect" href="cmd-item_8cpp.html#a415fb2b959d0aee88a1799fa8f38b18e" title="装備を発動するコマンドのメインルーチン /" alt="" coords="344,5,463,32"/>
+<area shape="rect" href="cmd-item_8cpp.html#a8b14aae871e0716a5ff84d7b8106d265" title="アイテムを汎用的に「使う」コマンドのメインルーチン / Use an item" alt="" coords="355,56,451,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,31,296,57"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,31,116,57"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分56秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

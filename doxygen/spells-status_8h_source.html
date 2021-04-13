@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/spell/spells-status.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b288867d93d6ddd637031b6cda0e8b43.html">spell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">spells-status.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="spells-status_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-type-definition_8h.html">system/monster-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="spells-util_8h.html">spell/spells-util.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#ac949ba84c46936b2dd035820fe36c3ca">heal_monster</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#a96352835bc9e6de6f9a98ff179470e72">speed_monster</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir, <span class="keywordtype">int</span> power);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#ac41f791dc8a0febce36a6e0b4cef1b08">slow_monster</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir, <span class="keywordtype">int</span> power);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#a8588af408bfd6fc7c3cb8bf7ddbaab0b">sleep_monster</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir, <span class="keywordtype">int</span> power);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#adb96787e54dfa544deb92df2f587542b">stasis_monster</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir);    <span class="comment">/* Like sleep, affects undead as well */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#aba254e18bc9a66b323d581fc3ae50b99">stasis_evil</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir);    <span class="comment">/* Like sleep, affects undead as well */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#a6e1fc6aa98b692b6010e4fbc4712f02e">confuse_monster</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir, <a class="code" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> plev);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#af5beecc4236e3ddf58f54b0cf52c60a9">stun_monster</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir, <a class="code" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> plev);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#aa02a9d57bfca3762f92177fab153ed7f">fear_monster</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir, <a class="code" href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a> plev);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#a7d03a8fb9016f6481a5402da0d886070">poly_monster</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir, <span class="keywordtype">int</span> power);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#a840889ad867fc7501fbe2756eda5f021">clone_monster</a>(<a class="code" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="code" href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a> dir);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#a4cf856929d055cc60803bca95fa8ed9a">time_walk</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spells-status_8h.html#a6b124a1b6a39257cbc861a6c4ef5c6ec">roll_hitdice</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="spells-util_8h.html#a9ee8593c239802590f3790d44616f210">spell_operation</a> options);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#a3cb2a18d41d25c9c825b16220de7b45d">life_stream</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">bool</span> message, <span class="keywordtype">bool</span> virtue_change);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#ae6dca9801477e0f3326c5da3d7d2abae">heroism</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">int</span> base);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#aae9a0980e97bd173f6040909d6e66097">berserk</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">int</span> base);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#a9d09019685ce462d411c9554fdf8e2a6">cure_light_wounds</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a> dice, <a class="code" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a> sides);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#a1250a8abfd5f99b37bbcd22e7fde8d17">cure_serious_wounds</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a> dice, <a class="code" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a> sides);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#ac6cc23e751d903cceebb4c6baf1d61d1">cure_critical_wounds</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> pow);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#a78827593ec05044e1205b65805e78944">true_healing</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> pow);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#a9c1fd4d729b4e9e9d371b61110ca0f97">restore_mana</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">bool</span> magic_eater);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#a538945aa4c8a1a39852b9c7ecd276b21">restore_all_status</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#aa3ffab6789c8f7c2dd9fb9272c0e189f">fishing</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="spells-status_8h.html#a6b3d51cd9befa32b5917f7c8c47626f0">cosmic_cast_off</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="structobject__type.html">object_type</a> **o_ptr_ptr);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spells-status_8h.html#a5810bc1fe0b2ca52f4a534eb960fef1f">apply_nexus</a>(<a class="code" href="structmonster__type.html">monster_type</a> *m_ptr, <a class="code" href="structplayer__type.html">player_type</a> *target_ptr);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spells-status_8h.html#af7461ec3aa28531de579958b93a0c279">status_shuffle</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a28b4289b95abbeb7a422178cfa43525f"><div class="ttname"><a href="h-type_8h.html#a28b4289b95abbeb7a422178cfa43525f">DIRECTION</a></div><div class="ttdeci">int DIRECTION</div><div class="ttdoc">ゲーム中の方角の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:177</div></div>
+<div class="ttc" id="ah-type_8h_html_a9a1975460009e928d9b53995d07d3623"><div class="ttname"><a href="h-type_8h.html#a9a1975460009e928d9b53995d07d3623">PLAYER_LEVEL</a></div><div class="ttdeci">s16b PLAYER_LEVEL</div><div class="ttdoc">ゲーム中のプレイヤーレベルの型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:176</div></div>
+<div class="ttc" id="ah-type_8h_html_abd34196d60f0f739ccfb2d8fb3eedc26"><div class="ttname"><a href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a></div><div class="ttdeci">int DICE_NUMBER</div><div class="ttdoc">ゲーム中のダイス数の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:185</div></div>
+<div class="ttc" id="ah-type_8h_html_adc9bfdf1fe589edec2328018c5fd91e4"><div class="ttname"><a href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a></div><div class="ttdeci">int DICE_SID</div><div class="ttdoc">ゲーム中のダイス面の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:186</div></div>
+<div class="ttc" id="ah-type_8h_html_afdb20155266ee801610f13b1589a3df3"><div class="ttname"><a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></div><div class="ttdeci">s32b HIT_POINT</div><div class="ttdoc">HPとその増減量の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:141</div></div>
+<div class="ttc" id="amonster-type-definition_8h_html"><div class="ttname"><a href="monster-type-definition_8h.html">monster-type-definition.h</a></div></div>
+<div class="ttc" id="aspells-status_8h_html_a1250a8abfd5f99b37bbcd22e7fde8d17"><div class="ttname"><a href="spells-status_8h.html#a1250a8abfd5f99b37bbcd22e7fde8d17">cure_serious_wounds</a></div><div class="ttdeci">bool cure_serious_wounds(player_type *creature_ptr, DICE_NUMBER dice, DICE_SID sides)</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:326</div></div>
+<div class="ttc" id="aspells-status_8h_html_a3cb2a18d41d25c9c825b16220de7b45d"><div class="ttname"><a href="spells-status_8h.html#a3cb2a18d41d25c9c825b16220de7b45d">life_stream</a></div><div class="ttdeci">bool life_stream(player_type *creature_ptr, bool message, bool virtue_change)</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:261</div></div>
+<div class="ttc" id="aspells-status_8h_html_a4cf856929d055cc60803bca95fa8ed9a"><div class="ttname"><a href="spells-status_8h.html#a4cf856929d055cc60803bca95fa8ed9a">time_walk</a></div><div class="ttdeci">bool time_walk(player_type *creature_ptr)</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:187</div></div>
+<div class="ttc" id="aspells-status_8h_html_a538945aa4c8a1a39852b9c7ecd276b21"><div class="ttname"><a href="spells-status_8h.html#a538945aa4c8a1a39852b9c7ecd276b21">restore_all_status</a></div><div class="ttdeci">bool restore_all_status(player_type *creature_ptr)</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:417</div></div>
+<div class="ttc" id="aspells-status_8h_html_a5810bc1fe0b2ca52f4a534eb960fef1f"><div class="ttname"><a href="spells-status_8h.html#a5810bc1fe0b2ca52f4a534eb960fef1f">apply_nexus</a></div><div class="ttdeci">void apply_nexus(monster_type *m_ptr, player_type *target_ptr)</div><div class="ttdoc">プレイヤーの因果混乱処理 / Apply Nexus</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:519</div></div>
+<div class="ttc" id="aspells-status_8h_html_a6b124a1b6a39257cbc861a6c4ef5c6ec"><div class="ttname"><a href="spells-status_8h.html#a6b124a1b6a39257cbc861a6c4ef5c6ec">roll_hitdice</a></div><div class="ttdeci">void roll_hitdice(player_type *creature_ptr, spell_operation options)</div><div class="ttdoc">プレイヤーのヒットダイスを振る / Role Hitpoints</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:213</div></div>
+<div class="ttc" id="aspells-status_8h_html_a6b3d51cd9befa32b5917f7c8c47626f0"><div class="ttname"><a href="spells-status_8h.html#a6b3d51cd9befa32b5917f7c8c47626f0">cosmic_cast_off</a></div><div class="ttdeci">bool cosmic_cast_off(player_type *creature_ptr, object_type **o_ptr_ptr)</div><div class="ttdoc">装備を脱ぎ捨てて小宇宙を燃やす</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:469</div></div>
+<div class="ttc" id="aspells-status_8h_html_a6e1fc6aa98b692b6010e4fbc4712f02e"><div class="ttname"><a href="spells-status_8h.html#a6e1fc6aa98b692b6010e4fbc4712f02e">confuse_monster</a></div><div class="ttdeci">bool confuse_monster(player_type *caster_ptr, DIRECTION dir, PLAYER_LEVEL plev)</div><div class="ttdoc">モンスター混乱処理</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:127</div></div>
+<div class="ttc" id="aspells-status_8h_html_a78827593ec05044e1205b65805e78944"><div class="ttname"><a href="spells-status_8h.html#a78827593ec05044e1205b65805e78944">true_healing</a></div><div class="ttdeci">bool true_healing(player_type *creature_ptr, HIT_POINT pow)</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:362</div></div>
+<div class="ttc" id="aspells-status_8h_html_a7d03a8fb9016f6481a5402da0d886070"><div class="ttname"><a href="spells-status_8h.html#a7d03a8fb9016f6481a5402da0d886070">poly_monster</a></div><div class="ttdeci">bool poly_monster(player_type *caster_ptr, DIRECTION dir, int power)</div><div class="ttdoc">チェンジモンスター処理</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:153</div></div>
+<div class="ttc" id="aspells-status_8h_html_a840889ad867fc7501fbe2756eda5f021"><div class="ttname"><a href="spells-status_8h.html#a840889ad867fc7501fbe2756eda5f021">clone_monster</a></div><div class="ttdeci">bool clone_monster(player_type *caster_ptr, DIRECTION dir)</div><div class="ttdoc">クローンモンスター処理</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:168</div></div>
+<div class="ttc" id="aspells-status_8h_html_a8588af408bfd6fc7c3cb8bf7ddbaab0b"><div class="ttname"><a href="spells-status_8h.html#a8588af408bfd6fc7c3cb8bf7ddbaab0b">sleep_monster</a></div><div class="ttdeci">bool sleep_monster(player_type *caster_ptr, DIRECTION dir, int power)</div><div class="ttdoc">モンスター催眠処理</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:96</div></div>
+<div class="ttc" id="aspells-status_8h_html_a96352835bc9e6de6f9a98ff179470e72"><div class="ttname"><a href="spells-status_8h.html#a96352835bc9e6de6f9a98ff179470e72">speed_monster</a></div><div class="ttdeci">bool speed_monster(player_type *caster_ptr, DIRECTION dir, int power)</div><div class="ttdoc">モンスター加速処理</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:70</div></div>
+<div class="ttc" id="aspells-status_8h_html_a9c1fd4d729b4e9e9d371b61110ca0f97"><div class="ttname"><a href="spells-status_8h.html#a9c1fd4d729b4e9e9d371b61110ca0f97">restore_mana</a></div><div class="ttdeci">bool restore_mana(player_type *creature_ptr, bool magic_eater)</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:382</div></div>
+<div class="ttc" id="aspells-status_8h_html_a9d09019685ce462d411c9554fdf8e2a6"><div class="ttname"><a href="spells-status_8h.html#a9d09019685ce462d411c9554fdf8e2a6">cure_light_wounds</a></div><div class="ttdeci">bool cure_light_wounds(player_type *creature_ptr, DICE_NUMBER dice, DICE_SID sides)</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:312</div></div>
+<div class="ttc" id="aspells-status_8h_html_aa02a9d57bfca3762f92177fab153ed7f"><div class="ttname"><a href="spells-status_8h.html#aa02a9d57bfca3762f92177fab153ed7f">fear_monster</a></div><div class="ttdeci">bool fear_monster(player_type *caster_ptr, DIRECTION dir, PLAYER_LEVEL plev)</div><div class="ttdoc">モンスター恐慌処理</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:181</div></div>
+<div class="ttc" id="aspells-status_8h_html_aa3ffab6789c8f7c2dd9fb9272c0e189f"><div class="ttname"><a href="spells-status_8h.html#aa3ffab6789c8f7c2dd9fb9272c0e189f">fishing</a></div><div class="ttdeci">bool fishing(player_type *creature_ptr)</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:435</div></div>
+<div class="ttc" id="aspells-status_8h_html_aae9a0980e97bd173f6040909d6e66097"><div class="ttname"><a href="spells-status_8h.html#aae9a0980e97bd173f6040909d6e66097">berserk</a></div><div class="ttdeci">bool berserk(player_type *creature_ptr, int base)</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:300</div></div>
+<div class="ttc" id="aspells-status_8h_html_aba254e18bc9a66b323d581fc3ae50b99"><div class="ttname"><a href="spells-status_8h.html#aba254e18bc9a66b323d581fc3ae50b99">stasis_evil</a></div><div class="ttdeci">bool stasis_evil(player_type *caster_ptr, DIRECTION dir)</div><div class="ttdoc">邪悪なモンスター拘束(STASIS)処理</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:118</div></div>
+<div class="ttc" id="aspells-status_8h_html_ac41f791dc8a0febce36a6e0b4cef1b08"><div class="ttname"><a href="spells-status_8h.html#ac41f791dc8a0febce36a6e0b4cef1b08">slow_monster</a></div><div class="ttdeci">bool slow_monster(player_type *caster_ptr, DIRECTION dir, int power)</div><div class="ttdoc">モンスター減速処理</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:83</div></div>
+<div class="ttc" id="aspells-status_8h_html_ac6cc23e751d903cceebb4c6baf1d61d1"><div class="ttname"><a href="spells-status_8h.html#ac6cc23e751d903cceebb4c6baf1d61d1">cure_critical_wounds</a></div><div class="ttdeci">bool cure_critical_wounds(player_type *creature_ptr, HIT_POINT pow)</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:342</div></div>
+<div class="ttc" id="aspells-status_8h_html_ac949ba84c46936b2dd035820fe36c3ca"><div class="ttname"><a href="spells-status_8h.html#ac949ba84c46936b2dd035820fe36c3ca">heal_monster</a></div><div class="ttdeci">bool heal_monster(player_type *caster_ptr, DIRECTION dir, HIT_POINT dam)</div><div class="ttdoc">スピード等のステータスに影響のある魔法の処理</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:57</div></div>
+<div class="ttc" id="aspells-status_8h_html_adb96787e54dfa544deb92df2f587542b"><div class="ttname"><a href="spells-status_8h.html#adb96787e54dfa544deb92df2f587542b">stasis_monster</a></div><div class="ttdeci">bool stasis_monster(player_type *caster_ptr, DIRECTION dir)</div><div class="ttdoc">モンスター拘束(STASIS)処理</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:109</div></div>
+<div class="ttc" id="aspells-status_8h_html_ae6dca9801477e0f3326c5da3d7d2abae"><div class="ttname"><a href="spells-status_8h.html#ae6dca9801477e0f3326c5da3d7d2abae">heroism</a></div><div class="ttdeci">bool heroism(player_type *creature_ptr, int base)</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:288</div></div>
+<div class="ttc" id="aspells-status_8h_html_af5beecc4236e3ddf58f54b0cf52c60a9"><div class="ttname"><a href="spells-status_8h.html#af5beecc4236e3ddf58f54b0cf52c60a9">stun_monster</a></div><div class="ttdeci">bool stun_monster(player_type *caster_ptr, DIRECTION dir, PLAYER_LEVEL plev)</div><div class="ttdoc">モンスター朦朧処理</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:140</div></div>
+<div class="ttc" id="aspells-status_8h_html_af7461ec3aa28531de579958b93a0c279"><div class="ttname"><a href="spells-status_8h.html#af7461ec3aa28531de579958b93a0c279">status_shuffle</a></div><div class="ttdeci">void status_shuffle(player_type *creature_ptr)</div><div class="ttdoc">プレイヤーのステータスシャッフル処理</div><div class="ttdef"><b>Definition:</b> spells-status.cpp:563</div></div>
+<div class="ttc" id="aspells-util_8h_html"><div class="ttname"><a href="spells-util_8h.html">spells-util.h</a></div></div>
+<div class="ttc" id="aspells-util_8h_html_a9ee8593c239802590f3790d44616f210"><div class="ttname"><a href="spells-util_8h.html#a9ee8593c239802590f3790d44616f210">spell_operation</a></div><div class="ttdeci">spell_operation</div><div class="ttdef"><b>Definition:</b> spells-util.h:10</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructobject__type_html"><div class="ttname"><a href="structobject__type.html">object_type</a></div><div class="ttdef"><b>Definition:</b> object-type-definition.h:8</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

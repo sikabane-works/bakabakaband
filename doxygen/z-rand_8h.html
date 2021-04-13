@@ -1,0 +1,853 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/term/z-rand.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f015963f69ae14c534311f2118856536.html">term</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">z-rand.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="h-basic_8h_source.html">system/h-basic.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+z-rand.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-rand_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2term_2z-rand_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2term_2z-rand_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2term_2z-rand_8h">
+<area shape="rect" title=" " alt="" coords="535,5,748,47"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="580,95,703,121"/>
+<area shape="rect" href="h-config_8h.html" title=" " alt="" coords="275,169,400,196"/>
+<area shape="rect" href="h-system_8h.html" title="馬鹿馬鹿蛮怒用システムヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="425,169,559,196"/>
+<area shape="rect" href="h-type_8h.html" title="ゲーム中に用いる変数型定義 / Basic &quot;types&quot;." alt="" coords="583,169,699,196"/>
+<area shape="rect" href="h-define_8h.html" title="馬鹿馬鹿蛮怒で新しく追加された主要なマクロ定義ヘッダ / Define some simple constants" alt="" coords="724,169,849,196"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="873,169,1015,196"/>
+<area shape="rect" title=" " alt="" coords="5,244,67,271"/>
+<area shape="rect" title=" " alt="" coords="91,244,157,271"/>
+<area shape="rect" title=" " alt="" coords="181,244,256,271"/>
+<area shape="rect" title=" " alt="" coords="281,244,343,271"/>
+<area shape="rect" title=" " alt="" coords="367,244,435,271"/>
+<area shape="rect" title=" " alt="" coords="460,244,524,271"/>
+<area shape="rect" title=" " alt="" coords="548,244,607,271"/>
+<area shape="rect" title=" " alt="" coords="631,244,711,271"/>
+<area shape="rect" title=" " alt="" coords="735,244,793,271"/>
+<area shape="rect" title=" " alt="" coords="817,244,882,271"/>
+<area shape="rect" title=" " alt="" coords="907,244,976,271"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-rand_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2term_2z-rand_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2term_2z-rand_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2term_2z-rand_8hdep">
+<area shape="rect" title=" " alt="" coords="4774,5,4987,47"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="4575,95,4763,151"/>
+<area shape="rect" href="z-rand_8cpp.html" title=" " alt="" coords="4787,95,4975,151"/>
+<area shape="rect" href="probability-table_8h.html" title=" " alt="" coords="4999,95,5215,151"/>
+<area shape="rect" href="action-limited_8h.html" title=" " alt="" coords="5,199,193,255"/>
+<area shape="rect" href="activation-execution_8h.html" title=" " alt="" coords="217,199,405,255"/>
+<area shape="rect" href="movement-execution_8h.html" title=" " alt="" coords="429,199,617,255"/>
+<area shape="rect" href="mutation-execution_8h.html" title=" " alt="" coords="641,199,829,255"/>
+<area shape="rect" href="open-close-execution_8h.html" title=" " alt="" coords="853,199,1041,255"/>
+<area shape="rect" href="open-util_8h.html" title=" " alt="" coords="1065,199,1253,255"/>
+<area shape="rect" href="racial-execution_8h.html" title=" " alt="" coords="1277,199,1465,255"/>
+<area shape="rect" href="run-execution_8h.html" title=" " alt="" coords="1489,199,1677,255"/>
+<area shape="rect" href="throw-util_8h.html" title=" " alt="" coords="1701,199,1889,255"/>
+<area shape="rect" href="travel-execution_8h.html" title=" " alt="" coords="1913,199,2101,255"/>
+<area shape="rect" href="tunnel-execution_8h.html" title=" " alt="" coords="2125,199,2313,255"/>
+<area shape="rect" href="weapon-shield_8h.html" title=" " alt="" coords="2337,199,2525,255"/>
+<area shape="rect" href="artifact-info_8h.html" title=" " alt="" coords="2549,199,2737,255"/>
+<area shape="rect" href="fixed-art-generator_8h.html" title=" " alt="" coords="2761,199,2949,255"/>
+<area shape="rect" href="random-art-activation_8h.html" title=" " alt="" coords="2973,199,3161,255"/>
+<area shape="rect" href="random-art-characteristics_8h.html" title=" " alt="" coords="3185,199,3373,255"/>
+<area shape="rect" href="random-art-generator_8h.html" title=" " alt="" coords="3397,199,3585,255"/>
+<area shape="rect" href="random-art-misc_8h.html" title=" " alt="" coords="3609,199,3797,255"/>
+<area shape="rect" href="random-art-pval-investor_8h.html" title=" " alt="" coords="3821,199,4009,255"/>
+<area shape="rect" href="random-art-resistance_8h.html" title=" " alt="" coords="4033,199,4221,255"/>
+<area shape="rect" href="random-art-slay_8h.html" title=" " alt="" coords="4245,199,4433,255"/>
+<area shape="rect" href="autopick-command-menu_8cpp.html" title=" " alt="" coords="3885,303,4082,359"/>
+<area shape="rect" href="autopick-describer_8cpp.html" title=" " alt="" coords="5544,199,5732,255"/>
+<area shape="rect" href="autopick-destroyer_8h.html" title=" " alt="" coords="5756,199,5944,255"/>
+<area shape="rect" href="autopick-drawer_8h.html" title=" " alt="" coords="4157,303,4345,359"/>
+<area shape="rect" href="autopick-editor-command_8h.html" title=" " alt="" coords="4369,303,4557,359"/>
+<area shape="rect" href="autopick-editor-util_8h.html" title=" " alt="" coords="4581,303,4769,359"/>
+<area shape="rect" href="autopick-entry_8h.html" title=" " alt="" coords="4793,303,4981,359"/>
+<area shape="rect" href="autopick-initializer_8cpp.html" title=" " alt="" coords="4779,407,4967,463"/>
+<area shape="rect" href="autopick-pref-processor_8cpp.html" title=" " alt="" coords="4991,407,5179,463"/>
+<area shape="rect" href="autopick-finder_8h.html" title=" " alt="" coords="5108,303,5296,359"/>
+<area shape="rect" href="autopick-inserter-killer_8h.html" title=" " alt="" coords="5320,303,5508,359"/>
+<area shape="rect" href="autopick-matcher_8h.html" title=" " alt="" coords="5532,303,5720,359"/>
+<area shape="rect" href="autopick-menu-data-table_8h.html" title=" " alt="" coords="4509,199,4697,255"/>
+<area shape="rect" href="autopick-reader-writer_8h.html" title=" " alt="" coords="5744,303,5932,359"/>
+<area shape="rect" href="autopick-registry_8h.html" title=" " alt="" coords="5956,303,6144,359"/>
+<area shape="rect" href="autopick-util_8h.html" title=" " alt="" coords="4976,199,5164,255"/>
+<area shape="rect" href="autopick_8h.html" title=" " alt="" coords="6168,303,6356,359"/>
+<area shape="rect" href="auto-roller_8h.html" title=" " alt="" coords="5968,199,6156,255"/>
+<area shape="rect" href="birth-body-spec_8h.html" title=" " alt="" coords="6180,199,6368,255"/>
+<area shape="rect" href="birth-explanations-table_8h.html" title=" " alt="" coords="6392,199,6580,255"/>
+<area shape="rect" href="birth-select-class_8h.html" title=" " alt="" coords="6604,199,6792,255"/>
+<area shape="rect" href="birth-select-personality_8h.html" title=" " alt="" coords="6816,199,7004,255"/>
+<area shape="rect" href="birth-select-race_8h.html" title=" " alt="" coords="7028,199,7216,255"/>
+<area shape="rect" href="birth-select-realm_8h.html" title=" " alt="" coords="7240,199,7428,255"/>
+<area shape="rect" href="birth-stat_8h.html" title=" " alt="" coords="7452,199,7640,255"/>
+</map>
+</div>
+</div>
+<p><a href="z-rand_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a8396b29ae63ac8c700a03a412aefaab6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#a8396b29ae63ac8c700a03a412aefaab6">RAND_DEG</a>&#160;&#160;&#160;63</td></tr>
+<tr class="separator:a8396b29ae63ac8c700a03a412aefaab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23b78b9f55884995c903e06387efec19"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#a23b78b9f55884995c903e06387efec19">randint0</a>(M)&#160;&#160;&#160;((<a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>)<a class="el" href="z-rand_8h.html#aa4863e87b78fe604a962889e9b4c6a6d">Rand_div</a>(M))</td></tr>
+<tr class="separator:a23b78b9f55884995c903e06387efec19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93f2767c6832ee0d27b2f7bb90199ac3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#a93f2767c6832ee0d27b2f7bb90199ac3">rand_range</a>(A,  B)&#160;&#160;&#160;((A) + (<a class="el" href="z-rand_8h.html#a23b78b9f55884995c903e06387efec19">randint0</a>(1 + (B) - (A))))</td></tr>
+<tr class="separator:a93f2767c6832ee0d27b2f7bb90199ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18ebaf5ac7eab29d5e78194f0dd63746"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#a18ebaf5ac7eab29d5e78194f0dd63746">rand_spread</a>(A,  D)&#160;&#160;&#160;((A) + (<a class="el" href="z-rand_8h.html#a23b78b9f55884995c903e06387efec19">randint0</a>(1 + (D) + (D))) - (D))</td></tr>
+<tr class="separator:a18ebaf5ac7eab29d5e78194f0dd63746"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4f02bf711332ee6013b47d10b801b3d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#ab4f02bf711332ee6013b47d10b801b3d">randint1</a>(M)&#160;&#160;&#160;(<a class="el" href="z-rand_8h.html#a23b78b9f55884995c903e06387efec19">randint0</a>(M) + 1)</td></tr>
+<tr class="separator:ab4f02bf711332ee6013b47d10b801b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6827ef5a55fea9ff2dfaeb0e76dc858d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#a6827ef5a55fea9ff2dfaeb0e76dc858d">magik</a>(P)&#160;&#160;&#160;(<a class="el" href="z-rand_8h.html#a23b78b9f55884995c903e06387efec19">randint0</a>(100) &lt; (P))</td></tr>
+<tr class="separator:a6827ef5a55fea9ff2dfaeb0e76dc858d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8049da507688f7748ee62852b23d04ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#a8049da507688f7748ee62852b23d04ad">one_in_</a>(X)&#160;&#160;&#160;(<a class="el" href="z-rand_8h.html#a23b78b9f55884995c903e06387efec19">randint0</a>(X) == 0)</td></tr>
+<tr class="separator:a8049da507688f7748ee62852b23d04ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02f0f69af2b8073378e7227c274f924e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#a02f0f69af2b8073378e7227c274f924e">saving_throw</a>(S)&#160;&#160;&#160;(<a class="el" href="z-rand_8h.html#a23b78b9f55884995c903e06387efec19">randint0</a>(100) &lt; (S))</td></tr>
+<tr class="separator:a02f0f69af2b8073378e7227c274f924e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a5642a076ff03c06a4ceadcd4278fb68e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#a5642a076ff03c06a4ceadcd4278fb68e">Rand_state_init</a> (void)</td></tr>
+<tr class="separator:a5642a076ff03c06a4ceadcd4278fb68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af55655c6ec6752e3a7a0a8b076370159"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#af55655c6ec6752e3a7a0a8b076370159">Rand_state_set</a> (<a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> seed)</td></tr>
+<tr class="separator:af55655c6ec6752e3a7a0a8b076370159"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e8b3297783f26e114417358d21f30c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#a6e8b3297783f26e114417358d21f30c4">Rand_state_backup</a> (<a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> *backup_state)</td></tr>
+<tr class="separator:a6e8b3297783f26e114417358d21f30c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a028d92135411a925dcf9c232e031a3c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#a028d92135411a925dcf9c232e031a3c2">Rand_state_restore</a> (<a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> *backup_state)</td></tr>
+<tr class="separator:a028d92135411a925dcf9c232e031a3c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4863e87b78fe604a962889e9b4c6a6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#aa4863e87b78fe604a962889e9b4c6a6d">Rand_div</a> (<a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> m)</td></tr>
+<tr class="separator:aa4863e87b78fe604a962889e9b4c6a6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73f3287c335a4dbfebdc5cfa30462b91"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#a73f3287c335a4dbfebdc5cfa30462b91">randnor</a> (int mean, int stand)</td></tr>
+<tr class="separator:a73f3287c335a4dbfebdc5cfa30462b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6e70da7e57e1a2b64363b1f94f1284e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#ab6e70da7e57e1a2b64363b1f94f1284e">damroll</a> (<a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a> num, <a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a> sides)</td></tr>
+<tr class="separator:ab6e70da7e57e1a2b64363b1f94f1284e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad0bf68339aca559471bcf0ff21c049d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#aad0bf68339aca559471bcf0ff21c049d">maxroll</a> (<a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a> num, <a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a> sides)</td></tr>
+<tr class="separator:aad0bf68339aca559471bcf0ff21c049d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69ffadeab09ff528e10b1ee8edcbaf2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#a69ffadeab09ff528e10b1ee8edcbaf2e">div_round</a> (<a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> n, <a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> d)</td></tr>
+<tr class="separator:a69ffadeab09ff528e10b1ee8edcbaf2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0eb0bdd9e321a354aaee69cdee5ba5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#ac0eb0bdd9e321a354aaee69cdee5ba5e">Rand_external</a> (<a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> m)</td></tr>
+<tr class="separator:ac0eb0bdd9e321a354aaee69cdee5ba5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc6eb01f3840ddb3e55bb47fd92e9cc7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#adc6eb01f3840ddb3e55bb47fd92e9cc7">next_bool</a> ()</td></tr>
+<tr class="separator:adc6eb01f3840ddb3e55bb47fd92e9cc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:aaab944716e5d917a6eb96b1fa116c480"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#aaab944716e5d917a6eb96b1fa116c480">Rand_place</a></td></tr>
+<tr class="separator:aaab944716e5d917a6eb96b1fa116c480"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2643bd94f99de1013291c7263c6a0450"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="z-rand_8h.html#a2643bd94f99de1013291c7263c6a0450">Rand_state</a> [<a class="el" href="z-rand_8h.html#a8396b29ae63ac8c700a03a412aefaab6">RAND_DEG</a>]</td></tr>
+<tr class="separator:a2643bd94f99de1013291c7263c6a0450"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="a6827ef5a55fea9ff2dfaeb0e76dc858d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6827ef5a55fea9ff2dfaeb0e76dc858d">&#9670;&nbsp;</a></span>magik</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define magik</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">P</td><td>)</td>
+          <td>&#160;&#160;&#160;(<a class="el" href="z-rand_8h.html#a23b78b9f55884995c903e06387efec19">randint0</a>(100) &lt; (P))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8049da507688f7748ee62852b23d04ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8049da507688f7748ee62852b23d04ad">&#9670;&nbsp;</a></span>one_in_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define one_in_</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">X</td><td>)</td>
+          <td>&#160;&#160;&#160;(<a class="el" href="z-rand_8h.html#a23b78b9f55884995c903e06387efec19">randint0</a>(X) == 0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8396b29ae63ac8c700a03a412aefaab6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8396b29ae63ac8c700a03a412aefaab6">&#9670;&nbsp;</a></span>RAND_DEG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RAND_DEG&#160;&#160;&#160;63</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a93f2767c6832ee0d27b2f7bb90199ac3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93f2767c6832ee0d27b2f7bb90199ac3">&#9670;&nbsp;</a></span>rand_range</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define rand_range</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">A, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;((A) + (<a class="el" href="z-rand_8h.html#a23b78b9f55884995c903e06387efec19">randint0</a>(1 + (B) - (A))))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18ebaf5ac7eab29d5e78194f0dd63746"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18ebaf5ac7eab29d5e78194f0dd63746">&#9670;&nbsp;</a></span>rand_spread</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define rand_spread</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">A, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">D&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;((A) + (<a class="el" href="z-rand_8h.html#a23b78b9f55884995c903e06387efec19">randint0</a>(1 + (D) + (D))) - (D))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23b78b9f55884995c903e06387efec19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23b78b9f55884995c903e06387efec19">&#9670;&nbsp;</a></span>randint0</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define randint0</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">M</td><td>)</td>
+          <td>&#160;&#160;&#160;((<a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>)<a class="el" href="z-rand_8h.html#aa4863e87b78fe604a962889e9b4c6a6d">Rand_div</a>(M))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab4f02bf711332ee6013b47d10b801b3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4f02bf711332ee6013b47d10b801b3d">&#9670;&nbsp;</a></span>randint1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define randint1</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">M</td><td>)</td>
+          <td>&#160;&#160;&#160;(<a class="el" href="z-rand_8h.html#a23b78b9f55884995c903e06387efec19">randint0</a>(M) + 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a02f0f69af2b8073378e7227c274f924e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02f0f69af2b8073378e7227c274f924e">&#9670;&nbsp;</a></span>saving_throw</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define saving_throw</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">S</td><td>)</td>
+          <td>&#160;&#160;&#160;(<a class="el" href="z-rand_8h.html#a23b78b9f55884995c903e06387efec19">randint0</a>(100) &lt; (S))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ab6e70da7e57e1a2b64363b1f94f1284e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6e70da7e57e1a2b64363b1f94f1284e">&#9670;&nbsp;</a></span>damroll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> damroll </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a>&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a>&#160;</td>
+          <td class="paramname"><em>sides</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a69ffadeab09ff528e10b1ee8edcbaf2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69ffadeab09ff528e10b1ee8edcbaf2e">&#9670;&nbsp;</a></span>div_round()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> div_round </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-rand_8h_a69ffadeab09ff528e10b1ee8edcbaf2e_icgraph.png" border="0" usemap="#az-rand_8h_a69ffadeab09ff528e10b1ee8edcbaf2e_icgraph" alt=""/></div>
+<map name="az-rand_8h_a69ffadeab09ff528e10b1ee8edcbaf2e_icgraph" id="az-rand_8h_a69ffadeab09ff528e10b1ee8edcbaf2e_icgraph">
+<area shape="rect" title=" " alt="" coords="516,5,592,32"/>
+<area shape="rect" href="room-generator_8cpp.html#ac162d3550981d56e72a3a79a1078aa76" title="部屋生成処理のメインルーチン(Sangbandを経由してOangbandからの実装を引用) / Generate rooms in dungeon." alt="" coords="353,5,468,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a81376b86643f157e8763b5cda3e608e8" title=" " alt="" coords="192,5,305,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a0df4eaf807b15231f8070a6d7ea9e7b6" title=" " alt="" coords="5,5,144,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aad0bf68339aca559471bcf0ff21c049d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad0bf68339aca559471bcf0ff21c049d">&#9670;&nbsp;</a></span>maxroll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> maxroll </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a>&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a>&#160;</td>
+          <td class="paramname"><em>sides</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-rand_8h_aad0bf68339aca559471bcf0ff21c049d_icgraph.png" border="0" usemap="#az-rand_8h_aad0bf68339aca559471bcf0ff21c049d_icgraph" alt=""/></div>
+<map name="az-rand_8h_aad0bf68339aca559471bcf0ff21c049d_icgraph" id="az-rand_8h_aad0bf68339aca559471bcf0ff21c049d_icgraph">
+<area shape="rect" title=" " alt="" coords="655,208,719,235"/>
+<area shape="rect" href="monster-list_8cpp.html#ae665a55b0d2be7b41b9d88eaf4b7dbdb" title="モンスターの変身処理" alt="" coords="457,107,605,133"/>
+<area shape="rect" href="one-monster-placer_8cpp.html#a06b69a037c778b7d072e1f68bc705926" title="モンスターを一体生成する / Attempt to place a monster of the given race at the given location." alt="" coords="259,157,393,184"/>
+<area shape="rect" href="mspell-damage-calculator_8cpp.html#ae0ab466f94df1288b06dcc8a4f5ea746" title="モンスターの使う呪文の威力を決定する /" alt="" coords="456,208,607,235"/>
+<area shape="rect" href="monster-status_8cpp.html#a5816c48586498ed28b6080bb6ebb5e45" title="モンスターの経験値取得処理" alt="" coords="467,259,595,285"/>
+<area shape="rect" href="load-v1-5-0_8cpp.html#ad02061f4e849319d3d0775df91347668" title="アイテムオブジェクト1件を読み込む / Read an object" alt="" coords="487,321,576,348"/>
+<area shape="rect" href="effect-monster-charm_8cpp.html#a2a5454454ef807a2f8913dd585cd30d3" title="モンスターボールで捕らえた処理" alt="" coords="244,5,408,32"/>
+<area shape="rect" href="monster-death_8cpp.html#a9c647c2a727aa1c903b9dc31b65f63e6" title="モンスターが死亡した時の処理 / Handle the &quot;death&quot; of a monster." alt="" coords="272,56,380,83"/>
+<area shape="rect" href="monster-processor_8cpp.html#ae6e21e8e28cd96eb7bc76f452416588a" title="モンスター単体の1ターン行動処理メインルーチン / Process a monster" alt="" coords="265,107,387,133"/>
+<area shape="rect" href="effect-monster-charm_8cpp.html#a9f037cb641bfd16e1292d7c89ca05cf8" title="モンスターボールで捕らえる効果(GF_CAPTURE)" alt="" coords="22,5,179,32"/>
+<area shape="rect" href="mspell-damage-calculator_8cpp.html#a9e87c4e703f0783d89232eacc8cd44a7" title="モンスターの使う呪文の威力を返す /" alt="" coords="245,208,407,235"/>
+<area shape="rect" href="mspell-damage-calculator_8cpp.html#a77c2bd17dea0bb213bccf133b58d2707" title="青魔導師の使う呪文の威力を返す /" alt="" coords="5,151,196,177"/>
+<area shape="rect" href="mspell-damage-calculator_8cpp.html#a08e9ed767b4dd79a3f469fe1993ad747" title="モンスターの使う呪文の威力を返す /" alt="" coords="37,201,164,228"/>
+<area shape="rect" href="mspell-damage-calculator_8cpp.html#a9e06240aa311d0a0ccf13fe58fedaf7b" title="モンスターの使う所属としての呪文の威力を返す /" alt="" coords="21,252,180,279"/>
+<area shape="rect" href="item-loader_8cpp.html#ae4cf72615dec20a97e17f6d9f8d5c6d0" title="アイテムオブジェクトを読み込む(現版) / Read an object (New method)" alt="" coords="293,347,359,373"/>
+<area shape="rect" href="inventory-loader_8cpp.html#acbb6ec113f46c01e83d2e99d40d6bdd8" title="プレイヤーの所持品情報を読み込む / Read the player inventory" alt="" coords="55,303,146,329"/>
+<area shape="rect" href="floor-loader_8cpp.html#a04b4ceaa0f057897dee805390a533b88" title="保存されたフロアを読み込む / Read the saved floor" alt="" coords="49,353,153,380"/>
+<area shape="rect" href="store-loader_8cpp.html#a3b9fc1f66f3e655a84c7559f3e9062a7" title="店舗情報を読み込む / Read a store" alt="" coords="66,404,135,431"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adc6eb01f3840ddb3e55bb47fd92e9cc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc6eb01f3840ddb3e55bb47fd92e9cc7">&#9670;&nbsp;</a></span>next_bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> next_bool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-rand_8h_adc6eb01f3840ddb3e55bb47fd92e9cc7_icgraph.png" border="0" usemap="#az-rand_8h_adc6eb01f3840ddb3e55bb47fd92e9cc7_icgraph" alt=""/></div>
+<map name="az-rand_8h_adc6eb01f3840ddb3e55bb47fd92e9cc7_icgraph" id="az-rand_8h_adc6eb01f3840ddb3e55bb47fd92e9cc7_icgraph">
+<area shape="rect" title=" " alt="" coords="612,31,691,57"/>
+<area shape="rect" href="specified-summon_8cpp.html#ae5117d852eebb2af531bf0ad9cb94f65" title=" " alt="" coords="403,31,564,57"/>
+<area shape="rect" href="mspell-summon_8cpp.html#abde6433211c2ca886c1417d5b9f445d0" title="RF6_S_KINの処理。救援召喚。使用するモンスターの種類により、実処理に分岐させる。 /" alt="" coords="231,31,355,57"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a50f2be9467ee2c4cff879e3d4e9c66b6" title=" " alt="" coords="5,5,183,32"/>
+<area shape="rect" href="assign-monster-spell_8cpp.html#a6df5fae2d3026a687f76997a8b41d0e7" title=" " alt="" coords="11,56,177,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa4863e87b78fe604a962889e9b4c6a6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4863e87b78fe604a962889e9b4c6a6d">&#9670;&nbsp;</a></span>Rand_div()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> Rand_div </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-rand_8h_aa4863e87b78fe604a962889e9b4c6a6d_cgraph.png" border="0" usemap="#az-rand_8h_aa4863e87b78fe604a962889e9b4c6a6d_cgraph" alt=""/></div>
+<map name="az-rand_8h_aa4863e87b78fe604a962889e9b4c6a6d_cgraph" id="az-rand_8h_aa4863e87b78fe604a962889e9b4c6a6d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,80,32"/>
+<area shape="rect" href="z-rand_8cpp.html#a4403596e156c5ffec773135ab93d2e11" title=" " alt="" coords="128,5,233,32"/>
+<area shape="rect" href="z-rand_8cpp.html#a54cf2f2590abb811afc61657d4c1a042" title=" " alt="" coords="281,5,448,32"/>
+<area shape="rect" href="z-rand_8cpp.html#aa9fd72273f5e81f08791810033a263ca" title=" " alt="" coords="496,5,571,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac0eb0bdd9e321a354aaee69cdee5ba5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0eb0bdd9e321a354aaee69cdee5ba5e">&#9670;&nbsp;</a></span>Rand_external()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> Rand_external </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a>&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-rand_8h_ac0eb0bdd9e321a354aaee69cdee5ba5e_cgraph.png" border="0" usemap="#az-rand_8h_ac0eb0bdd9e321a354aaee69cdee5ba5e_cgraph" alt=""/></div>
+<map name="az-rand_8h_ac0eb0bdd9e321a354aaee69cdee5ba5e_cgraph" id="az-rand_8h_ac0eb0bdd9e321a354aaee69cdee5ba5e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,111,57"/>
+<area shape="rect" href="z-rand_8cpp.html#a4403596e156c5ffec773135ab93d2e11" title=" " alt="" coords="159,5,264,32"/>
+<area shape="rect" href="z-rand_8cpp.html#afa8a5c942caf3469b950201edd1bbafd" title=" " alt="" coords="168,56,255,83"/>
+<area shape="rect" href="z-rand_8cpp.html#a54cf2f2590abb811afc61657d4c1a042" title=" " alt="" coords="312,5,479,32"/>
+<area shape="rect" href="z-rand_8cpp.html#aa9fd72273f5e81f08791810033a263ca" title=" " alt="" coords="527,5,601,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-rand_8h_ac0eb0bdd9e321a354aaee69cdee5ba5e_icgraph.png" border="0" usemap="#az-rand_8h_ac0eb0bdd9e321a354aaee69cdee5ba5e_icgraph" alt=""/></div>
+<map name="az-rand_8h_ac0eb0bdd9e321a354aaee69cdee5ba5e_icgraph" id="az-rand_8h_ac0eb0bdd9e321a354aaee69cdee5ba5e_icgraph">
+<area shape="rect" title=" " alt="" coords="577,97,683,123"/>
+<area shape="rect" href="class_cfg_data.html#adb9e684d17b28446502c69d3a2c34602" title="登録されている中からランダムに選択する" alt="" coords="403,71,529,98"/>
+<area shape="rect" href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="409,122,523,149"/>
+<area shape="rect" href="namespacemain__win__music.html#ac3139e31adcbdfbb403c147c1ec8b755" title=" " alt="" coords="204,5,355,47"/>
+<area shape="rect" href="main-win-sound_8cpp.html#a3b6a92c8f777299501bed99f24f31f22" title="指定の効果音を鳴らす。" alt="" coords="235,71,323,98"/>
+<area shape="rect" href="namespacemain__win__music.html#afe634c58baf1af998d6722f34104ccd0" title=" " alt="" coords="5,5,156,47"/>
+<area shape="rect" href="save_8cpp.html#a0b588f8e7135a7d75e809775bbdf4f55" title="セーブデータ書き込みのサブルーチン / Medium level player saver" alt="" coords="220,122,339,149"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="35,122,126,149"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6e8b3297783f26e114417358d21f30c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e8b3297783f26e114417358d21f30c4">&#9670;&nbsp;</a></span>Rand_state_backup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Rand_state_backup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> *&#160;</td>
+          <td class="paramname"><em>backup_state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-rand_8h_a6e8b3297783f26e114417358d21f30c4_icgraph.png" border="0" usemap="#az-rand_8h_a6e8b3297783f26e114417358d21f30c4_icgraph" alt=""/></div>
+<map name="az-rand_8h_a6e8b3297783f26e114417358d21f30c4_icgraph" id="az-rand_8h_a6e8b3297783f26e114417358d21f30c4_icgraph">
+<area shape="rect" title=" " alt="" coords="692,56,829,83"/>
+<area shape="rect" href="object-flavor_8cpp.html#a473504de5edeb4e4e1e191df6455b267" title="ゲーム開始時に行われるベースアイテムの初期化ルーチン / Prepare the &quot;variable&quot; part of the &quot;k_info&quot; array." alt="" coords="521,5,595,32"/>
+<area shape="rect" href="wild_8cpp.html#a32062d69058538387b0e1a4329f1054f" title="荒野フロア生成のメインルーチン / Load a town or generate a terrain level using &quot;plasma&quot; fractals." alt="" coords="317,81,421,108"/>
+<area shape="rect" href="wild_8cpp.html#ac971eb87e5d34d1cc73da4f65ea89128" title="荒野フロア生成のサブルーチン" alt="" coords="472,107,644,133"/>
+<area shape="rect" href="game-play_8cpp.html#ad3af31cbaf6fef3c12d4e7cbd946d1d7" title=" " alt="" coords="315,5,424,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="169,5,254,32"/>
+<area shape="rect" href="wild_8cpp.html#ad2b39f3334022fd4e424dbc1029c79f4" title="広域マップの生成 / Build the wilderness area outside of the town." alt="" coords="156,81,267,108"/>
+<area shape="rect" href="floor-generator_8cpp.html#ac118aa928b4521013e62c16a0bc6b28f" title="ダンジョンのランダムフロアを生成する / Generates a random dungeon level &#45;RAK&#45; @parama player_ptr プレーヤーへの参照ポインタ" alt="" coords="5,81,108,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5642a076ff03c06a4ceadcd4278fb68e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5642a076ff03c06a4ceadcd4278fb68e">&#9670;&nbsp;</a></span>Rand_state_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Rand_state_init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-rand_8h_a5642a076ff03c06a4ceadcd4278fb68e_cgraph.png" border="0" usemap="#az-rand_8h_a5642a076ff03c06a4ceadcd4278fb68e_cgraph" alt=""/></div>
+<map name="az-rand_8h_a5642a076ff03c06a4ceadcd4278fb68e_cgraph" id="az-rand_8h_a5642a076ff03c06a4ceadcd4278fb68e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,117,32"/>
+<area shape="rect" href="z-rand_8cpp.html#af55655c6ec6752e3a7a0a8b076370159" title=" " alt="" coords="165,5,279,32"/>
+<area shape="rect" href="z-rand_8cpp.html#afa8a5c942caf3469b950201edd1bbafd" title=" " alt="" coords="327,5,413,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-rand_8h_a5642a076ff03c06a4ceadcd4278fb68e_icgraph.png" border="0" usemap="#az-rand_8h_a5642a076ff03c06a4ceadcd4278fb68e_icgraph" alt=""/></div>
+<map name="az-rand_8h_a5642a076ff03c06a4ceadcd4278fb68e_icgraph" id="az-rand_8h_a5642a076ff03c06a4ceadcd4278fb68e_icgraph">
+<area shape="rect" title=" " alt="" coords="409,5,521,32"/>
+<area shape="rect" href="game-play_8cpp.html#a6dcdab54fa3147bf758cb92b13779d23" title=" " alt="" coords="237,5,361,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="104,5,189,32"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a028d92135411a925dcf9c232e031a3c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a028d92135411a925dcf9c232e031a3c2">&#9670;&nbsp;</a></span>Rand_state_restore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Rand_state_restore </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> *&#160;</td>
+          <td class="paramname"><em>backup_state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-rand_8h_a028d92135411a925dcf9c232e031a3c2_icgraph.png" border="0" usemap="#az-rand_8h_a028d92135411a925dcf9c232e031a3c2_icgraph" alt=""/></div>
+<map name="az-rand_8h_a028d92135411a925dcf9c232e031a3c2_icgraph" id="az-rand_8h_a028d92135411a925dcf9c232e031a3c2_icgraph">
+<area shape="rect" title=" " alt="" coords="692,56,827,83"/>
+<area shape="rect" href="object-flavor_8cpp.html#a473504de5edeb4e4e1e191df6455b267" title="ゲーム開始時に行われるベースアイテムの初期化ルーチン / Prepare the &quot;variable&quot; part of the &quot;k_info&quot; array." alt="" coords="521,5,595,32"/>
+<area shape="rect" href="wild_8cpp.html#a32062d69058538387b0e1a4329f1054f" title="荒野フロア生成のメインルーチン / Load a town or generate a terrain level using &quot;plasma&quot; fractals." alt="" coords="317,81,421,108"/>
+<area shape="rect" href="wild_8cpp.html#ac971eb87e5d34d1cc73da4f65ea89128" title="荒野フロア生成のサブルーチン" alt="" coords="472,107,644,133"/>
+<area shape="rect" href="game-play_8cpp.html#ad3af31cbaf6fef3c12d4e7cbd946d1d7" title=" " alt="" coords="315,5,424,32"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="169,5,254,32"/>
+<area shape="rect" href="wild_8cpp.html#ad2b39f3334022fd4e424dbc1029c79f4" title="広域マップの生成 / Build the wilderness area outside of the town." alt="" coords="156,81,267,108"/>
+<area shape="rect" href="floor-generator_8cpp.html#ac118aa928b4521013e62c16a0bc6b28f" title="ダンジョンのランダムフロアを生成する / Generates a random dungeon level &#45;RAK&#45; @parama player_ptr プレーヤーへの参照ポインタ" alt="" coords="5,81,108,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af55655c6ec6752e3a7a0a8b076370159"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af55655c6ec6752e3a7a0a8b076370159">&#9670;&nbsp;</a></span>Rand_state_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Rand_state_set </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a>&#160;</td>
+          <td class="paramname"><em>seed</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-rand_8h_af55655c6ec6752e3a7a0a8b076370159_cgraph.png" border="0" usemap="#az-rand_8h_af55655c6ec6752e3a7a0a8b076370159_cgraph" alt=""/></div>
+<map name="az-rand_8h_af55655c6ec6752e3a7a0a8b076370159_cgraph" id="az-rand_8h_af55655c6ec6752e3a7a0a8b076370159_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,119,32"/>
+<area shape="rect" href="z-rand_8cpp.html#afa8a5c942caf3469b950201edd1bbafd" title=" " alt="" coords="167,5,253,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-rand_8h_af55655c6ec6752e3a7a0a8b076370159_icgraph.png" border="0" usemap="#az-rand_8h_af55655c6ec6752e3a7a0a8b076370159_icgraph" alt=""/></div>
+<map name="az-rand_8h_af55655c6ec6752e3a7a0a8b076370159_icgraph" id="az-rand_8h_af55655c6ec6752e3a7a0a8b076370159_icgraph">
+<area shape="rect" title=" " alt="" coords="707,81,820,108"/>
+<area shape="rect" href="object-flavor_8cpp.html#a473504de5edeb4e4e1e191df6455b267" title="ゲーム開始時に行われるベースアイテムの初期化ルーチン / Prepare the &quot;variable&quot; part of the &quot;k_info&quot; array." alt="" coords="535,56,610,83"/>
+<area shape="rect" href="wild_8cpp.html#a32062d69058538387b0e1a4329f1054f" title="荒野フロア生成のメインルーチン / Load a town or generate a terrain level using &quot;plasma&quot; fractals." alt="" coords="325,132,429,159"/>
+<area shape="rect" href="wild_8cpp.html#ac971eb87e5d34d1cc73da4f65ea89128" title="荒野フロア生成のサブルーチン" alt="" coords="487,107,659,133"/>
+<area shape="rect" href="z-rand_8cpp.html#a5642a076ff03c06a4ceadcd4278fb68e" title=" " alt="" coords="517,5,629,32"/>
+<area shape="rect" href="game-play_8cpp.html#ad3af31cbaf6fef3c12d4e7cbd946d1d7" title=" " alt="" coords="322,56,431,83"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="169,31,254,57"/>
+<area shape="rect" href="wild_8cpp.html#ad2b39f3334022fd4e424dbc1029c79f4" title="広域マップの生成 / Build the wilderness area outside of the town." alt="" coords="156,132,267,159"/>
+<area shape="rect" href="floor-generator_8cpp.html#ac118aa928b4521013e62c16a0bc6b28f" title="ダンジョンのランダムフロアを生成する / Generates a random dungeon level &#45;RAK&#45; @parama player_ptr プレーヤーへの参照ポインタ" alt="" coords="5,132,108,159"/>
+<area shape="rect" href="game-play_8cpp.html#a6dcdab54fa3147bf758cb92b13779d23" title=" " alt="" coords="315,5,439,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a73f3287c335a4dbfebdc5cfa30462b91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73f3287c335a4dbfebdc5cfa30462b91">&#9670;&nbsp;</a></span>randnor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> randnor </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mean</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stand</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="z-rand_8h_a73f3287c335a4dbfebdc5cfa30462b91_icgraph.png" border="0" usemap="#az-rand_8h_a73f3287c335a4dbfebdc5cfa30462b91_icgraph" alt=""/></div>
+<map name="az-rand_8h_a73f3287c335a4dbfebdc5cfa30462b91_icgraph" id="az-rand_8h_a73f3287c335a4dbfebdc5cfa30462b91_icgraph">
+<area shape="rect" title=" " alt="" coords="597,145,663,172"/>
+<area shape="rect" href="cave-generator_8cpp.html#a677fcfde8c563a84f490206cdd1d8774" title=" " alt="" coords="395,44,549,71"/>
+<area shape="rect" href="birth-body-spec_8cpp.html#a6e86c0ec942a038747606c5b71a3a1ec" title="プレイヤーの身長体重を決める / Get character&#39;s height and weight" alt="" coords="409,145,535,172"/>
+<area shape="rect" href="object-boost_8cpp.html#aac2a8bb6a1fc5c041b8f18f5660f3554" title="上質以上のオブジェクトに与えるための各種ボーナスを正規乱数も加えて算出する。 Help determine an &quot;enchantment bonus&quot; for an object." alt="" coords="435,284,509,311"/>
+<area shape="rect" href="cave-generator_8cpp.html#a9b7cb506f74a6ee856853b073a165ea3" title="ダンジョン生成のメインルーチン / Generate a new dungeon level" alt="" coords="227,31,303,57"/>
+<area shape="rect" href="floor-generator_8cpp.html#a4a6a31853be6f0277b257f8ff6ebf7b9" title="ダンジョン時のランダムフロア生成 / Make a real level" alt="" coords="33,5,108,32"/>
+<area shape="rect" href="shape-changer_8cpp.html#a7e5697a071fe31476a758edba5057d36" title=" " alt="" coords="217,107,313,133"/>
+<area shape="rect" href="birth-body-spec_8cpp.html#aba21d84cfe8e5d3cb29a0ce36a50e8ff" title="プレイヤーの年齢を決める。 / Computes character&#39;s age, height, and weight by henkma" alt="" coords="230,157,301,184"/>
+<area shape="rect" href="cmd-equipment_8cpp.html#ac5a7ea600612007cbf7d105f433213ab" title="装備するコマンドのメインルーチン / Wield or wear a single item from the pack or floor" alt="" coords="19,56,123,83"/>
+<area shape="rect" href="shape-changer_8cpp.html#af84e97990b1c8085f7c334b2b4b13f42" title=" " alt="" coords="23,107,118,133"/>
+<area shape="rect" href="birth-wizard_8cpp.html#abe358f19a097b3d661699f18303a069b" title=" " alt="" coords="5,157,136,184"/>
+<area shape="rect" href="birth-wizard_8cpp.html#afdfed098d39f68b6df65e34ca2e77fb2" title=" " alt="" coords="5,208,136,235"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a64a4702bb5ebbc97a880fd3a7f217d71" title=" " alt="" coords="5,259,136,301"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="184,208,347,235"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="198,259,333,285"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="192,309,339,336"/>
+<area shape="rect" href="spells-object_8cpp.html#a606c388ae9ec39706af972b765edadbe" title="武器へのエゴ付加処理 / Brand the current weapon" alt="" coords="213,360,318,387"/>
+<area shape="rect" href="mind-archer_8cpp.html#a5c7ac014262f5236c69ea18c406fee25" title="「弾/矢の製造」処理 / do_cmd_cast calls this function if the player&#39;s class is &#39;archer&#39;." alt="" coords="215,411,316,437"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="aaab944716e5d917a6eb96b1fa116c480"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaab944716e5d917a6eb96b1fa116c480">&#9670;&nbsp;</a></span>Rand_place</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a> Rand_place</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2643bd94f99de1013291c7263c6a0450"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2643bd94f99de1013291c7263c6a0450">&#9670;&nbsp;</a></span>Rand_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> Rand_state[<a class="el" href="z-rand_8h.html#a8396b29ae63ac8c700a03a412aefaab6">RAND_DEG</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時57分25秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player/player-damage.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_975424cdae97a07db69e55371758444e.html">player</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">player-damage.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="player-damage_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monster-type-definition_8h.html">system/monster-type-definition.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="player-damage_8h.html#a43b31edba1a13e84cf58b7d6fbeb3b24">    6</a></span>&#160;<span class="preprocessor">#define DAMAGE_FORCE    1</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="player-damage_8h.html#acccbe64123656a5b887a3254a124640c">    7</a></span>&#160;<span class="preprocessor">#define DAMAGE_GENO     2</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="player-damage_8h.html#a8f4e4abf37c75221d257bc89724c3f16">    8</a></span>&#160;<span class="preprocessor">#define DAMAGE_LOSELIFE 3</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="player-damage_8h.html#a448947b78d4e3596f6c9d8e615e8b41c">    9</a></span>&#160;<span class="preprocessor">#define DAMAGE_ATTACK   4</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="player-damage_8h.html#a2ff90097fe2d2dc2c4b726619cd26caf">   10</a></span>&#160;<span class="preprocessor">#define DAMAGE_NOESCAPE 5</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="player-damage_8h.html#a717fe02af2b73435d470fba95e3ad79f">   11</a></span>&#160;<span class="preprocessor">#define DAMAGE_USELIFE  6</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="player-damage_8h.html#a0b206799361ce9f3ae3be5de5fd30183">take_hit</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">int</span> damage_type, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="cmd-mane_8cpp.html#a9b39867abc3f09243fcdc739bd9e6c90">damage</a>, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> kb_str, <span class="keywordtype">int</span> monspell);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="player-damage_8h.html#a2cc414088296f068951969e2748ba07e">acid_dam</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> kb_str, <span class="keywordtype">int</span> monspell, <span class="keywordtype">bool</span> aura);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="player-damage_8h.html#a1fdd8fef23ce71cad2865261b7ccfc92">elec_dam</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> kb_str, <span class="keywordtype">int</span> monspell, <span class="keywordtype">bool</span> aura);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="player-damage_8h.html#a1baa0fdc9a8912f4da2d8f1905c2aac7">fire_dam</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> kb_str, <span class="keywordtype">int</span> monspell, <span class="keywordtype">bool</span> aura);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> <a class="code" href="player-damage_8h.html#a71b92a6bc674bee26d592cd621fabb89">cold_dam</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a> dam, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> kb_str, <span class="keywordtype">int</span> monspell, <span class="keywordtype">bool</span> aura);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> <a class="code" href="player-damage_8h.html#a7b72f7a9f63aeb5e4e28ca9cd8d0fe43">touch_zap_player</a>(<a class="code" href="structmonster__type.html">monster_type</a> *m_ptr, <a class="code" href="structplayer__type.html">player_type</a> *touched_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="acmd-mane_8cpp_html_a9b39867abc3f09243fcdc739bd9e6c90"><div class="ttname"><a href="cmd-mane_8cpp.html#a9b39867abc3f09243fcdc739bd9e6c90">damage</a></div><div class="ttdeci">static int damage</div><div class="ttdoc">ものまねの処理実装 / Imitation code</div><div class="ttdef"><b>Definition:</b> cmd-mane.cpp:62</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="ah-type_8h_html_afdb20155266ee801610f13b1589a3df3"><div class="ttname"><a href="h-type_8h.html#afdb20155266ee801610f13b1589a3df3">HIT_POINT</a></div><div class="ttdeci">s32b HIT_POINT</div><div class="ttdoc">HPとその増減量の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:141</div></div>
+<div class="ttc" id="amonster-type-definition_8h_html"><div class="ttname"><a href="monster-type-definition_8h.html">monster-type-definition.h</a></div></div>
+<div class="ttc" id="aplayer-damage_8h_html_a0b206799361ce9f3ae3be5de5fd30183"><div class="ttname"><a href="player-damage_8h.html#a0b206799361ce9f3ae3be5de5fd30183">take_hit</a></div><div class="ttdeci">int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concptr kb_str, int monspell)</div><div class="ttdef"><b>Definition:</b> player-damage.cpp:264</div></div>
+<div class="ttc" id="aplayer-damage_8h_html_a1baa0fdc9a8912f4da2d8f1905c2aac7"><div class="ttname"><a href="player-damage_8h.html#a1baa0fdc9a8912f4da2d8f1905c2aac7">fire_dam</a></div><div class="ttdeci">HIT_POINT fire_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int monspell, bool aura)</div><div class="ttdoc">火炎属性によるプレイヤー損害処理 / Hurt the player with Fire</div><div class="ttdef"><b>Definition:</b> player-damage.cpp:203</div></div>
+<div class="ttc" id="aplayer-damage_8h_html_a1fdd8fef23ce71cad2865261b7ccfc92"><div class="ttname"><a href="player-damage_8h.html#a1fdd8fef23ce71cad2865261b7ccfc92">elec_dam</a></div><div class="ttdeci">HIT_POINT elec_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int monspell, bool aura)</div><div class="ttdoc">電撃属性によるプレイヤー損害処理 / Hurt the player with electricity</div><div class="ttdef"><b>Definition:</b> player-damage.cpp:171</div></div>
+<div class="ttc" id="aplayer-damage_8h_html_a2cc414088296f068951969e2748ba07e"><div class="ttname"><a href="player-damage_8h.html#a2cc414088296f068951969e2748ba07e">acid_dam</a></div><div class="ttdeci">HIT_POINT acid_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int monspell, bool aura)</div><div class="ttdoc">酸属性によるプレイヤー損害処理 / Hurt the player with Acid</div><div class="ttdef"><b>Definition:</b> player-damage.cpp:138</div></div>
+<div class="ttc" id="aplayer-damage_8h_html_a71b92a6bc674bee26d592cd621fabb89"><div class="ttname"><a href="player-damage_8h.html#a71b92a6bc674bee26d592cd621fabb89">cold_dam</a></div><div class="ttdeci">HIT_POINT cold_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int monspell, bool aura)</div><div class="ttdoc">冷気属性によるプレイヤー損害処理 / Hurt the player with Cold</div><div class="ttdef"><b>Definition:</b> player-damage.cpp:235</div></div>
+<div class="ttc" id="aplayer-damage_8h_html_a7b72f7a9f63aeb5e4e28ca9cd8d0fe43"><div class="ttname"><a href="player-damage_8h.html#a7b72f7a9f63aeb5e4e28ca9cd8d0fe43">touch_zap_player</a></div><div class="ttdeci">void touch_zap_player(monster_type *m_ptr, player_type *touched_ptr)</div><div class="ttdoc">敵オーラによるプレイヤーのダメージ処理</div><div class="ttdef"><b>Definition:</b> player-damage.cpp:581</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

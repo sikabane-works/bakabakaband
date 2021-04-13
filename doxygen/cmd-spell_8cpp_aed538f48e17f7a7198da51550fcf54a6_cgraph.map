@@ -1,0 +1,52 @@
+<map id="do_cmd_cast" name="do_cmd_cast">
+<area shape="rect" id="node1" title="魔法を詠唱するコマンドのメインルーチン / Cast a spell" alt="" coords="5,1475,105,1501"/>
+<area shape="rect" id="node2" href="$spells-sight_8cpp.html#a38649e896637efab6c1c96d71f870948" title="視界内モンスターを怒らせる処理 / Wake up all monsters, and speed up &quot;los&quot; monsters." alt="" coords="382,208,521,235"/>
+<area shape="rect" id="node7" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="879,740,957,767"/>
+<area shape="rect" id="node12" href="$avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="411,1880,491,1907"/>
+<area shape="rect" id="node13" href="$floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="187,1880,294,1907"/>
+<area shape="rect" id="node14" href="$action-limited_8cpp.html#ab6e41ead2ec3155cacbd47e788347578" title=" " alt="" coords="609,1424,747,1451"/>
+<area shape="rect" id="node15" href="$cmd-spell_8cpp.html#aca17dc4bfea69487469ada97451f3199" title="プレイヤーの職業が練気術師の時、領域魔法と練気術を切り換える処理のインターフェイス" alt="" coords="177,1323,304,1349"/>
+<area shape="rect" id="node16" href="$cmd-mind_8cpp.html#a1863aceedcc38f71aec92ed4701a5bbc" title="特殊技能コマンドのメインルーチン /" alt="" coords="400,1323,503,1349"/>
+<area shape="rect" id="node25" href="$z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="419,284,483,311"/>
+<area shape="rect" id="node26" href="$base-status_8cpp.html#abc8401db064966371a87b64d1a6070cb" title="プレイヤーの基本能力値を減少させる / Decreases a stat by an amount indended to vary from 0 to 100 percent." alt="" coords="205,1829,277,1856"/>
+<area shape="rect" id="node27" href="$spells-execution_8cpp.html#afffe7e355aa0c78d3c178eddc3d00161" title="魔法処理のメインルーチン" alt="" coords="413,1627,490,1653"/>
+<area shape="rect" id="node28" href="$screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="427,816,476,843"/>
+<area shape="rect" id="node29" href="$experience_8cpp.html#a526ec6c3a82867a6a0152ffeb12a720d" title=" " alt="" coords="203,1931,278,1957"/>
+<area shape="rect" id="node30" href="$asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="392,765,511,792"/>
+<area shape="rect" id="node31" href="$stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="633,664,723,691"/>
+<area shape="rect" id="node32" href="$player-realm_8cpp.html#a17a8cc91a8bf571f0d9ab86dfb238429" title=" " alt="" coords="180,1981,301,2008"/>
+<area shape="rect" id="node33" href="$cmd-spell_8cpp.html#a95f1285450c26787e31109af69860e75" title="領域魔法の閲覧、学習、使用選択するインターフェイス処理 Allow user to choose a spell/prayer from the given book." alt="" coords="203,1475,278,1501"/>
+<area shape="rect" id="node34" href="$spell-info_8cpp.html#a83499255de42cbe65adcd9aad90da2ae" title="呪文の消費MPを返す / Modify mana consumption rate using spell exp and dec_mana" alt="" coords="617,1677,739,1704"/>
+<area shape="rect" id="node35" href="$display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="406,715,497,741"/>
+<area shape="rect" id="node36" href="$spells-describer_8cpp.html#ac43fa12bda7985968b2ed2786f0157ff" title="領域魔法に応じて技能の名称を返す。" alt="" coords="379,1779,524,1805"/>
+<area shape="rect" id="node37" href="$spell-info_8cpp.html#a67f843b68ced768115f6f9794c386a55" title="呪文の失敗率計算メインルーチン / Returns spell chance of failure for spell &#45;RAK&#45;" alt="" coords="402,1677,501,1704"/>
+<area shape="rect" id="node38" href="$spells-hex_8cpp.html#af44c73411a6535870d40b84a4fbc2209" title="プレイヤーの呪術詠唱枠がすでに最大かどうかを返す" alt="" coords="187,2032,294,2059"/>
+<area shape="rect" id="node39" href="$spells-hex_8cpp.html#ab35c57227b5fdac063f315e972f67188" title=" " alt="" coords="404,1221,499,1248"/>
+<area shape="rect" id="node40" href="$experience_8cpp.html#aa46ccb85f9aa6f7844eb67bd8eb28c7a" title=" " alt="" coords="203,2083,278,2109"/>
+<area shape="rect" id="node41" href="$grid_8cpp.html#a90a8ac3022bff7cdeddf03830a82b39d" title="指定された座標をプレイヤー収められていない状態かどうか / Returns true if the player&#39;s grid is dark" alt="" coords="211,2133,271,2160"/>
+<area shape="rect" id="node42" href="$stuff-handler_8cpp.html#a5e3afaa56b55c6e8837edeaf8d5355c2" title=" " alt="" coords="179,2184,303,2211"/>
+<area shape="rect" id="node43" href="$player-status_8cpp.html#a13cc3308d8f0b0703dea0e4f5b00e248" title="プレイヤーが魔道書を一冊も持っていないかを判定する" alt="" coords="153,2235,328,2261"/>
+<area shape="rect" id="node44" href="$eldritch-horror_8cpp.html#a6cef6cacb4d15880ba4cab6ad108810e" title="ELDRITCH_HORRORによるプレイヤーの精神破壊処理" alt="" coords="195,563,287,589"/>
+<area shape="rect" id="node45" href="$bad-status-setter_8cpp.html#a4f18393e08963daf9454f4d2fe543b1c" title="麻痺の継続時間をセットする / Set &quot;paralyzed&quot;, notice observable changes" alt="" coords="400,613,503,640"/>
+<area shape="rect" id="node46" href="$sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="423,1019,480,1045"/>
+<area shape="rect" id="node47" href="$spells-hex_8cpp.html#a86fbae88140f0826e8724846f6f36873" title="プレイヤーが詠唱中の呪術から一つを選んで停止する" alt="" coords="186,1373,295,1400"/>
+<area shape="rect" id="node48" href="$player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="207,917,275,944"/>
+<area shape="rect" id="node49" href="$player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="203,2285,279,2312"/>
+<area shape="rect" id="node50" href="$spells-random_8cpp.html#ad3967ff26aec044a7b9dd0a553073fe3" title="運命の輪、並びにカオス的な効果の発動" alt="" coords="197,259,284,285"/>
+<area shape="rect" id="node3" href="$monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="649,360,707,387"/>
+<area shape="rect" id="node4" href="$monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="829,95,1007,121"/>
+<area shape="rect" id="node5" href="$monster-status_8cpp.html#a6aef132d11ecd821ee1c1ddb63fd6081" title=" " alt="" coords="838,171,998,197"/>
+<area shape="rect" id="node6" href="$monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="619,309,737,336"/>
+<area shape="rect" id="node8" href="$cave_8cpp.html#ad140737a0660acfdbadc377c80a7df1b" title=" " alt="" coords="608,5,748,32"/>
+<area shape="rect" id="node9" href="$class_flag_group.html#a021f4c66b2af9456aa41200d81efee90" title="指定したフラグを指定した値にセットする" alt="" coords="624,461,732,488"/>
+<area shape="rect" id="node10" href="$monster-status-setter_8cpp.html#abf6321fd027008211ec03df294378470" title="モンスターの睡眠状態値をセットする。0で起きる。 / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_CSLEEP]&quot;, notice observable changes" alt="" coords="609,56,747,83"/>
+<area shape="rect" id="node11" href="$monster-status-setter_8cpp.html#ac81c0952258c31c0bb053742f5d63e0f" title="モンスターの加速状態値をセット / Set &quot;m_ptr&#45;&gt;mtimed[MTIMED_FAST]&quot;, notice observable changes" alt="" coords="617,157,739,184"/>
+<area shape="rect" id="node20" href="$cmd-mind_8cpp.html#a8b198f6a124bf911b2940ed6369708c0" title="現在プレイヤーが使用可能な特殊技能の一覧表示 /" alt="" coords="376,1120,527,1147"/>
+<area shape="rect" id="node21" href="$input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="651,1044,705,1071"/>
+<area shape="rect" id="node22" href="$screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="659,1145,697,1172"/>
+<area shape="rect" id="node23" href="$command-repeater_8cpp.html#a7d3c94fc9d6f020c659ace3f90900d63" title=" " alt="" coords="409,1475,494,1501"/>
+<area shape="rect" id="node24" href="$command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="405,1424,498,1451"/>
+<area shape="rect" id="node17" href="$cmd-mind_8cpp.html#a2f00c43155860825a88b285bdc547e38" title=" " alt="" coords="575,1323,781,1349"/>
+<area shape="rect" id="node18" href="$cmd-mind_8cpp.html#a4656cdc0763c2391df953670ea59672e" title=" " alt="" coords="606,1221,750,1248"/>
+<area shape="rect" id="node19" href="$cmd-mind_8cpp.html#a56bec967f4464d4e9097563b33c54853" title=" " alt="" coords="597,1272,759,1299"/>
+</map>

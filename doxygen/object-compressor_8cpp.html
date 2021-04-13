@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/core/object-compressor.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">object-compressor.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="object-compressor_8h_source.html">core/object-compressor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-redraw-types_8h_source.html">core/player-redraw-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="window-redrawer_8h_source.html">core/window-redrawer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-object_8h_source.html">floor/floor-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-checker_8h_source.html">object-hook/hook-checker.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hook-enchant_8h_source.html">object-hook/hook-enchant.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-generator_8h_source.html">object/object-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind_8h_source.html">object/object-kind.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-type-definition_8h_source.html">system/monster-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-type-definition_8h_source.html">system/object-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+object-compressor.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-compressor_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2core_2object-compressor_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2core_2object-compressor_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2core_2object-compressor_8cpp">
+<area shape="rect" title=" " alt="" coords="1075,5,1275,61"/>
+<area shape="rect" href="object-compressor_8h.html" title=" " alt="" coords="149,206,319,233"/>
+<area shape="rect" href="player-redraw-types_8h.html" title=" " alt="" coords="2105,109,2233,151"/>
+<area shape="rect" href="window-redrawer_8h.html" title=" " alt="" coords="159,117,317,143"/>
+<area shape="rect" href="floor-object_8h.html" title=" " alt="" coords="1141,206,1265,233"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="1136,117,1215,143"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1175,288,1320,329"/>
+<area shape="rect" href="hook-checker_8h.html" title=" " alt="" coords="341,117,524,143"/>
+<area shape="rect" href="hook-enchant_8h.html" title=" " alt="" coords="548,117,731,143"/>
+<area shape="rect" href="object-generator_8h.html" title=" " alt="" coords="755,117,921,143"/>
+<area shape="rect" href="object-kind_8h.html" title=" " alt="" coords="1545,117,1680,143"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="1341,199,1474,240"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1892,117,2080,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="945,117,1112,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="645,295,775,322"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="665,385,755,411"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="779,385,870,411"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="894,385,993,411"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1017,385,1115,411"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="5,385,105,411"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="129,385,304,411"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="329,385,470,411"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="494,385,641,411"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="779,467,897,493"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1192,467,1303,493"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="1344,295,1471,322"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="1002,206,1117,233"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1483,377,1639,419"/>
+<area shape="rect" href="trg-types_8h.html" title=" " alt="" coords="1549,199,1676,240"/>
+<area shape="rect" title=" " alt="" coords="1700,206,1755,233"/>
+<area shape="rect" title=" " alt="" coords="1779,206,1835,233"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="2137,206,2315,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1911,206,2061,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:aedb7c42f527370f5da7f6c158dd62902"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-compressor_8cpp.html#aedb7c42f527370f5da7f6c158dd62902">compact_objects_aux</a> (<a class="el" href="structfloor__type.html">floor_type</a> *floor_ptr, <a class="el" href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a> i1, <a class="el" href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a> i2)</td></tr>
+<tr class="memdesc:aedb7c42f527370f5da7f6c158dd62902"><td class="mdescLeft">&#160;</td><td class="mdescRight">グローバルオブジェクト配列に対し指定範囲のオブジェクトを整理してIDの若い順に寄せる / Move an object from index i1 to index i2 in the object list  <a href="object-compressor_8cpp.html#aedb7c42f527370f5da7f6c158dd62902">[詳解]</a><br /></td></tr>
+<tr class="separator:aedb7c42f527370f5da7f6c158dd62902"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ede50288749e158368e8fefdd4d960b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object-compressor_8cpp.html#a1ede50288749e158368e8fefdd4d960b">compact_objects</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, int size)</td></tr>
+<tr class="memdesc:a1ede50288749e158368e8fefdd4d960b"><td class="mdescLeft">&#160;</td><td class="mdescRight">グローバルオブジェクト配列から優先度の低いものを削除し、データを圧縮する。 / Compact and Reorder the object list.  <a href="object-compressor_8cpp.html#a1ede50288749e158368e8fefdd4d960b">[詳解]</a><br /></td></tr>
+<tr class="separator:a1ede50288749e158368e8fefdd4d960b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a1ede50288749e158368e8fefdd4d960b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ede50288749e158368e8fefdd4d960b">&#9670;&nbsp;</a></span>compact_objects()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void compact_objects </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>グローバルオブジェクト配列から優先度の低いものを削除し、データを圧縮する。 / Compact and Reorder the object list. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">size</td><td>最低でも減らしたいオブジェクト数の水準 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし</dd></dl>
+<p>（危険なので使用には注意すること） This function can be very dangerous, use with caution!<br  />
+<br  />
+ When actually "compacting" objects, we base the saving throw on a<br  />
+ combination of object level, distance from player, and current<br  />
+ "desperation".<br  />
+<br  />
+ After "compacting" (if needed), we "reorder" the objects into a more<br  />
+ compact order, and we reset the allocation info, and the "live" array.<br  />
+</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-compressor_8cpp_a1ede50288749e158368e8fefdd4d960b_cgraph.png" border="0" usemap="#aobject-compressor_8cpp_a1ede50288749e158368e8fefdd4d960b_cgraph" alt=""/></div>
+<map name="aobject-compressor_8cpp_a1ede50288749e158368e8fefdd4d960b_cgraph" id="aobject-compressor_8cpp_a1ede50288749e158368e8fefdd4d960b_cgraph">
+<area shape="rect" title="グローバルオブジェクト配列から優先度の低いものを削除し、データを圧縮する。 / Compact and Reorder the object list." alt="" coords="5,334,127,361"/>
+<area shape="rect" href="object-compressor_8cpp.html#aedb7c42f527370f5da7f6c158dd62902" title="グローバルオブジェクト配列に対し指定範囲のオブジェクトを整理してIDの若い順に寄せる / Move an object from index i1 to index i2 in the object l..." alt="" coords="177,81,327,107"/>
+<area shape="rect" href="hook-checker_8cpp.html#ac4cc92b3d4f6e42f4c5a1e729382ee6e" title=" " alt="" coords="552,30,711,57"/>
+<area shape="rect" href="floor-object_8cpp.html#af338285652093066df1fda01f9b4fed2" title="オブジェクトを削除する / Delete a dungeon object" alt="" coords="191,182,313,209"/>
+<area shape="rect" href="geometry_8cpp.html#aed7b0b7bf05feb27e08a21112a69abb8" title="2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton&#45;Raphson technique" alt="" coords="217,334,287,361"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="213,486,291,513"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="175,537,329,563"/>
+<area shape="rect" href="hook-checker_8cpp.html#a41a37b8108a515afc4462557128c9a92" title=" " alt="" coords="199,587,305,614"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="395,81,486,107"/>
+<area shape="rect" href="floor-object_8cpp.html#a7018087455117fe19ab6cce1095c88a3" title="床上、モンスター所持でスタックされたアイテムを削除しスタックを補完する / Excise a dungeon object from any stacks" alt="" coords="377,182,504,209"/>
+<area shape="rect" href="grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="405,233,476,259"/>
+<area shape="rect" href="cave_8cpp.html#a6e5519e9632a1976322c085788b4dc0d" title=" " alt="" coords="587,233,675,259"/>
+<area shape="rect" href="player-status_8cpp.html#af6be48df20384df551b88a2466d159fb" title=" " alt="" coords="596,283,667,310"/>
+<area shape="rect" href="display-map_8cpp.html#a9be4d479cc04510dbea7b7c114c617f3" title="指定した座標の地形の表示属性を取得する / Extract the attr/char to display at the given (legal) map location" alt="" coords="594,334,669,361"/>
+<area shape="rect" href="main-window-util_8cpp.html#a34b1aa1feae2690664832deba004ef74" title=" " alt="" coords="584,81,679,107"/>
+<area shape="rect" href="screen-util_8cpp.html#a40da48b19968a0521c68cf9d0195b50c" title=" " alt="" coords="577,131,686,158"/>
+<area shape="rect" href="z-term_8cpp.html#a0d418957c1b2ef703fabda3056a96a3a" title=" " alt="" coords="562,182,701,209"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="389,435,492,462"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="400,587,481,614"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="588,537,675,563"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="587,739,675,766"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="381,486,500,513"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="393,689,488,715"/>
+<area shape="rect" href="display-messages_8cpp.html#ae18643fdadbd0c2fa5aa967e780aa408" title="保存中の過去ゲームメッセージの数を返す。 / How many messages are &quot;available&quot;?" alt="" coords="578,435,685,462"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="606,385,657,411"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="610,689,653,715"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="605,587,658,614"/>
+<area shape="rect" href="display-messages_8cpp.html#a8647d1d8cbef5e4db465563838dd2b87" title=" " alt="" coords="553,638,709,665"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="759,587,841,614"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-compressor_8cpp_a1ede50288749e158368e8fefdd4d960b_icgraph.png" border="0" usemap="#aobject-compressor_8cpp_a1ede50288749e158368e8fefdd4d960b_icgraph" alt=""/></div>
+<map name="aobject-compressor_8cpp_a1ede50288749e158368e8fefdd4d960b_icgraph" id="aobject-compressor_8cpp_a1ede50288749e158368e8fefdd4d960b_icgraph">
+<area shape="rect" title="グローバルオブジェクト配列から優先度の低いものを削除し、データを圧縮する。 / Compact and Reorder the object list." alt="" coords="683,107,804,133"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="511,43,635,69"/>
+<area shape="rect" href="floor-writer_8cpp.html#a11937fb0136a154a63265b4d3e946b7c" title="ゲームプレイ中のフロア一時保存出力処理サブルーチン / Actually write a temporary saved floor file" alt="" coords="519,107,626,133"/>
+<area shape="rect" href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="5,183,120,209"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="327,31,463,57"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="181,5,266,32"/>
+<area shape="rect" href="floor-writer_8cpp.html#a159128f33a5ee6ede05b1b1759af3088" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="355,107,434,133"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a092e95632a8987f70d45586dfe3d522f" title=" " alt="" coords="168,56,279,83"/>
+<area shape="rect" href="dungeon-loader_8cpp.html#a7500486a4ccc69265cdee7d56ed343d0" title="保存されたフロアを読み込む / Read the dungeon" alt="" coords="179,107,268,133"/>
+<area shape="rect" href="floor-writer_8cpp.html#aa3fb42702fe78c01f6faf53decb93421" title="現在フロアの書き込み / Write the current dungeon (new method) @player_ptr プレーヤーへの参照ポインタ" alt="" coords="178,157,269,184"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aedb7c42f527370f5da7f6c158dd62902"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedb7c42f527370f5da7f6c158dd62902">&#9670;&nbsp;</a></span>compact_objects_aux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void compact_objects_aux </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfloor__type.html">floor_type</a> *&#160;</td>
+          <td class="paramname"><em>floor_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a>&#160;</td>
+          <td class="paramname"><em>i1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a30141f88547728df57f6a10c56fbeb8f">OBJECT_IDX</a>&#160;</td>
+          <td class="paramname"><em>i2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>グローバルオブジェクト配列に対し指定範囲のオブジェクトを整理してIDの若い順に寄せる / Move an object from index i1 to index i2 in the object list </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i1</td><td>整理したい配列の始点 </td></tr>
+    <tr><td class="paramname">i2</td><td>整理したい配列の終点 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-compressor_8cpp_aedb7c42f527370f5da7f6c158dd62902_cgraph.png" border="0" usemap="#aobject-compressor_8cpp_aedb7c42f527370f5da7f6c158dd62902_cgraph" alt=""/></div>
+<map name="aobject-compressor_8cpp_aedb7c42f527370f5da7f6c158dd62902_cgraph" id="aobject-compressor_8cpp_aedb7c42f527370f5da7f6c158dd62902_cgraph">
+<area shape="rect" title="グローバルオブジェクト配列に対し指定範囲のオブジェクトを整理してIDの若い順に寄せる / Move an object from index i1 to index i2 in the object l..." alt="" coords="5,31,155,57"/>
+<area shape="rect" href="hook-checker_8cpp.html#ac4cc92b3d4f6e42f4c5a1e729382ee6e" title=" " alt="" coords="203,5,361,32"/>
+<area shape="rect" href="object-generator_8cpp.html#a6df682655ccf1b46d7e3328766d0eded" title="オブジェクトを初期化する Wipe an object clean." alt="" coords="237,56,327,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="object-compressor_8cpp_aedb7c42f527370f5da7f6c158dd62902_icgraph.png" border="0" usemap="#aobject-compressor_8cpp_aedb7c42f527370f5da7f6c158dd62902_icgraph" alt=""/></div>
+<map name="aobject-compressor_8cpp_aedb7c42f527370f5da7f6c158dd62902_icgraph" id="aobject-compressor_8cpp_aedb7c42f527370f5da7f6c158dd62902_icgraph">
+<area shape="rect" title="グローバルオブジェクト配列に対し指定範囲のオブジェクトを整理してIDの若い順に寄せる / Move an object from index i1 to index i2 in the object l..." alt="" coords="531,56,680,83"/>
+<area shape="rect" href="object-compressor_8cpp.html#a1ede50288749e158368e8fefdd4d960b" title="グローバルオブジェクト配列から優先度の低いものを削除し、データを圧縮する。 / Compact and Reorder the object list." alt="" coords="361,56,483,83"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="189,5,313,32"/>
+<area shape="rect" href="floor-writer_8cpp.html#a11937fb0136a154a63265b4d3e946b7c" title="ゲームプレイ中のフロア一時保存出力処理サブルーチン / Actually write a temporary saved floor file" alt="" coords="198,56,305,83"/>
+<area shape="rect" href="save_8cpp.html#a0187035e4766ac965c70227d8ce43e3f" title="セーブデータの書き込み / Actually write a save&#45;file" alt="" coords="194,107,309,133"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="5,5,141,32"/>
+<area shape="rect" href="floor-writer_8cpp.html#a159128f33a5ee6ede05b1b1759af3088" title="ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved&#45;floor data" alt="" coords="34,56,113,83"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分43秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

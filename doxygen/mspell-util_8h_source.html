@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/mspell/mspell-util.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d3503302c38a329207825687a87abf53.html">mspell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mspell-util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="mspell-util_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">/* Spell Type flag */</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="mspell-util_8h.html#a3df61a45660a85ab5b3a4e7b988e8ad1">    6</a></span>&#160;<span class="preprocessor">#define MONSTER_TO_PLAYER 0x01</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="mspell-util_8h.html#aa801e6f3482fb3a043648e002cc59baa">    7</a></span>&#160;<span class="preprocessor">#define MONSTER_TO_MONSTER 0x02</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/* monster spell number */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="mspell-util_8h.html#a73f7b0c4fe6445057a3e062fe87dd208">   10</a></span>&#160;<span class="preprocessor">#define RF4_SPELL_START 32 * 3</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="mspell-util_8h.html#a8ccfbf95f55614278bc75d9c30487f1e">   11</a></span>&#160;<span class="preprocessor">#define RF5_SPELL_START 32 * 4</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="mspell-util_8h.html#acdb7d289b8f115a122a61413595063a1">   12</a></span>&#160;<span class="preprocessor">#define RF6_SPELL_START 32 * 5</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="mspell-util_8h.html#a0bdfd9b55b743eb4f82ef3582403f0eb">see_monster</a>(<a class="code" href="structplayer__type.html">player_type</a>* player_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="mspell-util_8h.html#a1126379f8bb880004fbe53665b7f4383">monster_near_player</a>(<a class="code" href="structfloor__type.html">floor_type</a>* floor_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span> <a class="code" href="mspell-util_8h.html#a6d1fe40d21640ab21cdaba03bb3e70dc">monspell_message_base</a>(<a class="code" href="structplayer__type.html">player_type</a>* target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg1, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg2, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg3, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg4, <span class="keywordtype">bool</span> msg_flag_aux, <span class="keywordtype">int</span> TARGET_TYPE);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">void</span> <a class="code" href="mspell-util_8h.html#ad6654d9a9e80032792e6700447b1f043">monspell_message</a>(<a class="code" href="structplayer__type.html">player_type</a>* target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg1, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg2, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg3, <span class="keywordtype">int</span> TARGET_TYPE);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> <a class="code" href="mspell-util_8h.html#abd0e92379b3e97682814158868808448">simple_monspell_message</a>(<a class="code" href="structplayer__type.html">player_type</a>* target_ptr, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx, <a class="code" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> t_idx, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg1, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> msg2, <span class="keywordtype">int</span> TARGET_TYPE);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_ad2d0f988482931f676c919cf5d0f7716"><div class="ttname"><a href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a></div><div class="ttdeci">s16b MONSTER_IDX</div><div class="ttdef"><b>Definition:</b> h-type.h:110</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="amspell-util_8h_html_a0bdfd9b55b743eb4f82ef3582403f0eb"><div class="ttname"><a href="mspell-util_8h.html#a0bdfd9b55b743eb4f82ef3582403f0eb">see_monster</a></div><div class="ttdeci">bool see_monster(player_type *player_ptr, MONSTER_IDX m_idx)</div><div class="ttdoc">プレイヤーがモンスターを見ることができるかの判定 /</div><div class="ttdef"><b>Definition:</b> mspell-util.cpp:14</div></div>
+<div class="ttc" id="amspell-util_8h_html_a1126379f8bb880004fbe53665b7f4383"><div class="ttname"><a href="mspell-util_8h.html#a1126379f8bb880004fbe53665b7f4383">monster_near_player</a></div><div class="ttdeci">bool monster_near_player(floor_type *floor_ptr, MONSTER_IDX m_idx, MONSTER_IDX t_idx)</div><div class="ttdoc">モンスター2体がプレイヤーの近くに居るかの判定 /</div><div class="ttdef"><b>Definition:</b> mspell-util.cpp:27</div></div>
+<div class="ttc" id="amspell-util_8h_html_a6d1fe40d21640ab21cdaba03bb3e70dc"><div class="ttname"><a href="mspell-util_8h.html#a6d1fe40d21640ab21cdaba03bb3e70dc">monspell_message_base</a></div><div class="ttdeci">void monspell_message_base(player_type *target_ptr, MONSTER_IDX m_idx, MONSTER_IDX t_idx, concptr msg1, concptr msg2, concptr msg3, concptr msg4, bool msg_flag_aux, int TARGET_TYPE)</div><div class="ttdoc">モンスターが呪文行使する際のメッセージを処理する汎用関数 /</div><div class="ttdef"><b>Definition:</b> mspell-util.cpp:46</div></div>
+<div class="ttc" id="amspell-util_8h_html_abd0e92379b3e97682814158868808448"><div class="ttname"><a href="mspell-util_8h.html#abd0e92379b3e97682814158868808448">simple_monspell_message</a></div><div class="ttdeci">void simple_monspell_message(player_type *target_ptr, MONSTER_IDX m_idx, MONSTER_IDX t_idx, concptr msg1, concptr msg2, int TARGET_TYPE)</div><div class="ttdoc">モンスターが呪文行使する際のメッセージを処理する汎用関数。対モンスターと対プレイヤーのメッセージを切り替える。 /</div><div class="ttdef"><b>Definition:</b> mspell-util.cpp:101</div></div>
+<div class="ttc" id="amspell-util_8h_html_ad6654d9a9e80032792e6700447b1f043"><div class="ttname"><a href="mspell-util_8h.html#ad6654d9a9e80032792e6700447b1f043">monspell_message</a></div><div class="ttdeci">void monspell_message(player_type *target_ptr, MONSTER_IDX m_idx, MONSTER_IDX t_idx, concptr msg1, concptr msg2, concptr msg3, int TARGET_TYPE)</div><div class="ttdoc">モンスターが呪文行使する際のメッセージを処理する汎用関数。盲目時と通常時のメッセージを切り替える。 /</div><div class="ttdef"><b>Definition:</b> mspell-util.cpp:87</div></div>
+<div class="ttc" id="astructfloor__type_html"><div class="ttname"><a href="structfloor__type.html">floor_type</a></div><div class="ttdef"><b>Definition:</b> floor-type-definition.h:10</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

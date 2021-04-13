@@ -1,0 +1,27 @@
+<map id="fd_move" name="fd_move">
+<area shape="rect" id="node1" title=" " alt="" coords="921,350,991,377"/>
+<area shape="rect" id="node2" href="$save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="783,350,873,377"/>
+<area shape="rect" id="node3" href="$game-closer_8cpp.html#aa5bc292715f2e65a7aea56574c66d6a8" title="ゲーム終了処理 / Close up the current game (player may or may not be dead)" alt="" coords="224,198,316,225"/>
+<area shape="rect" id="node6" href="$cmd-save_8cpp.html#a5f3c9a464d1f438f0a2860a68b31da96" title="セーブするコマンドのメインルーチン Save the game" alt="" coords="591,426,731,453"/>
+<area shape="rect" id="node20" href="$exit-panic_8cpp.html#a0f279185d9f6e778065f70c47157b5c2" title="異常発生時のゲーム緊急終了処理" alt="" coords="601,274,721,301"/>
+<area shape="rect" id="node21" href="$signal-handlers_8cpp.html#a1d7db3880dfb5e325d7f9388f84a90aa" title="OSからのシグナルを受けて強制終了する / Handle signal – abort, kill, etc" alt="" coords="593,325,730,351"/>
+<area shape="rect" id="node22" href="$input-key-requester_8cpp.html#a05bf5c41a8377acfa4b6b2487e55323d" title=" " alt="" coords="597,375,726,402"/>
+<area shape="rect" id="node23" href="$game-play_8cpp.html#a76b42246ab95939ef2d0c446f395dd16" title=" " alt="" coords="200,730,340,757"/>
+<area shape="rect" id="node24" href="$game-closer_8cpp.html#a03af5eaea57975a8cf03b66e7729fda9" title=" " alt="" coords="588,5,735,47"/>
+<area shape="rect" id="node25" href="$player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="627,603,695,630"/>
+<area shape="rect" id="node4" href="$signal-handlers_8cpp.html#acf6a4a9a8cb29ca8bd1c8e232041aecd" title="OSからのシグナルを受けて中断、終了する / Handle signals – simple (interrupt and quit)" alt="" coords="5,198,152,225"/>
+<area shape="rect" id="node5" href="$game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="36,401,121,427"/>
+<area shape="rect" id="node7" href="$activation-teleport_8cpp.html#ab5384bdf29abc3ad27487147449600af" title=" " alt="" coords="407,274,521,301"/>
+<area shape="rect" id="node8" href="$game-closer_8cpp.html#a87d2bc43dd7c1537d1b537a9f776a73b" title="ゲームクローズ時、プレイヤーが死亡しているかのチェックを行い死亡していないならば、確認キー入力とスコア表示、現フロアの初期化を行う。" alt="" coords="416,325,512,351"/>
+<area shape="rect" id="node9" href="$cmd-autopick_8cpp.html#a8dc56811ab6efa5123eec7f83eb4bb26" title=" " alt="" coords="388,527,540,554"/>
+<area shape="rect" id="node10" href="$input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="204,451,336,478"/>
+<area shape="rect" id="node11" href="$cmd-move_8cpp.html#a9d5fbe57b7b1e9058947333e00dee815" title="階段を使って階層を降りる処理 / Go down one level" alt="" coords="401,426,527,453"/>
+<area shape="rect" id="node12" href="$cmd-move_8cpp.html#a16005f2ab8f785b6fb42030270681913" title="階段を使って階層を昇る処理 / Go up one level" alt="" coords="409,477,519,503"/>
+<area shape="rect" id="node13" href="$world-movement-processor_8cpp.html#a597a48dd4ed8e2e51c1a114cb9b125c1" title="10ゲームターンが進行するごとにフロア・リセット/現実変容の残り時間カウントダウンと発動を処理する。 / Handle involuntary movement once every 10 game t..." alt="" coords="397,578,531,605"/>
+<area shape="rect" id="node14" href="$world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="217,629,323,655"/>
+<area shape="rect" id="node15" href="$world-movement-processor_8cpp.html#a9cf11d071cabe6008f72bbb6eed498d5" title="10ゲームターンが進行するごとに帰還の残り時間カウントダウンと発動を処理する。 / Handle involuntary movement once every 10 game turns" alt="" coords="411,629,517,655"/>
+<area shape="rect" id="node16" href="$trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="431,730,497,757"/>
+<area shape="rect" id="node17" href="$pattern-walk_8cpp.html#a745540435a2b0b0a48557231ce3b5cef" title="パターン終点到達時のテレポート処理を行う" alt="" coords="408,122,520,149"/>
+<area shape="rect" id="node18" href="$spells-world_8cpp.html#a7204ab233ffa573046416517da467469" title="プレイヤー及びモンスターをレベルテレポートさせる / Teleport the player one level up or down (random when legal)" alt="" coords="415,173,513,199"/>
+<area shape="rect" id="node19" href="$wizard-special-process_8cpp.html#a98b79010bb1266a7ff2f32920ca5f5a2" title="任意のダンジョン及び階層に飛ぶ / Go to any level" alt="" coords="389,223,539,250"/>
+</map>

@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/term/screen-processor.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f015963f69ae14c534311f2118856536.html">term</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">screen-processor.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="screen-processor_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">void</span> <a class="code" href="screen-processor_8h.html#acb7638639688bd542b5f6b541708c1f3">move_cursor</a>(<span class="keywordtype">int</span> <a class="code" href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a>, <span class="keywordtype">int</span> <a class="code" href="display-util_8cpp.html#afb52e720f5f0c483db5861f9e42e924e">col</a>);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">void</span> <a class="code" href="screen-processor_8h.html#a0a9e9396972b76c5947592479860020d">flush</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> <a class="code" href="screen-processor_8h.html#a5a86358e9edbca0a8be62c88baac3015">screen_save</a>();</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">void</span> <a class="code" href="screen-processor_8h.html#ab6872203e8eeb6f2b16103cabc46cef7">screen_load</a>();</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">void</span> <a class="code" href="screen-processor_8h.html#a9ceaef20b65c03e63b25db4fac4449f1">c_put_str</a>(<a class="code" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> attr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str, <a class="code" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> <a class="code" href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a>, <a class="code" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> <a class="code" href="display-util_8cpp.html#afb52e720f5f0c483db5861f9e42e924e">col</a>);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> <a class="code" href="screen-processor_8h.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5">put_str</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str, <a class="code" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> <a class="code" href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a>, <a class="code" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> <a class="code" href="display-util_8cpp.html#afb52e720f5f0c483db5861f9e42e924e">col</a>);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> <a class="code" href="screen-processor_8h.html#a2b20c97f1a0336d4a90a38fecd03db14">c_prt</a>(<a class="code" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> attr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str, <a class="code" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> <a class="code" href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a>, <a class="code" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> <a class="code" href="display-util_8cpp.html#afb52e720f5f0c483db5861f9e42e924e">col</a>);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> <a class="code" href="screen-processor_8h.html#a6623a8348930a234b9e7c33d85935707">prt</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str, <a class="code" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> <a class="code" href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a>, <a class="code" href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a> <a class="code" href="display-util_8cpp.html#afb52e720f5f0c483db5861f9e42e924e">col</a>);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="screen-processor_8h.html#a69bd687cd1dcd42abb3d7dcafaa87393">c_roff</a>(<a class="code" href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a> attr, <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> <a class="code" href="screen-processor_8h.html#ad95df9eb7dbb4958a6dc0cf0fa65837d">roff</a>(<a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> str);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> <a class="code" href="screen-processor_8h.html#a723cb7a38362add3188d0080fc2934f2">clear_from</a>(<span class="keywordtype">int</span> <a class="code" href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a>);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="adisplay-util_8cpp_html_af1d3cff2e4538e23400e260bae3dadad"><div class="ttname"><a href="display-util_8cpp.html#af1d3cff2e4538e23400e260bae3dadad">row</a></div><div class="ttdeci">int row</div><div class="ttdef"><b>Definition:</b> display-util.cpp:7</div></div>
+<div class="ttc" id="adisplay-util_8cpp_html_afb52e720f5f0c483db5861f9e42e924e"><div class="ttname"><a href="display-util_8cpp.html#afb52e720f5f0c483db5861f9e42e924e">col</a></div><div class="ttdeci">int col</div><div class="ttdef"><b>Definition:</b> display-util.cpp:6</div></div>
+<div class="ttc" id="ah-type_8h_html_a15cc25d6db15644573f14008c0a804eb"><div class="ttname"><a href="h-type_8h.html#a15cc25d6db15644573f14008c0a804eb">TERM_LEN</a></div><div class="ttdeci">int TERM_LEN</div><div class="ttdoc">コンソール表示座標の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:214</div></div>
+<div class="ttc" id="ah-type_8h_html_aadcf8cee15fbcb7d92dd27e9eda42de1"><div class="ttname"><a href="h-type_8h.html#aadcf8cee15fbcb7d92dd27e9eda42de1">TERM_COLOR</a></div><div class="ttdeci">byte TERM_COLOR</div><div class="ttdoc">テキスト表示色の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:215</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="ascreen-processor_8h_html_a0a9e9396972b76c5947592479860020d"><div class="ttname"><a href="screen-processor_8h.html#a0a9e9396972b76c5947592479860020d">flush</a></div><div class="ttdeci">void flush(void)</div><div class="ttdef"><b>Definition:</b> screen-processor.cpp:24</div></div>
+<div class="ttc" id="ascreen-processor_8h_html_a2b20c97f1a0336d4a90a38fecd03db14"><div class="ttname"><a href="screen-processor_8h.html#a2b20c97f1a0336d4a90a38fecd03db14">c_prt</a></div><div class="ttdeci">void c_prt(TERM_COLOR attr, concptr str, TERM_LEN row, TERM_LEN col)</div><div class="ttdef"><b>Definition:</b> screen-processor.cpp:71</div></div>
+<div class="ttc" id="ascreen-processor_8h_html_a5a86358e9edbca0a8be62c88baac3015"><div class="ttname"><a href="screen-processor_8h.html#a5a86358e9edbca0a8be62c88baac3015">screen_save</a></div><div class="ttdeci">void screen_save()</div><div class="ttdef"><b>Definition:</b> screen-processor.cpp:31</div></div>
+<div class="ttc" id="ascreen-processor_8h_html_a6623a8348930a234b9e7c33d85935707"><div class="ttname"><a href="screen-processor_8h.html#a6623a8348930a234b9e7c33d85935707">prt</a></div><div class="ttdeci">void prt(concptr str, TERM_LEN row, TERM_LEN col)</div><div class="ttdef"><b>Definition:</b> screen-processor.cpp:80</div></div>
+<div class="ttc" id="ascreen-processor_8h_html_a69bd687cd1dcd42abb3d7dcafaa87393"><div class="ttname"><a href="screen-processor_8h.html#a69bd687cd1dcd42abb3d7dcafaa87393">c_roff</a></div><div class="ttdeci">void c_roff(TERM_COLOR attr, concptr str)</div><div class="ttdef"><b>Definition:</b> screen-processor.cpp:100</div></div>
+<div class="ttc" id="ascreen-processor_8h_html_a723cb7a38362add3188d0080fc2934f2"><div class="ttname"><a href="screen-processor_8h.html#a723cb7a38362add3188d0080fc2934f2">clear_from</a></div><div class="ttdeci">void clear_from(int row)</div><div class="ttdef"><b>Definition:</b> screen-processor.cpp:229</div></div>
+<div class="ttc" id="ascreen-processor_8h_html_a9ceaef20b65c03e63b25db4fac4449f1"><div class="ttname"><a href="screen-processor_8h.html#a9ceaef20b65c03e63b25db4fac4449f1">c_put_str</a></div><div class="ttdeci">void c_put_str(TERM_COLOR attr, concptr str, TERM_LEN row, TERM_LEN col)</div><div class="ttdef"><b>Definition:</b> screen-processor.cpp:60</div></div>
+<div class="ttc" id="ascreen-processor_8h_html_ab6872203e8eeb6f2b16103cabc46cef7"><div class="ttname"><a href="screen-processor_8h.html#ab6872203e8eeb6f2b16103cabc46cef7">screen_load</a></div><div class="ttdeci">void screen_load()</div><div class="ttdef"><b>Definition:</b> screen-processor.cpp:45</div></div>
+<div class="ttc" id="ascreen-processor_8h_html_aba94c9a9fa6ac90fc5c23fafa54f3cc5"><div class="ttname"><a href="screen-processor_8h.html#aba94c9a9fa6ac90fc5c23fafa54f3cc5">put_str</a></div><div class="ttdeci">void put_str(concptr str, TERM_LEN row, TERM_LEN col)</div><div class="ttdef"><b>Definition:</b> screen-processor.cpp:65</div></div>
+<div class="ttc" id="ascreen-processor_8h_html_acb7638639688bd542b5f6b541708c1f3"><div class="ttname"><a href="screen-processor_8h.html#acb7638639688bd542b5f6b541708c1f3">move_cursor</a></div><div class="ttdeci">void move_cursor(int row, int col)</div><div class="ttdef"><b>Definition:</b> screen-processor.cpp:15</div></div>
+<div class="ttc" id="ascreen-processor_8h_html_ad95df9eb7dbb4958a6dc0cf0fa65837d"><div class="ttname"><a href="screen-processor_8h.html#ad95df9eb7dbb4958a6dc0cf0fa65837d">roff</a></div><div class="ttdeci">void roff(concptr str)</div><div class="ttdef"><b>Definition:</b> screen-processor.cpp:220</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

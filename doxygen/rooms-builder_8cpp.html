@@ -1,0 +1,684 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/room/rooms-builder.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f5e46bed6dfb8f23408bb24a4886d7b9.html">room</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">rooms-builder.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="rooms-builder_8h_source.html">room/rooms-builder.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon-flag-types_8h_source.html">dungeon/dungeon-flag-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon_8h_source.html">dungeon/dungeon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cave_8h_source.html">floor/cave.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="door_8h_source.html">grid/door.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">grid/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cave-filler_8h_source.html">room/cave-filler.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lake-types_8h_source.html">room/lake-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+rooms-builder.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="rooms-builder_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2room_2rooms-builder_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2room_2rooms-builder_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2room_2rooms-builder_8cpp">
+<area shape="rect" title=" " alt="" coords="833,5,1039,61"/>
+<area shape="rect" href="rooms-builder_8h.html" title=" " alt="" coords="780,206,924,233"/>
+<area shape="rect" href="dungeon-flag-types_8h.html" title=" " alt="" coords="1793,109,1941,151"/>
+<area shape="rect" href="dungeon_8h.html" title=" " alt="" coords="1305,117,1439,143"/>
+<area shape="rect" href="cave_8h.html" title=" " alt="" coords="662,117,749,143"/>
+<area shape="rect" href="door_8h.html" title=" " alt="" coords="775,117,857,143"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="947,117,1026,143"/>
+<area shape="rect" href="cave-filler_8h.html" title=" " alt="" coords="345,206,463,233"/>
+<area shape="rect" href="lake-types_8h.html" title=" " alt="" coords="1965,117,2091,143"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1581,117,1769,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="487,206,654,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="637,295,766,322"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="176,385,267,411"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="291,385,381,411"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="405,385,504,411"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="528,385,627,411"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="651,385,751,411"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="775,385,950,411"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="975,385,1116,411"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="5,385,152,411"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="506,467,625,493"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1151,467,1262,493"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="1479,206,1577,233"/>
+<area shape="rect" title=" " alt="" coords="1573,295,1627,322"/>
+<area shape="rect" title=" " alt="" coords="1308,295,1364,322"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="1289,199,1455,240"/>
+<area shape="rect" href="feature-flag-types_8h.html" title=" " alt="" coords="1391,295,1548,322"/>
+<area shape="rect" href="geometry_8h.html" title=" " alt="" coords="1049,206,1164,233"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="1134,288,1279,329"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1861,377,2017,419"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="1703,206,1881,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1906,206,2057,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a25e593577c00763dc3375f740870a0f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rooms-builder_8cpp.html#a25e593577c00763dc3375f740870a0f7">build_small_room</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x0, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y0)</td></tr>
+<tr class="memdesc:a25e593577c00763dc3375f740870a0f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">ダンジョンフロアの部屋生成処理 / make rooms.  <a href="rooms-builder_8cpp.html#a25e593577c00763dc3375f740870a0f7">[詳解]</a><br /></td></tr>
+<tr class="separator:a25e593577c00763dc3375f740870a0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88b8d4c16205c2b2ab8e9c4048af1fa9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rooms-builder_8cpp.html#a88b8d4c16205c2b2ab8e9c4048af1fa9">build_cavern</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="separator:a88b8d4c16205c2b2ab8e9c4048af1fa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c7b33a681174a3cb0e7f5871a4ec23b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rooms-builder_8cpp.html#a2c7b33a681174a3cb0e7f5871a4ec23b">build_lake</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, int type)</td></tr>
+<tr class="separator:a2c7b33a681174a3cb0e7f5871a4ec23b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ad370b11676ffb7a9411efe746f8a8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rooms-builder_8cpp.html#a3ad370b11676ffb7a9411efe746f8a8d">build_room</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x2, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y2)</td></tr>
+<tr class="separator:a3ad370b11676ffb7a9411efe746f8a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad14129ac7eb983f9b344084300ef7d0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rooms-builder_8cpp.html#ad14129ac7eb983f9b344084300ef7d0f">build_recursive_room</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x2, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y2, int power)</td></tr>
+<tr class="separator:ad14129ac7eb983f9b344084300ef7d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3a91aae0f56205e5e9913a86860fb58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rooms-builder_8cpp.html#ad3a91aae0f56205e5e9913a86860fb58">add_outer_wall</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y, int light, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x2, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y2)</td></tr>
+<tr class="separator:ad3a91aae0f56205e5e9913a86860fb58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17a8f00ebfd0d590d4dd0d130883d0cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rooms-builder_8cpp.html#a17a8f00ebfd0d590d4dd0d130883d0cf">dist2</a> (<a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x2, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y2, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> h1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> h2, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> h3, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> h4)</td></tr>
+<tr class="separator:a17a8f00ebfd0d590d4dd0d130883d0cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ad3a91aae0f56205e5e9913a86860fb58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3a91aae0f56205e5e9913a86860fb58">&#9670;&nbsp;</a></span>add_outer_wall()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void add_outer_wall </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>light</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="rooms-builder_8cpp_ad3a91aae0f56205e5e9913a86860fb58_cgraph.png" border="0" usemap="#arooms-builder_8cpp_ad3a91aae0f56205e5e9913a86860fb58_cgraph" alt=""/></div>
+<map name="arooms-builder_8cpp_ad3a91aae0f56205e5e9913a86860fb58_cgraph" id="arooms-builder_8cpp_ad3a91aae0f56205e5e9913a86860fb58_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,113,83"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="163,5,244,32"/>
+<area shape="rect" href="feature_8cpp.html#ab6f2d85244b993c3996dafd0eac6056e" title=" " alt="" coords="434,56,546,83"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="161,107,245,133"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="293,107,375,133"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="423,107,557,133"/>
+<area shape="rect" href="grid_8cpp.html#a8ea39c3dfc40de144095718ade7e2ec9" title=" " alt="" coords="451,157,529,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="rooms-builder_8cpp_ad3a91aae0f56205e5e9913a86860fb58_icgraph.png" border="0" usemap="#arooms-builder_8cpp_ad3a91aae0f56205e5e9913a86860fb58_icgraph" alt=""/></div>
+<map name="arooms-builder_8cpp_ad3a91aae0f56205e5e9913a86860fb58_icgraph" id="arooms-builder_8cpp_ad3a91aae0f56205e5e9913a86860fb58_icgraph">
+<area shape="rect" title=" " alt="" coords="452,56,560,83"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a59cb2292250b9d13b29fe4becf25ba84" title=" " alt="" coords="281,5,404,32"/>
+<area shape="rect" href="rooms-normal_8cpp.html#adfecf25d83c714a6ff6dff1504980aec" title="タイプ11の部屋…円形部屋の生成 / Type 11 – Build an vertical oval room." alt="" coords="139,56,233,83"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a44d5e2c5c7ccd315f5e08f1ff2f935f7" title="タイプ12の部屋…ドーム型部屋の生成 / Type 12 – Build crypt room." alt="" coords="295,107,390,133"/>
+<area shape="rect" href="rooms-vault_8cpp.html#ab4caa119e209544982b77a920b5af760" title="タイプ10の部屋…ランダム生成vault / Type 10 – Random vaults" alt="" coords="139,5,233,32"/>
+<area shape="rect" href="room-generator_8cpp.html#a5308aed51162378846c18cb4b1a05ae3" title="与えられた部屋型IDに応じて部屋の生成処理分岐を行い結果を返す / Attempt to build a room of the given type at the given block" alt="" coords="5,56,91,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a88b8d4c16205c2b2ab8e9c4048af1fa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88b8d4c16205c2b2ab8e9c4048af1fa9">&#9670;&nbsp;</a></span>build_cavern()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void build_cavern </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="rooms-builder_8cpp_a88b8d4c16205c2b2ab8e9c4048af1fa9_cgraph.png" border="0" usemap="#arooms-builder_8cpp_a88b8d4c16205c2b2ab8e9c4048af1fa9_cgraph" alt=""/></div>
+<map name="arooms-builder_8cpp_a88b8d4c16205c2b2ab8e9c4048af1fa9_cgraph" id="arooms-builder_8cpp_a88b8d4c16205c2b2ab8e9c4048af1fa9_cgraph">
+<area shape="rect" title=" " alt="" coords="5,132,99,159"/>
+<area shape="rect" href="cave-filler_8cpp.html#ae31e3b63bbc7d71f64fc614249417949" title=" " alt="" coords="147,107,265,133"/>
+<area shape="rect" href="cave-filler_8cpp.html#a3626f85af8d6702b7cb0179816fb1751" title=" " alt="" coords="151,157,261,184"/>
+<area shape="rect" href="cave-filler_8cpp.html#a9586441b5d9677511b5a32a44c0840d2" title=" " alt="" coords="327,56,393,83"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="609,56,693,83"/>
+<area shape="rect" href="cave-filler_8cpp.html#a9eb73648454ee7d3f6693415d7bf31b6" title=" " alt="" coords="455,5,561,32"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="467,56,549,83"/>
+<area shape="rect" href="cave-filler_8cpp.html#ab336f7ae82961f786f297eb626bb15d9" title="Store routine for the fractal floor generator this routine probably should be an inline function or a..." alt="" coords="313,157,407,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="rooms-builder_8cpp_a88b8d4c16205c2b2ab8e9c4048af1fa9_icgraph.png" border="0" usemap="#arooms-builder_8cpp_a88b8d4c16205c2b2ab8e9c4048af1fa9_icgraph" alt=""/></div>
+<map name="arooms-builder_8cpp_a88b8d4c16205c2b2ab8e9c4048af1fa9_icgraph" id="arooms-builder_8cpp_a88b8d4c16205c2b2ab8e9c4048af1fa9_icgraph">
+<area shape="rect" title=" " alt="" coords="460,5,553,32"/>
+<area shape="rect" href="feature-generator_8cpp.html#a82337fbaeb0ce77f5e5eb76769336f43" title="フロアに洞窟や湖を配置する / Generate various caverns and lakes" alt="" coords="252,5,412,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a9b7cb506f74a6ee856853b073a165ea3" title="ダンジョン生成のメインルーチン / Generate a new dungeon level" alt="" coords="128,5,204,32"/>
+<area shape="rect" href="floor-generator_8cpp.html#a4a6a31853be6f0277b257f8ff6ebf7b9" title="ダンジョン時のランダムフロア生成 / Make a real level" alt="" coords="5,5,80,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2c7b33a681174a3cb0e7f5871a4ec23b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c7b33a681174a3cb0e7f5871a4ec23b">&#9670;&nbsp;</a></span>build_lake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void build_lake </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="rooms-builder_8cpp_a2c7b33a681174a3cb0e7f5871a4ec23b_cgraph.png" border="0" usemap="#arooms-builder_8cpp_a2c7b33a681174a3cb0e7f5871a4ec23b_cgraph" alt=""/></div>
+<map name="arooms-builder_8cpp_a2c7b33a681174a3cb0e7f5871a4ec23b_cgraph" id="arooms-builder_8cpp_a2c7b33a681174a3cb0e7f5871a4ec23b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,107,85,133"/>
+<area shape="rect" href="cave-filler_8cpp.html#a3626f85af8d6702b7cb0179816fb1751" title=" " alt="" coords="133,31,244,57"/>
+<area shape="rect" href="cave-filler_8cpp.html#a268dc154292036c8e0732c3b006525df" title=" " alt="" coords="137,107,240,133"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="143,259,234,285"/>
+<area shape="rect" href="cave-filler_8cpp.html#ab336f7ae82961f786f297eb626bb15d9" title="Store routine for the fractal floor generator this routine probably should be an inline function or a..." alt="" coords="313,5,406,32"/>
+<area shape="rect" href="cave-filler_8cpp.html#a9586441b5d9677511b5a32a44c0840d2" title=" " alt="" coords="326,56,393,83"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="643,56,727,83"/>
+<area shape="rect" href="cave_8cpp.html#a2e8f81630ced5a3209bae0d0e79d8821" title=" " alt="" coords="292,157,427,184"/>
+<area shape="rect" href="cave-filler_8cpp.html#a9eb73648454ee7d3f6693415d7bf31b6" title=" " alt="" coords="481,5,587,32"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="493,56,575,83"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="320,259,399,285"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="326,309,393,336"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="483,157,585,184"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="493,259,575,285"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="642,208,729,235"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="641,284,729,311"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="475,360,593,387"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="487,411,581,437"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="rooms-builder_8cpp_a2c7b33a681174a3cb0e7f5871a4ec23b_icgraph.png" border="0" usemap="#arooms-builder_8cpp_a2c7b33a681174a3cb0e7f5871a4ec23b_icgraph" alt=""/></div>
+<map name="arooms-builder_8cpp_a2c7b33a681174a3cb0e7f5871a4ec23b_icgraph" id="arooms-builder_8cpp_a2c7b33a681174a3cb0e7f5871a4ec23b_icgraph">
+<area shape="rect" title=" " alt="" coords="460,5,540,32"/>
+<area shape="rect" href="feature-generator_8cpp.html#a82337fbaeb0ce77f5e5eb76769336f43" title="フロアに洞窟や湖を配置する / Generate various caverns and lakes" alt="" coords="252,5,412,32"/>
+<area shape="rect" href="cave-generator_8cpp.html#a9b7cb506f74a6ee856853b073a165ea3" title="ダンジョン生成のメインルーチン / Generate a new dungeon level" alt="" coords="128,5,204,32"/>
+<area shape="rect" href="floor-generator_8cpp.html#a4a6a31853be6f0277b257f8ff6ebf7b9" title="ダンジョン時のランダムフロア生成 / Make a real level" alt="" coords="5,5,80,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad14129ac7eb983f9b344084300ef7d0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad14129ac7eb983f9b344084300ef7d0f">&#9670;&nbsp;</a></span>build_recursive_room()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void build_recursive_room </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>power</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="rooms-builder_8cpp_ad14129ac7eb983f9b344084300ef7d0f_cgraph.png" border="0" usemap="#arooms-builder_8cpp_ad14129ac7eb983f9b344084300ef7d0f_cgraph" alt=""/></div>
+<map name="arooms-builder_8cpp_ad14129ac7eb983f9b344084300ef7d0f_cgraph" id="arooms-builder_8cpp_ad14129ac7eb983f9b344084300ef7d0f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,148,83"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="196,56,280,83"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="328,56,409,83"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="457,5,592,32"/>
+<area shape="rect" href="grid_8cpp.html#a8ea39c3dfc40de144095718ade7e2ec9" title=" " alt="" coords="485,56,564,83"/>
+<area shape="rect" href="feature_8cpp.html#ab6f2d85244b993c3996dafd0eac6056e" title=" " alt="" coords="469,107,581,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="rooms-builder_8cpp_ad14129ac7eb983f9b344084300ef7d0f_icgraph.png" border="0" usemap="#arooms-builder_8cpp_ad14129ac7eb983f9b344084300ef7d0f_icgraph" alt=""/></div>
+<map name="arooms-builder_8cpp_ad14129ac7eb983f9b344084300ef7d0f_icgraph" id="arooms-builder_8cpp_ad14129ac7eb983f9b344084300ef7d0f_icgraph">
+<area shape="rect" title=" " alt="" coords="453,5,596,32"/>
+<area shape="rect" href="rooms-vault_8cpp.html#aca383401adac57f6b0e95cc7a98a1ac4" title=" " alt="" coords="281,5,405,32"/>
+<area shape="rect" href="rooms-vault_8cpp.html#ab4caa119e209544982b77a920b5af760" title="タイプ10の部屋…ランダム生成vault / Type 10 – Random vaults" alt="" coords="139,5,233,32"/>
+<area shape="rect" href="room-generator_8cpp.html#a5308aed51162378846c18cb4b1a05ae3" title="与えられた部屋型IDに応じて部屋の生成処理分岐を行い結果を返す / Attempt to build a room of the given type at the given block" alt="" coords="5,5,91,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3ad370b11676ffb7a9411efe746f8a8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ad370b11676ffb7a9411efe746f8a8d">&#9670;&nbsp;</a></span>build_room()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void build_room </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="rooms-builder_8cpp_a3ad370b11676ffb7a9411efe746f8a8d_cgraph.png" border="0" usemap="#arooms-builder_8cpp_a3ad370b11676ffb7a9411efe746f8a8d_cgraph" alt=""/></div>
+<map name="arooms-builder_8cpp_a3ad370b11676ffb7a9411efe746f8a8d_cgraph" id="arooms-builder_8cpp_a3ad370b11676ffb7a9411efe746f8a8d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,91,83"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="139,56,223,83"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="271,56,352,83"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="400,5,535,32"/>
+<area shape="rect" href="grid_8cpp.html#a8ea39c3dfc40de144095718ade7e2ec9" title=" " alt="" coords="428,56,507,83"/>
+<area shape="rect" href="feature_8cpp.html#ab6f2d85244b993c3996dafd0eac6056e" title=" " alt="" coords="411,107,523,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="rooms-builder_8cpp_a3ad370b11676ffb7a9411efe746f8a8d_icgraph.png" border="0" usemap="#arooms-builder_8cpp_a3ad370b11676ffb7a9411efe746f8a8d_icgraph" alt=""/></div>
+<map name="arooms-builder_8cpp_a3ad370b11676ffb7a9411efe746f8a8d_icgraph" id="arooms-builder_8cpp_a3ad370b11676ffb7a9411efe746f8a8d_icgraph">
+<area shape="rect" title=" " alt="" coords="448,5,533,32"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a8be4ffd91c2f3558ad915b87b6a8be58" title=" " alt="" coords="281,5,400,32"/>
+<area shape="rect" href="rooms-vault_8cpp.html#ab4caa119e209544982b77a920b5af760" title="タイプ10の部屋…ランダム生成vault / Type 10 – Random vaults" alt="" coords="139,5,233,32"/>
+<area shape="rect" href="room-generator_8cpp.html#a5308aed51162378846c18cb4b1a05ae3" title="与えられた部屋型IDに応じて部屋の生成処理分岐を行い結果を返す / Attempt to build a room of the given type at the given block" alt="" coords="5,5,91,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a25e593577c00763dc3375f740870a0f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25e593577c00763dc3375f740870a0f7">&#9670;&nbsp;</a></span>build_small_room()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void build_small_room </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y0</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ダンジョンフロアの部屋生成処理 / make rooms. </p>
+<p>Used by generate.c when creating dungeons. </p><dl class="section date"><dt>日付</dt><dd>2014/01/06 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Copyright (c) 1997 Ben Harrison, James E. Wilson, Robert A. Koeneke<br  />
+ This software may be copied and distributed for educational, research,<br  />
+ and not for profit purposes provided that this copyright and statement<br  />
+ are included in all such copies. Other copyrights may also apply.<br  />
+ 2014 Deskull rearranged comment for Doxygen. <br  />
+</dd></dl>
+<p>Room building routines.<br  />
+<br  />
+ Room types:<br  />
+ 1 &ndash; normal<br  />
+ 2 &ndash; overlapping<br  />
+ 3 &ndash; cross shaped<br  />
+ 4 &ndash; large room with features<br  />
+ 5 &ndash; monster nests<br  />
+ 6 &ndash; monster pits<br  />
+ 7 &ndash; simple vaults<br  />
+ 8 &ndash; greater vaults<br  />
+ 9 &ndash; fractal caves<br  />
+ 10 &ndash; random vaults<br  />
+ 11 &ndash; circular rooms<br  />
+ 12 &ndash; crypts<br  />
+ 13 &ndash; trapped monster pits<br  />
+ 14 &ndash; trapped room<br  />
+ 15 &ndash; glass room<br  />
+ 16 &ndash; underground arcade<br  />
+<br  />
+ Some functions are used to determine if the given monster<br  />
+ is appropriate for inclusion in a monster nest or monster pit or<br  />
+ the given type.<br  />
+<br  />
+ None of the pits/nests are allowed to include "unique" monsters.<br  />
+</p>
+<p>1マスだけの部屋を作成し、上下左右いずれか一つに隠しドアを配置する。 </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">y0</td><td>配置したい中心のY座標 </td></tr>
+    <tr><td class="paramname">x0</td><td>配置したい中心のX座標</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This funtion makes a very small room centred at (x0, y0) This is used in crypts, and random elemental vaults.</p>
+<p>Note - this should be used only on allocated regions within another room. </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="rooms-builder_8cpp_a25e593577c00763dc3375f740870a0f7_cgraph.png" border="0" usemap="#arooms-builder_8cpp_a25e593577c00763dc3375f740870a0f7_cgraph" alt=""/></div>
+<map name="arooms-builder_8cpp_a25e593577c00763dc3375f740870a0f7_cgraph" id="arooms-builder_8cpp_a25e593577c00763dc3375f740870a0f7_cgraph">
+<area shape="rect" title="ダンジョンフロアの部屋生成処理 / make rooms." alt="" coords="5,5,128,32"/>
+<area shape="rect" href="grid_8cpp.html#a9dbf9e2310de808eaf77fa9af4cd69c9" title=" " alt="" coords="578,5,662,32"/>
+<area shape="rect" href="door_8cpp.html#a062b9ead56aeca6ac33bc71118a9d735" title="隠しドアを配置する" alt="" coords="176,56,304,83"/>
+<area shape="rect" href="grid_8cpp.html#a3a6df620fd2b8c4b5f17558009978618" title=" " alt="" coords="757,31,839,57"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="887,157,1021,184"/>
+<area shape="rect" href="grid_8cpp.html#a8ea39c3dfc40de144095718ade7e2ec9" title=" " alt="" coords="915,5,993,32"/>
+<area shape="rect" href="feature_8cpp.html#ab6f2d85244b993c3996dafd0eac6056e" title=" " alt="" coords="898,56,1010,83"/>
+<area shape="rect" href="grid_8h.html#a73f3bf1cce90b5f4579ab9e8eaf3c990" title="指定位置に存在するモンスターを削除する / Delete the monster, if any, at a given location" alt="" coords="362,208,473,235"/>
+<area shape="rect" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e" title=" " alt="" coords="355,56,479,83"/>
+<area shape="rect" href="door_8cpp.html#a9561339298078ea29f71a37976c06600" title="所定の位置に各種の閉じたドアを配置する / Place a random type of normal door at the given location." alt="" coords="352,107,483,133"/>
+<area shape="rect" href="cave_8cpp.html#a9a8f98687efe06482b7da1823cb40dcb" title="ダンジョンの壁等に関する判定関数の集合" alt="" coords="579,208,661,235"/>
+<area shape="rect" href="feature_8cpp.html#acad9118499482c605f583af0ef408f10" title=" " alt="" coords="569,56,671,83"/>
+<area shape="rect" href="feature_8cpp.html#a7111802bafb1515aa38332ee254ee251" title=" " alt="" coords="531,107,709,133"/>
+<area shape="rect" href="feature_8cpp.html#a76ba1dc49654a6a66f2fd80a7461a194" title=" " alt="" coords="535,157,705,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="rooms-builder_8cpp_a25e593577c00763dc3375f740870a0f7_icgraph.png" border="0" usemap="#arooms-builder_8cpp_a25e593577c00763dc3375f740870a0f7_icgraph" alt=""/></div>
+<map name="arooms-builder_8cpp_a25e593577c00763dc3375f740870a0f7_icgraph" id="arooms-builder_8cpp_a25e593577c00763dc3375f740870a0f7_icgraph">
+<area shape="rect" title="ダンジョンフロアの部屋生成処理 / make rooms." alt="" coords="475,31,597,57"/>
+<area shape="rect" href="rooms-vault_8cpp.html#ab0e47ed9bd018aa796ae255ddc96f1a2" title=" " alt="" coords="281,5,427,32"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a44d5e2c5c7ccd315f5e08f1ff2f935f7" title="タイプ12の部屋…ドーム型部屋の生成 / Type 12 – Build crypt room." alt="" coords="139,56,233,83"/>
+<area shape="rect" href="rooms-vault_8cpp.html#ab4caa119e209544982b77a920b5af760" title="タイプ10の部屋…ランダム生成vault / Type 10 – Random vaults" alt="" coords="139,5,233,32"/>
+<area shape="rect" href="room-generator_8cpp.html#a5308aed51162378846c18cb4b1a05ae3" title="与えられた部屋型IDに応じて部屋の生成処理分岐を行い結果を返す / Attempt to build a room of the given type at the given block" alt="" coords="5,31,91,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a17a8f00ebfd0d590d4dd0d130883d0cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17a8f00ebfd0d590d4dd0d130883d0cf">&#9670;&nbsp;</a></span>dist2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> dist2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>h1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>h2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>h3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>h4</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="rooms-builder_8cpp_a17a8f00ebfd0d590d4dd0d130883d0cf_icgraph.png" border="0" usemap="#arooms-builder_8cpp_a17a8f00ebfd0d590d4dd0d130883d0cf_icgraph" alt=""/></div>
+<map name="arooms-builder_8cpp_a17a8f00ebfd0d590d4dd0d130883d0cf_icgraph" id="arooms-builder_8cpp_a17a8f00ebfd0d590d4dd0d130883d0cf_icgraph">
+<area shape="rect" title=" " alt="" coords="452,31,503,57"/>
+<area shape="rect" href="rooms-vault_8cpp.html#a59cb2292250b9d13b29fe4becf25ba84" title=" " alt="" coords="281,5,404,32"/>
+<area shape="rect" href="rooms-normal_8cpp.html#a44d5e2c5c7ccd315f5e08f1ff2f935f7" title="タイプ12の部屋…ドーム型部屋の生成 / Type 12 – Build crypt room." alt="" coords="139,56,233,83"/>
+<area shape="rect" href="rooms-vault_8cpp.html#ab4caa119e209544982b77a920b5af760" title="タイプ10の部屋…ランダム生成vault / Type 10 – Random vaults" alt="" coords="139,5,233,32"/>
+<area shape="rect" href="room-generator_8cpp.html#a5308aed51162378846c18cb4b1a05ae3" title="与えられた部屋型IDに応じて部屋の生成処理分岐を行い結果を返す / Attempt to build a room of the given type at the given block" alt="" coords="5,31,91,57"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時56分19秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

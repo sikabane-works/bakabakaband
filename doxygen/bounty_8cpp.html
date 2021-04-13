@@ -1,0 +1,602 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/market/bounty.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_0c02283d308f5ea0396ab443a49566c5.html">market</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">bounty.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="bounty_8h_source.html">market/bounty.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="autopick_8h_source.html">autopick/autopick.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cmd-building_8h_source.html">cmd-building/cmd-building.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-redraw-types_8h_source.html">core/player-redraw-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stuff-handler_8h_source.html">core/stuff-handler.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dungeon_8h_source.html">dungeon/dungeon.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flavor-describer_8h_source.html">flavor/flavor-describer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cheat-options_8h_source.html">game-option/cheat-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-object_8h_source.html">inventory/inventory-object.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-acceptor_8h_source.html">io/input-key-acceptor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bounty-prize-table_8h_source.html">market/bounty-prize-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="building-util_8h_source.html">market/building-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race-hook_8h_source.html">monster-race/monster-race-hook.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags1_8h_source.html">monster-race/race-flags1.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags2_8h_source.html">monster-race/race-flags2.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags7_8h_source.html">monster-race/race-flags7.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags9_8h_source.html">monster-race/race-flags9.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-indice-types_8h_source.html">monster-race/race-indice-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-list_8h_source.html">monster/monster-list.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-util_8h_source.html">monster/monster-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="apply-magic_8h_source.html">object-enchant/apply-magic.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item-apply-magic_8h_source.html">object-enchant/item-apply-magic.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-generator_8h_source.html">object/object-generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-info_8h_source.html">object/object-info.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-kind-hook_8h_source.html">object/object-kind-hook.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object-perception_8h_source.html">perception/object-perception.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="avatar_8h_source.html">player-info/avatar.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-other-types_8h_source.html">sv-definition/sv-other-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+bounty.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="bounty_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2market_2bounty_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2market_2bounty_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2market_2bounty_8cpp">
+<area shape="rect" title=" " alt="" coords="2045,5,2233,61"/>
+<area shape="rect" href="bounty_8h.html" title=" " alt="" coords="988,295,1104,322"/>
+<area shape="rect" href="autopick_8h.html" title=" " alt="" coords="1080,117,1214,143"/>
+<area shape="rect" href="cmd-building_8h.html" title=" " alt="" coords="176,295,358,322"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="1210,206,1348,233"/>
+<area shape="rect" href="player-redraw-types_8h.html" title=" " alt="" coords="2767,109,2895,151"/>
+<area shape="rect" href="stuff-handler_8h.html" title=" " alt="" coords="1385,295,1517,322"/>
+<area shape="rect" href="dungeon_8h.html" title=" " alt="" coords="3140,206,3274,233"/>
+<area shape="rect" href="flavor-describer_8h.html" title=" " alt="" coords="1423,206,1575,233"/>
+<area shape="rect" href="cheat-options_8h.html" title=" " alt="" coords="2202,117,2388,143"/>
+<area shape="rect" href="inventory-object_8h.html" title=" " alt="" coords="2412,109,2540,151"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="2919,109,3047,151"/>
+<area shape="rect" href="input-key-acceptor_8h.html" title=" " alt="" coords="2472,295,2627,322"/>
+<area shape="rect" href="bounty-prize-table_8h.html" title=" " alt="" coords="341,199,478,240"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="382,295,480,322"/>
+<area shape="rect" href="building-util_8h.html" title=" " alt="" coords="658,206,801,233"/>
+<area shape="rect" href="monster-race-hook_8h.html" title=" " alt="" coords="814,288,963,329"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="2879,199,3028,240"/>
+<area shape="rect" href="race-flags1_8h.html" title=" " alt="" coords="3071,117,3247,143"/>
+<area shape="rect" href="race-flags2_8h.html" title=" " alt="" coords="3271,117,3447,143"/>
+<area shape="rect" href="race-flags7_8h.html" title=" " alt="" coords="3471,117,3647,143"/>
+<area shape="rect" href="race-flags9_8h.html" title=" " alt="" coords="3671,117,3847,143"/>
+<area shape="rect" href="race-indice-types_8h.html" title=" " alt="" coords="3871,109,4036,151"/>
+<area shape="rect" href="monster-list_8h.html" title=" " alt="" coords="2615,206,2767,233"/>
+<area shape="rect" href="monster-util_8h.html" title=" " alt="" coords="1599,206,1751,233"/>
+<area shape="rect" href="apply-magic_8h.html" title=" " alt="" coords="1644,288,1786,329"/>
+<area shape="rect" href="item-apply-magic_8h.html" title=" " alt="" coords="4060,109,4196,151"/>
+<area shape="rect" href="object-generator_8h.html" title=" " alt="" coords="1826,206,1991,233"/>
+<area shape="rect" href="object-info_8h.html" title=" " alt="" coords="503,206,634,233"/>
+<area shape="rect" href="object-kind-hook_8h.html" title=" " alt="" coords="28,288,152,329"/>
+<area shape="rect" href="object-perception_8h.html" title=" " alt="" coords="1862,295,2058,322"/>
+<area shape="rect" href="avatar_8h.html" title=" " alt="" coords="2066,206,2196,233"/>
+<area shape="rect" href="sv-other-types_8h.html" title=" " alt="" coords="4220,109,4359,151"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="4384,117,4572,143"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="2134,295,2296,322"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="4596,117,4754,143"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="2272,206,2438,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1516,385,1645,411"/>
+<area shape="rect" href="autopick-util_8h.html" title=" " alt="" coords="928,206,1084,233"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="1180,295,1258,322"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="606,288,739,329"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="116,385,242,411"/>
+<area shape="rect" href="feature_8h.html" title=" " alt="" coords="3245,295,3342,322"/>
+<area shape="rect" title=" " alt="" coords="3290,385,3345,411"/>
+<area shape="rect" title=" " alt="" coords="3403,385,3459,411"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="3100,377,3266,419"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="2965,385,3076,411"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="2973,288,3118,329"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="2804,288,2949,329"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="4388,206,4567,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a6aa3c9347a136a6ff64e84d0dd306057"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bounty_8cpp.html#a6aa3c9347a136a6ff64e84d0dd306057">exchange_cash</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="memdesc:a6aa3c9347a136a6ff64e84d0dd306057"><td class="mdescLeft">&#160;</td><td class="mdescRight">賞金首の引き換え処理 / Get prize  <a href="bounty_8cpp.html#a6aa3c9347a136a6ff64e84d0dd306057">[詳解]</a><br /></td></tr>
+<tr class="separator:a6aa3c9347a136a6ff64e84d0dd306057"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2f12e152eddb2e1462d1689765e2971"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bounty_8cpp.html#ac2f12e152eddb2e1462d1689765e2971">today_target</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="memdesc:ac2f12e152eddb2e1462d1689765e2971"><td class="mdescLeft">&#160;</td><td class="mdescRight">本日の賞金首情報を表示する。  <a href="bounty_8cpp.html#ac2f12e152eddb2e1462d1689765e2971">[詳解]</a><br /></td></tr>
+<tr class="separator:ac2f12e152eddb2e1462d1689765e2971"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae19988ffe6c68d54bbcc2591f2659053"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bounty_8cpp.html#ae19988ffe6c68d54bbcc2591f2659053">tsuchinoko</a> (void)</td></tr>
+<tr class="memdesc:ae19988ffe6c68d54bbcc2591f2659053"><td class="mdescLeft">&#160;</td><td class="mdescRight">ツチノコの賞金首情報を表示する。  <a href="bounty_8cpp.html#ae19988ffe6c68d54bbcc2591f2659053">[詳解]</a><br /></td></tr>
+<tr class="separator:ae19988ffe6c68d54bbcc2591f2659053"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9f35121ea431f44cc1c67316a12be5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bounty_8cpp.html#af9f35121ea431f44cc1c67316a12be5e">show_bounty</a> (void)</td></tr>
+<tr class="memdesc:af9f35121ea431f44cc1c67316a12be5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">通常の賞金首情報を表示する。  <a href="bounty_8cpp.html#af9f35121ea431f44cc1c67316a12be5e">[詳解]</a><br /></td></tr>
+<tr class="separator:af9f35121ea431f44cc1c67316a12be5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44a22a03177d5ed8ec96a36eced9bd20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bounty_8cpp.html#a44a22a03177d5ed8ec96a36eced9bd20">determine_daily_bounty</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> conv_old)</td></tr>
+<tr class="memdesc:a44a22a03177d5ed8ec96a36eced9bd20"><td class="mdescLeft">&#160;</td><td class="mdescRight">今日の賞金首を確定する / Determine today's bounty monster  <a href="bounty_8cpp.html#a44a22a03177d5ed8ec96a36eced9bd20">[詳解]</a><br /></td></tr>
+<tr class="separator:a44a22a03177d5ed8ec96a36eced9bd20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f618d420b0b8cc1f3a970226abc33bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bounty_8cpp.html#a2f618d420b0b8cc1f3a970226abc33bd">determine_bounty_uniques</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr)</td></tr>
+<tr class="memdesc:a2f618d420b0b8cc1f3a970226abc33bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">賞金首となるユニークを確定する / Determine bounty uniques  <a href="bounty_8cpp.html#a2f618d420b0b8cc1f3a970226abc33bd">[詳解]</a><br /></td></tr>
+<tr class="separator:a2f618d420b0b8cc1f3a970226abc33bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a2f618d420b0b8cc1f3a970226abc33bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f618d420b0b8cc1f3a970226abc33bd">&#9670;&nbsp;</a></span>determine_bounty_uniques()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void determine_bounty_uniques </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>賞金首となるユニークを確定する / Determine bounty uniques </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="bounty_8cpp_a2f618d420b0b8cc1f3a970226abc33bd_cgraph.png" border="0" usemap="#abounty_8cpp_a2f618d420b0b8cc1f3a970226abc33bd_cgraph" alt=""/></div>
+<map name="abounty_8cpp_a2f618d420b0b8cc1f3a970226abc33bd_cgraph" id="abounty_8cpp_a2f618d420b0b8cc1f3a970226abc33bd_cgraph">
+<area shape="rect" title="賞金首となるユニークを確定する / Determine bounty uniques" alt="" coords="5,319,183,346"/>
+<area shape="rect" href="monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する" alt="" coords="270,193,374,219"/>
+<area shape="rect" href="monster-util_8cpp.html#a119044a0722d084a4fa94a064a6923d8" title="モンスター生成テーブルの重み修正(賞金首選定用)" alt="" coords="231,319,413,346"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#adff19d35f4122bbff5c1c34ad18e8e2c" title="モンスターが特殊能力上、賞金首から排除する必要があるかどうかを返す。 Is the monster &quot;alive&quot;? / Is this monster declined to be questor o..." alt="" coords="247,371,397,412"/>
+<area shape="rect" href="class_probability_table.html#a9a26ed4b275f0764cadd5497b9dcb0fa" title="確率テーブルの項目が空かどうかを調べる" alt="" coords="897,83,1055,110"/>
+<area shape="rect" href="class_probability_table.html#a8ca61661e88333610e5763cf9d69a720" title="確率テーブルに項目を登録する" alt="" coords="461,50,644,77"/>
+<area shape="rect" href="class_probability_table.html#a6dbbe1d240c9fbe044e2006fe561bb86" title="確率テーブルに登録されている項目の数を取得する" alt="" coords="479,101,626,143"/>
+<area shape="rect" href="class_probability_table.html#ae443cc721a82c7aaae779be2823ff778" title="確率テーブルから複数回抽選する" alt="" coords="473,167,632,194"/>
+<area shape="rect" href="class_probability_table.html#a365bea78aa7c197450cf845e31e93927" title="現在の確率テーブルのすべての項目の選択確率の合計を取得する" alt="" coords="887,195,1065,222"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="720,290,811,317"/>
+<area shape="rect" href="z-util_8cpp.html#a8ded1d651c0ddb5daeaeb60980edf285" title="平方根を切り捨て整数で返す" alt="" coords="521,319,584,346"/>
+<area shape="rect" href="class_probability_table.html#a70b1f2ebe9b67f5aa8aac2f86178ffc0" title="確率テーブルから項目をランダムに1つ選択する" alt="" coords="692,152,839,193"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="937,261,1015,287"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="943,311,1009,338"/>
+<area shape="rect" href="monster-util_8cpp.html#af18242b02cd87d93e75b543d398cbbf2" title="モンスター生成テーブルの重みを指定条件に従って変更する。" alt="" coords="474,370,631,397"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="bounty_8cpp_a2f618d420b0b8cc1f3a970226abc33bd_icgraph.png" border="0" usemap="#abounty_8cpp_a2f618d420b0b8cc1f3a970226abc33bd_icgraph" alt=""/></div>
+<map name="abounty_8cpp_a2f618d420b0b8cc1f3a970226abc33bd_icgraph" id="abounty_8cpp_a2f618d420b0b8cc1f3a970226abc33bd_icgraph">
+<area shape="rect" title="賞金首となるユニークを確定する / Determine bounty uniques" alt="" coords="548,35,725,61"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="358,5,493,32"/>
+<area shape="rect" href="load-zangband_8cpp.html#af8ad08c0b31741b60455810f2e6840c2" title=" " alt="" coords="351,57,500,98"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="195,5,280,32"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="39,5,90,32"/>
+<area shape="rect" href="player-info-loader_8cpp.html#a34d0ca3e33cf6837d9432e08fd5c964b" title=" " alt="" coords="172,64,303,91"/>
+<area shape="rect" href="player-info-loader_8cpp.html#aae79e0153881031e36d2937fffa929c4" title=" " alt="" coords="5,64,124,91"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a44a22a03177d5ed8ec96a36eced9bd20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44a22a03177d5ed8ec96a36eced9bd20">&#9670;&nbsp;</a></span>determine_daily_bounty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void determine_daily_bounty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>conv_old</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>今日の賞金首を確定する / Determine today's bounty monster </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structplayer__type.html">player_type</a></td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<dl class="section note"><dt>覚え書き</dt><dd>conv_old is used if loaded 0.0.3 or older save file </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="bounty_8cpp_a44a22a03177d5ed8ec96a36eced9bd20_cgraph.png" border="0" usemap="#abounty_8cpp_a44a22a03177d5ed8ec96a36eced9bd20_cgraph" alt=""/></div>
+<map name="abounty_8cpp_a44a22a03177d5ed8ec96a36eced9bd20_cgraph" id="abounty_8cpp_a44a22a03177d5ed8ec96a36eced9bd20_cgraph">
+<area shape="rect" title="今日の賞金首を確定する / Determine today&#39;s bounty monster" alt="" coords="5,365,164,391"/>
+<area shape="rect" href="monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する" alt="" coords="251,187,355,214"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="701,365,792,391"/>
+<area shape="rect" href="monster-util_8cpp.html#a119044a0722d084a4fa94a064a6923d8" title="モンスター生成テーブルの重み修正(賞金首選定用)" alt="" coords="212,415,395,442"/>
+<area shape="rect" href="class_probability_table.html#a9a26ed4b275f0764cadd5497b9dcb0fa" title="確率テーブルの項目が空かどうかを調べる" alt="" coords="878,127,1037,154"/>
+<area shape="rect" href="class_probability_table.html#a8ca61661e88333610e5763cf9d69a720" title="確率テーブルに項目を登録する" alt="" coords="443,45,625,71"/>
+<area shape="rect" href="class_probability_table.html#a6dbbe1d240c9fbe044e2006fe561bb86" title="確率テーブルに登録されている項目の数を取得する" alt="" coords="461,96,607,137"/>
+<area shape="rect" href="class_probability_table.html#ae443cc721a82c7aaae779be2823ff778" title="確率テーブルから複数回抽選する" alt="" coords="455,162,613,189"/>
+<area shape="rect" href="class_probability_table.html#a365bea78aa7c197450cf845e31e93927" title="現在の確率テーブルのすべての項目の選択確率の合計を取得する" alt="" coords="868,182,1047,209"/>
+<area shape="rect" href="z-util_8cpp.html#a8ded1d651c0ddb5daeaeb60980edf285" title="平方根を切り捨て整数で返す" alt="" coords="503,314,565,341"/>
+<area shape="rect" href="class_probability_table.html#a70b1f2ebe9b67f5aa8aac2f86178ffc0" title="確率テーブルから項目をランダムに1つ選択する" alt="" coords="673,147,820,188"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="918,339,997,366"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="924,390,991,417"/>
+<area shape="rect" href="monster-util_8cpp.html#af18242b02cd87d93e75b543d398cbbf2" title="モンスター生成テーブルの重みを指定条件に従って変更する。" alt="" coords="455,415,613,442"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="bounty_8cpp_a44a22a03177d5ed8ec96a36eced9bd20_icgraph.png" border="0" usemap="#abounty_8cpp_a44a22a03177d5ed8ec96a36eced9bd20_icgraph" alt=""/></div>
+<map name="abounty_8cpp_a44a22a03177d5ed8ec96a36eced9bd20_icgraph" id="abounty_8cpp_a44a22a03177d5ed8ec96a36eced9bd20_icgraph">
+<area shape="rect" title="今日の賞金首を確定する / Determine today&#39;s bounty monster" alt="" coords="811,81,969,108"/>
+<area shape="rect" href="game-play_8cpp.html#acc42f29d6e8dc5f1aad716a0401e9be6" title=" " alt="" coords="461,5,596,32"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="657,56,763,83"/>
+<area shape="rect" href="world-loader_8cpp.html#aa075bb0c47076d0b68f05676a80374da" title=" " alt="" coords="661,107,759,133"/>
+<area shape="rect" href="cmd-inn_8cpp.html#a75794154e9cd091b741077808704f853" title="宿屋への宿泊実行処理" alt="" coords="675,157,745,184"/>
+<area shape="rect" href="game-play_8cpp.html#a0e0bd06e3e6788e6bf3d20aaa9d17975" title="1ゲームプレイの主要ルーチン / Actually play a game" alt="" coords="104,31,189,57"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,56,57"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="467,56,591,83"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="251,56,387,83"/>
+<area shape="rect" href="world-loader_8cpp.html#a41923212d938658a4e113ec1b6e1936f" title=" " alt="" coords="448,107,609,133"/>
+<area shape="rect" href="load_8cpp.html#a591102af3b97c5580b09b83fa397d089" title=" " alt="" coords="256,107,381,133"/>
+<area shape="rect" href="cmd-inn_8cpp.html#a8e693351e0e3a14f48233f3ed3489865" title="宿屋を利用する" alt="" coords="487,157,570,184"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="237,157,400,184"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6aa3c9347a136a6ff64e84d0dd306057"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6aa3c9347a136a6ff64e84d0dd306057">&#9670;&nbsp;</a></span>exchange_cash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> exchange_cash </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>賞金首の引き換え処理 / Get prize </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>各種賞金首のいずれかでも換金が行われたか否か。 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="bounty_8cpp_a6aa3c9347a136a6ff64e84d0dd306057_cgraph.png" border="0" usemap="#abounty_8cpp_a6aa3c9347a136a6ff64e84d0dd306057_cgraph" alt=""/></div>
+<map name="abounty_8cpp_a6aa3c9347a136a6ff64e84d0dd306057_cgraph" id="abounty_8cpp_a6aa3c9347a136a6ff64e84d0dd306057_cgraph">
+<area shape="rect" title="賞金首の引き換え処理 / Get prize" alt="" coords="5,1633,119,1659"/>
+<area shape="rect" href="apply-magic_8cpp.html#af3a857c696c9968becb79a7b1347da78" title="ベースアイテムを強化する処理" alt="" coords="199,645,293,671"/>
+<area shape="rect" href="object-kind-hook_8cpp.html#a24f8a2426e4fc5128654ec26033312ab" title="tvalとsvalに対応するベースアイテムのIDを返す。 Find the index of the object_kind with the given tval and sval" alt="" coords="624,695,715,722"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1029,1354,1108,1381"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="847,1354,937,1381"/>
+<area shape="rect" href="object-perception_8cpp.html#a2f7ad5a9cb44932d39bbf0c31a37c946" title="オブジェクトを＊鑑定＊済にする / The player is now aware of the effects of the given object." alt="" coords="620,1506,719,1533"/>
+<area shape="rect" href="flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="839,1531,945,1558"/>
+<area shape="rect" href="object-perception_8cpp.html#a7d25977942886a0b3043ce3c468cf08c" title="オブジェクトを鑑定済にする / Known is true when the &quot;attributes&quot; of an object are &quot;known&quot;." alt="" coords="619,1405,720,1431"/>
+<area shape="rect" href="autopick_8cpp.html#ae7f092144503a2ccb534345fe872d299" title=" " alt="" coords="179,1658,313,1685"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="206,1709,286,1735"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="205,1759,287,1786"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="201,1810,291,1837"/>
+<area shape="rect" href="object-info_8cpp.html#a21413bf407071b7e2f68ff548c34b165" title="オブジェクト選択時の選択アルファベットラベルを返す / Convert an inventory index into a one character label" alt="" coords="193,1861,299,1887"/>
+<area shape="rect" href="object-generator_8cpp.html#a9d4bf7f51bf5056089190534c673d068" title="オブジェクト構造体にベースアイテムを作成する Prepare an object based on an object kind." alt="" coords="625,1101,714,1127"/>
+<area shape="rect" href="inventory-object_8cpp.html#a7d987f9b5f55d41d114975ba40e21c47" title="オブジェクトをプレイヤーが拾って所持スロットに納めるメインルーチン / Add an item to the players inventory, and return the slot used." alt="" coords="167,1911,325,1938"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="221,1962,271,1989"/>
+<area shape="rect" href="inventory-object_8cpp.html#a95bd37f416091df0360f4eec6bd12e49" title=" " alt="" coords="207,2013,285,2039"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#aa6bb6fee0c3e87b70fe7d71ac6b0a283" title="オブジェクトに指定した固定アーティファクトをオブジェクトに割り当てる。" alt="" coords="405,215,504,242"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="837,157,947,183"/>
+<area shape="rect" href="object-curse_8cpp.html#a749ffeeeaa9633e0b6300253e4bc9730" title="アイテムに付加される可能性のある呪いを指定する。" alt="" coords="853,1050,931,1077"/>
+<area shape="rect" href="object-ego_8cpp.html#ae52b9f92a7e5067ea20af2fbdc181485" title=" " alt="" coords="414,493,495,519"/>
+<area shape="rect" href="apply-magic-accessory_8cpp.html#ae6f9928a6037258e3b51cd1879d37ce8" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="373,645,536,671"/>
+<area shape="rect" href="apply-magic-armor_8cpp.html#a943347008b3f17143f4237c2273e2237" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="387,822,522,849"/>
+<area shape="rect" href="apply-magic-others_8cpp.html#a80da629ac8d17c15a5d4d48911aa9e4a" title="防具系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="385,1253,524,1279"/>
+<area shape="rect" href="apply-magic-weapon_8cpp.html#af2411c1c185f2c7b60114843dea640f8" title="武器系のアイテムを強化して(恐らく床に)生成する処理" alt="" coords="381,873,528,899"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a658f4e0b1d948165db84b32e9d11b5ff" title=" " alt="" coords="400,102,509,129"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#a1cadf1bc783aab1bd7044762e520cfbd" title="非INSTA_ART型の固定アーティファクトの生成を確率に応じて試行する。 Mega&#45;Hack – Attempt to create one of the &quot;Special Objects&quot;" alt="" coords="405,923,505,950"/>
+<area shape="rect" href="hook-enchant_8cpp.html#a282029d5fd1b80cb49135d5aa042eb3b" title=" " alt="" coords="403,391,506,418"/>
+<area shape="rect" href="hook-enchant_8cpp.html#ab62a52b266c59b0680f82c5cb6586a4c" title=" " alt="" coords="377,442,532,469"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#a366d2d0a6c3b91c22bd598d312b7e774" title="固定アーティファクトオブジェクトに追加能力/耐性を付加する" alt="" coords="597,91,742,132"/>
+<area shape="rect" href="fixed-art-generator_8cpp.html#ab1745b03a5b87acd3ab1822e6cccd853" title="固定アーティファクトオブジェクトに呪いフラグを付加する" alt="" coords="596,208,743,249"/>
+<area shape="rect" href="object-boost_8cpp.html#a8f91efd8221f822642748a831d76cde8" title="対象のオブジェクトにランダムな上位耐性を一つ付加する。/ Choose one random high resistance" alt="" coords="821,619,963,646"/>
+<area shape="rect" href="object-ego_8cpp.html#a9eefc5f11e04204df106d65490300efd" title=" " alt="" coords="603,325,736,367"/>
+<area shape="rect" href="object-ego_8cpp.html#a49336248c9f29791999fea5815dbe0eb" title=" " alt="" coords="608,442,731,469"/>
+<area shape="rect" href="object-ego_8cpp.html#ab380c73138c0ed4ac0741bad2ae5334b" title=" " alt="" coords="584,157,755,183"/>
+<area shape="rect" href="hook-checker_8cpp.html#a118b5eba2995ff0ea3386099b696a3c5" title=" " alt="" coords="609,391,729,418"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="609,493,729,519"/>
+<area shape="rect" href="object-ego_8cpp.html#afea43c7036e61e39e7750e63465d335c" title="0 および負数に対応した randint1()" alt="" coords="613,274,726,301"/>
+<area shape="rect" href="object-boost_8cpp.html#a2d7dbf2cf7cd55f9c36f34b747293485" title="対象のオブジェクトに王者の指輪向けの上位耐性を一つ付加する。/ Choose one random high resistance" alt="" coords="803,375,981,402"/>
+<area shape="rect" href="object-boost_8cpp.html#a606621699d215b70e3bb550147e8e6da" title="オブジェクトにランダムな弱いESPを与える" alt="" coords="615,746,723,773"/>
+<area shape="rect" href="random-art-generator_8cpp.html#acb52d39747a1ce3ca1745b3fbe78ff72" title="ランダムアーティファクト生成のメインルーチン" alt="" coords="587,999,751,1026"/>
+<area shape="rect" href="object-boost_8cpp.html#aac2a8bb6a1fc5c041b8f18f5660f3554" title="上質以上のオブジェクトに与えるための各種ボーナスを正規乱数も加えて算出する。 Help determine an &quot;enchantment bonus&quot; for an object." alt="" coords="632,797,707,823"/>
+<area shape="rect" href="object-boost_8cpp.html#a10830095266d73c5d3c07cb44576cf1e" title="対象のオブジェクトに弱いESPを一つ付加する。/ Choose one lower rank esp" alt="" coords="621,594,718,621"/>
+<area shape="rect" href="object-boost_8cpp.html#a36cf4f62bcad93e649af35c99d4e23cf" title="オブジェクトにランダムな強いESPを与える" alt="" coords="612,898,727,925"/>
+<area shape="rect" href="object-boost_8cpp.html#aebf400e29da27d5f9e627422526f4bb1" title="ドラゴン装備にランダムな耐性を与える" alt="" coords="619,847,719,874"/>
+<area shape="rect" href="object-ego_8cpp.html#ab2d834c8e6ce809dfce2c3a3fef269aa" title="アイテムのエゴをレア度の重みに合わせてランダムに選択する Choose random ego type" alt="" coords="610,1050,729,1077"/>
+<area shape="rect" href="monster-list_8cpp.html#a35c6f988fe33038b48afcebc85cc9c52" title="生成モンスター種族を1種生成テーブルから選択する" alt="" coords="617,1303,721,1330"/>
+<area shape="rect" href="monster-util_8cpp.html#ae37ebccef3dd7dacea088110d0388d49" title="モンスター生成テーブルの重み修正" alt="" coords="601,1202,737,1229"/>
+<area shape="rect" href="monster-race-hook_8cpp.html#acdb2524187c8c89503ce0e2a9f1d03bf" title="モンスターが人形のベースにできるかを返す" alt="" coords="601,1253,737,1279"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="bounty_8cpp_a6aa3c9347a136a6ff64e84d0dd306057_icgraph.png" border="0" usemap="#abounty_8cpp_a6aa3c9347a136a6ff64e84d0dd306057_icgraph" alt=""/></div>
+<map name="abounty_8cpp_a6aa3c9347a136a6ff64e84d0dd306057_icgraph" id="abounty_8cpp_a6aa3c9347a136a6ff64e84d0dd306057_icgraph">
+<area shape="rect" title="賞金首の引き換え処理 / Get prize" alt="" coords="563,5,676,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="352,5,515,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="185,5,304,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af9f35121ea431f44cc1c67316a12be5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9f35121ea431f44cc1c67316a12be5e">&#9670;&nbsp;</a></span>show_bounty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void show_bounty </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>通常の賞金首情報を表示する。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="bounty_8cpp_af9f35121ea431f44cc1c67316a12be5e_cgraph.png" border="0" usemap="#abounty_8cpp_af9f35121ea431f44cc1c67316a12be5e_cgraph" alt=""/></div>
+<map name="abounty_8cpp_af9f35121ea431f44cc1c67316a12be5e_cgraph" id="abounty_8cpp_af9f35121ea431f44cc1c67316a12be5e_cgraph">
+<area shape="rect" title="通常の賞金首情報を表示する。" alt="" coords="5,132,104,159"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="485,107,536,133"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="155,5,231,32"/>
+<area shape="rect" href="building-util_8cpp.html#aab99b920b3dffc28277ebf8e94f4557e" title="コンソールに表示された施設に関する情報を消去する / Clear the building information" alt="" coords="152,107,233,133"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="320,107,359,133"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="163,563,222,589"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="166,385,219,412"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="624,95,715,121"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="626,145,713,172"/>
+<area shape="rect" href="z-term_8cpp.html#aed0973004e647060e40c2e8ee2471b89" title=" " alt="" coords="763,95,892,121"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="780,145,875,172"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="467,44,555,71"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="308,715,371,741"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="477,765,544,792"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="288,613,391,640"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="461,563,560,589"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="631,487,708,513"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="299,411,380,437"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="467,157,554,184"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="281,208,397,235"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="298,461,381,488"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="281,259,397,285"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="281,309,397,336"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="465,664,556,691"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="469,613,552,640"/>
+<area shape="rect" href="macro-util_8cpp.html#a1e9851f9b9e0a0e51628a231ca95fcc1" title=" " alt="" coords="447,259,574,285"/>
+<area shape="rect" href="macro-util_8cpp.html#a7f48a1923076b3b314f1bc58913a2a59" title=" " alt="" coords="445,309,576,336"/>
+<area shape="rect" href="macro-util_8cpp.html#ada693de344c97bc09a586100f25919dd" title=" " alt="" coords="449,360,573,387"/>
+<area shape="rect" href="z-term_8cpp.html#a020ef4815c101960b4fdad94c4e5b59b" title=" " alt="" coords="455,208,566,235"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="bounty_8cpp_af9f35121ea431f44cc1c67316a12be5e_icgraph.png" border="0" usemap="#abounty_8cpp_af9f35121ea431f44cc1c67316a12be5e_icgraph" alt=""/></div>
+<map name="abounty_8cpp_af9f35121ea431f44cc1c67316a12be5e_icgraph" id="abounty_8cpp_af9f35121ea431f44cc1c67316a12be5e_icgraph">
+<area shape="rect" title="通常の賞金首情報を表示する。" alt="" coords="563,5,661,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="352,5,515,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="185,5,304,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac2f12e152eddb2e1462d1689765e2971"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2f12e152eddb2e1462d1689765e2971">&#9670;&nbsp;</a></span>today_target()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void today_target </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>本日の賞金首情報を表示する。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="bounty_8cpp_ac2f12e152eddb2e1462d1689765e2971_cgraph.png" border="0" usemap="#abounty_8cpp_ac2f12e152eddb2e1462d1689765e2971_cgraph" alt=""/></div>
+<map name="abounty_8cpp_ac2f12e152eddb2e1462d1689765e2971_cgraph" id="abounty_8cpp_ac2f12e152eddb2e1462d1689765e2971_cgraph">
+<area shape="rect" title="本日の賞金首情報を表示する。" alt="" coords="5,56,100,83"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="151,5,227,32"/>
+<area shape="rect" href="building-util_8cpp.html#aab99b920b3dffc28277ebf8e94f4557e" title="コンソールに表示された施設に関する情報を消去する / Clear the building information" alt="" coords="148,56,229,83"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="302,81,341,108"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="277,5,365,32"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="556,31,647,57"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="413,31,508,57"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="435,81,486,108"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="bounty_8cpp_ac2f12e152eddb2e1462d1689765e2971_icgraph.png" border="0" usemap="#abounty_8cpp_ac2f12e152eddb2e1462d1689765e2971_icgraph" alt=""/></div>
+<map name="abounty_8cpp_ac2f12e152eddb2e1462d1689765e2971_icgraph" id="abounty_8cpp_ac2f12e152eddb2e1462d1689765e2971_icgraph">
+<area shape="rect" title="本日の賞金首情報を表示する。" alt="" coords="563,5,657,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="352,5,515,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="185,5,304,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae19988ffe6c68d54bbcc2591f2659053"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae19988ffe6c68d54bbcc2591f2659053">&#9670;&nbsp;</a></span>tsuchinoko()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tsuchinoko </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ツチノコの賞金首情報を表示する。 </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="bounty_8cpp_ae19988ffe6c68d54bbcc2591f2659053_cgraph.png" border="0" usemap="#abounty_8cpp_ae19988ffe6c68d54bbcc2591f2659053_cgraph" alt=""/></div>
+<map name="abounty_8cpp_ae19988ffe6c68d54bbcc2591f2659053_cgraph" id="abounty_8cpp_ae19988ffe6c68d54bbcc2591f2659053_cgraph">
+<area shape="rect" title="ツチノコの賞金首情報を表示する。" alt="" coords="5,47,91,74"/>
+<area shape="rect" href="screen-processor_8cpp.html#a9ceaef20b65c03e63b25db4fac4449f1" title=" " alt="" coords="141,22,217,48"/>
+<area shape="rect" href="building-util_8cpp.html#aab99b920b3dffc28277ebf8e94f4557e" title="コンソールに表示された施設に関する情報を消去する / Clear the building information" alt="" coords="139,72,220,99"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="268,22,356,48"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="547,22,637,48"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="404,22,499,48"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="293,72,331,99"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="426,72,477,99"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="bounty_8cpp_ae19988ffe6c68d54bbcc2591f2659053_icgraph.png" border="0" usemap="#abounty_8cpp_ae19988ffe6c68d54bbcc2591f2659053_icgraph" alt=""/></div>
+<map name="abounty_8cpp_ae19988ffe6c68d54bbcc2591f2659053_icgraph" id="abounty_8cpp_ae19988ffe6c68d54bbcc2591f2659053_icgraph">
+<area shape="rect" title="ツチノコの賞金首情報を表示する。" alt="" coords="563,5,648,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="352,5,515,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="185,5,304,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分46秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

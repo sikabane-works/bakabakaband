@@ -1,0 +1,943 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/main/scene-table-monster.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5eb159725f84c66aafd839904a4acdd0.html">main</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">scene-table-monster.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="scene-table-monster_8h_source.html">main/scene-table-monster.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="quest_8h_source.html">dungeon/quest.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="music-definitions-table_8h_source.html">main/music-definitions-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags1_8h_source.html">monster-race/race-flags1.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor-type-definition_8h_source.html">system/floor-type-definition.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bit-flags-calculator_8h_source.html">util/bit-flags-calculator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="world_8h_source.html">world/world.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+scene-table-monster.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2main_2scene-table-monster_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2main_2scene-table-monster_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2main_2scene-table-monster_8cpp">
+<area shape="rect" title=" " alt="" coords="463,5,666,61"/>
+<area shape="rect" href="scene-table-monster_8h.html" title=" " alt="" coords="372,117,555,143"/>
+<area shape="rect" href="quest_8h.html" title=" " alt="" coords="733,206,852,233"/>
+<area shape="rect" href="music-definitions-table_8h.html" title=" " alt="" coords="197,109,348,151"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="181,199,330,240"/>
+<area shape="rect" href="race-flags1_8h.html" title=" " alt="" coords="579,117,755,143"/>
+<area shape="rect" href="floor-type-definition_8h.html" title=" " alt="" coords="1037,117,1225,143"/>
+<area shape="rect" href="bit-flags-calculator_8h.html" title=" " alt="" coords="831,117,989,143"/>
+<area shape="rect" href="world_8h.html" title=" " alt="" coords="5,206,103,233"/>
+<area shape="rect" href="scene-table_8h.html" title=" " alt="" coords="367,206,499,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="368,385,497,411"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="531,288,676,329"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="359,295,506,322"/>
+<area shape="rect" title=" " alt="" coords="229,295,285,322"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="548,385,659,411"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="909,288,1055,329"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="751,288,885,329"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="859,377,1003,419"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="1191,377,1347,419"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="1027,377,1166,419"/>
+<area shape="rect" href="tval-types_8h.html" title=" " alt="" coords="708,385,835,411"/>
+<area shape="rect" href="floor-base-definitions_8h.html" title=" " alt="" coords="877,206,1055,233"/>
+<area shape="rect" href="sight-definitions_8h.html" title=" " alt="" coords="1080,206,1231,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscene__monster__info.html">scene_monster_info</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:aa9c7daecec3acee7035dd925ac11199e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#aa9c7daecec3acee7035dd925ac11199e">scene_monster_func</a> = <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>(*)(<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:aa9c7daecec3acee7035dd925ac11199e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a86891f48deb51b0b57b300857a373bd2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#a86891f48deb51b0b57b300857a373bd2">has_shadower_flag</a> (<a class="el" href="structmonster__type.html">monster_type</a> *m_ptr)</td></tr>
+<tr class="separator:a86891f48deb51b0b57b300857a373bd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71081086c97a902a78912503e389d71d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#a71081086c97a902a78912503e389d71d">is_unique</a> (<a class="el" href="structmonster__race.html">monster_race</a> *ap_r_ptr)</td></tr>
+<tr class="separator:a71081086c97a902a78912503e389d71d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48b5b5b1095d973198cf3bda79ad78a8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#a48b5b5b1095d973198cf3bda79ad78a8">is_unknown_monster</a> (<a class="el" href="structmonster__race.html">monster_race</a> *ap_r_ptr)</td></tr>
+<tr class="separator:a48b5b5b1095d973198cf3bda79ad78a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc6d7b8dce74b1876b929c49df16ed56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#afc6d7b8dce74b1876b929c49df16ed56">clear_scene_target_monster</a> ()</td></tr>
+<tr class="separator:afc6d7b8dce74b1876b929c49df16ed56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a580718c07f73374ee924265c3e45ee22"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#a2cffa72d359000e874c9f3c7a3a0e793">GAME_TURN</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#a580718c07f73374ee924265c3e45ee22">get_game_turn</a> ()</td></tr>
+<tr class="separator:a580718c07f73374ee924265c3e45ee22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3723d407099ce132e4a2266b6cf28f2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#a3723d407099ce132e4a2266b6cf28f2e">set_temp_mute_scene_monster</a> (int sec)</td></tr>
+<tr class="memdesc:a3723d407099ce132e4a2266b6cf28f2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターBGMの制限期間を設定する  <a href="scene-table-monster_8cpp.html#a3723d407099ce132e4a2266b6cf28f2e">[詳解]</a><br /></td></tr>
+<tr class="separator:a3723d407099ce132e4a2266b6cf28f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06dd210af361b06430ec607eda8420ee"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#a06dd210af361b06430ec607eda8420ee">can_mute_scene_monster</a> ()</td></tr>
+<tr class="memdesc:a06dd210af361b06430ec607eda8420ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターBGMの制限期間か判定する  <a href="scene-table-monster_8cpp.html#a06dd210af361b06430ec607eda8420ee">[詳解]</a><br /></td></tr>
+<tr class="separator:a06dd210af361b06430ec607eda8420ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c3ec911a01a0bee189495c4f2dfbc50"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#a4c3ec911a01a0bee189495c4f2dfbc50">is_high_rate</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx1, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx2)</td></tr>
+<tr class="memdesc:a4c3ec911a01a0bee189495c4f2dfbc50"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターの優先判定  <a href="scene-table-monster_8cpp.html#a4c3ec911a01a0bee189495c4f2dfbc50">[詳解]</a><br /></td></tr>
+<tr class="separator:a4c3ec911a01a0bee189495c4f2dfbc50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ec918145ef0ee78ae7c747877d5cd2b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#a1ec918145ef0ee78ae7c747877d5cd2b">update_target_monster</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> m_idx)</td></tr>
+<tr class="memdesc:a1ec918145ef0ee78ae7c747877d5cd2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">BGM対象モンスター更新処理  <a href="scene-table-monster_8cpp.html#a1ec918145ef0ee78ae7c747877d5cd2b">[詳解]</a><br /></td></tr>
+<tr class="separator:a1ec918145ef0ee78ae7c747877d5cd2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a637618cbf9c4f6a25c1868499861b06f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#a637618cbf9c4f6a25c1868499861b06f">scene_monster</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:a637618cbf9c4f6a25c1868499861b06f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a054a30fc739d9080ff52d9f8512c30fa"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#a054a30fc739d9080ff52d9f8512c30fa">scene_unique</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:a054a30fc739d9080ff52d9f8512c30fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57be264d8f2777c325c43c05baf92d75"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#a57be264d8f2777c325c43c05baf92d75">scene_unknown</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:a57be264d8f2777c325c43c05baf92d75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6993ffe50d1b34dc31b09155222e5eff"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#a6993ffe50d1b34dc31b09155222e5eff">scene_high_level</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td></tr>
+<tr class="separator:a6993ffe50d1b34dc31b09155222e5eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9708223b5e20b6590232e28f59796f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#ac9708223b5e20b6590232e28f59796f7">get_scene_monster_count</a> ()</td></tr>
+<tr class="separator:ac9708223b5e20b6590232e28f59796f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b1400365694c66d4f76378fad2a22c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#a8b1400365694c66d4f76378fad2a22c3">refresh_scene_monster</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, const std::vector&lt; <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> &gt; &amp;monster_list, <a class="el" href="scene-table_8h.html#a01ac995b44079698b7be5c68127d1bab">scene_type_list</a> &amp;list, int from_index)</td></tr>
+<tr class="memdesc:a8b1400365694c66d4f76378fad2a22c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">現在の条件でモンスターのBGM選曲をリストに設定する。  <a href="scene-table-monster_8cpp.html#a8b1400365694c66d4f76378fad2a22c3">[詳解]</a><br /></td></tr>
+<tr class="separator:a8b1400365694c66d4f76378fad2a22c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:ae7a9d5c575dfcd405ff93429c665c77d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structscene__monster__info.html">scene_monster_info</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#ae7a9d5c575dfcd405ff93429c665c77d">scene_target_monster</a></td></tr>
+<tr class="separator:ae7a9d5c575dfcd405ff93429c665c77d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa789d539b6bd3b9e1ea9b85206c5ec70"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="scene-table-monster_8cpp.html#aa9c7daecec3acee7035dd925ac11199e">scene_monster_func</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene-table-monster_8cpp.html#aa789d539b6bd3b9e1ea9b85206c5ec70">scene_monster_def_list</a></td></tr>
+<tr class="memdesc:aa789d539b6bd3b9e1ea9b85206c5ec70"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターBGMのフォールバック設定。 先頭から適用する（先にある方を優先する）。  <a href="scene-table-monster_8cpp.html#aa789d539b6bd3b9e1ea9b85206c5ec70">[詳解]</a><br /></td></tr>
+<tr class="separator:aa789d539b6bd3b9e1ea9b85206c5ec70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">型定義詳解</h2>
+<a id="aa9c7daecec3acee7035dd925ac11199e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9c7daecec3acee7035dd925ac11199e">&#9670;&nbsp;</a></span>scene_monster_func</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="scene-table-monster_8cpp.html#aa9c7daecec3acee7035dd925ac11199e">scene_monster_func</a> =  <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> (*)(<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="structscene__type.html">scene_type</a> *value)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a06dd210af361b06430ec607eda8420ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06dd210af361b06430ec607eda8420ee">&#9670;&nbsp;</a></span>can_mute_scene_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> can_mute_scene_monster </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>モンスターBGMの制限期間か判定する </p>
+<p>ダンジョンターン数がscene_target_monster.mute_untilの値になるまで制限期間。 </p><dl class="section return"><dt>戻り値</dt><dd>モンスターBGMの制限期間の場合trueを返す </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a06dd210af361b06430ec607eda8420ee_icgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a06dd210af361b06430ec607eda8420ee_icgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a06dd210af361b06430ec607eda8420ee_icgraph" id="ascene-table-monster_8cpp_a06dd210af361b06430ec607eda8420ee_icgraph">
+<area shape="rect" title="モンスターBGMの制限期間か判定する" alt="" coords="397,5,572,32"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a8b1400365694c66d4f76378fad2a22c3" title="現在の条件でモンスターのBGM選曲をリストに設定する。" alt="" coords="192,5,349,32"/>
+<area shape="rect" href="scene-table_8cpp.html#aab9d31eea4d6b0d857bca5a538b5d7b0" title="見かけたモンスターを含め、現在のフロアに合ったBGM選曲" alt="" coords="5,5,144,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afc6d7b8dce74b1876b929c49df16ed56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc6d7b8dce74b1876b929c49df16ed56">&#9670;&nbsp;</a></span>clear_scene_target_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clear_scene_target_monster </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_afc6d7b8dce74b1876b929c49df16ed56_icgraph.png" border="0" usemap="#ascene-table-monster_8cpp_afc6d7b8dce74b1876b929c49df16ed56_icgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_afc6d7b8dce74b1876b929c49df16ed56_icgraph" id="ascene-table-monster_8cpp_afc6d7b8dce74b1876b929c49df16ed56_icgraph">
+<area shape="rect" title=" " alt="" coords="976,194,1108,235"/>
+<area shape="rect" href="scene-table_8cpp.html#a1e23925d28d9ffb9bb4cc1a3fc483982" title="選曲の割り込み通知" alt="" coords="794,176,905,203"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a8b1400365694c66d4f76378fad2a22c3" title="現在の条件でモンスターのBGM選曲をリストに設定する。" alt="" coords="771,227,928,253"/>
+<area shape="rect" href="sound-of-music_8cpp.html#afbe4cbf7966050b5a6f68487a7d492ef" title="Hack – Play a music" alt="" coords="415,201,503,228"/>
+<area shape="rect" href="scene-table_8cpp.html#a124ea0bc4b16c41e87d9565e549db003" title="現在のフロアに合ったBGM選曲" alt="" coords="584,119,723,145"/>
+<area shape="rect" href="cmd-others_8cpp.html#a4c0864f9305ed24877f60883ada506ad" title=" " alt="" coords="169,208,335,235"/>
+<area shape="rect" href="cmd-others_8cpp.html#a36b86b1102ea5e0b063d70e03eed74d5" title="自殺するコマンドのメインルーチン commit suicide" alt="" coords="5,233,121,260"/>
+<area shape="rect" href="game-closer_8cpp.html#a87d2bc43dd7c1537d1b537a9f776a73b" title="ゲームクローズ時、プレイヤーが死亡しているかのチェックを行い死亡していないならば、確認キー入力とスコア表示、現フロアの初期化を行う。" alt="" coords="204,309,300,336"/>
+<area shape="rect" href="quest_8cpp.html#af5f55968be72b94b441f35b7dd1b954f" title="クエストを達成状態にする /" alt="" coords="195,360,309,387"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="193,5,311,32"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="200,56,304,83"/>
+<area shape="rect" href="monster-death_8cpp.html#a2d3026ba7d407e3215607ecc61c6cb9d" title=" " alt="" coords="181,411,323,437"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="207,107,297,133"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="218,157,286,184"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a8338cee7fe8e72ac6b7a1563f7fc4fa3" title="シチュエーションに合ったBGM選曲" alt="" coords="394,56,525,83"/>
+<area shape="rect" href="sound-of-music_8cpp.html#ab7c5caf65cf56f1185b64556f227c29e" title="モンスターBGM選曲" alt="" coords="383,119,536,145"/>
+<area shape="rect" href="scene-table_8cpp.html#aab9d31eea4d6b0d857bca5a538b5d7b0" title="見かけたモンスターを含め、現在のフロアに合ったBGM選曲" alt="" coords="584,227,723,253"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a580718c07f73374ee924265c3e45ee22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a580718c07f73374ee924265c3e45ee22">&#9670;&nbsp;</a></span>get_game_turn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#a2cffa72d359000e874c9f3c7a3a0e793">GAME_TURN</a> get_game_turn </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a580718c07f73374ee924265c3e45ee22_icgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a580718c07f73374ee924265c3e45ee22_icgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a580718c07f73374ee924265c3e45ee22_icgraph" id="ascene-table-monster_8cpp_a580718c07f73374ee924265c3e45ee22_icgraph">
+<area shape="rect" title=" " alt="" coords="600,5,708,32"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a8b1400365694c66d4f76378fad2a22c3" title="現在の条件でモンスターのBGM選曲をリストに設定する。" alt="" coords="192,5,349,32"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a1ec918145ef0ee78ae7c747877d5cd2b" title="BGM対象モンスター更新処理" alt="" coords="397,31,552,57"/>
+<area shape="rect" href="scene-table_8cpp.html#aab9d31eea4d6b0d857bca5a538b5d7b0" title="見かけたモンスターを含め、現在のフロアに合ったBGM選曲" alt="" coords="5,5,144,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac9708223b5e20b6590232e28f59796f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9708223b5e20b6590232e28f59796f7">&#9670;&nbsp;</a></span>get_scene_monster_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int get_scene_monster_count </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_ac9708223b5e20b6590232e28f59796f7_icgraph.png" border="0" usemap="#ascene-table-monster_8cpp_ac9708223b5e20b6590232e28f59796f7_icgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_ac9708223b5e20b6590232e28f59796f7_icgraph" id="ascene-table-monster_8cpp_ac9708223b5e20b6590232e28f59796f7_icgraph">
+<area shape="rect" title=" " alt="" coords="599,56,773,83"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a8b1400365694c66d4f76378fad2a22c3" title="現在の条件でモンスターのBGM選曲をリストに設定する。" alt="" coords="393,5,551,32"/>
+<area shape="rect" href="scene-table_8cpp.html#aab9d31eea4d6b0d857bca5a538b5d7b0" title="見かけたモンスターを含め、現在のフロアに合ったBGM選曲" alt="" coords="207,31,345,57"/>
+<area shape="rect" href="scene-table_8cpp.html#ab291878e89c27f055af0769ecacbc5d3" title=" " alt="" coords="411,107,533,133"/>
+<area shape="rect" href="scene-table_8cpp.html#a124ea0bc4b16c41e87d9565e549db003" title="現在のフロアに合ったBGM選曲" alt="" coords="207,107,345,133"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a8338cee7fe8e72ac6b7a1563f7fc4fa3" title="シチュエーションに合ったBGM選曲" alt="" coords="17,81,147,108"/>
+<area shape="rect" href="sound-of-music_8cpp.html#ab7c5caf65cf56f1185b64556f227c29e" title="モンスターBGM選曲" alt="" coords="5,132,159,159"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a86891f48deb51b0b57b300857a373bd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86891f48deb51b0b57b300857a373bd2">&#9670;&nbsp;</a></span>has_shadower_flag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> has_shadower_flag </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmonster__type.html">monster_type</a> *&#160;</td>
+          <td class="paramname"><em>m_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a86891f48deb51b0b57b300857a373bd2_cgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a86891f48deb51b0b57b300857a373bd2_cgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a86891f48deb51b0b57b300857a373bd2_cgraph" id="ascene-table-monster_8cpp_a86891f48deb51b0b57b300857a373bd2_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,137,32"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="185,5,296,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a86891f48deb51b0b57b300857a373bd2_icgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a86891f48deb51b0b57b300857a373bd2_icgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a86891f48deb51b0b57b300857a373bd2_icgraph" id="ascene-table-monster_8cpp_a86891f48deb51b0b57b300857a373bd2_icgraph">
+<area shape="rect" title=" " alt="" coords="164,5,296,32"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a637618cbf9c4f6a25c1868499861b06f" title=" " alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4c3ec911a01a0bee189495c4f2dfbc50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c3ec911a01a0bee189495c4f2dfbc50">&#9670;&nbsp;</a></span>is_high_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> is_high_rate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>m_idx1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>m_idx2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>モンスターの優先判定 </p>
+<p>ユニーク、あやしい影、未知のモンスター、レベルの高さ、モンスターIDで優先を付ける。 </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">m_idx1</td><td>モンスターA（新参） </td></tr>
+    <tr><td class="paramname">m_idx2</td><td>モンスターB（現対象） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>戻り値</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>モンスターAが優先 </td></tr>
+    <tr><td class="paramname">false</td><td>モンスターBが優先 </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a4c3ec911a01a0bee189495c4f2dfbc50_icgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a4c3ec911a01a0bee189495c4f2dfbc50_icgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a4c3ec911a01a0bee189495c4f2dfbc50_icgraph" id="ascene-table-monster_8cpp_a4c3ec911a01a0bee189495c4f2dfbc50_icgraph">
+<area shape="rect" title="モンスターの優先判定" alt="" coords="600,5,692,32"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a1ec918145ef0ee78ae7c747877d5cd2b" title="BGM対象モンスター更新処理" alt="" coords="397,5,552,32"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a8b1400365694c66d4f76378fad2a22c3" title="現在の条件でモンスターのBGM選曲をリストに設定する。" alt="" coords="192,5,349,32"/>
+<area shape="rect" href="scene-table_8cpp.html#aab9d31eea4d6b0d857bca5a538b5d7b0" title="見かけたモンスターを含め、現在のフロアに合ったBGM選曲" alt="" coords="5,5,144,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a71081086c97a902a78912503e389d71d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71081086c97a902a78912503e389d71d">&#9670;&nbsp;</a></span>is_unique()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> is_unique </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmonster__race.html">monster_race</a> *&#160;</td>
+          <td class="paramname"><em>ap_r_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a71081086c97a902a78912503e389d71d_icgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a71081086c97a902a78912503e389d71d_icgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a71081086c97a902a78912503e389d71d_icgraph" id="ascene-table-monster_8cpp_a71081086c97a902a78912503e389d71d_icgraph">
+<area shape="rect" title=" " alt="" coords="493,31,571,57"/>
+<area shape="rect" href="attack-criticality_8cpp.html#a1c9d0318ca3330b8cbe9e818b67984d2" title="忍者ヒットで急所を突く" alt="" coords="347,5,441,32"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a054a30fc739d9080ff52d9f8512c30fa" title=" " alt="" coords="343,56,445,83"/>
+<area shape="rect" href="attack-criticality_8cpp.html#a3b27747ee30f684626460215018a6a8a" title="急所を突く" alt="" coords="192,5,295,32"/>
+<area shape="rect" href="player-attack_8cpp.html#ab4369babee2851a796a5e7693bd99cd8" title="直接攻撃が当たった時の処理" alt="" coords="5,5,144,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a48b5b5b1095d973198cf3bda79ad78a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48b5b5b1095d973198cf3bda79ad78a8">&#9670;&nbsp;</a></span>is_unknown_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> is_unknown_monster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmonster__race.html">monster_race</a> *&#160;</td>
+          <td class="paramname"><em>ap_r_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a48b5b5b1095d973198cf3bda79ad78a8_icgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a48b5b5b1095d973198cf3bda79ad78a8_icgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a48b5b5b1095d973198cf3bda79ad78a8_icgraph" id="ascene-table-monster_8cpp_a48b5b5b1095d973198cf3bda79ad78a8_icgraph">
+<area shape="rect" title=" " alt="" coords="173,31,317,57"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a6993ffe50d1b34dc31b09155222e5eff" title=" " alt="" coords="5,5,125,32"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a57be264d8f2777c325c43c05baf92d75" title=" " alt="" coords="8,56,123,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8b1400365694c66d4f76378fad2a22c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b1400365694c66d4f76378fad2a22c3">&#9670;&nbsp;</a></span>refresh_scene_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void refresh_scene_monster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>monster_list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="scene-table_8h.html#a01ac995b44079698b7be5c68127d1bab">scene_type_list</a> &amp;&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>from_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>現在の条件でモンスターのBGM選曲をリストに設定する。 </p>
+<p>リストのfrom_indexの位置から、get_scene_monster_count()で得られる個数分設定する。 視界内モンスターリスト先頭のモンスターを記憶し、以前のモンスターと比較してより上位のモンスターをBGM選曲の対象とする。 記憶したモンスターが視界内に存在しない場合、一定のゲームターン経過で忘れる。 </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">monster_list</td><td>視界内モンスターリスト </td></tr>
+    <tr><td class="paramname">list</td><td>BGM選曲リスト </td></tr>
+    <tr><td class="paramname">from_index</td><td>リストの更新開始位置 </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a8b1400365694c66d4f76378fad2a22c3_cgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a8b1400365694c66d4f76378fad2a22c3_cgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a8b1400365694c66d4f76378fad2a22c3_cgraph" id="ascene-table-monster_8cpp_a8b1400365694c66d4f76378fad2a22c3_cgraph">
+<area shape="rect" title="現在の条件でモンスターのBGM選曲をリストに設定する。" alt="" coords="5,123,163,149"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a06dd210af361b06430ec607eda8420ee" title="モンスターBGMの制限期間か判定する" alt="" coords="211,5,385,32"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#afc6d7b8dce74b1876b929c49df16ed56" title=" " alt="" coords="232,57,364,98"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a580718c07f73374ee924265c3e45ee22" title=" " alt="" coords="433,148,541,175"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#ac9708223b5e20b6590232e28f59796f7" title=" " alt="" coords="211,173,385,200"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a1ec918145ef0ee78ae7c747877d5cd2b" title="BGM対象モンスター更新処理" alt="" coords="221,224,375,251"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a4c3ec911a01a0bee189495c4f2dfbc50" title="モンスターの優先判定" alt="" coords="441,224,533,251"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a8b1400365694c66d4f76378fad2a22c3_icgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a8b1400365694c66d4f76378fad2a22c3_icgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a8b1400365694c66d4f76378fad2a22c3_icgraph" id="ascene-table-monster_8cpp_a8b1400365694c66d4f76378fad2a22c3_icgraph">
+<area shape="rect" title="現在の条件でモンスターのBGM選曲をリストに設定する。" alt="" coords="192,5,349,32"/>
+<area shape="rect" href="scene-table_8cpp.html#aab9d31eea4d6b0d857bca5a538b5d7b0" title="見かけたモンスターを含め、現在のフロアに合ったBGM選曲" alt="" coords="5,5,144,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6993ffe50d1b34dc31b09155222e5eff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6993ffe50d1b34dc31b09155222e5eff">&#9670;&nbsp;</a></span>scene_high_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> scene_high_level </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structscene__type.html">scene_type</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a6993ffe50d1b34dc31b09155222e5eff_cgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a6993ffe50d1b34dc31b09155222e5eff_cgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a6993ffe50d1b34dc31b09155222e5eff_cgraph" id="ascene-table-monster_8cpp_a6993ffe50d1b34dc31b09155222e5eff_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,125,32"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a48b5b5b1095d973198cf3bda79ad78a8" title=" " alt="" coords="173,5,317,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a637618cbf9c4f6a25c1868499861b06f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a637618cbf9c4f6a25c1868499861b06f">&#9670;&nbsp;</a></span>scene_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> scene_monster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structscene__type.html">scene_type</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a637618cbf9c4f6a25c1868499861b06f_cgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a637618cbf9c4f6a25c1868499861b06f_cgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a637618cbf9c4f6a25c1868499861b06f_cgraph" id="ascene-table-monster_8cpp_a637618cbf9c4f6a25c1868499861b06f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,116,32"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a86891f48deb51b0b57b300857a373bd2" title=" " alt="" coords="164,5,296,32"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="344,5,455,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a054a30fc739d9080ff52d9f8512c30fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a054a30fc739d9080ff52d9f8512c30fa">&#9670;&nbsp;</a></span>scene_unique()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> scene_unique </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structscene__type.html">scene_type</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a054a30fc739d9080ff52d9f8512c30fa_cgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a054a30fc739d9080ff52d9f8512c30fa_cgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a054a30fc739d9080ff52d9f8512c30fa_cgraph" id="ascene-table-monster_8cpp_a054a30fc739d9080ff52d9f8512c30fa_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,108,32"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a71081086c97a902a78912503e389d71d" title=" " alt="" coords="156,5,233,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a57be264d8f2777c325c43c05baf92d75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57be264d8f2777c325c43c05baf92d75">&#9670;&nbsp;</a></span>scene_unknown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> scene_unknown </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structscene__type.html">scene_type</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a57be264d8f2777c325c43c05baf92d75_cgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a57be264d8f2777c325c43c05baf92d75_cgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a57be264d8f2777c325c43c05baf92d75_cgraph" id="ascene-table-monster_8cpp_a57be264d8f2777c325c43c05baf92d75_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,120,32"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a48b5b5b1095d973198cf3bda79ad78a8" title=" " alt="" coords="168,5,312,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3723d407099ce132e4a2266b6cf28f2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3723d407099ce132e4a2266b6cf28f2e">&#9670;&nbsp;</a></span>set_temp_mute_scene_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_temp_mute_scene_monster </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターBGMの制限期間を設定する </p>
+<p>指定の時間が経過するまでモンスターBGMの再生を制限する </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msec</td><td>制限する時間（秒） </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a3723d407099ce132e4a2266b6cf28f2e_icgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a3723d407099ce132e4a2266b6cf28f2e_icgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a3723d407099ce132e4a2266b6cf28f2e_icgraph" id="ascene-table-monster_8cpp_a3723d407099ce132e4a2266b6cf28f2e_icgraph">
+<area shape="rect" title="モンスターBGMの制限期間を設定する" alt="" coords="929,251,1084,292"/>
+<area shape="rect" href="scene-table_8cpp.html#a1e23925d28d9ffb9bb4cc1a3fc483982" title="選曲の割り込み通知" alt="" coords="771,258,881,285"/>
+<area shape="rect" href="sound-of-music_8cpp.html#afbe4cbf7966050b5a6f68487a7d492ef" title="Hack – Play a music" alt="" coords="415,201,503,228"/>
+<area shape="rect" href="scene-table_8cpp.html#a124ea0bc4b16c41e87d9565e549db003" title="現在のフロアに合ったBGM選曲" alt="" coords="584,284,723,310"/>
+<area shape="rect" href="cmd-others_8cpp.html#a4c0864f9305ed24877f60883ada506ad" title=" " alt="" coords="169,296,335,322"/>
+<area shape="rect" href="cmd-others_8cpp.html#a36b86b1102ea5e0b063d70e03eed74d5" title="自殺するコマンドのメインルーチン commit suicide" alt="" coords="5,144,121,170"/>
+<area shape="rect" href="game-closer_8cpp.html#a87d2bc43dd7c1537d1b537a9f776a73b" title="ゲームクローズ時、プレイヤーが死亡しているかのチェックを行い死亡していないならば、確認キー入力とスコア表示、現フロアの初期化を行う。" alt="" coords="204,42,300,69"/>
+<area shape="rect" href="quest_8cpp.html#af5f55968be72b94b441f35b7dd1b954f" title="クエストを達成状態にする /" alt="" coords="195,93,309,120"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="193,397,311,424"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="200,346,304,373"/>
+<area shape="rect" href="monster-death_8cpp.html#a2d3026ba7d407e3215607ecc61c6cb9d" title=" " alt="" coords="181,144,323,170"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="207,194,297,221"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="218,245,286,272"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a8338cee7fe8e72ac6b7a1563f7fc4fa3" title="シチュエーションに合ったBGM選曲" alt="" coords="394,346,525,373"/>
+<area shape="rect" href="sound-of-music_8cpp.html#ab7c5caf65cf56f1185b64556f227c29e" title="モンスターBGM選曲" alt="" coords="383,284,536,310"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1ec918145ef0ee78ae7c747877d5cd2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ec918145ef0ee78ae7c747877d5cd2b">&#9670;&nbsp;</a></span>update_target_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void update_target_monster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad2d0f988482931f676c919cf5d0f7716">MONSTER_IDX</a>&#160;</td>
+          <td class="paramname"><em>m_idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>BGM対象モンスター更新処理 </p>
+<p>現在の対象と対象候補が同一モンスターの場合、最後に見たゲームターン情報を更新する。 対象候補が現在の対象よりも上位であれば対象を入れ替える。 ユニーク、あやしい影、未知のモンスター、レベルの高さ、モンスターIDで優先を付ける。 </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">m_idx</td><td>BGM対象候補のモンスター </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a1ec918145ef0ee78ae7c747877d5cd2b_cgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a1ec918145ef0ee78ae7c747877d5cd2b_cgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a1ec918145ef0ee78ae7c747877d5cd2b_cgraph" id="ascene-table-monster_8cpp_a1ec918145ef0ee78ae7c747877d5cd2b_cgraph">
+<area shape="rect" title="BGM対象モンスター更新処理" alt="" coords="5,31,160,57"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a580718c07f73374ee924265c3e45ee22" title=" " alt="" coords="208,5,316,32"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a4c3ec911a01a0bee189495c4f2dfbc50" title="モンスターの優先判定" alt="" coords="216,56,308,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="scene-table-monster_8cpp_a1ec918145ef0ee78ae7c747877d5cd2b_icgraph.png" border="0" usemap="#ascene-table-monster_8cpp_a1ec918145ef0ee78ae7c747877d5cd2b_icgraph" alt=""/></div>
+<map name="ascene-table-monster_8cpp_a1ec918145ef0ee78ae7c747877d5cd2b_icgraph" id="ascene-table-monster_8cpp_a1ec918145ef0ee78ae7c747877d5cd2b_icgraph">
+<area shape="rect" title="BGM対象モンスター更新処理" alt="" coords="397,5,552,32"/>
+<area shape="rect" href="scene-table-monster_8cpp.html#a8b1400365694c66d4f76378fad2a22c3" title="現在の条件でモンスターのBGM選曲をリストに設定する。" alt="" coords="192,5,349,32"/>
+<area shape="rect" href="scene-table_8cpp.html#aab9d31eea4d6b0d857bca5a538b5d7b0" title="見かけたモンスターを含め、現在のフロアに合ったBGM選曲" alt="" coords="5,5,144,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="aa789d539b6bd3b9e1ea9b85206c5ec70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa789d539b6bd3b9e1ea9b85206c5ec70">&#9670;&nbsp;</a></span>scene_monster_def_list</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="scene-table-monster_8cpp.html#aa9c7daecec3acee7035dd925ac11199e">scene_monster_func</a>&gt; scene_monster_def_list</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>初期値:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    </div>
+<div class="line">    <a class="code" href="scene-table-monster_8cpp.html#a637618cbf9c4f6a25c1868499861b06f">scene_monster</a>,</div>
+<div class="line">    </div>
+<div class="line">    <a class="code" href="scene-table-monster_8cpp.html#a054a30fc739d9080ff52d9f8512c30fa">scene_unique</a>,</div>
+<div class="line">    </div>
+<div class="line">    <a class="code" href="scene-table-monster_8cpp.html#a57be264d8f2777c325c43c05baf92d75">scene_unknown</a>,</div>
+<div class="line">    </div>
+<div class="line">    <a class="code" href="scene-table-monster_8cpp.html#a6993ffe50d1b34dc31b09155222e5eff">scene_high_level</a>,</div>
+<div class="line">}</div>
+<div class="ttc" id="ascene-table-monster_8cpp_html_a054a30fc739d9080ff52d9f8512c30fa"><div class="ttname"><a href="scene-table-monster_8cpp.html#a054a30fc739d9080ff52d9f8512c30fa">scene_unique</a></div><div class="ttdeci">static bool scene_unique(player_type *player_ptr, scene_type *value)</div><div class="ttdef"><b>Definition:</b> scene-table-monster.cpp:156</div></div>
+<div class="ttc" id="ascene-table-monster_8cpp_html_a57be264d8f2777c325c43c05baf92d75"><div class="ttname"><a href="scene-table-monster_8cpp.html#a57be264d8f2777c325c43c05baf92d75">scene_unknown</a></div><div class="ttdeci">static bool scene_unknown(player_type *player_ptr, scene_type *value)</div><div class="ttdef"><b>Definition:</b> scene-table-monster.cpp:169</div></div>
+<div class="ttc" id="ascene-table-monster_8cpp_html_a637618cbf9c4f6a25c1868499861b06f"><div class="ttname"><a href="scene-table-monster_8cpp.html#a637618cbf9c4f6a25c1868499861b06f">scene_monster</a></div><div class="ttdeci">static bool scene_monster(player_type *player_ptr, scene_type *value)</div><div class="ttdef"><b>Definition:</b> scene-table-monster.cpp:141</div></div>
+<div class="ttc" id="ascene-table-monster_8cpp_html_a6993ffe50d1b34dc31b09155222e5eff"><div class="ttname"><a href="scene-table-monster_8cpp.html#a6993ffe50d1b34dc31b09155222e5eff">scene_high_level</a></div><div class="ttdeci">static bool scene_high_level(player_type *player_ptr, scene_type *value)</div><div class="ttdef"><b>Definition:</b> scene-table-monster.cpp:181</div></div>
+</div><!-- fragment -->
+<p>モンスターBGMのフォールバック設定。 先頭から適用する（先にある方を優先する）。 </p>
+
+</div>
+</div>
+<a id="ae7a9d5c575dfcd405ff93429c665c77d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7a9d5c575dfcd405ff93429c665c77d">&#9670;&nbsp;</a></span>scene_target_monster</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structscene__monster__info.html">scene_monster_info</a> scene_target_monster</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分45秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

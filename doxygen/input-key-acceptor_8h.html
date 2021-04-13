@@ -1,0 +1,738 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/io/input-key-acceptor.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html">io</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">input-key-acceptor.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+input-key-acceptor.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="input-key-acceptor_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2io_2input-key-acceptor_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2io_2input-key-acceptor_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2io_2input-key-acceptor_8h">
+<area shape="rect" title=" " alt="" coords="348,5,536,61"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="377,109,507,136"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="31,184,122,211"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="23,348,165,375"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,184,607,211"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,184,245,211"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,184,367,211"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,184,492,211"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,184,807,211"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="943,184,1090,211"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="169,266,291,293"/>
+<area shape="rect" title=" " alt="" coords="386,266,461,293"/>
+<area shape="rect" title=" " alt="" coords="485,266,567,293"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="592,259,743,300"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="767,259,920,300"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="944,259,1089,300"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1114,259,1287,300"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1311,259,1437,300"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1461,266,1580,293"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1604,266,1715,293"/>
+</map>
+</div>
+</div>
+<p><a href="input-key-acceptor_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a3b2b30c751f65d79da19d441c313c561"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#a3b2b30c751f65d79da19d441c313c561">SKEY_MOD_MASK</a>&#160;&#160;&#160;0x0f00</td></tr>
+<tr class="separator:a3b2b30c751f65d79da19d441c313c561"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ee5b5db1e7a22c0e91584c36a0437db"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#a9ee5b5db1e7a22c0e91584c36a0437db">SKEY_MOD_SHIFT</a>&#160;&#160;&#160;0x0100</td></tr>
+<tr class="separator:a9ee5b5db1e7a22c0e91584c36a0437db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1ced153a619230633efa8a609c2c4d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#ae1ced153a619230633efa8a609c2c4d7">SKEY_MOD_CONTROL</a>&#160;&#160;&#160;0x0200</td></tr>
+<tr class="separator:ae1ced153a619230633efa8a609c2c4d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3db4cb522d1523745aa40d4185d0627"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#ac3db4cb522d1523745aa40d4185d0627">SKEY_MASK</a>&#160;&#160;&#160;0xf000</td></tr>
+<tr class="separator:ac3db4cb522d1523745aa40d4185d0627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e7defe018383cb7ac5bab58e833a2b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#a2e7defe018383cb7ac5bab58e833a2b1">SKEY_DOWN</a>&#160;&#160;&#160;0xf001</td></tr>
+<tr class="separator:a2e7defe018383cb7ac5bab58e833a2b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7803d4dc2d5a610c1631bfcc667e7138"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#a7803d4dc2d5a610c1631bfcc667e7138">SKEY_LEFT</a>&#160;&#160;&#160;0xf002</td></tr>
+<tr class="separator:a7803d4dc2d5a610c1631bfcc667e7138"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacb4b1b89ed826e0537741625a093e91"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#aacb4b1b89ed826e0537741625a093e91">SKEY_RIGHT</a>&#160;&#160;&#160;0xf003</td></tr>
+<tr class="separator:aacb4b1b89ed826e0537741625a093e91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bb7e3c4f33c48226b6e23e489303a19"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#a5bb7e3c4f33c48226b6e23e489303a19">SKEY_UP</a>&#160;&#160;&#160;0xf004</td></tr>
+<tr class="separator:a5bb7e3c4f33c48226b6e23e489303a19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8db4c8653e8d87f8ee379aafb70aeb6e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#a8db4c8653e8d87f8ee379aafb70aeb6e">SKEY_PGUP</a>&#160;&#160;&#160;0xf005</td></tr>
+<tr class="separator:a8db4c8653e8d87f8ee379aafb70aeb6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf76d0ae2de7885ca540f9dbf601801e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#acf76d0ae2de7885ca540f9dbf601801e">SKEY_PGDOWN</a>&#160;&#160;&#160;0xf006</td></tr>
+<tr class="separator:acf76d0ae2de7885ca540f9dbf601801e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a676f32a15d1f46f1e4a03b462cdeaaa1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#a676f32a15d1f46f1e4a03b462cdeaaa1">SKEY_TOP</a>&#160;&#160;&#160;0xf007</td></tr>
+<tr class="separator:a676f32a15d1f46f1e4a03b462cdeaaa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a365c701923a6b7aebaad2c768aeae0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#a1a365c701923a6b7aebaad2c768aeae0">SKEY_BOTTOM</a>&#160;&#160;&#160;0xf008</td></tr>
+<tr class="separator:a1a365c701923a6b7aebaad2c768aeae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:acfd501ca170125b10ce4b02c62ae7fa5"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#acfd501ca170125b10ce4b02c62ae7fa5">inkey</a> (void)</td></tr>
+<tr class="separator:acfd501ca170125b10ce4b02c62ae7fa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41533d64d34cff21ac2f08e39073e746"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#a41533d64d34cff21ac2f08e39073e746">inkey_special</a> (<a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> numpad_cursor)</td></tr>
+<tr class="separator:a41533d64d34cff21ac2f08e39073e746"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64eb6f5671088fa94d476783b196d048"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#a64eb6f5671088fa94d476783b196d048">start_term_fresh</a> (void)</td></tr>
+<tr class="memdesc:a64eb6f5671088fa94d476783b196d048"><td class="mdescLeft">&#160;</td><td class="mdescRight">全てのウィンドウの描画を再開する  <a href="input-key-acceptor_8h.html#a64eb6f5671088fa94d476783b196d048">[詳解]</a><br /></td></tr>
+<tr class="separator:a64eb6f5671088fa94d476783b196d048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c739878efb45cb022d4ee12fe2a2e49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#a0c739878efb45cb022d4ee12fe2a2e49">stop_term_fresh</a> (void)</td></tr>
+<tr class="memdesc:a0c739878efb45cb022d4ee12fe2a2e49"><td class="mdescLeft">&#160;</td><td class="mdescRight">全てのウィンドウの描画を止める  <a href="input-key-acceptor_8h.html#a0c739878efb45cb022d4ee12fe2a2e49">[詳解]</a><br /></td></tr>
+<tr class="separator:a0c739878efb45cb022d4ee12fe2a2e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7fb6a652354f16aa9904c07b32ecd99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#aa7fb6a652354f16aa9904c07b32ecd99">macro_running</a> (void)</td></tr>
+<tr class="memdesc:aa7fb6a652354f16aa9904c07b32ecd99"><td class="mdescLeft">&#160;</td><td class="mdescRight">マクロ実行中かの判定関数  <a href="input-key-acceptor_8h.html#aa7fb6a652354f16aa9904c07b32ecd99">[詳解]</a><br /></td></tr>
+<tr class="separator:aa7fb6a652354f16aa9904c07b32ecd99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a151a20e8fe2cb4f5c44412a31f285ca5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#a151a20e8fe2cb4f5c44412a31f285ca5">inkey_base</a></td></tr>
+<tr class="separator:a151a20e8fe2cb4f5c44412a31f285ca5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9576f08565460ce179fd8b6a468e434"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#ac9576f08565460ce179fd8b6a468e434">inkey_xtra</a></td></tr>
+<tr class="separator:ac9576f08565460ce179fd8b6a468e434"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee66a74a65a2f497cafbec59f9eb52ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#aee66a74a65a2f497cafbec59f9eb52ba">inkey_scan</a></td></tr>
+<tr class="separator:aee66a74a65a2f497cafbec59f9eb52ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa263e1897d9f988719d82913354a1c88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#aa263e1897d9f988719d82913354a1c88">inkey_flag</a></td></tr>
+<tr class="separator:aa263e1897d9f988719d82913354a1c88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae685c3c918ee6838b158e059ad598d7b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#ae685c3c918ee6838b158e059ad598d7b">num_more</a></td></tr>
+<tr class="separator:ae685c3c918ee6838b158e059ad598d7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f397cba269be7a78161c4b8910d121b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input-key-acceptor_8h.html#a4f397cba269be7a78161c4b8910d121b">inkey_next</a></td></tr>
+<tr class="separator:a4f397cba269be7a78161c4b8910d121b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="a1a365c701923a6b7aebaad2c768aeae0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a365c701923a6b7aebaad2c768aeae0">&#9670;&nbsp;</a></span>SKEY_BOTTOM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SKEY_BOTTOM&#160;&#160;&#160;0xf008</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2e7defe018383cb7ac5bab58e833a2b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e7defe018383cb7ac5bab58e833a2b1">&#9670;&nbsp;</a></span>SKEY_DOWN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SKEY_DOWN&#160;&#160;&#160;0xf001</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7803d4dc2d5a610c1631bfcc667e7138"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7803d4dc2d5a610c1631bfcc667e7138">&#9670;&nbsp;</a></span>SKEY_LEFT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SKEY_LEFT&#160;&#160;&#160;0xf002</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3db4cb522d1523745aa40d4185d0627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3db4cb522d1523745aa40d4185d0627">&#9670;&nbsp;</a></span>SKEY_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SKEY_MASK&#160;&#160;&#160;0xf000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae1ced153a619230633efa8a609c2c4d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1ced153a619230633efa8a609c2c4d7">&#9670;&nbsp;</a></span>SKEY_MOD_CONTROL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SKEY_MOD_CONTROL&#160;&#160;&#160;0x0200</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3b2b30c751f65d79da19d441c313c561"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b2b30c751f65d79da19d441c313c561">&#9670;&nbsp;</a></span>SKEY_MOD_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SKEY_MOD_MASK&#160;&#160;&#160;0x0f00</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9ee5b5db1e7a22c0e91584c36a0437db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ee5b5db1e7a22c0e91584c36a0437db">&#9670;&nbsp;</a></span>SKEY_MOD_SHIFT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SKEY_MOD_SHIFT&#160;&#160;&#160;0x0100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf76d0ae2de7885ca540f9dbf601801e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf76d0ae2de7885ca540f9dbf601801e">&#9670;&nbsp;</a></span>SKEY_PGDOWN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SKEY_PGDOWN&#160;&#160;&#160;0xf006</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8db4c8653e8d87f8ee379aafb70aeb6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8db4c8653e8d87f8ee379aafb70aeb6e">&#9670;&nbsp;</a></span>SKEY_PGUP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SKEY_PGUP&#160;&#160;&#160;0xf005</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aacb4b1b89ed826e0537741625a093e91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacb4b1b89ed826e0537741625a093e91">&#9670;&nbsp;</a></span>SKEY_RIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SKEY_RIGHT&#160;&#160;&#160;0xf003</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a676f32a15d1f46f1e4a03b462cdeaaa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a676f32a15d1f46f1e4a03b462cdeaaa1">&#9670;&nbsp;</a></span>SKEY_TOP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SKEY_TOP&#160;&#160;&#160;0xf007</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5bb7e3c4f33c48226b6e23e489303a19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bb7e3c4f33c48226b6e23e489303a19">&#9670;&nbsp;</a></span>SKEY_UP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SKEY_UP&#160;&#160;&#160;0xf004</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="acfd501ca170125b10ce4b02c62ae7fa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfd501ca170125b10ce4b02c62ae7fa5">&#9670;&nbsp;</a></span>inkey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char inkey </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="input-key-acceptor_8h_acfd501ca170125b10ce4b02c62ae7fa5_cgraph.png" border="0" usemap="#ainput-key-acceptor_8h_acfd501ca170125b10ce4b02c62ae7fa5_cgraph" alt=""/></div>
+<map name="ainput-key-acceptor_8h_acfd501ca170125b10ce4b02c62ae7fa5_cgraph" id="ainput-key-acceptor_8h_acfd501ca170125b10ce4b02c62ae7fa5_cgraph">
+<area shape="rect" title=" " alt="" coords="5,360,59,387"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="113,157,216,184"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="271,208,369,235"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="436,284,513,311"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="124,411,205,437"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="277,360,363,387"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="107,461,223,488"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="279,259,361,285"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="107,512,223,539"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="107,563,223,589"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="275,56,365,83"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="279,157,361,184"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="273,107,367,133"/>
+<area shape="rect" href="window-redrawer_8cpp.html#afd16c8016f2b78c1488a50e0d79ba8e0" title="redraw のフラグに応じた更新をまとめて行う / Handle &quot;redraw&quot;" alt="" coords="429,5,520,32"/>
+<area shape="rect" href="player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="417,56,532,83"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="427,107,522,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a41533d64d34cff21ac2f08e39073e746"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41533d64d34cff21ac2f08e39073e746">&#9670;&nbsp;</a></span>inkey_special()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int inkey_special </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>numpad_cursor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="input-key-acceptor_8h_a41533d64d34cff21ac2f08e39073e746_cgraph.png" border="0" usemap="#ainput-key-acceptor_8h_a41533d64d34cff21ac2f08e39073e746_cgraph" alt=""/></div>
+<map name="ainput-key-acceptor_8h_a41533d64d34cff21ac2f08e39073e746_cgraph" id="ainput-key-acceptor_8h_a41533d64d34cff21ac2f08e39073e746_cgraph">
+<area shape="rect" title=" " alt="" coords="5,487,107,513"/>
+<area shape="rect" href="string-processor_8cpp.html#ad986baa174929d7bd1cd78e722420be3" title=" " alt="" coords="176,81,272,108"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a1b1af765a8b638ad2df5a3cd919867f8" title=" " alt="" coords="155,259,293,285"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="197,487,251,513"/>
+<area shape="rect" href="z-util_8cpp.html#a7f7463689689266c2c7dd1c0b170c7a3" title=" " alt="" coords="719,588,772,615"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="720,740,771,767"/>
+<area shape="rect" href="string-processor_8cpp.html#a30bcb33a57e3acb4e69b1f5ace5ddbeb" title=" " alt="" coords="383,5,439,32"/>
+<area shape="rect" href="string-processor_8cpp.html#ab8a3974eb3254a218ae825f56da39fdc" title=" " alt="" coords="384,56,437,83"/>
+<area shape="rect" href="string-processor_8cpp.html#a2c72111e40c3c417f7556f9a4754a982" title=" " alt="" coords="341,107,480,133"/>
+<area shape="rect" href="string-processor_8cpp.html#a59b52311b27902957bcb2cc2ebd71e5a" title=" " alt="" coords="538,68,649,95"/>
+<area shape="rect" href="string-processor_8cpp.html#a94264f612f38c985e60c62123fd1129d" title=" " alt="" coords="533,119,654,145"/>
+<area shape="rect" href="z-term_8cpp.html#a67724271bc49b1590d635d5a251bcea1" title=" " alt="" coords="550,183,637,209"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="707,335,784,361"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#aab337e819346df0d339ffd613cfc28f0" title="全てのウィンドウの再描画を行う" alt="" coords="359,385,462,412"/>
+<area shape="rect" href="z-term_8cpp.html#adcead8e1c612e2ac26edf10692228064" title=" " alt="" coords="544,284,643,311"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a5cf6eb65332122b9a3c06f9696ad5647" title=" " alt="" coords="370,487,451,513"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#a64eb6f5671088fa94d476783b196d048" title="全てのウィンドウの描画を再開する" alt="" coords="353,537,469,564"/>
+<area shape="rect" href="z-term_8cpp.html#a2f50e3e06c6b4d7658b2b19a35649971" title=" " alt="" coords="369,588,452,615"/>
+<area shape="rect" href="z-term_8cpp.html#a3cf4ba46d1ac4d87f77b21c3ce8dcc05" title=" " alt="" coords="353,639,469,665"/>
+<area shape="rect" href="z-term_8cpp.html#a04c8226d681e6a585eb0c181224a318b" title=" " alt="" coords="353,689,469,716"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="548,335,639,361"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="552,385,635,412"/>
+<area shape="rect" href="z-term_8cpp.html#a5453556c8642e1439e9c0b33d7b17261" title=" " alt="" coords="546,436,641,463"/>
+<area shape="rect" href="macro-util_8cpp.html#a1e9851f9b9e0a0e51628a231ca95fcc1" title=" " alt="" coords="530,537,657,564"/>
+<area shape="rect" href="macro-util_8cpp.html#a7f48a1923076b3b314f1bc58913a2a59" title=" " alt="" coords="528,639,659,665"/>
+<area shape="rect" href="macro-util_8cpp.html#ada693de344c97bc09a586100f25919dd" title=" " alt="" coords="531,588,655,615"/>
+<area shape="rect" href="z-term_8cpp.html#a020ef4815c101960b4fdad94c4e5b59b" title=" " alt="" coords="538,689,649,716"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="input-key-acceptor_8h_a41533d64d34cff21ac2f08e39073e746_icgraph.png" border="0" usemap="#ainput-key-acceptor_8h_a41533d64d34cff21ac2f08e39073e746_icgraph" alt=""/></div>
+<map name="ainput-key-acceptor_8h_a41533d64d34cff21ac2f08e39073e746_icgraph" id="ainput-key-acceptor_8h_a41533d64d34cff21ac2f08e39073e746_icgraph">
+<area shape="rect" title=" " alt="" coords="553,360,655,387"/>
+<area shape="rect" href="asking-player_8cpp.html#a025b21031a6e4922de22b9e961a8358e" title="&lt;" alt="" coords="387,183,472,209"/>
+<area shape="rect" href="cmd-draw_8cpp.html#a0be48d725590f55212da8df3bfc58c1e" title="メッセージのログを表示するコマンドのメインルーチン Recall the most recent message" alt="" coords="5,259,140,285"/>
+<area shape="rect" href="cmd-autopick_8cpp.html#a8dc56811ab6efa5123eec7f83eb4bb26" title=" " alt="" coords="353,309,505,336"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#ab33f054c7b623777d0e9417255966aea" title="標準オプションを変更するコマンドのメインルーチン / Set or unset various options." alt="" coords="188,335,305,361"/>
+<area shape="rect" href="history-editor_8cpp.html#aab80c77bd413a927aa80bf160fca70ef" title="生い立ちメッセージを編集する。/Character background edit&#45;mode" alt="" coords="385,411,474,437"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="393,461,465,488"/>
+<area shape="rect" href="autopick-finder_8cpp.html#a7291829dd16d672b22d99e1e4c33587a" title=" " alt="" coords="356,512,503,539"/>
+<area shape="rect" href="asking-player_8cpp.html#ad5c7efa101f8104fd152aaa10b9be28b" title=" " alt="" coords="218,107,275,133"/>
+<area shape="rect" href="owner-insults_8cpp.html#a01e679ab7d7efcd939a79eb8f3201d07" title="交渉価格を確認と認証の是非を行う / Get a haggle" alt="" coords="204,157,289,184"/>
+<area shape="rect" href="asking-player_8cpp.html#a18ddf190b45e6fbac7a074687008550f" title=" " alt="" coords="200,208,293,235"/>
+<area shape="rect" href="cmd-dump_8cpp.html#a17a616fd39ca52c5531a875c2a186ee4" title=" " alt="" coords="17,5,128,32"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a73df5fe8058943d380d6b31f9de15728" title="マクロを設定するコマンドのメインルーチン / Interact with &quot;macros&quot;" alt="" coords="13,56,132,83"/>
+<area shape="rect" href="cmd-visuals_8cpp.html#a0826877287cc62ecef1432f586181997" title=" " alt="" coords="15,107,130,133"/>
+<area shape="rect" href="process-death_8cpp.html#aedfc0764df97dc71148c2201d28d7fd1" title="キャラクタ情報をファイルに書き出す" alt="" coords="9,157,136,184"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="33,208,112,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa7fb6a652354f16aa9904c07b32ecd99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7fb6a652354f16aa9904c07b32ecd99">&#9670;&nbsp;</a></span>macro_running()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> macro_running </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>マクロ実行中かの判定関数 </p>
+<dl class="section return"><dt>戻り値</dt><dd>実行中であればtrue </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="input-key-acceptor_8h_aa7fb6a652354f16aa9904c07b32ecd99_icgraph.png" border="0" usemap="#ainput-key-acceptor_8h_aa7fb6a652354f16aa9904c07b32ecd99_icgraph" alt=""/></div>
+<map name="ainput-key-acceptor_8h_aa7fb6a652354f16aa9904c07b32ecd99_icgraph" id="ainput-key-acceptor_8h_aa7fb6a652354f16aa9904c07b32ecd99_icgraph">
+<area shape="rect" title="マクロ実行中かの判定関数" alt="" coords="673,31,780,57"/>
+<area shape="rect" href="input-key-requester_8cpp.html#a05bf5c41a8377acfa4b6b2487e55323d" title=" " alt="" coords="496,31,625,57"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="344,5,448,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,31,116,57"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a64eb6f5671088fa94d476783b196d048"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64eb6f5671088fa94d476783b196d048">&#9670;&nbsp;</a></span>start_term_fresh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void start_term_fresh </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>全てのウィンドウの描画を再開する </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="input-key-acceptor_8h_a64eb6f5671088fa94d476783b196d048_icgraph.png" border="0" usemap="#ainput-key-acceptor_8h_a64eb6f5671088fa94d476783b196d048_icgraph" alt=""/></div>
+<map name="ainput-key-acceptor_8h_a64eb6f5671088fa94d476783b196d048_icgraph" id="ainput-key-acceptor_8h_a64eb6f5671088fa94d476783b196d048_icgraph">
+<area shape="rect" title="全てのウィンドウの描画を再開する" alt="" coords="717,1212,833,1239"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="616,1212,669,1239"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#ab840917c911631855846f17305a6f71d" title="記念撮影の方式を問い合わせる" alt="" coords="412,5,527,32"/>
+<area shape="rect" href="quick-start_8cpp.html#a78f6862bff917ca6355c3a41445fc73d" title="クイックスタート処理の問い合わせと実行を行う。/Ask whether the player use Quick Start or not." alt="" coords="412,56,527,83"/>
+<area shape="rect" href="asking-player_8cpp.html#a025b21031a6e4922de22b9e961a8358e" title="&lt;" alt="" coords="427,107,512,133"/>
+<area shape="rect" href="game-closer_8cpp.html#a87d2bc43dd7c1537d1b537a9f776a73b" title="ゲームクローズ時、プレイヤーが死亡しているかのチェックを行い死亡していないならば、確認キー入力とスコア表示、現フロアの初期化を行う。" alt="" coords="421,157,517,184"/>
+<area shape="rect" href="cmd-destroy_8cpp.html#a01e3eb9fd0e913ee143723431505103f" title=" " alt="" coords="400,208,539,235"/>
+<area shape="rect" href="player-status_8cpp.html#a7df85a4b5a7a45f375c81a8d17d69ef1" title="プレイヤーの経験値について整合性のためのチェックと調整を行う / Advance experience levels and print experience" alt="" coords="406,259,533,285"/>
+<area shape="rect" href="birth-select-realm_8cpp.html#a6b18cfb7a628b9d317783b8d0c64571b" title="選んだ魔法領域で本当に良いか問い合わせる" alt="" coords="392,309,547,336"/>
+<area shape="rect" href="dungeon_8cpp.html#a1ecdebcef74092729467110b5eecc64c" title="これまでに入ったダンジョンの一覧を表示し、選択させる。" alt="" coords="409,360,529,387"/>
+<area shape="rect" href="spells-craft_8cpp.html#ace062e68c19d07d5533fa26f03c3b49f" title=" " alt="" coords="404,411,535,437"/>
+<area shape="rect" href="spells-craft_8cpp.html#a08ff053649a253d11617c8bdc2d31cdd" title=" " alt="" coords="399,461,540,488"/>
+<area shape="rect" href="cmd-smith_8cpp.html#aa74e35d5d3495d1c2dea9875c6a678c0" title="付加するエッセンスの大別を選択する" alt="" coords="409,512,529,539"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a1ee36ec07842685feb97d0d9295e4985" title="鍛冶コマンドのメインルーチン" alt="" coords="199,563,293,589"/>
+<area shape="rect" href="mind-samurai_8cpp.html#a20c01e741b19567510bbc455baa2df41" title="剣術家の型設定処理" alt="" coords="421,613,517,640"/>
+<area shape="rect" href="mind-monk_8cpp.html#abdae926b1a5058ecaca36bb916774c25" title="修行僧の構え設定処理" alt="" coords="395,664,544,691"/>
+<area shape="rect" href="building-craft-weapon_8cpp.html#a2b2951f2d62f18d1a7867d4f1524079e" title="武器匠鑑定1回分（オブジェクト2種）の処理。/ Compare weapons" alt="" coords="404,715,535,741"/>
+<area shape="rect" href="cmd-spell_8cpp.html#aca17dc4bfea69487469ada97451f3199" title="プレイヤーの職業が練気術師の時、領域魔法と練気術を切り換える処理のインターフェイス" alt="" coords="183,1563,309,1589"/>
+<area shape="rect" href="cmd-spell_8cpp.html#a167b5fa499fd1038cc40e2ece19b6977" title="プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン / Peruse the spells/prayers in a book" alt="" coords="5,1512,121,1539"/>
+<area shape="rect" href="game-play_8cpp.html#a5b6f3c4480f2e75d8435fb926a35bcf7" title=" " alt="" coords="400,867,539,893"/>
+<area shape="rect" href="cmd-others_8cpp.html#a413a432b365e3d4ecf09d3f9c8e08f42" title="自殺/引退/切腹の確認" alt="" coords="415,917,523,944"/>
+<area shape="rect" href="target-describer_8cpp.html#a8cab30bd50fb30be27531d37b11cef88" title=" " alt="" coords="411,968,527,995"/>
+<area shape="rect" href="target-describer_8cpp.html#a39ac34fd1024779f4cad0460a6fd766e" title=" " alt="" coords="392,1019,547,1045"/>
+<area shape="rect" href="target-describer_8cpp.html#a59979cacfc216b2b74e2a13531351b13" title=" " alt="" coords="392,1070,547,1111"/>
+<area shape="rect" href="target-describer_8cpp.html#a394264f8a5060a1a34c85c9b8a9ef2ea" title=" " alt="" coords="394,1136,545,1163"/>
+<area shape="rect" href="target-describer_8cpp.html#a5eb15f1cda128462640eb9ff9e0962e6" title=" " alt="" coords="406,1187,533,1213"/>
+<area shape="rect" href="target-describer_8cpp.html#ada83ceef6d51b92898a25a35c783179d" title=" " alt="" coords="169,1001,323,1028"/>
+<area shape="rect" href="target-describer_8cpp.html#aa356c4d49864c300963220c8cd6e5a77" title=" " alt="" coords="396,1289,543,1330"/>
+<area shape="rect" href="target-describer_8cpp.html#aadd4e4da9e34db0569f96630d44a5fd8" title=" " alt="" coords="391,1355,548,1381"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a64a4702bb5ebbc97a880fd3a7f217d71" title=" " alt="" coords="404,1406,535,1447"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a0d60953f69c4329b967ae38c36df8a2f" title=" " alt="" coords="404,1471,535,1513"/>
+<area shape="rect" href="cmd-smith_8cpp.html#a847c50092bfc5100229cf7b35d75a78b" title="所持しているエッセンス一覧を表示する" alt="" coords="410,765,529,792"/>
+<area shape="rect" href="scores_8cpp.html#ab638b7997049f0c4d7fbeac1f0f0a2d0" title="指定された順位範囲でスコアを並べて表示する / Display the scores in a given range." alt="" coords="401,1588,538,1615"/>
+<area shape="rect" href="display-self-info_8cpp.html#a8f4e34cf9ef2378af7c7442fb6960bf2" title=" " alt="" coords="411,1639,528,1665"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="410,1689,529,1716"/>
+<area shape="rect" href="cmd-dump_8cpp.html#a17a616fd39ca52c5531a875c2a186ee4" title=" " alt="" coords="414,1740,525,1767"/>
+<area shape="rect" href="cmd-diary_8cpp.html#aaf0ccc9b13b97fbe9af4a017265aa384" title="日記コマンド" alt="" coords="418,1791,521,1817"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a68bac767c848df8fcbf173047aecb1bf" title="現在プレイヤーが使用可能な元素魔法の一覧表示" alt="" coords="385,1841,554,1868"/>
+<area shape="rect" href="cmd-equipment_8cpp.html#ad81f84dc09abf99e791bff1f0e457072" title="&lt;" alt="" coords="416,1892,523,1919"/>
+<area shape="rect" href="cmd-item_8cpp.html#ad09ef060f7bec3023c142b5d9f782b96" title="プレイヤーのアイテムに関するコマンドの実装1 / Inventory and equipment commands" alt="" coords="417,1943,521,1969"/>
+<area shape="rect" href="cmd-knowledge_8cpp.html#aa220b38b20d426fe2517d1a4fd738e0c" title=" " alt="" coords="178,2120,314,2147"/>
+<area shape="rect" href="knowledge-features_8cpp.html#aef0641f25a72f20f98906ea5c565d0ae" title=" " alt="" coords="375,2044,564,2071"/>
+<area shape="rect" href="knowledge-monsters_8cpp.html#a3ba32fc8df87acb37ad0757bdc3a0388" title="Display known monsters." alt="" coords="371,2095,568,2121"/>
+<area shape="rect" href="knowledge-items_8cpp.html#a6cc60a9c8d1e600f6618e93dde225137" title="Display known objects" alt="" coords="377,2145,562,2172"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#ae0f31a85f5c0065de5a1fd0ef7b5c8c9" title=" " alt="" coords="397,2196,542,2223"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a88c8fc0fa9dc5204fcedf35b82ec09ce" title="マクロのトリガーキーを取得する / Hack – ask for a &quot;trigger&quot; (see below)" alt="" coords="400,2399,539,2425"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a73df5fe8058943d380d6b31f9de15728" title="マクロを設定するコマンドのメインルーチン / Interact with &quot;macros&quot;" alt="" coords="187,2348,305,2375"/>
+<area shape="rect" href="cmd-macro_8cpp.html#a8de8ae79a8ddb8d5a4abcf06f8b989e0" title="マクロのキー表記からアスキーコードを得てターミナルに表示する / Hack – ask for a keymap &quot;trigger&quot; (see below)" alt="" coords="373,2348,565,2375"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a8b198f6a124bf911b2940ed6369708c0" title="現在プレイヤーが使用可能な特殊技能の一覧表示 /" alt="" coords="394,1537,545,1564"/>
+<area shape="rect" href="cmd-gameoption_8cpp.html#ab33f054c7b623777d0e9417255966aea" title="標準オプションを変更するコマンドのメインルーチン / Set or unset various options." alt="" coords="411,2449,528,2476"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0c739878efb45cb022d4ee12fe2a2e49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c739878efb45cb022d4ee12fe2a2e49">&#9670;&nbsp;</a></span>stop_term_fresh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stop_term_fresh </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>全てのウィンドウの描画を止める </p>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="input-key-acceptor_8h_a0c739878efb45cb022d4ee12fe2a2e49_icgraph.png" border="0" usemap="#ainput-key-acceptor_8h_a0c739878efb45cb022d4ee12fe2a2e49_icgraph" alt=""/></div>
+<map name="ainput-key-acceptor_8h_a0c739878efb45cb022d4ee12fe2a2e49_icgraph" id="ainput-key-acceptor_8h_a0c739878efb45cb022d4ee12fe2a2e49_icgraph">
+<area shape="rect" title="全てのウィンドウの描画を止める" alt="" coords="1029,5,1144,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="361,31,472,57"/>
+<area shape="rect" href="input-key-requester_8cpp.html#a05bf5c41a8377acfa4b6b2487e55323d" title=" " alt="" coords="852,31,981,57"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="189,31,313,57"/>
+<area shape="rect" href="game-play_8cpp.html#a1a0e3f2ecfed76ab9393d7b149f7d6c1" title=" " alt="" coords="5,31,141,57"/>
+<area shape="rect" href="cmd-store_8cpp.html#a9e2bf17bf0202cab0fbf13eca798c168" title="店舗処理全体のメインルーチン / Enter a store, and interact with it." alt="" coords="700,81,804,108"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="520,81,652,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a151a20e8fe2cb4f5c44412a31f285ca5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a151a20e8fe2cb4f5c44412a31f285ca5">&#9670;&nbsp;</a></span>inkey_base</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> inkey_base</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa263e1897d9f988719d82913354a1c88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa263e1897d9f988719d82913354a1c88">&#9670;&nbsp;</a></span>inkey_flag</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> inkey_flag</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f397cba269be7a78161c4b8910d121b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f397cba269be7a78161c4b8910d121b">&#9670;&nbsp;</a></span>inkey_next</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> inkey_next</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee66a74a65a2f497cafbec59f9eb52ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee66a74a65a2f497cafbec59f9eb52ba">&#9670;&nbsp;</a></span>inkey_scan</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> inkey_scan</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac9576f08565460ce179fd8b6a468e434"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9576f08565460ce179fd8b6a468e434">&#9670;&nbsp;</a></span>inkey_xtra</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> inkey_xtra</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae685c3c918ee6838b158e059ad598d7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae685c3c918ee6838b158e059ad598d7b">&#9670;&nbsp;</a></span>num_more</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int num_more</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分30秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

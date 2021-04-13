@@ -1,0 +1,52 @@
+<map id="do_cmd_quaff_potion" name="do_cmd_quaff_potion">
+<area shape="rect" id="node1" title="プレイヤーの飲むコマンド実装" alt="" coords="5,245,149,272"/>
+<area shape="rect" id="node2" href="$floor-object_8cpp.html#acdcd931b011103c626e3cc8ddcef00e2" title=" " alt="" coords="222,245,329,272"/>
+<area shape="rect" id="node6" href="$action-limited_8cpp.html#a8d29d006f56dadb8397fe5bb8a516dce" title=" " alt="" coords="217,112,334,138"/>
+<area shape="rect" id="node7" href="$quaff-execution_8cpp.html#a663518dc63d12a75833fcd01acd2f364" title="薬を飲むコマンドのサブルーチン / Quaff a potion (from the pack or the floor)" alt="" coords="216,1194,335,1221"/>
+<area shape="rect" id="node49" href="$hook-expendable_8cpp.html#abeae0a291f2dcbaa84948af39705fb77" title="オブジェクトをプレイヤーが飲むことができるかを判定する / Hook to determine if an object can be quaffed" alt="" coords="197,1802,353,1829"/>
+<area shape="rect" id="node50" href="$action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="234,169,317,196"/>
+<area shape="rect" id="node3" href="$item-getter_8cpp.html#a47f803d23bc434cc95b479c77e36d71f" title="オブジェクト選択の汎用関数 / General function for the selection of item Let the user select an item,..." alt="" coords="442,206,514,233"/>
+<area shape="rect" id="node5" href="$object-info_8cpp.html#a25c1a3d5e265021c4c8b13c67ecf709f" title=" " alt="" coords="444,257,512,284"/>
+<area shape="rect" id="node4" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="642,688,721,714"/>
+<area shape="rect" id="node8" href="$class_flag_group.html#a85a4dd28bb671ffe973b1fd50a0be4d7" title="フラグ集合のいずれかのフラグがONかどうかを調べる" alt="" coords="626,1118,737,1145"/>
+<area shape="rect" id="node9" href="$spells-status_8cpp.html#aae9a0980e97bd173f6040909d6e66097" title=" " alt="" coords="445,1422,511,1449"/>
+<area shape="rect" id="node10" href="$quaff-execution_8cpp.html#a6b016a5ac43763d9a774e0a93520cdfb" title="薬を飲んだ時の各種効果処理" alt="" coords="449,966,507,993"/>
+<area shape="rect" id="node11" href="$avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="808,1068,888,1094"/>
+<area shape="rect" id="node12" href="$player-status-flags_8cpp.html#a450ecdde34c30b89071f3f357c482a27" title=" " alt="" coords="619,1017,743,1044"/>
+<area shape="rect" id="node13" href="$spells-status_8cpp.html#ac6cc23e751d903cceebb4c6baf1d61d1" title=" " alt="" coords="407,1473,549,1500"/>
+<area shape="rect" id="node14" href="$spells-status_8cpp.html#a9d09019685ce462d411c9554fdf8e2a6" title=" " alt="" coords="413,1524,543,1550"/>
+<area shape="rect" id="node15" href="$z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="649,1574,713,1601"/>
+<area shape="rect" id="node16" href="$spells-status_8cpp.html#a1250a8abfd5f99b37bbcd22e7fde8d17" title=" " alt="" coords="405,1574,551,1601"/>
+<area shape="rect" id="node17" href="$base-status_8cpp.html#abc8401db064966371a87b64d1a6070cb" title="プレイヤーの基本能力値を減少させる / Decreases a stat by an amount indended to vary from 0 to 100 percent." alt="" coords="645,1220,717,1246"/>
+<area shape="rect" id="node18" href="$spells-detection_8cpp.html#a51a934aa10cafdef351b49ebfb59957f" title="プレイヤー周辺のドアを感知する / Detect all doors on current panel" alt="" coords="429,612,527,638"/>
+<area shape="rect" id="node19" href="$spells-detection_8cpp.html#a0df33608c0d1169356aac2a2c82757cc" title="プレイヤー周辺のアイテム財宝を感知する / Detect all &quot;gold&quot; objects on the current panel" alt="" coords="409,662,547,689"/>
+<area shape="rect" id="node20" href="$spells-detection_8cpp.html#a32f8ab71a6a8eac2326db359a4b08073" title="通常のアイテムオブジェクトを感知する / Detect all &quot;normal&quot; objects on the current panel" alt="" coords="401,713,555,740"/>
+<area shape="rect" id="node21" href="$spells-detection_8cpp.html#a4317d1e959e1e019d7821518fa277584" title="プレイヤー周辺の階段を感知する / Detect all stairs on current panel" alt="" coords="429,764,527,790"/>
+<area shape="rect" id="node22" href="$spells-detection_8cpp.html#ac7acd54d9ba5a15020c20d627e86056e" title="プレイヤー周辺のトラップを感知する / Detect all traps on current panel" alt="" coords="431,814,525,841"/>
+<area shape="rect" id="node23" href="$spells-detection_8cpp.html#aa71f9caef58a5843c72a78e6bd5d3644" title="プレイヤー周辺の地形財宝を感知する / Detect any treasure on the current panel" alt="" coords="422,409,534,436"/>
+<area shape="rect" id="node24" href="$quaff-execution_8cpp.html#aecc8c7c369c6ab3004c9e6fe71674961" title="爆発の薬の効果処理 / Fumble ramble" alt="" coords="437,1372,519,1398"/>
+<area shape="rect" id="node25" href="$base-status_8cpp.html#a02f02e57ff04a59667b69ae931263500" title=" " alt="" coords="431,1220,525,1246"/>
+<area shape="rect" id="node26" href="$base-status_8cpp.html#a343b4d5e7c5756f694b048c57ab043d0" title=" " alt="" coords="637,1296,726,1322"/>
+<area shape="rect" id="node27" href="$base-status_8cpp.html#aae285055f44db3b4374f3c05973fcb48" title=" " alt="" coords="433,1726,523,1753"/>
+<area shape="rect" id="node28" href="$screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="453,1777,503,1804"/>
+<area shape="rect" id="node29" href="$experience_8cpp.html#a526ec6c3a82867a6a0152ffeb12a720d" title=" " alt="" coords="441,1828,515,1854"/>
+<area shape="rect" id="node30" href="$mutation-investor-remover_8cpp.html#a3f2ae6d11a1293d5aaba45657ea17e0a" title="プレイヤーに突然変異を与える" alt="" coords="427,865,529,892"/>
+<area shape="rect" id="node31" href="$birth-stat_8cpp.html#a6f68b2388c9c3ddfe439f68928968094" title="プレイヤーの限界ステータスを決める。" alt="" coords="424,1878,532,1905"/>
+<area shape="rect" id="node32" href="$player-status-flags_8cpp.html#aaf1b5117f57bfff1e6f316c72534ca3c" title=" " alt="" coords="420,1929,536,1956"/>
+<area shape="rect" id="node33" href="$player-status-flags_8cpp.html#a82a3c09fa7e9113cb5a952b8cce27cb6" title=" " alt="" coords="421,1980,535,2006"/>
+<area shape="rect" id="node34" href="$player-race_8cpp.html#aa21dcdd10c97248e5d6879ca37890bbf" title=" " alt="" coords="603,2284,760,2310"/>
+<area shape="rect" id="node35" href="$spells-status_8cpp.html#ae6dca9801477e0f3326c5da3d7d2abae" title=" " alt="" coords="444,2030,512,2057"/>
+<area shape="rect" id="node36" href="$spells-hex_8cpp.html#ab35c57227b5fdac063f315e972f67188" title=" " alt="" coords="431,2081,525,2108"/>
+<area shape="rect" id="node37" href="$spells-hex_8cpp.html#a1fe803ed2313c7c276285c2803e83ed3" title=" " alt="" coords="417,2132,539,2158"/>
+<area shape="rect" id="node38" href="$spells-perception_8cpp.html#afff4f08e929a35d21ccc50e4c6149e52" title="全所持アイテム鑑定処理 / Identify everything being carried." alt="" coords="429,2182,527,2209"/>
+<area shape="rect" id="node39" href="$element-resistance_8cpp.html#a15b3a8e7ece2bbc45ef1d42559bfb0d2" title=" " alt="" coords="422,2233,534,2260"/>
+<area shape="rect" id="node40" href="$spells-status_8cpp.html#a3cb2a18d41d25c9c825b16220de7b45d" title=" " alt="" coords="435,916,521,942"/>
+<area shape="rect" id="node41" href="$mutation-investor-remover_8cpp.html#aad129a21d41e3abf901ceeb96989c264" title=" " alt="" coords="413,1068,543,1094"/>
+<area shape="rect" id="node42" href="$experience_8cpp.html#aa46ccb85f9aa6f7844eb67bd8eb28c7a" title=" " alt="" coords="441,358,515,385"/>
+<area shape="rect" id="node43" href="$mutation-investor-remover_8cpp.html#af3d1003e5bc0ae55a06c3e21c13b2c8a" title="プレイヤーから突然変異を取り除く" alt="" coords="427,460,529,486"/>
+<area shape="rect" id="node44" href="$object-perception_8cpp.html#a2f7ad5a9cb44932d39bbf0c31a37c946" title="オブジェクトを＊鑑定＊済にする / The player is now aware of the effects of the given object." alt="" coords="429,54,527,81"/>
+<area shape="rect" id="node45" href="$object-generator_8cpp.html#aa666d0b3f34f2bebf82e976361f59f1c" title="オブジェクトを複製する Wipe an object clean." alt="" coords="635,29,727,56"/>
+<area shape="rect" id="node46" href="$object-perception_8cpp.html#a377c00bc8a6d66ec30288f1e3be60e9f" title=" " alt="" coords="624,181,739,208"/>
+<area shape="rect" id="node47" href="$object-perception_8cpp.html#a78195fd3f76f71dd37cd6b691f729891" title="オブジェクトを試行済にする / Something has been &quot;sampled&quot;" alt="" coords="433,561,523,588"/>
+<area shape="rect" id="node48" href="$object-broken_8cpp.html#a52c3072895ed284709c4f2637c656bcc" title="薬の破損効果処理 / Potions &quot;smash open&quot; and cause an area effect when" alt="" coords="407,1625,549,1652"/>
+</map>

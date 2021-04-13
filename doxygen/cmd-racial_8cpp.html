@@ -1,0 +1,1060 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/cmd-action/cmd-racial.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_53ca698ad401df685f027e5f337f5216.html">cmd-action</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">cmd-racial.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="cmd-racial_8h_source.html">cmd-action/cmd-racial.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="action-limited_8h_source.html">action/action-limited.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mutation-execution_8h_source.html">action/mutation-execution.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asking-player_8h_source.html">core/asking-player.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-redraw-types_8h_source.html">core/player-redraw-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-update-types_8h_source.html">core/player-update-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="window-redrawer_8h_source.html">core/window-redrawer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="text-display-options_8h_source.html">game-option/text-display-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="command-repeater_8h_source.html">io/command-repeater.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input-key-requester_8h_source.html">io/input-key-requester.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mutation-flag-types_8h_source.html">mutation/mutation-flag-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="attack-defense-types_8h_source.html">player/attack-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-damage_8h_source.html">player/player-damage.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-defense-types_8h_source.html">player/special-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="class-racial-switcher_8h_source.html">racial/class-racial-switcher.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mutation-racial-selector_8h_source.html">racial/mutation-racial-selector.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="racial-execution_8h_source.html">action/racial-execution.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-racial-command-setter_8h_source.html">racial/race-racial-command-setter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="racial-util_8h_source.html">racial/racial-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="action-setter_8h_source.html">status/action-setter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="screen-processor_8h_source.html">term/screen-processor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+cmd-racial.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-action_2cmd-racial_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-action_2cmd-racial_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2cmd-action_2cmd-racial_8cpp">
+<area shape="rect" title=" " alt="" coords="1762,5,1962,61"/>
+<area shape="rect" href="cmd-racial_8h.html" title=" " alt="" coords="2494,117,2655,143"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="968,377,1119,419"/>
+<area shape="rect" href="action-limited_8h.html" title=" " alt="" coords="1054,117,1204,143"/>
+<area shape="rect" href="mutation-execution_8h.html" title=" " alt="" coords="1228,117,1411,143"/>
+<area shape="rect" href="asking-player_8h.html" title=" " alt="" coords="1436,117,1574,143"/>
+<area shape="rect" href="player-redraw-types_8h.html" title=" " alt="" coords="748,109,876,151"/>
+<area shape="rect" href="player-update-types_8h.html" title=" " alt="" coords="900,109,1030,151"/>
+<area shape="rect" href="window-redrawer_8h.html" title=" " alt="" coords="1598,117,1756,143"/>
+<area shape="rect" href="text-display-options_8h.html" title=" " alt="" coords="1780,109,1944,151"/>
+<area shape="rect" href="command-repeater_8h.html" title=" " alt="" coords="2140,117,2294,143"/>
+<area shape="rect" href="input-key-requester_8h.html" title=" " alt="" coords="31,117,190,143"/>
+<area shape="rect" href="sound-of-music_8h.html" title=" " alt="" coords="214,117,367,143"/>
+<area shape="rect" href="attack-defense-types_8h.html" title=" " alt="" coords="1969,109,2116,151"/>
+<area shape="rect" href="player-damage_8h.html" title=" " alt="" coords="3480,117,3637,143"/>
+<area shape="rect" href="special-defense-types_8h.html" title=" " alt="" coords="2319,109,2470,151"/>
+<area shape="rect" href="class-racial-switcher_8h.html" title=" " alt="" coords="2680,109,2802,151"/>
+<area shape="rect" href="mutation-racial-selector_8h.html" title=" " alt="" coords="2827,109,2970,151"/>
+<area shape="rect" href="racial-execution_8h.html" title=" " alt="" coords="2994,117,3157,143"/>
+<area shape="rect" href="race-racial-command-setter_8h.html" title=" " alt="" coords="3181,109,3312,151"/>
+<area shape="rect" href="racial-util_8h.html" title=" " alt="" coords="3336,117,3456,143"/>
+<area shape="rect" href="action-setter_8h.html" title=" " alt="" coords="391,117,536,143"/>
+<area shape="rect" href="screen-processor_8h.html" title=" " alt="" coords="561,117,724,143"/>
+<area shape="rect" href="int-char-converter_8h.html" title=" " alt="" coords="3662,117,3815,143"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="1798,206,1927,233"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="1522,295,1613,322"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="1637,295,1728,322"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="1752,295,1850,322"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="1874,295,1973,322"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="1998,295,2098,322"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="2122,295,2296,322"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="2321,295,2462,322"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1352,295,1498,322"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1751,385,1862,411"/>
+<area shape="rect" href="keymap-directory-getter_8h.html" title=" " alt="" coords="39,199,182,240"/>
+<area shape="rect" title=" " alt="" coords="262,206,318,233"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="3123,199,3268,240"/>
+<area shape="rect" href="monster-flag-types_8h.html" title=" " alt="" coords="3124,288,3268,329"/>
+<area shape="rect" href="monster-timed-effect-types_8h.html" title=" " alt="" coords="3292,288,3448,329"/>
+<area shape="rect" href="smart-learn-types_8h.html" title=" " alt="" coords="2910,288,3049,329"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a9ee8caa1da45021770a5a6a4ab568160"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-racial_8cpp.html#a9ee8caa1da45021770a5a6a4ab568160">input_racial_power_selection</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structrc__type.html">rc_type</a> *rc_ptr)</td></tr>
+<tr class="separator:a9ee8caa1da45021770a5a6a4ab568160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf9adbcd124d65cdd05cd851b02fdd3e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-racial_8cpp.html#acf9adbcd124d65cdd05cd851b02fdd3e">check_input_racial_power</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structrc__type.html">rc_type</a> *rc_ptr)</td></tr>
+<tr class="separator:acf9adbcd124d65cdd05cd851b02fdd3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6a7ad967f98cf3364661764ddda6b31"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-racial_8cpp.html#ac6a7ad967f98cf3364661764ddda6b31">display_racial_list</a> (<a class="el" href="structrc__type.html">rc_type</a> *rc_ptr, char *dummy)</td></tr>
+<tr class="separator:ac6a7ad967f98cf3364661764ddda6b31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6979c078da2bbb52e3cd710db48a0a0b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-racial_8cpp.html#a6979c078da2bbb52e3cd710db48a0a0b">select_racial_power</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structrc__type.html">rc_type</a> *rc_ptr)</td></tr>
+<tr class="separator:a6979c078da2bbb52e3cd710db48a0a0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade52bbf06fbc948673deee0b8d06336b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-racial_8cpp.html#ade52bbf06fbc948673deee0b8d06336b">check_racial_power_choice</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structrc__type.html">rc_type</a> *rc_ptr)</td></tr>
+<tr class="separator:ade52bbf06fbc948673deee0b8d06336b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac78b9c56a11a3b1e184a4f1cd6fcb62d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-racial_8cpp.html#ac78b9c56a11a3b1e184a4f1cd6fcb62d">decide_racial_command</a> (<a class="el" href="structrc__type.html">rc_type</a> *rc_ptr)</td></tr>
+<tr class="separator:ac78b9c56a11a3b1e184a4f1cd6fcb62d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9f89468ec59a1fa9e7204e01296db22"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-racial_8cpp.html#ae9f89468ec59a1fa9e7204e01296db22">ask_invoke_racial_power</a> (<a class="el" href="structrc__type.html">rc_type</a> *rc_ptr)</td></tr>
+<tr class="separator:ae9f89468ec59a1fa9e7204e01296db22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f43af76328b48eae224de5dca9f85eb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-racial_8cpp.html#a3f43af76328b48eae224de5dca9f85eb">process_racial_power_choice</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structrc__type.html">rc_type</a> *rc_ptr)</td></tr>
+<tr class="separator:a3f43af76328b48eae224de5dca9f85eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb32fe7c594509d133c2a9e6773b8b98"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-racial_8cpp.html#acb32fe7c594509d133c2a9e6773b8b98">repeat_racial_power</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structrc__type.html">rc_type</a> *rc_ptr)</td></tr>
+<tr class="separator:acb32fe7c594509d133c2a9e6773b8b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f006f05c6ec58252925013371aa132f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-racial_8cpp.html#a5f006f05c6ec58252925013371aa132f">check_cast_racial_power</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structrc__type.html">rc_type</a> *rc_ptr)</td></tr>
+<tr class="separator:a5f006f05c6ec58252925013371aa132f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ca0a62bd13432c25d7b404bae8bfc28"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-racial_8cpp.html#a8ca0a62bd13432c25d7b404bae8bfc28">reduce_mana_by_racial</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="el" href="structrc__type.html">rc_type</a> *rc_ptr)</td></tr>
+<tr class="separator:a8ca0a62bd13432c25d7b404bae8bfc28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af680948d79d56d5f61bb856637db3ae2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cmd-racial_8cpp.html#af680948d79d56d5f61bb856637db3ae2">do_cmd_racial_power</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:af680948d79d56d5f61bb856637db3ae2"><td class="mdescLeft">&#160;</td><td class="mdescRight">レイシャル・パワーコマンドのメインルーチン / Allow user to choose a power (racial / mutation) to activate  <a href="cmd-racial_8cpp.html#af680948d79d56d5f61bb856637db3ae2">[詳解]</a><br /></td></tr>
+<tr class="separator:af680948d79d56d5f61bb856637db3ae2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ae9f89468ec59a1fa9e7204e01296db22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9f89468ec59a1fa9e7204e01296db22">&#9670;&nbsp;</a></span>ask_invoke_racial_power()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> ask_invoke_racial_power </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structrc__type.html">rc_type</a> *&#160;</td>
+          <td class="paramname"><em>rc_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_ae9f89468ec59a1fa9e7204e01296db22_cgraph.png" border="0" usemap="#acmd-racial_8cpp_ae9f89468ec59a1fa9e7204e01296db22_cgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_ae9f89468ec59a1fa9e7204e01296db22_cgraph" id="acmd-racial_8cpp_ae9f89468ec59a1fa9e7204e01296db22_cgraph">
+<area shape="rect" title=" " alt="" coords="5,179,171,205"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="552,71,595,97"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="219,179,301,205"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="229,229,291,256"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="705,27,755,53"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="689,77,771,104"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="862,157,939,184"/>
+<area shape="rect" href="z-term_8cpp.html#a50f4ddf9b64ef43b1be95eb89e78c263" title=" " alt="" coords="829,5,972,32"/>
+<area shape="rect" href="z-term_8cpp.html#a5d7c0ea368bccad499b9bbdb4ffc53dc" title=" " alt="" coords="831,56,970,83"/>
+<area shape="rect" href="z-term_8cpp.html#a1b660c2d9fa25eb39e501811a0088cd2" title=" " alt="" coords="831,107,970,133"/>
+<area shape="rect" href="asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="349,197,468,224"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="516,121,631,148"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="528,172,619,199"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="703,197,757,224"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="679,299,781,325"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="534,324,613,351"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="554,375,593,401"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_ae9f89468ec59a1fa9e7204e01296db22_icgraph.png" border="0" usemap="#acmd-racial_8cpp_ae9f89468ec59a1fa9e7204e01296db22_icgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_ae9f89468ec59a1fa9e7204e01296db22_icgraph" id="acmd-racial_8cpp_ae9f89468ec59a1fa9e7204e01296db22_icgraph">
+<area shape="rect" title=" " alt="" coords="580,13,745,39"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a3f43af76328b48eae224de5dca9f85eb" title=" " alt="" coords="385,5,532,47"/>
+<area shape="rect" href="cmd-racial_8cpp.html#acb32fe7c594509d133c2a9e6773b8b98" title=" " alt="" coords="200,13,337,39"/>
+<area shape="rect" href="cmd-racial_8cpp.html#af680948d79d56d5f61bb856637db3ae2" title="レイシャル・パワーコマンドのメインルーチン / Allow user to choose a power (racial / mutation) to activate" alt="" coords="5,13,152,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5f006f05c6ec58252925013371aa132f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f006f05c6ec58252925013371aa132f">&#9670;&nbsp;</a></span>check_cast_racial_power()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void check_cast_racial_power </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structrc__type.html">rc_type</a> *&#160;</td>
+          <td class="paramname"><em>rc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_a5f006f05c6ec58252925013371aa132f_cgraph.png" border="0" usemap="#acmd-racial_8cpp_a5f006f05c6ec58252925013371aa132f_cgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_a5f006f05c6ec58252925013371aa132f_cgraph" id="acmd-racial_8cpp_a5f006f05c6ec58252925013371aa132f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,1187,173,1213"/>
+<area shape="rect" href="racial-execution_8cpp.html#af12f152a7bb1665657b25db7de806eea" title="レイシャル・パワーの発動の判定処理" alt="" coords="624,173,751,200"/>
+<area shape="rect" href="mutation-execution_8cpp.html#a0c9c1052c587d71b683d8a700d9ae016" title="突然変異のレイシャル効果実装" alt="" coords="221,1187,363,1213"/>
+<area shape="rect" href="racial-execution_8cpp.html#a7e635e6235b51eda9d29cc9bf0ac79dd" title="レイシャル・パワー発動処理" alt="" coords="231,1237,353,1264"/>
+<area shape="rect" href="racial-execution_8cpp.html#afeb7c0549389ed454a8c11fc951323bd" title=" " alt="" coords="799,57,935,98"/>
+<area shape="rect" href="action-limited_8cpp.html#ab6e41ead2ec3155cacbd47e788347578" title=" " alt="" coords="799,173,936,200"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="984,807,1063,833"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="843,224,892,251"/>
+<area shape="rect" href="player-status_8cpp.html#a66e3d8439c969c25980516bbf58c5cad" title=" " alt="" coords="831,275,903,301"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="826,477,909,504"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="822,1187,913,1213"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="829,5,905,32"/>
+<area shape="rect" href="spells-sight_8cpp.html#a38649e896637efab6c1c96d71f870948" title="視界内モンスターを怒らせる処理 / Wake up all monsters, and speed up &quot;los&quot; monsters." alt="" coords="424,984,563,1011"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="995,1693,1052,1720"/>
+<area shape="rect" href="class_flag_group.html#a021f4c66b2af9456aa41200d81efee90" title="指定したフラグを指定した値にセットする" alt="" coords="633,883,741,909"/>
+<area shape="rect" href="spells-sorcery_8cpp.html#a6cdb24d97057728bc1fa0484c8dfb77d" title="アイテムの価値に応じた錬金術処理 / Turns an object into gold, gain some of its value in a shop" alt="" coords="652,731,723,757"/>
+<area shape="rect" href="spells-status_8cpp.html#aae9a0980e97bd173f6040909d6e66097" title=" " alt="" coords="461,1845,526,1872"/>
+<area shape="rect" href="spells-charm_8cpp.html#a89710b267e0fabc8eee195e43b726c7e" title="チャーム・モンスター(1体)" alt="" coords="437,1896,549,1923"/>
+<area shape="rect" href="spells-sight_8cpp.html#a91d8f0ee8b930d75a0856fbb1be6b08e" title="パニック・モンスター効果(プレイヤー視界範囲内) / Confuse monsters" alt="" coords="429,1947,557,1973"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="835,1035,899,1061"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="426,1997,561,2024"/>
+<area shape="rect" href="spells-detection_8cpp.html#ae2bce83dafe11d685dbec1ff1cc06a11" title="一般のモンスターを感知する / Detect all &quot;normal&quot; monsters on the current panel" alt="" coords="411,883,576,909"/>
+<area shape="rect" href="spells-detection_8cpp.html#aa71f9caef58a5843c72a78e6bd5d3644" title="プレイヤー周辺の地形財宝を感知する / Detect any treasure on the current panel" alt="" coords="631,224,743,251"/>
+<area shape="rect" href="cmd-throw_8cpp.html#ad5a2694d677c498bbc88091785b50605" title="投射処理メインルーチン / Throw an object from the pack or floor." alt="" coords="440,2048,547,2075"/>
+<area shape="rect" href="shape-changer_8cpp.html#af84e97990b1c8085f7c334b2b4b13f42" title=" " alt="" coords="640,1085,735,1112"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="644,1643,731,1669"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="811,1592,923,1619"/>
+<area shape="rect" href="monster-describer_8cpp.html#a14a84921133374dd6cd2b6ead8c1bc51" title="モンスターの呼称を作成する / Build a string describing a monster in some way." alt="" coords="815,1693,919,1720"/>
+<area shape="rect" href="mind-mage_8cpp.html#aa5ccfdbf3aa06956f929153e9aa24790" title="魔力喰い処理" alt="" coords="646,1136,729,1163"/>
+<area shape="rect" href="mutation-techniques_8cpp.html#a3e245c95b31e183f9b215fd4f91b88d9" title="突然変異でのみ得ることができる特殊能力処理" alt="" coords="457,1415,529,1441"/>
+<area shape="rect" href="target-getter_8cpp.html#ac0f7cfda9cc6ea4a0386cac0745b2273" title=" " alt="" coords="639,1339,735,1365"/>
+<area shape="rect" href="player-status_8cpp.html#ade8a430aa0b3212b3e8c057a4d05943f" title="口を使う継続的な処理を中断する" alt="" coords="642,1541,733,1568"/>
+<area shape="rect" href="spells-fetcher_8cpp.html#a511a98f348296163f1a0bdfd6b9bae3b" title="アイテム引き寄せ処理 / Fetch an item (teleport it right underneath the caster)" alt="" coords="646,1237,729,1264"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a9c5b6430a190c4d961f6017a483fdcf2" title="ボール系スペルの発動 / Cast a ball spell" alt="" coords="654,2124,721,2151"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a668ad35122f82691e97074533dbc8b5c" title="ビーム系スペルの発動 / Cast a beam spell." alt="" coords="454,2200,533,2227"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a9a380a888575bc7482cf32a7ec133778" title="ボルト系スペルの発動 / Cast a bolt spell." alt="" coords="460,2251,527,2277"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a27e010ab89af1e3d7baaa7df152a2692" title="ブレス系スペルの発動 / Cast a breath spell" alt="" coords="452,2099,535,2125"/>
+<area shape="rect" href="target-getter_8cpp.html#a5efdb5caced3e95405ab037368629942" title=" " alt="" coords="823,376,912,403"/>
+<area shape="rect" href="class_flag_group.html#ad4eec318a69d3e1a3a4be9169db1224d" title="指定したフラグがOFFかONか調べる" alt="" coords="425,2301,561,2328"/>
+<area shape="rect" href="mind-warrior_8cpp.html#afc4f182d772ec45fd47cf9a74e7fe12c" title="戦士と盗賊における、ヒット＆アウェイのレイシャルパワー/突然変異" alt="" coords="443,1288,544,1315"/>
+<area shape="rect" href="spells-lite_8cpp.html#a78cee093a3c7190cac79b36c36e200fc" title="プレイヤー位置を中心にLITE_WEAK属性を通じた照明処理を行う / Hack – call light around the player Affect all monsters in the pr..." alt="" coords="652,376,723,403"/>
+<area shape="rect" href="hook-checker_8cpp.html#ab645f4fa85a5f1c4f88497c0f98911d9" title=" " alt="" coords="433,2352,553,2379"/>
+<area shape="rect" href="spells-world_8cpp.html#acd1bf8acf03f4392bc78f8c170a23bc7" title="プレイヤーの帰還発動及び中止処理 / Recall the player to town or dungeon" alt="" coords="640,477,735,504"/>
+<area shape="rect" href="self-info_8cpp.html#ac4b7b403270859db1758a62bd4fae283" title="現在の一時的効果一覧を返す / Report all currently active magical effects." alt="" coords="441,123,545,149"/>
+<area shape="rect" href="element-resistance_8cpp.html#acb07baa4e9331416f075d1dcb65c419b" title="一時的酸耐性の継続時間をセットする / Set &quot;oppose_acid&quot;, notice observable changes" alt="" coords="807,579,927,605"/>
+<area shape="rect" href="element-resistance_8cpp.html#a4aedfbfb30de8af7f62ac69c8bd30715" title="一時的冷気耐性の継続時間をセットする / Set &quot;oppose_cold&quot;, notice observable changes" alt="" coords="627,579,747,605"/>
+<area shape="rect" href="element-resistance_8cpp.html#a230aa74615595b7d62b452d78397c5b9" title="一時的電撃耐性の継続時間をセットする / Set &quot;oppose_elec&quot;, notice observable changes" alt="" coords="807,680,927,707"/>
+<area shape="rect" href="element-resistance_8cpp.html#ae8333840ce64c42c444857fdd00b4dd2" title="一時的火炎耐性の継続時間をセットする / Set &quot;oppose_fire&quot;, notice observable changes" alt="" coords="631,680,744,707"/>
+<area shape="rect" href="element-resistance_8cpp.html#a1931c2c7f031edea14439c6ca1f3be83" title="一時的毒耐性の継続時間をセットする / Set &quot;oppose_pois&quot;, notice observable changes" alt="" coords="807,781,927,808"/>
+<area shape="rect" href="spells-sight_8cpp.html#a06bd681cdb9bd896efbea96a23f7da10" title="モンスター朦朧効果(プレイヤー視界範囲内) / Stun monsters" alt="" coords="439,224,547,251"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_a5f006f05c6ec58252925013371aa132f_icgraph.png" border="0" usemap="#acmd-racial_8cpp_a5f006f05c6ec58252925013371aa132f_icgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_a5f006f05c6ec58252925013371aa132f_icgraph" id="acmd-racial_8cpp_a5f006f05c6ec58252925013371aa132f_icgraph">
+<area shape="rect" title=" " alt="" coords="539,5,707,32"/>
+<area shape="rect" href="cmd-racial_8cpp.html#af680948d79d56d5f61bb856637db3ae2" title="レイシャル・パワーコマンドのメインルーチン / Allow user to choose a power (racial / mutation) to activate" alt="" coords="344,5,491,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acf9adbcd124d65cdd05cd851b02fdd3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf9adbcd124d65cdd05cd851b02fdd3e">&#9670;&nbsp;</a></span>check_input_racial_power()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_input_racial_power </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structrc__type.html">rc_type</a> *&#160;</td>
+          <td class="paramname"><em>rc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_acf9adbcd124d65cdd05cd851b02fdd3e_cgraph.png" border="0" usemap="#acmd-racial_8cpp_acf9adbcd124d65cdd05cd851b02fdd3e_cgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_acf9adbcd124d65cdd05cd851b02fdd3e_cgraph" id="acmd-racial_8cpp_acf9adbcd124d65cdd05cd851b02fdd3e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,23,136,65"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a9ee8caa1da45021770a5a6a4ab568160" title=" " alt="" coords="184,23,313,65"/>
+<area shape="rect" href="player-status_8cpp.html#a66e3d8439c969c25980516bbf58c5cad" title=" " alt="" coords="371,5,443,32"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="361,56,453,83"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="501,31,580,57"/>
+<area shape="rect" href="z-term_8cpp.html#af7733a1560582d2e2bce4c3fcb7a4bdc" title=" " alt="" coords="501,81,580,108"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_acf9adbcd124d65cdd05cd851b02fdd3e_icgraph.png" border="0" usemap="#acmd-racial_8cpp_acf9adbcd124d65cdd05cd851b02fdd3e_icgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_acf9adbcd124d65cdd05cd851b02fdd3e_icgraph" id="acmd-racial_8cpp_acf9adbcd124d65cdd05cd851b02fdd3e_icgraph">
+<area shape="rect" title=" " alt="" coords="580,5,711,47"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a3f43af76328b48eae224de5dca9f85eb" title=" " alt="" coords="385,5,532,47"/>
+<area shape="rect" href="cmd-racial_8cpp.html#acb32fe7c594509d133c2a9e6773b8b98" title=" " alt="" coords="200,13,337,39"/>
+<area shape="rect" href="cmd-racial_8cpp.html#af680948d79d56d5f61bb856637db3ae2" title="レイシャル・パワーコマンドのメインルーチン / Allow user to choose a power (racial / mutation) to activate" alt="" coords="5,13,152,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ade52bbf06fbc948673deee0b8d06336b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade52bbf06fbc948673deee0b8d06336b">&#9670;&nbsp;</a></span>check_racial_power_choice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_racial_power_choice </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structrc__type.html">rc_type</a> *&#160;</td>
+          <td class="paramname"><em>rc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_ade52bbf06fbc948673deee0b8d06336b_cgraph.png" border="0" usemap="#acmd-racial_8cpp_ade52bbf06fbc948673deee0b8d06336b_cgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_ade52bbf06fbc948673deee0b8d06336b_cgraph" id="acmd-racial_8cpp_ade52bbf06fbc948673deee0b8d06336b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,162,141,203"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="211,107,303,133"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a6979c078da2bbb52e3cd710db48a0a0b" title=" " alt="" coords="189,220,325,247"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="704,132,783,159"/>
+<area shape="rect" href="z-term_8cpp.html#af7733a1560582d2e2bce4c3fcb7a4bdc" title=" " alt="" coords="397,107,475,133"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="839,5,941,32"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="849,107,931,133"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="998,81,1085,108"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="997,132,1085,159"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="831,208,949,235"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="843,259,937,285"/>
+<area shape="rect" href="z-term_8cpp.html#a2dfb6aeed9bb8ede4ccfbdccd6ecef6c" title=" " alt="" coords="547,81,656,108"/>
+<area shape="rect" href="z-term_8cpp.html#ae3132bb5bbbde16a9b2e585f71085a6a" title=" " alt="" coords="552,132,651,159"/>
+<area shape="rect" href="cmd-racial_8cpp.html#ac6a7ad967f98cf3364661764ddda6b31" title=" " alt="" coords="373,220,499,247"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="582,183,621,209"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="407,271,465,297"/>
+<area shape="rect" href="racial-execution_8cpp.html#a42517efc38cbe17ccba8f987c77cc921" title="レイシャル・パワーの発動成功率を計算する / Returns the chance to activate a racial power/mutation" alt="" coords="385,321,487,348"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="554,233,649,260"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_ade52bbf06fbc948673deee0b8d06336b_icgraph.png" border="0" usemap="#acmd-racial_8cpp_ade52bbf06fbc948673deee0b8d06336b_icgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_ade52bbf06fbc948673deee0b8d06336b_icgraph" id="acmd-racial_8cpp_ade52bbf06fbc948673deee0b8d06336b_icgraph">
+<area shape="rect" title=" " alt="" coords="580,5,716,47"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a3f43af76328b48eae224de5dca9f85eb" title=" " alt="" coords="385,5,532,47"/>
+<area shape="rect" href="cmd-racial_8cpp.html#acb32fe7c594509d133c2a9e6773b8b98" title=" " alt="" coords="200,13,337,39"/>
+<area shape="rect" href="cmd-racial_8cpp.html#af680948d79d56d5f61bb856637db3ae2" title="レイシャル・パワーコマンドのメインルーチン / Allow user to choose a power (racial / mutation) to activate" alt="" coords="5,13,152,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac78b9c56a11a3b1e184a4f1cd6fcb62d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac78b9c56a11a3b1e184a4f1cd6fcb62d">&#9670;&nbsp;</a></span>decide_racial_command()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void decide_racial_command </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structrc__type.html">rc_type</a> *&#160;</td>
+          <td class="paramname"><em>rc_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_ac78b9c56a11a3b1e184a4f1cd6fcb62d_icgraph.png" border="0" usemap="#acmd-racial_8cpp_ac78b9c56a11a3b1e184a4f1cd6fcb62d_icgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_ac78b9c56a11a3b1e184a4f1cd6fcb62d_icgraph" id="acmd-racial_8cpp_ac78b9c56a11a3b1e184a4f1cd6fcb62d_icgraph">
+<area shape="rect" title=" " alt="" coords="580,13,743,39"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a3f43af76328b48eae224de5dca9f85eb" title=" " alt="" coords="385,5,532,47"/>
+<area shape="rect" href="cmd-racial_8cpp.html#acb32fe7c594509d133c2a9e6773b8b98" title=" " alt="" coords="200,13,337,39"/>
+<area shape="rect" href="cmd-racial_8cpp.html#af680948d79d56d5f61bb856637db3ae2" title="レイシャル・パワーコマンドのメインルーチン / Allow user to choose a power (racial / mutation) to activate" alt="" coords="5,13,152,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac6a7ad967f98cf3364661764ddda6b31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6a7ad967f98cf3364661764ddda6b31">&#9670;&nbsp;</a></span>display_racial_list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void display_racial_list </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structrc__type.html">rc_type</a> *&#160;</td>
+          <td class="paramname"><em>rc_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>dummy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_ac6a7ad967f98cf3364661764ddda6b31_cgraph.png" border="0" usemap="#acmd-racial_8cpp_ac6a7ad967f98cf3364661764ddda6b31_cgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_ac6a7ad967f98cf3364661764ddda6b31_cgraph" id="acmd-racial_8cpp_ac6a7ad967f98cf3364661764ddda6b31_cgraph">
+<area shape="rect" title=" " alt="" coords="5,164,131,191"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="207,101,245,128"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="179,189,273,216"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="485,5,535,32"/>
+<area shape="rect" href="z-term_8cpp.html#a63992770b824936d10b8cdea326ed441" title=" " alt="" coords="753,81,844,108"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="618,56,705,83"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="323,189,401,216"/>
+<area shape="rect" href="z-term_8cpp.html#abdc85fc7ec3b3a9b82968e8b725a93c3" title=" " alt="" coords="321,360,403,387"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="459,107,561,133"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="469,157,551,184"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="617,157,705,184"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="451,259,569,285"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="463,309,557,336"/>
+<area shape="rect" href="z-term_8cpp.html#a2dfb6aeed9bb8ede4ccfbdccd6ecef6c" title=" " alt="" coords="455,360,565,387"/>
+<area shape="rect" href="z-term_8cpp.html#ae3132bb5bbbde16a9b2e585f71085a6a" title=" " alt="" coords="461,411,559,437"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_ac6a7ad967f98cf3364661764ddda6b31_icgraph.png" border="0" usemap="#acmd-racial_8cpp_ac6a7ad967f98cf3364661764ddda6b31_icgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_ac6a7ad967f98cf3364661764ddda6b31_icgraph" id="acmd-racial_8cpp_ac6a7ad967f98cf3364661764ddda6b31_icgraph">
+<area shape="rect" title=" " alt="" coords="568,13,693,39"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a6979c078da2bbb52e3cd710db48a0a0b" title=" " alt="" coords="384,13,520,39"/>
+<area shape="rect" href="cmd-racial_8cpp.html#ade52bbf06fbc948673deee0b8d06336b" title=" " alt="" coords="200,5,336,47"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a3f43af76328b48eae224de5dca9f85eb" title=" " alt="" coords="5,5,152,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af680948d79d56d5f61bb856637db3ae2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af680948d79d56d5f61bb856637db3ae2">&#9670;&nbsp;</a></span>do_cmd_racial_power()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_cmd_racial_power </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>レイシャル・パワーコマンドのメインルーチン / Allow user to choose a power (racial / mutation) to activate </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_af680948d79d56d5f61bb856637db3ae2_cgraph.png" border="0" usemap="#acmd-racial_8cpp_af680948d79d56d5f61bb856637db3ae2_cgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_af680948d79d56d5f61bb856637db3ae2_cgraph" id="acmd-racial_8cpp_af680948d79d56d5f61bb856637db3ae2_cgraph">
+<area shape="rect" title="レイシャル・パワーコマンドのメインルーチン / Allow user to choose a power (racial / mutation) to activate" alt="" coords="5,1552,152,1579"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a5f006f05c6ec58252925013371aa132f" title=" " alt="" coords="208,1110,376,1136"/>
+<area shape="rect" href="action-limited_8cpp.html#ab6e41ead2ec3155cacbd47e788347578" title=" " alt="" coords="1043,1375,1181,1402"/>
+<area shape="rect" href="player-status_8cpp.html#a66e3d8439c969c25980516bbf58c5cad" title=" " alt="" coords="1076,1426,1148,1452"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="880,1211,963,1238"/>
+<area shape="rect" href="racial-util_8cpp.html#aff753b2cd3b6e1e7541ff50234fcad39" title=" " alt="" coords="233,1578,351,1604"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a8ca0a62bd13432c25d7b404bae8bfc28" title=" " alt="" coords="432,412,591,439"/>
+<area shape="rect" href="cmd-racial_8cpp.html#acb32fe7c594509d133c2a9e6773b8b98" title=" " alt="" coords="853,1527,990,1554"/>
+<area shape="rect" href="mutation-racial-selector_8cpp.html#af39be257944ee2661c7b20ad2ad15912" title=" " alt="" coords="216,1628,368,1655"/>
+<area shape="rect" href="race-racial-command-setter_8cpp.html#adf1610481d208df6de9570824515bc46" title=" " alt="" coords="200,1679,384,1706"/>
+<area shape="rect" href="race-racial-command-setter_8cpp.html#af18ea2b8e90dc2e15aa62b40bcb4d30e" title=" " alt="" coords="205,1730,379,1756"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="261,1780,323,1807"/>
+<area shape="rect" href="class-racial-switcher_8cpp.html#ab871dc867f6d1cb0d95596b1087e349b" title=" " alt="" coords="225,1831,359,1858"/>
+<area shape="rect" href="racial-execution_8cpp.html#af12f152a7bb1665657b25db7de806eea" title="レイシャル・パワーの発動の判定処理" alt="" coords="858,1266,985,1292"/>
+<area shape="rect" href="mutation-execution_8cpp.html#a0c9c1052c587d71b683d8a700d9ae016" title="突然変異のレイシャル効果実装" alt="" coords="441,716,582,743"/>
+<area shape="rect" href="racial-execution_8cpp.html#a7e635e6235b51eda9d29cc9bf0ac79dd" title="レイシャル・パワー発動処理" alt="" coords="450,666,573,692"/>
+<area shape="rect" href="racial-execution_8cpp.html#afeb7c0549389ed454a8c11fc951323bd" title=" " alt="" coords="1044,1258,1180,1300"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1233,979,1312,1006"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="1087,691,1137,718"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="1071,868,1153,895"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="1067,412,1157,439"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="1074,1207,1150,1234"/>
+<area shape="rect" href="spells-sight_8cpp.html#a38649e896637efab6c1c96d71f870948" title="視界内モンスターを怒らせる処理 / Wake up all monsters, and speed up &quot;los&quot; monsters." alt="" coords="852,1004,991,1031"/>
+<area shape="rect" href="spells-sorcery_8cpp.html#a6cdb24d97057728bc1fa0484c8dfb77d" title="アイテムの価値に応じた錬金術処理 / Turns an object into gold, gain some of its value in a shop" alt="" coords="886,412,957,439"/>
+<area shape="rect" href="spells-status_8cpp.html#aae9a0980e97bd173f6040909d6e66097" title=" " alt="" coords="689,260,754,287"/>
+<area shape="rect" href="spells-charm_8cpp.html#a89710b267e0fabc8eee195e43b726c7e" title="チャーム・モンスター(1体)" alt="" coords="665,311,777,338"/>
+<area shape="rect" href="spells-sight_8cpp.html#a91d8f0ee8b930d75a0856fbb1be6b08e" title="パニック・モンスター効果(プレイヤー視界範囲内) / Confuse monsters" alt="" coords="657,564,785,591"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="889,463,953,490"/>
+<area shape="rect" href="monster-remover_8cpp.html#ac8b891780a86e2dfe2ef96bed8a9684d" title="モンスター配列からモンスターを消去する / Delete a monster by index." alt="" coords="654,818,789,844"/>
+<area shape="rect" href="spells-detection_8cpp.html#ae2bce83dafe11d685dbec1ff1cc06a11" title="一般のモンスターを感知する / Detect all &quot;normal&quot; monsters on the current panel" alt="" coords="639,1122,804,1148"/>
+<area shape="rect" href="spells-detection_8cpp.html#aa71f9caef58a5843c72a78e6bd5d3644" title="プレイヤー周辺の地形財宝を感知する / Detect any treasure on the current panel" alt="" coords="865,1132,977,1159"/>
+<area shape="rect" href="cmd-throw_8cpp.html#ad5a2694d677c498bbc88091785b50605" title="投射処理メインルーチン / Throw an object from the pack or floor." alt="" coords="668,1223,775,1250"/>
+<area shape="rect" href="shape-changer_8cpp.html#af84e97990b1c8085f7c334b2b4b13f42" title=" " alt="" coords="674,159,769,186"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="887,362,955,388"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="1056,615,1168,642"/>
+<area shape="rect" href="earthquake_8cpp.html#a4a15dee61fb87d5626fe62976ce85be2" title="地震処理 Induce an &quot;earthquake&quot; of the given radius at the given location." alt="" coords="678,514,765,540"/>
+<area shape="rect" href="mind-mage_8cpp.html#aa5ccfdbf3aa06956f929153e9aa24790" title="魔力喰い処理" alt="" coords="880,7,963,34"/>
+<area shape="rect" href="mutation-techniques_8cpp.html#a3e245c95b31e183f9b215fd4f91b88d9" title="突然変異でのみ得ることができる特殊能力処理" alt="" coords="885,58,957,84"/>
+<area shape="rect" href="spells-fetcher_8cpp.html#a511a98f348296163f1a0bdfd6b9bae3b" title="アイテム引き寄せ処理 / Fetch an item (teleport it right underneath the caster)" alt="" coords="880,666,963,692"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a9c5b6430a190c4d961f6017a483fdcf2" title="ボール系スペルの発動 / Cast a ball spell" alt="" coords="888,716,955,743"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a668ad35122f82691e97074533dbc8b5c" title="ビーム系スペルの発動 / Cast a beam spell." alt="" coords="682,919,761,946"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a9a380a888575bc7482cf32a7ec133778" title="ボルト系スペルの発動 / Cast a bolt spell." alt="" coords="688,970,755,996"/>
+<area shape="rect" href="spells-launcher_8cpp.html#a27e010ab89af1e3d7baaa7df152a2692" title="ブレス系スペルの発動 / Cast a breath spell" alt="" coords="680,666,763,692"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a3f43af76328b48eae224de5dca9f85eb" title=" " alt="" coords="1039,1578,1185,1620"/>
+<area shape="rect" href="command-repeater_8cpp.html#a7d3c94fc9d6f020c659ace3f90900d63" title=" " alt="" coords="1069,1644,1155,1671"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="1065,1695,1159,1722"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="1066,1476,1158,1503"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="1065,1527,1159,1554"/>
+<area shape="rect" href="class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97" title="指定したフラグがONかOFFか調べる" alt="" coords="456,1628,567,1655"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#a8564526a539e03c44d4514204436675f" title="クラスパワー情報を追加" alt="" coords="436,1831,587,1858"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_af680948d79d56d5f61bb856637db3ae2_icgraph.png" border="0" usemap="#acmd-racial_8cpp_af680948d79d56d5f61bb856637db3ae2_icgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_af680948d79d56d5f61bb856637db3ae2_icgraph" id="acmd-racial_8cpp_af680948d79d56d5f61bb856637db3ae2_icgraph">
+<area shape="rect" title="レイシャル・パワーコマンドのメインルーチン / Allow user to choose a power (racial / mutation) to activate" alt="" coords="516,5,663,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="336,5,468,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="177,5,288,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9ee8caa1da45021770a5a6a4ab568160"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ee8caa1da45021770a5a6a4ab568160">&#9670;&nbsp;</a></span>input_racial_power_selection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> input_racial_power_selection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structrc__type.html">rc_type</a> *&#160;</td>
+          <td class="paramname"><em>rc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_a9ee8caa1da45021770a5a6a4ab568160_cgraph.png" border="0" usemap="#acmd-racial_8cpp_a9ee8caa1da45021770a5a6a4ab568160_cgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_a9ee8caa1da45021770a5a6a4ab568160_cgraph" id="acmd-racial_8cpp_a9ee8caa1da45021770a5a6a4ab568160_cgraph">
+<area shape="rect" title=" " alt="" coords="5,201,135,242"/>
+<area shape="rect" href="player-status_8cpp.html#a66e3d8439c969c25980516bbf58c5cad" title=" " alt="" coords="193,183,265,209"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="183,233,275,260"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="323,157,401,184"/>
+<area shape="rect" href="z-term_8cpp.html#af7733a1560582d2e2bce4c3fcb7a4bdc" title=" " alt="" coords="323,309,401,336"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="457,5,560,32"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="468,107,549,133"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="617,69,703,96"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="616,132,704,159"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="449,208,568,235"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="461,259,556,285"/>
+<area shape="rect" href="z-term_8cpp.html#a2dfb6aeed9bb8ede4ccfbdccd6ecef6c" title=" " alt="" coords="454,309,563,336"/>
+<area shape="rect" href="z-term_8cpp.html#ae3132bb5bbbde16a9b2e585f71085a6a" title=" " alt="" coords="459,360,558,387"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_a9ee8caa1da45021770a5a6a4ab568160_icgraph.png" border="0" usemap="#acmd-racial_8cpp_a9ee8caa1da45021770a5a6a4ab568160_icgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_a9ee8caa1da45021770a5a6a4ab568160_icgraph" id="acmd-racial_8cpp_a9ee8caa1da45021770a5a6a4ab568160_icgraph">
+<area shape="rect" title=" " alt="" coords="564,5,693,47"/>
+<area shape="rect" href="cmd-racial_8cpp.html#acf9adbcd124d65cdd05cd851b02fdd3e" title=" " alt="" coords="385,5,516,47"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a3f43af76328b48eae224de5dca9f85eb" title=" " alt="" coords="191,5,337,47"/>
+<area shape="rect" href="cmd-racial_8cpp.html#acb32fe7c594509d133c2a9e6773b8b98" title=" " alt="" coords="5,13,143,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3f43af76328b48eae224de5dca9f85eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f43af76328b48eae224de5dca9f85eb">&#9670;&nbsp;</a></span>process_racial_power_choice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> process_racial_power_choice </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structrc__type.html">rc_type</a> *&#160;</td>
+          <td class="paramname"><em>rc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_a3f43af76328b48eae224de5dca9f85eb_cgraph.png" border="0" usemap="#acmd-racial_8cpp_a3f43af76328b48eae224de5dca9f85eb_cgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_a3f43af76328b48eae224de5dca9f85eb_cgraph" id="acmd-racial_8cpp_a3f43af76328b48eae224de5dca9f85eb_cgraph">
+<area shape="rect" title=" " alt="" coords="5,249,152,290"/>
+<area shape="rect" href="cmd-racial_8cpp.html#ae9f89468ec59a1fa9e7204e01296db22" title=" " alt="" coords="200,107,365,133"/>
+<area shape="rect" href="cmd-racial_8cpp.html#acf9adbcd124d65cdd05cd851b02fdd3e" title=" " alt="" coords="217,183,348,225"/>
+<area shape="rect" href="cmd-racial_8cpp.html#ade52bbf06fbc948673deee0b8d06336b" title=" " alt="" coords="215,249,351,290"/>
+<area shape="rect" href="cmd-racial_8cpp.html#ac78b9c56a11a3b1e184a4f1cd6fcb62d" title=" " alt="" coords="201,315,364,341"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="445,424,517,451"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="771,56,813,83"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="440,81,523,108"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="450,132,513,159"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="878,5,927,32"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="861,56,944,83"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="992,81,1069,108"/>
+<area shape="rect" href="asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="601,81,719,108"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="773,267,811,293"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a9ee8caa1da45021770a5a6a4ab568160" title=" " alt="" coords="417,183,546,225"/>
+<area shape="rect" href="player-status_8cpp.html#a66e3d8439c969c25980516bbf58c5cad" title=" " alt="" coords="624,140,696,167"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="614,191,706,217"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a6979c078da2bbb52e3cd710db48a0a0b" title=" " alt="" coords="413,300,549,327"/>
+<area shape="rect" href="cmd-racial_8cpp.html#ac6a7ad967f98cf3364661764ddda6b31" title=" " alt="" coords="597,292,723,319"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="631,343,689,369"/>
+<area shape="rect" href="racial-execution_8cpp.html#a42517efc38cbe17ccba8f987c77cc921" title="レイシャル・パワーの発動成功率を計算する / Returns the chance to activate a racial power/mutation" alt="" coords="609,393,711,420"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_a3f43af76328b48eae224de5dca9f85eb_icgraph.png" border="0" usemap="#acmd-racial_8cpp_a3f43af76328b48eae224de5dca9f85eb_icgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_a3f43af76328b48eae224de5dca9f85eb_icgraph" id="acmd-racial_8cpp_a3f43af76328b48eae224de5dca9f85eb_icgraph">
+<area shape="rect" title=" " alt="" coords="565,5,712,47"/>
+<area shape="rect" href="cmd-racial_8cpp.html#acb32fe7c594509d133c2a9e6773b8b98" title=" " alt="" coords="380,13,517,39"/>
+<area shape="rect" href="cmd-racial_8cpp.html#af680948d79d56d5f61bb856637db3ae2" title="レイシャル・パワーコマンドのメインルーチン / Allow user to choose a power (racial / mutation) to activate" alt="" coords="185,13,332,39"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,13,137,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8ca0a62bd13432c25d7b404bae8bfc28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ca0a62bd13432c25d7b404bae8bfc28">&#9670;&nbsp;</a></span>reduce_mana_by_racial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> reduce_mana_by_racial </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structrc__type.html">rc_type</a> *&#160;</td>
+          <td class="paramname"><em>rc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_a8ca0a62bd13432c25d7b404bae8bfc28_cgraph.png" border="0" usemap="#acmd-racial_8cpp_a8ca0a62bd13432c25d7b404bae8bfc28_cgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_a8ca0a62bd13432c25d7b404bae8bfc28_cgraph" id="acmd-racial_8cpp_a8ca0a62bd13432c25d7b404bae8bfc28_cgraph">
+<area shape="rect" title=" " alt="" coords="5,1487,164,1513"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="212,1487,280,1513"/>
+<area shape="rect" href="string-processor_8cpp.html#aa3085032d831bd3a5f752bf0823ba462" title=" " alt="" coords="780,752,895,779"/>
+<area shape="rect" href="string-processor_8cpp.html#ac8184d2eea3bb502c7828b1cf2e15a7a" title=" " alt="" coords="347,1613,455,1640"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="816,904,859,931"/>
+<area shape="rect" href="screen-processor_8cpp.html#a0a9e9396972b76c5947592479860020d" title=" " alt="" coords="993,93,1042,120"/>
+<area shape="rect" href="wild_8cpp.html#a50c95b33e216b6cd860ddc2ac319c510" title="荒野から広域マップへの切り替え処理 / Initialize arrays for wilderness terrains" alt="" coords="335,423,467,449"/>
+<area shape="rect" href="asking-player_8cpp.html#afc36c41a52a3ec2fdc8a7cd50df27da6" title=" " alt="" coords="553,853,671,880"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="792,1005,883,1032"/>
+<area shape="rect" href="input-key-acceptor_8cpp.html#acfd501ca170125b10ce4b02c62ae7fa5" title=" " alt="" coords="811,1360,864,1387"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="978,701,1057,728"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="1109,347,1197,373"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#aa9b31eb0ea15ceb2b1423b1f807ccd7e" title=" " alt="" coords="333,1664,469,1691"/>
+<area shape="rect" href="avatar_8cpp.html#aae4e2101b06ada3126964d726155f59b" title="対応する徳をプレイヤーがスロットに登録している場合に加減を行う。" alt="" coords="361,1715,441,1741"/>
+<area shape="rect" href="disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="581,93,643,120"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a1f4156d254c4e75492a93a62c6d47d1d" title=" " alt="" coords="328,1233,475,1260"/>
+<area shape="rect" href="asking-player_8cpp.html#a50f2637bb42bac00485e175c23b4c572" title=" " alt="" coords="798,1107,877,1133"/>
+<area shape="rect" href="autopick-pref-processor_8cpp.html#aa31a42830d1eed102ec91a767c3db6e7" title=" " alt="" coords="764,1454,911,1495"/>
+<area shape="rect" href="write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="345,1816,457,1843"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="583,1791,641,1817"/>
+<area shape="rect" href="player-status_8cpp.html#a21d860d23d97370179ecb0fbe6536a7b" title="プレイヤーが現在ダンジョンに潜っているかどうかを返す。 @memo 現在はdun_levelが0でないかそうでないかに限るが可読性を高めるため。" alt="" coords="559,1853,665,1880"/>
+<area shape="rect" href="files-util_8cpp.html#a06656f06eccb3992114a0f3dd1f51ca1" title="ファイルからランダムに行を一つ取得する / Get a random line from a file" alt="" coords="355,600,447,627"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="567,651,657,677"/>
+<area shape="rect" href="player-status_8cpp.html#af6be48df20384df551b88a2466d159fb" title=" " alt="" coords="366,1917,437,1944"/>
+<area shape="rect" href="sound-of-music_8cpp.html#afbe4cbf7966050b5a6f68487a7d492ef" title="Hack – Play a music" alt="" coords="973,1436,1061,1463"/>
+<area shape="rect" href="quest_8cpp.html#a5b6b24bb1f79322d67d0cc51368d3ad3" title="新しく入ったダンジョンの階層に固定されている一般のクエストを探し出しIDを返す。 / Hack – Check if a level is a &quot;quest&quot; level" alt="" coords="349,1968,453,1995"/>
+<area shape="rect" href="save_8cpp.html#a3821fe79e79e495fe816c6c52f2a68c0" title="セーブデータ書き込みのメインルーチン / Attempt to save the player in a savefile" alt="" coords="356,2019,447,2045"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="989,1588,1046,1615"/>
+<area shape="rect" href="z-util_8cpp.html#a80649b9db144d073c2845bc567eedb0f" title=" " alt="" coords="376,2069,427,2096"/>
+<area shape="rect" href="z-virt_8cpp.html#a70a7941cc921785c30b981487ebb8f17" title="string_make() で割り当てたバッファを解放する。" alt="" coords="360,2120,443,2147"/>
+<area shape="rect" href="z-virt_8cpp.html#a64d699412915544198fd477a26d44f84" title="str の複製を返す。戻り値は使用後に string_free() で解放すること。" alt="" coords="355,2171,448,2197"/>
+<area shape="rect" href="z-term_8cpp.html#a39ef3f72ed8116776e992f79bd66d1ab" title=" " alt="" coords="360,2221,443,2248"/>
+<area shape="rect" href="z-term_8cpp.html#aec074935199524cf0a1a36e4d5e7c438" title=" " alt="" coords="976,1157,1059,1184"/>
+<area shape="rect" href="z-term_8cpp.html#a401c1053c2fe7ee3de4c5677a4c1df64" title=" " alt="" coords="1115,1284,1192,1311"/>
+<area shape="rect" href="player-status_8cpp.html#a66e3d8439c969c25980516bbf58c5cad" title=" " alt="" coords="576,296,648,323"/>
+<area shape="rect" href="spells-hex_8cpp.html#a1fe803ed2313c7c276285c2803e83ed3" title=" " alt="" coords="551,448,673,475"/>
+<area shape="rect" href="monster-info_8cpp.html#ad051474143ae51acf70bf275b30ff246" title=" " alt="" coords="573,549,651,576"/>
+<area shape="rect" href="monster-info_8cpp.html#aebc46d6af07e1e52621a83abf6eb4a62" title=" " alt="" coords="809,524,866,551"/>
+<area shape="rect" href="monster-status_8cpp.html#ab13b269031a5b7b139713c537bbfe706" title=" " alt="" coords="523,195,701,221"/>
+<area shape="rect" href="monster-status_8cpp.html#a0f7201c5a9c7997732968dbdd75a5066" title=" " alt="" coords="553,245,671,272"/>
+<area shape="rect" href="action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="796,347,879,373"/>
+<area shape="rect" href="player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="979,245,1055,272"/>
+<area shape="rect" href="spells-hex_8cpp.html#a31dc16a80812e93d70b223fcf28db63b" title="プレイヤーが詠唱中の全呪術を停止する" alt="" coords="547,347,677,373"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="998,1208,1037,1235"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#ab840917c911631855846f17305a6f71d" title="記念撮影の方式を問い合わせる" alt="" coords="555,1259,669,1285"/>
+<area shape="rect" href="cmd-draw_8cpp.html#ae19882bca0152830acd6b12e0c50eeb2" title="画面を再描画するコマンドのメインルーチン Hack – redraw the screen" alt="" coords="555,1208,669,1235"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#a66d22b87644be0847bb5751f75cf7b55" title="HTML方式で記念撮影する / Save a screen dump to a file" alt="" coords="523,1107,701,1133"/>
+<area shape="rect" href="cmd-process-screen_8cpp.html#aa46b7dd58d4e2cd6fc032da61b18f90a" title="テキスト方式で記念撮影する" alt="" coords="749,803,925,829"/>
+<area shape="rect" href="visuals-reseter_8cpp.html#a0bff15ee0bec53f209d078d49af3470c" title="オブジェクト、地形の表示シンボルなど初期化する / Reset the &quot;visual&quot; lists" alt="" coords="563,1461,661,1488"/>
+<area shape="rect" href="z-term_8cpp.html#a2e99fe53aa99a8895fb0664edcaf0612" title=" " alt="" coords="560,1157,664,1184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_a8ca0a62bd13432c25d7b404bae8bfc28_icgraph.png" border="0" usemap="#acmd-racial_8cpp_a8ca0a62bd13432c25d7b404bae8bfc28_icgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_a8ca0a62bd13432c25d7b404bae8bfc28_icgraph" id="acmd-racial_8cpp_a8ca0a62bd13432c25d7b404bae8bfc28_icgraph">
+<area shape="rect" title=" " alt="" coords="539,5,697,32"/>
+<area shape="rect" href="cmd-racial_8cpp.html#af680948d79d56d5f61bb856637db3ae2" title="レイシャル・パワーコマンドのメインルーチン / Allow user to choose a power (racial / mutation) to activate" alt="" coords="344,5,491,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acb32fe7c594509d133c2a9e6773b8b98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb32fe7c594509d133c2a9e6773b8b98">&#9670;&nbsp;</a></span>repeat_racial_power()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> repeat_racial_power </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structrc__type.html">rc_type</a> *&#160;</td>
+          <td class="paramname"><em>rc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_acb32fe7c594509d133c2a9e6773b8b98_cgraph.png" border="0" usemap="#acmd-racial_8cpp_acb32fe7c594509d133c2a9e6773b8b98_cgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_acb32fe7c594509d133c2a9e6773b8b98_cgraph" id="acmd-racial_8cpp_acb32fe7c594509d133c2a9e6773b8b98_cgraph">
+<area shape="rect" title=" " alt="" coords="5,435,143,462"/>
+<area shape="rect" href="player-status_8cpp.html#a66e3d8439c969c25980516bbf58c5cad" title=" " alt="" coords="793,98,865,124"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a3f43af76328b48eae224de5dca9f85eb" title=" " alt="" coords="191,272,337,313"/>
+<area shape="rect" href="screen-processor_8cpp.html#ab6872203e8eeb6f2b16103cabc46cef7" title=" " alt="" coords="783,262,875,288"/>
+<area shape="rect" href="command-repeater_8cpp.html#a7d3c94fc9d6f020c659ace3f90900d63" title=" " alt="" coords="221,460,307,487"/>
+<area shape="rect" href="command-repeater_8cpp.html#a39413ec8841901fc40d8e731ca5d3277" title=" " alt="" coords="217,511,311,538"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="217,562,311,588"/>
+<area shape="rect" href="cmd-racial_8cpp.html#ae9f89468ec59a1fa9e7204e01296db22" title=" " alt="" coords="385,104,551,131"/>
+<area shape="rect" href="cmd-racial_8cpp.html#acf9adbcd124d65cdd05cd851b02fdd3e" title=" " alt="" coords="403,177,533,218"/>
+<area shape="rect" href="cmd-racial_8cpp.html#ade52bbf06fbc948673deee0b8d06336b" title=" " alt="" coords="400,242,536,284"/>
+<area shape="rect" href="cmd-racial_8cpp.html#ac78b9c56a11a3b1e184a4f1cd6fcb62d" title=" " alt="" coords="387,308,549,335"/>
+<area shape="rect" href="asking-player_8cpp.html#a00cb58166e0fbeca1df97f3f4aea57d6" title=" " alt="" coords="432,359,504,386"/>
+<area shape="rect" href="sound-of-music_8cpp.html#aa5da7dc4719848ae9157b977c1e1db71" title=" " alt="" coords="645,43,688,70"/>
+<area shape="rect" href="asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="625,94,708,120"/>
+<area shape="rect" href="z-form_8cpp.html#a9aa08e088dfad7c074dda437c146fa2c" title=" " alt="" coords="635,144,698,171"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a9ee8caa1da45021770a5a6a4ab568160" title=" " alt="" coords="602,196,731,237"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a6979c078da2bbb52e3cd710db48a0a0b" title=" " alt="" coords="599,312,735,339"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_acb32fe7c594509d133c2a9e6773b8b98_icgraph.png" border="0" usemap="#acmd-racial_8cpp_acb32fe7c594509d133c2a9e6773b8b98_icgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_acb32fe7c594509d133c2a9e6773b8b98_icgraph" id="acmd-racial_8cpp_acb32fe7c594509d133c2a9e6773b8b98_icgraph">
+<area shape="rect" title=" " alt="" coords="539,5,676,32"/>
+<area shape="rect" href="cmd-racial_8cpp.html#af680948d79d56d5f61bb856637db3ae2" title="レイシャル・パワーコマンドのメインルーチン / Allow user to choose a power (racial / mutation) to activate" alt="" coords="344,5,491,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="164,5,296,32"/>
+<area shape="rect" href="player-processor_8cpp.html#a3a05ed5ec013fb1dda001d5788196a78" title="プレイヤーの行動処理 / Process the player" alt="" coords="5,5,116,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6979c078da2bbb52e3cd710db48a0a0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6979c078da2bbb52e3cd710db48a0a0b">&#9670;&nbsp;</a></span>select_racial_power()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void select_racial_power </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structrc__type.html">rc_type</a> *&#160;</td>
+          <td class="paramname"><em>rc_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_a6979c078da2bbb52e3cd710db48a0a0b_cgraph.png" border="0" usemap="#acmd-racial_8cpp_a6979c078da2bbb52e3cd710db48a0a0b_cgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_a6979c078da2bbb52e3cd710db48a0a0b_cgraph" id="acmd-racial_8cpp_a6979c078da2bbb52e3cd710db48a0a0b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,81,141,108"/>
+<area shape="rect" href="cmd-racial_8cpp.html#ac6a7ad967f98cf3364661764ddda6b31" title=" " alt="" coords="189,56,315,83"/>
+<area shape="rect" href="screen-processor_8cpp.html#a6623a8348930a234b9e7c33d85935707" title=" " alt="" coords="391,5,429,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="223,107,281,133"/>
+<area shape="rect" href="racial-execution_8cpp.html#a42517efc38cbe17ccba8f987c77cc921" title="レイシャル・パワーの発動成功率を計算する / Returns the chance to activate a racial power/mutation" alt="" coords="201,157,303,184"/>
+<area shape="rect" href="screen-processor_8cpp.html#a5a86358e9edbca0a8be62c88baac3015" title=" " alt="" coords="363,56,457,83"/>
+<area shape="rect" href="screen-processor_8cpp.html#a2b20c97f1a0336d4a90a38fecd03db14" title=" " alt="" coords="521,5,571,32"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="507,56,585,83"/>
+<area shape="rect" href="z-term_8cpp.html#abdc85fc7ec3b3a9b82968e8b725a93c3" title=" " alt="" coords="505,107,587,133"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="cmd-racial_8cpp_a6979c078da2bbb52e3cd710db48a0a0b_icgraph.png" border="0" usemap="#acmd-racial_8cpp_a6979c078da2bbb52e3cd710db48a0a0b_icgraph" alt=""/></div>
+<map name="acmd-racial_8cpp_a6979c078da2bbb52e3cd710db48a0a0b_icgraph" id="acmd-racial_8cpp_a6979c078da2bbb52e3cd710db48a0a0b_icgraph">
+<area shape="rect" title=" " alt="" coords="569,13,705,39"/>
+<area shape="rect" href="cmd-racial_8cpp.html#ade52bbf06fbc948673deee0b8d06336b" title=" " alt="" coords="385,5,521,47"/>
+<area shape="rect" href="cmd-racial_8cpp.html#a3f43af76328b48eae224de5dca9f85eb" title=" " alt="" coords="191,5,337,47"/>
+<area shape="rect" href="cmd-racial_8cpp.html#acb32fe7c594509d133c2a9e6773b8b98" title=" " alt="" coords="5,13,143,39"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分23秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

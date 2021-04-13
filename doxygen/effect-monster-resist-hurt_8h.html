@@ -1,0 +1,1528 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/effect/effect-monster-resist-hurt.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dda8561cf3711d1096db62b1f19b56a8.html">effect</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">effect-monster-resist-hurt.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+effect-monster-resist-hurt.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2effect_2effect-monster-resist-hurt_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2effect_2effect-monster-resist-hurt_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2effect_2effect-monster-resist-hurt_8h">
+<area shape="rect" title=" " alt="" coords="348,5,536,61"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="377,109,507,136"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="31,184,122,211"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="23,348,165,375"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,184,607,211"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,184,245,211"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,184,367,211"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,184,492,211"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,184,807,211"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="943,184,1090,211"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="169,266,291,293"/>
+<area shape="rect" title=" " alt="" coords="386,266,461,293"/>
+<area shape="rect" title=" " alt="" coords="485,266,567,293"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="592,259,743,300"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="767,259,920,300"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="944,259,1089,300"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1114,259,1287,300"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1311,259,1437,300"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1461,266,1580,293"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1604,266,1715,293"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2effect_2effect-monster-resist-hurt_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2effect_2effect-monster-resist-hurt_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2effect_2effect-monster-resist-hurt_8hdep">
+<area shape="rect" title=" " alt="" coords="117,5,305,61"/>
+<area shape="rect" href="effect-monster-resist-hurt_8cpp.html" title=" " alt="" coords="5,109,200,165"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html" title=" " alt="" coords="225,109,413,165"/>
+</map>
+</div>
+</div>
+<p><a href="effect-monster-resist-hurt_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:aea76ce1250a74a9a113f6672f9e62e4d"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structeffect__monster__type.html">effect_monster_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#aea76ce1250a74a9a113f6672f9e62e4d">effect_monster_type</a></td></tr>
+<tr class="separator:aea76ce1250a74a9a113f6672f9e62e4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a4fc215449fa9316e358044f5de34b377"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a4fc215449fa9316e358044f5de34b377">effect_monster_nothing</a> (<a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="memdesc:a4fc215449fa9316e358044f5de34b377"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターの耐性がなく、効果もない場合の処理  <a href="effect-monster-resist-hurt_8h.html#a4fc215449fa9316e358044f5de34b377">[詳解]</a><br /></td></tr>
+<tr class="separator:a4fc215449fa9316e358044f5de34b377"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cc6d6926e0a558c2e4cce8f6dd60fdd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a0cc6d6926e0a558c2e4cce8f6dd60fdd">effect_monster_acid</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a0cc6d6926e0a558c2e4cce8f6dd60fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac9b64231036c364f3d290de0879c273"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#aac9b64231036c364f3d290de0879c273">effect_monster_elec</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:aac9b64231036c364f3d290de0879c273"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d03cdea4536cafd5bc29714e710b781"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a4d03cdea4536cafd5bc29714e710b781">effect_monster_fire</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a4d03cdea4536cafd5bc29714e710b781"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c561ff4c71026c74cb2dad521a15505"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a7c561ff4c71026c74cb2dad521a15505">effect_monster_cold</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a7c561ff4c71026c74cb2dad521a15505"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4129bee7ec37a3886249952b62b37bbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a4129bee7ec37a3886249952b62b37bbc">effect_monster_pois</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a4129bee7ec37a3886249952b62b37bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f0e2fd900f6919d07da5793a26abb73"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a4f0e2fd900f6919d07da5793a26abb73">effect_monster_nuke</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a4f0e2fd900f6919d07da5793a26abb73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab409a8c292181cef98cb31f318e27a84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#ab409a8c292181cef98cb31f318e27a84">effect_monster_hell_fire</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:ab409a8c292181cef98cb31f318e27a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70387f7890bb182fa07d32a00fda8e91"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a70387f7890bb182fa07d32a00fda8e91">effect_monster_holy_fire</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a70387f7890bb182fa07d32a00fda8e91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58cb0baa7852c622959d9b55edb2f867"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a58cb0baa7852c622959d9b55edb2f867">effect_monster_plasma</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a58cb0baa7852c622959d9b55edb2f867"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9947e4e750133460c3f2c0205249a5d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a9947e4e750133460c3f2c0205249a5d2">effect_monster_nether</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a9947e4e750133460c3f2c0205249a5d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54f29c36577a14a25d7fc6b9378b69ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a54f29c36577a14a25d7fc6b9378b69ec">effect_monster_water</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a54f29c36577a14a25d7fc6b9378b69ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae61429426b9120e87444f555915d9dd3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#ae61429426b9120e87444f555915d9dd3">effect_monster_chaos</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:ae61429426b9120e87444f555915d9dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a55c2725e059dad6be374b4f7a0c855"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a0a55c2725e059dad6be374b4f7a0c855">effect_monster_shards</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a0a55c2725e059dad6be374b4f7a0c855"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfc81c1d29187e4474b0af8f5eceb91f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#acfc81c1d29187e4474b0af8f5eceb91f">effect_monster_rocket</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:acfc81c1d29187e4474b0af8f5eceb91f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89f7951f0775d6b0077e51dd7b8f3c10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a89f7951f0775d6b0077e51dd7b8f3c10">effect_monster_sound</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a89f7951f0775d6b0077e51dd7b8f3c10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06b9da66532741d74d49e5c30b98b1f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a06b9da66532741d74d49e5c30b98b1f0">effect_monster_confusion</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a06b9da66532741d74d49e5c30b98b1f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c03843064bd318f334104aa6947e3a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a7c03843064bd318f334104aa6947e3a3">effect_monster_disenchant</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a7c03843064bd318f334104aa6947e3a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96bac235061a89636f5eb5f34af178f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a96bac235061a89636f5eb5f34af178f7">effect_monster_nexus</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a96bac235061a89636f5eb5f34af178f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a128a04a647f3fa0ac4ee916c322b40a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a128a04a647f3fa0ac4ee916c322b40a6">effect_monster_force</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a128a04a647f3fa0ac4ee916c322b40a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c4ba742b23f04b1eedbae366b02f742"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a4c4ba742b23f04b1eedbae366b02f742">effect_monster_inertial</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a4c4ba742b23f04b1eedbae366b02f742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaca4cdac26ffb7d789f16474043b2660"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#aaca4cdac26ffb7d789f16474043b2660">effect_monster_time</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:aaca4cdac26ffb7d789f16474043b2660"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6ee89acf792378ea613c083c4cd43ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#ad6ee89acf792378ea613c083c4cd43ca">effect_monster_gravity</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:ad6ee89acf792378ea613c083c4cd43ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4872803959d1e8a1c2a472c10b719dd2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a4872803959d1e8a1c2a472c10b719dd2">effect_monster_disintegration</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:a4872803959d1e8a1c2a472c10b719dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad359c539315fbcc283ee7463d53109fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#ad359c539315fbcc283ee7463d53109fe">effect_monster_icee_bolt</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="separator:ad359c539315fbcc283ee7463d53109fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecf83905908f611336269b585ccc95a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#aecf83905908f611336269b585ccc95a3">effect_monster_void</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="memdesc:aecf83905908f611336269b585ccc95a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">虚無属性の耐性と効果の発動  <a href="effect-monster-resist-hurt_8h.html#aecf83905908f611336269b585ccc95a3">[詳解]</a><br /></td></tr>
+<tr class="separator:aecf83905908f611336269b585ccc95a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a5810ed9d0457ce19c596f6af35066c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="effect-monster-resist-hurt_8h.html#a7a5810ed9d0457ce19c596f6af35066c">effect_monster_abyss</a> (<a class="el" href="structplayer__type.html">player_type</a> *caster_ptr, <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *em_ptr)</td></tr>
+<tr class="memdesc:a7a5810ed9d0457ce19c596f6af35066c"><td class="mdescLeft">&#160;</td><td class="mdescRight">深淵属性の耐性と効果の発動  <a href="effect-monster-resist-hurt_8h.html#a7a5810ed9d0457ce19c596f6af35066c">[詳解]</a><br /></td></tr>
+<tr class="separator:a7a5810ed9d0457ce19c596f6af35066c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">型定義詳解</h2>
+<a id="aea76ce1250a74a9a113f6672f9e62e4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea76ce1250a74a9a113f6672f9e62e4d">&#9670;&nbsp;</a></span>effect_monster_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structeffect__monster__type.html">effect_monster_type</a> <a class="el" href="structeffect__monster__type.html">effect_monster_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a7a5810ed9d0457ce19c596f6af35066c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a5810ed9d0457ce19c596f6af35066c">&#9670;&nbsp;</a></span>effect_monster_abyss()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_abyss </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>深淵属性の耐性と効果の発動 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">caster_ptr</td><td>プレイヤー情報への参照ポインタ @em_ptr 魔法効果情報への参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>効果処理を続けるかどうか @detail 飛ばないテレポート耐性に1.25倍打、暗黒耐性が耐性 1/3で追加に混乱か恐怖 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a7a5810ed9d0457ce19c596f6af35066c_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a7a5810ed9d0457ce19c596f6af35066c_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a7a5810ed9d0457ce19c596f6af35066c_cgraph" id="aeffect-monster-resist-hurt_8h_a7a5810ed9d0457ce19c596f6af35066c_cgraph">
+<area shape="rect" title="深淵属性の耐性と効果の発動" alt="" coords="5,56,155,83"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="203,5,367,32"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="415,56,580,83"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="221,107,348,133"/>
+<area shape="rect" href="monster-status_8cpp.html#af5149aae69ef6e936f6c691c691cd95a" title="モンスターの時限ステータスリストを追加する" alt="" coords="454,107,541,133"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#acd89fe746188ecd270865d3bd1a3a4ae" title="モンスターの時限ステータスリストを削除" alt="" coords="444,157,551,184"/>
+<area shape="rect" href="monster-status_8cpp.html#a8b634a687e3b64547e012114b21ed69c" title="モンスターの時限ステータスを取得する" alt="" coords="628,157,735,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a7a5810ed9d0457ce19c596f6af35066c_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a7a5810ed9d0457ce19c596f6af35066c_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a7a5810ed9d0457ce19c596f6af35066c_icgraph" id="aeffect-monster-resist-hurt_8h_a7a5810ed9d0457ce19c596f6af35066c_icgraph">
+<area shape="rect" title="深淵属性の耐性と効果の発動" alt="" coords="549,13,699,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0cc6d6926e0a558c2e4cce8f6dd60fdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cc6d6926e0a558c2e4cce8f6dd60fdd">&#9670;&nbsp;</a></span>effect_monster_acid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_acid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a0cc6d6926e0a558c2e4cce8f6dd60fdd_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a0cc6d6926e0a558c2e4cce8f6dd60fdd_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a0cc6d6926e0a558c2e4cce8f6dd60fdd_cgraph" id="aeffect-monster-resist-hurt_8h_a0cc6d6926e0a558c2e4cce8f6dd60fdd_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,144,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="192,5,356,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a0cc6d6926e0a558c2e4cce8f6dd60fdd_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a0cc6d6926e0a558c2e4cce8f6dd60fdd_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a0cc6d6926e0a558c2e4cce8f6dd60fdd_icgraph" id="aeffect-monster-resist-hurt_8h_a0cc6d6926e0a558c2e4cce8f6dd60fdd_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,688,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae61429426b9120e87444f555915d9dd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae61429426b9120e87444f555915d9dd3">&#9670;&nbsp;</a></span>effect_monster_chaos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_chaos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_ae61429426b9120e87444f555915d9dd3_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_ae61429426b9120e87444f555915d9dd3_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_ae61429426b9120e87444f555915d9dd3_cgraph" id="aeffect-monster-resist-hurt_8h_ae61429426b9120e87444f555915d9dd3_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,155,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="203,5,367,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_ae61429426b9120e87444f555915d9dd3_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_ae61429426b9120e87444f555915d9dd3_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_ae61429426b9120e87444f555915d9dd3_icgraph" id="aeffect-monster-resist-hurt_8h_ae61429426b9120e87444f555915d9dd3_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,699,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7c561ff4c71026c74cb2dad521a15505"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c561ff4c71026c74cb2dad521a15505">&#9670;&nbsp;</a></span>effect_monster_cold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_cold </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a7c561ff4c71026c74cb2dad521a15505_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a7c561ff4c71026c74cb2dad521a15505_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a7c561ff4c71026c74cb2dad521a15505_cgraph" id="aeffect-monster-resist-hurt_8h_a7c561ff4c71026c74cb2dad521a15505_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,144,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="192,5,356,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a7c561ff4c71026c74cb2dad521a15505_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a7c561ff4c71026c74cb2dad521a15505_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a7c561ff4c71026c74cb2dad521a15505_icgraph" id="aeffect-monster-resist-hurt_8h_a7c561ff4c71026c74cb2dad521a15505_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,688,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a06b9da66532741d74d49e5c30b98b1f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06b9da66532741d74d49e5c30b98b1f0">&#9670;&nbsp;</a></span>effect_monster_confusion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_confusion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a06b9da66532741d74d49e5c30b98b1f0_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a06b9da66532741d74d49e5c30b98b1f0_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a06b9da66532741d74d49e5c30b98b1f0_cgraph" id="aeffect-monster-resist-hurt_8h_a06b9da66532741d74d49e5c30b98b1f0_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,175,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="223,5,387,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a06b9da66532741d74d49e5c30b98b1f0_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a06b9da66532741d74d49e5c30b98b1f0_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a06b9da66532741d74d49e5c30b98b1f0_icgraph" id="aeffect-monster-resist-hurt_8h_a06b9da66532741d74d49e5c30b98b1f0_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,719,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7c03843064bd318f334104aa6947e3a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c03843064bd318f334104aa6947e3a3">&#9670;&nbsp;</a></span>effect_monster_disenchant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_disenchant </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a7c03843064bd318f334104aa6947e3a3_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a7c03843064bd318f334104aa6947e3a3_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a7c03843064bd318f334104aa6947e3a3_cgraph" id="aeffect-monster-resist-hurt_8h_a7c03843064bd318f334104aa6947e3a3_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,183,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="231,5,395,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a7c03843064bd318f334104aa6947e3a3_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a7c03843064bd318f334104aa6947e3a3_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a7c03843064bd318f334104aa6947e3a3_icgraph" id="aeffect-monster-resist-hurt_8h_a7c03843064bd318f334104aa6947e3a3_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,727,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4872803959d1e8a1c2a472c10b719dd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4872803959d1e8a1c2a472c10b719dd2">&#9670;&nbsp;</a></span>effect_monster_disintegration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_disintegration </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a4872803959d1e8a1c2a472c10b719dd2_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a4872803959d1e8a1c2a472c10b719dd2_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a4872803959d1e8a1c2a472c10b719dd2_cgraph" id="aeffect-monster-resist-hurt_8h_a4872803959d1e8a1c2a472c10b719dd2_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,196,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="244,5,408,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a4872803959d1e8a1c2a472c10b719dd2_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a4872803959d1e8a1c2a472c10b719dd2_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a4872803959d1e8a1c2a472c10b719dd2_icgraph" id="aeffect-monster-resist-hurt_8h_a4872803959d1e8a1c2a472c10b719dd2_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,740,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aac9b64231036c364f3d290de0879c273"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac9b64231036c364f3d290de0879c273">&#9670;&nbsp;</a></span>effect_monster_elec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_elec </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_aac9b64231036c364f3d290de0879c273_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_aac9b64231036c364f3d290de0879c273_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_aac9b64231036c364f3d290de0879c273_cgraph" id="aeffect-monster-resist-hurt_8h_aac9b64231036c364f3d290de0879c273_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,144,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="192,5,356,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_aac9b64231036c364f3d290de0879c273_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_aac9b64231036c364f3d290de0879c273_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_aac9b64231036c364f3d290de0879c273_icgraph" id="aeffect-monster-resist-hurt_8h_aac9b64231036c364f3d290de0879c273_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,688,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4d03cdea4536cafd5bc29714e710b781"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d03cdea4536cafd5bc29714e710b781">&#9670;&nbsp;</a></span>effect_monster_fire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_fire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a4d03cdea4536cafd5bc29714e710b781_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a4d03cdea4536cafd5bc29714e710b781_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a4d03cdea4536cafd5bc29714e710b781_cgraph" id="aeffect-monster-resist-hurt_8h_a4d03cdea4536cafd5bc29714e710b781_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,136,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="184,5,348,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a4d03cdea4536cafd5bc29714e710b781_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a4d03cdea4536cafd5bc29714e710b781_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a4d03cdea4536cafd5bc29714e710b781_icgraph" id="aeffect-monster-resist-hurt_8h_a4d03cdea4536cafd5bc29714e710b781_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,680,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a128a04a647f3fa0ac4ee916c322b40a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a128a04a647f3fa0ac4ee916c322b40a6">&#9670;&nbsp;</a></span>effect_monster_force()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_force </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a128a04a647f3fa0ac4ee916c322b40a6_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a128a04a647f3fa0ac4ee916c322b40a6_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a128a04a647f3fa0ac4ee916c322b40a6_cgraph" id="aeffect-monster-resist-hurt_8h_a128a04a647f3fa0ac4ee916c322b40a6_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,148,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="196,5,360,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a128a04a647f3fa0ac4ee916c322b40a6_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a128a04a647f3fa0ac4ee916c322b40a6_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a128a04a647f3fa0ac4ee916c322b40a6_icgraph" id="aeffect-monster-resist-hurt_8h_a128a04a647f3fa0ac4ee916c322b40a6_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,692,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad6ee89acf792378ea613c083c4cd43ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6ee89acf792378ea613c083c4cd43ca">&#9670;&nbsp;</a></span>effect_monster_gravity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_gravity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_ad6ee89acf792378ea613c083c4cd43ca_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_ad6ee89acf792378ea613c083c4cd43ca_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_ad6ee89acf792378ea613c083c4cd43ca_cgraph" id="aeffect-monster-resist-hurt_8h_ad6ee89acf792378ea613c083c4cd43ca_cgraph">
+<area shape="rect" title=" " alt="" coords="5,97,156,123"/>
+<area shape="rect" href="effect-monster-resist-hurt_8cpp.html#a265443bb6be67230eb3ee7d78d785c01" title=" " alt="" coords="221,5,371,47"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="436,17,600,43"/>
+<area shape="rect" href="effect-monster-resist-hurt_8cpp.html#af8fba029b8e24c4af42bdb2f612a9225" title=" " alt="" coords="204,122,388,149"/>
+<area shape="rect" href="effect-monster-resist-hurt_8cpp.html#aa9a644407046b9689c0ca58b86761add" title=" " alt="" coords="205,173,387,199"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="648,71,813,98"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="455,122,581,149"/>
+<area shape="rect" href="monster-status_8cpp.html#af5149aae69ef6e936f6c691c691cd95a" title="モンスターの時限ステータスリストを追加する" alt="" coords="687,122,774,149"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#acd89fe746188ecd270865d3bd1a3a4ae" title="モンスターの時限ステータスリストを削除" alt="" coords="677,173,784,199"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="486,173,550,199"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_ad6ee89acf792378ea613c083c4cd43ca_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_ad6ee89acf792378ea613c083c4cd43ca_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_ad6ee89acf792378ea613c083c4cd43ca_icgraph" id="aeffect-monster-resist-hurt_8h_ad6ee89acf792378ea613c083c4cd43ca_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,700,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab409a8c292181cef98cb31f318e27a84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab409a8c292181cef98cb31f318e27a84">&#9670;&nbsp;</a></span>effect_monster_hell_fire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_hell_fire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_ab409a8c292181cef98cb31f318e27a84_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_ab409a8c292181cef98cb31f318e27a84_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_ab409a8c292181cef98cb31f318e27a84_cgraph" id="aeffect-monster-resist-hurt_8h_ab409a8c292181cef98cb31f318e27a84_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,164,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="212,5,376,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_ab409a8c292181cef98cb31f318e27a84_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_ab409a8c292181cef98cb31f318e27a84_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_ab409a8c292181cef98cb31f318e27a84_icgraph" id="aeffect-monster-resist-hurt_8h_ab409a8c292181cef98cb31f318e27a84_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,708,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a70387f7890bb182fa07d32a00fda8e91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70387f7890bb182fa07d32a00fda8e91">&#9670;&nbsp;</a></span>effect_monster_holy_fire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_holy_fire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a70387f7890bb182fa07d32a00fda8e91_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a70387f7890bb182fa07d32a00fda8e91_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a70387f7890bb182fa07d32a00fda8e91_cgraph" id="aeffect-monster-resist-hurt_8h_a70387f7890bb182fa07d32a00fda8e91_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,168,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="216,5,380,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a70387f7890bb182fa07d32a00fda8e91_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a70387f7890bb182fa07d32a00fda8e91_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a70387f7890bb182fa07d32a00fda8e91_icgraph" id="aeffect-monster-resist-hurt_8h_a70387f7890bb182fa07d32a00fda8e91_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,712,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad359c539315fbcc283ee7463d53109fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad359c539315fbcc283ee7463d53109fe">&#9670;&nbsp;</a></span>effect_monster_icee_bolt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_icee_bolt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_ad359c539315fbcc283ee7463d53109fe_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_ad359c539315fbcc283ee7463d53109fe_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_ad359c539315fbcc283ee7463d53109fe_cgraph" id="aeffect-monster-resist-hurt_8h_ad359c539315fbcc283ee7463d53109fe_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,172,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="220,5,384,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_ad359c539315fbcc283ee7463d53109fe_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_ad359c539315fbcc283ee7463d53109fe_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_ad359c539315fbcc283ee7463d53109fe_icgraph" id="aeffect-monster-resist-hurt_8h_ad359c539315fbcc283ee7463d53109fe_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,716,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4c4ba742b23f04b1eedbae366b02f742"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c4ba742b23f04b1eedbae366b02f742">&#9670;&nbsp;</a></span>effect_monster_inertial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_inertial </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a4c4ba742b23f04b1eedbae366b02f742_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a4c4ba742b23f04b1eedbae366b02f742_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a4c4ba742b23f04b1eedbae366b02f742_cgraph" id="aeffect-monster-resist-hurt_8h_a4c4ba742b23f04b1eedbae366b02f742_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,157,83"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="205,5,369,32"/>
+<area shape="rect" href="monster-status_8cpp.html#a78b5cd48423fd762b521c45644da0385" title=" " alt="" coords="417,56,583,83"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#a70a3313581408d358cae74b128acceff" title=" " alt="" coords="224,107,351,133"/>
+<area shape="rect" href="monster-status_8cpp.html#af5149aae69ef6e936f6c691c691cd95a" title="モンスターの時限ステータスリストを追加する" alt="" coords="457,107,543,133"/>
+<area shape="rect" href="monster-status-setter_8cpp.html#acd89fe746188ecd270865d3bd1a3a4ae" title="モンスターの時限ステータスリストを削除" alt="" coords="447,157,553,184"/>
+<area shape="rect" href="monster-status_8cpp.html#a8b634a687e3b64547e012114b21ed69c" title="モンスターの時限ステータスを取得する" alt="" coords="631,157,737,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a4c4ba742b23f04b1eedbae366b02f742_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a4c4ba742b23f04b1eedbae366b02f742_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a4c4ba742b23f04b1eedbae366b02f742_icgraph" id="aeffect-monster-resist-hurt_8h_a4c4ba742b23f04b1eedbae366b02f742_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,701,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9947e4e750133460c3f2c0205249a5d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9947e4e750133460c3f2c0205249a5d2">&#9670;&nbsp;</a></span>effect_monster_nether()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_nether </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a9947e4e750133460c3f2c0205249a5d2_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a9947e4e750133460c3f2c0205249a5d2_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a9947e4e750133460c3f2c0205249a5d2_cgraph" id="aeffect-monster-resist-hurt_8h_a9947e4e750133460c3f2c0205249a5d2_cgraph">
+<area shape="rect" title=" " alt="" coords="5,42,156,69"/>
+<area shape="rect" href="effect-monster-resist-hurt_8cpp.html#ac4d9ae60ecc076c7612b4f1f10bc7ded" title=" " alt="" coords="204,5,355,47"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="403,42,567,69"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a9947e4e750133460c3f2c0205249a5d2_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a9947e4e750133460c3f2c0205249a5d2_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a9947e4e750133460c3f2c0205249a5d2_icgraph" id="aeffect-monster-resist-hurt_8h_a9947e4e750133460c3f2c0205249a5d2_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,700,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a96bac235061a89636f5eb5f34af178f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96bac235061a89636f5eb5f34af178f7">&#9670;&nbsp;</a></span>effect_monster_nexus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_nexus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a96bac235061a89636f5eb5f34af178f7_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a96bac235061a89636f5eb5f34af178f7_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a96bac235061a89636f5eb5f34af178f7_cgraph" id="aeffect-monster-resist-hurt_8h_a96bac235061a89636f5eb5f34af178f7_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,155,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="203,5,367,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a96bac235061a89636f5eb5f34af178f7_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a96bac235061a89636f5eb5f34af178f7_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a96bac235061a89636f5eb5f34af178f7_icgraph" id="aeffect-monster-resist-hurt_8h_a96bac235061a89636f5eb5f34af178f7_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,699,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4fc215449fa9316e358044f5de34b377"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fc215449fa9316e358044f5de34b377">&#9670;&nbsp;</a></span>effect_monster_nothing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_nothing </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターの耐性がなく、効果もない場合の処理 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">em_ptr</td><td>魔法効果情報への参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>効果処理を続ける </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a4fc215449fa9316e358044f5de34b377_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a4fc215449fa9316e358044f5de34b377_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a4fc215449fa9316e358044f5de34b377_icgraph" id="aeffect-monster-resist-hurt_8h_a4fc215449fa9316e358044f5de34b377_icgraph">
+<area shape="rect" title="モンスターの耐性がなく、効果もない場合の処理" alt="" coords="549,13,705,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4f0e2fd900f6919d07da5793a26abb73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f0e2fd900f6919d07da5793a26abb73">&#9670;&nbsp;</a></span>effect_monster_nuke()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_nuke </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a4f0e2fd900f6919d07da5793a26abb73_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a4f0e2fd900f6919d07da5793a26abb73_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a4f0e2fd900f6919d07da5793a26abb73_cgraph" id="aeffect-monster-resist-hurt_8h_a4f0e2fd900f6919d07da5793a26abb73_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,148,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="196,5,360,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a4f0e2fd900f6919d07da5793a26abb73_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a4f0e2fd900f6919d07da5793a26abb73_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a4f0e2fd900f6919d07da5793a26abb73_icgraph" id="aeffect-monster-resist-hurt_8h_a4f0e2fd900f6919d07da5793a26abb73_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,692,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a58cb0baa7852c622959d9b55edb2f867"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58cb0baa7852c622959d9b55edb2f867">&#9670;&nbsp;</a></span>effect_monster_plasma()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_plasma </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a58cb0baa7852c622959d9b55edb2f867_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a58cb0baa7852c622959d9b55edb2f867_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a58cb0baa7852c622959d9b55edb2f867_cgraph" id="aeffect-monster-resist-hurt_8h_a58cb0baa7852c622959d9b55edb2f867_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,161,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="209,5,373,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a58cb0baa7852c622959d9b55edb2f867_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a58cb0baa7852c622959d9b55edb2f867_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a58cb0baa7852c622959d9b55edb2f867_icgraph" id="aeffect-monster-resist-hurt_8h_a58cb0baa7852c622959d9b55edb2f867_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,705,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4129bee7ec37a3886249952b62b37bbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4129bee7ec37a3886249952b62b37bbc">&#9670;&nbsp;</a></span>effect_monster_pois()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_pois </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a4129bee7ec37a3886249952b62b37bbc_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a4129bee7ec37a3886249952b62b37bbc_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a4129bee7ec37a3886249952b62b37bbc_cgraph" id="aeffect-monster-resist-hurt_8h_a4129bee7ec37a3886249952b62b37bbc_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,144,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="192,5,356,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a4129bee7ec37a3886249952b62b37bbc_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a4129bee7ec37a3886249952b62b37bbc_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a4129bee7ec37a3886249952b62b37bbc_icgraph" id="aeffect-monster-resist-hurt_8h_a4129bee7ec37a3886249952b62b37bbc_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,688,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acfc81c1d29187e4474b0af8f5eceb91f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfc81c1d29187e4474b0af8f5eceb91f">&#9670;&nbsp;</a></span>effect_monster_rocket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_rocket </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_acfc81c1d29187e4474b0af8f5eceb91f_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_acfc81c1d29187e4474b0af8f5eceb91f_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_acfc81c1d29187e4474b0af8f5eceb91f_cgraph" id="aeffect-monster-resist-hurt_8h_acfc81c1d29187e4474b0af8f5eceb91f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,156,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="204,5,368,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_acfc81c1d29187e4474b0af8f5eceb91f_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_acfc81c1d29187e4474b0af8f5eceb91f_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_acfc81c1d29187e4474b0af8f5eceb91f_icgraph" id="aeffect-monster-resist-hurt_8h_acfc81c1d29187e4474b0af8f5eceb91f_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,700,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0a55c2725e059dad6be374b4f7a0c855"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a55c2725e059dad6be374b4f7a0c855">&#9670;&nbsp;</a></span>effect_monster_shards()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_shards </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a0a55c2725e059dad6be374b4f7a0c855_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a0a55c2725e059dad6be374b4f7a0c855_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a0a55c2725e059dad6be374b4f7a0c855_cgraph" id="aeffect-monster-resist-hurt_8h_a0a55c2725e059dad6be374b4f7a0c855_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,159,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="207,5,371,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a0a55c2725e059dad6be374b4f7a0c855_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a0a55c2725e059dad6be374b4f7a0c855_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a0a55c2725e059dad6be374b4f7a0c855_icgraph" id="aeffect-monster-resist-hurt_8h_a0a55c2725e059dad6be374b4f7a0c855_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,703,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a89f7951f0775d6b0077e51dd7b8f3c10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89f7951f0775d6b0077e51dd7b8f3c10">&#9670;&nbsp;</a></span>effect_monster_sound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_sound </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a89f7951f0775d6b0077e51dd7b8f3c10_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a89f7951f0775d6b0077e51dd7b8f3c10_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a89f7951f0775d6b0077e51dd7b8f3c10_cgraph" id="aeffect-monster-resist-hurt_8h_a89f7951f0775d6b0077e51dd7b8f3c10_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,155,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="203,5,367,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a89f7951f0775d6b0077e51dd7b8f3c10_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a89f7951f0775d6b0077e51dd7b8f3c10_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a89f7951f0775d6b0077e51dd7b8f3c10_icgraph" id="aeffect-monster-resist-hurt_8h_a89f7951f0775d6b0077e51dd7b8f3c10_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,699,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aaca4cdac26ffb7d789f16474043b2660"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaca4cdac26ffb7d789f16474043b2660">&#9670;&nbsp;</a></span>effect_monster_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_time </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_aaca4cdac26ffb7d789f16474043b2660_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_aaca4cdac26ffb7d789f16474043b2660_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_aaca4cdac26ffb7d789f16474043b2660_cgraph" id="aeffect-monster-resist-hurt_8h_aaca4cdac26ffb7d789f16474043b2660_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,144,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="192,5,356,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_aaca4cdac26ffb7d789f16474043b2660_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_aaca4cdac26ffb7d789f16474043b2660_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_aaca4cdac26ffb7d789f16474043b2660_icgraph" id="aeffect-monster-resist-hurt_8h_aaca4cdac26ffb7d789f16474043b2660_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,688,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aecf83905908f611336269b585ccc95a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecf83905908f611336269b585ccc95a3">&#9670;&nbsp;</a></span>effect_monster_void()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_void </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>虚無属性の耐性と効果の発動 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">caster_ptr</td><td>プレイヤー情報への参照ポインタ @em_ptr 魔法効果情報への参照ポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>効果処理を続けるかどうか @detail 量子生物に倍打、壁抜けに1.5倍打、テレポート耐性が耐性 </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_aecf83905908f611336269b585ccc95a3_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_aecf83905908f611336269b585ccc95a3_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_aecf83905908f611336269b585ccc95a3_cgraph" id="aeffect-monster-resist-hurt_8h_aecf83905908f611336269b585ccc95a3_cgraph">
+<area shape="rect" title="虚無属性の耐性と効果の発動" alt="" coords="5,5,141,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="189,5,353,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_aecf83905908f611336269b585ccc95a3_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_aecf83905908f611336269b585ccc95a3_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_aecf83905908f611336269b585ccc95a3_icgraph" id="aeffect-monster-resist-hurt_8h_aecf83905908f611336269b585ccc95a3_icgraph">
+<area shape="rect" title="虚無属性の耐性と効果の発動" alt="" coords="549,13,685,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a54f29c36577a14a25d7fc6b9378b69ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54f29c36577a14a25d7fc6b9378b69ec">&#9670;&nbsp;</a></span>effect_monster_water()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a906543cecbc333cb7bf9195e18a6ce16">process_result</a> effect_monster_water </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>caster_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structeffect__monster__type.html">effect_monster_type</a> *&#160;</td>
+          <td class="paramname"><em>em_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a54f29c36577a14a25d7fc6b9378b69ec_cgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a54f29c36577a14a25d7fc6b9378b69ec_cgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a54f29c36577a14a25d7fc6b9378b69ec_cgraph" id="aeffect-monster-resist-hurt_8h_a54f29c36577a14a25d7fc6b9378b69ec_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,151,32"/>
+<area shape="rect" href="monster-info_8cpp.html#aff808ee0286522b402650157e83d4ad9" title=" " alt="" coords="199,5,363,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="effect-monster-resist-hurt_8h_a54f29c36577a14a25d7fc6b9378b69ec_icgraph.png" border="0" usemap="#aeffect-monster-resist-hurt_8h_a54f29c36577a14a25d7fc6b9378b69ec_icgraph" alt=""/></div>
+<map name="aeffect-monster-resist-hurt_8h_a54f29c36577a14a25d7fc6b9378b69ec_icgraph" id="aeffect-monster-resist-hurt_8h_a54f29c36577a14a25d7fc6b9378b69ec_icgraph">
+<area shape="rect" title=" " alt="" coords="549,13,695,39"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="343,13,501,39"/>
+<area shape="rect" href="effect-monster_8cpp.html#a5f9c06996dc0e7e3f9bd2830df7ec351" title="モンスターへの効果属性による耐性及び効果を処理する( / Proccess affecting to monster by effect." alt="" coords="160,5,295,47"/>
+<area shape="rect" href="effect-monster_8cpp.html#a4d4214764408c581a05802ab59f7b518" title="汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster." alt="" coords="5,13,112,39"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

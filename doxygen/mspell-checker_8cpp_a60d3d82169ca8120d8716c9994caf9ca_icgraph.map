@@ -1,0 +1,52 @@
+<map id="breath" name="breath">
+<area shape="rect" id="node1" title="モンスターのボール型＆ブレス型魔法処理 / Cast a breath (or ball) attack at the player Pass over any monsters that may be..." alt="" coords="639,1223,697,1249"/>
+<area shape="rect" id="node2" href="$effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="470,767,531,793"/>
+<area shape="rect" id="node32" href="$mspell-ball_8cpp.html#a4cab35909a2d28fd5b89851b99eb841a" title="RF4_BA_CHAOの処理。純ログルス。 /" alt="" coords="426,817,575,844"/>
+<area shape="rect" id="node33" href="$mspell-ball_8cpp.html#afc0ae75c9c3bddad516ad2ed491d5873" title="RF4_BA_NUKEの処理。放射能球。 /" alt="" coords="427,868,575,895"/>
+<area shape="rect" id="node34" href="$mspell-breath_8cpp.html#a582e3df29a03e6ac31dc403c431cc2a9" title="RF4_BR_*の処理。各種ブレス。 /" alt="" coords="431,919,570,945"/>
+<area shape="rect" id="node35" href="$mspell-particularity_8cpp.html#aa32b6c70c3d0a32f05b5a805d26c1a20" title="ボルトでもボールでもブレスでもなく、ダメージを与える特殊なスペルの実行 / Performing special spells that take damage, not bolts,..." alt="" coords="431,969,571,996"/>
+<area shape="rect" id="node36" href="$mspell-ball_8cpp.html#a704f22efdade02d68769dedbcada3183" title="RF5_BA_ACIDの処理。アシッド・ボール。 /" alt="" coords="429,1020,572,1047"/>
+<area shape="rect" id="node37" href="$mspell-ball_8cpp.html#adadc6afa34b816d6083f024698d3195d" title="RF5_BA_COLDの処理。アイス・ボール。 /" alt="" coords="427,1071,574,1097"/>
+<area shape="rect" id="node38" href="$mspell-ball_8cpp.html#a8739ceb3fcadeec4268f250096fcc228" title="RF5_BA_DARKの処理。暗黒の嵐。 /" alt="" coords="427,1121,575,1148"/>
+<area shape="rect" id="node39" href="$mspell-ball_8cpp.html#a74e0ddb4aecb85dfc19131212a63a808" title="RF5_BA_ELECの処理。サンダー・ボール。 /" alt="" coords="427,1172,574,1199"/>
+<area shape="rect" id="node40" href="$mspell-ball_8cpp.html#ad784777e6fcd6cfac335bc7a8cc94d7d" title="RF5_BA_FIREの処理。ファイア・ボール。 /" alt="" coords="430,1223,571,1249"/>
+<area shape="rect" id="node41" href="$mspell-ball_8cpp.html#a46fb58e9da67621cc1ce61d2044af544" title="RF5_BA_LITEの処理。スターバースト。 /" alt="" coords="431,1273,570,1300"/>
+<area shape="rect" id="node42" href="$mspell-ball_8cpp.html#a21e7763aaf71afd7be257beaa67400f5" title="RF5_BA_MANAの処理。魔力の嵐。 /" alt="" coords="425,1324,576,1351"/>
+<area shape="rect" id="node43" href="$mspell-ball_8cpp.html#a7b49254d4ee1158c645ab4db3ccc244b" title="RF5_BA_NETHの処理。地獄球。 /" alt="" coords="427,1375,574,1401"/>
+<area shape="rect" id="node44" href="$mspell-ball_8cpp.html#afd6ce33c706536a81121e722658b5977" title="RF5_BA_POISの処理。悪臭雲。 /" alt="" coords="429,1425,572,1452"/>
+<area shape="rect" id="node45" href="$mspell-ball_8cpp.html#a4c6a0a6ce55f8492bc6ce74f015198d7" title="RF5_BA_WATEの処理。ウォーター・ボール。 /" alt="" coords="425,1476,576,1503"/>
+<area shape="rect" id="node46" href="$mspell-status_8cpp.html#a065e582b50d2b55a6a1971230ecd63b5" title="RF5_BRAIN_SMASHの処理。脳攻撃。 /" alt="" coords="411,1527,591,1553"/>
+<area shape="rect" id="node47" href="$mspell-curse_8cpp.html#a7623a3e7ab88fdfe4121ba213b832f86" title="RF5_CAUSE_* の処理関数" alt="" coords="435,1577,567,1604"/>
+<area shape="rect" id="node48" href="$mspell-status_8cpp.html#a1288b02a4c7726f068b75fc178d01817" title="RF5_DRAIN_MANAの処理。魔力吸収。 /" alt="" coords="415,1628,586,1655"/>
+<area shape="rect" id="node49" href="$mspell-status_8cpp.html#acf7af081a76ea3510b0d5fc034c5c247" title="RF5_MIND_BLASTの処理。精神攻撃。 /" alt="" coords="417,1679,584,1705"/>
+<area shape="rect" id="node50" href="$mspell-particularity_8cpp.html#ae09cca33184e52d71d4f09f7e13df9be" title="RF6_HAND_DOOMの処理。破滅の手。 /" alt="" coords="415,1729,586,1756"/>
+<area shape="rect" id="node3" href="$activation-bolt-ball_8cpp.html#a5f4625552656aee45b62542787f7cd08" title=" " alt="" coords="211,5,328,32"/>
+<area shape="rect" id="node4" href="$activation-others_8cpp.html#a42ed7012ce16db3e2e05111dbcb577d2" title=" " alt="" coords="197,56,341,83"/>
+<area shape="rect" id="node5" href="$spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="208,107,331,133"/>
+<area shape="rect" id="node6" href="$effect-feature_8cpp.html#ab60eea66f4d858035803d331e84151cc" title="汎用的なビーム/ボルト/ボール系による地形効果処理 / We are called from &quot;project()&quot; to &quot;damage&quot; terrain features" alt="" coords="17,220,116,247"/>
+<area shape="rect" id="node7" href="$effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="19,767,114,793"/>
+<area shape="rect" id="node8" href="$spells-neighbor_8cpp.html#ad8d6bd76ccded6edc3d938dddafbea6d" title="死者復活処理(起点より周囲5マス)" alt="" coords="218,283,321,309"/>
+<area shape="rect" id="node9" href="$monster-attack-monster_8cpp.html#a2c3318b5f3aed8ad86d874c1490f86af" title=" " alt="" coords="199,333,340,360"/>
+<area shape="rect" id="node10" href="$monster-attack-monster_8cpp.html#a65fc9979f5efe840339924249b7a8d48" title=" " alt="" coords="199,384,340,411"/>
+<area shape="rect" id="node11" href="$monster-attack-monster_8cpp.html#a3715ddccdb53d6a15e7e1d455332abc4" title=" " alt="" coords="202,435,337,461"/>
+<area shape="rect" id="node12" href="$aura-counterattack_8cpp.html#ae046ca978cc34c3daa319e1d28eb6e3a" title=" " alt="" coords="183,486,356,527"/>
+<area shape="rect" id="node13" href="$mspell-checker_8cpp.html#a8cdb77f4352965d8daaed40feabdd58f" title="モンスターのビーム型魔法処理 /" alt="" coords="242,552,297,579"/>
+<area shape="rect" id="node14" href="$blood-curse_8cpp.html#ac0ecc46e48f607918b001bc2b08b561f" title=" " alt="" coords="191,603,347,629"/>
+<area shape="rect" id="node15" href="$mspell-checker_8cpp.html#a50c4496847b82cffa5927970c2add403" title="モンスターのボルト型魔法処理 / Cast a bolt at the player Stop if we hit a monster Affect monsters and the player" alt="" coords="248,653,291,680"/>
+<area shape="rect" id="node16" href="$mind-elementalist_8cpp.html#ab738ba0734204e55707411a35acde85c" title="元素魔法呪文を実行する" alt="" coords="202,704,337,731"/>
+<area shape="rect" id="node17" href="$spells-chaos_8cpp.html#af16bb565fa9396a13ad62570b7d0344f" title="カオス魔法「流星群」/トランプ魔法「隕石のカード」の処理としてプレイヤーを中心に隕石落下処理を10+1d10回繰り返す。 / Drop 10+1d10 meteor ball at random pla..." alt="" coords="222,1048,317,1075"/>
+<area shape="rect" id="node18" href="$realm-chaos_8cpp.html#aecd893eaad88db684b7564d918abcf15" title="カオス領域魔法の各処理を行う" alt="" coords="11,1099,123,1125"/>
+<area shape="rect" id="node19" href="$mind-mindcrafter_8cpp.html#a8da07b1c4907a85709c965d06d9038cb" title="超能力の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;mindcrafter&#39;." alt="" coords="193,896,345,923"/>
+<area shape="rect" id="node20" href="$mind-mirror-master_8cpp.html#af68e01e109fc7fb8b1e131a7131ed4c5" title="鏡魔法の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;Mirror magic&#39;." alt="" coords="209,947,330,973"/>
+<area shape="rect" id="node21" href="$mind-ninja_8cpp.html#ae73c136f3f19a9d9d3691f8894bfad97" title="忍術の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;ninja&#39;." alt="" coords="212,997,327,1024"/>
+<area shape="rect" id="node22" href="$spells-crusade_8cpp.html#afb7053fa5419ad06ab18be525f1d92af" title="破邪魔法処理" alt="" coords="192,1200,347,1227"/>
+<area shape="rect" id="node23" href="$realm-crusade_8cpp.html#a09ff64eb86119ac6ab48ca90cae46c16" title="破邪領域魔法の各処理を行う" alt="" coords="5,1301,128,1328"/>
+<area shape="rect" id="node24" href="$grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="215,157,323,184"/>
+<area shape="rect" id="node25" href="$effect-player_8cpp.html#a15c922eb8fc168c85e08a24a4c37ef35" title="反射・忍者の変わり身などでそもそも当たらない状況を判定する" alt="" coords="192,830,347,871"/>
+<area shape="rect" id="node26" href="$cmd-mind_8cpp.html#a15c5dc7b21b8512778dd7d853adc5743" title=" " alt="" coords="188,1251,351,1277"/>
+<area shape="rect" id="node27" href="$cmd-mind_8cpp.html#a0fe944f2b028650d03e1d618168589af" title=" " alt="" coords="180,1301,359,1328"/>
+<area shape="rect" id="node28" href="$spells-neighbor_8cpp.html#abd44e8e6aabaade505734e841a075bc7" title="魔法のルーン生成処理(プレイヤー中心に周囲1マス)" alt="" coords="176,1352,363,1379"/>
+<area shape="rect" id="node29" href="$spells-neighbor_8cpp.html#af6d0cc0cfbba75815d7b4caa7aec3294" title="ドア破壊処理(プレイヤー中心に周囲1マス)" alt="" coords="198,1149,341,1176"/>
+<area shape="rect" id="node30" href="$spells-neighbor_8cpp.html#a5a588aed34a170d84a34d261b0c629ba" title="トラップ解除処理(プレイヤー中心に周囲1マス)" alt="" coords="201,1453,337,1480"/>
+<area shape="rect" id="node31" href="$spells-pet_8cpp.html#a4d1508b844fb21fa74cec6f11df83464" title="ペット爆破処理 /" alt="" coords="208,1504,331,1531"/>
+</map>

@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/mspell/mspell-lite.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d3503302c38a329207825687a87abf53.html">mspell</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mspell-lite.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="mspell-lite_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="mspell-lite_8h.html#aa3cb01ad99d0ae3d678914dd09879e66">    1</a></span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmonster__type.html">monster_type</a> <a class="code" href="structmonster__type.html">monster_type</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmsa__type.html">msa_type</a> <a class="code" href="structmsa__type.html">msa_type</a>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="mspell-lite_8h.html#a6c60d1cb2f2b29f80817ffc940bd03f4">    7</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> (*<a class="code" href="mspell-lite_8h.html#a6c60d1cb2f2b29f80817ffc940bd03f4">path_check_pf</a>)(<a class="code" href="structplayer__type.html">player_type</a> *, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="mspell-lite_8h.html#a00376991c69f6003fcad6cf1b3b4c28c">adjacent_grid_check</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmonster__type.html">monster_type</a> *<a class="code" href="structmsa__type.html#a3df435bb2e2d9cc7e01ec76835811616">m_ptr</a>, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *yp, <a class="code" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> *xp, <span class="keywordtype">int</span> f_flag, <a class="code" href="mspell-lite_8h.html#a6c60d1cb2f2b29f80817ffc940bd03f4">path_check_pf</a> path_check);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">void</span> <a class="code" href="mspell-lite_8h.html#a31c67bd69de673c6fa195b340ea42b13">decide_lite_range</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmsa__type.html">msa_type</a> *msa_ptr);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="mspell-lite_8h.html#a316166f8fac75707171476e2ab246562">decide_lite_projection</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmsa__type.html">msa_type</a> *msa_ptr);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> <a class="code" href="mspell-lite_8h.html#a64a157427640c8e581eecec67c3fd8a0">decide_lite_area</a>(<a class="code" href="structplayer__type.html">player_type</a> *target_ptr, <a class="code" href="structmsa__type.html">msa_type</a> *msa_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_aa76a678e41fd2b751e1a18b9f5dc8c03"><div class="ttname"><a href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a></div><div class="ttdeci">s32b POSITION</div><div class="ttdoc">ゲーム中の座標型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:127</div></div>
+<div class="ttc" id="ah-type_8h_html_ad5c9d4ba3dc37783a528b0925dc981a0"><div class="ttname"><a href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a></div><div class="ttdeci">char bool</div><div class="ttdoc">bool型をcharとして定義 / Note that a bool is smaller than a full &quot;int&quot; / Simple True/False type</div><div class="ttdef"><b>Definition:</b> h-type.h:70</div></div>
+<div class="ttc" id="amspell-lite_8h_html_a00376991c69f6003fcad6cf1b3b4c28c"><div class="ttname"><a href="mspell-lite_8h.html#a00376991c69f6003fcad6cf1b3b4c28c">adjacent_grid_check</a></div><div class="ttdeci">bool adjacent_grid_check(player_type *target_ptr, monster_type *m_ptr, POSITION *yp, POSITION *xp, int f_flag, path_check_pf path_check)</div><div class="ttdoc">モンスターの魔法によってフロアを明るくする処理及びその判定</div><div class="ttdef"><b>Definition:</b> mspell-lite.cpp:37</div></div>
+<div class="ttc" id="amspell-lite_8h_html_a316166f8fac75707171476e2ab246562"><div class="ttname"><a href="mspell-lite_8h.html#a316166f8fac75707171476e2ab246562">decide_lite_projection</a></div><div class="ttdeci">bool decide_lite_projection(player_type *target_ptr, msa_type *msa_ptr)</div><div class="ttdef"><b>Definition:</b> mspell-lite.cpp:160</div></div>
+<div class="ttc" id="amspell-lite_8h_html_a31c67bd69de673c6fa195b340ea42b13"><div class="ttname"><a href="mspell-lite_8h.html#a31c67bd69de673c6fa195b340ea42b13">decide_lite_range</a></div><div class="ttdeci">void decide_lite_range(player_type *target_ptr, msa_type *msa_ptr)</div><div class="ttdef"><b>Definition:</b> mspell-lite.cpp:70</div></div>
+<div class="ttc" id="amspell-lite_8h_html_a64a157427640c8e581eecec67c3fd8a0"><div class="ttname"><a href="mspell-lite_8h.html#a64a157427640c8e581eecec67c3fd8a0">decide_lite_area</a></div><div class="ttdeci">void decide_lite_area(player_type *target_ptr, msa_type *msa_ptr)</div><div class="ttdef"><b>Definition:</b> mspell-lite.cpp:176</div></div>
+<div class="ttc" id="amspell-lite_8h_html_a6c60d1cb2f2b29f80817ffc940bd03f4"><div class="ttname"><a href="mspell-lite_8h.html#a6c60d1cb2f2b29f80817ffc940bd03f4">path_check_pf</a></div><div class="ttdeci">bool(* path_check_pf)(player_type *, POSITION, POSITION, POSITION, POSITION)</div><div class="ttdef"><b>Definition:</b> mspell-lite.h:7</div></div>
+<div class="ttc" id="astructmonster__type_html"><div class="ttname"><a href="structmonster__type.html">monster_type</a></div><div class="ttdef"><b>Definition:</b> monster-type-definition.h:17</div></div>
+<div class="ttc" id="astructmsa__type_html"><div class="ttname"><a href="structmsa__type.html">msa_type</a></div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:20</div></div>
+<div class="ttc" id="astructmsa__type_html_a3df435bb2e2d9cc7e01ec76835811616"><div class="ttname"><a href="structmsa__type.html#a3df435bb2e2d9cc7e01ec76835811616">msa_type::m_ptr</a></div><div class="ttdeci">monster_type * m_ptr</div><div class="ttdef"><b>Definition:</b> mspell-attack-util.h:22</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分53秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

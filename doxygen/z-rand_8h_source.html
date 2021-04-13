@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/term/z-rand.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f015963f69ae14c534311f2118856536.html">term</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">z-rand.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="z-rand_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* File: z-rand.h */</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Copyright (c) 1997 Ben Harrison, and others</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * This software may be copied and distributed for educational, research,</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * and not for profit purposes provided that this copyright and statement</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * are included in all such copies.  Other copyrights may also apply.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef INCLUDED_Z_RAND_H</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define INCLUDED_Z_RAND_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="h-basic_8h.html">system/h-basic.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/**** Available constants ****/</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * Random Number Generator -- Degree of &quot;complex&quot; RNG -- see &quot;misc.c&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * This value is hard-coded at 63 for a wide variety of reasons.</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="z-rand_8h.html#a8396b29ae63ac8c700a03a412aefaab6">   22</a></span>&#160;<span class="preprocessor">#define RAND_DEG 63</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/**** Available macros ****/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * Generates a random long integer X where O&lt;=X&lt;M.</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * The integer X falls along a uniform distribution.</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * For example, if M is 100, you get &quot;percentile dice&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="z-rand_8h.html#a23b78b9f55884995c903e06387efec19">   31</a></span>&#160;<span class="preprocessor">#define randint0(M) ((s32b)Rand_div(M))</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> * Generates a random long integer X where A&lt;=X&lt;=B</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> * The integer X falls along a uniform distribution.</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> * Note: rand_range(0,N-1) == randint0(N)</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="z-rand_8h.html#a93f2767c6832ee0d27b2f7bb90199ac3">   38</a></span>&#160;<span class="preprocessor">#define rand_range(A, B) ((A) + (randint0(1 + (B) - (A))))</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> * Generate a random long integer X where A-D&lt;=X&lt;=A+D</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> * The integer X falls along a uniform distribution.</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> * Note: rand_spread(A,D) == rand_range(A-D,A+D)</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="z-rand_8h.html#a18ebaf5ac7eab29d5e78194f0dd63746">   45</a></span>&#160;<span class="preprocessor">#define rand_spread(A, D) ((A) + (randint0(1 + (D) + (D))) - (D))</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> * Generate a random long integer X where 1&lt;=X&lt;=M</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> * Also, &quot;correctly&quot; handle the case of M&lt;=1</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="z-rand_8h.html#ab4f02bf711332ee6013b47d10b801b3d">   51</a></span>&#160;<span class="preprocessor">#define randint1(M) (randint0(M) + 1)</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> * Evaluate to TRUE &quot;P&quot; percent of the time</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="z-rand_8h.html#a6827ef5a55fea9ff2dfaeb0e76dc858d">   56</a></span>&#160;<span class="preprocessor">#define magik(P) (randint0(100) &lt; (P))</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="z-rand_8h.html#a8049da507688f7748ee62852b23d04ad">   58</a></span>&#160;<span class="preprocessor">#define one_in_(X) (randint0(X) == 0)</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"> * Evaluate to TRUE &quot;S&quot; percent of the time</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="z-rand_8h.html#a02f0f69af2b8073378e7227c274f924e">   63</a></span>&#160;<span class="preprocessor">#define saving_throw(S) (randint0(100) &lt; (S))</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a> <a class="code" href="z-rand_8h.html#aaab944716e5d917a6eb96b1fa116c480">Rand_place</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="z-rand_8h.html#a2643bd94f99de1013291c7263c6a0450">Rand_state</a>[<a class="code" href="z-rand_8h.html#a8396b29ae63ac8c700a03a412aefaab6">RAND_DEG</a>];</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">void</span> <a class="code" href="z-rand_8h.html#a5642a076ff03c06a4ceadcd4278fb68e">Rand_state_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">void</span> <a class="code" href="z-rand_8h.html#af55655c6ec6752e3a7a0a8b076370159">Rand_state_set</a>(<a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> seed);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span> <a class="code" href="z-rand_8h.html#a6e8b3297783f26e114417358d21f30c4">Rand_state_backup</a>(<a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> *backup_state);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> <a class="code" href="z-rand_8h.html#a028d92135411a925dcf9c232e031a3c2">Rand_state_restore</a>(<a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> *backup_state);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="code" href="z-rand_8h.html#aa4863e87b78fe604a962889e9b4c6a6d">Rand_div</a>(<a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> m);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="z-rand_8h.html#a73f3287c335a4dbfebdc5cfa30462b91">randnor</a>(<span class="keywordtype">int</span> mean, <span class="keywordtype">int</span> stand);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="z-rand_8h.html#ab6e70da7e57e1a2b64363b1f94f1284e">damroll</a>(<a class="code" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a> num, <a class="code" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a> sides);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<a class="code" href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a> <a class="code" href="z-rand_8h.html#aad0bf68339aca559471bcf0ff21c049d">maxroll</a>(<a class="code" href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a> num, <a class="code" href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a> sides);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="code" href="z-rand_8h.html#a69ffadeab09ff528e10b1ee8edcbaf2e">div_round</a>(<a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> n, <a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> d);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> <a class="code" href="z-rand_8h.html#ac0eb0bdd9e321a354aaee69cdee5ba5e">Rand_external</a>(<a class="code" href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a> m);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="z-rand_8h.html#adc6eb01f3840ddb3e55bb47fd92e9cc7">next_bool</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="ah-basic_8h_html"><div class="ttname"><a href="h-basic_8h.html">h-basic.h</a></div><div class="ttdoc">変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file.</div></div>
+<div class="ttc" id="ah-type_8h_html_a192c51b1ed9cf77f1a597d8e2ef32ed5"><div class="ttname"><a href="h-type_8h.html#a192c51b1ed9cf77f1a597d8e2ef32ed5">s16b</a></div><div class="ttdeci">signed short s16b</div><div class="ttdef"><b>Definition:</b> h-type.h:83</div></div>
+<div class="ttc" id="ah-type_8h_html_abd34196d60f0f739ccfb2d8fb3eedc26"><div class="ttname"><a href="h-type_8h.html#abd34196d60f0f739ccfb2d8fb3eedc26">DICE_NUMBER</a></div><div class="ttdeci">int DICE_NUMBER</div><div class="ttdoc">ゲーム中のダイス数の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:185</div></div>
+<div class="ttc" id="ah-type_8h_html_adc9bfdf1fe589edec2328018c5fd91e4"><div class="ttname"><a href="h-type_8h.html#adc9bfdf1fe589edec2328018c5fd91e4">DICE_SID</a></div><div class="ttdeci">int DICE_SID</div><div class="ttdoc">ゲーム中のダイス面の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:186</div></div>
+<div class="ttc" id="ah-type_8h_html_ae21ecc67b92c35422853544364e96b42"><div class="ttname"><a href="h-type_8h.html#ae21ecc67b92c35422853544364e96b42">u16b</a></div><div class="ttdeci">unsigned short u16b</div><div class="ttdef"><b>Definition:</b> h-type.h:84</div></div>
+<div class="ttc" id="ah-type_8h_html_af28a46c3af7b537a7cf39e1f7e6bf81c"><div class="ttname"><a href="h-type_8h.html#af28a46c3af7b537a7cf39e1f7e6bf81c">s32b</a></div><div class="ttdeci">signed long s32b</div><div class="ttdef"><b>Definition:</b> h-type.h:92</div></div>
+<div class="ttc" id="ah-type_8h_html_af7a1de980667931f896ae6a820f0ee80"><div class="ttname"><a href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a></div><div class="ttdeci">unsigned long u32b</div><div class="ttdef"><b>Definition:</b> h-type.h:93</div></div>
+<div class="ttc" id="az-rand_8h_html_a028d92135411a925dcf9c232e031a3c2"><div class="ttname"><a href="z-rand_8h.html#a028d92135411a925dcf9c232e031a3c2">Rand_state_restore</a></div><div class="ttdeci">void Rand_state_restore(u32b *backup_state)</div><div class="ttdef"><b>Definition:</b> z-rand.cpp:164</div></div>
+<div class="ttc" id="az-rand_8h_html_a2643bd94f99de1013291c7263c6a0450"><div class="ttname"><a href="z-rand_8h.html#a2643bd94f99de1013291c7263c6a0450">Rand_state</a></div><div class="ttdeci">u32b Rand_state[RAND_DEG]</div><div class="ttdef"><b>Definition:</b> z-rand.cpp:60</div></div>
+<div class="ttc" id="az-rand_8h_html_a5642a076ff03c06a4ceadcd4278fb68e"><div class="ttname"><a href="z-rand_8h.html#a5642a076ff03c06a4ceadcd4278fb68e">Rand_state_init</a></div><div class="ttdeci">void Rand_state_init(void)</div><div class="ttdef"><b>Definition:</b> z-rand.cpp:110</div></div>
+<div class="ttc" id="az-rand_8h_html_a69ffadeab09ff528e10b1ee8edcbaf2e"><div class="ttname"><a href="z-rand_8h.html#a69ffadeab09ff528e10b1ee8edcbaf2e">div_round</a></div><div class="ttdeci">s32b div_round(s32b n, s32b d)</div><div class="ttdef"><b>Definition:</b> z-rand.cpp:328</div></div>
+<div class="ttc" id="az-rand_8h_html_a6e8b3297783f26e114417358d21f30c4"><div class="ttname"><a href="z-rand_8h.html#a6e8b3297783f26e114417358d21f30c4">Rand_state_backup</a></div><div class="ttdeci">void Rand_state_backup(u32b *backup_state)</div><div class="ttdef"><b>Definition:</b> z-rand.cpp:152</div></div>
+<div class="ttc" id="az-rand_8h_html_a73f3287c335a4dbfebdc5cfa30462b91"><div class="ttname"><a href="z-rand_8h.html#a73f3287c335a4dbfebdc5cfa30462b91">randnor</a></div><div class="ttdeci">s16b randnor(int mean, int stand)</div><div class="ttdef"><b>Definition:</b> z-rand.cpp:269</div></div>
+<div class="ttc" id="az-rand_8h_html_a8396b29ae63ac8c700a03a412aefaab6"><div class="ttname"><a href="z-rand_8h.html#a8396b29ae63ac8c700a03a412aefaab6">RAND_DEG</a></div><div class="ttdeci">#define RAND_DEG</div><div class="ttdef"><b>Definition:</b> z-rand.h:22</div></div>
+<div class="ttc" id="az-rand_8h_html_aa4863e87b78fe604a962889e9b4c6a6d"><div class="ttname"><a href="z-rand_8h.html#aa4863e87b78fe604a962889e9b4c6a6d">Rand_div</a></div><div class="ttdeci">s32b Rand_div(s32b m)</div><div class="ttdef"><b>Definition:</b> z-rand.cpp:196</div></div>
+<div class="ttc" id="az-rand_8h_html_aaab944716e5d917a6eb96b1fa116c480"><div class="ttname"><a href="z-rand_8h.html#aaab944716e5d917a6eb96b1fa116c480">Rand_place</a></div><div class="ttdeci">u16b Rand_place</div><div class="ttdef"><b>Definition:</b> z-rand.cpp:54</div></div>
+<div class="ttc" id="az-rand_8h_html_aad0bf68339aca559471bcf0ff21c049d"><div class="ttname"><a href="z-rand_8h.html#aad0bf68339aca559471bcf0ff21c049d">maxroll</a></div><div class="ttdeci">s16b maxroll(DICE_NUMBER num, DICE_SID sides)</div><div class="ttdef"><b>Definition:</b> z-rand.cpp:322</div></div>
+<div class="ttc" id="az-rand_8h_html_ab6e70da7e57e1a2b64363b1f94f1284e"><div class="ttname"><a href="z-rand_8h.html#ab6e70da7e57e1a2b64363b1f94f1284e">damroll</a></div><div class="ttdeci">s16b damroll(DICE_NUMBER num, DICE_SID sides)</div><div class="ttdef"><b>Definition:</b> z-rand.cpp:311</div></div>
+<div class="ttc" id="az-rand_8h_html_ac0eb0bdd9e321a354aaee69cdee5ba5e"><div class="ttname"><a href="z-rand_8h.html#ac0eb0bdd9e321a354aaee69cdee5ba5e">Rand_external</a></div><div class="ttdeci">s32b Rand_external(s32b m)</div><div class="ttdef"><b>Definition:</b> z-rand.cpp:361</div></div>
+<div class="ttc" id="az-rand_8h_html_adc6eb01f3840ddb3e55bb47fd92e9cc7"><div class="ttname"><a href="z-rand_8h.html#adc6eb01f3840ddb3e55bb47fd92e9cc7">next_bool</a></div><div class="ttdeci">bool next_bool()</div><div class="ttdef"><b>Definition:</b> z-rand.cpp:376</div></div>
+<div class="ttc" id="az-rand_8h_html_af55655c6ec6752e3a7a0a8b076370159"><div class="ttname"><a href="z-rand_8h.html#af55655c6ec6752e3a7a0a8b076370159">Rand_state_set</a></div><div class="ttdeci">void Rand_state_set(u32b seed)</div><div class="ttdef"><b>Definition:</b> z-rand.cpp:108</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分55秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player/player-skill.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_975424cdae97a07db69e55371758444e.html">player</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">player-skill.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="player-skill_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a520fb2f33fd525fd3566e3cd2d9fcb56">    7</a></span>&#160;<span class="preprocessor">#define GINOU_SUDE 0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a84f4526471e197abe7518d5f2fdb4f45">    8</a></span>&#160;<span class="preprocessor">#define GINOU_NITOURYU 1</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a4f7a189bcb1013991b0ba4b64a76161a">    9</a></span>&#160;<span class="preprocessor">#define GINOU_RIDING 2</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="player-skill_8h.html#afa5d976a9ba1ea0af4d8961c3d00c34a">   10</a></span>&#160;<span class="preprocessor">#define GINOU_SHIELD 3</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a5def5b552210eca010ca022be76ad263">   11</a></span>&#160;<span class="preprocessor">#define GINOU_TEMPMAX 4</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/* Proficiency level */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a8f483a40a82325dd3be9f6c45bf8555e">   14</a></span>&#160;<span class="preprocessor">#define EXP_LEVEL_UNSKILLED 0</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="player-skill_8h.html#ae2595bf8e81e8849f7d83afb1b7f3152">   15</a></span>&#160;<span class="preprocessor">#define EXP_LEVEL_BEGINNER 1</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a1e752175a5719dabe9909a9cba237f4a">   16</a></span>&#160;<span class="preprocessor">#define EXP_LEVEL_SKILLED 2</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a8da96e543f0b1224a098675ce7bd4994">   17</a></span>&#160;<span class="preprocessor">#define EXP_LEVEL_EXPERT 3</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a2f6f5631de913ef13f0f6b2adbc4dd2e">   18</a></span>&#160;<span class="preprocessor">#define EXP_LEVEL_MASTER 4</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/* Proficiency of weapons and misc. skills (except riding) */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="player-skill_8h.html#ad55a0351267500173361a5d4530c7a22">   21</a></span>&#160;<span class="preprocessor">#define WEAPON_EXP_UNSKILLED 0</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="player-skill_8h.html#afefd98e6017c1ed56c443c8b75afd834">   22</a></span>&#160;<span class="preprocessor">#define WEAPON_EXP_BEGINNER 4000</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a439837792233e7437448bb85c0282826">   23</a></span>&#160;<span class="preprocessor">#define WEAPON_EXP_SKILLED 6000</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a11ab16a08eae0742a8555c8566700936">   24</a></span>&#160;<span class="preprocessor">#define WEAPON_EXP_EXPERT 7000</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a62803ed9f9052f01b94aacd5cac7da5f">   25</a></span>&#160;<span class="preprocessor">#define WEAPON_EXP_MASTER 8000</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/* Proficiency of riding */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a55b113ad631b4a03c923e68443c55f9a">   28</a></span>&#160;<span class="preprocessor">#define RIDING_EXP_UNSKILLED 0</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a47b57ec2a8273c58416b1024f06efdf0">   29</a></span>&#160;<span class="preprocessor">#define RIDING_EXP_BEGINNER 500</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a72407ed5c074e9d560bfcebc743a2ff8">   30</a></span>&#160;<span class="preprocessor">#define RIDING_EXP_SKILLED 2000</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="player-skill_8h.html#ace555972a6c432fc9b5bb8196b7f4b6e">   31</a></span>&#160;<span class="preprocessor">#define RIDING_EXP_EXPERT 5000</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a01600fb9c6e10a176418526c759d93ad">   32</a></span>&#160;<span class="preprocessor">#define RIDING_EXP_MASTER 8000</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/* Proficiency of spells */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a2850aa76b33e747b312e9f7e344c99bd">   35</a></span>&#160;<span class="preprocessor">#define SPELL_EXP_UNSKILLED 0</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="player-skill_8h.html#afaab55640635e8de8a72dc65af17dc11">   36</a></span>&#160;<span class="preprocessor">#define SPELL_EXP_BEGINNER 900</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a1a10b86b9774454108049cfef469f602">   37</a></span>&#160;<span class="preprocessor">#define SPELL_EXP_SKILLED 1200</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a15d21e424fd6d57ca99e42eeebe13222">   38</a></span>&#160;<span class="preprocessor">#define SPELL_EXP_EXPERT 1400</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a7e9dbe66aa493bcca109b0c427174cad">   39</a></span>&#160;<span class="preprocessor">#define SPELL_EXP_MASTER 1600</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> <a class="code" href="player-skill_8h.html#a2fbb9b932adde54abc3d6acd2e1b3876">exp_level_str</a>[5];</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"> * Information about &quot;skill&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structskill__table.html">   46</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structskill__table.html">skill_table</a> {</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structskill__table.html#aa689c843ed57ec57cb41d067bb79b7dd">   47</a></span>&#160;    <a class="code" href="h-type_8h.html#a6ec77bf1bea30a6355c842de60743dcb">SUB_EXP</a> <a class="code" href="structskill__table.html#aa689c843ed57ec57cb41d067bb79b7dd">w_start</a>[5][64]{}; <span class="comment">/* start weapon exp */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structskill__table.html#ad79db5c023d9f2d9ff822ab34cd671eb">   48</a></span>&#160;    <a class="code" href="h-type_8h.html#a6ec77bf1bea30a6355c842de60743dcb">SUB_EXP</a> <a class="code" href="structskill__table.html#ad79db5c023d9f2d9ff822ab34cd671eb">w_max</a>[5][64]{}; <span class="comment">/* max weapon exp */</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structskill__table.html#a429f80c0579efe3a9855267b517c627c">   49</a></span>&#160;    <a class="code" href="h-type_8h.html#a6ec77bf1bea30a6355c842de60743dcb">SUB_EXP</a> <a class="code" href="structskill__table.html#a429f80c0579efe3a9855267b517c627c">s_start</a>[10]{}; <span class="comment">/* start skill */</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structskill__table.html#a38ad5ae555d1160a6738ac91613d237b">   50</a></span>&#160;    <a class="code" href="h-type_8h.html#a6ec77bf1bea30a6355c842de60743dcb">SUB_EXP</a> <a class="code" href="structskill__table.html#a38ad5ae555d1160a6738ac91613d237b">s_max</a>[10]{}; <span class="comment">/* max skill */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="player-skill_8h.html#a6c1a7186e22fd35f22c36160a461385e">   51</a></span>&#160;} <a class="code" href="player-skill_8h.html#a6c1a7186e22fd35f22c36160a461385e">skill_table</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">extern</span> std::vector&lt;skill_table&gt; <a class="code" href="player-skill_8h.html#af93cf7485ca3bfa675296f1d64be666d">s_info</a>;</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a6ec77bf1bea30a6355c842de60743dcb"><div class="ttname"><a href="h-type_8h.html#a6ec77bf1bea30a6355c842de60743dcb">SUB_EXP</a></div><div class="ttdeci">s16b SUB_EXP</div><div class="ttdoc">ゲーム中の副経験値の型定義</div><div class="ttdef"><b>Definition:</b> h-type.h:179</div></div>
+<div class="ttc" id="ah-type_8h_html_af792750f10cc3fb0d64db2ebfb385fa6"><div class="ttname"><a href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a></div><div class="ttdeci">const char * concptr</div><div class="ttdoc">文字列定数用ポインタ定義 / A simple pointer (to unmodifiable strings)</div><div class="ttdef"><b>Definition:</b> h-type.h:45</div></div>
+<div class="ttc" id="aplayer-skill_8h_html_a2fbb9b932adde54abc3d6acd2e1b3876"><div class="ttname"><a href="player-skill_8h.html#a2fbb9b932adde54abc3d6acd2e1b3876">exp_level_str</a></div><div class="ttdeci">const concptr exp_level_str[5]</div><div class="ttdoc">技能値到達表記テーブル</div><div class="ttdef"><b>Definition:</b> player-skill.cpp:11</div></div>
+<div class="ttc" id="aplayer-skill_8h_html_a6c1a7186e22fd35f22c36160a461385e"><div class="ttname"><a href="player-skill_8h.html#a6c1a7186e22fd35f22c36160a461385e">skill_table</a></div><div class="ttdeci">struct skill_table skill_table</div></div>
+<div class="ttc" id="aplayer-skill_8h_html_af93cf7485ca3bfa675296f1d64be666d"><div class="ttname"><a href="player-skill_8h.html#af93cf7485ca3bfa675296f1d64be666d">s_info</a></div><div class="ttdeci">std::vector&lt; skill_table &gt; s_info</div><div class="ttdef"><b>Definition:</b> player-skill.cpp:6</div></div>
+<div class="ttc" id="astructskill__table_html"><div class="ttname"><a href="structskill__table.html">skill_table</a></div><div class="ttdef"><b>Definition:</b> player-skill.h:46</div></div>
+<div class="ttc" id="astructskill__table_html_a38ad5ae555d1160a6738ac91613d237b"><div class="ttname"><a href="structskill__table.html#a38ad5ae555d1160a6738ac91613d237b">skill_table::s_max</a></div><div class="ttdeci">SUB_EXP s_max[10]</div><div class="ttdef"><b>Definition:</b> player-skill.h:50</div></div>
+<div class="ttc" id="astructskill__table_html_a429f80c0579efe3a9855267b517c627c"><div class="ttname"><a href="structskill__table.html#a429f80c0579efe3a9855267b517c627c">skill_table::s_start</a></div><div class="ttdeci">SUB_EXP s_start[10]</div><div class="ttdef"><b>Definition:</b> player-skill.h:49</div></div>
+<div class="ttc" id="astructskill__table_html_aa689c843ed57ec57cb41d067bb79b7dd"><div class="ttname"><a href="structskill__table.html#aa689c843ed57ec57cb41d067bb79b7dd">skill_table::w_start</a></div><div class="ttdeci">SUB_EXP w_start[5][64]</div><div class="ttdef"><b>Definition:</b> player-skill.h:47</div></div>
+<div class="ttc" id="astructskill__table_html_ad79db5c023d9f2d9ff822ab34cd671eb"><div class="ttname"><a href="structskill__table.html#ad79db5c023d9f2d9ff822ab34cd671eb">skill_table::w_max</a></div><div class="ttdeci">SUB_EXP w_max[5][64]</div><div class="ttdef"><b>Definition:</b> player-skill.h:48</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

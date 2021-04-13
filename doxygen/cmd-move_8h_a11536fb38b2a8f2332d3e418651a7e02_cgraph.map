@@ -1,0 +1,52 @@
+<map id="do_cmd_stay" name="do_cmd_stay">
+<area shape="rect" id="node1" title="「留まる」動作コマンドのメインルーチン / Stay still." alt="" coords="5,2029,105,2055"/>
+<area shape="rect" id="node2" href="$player-move_8cpp.html#ac637efbeba2a2fca5538ee13812b97bf" title="移動に伴うプレイヤーのステータス変化処理" alt="" coords="153,1471,285,1498"/>
+<area shape="rect" id="node16" href="$player-status_8cpp.html#a421634c10fa887793e9a6f3a311e9bd4" title=" " alt="" coords="1102,2313,1178,2339"/>
+<area shape="rect" id="node3" href="$player-inventory_8cpp.html#a9a1c3265a4b625e9f772baa1c55a0a3e" title="プレイヤーがオブジェクト上に乗った際の表示処理 / Player &quot;wants&quot; to pick up an object or gold." alt="" coords="374,686,425,713"/>
+<area shape="rect" id="node10" href="$grid_8cpp.html#a0f247cfe3fd3a4d0008c63b0af7da303" title=" " alt="" coords="1105,189,1175,215"/>
+<area shape="rect" id="node12" href="$display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="1101,1573,1179,1599"/>
+<area shape="rect" id="node13" href="$window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="1245,1573,1340,1599"/>
+<area shape="rect" id="node14" href="$disturbance_8cpp.html#abb571f41d3e333cf82ad7f01284f8d82" title=" " alt="" coords="759,1167,821,1194"/>
+<area shape="rect" id="node15" href="$action-setter_8cpp.html#ad255d4488d697515c99975cc2f54f7b4" title="プレイヤーの継続行動処理" alt="" coords="932,2041,1015,2067"/>
+<area shape="rect" id="node17" href="$target-checker_8cpp.html#ab5d9c439bff580356189f8c2d51c4cb6" title="マップ描画のフォーカスを当てるべき座標を更新する" alt="" coords="929,1117,1018,1143"/>
+<area shape="rect" id="node19" href="$stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="928,1674,1019,1701"/>
+<area shape="rect" id="node20" href="$player-status_8cpp.html#a33b0ae34c873d05b66b6aa5dbd322b7d" title="update のフラグに応じた更新をまとめて行う / Handle &quot;update&quot;" alt="" coords="1083,1877,1197,1903"/>
+<area shape="rect" id="node23" href="$quest_8cpp.html#af5f55968be72b94b441f35b7dd1b954f" title="クエストを達成状態にする /" alt="" coords="342,2130,457,2157"/>
+<area shape="rect" id="node25" href="$trap_8cpp.html#a3a6c4bccfd944baf84f4dd98576a366b" title="マスに存在する隠しトラップを公開する / Disclose an invisible trap" alt="" coords="350,1269,449,1295"/>
+<area shape="rect" id="node27" href="$effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="759,1573,821,1599"/>
+<area shape="rect" id="node28" href="$cave_8cpp.html#ac69872aa54de3f8ee80b6f0f933ebbcd" title=" " alt="" coords="929,2319,1017,2346"/>
+<area shape="rect" id="node29" href="$floor-util_8cpp.html#a55b8372d09aa23fc13570fc08c8fca68" title=" " alt="" coords="358,2282,441,2309"/>
+<area shape="rect" id="node30" href="$player-status_8cpp.html#a66e3d8439c969c25980516bbf58c5cad" title=" " alt="" coords="363,2333,435,2359"/>
+<area shape="rect" id="node31" href="$trap_8cpp.html#a5eaa65a0bbcf83191089866fb31961c6" title="プレイヤーへのトラップ作動処理メインルーチン / Handle player hitting a real trap" alt="" coords="367,1826,432,1853"/>
+<area shape="rect" id="node43" href="$feature_8cpp.html#ad0f1f52fc2d5637a690cceaf1635a15b" title="地形が罠持ちであるかの判定を行う。 / Return TRUE if the given feature is a trap" alt="" coords="560,2231,621,2258"/>
+<area shape="rect" id="node44" href="$quest_8cpp.html#a0e307defb7da8eaf5b5b6815722c0043" title="クエスト階層から離脱する際の処理" alt="" coords="333,2041,465,2067"/>
+<area shape="rect" id="node45" href="$player-status_8cpp.html#ae21c4009fcc8ea204f291f1fcb989d8c" title=" " alt="" coords="347,2383,452,2410"/>
+<area shape="rect" id="node46" href="$grid_8cpp.html#a90a8ac3022bff7cdeddf03830a82b39d" title="指定された座標をプレイヤー収められていない状態かどうか / Returns true if the player&#39;s grid is dark" alt="" coords="561,1319,621,1346"/>
+<area shape="rect" id="node47" href="$player-move_8cpp.html#a065d2dfda4580aec2d9d8a9844fbff38" title="プレイヤーの探索処理判定" alt="" coords="369,1370,430,1397"/>
+<area shape="rect" id="node48" href="$mind-ninja_8cpp.html#a52ea1929bb465180b42d7321e65512eb" title="超隠密状態をセットする" alt="" coords="531,1269,650,1295"/>
+<area shape="rect" id="node49" href="$monster-update_8cpp.html#a2813cd48be3165ceff9b8c77da15da3f" title="モンスターの各情報を更新する / This function updates the monster record of the given monster" alt="" coords="342,1167,457,1194"/>
+<area shape="rect" id="node50" href="$spells-floor_8cpp.html#a58bb3720e60355338abbe9b40d1365fa" title=" " alt="" coords="363,62,436,89"/>
+<area shape="rect" id="node4" href="$autopick_8cpp.html#aa84c8c12cf35bd08cc70374c9bf70413" title=" " alt="" coords="513,661,668,687"/>
+<area shape="rect" id="node5" href="$inventory-object_8cpp.html#a309b68c38ed98e7a68c60d9d8e3f43c6" title="アイテムが拾えるものかどうか返す。" alt="" coords="733,341,847,367"/>
+<area shape="rect" id="node6" href="$inventory-object_8cpp.html#aad3adf7a8cb5e6bb5710afd9b2de93d0" title="アイテムを拾う際にザックから溢れずに済むかを判定する / Check if we have space for an item in the pack without overflow" alt="" coords="719,544,861,585"/>
+<area shape="rect" id="node7" href="$flavor-describer_8cpp.html#a88c317247e35964cbfe63a986d69ab7a" title="オブジェクトの各表記を返すメイン関数 / Creates a description of the item &quot;o_ptr&quot;, and stores it in &quot;out_val&quot;." alt="" coords="920,649,1027,675"/>
+<area shape="rect" id="node8" href="$player-inventory_8cpp.html#a870affd57aaed3be875c174410ecf5d3" title="プレイヤーがオブジェクトを拾った際のメッセージ表示処理 / Helper routine for py_pickup() and py_pickup_floor()." alt="" coords="716,711,864,738"/>
+<area shape="rect" id="node9" href="$floor-object_8cpp.html#af338285652093066df1fda01f9b4fed2" title="オブジェクトを削除する / Delete a dungeon object" alt="" coords="912,214,1035,241"/>
+<area shape="rect" id="node11" href="$display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="928,794,1019,821"/>
+<area shape="rect" id="node18" href="$asking-player_8cpp.html#aa4ba425d5e56a3b73b8b4fab36ae998f" title=" " alt="" coords="749,610,831,637"/>
+<area shape="rect" id="node21" href="$player-inventory_8cpp.html#afcd849ce59bc779d896da0d7287e9c68" title="床上のアイテムを拾うメイン処理" alt="" coords="535,497,647,523"/>
+<area shape="rect" id="node22" href="$sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="945,1471,1002,1498"/>
+<area shape="rect" id="node24" href="$write-diary_8cpp.html#a22a7081309e37aa6eed6270bae811b79" title="日記にメッセージを追加する / Take note to the diary." alt="" coords="535,2282,647,2309"/>
+<area shape="rect" id="node26" href="$grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="537,1421,645,1447"/>
+<area shape="rect" id="node32" href="$player-damage_8cpp.html#a2cc414088296f068951969e2748ba07e" title="酸属性によるプレイヤー損害処理 / Hurt the player with Acid" alt="" coords="551,2181,630,2207"/>
+<area shape="rect" id="node33" href="$spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="529,1877,652,1903"/>
+<area shape="rect" id="node34" href="$spells-sight_8cpp.html#a38649e896637efab6c1c96d71f870948" title="視界内モンスターを怒らせる処理 / Wake up all monsters, and speed up &quot;los&quot; monsters." alt="" coords="721,1877,859,1903"/>
+<area shape="rect" id="node35" href="$z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="758,2003,822,2030"/>
+<area shape="rect" id="node36" href="$cmd-save_8cpp.html#a5f3c9a464d1f438f0a2860a68b31da96" title="セーブするコマンドのメインルーチン Save the game" alt="" coords="521,1674,661,1701"/>
+<area shape="rect" id="node37" href="$spells-launcher_8cpp.html#a91b238446e2261ec912dcf94e20cfef8" title="ボール(ハイド)系スペルの発動 / Cast a ball spell" alt="" coords="542,1623,639,1650"/>
+<area shape="rect" id="node38" href="$player-damage_8cpp.html#a1baa0fdc9a8912f4da2d8f1905c2aac7" title="火炎属性によるプレイヤー損害処理 / Hurt the player with Fire" alt="" coords="555,1775,626,1802"/>
+<area shape="rect" id="node39" href="$player-status-flags_8cpp.html#aaf1b5117f57bfff1e6f316c72534ca3c" title=" " alt="" coords="533,1826,649,1853"/>
+<area shape="rect" id="node40" href="$player-status-flags_8cpp.html#a87e2385dc2ef3915747658a53a9a24d3" title=" " alt="" coords="534,1978,647,2005"/>
+<area shape="rect" id="node41" href="$player-status-flags_8cpp.html#a82a3c09fa7e9113cb5a952b8cce27cb6" title=" " alt="" coords="534,2029,647,2055"/>
+<area shape="rect" id="node42" href="$trap_8cpp.html#af6166d0bb0447f9f4828ab071bbce3fc" title="ダーツ系トラップ（通常ダメージ＋能力値減少）の判定とプレイヤーの被害処理" alt="" coords="528,2130,653,2157"/>
+</map>

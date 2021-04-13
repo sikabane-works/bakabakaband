@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/floor/floor-save.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a620f8a6b723e397390ae5ca00f5aa8c.html">floor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">floor-save.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="floor-save_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="floor-save_8h.html#abbaf8a1becaf5b7bd0b785fab413aa09">    1</a></span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structsaved__floor__type.html">saved_floor_type</a> <a class="code" href="structsaved__floor__type.html">saved_floor_type</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floor-save_8h.html#a254d6d82a447c0618d21ba954b1fda89">init_saved_floors</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <span class="keywordtype">bool</span> force);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floor-save_8h.html#af6a0932b05702c7850af22d11e57b675">clear_saved_floor_files</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<a class="code" href="structsaved__floor__type.html">saved_floor_type</a> *<a class="code" href="floor-save_8h.html#a236b93956898407a6e8110c8f4c16bfe">get_sf_ptr</a>(<a class="code" href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a> <a class="code" href="structsaved__floor__type.html#a6d3fc6e1b5d0fe0f3a15e68b69a1de1c">floor_id</a>);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floor-save_8h.html#a9ba80d3702988185f84664eedd003a33">kill_saved_floor</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr, <a class="code" href="structsaved__floor__type.html">saved_floor_type</a> *sf_ptr);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<a class="code" href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a> <a class="code" href="floor-save_8h.html#a1b1bb290d8adda7238744b68732dedad">get_new_floor_id</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> <a class="code" href="floor-save_8h.html#a9065dc2f19d863f5e4d7eed3738588a9">precalc_cur_num_of_pet</a>(<a class="code" href="structplayer__type.html">player_type</a> *creature_ptr);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">extern</span> <a class="code" href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a> <a class="code" href="floor-save_8h.html#a4de4ba565f75008e190129ceb1675937">max_floor_id</a>;</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="afloor-save_8h_html_a1b1bb290d8adda7238744b68732dedad"><div class="ttname"><a href="floor-save_8h.html#a1b1bb290d8adda7238744b68732dedad">get_new_floor_id</a></div><div class="ttdeci">FLOOR_IDX get_new_floor_id(player_type *creature_ptr)</div><div class="ttdoc">新規に利用可能な保存フロアを返す / Initialize new saved floor and get its floor id.</div><div class="ttdef"><b>Definition:</b> floor-save.cpp:166</div></div>
+<div class="ttc" id="afloor-save_8h_html_a236b93956898407a6e8110c8f4c16bfe"><div class="ttname"><a href="floor-save_8h.html#a236b93956898407a6e8110c8f4c16bfe">get_sf_ptr</a></div><div class="ttdeci">saved_floor_type * get_sf_ptr(FLOOR_IDX floor_id)</div><div class="ttdoc">保存フロアIDから参照ポインタを得る / Get a pointer for an item of the saved_floors array.</div><div class="ttdef"><b>Definition:</b> floor-save.cpp:103</div></div>
+<div class="ttc" id="afloor-save_8h_html_a254d6d82a447c0618d21ba954b1fda89"><div class="ttname"><a href="floor-save_8h.html#a254d6d82a447c0618d21ba954b1fda89">init_saved_floors</a></div><div class="ttdeci">void init_saved_floors(player_type *creature_ptr, bool force)</div><div class="ttdoc">保存フロア配列を初期化する / Initialize saved_floors array.</div><div class="ttdef"><b>Definition:</b> floor-save.cpp:52</div></div>
+<div class="ttc" id="afloor-save_8h_html_a4de4ba565f75008e190129ceb1675937"><div class="ttname"><a href="floor-save_8h.html#a4de4ba565f75008e190129ceb1675937">max_floor_id</a></div><div class="ttdeci">FLOOR_IDX max_floor_id</div><div class="ttdoc">Number of floor_id used from birth</div><div class="ttdef"><b>Definition:</b> floor-save-util.cpp:9</div></div>
+<div class="ttc" id="afloor-save_8h_html_a9065dc2f19d863f5e4d7eed3738588a9"><div class="ttname"><a href="floor-save_8h.html#a9065dc2f19d863f5e4d7eed3738588a9">precalc_cur_num_of_pet</a></div><div class="ttdeci">void precalc_cur_num_of_pet(player_type *creature_ptr)</div><div class="ttdoc">フロア移動時にペットを伴った場合の準備処理 / Pre-calculate the racial counters of preserved pets</div><div class="ttdef"><b>Definition:</b> floor-save.cpp:204</div></div>
+<div class="ttc" id="afloor-save_8h_html_a9ba80d3702988185f84664eedd003a33"><div class="ttname"><a href="floor-save_8h.html#a9ba80d3702988185f84664eedd003a33">kill_saved_floor</a></div><div class="ttdeci">void kill_saved_floor(player_type *creature_ptr, saved_floor_type *sf_ptr)</div><div class="ttdoc">参照ポインタ先の保存フロアを抹消する / kill a saved floor and get an empty space</div><div class="ttdef"><b>Definition:</b> floor-save.cpp:123</div></div>
+<div class="ttc" id="afloor-save_8h_html_af6a0932b05702c7850af22d11e57b675"><div class="ttname"><a href="floor-save_8h.html#af6a0932b05702c7850af22d11e57b675">clear_saved_floor_files</a></div><div class="ttdeci">void clear_saved_floor_files(player_type *creature_ptr)</div><div class="ttdoc">保存フロア用テンポラリファイルを削除する / Kill temporary files</div><div class="ttdef"><b>Definition:</b> floor-save.cpp:83</div></div>
+<div class="ttc" id="ah-type_8h_html_afef75ce8b6b6a38fed9a8ed936b5ea5c"><div class="ttname"><a href="h-type_8h.html#afef75ce8b6b6a38fed9a8ed936b5ea5c">FLOOR_IDX</a></div><div class="ttdeci">s16b FLOOR_IDX</div><div class="ttdoc">ゲーム中のフロアID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:100</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+<div class="ttc" id="astructsaved__floor__type_html"><div class="ttname"><a href="structsaved__floor__type.html">saved_floor_type</a></div><div class="ttdef"><b>Definition:</b> floor-save-util.h:9</div></div>
+<div class="ttc" id="astructsaved__floor__type_html_a6d3fc6e1b5d0fe0f3a15e68b69a1de1c"><div class="ttname"><a href="structsaved__floor__type.html#a6d3fc6e1b5d0fe0f3a15e68b69a1de1c">saved_floor_type::floor_id</a></div><div class="ttdeci">FLOOR_IDX floor_id</div><div class="ttdef"><b>Definition:</b> floor-save-util.h:10</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分51秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

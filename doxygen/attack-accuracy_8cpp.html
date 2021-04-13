@@ -1,0 +1,619 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/combat/attack-accuracy.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_61f20e49ac5d6763f7282e8c799f7538.html">combat</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">attack-accuracy.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="attack-accuracy_8h_source.html">combat/attack-accuracy.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventory-slot-types_8h_source.html">inventory/inventory-slot-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-definitions-table_8h_source.html">main/sound-definitions-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monster-race_8h_source.html">monster-race/monster-race.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="race-flags-resistance_8h_source.html">monster-race/race-flags-resistance.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="attack-defense-types_8h_source.html">player/attack-defense-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player-status-flags_8h_source.html">player/player-status-flags.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="death-scythe_8h_source.html">specific-object/death-scythe.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sv-weapon-types_8h_source.html">sv-definition/sv-weapon-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="display-messages_8h_source.html">view/display-messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+attack-accuracy.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="attack-accuracy_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2combat_2attack-accuracy_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2combat_2attack-accuracy_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2combat_2attack-accuracy_8cpp">
+<area shape="rect" title=" " alt="" coords="1279,5,1467,61"/>
+<area shape="rect" href="attack-accuracy_8h.html" title=" " alt="" coords="285,117,458,143"/>
+<area shape="rect" href="inventory-slot-types_8h.html" title=" " alt="" coords="1610,199,1738,240"/>
+<area shape="rect" href="sound-definitions-table_8h.html" title=" " alt="" coords="1516,109,1667,151"/>
+<area shape="rect" href="sound-of-music_8h.html" title=" " alt="" coords="903,117,1056,143"/>
+<area shape="rect" href="monster-race_8h.html" title=" " alt="" coords="1131,109,1281,151"/>
+<area shape="rect" href="race-flags-resistance_8h.html" title=" " alt="" coords="1691,109,1849,151"/>
+<area shape="rect" href="attack-defense-types_8h.html" title=" " alt="" coords="1874,109,2021,151"/>
+<area shape="rect" href="player-status-flags_8h.html" title=" " alt="" coords="1305,109,1441,151"/>
+<area shape="rect" href="death-scythe_8h.html" title=" " alt="" coords="694,109,835,151"/>
+<area shape="rect" href="sv-weapon-types_8h.html" title=" " alt="" coords="2045,109,2199,151"/>
+<area shape="rect" href="display-messages_8h.html" title=" " alt="" coords="853,206,1020,233"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="700,385,829,411"/>
+<area shape="rect" href="player-attack-util_8h.html" title=" " alt="" coords="303,199,439,240"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="746,467,837,493"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="861,467,951,493"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="975,467,1074,493"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="134,467,233,493"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="257,467,357,493"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="381,467,556,493"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="581,467,722,493"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1098,467,1245,493"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1116,541,1227,568"/>
+<area shape="rect" href="combat-options-type_8h.html" title=" " alt="" coords="568,288,727,329"/>
+<area shape="rect" href="martial-arts-table_8h.html" title=" " alt="" coords="409,288,544,329"/>
+<area shape="rect" href="grid_8h.html" title="ダンジョンの生成処理の基幹部分ヘッダーファイル" alt="" coords="97,295,176,322"/>
+<area shape="rect" href="object-type-definition_8h.html" title=" " alt="" coords="201,288,334,329"/>
+<area shape="rect" href="monster-type-definition_8h.html" title=" " alt="" coords="5,377,151,419"/>
+<area shape="rect" title=" " alt="" coords="1045,206,1101,233"/>
+<area shape="rect" href="monster-race-definition_8h.html" title=" " alt="" coords="1176,199,1321,240"/>
+<area shape="rect" href="monster-attack-effect_8h.html" title=" " alt="" coords="1319,377,1479,419"/>
+<area shape="rect" href="monster-attack-types_8h.html" title=" " alt="" coords="1085,288,1245,329"/>
+<area shape="rect" href="race-ability-flags_8h.html" title=" " alt="" coords="1370,288,1535,329"/>
+<area shape="rect" title=" " alt="" coords="955,295,1009,322"/>
+<area shape="rect" href="tr-types_8h.html" title=" " alt="" coords="1345,206,1512,233"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a505808f8a6e6e63ef950d140e862af00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attack-accuracy_8cpp.html#a505808f8a6e6e63ef950d140e862af00">test_hit_norm</a> (<a class="el" href="structplayer__type.html">player_type</a> *attacker_ptr, <a class="el" href="h-type_8h.html#ac3a50689203251f4dbf060fb594c8a08">HIT_RELIABILITY</a> chance, <a class="el" href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a> ac, <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> visible)</td></tr>
+<tr class="memdesc:a505808f8a6e6e63ef950d140e862af00"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーからモンスターへの打撃命中判定 / Determine if the player "hits" a monster (normal combat).  <a href="attack-accuracy_8cpp.html#a505808f8a6e6e63ef950d140e862af00">[詳解]</a><br /></td></tr>
+<tr class="separator:a505808f8a6e6e63ef950d140e862af00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6dd09d57a02e8ba82e79ea5cc1b8275"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attack-accuracy_8cpp.html#aa6dd09d57a02e8ba82e79ea5cc1b8275">hit_chance</a> (<a class="el" href="structplayer__type.html">player_type</a> *attacker_ptr, <a class="el" href="h-type_8h.html#ac3a50689203251f4dbf060fb594c8a08">HIT_RELIABILITY</a> reli, <a class="el" href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a> ac)</td></tr>
+<tr class="memdesc:aa6dd09d57a02e8ba82e79ea5cc1b8275"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターへの命中率の計算  <a href="attack-accuracy_8cpp.html#aa6dd09d57a02e8ba82e79ea5cc1b8275">[詳解]</a><br /></td></tr>
+<tr class="separator:aa6dd09d57a02e8ba82e79ea5cc1b8275"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75ff213c456535e90a79aabbbf5cae8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attack-accuracy_8cpp.html#a75ff213c456535e90a79aabbbf5cae8a">check_hit_from_monster_to_player</a> (<a class="el" href="structplayer__type.html">player_type</a> *target_ptr, int power, <a class="el" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> level, int stun)</td></tr>
+<tr class="memdesc:a75ff213c456535e90a79aabbbf5cae8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスター打撃の命中を判定する / Determine if a monster attack against the player succeeds.  <a href="attack-accuracy_8cpp.html#a75ff213c456535e90a79aabbbf5cae8a">[詳解]</a><br /></td></tr>
+<tr class="separator:a75ff213c456535e90a79aabbbf5cae8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafdccfcbf00ef088b23b6d122a018a0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attack-accuracy_8cpp.html#aafdccfcbf00ef088b23b6d122a018a0f">check_hit_from_monster_to_monster</a> (int power, <a class="el" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a> level, <a class="el" href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a> ac, int stun)</td></tr>
+<tr class="memdesc:aafdccfcbf00ef088b23b6d122a018a0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">モンスターから敵モンスターへの命中判定  <a href="attack-accuracy_8cpp.html#aafdccfcbf00ef088b23b6d122a018a0f">[詳解]</a><br /></td></tr>
+<tr class="separator:aafdccfcbf00ef088b23b6d122a018a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12b678c83cfaa4dac150078fa560298f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attack-accuracy_8cpp.html#a12b678c83cfaa4dac150078fa560298f">decide_attack_hit</a> (<a class="el" href="structplayer__type.html">player_type</a> *attacker_ptr, <a class="el" href="structplayer__attack__type.html">player_attack_type</a> *pa_ptr, int chance)</td></tr>
+<tr class="memdesc:a12b678c83cfaa4dac150078fa560298f"><td class="mdescLeft">&#160;</td><td class="mdescRight">攻撃が当たるかどうかを判定する  <a href="attack-accuracy_8cpp.html#a12b678c83cfaa4dac150078fa560298f">[詳解]</a><br /></td></tr>
+<tr class="separator:a12b678c83cfaa4dac150078fa560298f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41704245c0a59349b1f36c2c4398e516"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attack-accuracy_8cpp.html#a41704245c0a59349b1f36c2c4398e516">process_attack_hit</a> (<a class="el" href="structplayer__type.html">player_type</a> *attacker_ptr, <a class="el" href="structplayer__attack__type.html">player_attack_type</a> *pa_ptr, int chance)</td></tr>
+<tr class="memdesc:a41704245c0a59349b1f36c2c4398e516"><td class="mdescLeft">&#160;</td><td class="mdescRight">直接攻撃の命中を処理するメインルーチン  <a href="attack-accuracy_8cpp.html#a41704245c0a59349b1f36c2c4398e516">[詳解]</a><br /></td></tr>
+<tr class="separator:a41704245c0a59349b1f36c2c4398e516"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="aafdccfcbf00ef088b23b6d122a018a0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafdccfcbf00ef088b23b6d122a018a0f">&#9670;&nbsp;</a></span>check_hit_from_monster_to_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_hit_from_monster_to_monster </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>power</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a>&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a>&#160;</td>
+          <td class="paramname"><em>ac</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stun</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターから敵モンスターへの命中判定 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">power</td><td>打撃属性による基本命中値 </td></tr>
+    <tr><td class="paramname">level</td><td>攻撃側モンスターのレベル </td></tr>
+    <tr><td class="paramname">ac</td><td>目標モンスターのAC </td></tr>
+    <tr><td class="paramname">stun</td><td>攻撃側モンスターが朦朧状態ならTRUEを返す </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>命中ならばTRUEを返す </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="attack-accuracy_8cpp_aafdccfcbf00ef088b23b6d122a018a0f_icgraph.png" border="0" usemap="#aattack-accuracy_8cpp_aafdccfcbf00ef088b23b6d122a018a0f_icgraph" alt=""/></div>
+<map name="aattack-accuracy_8cpp_aafdccfcbf00ef088b23b6d122a018a0f_icgraph" id="aattack-accuracy_8cpp_aafdccfcbf00ef088b23b6d122a018a0f_icgraph">
+<area shape="rect" title="モンスターから敵モンスターへの命中判定" alt="" coords="504,5,668,47"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3877284386fd0f7550d1bc35fc17b19c" title=" " alt="" coords="345,13,456,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a44fa0c05c2f6b2f7e5ee32d34847472f" title="r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す" alt="" coords="197,13,297,39"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a42ec35a0659aa887eabe9976cf5f7e77" title="モンスターから敵モンスターへの打撃攻撃処理" alt="" coords="5,13,149,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a75ff213c456535e90a79aabbbf5cae8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75ff213c456535e90a79aabbbf5cae8a">&#9670;&nbsp;</a></span>check_hit_from_monster_to_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> check_hit_from_monster_to_player </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>target_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>power</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a1c8b80a20fb5396ff07a523b01112c47">DEPTH</a>&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stun</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスター打撃の命中を判定する / Determine if a monster attack against the player succeeds. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">power</td><td>打撃属性毎の基本命中値 </td></tr>
+    <tr><td class="paramname">level</td><td>モンスターのレベル </td></tr>
+    <tr><td class="paramname">stun</td><td>モンスターの朦朧値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>TRUEならば命中判定</dd></dl>
+<p>Always miss 5% of the time, Always hit 5% of the time. Otherwise, match monster power against player armor. </p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="attack-accuracy_8cpp_a75ff213c456535e90a79aabbbf5cae8a_icgraph.png" border="0" usemap="#aattack-accuracy_8cpp_a75ff213c456535e90a79aabbbf5cae8a_icgraph" alt=""/></div>
+<map name="aattack-accuracy_8cpp_a75ff213c456535e90a79aabbbf5cae8a_icgraph" id="aattack-accuracy_8cpp_a75ff213c456535e90a79aabbbf5cae8a_icgraph">
+<area shape="rect" title="モンスター打撃の命中を判定する / Determine if a monster attack against the player succeeds." alt="" coords="595,5,759,47"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#a8676e4ca5747a1ddf4137530318b2c8b" title="モンスターからプレイヤーへの打撃処理本体" alt="" coords="384,13,547,39"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#aaa47611f7727c9fefb8075e89e11eeef" title="モンスターからプレイヤーへの打撃処理 / Attack the player via physical attacks." alt="" coords="193,13,336,39"/>
+<area shape="rect" href="monster-attack-processor_8cpp.html#aa095f5ecccac0b28f47b8ddf95c88a54" title="モンスターの攻撃に関する処理" alt="" coords="5,5,145,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a12b678c83cfaa4dac150078fa560298f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12b678c83cfaa4dac150078fa560298f">&#9670;&nbsp;</a></span>decide_attack_hit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> decide_attack_hit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>attacker_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structplayer__attack__type.html">player_attack_type</a> *&#160;</td>
+          <td class="paramname"><em>pa_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>chance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>攻撃が当たるかどうかを判定する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attacker_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">pa_ptr</td><td>直接攻撃構造体への参照ポインタ </td></tr>
+    <tr><td class="paramname">chance</td><td>基本命中値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="attack-accuracy_8cpp_a12b678c83cfaa4dac150078fa560298f_cgraph.png" border="0" usemap="#aattack-accuracy_8cpp_a12b678c83cfaa4dac150078fa560298f_cgraph" alt=""/></div>
+<map name="aattack-accuracy_8cpp_a12b678c83cfaa4dac150078fa560298f_cgraph" id="aattack-accuracy_8cpp_a12b678c83cfaa4dac150078fa560298f_cgraph">
+<area shape="rect" title="攻撃が当たるかどうかを判定する" alt="" coords="5,56,129,83"/>
+<area shape="rect" href="player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="177,56,364,83"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7c7bc7aaa4ea1facc9bffef817ae15ef" title=" " alt="" coords="412,5,591,32"/>
+<area shape="rect" href="attack-accuracy_8cpp.html#a505808f8a6e6e63ef950d140e862af00" title="プレイヤーからモンスターへの打撃命中判定 / Determine if the player &quot;hits&quot; a monster (normal combat)." alt="" coords="220,132,321,159"/>
+<area shape="rect" href="player-status_8cpp.html#a505fc5be2b6382dbcd3b279e2f2f2be5" title="プレイヤーが現在右手/左手に武器を持っているか判定する /" alt="" coords="639,31,775,57"/>
+<area shape="rect" href="player-status_8cpp.html#a71651ca05a739cebea95603a32776907" title="プレイヤーの現在開いている手の状態を返す" alt="" coords="451,107,551,133"/>
+<area shape="rect" href="attack-accuracy_8cpp.html#aa6dd09d57a02e8ba82e79ea5cc1b8275" title="モンスターへの命中率の計算" alt="" coords="459,157,544,184"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="attack-accuracy_8cpp_a12b678c83cfaa4dac150078fa560298f_icgraph.png" border="0" usemap="#aattack-accuracy_8cpp_a12b678c83cfaa4dac150078fa560298f_icgraph" alt=""/></div>
+<map name="aattack-accuracy_8cpp_a12b678c83cfaa4dac150078fa560298f_icgraph" id="aattack-accuracy_8cpp_a12b678c83cfaa4dac150078fa560298f_icgraph">
+<area shape="rect" title="攻撃が当たるかどうかを判定する" alt="" coords="539,13,663,39"/>
+<area shape="rect" href="attack-accuracy_8cpp.html#a41704245c0a59349b1f36c2c4398e516" title="直接攻撃の命中を処理するメインルーチン" alt="" coords="359,13,491,39"/>
+<area shape="rect" href="player-attack_8cpp.html#a7a5d04133dc8285f590218cfa1f63780" title="プレイヤーの打撃処理サブルーチン / Player attacks a (poor, defenseless) creature &#45;RAK&#45;" alt="" coords="164,5,311,47"/>
+<area shape="rect" href="cmd-attack_8cpp.html#a8e48cd6d2ca0901e5c89e19e30aab0b3" title="プレイヤーの打撃処理メインルーチン" alt="" coords="5,13,116,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa6dd09d57a02e8ba82e79ea5cc1b8275"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6dd09d57a02e8ba82e79ea5cc1b8275">&#9670;&nbsp;</a></span>hit_chance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#a7c6a37c6000d234e7e4b733a8c830018">PERCENTAGE</a> hit_chance </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>attacker_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ac3a50689203251f4dbf060fb594c8a08">HIT_RELIABILITY</a>&#160;</td>
+          <td class="paramname"><em>reli</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a>&#160;</td>
+          <td class="paramname"><em>ac</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モンスターへの命中率の計算 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">to_h</td><td>命中値 </td></tr>
+    <tr><td class="paramname">ac</td><td>敵AC </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>命中確率 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="attack-accuracy_8cpp_aa6dd09d57a02e8ba82e79ea5cc1b8275_icgraph.png" border="0" usemap="#aattack-accuracy_8cpp_aa6dd09d57a02e8ba82e79ea5cc1b8275_icgraph" alt=""/></div>
+<map name="aattack-accuracy_8cpp_aa6dd09d57a02e8ba82e79ea5cc1b8275_icgraph" id="aattack-accuracy_8cpp_aa6dd09d57a02e8ba82e79ea5cc1b8275_icgraph">
+<area shape="rect" title="モンスターへの命中率の計算" alt="" coords="544,31,629,57"/>
+<area shape="rect" href="building-craft-weapon_8cpp.html#ad6cc57870be2732dc0a44d4f4c46b7c3" title="武器匠における武器一つ毎の完全情報を表示する。" alt="" coords="400,5,491,32"/>
+<area shape="rect" href="attack-accuracy_8cpp.html#a505808f8a6e6e63ef950d140e862af00" title="プレイヤーからモンスターへの打撃命中判定 / Determine if the player &quot;hits&quot; a monster (normal combat)." alt="" coords="395,56,496,83"/>
+<area shape="rect" href="building-craft-weapon_8cpp.html#a2b2951f2d62f18d1a7867d4f1524079e" title="武器匠鑑定1回分（オブジェクト2種）の処理。/ Compare weapons" alt="" coords="216,5,347,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="5,5,168,32"/>
+<area shape="rect" href="attack-accuracy_8cpp.html#a12b678c83cfaa4dac150078fa560298f" title="攻撃が当たるかどうかを判定する" alt="" coords="219,56,343,83"/>
+<area shape="rect" href="cmd-attack_8cpp.html#a2b837b0da3ae92adf4b5a3297132736b" title="攻撃コマンド処理" alt="" coords="229,107,333,133"/>
+<area shape="rect" href="attack-accuracy_8cpp.html#a41704245c0a59349b1f36c2c4398e516" title="直接攻撃の命中を処理するメインルーチン" alt="" coords="21,56,153,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a41704245c0a59349b1f36c2c4398e516"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41704245c0a59349b1f36c2c4398e516">&#9670;&nbsp;</a></span>process_attack_hit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> process_attack_hit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>attacker_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structplayer__attack__type.html">player_attack_type</a> *&#160;</td>
+          <td class="paramname"><em>pa_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>chance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>直接攻撃の命中を処理するメインルーチン </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attacker_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">pa_ptr</td><td>直接攻撃構造体への参照ポインタ </td></tr>
+    <tr><td class="paramname">chance</td><td>基本命中値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>当たればTRUE、外れればFALSE </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="attack-accuracy_8cpp_a41704245c0a59349b1f36c2c4398e516_cgraph.png" border="0" usemap="#aattack-accuracy_8cpp_a41704245c0a59349b1f36c2c4398e516_cgraph" alt=""/></div>
+<map name="aattack-accuracy_8cpp_a41704245c0a59349b1f36c2c4398e516_cgraph" id="aattack-accuracy_8cpp_a41704245c0a59349b1f36c2c4398e516_cgraph">
+<area shape="rect" title="直接攻撃の命中を処理するメインルーチン" alt="" coords="5,1115,137,1141"/>
+<area shape="rect" href="attack-accuracy_8cpp.html#a12b678c83cfaa4dac150078fa560298f" title="攻撃が当たるかどうかを判定する" alt="" coords="200,132,324,159"/>
+<area shape="rect" href="display-messages_8cpp.html#a6ed9d22f518e08be86392d6b59fe1e95" title=" " alt="" coords="675,1115,766,1141"/>
+<area shape="rect" href="death-scythe_8cpp.html#afeef154306c829a4513686c1cdf6582c" title="死の大鎌によるダメージ反射のメインルーチン" alt="" coords="185,1023,339,1065"/>
+<area shape="rect" href="sound-of-music_8cpp.html#a43627249eb6a528399f807914b0aeaad" title="音を鳴らす" alt="" coords="692,1347,749,1373"/>
+<area shape="rect" href="player-status-flags_8cpp.html#afe1c1e3a1fa53546c5573a5a091f9192" title=" " alt="" coords="389,107,575,133"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7c7bc7aaa4ea1facc9bffef817ae15ef" title=" " alt="" coords="631,157,810,184"/>
+<area shape="rect" href="attack-accuracy_8cpp.html#a505808f8a6e6e63ef950d140e862af00" title="プレイヤーからモンスターへの打撃命中判定 / Determine if the player &quot;hits&quot; a monster (normal combat)." alt="" coords="431,31,533,57"/>
+<area shape="rect" href="player-status_8cpp.html#a505fc5be2b6382dbcd3b279e2f2f2be5" title="プレイヤーが現在右手/左手に武器を持っているか判定する /" alt="" coords="864,132,1000,159"/>
+<area shape="rect" href="player-status_8cpp.html#a71651ca05a739cebea95603a32776907" title="プレイヤーの現在開いている手の状態を返す" alt="" coords="671,56,771,83"/>
+<area shape="rect" href="attack-accuracy_8cpp.html#aa6dd09d57a02e8ba82e79ea5cc1b8275" title="モンスターへの命中率の計算" alt="" coords="678,5,763,32"/>
+<area shape="rect" href="display-messages_8cpp.html#a826c4e655c4e825175fc7e78d22d6f8f" title="@briefOutput a message to the top line of the screen." alt="" coords="893,1059,971,1085"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="899,1115,965,1141"/>
+<area shape="rect" href="display-messages_8cpp.html#a715c364c1a62180727f92f40a8f7c356" title="ゲームメッセージをログに追加する。 / Add a new message, with great efficiency @params str 保存したいメッセージ" alt="" coords="1056,1048,1159,1075"/>
+<area shape="rect" href="display-messages_8cpp.html#aaa160386b4a576ebce044a70f0429afe" title=" " alt="" coords="1067,1099,1148,1125"/>
+<area shape="rect" href="z-term_8cpp.html#a38def801db9d369860ff89f56bc48239" title=" " alt="" coords="1215,1023,1302,1049"/>
+<area shape="rect" href="z-term_8cpp.html#a29ca4103a6d05aeb6cb7ab21a7f17eb2" title=" " alt="" coords="1215,1149,1303,1176"/>
+<area shape="rect" href="z-term_8cpp.html#af168a7456c90fcd8fe597117e14a0697" title=" " alt="" coords="1048,997,1167,1024"/>
+<area shape="rect" href="window-redrawer_8cpp.html#aefd338f8c6d1f5188a27af55b3fa13a2" title="player_ptr&#45;&gt;window のフラグに応じた更新をまとめて行う / Handle &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="1060,1200,1155,1227"/>
+<area shape="rect" href="death-scythe_8cpp.html#a4bba1dfa28de039da0470c6c6ff0b028" title="死の大鎌ダメージが跳ね返ってきた時の、変身中の種族も考慮したダメージ倍率を返す" alt="" coords="387,382,577,423"/>
+<area shape="rect" href="death-scythe_8cpp.html#ad1488613591a655af92a8f8d00f56862" title="耐性等に応じて死の大鎌による反射ダメージ倍率を補正する" alt="" coords="393,622,571,663"/>
+<area shape="rect" href="attack-criticality_8cpp.html#a82721066a7711d21c69fabed5785b113" title="プレイヤーからモンスターへの打撃クリティカル判定 / Critical hits (by player) Factor in weapon weight, total plusses,..." alt="" coords="434,853,530,880"/>
+<area shape="rect" href="z-rand_8cpp.html#ab6e70da7e57e1a2b64363b1f94f1284e" title=" " alt="" coords="450,904,514,931"/>
+<area shape="rect" href="death-scythe_8cpp.html#a31a03274c6af3f448f5252e47b92f885" title="死の大鎌による反射ダメージ倍率を更に上げる" alt="" coords="403,1107,561,1149"/>
+<area shape="rect" href="stuff-handler_8cpp.html#ae6fb3f813fe2e4b1bbef82331e170c59" title="全更新処理をチェックして処理していく Handle &quot;player_ptr&#45;&gt;update&quot; and &quot;player_ptr&#45;&gt;redraw&quot; and &quot;player_ptr&#45;&gt;window&quot;" alt="" coords="675,1195,766,1221"/>
+<area shape="rect" href="object-flags_8cpp.html#a08d143204b32114567356fd3406a4521" title="&lt;" alt="" coords="437,955,527,981"/>
+<area shape="rect" href="player-damage_8cpp.html#a2156a4943ea756a2fdab62f5ad9fa689" title=" " alt="" coords="448,1275,516,1301"/>
+<area shape="rect" href="death-scythe_8cpp.html#a6c9d9409c710047a3bded9503896772b" title="死の大鎌に特有の処理" alt="" coords="625,209,816,250"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a1676b47cc24010b348bc26769fd4bae5" title=" " alt="" coords="869,908,995,935"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a1ef7b925805f17575d38db4d7ec565ef" title=" " alt="" coords="869,300,995,327"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a2ec20a346ee5ea8fb5c8d235ad0148cf" title=" " alt="" coords="869,401,995,428"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a3c8e37ad1c2ecfdc389e4070fda2c1c0" title=" " alt="" coords="872,503,992,529"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a556c00d2456ffbf9d0c0fa4bb241d79c" title=" " alt="" coords="664,933,777,960"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a18b109ff35e05d7601188f7df38994cf" title=" " alt="" coords="664,325,777,352"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a7922f516a1908d8f3c31f64003704ecb" title=" " alt="" coords="664,427,777,453"/>
+<area shape="rect" href="player-status-flags_8cpp.html#ade78b9d37026daaaef1f1b904da9ce40" title=" " alt="" coords="667,528,774,555"/>
+<area shape="rect" href="player-status-flags_8cpp.html#a82a3c09fa7e9113cb5a952b8cce27cb6" title=" " alt="" coords="664,579,777,605"/>
+<area shape="rect" href="element-resistance_8cpp.html#a64580bed127b84646a1dc84e9da22950" title=" " alt="" coords="665,629,777,656"/>
+<area shape="rect" href="element-resistance_8cpp.html#a4575f3a39880dde6011b3486b4812bd5" title=" " alt="" coords="665,680,777,707"/>
+<area shape="rect" href="element-resistance_8cpp.html#a9c549b5cefa113e04fd56c1a84d42bc3" title=" " alt="" coords="665,731,777,757"/>
+<area shape="rect" href="element-resistance_8cpp.html#a2adbd8481ec9c24c47d1a1a106f15d1f" title=" " alt="" coords="668,781,773,808"/>
+<area shape="rect" href="element-resistance_8cpp.html#a15b3a8e7ece2bbc45ef1d42559bfb0d2" title=" " alt="" coords="665,832,777,859"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="attack-accuracy_8cpp_a41704245c0a59349b1f36c2c4398e516_icgraph.png" border="0" usemap="#aattack-accuracy_8cpp_a41704245c0a59349b1f36c2c4398e516_icgraph" alt=""/></div>
+<map name="aattack-accuracy_8cpp_a41704245c0a59349b1f36c2c4398e516_icgraph" id="aattack-accuracy_8cpp_a41704245c0a59349b1f36c2c4398e516_icgraph">
+<area shape="rect" title="直接攻撃の命中を処理するメインルーチン" alt="" coords="744,487,876,513"/>
+<area shape="rect" href="player-attack_8cpp.html#a7a5d04133dc8285f590218cfa1f63780" title="プレイヤーの打撃処理サブルーチン / Player attacks a (poor, defenseless) creature &#45;RAK&#45;" alt="" coords="549,479,696,521"/>
+<area shape="rect" href="cmd-attack_8cpp.html#a8e48cd6d2ca0901e5c89e19e30aab0b3" title="プレイヤーの打撃処理メインルーチン" alt="" coords="391,487,501,513"/>
+<area shape="rect" href="mind-berserker_8cpp.html#a73db877ef674132d5c3149ed726ccf47" title="怒りの発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;berserker&#39;." alt="" coords="5,411,136,437"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#a5a74463d27e5f0d96dd1c49ab85d850c" title="「打ち破る」動作コマンドのメインルーチン / Bash open a door, success based on character strength" alt="" coords="212,56,315,83"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#a6945001a0c01e0ef531db77445d1246f" title="「閉じる」コマンドのメインルーチン / Close an open door." alt="" coords="210,107,317,133"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#af905b3420d1017dc794ab89a9d6d0c42" title="箱、床のトラップ解除処理双方の統合メインルーチン / Disarms a trap, or chest" alt="" coords="206,157,321,184"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#a4da6ce664a625f0aa47bcbee0627fc5f" title="「開ける」コマンドのメインルーチン / Open a closed/locked/jammed door or a closed/locked chest." alt="" coords="212,208,315,235"/>
+<area shape="rect" href="cmd-pet_8cpp.html#a28f35d22f806bfd883341a2cc735003a" title="ペットから騎乗/下馬するコマンドのメインルーチン /" alt="" coords="210,259,317,285"/>
+<area shape="rect" href="cmd-open-close_8cpp.html#ae9a608d582edd6d821e9ba557bcc1a1e" title="「くさびを打つ」動作コマンドのメインルーチン / Jam a closed door with a spike" alt="" coords="210,309,317,336"/>
+<area shape="rect" href="cmd-tunnel_8cpp.html#a6c5ca83f853694de1a4f4c4eafae85e2" title="「掘る」動作コマンドのメインルーチン / Tunnels through &quot;walls&quot; (including rubble and closed doors)" alt="" coords="208,360,319,387"/>
+<area shape="rect" href="realm-hissatsu_8cpp.html#ac0a099d2300a0fdd4c41dfec6dd2a7c1" title="剣術の各処理を行う" alt="" coords="7,816,134,843"/>
+<area shape="rect" href="monk-attack_8cpp.html#affb3013a6705f2f1cc0ffb9f20790ff6" title=" " alt="" coords="212,461,315,488"/>
+<area shape="rect" href="mutation-techniques_8cpp.html#a3e245c95b31e183f9b215fd4f91b88d9" title="突然変異でのみ得ることができる特殊能力処理" alt="" coords="227,512,299,539"/>
+<area shape="rect" href="cmd-others_8cpp.html#a815a7a5e204c0455b946a163f5012bc0" title=" " alt="" coords="226,563,301,589"/>
+<area shape="rect" href="movement-execution_8cpp.html#a586b9fe6bc207183655cdfb8dcfaf464" title="該当地形のトラップがプレイヤーにとって無効かどうかを判定して返す / Move player in the given direction, with the given &quot;pickup&quot; flag." alt="" coords="209,5,318,32"/>
+<area shape="rect" href="mind-warrior_8cpp.html#afc4f182d772ec45fd47cf9a74e7fe12c" title="戦士と盗賊における、ヒット＆アウェイのレイシャルパワー/突然変異" alt="" coords="213,664,314,691"/>
+<area shape="rect" href="monster-attack-player_8cpp.html#aaa47611f7727c9fefb8075e89e11eeef" title="モンスターからプレイヤーへの打撃処理 / Attack the player via physical attacks." alt="" coords="192,715,335,741"/>
+<area shape="rect" href="player-attack_8cpp.html#a55754960d00a6d79d985245b3495865c" title="皆殺し(全方向攻撃)処理" alt="" coords="224,411,303,437"/>
+<area shape="rect" href="mind-samurai_8cpp.html#aa2d1d23953fe1eb69ff6aef1ba627a7c" title="無想による反撃処理" alt="" coords="190,816,337,843"/>
+<area shape="rect" href="mind-ninja_8cpp.html#a0bb9e2fc92fc023955549549df3f24cf" title="入身処理 / &quot;Rush Attack&quot; routine for Samurai or Ninja" alt="" coords="218,867,309,893"/>
+<area shape="rect" href="effect-monster-switcher_8cpp.html#ac7fa9e0e34a88b43f6c5b616e2a2059a" title="魔法の効果によって様々なメッセーを出力したり与えるダメージの増減を行ったりする" alt="" coords="184,917,343,944"/>
+<area shape="rect" href="mind-warrior_8cpp.html#a33ba0cd439f851f5e7490b803c73adb4" title="剣の舞い" alt="" coords="209,968,317,995"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a505808f8a6e6e63ef950d140e862af00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a505808f8a6e6e63ef950d140e862af00">&#9670;&nbsp;</a></span>test_hit_norm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> test_hit_norm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>attacker_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ac3a50689203251f4dbf060fb594c8a08">HIT_RELIABILITY</a>&#160;</td>
+          <td class="paramname"><em>chance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#a220932af45570eca82fbc85454205983">ARMOUR_CLASS</a>&#160;</td>
+          <td class="paramname"><em>ac</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td>
+          <td class="paramname"><em>visible</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーからモンスターへの打撃命中判定 / Determine if the player "hits" a monster (normal combat). </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chance</td><td>基本命中値 </td></tr>
+    <tr><td class="paramname">ac</td><td>モンスターのAC </td></tr>
+    <tr><td class="paramname">visible</td><td>目標を視界に捕らえているならばTRUEを指定 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>命中と判定された場合TRUEを返す </dd></dl>
+<dl class="section note"><dt>覚え書き</dt><dd>Always miss 5%, always hit 5%, otherwise random. </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="attack-accuracy_8cpp_a505808f8a6e6e63ef950d140e862af00_cgraph.png" border="0" usemap="#aattack-accuracy_8cpp_a505808f8a6e6e63ef950d140e862af00_cgraph" alt=""/></div>
+<map name="aattack-accuracy_8cpp_a505808f8a6e6e63ef950d140e862af00_cgraph" id="aattack-accuracy_8cpp_a505808f8a6e6e63ef950d140e862af00_cgraph">
+<area shape="rect" title="プレイヤーからモンスターへの打撃命中判定 / Determine if the player &quot;hits&quot; a monster (normal combat)." alt="" coords="5,5,107,32"/>
+<area shape="rect" href="attack-accuracy_8cpp.html#aa6dd09d57a02e8ba82e79ea5cc1b8275" title="モンスターへの命中率の計算" alt="" coords="155,5,240,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="attack-accuracy_8cpp_a505808f8a6e6e63ef950d140e862af00_icgraph.png" border="0" usemap="#aattack-accuracy_8cpp_a505808f8a6e6e63ef950d140e862af00_icgraph" alt=""/></div>
+<map name="aattack-accuracy_8cpp_a505808f8a6e6e63ef950d140e862af00_icgraph" id="aattack-accuracy_8cpp_a505808f8a6e6e63ef950d140e862af00_icgraph">
+<area shape="rect" title="プレイヤーからモンスターへの打撃命中判定 / Determine if the player &quot;hits&quot; a monster (normal combat)." alt="" coords="552,38,653,65"/>
+<area shape="rect" href="attack-accuracy_8cpp.html#a12b678c83cfaa4dac150078fa560298f" title="攻撃が当たるかどうかを判定する" alt="" coords="380,13,504,39"/>
+<area shape="rect" href="cmd-attack_8cpp.html#a2b837b0da3ae92adf4b5a3297132736b" title="攻撃コマンド処理" alt="" coords="390,63,494,90"/>
+<area shape="rect" href="attack-accuracy_8cpp.html#a41704245c0a59349b1f36c2c4398e516" title="直接攻撃の命中を処理するメインルーチン" alt="" coords="200,13,332,39"/>
+<area shape="rect" href="player-attack_8cpp.html#a7a5d04133dc8285f590218cfa1f63780" title="プレイヤーの打撃処理サブルーチン / Player attacks a (poor, defenseless) creature &#45;RAK&#45;" alt="" coords="5,5,152,47"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時53分37秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

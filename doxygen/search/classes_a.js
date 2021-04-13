@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['magic_5ftype_13006',['magic_type',['../structmagic__type.html',1,'']]],
+  ['mam_5fpp_5ftype_13007',['mam_pp_type',['../structmam__pp__type.html',1,'']]],
+  ['mam_5ftype_13008',['mam_type',['../structmam__type.html',1,'']]],
+  ['martial_5farts_13009',['martial_arts',['../structmartial__arts.html',1,'']]],
+  ['mbe_5finfo_5ftype_13010',['mbe_info_type',['../structmbe__info__type.html',1,'']]],
+  ['melee_5fspell_5ftype_13011',['melee_spell_type',['../structmelee__spell__type.html',1,'']]],
+  ['menu_5fcontent_13012',['menu_content',['../structmenu__content.html',1,'']]],
+  ['mind_5fpower_13013',['mind_power',['../structmind__power.html',1,'']]],
+  ['mind_5ftype_13014',['mind_type',['../structmind__type.html',1,'']]],
+  ['monap_5ftype_13015',['monap_type',['../structmonap__type.html',1,'']]],
+  ['monster_5fblow_13016',['monster_blow',['../structmonster__blow.html',1,'']]],
+  ['monster_5fdeath_5ftype_13017',['monster_death_type',['../structmonster__death__type.html',1,'']]],
+  ['monster_5flite_5ftype_13018',['monster_lite_type',['../structmonster__lite__type.html',1,'']]],
+  ['monster_5fpower_13019',['monster_power',['../structmonster__power.html',1,'']]],
+  ['monster_5frace_13020',['monster_race',['../structmonster__race.html',1,'']]],
+  ['monster_5ftype_13021',['monster_type',['../structmonster__type.html',1,'']]],
+  ['monsterspellresult_13022',['MonsterSpellResult',['../struct_monster_spell_result.html',1,'']]],
+  ['msa_5ftype_13023',['msa_type',['../structmsa__type.html',1,'']]],
+  ['msr_5ftype_13024',['msr_type',['../structmsr__type.html',1,'']]]
+];

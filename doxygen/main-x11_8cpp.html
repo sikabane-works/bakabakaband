@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/main-x11.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a>  </div>
+  <div class="headertitle">
+<div class="title">main-x11.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="macro-util_8h_source.html">cmd-io/macro-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="runtime-arguments_8h_source.html">game-option/runtime-arguments.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="special-options_8h_source.html">game-option/special-options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="files-util_8h_source.html">io/files-util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="japanese_8h_source.html">locale/japanese.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="utf-8_8h_source.html">locale/utf-8.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-definitions-table_8h_source.html">main/sound-definitions-table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sound-of-music_8h_source.html">main/sound-of-music.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="x11-type-string_8h_source.html">main/x11-type-string.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="system-variables_8h_source.html">system/system-variables.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gameterm_8h_source.html">term/gameterm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="term-color-types_8h_source.html">term/term-color-types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="angband-files_8h_source.html">util/angband-files.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="int-char-converter_8h_source.html">util/int-char-converter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="string-processor_8h_source.html">util/string-processor.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+main-x11.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="main-x11_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2main-x11_8cpp" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2main-x11_8cpp" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2main-x11_8cpp">
+<area shape="rect" title=" " alt="" coords="1061,5,1276,47"/>
+<area shape="rect" href="macro-util_8h.html" title=" " alt="" coords="207,102,341,129"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="879,184,1008,211"/>
+<area shape="rect" href="runtime-arguments_8h.html" title=" " alt="" coords="571,95,711,136"/>
+<area shape="rect" href="special-options_8h.html" title=" " alt="" coords="735,95,874,136"/>
+<area shape="rect" href="files-util_8h.html" title=" " alt="" coords="898,102,989,129"/>
+<area shape="rect" href="japanese_8h.html" title=" " alt="" coords="1189,102,1311,129"/>
+<area shape="rect" href="utf-8_8h.html" title=" " alt="" coords="1335,102,1431,129"/>
+<area shape="rect" href="sound-definitions-table_8h.html" title=" " alt="" coords="1013,95,1164,136"/>
+<area shape="rect" href="sound-of-music_8h.html" title=" " alt="" coords="1959,102,2112,129"/>
+<area shape="rect" href="x11-type-string_8h.html" title=" " alt="" coords="1456,102,1607,129"/>
+<area shape="rect" href="system-variables_8h.html" title=" " alt="" coords="5,102,183,129"/>
+<area shape="rect" href="gameterm_8h.html" title=" " alt="" coords="1631,102,1752,129"/>
+<area shape="rect" href="term-color-types_8h.html" title=" " alt="" coords="1777,102,1934,129"/>
+<area shape="rect" href="angband-files_8h.html" title=" " alt="" coords="415,102,546,129"/>
+<area shape="rect" href="int-char-converter_8h.html" title=" " alt="" coords="2136,102,2289,129"/>
+<area shape="rect" href="string-processor_8h.html" title=" " alt="" coords="2314,102,2461,129"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="418,259,509,285"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="533,259,623,285"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="647,259,746,285"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="770,259,869,285"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="893,259,993,285"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="1017,259,1192,285"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="1217,259,1358,285"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="1382,259,1529,285"/>
+<area shape="rect" title=" " alt="" coords="2089,184,2145,211"/>
+<area shape="rect" href="spell-types_8h.html" title=" " alt="" coords="1628,184,1755,211"/>
+<area shape="rect" title=" " alt="" coords="2407,184,2461,211"/>
+<area shape="rect" title=" " alt="" coords="2297,184,2382,211"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:ae516d892344c89a10708aa1e71035a56"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-x11_8cpp.html#ae516d892344c89a10708aa1e71035a56">GRAPHICS_NONE</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:ae516d892344c89a10708aa1e71035a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a805ad241e075b1fa6173bbe28bdb3ec9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-x11_8cpp.html#a805ad241e075b1fa6173bbe28bdb3ec9">GRAPHICS_ORIGINAL</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a805ad241e075b1fa6173bbe28bdb3ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fd2a514eed49b0920e4ee8a685b4752"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-x11_8cpp.html#a2fd2a514eed49b0920e4ee8a685b4752">GRAPHICS_ADAM_BOLT</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a2fd2a514eed49b0920e4ee8a685b4752"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6bb7a701d7d49706ced5ba188492517"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main-x11_8cpp.html#ae6bb7a701d7d49706ced5ba188492517">GRAPHICS_HENGBAND</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:ae6bb7a701d7d49706ced5ba188492517"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="a2fd2a514eed49b0920e4ee8a685b4752"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fd2a514eed49b0920e4ee8a685b4752">&#9670;&nbsp;</a></span>GRAPHICS_ADAM_BOLT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GRAPHICS_ADAM_BOLT&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae6bb7a701d7d49706ced5ba188492517"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6bb7a701d7d49706ced5ba188492517">&#9670;&nbsp;</a></span>GRAPHICS_HENGBAND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GRAPHICS_HENGBAND&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae516d892344c89a10708aa1e71035a56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae516d892344c89a10708aa1e71035a56">&#9670;&nbsp;</a></span>GRAPHICS_NONE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GRAPHICS_NONE&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a805ad241e075b1fa6173bbe28bdb3ec9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a805ad241e075b1fa6173bbe28bdb3ec9">&#9670;&nbsp;</a></span>GRAPHICS_ORIGINAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GRAPHICS_ORIGINAL&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分43秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

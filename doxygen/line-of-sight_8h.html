@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/floor/line-of-sight.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a620f8a6b723e397390ae5ca00f5aa8c.html">floor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">line-of-sight.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+line-of-sight.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="line-of-sight_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2line-of-sight_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2line-of-sight_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2line-of-sight_8h">
+<area shape="rect" title=" " alt="" coords="348,5,536,61"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="377,109,507,136"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="31,184,122,211"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="23,348,165,375"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,184,607,211"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,184,245,211"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,184,367,211"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,184,492,211"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,184,807,211"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="943,184,1090,211"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="169,266,291,293"/>
+<area shape="rect" title=" " alt="" coords="386,266,461,293"/>
+<area shape="rect" title=" " alt="" coords="485,266,567,293"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="592,259,743,300"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="767,259,920,300"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="944,259,1089,300"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1114,259,1287,300"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1311,259,1437,300"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1461,266,1580,293"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1604,266,1715,293"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="line-of-sight_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2line-of-sight_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2line-of-sight_8hdep" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2floor_2line-of-sight_8hdep">
+<area shape="rect" title=" " alt="" coords="1611,5,1799,61"/>
+<area shape="rect" href="effect-monster-psi_8cpp.html" title=" " alt="" coords="5,109,193,165"/>
+<area shape="rect" href="effect-processor_8cpp.html" title=" " alt="" coords="217,109,405,165"/>
+<area shape="rect" href="floor-leaver_8cpp.html" title=" " alt="" coords="429,109,617,165"/>
+<area shape="rect" href="floor-util_8cpp.html" title=" " alt="" coords="641,109,829,165"/>
+<area shape="rect" href="line-of-sight_8cpp.html" title=" " alt="" coords="853,109,1041,165"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html" title=" " alt="" coords="1065,109,1264,165"/>
+<area shape="rect" href="monster-sweep-grid_8cpp.html" title=" " alt="" coords="1289,109,1481,165"/>
+<area shape="rect" href="quantum-effect_8cpp.html" title=" " alt="" coords="1505,109,1693,165"/>
+<area shape="rect" href="mspell-checker_8cpp.html" title=" " alt="" coords="1717,109,1905,165"/>
+<area shape="rect" href="mspell-judgement_8cpp.html" title=" " alt="" coords="1929,109,2117,165"/>
+<area shape="rect" href="mspell-lite_8cpp.html" title=" " alt="" coords="2141,109,2329,165"/>
+<area shape="rect" href="player-view_8cpp.html" title=" " alt="" coords="2353,109,2541,165"/>
+<area shape="rect" href="range-calc_8cpp.html" title=" " alt="" coords="2565,109,2753,165"/>
+<area shape="rect" href="spells-summon_8cpp.html" title=" " alt="" coords="2777,109,2965,165"/>
+<area shape="rect" href="spells-teleport_8cpp.html" title=" " alt="" coords="2989,109,3177,165"/>
+<area shape="rect" href="target-setter_8cpp.html" title=" " alt="" coords="3201,109,3389,165"/>
+</map>
+</div>
+</div>
+<p><a href="line-of-sight_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:adff83a1e8c9d47236408737740652a4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="line-of-sight_8h.html#adff83a1e8c9d47236408737740652a4b">los</a> (<a class="el" href="structplayer__type.html">player_type</a> *player_ptr, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x1, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> y2, <a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a> x2)</td></tr>
+<tr class="memdesc:adff83a1e8c9d47236408737740652a4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">LOS(Line Of Sight / 視線が通っているか)の判定を行う。  <a href="line-of-sight_8h.html#adff83a1e8c9d47236408737740652a4b">[詳解]</a><br /></td></tr>
+<tr class="separator:adff83a1e8c9d47236408737740652a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="adff83a1e8c9d47236408737740652a4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adff83a1e8c9d47236408737740652a4b">&#9670;&nbsp;</a></span>los()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> los </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>player_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="h-type_8h.html#aa76a678e41fd2b751e1a18b9f5dc8c03">POSITION</a>&#160;</td>
+          <td class="paramname"><em>x2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>LOS(Line Of Sight / 視線が通っているか)の判定を行う。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ptr</td><td>プレーヤーへの参照ポインタ </td></tr>
+    <tr><td class="paramname">y1</td><td>始点のy座標 </td></tr>
+    <tr><td class="paramname">x1</td><td>始点のx座標 </td></tr>
+    <tr><td class="paramname">y2</td><td>終点のy座標 </td></tr>
+    <tr><td class="paramname">x2</td><td>終点のx座標 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>LOSが通っているならTRUEを返す。</dd></dl>
+<p>A simple, fast, integer-based line-of-sight algorithm. By Joseph Hall,<br  />
+ 4116 Brewster Drive, Raleigh NC 27606. Email to <a href="#" onclick="location.href='mai'+'lto:'+'jnh'+'@e'+'cem'+'wl'+'.nc'+'su'+'.ed'+'u'; return false;">jnh@e<span style="display: none;">.nosp@m.</span>cemw<span style="display: none;">.nosp@m.</span>l.ncs<span style="display: none;">.nosp@m.</span>u.ed<span style="display: none;">.nosp@m.</span>u</a>.<br  />
+<br  />
+ Returns TRUE if a line of sight can be traced from (x1,y1) to (x2,y2).<br  />
+<br  />
+ The LOS begins at the center of the tile (x1,y1) and ends at the center of<br  />
+ the tile (x2,y2). If <a class="el" href="line-of-sight_8cpp.html#adff83a1e8c9d47236408737740652a4b" title="LOS(Line Of Sight / 視線が通っているか)の判定を行う。">los()</a> is to return TRUE, all of the tiles this line<br  />
+ passes through must be floor tiles, except for (x1,y1) and (x2,y2).<br  />
+<br  />
+ We assume that the "mathematical corner" of a non-floor tile does not<br  />
+ block line of sight.<br  />
+<br  />
+ Because this function uses (short) ints for all calculations, overflow may<br  />
+ occur if dx and dy exceed 90.<br  />
+<br  />
+ Once all the degenerate cases are eliminated, the values "qx", "qy", and<br  />
+ "m" are multiplied by a scale factor "f1 = abs(dx * dy * 2)", so that<br  />
+ we can use integer arithmetic.<br  />
+<br  />
+ We travel from start to finish along the longer axis, starting at the border<br  />
+ between the first and second tiles, where the y offset = .5 * slope, taking<br  />
+ into account the scale factor. See below.<br  />
+<br  />
+ Also note that this function and the "move towards target" code do NOT<br  />
+ share the same properties. Thus, you can see someone, target them, and<br  />
+ then fire a bolt at them, but the bolt may hit a wall, not them. However<br  />
+, by clever choice of target locations, you can sometimes throw a "curve".<br  />
+<br  />
+ Note that "line of sight" is not "reflexive" in all cases.<br  />
+<br  />
+ Use the "projectable()" routine to test "spell/missile line of sight".<br  />
+<br  />
+ Use the "update_view()" function to determine player line-of-sight.<br  />
+</p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="line-of-sight_8h_adff83a1e8c9d47236408737740652a4b_cgraph.png" border="0" usemap="#aline-of-sight_8h_adff83a1e8c9d47236408737740652a4b_cgraph" alt=""/></div>
+<map name="aline-of-sight_8h_adff83a1e8c9d47236408737740652a4b_cgraph" id="aline-of-sight_8h_adff83a1e8c9d47236408737740652a4b_cgraph">
+<area shape="rect" title="LOS(Line Of Sight / 視線が通っているか)の判定を行う。" alt="" coords="5,5,44,32"/>
+<area shape="rect" href="cave_8cpp.html#adc0f94b19918e1965ddd320ae168d551" title=" " alt="" coords="92,5,195,32"/>
+<area shape="rect" href="cave_8cpp.html#a512cd3e2d9d7f5f5ca427d6b4321548e" title=" " alt="" coords="243,5,367,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="line-of-sight_8h_adff83a1e8c9d47236408737740652a4b_icgraph.png" border="0" usemap="#aline-of-sight_8h_adff83a1e8c9d47236408737740652a4b_icgraph" alt=""/></div>
+<map name="aline-of-sight_8h_adff83a1e8c9d47236408737740652a4b_icgraph" id="aline-of-sight_8h_adff83a1e8c9d47236408737740652a4b_icgraph">
+<area shape="rect" title="LOS(Line Of Sight / 視線が通っているか)の判定を行う。" alt="" coords="1037,1353,1076,1380"/>
+<area shape="rect" href="mspell-judgement_8cpp.html#a18d1785b5416dd0102f17af5a5e64339" title="モンスターが敵対モンスターに直接ブレスを当てることが可能かを判定する / Determine if a breath will hit the target." alt="" coords="633,656,730,683"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a1ea460c5c2e7019ba87d7308f7f7598b" title=" " alt="" coords="5,17,164,44"/>
+<area shape="rect" href="range-calc_8cpp.html#aa0bea06a5600ef01a6952378a83a60f8" title=" " alt="" coords="857,757,957,784"/>
+<area shape="rect" href="effect-processor_8cpp.html#af3f8898800f7285883e094085b8b4851" title="汎用的なビーム/ボルト/ボール系処理のルーチン Generic &quot;beam&quot;/&quot;bolt&quot;/&quot;ball&quot; projection routine." alt="" coords="651,757,712,784"/>
+<area shape="rect" href="mspell-lite_8cpp.html#af1ce4a80952cbf0d294ecab5c07701c1" title=" " alt="" coords="839,1251,974,1293"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#afc5ab2de8a94ef9db572fa52a1d349b9" title=" " alt="" coords="587,707,776,733"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a966fa20c8558fa0beff9bf3f87e2a138" title=" " alt="" coords="827,1317,986,1358"/>
+<area shape="rect" href="mspell-lite_8cpp.html#a31c67bd69de673c6fa195b340ea42b13" title=" " alt="" coords="620,1259,743,1285"/>
+<area shape="rect" href="target-setter_8cpp.html#af7e6e2af52fcb15557b64c945e9524af" title=" " alt="" coords="835,1383,978,1409"/>
+<area shape="rect" href="target-setter_8cpp.html#a3b81773d8c052a061ad2dc39401158b3" title=" " alt="" coords="833,1433,981,1460"/>
+<area shape="rect" href="effect-monster-psi_8cpp.html#ac2742db203ad2bcecc5cd05d51938caa" title="モンスターへのPsi攻撃(GF_PSI)の効果を発動する" alt="" coords="841,1484,972,1511"/>
+<area shape="rect" href="monster-sweep-grid_8cpp.html#a89c8d5047de783b34e52d77b597ab1bf" title="モンスターの移動方向を返す / Choose &quot;logical&quot; directions for monster movement" alt="" coords="845,1535,968,1561"/>
+<area shape="rect" href="spells-summon_8cpp.html#a7e2d3c870d4426892e3f3c8c11d11a3e" title=" " alt="" coords="860,1585,953,1612"/>
+<area shape="rect" href="quantum-effect_8cpp.html#a1f8d8fd16b7d003f0c9260d7f8a5ccf0" title="量子生物ユニークの量子的効果 (ショート・テレポートまたは距離10のテレポート・アウェイ)を実行する" alt="" coords="825,1636,988,1663"/>
+<area shape="rect" href="mspell-checker_8cpp.html#ae10739c91db6102c1cbaa631acd622d9" title="モンスターにとって死者復活を行うべき状態かどうかを返す / Determine if there is a space near the player in which a summoned creat..." alt="" coords="854,1687,959,1713"/>
+<area shape="rect" href="floor-util_8cpp.html#a2704964f2aa08734888dc95c82b138c4" title=" " alt="" coords="650,1208,713,1235"/>
+<area shape="rect" href="spells-teleport_8cpp.html#a1b17c743ff014ec38b3f906eb54c8480" title=" " alt="" coords="824,1737,989,1764"/>
+<area shape="rect" href="player-view_8cpp.html#a6db7a2878791ddf98774ed5430414a4d" title=" " alt="" coords="847,1788,967,1815"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#addad41b5490f0e5440142f98ca58a0f9" title=" " alt="" coords="361,43,537,69"/>
+<area shape="rect" href="melee-spell-flags-checker_8cpp.html#a8558f34c01633de68b995225193b6d05" title=" " alt="" coords="220,43,303,69"/>
+<area shape="rect" href="activation-bolt-ball_8cpp.html#a5f4625552656aee45b62542787f7cd08" title=" " alt="" coords="390,1288,507,1315"/>
+<area shape="rect" href="activation-others_8cpp.html#a42ed7012ce16db3e2e05111dbcb577d2" title=" " alt="" coords="377,549,521,576"/>
+<area shape="rect" href="spells-random_8cpp.html#ab57488fb84eb6319e856f84babbf4f6f" title="TY_CURSE処理発動 / Activate the evil Topi Ylinen curse" alt="" coords="387,600,510,627"/>
+<area shape="rect" href="effect-feature_8cpp.html#ab60eea66f4d858035803d331e84151cc" title="汎用的なビーム/ボルト/ボール系による地形効果処理 / We are called from &quot;project()&quot; to &quot;damage&quot; terrain features" alt="" coords="212,663,311,689"/>
+<area shape="rect" href="effect-player_8cpp.html#a5e72357ee48ae09616bf9a8e9407a4c3" title="汎用的なビーム/ボルト/ボール系によるプレイヤーへの効果処理 / Helper function for &quot;project()&quot; below." alt="" coords="214,788,309,815"/>
+<area shape="rect" href="spells-neighbor_8cpp.html#ad8d6bd76ccded6edc3d938dddafbea6d" title="死者復活処理(起点より周囲5マス)" alt="" coords="397,917,500,944"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a2c3318b5f3aed8ad86d874c1490f86af" title=" " alt="" coords="378,968,519,995"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a65fc9979f5efe840339924249b7a8d48" title=" " alt="" coords="378,1019,519,1045"/>
+<area shape="rect" href="monster-attack-monster_8cpp.html#a3715ddccdb53d6a15e7e1d455332abc4" title=" " alt="" coords="381,1069,516,1096"/>
+<area shape="rect" href="aura-counterattack_8cpp.html#ae046ca978cc34c3daa319e1d28eb6e3a" title=" " alt="" coords="362,1121,535,1162"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a8cdb77f4352965d8daaed40feabdd58f" title="モンスターのビーム型魔法処理 /" alt="" coords="421,1187,476,1213"/>
+<area shape="rect" href="blood-curse_8cpp.html#ac0ecc46e48f607918b001bc2b08b561f" title=" " alt="" coords="371,144,527,171"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a50c4496847b82cffa5927970c2add403" title="モンスターのボルト型魔法処理 / Cast a bolt at the player Stop if we hit a monster Affect monsters and the player" alt="" coords="427,195,470,221"/>
+<area shape="rect" href="mspell-checker_8cpp.html#a60d3d82169ca8120d8716c9994caf9ca" title="モンスターのボール型＆ブレス型魔法処理 / Cast a breath (or ball) attack at the player Pass over any monsters that may be..." alt="" coords="419,245,478,272"/>
+<area shape="rect" href="mind-elementalist_8cpp.html#ab738ba0734204e55707411a35acde85c" title="元素魔法呪文を実行する" alt="" coords="381,1339,516,1365"/>
+<area shape="rect" href="spells-chaos_8cpp.html#af16bb565fa9396a13ad62570b7d0344f" title="カオス魔法「流星群」/トランプ魔法「隕石のカード」の処理としてプレイヤーを中心に隕石落下処理を10+1d10回繰り返す。 / Drop 10+1d10 meteor ball at random pla..." alt="" coords="401,296,496,323"/>
+<area shape="rect" href="mind-mindcrafter_8cpp.html#a8da07b1c4907a85709c965d06d9038cb" title="超能力の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;mindcrafter&#39;." alt="" coords="373,347,525,373"/>
+<area shape="rect" href="mind-mirror-master_8cpp.html#af68e01e109fc7fb8b1e131a7131ed4c5" title="鏡魔法の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;Mirror magic&#39;." alt="" coords="388,397,509,424"/>
+<area shape="rect" href="mind-ninja_8cpp.html#ae73c136f3f19a9d9d3691f8894bfad97" title="忍術の発動 / do_cmd_cast calls this function if the player&#39;s class is &#39;ninja&#39;." alt="" coords="391,1237,506,1264"/>
+<area shape="rect" href="spells-crusade_8cpp.html#afb7053fa5419ad06ab18be525f1d92af" title="破邪魔法処理" alt="" coords="371,448,526,475"/>
+<area shape="rect" href="grid_8cpp.html#a19c7a7150a47566503ed4bbad4d03c21" title=" " alt="" coords="395,725,503,752"/>
+<area shape="rect" href="effect-player_8cpp.html#a15c922eb8fc168c85e08a24a4c37ef35" title="反射・忍者の変わり身などでそもそも当たらない状況を判定する" alt="" coords="371,851,526,893"/>
+<area shape="rect" href="cmd-mind_8cpp.html#a15c5dc7b21b8512778dd7d853adc5743" title=" " alt="" coords="367,499,530,525"/>
+<area shape="rect" href="mspell-lite_8cpp.html#a316166f8fac75707171476e2ab246562" title=" " alt="" coords="608,1309,755,1336"/>
+<area shape="rect" href="mspell-attack_8cpp.html#ab50ab49708e55a42a4caeb03490bdf93" title="モンスターの特殊技能メインルーチン / Creatures can cast spells, shoot missiles, and breathe." alt="" coords="383,1389,514,1416"/>
+<area shape="rect" href="floor-leaver_8cpp.html#a8665adb3738f60520d0b3f4cec4aeafc" title=" " alt="" coords="607,1360,756,1387"/>
+<area shape="rect" href="target-setter_8cpp.html#ad02c1118be239ab872713cc386fd3163" title=" " alt="" coords="614,1411,749,1437"/>
+<area shape="rect" href="monster-direction_8cpp.html#a855dbe8f8c72497d1f3a8abae7ea768b" title="モンスターの移動パターンを決定する" alt="" coords="359,1527,539,1569"/>
+<area shape="rect" href="monster-direction_8cpp.html#ab50a2a25a308d0b975eddfd7675e7237" title="ペットや友好的なモンスターがフロアから逃げる処理を行う" alt="" coords="606,1557,757,1598"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時54分15秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player/player-realm.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_975424cdae97a07db69e55371758444e.html">player</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">player-realm.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="player-realm_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="angband_8h.html">system/angband.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">/* 職業ごとの選択可能な魔法領域 / Possible realms that can be chosen. */</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45a">    6</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45a">choosable_realm</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aaa68a588639eb3ebf293b7f22d7949bec">    7</a></span>&#160;    <a class="code" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aaa68a588639eb3ebf293b7f22d7949bec">CH_NONE</a> = 0x00,</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aae3d1dbf9331de7cdb8e2666fc14a920a">    8</a></span>&#160;    <a class="code" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aae3d1dbf9331de7cdb8e2666fc14a920a">CH_LIFE</a> = 0x01,</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa8b545221f542bfca8db827a180e7f2ba">    9</a></span>&#160;    <a class="code" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa8b545221f542bfca8db827a180e7f2ba">CH_SORCERY</a> = 0x02,</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa4ee7866840ee9fa181ba4b69e2867e40">   10</a></span>&#160;    <a class="code" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa4ee7866840ee9fa181ba4b69e2867e40">CH_NATURE</a> = 0x04,</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa565ddc3850ceb8d7dded618624d038a1">   11</a></span>&#160;    <a class="code" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa565ddc3850ceb8d7dded618624d038a1">CH_CHAOS</a> = 0x08,</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa4f2b69029174d29f0a4e83f587bdb448">   12</a></span>&#160;    <a class="code" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa4f2b69029174d29f0a4e83f587bdb448">CH_DEATH</a> = 0x10,</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa5a04403f98d7e3f094697ed1f375801b">   13</a></span>&#160;    <a class="code" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa5a04403f98d7e3f094697ed1f375801b">CH_TRUMP</a> = 0x20,</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa96146e769ba588340eeeb710c7802335">   14</a></span>&#160;    <a class="code" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa96146e769ba588340eeeb710c7802335">CH_ARCANE</a> = 0x40,</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aaadf54986bbe1273e7cade41114735f94">   15</a></span>&#160;    <a class="code" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aaadf54986bbe1273e7cade41114735f94">CH_ENCHANT</a> = 0x80,</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa8f6eabd609a5859604c8c85cbde36495">   16</a></span>&#160;    <a class="code" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa8f6eabd609a5859604c8c85cbde36495">CH_DAEMON</a> = 0x100,</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aaa0eebcc106150af174abbc94fca242e4">   17</a></span>&#160;    <a class="code" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aaa0eebcc106150af174abbc94fca242e4">CH_CRUSADE</a> = 0x200,</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aaf5cce871d6b43c186222eb7a05c8cc52">   19</a></span>&#160;    <a class="code" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aaf5cce871d6b43c186222eb7a05c8cc52">CH_MUSIC</a> = 0x8000,</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa00f095d13affc7b9bbebc6717d08bbc1">   20</a></span>&#160;    <a class="code" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa00f095d13affc7b9bbebc6717d08bbc1">CH_HISSATSU</a> = 0x10000,</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aaa8af0ed61bab19ab638ff5e44b188a2d">   21</a></span>&#160;    <a class="code" href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aaa8af0ed61bab19ab638ff5e44b188a2d">CH_HEX</a> = 0x20000,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="player-realm_8h.html#abe7dddf97146842eb05019a8b52e33e8">realm_choices1</a>[];</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a> <a class="code" href="player-realm_8h.html#a86fce7372c23c986e2fdec89ff089eca">realm_choices2</a>[];</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/* Magic-books for the realms */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<a class="code" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a> <a class="code" href="player-realm_8h.html#a11a8208a38771a1915bc63de183f561a">get_realm1_book</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<a class="code" href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a> <a class="code" href="player-realm_8h.html#a17a8cc91a8bf571f0d9ab86dfb238429">get_realm2_book</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="player-realm_8h.html#aca735d2c754a04b4e011003532982c92">is_wizard_class</a>(<a class="code" href="structplayer__type.html">player_type</a> *player_ptr);</div>
+<div class="ttc" id="aangband_8h_html"><div class="ttname"><a href="angband_8h.html">angband.h</a></div><div class="ttdoc">Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file</div></div>
+<div class="ttc" id="ah-type_8h_html_a557f0599108d7e2a11e3495c819c6d6b"><div class="ttname"><a href="h-type_8h.html#a557f0599108d7e2a11e3495c819c6d6b">REALM_IDX</a></div><div class="ttdeci">s16b REALM_IDX</div><div class="ttdoc">ゲーム中の魔法領域ID型を定義</div><div class="ttdef"><b>Definition:</b> h-type.h:112</div></div>
+<div class="ttc" id="ah-type_8h_html_af7a1de980667931f896ae6a820f0ee80"><div class="ttname"><a href="h-type_8h.html#af7a1de980667931f896ae6a820f0ee80">u32b</a></div><div class="ttdeci">unsigned long u32b</div><div class="ttdef"><b>Definition:</b> h-type.h:93</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a11a8208a38771a1915bc63de183f561a"><div class="ttname"><a href="player-realm_8h.html#a11a8208a38771a1915bc63de183f561a">get_realm1_book</a></div><div class="ttdeci">REALM_IDX get_realm1_book(player_type *player_ptr)</div><div class="ttdef"><b>Definition:</b> player-realm.cpp:74</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a17a8cc91a8bf571f0d9ab86dfb238429"><div class="ttname"><a href="player-realm_8h.html#a17a8cc91a8bf571f0d9ab86dfb238429">get_realm2_book</a></div><div class="ttdeci">REALM_IDX get_realm2_book(player_type *player_ptr)</div><div class="ttdef"><b>Definition:</b> player-realm.cpp:76</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a4f0cc157ca2fecd812e00784ccd4d45a"><div class="ttname"><a href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45a">choosable_realm</a></div><div class="ttdeci">choosable_realm</div><div class="ttdef"><b>Definition:</b> player-realm.h:6</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a4f0cc157ca2fecd812e00784ccd4d45aa00f095d13affc7b9bbebc6717d08bbc1"><div class="ttname"><a href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa00f095d13affc7b9bbebc6717d08bbc1">CH_HISSATSU</a></div><div class="ttdeci">@ CH_HISSATSU</div><div class="ttdef"><b>Definition:</b> player-realm.h:20</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a4f0cc157ca2fecd812e00784ccd4d45aa4ee7866840ee9fa181ba4b69e2867e40"><div class="ttname"><a href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa4ee7866840ee9fa181ba4b69e2867e40">CH_NATURE</a></div><div class="ttdeci">@ CH_NATURE</div><div class="ttdef"><b>Definition:</b> player-realm.h:10</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a4f0cc157ca2fecd812e00784ccd4d45aa4f2b69029174d29f0a4e83f587bdb448"><div class="ttname"><a href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa4f2b69029174d29f0a4e83f587bdb448">CH_DEATH</a></div><div class="ttdeci">@ CH_DEATH</div><div class="ttdef"><b>Definition:</b> player-realm.h:12</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a4f0cc157ca2fecd812e00784ccd4d45aa565ddc3850ceb8d7dded618624d038a1"><div class="ttname"><a href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa565ddc3850ceb8d7dded618624d038a1">CH_CHAOS</a></div><div class="ttdeci">@ CH_CHAOS</div><div class="ttdef"><b>Definition:</b> player-realm.h:11</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a4f0cc157ca2fecd812e00784ccd4d45aa5a04403f98d7e3f094697ed1f375801b"><div class="ttname"><a href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa5a04403f98d7e3f094697ed1f375801b">CH_TRUMP</a></div><div class="ttdeci">@ CH_TRUMP</div><div class="ttdef"><b>Definition:</b> player-realm.h:13</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a4f0cc157ca2fecd812e00784ccd4d45aa8b545221f542bfca8db827a180e7f2ba"><div class="ttname"><a href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa8b545221f542bfca8db827a180e7f2ba">CH_SORCERY</a></div><div class="ttdeci">@ CH_SORCERY</div><div class="ttdef"><b>Definition:</b> player-realm.h:9</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a4f0cc157ca2fecd812e00784ccd4d45aa8f6eabd609a5859604c8c85cbde36495"><div class="ttname"><a href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa8f6eabd609a5859604c8c85cbde36495">CH_DAEMON</a></div><div class="ttdeci">@ CH_DAEMON</div><div class="ttdef"><b>Definition:</b> player-realm.h:16</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a4f0cc157ca2fecd812e00784ccd4d45aa96146e769ba588340eeeb710c7802335"><div class="ttname"><a href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aa96146e769ba588340eeeb710c7802335">CH_ARCANE</a></div><div class="ttdeci">@ CH_ARCANE</div><div class="ttdef"><b>Definition:</b> player-realm.h:14</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a4f0cc157ca2fecd812e00784ccd4d45aaa0eebcc106150af174abbc94fca242e4"><div class="ttname"><a href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aaa0eebcc106150af174abbc94fca242e4">CH_CRUSADE</a></div><div class="ttdeci">@ CH_CRUSADE</div><div class="ttdef"><b>Definition:</b> player-realm.h:17</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a4f0cc157ca2fecd812e00784ccd4d45aaa68a588639eb3ebf293b7f22d7949bec"><div class="ttname"><a href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aaa68a588639eb3ebf293b7f22d7949bec">CH_NONE</a></div><div class="ttdeci">@ CH_NONE</div><div class="ttdef"><b>Definition:</b> player-realm.h:7</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a4f0cc157ca2fecd812e00784ccd4d45aaa8af0ed61bab19ab638ff5e44b188a2d"><div class="ttname"><a href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aaa8af0ed61bab19ab638ff5e44b188a2d">CH_HEX</a></div><div class="ttdeci">@ CH_HEX</div><div class="ttdef"><b>Definition:</b> player-realm.h:21</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a4f0cc157ca2fecd812e00784ccd4d45aaadf54986bbe1273e7cade41114735f94"><div class="ttname"><a href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aaadf54986bbe1273e7cade41114735f94">CH_ENCHANT</a></div><div class="ttdeci">@ CH_ENCHANT</div><div class="ttdef"><b>Definition:</b> player-realm.h:15</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a4f0cc157ca2fecd812e00784ccd4d45aae3d1dbf9331de7cdb8e2666fc14a920a"><div class="ttname"><a href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aae3d1dbf9331de7cdb8e2666fc14a920a">CH_LIFE</a></div><div class="ttdeci">@ CH_LIFE</div><div class="ttdef"><b>Definition:</b> player-realm.h:8</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a4f0cc157ca2fecd812e00784ccd4d45aaf5cce871d6b43c186222eb7a05c8cc52"><div class="ttname"><a href="player-realm_8h.html#a4f0cc157ca2fecd812e00784ccd4d45aaf5cce871d6b43c186222eb7a05c8cc52">CH_MUSIC</a></div><div class="ttdeci">@ CH_MUSIC</div><div class="ttdef"><b>Definition:</b> player-realm.h:19</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_a86fce7372c23c986e2fdec89ff089eca"><div class="ttname"><a href="player-realm_8h.html#a86fce7372c23c986e2fdec89ff089eca">realm_choices2</a></div><div class="ttdeci">const u32b realm_choices2[]</div><div class="ttdoc">職業毎に選択可能な第二領域魔法テーブル</div><div class="ttdef"><b>Definition:</b> player-realm.cpp:42</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_abe7dddf97146842eb05019a8b52e33e8"><div class="ttname"><a href="player-realm_8h.html#abe7dddf97146842eb05019a8b52e33e8">realm_choices1</a></div><div class="ttdeci">const u32b realm_choices1[]</div><div class="ttdoc">職業毎に選択可能な第一領域魔法テーブル</div><div class="ttdef"><b>Definition:</b> player-realm.cpp:7</div></div>
+<div class="ttc" id="aplayer-realm_8h_html_aca735d2c754a04b4e011003532982c92"><div class="ttname"><a href="player-realm_8h.html#aca735d2c754a04b4e011003532982c92">is_wizard_class</a></div><div class="ttdeci">bool is_wizard_class(player_type *player_ptr)</div><div class="ttdef"><b>Definition:</b> player-realm.cpp:78</div></div>
+<div class="ttc" id="astructplayer__type_html"><div class="ttname"><a href="structplayer__type.html">player_type</a></div><div class="ttdef"><b>Definition:</b> player-status.h:71</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時52分54秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

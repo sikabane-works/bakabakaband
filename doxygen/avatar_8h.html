@@ -1,0 +1,860 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bakabakaband: C:/Users/deskull/Documents/bakabakaband/src/player-info/avatar.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BakabakabandTitle.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bakabakaband
+   &#160;<span id="projectnumber">0.0.0Alpha3</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_71bb7b4142074e6b6cdcd57a4541b611.html">player-info</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">avatar.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="angband_8h_source.html">system/angband.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+avatar.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="avatar_8h__incl.png" border="0" usemap="#a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2player-info_2avatar_8h" alt=""/></div>
+<map name="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2player-info_2avatar_8h" id="a_c_1_2_users_2deskull_2_documents_2bakabakaband_2src_2player-info_2avatar_8h">
+<area shape="rect" title=" " alt="" coords="348,5,536,61"/>
+<area shape="rect" href="angband_8h.html" title="Angband(馬鹿馬鹿蛮怒)メインヘッダファイル Main &quot;Angband&quot; header file" alt="" coords="377,109,507,136"/>
+<area shape="rect" href="z-util_8h.html" title=" " alt="" coords="31,184,122,211"/>
+<area shape="rect" href="gamevalue_8h.html" title=" " alt="" coords="23,348,165,375"/>
+<area shape="rect" href="z-virt_8h.html" title=" " alt="" coords="517,184,607,211"/>
+<area shape="rect" href="z-form_8h.html" title=" " alt="" coords="146,184,245,211"/>
+<area shape="rect" href="z-rand_8h.html" title=" " alt="" coords="269,184,367,211"/>
+<area shape="rect" href="z-term_8h.html" title=" " alt="" coords="392,184,492,211"/>
+<area shape="rect" href="language-switcher_8h.html" title=" " alt="" coords="632,184,807,211"/>
+<area shape="rect" href="player-status_8h.html" title=" " alt="" coords="943,184,1090,211"/>
+<area shape="rect" href="h-basic_8h.html" title="変愚時追加された基本事項のヘッダーファイル / The most basic &quot;include&quot; file." alt="" coords="169,266,291,293"/>
+<area shape="rect" title=" " alt="" coords="386,266,461,293"/>
+<area shape="rect" title=" " alt="" coords="485,266,567,293"/>
+<area shape="rect" href="mutation-flag-types_8h.html" title=" " alt="" coords="592,259,743,300"/>
+<area shape="rect" href="base-status-types_8h.html" title=" " alt="" coords="767,259,920,300"/>
+<area shape="rect" href="player-classes-types_8h.html" title=" " alt="" coords="944,259,1089,300"/>
+<area shape="rect" href="player-personalities-types_8h.html" title=" " alt="" coords="1114,259,1287,300"/>
+<area shape="rect" href="player-race-types_8h.html" title=" " alt="" coords="1311,259,1437,300"/>
+<area shape="rect" href="spells-util_8h.html" title=" " alt="" coords="1461,266,1580,293"/>
+<area shape="rect" href="flag-group_8h.html" title=" " alt="" coords="1604,266,1715,293"/>
+</map>
+</div>
+</div>
+<p><a href="avatar_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a393a9ddfa0af406b07ae1b8490d71a7b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a393a9ddfa0af406b07ae1b8490d71a7b">MAX_VIRTUE</a>&#160;&#160;&#160;18</td></tr>
+<tr class="memdesc:a393a9ddfa0af406b07ae1b8490d71a7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">徳定義の最大数  <a href="avatar_8h.html#a393a9ddfa0af406b07ae1b8490d71a7b">[詳解]</a><br /></td></tr>
+<tr class="separator:a393a9ddfa0af406b07ae1b8490d71a7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d08fff0c9b082834f9d20c017444a06"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a9d08fff0c9b082834f9d20c017444a06">V_COMPASSION</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a9d08fff0c9b082834f9d20c017444a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b071fc3f9d6f529ffb89a362aad2237"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a9b071fc3f9d6f529ffb89a362aad2237">V_HONOUR</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a9b071fc3f9d6f529ffb89a362aad2237"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af217ffbea0fc6a6420c9781b7eb2a3ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#af217ffbea0fc6a6420c9781b7eb2a3ac">V_JUSTICE</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:af217ffbea0fc6a6420c9781b7eb2a3ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a049621b33de0d9fd6ac41956f7e2261d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a049621b33de0d9fd6ac41956f7e2261d">V_SACRIFICE</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a049621b33de0d9fd6ac41956f7e2261d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62c812b22b27da9f0ac6a474d778501f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a62c812b22b27da9f0ac6a474d778501f">V_KNOWLEDGE</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a62c812b22b27da9f0ac6a474d778501f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1553eeaead2603a69b8d9439a222fc4c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a1553eeaead2603a69b8d9439a222fc4c">V_FAITH</a>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:a1553eeaead2603a69b8d9439a222fc4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8516ad4f3d831f3fcf1c5854ab186470"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a8516ad4f3d831f3fcf1c5854ab186470">V_ENLIGHTEN</a>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:a8516ad4f3d831f3fcf1c5854ab186470"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a139080787bd614553e47c2c5221e09ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a139080787bd614553e47c2c5221e09ed">V_ENCHANT</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:a139080787bd614553e47c2c5221e09ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35bd99f9dc7cefdeba2e19ffb411954d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a35bd99f9dc7cefdeba2e19ffb411954d">V_CHANCE</a>&#160;&#160;&#160;9</td></tr>
+<tr class="separator:a35bd99f9dc7cefdeba2e19ffb411954d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32bfaff0e8d47216a67ede5a14f7fdee"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a32bfaff0e8d47216a67ede5a14f7fdee">V_NATURE</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:a32bfaff0e8d47216a67ede5a14f7fdee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fe39f85fc4725dbb685de97b4b07b9c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a4fe39f85fc4725dbb685de97b4b07b9c">V_HARMONY</a>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:a4fe39f85fc4725dbb685de97b4b07b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb52b03b3b715b2600b5366999762b02"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#acb52b03b3b715b2600b5366999762b02">V_VITALITY</a>&#160;&#160;&#160;12</td></tr>
+<tr class="separator:acb52b03b3b715b2600b5366999762b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bdc89a8b11f43b8323175d07db97c96"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a9bdc89a8b11f43b8323175d07db97c96">V_UNLIFE</a>&#160;&#160;&#160;13</td></tr>
+<tr class="separator:a9bdc89a8b11f43b8323175d07db97c96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ac0915802589273c9e781fa9af2f6fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a7ac0915802589273c9e781fa9af2f6fa">V_PATIENCE</a>&#160;&#160;&#160;14</td></tr>
+<tr class="separator:a7ac0915802589273c9e781fa9af2f6fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab542a07c7907da03cf93e3f29fda1432"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#ab542a07c7907da03cf93e3f29fda1432">V_TEMPERANCE</a>&#160;&#160;&#160;15</td></tr>
+<tr class="separator:ab542a07c7907da03cf93e3f29fda1432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ccb308ad462977a5b02417e666b0356"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a9ccb308ad462977a5b02417e666b0356">V_DILIGENCE</a>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:a9ccb308ad462977a5b02417e666b0356"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc27ca6d646e80f9162b60b3cd098b70"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#adc27ca6d646e80f9162b60b3cd098b70">V_VALOUR</a>&#160;&#160;&#160;17</td></tr>
+<tr class="separator:adc27ca6d646e80f9162b60b3cd098b70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d1118f034e4401ea0e65a9f9ebaf69c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a8d1118f034e4401ea0e65a9f9ebaf69c">V_INDIVIDUALISM</a>&#160;&#160;&#160;18</td></tr>
+<tr class="separator:a8d1118f034e4401ea0e65a9f9ebaf69c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f0051ab477e42d0a0db0ace3b811b39"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a0f0051ab477e42d0a0db0ace3b811b39">VIRTUE_LARGE</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a0f0051ab477e42d0a0db0ace3b811b39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74b9fab7c9b326ce846f90ee04d8f241"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a74b9fab7c9b326ce846f90ee04d8f241">VIRTUE_SMALL</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a74b9fab7c9b326ce846f90ee04d8f241"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a0765c8ac8ec8795f5177062841d047cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a0765c8ac8ec8795f5177062841d047cf">compare_virtue</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, int type, int num, int tekitou)</td></tr>
+<tr class="memdesc:a0765c8ac8ec8795f5177062841d047cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">該当の徳がプレイヤーに指定されているか否かに応じつつ、大小を比較する。  <a href="avatar_8h.html#a0765c8ac8ec8795f5177062841d047cf">[詳解]</a><br /></td></tr>
+<tr class="separator:a0765c8ac8ec8795f5177062841d047cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f77c7a74f4dd1df02cd6e40b532f2ed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a9f77c7a74f4dd1df02cd6e40b532f2ed">virtue_number</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, int type)</td></tr>
+<tr class="memdesc:a9f77c7a74f4dd1df02cd6e40b532f2ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">プレイヤーの指定の徳が何番目のスロットに登録されているかを返す。 / Aux function  <a href="avatar_8h.html#a9f77c7a74f4dd1df02cd6e40b532f2ed">[詳解]</a><br /></td></tr>
+<tr class="separator:a9f77c7a74f4dd1df02cd6e40b532f2ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22da968625c13cae0f5b66e3d017b716"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a22da968625c13cae0f5b66e3d017b716">get_virtues</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr)</td></tr>
+<tr class="memdesc:a22da968625c13cae0f5b66e3d017b716"><td class="mdescLeft">&#160;</td><td class="mdescRight">作成中のプレイヤーキャラクターに徳8種類を与える。 / Select virtues &amp; reset values for a new character  <a href="avatar_8h.html#a22da968625c13cae0f5b66e3d017b716">[詳解]</a><br /></td></tr>
+<tr class="separator:a22da968625c13cae0f5b66e3d017b716"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b27a0959b27b2a3838ef65e598e5373"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a0b27a0959b27b2a3838ef65e598e5373">chg_virtue</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, int <a class="el" href="avatar_8h.html#a524031de97471682df469f517df6798e">virtue</a>, int amount)</td></tr>
+<tr class="memdesc:a0b27a0959b27b2a3838ef65e598e5373"><td class="mdescLeft">&#160;</td><td class="mdescRight">対応する徳をプレイヤーがスロットに登録している場合に加減を行う。  <a href="avatar_8h.html#a0b27a0959b27b2a3838ef65e598e5373">[詳解]</a><br /></td></tr>
+<tr class="separator:a0b27a0959b27b2a3838ef65e598e5373"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affd99530c999ecd923b7049fb0ee65de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#affd99530c999ecd923b7049fb0ee65de">set_virtue</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, int <a class="el" href="avatar_8h.html#a524031de97471682df469f517df6798e">virtue</a>, int amount)</td></tr>
+<tr class="memdesc:affd99530c999ecd923b7049fb0ee65de"><td class="mdescLeft">&#160;</td><td class="mdescRight">対応する徳をプレイヤーがスロットに登録している場合に固定値をセットする  <a href="avatar_8h.html#affd99530c999ecd923b7049fb0ee65de">[詳解]</a><br /></td></tr>
+<tr class="separator:affd99530c999ecd923b7049fb0ee65de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cb0517b62d3cfc5a5ee25ed58716280"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a3cb0517b62d3cfc5a5ee25ed58716280">dump_virtues</a> (<a class="el" href="structplayer__type.html">player_type</a> *creature_ptr, FILE *OutFile)</td></tr>
+<tr class="memdesc:a3cb0517b62d3cfc5a5ee25ed58716280"><td class="mdescLeft">&#160;</td><td class="mdescRight">徳のダンプ表示を行う  <a href="avatar_8h.html#a3cb0517b62d3cfc5a5ee25ed58716280">[詳解]</a><br /></td></tr>
+<tr class="separator:a3cb0517b62d3cfc5a5ee25ed58716280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a524031de97471682df469f517df6798e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avatar_8h.html#a524031de97471682df469f517df6798e">virtue</a> [<a class="el" href="avatar_8h.html#a393a9ddfa0af406b07ae1b8490d71a7b">MAX_VIRTUE</a>]</td></tr>
+<tr class="memdesc:a524031de97471682df469f517df6798e"><td class="mdescLeft">&#160;</td><td class="mdescRight">ウルティマ4を参考にした徳のシステムの実装 / Enable an Ultima IV style "avatar" game where you try to achieve perfection in various virtues.  <a href="avatar_8h.html#a524031de97471682df469f517df6798e">[詳解]</a><br /></td></tr>
+<tr class="separator:a524031de97471682df469f517df6798e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">マクロ定義詳解</h2>
+<a id="a393a9ddfa0af406b07ae1b8490d71a7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a393a9ddfa0af406b07ae1b8490d71a7b">&#9670;&nbsp;</a></span>MAX_VIRTUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_VIRTUE&#160;&#160;&#160;18</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>徳定義の最大数 </p>
+
+</div>
+</div>
+<a id="a35bd99f9dc7cefdeba2e19ffb411954d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35bd99f9dc7cefdeba2e19ffb411954d">&#9670;&nbsp;</a></span>V_CHANCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_CHANCE&#160;&#160;&#160;9</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d08fff0c9b082834f9d20c017444a06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d08fff0c9b082834f9d20c017444a06">&#9670;&nbsp;</a></span>V_COMPASSION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_COMPASSION&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9ccb308ad462977a5b02417e666b0356"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ccb308ad462977a5b02417e666b0356">&#9670;&nbsp;</a></span>V_DILIGENCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_DILIGENCE&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a139080787bd614553e47c2c5221e09ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a139080787bd614553e47c2c5221e09ed">&#9670;&nbsp;</a></span>V_ENCHANT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_ENCHANT&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8516ad4f3d831f3fcf1c5854ab186470"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8516ad4f3d831f3fcf1c5854ab186470">&#9670;&nbsp;</a></span>V_ENLIGHTEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_ENLIGHTEN&#160;&#160;&#160;7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1553eeaead2603a69b8d9439a222fc4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1553eeaead2603a69b8d9439a222fc4c">&#9670;&nbsp;</a></span>V_FAITH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_FAITH&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4fe39f85fc4725dbb685de97b4b07b9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fe39f85fc4725dbb685de97b4b07b9c">&#9670;&nbsp;</a></span>V_HARMONY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_HARMONY&#160;&#160;&#160;11</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9b071fc3f9d6f529ffb89a362aad2237"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b071fc3f9d6f529ffb89a362aad2237">&#9670;&nbsp;</a></span>V_HONOUR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_HONOUR&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8d1118f034e4401ea0e65a9f9ebaf69c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d1118f034e4401ea0e65a9f9ebaf69c">&#9670;&nbsp;</a></span>V_INDIVIDUALISM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_INDIVIDUALISM&#160;&#160;&#160;18</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af217ffbea0fc6a6420c9781b7eb2a3ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af217ffbea0fc6a6420c9781b7eb2a3ac">&#9670;&nbsp;</a></span>V_JUSTICE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_JUSTICE&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a62c812b22b27da9f0ac6a474d778501f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62c812b22b27da9f0ac6a474d778501f">&#9670;&nbsp;</a></span>V_KNOWLEDGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_KNOWLEDGE&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a32bfaff0e8d47216a67ede5a14f7fdee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32bfaff0e8d47216a67ede5a14f7fdee">&#9670;&nbsp;</a></span>V_NATURE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_NATURE&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7ac0915802589273c9e781fa9af2f6fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ac0915802589273c9e781fa9af2f6fa">&#9670;&nbsp;</a></span>V_PATIENCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_PATIENCE&#160;&#160;&#160;14</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a049621b33de0d9fd6ac41956f7e2261d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a049621b33de0d9fd6ac41956f7e2261d">&#9670;&nbsp;</a></span>V_SACRIFICE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_SACRIFICE&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab542a07c7907da03cf93e3f29fda1432"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab542a07c7907da03cf93e3f29fda1432">&#9670;&nbsp;</a></span>V_TEMPERANCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_TEMPERANCE&#160;&#160;&#160;15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9bdc89a8b11f43b8323175d07db97c96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bdc89a8b11f43b8323175d07db97c96">&#9670;&nbsp;</a></span>V_UNLIFE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_UNLIFE&#160;&#160;&#160;13</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adc27ca6d646e80f9162b60b3cd098b70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc27ca6d646e80f9162b60b3cd098b70">&#9670;&nbsp;</a></span>V_VALOUR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_VALOUR&#160;&#160;&#160;17</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acb52b03b3b715b2600b5366999762b02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb52b03b3b715b2600b5366999762b02">&#9670;&nbsp;</a></span>V_VITALITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define V_VITALITY&#160;&#160;&#160;12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0f0051ab477e42d0a0db0ace3b811b39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f0051ab477e42d0a0db0ace3b811b39">&#9670;&nbsp;</a></span>VIRTUE_LARGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VIRTUE_LARGE&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a74b9fab7c9b326ce846f90ee04d8f241"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74b9fab7c9b326ce846f90ee04d8f241">&#9670;&nbsp;</a></span>VIRTUE_SMALL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VIRTUE_SMALL&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a0b27a0959b27b2a3838ef65e598e5373"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b27a0959b27b2a3838ef65e598e5373">&#9670;&nbsp;</a></span>chg_virtue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void chg_virtue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>virtue_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>amount</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>対応する徳をプレイヤーがスロットに登録している場合に加減を行う。 </p>
+<p>範囲は-125～125、基本的に絶対値が大きいほど絶対値が上がり辛くなる。 </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">virtue</td><td>徳のID </td></tr>
+    <tr><td class="paramname">amount</td><td>加減量 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+
+</div>
+</div>
+<a id="a0765c8ac8ec8795f5177062841d047cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0765c8ac8ec8795f5177062841d047cf">&#9670;&nbsp;</a></span>compare_virtue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#ad5c9d4ba3dc37783a528b0925dc981a0">bool</a> compare_virtue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tekitou</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>該当の徳がプレイヤーに指定されているか否かに応じつつ、大小を比較する。 </p>
+<p>徳がない場合は値0として比較する。 </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>比較したい徳のID </td></tr>
+    <tr><td class="paramname">num</td><td>比較基準値 </td></tr>
+    <tr><td class="paramname">tekitou</td><td>VIRTUE_LARGE = 基準値より大きいか / VIRTUE_SMALL = 基準値より小さいか </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>比較の真偽値を返す </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000132">todo:</a></b></dt><dd>引数名を直しておく </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="avatar_8h_a0765c8ac8ec8795f5177062841d047cf_cgraph.png" border="0" usemap="#aavatar_8h_a0765c8ac8ec8795f5177062841d047cf_cgraph" alt=""/></div>
+<map name="aavatar_8h_a0765c8ac8ec8795f5177062841d047cf_cgraph" id="aavatar_8h_a0765c8ac8ec8795f5177062841d047cf_cgraph">
+<area shape="rect" title="該当の徳がプレイヤーに指定されているか否かに応じつつ、大小を比較する。" alt="" coords="5,5,115,32"/>
+<area shape="rect" href="avatar_8cpp.html#a9f77c7a74f4dd1df02cd6e40b532f2ed" title="プレイヤーの指定の徳が何番目のスロットに登録されているかを返す。 / Aux function" alt="" coords="163,5,265,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="avatar_8h_a0765c8ac8ec8795f5177062841d047cf_icgraph.png" border="0" usemap="#aavatar_8h_a0765c8ac8ec8795f5177062841d047cf_icgraph" alt=""/></div>
+<map name="aavatar_8h_a0765c8ac8ec8795f5177062841d047cf_icgraph" id="aavatar_8h_a0765c8ac8ec8795f5177062841d047cf_icgraph">
+<area shape="rect" title="該当の徳がプレイヤーに指定されているか否かに応じつつ、大小を比較する。" alt="" coords="501,5,611,32"/>
+<area shape="rect" href="simple-perception_8cpp.html#a0fe147809288def2c16773c0e89fc033" title="1プレイヤーターン毎に武器、防具の擬似鑑定が行われるかを判定する。" alt="" coords="331,5,453,32"/>
+<area shape="rect" href="world-turn-processor_8cpp.html#a3be33cb7446b354094b2e08c51ddfdb4" title="10ゲームターンが進行する毎にゲーム世界全体の処理を行う。 / Handle certain things once every 10 game turns" alt="" coords="177,5,283,32"/>
+<area shape="rect" href="dungeon-processor_8cpp.html#a944d3d4e7757f7ef0c13876ff0a67e1d" title="process_player()、process_world() をcore.c から移設するのが先." alt="" coords="5,5,129,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3cb0517b62d3cfc5a5ee25ed58716280"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cb0517b62d3cfc5a5ee25ed58716280">&#9670;&nbsp;</a></span>dump_virtues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dump_virtues </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>out_file</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>徳のダンプ表示を行う </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out_file</td><td>ファイルポインタ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="avatar_8h_a3cb0517b62d3cfc5a5ee25ed58716280_cgraph.png" border="0" usemap="#aavatar_8h_a3cb0517b62d3cfc5a5ee25ed58716280_cgraph" alt=""/></div>
+<map name="aavatar_8h_a3cb0517b62d3cfc5a5ee25ed58716280_cgraph" id="aavatar_8h_a3cb0517b62d3cfc5a5ee25ed58716280_cgraph">
+<area shape="rect" title="徳のダンプ表示を行う" alt="" coords="5,5,104,32"/>
+<area shape="rect" href="z-form_8cpp.html#a6b3ead44e52e849795675dab45f815c6" title=" " alt="" coords="152,5,211,32"/>
+<area shape="rect" href="z-form_8cpp.html#a82b6d3eda6f002871426b21d61fb731b" title=" " alt="" coords="259,5,321,32"/>
+<area shape="rect" href="z-form_8cpp.html#a4f77331d7fa81a95f2ec614bb814b535" title=" " alt="" coords="369,5,436,32"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="avatar_8h_a3cb0517b62d3cfc5a5ee25ed58716280_icgraph.png" border="0" usemap="#aavatar_8h_a3cb0517b62d3cfc5a5ee25ed58716280_icgraph" alt=""/></div>
+<map name="aavatar_8h_a3cb0517b62d3cfc5a5ee25ed58716280_icgraph" id="aavatar_8h_a3cb0517b62d3cfc5a5ee25ed58716280_icgraph">
+<area shape="rect" title="徳のダンプ表示を行う" alt="" coords="652,81,751,108"/>
+<area shape="rect" href="knowledge-self_8cpp.html#a4120497dfdeb621df236bfa9bb4a114d" title="自己に関する情報を表示する" alt="" coords="424,56,604,83"/>
+<area shape="rect" href="character-dump_8cpp.html#ae307d7b71509df548f6e435330b259fa" title="徳の情報をファイルにダンプする" alt="" coords="451,107,577,133"/>
+<area shape="rect" href="cmd-knowledge_8cpp.html#aa220b38b20d426fe2517d1a4fd738e0c" title=" " alt="" coords="231,56,367,83"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="23,5,155,32"/>
+<area shape="rect" href="store-key-processor_8cpp.html#a2df881dd276714d7355349f576aa3a87" title="店舗処理コマンド選択のメインルーチン / Process a command in a store" alt="" coords="5,56,173,83"/>
+<area shape="rect" href="character-dump_8cpp.html#ad9ac4fe2e14196316e97fef3cb8db4e5" title="ダンプ出力のメインルーチン Output the character dump to a file" alt="" coords="221,107,376,133"/>
+<area shape="rect" href="files-util_8cpp.html#aa774b54a737e0cb637f600b724f3e43c" title="プレイヤーステータスをファイルダンプ出力する Hack – Dump a character description file" alt="" coords="40,107,139,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a22da968625c13cae0f5b66e3d017b716"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22da968625c13cae0f5b66e3d017b716">&#9670;&nbsp;</a></span>get_virtues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void get_virtues </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>作成中のプレイヤーキャラクターに徳8種類を与える。 / Select virtues &amp; reset values for a new character </p>
+<p>職業に応じて1～4種が固定、種族に応じて1種類が与えられ、後は重複なくランダムに選択される。 </p><dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="avatar_8h_a22da968625c13cae0f5b66e3d017b716_cgraph.png" border="0" usemap="#aavatar_8h_a22da968625c13cae0f5b66e3d017b716_cgraph" alt=""/></div>
+<map name="aavatar_8h_a22da968625c13cae0f5b66e3d017b716_cgraph" id="aavatar_8h_a22da968625c13cae0f5b66e3d017b716_cgraph">
+<area shape="rect" title="作成中のプレイヤーキャラクターに徳8種類を与える。 / Select virtues &amp; reset values for a new character" alt="" coords="5,31,89,57"/>
+<area shape="rect" href="avatar_8cpp.html#af14e664e2a225b2b74c6a08c866ae1d4" title="プレイヤーの職業や種族に依存しないランダムな徳を取得する / Aux function" alt="" coords="137,5,264,32"/>
+<area shape="rect" href="avatar_8cpp.html#a7f6ac7ecce16776258fb1c9dcdfdc7e6" title="プレイヤーの選んだ魔法領域に応じて対応する徳を返す。" alt="" coords="139,56,262,83"/>
+<area shape="rect" href="avatar_8cpp.html#a9f77c7a74f4dd1df02cd6e40b532f2ed" title="プレイヤーの指定の徳が何番目のスロットに登録されているかを返す。 / Aux function" alt="" coords="312,31,415,57"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="avatar_8h_a22da968625c13cae0f5b66e3d017b716_icgraph.png" border="0" usemap="#aavatar_8h_a22da968625c13cae0f5b66e3d017b716_icgraph" alt=""/></div>
+<map name="aavatar_8h_a22da968625c13cae0f5b66e3d017b716_icgraph" id="aavatar_8h_a22da968625c13cae0f5b66e3d017b716_icgraph">
+<area shape="rect" title="作成中のプレイヤーキャラクターに徳8種類を与える。 / Select virtues &amp; reset values for a new character" alt="" coords="577,31,661,57"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="367,5,529,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a06012604ab69cf4f6c5b0e51b89a9657" title="名前と生い立ちを設定する" alt="" coords="385,56,511,83"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="193,5,311,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,5,137,32"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a39f485b3d21e4423fea77030fd0294ea" title="プレーヤーキャラ作成ウィザード" alt="" coords="185,56,319,83"/>
+<area shape="rect" href="character-builder_8cpp.html#adf1703cf10d4cd15e1725654d66913db" title="プレイヤー作成処理のメインルーチン/ Create a new character." alt="" coords="27,56,116,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="affd99530c999ecd923b7049fb0ee65de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affd99530c999ecd923b7049fb0ee65de">&#9670;&nbsp;</a></span>set_virtue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_virtue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>virtue_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>amount</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>対応する徳をプレイヤーがスロットに登録している場合に固定値をセットする </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">virtue</td><td>徳のID </td></tr>
+    <tr><td class="paramname">amount</td><td>セットしたい値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>なし </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="avatar_8h_affd99530c999ecd923b7049fb0ee65de_icgraph.png" border="0" usemap="#aavatar_8h_affd99530c999ecd923b7049fb0ee65de_icgraph" alt=""/></div>
+<map name="aavatar_8h_affd99530c999ecd923b7049fb0ee65de_icgraph" id="aavatar_8h_affd99530c999ecd923b7049fb0ee65de_icgraph">
+<area shape="rect" title="対応する徳をプレイヤーがスロットに登録している場合に固定値をセットする" alt="" coords="563,5,640,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="352,5,515,32"/>
+<area shape="rect" href="cmd-building_8cpp.html#a0a8153fe4f368c0698316c3593bcc645" title="施設入り口にプレイヤーが乗った際の処理 / Do building commands" alt="" coords="185,5,304,32"/>
+<area shape="rect" href="input-key-processor_8cpp.html#a0530e351f785b80cae24b34c9bcd0b6e" title="プレイヤーから受けた入力コマンドの分岐処理。 / Parse and execute the current command Give &quot;Warning&quot; on illegal commands." alt="" coords="5,5,137,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9f77c7a74f4dd1df02cd6e40b532f2ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f77c7a74f4dd1df02cd6e40b532f2ed">&#9670;&nbsp;</a></span>virtue_number()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int virtue_number </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplayer__type.html">player_type</a> *&#160;</td>
+          <td class="paramname"><em>creature_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>プレイヤーの指定の徳が何番目のスロットに登録されているかを返す。 / Aux function </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>確認したい徳のID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>スロットがあるならばスロットのID(0～7)+1、ない場合は0を返す。 </dd></dl>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="avatar_8h_a9f77c7a74f4dd1df02cd6e40b532f2ed_icgraph.png" border="0" usemap="#aavatar_8h_a9f77c7a74f4dd1df02cd6e40b532f2ed_icgraph" alt=""/></div>
+<map name="aavatar_8h_a9f77c7a74f4dd1df02cd6e40b532f2ed_icgraph" id="aavatar_8h_a9f77c7a74f4dd1df02cd6e40b532f2ed_icgraph">
+<area shape="rect" title="プレイヤーの指定の徳が何番目のスロットに登録されているかを返す。 / Aux function" alt="" coords="612,363,715,390"/>
+<area shape="rect" href="mind-samurai_8cpp.html#ad3e7326cd8b928900cba7e1900be055e" title="剣術家限定で、型等に応じて命中率を高める" alt="" coords="420,14,555,41"/>
+<area shape="rect" href="spells-summon_8cpp.html#ae25b9862f324f43e7bd22de4bba02963" title="「悪霊召喚」のランダムな効果を決定して処理する。" alt="" coords="223,195,355,222"/>
+<area shape="rect" href="spells-trump_8cpp.html#a62ebe5c603d93fd2c11edcc6fc2b4caf" title="トランプ領域の「シャッフル」の効果をランダムに決めて処理する。" alt="" coords="442,119,533,146"/>
+<area shape="rect" href="spells-random_8cpp.html#a37a969b807fd2f1ce9399ed7851424c7" title="「ワンダー」のランダムな効果を決定して処理する。" alt="" coords="242,402,337,429"/>
+<area shape="rect" href="avatar_8cpp.html#a0765c8ac8ec8795f5177062841d047cf" title="該当の徳がプレイヤーに指定されているか否かに応じつつ、大小を比較する。" alt="" coords="433,69,542,95"/>
+<area shape="rect" href="effect-monster-charm_8cpp.html#aa366c855e5a174f5f238f4a8d06fb69c" title=" " alt="" coords="412,271,563,298"/>
+<area shape="rect" href="effect-monster-charm_8cpp.html#acd5f6437755b20a474ec529a3d681c1a" title=" " alt="" coords="412,323,563,364"/>
+<area shape="rect" href="effect-monster-charm_8cpp.html#a4c51ea42f4c026e720f3477da502379f" title=" " alt="" coords="411,388,564,429"/>
+<area shape="rect" href="effect-monster-charm_8cpp.html#abd96f8081d5a99e40ae33679affc39ee" title=" " alt="" coords="411,453,564,495"/>
+<area shape="rect" href="effect-monster-charm_8cpp.html#a311bb1cb749326143e80ebcdcf00611c" title=" " alt="" coords="411,519,564,560"/>
+<area shape="rect" href="avatar_8cpp.html#af14e664e2a225b2b74c6a08c866ae1d4" title="プレイヤーの職業や種族に依存しないランダムな徳を取得する / Aux function" alt="" coords="424,635,551,662"/>
+<area shape="rect" href="avatar_8cpp.html#a7f6ac7ecce16776258fb1c9dcdfdc7e6" title="プレイヤーの選んだ魔法領域に応じて対応する徳を返す。" alt="" coords="426,686,549,713"/>
+<area shape="rect" href="hp-mp-processor_8cpp.html#aae3b822ccd5276c3867b9f1af446719d" title=" " alt="" coords="448,221,527,247"/>
+<area shape="rect" href="cmd-zapwand_8cpp.html#a31d2ae8a16eb78a6205a02588fbbcc77" title="魔法棒の効果を発動する" alt="" coords="442,737,533,763"/>
+<area shape="rect" href="player-attack_8cpp.html#a7a5d04133dc8285f590218cfa1f63780" title="プレイヤーの打撃処理サブルーチン / Player attacks a (poor, defenseless) creature &#45;RAK&#45;" alt="" coords="216,5,363,47"/>
+<area shape="rect" href="cmd-attack_8cpp.html#a8e48cd6d2ca0901e5c89e19e30aab0b3" title="プレイヤーの打撃処理メインルーチン" alt="" coords="31,13,142,39"/>
+<area shape="rect" href="simple-perception_8cpp.html#a0fe147809288def2c16773c0e89fc033" title="1プレイヤーターン毎に武器、防具の擬似鑑定が行われるかを判定する。" alt="" coords="228,71,351,98"/>
+<area shape="rect" href="avatar_8cpp.html#a22da968625c13cae0f5b66e3d017b716" title="作成中のプレイヤーキャラクターに徳8種類を与える。 / Select virtues &amp; reset values for a new character" alt="" coords="247,661,331,687"/>
+<area shape="rect" href="cmd-building_8cpp.html#aff36b757bdf195dd7badfd84a43d95a7" title="施設の処理実行メインルーチン / Execute a building command" alt="" coords="5,686,168,713"/>
+<area shape="rect" href="birth-wizard_8cpp.html#a06012604ab69cf4f6c5b0e51b89a9657" title="名前と生い立ちを設定する" alt="" coords="24,635,149,662"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a524031de97471682df469f517df6798e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a524031de97471682df469f517df6798e">&#9670;&nbsp;</a></span>virtue</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="h-type_8h.html#af792750f10cc3fb0d64db2ebfb385fa6">concptr</a> virtue[<a class="el" href="avatar_8h.html#a393a9ddfa0af406b07ae1b8490d71a7b">MAX_VIRTUE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ウルティマ4を参考にした徳のシステムの実装 / Enable an Ultima IV style "avatar" game where you try to achieve perfection in various virtues. </p>
+<dl class="section date"><dt>日付</dt><dd>2013/12/23 </dd></dl>
+<dl class="section author"><dt>著者</dt><dd>Topi Ylinen 1998 <a href="#" onclick="location.href='mai'+'lto:'+'f1t'+'oy'+'l@u'+'ta'+'.fi'; return false;">f1toy<span style="display: none;">.nosp@m.</span>l@ut<span style="display: none;">.nosp@m.</span>a.fi</a> <a href="#" onclick="location.href='mai'+'lto:'+'top'+'i.'+'yli'+'ne'+'n@n'+'oo'+'di.'+'fi'; return false;">topi.<span style="display: none;">.nosp@m.</span>ylin<span style="display: none;">.nosp@m.</span>en@no<span style="display: none;">.nosp@m.</span>odi.<span style="display: none;">.nosp@m.</span>fi</a></dd></dl>
+<p>Copyright (c) 1989 James E. Wilson, Christopher J. Stuart This software may be copied and distributed for educational, research, and not for profit purposes provided that this copyright and statement are included in all such copies.</p>
+<p>徳の名称 / The names of the virtues </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+2021年04月13日(火) 19時55分57秒作成 - Bakabakaband / 構成: &#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

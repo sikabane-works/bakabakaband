@@ -1,0 +1,33 @@
+digraph "random_artifact_resistance"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="random_artifact_resistance",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="固定アーティファクト生成時の特別なハードコーディング処理を行う。."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="get_bloody_moon_flags",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$bloody-moon_8cpp.html#a150a3ecf8ee633d4e2f2a5d3d1940df8",tooltip="固定アーティファクト『ブラッディムーン』の特性を変更する。"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="one_resistance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$object-boost_8cpp.html#a23afe392286fe299d23316b2f63949ff",tooltip="対象のオブジェクトに耐性を一つ付加する。/ Choose one random resistance"];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="one_ele_resistance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$object-boost_8cpp.html#a8479e0ae532aac951da559536560aa68",tooltip="対象のオブジェクトに元素耐性を一つ付加する。/ Choose one random element resistance"];
+  Node3 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="one_high_resistance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$object-boost_8cpp.html#a8f91efd8221f822642748a831d76cde8",tooltip="対象のオブジェクトにランダムな上位耐性を一つ付加する。/ Choose one random high resistance"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="FlagGroup::has",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_flag_group.html#af4b7c3b723ab2fcccc5ad80100c69f97",tooltip="指定したフラグがONかOFFか調べる"];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="invest_terror_mask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$fixed-art-generator_8cpp.html#a90f3061c948dd2321761ea291662208a",tooltip="固定アーティファクトの生成 / Artifact code"];
+  Node7 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="get_curse",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$object-curse_8cpp.html#a749ffeeeaa9633e0b6300253e4bc9730",tooltip="アイテムに付加される可能性のある呪いを指定する。"];
+  Node8 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="object_is_armour",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$hook-armor_8cpp.html#a678629dc55495987f60d45872e53a537",tooltip="オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour"];
+  Node8 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="object_is_weapon",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$hook-weapon_8cpp.html#a3c30f6f6fb14bece864e482c0080485c",tooltip="オブジェクトが武器として装備できるかどうかを返す / Check if an object is weapon (including bows and ammo)"];
+  Node1 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="milim_swimsuit",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$fixed-art-generator_8cpp.html#afe3599cd08becb7d6f4d6b23b5d1a1a6",tooltip="戦乙女ミリムの危ない水着への特殊処理 (セクシーギャルのみpval追加)"];
+  Node1 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="one_ability",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$object-boost_8cpp.html#aefdde2a4a73afd110e04009bc5899739",tooltip="対象のオブジェクトに能力を一つ付加する。/ Choose one random ability"];
+  Node12 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="one_low_esp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$object-boost_8cpp.html#a10830095266d73c5d3c07cb44576cf1e",tooltip="対象のオブジェクトに弱いESPを一つ付加する。/ Choose one lower rank esp"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}
