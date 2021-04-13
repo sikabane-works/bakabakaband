@@ -25635,12 +25635,12 @@ N:1300:MUR肉
 E:MUR meat
 G:H:o
 I:117:20d15:20:70:0
-W:18:2:0:240:0:0
+W:18:2:0:240:5000:1347
 B:CRUSH:HURT:11d4
 F:WILD_ALL | BASH_DOOR | CAN_SWIM
 F:NO_FEAR | POWERFUL | FRIENDS
 F:ANIMAL | DROP_SKELETON | DROP_CORPSE | RIDING | NASTY
-D:クッソおぞましい謎の二足歩行物体だ。
+D:クッソおぞましい謎の二足歩行物体だ。大型馬をゆうに超えている。
 
 N:1301:MUR猫
 E:MUR cat
@@ -25991,12 +25991,73 @@ F:WILD_SHORE | DROP_CORPSE | UNIQUE
 F:EAT_POISONOUS | NASTY | CAN_SPEAK
 F:DROP_GOOD | DROP_1D2 | DROP_2D2
 F:CAN_SWIM | BASH_DOOR | ELDRITCH_HORROR | RES_TELE
-F:GOOD | EVIL | UNDEAD | IM_COLD | IM_ACID |IM_POIS | RES_WATE
+F:GOOD | EVIL | UNDEAD | IM_COLD | IM_ACID | IM_POIS | RES_WATE
 S:1_IN_3
 S:SCARE | CAUSE_2 | CAUSE_3 | ANIM_DEAD
 D:それは南会津の山奥を流れる水無川の上流、その底無しの淵に住む巨大なイワナの主だった。
 D:クッソ汚い木こりの根流しによって死した今もまだ、不死者となって、
 D:この世を徘徊し続けているようだ。
+
+N:1346:小型MUR肉
+E:Small MUR meat
+G:H:y
+I:112:8d15:20:30:0
+W:8:2:0:40:100:1300
+B:CRUSH:HURT:4d4
+F:WILD_ALL | BASH_DOOR | CAN_SWIM
+F:NO_FEAR | POWERFUL | FRIENDS
+F:ANIMAL | DROP_SKELETON | DROP_CORPSE | RIDING | NASTY
+D:クッソおぞましい謎の二足歩行物体だ。ポニーくらいの大きさで乗れないこともない。
+
+N:1347:巨大MUR肉
+E:Giant MUR meat
+G:H:u
+I:123:20d15:20:90:0
+W:32:2:0:2400:20000:1348
+B:CRUSH:HURT:20d4
+F:WILD_ALL | BASH_DOOR | CAN_SWIM
+F:NO_FEAR | POWERFUL | FRIENDS
+F:ANIMAL | DROP_SKELETON | DROP_CORPSE | RIDING | NASTY
+D:クッソおぞましい謎の二足歩行物体だ。大型ダンプとタメを張れそうだ。
+
+N:1348:超巨大MUR肉
+E:Great giant MUR meat
+G:H:s
+I:128:100d15:25:120:0
+W:44:2:0:10000:90000:1349
+B:CRUSH:HURT:60d4
+F:WILD_ALL | BASH_DOOR | CAN_SWIM
+F:NO_FEAR | POWERFUL
+F:ANIMAL | DROP_SKELETON | DROP_CORPSE | RIDING | NASTY
+D:クッソおぞましい謎の二足歩行物体だ。ついに小型のビルを破壊し尽くしそうな大きさと膂力になった。
+D:流石にここまで育つのは稀なようだ。
+
+N:1349:シン・MUR肉
+E:Shin MUR meat
+G:H:v
+I:134:100d45:30:150:0
+W:67:2:0:34000:0:0
+B:CRUSH:SUPERHURT:12d10
+B:CRUSH:SUPERHURT:12d10
+B:CRUSH:SUPERHURT:12d10
+F:WILD_ALL | BASH_DOOR | CAN_SWIM | CAN_FLY
+F:NO_FEAR | NO_CONF | POWERFUL
+F:ANIMAL | DROP_SKELETON | DROP_CORPSE | RIDING | NASTY
+F:IM_ACID | IM_ELEC | IM_FIRE | IM_COLD | IM_POIS | RES_LITE | RES_DARK
+F:NO_STUN | NO_FEAR | NO_CONF | NO_SLEEP | REGENERATE
+D:クッソおぞましい謎の二足歩行物体だったはずの何かだ。
+D:同性愛者の下半身の断片がなぜクッソおぞましいままに神々しいのか。
+D:それを理解できないあなたは狂うし、理解できたならすでに狂っているだろう。
+D:「私は好きにした、君らも好きにしろ」（迫真）
+S:1_IN_5
+S:BR_MANA
+
+# D - Black        w - White          s - Gray          o - Orange
+# r - Red          g - Green          b - Blue          u - Brown
+# d - Dark Gray    W - Light Gray     v - Violet        y - Yellow
+# R - Light Red    G - Light Green    B - Light Blue    U - Light Brown
+
+
 
 # === Understanding r_info.txt ===
 
