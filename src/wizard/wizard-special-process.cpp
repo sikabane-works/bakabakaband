@@ -703,15 +703,13 @@ void cheat_death(player_type *creature_ptr, bool no_penalty)
     current_world_ptr->noscore |= 0x0001;
     msg_print(NULL);
 
+    creature_ptr->is_dead = FALSE;
     (void)life_stream(creature_ptr, FALSE, FALSE);
     (void)restore_mana(creature_ptr, TRUE);
-
     (void)recall_player(creature_ptr, 0);
     reserve_alter_reality(creature_ptr, 0);
 
-
-    (void)strcpy(creature_ptr->died_from, _("死の導き", "Cheat death"));
-    creature_ptr->is_dead = FALSE;
+    (void)strcpy(creature_ptr->died_from, _("死の欺き", "Cheating death"));
     (void)set_food(creature_ptr, PY_FOOD_MAX - 1);
 
     floor_type *floor_ptr = creature_ptr->current_floor_ptr;
