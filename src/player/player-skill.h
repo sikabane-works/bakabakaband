@@ -8,7 +8,8 @@
 #define GINOU_NITOURYU 1
 #define GINOU_RIDING 2
 #define GINOU_SHIELD 3
-#define GINOU_TEMPMAX 4
+#define GINOU_GROSS_EATING 4
+#define GINOU_TEMPMAX 5
 
 /* Proficiency level */
 #define EXP_LEVEL_UNSKILLED 0
