@@ -206,7 +206,7 @@ void do_cmd_feeling(player_type *creature_ptr)
     if (creature_ptr->wild_mode)
         return;
     floor_type *floor_ptr = creature_ptr->current_floor_ptr;
-    int grids_rate = floor_ptr->width * floor_ptr->height * 100 / MAX_WID * MAX_HGT;
+    int grids_rate = floor_ptr->width * floor_ptr->height * 100 / (MAX_WID * MAX_HGT);
 
     if (floor_ptr->inside_quest && !random_quest_number(creature_ptr, floor_ptr->dun_level)) {
         msg_print(_("典型的なクエストのダンジョンのようだ。", "Looks like a typical quest level."));
@@ -234,13 +234,13 @@ void do_cmd_feeling(player_type *creature_ptr)
         msg_print("極めて広そうなフロアだ。");
     } else if (grids_rate > 50) {
         msg_print("非常にに広そうなフロアだ。");
-    } else if (grids_rate > 40) {
-        msg_print("そこそこに広そうなフロアだ。");
     } else if (grids_rate > 30) {
-        msg_print("少し広そうなフロアだ。");
+        msg_print("そこそこに広そうなフロアだ。");
     } else if (grids_rate > 20) {
-        msg_print("普通の大きさのフロアのようだ。");
+        msg_print("少し広そうなフロアだ。");
     } else if (grids_rate > 10) {
+        msg_print("普通の大きさのフロアのようだ。");
+    } else if (grids_rate > 5) {
         msg_print("少し狭そうなフロアだ。");
     } else {
         msg_print("狭そうなフロアだ。");
