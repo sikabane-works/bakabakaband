@@ -26168,7 +26168,7 @@ B:HIT:HURT:4d6
 B:HIT:HURT:4d6
 B:HIT:HURT:4d6
 F:DROP_90 
-F:EMPTY_MIND | BASH_DOOR | FRIENDS | SUMOU_WRESTLER
+F:EMPTY_MIND | BASH_DOOR | FRIENDS
 D:暗黒メガコーポ「ヨロシサン製薬」が開発したクローン生物だ。
 D:クローンヤクザと並びマッポーの世の一側面を如実に現した存在である。ショギョムッジョ。
 
@@ -26186,6 +26186,23 @@ F:DROP_60 | DROP_2D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | UNIQUE | GOOD | EVIL
 F:NO_FEAR | NO_CONF | NO_SLEEP | HAS_LITE_1 | NO_STUN | CAN_SPEAK
 D:迫真空手を通じて常に自己の研鑽を怠らない人間の鑑にして、
 D:成人の日（意味不明）を建前にセクハラを行う人間の屑だ。
+
+N:1359:殺人鬼『MNR』
+E:MNR the killer
+G:p:u
+I:113:75d10:25:80:25
+W:26:2:0:400:0:0
+B:SLASH:HURT:7d6
+B:SLASH:HURT:7d6
+B:SLASH:HURT:7d6
+B:SLASH:HURT:7d6
+F:UNIQUE | MALE | CAN_SPEAK | DROP_SKELETON | DROP_CORPSE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | HUMAN |
+F:ONLY_ITEM | DROP_90 | DROP_1D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | NASTY | HOMO_SEXUAL
+F:EVIL | NO_CONF | NO_SLEEP
+D:六人の少年を殺害して死体と肛門性交。その後彼らのペニスを切断し、
+D:自らの肛門に挿入して自慰行為を行うなど行った。「凶悪な精神犯罪者」だ。
 
 
 # D - Black        w - White          s - Gray          o - Orange
