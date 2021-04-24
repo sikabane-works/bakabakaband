@@ -400,6 +400,9 @@ void display_monster_alignment(lore_type *lore_ptr)
     if (lore_ptr->flags3 & RF3_GOOD)
         hook_c_roff(TERM_YELLOW, _("善良な", " good"));
 
+    if (lore_ptr->flags8 & RF8_NINJA)
+        hook_c_roff(TERM_L_DARK, _("ニンジャの", " ninja"));
+
     if (lore_ptr->flags8 & RF8_YAKUZA)
         hook_c_roff(TERM_L_DARK, _("ヤクザな", " yakuza"));
 

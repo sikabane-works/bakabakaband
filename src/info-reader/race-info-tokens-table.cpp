@@ -375,7 +375,7 @@ concptr r_info_flags8[NUM_R_FLAGS_8] = {
 	"XXX8X21",
 	"XXX8X22",
 	"XXX8X23",
-	"XXX8X24",
+    "NINJA",
 	"SUMOU_WRESTLER",
 	"YAKUZA",
 	"HOMO_SEXUAL",
