@@ -1,9 +1,9 @@
 /* File: angband.rc */
-//#ifdef JP
-//#include "ang_jp.rc"
-//#else
+#ifdef JP
+#include "ang_jp.rc"
+#else
 #include "ang_eng.rc"
-//#endif
+#endif
 
 #include "system/angband-version.h"
 #define RC_STR_IMP(s) #s
