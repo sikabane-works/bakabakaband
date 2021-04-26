@@ -8393,7 +8393,7 @@ B:HIT:LOSE_STR:3d4
 B:HIT:LOSE_STR:3d4
 F:MALE | HUMAN |
 F:DROP_1D2 | 
-F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE |
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE | NINJA
 F:EVIL | NO_CONF | NO_SLEEP | EAT_GIVE_DEX | EAT_POISONOUS
 D:$A humanoid clothed in black who moves with blinding speed.
 D:黒い服に身を包んだ人間で、目にもとまらぬスピードで動く。
@@ -26545,3 +26545,64 @@ D:$  It's frustrating because it doesn't enter a cage
 D:$ so it can't have a good rest.
 D:とある宿場に泊まった高名な絵師が宿代が足りなくて屏風へ描いた雀だ。
 D:駕籠がないのでゆっくり休めずイライラしている。
+
+N:1374:バイオスモトリ
+E:Bio Sumotori
+G:H:g
+I:103:10d20:12:15:10
+W:7:2:0:200:0:0
+B:HIT:HURT:4d6
+B:HIT:HURT:4d6
+B:HIT:HURT:4d6
+B:HIT:HURT:4d6
+F:DROP_90 
+F:EMPTY_MIND | BASH_DOOR | FRIENDS
+D:暗黒メガコーポ「ヨロシサン製薬」が開発したクローン生物だ。
+D:クローンヤクザと並びマッポーの世の一側面を如実に現した存在である。ショギョムッジョ。
+
+N:1375:迫真空手の達人『AKYS』
+E:AKYS, master of Hakusin Karate
+G:p:o
+I:115:20d31:25:90:7
+W:27:1:0:1200:0:0
+B:KICK:SUPERHURT:6d3
+B:HIT:SUPERHURT:7d3
+B:KICK:SUPERHURT:7d4
+B:HIT:SUPERHURT:6d3
+F:HUMAN | MALE | DROP_CORPSE | DROP_SKELETON | FORCE_MAXHP | NASTY | HOMO_SEXUAL
+F:DROP_60 | DROP_2D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | UNIQUE | GOOD | EVIL
+F:NO_FEAR | NO_CONF | NO_SLEEP | HAS_LITE_1 | NO_STUN | CAN_SPEAK
+D:迫真空手を通じて常に自己の研鑽を怠らない人間の鑑にして、
+D:成人の日（意味不明）を建前にセクハラを行う人間の屑だ。
+
+N:1376:殺人鬼『MNR』
+E:MNR the killer
+G:p:u
+I:113:75d10:25:80:25
+W:26:2:0:400:0:0
+B:SLASH:HURT:7d6
+B:SLASH:HURT:7d6
+B:SLASH:HURT:7d6
+B:SLASH:HURT:7d6
+F:UNIQUE | MALE | CAN_SPEAK | DROP_SKELETON | DROP_CORPSE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | HUMAN |
+F:ONLY_ITEM | DROP_90 | DROP_1D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | NASTY | HOMO_SEXUAL
+F:EVIL | NO_CONF | NO_SLEEP
+D:六人の少年を殺害して死体と肛門性交。その後彼らのペニスを切断し、
+D:自らの肛門に挿入して自慰行為を行うなど行った。「凶悪な精神犯罪者」だ。
+
+# N: serial number : monster name
+# G: symbol : color
+# I: speed : hit points : vision : armor class : alertness
+# W: depth : rarity : 0 : exp : next_exp : next_mon
+# B: attack method : attack effect : damage
+# S: spell frequency |
+# S: spell type | spell type | etc
+# F: flag | flag | etc
+# D: Description
+
+# D - Black        w - White          s - Gray          o - Orange
+# r - Red          g - Green          b - Blue          u - Brown
+# d - Dark Gray    W - Light Gray     v - Violet        y - Yellow
+# R - Light Red    G - Light Green    B - Light Blue    U - Light Brown
