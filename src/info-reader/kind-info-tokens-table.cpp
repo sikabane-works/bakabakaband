@@ -166,6 +166,12 @@ std::unordered_map<std::string_view, tr_type> k_info_flags = {
     { "NASTY", TR_NASTY },
     { "INDESTRUCTIBLE", TR_INDESTRUCTIBLE },
     { "NEVER_MOVE", TR_NEVER_MOVE },
+    { "VUL_ACID", TR_VUL_ACID },
+    { "VUL_COLD", TR_VUL_COLD },
+    { "VUL_ELEC", TR_VUL_ELEC },
+    { "VUL_FIRE", TR_VUL_FIRE },
+    { "VUL_LITE", TR_VUL_LITE },
+    { "IM_DARK", TR_IM_DARK },
 };
 
 /*!
@@ -199,5 +205,8 @@ std::unordered_map<std::string_view, TRG> k_info_gen_flags = {
     { "XTRA_L_ESP", TRG::XTRA_L_ESP },
     { "MOD_ACCURACY", TRG::MOD_ACCURACY },
     { "MOD_VELOCITY", TRG::MOD_VELOCITY },
+    { "XTRA_DICE_SIDE", TRG::XTRA_DICE_SIDE },
+    { "ADD_DICE", TRG::ADD_DICE },
+    { "DOUBLED_DICE", TRG::DOUBLED_DICE },
 };
 // clang-format on

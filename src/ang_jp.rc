@@ -56,19 +56,6 @@ ANGBAND MENU
 
 		MENUITEM SEPARATOR
 
-		/*  POPUP "Bizarre Display"
-		{
-			MENUITEM "メインウィンドウ", 230
-			MENUITEM "サブウィンドウ 1", 231
-			MENUITEM "サブウィンドウ 2", 232
-			MENUITEM "サブウィンドウ 3", 233
-			MENUITEM "サブウィンドウ 4", 234
-			MENUITEM "サブウィンドウ 5", 235
-			MENUITEM "サブウィンドウ 6", 236
-			MENUITEM "サブウィンドウ 7", 237
-		}
-		*/
-
 		POPUP "タイルの幅を広げる"
 		{
 			MENUITEM "メインウィンドウ", 240
@@ -122,17 +109,25 @@ ANGBAND MENU
 	{
 		POPUP "グラフィクス(&G)"
 		{
-			MENUITEM "なし(&N)", 400
-			MENUITEM "旧タイル(&O)", 401
-			MENUITEM "&Adam Boltさんタイル", 402
-			MENUITEM "新タイル", 403
-			MENUITEM "タイルを2倍幅で表示", 409
+			MENUITEM "�Ȃ�(&N)", 400
+			MENUITEM "���^�C��(&O)", 401
+			MENUITEM "&Adam Bolt����^�C��", 402
+			MENUITEM "�V�^�C��", 403
+			MENUITEM SEPARATOR
+			MENUITEM "�^�C����2�{���ŕ\��", 409
 		}
-		MENUITEM "BGM(&M)", 411
-		MENUITEM "効果音(&S)", 410
-		MENUITEM "壁紙を使う(&B)", 440
-		MENUITEM "壁紙を選択(&O)...", 441
-		MENUITEM "画面をHTMLで保存(&H)...", 450
+		POPUP "�w�i(&B)"
+		{
+			MENUITEM "�Ȃ�(&N)", 440
+			MENUITEM "�ǎ����g��(&W)", 441
+			MENUITEM "�v���Z�b�g(&P)", 442
+			MENUITEM SEPARATOR
+			MENUITEM "�ǎ���I��(&O)...", 449
+		}
+		MENUITEM "BGM(&M)", 420
+		MENUITEM "�A�N�e�B�u���̂�BGM�Đ�(&M)", 421
+		MENUITEM "���ʉ�(&S)", 410
+		MENUITEM "��ʂ�HTML�ŕۑ�(&H)...", 450
 	}
 }
 

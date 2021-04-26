@@ -163,5 +163,12 @@ enum tr_type {
     TR_NASTY = 152,
     TR_INDESTRUCTIBLE = 153,
     TR_NEVER_MOVE = 154,
-    TR_FLAG_MAX = 155,
+    TR_VUL_ACID = 155, //!< 酸弱点
+    TR_VUL_COLD = 156, //!< 冷気弱点
+    TR_VUL_ELEC = 157, //!< 電撃弱点
+    TR_VUL_FIRE = 158, //!< 火炎弱点
+    TR_VUL_LITE = 159, //!< 閃光弱点
+    TR_IM_DARK = 160, //!< 暗黒免疫
+
+    TR_FLAG_MAX = 161,
 };
