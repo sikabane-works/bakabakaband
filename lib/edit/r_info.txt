@@ -26609,6 +26609,21 @@ F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR |
 D:米軍が生み出した"人間のような機械"。一説に依れば東芝も関わっているという、
 D:まさに新時代の兵器だ。やっぱ怖いっスね米軍は。
 
+N:1378:中性子ゴーレム
+E:Neutronium golem
+G:g:w
+I:209:100d300:1000:30000:10
+W:127:15:0:1000000:0:0
+B:TOUCH:SUPERHURT:100d100
+B:TOUCH:SUPERHURT:100d100
+B:TOUCH:SUPERHURT:100d100
+B:TOUCH:SUPERHURT:100d100
+F:EMPTY_MIND | BASH_DOOR | CAN_SWIM |
+F:RES_ALL | HAS_LITE_2 | ATTR_MULTI
+F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN | NONLIVING
+D:それは、本当にこの世の終わりそのものだ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
